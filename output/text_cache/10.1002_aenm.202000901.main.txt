@@ -1,0 +1,962 @@
+
+<<PAGE 1>>
+www.advenergymat.de
+2000901  (1 of 12)
+© 2020 UChicago Argonne, LLC, Operator of Argonne National Laboratory. 
+Published by WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim 
+Full Paper
+Regulating the Hidden Solvation-Ion-Exchange in 
+Concentrated Electrolytes for Stable and Safe Lithium 
+Metal Batteries
+Rachid Amine, Jianzhao Liu, Ilona Acznik, Tian Sheng, Katarzyna Lota, 
+Hui Sun, Cheng-Jun Sun, Krzysztof Fic, Xiaobing Zuo, Yang Ren, Deia Abd EI-Hady, 
+Wael Alshitari, Abdullah S. Al-Bogami, Zonghai Chen, Khalil Amine,* and Gui-Liang Xu*
+DOI: 10.1002/aenm.202000901
+1. Introduction
+The pursuit of high energy and low-cost 
+energy storage devices to satisfy the ever-
+growing energy demand has resulted 
+in the exploration of novel chemistries 
+beyond conventional lithium-ion battery 
+technologies. Among these, lithium–
+sulfur (Li–S) batteries are considered as 
+attractive candidates for automotive and 
+grid applications because of their high 
+theoretical energy density (2600 Wh kg−1) 
+and the abundance of sulfur.[1] Despite the 
+significant advances in the past decades, 
+two major obstacles result from lithium 
+polysulfide (LiPSs) shuttle and lithium 
+dendrite formation, significantly imped 
+the practical implementation of Li–S bat-
+teries.[2] The former is due to the dissolu-
+tion and migration of LiPSs intermediates 
+in conventional ether-based electrolytes, 
+which not only cause loss of active mate-
+rials, but also induce severe parasitic 
+Lithium–sulfur batteries are attractive for automobile and grid applications due 
+to their high theoretical energy density and the abundance of sulfur. Despite the 
+significant progress in cathode development, lithium metal degradation and the 
+polysulfide shuttle remain two critical challenges in the practical application of 
+Li–S batteries. Development of advanced electrolytes has become a promising 
+strategy to simultaneously suppress lithium dendrite formation and prevent 
+polysulfide dissolution. Here, a new class of concentrated siloxane-based 
+electrolytes, demonstrating significantly improved performance over the widely 
+investigated ether-based electrolytes are reported in terms of stabilizing the 
+sulfur cathode and Li metal anode as well as minimizing flammability. Through 
+a combination of experimental and computational investigation, it is found that 
+siloxane solvents can effectively regulate a hidden solvation-ion-exchange pro-
+cess in the concentrated electrolytes that results from the interactions between 
+cations/anions (e.g., Li+, TFSI−, and S2−) and solvents. As a result, it could 
+invoke a quasi-solid-solid lithiation and enable reversible Li plating/stripping 
+and robust solid-electrolyte interphase chemistries. The solvation-ion-exchange 
+process in the concentrated electrolytes is a key factor in understanding and 
+designing electrolytes for other high-energy lithium metal batteries.
+R. Amine
+Department of Chemical Engineering
+University of Illinois at Chicago
+Chicago, IL 60607, USA
+R. Amine
+Materials Science Division
+Argonne National Laboratory
+Lemont, IL 60439, USA
+Dr. J. Z. Liu, Dr. Z. Chen, Dr. K. Amine, Dr. G.-L. Xu
+Chemical Sciences and Engineering Division
+Argonne National Laboratory
+9700 S Cass Avenue, Lemont, IL 60439, USA
+E-mail: amine@anl.gov; xug@anl.gov
+Dr. J. Liu
+Department of Chemistry
+Virginia Tech
+900 West Campus Drive, Blacksburg, VA 24061, USA
+Dr. I. Acznik, K. Lota
+Institute of Non-Ferrous Metals Division in Poznan Central Laboratory 
+of Batteries and Cells
+Forteczna 12, Poznan 61-362, Poland
+Dr. T. Sheng
+College of Chemistry and Materials Science
+Anhui Normal University
+Wuhu 241000, P. R. China
+Dr. H. Sun
+State Key Laboratory of Heavy Oil Processing
+Institute of New Energy
+China University of Petroleum-Beijing
+Beijing 102249, P. R. China
+Dr. C.-J. Sun, Dr. X. Zuo, Dr. Y. Ren
+X-ray Science Division
+Argonne National Laboratory
+9700 South Cass Avenue, Lemont, IL 60439, USA
+The ORCID identification number(s) for the author(s) of this article 
+can be found under https://doi.org/10.1002/aenm.202000901.
+© 2020 UChicago Argonne, LLC, Operator of Argonne National Laboratory. 
+Published by WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim. This is an 
+open access article under the terms of the Creative Commons Attribution 
+License, which permits use, distribution and reproduction in any medium, 
+provided the original work is properly cited.
+Adv. Energy Mater. 2020, 10, 2000901
+
+<<PAGE 2>>
+www.advenergymat.de
+www.advancedsciencenews.com
+2000901  (2 of 12)
+© 2020 UChicago Argonne, LLC, Operator of Argonne National Laboratory. 
+Published by WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim 
+reactions with the Li metal anode and result in the formation 
+of porous or mossy Li metal after cycling.[3] The latter originates 
+from the parasitic reactions of lithium metal with the elec-
+trolytes, leading to the formation of a fragile solid-electrolyte 
+interphase (SEI) on the Li metal, further uncontrolled lithium 
+dendrite growth, and eventually dead lithium.[4] These parasitic 
+reactions are the direct cause for the rapid capacity fade and 
+poor coulombic efficiency of Li–S batteries.
+To achieve long cycle life and high coulombic efficiency in 
+Li–S batteries, much effort has been devoted to eliminating 
+these parasitic reactions by use of multifunctional cathodes and 
+electrolytes.[1b,5] Inspired by the concept of sulfur confinement,[6] 
+researchers are striving to suppress the dissolution of LiPSs by 
+encapsulating sulfur within or onto various nanostructured host 
+materials.[7] Despite the improved cycle stability, the encapsu-
+lated sulfur cathodes barely achieve superior coulombic efficiency 
+(<100%) during cycling, indicating continuous occurrence of para-
+sitic reactions inside the Li–S cells.[6,8] This problem is due to the 
+limited accommodation sites and the weak binding strength of 
+host materials toward LiPSs.[5a] As a result, the formed LiPSs could 
+be readily detached from the host materials during cycling and 
+lead to the aforementioned capacity degradation and Li corrosion. 
+This process would further cause rapid cell failure in the practical 
+Li–S pouch cells due to the limited amount of Li on the anode side.
+On the other hand, in order to achieve high sulfur redox reac-
+tion kinetics, the conventional electrolytes for Li–S batteries are 
+using 1.0 m lithium bis(trifluoromethanesulfonyl)imide (LiTFSI) 
+in a mixture of low-donor-number solvents such as 1,3-dioxolane 
+(DOL) and 1,2-dimethoxyethane (DME). However, these ether-
+based electrolytes have high LiPSs solubility, leading to self-
+discharge and shortened cycle life of Li–S batteries.[9] Moreover, 
+despite the relatively lower reactivity with Li metal compared to 
+organic carbonate electrolytes, these electrolytes cannot sustain 
+durable lithium plating/stripping during prolonged cycling.[10] In 
+addition, they are highly volatile and have a very low flash point 
+(<2 °C), posing severe safety risks for batteries when operating 
+at elevated temperatures.[11] An alternative approach is to use 
+high-donor-number solvents, such as dimethylacetamide and 
+dimethylsulfoxide, which can increase the sulfur utilization and 
+tailor the deposition morphology of Li2S.[12] However, these elec-
+trolytes suffer from the formidable drawback of high reactivity 
+with Li metal.[13] Therefore, optimal electrolytes that can over-
+come these shortcoming for Li–S batteries are needed.
+Concentrated electrolytes have been recently considered as 
+an appealing solution for the development of long-life lithium 
+metal batteries.[14] This is because of their numerous physical/
+electrochemical merits over the traditional dilute electrolytes 
+(<1.2 m), such as better reductive/oxidative stability, lower flam-
+mability, lower volatility, higher Li+ transport number, and 
+a salt-derived SEI.[15] A pioneering work by Suo et al. showed 
+that a solvent-in-salt electrolyte with ultrahigh salt concentra-
+tion (up to 7.0 m) can suppress LiPSs dissolution and lithium 
+dendrite growth simultaneously due to the scarcity of free sol-
+vents in the electrolytes, leading to significantly improved cycle 
+stability and coulombic efficiency.[16] However, the encapsulated 
+sulfur cathodes still undergo a two-step solid–liquid–solid lithi-
+ation process in these concentrated electrolytes, indicating the 
+formation of LiPSs intermediates. As the dissolution of LiPSs 
+relies on the solvation with the solvents, a question remaining 
+here is: where do the free solvents come from since almost all 
+the solvent molecules should have been well coordinated by 
+the cations/anions of lithium salts in the super-concentrated 
+electrolytes? A fact that has been ignored for a long time is the 
+solvating power difference among various cations/anions (e.g., 
+Li+, TFSI−, and Sx2−) with the solvents, which could initiate a 
+solvation-ion-exchange (SIE, expressed as TFSI−(sol) + Li2Sx → 
+Sx2−(sol)+ LiTFSI(sol)) process and hence result in the solvation 
+and re-formation of soluble LiPSs during cycling.
+In this work, through experimental and computational 
+studies, we have identified an unprecedented correlation 
+between parasitic reactions and the SIE process in Li–S batteries. 
+For the first time, we report a new class of concentrated siloxane-
+based electrolytes for Li–S batteries, which demonstrated sig-
+nificant advantages over the widely deployed ether-based elec-
+trolytes (both dilute and concentrated). The siloxane electrolytes 
+can effectively eliminate the hidden SIE process and can thereby 
+simultaneously limit the dissolution of LiPSs and lithium den-
+drite growth. Therefore, we can enable zero parasitic reactions in 
+Li–S batteries, corresponding to 100% coulombic efficiency, even 
+for nonencapsulated sulfur cathodes. In addition, because of the 
+high flash point of siloxane solvents (>70 °C), the concentrated 
+siloxane electrolytes are intrinsically nonflammable. The insights 
+in this work could provide a new route for developing stable and 
+safe lithium metal batteries with high coulombic efficiency.
+2. Results and Discussion
+2.1. Solvation-Ion-Exchange Process in Li–S Batteries
+To reveal the critical role of solvation and ion exchange in Li–S 
+batteries, two widely investigated ether-based electrolytes have 
+been selected for comparison in this work. They are based 
+on conventional dilute (typical 1.0 m) ether and concentrated 
+(5.0 m) ether (DOL/DME) (see the Experimental Section for 
+details). Scheme  1a shows the schematic structures of the 
+most common species in the electrolytes, including free sol-
+vent molecules, solvent-separated ion pairs (SSIPs), contact 
+ion pairs (CIPs), and cation–anion aggregates (AGGs). In 
+the dilute ether electrolytes, Li+ is normally coordinated with 
+four solvent molecules, which is much lower than the sol-
+vent/Li salt molar ratio and hence results in a considerable 
+amount of free solvent molecules. As shown in Scheme  1b, 
+Dr. K. Fic
+Poznan University of Technology
+Pl. Marii Sklodowskiej-Curie 5, Poznan 60-965, Poland
+Dr. D. A. EI-Hady, W. Alshitari, A. S. Al-Bogami
+Department of Chemistry
+College of Science
+University of Jeddah
+P.O. 80327, Jeddah 21589, Saudi Arabia
+Dr. K. Amine
+Materials Science and Engineering
+Stanford University
+Stanford, CA 94305, USA
+Dr. K. Amine
+IRMC
+Imam Abdulrahman Bin Faisal University (IAU)
+Dammam 34212, Saudi Arabia
+Adv. Energy Mater. 2020, 10, 2000901
+ 16146840, 2020, 25, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.202000901 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 3>>
+www.advenergymat.de
+www.advancedsciencenews.com
+2000901  (3 of 12)
+© 2020 UChicago Argonne, LLC, Operator of Argonne National Laboratory. 
+Published by WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim 
+these molecules very easily either solvate with Sx2− or react 
+with Li metal, leading to a two-step solid–liquid–solid lithia-
+tion pathway and Li dendrite formation. With increased Li 
+salt concentration, the amount of free solvents is significantly 
+decreased, and the Li salt tends to form CIPs and AGGs 
+rather than SSIPs. At a very high concentration (e.g., 7.0 m), 
+almost all the solvent molecules are in Li+-solvating states, and 
+there are no free solvent molecules in the electrolytes. How-
+ever, as shown in Scheme  1c, the solvating power difference 
+between TFSI− and Sx2− with the ether solvent molecules can 
+result in SIE and re-formation of solvated Sx2−, as marked by 
+the dashed blue and red circles. Therefore, the encapsulated 
+sulfur cathodes still present two-step solid–liquid–solid trans-
+formation, and the solvated Sx2− would still cause corrosion 
+of Li metal and alter Li stripping/plating behavior. Ideally, an 
+optimal electrolyte would have strong solvation with cations/
+anions in the lithium salts but relatively weak solvation with 
+polysulfides. In light of these two requirements, we report a 
+new class of concentrated siloxane-based electrolyte that can 
+regulate the hidden SIE, leading to one-step solid–solid lithi-
+ation and stable lithium stripping/plating during charge/dis-
+charge, as illustrated in Scheme 1d. The structures and basic 
+properties of siloxanes can be found in Figure S1 and Table S1 
+(Supporting Information).
+The solvation chemistries of the concentrated siloxane elec-
+trolytes were investigated by Raman, small-angle X-ray scat-
+tering (SAXS), and ab initio molecular dynamics (AIMD) 
+studies. As shown in Figure  1a, the pure siloxane solvent 
+exhibits two O–Si (CH3)3 vibration bands at 608 and 613 cm−1. 
+These band shifts up to ≈620 cm−1 when the siloxane partici-
+pates in Li+ solvation. As the LiTFSI concentration increases, 
+the fraction of free siloxane solvents decreases, and that of 
+Li+-coordinated siloxane substantially increases. Meanwhile, 
+the Li+-TFSI− association simultaneously intensifies through 
+the formation of CIP and AGG clusters, as evidenced from a 
+remarkable upshift of the TFSI− band (730–760 cm−1, Figure 1b). 
+At a high concentration of 5.0 m, almost all the free siloxane 
+molecules are solvating to Li+ and TFSI−. This finding is fur-
+ther confirmed by the AIMD simulation, which provides an 
+atomic-scale understanding on the solvation structure around 
+the Li+ cations (Figure  1c,d, as well as Figure  S2, Supporting 
+Information). With increasing LiTFSI concentration, the por-
+tion of coordinated Li+ significantly increases (Figure  1e), 
+while the proportions of the free DOL and siloxane molecules 
+Scheme 1.  Schematic illustration of sulfur redox chemistry, polysulfide shuttle, and lithium dendrite formation for Li–S batteries in different electrolytes: 
+a) common species in the electrolytes and b) dilute ether, c) concentrated ether, and d) concentrated siloxane electrolytes.
+Adv. Energy Mater. 2020, 10, 2000901
+ 16146840, 2020, 25, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.202000901 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 4>>
+www.advenergymat.de
+www.advancedsciencenews.com
+2000901  (4 of 12)
+© 2020 UChicago Argonne, LLC, Operator of Argonne National Laboratory. 
+Published by WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim 
+in the electrolytes are greatly reduced accordingly (Figure  S3, 
+Supporting Information). A careful comparison on the local 
+structure of Li+ cations in the 1.0 and 5.0 m electrolytes clearly 
+showed a transition from four to three coordination (Figures S4 
+and S5, Supporting Information).
+The interactions between cations/anions and electrolyte 
+solvents were further investigated by SAXS, which has been 
+proved to be a very powerful technique for studying solution 
+structures and the nanostructures present in electrolyte systems 
+and can detect clusters with a size of ≈1.0 nm.[17] As shown in 
+Figure 1f, with increased concentration from 1.0 to 5.0 m, there 
+is a clear intensity increase in the q range from 0.5 to 0.8 Å−1 
+(corresponding to a size of ≈7.8 Å), which can be ascribed to the 
+formation of AGG clusters. The phenomena we observed in 
+the concentrated siloxane electrolytes are similar to the results 
+in other concentrated electrolytes.[10,18] As a result, significantly 
+decreased solvent activity can be expected, which can benefit 
+the suppression of LiPSs shuttle and lithium dendrite forma-
+tion. However, these assumptions fail to consider the interaction 
+between the coordinated solvents and charge/discharge interme-
+diates/products, which are LiPSs in the case of Li–S batteries. To 
+confirm the SIE process, we used Gaussian simulation to calcu-
+late the solvation energies of the cations/anions (Tables S2 to S4, 
+Supporting Information) as well as the Gibbs free energy (ΔG) 
+of the SIE in different solvents (Figure  1g and Table S5, Sup-
+porting Information). For the conventional ether solvents, the 
+ΔG values are all negative for Li2S8, Li2S6, and Li2S4, indicating 
+that SIE could occur in the DOL and DME systems spontane-
+ously. On the contrary, the ΔG values for the siloxane are all pos-
+itive, indicating the SIE reaction is highly unfavorable.
+2.2. Tailoring Sulfur Redox Chemistry
+To confirm the effect of SIE on the electrochemistry of sulfur 
+cathodes, we have used a highly porous carbon (denoted as 
+HPC1) with a pore size of ≈33  nm (Figure  S6a, Supporting 
+Information) to synthesize a S/HPC1 composite with a sulfur 
+Figure 1.  Raman spectra of siloxane electrolytes with different concentrations in the range of a) 580–650 cm−1 and b) 730–760 cm−1. Snapshots of the 
+AIMD optimized structures of c) 1.0 m and d) 5.0 m siloxane electrolytes. e) Percentage of coordinated Li+ with increasing LiTFSI concentration in 
+concentrated siloxane electrolytes. f) SAXS data of siloxane-based electrolytes with increased LiTFSI concentration. g) Calculated SIE energy of poly-
+sulfides with different solvents determined by Gaussian simulation. The white, grey, red, purple, cyan, yellow and blue atoms represent H, C, O, Li, F, 
+S, and N, respectively.
+Adv. Energy Mater. 2020, 10, 2000901
+ 16146840, 2020, 25, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.202000901 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 5>>
+www.advenergymat.de
+www.advancedsciencenews.com
+2000901  (5 of 12)
+© 2020 UChicago Argonne, LLC, Operator of Argonne National Laboratory. 
+Published by WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim 
+loading of 70 wt% (see the thermogravimetric analysis results 
+in Figure S7, Supporting Information). This S/HPC1 composite 
+can be deemed as a nonencapsulated sulfur cathode due to its 
+relatively large pore size and can hence exclude the effect of 
+sulfur confinement.
+Figure  2a–c shows the cycle performance of the S/HPC1 
+cathode in the conventional dilute ether (DDL), concentrated 
+ether (5DD), and concentrated siloxane (5DS) electrolytes (see 
+the Experimental Section for details on the compositions of 
+these electrolytes). Figure 2a shows the cycle performance of the 
+S/HPC1 cathode in the conventional DDL electrolyte, indicating 
+significant capacity fading and a severe shuttle effect during 
+cycling of the S/HPC1 cathode. This poor performance is 
+due to the weak confinement effect of HPC1, resulting in severe 
+detachment of LiPSs from the cathode. In the 5DD electrolyte 
+(Figure 2b), the shuttle effect was significantly suppressed com-
+pared to that for the DDL electrolyte. However, there are still 
+obvious gaps between charge and discharge capacities, con-
+firming the existence of a shuttle effect. By contrast, owing to 
+the elimination of SIE in the 5DS electrolyte (Figure  2c), the 
+S/HPC1 cathode did not show a visible shuttle effect. This can 
+be seen more clearly in the coulombic efficiency comparison 
+of Figure 2d. The cathode with 5DS electrolyte exhibits a supe-
+rior coulombic efficiency of almost 100%, with ≈105% for 5DD 
+and >120% for DDL, respectively. These results demonstrate 
+that the 5DS electrolyte effectively eliminates the parasitic reac-
+tions. The length of CH2CH2O chain in the siloxane solvents 
+will affect the ionic transport and conductivity of electrolytes.[19] 
+Nevertheless, we found the concentrated siloxane electrolytes 
+with longer CH2CH2O chain do not show visible shuttle effect 
+as well (Figure S8, Supporting Information), representing a sig-
+nificant space for screening and optimization in the future.
+We further investigated the synergistic effect of the 5DS 
+electrolyte and sulfur confinement using a microporous 
+carbon (HPC2) which has a pore size of ≈1–2 nm and a pore 
+volume of 4.66 cc g−1 (Figure  S6b, Supporting Information). 
+With the same amount of sulfur loading (70 wt%), the S/HPC2 
+cathode exhibits a long discharge plateau in the 5DS electrolyte, 
+corresponding to a quasi-solid-solid lithiation process, which is 
+similar to results in our previous study using fluorinated ether 
+Figure 2.  Cycle performance of S/HPC1 cathode in different electrolytes at C/10: a) dilute ether, b) concentrated ether, and c) concentrated siloxane. 
+d) Comparison on the coulombic efficiency of S/HPC1 cathode in different electrolytes. e) First charge/discharge curve of S/HPC2 cathode in the 
+concentrated siloxane electrolytes. f) Cycle performance of S/HPC2 cathode in the concentrated siloxane electrolytes at C/3 with flooded electrolytes 
+and E/S ratio of 10 µL−1 mg−1.
+Adv. Energy Mater. 2020, 10, 2000901
+ 16146840, 2020, 25, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.202000901 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 6>>
+www.advenergymat.de
+www.advancedsciencenews.com
+2000901  (6 of 12)
+© 2020 UChicago Argonne, LLC, Operator of Argonne National Laboratory. 
+Published by WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim 
+electrolytes.[20] By contrast, the S/HPC2 cathode still exhibits 
+two discharge voltage plateaus during lithiation in the DDL 
+and 5DD electrolytes, corresponding to the conventional two-
+step solid–liquid–solid lithiation (Figure S9, Supporting Infor-
+mation). This result confirmed that the transformation of the 
+lithiation pathway arises from the synergistic reaction between 
+electrolytes and carbon structures. This is probably related to 
+rational solid-electrolyte interphase distribution on different 
+host structures, which thus prevent the contact between elec-
+trolytes solvents and electrode materials,[20,21] leading to the 
+observed solid–solid lithiation/de-lithiation pathway. In addi-
+tion, the S/HPC2 cathode present larger voltage polarization 
+in the concentrated electrolytes than dilute electrolytes, which 
+could be attributed to their large ionic transport resistance and 
+viscosity as well as decreased polysulfides solubility.[22] Figure 2f 
+displays the cycle performance of the S/HPC2 cathode with a 
+flooded electrolyte at room temperature (RT) and with a low 
+electrolyte-to-sulfur (E/S) ratio at 45 °C. Both conditions deliv-
+ered stable cycle stability with high coulombic efficiency of 
+around 100% at C/3 because of the bypassed formation of LiPSs 
+and no SIE in the 5DS electrolyte, leading to almost no par-
+asitic reactions. Noted that the S loading in the concentrated 
+electrolytes is limited to 2 mg cm−2 due to their higher viscosity 
+than dilute electrolytes. In order to enable high S loading elec-
+trodes (e.g., >5 mg cm−2), searching for optimal diluents such 
+as fluorinated ether to form localized concentrated electrolytes 
+to enable high areal capacity for Li–S batteries is required and 
+under investigation.[18b]
+To further confirm the critical impact of the SIE process, we 
+characterized the morphologies and structures of the S/HPC1 
+cathode by scanning electron microscopy (SEM) after testing in 
+different electrolytes for 20 cycles. As shown in Figure 3a, there 
+is obvious Li2S/Li2S2 particle deposition outside the surface 
+of the HPC1 cathode in the DDL electrolyte due to high dis-
+solution of LiPSs and weak sulfur confinement effectiveness. 
+In the case of 5DD electrolyte, it forms a film-like passivation 
+layer on the cathode surface (Figure 3b), which is highly insu-
+lating and would block charge transfer across the sulfur/elec-
+trolyte interface and decrease the capacity during cycling.[12,18b] 
+These results are both in contrast to that for the 5DS electrolyte 
+cathode, which remained a highly porous structure similar to a 
+pristine cathode (Figure 3c).
+In situ high-energy X-ray diffraction (HEXRD) was con-
+ducted to track the phase transformation of S/HPC1 cathode 
+during charge/discharge in the 5DS electrolyte. As shown in 
+Figure 3d, the diffraction peaks marked by the # symbol in the 
+pristine S/HPC1 cathode belong to crystalline S8. During dis-
+charge, these peaks gradually disappear due to the reduction of 
+S8. However, in contrast to the results reported by Villevieille 
+and co-workers,[23] we did not observe the LiPSs diffraction 
+peaks during the whole discharge process, indicating no forma-
+tion of soluble LiPSs. Furthermore, at the end of first discharge, 
+no peaks corresponding to Li2S were detected, indicating the 
+Li2S may be in a nanocrystalline form. During the charge pro-
+cess, we did not observe the re-formation of crystalline S8. This 
+finding is consistent with the SEM result, where no crystalline 
+S8 deposition or film-like products were seen.
+To directly probe the parasitic reactions inside Li–S cells, we 
+used a home-built system for high-precision leakage current 
+measurement.[24] The working principle is illustrated in the 
+Figure 3.  a) SEM images of cycled S/HPC1 cathode (20 cycles) in different electrolytes: a) dilute ether, b) concentrated ether, and c) concentrated 
+siloxane-based electrolyte. d) In situ HEXRD measurements of S/HPC1 cathode in concentrated siloxane electrolyte. e) Scheme for the parasitic reac-
+tions inside Li/S battery during charge and the representative current relaxation curve collected to extract the static leakage current. f) Leakage current 
+measurement of S/HPC1 cathode in different electrolytes.
+Adv. Energy Mater. 2020, 10, 2000901
+ 16146840, 2020, 25, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.202000901 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 7>>
+www.advenergymat.de
+www.advancedsciencenews.com
+2000901  (7 of 12)
+© 2020 UChicago Argonne, LLC, Operator of Argonne National Laboratory. 
+Published by WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim 
+Figure 3e inset. For this study, the Li–S cells were charged/dis-
+charged for two cycles and then charged at different constant 
+voltage for 20 h. During this process, the long-chain LiPSs 
+are chemically reduced by Li metal to form short-chain LiPSs 
+at the anode side, while the short-chain LiPSs migrate to the 
+cathode side and are electrochemically oxidized back to long-
+chain LiPSs. In this case, the number of electrons passing 
+through the working electrode is directly proportional to the 
+rate of parasitic reactions inside the Li–S cell (i.e., electrochem-
+ical oxidation of migrated short-chain LiPSs). As a result, the 
+static leakage current can serve as a quantitative indicator for 
+the parasitic reaction level, which can be extracted from the cur-
+rent relaxation curve by using the exponential decay function 
+in Figure 3e. As clearly shown in Figure 3f, the leakage current 
+is in the order of DDL > 5DD ≫ 5DS, further confirming the 
+minimal parasitic reactions in the 5DS electrolyte due to the 
+elimination of the SIE process.
+To unravel the effect of the eliminated SIE on the lithia-
+tion pathway of the sulfur cathodes, we conducted a charac-
+terization study with operando synchrotron X-ray absorption 
+spectroscopy (XAS). Unlike HEXRD, XAS can be used to 
+investigate atoms of all states of matter, including solid, liquid, 
+and crystalline and/or amorphous.[9c,25] In particular, X-ray 
+absorption near edge spectroscopy (XANES) is very sensitive 
+to the oxidation states of the targeted elements. Due to the 
+interference of the sulfur signal from the LiTFSI in the elec-
+trolytes and the similarity between selenium and sulfur, we 
+conducted in situ XAS Se K-edge characterization on the Se/
+HPC1 (70 wt% Se) cathode instead of S/HPC1 to elucidate the 
+lithiation pathway.
+Figure 4a shows the Se K-edge XANES curves of commercial 
+Se and synthesized Li2Se powder. Selenium powder exhibited 
+an absorption energy of 12 658 eV due to the transition of Se 1s 
+core electrons to the unoccupied 4p states, while the Se K-edge 
+of Li2Se moves to a higher energy of 12 664 eV.[25] Figure 4b,c 
+shows the charge/discharge curves of the Se/HPC1 cathode in 
+the 5DS electrolyte at C/10 along with the 2D contour plot from 
+the in situ Se K-edge XANES. The features of Se remained 
+almost constant during the long voltage plateau (≈8.0 h), and 
+then Li2Se started to dominate the discharge products due to 
+the substantial generation of Li2Se from Se. During the charge 
+process, the Se signal is completely recovered, indicating high 
+lithiation/de-lithiation reversibility. Figure  4d shows the first 
+derivative of the XANES spectrum for commercial Se powder, 
+from which the energy position of the edge can be determined. 
+According to our previous work,[25] the energy shift of this 
+peak is an indicator of LiPSs formation. However, as shown 
+in Figure 4e, we do not observe a clear edge shift throughout 
+the whole charge/discharge process, which is different from 
+our previous results with dilute DOL/DME electrolytes.[25] To 
+further confirm no formation of LiPSs, linear combination fit-
+ting was used for the XANES spectra during charge/discharge, 
+which can determine the composition of the electrodes at dif-
+ferent charge/discharge states. Figure  4f shows a typical fit-
+ting result using a two-phase (Se-Li2Se) transition mode and 
+reveals that the intermediates can be well fit to the data with 
+minimum residue. The relative composition of Se and Li2Se at 
+different charge/discharge states, shown in Figure 4g, indicates 
+a gradual decrease of Se along with an increase of Li2Se during 
+discharge. This process is reversed during the charge.
+Figure 4.  In situ Se K-edge XAFS results of Se/HPC1 cathode during charge/discharge at C/10 in the concentrated siloxane electrolyte: a) Normalized 
+Se XANES spectra of standard Se and Li2Se. b) Charge/discharge curve of Se/HPC1 cathode and c) corresponding 2D contour plot of in situ Se K-edge 
+XANES. Derivative of normalized XANES spectra d) before and e) during the whole charge/discharge. f) Representative linear combination fitting of 
+charge/discharge intermediates with two components (Se-Li2Se). g) Relative composition of possible phases during charge/discharge. h) Spectra for 
+EXAFS Se K-edge data of Se and Li2Se. i) 2D contour plot of in situ EXAFS Se K-edge data.
+Adv. Energy Mater. 2020, 10, 2000901
+ 16146840, 2020, 25, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.202000901 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 8>>
+www.advenergymat.de
+www.advancedsciencenews.com
+2000901  (8 of 12)
+© 2020 UChicago Argonne, LLC, Operator of Argonne National Laboratory. 
+Published by WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim 
+Compared to XANES, extended X-ray absorption fine struc-
+ture (EXAFS) can probe the local electronic and bond struc-
+tures of specific elements, and can thereby better visualize the 
+structure changes during charge and discharge. The EXAFS 
+spectra of Se and Li2Se shown in Figure 4h exhibit significantly 
+different features, which can be used to investigate the com-
+position change. As clearly shown in Figure 4i and Figure S10 
+(Supporting Information), the electrode followed a direct trans-
+formation of Se to Li2Se during discharge since there is no 
+evolution of other peaks. The above XAS results confirm that 
+the 5DS electrolyte can invoke a quasi-solid-solid lithiation 
+pathway, which is one of the origins for the superior coulombic 
+efficiency of the aforementioned Li–S cells due to elimination 
+of the shuttle effect.
+2.3. Li Plating/Stripping Stability and SEI Chemistries
+In addition to the critical impact on the (de)lithiation 
+mechanism of sulfur redox chemistry, the electrolytes also 
+significantly altered the plating and stripping behavior of Li 
+metal. Figure 5a,b compares the voltage profiles of Li/Li sym-
+metric cells in different electrolytes for a 1000 h test period with 
+a fixed areal capacity of 1.25 mAh cm−2 at 1.25  mA cm−2. As 
+expected, the DDL electrolyte exhibited a significant voltage 
+polarization after only 200 h, while both 5DD and 5DS electro-
+lytes exhibited stable voltage profiles during 1000 h of plating/
+stripping. This is because of the significantly suppressed free 
+solvents in the concentrated electrolytes, while the significant 
+amount of free solvents in the dilute electrolyte can induce 
+severe parasitic reactions with Li metal. Note that the voltage 
+polarization in the 5DS electrolyte is smaller than that in the 
+5DD electrolyte, which can be seen more clearly in Figure S11 
+(Supporting Information). This is probably related to their Li 
+deposition process and thickness, which indicates that the 
+5DS may help form uniform and thinner Li. Subsequently, we 
+found that the 5DS electrolyte can further maintain durable Li 
+plating/stripping up to 2000 h (Figure  S12, Supporting Infor-
+mation). The slight decrease of overpotential during repeated Li 
+stripping/plating test in the concentrated siloxane electrolytes 
+Figure 5.  Li metal plating/stripping for Li/Li symmetric cells in a) dilute ether and b) concentrated electrolytes at 1.25 mA cm−2 with an areal capacity 
+of 1.25 mAh cm−2. SEM image of Li metal and corresponding EDX mapping in different electrolytes: c,f) dilute ether, d,g) concentrated ether, and 
+e,h) concentrated siloxane electrolytes.
+Adv. Energy Mater. 2020, 10, 2000901
+ 16146840, 2020, 25, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.202000901 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 9>>
+www.advenergymat.de
+www.advancedsciencenews.com
+2000901  (9 of 12)
+© 2020 UChicago Argonne, LLC, Operator of Argonne National Laboratory. 
+Published by WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim 
+was also reported in other modified electrolytes.[26] This could 
+be due to the slight increase of Li metal surface area after 
+repeated Li stripping/plating process, which thus decrease the 
+true current densities of Li plating/stripping, and thus lead 
+to the decrease of overpotential with cycling. The excellent Li 
+plating/stripping behavior in the concentrated siloxane electro-
+lyte has enabled its application in other high-energy electrode 
+materials. Figure  S13 (Supporting Information) shows the 
+stable cycling performance of an amorphous silicon anode and 
+a Ni-rich LiNi0.6Mn0.2Mn0.2O2 cathode in the 5DS electrolyte. 
+Although the formulas for concentrated siloxane electrolytes to 
+be used with different battery materials are under optimization, 
+this result serves as a good proof-of-concept demonstrating the 
+great application potential of the electrolytes in many electrode 
+materials across a wide voltage window.
+The results from the Li/Li symmetric cells are based on the 
+suppressed solvent activities, but do not consider the effect of 
+the aforementioned SIE. In the practical Li–S cells, the gen-
+eration of LiPSs will definitely change the morphologies and 
+structures of the Li metal and, hence, alter the Li plating/strip-
+ping behavior. The SEM images in Figure 5c–e show the mor-
+phologies of a cycled Li anode in Li–S/HPC1 cells after charge/
+discharge in different electrolytes for 20 cycles. As clearly 
+shown, the cycled Li metal in DDL and 5DD electrolytes exhib-
+ited severe cracking and porous structures. On the contrary, the 
+surface of the cycled Li metal in the 5DS electrolyte remained 
+relatively flat. The energy-dispersive X-ray spectroscopy (EDX) 
+mapping further confirmed a significant amount of Li2Sx depo-
+sition on the surface of cycled Li metal in both dilute and con-
+centrated ether electrolytes (Figure  5f,g), while only a small 
+amount of F and S due to the formation of SEI can be observed 
+in the concentrated siloxane electrolytes (Figure 5h). These dif-
+ferences in the morphologies and composition of the cycled Li 
+anode between concentrated ether and concentrated siloxane 
+electrolytes clearly confirm the effect of SIE in Li–S batteries.
+We further characterized the cycled Li metal by X-ray photo-
+electron spectroscopy (XPS) to understand the compositional/
+structural characteristics of the SEI in different electrolytes and 
+the related ionic transport across the interface. Figure 6a shows 
+the S2p spectra of cycled Li metal after charge/discharge in dif-
+ferent electrolytes for 20 cycles. The peaks at 159–165 eV belong 
+to the deposition of Li2S2-Li2S, and the peaks at 168–171 eV can 
+be generally assigned to the formation of LixSOy due to the 
+reduction of LiTFSI in the SEI.[27] In contrast to the XPS S2p 
+results of concentrated ether electrolytes obtained by Yushin 
+and co-workers,[28] the abnormally high intensity of Li2S2-Li2S 
+clearly indicates a significant amount of Li2S2-Li2S deposition 
+on the cycled Li metal in the DDL and 5DD electrolytes, while 
+almost no Li2S2-Li2S deposition can be found in the case of 5DS 
+electrolyte. This occurs because of the synergistic effect of sup-
+pressed solvent activities and eliminated SIE in the concentrated 
+siloxane electrolyte. In 5DD electrolyte, however, the regenera-
+tion of free solvents through the SIE process would still lead 
+to formation of LiPSs and further corrosion of Li metal. This 
+can be further confirmed by the O1s and F1s spectra result. Two 
+peaks corresponding to RO-Li (≈531 eV) and surface OCO 
+(≈533.6 eV) can be observed in spectra for the DDL and 5DD 
+electrolytes (Figure  6b), which are attributed to the reduction 
+of ether solvents during cycling.[29] However, these peaks disap-
+peared in the case of 5DS electrolyte (Figure 6b). Instead, two 
+peaks due to the reduction of LiTFSI appeared at ≈530.3  eV 
+(Li–O) and ≈532.5 eV (SO), respectively. The decomposition 
+of siloxane and DOL solvent did not participate the formation of 
+SEI, which can be confirmed by the absence of Si–O (533.0 eV) 
+and OCO (≈533.6 eV). The F1s spectrum of DDL exhibited 
+two peaks at around 685 and 687.5 eV, which can be assigned 
+to Li–F and S–F from decomposition of LiTFSI (Figure  6c). 
+By increasing the concentration of LiTFSI, we found that 
+the reduction of LiTFSI was enhanced in the 5DD electro-
+lyte. When switching to concentrated siloxane electrolyte, the 
+Figure 6.  a) S 2p spectra, b) O 1s spectra, and c) F 1s spectra of Li metal in the Li/S-HPC1 cells after 20 cycles in different electrolytes at C/10.
+Adv. Energy Mater. 2020, 10, 2000901
+ 16146840, 2020, 25, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.202000901 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 10>>
+www.advenergymat.de
+www.advancedsciencenews.com
+2000901  (10 of 12)
+© 2020 UChicago Argonne, LLC, Operator of Argonne National Laboratory. 
+Published by WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim 
+spectra exhibited a C–F peak at the highest intensity and minor 
+components of Li–F and S–F, similar to the SEI composition 
+derived from dual-salt ether electrolytes.[27] As indicated by Xu 
+and co-workers, these larger anion fragments such as the C–F 
+moiety will be further reduced during cycling, leading to more 
+LiF formation and stable cycle life in Li/LiNi0.6Mn0.2Mn0.2O2 
+and Cu/LiNi0.6Mn0.2Mn0.2O2 cells. Therefore, the concentrated 
+siloxane electrolyte could enable an ultralong Li plating/strip-
+ping, as shown in Figure S12 (Supporting Information).
+2.4. Intrinsic Nonflammability
+Ether electrolytes are highly flammable due to their low flash 
+points, which raise serious safety concern for large-scale bat-
+teries. As shown in Video S1 and Figure S14 (Supporting Infor-
+mation), the dilute ether electrolytes can ignite after only one 
+ignition, demonstrating extremely high flammability. Concen-
+trated ether electrolytes are more resistant to burning, but still 
+flammable. Interestingly, the concentrated siloxane electrolyte 
+is intrinsically nonflammable. It could not be ignited during 
+the flammability test. Therefore, it could remarkably improve 
+the safety performance of lithium metal batteries.
+3. Conclusion
+We have developed a new class of concentrated siloxane-based 
+electrolyte for long-life and safe lithium–metal batteries, which 
+demonstrate significant improvements over the widely used 
+ether-based electrolyte in terms of electrochemical performance 
+and flammability. Through a series of experimental and com-
+putational studies, we have elucidated the critical role of the 
+hidden SIE process in Li–S batteries, which originates from the 
+solvating power difference of cations/anions (i.e., Li+, TFSI−, 
+Sx2−, and FSI−) with the solvents. By regulating the SIE, the 
+concentrated siloxane electrolyte can not only effectively elimi-
+nate the shuttle effect through tailoring the transformation 
+pathway of sulfur cathode, but also enable durable Li plating/
+stripping for Li metal, leading to almost no parasitic reactions 
+for Li–S batteries. Future electrolyte design to improve the per-
+formance of practical Li–S batteries should consider the effect 
+of salt anions and solvents on the SIE process.
+4. Experimental Section
+Preparation of Highly Porous Carbon (HPC) and S/HPC Composites: 
+For the synthesis of the HPC1 material with large pore size, a modified 
+parameter that was previously reported was used,[30] in which the weight 
+ratio of silica to sucrose was changed to 1/1. The HPC2 activated carbon 
+was prepared using starch sourced from corn (Sigma–Aldrich) as a 
+carbon precursor. The activation process was proceeded by pyrolysis of 
+starch at 650 °C in nitrogen atmosphere. The process was carried out 
+by 1 h with carbon yield of 18%. In the next step, the chemical activation 
+was carried out in an inert atmosphere (nitrogen flow) at 800 °C, with 
+the C:KOH ratio of 1:4. After the entire process, obtained carbon was 
+washed several times to remove the residue of the activator. The carbon 
+yield after activation process was ≈60%
+S/HPC1 and S/HPC2 composites with a sulfur loading of 70 wt% were 
+prepared by mixing sulfur powder and HPC powder in a weight ratio 
+of 7/3. The powders were then sealed in a hydrothermal vessel under 
+argon. The sealed vessel was heated to 155 °C for 12 h in an oven before 
+being cooled to room temperature naturally. A Se/HPC1 composite with 
+a selenium loading of 70 wt% was also prepared under a similar process 
+but with a high heating temperature of 260 °C.
+Electrochemical Characterization: The S/HPC laminates were prepared 
+by spreading a mixture of 70  wt% S/HPC composites, 20  wt% Super 
+P, and 10 wt% PVDF (8.0 wt% in NMP) onto an aluminum foil current 
+collector. The as-prepared electrodes were then dried at 55 °C in a 
+vacuum oven overnight. The loading density of the active materials in 
+the S/HPC electrodes was controlled at about 1.5–2.0  mg cm−2. The 
+electrochemical performance of the S/HPC electrodes was evaluated 
+by assembling them into coin cells (type CR2032) in an argon-filled 
+glovebox with moisture and oxygen content both below 1.0  ppm. The 
+electrode was separated from a lithium counterelectrode by a separator 
+(glass fiber, Grade GF/F Glass Microfiber Filter Binder Free, circle, 
+125 mm).
+The 
+DDL 
+electrolyte 
+was 
+composed 
+of 
+1.0 
+m 
+lithium 
+bis(trifluoromethanesulfonyl)imide (LiTFSI) in 1,3-dioxolane (DOL) 
+and 1,2-dimethoxyethane (DME) (1/1 volume ratio) with 0.1 m LiNO3 
+additive. The 5DD electrolyte was composed of 5.0 m LiTFSI in the DOL 
+and DME (1/1, v/v). The 5DS electrolyte was composed of 5.0 m LiTFSI 
+in DOL and 2,2-dimethyl-3,6,9-trioxa-2-siladecane (1/1 volume ratio). The 
+assembled cells were tested with a MACCOR cycler or LAND cycler in 
+the voltage range 1.0–3.0 V.
+A parasitic reaction study was conducted in a home-built system with 
+high-precision leakage current measurement.[24] A Li plating/stripping 
+experiment was conducted with Li/Li symmetric cells using different 
+electrolytes having a fix areal capacity of 1.25 mAh cm−2. The cells were 
+tested at 1.25 mA cm−2.
+Materials Characterization: The morphologies and structures of 
+the materials were characterized by field emission scanning electron 
+microscopy (HITACHI S-4700-II). The sulfur content in the S/HPC1 
+composite was measured by thermo-gravimetric analyses on a STA 
+449 F3 instrument under an argon atmosphere. The surface area, 
+porosity, and pore size were determined in a gas sorption system 
+(QUANTACHROME AUTOSORB 6-B). The samples were degassed at 
+110 °C for at least 20 h under vacuum, and then nitrogen adsorption/
+desorption isotherms were obtained at a constant temperature of 77.4 K. 
+The various textural properties were all determined from the isotherms. 
+The specific surface area was calculated by the Brunauer–Emmett–Teller 
+method (seven points). The pore volume was estimated from single-
+point adsorption at a targeted relative pressure of 0.995. The pore size 
+distribution was determined from the adsorption branch, according to 
+the Barrett–Joyner–Halanda method. X-ray photoelectron spectroscopy 
+analyses on cycled Li metal were performed with a ESCALAB 250Xi 
+system using a monochromatized Al K source and equipped with an 
+Ar+ ion sputtering gun (Thermo Fisher). The Raman spectra of different 
+concentrations of siloxane electrolyte were obtained with a Renishaw 
+inVia microscope spectrometer.
+Solution SAXS experiments were performed at beamline 12-ID-B of 
+the Advanced Photon Source (APS) at Argonne National Laboratory. 
+The wavelength, λ, of X-ray radiation was set to 0.886 Å. Scattered X-ray 
+intensities were measured simultaneously with two Pilatus detectors, 
+i.e., Pilatus 2M and 300k. The detectors were set such that the overall 
+detection range of momentum transfer q [= 4π sinθ/λ, where 2θ is the 
+scattering angle] was 0.004–2.3 Å−1. All solution samples were measured 
+with a flow cell consisting of a cylindrical quartz capillary (1.5  mm in 
+diameter and 10 µm wall thickness). The flow rate was set at 10 µL s−1, 
+and the exposure time was set to ≈1 s to reduce possible radiation 
+damage. To obtain good signal-to-noise ratio values, 20 images were 
+acquired for each sample. The 2D scattering images were converted 
+to 1D scattering curves (I(q) vs q) through azimuthal averaging after 
+solid angle correction and then normalization with the intensity of 
+the transmitted X-ray beam flux by means of beamline software. The 
+two scattering curves for each sample collected from two detectors 
+were eventually merged into one curve. An ignition and combustion 
+experiment of different electrolytes was conducted by using the same 
+Adv. Energy Mater. 2020, 10, 2000901
+ 16146840, 2020, 25, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.202000901 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 11>>
+www.advenergymat.de
+www.advancedsciencenews.com
+2000901  (11 of 12)
+© 2020 UChicago Argonne, LLC, Operator of Argonne National Laboratory. 
+Published by WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim 
+amount (1.0 mL) of electrolytes followed by immediate ignition with a 
+butane lighter.
+Operando HEXRD and Se K-Edge XANES Measurements: Coin cells 
+with a hole on both the top and bottom case were used for the operando 
+X-ray experiments. Operando synchrotron HEXRD experiments were 
+carried out at Beamline 11-ID-C of the APS using X-rays with wavelengths 
+of 0.1173 Å. Operando XANES experiments on the Se K-edge between 
+12 458 and 13 458 eV were carried out in transmission mode at Beamline 
+20-BM-B of the APS. The incident beam was monochromatized by using 
+a Si(111) fixed-exit, double-crystal monochromator. During the operando 
+experiment, a MACCOR cycler was used to charge/discharge the cells at 
+a constant rate of C/10 (1 C = 675 mA g−1) between 1.0 and 3.0 V.
+Computational Details: All the calculations, including geometry 
+optimizations, were performed with density functional theory (DFT) using 
+the B3LYP functional with the 6–311G++(d,p) basis set. The solvation free 
+energy was calculated from the difference in free energy of the solute in 
+the solution and gas phase. The solvation model based on density (SMD) 
+in GAUSSIAN 09 was chosen for computing the solvation free energy.
+All electronic calculations were carried out using the Perdew–
+Burke–Ernzerhof functional of exchange correlation and the projector-
+augmented-wave pseudopotentials.[31] D3 dispersion corrections with zero 
+damping were used to describe the van der Waals forces.[32] The cut-off 
+energy was 350  eV, and a gamma Monkhorst-Pack k-point sampling 
+was used. A mixed solution placed in a cubic box was assumed with a 
+length of 17 Å containing 7 siloxane (C8H20O3Si) molecules and 21 DOL 
+(C3H6O2) molecules with the volume ratio being 1.02, which is close 
+to 1 in experiments. By adding 3, 6, 9, 12, and 15 LiTFSI (C2F8LiNO4S2) 
+molecules into the mixed solution, one can continuously control the Li+ 
+concentration from 1 to 5 m. For each concentration, 10 ps (1 fs per step) 
+AIMD simulations were performed to rapidly equilibrate the system at first 
+within the canonical (NVT) ensemble at 600 K. The molecular dynamics 
+simulation was run for 10 ps at 300 K to collect the structures around the 
+Li+ center. The coordination number of Li+ was obtained by averaging 20 
+samples taken from the last 5 ps of molecular dynamics simulations.
+Supporting Information
+Supporting Information is available from the Wiley Online Library or 
+from the author.
+Acknowledgements
+R.A. and J.L. contributed equally to this work. Research at the Argonne 
+National Laboratory was funded by the U.S. Department of Energy 
+(DOE), Vehicle Technologies Office. Support from Tien Duong of 
+the U.S. DOE’s Office of Vehicle Technologies Program is gratefully 
+acknowledged. Use of the Advanced Photon Source (APS), an Office of 
+Science User Facility operated for the DOE Office of Science by Argonne 
+National Laboratory, was supported by DOE under Contract No. 
+DE-AC02-06CH11357. The authors also acknowledge the support from 
+National Natural Science Foundation of China (21903001) and Natural 
+Science Foundation of Anhui Province (1908085QB58) for the AIMD 
+simulation. Saudi contribution was funded by the University of Jeddah, 
+Saudi Arabia, under grant no. (UJ-07-18-ICP). K.F. acknowledges the 
+European Commission and the European Research Council for financial 
+support within the Starting Grant project (GA 759603) under the 
+European Union’s Horizon 2020 Research and Innovation Programme. 
+I.A. and K.L. acknowledge the financial support from the Polish Ministry 
+of Science and Education -Grant No 3787/E-138/S/2017. An error in the 
+legend of Figure 3f was fixed on July 7, 2020.
+Conflict of Interest
+The authors declare no conflict of interest.
+Keywords
+concentrated electrolytes, lithium metal batteries, siloxanes, solvation-
+ion-exchange, sulfur
+Received: March 9, 2020
+Revised: April 22, 2020
+Published online: June 2, 2020
+[1]	 a) Z. W. Seh, Y. M. Sun, Q. F. Zhang, Y. Cui, Chem. Soc. Rev. 2016, 
+45, 5605; b) X. Yang, X. Li, K. Adair, H. Zhang, X. Sun, Electrochem. 
+Energy Rev. 2018, 1, 239.
+[2]	 a) A.  Manthiram, Y.  Fu, S.-H.  Chung, C.  Zu, Y.-S.  Su, Chem. 
+Rev. 2014, 114, 11751; b) C.  Huang, J.  Xiao, Y.  Shao, J.  Zheng, 
+W. D. Bennett, D. Lu, L. V. Saraf, M. Engelhard, L. Ji, J. Zhang, X. Li, 
+G. L. Graff, J. Liu, Nat. Commun. 2014, 5, 3015.
+[3]	 P. P. R. M. L. Harks, C. B. Robledo, T. W. Verhallen, P. H. L. Notten, 
+F. M. Mulder, Adv. Energy Mater. 2017, 7, 1601635.
+[4]	 a) R. G. Cao, W. Xu, D. P. Lv, J. Xiao, J. G. Zhang, Adv. Energy Mater. 
+2015, 5, 3059; b) D. Lin, Y. Liu, Y. Cui, Nat. Nanotechnol. 2017, 12, 
+194.
+[5]	 a) Q. Pang, X. Liang, C. Y. Kwok, L. F. Nazar, Nat. Energy 2016, 1, 
+16132; b) X. Yang, X. Gao, Q. Sun, S. P. Jand, Y. Yu, Y. Zhao, X. Li, 
+K. Adair, L. Y. Kuo, J. Rohrer, J. Liang, X. Lin, M. N. Banis, Y. Hu, 
+H. Zhang, X. Li, R. Li, H. Zhang, P. Kaghazchi, T.-K. Sham, X. Sun, 
+Adv. Mater. 2019, 31, 1901220.
+[6]	 X. Ji, K. T. Lee, L. F. Nazar, Nat. Mater. 2009, 8, 500.
+[7]	 S. Evers, L. F. Nazar, Acc. Chem. Res. 2013, 46, 1135.
+[8]	 a) B.  He, W. C.  Li, C.  Yang, S. Q.  Wang, A. H.  Lu, ACS Nano 
+2016, 10, 1633; b) Z. A.  Ghazi, L. Y.  Zhu, H.  Wang, A.  Naeem, 
+A. M. Khattak, B. Liang, N. A. Khan, Z. X. Wei, L. S. Li, Z. Y. Tang, 
+Adv. Energy Mater. 2016, 6, 1601250; c) J. X.  Song, M. L.  Gordin, 
+T.  Xu, S. R.  Chen, Z. X.  Yu, H.  Sohn, J.  Lu, Y.  Ren, Y. H.  Duan, 
+D. H. Wang, Angew. Chem., Int. Ed. 2015, 54, 4325.
+[9]	 a) S. Zhang, K. Ueno, K. Dokko, M. Watanabe, Adv. Energy Mater. 
+2015, 5, 1500117; b) G.-L. Xu, J. Liu, R. Amine, Z. Chen, K. Amine, 
+ACS Energy Lett. 2017, 2, 605; c) G.-L. Xu, T. Ma, C.-J. Sun, C. Luo, 
+L.  Cheng, Y.  Ren, S. M.  Heald, C.  Wang, L.  Curtiss, J.  Wen, 
+D. J. Miller, T. Li, X. Zuo, V. Petkov, Z. Chen, K. Amine, Nano Lett. 
+2016, 16, 2663.
+[10]	 J.  Qian, W. A.  Henderson, W.  Xu, P.  Bhattacharya, M.  Engelhard, 
+O. Borodin, J.-G. Zhang, Nat. Commun. 2015, 6, 6362.
+[11]	 S.  Hess, M.  Wohlfahrt-Mehrens, M.  Wachtler, J. Electrochem. Soc. 
+2015, 162, A3084.
+[12]	 H.  Pan, J.  Chen, R.  Cao, V.  Murugesan, N. N.  Rajput, K. S.  Han, 
+K. Persson, L. Estevez, M. H. Engelhard, J.-G. Zhang, K. T. Mueller, 
+Y. Cui, Y. Shao, J. Liu, Nat. Energy 2017, 2, 813.
+[13]	 H. Chu, H. Noh, Y.-J. Kim, S. Yuk, J.-H. Lee, J. Lee, H. Kwack, Y. Kim, 
+D.-K. Yang, H.-T. Kim, Nat. Commun. 2019, 10, 188.
+[14]	 a) Y.  Yamada, A.  Yamada, J. Electrochem. Soc. 2015, 162, A2406; 
+b) W.-J. Chen, B.-Q. Li, C.-X. Zhao, M. Zhao, T.-Q. Yuan, R.-C. Sun, 
+J.-Q. Huang, Q. Zhang, Angew. Chem., Int. Ed. 2020, 59, 2.
+[15]	 J. Zheng, J. A. Lochala, A. Kwok, Z. D. Deng, J. Xiao, Adv. Sci. 2017, 
+4, 1700032.
+[16]	 a) L. Suo, Y.-S. Hu, H. Li, M. Armand, L. Chen, Nat. Commun. 2013, 
+4, 1481; b) Y. Z. Zhang, S. Liu, G. C. Li, G. R. Li, X. P. Gao, J. Mater. 
+Chem. A 2014, 2, 4652.
+[17]	 Z. Feng, E. Sarnello, T. Li, L. Cheng, J. Electrochem. Soc. 2019, 166, 
+A47.
+[18]	 a) J.  Wang, Y.  Yamada, K.  Sodeyama, C. H.  Chiang, Y.  Tateyama, 
+A.  Yamada, Nat. Commun. 2016, 7, 12032; b) Q.  Pang, 
+A. Shyamsunder, B. Narayanan, C. Y. Kwok, L. A. Curtiss, L. F. Nazar, 
+Nat. Energy 2018, 3, 783.
+Adv. Energy Mater. 2020, 10, 2000901
+ 16146840, 2020, 25, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.202000901 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 12>>
+www.advenergymat.de
+www.advancedsciencenews.com
+2000901  (12 of 12)
+© 2020 UChicago Argonne, LLC, Operator of Argonne National Laboratory. 
+Published by WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim 
+[19]	 Z. Chen, H. H. Wang, D. R. Vissers, L. Zhang, R. West, L. J. Lyons, 
+K. Amine, J. Phys. Chem. C 2008, 112, 2210.
+[20]	 G.-L.  Xu, H.  Sun, C.  Luo, L.  Estevez, M.  Zhuang, H.  Gao, 
+R.  Amine, H.  Wang, X.  Zhang, C.-J.  Sun, Y.  Liu, Y.  Ren, 
+S. M. Heald, C. Wang, Z. Chen, K. Amine, Adv. Energy Mater. 2019, 
+9, 1802235.
+[21]	 H.  Yang, C.  Guo, J.  Chen, A.  Naveed, J.  Yang, Y.  Nuli, J.  Wang, 
+Angew. Chem., Int. Ed. 2019, 58, 791.
+[22]	 A.  Gupta, A.  Bhargav, A.  Manthiram, Adv. Energy Mater. 2019, 9, 
+1803096.
+[23]	 J.  Conder, R.  Bouchet, S.  Trabesinger, C.  Marino, L.  Gubler, 
+C. Villevieille, Nat. Energy 2017, 2, 17069.
+[24]	 X. Q. Zeng, G. L. Xu, Y. Li, X. Y. Luo, F. Maglia, C. Bauer, S. F. Lux, 
+O. Paschos, S. J. Kim, P. Lamp, J. Lu, K. Amine, Z. H. Chen, ACS 
+Appl. Mater. Interfaces 2016, 8, 3446.
+[25]	 Y.  Cui, A.  Abouimrane, J.  Lu, T.  Bolin, Y.  Ren, W.  Weng, C.  Sun, 
+V. A. Maroni, S. M. Heald, K. Amine, J. Am. Chem. Soc. 2013, 135, 
+8047.
+[26]	 a) S.  Bai, Y.  Sun, J.  Yi, Y.  He, Y.  Qiao, H.  Zhou, Joule 2018, 2, 
+2117; b) X.-B.  Cheng, C.  Yan, H.-J.  Peng, J.-Q.  Huang, S.-T.  Yang, 
+Q. Zhang, Energy Storage Mater. 2018, 10, 199.
+[27]	 J.  Alvarado, M. A.  Schroeder, T. P.  Pollard, X. F.  Wang, J. Z.  Lee, 
+M. H.  Zhang, T.  Wynn, M.  Ding, O.  Borodin, Y. S.  Meng, K.  Xu, 
+Energy Environ. Sci. 2019, 12, 780.
+[28]	 H. Kim, F. Wu, J. T. Lee, N. Nitta, H.-T. Lin, M. Oschatz, W. I. Cho, 
+S. Kaskel, O. Borodin, G. Yushin, Adv. Energy Mater. 2015, 5, 1401792.
+[29]	 A. K. Chan, R. Tatara, S. Feng, P. Karayaylali, J. Lopez, I. E. L. Stephens, 
+Y. Shao-Horn, J. Electrochem. Soc. 2019, 166, A1867.
+[30]	 L.  Estevez, R.  Dua, N.  Bhandari, A.  Ramanujapuram, P.  Wang, 
+E. P. Giannelis, Energy Environ. Sci. 2013, 6, 1785.
+[31]	 a) P. E.  Blöchl, Phys. Rev. B 1994, 50, 17953; b) G.  Kresse, 
+J. Furthmüller, Phys. Rev. B 1996, 54, 11169; c) G. Kresse, J. Hafner, 
+Phys. Rev. B 1993, 47, 558; d) J. P. Perdew, K. Burke, M. Ernzerhof, 
+Phys. Rev. Lett. 1996, 77, 3865.
+[32]	 S. Grimme, J. Antony, S. Ehrlich, H. Krieg, J. Chem. Phys. 2010, 132, 
+154104.
+Adv. Energy Mater. 2020, 10, 2000901
+ 16146840, 2020, 25, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.202000901 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

@@ -1,0 +1,54 @@
+{
+  "编号": "P296",
+  "电解液": {
+    "E1": {"名称": "0.5-SL", "配方": "LiTFSI:SL:HFE = 0.191:2.00:1.26（摩尔）"},
+    "E2": {"名称": "1.0-SL", "配方": "LiTFSI:SL:HFE = 0.381:2.00:1.26"},
+    "E3": {"名称": "1.5-SL", "配方": "LiTFSI:SL:HFE = 0.572:2.00:1.26"},
+    "E4": {"名称": "2.0-SL", "配方": "LiTFSI:SL:HFE = 0.762:2.00:1.26"},
+    "E5": {"名称": "2.5-SL", "配方": "LiTFSI:SL:HFE = 0.953:2.00:1.26"},
+    "E6": {"名称": "standard SL", "配方": "LiTFSI:SL:HFE = 1:2:2（摩尔）"}
+  },
+  "条件": {
+    "C1": {"正极": "AZC-S 微孔活性炭-硫（60% S；极片 89:5:3:3）", "硫载量": "3.0 mg cm-2", "硫含量": "复合物 60 wt%", "E/S": "", "电解液体积": "", "面积": "",
+           "锂厚": "", "N/P": "", "倍率": "0.1C（167.2 mA g-1）", "1C定义": "1672 mA g-1", "温度": "25 °C", "电池": "两电极电池",
+           "原句": "Charge-discharge tests of the Li-S batteries were carried out at a current density of 167.2 mA g¹1 (0.1 C) per sulfur weight in the voltage range of 1.0- 3.0 V (vs. Li/Li+)."}
+  },
+  "比较": [
+    {"A": "E3", "B": "E6", "条件": "C1", "层": "C", "改变因素": ["盐浓度", "稀释剂"],
+     "溶剂化依据": "Raman：TFSI- 峰 E3 与 E6 均为 745 cm-1（同一配位状态，同篇实验）",
+     "指标": [
+       {"指标": "首圈容量", "取值点": "第 1 圈（原文称 initial charge capacity）", "A": "1389", "B": "1233", "单位": "mAh g-1", "方向": "A更好", "来源": "正文",
+        "原句": "The initial charge capacity was 1511, 1448, 1389, 1289, 1295, and 1233 mAh g¹1 for the 0.5-, 1.0-, 1.5-, 2.0-, 2.5-, and standard SL electrolyte, respectively."},
+       {"指标": "循环保持率或寿命", "取值点": "50 圈（B 第 7 圈后快速衰减）", "A": "约 600 mAh g-1", "B": "第 7 圈后快速衰减", "单位": "", "方向": "A更好", "来源": "正文",
+        "原句": "The standard SL showed similar discharge capacities as the 1.0, 1.5, 2.0 and 2.5-SL electrolytes for the first few cycles, with a rapid capacity decay after seven cycles."}
+     ]},
+    {"A": "E1", "B": "E3", "条件": "C1", "层": "C", "改变因素": ["盐浓度"],
+     "溶剂化依据": "Raman：E1 742 cm-1、E3 745 cm-1（E1 自由溶剂更多）；隔膜照片：E1 多硫化物溶出明显（同篇实验）",
+     "指标": [
+       {"指标": "首圈容量", "取值点": "第 1 圈", "A": "1511", "B": "1389", "单位": "mAh g-1", "方向": "A更好", "来源": "正文",
+        "原句": "The initial charge capacity was 1511, 1448, 1389, 1289, 1295, and 1233 mAh g¹1 for the 0.5-, 1.0-, 1.5-, 2.0-, 2.5-, and standard SL electrolyte, respectively."},
+       {"指标": "指定圈数放电容量", "取值点": "第 2 圈", "A": "278", "B": "", "单位": "mAh g-1", "方向": "A更差", "来源": "正文（B 值只在图）",
+        "原句": "The 0.5-SL electrolyte exhibited the highest initial charge capacity, which rapidly decreased to 278 mAh g¹1 in the second cycle"}
+     ]},
+    {"A": "E2", "B": "E3", "条件": "C1", "层": "C", "改变因素": ["盐浓度"], "溶剂化依据": "Raman：E2 742、E3 745 cm-1",
+     "指标": [
+       {"指标": "首圈容量", "取值点": "第 1 圈", "A": "1448", "B": "1389", "单位": "mAh g-1", "方向": "差异小", "来源": "正文",
+        "原句": "The initial charge capacity was 1511, 1448, 1389, 1289, 1295, and 1233 mAh g¹1 for the 0.5-, 1.0-, 1.5-, 2.0-, 2.5-, and standard SL electrolyte, respectively."},
+       {"指标": "全电池库仑效率", "取值点": "50 圈平均", "A": "102", "B": "100", "单位": "%", "方向": "无法判断", "来源": "正文",
+        "原句": "The average coulombic eﬃcien- cies up to 50 cycles was 102, 100, 99.5, and 98.8 % for the 1.0-, 1.5-, 2.0-, and 2.5-SL electrolyte, respectively",
+        "备注": "A 的 CE >100%，作者解释为多硫化物溶出抑制不足"},
+       {"指标": "指定圈数放电容量", "取值点": "第 50 圈", "A": "约 600", "B": "约 600", "单位": "mAh g-1", "方向": "差异小", "来源": "正文",
+        "原句": "The 1.0-, 1.5-, 2.0-, and 2.5-SL electrolytes maintained a reversible capacity of approximately 600 mAh g¹1 after 50 cycles."}
+     ]},
+    {"A": "E5", "B": "E3", "条件": "C1", "层": "C", "改变因素": ["盐浓度"], "溶剂化依据": "Raman：E5 748、E3 745 cm-1（E5 离子缔合更强）",
+     "指标": [
+       {"指标": "首圈容量", "取值点": "第 1 圈", "A": "1295", "B": "1389", "单位": "mAh g-1", "方向": "A更差", "来源": "正文",
+        "原句": "The initial charge capacity was 1511, 1448, 1389, 1289, 1295, and 1233 mAh g¹1 for the 0.5-, 1.0-, 1.5-, 2.0-, 2.5-, and standard SL electrolyte, respectively."},
+       {"指标": "全电池库仑效率", "取值点": "50 圈平均", "A": "98.8", "B": "100", "单位": "%", "方向": "无法判断", "来源": "正文",
+        "原句": "The average coulombic eﬃcien- cies up to 50 cycles was 102, 100, 99.5, and 98.8 % for the 1.0-, 1.5-, 2.0-, and 2.5-SL electrolyte, respectively"},
+       {"指标": "指定圈数放电容量", "取值点": "第 50 圈", "A": "约 600", "B": "约 600", "单位": "mAh g-1", "方向": "差异小", "来源": "正文",
+        "原句": "The 1.0-, 1.5-, 2.0-, and 2.5-SL electrolytes maintained a reversible capacity of approximately 600 mAh g¹1 after 50 cycles."}
+     ]}
+  ],
+  "备注": "E1（最稀、溶出最多）首圈最高、第 2 圈即跌至 278：同一量随运行时间反转的直接证据。微孔碳正极走固相转化（无 2.2 V 平台）。电解液用量、锂厚未写。原文把首圈容量称 charge capacity，含义待核。"
+}

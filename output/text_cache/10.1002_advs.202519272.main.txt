@@ -1,0 +1,903 @@
+
+<<PAGE 1>>
+Advanced Science 
+www.advancedscience.com
+RESEARCH ARTICLE
+Unveiling a Stable Polysulfide Transport Framework in a 
+Fluorine-Free Li-S Batteries 
+Feng-Yu Wu1 
+Po-Wei Chi1 , 2 
+Phillip M. Wu1 
+Maw-Kuen Wu1 
+1 Institute of Physics, Academia Sinica, Taipei, Taiwan 
+2 Department of Mechanical Engineering, Chung Yuan Christian University, Taoyuan, Taiwan 
+Correspondence: Po-Wei Chi ( poweichi@gate.sinica.edu.tw; pwchi@cycu.edu.tw)
+Phillip M. Wu ( pmwu429@gate.sinica.edu.tw) 
+Received: 1 October 2025 
+Revised: 10 December 2025 
+Accepted: 17 December 2025 
+Keywords: dendrite-free | lithium sulfur batteries | self-assemble | sulfide solid state electrolyte | thiophosphate cathode 
+ABSTRACT 
+Lithium-sulfur batteries are limited by severe polysulfide shuttling, unstable lithium interfaces, and parasitic redox reactions, 
+which degrade cycle life and efficiency. These issues stem from the soluble nature of polysulfide intermediates and the poor 
+interfacial control in conventional electrolytes. Herein, we report a fluorine-free phosphate-based electrolyte that fundamentally 
+shifts the redox chemistry from the typical S8 -Li2 S pathway to a reversible Li3 PS4 -Li2 S mechanism. This in situ transformation 
+produces Li-rich thiophosphate phases that suppress polysulfide diffusion, alleviate cathode expansion, and promote solid-state- 
+like behavior. Spectroscopic and microscopic analyses revealed dynamic phase transitions within the Li-P-S complexes that drive 
+reversible conversion and sustained performance. As a result, the cells delivered a stable capacity of 765 mAh g− 1 over 200 cycles. 
+This work presents a fluorine-free electrolyte design that establishes a new class of solid-state-like Li-S redox chemistry, offering 
+a promising route toward durable, high-performance lithium-sulfur batteries. 
+1 
+Introduction 
+Li metal batteries are considered to be the most promising 
+electrochemical storage devices for high-energy-density storage 
+because of the extremely high specific capacity (3840 mAh g− 1 ) 
+and the lowest reduction potential ( − 3.04 V vs. standard hydrogen 
+electrode) [ 1 ]. When paired with sulfur-based cathodes, the result- 
+ing lithium-sulfur batteries (LSB) offer a high theoretical capacity 
+(1672 mAh g− 1 ), lightweight components, and low material cost. 
+However, practical deployment is hindered by several intrinsic 
+issues, including poor electrical and ionic conductivity, large 
+volume changes during cycling, and dissolution of polysulfide 
+intermediates (PS), which leads to active material loss and 
+interface degradation. To achieve suitable ionic conductivity, 
+highly conductive bis(trifluoromethanesulfonyl)imide (LiTFSI) 
+salts are widely used in liquid-electrolyte (LE) Li-S batteries. 
+While effective, LiTFSI is known to corrode aluminum current 
+collectors [ 2 ] and raises environmental concerns [ 3, 4 ], partic- 
+ularly in large-scale applications. More critically, LiTFSI-based 
+LEs promote the diffusion of polysulfides, which deposit as 
+insulating Li2 S on Li and significantly decrease cycling stability 
+[ 5–7 ]. Because of the strong solubility of long-chain polysulfides 
+in such systems, current strategies cannot completely prevent 
+sulfur transfer, especially under high sulfur loading, which is 
+required for practical applications [ 8, 9 ]. 
+Building on these long-standing challenges, recent studies have 
+shown that the solvation environment of LiTFSI-based ethers 
+fundamentally governs polysulfide dissolution, shuttle intensity, 
+and interfacial stability, reinforcing that conventional LE systems 
+intrinsically favor uncontrolled PS mobility [ 10 ]. In parallel, 
+radical-stabilization approaches demonstrate that electrolyte- 
+species coordination can dramatically alter the sulfur redox 
+sequence, highlighting the critical role of electrolyte chemistry 
+in directing reaction pathways [ 11 ]. These insights collectively 
+suggest that modifying polysulfide species represents an effec- 
+This is an open access article under the terms of the Creative Commons Attribution License, which permits use, distribution and reproduction in any medium, provided the original work is properly 
+cited. 
+© 2026 The Author(s). Advanced Science published by Wiley-VCH GmbH 
+Advanced Science , 2026; 13:e19272 
+https://doi.org/10.1002/advs.202519272
+1 of 12
+
+<<PAGE 2>>
+tive lever for suppressing shuttle and reshaping the conversion 
+mechanism. One practical implementation is the use of pre- 
+dissolved lithium polysulf ides (Li2 Sx ), which levels concentration 
+gradients at the cathode-electrolyte interface and simultaneously 
+supplies Li+ to the system. Xu et al. [ 12 ] demonstrated that 
+such configurations could deliver up to 1450 mAh g− 1 for 50 
+cycles. However, dissolved species easily passivate the lithium 
+surface and trigger parasitic reactions, resulting in long-term 
+instability [ 2 ]. Another related strategy uses P2 S5 -Li2 S additives 
+to generate a protective layer on the lithium anode, thereby 
+preventing undesirable interfacial reactions [ 13 ]. These Li-P-S 
+complexes react with lithium in situ to form a sulfide-based 
+solid interface with a low Young’s modulus ( ∼ 20 GPa), which 
+passivates the anode and improves interfacial stability [ 13–15 ]. 
+These thiophosphate additives appear to effectively moderate the 
+reactivity of the lithium anode in LE systems. However, most 
+studies do not mention the reaction of thiophosphate additives 
+with the sulfur cathode. In particular, sulfide-based solid-state 
+electrolytes usually have a relatively narrow electrochemical 
+window [ 14, 16 ], causing them to decompose simultaneously at 
+both the cathode and anode sides. Their redox products, which 
+overlap with Li-S potential, remain largely uncharacterized. 
+Existing density functional theory (DFT) studies focus mainly 
+on bulk solid frameworks (e.g., Li10 GeP2 S12 , Li7 P3 S11 , Li3 PS4 ) [ 17, 
+18 ], offering limited insight into dynamic interfacial processes in 
+liquid systems. 
+Several recent studies have described the reversible lithium thio- 
+phosphate decomposition process in all-solid-state LSBs. Since 
+Li-S and sulfide solid-state electrolyte redox (S/S2 − ) reactions 
+occur almost concurrently within the same potential window, 
+many studies point out that part of the overall capacity origi- 
+nates from the contribution of the reversible sulfide electrolyte 
+decomposition process after the initial cycle [ 19–21 ]. More 
+recently, Wang et al., demonstrated that integrating mixed ionic- 
+electronic conductors (MIECs) into high-sulfur-content cathodes 
+can extend electrochemically active sites beyond conventional 
+three-phase boundaries, thereby improving sulfur utilization 
+[ 22 ]. While this conduction-pathway broadening approach has 
+shown considerable promise, it still relies on substantial conduc- 
+tive additive content and does not directly address the intrinsic 
+sluggishness of the sulfur conversion reaction. In this context, the 
+present study introduces a complementary strategy, where an in 
+situ formed Li-P-S interphase participates directly in reversible 
+redox and phase transition processes. This chemically driven 
+activation not only promotes interfacial charge transfer and 
+accelerates Li2 S formation but also mitigates the accumulation 
+of electrochemically inactive sulfur, offering an alternative and 
+synergistic route to overcoming conversion-reaction limitations 
+in high-loading Li-S systems. 
+Herein, we report a novel Li-P-S-based LE design wherein the 
+cathode and anode are simple S/carbon-black/binder and Li 
+metal, respectively. Unlike conventional designs, this system 
+enables the in situ transformation of elemental sulfur into electro- 
+chemically active thiophosphate phases through cycling, thereby 
+reducing PS dissolution and alleviating interfacial stress at 
+the solid-liquid interface. Our comprehensive characterizations 
+revealed the formation of a homogeneous interfacial layer com- 
+posed of Li3 PS4 and Li7 P3 S11 across both electrodes, improving the 
+physical contact and lowering the resistance. Lithium symmetric 
+cells assembled with the in situ generated Li-P-S layer maintained 
+a low overpotential of 5 mV for over 1000 h. In coin cells with 
+4 mg cm− 2 sulfur loading, the capacity stabilized at ∼ 720 mAh g− 1 
+over the first 100 cycles, follow with a slight increase in the 
+later stages, reaching an average capacity of around 740 mAh g− 1 
+in 200 cycles period. The extended cycle results in Figure S1 
+show that after 400 cycles, the cell capacity has a slight decline 
+again and eventually stabilizes at about 660 mAh g− 1 . These 
+results demonstrate a unique self-reorganization mechanism for 
+sulfide species and provide a promising strategy for enhancing the 
+long-term stability of Li-S batteries. 
+2 
+Results and Discussion 
+Figure 1 compares the cycling performances and voltage profiles 
+of Li-S batteries with our designed Li-P-S electrolyte and the 
+conventional electrolyte (LiTFSI in DME-DOL) at 0.2C in the 
+potential range of 1.6–2.8 V. As shown in Figure 1a , both cells 
+exhibited an activation behavior at the initial stage of cycling. 
+The charging and discharging capacity gradually increased from 
+255 mAh g− 1 at the first cycle to 485 mAh g− 1 for LiTFSI cell 
+and from 789 to 816 mAh g− 1 for the Li-P-S cell, respectively. 
+A significant capacity drop was observed in the LiTFSI cell 
+starting from the 15th cycle, whereas the Li-P-S cell demonstrated 
+stable capacity retention over 200 cycles. The voltage profiles in 
+Figure 1b,c show that both cells exhibit two distinct plateaus in 
+charging and discharging. In LiTFSI cells, as previous reports 
+suggest [ 23 ], formation and dissolution of high-order PS (Li2 Sx , 
+where x = 4–8) at the higher voltage plateau (2.3–2.4 V), while 
+at the lower voltage plateau ( ∼ 2.1 V), further reduction of long- 
+chain PS to Li2 S2 and/or Li2 S occurs. For the case of the LiTFSI 
+cell, the shuttle effect can be inhibited in the early stage by the 
+addition of LiNO3 , which improves the coulombic efficiency at 
+the initial cycles. However, a rapid capacity fade was observed 
+once LiNO3 was depleted, leading to a pronounced capacity drop 
+beginning at the 15th cycle (Figure 1a ). This behavior indicates 
+an internal short circuit. On the other hand, excellent capacity 
+retention and a high sulfur utilization rate were achieved in 
+Li-P-S cells. Figure 1b,c show the constant current (CC) charg- 
+ing/discharging mode for LiTFSI and Li-P-S cell, respectively. 
+Under CC mode, the LiTFSI cell exhibits a gentle slope near 
+the end of the discharge curve, which represents the sluggish 
+Li2 S2 /Li2 S solid-state conversion. For Li-P-S cell, a sharp drop is 
+observed at the end of discharge, which suggests the presence of 
+a secondary phase transition. Moreover, Li-P-S cell has a higher 
+reaction plateau in the entire potential range, indicating that the 
+polarization barrier during the electrochemical reaction has been 
+significantly improved. This observation indirectly suggests that 
+the Li-P-S electrolyte exists not simply as a surface covering layer. 
+To gain insight into Li-ion transport behavior, electrochemical 
+impedance spectroscopy (EIS) was analyzed using the distribu- 
+tion of relaxation times (DRT) method at the 30th cycle (Figure S2 
+and Note S1 ) for both cells. In Figure 2 , the 2D mapping DRT 
+spectra of the two cells differ significantly. The discontinuous low- 
+frequency response at 2.3–2.7 V during the charge (Figure 2b,c ) 
+is likely attributed to the solid-liquid transition, where dissolved 
+PS oxidized and deposited onto the electrode [ 24 ]. As shown 
+in Figure 2c , the Li-P-S cell exhibits a distinct mid-frequency 
+response ( ∼ 100 Hz) during charge, absent in LiTFSI cells, 
+2 of 12
+Advanced Science, 2026
+ 21983844, 2026, 14, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.202519272 by Tsinghua University Library, Wiley Online Library on [22/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 3>>
+FIGURE 1 
+Electrochemical performance of Li-S cells with conventional LiTFSI and Li-P-S electrolytes. (a) Cycling performance of Li-S cells with 
+conventional LiTFSI electrolyte and Li-P-S electrolyte at 0.2C. (b) Voltage profiles of cells with LiTFSI and (c) Li-P-S electrolytes. 
+indicating the emergence of an intermediate phase with unique 
+ionic transport properties. This feature appears only above 2.5 V 
+and intensifies with cycling (Figure S3 ), suggesting progressive 
+formation of a self-constructed Li-conductive phase. Importantly, 
+the 2D DRT mappings collected at the 60th, 90th, and 120th 
+cycles (Figure S3 ) preserve the same characteristic mid-frequency 
+relaxation mode without the appearance of additional spectral 
+branches. The persistence of this DRT signature suggests that the 
+interfacial ion-transport pathway reaches a stable configuration 
+shortly after activation and remains mechanistically unaltered 
+throughout extended cycling. 
+By contrast, the discharge profiles of the two cells exhibit funda- 
+mentally different transport behaviors. In LiTFSI cells, once the 
+discharge voltage drops below 2 V, the mid-frequency response 
+(100 Hz) quickly shifts to lower frequencies (1 Hz), followed by 
+a steady, solid diffusion response at 0.1 Hz. This discrete shift is 
+typically associated with the charge transfer process of the sulfur 
+cathode and indicates the presence of two distinct Li storage 
+stages, each characterized by different charge transfer kinetics 
+[ 25, 26 ]. The subsequent formation of electrically insulating 
+Li2 S/Li2 S2 toward the end of discharge further impedes charge 
+transfer and alters the ion transport pathway [ 27 ]. Conversely, the 
+Li-P-S cell exhibits a continuous propagation of the interfacial 
+relaxation mode ( ∼ 10 Hz), reflecting a fundamentally different 
+ion-transport mechanism in which intermediate species remain 
+confined rather than engaging in parasitic shuttling. Unlike 
+the discrete phase transitions characteristic of conventional Li-S 
+reactions, the DRT analysis indicates that the Li-P-S configuration 
+redirects the reaction pathway and stabilizes the final prod- 
+ucts, markedly accelerating the evolution toward steady-state 
+conduction [ 28, 29 ]. 
+X-ray Photoemission Spectroscopy analysis was performed on 
+the cycled cathode of Li-P-S cell, focusing on the P 2p and S 
+2p regions. In Figure 3a , two doublets at 164.1 and 168.2 eV in 
+the pristine cathode correspond to elemental S and SOx [ 30 ]. 
+After charging to 2.8 V, these signals disappeared, replaced by 
+strong peaks at 161.2 and 163.5 eV assigned to PS4 
+3 − and P2 S7 
+4 − 
+species [ 31 ]. The P 2p spectrum (Figure 3d ) confirms these 
+species with corresponding doublets at 133.4 and 134.6 eV [ 32 ]. 
+These results suggest that elemental S is converted into Li3 PS4 or 
+Li7 P3 S11 phase during the first charge, as lithium thiophosphates 
+refill vacancies left by consumed sulfur. It is noted that the 
+Advanced Science, 2026
+3 of 12
+ 21983844, 2026, 14, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.202519272 by Tsinghua University Library, Wiley Online Library on [22/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 4>>
+FIGURE 2 
+Interfacial kinetics and reaction pathway evolution in Li-S cells using LiTFSI and Li-P-S electrolytes. (a) Reference cycling voltage 
+profiles of LiTFSI and Li-P-S cells. (b) DRT maps during the 30th cycle charge process for LiTFSI and (c) Li-P-S cells. (d) DRT maps during the 30th 
+cycle discharge process for LiTFSI and (e) Li-P-S cells. 
+FIGURE 3 
+XPS analysis of the sulfur cathode surface in Li-P-S cell. (a) S 2p and (b) P 2p spectra of the pristine sulfur cathode before cycling. (c) S 
+2p and (d) P 2p spectra of the sulfur cathode after 100 cycles. 
+4 of 12
+Advanced Science, 2026
+ 21983844, 2026, 14, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.202519272 by Tsinghua University Library, Wiley Online Library on [22/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 5>>
+signal of S never reappeared in the XPS spectrum, even for 
+cells fully recharged to over 2.8 V. Contrary to previous studies 
+[ 33 ], the self-constructed Li3 PS4 /Li7 P3 S11 does not decompose 
+back to S and P2 S5 in subsequent cycling. We attribute the 
+contrasting behavior of lithium thiophosphates in solid vs. liquid 
+systems to the high polysulfide concentration in Li-P-S cells. 
+As reported by Rauh et al. [ 34 ], the elemental S spontaneously 
+reduces to S2 − and integrates into PS clusters in solution. In 
+such an environment, elemental sulfur cannot remain stable, 
+explaining why Li3 PS4 /Li7 P3 S11 in Li-P-S cells do not oxidize back 
+to elemental sulfur. 
+For comparison, XPS spectra of P 2p and S 2p for the Li 
+counter electrode after activating cycle (Figure S4 ) showed 
+features similar to those of the sulfur cathode, suggesting the 
+formation of Li3 PS4 /Li7 P3 S11 on the Li surface. This suggests an 
+additional function of our electrolyte in suppressing dendrite 
+growth through the formation of structurally flexible and stable 
+thiophosphate during cycling [ 35 ]. To further validate the sta- 
+bility of this interphase, long-term plating/stripping tests were 
+conducted using symmetric Li/Li cells with Li-P-S electrolyte. 
+As shown in Figure S5a , the cell maintained a stable square- 
+w ave voltage profile for over 1000 h under 1 mA cm− 2 and 
+1 mA h cm− 2 . Only a slight increase in voltage hysteresis from 
+4 to 8 mV after 400 h (Figure S5b,c ) was observed, attributed to 
+the densification of the Li3 PS4 /Li7 P3 S11 interphase and reduced 
+electrolyte exposure. On the other hand, the absence of runaway 
+polarization or voltage drift over extended cycling suggests that 
+parasitic polysulfide redox processes are effectively mitigated, 
+further supporting that the thiophosphate interphase suppresses 
+shuttle-induced instability. In contrast, LiTFSI-based symmet- 
+ric cells exhibited a sharp overpotential growth, likely due to 
+dendritic growth and unstable SEI formation, consistent with 
+prior reports [ 36 ]. Nyquist plots before and after cycling (Figure 
+S5d ) further confirm the interfacial evolution and improved 
+impedance stability induced by thiophosphate formation. 
+Ex situ XRD and high-resolution TEM analyses were con- 
+ducted for activated Li-P-S cells (Figure 4 ). TEM cross-sections 
+(Figure 4a ) show that the cycled cathode develops a glassy matrix, 
+and the macropores present in the pristine sulfur-carbon layer 
+disappear after activation. To further examine the structural 
+evolution, cross-sectional SEM of the cathode at different cycling 
+stages (Figure S6 ) reveals a nonmonotonic thickness change. The 
+pristine electrode exhibits a thickness of ∼ 50–60 µm with a highly 
+porous morphology. After the 10th cycle, the composite layer 
+swells to nearly 100 µm, which can be attributed to electrolyte 
+uptake and the transient formation of Li2 Sx and Li3 PS4 /Li7 P3 S11 
+species within the porous framework. With continued cycling 
+to the 100th cycle, the overall thickness decreases to below 
+50 µm, and the structure becomes markedly denser, indicating the 
+collapse of internal voids and consolidation of the thiophosphate- 
+rich network. The XRD patterns (Figure 4d ) clearly show that 
+the sulfur cathode has gone through a process of phase reor- 
+ganization. The pristine sulfur cathode exhibited pure α-sulfur 
+peaks, but no sulfur-related diffraction was found after activation, 
+indicating that the elemental sulfur vanished after repeated 
+cycling. To identify the short-range order, a selected area electron 
+diffraction (SAED) test was performed. The activated cathode 
+presents an amorphous region mixed with crystalline micrograins 
+(Figure 4b ), and the SAED pattern (Figure 4c ) confirmed to 
+be β-Li3 PS4 phase. The difference between XRD and TEM can 
+be reasonably attributed to the ultra-fine granularity of Li3 PS4 
+(dgrain ∼ 10 nm). The crystallographic evidence supplements the 
+spectroscopic analysis mentioned earlier. 
+To further characterize the chemical structure, Raman scat- 
+tering was performed on pristine and fully activated cathodes 
+(Figure 4e,f ). For the pristine cathode, the Raman spectra were 
+in good agreement with XRD pattern. The intense peak at 470 
+cm− 1 with a minor shoulder at 465 cm− 1 represents the S-S bond 
+stretching of the S8 ring structure, and the broader 439 cm− 1 
+band corresponds to S-S stretching modes [ 37 ]. After activation, 
+the top curve in Figure 4e displays two distinct peak sets, one 
+corresponding to thiophosphate polyhedral species centered at 
+408 cm− 1 [ 38 ] and the other to PS species distributed across 
+450–500 cm− 1 region [ 39 ]. Deconvolution (Figure 4f ) reveals 
+PS4 
+3 − and P2 S7 
+4 − at 420 and 407 cm− 1 [ 40 ], and overlapping 
+short-chain, long-chain, and radical PS signals at 453, 465, and 
+495 cm− 1 [ 41 ]. These findings are consistent with the XPS results, 
+confirming that elemental sulfur is replaced by Li3 PS4 /Li7 P3 S11 in 
+high PS concentration cells. Importantly, Raman spectra provide 
+evidence of the coexistence of PS and Li3 PS4 /Li7 P3 S11 , which 
+confirms the hypothesis that lithium thiophosphate can be stable 
+in high-concentration PS cells. 
+Up to this point, our observations demonstrate that during the 
+initial charge, Li2 S is electrochemically oxidized and simultane- 
+ously reacts with the surrounding mP2 S5 -nLi2 Sx glass-ceramic 
+electrolyte to form Li3 PS4 and Li7 P3 S11 like environments at the 
+Li2 S/electrolyte interface. Due to the limited mass transfer dis- 
+tance within the cell, it is presumed that this interfacial reaction 
+only involves a narrow region around the electrode-electrolyte 
+interface. Furthermore, because the reaction is highly reversible, 
+the overall electrolyte concentration of the system does not have 
+a significant change within a few cycles. Structurally, this inter- 
+phase formation can be viewed as a local reorganization of the 
+thiophosphate network. The original glass-ceramic matrix con- 
+tains mixed coordination environments, including cross-linked 
+units such as P2 S7 
+4 − or P2 S6 
+4 − , together with PS4 
+3 − tetrahedra. 
+After the first charge, S consumption and the interfacial reaction 
+increase the fraction of PS4 
+3 − units and Li-rich thiophosphate 
+species characteristic of Li3 PS4 and Li7 P3 S11 . This tendency is 
+consistent with the stronger spectral features assigned to PS4 
+3 − in 
+the Raman/XPS results after activation (Figure 3 and Figure 4f ), 
+as well as the weak reflections corresponding to Li3 PS4 /Li7 P3 S11 
+observed in the ex situ TEM and XRD patterns (Figure 4c,d ). In 
+other words, the rate of this phase transition reaction may be 
+discontinuous. In the early stages of the cycle, the initially present 
+elemental sulfur is rapidly replaced by Li-P-S substances and 
+enters the LiPS-Li2 S reaction cycle. While after the early cycles, 
+this phase transition reaction will tend to reach a stable dynamic 
+equilibrium. The ionic transport behavior observed in the in situ 
+DRT further corroborates this interfacial reconstruction. Once 
+the Li-rich thiophosphate layer is formed, the 2D DRT mappings 
+collected at the 30th, 60th, 90th, and 120th cycles preserve the 
+same characteristic mid-frequency relaxation mode without the 
+appearance of additional features. The persistence of this spectral 
+signature indicates that the interfacial ion-transport pathway 
+rapidly reaches a stable configuration and remains mechanis- 
+tically unaltered during extended cycling. Such cycle-invariant 
+relaxation behavior is consistent with a self-limited evolution 
+Advanced Science, 2026
+5 of 12
+ 21983844, 2026, 14, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.202519272 by Tsinghua University Library, Wiley Online Library on [22/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 6>>
+FIGURE 4 
+Postcycling structural and compositional analysis of the sulfur cathode from the Li-P-S cell. (a) Cross-sectional TEM image showing 
+the dense, layered morphology of the cycled cathode on an Al current collector. (b) High-resolution TEM image revealing lattice fringes with interplanar 
+spacings of 5.12 and 3.95 Å, corresponding to the (210) and (211) planes of β-Li3 PS4 , respectively. (c) SAED pattern indexed to crystalline β-Li3 PS4 . (d) XRD 
+pattern of the cathode after cycling, confirming the phase transition from elemental sulfur to β-Li3 PS4 . (e) Raman spectrum of the activated cathode 
+showing the presence of thiophosphate and polysulfide species. (f) Deconvoluted Raman peaks at ∼ 406 and ∼ 465 cm− 1 , assigned to the vibrational 
+modes of P2 S7 4 − units and polysulfide chains, respectively. 
+of the Li3 PS4 /Li7 P3 S11 interphase, rather than a continuously 
+evolving interface. Beyond kinetic and structural stabilization, 
+this interfacial reconstruction also has profound implications for 
+cell safety [ 42 ]. Prior studies have shown that soluble high-order 
+polysulfides (e.g., Li2 S6 /Li2 S8 ) serve as major thermal initiators 
+in Li-S systems, driving parasitic redox at the Li surface and 
+accelerating cathode-originated runaway reactions [ 43, 44 ]. In 
+the Li-P-S configuration, sulfur species are not cycled through 
+a soluble reservoir but are immobilized within inorganic thio- 
+phosphate domains, eliminating the shuttle-mediated pathways 
+required to trigger these exothermic reactions. Mechanistically, 
+the glassy Li3 PS4 /Li7 P3 S11 interphase functions analogously to 
+thermoresponsive protective layers proposed for safe lithium- 
+metal operation, enabling uniform Li deposition and preventing 
+current-density amplification that typically leads to dendrite 
+growth [ 45–47 ]. This localized compositional change is beneficial 
+for both ion transport and cycling stability. Li3 PS4 and Li7 P3 S11 are 
+known to exhibit high Li+ conductivity; therefore, the formation 
+of a Li-rich thiophosphate interphase lowers the interfacial 
+resistance and facilitates Li+ exchange between Li2 S and the 
+bulk electrolyte, which further improved rate performance of 
+the Li-P-S cell (in comparison with the LiTFSI cell), as shown 
+in Figure S7 . Consistently, the interfacial resistance extracted 
+from EIS decreases after the first few cycles and then stabilizes, 
+indicating that the reconstructed interphase rapidly reaches a 
+new equilibrium and enables a reversible Li2 S conversion process. 
+To gain more insight into the kinetic behaviors of both cells, 
+the galvanostatic intermittent titration technique (GITT) analysis 
+was employed. As shown in Figure 5a,b , both LiTFSI and Li- 
+P-S cells were adopted for the GITT test after 30 activation 
+cycles (0.25 C rate for 5 min, followed by 60 min rest). The 
+LiTFSI cell displayed classic Li-S redox features but retained 
+only ∼ 120 mAh g− 1 in GITT cycles, which is about one-half of 
+its capacity in galvanostatic cycles ∼ 250 mAh g− 1 (Figure 1c ). 
+This clearly demonstrates the occurrence of polysulfide shuttling 
+during the long relaxation period, which ultimately leads to 
+severe self-discharge of common Li-S cells. As a comparison, 
+the Li-P-S cell exhibited well-defined voltage plateaus, higher 
+overall capacity, and significantly reduced relaxation-induced 
+polarization. These features indicate improved reaction kinetics 
+and more efficient sulfur utilization, as reflected in smoother 
+plateau evolution and lower Li-ion diffusion polarization. The 
+absence of severe relaxation decay further suggests suppressed 
+intermediate shuttling and a more direct conversion pathway 
+during charge-discharge. To clarify the relationship between 
+redox reactions at steady state, cyclic voltammetry (CV) tests were 
+performed (also after 30 cycles) on the LiTFSI and Li-P-S cell and 
+compared in Figure 5c . For the LiTFSI cell, starting from the open- 
+circuit voltage (OCV), a positive scan yielded one oxidative peak 
+(A1) accompanied by a high-voltage shoulder (A2) at 2.39 and 
+2.42 V, while the negative scanning showed two reductive peaks 
+(C1, C2) at 2.32 and 2.01 V, respectively. 
+6 of 12
+Advanced Science, 2026
+ 21983844, 2026, 14, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.202519272 by Tsinghua University Library, Wiley Online Library on [22/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 7>>
+FIGURE 5 
+Comparative electrochemical analysis of Li-S cells using LiTFSI and Li-P-S electrolytes. (a) GITT profiles after 30 activation cycles for 
+LiTFSI and (b) Li-P-S cells. (c) CV curves of both cells recorded after 30 cycles at a scan rate of 0.05 mV s− 1 . (d) Calculated Li+ diffusion coefficients 
+derived from the GITT data in (a) and (b) for LiTFSI and (e) Li-P-S. (f) Tafel plots fitted from CV-derived reduction peaks C1/C1# and (g) C2/C2# , and 
+oxidation peaks (h) A1 and (i) A1# . 
+The two-step reduction pair corresponds to the double plateau in 
+the GITT discharge curve, as shown in Figure 5a . The smaller C1 
+peak indicates the S to soluble PS [Li2 Sn (4 ≤ n ≤ 8)] reduction, 
+corresponding to the discharge plateau at 2.2–2.4 V and steep 
+slope in the 2.1–2.2 V range in the GITT test. The C2 cathodic peak 
+represents a process of short-chain PS to lithium sulfide (either 
+Li2 S2 or Li2 S) conversion, contributing two-thirds of overall cell 
+capacity (Figure S8 ) [ 33 ]. When it comes to Li-P-S cell, results 
+show the cathodic peaks in CV plot significantly shift to lower 
+potential (C1# : 2.26 V, C2# : 1.91 V) and anodic peaks (A1# : 2.40 V, 
+A2# : 2.59 V) to higher potentials. Except for the peak location. The 
+GITT and CV plots present an almost equal capacity distribution 
+for each reduction step (Figure S8 ). This behavior is similar to 
+profiles associated with sulfide electrolyte decomposition [ 21, 
+41, 48 ]. According to the computational predictions, complete 
+reduction of Li7 P3 S11 yields Li3 P and Li2 S2 [ 16, 17 ]. This redox 
+pathway produces a multi-step profile closely matching the CV 
+and GITT features observed in our Li-P-S cell. Tafel plots (Figure 
+S9 ) further reveal higher exchange current densities in the Li-P-S 
+system (8.64 and 3.82 mA cm− 2 for cathodic and anodic pro- 
+cesses, respectively), indicative of faster charge-transfer kinetics 
+and reduced interfacial resistance. Although the apparent Li+ 
+diffusion coefficient ( DLi + ) obtained from GITT (Figure 5g,h ; Note 
+S2 ) is lower in the Li-P-S cell, this reflects its distinct reaction 
+mechanism rather than slower kinetics. In LiTFSI electrolyte, 
+sulfur conversion proceeds through dissolved Li2 Sx intermediates 
+and is governed by bulk diffusion. By contrast, in the Li-P- 
+S system, sulfur is immobilized within a Li3 PS4 /Li7 P3 S11 -rich 
+interphase, causing the reaction to occur primarily at a solid–
+solid interface and suppressing long-range polysulfide transport. 
+Under such interfacial-dominated conditions, GITT captures 
+only local Li+ redistribution and therefore yields a lower apparent 
+DLi + [ 49–51 ]. This behavior aligns with the self-healing concept 
+reported by Xu et al. [ 12 ], where stabilization of polysulfides 
+near the cathode surface diminishes concentration gradients and 
+reduces the apparent diffusion coefficient despite faster overall 
+Advanced Science, 2026
+7 of 12
+ 21983844, 2026, 14, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.202519272 by Tsinghua University Library, Wiley Online Library on [22/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 8>>
+FIGURE 6 
+SEM images of the Li metal (left) and S cathode (right) surfaces after 100 cycles in the LiTFSI and Li-P-S cells. (a), (c), (e), and (g) 
+correspond to the LiTFSI cell; (b), (d), (f), and (h) correspond to the Li-P-S cell. 
+kinetics. A similar stabilization arises in the Li-P-S electrolyte: the 
+thiophosphate-rich interphase regulates polysulfide speciation 
+and minimizes bulk mass transport. Consequently, the lower 
+DLi + values are consistent with surface-controlled conversion 
+kinetics and correlate well with the smoother discharge plateaus, 
+reduced relaxation polarization, and cycle-invariant DRT fea- 
+tures. Nevertheless, the significantly enhanced redox reversibility 
+and charge-transfer kinetics, supported by Tafel and cycling data, 
+confirm that ionic diffusion is not rate-limiting. Instead, the 
+system operates via a surface-controlled conversion mechanism 
+governed by interfacial processes. Based on the galvanostatic and 
+the CV results, it is reasonable to assume that the original Li-S 
+nature is replaced by the Li7 P3 S11 redox reaction in Li-P-S cell. 
+To further quantify the kinetic characteristics of each redox 
+step, a separate set of Tafel analyses was performed to extract 
+apparent activation energies from the linear regions of log(i)- 
+V plots (Figure 5f–i ; see Note S3 and Figure S10 for details). 
+These values reflect the energy barriers for interfacial charge- 
+transfer reactions. Notably, the lower activation energies observed 
+in the Li-P-S cell, particularly during the late-discharge and early- 
+charge stages, are consistent with the persistent mid-frequency 
+features observed in the DRT spectra. This correlation suggests 
+that the redox behavior is governed by a modified interfacial 
+reaction pathway facilitated by the Li-P-S electrolyte, enabling 
+more accessible and reversible charge transfer. 
+As shown in Figure 6 , scanning electron microscopy (SEM) 
+observations reveal distinct electrode surface morphologies. For 
+the Li-P-S cell (Figure 6b,d,f,h ), the electrode surface is uniformly 
+coated with a thin film, and the interfacial boundary is observed 
+to advance progressively with continued galvanostatic cycling. 
+As discussed in previous sections, this self-constructing interface 
+plays a dominant role in shaping the electrochemical behavior 
+of the system. Specifically, surface defects and electrochemi- 
+cally active sites appear to be passivated by the formation of 
+Li3 PS4 /Li7 P3 S11 , thereby shielding the electrode from direct attack 
+by reactive polysulfide species. In contrast, the electrode from 
+the LiTFSI-based cell (Figure 6a,c,e,g ) exhibits rough, fragmented 
+surfaces, indicating structural degradation and correlating with 
+voltage fluctuations, possibly due to internal short circuits 
+(Figure S11 ). 
+3 
+Conclusions 
+Combining all the evidence, the results of spectroscopy, crystal- 
+lography, and real-time electrochemistry, all point to a conclusion 
+different from most of the Li-S cells reported, which actually 
+inspired the idea explored in this work. Based on our obser- 
+vations, herein, we propose a process of an in situ conversion 
+from pristine sulfur to glassy/or polycrystalline Li3 PS4 /Li7 P3 S11 
+phase, supported by the crystallographic and Raman analysis. As 
+illustrated in Figure 7 , by assembling an S-C composite cathode 
+into a Li-P-S electrolyte, sulfur is spontaneously reduced by the 
+Lewis bases of PS and Li-P-S clusters, generating Li2 S or lithium 
+thiophosphate on the electrode surface. The subsequent first 
+charging oxidizes Li2 S and lithium thiophosphate into metastable 
+Li3 PS4 /Li7 P3 S11 , enabling the cell into the subsequent cycling 
+route. 
+In summary, this study developed a fluorine-free Li-P-S LE system 
+and explored how the coordination of phosphorus pentasulfide 
+and PS replaces the well-known Li-S nature. More than just 
+a functional interface, the Li-P-S plating layer is to provide 
+a stable capacity source for the entire electrochemical system 
+and even replace the original Li-S redox reaction after multiple 
+cycles. A novel modified redox pathway shifts the traditional S8 - 
+Li2 S reaction toward reversible Li3 PS4 -Li2 S conversion, enabling 
+controllable thiophosphate phase transformation and providing 
+8 of 12
+Advanced Science, 2026
+ 21983844, 2026, 14, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.202519272 by Tsinghua University Library, Wiley Online Library on [22/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 9>>
+FIGURE 7 
+Proposed interfacial reaction mechanism in the Li-P-S cell during initial and subsequent cycling. Schematic illustration of the in situ 
+formation and evolution of Li3 PS4 /Li7 P3 S11 at the cathode-electrolyte interface during the initial and repeated charge-discharge cycles. 
+a powerful solution to the persistent challenges of polysulfide 
+shuttling and lithium dendrite formation. Ultimately, this study 
+not only paves the way for the development of high-energy and 
+long-lasting Li-S systems but also providing a new sight into the 
+idea for the reversibility of sulfide solid electrolytes. 
+4 
+Experimental Section/Methods 
+4.1 
+Preparation of Lithium Polysulfides 
+Lithium polysulfides, Li2 Sx (5 ≤ x ≤ 8), were prepared by stirring 
+stoichiometric Li2 S and S powders ( > 99% trace metals basis, 
+Sigma-Aldrich) in the mixtures of DME ( ≥ 98%, Sigma-Aldrich), 
+DOL ( ≥ 99%, Sigma-Aldrich) solvent in 1:1 (v/v) ratio at 70◦C for 
+12 h in an Argon-filled glovebox (O2 < 0.2 ppm, H2 O < 0.1 ppm, 
+vigor USA) 
+4.2 
+Preparation of Lithium Thiophosphate 
+Complexes 
+To prepare lithium thiophosphate (mP2 S5 -nLi2 Sx ) complexes in 
+DME and DOL mixed solution, a controlled amount of P2 S5 
+( ≥ 99%, Sigma–Aldrich) was added to the as-prepared Li2 Sx 
+solutions, such that the mixture fell within the phase-stable molar 
+ratio window of 1:1 to 1:3. The solution was then stirred at 70◦C for 
+5 h. The characteristic light yellow to dark red appearance of the 
+complexes was observed after stirring. 
+4.3 
+Preparation of LiPS-Based Electrolyte 
+mP2 S5 -nLi2 Sx complexes, and/or, Li2 Sx solution were added into 
+DME, DOL solvent (DME:DOL = 1:1 (v, v)) as electrolytes. The 
+P2 S5 concentrations were kept at 0.75 M in all electrolyte solutions 
+as the baseline. Lithium thiophosphate complexes in the mixture 
+of DOL with other glyme-based solvents can be prepared in a 
+similar method. 
+4.4 
+Preparation of Blank Electrolyte Solutions 
+1.0 M LiTFSI (99.95% trace metals basis, Sigma-Aldrich), and 
+3 wt.% LiNO3 (99.99% trace metals basis, Sigma-Aldrich) powder 
+were dissolved into the as-prepared DME and DOL mixture 
+solution (1:1 (v/v)) and stirred at room temperature in a glove box 
+for 3 h. 
+4.5 
+Sulfur Cathode Preparation 
+To fabricate the sulfur cathode, 70 wt.% of Sulfur powder ( ≥ 99.0%, 
+Sigma-Aldrich) was dry mixed with 20 wt.% of super P carbon 
+Advanced Science, 2026
+9 of 12
+ 21983844, 2026, 14, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.202519272 by Tsinghua University Library, Wiley Online Library on [22/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 10>>
+black (Denka, 50% compressed) and 10 wt.% of pectin (pectin 
+from apple, Sigma-Aldrich) powder, followed by dispersing in DI 
+water of 1700 rpm at ambient environment for slurry fabricating. 
+After 3 h stirring, and process by casting, drying, and rolling, the 
+cathode pieces were punched into 14 mm discs and ready for coin 
+cell assembling. 
+4.6 
+Coin Cell Assembly 
+CR2032-type coin cells (Ubiq Co., Taiwan) were assembled in 
+an argon-filled glove box (Vigor, USA, H2 O/O2 < 0.1 ppm). The 
+sulfur cathode discs were pre-dried at 120◦C under vacuum for 
+12 h prior to cell construction. Lithium-metal foils (Ø15.8 mm) 
+and separators (Asahi, Japan) were pre-wetted with electrolyte 
+( ∼ 25 µL absorbed) to ensure uniform ionic contact. Cells using the 
+LiTFSI-based electrolyte are referred to as LiTFSI cells, whereas 
+cells using the polysulfide-rich electrolyte are denoted as Li-P- 
+S cells. The electrolyte dosage was standardized based on the 
+electrolyte-to-sulfur ratio (E/S). Both LiTFSI and Li-P-S cells were 
+assembled using 8.5 µL of electrolyte per 1 mg of sulfur (E/S = 
+8.5 µL mg− 1 ), ensuring a direct comparison without electrolyte 
+starvation or flooding. The areal sulfur loading of the cathode was 
+maintained between 4.2 and 4.5 mg cm− 2 . 
+4.7 
+Material Characterization 
+The structure of the cathode was characterized by powder X- 
+ray diffraction (XRD, Rigaku, Japan) with Cu K α radiation in 
+the 2 θ range of 10◦–80◦. The morphology of the samples was 
+observed by a field emission analysis electron microscope (FEI 
+Inspect-F SEM). The surface state of the lithium anode and 
+sulfur cathode, which after cycling was determined by hard X- 
+ray photoelectron spectroscopy XPS using ULVAC-PHI (Quantes) 
+with Al K α radiation, and data are averaged from ten cells. 
+Microstructure and phase determination were performed using 
+a high-resolution transmission electron microscope (TEM, JEOL, 
+JEM-2100F). To protect the surface layer from damage during 
+sample preparation and later observation, the ex-situ specimens 
+were sputtered with a 10 nm platinum layer by electron beam 
+and subsequently cut by SEIKO SMI3050SE Dual-Beam focused 
+ion-beam milling before the TEM test. 
+Author Contributions 
+F.Y.Wu, P.W. Chi, P.M. Wu, and M.K. Wu conceptualized the study, 
+developed the research framework, and conducted the final review of 
+the manuscript. F.Y. Wu and P.W. Chi performed the experiments, and 
+all authors analyzed the data. The manuscript and figures were prepared 
+collaboratively by F.Y. Wu, P.W. Chi, P.M. Wu, and M.K. Wu. All authors 
+have reviewed and revised the manuscript thoroughly. 
+Acknowledgements 
+The authors greatly appreciate the financial support from the Executive 
+Yuan through its Forward-Looking Research Grant Number AS-FLI-110- 
+LI and the National Science and Technology Council of Taiwan (NSTC 
+113-2112-M-001-046). Phillip M. Wu acknowledges the support from the 
+“Innovative Center on Sustainable Negative-Carbon Resources” from the 
+Featured Areas Research Center Program within the framework of the 
+Higher Education Sprout Project by the Ministry of Education (MOE) in 
+Taiwan. 
+Conflicts of Interest 
+The authors declare no conflicts of interest. 
+Data Availability Statement 
+The data that support the findings of this study are available in the 
+supplementary material of this article. 
+References 
+1 . M. D. Tikekar, S. Choudhury, Z. Tu, and L. A. Archer, “Design Prin- 
+ciples for Electrolytes and Interfaces for Stable Lithium-metal Batteries,”
+Nature Energy 1 (2016): 16114, https://doi.org/10.1038/nenergy.2016.114 . 
+2 . C.-L. Li, S.-W. Zeng, P. Wang, et al., “Mechanism of Aluminum Corro- 
+sion in LiFSI-based Electrolyte at Elevated Temperatures,” Transactions 
+of Nonferrous Metals Society of China 31 (2021): 1439–1451, https://doi.org/ 
+10.1016/S1003-6326(21)65588-7 . 
+3 . J. L. Guelfo, P. L. Ferguson, J. Beck, et al., “Lithium-ion Battery 
+Components Are at the Nexus of Sustainable Energy and Environmental 
+Release of per- and Polyfluoroalkyl Substances,” Nature Communications 
+15 (2024): 5548, https://doi.org/10.1038/s41467-024-49753-5 . 
+4 . S. E. Fenton, A. Ducatman, A. Boobis, et al., “Per- and Polyfluoroalkyl 
+Substance Toxicity and Human Health Review: Current State of Knowl- 
+edge and Strategies for Informing Future Research,” Environmental 
+Toxicology and Chemistry 40 (2021): 606–630, https://doi.org/10.1002/etc. 
+4890 . 
+5 . S. S. Zhang, “Liquid Electrolyte Lithium/Sulfur Battery: Fundamental 
+Chemistry, Problems, and Solutions,” Journal of Power Sources 231 (2013): 
+153–162, https://doi.org/10.1016/j.jpowsour.2012.12.102 . 
+6 . A. Kamyshny, M. Zilberbrand, I. Ekeltchik, T. Voitsekovski, J. Gun, 
+and O. Lev, “Speciation of Polysulfides and Zerovalent Sulfur in Sulfide- 
+rich Water Wells in Southern and Central Israel,” Aquatic Geochemistry 
+14 (2008): 171–192, https://doi.org/10.1007/s10498- 008- 9031- 6 . 
+7 . J. Gao, M. A. Lowe, Y. Kiya, and H. D. Abruña, “Effects of Liquid 
+Electrolytes on the Charge–Discharge Performance of Rechargeable 
+Lithium/Sulfur Batteries: Electrochemical and in-Situ X-ray Absorption 
+Spectroscopic Studies,” The Journal of Physical Chemistry C 115 (2011): 
+25132–25137, https://doi.org/10.1021/jp207714c . 
+8 . X.-B. Cheng, C. Yan, J.-Q. Huang, et al., “The Gap between Long 
+Lifespan Li-S Coin and Pouch Cells: The Importance of Lithium Metal 
+Anode Protection,” Energy Storage Materials 6 (2017): 18–25, https://doi. 
+org/10.1016/j.ensm.2016.09.003 . 
+9 . A. Rosenman, E. Markevich, G. Salitra, D. Aurbach, A. Garsuch, 
+and F. F. Chesneau, “Review on Li-Sulfur Battery Systems: an Integral 
+Perspective,” Advanced Energy Materials 5 (2015): 1500212, https://doi. 
+org/10.1002/aenm.201500212 . 
+10 . N. L. Grotkopp, M. Horst, and G. Garnweitner, “Effect of Ether 
+Medium in LiTFSI and LiFSI-Based Liquid Electrolytes for Lithium–
+sulfur Batteries,” Battery Energy 3 (2024): 20240002, https://doi.org/10. 
+1002/bte2.20240002 . 
+11 . X. Song, C. Wang, Z. Shen, et al., “Solvated Metal Complexes for 
+Balancing Stability and Activity of Sulfur Free Radicals,” eScience 4 (2024): 
+100225. 
+12 . R. Xu, I. Belharouak, J. C. M. Li, X. Zhang, I. Bloom, and J. 
+Bareño, “Role of Polysulfides in Self-Healing Lithium–Sulfur Batteries,”
+Advanced Energy Materials 3 (2013): 833–838, https://doi.org/10.1002/ 
+aenm.201200990 . 
+13 . Q. Pang, X. Liang, A. Shyamsundar, and L. F. Nazar, “An in Vivo 
+Formed Solid Electrolyte Surface Layer Enables Stable Plating of Li 
+Metal,” Joule 1 (2017): 871–886. 
+10 of 12
+Advanced Science, 2026
+ 21983844, 2026, 14, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.202519272 by Tsinghua University Library, Wiley Online Library on [22/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 11>>
+14 . Y. Zhu, X. He, and Y. Mo, “Origin of Outstanding Stability in 
+the Lithium Solid Electrolyte Materials: Insights from Thermodynamic 
+Analyses Based on First-Principles Calculations,” ACS Applied Materials 
+& Interfaces 7 (2015): 23685–23693, https://doi.org/10.1021/acsami.5b07517 . 
+15 . A. Sakuda, A. Hayashi, Y. Takigawa, K. Higashi, and M. 
+Tatsumisago, “Evaluation of Elastic Modulus of Li < Sub > 2 < /Sub > S–
+P < Sub > 2 < /Sub > S < Sub > 5 < /Sub > 
+Glassy 
+Solid 
+Electrolyte 
+by 
+Ultrasonic Sound Velocity Measurement and Compression Test,”
+Journal of the Ceramic Society of Japan 121 (2013): 946–949, 
+https://doi.org/10.2109/jcersj2.121.946 . 
+16 . D. H. S. Tan, E. A. Wu, H. Nguyen, et al., “Elucidating Reversible 
+Electrochemical Redox of Li 6 PS 5 Cl Solid Electrolyte,” ACS Energy 
+Letters 4 (2019): 2418–2427, https://doi.org/10.1021/acsenergylett.9b01693 . 
+17 . Y. Zhu, X. He, and Y. Mo, “Origin of Outstanding Stability in 
+the Lithium Solid Electrolyte Materials: Insights from Thermodynamic 
+Analyses Based on First-Principles Calculations,” ACS Applied Materials 
+& Interfaces 7, no. 42 (2015): 23685–23693, https://doi.org/10.1021/acsami. 
+5b07517 . 
+18 . W. D. Richards, L. J. Miara, Y. Wang, J. C. Kim, and G. Ceder, “Interface 
+Stability in Solid-State Batteries,” Chemistry of Materials 28, no. 1 (2016): 
+266–273, https://doi.org/10.1021/acs.chemmater.5b04082 . 
+19 . S. Wang, Y. Zhang, X. Zhang, et al., “High-Conductivity Argyrodite Li 
+6 PS 5 Cl Solid Electrolytes Prepared via Optimized Sintering Processes 
+for all-Solid-State Lithium–Sulfur Batteries,” ACS Applied Materials & 
+Interfaces 10 (2018): 42279–42285, https://doi.org/10.1021/acsami.8b15121 . 
+20 . K. Suzuki, N. Mashimo, Y. Ikeda, T. Yokoi, M. Hirayama, and R. 
+Kanno, “High Cycle Capability of all-Solid-State Lithium–Sulfur Batteries 
+Using Composite Electrodes by Liquid-Phase and Mechanical Mixing,”
+ACS Applied Energy Materials Interfaces 1, no. 6 (2018): 2373–2377. 
+21 . F. Han, T. Gao, Y. Zhu, K. J. Gaskell, and C. Wang, “A Battery Made 
+from a Single Material,” Advanced Materials 27 (2015): 3473–3483, https:// 
+doi.org/10.1002/adma.201500180 . 
+22 . D. Wang, B. Gwalani, D. Wierzbicki, et al., “Over coming the Con- 
+version Reaction Limitation at Three-phase Interfaces Using Mixed 
+Conductors towards Energy-dense Solid-state Li–S Batteries,” Nature 
+Materials 24 (2025): 243–251, https://doi.org/10.1038/s41563-024-02057-x. 
+23 . K. Kumaresan, Y. Mikhaylik, and R. E. White, “A Mathematical Model 
+for a Lithium–Sulfur Cell,” Journal of The Electrochemical Society 155 
+(2008): A576, https://doi.org/10.1149/1.2937304 . 
+24 . R. Soni, J. B. Robinson, P. R. Shearing, D. J. L. Brett, A. J. E. Rettie, and 
+T. S. Miller, “Lithium-sulfur Battery Diagnostics through Distribution of 
+Relaxation Times Analysis,” Energy Storage Materials 51 (2022): 97–107, 
+https://doi.org/10.1016/j.ensm.2022.06.016 . 
+25 . X. Li, J. Liang, J. T. Kim, et al., “Highly Stable Halide-Electrolyte-Based 
+all-Solid-State Li–Se Batteries,” Advanced Materials 34 (2022): 2200856, 
+https://doi.org/10.1002/adma.202200856 . 
+26 . J. Gu, W. Hu, Y. Wu, et al., “Asymmetric Sulfur Redox Paths in Sulfide- 
+Based All-Solid-State Lithium–Sulfur Batteries,” Chemistry of Materials 
+36 (2024): 4403–4416, https://doi.org/10.1021/acs.chemmater.3c03317 . 
+27 . P.-E. Lo and C.-C. Li, “Separation of Cathode and Anode Impedances 
+for Analyzing Polysulfide Conversion in Li-S Batteries with a Hierarchical 
+Porous Carbon Host,” Electrochimica Acta 521 (2025): 145921, https://doi. 
+org/10.1016/j.electacta.2025.145921 . 
+28 . H. S. Sen and B. Karasulu, “Atomic-level Insights into the Highly 
+Conductive Lithium Thio-phosphate Solid Electrolytes with Exceptional 
+Stability against Lithium Metal,” Journal of Materials Chemistry A 13 
+(2025): 19878–19895, https://doi.org/10.1039/D5TA00585J . 
+29 . J.-T. Liang and H.-E. Lin, “Unveiling the Corrosion Mechanism of 
+the Ni X Se y Intermetallic Compound in Water-Based Solution,” ACS 
+Applied Materials & Interfaces 16 (2024): 68247–68261, https://doi.org/10. 
+1021/acsami.4c13794 . 
+30 . D. Aurbach, E. Pollak, R. Elazari, G. Salitra, C. S. Kelley, and J. 
+Affinito, “On the Surface Chemical Aspects of Very High Energy Density, 
+Rechargeable Li–Sulfur Batteries,” Journal of The Electrochemical Society 
+156 (2009): A694, https://doi.org/10.1149/1.3148721 . 
+31 . Y. Zhang, K. Chen, Y. Shen, Y. Lin, and C.-W. Nan, “Synergistic Effect 
+of Processing and Composition X on Conductivity of xLi2S-(100 − x)P2S5 
+Electrolytes,” Solid State Ionics 305 (2017), 1–6, https://doi.org/10.1016/j. 
+ssi.2017.03.024 . 
+32 . C. Dietrich, R. Koerver, M. W. Gaultois, et al., “Spectroscopic Char- 
+acterization of Lithium Thiophosphates by XPS and XAS—A Model to 
+Help Monitor Interfacial Reactions in all-solid-state Batteries,” Physical 
+Chemistry Chemical Physics 20 (2018): 20088–20095, https://doi.org/10. 
+1039/C8CP01968A . 
+33 . H. Shi, W. Sun, J. Cao, et al., “Challenges and Solutions for Lithium–
+Sulfur Batteries with Lean Electrolyte,” Advanced Functional Materials 33 
+(2023): 2306933, https://doi.org/10.1002/adfm.202306933 . 
+34 . R. D. Rauh, F. S. Shuker, J. M. Marston, and S. B. Brummer, “For- 
+mation of Lithium Polysulfides in Aprotic media,” Journal of Inorganic 
+and Nuclear Chemistry 39 (1977): 1761–1766, https://doi.org/10.1016/0022- 
+1902(77)80198-X . 
+35 . J. Liang, X. Li, Y. Zhao, et al., “In Situ Li 3 PS 4 Solid-State Electrolyte 
+Protection Layers for Superior Long-Life and High-Rate Lithium-Metal 
+Anodes,” Advanced Materials 30 (2018): 1804684, https://doi.org/10.1002/ 
+adma.201804684 . 
+36 . Y. S. Cohen, Y. Cohen, and D. Aurbach, “Micromorphological Studies 
+of Lithium Electrodes in Alkyl Carbonate Solutions Using in Situ Atomic 
+Force Microscopy,” The Journal of Physical Chemistry B 104, 12282–12291 
+(2000). 
+37 . C. Nims, B. Cron, M. Wetherington, J. Macalady, and J. Cosmidis, 
+“Low Frequency Raman Spectroscopy for Micron-scale and in 
+Vivo Characterization of Elemental Sulfur in Microbial Samples,”
+Scientific Reports 9 (2019): 7971, https://doi.org/10.1038/s41598-019- 
+44353-6 . 
+38 . A. Miura, N. C. Rosero-Navarro, A. Sakuda, et al., “Liquid-phase Syn- 
+theses of Sulfide Electrolytes for all-solid-state Lithium Battery,” Nature 
+Reviews Chemistry 3 (2019): 189–198, https://doi.org/10.1038/s41570-019- 
+0078-2 . 
+39 . J. Hannauer, J. Scheers, J. Fullenwarth, B. Fraisse, L. Stievano, and 
+P. Johansson, “The Quest for Polysulfides in Lithium–Sulfur Battery 
+Electrolytes: an Operando Confocal Raman Spectroscopy Study,”
+Chemphyschem 16 (2015): 2755–2759, https://doi.org/10.1002/cphc. 
+201500448 . 
+40 . T. P. Poudel, M. J. Deck, P. Wang, and Y.-Y. Hu, “Transforming Li 3 
+PS 4 via Halide Incorporation: a Path to Improved Ionic Conductivity and 
+Stability in all-Solid-State Batteries,” Advanced Functional Materials 34 
+(2024): 2309656, https://doi.org/10.1002/adfm.202309656 . 
+41 . K. Wissel, L. M. Riegger, C. Schneider, et al., “Dissolution and 
+Recrystallization Behavior of Li3PS4 in Different Organic Solvents with 
+a Focus on n-methylformamide,” ACS Applied Energy Materials 6 (2023): 
+7790–7802, https://doi.org/10.1021/acsaem.2c03278 . 
+42 . H.-J. Xiong, C.-W. Zhu, D.-R. Deng, and Q.-H. Wu, “Metal Nitrides as 
+Cathode Hosts for Lithium-Sulfur Batteries,” Journal of Electrochemistry 
+31 (2025): 2407061, https://doi.org/10.61558/2993-074X.3489 . 
+43 . L. Huang, T. Lu, G. Xu, et al., “Thermal Runaway Routes of Large- 
+format Lithium-sulfur Pouch Cell Batteries,” Joule 6 (2022): 906–922, 
+https://doi.org/10.1016/j.joule.2022.02.015 . 
+44 . F.-N. Jiang, S.-J. Yang, Z.-X. Chen, et al., “Higher-order Polysulfides 
+Induced Thermal Runaway for 1.0 Ah Lithium Sulfur Pouch Cells,”
+Particuology 79 (2023): 10–17, https://doi.org/10.1016/j.partic.2022.11.009 . 
+45 . F. Jiang, Y.-F. Du, J.-X. Guo, et al., “Thermoresponsive Solid Elec- 
+trolyte Interphase Enables Safe Lithium–sulfur Batteries with High 
+Energy Density,” Energy & Environmental Science 18 (2025): 4925–4933, 
+https://doi.org/10.1039/D5EE00412H . 
+46 . J.-X. Guo, C. Gao, Y.-F. Du, et al., “Thermoresponsive Mono-Solvent 
+Electrolyte Inhibiting Parasitic Reactions for Safe Lithium Metal Batter- 
+Advanced Science, 2026
+11 of 12
+ 21983844, 2026, 14, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.202519272 by Tsinghua University Library, Wiley Online Library on [22/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 12>>
+ies,” Advanced Energy Materials 15 (2025): 2500703, https://doi.org/10. 
+1002/aenm.202500703 . 
+47 . X. Huang, J. Xue, M. Xiao, et al., “Comprehensive Evaluation of Safety 
+Performance and Failure Mechanism Analysis for Lithium Sulfur Pouch 
+Cells,” Energy Storage Materials 30 (2020): 87–97, https://doi.org/10.1016/ 
+j.ensm.2020.04.035 . 
+48 . T. Hakari, M. Deguchi, K. Mitsuhara, et al., “Structural and Electronic- 
+State Changes of a Sulfide Solid Electrolyte during the Li Deinsertion–
+Insertion Processes,” Chemistry of Materials 29 (2017): 4768–4774, https:// 
+doi.org/10.1021/acs.chemmater.7b00551 . 
+49 . A. Hayashi, T. Ohtomo, F. Mizuno, K. Tadanaga, and M. Tatsumisago, 
+“Rechargeable Lithium Batteries, Using Sulfur-based Cathode Materi- 
+als and Li2S–P2S5 Glass-ceramic Electrolytes,” Electrochimica Acta 50 
+(2004): 893–897, https://doi.org/10.1016/j.electacta.2004.02.061 . 
+50 . S. Wenzel, T. Leichtweiss, D. Kruger, J. Sann, and J. Janek, “Interphase 
+Formation on Lithium Solid Electrolytes—An in Situ Approach to Study 
+Interfacial Reactions by Photoelectron Spectroscopy,” Solid State Ionics 
+278 (2015): 98–105. 
+51 . W. Weppner and R. A. Huggins, “Determination of the Kinetic 
+Parameters of Mixed-Conducting Electrodes and Application to the 
+System Li3Sb,” Journal of The Electrochemical Society 124 (1977): 1569, 
+https://doi.org/10.1149/1.2133112 . 
+Supporting Information 
+Additional supporting information can be found online in the Supporting 
+Information section. 
+Supporting File: advs73584-sup-0001-SuppMat.docx. 
+12 of 12
+Advanced Science, 2026
+ 21983844, 2026, 14, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.202519272 by Tsinghua University Library, Wiley Online Library on [22/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

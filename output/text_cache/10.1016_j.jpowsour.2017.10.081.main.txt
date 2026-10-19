@@ -1,0 +1,1799 @@
+
+<<PAGE 1>>
+Contents lists available at ScienceDirect
+Journal of Power Sources
+journal homepage: www.elsevier.com/locate/jpowsour
+Molecular simulations of electrolyte structure and dynamics in
+lithium–sulfur battery solvents
+Chanbum Parka,b, Matej Kanduča, Richard Chudobaa,b, Arne Ronneburga,b, Sebastian Rissea,
+Matthias Ballauﬀa,b, Joachim Dzubiellaa,b,∗
+a Institut für Weiche Materie und Funktionale Materialien, Helmholtz-Zentrum Berlin für Materialien und Energie, Hahn-Meitner-Platz 1, 14109 Berlin, Germany
+b Institut für Physik, Humboldt-Universität zu Berlin, Newtonstr. 15, 12489 Berlin, Germany
+H I G H L I G H T S
+• Molecular simulation force-ﬁeld for
+Li/S battery electrolytes developed.
+• Strong
+temperature-dependence
+for
+Li+ diﬀusion predicted.
+• Conductivity and related ion pairing
+eﬀects unveiled.
+• Molecular insights on detailed solva-
+tion structure around Li+ reported.
+G R A P H I C A L A B S T R A C T
+A R T I C L E I N F O
+Keywords:
+Battery
+Electrolyte
+Molecular dynamics
+Conductivity
+Solvation
+Ion pairing
+A B S T R A C T
+The performance of modern lithium-sulfur (Li/S) battery systems critically depends on the electrolyte and sol-
+vent compositions. For fundamental molecular insights and rational guidance of experimental developments,
+eﬃcient and suﬃciently accurate molecular simulations are thus in urgent need. Here, we construct a molecular
+dynamics (MD) computer simulation model of representative state-of-the art electrolyte–solvent systems for Li/S
+batteries constituted by lithium-bis(triﬂuoromethane)sulfonimide (LiTFSI) and LiNO3 electrolytes in mixtures of
+the organic solvents 1,2-dimethoxyethane (DME) and 1,3-dioxolane (DOL). We benchmark and verify our si-
+mulations by comparing structural and dynamic features with various available experimental reference systems
+and demonstrate their applicability for a wide range of electrolyte–solvent compositions. For the state-of-the-art
+battery solvent, we ﬁnally calculate and discuss the detailed composition of the ﬁrst lithium solvation shell, the
+temperature dependence of lithium diﬀusion, as well as the electrolyte conductivities and lithium transference
+numbers. Our model will serve as a basis for eﬃcient future predictions of electrolyte structure and transport in
+complex electrode conﬁnements for the optimization of modern Li/S batteries (and related devices).
+1. Introduction
+Lithium–sulfur (Li/S) batteries are discussed as a cost eﬃcient key
+technology for future applications in portable electronic devices, elec-
+tromobility, and as a backup storage system for the reliable use of re-
+newable energies [1–10]. Because of their high theoretical electro-
+chemical capacity of 1675 mAhg−1, Li/S batteries represent in
+principle an eﬃcient energy storage system. Moreover, the abundance
+and low-cost of their raw materials are important advantages of this
+battery concept.
+The actual performance delivered by Li/S batteries is proving to be
+severely limited in many cases, which is directly related to the role of
+the electrolyte [6–8,10–14]. Ultimately, the successful development of
+the Li/S battery requires careful coordination of the choice of electro-
+lyte with the speciﬁc nature of the cathode material. In particular, the
+optimal electrolyte has to fulﬁll several boundary conditions, as such to
+http://dx.doi.org/10.1016/j.jpowsour.2017.10.081
+Received 19 July 2017; Received in revised form 6 October 2017; Accepted 25 October 2017
+∗Corresponding author. Institut für Weiche Materie und Funktionale Materialien, Helmholtz-Zentrum Berlin für Materialien und Energie, Hahn-Meitner-Platz 1, 14109 Berlin,
+Germany.
+E-mail address: joachim.dzubiella@helmholtz-berlin.de (J. Dzubiella).
+Journal of Power Sources 373 (2018) 70–78
+Available online 08 November 2017
+0378-7753/ © 2017 Elsevier B.V. All rights reserved.
+T
+
+<<PAGE 2>>
+maximize charge carrier conductivity and high ionic dissociation but
+also to guarantee
++
+Li dissolution and stabilization of the lithium anode
+[15]. For the latter, the most prominent example is lithium nitrate
+(LiNO3), which has been introduced to stabilize the anode by a pro-
+tective layer formed on the electrode surface [16,17]. Recent devel-
+opments have empirically demonstrated that lithium TFSI (bis(tri-
+ﬂuoromethane)sulfonimide) salts (at about 1 M concentration) in 1:1
+mixtures of the organic solvents 1,2-dimethoxyethane (DME) and 1,3-
+dioxolane (DOL) are found to be a suitable electrolyte solution for Li/S
+batteries, satisfying many of the requirements [7,18]. More generally,
+these and similar electrolyte/solvent compositions are also relevant for
+the
+development
+of
+lithium–oxygen
+and
+lithium–air
+batteries
+[12,14,19,20] as well as for Na/S batteries [21].
+For fundamental structural insights on a molecular level and ra-
+tional guidance of experimental developments, eﬃcient and accurate
+molecular simulations are of signiﬁcant importance. For this, classical
+polarizable or non-polarizable all-atom force ﬁeld simulations promise
+the best compromise between accuracy and eﬃciency [22–35]. For
+example, they can demonstrate how the details of local solvation
+structures or ion pairing aﬃnities can be linked to transport properties,
+such as diﬀusion and conductivity, i.e., they establish structure-property
+relationships. In particular, they elucidate the eﬀects of organic solvents
+on the lithium ion solvation and transport in ionic liquid electrolytes
+[29], i.e., the solvate structures of LiTFSI electrolytes [31,32] as well as
+the inﬂuence of cations on lithium ion coordination and transport [30].
+However, despite their importance for modern Li/S battery develop-
+ment, the simulation studies of the structural properties of the lithium
+salts in mixtures of DME/DOL solvents are scant [76]. Of particular
+interest is, for instance, an accurate structural characterization of the
+local lithium solvation structure, which is decisive for ion permeation
+and capacitance build-up within the commonly used porous organic
+electrode materials. Once a good basic electrolyte model is available,
+further extensions can successively built up on this (e.g., by including
+the sulfur component, electrode materials, etc.) and combinatorial
+solvent/electrolyte optimization and the establishment of quantitative
+structure-property-function relationships of Li/S battery systems come
+into closer reach.
+Here, we construct a molecular dynamics (MD) computer simulation
+model of representative state-of-the art electrolyte–solvent systems
+[7,18] for Li/S batteries constituted by LiTFSI and LiNO3 electrolytes in
+mixtures of DME and DOL. We focus on a force ﬁeld without explicit
+many-body polarizability as often used before [33] in order to enhance
+computing speed and invoke less parameters, aiming at comparable
+accuracy of structural and dynamic properties. We benchmark and
+verify our simulations by comparing those calculated structural and
+dynamic features with various available reference systems, i.e., struc-
+ture, density, dielectric constant, and viscosity of the organic solvents
+and their mixtures [28,36–38], as well as ionic diﬀusion and con-
+ductivity in dilute electrolytes in the respective pure (one-component)
+solvents [39]. With these we demonstrate their applicability for a wide
+range of electrolyte–solvent compositions. As a ﬁrst practical demon-
+stration at hand of the state-of-the-art electrolyte solvent for Li/S bat-
+teries, we calculate and discuss the detailed composition of the ﬁrst
+lithium solvation shell, the temperature dependence of lithium diﬀu-
+sion, as well as the electrolyte conductivities and lithium transference
+numbers. We complement this with new experimental measurements
+on viscosity and conductivity. Our validated model will thus serve as a
+basis for eﬃcient future predictions of electrolyte structure and trans-
+port in complex electrode conﬁnements for the optimization of modern
+Li/S batteries (and related devices).
+This paper is organized as follows: we ﬁrst describe in detail the
+used simulation model and underlying analyzing numerical methods for
+evaluations of relevant quantities. In Section 3 we describe experi-
+mental settings. We then present and discuss the results in Section 4,
+followed by concluding remarks in Section 5.
+2. Computer simulations and analysis methods
+2.1. Simulation details
+We perform all-atom MD computer simulations of bulk electrolytes
+in mixed organic solvents constituted of the molecules displayed in
+Fig. 1 employing the GROMACS 5.1 simulation package [40]. The
+production simulations are performed in the NpT ensemble at constant
+pressure and constant temperature in a cubic box with periodic
+boundary conditions in all three Cartesian directions. The temperature
+is maintained by the Berendsen thermostat at 304 K in system III (de-
+ﬁned further below) and 298 K for all other systems with a time con-
+stant of 0.1 ps [41]. A constant pressure of 1 bar is controlled by the
+Parrinello–Rahman barostat [42,43] with a coupling constant of 2 ps.
+Electrostatic interactions are treated using the Particle-Mesh-Ewald
+(PME) method [44,45] with the Fourier spacing of 0.12 nm and 1 nm
+real-space cut-oﬀ. For non-neutral systems, we apply uniform neu-
+tralizing background charge in the PME. The molecules are represented
+by non-polarizable models, i.e., explicit electronic polarization eﬀects
+are neglected. We consider the polarization implicitly as discussed in
+the force-ﬁeld subsection below. All non-bonded non-electrostatic in-
+teratomic interactions are based on the Lennard-Jones (LJ) potential
+with a cut-oﬀat 1 nm and shifted to zero there, together with the
+geometric combination rules [27]
+=
+σ
+σ σ
+(
+)
+ij
+ii
+jj 1/2 and
+=
+ε
+ε ε
+(
+)
+ij
+ii jj 1/2 for
+the LJ size and energy parameters, respectively. The LINCS algorithm
+[46,47] is employed for all bond constraints. The integration time step
+is 2 fs. In order to facilitate the equilibration of solvent conformers, we
+ﬁrst perform asimulated annealing approach where we heat the systems
+to 440 K or 500 K and then cool them down to 298 K within a time
+interval of 2 ns in the NVT ensemble.
+2.2. Force ﬁelds
+Due to the multi-component nature and the many degrees of
+freedom in our rather low dielectric systems, the parametrization of the
+model to reproduce a wide range of properties is notoriously diﬃcult.
+Systematic deviations to experiments of some of the properties are the
+rule other than exception but may be improvable in future with further
+application and extension of the model. However, we will demonstrate,
+despite the high complexity of these liquids, that a wide range of im-
+portant equilibrium and transport properties on diﬀerent scales are well
+reproduced
+(within
+a
+satisfactory
+error
+range)
+by
+our
+speciﬁc
+Fig. 1. Exemplary illustrations of the ions and solvent molecules involved in our simu-
+lation study: Ions: (a)
++
+Li , (b)
+−
+NO3 , (c)
+−
+TFSI and organic solvent molecules: (d) DOL and
+(e) DME. The sizes of
++
+Li
+and
+−
+NO3 are scaled up for aesthetic reason.
+C. Park et al.
+Journal of Power Sources 373 (2018) 70–78
+71
+
+<<PAGE 3>>
+parametrization.
+In our parametrization strategy, ﬁrst we have scrutinized the
+properties of pure solvents of DME and DOL using various force ﬁelds
+and compared them with experimental benchmarks in terms of density,
+dielectric constant, and viscosity. The properties of DOL were assessed
+with three diﬀerent force ﬁelds: AMBER [80], the Transferable Poten-
+tials for Phase Equilibria united-atom force ﬁeld (TraPPE) [26], and the
+Optimized Parameters for Liquid Simulations all-atom force-ﬁeld
+(OPLS-AA) [27]. For DME, only AMBER and OPLS-AA force ﬁelds were
+applicable. For DME, instead of the standard dihedrals in the latter two
+force-ﬁelds, we implemented the optimized dihedral parameters as
+suggested by Anderson et al. [28] based on the comparison with ex-
+perimental measurements of the molecular conformation populations.
+The torsional degrees of freedom lead to the occurrence of many dif-
+ferent equilibrium conformers and thus signiﬁcantly aﬀect the in-
+stantaneous dipole moment as discussed below in the Results section. In
+the Supplementary Information (SI) in Table S1 we summarize the MD
+simulations results for the solvents from all tested force ﬁelds.
+For low dielectric solvents DOL and DME, extra care has to be taken
+how to include electronic polarizability eﬀects, which account already
+for more than 20% of the total static permittivity and thus cannot be
+neglected. In view of large scale future applications, such as solvent in
+electrode conﬁnement, we want to avoid introducing additional para-
+meters into the model as well as increased intensity of the simulations.
+We therefore opt for an implicit inclusion of electronic (high-frequency)
+polarizability contribution by the Molecular Dynamics Electronic
+Continuum (MDEC) model [48–50]. It includes the electronic polariz-
+ability implicitly by replacing all partial charges qi of ions in the si-
+mulations by eﬀective, rescaled, charges qi
+eff, according to
+=
+∞
+q
+q
+ε
+.
+i
+i
+eff
+(1)
+Here,
+∞
+ε
+is the high-frequency contribution to the solvent permittivity
+stemming from electronic ﬂuctuations in the solvent molecules [51]. It
+can be related to the refractive index n as
+=
+∞
+ε
+n .
+2 From the refractive
+indices n of 1.3781 for DME and 1.3992 for DOL [51], we obtain an
+eﬀective charge of a monovalent ion of 0.73 in DME and 0.71 in DOL
+using eq. (1). We further assume that the eﬀective charge in a mixture
+of DME and DOL is given simply via a linear interpolation between the
+eﬀective charges in the pure DME and the pure DOL solutions. We apply
+eq. (1) to all the partial charges of the three considered ions in our
+study,
++
+Li ,
+−
+NO3 , and
+−
+TFSI . The force-ﬁelds parameters of
+−
+TFSI
+and
+−
+NO3 are taken from Refs. [52,53]. On the case of
++
+Li , we have tested
+various established LJ parameters and compared them with experi-
+mentally available diﬀusion coeﬃcients of dilute LiTFSI electrolyte in
+pure DME and DOL solvents (later deﬁned as system III) [39]. While we
+found that the spread among the performance of the various force ﬁelds
+for the lithium ion is small, i.e., within 15% for the diﬀusion coeﬃcient,
+the best overall performance in combination with the opted anionic
+force-ﬁelds was exhibited by the lithium force ﬁeld by Dang et al. [54].
+Hence the latter has been ﬁnally chosen for all our investigated systems
+with rescaled charges as deﬁned above (see Tables S2 and S3).
+2.3. Simulated systems
+We simulate eight diﬀerent solution ‘systems’, denoted in the fol-
+lowing as systems I, IIa, IIb, IIc, IIIa, IIIb, IVa, and IVb with the parti-
+cular number of ions and molecules in the simulation box summarized
+in Table 1. System I does not include ions and consists only of a re-
+ference binary mixture of DME and DOL of varying composition. We
+express the organic solvent composition as the molar fraction x of DOL
+in the solvent,
+=
++
+x
+N
+N
+N
+,
+DOL
+DOL
+DME
+(2)
+where NDOL and NDME correspond to the number of DOL and DME
+molecules, respectively. In the system class II we additionally include
+one
++
+Li
+(IIa), or one
++
+Li -
+−
+NO3 pair (IIb), or one
++
+Li -
+−
+TFSI
+pair (IIc) to
+investigate diﬀusion and structural properties in the high dilution limit
+of electrolyte, also for various ratios
+=
+x
+0 to 1. Systems IIIa and IIIb
+relate to an experimental study where diﬀusion coeﬃcients and con-
+ductivity were accurately measured [39] and consist of 25
++
+Li -
+−
+TFSI
+ion pairs in either 500 DME or 500 DOL solvent molecules, respectively.
+The molar ratio between salt and solvent is thus 1:20 in this system.
+Finally, systems IVa and IVb represent experimental state-of-the-art
+compositions for a few modern batteries under development and con-
+sider concentrated electrolyte mixtures of
++
+Li ,
+−
+NO3 , and
+−
+TFSI at molar
+concentrations, given in Table 1. System IVb has a similar ionic strength
+as system IVa but contains no nitrate ions.
+2.4. Analysis
+2.4.1. Dielectric constant
+The non-electronic part of the static dielectric constant in the si-
+mulations is computed based on ﬂuctuations of the Neumann dipole
+moment M of the system, which is the sum of all molecular dipole
+moments
+=
+μ
+M
+Σi
+i [57–59]. Since we are employing the MDEC treat-
+ment in our simulations, where the ionic charges are rescaled via eq.
+(1), the total dipole is
+=
+∞
+ε
+M
+MMD
+, where MMD is the dipole moment
+obtained from the simulations. The dielectric constant εMD is calculated
+via [60]
+=
++
+−
+ε
+π
+Vk T
+M
+M
+1
+4
+3
+(
+),
+MD
+B
+MD
+2
+MD 2
+(3)
+where V, kB, T are the volume of the simulation box, the Boltzmann
+constant, and the absolute temperature, respectively. The dielectric
+constant can be aﬀected by the size of the simulation box [79]. We have
+veriﬁed that the smallest simulation box size of our system is large
+enough, such that the dielectric constant is not aﬀected by the ﬁnite-
+size eﬀects (see Fig. S1). Finally, we calculate the total static dielectric
+constant ε for the comparison to experimental reality as [49,50,57,61]
+=
+∞
+ε
+ε ε
+.
+MD
+(4)
+2.4.2. Viscosity
+The shear viscosity
+∞
+η
+is calculated from transverse current corre-
+lation function [62–64], using the transverse momentum ﬁelds (trans-
+verse-current
+autocorrelation
+function)
+as
+implemented
+in
+the
+GROMACS simulation package [40]. Here, a total 16 transverse-current
+autocorrelation functions corresponding to diﬀerent k-vectors are con-
+sidered, resulting in 16 values of η. The values of η are ﬁtted to
+=
+−
+∞
+η k
+η
+ak
+( )
+(1
+)
+2 , yielding the shear viscosity
+∞
+η .
+In cases of binary solvent mixtures, as we investigate here, we
+Table 1
+Numbers of ions and solvent molecules (i.e., the composition) in the investigated simu-
+lation
+systems.
+System
+I
+does
+not
+contain
+ions
+and
+the
+molar
+ratio
+=
++
+x
+N
+N
+N
+/(
+)
+DOL
+DOL
+DME of DME/DOL is varied between 0 and 1 with a total number of
+508 solvent molecules. System class II has only one Li+ ion (IIa) or one ion pair (IIb and
+IIc) for various DME/DOL ratios. System class III features a 1:20 LiTFSI molar ratio in
+either DME (IIIa) or DOL (IIIb). Systems IVa and b are representative experimental state-
+of-the-art systems [7,18] for Li/S batteries with a molar composition of (a) 0.66M LiNO3,
+0.33M LiTFSI, 4.94M DME, and 6.03M DOL [55] and (b) 0.88M LiTFSI, 4.64M DME, and
+5.67M DOL [56].
+System
++
+Li
+−
+NO3
+−
+TFSI
+Solvent (DME/DOL)
+I
+508/508
+IIa
+1
+508/508
+IIb
+1
+1
+508/508
+IIc
+1
+1
+508/508
+IIIa
+25
+25
+500/0
+IIIb
+25
+25
+0/500
+IVa
+90
+60
+30
+450/550
+IVb
+85
+85
+450/550
+C. Park et al.
+Journal of Power Sources 373 (2018) 70–78
+72
+
+<<PAGE 4>>
+compare the results for the viscosity to the values obtained via well-
+established semi-empirical analytical mixing rules by Fort and Moore
+[65] for the experimentally expected viscosity. There, the viscosity ηmix
+of a mixture is calculated from the viscosities of the pure components
+∞
+η
+,1 and
+∞
+η
+,2 as
+=
+∞
+∞
+η
+ϕ
+ϕ
+η
+η
+(
+,
+)
+.
+ϕ
+ϕ
+mix
+1
+2
+,1
+,2
+1
+2
+(5)
+The
+volume
+fractions
+ϕ1
+and
+ϕ2
+of
+each
+of
+the
+components,
+=
++
+ϕ
+V
+V
+V
+/(
+)
+i
+i
+1
+2 , are obtained from the partial volumes Vi calculated as
+=
+V
+m ρ
+/
+i
+i
+i
+0 with ρi
+0 being the mass density of the pure component.
+2.4.3. Long-time self-diﬀusion coeﬃcient
+The long-time self-diﬀusion coeﬃcients of the molecules in the si-
+mulations are calculated from the mean square displacement relation,
+=
+→∞
+D
+r
+t
+t
+lim
+(Δ )
+6Δ
+.
+t
+MD
+Δ
+2
+(6)
+Due to ﬁnite size eﬀects of a simulation box, hydrodynamic corrections
+can play a signiﬁcant role. It has been shown that hydrodynamic per-
+turbations in a small periodic box lead to a ﬁnite size correction (FSC)
+of the diﬀusion coeﬃcient,
+D
+Δ
+FSC. In the leading order,
+D
+Δ
+FSC scales
+inversely with the length L of the simulation box and the viscosity η of
+the solution,
+∝
+∞
+D
+η L
+Δ
+1/(
+)
+FSC
+[66]. Although the scaling prefactor of
+the latter expression can be analytically calculated based on the hy-
+drodynamic self-interaction of a point perturbation, deviations occur
+for larger and more complex solutes [67]. Therefore, we estimate the
+correction in our system by simulating the diﬀusion in boxes of various
+sizes and ﬁtting its dependence to
+=
+D
+c L
+Δ
+/
+FSC
+with c as a ﬁtting
+parameter (Figs. S2, S3, and S4 in the SI). We determine the coeﬃcient
+c only for the diﬀusion of the solvent components, DME and DOL, as
+there the statistical accuracy is highest, and apply the correction also to
+the diﬀusion coeﬃcients of ions. The diﬀusion coeﬃcient we compare
+to experiments is ﬁnally given by
+=
++
+D
+D
+D
+Δ
+.
+MD
+FSC
+(7)
+2.4.4. Conductivity and transference number
+The stationary linear response conductivity σ is deﬁned by Ohm's
+law
+=
+J
+σE,
+(8)
+(expressed here simply as scalar quantities), where E is the external
+electrostatic driving ﬁeld and
+= ∑
+= ∑
+J
+J
+σ E
+i
+i
+i
+i
+the sum of all ionic
+current densities, which deﬁne individual partial ionic conductivities σi.
+The transference number of an ion i is deﬁned as [68]
+=
+=
+t
+J
+J
+σ
+σ ,
+i
+i
+i
+(9)
+and describes the relative contribution of the current of species i to the
+total current. By applying an external ﬁeld E in the range between
+0.005 and 0.05 V nm−1 (for which we veriﬁed to lie within the linear
+response regime, see SI Figs. S5 and S6) and calculating resulting in-
+dividual currents Ji, we obtain partial conductivities σi via eq. (8). By
+measuring the mean drift velocities vi of each ionic species under the
+external ﬁeld, we calculate the current densities as
+=
+J
+z en v
+i
+i
+i i, where ni
+is the ionic number density and zi and e the valency and the elementary
+charge, respectively. In the ideal ion limit one expects the Nern-
+st–Einstein relation to be applicable. It relates the total conductivity and
+diﬀusion coeﬃcients,
+= ∑
+σ
+z
+eD n k T
+/
+i
+i
+i
+i
+id
+B
+, and thus gives a reference
+to conductivity values regarding ideal ionic transport behavior. A de-
+gree of ion uncorrelated motion can be deﬁned by
+=
+α
+σ σ
+/
+id. It was
+shown that the parameter α is strongly related to ion-pair formation
+[34], whereby smaller values imply a higher degree of pair formation.
+2.4.5. Coordination number
+The coordination number of molecules of type i in the ﬁrst solvation
+shell surrounding a single molecule of type j is calculated as
+∫
+=
+N
+πn
+g
+r r
+r
+4
+( )
+d ,
+i
+j
+R
+ij
+0
+2
+M
+(10)
+where RM is the distance of the ﬁrst minimum following the ﬁrst peak in
+the radial distribution function (RDF), g
+r( )
+ij
+, which is a standard ap-
+proach for bulk liquids [69].
+3. Experimental characterization of system IVa
+The gravimetric density of the samples was measured at 28 °C and at
+a pressure of 1.0186 bar using a chempro/PAAR DMA 602 density
+meter with a Julabo F25 thermostat. The average value of ten mea-
+surements of the natural frequency of a glass tube ﬁlled with the so-
+lution was taken to calculate the density. Millipore water and air served
+as reference for this calculation. The viscosity was determined using a
+Capillary Viscometer (SI Analytics 50101/0a) and a laboratory stop-
+watch. The viscosity was averaged over three measurements that were
+performed in an argon ﬁlled glovebox. The conductivity was evaluated
+by performing an impedance spectroscopy in the frequency range of
+100 mHz–1 MHz with 5 mV RMS voltage signal and 15 points per
+decade. A GAMRY interface 1000 potentiostat and an in-house-de-
+signed electrochemical cell were used. The cell consists of aluminum-
+electrodes and a cell housing made of PEEK (Polyether Ether Ketone).
+The electrode distance is 1 mm, the circular electrode area is
+198.56 mm2 (15.9 mm in diameter). The electrolyte was ﬁlled in
+through a hole on the side of the PEEK cell housing to ensure complete
+ﬁlling. The conductivity was determined by the intersection of the
+impedance with the x-axis at high frequencies in a Nyquist-plot.
+4. Results and discussion
+4.1. System I: pure solvent (DME/DOL) mixtures
+The density and dielectric constant of the DME/DOL mixtures as a
+function of the molar fraction x of DOL are shown in Fig. 2(a) and (b),
+respectively. The density of the pure DME (i.e.,
+=
+x
+0) obtained from
+MD is 853 kg m−3, which very well agrees with the experimental value
+of 861 kg m−3 [37]. Also the density of the pure DOL (i.e.,
+=
+x
+1) from
+Fig. 2. (a) Density of the DME/DOL mixture (system I) versus the molar fraction of DOL
+composition
+=
++
+x
+N
+N
+N
+/(
+)
+DOL
+DOL
+DME
+from our MD simulations (triangular symbols).
+(b) Dielectric constant (square symbols) from the MD, eq. (4), for the same systems as in
+(a). The colored arrows indicate the experimental reference values of pure DME [37] and
+pure DOL [38], respectively.
+C. Park et al.
+Journal of Power Sources 373 (2018) 70–78
+73
+
+<<PAGE 5>>
+MD, 1047 kg m−3, is in good agreement with the experimental one,
+1059 kg m−3 [38]. The density of the mixture increases monotonically
+with the molar fraction x of DOL. Turning to the dielectric constant in
+panel (b), we ﬁnd satisfactory agreement for the pure DOL solvent at
+=
+x
+1, where the simulated value is about 16% smaller than in the
+experiments. The MD value for the pure DME (
+=
+x
+0) is less satisfying
+and with 10.6 compared with the experimental 7.1 almost 50% too
+large. However, after having examined and thoroughly scrutinized
+various force ﬁeld combinations, we found this deviation still to be
+minimal under the constraint that the density as well as the viscosity
+(shown below) reproduce well the experimental reality.
+The viscosity of the DME/DOL mixtures from our simulations is
+presented in Fig. 3(a). There, we also plot experimentally measured
+viscosities or pure solvents and apply the analytical mixing rule eq. (5)
+for the mixtures. We see that the simulations for the pure DME and DOL
+systems yield viscosities of 0.43 mPa s and 0.56 mPa s, respectively,
+which compare well with the experimental ones of 0.42 mPa s and
+0.58 mPa s [37,38], as well as with the expected interpolation behavior,
+eq. (5). As another important transport property we have calculated the
+self-diﬀusion coeﬃcients of the solvent molecules in the mixtures, cf.
+panel (b) of the same ﬁgure. The simulations, corrected for ﬁnite-size
+eﬀects (cf. SI), underestimate the experimental reference values by 27%
+(DME) and 32% (DOL). The interpolation between the limiting cases
+=
+x
+0 and
+=
+x
+1 transits monotonously. However, as we will see later,
+the diﬀusion coeﬃcients compare much better to the experimental
+values of system IVb (Table 2), performed by a diﬀerent group.
+In essence, we can conclude that transport properties are well
+captured within the MD model. Overall, we ﬁnd satisfying behavior of
+our solvent force ﬁeld in the sense that it can reproduce reasonably well
+several experimentally important equilibrium thermodynamic and
+transport properties for the full molar ratio range
+=
+x
+0 to
+=
+x
+1 at the
+same time.
+4.2. Systems IIa, IIb, and IIc: single ions or ion pairs in mixed DME/DOL
+solvents
+Now we consider highly dilute electrolyte solutions, where we in-
+vestigate the solvation structure and diﬀusion of a single
++
+Li
+ion (Sys.
+IIa),
++
+Li -
+−
+NO3 (IIb), and
++
+Li -
+−
+TFSI (IIc) ion pairs in the solvent mixture of
+system I. In order to discuss the solvation structure, we plot in Fig. 4 the
+center-of-mass radial distribution function (RDF) between the
++
+Li
+and
+solvent molecules in system IIa:
+−
++
+g
+r( )
+Li
+DME
+and
+−
++
+g
+r( )
+Li
+DOL
+are shown
+for the limiting cases
+=
+x
+0 (DME only) and
+=
+x
+1 (DOL only) and for
+the intermediate ratio
+=
+x
+0.5. The DME distribution peaks at about
+0.16 nm and is thus closer to the
++
+Li
+ion than DOL molecules, whose
+distribution peaks at about 0.3 nm. Such a close approach of DME is
+consistent with experimental data where the
++
+Li -DME coordination
+leads to cis (the C-O bonds) and a gauche conﬁgurations in DME mo-
+lecules in a bidentate binding conﬁguration [70,71]. This is absent for
+DOL, cf. also the representative simulation snapshots in Fig. 4. Thus, the
+coordination of DME in the bidentate to
++
+Li
+ion retains a relatively
+stable solvation structure even at the symmetric solvent ratio
+=
+x
+0.5.
+The consequence is an interesting coordination behavior along the
+mixing coordinate x as presented in Fig. 5(a) for system IIa: let us start
+at the right hand side of the plot at
+=
+x
+1, where DOL coordinates the
+cation with a coordination number of 4. Adding DME to the solution
+very quickly substantially changes the DOL coordination; already at
+around
+≃
+x
+0.8 the coordination of DME and DOL equalize (at about
+1.8). At a symmetric concentration (
+=
+x
+0.5) the DME is then in large
+excess with a coordination close to the limiting coordination of about
+2.7 of the pure DME (
+=
+x
+0). We note that an analogous ‘solvent-ex-
+change’ behavior has been observed previously already in DME/pro-
+pylene carbonate mixtures [72], pointing to the special excess solvation
+properties of DME in general for its mixtures with other solvents.
+For systems IIb and IIc, where also an additional anion is present,
+corresponding to concentration around 20 mM of the electrolyte, the
+cation coordination number decreases, but qualitatively retaining the
+behavior with varying the molar fraction x, see Fig. 5(b) and (c). The
+reason is a strong ion pairing, which is anion-speciﬁc. The relatively
+small
+−
+NO3 counterion binds very tightly to the
++
+Li
+cation (see also the
+discussion later for the concentrated system IVa). The strongly asso-
+ciated
++
+Li -
+−
+NO3 ion pairs in the pure DME indeed have been categorized
+previously already as a ‘contact ion pair’ (CIP) or even ‘aggregate’
+solvation structure [71]. In this case, the coordination by the organic
+solvent is consequently reduced by 1 in the whole x-range. The larger
+−
+TFSI anion, however, consistent with the category of a dissociated salt
+forming ‘solvent-separated ion pairs’ (SSIPs) in pure DME [71], only
+manages to replace bigger more weakly bound DOL molecules, but not
+DME molecules. Consequently, the DME coordination around
++
+Li
+close
+to
+=
+x
+0 remains almost unaﬀected by the presence of the
+−
+TFSI
+ion.
+The SSIP structure of
++
+Li -
+−
+TFSI can also be empirically explained with
+the Gutmann donor number (DN) [73,77,81], which corresponds to the
+negative binding enthalpy of a given molecule to a certain reference
+(Lewis) acid. Assuming
++
+Li
+to behave as such a Lewis acid, the DN
+provides an estimate for the binding aﬃnities of other molecules to
++
+Li .
+DME has the DN number of 20, while
+−
+TFSI the value of 5. Hence, much
+weaker association strength of
++
+Li -
+−
+TFSI , as indicated by the smaller DN
+number, leads to the solvation shell of
++
+Li
+dominated by DME (with
+higher DN). Our results are in line with the reported ionic strength in
+aprotic solvents in general, where the
+−
+TFSI
+has much smaller asso-
+ciation strength than
+−
+NO3 [71].
+The self-diﬀusion coeﬃcients of the molecular constituents in all
+systems of class II are presented in Fig. 6. In these dilute systems (molar
+ratio 1:508) the diﬀusion properties of the pure organic solvent mix-
+tures of DME and DOL are hardly aﬀected. The
++
+Li diﬀusion coeﬃcient
+is between 13×
+−
+−
+10
+m s
+10
+2
+1 at
+=
+x
+0 and 9×
+−
+−
+10
+m s
+10
+2
+1 at
+=
+x
+1 in
+system IIa, i.e., decreasing with increasing DOL concentration. This
+eﬀect can be attributed to larger size of the solvation shell in a more
+coordinated DOL solvent. An inclusion of the counterion has small but
+Fig. 3. (a) Shear viscosity
+∞
+η
+of the binary DME/DOL mixtures versus the molar fraction
+of DOL x. Crosses indicate the results obtained from the MD simulations and the solid line
+represents the viscosity of the binary mixture from eq. (5), which interpolates the ex-
+perimental limits of the pure DME [37] and pure DOL [38], indicated by arrows. (b) Self-
+diﬀusion coeﬃcients of DME molecules (diamonds) and DOL molecules (squares) in the
+DME/DOL mixture as a function of the DOL molar fraction x. The experimental reference
+values of DME and DOL [39] are indicated by a blue and a red arrow, respectively. (For
+interpretation of the references to colour in this ﬁgure legend, the reader is referred to the
+web version of this article.)
+C. Park et al.
+Journal of Power Sources 373 (2018) 70–78
+74
+
+<<PAGE 6>>
+visible eﬀects and depends on anion type. For
+−
+NO3 , a strong ion pair is
+created, which evidently changes the
++
+Li
+diﬀusion only very slightly
+although a joint diﬀusion of the cation–anion pair is apparently es-
+tablished. In the presence of a larger
+−
+TFSI
+anion, the
++
+Li
+cation dif-
+fusion is slowed down more, probably related to a larger size of the
+formed ion pair, although only existent as an SSIP cluster.
+4.3. Sys. IIIa and IIIb: 1:20 electrolyte to solvent ratio
+Now we investigate the systems with the molar ratio of 1:20
+LiTFSI:DME or LiTFSI:DOL, for which accurate experimental data for
+the conductivity, lithium transference, degree of uncorrelated ion mo-
+tion, and diﬀusion coeﬃcients are available [39]. Other physical
+properties, such as density, dielectric constant, viscosity, and solvent
+coordination are also calculated and summarized in Table 2 together
+with the experimental diﬀusion data. As can be seen, the total con-
+ductivity, lithium transference, as well as degree of uncorrelated ion
+motion are quite well reproduced. The self-diﬀusion of DME and DOL is
+in the simulations lower (by about factor of 3/4) than in the experi-
+ment. This deviation is consistent with the results of the pure solvent
+(system I) conducted within the same experimental study [39]. The
+diﬀusion coeﬃcients of the
++
+Li
+and
+−
+TFSI
+ions from the MD also con-
+sistently reproduce the experimental trends [39] in both systems IIIa
+and IIIb. In experiments and simulations, it is observed that the diﬀu-
+sivity in system IIIa is faster than that of IIIb. This can be attributed to
+the lower viscosity of DME with respect to DOL. Compared with the
+simulations results of the highly diluted electrolyte in systems II (1:500
+ion–solvent ratio), the diﬀusivities in systems III are all found about
+20% (DME) to 35% (DOL) lower due to the higher viscosity by the same
+relative amount.
+The coordination solvent numbers for
++
+Li in systems IIIa and IIIb are
+2.45 and 3.04, respectively (see Table 2). The corresponding RDFs (see
+Fig. S7) indicate, analogously to systems II, that the DME molecule
+Table 2
+Density, dielectric constant, viscosity,
++
+Li
+coordination, conductivity and diﬀusion coeﬃcients of systems IIIa (1:20 LiTFSI salt in pure DME), IIIb (1:20 LiTFSI salt in pure DOL), IVa
+[0.66M LiNO3 and 0.33M LiTFSI in DME:DIOX (45:55 molar ratio)] and IVb [0.88M LiTFSI in DME:DIOX (45:55 molar ratio)]. Systems IIIa and IIIb are conducted at T = 304 K, whereas
+IVa and IVb at 298 K. Experimental measurements of conductivity in this work (system IVa) are carried out with 0.6M LiNO3 and 0.3M LiTFSI in a DME and DOL (1:1 wt%) mixture at
+room temperature.
+Sys. IIIa
+Sys. IIIb
+Sys. IVa
+Sys. IVb
+MD
+Exp.
+[39]
+MD
+Exp.
+[39]
+MD
+Exp.
+(this work)
+MD
+Exp.
+[56,74–76]
+Density (kg m−3)
+934.1(2)
+1147.0(1)
+1030.0(1)
+1103
+1091.2(1.1)
+1125a
+Dielectric constant ε
+8.8
+5.7
+7.6
+6.6
+Viscosity (mPa s)
+0.57(5)
+0.74(5)
+0.77(1)
+0.88
+0.85(3)
+1.56b, 1.25c
+Coordination number of
++
+Li
+2.45
+3.04
+3.2
+3.2
+Conductivity (S m−1)
+0.73(3)
+0.89
+0.27(3)
+0.31
+0.36(4)
+0.59(3)
+0.82(3)
+1.47a, 1.32b, 1.1c
+Degree of uncorrelated ion motion α
+0.28
+0.31
+0.1
+0.1
+0.12
+0.3
++
+Li
+transference
++
+tLi
+0.4
+0.47
+0.5
+0.51
+0.61
+0.38
++
+DLi
+(
+−
+−
+10
+m s
+10
+2
+1)
+7.2(1.1)
+7.7
+5.1(4)
+6.4
+4.0(3)
+4.7(3)
+4.3d
+−
+DTFSI
+(
+−
+−
+10
+m s
+10
+2
+1)
+7.8(1.3)
+8.8
+4.5(7)
+6.2
+5.0(1.0)
+3.8(1.0)
+4.8d
+−
+DNO3
+(
+−
+−
+10
+m s
+10
+2
+1)
+3.9(3)
+DDME (
+−
+−
+10
+m s
+10
+2
+1)
+16.4(1.3)
+22.0
+9.9(1.0)
+8.2(1.0)
+7.7d
+DDOL (
+−
+−
+10
+m s
+10
+2
+1)
+12.9(4)
+17.0
+13.1(1.0)
+10.0(1.0)
+11.4d
+a Ref. [56].
+b Ref. [74].
+c Ref. [75].
+d Ref. [76].
+Fig. 4. Center-of-mass RDF between
++
+Li
+and solvent molecules for system IIa;
++−
+g
+r( )
+Li
+DME
+and
++−
+g
+r( )
+Li
+DOL
+are shown for the limiting cases
+=
+x
+0 (DME only) and
+=
+x
+1 (DOL only) and for the intermediate ratio
+=
+x
+0.5.
+Fig. 5. Coordination number of
++
+Li
+of DME (blue diamonds) and DOL (red squares)
+molecules as a function of the molar fraction x in systems IIa, IIb, and IIIc. The dotted
+connecting lines are plotted as guides to the eye. (For interpretation of the references to
+colour in this ﬁgure legend, the reader is referred to the web version of this article.)
+C. Park et al.
+Journal of Power Sources 373 (2018) 70–78
+75
+
+<<PAGE 7>>
+solvates
++
+Li much stronger than DOL. The distance between
++
+Li and the
+centers-of-mass of DME and
++
+Li
+and DOL are 0.16 and 0.30 nm, re-
+spectively, which is in accord with
+−
++
+g
+r( )
+Li
+DME
+and
+−
++
+g
+r( )
+Li
+DOL
+for
+=
+x
+0
+and
+=
+x
+1 in the molar ratio of 1:500 in Sec 4.2, respectively.
+−
+−
+g
+r( )
+TFSI
+DME
+and
+−
+−
+g
+r( )
+TFSI
+DOL
+(see Fig. S8) show the ﬁrst peak at
+0.67 nm and 0.65 nm, respectively, which are relatively low, similarly
+as in the much more dilute systems II. This implies that the aﬃnities
+between
+−
+TFSI and DME or DOL are relatively small and do not much
+depend on the salt concentration.
+4.4. Systems IVa and IVb: Li-ion battery electrolyte solution
+Systems IVa and IVb consider practical Li-ion battery electrolyte
+solutions with about 0.99M salt concentration in a 45/55 molar ratio
+DME/DOL solvent. The individual molar concentrations are 0.66M
+LiNO3, 0.33M LiTFSI, 4.94M DME, and 6.03M DOL in system IVa [55]
+and 0.88M LiTFSI, 4.64M DME, and 5.67M DOL in nitrate-free system
+IVb. Table 2 shows the comparison between MD and experimental re-
+sults for the density and viscosity, dielectric constant, conductivity, and
+diﬀusion coeﬃcients for systems IVa and IVb. The MD simulations are
+able to reproduce well the available experimental values, further ver-
+ifying the quality of our implemented force ﬁeld. The MD model re-
+produces very well all the diﬀusion coeﬃcients in system IVb (with
+deviations below 20%). Moreover, in system 4a, it yields the con-
+ductivity of 0.36 S m−1, which is around 40% lower than the experi-
+mental value of 0.59 S m−1, but correctly catches the trend of decrease
+in conductivity due to introduction of
+−
+NO3 ions (compare systems IVa,
+IVb; experimental conductivity measurements at diﬀerent LiNO3 molar
+concentrations are available in Table S4).
+The value of the transference number of the
++
+Li
+in system IVa is
+about 0.6. The relatively low value of α ≃0.12, implies that strong ion
+pairing takes place. Namely, the aﬃnity between
++
+Li -
+−
+NO3 ion pairs
+(CIP) in system IVa is large, resulting in correlated diﬀusion, mean-
+while,
++
+Li
+and
+−
+TFSI ions in system IVb are well separated by solvents
+and contribute to higher conductivity than in system IVa. Since the MD
+conductivities are signiﬁcantly lower than the experimental values, it
+seems that ion pairing is a bit overestimated in our simulations. The
+conductivity from experimental measurements also show a decrease as
+LiNO3 molar concentration increases (Table S4). This all are clear sig-
+natures of the fact that ionic conductivity is aﬀected by not only ionic
+strength but also ion-speciﬁc pairing.
+We are now in the position to interpret and predict interesting
+properties of these state-of-the-art battery electrolytes and how they
+depend, for example, on the solvent composition or temperature.
+Furthermore, we can also obtain a deeper microscopic insight into
+structural details, e.g., the detailed composition of the ﬁrst solvation
+shell of lithium. Hence, in the following, we concentrate exemplarily on
+the self-diﬀusion coeﬃcient of the molecules and their temperature
+dependence and discuss structural features of the ﬁrst
++
+Li
+solvation
+shell in system IVa.
+Table 2 (bottom) also summarizes the results for the individual self-
+diﬀusion coeﬃcients in system IVa. Compared with the dilute electro-
+lyte systems II and III, the diﬀusion coeﬃcients of both ions and solvent
+are substantially lower. Overall, this is a consequence of the higher
+viscosity of system IVa and ion pairing. The temperature-dependence of
+ionic diﬀusion is presented in Fig. 7, which shows an Arrhenius plot for
+the diﬀusion coeﬃcients according to the standard law
+⎜
+⎟
+=
+⎛
+⎝
+−
+⎞
+⎠
+D T
+D
+E
+k T
+( )
+exp
+Δ
+,
+0
+a
+B
+(11)
+where
+E
+Δ
+a is the activation energy for diﬀusion. The individual ﬁtting
+parameters
+D
+ln
+0 and
+E
+Δ
+a are summarized in Table 3. As can be seen,
+the diﬀusion (i.e., ionic mobilities in these experimentally relevant
+systems) can increase almost by a factor 2 or 3 when going from room
+temperature to relatively hot operating temperatures close to the sol-
+vent boiling temperatures (358 K for DME and 347 K for DOL).
+We ﬁnally turn to the structural description of system IVa. A
+snapshot of a representative conﬁguration in the ﬁrst solvation shell of
+Li+ is shown in Fig. 8(a). The RDFs between the center-of-mass of the
+individual anions and solvent molecules around a
++
+Li ion are presented
+in Fig. 8(b) in a log-lin representation. A distinct solvent composition
+and layering within the ﬁrst solvation shell is exhibited. At closest
+distance is the DME solvent at about 0.165 nm, followed by a large
+nitrate peak at about 0.25–0.3 nm and the DOL at about 0.3 nm. The
+large TFSI−has its center-of-mass a bit more outwards, peaking at
+about 0.42 nm. The ﬁrst solvation shell according to these distributions
+has a radius of about 0.5 nm (see also Fig. S9). This running co-
+ordination number of the molecules around the
++
+Li
+ion is displayed in
+panel (c) of the same ﬁgure. The coordination numbers in the ﬁrst
+solvation shell (i.e., within ≃0.5 nm) are about 1.1 for DME, 0.7 for
+DOL, 1.3 for
+−
+NO3 , and 0.4 for
+−
+TFSI , on average. Altogether this makes
+3.2 molecules in the ﬁrst solvation shell. Most qualitative structural
+features of system IVa thus resemble those of the dilute systems
+Fig. 6. Diﬀusion coeﬃcients of
++
+Li ,
+−
+NO3 ,
+−
+TFSI , DME, and DOL in systems IIa, IIb, and IIc
+as a function of the DOL molar fraction x.
+Fig. 7. Diﬀusion coeﬃcients of ions and solvent molecules in system IVa as a function of
+inverse temperature in a log-lin representation. They all obey the Arrhenius behavior
+given by eq. (11). The vertical dotted line indicates
+=
+T
+298 K.
+Table 3
+Fitting parameters
+D
+ln
+0 and
+E
+Δ a according to the Arrhenius law for the self-diﬀusion
+coeﬃcients in system IVa.
+Molecules
+D
+ln
+0
+E
+Δ a (kJ mol−1)
++
+Li
+6.3(3)
+12.1(1)
+−
+NO3
+6.0(3)
+11.3(1)
+−
+TFSI
+7.4(3)
+14.5(2)
+DME
+7.5(3)
+12.8(1)
+DOL
+7.7(3)
+12.8(1)
+C. Park et al.
+Journal of Power Sources 373 (2018) 70–78
+76
+
+<<PAGE 8>>
+discussed before (see also Fig. S9 which, for instance, exhibit a similar
+structure of RDFs between system IIa and IVa).
+5. Summary and concluding remarks
+In this work, we constructed an eﬃcient molecular model for state-
+of-the-art Li/S battery electrolytes and solvents that reproduces a
+variety of experimentally observable structural and dynamical features.
+We validated it with various reference systems at hand, in particular in
+those limits where neat experimental data were available. For example,
+the density, dielectric constant, viscosity, and diﬀusion coeﬃcient of
+solvent mixtures DME/DOL are satisfactorily reproduced for all molar
+ratios. The
++
+Li
+solvation structure and pair association with
+−
+NO3 and
+−
+TFSI
+anions in DME were found consistent with experimental data.
+The ion mobility and conductivity in 1:20 salt–solvent systems as well
+agreed with experimental measurements. Finally, the physical proper-
+ties, such as
++
+Li solvation environment and diﬀusivity of the full state-
+of-the-art Li/S battery electrolytes were in detail investigated and gave
+unprecedented structural insight in the composition of the important
+ﬁrst solvation shell of the
++
+Li ion. Apart from the fundamental insights
+provided, our model will thus serve as a basis for eﬃcient future
+modelings of electrolyte structure, conductivity, capacity, etc. in var-
+ious electrolyte solvent compositions in porous electrode conﬁnements
+and interfaces. With that, it will provide a guidance for the develop-
+ment of modern Li/S batteries and related systems.
+Acknowledgments
+The authors thank Won Kyu Kim, Rafael Roa Chamorro, and R.
+Gregor Weiß for useful discussions.
+Appendix A. Supplementary data
+Supplementary data related to this article can be found at http://dx.
+doi.org/10.1016/j.jpowsour.2017.10.081.
+References
+[1] A. Rosenman, E. Markevich, G. Salitra, D. Aurbach, A. Garsuch, F.F. Chesneau,
+Review on Li-sulfur battery systems: an integral perspective, Adv. Energy Mater. 5
+(2015) 1500212.
+[2] F. Schipper, D. Aurbach, A brief review: past, present and future of lithium ion
+batteries, Russ. J. Electrochem 52 (12) (2016) 1095–1121.
+[3] M. Cuisinier, C. Hart, M. Balasubramanian, A. Garsuch, L.F. Nazar, Radical or not
+radical: revisiting lithium–sulfur electrochemistry in nonaqueous electrolytes, Adv.
+Energy Mater. 5 (2015) 1401801.
+[4] X. Ji, K.T. Lee, L.F. Nazar, A highly ordered nanostructured carbon–sulphur cathode
+for lithium–sulphur batteries, Nat. Mater 8 (6) (2009) 500–506.
+[5] X. Ji, L.F. Nazar, Advances in Li-S batteries, J. Mater. Chem. 20 (44) (2010)
+9821–9826.
+[6] J. Gao, M.A. Lowe, Y. Kiya, H.D. Abruña, Eﬀects of liquid electrolytes on the
+charge–discharge performance of rechargeable lithium/sulfur batteries: electro-
+chemical and in-situ x-ray absorption spectroscopic studies, J. Phys. Chem. C 115
+(50) (2011) 25132–25137.
+[7] J. Scheers, S. Fantini, P. Johansson, A review of electrolytes for lithium–sulphur
+batteries, J. Power Sources 255 (2014) 204–218.
+[8] E.S. Shin, K. Kim, S.H. Oh, W.I. Cho, Polysulﬁde dissolution control: the common
+ion eﬀect, Chem. Commun. 49 (20) (2013) 2004–2006.
+[9] Y.-X. Yin, S. Xin, Y.-G. Guo, L. Wan, Lithium-sulfur batteries: electrochemistry,
+materials, and prospects, Angew. Chem. (Intern. Ed.) 52 (2013) 13186–13200.
+[10] M. Vijayakumar, N. Govind, E. Walter, S.D. Burton, A. Shukla, A. Devaraj, J. Xiao,
+J. Liu, C. Wang, A. Karim, et al., Molecular structure and stability of dissolved
+lithium polysulﬁde species, Phys. Chem. Chem. Phys. 16 (22) (2014) 10923–10932.
+[11] M. Barghamadi, A.S. Best, A.I. Bhatt, A.F. Hollenkamp, M. Musameh, R.J. Rees,
+T. Rüther, Lithium-sulfur batteries–the solution is in the electrolyte, but is the
+electrolyte a solution? Energy & Environ. Sci. 7 (1) (2014) 3902.
+[12] Q. Li, J. Chen, L. Fan, X. Kong, Y. Lu, Progress in electrolytes for rechargeable Li-
+based batteries and beyond, Green Energy & Environ. 1 (1) (2016) 18–42.
+[13] K. Xu, Nonaqueous liquid electrolytes for lithium-based rechargeable batteries,
+Chem. Rev. 104 (10) (2004) 4303–4418.
+[14] F. Li, T. Zhang, H. Zhou, Challenges of non-aqueous Li–O2 batteries: electrolytes,
+catalysts, and anodes, Energy Environ. Sci. 6 (4) (2013) 1125–1141.
+[15] L. Suo, Y.-S. Hu, H. Li, M. Armand, L. Chen, A new class of solvent-in-salt electrolyte
+for high-energy rechargeable metallic lithium batteries, Nat. Commun. 4 (2013)
+1481.
+[16] Mikhaylik, Y. V., Electrolytes for lithium sulfur cells, US Patent 8,828,610 (Sep. 9
+2014).
+[17] D. Aurbach, E. Pollak, R. Elazari, G. Salitra, C.S. Kelley, J. Aﬃnito, On the surface
+chemical aspects of very high energy density, rechargeable Li–sulfur batteries, J.
+Electrochem. Soc. 156 (8) (2009) A694–A702.
+[18] S. Risse, C.J. Jafta, Y. Yang, N. Kardjilov, A. Hilger, I. Manke, M. Ballauﬀ,
+Multidimensional operando analysis of macroscopic structure evolution in lithium
+sulfur cells by x-ray radiography, Phys. Chem. Chem. Phys. 18 (2016)
+10630–10636.
+[19] D. Geng, N. Ding, T.S.A. Hor, S.W. Chien, Z. Liu, D. Wuu, X. Sun, Y. Zong, From
+lithium-oxygen to lithium-air batteries: challenges and opportunities, Adv. Energy
+Mater 6 (2016) 1502164.
+[20] M. Balaish, A. Kraytsberg, Y. Ein-Eli, A critical review on lithium-air battery elec-
+trolytes, Phys. Chem. Chem. Phys. 16 (2014) 2801.
+[21] S. Wenzel, H. Metelmann, C. Raiß, A. Dürr, J. Janek, P. Adelhelm, Thermodynamics
+and cell chemistry of room temperature sodium/sulfur cells with liquid and liquid/
+solid electrolyte, J. Power Sources 243 (2013) 758–765.
+[22] G.D. Smith, R.L. Jaﬀe, D.Y. Yoon, Force ﬁeld for simulations of 1, 2-dimethox-
+yethane and poly (oxyethylene) based upon ab initio electronic structure calcula-
+tions on model molecules, J. Phys. Chem. 97 (1993) 12752–12759.
+[23] D. Bedrov, O. Borodin, G.D. Smith, Molecular dynamics simulations of 1, 2-di-
+methoxyethane/water solutions. 1. conformational and structural properties, J.
+Phys. Chem. B 102 (1998) 5683–5690.
+[24] J.-C. Soetens, C. Millot, B. Maigret, Molecular dynamics simulation of
++
+−
+Li BF4 in
+ethylene carbonate, propylene carbonate, and dimethyl carbonate solvents, J. Phys.
+Chem. A 102 (1998) 1055–1061.
+[25] J. Wang, R.M. Wolf, J.W. Caldwell, P.A. Kollman, D.A. Case, Development and
+testing of a general amber force ﬁeld, J. Comput. Chem. 25 (9) (2004) 1157–1174.
+[26] S.J. Keasler, S.M. Charan, C.D. Wick, I.G. Economou, J.I. Siepmann, Transferable
+potentials for phase equilibria–united atom description of ﬁve-and six-membered
+cyclic alkanes and ethers, J. Phys. Chem. B 116 (36) (2012) 11234–11246.
+[27] W.L. Jorgensen, D.S. Maxwell, J. Tirado-Rives, Development and testing of the opls
+all-atom force ﬁeld on conformational energetics and properties of organic liquids,
+Fig. 8. (a) Simulation snapshot of molecules surrounding
++
+Li
+ions (gray spheres) in their
+ﬁrst solvation shell in system IVa. (b) Center-of-mass RDF and (c) the coordination
+number N r( ) of ions and solvent molecules around a single
++
+Li
+ion as a function of
+distance r in system IVa. Note the log-lin presentation in panel (b).
+C. Park et al.
+Journal of Power Sources 373 (2018) 70–78
+77
+
+<<PAGE 9>>
+J. Am. Chem. Soc. 118 (45) (1996) 11225–11236.
+[28] P.M. Anderson, M.R. Wilson, Developing a force ﬁeld for simulation of poly
+(ethylene oxide) based upon ab initio calculations of 1, 2-dimethoxyethane, Mol.
+Phys. 103 (1) (2005) 89–97.
+[29] Z. Li, O. Borodin, G.D. Smith, D. Bedrov, Eﬀect of organic solvents on
++
+Li
+ion sol-
+vation and transport in ionic liquid electrolytes: a molecular dynamics simulation
+study, J. Phys. Chem. B 119 (7) (2015) 3085–3096.
+[30] V. Lesch, Z. Li, D. Bedrov, O. Borodin, A. Heuer, The inﬂuence of cations on lithium
+ion coordination and transport in ionic liquid electrolytes: a md simulation study,
+Phys. Chem. Chem. Phys. 18 (1) (2016) 382–392.
+[31] O. Borodin, G.D. Smith, LiTFSI structure and transport in ethylene carbonate from
+molecular dynamics simulations, J. Phys. Chem. B 110 (2006) 4971–4977.
+[32] D.M. Seo, P.D. Boyle, R.D. Sommer, J.S. Daubert, O. Borodin, W.A. Henderson,
+Solvate structures and spectroscopic characterization of LiTFSI electrolytes, J. Phys.
+Chem. B 118 (47) (2014) 13601–13608.
+[33] O. Borodin, G.D. Smith, Development of many- body polarizable force ﬁelds for Li-
+battery applications: 2. LiTFSI-doped oligoether, polyether, and carbonate-based
+electrolytes, J. Phys. Chem. B 110 (12) (2006) 6293–6299.
+[34] O. Borodin, G. Smith,
++
+Li transport mechanism in oligo (ethylene oxide) s compared
+to carbonates, J. Solut. Chem. 36 (6) (2007) 803–813.
+[35] N.S. Barbosa, Y. Zhang, E.R. Lima, F.W. Tavares, E.J. Maginn, Development of an
+amber-compatible transferable force ﬁeld for poly (ethylene glycol) ethers (glymes),
+J. Mol. Model 23 (6) (2017) 194.
+[36] H. Farber, S. Petrucci, Kinetics of complexation of 18-crown-6 ether with lithium
+perchlorate in solvents of low permittivity. 1, 3-dioxolane and 1, 2-dimethox-
+yethane, J. Phys. Chem. 85 (10) (1981) 1396–1401.
+[37] B.B. Gurung, M.N. Roy, Study of densities, viscosities and ultrasonic speeds of
+binary mixtures containing 1, 2-dimethoxyethane and an alkan-l-ol at 298.15 K, J.
+Solut. Chem. 35 (12) (2006) 1587–1606.
+[38] B. Giner, H. Artigas, M. Haro, C. Lafuente, M. López, Viscosities of binary mixtures
+of 1, 3-dioxolane or 1, 4-dioxane with isomeric chlorobutanes, J. Mol. Liq. 129 (3)
+(2006) 176–180.
+[39] K. Hayamizu, Y. Aihara, S. Arai, C.G. Martinez, Pulse-gradient spin-echo 1H, 7Li,
+and 19F NMR diﬀusion and ionic conductivity measurements of 14 organic elec-
+trolytes containing LiN(SO2CF3)2, J. Phys. Chem. B 103 (3) (1999) 519–524.
+[40] D. van der Spoel, E. Lindahl, B. Hess, G. Groenhof, A.E. Mark, H.J. Berendsen,
+GROMACS: fast, ﬂexible, and free, J. Comput. Chem. 26 (16) (2005) 1701–1718.
+[41] H.J. Berendsen, J. v Postma, W.F. van Gunsteren, A. DiNola, J. Haak, Molecular
+dynamics with coupling to an external bath, J. Chem. Phys. 81 (8) (1984)
+3684–3690.
+[42] M. Parrinello, A. Rahman, Crystal structure and pair potentials: a molecular-dy-
+namics study, Phys. Rev. Lett. 45 (14) (1980) 1196.
+[43] M. Parrinello, A. Rahman, Polymorphic transitions in single crystals: a new mole-
+cular dynamics method, J. Appl. Phys. 52 (12) (1981) 7182–7190.
+[44] T. Darden, D. York, L. Pedersen, Particle mesh ewald: an n log (N) method for ewald
+sums in large systems, J. Chem. Phys. 98 (12) (1993) 10089–10092.
+[45] U. Essmann, L. Perera, M.L. Berkowitz, T. Darden, H. Lee, L.G. Pedersen, A smooth
+particle mesh ewald method, J. Chem. Phys. 103 (19) (1995) 8577–8593.
+[46] B. Hess, H. Bekker, H.J. Berendsen, J.G. Fraaije, et al., LINCS: a linear constraint
+solver for molecular simulations, J. Comput. Chem. 18 (12) (1997) 1463–1472.
+[47] B. Hess, P-LINCS: a parallel linear constraint solver for molecular simulation, J.
+Chem. Theory Comput. 4 (1) (2008) 116–122.
+[48] I.V. Leontyev, A.A. Stuchebrukhov, Polarizable mean-ﬁeld model of water for
+biological simulations with amber and charmm force ﬁelds, J. Chem. Theory
+Comput. 8 (9) (2012) 3207.
+[49] I. Leontyev, A. Stuchebrukhov, Electronic polarizability and the eﬀective pair po-
+tentials of water, J. Chem. Theory Comput. 6 (10) (2010) 3153.
+[50] Z. Kann, J. Skinner, A scaled-ionic-charge simulation model that reproduces en-
+hanced and suppressed water diﬀusion in aqueous salt solutions, J. Chem. Phys. 141
+(10) (2014) 104507.
+[51] Y. Marcus, The Properties of Solvents vol. 16, Wiley Chichester, 1998.
+[52] J.N. Canongia Lopes, A.A. Pádua, Molecular force ﬁeld for ionic liquids composed
+of triﬂate or bistriﬂylimide anions, J. Phys. Chem. B 108 (43) (2004) 16893–16898.
+[53] T. Méndez-Morales, J. Carrete, O. Cabeza, O. Russina, A. Triolo, L.J. Gallego,
+L.M. Varela, Solvation of lithium salts in protic ionic liquids: a molecular dynamics
+study, J. Phys. Chem. B 118 (3) (2014) 761–770.
+[54] L.X. Dang, Development of nonadditive intermolecular potentials using molecular
+dynamics: solvation of
++
+Li
+and
+−
+F
+ions in polarizable water, J. Chem. Phys. 96 (9)
+(1992) 6970–6977.
+[55] S. Risse, C.J. Jafta, Y. Yang, N. Kardjilov, A. Hilger, I. Manke, M. Ballauﬀ,
+Multidimensional operando analysis of macroscopic structure evolution in lithium
+sulfur cells by X-ray radiography, Phys. Chem. Chem. Phys. 18 (15) (2016)
+10630–10636.
+[56] M. Safari, C.Y. Kwok, L.F. Nazar, Transport properties of polysulﬁde species in li-
+thium-sulfur battery electrolytes: coupling of experiment and theory, ACS Cent. Sci.
+2 (2016) 560–568.
+[57] S. Lee, S.S. Park, Dielectric constants of binary mixtures of propylene carbonate
+with dimethyl carbonate and ethylene carbonate from molecular dynamics simu-
+lation: comparison between non-polarizable and polarizable force ﬁelds, Mol. Phys.
+111 (2) (2013) 277–285.
+[58] M. Neumann, O. Steinhauser, On the calculation of the frequency-dependent di-
+electric constant in computer simulations, Chem. Phys. Lett. 102 (6) (1983)
+508–513.
+[59] M. Neumann, Dipole moment ﬂuctuation formulas in computer simulations of polar
+systems, Mol. Phys. 50 (4) (1983) 841–858.
+[60] M. Neumann, O. Steinhauser, G.S. Pawley, Consistent calculation of the static and
+frequency-dependent dielectric constant in computer simulations, â€ŽMol. Phys. 52
+(1) (1984) 97–113.
+[61] I. Leontyev, A. Stuchebrukhov, Accounting for electronic polarization in non-po-
+larizable force ﬁelds, Phys. Chem. Chem. Phys. 13 (7) (2011) 2613–2626.
+[62] B.J. Palmer, Transverse-current autocorrelation-function calculations of the shear
+viscosity for molecular liquids, Phys. Rev. E 49 (1) (1994) 359.
+[63] M.J. Abraham, D. van der Spoel, E. Lindahl, B. Hess, GROMACS User Manual
+Version 5.1 vol. 2, (2016).
+[64] B. Hess, Determining the shear viscosity of model liquids from molecular dynamics
+simulations, J. Chem. Phys. 116 (1) (2002) 209–217.
+[65] R. Fort, W. Moore, Viscosities of binary liquid mixtures, Trans. Faraday Soc. 62
+(1966) 1112–1119.
+[66] I.-C. Yeh, G. Hummer, System-size dependence of diﬀusion coeﬃcients and visc-
+osities from molecular dynamics simulations with periodic boundary conditions, J.
+Phys. Chem. B 108 (40) (2004) 15873–15879.
+[67] I.-C. Yeh, G. Hummer, Diﬀusion and electrophoretic mobility of single-stranded
+RNA from molecular dynamics simulations, Biophys. J. 86 (2) (2004) 681–689.
+[68] M. Chintapalli, K. Timachova, K.R. Olson, S.J. Mecha, D. Devaux, J.M. DeSimone,
+N.P. Balsara, Relationship between conductivity, ion diﬀusion, and transference
+number in perﬂuoropolyether electrolytes, Macromolecules 49 (2016) 3508–3515.
+[69] J.-P. Hansen, I.R. McDonald, Theory of Simple Liquids, Elsevier, 1990.
+[70] D. Brouillette, D.E. Irish, N.J. Taylor, G. Perron, M. Odziemkowski, J.E. Desnoyers,
+Stable solvates in solution of lithium bis (triﬂuoromethylsulfone) imide in glymes
+and other aprotic solvents: phase diagrams, crystallography and raman spectro-
+scopy, Phys. Chem. Chem. Phys. 4 (24) (2002) 6063–6071.
+[71] W.A. Henderson, Glyme- lithium salt phase behavior, J. Phys. Chem. B 110 (26)
+(2006) 13177–13183.
+[72] V. Chaban, Solvation of lithium ion in dimethoxyethane and propylene carbonate,
+Chem. Phys. Lett. 631 (2015) 1–5.
+[73] F. Cataldo, A revision of the gutmann donor numbers of a series of phosphoramides
+including tepa, Eur. Chem. Bull. 4 (1–3) (2015) 92–97.
+[74] J. Zheng, M. Gu, H. Chen, P. Meduri, M.H. Engelhard, J.-G. Zhang, J. Liu, J. Xiao,
+Ionic liquid-enhanced solid state electrolyte interface (SEI) for lithium–sulfur bat-
+teries, J. Mater. Chem. A 1 (29) (2013) 8464–8470.
+[75] H.-S. Kim, C.-S. Jeong, Electrochemical properties of binary electrolytes for lithium-
+sulfur batteries, Bull. Korean Chem. Soc. 32 (10) (2011) 3682–3686.
+[76] N.-N. Rajput, V. Murugesan, Y. Shin, K.-S. Han, K.-C. Lau, J. Chen, J. Liu, L.-
+A. Curtiss, K.-T. Mueller, K.-A. Persson, Elucidating the solvation structure and
+dynamics of lithium polysulﬁdes resulting from competitive salt and solvent in-
+teractions, Chem. Mater 29 (8) (2017) 3375–3379.
+[77] V. Gutmann, Empirical parameters for donor and acceptor properties of solvents,
+Electrochim. Acta 21 (9) (1976) 661–670.
+[79] L. Saiz, E. Guardia, J. Padró, Dielectric properties of liquid ethanol. A computer
+simulation study, J. Chem. Phys. 113 (7) (2000) 2814–2822.
+[80] W.D. Cornell, P. Cieplak, C.I. Bayly, I.R. Gould, K.M. Merz, D.M. Ferguson,
+D.C. Spellmeyer, T. Fox, J.W. Caldwell, P.A. Kollman, A second generation force
+ﬁeld for the simulation of proteins, nucleic acids, and organic molecules, J. Am.
+Chem. Soc. 117 (19) (1995) 5179–5197.
+[81] K. Ueno, K. Yoshida, M. Tsuchiya, T. Mizuho, N. Tachikawa, K. Dokko,
+M. Watanabe, Glyme–lithium salt equimolar molten mixtures: concentrated solu-
+tions or solvate ionic liquids? J. Phys. Chem. B 116 (36) (2012) 11323–11331.
+C. Park et al.
+Journal of Power Sources 373 (2018) 70–78
+78

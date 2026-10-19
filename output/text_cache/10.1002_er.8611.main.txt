@@ -1,0 +1,1237 @@
+
+<<PAGE 1>>
+S P E C I A L I S S U E R E S E A R C H A R T I C L E
+Assessment of ionic liquid electrolytes for high-
+performance lithium-sulfur batteries using machine
+learning
+Aysegul Kilic
+|
+Ramazan Yildirim
+|
+Damla Eroglu
+Department of Chemical Engineering,
+Bogazici University, Istanbul, Turkey
+Correspondence
+Ramazan Yildirim and Damla Eroglu,
+Department of Chemical Engineering,
+Bogazici University, Istanbul 34342,
+Turkey.
+Email: yildirra@boun.edu.tr; eroglud@
+boun.edu.tr
+Summary
+To realize the full potential of the lithium-sulfur (Li-S) batteries, the shuttling of
+the polysulfide (PS) intermediates between the electrodes should be prevented.
+Moreover, inactive material mass in the battery pack should be minimized to
+increase the system-level energy density. In this respect, ionic liquids (IL) are get-
+ting increasing attention as they can reduce the PS shuttle mechanism with their
+limited PS solubility and functionality in lean electrolyte conditions. In this work,
+a dataset is constructed from the experimental literature data, which uses ILs as
+their electrolytes, to analyze the important cell variables and promising ILs for
+high cell- and system-level performances using association rule mining. The study
+reveals that with the help of ILs, high-performance cells with high sulfur loadings
+and low electrolyte-to-sulfur ratios can be attained. It is found that 1-ethyl-
+3-methylimidazolium bis(trifluoromethanesulfonyl)imide (EMI_TFSI) or ionic
+liquids with the n-methyl-n-propylpyrrolidinium (P13) cation lead to higher cell
+capacities, whereas Li(tetraglyme) bis(trifluoromethanesulfonyl)imide (Li[G3]
+_TFSI) is found promising for high system-level energy densities.
+Highlights
+• Machine learning method of association rule mining is used to investigate
+the effect of critical materials and cell design factors on the performance of
+Li-S batteries using ionic liquid electrolytes.
+• ARM was employed first for the experimental peak discharge capacity data
+and then for energy densities and specific energies predicted by a proposed
+system-level performance model.
+• IL electrolytes show promising results in peak discharge capacities at high
+sulfur loadings and low electrolyte-to-sulfur ratios; however, their cycling
+performance at high C-rates needs to be improved.
+K E Y W O R D S
+association rule mining, data mining, ionic liquids, lithium-sulfur batteries, machine
+learning, materials design
+Received: 11 February 2022
+Revised: 3 August 2022
+Accepted: 11 August 2022
+DOI: 10.1002/er.8611
+21716
+© 2022 John Wiley & Sons Ltd.
+Int J Energy Res. 2022;46:21716–21726.
+wileyonlinelibrary.com/journal/er
+
+<<PAGE 2>>
+1
+|
+INTRODUCTION
+With the increasing demand for high-range electric vehi-
+cles, post Li-ion batteries are drawing more attention as
+they theoretically provide higher specific capacities.
+Owing to a theoretical specific capacity of 1675 mAh/g
+and its abundance in nature, the sulfur cathode can pro-
+vide higher capacities at lower prices.1,2 However, sulfur
+is an insulating material; thus, additional conductive
+materials are needed to enable electrochemical reac-
+tions.3 In addition, the lithiation process of sulfur
+involves multi-step reactions where soluble polysulfide
+(PS) intermediates are formed. Shuttling of these inter-
+mediates between the negative and the positive elec-
+trodes
+rather
+than
+staying
+at
+the
+cathode
+surface
+considerably decreases the Coulombic efficiency, result-
+ing in active material loss and hence fast capacity decay.4
+To realize the real potential of the Li-S batteries, the
+described PS shuttle mechanism (PSM) should be pre-
+vented.5 Meanwhile, in order to increase the system-level
+performance of the battery, the dead mass (ie, electrolyte,
+carbon, etc.) in the cells should be minimized.6
+Various strategies have been adopted to solve the
+problems of the Li-S batteries and hence increase the
+practical capacities. Many studies focus on the positive
+electrode design for both restraining the PSs inside the
+cathode matrix and increasing the conductivity of the
+electrode.7-13 In addition, interlayers between the posi-
+tive and the negative electrodes are added to keep the
+PSs in the cathode side.14-18 However, these modifica-
+tions are not sufficient by themselves; the electrolyte
+system of the Li-S batteries should also be optimized for
+better performance. Ideal electrolytes need to be chemi-
+cally and electrochemically stable at a wide voltage
+range. In addition, they should have high Li-ion conduc-
+tivity and limited PS solubility to suppress the PSM.19,20
+1,3-dioxolane:1,2-dimethoxyethane (DOL:DME) mixture
+with LiNO3 and LiTFSI salts is the most commonly used
+electrolyte system in Li-S batteries. Although these
+organic electrolytes are good in terms of Li+ diffusion,
+their high PS solubilities hinder their effectiveness.7,21 In
+this respect, room temperature ionic liquids (RTIL) are
+getting significant attention as electrolyte solvents with
+limited PS solubility and mobility.22 Moreover, IL electro-
+lytes can also be used in high sulfur-loaded cells at lean
+amounts, which is a must for the Li-S batteries to have
+high energy densities.23 A techno-economical model per-
+formed by Eroglu et al. presented that electrolyte-starved
+cathodes with sulfur loadings higher than 7 mg/cm2 are
+required to achieve high-performance Li-S batteries.24
+Dörfler et al. also stated that to improve the energy den-
+sity of the cells, the electrolyte-to-sulfur (E/S) ratio
+should be below 4 mL/g; above this point, the electrolyte
+takes the largest volume/weight fraction in the cell.25
+Even though these limits differ to some extent in the lit-
+erature, the main conclusion is the same; the literature
+must focus on maximizing the battery performance at
+low E/S ratios and high sulfur loadings in the develop-
+ment of materials for the Li-S batteries.26
+An early study utilizing an RTIL showed that n-
+methyl-n-butyl-piperidinium
+bis(trifluoromethanesulfonyl)imide (PP14-RTIL) has a
+working potential range of 5.2 V  0.15 V (vs Li/Li+),
+which doubles the initial discharge capacity as compared
+to carbonate electrolytes.27 Hwa et al. fabricated Li-S cells
+with a sulfur loading of 6.3 mg/cm2 and showed that the
+presence of PP14-RTIL in the conventional electrolyte
+with an E/S ratio of 10 mL/g improved the Coulombic
+efficiency and limited the PS mobility and thus, the
+PSM.28 Zhang et al. found that solvate ionic liquids (SIL)
+mixed with ether electrolytes increased the capacity
+retention while suppressing the PSM and increasing the
+ionic mobility.29 Matsumae et al. also investigated the
+effect of the sulfur loading and the E/S ratio on the Li-S
+battery performance with cathodes having a sulfur load-
+ing of 5.7 mg/cm2 and an E/S ratio of 10 mL/g.30 In
+another
+study,
+the
+utilization
+of
+1-ethyl-
+3-methylimidazolium
+bis(trifluoromethylsulfonyl)imide
+(EMI-TFSI) with a fluorinated ether solvent was studied
+with different vol.% of ILs in the Li-S batteries.31 7:3 wt.%
+of Pyr1,2O1-TFSI (n-methoxyethyl-n-methylpyrrolidinium
+bis[trifluoromethane- sulfonyl]imide) and tri(ethylene
+glycol)dimethyl ether (TEGDME) was found to be the
+best ratio for both high capacity retention and Coulombic
+efficiency.32 Similar works were conducted by utilizing
+various ILs, electrode materials, and cell design variables
+in the Li-S batteries.33-37 However, the optimum cell
+design variables and promising ILs in terms of both cell-
+and system-level performances have not been identified
+yet. Compared to molecular solvents, the synthesis of ILs
+is more costly and hard38; hence, rather than a trial-and-
+error procedure, machine learning methods can be uti-
+lized to determine the promising cell design parameters
+and ILs without wasting time and material. Even though
+machine learning is highly valuable for such complex
+systems as batteries with a large number of reported data,
+studies investigating the effect of cell and materials
+design on the battery performance, specifically on the
+energy density, using ML are very limited. Jeschke and
+Johansson classified the Li-S electrolytes, including SILs,
+based on their Li2S8 solubilities using supervised machine
+learning.39 Our group performed some works for the Li-S
+and Li-oxygen batteries to understand the effects of mate-
+rials and design parameters on the performance and to
+identify the important patterns in the results reported in
+published literature. However, as far as we know, a
+KILIC ET AL.
+21717
+ 1099114x, 2022, 15, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.8611 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 3>>
+limited number of works have been published for the ML
+analysis of the use of IL electrolytes in the Li-S batteries.
+In this work, we collected 207 data points having
+experimental variables and discharge capacities from
+42 articles in the literature, which use ionic liquid elec-
+trolytes in the Li-S batteries to understand the effects of
+various factors, including IL factors, and identify the crit-
+ical issues and reveal the hidden patterns for high peak
+discharge capacities and energy densities at the system
+level using machine learning, namely association rule
+mining (ARM). ARM was employed first for the experi-
+mental peak discharge capacity data and then for energy
+densities predicted by a proposed system-level perfor-
+mance model.
+2
+|
+MATERIAL AND METHODS
+2.1
+|
+Data collection and preprocessing
+Web of Science database was used to collect the experi-
+mental articles reporting the use of ionic liquids as their
+liquid electrolytes in Li-S batteries; the application of ILs
+in solid electrolytes or cathode matrices was excluded.
+After the data collection step, the dataset was prepro-
+cessed to reduce inconsistencies and to select suitable
+variables (ie, those widely reported in the literature and
+influential on the performance), while the rarely reported
+variables such as electrode thicknesses and material
+properties were not included to have a statistically reli-
+able result. Similarly, the cells tested at temperatures
+higher than 30C were not considered here because those
+data were significantly different from the ones obtained
+at room temperature, yet, not in sufficient numbers to
+show the temperature effects. In the end, a dataset with
+244 data points from 42 articles, including important cell
+design variables and materials, was built. The data points
+in the dataset using only molecular solvents (37 data
+points), reported for comparison reasons, are not used in
+the analysis either. Consequently, our final dataset was
+composed of 207 data points; the final dataset, together
+with references, is given in Supporting Information (SI),
+while the variables and their alternatives (levels) are
+shown in Table 1.
+As seen in Table 1, there are 15 important variables
+in the dataset. Most of these variables are already categor-
+ical by their nature; the originally continuous variables
+were also categorized into intervals to be able to be used
+in the ARM analysis, which is more suitable for the cate-
+gorical data. Although an E/S ratio of 15 mL/g is high
+and a sulfur loading of 4 mg/cm2 is low to be the upper
+and lower limits of the low E/S ratio and high S loading
+classes,
+respectively,
+the
+range
+of
+the
+intervals
+is
+determined according to the distribution of the data
+points to have a statistically significant number of data in
+each class with the best representation of the patterns in
+the literature. The rarely used materials were categorized
+TABLE 1
+The variables and levels used in the analysis
+Factors
+Levels
+Electrolyte
+variables
+Ionic liquid
+C4dmim_TFSI,
+DEME_Others1,
+DEME_TFSI, EMI_TFSI,
+Li(G3)_Others1, Li(G3)
+_TFSI, Li(G4)_Others1,
+Li(G4)_TFSI, P1,2O1_TFSI,
+P13_Others1, P13_TFSI,
+P14_Others1, P14_TFSI,
+P1A3_TFSI, P2225_TFSI,
+PMIM_TFSI, PP13_TFSI,
+PP14_TFSI, TES_TFSI
+Molecular
+Solvent
+(MS)
+DME, DOL, DOL:DME,
+Fluorinated Ether, None,
+Others2, TEGDME
+IL/MS vol.%
+<50, 50, >50, 100
+MS salt
+LiTFSI, None, Others3
+MS additive
+Yes, None
+E/S ratio
+0-15.0, 15.0-30.0, >30.0
+Cathode
+variables
+Conductive
+material
+Acetylene Black, Carbon
+Black, Ketjen Black, None,
+Others4
+Encapsulation
+material
+Activated Carbon, Carbon
+Black, Carbon Nanotube,
+Graphene Oxide, Ketjen
+Black, Mesoporous Carbon,
+Nano Carbon, None,
+Others5, Porous Carbon
+Binder
+CMC, None, Others6, PVA,
+PVDF, SBR/CMC
+Sulfur wt.%
+0-50, 50-60, >60
+Conductive
+wt.%
+0, <20, 20, >20
+Encapsulation
+wt.%
+0, 1–20, 20-30, 30-35, >35
+Sulfur loading
+(mg/cm2)
+0-0.1, 1.0-1.5, 1.5-4.0, >4.0
+Others
+Anode
+Li metal, Modified Li anode
+Separator
+Glass, Polymer
+Note: Others1:FSI, Nitrate, trifluoromethanesulfonate, BETA, BF4,
+tris(pentafluoroethyl)trifluorophosphate, tricyanomethanide // Fluorinated
+Ethers: HFE, TFTFE, TTE // Others2: TEGDME:DOL, TMU, DMSO, ACN,
+TTE:DOL, DOL:ETFE, Methylisopropylsulfone // Others3: LiFSI, LiBF4,
+LiPF6, Li[BETA], LiODFB // Others4: Carbon Nanotube+Ketjenblack,
+Graphene+Carbon Black // Others5: Graphene+magnesium aluminate, N-
+doped mesoporous carbon // Others6: LiPAA, PAA, SBR, PAA/PVDF,
+PEDOT/PSS, PEO.
+21718
+KILIC ET AL.
+ 1099114x, 2022, 15, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.8611 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 4>>
+as “others” because no rule can be deduced from the
+results supported by only a few instances. As stated in
+the Introduction section, due to the insulating nature of
+sulfur, conductive materials should be added to the cath-
+odes. If these materials were chemically pretreated with
+sulfur before the cathode formation, they were reported
+as “Encapsulation Materials”, while physically treated
+materials were saved as “Conductive Materials”. As the
+performance metric, the peak discharge capacity (PDC)
+normalized to the sulfur amount (mAh/g S) was chosen
+because it shows how much of the theoretical capacity of
+sulfur cathodes is attained. In addition, the system-level
+energy density (Wh/L) and specific energy (Wh/kg), which
+are more relevant performance indicators in practice,
+were calculated using the modified version of the Battery
+Performance and Cost (BatPaC) model as described
+below and added to the dataset for the analysis.
+2.2
+|
+Calculation of system-level energy
+density and specific energy
+Here, we modified the BatPaC model, which was devel-
+oped by Argonne National Laboratory for the calculation
+of the system-level performances of Li-ion batteries,40 for
+the Li-S battery systems to estimate the system-level
+energy density and specific energy.41 In short, a one-
+dimensional electrochemical model calculates the area-
+specific impedance and overpotential of the cell compo-
+nents, specifically, negative and positive electrodes and
+their current collectors, together with the separator using
+the
+experimental
+inputs
+including
+PDCs,
+cathode
+wt. percentages, E/S ratios, and sulfur loadings. The cell
+voltage was determined by subtracting the total overpo-
+tential from the open circuit cell potential of 2.2 V. After-
+ward, the battery pack was designed according to the
+voltage, energy, and power requirements. The typical
+values of 80% and 50% of the degree of discharges were
+determined as the rated power and energy requirements,
+respectively. With the calculation of the required cell area
+and other cell variables, suitable packaging and thermal
+management
+components
+were
+determined.
+Conse-
+quently, the system-level energy densities and specific
+energies were calculated by taking all the system vari-
+ables into account. Although material properties such as
+carbon/electrolyte densities and conductivities are impor-
+tant input variables for the electrochemical model, as
+shown in Figure S1 and S2, the system-level perfor-
+mances were found to be rather insensitive to these fac-
+tors. In fact, the effect of these material properties on the
+energy density and specific energy is implicitly included
+in the model since these properties are highly effective on
+the PDCs and the PDC is the most determinative variable
+on the system-level performance. Hence, their effects on
+the system-level performance are taken into account with
+the variance in the PDC value. The default parameters,
+together with the governing equations used in the model,
+are given in SI.
+2.3
+|
+Modeling details
+ARM model was used to identify the single factor associa-
+tions between each variable and the performance metrics.
+First of all, the high class was defined by setting a mini-
+mum performance limit, either PDC, specific energy, or
+energy density, and the levels of each factor, as shown in
+Table 1, that can lead to that high class were analyzed
+using the ARM results. ARM model was developed using
+R Studio software and its apriori algorithm of arules pack-
+age.42,43 This algorithm provides support, confidence, and
+lift values calculated with the following equations, where
+A shows the count of a specific level of a factor, and B
+and N show the number of instances in the high class
+and the total dataset, respectively.
+Support ¼ A&B
+N ,
+Confidence ¼ A&B
+B
+,
+Lift ¼
+A&B
+B
+A
+N
+,
+In association rule mining, the strengths of the associa-
+tions are expressed in support, confidence, and lift rather
+than reporting an error value. Support and confidence
+show the most direct trends in the dataset where the frac-
+tion of a level with high performance in the entire and
+the high-performance datasets, respectively, are calcu-
+lated. On the other hand, more complex patterns can be
+found using lift values, which are calculated by the ratio
+of the confidence to the fraction of that level in the total
+dataset7,44; the lift values above one signify positive asso-
+ciations between that level and high performance since it
+is more frequently found in the high-class subset.45 Fur-
+thermore, higher lift values imply a higher probability of
+having better performances; this will be more evident in
+the next section when it is discussed on specific exam-
+ples. Typically, higher lift and support values indicate
+stronger associations.
+It should be noted that although cycling performance
+at high C-rates is highly important for the Li-S batteries,
+the cycle life data in the literature for ionic liquid electro-
+lytes
+are
+not
+sufficient
+(indicating
+some
+stability
+KILIC ET AL.
+21719
+ 1099114x, 2022, 15, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.8611 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 5>>
+problems) to get statistically valid conclusions. Hence,
+ARM analysis was applied only to PDC, energy density,
+and specific energy, considering that these performance
+measures are also relevant in the current stage of
+research.
+3
+|
+RESULTS AND DISCUSSION
+3.1
+|
+ARM results for peak discharge
+capacity
+The lowest capacity limit for the high-capacity subset was
+chosen as 800 mAh/g, and its ARM results are given in
+Table 2. This table was ranked with respect to the lift
+values as higher lift values present stronger associations
+between that factor and the high-class cells, while lift
+values below one imply negative correlations. Confidence
+and support are also given together with the count value,
+which is the number of cases satisfying the rule, as a
+more practical measure to see the significance of the
+results. Indeed, some of the entries with the highest lift
+values have only a few cases; hence, they cannot be gen-
+eralized with high confidence as a rule to follow. The
+calculation of support, confidence, and lift can be shown
+for EMI_TFSI as an example to better understand the
+results. The total number of data points in the dataset is
+207, while only 125 of them have PDCs ≥800 mAh/g,
+the high-class subset. On the other hand, 7 data points
+contain EMI_TFSI in their electrolytes, and 6 give high
+performances (count). Hence, support, confidence and
+lift values are found as 6/207 = 0.029, 6/125 = 0.0480
+and 0.0480/(7/207) = 1.42, respectively. As seen in the
+table, the electrolyte parameters, specifically the ionic liq-
+uid type, are at the top, indicating that they are very
+effective for providing high-capacity Li-S batteries. The
+rules or conclusions deduced for the factor effects can be
+refined further with slightly different use of ARM as fol-
+lows; the lower limit of the high-performance class is set
+to a different level (such as 800 to 1000 mAh/g, and so
+on) and ARM analysis is performed for each case. Since
+the number of data decreases with increasing lower limit
+(tighter performance requirement), the lift of a level pro-
+moting high performance should increase because the
+number of data satisfying this condition should remain
+constant or decrease less than the others. Hence, the
+increasing trend in the lift can be used as a further indi-
+cator of the positive effect of that level. Therefore, the
+TABLE 2
+Association rule mining (ARM) results for PDCs ≥800 mAh/g
+Factors
+Levels
+Support
+Confidence
+Lift
+Count
+IL_Abbreviation
+DEME_Others1
+0.0048
+0.0080
+1.66
+1
+IL_Abbreviation
+PMIM_TFSI
+0.0048
+0.0080
+1.66
+1
+IL_Abbreviation
+P1A3_TFSI
+0.0097
+0.0160
+1.66
+2
+Encapsulation_Material_Categorized
+Carbon Black
+0.0097
+0.0160
+1.66
+2
+Conductive_Material_Categorized
+Others4
+0.0097
+0.0160
+1.66
+2
+Anode_Categorized
+Modified Li anode
+0.0145
+0.0240
+1.66
+3
+IL_Abbreviation
+Li(G3)_TFSI
+0.0145
+0.0240
+1.66
+3
+Binder_Categorized
+CMC
+0.0386
+0.0640
+1.47
+8
+IL_Abbreviation
+EMI_TFSI
+0.0290
+0.0480
+1.42
+6
+IL_Abbreviation
+P13_Others1
+0.0290
+0.0480
+1.42
+6
+E/S_Ratio_Categorized
+0–15.0
+0.1111
+0.1840
+1.41
+23
+Encapsulation_Material_Categorized
+Carbon Nanotube
+0.0821
+0.1360
+1.41
+17
+S_Loading_Cat
+>4.0
+0.0966
+0.1600
+1.38
+20
+IL_Abbreviation
+Li(G4)_TFSI
+0.1159
+0.1920
+1.32
+24
+IL/Solvent_vol.%_Categorized
+<50
+0.1353
+0.2240
+1.32
+28
+Molecular_Solvent_Categorized
+DOL:DME
+0.1449
+0.2400
+1.31
+30
+Conductive_Material_Categorized
+Acetylene black
+0.1256
+0.2080
+1.30
+26
+IL_Abbreviation
+P13_TFSI
+0.0483
+0.0800
+1.27
+10
+Molecular_Solvent_Categorized
+Fluorinated ether
+0.0483
+0.0800
+1.27
+10
+Binder_Categorized
+None
+0.0435
+0.0720
+1.24
+9
+Conductive_Material_Categorized
+Ketjen Black
+0.0435
+0.0720
+1.24
+9
+21720
+KILIC ET AL.
+ 1099114x, 2022, 15, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.8611 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 6>>
+FIGURE 1
+Lift vs peak discharge
+capacity of ionic liquids as electrolytes
+FIGURE 2
+Lift vs peak discharge capacity of molecular solvents as electrolytes (A) and IL/MS vol.% in the electrolyte (B)
+FIGURE 3
+Lift vs peak discharge capacity of the E/S ratio for ionic liquid (A) and molecular solvent (B) electrolytes
+KILIC ET AL.
+21721
+ 1099114x, 2022, 15, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.8611 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 7>>
+limits for the high-capacity class were increased from
+800 to 1000, 1200 and 1400 mAh/g, and the trend for the
+lift of each factor was analyzed separately. The results, as
+lift vs capacity limit, are presented in Figures 1-4 as bub-
+ble graphs, where the bubble size represents the number
+of data points satisfying the conditions. Since the capaci-
+ties are cumulative (eg, if a PDC is greater than 1400
+mAh/g, it is also greater than 800 mAh/g), the size of the
+bubbles is expected to decrease, while the lift of the
+promising factor will increase.
+Figure 1 presents the ARM results showing the effect
+of ionic liquid type on the PDC. The lift values are very
+close for all ILs at PDCs ≥800 mAh/g meaning that most
+of the ILs work well for this capacity range. However,
+when the capacity limits are increased, promising ILs
+become more apparent as they differentiate with higher
+lifts.
+For
+example,
+P13_Others1,
+EMI_TFSI,
+and
+P13_TFSI seem to be much better for PDCs ≥1400 mAh/
+g,
+while
+P1,201_TFSI
+shows
+promise
+for
+PDCs ≥1200 mAh/g. Although P1A3_TFSI has a high
+lift value, we cannot deduce a conclusion since it has a
+low count. On the other hand, there are many SILs with
+Li(triglyme) or Li(tetraglyme) cations and TFSI or the
+other various anions in the literature. However, an asso-
+ciation between these SILs and high performance is not
+observed for PDCs ≥1200 mAh/g; the true ionic liquids
+performed better in high PDCs. As presented in Table 1,
+there are 19 different ionic liquids, which are combina-
+tions of 14 cation and 2 anion groups in the dataset; 92%
+of ionic liquids use TFSI as their anion group, and there
+are only a few studies investigating the effect of the anion
+group on the performance.46,47 The main reason for this
+preference is probably the known low PS solubility of the
+TFSI anionic group compared to other organic solvents.47
+However, further analysis of the ARM results shows that
+the use of different anion groups (BETA, FSI) for P13
+cation may be beneficial considering that the lift is
+almost tripled with the increasing performance measure
+(higher limits for the high-performance class); in other
+words, the use of the different anionic groups (BETA,
+FSI) resulted in high PDCs if P13 was used as the cation.
+This may suggest that the other anion groups should also
+be investigated for the other cations in addition to TFSI,
+which seems to be the default anion.
+Rather than using pure IL electrolytes, most of the
+data points in the dataset use additional molecular sol-
+vents (MS), which are generally organic solvents with
+certain salts.48,49 In fact, 64% of the data uses these sol-
+vents to decrease the viscosity of ILs to facilitate Li+ ion
+transfer in general. However, Figures 2A,B do not seem
+to support this practice; the use of suitable pure IL elec-
+trolytes works better as the “None” level has the highest
+lift at the highest capacity limit. On the other hand, if an
+MS is needed, DOL:DME solvent mixture should be used
+with the condition that IL/MS vol.% should not exceed
+50 vol.%. It was also found that the addition of various
+salts other than LiTFSI favors high PDCs, whereas LiNO3
+decreases the probability of having high PDCs in ionic
+liquid electrolytes (Figure S3).
+In Figures 3 and 4, the effect of the E/S ratio and sul-
+fur loading on the PDC of Li-S batteries with ionic liquid
+electrolytes are compared with the Li-S cells with molec-
+ular solvent electrolytes using the dataset we created in
+our previous work.7 In Figure 3A, it is shown that low
+E/S ratios are more favorable for reaching higher PDCs
+in ionic liquid electrolytes (Figure 3A); on the other
+hand, high E/S ratios are needed for high performance
+for non-IL electrolytes (Figure 3B). In addition, Figure 4
+indicates that ILs work well with high sulfur loadings,
+whereas Li-S cells with molecular solvents fail at high
+sulfur loadings. Figures 3 and 4 support that the use of IL
+electrolytes is beneficial in Li-S batteries; high PDCs can
+FIGURE 4
+Lift vs peak discharge capacity of sulfur loading (mg/cm2) for ionic liquid (A) and molecular solvent (B) electrolytes
+21722
+KILIC ET AL.
+ 1099114x, 2022, 15, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.8611 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 8>>
+be achieved at low E/S ratios and high S loadings for
+these cells. These positive improvements may be attrib-
+uted to the limited PS solubility with the utilization of
+the IL electrolytes.21
+The ARM results of the other variables are given in
+SI. It is found that the encapsulation of sulfur cathodes is
+still desired for high PDCs to further suppress the PSM
+and increase the electronic conductivity (Figure S4A).
+Carbon black and activated carbons should be used as
+encapsulation materials in the presence of the ionic liq-
+uid electrolytes. In addition, graphene/MgAl2O4 and N-
+doped mesoporous carbon seem to have a positive effect
+on the improvement of the Li-S cell performance.
+3.2
+|
+ARM results for system-level
+performance
+Although having a high PDC is important for a Li-S cell,
+more
+relevant
+performance
+indicators
+for
+practical
+applications of batteries are system-level gravimetric and
+volumetric energy densities.24,50,51 Especially for applica-
+tions like electric vehicles, the gravimetric energy density
+of the battery should be higher than 400 Wh/kg.52 How-
+ever, studies that investigate the system-level perfor-
+mance of Li-S batteries are very limited.53,54 Hence,
+herein we modified the BatPaC model to estimate the
+system-level energy density and specific energy of the
+Li-S batteries using the experimental PDCs and design
+factors such as the E/S ratio, sulfur loadings, S/C/binder
+wt%, etc. in the dataset. However, only half of the dataset
+reported these variables; hence, the total number of data
+points decreased from 207 to 102 for this analysis. As
+seen in Figures 5 and 6, the estimated energy densities
+are far below the requirements for commercial applica-
+tions. However, in order to develop some insight into
+building relatively high energy density Li-S cells, the
+ARM analysis was still conducted. The ARM analysis
+shows that low E/S ratios and high sulfur loadings are
+needed to increase the energy density and specific energy
+FIGURE 5
+Lift vs specific energy (Wh/kg) (A) and energy density (Wh/L) (B) of E/S ratio for ionic liquid electrolytes
+FIGURE 6
+Lift vs specific energy (Wh/kg) (A) and energy density (Wh/L) (B) of sulfur loading (mg/cm2) for ionic liquid electrolytes
+KILIC ET AL.
+21723
+ 1099114x, 2022, 15, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.8611 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 9>>
+at the system level for Li-S batteries with an ionic liquid
+electrolyte; this conclusion is in parallel with the discus-
+sions for the Li-S cells using regular electrolytes.55,56
+Tables 3 and S1 report the ARM analysis results for Spe-
+cific Energy ≥60 Wh/kg and Energy Density ≥60 Wh/L,
+respectively. As seen in the table, the cell design parame-
+ters are also effective in the system-level performances.
+Since the ionic liquid type does not frequently appear in
+Table 3 and the entire dataset used in the analysis is con-
+structed with ILs, we may say cell design variables are
+more important in terms of system-level energy density
+rather than the type of the IL. As supported by Table 3,
+the dead mass of the cell should be minimized to provide
+high energy density Li-S battery systems. Meanwhile, one
+of the highest lifts is obtained with E/S = 0-0.15 mL/g
+and sulfur loading higher than 4 mg/cm2, where we
+proved ILs are improving PDCs under these conditions.
+Hence, we may still conclude that ILs have a critical
+effect on the improvement of system-level performance.
+In addition, with lift values higher than one, Li(G4)_TFSI
+and P14_TFSI are found to be the best options for high
+system-level performance metrics. In addition, graphene
+oxide, ketjen black, and mesoporous carbons should be
+utilized as encapsulation materials when ionic liquid
+electrolytes are used.
+4
+|
+CONCLUSIONS
+In this study, we analyzed 207 data collected from
+42 experimental articles which use ILs as their liquid
+electrolytes to identify the patterns and hidden relations
+between the cell variables and the cell- and system-level
+performances of Li-S batteries using ARM. It was found
+that the type of the ionic liquid material is significant in
+achieving high PDCs, energy densities, and specific ener-
+gies. For instance, P13_TFSI and EMI_TFSI were shown
+to be promising for high PDCs, while Li(G3)_TFSI and
+P14_TFSI were found to be beneficial for high specific
+energy. The use of P13 cation with other anions also led
+to high performance. Furthermore, the addition of a sec-
+ondary solvent was not found to be favorable. On the
+TABLE 3
+Association rule mining (ARM) results for specific energies ≥60 Wh/kg
+Factors
+Levels
+Support
+Confidence
+Lift
+Count
+Conductive_Material_Categorized
+Others4
+0.010
+0.067
+6.80
+1
+Binder_Categorized
+CMC
+0.059
+0.400
+4.53
+6
+E/S_Ratio_Categorized
+0–15.0
+0.137
+0.933
+3.53
+14
+Conductive_Material_Categorized
+None
+0.059
+0.400
+3.40
+6
+Encapsulation_wt%_Categorized
+30–35
+0.059
+0.400
+3.40
+6
+Conductive_wt%_Categorized
+0
+0.059
+0.400
+2.40
+6
+S_Loading_Cat
+>4.0
+0.049
+0.333
+2.27
+5
+S_wt%_Categorized
+>60
+0.088
+0.600
+2.19
+9
+IL_Abbreviation
+Li(G4)_TFSI
+0.059
+0.400
+2.15
+6
+Encapsulation_Material_Categorized
+Graphene Oxide
+0.049
+0.333
+2.13
+5
+Encapsulation_Material_Categorized
+Ketjen Black
+0.059
+0.400
+1.94
+6
+Encapsulation_Material_Categorized
+Mesoporous carbon
+0.029
+0.200
+1.70
+3
+Electrolyte_Salt_Categorized
+None
+0.059
+0.400
+1.70
+6
+IL/Solvent_vol.%_Categorized
+100
+0.059
+0.400
+1.70
+6
+Molecular_Solvent_Categorized
+None
+0.059
+0.400
+1.70
+6
+Molecular_Solvent_Categorized
+DOL:DME
+0.078
+0.533
+1.60
+8
+IL/Solvent_vol.%_Categorized
+50
+0.049
+0.333
+1.55
+5
+Electrolyte_Additive_Categorized
+Yes
+0.049
+0.333
+1.48
+5
+S_Loading_Cat
+1.5–4.0
+0.088
+0.600
+1.42
+9
+Conductive_wt%_Categorized
+20
+0.049
+0.333
+1.36
+5
+Separator_Categorized
+Polymer
+0.118
+0.800
+1.36
+12
+Encapsulation_wt%_Categorized
+0–20
+0.039
+0.267
+1.30
+4
+Binder_Categorized
+Others6
+0.029
+0.200
+1.28
+3
+IL_Abbreviation
+P14_TFSI
+0.078
+0.533
+1.21
+8
+21724
+KILIC ET AL.
+ 1099114x, 2022, 15, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.8611 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 10>>
+other hand, adding salt (especially specialized new salts)
+into the IL electrolyte was reported to be advantageous,
+whereas the addition of LiNO3 was found to be unneces-
+sary. Encapsulated sulfur cathodes, specifically carbon
+black- and activated carbon-based ones, led to higher
+PDCs in Li-S cells with IL electrolytes. This study also
+showed the importance of developing ionic liquid electro-
+lytes for Li-S batteries with their effectiveness in lean
+electrolyte conditions at high sulfur loadings. Our results
+suggest that electrolyte and electrode design is critical to
+minimize inactive materials and maximize the active
+material loading in Li-S batteries for high performance.
+In this respect, machine learning is a cost- and time-
+effective method to reveal the associations between the
+materials and design variables and the Li-S battery
+performance.
+DATA AVAILABILITY STATEMENT
+Data available on request from the authors.
+ORCID
+Aysegul Kilic
+https://orcid.org/0000-0001-7718-2015
+Ramazan Yildirim
+https://orcid.org/0000-0001-5077-
+5689
+Damla Eroglu
+https://orcid.org/0000-0002-7122-8278
+REFERENCES
+1. Soni CB, Vineeth SK, Kumar V. Unveiling the physiochemical
+aspects of the matrix in improving sulfur-loading for room-
+temperature sodium–sulfur batteries. Adv Energy Sustain. Res.
+2021;2:2100157.
+2. Barghamadi M, Kapoor A, Wen C. A review on Li-S batteries
+as a high efficiency rechargeable lithium battery. J Electrochem
+Soc. 2013;160:A1256-A1263.
+3. Han X, Cai J, Wang X, Liu Y, Zhou H, Meng X. Understanding
+effects of conductive additives in lithium-sulfur batteries. Mater
+Today Commun. 2021;26:101934.
+4. RF S. Lithium-sulfur batteries poised for leap. Science (80).
+2018;359:1080.
+5. Evers S, Nazar LF. New approaches for high energy density
+lithium–sulfur battery cathodes. Acc Chem Res. 2013;46:1135-
+1143.
+6. Chen S, Dai F, Cai M. Opportunities and challenges of high-
+energy lithium metal batteries for electric vehicle applications.
+ACS Energy Lett. 2020;5:3140-3151.
+7. Kilic A, Odabas¸ı Ç, Yildirim R, Eroglu D. Assessment of critical
+materials and cell design factors for high performance lithium-
+sulfur batteries using machine learning. Chem Eng J. 2020;390:
+124117.
+8. Zhang N, Yang Y, Feng X, et al. Sulfur encapsulation by MOF-
+derived CoS2embedded in carbon hosts for high-performance
+Li–S batteries. J Mater Chem A. 2019;7:21128-21139.
+9. Shao Q, Guo D, Wang C, Chen J. Yolk-shell structure MnO2@-
+hollow carbon nanospheres as sulfur host with synergistic
+encapsulation of polysulfides for improved Li–S batteries.
+J Alloys Compd. 2020;842:155790.
+10. Chen K, Cao J, Lu Q, et al. Sulfur nanoparticles encapsulated
+in reduced graphene oxide nanotubes for flexible lithium-sulfur
+batteries. Nano Res. 2018;11:1345-1357.
+11. Ren W, Xu L, Zhu L, Wang X, Ma X, Wang D. Cobalt-doped
+vanadium nitride yolk–Shell Nanospheres @ carbon with phys-
+ical and chemical synergistic effects for advanced Li–S batte-
+ries. ACS Appl Mater. Interfaces. 2018;10:11642-11651.
+12. Liu J, Xiao S, Liu X, et al. Encapsulating Co9S8 nanocrystals
+into
+CNT-reinforced
+N-doped
+carbon
+nanofibers
+as
+a
+chainmail-like electrocatalyst for advanced Li-S batteries with
+high sulfur loading. Chem Eng J. 2021;423:130246.
+13. Liu G, Feng K, Cui H, Li J, Liu Y, Wang M. MOF derived in-
+situ carbon-encapsulated Fe3O4@C to mediate polysulfides
+redox for ultrastable lithium-sulfur batteries. Chem Eng J. 2020;
+381:122652.
+14. Jeong YC, Kim JH, Nam S, Park CR, Yang SJ. Rational Design
+of
+Nanostructured
+Functional
+Interlayer/separator
+for
+advanced Li-S batteries. Adv Funct Mater. 2018;28:1707411.
+15. Hu N, Lv X, Dai Y, Fan L, Xiong D, Li X. SnO2/reduced gra-
+phene oxide interlayer mitigating the shuttle effect of Li–S bat-
+teries. ACS Appl Mater Interfaces. 2018;10:18665-18674.
+16. Yi R, Liu C, Zhao Y, et al. A light-weight free-standing gra-
+phene foam-based interlayer towards improved Li-S cells. Elec-
+trochim Acta. 2019;299:479-488.
+17. Yu X, Zhou G, Cui Y. Mitigation of shuttle effect in Li–S bat-
+tery using a self-assembled ultrathin molybdenum disulfide
+interlayer. ACS Appl Mater Interfaces. 2019;11:3080-3086.
+18. Zhang J, Ma W, Feng Z, et al. P-doped BN nanosheets deco-
+rated graphene as the functional interlayer for Li–S batteries.
+J Energy Chem. 2019;39:54-60.
+19. Scheers J, Fantini S, Johansson P. A review of electrolytes for
+lithium–Sulphur batteries. J Power Sources. 2014;255:204-218.
+20. Chen L, Shaw LL. Recent advances in lithium–sulfur batteries.
+J Power Sources. 2014;267:770-783.
+21. Barghamadi M, Best AS, Bhatt AI, et al. Lithium–sulfur
+batteries—the solution is in the electrolyte, but is the electro-
+lyte a solution? Energ Environ Sci. 2014;7:3902-3920.
+22. Gu S, Sun C, Xu D, Lu Y, Jin J, Wen Z. Recent Progress in liq-
+uid electrolyte-based Li–S batteries: shuttle problem and solu-
+tions. Electrochem Energy Rev. 2018;1:599-624.
+23. Zhao M, Li B-Q, Zhang X-Q, Huang J-Q, Zhang Q, Cent ACS.
+A perspective toward practical lithium–sulfur batteries. Science.
+2020;6:1095-1104.
+24. Eroglu D, Zavadil KR, Gallagher KG. Critical link between
+materials chemistry and cell-level Design for High Energy Den-
+sity and low Cost Lithium-Sulfur Transportation Battery.
+J Electrochem Soc. 2015;162:A982-A990.
+25. Dörfler S, Althues H, Härtel P, Abendroth T, Schumm B,
+Kaskel S. Challenges and key parameters of lithium-sulfur bat-
+teries on pouch cell level. Joule. 2020;4:539-554.
+26. Peng H-J, Huang J-Q, Cheng X-B, Zhang Q. Review on high-
+loading and high-energy lithium-sulfur batteries. Adv Energy
+Mater. 2017;7:1700260.
+27. Yuan LX, Feng JK, Ai XP, Cao YL, Chen SL, Yang HX.
+Improved dischargeability and reversibility of sulfur cathode in
+a novel ionic liquid electrolyte. Electrochem Commun. 2006;8:
+610-614.
+28. Hwa Y, Seo HK, Yuk J, Cairns EJ. Freeze-dried sulfur–
+graphene oxide–carbon nanotube nanocomposite for high
+KILIC ET AL.
+21725
+ 1099114x, 2022, 15, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.8611 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 11>>
+sulfur-loading lithium/sulfur cells. Nano Lett. 2017;17:7086-
+7094.
+29. Zhang S, Ikoma A, Li Z, et al. Optimization of pore structure of
+Cathodic carbon supports for solvate ionic liquid electrolytes
+based lithium–sulfur batteries. ACS Appl Mater Interfaces.
+2016;8:27803-27813.
+30. Matsumae Y, Obata K, Ando A, et al. Effects of sulfur loading,
+cathode porosity, and electrolyte amount on Li-S battery per-
+formance with solvate ionic liquid electrolyte. Electrochemistry.
+2019;87(5):254-259.
+31. Lu H, Chen Z, Du H, et al. The enhanced performance of lith-
+ium sulfur battery with ionic liquid-based electrolyte mixed
+with fluorinated ether. Ionics (Kiel). 2019;25:2685-2691.
+32. Wu F, Zhu Q, Chen R, et al. Ionic liquid-based electrolyte with
+binary lithium salts for high performance lithium–sulfur batte-
+ries. J Power Sources. 2015;296:10-17.
+33. Seki S, Serizawa N, Takei K, Umebayashi Y, Tsuzuki S,
+Watanabe M. Long-cycle-life lithium-sulfur batteries with lith-
+ium solvate ionic liquids. Electrochemistry. 2017;85:680-682.
+34. Yan Y, Yin Y-X, Xin S, Su J, Guo Y-G, Wan L-J. High-safety
+lithium-sulfur battery with prelithiated Si/C anode and ionic
+liquid electrolyte. Electrochim Acta. 2013;91:58-61.
+35. Yan Y, Yin Y, Guo Y, Wan L-J. Effect of cations in ionic liquids
+on the electrochemical performance of lithium-sulfur batteries.
+Sci China Chem. 2014;57:1564-1569.
+36. Dokko K, Tachikawa N, Yamauchi K, et al. Solvate ionic liquid
+electrolyte for Li–S batteries. J Electrochem Soc. 2013;160:
+A1304-A1310.
+37. Barghamadi M, Best AS, Bhatt AI, et al. Effect of LiNO3 addi-
+tive and pyrrolidinium ionic liquid on the solid electrolyte
+interphase in the lithium–sulfur battery. J Power Sources. 2015;
+295:212-220.
+38. Werner S, Haumann M, Wasserscheid P. Ionic liquids in chem-
+ical engineering. Annu Rev Chem Biomol Eng. 2010;1:203-230.
+39. Jeschke S, Johansson P. Supervised machine learning-based
+classification of LiS battery electrolytes. Batter Supercaps.
+2021;4:1156.
+40. Nelson PA, Ahmed S, Gallagher KG, Dees DW. Modeling the
+performance and cost of lithium-ion batteries for electric-drive
+vehicles. No. ANL/CSE-19/2. Argonne National Lab.(ANL),
+Argonne, IL (United States). 2019.
+41. Bilal HM, Eroglu D. Assessment of Li-S battery performance as
+a function of electrolyte-to-sulfur ratio. J Electrochem Soc. 2021;
+168:30502.
+42. Hahsler M, Gruen B, Hornik K. Arules- a computational envi-
+ronment for mining association rules and frequent item sets.
+J Stat Softw. 2005;14:1.
+43. RStudio Team. 2016.
+44. Kilic A, Eroglu D, Yildirim R. Determining the key perfor-
+mance factors in lithium-oxygen batteries using machine learn-
+ing. J Electrochem Soc. 2021;168:090544.
+45. Hussein N, Alashqur A, Sowan BI. Using the interestingness
+measure lift to generate association rules. J Adv Comput Sci
+Technol. 2015;4:156.
+46. Kazazi M, Vaezi MR, Kazemzadeh A. Improving the self-
+discharge behavior of sulfur-polypyrrole cathode material
+by LiNO3 electrolyte additive. Ionics (Kiel). 2014;20:1291-
+1300.
+47. Barghamadi M, Best AS, Bhatt AI, et al. Effect of anion on
+behaviour of Li-S battery electrolyte solutions based on N-
+methyl-N-butyl-Pyrrolidinium ionic liquids. Electrochim Acta.
+2015;180:636-644.
+48. Meisner QJ, Rojas T, Glossmann T, et al. Impact of co-solvent
+and LiTFSI concentration on ionic liquid-based electrolytes for
+Li-S battery. J Electrochem Soc. 2020;167:70528.
+49. Wu F, Zhu Q, Chen R, Chen N, Chen Y, Li L. A safe electro-
+lyte with counterbalance between the ionic liquid and
+Tris(ethylene glycol)dimethyl ether for high performance
+lithium-sulfur
+batteries.
+Electrochim
+Acta.
+2015;184:
+356-363.
+50. Xue W, Miao L, Qie L, et al. Gravimetric and volumetric energy
+densities of lithium-sulfur batteries. Curr Opin Electrochem.
+2017;6:92-99.
+51. Li G, Lei W, Luo D, et al. Stringed “tube on cube” nanohybrids
+as
+compact
+cathode
+matrix
+for
+high-loading
+and
+lean-
+electrolyte lithium–sulfur batteries. Energ Environ Sci. 2018;11:
+2372-2381.
+52. Dörfler S, Walus S, Locke J, et al. Recent Progress and emerg-
+ing application areas for lithium–sulfur battery technology.
+Energ Technol. 2021;9:2000694.
+53. Cheng L, Curtiss LA, Zavadil KR, Gewirth AA, Shao Y,
+Gallagher KG. Sparingly solvating electrolytes for high energy
+density lithium–sulfur batteries. ACS Energy Lett. 2016;1:
+503-509.
+54. Bhargav A, He J, Gupta A, Manthiram A. Lithium-sulfur batte-
+ries: attaining the critical metrics. Joule. 2020;4:285-291.
+55. Sun K, Matarasso AK, Epler RM, et al. Effect of electrolyte on
+high sulfur loading Li-S batteries. J Electrochem Soc. 2018;165:
+A416-A423.
+56. Chung S-H, Luo L, Manthiram A. TiS2–polysulfide hybrid
+cathode with high sulfur loading and low electrolyte consump-
+tion for lithium–sulfur batteries. ACS Energy Lett. 2018;3:
+568-573.
+SUPPORTING INFORMATION
+Additional supporting information can be found online
+in the Supporting Information section at the end of this
+article.
+How to cite this article: Kilic A, Yildirim R,
+Eroglu D. Assessment of ionic liquid electrolytes
+for high-performance lithium-sulfur batteries using
+machine learning. Int J Energy Res. 2022;46(15):
+21716‐21726. doi:10.1002/er.8611
+21726
+KILIC ET AL.
+ 1099114x, 2022, 15, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.8611 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

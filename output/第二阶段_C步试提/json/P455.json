@@ -1,0 +1,41 @@
+{
+  "编号": "P455",
+  "电解液": {
+    "E1": {"名称": "高 Li+ 浓度（标准）", "配方": "1 M LiTFSI + 0.25 M LiNO3，DOL/DME 1:1 v/v"},
+    "E2": {"名称": "低 Li+ 浓度", "配方": "0.1 M LiTFSI + 0.075 M LiNO3，DOL/DME 1:1 v/v"},
+    "E3": {"名称": "0.05 M LiTFSI + 0.025 M LiNO3", "配方": "DOL/DME 1:1 v/v"},
+    "E4": {"名称": "E3 + 0.015 M LiTF", "配方": "0.05 M LiTFSI + 0.025 M LiNO3 + 0.015 M LiTF，DOL/DME 1:1 v/v"},
+    "E5": {"名称": "高给体数溶剂（DMI / HMPA / DMA）", "配方": "SI，摘录中未见具体配方"}
+  },
+  "条件": {
+    "C1": {"正极": "S/C45/PVDF 60:20:20", "硫载量": "3.5 ± 0.3 mg cm-2", "硫含量": "极片 60 wt%", "E/S": "2.5", "电解液体积": "", "面积": "",
+           "锂厚": "600 µm", "N/P": "", "倍率": "0.05C", "1C定义": "1675 mA g-1", "温度": "室温", "电池": "扣式",
+           "原句": "All cells were tested at 0.05 C and at a mass loading of ~3.5 mg cm-2 and E/S ratio of 2.5."}
+  },
+  "比较": [
+    {"A": "E2", "B": "E1", "条件": "C1", "层": "C", "改变因素": ["盐浓度", "LiNO3"],
+     "溶剂化依据": "",
+     "指标": [
+       {"指标": "阻抗", "取值点": "operando EIS：电荷转移电阻 Rct", "A": "<500", "B": ">2000", "单位": "Ω", "方向": "A更好", "来源": "正文",
+        "原句": "In terms of magnitude, Rct represented the largest difference between the low (<500 ohm) and high Li ion (>2000 ohm) compositions."},
+       {"指标": "阻抗", "取值点": "operando EIS：电解液电阻 Re 峰值", "A": "约 100", "B": "约 1/3（≈35）", "单位": "Ω", "方向": "A更差", "来源": "正文",
+        "原句": "In the case of low Li ion composition, Re peaked at ∼100 ohm, nearly triple that of the high concentration electrolyte."},
+       {"指标": "过电位或动力学", "取值点": "第一次放电第二平台电压", "A": "1.97–1.98", "B": "1.97–1.98", "单位": "V", "方向": "差异小", "来源": "正文",
+        "原句": "Both high and low Li ion concentration cells were able to enter into the second discharge plateau with a voltage of 1.98-1.97 V."}
+     ]},
+    {"A": "E5", "B": "E1", "条件": "C1", "层": "C", "改变因素": ["溶剂种类"],
+     "溶剂化依据": "作者：高给体数溶剂溶解能力更强（作者命名）",
+     "指标": [
+       {"指标": "其他", "取值点": "贫液（E/S 2.5）放电性能", "A": "", "B": "", "单位": "", "方向": "差异小", "来源": "SI 图（文字给方向）",
+        "原句": "As expected, when solvents with higher solvating power such as 1,3-dimethyl-2- imidazolidinone, hexamethylphosphoramide, or dimethyl- acetamide were used at E/S of 2.5 µL mgs -1, no notable performance improvement was observed (Figure S8)."}
+     ]},
+    {"A": "E4", "B": "E3", "条件": "C1", "层": "C", "改变因素": ["盐阴离子"], "溶剂化依据": "",
+     "指标": [
+       {"指标": "过电位或动力学", "取值点": "放电电压平台", "A": "", "B": "", "单位": "V", "方向": "无法判断", "来源": "仅图", "原句": "",
+        "备注": "Fig. 7 对比两者放电曲线，文字未直接逐对比较；作者称自己方案的平台高于其他文献的同 E/S 研究"},
+       {"指标": "循环保持率或寿命", "取值点": "稳定循环圈数", "A": "约 9 圈", "B": "", "单位": "圈", "方向": "无法判断", "来源": "SI 图",
+        "原句": "This is evidenced by the short cycle life, where we observed stable cycling for only 9 cycles (Figure S14)."}
+     ]}
+  ],
+  "备注": "机理型（贫液 E/S 2.5 下第一次放电的过电位来源，operando EIS）；几乎没有循环数据，Q1 无法判断。值得注意：作者明写在贫液下高给体数溶剂无明显改善（与'高 DN 在贫液下更好'的说法相冲突，可作矛盾对检索线索）。"
+}

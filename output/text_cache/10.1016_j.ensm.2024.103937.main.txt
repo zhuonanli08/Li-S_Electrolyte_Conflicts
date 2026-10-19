@@ -1,0 +1,941 @@
+
+<<PAGE 1>>
+Confined biomimetic catalysts boost LiNO3-free lithium-sulfur batteries via
+enhanced LiTFSI decomposition
+Yangyang Dong a,1, Mengqi Wu c,1, Dong Cai a,d,*, Peng Ying a, Hongtian Ning a, Meiling Shu a,
+Shuo Yang a, Xuemei Zhou a, Huagui Nie a, Duo Chen b,*, Ruqian Lian c,*, Zhi Yang a,d,*
+a Key Laboratory of Carbon Materials of Zhejiang Province, Wenzhou University, Wenzhou, 325035, China
+b Jiangsu Key Laboratory of Electrochemical Energy Storage Technologies, College of Materials Science and Technology, Nanjing University of Aeronautics and
+Astronautics, Nanjing, 210016, China
+c Key Laboratory of Physics and Technology for Advanced Batteries (Ministry of Education), College of Physics, Jilin University, Changchun, 130012 China
+d Institute of Industrial Carbon Materials and Hydrogen Energy Technology of Wenzhou University, Wenzhou University, Wenzhou, 325035, China
+A R T I C L E I N F O
+Keywords:
+Lithium–sulfur battery
+LiNO3-free electrolyte
+LiTFSI decomposition
+Sulfur conversion reaction
+High sulfur loading and lean electrolyte
+A B S T R A C T
+Lithium-sulfur batteries face a critical challenge: LiNO3 limits the electrochemical stability window of electrolyte
+and poses safety risks. This study presents FePC@NH2−MIL-68, a biomimetic enzyme catalyst stable in ether-
+based electrolytes, to address these issues, which can replace LiNO3 and facilitate Li-anion decomposition.
+Theoretical and spectroscopic investigations show it promotes LiTFSI decomposition, forms robust CEI and SEI
+interfaces, and enhances sulfur conversions. Consequently, the FePC@NH2−MIL-68 cell, without LiNO3 additive,
+delivers a high discharge capacity of 1549 mAh g−1 at 0.2 C and a low capacity decay rate of 0.067% over 1000
+cycles at 1.5 C. Even under high sulfur loading of 7.9 mg cm−2 and low electrolyte-to-sulfur ratio of 5.5 μL mg−1,
+the cells maintain 720 mAh g−1. This work emphasizes that in developing sulfur conversion catalysts, special
+attention must be paid to their effects on other lithium salt components, which provides a guidance for new
+catalysts design for metal-sulfur batteries.
+1. Introduction
+The widespread adoption of portable electronics, consumer devices,
+and large-scale grid energy storage systems has driven the demand for
+high-performance and long-cycle-life batteries [1–3]. Lithium sulfur
+(Li-S) batteries, which could theoretically achieve a high energy density
+of 2600 Wh kg−1 based on the stepwise conversion reaction of S8 with
+Li+, are considered as a next-generation energy storage candidate [4–6].
+However, most these batteries reported to date exhibit unsatisfactory
+Coulombic efficiency during cycling, typically ranging from 95% to 98%
+[7–9]. This falls short of commercial Li-ion batteries (>99.9%), leading
+to rapid capacity decay and severely limiting cycling lifespan [10,11].
+The primary factors contributing to the Coulombic efficiency limitations
+in Li-S batteries are the lithium polysulfide (LiPS) shuttle effect and
+lithium anode erosion [12–14]. The LiPS shuttle effect triggers irre-
+versible sulfur conversion reactions, resulting in the loss of active sulfur
+over time [15–17]. Meanwhile, lithium anode erosion causes uneven Li
+plating/stripping and accelerates the depletion of active Li [18,19].
+Consequently, urgent measures that aimed at suppressing the LiPS
+shuttle effect and regulating lithium deposition are required to mitigate
+these issues.
+To address these challenges, Mikhaylik and Akridge first proposed
+lithium nitrate (LiNO3) as an electrolyte additive in Li-S batteries in
+2008 [20]. This innovation significantly boosted Coulombic efficiency
+from below 80% to above 95%, and in some instances, nearly 100%. The
+primary mechanism behind this improvement involves LiNO3 promot-
+ing the formation of a stable solid electrolyte interface (SEI) layer be-
+tween the lithium anode and the electrolyte [21,22]. This SEI layer
+enhances the stability of the lithium anode, prevents further electrolyte
+decomposition, reduces self-discharge, inhibits the lithium polysulfide
+(LiPS) shuttle effect, and thereby improves Coulombic efficiency [23,
+24]. This groundbreaking work has spurred further research into
+enhancing the performance and stability of Li-S batteries [25]. Recent
+studies have proposed that NO3
+−
+participates in the solvation shell,
+promoting the cleavage of C-F bonds in TFSI−, and further forming LiF
+[26]. Meanwhile, LiNO3 can also create a protective LixNOy layer on the
+* Corresponding authors.
+E-mail addresses: caidong@wzu.edu.cn (D. Cai), chenduo@nuaa.edu.cn (D. Chen), rqlian@hbu.edu.cn (R. Lian), yangzhi@wzu.edu.cn (Z. Yang).
+1 These authors contributed equally.
+Contents lists available at ScienceDirect
+Energy Storage Materials
+journal homepage: www.elsevier.com/locate/ensm
+https://doi.org/10.1016/j.ensm.2024.103937
+Received 9 September 2024; Received in revised form 25 November 2024; Accepted 29 November 2024
+Energy Storage Materials 74 (2025) 103937 
+Available online 1 December 2024 
+2405-8297/© 2024 Elsevier B.V. All rights are reserved, including those for text and data mining, AI training, and similar technologies. 
+
+<<PAGE 2>>
+cathode, known as the cathode-electrolyte interphase (CEI) [27]. This
+layer could potentially control the decomposition of lithium salts and
+prevent the reduction of LiPS on the cathode [28]. However, LiNO3
+limits the electrochemical stability window of the electrolyte [29], with
+deeper discharges causing more irreversible nitrate reduction [30] and
+adversely affecting the redox reversibility of the sulfur cathode [31].
+Most importantly, in the future commercialization process of Li-S bat-
+teries, large pouch cells or cylindrical cells require a significant amount
+of electrolyte, leading to a substantial amount of LiNO3 being added
+[32]. If the internal temperature of the battery runaway, the carbon/-
+sulfur composite materials present in the cathode can chemically react
+with LiNO3, potentially forming hazardous gunpowder that significantly
+increases the risk of explosions [33]. Even if an explosion does not occur
+initially, a battery fire could pose a subsequent explosion risk (Scheme
+1). Therefore, there is an urgent need to find a replacement material that
+can simultaneously form an in-situ protective layer on the Li anode and
+promote the conversion of LiPSs at the cathode, thereby enhancing the
+overall performance of Li-S batteries [34].
+Unfortunately, few studies have directly replaced LiNO3 while
+forming stable CEI/SEI [35]. Archer et al. demonstrated using multi-
+dentate molecule (SiCl4) as a replacement to form a stable SEI [36].
+Catalysts, such as black phosphorus quantum dots, show promise as
+alternatives, which were found to catalyze LiPS conversion and main-
+tained CE >98% when LiNO3 was omitted from the battery electrolyte
+[37]. However, most reports on “LiNO3 mimic” are merely focused on
+forming a stable CEI/SEI or accelerating the conversion of LiPSs, but
+neglect the interaction between LiNO3 and LiTFSI. Interestingly, LiNO3,
+LiTFSI and LiPS are all Li salts in the Li-S system and the design of LiPS
+conversion catalysts offers a new approach to replace LiNO3 for LiTFSI
+decomposition. Metal–organic frameworks (MOFs) represent a new
+class of organic–inorganic hybrid materials [38], which have attractive
+characteristics, such as chemical tunability, high surface area and per-
+manent porosity [39]. Recent research has shown that loading enzymes
+or organometallic small molecules into MOFs can mimic enzyme active
+centers to achieve biomimetic catalysis [40]. For example, Zhou et al.
+successfully loaded lipase into ZIF-8 MOF, observing significant im-
+provements in enzyme activity and stability [41]. Farha et al. con-
+structed iron porphyrin active centers mimicking peroxidase in NU-1000
+MOF, demonstrating excellent catalytic activity for hydrogen peroxide
+decomposition [42]. Combining these findings with our previous works,
+we believe that MOF-based biomimetic enzyme catalysts have excellent
+potential for promoting the decomposition of both LiTFSI and LiPSs.
+Herein, we have successfully encapsulated iron(II) phthalocyanine
+(FePC) within amino-functionalized MIL-68(In) MOF to construct an
+FePC@NH2−MIL-68 catalyst for advanced Li–S batteries. Through a
+comprehensive series of in-situ and ex-situ spectroscopic analyses,
+coupled with ab initio molecular dynamics simulations, we discovered
+that FePC@NH2−MIL-68 can effectively capture LiTFSI via In-N bonds,
+and replace LiNO3 to promote LiTFSI decomposition, forming stable
+SEI/CEI layers. Besides, this novel catalyst can also accelerate the con-
+versions of lithium polysulfides and significantly reduce the reaction
+energy barrier (Fig. 1a). As a result, the cathode incorporating
+FePC@NH2−MIL-68 exhibits exceptional battery performance, deliv-
+ering a high initial discharge capacity of 1549 mAh g−1 at 0.2 C (where 1
+C = 1675 mA g−1). Notably, even under challenging conditions with a
+high sulfur areal loading of 7.9 mg cm−2 and a low electrolyte/sulfur (E/
+S) ratio of 5.5 mL mg−1, the cell maintains 698 mAh g−1 after 65 cycles
+at 0.1 C.
+2. Results and discussion
+2.1. Synthesis and characterization of FePC@NH2−MIL-68
+The FePC@NH2−MIL-68 catalyst was synthesized by implanting
+FePC into NH2−MIL-68 molecular frameworks through a series of hy-
+drothermal and centrifugal treatments. Specifically, the stick-shaped
+FePC@NH2−MIL-68 can be conveniently obtained by self-assembly of
+indium salt, 2-aminoterephthalic acid (NH2-H2BDC) and FePC (more
+detailed synthetic procedure please see the experimental section in
+Supporting Information). The microstructure and composition of this
+catalyst were analyzed by X-ray Diffraction (XRD), Fourier transform
+infrared spectroscopy (FT-IR), Raman spectroscopy, scanning electron
+microscopy (SEM), and transmission electron microscopy (TEM). Firstly,
+SEM
+images
+(Fig.
+S1)
+show
+that
+both
+NH2−MIL-68
+and
+FePC@NH2−MIL-68
+crystals
+exhibit
+a
+nanorod-like
+morphology.
+Notably, the introduction of FePC into NH2−MIL-68 leads to an
+increased aspect ratio in the resulting FePC@NH2−MIL-68 composite.
+This enhancement is likely attributed to the π-π conjugation effect be-
+tween FePC and NH2−MIL-68 during their co-growth process. This
+interaction influences the crystal growth direction and boosts the elec-
+tron/ionic conductivity of the material, surpassing the performance of
+post-treatment methods. Furthermore, the π-electron clouds of the aro-
+matic rings in FePC can effectively overlap with those in NH2−MIL-68.
+This overlap facilitates robust π-π stacking interactions when the two
+materials are in close proximity, contributing to the enhanced structural
+stability of the overall composite (Fig. S2). TEM images and corre-
+sponding energy dispersive X-ray (EDX) elemental mapping (Fig. 1b and
+Fig. S3) reveal uniform distribution of Fe along with In, C, N, and O
+elements throughout the nanorod structure, confirming the successful
+assembly of FePC@NH2−MIL-68.
+As
+shown
+in
+Fig.
+1c,
+XRD
+patterns
+of
+the
+as-synthesized
+FePC@NH2−MIL-68 reveal two sharp diffraction peaks at 8.1◦and
+9.3◦, well consistent with the simulated pattern of NH2−MIL-68 based
+MOF which correspond to (200) and (220) planes, respectively [43].
+These diffraction peaks proved that the obtained FePC@NH2−MIL-68
+retains high crystallinity after the inclusion of FePC. Subsequently,
+strong characteristic signals from NH2−MIL-68 were observed, while the
+signals from FePC in FePC@NH2−MIL-68 were almost undetectable,
+confirming that FePC is encapsulated within the cavities of NH2−MIL-68
+rather than being present on its surface. FT-IR spectroscopy was further
+used to elucidate the encapsulation relationship between NH2−MIL-68
+and FePC (Fig. 1d). In samples where FePC and NH2−MIL-68 are phys-
+ically mixed, the characteristic narrow peak at approximately 721 cm−1
+corresponding to the out-of-plane C−H bond deformation in the benzene
+ring remains clearly visible. This observation confirms that the distinc-
+tive peak of FePC is neither obscured nor significantly affected by the
+presence of NH2−MIL-68, validating that the unique spectral signatures
+of FePC are detectable even when mixed. In contrast, this characteristic
+narrow peak of FePC@NH2−MIL-68 is absent, suggesting a significant
+interaction, likely due to FePC being coordinated within the internal
+functional groups of NH2−MIL-68. Fig. S4 shows the optimized encap-
+sulation structure of FePC@NH2−MIL-68 by DFT calculations, where six
+NH2-BDC2−linkers are attached to six In(III) centers on the (001) plane,
+forming a regular hexagonal channel of approximately 18.2 Å to host the
+FePC guest molecule and create a local environment for reactant
+Scheme 1. Underlying risks of high LiNO3 concentration in Li-S batteries.
+(i) LiNO3 additive restricts the electrochemical voltage window of the electro-
+lyte, leading to more irreversible nitrate reduction and gassing during deeper
+discharge. (ii) Carbon/sulfur composite materials in the cathode can chemically
+interact with LiNO3, potentially forming hazardous substances similar to gun-
+powder, which significantly increase the risk of explosion.
+Y. Dong et al.
+Energy Storage Materials 74 (2025) 103937 
+2 
+
+<<PAGE 3>>
+enrichment.
+2.2. FePC@NH2−MIL-68 adaptability in Li-S battery chemistry
+Considering the catalytic applications of MOFs, stability, including
+chemical, thermal, and electrolyte stability, is a major concern [44].
+FT-IR spectroscopy (Fig. S5a) indicates that after heat treatment and
+electrolyte immersion, there is no significant change in the crystal
+structure. This is further supported by SEM results (Fig. S6), which
+reveal the retained nanorod-like morphology of FePC@NH2−MIL-68
+after heat treatment and electrolyte immersion, suggesting unchanged
+coordination between ligands and In sites. Subsequently, we conducted
+the TEM and XRD tests of FePC@NH2−MIL-68 after heat treatment and
+electrolyte immersion (Fig. S7). The results indicated that there were no
+significant changes in the bonding mode or structural composition after
+immersion in electrolyte and subsequent heat treatment, thereby
+confirming the excellent electrolyte stability and thermal stability of the
+FePC@NH2−MIL-68 catalyst. Furthermore, the electrochemical stability
+of FePC@NH2−MIL-68 was also confirmed through symmetric cell tests.
+CV tests at a sweep rate of 0.5 mV s−1 and 10 mV s−1 were conducted at
+room temperature within a potential window of -1.5–1.5 V which
+revealed a pair of rectangular-like redox peaks, indicating the pseudo-
+capacitance characteristics of FePC@NH2−MIL-68 (Fig. S5b-c). The
+overlapping CV curves in subsequent cycles suggest the good structural
+integrity of FePC@NH2−MIL-68 in the electrochemical environment.
+2.3. FePC@NH2−MIL-68 mediating LiTFSI decomposition
+2.3.1. DFT simulation and spectroscopy monitoring for LiTFSI
+decomposition
+The dynamic conformation evolution of LiTFSI can be confirmed by
+in-situ FT-IR experiments on FePC@NH2−MIL-68, NH2−MIL-68, and
+Fig. 1. Synthesis and characterization of FePC@NH2¡MIL-68. (a) Schematic illustration of the catalytic mechanism of FePC@NH2−MIL-68. (b) EDX elemental
+mappings of In, Fe, and N in FePC@NH2−MIL-68 composites. (c) XRD patterns of FePC@NH2−MIL-68, NH2−MIL-68, and FePC. (d) FT-IR spectra of FePC@NH2−MIL-
+68, NH2−MIL-68, FePC, and a physically mixture of FePC and NH2−MIL-68.
+Y. Dong et al.
+Energy Storage Materials 74 (2025) 103937 
+3 
+
+<<PAGE 4>>
+CNTs electrodes. From Fig. 2a-c, a characteristic peak appears at 1191
+cm−1, which is corresponding to the stretching vibrations of -CF3 bonds
+in LiTFSI [45]. Upon discharging, the In atoms of FePC@NH2−MIL-68
+interacts with the N atoms of LiTFSI, causing electrons flowed from
+FePC@NH2−MIL-68 to LiTFSI and resulting in indirect electron transfer
+to –CF3 groups on LiTFSI. Meanwhile, the stretching of In–N bonds leads
+to an increase in the number of C–F dipoles oriented in the normal di-
+rection, leading to an enhanced intensity of the –CF3 signal on the
+FePC@NH2−MIL-68 electrode. It is worth noting that the polarization
+effect plays a crucial role in the formation and cleavage of bonds during
+the catalytic process. The electron-withdrawing nature of –CF3 can lead
+to increased polarization of the C-F bond. This polarization can weaken
+the bond by making the carbon atom more positive, which might
+facilitate the breaking of C-F bonds. At the end of discharge, the minimal
+variations in –CF3 peak position and intensity on FePC@NH2−MIL-68
+electrode are attributed to forming a stable CEI layer. It is worth
+mentioning
+that
+the
+–CF3
+peaks
+show
+larger
+peak
+shifts
+on
+FePC@NH2−MIL-68 electrode than on CNT and NH2−MIL-68 electrodes,
+which means an optimized electron transport between NH2−MIL-68 and
+LiTFSI caused by FePC guest molecule. Density functional theory (DFT)
+and ab initio molecular dynamics (AIMD) calculations are carried out to
+further explore the relationship between FePC@NH2−MIL-68 and LiTFSI
+(Fig. 2d-f) [46]. First, we construct the configuration based on the cor-
+responding experimental conditions (see the supplementary materials
+for methodological details). To capture the thermodynamic behavior of
+LiTFSI, we trace LiTFSI decomposition steps through the AIMD simula-
+tion time, leading to cracking to generate SO2−/SO2
+2−, CF3
+−, LiNOCF3 at
+242 fs (Fig. 2e). Subsequently, the CF3
+−
+group is removed from the
+LiNOCF3 fragment at 470 fs (Fig. 2f). This CF3
+−
+group is further
+decomposed into CF2
+−and F−. Interestingly, F−is further combined with
+SO2−group to form SOF−. These components together constitute the
+CEI/SEI layer rich in inorganic/organic components.
+2.3.2. LiTFSI decomposition reconstructing CEI layer
+X-ray photoelectron (XPS) measurements were performed to analyze
+the composition of FePC@NH2−MIL-68 electrodes before and after
+soaking in LiTFSI solution to clarify the interaction of FePC@NH2−MIL-
+68 with LiTFSI [47]. The TFSI−anion, characterized by its lone electron
+pairs, acts as a Lewis base. Consequently, NH2−MIL-68, which exhibits
+Lewis acid properties, can effectively interact with the TFSI−
+anion
+[48–50]. Fig. 3a shows the In 3d signals of FePC@NH2−MIL-68 with
+binding energies of 452.4 and 444.8 eV, which were assigned to In 3d3/2
+and In 3d5/2, respectively. Upon adsorbing LiTFSI, both peaks shifted to
+lower binding energies (451.6 and 444.1 eV, respectively), suggesting
+that In atoms in FePC@NH2−MIL-68 lost electron density. In the N1s
+spectrum of FePC@NH2−MIL-68 (Fig. 3b), two peaks located at 397.9
+and 397.1 eV are ascribed to the -NH2 and Fe-N4, respectively. In
+contrast, -N(SO2CF3)2 signal for LiTFSI was located at 398.4 eV, which
+shifted to 398.8 eV. The increase in binding energy suggested that N
+atoms from LiTFSI are capable of accepting electrons from the In atoms,
+which elevates the oxidation state of In, thereby influencing the surface
+chemistry and properties of the material. Accordingly, the proportion of
+-N(SO2CF3)2 in FePC@NH2−MIL-68 was greatly weakened, emphasizing
+the interaction between FePC@NH2−MIL-68 and LiTFSI by In–N bond.
+Subsequently, Raman spectroscopy of DOL/DME containing 1 M LiTFSI
+(D+LiTFSI),
+NH2−MIL-68
+in
+ether-based
+electrolyte
+(D+LiTFSI+NH2−MIL-68) and FePC@NH2−MIL-68 in ether-based elec-
+trolyte (D+LiTFSI+FePC@NH2−MIL-68) were detected to decouple the
+coordination relations among FePC@NH2−MIL-68, LiTFSI and solvent
+molecules [51]. As shown in Fig. 3c, two coordination modes between
+Fig. 2. DFT simulation and spectroscopy monitoring of LiTFSI decomposition using FePC@NH2¡MIL-68 catalyst. In-situ FT-IR spectra of cells with (a)
+FePC@NH2−MIL-68, (b) NH2−MIL-68, and (c) CNT catalysts during discharge from 2.8 to 1.6 V. (d-f) Ab initio molecular dynamics simulations of LiTFSI decom-
+position on the FePC@NH2−MIL-68 catalyst.
+Y. Dong et al.
+Energy Storage Materials 74 (2025) 103937 
+4 
+
+<<PAGE 5>>
+Li+ and TFSI−(at ~737.4/744.1 cm−1) corresponding anions without
+Li+ contact (AWL) and loose ion pair (LIP) are observed, respectively. S1
+and S2 represent the peak intensity of AWL and LIP, respectively; S3 and
+S4 represent the peak intensity of Li−glyme at 871.6 cm−1 and DME at
+847.9 cm−1,
+respectively.
+It
+is
+worth
+noting
+that
+S1/S2
+in
+D+LiTFSI+FePC@NH2−MIL-68
+(2.7)
+is
+higher
+than
+that
+in
+D+LiTFSI+NH2−MIL-68 (2.5) and D+LiTFSI (2.1), indicating the pro-
+moted dissociation of LiTFSI due to the anion-adsorption effect of
+FePC@NH2−MIL-68. S3/S4 increases from 1.4 to 2.5 when adding
+FePC@NH2−MIL-68 into D+LiTFSI, which implies the enhanced inter-
+action between solvents and Li+ in the FePC@NH2−MIL-68 system,
+namely the facilitated solvation process. To put it simply, these results
+demonstrate that FePC@NH2−MIL-68 has the capability for adsorbing
+TFSI−and promoting the solvation of Li+.
+To evaluate the effect of FePC@NH2−MIL-68 on TFSI−anion, CV test
+at voltage range of 0.9–1.5V were performed. Compared with CNT, FePC
+and NH2−MIL-68 electrodes, the addition of FePC@NH2−MIL-68 shows
+a clear new reduction CV peak with onset potential of 1.18 V, which can
+be ascribed to the decomposition of TFSI−anion (Fig. 3d). To further
+study the composition and structure of CEI formed by TFSI−decompo-
+sition, the sulfur cathode surface after 100 cycles was probed by XPS
+survey (Fig. 3e-f) [52]. The deconvoluted C 1s spectra shows five
+characteristic peaks at 284.8, 286.4, 288.1, 290 and 292.8 eV, which are
+arising from -C-C-, -C-O-, C=O, -CF2 and -CF3, respectively. It is worth
+noting that the electrode with FePC@NH2−MIL-68 shows higher in-
+tensities of -CF2 than control electrodes, which means more -CF3 was
+break down by the FePC@NH2−MIL-68 catalyst. The XPS spectra of F 1s
+exhibits a typical Li-F peak appeared at around 684.5 eV, which can
+further confirm the promoting effect on the decomposition of LiTFSI
+(Fig. 3d). These are consistent with the AIMD simulation results
+(Fig. 2d-f). Interestingly, F−
+is further combined with SO2−
+group to
+form SOF−and also form LiF with Li+ simultaneously. The content of
+SOF−formation also affects the relative intensities of -SO2CF3 and LiF in
+the F 1s XPS spectra. Besides, the S 2p spectra demonstrate that the
+FePC@NH2−MIL-68 cell produces more SO4
+2−/SO3
+2−compared to that of
+control electrodes (Fig. S8). This result can be explained by the reactions
+between LiPSs and LiTFSI to form Li2SO4/Li2SO3 and to further
+construct the CEI layer.
+2.3.3. LiTFSI decomposition reforming SEI layer
+To evaluate the impact of FePC@NH2−MIL-68-mediated LiTFSI
+decomposition on the Li anode, Li/Li symmetric cells were compara-
+tively assessed with and without the FePC@NH2−MIL-68 catalyst
+(Fig. 4a) [53]. The cell incorporating FePC@NH2−MIL-68, under a
+current density of 1 mA cm−2 and capacity of 1 mAh cm−2, demon-
+strated remarkable stability with a consistent polarization voltage of 45
+mV over 350 h. In contrast, the cell without FePC@NH2−MIL-68
+exhibited random voltage fluctuations after 250 h, with the polarization
+voltage rapidly deteriorating to 199 mV. This deterioration indicates
+continuous growth of Li dendrites puncturing the SEI, caused by
+increasing impedance and electrolyte consumption. Conversely, the
+stable
+polarization
+voltage
+observed
+in
+the
+anode
+with
+FePC@NH2−MIL-68-mediated decomposition suggests fast kinetics and
+a stable interphase layer. This underscores the crucial role of the
+FePC@NH2−MIL-68 catalyst in the formation process of the SEI layer.
+XPS depth profiling was further employed to elucidate the chemical
+composition and structure of the SEI on the Li metal anode after ten
+cycles of a typical Li–S cell at 0.05 C [54,55]. To prevent air contami-
+nation, a sealed Ar container was used to transfer the cycled Li metal to
+the XPS chamber. Figs. 4b-e illustrate the distribution of organ-
+ic/inorganic components from the top surface of SEI to its interior. The
+top surface of the SEI layer on the pristine Li anode, as shown in Fig. 4b
+and d (0 s), comprises C=O, -C-O-, and C-C chemical bonds, typically
+indicative of organic components. The peak intensities of C=O and -C-O-
+remain relatively constant with increased sputtering time (0 to 120 s),
+suggesting that organics associated with these bonds are abundant
+throughout the SEI.
+Notably, compared to the control sample, the -CF3 content within the
+FePC@NH2−MIL-68-mediated SEI rapidly decreases with increasing the
+sputtering time, indicating a more thorough decomposition of -CF3 into
+-CF2 and LiF. This is further corroborated by the enhanced signals in -CF2
+and LiF from the surface to the inner layer (Fig. 4c and e). It has been
+demostrated that higher LiF content within the inner SEI can enhance
+the cyclability of the Li metal anode, probably attributing to preferable
+lateral Li deposition and growth by inorganic LiF with high interfacial
+energy and bulk modulus [56]. In addtion, the S-O-F content gradually
+decreases with increasing the sputtering time, suggesting that fragile
+Fig. 3. Insights into LiTFSI decomposition and CEI formation in Li–S batteries with FePC@NH2¡MIL-68. (a) In 3d core-level XPS spectra of FePC@NH2−MIL-
+68 before and after soaking in LiTFSI solution. (b) N 1s core-level XPS spectra of LiTFSI, FePC@NH2−MIL-68, and FePC@NH2−MIL-68+LiTFSI. (c) Raman spectra of
+LiTFSI electrolyte on CNT, NH2−MIL-68 and FePC@NH2−MIL-68 electrodes, respectively. (d) CV curves of LiTFSI on different electrodes by characterizing the
+reduction behavior with a voltage range of 0.9 to 1.5 V. High-resolution XPS spectra of the sulfur cathodes after 100 cycles with (e) C 1s and (f) F 1s for CNT,
+NH2−MIL-68 and FePC@NH2−MIL-68 electrodes.
+Y. Dong et al.
+Energy Storage Materials 74 (2025) 103937 
+5 
+
+<<PAGE 6>>
+oxygen-rich organic/inorganic hybrids diminish from the surface to the
+interior, in agreement with the DFT simulations (Fig. 2d-f). These results
+demonstrated that the FePC@NH2−MIL-68 promotes the in-situ forma-
+tion of a flat and robust SEI layer with fast Li+ conductivity and high
+stability (Fig. 4f-g).
+2.4. FePC@NH2−MIL-68 mediating sulfur conversion reactions
+Similar to traditional catalysis, the adsorption of LiPSs, as an
+important prerequisite, affects subsequent sulfur catalytic reactions
+greatly [57–59]. Thus, the static Li2S6 adsorption tests were carried out
+to visualize the adsorption of LiPSs on FePC@NH2−MIL-68. As exhibited
+in Fig. 5a, in contrast to NH2−MIL-68 and FePC samples, the yellow color
+of pristine Li2S6 solution fades and becomes transparent after the addi-
+tion of FePC@NH2−MIL-68 after 8 h, suggesting the FePC@NH2−MIL-68
+catalyst can strongly adsorb LiPSs. Ex-situ UV−vis spectroscopy was
+used to quantitative evaluate the LiPS adsorption capacity (Fig. 5b) [60].
+FePC@NH2−MIL-68 displays significantly weaker adsorption of LiPS
+compared to FePC, NH2−MIL-68, and pristine Li2S6 solutions. Notably,
+when FePC is mixed with the Li2S6 solution, the solution turns green,
+suggesting that FePC has dissolved and is lost into the electrolyte. This
+observation is further supported by UV−vis spectroscopy. The charac-
+teristic Q-band of FePC, located at 690 nm and attributed to the
+π-electron transition from the 2a1u to 6eg, orbitals of the phthalocyanine
+ligand, shows a pronounced signal in the case of FePC. In stark contrast,
+the FePC signals are almost undetectable in FePC@NH2−MIL-68, indi-
+cating that NH2−MIL-68 framework effectively prevents the dissolution
+of FePC. These findings are consistent with previous results (Fig. 1d).
+After the adsorption of Li2S6, ex-situ XPS measurements were per-
+formed
+on
+electrodes
+to
+clarify
+the
+interaction
+between
+FePC@NH2−MIL-68 and LiPSs [61]. Fig. 5c shows the Fe 2p signals of
+FePC@NH2−MIL-68 with binding energies of 724.3 and 711.6 eV, which
+were assigned to Fe 2p1/2 and Fe 2p3/2, respectively. Subsequently, the
+Fe 2p peaks for FePC@NH2−MIL-68 display significant changes after
+Li2S6 treatment. Two new peaks at 707.9 and 722.1 eV could be ascribed
+to Fe–S bond, which results from the interaction between the Fe atom of
+FePC and the S atom of LiPSs. These results provide direct evidence that
+FePC@NH2−MIL-68 effectively converted LiPSs and thus greatly sup-
+pressed the shuttle effect. Theoretically, the shuttle effect could be
+directly reflected by the shuttle current. As shown in Fig. 5d, the shuttle
+current of FePC@NH2−MIL-68 is ~0.12 μA cm−2, which is significantly
+lower than that of NH2−MIL-68 (0.37 μA cm−2), FePC (0.59 μA cm−2),
+and CNT (0.98 μA cm−2). This proves that FePC@NH2−MIL-68 could
+significantly restrict LiPSs and suppress the shuttle effect during the
+charging/discharging process. The liquid-solid sulfur conversions were
+estimated by the Li2S nucleation measurements. Fig. 5e shows the Li2S
+precipitation
+profiles
+on
+CNT,
+FePC,
+NH2−MIL-68
+and
+FePC@NH2−MIL-68
+electrodes.
+Obviously,
+the
+cathode
+with
+FePC@NH2−MIL-68 describes a faster responsivity of Li2S nucleation
+(8453.5 s) and larger Li2S precipitation capacity (443.6 mAh gsul
+−1) than
+the other three cathodes (211.8 mAh gsul
+−1 at 9619.5 s for NH2−MIL-68;
+252.0 mAh gsul
+−1 at 9136.6 s for FePC; 200.9 mAh gsul
+−1 at 9861.0 s for
+CNT),
+pointing
+to
+accelerated
+Li2S
+deposition
+kinetics
+on
+FePC@NH2−MIL-68 catalyst surface. In-situ UV–vis spectroscopy can
+monitor the formation and dissolution of LiPSs by tracking characteristic
+absorption peaks, which helps elucidate the mechanisms of the redox
+reactions [62,63]. Specifically, in Fig. 5f-h and Fig. S9, 10, the peaks at
+~492, ~475, ~420 and ~617 nm are attributed to S8
+2−, S6
+2−, S4
+2−and
+S3
+2−/S3
+*−, respectively. Interestingly, as the discharge depth increases,
+the FePC@NH2−MIL-68 electrode shows much faster intensity decreases
+of S8
+2−, S6
+2−, S4
+2−and sharper intensity increase of S3
+2−/S3
+*−than the other
+three
+electrodes,
+demonstrating
+the
+generated
+S3
+2−/S3
+*−
+anions
+Fig. 4. Insights into LiTFSI decomposition and SEI reforming with FePC@NH2¡MIL-68 catalyst. (a) Cycling performance of different symmetric cells at a
+current density of 1 mA cm−2. Insets show the magnified voltage curves at specific time intervals (1 h). The spatial distribution of chemical compositions and valence
+states in the SEI layer obtained by XPS with Ar+ sputtering depth profiling: (b, d) C 1s and (c, e) F 1s spectra of anodes from cells with and without FePC@NH2−MIL-
+68, respectively. (f-g) Schematic illustrations of electrolyte/anode interfaces and SEI structures in cells with FePC@NH2−MIL-68 and CNT.
+Y. Dong et al.
+Energy Storage Materials 74 (2025) 103937 
+6 
+
+<<PAGE 7>>
+accelerates the LiPS conversion and suppresses the shuttle effect.
+2.5. Cell performance
+The electrochemical tests were carried out on 2025-coin cells
+without LiNO3 additives by controlling the sulfur mass on the cathode as
+~1.2 mg cm−2. A series of CV profiles were recorded to evaluate the
+effects of FePC@NH2−MIL-68 on the redox kinetic promotion (Fig. 6a
+and Fig. S11). In a voltage range of 1.6 to 2.8 V (vs. Li/Li+), the first (IH,
+2.31 V) and second (IL, 2.03 V) reduction peaks corresponded to the
+conversion of S8 to Li2Sn (4 ≤n ≤8) and then to Li2S2/Li2S, respectively;
+while the oxidation peak (2.32 V) corresponded to the reversible for-
+mation of Li2Sn and S8. It is noteworthy that the potential difference
+between the anodic peak and cathodic peak at around 2.0 V of
+FePC@NH2−MIL-68 electrode is 0.33 V, which is much smaller than
+NH2−MIL-68, FePC, and CNT electrodes, suggesting the enhanced redox
+reaction kinetics by the FePC@NH2−MIL-68 catalyst. Meanwhile, the
+higher peak current of the electrode with FePC@NH2−MIL-68 catalyst
+suggests the enhanced sulfur utilization due to the effective polysulfides
+trapping and reusing by the FePC@NH2−MIL-68 interfaces. It is worth
+noting that CV curves of FePC@NH2−MIL-68 in the following cycles
+overlap well, demonstrating the good reversibility (Fig. S12). These
+findings provide strong evidence for the efficient immobilization and
+rapid catalysis of LiPSs by the FePC@NH2−MIL-68 catalyst.
+The role of FePC@NH2−MIL-68 interfaces can be more clearly
+elucidated through rate capability tests under various current densities,
+which involve faster charge transfer and higher conversion reaction
+kinetics during the charge/discharge process. Fig. 6b illustrates the rate
+performances
+of
+cells
+with
+CNT,
+FePC,
+NH2−MIL-68,
+and
+FePC@NH2−MIL-68 electrodes. As anticipated, the cathode with
+FePC@NH2−MIL-68 demonstrates the highest discharge capacity across
+all current densities. It achieves superior discharge capacities of 1549,
+1239, 1149, and 1090 mAh g−1 at cycling rates of 0.2, 0.5, 0.8, and 1.0
+C, respectively (based on the mass of sulfur, 1 C = 1675 mAh g−1).
+Notably, it still delivers a capacity of 1012 mAh g−1 even at a high
+current density of 1.5 C. This performance surpasses that of cathodes
+with CNT (1082, 755, 718, 691, and 627 mAh g−1), FePC (1257, 900,
+835, 798, and 734 mAh g−1), and NH2−MIL-68 (1390, 1029, 955, 911,
+and 867 mAh g−1) at corresponding rates. When the rate is reverted to
+0.2 C, the cathode with FePC@NH2−MIL-68 maintains a stable
+Coulombic efficiency of >98%, compared to 72%, 76%, and 82% for
+CNT, FePC, and NH2−MIL-68 cells, respectively, indicating superior
+electrochemical reversibility, which outperforms most previously re-
+ported Li–S batteries with LiNO3 mimic (Table S1). By further adjusting
+the proportion of FePC@NH2−MIL-68, a mass ratio of 1% in the elec-
+trode was determined to be the optimal dosage of FePC@NH2−MIL-68
+catalyst (Fig. S13). Furthermore, the discharge/charge profiles with the
+FePC@NH2−MIL-68 catalyst exhibit longer and flatter plateaus with
+reduced polarization compared to NH2−MIL-68, FePC, and CNT, sug-
+gesting improved sulfur redox kinetics (Fig. S14). As the current density
+increases, the polarization of cells using FePC@NH2−MIL-68 remains
+low (Fig. 6c), indicating rapid reactions attributable to the multifunc-
+tional catalytic properties of FePC@NH2−MIL-68. To further investigate
+the effect of FePC@NH2−MIL-68 catalyst on the electrochemical
+Fig. 5. Insights into static sulfur conversions in Li–S batteries with FePC@NH2¡MIL-68 catalyst. (a) Digital photograph of Li2S6 solution after the addition of
+FePC, NH2−MIL-68, and FePC@NH2−MIL-68 powders for 8 h. (b) UV–vis absorption spectra of FePC, NH2−MIL-68, and FePC@NH2−MIL-68 in Li2S6 solution. (c) Fe
+2p core-level XPS spectra of FePC@NH2−MIL-68 before and after soaking in Li2S6 solution. (d) Shuttle currents of CNT, FePC, NH2−MIL-68, and FePC@NH2−MIL-68
+electrodes. (e) Li2S deposition profiles on CNT, FePC, NH2−MIL-68, and FePC@NH2−MIL-68 electrodes at a constant potential of 2.04 V. Normalized absorbance of (f)
+S8
+2−(~492 nm), (g) S4
+2−(~420 nm), and (h) S3
+2−/S3
+*−(~617 nm) in Li2S8 solution on CNT, FePC, NH2−MIL-68, and FePC@NH2−MIL-68 electrodes, respectively.
+Y. Dong et al.
+Energy Storage Materials 74 (2025) 103937 
+7 
+
+<<PAGE 8>>
+stability window of electrolyte, we conducted an analysis on the voltage-
+capacity profiles of cells incorporating either LiNO3 or FePC@NH2−MIL-
+68 after several cycles (Fig. S15). As anticipated, cells with the LiNO3
+additive exhibited a significant and irreversible reduction within the
+initial discharging range of 1.8–1.6 V. The insoluble reduction products
+of LiNO3 deposited on the cathode significantly impeded the revers-
+ibility of active materials, leading to a rapid deterioration in battery
+capacity. By contrast, FePC@NH2−MIL-68 delivered an initial discharge
+capacity of 1550 mAh g−1 at 0.2 C and retained 730 mAh g−1 after 150
+cycles,
+demonstrating
+high
+reversibility
+and
+superior
+cycling
+performance.
+The long-term cycling performance was evaluated at 0.5 C (Fig. 6d
+and Fig. S16). Compared to control samples, FePC@NH2−MIL-68
+delivered an initial discharge capacity of 1109 mAh g−1 at 0.5 C and
+retained 751 mAh g−1 after 120 cycles, demonstrating high reversibility
+and superior cycling performance. When increasing the current rate to
+1.5 C, the discharge capacity reduced to 999 mAh g−1 after initial
+activation and gradually stabilized after 1000 cycles, with a lower ca-
+pacity decay of 0.067% per cycle. This performance is significantly su-
+perior to those of CNT, FePC, and NH2−MIL-68 electrodes (Fig. 6e and
+Fig. S17).
+The stability of the CEI layer is paramount for sustaining the catalytic
+efficiency in batteries with high sulfur loadings, where significant vol-
+ume
+expansions
+occur.
+To
+further
+evaluate
+the
+electrode
+with
+FePC@NH2−MIL-68 catalyst under harsh working conditions, a thick
+sulfur cathode with an areal mass loading of ~7.9 mg cm−2 was
+assembled and tested in a lean electrolyte condition of 5.5 μL mg−1. As
+shown in Fig. 6f and Fig. S18, the LiNO3 free cell delivered an initial
+discharge capacity of only ~612 mAh g−1 and maintained ~510 mAh
+g−1
+after
+65
+successive
+cycles.
+In
+contrast,
+the
+cell
+with
+FePC@NH2−MIL-68 delivered an initial discharge capacity of ~830
+mAh g−1 and maintained ~720 mAh g−1 after 65 successive cycles.
+These results reveal that the FePC@NH2−MIL-68 catalyst can effectively
+suppresses the outward diffusion of LiPSs, accelerates sulfur redox re-
+action kinetics during cycling, and promotes the decomposition of
+LiTFSI to form CEI/SEI. Significantly, the complex composition of CEI,
+the adhesive effect of PVDF, and the effective contact of electrode
+components ensure that CEI maintains its integrity under the rigorous
+conditions of high sulfur load batteries.
+The coin cell performances stimulate us to further explore the
+probability of applying it to Li–S pouch cells. We performed cyclic
+performance of Li-S pouch cells at 0.05 C with the E/S ratio of 4.0 μL
+mg−1 and sulfur loading of 5.5 mg cm−2. As shown in Fig. 6g, the cell
+with FePC@NH2−MIL-68 delivered an initial discharge capacity of
+~950 mAh g−1 and maintained ~875 mAh g−1 after 50 successive cy-
+cles.
+These
+results
+demonstrate
+potential
+applications
+of
+FePC@NH2−MIL-68 for next–generation Li-S batteries.
+3. Conclusion
+In
+summary,
+this
+study
+introduces
+an
+innovative
+catalyst,
+FePC@NH2−MIL-68, for Li-S batteries. Rigorous characterizations
+confirmed that this catalyst was ingeniously crafted by embedding FePC
+into
+NH2−MIL-68
+molecular
+frameworks.
+Furthermore,
+utilizing
+advanced in-situ characterization technologies and in-depth theoretical
+calculations, the remarkable stability of this catalyst in Li-S battery
+chemistry and the dynamic LiTFSI decomposition/sulfur conversion
+process on FePC@NH2−MIL-68 surface was probed dramatically. It was
+Fig. 6. Electrochemical performances of Li–S batteries with FePC@NH2¡MIL-68 catalyst. (a) CV profiles of CNT and FePC@NH2−MIL-68 electrodes at a
+scanning rate of 0.1 mV s−1. (b) Rate performances of CNT and FePC@NH2−MIL-68 electrodes at various current rates. (c) Representative voltage-capacity profiles of
+FePC@NH2−MIL-68 under 0.2, 0.5, 0.8, 1.0 and 1.5 C. Cycling performance and Coulombic efficiency of CNT and FePC@NH2−MIL-68 electrodes at 0.5 (d) and 1.5 C
+(e), respectively. (f) Cycling performance of CNT and FePC@NH2−MIL-68 electrodes at 0.1 C with a lean electrolyte of 5.5 μL mg−1 and high sulfur loading of 7.9 mg
+cm−2. (g) Cycle performances of Li-S pouch cells at 0.05 C with an E/S ratio of 4.0 μL mg−1 and sulfur loading of 5.5 mg cm−2.
+Y. Dong et al.
+Energy Storage Materials 74 (2025) 103937 
+8 
+
+<<PAGE 9>>
+found that: (i) FePC@NH2−MIL-68 can effectively capture LiTFSI via In-
+N bonds; (ii) At 242 fs, LiTFSI decomposes to generate SO2−/SO2
+2−, CF3−
+and LiNOCF3. (iii) Subsequently, the CF3
+−
+group is removed from the
+LiNOCF3 fragment at 470 fs. This CF3
+−group is further decomposed into
+CF2
+−and F−. (iv) Interestingly, F−is further combined with SO2−group
+to form SOF−. These components together constitute the CEI/SEI layer
+rich in inorganic/organic components. The findings provide a new
+mechanism interpretation of biomimetic catalysts in LiTFSI decompo-
+sition process from a new perspective. As a result, cells incorporating 1.0
+wt% FePC@NH2−MIL-68 catalyst, without the need for LiNO3 additive,
+exhibited impressive performance. It delivered a high discharge capacity
+of 1549 mAh g−1 at 0.2 C and demonstrated exceptional longevity with a
+minimal capacity decay rate of 0.067% over 1000 cycles at 1.5 C.
+Notably, even under challenging conditions of high sulfur loading (7.9
+mg cm−2) and low electrolyte-to-sulfur ratio (5.5 μL mg−1), the cells
+maintained a substantial capacity of 720 mAh g−1 after 65 cycles at 0.1
+C. This work underscores the critical importance of considering the ef-
+fects of sulfur conversion catalysts on other lithium salt components
+during their development. The insights gained provide valuable guid-
+ance for the design of next-generation catalysts for lithium-sulfur and
+other metal-sulfur batteries, paving the way for further advancements in
+this promising energy storage technology.
+CRediT authorship contribution statement
+Yangyang Dong: Writing – original draft, Methodology, Investiga-
+tion, Formal analysis, Data curation, Conceptualization. Mengqi Wu:
+Methodology, Formal analysis, Data curation. Dong Cai: Writing – re-
+view & editing, Investigation, Funding acquisition, Formal analysis,
+Data curation. Peng Ying: Methodology, Investigation, Formal analysis.
+Hongtian Ning: Methodology, Investigation, Formal analysis. Meiling
+Shu: Methodology, Investigation, Formal analysis. Shuo Yang: Writing
+– review & editing, Formal analysis. Xuemei Zhou: Writing – review &
+editing, Formal analysis. Huagui Nie: Methodology. Duo Chen: Writing
+– review & editing, Supervision. Ruqian Lian: Writing – original draft,
+Supervision. Zhi Yang: Writing – review & editing, Supervision, Fund-
+ing acquisition.
+Declaration of competing interest
+The authors declare that they have no known competing financial
+interests or personal relationships that could have appeared to influence
+the work reported in this paper.
+Acknowledgements
+This research was funded in part by Natural Science Foundation of
+Zhejiang Province (Grant No. LQ22B030003), National Natural Science
+Foundation of China (Grant Nos. 22309136, 22109119, 51972238),
+Doctoral Innovation Foundation of Wenzhou University (Grant No.
+3162023001002) and Zhejiang Xinmiao Talents Program (Grant No.
+2024R429B042).
+Supplementary materials
+Supplementary material associated with this article can be found, in
+the online version, at doi:10.1016/j.ensm.2024.103937.
+Data availability
+Data will be made available on request.
+References
+[1] D. Chao, W. Zhou, F. Xie, C. Ye, H. Li, M. Jaroniec, S.-Z. Qiao, Sci. Adv. 6 (2020)
+eaba4098.
+[2] Z. Yuan, L. Liang, Q. Dai, T. Li, Q. Song, H. Zhang, G. Hou, X. Li, Joule 6 (2022)
+884–905.
+[3] R. Usiskin, Y. Lu, J. Popovic, M. Law, P. Balaya, Y.-S. Hu, J. Maier, Nat. Rev. Mater.
+6 (2021) 1020–1035.
+[4] C.-X. Zhao, X.-Y. Li, M. Zhao, Z.-X. Chen, Y.-W. Song, W.-J. Chen, J.-N. Liu,
+B. Wang, X.-Q. Zhang, C.-M. Chen, B.-Q. Li, J.-Q. Huang, Q. Zhang, J. Am. Chem.
+Soc. 143 (2021) 19865–19872.
+[5] J.T. Kim, H. Su, Y. Zhong, C. Wang, H. Wu, D. Zhao, C. Wang, X. Sun, Y. Li, Nat.
+Chem. Eng. 1 (2024) 400–410.
+[6] Z. Zhao, Y. Pan, S. Yi, Z. Su, H. Chen, Y. Huang, B. Niu, D. Long, Y. Zhang, Adv.
+Mater. 36 (2024) 2310052.
+[7] J. Lei, X.-X. Fan, T. Liu, P. Xu, Q. Hou, K. Li, R.-M. Yuan, M.-S. Zheng, Q.-F. Dong,
+J.-J. Chen, Nat. Commun. 13 (2022) 202.
+[8] J. Lei, T. Liu, J. Chen, M. Zheng, Q. Zhang, B. Mao, Q. Dong, Chem 6 (2020)
+2533–2557.
+[9] N. Wang, X. Zhang, Z. Ju, X. Yu, Y. Wang, Y. Du, Z. Bai, S. Dou, G. Yu, Nat.
+Commun. 12 (2021) 4519.
+[10] A.L. Phan, P.M.L. Le, C. Wang, Joule 8 (2024) 1601–1618.
+[11] F. Wu, J. Maier, Y. Yu, Chem. Soc. Rev. 49 (2020) 1569–1614.
+[12] G.-X. Liu, J.-X. Tian, J. Wan, Y. Li, Z.-Z. Shen, W.-P. Chen, Y. Zhao, F. Wang, B. Liu,
+S. Xin, Y.-G. Guo, R. Wen, Angew. Chem. Int. Ed. 61 (2022) e202212744.
+[13] X. Meng, Y. Liu, Z. Wang, Y. Zhang, X. Wang, J. Qiu, Energy Environ. Sci. 14
+(2021) 2278–2290.
+[14] L. Feng, Y. Ji, Z. Zhu, P. Yu, X. Fu, M. Yang, Y. Wang, W. Yang, Energy Storage
+Mater 40 (2021) 415–425.
+[15] Y. Dong, H. Zhang, D. Cai, S. Yang, P. Ying, T. Li, J. Zou, M. Shu, R. Li, J. Wang,
+K. Xiao, X. Zhou, H. Nie, X. Fan, Z. Yang, Adv. Funct. Mater. 34 (2024) 2406455.
+[16] Y. Dong, D. Cai, T. Li, S. Yang, X. Zhou, Y. Ge, H. Tang, H. Nie, Z. Yang, ACS Nano
+16 (2022) 6414–6425.
+[17] M. Wu, X. Hu, F. Cui, J. Wang, C. Zhao, X. Shi, H. Liu, R. Wang, H. Zhang, C. Jin,
+P. Gong, D. Cai, Y. Wei, R. Lian, Adv. Energy Mater. 14 (2024) 2304523.
+[18] H. Zhang, S. Ju, G. Xia, X. Yu, Sci. Adv. 8 (2022) eabl8245.
+[19] F. Chu, J. Liu, Z. Guan, R. Deng, L. Mei, F. Wu, Adv. Mater. 35 (2023) 2305470.
+[20] Y.V. Mikhaylik, inventor, Sion Power Corp, assignee, United States Patent US 7
+(2008) 680, 354.
+[21] S. Liu, X. Ji, N. Piao, J. Chen, N. Eidson, J. Xu, P. Wang, L. Chen, J. Zhang, T. Deng,
+S. Hou, T. Jin, H. Wan, J. Li, J. Tu, C. Wang, Angew. Chem. Int. Ed. 60 (2021)
+3661–3671.
+[22] Z. Hao, D. Liu, X. Zuo, H. Yu, Y. Zhang, Adv. Mater. (2024) 2404983 n/a.
+[23] S. Rehman, M. Pope, S. Tao, E. McCalla, Energy Environ. Sci. 15 (2022)
+1423–1460.
+[24] Y. Liu, X. Meng, Y. Shi, J. Qiu, Z. Wang, Adv. Mater. 35 (2023) 2305386.
+[25] Y. Fei, G. Li, Adv. Funct. Mater. (2024) 2312550.
+[26] J. Han, A. Mariani, S. Passerini, A. Varzi, Energy Environ. Sci. 16 (2023)
+1480–1501.
+[27] J. Liu, Y. Zhou, T. Yan, X.-P. Gao, Adv. Funct. Mater. 34 (2024) 2309625.
+[28] W. Li, H. Yao, K. Yan, G. Zheng, Z. Liang, Y.-M. Chiang, Y. Cui, Nat. Commun. 6
+(2015) 7436.
+[29] Y. Liang, W. Wu, D. Li, H. Wu, C. Gao, Z. Chen, L. Ci, J. Zhang, Adv. Energy Mater.
+12 (2022) 2202493.
+[30] L. Jiao, H. Jiang, Y. Lei, S. Wu, Q. Gao, S. Bu, X. Kong, S. Yang, D. Shu, C. Li, H. Li,
+B. Cheng, C.-S. Lee, W. Zhang, ACS Nano 16 (2022) 14262–14273.
+[31] H. Shi, W. Sun, J. Cao, S. Han, G. Lu, Z.A. Ghazi, X. Zhu, H. Lan, W. Lv, Adv. Funct.
+Mater. 33 (2023) 2306933.
+[32] S. D¨orfler, H. Althues, P. H¨artel, T. Abendroth, B. Schumm, S. Kaskel, Joule 4
+(2020) 539–554.
+[33] A. Rafie, J.W. Kim, K.K. Sarode, V. Kalra, Energy Storage Mater 50 (2022)
+197–224.
+[34] W. Yao, J. Xu, L. Ma, X. Lu, D. Luo, J. Qian, L. Zhan, I. Manke, C. Yang,
+P. Adelhelm, R. Chen, Adv. Mater. 35 (2023) 2212116.
+[35] S.J. Fretz, U. Pal, G.M.A. Girard, P.C. Howlett, A.E.C. Palmqvist, Adv. Funct. Mater.
+30 (2020) 2002485.
+[36] Q. Zhao, Z. Tu, S. Wei, K. Zhang, S. Choudhury, X. Liu, L.A. Archer, Angew. Chem.,
+Int. Ed. 57 (2017) 992–996.
+[37] Z.-L. Xu, S. Lin, N. Onofrio, L. Zhou, F. Shi, W. Lu, K. Kang, Q. Zhang, S.P. Lau, Nat.
+Commun. 9 (2018) 4164.
+[38] H. Fan, M. Peng, I. Strauss, A. Mundstock, H. Meng, J. Caro, Nat. Commun. 12
+(2021) 38.
+[39] R. Freund, O. Zaremba, G. Arnauts, R. Ameloot, G. Skorupskii, M. Dinc˘a,
+A. Bavykina, J. Gascon, A. Ejsmont, J. Goscianska, M. Kalmutzki, U. L¨achelt,
+E. Ploetz, C.S. Diercks, S. Wuttke, Angew. Chem., Int. Ed. 60 (2021) 23975–24001.
+[40] X. Zhang, C. Yang, P. An, C. Cui, Y. Ma, H. Liu, H. Wang, X. Yan, G. Li, Z. Tang, Sci.
+Adv. 8 (2022) eadd5678.
+[41] K.-Y. Wang, J. Zhang, Y.-C. Hsu, H. Lin, Z. Han, J. Pang, Z. Yang, R.-R. Liang,
+W. Shi, H.-C. Zhou, Chem. Rev. 123 (2023) 5347–5420.
+[42] J. Liu, T.A. Goetjen, Q. Wang, J.G. Knapp, M.C. Wasson, Y. Yang, Z.H. Syed,
+M. Delferro, J.M. Notestein, O.K. Farha, J.T. Hupp, Chem. Soc. Rev. 51 (2022)
+1045–1097.
+[43] Y. Yang, Q. Sun, J. Xue, S. Xu, L. Mao, T. Miao, L. Zhang, J. Qian, Chem. Eng. J. 464
+(2023) 142668.
+[44] Y. Bai, C. Liu, Y. Shan, T. Chen, Y. Zhao, C. Yu, H. Pang, Adv. Energy Mater. 12
+(2022) 2100346.
+[45] Z. Shi, J. Wang, K. Guo, H. Wang, H. Nie, Z. Xue, Chem. Eng. J. 468 (2023) 143687.
+[46] Y. Liu, X. Tao, Y. Wang, C. Jiang, C. Ma, O. Sheng, G. Lu, X.W. Lou, Science 375
+(2022) 739–745.
+Y. Dong et al.
+Energy Storage Materials 74 (2025) 103937 
+9 
+
+<<PAGE 10>>
+[47] X. Zhang, X. Li, Y. Zhang, X. Li, Q. Guan, J. Wang, Z. Zhuang, Q. Zhuang, X. Cheng,
+H. Liu, J. Zhang, C. Shen, H. Lin, Y. Wang, L. Zhan, L. Ling, Adv. Funct. Mater. 33
+(2023) 2302624.
+[48] Y. Li, Y. Liu, L. Xue, W. Chen, T. Lei, A. Hu, J. Huang, X. Wang, X. Wang, B. Chen,
+Y. Hu, C. Yang, J. Xiong, Nano Energy 92 (2022) 106708.
+[49] Z. Huang, X. Li, Z. Chen, P. Li, X. Ji, C. Zhi, Nat. Rev. Chem. 7 (2023) 616–631.
+[50] P. Dong, X. Zhang, W. Hiscox, J. Liu, J. Zamora, X. Li, M. Su, Q. Zhang, X. Guo,
+J. McCloy, M.-K. Song, Adv. Mater. 35 (2023) 2211841.
+[51] H. Yang, Y. Qiao, Z. Chang, P. He, H. Zhou, Angew. Chem. Int. Ed. 60 (2021)
+17726–17734.
+[52] L. Qiao, U. Oteo, M. Martinez-Iba˜nez, A. Santiago, R. Cid, E. Sanchez-Diez,
+E. Lobato, L. Meabe, M. Armand, H. Zhang, Nat. Mater. 21 (2022) 455–462.
+[53] W. Li, J. Gao, H. Tian, X. Li, S. He, J. Li, W. Wang, L. Li, H. Li, J. Qiu, W. Zhou,
+Angew. Chem. Int. Ed. 61 (2022) e202114805.
+[54] D.T. Boyle, W. Huang, H. Wang, Y. Li, H. Chen, Z. Yu, W. Zhang, Z. Bao, Y. Cui,
+Nat. Energy 6 (2021) 487–494.
+[55] Y. Gu, E.-M. You, J.-D. Lin, J.-H. Wang, S.-H. Luo, R.-Y. Zhou, C.-J. Zhang, J.-
+L. Yao, H.-Y. Li, G. Li, W.-W. Wang, Y. Qiao, J.-W. Yan, D.-Y. Wu, G.-K. Liu,
+L. Zhang, J.-F. Li, R. Xu, Z.-Q. Tian, Y. Cui, B.-W. Mao, Nat. Commun. 14 (2023)
+3536.
+[56] X.-R. Chen, B.-C. Zhao, C. Yan, Q. Zhang, Adv. Mater. 33 (2021) 2004128.
+[57] W. Hua, T. Shang, H. Li, Y. Sun, Y. Guo, J. Xia, C. Geng, Z. Hu, L. Peng, Z. Han,
+C. Zhang, W. Lv, Y. Wan, Nat. Catal. 6 (2023) 174–184.
+[58] P. Wang, X. Dai, P. Xu, S. Hu, X. Xiong, K. Zou, S. Guo, J. Sun, C. Zhang, Y. Liu,
+T. Zhou, Y. Chen, eScience 3 (2023) 100088.
+[59] W. Jiang, T. Zhang, R. Mao, Z. Song, S. Liu, C. Song, X. Jian, F. Hu, eScience 4
+(2024) 100203.
+[60] G. Cai, H. Lv, G. Zhang, D. Liu, J. Zhang, J. Zhu, J. Xu, X. Kong, S. Jin, X. Wu, H. Ji,
+J. Am. Chem. Soc. 146 (2024) 13055–13065.
+[61] J. Wang, G. Li, X. Zhang, K. Zong, Y. Yang, X. Zhang, X. Wang, Z. Chen, Adv. Mater.
+36 (2024) 2311019.
+[62] B.S. Kim, S.M. Park, J. Electrochem. Soc. 140 (1993) 115.
+[63] Y. Liu, Z. Ma, G. Yang, Z. Wu, Y. Li, J. Gu, J. Gautam, X. Gong, A.N. Chishti,
+S. Duan, C. Chen, M. Chen, L. Ni, G. Diao, Adv. Funct. Mater. 32 (2022) 2109462.
+Y. Dong et al.
+Energy Storage Materials 74 (2025) 103937 
+10 

@@ -1,0 +1,1549 @@
+
+<<PAGE 1>>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+Modelling Coupled Ion Motion in Electrolyte Solutions for
+Lithium-Sulfur Batteries
+Silvio Osella+,[a, c] Andrea Minoia+,[a] Claudio Quarti,[a] Je´roˆme Cornil,[a] Roberto Lazzaroni,[a]
+Anne-Lise Goffin,[b] Maxime Guillaume,[b] and David Beljonne*[a]
+We model coupled ion transport in representative electrolyte
+solutions for LiS batteries by applying molecular dynamic (MD)
+simulations on systems of increasing complexity, namely going
+from solutions of the Li2S4 salt in pure tetraethylene glycol
+dimethyl ether (TEGDME) and 1,3-dioxolane (DOL) solvents, to
+Li2S4 in solvent mixtures, and finally incorporating lithium bis
+(trifluoromethanesulfonyl)imide (LiTFSI) as a reservoir of Li-ions.
+While the motion of Li2S4 salt in DOL is predominantly vehicular,
+it is governed by a hopping regime in the more viscous
+TEGDME solvent. Most importantly, when the two salts are
+mixed, the presence of the TFSI anions does not slow down the
+diffusion of the polysulfide anion.
+1. Introduction
+The increasing consumption of fossil fuels has raised much
+interest for alternative energy sources and storage strategies
+over the last decades. Among these, lithium batteries are
+particularly attractive because of their versatility, ease of
+production and high performances.[1,2] In particular, a high
+theoretical gravimetric capacity of 1675 mAhg1 is anticipated
+for a lithium metal anode coupled with a sulfur cathode,[3-5]
+whereas the highest capacity obtained is 275 mAhg1 for state-
+of-the-art Li-ion batteries (such as LiCoO2-Graphite).[6] LiS
+batteries are expected to deliver a theoretical energy density of
+2600 Whkg1 assuming a complete reaction to Li2S, which is
+much higher than the values reported for state-of-the-art Li-ion
+batteries today, not exceeding 500 Whkg1.[7-12] In addition,
+sulfur is abundant in nature, inexpensive and environmentally
+friendly, implying that LiS batteries should be cheaper than
+the currently available Li-ion batteries based on transition
+metals. In the last ten years, many research efforts have been
+dedicated to the development of LiS batteries, with the aim of
+identifying and overcoming the limiting factors that prevent
+their high theoretical efficiency to be turned into practice.[13-15]
+In particular, the focus was on the development of better
+cathodes[16-20] and in the understanding of the complex redox
+mechanisms governing the sulfur chemistry.[21-24] In fact, multi-
+ple polysulfide (PS) species are present in working batteries,
+ranging from the soluble Li2S8Li2S4 to the insoluble Li2S2 and
+Li2S species, with all of them playing an important role in the
+function of the cell.[25,26]
+Despite
+those
+research
+efforts,
+many
+open
+questions
+remain. In particular, the solubilisation of the lithium polysulfide
+(LiPS) species in ether solvents containing the electrolyte leads
+to the destructuration of the cathode.[27] In addition, the
+diffusion of the LiPS and their conversion into a Li2S precipitate
+results in the formation of solid deposits that passivate the
+electrodes, leading to the chemical corrosion of the lithium
+anode.[28] Moreover, the long LiPS chains are reduced on the Li
+anode surface in shorter LiPS chains that diffuse to the cathode
+where they re-oxidize (in the charging process), leading to ‘LiPS
+shuttle’ processes that cause self-discharge and poor charging
+efficiency. This shuttle effect is supposed to be partially
+controlled by the diffusion properties of the LiPS species in the
+electrolyte, the ion motions competing with the kinetics of the
+oxidation and reduction at the electrodes. Therefore, strategies
+to block or slow down the polysulfide species in the electrolyte
+are highly desirable in order to decrease this shuttle effect. This
+parasitic effect causes limited cycle stability of the LiS batteries,
+preventing the full recovery of the battery initial capacity and
+leading to infinite charge-discharge profiles at low voltage.[29,30]
+In order to get a better understanding of the ion transport
+mechanisms at the heart of the battery operation and identify
+strategies to hamper (or at least reduce) the shuttle effect, a
+comprehensive and quantitative study of the liquid electrolyte
+phase is definitively required. The electrolyte used for working
+LiS batteries is usually made of a mixture of organic solvents
+and salts. The electrolyte must be chemically stable in the
+presence of PS, have low toxicity, low volatility, low flammability
+and ensure high Li conductivity, which in turn leads to fast Li-
+ion transport.[29] To fulfil all these requirements, mixtures of
+complementary solvents, namely ether-based solvents such as
+tetraethylene glycol dimethyl ether (TEGDME) and 1,3-dioxo-
+[a] Dr. S. Osella,+ Dr. A. Minoia,+ Dr. C. Quarti, Prof. J. Cornil, Prof. R. Lazzaroni,
+Prof. D. Beljonne
+Laboratory for Chemistry of Novel Materials
+University of Mons
+Place du Parc 20, B-7000 Mons, Belgium
+E-mail: david.beljonne@umons.ac.be
+[b] Dr. A.-L. Goffin, Dr. M. Guillaume
+Resarch & Innovation
+SOLVAY SA
+rue de Ransbeek 310, 1120 Brussels, Belgium
+[c] Dr. S. Osella+
+Current address: Chemical and Biological Systems Simulation Lab
+Center of New Technologies
+University of Warsaw
+Banacha 2 C, 02-097 Warsaw, Poland
+E-mail: s.osella@cent.uw.edu.pl
+[+] These authors contributed equally to the work.
+473
+Batteries& Supercaps 2019, 2, 473–481
+ 2019 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
+Articles
+DOI: 10.1002/batt.201800150
+
+<<PAGE 2>>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+lane (DOL), have been widely used.[5,31] DOL is beneficial in
+TEGDME-DOL binary mixtures as it abates the effective solvent
+phase viscosity and forms a protective layer over the Li
+anode,[32] while TEGDME efficiently solubilizes and dissociates Li
+salts and has high thermal stability.[33] An additional lithium salt
+is also added to the solvent mixture to bring additional useful
+features, including a reservoir of Li-ions, negligible volatility, low
+flammability, high thermal stability, good conductivity and a
+wide electrochemical potential window.[29,34,35] One of the most
+common salt used in LiS batteries is lithium bis(trifluorome-
+thanesulfonyl)imide (LiTFSI). Since the TFSI anion has a low
+binding affinity with the Li cation, it should enhance the ion
+dissociation and improve the conductivity of the battery.[36] A
+properly tuned ratio of Li salt versus solvent concentration has
+been suggested to promote efficient Li diffusion and limited
+shuttle transport of the PS dianions.[14]
+Summarizing, boosting the performances of LiS batteries
+requires maximizing the diffusion coefficient of the Li cations
+while simultaneously suppressing PS transport. On a more
+fundamental vein, the ions present in the liquid electrolyte can
+diffuse with two different mechanisms: the first one, referred to
+as vehicular mechanism, consists in the motion of the lithium
+cations
+together
+with
+their
+coordination
+shell
+(including
+counter-ions and solvent molecules); the second one, called
+hopping or structure diffusion mechanism, is present when Li-
+ions exchange the anions and/or solvent molecules in their first
+coordination shell. Hopping is expected to be more favourable
+for decoupling the motion of Li and sulfide ions in the
+batteries.
+In this work, we use classical force field molecular dynamics
+(MD) simulations to study the diffusion of ions present in
+compositions of liquid bulk electrolytes used for LiS battery
+applications, ranging from simple pure solvents to more
+complex mixed electrolytes. The mechanistic aspects of ion
+transport are identified, which can hopefully guide the design
+of efficient electrolytes meeting the stringent requirements for
+usage in LiS batteries.
+2. Methodology
+To gain a thorough understanding of the mechanistic aspects
+of ion transport in electrolytes, we have considered models of
+increasing complexity. The chemical structure of all investigated
+species is reported in Figure 1. Note in particular that we
+choose to focus on Li2S4 as a representative case study for PS
+species.
+We start our analysis with Li2S4 based electrolytes, namely
+Li2S4:DOL,
+Li2S4:TEGDME
+and
+Li2S4:DOL:TEGDME
+(in
+1:1
+DOL:TEGDME ratio). Next, the effect of adding LiTFSI to
+Li2S4:DOL:TEGDME is considered, thereby closely mimicking
+the actual conditions typically encountered in LiS batteries.
+The theoretical approach used relies on a modified version of
+the OPLS-AA Force Field,[37] whose parameterization has been
+extended to properly account for both the solvents and salts
+considered here and validated against experimental data in the
+literature (see Supporting Information for more details).
+2.1. Force-Field Molecular Dynamics Simulations
+2.1.1. Optimization of the Force Field Parameters for Sn
+2 and
+Li2Sn Polysulfide Species
+A challenge for modelling actual battery operations is to deal
+with different Li2Sn species in the solvent environment, all
+possibly interacting with each other and displaying different
+behaviours (i.e., the shortest molecules are insoluble). Here, for
+the sake of simplicity, we focused on one of the predominant
+soluble species, namely Li2S4.[22] We expect that the conclusions
+derived from these investigations can be generalized to the
+other soluble polysulfides. We selected the standard OPLS force
+field (FF) because of its reliability in the description of liquid
+systems and its validation for many different solvent mole-
+cules.[38-40] To properly model the Li2S4 molecules, the OPLS FF
+has been extended by adding new parameters to describe the
+torsions in the PS chain backbone. Besides, accurate atomic
+charges (as obtained from correlated quantum-chemical calcu-
+lations) have been used to properly account for the electro-
+static interactions between the different ionic species in the
+electrolytes.
+The
+details
+for
+the
+PS
+torsion
+parameterisation
+and
+optimized values of the new force parameters are reported in
+the Supporting Information. All MD simulations were performed
+with the highly efficient molecular modeling package GRO-
+MACS 4.5.5.[41]
+In order to derive all missing FF parameters needed to
+describe PS molecules, we parameterized the S4H2 neutral
+molecule, in vacuum, against ab initio post Hartree-Fock MP2
+calculations, since it is the shortest molecule possessing all
+characteristic internal degrees of freedom of longer PS chains
+(i.e., stretching, bending and torsions between sulfur atoms).
+Because the torsional angles in the OPLS FF are affected by the
+1–4 electrostatic and vdW interactions, we used atomic charges
+calculated via the Electrostatic Potential (ESP) method, using
+the Dunning’s TZVP basis set,[42] as implemented in the
+Gaussian09 program.[43]
+Figure 1. Chemical structure of the electrolyte components (LiTFSI and Li2S4
+salts; DOL and TEGDME solvents) investigated here.
+474
+Batteries& Supercaps 2019, 2, 473–481
+www.batteries-supercaps.org
+ 2019 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
+Articles
+ 25666223, 2019, 5, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/batt.201800150 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 3>>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+Next, the geometry of the S4
+2 ion was optimized at the
+MP2 level of theory and the parameterization procedure for the
+torsion was repeated; interestingly, such a parameterization
+turned out to be transferable, so that, as long as the proper
+MP2/ESP charges are used, the torsion and other bonding
+parameters derived for S4
+2 readily apply to longer (shorter) PS.
+Finally, we optimized the geometry of a Li2S4 complex at
+the MP2 level of theory, with the TZVP basis set. We imposed a
+nominal charge of +1 jej on the Li+ ions, while for S4
+2 we
+used the distribution of ESP partial charges obtained from the
+MP2 optimization of the salt in vacuum.
+2.1.2. Parameterization of the Solvents
+The original OPLS FF parameters used for the simulation of DOL
+were taken from literature.[44] Because no OPLS parameters
+were found in the literature for TEGDME, we used the standard
+OPLS parameters defined for a similar, but shorter, member of
+the glycol family, namely diethylene glycol dimethyl ether. The
+ESP charges from MP2 calculations were used as atomic
+charges for both solvent molecules (the parameters and ESP
+charges used are reported in the Supporting Information).[39]
+Pure solvents were modelled and equilibrated at ambient
+temperature and pressure by using a common procedure
+consisting in a series of MD simulations each at different
+pressure and temperature.[44] The procedure is detailed in the
+Supporting Information. For both equilibration (NPT ensemble)
+and production (NVT ensemble) simulations, the Particle Mesh
+Ewald (PME) algorithm[45] was applied to describe the Coulomb
+interactions, with a switched cut-off of 1.1 nm. A cut-off of
+1.1 nm was used for the LJ interactions. For the production
+simulations,
+we
+adopted
+the
+Nose-Hoover
+algorithm
+for
+temperature coupling, with a coupling time constant of 1 ps.
+Constant pressure calculations were performed on the basis of
+the Parrinello-Rahman algorithm, with compressibility set to
+5·105 bar1 and a time constant of 5 ps.
+Because OPLS is not a polarisable FF, the description of the
+electrostatics in the solvent phase needs to be carefully
+addressed, since it should reflect the interaction between the
+static atomic charges (as prevailing in the isolated units) as well
+as the charge redistribution induced by the electronic polar-
+ization effects. Simply considering e=1 in the Coulomb term
+would neglect the dynamic (induction) polarization effects,
+whereas including the static dielectric constant of the solvent
+would roughly amount to counting twice the static interactions.
+Recent theoretical works[46,47] have demonstrated that the
+electronic polarization in ionic liquids can be accounted for by
+scaling the Coulomb interactions by a factor 1–1/eel, where eel is
+the (fast/optical) electronic dielectric constant of the medium,
+which can be determined by experimental measures of the
+refractive index as eel=n2.[48] From the refractive indices of
+1.3979 for DOL and 1.4307 for TEGDME at room temperature,[49]
+we obtain eel values of 1.18 for DOL and 1.19 for TEGDME. With
+this in mind, all MD simulations in this work have been
+performed by screening the Coulomb interactions by an
+effective dielectric constant of 2, to implicitly account for the
+electronic polarization effects. The total MD simulation time for
+DOL was 40 ns:20 ns for equilibration and 20 ns for production
+runs. The MD calculations were considered converged when
+the
+absolute
+drift
+in
+total
+energy
+becomes
+lower
+than
+50 Jmol1ns1. Since TEGDME is highly viscous, molecular
+mobility at room temperature is limited; an annealing proce-
+dure (see Supporting Information) was therefore performed to
+reach equilibrium within a reasonable MD duration.
+To validate the accuracy of the FF parameterization for the
+pure solvents, the density and diffusion coefficient were
+extracted from the MD production runs and compared with
+experimental data measured by pulse-gradient spin-echo NMR
+(PFG-NMR), as reported in literature.[50-52] The calculated den-
+sities for DOL and TEGDME (0.970 and 0.978 g/cm3) are slightly
+underestimated (by 8% and 3%, respectively) with respect to
+the corresponding experimental values (1.06 g/cm3 and 1.0 g/
+cm3); differences below 10% are usually considered as accept-
+able.[44] The diffusion coefficient has been evaluated with the
+Einstein relation:
+Di ¼ lim
+t!1 Dapp
+i
+tð Þ ¼ lim
+t!1
+hMSDi tð Þi
+6t
+ð1Þ
+where MSDi tð Þ is the mean square displacement of the
+molecular center-of-mass averaged over the simulation time t
+and Dapp
+i
+tð Þ is the time-dependent apparent diffusion coeffi-
+cient.
+The
+predicted
+room
+temperature
+(300 K)
+diffusion
+coefficient is 18.1 1010 m2/s for DOL and 1.7 1010 m2/s for
+TEGDME, which compare well with the experimental values of
+23.5 and 3.25
+1010 m2/s, respectively. The larger D values
+predicted and measured for DOL versus TEGDME are consistent
+with the relative viscosity h of the two solvents (0.59 and
+4.1 mPa·s, respectively) and in line with the Stokes-Einstein
+relation (with D inversely proportional to h).
+2.1.3. Parameterization of LiTFSI Salt
+The FF parameters for the TFSI anion were taken from
+literature,[53] with the charges calculated at the MP2/ESP level as
+in the polysulfide case. For the sake of consistency with the PS
+calculations, we also adopted the nominal +1jej charge for Li
+cations in LiTFSI. The CSNS torsion potential was para-
+meterized with the new set of ab initio partial charges, see
+Figure S5 in Supporting Information. In agreement with the
+MP2 calculations, the bi-dentate structure, in which the Li-ions
+are interacting with two oxygen atoms, is found to be the most
+stable. The validity of the force-field description of the salts has
+been further checked by running ab initio Born-Oppenheimer
+Molecular Dynamics (BO-MD) simulations, in which polarization
+effects
+are
+inherently
+considered.
+The
+structural
+analysis
+reported in the Supporting Information shows that the force
+field description is robust against the ab initio results for both
+Li2S4 and LiTFSI salts.
+475
+Batteries& Supercaps 2019, 2, 473–481
+www.batteries-supercaps.org
+ 2019 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
+Articles
+ 25666223, 2019, 5, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/batt.201800150 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 4>>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+2.1.4. Modelling Workflow
+The modelling and characterisation of the different models
+presented in this work were done in multiple steps. We began
+creating a cubic periodic box filled with a solvent to salt ratio of
+20:1. Since the solvent phase is modelled with roughly the
+same number of solvent molecules (~800), the size for the
+modelled periodic box for DOL and TEGDME solutions is about
+444 nm3 and about 777 nm3, respectively. All systems
+have been prepared using the same protocol. First, the classic
+conjugate gradient algorithm was used to minimise the energy
+of the models after construction. Next we run a 12 ns long
+molecular dynamics simulation in the NPT ensemble at 300 K
+and 1 atm to equilibrate the system in terms of energy and
+density. During the equilibration phase, the pressure and
+temperature were controlled with the Parrinello-Rahman baro-
+stat (1 bar, with a time constant of 5 ps and compressibility
+4.5105 bar1) and Nose-Hoover thermostat (300 K and time
+constant of 0.5 ps). After equilibration, a production run
+consisting in a 20 ns-long MD simulation was performed in the
+NVT ensemble at 300 K, and the relevant data extracted from
+the trajectories. In this production phase, the temperature was
+controlled by the Nose-Hoover thermostat. The time step for
+the integration of the equation of motion was kept to 2 fs with
+the LINCS algorithm. The Particle Mesh Ewald (PME) method
+was used to compute Coulomb and van der Waals interactions
+within a 1.1 nm cut-off, together with an effective dielectric
+constant of 2, to implicitly account for the electronic polar-
+ization effects and screen the Coulomb interactions.
+2.2. Transport Properties
+In order to assess how the salts interact with the solvents and
+their degree of aggregation or dissociation, we performed a
+structural analysis by means of radial distribution functions
+(RDF) and cumulative radial distribution functions (CRDF).
+Because ionic conductivity is related to the ionic mobility in
+the electrolyte, the mobility for all molecular species present in
+the electrolytes has been calculated with Equation 1. The
+degree of uncorrelated ion motion in the electrolyte, a, has also
+been computed for the different systems. This quantity is
+defined as the ratio of the actual total ionic conductivity in the
+system, l, and the ideal ionic conductivity calculated as if each
+ion in the system was diffusing independently from the others
+(luncorr):
+a ¼
+l
+luncorr
+¼ lim
+t!1 a tð Þ ¼ lim
+t!1
+lapp tð Þ
+lapp
+uncorr tð Þ
+ð2Þ
+l ¼ lim
+t!1 lapp tð Þ ¼
+lim
+t!1
+e2
+6tVkbT
+X
+N
+ij
+zizjh Ri tð Þ  Ri 0
+ð Þ
+½
+ Rj tð Þ  Rj 0
+ð Þ
+
+
+i
+ð3Þ
+where e is the electron charge, V the volume of the simulation
+box, kb the Boltzmann constant, T the temperature, zi the
+charge of ion i, N the total number of ions in the simulation
+box and Ri tð Þ the position of ion i at time t. The corresponding
+ionic conductivity assuming that ions move in a completely
+uncorrelated way writes:
+lapp
+uncorr tð Þ ¼ lim
+t!1 lapp
+uncorr tð Þ ¼
+e2
+6tVkbT
+X
+N
+i
+z2
+i h Ri tð Þ  Ri 0
+ð Þ
+½
+2i
+ð4Þ
+As a result, a denotes the degree of interaction between
+the ions; when a=0, the ions move together in a pure
+vehicular mechanism, while for a=1 the ions move in a pure
+hopping mechanism. It should be noted that the determination
+of a is considered to be accurate in the first 5% of the MD
+trajectory.[54]
+3. Results and Discussion
+In all MD simulations, we consider a solvent to salt ratio of 20:1
+for the purpose of comparison with experimental data from the
+literature.[50] For each system, the solvent phase has been first
+equilibrated
+at
+ambient
+pressure
+and
+temperature.
+After
+equilibration,
+20
+to
+40 ns-long
+production
+MD
+runs
+are
+conducted in the NVT ensemble. All structural and transport
+data presented are extracted from the production runs.
+With the aim of providing a comprehensive picture for the
+electrolytes used in LiS batteries, we have investigated first
+Li2S4-based electrolytes and later examined how those proper-
+ties are modified when LiTFSI is added to the medium.
+3.1. Li2S4 in Pure Solvents
+To test our methodology, we first study the simpler case of a
+single Li2S4 molecule in DOL. Figure 2A shows the RDF for the
+solvated molecule in the periodic simulation cell (a representa-
+tive structure is reported in Figure 2B). The RDF shows a single
+peak at short distances and goes to zero beyond 4 A˚, meaning
+that for larger distances, a Li+ cation does not see any sulfur
+atom. While the long-range behaviour of the RDF gives
+information on the dispersion of the salts in the solution, the
+RDF at short range gives information about the radius of the
+coordination shell (taken to be the position of the minimum
+after the first peak). In this case, we have only one peak and the
+radius of the coordination cell is 3.75 A˚. We would like to stress
+that Figure 2A refers to the radial distribution function for the
+interaction between Li+ and S atoms for a single Li2S4 complex
+in DOL solvent. This has been performed as simple test for the
+methodology, namely to check the behaviour of a single Li2S4
+complex dispersed in DOL. Having only one salt molecule in
+the model, the peak of the LiS RDF shown in Figure 2A
+corresponds to the LiS interaction within a salt molecule. The
+broadness of the peak is related to the molecular geometry,
+where
+mainly
+two
+LiS
+bond
+lengths
+(of
+2.3
+and
+2.8,
+respectively) can be identified. The CRDF in Figure 2C shows
+that, within the coordination shell, every Li+ is interacting on
+average with the other Li+ cation, 4 sulfur atoms and 2.4
+476
+Batteries& Supercaps 2019, 2, 473–481
+www.batteries-supercaps.org
+ 2019 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
+Articles
+ 25666223, 2019, 5, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/batt.201800150 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 5>>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+oxygen atoms from DOL molecules. Each cation thus interacts
+with the rest of the salt molecule; in other words, DOL does not
+promote the dissociation of the salt, as clearly seen in
+Figure 2B.
+Next, we model Li2S4-DOL and Li2S4-TEGDME solutions in a
+20:1 solvent to salt ratio, equilibrated at ambient temperature
+and pressure. The comparison between the LiS RDFs in DOL
+and TEGDME (Figure 3A) shows a single peak in TEGDME and a
+broader distribution in DOL. When examining the situation at
+long range, the curve goes to zero in DOL, meaning that Li-ions
+do not see any sulfur atom located outside of a sphere with
+~23 A˚ radius. This clearly indicates that all molecules aggregate
+in a single, large cluster. The behaviour is markedly different in
+TEGDME: the RDF converges to 1 beyond 12 A˚, which is typical
+of a homogenous liquid solution and suggests that Li2S4 salt
+molecules are well dispersed in TEGDME. The final structures
+from the MD simulations in DOL and TEGDME (Figure 3B)
+support this interpretation.
+The Li+ coordination shells in DOL and TEGDME have a
+radius of 3.65 A˚ and 3.75 A˚, respectively, and their compositions
+are reported in Table 1, together with that for a single salt
+molecule in DOL. CRDFs distributions are shown in Figure 4(A–
+B). The Li+ coordination shell in DOL is slightly smaller than
+that of the single salt molecule because of the aggregation, but
+the composition shows that, on average, every cation interacts
+not only with its anion, but it is also partially interacting with
+another salt molecule. The interactions with the solvent
+molecules are very scarce, implying that most of the Li2S4
+molecules are not in contact with the solvent, but are rather
+embedded in the aggregate. In strong contrast, the composi-
+tion of the Li+ coordination shell in TEGDME is dominated by
+solvent molecules, indicating that the salt is not only dispersed,
+but also at least partially dissociated.
+From the RDF analysis, we can conclude that the capability
+of DOL to solvate, disperse and/or dissociate Li2S4 is rather
+poor, while TEGDME is a much more efficient solvent in that
+respect.
+We next move to the calculation of transport properties of
+Li2S4 in the two solvents. In DOL, the diffusion coefficients for
+Figure 2. A) RDF for LiS atoms for a single Li2S4 molecule in DOL. The red
+dashed line shows the size of the coordination shell. B) Final structure from
+the MD simulation (the solvent molecules are shown as small blue dots for
+the sake of clarity). C) CRDF for a single molecule of Li2S4in DOL. The vertical
+solid black line shows the size of the coordination shell. The circles and the
+horizontal dashed lines are used to highlight the values of the CRDFs
+distribution for the coordination cell.
+Figure 3. A) RDF distributions of LiS in Li2S4DOL (black) and Li2S4-TEGDME
+(red) for the 20:1 solvent-salt mixture. B) Final structures for the two
+electrolytes extracted from the MD simulations. The Li2S4 molecules are color
+coded in red (S) and yellow (Li) and the solvent molecules are shown as
+small blue dots for the sake of clarity.
+Table 1. Radius and average composition of the Li+ coordination shell for
+Li2S4 in DOL and TEGDME. For reference, the values obtained for a single
+Li2S4 molecule in DOL are also reported.
+Solvent
+Radius [A˚]
+#Li+
+#S
+#Osolvent
+Single Li2S4 in DOL
+3.75
+0.9
+4
+2.4
+Li2S4 in DOL
+3.65
+1.5
+6.8
+0.5
+Li2S4 in TEGDME
+3.75
+0.06
+2.4
+4
+477
+Batteries& Supercaps 2019, 2, 473–481
+www.batteries-supercaps.org
+ 2019 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
+Articles
+ 25666223, 2019, 5, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/batt.201800150 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 6>>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+both Li+ and S4
+2 ions are about 31010 m2/s, while in
+TEGDME the diffusion coefficients drop down to 0.51010 m2/
+s. For the sake of comparison, the diffusion coefficients for the
+DOL and TEGDME molecules are 281010 m2/s and 1.0
+1010 m2/s, respectively. We would like to point out that the
+dispersion of the Li2S4 complexes in the two solvents is not
+directly related to their diffusion coefficients. The physical
+properties of the solvents should also be considered. In fact,
+the viscosity of TEGDME is much higher than for DOL, as
+reported in the Method section 2.1.2. This is the reason for the
+lower mobility in TEGDME, as also observed in experiments;[50–52]
+the lower mobility of the solvent molecules and ions in
+TEGDME is not surprising, as it is a more viscous solvent than
+DOL. It should be stressed that, being less viscous,[50] DOL
+should favour ion transport over TEGDME. In contrast, owing to
+the larger number of oxygen atoms, TEGDME is a better ion
+chelating agent.[29] The degree of uncorrelated ion motion, a,
+has been calculated in order to assess the mechanism for the
+ion transport of Li2S4 in the two media. In DOL, a is estimated
+to be 0.49, which suggests that ion motion occurs with a mixed
+vehicular and hopping mechanism implying exchanges of the
+counter-ions around a lithium atom within the aggregate; in
+TEGDME, the mechanism for ion transport has an increased
+hopping character, being characterized by a~0.61.
+3.2. Li2S4 in Mixed Solvents
+To move a step closer to the composition of actual electrolytes
+in LiS batteries, we have investigated a system in which Li2S4
+has been placed into a homogenous mixture of the two
+solvents in a 1:1 ratio, maintaining the usual solvent to salt
+ratio of 20:1. The choice of the two solvents and their ratio has
+been made based on literature data showing that this
+composition yields improves ion conductivity with respect to
+the corresponding solutions in a single solvent.[4,55]
+In Figure 5A, we compare the LiS RDFs between the DOL,
+TEGDME and DOL:TEGDME electrolytes. The RDF analysis
+indicates that the Li2S4:DOL:TEGDME electrolyte has a structure
+that
+is
+intermediate
+between
+those
+of
+Li2S4:DOL
+and
+Li2S4:TEGDME. At short range, the RDF resembles that of
+Li2S4:DOL (i.e., strong peaks below 10 A˚), which suggests a
+certain degree of salt aggregation. However, at long range, i.e.,
+for distances larger than 12 A˚, the RDF goes to 1 as in the case
+of Li2S4:TEGDME, indicating homogenous dispersion in the
+solution. In other words, the solution is expected to be made of
+small clusters of salt molecules quite homogeneously distrib-
+uted in the solvent, as can be seen from the final snapshot of
+the MD simulations (Figure 5B). This is further confirmed by the
+analysis of the coordination behaviour: the composition of the
+Li+ coordination shell is very similar to that in DOL. The radius
+is 3.65 A˚ and each cation interacts with 1.5 Li+, 4.8 S, 0 ODOL and
+2 OTEGDME (CRDFs distributions are reported in Figure 6). This
+reinforces our previous findings that the presence of DOL
+favours the salt aggregation and that TEGDME instead stabilizes
+small Li2S4 clusters that are dispersed in the solution.
+As in the previous systems, we have calculated the mobility
+of the different species and the degree of uncorrelated ion
+motion. The diffusion coefficients for both Li+ and S4
+2 ions are
+about 0.51010 m2/s (i.e., very close to the values found in
+TEGDME), while the DOL and TEGDME solvents have diffusion
+Figure 4. CRDF for Li2S4 in DOL (A) and in TEGDME (B). The vertical solid
+black line shows the size of the coordination shell. The colored dots and the
+horizontal dashed lines are used to highlight the values of the CRDFs
+distribution for the coordination cell.
+Figure 5. A) Comparison of LiS RDF distribution for the three electrolytes.
+B) Final structure extracted from the MD simulations of the
+Li2S4:DOL:TEGDME electrolyte. The Li2S4 molecules are color coded in red (S)
+and yellow (Li). The solvent molecules are shown as small blue dots for the
+sake of clarity.
+478
+Batteries& Supercaps 2019, 2, 473–481
+www.batteries-supercaps.org
+ 2019 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
+Articles
+ 25666223, 2019, 5, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/batt.201800150 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 7>>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+coefficients of about 51010 m2/s and 1.41010 m2/s, respec-
+tively (to be compared with the diffusion coefficients for the
+pure solvents of 281010 m2/s for DOL and 1.01010 m2/s for
+TEGDME). This indicates that the dynamics of solvent mixtures
+is ruled by TEGDME, which considerably slows down ion
+diffusion compared to pure DOL. The degree of uncorrelated
+ion motion, a=0.53, is intermediate between those calculated
+for the Li2S4:DOL and Li2S4:TEGDME electrolytes.
+3.3. Adding LiTFSI to the Li2S4:DOL:TEGDME Electrolyte
+Figure 7A shows the LiS RDF, as calculated between all Li+
+cations present in the system and the sulfur atoms of all S4
+2
+anions for the mixture of the two salts in the two solvents. The
+black curve in Figure 7A is the RDF for LiS for which the
+cations originate from Li2S4 and the red curve corresponds to
+the cations originating from LiTFSI. The comparison between
+the
+two
+distributions
+reveals
+that
+there
+are
+interactions
+between Li+ cations from LiTFSI and S4
+2 anions, pointing to a
+significant dissociation of LiTFSI in the electrolyte. At long
+range, the RDF again levels off at 1, consistent with the
+dispersion of the salt. Figure 7B indicates the presence of small
+molecular clusters comprising LiTFSI and Li2S4 molecules that
+are dispersed in the solution. Figure 7C displays the comparison
+between the RDFs for the Li+ and the oxygen atoms of the
+solvent molecules and shows that there is a strong competition
+between the TEGMDE solvent and TFSI anions to capture the
+Li+ cations, while very little interaction is found with DOL
+molecules. From the LiS RDF, we determine the size of the
+coordination shell to be 3.85 A˚. From the CRDF, a Li+ cation
+interacts with 0 NTFSI, 0 ODOL, 3.75 OTEG, 0.28 OTFSI 1.83 SS4 and
+1.01 STFSI within its coordination shell (CRDF distributions for
+this
+system
+are
+shown
+in
+Figure 8).
+By
+comparing
+the
+composition of the Li+ coordination shell with that in the
+Li2S4:DOL:TEG electrolyte, the modelling suggests that the
+presence of LiTFSI helps to dissociate the salts and promotes
+the solvation of Li+.
+Figure 6. CRDF for Li2S4 in the mixture of DOL and TEGDME. The vertical
+solid black line shows the size of the coordination shell. The colored dots
+and the horizontal dashed lines are used to highlight the values of the
+CRDFs distribution for the coordination cell.
+Figure 7. A) LiS and C) LiO RDF distributions in the
+LiTFSI:Li2S4:DOL:TEGDME system. B) Final structure extracted from the MD
+simulations. The Li2S4 molecules are color coded in red (S) and yellow (Li);
+the TFSI anions are color coded in green and red (S) and the Li+ cations in
+orange. The solvent molecules are shown as small blue dots for the sake of
+clarity.
+Figure 8. CRDF for the system where LiTFSI is added to Li2S4:DOL:TEGDME
+electrolyte. The vertical solid black line shows the size of the coordination
+shell. The colored dots and the horizontal dashed lines are used to highlight
+the values of the CRDFs distribution for the coordination cell.
+479
+Batteries& Supercaps 2019, 2, 473–481
+www.batteries-supercaps.org
+ 2019 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
+Articles
+ 25666223, 2019, 5, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/batt.201800150 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 8>>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+The Li+, S4
+2 and TFSI ion mobilities are 0.71010 m2/s,
+0.51010 m2/s and 1.01010 m2/s respectively. The mobility of
+the solvent molecules and S4
+2 anions are not affected by the
+LiTFSI salt, i.e., the values are the same as those calculated for
+the Li2S4:DOL:TEGDME electrolyte. The slight increase in the
+mobility of Li+ when LiTFSI is present in the electrolyte (0.7
+1010 m2/s vs 0.51010 m2/s) is expected to help decoupling
+the Li+ versus S2 motion. The degree of uncorrelated ion
+motion, a, has been calculated for pairs of ions, namely Li+
+S4
+2 and Li+TFSI. The ion motion for Li+S4
+2 has a mixed
+character (a=0.49) while for Li+TFSI ion pairs, the motion
+occurs clearly with a hopping mechanism (a=0.89). As a result,
+the Li+ cations sourced by LiTFSI diffuse faster, as they are less
+strongly bonded to the anion. Thus, it appears that LiTFSI has a
+very limited impact on the shuttle effect of LiPS, at least from a
+dynamical view point (since the diffusion is almost unaltered),
+but mainly acts as a reservoir of Li+ cations while slightly
+improving their diffusion.
+Table 2 summarizes the main findings from this study. It
+points to the need for a subtle interplay between the ability of
+the salts to dissociate and disperse in the solvent and the
+viscosity-dependent ion transport in the electrolytes. More
+specifically, our simulations show that: 1) the mixture of
+solvents with complementary characteristics (namely high
+chelation power and low viscosity) is crucial to ensure both
+dispersion and dissociation of the ions and ion transport; 2) the
+different behaviour of Li+ in the two solvents reflects the
+different interaction energies of the Li+ ions with the solvent,
+leading to the selectivity of Li-ion for one solvent. In fact, a
+good solvent should help in dispersing the Li-ions from the PS
+(the ideal solvent should be viscous to capture the S2 anion)
+but at the same time should not interact too strongly to allow
+for a dynamic exchange of Li+ ions without hampering their
+diffusion; 3) the analysis of the mixture of salts in the binary
+solvent environment strongly supports the finding that LiTFSI
+additives mostly act as a source of Li+ cations without affecting
+the mobility of the PS anions and with limited impact on the
+(shuttle) diffusion mechanisms.
+4. Conclusions
+We have studied the electrolyte phase of LiS batteries by means
+of classic Molecular Dynamics simulations. A new and portable
+force field (FF) for the Li2Sn salts has been developed and
+validated against ab-initio Born-Oppenheimer molecular dy-
+namics calculations. This force field was used to model electro-
+lytes of Li2S4 first in pure solvent environments (either DOL or
+TEGDME) and then in the solvent mixture. Finally, LiTFSI salt
+was added to the model in order to mimic a typical electrolyte
+used in working LiS batteries.
+The analysis of the transport properties, namely the
+diffusion coefficient and the degree of uncorrelated motion,
+allowed for the identification of the ion motion mechanism. We
+found that the ion motion mechanism for Li2S4 in pure DOL has
+mixed vehicular and hopping character, while in TEGDME a
+dominant hopping character prevails, probably owing to the
+improved degree of dissociation. This is borne out by the
+structural analysis of the TEGDME-based electrolyte. However,
+the high viscosity of that solvent strongly reduces ionic
+transport, thus calling for solvent mixtures. In a 1:1 DOL:T-
+EGDME binary mixture, the Li2S4 ion motion has a mixed
+vehicular and hopping character. As a result, LiPS salts are
+better dispersed compared to pure DOL (which has no effect
+on the salt dissociation), yet ion motion is similar to that in the
+pure and highly viscous TEGDME solvent.
+Finally, the addition of LiTFSI to the solvent mixture is
+predicted to slightly increase the mobility of Li-ions, while it
+hardly slows down the PS anion. In addition, the transport is
+now mixed (hopping) for the Li-ions originating from the PS
+(TFSI) salt, since the dissociation is not complete. Overall, it
+appears more likely from this study that the positive effect of
+LiTFSI additives in LiS batteries originates mostly from the
+increased number of mobile Li+ cations, rather than shutting
+off PS anion diffusion in the electrolyte, especially at the
+beginning of the battery performance, where there is no
+presence of LiPS ions in the electrolyte. Yet, our study is not
+comprehensive of the whole mechanism which is much more
+complex. To the authors’ knowledge, this is the first attempt to
+model the shuttle mechanism using MD simulations. From
+these simulations, the shuttle mechanism turns out to be much
+more complex than firstly hypothesized. With this first study,
+we shed light into a commonly accepted version of the
+mechanism, which is the decrease of the shuttle effect in
+presence of LiTFSI. However, further studies are clearly needed
+to include in the model the different species present in the
+electrolyte (from Li2S to Li2S8), as well as the chemical reactions
+they are involved in, together with a more detailed analysis of
+the ion dynamics.
+Table 2. Structural (aggregation or dispersion) and transport (diffusion coefficients and a value) properties for the different electrolytes.
+Salt
+Solvent
+Structure
+Diffusion Li+
+[1010 m2/s]
+Diffusion A
+[1010 m2/s]
+a
+Diffusion
+Mechanism
+Li2S4
+DOL
+Aggregation
+2.8
+2.8
+0.49
+Mixed
+TEGDME
+Dispersion
+0.5
+0.5
+0.61
+Hopping
+Li2S4
+MIX
+Clustering
+0.5
+0.5
+0.53
+Mixed
+LiTFSI:Li2S4
+MIX
+Clustering
+0.7
+0.5 (S4
+2)
+0.49 (Li2S4)
+Mixed
+1.0 (TFSI)
+0.89 (LiTFSI)
+Hopping
+480
+Batteries& Supercaps 2019, 2, 473–481
+www.batteries-supercaps.org
+ 2019 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
+Articles
+ 25666223, 2019, 5, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/batt.201800150 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 9>>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+Acknowledgements
+This study was supported by the Innoviris program of Re´gion de
+Bruxelles-Capitale (project 2014-R-80, Solvay SA, the Science Policy
+Office of the Belgian Federal Government (IAP 7/5)) and FNRS
+(Consortium des Equipements de Calcul Intensif – CECI –
+program). D.B. and J.C. are research directors of FNRS.
+Conflict of Interest
+The authors declare no conflict of interest.
+Keywords: diffusion coefficients · ion correlation · lithium-
+sulfur batteries · molecular dynamics · vehicular and hopping
+mechanisms
+[1] X. Ji, L. F. Nazar, J. Mater. Chem. 2010, 20, 9821–9826.
+[2] Y. V. Mikhaylik, J. R. Akridge, J. Electrochem. Soc. 2004, 151, A1969–
+A1976.
+[3] J. Scheers, S. Fantini, P. Johansson, J. Power Sources 2014, 255, 204–218.
+[4] L. Chen, L. L. Shaw, J. Power Sources 2014, 267, 770–783.
+[5] S. S. Zhang, J. Power Sources 2013, 231, 153–162.
+[6] A. Rosenman, E. Markevich, G. Salitra, D. Aurbach, A. Garsuch, F. F.
+Chesneau, Adv. Energy Mater. 2015, 5, 1500212.
+[7] E. Peled, A. Gorenshtein, M. L. Sega, Y. Sternberg, J. Power Sources 1989,
+26, 269–271.
+[8] J. Hassoun, B. Scrosati, Angew. Chem. Int. Ed. 2010, 49, 2371–2374;
+Angew. Chem. 2010, 122, 2421–2424.
+[9] L. F. Nazar, M. Cuisinier, Q. Pang, MRS Bull. 2014, 39, 436–442.
+[10] R. D. Rauh, K. M. Abraham, G. F. Pearson, J. K. Surprenant, S. B. Brummer,
+J. Electrochem. Soc. 1979, 126, 523–527.
+[11] N. Jayaprakash, J. Shen, S.-S. Moganty, A. Corona, L.-A. Archer, Angew.
+Chem. Int. Ed. 2011, 50, 5904–5908; Angew. Chem. 2011, 123, 6026–
+6030.
+[12] D. Bresser, S. Passerini, B. Scrosati, Chem. Commun. 2013, 49, 10545–
+10562.
+[13] M. Hagen, D. Hanselmann, K. Ahlbrecht, R. Mac¸a, D. Gerber, J. Tbke,
+Adv. Energy Mater. 2015, 5, 1401986.
+[14] R. Chen, T. Zhao, F. Wu, Chem. Commun. 2015, 51, 18–33.
+[15] A. Manthiram, S.-H. Chung, C. Zu, Adv. Mater. 2015, 27, 1980–2006.
+[16] F. Wu, J. Z. Chen, R. J. Chen, S. X. Wu, L. Li, S. Chen, T. Zhao, J. Phys.
+Chem. C 2011, 115, 6057–6063.
+[17] C. Wang, W. Wan, J. T. Chen, H. H. Zhou, X. X. Zhang, L. X. Yuan, Y. H.
+Huang, J. Mater. Chem. A 2013, 1, 1716–1723.
+[18] W. Y. Li, G. Y. Zheng, Y. Yang, Z. W. Seh, N. Liu, Y. Cui, Proc. Natl. Acad. Sci.
+USA 2013, 110, 7148–7153.
+[19] Y. Z. Fu, A. Manthiram, J. Phys. Chem. C 2012, 116, 8910–8915.
+[20] L. Wang, Z. H. Dong, D. Wang, F. X. Zhang, J. Jin, Nano Lett. 2013, 13,
+6244–6250.
+[21] H. Pan, X. Wei, W. A. Henderson, Y. Shao, J. Chen, P. Bhattacharya, J.
+Xiao, J. Liu, Adv. Energy Mater. 2015, 5, 1500113.
+[22] R. Xu, J. Lu, K. Amine, Adv. Energy Mater. 2015, 5, 1500408.
+[23] K. H. Wujcik, T. A. Pascal, C. D. Pemmaraju, D. Devaux, W. C. Stolte, N. P.
+Balsara, D. Prendergast, Adv. Energy Mater. 2015, 5, 1500285.
+[24] C. Barchasz, F. Molton, C. Duboc, J.-C. LeprÞtre, S. Patoux, F. Alloin, Anal.
+Chem. 2012, 84, 3973–3980.
+[25] K. Amine, R. Kanno, Y. Tzeng, MRS Bull. 2014, 39, 395–401.
+[26] R. Xu, I. Belharouak, J. C. M. Li, X. Zhang, I. Bloom, J. BareÇo, Adv. Energy
+Mater. 2013, 3, 833.
+[27] W. Li, Z. Liang, Z. Lu, H. Yao, Z. W. Seh, K. Yan, G. Zheng, Y. Cui, Adv.
+Energy Mater. 2015, 5, 1500211.
+[28] R. Cao, W. Xu, D. Lv, J. Xiao, J.-G. Zhang, Adv. Energy Mater. 2015, 5,
+1402273.
+[29] S. Zhang, K. Ueno, K. Dokko, M. Watanabe, Adv. Energy Mater. 2015, 5,
+1500117.
+[30] S. Urbonaite, T. Poux, P. Novk, Adv. Energy Mater. 2015, 5, 1500118.
+[31] M. Agostini, J. Hassoun, J. Liu, M. Jeong, H. Nara, T. Momma, T. Osaka,
+Y.-K. Sun, B. Scrosati, ACS Appl. Mater. Interfaces 2014, 6, 10924–10928.
+[32] D. Aurbach, E. Pollak, R. Elazari, G. Salitra, C. S. Kelley, J. Affinito, J.
+Electrochem. Soc. 2009, 156, A694–A702.
+[33] C. Barchasz, J.-C. LeprÞtre, S. Patoux, F. Alloin, Electrochim. Acta 2013,
+89, 737–743.
+[34] M. Galin´ski, A. Lewandowski, I. Ste˛pniak, Electrochim. Acta 2006, 51,
+5567–5580.
+[35] A. Lewandowski, A. S´widerska-Mocek, J. Power Sources 2009, 194, 601–
+609.
+[36] O. Borodin, G. D. Smith, O. Geiculescu, S. E. Creager, B. Hallac, D.
+DesMarteau, J. Phys. Chem. B 2006, 110, 24266–24274.
+[37] W. L. Jorgensen, J. Tirado-Rives, Proc. Natl. Acad. Sci. USA 2005, 102,
+6665–6670.
+[38] W. L. Jorgensen, D. S. Maxwell, J. Tirado-Rives, J. Am. Chem. Soc.
+1996,118, 11225–11236.
+[39] G. A. Kaminski, R. A. Friesner, J. Tirado-Rives, W. L. Jorgensen, J. Phys.
+Chem. B 2001, 105, 6474–6487.
+[40] N. M. Fischer, P. J. Van Maaren, J. C. Ditz, A. Yildirim, D. van der Spoel, J.
+Chem. Theory Comput. 2015, 11, 2938–2944.
+[41] H. J. C. Berendsen, D. van der Spoel, R. van Drunen, Comp. Phys. Comm.
+1995, 91, 43–56.
+[42] T. H. Dunning Jr., J. Chem. Phys. 1989, 90, 1007–1023.
+[43] M. J. Frisch, G. W. Trucks, H. B. Schlegel, G. E. Scuseria, M. A. Robb, J. R.
+Cheeseman, G. Scalmani, V. Barone, G. A. Petersson, H. Nakatsuji et. Al.
+Gaussian 09, Revision D.01; Gaussian, Inc.: Wallingford, CT, 2009.
+[44] C. Caleman, P. J. van Maaren, M. Hong, J. S. Hub, L. T. Costa, D. van der
+Spoel, J. Chem. Theory Comput. 2012, 8, 61–74.
+[45] T. Darden, D. York, L. Pedersen, J. Chem. Phys. 1993, 98, 10089–10092.
+[46] M. Salanne, Phys. Chem. Chem. Phys. 2015, 17, 14270–14279.
+[47] M. I. Chaudhari, J. R. Nair, L. R. Pratt, F. A. Soto, P. B. Balbuena, S. B.
+Rempe, J. Chem. Theory Comput. 2016, 12, 5709–5718.
+[48] M. Salanne, R. Vuilleumier, P. A. Madden, C. Simon, P. Turq, B. Guillot, J.
+Phys. Condens. Matter 2008, 20, 494207.
+[49] C. Wohlfarth in Lechner M. D. (eds) Optical Constants. Condensed
+Matter, vol 50., 2017, Springer, Berlin, Heidelberg.
+[50] K. Hayamizu, Y. Aihara, S. Arai, C. G. Martinez, J. Phys. Chem. B 1999, 103,
+519–524.
+[51] K. Hayamizu, Y. Aihara, Electrochim. Acta 2004, 49, 3397–3402.
+[52] K. Hayamizu, E. Akiba, T. Bando, Y. Aihara, J. Chem. Phys. 2002, 117,
+5929.
+[53] J. N. Canongia Lopes, A. A. H. Pdua, J. Phys. Chem. B 2004, 108, 16893–
+16898.
+[54] O. Borodin, J. Phys. Chem. B 2009, 113, 11463–11478.
+[55] D.-R. Chang, S.-H. Lee, S.-W. Kim, H.-T. Kim, J. Power Sources 2002, 112,
+452–460.
+Manuscript received: December 21, 2018
+Revised manuscript received: February 1, 2019
+Version of record online: February 14, 2019
+481
+Batteries& Supercaps 2019, 2, 473–481
+www.batteries-supercaps.org
+ 2019 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
+Articles
+ 25666223, 2019, 5, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/batt.201800150 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

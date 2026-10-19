@@ -1,0 +1,1198 @@
+
+<<PAGE 1>>
+Citation: Li, C.; Zhou, N.; Sun, R.;
+Tang, J.; Liu, J.; He, J.; Peng, C.; Liu,
+H.; Zhang, S. The Interactions
+between Ionic Liquids and Lithium
+Polysulfides in Lithium–Sulfur
+Batteries: A Systematic Density
+Functional Theory Study. Materials
+2024, 17, 2689. https://doi.org/
+10.3390/ma17112689
+Academic Editor: Alessandro
+DellEra
+Received: 24 April 2024
+Revised: 25 May 2024
+Accepted: 29 May 2024
+Published: 2 June 2024
+Copyright: © 2024 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed
+under
+the
+terms
+and
+conditions of the Creative Commons
+Attribution (CC BY) license (https://
+creativecommons.org/licenses/by/
+4.0/).
+materials
+Article
+The Interactions between Ionic Liquids and Lithium Polysulfides
+in Lithium–Sulfur Batteries: A Systematic Density Functional
+Theory Study
+Chengren Li 1,2
+, Nan Zhou 1,2, Rongde Sun 1,2, Jiaxin Tang 1,2, Jianglu Liu 1,2, Jianhua He 1,2, Changjun Peng 3,
+Honglai Liu 3 and Shaoze Zhang 1,2,*
+1
+National Engineering Research Center of Vacuum Metallurgy, Kunming University of Science and Technology,
+Kunming 650093, China
+2
+Engineering Laboratory for Advanced Battery and Materials of Yunnan Province, Kunming University of
+Science and Technology, Kunming 650093, China
+3
+Key Laboratory for Advanced Materials, School of Chemistry & Molecular Engineering, East China
+University of Science and Technology, Shanghai 200237, China
+*
+Correspondence: szzhang@kust.edu.cn
+Abstract: Ionic liquids (ILs) based on hybrid anions have recently garnered attention as beguiling
+alternative electrolytes for energy storage devices. This attention stems from the potential of these
+asymmetric anions to reduce the melting point of ILs and impede the crystallization of ILs. Further-
+more, they uphold the advantages associated with their more conventional symmetric counterparts.
+In this study, we employed dispersion-corrected density functional theory (DFT-D) calculations to
+scrutinize the interplay between two hybrid anions found in ionic liquids [FTFSA]−and [MCTFSA]−
+and the [C4mpyr]+ cation, as well as in lithium polysulfides in lithium–sulfur batteries. For compari-
+son, we also examined the corresponding ILs containing symmetric anions, [TFSA]−and [FSA]−.
+We found that the hybrid anion [MCTFSA]−and its ionic liquid exhibited exceptional stability and
+interaction strength. Additionally, our investigation unveiled a remarkably consistent interaction
+between ionic liquids (ILs) and anions with lithium polysulfides (and S8) during the transition from
+octathiocane (S8) to the liquid long-chain Li2Sn (4 ≤n ≤8). This contrasts with the gradual alignment
+observed between cations and lithium polysulfides during the intermediate state from Li2S4 to the
+solid short-chain Li2S2 and Li2S1. We thoroughly analyzed the interaction mechanism of ionic liquids
+composed of different symmetry anions and their interactions with lithium polysulfides.
+Keywords: ionic liquids; lithium–sulfur batteries; lithium polysulfides; interactions
+1. Introduction
+Ionic liquids (ILs) have been established as a reliable alternative to traditional or-
+ganic electrolytes owing to their exceptional properties, including robust thermal sta-
+bility, an expansive electrochemical range, low volatility, and non-flammability [1,2].
+Bis(trifluoromethyllsulfonyl)imide [TFSA]−, characterized by two symmetrical sulfonylim-
+ide anions, is widely acknowledged as the predominant anion in ionic liquid electrolytes [3–6].
+However, these ILs present notable drawbacks when compared to standard organic
+carbonate-based electrolyte solvents, such as heightened viscosity and a restricted liquid
+temperature range [7]. Consequently, the challenge of reducing the viscosity and melting
+point of ILs poses a significant hurdle for their practical application in next-generation
+batteries and capacitors [8].
+To overcome the limitations associated with symmetric anions in ionic liquid elec-
+trolytes, the addition of asymmetric or compound anions has been proposed [9,10]. These
+novel anions retain the advantageous properties of their symmetric counterparts while
+demonstrating potential in inhibiting crystallization and reducing the melting point [11].
+Materials 2024, 17, 2689. https://doi.org/10.3390/ma17112689
+https://www.mdpi.com/journal/materials
+
+<<PAGE 2>>
+Materials 2024, 17, 2689
+2 of 26
+Notably, the hybridization of bis(fluorosulfonyl)imide [FSA]−and [TFSA]−has led to the for-
+mation of fluorosulfonyl(trifluoromethanesulfonyl)imide [FTFSA]−, effectively preventing
+the crystallization of ILs at ambient temperatures and expanding their liquid tempera-
+ture range [12–14]. Palumbo et al. synthesized ionic liquid (IL) electrolytes, including the
+asymmetric [FTFSA]−anion, in combination with the N-trimethyl-N-butyl-ammonium
+[N1114]+ and N,N-diethyl-N-methyl-N(2-methoxyethyl)-ammonium [N122(2O1)]+ cations,
+and observed remarkable electrochemical stability in the resulting [FTFSA]−electrolytes [15].
+Subsequent investigations into the electrochemical and physicochemical properties of these
+electrolytes in lithium-ion batteries, supercapacitors, and other electrochemical capacitors
+have yielded favorable outcomes [12,13,16].
+Furthermore, the recent synthesis of a new asymmetric sulfonylimide anion, namely,
+methylcarbonate(trifluoromethylsulfonyl) imide [MCTFSA]−, representing a synthesis of
+triflamide and carbonate, has produced promising results. The physicochemical properties
+of its sodium and N-butyl-N-methyl pyrrolidinium salts have been explored, accompa-
+nied by structural insights obtained through X-ray diffraction studies of the sodium salt.
+These investigations have been discussed in terms of charge delocalization, coordination
+chemistry, and electrochemical behavior, revealing encouraging findings [11,17].
+The sluggish transformation kinetics of lithium polysulfides (LiPSs) and the adverse
+shuttle effect resulting from the accumulation of highly soluble LiPSs are widely rec-
+ognized as the primary impediments to the practical implementation of lithium–sulfur
+batteries [18–21]. The generation of soluble long-chain LiPSs during battery operation
+leads to immediate corrosion at the lithium anodes, causes rapid capacity decay, and un-
+dermines cycle performance. Additionally, the poor conductivity of the active S8 clusters
+and the final discharge products of Li2S2/Li2S limits the utilization of sulfur species and
+diminishes the discharge capacity. Furthermore, the sluggish redox kinetics during the
+charging and discharging processes, attributed to high potential barriers in the rate-limiting
+steps (Li2S2 →Li2S), constrains the high-rate charging and discharging capabilities of Li–S
+batteries [21]. The sluggish sulfur reduction reaction (SRR) kinetics worsens the polysul-
+fide shuttle, leading to inadequate sulfur utilization [22–24].Previous investigations have
+demonstrated that incorporating LiNO3 into the electrolyte of lithium–sulfur batteries
+simplifies the reduction of LiNO3 to LiNOx on lithium electrodes during discharge. This
+process yields LiNOx species capable of further oxidizing lithium polysulfides within
+the lithium surface layer to form LiSOy, thereby effectively passivating the lithium sur-
+face [25–28]. This passivated surface effectively mitigates the shuttle reaction of polysulfide
+ions on the lithium electrode, leading to a substantial enhancement in the electrochemical
+efficiency and utilization of lithium–sulfur batteries [27]. However, as the nitrate additive
+is gradually depleted, the shuttle effect reappears [29]. Compared with other cathode
+materials, the S in lithium–sulfur batteries is abundant and inexpensive, and because
+lithium–sulfur batteries have a high energy density, we must not give up on the exploration
+of lithium–sulfur batteries [30–33].
+The inherent stability of ionic liquids (ILs) means that they are not depleted during
+the charge/discharge process. In addition, the IL-based electrolytes possess the capability
+to diminish the solubility of lithium polysulfides (LiPSs), in contrast to conventional
+organic electrolytes [34–39]. Ionic liquid lithium–sulfur batteries may face higher costs
+in production, mainly because of the higher price of ionic liquids and the complexity of
+the production process. However, with technological advances and the expansion of the
+production scale, these costs may gradually decrease [35,40–42]. In addition, ionic liquid
+lithium–sulfur batteries may offer better economics in the long run, given their longer
+cycle life and higher energy density [43–45]. Lithium-ion liquid lithium–sulfur batteries
+have better environmental performance compared with traditional lithium-ion batteries,
+mainly in the renewability and recyclability of materials, which can also further control
+costs [46,47]. Furthermore, the solubility of lithium polysulfides (LiPSs) in ionic liquid
+(IL)-based electrolytes demonstrates a significant dependence on the anionic structure [48].
+Asymmetric anions are distinguished by a stable polyfluorinated structure at one terminal
+
+<<PAGE 3>>
+Materials 2024, 17, 2689
+3 of 26
+and robust solvation with high ionic conductivity at the other terminal. This design
+preserves the characteristics of symmetric anions while surpassing their limitations, thereby
+enhancing the performance of lithium–sulfur (Li–S) batteries [49]. Therefore, the adoption
+of the asymmetric ionic liquids as electrolytes presents a promising strategy for the practical
+and stable application of lithium–sulfur batteries [35,41,50]. Thus, it is crucial to investigate
+the diverse binding modes of ionic liquids and their interactions and reaction processes
+with LiPSs [18,35]. However, experimental illumination of the reaction pathway and
+structural details is often challenging. In contrast, computational modeling methods offer
+the potential to clarify the reaction mechanisms and pathways occurring at the electrolyte–
+LiPSs interface [11]. For example, Hu et al. performed classical molecular dynamics (CMD)
+simulations to investigate the microscopic mechanisms and transport behaviors of typical
+Li2S8 species in ionic liquids and ionic liquid-based electrolyte systems. The dynamic
+characteristics revealed that the presence of anion [TFSA]−in IL electrolytes promotes
+faster Li+ exchange rates and facilitates the dissociation of Li+ solvation structures [51].
+Liu et al. employed density functional theory (DFT) calculations to demonstrate that the
+stable molecular configurations of short-chain lithium polysulfides (Li2Sx, where 1 ≤x ≤3)
+exhibit a linearly serrated structure. Conversely, the stable molecular structure of long-
+chain lithium polysulfides (Li2Sx, where 4 ≤x ≤8) tends to be cyclic when dissolved
+in both (1,3-dioxolane) DOL and (1,2-dimethoxyethane) DME solvents. These findings
+have significant implications for the anchoring of lithium polysulfides at the negative
+electrode [52]. Nevertheless, the intricate architectures, binding patterns, and the nature
+interactions between ionic liquids and lithium polysulfide in ionic liquid-based lithium–
+sulfur batteries demand urgent exploration.
+Recognizing the significance of diverse anion-based ionic liquids in lithium–sulfur
+batteries, meticulous scrutiny was devoted to four distinct ionic liquids comprising vari-
+ous symmetric anions, namely cis/trans-[TFSA]−, cis/trans-[FSA]−, cis/trans-[FTFSA]−, and
+cis/trans-[MCTFSA]−, coupled with the cation 1-butyl-1-methylpyrrolidinium [C4mpyr]+.
+Moreover, composite models were constructed to unravel the interactive mechanisms of
+ionic liquids in lithium–sulfur batteries, individually examining the cation, anion, and the
+ion-pair interacting with S8 and Li2Sn (where n = 1, 2, 4, 6, 8). Given the propensity of S8
+to readily react with Li+ and form lithium polysulfide intermediates, it is imperative to
+consider the analysis of S8 in Li–S batteries [53–55]. To streamline discussions, we shall
+henceforth refer to both S8 and Li2Sn (where n = 1, 2, 4, 6, 8) collectively as LiPSs. In
+addition to the energy and structure calculations, an array of analytical techniques, includ-
+ing atoms in molecules (AIM) [56], an independent gradient model based on Hirshfeld
+partition (IGMH) [57], electron density difference (EDD), charge decomposition analysis
+(CDA) [58] and symmetry-adapted perturbation theory (SAPT) [59] energy decomposition
+analysis were employed to further illustrate the nature of the interactions and the electronic
+properties of these complexes in order to investigate the electron transfer process and
+its performance of the new ionic liquid lithium–sulfur battery electrolyte, so as to better
+combine the theory with practice.
+2. Computational Methods
+2.1. Theoretical Methods
+The structural optimization of the species in this investigation was achieved by em-
+ploying the M06-2X [60] functional, a hybrid density functional developed by Truhla’s
+group. The theoretical methodology has been well-established for its reliable description of
+various types of weak interactions [61–63] and widely adopted for examining the theoretical
+interactions between ion pairs in ionic liquids [64–66]. Regarding the selection of the basis
+set, we employed the aug-cc-pVDZ developed by Dunning [67], known for its precision
+and applicability in accurately describing molecular properties. The computational systems
+were all investigated using zero-damping dispersion-corrected density functional theory
+[DFT-D3(zero)] [68]. The corresponding structure was analyzed at the same theoretical
+level to ensure that all the structures were at the lowest point of the local potential energy
+
+<<PAGE 4>>
+Materials 2024, 17, 2689
+4 of 26
+surface. The calculations were carried out with the Gaussian 09 suite of programs [69].
+Analysis was undertaken with the Multiwfn program [70] and visualized using the VMD
+package [71].
+2.2. Study of the Dimeric Interactions
+To explore the individual interactions among different components in the lithium–
+sulfur battery system, we initially created and optimized three pairs of models for a total
+of 62 configurations. As depicted in Figure 1a–c, (a) 8 models represent the combina-
+tion of anions and cations within the ionic liquid; (b) 6 models consist of cations and
+lithium polysulfides in a complex arrangement; and (c) 48 models involve anions and
+lithium polysulfides.
+Figure 1. Schematic representation of the complex binding mode of the dimer (a–c); and trimer
+(d–g) involved in this study.
+2.3. Study of the Trimeric Interactions
+To delve deeper into the intricacies of these more realistic systems, we studied the
+synergistic mechanism between ionic liquids and lithium polysulfides. Based on the
+distinctive orientations of their combinations, we devised a trimeric model comprising
+192 configurations categorized into four distinct groups. The schematic diagram depicting
+these categories is illustrated in Figure 1d–g. In configuration (d), the cation and anion
+form an ionic liquid, with lithium polysulfides intimately bound to the anion. The anion
+serves as the pivotal element, securely anchoring the three constituents together. Moving
+on to configuration (e), the cation and lithium polysulfides are not in direct contact, while
+the polysulfide acts as the direct adhesive substance between the three entities, intimately
+binding the polysulfide to the anode ion. Configuration (f) mirrors the arrangement
+observed in (d), wherein the cation and anion first combine to form an ionic liquid. However,
+in this case, lithium polysulfides are firmly attached to the cation, with the cations serving
+as the adhesive material for the trimeric assembly. Lastly, in configuration (g), the cation
+and anion initially form an ionic liquid, while lithium polysulfides establish contact with
+both the cations and anions. This configuration showcases a synergistic effect among the
+three constituents.
+3. Results and Discussion
+3.1. Structures and Energetics of the Complexes Containing Different Interactions
+Driven by the recognition that electrostatic forces predominantly govern the inter-
+actions between cations and anions in ionic liquids (ILs), we conducted an analysis of
+the molecular electrostatic potential (ESP) [72]. This analysis aimed to determine the
+
+<<PAGE 5>>
+Materials 2024, 17, 2689
+5 of 26
+energetically stable configurations of ionic pairs, with a specific focus on the isolated
+forms of the cation and anions. Figure 2 presents the molecular electrostatic potential
+(ESP) surfaces of the [C4mpyr]+ cation and four anions (FTFSA−, MCTFSA−, TFSA−, and
+FSA−), highlighting the locations of local maxima and minima, denoted as Vs,max and
+Vs,min, respectively.
+Figure 2. The ESP surfaces (isosurface values at 0.001 a.u.) of isolated cation and anions, together
+with Vs,max and Vs,min.
+It is evident that the [C4mpyr]+ cation exhibits a pronounced positive electrostatic
+potential, reaching a maximum value of +4.93 eV in close proximity to the methyl group’s
+terminus. In the case of symmetric anions, the electrostatic potential minimum is distributed
+at both ends of the -CF3 or -S-F groups. Notably, the latter displays a more negative
+electrostatic potential (−2.13 eV as compared to −3.38 eV), owing to the heightened electron-
+withdrawing capability of the sulfur atoms in contrast to the carbon atoms. Asymmetric
+anions, meanwhile, exhibit an uneven distribution of electrostatic potential. Specifically,
+the -S-F end of [FTFSA]−demonstrates a more negative electrostatic potential than its -CF3
+end, while the -CF3 end of [MCTFSA]−manifests a more negative electrostatic potential
+than its -CH3 end. These observations suggest that the hydrogen bonds formed by H
+may possess a weaker bond strength compared to the hydrogen bonds established by F.
+Among the four anions, the simultaneous presence of cis/trans-[MCTFSA]−demonstrates
+the most pronounced negative electrostatic potential, with values of −5.26 eV and −5.34 eV,
+respectively.
+Simultaneously, in order to further investigate the synergy between ILs and LiPSs,
+we also performed an ESP analysis on the LiPSs, as depicted in Figure 3. In the case of
+lithium polysulfides (LiPSs), the analysis of electrostatic potential indicates that the positive
+electrostatic potential consistently resides in close proximity to the Li atoms. Conversely,
+the negative electrostatic potential near the S atoms intensifies as the number of S atoms
+increases, attributed to electron dispersion. Conversely, the electrostatic potential in the
+proximity of the lithium atoms exhibits a gradual reduction as the quantity of sulfur atoms
+grows, with the exception of a momentary escalation observed in Li2S6.
+
+<<PAGE 6>>
+Materials 2024, 17, 2689
+6 of 26
+Figure 3. The ESP surfaces (isosurface values at 0.001 a.u.) of Li2Sn (n = 1, 2, 4, 6, 8) and S8, together
+with Vs,max and Vs,min.
+To elucidate the structural characteristics of different complexes, we constructed and
+optimized various models using the ESP results as a foundation. The interaction energies
+of the optimized dimeric structures are presented in Figure 4, providing the energetic
+landscapes of these complexes. The interaction energy (Eint) is defined as:
+Eint = Esystem −∑
+i
+Ei + EBSSE
+(1)
+(a)
+(c)
+(b)
+Figure 4. (a) The interaction energies between cation and anion within ionic liquids; (b) the interaction
+energies between cation and lithium polysulfide; and (c) the interaction energies between anions and
+lithium polysulfides.
+The total energy of system, denoted as Esystem, and the optimized energy of the iso-
+lated monomer (whether cationic, anionic, or lithium polysulfides), referred to as Ei, along
+with the energy of basis set superposition error (EBSSE) [73–77]. Notably, in examining
+the ionic liquid interaction energy in Figure 4a, it becomes evident that the most pro-
+nounced interaction energy was observed between [MCTFSA]−and the cation [C4mpyr]+,
+with values of −83.94 kcal/mol for the cis-configuration and −83.67 kcal/mol for the
+trans-configuration. Conversely, the other three anions exhibited comparatively fewer
+
+<<PAGE 7>>
+Materials 2024, 17, 2689
+7 of 26
+disparities, hovering around −80 kcal/mol. This disparity signifies the preferential and
+more stable binding of the [MCTFSA]−anion to the cation. Attributed to the ESP anal-
+ysis, [MCTFSA]−has a lower electrostatic potential, forcing it to bind preferentially to
+cations [65,66]. Furthermore, the symmetric anions [FSA]−and [TFSA]−exhibited higher
+interaction energies in the trans-structural configuration when interacting with the cations,
+registering at −78.46 kcal/mol and −80.54 kcal/mol, respectively. In contrast, these values
+decreased in the cis configuration, measuring at −76.47 kcal/mol and −78.26 kcal/mol,
+respectively. On the other hand, the asymmetric anions [FTFSA]−and [MCTFSA]−ex-
+hibited a contrasting trend. In the trans configuration, their interaction energies were
+−77.87 kcal/mol and −83.94 kcal/mol, respectively, whereas in the cis configuration, they
+measured −77.11 kcal/mol and −83.67 kcal/mol, respectively. This can be ascribed to the
+heightened negativity of the electrostatic potential observed in the electrostatic potential
+analysis of the [MCTFSA]−anion. This attribute facilitates a greater comprehension of
+the augmented interaction energy upon its association with the cation. This is attributed
+to the fact that the relatively iso-side structure of the asymmetric anion promotes strong
+binding to the cation on one side, whereas the symmetric anion is trans-exposed to a greater
+number of binding sites. Simultaneously, the non-fluorinated methyl -CH3 terminus, in
+conjunction with the fluorinated -CF3 terminus, positioned on the same side within the
+cis-[MCTFSA]−configuration, unveils a greater number of oxygen binding sites. Conse-
+quently, these structural attributes culminate in elevated interaction energies in comparison
+to the trans-structural conformation. Notably, this analysis underscores the greater strength
+of the trans structure in symmetric anions and the prominence of the cis configuration
+in asymmetric anions. Consequently, it is imperative to consider both isomers in all the
+calculations presented in this study, despite previous computational works focusing solely
+on the trans- or cis-isomer [78–81].
+As depicted in Figure 4b, it is evident that the cation exhibited the highest interaction
+energy with Li2S1 (−28.49 kcal/mol), with the interaction energy gradually diminishing
+as the number of sulfur atoms increased. However, there was a subsequent increase in
+interaction energy during the interaction with S8. This observation indicates that the
+interaction between the cation and lithium polysulfides weakens as the number of S
+elements increases, yet the distinctive ring structure of S8 enhances its interaction with the
+cation [82–84].
+In Figure 4c, it can be observed that, among the various anions interacting with
+lithium polysulfides, the interaction energy with S8 is the lowest in this system. The
+electrostatic potentials of S8 exhibit a near-neutral state, with both positive and negative
+charges converging towards zero [85]. This balance, along with the unstable nature of
+its binding mode [53], contributes to a diminished interaction energy. Furthermore, only
+the cis structure of the [TFSA]−anion exhibits a higher interaction energy compared to
+the trans structure and lithium polysulfides. Conversely, the other three anions exhibit
+stronger interaction energies than the cis structure. However, similar to Figure 4a, the
+strongest interaction energy between the [MCTFSA]−anion and lithium polysulfides is
+observed. With the exception of the interaction with S8, the interaction energy with other
+lithium polysulfides is higher in the cis configuration. In a comprehensive analysis, the
+interaction energy between the anion and lithium polysulfides manifests a discernible
+sequence of descending, ascending, and descending trends from Li2S1 to Li2S4, Li2S4 to
+Li2S6, and Li2S6 to Li2S8, respectively. Notably, S8 demonstrates the least energetically
+favorable interaction. This observation aligns with the trend of positive electrostatic
+potential variations surrounding the lithium atom, as evidenced by the analysis of ESP for
+the LiPSs.
+The interaction energies of the trimeric complex are quantified in Figure 5. Examining
+the distinct lithium polysulfides, a similar interaction pattern to anions and lithium polysul-
+fides is observed. Across the four systems, there’s a progressive decline from Li2S1 to Li2S2
+to Li2S4, followed by a slight increase from Li2S4 to Li2S6. Subsequently, there is a further
+decrease from Li2S6 to Li2S8, with S8 demonstrating the lowest structural interaction energy.
+
+<<PAGE 8>>
+Materials 2024, 17, 2689
+8 of 26
+It can be expected that the anion may assume a more dominant influence in the interactions.
+Shifting focus to the various anions, in consonance with the findings depicted in Figure 4,
+the [MCTFSA]−anion emerges as the most energetically favorable among the four anionic
+systems. Considering different configurations, the g structure (c.f. Figure 1g) manifests
+the highest level of interaction energy among the four configurations, accounting for one
+third (16 out of 48 binding modes) of the total negative, cation, and lithium polysulfide
+interactions. This finding suggests that synergistic configurations involving all three com-
+ponents typically confer heightened stability. This may be attributed to the greater number
+of binding sites exposed in the g structure. In this configuration, the negative electrostatic
+potential in the anion can bind to both the positive electrostatic potential region of the
+cation and the positive electrostatic potential region of the lithium polysulfides (LiPSs).
+Additionally, the neutral LiPSs also offer a negative electrostatic potential region to bind to
+the cation, thereby forming a more stable “triangular” configuration.
+Figure 5. The interaction energies between ionic liquids and lithium polysulfides.
+3.2. Interaction Analysis
+3.2.1. Atoms in Molecules (AIM) Analyses
+The quantum theory of atoms in molecules (AIM) provides a quantitative framework
+for investigating the strength and nature of interactions, utilizing the electron density ρ(r)
+at critical points (CPs) [56]. These CPs are characterized by a gradient of the electron
+density, ∇ρ(r), and are further distinguished by the three eigenvalues of the Hessian matrix.
+Notably, a bond CP (BCP) frequently emerges between adjacent nuclei, serving as a clear
+indication of the presence of a chemical bond or noncovalent interaction between them.
+Building upon the aforementioned findings, a representative selection of systems was
+analyzed, specifically targeting the identification of BCPs between atoms through AIM
+analysis. In the molecular image, the interactions between two atoms are labelled with
+red dots and they are connected with red bond paths. In addition, the bond energy (EB)
+calculated from the potential energy density (V) at the BCP can be used to describe the
+strength of each interaction [86] as follows:
+EB = 1
+2V
+(2)
+
+<<PAGE 9>>
+Materials 2024, 17, 2689
+9 of 26
+In order to facilitate the subsequent analyses, representative systems were selected; and
+the bond energies are plotted as Figure 6, while all the specific structural and topological
+parameters are detailed in Table S1.
+ 
+Figure 6. Bond energies for representative geometries: (a) dimer and (b) trimer.
+The optimized structures of the dimers were analyzed, as depicted in Figure 7. These
+encompass the interplay between the moderately interacting trans-[TFSA]−anion and
+diverse LiPSs. Furthermore, they encompass the binding interaction between the [C4mpyr]+
+cation and an array of LiPSs, as well as the binding interaction between each of the four
+distinct anion types and Li2S4 in the transitional state. In this manner, an exploration of the
+binding patterns among anions, cations, and lithium polysulfides was undertaken. The
+analysis of the optimized structures of both the cation and lithium polysulfides revealed a
+prevalent occurrence of hydrogen bonds, underscoring the affinity of the hydrogen atom in
+the cation for such interactions with the LiPSs.
+ 
+Figure 7. AIM diagrams for representative dimer systems.
+
+<<PAGE 10>>
+Materials 2024, 17, 2689
+10 of 26
+Notably, the combination with S8 exhibited the highest number of hydrogen bonds;
+however, as the number of S atoms increased, the average energy associated with these
+hydrogen bonds gradually diminished. This observation suggests that the introduction of
+S elements facilitates the formation of hydrogen bonds while simultaneously dispersing
+the energy associated with these interactions.
+Turning our attention to the binding of trans-[TFSA]−and lithium polysulfides, the re-
+markable strength of the O···Li bond energy (−209.4 meV to −374.5 meV) can be attributed
+to two factors. First, the robust oxidizing properties of the oxygen (O) atoms contribute sig-
+nificantly. Second, the strong negative electrostatic potential near the O atom, as revealed in
+the electrostatic potential (ESP) analysis, further enhances the bonding strength. In contrast,
+S8 still manifests the highest number of bonds, yet the bond energy is comparatively lower
+due to the absence of Li. This is in line with the established fact that the binding energy to
+S8 consistently exhibits the lowest values in analyses of interaction energy. Considering the
+diverse anions in Li2S4 structures, it is noteworthy that, while symmetrical anions exhibit a
+greater number of bonds, the average bond energy falls short of that observed in the case
+of the asymmetric anion. The diminished negative electrostatic potential associated with
+the symmetrical anion imposes limitations on its capacity to form stronger bonds, thereby
+elucidating its inability to sustain elevated levels of interaction energies. Remarkably, this
+asymmetric anion engendered stronger O···Li bonds with Li atoms in lithium polysulfides,
+thereby intensifying the overall interaction between them and bolstering the solubility of
+lithium polysulfide [87].
+Subsequently, a subset of representative trimer structures was carefully chosen and is
+presented in Figure 8. In order to investigate the impact of various binding modes on the
+specific structural analysis, four distinct binding modes of C4mpyr-cis-TFSA-Li2S4 were
+initially chosen, encompassing the moderately interacting cis-[TFSA]−anion and Li2S4
+in the transition state. Furthermore, the binding of ionic liquids to a range of lithium
+polysulfides was subsequently evaluated, wherein the cis-[MCTFSA]−anion in the stable g
+configuration exhibited the highest interaction energy.
+ 
+Figure 8. AIM diagrams for representative trimer systems.
+Similarly, the influence of different anions in the binding process was also examined,
+focusing on the transition state Li2S4 and the g configuration. Similar to the dimers, the
+trimers also exhibited a prevalence of hydrogen bonds, albeit with a noteworthy emphasis
+on the substantial O···Li bond energy. The observation reveals that the g configuration
+demonstrates a higher degree of interactivity compared to alternative configurations. No-
+
+<<PAGE 11>>
+Materials 2024, 17, 2689
+11 of 26
+tably, a triad of fragments within the g configuration engages in a synergistic interplay,
+contributing to the elucidation of the relatively superior stability characteristic of the g con-
+figuration. In the case of short-chain lithium sulfide compounds, such as Li2S1and Li2S2, a
+tendency towards optimizing the three-fold synergy configuration emerged, with Li atoms
+directed towards the anion and S atoms oriented towards the cation. This arises from the
+heightened positive electrostatic potential exerted by short-chain LiPSs in close proximity
+to lithium atoms, and the corresponding heightened negative electrostatic potential in the
+vicinity of sulfur atoms. As a consequence, there is an innate propensity for these entities
+to migrate towards locales harboring a greater abundance of sites conducive to the binding
+of both anions and cations.
+In contrast, long-chain lithium polysulfides, particularly the S8 compound, displayed
+a greater inclination to maintain the initial state after optimization. As an intermediate
+state, Li2S4 exhibited a propensity for transitioning towards the g configuration after
+optimization. In the process of binding diverse lithium polysulfides, an augmentation in
+the count of sulfur atoms unfolds, thereby unveiling a greater expanse of binding sites. This
+expansion engenders a heightened interaction domain, fostering an amplified formation
+of C-H···S bonds. Nevertheless, the concurrent escalation in the quantity of sulfur atoms
+has a concomitant effect of attenuating the positive and negative electrostatic potentials,
+ultimately precluding a commensurate elevation in bond energy levels. The symmetric
+anionic system exhibits a slightly greater abundance of bonds and higher bonding energy
+in contrast to its asymmetric counterpart. This disparity can be attributed to the fact
+that the symmetric anionic fraction offers a more uniform negative electrostatic potential
+distribution area to the fluorine-containing termini on both ends.
+3.2.2. Independent Gradient Model Based on Hirshfeld Partition (IGMH) Analyses
+In the year 2017, Lefebvre et al. introduced an electron-based density gradient (∇ρ)
+visual model method known as the independent gradient model (IGM) [88]. This approach
+enables users to define different fragments within a given system and discern the inter-
+actions occurring between these defined fragments. To further enhance the accuracy and
+precision of the IGM method, an advanced variant, referred to as the independent gradient
+model based on Hirshfeld partition (IGMH), was subsequently proposed. In this refined
+approach, the free-state atomic densities utilized in the IGM technique are substituted with
+atomic densities derived through the Hirshfeld partitioning of the actual molecular electron
+density [57].
+Figure 9 presents a map illustrating the weak interactions among representative dimers
+with an isosurface value of 0.005 a.u. The isosurface is visually represented using the RGB
+standard, where the color blue signifies strong attraction, green represents weak van der
+Waals interactions, and red denotes repulsion. This visualization reveals a multitude of
+interactions, exhibiting varying strengths, between lithium polysulfides and both cations
+and anions. Additionally, a two-dimensional scatter plot illustrating δginter versus sign(λ2)ρ
+in the corresponding system is included. Notably, the negative region of the scatter map
+demonstrates an attractive effect, while a spike in the area exhibiting positive values
+indicates the presence of a repulsive effect attributed to hindrance within the ring structure.
+Upon examination of Figure 10, it becomes evident that cations and lithium poly-
+sulfides exhibit relatively weak interactions, as indicated by their proximity to the cyan
+color. Consistent with the preceding AIM analysis of the structure, it is observed that the
+interaction region expands proportionally with the augmentation in the quantity of sulfur
+(S) atoms.
+Similarly, when considering the interaction between trans-[TFSA]−anions and differ-
+ent lithium polysulfides in Figure 11, it becomes apparent that, consistent with the pattern
+of fluctuations during interactions, the binding to S8 is the weakest, whereas the Li atoms
+in other lithium polysulfides form a stronger attraction with the O atoms.
+Furthermore, it should be noted that, in Figure 12, the asymmetrical anions display a
+higher degree of interaction strength, with the [FTFSA]−anion showing the highest affinity.
+
+<<PAGE 12>>
+Materials 2024, 17, 2689
+12 of 26
+Figure 9. RGB standard fills different weak interaction isosurfaces.
+Figure 10. Cation weak interaction diagram with lithium polysulfide.
+According to the IGMH analysis of the trimer depicted in Figure 13, it can be observed
+that the anions form the most stable interaction with lithium polysulfides, with the excep-
+tion of the structure that is bound to S8. This stability can be attributed to the remarkable
+electron-gain capability exhibited by the oxygen atoms in the anion, coupled with the
+robust electron-loss propensity demonstrated by the lithium atoms in lithium polysulfides.
+Subsequent investigations revealed a correlation between the physical phase of lithium
+polysulfide and the prevalence of cations and anions within the system, shown in Figure 14.
+In liquid-state long-chain lithium polysulfides, such as Li2S6 and Li2S8, as well as in
+the solid-state S8 system, it is evident that the interactions between anions and lithium
+polysulfides far surpass the interactions between cations and lithium polysulfides, as well
+as the interactions within anionic and cationic liquids. This observation underscores the
+dominant role played by anions during this phase.
+
+<<PAGE 13>>
+Materials 2024, 17, 2689
+13 of 26
+Figure 11. trans-[TFSA]−anion weak interaction diagram with lithium polysulfide.
+Figure 12. Weak interaction diagram of different anions with Li2S4.
+However, during the transition from the liquid state of Li2S4 to the insoluble short-
+chain lithium polysulfides (Li2S1 and Li2S2), an intriguing shift occurs (Figure 15). The
+interaction between cations and lithium polysulfides gradually intensifies over this transi-
+tion period. Eventually, in the Li2S1 system, it exceeds the interaction between anions and
+cations within ionic liquids (ILs). Although not as strong as the interaction between anions
+and lithium polysulfides, this finding highlights the significant influence of cations that
+cannot be disregarded during this stage.
+
+<<PAGE 14>>
+Materials 2024, 17, 2689
+14 of 26
+Figure 13. Weak interaction diagram of cis-[MCTFSA]−binding to form an ionic liquid with
+lithium polysulfide.
+Figure 14. Weak interaction diagrams of different configurations of cis-[TFSA]−binding forming
+ionic liquids with lithium polysulfide.
+It is noteworthy that there is no significant discrepancy between the symmetric and
+asymmetric anions. However, [MCTFSA]−exhibits a more pronounced ionic–liquid inter-
+action, indicative of its heightened affinity in this context.
+
+<<PAGE 15>>
+Materials 2024, 17, 2689
+15 of 26
+Figure 15.
+Weak interaction diagram of different anions binding to form ionic liquids with
+lithium polysulfide.
+3.3. Electron Transfer Analysis
+3.3.1. Electron Density Difference (EDD) Analyses
+The representative system electron density difference (EDD) analysis structure is
+shown in Figure 11 and is defined as follows:
+∆ρ = ρsystem −∑
+i
+ρi
+(3)
+where ρsystem denotes the electron density of the entirety of the system, ρi refers to the
+electron density pertaining to the distinct fragment i, with the coordinates mirroring those
+within the complex. Through the depiction of the ρ function via isosurfaces in three
+dimensions, and the subsequent filling of isosurfaces with varying types to differentiate
+positive and negative values, we are bestowed with the means to discern the increase or
+decrease in electron density among the fragments. Consequently, this framework allows
+for the tendency of electron migration between the complexes to be determined.
+In the surface EDD mapping of the cation and LiPSs dimers, a noteworthy redistribu-
+tion of electron density is observed along the hydrogen-bond axis (Figure 16). Specifically,
+the electron density increases in the area of the hydrogen bond acceptor S atoms, while it
+decreases in the region of the hydrogen bond donor H atoms. This suggests a migration
+of electrons from the Li atoms to the S atoms within the lithium polysulfides, as well as
+from the H atoms to the C atoms within the cation, along the covalent C–H bond. Overall,
+in the intermolecular region, there is a tendency for electrons to migrate from the lithium
+polysulfides to the cation.
+Figure 16. Plot of electron density differences of representative dimers. The red and blue regions
+represent increased electron density and decreased electron density, respectively.
+
+<<PAGE 16>>
+Materials 2024, 17, 2689
+16 of 26
+In the cases of the anion and lithium polysulfides, the O···Li bond emerges as the
+prominent feature. The internal electrons of the lithium polysulfides undergo migration
+from the Li atoms to the S atoms, and this electron transfer abates with an increasing
+number of S atoms. The phenomenon of electron transfer elucidates the inclination towards
+facile interaction formation as the count of sulfur atoms escalates, providing an augmented
+number of binding sites. However, concomitantly, there is a reduction in the electron
+transfer, which consequently restricts the reinforcement of these interactions. However,
+there is only minimal electron transfer between the cation or anion and S8, aligning with
+the relatively weak strengths illustrated by the IGMH isosurface. This propensity can be
+attributed to the dominance of dispersive interactions rather than electrostatic interactions
+in the binding of both anionic and cationic species to S8.
+Furthermore, in the trimer system, consistent with the findings of the IGMH investiga-
+tion, the anions predominantly carry the charge transfer within the system and serve as
+the primary electron donors (Figure 17). In their area, coupled with the cation and lithium
+polysulfide, a considerable increase in electron density is apparent.
+Figure 17. Plot of electron density differences of representative trimers. The red and blue regions
+represent increased electron density and decreased electron density, respectively.
+
+<<PAGE 17>>
+Materials 2024, 17, 2689
+17 of 26
+3.3.2. Charge Decomposition Analysis (CDA)
+The charge decomposition analysis (CDA) method, proposed by Dapprich and Frenk-
+ing in 1995 [58], uses the concept of a segment orbit to decompose the electron transfer
+between different segments, which defines three quantities, as follows:
+di =
+occ
+∑
+m∈A
+vir
+∑
+n∈B
+ηiCm,iCn,iSm,n
+(4)
+b =
+vir
+∑
+m∈A
+occ
+∑
+n∈B
+ηiCm,iCn,iSm,n
+(5)
+ri =
+occ
+∑
+m∈A
+vir
+∑
+n∈B
+ηiCm,iCn,iSm,n
+(6)
+Refer to Note S1 for specific parameter definitions. The term ‘d’ signifies electron
+transfer from the donor to the acceptor, while ‘b’ represents electron feedback from the
+acceptor to the donor. The electron polarization term ‘r’ signifies repulsion or bonding
+characteristics in the orbital overlap region.
+The previously stated definition of CDA exhibits certain constraints. Initially, it
+is applicable solely to closed-shell systems. Additionally, while complex orbitals can
+employ natural orbitals with non-integer occupancies, fragment orbitals are unable to do
+so. This discrepancy arises from the fact that the occupation number of fragment orbitals is
+neglected, focusing merely on occupation and non-occupation. In order to overcome this
+limitation, Xiao and Lu introduced an enhanced version of CDA, termed Generalized CDA
+(GCDA) [89]. In this revised framework, the terms ‘d’ and ‘b’ are redefined as ‘t’:
+ti = ∑
+m∈A ∑
+n∈B
+ηi
+ηFO
+m −ηFO
+n
+
+ηref
+Cm,iCn,iSm,n
+(7)
+ri = ∑
+m∈A ∑
+n∈B
+2min
+ ηFO
+m , ηFO
+n
+
+ηref
+ηiCm,iCn,iSm,n
+(8)
+The symbol ‘d-b’ signifies the difference between the total number of transferred elec-
+trons and the total number of feedback-transferred electrons. By employing the Extended
+CDA (ECDA) [90], one can derive the net number of electron transfers from the donor to
+the acceptor, where the polarization component is defined as the difference between ‘d-b’
+and the net transfer number. Figure 12 presents the results of CDA and ECDA calculations
+for the representative system. The results demonstrate that the ‘d-b’ term of the anion
+and lithium polysulfides in the dimer exceeds the corresponding value for the cation and
+lithium polysulfides by a factor of more than three, revealing the large electron migration
+between the anion and lithium polysulfides (Figure 18).
+This is also consistent with the apparently greater electron transfer of anions with
+lithium polysulfide in the EDD analysis. Within the dimer and trimer configurations,
+trans-TFSA-Li2S6 and Li2S6-co-C4mpyr-cis-MCTFSA emerge as being noteworthy, as they
+exhibit the most substantial ‘d’ values, thereby signifying the inherent capacity of Li2S6
+to embrace a significant charge influx. This observation may elucidate the pivotal role of
+the binding with Li2S6 in the transition of the interaction. While the majority of systems
+typically exhibit ‘b’ values surpassing zero, a notable exception arises with the anion–
+lithium polysulfide systems. In these cases, ‘b’ values predominantly fall below zero. This
+observation underscores the prevailing influence of electron polarization (negative) over
+charge transfer (positive) within the anion–lithium polysulfide system. The cumulative
+‘ri’ values across all complexes demonstrate a negative sum, a phenomenon given the
+inherently repulsive nature of occupied orbitals. Notably, in most of the configurations, the
+‘d-b’ term tends to assume small values for the cation and lithium polysulfides arrangement.
+
+<<PAGE 18>>
+Materials 2024, 17, 2689
+18 of 26
+Figure 18. The calculated results of CDA for selected complexes.
+Figure 19 presents representative molecular orbital maps elucidating the donor and
+acceptor contributions within the corresponding complexes. Notably, in the dimer trans-
+TFSA-Li2S4, the key donor orbital is the HOMO-8 orbital, predominantly localized along
+the N-O bond. However, in Li2S4-co-C4mpyr-cis-TFSA, where ionic liquids are formed, the
+orbital of the anion undertakes a remarkable dispersion, rendering its relative contribution
+to the entire complex, as opposed to being confined to a singular orbital. Remarkably,
+HOMO-8 (29.06%) primarily resides on the anions, whereas HOMO-16 (25.69%) predomi-
+nantly resides on the cations.
+This observation emphasizes the pronounced influence of ionic liquid formation on
+orbital interactions and charge transfer. Interestingly, within the trimer Li2S4-co-C4mpyr-
+cis-MCTFSA, the most significant donor orbital emerges as the HOMO-6 orbital (73.42%),
+primarily distributed across the anions. Furthermore, the asymmetric anion [MCTFSA]−
+exhibits more robust orbital interaction and charge transfer than its symmetric counterpart,
+the anion [TFSA]−.
+
+<<PAGE 19>>
+Materials 2024, 17, 2689
+19 of 26
+Figure 19. Representative donor–acceptor orbitals of selected complexes.
+3.4. Energy Decomposition Analysis
+The widely recognized Symmetry-Adapted Perturbation Theory (SAPT) serves as
+a well-established approach for determining intermolecular interaction energies, encom-
+passing physical effects including electrostatics, induction (polarization), dispersion, and
+exchange [59,91–93]. The total interaction energy (∆Eint) derived from the SAPT2+ method
+can be dissected into the following four components:
+∆Eint = Ees + Eex + Eind + Edisp
+(9)
+Ees, a descriptor of the electrostatic component, characterizes the Coulombic forces
+exerted by static electricity. Eind represents the amalgamation of charge transfer and
+orbital interactions, denoting the induced energy. Edisp epitomizes the dispersion energy
+within the system. Eex embodies the repulsive exchange energy arising from the Pauli
+exclusion principle.
+The energy decomposition analysis depicted in Figure 20 unveils a discernible trend
+in the binding of cations and lithium polysulfides. As the number of sulfur atoms increases,
+there is a clear evolution in the contributions of different energy components. Specifically,
+the contribution of electrostatic energy gradually diminishes, while the contribution of
+dispersion energy exhibits a gradual increase.
+Conversely, in the case of anions combined with lithium polysulfides, the electrostatic
+energy consistently remains the most dominant contributor, wherein S8 exhibits the utmost
+dispersion energy. This observation implies that the solid, insoluble S8 predominantly
+engages in dispersive interactions. However, upon its amalgamation with Li+ ions, the
+dispersive energy swiftly diminishes, giving way to a more dominant electrostatic energy
+that fosters the formation of soluble Li2S8. This inherent instability of S8 can be attributed
+to the rapid transition between these energy states. Additionally, it is noteworthy that the
+anion exhibits significantly higher exchange exclusion energy compared to the cation. This
+disparity may be attributed to the shorter O···Li bond length of the anion, which produces
+
+<<PAGE 20>>
+Materials 2024, 17, 2689
+20 of 26
+a heightened steric exclusion effect. The absence of the Li atom in S8 further corroborates
+this hypothesis, as its exclusion energy is relatively low.
+ 
+Figure 20. The energy contributions for: (a) dimer; and (b) trimer systems.
+In the trimer structures, a substantial majority of the systems exhibit the highest
+contribution from electrostatic energy (approximately 60%). This finding aligns with the
+substantial charge transfer observed in the analysis of these systems using EDD analysis,
+as supported by the heightened ‘d-b’ values derived from the CDA data. Similar to the
+dimer systems, the asymmetric anionic system also showcases a greater electrostatic energy
+contribution. While the binding to S8 exhibits a slightly higher contribution from dispersion
+energy compared to electrostatic energy, the configuration of LiPSs–cation–anion requires
+a greater amount of energy from the dispersion component. This necessity arises due
+to the distantly bound mode of the anion to lithium polysulfides. As the number of
+sulfur atoms increases in the trimer, the exchange system associated with different binding
+configurations of lithium polysulfides aligns with the interaction energy (refer to Figure 5).
+3.5. Comparison with the Experimental Findings
+The solid-state structure of Na [MCTFSA] was discerned by Matsumoto K through
+the utilization of single-crystal X-ray diffraction. A comparative analysis was then drawn
+against the X-ray structure of Na [TFSA] [94]. Pertaining to the S-O and S-C bond lengths,
+they exhibit marginal deviations from those observed in Na [TFSA]. Conversely, the N-
+S bond in [MCTFSA]−displays a slight contraction, possibly attributable to a reduced
+extent of charge dispersion [95]. This observation is in line with the discovery that trans-
+[TFSA]−(−75.4 meV) and trans-[MCTFSA]−(−85.3 meV) exhibit N-S bond energies when
+combined with Li2S4, as indicated by the AIM analysis. However, the EDA reveals a
+slightly diminished dispersive energy (a reduction of 2%) for trans-[MCTFSA]−.
+The temperature-dependent ionic conductivity of a 1 m Na [MCTFSA] solution in
+EC:PC (1:1 v/v) was estimated by Kaitlyn et al. [17], and its results were compared with the
+findings reported by Ponrouch et al. [96] for the corresponding Na [TFSA] salt dissolved in
+the same solvent. The experimental data manifest that, across the range of temperatures
+examined, the conductivities of the Na [MCTFSA] salt solution consistently lag behind
+those recorded for the [TFSA]−salt. For instance, at 25 ◦C, the former registers a value of
+1.8 mScm−1 versus the latter’s 7 mScm−1. By replacing a strongly electron-withdrawing
+trifluoromethansulfonyl moiety in the [TFSA]−anion with a methyl carbonate group, the
+degree of negative charge delocalization is diminished, thereby augmenting the preva-
+
+<<PAGE 21>>
+Materials 2024, 17, 2689
+21 of 26
+lence of electrostatic interactions between the cation and anion. These findings align with
+energetic data demonstrating that the [MCTFSA]−anion exhibits the most robust inter-
+action with the [C4mpyr]+ cation, with calculated energies of −83.9 kcal/mol for the cis
+configuration and −83.7 kcal/mol for the trans configuration.
+4. Conclusions
+In this study, we employed the M06-2X hybrid functional to explore the impact of
+anion species on the interplay between ionic liquids and polysulfide, as well as their
+underlying mechanisms in lithium–sulfur batteries. The ionic liquid consisted of a proto-
+typical cation [C4mpyr]+, accompanied by four distinct configurations of class-eight anions:
+cis/trans-[TFSA]−, cis/trans-[FSA]−, cis/trans-[FTFSA]−, cis/trans-[MCTFSA]−. To gain a
+qualitative, quantitative, and visual comprehension of the intricate nature and behavior
+of these interactions, we employed an array of analytical techniques, including ESP, AIM,
+IGMH, EDD, CDA and EDA analyses.
+The investigation revealed that the [MCTFSA]−anion exhibited robust interactions,
+both when bound to lithium polysulfide and as an ionic liquid. Notably, its heightened
+electrostatic interactions with Li atoms in lithium polysulfide effectively enhanced the
+solubility of lithium polysulfide within the electrolyte. Furthermore, the asymmetric anions
+formed fewer, yet more sturdy, hydrogen bonds to foster a stronger overall interaction.
+Asymmetric anions, [MCTFSA]−, displayed enhanced orbital interactions and charge
+transfer compared to their symmetric counterparts.
+In the systems of ionic liquid and lithium polysulfides with solid S8, leading to the
+formation of long-chain liquid Li2Sn (4 ≤n ≤8), interesting observations emerged. The
+interaction strength increased during the transition until Li2S6, affirming that the existence
+of Li2S4 was unstable compared to other long-chain lithium polysulfides, with a greater
+inclination towards solid short-chain Li2S2 and Li2S1 transitions. This observation aligns
+with the overall trend observed in anion–lithium polysulfide binding interactions within
+the dimer. It is evident that the anion plays a pivotal role, as supported by its prominent
+involvement in the IGMH analysis and its dominant contribution to electron transfer
+according to the EDD analysis. Nevertheless, the hydrogen bonding facilitated by the
+cation emerges as a significant component of the interaction as the system transitions to the
+insoluble short-chain lithium polysulfides. This is corroborated by the sustained increase
+in this interaction in the IGMH analysis, as well as the positive d-b values in the cation
+binding to the short-chain lithium polysulfide in the CDA analysis.
+Concurrently, there is a transfer of electrons from the anions to the lithium polysulfide
+and from the lithium polysulfide to the cations. Moreover, electrons are also transferred
+directly from the anions to the cations, with the anions playing a crucial role as the primary
+electron donors, facilitating charge transfer within the system. Additionally, it is noteworthy
+that Li2S6 possesses the capacity to accommodate a substantial influx of charge. The
+advantages of the asymmetric anion [MCTFSA]−, showing higher electrostatic interactions
+and more stability compared to the symmetric anion in this theoretical study, were also
+verified in specific experiments.
+This study confirms the potential of asymmetric anion [MCTFSA]−to reduce the
+solubility of lithium polysulfide with higher stability. The selectivity of different physical
+phases of lithium polysulfide to anions and cations during the interaction with ionic liquids
+was also determined, which provides theoretical guidance for the design of new ionic liquid
+electrolytes and the improvement of ionic liquid performance. Based on our theoretical
+study, ionic liquids are expected to improve the safe cycling of lithium–sulfur batteries.
+We hope that the outcomes reported within this study will serve as a reference when
+probing the potential of ionic liquids to ameliorate the quandaries that beset the domain of
+lithium–sulfur batteries.
+
+<<PAGE 22>>
+Materials 2024, 17, 2689
+22 of 26
+Supplementary Materials: The following supporting information can be downloaded at: https://
+www.mdpi.com/article/10.3390/ma17112689/s1, Figure S1. Anionic and cationic composition of
+ionic liquids AIM molecular graphs. Figure S2. Cations with different lithium polysulfide AIM
+molecular graphs. Figure S3. [TFSA]−anions with different lithium polysulfide AIM molecular
+graphs. Figure S4. [FSA]−anions with different lithium polysulfide AIM molecular graphs. Figure S5.
+[FTFSA]−anions with different lithium polysulfide AIM molecular graphs. Figure S6. [MCTFSA]−
+anions with different lithium polysulfide AIM molecular graphs. Figure S7. Different configurations
+of [TFSA]−anionic liquid and Li2S1 AIM molecular graphs. Figure S8. Different configurations of
+[TFSA]−anionic liquid and Li2S2 AIM molecular graphs. Figure S9. Different configurations of
+[TFSA]−anionic liquid and Li2S4 AIM molecular graphs. Figure S10. Different configurations of
+[TFSA]−anionic liquid and Li2S6 AIM molecular graphs. Figure S11. Different configurations of
+[TFSA]−anionic liquid and Li2S8 AIM molecular graphs. Figure S12. Different configurations of
+[TFSA]−anionic liquid and S8 AIM molecular graphs. Figure S13. Different configurations of [FSA]−
+anionic liquid and Li2S1 AIM molecular graphs. Figure S14. Different configurations of [FSA]−
+anionic liquid and Li2S2 AIM molecular graphs. Figure S15. Different configurations of [FSA]−
+anionic liquid and Li2S4 AIM molecular graphs. Figure S16. Different configurations of [FSA]−
+anionic liquid and Li2S6 AIM molecular graphs. Figure S17. Different configurations of [FSA]−
+anionic liquid and Li2S8 AIM molecular graphs. Figure S18. Different configurations of [FSA]−
+anionic liquid and S8 AIM molecular graphs. Figure S19. Different configurations of [FTFSA]−
+anionic liquid and Li2S1 AIM molecular graphs. Figure S20. Different configurations of [FTFSA]−
+anionic liquid and Li2S2 AIM molecular graphs. Figure S21. Different configurations of [FTFSA]−
+anionic liquid and Li2S4 AIM molecular graphs. Figure S22. Different configurations of [FTFSA]−
+anionic liquid and Li2S6 AIM molecular graphs. Figure S23. Different configurations of [FTFSA]−
+anionic liquid and Li2S8 AIM molecular graphs. Figure S24. Different configurations of [FTFSA]−
+anionic liquid and S8 AIM molecular graphs. Figure S25. Different configurations of [MCTFSA]−
+anionic liquid and Li2S1 AIM molecular graphs. Figure S26. Different configurations of [MCTFSA]−
+anionic liquid and Li2S2 AIM molecular graphs. Figure S27. Different configurations of [MCTFSA]−
+anionic liquid and Li2S4 AIM molecular graphs. Figure S28. Different configurations of [MCTFSA]−
+anionic liquid and Li2S6 AIM molecular graphs. Figure S29. Different configurations of [MCTFSA]−
+anionic liquid and Li2S8 AIM molecular graphs. Figure S30. Different configurations of [MCTFSA]−
+anionic liquid and S8 AIM molecular graphs. Table S1. The AIM data calculated with M06-2x for all
+the studied complexes. Note S1. Parameter definitions for formulas in CDA analysis.
+Author Contributions: Software, C.P. and H.L.; Investigation, C.L., N.Z., R.S., J.T., J.L., J.H. and S.Z.;
+Resources, C.P. and H.L.; Writing—original draft, C.L. and S.Z.; Writing—review & editing, S.Z.;
+Supervision, S.Z.; Project administration, S.Z.; Funding acquisition, S.Z. All authors have read and
+agreed to the published version of the manuscript.
+Funding: This research is sponsored by National Natural Science Foundation of China (22108111),
+Natural Science Foundation of Yunnan Province (202101AU070021), China Undergraduate Innovation
+and Entrepreneurship Training Program (202210674025), Yunnan Province Undergraduate Innovation
+and Entrepreneurship Training Program (S202310674135), Natural Science Foundation of Kunming
+University of Science and Technology (KKZ3202052038), Xingdian Talent Support Project (YNQR-
+QNRC-2020-081) and Kunming University of Science and Technology Analysis and Testing Funding
+(2023M20222202134).
+Institutional Review Board Statement: Not applicable.
+Informed Consent Statement: Not applicable.
+Data Availability Statement: Data are contained within the article and Supplementary Materials.
+Conflicts of Interest: The authors declare no conflict of interest.
+References
+1.
+Yang, Q.; Zhang, Z.; Sun, X.G.; Hu, Y.S.; Xing, H.; Dai, S. Ionic liquids and derived materials for lithium and sodium batteries.
+Chem. Soc. Rev. 2018, 47, 2020–2064. [CrossRef]
+2.
+Watanabe, M.; Thomas, M.L.; Zhang, S.; Ueno, K.; Yasuda, T.; Dokko, K. Application of Ionic Liquids to Energy Storage and
+Conversion Materials and Devices. Chem. Rev. 2017, 117, 7190–7239. [CrossRef]
+
+<<PAGE 23>>
+Materials 2024, 17, 2689
+23 of 26
+3.
+Tatara, R.; Ueno, K.; Dokko, K.; Watanabe, M. Thermodynamic Effect of Anion Activity on Electrochemical Reactions Involving
+Li+ Ions in Room-Temperature Ionic Liquids. ChemElectroChem 2019, 6, 4444–4449. [CrossRef]
+4.
+Zhang, S.; Lu, Y.; Peng, C.; Liu, H.; Jiang, D.-E. Structure and Interaction of Ionic Liquid Monolayer on Graphite from First-
+Principles. J. Phys. Chem. C 2018, 123, 618–624. [CrossRef]
+5.
+Pilar, K.; Rua, A.; Suarez, S.N.; Mallia, C.; Lai, S.; Jayakody, J.R.P.; Hatcher, J.L.; Wishart, J.F.; Greenbaum, S. Investigation
+of dynamics in BMIM TFSA ionic liquid through variable temperature and pressure NMR relaxometry and diffusometry. J.
+Electrochem. Soc. 2017, 164, H5189–H5196. [CrossRef]
+6.
+Cai, Y.; Xu, T.; Meng, X.; von Solms, N.; Zhang, H.; Thomsen, K. Formation of robust CEI film on high voltage LiNi0.6Co0.2Mn0.2O2
+cathode enabled by functional [PIVM][TFSA] ionic liquid additive. Electrochim. Acta 2022, 424, 140679. [CrossRef]
+7.
+Roy, B.; Pal, U.; Kar, M.; MacFarlane, D.R. Recent strategies for improving the performance of ionic liquids as battery electrolytes.
+Curr. Opin. Green Sustain. Chem. 2022, 37, 100676. [CrossRef]
+8.
+Ray, A.; Saruhan, B. Application of Ionic Liquids for Batteries and Supercapacitors. Materials 2021, 14, 2942. [CrossRef] [PubMed]
+9.
+Xu, X.; Su, L.; Lu, F.; Yin, Z.; Gao, Y.; Zheng, L.; Gao, X. Unraveling anion effect on lithium ion dynamics and interactions in
+concentrated ionic liquid electrolyte. J. Mol. Liq. 2022, 361, 119629. [CrossRef]
+10.
+Penley, D.; Vicchio, S.P.; Getman, R.B.; Gurkan, B. Energetics of Li+ Coordination with Asymmetric Anions in Ionic Liquids by
+Density Functional Theory. Front. Energy Res. 2021, 9, 725010. [CrossRef]
+11.
+Lu, Y.; Tian, Y.; Xu, Z.; Liu, H. Interfacial structures and decomposition reactions of hybrid anion-based ionic liquids at lithium
+metal surface from first-principles and ab initio molecular dynamics. J. Mol. Liq. 2022, 366, 120232. [CrossRef]
+12.
+Chidiac, J.; Timperman, L.; Anouti, M. Small dissymmetry, yet large effects on the transport properties of electrolytes based on
+imide salts: Consequences on performance in Li-ion batteries. J. Energy Chem. 2022, 65, 352–366. [CrossRef]
+13.
+Chidiac, J.; Timperman, L.; Anouti, M. Role of FTFSI Anion Asymmetry on Physical Properties of AFTFSI (A=Li, Na and K) Based
+Electrolytes and Consequences on Supercapacitor Application. ChemPhysChem 2021, 22, 1863–1879. [CrossRef] [PubMed]
+14.
+Reber, D.; Takenaka, N.; Kuhnel, R.S.; Yamada, A.; Battaglia, C. Impact of Anion Asymmetry on Local Structure and Supercooling
+Behavior of Water-in-Salt Electrolytes. J. Phys. Chem. Lett. 2020, 11, 4720–4725. [CrossRef]
+15.
+Palumbo, O.; Appetecchi, G.B.; Maresca, G.; Brubach, J.-B.; Roy, P.; Di Muzio, S.; Trequattrini, F.; Bordignon, D.; Legrand,
+F.; Falgayrat, A.; et al. Synthesis, Physical Properties and Electrochemical Applications of Two Ionic Liquids Containing the
+Asymmetric (Fluoromethylsulfonyl)(Trifluoromethylsulfonyl)imide Anion. Appl. Sci. 2022, 12, 4524. [CrossRef]
+16.
+Jeong, S.; Li, S.; Appetecchi, G.B.; Passerini, S. Asymmetric ammonium-based ionic liquids as electrolyte components for safer,
+high-energy, electrochemical storage devices. Energy Storage Mater. 2019, 18, 1–9. [CrossRef]
+17.
+Gunderson-Briggs, K.E.; Ruther, T.; Best, A.S.; Kar, M.; Forsyth, C.; Izgorodiana, E.I.; MacFarlane, D.R.; Hollenkamp, A.F. A
+Hybrid Anion for Ionic Liquid and Battery Electrolyte Applications: Half Triflamide, Half Carbonate. Angew. Chem. Int. Ed. Engl.
+2019, 58, 4390–4394. [CrossRef] [PubMed]
+18.
+Zhang, Z.; Zhang, P.; Liu, Z.; Du, B.; Peng, Z. A Novel Zwitterionic Ionic Liquid-Based Electrolyte for More Efficient and Safer
+Lithium-Sulfur Batteries. ACS Appl. Mater. Interfaces 2020, 12, 11635–11642. [CrossRef]
+19.
+Ren, W.; Ma, W.; Zhang, S.; Tang, B. Recent advances in shuttle effect inhibition for lithium sulfur batteries. Energy Storage Mater.
+2019, 23, 707–732. [CrossRef]
+20.
+Li, H.; Ma, S.; Li, J.; Liu, F.; Zhou, H.; Huang, Z.; Jiao, S.; Kuang, Y. Altering the reaction mechanism to eliminate the shuttle effect
+in lithium-sulfur batteries. Energy Storage Mater. 2020, 26, 203–212. [CrossRef]
+21.
+Li, L.; Chen, X.; Huang, Y.; Zhang, P.; Zhou, D.; Zhang, G.; Xiao, B. Double-active-site enables 2D B2S and B2S3 catalyst with
+suppressed shuttle effect and improved polysulfides redox kinetics in lithium-sulfur batteries: A first-principles study. Appl. Surf.
+Sci. 2022, 602, 154295. [CrossRef]
+22.
+Li, H.; Meng, R.; Guo, Y.; Ye, C.; Kong, D.; Johannessen, B.; Jaroniec, M.; Qiao, S.Z. Unraveling the Catalyst-Solvent Interactions in
+Lean-Electrolyte Sulfur Reduction Electrocatalysis for Li-S Batteries. Angew. Chem. Int. Ed. Engl. 2022, 61, e202213863. [CrossRef]
+23.
+Zhou, L.; Danilov, D.L.; Qiao, F.; Wang, J.; Li, H.; Eichel, R.A.; Notten, P.H.L. Sulfur Reduction Reaction in Lithium–Sulfur
+Batteries: Mechanisms, Catalysts, and Characterization. Advanced Energy Materials 2022, 12, 2202094. [CrossRef]
+24.
+Feng, S.; Fu, Z.H.; Chen, X.; Li, B.Q.; Peng, H.J.; Yao, N.; Shen, X.; Yu, L.; Gao, Y.C.; Zhang, R.; et al. An Electrocatalytic Model of
+the Sulfur Reduction Reaction in Lithium-Sulfur Batteries. Angew. Chem. Int. Ed. Engl. 2022, 61, e202211448. [CrossRef]
+25.
+Xiong, S.; Xie, K.; Diao, Y.; Hong, X. Properties of surface film on lithium anode with LiNO3 as lithium salt in electrolyte solution
+for lithium–sulfur batteries. Electrochim. Acta 2012, 83, 78–86. [CrossRef]
+26.
+Zhang, S.S. Role of LiNO3 in rechargeable lithium/sulfur battery. Electrochim. Acta 2012, 70, 344–348. [CrossRef]
+27.
+Liang, X.; Wen, Z.; Liu, Y.; Wu, M.; Jin, J.; Zhang, H.; Wu, X. Improved cycling performances of lithium sulfur batteries with
+LiNO3-modified electrolyte. J. Power Sources 2011, 196, 9839–9843. [CrossRef]
+28.
+Aurbach, D.; Pollak, E.; Elazari, R.; Salitra, G.; Kelley, C.S.; Affinito, J. On the surface chemical aspects of very high energy density,
+rechargeable Li–sulfur batteries. J. Electrochem. Soc. 2009, 156, A694. [CrossRef]
+29.
+Mukra, T.; Horowitz, Y.; Shekhtman, I.; Goor, M.; Drvariˇc Talian, S.; Burstein, L.; Kasnatscheew, J.; Meister, P.; Grünebaum, M.;
+Winter, M.; et al. Disiloxane with nitrile end groups as Co-solvent for electrolytes in lithium sulfur batteries—A feasible approach
+to replace LiNO3. Electrochim. Acta 2019, 307, 76–82. [CrossRef]
+30.
+Chung, S.H.; Manthiram, A. Current status and future prospects of metal–sulfur batteries. Adv. Mater. 2019, 31, 1901125.
+[CrossRef] [PubMed]
+
+<<PAGE 24>>
+Materials 2024, 17, 2689
+24 of 26
+31.
+Nakamura, N.; Ahn, S.; Momma, T.; Osaka, T. Future potential for lithium-sulfur batteries. J. Power Sources 2023, 558, 232566.
+[CrossRef]
+32.
+Pan, J.; Wu, C.; Cheng, J.; Pan, Y.; Ma, Z.; Xie, S.; Li, J. Sepiolite-sulfur as a high-capacity, high-rate performance, and low-cost
+cathode material for lithium–sulfur batteries. J. Power Sources 2015, 293, 527–532. [CrossRef]
+33.
+Xu, G.; Ding, B.; Pan, J.; Nie, P.; Shen, L.; Zhang, X. High performance lithium–sulfur batteries: Advances and challenges. J. Mater.
+Chem. A 2014, 2, 12662–12676. [CrossRef]
+34.
+Yuan, L.X.; Feng, J.K.; Ai, X.P.; Cao, Y.L.; Chen, S.L.; Yang, H.X. Improved dischargeability and reversibility of sulfur cathode in a
+novel ionic liquid electrolyte. Electrochem. Commun. 2006, 8, 610–614. [CrossRef]
+35.
+Josef, E.; Yan, Y.; Stan, M.C.; Wellmann, J.; Vizintin, A.; Winter, M.; Johansson, P.; Dominko, R.; Guterman, R. Ionic Liquids and
+their Polymers in Lithium-Sulfur Batteries. Isr. J. Chem. 2019, 59, 832–842. [CrossRef]
+36.
+Park, J.-W.; Yamauchi, K.; Takashima, E.; Tachikawa, N.; Ueno, K.; Dokko, K.; Watanabe, M. Solvent Effect of Room Temperature
+Ionic Liquids on Electrochemical Reactions in Lithium–Sulfur Batteries. J. Phys. Chem. C 2013, 117, 4431–4440. [CrossRef]
+37.
+Tachikawa, N.; Yamauchi, K.; Takashima, E.; Park, J.W.; Dokko, K.; Watanabe, M. Reversibility of electrochemical reactions of
+sulfur supported on inverse opal carbon in glyme-Li salt molten complex electrolytes. Chem. Commun. 2011, 47, 8157–8159.
+[CrossRef]
+38.
+Wang, J.; Chew, S.Y.; Zhao, Z.W.; Ashraf, S.; Wexler, D.; Chen, J.; Ng, S.H.; Chou, S.L.; Liu, H.K. Sulfur–mesoporous carbon
+composites in conjunction with a novel ionic liquid electrolyte for lithium rechargeable batteries. Carbon 2008, 46, 229–235.
+[CrossRef]
+39.
+Ueno, K.; Park, J.-W.; Yamazaki, A.; Mandai, T.; Tachikawa, N.; Dokko, K.; Watanabe, M. Anionic Effects on Solvate Ionic Liquid
+Electrolytes in Rechargeable Lithium–Sulfur Batteries. J. Phys. Chem. C 2013, 117, 20509–20516. [CrossRef]
+40.
+Kilic, A.; Yildirim, R.; Eroglu, D. Assessment of ionic liquid electrolytes for high-performance lithium-sulfur batteries using
+machine learning. Int. J. Energy Res. 2022, 46, 21716–21726. [CrossRef]
+41.
+Peng, Y.; Badam, R.; Jayakumar, T.P.; Wannapakdee, W.; Changtong, C.; Matsumi, N. Drastic Effect of Salt Concentration in Ionic
+Liquid on Performance of Lithium Sulfur Battery. J. Electrochem. Soc. 2022, 169, 050515. [CrossRef]
+42.
+Watanabe, H.; Sugiura, Y.; Seki, S.; Han, J.; Shitanda, I.; Itagaki, M.; Umebayashi, Y. Discharge Behavior within Lithium–Sulfur
+Batteries Using Li–Glyme Solvate Ionic Liquids. J. Phys. Chem. C 2023, 127, 6645–6654. [CrossRef]
+43.
+Sun, H.; Zhu, G.; Xu, X.; Liao, M.; Li, Y.-Y.; Angell, M.; Gu, M.; Zhu, Y.; Hung, W.H.; Li, J.; et al. A safe and non-flammable sodium
+metal battery based on an ionic liquid electrolyte. Nat. Commun. 2019, 10, 3302. [CrossRef] [PubMed]
+44.
+Wang, H.; Cao, X.; Liu, W.; Sun, X. Research Progress of the Solid State Lithium-Sulfur Batteries. Front. Energy Res. 2019, 7, 112.
+[CrossRef]
+45.
+Ye, B.; Cai, X.; Wang, D.; Saha, P.; Wang, G. A novel poly(vinyl carbonate-co-butyl acrylate) quasi-solid-state electrolyte as a
+strong catcher for lithium polysulfide in Li–S batteries. Electrochim. Acta 2019, 332, 135463. [CrossRef]
+46.
+Fan, T.; Liang, W.; Guo, W.; Feng, T.; Li, W. Life cycle assessment of electric vehicles’ lithium-ion batteries reused for energy
+storage. J. Energy Storage 2023, 71, 108126. [CrossRef]
+47.
+Popien, J.-L.; Thies, C.; Barke, A.; Spengler, T.S. Comparative sustainability assessment of lithium-ion, lithium-sulfur, and
+all-solid-state traction batteries. Int. J. Life Cycle Assess. 2023, 28, 462–477. [CrossRef]
+48.
+Park, J.-W.; Ueno, K.; Tachikawa, N.; Dokko, K.; Watanabe, M. Ionic Liquid Electrolytes for Lithium–Sulfur Batteries. J. Phys.
+Chem. C 2013, 117, 20531–20541. [CrossRef]
+49.
+Deng, L.; Dong, L.; Wang, Z.; Liu, Y.; Zhan, J.; Wang, S.; Song, K.P.; Qi, D.; Sang, Y.; Liu, H.; et al. Asymmetrically-Fluorinated
+Electrolyte Molecule Design for Simultaneous Achieving Good Solvation and High Inertness to Enable Stable Lithium Metal
+Batteries. Adv. Energy Mater. 2023, 14, 2303652. [CrossRef]
+50.
+Drvariˇc Talian, S.; Bešter-Rogaˇc, M.; Dominko, R. The physicochemical properties of a [DEME][TFSI] ionic liquid-based electrolyte
+and their influence on the performance of lithium–sulfur batteries. Electrochim. Acta 2017, 252, 147–153. [CrossRef]
+51.
+Hu, T.; Wang, Y.; Huo, F.; He, H.; Zhang, S. Understanding Structural and Transport Properties of Dissolved Li2 S8 in Ionic Liquid
+Electrolytes through Molecular Dynamics Simulations. ChemPhysChem 2021, 22, 419–429. [CrossRef] [PubMed]
+52.
+Liu, Q.; Mu, D.; Wu, B.; Wang, L.; Gai, L.; Wu, F. Insight on lithium polysulfide intermediates in a Li/S battery by density
+functional theory. RSC Adv. 2017, 7, 33373–33377. [CrossRef]
+53.
+Liu, R.; Wei, Z.; Peng, L.; Zhang, L.; Zohar, A.; Schoeppner, R.; Wang, P.; Wan, C.; Zhu, D.; Liu, H.; et al. Establishing reaction
+networks in the 16-electron sulfur reduction reaction. Nature 2024, 626, 98–104. [CrossRef] [PubMed]
+54.
+Shao, Q.; Lu, P.; Xu, L.; Guo, D.; Gao, J.; Wu, Z.-S.; Chen, J. Rational design of MoS2 nanosheets decorated on mesoporous hollow
+carbon spheres as a dual-functional accelerator in sulfur cathode for advanced pouch-type Li–S batteries. J. Energy Chem. 2020, 51,
+262–271. [CrossRef]
+55.
+Hou, T.Z.; Chen, X.; Peng, H.J.; Huang, J.Q.; Li, B.Q.; Zhang, Q.; Li, B. Design Principles for Heteroatom-Doped Nanocarbon to
+Achieve Strong Anchoring of Polysulfides for Lithium-Sulfur Batteries. Small 2016, 12, 3283–3291. [CrossRef] [PubMed]
+56.
+Bader, R.F. Atoms in molecules. Acc. Chem. Res. 1985, 18, 9–15. [CrossRef]
+57.
+Lu, T.; Chen, Q. Independent gradient model based on Hirshfeld partition: A new method for visual study of interactions in
+chemical systems. J. Comput. Chem. 2022, 43, 539–555, Erratum in ChemRxiv 2022. [CrossRef] [PubMed]
+58.
+Dapprich, S.; Frenking, G. Investigation of donor-acceptor interactions: A charge decomposition analysis using fragment
+molecular orbitals. J. Phys. Chem. 1995, 99, 9352–9362. [CrossRef]
+
+<<PAGE 25>>
+Materials 2024, 17, 2689
+25 of 26
+59.
+Jeziorski, B.; Moszynski, R.; Szalewicz, K. Perturbation theory approach to intermolecular potential energy surfaces of van der
+Waals complexes. Chem. Rev. 1994, 94, 1887–1930. [CrossRef]
+60.
+Zhao, Y.; Truhlar, D.G. The M06 suite of density functionals for main group thermochemistry, thermochemical kinetics, noncova-
+lent interactions, excited states, and transition elements: Two new functionals and systematic testing of four M06-class functionals
+and 12 other functionals. Theor. Chem. Acc. 2007, 120, 215–241. [CrossRef]
+61.
+Zhao, Y.; Truhlar, D.G. Exploring the limit of accuracy of the global hybrid meta density functional for main-group thermochem-
+istry, kinetics, and noncovalent interactions. J. Chem. Theory Comput. 2008, 4, 1849–1868. [CrossRef] [PubMed]
+62.
+Zhao, Y.; Truhlar, D.G. Density functionals with broad applicability in chemistry. Acc. Chem. Res. 2008, 41, 157–167. [CrossRef]
+[PubMed]
+63.
+Johnson, B.G.; Gill, P.M.W.; Pople, J.A. The performance of a family of density functional methods. J. Chem. Phys. 1993, 98,
+5612–5626. [CrossRef]
+64.
+Fernandes, A.M.; Rocha, M.A.; Freire, M.G.; Marrucho, I.M.; Coutinho, J.A.; Santos, L.M. Evaluation of cation-anion interaction
+strength in ionic liquids. J. Phys. Chem. B 2011, 115, 4033–4041. [CrossRef] [PubMed]
+65.
+Hunt, P.A.; Kirchner, B.; Welton, T. Characterising the electronic structure of ionic liquids: An examination of the 1-butyl-3-
+methylimidazolium chloride ion pair. Chemistry 2006, 12, 6762–6775. [CrossRef] [PubMed]
+66.
+Wu, W.; Lu, Y.; Ding, H.; Peng, C.; Liu, H. The acidity/basicity of metal-containing ionic liquids: Insights from surface analysis
+and the Fukui function. Phys. Chem. Chem. Phys. 2015, 17, 1339–1346. [CrossRef] [PubMed]
+67.
+Kendall, R.A.; Dunning, T.H.; Harrison, R.J. Electron affinities of the first-row atoms revisited. Systematic basis sets and wave
+functions. J. Chem. Phys. 1992, 96, 6796–6806. [CrossRef]
+68.
+Grimme, S.; Antony, J.; Ehrlich, S.; Krieg, H. A consistent and accurate ab initio parametrization of density functional dispersion
+correction (DFT-D) for the 94 elements H-Pu. J. Chem. Phys. 2010, 132, 154104. [CrossRef] [PubMed]
+69.
+Frisch, M.; Trucks, G.; Schlegel, H.; Scuseria, G.; Robb, M.; Cheeseman, J.; Scalmani, G.; Barone, V.; Mennucci, B.; Petersson, G.
+Full Reference in Supp. Info; Gaussian, Inc.: Wallingford, CT, USA, 2009.
+70.
+Lu, T.; Chen, F. Multiwfn: A multifunctional wavefunction analyzer. J. Comput. Chem. 2012, 33, 580–592. [CrossRef]
+71.
+Humphrey, W.; Dalke, A.; Schulten, K. VMD: Visual molecular dynamics. J. Mol. Graph. 1996, 14, 33–38. [CrossRef]
+72.
+Murray, J.S.; Politzer, P. The electrostatic potential: An overview. WIREs Comput. Mol. Sci. 2011, 1, 153–163. [CrossRef]
+73.
+Wells, B.H.; Wilson, S. Van der Waals interaction potentials: Many-body basis set superposition effects. Chem. Phys. Lett. 1983,
+101, 429–434. [CrossRef]
+74.
+Wells, B.H.; Wilson, S. Van der Waals interaction potentials: Basis set superposition effects in electron correlation calculations.
+Mol. Phys. 1983, 50, 1295–1309. [CrossRef]
+75.
+Wilson, S. Basis sets. In Advances in Chemical Physics: Ab Initio Methods in Quantum Chemistry Part I; John Wiley & Sons, Ltd.:
+Hoboken, NJ, USA, 1987; Volume 67, pp. 439–500.
+76.
+Van Lenthe, J.; Duijneveldt-Van Devan Rijdt, J.; Van Duijneveldt, F. Weakly bonded systems. In Advances in Chemical Physics: Ab
+Initio Methods in Quantum Chemistry Part 2; John Wiley & Sons, Ltd.: Hoboken, NJ, USA, 1987; Volume 69, pp. 521–566. [CrossRef]
+77.
+Gutowski, M.; Van Duijneveldt, F.B.; Chałasi´nski, G.; Piela, L. Proper correction for the basis set superposition error in SCF
+calculations of intermolecular interactions. Mol. Phys. 1987, 61, 233–247. [CrossRef]
+78.
+Merinov, B.V.; Zybin, S.V.; Naserifar, S.; Morozov, S.; Oppenheim, J.; Goddard, W.A., 3rd; Lee, J.; Lee, J.H.; Han, H.E.; Choi, Y.C.;
+et al. Interface Structure in Li-Metal/[Pyr(14)][TFSI]-Ionic Liquid System from ab Initio Molecular Dynamics Simulations. J. Phys.
+Chem. Lett. 2019, 10, 4577–4586. [CrossRef]
+79.
+Clarke-Hannaford, J.; Breedon, M.; Rüther, T.; Spencer, M.J.S. Stability of Boronium Cation-Based Ionic Liquid Electrolytes on the
+Li Metal Anode Surface. ACS Appl. Energy Mater. 2020, 3, 5497–5509. [CrossRef]
+80.
+Yildirim, H.; Haskins, J.B.; Bauschlicher, C.W.; Lawson, J.W. Decomposition of Ionic Liquids at Lithium Interfaces. 1. Ab Initio
+Molecular Dynamics Simulations. J. Phys. Chem. C 2017, 121, 28214–28234. [CrossRef]
+81.
+Ando, Y.; Kawamura, Y.; Ikeshoji, T.; Otani, M. Electrochemical reduction of an anion for ionic-liquid molecules on a lithium
+electrode studied by first-principles calculations. Chem. Phys. Lett. 2014, 612, 240–244. [CrossRef]
+82.
+Khamitov, E.; Kuzmina, E.; Kolosnitsyn, V. On Sulfur Reduction Mechanism in Li-S Cells. Formation of Li2S8. Electrochem. Soc.
+Meet. Abstr. 2019, 235, 1950. [CrossRef]
+83.
+Kowsari, M.H.; Tohidifar, L. Tracing dynamics, self-diffusion, and nanoscale structural heterogeneity of pure and binary mixtures
+of ionic liquid 1-hexyl-2, 3-dimethylimidazolium bis (fluorosulfonyl) imide with acetonitrile: Insights from molecular dynamics
+simulations. J. Phys. Chem. B 2016, 120, 10824–10838. [CrossRef]
+84.
+Kowsari, M.H.; Torabi, S.M. Molecular dynamics insights into the nanoscale structural organization and local interaction of
+aqueous solutions of ionic liquid 1-butyl-3-methylimidazolium nitrate. J. Phys. Chem. B 2020, 124, 6972–6985. [CrossRef]
+85.
+Teale, A.M.; De Proft, F.; Tozer, D.J. Orbital energies and negative electron affinities from density functional theory: Insight from
+the integer discontinuity. J. Chem. Phys. 2008, 129, 044110. [CrossRef]
+86.
+Espinosa, E.; Molins, E.; Lecomte, C. Hydrogen bond strengths revealed by topological analyses of experimentally observed
+electron densities. Chem. Phys. Lett. 1998, 285, 170–173. [CrossRef]
+87.
+Vijayakumar, M.; Govind, N.; Walter, E.; Burton, S.D.; Shukla, A.; Devaraj, A.; Xiao, J.; Liu, J.; Wang, C.; Karim, A. Molecular
+structure and stability of dissolved lithium polysulfide species. Phys. Chem. Chem. Phys. 2014, 16, 10923–10932. [CrossRef]
+
+<<PAGE 26>>
+Materials 2024, 17, 2689
+26 of 26
+88.
+Lefebvre, C.; Rubez, G.; Khartabil, H.; Boisson, J.C.; Contreras-Garcia, J.; Henon, E. Accurately extracting the signature of
+intermolecular interactions present in the NCI plot of the reduced density gradient versus electron density. Phys. Chem. Chem.
+Phys. 2017, 19, 17928–17936. [CrossRef] [PubMed]
+89.
+Xiao, M.; Lu, T. Generalized charge decomposition analysis (GCDA) method. J. Adv. Phys. Chem. 2015, 4, 111–124. [CrossRef]
+90.
+Gorelsky, S.I.; Ghosh, S.; Solomon, E.I. Mechanism of N2O reduction by the µ4-S tetranuclear CuZ cluster of nitrous oxide
+reductase. J. Am. Chem. Soc. 2006, 128, 278–290. [CrossRef]
+91.
+Hohenstein, E.G.; Sherrill, C.D. Wavefunction methods for noncovalent interactions. WIREs Comput. Mol. Sci. 2011, 2, 304–326.
+[CrossRef]
+92.
+Szalewicz, K. Symmetry-adapted perturbation theory of intermolecular forces. WIREs Comput. Mol. Sci. 2011, 2, 254–272.
+[CrossRef]
+93.
+Patkowski, K. Recent developments in symmetry-adapted perturbation theory. WIREs Comput. Mol. Sci. 2019, 10, e1452.
+[CrossRef]
+94.
+Matsumoto, K.; Matsui, T.; Nohira, T.; Hagiwara, R. Crystal structure of Na[N(SO2CF3)2] and coordination environment of alkali
+metal cation in the M[N(SO2CF3)2] (M+ = Li+, Na+, K+, and Cs+) structures. J. Fluor. Chem. 2015, 174, 42–48. [CrossRef]
+95.
+Golding, J.J.; MacFarlane, D.R.; Spiccia, L.; Forsyth, M.; Skelton, B.W.; White, A.H. Weak intermolecular interactions in sulfon-
+amide salts: Structure of 1-ethyl-2-methyl-3-benzyl imidazolium bis [(trifluoromethyl) sulfonyl] amide. Chem. Commun. 1998,
+1593–1594. [CrossRef]
+96.
+Ponrouch, A.; Dedryvère, R.; Monti, D.; Demet, A.E.; Ateba Mba, J.M.; Croguennec, L.; Masquelier, C.; Johansson, P.; Palacín,
+M.R. Towards high energy density sodium ion batteries through electrolyte optimization. Energy Environ. Sci. 2013, 6, 2361–2369.
+[CrossRef]
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual
+author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to
+people or property resulting from any ideas, methods, instructions or products referred to in the content.

@@ -1,0 +1,915 @@
+
+<<PAGE 1>>
+Electrochimica Acta 477 (2024) 143759
+Available online 4 January 2024
+0013-4686/© 2024 Elsevier Ltd. All rights are reserved, including those for text and data mining, AI training, and similar technologies.
+Faradaic impedance and discharge reactions in lithium sulfur battery with 
+sparingly solvating electrolyte 
+Hikari Watanabe a,1,*, Yuto Sugiura a,1, Isao Shitanda a,b, Masayuki Itagaki a,b 
+a Department of Pure and Applied Chemistry, Faculty of Science and Technology, Tokyo University of Science, 2641 Yamazaki, Noda, Chiba, 278-8510, Japan 
+b Research Institute for Science and Technology, Tokyo University of Science, 2641 Yamazaki, Noda, Chib, 278-8510, Japan   
+A R T I C L E I N F O  
+Keywords: 
+Lithium sulfur battery 
+Electrochemical impedance spectroscopy 
+Faradaic impedance 
+Discharge reaction rate 
+A B S T R A C T  
+Lithium-sulfur batteries promote next-generation secondary batteries. Elucidating their electrochemical re­
+actions, such as sulfur reduction reactions, particularly their kinetics, is crucial for further improvement of 
+lithium-sulfur batteries. Therefore, experimental knowledge of their reaction rates is required. In this study, we 
+applied in situ electrochemical impedance spectroscopy to a lithium-sulfur battery using a sulfolane-based super- 
+concentrated electrolyte solution to obtain insights into sulfur reduction reaction kinetics. The Faradaic 
+impedance of a sulfur-positive electrode yielded inductive and capacitive semicircles at first and second plateau 
+voltages, respectively, in a low-frequency range. This impedance behavior under a low-frequency range was 
+derived from multistep reactions. The impedance behavior suggests that the reaction rate constant of the second 
+step was greater than that of the first step at the first plateau, whereas at the second plateau, the reaction rate 
+constant of the second step was smaller than that of the first step. A Faradaic impedance simulation was per­
+formed to estimate the reaction rate constants of the sulfur reduction reactions. The simulation well reproduced 
+the experimental data. Furthermore, the simulation showed that the internal resistance of the battery decreased 
+as the rate constant of each reaction changed, suggesting that Faradaic impedance analysis is useful not only for 
+investigating reaction kinetics but also for improving lithium-sulfur battery performance.   
+1. Introduction 
+Electrochemical impedance spectroscopy (EIS), a powerful method 
+for evaluating electrochemical systems, provides information on the 
+electrode structure and reactions of electrochemical systems. An 
+impedance spectrum analysis can be performed by varying the fre­
+quency of the AC signal, and the processes contributing to the overall 
+electrochemical reaction rate can be separated based on different 
+relaxation times. For the electrode/electrolyte interface, where the 
+charge-transfer reaction occurs, a semicircle, which is represented by 
+the equivalent circuit of an RC parallel circuit, is observed in the 
+impedance spectrum. The relaxation time (time constant) of a charge 
+transfer reaction is obtained by multiplying the charge transfer resis­
+tance R by the electric double-layer capacitance C. The impedance 
+related to the electrochemical process involving electron transfer is 
+known as the Faradaic impedance. 
+When an electrode surface state varies depending on the input signal, 
+the variation provides a time constant, adding a new trajectory to the 
+Faradaic impedance spectra. This characteristic trajectory that appears 
+in low-frequency ranges has been interpreted using models that describe 
+the mass transport and reaction mechanism at the electrode [1]. The 
+former is known as the diffusion impedance. When the thickness of the 
+diffusion layer is considered infinite, it exhibits a slope of 45◦with 
+respect to the real axis in the low-frequency range. In Faradaic imped­
+ance due to elementary reactions, an inductive loop is often observed in 
+a complex plane, which is useful for interpreting the kinetic reaction 
+mechanisms. Here, elementary reactions refer to intermediate reactions 
+and redox species adsorption/desorption processes. Epelboin and Ked­
+dam et al. [2–4] proposed theoretical models for Faradaic impedance. 
+The Faradaic impedance derived from elementary reactions was 
+explained based on the Langmuir isotherm, and this model showed that 
+intermediates were formed during the iron dissolution reaction [2–4]. 
+Inductive behavior was also observed during the electrodeposition of 
+metals or alloys, and the inhibitory influence of charge transfer by ad­
+sorbates or interfacial layers was discussed [5]. Itagaki et al. [6] reported 
+that graphite electrodes exhibited inductive loop owing to the 
+* Corresponding author. 
+E-mail address: h.watanabe@rs.tus.ac.jp (H. Watanabe).   
+1 H. W. and Y. S. contributed equally. 
+Contents lists available at ScienceDirect 
+Electrochimica Acta 
+journal homepage: www.journals.elsevier.com/electrochimica-acta 
+https://doi.org/10.1016/j.electacta.2024.143759 
+Received 30 August 2023; Received in revised form 21 December 2023; Accepted 1 January 2024   
+
+<<PAGE 2>>
+Electrochimica Acta 477 (2024) 143759
+2
+subsequent insertion reaction of lithium ion. It has been reported that 
+inductive behavior sometimes appears in battery reactions such as 
+lithium-ion batteries [7–12]; however, there is little discussion 
+regarding electrode reaction kinetics [13,14]. 
+Lithium–sulfur batteries (LiSBs), which use elemental sulfur as a 
+positive electrode material, have gained attention as next-generation 
+secondary batteries. However, the dissolution of lithium polysulfide 
+produced during the discharge reaction into electrolytes decreases the 
+battery capacity. Therefore, it is necessary to suppress dissolution and 
+efficiently reduce sulfur to insoluble lithium sulfide. The sulfur reduc­
+tion reaction pathway is complex and has been explored using various 
+spectroscopic methods [15–18]. Wu et al. [17] found that long-chain 
+polysulfides, such as S8
+2−, were formed at 2.4 V vs. Li/Li+ and 
+short-chain polysulfides, such as S4
+2−and S4
+−, were formed at 2.3 V vs. 
+Li/Li+ in an ether-based electrolyte. In contrast, sulfur was reduced to 
+S4
+2−in the initial stage of the first discharge process, and S2
+2−and Li2S 
+were subsequently formed in a concentrated electrolyte solution [18]. 
+Various reduction reaction pathways for sulfur, which are based on 
+thermodynamics, have been proposed depending on the electrolyte 
+used; however, the rates of these reactions should be considered for 
+efficient reaction progression. Theoretical kinetic models have been 
+proposed [19–21] and the activation energies of the reactions have been 
+investigated [22]; however, knowledge of the reduction kinetics of 
+sulfur is still required because the reaction rates are crucial for LiSB 
+performance. 
+To explain the Faradaic impedance behavior mechanism, we first 
+describe the theory of Faradaic impedance. In situ EIS was applied to 
+LiSBs using a sulfolane-based concentrated electrolyte solution to 
+determine the kinetic mechanism of the reduction reactions. We per­
+formed a Faradaic impedance simulation, focusing on the impedance 
+spectra in the low-frequency range of the LiSBs. Furthermore, we studied 
+the effect of the determined parameters on battery impedance. 
+2. Theory 
+2.1. Principle of faradaic impedance 
+An input signal variation not only causes a corresponding variation 
+in the output signal but may also cause variations in the electrode sur­
+face state. When the current is a function of the voltage and another 
+physical quantity X, the current can be described by Eq. (1). 
+I = f(E, X)
+(1)  
+where X represents the adsorbed amounts of the reaction intermediates, 
+inhibitors, catalysts, and reaction products. If the variations in the po­
+tential and physical quantities are small, the two-variable Taylor 
+expansion of Eq. (1) yields Eq. (2), and dividing both sides of Eq. (2) by 
+ΔE yields the reciprocal of the Faradaic impedance ZF (Eq. (3)). 
+ΔI =
+(∂f
+∂E
+)
+X
+ΔE +
+(∂f
+∂X
+)
+E
+ΔX
+(2)  
+1
+ZF
+= ΔI
+ΔE =
+(∂f
+∂E
+)
+X
++
+(∂f
+∂X
+)
+E
+ΔX
+ΔE
+(3) 
+When X varies owing to the potential variation, ΔX /ΔE in the fre­
+quency domain is described by Eq. (4), 
+ΔX
+ΔE =
+aX
+jωτX + 1
+(4)  
+where τX represents the time constant for the variation of X. aX repre­
+sents the magnitude of modulation of X originating from potential 
+modulation. The reciprocal of ZF is expressed as follows: 
+1
+ZF
+= a1 + a2
+aX
+jωτX + 1 where a1 =
+(∂f
+∂E
+)
+X
+and a2 =
+(∂f
+∂X
+)
+E
+(5) 
+Eq. (5) can be approximated using Eqs. (6) and (7) at high- and low- 
+frequency limits, respectively. 
+1
+ZF
+= a1 (ω →∞)
+(6)  
+1
+ZF
+= a1 + a2aX (ω →0)
+(7) 
+Fig. 1(a) shows the equivalent circuit of the electrolyte/electrode 
+interface where the charge-transfer reaction occurs. When the variation 
+in the electrode surface state affects the impedance, the charge-transfer 
+resistance Rct can be replaced with ZF (Fig. 1(b)). The impedance Z, 
+which can be derived from the equivalent circuit, is described in Eq. (8), 
+Z = Rsol +
+ZF
+jωZFCdl + 1
+(8) 
+Schematics of the Nyquist plot according to Eq. (8) are shown in 
+Fig. 1(c) and 1(d). The impedance exhibits two semicircular trajectories. 
+The semicircle in the low-frequency side corresponds to the relaxation 
+process of X, as τX is larger than the time constant caused by the charge 
+transfer resistance Rct and the electric double layer Cdl. The high- 
+frequency limit of the semicircle in the low-frequency side (LF-semi­
+circle), i.e., its intersection with the real axis on the high-frequency side, 
+is Rsol + 1/a1. 1/a1 is the charge transfer resistance Rct because a1 cor­
+responds to the relationship between the current and potential when X 
+does not change. In contrast, the low-frequency limit of the LF- 
+semicircle is Rsol + 1/(a1 + a2aX). 1/(a1 +a2aX) is defined as the polar­
+ization resistance Rp. When a2aX < 0 and a1 + a2aX > 0, two capacitive 
+semicircles appear in the impedance spectrum because Rct < Rp (Fig. 1 
+(c)). In contrast, when a2aX > 0 and a1 + a2aX > 0, the impedance 
+spectrum yields an inductive loop because Rct > Rp (Fig. 1(d)). 
+2.2. Conditions that cause appearance of impedance caused by 
+elementary reactions 
+Variations in the physical quantities on the electrode surface pro­
+vides a new trajectory to the Faradaic impedance spectra. These physical 
+quantities include the adsorbed amounts of reaction intermediates, in­
+hibitors, catalysts, and reaction products. The relationship between the 
+trajectory of the Faradaic impedance and the amounts of the adsorbents 
+formed on the electrode is expressed as follows: 
+2.2.1. Assumption of elementary reaction equations 
+When chemical species A is oxidized to intermediate B and subse­
+quently to chemical species C, the chemical equations are as follows: 
+(First step) A→Bad + n1e−(rate constant : K1′)
+(9)  
+(Second step) Bad→C + n2e−(rate constant : K2′)
+(10)  
+where n1 and n2 are the numbers of electrons in both reactions. Ki rep­
+resents the potential-dependent rate constant of each reaction and is 
+described in Eq. (11). Note that in the present work, the irreversible 
+reactions are assumed because they are the battery discharge reactions, 
+and the overvoltage is large. 
+Ki = kiexp
+{(m + αi)F
+RT
+η
+}
+= Kiexp(biη)
+(11)  
+where ki is the rate constant at an over potential = 0, m and αi represent 
+the number of electrons before the rate-limiting step and charge transfer 
+coefficient in the rate-limiting step (0 < αi < 1), respectively. F, R, and T 
+are the Faraday constant, gas constant, and absolute temperature, 
+respectively. bi is the Tafel coefficient [V−1]. bi can be evaluated using 
+the stationary polarization curves [1]. 
+H. Watanabe et al.                                                                                                                                                                                                                             
+
+<<PAGE 3>>
+Electrochimica Acta 477 (2024) 143759
+3
+2.2.2. Assumption of mass balance 
+The electrode coverage fractions of the adsorbents must be evaluated 
+because the electrochemical reactions occur on the electrode. Assuming 
+that adsorption on the electrode is governed by the Langmuir adsorption 
+isotherm, the following assumptions hold:  
+(1) monomolecular adsorption occurs,  
+(2) no interaction between the adsorbents,  
+(3) adsorption (desorption) reaction corresponds to the potential 
+variation. 
+When the electrode coverage fraction of intermediate B is θ 
+(0 ≤θ ≤1), the adsorption mass balance is described by Eq. (12), 
+β dθ
+dt = K1′(1 −θ) −K2′θ
+(12)  
+where β [mol cm–2] represents the surface concentration of adsorbent at 
+θ = 1. The Taylor expansion of both sides of Eq. (12), which is limited to 
+the first-order term, yields Eq. (13). 
+β dΔθ
+dt = b1K1′(1 −Θ)ΔE −K1′Δθ −b2K2′ΘΔE −K2′Δθ
+(13)  
+where Θ is the electrode coverage fraction at an equilibrium state and is 
+described by Eq. (14). 
+Θ =
+K1′
+K1′ + K2′
+(14) 
+If ΔE is a sine wave signal ((ΔE = |E|exp(jωt)), the corresponding Δθ 
+becomes a sine wave signal (Δθ = |θ|exp(jωt + φ)) to satisfy the linear 
+condition. 
+dΔθ
+dt = jωΔθ
+(15) 
+The following equation is obtained from Eqs. (13) and (15): 
+Δθ
+ΔE =
+aθ
+jωτθ + 1, where aθ = (b1 −b2)K1′K2′
+(K1′ + K2′)2
+and τθ =
+β
+K1′ + K2′
+(16) 
+Based on Eq. (16), Δθ
+ΔE becomes 0 and aθ at high and low-frequency 
+limits, respectively. Therefore, the impedance caused by the elemen­
+tary reactions on the electrode does not appear in the high-frequency 
+range. This implies that the variations in the electrode surface state do 
+not follow the variations in the potential; thus, there is no change in the 
+electrode surface state. In contrast, in the low-frequency range, the 
+impedance caused by the elementary reactions on the electrode appears 
+because the electrode surface state can vary with the potential. 
+2.2.3. Assumption of current equation 
+The total current is the sum of the currents generated in all 
+elementary reactions; current I is expressed as I = nFv. Therefore, the 
+current flowing in the reaction system assumed in Section 2.2.1 is 
+described by Eq. (17). 
+I = F{n1K1′(1 −θ) + n2K2′θ}
+(17) 
+The two-variable Taylor expansion of Eq. (17), limited to the first- 
+order term, yields Eq. (18). 
+ΔI = F(n1b1 + n2b2)K1′K2′
+K1′ + K2′
+ΔE + F(n2K2′ −n1K1′)Δθ
+(18) 
+Dividing both sides of Eq. (18) by ΔE yields the reciprocal of ZF. 
+1
+ZF
+= ΔI
+ΔE = F(n1b1 + n2b2)K1′K2′
+K1′ + K2′
++ F(n2K2′ −n1K1′) Δθ
+ΔE
+(19) 
+Substituting Eq. (16) into Eq. (19) and comparing with Eq. (5), a1 
+and a2 are expressed as follows: 
+a1 = F(n1b1 + n2b2)K1′K2′
+K1′ + K2′
+,
+(20)  
+a2 = F(n2K2′ −n1K1′).
+(21)  
+a1 > 0 regardless of the values of Ki and αi. In contrast, a2aθ can be 
+positive or negative depending on the values of Ki and αi. Therefore, the 
+impedance spectrum exhibits an inductive or capacitive semicircle, 
+depending on the rate constant of each elementary reaction. 
+Fig. 1. (a) Equivalent circuits of series connection of electrolyte solution resistance Rsol and RC parallel circuit producing one capacitive semicircle, (b) equivalent 
+circuits of series connection of Rsol and parallel circuit of the faradaic impedance and capacitance. Schematics of Faradaic impedance that appears as (c) capacitive 
+loop and (d) inductive loop. 
+H. Watanabe et al.                                                                                                                                                                                                                             
+
+<<PAGE 4>>
+Electrochimica Acta 477 (2024) 143759
+4
+In LiSBs, sulfur, the active material, is reduced stepwise to various 
+chain polysulfides. The formed polysulfide may be regarded as an in­
+termediate adsorbed on the electrode surface. Therefore, the charac­
+teristic Faradaic impedance behavior can be observed in the low- 
+frequency range, where variations in the electrode surface state can 
+follow potential variations. 
+3. Experimental 
+3.1. Materials and fabrication of LiSB 
+A sulfur/Ketjen-black (SKB) composite positive electrode was pre­
+pared according to the method reported by Ji et al. [23]. The details 
+were presented in our previous study [24]. KB is a commonly used 
+porous carbon material. The mass of sulfur in the SKB composite elec­
+trode was 1.0 mg cm−2. In this study, we used a sulfolane (SL)-based 
+superconcentrated electrolyte solution as an electrolyte solution [25]. 
+This electrolyte solution exhibits low polysulfide solubility [26] and is 
+known as a sparingly solvating electrolyte. Lithium bis(tri­
+fluoromethanesulfonyl)amide (TFSA) was dissolved in SL in a molar 
+ratio of 1:2 (LiTFSA to SL). The obtained electrolyte and 1,1,2,2-tetra­
+fluoroethyl-2,2,3,3-tetrafluoroprolyl ether (HFE) were mixed in a 
+molar ratio of 1:2. SL was purchased from Tokyo Chemical Industry and 
+used as received. LiTFSA and HFE were obtained from Solvey and Dai­
+kin, respectively. 
+A three-electrode cell (EC-Frontier, Japan) was used for the elec­
+trochemical measurements. An SKB-composite electrode and a lithium 
+foil (Honjo Metal, Japan) were cut into circles (16 mm diameter) and 
+used as the positive and negative electrodes, respectively. The three- 
+electrode cell was fabricated using these electrodes together with a 
+glass separator (24 mm diameter, GA-55, Advantec, Japan), and the 
+electrolyte solution mentioned earlier. The cell preparation was per­
+formed in an Ar-filled glove box. A ring-shaped lithium-metal foil was 
+used as the reference electrode. 
+3.2. Electrochemical measurements 
+The EIS measurements were performed under galvanostatic control. 
+This 
+method 
+is 
+known 
+as 
+in 
+situ 
+EIS 
+[6,27,28]. 
+In 
+galvanostatic-controlled EIS, the input signal is an AC current signal, 
+and the response potential was measured. In situ EIS measurements were 
+performed at a C-rate of 0.05C (168 μA) under constant-current char­
+ging/discharging condition. The DC current was superimposed with a 
+small AC current, which was adjusted so that the response potential 
+amplitude between the positive and reference electrodes would not 
+exceed 5 mV. The voltage ranged from 1.0 to 3.3 V. The impedance 
+spectra were acquired in the frequency range of 500 kHz to 10 mHz in a 
+logarithmic scan at five frequencies per decade. The recorded imped­
+ance spectra had a distorted shape in the low-frequency range owing to 
+time dependence. Accordingly, the acquired impedance spectra were 
+applied to the 3D plot method [6,28] to compensate for time invariance. 
+The compensated impedance spectra were expressed as instantaneous 
+impedance spectra. EIS measurements were conducted under potentio­
+static control conditions. In this paper, this method is referred to as 
+P-EIS. For P-EIS measurements, the cell was discharged at a C-rate of 
+0.05C for 30 min (corresponding to DOD of 5 %), and then maintained at 
+an open circuit potential for 4 h to relax to an equilibrium state. The 
+impedance was subsequently measured in the equilibrium state in the 
+frequency range of 500 kHz to 10 mHz. 
+To determine the Tafel coefficient bi at each plateau potential, the 
+polarization measurements were performed on a battery with depth of 
+discharge (DOD) = 5 and 20 %. First, the cell was discharged for 40 min 
+until an inductive loop appeared (corresponding to a DOD of 5 %). The 
+polarization measurements were performed after relaxation to an 
+equilibrium state for 16 h. The cell was then discharged for 2 h until a 
+capacitive semicircle appeared (corresponding to a DOD of 20 %). After 
+the equilibrium state was maintained, the polarization curve was 
+measured again. The polarization measurements were performed at a 
+scan rate of 0.5 mV s −
+1 and potentials ranging from open circuit po­
+tential (OCP) to −0.05 V vs. Li/Li+. 
+Electrochemical measurements were performed using an electro­
+chemical measurement system (SP-150e, Bio-Logic, France) in a ther­
+mostatic chamber (AC200, EC Frontier, Japan). The temperature was 
+controlled within ±0.9 K using a PID control. 
+4. Results and discussion 
+4.1. Temperature dependence of impedance spectra during discharge 
+Fig. S1 shows the discharge-charge profiles of the LiSBs measured via 
+in situ EIS at different temperatures. Each cell exhibited discharge curves 
+with two voltage-plateau regions at approximately 2.3 and 2.1 V. The 
+overvoltage between the charge and discharge curves decreased as the 
+temperature increased. In addition, the capacities of the plateau regions 
+increased as the temperature increased to 303, 316, and 328 K. Figs. 2 
+and 3 show the first discharge profiles and corresponding instantaneous 
+impedance spectra of the positive electrode in the LiSB at 303 K and 316 
+K, respectively. At 303 K, asymmetric capacitive semicircles, such as 
+overlapping semicircles with vertex frequencies at 30.4 and 2.95 kHz, 
+were observed in the high-frequency range above 10 Hz, which are in­
+dependent of DOD. In the impedance spectrum at a DOD of 5 %, 
+capacitive and inductive semicircles were observed at 1.69 Hz and 64.6 
+mHz, respectively. At DOD values of 20–50 %, a semicircle at 1.69 Hz 
+was not observed, and a large capacitive semicircle, which did not 
+converge on the real axis, appeared at 64.6 mHz. The impedance spectra 
+of LiSBs often exhibited large capacitive semicircles during discharge 
+[29,30]. At a DOD of 80 %, this large semicircle did not appear at 64.6 
+mHz, and the capacitive semicircle reappeared at 1.69 Hz. Moreover, 
+the Warburg impedance related to diffusion was observed in the 
+low-frequency range (below approximately 1 Hz). 
+The impedance generally decreased with increasing temperature. At 
+316 K, the semicircle at 2.95 kHz significantly reduced, and a single 
+semicircle with a vertex frequency of 19.1 kHz was observed in a high- 
+frequency range above 1 kHz. The impedance spectrum at a DOD of 5 % 
+exhibited a capacitive semicircle at 17.4 Hz and a small inductive loop at 
+64.6 mHz. A capacitive semicircle and an inductive semicircle were also 
+observed for the impedance at 303 K in the low-frequency region. The 
+impedance behavior in the low-frequency region was the same regard­
+less of the temperature, although the frequencies were different. At a 
+DOD of 80 %, the capacitive semicircles were observed in the high- 
+frequency range and at 17.4 Hz. In addition, Warburg impedance 
+appeared in the low-frequency region, consistent with the impedance 
+behavior in the low-frequency region at 303 K. In contrast, at DOD 
+values of 20–50 %, two capacitive semicircles appeared at 17.4 Hz and 
+64.6 mHz, in addition to the semicircle in the high-frequency range 
+above 1 kHz. This suggests that the large semicircle observed at 303 K 
+contained two capacitive semicircles that can be separated by increasing 
+the temperature. The diameter of the semicircle at 17.4 Hz increased and 
+that at 64.6 mHz significantly decreased with increasing DOD. More­
+over, the impedance at 64.6 mHz successively exhibited an inductive 
+semicircle, a capacitive semicircle, and a straight line as DOD increased. 
+The impedance spectra obtained at 328 K are shown in Fig. S2. The 
+impedance behavior in the low-frequency region (~64.4 mHz) was 
+almost identical to that at 316 K, except for the Warburg impedance that 
+appeared at DOD ≥50%. That is, an inductive semicircle at a DOD of 5 
+%, a capacitive semicircle at DOD values of 20–50 %, and a diffusion 
+behavior at a DOD of 80% were observed. The Warburg impedance 
+appeared at DOD ≥50% because the size of the capacitive semicircle in 
+the low-frequency range decreased. 
+H. Watanabe et al.                                                                                                                                                                                                                             
+
+<<PAGE 5>>
+Electrochimica Acta 477 (2024) 143759
+5
+4.2. Impedance spectra at the equilibrium state 
+In many cases, the impedance spectra of batteries are acquired in an 
+equilibrium state. To confirm the impedance behavior in the equilibrium 
+state, P-EIS was performed at 316 K. Fig. 4(a) shows the first discharge 
+profile during the P-EIS measurement. When the cell was discharged to 
+an arbitrary DOD and subsequently maintained at an open-circuit po­
+tential, the potential increased significantly. When it was discharged 
+again, the potential decreased exponentially and reached a steady-state 
+discharge. The polarization from the pseudo-equilibrium potential was 
+small in the first and second plateau regions and increased at the end of 
+the discharge, which was consistent with a previous study [31]. The 
+large polarization at the end of discharge was attributed to the con­
+centration overpotential. A Warburg impedance related to mass transfer 
+also appeared in the instantaneous impedance spectra at a DOD of 80 %. 
+Fig. 4(b) and 4(c) show the impedance spectra of the positive electrode 
+in the equilibrium state at DOD values of 10 and 30 %, respectively. At a 
+DOD of 10 % (corresponding to the first plateau), capacitive and small 
+inductive semicircles were observed in the low-frequency range below 
+180 Hz. The peak frequencies of these semicircles agree with those ob­
+tained using in situ EIS. In contrast, a distorted capacitive semicircle and 
+the Warburg impedance appeared in the low-frequency range at a DOD 
+of 30 % (corresponding to the second plateau). The frequency range at 
+which the distorted semicircle appeared was almost consistent with that 
+at which two capacitive semicircles appeared in the in situ EIS spectra. 
+This suggests that a distorted capacitive semicircle was observed 
+because of the overlap between the two semicircles in the P-EIS mea­
+surement. The impedance in the low-frequency range (approximately 
+64.6 mHz) successively exhibited inductive and capacitive semicircles as 
+the DOD increased, which was consistent with the results of the in situ 
+EIS measurements. Therefore, this impedance behavior in the 
+low-frequency range was caused by the discharge state of the positive 
+electrode, regardless of the polarization. 
+4.3. Impedance elements of the positive electrode 
+Fig. 5 shows a picture summarizing the DOD dependence of the 
+impedance spectra of the positive electrode. As shown in Figs. 2(c) and 3 
+(c), the impedance spectra of the positive electrode exhibited three 
+capacitive semicircles, which can be attributed to the electrode struc­
+ture: the first was the time constant assigned to the contact resistance at 
+the SKB composite/current collector interface, the second was the time 
+constant assigned to the contact resistance at the sulfur (S)/KB interface, 
+and the third was the time constant of the charge transfer resistance. The 
+trajectory of the impedance at approximately 64 mHz varied depending 
+on DOD. This impedance might be caused by the change in the electrode 
+surface state. At the first plateau, the time constant assigned to the 
+charge-transfer resistance did not change significantly, and the imped­
+ance in the low-frequency range exhibited an inductive loop. The change 
+in the time constant assigned to the charge-transfer resistance was small 
+even at the second plateau, and the impedance in the low-frequency 
+range exhibited a capacitive loop. At the end of the discharge, the 
+time constant assigned to the charge-transfer resistance increased, and 
+the Warburg impedance appeared. 
+A Faradaic impedance was also observed in the impedance spectra 
+during charging. Fig. 6 shows the instantaneous impedance spectra 
+measured at 316 K during charging and discharging. The impedance 
+spectrum in the low-frequency range exhibited a capacitive semicircle 
+Fig. 2. (a) First discharge curve of SKB composite positive electrode of LiSB and (b) corresponding instantaneous impedance spectra of the positive electrode. 
+Enlarged views of the instantaneous impedance spectra at DOD of (c) 5.1, (d) 20.0, and (e) 50 %. The measurement temperature was 303 K. The first discharge 
+capacity at the end of discharge voltage is defined as depth of discharge (DOD) = 100 %. 
+H. Watanabe et al.                                                                                                                                                                                                                             
+
+<<PAGE 6>>
+Electrochimica Acta 477 (2024) 143759
+6
+and Warburg impedance at a DOD of 95% (corresponding to the 
+beginning of charging). The capacitive semicircle can be attributed to 
+the time constant of charge-transfer resistance. Although the spectrum 
+was almost identical to that at the end of discharging, the diffusion 
+contribution was smaller during charging than during discharging. In 
+the plateau-potential region of the charge curve, capacitive and induc­
+tive semicircles were observed in the low-frequency range, which were 
+attributed to the time constants of the charge transfer resistance and 
+polarization resistance, respectively. At the end of charging, when the 
+potential increased, a blocking electrode behavior appeared in the low- 
+frequency range. Once Li2Sx was oxidized to S8, further electrochemical 
+reactions do not occur. Hence, a blocking electrode behavior appears in 
+the impedance spectra. The instantaneous impedance behaviors during 
+charging were almost similar at all temperatures. 
+The charge-transfer resistances were determined by applying curve 
+fitting to the instantaneous impedance spectra of the positive electrode. 
+Fig. 7 shows the charge transfer resistance of the positive electrode Rct,P 
+as a function of DOD. Rct,P increased slightly in the first voltage plateau 
+and remained almost constant in the second plateau during the 
+discharge process. Moreover, Rct,P increased significantly at the end of 
+the discharge process when the polarization was large. In contrast, Rct,P 
+during charging decreased significantly when DOD decreased from 100 
+to 90% and approximately remained constant when DOD decreased 
+from 80 to 20%. At the plateau voltage, the Rct,P values during charging 
+were almost identical to those during discharging at each DOD. In 
+contrast, the Rct,P values during charging largely differed from those 
+during discharging when the overvoltage was large, that is, DOD =
+65–100%. At the end of the discharge period, the concentration of Li+
+decreased at the positive electrode/electrolyte interface. Because Rct,P is 
+a function of the surface concentration of Li+ ions and the electrode 
+potential [32], Rct,P increased with decreasing Li+ ion concentration. 
+Hence, Rct,P during discharging was larger than that during charging at 
+DOD values of 65–100%. 
+4.4. Estimation of electrode reaction rate of the positive electrode 
+In the low-frequency range of the Faradaic impedance of the positive 
+electrode, inductive and capacitive semicircles appeared at the first and 
+second plateaus, respectively. During the sulfur discharge reaction, 
+different multistep reactions can occur between the first and second 
+plateaus. As described in Section 2.2, the Faradaic impedance behavior 
+changes depending on the values of the Tafel coefficients bi and charge 
+transfer coefficients αi at each plateau potential. These coefficients were 
+determined using the current-potential curves [1]. Fig. S3 shows the 
+current-potential curves at the first and second plateau potentials. When 
+the cathodic polarization was low, b1 < b2 < 0. According to the Tafel 
+law, the slope is the reciprocal of the Tafel slope B (= 2.303RT/αinF), 
+and the relationship between bi and αi is expressed as bi = αinF/RT. At 
+the first plateau, b1, α1n1, b2, and α2n2 were −69 V−1, 1.89, −27 V−1, and 
+0.73, respectively. At the second plateau, b3, α3n3, b4, and α4n4 were −67 
+V−1, 1.82, −16 V−1, and 0.44, respectively. At the first plateau, because 
+0 < αi < 1, the electron numbers (n1 and n2) are greater than 1.89 and 
+0.73, respectively. Therefore, at least a three-electron reaction can occur 
+in the first plateau. Similarly, at least a three-electron reaction occur at 
+the second plateau. However, the exact number of electrons remains 
+unclear. Therefore, it is assumed that S8 reacts with 8Li+ to form Li2S2 at 
+a DOD of 50% and completely reacts with 16Li+ to form Li2S at a DOD of 
+100%. S8 reacts with approximately 4Li+ at the first plateau (DOD of 
+0–20%) and subsequently reacts with approximately 4Li+ at the second 
+plateau (DOD of 20–50%). In other words, a four-electron reaction 
+Fig. 3. (a) First discharge curve of SKB composite positive electrode of LiSB and (b) corresponding instantaneous impedance spectra of the positive electrode. 
+Enlarged views of the instantaneous impedance spectra at DOD of (c) 5.1, (d) 20, and (e) 50 %. The measurement temperature was 316 K. 
+H. Watanabe et al.                                                                                                                                                                                                                             
+
+<<PAGE 7>>
+Electrochimica Acta 477 (2024) 143759
+7
+occurs at each plateau potential. Based on this assumption, the number 
+of electrons is almost consistent with the number of electrons estimated 
+using the polarization measurements. Hence, we believe that a 
+four-electron reaction occurs at each plateau voltage. 
+According to the speciation analysis of polysulfides generated in the 
+positive electrode [18,33], Li2S4 formed at the first plateau when 
+different sparingly solvating electrolytes were used as electrolyte solu­
+tions. Subsequently, Li2S2 and Li2S were gradually formed [18,34–36]. 
+Yao et al. also reported that S6
+2−is formed by the combination of S2−
+4 +1 
+/4S8→2S−
+3 and 2S−
+3 ⇄S2−
+6 at the second plateau. Only electrochemical 
+reactions are observed in the EIS measurements. Therefore, the elec­
+trochemical reactions that occurs at the positive electrode (Eqs. S1–S4) 
+are assumed based on previous studies. Thus, further experiments are 
+required to confirm the chemical species formed at the positive elec­
+trode. However, we believe that the electrochemical reaction 
+mechanism at the positive electrode is supported by previous studies 
+because the solubility of polysulfide in the electrolyte used in this study 
+is almost similar to that in sparingly solvating electrolytes observed in 
+previous studies [26,31]. 
+Based on these findings, Eq. (19), which represents the Faradaic 
+impedance, can be expressed as follows: 
+1
+ZF,1st
+= −2F(b1 + b2)K1K2
+K1 + K2
++ 2F(K1 −K2)
+(b1 −b2)K1K2
+(K1 + K2)2
+jω
+β
+K1 + K2
++ 1
+(22)  
+where ZF, 1st represents the Faradaic impedance at the first plateau 
+voltage. Because b1 = −69 V−1 and b2 = −27 V−1, a1 > 0 and aθ <
+0 based on Eqs. (16) and (21). Because the experimental impedance 
+spectra exhibited an inductive semicircle, a2 < 0 should be satisfied to 
+show the inductive loop according to Eq. (8), that is, K2 > K1. In contrast, 
+the Faradaic impedance at the second plateau voltage ZF, 2nd is described 
+as follows: 
+1
+ZF,2nd
+= −F(2b3 + 4b4)K3K4
+K3 + K4
++ F(2K3 −4K4)
+(b3 −b4)K3K4
+(K3 + K4)2
+jω
+β
+K3 + K4
++ 1
+(23) 
+Because b3 = −69 V−1 and b4 = −16 V−1, a1 > 0 and aθ < 0 based on 
+Eqs. (16) and (21). A capacitive semicircle appeared in the experimental 
+impedance spectra. Hence, K3 > K4 because a2 > 0 should be satisfied. 
+The Faradaic impedance of the positive electrode was calculated 
+using Eqs. (22) and (23). Calculations were performed using Microsoft 
+Excel 2019. The impedance spectra related to the electrode structure 
+were determined using parameters estimated through curve fitting. The 
+equivalent circuits obtained through curve fitting are shown in Fig. S4. 
+Because the impedance spectrum at a DOD of 20 % was difficult to 
+separate the individual time constants related to the electrode structure, 
+the spectrum was represented by a single time constant. In addition, the 
+Warburg impedance was observed in the low frequency region. Because 
+Eq. (23) does not contain the Warburg impedance, the parameter for the 
+Warburg impedance was also determined by curve fitting and used in 
+the Faradaic impedance simulations. Note that the semi-infinite diffu­
+sion is assumed here and ZF in Fig. S4(b) includes the diffusion imped­
+ance. The fixed parameters used in the calculations are listed in 
+Tables S1 and S2. The calculations were performed using the reaction 
+rate constant at an overvoltage η = 0 and ki as an adjustable parameter. 
+Fig. 8 shows the instantaneous impedance spectra at a DOD of 1 and 
+20%. As shown in Fig. 8, the simulation results agreed well with the 
+experimental data. The Ki values estimated using these calculations are 
+listed in Table 1. The calculations indicate that K4 was the smallest, and 
+Fig. 4. (a) First discharge curve of the positive electrode of LiSB measured via 
+P-EIS at 316 K. Impedance spectra at the equilibrium state at DOD of (b) 10 and 
+(c) 30%. 
+Fig. 5. Illustration summarizing the DOD dependence of impedance spectra of 
+the positive electrode. The semicircles represent time constants related to 
+contact resistance of SKB composite/current collector interface (gray), contact 
+resistance at sulfur(S)/KB interface (blue), charge transfer resistance (green) 
+and impedance caused by the change in the electrode surface state (red). 
+H. Watanabe et al.                                                                                                                                                                                                                             
+
+<<PAGE 8>>
+Electrochimica Acta 477 (2024) 143759
+8
+that the final reaction in the discharge process was the rate-limiting step. 
+Fig. S5 shows the simulated impedance spectrum with twice the value of 
+K4 (K’4 = 3.69 × 10−9 mol cm−2 s−1). The two capacitive semicircles in 
+the low-frequency range, which were the Faradaic impedances, 
+decreased with increasing K4. When K4 increased, the internal resistance 
+of the battery decreased, which may reduce the overvoltage during 
+discharging. 
+5. Conclusions 
+EIS measurements provide valuable information on LiSBs; however, 
+the impedance spectra must be interpreted with caution owing to the 
+complex reaction system. In an electrochemical system, Faradaic 
+impedance related to the electrochemical reactions is observed, and the 
+Faradaic impedance often contains characteristic trajectories owing to 
+the electrode surface conditions. When in situ EIS measurements were 
+performed on the LiSB with an SL-based superconcentrated electrolyte 
+solution, the impedance spectra in the low-frequency range exhibited an 
+inductive loop during the early stages of the discharge process. Upon 
+further discharging, the inductive loop changed into a capacitive semi­
+circle. The Warburg impedance appeared at the end of the discharge 
+period. With increasing temperature, the capacitive semicircle that 
+appeared at the second plateau voltage was separated into two capaci­
+tive semicircles, which were attributed to the time constants related to 
+the charge-transfer resistance and polarization resistance, respectively. 
+A low-frequency impedance behavior was also confirmed using P-EIS 
+measurements. This low-frequency impedance behavior was attributed 
+to the Faradaic impedance due to elementary reactions on the electrode, 
+such as intermediate reactions and redox species adsorption/desorption 
+processes. Based on the Faradaic impedance theory, the rate constants of 
+the electrochemical reactions that occurred during discharge were 
+estimated. The result suggests that the final step of the multistep reac­
+tion was the rate-limiting step. In addition, using the obtained rate pa­
+rameters, we simulated the Faradaic impedance spectra of the LiSB. The 
+simulations showed that the internal resistance of the battery decreased 
+as the rate constants changed. In lithium–sulfur batteries, to prevent the 
+dissolution of lithium polysulfide, efficient reduction to lithium sulfide 
+Fig. 6. First discharge-charge profile of LiSB and corresponding instantaneous impedance spectra of the positive electrode of LiSB. The measurement was performed 
+at 316 K. Blue and red represent discharge and charge processes. 
+Fig. 7. First discharge-charge curve of LiSB (solid lines) and charge transfer 
+resistance of positive electrode Rct,P (dots) as functions of DOD. Blue and red 
+represent discharge and charge processes. 
+H. Watanabe et al.                                                                                                                                                                                                                             
+
+<<PAGE 9>>
+Electrochimica Acta 477 (2024) 143759
+9
+is required. Based on the results of this simulation, if the discharge re­
+action rate can be controlled, then dissolution can be suppressed and 
+internal resistance can be lowered, thereby increasing the discharge 
+capacity. Faradaic impedance analysis can reveal important findings for 
+the improvement of LiSB performance. 
+CRediT authorship contribution statement 
+Hikari Watanabe: Writing – original draft, Supervision, Investiga­
+tion, Conceptualization. Yuto Sugiura: Writing – original draft, Inves­
+tigation, Conceptualization. Isao Shitanda: Supervision. Masayuki 
+Itagaki: Supervision. 
+Declaration of competing interest 
+The authors declare that they have no known competing financial 
+interests or personal relationships that could have appeared to influence 
+the work reported in this paper. 
+Data availability 
+No data was used for the research described in the article. 
+Acknowledgment 
+This study was supported by a JSPS Grants-in-Aid for Young Scien­
+tists (Grant No. 22K14771). 
+Supplementary materials 
+Supplementary material associated with this article can be found, in 
+the online version, at doi:10.1016/j.electacta.2024.143759. 
+References 
+[1] I. Epelboin, M. Keddam, Faradic Impedances: diffusion Impedance and Raction 
+Impedance, J. Electrochem. Soc. 117 (1970) 1052–1056, https://doi.org/10.1149/ 
+1.2407718. 
+[2] I. Epelboin, M. Keddam, J.C. Lestrade, Faradaic impedance and intermediates in 
+electrochemical reactions, Faraday Discuss. Chem. Soc. 56 (1973) 264–275, 
+https://doi.org/10.1039/DC9735600264. 
+[3] M. Keddam, O.R. Mattos, H. Takenouti, Reaction model for iron dissolution studied 
+by electrode impedance: II. Determination of the reaction model, J. Electrochem. 
+Soc. 128 (1981) 266–274, https://doi.org/10.1149/1.2127401. 
+[4] I. Epelboin, C. Gabrielli, M. Keddam, H. Takenouti, A model of the anodic 
+behaviour of iron in sulphuric acid medium, Electrochim. Acta 20 (1975) 913–916, 
+https://doi.org/10.1016/0013-4686(75)87017-4. 
+[5] R. Wiart, Elementary steps of electrodeposition analysed by means of impedance 
+spetroscopy, Electrochim. Acta 35 (1990) 1587–1593, https://doi.org/10.1016/ 
+0013-4686(90)80014-F. 
+[6] M. Itagaki, N. Kobari, S. Yotsuda, K. Watanabe, S. Kinoshita, M. Ue, Situ 
+electrochemical impedance spectroscopy to investigate negative electrode of 
+lithium-ion rechargeable batteries, J. Power Sources 135 (2004) 255–261, https:// 
+doi.org/10.1016/j.jpowsour.2004.04.004. 
+[7] J. Bressan, G. Feuillade, The kinetics of the lithium electrode during the discharge 
+of Li/SOCl2 cells, J. Electrochem. Soc. 129 (1982) 2649–2653. 
+[8] N.F. Harman, N.A. Hampson, P.J. Mitchell, The faradaic impedance of the lithium- 
+sulphur dioxide system. A further examination of commercial cells, J. Power 
+Sources 19 (1987) 7–13. 
+[9] J.Y. Song, H.H. Lee, Y.Y. Wang, C.C. Wan, Two- and three-electrode impedance 
+spectroscopy of lithium-ion batteries, J. Power Sources 111 (2002) 255–267. 
+[10] H. Zhou, M. Einarsrud, F. Vullum-Bruer, In Situ X-ray diffraction and 
+electrochemical impedance spectroscopy of A NanoPorous Li2FeSiO4/C cathode 
+during the initial Charge/Discharge cycle of A Li-ion battery, J. Power Sources 238 
+(2013) 478–484. 
+[11] A. Thapa, H. Gao, Low-frequency inductive loop and its origin in the impedance 
+spectrum of a graphite anode, J. Electrochem. Soc. 169 (2022) 110535. 
+[12] B. Zhang, L. Wang, Y. Zhang, X. Wang, Y. Qiao, S. Sun, Reliable impedance analysis 
+of Li-ion battery half-cell by standardization on electrochemical impedance 
+spectroscopy (EIS), J. Chem. Phys. 158 (2023) 054202. 
+[13] J. Hong, C. Wang, U. Kasavajjula, Kinetic behavior of LiFeMgPO4 cathode material 
+for Li-ion batteries, J. Power Sources 162 (2006) 1289–1296. 
+[14] Z. QuanChao, X. JinMei, F. XiaoYong, W. GuoZhen, D. QuanFeng, J. YanXia, 
+H. Ling, S. Shigang, LiCoO2 electrode/electrolyte interface of Li-ion batteries 
+investigated by electrochemical impedance spectroscopy, Sci. China Ser. B-Chem. 
+50 (2007) 776–783. 
+[15] C. Barchasz, F. Molton, C. Duboc, J.C. Lepretˆre, S. Patoux, F. Alloin, Lithium/sulfur 
+cell discharge mechanism: an original approach for intermediate species 
+identification, Anal. Chem. 84 (2012) 3973–3980, https://doi.org/10.1021/ 
+ac2032244. 
+[16] M. Cuisinier, P.-E. Cabelguen, S. Evers, G. He, M. Kolbeck, A. Garsuch, T. Bolin, 
+M. Balasubramanian, L.F. Nazar, Sulfur speciation in Li−S batteries determined by 
+operando X-ray absorption spectroscopy, J. Phys. Chem. Lett. 4 (2013) 3227–3232, 
+https://doi.org/10.1021/jz401763d. 
+[17] H.-L. Wu, L.A. Huff, A.A. Gewirth, Situ raman spectroscopy of sulfur speciation in 
+lithium−sulfur batteries, ACS Appl. Mater. Interfaces 7 (2015) 1709–1719, https:// 
+doi.org/10.1021/am5072942. 
+[18] Y. Xiao, K. Yamamoto, Y. Matsui, T. Watanabe, A. Sakuda, K. Nakanishi, 
+T. Uchiyama, A. Hayashi, S. Shingubara, M. Tatsumisago, Comparison of sulfur 
+cathode reactions between a concentrated liquid electrolyte system and a solid- 
+state electrolyte system by soft X-Ray absorption spectroscopy, ACS Appl. Energy 
+Mater. 4 (2021) 186–193, https://doi.org/10.1021/acsaem.0c02063. 
+[19] K. Kumaresan, Y. Mikhaylik, R.E. White, A mathematical model for A lithium- 
+sulfur cell, J. Electrochem. Soc. 155 (2008) A576–A582, https://doi.org/10.1149/ 
+1.2937304. 
+[20] D.N. Fronczek, W.G. Bessler, Insight into lithium-sulfur batteries: elementary 
+kinetic modeling and impedance simulation, J. Power Sources 244 (2013) 
+183–188, https://doi.org/10.1016/j.jpowsour.2013.02.018. 
+[21] A.F. Hifmann, D.N. Fronczek, W.G. Bessler, Mechanistic modeling of polysulfide 
+shuttle and capacity loss in lithium-sulfur batteries, J. Power Sources 259 (2014) 
+300–310, https://doi.org/10.1016/j.jpowsour.2014.02.082. 
+[22] L. Peng, Z. Wei, C. Wan, J. Li, Z. Chen, D. Zhu, D. Baumann, H. Liu, C.S. Allen, 
+X. Xu, A.I. Kirkland, I. Shakir, Z. Almutairi, S. Tolbert, B. Dunn, Y. Huang, 
+P. Sautet, X. Duan, A fundamental look at electrocatalytic sulfur reduction 
+Fig. 8. Instantaneous impedance spectra of the positive electrode of LiSB at 
+DOD of (a) 1 % and (b) 20 %. Blue dots and black lines represent the experi­
+mental and calculated data, respectively. 
+Table 1 
+Estimated rate constant of each discharge reac­
+tion Ki of the positive electrode for LiSB.  
+i 
+Ki / mol cm−2 s−1 
+1 
+3.63 × 10−9 
+2 
+2.01 × 10−6 
+3 
+1.03 × 10−4 
+4 
+1.84 × 10−9  
+H. Watanabe et al.                                                                                                                                                                                                                             
+
+<<PAGE 10>>
+Electrochimica Acta 477 (2024) 143759
+10
+reaction, Nat. Catal. 3 (2020) 762–770, https://doi.org/10.1038/s41929-020- 
+0498-x. 
+[23] X. Ji, K.T. Lee, L.F. Nazar, A high ordered nanostructured carbon-Sulphur cathode 
+for lithium-Sulphur batteries, Nat. Mater. 8 (2009) 500–506, https://doi.org/ 
+10.1038/nmat2460. 
+[24] H. Watanabe, Y. Sugiura, S. Shiro, J. Han, I. Shitanda, M. Itagaki, Y. Umebayashi, 
+Discharge behavior within lithium-sulfur batteries using Li-Glyme solvate ionic 
+liquids. 127 (2023) 6645–6654. https://doi.org/10.1021/acs.jpcc.3c00447. 
+[25] K. Dokko, D. Watanabe, Y. Ugata, M.L. Thomas, S. Tsuzuki, W. Shinoda, 
+K. Hashimoto, K. Ueno, Y. Umebayashi, M. Watanabe, Direct evidence for Li ion 
+hopping conduction in highly concentrated sulfur-based liquid electrolytes, 
+J. Phys. Chem. B 122 (2018) 10736–10745, https://doi.org/10.1021/acs. 
+jpcb.8b09439. 
+[26] A. Nakanishi, K. Ueno, D. Watanabe, Y. Ugata, Y. Matsumae, J. Liu, M.L. Thomas, 
+K. Dokko, M. Watanabe, Sulfolane-based highly concentrated electrolytes of 
+lithium Bis(trifluoromethanesulfonyl)amide: ionic transport, Li-Ion coordination, 
+and Li–S battery performance, J. Phys. Chem. C 123 (2019) 14229–14238, https:// 
+doi.org/10.1021/acs.jpcc.9b02625. 
+[27] H. Watanabe, S. Omoto, Y. Hoshi, I. Shitanda, M. Itagaki, Electrochemical 
+impedance analysis on positive electrode in lithium-ion battery with galvanostatic 
+control, J. Power Sources 507 (2021) 230258, https://doi.org/10.1016/j. 
+jpowsour.2021.230258. 
+[28] Z.B. Stoynov, B.S. Savova-Stoynov, Impedance study of non-stationary systems: 
+four-dimensional analysis, J. Electroanal. Chem. 183 (1985) 133–144, https://doi. 
+org/10.1016/0368-1874(85)85486-1. 
+[29] M. Helen, T. Diemant, S. Schindler, R.J. Behm, M. Denzer, U. Kaiser, M. Fichtner, 
+M.A. Reddy, Insight into sulfur confined in ultramicroporous carbon, ACS Omega 3 
+(2018) 11290–11299, https://doi.org/10.1021/acsomega.8b01681. 
+[30] S. Walu´s, C. Barchasz, R. Bouchet, F. Alloin, Electrochemical impedance 
+spectroscopy, study of lithium-sulfur batteries: useful technique to reveal the Li/S 
+electrochemical mechanism, Electrochim. Acta 359 (2020) 136944, https://doi. 
+org/10.1016/j.electacta.2020.136944. 
+[31] M. Yanagi, K. Ueno, A. Ando, S. Li, Y. Matsumae, J. Liu, M.Wtanabe K. Dokko, 
+Effects of polysulfide solubility and Li ion transport on performance of Li-S 
+batteries using sparingly solvating electrolytes, J. Electrochem. Soc. 167 (2020) 
+070531, https://doi.org/10.1149/1945-7111/ab7a81. 
+[32] J.P. Meyers, M. Doyle, R.M. Darling, J. Newman, The impedance response of A 
+porous electrode composed of intercalation particles, J. Electrochem. Soc. 147 
+(2000) 2930–2940, https://doi.org/10.1149/1.1393627. 
+[33] C.-W. Lee, Q. Pang, S. Ha, L. Cheng, S.-D. Han, K.R. Zavadil, K.G. Gallagher, L. 
+F. Nazar, M. Balasubramanian, Directing the lithium-sulfur reaction pathway via 
+sparingly solvating electrolytes for high energy density batteries, ACS Cent. Sci. 3 
+(2017) 605–613, https://doi.org/10.1021/acscentsci.7b00123. 
+[34] A. Manthiram, Y. Fu, S.-H. Chung, C. Zu, Y.-S. Su, Rechargeable lithium-sulfur 
+batteries, Chem. Rev. 114 (2014) 11751–11787, https://doi.org/10.1021/ 
+cr500062v. 
+[35] M. Cuisinier, P.-E. Cabelguen, B.D. Adams, A. Garsuch, M. Balasubramanian, L. 
+F. Nazar, Unique behaviour of nonsolvents for polysulphides in lithium-sulphur 
+batteries, Energy Environ. Sci. 7 (2014) 2697–2705, https://doi.org/10.1039/ 
+C4EE00372A. 
+[36] K. Ueno, J. Park, A. Yamazaki, T. Mandai, N. Tachikawa, K. Dokko, M. Watanabe, 
+Anionic effects on solvate ionic liquid electrolytes in rechargeable lithium-sulfur 
+batteries, J. Phys. Chem. C 117 (2013) 20509–20516. 
+H. Watanabe et al.                                                                                                                                                                                                                             

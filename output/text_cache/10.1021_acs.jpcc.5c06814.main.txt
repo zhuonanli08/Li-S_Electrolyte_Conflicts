@@ -1,0 +1,1170 @@
+
+<<PAGE 1>>
+Composition-Dependent Structure and Dynamics of Lithium−Sulfur
+Battery Electrolytes Revealed by Molecular Dynamics Simulations
+Yuki Ito, Yusuke Yasuda, Yukako Konishi, Taiki Shiba, Kaoru Dokko, and Kazushi Fujimoto*
+Cite This: J. Phys. Chem. C 2026, 130, 1327−1337
+Read Online
+ACCESS
+Metrics & More
+Article Recommendations
+*
+sı
+Supporting Information
+ABSTRACT: Molecular dynamics simulations were employed to investigate the
+structure
+and
+dynamics
+of
+[LiTFSA]:[FEC]:[HFE]
+(TFSA,
+bis-
+(trifluoromethanesulfonyl)amide; FEC, fluoroethylene carbonate; HFE, 1,1,2,2-
+tetrafluoroethyl-2,2,3,3-tetrafluoropropyl ether), which acts as an optimal
+electrolyte for lithium−sulfur batteries; however, it exhibits high performance
+(ratio of 1:6:3) or low performance (ratio of 1:4:5) depending on the ratio of the
+constituents. Simulations revealed that both electrolyte systems spontaneously
+liquid−liquid phase-separate into two distinct domains, namely, a large LiTFSA-
+rich microphase and an HFE-rich phase; however, the microphase properties
+significantly vary with the constituent composition. For the high-performance
+electrolyte, the flexible microphase facilitates the formation of small Li-ion-containing clusters in the HFE-rich phase, promoting
+enhanced Li-ion diffusion. Furthermore, the Li ions diffuse via different mechanisms on the 0.001, 0.1, 10, and 100 ns time scales. In
+contrast, the low-performance electrolyte exhibited a more rigid microphase with fewer small clusters, restricting Li-ion transport
+mainly to the microphase. These variations alter the pathways for ionic conduction, implying that even when identical chemical
+species are used, changes in the constituent composition can result in minor modifications in the physical properties of the
+microphase, significantly altering the performance. This insight underscores a key consideration for electrolyte design, not only for
+lithium−sulfur batteries but also for other battery systems.
+■INTRODUCTION
+Lithium−sulfur (Li−S) batteries are lightweight, next-gener-
+ation batteries with a high theoretical capacity, leading to their
+rapid development. Similar to other batteries, the electrolyte
+plays a key role in the overall performance by facilitating ion
+transfer between the electrodes during charging and discharg-
+ing, and by enabling long-term operation through the
+formation of a solid electrolyte interphase.1−3 It is generally
+beneficial to lower the overall viscosity of the electrolyte by
+incorporating diluents, such as 1,1,2,2-tetrafluoroethyl-2,2,3,3-
+tetrafluoropropyl ether (HFE) or water,4,5 but performance
+diminishes if the diluent concentration deviates from an
+optimal range. These observations imply that the ion
+conduction mechanism varies with concentration, although
+the precise details remain to be elucidated.
+Insights into the dynamic properties of Li ions and the
+solvation structure surrounding them provide deep knowledge
+for the development of novel electrolytes.6−24 Therefore,
+numerous studies have employed molecular dynamics (MD)
+simulations to investigate the behavior of Li ions at the
+microscale.6−12,15,18−20,24 Li-ion transport in electrolyte
+solutions has traditionally been explained by two primary
+mechanisms: the vehicular mechanism, in which Li ions
+transport with their solvation shells, and the solvent exchange
+mechanism, in which Li ions are transferred via the exchange
+of solvent molecules between the solvation shell and the bulk
+solvent. Moreover, recent investigations have shown that the
+addition of organic solvents, such as ethylene carbonate and
+acetonitrile, shortens the lifetime of the Li-ion solvation shell,
+thereby increasing the Li-ion transfer frequency and enhancing
+Li-ion transport efficiency.18,19 However, although these
+mechanisms capture certain aspects of Li-ion diffusion, they
+are limited to short time scales, and the relationship between
+these short-term dynamics and macroscopic Li-ion conduction
+remains unclear.
+Studies have recently started focusing on the long-term
+dynamics to capture larger-scale heterogeneities. In 2017,
+Borodin et al.9 were the first to differentiate the dynamics
+within one phase from those in other regions by analyzing the
+coordination states of the Li ions. They quantitatively
+demonstrated that in concentrated electrolytes, Li ions exhibit
+a fast diffusion mode in the water-rich phase and slow diffusion
+in the TFSA phase. Nonetheless, details of the phase-
+separation structure’s dynamic properties, such as how the
+structure fluctuates, were not addressed. Furthermore, because
+Li ions shuttle between the water-rich and TFSA phases,
+Received:
+October 2, 2025
+Revised:
+December 7, 2025
+Accepted:
+December 29, 2025
+Published: January 8, 2026
+Article
+pubs.acs.org/JPCC
+© 2026 American Chemical Society
+1327
+https://doi.org/10.1021/acs.jpcc.5c06814
+J. Phys. Chem. C 2026, 130, 1327−1337
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​130/​3/​1327/​64223848/​jp5c06814.​pdf by TSINGHUA UNIV user on 01 October 2026
+
+<<PAGE 2>>
+clarifying the lifetimes of these dynamic modes is essential for
+understanding macroscopic ion conduction.
+Numerous low-concentration electrolytes (CLi ≈1 M) have
+been developed,25 employed in various battery systems, and
+commercialized. In recent years, high-concentration electro-
+lytes (CLi > 3 M) have also been developed and
+reported.10,26,27 Although such electrolytes exhibit increased
+viscosity owing to their high salt contentresulting in slower
+lithium-ion diffusion and lower ionic conductivityselecting
+appropriate solvents, such as sulfolane, can enhance the
+lithium-ion transference number. This allows high-concen-
+tration electrolytes to deliver current densities comparable to
+those of low-concentration systems. Nonetheless, the high
+viscosity poses challenges for battery manufacturing. To
+overcome this, localized high-concentration electrolytes
+(LHCEs) have been considered,28−31 in which a high-
+concentration electrolyte is diluted with an inert diluent.
+Torii et al. developed a high-performance LHCE for Li−S
+batteries by using FEC as the solvent and HFE as the diluent at
+an appropriate mixing ratio.2 Despite these advances, the
+molecular-level structure and the associated ion dynamics in
+LHCEs remain poorly understood.
+In this study, long-term all-atomistic MD simulations (∼500
+ns) were performed for [LiTFSA]:[FEC]:[HFE] = 1:6:3
+(TFSA, bis(trifluoromethanesulfonyl)amide; FEC, fluoroethy-
+lene carbonate; HFE, 1,1,2,2-tetrafluoroethyl-2,2,3,3-tetrafluor-
+opropyl ether), which has been identified as a high-perform-
+ance LHCE for Li−S batteries.2 We also carried out
+comparative simulations on the 1:4:5 formulation, which
+exhibits poorer performance in Li−S cells, despite its lower
+viscosity relative to the optimal 1:6:3 mixture. Voronoi
+polyhedral analysis was conducted to investigate the electrolyte
+structure, enabling a clear determination of whether the Li ions
+were incorporated. Consequently, the flexibility of the
+microphase was found to vary significantly depending on the
+composition of the electrolyte constituents. Differences in
+composition were found to affect the Li-ion diffusion pathways,
+which greatly influence the overall diffusion rate. Meanwhile,
+Li ions diffuse via different mechanisms on various time scales,
+on the order of 0.001, 0.1, 10, and over 100 ns.
+■METHODS
+MD Calculations
+In this study, long-term all-atomistic MD simulations were performed
+for both the 1:6:3 and 1:4:5 [LiTFSA]:[FEC]:[HFE] systems.
+Hereafter, the 1:6:3 and 1:4:5 systems are referred to as Ele163 and
+Ele145, respectively. For the Ele163 system (best performance for Li−
+S batteries2), the MD cell comprised 28,800 FEC molecules, 14,400
+HFE molecules, 4800 TFSA molecules, and 4800 Li ions. For the
+Ele145 system (poor performance for Li−S batteries), the MD cell
+contained 24,000 FEC molecules, 19,200 HFE molecules, 4800 TFSA
+molecules, and 4800 Li ions. These molecules (see Figure 1) were
+randomly packed into an MD simulation box using PACKMOL.32 All
+MD calculations were performed using GROMACS 2021.33−39 The
+time step was set to 1 fs, and the OPLS-AA force field,40,41 which is
+well-established for organic molecules, was used for FEC, HFE, and
+Li, while the OPLS-2009IL42,43 force field was employed for TFSA
+(see the Supporting Information for details). However, because the
+charges of the FEC and HFE molecules were not tuned, we
+recalculated them to achieve better agreement with the dynamical
+properties. The atomic charges for the FEC and HFE molecules were
+obtained from electrostatic potential calculations performed using
+Gaussian 16 at the MP2/cc-pVTZ level of theory, employing the
+Merz−Kollman scheme (pop = MK). The long-range Coulomb
+interactions were calculated using the smooth particle mesh Ewald
+(SPME) method,44 with a grid spacing of 0.1 nm and an Ewald
+tolerance set to 10−5. The cutoff distances for both the Lennard−
+Jones (LJ) and short-range SPME interactions were set to 1.2 nm, and
+long-range corrections for the LJ potential were applied to both the
+energy and pressure. The temperature was maintained at 298.15 K
+using the velocity rescaling method45 with a relaxation time of 1 ps,
+and the pressure was controlled at 1 bar using the Parrinello−Rahman
+method46 with a relaxation time of 2 ps. The chemical bonds
+involving hydrogen atoms were constrained using the LINCS
+algorithm.47 All MD simulations were performed for 500 ns, and
+the trajectories after 300 ns were used for analysis.
+Definition of the Li−TFSA Clusters Using Voronoi
+Polyhedral Analysis
+Li and TFSA are known to aggregate and form clusters.9,13,48,49 In the
+present study, such clusters were identified using Voronoi polyhedral
+analysis.50 A Voronoi region around a given atom is defined as the set
+of all points in space that are closer to that atom than to any other. In
+practice, the perpendicular bisector plane is constructed for each pair
+of atoms. For a target atom, each bisector divides space into two half-
+spaces: one containing the atom itself and the other containing its
+neighbor (green line in Figure 2a). The Voronoi region is then
+obtained by intersecting all the half-spaces that include the target
+atom. The resulting cell is a convex polyhedron whose faces lie on the
+bisector planes (yellow area in Figure 2a). This method provides
+geometric information such as the volume of the Voronoi region, the
+number of contacting atoms, and the total contact area. It therefore
+enables direct identification of which molecules are in contact, as well
+as the number and species of contacting atoms.
+In this study, we first calculated the occupied regions of Li and
+TFSA molecules using Voronoi polyhedral analysis. Li−Li, Li−TFSA,
+and TFSA−TFSA contacts were considered part of the same cluster.
+Furthermore, because FEC molecules can coordinate with Li ions,
+they may be incorporated into Li−TFSA clusters or reside
+predominantly on their surfaces. If an atom of an FEC molecule is
+located at the surface of a Li−TFSA cluster, it is considered part of
+the cluster if the surface area in contact with the cluster exceeds half of
+its total Voronoi surface area (Figure 2b). The volume of a cluster is
+then defined as the sum of the Voronoi volumes of the Li, TFSA, and
+the included FEC atoms. Voronoi polyhedral analysis was performed
+using the Qhull program.51
+Bond Correlation Function between Li Ions and the
+Oxygen Atoms of TFSA
+The bond correlation function between Li ions and the oxygen atoms
+of TFSA, B(t), is defined analogously to the hydrogen-bond
+correlation function:52
+=
+B t
+b
+b t
+( )
+(0) ( )
+(1)
+Figure 1. Molecules used in the electrolyte under investigation. The
+pink spheres represent lithium ions, and the red, yellow, cyan, light
+green, and white spheres represent oxygen, sulfur, carbon, fluorine,
+and hydrogen atoms, respectively.
+The Journal of Physical Chemistry C
+pubs.acs.org/JPCC
+Article
+https://doi.org/10.1021/acs.jpcc.5c06814
+J. Phys. Chem. C 2026, 130, 1327−1337
+1328
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​130/​3/​1327/​64223848/​jp5c06814.​pdf by TSINGHUA UNIV user on 01 October 2026
+
+<<PAGE 3>>
+where b(t) is a binary function that equals 1 if a given Li ion is bonded
+to the oxygen atom of TFSA at time t, and 0 otherwise. The angle
+brackets denote an ensemble average. The results of the Voronoi
+analysis were used to determine whether the Li ions bonded with the
+oxygen atoms of TFSA.
+Residence Time Correlation Function of the Li Ions in the
+Microphase or HFE-Rich Phase
+The residence time correlation function of the Li ions in the
+microphase or HFE-rich phase, C(t), is defined as follows:
+=
+C t
+c
+c t
+( )
+(0) ( )
+(2)
+where c(t) is a binary function that depends on the phase being
+analyzed. Specifically, c(t) = 1 if a given Li ion is in the target phase
+(either the microphase or HFE-rich phase, depending on the
+analysis), and otherwise, c(t) = 0. The angle brackets denote an
+ensemble average.
+Region-Dependent Mean Square Displacement
+To separately evaluate the diffusion behavior inside and outside the
+largest LiTFSA cluster, we defined three types of MSDs, namely
+MSDoverall, MSDmicrophase, and MSDHFE‑rich phase, by altering the
+ensemble used for averaging. MSDoverall is the ordinary MSD:
+=
++
+t
+r
+t
+t
+r
+t
+MSD
+(
+)
+(
+(
+)
+( ))
+t
+overall
+iatom
+iatom
+2
+iatom,
+(3)
+where riatom(t) is the complete trajectory of one atom, and iatom is the
+atom identifier.
+MSDmicrophase and MSDHFE‑rich phase represent the localized MSDs of
+Li ions within the microphase and the surrounding HFE-rich phase,
+respectively (Figure 3). Given that Li ions migrate between these two
+environments, we determined the microphase membership of each
+ion at every snapshot and segmented the trajectories into continuous
+intervals that remained either inside or outside the microphase. For
+each segmented trajectory, we first performed a time average, followed
+by an ensemble average across multiple trajectories, thereby
+improving the statistical reliability of the MSD within each phase.
+The MSD is defined as follows:
+=
++
+=
+t
+r
+t
+t
+r
+t
+x
+MSD (
+)
+(
+(
+)
+( ))
+(
+micro phase, HFE rich phase)
+x
+x
+x
+t
+itraj,
+itraj,
+2
+itraj,
+(4)
+where ritraj,x(t) denotes the position of Li ion i at time t, within a
+trajectory segment categorized as either the microphase or HFE-rich
+phase. The angle brackets indicate averaging over time t, over ions i,
+and over trajectory segments (see the technical algorithm presented in
+the Supporting Information).
+Determination of the Diffusion Coefficients Using
+Pulsed-Field Gradient Nuclear Magnetic Resonance
+FEC and HFE were purchased from Kishida Chemical and Daikin
+Industries, respectively, and used as received. LiTFSA was purchased
+from Solvay Japan and used after drying at 353 K. Pulsed-field
+gradient (PFG) nuclear magnetic resonance (NMR) measurements
+were carried out to determine the self-diffusion coefficients (D) of Li+,
+TFSA, FEC, and HFE in Ele163, using a bipolar pulse-pair
+longitudinal eddy current delay pulse sequence with a sinusoidal
+PFG.53,54 A JEOL-ECX 400 NMR spectrometer, operating at 9.4 T
+with a narrow-bore superconducting magnet and equipped with a
+PFG probe and a current amplifier, was used to measure the NMR
+signals of FEC (1H, 399.7 MHz), TFSA anions and HFE (19F, 376.1
+MHz), and lithium cations (7Li, 155.3 MHz). The diffusion echo
+signal attenuation, E, is related to the experimental parameters by the
+Stejskal equation55 with a sinusoidal PFG:
+=
+=
+=
+(
+)
+E
+S
+S
+g D
+ln
+ln
+4
+0
+2 2
+2
+2
+3
+2
+2
+g
+(5)
+where S is the spin−echo signal intensity, δ is the duration of the field
+gradient with magnitude g, γ is the gyromagnetic ratio, τg is the time
+interval between the bipolar gradients, and Δ is the diffusion time.
+The values of Δ, δ, τg, and g are shown in Table 1. The sample was
+inserted into an NMR microtube (BMS-005J Shigemi) to a height of
+3 mm to exclude convection, and the measurements were performed
+at 298 K.
+Figure 2. (a) 2D diagram of a Voronoi polyhedron. Red dots
+represent atoms, and solid lines represent the perpendicular bisector
+planes. The yellow region denotes the Voronoi region of the i-th
+atom, and the green line represents the perpendicular bisector plane
+between the i-th and j-th atoms. (b) Illustration showing the
+classification of the atoms of an FEC molecule in a Li−TFSA cluster.
+Only those FEC atoms meeting this criterion are colored, whereas the
+FEC atoms that do not meet this threshold (displayed in white) are
+not considered part of any cluster.
+Figure 3. Schematic image illustrating the region-dependent MSD
+analysis. The pink region corresponds to the microphase, denoted as
+V0, whereas the blue region represents the area outside the cluster,
+denoted as V1. The solid black arrow indicates the trajectory of the Li
+ion. The segments highlighted in orange correspond to the segments
+indexed by j, which define the V0 sampling regions used for
+MSDmicrophase, and the remaining (nonhighlighted) segments are used
+for MSDHFE‑rich phase.
+The Journal of Physical Chemistry C
+pubs.acs.org/JPCC
+Article
+https://doi.org/10.1021/acs.jpcc.5c06814
+J. Phys. Chem. C 2026, 130, 1327−1337
+1329
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​130/​3/​1327/​64223848/​jp5c06814.​pdf by TSINGHUA UNIV user on 01 October 2026
+
+<<PAGE 4>>
+■RESULTS AND DISCUSSION
+Structure of the Electrolyte Solution
+Figure 4 and Supporting Movies show snapshots of the MD
+calculations after 500 ns for both the 1:6:3 and 1:4:5
+[LiTFSA]:[FEC]:[HFE] systems. Voronoi cluster analysis
+was used to highlight the Li ions and the atoms from TFSA
+and FEC belonging to the same cluster in the same color. In
+both systems, the Li−TFSA cluster separates into a large
+cluster (shown in pink in Figure 4a,b) and several smaller
+clusters, reflecting the microphase separation of Li ions and
+TFSA molecules. Such a microphase structure has been
+Table 1. Parameters of the Stejskal Equation
+Δ (ms)
+δ (ms)
+τg (ms)
+g (T/m)
+Li
+70
+3
+1.027
+0.01−3.20
+TFSA
+70
+3
+0.252
+0.01−1.30
+FEC
+70
+3
+1.046
+0.01−1.10
+HFE
+70
+3
+0.252
+0.01−0.86
+Figure 4. Electrolyte equilibrium structures. Snapshot of Li and TFSA after 500 ns of MD calculations and volume change of the largest cluster
+(pink in snapshot) for (a) Ele163 and (b) Ele145. Li ions and atoms of TFSA and FEC belonging to the same cluster are shown in the same color.
+In the snapshot, FEC molecules that are not part of the cluster and all HFE molecules are hidden. (c) (Left) Size distribution of the small clusters
+with volumes less than 1 nm3 for both the Ele163 (red) and Ele145 (blue) systems and (right) the corresponding log−log plot over the entire
+range. Frequency density was calculated by dividing the number of clusters in each bin by the bin width (10−4 nm3).
+The Journal of Physical Chemistry C
+pubs.acs.org/JPCC
+Article
+https://doi.org/10.1021/acs.jpcc.5c06814
+J. Phys. Chem. C 2026, 130, 1327−1337
+1330
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​130/​3/​1327/​64223848/​jp5c06814.​pdf by TSINGHUA UNIV user on 01 October 2026
+
+<<PAGE 5>>
+reported in studies of ionic liquids and concentrated
+electrolytes, and it is likely related to the Li and TFSA
+diffusion mechanisms.7,9
+The time evolution of the microphase volume is also shown
+in Figure 4a,b. In the initial structures, Li ions, TFSA, FEC,
+and HFE molecules were randomly placed in the MD cell
+boxes. However, the volume of Ele163 gradually increased and
+significantly fluctuated until 300 ns, after which it stabilized,
+indicating that the system had reached equilibrium. In contrast,
+the volume of Ele145 stabilized after 100 ns, suggesting that it
+reached equilibrium much earlier than Ele163. Therefore, all
+subsequent analyses were performed using data from 300 to
+500 ns. For the Ele163 and Ele145 systems, the microphase
+volumes averaged 889 nm3 (∼11% of the MD cell volume) and
+1163 nm3 (∼12% of the MD cell volume), respectively.
+Approximately 90% of the remaining region is occupied by
+FEC and HFE, and hence we refer to this phase as the HFE-
+rich phase to distinguish it from the microphase, where FEC is
+also present. Within this phase, small clusters composed of Li
+ions, TFSA, and FEC are observed in both the Ele163 and
+Ele145 systems (Figure 4a,b and Supporting Movies). Figure
+4c shows the size distributions of the small clusters with
+volumes below 1 nm3 for the two systems and the log−log plot
+over the entire range, revealing the existence of clusters
+spanning a wide size range, 0.02−100 nm3. A greater number
+of these clusters was observed in Ele163 than in Ele145. Their
+higher abundance may contribute to the superior performance
+of Ele163, by enhancing Li+ solvation in the HFE-rich phase.
+We quantified the volume fluctuations for both the MD cells
+and the microphase using the following equation: (⟨V2⟩−
+⟨V⟩2)/⟨V⟩2, where V is the volume of the microphase or the
+MD cell. For the MD cell, the volume fluctuations are
+approximately 3.4 × 10−5 for Ele163 and 4.5 × 10−5 for
+Ele145, and for the microphase, the fluctuations are 14 × 10−5
+for Ele163 and 2.0 × 10−5 for Ele145. Notably, the volume
+fluctuation of the Ele163 microphase is approximately 4 times
+larger than that of the MD cell. These observations suggest
+that small clusters dynamically detach from and reattach to the
+microphase at its junctions. Conversely, the microphase
+volume fluctuation in the Ele145 is smaller than the MD cell
+volume fluctuation, indicating that the detachment of cluster
+members has little effect in this case, owing to fewer FEC
+molecules. Thus, although a Li−TFSA microphase forms in
+both Ele163 and Ele145, their dynamic characteristics
+markedly differ. The enhanced detachment/reattachment of
+clusters in the Ele163 microphase likely contributes to its
+superior performance over Ele145. Therefore, electrolyte
+design must account not only for the static, phase-separated
+morphology but also for the dynamic fluctuations of these
+microphases.
+Radial Distribution and Coordination Analysis: Insights
+into Li-Ion Solvation and Phase Separation
+Figure 5 shows the radial distribution functions, g(r), and
+coordination numbers, N(r), between Li ions and the atoms in
+the TFSA, FEC, and HFE molecules for Ele163 and Ele145.
+The g(r) of TFSA in the Ele163 system exhibits the highest
+peak among all species, indicating that the TFSA anions
+preferentially surround the Li ions, which is attributed to their
+negative charge. The g(r) peak for FEC exceeds 4 in both
+systems, indicating effective solvation of LiTFSA by FEC and
+confirming its efficacy as a solvent. Given that a larger g(r)
+indicates a stronger binding force, TFSA binds more strongly
+to the Li ions than FEC. In contrast, as shown in the lower
+panel of Figure 5a, N(r) is higher for FEC than for TFSA. This
+difference arises from the concentration of the electrolyte
+components (Li:TFSA:FEC:HFE = 1:1:6:3), where the
+number of FEC molecules is 6 times greater than the number
+of TFSA molecules. Conversely, N(r) is smaller for FEC than
+Figure 5. Radial distribution functions g(r) and coordination numbers N(r) between Li ions and all atoms in the TFSA (red), FEC (green), and
+HFE (blue) molecules for (a) Ele163 and (b) Ele145.
+The Journal of Physical Chemistry C
+pubs.acs.org/JPCC
+Article
+https://doi.org/10.1021/acs.jpcc.5c06814
+J. Phys. Chem. C 2026, 130, 1327−1337
+1331
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​130/​3/​1327/​64223848/​jp5c06814.​pdf by TSINGHUA UNIV user on 01 October 2026
+
+<<PAGE 6>>
+for TFSA in Ele145, reflecting the 33.3% reduction in FEC
+content relative to Ele163. This difference in N(r) accounts for
+the different number of small clusters in the HFE-rich phases
+of the two systems.
+Furthermore, because the g(r) for HFE is less than 1, HFE is
+not expected to accumulate Li ions in either electrolyte system.
+The insets in Figure 5a.b show that the g(r) for all species
+gradually converges to 1 at approximately 7 nm. This type of
+g(r) profile is common among phase-separated structures,
+consistent with the phase-separated morphology described in
+the previous subsection. The distance at which this
+convergence occurs represents the heterogeneity of the average
+phase-separated structure, indicating that the characteristic size
+of the phase-separated domains is approximately 7 nm in both
+electrolyte systems. Although the Ele145 system exhibits a
+similar trend, the peak heights for the TFSA and FEC
+molecules are higher than those in the Ele163 system,
+suggesting that the binding energy between Li ions and the
+TFSA or FEC molecules is higher in the Ele145 system (Figure
+5b).
+Figure 6a shows the average number of small clusters in the
+HFE-rich phase as a function of their charge density. In both
+the Ele163 and Ele145 systems, the peaks occur at
+approximately 0 and in the region between 50 × 10−19 and
+80 × 10−19 C/nm3. The peaks near 0 correspond to the small
+clusters in the HFE-rich phase, where Li ions and TFSA are
+aggregated. The peaks between 50 × 10−19 and 80 × 10−19 C/
+nm3 reflect the coordination of Li ions with the uncharged
+FEC molecules, as observed in the snapshot in Figure 6b.
+Therefore, in both electrolyte systems, the Li ions are capable
+of diffusing through the HFE-rich phase, which exhibits a high
+positive charge density in the absence of the negatively charged
+TFSA molecules. However, Ele145 contains fewer small
+clusters within the HFE-rich phase, which limits its ability to
+support efficient charge transport.
+Li-Ion Dynamics
+The mean square displacements (MSDs) of the Li ions in both
+systems and their logarithmic plots are shown in Figure 7. The
+MSDs for the N atom of TFSA, the C1 atom of FEC, and the
+O1 atom of HFE (atom numbers refer to the chemical
+structures presented in the Supporting Information) are also
+presented in Figures S1−S3. The slopes of the MSD curves
+between 100 and 200 ns were found to be approximately 1 for
+all species, indicating simple diffusion. The slope in this region
+was determined using the least-squares method, and the self-
+diffusion coefficient was estimated from Einstein’s equation (
+=
+D
+MSD
+1
+6
+over t (100 < t < 200 ns)). The calculated self-
+diffusion coefficients and system densities for Ele163 and
+Ele145 are shown in Table 2, alongside the experimental
+values.
+The calculated density agrees well with the experimental
+data. For Ele163, the self-diffusion coefficients of the Li ions
+and the TFSA molecules differ from the experimental values by
+less than a factor of 2, which is qualitatively consistent with the
+observation that the self-diffusion coefficient of TFSA is larger
+than that of the Li ions. Notably, the diffusion coefficients for
+FEC and HFE are in good agreement with the experimental
+values. Moreover, the experimental viscosity of Ele145 (η =
+5.68 mPa·s) is lower than that of Ele163 (η = 7.12 mPa·s).
+Considering that lower viscosity typically enhances diffusion,
+one would expect higher self-diffusion coefficients for Ele145.
+Figure 6. (a) Average number of small clusters in the Ele163 (red)
+and Ele145 (blue) systems as a function of their charge density. The
+inset shows a magnified view. (b) Snapshot of a small cluster with a
+charge density between 50 × 10−19 and 80 × 10−19 C/nm3. The pink
+sphere represents a Li ion, and the green, red, cyan, and white spheres
+represent fluorine, oxygen, carbon, and hydrogen atoms in the FEC
+molecules, respectively. HFE molecules are shown as solid blue
+silhouettes.
+Figure 7. (a) MSDs and their (b) logarithmic graphs for Li ions in the
+Ele163 (red) and Ele145 (blue) systems.
+The Journal of Physical Chemistry C
+pubs.acs.org/JPCC
+Article
+https://doi.org/10.1021/acs.jpcc.5c06814
+J. Phys. Chem. C 2026, 130, 1327−1337
+1332
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​130/​3/​1327/​64223848/​jp5c06814.​pdf by TSINGHUA UNIV user on 01 October 2026
+
+<<PAGE 7>>
+However, experimental results show that the diffusion
+coefficients of Ele145 are nearly identical to those of Ele163,
+suggesting that factors other than viscosity are suppressing
+diffusion in Ele145. In our MD simulations, which employ a
+point-charge model for Coulomb interactions, ion−ion
+interactions tend to be overestimated. This leads to artificially
+reduced diffusion coefficients and increases the discrepancy
+with experimental values. Nonetheless, both the experimental
+and simulation results consistently indicate that diffusion is
+more hindered in Ele145 than in Ele163. These findings
+suggest that, despite its limitations, the present simulation
+model is suitable for capturing the qualitative trends in ion
+dynamics across these systems. Although polarizable models
+generally yield diffusion coefficients in better agreement with
+experimental data, their significantly higher computational cost
+limits their applicability. Currently, they can only handle
+approximately one-thirtieth of the system size and much
+shorter time scales than typical point-charge MD simulations.
+Both spatially resolved and long-time scale analyses, such as
+those conducted in this study, are impractical with polarizable
+models. Therefore, although the point-charge model may lack
+quantitative accuracy, it remains advantageous for exploring
+spatially and temporally extended ion dynamics in complex
+systems.
+In contrast to the long-time diffusive behavior discussed
+above, Figure 7b reveals that the MSD exhibits a different
+trend at shorter time scales (t < 100 ns), suggesting the
+presence of a subdiffusive mode at t < 100 ns.
+Figure 8 shows the bond correlation function between Li
+ions and TFSA oxygen atoms, as defined by eq 1. However,
+this correlation function cannot be represented by a single
+exponential decay; thus, we hypothesized the presence of two
+independent dynamic processes and performed a double
+exponential fitting. This fitting yielded two relaxation times:
+1.8 and 287 ps for the Ele163 system, and 1.8 and 602 ps for
+the Ele145 system. The short relaxation time corresponds to a
+displacement of ∼0.1 nm, whereas the longer relaxation time
+corresponds to a displacement of ∼0.3 nm. For each system,
+the shorter time constants correspond to an oscillatory mode
+in which the Li ions transiently attach to the neighboring
+oxygen atoms of TFSA molecules, whereas the longer
+relaxation time reflects the time required for Li ions to move
+to different oxygen atoms of the TFSA molecules (hopping
+mode). Notably, the hopping time is longer in the Ele145
+system than in the Ele163 system, which is consistent with the
+log plot of the MSD shown in Figure 7b, showing a longer
+duration for the initial slope in the Ele145 system.
+Figure 9 displays the residence time correlation function of
+the Li ions in the microphase and HFE-rich phase, as defined
+in eq 2 (see the Methods section). As shown in Figure 4c, the
+small clusters have a size distribution. In this case, the
+detaching and attaching times from/to the cluster should also
+have time distributions. Hence, we employed the Kohlrausch−
+Williams−Watts function for fitting:
+=
++
+f t
+t
+( )
+(
+)exp
+d
+d
+2
+a
+d
+2
+i
+k
+jjjjjjj
+i
+k
+jjjjj
+y
+{
+zzzzz
+y
+{
+zzzzzzz
+(6)
+Table 2. Densities of the Electrolyte Systems Calculated by MD Simulations, along with the Self-Diffusion Coefficients of Li
+Ions, the N Atoms of TFSA, the C1 Atom of FEC, and the O1 Atom of HFEa
+self-diffusion coefficients (10−7 cm2/s)
+ρ (g/cm3)
+Li
+TFSA
+FEC
+HFE
+1:6:3
+1.59 (1.59)
+4.3 (8.182)
+4.7 (8.649)
+18 (17.58)
+22 (19.2)
+1:4:5
+1.56 (1.59)
+0.9 (7.885)
+0.9 (8.55)
+30 (18.55)
+53 (26.72)
+aAtom labels correspond to the chemical structures shown in the Supporting Information. Values in parentheses indicate experimental data.
+Figure 8. Bond correlation function between Li ions and the oxygen
+atoms of TFSA in the Ele163 (red) and Ele145 (blue) systems, as
+defined by eq 1. Dashed lines were fitted using a double exponential
+function.
+Figure 9. Residence time correlation function of the Li ions in the (a)
+microphase and (b) HFE-rich phase in the Ele163 (red) and Ele145
+(blue) systems, as defined in eq 2. Dashed lines were fitted using a
+Kohlrausch−Williams−Watts function.
+The Journal of Physical Chemistry C
+pubs.acs.org/JPCC
+Article
+https://doi.org/10.1021/acs.jpcc.5c06814
+J. Phys. Chem. C 2026, 130, 1327−1337
+1333
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​130/​3/​1327/​64223848/​jp5c06814.​pdf by TSINGHUA UNIV user on 01 October 2026
+
+<<PAGE 8>>
+where ϕd is the ratio of detached Li ions from the microphase
+against the total number of clusters (0.26 for Ele163 and 0.017
+for Ele145), β is the polydispersity factor for the attaching
+times, and τa is the characteristic time required for attaching to
+the microphase. For the residence time correlation function of
+Li ions in the microphase, the same equation is used, but ϕd is
+replaced with 1 −ϕd to represent the fraction of ions
+remaining within the microphase.
+In this assumption, the average relaxation time ⟨τa⟩can be
+estimated as follows:56
+= ( )
+a
+1
+a
+(7)
+The relaxation times within the microphase, calculated based
+on eq 7, were 16 ns for Ele163 and 38 ns for Ele145.
+Conversely, the relaxation times in the HFE-rich phase were 18
+ns for Ele163 and 16 ns for Ele145. These results indicate that
+Li ions tend to reside longer in the microphase of Ele145,
+whereas they remain longer in the HFE-rich phase of Ele163.
+In either case, the characteristic residence time in each phase is
+on the order of 10 ns.
+Differences in the Li-Ion Conduction Pathways due to
+Differences in the Microphase Properties
+Because Li ions repeatedly attach to and detach from the
+microphasesthereby mixing the attach−detach contributions
+in the overall diffusion coefficientwe separated these events
+and calculated the MSDs of the Li ions in the microphase and
+HFE-rich phase, as shown in Figure 10 (see the Supporting
+Movie 3, which shows an MD simulation of the Li-ion
+diffusion behavior). For the Ele163 system, there is a
+significant difference between the MSDs in the microphase
+and HFE-rich phase. In the HFE-rich phase of the Ele163
+system, as much as 26% of the Li ions are found in a spatially
+dispersed state. Consequently, the presence of these Li ions
+increases the overall MSD. As shown in Figure 6, in the HFE-
+rich phase, the Li ions diffuse in an FEC-coordinated state (i.e.,
+with a high positive charge density). These results indicate that
+the electrolyte achieves highly efficient charge transfer by using
+the HFE-rich phase as an electrical conduction pathway.
+In contrast, the region-specific MSD in the Ele145 system is
+similar to that in the Ele163 system, indicating that the
+diffusion mechanisms and time constants within each phase
+remain largely unchanged regardless of composition. However,
+for the Ele145 system, the overall MSD is consistent with the
+MSD measured within the microphase. This suggests that ion
+transport in the Ele145 system is predominantly due to
+diffusion within the microphase, which is reasonable because
+the microphase is more rigid and small clusters are less
+prevalent in the HFE-rich phase.
+Our results reveal that although a microphase is invariably
+formed regardless of composition, its intrinsic properties
+depend on composition. This shift in properties reshapes the
+ionic conduction pathways, suggesting that even when using
+the same chemical species, subtle changes in physical
+properties of the microphasefrom the viscosity to the
+connectivity of the conduction pathwayslead to marked
+differences in the performance of the electrolyte. Overall, our
+findings show that the superior performance of an electrolyte
+arises from a subtle balance between its microstructural
+characteristics and the ion mobility, which together enable
+efficient charge transport.
+■CONCLUSIONS
+MD simulations were performed for Ele163 and Ele145 to
+investigate the structure and dynamics of the electrolyte system
+in Li−S batteries. Our simulations revealed that the electrolyte
+spontaneously phase-separates into two distinct domains: a
+large LiTFSA-rich microphase and an HFE-rich phase, where
+the properties of the microphase vary significantly with
+composition. In Ele163, the flexible microphase facilitates the
+formation of Li-ion-containing small clusters in the HFE-rich
+phase, thereby promoting enhanced Li-ion diffusion. In
+contrast, Ele145 exhibits a more rigid microphase with fewer
+small clusters, forcing Li-ion transport to primarily occur
+within the microphase. Radial distribution function analysis
+further revealed an average phase heterogeneity of approx-
+imately 7 nm.
+Our investigations of the MSD, the Li−TFSA binding time
+correlation function, and the Li-ion residence time correlation
+function in the HFE-rich phase revealed that the Li ions diffuse
+via four distinct mechanisms. First, Li ions oscillate by
+transiently attaching to and detaching from neighboring
+TFSA molecules, with a time constant of roughly 2 ps.
+Second, Li ions hop to different TFSA molecules, with a time
+constant of approximately 300 ps for Ele163 and 600 ps for
+Ele145. Third, Li ions remain in the microphase or HFE-rich
+phase for approximately 20 ns. Finally, beyond 100 ns, the
+slope of the MSD reaches 1, indicating that the Li ions transit
+Figure 10. MSDs of the Li ions in the microphase (blue) and HFE-
+rich phase (red) of (a) Ele163 and (b) Ele145. The total MSDs of the
+Li ions (gray dashed lines) are identical to those shown in Figure 7.
+The Journal of Physical Chemistry C
+pubs.acs.org/JPCC
+Article
+https://doi.org/10.1021/acs.jpcc.5c06814
+J. Phys. Chem. C 2026, 130, 1327−1337
+1334
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​130/​3/​1327/​64223848/​jp5c06814.​pdf by TSINGHUA UNIV user on 01 October 2026
+
+<<PAGE 9>>
+between the microphase and the HFE-rich phase, ultimately
+resulting in normal diffusion.
+Furthermore, when the MSD is separated into contributions
+from the microphase and the HFE-rich phase, Ele163 and
+Ele145 exhibit similar values, indicating that the dynamics
+within each phase are largely independent of composition.
+However, the Ele163 system tends to form smaller clusters,
+and these clusters move faster in the HFE-rich phase than
+those in the microphase, leading to an overall higher MSD.
+Conversely, the Ele145 system has fewer small clusters, and the
+overall diffusion coefficient is consistent with the diffusion
+coefficient measured within the microphase.
+In this study, building on previous experimental work that
+identified Ele163 as the optimal composition among
+LiTFSA:FEC:HFE-based electrolytes for Li−S batteries, we
+performed calculations on both Ele163 and Ele145 for
+comparative analysis. These results demonstrate that different
+ionic conduction pathways can emerge within the same
+electrolyte depending on its composition, highlighting an
+important factor to consider in the optimization of electrolyte
+composition, not only for Li−S batteries but for various battery
+systems.
+■ASSOCIATED CONTENT
+Data Availability Statement
+All data supporting the findings of this study are available
+within the article and its Supporting Information.
+*
+sı Supporting Information
+The Supporting Information is available free of charge at
+https://pubs.acs.org/doi/10.1021/acs.jpcc.5c06814.
+Force field parameters for all molecules; mean square
+displacements for TFSA, FEC, and HFE; and detailed
+explanation of the region-dependent mean square
+displacement (PDF)
+Snapshot of Li and TFSA after 500 ns of MD
+calculations, showing the gradual removal of the largest
+cluster (highlighted in pink) for Ele163 (MP4)
+Snapshot of Li and TFSA after 500 ns of MD
+calculations, showing the gradual removal of the largest
+cluster (highlighted in pink) for Ele145 (MP4)
+MD simulation of the Li-ion and TFSA diffusion
+behavior (MP4)
+■AUTHOR INFORMATION
+Corresponding Author
+Kazushi Fujimoto −Department of Chemistry and Materials
+Engineering, Faculty of Chemistry, Materials and
+Bioengineering, Organization for Research and Development
+of Innovative Science and Technology, and Department of
+Chemistry and Materials Engineering, Faculty of Chemistry,
+Materials and Bioengineering, Kansai University, Osaka 564-
+8680, Japan;
+orcid.org/0000-0001-9769-8414;
+Email: k-fuji@kansai-u.ac.jp
+Authors
+Yuki Ito −Graduate School of Science and Engineering, Kansai
+University, Osaka 564-8680, Japan;
+orcid.org/0009-
+0002-7501-205X
+Yusuke Yasuda −Organization for Research and Development
+of Innovative Science and Technology, Kansai University,
+Osaka 564-8680, Japan;
+orcid.org/0000-0002-2870-
+8524
+Yukako Konishi −Department of Chemistry and Life Science,
+Yokohama National University, Yokohama 240-8501, Japan
+Taiki Shiba −Department of Chemistry and Life Science,
+Yokohama National University, Yokohama 240-8501, Japan
+Kaoru Dokko −Department of Chemistry and Life Science,
+Yokohama National University, Yokohama 240-8501,
+Japan;
+orcid.org/0000-0002-9622-4345
+Complete contact information is available at:
+https://pubs.acs.org/10.1021/acs.jpcc.5c06814
+Author Contributions
+K.F. conceptualized the research; Y.I., Y.Y., and K.F. developed
+the methodology; Y.I. conducted the investigation; Y.K., T.S.,
+and K.D. measured the experimental data; Y.I. and Y.Y.
+performed the visualizations; K.F. supervised the study; Y.I.
+wrote the original draft; and Y.I., Y.Y., Y.K., K.D., and K.F.
+reviewed and edited the manuscript.
+Notes
+The authors declare no competing financial interest.
+■ACKNOWLEDGMENTS
+This work was supported by the GteX Program (Grant No.
+JPMJGX23S0) provided by the Japan Science and Technology
+Agency (JST). This work was also supported by the Ministry
+of Education, Culture, Sports, Science, and Technology
+(MEXT) through the Program for Promoting Research on
+the Supercomputer Fugaku (“Computational Research on
+Materials with Better Functions and Durability Toward
+Sustainable Development,” Grant No. JPMXP1020230325).
+We used computational resources (Fugaku supercomputer,
+provided by the RIKEN Center for Computational Science)
+(Project IDs: hp230205, hp240224, hp250227). Calculations
+were performed using supercomputers at the Research Center
+for Computational Science in Okazaki, Japan (Project Nos: 24-
+IMS-C502, 24-IMS-C602, 25-IMS-C118, 25-IMS-C502). We
+also thank Robert Ireland, PhD, from Edanz (https://
+jp.edanz.com/ac) for editing a draft of this manuscript.
+■ABBREVIATIONS
+MD
+molecular dynamics
+SPME smooth particle mesh Ewald
+LJ
+Lennard-Jones
+MSD
+mean squared displacement
+PFG
+pulsed-field gradient
+NMR
+nuclear magnetic resonance
+TFSA bis(trifluoromethanesulfonyl)amide
+FEC
+fluoroethylene carbonate
+HFE
+1,1,2,2-tetrafluoroethyl-2,2,3,3-tetrafluoropropyl ether
+■REFERENCES
+(1) Xu, K. Electrolytes and interphases in Li-ion batteries and
+beyond. Chem. Rev. 2014, 114 (23), 11503−11618.
+(2) Torii, Y.; Matsui, Y.; Yamamoto, K.; Uchida, S.; Yamazaki, S.;
+Watanabe, T.; Nakanishi, K.; Uchiyama, T.; Uchimoto, Y.; Ishikawa,
+M. Preventing Capacity Fading in Lithium−Sulfur Batteries Using
+Sulfur Confinement in Mesoporous Carbon and Fluorinated Solvent-
+Based Electrolytes. J. Phys. Chem. C 2023, 127 (31), 15069−15077.
+(3) Borodin, O.; Bedrov, D. Interfacial structure and dynamics of the
+lithium alkyl dicarbonate SEI components in contact with the lithium
+The Journal of Physical Chemistry C
+pubs.acs.org/JPCC
+Article
+https://doi.org/10.1021/acs.jpcc.5c06814
+J. Phys. Chem. C 2026, 130, 1327−1337
+1335
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​130/​3/​1327/​64223848/​jp5c06814.​pdf by TSINGHUA UNIV user on 01 October 2026
+
+<<PAGE 10>>
+battery electrolyte. J. Phys. Chem. C Nanomater. Interfaces 2014, 118
+(32), 18362−18371.
+(4) Schaefer, J. L.; Lu, Y.; Moganty, S. S.; Agarwal, P.; Jayaprakash,
+N.; Archer, L. A. Electrolytes for high-energy lithium batteries. Appl.
+Nanosci. 2012, 2 (2), 91−109.
+(5) Che, H.; Chen, S.; Xie, Y.; Wang, H.; Amine, K.; Liao, X.-Z.; Ma,
+Z.-F. Electrolyte design strategies and research progress for room-
+temperature sodium-ion batteries. Energy Environ. Sci. 2017, 10 (5),
+1075−1101.
+(6) Canongia Lopes, J. N. A.; Pádua, A. A. H. Nanostructural
+organization in ionic liquids. J. Phys. Chem. B 2006, 110 (7), 3330−
+3335.
+(7) Qian, J.; Henderson, W. A.; Xu, W.; Bhattacharya, P.; Engelhard,
+M.; Borodin, O.; Zhang, J.-G. High rate and stable cycling of lithium
+metal anode. Nat. Commun. 2015, 6 (1), 6362.
+(8) Ikeda, S.; Tsuzuki, S.; Sudoh, T.; Shigenobu, K.; Ueno, K.;
+Dokko, K.; Watanabe, M.; Shinoda, W. Lithium-ion dynamics in
+sulfolane-based highly concentrated electrolytes. J. Phys. Chem. C
+Nanomater. Interfaces 2023, 127 (28), 13837−13845.
+(9) Borodin, O.; Suo, L.; Gobet, M.; Ren, X.; Wang, F.; Faraone, A.;
+Peng, J.; Olguin, M.; Schroeder, M.; Ding, M. S.; Gobrogge, E.;
+Cresce, A. V. W.; Munoz, S.; Dura, J. A.; Greenbaum, S.; Wang, C.;
+Xu, K. Liquid structure with nano-heterogeneity promotes cationic
+transport in concentrated electrolytes. ACS Nano 2017, 11 (10),
+10462−10471.
+(10) Dokko, K.; Watanabe, D.; Ugata, Y.; Thomas, M. L.; Tsuzuki,
+S.; Shinoda, W.; Hashimoto, K.; Ueno, K.; Umebayashi, Y.;
+Watanabe, M. Direct evidence for Li ion hopping conduction in
+highly concentrated sulfolane-based liquid electrolytes. J. Phys. Chem.
+B 2018, 122 (47), 10736−10745.
+(11) Chapman, N.; Borodin, O.; Yoon, T.; Nguyen, C. C.; Lucht, B.
+L. Spectroscopic and density functional theory characterization of
+common lithium salt solvates in carbonate electrolytes for lithium
+batteries. J. Phys. Chem. C Nanomater. Interfaces 2017, 121 (4), 2135−
+2148.
+(12) Yang, J.; Shang, J.; Liu, Q.; Yang, X.; Tan, Y.; Zhao, Y.; Liu, C.;
+Tang, Y. Variant-localized high-concentration electrolyte without
+phase separation for low-temperature batteries. Angew. Chem., Int. Ed.
+Engl. 2024, 63 (33), No. e202406182.
+(13) Chen, Y.; Ryu, J.; Bazak, J. D.; Nguyen, D. T.; Han, K. S.; Li, Z.;
+Hu, J. Z.; Mueller, K. T.; Murugesan, V. Ion solvation-driven liquid−
+liquid phase separation in divalent electrolytes with miscible organic
+solvents. J. Phys. Chem. C Nanomater. Interfaces 2023, 127 (31),
+15443−15453.
+(14) Li, M.; Zhuang, B.; Lu, Y.; An, L.; Wang, Z.-G. Salt-induced
+liquid-liquid phase separation: Combined experimental and theoreti-
+cal investigation of water-acetonitrile-salt mixtures. J. Am. Chem. Soc.
+2021, 143 (2), 773−784.
+(15) Dubouis, N.; Park, C.; Deschamps, M.; Abdelghani-Idrissi, S.;
+Kanduč, M.; Colin, A.; Salanne, M.; Dzubiella, J.; Grimaud, A.;
+Rotenberg, B. Chasing aqueous biphasic systems from simple salts by
+exploring the LiTFSI/LiCl/H2O phase diagram. ACS Cent. Sci. 2019,
+5 (4), 640−643.
+(16) Henderson, W. A. Glyme-lithium salt phase behavior. J. Phys.
+Chem. B 2006, 110 (26), 13177−13183.
+(17) Bridges, N. J.; Gutowski, K. E.; Rogers, R. D. Investigation of
+aqueous biphasic systems formed from solutions of chaotropic salts
+with kosmotropic salts (salt−salt ABS). Green Chem. 2007, 9 (2),
+177−183.
+(18) Li, Z.; Borodin, O.; Smith, G. D.; Bedrov, D. Effect of organic
+solvents on Li+ ion solvation and transport in ionic liquid electrolytes:
+a molecular dynamics simulation study. J. Phys. Chem. B 2015, 119
+(7), 3085−3096.
+(19) Crabb, E.; Aggarwal, A.; Stephens, R.; Shao-Horn, Y.; Leverick,
+G.; Grossman, J. C. Electrolyte dependence of Li+ transport
+mechanisms in small molecule solvents from classical molecular
+dynamics. J. Phys. Chem. B 2024, 128 (14), 3427−3441.
+(20) Ko, S.; Obukata, T.; Shimada, T.; Takenaka, N.; Nakayama, M.;
+Yamada, A.; Yamada, Y. Electrode potential influences the reversibility
+of lithium-metal anodes. Nat. Energy 2022, 7 (12), 1217−1224.
+(21) Hu, B.; Wang, Y.; Qian, X.; Chen, W.; Liang, G.; Chen, J.;
+Zhao, J.; Li, W.; Chen, T.; Fu, J. Colloid electrolyte with weakly
+solvated structure and optimized electrode/electrolyte interface for
+zinc metal batteries. ACS Nano 2023, 17 (13), 12734−12746.
+(22) Lyu, X.; Wang, H.; Liu, X.; He, L.; Do, C.; Seifert, S.; Winans,
+R. E.; Cheng, L.; Li, T. Solvation structure of methanol-in-salt
+electrolyte revealed by small-angle X-ray scattering and simulations.
+ACS Nano 2024, 18 (9), 7037−7045.
+(23) Wang, Q.; Wang, T.; Zhang, P.; Yang, D.; Zhang, C.; Wang, L.;
+Lu, S.; Liu, T. C.; Qi, S.; Huang, W.; Liu, J.; Zhu, G.; Fan, J.
+Unraveling lithium-ion transport in solid electrolyte interphase: From
+composition to interface dynamics via molecular dynamics
+simulations. Small 2025, 21 (31), No. e2503340.
+(24) Sun, Y.; Liu, B.; Liu, L.; Lang, J.; Qiu, J. A low-concentration
+and high ionic conductivity aqueous electrolyte toward ultralow-
+temperature zinc-ion hybrid capacitors. Small Struct. 2023, 4,
+2200345.
+(25) Xu, K. Nonaqueous liquid electrolytes for lithium-based
+rechargeable batteries. Chem. Rev. 2004, 104 (10), 4303−4417.
+(26) Watanabe, M.; Dokko, K.; Ueno, K.; Thomas, M. L. From ionic
+liquids to solvate ionic liquids: Challenges and opportunities for next
+generation battery electrolytes. Bull. Chem. Soc. Jpn. 2018, 91 (11),
+1660−1682.
+(27) Suo, L.; Hu, Y.-S.; Li, H.; Armand, M.; Chen, L. A new class of
+Solvent-in-Salt electrolyte for high-energy rechargeable metallic
+lithium batteries. Nat. Commun. 2013, 4 (1), 1481.
+(28) Lundin, F.; Idström, A.; Falus, P.; Evenäs, L.; Xiong, S.; Matic,
+A. Ion dynamics and nanostructures of diluted ionic liquid
+electrolytes. J. Phys. Chem. C Nanomater. Interfaces 2022, 126 (38),
+16262−16271.
+(29) Lin, S.; Hua, H.; Li, Z.; Zhao, J. Functional localized high-
+concentration ether-based electrolyte for stabilizing high-voltage
+lithium-metal battery. ACS Appl. Mater. Interfaces 2020, 12 (30),
+33710−33718.
+(30) Chen, X.; Yu, H. A computational review on localized high-
+concentration electrolytes in lithium batteries. ChemElectroChem
+2024, 11 (23), No. e202400444.
+(31) Takeshita, K.; Tatara, R.; Tsuzuki, S.; Ishikawa, M.; Dokko, K.
+How does hydrofluoroether affect the liquid structure, transport
+properties, and electrochemistry of localized high-concentration
+electrolytes? J. Chem. Phys. 2025, 163 (17), 174504.
+(32) Martínez, L.; Andrade, R.; Birgin, E. G.; Martínez, J. M.
+PACKMOL: A package for building initial configurations for
+molecular dynamics simulations. J. Comput. Chem. 2009, 30 (13),
+2157−2164.
+(33) Abraham, M. J.; Murtola, T.; Schulz, R.; Páll, S.; Smith, J. C.;
+Hess, B.; Lindahl, E. GROMACS: High performance molecular
+simulations through multi-level parallelism from laptops to super-
+computers. SoftwareX 2015, 1−2, 19−25.
+(34) Páll, S.; Abraham, M. J.; Kutzner, C.; Hess, B.; Lindahl, E.
+Tackling exascale software challenges in molecular dynamics
+simulations with GROMACS. In Lecture Notes in Computer Science,
+Lecture notes in computer science; Springer International Publishing,
+2015; pp 3−27.
+(35) Pronk, S.; Páll, S.; Schulz, R.; Larsson, P.; Bjelkmar, P.;
+Apostolov, R.; Shirts, M. R.; Smith, J. C.; Kasson, P. M.; van der
+Spoel, D.; Hess, B.; Lindahl, E. GROMACS 4.5: a high-throughput
+and highly parallel open source molecular simulation toolkit.
+Bioinformatics 2013, 29 (7), 845−854.
+(36) Hess, B.; Kutzner, C.; van der Spoel, D.; Lindahl, E.
+GROMACS 4: Algorithms for highly efficient, load-balanced, and
+scalable molecular simulation. J. Chem. Theory Comput. 2008, 4 (3),
+435−447.
+(37) Van Der Spoel, D.; Lindahl, E.; Hess, B.; Groenhof, G.; Mark,
+A. E.; Berendsen, H. J. C. GROMACS: fast, flexible, and free. J.
+Comput. Chem. 2005, 26 (16), 1701−1718.
+The Journal of Physical Chemistry C
+pubs.acs.org/JPCC
+Article
+https://doi.org/10.1021/acs.jpcc.5c06814
+J. Phys. Chem. C 2026, 130, 1327−1337
+1336
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​130/​3/​1327/​64223848/​jp5c06814.​pdf by TSINGHUA UNIV user on 01 October 2026
+
+<<PAGE 11>>
+(38) Lindahl, E.; Hess, B.; van der Spoel, D. GROMACS 3.0: a
+package for molecular simulation and trajectory analysis. J. Mol.
+Model. 2001, 7 (8), 306−317.
+(39) Berendsen, H. J. C.; van der Spoel, D.; van Drunen, R.
+GROMACS: A message-passing parallel molecular dynamics
+implementation. Comput. Phys. Commun. 1995, 91 (1−3), 43−56.
+(40) Jorgensen, W. L.; Ghahremanpour, M. M.; Saar, A.; Tirado-
+Rives, J. OPLS/2020 Force Field for Unsaturated Hydrocarbons,
+Alcohols, and Ethers. J. Phys. Chem. B 2024, 128 (1), 250−262.
+(41) Jorgensen, W. L.; Maxwell, D. S.; Tirado-Rives, J. Development
+and testing of the OPLS all-atom force field on conformational
+energetics and properties of organic liquids. J. Am. Chem. Soc. 1996,
+118 (45), 11225−11236.
+(42) Sambasivarao, S. V.; Acevedo, O. Development of OPLS-AA
+Force Field Parameters for 68 Unique Ionic Liquids. J. Chem. Theory
+Comput. 2009, 5 (4), 1038−1050.
+(43) Doherty, B.; Zhong, X.; Gathiaka, S.; Li, B.; Acevedo, O.
+Revisiting OPLS force field parameters for ionic liquid simulations. J.
+Chem. Theory Comput. 2017, 13 (12), 6131−6145.
+(44) Essmann, U.; Perera, L.; Berkowitz, M. L.; Darden, T.; Lee, H.;
+Pedersen, L. G. A smooth particle mesh Ewald method. J. Chem. Phys.
+1995, 103 (19), 8577−8593.
+(45) Bussi, G.; Donadio, D.; Parrinello, M. Canonical sampling
+through velocity rescaling. J. Chem. Phys. 2007, 126 (1), No. 014101.
+(46) Parrinello, M.; Rahman, A. Crystal Structure and Pair
+Potentials: A Molecular-Dynamics Study. Phys. Rev. Lett. 1980, 45
+(14), 1196−1199.
+(47) Hess, B.; Bekker, H.; Berendsen, H. J. C.; Fraaije, J. G. E. M.
+LINCS: A linear constraint solver for molecular simulations. J.
+Comput. Chem. 1997, 18 (12), 1463−1472.
+(48) Lin, S.; Hua, H.; Lai, P.; Zhao, J. A multifunctional dual-salt
+localized high-concentration electrolyte for fast dynamic high-voltage
+lithium battery in wide temperature range. Adv. Energy Mater. 2021,
+11 (36), 2101775.
+(49) Watanabe, Y.; Ugata, Y.; Ueno, K.; Watanabe, M.; Dokko, K.
+Does Li-ion transport occur rapidly in localized high-concentration
+electrolytes? Phys. Chem. Chem. Phys. 2023, 25 (4), 3092−3099.
+(50) Kawada, S.; Komori, M.; Fujimoto, K.; Yoshii, N.; Okazaki, S.
+Molecular dynamics study of the formation mechanisms of ionic SDS
+and nonionic C12E8 micelles and n-dodecane droplets. Chem. Phys.
+Lett. 2016, 646, 36−40.
+(51) Barber, C. B.; Dobkin, D. P.; Huhdanpaa, H. The quickhull
+algorithm for convex hulls. ACM Trans. Math. Softw. 1996, 22 (4),
+469−483.
+(52) Luzar, A.; Chandler, D. Hydrogen-bond kinetics in liquid water.
+Nature 1996, 379 (6560), 55−57.
+(53) Johnson, C. S., Jr. Diffusion ordered nuclear magnetic
+resonance spectroscopy: principles and applications. Prog. Nucl.
+Magn. Reson. Spectrosc. 1999, 34 (3−4), 203−256.
+(54) Smith, L. M.; Maher, A. D.; Cloarec, O.; Rantalainen, M.; Tang,
+H.; Elliott, P.; Stamler, J.; Lindon, J. C.; Holmes, E.; Nicholson, J. K.
+Statistical correlation and projection methods for improved
+information recovery from diffusion-edited NMR spectra of biological
+samples. Anal. Chem. 2007, 79 (15), 5682−5689.
+(55) Ugata, Y.; Thomas, M. L.; Mandai, T.; Ueno, K.; Dokko, K.;
+Watanabe, M. Li-ion hopping conduction in highly concentrated
+lithium bis(fluorosulfonyl)amide/dinitrile liquid electrolytes. Phys.
+Chem. Chem. Phys. 2019, 21 (19), 9759−9768.
+(56) Kawasaki, Y.; Watanabe, H.; Uneyama, T. A note for
+kohlrausch-Williams-watts relaxation function. Nihon Reoroji Gak-
+kaishi 2011, 39 (3), 127−131.
+The Journal of Physical Chemistry C
+pubs.acs.org/JPCC
+Article
+https://doi.org/10.1021/acs.jpcc.5c06814
+J. Phys. Chem. C 2026, 130, 1327−1337
+1337
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​130/​3/​1327/​64223848/​jp5c06814.​pdf by TSINGHUA UNIV user on 01 October 2026

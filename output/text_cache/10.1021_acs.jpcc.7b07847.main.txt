@@ -1,0 +1,911 @@
+
+<<PAGE 1>>
+Density Functional Theory Modeling the Interfacial Chemistry of the
+LiNO3 Additive for Lithium−Sulfur Batteries by Means of Simulated
+Photoelectron Spectroscopy
+Mahsa Ebadi,†
+Matthew J. Lacey,† Daniel Brandell,†
+and C. Moyses Araujo*,‡
+†Department of ChemistryÅngström Laboratory, Uppsala University, Box 538, 75121 Uppsala, Sweden
+‡Materials Theory Division, Department of Physics and Astronomy, Uppsala University, Box 516, 75120 Uppsala, Sweden
+*
+S Supporting Information
+ABSTRACT: Lithium−sulfur (Li−S) batteries are considered candidates for next-generation
+energy storage systems due to their high theoretical speciﬁc energy. There exist, however,
+some shortcomings of these batteries, not least the solubility of intermediate polysulﬁdes into
+the electrolyte generating a so-called “redox shuttle”, which gives rise to self-discharge. LiNO3
+is therefore frequently used as an electrolyte additive to help suppress this mechanism, but the
+exact nature of the LiNO3 functionality is still unclear. Here, density functional theory
+calculations are used to investigate the electronic structure of LiNO3 and a number of likely
+species (N2, N2O, LiNO2, Li3N, and Li2N2O2) resulting from the reduction of this additive on
+the surface of Li metal anode. The N 1s X-ray photoelectron spectroscopy core level binding
+energies of these molecules on the surface are calculated in order to compare the results with
+experimentally reported values. The core level shifts (CLS) of the binding energies are studied
+to identify possible factors responsible for the position of the peaks. Moreover, solid phases of
+(cubic) c-Li3N and (hexagonal) α-Li3N on the surface of Li metal are considered. The N 1s
+binding energies for the bulk phases of Li3N and at the Li3N/Li interfaces display higher values
+as compared to the Li3N molecule, indicating a clear correlation between the coordination number and the CLS of the solid
+phases of Li3N.
+1. INTRODUCTION
+Rechargeable batteries based on lithium metal negative
+electrodes are potential candidates for electrical energy storage
+systems due to the high theoretical capacity and the high
+negative electrochemical potential of the Li metal electrode.
+However, these rechargeable batteries also suﬀer from serious
+problems such as dendrite growth during cycling, safety risks,
+and low coulombic eﬃciency. Therefore, today’s lithium-based
+storage technologies in the form of Li-ion batteries (LIBs) are
+instead utilizing graphite as the negative electrode.1 During
+recent years, however, the industrial development of LIBs have
+led them to approach their theoretical energy density limits. To
+further improve the energy density of Li-based battery systems,
+application of Li metal electrodes has regained signiﬁcant
+interest for a number of diﬀerent cell chemistries.2
+Lithium−sulfur (Li−S) and Li−air batteries have in this
+context been introduced as possible candidates for enhancing
+the driving ranges of electric vehicles, although this is likely far
+into the future. Li−S batteries have a theoretical speciﬁc energy
+around ﬁve times greater than that of LIBs.3 In these batteries,
+traditional LIB cathode materials (such as LiCoO2 or LiFePO4)
+are replaced by a low-cost sulfur cathode, which possesses the
+signiﬁcant advantages of being inexpensive and nontoxic, while
+Li metal constitutes the negative electrode material.3
+Several important challenges exist for implementation of Li−
+S batteries, including addressing the poor electronic and ionic
+conductivities of sulfur, the solubility of polysulﬁdes in the
+liquid electrolyte, and a high level of self-discharge. The
+solubility of polysulﬁdes in the electrolyte causes migration of
+these species back and forth between the positive and negative
+electrodes. This constitutes a “redox shuttle mechanism”, which
+consequently leads to corrosion of the lithium metal and
+precipitation of insoluble Li2S and Li2S2 on the surface of the Li
+electrode.3
+To passivate and better protect the Li metal surface from
+these parasitic reactions, diﬀerent additives are used in the
+liquid electrolyte. Lithium nitrate (LiNO3) is nowadays a
+common such electrolyte additive in Li−S batteries, often used
+in concentrations of ca. 0.1−0.5 M, for the protection of the Li
+metal anode.4 The exact functionality of the nitrate additive is
+still not clear, but it is often argued that this oxidizing additive is
+reduced to LixNOy compounds while oxidizing the sulﬁdes to
+LixSOy, thereby forming a passivation layer on the Li metal
+surface.5 There have been a number of experimental studies on
+the role of LiNO3 additive in Li−S batteries.6−10 By means of
+scanning electron microscopy (SEM) and X-ray photoelectron
+spectroscopy (XPS) techniques, it has been shown that by
+controlling the concentration of LiNO3 and additives in the
+Received:
+August 7, 2017
+Revised:
+October 4, 2017
+Published: October 6, 2017
+Article
+pubs.acs.org/JPCC
+© 2017 American Chemical Society
+23324
+DOI: 10.1021/acs.jpcc.7b07847
+J. Phys. Chem. C 2017, 121, 23324−23332
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​121/​42/​23324/​7788812/​jp7b07847.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 2>>
+electrolyte, a stable and uniform solid slectrolyte interphase
+(SEI) layer on the surface of the Li metal electrode can be
+formed.9 It has also been reported that LiNO3 as lithium salt or
+additive can suppress the shuttle mechanism in Li−S batteries.8
+The evolution of N2 and N2O gases in Li−S cells with LiNO3
+additive has also recently been investigated by means of
+pressure measurements and gas analysis.11
+There exists a limited number of molecular-level computa-
+tional studies of the Li−S systems,12−14 mainly focusing on
+polysulﬁdes. Moore et al.15 reported a comprehensive set of
+possible reactions in Li−S batteries using high-level quantum
+chemical methods. The authors considered the reversible
+formation of Li2S from lithium and a sulfur (S8) cathode in a
+nonaqueous solvent. In another study, ﬁrst-principle methods
+have been applied to predict thermodynamic and electronic
+properties of Li, Li2S2, Li2S, α-sulfur, and β-sulfur.16 Balbuena et
+al.17 have studied surface reactions and reduction mechanisms
+of various electrolyte components at the Li electrode, including
+polysulﬁde compounds, using density functional theory (DFT)
+and ab initio molecular dynamics (AIMD) simulations. A series
+of heteroatom-doped (B, N, O, F, S, P, and Cl) graphene
+nanoribbons has been modeled, and their interactions with
+both polar lithium polysulﬁde and nonpolar elemental sulfur
+have been studied by ﬁrst-principle calculations. It is shown that
+N or O dopant can eﬀectively prevent shuttle of polysulﬁdes by
+signiﬁcantly higher interaction between the carbon hosts and
+the polysulﬁde guests.18
+Li3N has been reported as one of the SEI components in the
+presence of LiNO3 in the electrolyte.5 This component has
+been shown to have a very high Li ion conductivity and be a
+promising candidate in order to passivate the surface of the Li
+metal.19 A recent combined theoretical−experimental study20
+has been performed on nitride materials chemistry to stabilize
+Li metal anode. The authors showed that oxides, sulﬁdes, and
+halides are reduced by the Li metal and therefore have a poor
+stability against the metal. On the other hand, nitride materials
+including Li3N are thermodynamically stable against Li metal.
+So far, there has been no computational study on the LiNO3
+additive in Li−S batteries. In the present work, we have used
+periodic DFT to study the interactions of LiNO3 itself, and
+experimentally reported species originating from this additive,
+on the surface of a Li metal negative electrode. After analysis of
+the stability of these compounds on the Li metal surface, core
+level binding energies have been calculated to gain a better
+insight into the XPS properties of the nitrogen-containing
+compounds in order to achieve a direct comparison with
+experimental data. In addition to the molecules on the surface
+of Li metal, Li3N/Li interface has also been studied in this
+work. To our knowledge, this is the ﬁrst computational study
+on the electronic structure and core level binding energies of
+such interface.
+2. SIMULATION METHODS
+Plane wave DFT has been used employing the Vienna ab initio
+simulation package.21 The electronic states have been described
+by the projector augmented wave (PAW) method22,23 within
+the generalized gradient approximation (GGA) of Perdew,
+Burke, and Ernzerhof (PBE) to the exchange-correlational
+functional.24 PAW potentials with valence states 1s22s1 for Li,
+2s22p3 for N, and 2s22p4 for O have been applied. The energy
+cutoﬀfor the plane wave was 550 eV, and a 3 × 3 × 1
+Monkhorst−Pack k-point mesh has been used for the
+supercells.
+The Methfessel−Paxton approximation of the ﬁrst order with
+0.2 eV smearing width was chosen for the Li surface, whereas
+Gaussian smearing with a width of 0.1 eV was used for the slab
+approach calculations. Geometry optimizations have been
+carried out within the convergence criteria of 10−6 and 10−5
+eV for electronic self-consistent iteration and ionic relaxation,
+respectively.
+To study the Li metal surface, in analogy with our previous
+study,25 a (4 × 4) slab with ﬁve layers was built up along the
+(100) crystal orientation. The overall supercell used to
+construct the slab has 12 × 12 × 27 Å3 dimensions, with a
+vacuum region of 15 Å. Also following previous work,25 DFT-
+D326 has been considered for the dispersive van der Waals
+(vdW) interactions for more accurate descriptions of the
+adsorbed molecules on the Li metal surface.
+Adsorption energies (Eads.) for the molecules on the Li metal
+surface have been calculated as
+=
+−
++
+E
+E
+E
+E
+(
+)
+ads.
+Li slab/mol.
+Li slab
+mol.
+(1)
+where ELi slab/mol., ELi slab, and Emol. are the total energies of the
+Li slab containing the interacting molecules, the clean Li metal
+slab, and the isolated molecule in the vacuum after relaxation,
+respectively.
+Bader charge analyses were computed on the total charge
+density using the code developed by the Henkelman group.27
+Projected density of states (PDOS) was computed by Gaussian
+smearing with a width of 0.1 and a 7 × 7 × 1 Monkhorst−Pack
+k-point mesh for better accuracy.
+2.1. Li/Li3N Interfaces. Three steps have been taken to
+construct the Li/Li3N interface: ﬁrst, a full relaxation of bulk
+crystals of Li and alpha and cubic phase of Li3N was performed;
+second, the most stable surface orientation for each phase of
+Li3N was targeted; and third, a minimal mismatch between the
+two surfaces (less than 2%) was found within a reasonable size
+for the supercell. A vacuum region around 15 Å was considered
+on the top of the interface to avoid periodic image interactions.
+The interface builder in Virtual Nanolab (VNL)28 has been
+used for building the interfaces.
+2.2. Core Level Shifts. Core level shifts (CLS) have been
+obtained as29
+=
+−
+CLS
+BE
+(sys. )
+BE
+(ref. )
+N1s
+N1s
+N1s
+(2)
+where the core binding energies (BEs) of the systems are
+compared with the core binding energies of the reference
+molecule to avoid the corresponding errors in the description
+of core electrons with PAW pseudopotentials. Core level BEs of
+the corresponding systems are calculated as
+=
+−
+E
+E
+BEN1s
+Fermi
+N1s
+(3)
+where EN1s is the Kohn−Sham core state energy of the 1s
+orbital of the nitrogen atom and EFermi is the Fermi energy of
+the system. Half core hole occupancy has been used in these
+calculations following the Janak−Slater (JS) transition state
+method.30 This is a way to account for the full core hole eﬀect,
+which could otherwise be obtained from the total energy
+diﬀerences between the neutral and photoexcited systems. This
+methodology is consistent with a very recent study on
+approaches implemented in VASP for estimating core level
+binding energy shifts.31
+The Journal of Physical Chemistry C
+Article
+DOI: 10.1021/acs.jpcc.7b07847
+J. Phys. Chem. C 2017, 121, 23324−23332
+23325
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​121/​42/​23324/​7788812/​jp7b07847.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 3>>
+3. RESULTS AND DISCUSSION
+3.1. The LiNO3 Additive on the Li Metal Surface. As a
+ﬁrst step, diﬀerent molecules which have been detected as
+reaction products of the LiNO3 additive in Li−S batteries were
+studied on a Li metal surface.5,8,9,11 These chosen molecules are
+N2, N2O, LiNO2, Li3N, and Li2N2O2, since the main reduction
+products from LiNO3 in the SEI ﬁlm have been identiﬁed as
+LiNxOy and Li2N2O2.5,7 N2 and N2O molecules have been
+selected based on a recent study on gas evolution in LiNO3-
+containing Li−S batteries.11
+To model the interaction of these molecules with the Li
+metal surface, a number of initial adsorption sites and
+adsorption conﬁgurations for each molecule on the Li metal
+surface were considered (see Figure S1). All adsorption
+energies, after relaxation, are reported in Table S1. The most
+stable conﬁguration of each molecule, i.e., with the lowest
+adsorption energy, was selected for further investigation and is
+shown in Figure 1. For N2O and Li3N on the surface, two initial
+structures and all initial structures lead to quite similar
+adsorption energies, respectively (see Table S1). Therefore,
+any of the optimized structures from these initial supercells can
+be selected. In some cases, the adsorbed molecules are
+decomposed after relaxation, and some atoms originating
+from the nitrogen-containing species can be observed to diﬀuse
+into the surface of Li metal. A similar observation for other
+decomposed electrolyte products on Li metal was made by
+Balbuena et al.17
+The N2 molecule diﬀused into the Li surface, causing its
+bond length to elongate from 1.10 to 1.26 Å after adsorption.
+The N−N and N−O bond distances of the gas phase N2O
+molecule were calculated to be 1.14 and 1.19 Å, respectively.
+However, after adsorption on the Li surface, the N2O molecule
+decomposed into N2 and O, and the N−N bond was elongated
+Figure 1. Projected densities of state (PDOS) for the gas phase and the adsorbed molecules on the Li(100) slab with the side and top views of the
+optimized supercells of (a) N2, (b) N2O, (c) LiNO2, (d) Li3N, (e) Li2N2O2, and (f) LiNO3 at the Li(100) slab. The Fermi level is set as the origin of
+the energy x-axis which is shifted to zero. The DOS are scaled up ﬁve times for visualization.
+The Journal of Physical Chemistry C
+Article
+DOI: 10.1021/acs.jpcc.7b07847
+J. Phys. Chem. C 2017, 121, 23324−23332
+23326
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​121/​42/​23324/​7788812/​jp7b07847.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 4>>
+to 1.30 Å. The Li3N molecule, in turn, formed a Li6N
+octahedral complex after adsorption on the Li metal surface
+(see Figure 1d). This correlates well with other recent
+theoretical studies, where the cubic Li3N phase consisting of
+corner-sharing Li6N octahedral complexes has been proposed
+to be the most stable phase of Li3N under ambient
+conditions.32,33 The Li−N bond distances before and after
+adsorption on the Li surface are 1.73 and 1.90 Å, respectively.
+For the adsorbed Li2N2O2 molecule, the N−O and N−N bond
+distances are also slightly increased by 0.03 and 0.05 Å,
+respectively. The LiNO2 and LiNO3 molecules decomposed
+into LiNO and O fragments after adsorption, where after the O
+atoms diﬀused into the Li surface (see Figure 1c and 1f). The
+bond distances of N−O fragments are elongated to 1.5 Å,
+which is due to electrons transfer from Li atoms to the π*
+orbital of the NO molecule.
+3.2. Core Level Binding Energy. The N 1s core level BEs
+have been calculated for the molecules adsorbed on the Li
+surface, shown in Figure 1, and also their corresponding gas
+phase molecules as reference. The BE values are presented in
+Table 1. The calculated XPS plots for the gas phase and
+adsorbed molecules on the Li(100) surface are shown in Figure
+2a and 2b, respectively. For the gas phase N2O molecule
+(Figure 2a), two diﬀerent BEs can be calculated for the Nt and
+Nc atoms (Nt and Nc refer to the N atoms in the terminal and
+center positions of the N2O molecule, respectively), due to the
+diﬀerent chemical environment for these atoms in the molecule
+(see Table 1). The N 1s spectrum for Nt is close to that of the
+N atoms in the N2 molecule, with a chemical shift of around 1
+eV (see Figure 2a and Table 1). The BE of the Nc atom, on the
+other hand, shows a shift of +4 eV compared to the Nt atom,
+which is due to the depletion of electron density on the Nc in
+the vicinity of the O atom, which consequently leads to a shift
+to higher BE.34,35 The calculated BE shifts for the N atoms in
+the N2O molecule are in very good agreement with the
+reported values in previous works.36,37 Furthermore, for the gas
+phase molecules, the core level BE for the N atom in the Li3N
+molecule is obtained as 402.05 eV. This value is subsequentially
+raised to 407.78, 409.11, and 412.05 eV for Li2N2O2, LiNO2,
+and LiNO3 molecules, respectively, following a trend of oxygen
+richer environments around the N atom. The shift toward
+higher BE for the LiNO3 with respect to the BE of LiNO2 (2.94
+eV) is expected, since the presence of an extra O atom in the
+LiNO3 decreases the charge density on the N atom.34 This shift
+is also in good agreement with the reported experimental value
+of 3.7 eV for the separation between the peaks of LiNO3 and
+NO2
+−species.38 Although there are two N atoms in Li2N2O2,
+both N atoms have the same contribution to the XPS spectra
+due to molecular symmetry.
+As seen in Figure 2b, introducing the Li metal surface alters
+the position of the N 1s BE peaks for the adsorbed molecules.
+This is also highly correlated with the decomposition of some
+of the molecules on the surface; see Figure 1. Generally, there
+are fewer diﬀerences between the N 1s signals in the XPS
+spectra for the adsorbed molecules (in the range 403.5−410
+eV) as compared to those of the gas phase molecules (in the
+range 401.5−412.5 eV), which indicates a more uniform
+chemical environment for N atoms on the Li metal surface. The
+N2O molecule, for example, which has two distinct peaks in the
+gas phase XPS spectrum (Figure 2a), shows only one peak in
+the spectrum of the adsorbed molecule (Figure 2b), close to
+that of the N2 molecule, indicating that both N atoms
+experience similar chemical environments after decomposition
+of the N2O molecule into N2. The BEs for the N atoms in the
+Table 1. Calculated N 1s Core Level Binding Energies (BEs) in eV for the Gas Phase and Adsorbed Molecules on the Li(100)
+Slab, N 1s Core Level Shift (CLSN1s in eV), and Net Amount of Electron Transfer to the N Atom upon Adsorption of the
+Molecules on the Li(100) Surface (Charge Transfer: CT)
+ref. molecule
+atom
+BE
+mol/Li (100)
+atom
+BE
+CLSN1sb
+CT
+N2
+N
+403.36
+N2
+N
+406.50
+3.13
+−1.20
+N2O
+Nta
+404.37
+N2O
+Nt
+406.20
+−
+−1.44
+Nca
+408.68
+Nc
+406.17
+−
+−1.63
+LiNO2
+N
+409.11
+LiNO2
+N
+405.84
+−
+−1.93
+Li3N
+N
+402.05
+Li3N
+N
+404.20
+2.15
+−0.48
+LiNO3
+N
+412.05
+LiNO3
+N
+406.37
+−
+−2.34
+Li2N2O2
+N
+407.78
+Li2N2O2
+N
+408.90
+1.00
+−0.10
+aNc and Nt refer to the central and terminal N atom in N2O molecule, respectively. bFor the molecules which decomposed on the surface, the CLS
+with respect to the corresponding molecules in vacuum are not reported in the table.
+Figure 2. N 1s XPS spectra for (a) the gas phase molecules and (b) the adsorbed molecules on the Li(100) surface. For (b), the legend box
+represents the starting structures on the surface, not the resulting compounds formed.
+The Journal of Physical Chemistry C
+Article
+DOI: 10.1021/acs.jpcc.7b07847
+J. Phys. Chem. C 2017, 121, 23324−23332
+23327
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​121/​42/​23324/​7788812/​jp7b07847.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 5>>
+adsorbed N2 molecule are shifted to higher values, which can be
+due to the observed N−N bond elongation and a subsequent
+decrease of the electron density on the N atoms. The CLS
+peaks for the adsorbed Li3N and Li2N2O2 molecules are also
+shifted to higher BEs, while the XPS peaks of the LiNO2 and
+LiNO3 molecules are located at lower BEs (close to the N2 and
+N2O peaks) than their corresponding gas phase molecules,
+which is most likely due to the decomposition of these
+molecules into LiNO and O fragments on the Li surface. All
+initial structures investigated of LiNO3 on the Li metal surface
+decomposed to either LiNO2 + O or LiNO + 2O, with the
+latter being the energetically most stable.
+The experimental data in literature regarding the N 1s XPS
+peak on the Li metal surface in LiNO3 containing Li−S
+batteries is not fully consistent, perhaps due to the fact that
+diﬀerent cycling schemes, concentrations, and electrolyte
+solvents are used in these studies. Aurbach et al.5 for example
+observed 3 major peaks at 401, 403, and 405 eV, which were
+assigned to N−H/N−C/N−O, NO2
+−, and NO3
+−, respectively.
+Similarly, Li et al.9 also assigned peaks to NO2
+−and NO3
+−, but
+at 404 and 408 eV, respectively, while a third peak at 400 eV
+was assigned to N−S. By contrast, Xiong et al.8 did not assign
+any peaks to NO2
+−and NO3
+−. Moreover, the observed four N
+1s peaks located at comparatively lower BEs. The peaks found
+were assigned to Li2N2O2 (401 eV), Li3N (399 eV), LiNxOy at
+397 eV, and RCH2NO2 at 395 eV.
+The XPS results simulated here for the most stable systems
+do not support any of the assignments to NO2
+−and NO3
+−,
+since these species obviously decompose on the Li surface, and
+are thus more consistent with the work of Xiong et al. It should
+be mentioned, however, that although the most stable
+simulated system for LiNO2 is the decomposed molecule
+(generating LiNO and O), several other initial structures
+considered for this molecule (see Figure S1) did not
+decompose on the Li metal surface. For the second most
+stable structure, Figure S1C, the calculated BE is 409 eV. This
+results in a trend in BE that is LiNO2 > Li2N2O2 > Li3N, which
+compares well with the experimental studies. Also the Li2N2O2
+and Li3N products identiﬁed by these authors are obviously
+stable in the calculations here, and the order of the BEs
+(Li2N2O2 > Li3N) are also similar. On the other hand, the
+absolute values of the BEs are signiﬁcantly diﬀerent between
+the simulated data and the experiments by Xiong et al. and are
+more similar to those obtained by Aurbach et al. or Li et al.
+Moreover, it is likely so that when the Li metal surface is getting
+covered by a thicker SEI layer of decomposition products, it
+changes the surface reactivity, which in turn can render NO2
+−
+and NO3
+−more stable in the outer region of the SEI, and thus
+be detected by XPS. These issues cannot be resolved by the
+calculations in the present study. The diﬀerent conditions in
+the computational study and the experimental system, where
+the adsorbed species are surrounded by a matrix of other
+decomposition products, are also likely to aﬀect the absolute
+BE values. Another reason for any observed discrepancy can be
+errors in the employed theory level to calculate core level BEs,
+which in turn implies that a reference system is necessary for
+studying the core level shifts.29 It should be mentioned that two
+Li2N2O2 molecules have been adsorbed on the surface to
+investigate the eﬀect of higher surface coverage on the BEs.
+However, no signiﬁcant changes are observed in the N 1s BE
+values. This molecule has been selected since it was stable after
+the adsorption on the Li metal.
+Diﬀerent mechanisms have been proposed to describe the
+CLS, such as environmental charge density, hybridization, and
+screening eﬀects.35,39 Although it is not straightforward to
+interpret the chemical shifts of the peaks and the mechanisms
+behind them, some possible reasons can be addressed. Charge
+transfer to or from an atom will change the electrostatic
+potential, which a core electron experiences due to an electron
+in the valence orbital, and therefore leads to shifts of the core
+level BEs of that atom.35 Hence, a Bader charge analysis was
+performed, and the diﬀerence between atomic charge on the N
+Figure 3. Projected DOS of α-Li3N, bulklike and interfacial regions of α-Li3N(100)/Li(100) (a); the crystal structure of α-Li3N (b); the α-
+Li3N(100)/Li(100) interface (c). Projected DOS of c-Li3N, bulklike and interfacial regions of c-Li3N(100)/Li(100) (d); crystal structure of c-Li3N
+(e); the c-Li3N(100)/Li(100) interface (f). The origin of the energy axis is set at the Fermi level. The density of states in (a) and (d) are scaled up
+two and four times, respectively.
+The Journal of Physical Chemistry C
+Article
+DOI: 10.1021/acs.jpcc.7b07847
+J. Phys. Chem. C 2017, 121, 23324−23332
+23328
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​121/​42/​23324/​7788812/​jp7b07847.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 6>>
+atoms before and after the adoption of molecules on the Li
+surface was calculated (charge transfer; CT). Despite the higher
+charge density observed on the N atoms of the molecules, the
+calculated core level BEs shift to higher values. This indicates
+that it might be other contributions such as hybridization that
+may aﬀect the CLSs.39
+To further investigate the diﬀerent behavior of CLSs, the
+PDOS projected on the N, Li, and O atoms of these molecules,
+before and after adsorption on the Li metal surface, are plotted
+in Figure 1. Any changes in the electronic structure of these
+molecules are thus due to the presence of the Li surface. A clear
+overlap (hybridization) between the s states of Li slab and the s
+and p states of N (or O) atom can be seen in all cases, which
+redistributes the valence electron density between the
+adsorbents and the Li metal surface. It has indeed been
+demonstrated that the core level BEs are sensitive to variations
+in the local electron density distribution.39
+3.3. Li3N/Li Interface. Diﬀerent stable phases of Li3N exist
+depending on pressure: α-Li3N with the space group of P6/
+mmm, which appears under ambient pressures, transforms at
+higher pressures into β-Li3N and γ-Li3N with the space groups
+P63/mmc and Fm3̅m, respectively.32,40 The cubic Li3N (c-Li3N)
+with the space group Pm3m is another stable phase under
+ambient pressure, which has been reported recently.32,33 In this
+study, we have considered α-Li3N and c-Li3N to simulate the
+solid phase of the Li3N structure on the surface of the Li metal.
+The crystal structures of these unit cells are shown in Figures
+3b and 3e, respectively.
+It should be mentioned that the crystal structure of the
+hexagonal α-Li3N converts to an orthorhombic structure with a
+= ahex, b = √3bhex, and c = chex after full relaxation.41 The
+Li(1)−N bond distance in α-Li3N is calculated to 1.89 Å, while
+the Li(2)−N bond length is around 2.06 Å, which is in good
+agreement with experimental results where the Li(1)−N and
+Li(2)−N are reported to 1.93 and 2.01 Å, respectively.42 In c-
+Li3N, the Li−N bond distance is calculated to 1.91 Å, which is
+consistent with the previously reported theoretical value of 1.93
+Å.33
+The core level BEs of the bulk Li3N phases have been
+calculated using the same approach as in the previous section,
+and the calculated N 1s XPS spectra for these bulk crystals are
+presented in Figure 4. The peaks for α-Li3N and c-Li3N are
+found at 403.9 and 402.3 eV, respectively. Indeed, this shift in
+the peaks can be attributed to the diﬀerent chemical
+environment in these bulk phases. The coordination number
+(CN) of the N atom in the α-Li3N structure is 8, while it is 6 in
+c-Li3N. The results show that there is a relation between the
+CN and the BE shifts, so that an increasing CN leads to higher
+BE values (more positive CLS). The BE shifts can however not
+be attributed only to the environmental charge density, since
+the calculated charges on the N atoms of the isolated Li3N
+molecule in c-Li3N and in α-Li3N show negligible diﬀerence
+(−2.57, −2.49, and −2.47 e, respectively). If comparing to
+experimental data, ﬁnally, the calculated BEs for c-Li3N are
+closer to the XPS peaks assigned to Li3N on Li metal
+electrodes,7,8 which indicates that this is the phase preferentially
+formed in the Li−S battery system. The characters of Li3N
+bonds have generally been considered as ionic, but also
+covalent characteristic of these bonds have been discussed in
+the literature.43 The PDOS plots, presented in Figures 3a and
+3d, show a higher degree of overlap between the N(s), N(p),
+and Li(s) states in the α-Li3N than in the c-Li3N phase, leading
+to a higher BE for the α-Li3N phase.
+To build the α-Li3N and c-Li3N surfaces, diﬀerent
+orientations have been considered by cleavage of their bulk
+structures. The surface energies for the diﬀerent orientations of
+Li3N slabs with diﬀerent number of layers have been calculated
+to obtain the minimum number of layers required and the most
+stable orientation for the Li3N slab. The results are plotted in
+Figure S2. The most stable surface orientation for both the α-
+Li3N and c-Li3N surfaces is (100), which displays surface
+energies almost constant with increasing number of layers (see
+Figure S2). Therefore, four layers were selected for these slabs
+to generate suﬃcient thickness. This number of layers for the
+Li3N slab has also been reported to be suﬃcient in a previous
+computational study.44
+To build the Li3N(100)/Li(100) interface, two diﬀerent
+phases of Li3N(100) surfaces have been used, generating a
+mismatch of 0.67% and 1.7% for the α-Li3N(100)/Li(100) and
+c-Li3N(100)/Li(100), respectively. The “interfacial” and “bulk-
+like” regions of these structures are also illustrated in Figures 3c
+and 3f.
+The N 1s core level BEs for the N atoms in three diﬀerent
+regions, viz., interfacial, bulklike, and surface (the top layer of
+Li3N in contact with the vacuum layer) of the Li3N(100)/
+Li(100) slabs have been calculated, and their corresponding
+XPS spectra are presented in Figure 5. As for the bulk crystal of
+Li3N, the core level BE peaks for N atoms in the α-Li3N(100)/
+Li(100) interface generally displayed higher BEs than those in
+the c-Li3N(100)/Li (100) interface, which may be due to the
+larger CN for the N atoms in the α-Li3N(100)/Li(100)
+interface. The N 1s XPS spectrum for the interfacial region of
+the α-Li3N(100)/Li(100) is observed at lower BEs than that for
+the bulklike region. It is interesting, however, to observe that
+Figure 4. N 1s XPS spectra for bulk α-Li3N and c-Li3N.
+Figure 5. N 1s XPS for (a) α-Li3N (100)/Li (100) and (b) c-Li3N
+(100)/Li (100) interfaces.
+The Journal of Physical Chemistry C
+Article
+DOI: 10.1021/acs.jpcc.7b07847
+J. Phys. Chem. C 2017, 121, 23324−23332
+23329
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​121/​42/​23324/​7788812/​jp7b07847.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 7>>
+the BE shifts in the c-Li3N(100)/Li(100) interface are in the
+reverse order with respect to the α-Li3N(100)/Li(100)
+interface for the interfacial and bulklike regions, indicating
+that the N atoms become more electron rich when approaching
+the surface in the α-Li3N(100)/Li(100) structure but are in a
+less electron rich environment for the case of the c-Li3N(100)/
+Li (100) interface. There is no signiﬁcant diﬀerence for the BE
+of the surface region, in the α-phase, from the interfacial and
+bulk regions. However, the diﬀerence among these parts is
+more pronounced in the c-phase. It can be seen that the BEs of
+the surface region are smaller than the BEs of bulk in both
+phases indicating the relation between the smaller coordination
+number of atoms on the surface region than that of the bulk
+and consequently the smaller BE values in the surface part.
+To further investigate the observed trends between the
+interface and bulklike regions, CT and PDOS have been
+studied. The average amounts of CTs to the N atoms of the α-
+Li3N(100)/Li(100) and c-Li3N(100)/Li(100) interfaces, com-
+pared to their corresponding bulk phases, are −0.1 and −0.004,
+respectively, which is not considerable. However, the PDOS
+(Figure 3a and 3d) are more helpful for interpretation of these
+CLSs (shown in Figure 6). First of all, the PDOS plots show a
+higher degree of overlap between the N and Li(s) orbitals for
+the α-Li3N(100)/Li(100) interface than the c-Li3N(100)/
+Li(100), which causes a reduction of the electron densities on
+the N atoms in the α-Li3N(100)/Li(100) interface. This might
+be the reason for the increasing core level BEs in the α-
+Li3N(100)/Li(100) interface. Furthermore, the delocalization
+of electron density is greater for the interfacial region than the
+bulklike region in the α-Li3N(100)/Li(100) interface, which
+could be expected to lead to higher BEs, but the opposite
+pattern is actually observed. A higher degree of delocalization
+can be seen in the interfacial region of the c-Li3N(100)/
+Li(100), which may result in a higher BE than in the bulklike
+region.
+4. CONCLUSIONS
+The electronic structure and spectroscopy properties of LiNO3,
+and its decomposition products N2, N2O, LiNO2, Li3N, and
+Li2N2O2 on the interaction with the Li metal surface, have been
+investigated within DFT framework. In all cases, noticeable
+changes in bond distances or dissociations occurred in the
+structure upon relaxation. These structures have then been used
+to calculate the N 1s XPS BEs of the supercells, and
+comparisons are made to isolated molecules in vacuum.
+It is not straightforward to describe the electronic structure
+background to the chemical shifts of the XPS peaks; however,
+the redistribution of the valence electron density due to the
+charge transfer and hybridization between the s states of Li slab
+and the s and p states of N (or O) atom might have a major
+eﬀect on these chemical shifts. It is also interesting to note that
+some of the experimentally assigned N-containing compounds
+(NO3
+−and NO2
+−) decompose on Li metal, although the
+stability is likely higher for LiNO2 than LiNO3. There is on the
+other hand support for the stability of NO, Li2N2O2, and Li3N.
+The diﬀerences between the observed species in this study and
+those assigned in experimental work can perhaps be related to
+the limited thickness for the interphase on the Li metal surface
+in this study.
+The CLS for α-Li3N and c-Li3N demonstrate a clear relation
+between the CN and BEs. By increasing CN from 3 in
+molecular Li3N to 6 and 8 in the c-Li3N and α-Li3N,
+respectively, BEs shift to higher energies. The BE shifts in
+the α-Li3N(100)/Li(100) and c-Li3N(100)/Li(100) interfaces
+exhibit opposite trends for the interfacial and bulklike regions.
+The PDOS analyses show higher overlaps between the N(p)
+and Li(s) orbitals in the α-Li3N(100)/Li(100) interface than
+the c-Li3N(100)/Li(100), which might be the reason for
+increasing the core level BEs in the α-Li3N(100)/Li(100)
+interface. The calculated BEs for c-Li3N bulk and interfaces in
+this study are in somewhat better agreement with the XPS
+peaks experimentally assigned to Li3N in similar systems.
+Electrochemical data and SEM images have shown that both
+LiNO3 and polysulﬁdes play an important role for suppressing
+the redox shuttle mechanism in Li−S systems.45 In future
+studies, it is of high interest to also consider polysulﬁdes
+together with the nitrogen-containing species on the surface of
+Li metal in order to simulate a more realistic system.
+■ASSOCIATED CONTENT
+*
+S
+Supporting Information
+The Supporting Information is available free of charge on the
+ACS Publications website at DOI: 10.1021/acs.jpcc.7b07847.
+Initial adsorption sites/conﬁgurations for diﬀerent
+molecules in the study on a Li metal surface; adsorption
+energies (eV) for relaxed supercells from diﬀerent initial
+sites/conﬁgurations of molecules on the Li(100) surface;
+surface energies convergence for Li3N surfaces vs
+diﬀerent number of layers in two diﬀerent phases of
+Li3N (PDF)
+■AUTHOR INFORMATION
+Corresponding Author
+*E-mail: moyses.araujo@physics.uu.se.
+ORCID
+Mahsa Ebadi: 0000-0001-8525-7339
+Daniel Brandell: 0000-0002-8019-2801
+C. Moyses Araujo: 0000-0001-5192-0016
+Notes
+The authors declare no competing ﬁnancial interest.
+■ACKNOWLEDGMENTS
+This project was supported by the Swedish Energy Agency
+grant number 39036-1, STandUP for Energy, the Carl Tryggers
+Figure 6. Core level binding energy shifts for α-Li3N, c-Li3N, α-
+Li3N(100)/Li(100), and c-Li3N(100)/Li(100) interface, surface, and
+bulklike regions (The reference is Li3N molecule).
+The Journal of Physical Chemistry C
+Article
+DOI: 10.1021/acs.jpcc.7b07847
+J. Phys. Chem. C 2017, 121, 23324−23332
+23330
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​121/​42/​23324/​7788812/​jp7b07847.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 8>>
+Foundation and the Swedish Research Council (VR) grant no.
+2014-5984 and 2015-05754. The computations were performed
+on resources provided by the Swedish National Infrastructure
+for Computing (SNIC) at the PDC Center for High
+Performance Computing.
+■REFERENCES
+(1) Cheng, X.-B.; Zhang, R.; Zhao, C.-Z.; Wei, F.; Zhang, J.-G.;
+Zhang, Q. A Review of Solid Electrolyte Interphases on Lithium Metal
+Anode. Adv. Sci. 2016, 3 (3), 1500213.
+(2) Wood, K. N.; Noked, M.; Dasgupta, N. P. Lithium Metal Anodes:
+Toward an Improved Understanding of Coupled Morphological,
+Electrochemical, and Mechanical Behavior. ACS Energy Lett. 2017, 2,
+664−672.
+(3) Lin, Z.; Liang, C. Lithium−Sulfur Batteries: From Liquid to Solid
+Cells. J. Mater. Chem. A 2015, 3 (3), 936−958.
+(4) Mikhaylik, Y. V. Electrolytes for Lithium Sulfur Cells. U.S. Patent
+7358012, 2008.
+(5) Aurbach, D.; Pollak, E.; Elazari, R.; Salitra, G.; Kelley, C. S.;
+Affinito, J. On the Surface Chemical Aspects of Very High Energy
+Density, Rechargeable Li-Sulfur Batteries. J. Electrochem. Soc. 2009,
+156 (8), A694−A702.
+(6) Zhang, S. S. Role of LiNO3 in Rechargeable Lithium/sulfur
+Battery. Electrochim. Acta 2012, 70, 344−348.
+(7) Xiong, S.; Xie, K.; Diao, Y.; Hong, X. Properties of Surface Film
+on Lithium Anode with LiNO3 as Lithium Salt in Electrolyte Solution
+for Lithium-Sulfur Batteries. Electrochim. Acta 2012, 83, 78−86.
+(8) Xiong, S.; Xie, K.; Diao, Y.; Hong, X. Characterization of the
+Solid Electrolyte Interphase on Lithium Anode for Preventing the
+Shuttle Mechanism in Lithium-Sulfur Batteries. J. Power Sources 2014,
+246, 840−845.
+(9) Li, W.; Yao, H.; Yan, K.; Zheng, G.; Liang, Z.; Chiang, Y.-M.; Cui,
+Y. The Synergetic Effect of Lithium Polysulfide and Lithium Nitrate to
+Prevent Lithium Dendrite Growth. Nat. Commun. 2015, 6, 7436.
+(10) Lacey, M. J.; Yalamanchili, A.; Maibach, J.; Tengstedt, C.;
+Edström, K.; Brandell, D. The Li-S Battery: An Investigation of Redox
+Shuttle and Self-Discharge Behaviour with LiNO3-Containing Electro-
+lytes. RSC Adv. 2016, 6, 3632−3641.
+(11) Jozwiuk, A.; Berkes, B. B.; Weiß, T.; Sommer, H.; Janek, J.;
+Brezesinski, T. The Critical Role of Lithium Nitrate in the Gas
+Evolution of Lithium-Sulfur Batteries. Energy Environ. Sci. 2016, 9,
+2603−2608.
+(12) Kamphaus, E. P.; Balbuena, P. B. Long-Chain Polysulfide
+Retention at the Cathode of Li-S Batteries. J. Phys. Chem. C 2016, 120
+(8), 4296−4305.
+(13) Chen, X.; Peng, H.-J.; Zhang, R.; Hou, T.-Z.; Huang, J.-Q.; Li,
+B.; Zhang, Q. An Analogous Periodic Law for Strong Anchoring of
+Polysulfides on Polar Hosts in Lithium Sulfur Batteries: S- or Li-
+Binding on First-Row Transition-Metal Sulfides? ACS Energy Lett.
+2017, 2 (4), 795−801.
+(14) Camacho-Forero, L. E.; Smith, T. W.; Balbuena, P. B. Effects of
+High and Low Salt Concentration in Electrolytes at Lithium−Metal
+Anode Surfaces. J. Phys. Chem. C 2017, 121 (1), 182−194.
+(15) Assary, R. S.; Curtiss, L. a; Moore, J. S. Toward a Molecular
+Understanding of Energetics in Li −S Batteries Using Nonaqueous
+Electrolytes: A High-Level Quantum Chemical Study. J. Phys. Chem. C
+2014, 118, 11545−11558.
+(16) Park, H.; Koh, H. S.; Siegel, D. J. First-Principles Study of Redox
+End Members in Lithium - Sulfur Batteries. J. Phys. Chem. C 2015, 119
+(9), 4675−4683.
+(17) Camacho-Forero, L. E.; Smith, T. W.; Bertolini, S.; Balbuena, P.
+B. Reactivity at the Lithium-Metal Anode Surface of Lithium-Sulfur
+Batteries. J. Phys. Chem. C 2015, 119 (48), 26828−26839.
+(18) Hou, T. Z.; Chen, X.; Peng, H. J.; Huang, J. Q.; Li, B. Q.; Zhang,
+Q.; Li, B. Design Principles for Heteroatom-Doped Nanocarbon to
+Achieve Strong Anchoring of Polysulfides for Lithium−Sulfur
+Batteries. Small 2016, 12, 3283−3291.
+(19) Ma, G.; Wen, Z.; Wu, M.; Shen, C.; Wang, Q.; Jin, J.; Wu, X. A
+Lithium Anode Protection Guided Highly-Stable Lithium−sulfur
+Battery. Chem. Commun. 2014, 50 (91), 14209−14212.
+(20) Zhu, Y.; He, X.; Mo, Y. Strategies Based on Nitride Materials
+Chemistry to Stabilize Li Metal Anode. Adv. Sci. 2017, 4, 1600517.
+(21) Kresse, G.; Furthmüller, J. Efficient Iterative Schemes for Ab
+Initio Total-Energy Calculations Using a Plane-Wave Basis Set. Phys.
+Rev. B: Condens. Matter Mater. Phys. 1996, 54 (16), 11169.
+(22) Kresse, G.; Joubert, D. From Ultrasoft Pseudopotentials to the
+Projector Augmented-Wave Method. Phys. Rev. B: Condens. Matter
+Mater. Phys. 1999, 59 (3), 1758−1775.
+(23) Blöchl, P. E. Projector Augmented-Wave Method. Phys. Rev. B:
+Condens. Matter Mater. Phys. 1994, 50 (24), 17953−17978.
+(24) Perdew, J. P.; Burke, K.; Ernzerhof, M. Generalized Gradient
+Approximation Made Simple. Phys. Rev. Lett. 1996, 77 (18), 3865−
+3868.
+(25) Ebadi, M.; Brandell, D.; Araujo, C. M. Electrolyte Decom-
+position on Li-Metal Surfaces from First-Principles Theory. J. Chem.
+Phys. 2016, 145 (20), 204701.
+(26) Grimme, S.; Antony, J.; Ehrlich, S.; Krieg, S. A Consistent and
+Accurate Ab Initio Parametrization of Density Functional Dispersion
+Correction (Dft-D)for the 94 Elements H-Pu. J. Chem. Phys. 2010,
+132, 154104.
+(27) Henkelman, G.; Arnaldsson, A.; Jonsson, H. A Fast and Robust
+Algorithm for Bader Decomposition of Charge Density. Comput.
+Mater. Sci. 2006, 36, 354−360.
+(28) Virtual NanoLab 2014.3, QuantumWise A/S (www.
+quantumwise.com).
+(29) Köhler, L.; Kresse, G. Density Functional Study of CO on
+Rh(111). Phys. Rev. B: Condens. Matter Mater. Phys. 2004, 70 (16),
+165405.
+(30) Janak, J. F. Proof That ∂E/∂ni = ϵi in Density-Functional
+Theory. Phys. Rev. B: Condens. Matter Mater. Phys. 1978, 18 (2),
+7165−7168.
+(31) Pueyo Bellafont, N.; Viñes, F.; Hieringer, W.; Illas, F. Predicting
+Core Level Binding Energies Shifts: Suitability of the Projector
+Augmented Wave Approach as Implemented in VASP. J. Comput.
+Chem. 2017, 38, 518−522.
+(32) Shen, Y.; Oganov, A. R.; Qian, G.; Dong, H.; Zhu, Q.; Zhou, Z.;
+Zhang, J. Novel Lithium-Nitrogen Compounds at Ambient and High
+Pressures. Sci. Rep. 2015, 5, 1−8.
+(33) Nguyen, M. C.; Hoang, K.; Wang, C. Z.; Ho, K. M. Stabilities
+and Defect-Mediated Lithium-Ion Conduction in a Ground State
+Cubic Li3N Structure. Phys. Chem. Chem. Phys. 2016, 18, 4185−4190.
+(34) Hendrickson, D. N.; Hollander, J. M.; Jolly, W. L. Nitrogen Ls
+Electron Binding Energies. Correlations with Molecular Orbital
+Calculated Nitrogen Charges. Inorg. Chem. 1969, 8 (12), 2642−2647.
+(35) Bagus, P. S.; Illas, F.; Pacchioni, G.; Parmigiani, F. Mechanisms
+Responsible for Chemical Shifts of Core-Level Binding Energies and
+Their Relationship to Chemical Bonding. J. Electron Spectrosc. Relat.
+Phenom. 1999, 100 (1−3), 215−236.
+(36) Alagia, M.; Richter, R.; Stranges, S.; Agåker, M.; Ström, M.;
+Söderström, J.; Såthe, C.; Feifel, R.; Sorensen, S.; De Fanis, A.; et al.
+Core Level Ionization Dynamics in Small Molecules Studied by X-Ray-
+Emission Threshold-Electron Coincidence Spectroscopy. Phys. Rev. A:
+At., Mol., Opt. Phys. 2005, 71, 12506.
+(37) Krivosenko, Y. S.; Pavlychev, A. A. Site-Specific Recoil-Induced
+Effects on Inner-Shell Photoionization of Linear Triatomic Molecules:
+N 1s Photoelectron Spectra of N2O. Chem. Phys. Lett. 2016, 664, 233−
+236.
+(38) Aduru, S.; Contarini, S.; Rabalais, J. W. Electron-, X-Ray-, and
+Ion-Stimulated Decomposition of Nitrate Salts. J. Phys. Chem. 1986,
+90, 1683−1688.
+(39) Bagus, P. S.; Ilton, E. S.; Nelin, C. J. The Interpretation of XPS
+Spectra: Insights into Materials Properties. Surf. Sci. Rep. 2013, 68 (2),
+273−304.
+(40) Li, W.; Wu, G.; Araújo, C. M.; Scheicher, R. H.; Blomqvist, A.;
+Ahuja, R.; Xiong, Z.; Feng, Y.; Chen, P. Li+ Ion Conductivity and
+The Journal of Physical Chemistry C
+Article
+DOI: 10.1021/acs.jpcc.7b07847
+J. Phys. Chem. C 2017, 121, 23324−23332
+23331
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​121/​42/​23324/​7788812/​jp7b07847.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 9>>
+Diffusion Mechanism in α-Li3N and β-Li3N. Energy Environ. Sci. 2010,
+3 (10), 1524.
+(41) Mulliner, A. D.; Battle, P. D.; David, I. F.; Refson, K. Dimer-
+Mediated Cation Diffusion in the Stoichiometric Ionic Conductor
+Li3N. Phys. Chem. Chem. Phys. 2016, 18, 5605−5613.
+(42) Rabenau, A.; Schulz, H. 1976, 50, 155−159. J. Less-Common Met.
+1976, 50 (50), 155−159.
+(43) Fister, T. T.; Seidler, G. T.; Shirley, E. L.; Vila, F. D.; Rehr, J. J.;
+Nagle, K. P.; Linehan, J. C.; Cross, J. O. The Local Electronic Structure
+of Alpha-Li3N. J. Chem. Phys. 2008, 129 (4), 044702.
+(44) Jin, H. M.; Luo, J. Z.; Wu, P. Adsorption and Dissociation of
+Hydrogen on Li3N Surface: A First Principles Study. Appl. Phys. Lett.
+2007, 90 (8), 084101.
+(45) Xiong, S.; Xie, K.; Diao, Y.; Hong, X. On the Role of
+Polysulfides for a Stable Solid Electrolyte Interphase on the Lithium
+Anode Cycled in Lithium−sulfur Batteries. J. Power Sources 2013, 236,
+181−187.
+The Journal of Physical Chemistry C
+Article
+DOI: 10.1021/acs.jpcc.7b07847
+J. Phys. Chem. C 2017, 121, 23324−23332
+23332
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​121/​42/​23324/​7788812/​jp7b07847.​pdf by TSINGHUA UNIV user on 10 October 2026

@@ -1,0 +1,30 @@
+{
+  "编号": "P041",
+  "电解液": {
+    "E1": {"名称": "3-FSI", "配方": "3 M LiFSI，DOL/DME 1:1 v/v"},
+    "E2": {"名称": "3-TFSI", "配方": "3 M LiTFSI，DOL/DME 1:1 v/v"},
+    "E3": {"名称": "3-TfO", "配方": "3 M LiTfO，DOL/DME 1:1 v/v"},
+    "E4": {"名称": "1-TfO / 1-FSI / 1-TFSI / 1-TDI 及 3-TDI", "配方": "1 或 3 M 对应锂盐，DOL/DME 1:1 v/v（系列）"}
+  },
+  "条件": {
+    "C1": {"正极": "S80/MWCNT20（极片 8:1:1）", "硫载量": "约 1 mg cm-2", "硫含量": "复合物 80 wt%", "E/S": "", "电解液体积": "", "面积": "直径 7/16 in",
+           "锂厚": "450 µm（SI）", "N/P": "", "倍率": "0.2C", "1C定义": "1675 mA g-1", "温度": "", "电池": "2320 扣式",
+           "原句": "The half cell (coin cell 2320) was assembled in an Ar-filled glovebox with a Li metal anode and cycled at a range of 1.5-3 V at 0.2 C (1 C = 1675 mA/g of S)."}
+  },
+  "比较": [
+    {"A": "E1", "B": "E2", "条件": "C1", "层": "C", "改变因素": ["盐阴离子"],
+     "溶剂化依据": "17O NMR / PFG-NMR：FSI- 与其他组分相互作用较弱、迁移率高（同篇实验）；未给多硫化物溶解度",
+     "指标": [
+       {"指标": "循环保持率或寿命", "取值点": "A 第 34 圈突然失效", "A": "34 圈失效", "B": "", "单位": "圈", "方向": "A更差", "来源": "正文（B 值只在图）",
+        "原句": "In fact, the Li-S battery fabricated with 3-FSI electrolyte failed abruptly at the 34th cycle, which we suggest is due to the fast formation of an insulating passivation layer on the Li-metal anode as observed previously."},
+       {"指标": "指定圈数放电容量", "取值点": "第 33、100 圈", "A": "", "B": "", "单位": "mAh g-1", "方向": "无法判断", "来源": "仅图（文字未逐对比较）", "原句": ""}
+     ]},
+    {"A": "E3", "B": "E4", "条件": "C1", "层": "C", "改变因素": ["盐阴离子", "盐浓度"],
+     "溶剂化依据": "rTfO* 大、rLi* 小：TfO- 与多硫化物强相互作用（同篇实验推断）",
+     "指标": [
+       {"指标": "指定圈数放电容量", "取值点": "第 100 圈", "A": "", "B": "", "单位": "mAh g-1", "方向": "A更差", "来源": "仅图（文字给方向，对照为趋势线预期值）",
+        "原句": "However, the 3-TfO electrolyte registers significantly lower SC than expected due to the strong interaction of the anions with Li+."}
+     ]}
+  ],
+  "备注": "8 种电解液（1/3 M × 4 种阴离子）的第 33、100 圈比容量与衰减率只在 Fig. 3、5、S8；文字只给相关趋势（长期比容量随阴离子迁移率升高），没有逐对数值。电解液用量未写，E/S 不可算。系列相关型论文：核心字段按 A vs B 拆不自然，可能需要'系列'记法。"
+}

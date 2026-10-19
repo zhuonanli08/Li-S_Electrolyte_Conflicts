@@ -1,0 +1,1527 @@
+
+<<PAGE 1>>
+RESEARCH ARTICLE
+www.advmatinterfaces.de
+Insight into the Impact of Electrolyte on Passivation of
+Lithium–Sulfur Cathodes
+Walter Cistjakov, Johanna Hoppe, Jinkwan Jung, Fridolin Röder, Hee-Tak Kim,
+and Ulrike Krewer*
+One of the remaining challenges for lithium–sulfur batteries
+toward practical application is early cathode passivation by the insulating
+discharge product: Li2S. To understand how to best mitigate passivation
+and minimize related performance loss, a kinetic Monte–Carlo model
+for Li2S crystal growth from solution is developed. The key mechanisms
+behind the strongly diﬀerent natures of Li2S layer growth, structure,
+and morphology for salts with diﬀerent (DN) are revealed. LiTFSI electrolyte
+in dimethyl ether leads to lateral Li2S growth on carbon and fast passivation
+because it increases the Li2S precipitation-to-dissolution probability on carbon
+relative to Li2S. In contrast, LiBr electrolyte has a higher DN and yields a
+particle-like structure due to a signiﬁcantly higher precipitation-to-dissolution
+probability on Li2S compared to carbon. The resulting large number of Li2S
+sites further favors particle growth, leading to low passivation. This study is
+able to identify the key parameters of the electrolyte and substrate material to
+tune Li2S morphology and growth to pave the way for optimized performance.
+1. Introduction
+Increasing demand for sustainable, low-cost, and high gravi-
+metric energy storage motivates research and development on
+next-generation batteries. Lithium–sulfur batteries (LSBs) are at-
+tractive alternatives to Lithium-ion batteries (LIBs) due to their
+high gravimetric energy density, with practical values reaching
+400 Wh kg−1. They also feature high environmental sustain-
+ability, low cost, and widespread abundance of the active mate-
+rial, sulfur. LSBs are already available in niche applications,[1]
+W. Cistjakov
+Institute of Energy and Process Systems Engineering
+Technische Universität Braunschweig
+Langer Kamp 19b, Braunschweig 38106, Lower Saxony, Germany
+W. Cistjakov, J. Hoppe, U. Krewer
+Cluster of Excellence “SE2A – Sustainable and Energy-Eﬃcient Aviation”
+Technische Universität Braunschweig
+Hermann-Blenk-Str. 42, Braunschweig 38108, Lower Saxony, Germany
+E-mail: ulrike.krewer@kit.edu
+The ORCID identiﬁcation number(s) for the author(s) of this article
+can be found under https://doi.org/10.1002/admi.202400632
+© 2024 The Author(s). Advanced Materials Interfaces published by
+Wiley-VCH GmbH. This is an open access article under the terms of the
+Creative Commons Attribution License, which permits use, distribution
+and reproduction in any medium, provided the original work is properly
+cited.
+DOI: 10.1002/admi.202400632
+however, their widespread application is
+still inhibited due to performance issues
+caused by the insulating nature of their
+charge product (S8) and discharge prod-
+uct (Li2S), as well as self-discharge caused
+by the diﬀusion and migration of solu-
+ble intermediates, that is, polysulﬁdes,
+between the anode and cathode. These
+processes result in low sulfur utilization
+in the whole cell, volume expansion of
+the cathode, low cycle number, and low
+coulombic eﬃciency.
+To overcome these challenges, re-
+search has focused on understanding
+and controlling dissolved polysulﬁdes
+and their electrochemical and chemical
+reactions, as well as on the deposition
+and dissolution of the charge/discharge
+products, sulfur and lithium sulﬁde.
+Several works have designed cathode
+frameworks
+to
+enclose
+polysulﬁdes
+within porous carbon,[2,3] or graphene[4] structures, or to sup-
+press the dissolution and diﬀusion of polysulﬁdes with gel
+polymers.[5] These approaches showed progress in improving
+sulfur utilization, but challenges in preventing surface passiva-
+tion still remain.
+Other studies have investigated the precipitation of Li2S on
+a substrate material, such as carbon or graphene, in order to
+identify the underlying mechanisms of passivation. Noh et al.[6]
+revealed experimentally how the discharge rate inﬂuenced the
+Li2S precipitate structure at the carbon surface; high currents
+J. Hoppe
+Transformation Pathways
+Potsdam Institute for Climate Impact Research (PIK)
+Telegrafenberg A 3, Potsdam 14412, Brandenburg, Germany
+J. Jung, H.-T. Kim
+Department of Chemical and Biomolecular Engineering
+Korean Advanced Institute of Science and Technology
+291 Daehak-ro, Daejeon 34141, South Korea
+F. Röder
+Bavarian Center for Battery Technology (BayBatt)
+University of Bayreuth
+Weiherstraße 26, Bayreuth 95448, Bavaria, Germany
+U. Krewer
+Institute for Applied Materials – Electrochemical Technologies
+Karlsruhe Institute of Technology
+Adenauerring 20b, Karlsruhe 76131, Baden-Wuerttemberg, Germany
+Adv. Mater. Interfaces 2025, 12, 2400632
+2400632 (1 of 15)
+© 2024 The Author(s). Advanced Materials Interfaces published by Wiley-VCH GmbH
+
+<<PAGE 2>>
+www.advancedsciencenews.com
+www.advmatinterfaces.de
+resulted in the formation of numerous randomly distributed Li2S
+islands, which coalesced into an amorphous structure on the car-
+bon surface. In contrast, low currents allowed enough time for
+the species to coordinate and form a ﬂat crystalline Li2S sur-
+face on carbon, which resulted in early passivation during dis-
+charge. In addition, high discharge rates were also found to be
+better for cyclability because the amorphous Li2S was more read-
+ily dissolved, which resulted in charge overpotentials. Temper-
+ature was also shown to impact Li2S deposition; Lang et al.[7]
+compared the cyclability at room temperature and 60 °C for
+a 1:1 mixture of 1,2-dimethoxyethane (DOL) and 1,3-dioxolane
+(DME) with lithium bis-(ﬂuorosulfonyl)imid (LiFSI) conductive
+salt. Here, they showed better cyclability at high temperatures.
+LiF is produced from LiFSI degradation in signiﬁcant amounts at
+60 °C, where it ﬁlls in the nanocavities of the Li2S/Li2S2 structure
+and forms a solid ﬁlm; this ﬁlm captures polysulﬁdes eﬀectively
+while retaining good Li+ conductivity. After each cycle, almost all
+solids are removed from the surface. In contrast, at room tem-
+perature, only crystalline Li2S was precipitated and little LiF was
+produced. As a result, the solid and poorly soluble Li2S2 accumu-
+lates after each cycle leading to an electrically insulating layer.
+In a diﬀerent approach to mitigate surface passivation, Chu
+et al.[8] changed the electrolyte salt to control the shape of Li2S
+precipitates formed during discharge. The widely used DOL:
+DME (1:1) electrolyte with a lithium bis(triﬂuoromethane sul-
+fonyl)imide (LiTFSI) conductive salt has a low donor number
+and low Li2S solubility; resulting in a ﬂat Li2S structure at the
+surface of the carbon substrate material after discharge. To pre-
+vent this detrimental structure, which leads to rapid passivation,
+Chu et al. replaced the conductive salt with the high donor num-
+ber salt, lithium bromide (LiBr). This high doner number salt
+features a high solubility for Li2S. This high solubility leads to a
+beneﬁcial 3D particle-like Li2S structure, slower passivation, and
+a higher discharge capacity compared to the LiTFSI electrolyte.
+Lang et al.[9] compared LiTFSI and LiFSI in DOL: DME. They
+conﬁrmed the ﬂat growth structure in cells with LiTFSI-based
+electrolytes, and they showed that cells with LiFSI-based elec-
+trolytes formed spherical Li2S particles. The mechanisms of how
+these structures form and evolve over time are mostly speculative
+due to experimental limitations.
+Mechanistic models that range from the atomic- to macroscale
+are increasingly used for understanding and optimizing the pro-
+cesses in LSBs, including passivation.[10] Liu et al.[11] used den-
+sity functional theory (DFT) to investigate the growth of the in-
+soluble species, Li2S and Li2S2, on a crystalline Li2S surface.
+They found that Li2S is energetically favored over Li2S2 to de-
+posit on (111) and (110) Li2S surfaces. Park et al.[12] employed
+ﬁrst-principles calculations to conﬁrm the existence of Li2S2 as
+only a metastable phase that was directly transformed to Li2S,
+and that the (111) surface is more prone to Li2S crystal growth.
+Furthermore, Liu et al.[13] investigated the deposition of lithiated
+polysulﬁdes on silicene and graphene with a method that cou-
+ples coupling DFT calculations and kinetic Monte–Carlo (kMC)
+approach. They found that silicene can mitigate the polysulﬁde
+shuttle but induces faster surface passivation due to the higher
+attractive forces of Li2S with the surface. In a further study, they
+used their kMC approach to investigate the inﬂuence of temper-
+ature and S2−concentration on graphene surface passivation.[14]
+Andritos et al.[15] investigated doping graphene to increase the
+graphene binding energy to mitigate the polysulﬁde shuttle. A 3D
+kMC approach was proposed by Thangavel et al.,[16] in which they
+simulated a cathode with all soluble and insoluble sulfur species
+they deﬁned. They showed the transport of polysulﬁdes and the
+production of Li2S close to the carbon particles for high and low
+discharge rates. So far, no molecular or kMC simulation studies
+have addressed why there are diﬀerent Li2S crystal structures or
+examined the signiﬁcant inﬂuence of electrolyte solubility and
+concentration on the precipitation process.
+On the macroscale, most simulation studies have focused
+on the electrochemical reactions and transport of dissolved
+polysulﬁdes,[17–19] Schön et al.[20] revealed the complex interplay
+of chemical and electrochemical reactions by using a kinetic
+model containing seven reaction steps and diﬀusion. They also
+observed the early onset of Li2S precipitation. The works by Ren
+et al.,[21] Xiong et al.[22] and Danner et al.[23] have analyzed the pre-
+cipitation of the insoluble products S8 and Li2S and the resulting
+structures. They focused on determining the eﬀect of discharge
+on the formation of spherical Li2S particles with diﬀerent radii.
+For this purpose, they have used constant reaction rates of Li2S
+or the classical theory of nucleation and growth.
+Such continuum approaches suﬀer from the inability to repre-
+sent the inherent stochastic nature and inhomogeneity of pre-
+cipitation. Wehinger et al.[24] reviewed multiscale approaches,
+which combine, for example, kMC and continuum or DFT and
+kMC models; these help to show inhomogeneities in layer growth
+versus electrode thickness for LIB anodes.[25] These also re-
+veal the impact of reaction versus transport on the local com-
+position of the solid electrolyte interphase (SEI) formed on Li
+metal.[26] Ab-initio parameterized kMC models revealed the im-
+pact of electrolyte composition on the thickness and composition
+of the SEI on Li metal; higher salt concentrations lead to thin-
+ner SEIs.[27] Such models have not yet been used for analyzing
+LSBs.
+The strong impact of electrolyte composition on Li2S growth
+and the resulting precipitate structure observed by Chu et al.,[9,28]
+and Lang et al.[9] indicates that electrolyte composition tailoring
+is a highly promising pathway to enable high-performance and
+durable LSB cathodes. To our best knowledge, so far, no sim-
+ulation work has investigated the eﬀect of electrolyte composi-
+tion on surface passivation. Such an analysis promises to pro-
+vide important new insights into the growth mechanisms and
+governing processes of passivation layer formation, as well as
+their sensitivity to electrolyte, surface, and performance proper-
+ties. In this work, we employ a kMC model of solution-mediated
+Li2S crystal growth to study these behaviors and properties. The
+model integrates approaches from the ﬁeld of growth kinetics of
+organic crystals to consider the electrolyte’s interaction with the
+solid crystal surface,[29–31] These approaches studied the growth
+of a simple cubic system, the Kossel crystal, and applied it exem-
+plarily to the crystallization of hexamethylenetetramine from an
+aqueous and alcoholic solution.[29] Here, we show that our model
+can reproduce the experimentally observed diﬀerent Li2S struc-
+tures and morphologies for DME electrolytes with two diﬀerent
+conductive salts, LiTFSI and LiBr. We will highlight the strongly
+diﬀerent nature of the evolution of precipitation structures for
+both electrolytes, how the number of next Li2S neighbors impacts
+growth, and how electrode surface properties impact the sensitiv-
+ity to the electrolyte.
+Adv. Mater. Interfaces 2025, 12, 2400632
+2400632 (2 of 15)
+© 2024 The Author(s). Advanced Materials Interfaces published by Wiley-VCH GmbH
+ 21967350, 2025, 5, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/admi.202400632 by Tsinghua University Library, Wiley Online Library on [22/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 3>>
+www.advancedsciencenews.com
+www.advmatinterfaces.de
+Figure 1. Electrochemical performance and cathode precipitate morphology for lithium–sulfur battery: a) Measured discharge curves at 0.05C for 1 m
+LiBr and LiTFSI. Experimental SEM images and average thickness of Li2S precipitates on carbon nanoﬁber-based cathode after discharge for b) LiTFSI
+electrolyte and c) LiBr electrolyte. Discharge was terminated at half of the discharge capacity of the second plateau at 340 mAh g−1 for 1 m: LiTFSI, and
+780 mAh g−1 for 1 m LiBr (cf. Figure S1, Supporting Information). Corresponding kMC simulation results of the Li2S structure and average thickness at
+the carbon surface area for d) LiTFSI electrolyte and e) LiBr electrolyte. Parameters in Table 1 were used.
+2. Results
+Understanding the impact of electrolyte salts on discharge per-
+formance and Li2S precipitate morphology is at the center
+of this publication. The experimentally analyzed setup con-
+sists of lithium–sulfur cells with a carbon nanoﬁber cathode,
+a polypropylene separator, a lithium metal anode, and a DME
+electrolyte containing polysulﬁdes with either LiBr or LiTFSI as
+salt. The electrolyte/polysulﬁde solution is prepared by dissolving
+Li2S8 into the electrolyte. Using dissolved Li2S8 instead of solid
+S8 prevents the eﬀects of solid S8 at the surface. Discharge of the
+cell is stopped in the middle of the second voltage plateau, before
+complete passivation, to allow for better morphological analysis
+of Li2S precipitate on the carbon surface. The experiments were
+used to parameterize the kMC simulations. For the derivation
+of mathematical model and experimental details see the Experi-
+mental Section (Section 4). The following sections will reveal the
+sensitivity of the precipitate morphology evolution to electrolyte
+and electrode properties by model-based scanning of the impact
+of a wide range of electrode and electrolyte properties.
+2.1. Experimental versus Simulated Li2S Morphology
+The experimentally obtained discharge performance and Li2S
+growth morphology for a low and a high donor number elec-
+trolyte are given in Figure 1a–c, respectively.
+Both discharge curves show high voltages ≈2.33 V for a short
+time before dropping to 2.1 V and recovering to a second plateau
+≈2.13 V. The voltage drop occurs more quickly with the LiTFSI
+electrolyte, and the voltage minimum is reached at a lower dis-
+charge capacity. The discharge is terminated at half of the dis-
+charge capacity of the second voltage plateau, 780 mAh g−1 for
+the LiBr electrolyte and 340 mAh g−1 for the LiTFSI electrolyte,
+determined by an earlier full discharge experiment (Figure S1,
+Supporting Information). Terminating the discharge at half of
+the discharge capacity of the second plateau timing was chosen
+to assess the Li2S morphology on the carbon surface in a post-
+mortem analysis and to avoid complete passivation of the carbon
+surface. The predicted structures for full and half discharge are
+similar (Figure S1, Supporting Information), conﬁrming the gen-
+eral trends discussed in the following. Further, comparison at the
+same capacity for both electrolytes would not be feasible as at the
+ﬁnal capacity for the cell with LiTFSI the second plateau in the
+cell with LiBr, and thus precipitation, has not yet started. At the
+start of cell discharge for both electrolytes, long chain polysul-
+ﬁdes (S2−
+8 ) react to shorter chains (S2−
+4 ) that cause the initial high
+voltage. According to Ghaznavi et al.,[17] the steep voltage drop
+can be attributed to the initiation of the reaction of S2−
+4
+to S2−,
+which is followed by the precipitation of Li2S, ultimately lead-
+ing to the voltage plateau. The plateau is explained by an equal
+consumption-to-production ratio of S2−, which leads to a constant
+S2−concentration in the electrolyte bulk. The growth of the Li2S
+precipitate on the carbon surface continues until the discharge is
+terminated. The experimentally obtained average Li2S thickness
+on the carbon surface was 4.7 nm for the LiTFSI electrolyte and
+15 nm for the LiBr electrolyte.
+For the LiTFSI electrolyte, a ﬂat, ﬁlm-like Li2S surface struc-
+ture that fully covers the nanoﬁber surface is formed (Figure 1b,
+see also Figure S1d, Supporting Information for full discharge).
+No deﬁned particle structures are recognizable. In contrast, the
+LiBr electrolyte yields a rough Li2S surface structure with large
+round precipitates (Figure 1c, see also Figure S1e, Supporting
+Information for full discharge) with individual particle diameters
+that range from 49 to 85 nm.[8] The diﬀerences between ﬂat struc-
+tures for LiTFSI and the rough ones for LiBr salts are due to the
+larger solubility of Li2S for LiBr.
+Simulations on a 100 × 100 nm carbon surface accurately re-
+produced the experimentally observed morphology and average
+Adv. Mater. Interfaces 2025, 12, 2400632
+2400632 (3 of 15)
+© 2024 The Author(s). Advanced Materials Interfaces published by Wiley-VCH GmbH
+ 21967350, 2025, 5, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/admi.202400632 by Tsinghua University Library, Wiley Online Library on [22/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 4>>
+www.advancedsciencenews.com
+www.advmatinterfaces.de
+Table 1. Material-speciﬁc parameter set for the simulation scenario for the LiTFSI and the LiBr electrolyte.
+Symbol
+Description
+LiTFSI
+LiBr
+Unit
+𝛼111
+Surface roughness factor
+16.549a)
+6.0452a)
+–
+ΔP
+Interfacial diﬀerence parameter
+3.75b)
+3.75b)
+–
+Ksp
+Solubility product
+10−3[14]
+5.958 × 105a)
+mol3 m−9
+kt
+Frequency factor
+2.497 × 10−4b)
+6.249 × 10−3b)
+s−1
+XLi2S
+Molar fraction
+1.048 × 10−13a)
+1.394 × 10−4a)
+mol m−3
+csat
+Li2S
+Concentration of Li2S in a saturated electrolyte
+10−12a)
+1.33 × 10−3c)
+mol m−3
+csalt
+Li+
+Li+ concentration from the conducting salt
+103[14]
+103[14]
+mol m−3
+cS2−
+S2−concentration during 0.05C discharge in precipitation phase
+6.5 × 10−4b)
+40b)
+mol m−3
+a)Calculated;
+b)Adjusted to reproduce experiments;
+c)Measured experimentally.
+precipitate thickness, as seen in Figure 1d,e. Although the car-
+bon support in the experiment consisted of round nanoﬁbers, the
+assumption of a ﬂat kMC surface is justiﬁed because the ﬁbers
+were suﬃciently large that their circumference of 946 nm was
+≈10 times larger than the full kMC grid size, which would re-
+sult in only a small curvature. Speciﬁc properties of the carbon
+will also enter the unknown model parameters, which were ad-
+justed to reproduce the experiment: The identiﬁed parameters of
+the frequency factor kt, the interfacial diﬀerence parameter ΔP
+and the S2−concentration in the oversaturated solution cS2−are
+given in Table 1. kt, as a frequency factor, aﬀects the precipita-
+tion time and is adjusted to reproduce the precipitation duration
+of the experiment. The calculation of the binding energy under
+vacuum conditions by Chu et al.[8] has been used to estimate ΔP.
+The higher binding energy of Li2S on Li2S layer (2.48 eV) shows
+higher binding aﬃnity than on graphite (1.39 eV). This reveals
+that the ΔP can only be positive. Due to missing interaction en-
+ergies we adjusted the value manually to ΔP = 3.75 to reproduce
+the experimental results for the carbon nanoﬁbers. For LiTFSI,
+the S2−concentration of 6.5 × 10−4 mol m−3 was chosen that was
+close to the value of 10−3 mol m−3 predicted by the simulation
+study of Ghaznavi et al.[17] In contrast, LiBr electrolyte is able to
+dissolve more Li2S due to its higher solubility, which is why S2−
+was adjusted to 40 mol m−3. Further parameters are material-
+speciﬁc properties that have been measured or calculated (see SI).
+As the only parameters determined from the experiments, that
+is, ΔP, kt and cS2−, were applied for both electrolytes, diﬀerences
+in precipitation kinetics and morphology between the electrodes
+can be attributed to material parameters.
+The kMC simulation using the LiTFSI electrolyte yielded an
+average Li2S thickness of 4.7 ± 0.13 nm and a fully covered sur-
+face. The structure predicted by the simulation, a ﬂat surface with
+small roughness, as well as the average Li2S thickness, corre-
+sponds well with experimental results. The minimum Li2S thick-
+ness is 3.3 nm, whereas the highest site is only 5.7 nm, indicat-
+ing that lateral Li2S precipitation is favored. Homogeneous layer
+growth can be assumed to continue during the second half of the
+discharge, with the thick insulating layer increasingly impeding
+electron transfer from the carbon surface. This leads to the exper-
+imentally observed voltage decrease and low practical capacity (cf.
+Figure S1, Supporting Information).
+The simulation using LiBr yielded a surface area covered only
+83% by Li2S. The 15 nm average Li2S thickness with a high stan-
+dard deviation of 3.76 nm matches the particle-like structure in
+the experiments. Based on the simulation, Li2S favors to precip-
+itate on top of the Li2S surface instead of on the carbon surface
+because of the higher energetical attraction of Li2S molecules to
+each other (detailed analysis see sections below). This leads to
+the growth of particle-like structures of up to 40 nm and a high
+surface roughness. As there is still 17% free carbon surface area
+after half of a full discharge, this facilitates the reduction of sul-
+fur species at a much lower depth of discharge for the LiBr elec-
+trolyte, which results in a higher sulfur utilization and higher
+practical capacities compared to the LiTFSI electrolyte.
+In conclusion, our kMC model can reproduce the diﬀer-
+ent Li2S precipitate structures observed experimentally for elec-
+trolytes with 1 m LiTFSI versus LiBr. A particle-like structure is
+achieved for LiBr, in contrast to a ﬂat surface structure obtained
+for the LiTFSI electrolyte. The particle-like structure allows for
+slower passivation; which enables a longer availability of elec-
+trons from the carbon surface for polysulﬁde reduction, which,
+in turn, explains the higher capacities observed experimentally.
+To understand why we see such diﬀerent behavior for the salts,
+we look deeper into the evolution of the Li2S morphology in the
+following section.
+2.2. Evolution of Li2S Morphology
+We analyze the evolution of the structures from the beginning
+in order to determine how and why the diﬀerent salts cause a
+diﬀerence in precipitate morphology. Figure 2a shows the evolu-
+tion of the Li2S surface coverage, ΘLi2S, that is, the fraction of the
+carbon surface covered by Li2S precipitate, and the evolution of
+the average precipitate thickness̄ dLi2S, including their respective
+standard deviations, for the LiTFSI electrolyte.
+Four stages are visible during the Li2S precipitation process,
+similar to the analysis of Liu et. al.[14] Nucleation starts in the
+ﬁrst phase, with negligible average thickness and coverage, with
+only single surface sites occupied by Li2S (Figure 2a). Here, de-
+position and dissolution of Li2S on the carbon surface occur at
+almost equal rates because not enough molecules congregate in
+one spot to form a stable nucleus. The Gibbs free energy state can
+be used to explain this process; for the single Li2S molecules at
+the carbon surface, the energy to precipitate is close to that for dis-
+solution. The concentration-, surface-, environment- and species-
+dependent Gibbs energies enter the transition rates for disso-
+lution and precipitation (see Equations (1–4)). We analyze the
+Adv. Mater. Interfaces 2025, 12, 2400632
+2400632 (4 of 15)
+© 2024 The Author(s). Advanced Materials Interfaces published by Wiley-VCH GmbH
+ 21967350, 2025, 5, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/admi.202400632 by Tsinghua University Library, Wiley Online Library on [22/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 5>>
+www.advancedsciencenews.com
+www.advmatinterfaces.de
+Figure 2. Evolution of surface for 1 m LiTFSI electrolyte during discharge: a) evolution of average thickness,̄ dLi2S, and of carbon surface coverage by
+Li2S precipitate, ΘLi2S, over time. Surface structure and square root roughness of the surface, Rq, b) at the end of nucleation (1294 s), c) at the end of
+island growth (4002 s), and d) at the end of island coalescence (6809 s). cS2−= 6.5 × 10−4 mol m−3.
+precipitation process by checking the ratio of the transition
+rates for precipitation versus dissolution at similar sites, that is,
+with similar Li2S neighbors: if the ratio is above 1, precipita-
+tion occurs; otherwise, precipitates are more likely to dissolve.
+The probability ratio of precipitation versus dissolution of Li2S
+on the carbon surface is signiﬁcantly below one for less than
+two precipitated Li2S neighbors (Γprec
+C,0 ∕Γdiss
+C,0 = 9.9 × 10−4 and
+Γprec
+C,1 ∕Γdiss
+C,1 = 0.25). This makes it unlikely and energetically unfa-
+vorable for Li2S to remain as a precipitate on the surface. As soon
+as two neighboring Li2S exist, the ratio rises signiﬁcantly above 1
+( Γprec
+C,2 ∕Γdiss
+C,2 = 61.45), therefore precipitation is more likely to hap-
+pen. After 1294 s, there were suﬃcient events of Li2S molecules
+meeting at the surface to form a stable nucleus that covered the
+carbon surface by 0.5% (Figure 2b).
+This marks the beginning of the second phase, isolated is-
+land growth, where the coverage and average precipitate thick-
+ness increase exponentially. In this phase, the single islands
+grow monotonously, reaching diameters of up to 10–20 nm, but
+heights below 2.5 nm. The islands are then rather ﬂat (Figure 2c).
+The outer edges of the islands are smooth and rounded, so that
+the laterally deposited Li2S molecules are directly incorporated
+into the island structure, resulting in a uniform, but anisotropic
+(because more lateral) growth. This LiTFSI-typical growth can
+again be explained by energy-related process probabilities; pre-
+cipitation of Li2S on a single Li2S site is less likely than dis-
+solution ( Γprec
+Li2S,0∕Γdiss
+Li2S,0 = 0.04), whereas precipitation is favored
+at preexisting kink sites on the carbon surface, for example,
+Γprec
+C,2 ∕Γdiss
+C,2 = 61.45. This implies that lateral growth is energeti-
+cally more favorable for the LiTFSI electrolyte, and while vertical
+growth is slower, it is still steadily occurs.
+A turning point is reached at a coverage of ≈50%, because is-
+lands to collide more frequently. During this phase of island co-
+alescence, the coverage curve’s slope decreases to zero until it
+reaches full surface coverage, as shown in Figure 2d. During is-
+land coalescence, the thickness initially grows exponentially then
+slows down and becomes linear as it approaches 100% carbon
+surface coverage. The end of the island coalescence occurs along-
+side the ﬂattening of the Li2S surface, where the surface rough-
+ness decreases from 0.728 to 0.302 nm. Here, the last phase of
+monotonous layer growth starts. In the absence of Li2S interac-
+tion with the substrate surface, the energetic preference shifts
+toward the linear growth of one Li2S layer after another. Con-
+stant current operation will continue until the area is fully pas-
+sivated and beyond until the tunneling distance is reached.[32] At
+this point, the voltage will break down, and the constant current
+operation is not feasible anymore. Our experiment and simula-
+tion stop before this point, that is, we can assume constant cur-
+rent and constantly high supersaturation. The here analyzed and
+modeled precipitation is a chemical process which occurs as long
+as there is suﬃcient supersaturation. The relatively ﬂat, homoge-
+neous growth predicted by the simulation resembles the experi-
+mentally reported growth mechanism of LiTFSI electrolyte,[8] as
+indicated in Figure 1b).
+The simulation is terminated at all lattice sites when the pre-
+cipitate thickness is at least 5 nm. After this point electron tunnel-
+ing through the insulating Li2S becomes increasingly more diﬃ-
+cult. We conclude that the experiment performed for the LiTFSI
+electrolyte was stopped within the constant growth region.
+In order to understand why the morphology is diﬀerent for
+LiBr, we will now analyze the simulated progression in morphol-
+ogy, coverage, and layer growth for LiBr electrolyte, shown in
+Figure 3.
+The growth stages of Li2S for LiBr in Figure 3a resemble
+that of Li2S for LiTFSI electrolyte: an initial nucleation phase
+Adv. Mater. Interfaces 2025, 12, 2400632
+2400632 (5 of 15)
+© 2024 The Author(s). Advanced Materials Interfaces published by Wiley-VCH GmbH
+ 21967350, 2025, 5, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/admi.202400632 by Tsinghua University Library, Wiley Online Library on [22/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 6>>
+www.advancedsciencenews.com
+www.advmatinterfaces.de
+Figure 3. Evolution of surface for 1 m LiBr electrolyte during discharge: a) evolution of average thickness,̄ dLi2S, and of carbon surface coverage by Li2S
+precipitate, ΘLi2S, over time. Surface structure and square root roughness of the surface, Rq, b) at the end of nucleation (2802 s), c) at the end of island
+growth (15 660 s), and d) at the end of island coalescence (24 750 s). cS2−= 40 mol m−3.
+without precipitation, followed by a steep increase in thickness
+and a ﬂat increase in coverage in the isolated island growth
+phase; after reaching 50% coverage, a turning point in coverage
+starts the island coalescence phase with a slow transition to lin-
+ear thickness growth. In contrast to LiTFSI, the isolated island
+growth phase starts later, that is, after 3000 s (Figure 3b) instead
+of 1200 s. The longer time to form stable nuclei can be explained
+by the lower precipitation-to-dissolution probability ratios of Li2S
+on carbon that result from the lower binding energy of Li2S to
+the carbon surface (e.g., Γprec
+C,2 ∕Γdiss
+C,2 = 0.2 for LiBr versus 65 for
+LiTFSI). For LiBr, at least 3 neighboring Li2S are required to get
+a higher probability ration of precipitation versus dissolution:
+Γprec
+C,3 ∕Γdiss
+C,3 = 1.58.
+A signiﬁcantly higher average thickness is reached in the
+phase of isolated island growth, especially during the island coa-
+lescence phase, compared to the growth with LiTFSI electrolyte.
+At the end of both phases, the average thickness is approxi-
+mately ﬁve times higher s for the LiBr electrolyte compared to
+the LiTFSI electrolyte. This increase is related to the evolution
+of a more uneven Li2S morphology at the carbon surface, as
+seen in Figure 3c,d. At 50% coverage, large particles of semi-
+spherical shape are visible, with islands being similarly high and
+wide.
+The largely uneven surface coverage is quantitatively visi-
+ble with large surface roughnesses of 6.02 nm (Figure 3c) to
+14.14 nm (Figure 3d). These are more than 8 and 40 times larger,
+respectively than that obtained for LiTFSI. The result is a surface
+structure with a highly accessible carbon surface and therefore a
+low surface passivation. When all carbon sites are covered by at
+least 5 nm (termination condition), which happens ≈25 000 s, the
+average thickness was found to be 26 nm versus 5 nm in the case
+of LiTFSI case. This corresponds to a signiﬁcantly higher amount
+of precipitated Li2S. The uneven surface structure causes slower
+passivation, leading to the experimentally observed doubling of
+capacity with LiBr (cf. Figure S1, Supporting Information).
+Simulations further revealed a phenomenon with practical im-
+plications: coverage and average thickness show a higher stan-
+dard deviation for LiBr compared to LiTFSI electrolyte (colored
+areas in Figures 2a and 3a). The morphology and properties
+of the precipitate might deviate signiﬁcantly, suggesting likely
+stronger ﬂuctuations in Li2S morphology along the cell thick-
+ness for the LiBr electrolyte and on the resulting electrode per-
+formance. For LiBr, thickness variation increases monotonously
+with time, whereas for LiTFSI it becomes negligible at the end of
+discharge. Due to the low precipitation-to-dissolution probabil-
+ity ratios on carbon for LiBr, the time to form stable Li2S nuclei
+ﬂuctuates strongly. Finally, the high ﬂuctuations could also mean
+that the semi-spherical Li2S particles occur at diﬀerent sizes. In
+Figure 3c, smaller particles with 10 nm thickness sit beside a
+large structure of 25 nm. The underlying strong ﬂuctuations in
+growth rates between particles and in morphology can again be
+explained by energetic considerations.
+For this, we have a deeper look into the impact of morphol-
+ogy, that is, the number of neighbors and supersaturation on the
+growth rates. Assuming a saturated, but not oversaturated, so-
+lution which corresponds to a dimensionless, supersaturation-
+dependent Gibbs energy of 𝛽
+= 0 (see Equation (8)), precipita-
+tion and dissolution on a kink site with three neighboring Li2S,
+that is, i = 3, are equally likely for both electrolytes (see Equa-
+tions (1)–(2)). The interface between the crystal and the solution
+decreases in conﬁgurations with more than three lateral neigh-
+bors, however, it increases in conﬁgurations with fewer than
+three neighbors. For sites with more neighbors or for supersatu-
+rated solutions (dimensionless Gibbs energy 𝛽> 0), the proba-
+bility ratio is shifted toward Li2S precipitation. Meaning, the Li2S
+precipitate grows after a stable Li2S nucleus is formed. It is worth
+Adv. Mater. Interfaces 2025, 12, 2400632
+2400632 (6 of 15)
+© 2024 The Author(s). Advanced Materials Interfaces published by Wiley-VCH GmbH
+ 21967350, 2025, 5, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/admi.202400632 by Tsinghua University Library, Wiley Online Library on [22/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 7>>
+www.advancedsciencenews.com
+www.advmatinterfaces.de
+Figure 4. Impact of electrolyte salt on the evolution of the density of sites with at least three lateral neighbors, i ≥3, for Li2S on carbon or Li2S sites.
+S2−concentration of 6.5 × 10−4 mol m−3 (equal to 𝛽
+= 13.38) for LiTFSI electrolyte and of 40 mol m−3 (equal to 𝛽
+= 4.21) for LiBr electrolyte. The
+colored area denotes the standard deviation for ﬁve individual simulation runs.
+investigating the progression of available lateral next neighbors
+(NN) for Li2S molecules during the precipitation process on car-
+bon and Li2S, respectively. For the here-analyzed conditions with
+S2−concentration of 40 and 6.5 × 10−4 mol m−3, which corre-
+sponds to 𝛽LiBr = 4.21 and 𝛽LiTFSI = 13.38, three or more neigh-
+bors are suﬃcient. Figure 4 shows the evolution of the density of
+lattice sites with at least three neighbors for the two electrolytes.
+For both LiTFSI and LiBr, the density of stable Li2S sites
+(i ≥3) commences at carbon only after entering the previously
+discussed phase of island growth following 1294 and 2802 s, re-
+spectively. For Li2S with less than three neighbors, the probability
+of precipitation is lower than the probability of dissolution, lead-
+ing to unstable Li2S sites on the carbon (see Supporting Informa-
+tion). The site density for i ≥3 on carbon reaches a maximum
+when the Li2S islands start to coalesce. It subsequently decreases
+due to the increasing carbon surface coverage. The maximum site
+density for the LiBr electrolyte on carbon is 50% smaller than that
+of the LiTFSI electrolyte, which means that fewer Li2S islands
+were formed on carbon for LiBr. This can be seen in Figure 2c,
+where many more individual islands are present in the LiTFSI
+electrolyte. Once the density of Li2S on the carbon surface drops
+to zero, there is no accessible carbon surface (ΘLi2S = 1).
+The density of sites for a given number of neighbors needs to
+be multiplied with the respective next neighbor-dependent rate to
+determine the overall probability of surface growth. For LiTFSI,
+precipitation on carbon is >1300 times more likely than dissolu-
+tion, while precipitation on carbon is much less likely for LiBr
+(Γprec
+C,3 ∕Γdiss
+C,3 = 1.58, Γprec
+C,4 ∕Γdiss
+C,4 = 11.84, Γprec
+C,5 ∕Γdiss
+C,5 = 88.84). This
+explains why Li2S in the LiTFSI electrolyte covers the carbon sur-
+face rapidly after the onset of island growth, whereas the deposi-
+tion of Li2S on the carbon in the LiBr electrolyte is slow because
+it is energetically unfavorable.
+Figure 4 also reveals a large diﬀerence between site density
+on Li2S versus carbon. In LiTFSI electrolytes, the density of sites
+on Li2S with at least three Li2S neighbors rises later and slower
+than on carbon. Furthermore, the site density reaches a maxi-
+mum toward the end of the island coalescence phase and stays
+relatively constant after a slight drop. This indicates a shift to a
+rather homogenous linear layer growth once the carbon surface
+is nearly covered, as shown in Figure 2. The complete coverage
+of carbon with Li2S contributes to the constant density and ho-
+mogeneous growth because almost all Li2S nucleation and is-
+land growth occurs on Li2S. In contrast, in the LiBr electrolyte,
+the density on Li2S of sites with at least three Li2S next neigh-
+bors increases immediately after the start of island growth, that
+is, simultaneously with growth on carbon and then it grows expo-
+nentially. The large diﬀerence between the monotonous site den-
+sity growth on Li2S for LiBr and the evolution of a maximum for
+LiTFSI can be attributed to the following; once a stable nucleus
+is formed in LiTFSI, the energetically favored crystal-solution in-
+terface is used to proceed with the precipitation of Li2S until the
+full layer is covered. It is very unlikely that new Li2S nuclei will
+form on Li2S in the course of island growth due to the high en-
+ergy cost of creating a new crystal-solution interface. Since the
+probability of Li2S precipitation on a new layer is much lower
+than precipitation in a layer that is already ﬁlled with Li2S this
+leads to lateral growth. In the LiBr electrolyte, the probability for
+the precipitation of Li2S on carbon with three neighboring Li2S is
+only slightly higher than the probability of dissolution. Moreover,
+the diﬀerence between the probability of precipitation on itself to
+that on carbon is several magnitudes higher. As a result, Li2S fa-
+vors precipitation on a newly formed Li2S layer instead of on the
+lowest carbon layer. This results in a continuous increase in the
+density of sites of Li2S-on-Li2S that leads to growth in the height
+of Li2S structures instead of lateral growing.
+In summary, surface morphology and passivation can be in-
+ﬂuenced by electrolyte properties because they change the at-
+traction of the Li2S to carbon and precipitated Li2S. High solu-
+bilities reduce the probability of precipitation, which further de-
+creases on foreign substrates. This results in high 3D structures
+and reduced passivation, as in the case of the LiBr electrolyte. In
+the following section, we investigate how changes in electrolyte
+Adv. Mater. Interfaces 2025, 12, 2400632
+2400632 (7 of 15)
+© 2024 The Author(s). Advanced Materials Interfaces published by Wiley-VCH GmbH
+ 21967350, 2025, 5, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/admi.202400632 by Tsinghua University Library, Wiley Online Library on [22/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 8>>
+www.advancedsciencenews.com
+www.advmatinterfaces.de
+Figure 5. Impact of supersaturation, represented by S2−concentration, cs2−, and 𝛽, for LiTFSI and LiBr electrolyte on precipitation: time until the start
+of island growth (ΘLi2S = 0.5%) and island coalescence (ΘLi2S = 50%) for a) LiTFSI and b) LiBr; the average thickness at 50% coveragē dLi2S for c) LiTFSI
+and d) LiBr. Error bars represent the standard deviation computed from ﬁve simulations. Probability ratio of precipitation to dissolution of adsorbed
+Li2S, Γprec / Γdiss , depending on the number of adsorbed Li2S neighbors for diﬀerent supersaturation 𝛽in e) LiTFSI electrolyte and f) in LiBr electrolyte.
+ΔP = 3.75 * denotes the concentration of the reference scenario.
+conditions and substrate properties impact the observed precipi-
+tation behavior. This will further reveal the potential for tuning of
+precipitation and enable the assessment of the eﬀect of changes
+in operating conditions.
+2.3. Inﬂuence of Supersaturation
+The
+supersaturation
+of
+a
+solution,
+and
+therefore
+the
+supersaturation-dependent
+dimensionless
+Gibbs
+energy
+𝛽,
+is the driving force for crystallization,[31,33,34] The degree of
+supersaturation with Li2S is dependent on the concentration of
+Li+ and S2−ions. The previously used S2−concentration during
+precipitation of LiTFSI and LiBr electrolytes was adjusted to the
+experimentally measured 0.05C discharge rates, and a constant
+concentration was assumed during the second discharge plateau,
+that is, during precipitation. Supersaturation may change when
+changing battery chemistry or operation, which is what we
+analyze in the following. In particular, the S2−concentration
+level depends on the S2−production and precipitation rate. The
+former can be directly inﬂuenced by the discharge rate.[17]
+A linear proportionality of the S2−concentration to discharge
+rate cannot be assumed, because of the complex behavior and
+varying concentrations of the intermediate polysulﬁdes,[17,20] Yet,
+it is reasonable to assume that an increase in discharge rate leads
+to a higher S2−concentration in the electrolyte bulk, ultimately
+resulting in more supersaturation. To analyze the impact of the
+discharge rate on the precipitation, the dimensionless Gibbs en-
+ergy 𝛽, which is proportional to the logarithm of the electrolyte
+supersaturation, was reduced by 8% and increased by 16% com-
+pared to the reference values identiﬁed for 0.05C. The high values
+represent higher C-rates.
+Figure 5 shows the eﬀects of supersaturation on precipitation
+time and on the obtained structures. The duration until the onset
+of Li2S island growth, represented by ΘLi2S = 0.5%, and of island
+coalescence, represented by ΘLi2S = 50%, is depicted in Figure 5a
+for LiTFSI and in Figure 5b for LiBr electrolyte. The duration
+decreases with increasing S2−concentration, that is, supersatu-
+ration. This is because a higher supersaturation increases the
+chemical potential diﬀerence and consequently the probability
+of Li2S precipitation on carbon and on itself. Hence, with high
+supersaturation, less time is required until enough stable nuclei
+are formed, and the islands grow. The precipitation rates at low
+supersaturation are substantially diminished and require a high
+number of next neighbors on the carbon surface in order to form
+a stable nucleus. In this case, it takes a very long time for such
+Adv. Mater. Interfaces 2025, 12, 2400632
+2400632 (8 of 15)
+© 2024 The Author(s). Advanced Materials Interfaces published by Wiley-VCH GmbH
+ 21967350, 2025, 5, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/admi.202400632 by Tsinghua University Library, Wiley Online Library on [22/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 9>>
+www.advancedsciencenews.com
+www.advmatinterfaces.de
+Figure 6. Li2S surface morphology, time until reaching the island coalescence phase (ΘLi2S = 50%) reaching a surface coverage of 50%, t50%, and
+maximum local Li2S precipitate thickness, dmax for varying supersation (represented by cS2−) and changes in substrate binding energy, represented by
+the interfacial diﬀerence parameter, ΔP from 3.5 to 4 for a) LiTFSI and b) LiBr electrolyte. Reference conﬁgurations are marked by a square. Note: A
+higher value of ΔP corresponds to lower binding energy on the substrate.
+a state to occur. For all concentrations in the LiTFSI electrolyte,
+the time until islands coalesce is 3.3 times that for island forma-
+tion. For LiBr, the relative time interval from island growth to
+coalescence is even higher, so that at a high S2−concentration of
+80 mol m−3, it takes 16 times longer for the islands to coalesce
+than to form stable nuclei, compared to twice at low S2−concen-
+tration of 30 mol m−3.
+As the S2−concentration increases, the probability of precip-
+itation versus dissolution increases, ultimately reducing overall
+growth time. This is shown for LiTFSI in Figure 5e and for LiBr
+in Figure 5f. In all cases, the probability is higher for higher sat-
+urations. It also increases with the number of neighbors and is
+higher for precipitation on Li2S than on carbon. The impact is
+more pronounced for LiBr. In LiBr electrolyte, the probability ra-
+tio for the precipitation of Li2S on Li2S with one neighbor (i ≥1)
+exceeds one only for high supersaturations. In contrast, the same
+ratio is far below 1 for precipitation on carbon. It needs at least
+three neighboring Li2S for the probability ratio to exceed one, that
+is, to build stable and grow precipitates also on carbon; supersat-
+uration increases the probability signiﬁcantly due to more Li2S
+being able to adsorb. With the high concentration, the nuclei oc-
+cur more frequently, which shortens the time until island growth.
+However, they are relatively unstable due to the still high proba-
+bility of dissolution, which results in the observed long duration
+required for a signiﬁcant part of the surface to become covered
+(ΘLi2S = 50%). With the high probability for growth on Li2S, this
+leads to fewer and larger particles for high concentrations (cf.
+Figure 6b).
+In LiTFSI, the Li2S precipitation on carbon can occur with only
+one Li2S neighbor (i ≥1), yet it requires high supersaturation,
+which explains the decreasing growth time with supersaturation.
+From two Li2S neighbors onward, precipitation is likely for all
+concentrations and substrates. Therefore, not only nuclei forma-
+tion but also growth and coalescence on carbon are facile and
+rapid, even for low concentrations. Growth times are therefore
+less sensitive to concentration. Because the probability ratio is
+quite close on carbon and Li2S, Li2S precipitates on both, leading
+to many ﬂat particles (Figure 6a). Increasing concentration leads
+to more and smaller particles.
+The average precipitate thickness is used to quantify the
+amount of Li2S precipitate. It is shown in Figure 5c,d at the start
+of island coalescence. Thickness decreases for higher supersat-
+uration for both electrolytes. Again, the sensitivity to supersat-
+uration is more pronounced for LiBr electrolytes. For LiBr, the
+thickness is 9 times smaller for the maximum versus minimum
+supersaturation, while for LiTFSI it is only 2.5 times smaller.
+For the largest supersaturation of LiTFSI electrolytes, the thick-
+ness is 0.4 nm, which corresponds roughly to the height of one
+Li2S molecule. This shows that precipitation is preferred on the
+carbon surface before a second layer is formed. In general, at
+such high supersaturation, single Li2S molecules tend to form
+more nuclei and small islands rather than large, connected is-
+lands. This can be seen in the morphology snapshots at 50%
+coverage in Figure 6. When decreasing supersaturation, the is-
+land density at 50% coverage decreases due to wider islands for
+LiBr electrolyte and coalesced islands for LiTFSI. The increase in
+Adv. Mater. Interfaces 2025, 12, 2400632
+2400632 (9 of 15)
+© 2024 The Author(s). Advanced Materials Interfaces published by Wiley-VCH GmbH
+ 21967350, 2025, 5, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/admi.202400632 by Tsinghua University Library, Wiley Online Library on [22/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 10>>
+www.advancedsciencenews.com
+www.advmatinterfaces.de
+island size and coalesced islands with lower supersaturation are
+well visible in the morphology snapshots. For LiBr at the lowest
+concentration, even only one single island is visible in an area
+of 100 nm × 100 nm, with the corresponding average precipitate
+thickness of ≈9 nm. In contrast, ﬂat structures occur with LiTFSI
+because the probability for Li2S precipitation on carbon is high
+for more than 2 next neighbors, both on the carbon surface and
+on itself (cf. Figure 5e).
+This leads to the conclusion that low supersaturation, and thus
+low C-rates, lead to larger particles, longer run times, and less
+surface passivation. This trend occurs for both LiBr and LiTFSI,
+though with stronger intensity for LiBr. The low supersaturation
+leads to long nucleation times; allowing the carbon surface to re-
+main free of the electrically insulating Li2S for an extended period
+of time. At low supersaturation, fewer islands with higher Li2S
+precipitates are formed, which also keeps the carbon surface free
+of Li2S for longer during precipitation.
+2.4. Growth Control via Substrate Properties
+The substrate in LSB cathodes provides the electrons for the elec-
+trochemical reduction of sulfur and polysulﬁdes, and it interacts
+with Li2S, which precipitates on its surface. Changing the prop-
+erties of the substrate will change the binding energy to Li2S, and
+ultimately the Li2S surface structure during precipitation, sulfur
+utilization, and discharge capacity. Various strategies to modify
+the binding energy between substrate and polysulﬁdes have al-
+ready been investigated in the literature.[35] Increasing the bind-
+ing energy of polysulﬁdes and Li2S to the substrate by doping the
+surface reduces shuttle eﬀects.[15] Substrate materials with high
+and low binding energies were experimentally proven to aﬀect
+the surface morphology diﬀerently.[36] This motivates tuning the
+surface properties to achieve better Li2S precipitate morphologies
+and cell performance.
+In the following, we elucidate the eﬀect of surface tuning on
+the precipitation process and the resulting morphology. For this
+purpose, stronger and weaker binding substrate material is in-
+vestigated by varying the interfacial diﬀerence parameter, ΔP, by
+6.6%. A lower binding energy of Li2S on carbon, and thus a lower
+probability of precipitation and higher probability of dissolution,
+corresponds to a larger ΔP (see Equations (3) and (4)). The ef-
+fect of the substrate binding energy of Li2S on the substrate and
+Li2S supersaturation, that is, discharge rate, on the morphology
+is displayed in Figure 6 for three diﬀerent ΔP and each of the
+electrolytes.
+The ﬁgure shows the impact of S2−concentration, that is, su-
+persaturation, and interfacial diﬀerence parameter ΔP on the
+Li2S surface morphology for LiTFSI and LiBr electrolytes at the
+start of island coalescence (ΘLi2S = 50%). Further, it provides the
+corresponding elapsed growth time and the largest obtained lo-
+cal thickness. For further results, see Supporting Information. A
+weaker binding energy (ΔP = 4) increases the growth time and
+the maximum thickness compared to the reference conditions
+(ΔP = 3.75, marked with a square). This trend holds for all su-
+persaturations and salts. The increase is more pronounced for
+LiBr: On weak binding substrates, a single particle can be ob-
+served that is 1.6 times higher (max. 41.4 nm) and 1.5 times
+larger in diameter compared to the Li2S particles at the refer-
+ence scenario. The number of particles has approximately halved.
+This behavior can be explained by analyzing the ratio between
+the precipitation rate and the dissolution rate for sites with three
+neighbors: increasing the binding energy, that is, decreasing the
+interfacial diﬀerence parameter, yields higher precipitation-to-
+dissolution probabilities on carbon, with Γprec
+C,3 ∕Γdiss
+C,3 = 1.23 for
+ΔP
+= 4, 1.58 for ΔP
+= 3.75, and 2.03 for ΔP = 3.5 (cf.
+Figure S2, Supporting Information), all at reference concentra-
+tion. The probability of new nuclei forming is 40% lower for
+ΔP = 4 compared to the reference scenario, accordingly, there is
+a higher likelihood for precipitated molecules to dissolve. In con-
+trast, Li2S-on-Li2S precipitation and dissolution are ΔP indepen-
+dent (Equations (1) and (2)), and growth is energetically more fa-
+vorable on Li2S than on carbon (Γprec
+Li2S,3∕Γdiss
+Li2S,3 = 67), which allows
+for the growth of large particle-like structures with low surface
+passivation.
+Decreasing both supersaturation and binding energies causes
+growth time and precipitate thickness to reach the highest val-
+ues, and particles become less numerous. The lowest supersat-
+uration and binding energy yield huge particle-like Li2S struc-
+tures with up to 51.4 nm thickness for LiBr, and for LiTFSI, ﬂat
+Li2S islands with a maximum thickness of 4.1 nm and widths
+≈20 nm. For LiTFSI electrolytes, the inﬂuence of supersatura-
+tion is more pronounced than the inﬂuence of the binding en-
+ergy of the substrate material. Changing the S2−concentration
+from 2.2 × 10−4 to 48 × 10−4 mol m−3 doubles the thickness
+and diameter of the Li2S islands for all ΔP. In contrast, changing
+the binding energy of substrate material shows minor changes
+in the Li2S morphology and only a 33% increase in diameter
+and thickness. The relatively small impact of the binding energy
+on Li2S growth and morphology for LiTFSI is again attributed
+to the precipitation versus dissolution properties; the probabil-
+ity ratios of precipitation versus dissolution for Li2S on the sub-
+strate material are close to the probability of Li2S on Li2S, re-
+sulting in a ﬂat growth of Li2S islands. However, a strong in-
+crease of ΔP, so that the repulsive behavior of the substrate to
+Li2S becomes stronger, could provide a change in the growth
+structure.
+ΔP has a stronger impact for LiBr; with increasing supersatu-
+ration, LiBr shows a signiﬁcant inﬂuence of ΔP on the Li2S struc-
+ture. More single Li2S islands with 4–5 nm thickness are formed
+for the highest of S2−concentrations and highest binding energy
+at ΔP = 3.5. Compared to this, double the average thickness can
+be observed for the lowest binding energy at ΔP = 4 at the same
+concentration. This reduction of the binding energy from ΔP =
+3.5 to 4 decreases the probability of precipitation to dissolution
+on carbon by ≈65%; resulting in fewer, but larger islands, that
+are doubled in height and width.
+In conclusion, both electrolytes show the same trends: for low
+supersaturation, that is, discharge rates and weakly Li2S-binding
+substrates, passivation is delayed and high Li2S precipitate thick-
+ness is observed. This eﬀect is larger for electrolytes with a high
+Li2S solubility, as shown here for LiBr electrolytes. As a lower pas-
+sivation and longer operating time is desired for discharge, this
+suggests that supports with lower binding aﬃnities are prefer-
+able.
+In any case, a strong sensitivity of the precipitate morphology
+and discharge performance to a change in substrate properties is
+expected, especially for high donor number electrolytes.
+Adv. Mater. Interfaces 2025, 12, 2400632
+2400632 (10 of 15)
+© 2024 The Author(s). Advanced Materials Interfaces published by Wiley-VCH GmbH
+ 21967350, 2025, 5, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/admi.202400632 by Tsinghua University Library, Wiley Online Library on [22/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 11>>
+www.advancedsciencenews.com
+www.advmatinterfaces.de
+3. Conclusion
+Surface passivation due to the insulating nature of Li2S is a cru-
+cial challenge for LSBs Controlling it requires a thorough under-
+standing of the fundamental processes involved. The kMC model
+presented here provides unprecedented insight into the precip-
+itation behavior of Li2S on the carbon surface and the result-
+ing surface passivation for diﬀerent electrolytes, substrate prop-
+erties, and discharge rates. It is able to explain the experimen-
+tally observed changes in Li2S morphology and passivation state
+at 0.05C discharge rate by using the material properties of ei-
+ther LiTFSI or LiBr electrolyte: The diﬀerence in solubility of
+Li2S in the electrolytes leads to drastic changes in the interac-
+tion energy between Li2S on substrate as well as Li2S on itself,
+resulting in diﬀerent probabilities where Li2S is more likely to
+precipitate. For the LiTFSI electrolyte, the nucleation probabil-
+ity on a carbon substrate is fast because even two neighboring
+Li2S are suﬃcient, that the precipitation rate is faster than the
+dissolution rate. This causes fast nucleation and lateral growth,
+leading to capacity losses during discharge due to fast passiva-
+tion of the electrochemically active carbon surface and, thus, to
+low sulfur utilization. In contrast, large particle-like Li2S struc-
+tures are formed in the LiBr electrolyte, leading to slower pas-
+sivation. This can be attributed to the low interaction energy be-
+tween the carbon surface and Li2S. The precipitation rate is faster
+than the dissolution rate only when six or more neighboring Li2S
+molecules are present at the surface. Correspondingly, nucleation
+and lateral growth on carbon, and consequently passivation, is
+slow compared to Li2S-on-Li2S growth, where only two molecules
+are needed to get a higher probability of precipitation to
+dissolution.
+At higher discharge currents, more S2−is produced, resulting
+in higher supersaturation. The increased S2−concentration in-
+creases the chemical driving force for Li2S precipitation, which
+causes faster nucleation, growth, and passivation. For both elec-
+trolytes, a high discharge rate is disadvantageous because signif-
+icantly smaller Li2S islands are formed on carbon, which sub-
+sequently quickly coalesce and passivate the surface. The LiBr
+electrolyte performs comparably better at high discharge rates
+because larger structures are formed. Consequently, electrolytes
+with higher Li2S solubility are able to improve the discharge ca-
+pability for high rates.
+Using substrate materials other than carbon or modifying car-
+bon surface properties in the sulfur electrode changes the bind-
+ing energy between Li2S and the substrate. This, in turn, changes
+the diﬀerence in precipitation rates on substrate versus on Li2S
+itself. The inﬂuence of the substrate properties is particularly pro-
+nounced at low concentrations, that is, discharge rates. When
+Li2S binds more strongly to the substrate, number of nuclei in-
+creases, thus Li2S precipitates become smaller and more numer-
+ous, accelerating passivation. The sensitivity to substrate prop-
+erties is especially pronounced for the LiBr electrolyte: low su-
+persaturation with low binding energies causes large Li2S semi-
+spherical particles, whereas high supersaturation with high bind-
+ing energies causes ﬂat Li2S precipitates. Note that modifying
+the substrate-Li2S binding may also modify the binding energy
+to polysulﬁdes.[35] An interesting way to control morphology and
+prevent early surface passivation may be to design supports or
+the support surface with regions of more strongly binding mate-
+rials, which serve as nucleation points. They allow to inﬂuence
+the substrate-Li2S binding energy and enable the precise con-
+trol of Li2S morphology. Examples for such surface modiﬁcations
+are catalysts on the substrate surface,[37,38] We propose to ana-
+lyze such supports in combination with electrolyte design to tai-
+lor both, Li2S precipitation and polysulﬁde attraction close to the
+surface.
+Our model-based analysis has given signiﬁcant new insights
+into how, why, and when the surface passivates in lithium–sulfur
+cathodes, and that promising strategies to mitigate this eﬀect
+are the manipulation of electrolyte composition, supersaturation,
+that is operating current, and surface properties. This shows that
+the electrolyte design needs to move toward a LiBr electrolyte in
+combination with a weakly binding substrate material. The here
+presented trend of getting more ﬂat structures for LiTFSI than
+for LiBr growth structure in DME solvent can be conﬁrmed by
+Chu et al.[28] using the same conducting salt in a solvent con-
+sisting of DOL: DOL. A slightly lower Li2S solubility than LiBr
+but much higher solubility than LiTFSI electrolyte would re-
+sult in a few large particles that do not passivate the electroac-
+tive surface much. This could be improved by adding a weakly
+binding substrate material to directly precipitate Li2S onto the
+existing Li2S, leaving the surface free for longer,[6,36] In addi-
+tion, the model demonstrates capability in analyzing electrolytes
+with diﬀerent solubilities, and thus DN numbers; by this, it al-
+lows to assess inﬂuencing factors such as the conductive salt
+anion (this work), solvent,[39] additives,[40] and conductive salt
+concentration.[41]
+Further, Yan et al.[42] and Lang et al.[7] suggested that perfor-
+mance is also hampered by Li2S2 as a poorly soluble and insu-
+lating intermediate. On the other hand, Liu et al.[11] suggested
+Li2S as the predominant species. Studies using an extended kMC
+model may check, under which conditions Li2S2 plays a signiﬁ-
+cant role.
+The kMC model may also be extended in the future to a mul-
+tiscale model by coupling it with a continuum model of elec-
+trodes or cells. This would allow for the analysis of the eﬀect
+of polysulﬁdes with a more complex reduction mechanism,[20]
+and of concentration, current and potential distribution within
+the electrode. We have applied such models for the reactive
+formation of the SEI in LIBs and revealed uneven ﬁlm for-
+mation as a function of current, and the eﬀect of concentra-
+tion on ﬁlm composition and morphology,[27,43] The here pre-
+sented kMC model thus provides an important base for fur-
+ther studies regarding performance and passivation in sulfur
+cathodes.
+4. Methods
+This work focused on the comparison of Li2S growth and emerg-
+ing structures at carbon substrates in LSBs with two diﬀerent
+liquid electrolytes. Methods proposed by Binsbergen et al.[30]
+and reﬁned by Rak et al.[31] for crystal growth from solution
+were used to describe the growth mechanism. Simulated re-
+sults were compared with electrochemical measurements pre-
+pared by discharging coin cells and post-mortem images of
+the carbon surface structure with a scanning electron micro-
+scope (SEM). Further details are described in the following
+section.
+Adv. Mater. Interfaces 2025, 12, 2400632
+2400632 (11 of 15)
+© 2024 The Author(s). Advanced Materials Interfaces published by Wiley-VCH GmbH
+ 21967350, 2025, 5, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/admi.202400632 by Tsinghua University Library, Wiley Online Library on [22/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 12>>
+www.advancedsciencenews.com
+www.advmatinterfaces.de
+Figure 7. a) Coarse graining of Li2S antiﬂuorite structure to face cubic centered single atom crystal structure, and b) overview of processes at the
+carbon/electrolyte interface, including precipitation and dissolution of Li2S taking place in the kinetic Monte–Carlo model.
+4.1. Experimental Set-Up
+Cathode Preparation:
+The carbon nano ﬁber (CNF) electrodes
+were
+prepared
+by
+electrospinning.
+First,
+1
+g
+of
+polyacrylonitrile
+(PAN, Mw = 150 000, Sigma-Aldrich) was dissolved in 10 mL N,N-
+dimethylformamide (DMF, Sigma-Aldrich) and stirred for 12 h. This
+uniform polymer solution was ﬁlled in a syringe (21 gauge) and an electric
+ﬁeld (17 kV) was applied between the syringe and aluminum (Al) foil
+collector to electrospun with a 1 mL h−1 feeding rate. The electrospun
+membrane was detached from Al foil, dried overnight in an oven at
+60 °C, and punched into 18 pi disk size. The membrane was stabilized in
+ambient air for 3 h at 220 °C, followed by carbonization at 800 °C under N2
+ﬂow conditions for 1 h. After cooling, the polysulﬁde/CNF electrode was
+prepared by drop-casting 40 μl of an 0.2 m Li2S8 solution onto the CNF
+electrode, corresponding to 2 mg cm−2 loaded cathode. Li2S8 solution
+was prepared by mixing and heating lithium sulﬁde (Li2S, Sigma-Aldrich)
+and octa-sulfur (S8, Sigma-Aldrich) powder) with a stoichiometric amount
+to prepare a Li2S8 solution.
+Electrolyte Preparation:
+The electrolyte was prepared in an argon-
+ﬁlled glove box by dissolving 1 m lithium salt (LiX, X = TFSI or Br) in
+1,2-dimethoxyethane (DME).
+Electrochemical Measurements:
+The electrochemical properties were
+evaluated using a 2032-type coin cell. A Li foil (450 μm, Honjo Metal)
+punched with Ø 16.5 mm size was inserted, and a Celgard 2400 monolayer
+polypropylene membrane (Ø 18 mm) was used as a separator. WBC300L
+(Wonatech) automatic battery cycler was used to perform the galvanos-
+tatic charge and discharge test.
+Characterization:
+Li2S deposition morphologies were observed using
+scanning electron microscopy (SEM, Magellan 400, FEI Co.).
+4.2. Mathematical Model
+The model simulated how Li2S, as the discharge product of LSBs,
+was deposited at the substrate surface. Carbon was the substrate
+material within the cathode onto which an antiﬂuorite Li2S crys-
+tal structure was formed. Following previous work by Liu et al.,[14]
+the crystal structure was coarse-grained to a face-centered cubic
+structure, with single Li2S units occupying an area the size of a
+sulfur atom (see Figure 7a). A Li2S molecule with diameter ΔL
+occupied a site of equal lattice size. Lithium ions, geometric ori-
+entation, and bond angle of the molecule were neglected, so it
+was possible to model the predominant (111) surface growth di-
+rection of the crystal,[11,12] A Li2S molecule could precipitate when
+there was a solid molecule in the layer below it (z-direction) and
+if the probability of precipitation was high enough depending on
+the number of neighboring Li2S (below or in x or y-direction).
+As customary for kMC simulations,[44,45] the carbon substrate
+structure was assumed to have the same lattice size and crystal
+structure as the growing crystal structure. The concentration of
+lithium-ions cLi+ and of sulﬁde ions cS2−in the electrolyte bulk
+was kept constant throughout the simulation, which was a rea-
+sonable assumption due to the low discharge rate below 0.5C.
+It was reported by Ghaznavi et al.[17] that for discharge rates at
+0.5C and below, a constant polysulﬁde concentration could be as-
+sumed. At such low discharge rates, a uniform distribution of
+all species in the cell could be achieved by diﬀusion.[17] The dis-
+solved species in the electrolyte were therefore evenly distributed,
+and the sites at the interface had the same conditions as those in
+the electrolyte bulk. Furthermore, bond energies between all de-
+posited Li2S and neighboring solid Li2S and carbon molecules
+were considered uniform in all directions.
+A 2D + 1 kMC modeling approach, as depicted in Figure 7b,
+was used to investigate the interaction of processes at the car-
+bon surface, which lead to surface passivation by Li2S precipi-
+tates during discharge. The two lateral dimensions were x and
+y, and growth and molecule movement were just possible in the
+z direction. There were four transition events taking place; pre-
+cipitation and dissolution of Li2S on both the carbon surface and
+on solid Li2S. The transition rates of Li2S precipitation and dis-
+solution depended on the change of free energy for the transi-
+tion from one state to another. They might contain three energy
+terms for the change of energy due to diﬀerent eﬀects. First, an
+energy term with a surface roughness factor 𝛼111 was needed to
+occupy a site with i lateral neighbors by a single molecule. A sec-
+ond energy contribution accounted for the diﬀerence in chemical
+standard potential due to the concentration of dissolved species,
+represented by 𝛽. Finally, there was an energy correction term
+containing ΔP, which accounted for cases where Li2S precipi-
+tated on a foreign structure, that is, carbon, and not on solid
+Li2S. This yielded the following transition rates for precipitation
+Adv. Mater. Interfaces 2025, 12, 2400632
+2400632 (12 of 15)
+© 2024 The Author(s). Advanced Materials Interfaces published by Wiley-VCH GmbH
+ 21967350, 2025, 5, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/admi.202400632 by Tsinghua University Library, Wiley Online Library on [22/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 13>>
+www.advancedsciencenews.com
+www.advmatinterfaces.de
+on Li2S, Γprec
+Li2S,i, for dissolution of Li2S, Γdiss
+Li2S,i, for precipitation on
+carbon, Γprec
+C,i and for dissolution from the carbon surface Γdiss
+C,i :
+Γprec
+Li2S,i = kt × exp
+[
+−𝛼111
+6
+(3 −i) + 𝛽
+2
+]
+(1)
+Γdiss
+Li2S,i = kt × exp
+[𝛼111
+6
+(3 −i) −𝛽
+2
+]
+(2)
+Γprec
+C,i = kt × exp
+[
+−𝛼111
+6
+(3 −i) + 𝛽
+2 −ΔP
+2
+]
+(3)
+Γdiss
+C,i = kt × exp
+[𝛼111
+6
+(3 −i) −𝛽
+2 + ΔP
+2
+]
+(4)
+with the number of lateral next neighbors in the same x–y-plane
+i ∈ℕwith 0 ≤i ≤6 and either precipitation or dissolution on
+Li2S or carbon. kt is the frequency factor and is usually used for
+parametrization to experiments.[46] It was assumed to be inde-
+pendent of the site position and similar for both events.[31] The
+ﬁrst term, containing the surface roughness factor 𝛼111 repre-
+sented the free energy required to cause the change in the sur-
+face structure of the solid–liquid interface. It accounted for the
+interaction energy between solid and liquid phases for a given
+lattice site and the number of its lateral neighbors, which was a
+maximum of six for a crystalline (111) fcc facet. As the interac-
+tion energies were not suﬃciently available in the literature, the
+approach for crystals grown from solution by Davey and Elwen-
+spoek who considers an ideal solution with a solubility of Li2S in
+the electrolyte expressed as molar XLi2S was followed:[47,48]
+𝛼111 = 𝜉(111)
+[
+LLi2S
+RTM, Li2S
+−ln (XLi2S
+)
+]
+(5)
+with the heat of fusion LLi2S, melting temperature of Li2S TM, Li2S,
+and the crystallographic factor 𝜉(111) × 𝜉(111) was calculated by di-
+viding the number of lateral neighbors in a crystal by the number
+of total neighbors. For (111) facets, which had six lateral neigh-
+bors, and three on top and three below, this yielded a value of
+𝜉(111) = 0.5. R is the universal gas constant. The molar fraction
+was calculated by the concentration of Li2S in the Li2S saturated
+electrolyte with a given conductive salt, csat
+Li2S,j (j ∈{LiTFSI, LiBr}),
+divided by the total concentration of the solution,[49,50]
+XLi2S,j =
+csat
+Li2S,j
+cSolvent + csat
+Li2S,j
+(6)
+The solvent concentration, cSolvent, for DME solvent is calcu-
+lated as follows.
+cSolvent = 𝜌DME
+MDME
+(7)
+where 𝜌DME is the density and MDME is the molecular weight of
+the solvent DME.
+The thermodynamic driving force for crystallization was the
+Gibbs energy of fusion Δ𝜇, that is, the chemical potential diﬀer-
+ence between the solid and solute phases. It was used to calcu-
+late the dimensionless energy 𝛽as the ratio between the Gibbs
+energy and the thermal energy RT. Assuming an ideal solution,
+𝛽can be expressed as the logarithm of the supersaturation ratio
+of Li2S. This in turn could be calculated by the fraction of the
+concentration of dissolved species Li+ and S2−to the solubility
+product Ksp,[31,51]
+𝛽= Δ𝜇
+RT = ln
+((csalt
+Li+ + cS2−
+)2cS2−
+Ksp
+)
+(8)
+here the Li+ concentration cLi+ contains all lithium ions from the
+conducting salt and the dissolved Li2S. Full dissociation was as-
+sumed for Li2S in the solution. The solubility product of Li2S was
+calculated from the product of the ion pair concentrations of Li+
+and S2−constituting a saturated solution. Li+ was taken from the
+LiTFSI or LiBr conducting salt concentration csalt
+Li+ , and the S2−
+concentration was equal to the concentration of the fully dissoci-
+ated Li2S in a saturated solution of Li2S.[52]
+Ksp =
+(
+csalt
+Li+ + csat
+Li2S,j
+)2
+× csat
+Li2S,j
+(9)
+According to Chu et al.,[8] a fraction (in this study: 1/3) of Li+
+ions were solvated by Br−ions and did not participate in reactions
+occurring within the electrolyte and, consequently, also not in the
+deposition process, which had to be taken into account when us-
+ing the salt concentration.
+The binding energy of Li2S to the carbon substrate diﬀered
+from that onto precipitated Li2S, which was discussed above. To
+account for precipitation on such chemically foreign substrates,
+the approach was applied by Binsbergen et al.,[30,53] which in-
+troduced the interfacial diﬀerence parameter ΔP, to account for
+the interaction energy of the solid-foreign substrate and liquid-
+foreign substrate relation. Due to the complexity of calculating
+the interaction energies, these parameters were estimated from
+the here presented experiments. A detailed explanation and a dis-
+cussion of the estimation of the parameter ΔP was given in from
+the Section 2. A lower binding energy of Li2S on carbon than on
+Li2S precipitated corresponded to a positive ΔP following the pro-
+cedure of Binsbergen et al.,[30,53]
+The kMC algorithm was based on the variable step size method
+(VSSM),[27,43,44] and structured lists.[54] The (111) fcc lattice has
+Nx sites in x-direction, Ny in y-direction, yielding Nyx = Nx ×
+Ny carbon sites, on which Li2S could adsorb from top, that
+is, from z-direction (see Figure 7b). Precipitation and dissolu-
+tion of Li2S were only allowed in the z-direction. As no pre-
+cipitation or dissolution in the x- or y-direction was allowed,
+this was a 2+1-D kMC model. Most kMC models used this
+approach, as they were computationally eﬃcient. At the edges
+of the lattice, periodic boundaries were implemented. As the
+concentration in the electrolyte was assumed to be constant
+and homogeneous, diﬀusion processes were not resolved. The
+lattice in the z-direction was dimensioned so that the Li2S
+structure could grow suﬃciently until reaching the termination
+condition. The termination condition was fulﬁlled when the
+smallest Li2S thickness reached 5 nm. Above 5 nm, the probabil-
+ity for electron transfer by tunneling strongly diminished,[25,32]
+making the battery discharge, that is sulfur reduction, stop.
+Adv. Mater. Interfaces 2025, 12, 2400632
+2400632 (13 of 15)
+© 2024 The Author(s). Advanced Materials Interfaces published by Wiley-VCH GmbH
+ 21967350, 2025, 5, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/admi.202400632 by Tsinghua University Library, Wiley Online Library on [22/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 14>>
+www.advancedsciencenews.com
+www.advmatinterfaces.de
+The kMC algorithm for growth and dissolution was as fol-
+lows:
+1) Determine transition rates for precipitation Γprec or dissolu-
+tion Γdiss at every surface site (Li2S,C) accounting for the sur-
+face site’s number of lateral neighbors.
+2) Calculate the sum of transition rates Γtot = ∑Nxy Γprec +
+∑Nxy Γdiss, which is the sum of all possible processes on a face
+cubic-centered lattice site of Nxy = Nx × Ny
+3) Draw a ﬁrst random number 𝜁1 ∈(0, 1).
+4) Calculate with 𝜁1 the time step Δt for a single event that is
+determined by:
+Δt = −
+ln (𝜁1
+)
+Γtot
+(10)
+5) Draw a second random number 𝜁2 ∈(0, 1).
+6) Choose the event, consisting of precipitation or dissolution,
+at a lattice site and using 𝜁2 according to ∑Nxy−1 Γprec∕diss <
+𝜁2Γtot ≤∑Nxy Γprec∕diss
+After each time step Δt, Γtot was updated by calculating the
+transition rate on the last changed lattice site, and the time
+counter was updated: tk + 1 = tk + Δt. Due to the stochastic na-
+ture of kMC, each full kMC simulation was repeated 5 times, and
+average and standard deviation were calculated.
+The lattice size was chosen to be 250 × 250, which yielded ap-
+proximately a surface of 100 nm × 100 nm when assuming a sin-
+gle lattice size of 0.403 nm in the x- and y-direction. See Sup-
+porting Information for more information. This lattice size was
+suﬃciently large to avoid artifacts due to numerical stability.
+The surface structure and its changes were evaluated by means
+of average thickness davg, carbon surface coverage ΘLi2S, density
+of nuclei 𝜌island, and root mean square surface roughness Rq over
+time; for more information and a full set of parameters see Sup-
+porting Information. The frequency factor kt, S2−concentration
+cs2−, and interfacial diﬀerence parameters ΔP were ﬁtted to repro-
+duce the experimentally observed Li2S growth time and crystal
+structure.
+Supporting Information
+Supporting Information is available from the Wiley Online Library or from
+the author.
+Acknowledgements
+The authors would like to acknowledge the funding by the Deutsche
+Forschungsgemeinschaft (DFG, German Research Foundation) under
+Germany´s Excellence Strategy – EXC 2163/1 – Sustainable and Energy
+Eﬃcient Aviation – Project-ID 390881007.
+Open access funding enabled and organized by Projekt DEAL.
+Conﬂict of Interest
+The authors declare no conﬂict of interest.
+Data Availability Statement
+Source data are provided with this paper in the KITopen repository after
+publication at DOI: 10.35097/1954
+Keywords
+crystal growth, gutmann donor numbers, kinetic monte—carlo (kmc) sim-
+ulation, lithium–sulfur batteries (lsb), solubilities
+Received: July 29, 2024
+Revised: September 13, 2024
+Published online: October 14, 2024
+[1] T. Cleaver, P. Kovacik, M. Marinescu, T. Zhang, G. Oﬀer, J. Elec-
+trochem. Soc. 2018, 165, A6029.
+[2] S. Evers, L. F. Nazar, Acc. Chem. Res. 2013, 46, 1135.
+[3] J. Schuster, Angew. Chem., Int. Ed. 2012, 51, 3591.
+[4] H. J. Peng, J. Liang, L. Zhu, J.-Q.i Huang, X. B. Cheng, X. Guo, W.
+Ding, W. Zhu, Q. Zhang, ACS Nano 2014, 8, 11280.
+[5] M. Liu, D. Zhou, Y. B. He, Y. Fu, X. Qin, C. Miao, H. Du, B. Li, Q. H.
+Yang, Z. Lin, T. S. Zhao, F. Kang, Nano Energy 2016, 22, 278.
+[6] H. Noh, J. Song, J. K. Park, H. T. Kim, J. Power Sources 2015, 293, 329.
+[7] S. Y. Lang, Y. Shi, Y. G. Guo, R. Wen, L. J. Wan, Angew. Chem., Int. Ed.
+2017, 56, 14433.
+[8] H. Chu, H. Noh, Y. J. Kim, S. Yuk, J.u-H. Lee, J. Lee, H. Kwack, Y. Kim,
+D. K. Yang, H. T. Kim, Nat. Commun. 2019, 10, 188.
+[9] S. Y. Lang, R. J. Xiao, L. Gu, Y. G. Guo, R. Wen, L. J. Wan, J. Am. Chem.
+Soc. 2018, 140, 8147.
+[10] A. A. Franco, in Li-S Batteries, World Scientiﬁc Publishing Europe Ltd,
+Europe 2017, 335–350.
+[11] Z. Liu, D. Hubble, P. B. Balbuena, P. P. Mukherjee, Phys. Chem. Chem.
+Phys. 2015, 17, 9032.
+[12] H. Park, H. S. Koh, D. J. Siegel, J. Phys. Chem. C 2015, 119, 4675.
+[13] Z. Liu, P. B. Balbuena, P. P. Mukherjee, J. Coord. Chem. 2016, 69, 2090.
+[14] Z. Liu, P. P. Mukherjee, ACS Appl. Mater. Interfaces 2017, 9, 5263.
+[15] E. I. Andritsos, C. Lekakou, Q. Cai, J. Phys. Chem. C 2021, 125, 18108.
+[16] V. Thangavel, O. X. Guerrero, M. Quiroga, A. M. Mikala, A. Rucci, A.
+a. Franco, Energy Storage Mater. 2019, 24, 472.
+[17] M. Ghaznavi, P. Chen, J. Power Sources 2014, 257, 394.
+[18] D. Korﬀ, A. M. Colclasure, Y. Ha, K. Smith, S. DeCaluwe, J. Elec-
+trochem. Soc. 2021, 169, 010520.
+[19] A. F. Hofmann, D. N. Fronczek, W. G. Bessler, J. Power Sources 2014,
+259, 300.
+[20] P. Schön, U. Krewer, Electrochim. Acta 2021, 373, 137523.
+[21] Y. X. Ren, T. S. Zhao, M. Liu, P. Tan, Y. K. Zeng, J. Power Sources 2016,
+336, 115.
+[22] C. Xiong, T. S. Zhao, Y. X. Ren, H. R. Jiang, X. L. Zhou, Electrochim.
+Acta 2019, 296, 954.
+[23] T. Danner, A. Latz, Electrochim. Acta 2019, 322, 134719.
+[24] G. D. Wehinger, M. Ambrosetti, R. Cheula, Z. B. Ding, M. Isoz, B.
+Kreitz, K. Kuhlmann, M. Kutscherauer, K. Niyogi, J. Poissonnier, R.
+Réocreux, D. Rudolf, J. Wagner, R. Zimmermann, M. Bracconi, H.
+Freund, U. Krewer, M. Maestri, Chem. Eng. Res. Des. 2022, 184, 39.
+[25] F. Röder, V. Laue, U. Krewer, Batteries Supercaps 2019, 2, 248.
+[26] M. Gerasimov, F. A. Soto, J. Wagner, F. Baakes, N. Guo, F. Ospina-
+Acevedo, F. Röder, P. B. Balbuena, U. Krewer, J. Phys. Chem. C 2023,
+127, 4872.
+[27] J. Wagner-Henke, D. Kuai, M. Gerasimov, F. Röder, P. B. Balbuena, U.
+Krewer, Nat. Commun. 2023, 14, 6823.
+[28] H. Chu, H. Noh, Y. J. Kim, S. Yuk, J.u-H. Lee, J. Lee, H. Kwack, Y. Kim,
+D. K. Yang, H. T. Kim, Nat. Commun. 2019, 10, 188.
+[29] P. Bennema, J. P. van der Eerden, J. Cryst. Growth 1977, 42, 201.
+[30] F. L. Binsbergen, J. Cryst. Growth 1972, 16, 249
+[31] M. Rak, M. Izdebski, A. Brozi, Comput. Phys. Commun. 2001, 138,
+250.
+Adv. Mater. Interfaces 2025, 12, 2400632
+2400632 (14 of 15)
+© 2024 The Author(s). Advanced Materials Interfaces published by Wiley-VCH GmbH
+ 21967350, 2025, 5, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/admi.202400632 by Tsinghua University Library, Wiley Online Library on [22/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 15>>
+www.advancedsciencenews.com
+www.advmatinterfaces.de
+[32] V. Thangavel, K. H. Xue, Y. Mammeri, M. Quiroga, A. Mastouri, C.
+Guéry, P. Johansson, M. Morcrette, A. A. Franco, J. Electrochem. Soc.
+2016, 163, A2817.
+[33] F. L. Binsbergen, Kolloid Z. Z. Polym. 1970, 238, 389.
+[34] P. Bennema, J. Cryst. Growth 1993, 128, 97.
+[35] H. Li, Y. Li, L. Zhang, SusMat 2022, 2, 34.
+[36] K. Kim, J. Kim, J. H. Moon, Adv. Sci. 2023, 10, 2206057.
+[37] Y. Li, J. Wu, B. Zhang, W. Wang, G. Zhang, Z. W. Seh, N. Zhang, J.
+Sun, L. Huang, J. Jiang, J. Zhou, Y. Sun, Energy Storage Mater. 2020,
+30, 250.
+[38] X. Zhou, J.i Zhou, L. Sun, S. Chen, M. Wang, X. Meng, J. Qu, C. Sun,
+Z. Z. Yu, Y. Huang, C. W. Bielawski, J. Geng, ACS Appl. Energy Mater.
+2023, 6, 11157.
+[39] H. Pan, J. Chen, R. Cao, V. Murugesan, N. N. Rajput, K. S. Han, K.
+Persson, L. Estevez, M. H. Engelhard, J.i-G. Zhang, K. T. Mueller, Y.i
+Cui, Y. Shao, J. Liu, Nat. Energy 2017, 2, 813.
+[40] H. Pan, K. S. Han, M. Vijayakumar, J. Xiao, R. Cao, J. Chen, J. Zhang,
+K. T. Mueller, Y. Shao, J. Liu, ACS Appl. Mater. Interfaces 2017, 9, 4290.
+[41] J. K. Song, M. Kim, S. Park, Y. J. Kim, J. Energy Chem. 2023, 78, 574.
+[42] J. Yan, X. Liu, B. Li, Adv. Sci. 2016, 3, 1600101.
+[43] F. Röder, R. D. Braatz, U. Krewer, Comput. Chem. Eng. 2019, 121, 722.
+[44] M. Andersen, C. Panosetti, K. Reuter, Front. Chem. 2019, 7, 202.
+[45] F. Röder, R. D. Braatz, U. Krewer, J. Electrochem. Soc. 2017, 164,
+E3335.
+[46] A. M. Reilly, H. Briesen, J. Chem. Phys. 2012, 136, 034704.
+[47] R. J. Davey, J. Cryst. Growth 1986, 76, 637.
+[48] M. Elwenspoek, J. Cryst. Growth 1986, 78, 353.
+[49] C. Park, M. Kanduc, R. Chudoba, A. Ronneburg, S. Risse, M. Ballauﬀ,
+J. Dzubiella, J. Power Sources 2017, 373, 70.
+[50] J. Szurgot, M. Szurgot, Cryst. Res. Technol. 1994, 29, 829.
+[51] H. J. M. Kramer, G. M. van Rosmalen, Encyclopedia of separation sci-
+ence, Academic Press, London 2000, 64–84.
+[52] J. L. Burgot, Ionic equilibria in analytical chemistry, Springer, New York
+2012, pp. 1–770.
+[53] F. L. Binsbergen, J. Polym. Sci. 1973, 11, 117.
+[54] T. P. Schulze, J. Comput. Phys. 2008, 227, 2455.
+Adv. Mater. Interfaces 2025, 12, 2400632
+2400632 (15 of 15)
+© 2024 The Author(s). Advanced Materials Interfaces published by Wiley-VCH GmbH
+ 21967350, 2025, 5, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/admi.202400632 by Tsinghua University Library, Wiley Online Library on [22/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

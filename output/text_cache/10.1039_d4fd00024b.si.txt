@@ -1,0 +1,529 @@
+
+<<PAGE 1>>
+1
+Electronic Supplementary Information (ESI)
+Linear ether-based highly concentrated electrolytes 
+for Li-sulfur batteries
+Toru Ishikawa 1, Shohei Haga 1, Keisuke Shigenobu 3, Taku Sudoh 1, Seiji Tsuzuki 2, Wataru Shinoda 
+3, Kaoru Dokko 1,2, Masayoshi Watanabe 2, Kazuhide Ueno 1,2
+1 Department of Chemistry and Life Science, Yokohama National University, 79-5 Tokiwadai, 
+Hodogaya-ku, Yokohama, Kanagawa, 240-8501, Japan
+2 Institute of Advanced Science, Yokohama National University, 79-5 Tokiwadai, Hodogaya-ku, 
+Yokohama, Kanagawa, 240-8501, Japan
+3 Research Institute for Interdisciplinary Science, Okayama University, 3-1-1 Tsushimanaka, Kita-ku, 
+Okayama, Okayama, 700-8530, Japan
+Electronic Supplementary Material (ESI) for Faraday Discussions.
+This journal is © The Royal Society of Chemistry 2024
+
+<<PAGE 2>>
+2
+Numerical data
+Table S1. Calculated and experimental densities of the electrolytes at 323 K.
+Sample
+Density / g cm−3
+Error / %
+MDa
+Exp.b
+[Li(BME)3][TFSA]
+1.098
+1.105
+0.6
+[Li(EPE)3][TFSA]
+1.090
+1.078
+1.1
+a Density values obtained from the MD simulations.
+b Experimental density values.
+MD simulation
+In-house software, the MPDynPFF program 1 was utilized for the all-atom MD simulations, and 
+the NPT ensemble condition was applied to the simulations. The system temperature and pressure 
+were kept at 403 K (or 323 K for the calculation of densities) and 0.1 MPa by a Nosé–Hoover chain 
+thermostat 2-4 and an Andersen barostat 5, respectively. The time constants for the thermostat and the 
+barostat were set at 0.5 and 2 ps, respectively. All C–H bonds were held rigid using the 
+SHAKE/RATTLE algorithm,6 and reversible RESPA was employed for the multiple-time step 
+integration of the equations representing the motion of atoms.7-8 The Lennard-Jones interaction was 
+truncated at 12 Å, whilst long-range electrostatic and induced polarization interactions were estimated 
+using the Ewald method.9 The time-step size for updating the electrostatic interactions in the Ewald 
+reciprocal space was 8 fs, whereas that for the other interactions was 2 fs. Periodic boundary conditions 
+were employed for all three dimensions.
+
+<<PAGE 3>>
+3
+To reduce any biases arising from the initial arrangement of molecules, the following procedures 
+were carried out for the preparation of the initial structures. The system was initially allowed to evolve 
+at 453 K and 10 MPa from the low-density condition of the initial box size for 50 ps, and was 
+subsequently equilibrated at 453 K and 0.1 MPa for 1 ns. Additionally, at least 1 ns equilibration MD 
+runs were then performed at 403 K (or 323 K) without changing the pressure, and a 20 ns production 
+run was carried out to collect the trajectory data at 0.2 ps intervals for analysis. The number of 
+molecules in a cubic cell (~ 27 nm3) was listed as follows for consistency purposes: Li[TFSA]/BME 
+= 50/150 and Li[TFSA]/EPE = 50/150. Only for the illustration of liquid structures of the electrolytes, 
+the number of molecules was changed as following: Li[TFSA]/BME = 400/1200 and Li[TFSA]/EPE 
+= 400/1200, and the cell size was ~ 340 nm3.
+For the purpose of these simulations, the OPLS–AA-based polarizable force field was employed, as 
+described in our previous report. 10-11 For structural analysis, visualization of the structures was carried 
+out using VMD software. 12
+
+<<PAGE 4>>
+4
+Force field parameters.
+The force field parameters were modified to reproduce the molecular structures and the stabilization 
+energy of Li+–solvent and Li+–[TFSA]− pair optimized at MP2(full)/6-311++G** level of theory 
+based on the OPLS-based parameters obtained from literatures.10-11, 13-15 Atomic charges were 
+determined based on the atomic charges obtained by electrostatic potential fitting 16-17 based on the 
+MP2/6-311++G** wave function.
+The total potential was defined by the following equation as described in our previous literature: 10-11
+𝑈(𝑟𝑁) =
+𝑁𝑏𝑜𝑛𝑑
+∑
+𝑖= 1
+1
+2𝑘𝑏(𝑟‒ 𝑟0)2 +
+𝑁𝑎𝑛𝑔𝑙𝑒
+∑
+𝑖= 1
+1
+2𝑘𝜃(𝜃‒ 𝜃0)2 +
+𝑁𝑡𝑜𝑟𝑠𝑖𝑜𝑛
+∑
+𝑖= 1
+1
+2𝑘𝑡(1 + cos (𝑛𝜑+ 𝛿)) +
+𝑁
+∑
+𝑖= 1
+𝑁
+∑
+𝑗> 𝑖
+4𝜀{(
+𝜎
+𝑟𝑖𝑗)
+12 ‒(
+𝜎
+𝑟𝑖𝑗)
+6} +
+𝑁
+∑
+𝑖= 1
+𝑁
+∑
+𝑗> 𝑖
+𝑞𝑖𝑞𝑗
+4𝜋𝜀0𝑟𝑖𝑗
++ 𝑈ind(𝑟𝑁)#(𝐸𝑞. 𝑆1)
+The first three and last three terms describe intramolecular interactions and non-bonding interactions, 
+respectively. Here, , , and  are the force constants in each term,  and  are the bond length and 
+𝑘𝑏𝑘𝜃
+𝑘𝑡
+𝑟0
+𝜃0
+angle at the energy minimum,  is the number of waves,  is the phase,  is the potential depth at the 
+𝑛
+𝛿
+𝜀
+minimum,  is the distance at the potential is zero,  is the vacuum permittivity and  is the partial 
+𝜎
+𝜀0
+𝑞𝑖
+charge on i-th atom, respectively. The final term is the induction term, which is based on the isotropic 
+atomic-induced dipole model and is described by the following equation:
+𝑈ind(𝑟𝑁) =‒
+𝑁
+∑
+𝑖= 1
+𝜇𝑖∙𝐸0
+𝑖‒ 1
+2
+𝑁
+∑
+𝑖= 1
+𝑁
+∑
+𝑗= 1
+𝜇𝑖⋅𝑇𝑖𝑗⋅𝜇𝑗+
+𝑁
+∑
+𝑖= 1
+𝜇𝑖⋅𝜇𝑖
+2𝛼𝑖
+#(𝐸𝑞. 𝑆2)
+
+<<PAGE 5>>
+5
+ is the induced dipole moment,  is the isotropic atomic dipole polarizability of the i-th 
+𝜇𝑖 ( = 𝛼𝑖𝐸𝑇𝑜𝑡𝑎𝑙)
+𝛼𝑖
+atom. 
+ is the total electric field. 
+ is the electric field created by partial atomic charges, and 
+ is 
+𝐸𝑇𝑜𝑡𝑎𝑙
+𝐸0
+𝑖
+𝑇𝑖𝑗
+the second order dipole tensor. 10-11, 18
+
+<<PAGE 6>>
+6
+Table S2. Bond stretching parameters.
+Bond
+ / kcal mol−1 Å−2
+𝑘𝑏
+ / Å
+𝑟0
+CS–CS
+268.0
+1.529
+CS–CT
+268.0
+1.529
+CS–HC
+340.0
+1.090
+CT–HT
+331.0
+1.090
+OES–CS
+570.0
+1.408
+OES–CT
+570.0
+1.408
+CF–FC
+884.0
+1.340
+SO–CF
+471.0
+1.835
+SO–OS
+1274.0
+1.450
+NI–SO
+744.0
+1.600
+Table S3. Angle bending parameters.
+Angle
+ / kcal mol−1 rad−2
+𝑘𝜃
+ / deg.
+𝜃0
+CS–CS–CS
+58.35
+112.7
+CS–CS–CT
+58.35
+112.7
+CS–CS–HC
+37.50
+110.7
+CS–CT–HT
+37.43
+110.7
+CT–CS–HC
+37.43
+110.7
+HC–CS–HC
+33.00
+107.8
+HT–CT–HT
+33.00
+107.8
+
+<<PAGE 7>>
+7
+CS–OES–CS
+55.00
+106.8
+CS–OES–CT
+55.00
+106.8
+OES–CS–CS
+80.00
+109.0
+OES–CS–HC
+35.00
+109.0
+OES–CS–CT
+80.00
+109.0
+OES–CT–HT
+35.00
+109.0
+FC–CF–FC
+187.00
+108.6
+FC–CF–SO
+166.00
+110.4
+OS–SO–OS
+232.00
+120.2
+OS–SO–NI
+189.00
+111.4
+CF–SO–OS
+208.00
+102.6
+CF–SO–NI
+195.00
+100.2
+SO–NI–SO
+80.00
+121.0
+Table S4. Torsional parameters.
+Dihedral
+ / kcal mol−1
+𝑘𝑡
+ / degree
+𝛿
+𝑛= 1
+𝑛= 2
+𝑛= 3
+CS–CS–CS–CT
+1.743
+0.157
+0.279
+0.0
+CS–CS–CS–HC
+0.0
+0.0
+0.366
+0.0
+CS–CS–CT–HT
+0.0
+0.0
+0.366
+0.0
+HC–CS–CS–CT
+0.0
+0.0
+0.366
+0.0
+HC–CS–CS–HC
+0.0
+0.0
+0.318
+0.0
+HC–CS–CT–HT
+0.0
+0.0
+0.318
+0.0
+
+<<PAGE 8>>
+8
+CS–CS–CS–OES
+3.204
+2.111
+−0.598
+0.0
+3.844
+−0.249
+1.867
+57.41
+CS–CS–OES–CS
+1.720
+−124.67
+3.844
+−0.249
+1.867
+57.41
+CS–CS–OES–CT
+1.720
+−124.67
+3.844
+−0.249
+1.867
+57.41
+CS–OES–CS–CT
+1.720
+−124.67
+CS–OES–CS–HC
+0.0
+0.0
+0.67
+0.0
+CS–OES–CT–HT
+0.0
+0.0
+0.67
+0.0
+CT–OES–CS–HC
+0.0
+0.0
+0.67
+0.0
+OES–CS–CS–CT
+3.204
+2.111
+−0.598
+0.0
+OES–CS–CS–HC
+0.0
+0.0
+0.366
+0.0
+OES–CS–CT–HT
+0.0
+0.0
+0.366
+0.0
+FC–CF–SO–NI
+0.0
+0.0
+0.0
+0.0
+FC–CF–SO–OS
+0.0
+0.0
+0.171
+0.0
+SO–NI–SO–CF
+7.833
+0.500
+−0.764
+0.0
+SO–NI–SO–OS
+0.0
+0.0
+−0.004
+0.0
+
+<<PAGE 9>>
+9
+Table S5. Nonbonding parameters.
+Atom
+ / Å
+𝜎
+ / kcal mol−1
+𝜀
+ / a.u.
+𝛼
+OES
+3.03
+0.210
+7.000
+CS
+3.50
+0.066
+9.000
+CT
+3.50
+0.066
+9.000
+HC
+2.50
+0.030
+2.000
+HT
+2.50
+0.030
+2.000
+LI
+2.58
+0.003
+0.000
+CF
+3.50
+0.066
+9.000
+FC
+2.95
+0.054
+2.500
+OS
+3.08
+0.130
+5.000
+SO
+3.55
+0.250
+16.000
+NI
+3.45
+0.170
+8.000
+
+<<PAGE 10>>
+10
+Figure S1. Atom types and atomic charges, , of solvents and Li[TFSA] used for the 
+𝑞
+MD simulation.
+
+<<PAGE 11>>
+11
+Figure S2 The optimized geometries for [Li(t-BME)4]+ and [Li(DPE)4]+ complex cations. Purple: Li+, 
+red: O, grey: C, and light grey: H. O–Li lengths are 1.93 Å (coordinated) and 4.73 Å (uncoordinated) 
+for [Li(t-BME)4]+, 1.97 Å (coordinated) and 6.10 Å (uncoordinated) for [Li(DPE)4]+.
+Figure S3 Charge-discharge curves of Li-S pouch cells using [Li(SL)2][TFSA]-2HFE at charge-
+discharge rate of 1/20 C (1C = 8.4 mA cm−2) with the cutoff voltage of 1.0 and 3.3 V at 30 °C. Sulfur 
+loading; 5.05 mg cm−2, E/S; 4.0 μL mg−1.
+
+<<PAGE 12>>
+References
+1.
+Shinoda, 
+W., 
+MPDynPFF, 
+MPDyn 
+for 
+polarizable 
+force 
+field; 
+Okayama, 
+2022, 
+http://theocomp.chem.okayama-u.ac.jp/member/wshinoda/MPDyn2/
+2.
+Nosé, S., A molecular dynamics method for simulations in the canonical ensemble. Molecular Physics 1984, 
+52, 255-268.
+3.
+Hoover, W. G., Canonical dynamics: Equilibrium phase-space distributions. Physical Review A 1985, 31, 
+1695-1697.
+4.
+Martyna, G. J.; Klein, M. L.; Tuckerman, M., Nosé–Hoover chains: The canonical ensemble via continuous 
+dynamics. The Journal of Chemical Physics 1992, 97, 2635-2643.
+5.
+Andersen, H. C., Molecular dynamics simulations at constant pressure and/or temperature. The Journal of 
+Chemical Physics 1980, 72, 2384-2393.
+6.
+Ryckaert, J.-P.; Ciccotti, G.; Berendsen, H. J. C., Numerical integration of the cartesian equations of motion 
+of a system with constraints: molecular dynamics of n-alkanes. Journal of Computational Physics 1977, 23, 327-341.
+7.
+Tuckerman, M.; Berne, B. J.; Martyna, G. J., Reversible multiple time scale molecular dynamics. The 
+Journal of Chemical Physics 1992, 97, 1990-2001.
+8.
+Martyna, G. J.; Tuckerman, M. E.; Tobias, D. J.; Klein, M. L., Explicit reversible integrators for extended 
+systems dynamics. Molecular Physics 1996, 87, 1117-1157.
+9.
+Allen, M. P.; Tildesley, D. J., Computer simulation of liquids (2nd edn); Oxford university press, 2017.
+10.
+Ikeda, S.; Tsuzuki, S.; Sudoh, T.; Shigenobu, K.; Ueno, K.; Dokko, K.; Watanabe, M.; Shinoda, W., 
+Lithium-Ion Dynamics in Sulfolane-Based Highly Concentrated Electrolytes. J Phys Chem C 2023, 127, 13837-
+13845.
+11.
+Tsuzuki, S.; Ikeda, S.; Shinoda, W.; Shigenobu, K.; Ueno, K.; Dokko, K.; Watanabe, M., Molecular 
+Dynamics Simulations of High-Concentration Li[TFSA] Sulfone Solution: Effect of Easy Conformation Change of 
+Sulfolane on Fast Diffusion of Li Ion. The Journal of Physical Chemistry B 2023, 127, 6333-6341.
+12.
+Humphrey, W.; Dalke, A.; Schulten, K., VMD: visual molecular dynamics. J Mol Graph 1996, 14, 33-8, 27-
+8.
+13.
+Jorgensen, W. L.; Maxwell, D. S.; Tirado-Rives, J., Development and Testing of the OPLS All-Atom Force 
+Field on Conformational Energetics and Properties of Organic Liquids. Journal of the American Chemical Society 
+1996, 118, 11225-11236.
+14.
+Sambasivarao, S. V.; Acevedo, O., Development of OPLS-AA Force Field Parameters for 68 Unique Ionic 
+Liquids. Journal of Chemical Theory and Computation 2009, 5, 1038-1050.
+15.
+Doherty, B.; Zhong, X.; Gathiaka, S.; Li, B.; Acevedo, O., Revisiting OPLS Force Field Parameters for 
+Ionic Liquid Simulations. Journal of Chemical Theory and Computation 2017, 13, 6131-6145.
+16.
+Singh, U. C.; Kollman, P. A., An approach to computing electrostatic charges for molecules. Journal of 
+Computational Chemistry 1984, 5, 129-145.
+17.
+Besler, B. H.; Merz Jr., K. M.; Kollman, P. A., Atomic charges derived from semiempirical methods. 
+Journal of Computational Chemistry 1990, 11, 431-439.
+18.
+Borodin, O.; Smith, G. D., Development of Many−Body Polarizable Force Fields for Li-Battery 
+Components:  1. Ether, Alkane, and Carbonate-Based Solvents. The Journal of Physical Chemistry B 2006, 110, 6279-
+6292.
+12

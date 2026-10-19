@@ -1,0 +1,1122 @@
+
+<<PAGE 1>>
+This journal is © the Owner Societies 2024
+Phys. Chem. Chem. Phys., 2024, 26, 27945–27954 | 27945
+Cite this: Phys. Chem. Chem. Phys.,
+2024, 26, 27945
+Diﬀusion and thermodynamic properties of
+lithium polysulfides in diﬀerent solvents:
+a molecular dynamics approach†
+Javier Luque Di Salvo,
+*ag Santiago Agustı´n Maldonado-Ochoa,
+bc
+Guillermina L. Luque,ag Andrea Caldero´n,b Victoria Bracamonte,b
+Fabia´n Vaca Cha´vez,bc Daniel E. Barraco,bc Alen Vizintin,
+d Robert Dominko,
+de
+Ezequiel P. M. Leiva
+*ag and Giorgio De Luca
+f
+Li–S batteries are promising alternatives due to their proven increased gravimetric capacity compared to
+Li–ion batteries. However, their development is hindered by many technical issues, one of the most challen-
+ging being the dissolution and shuttle of polysulfide species, which causes irreversible loss of cathode mate-
+rial leading to rapid capacity fading. Among the possible strategies to mitigate this effect, the choice of
+suitable solvents is easy to implement and has large room for improvement. To guide this quest,
+computationally-aided optimization is a powerful tool, provided that suitable descriptors are used to screen
+possible solvents. In this work, molecular dynamics simulations were performed for a typical lithium
+polysulfide Li2S6 dissolved in different solvents. Diffusion coefficients and their related activation energies
+were calculated, and thermodynamic properties like solvation energies and entropies were also evaluated.
+Additionally, a theoretical framework for computing the relative solubilities of lithium polysulfide is provided.
+For the set of solvents considered, we found that the system’s viscosity appears as an important descriptor
+to correlate with different system properties. The donor number of the solvent also appears as a valid
+descriptor, for low-viscosity solvents. In general, it was found that higher viscosity solvents lead to lower
+diffusion rates and higher polysulfide solubility. These results suggest that the optimal choice to reduce the
+shuttle is a trade-off between high-viscosity solvents to reduce polysulfide diffusion and low-viscosity
+solvents to reduce its solubility, which could be further improved by properly tuning the donor number.
+Introduction
+Lithium–sulfur (Li–S) batteries have gained significant atten-
+tion and importance in recent times for multiple reasons. First,
+because of their potential high energy density, Li–S batteries
+can offer a much higher energy density than conventional
+lithium–ion batteries.1–4 This higher energy density could lead
+to longer-lasting and higher-performing batteries, making them
+desirable for various applications. Second, sulfur is abundant and
+inexpensive, which makes it a cost-effective material for battery
+production.5,6 Therefore, Li–S batteries are likely to reduce the
+overall cost of energy storage technologies. Third, Li–S batteries
+are more environmentally friendly7 compared to traditional
+lithium–ion batteries.8 The use of sulfur as a cathode material
+instead of heavy metal oxides reduces the reliance on toxic and
+rare elements like cobalt, used in common lithium–ion batteries.9
+Additionally, Li–S are safer than lithium–ion batteries presenting
+a lower risk of thermal runaway because sulfur is under battery
+operation conditions a non-flammable material, provided that a
+suitable electrolyte is used.10 This made them desirable for
+various applications, including electric vehicles. Thus, Li–S bat-
+teries could revolutionize the electric vehicle industry by enabling
+longer driving ranges and reducing the overall weight of the
+vehicle as they could also have applications in renewable energy
+storage, portable electronics, aerospace, and other fields where
+high energy density and cost-effectiveness are crucial.
+a Consejo Nacional de Investigaciones Cientı´ficas y Te´cnicas (CONICET), Instituto
+de Investigaciones en Fisicoquı´mica de Co´rdoba (INFIQC), X5000HUA, Co´rdoba,
+Argentina. E-mail: javier.luquedisalvo@unc.edu.ar, ezequiel.leiva@unc.edu.ar
+b CONICET, Instituto de Fı´sica Enrique Gaviola (IFEG), Co´rdoba, Argentina
+c Universidad Nacional de Co´rdoba, Facultad de Matema´tica, Astronomı´a, Fı´sica y
+Computacio´n, Co´rdoba, Argentina
+d National Institute of Chemistry, Hajdrihova 19, Ljubljana, SI-1000, Slovenia
+e ALISTORE-European Research Institute, CNRS FR 3104, Hub de l’Energie, Rue
+Baudelocque, Amiens Cedex, 80039, France
+f Institute on Membrane Technology, ITM-CNR, Via P. Bucci 17/C, Rende, CS,
+87036, Italy
+g Universidad Nacional de Co´rdoba, Facultad de Ciencias Quı´micas, Departamento
+de Quı´mica Teo´rica y Computacional, X5000HUA, Co´rdoba, Argentina
+† Electronic supplementary information (ESI) available. See DOI: https://doi.org/
+10.1039/d4cp03352c
+Received 27th August 2024,
+Accepted 22nd October 2024
+DOI: 10.1039/d4cp03352c
+rsc.li/pccp
+PCCP
+PAPER
+Published on 22 October 2024
+Licence and permissions
+
+<<PAGE 2>>
+27946 | Phys. Chem. Chem. Phys., 2024, 26, 27945–27954
+This journal is © the Owner Societies 2024
+However, Li–S batteries are still under active development,
+and several technical hurdles need to be addressed before they
+can be widely commercialized. These challenges include improv-
+ing cycle life, addressing issues related to sulfur volume expansion
+during charge/discharge cycles, and mitigating the ‘‘shuttle
+effect’’.11,12 The latter describes the migration of dissolved lithium
+polysulfide (PS) species from the sulfur-rich cathode to the
+lithium–metal anode during battery operation. This phenomenon
+may have negative effects on the battery performance and overall
+cycling stability. In fact, during the discharge of a Li–S battery,
+sulfur in the cathode undergoes reduction converting to soluble
+intermediate lithium polysulfide compounds (such as Li2Sx,
+where x 4 2). The lithium polysulfide species diffuse through
+the separator and reach the lithium–metal anode.13–15 Then they
+react with lithium, leading to the formation of insulating and
+irreversible lithium sulfide (Li2S) and other byproducts.16 Thus,
+knowledge of the diffusion of PS species appears to be of primary
+importance in controlling this unwanted phenomenon.
+The choice of the solvent used in the electrolyte holds
+substantial influence over the diﬀusion and migration of PS
+compounds in Li–S batteries.17 This is because the solvent plays
+a crucial role in solubilizing the PS compounds, influencing
+their mobility and concentration gradients within the battery
+system. Different solvents affect the solubility of PS and their
+interactions with the electrode materials, ultimately affecting
+the shuttle effect and battery performance. Beyond solubility,
+additional critical factors affecting PS diffusion include solution
+viscosity, as well as the solubility, retention, and stability of PS in
+diverse solvents.18 Consequently, the selection of an appropriate
+solvent, or a combination of thereof, emerges as a critical considera-
+tion in Li–S battery development, especially under lean electrolyte
+conditions. Several solvents have been explored, each with distinct
+advantages and disadvantages.19–21 Some commonly studied sol-
+vents are organic carbonates, known for their compatibility with
+lithium salts and the ability to offer high ionic conductivity. How-
+ever, these solvents exhibit relatively high PS solubility, exacerbating
+the shuttle effect.22 Furthermore, X-ray absorption spectroscopy
+(XAS) experiments revealed that reduced sulfur species chemically
+react with carbonate-based solvents,23 unless sulfur is confined in a
+nanoporous material.24,25 Ionic liquids, which are salts in liquid
+form at room temperature, have been employed as an alternative.26
+They exhibit promise in mitigating the shuttle effect due to their low
+volatility and high polarity. Nonetheless, their high viscosity can
+hinder ion transport and decrease the overall conductivity of the
+electrolyte.27 Finally, ethers such as tetraethylene glycol dimethyl
+ether (TEGDME), 1,3-dioxolane (DOL), and dimethoxyethane (DME)
+find common use due to they generally lower PS solubility com-
+pared to organic carbonates.
+In theoretical research, a large amount of eﬀort has also
+been devoted to the understanding of the phenomena occur-
+ring in the sulfur cathode. A recent comprehensive review28 has
+addressed the application of theoretical modeling to lithium–
+sulfur battery cathodes, using density functional theory (DFT)
+as the predominant methodology. Moreover, PS adsorption, Li+
+surface diffusion, Li2S decomposition, and the sulfur reduction
+reaction on different catalysts were analyzed,29 proposing
+design strategies to deal with the surface reactions. Concerning
+the behavior of PSs in solution, some simplifications have been
+introduced in the modeling due to the large number of atoms
+involved in the simulations. This has led to the use of classical
+molecular dynamics (MD) simulations30–37 using the so-called
+force fields. In particular, Andersen et al. have analyzed the
+molecular clustering of PSs and the dynamic processes asso-
+ciated with them.30 Their approach involved a combination of
+MD simulations with DFT-optimized clusters, as well as NMR,
+and XAS experiments. These studies have shown an increasing
+Li+ diffusion in the sequence D(Li2S4) o D(Li2S6) o D(Li2S8)
+and proposed that Li+ is probably shuttled by heavier sulfide
+chains and clusters of sulfide chains. Babar and Lekakou31
+have determined the solvation parameters of electrolyte ions
+and PSs in LiTFSI DOL:DME and LiPF6 EC:DMC solutions.
+These parameters were the PS dimensions, the coordination
+number of the ions with the solvent, and the desolvation energy
+of the electrolyte ions. Hu et al.32 explored the transport
+behavior of Li2S8 species in ionic liquid-based electrolyte sys-
+tems, proving an atomistic view of the effects of the coordina-
+tion of anions on the transport behavior of Li2S8. Osella et al.34
+researched the transport of Li2S4 in pure DOL and TEGDME
+solutions, and in the presence of LiTFSI, observing the for-
+mation of larger lithium PSs (LiPS) aggregated clusters in DOL
+compared to TEGDME. Park et al.35,36 have parameterized a
+classic non-polarizable force field for PSs of different chain
+lengths in electrolyte solutions of LiTFSI in DME:DOL mixtures.
+They analyzed the tendency of clustering with the concen-
+tration of PS and chain length, as well as the effect of the
+addition of LiTFSI. Rajput et al.37 focused on understanding the
+properties of individual species Li2Sx; x = 2 to 8, in LiTFSI
+DOL:DME electrolytes. They gained knowledge on the inter-
+action between the LiPS intermediates and solvent and electro-
+lyte, the salt addition effect on the solvation of dissolved
+species, and the effect of PS length on the structure and
+dynamics of the system. Fist-principles MD simulations have
+also shown to be useful in the evaluation of properties of PS
+solutions. Pascal et al.38 have used this approach to evaluate the
+solubility of lithium PSs in dimethylformamide (DMF) and
+diglyme and to study the XAS spectra of PS of various chain-
+lengths.39 Finally, it is also worth mentioning the very recent
+work of Atwi and Rajput,40 who have introduced a computa-
+tional database for Li–S Batteries, involving a couple of
+thousands of quantum-chemical and molecular dynamics
+properties for Li–S electrolytes. This database provides an
+important guiding map for the optimization of Li–S electrolyte
+compositions. Despite this important step forward, the authors
+have recognized that it is very difficult to find a single descrip-
+tor that explains the trends in PS solubility. The present work is
+partly inspired by this comprehensive approach, and we think
+that the present ideas may be complementary to some of the
+ones given in ref. 40 to improve this understanding.
+The most common soluble PSs encountered in Li–S batteries
+are S4
+2 and S6
+2 in ether solutions like 1 : 1 DOL : DME,
+according to XANES experiments.41 On the other hand, in
+polystyrene-b-poly(ethylene oxide) (PEO)/LiClO4 electrolyte the
+Paper
+PCCP
+
+<<PAGE 3>>
+This journal is © the Owner Societies 2024
+Phys. Chem. Chem. Phys., 2024, 26, 27945–27954 | 27947
+species identified by XAS were S4
+2 and S8
+2.42 Specifically, the
+PS species that predominate in solution are directly related to
+solvent properties such as the dielectric constant. In solvents of
+high dielectric constant (such as dimethyl sulfoxide (DMSO),
+DMF, or acetonitrile ACN) these are S8
+2, S6
+2, S3
+2, while in
+solvents with low dielectric constant (such as tetrahydrofuran
+(THF), DME, TEGDME) S4
+2 predominates.18 For high dielectric
+constants, solvent molecules strongly coordinate Li+ cations and
+shield them from PS anions, while for low dielectric constants, a
+co-coordination of Li+ with solvent molecules and PS anions
+occurs. Although the dielectric constant and donor number (DN)
+of TEGDME and DME are almost equal, the former presents
+peaks for species S6
+2/S3
+2, in the catholyte. This is due to the
+chelating effect of TEGME that allows better coordination of the
+cation, shielding it from PS anions.18
+To date, there is no systematic study in the literature on
+the diﬀusion and solubility of lithium polysulfide species in
+various solvents commonly used in Li–S batteries. Therefore, in
+this work, diffusion coefficients and related activation energies
+as well as solvation free energies and entropies were calculated
+as a function of some solvent features by classical molecular
+dynamics. The work aims to investigate the correlations
+between transport and thermodynamics constants and proper-
+ties of the target solvents. Therefore, we study diluted concen-
+trations of lithium polysulfides in different solvents in order to
+minimize ion–ion interactions and thus highlight the role of
+solvent on its solvation. Finally, the simulation results were
+used to find a correlation between the PS diffusion coefficients
+and the most positive anodic current peak of the voltammetric
+diagram of Li–S batteries.
+Methodology
+The simulations of voltammetric experiments in TEGDME:DOL43
+assign the most positive anodic peak to the redox reaction:
+S8
+2 2 S8 + 2e
+(1)
+and, as found by He et al., the magnitude of this current peak is
+found to be strongly sensitive to the nature of the electrolyte.44
+The current at the peak (ip) determined by eqn (1) for a
+totally irreversible process can be described by eqn (2) and it
+seems to be caused by PS diﬀusion in the electrolyte solution:45
+iP ¼ 2:99  105aT
+1=2AC
+RedDRed
+1=2v1=2
+(2)
+where A is the electrode area, aT is the transfer coeﬃcient, C
+Red
+is the bulk concentration of reduced species, D
+Red is the
+diﬀusion coeﬃcient of the polysulfide and v is the potential
+sweep rate. Thus, the voltammetric experiments can be inter-
+preted in terms of the concentration of the reaction species,
+Red = S8
+2 according to eqn (1), and its diﬀusion coeﬃcient
+DS82. While C
+S82 results from multiple equilibrium reactions,
+we will analyze in the present work the values of DS62 for
+diﬀerent solvents and infer their influence on the behavior
+observed. According to the literature, we expect the diﬀusion
+coeﬃcients of DS82 and DS62 to be very similar.37
+Concerning the computational approach, we use classical
+molecular dynamics (MD) to study the solvation and transport
+properties of the Li2S6. MD simulations were performed with
+time-steps of 2 fs in Gromacs 2021.546 using the OPLS-AA Force
+Field for organic solvent molecules47 with the FF parameters of
+ions taken from ref. 35 and 36. In particular, the electronic
+continuum model48 was adopted which uses a scaled eﬀective
+ionic partial charge of qeff ¼
+qﬃﬃﬃﬃﬃ
+e1
+p
+; where eN is the electronic
+polarization contribution to the solvent dielectric, which
+yielded good results for the diﬀusion of lithium PSs in
+DOL:DME.36 The partial charges for each solvent are reported
+in Table S2 of the ESI.† The cutoﬀfor non-bonded interactions
+was set to 1.2 nm, the long-range electrostatics were computed
+by the PME method, and bond constraints by LINCS algorithm
+were
+applied
+to
+all
+bonds.
+We
+adopted
+the
+V-rescale
+thermostat49 with a time constant of 0.1 ps, and the Parri-
+nello–Rahman barostat with a time constant of 2 ps.
+A simulation box with xyz periodic boundary conditions
+contained 20 S6
+2 and 40 Li+ ions and the corresponding
+number of solvent molecules to roughly yield 0.05 mol L1
+Li2S6 concentration (see Table S3, ESI†). The self-diﬀusion
+coeﬃcients of the diﬀusive species i were evaluated by comput-
+ing the mean square displacement (MSD):
+Dri
+2 tð Þ
+
+
+¼ 1
+N
+X
+N
+i¼1
+ri tð Þ  ri t0
+ð Þ
+½
+2
+D
+E
+(3)
+where ri is the vectorial position of the diﬀusing particle i. The
+brackets on the right-hand side of the equation denote the time
+average of a trajectory, performed over multiple time origins t0.
+The time-averaged MSDs of the i particles were averaged over the
+N diﬀusing ions, yielding a time-ensemble averaged MSD.
+The self-diﬀusion coeﬃcients Di were then calculated by fitting
+the MSD(t) curve at long trajectory times according to the
+Einstein relation:
+hDri
+2(t)i = 6tbDi
+(4)
+where b is the time exponent used to characterize the diﬀusion
+regime50 corresponding to the slope of log10(MSD) vs. log10(t).
+In the case of a Brownian diﬀusion b = 1, whereas deviations
+are given for anomalous sub-diﬀusion (b o 1) or accelerated
+diﬀusion (b 4 1). The MSD curves were obtained by running
+100 ns NPT at 298 K and 1 bar, the default settings of Gromacs
+were used to get Di and its related error. All the MSD curves
+exhibited b E 1.
+The free energy of solvation of the ions was computed
+as described below, using the formation free energy of a Li
+polysulfide in the solvent, DGsolv
+poly. This free energy change was
+calculated using the slow growth method and thermodynamic
+integration. This was achieved by slowly turning on the inter-
+actions of a single Li2S6 molecule with the rest of the system.
+With this purpose, a closed conformer structure was taken from
+a previous study51 and introduced inside a box of solvent
+(see Table S4 for the composition of simulation boxes, ESI†).
+A coupling parameter l is applied to the Hamiltonian, H,
+PCCP
+Paper
+
+<<PAGE 4>>
+27948 | Phys. Chem. Chem. Phys., 2024, 26, 27945–27954
+This journal is © the Owner Societies 2024
+describing the solute–solvent interactions, and solving numeri-
+cally the following integral:
+DGsolv
+poly ¼ GsolvþPS  Gsolv  GPS ¼
+ð1
+0
+@H
+@l
+
+
+NPT;l
+dl
+(5)
+where Gsolv+PS is the free energy of the polysulfide + solvent
+(l = 1) system, Gsolv and GPS are the free energies of the pure
+solvent and the isolated polysulfide molecule (l = 1).
+The van der Waals parameters were grown in 20l steps,
+followed by subsequent 20l steps for growing coulombic para-
+meters. The full ionic partial charges, instead of scaled charges
+used for self-diﬀusion computation, are adopted for DGsolv
+poly
+calculation, running a 1 ns at each l value. For each of the
+nine solvents, three diﬀerent systems were built by randomly
+inserting solvent molecules around the Li2S6 solute, in order to
+obtain a standard errors for DGsolv
+poly.
+To the best of our knowledge, the chosen MD force field
+parameters are the most suitable to perform the study at date.
+In order to further check its applicability, we have made
+additional calculations including Li2S6 binding energy with
+one solvent molecule and compared it with literature DFT
+values, computation of viscosity of pure solvents and computa-
+tion of the solvation free energy of Li+, all of which resulted in
+good agreement with literature. Additionally, we have per-
+formed NMR measurements of Li+ self-diﬀusion coeﬃcients
+in the most common solvents finding very good agreement with
+literature. The details are reported in the ESI.†
+Results and discussion
+Diﬀusion coeﬃcients
+We attempt here to correlate the behavior of DLi+ and DS62 with
+diﬀerent descriptors. We chose the Gutmann’s donor number
+(DN),52 the viscosity (Z), and the static dielectric constant (e0).
+The first choice was made because He et al.44 showed that the
+stability of various PSs is mainly dictated by the solvated
+cations, as the latter can be manipulated by the DN. These
+authors considered as solvents DMF, TEGDME, DOL, DME,
+THF, DMSO, ACN, sulfolane (TMS) and 1,4-dioxane (Diox). e0
+was selected since being the lithium PS charged species, it may
+be expected that the interaction between these and the solvent
+may be ruled by electrostatic interactions. Fig. 1a shows DLi+
+and DS62 as a function of DN, where at first sight a correlation
+is hard to establish. Something similar can be stated from the
+relationship between DLi+ and DS62 and e0. Finally, the viscosity
+Z was chosen since this property and molecular diﬀusion are
+interrelated properties. In the case of spherical particles of
+radius r moving through a liquid with a low Reynolds number,
+D and Z are related through the Stokes–Einstein relationship:53
+D ¼ kT
+6pZr
+(6)
+where k is the Boltzmann constant and T is the absolute
+temperature. It can be found in Fig. 1c that the diffusion
+coefficients present an overall decreasing trend with the visc-
+osity, as qualitatively expected from eqn (6).
+With the knowledge won in Fig. 1c, where we note that
+TEGDME and TMS are the solvents with the largest viscosity we
+can go back to Fig. 1a. We find that D follows a roughly linear
+decreasing trend with increasing DN if we discard these two
+solvents from the analysis in the latter figure (see the dotted
+lines in Fig. 1a). This is to be expected, since the donor number,
+defined as the negative enthalpy value of 1 : 1 compound for-
+mation in a dilute solution of antimony pentachloride (SbCl5)
+1,2-dichloroethane, is a parameter that describes the ability of a
+solvent to coordinate a cation.54 Thus, a stronger coordination of
+the polysulfide with the solvent is expected for high DN values
+and a decreased mobility as indeed is observed here.
+Another interesting conclusion that can be drawn from
+Fig. 1 is that DLi+ and DS62 are closely correlated. This fact
+can be more properly appreciated in Fig. 2, which shows the
+correlation between these diﬀusion coeﬃcients which spans
+over more than two orders of magnitude.
+The correlation found in Fig. 2 indicates that the mobilities
+of PS and lithium ions are strongly connected. This may suggest
+that Li+ and S6
+2 do not move independently but are most of the
+time bound to quite stable Li2S6 or LiS6
+ species. In order to check
+for this hypothesis, we analyzed the Li–S radial distribution
+functions (Fig. S1, ESI†). For some solvents (ACN, DME, DMF,
+DOL:DME, DMA, TMS) a first peak at around 2.4 Å is observed
+which is a characteristic Li–S distance of many ab initio
+calculations,55–58 whereas all of the solvents show a broad peak
+Fig. 1
+Li+ and S6
+2 diﬀusion coeﬃcients as a function of diﬀerent descriptors of the solvent (a) donor number DN, (b) dielectric constant e and (c)
+viscosity Z.
+Paper
+PCCP
+
+<<PAGE 5>>
+This journal is © the Owner Societies 2024
+Phys. Chem. Chem. Phys., 2024, 26, 27945–27954 | 27949
+in the range of 4–8 Å, indicating a regular ordering of PS around
+solvated Li+ up to its second coordination shell. Thus, although
+they are not directly bound, Li+ and S6
+2 strongly interact even
+mediated by solvent molecules.
+The RDF profiles indicate that Li+ interacts with a terminal S
+atom and the polysulfide chain is opened (see Fig. S2, ESI†), in
+contrast with our previous findings of higher probability of closed
+conformer LiS6
+, where a central Li+ interacts with both terminal
+S atoms and the polysulfide forms a horseshoe-like structure,51 also
+observed in many ab initio geometry optimizations.55–58 We ascribe
+this result to the diluted concentration simulated (0.05 M) and the
+higher stabilization of Li+ when coordinated by different solvents.
+This effect of ‘‘solvent stealing Li+ to its counter-ion’’ was also
+reported in LiTFSI 0.5 M in TEGDME, requiring higher concentra-
+tions up to 3–4 M to promote Li-TFSI ion-pairing;59 in our case, the
+Li–S RDFs for TEGDME and DIOX-DME (Fig. S1, ESI†) do not show
+the first peak, indicating solvent separated Li–S interaction.
+While these results were obtained for the motion of Li–PSs
+in a pure solvent, where the electrostatic interaction between
+these two species is only screened by the solvent molecules, the
+question arises if such a correlation remains in the presence of
+an electrolyte. For this reason, we repeated sample calculations
+in a solution containing 1 M LiTFSI and 1 M LiTFSI + 0.25 M
+LiNO3. The achieved results are shown in Fig. S3 (ESI†).
+Again, we find a linear relationship between the diﬀusion
+coeﬃcients of PS and Li+ in about two orders of magnitude,
+showing that their diﬀusion is strongly correlated. This means
+that the strong interaction between the polysulfide and Li+ ions
+is not completely screened by the presence of solvent and
+electrolyte under the present conditions.
+Free energy of solvation and polysulfide solubility
+The solvation free energy of the PS, DGsolv
+poly, in diﬀerent solvents
+was also evaluated as described in eqn (5). The Gsolv
+poly values as a
+function of the solvent viscosity are shown in Fig. 3.
+The behavior of DGsolv
+poly as a function of Z resembles that of
+the diﬀusion coeﬃcients, already shown above in Fig. 1c. For
+low and moderate viscosities, we find a drop of DGsolv
+poly, and then
+we find a slight increase in the case of TMS, the system with the
+largest viscosity. However, we remark that TMS viscosity shows
+high variation at room temperature range,60 as a matter of
+facts, the computed TMS viscosity (ZMD) is lower than that of
+TEGDME, thus falling in the same trend (Fig. S4 and S5, ESI†).
+In sight of this observation, we plot in Fig. 4 DGsolv
+poly as a
+function of the diﬀusion coeﬃcient in a logarithmic scale,
+and we find a linear correlation between the two quantities.
+The correlation in Fig. 4 between a thermodynamic and a
+kinetic quantity appears puzzling, and we will try to understand
+it through some theoretical considerations.
+Statistical mechanical considerations61 show that the diﬀu-
+sion coeﬃcient of a diﬀusing molecule in a periodic potential
+can be calculated from:
+D ¼ kd2kT
+h e
+DG#
+dif
+kT
+(7)
+Fig. 2
+Correlation between the natural logarithm of DLi+ and the natural
+logarithm of DS62 for diﬀerent solvents, the concentration is 0.05 M Li2S6
+in all cases. The linear fit yields a slope of 1.06  0.04.
+Fig. 3
+Solvation free energy of Li2S6 over viscosity of diﬀerent solvents.
+Fig. 4
+Solvation free energy of Li2S6 as a function of the natural logarithm
+of Li+ diﬀusion coeﬃcient in diﬀerent solvents.
+PCCP
+Paper
+
+<<PAGE 6>>
+27950 | Phys. Chem. Chem. Phys., 2024, 26, 27945–27954
+This journal is © the Owner Societies 2024
+where k and h are Boltzmann and Planck constants respectively,
+d is a jump length, T is the absolute temperature and DG#
+dif is
+the free energy of activation for the diﬀusion of the particle.
+The factor 0 o k r 1, usually denominated transmission
+factor, is not present in Eyring’s original formulation and
+may be estimated taking into account the frictional properties
+of the system.62 To connect DGsolv
+poly with DS62, we will assume, as
+illustrated in Fig. 5, that the DG#
+dif is related to the free energy of
+solvation according to:
+DG#
+dif = aDGsolv
+poly
+(8)
+where 0 o a o 1. We are assuming that the activation-free
+energy for the diﬀusion of the PS is a fraction of its solvation-
+free energy.
+Where 0 o a o 1. Substituting (8) into (7) and taking
+logarithms:
+ln D
+ð Þ ¼ ln kd2kT
+h
+
+
+þ
+aDGsolv
+poly
+kT
+(9)
+From where we can get:
+DGsolv
+poly ¼ kT
+a ln kd2kT
+h
+
+
+þ kT
+a ln D
+ð Þ
+(10)
+From the slope in Fig. 4 we find that the a value in eqn (8) is a =
+0.266 suggesting the free energy of activation involves a mean-
+ingful change in the solvation of the PS. This figure suggests
+that the relevant energy is not the full solvation energy, but
+rather the energy of an ion/molecule vs. one solvent molecule.
+From Fig. 4, we see that a strong polysulfide solvation
+reduces its diﬀusion. Thus, the way to prevent the ‘‘shuttle
+eﬀect’’ should be the choice of a strongly solvating electrolyte.
+Relative solubilities of PSs in diﬀerent solvents
+We proceed now to estimate the relative solubilities of Li2S6 in
+diﬀerent solvents in the dilute limit, based on the free energy of
+dissolution discussed above. Following the proposal of Pascal
+et al.38 and writing the dissolution reaction of the PS as:
+Li2S sð Þ þ 5
+8S sð Þ
+8 þ solvent ! Li2S solv
+ð
+Þ
+6
+DGdis;0
+Li2S6;solv
+(11)
+where DGdis;0
+Li2S6;solv is the standard free energy associated with
+this process. This reaction may in turn be separated into two
+processes. First, the formation of the Li2S6 from the reference
+solids Li2S(s) and S(s)
+8 :
+Li2S sð Þ þ 5
+8S sð Þ
+8 ! Li2S gas
+ð
+Þ
+6
+DGform;0
+Li2S6
+(12)
+where Li2S gas
+ð
+Þ
+6
+denotes the PS in a diluted gas, non-interacting
+phase.
+Second,
+the
+dissolution
+free
+energy
+of
+the
+PS
+according to:
+Li2S gas
+ð
+Þ
+6
+þ solvent ! Li2S solv
+ð
+Þ
+6
+DGsolv;0
+poly
+(13)
+For the sake of convenience, we will use for the standard state
+for the gas a non-interacting gas at the concentration cLi2S gas
+ð
+Þ
+6
+¼
+1 M and similarly, for the dissolved polysulfide an ideal
+solution
+with
+the
+concentration
+of
+dissolved
+polysulfide
+cLi2S solv
+ð
+Þ
+6
+¼ 1 M. Thus, assuming ideal behavior for both, the
+polysulfide in the gas phase and in the solution, we have;
+DGsolv,0
+poly
+= DGsolv
+poly
+(14)
+Thus, within the present assumptions, we get:
+DGdis;0
+Li2S6;solv ¼ DGform;0
+Li2S6 þ DGsolv
+poly
+(15)
+We emphasize that within the present ideal approximation, the
+only solvent-dependent term in this approach is DGsolv
+poly as
+calculated from the simulations.
+Assuming ideal behavior of the solution, the solubility of the
+PSs in a given solvent, Ssolv
+poly, according to eqn (11) can be
+calculated according to:
+Ssolv
+poly ¼ exp 
+DGdis;0
+Li2S6;solv
+RT
+ 
+!
+(16)
+if we now consider the relative solubility of the PS in two
+solvents, 2 and 1, we have:
+Ssolv 2
+poly
+Ssolv 1
+poly
+¼ exp
+
+DGdis;0
+Li2S6;solv 2  DGdis;0
+Li2S6;solv 1
+	
+
+RT
+0
+@
+1
+A
+(17)
+where in the numerator of the exponent in eqn (17) we have the
+standard free energies of eqn (11), evaluated according (15) for
+two diﬀerent solvents.
+Replacing (15) into (17) for the two solvents we get:
+Ssolv 2
+poly
+Ssolv 1
+poly
+¼ exp
+
+DGsolv 2
+poly
+ DGsolv 1
+poly
+	
+
+RT
+0
+@
+1
+A
+(18)
+Fig. 6 shows a logarithmic plot of
+Ssolv 2
+poly
+Ssolv 1
+poly
+as a function of the
+viscosity Z, considering TEGDME as solvent 1. A correlation is
+Fig. 5
+Relationship relating the solvation free energy of Li2S6 with the
+activation free energy for its diﬀusion in the electrolyte DG#
+dif. The value of
+DG = 0 corresponds to sum of the free energies of the pure solvent and
+the isolated polysulfide molecule (l = 0), DGtop
+dif corresponds to the free
+energy of the polysulfide in the solution at the top of diﬀusion barrier and
+DGsolv
+dif is the free energy of the solvated polysulfide (l = 1).
+Paper
+PCCP
+
+<<PAGE 7>>
+This journal is © the Owner Societies 2024
+Phys. Chem. Chem. Phys., 2024, 26, 27945–27954 | 27951
+found, showing that solvents with a larger viscosity tend to
+show a larger solubility of Li2S6 compared to the solubility in
+TEGDME.
+Solvation enthalpies and entropies
+Recalling that the only solvent-dependent term in eqn (15) is
+DGsolv
+poly, the calculated free energy can be further decomposed in
+its solvation enthalpy and entropy:
+DGsolv
+poly = DHsolv
+poly  TDSsolv
+poly
+(19)
+We have calculated the enthalpy DHsolv
+poly from:
+DHsolv
+poly = Upoly+solv(l = 1)  Upoly,solv(l = 0) + PDV
+(20)
+where Upoly+solv and Upoly,solv are the potential energies of the
+interacting system (l = 1) and the non-interacting systems (l = 0).
+Thus, eqn (19) allows to calculate the entropic contribution once
+DGsolv
+poly and DHsolv
+poly are known. These thermodynamic properties
+are shown in a bar plot in Fig. 7. For all the considered solvents it
+holds |DGsolv
+poly| o |DHsolv
+poly| implying an entropic loss due to the
+solubility of Li2S6, TDSsolv
+poly 4 0. It is evident that Li2S6 solvation is
+possible due to the exothermicity of the solubility process,
+whereas there is an entropy loss, in agreement with those
+reported in various solvents.38,63 In particular, the entropic term
+represents between 34% and 47% of the free energy, depending
+on the solvent.
+Diﬀusion activation energies and solvation energy
+The correlation found in Fig. 4 strongly suggests a connection
+between the thermodynamics of solvation and the PS diﬀusion
+in the diﬀerent solvents. To further research this hypothesis, we
+calculated the activation energy of Li+ diﬀusion in the diﬀerent
+solvents, E#
+Liþ;solv, as obtained from the Arrhenius plot given in
+the ESI† (Fig. S6). In Fig. 8 we plot E#
+Liþ;solv vs. the solvation
+enthalpy in diﬀerent solvents, DHsolv
+poly. Again, the plot suggests
+an overall correlation between the kinetic quantity E#
+Liþ;solv and
+the thermodynamic one, DHsolv
+poly. A linear fit of the data in Fig. 8
+yields a slope close to 0.5, suggesting that the activated state for
+diﬀusion involves a partial desolvation of the Li+.
+Relevance of the modeling for electrochemical experimental
+results
+Since the viscosity appears as the property that correlates with
+the diﬀusion coeﬃcients of the simulations, we have attempted
+a plot of the voltammetric currents of ref. 44 as a function of
+experimental viscosities. These results are shown in Fig. 9. It
+can be observed that with the remarkable exception of ACN, the
+only solvent non-containing oxygen, the rest of the systems
+suggest a decrease iP with the experimental Z. In fact, the Li–O
+average distance in ethereal solvents is shorter than the Li–N
+distance in ACN solutions, as can be observed in the inset of
+Fig. S7 (ESI†). Moreover, if a linear fit of ln iP vs. ln Z is
+performed, exempting ACN solvent, we find a correlation with
+a slope of 0.5  0.1, suggesting that iP and Z are related
+according to:
+iP p Z0.5.
+(21)
+Fig. 6
+Natural logarithm of the ratio of solubilities, related to the solubility
+of TEGDME, as a function of the natural logarithm of the viscosity Z.
+Fig. 7
+Free energies, enthalpies and entropies of Li2S6 in diﬀerent
+solvents.
+Fig. 8
+Linear correlation between solvation energy of the PS and activa-
+tion energy for Li+ diﬀusion.
+PCCP
+Paper
+
+<<PAGE 8>>
+27952 | Phys. Chem. Chem. Phys., 2024, 26, 27945–27954
+This journal is © the Owner Societies 2024
+We emphasize that this is an empirical correlation, where no
+data from the present simulations have been used. On the other
+hand, we have the roughly linear correlation between Z and 1
+D
+given by eqn (6) and represented in Fig. S8 (ESI†). On this basis,
+we can conclude that our simulations suggest a correlation of
+the type:
+iP p D0.5
+(22)
+indicating the predominance of the diﬀusional factor in
+eqn (2).
+Conclusions
+In the search for solvents to optimize liquid electrolytes in Li–S
+batteries, the identification of versatile descriptors that allow
+the prediction of general trends on battery performance, aiming
+to reduce critical challenges such as the polysulfide shuttle,
+requires a reliable theoretical framework to calculate fundamental
+solvent properties. To this end, we have performed MD simula-
+tions for a typical polysulfide species, S6
+2, in different solvents of
+interest for Li–S batteries. Our attention was centered on the
+calculation of diffusion coefficients, their related activation ener-
+gies, and thermodynamic properties like energies and entropies
+of solvation, from where a theoretical basis to predict the relative
+solubilities of Li–PS was deduced. For the set of solvents under
+consideration, we found that the system’s viscosity appears as an
+important descriptor to correlate with different system properties.
+The donor number also proves to be a significant descriptor,
+excluding large-viscosity solvents, whereas the solvent dielectric
+constant did not show preferential trends on self-diffusion coeffi-
+cients. Some further relevant conclusions are:
+ The diﬀusion coeﬃcients of Li+ show a linear correlation
+with the diﬀusion coeﬃcient of the polysulfide when they are
+considered for diﬀerent solvents, with a R2 value of 0.983.
+ The free energy of solvation of the polysulfide in diﬀerent
+solvents shows a linear relationship with the natural logarithm
+of diﬀusion coeﬃcients in the same solvents, with an R2 value
+of 0.796. The application of transition state theory suggests that
+the activation free energy for ion diﬀusion is determined by the
+rearrangement of the solvation sheet around the polysulfide.
+ The logarithm of the solubility of the polysulfide increases
+with the viscosity of the electrolyte, following linear functional
+relationship for low viscosity values.
+ The negative energetic contribution to the solvation of the
+polysulfide is largely compensated by the concomitant decrease
+in the entropy of the system. See Fig. 7.
+ The behavior of the voltammetric current component
+found in electrochemical experiments for the oxidation of
+polysulfides seems to be determined by the diﬀusion of these
+species. The larger voltammetric activity seems to be correlated
+with the larger diﬀusivity of the polysulfide.
+In general, the analysis showed that higher viscosity solvents
+lead to lower diﬀusion rates and higher polysulfide solubility.
+Considering the previous conclusions, we can try to formulate a
+rule of thumb for the choice of an electrolyte based on its
+viscosity. Concerning the activity of the cathode, if this is
+controlled by the diﬀusion of polysulfides, we can state that
+low-viscosity solvents should be preferred, since this will lead to
+larger currents, that is, to a more reversible behavior. On the
+other hand, if we look into the polysulfide shuttle problem,
+where their diﬀusion to the anode handicaps the performance
+of the Li–S battery, solvents with a larger viscosity should be
+preferred. Thus, the practical solutions lay probably at an
+intermediate viscosity, depending on the relative weight of
+these two factors. These results suggest that the optimal choice
+is a trade-off between high-viscosity solvents to reduce poly-
+sulfide diffusion and low-viscosity solvents to reduce its solu-
+bility, which could be further improved by properly tuning the
+donor number.
+Data availability
+The data that support the findings of this study are available on
+request from the corresponding author, EPML.
+Conflicts of interest
+There are no conflicts to declare.
+Acknowledgements
+AV acknowledges the funding for the ALISA project (project
+number 9359) provided by the m-ERA.NET network (part of the
+European Union’s Horizon 2020 research and innovation pro-
+gram (under grant agreement no. 958174)), and the Slovenian
+Ministry of Higher Education, Science, and Innovation. AV and
+RD further acknowledge financial support from the Slovenian
+Research and Innovation Agency (ARIS), research core funding
+P2-0423, and project N2-0266. S. A. M. expresses gratitude
+for a postdoctoral fellowship from CONICET. EPML and
+FVC acknowledge grants CONICET PIP-1220200101189CO,
+PIP-11220200100870CO, 22920160100078CO P-UE, PUE/2017
+Fig. 9
+Plot of the natural logarithm of voltammetric currents peaks of ref.
+44 as a function of the natural logarithm of experimental values of
+viscosities (reported in Table S1, ESI†) of the considered solvents.
+Paper
+PCCP
+
+<<PAGE 9>>
+This journal is © the Owner Societies 2024
+Phys. Chem. Chem. Phys., 2024, 26, 27945–27954 | 27953
+CONICET, FONCYT 2020-SERIEA-03689 and SeCyT of the
+Universidad Nacional de Co´rdoba. Support by CCAD-UNC and
+GPGPU Computing Group, Y-TEC, and an IPAC grant from
+SNCAD-MinCyT, Argentina, are also gratefully acknowledged.
+JLDS, GLL, AC, VB and EPML acknowledge financial support
+from the MinCyT Argentina – DST, MoS&T India program
+(RESOL-2023-850-APNMCT, Repu´blica Argentina).
+References
+1 D. Aurbach, J. Electrochem. Soc., 2018, 165, Y1.
+2 S. Evers and L. F. Nazar, Acc. Chem. Res., 2013, 46,
+1135–1143.
+3 Y. Li and S. Guo, Matter, 2021, 4, 1142–1188.
+4 S. Ng, M. Y. L. Lau and W. Ong, Adv. Mater., 2021, 33, 2008654.
+5 Y. Yin, S. Xin, Y. Guo and L. Wan, Angew. Chem., Int. Ed.,
+2013, 52, 13186–13200.
+6 W. Zheng, Y. W. Liu, X. G. Hu and C. F. Zhang, Electrochim.
+Acta, 2006, 51, 1330–1335.
+7 A. Konarov, D. Gosselink, T. N. L. Doan, Y. Zhang, Y. Zhao
+and P. Chen, J. Power Sources, 2014, 259, 183–187.
+8 Y. Deng, J. Li, T. Li, X. Gao and C. Yuan, J. Power Sources,
+2017, 343, 284–295.
+9 B. E. Murdock, K. E. Toghill and N. Tapia-Ruiz, Adv. Energy
+Mater., 2021, 11, 2102028.
+10 H. Yang, Q. Li, C. Guo, A. Naveed, J. Yang, Y. Nuli and
+J. Wang, Chem. Commun., 2018, 54, 4132–4135.
+11 Y. Zhu, Z. Chen, H. Chen, X. Fu, D. E. Awuye, X. Yin and
+Y. Zhao, Polymers, 2023, 15, 3955.
+12 X.-F. Yu, D.-Y. Shao, J. Xu and J. Cao, Microstructures, 2024,
+4, 2024030, DOI: 10.20517/microstructures.2023.82.
+13 Y. Song, W. Cai, L. Kong, J. Cai, Q. Zhang and J. Sun, Adv.
+Energy Mater., 2020, 10, 1901075.
+14 S. Chung and A. Manthiram, Adv. Mater., 2019, 31, 1901125.
+15 R. Xu, J. Lu and K. Amine, Adv. Energy Mater., 2015,
+5, 1500408.
+16 J. Wang, H. Wang, S. Jia, Q. Zhao, Q. Zheng, Y. Ma, T. Ma
+and X. Li, J. Energy Storage, 2023, 72, 108372.
+17 Z. Wang, Y. Li, H. Ji, J. Zhou, T. Qian and C. Yan, Adv.
+Mater., 2022, 34, 2203699.
+18 G. Bieker, J. Wellmann, M. Kolek, K. Jalkanen, M. Winter and
+P. Bieker, Phys. Chem. Chem. Phys., 2017, 19, 11152–11162.
+19 J. Liu, Y. Zhou, T. Yan and X. Gao, Adv. Funct. Mater., 2024,
+34, 2309625.
+20 X. Wang, Y. Tan, G. Shen and S. Zhang, J. Energy Chem.,
+2020, 41, 149–170.
+21 M. R. Kaiser, S. Chou, H. Liu, S. Dou, C. Wang and J. Wang,
+Adv. Mater., 2017, 29, 1700449.
+22 A. Rafie, J. W. Kim, K. K. Sarode and V. Kalra, Energy Storage
+Mater., 2022, 50, 197–224.
+23 J. Gao, M. A. Lowe, Y. Kiya and H. D. Abrun˜a, J. Phys. Chem.
+C, 2011, 115, 25132–25137.
+24 M. L. Para, C. A. Caldero´n, S. Drvaricˇ Talian, F. Fischer,
+G. L. Luque, D. E. Barraco, E. P. M. Leiva and R. Dominko,
+Batteries Supercaps, 2022, 5, e202100374.
+25 E. Markevich, G. Salitra, Y. Talyosef, F. Chesneau and
+D. Aurbach, J. Electrochem. Soc., 2017, 164, A6244–A6253.
+26 E´. A. Santos, L. M. S. Barros, A. F. De, F. V. Peluso,
+I.
+Galantini,
+J.
+M.
+Gonçalves,
+R.
+Maciel
+Filho
+and
+H. Zanin, Chem. Eng. J., 2024, 493, 152429.
+27 G. Ma, Z. Wen, J. Jin, M. Wu, G. Zhang, X. Wu and J. Zhang,
+Solid State Ionics, 2014, 262, 174–178.
+28 S. Feng, Z. Fu, X. Chen and Q. Zhang, InfoMat, 2022, 4, e12304.
+29 L. Zhou, D. L. Danilov, F. Qiao, J. Wang, H. Li, R. Eichel and
+P. H. L. Notten, Adv. Energy Mater., 2022, 12, 2202094.
+30 A. Andersen, N. N. Rajput, K. S. Han, H. Pan, N. Govind,
+K. A. Persson, K. T. Mueller and V. Murugesan, Chem.
+Mater., 2019, 31, 2308–2319.
+31 S. Babar and C. Lekakou, Ionics, 2021, 27, 635–642.
+32 T. Hu, Y. Wang, F. Huo, H. He and S. Zhang, Chem-
+PhysChem, 2021, 22, 419–429.
+33 G. Kumar, T. R. Kartha and B. S. Mallik, J. Phys. Chem. C,
+2018, 122, 26315–26325.
+34 S. Osella, A. Minoia, C. Quarti, J. Cornil, R. Lazzaroni,
+A. Goﬃn, M. Guillaume and D. Beljonne, Batteries Super-
+caps, 2019, 2, 473–481.
+35 C. Park, M. Kanducˇ, R. Chudoba, A. Ronneburg, S. Risse,
+M. Ballauﬀand J. Dzubiella, J. Power Sources, 2018, 373, 70–78.
+36 C. Park, A. Ronneburg, S. Risse, M. Ballauﬀ, M. Kanducˇ and
+J. Dzubiella, J. Phys. Chem. C, 2019, 123, 10167–10177.
+37 N. N. Rajput, V. Murugesan, Y. Shin, K. S. Han, K. C. Lau,
+J. Chen, J. Liu, L. A. Curtiss, K. T. Mueller and K. A. Persson,
+Chem. Mater., 2017, 29, 3375–3379.
+38 T. A. Pascal, K. H. Wujcik, D. R. Wang, N. P. Balsara and
+D. Prendergast, Phys. Chem. Chem. Phys., 2017, 19, 1441–1448.
+39 T. A. Pascal, K. H. Wujcik, J. Velasco-Velez, C. Wu,
+A.
+A.
+Teran,
+M.
+Kapilashrami,
+J.
+Cabana,
+J.
+Guo,
+M. Salmeron, N. Balsara and D. Prendergast, J. Phys. Chem.
+Lett., 2014, 5, 1547–1551.
+40 R. Atwi and N. N. Rajput, Patterns, 2023, 4, 100799.
+41 M. Cuisinier, P.-E. Cabelguen, S. Evers, G. He, M. Kolbeck,
+A. Garsuch, T. Bolin, M. Balasubramanian and L. F. Nazar,
+J. Phys. Chem. Lett., 2013, 3227–3232.
+42 D. R. Wang, D. B. Shah, J. A. Maslyn, W. S. Loo,
+K. H. Wujcik, E. J. Nelson, M. J. Latimer, J. Feng,
+D.
+Prendergast,
+T.
+A.
+Pascal
+and
+N.
+P.
+Balsara,
+J. Electrochem. Soc., 2018, 165, A3487–A3495.
+43 V. Thangavel, A. Mastouri, C. Gue´ry, M. Morcrette and
+A. A. Franco, Batteries Supercaps, 2021, 4, 152–162.
+44 Q. He, Y. Gorlin, M. U. M. Patel, H. A. Gasteiger and
+Y.-C. Lu, J. Electrochem. Soc., 2018, 165, A4027–A4033.
+45 X. Huang, Z. Wang, R. Knibbe, B. Luo, S. A. Ahad, D. Sun
+and L. Wang, Energy Technol., 2019, 7, 1801001.
+46 M. J. Abraham, T. Murtola, R. Schulz, S. Pa´ll, J. C. Smith,
+B. Hess and E. Lindahl, SoftwareX, 2015, 1–2, 19–25.
+47 L. S. Dodda, J. Z. Vilseck, J. Tirado-Rives and W. L.
+Jorgensen, J. Phys. Chem. B, 2017, 121, 3864–3870.
+48 I. V. Leontyev and A. A. Stuchebrukhov, J. Chem. Phys., 2009,
+130, 085102.
+49 G. Bussi, D. Donadio and M. Parrinello, J. Chem. Phys., 2007,
+126, 014101.
+PCCP
+Paper
+
+<<PAGE 10>>
+27954 | Phys. Chem. Chem. Phys., 2024, 26, 27945–27954
+This journal is © the Owner Societies 2024
+50 R. Metzler, J.-H. Jeon, A. G. Cherstvy and E. Barkai, Phys.
+Chem. Chem. Phys., 2014, 16, 24128–24164.
+51 J. Luque Di Salvo, G. L. Luque and G. De Luca, Mol. Syst.
+Des. Eng., 2022, 7, 364–373.
+52 V. Gutmann, Coord. Chem. Rev., 1976, 18, 225–255.
+53 K. A. Dill, S. Bromberg and D. Stigter, Molecular Driving
+Forces: Statistical Thermodynamics in Biology, Chemistry,
+Physics, and Nanoscience, Garland Science, 2nd edn, 2010.
+54 G.-Y. Du, C.-Y. Liu and E. Y. Li, Catalysts, 2020, 10, 911.
+55 M. Cheviri and S. Lakshmipathi, Comput. Theor. Chem.,
+2021, DOI: 10.1016/j.comptc.2021.113323.
+56 M.
+Y.
+Ovchinnikov,
+E.
+V.
+Kuzmina,
+E.
+V.
+Karaseva,
+S. L. Khursan and V. S. Kolosnitsyn, Int. J. Quantum Chem.,
+2022, DOI: 10.1002/qua.26985.
+57 Q. He, X. Liao, L. Xia, Z. Li, H. Wang, Y. Zhao and D. G. Truhlar,
+J. Phys. Chem. C, 2019, DOI: 10.1021/acs.jpcc.9b05235.
+58 E. P. Kamphaus and P. B. Balbuena, J. Phys. Chem., 2017,
+DOI: 10.1021/acs.jpcc.7b04822.
+59 S. C. Kim, X. Gao, S.-L. Liao, H. Su, Y. Chen, W. Zhang,
+L. C. Greenburg, J.-A. Pan, X. Zheng, Y. Ye, M. S. Kim,
+P. Sayavong, A. Brest, J. Qin, Z. Bao and Y. Cui, Nat.
+Commun., 2024, 15, 1268.
+60 F. M. R. Mesquita, F. X. Feitosa, M. Aznar, H. B. De Sant’Ana
+and R. S. Santiago-Aguiar, J. Chem. Eng. Data, 2014, 59,
+2196–2206.
+61 J. F. Kincaid, H. Eyring and A. E. Stearn, Chem. Rev., 1941,
+28, 301–365.
+62 P. Ha¨nggi, P. Talkner and M. Borkovec, Rev. Mod. Phys.,
+1990, 62, 251–341.
+63 F. Y. Fan, M. S. Pan, K. C. Lau, R. S. Assary, W. H. Woodford,
+L. A. Curtiss, W. C. Carter and Y.-M. Chiang, J. Electrochem.
+Soc., 2016, 163, A3111–A3116.
+Paper
+PCCP

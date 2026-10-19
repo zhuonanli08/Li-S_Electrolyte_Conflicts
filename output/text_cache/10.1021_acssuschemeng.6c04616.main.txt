@@ -1,0 +1,968 @@
+
+<<PAGE 1>>
+Unlocking the Capacity of Li−S Batteries via a Solvation-Mediated
+Trade-Off between Anode Stability and Cathode Kinetics
+Ting Chen, Qiuyu Yu, Tianyi Fu, Yuanying Mao, Yuanyuan Chen, Menggeng Qian, Dong Wang,
+Fang Wan, Zhenguo Wu,* and Xiaodong Guo*
+Cite This:
+Read Online
+ACCESS
+Metrics & More
+Article Recommendations
+Supporting Information
+ABSTRACT: Despite their ultrahigh theoretical energy density of
+2600 Wh kg−1, the practical application of lithium−sulfur (Li−S)
+batteries is severely hindered by a kinetic dilemma: traditional elec-
+trolytes fail to balance the conﬂicting demands of the sulfur cathode
+(which requires strong solvation for polysulﬁde conversion) and the
+lithium anode (which requires weak solvation for stability). To
+address this, we propose a rational electrolyte design by introducing
+1,2-dimethoxyethane (DME) as a “molecular trigger” into a weakly
+solvating THF/TTE baseline electrolyte. Multiscale characteriza-
+tions and molecular dynamics simulations reveal that the precise
+incorporation of DME reconstructs the primary Li+ solvation
+sheath into an anion-participating conﬁguration. This optimized structure not only eﬀectively activates the deep conversion kinetics
+of polysulﬁdes at the cathode but also thermodynamically drives the formation of a robust, dense, and inorganic-rich (LiF/Li2S) solid
+electrolyte interphase (SEI) at the anode. Consequently, the optimized electrolyte enables dendrite-free lithium deposition with a
+Coulombic eﬃciency of >99% at a high current density of 4 mA cm−2, achieving stable cycling for over 1000 h in symmetric cells.
+Furthermore, the corresponding Li−S full cells deliver a high reversible capacity of ∼600 mAh g−1 (∼800 mAh g−1 with LiNO3 addi-
+tives) and excellent rate capability. This study provides deep fundamental insights into solvation-structure-regulated interfacial chem-
+istry, presenting a viable strategy for developing high-energy, long-lifespan Li−S batteries.
+KEYWORDS: lithium metal anode, lithium polysulﬁdes, solvation structure, electrolytes, lithium−sulfur batteries
+■INTRODUCTION
+The pursuit of high-energy-density storage systems has posi-
+tioned lithium−sulfur (Li−S) batteries at the forefront of
+next-generation battery technologies, owing to their ultrahigh
+theoretical energy density of 2600 Wh kg−1.1,2 However, the
+practical realization of this promise is notoriously hampered
+by the intertwined challenges arising from the dissolution-
+precipitation chemistry of the sulfur cathode and the highly
+reactive lithium metal anode.3 On the cathode side, the soluble
+lithium polysulﬁde (LiPS) intermediates, while essential for the
+conversion reaction, induce a severe shuttle eﬀect, leading to
+active material loss and rapid capacity decay.4 Concurrently,
+on the anode side, these migrating LiPSs trigger parasitic reac-
+tions with the Li metal, accelerating the depletion of limited
+lithium reservoirs and fostering the growth of deleterious Li
+dendrites.5
+The electrode kinetics of LiPSs lies at the heart of these chal-
+lenges, dictating both the conversion eﬃciency at the cathode
+and the corrosion rate at the anode.6,7 Intriguingly, these kinet-
+ics present a fundamental dilemma. Rapid cathode kinetics is
+desirable for achieving high sulfur utilization and rate capability,
+yet it often implies a high concentration of dissolved LiPSs,
+which exacerbates the shuttle eﬀect and anode corrosion.8
+Conversely, mitigating the shuttle eﬀect through weakly solvat-
+ing electrolytes that limit LiPS solubility can inevitably impede
+cathode reaction kinetics, leading to reduced capacity and
+increased polarization.9,10 This creates a seemingly irreconcil-
+able conﬂict between cathode activity and anode stability.
+Recent electrolyte engineering eﬀorts have primarily bifurcated
+into two paths: strong solvating power electrolytes for high
+cathode kinetics and weak solvating power electrolytes for
+anode protection.11,12 However, a strategy that intelligently nav-
+igates the middle ground to simultaneously satisfy the stringent
+requirements of both electrodes remains elusive. Most reported
+weakly solvating systems, while excellent for stabilizing lithium
+anodes, often lead to unsatisfactory sulfur cathode performance,
+Received:
+April 25, 2026
+Revised:
+July 22, 2026
+Accepted:
+July 27, 2026
+pubs.acs.org/journal/ascecg
+Research Article
+https://doi.org/10.1021/acssuschemeng.6c04616
+ACS Sustain. Chem. Eng. 2026, 14, 14319−14328
+© 2026 American Chemical Society
+Published:    August 1, 2026
+ACS Sustain. Chem. Eng. 2026, 14, 14319−14328
+14319
+Downloaded from pubs.​acs.​org/​ascecg/​article-pdf/​14/​32/​14319/​66354404/​sc-2026-04616e.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 2>>
+as the solid−liquid−solid conversion pathway is critically
+dependent on a certain degree of LiPS solvation.13
+Herein, we report a fundamental discovery and a rational
+design principle that resolves this kinetic dilemma. We seren-
+dipitously found that a weakly solvating electrolyte based on tet-
+rahydrofuran (THF) and Tetraﬂuoroethyl-tetraﬂuoropropyl
+ether (TTE) endows the lithium metal anode with exceptional
+electrochemical stability yet renders the Li−S battery nearly
+non-functional due to the completely hindered cathode pro-
+cess.14 This stark contrast serves as a perfect model system, iso-
+lating the anode and cathode requirements. Guided by this
+ﬁnding, we introduced a strongly solvating co-solvent, 1,2-
+dimethoxyethane (DME), as a “molecular trigger” to precisely
+tune the LiPS solvation structure. Furthermore, Li−S cells con-
+taining a DME/THF-based electrolyte also exhibited improved
+performance metrics when compared to cells that only con-
+tained THF-based electrolyte, including a markedly improved
+capacity and cycling stability (e.g., 0 vs 600 mAh g−1 after 100
+cycles at 0.5 C). Our systematic investigation reveals that an
+optimal, intermediate solvation strength is critical to “activate”
+the sulfur cathode kinetics without compromising the superior
+anode stability inherited from the THF/TTE matrix.
+■EXPERIMENTAL SECTION
+Material Preparation
+Battery-grade ethylene glycol dimethyl ether (DME), tetrahydrofuran
+(THF), lithium bis(ﬂuorosulfonyl)imide (LiFSI), 1,1,2,2-tetraﬂuor-
+oethyl-2,2,3,3-tetraﬂuoropropyl ether (TTE, 99.9%), and lithium
+nitrate (LiNO3) were employed as dissolved substances prior to elec-
+trolyte preparation. All solvents were dehydrated overnight using
+molecular sieves. Subsequently, the corresponding electrolytes were
+weighed according to the prescribed ratios and prepared in an argon-
+ﬁlled glove box. The mixtures were stirred magnetically for 12 h to
+ensure complete dissolution. The electrolyte compositions investigated
+in this study were formulated based on molar ratios, with the speciﬁc
+grades and molar proportions detailed in Table S1.
+Materials Characterizations
+The physicochemical properties of the electrolytes were characterized
+using a suite of analytical techniques. Liquid-state 7Li NMR spectra
+were acquired on a Bruker Avance NEO 600 spectrometer. Raman
+spectroscopy was performed on a HORIBA Scientiﬁc LabRAM HR
+Evolution system with a 633 nm excitation laser. Fourier-transform
+infrared (FTIR) spectroscopy was conducted on a Nicolet 670 instru-
+ment, scanning the wavenumber range of 400–4000 cm−1. X-ray pho-
+toelectron spectroscopy (XPS) measurements were carried out on a
+Thermo Scientiﬁc K-Alpha spectrometer. Surface morphology was
+examined by scanning electron microscopy (SEM) using a TESCAN
+VEGA3 SBH microscope. Linear sweep voltammetry (LSV) was per-
+formed on a CS2350H electrochemical workstation at a scan rate of
+0.1 mV s−1. The cutoﬀvoltage was set to 6 V, and the measurements
+were performed using Li||stainless steel coin cells.
+Electrochemical Measurements
+(1) Asymmetric half-cell tests. The cells underwent an activation pre-
+treatment involving constant-current lithium deposition at a current
+density of 0.2 mA cm−2 for 10 h (equivalent to a deposition capacity
+of 2 mAh cm−2), followed by lithium stripping at the same current
+density up to a cut-oﬀvoltage of 1.0 V. Subsequent cycling tests were
+performed at current densities of 1 and 2 mA cm−2 with a ﬁxed areal
+capacity of 1 mAh cm−2 and a discharge cut-oﬀvoltage of 1.0 V.
+These measurements were used to analyze the kinetics and interfacial
+behavior of lithium deposition/stripping. (2) Symmetric cell tests.
+Cells were cycled at a current density of 1 mA cm−2 and an areal capac-
+ity of 1 mAh cm−2, with equal durations for discharge (lithium deposi-
+tion) and charge (lithium stripping). The long-term cycling stability
+was evaluated to assess the interfacial stability and electrochemical
+reversibility of the lithium metal anode. (3) Full-cell tests. The voltage
+window was set between 1.7 and 2.8 V for electrochemical perfor-
+mance evaluation. For the full-cell conﬁguration, the sulfur loading of
+the cathode was 1.25 mg cm−2. the N/P ratio was kept at 16.8, the
+electrolyte-to-sulfur ratio(E/S) was ﬁxed at 35, and the thickness of
+the lithium foil was 100 μm.
+■RESULTS AND DISCUSSION
+As illustrated in Figure 1, the solvation structure of the electro-
+lyte plays a decisive role in governing the electrochemical
+behavior and interfacial kinetics of lithium−sulfur (Li−S) batte-
+ries. In the baseline weakly solvating electrolyte employed in
+our previous work (LiFSI + THF/TTE, denoted as H1), the
+voltage−areal capacity proﬁles of the full cell (Figure 1a) reveal
+pronounced polarization and signiﬁcant separation between
+charge and discharge plateaus during the initial cycles (compar-
+ison between the 2nd and 5th cycles), accompanied by rapid
+capacity decay. These features clearly indicate sluggish conver-
+sion kinetics of lithium polysulﬁdes (LiPSs) and deteriorated
+electrochemical reversibility within this system.15 Although con-
+ventional weakly solvating electrolytes eﬀectively suppress para-
+sitic reactions and stabilize the lithium metal anode by limiting
+LiPS dissolution, they do so at the expense of active material
+utilization at the cathode, resulting in low speciﬁc capacity
+and poor cycling stability.16 To overcome this intrinsic trade-
+oﬀbetween cathode and anode performance, a novel electrolyte
+system with a rationally engineered solvation structure was
+designed and constructed (Figure 1b,c). By precisely incorpo-
+rating 1,2-dimethoxyethane (DME), a co-solvent with strong
+solvating capability toward LiPSs, into the original weakly sol-
+vating network, synergistic optimization of both electrodes
+was achieved. This electrolyte design not only promotes rapid
+and uniform conversion of polysulﬁde intermediates, but also
+eﬀectively suppresses parasitic reactions on the anode, thereby
+enabling dense and stable lithium deposition. Cyclic voltamme-
+try (CV) measurements (Figure 1d) further validate this design
+strategy.17 In the absence of DME, the weakly solvating electro-
+lytes, regardless of concentration, exhibit broadened peaks and
+signiﬁcant potential shifts, indicative of severe polarization. In
+contrast, the DME-containing T1 electrolyte demonstrates
+markedly enhanced redox peak currents, reduced peak separa-
+tion, and sharp, symmetric peak shapes. Meanwhile, the sulfur
+cathode displays two well-deﬁned peaks, conﬁrming improved
+reaction kinetics and highly reversible sulfur redox processes.18
+Electrochemical impedance spectroscopy (EIS, Figure 1e,f)
+results are in excellent agreement with the CV analysis. The
+weakly solvating electrolyte without DME exhibits a large inter-
+facial charge-transfer resistance (Rct) in the Nyquist plots. Upon
+introducing varying proportions of DME (T1, T2, and
+T3 systems), a substantial decrease in Rct is observed.
+Notably, the T3 electrolyte with the highest DME content
+shows the smallest semicircles in both high and medium fre-
+quency regions, indicating signiﬁcantly accelerated interfacial
+charge transfer and enhanced ionic transport capability. To fur-
+ther elucidate the inﬂuence of solvation capability on the micro-
+scopic electrode behavior, the dissolution and evolution kinetics
+of polysulﬁdes were systematically investigated using 0.2 M
+Li2S6 as a representative model (Figure 1g). At the initial stage,
+ACS Sustainable Chemistry & Engineering
+pubs.acs.org/journal/ascecg
+Research Article
+https://doi.org/10.1021/acssuschemeng.6c04616
+ACS Sustain. Chem. Eng. 2026, 14, 14319−14328
+14320
+Downloaded from pubs.​acs.​org/​ascecg/​article-pdf/​14/​32/​14319/​66354404/​sc-2026-04616e.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 3>>
+optical observations reveal that the T2 and T3 electrolytes
+exhibit homogeneous and dark-colored solutions, conﬁrming
+their superior solubility for long-chain polysulﬁdes. In contrast,
+the DME-free D5 and H1 systems display obvious turbidity and
+milky phase separation with precipitates at the bottom
+(Figure S1), suggesting that limited solvation drives polysulﬁdes
+to aggregate in the solid phase. With prolonged resting time, the
+T2 and T3 systems maintain uniform liquid-phase states, dem-
+onstrating excellent structural stability and the ability to sustain
+a dynamic dissolution equilibrium of polysulﬁdes. Although the
+T1 system shows moderate solubility initially, gradual discolor-
+ation and slight sedimentation are observed at later stages,
+implying slow disproportionation or irreversible deposition of
+polysulﬁdes. By comparison, severe solid−liquid phase separa-
+tion occurs in D5 and H1, where the supernatant becomes
+nearly colorless and a large amount of precipitate accumulates
+at the bottom.
+This evolution process highlights the inherent limitations of
+traditional weakly solvating systems: while restricted solubility
+can physically mitigate the shuttle eﬀect, it inevitably leads to
+extensive aggregation and deposition of low-order polysulﬁdes,
+ultimately resulting in poor sulfur utilization.19,20 Furthermore,
+when the Li2S6 concentration increases to 0.5 M and 1.0 M
+(Figures 1f and S2−S4), the consistency and ampliﬁcation of
+these trends further validate the above conclusions.21 In sum-
+mary, the molecular architecture and solvation environment of
+the electrolyte play a central role in regulating the evolution
+pathways of polysulﬁdes. Through rational construction of a
+cooperative solvation network, this work successfully over-
+comes the limitations of conventional systems. In other words,
+while maintaining the interfacial stability of the lithium anode,
+the proposed electrolyte not only fully activates the deep con-
+version potential of sulfur species at the cathode, but also signif-
+icantly
+accelerates
+redox
+kinetics,
+ultimately
+enabling
+a
+comprehensive enhancement of the electrochemical perfor-
+mance of Li−S batteries.
+Furthermore, Molecular dynamics (MD) simulations were
+employed to investigate the microscopic solvation networks
+and component distributions in the electrolytes. As illustrated
+by
+the
+molecular
+conﬁgurations
+and
+three-dimensional
+Figure 1. Electrochemical characteristics and interfacial evolution of weakly solvating and optimized electrolytes. (a) Charge/discharge voltage pro-
+ﬁles of the H1 cell at diﬀerent cycles; (b,c) schematic illustrations comparing the weak-solvation electrolyte and the optimized electrolyte; (d) cyclic
+voltammetry curves of cells with T1, D5, and H1 electrolytes; (e,f) electrochemical impedance spectra and equivalent circuit ﬁtting results for H1 and
+for T1, T2, and T3; dissolution behavior of (g) 0.2 M and (h) 1 M Li2S6 in T3, T2, T1, D5, and H1 after mixing and standing.
+ACS Sustainable Chemistry & Engineering
+pubs.acs.org/journal/ascecg
+Research Article
+https://doi.org/10.1021/acssuschemeng.6c04616
+ACS Sustain. Chem. Eng. 2026, 14, 14319−14328
+14321
+Downloaded from pubs.​acs.​org/​ascecg/​article-pdf/​14/​32/​14319/​66354404/​sc-2026-04616e.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 4>>
+simulation snapshots in Figure S5, solvent molecules, through
+multidentate coordination, signiﬁcantly enhance the solvation
+capability toward Li+, enabling its homogeneous dispersion in
+three-dimensional space. Meanwhile, the interwoven solvent
+network establishes continuous ion-transport pathways that
+facilitate rapid Li+ hopping.22 Figure 2 provides a comprehen-
+sive depiction of the evolution of Li+ solvation structures driven
+by solvent composition regulation, as well as their potential
+implications for interfacial chemistry. Radial distribution func-
+tion (RDF) and coordination number analyses (Figure 2a−c)
+reveal that, in the T1, T2, and T3 systems, the primary solvation
+sheath of Li+ is co-coordinated by FSI−, DME, and THF,
+whereas the weakly solvating diluent TTE is excluded from
+the inner coordination shell and mainly functions to dilute
+localized high-concentration ion clusters and reconstruct the
+bulk solution network.23 As the system evolves from T1 to T3
+(i.e., increasing DME content), the Li+−DME interaction is sig-
+niﬁcantly strengthened, competitively weakening Li+−THF
+coordination. This indicates that the introduction of DME
+enables precise reconstruction of the local solvation environ-
+ment of Li+. Notably, despite the dynamic evolution in solvent
+occupancy within the inner shell, FSI−remains ﬁrmly anchored
+in the ﬁrst coordination shell of Li+, imparting a distinct anion-
+participating solvation characteristic to these electrolytes.24 This
+microscopic structural reconstruction directly dictates the mac-
+roscopic interfacial evolution behavior. On one hand, the
+strongly donating solvent DME preferentially occupies the
+inner solvation shell of Li+ and cooperates with anions to stabi-
+lize the local structure.25 On the other hand, the deep involve-
+ment of anions leads to the formation of abundant contact
+ion pairs (CIPs) and aggregated ion clusters (AGGs). Such
+anion-rich solvation environments not only eﬀectively regulate
+the thermodynamics of Li+ desolvation but also precisely dic-
+tate the initial reduction pathways at the electrode/electrolyte
+interface, thereby determining the chemical composition and
+formation mechanism of the solid electrolyte interphase (SEI).
+Theoretical binding energy calculations and adsorption con-
+ﬁguration analyses (Figure 2d,e) provide energetic validation
+for the above conclusions.26 All three systems exhibit favorable
+aﬃnity toward lithium polysulﬁde (Li2S6) intermediates; how-
+ever, the thermodynamic contributions of individual compo-
+nents to the Li+ solvation shell diﬀer signiﬁcantly. Compared
+with THF, DME and FSI−bind more strongly to Li+, indicating
+that the ﬁrst solvation shell is preferentially constructed through
+cooperative DME−anion coordination rather than THF domina-
+tion. This agrees well with the RDF results and further conﬁrms
+the anion-participating solvation structure. Thermodynamically,
+such local coordination favors preferential anion reduction at the
+interface, thereby promoting the formation of an inorganic-rich
+SEI.27 Simultaneously, it enhances the spatial conﬁnement and
+electronic regulation of polysulﬁde intermediates, fundamentally
+improving their conversion kinetics and the uniformity of the ﬁnal
+Li2S deposition. Spectroscopic characterizations further corrobo-
+rate the theoretical evolution trends. Raman spectra (Figure 2f)
+show that, compared with T1, the signals corresponding to
+Li+−FSI−coordination are signiﬁcantly intensiﬁed in T2 and
+T3, while the characteristic peaks of free solvent are relatively sup-
+pressed, directly indicating that increasing DME content drives
+deeper anion incorporation into the Li+ inner solvation shell. In
+Fourier-transform infrared (FTIR) spectra (Figure 2g), the shifts
+and intensity variations of the S=O and C−O−C stretching vibra-
+tions further conﬁrm the co-participation of FSI−and ether
+oxygen atoms in Li+ solvation, as well as their dynamically
+adjusted contributions across diﬀerent systems.28 This continuous
+evolution of the local electronic environment surrounding Li+
+from T1 to T3 is in excellent agreement with the structural recon-
+struction revealed by theoretical simulations. Overall, through the
+introduction of DME and precise compositional tuning, this work
+successfully reconstructs the competitive coordination mechanism
+between solvents and anions within the ﬁrst solvation shell of Li+.
+This bottom-up regulation governs the degree of anion participa-
+tion, the preferential interfacial reduction chemistry, and the
+adsorption and conversion behavior of polysulﬁdes. The resulting
+anion-participating
+solvation
+network
+establishes
+a
+robust
+molecular-level foundation for achieving highly stable interfacial
+electrochemistry and highly reversible sulfur redox processes.
+After elucidating the role of the DME/THF ratio in recon-
+structing the local solvation environment of Li+, this work fur-
+ther interrogates how such microscopic structural evolution
+governs macroscopic electrode processes from the perspectives
+of interfacial electrochemistry and lithium deposition kinetics.
+Given that the intrinsic failure of lithium metal anodes origi-
+nates from the mechanical instability of the interphase and den-
+dritic lithium growth, a critical criterion for evaluating
+electrolyte performance lies in whether the optimized bulk sol-
+vation structure can be eﬀectively translated to the electrode/
+electrolyte interface to construct a robust solid electrolyte inter-
+phase (SEI).29 To directly visualize the eﬀect of solvation net-
+works on lithium deposition, SEM was performed on cycled
+Cu current collectors. As shown in Figures 3a and S6, the inter-
+facial morphology evolves systematically with the solvation
+structure. In the T1 system, lithium deposits form loose, porous
+blocky/lamellar aggregates with poor interfacial continuity, indi-
+cating insuﬃcient passivation in a weakly solvating environ-
+ment. In T2, the deposits become more coalesced, showing
+improved continuity and compactness. With a further increase
+in DME content in T3, lithium deposition evolves into a uni-
+form, smooth, dense, and dendrite-free layer with eﬀectively
+suppressed
+macroscopic
+defects.
+This
+progressive
+three-
+dimensional morphological evolution strongly corroborates
+the regulatory role of high donor number solvents: the rein-
+forced coordination network not only homogenizes the local
+interfacial current density but also kinetically suppresses den-
+dritic growth, thereby enabling highly reversible and compact
+lithium deposition. X-ray photoelectron spectroscopy (XPS)
+provides further insight into the systematic evolution of SEI
+chemical compositions. The high-resolution F 1s spectra
+(Figure 3b) conﬁrm that all three systems generate an LiF-
+dominated inorganic framework; however, the T3 system
+exhibits an overwhelmingly intensiﬁed LiF signal, evidencing a
+substantial increase in anion-derived decomposition. The N 1s
+spectra (Figure 3b) reveal that all the three systems generate
+SEI components rich in Li3N, which can be attributed to the
+decomposition of LiNO3 as a ﬁlm-forming additive. In addition,
+SEI in T1 retains a signiﬁcant amount of partially decomposed
+FSI−species, whereas in T2 and T3 systems, these species pro-
+gressively convert into deeply decomposed Li−N components,
+further reﬂecting the promoted involvement of anions in inter-
+facial reactions induced by solvation structure reconstruction.30
+The S 2p spectra (Figure 3b) indicate a more concentrated and
+stable distribution of Li2S and sulfur−oxygen species in T2 and
+T3 systems, pointing to a pronounced inorganic enrichment at
+the interface. Notably, the C 1s spectra (Figure S7) show that
+the T2 system triggers considerable solvent decomposition,
+ACS Sustainable Chemistry & Engineering
+pubs.acs.org/journal/ascecg
+Research Article
+https://doi.org/10.1021/acssuschemeng.6c04616
+ACS Sustain. Chem. Eng. 2026, 14, 14319−14328
+14322
+Downloaded from pubs.​acs.​org/​ascecg/​article-pdf/​14/​32/​14319/​66354404/​sc-2026-04616e.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 5>>
+forming an organic-rich SEI dominated by C−O species. In
+contrast, the T3 system eﬀectively suppresses excessive electro-
+lyte consumption, driving the interface toward an organic-deﬁ-
+cient, highly dense inorganic SEI, which is crucial for ensuring
+long-term cycling stability. Based on the above characteriza-
+tions, the interfacial evolution mechanism of this electrolyte sys-
+tem is summarized in Figure 3c. The central microscopic
+principle lies in the strengthened coordination coupling
+between Li+ and solvent/anion species, which markedly
+increases the proportion of contact ion pairs (CIPs) and aggre-
+gates (AGGs). This, in turn, thermodynamically favors the
+spontaneous formation of a LiF-rich robust inorganic SEI with
+high mechanical modulus and fast ionic conductivity.31,32
+Speciﬁcally, in the weakly solvating T1 environment, abundant
+free solvent molecules dominate the interfacial chemistry, lead-
+ing to solvent-driven decomposition and the formation of an
+organic-rich SEI with poor mechanical strength and susceptibil-
+ity to continuous corrosion. In contrast, for T2 and T3 systems,
+as the solvation sheath evolves from solvent-separated ion pairs
+(SSIPs) to CIP/AGG-dominated conﬁgurations, the interfacial
+reduction pathway is shifted toward anion-governed pro-
+cesses.33 From a thermodynamic perspective, this intimate
+Li+−FSI−coordination shifts the reduction potential of the
+anions, making them preferentially undergo interfacial reduc-
+tion. This transition preferentially constructs a dense inorganic
+SEI framework composed of LiF and Li2S. Such an
+inorganic-rich interphase not only physically blocks further
+parasitic reactions between highly reactive free solvents
+(e.g., DME) and the lithium metal substrate but also eﬀec-
+tively
+reduces
+interfacial
+charge-transfer
+resistance
+and
+homogenizes Li+ ﬂux, ultimately enabling highly stable and
+controllable lithium plating/stripping behavior.
+To evaluate the impact of solvation structure on macroscopic
+electrochemical behavior and interfacial dynamics, systematic
+evaluations and in situ tracking of lithium deposition were per-
+formed. As shown in the linear sweep voltammetry (LSV)
+curves in Figure 4a, the T3 system exhibits the highest onset
+potential for oxidative decomposition, markedly outperforming
+T1 and T2. This indicates that with increasing DME fraction
+and concomitant reduction of THF, the deeper involvement
+of DME within the primary solvation sheath of Li+ not only
+reconstructs the interfacial reaction pathways but also eﬀectively
+quenches highly reactive free solvent molecules, thereby endow-
+ing the electrolyte with superior thermodynamic stability at ele-
+vated voltages. Electrochemical impedance spectroscopy (EIS)
+further reveals the dynamic evolution of interfacial resistance
+(Figure 4b,c).34 At the initial state, the T3 system displays a rel-
+atively higher interfacial impedance, consistent with its larger
+nucleation overpotential and higher desolvation energy barrier.
+However, after 30 cycles, the impedance semicircle of T3
+undergoes a pronounced shrinkage and becomes the smallest
+among
+the
+three
+systems.
+This
+“impedance
+inversion”
+Figure 2. Multiscale characterization of Li+ solvation structures in T1, T2, and T3 electrolytes. (a−c) Radial distribution functions and coordination
+numbers of Li−O interaction with diﬀerent electrolyte, (d) binding energies of Li2S6 with diﬀerent substances, and (e) coordination states of Li+ with
+diﬀerent electrolyte components. (f) Raman, (g) FTIR, and (h)1H NMR spectra (bottom) reveal the evolution of Li+ coordination environments
+among T1, T2, and T3.
+ACS Sustainable Chemistry & Engineering
+pubs.acs.org/journal/ascecg
+Research Article
+https://doi.org/10.1021/acssuschemeng.6c04616
+ACS Sustain. Chem. Eng. 2026, 14, 14319−14328
+14323
+Downloaded from pubs.​acs.​org/​ascecg/​article-pdf/​14/​32/​14319/​66354404/​sc-2026-04616e.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 6>>
+phenomenon provides compelling evidence that during the ini-
+tial activation process, the T3 electrolyte can induce the forma-
+tion of a highly uniform, dense, and stable SEI layer. This
+inorganic-rich interphase not only avoids continuous thickening
+but also signiﬁcantly reduces charge-transfer resistance, estab-
+lishing ultrafast Li+ transport pathways.35 To directly visualize
+the morphological evolution of lithium plating/stripping, in situ
+optical microscopy was used for real-time monitoring. As shown
+in Figure 4d, the T1 system rapidly develops loose lithium clus-
+ters and localized protrusions after 30 min of deposition, which
+further evolve into severe dendritic and mossy structures by
+60 min. Although T2 partially alleviates this degradation, non-
+uniform deposition remains evident. In contrast, T3 maintains
+a continuous, smooth, and compact morphology uniformly
+across the substrate throughout deposition, demonstrating that
+the optimized solvation structure homogenizes interfacial Li+
+ﬂux and kinetically suppresses dendrite nucleation. Post-
+mortem observation of Cu current collectors charged to 1 V
+after cycling (Figure S8) further shows the least residual “dead
+lithium” in T3, indicating progressively enhanced lithium disso-
+lution reversibility with increasing DME fraction. This improve-
+ment arises from the strengthened anion-participating solvation
+network in T3, which thermodynamically promotes rapid for-
+mation of a LiF-rich inorganic SEI. The resulting robust passiv-
+ation layer, with high mechanical strength and favorable ionic
+conductivity, rapidly seals the reactive lithium surface, sup-
+presses parasitic reactions, and resists interfacial fracture/recon-
+struction during volume ﬂuctuations.
+Li||Cu half-cell tests further provide rigorous validation of
+the electrochemical reversibility of the system (Figure S9).
+Under baseline conditions of 1 mA cm−2 and 1 mAh cm−2,
+all three electrolytes exhibit excellent Coulombic eﬃciency
+(CE) and cycling stability, conﬁrming the eﬀectiveness of the
+electrolyte framework in suppressing “dead lithium” accumula-
+tion. Even under more demanding long-term cycling at a high
+current density of 2 mA cm−2 (Figures S10−S12), the CE
+remains stable without noticeable decay. When the current den-
+sity is further increased to 4 mA cm−2 (Figure 4e), despite the
+aggravated polarization, all systems are still capable of maintain-
+ing a high CE above 99% over prolonged cycling. Notably,
+owing to the precise incorporation and optimization of DME,
+the T3 system demonstrates the highest and most stable CE
+evolution under such extreme conditions, signiﬁcantly outper-
+forming T1 and T2. This highlights its superior interfacial sta-
+bility
+and
+deposition
+reversibility.
+Meanwhile,
+long-term
+voltage−time proﬁles (Figures S13 and S14) indicate that even
+after more than 1000 high-intensity cycles, the T3 system sus-
+tains an ultralow polarization overpotential without any signs
+of micro-short circuits or interfacial degradation. In summary,
+multiscale electrochemical analyses combined with in situ char-
+acterizations conﬁrm that as the system evolves from T1 to T3,
+the electrolyte network successfully transitions from a weakly
+solvating regime to an anion-dominated interfacial formation
+mechanism. This cross-scale structural optimization not only
+signiﬁcantly broadens the high-voltage oxidative stability win-
+dow but also enables the rational construction of a low-imped-
+ance, highly dense, and corrosion-resistant inorganic-rich SEI.
+Ultimately, it achieves precise regulation of long-term uniform
+lithium deposition behavior and electrochemical longevity.
+To comprehensively evaluate the long-term interfacial stabil-
+ity and practical viability of the lithium anode, Li||Li symmetric
+cells and Li−S full cells were systematically investigated. As a
+critical indicator of interfacial kinetics and solid electrolyte
+interphase (SEI) stability, the voltage hysteresis of symmetric
+cells was evaluated (Figure 5). Notably, the T3 electrolyte dem-
+onstrates exceptional cyclic stability, delivering the lowest over-
+potential with minimal ﬂuctuations over prolonged cycling. In
+contrast, the T1 and T2 systems suﬀer from pronounced polar-
+ization and voltage drift. Enlarged voltage proﬁles at the 1000th
+and 2000th cycles further corroborate that T3 maintains an
+extremely narrow voltage hysteresis, eﬀectively suppressing par-
+asitic reactions and the irreversible accumulation of “dead lith-
+ium.” Stepwise rate evaluations (Figure 5b) highlight the
+superior interfacial kinetics of T3, which consistently exhibits
+the smallest polarization and highly uniform plating/stripping
+proﬁles even under harsh high-rate conditions. This under-
+scores ultrafast interfacial charge transfer and eﬃcient Li+ trans-
+port pathways, whereas T1 and T2 exhibit severe ion-transport
+limitations. These macroscopic electrochemical behaviors align
+well with the microscopic mechanisms (Figure 3): the recon-
+structed solvation network in T3 enhances anion participation,
+fostering an inorganic-rich SEI that underpins uniform Li depo-
+sition and robust interfacial stability.
+These
+anode-interface
+advantages
+directly
+translate
+to
+enhanced Li−S full-cell performance. Under 0.5 C cycling
+(Figure 5c), the T3-based full cell rapidly reaches the highest
+discharge capacity upon activation and delivers markedly supe-
+rior capacity retention after 100 cycles compared to T1 and
+T2. At an elevated rate of 1 C (Figure 5d), the performance
+gap widens signiﬁcantly, with T3 maintaining high reversible
+capacity and delayed degradation. This conﬁrms that T3 not
+Figure 3. Morphology and interphase chemistry of Li deposits in dif-
+ferent electrolytes. (a) Top-view SEM images of Li deposited in T1,
+T2, and T3 electrolytes. (b) Corresponding high-resolution XPS spec-
+tra of F 1s, N 1s, and S 2p regions reveal the evolution of interfacial
+components. (c) Schematic diagram revealing the formation mecha-
+nism of SEI in diﬀerent electrolytes.
+ACS Sustainable Chemistry & Engineering
+pubs.acs.org/journal/ascecg
+Research Article
+https://doi.org/10.1021/acssuschemeng.6c04616
+ACS Sustain. Chem. Eng. 2026, 14, 14319−14328
+14324
+Downloaded from pubs.​acs.​org/​ascecg/​article-pdf/​14/​32/​14319/​66354404/​sc-2026-04616e.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 7>>
+only homogenizes Li deposition but also concurrently acceler-
+ates overall reaction kinetics and fatigue resistance during rapid
+charge/discharge operations. Notably, compared to the baseline
+weakly solvating system (H1, Figure 1), T3 successfully circum-
+vents absolute speciﬁc capacity limitations. Furthermore, T3
+exhibits outstanding capacity retention at medium-to-high rates
+(1–3 C, Figure S15). To further approach the theoretical limits
+of Li−S batteries, 1 wt % lithium nitrate (LiNO3) was intro-
+duced as a ﬁlm-forming additive to enable synergistic interfacial
+passivation. As shown in Figure 5e, LiNO3 signiﬁcantly boosts
+the initial reversible capacity (≈800 mAh g−1). During long-
+term cycling at 0.5 C, the T3-1 system exhibits the most robust
+macroscopic performance, retaining the highest stabilized
+capacity (≈600 mAh g−1) and superior retention (T3-1 >
+T2-1 > T1-1). This indicates that LiNO3 eﬀectively stabilizes
+the electrode/electrolyte interface, mitigating the irreversible
+loss of active sulfur species. Charge−discharge proﬁles at the
+40th cycle (Figure 5f−h) show that T3 consistently delivers
+the most extended discharge plateaus and the smallest polariza-
+tion under both 0.5 C and 1 C, validating its minimal internal
+resistance and exceptional reaction reversibility. Even at high
+rates, where T1 suﬀers from severe plateau shrinkage and
+voltage hysteresis, T3 preserves distinct two-stage “liquid−-
+liquid” and “liquid−solid” sulfur conversion characteristics.
+This strongly suggests that T3 concurrently passivates the Li
+anode and provides a synergistic “catalytic/transport” enhance-
+ment for polysulﬁde conversion at the cathode. In summary, the
+rational solvation structure reconstruction synergized with the
+LiNO3 additive leverages extensive anion participation to build
+a dense, stable, inorganic-dominated SEI (Figure S16). This
+cross-scale interfacial optimization fundamentally curtails local
+anode polarization and parasitic reactions while profoundly
+enhancing compatibility with lithium polysulﬁde conversion,
+thereby comprehensively boosting the capacity output and
+cycling durability of Li−S full cells.
+■CONCLUSIONS
+To resolve the kinetic dilemma in weakly solvating electrolytes,
+this work systematically investigated the solvation-structure-
+dependent electrochemical behaviors in lithium−sulfur (Li−S)
+batteries. Although the baseline THF/TTE system can stabilize
+the lithium anode, it severely suppresses polysulﬁde conversion.
+Combining
+multiscale
+characterizations
+with
+molecular
+Figure 4. Electrochemical performance and Li deposition behavior in diﬀerent electrolytes. (a) Linear sweep voltammetry proﬁles of T1, T2, and T3
+electrolytes. (b,c) Nyquist plots of the corresponding cells before cycling and after prolonged cycling (30th cycle). (d) Optical images of Li deposition
+evolution at 0, 30, and 60 min in T1, T2, and T3 electrolytes. (e) Coulombic eﬃciencies of Li||Cu cells in T1, T2, and T3 at diﬀerent current den-
+sities (1 and 4 mA cm−2) with a capacity of 1 mAh cm−2.
+ACS Sustainable Chemistry & Engineering
+pubs.acs.org/journal/ascecg
+Research Article
+https://doi.org/10.1021/acssuschemeng.6c04616
+ACS Sustain. Chem. Eng. 2026, 14, 14319−14328
+14325
+Downloaded from pubs.​acs.​org/​ascecg/​article-pdf/​14/​32/​14319/​66354404/​sc-2026-04616e.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 8>>
+simulations, we revealed that the weakly solvating environ-
+ment leads to sluggish interfacial charge transfer and disrupts
+sulfur redox pathways. Based on this, we rationally intro-
+duced DME as a “molecular trigger” to reconstruct the Li+
+solvation sheath into an anion-participating conﬁguration
+(as demonstrated by the optimal T3 system). This recon-
+struction not only accelerates polysulﬁde conversion kinetics
+but also induces the formation of a dense, inorganic-rich
+(LiF/Li2S) solid electrolyte interphase (SEI), which homog-
+enizes the Li+ ﬂux and enables dendrite-free lithium deposi-
+tion.
+Consequently,
+the
+optimized
+system
+achieves
+a
+high coulombic eﬃciency of >99% at a current density of
+4 mA cm−2 and maintains stable Li||Li cycling for over
+1000 h. In full cells, it delivers a stable capacity of
+∼600 mAh g−1 (further improved to 800 mAh g−1 with
+LiNO3 additives). This work establishes a universal design
+principle of balancing solvation strength to simultaneously
+activate cathode reactions and stabilize the lithium metal
+anode, providing a highly viable pathway for developing
+high-energy-density, long-lifespan Li-S batteries.
+■ASSOCIATED CONTENT
+Supporting Information
+The Supporting Information is available free of charge at
+https://pubs.acs.org/doi/10.1021/acssuschemeng.6c04616.
+Computational details; photographs of 0.2, 0.5, and 1 M
+Li₂S₆; dissolution behavior; molecular dynamics simula-
+tion
+results;
+top-view
+morphologies
+of
+Li;
+high-
+resolution ﬁtted XPS spectra; morphologies of Cu foils;
+comparison of the Coulombic eﬃciencies; voltage–areal
+capacity proﬁles; rate performance of cells; ratios of the
+solvents and the concentration; and number of solution
+components (DOCX)
+Figure 5. Electrochemical performance of Li metal and Li−S cells in diﬀerent electrolytes. (a) Long-term galvanostatic cycling of Li||Li symmetric
+cells in T1, T2, and T3 electrolytes (insets: enlarged proﬁles at 1000th and 2000th hours). (b) Rate performance of symmetric cells under stepwise
+current densities. (c−e) Cycling performance of Li−S cells at 0.5C and 1C, and comparison after electrolyte optimization. (f−h) Corresponding
+charge−discharge voltage proﬁles at the 40th cycle under diﬀerent conditions, highlighting the improved polarization and capacity retention in T3
+electrolyte.
+ACS Sustainable Chemistry & Engineering
+pubs.acs.org/journal/ascecg
+Research Article
+https://doi.org/10.1021/acssuschemeng.6c04616
+ACS Sustain. Chem. Eng. 2026, 14, 14319−14328
+14326
+Downloaded from pubs.​acs.​org/​ascecg/​article-pdf/​14/​32/​14319/​66354404/​sc-2026-04616e.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 9>>
+■AUTHOR INFORMATION
+Corresponding Authors
+Zhenguo Wu – School of Chemical Engineering, Sichuan
+University, Chengdu 610065, PR China;
+orcid.org/0000-
+0002-8153-2169; Email: zhenguowu@scu.edu.cn
+Xiaodong Guo – School of Chemical Engineering, Sichuan
+University, Chengdu 610065, PR China;
+orcid.org/0000-
+0003-0376-7760; Email: zhenguowu@scu.edu.cn
+Authors
+Ting Chen – Institute for Advanced Study, Chengdu
+University, Chengdu 610106, PR China;
+orcid.org/0009-0003-5222-3994
+Qiuyu Yu – School of Chemical Engineering, Sichuan
+University, Chengdu 610065, PR China
+Tianyi Fu – School of Mechanical Engineering, Chengdu
+University, Chengdu 610106, PR China
+Yuanying Mao – School of Mechanical Engineering, Chengdu
+University, Chengdu 610106, PR China
+Yuanyuan Chen – School of Chemistry and Chemical
+Engineering, Guizhou University, Guiyang 550025, PR China
+Menggeng Qian – School of Chemical Engineering, Sichuan
+University, Chengdu 610065, PR China
+Dong Wang – School of Materials Science and Engineering,
+Chongqing University, Chongqing 400030, PR China;
+orcid.org/0009-0000-9568-3788
+Fang Wan – School of Chemical Engineering, Sichuan
+University, Chengdu 610065, PR China;
+orcid.org/0009-0004-0905-378X
+Complete contact information is available at:
+https://pubs.acs.org/doi/10.1021/acssuschemeng.6c04616
+CRediT Authorship Contribution Statement
+T.C.: Investigation, Formal analysis, Writing-original draft,
+Writing- review & editing, Funding acquisition. Q.Y., T.F., Y.M.,
+Y.C.: Image processing, Formal analysis. M.Q.: Supervision.
+D.W., F.W., Z.W.: Project administration, Funding acquisition,
+Writing-review & editing. X.G.: Supervision, Project administra-
+tion, Funding acquisition.
+Notes
+The authors declare no competing ﬁnancial interest.
+■ACKNOWLEDGMENTS
+This work was supported by the Sichuan Province Science and
+Technology
+Innovation
+Seedling
+Project
+Key
+Project
+(2024JDRC0059), the National Natural Science Foundation
+of China (22425804), the Sichuan Science and Technology
+Program (2024NSFTD0001), Guangyuan City Department of
+Science and Technology [No.22ZDYF0047], the Sichuan
+Province Science and Technology Achievement Transfer and
+Transformation
+Project
+[No.21ZHSF0111],
+the
+Sichuan
+Science and Technology Program (2022ZHCG0121), and the
+China Postdoctoral Science Foundation [No.2022M712231].
+■REFERENCES
+(1) Deshmukh, A.; Thripuranthaka, M.; Chaturvedi, V.; Das, A. K.;
+Shelke, V.; Shelke, M. V. A Review on Recent Advancements in Solid
+State
+Lithium−Sulfur
+Batteries:
+Fundamentals,
+Challenges,
+and
+Perspectives. Prog. Energy 2022, 4, 042001.
+(2) Su, Y.-S.; Fu, Y.; Cochell, T.; Manthiram, A. A Strategic Approach
+to Recharging Lithium-Sulphur Batteries for Long Cycle Life. Nat.
+Commun. 2013, 4, 2985.
+(3) Lv, X.; Yang, Q.; Zhang, X.; Song, J.; Guo, W.; Wang, Q.
+Acceleration of Cathode Interfacial Kinetics by Liquid Organosulﬁdes
+in Lithium Metal Batteries. Angew. Chem., Int. Ed. 2022, 61,
+e202213160.
+(4) Qian, J.; Henderson, W. A.; Xu, W.; Bhattacharya, P.; Engelhard,
+M.; Borodin, O.; Zhang, J.-G. High Rate and Stable Cycling of
+Lithium Metal Anode. Nat. Commun. 2015, 6, 6362.
+(5) Bi, C.; Hou, L.; Li, Z.; Zhao, M.; Zhang, X.; Li, B.; Zhang, Q.;
+Huang, J. Protecting Lithium Metal Anodes in Lithium-Sulfur
+Batteries: A Review. Energy Mater Adv. 2023, 4, 0010.
+(6) Wang, Z.; Wang, H.; Liu, X.; Chen, Y.; Zhao, Y.; Zhang, Y.; Han,
+Q.; Qin, C.; Bakenov, Z.; Wang, Y.; Wang, X. Single Zn Atoms
+Anchored on Hollow Carbon Nanoﬁber Network for Dendrite-Free
+Lithium Metal Anode of Flexible Li-S Full Cell. Rare Met. 2023, 42,
+3705−3717.
+(7) Rajput, N. N.; Murugesan, V.; Shin, Y.; Han, K. S.; Lau, K. C.;
+Chen, J.; Liu, J.; Curtiss, L. A.; Mueller, K. T.; Persson, K. A.
+Elucidating the Solvation Structure and Dynamics of Lithium
+Polysulﬁdes
+Resulting
+from
+Competitive
+Salt
+and
+Solvent
+Interactions. Chem. Mater. 2017, 29, 3375−3379.
+(8) Park, H.; Kang, H.; Kim, H.; Kansara, S.; Allen, J. L.; Tran, D.; Sun,
+H. H.; Hwang, J.-Y. Strategy for High-Energy Li−S Battery Coupling
+with a Li Metal Anode and a Sulfurized Polyacrylonitrile Cathode.
+ACS Appl. Mater. Interfaces 2023, 15, 45876−45885.
+(9) Kim, S.; Pan, J.; Shah, A.; Chen, Y.; Park, H.; Yang, Y.; Zhang, W.;
+Greenburg, L.; Sogade, T.; Chen, A.; Qin, J.; Bao, Z.; Cui, Y. Correlating
+Solvation Free Energy to Electrolyte Properties for Lithium Metal
+Batteries. Nano Lett. 2025, 25, 4673−4680.
+(10) Kim, S.; Gao, X.; Liao, S.; Su, H.; Chen, Y.; Zhang, W.;
+Greenburg, L.; Pan, J.; Zheng, X.; Ye, Y.; Kim, M.; Sayavong, P.;
+Brest, A.; Qin, J.; Bao, Z.; Cui, Y. Solvation-Property Relationship of
+Lithium-Sulphur Battery Electrolytes. Nat. Commun. 2024, 15, 1268.
+(11) Su, L.; Yao, N.; Li, Z.; Bi, C.; Chen, Z.; Chen, X.; Li, B.; Zhang,
+X.; Huang, J. Improving Rate Performance of Encapsulating Lithium-
+Polysulﬁde Electrolytes for Practical Lithium-Sulfur Batteries. Angew.
+Chem., Int. Ed. 2024, 63, e202318785.
+(12) Li, X.; Feng, S.; Song, Y.; Zhao, C.; Li, Z.; Chen, Z.; Cheng, Q.;
+Chen, X.; Zhang, X.; Li, B.; Huang, J.; Zhang, Q. Kinetic Evaluation on
+Lithium Polysulﬁde in Weakly Solvating Electrolyte toward Practical
+Lithium-Sulfur Batteries. J. Am. Chem. Soc. 2024, 146, 14754−14764.
+(13) Wang, Z.; Weng, S.; Zhang, H.; Wang, L.; Yao, X.; Tu, H.;
+Huang, D.; Lu, S.; Liu, L.; Xue, J.; Zhang, F.; Wu, G.; Zheng, J.;
+Wang, Q.; Chen, L.; Xu, J.; Li, H.; Wu, X. Balancing Anodic Stability
+and Cathodic Kinetics in Practical Lithium-Sulfur Batteries With Non-
+Fluorinated Weakly Solvating Solvents. Adv. Sci. 2025, 12, e17305.
+(14) Drvarič Talian, S.; Jeschke, S.; Vizintin, A.; Pirnat, K.; Arčon, I.;
+Aquilanti, G.; Johansson, P.; Dominko, R. Fluorinated Ether Based
+Electrolyte for High-Energy Lithium−Sulfur Batteries: Li+ Solvation
+Role Behind Reduced Polysulﬁde Solubility. Chem. Mater. 2017, 29,
+10037−10044.
+(15) Zhao, X.; Wang, J.; Zhao, W.; Song, Z.; Zou, Q. Weakly Solvating
+Electrolyte: Regulating Polysulﬁde Intermediates for High-Performance
+Lithium-Sulfurized Polyacrylonitrile Batteries. Adv. Funct. Mater. 2025,
+35, 2511172.
+(16) Chen, S.; Zheng, J.; Mei, D.; Han, K. S.; Engelhard, M. H.; Zhao,
+W.; Xu, W.; Liu, J.; Zhang, J.-G. High-Voltage Lithium-Metal Batteries
+Enabled by Localized High-Concentration Electrolytes. Adv. Mater.
+2018, 30, 1706102.
+(17) Li, Y.; Qian, J.; Zhang, M.; Wang, S.; Wang, Z.; Li, M.; Bai, Y.; An,
+Q.; Xu, H.; Wu, F.; Mai, L.; Wu, C. Co-Construction of Sulfur
+Vacancies and Heterojunctions in Tungsten Disulﬁde to Induce Fast
+Electronic/Ionic Diﬀusion Kinetics for Sodium-Ion Batteries. Adv.
+Mater. 2020, 32, 2005802.
+(18) Wu, X.; Xie, R.; Cai, D.; Fei, B.; Zhang, C.; Chen, Q.; Sa, B.;
+Zhan, H. Engineering Defect-Rich Bimetallic Telluride with Dense
+ACS Sustainable Chemistry & Engineering
+pubs.acs.org/journal/ascecg
+Research Article
+https://doi.org/10.1021/acssuschemeng.6c04616
+ACS Sustain. Chem. Eng. 2026, 14, 14319−14328
+14327
+Downloaded from pubs.​acs.​org/​ascecg/​article-pdf/​14/​32/​14319/​66354404/​sc-2026-04616e.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 10>>
+Heterointerfaces for High-Performance Lithium-Sulfur Batteries. Adv.
+Funct. Mater. 2024, 34, 2315012.
+(19) Liu, J.; Ghosh, A.; Kondou, S.; Li, S.; Ueno, K.; Dokko, K.;
+Watanabe, M. Localized High-Concentration Binary Salt Electrolytes
+with Suppressed Li2Sx Solubility to Achieve Stable Li-S Pouch Cells
+with
+High
+Sulfur-Loading
+Cathodes
+under
+Lean
+Electrolyte
+Conditions. ACS Appl. Energy Mater. 2025, 8, 1570−1579.
+(20) Hou, L.-P.; Li, Z.; Yao, N.; Bi, C.-X.; Li, B.-Q.; Chen, X.; Zhang, X.-
+Q.; Zhang, Q. Weakening the Solvating Power of Solvents to Encapsulate
+Lithium Polysulﬁdes Enables Long-Cycling Lithium−Sulfur Batteries. Adv.
+Mater. 2022, 34, 2205284.
+(21) Pan, H.; Wei, X.; Henderson, W.; Shao, Y.; Chen, J.;
+Bhattacharya, P.; Xiao, J.; Liu, J. On the Way Toward Understanding
+Solution Chemistry of Lithium Polysulﬁdes for High Energy Li-S
+Redox Flow Batteries. Adv. Energy Mater. 2015, 5, 1500113.
+(22) Lan, J.; Cao, Y.; Geng, C.; Zheng, L.; Lin, Q.; Wang, D.; Lv, W.;
+Lu, J. Anion Regulation for High-Performance Lithium-Sulfur Batteries.
+Adv. Mater. 2025, 37, 2505527.
+(23) Liu, J.; Ihuaenyi, S.; Kuphal, R.; Salinas, J.; Xie, L.; Yang, L.;
+Janakiraman, U.; Fortier, M.; Fang, C. A Comparison of Carbonate-
+Based and Ether-Based Electrolyte Systems for Lithium Metal
+Batteries. J. Electrochem. Soc. 2023, 170, 010535.
+(25) Suo, L.; Fang, Z.; Hu, Y.-S.; Chen, L. FT-Raman Spectroscopy
+Study of Solvent-in-Salt Electrolytes. Chin. Phys. B 2016, 25, 016101.
+(26) Peng, X.; Yuan, L.; Li, S.; Jing, S.; Tian, Y.; Luo, Z.; Zhang, Y.;
+Fan, H. Co-NC/Nb2O5 Heterostructure Enable the Synergistic Fast
+Sulfur Redox Kinetics and Uniform Lithium Deposition for Advanced
+Lithium Sulfur Batteries. J. Colloid Interface Sci. 2025, 700, 138455.
+(27) Perez-Beltran, S.; Kuai, D.; Balbuena, P. SEI Formation and
+Lithium-Ion Electrodeposition Dynamics in Lithium Metal Batteries
+via First-Principles Kinetic Monte Carlo Modeling. ACS Energy Lett.
+2024, 9, 5268−5278.
+(28) Chen, Y.; Yu, Z.; Rudnicki, P.; Gong, H.; Huang, Z.; Kim, S.; Lai,
+J.; Kong, X.; Qin, J.; Cui, Y.; Bao, Z. Steric Eﬀect Tuned Ion Solvation
+Enabling Stable Cycling of High-Voltage Lithium Metal Battery. J. Am.
+Chem. Soc. 2021, 143, 18703−18713.
+(29) Ran, Q.; Zhao, H.; Liu, J.; Li, L.; Hu, Q.; Nie, F.; Liu, X.;
+Kormarneni, S. Synthesizing an Inorganic-Rich Solid Electrolyte
+Interphase by Tailoring Solvent Chemistry in Carbonate Electrolyte
+for Enabling High-Voltage Lithium Metal Batteries. J. Energy Chem.
+2023, 82, 475−483.
+(30) Li, S.; Sun, L.; Gao, H.; Long, Y.; Guo, S.; Jia, Q.; Jiang, Y.; Ye, Z.
+Direct Epitaxial Growth of MOF Arrays on Cu Foils to Regulate Li
+Deposition toward Lean-Lithium Metal Batteries. Chem. Eng. J. 2025,
+512, 162370.
+(31) Su, K.; Luo, P.; Wu, Y.; Song, X.; Huang, L.; Zhang, S.; Song, H.;
+Du, L.; Cui, Z. New Nitrate Additive Enabling Highly Stable and
+Conductive SEI for Fast-Charging Lithium Metal Batteries. Adv.
+Funct. Mater. 2024, 34, 2409492.
+(32) Shi, Z.; Thomas, S.; Guo, D.; Tian, Z.; Zhao, Z.; Wang, Y.;
+Emwas, A.-H.; Wehbe, N.; Melinte, G.; Bakr, O. M.; Mohammed, O.
+F.; Alshareef, H. N. Solvation Sheath Reorganization by Alkyl Chain
+Tuning Promises Lean-Electrolyte Li−S Batteries. ACS Energy Lett.
+2024, 9, 5391−5402.
+(33) Wang, J.; Xie, L.; Wu, W.; Liang, Y.; Cao, M.; Gao, C.; Bo, Y.;
+Zhang, J.; Zhang, J. Boosting Ultra-Fast Charging in Lithium
+Metal Batteries through Enhanced Solvent−Anion Interaction via
+Conjugation Eﬀect. Energy Environ. Sci. 2024, 17, 9100−9111.
+(34) Yao, W.; Zheng, W.; Xu, J.; Tian, C.; Han, K.; Sun, W.; Xiao, S.
+ZnS-SnS@NC
+Heterostructure
+as
+Robust
+Lithiophilicity
+and
+Sulﬁphilicity Mediator toward High-Rate and Long-Life Lithium-
+Sulfur Batteries. ACS Nano 2021, 15, 7114−7130.
+(35) Rahman, M. M.; Tan, S.; Yang, Y.; Zhong, H.; Ghose, S.; Waluyo,
+I.; Hunt, A.; Ma, L.; Yang, X.-Q.; Hu, E. An Inorganic-Rich but LiF-Free
+Interphase for Fast Charging and Long Cycle Life Lithium Metal
+Batteries. Nat. Commun. 2023, 14, 8414.
+ACS Sustainable Chemistry & Engineering
+pubs.acs.org/journal/ascecg
+Research Article
+https://doi.org/10.1021/acssuschemeng.6c04616
+ACS Sustain. Chem. Eng. 2026, 14, 14319−14328
+14328
+Downloaded from pubs.​acs.​org/​ascecg/​article-pdf/​14/​32/​14319/​66354404/​sc-2026-04616e.​pdf by TSINGHUA UNIV user on 24 September 2026

@@ -1,0 +1,734 @@
+
+<<PAGE 1>>
+ORIGINAL PAPER
+Molecular modeling of electrolyte and polysulfide ions
+for lithium-sulfur batteries
+Shumaila Babar1
+& Constantina Lekakou1
+Received: 24 September 2020 /Revised: 13 November 2020 /Accepted: 28 November 2020
+# The Author(s) 2020
+Abstract
+The operation of a lithium-sulfur (Li-S) battery involves the transport of Li+ ions and soluble sulfides mostly in the form of
+solvated ions. Key challenges in the development of Li-S battery technology are the diffusion of Li+ in micropores filled with
+sulfur and eliminating the “shuttling” of polysulfides. Ion dimensions in solvated and desolvated forms are key parameters
+determining the diffusion coefficient and the rate of transport of such ions, while constrictivity effects due to the effect of pore size
+compared to ion size control both transport and filling of the pores. We present molecular simulations to determine the solvation
+parameters of electrolyte ions and sulfides S2
+2−, S4
+2−, S6
+2−, and S8
+2−in two different electrolyte systems: LiTFSI in DOL/DME
+and LiPF6 in EC/DMC. The calculated parameters include the coordination number and the geometrically optimized model and
+dimensions, using the van der Waals surface approach, of the solvated and desolvated ions. The desolvation energy of the
+electrolyte ions is also calculated. Such data is useful for the modeling and design of the pore sizes of cathode host materials to be
+able to accommodate the different sulfides while minimizing their “shuttling” between cathode and anode.
+Keywords Molecular simulations . Solvated ions . Desolvated ions . LiTFSI in DOL/DME . LiPF6 in EC/DMC . Polysulfides
+Introduction
+Lithium-sulfur (Li-S) batteries offer the promise of high the-
+oretical capacity, 1670 mAh g−1 of sulfur, but need to over-
+come various problems such as the “shuttling” of polysulfides
+[1] and cathode degradation due to volume changes during the
+charge-discharge cycle [2] which reduce the battery
+cyclability, and also diffusion of lithium ions in the case of
+high sulfur loading in small pores that limit Li+ ion transport
+[3]. A typical Li-S battery consists of a lithium foil anode and
+a composite cathode comprising a porous carbon host impreg-
+nated by sulfur, where the carbon host provides the electronic
+conductivity [4], structural integrity [5], and flexibility [2] in
+volume changes during cycling.
+The relationship between the size of the transported species
+and the pore size within which the transport takes place is
+critical with regard to both the rate of transport and filling of
+that pore size with the transported species. The pore size
+distribution of the porous cathode host controls the sulfur in-
+filtration during cathode manufacture, governing which pore
+sizes will be filled with sulfur and which sulfur allotropes may
+fill different sizes, depending on the minimum molecu-
+lar size of each sulfur allotrope [6]. This is expected to
+be repeated in polysulfide formation during battery cy-
+cling, where each type of polysulfide could not be
+formed in pores that cannot accommodate its size.
+The importance of solvation-involved nanoionics has been
+recognized for various fields [7]. In Li-S batteries, Li+ ion
+transport is the first necessary stage for the formation of lith-
+ium sulfides in discharge. For liquid electrolytes of a lithium
+salt in a mixture of solvents, electrolyte ions are transported in
+the form of solvated ions in pores larger than the solvated ion
+size; for pores smaller than the solvated ion, ions are
+transported as desolvated ions provided that there is sufficient
+electrochemical energy to overcome the desolvation energy
+barrier [8]. In a similar manner, the “shuttling” of polysulfides
+in a Li-S battery depends on the ion concentration of the elec-
+trolyte and sulfide solution, which would affect the solution
+viscosity [8], as well as the relation between the size of the
+solvated or desolvated sulfide ion and the pore size that affects
+the diffusion coefficient [9, 10] which in turn controls sulfide
+transport via both diffusion and drift current. Ion transport
+* Constantina Lekakou
+c.lekakou@surrey.ac.uk
+1
+Materials Center, University of Surrey, Guildford, Surrey GU2 7XH,
+UK
+https://doi.org/10.1007/s11581-020-03860-7
+/ Published online: 29 December 2020
+Ionics (2021) 27:635–642
+
+<<PAGE 2>>
+plays an important role in the case of lean electrolyte, which,
+although may reduce the “shuttling” of polysulfides, may also
+limit Li+ ion transport which is not desirable [11].
+Therefore, modeling of electrolyte and sulfide ion transport
+would be a useful tool for the design of cathode, separator, and
+electrolyte materials in Li-S batteries. A continuum ion trans-
+port model taking into account the pore size distribution [8,
+12, 13] has been recommended for Li-S batteries [13]. Such a
+model requires as input data the size (minimum and maximum
+dimensions) of the electrolyte and polysulfide ions in
+desolvated and solvated forms, as well as their desolvation
+energy [8]. A common electrolyte in Li-S batteries is LiTFSI
+in DOL/DME solvent mixture (DOL: dioxolane; DME:
+dimethoxyethane) [14], a relatively low dielectric constant
+solution (εr = 7.25) with a solubility of 6 M to sulfur (S) spe-
+cies [15]. This may be compared to common electrolytes for
+lithium-ion batteries, such as LiPF6 in EC/DMC (EC: ethylene
+carbonate; DMC: dimethyl carbonate) in which the high di-
+electric constant of EC [16] might have further favored solu-
+bility. In this solvent mixture, cyclic polysulfide reactions be-
+tween S8
+2−sulfides and S3
+·−radical anion take place at the first
+plateau during discharge, rather than the gradual change from
+S8
+2−to S6
+2−to S4
+2−expected in DOL/DME solution [17]. A
+known disadvantage of electrolytes with carbonate solvents in
+Li-S batteries is the side reactions of the carbonate solvents
+with the dissolved polysulfides via a nucleophilic addition or
+substitution [18]. However, there is still great interest in
+carbonate-based electrolytes due to their low volatility and,
+hence, reduced flammability compared to the high volatility
+DOL/DME mixtures. Helen et al. [19] found that LiPF6 in EC/
+DMC electrolyte combined with microporous carbon cathode
+host resulted in the formation of sulfides in the cathode host
+micropores in a solid or solid-liquid environment, due to the
+desolvation of Li+ ions in the small pores: in that case,
+avoiding the highly solvated state of polysulfides in large
+pores reduced sulfide “shuttling” as well as the side reactions
+with the carbonate solvents. In this study, we have selected the
+typical LiTFSI in DOL/DME electrolyte as well as the higher
+dielectric constant electrolyte LiPF6 in EC/DMC.
+Molecular dynamics (MD) simulations for LiTFSI in
+DOL:DME [20] and LiPF6 in EC/DMC [21] have pro-
+vided results for the Li+ ion, including the coordination
+number and the center-of-mass radial distribution func-
+tion (RDF) between the Li+ ion and solvent molecules.
+There is a lack of such data for polysulfides in Li-S
+batteries and this is addressed by the current study.
+Furthermore, the RDF assumes spherical solvated ions,
+which is not normally the case, especially for
+polysulfides. Markoulidis et al.’s continuum model [8]
+yielded good agreement between predictions of capacity
+in supercapacitors and experimental data when the ion
+dimensions in ion transport were determined from the
+van der Waals (VdW) surface model (or Connolly sur-
+face) of either the solvated or the desolvated ions:
+hence, we are also going to employ the same approach.
+A large variation exists in the desolvation energy
+values reported in the literature for Li+ ion in EC/
+DMC, ranging from +4 to −41.4 kJ mol−1 [22] to
+−121 kJ mol−1 [23]. It is generally known that the sol-
+vated PF6
+−ion is easily desolvated in organic solvents
+[8]. Binding energies between Li+, TFSI−, and S8
+2−with
+DME were determined using the polarizable continuum
+model as −4.60, −1.79, and −5.85 eV (−443.84, −
+172.71, and −564.45 kJ mol−1), respectively [24].
+The present study includes a range of molecular sim-
+ulations to determine the coordination number and the
+geometrically optimized model and dimensions, using
+the van der Waals surface approach, of the solvated
+and desolvated ions as well as their desolvation energy
+for the electrolyte cation and anion and the sulfides Sx
+2
+−, for x = 2–8, in the electrolyte solvent mixture. Two
+electrolytes have been used: LiTFSI in DOL/DME and
+LiPF6 in EC/DMC. No chemical reactions have been
+considered in the electrolyte solution.
+Table 1 Data derived from the
+molecular modeling of the two
+electrolyte systems
+Lmin
+(nm)
+Lmax
+(nm)
+Lmin,VdW
+(nm)
+Lmax,VdW
+(nm)
+VVdW
+(nm3)
+Nc
+E
+(kJ mol−1)
+Electrolyte LiTFSI in DOL/DME
+Li+
+0.18
+0.18
+0.18
+0.18
+0.00305
+TFSI−
+0.29
+0.76
+0.60
+1.05
+0.19782
+Li+-DOL/DME
+0.54
+1.26
+0.64
+1.48
+0.31725
+3
+−110
+TFSI−-DOL/DME
+0.61
+1.84
+0.77
+1.98
+0.78192
+6
+−1100
+Electrolyte LiPF6 in EC/DMC
+Li+
+0.18
+0.18
+0.18
+0.18
+0.00305
+PF6
+−
+0.50
+0.50
+0.50
+0.50
+0.06541
+Li+-EC/DMC
+0.54
+1.27
+0.70
+1.41
+0.40806
+4
+−67
+PF6
+−-EC/DMC
+0.65
+1.24
+0.84
+1.44
+0.53173
+4
+−6.7
+636
+Ionics (2021) 27:635–642
+
+<<PAGE 3>>
+Materials and methods
+Two electrolytes are considered in the simulations: LiTFSI in
+DOL/DME and LiPF6 in EC/DMC. Sulfides Sx
+2−, x = 2, 4, 6,
+and 8, are also included in the molecular simulation work as
+well as the radical anion S3
+·−, which appears in cyclic poly-
+sulfide reactions near the high voltage plateau, in the presence
+of polar electrolyte solvents [17, 25–27] such as the EC/DMC
+mixture in this study.
+The first phase was to determine the coordination and bind-
+ing energies of each ion with each solvent by using the Blends
+module of Materials Studio v4.1 with base-screen pairs of
+solvent molecules and desolvated ions, where the desolvated
+ion and solvent molecule were first optimized geometrically
+using COMPASS, the Dreiding forcefield for TFSI−, and the
+universal force field (UFF) potential for the PF6
+−and poly-
+sulfide ions, and then subjected to an MD simulation.
+The sampling of configurations in the Blends module
+was carried out using the Monte Carlo method [28]
+where 107 samples were employed and a reference tem-
+perature of 298 K. Then, depending on the coordination
+numbers of each ion with an individual solvent, mix-
+tures of the two solvents were created and geometrical
+optimization simulations were repeated with different
+proportions of each solvent from the solvent’s mixture,
+until the minimum energy was reached which identified
+the mixture coordination number, as well as the propor-
+tion of each solvent’s molecules in the solvation shell.
+The van der Waals surface was constructed for the final
+assembly of system, and from that, the maximum and
+minimum dimensions of the solvated or desolvated ions
+were determined.
+Results
+Table 1 presents the results for the electrolyte ions of the two
+electrolyte systems: LiTFSI in DOL/DME and LiPF6 in EC/
+DMC. The results include the minimum and maximum di-
+mensions, Lmin and Lmax, of the 3D molecular models; the
+minimum and maximum dimensions, Lmin,VdW and
+Lmax,VdW, of the van der Waals volumes; the coordination
+number Nc; and the desolvation energy, E. There is significant
+difference between the dimensions of the 3D molecular
+models and the van der Waals volume dimensions, starting
+from the desolvated ions. Figure 1 and Fig. 2 present the 3D
+molecular models and the van der Waals volumes of the elec-
+trolyte ions of the electrolyte systems, LiTFSI in DOL/DME
+and LiPF6 in EC/DMC, respectively. It can be seen that the
+TFSI−anion is larger than the Li+ cation in both desolvated
+and solvated forms.
+Fig. 1 3D molecular models and
+van der Waals surfaces of the
+electrolyte cation and anion for
+the electrolyte system LiTFSI in
+DOL/DME; dimensions in
+angstroms
+Fig. 2 3D molecular models and
+van der Waals surfaces of the
+electrolyte cation and anion for
+the electrolyte system LiPF6 in
+EC/DMC; dimensions in
+angstroms
+637
+Ionics (2021) 27:635–642
+
+<<PAGE 4>>
+Table 2 presents the coordination number and van der
+Waals volume dimensions of the solvated sulfides in the two
+investigated solvents’ mixture, as determined from the molec-
+ular simulations in this study. Figures 3 and 4 display the
+corresponding molecular models, wrapped with the van der
+Waals surface, for the two solvents’ mixtures, LiTFSI in
+DOL/DME and LiPF6 in EC/DMC, respectively. The mini-
+mum and maximum length sizes of each solvated sulfide gen-
+erally decrease with decreasing sulfide order for the DOL/
+DME system. There is a more uneven trend for the EC/
+DMC system, as middle-order sulfides increase in their max-
+imum dimension with increasing order but not in their mini-
+mum dimension. It must be noted that our group employs the
+minimum solvated ion size, Lmin,VdW, in the Stokes-Einstein
+equation used in our continuum model of ion transport [8].
+Finally, Fig. 5 presents the molecular models of the
+desolvated sulfides and their minimum and maximum dimen-
+sions. This could be of interest, as such desolvated sulfides
+could be formed in pores of cathode host of similar size as the
+desolvated sulfides, originating from the corresponding sulfur
+allotropes formed and trapped in these pores during cathode
+manufacture. In such case, the desolvated radical anion S3
+·−is
+not expected as it is the product of cyclic polysulfide reactions
+in the polar electrolyte solvents. However, the S3
+·−molecular
+model and dimensions are also displayed in Fig. 5 to depict the
+overall picture and in case where some solvent molecules have
+entered the micropores causing cyclic sulfide reactions and
+resulting in partially solvated and desolvated products.
+Figure 6 presents a summary plot of the Lmin,VdW and
+Lmax,VdW dimensions of all desolvated and solvated ions in-
+vestigated in this study, including the electrolyte ions and
+polysulfides in the two electrolyte solutions: DOL/DME and
+EC/DMC. There is not much difference in the dimensions of
+the solvated electrolyte ions between the two electrolytes,
+apart from the maximum dimension Lmax,VdW of the anion.
+Regarding the polysulfides, significant differences exist be-
+tween the two electrolyte solutions for the solvated S6
+2−and
+S8
+2−ions.
+Discussion
+The calculation of the equivalent spherical diameter from the
+Lmin and Lmax dimensions of the 3D molecular model in
+Table 1, on the assumption of the same volume as a sphere,
+yields 0.72 nm for the solvated ion Li+-DOL/DME and
+0.45 nm for the solvated ion Li+-EC/DMC, compared to the
+RDF values predicted by MD simulations of 0.74 nm [20] and
+0.56 nm [21], respectively. However, some continuum
+volume-averaged models of ion transport in supercapacitors
+and batteries, taking into account the electrode pore size dis-
+tribution, prefer the van der Waals volume to the lean 3D
+molecular model, as the former embeds the force constraints
+between the moving ion and the pore walls [8]. Hence, the
+calculated dimensions from the van der Waals volume in this
+study are the preferred input data for these models.
+With regard to the desolvation energies, DFT (density
+functional theory) simulations generally predicted high bind-
+ing energy between Li+ and aprotic cyclic solvents, such as
+EC and DOL, and low binding energy between Li+ and apro-
+tic linear solvents, such as DME or DMC [29]. Given that
+each electrolyte system in this study comprises a mixture of
+cyclic and linear solvents also with a combination of different
+degrees of electronegativity, medium desolvation energy
+Table 2 Data derived from the
+molecular modeling of
+polysulfides in the two electrolyte
+systems
+Sx
+2−in DOL/DME
+Sx
+2−and S3
+·−in EC/DMC
+Lmin,VdW (nm)
+Lmax,VdW (nm)
+Nc
+Lmin,VdW (nm)
+Lmax,VdW (nm)
+Nc
+S2
+2−
+0.81
+1.36
+4
+S2
+2−
+1.16
+1.25
+4
+S3
+·−
+1.0
+1.3
+4
+S4
+2−
+1.11
+1.50
+5
+S4
+2−
+1.0
+1.57
+5
+S6
+2−
+1.38
+1.92
+6
+S6
+2−
+0.83
+2.25
+6
+S8
+2−
+1.20
+1.69
+7
+S8
+2−
+1.58
+2.1
+7
+Fig. 3 3D molecular models wrapped with van der Waals surfaces of solvated polysulfide anions for the electrolyte system LiTFSI in DOL/DME;
+dimensions in angstroms
+638
+Ionics (2021) 27:635–642
+
+<<PAGE 5>>
+values have been predicted in Table 1. This means that during
+the cycling of a Li-S battery, the Li+ ions are likely to be able
+to desolvate and enter small micropores of the cathode for the
+maximum utilization of sulfur in discharge, while the small
+micropores would prevent “shuttling” of polysulfides [19].
+There is a lack of data or molecular modeling predictions
+for the TFSI−ion; hence, our study offers a significant contri-
+bution in this area. We have predicted a high desolvation
+energy for TFSI−in DOL/DME; Huang et al. [30] concluded
+from Raman spectroscopy studies that TFSI−in a LiTFSI-
+DOL/DME electrolyte are strongly coordinated ions in the
+solvent’s mixture and associated with the Li+ ions as well.
+As TFSI−does not participate in the redox reactions in a Li-
+S battery, its large size as solvated ion favors the transference
+number of Li+ ions and their ingress as desolvated cations in
+small micropores. On the other hand, PF6
+−has very low
+desolvation energy in EC/DMC, which is also confirmed from
+other studies in the literature [31].
+The results of the molecular modeling of the solvated sul-
+fides are of great significance as input data for the modeling of
+the “shuttling” of polysulfides which occurs mostly with sol-
+vated sulfides. For cathodes with sulfur impregnated in a po-
+rous host, the stage of cathode manufacture is critical in es-
+tablishing the type of sulfur allotrope filling small-size micro-
+pores, as illustrated in Fig. 7a. For pores of similar size as the
+sulfur allotrope molecule size, such sulfur can be considered
+Fig. 4 3D molecular models wrapped with van der Waals surfaces of solvated polysulfide anions for the electrolyte system LiPF6 in EC/DMC;
+dimensions in angstroms
+Fig. 5 3D molecular models and van der Waals surfaces of desolvated polysulfide anions and the radical anion S3
+·−; dimensions in angstroms
+639
+Ionics (2021) 27:635–642
+
+<<PAGE 6>>
+mostly trapped in these pores during the cycling of Li-S bat-
+tery. Given that cyclic octasulfur S8 has a minimum size
+Lmin = 0.7 nm [6], pores of 0.63 nm, common in high surface
+area porous carbons [8], are not infiltrated with S8 during
+cathode fabrication via the sulfur melt or sublimation route
+but instead might be filled with lower order allotropes such
+as S4. As a result, such small micropores miss any reactions
+with S8
+2−as the feed sulfide which generally take place at the
+high voltage plateau for both electrolyte systems [17] investi-
+gated in this work. Reactions at the low voltage plateau (S4
+2−
+to S2−) [17] in such narrow micropores would occur in
+desolvated state, due to the fact that solvated sulfides do not
+fit in such pores as can be seen in Fig. 6. In the meso- and
+macropores, on the other hand, all sulfides can fit in solvated
+form and participate in the full reactions cascade including
+both high voltage and low voltage plateaus [17] but can also
+easily move towards the counter-charged lithium anode
+during discharge. Hence, regarding the design of a porous
+cathode host material (Fig. 7), one has to take into account
+that meso- and macropores allow easy sulfide “shuttling”
+which reduces sulfur utilization, whereas small micropores
+allow only the low voltage reactions, which means lower
+overall energy and power, and constrict the migration of Li+,
+as it takes place in solid or semi-solid state, which means low
+C rate and low power. Considering Fig. 6, a pore size distri-
+bution of the cathode host including a wide peak of hierarchi-
+cal pore sizes between 0.7 nm (Lmin of S8 allotrope) and
+1.1 nm (a little lower than the solvated S8
+2−and about same
+as the solvated S4
+2−) for DOL/DME might offer a balance of
+the best features of the pore sizes for DOL/DME electrolyte
+solution. The same pore size range may be tried also for the
+EC/DMC electrolyte solution, although there is larger differ-
+ence between the minimum size of the solvated ions in this
+case, as seen in Fig. 6, which makes more difficult to balance
+Fig. 6 A summary plot of the minimum (small symbols) and maximum
+ion size (large symbols), Lmin,VdW and Lmax,VdW, respectively, for all ions
+considered in this study, in desolvated form (symbols without border) or
+solvated in DOL/DME (symbols with light blue border) or EC/DMC
+(symbols with gray border)
+(a)
+(b)                                 
+(c)
+Fig. 7 A diagram illustrating the impregnated sulfur allotropes in battery
+manufacture and the transport of sulfide anions in the meso- and
+macropores as well as the transport of the Li+ ions in the discharge and
+charge phases of a Li-S battery. a Manufactured cathode with sulfur
+impregnated in porous carbon host. b Li-S battery in discharge. c Li-S
+battery in charge
+640
+Ionics (2021) 27:635–642
+
+<<PAGE 7>>
+best features of pore sizes for all sulfides. Furthermore, the
+additional benefit of avoiding side reactions between carbon-
+ate solvents and polysulfides in desolvated state might point
+towards the small micropores for EC/DMC electrolyte solu-
+tion [18, 19].
+As sulfides during discharge move out from the pores,
+there is no issue of desolvation. During charge (Fig. 7c), any
+sulfides “shuttling” back to the cathode from the anode are
+free to move and settle in meso- and macropores, where they
+react and eventually end up in the deposition of S8 there. In
+small micropores, where sulfide desolvation would have hap-
+pened, the sulfides have already been trapped there, it is only
+the Li+ ions that leave the small micropores during charge, to
+return to the lithium anode. For this reason, the value of
+desolvation energy of sulfides has not been deemed necessary
+for the modeling of the operation of Li-S batteries. On the
+other hand, Li+ ions may be desolvated in the cathode during
+discharge to be able to ingress small micropores, and, hence,
+the solvation energy of Li+ has been calculated for each sys-
+tem of electrolyte solvents investigated in this study.
+Authors’ contributions SB: simulations, analysis, and paper revision;
+CL: supervision, analysis, paper write up, and review.
+Funding This study received funding under the Faraday project LiSTAR
+(EP/S003053/1, Grant FIRG014) and the EPSRC project HiPoBat (EP/
+R022852/1).
+Data availability Data would be available from the corresponding author
+upon reasonable request.
+Compliance with ethical standards
+Conflict of interest
+The authors declare that they have no conflicts of
+interest.
+Code availability
+Only commercially available codes have been used.
+Open Access This article is licensed under a Creative Commons
+Attribution 4.0 International License, which permits use, sharing, adap-
+tation, distribution and reproduction in any medium or format, as long as
+you give appropriate credit to the original author(s) and the source, pro-
+vide a link to the Creative Commons licence, and indicate if changes were
+made. The images or other third party material in this article are included
+in the article's Creative Commons licence, unless indicated otherwise in a
+credit line to the material. If material is not included in the article's
+Creative Commons licence and your intended use is not permitted by
+statutory regulation or exceeds the permitted use, you will need to obtain
+permission directly from the copyright holder. To view a copy of this
+licence, visit http://creativecommons.org/licenses/by/4.0/.
+References
+1.
+Luo C, Hu E, Gaskell KJ, Fan X, Gao T, Cui C, Ghose S, Yang X-
+Q, Wang C (2020) A chemically stabilized sulfur cathode for lean
+electrolyte lithium sulfur batteries. PNAS 117:14712–14720.
+https://doi.org/10.1073/pnas.2006301117
+2.
+Shaibani M, Mirshekarloo MS, Singh R, Easton CD, Cooray MCD,
+Eshraghi N, Abendroth T, Dörfler S, Althues H, Kaskel S,
+Hollenkamp AF, Hill MR, Majumder M (2020) Expansion-
+tolerant architectures for stable cycling of ultrahigh-loading sulfur
+cathodes in lithium-sulfur batteries. Sci Adv 6:1–11. https://doi.org/
+10.1126/sciadv.aay2757
+3.
+Hu, Y, Chen, W, Lei, T, Jiao, Y, Huang, J, Hu, A, Gong, C, Yan, C,
+Wang, X, Xiong, J (2020) Strategies toward high-loading lithium–
+sulfur battery. Adv. Energy Materials 10: 2000082/1–19. https://
+doi.org/10.1002/aenm.202000082
+4.
+Di Lecce, D, Marangon, V, Du, W, Brett, D, Shearing, R, Hassoun,
+J (2020) The role of synthesis pathway on the microstructural char-
+acteristics of sulfur-carbon composites: X-ray imaging and electro-
+chemistry in lithium battery. Journal of Power Sources 472:
+228424/12–13. https://doi.org/10.1016/j.jpowsour.2020.228424
+5.
+Elazari R, Salitra G, Garsuch A, Panchenko A, Aurbach D (2011)
+Sulfur-impregnated activated carbon fiber cloth as a binder-free
+cathode for rechargeable Li-S batteries. Adv Mater 23:5641–
+5644. https://doi.org/10.1002/adma.201103274
+6.
+Lasetta, K, Baboo, JP, Lekakou, C (2020) Modeling and simula-
+tions of the sulfur infiltration in activated carbon fabrics during
+composite cathode fabrication for lithium-sulfur batteries. Journal
+of Composites Science, submitted August 2020
+7.
+Zhan H, Xiong, Z, Cheng, C, Liang, Q, Liu, JZ, Li, D (2020)
+Solvation-involved nanoionics: new opportunities from 2d
+nanomaterial laminar membranes. Adv Mat, 32: 1904562/1–16.
+https://doi.org/10.1002/adma.201904562
+8.
+Markoulidis F, Bates J, Lekakou C, Slade R, Laudone GM (2020)
+Supercapacitors with lithium-ion electrolyte: an experimental study
+and design of the activated carbon electrodes via modelling and
+simulations. Carbon 164:422–434. https://doi.org/10.1016/j.
+carbon.2020.04.017
+9.
+Sahapatsombut U, Cheng H, Scott K (2014) Modelling of operation
+of a lithium-air battery with ambient air and oxygen-selective mem-
+brane. J Power Sources 249:418–430. https://doi.org/10.1016/j.
+jpowsour.2013.10.128
+10.
+Beck RE, Schultz JS (1970) Hindered diffusion in microporous
+membranes with known pore geometry. Science 170:1302–1305.
+https://doi.org/10.1126/science.170.3964.1302
+11.
+Zhao M, Li B, Peng H, Yuan H, Wei J, Huang J (2020) Lithium–
+sulfur batteries under lean electrolyte conditions: challenges and
+opportunities. Angew Chem 59:3–6. https://doi.org/10.1002/anie.
+201909339
+12.
+Minton G, Purkayastha R, Lue L (2017) A non-electroneutral mod-
+el for complex reaction-diffusion systems incorporating species in-
+teractions. J Electrochem Soc 164:E3276–E3290. https://doi.org/
+10.1149/2.0281711jes
+13.
+Babar, S, Zhang, T, Lekakou, C (2020) 12- Molecular and meso-
+scale models for Li-S cells, in Roadmap IoP paper, J. Phys.: Energy
+2, submitted July 2020
+14.
+Manthiram A, Chung S-H, Zu C (2015) Lithium-sulfur batteries:
+progress and prospects. Adv, Mat 25:1980–2006. https://doi.org/
+10.1002/adma.201405115
+15.
+Gupta, A, Bhargav, A, Manthiram, A (2019) Highly solvating elec-
+trolytes for lithium-sulfur batteries. Adv Energy Mater 9:
+2018030961/1–17. https://doi.org/10.1002/aenm.201803096
+16.
+Han, S (2019) Structure and dynamics in the lithium solvation shell
+of nonaqueous electrolytes. Sci Rep 9: 5555/1–10. https://doi.org/
+10.1038/s41598-019-42050-y
+17.
+Lu Y-C, He Q, Gasteiger HA (2014) Probing the lithium−sulfur
+redox reactions: a rotating-ring disk electrode study. J Phys Chem C
+118:5733–5741. https://doi.org/10.1021/jp500382s
+18.
+Gao J, Lowe MA, Kiya Y, Abruña HD (2011) Effects of liquid
+electrolytes on the charge–discharge performance of rechargeable
+641
+Ionics (2021) 27:635–642
+
+<<PAGE 8>>
+lithium/sulfur batteries: electrochemical and in-situ x-ray absorp-
+tion spectroscopic studies. J Phys Chem C 115:25132–25137.
+https://doi.org/10.1021/jp207714c
+19.
+Helen M, Diemant T, Schindler J, Behm RJ, Danzer M, Kaiser U,
+Fichtner M, Reddy MA (2018) Insight into sulfur confined in
+ultramicroporous carbon. ACS Omega 3:11290–11299. https://
+doi.org/10.1021/acsomega.8b01681
+20.
+Park C, Kanduc M, Chudoba R, Arne Ronneburg A, Risse
+S, Ballau M, Dzubiellaa J (2018) Molecular simulations of
+electrolyte structure and dynamics in lithium–sulfur battery
+solvents. J Power Sources 373:70–78. https://doi.org/10.
+1016/j.jpowsour.2017.10.081
+21.
+Tenney CM, Cygan RT (2013) Analysis of molecular clusters in
+simulations of lithium-ion battery electrolytes. J Phys Chem C
+117(2013):24673–24684. https://doi.org/10.1021/jp4039122
+22.
+Borodin O, Olguin M, Ganesh P, Kent PRC, Allen JL, Henderson
+WA (2016) Competitive lithium solvation of linear and cyclic car-
+bonates from quantum chemistry. Phys Chem Chem Phys 18:164–
+175. https://doi.org/10.1039/C5CP05121E
+23.
+Ponnuchamy V (2015) Towards a better understanding of lithium
+ion local environment in pure, binary and ternary mixtures of car-
+bonate solvents : a numerical approach. PhD Thesis, Université
+Grenoble Alpes, France
+24.
+Sun K, Wu Q, Tong X, Gan H (2018) Electrolyte with low poly-
+sulfide solubility for Li–S batteries. ACS Appl Energy Mater 1:
+2608–2618. https://doi.org/10.1021/acsaem.8b00317
+25.
+Cuisinier M, Hart C, Balasubramanian M, Garsuch A, Nazar LF
+(2015) Radical or not radical: revisiting lithium–sulfur electrochem-
+istry in nonaqueous electrolytes. Adv Energy Mater 5:1401801/1–
+1401801/6. https://doi.org/10.1002/aenm.201401801
+26.
+Shyamsunder A, Beichel W, Klose P, Pang Q, Scherer H,
+Hoffmann A, Murphy GK, Krossing I, Nazar LF (2017)
+Inhibiting polysulfide shuttle in lithium–sulfur batteries through
+low-ion-pairing salts and a triflamide solvent. Angew Chem 56:
+6192–6197. https://doi.org/10.1002/anie.201701026
+27.
+Zhang G, Peng H-J, Zhao C-Z, Chen X, Zhao L-D, Li P, Huang J-
+Q, Zhang Q (2018) The radical pathway based on a lithium-metal-
+compatible high-dielectric electrolyte for lithium–sulfur batteries.
+Angew Chem 57:16732–16736. https://doi.org/10.1002/anie.
+201810132
+28.
+Akkermans RLC, Spenley NA, Robertson SH (2013) Monte Carlo
+methods in materials studio. Mol Simul 39:1153–1164. https://doi.
+org/10.1080/08927022.2013.843775
+29.
+Gering KL (2006) Low-temperature performance limitations of
+lithium-ion batteries. ECS Trans 1:119–149. https://doi.org/10.
+1149/1.2209364
+30.
+Huang F, Gao L, Zou Y, Ma G, Zhang J, Xu S, Li ZX, Liang X
+(2019) Akin solid–solid biphasic conversion of a Li–S battery
+achieved by coordinated carbonate electrolytes. J Mater Chem A
+7:12498–12506. https://doi.org/10.1039/C9TA02877C
+31.
+Ong MT, Verners O, Draeger EW, van Duin ACT, Lordi V, Pask
+JF (2015) Lithium ion solvation and diffusion in bulk organic elec-
+trolytes from first principles and classical reactive molecular dy-
+namics. Phys Chem B 119:1535–1545. https://doi.org/10.1021/
+jp508184f
+Publisher’s note Springer Nature remains neutral with regard to jurisdic-
+tional claims in published maps and institutional affiliations.
+642
+Ionics (2021) 27:635–642

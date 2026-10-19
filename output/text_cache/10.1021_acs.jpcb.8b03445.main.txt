@@ -1,0 +1,1612 @@
+
+<<PAGE 1>>
+Polarizable Molecular Dynamics and Experiments of 1,2-
+Dimethoxyethane Electrolytes with Lithium and Sodium Salts:
+Structure and Transport Properties
+Thilanga P. Liyana-Arachchi,†,§ Justin B. Haskins,†,§
+Colin M. Burke,‡
+Kyle M. Diederichsen,‡
+Bryan D. McCloskey,‡
+and John W. Lawson*,∥
+†AMA Incorporated, Thermal Protection Materials Branch and ∥Thermal Protection Materials Branch, NASA Ames Research
+Center, Moﬀett Field, California 94035, United States
+‡Department of Chemical and Bimolecular Engineering, University of California, Berkeley, California 94720, United States
+*
+S Supporting Information
+ABSTRACT: The structure and transport properties of electrolyte
+solutions of 1,2-dimethoxyethane (DME) having salts of Li+ with
+bis(triﬂuoromethanesulfonyl)imide ([TFSI]−) or Na+ with [TFSI]−are
+investigated with polarizable molecular dynamics and experiments.
+Polarizable force ﬁelds for Li+ and Na+ with DME and [TFSI]−were
+developed based on quantum chemistry calculations, ab initio molecular
+dynamics simulations, and thermodynamic liquid-state properties.
+Simulation results for density, viscosity, self-diﬀusion coeﬃcient, and
+conductivity of the electrolytes all agree well with the trends and
+magnitudes of available experimental data for a wide range of salt
+concentrations. As the concentration of salt increases, the electrolytes
+become more viscous and molecular species become less mobile. Ionic
+conductivity does not change monotonically with salt concentration and
+exhibits a maximum between 0.5 and 1.0 M for both Li[TFSI] and Na[TFSI] electrolytes. Comparatively, both cations are
+solvated by 5−6 DME or [TFSI]−oxygen atoms and exhibit similar diﬀusivities and conductivities. The solvation shell of Na+ is
+found to be more weakly bound and to have a lower binding residence time than that of Li+. The transport of Li+ therefore is
+more vehicular, through the motion of the solvation shell, while the transport of Na+ is based more on exchange, through the
+replacement of solvating species. The atomistic insight provided by this work can be used as the basis for future rational design
+of improved electrolyte solvents for lithium−oxygen, sodium−oxygen, and lithium−sulfur batteries.
+■INTRODUCTION
+Lithium−sulfur (Li−S),1−5 sodium−oxygen (Na−O2),6−9 and
+lithium−oxygen (Li−O2)4,6,10−13 battery chemistries have
+attracted interest due to their high theoretical energy densities,
+1600, 1600, and 3400 Wh/kg, respectively, compared to the
+state-of-the-art Li-ion rechargeable batteries.14,15 However,
+many of the most signiﬁcant challenges to these battery
+chemistries achieving greater cycle life and higher capacity are
+related to limitations of the electrolyte. Unlike Li-ion batteries,
+most advanced chemistries form reaction intermediates during
+cycling, and the solubility of these intermediates in the
+electrolyte can dramatically aﬀect performance. For Li−S
+batteries, solubility of lithium polysulﬁde intermediates is
+common in many electrolytes and leads to the loss of active S
+and capacity.16,17 For Li−O2 and Na−O2, oxygen must be
+soluble in the electrolyte to allow the formation of sodium
+superoxide and lithium peroxide discharge products.6,9,15,18−23
+Beyond this for Li−O2, increases in capacity have been noted
+when the reaction intermediates are soluble in the electrolyte.
+The resulting “solution mechanism” leads to nonconformal,
+lithium−peroxide toroid formation that increases ca-
+pacity.18−20,24,25
+Due to the challenges in developing electrolytes suitable for
+advanced battery chemistries, atomistic-level understanding of
+the thermodynamic, transport, and structural properties of
+these systems is crucial to designing high-performance
+electrolytes. Detailed information concerning properties such
+as solvation of both cations as well as reactive intermediates
+can be useful for understanding electrolyte decomposition and
+can also suggest strategies to boost the solubility of these
+species and therefore increase system capacity. Toward this
+end, molecular dynamics (MD) simulations are an ideal tool
+for such investigations. In order to study and compare the
+interesting and signiﬁcant diﬀerences between Li-cation and
+Na-cation systems at the electrolyte level, we performed MD
+simulations of the thermodynamic, transport, and structural
+properties of Li[TFSI] (lithium triﬂuoromethanesulfonyli-
+Received:
+April 12, 2018
+Revised:
+August 1, 2018
+Published: August 21, 2018
+Article
+pubs.acs.org/JPCB
+Cite This: J. Phys. Chem. B 2018, 122, 8548−8559
+© 2018 American Chemical Society
+8548
+DOI: 10.1021/acs.jpcb.8b03445
+J. Phys. Chem. B 2018, 122, 8548−8559
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​122/​36/​8548/​9828318/​jp8b03445.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 2>>
+mide) and Na[TFSI] (sodium triﬂuoromethanesulfonylimide)
+salts in 1,2-dimethoxyethane (DME) solvent. These DME-
+based electrolytes are widely used in Li−S, Li−O2, and Na−O2
+batteries and, hence, warrant detailed investigation.6,18,23,24
+A key question for any MD simulation is the quality of the
+force ﬁeld used. Many general purpose force ﬁelds have been
+developed, e.g. OPLS, AMBER, etc.,26−29 for use in
+applications involving organic liquids. While such force ﬁelds
+can provide some valuable understanding for speciﬁc systems
+of interest, signiﬁcant deviations for electrolytic systems,
+especially in transport and structural properties, are often
+seen compared to experimental data.30 There are exceptions to
+this, however, such as the recent work of Park and co-
+workers,31 who evaluated the properties of DME electrolytes
+with Li[TFSI] and Li[NO3] salts using point charge models
+with implicit polarization through ion charge scaling. The
+transport properties resulting from this were in good
+agreement with experiment at low-to-moderate concentrations.
+In general, it is very challenging to develop robust, high-
+ﬁdelity force ﬁelds for electrolytes. Polarizable force ﬁelds, such
+as the atomistic polarizable potential for liquids, electrolytes,
+and polymers (APPLE&P)32,33 and the atomic multipole
+optimized energetics for biomolecular simulation (AMOEBA)
+force ﬁeld,34,35 have been developed that can accurately predict
+the thermodynamic, transport, and structural properties (e.g.,
+density, heat of vaporization, viscosity, diﬀusion, conductivity,
+and solvation shell) of electrolytic systems (solvent combined
+with salts) or ionic complexes (e.g., ionic liquid), where
+polarization of the solvent by the ionic constituents is
+substantial. Successes include a variety of organic electrolytes,
+such as carbonate electrolytes,15,36,37 and ionic liquid electro-
+lytes.38−40 However, available predictive models based on
+polarizable force ﬁelds are typically system speciﬁc and require
+careful parametrization to obtain a high degree of accuracy.
+In this paper, we develop high-ﬁdelity, polarizable force
+ﬁelds for electrolytes of Li[TFSI] and Na[TFSI] in DME, use
+them to perform comprehensive MD simulations of the
+structural, thermodynamic, and transport properties for these
+systems, and validate the results against experimental data.
+Force ﬁelds for Li+ and Na+ with DME and [TFSI]−anions are
+obtained by ﬁtting parameters to both quantum chemistry
+computations and ab initio molecular dynamics (AIMD).
+Force ﬁeld ﬁtting to AIMD data typically is not done due to
+the high computational expense. However, we have found that
+such an approach can result in robust, predictive models. MD
+simulations were performed for the two electrolytes using these
+new force ﬁeld parametrizations to evaluate and compare key
+thermodynamic and transport properties (i.e., density, heat of
+vaporization, viscosity, diﬀusion, conductivity, correlated
+motion of cations/anions, and residence times between cations
+and molecules/anions) with varying salt concentration at 298
+K. In addition, structural properties (e.g., radial distribution
+function (RDF), solvation shell) with varying salt concen-
+trations at 298 K were also considered. The temperature
+dependence of the force ﬁeld was examined by investigating
+the ionic conductivity up to 393 K. Complementary
+experimental data was obtained for density, heat of vapor-
+ization, viscosity, species self-diﬀusion coeﬃcients, and
+conductivity to validate the simulation results.
+■METHODS
+Polarizable Force Field. To describe the atomic
+interaction between Li+, Na+, [TFSI]−, and DME using MD
+simulation, we employed the functional form of the atomistic
+polarizable potential for liquids, electrolytes, and polymers
+(APPLE&P) developed by Borodin and co-workers.15,32,33,38
+The interactions consist of intramolecular bonds, angles, and
+torsions as well as intermolecular repulsion, dispersion,
+coulomb, and polarization terms. The repulsion and dispersion
+energy (Urd) is given by a modiﬁed version of an exponential-6
+Buckingham potential
+=
+−
++
+−
+−
+i
+k
+jjjjjj
+y
+{
+zzzzzz
+U
+r
+A e
+C r
+D
+B r
+( )
+12
+ij
+B r
+ij
+ij
+ij
+rd
+6
+12
+ij
+(1)
+where r is the distance between two atoms having types i and j,
+A and B are coeﬃcients of repulsion, C governs dispersion, and
+D provides a hard wall interaction at small distances and was
+assigned a value of 5 × 10−5 kcal/mol for all pair
+interactions.32,33 The cross interaction (i ≠j) repulsion and
+dispersion parameters of all species except those that involve
+Li+ or Na+ were determined using the Waldman−Hagler
+(WH) combination rules41 as given by
+=
+=
++
+=
+−
+−
+i
+k
+jjjjjj
+y
+{
+zzzzzz
+A
+A A
+B
+B B
+B
+B
+B
+C
+C C
+2
+ij
+ii
+jj
+ij
+ii
+jj
+ij
+ii
+jj
+ij
+ii
+jj
+6
+3
+3
+6
+6
+1/6
+(2)
+where ii and jj indicate single element parameters and ij
+indicates a mixed parameter.
+Figure 1. Atomic representation of (a) DME and (b) [TFSI]−. Atom types are colored as follows: carbon is gray, hydrogen is white, oxygen is red,
+ﬂuorine is cyan, sulfur is yellow, and “dummy” force centers representing long pairs are green.
+The Journal of Physical Chemistry B
+Article
+DOI: 10.1021/acs.jpcb.8b03445
+J. Phys. Chem. B 2018, 122, 8548−8559
+8549
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​122/​36/​8548/​9828318/​jp8b03445.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 3>>
+The Coulomb interactions (Ucoul) between all components
+were represented by partial point charges assigned to atomic
+centers and oﬀ-atom, “dummy” force centers
+π
+=
+ϵ
+U
+q q
+r
+1
+2 4
+i j
+ij
+coul
+0
+(3)
+where ϵ0 is the vacuum permittivity and qi and qj are partial
+point charges assigned to atomic and oﬀ-atom force centers.
+Oﬀ-atom, force centers are added to the nitrogen of [TFSI]−,
+bisecting the S−N−S angle, and the oxygen atoms of DME to
+improve the electrostatic potential. This improves the
+description of the electrostatic potentials of the mole-
+cules.32,42,43 Two force centers were used for each DME
+oxygen atom, while a single force center was used for the
+[TFSI]−nitrogen; more details are provided in Figures 1, S1,
+and S2. Polarization energy (Upol) is given by
+μ
+= −
+·
+U
+r
+E r
+( )
+1
+2
+( )
+i
+i
+i
+pol
+0
+(4)
+where μi is the atomic dipole and E0 is the electric ﬁeld
+produced from charges only. The atomic dipoles are
+proportional to the total electric ﬁeld at the atom site μi =
+αE(ri), where the proportionality factor is the isotropic atomic
+polarizability (α). Because the electric ﬁeld includes con-
+tributions from evolved dipoles, polarization energy was
+determined iteratively using a self-consistent method. Thole
+screening was used to damp dipole−dipole interactions and
+prevent the “polarization catastrophe”.44
+Bonded interactions consisted of harmonic bonds and
+angles, while torsions were represented by an order-N
+harmonic series. Repulsive−dispersive and Coulombic inter-
+actions were excluded between atoms participating in bond
+(1−2 interactions) or angle (1−3 interactions). Induced dipole
+interactions were scaled by 0.2 between atoms separated by
+three bonds (1−4 interactions).
+Polarizable Molecular Dynamics Simulations. Molec-
+ular dynamics (MD) simulations were performed using a
+modiﬁed version of the Large-scale Atomic/Molecular
+Massively Parallel Simulator (LAMMPS) software pack-
+age.43,45 All MD simulations were conducted using the 3−
+2−1 reversible reference system propagation algorithm
+(rRESPA) that allows splitting the force calculations within
+each time step (long-range Ewald summation of the charge = 3
+fs, long-range Ewald summation of the dipole interactions = 3
+fs, local charge = 1.5 fs, repulsive−dispersive = 1.5 fs, dihedral
+interactions = 1.5 fs, bonds = 0.5 fs, and angles = 0.5 fs).46 MD
+simulations were conducted using a cutoﬀdistance of 10 Å for
+nonbonded interactions and 6 Å for 1.5 fs rRESPA step
+interactions. The long-range charge−charge and charge−
+dipole interactions were handled with the Ewald summation,
+while the dipole−dipole interactions were treated with a
+reaction ﬁeld formalism.
+The systems used for the calculation of thermodynamic,
+structural, and dynamical properties contained 433 DME
+molecules and up to 95 Li[TFSI] or Na[TFSI] ion pairs and
+are given in Table 1. MD simulations were performed on these
+systems at 298 K and 1 atm for calculation of thermodynamic,
+structural, and dynamical properties. The property simulations
+consisted of a temperature and pressure equilibration period of
+20 ns, which was followed by production runs of up to 100 ns.
+All simulations were performed using the Nosé Hoover
+thermostat and barostat. A similar procedure was undertaken
+at 423 K and 1 atm for smaller liquid systems of 20 DME
+molecules and one Li[TFSI] or Na[TFSI] salt pair.
+Ab Initio Molecular Dynamics. All ab initio molecular
+dynamics (AIMD) simulations were performed with the
+Vienna Ab Initio Simulation Package (VASP)47−49 using the
+frozen-core, all-electron projector augmented wave (PAW)
+method and the generalized gradient approximation of Perdew,
+Burke, and Ernzerhof with the D2 correction for dispersion as
+parametrized by Grimme.50,51 Gamma-point computations
+with an energy cutoﬀof 400 eV, an electronic energy
+convergence criteria of 1 × 10−4 eV, and a time step of 1.0
+fs were used for ab initio molecular dynamics simulations.
+AIMD simulations were performed on liquid systems
+containing 20 DME molecules and one ion pair of Li[TFSI]
+or Na[TFSI]. These simulations were performed at 423 K,
+where the temperature was controlled using the Langevin
+thermostat for a duration of 50 ps.
+Quantum Chemistry Calculations. Quantum chemistry
+calculations were performed using the Gaussian 09 (G09)
+software package52 at a number of diﬀerent levels of theory,
+which include density functional theory computations using
+the hybrid B3LYP functional53 with the augmented correla-
+tion-consistent polarized double-ζ basis set (aug-cc-pvDz) of
+Dunning and co-workers54,55 as well as second order Møller−
+Plesset perturbation theory (MP2) with the aug-cc-pvDz basis
+set. These approaches were used to carry out computations on
+complexes of Li+ and Na+ DME molecules and [TFSI]−
+anions.
+Experimental Materials and Methods. Lithium bis-
+(triﬂuoromethanesulfonyl)imide and dimethoxyethane were
+obtained from BASF and used as received. Sodium bis-
+(triﬂuoromethanesulfonyl)imide (99.7%) was obtained from
+Sigma-Aldrich and used as received. Whatman QM-A ﬁlter
+paper was purchased from VWR, rinsed with isopropyl alcohol
+and acetone, and dried in a vacuum oven at 110 °C prior to
+bringing it into the glovebox.
+Electrolytes of Li[TFSI] in DME and Na[TFSI] in DME
+were prepared by mixing moles of salt with milliliters of solvent
+toward concentrations of 0.5, 1.0, 1.5, and 2.0 mol of saltper
+liter of solvent in an argon glovebox. Due to volume expansion
+upon mixing, this underestimates the concentration of the
+solutions. The exact concentrations of the Li[TFSI] in DME
+samples were measured via 7Li+ NMR comparisons to standard
+solutions of LiCl in D2O prepared via volumetric ﬂasks.
+Conductivities for Li[TFSI] in DME were measured with a
+Metrohm 5-ring conductivity measuring cell in an argon
+glovebox, with an aluminum block for temperature control.
+Conductivity measurements for Na[TFSI] in DME were
+obtained using impedance in small volume Swagelok-type two-
+electrode cells. This was performed to minimize the amount of
+expensive Na[TFSI] in each sample. Swagelok cells consisting
+of two stainless steel current collectors sandwiching two pieces
+of 1/2” diameter Whatman QM-A ﬁlter paper and 160 μL of
+Table 1. Summary of the Number of DME Molecules, Ion
+Pairs, and Simulation Times (tsim in ns) Used for the Room-
+Temperature Electrolytes
+molarity
+DME
+Li/Na[TFSI]
+tsim
+0.5
+433
+23
+20
+1.0
+411
+47
+20
+1.5
+364
+71
+40
+2.0
+327
+95
+60
+The Journal of Physical Chemistry B
+Article
+DOI: 10.1021/acs.jpcb.8b03445
+J. Phys. Chem. B 2018, 122, 8548−8559
+8550
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​122/​36/​8548/​9828318/​jp8b03445.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 4>>
+electrolyte were prepared in an argon glovebox. The cells were
+sealed using perﬂuorinated elastomer O-rings as described
+previously.24 Cells were removed from the glovebox and placed
+in an oven at 25.0 °C. Potentio-electrochemical impedance
+spectroscopy (PEIS) was performed with an amplitude of 10
+mV, a frequency range from 100 kHz to 10 Hz, and eight
+points per decade to obtain the bulk electrolyte resistance.
+Li[TFSI] in DME controls compared with the 5-ring
+conductivity measuring cell results were used to determine
+the cell constant for calculating conductivity. Conductivities
+were normalized against pure dimethoxyethane. The exper-
+imental data for Li[TFSI] in DME matches well with previous
+values in the literature. Conductivities are comparable of those
+measured for Li[TFSI] in DME over the range of
+concentrations at 30 °C by Zhang et al.56
+Diﬀusion coeﬃcients for lithium and ﬂuorine for Li[TFSI]
+in DME and ﬂuorine for Na[TFSI] in DME were obtained
+using diﬀusion-ordered spectroscopy (DOSY) NMR on a
+Bruker 600 MHz instrument ﬁtted with a 5 mm Z-gradient
+broad-band probe and a variable-temperature unit maintained
+at 25 °C throughout the measurement. Samples were prepared
+inside the glovebox and kept air free during the experiment
+using sealed caps and paraﬁlm. The gradient was calibrated to
+the known values of H2O, H2O in D2O,57 H-DMSO in d6-
+DMSO,58 dimethyl carbonate,59 and 0.25 and 4 M LiCl in
+H2O.57 A recycle delay suﬃcient to allow full relaxation based
+on measured T1 values was used. The Bruker dstebpgp3s pulse
+program was used for all measurements, which utilizes a
+double-stimulated bipolar gradient pulse sequence to compen-
+sate for any convection in the sample.60 The signal intensity as
+a function of gradient strength was ﬁt to
+=
+γ
+δ
+δ
+τ
+−
+Δ−
+−
+I
+I
+e
+g
+D
+0
+(
+5 /8
+)
+2 2 2
+(5)
+This equation includes a correction for the sine-shaped
+gradient pulses used.61 Diﬀusion delays between 0.08 and
+0.25 s and gradient pulse lengths between 1.2 and 3 ms were
+used. Sixteen experiments of varying gradient strength were
+used for each measurement, and each experiment showed a
+ﬁtting error below 1%. On the basis of variability within the
+calibration, an actual error of 5% is estimated. Repeat
+experiments with varied diﬀusion delay times showed no
+change in the measured diﬀusion coeﬃcient. Sodium diﬀusion
+could not be measured for Na[TFSI] in DME due to sodium’s
+short T1 relaxation time (<5 ms); sodium’s NMR signal
+decays too quickly relative to its diﬀusion. As well described in
+Krachkovskiy et al.,62 DOSY NMR does not delineate between
+the diﬀusion of separated charged ions and neutral salt pairs;
+rather, they present an average diﬀusion of all lithium- and
+ﬂuorine-containing mobile species. Thus, the measured
+diﬀusion coeﬃcients for lithium and ﬂuorine, DLi and DF, are
+only equal to the diﬀusion coeﬃcients of the cation and anion,
+DLi+ and DTFSI−, respectively, if the salt is fully dissociated.
+Diﬀusion coeﬃcients for lithium and ﬂuorine for 0.5 M
+Li[TFSI] in DME are within 1.2e−6 cm2/s of those at 30 °C
+by Hayamizu et al.59
+■RESULTS AND DISCUSSION
+Polarizable Force Field Development. The starting
+point for force ﬁeld development was the previous para-
+metrization of Li+, DME, and [TFSI]−by Borodin and co-
+workers in the APPLE&P.32,33 These parameters were
+developed to be generally transferrable; thus, we tailored the
+polarizability, charges, and repulsion/dispersion parameters to
+best capture the energetics of Li[TFSI] in DME and extended
+them to treat Na[TFSI] in DME. Both the bonding and the
+nonbonding parameters of DME and [TFSI]−were not altered
+for the present work. That leaves only the determination of the
+cation polarizability and repulsion−dispersion interactions
+with DME and [TFSI]−.
+Atomic polarizabilities, α, were determined by ﬁtting to the
+quantum chemical polarization energy resulting from inter-
+actions of the cations with a point, test charge of −1e, in a
+similar manner to that performed in previous works.32,33 The
+polarization energy (Upol) is given by
+ϕ
+=
+−
++
+U
+r
+U
+r
+U
+r Q
+( )
+( )
+(
+( )
+)
+Q
+mol
+pol
+mol,
+mol
+mol
+(6)
+where Q is the test charge, r is the position of the test charge,
+Umol,Q is the energy the combined molecule and test charge
+system, Umol is the energy of the isolated molecule, and ϕmol(r)
+is the electrostatic potential of the isolated molecule at the test
+charge site. These computations were carried out at the
+B3LYP/aug-cc-pvDz level of theory. The charge of the cations
+was set to 1.0e.
+The repulsive and dispersive interaction parameters were
+obtained by ﬁtting to dimer binding energies (Ubind) (Li+−Li+,
+Na+−Na+, DME−Li+, DME−Na+, [TFSI]−−Li+, and
+[TFSI]−−Na+). The conﬁgurations examined are provided in
+Figure S2 of the Supporting Information. After optimizing the
+structures using the B3LYP/aug-cc-pvDz level of theory, Li+
+and Na+ cations were displaced, while keeping DME and
+[TFSI]−rigid, to generate energy−distance curves with the
+MP2/aug-cc-pvDz level of theory and the counterpoise
+method to correct for basis set superposition errors. The
+energy−distance curves were then used to devise parameters
+for repulsive−dispersive interactions involving Li+ and Na+; a
+parameter mixture rule was not used for these species.
+Representative MP2/aug-cc-pvDz energy−distance curves
+and their agreement with the polarizable force ﬁeld are
+displayed in Figure S3 of the Supporting Information.
+As a reﬁnement step, the repulsive and dispersive interaction
+parameters of Li+ and Na+ with DME and [TFSI]−were
+adjusted to reproduce the energetics of solvation shell clusters,
+which were obtained from ab initio molecular dynamics
+simulations of the electrolytes. This procedure aids in ensuring
+accurate liquid-phase solvation shells, which have a complex
+energy−structure conﬁguration space that may not be captured
+accurately from dimer computations. Two primary solvation
+structures were observed from the ab initio simulations:
+cations bound by three DME and cations bound by one
+[TFSI]−and two DME. Fifteen representative conﬁgurations
+of each of the solutions shells (Li+3DME, Li2DME[TFSI],
+Na+3DME, Na2DME[TFSI]) were extracted from the
+simulations and processed with the MP2/aug-cc-pvDz level
+of theory using the counterpoise method. The resulting energy
+data set was employed to adjust the repulsive−dispersive
+interaction parameters of the cations with DME and [TFSI]−.
+Representative structures of the solvation shells and the
+average energetics of the solvation shells with both the MP2/
+aug-cc-pvDz level of theory and the polarizable force ﬁeld are
+provided in Figure S4 of the Supporting Information. In all
+cases, the polarizable force ﬁeld reproduces the binding energy
+within 2 kcal/mol, which is near chemical accuracy. Liquid-
+phase structure is captured as well, as shown by a comparison
+The Journal of Physical Chemistry B
+Article
+DOI: 10.1021/acs.jpcb.8b03445
+J. Phys. Chem. B 2018, 122, 8548−8559
+8551
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​122/​36/​8548/​9828318/​jp8b03445.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 5>>
+of the radial distribution functions (RDFs) from ab initio and
+polarizable simulations in Figure S5. The agreement between
+the classical and the ab initio RDFs of Li+ and Na+ with the
+oxygen atoms of DME and [TFSI]−is excellent. For Li[TFSI]
+in DME, the initial RDF peak between Li+ and the oxygen
+atoms of DME or [TFSI]−anions is around r = 2.1 Å, whereas
+for Na[TFSI] in DME, the initial RDF peak between Na+ and
+the oxygen atoms of DME or [TFSI]−is around r = 2.4 Å. This
+observation is consistent with the fact that Na+ is larger than
+Li+.
+Thermodynamic Properties. The simulation density (ρ),
+heat of vaporization, and dielectric constant of pure DME at
+298 K and 1 atm are presented in Table 2.32,63−66 These
+computed properties agree well with experimental values. The
+simulation ρ at 298 K for electrolytes of up to 2 M Li[TFSI] or
+Na[TFSI] in DME are presented in Figure 2 along with
+available experimental measurements for Li[TFSI] in DME.56
+The ρ of systems having either Li+ and Na+ salts signiﬁcantly
+increases with increasing salt concentration. The increase in ρ
+is consistent with the eﬃcient packing of DME molecules and
+[TFSI]−anions around Li+ and Na+ cations. Furthermore, we
+ﬁnd that on average density agrees to within 2.3% of
+experimental data up to 2 M. This demonstrates the ability
+of the developed polarizable force ﬁelds to predict the density
+of these complex electrolyte solutions over a wide range of
+concentrations using the speciﬁc parametrization developed in
+this work.
+Transport and Dynamic Properties. The equilibrium
+shear viscosity (ηxy) of pure DME, Li[TFSI] in DME, and
+Na[TFSI] in DME at 298 K was calculated using the Green−
+Kubo relation
+∫
+η
+=
+⟨
+⟩
+∞
+V
+k T
+P
+t P
+t
+( )
+(0) d
+xy
+xy
+xy
+B
+0
+(7)
+where t, V, kB, Pxy, and ⟨···⟩represent simulation time,
+simulation volume, the Boltzmann constant, shear stress, and
+an ensemble average, respectively. The viscosities from MD
+simulation are compared to available experimental data in
+Figure 3 and Table 2.56,64,67 The MD simulation data is in
+reasonable agreement with available experimental data, with an
+average deviation of less than 30% and a maximum deviation of
+near 50%. The viscosities of both Li-salt- and Na-salt-doped
+DME exhibit a rapid increase with increasing salt concen-
+trations, which is consistent with the larger densities observed
+for solutions with greater salt content. Additionally, larger
+viscosities were observed for solutions of DME with Li[TFSI]
+compared to those with Na[TFSI], with the largest diﬀerences
+being observed at highest concentrations. At high salt
+concentrations of 2 M salt in DME, the Li[TFSI] salt system
+has a viscosity of 7.8 mPa s while the Na[TFSI] salt system has
+a viscosity of 2.8 mPa s. This can be attributed to Li+ binding
+energy with DME or [TFSI]−being larger than the equivalent
+Na+ binding energy, as noted in the force ﬁeld parametrization.
+The self-diﬀusion coeﬃcient (Di) for each molecular species
+was calculated using the Einstein relation
+=
+⟨
+⟩
+→∞
+D
+t
+t
+lim
+MSD( )
+6
+i
+t
+(8)
+where MSD(t) is the mean-square displacement of each
+component as a function of time. The MSD(t) curves are
+displayed for the ﬁrst 20 ns of simulation time in Figures S6−
+S8 of the Supporting Information and show that all species
+have reached the diﬀusive regime. The diﬀusion coeﬃcients
+are computed using the entirety of the production run, as given
+in Table 1. The self-diﬀusion coeﬃcients for the species in
+electrolytes of Li[TFSI] in DME and Na[TFSI] in DME at
+298 K from MD simulations are compared to experimental
+results in Figure 4.56,59 The diﬀusion coeﬃcients of all species,
+Table 2. Experimental (EXP)32,61−63,66 and Molecular Dynamics (MD) Thermodynamic and Transport Properties of 1,2-
+Dimethoxyethane at 298 K and 1 atma
+ρ (g/cm3)
+ΔH (kcal/mol)
+D × 1010 (m2/s)
+μ (mPa·s)
+ϵ
+MD
+0.841 ± 0.01
+8.86 ± 0.06
+32.1 ± 0.6
+0.57 ± 0.09
+6.5
+EXP
+0.861
+8.82
+31.5
+0.41
+7.2
+aDensity, heat of vaporization, diﬀusion coeﬃcient, viscosity, and static dielectric constant are represented by ρ, ΔH, D, and μ, ϵ respectively.
+Figure 2. Density of Li[TFSI] in DME (circles) and Na[TFSI] in
+DME (squares) as a function of salt concentration at 298 K.
+Computational results are given as ﬁlled symbols, while experimental
+values are given as open symbols.56 Simulation error bars are smaller
+than the symbol sizes and thus not presented in the ﬁgure.
+Figure 3. Viscosity of Li[TFSI] in DME (circles) and Na[TFSI] in
+DME (squares) as a function of salt concentration at 298 K.
+Computational results are given as ﬁlled symbols, while experimental
+values are given as open symbols.56,64,67 Simulation error bars are
+smaller than the symbol sizes and thus not presented in the ﬁgure.
+The Journal of Physical Chemistry B
+Article
+DOI: 10.1021/acs.jpcb.8b03445
+J. Phys. Chem. B 2018, 122, 8548−8559
+8552
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​122/​36/​8548/​9828318/​jp8b03445.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 6>>
+as provided by MD simulation, agree well with available
+experimental data, with an average deviation of less than 15%,
+indicating the utility of our simulations to predicting molecular
+diﬀusion coeﬃcients. The maximum error in diﬀusion is for 2
+M Li[TFSI] in DME, which has errors close to 60%. This is
+not unreasonable considering the diﬀusivities of Li+ from point
+charge models can diﬀer from experiments by several orders of
+magnitude. Diﬀusion coeﬃcients in both salt systems exhibit a
+rapid decrease with increasing salt concentration, which is
+consistent with the previously discussed trend of increasing
+viscosity with increasing salt concentration. Furthermore, for a
+given salt concentration, lower diﬀusion coeﬃcients were
+observed for solutions of Li[TFSI] with DME than for
+Na[TFSI] with DME, with larger diﬀerences being observed at
+higher concentrations. For both Li+ and Na+ solutions, the
+relative magnitudes of diﬀusion follow D(DME) > D(Cation)
+≈D([TFSI]−). The relatively lower diﬀusion coeﬃcient values
+observed for [TFSI]−are due to the higher molecular weight
+of [TFSI]−compared to DME. The lower diﬀusion coeﬃcients
+observed for cations, as compared to those for DME or
+[TFSI]−, can be attributed to the strong coordination of
+cations with either DME molecules or [TFSI]−anions in the
+system.
+We also computed the ionic conductivity (λ) from MD
+simulations using an expression similar to the Einstein relation
+∑
+λ =
+[
+−
+]
+→∞
+e
+Vk T
+q r t
+q r
+lim 6
+( )
+(0)
+t
+i
+i i
+i i
+2
+B
+all
+2
+(9)
+where e and T are elementary charge and temperature. The Li+
+or Na+ contribution to ionic conduction (λ+) may be obtained
+from the ratio of the diﬀusion coeﬃcients and the net ionic
+conductivity,43
+λ
+λ
+=
++
++
++ +
++ +
+−
+−
+N D
+N D
+N D
+(10)
+where N is the number of given ion in the system and
+subscripts of + or −indicate cations or anions, respectively.
+The ratio of diﬀusion coeﬃcients that scales net ionic
+conductivity in eq 10 is the transference number.
+The conductivities obtained from MD simulations for
+Li[TFSI] in DME and Na[TFSI] in DME for room
+temperature as a function of salt concentration are presented
+Figure 4. Diﬀusion coeﬃcients of Li[TFSI] in DME (circles) and
+Na[TFSI] in DME (squares) as a function of salt concentration for
+(a) DME, (b) Li+ or Na+, and (c) [TFSI]−. Computational results are
+given as ﬁlled symbols, while experimental values taken for this work
+and those previously measured56 are given as open symbols.
+Simulation error bars are smaller than the symbol sizes and thus
+not presented in the ﬁgure.
+Figure 5. Ionic conductivity of Li[TFSI] in DME (circles) and Na[TFSI] in DME (squares) as (a) a function of salt concentration at 298 K and
+(b) a function of temperature at 1 M Li[TFSI] or Na[TFSI] in DME. Computational results are given as ﬁlled symbols, while values from the
+experiments performed in this work are given as open symbols. Simulation error bars are smaller than the symbol sizes and thus not presented in
+the ﬁgure.
+The Journal of Physical Chemistry B
+Article
+DOI: 10.1021/acs.jpcb.8b03445
+J. Phys. Chem. B 2018, 122, 8548−8559
+8553
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​122/​36/​8548/​9828318/​jp8b03445.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 7>>
+in combination with experimental data in Figure 5a.58,62 For
+the room- temperature data, our MD simulation data agrees
+well with available experiments, with an average deviation of
+less than 15%. The largest deviation from experiment is 35%
+for 2 M Li[TFSI] in DME. However, this deviation could be
+attributed to uncertainties in the experimental ionic con-
+ductivity, which are estimated at roughly 0.3 S m−1. We note a
+few trends concerning electrolyte concentration and the
+comparison between the Na+ and the Li+ systems. First, the
+λ of both systems increases at low salt concentrations and then
+decreases with increasing salt concentrations, with λ having a
+maximum between 0.5 and 1.0 M Li[TFSI] in DME and
+between 1.0 and 1.5 M Na[TFSI] in DME. The peak in λ
+observed in this work can be related to the balance between
+the diﬀusion of cation, which decreases with increasing salt
+concentrations, and the total number of cations, which
+increases with increasing salt concentrations. The product of
+these two quantities provides a similar trend to the
+concentration-dependent conductivity. This implies that at
+some limit, increases in conductivity due to the addition of
+more charge carriers are outpaced by the reduction in ion
+mobility. The origin of this is explored further in a later
+discussion of structure. Furthermore, similar values of λ were
+observed for Li[TFSI] and Na[TFSI] in DME, which parallels
+the previous observations made for the diﬀusion coeﬃcients of
+these solutions. The transference numbers, given in Table 3,
+show little variation with salt concentration. The average
+transference numbers for solutions of Li[TFSI] in DME and
+Na[TFSI] in DME are 0.48 and 0.47, respectively.
+The conductivities as a function of temperature at 1 M salt
+in DME are presented in Figure 5b. An increased temperature
+leads to an increase in conductivity, with the characteristic
+inverse temperature versus logarithmic conductivity plot
+providing a nearly linear relationship. As with the room-
+temperature salt concentration study, the temperature-depend-
+ent conductivity is similar for both salt systems. For matters of
+electrochemical device performance, relatively minor changes
+in temperature lead to quite large increases in conductivity. By
+increasing the temperature from 298 to 333 K, the conductivity
+of both salt systems increases by a factor of 2.
+To comment on the mechanism of ion transport in DME,
+we computed the ratio of ionic conductivity to uncorrelated
+ionic conductivity (ions moving independently of their
+counterions) (α) as a function of salt concentration at 298
+K. The uncorrelated conductivity (λuc) is given by
+∑
+λ
+β
+=
+e
+Vk T
+D N
+( )
+i
+N
+i
+i
+i
+uc
+2
+B
+2
+ions
+(11)
+where βi and Ni are the net charge and number, respectively, of
+ionic species i. From the values of α provided in Table 3, no
+signiﬁcant variations between Li+ and Na+ systems are evident
+for a given salt concentration. We ﬁnd that the estimated α
+values for both Li+ and Na+ systems vary between 0.42 and
+0.53.
+To better understand the noted trends in transport, we
+investigate the residence time of cation bonds (i.e., the average
+time a cation remains coordinated to a given species) with the
+oxygen atoms of DME and [TFSI]−. The residence time (τ) is
+determined from the neighbor (Hi,j) function
+=
+>
+≤
+l
+m
+ooo
+n
+ooo
+H
+r
+t
+r
+r
+r
+r
+(
+, )
+0, if
+1, if
+i j
+k l
+kl
+i j
+kl
+i j
+,
+,
+cut
+,
+cut
+,
+(12)
+and the neighbor autocorrelation (Si,j) function
+=
+∑
+∑
+∑
+∑
+=
+τ
+=
+=
+=
+=
+−
+S
+t
+H
+r
+t H
+r
+H
+r
+H
+r
+S
+t
+A
+( )
+(
+, )
+(
+, 0)
+(
+, 0)
+(
+, 0)
+( )
+e
+i j
+k
+N
+l
+N
+i j
+kl
+i j
+kl
+k
+N
+l
+N
+i j
+kl
+i j
+kl
+i j
+t
+,
+1
+1
+,
+,
+1
+1
+,
+,
+,
+/
+i
+j
+i
+j
+(13)
+where atoms type k and l of species i and j, respectively, are
+considered to be bonding if their separation is less than (rcut
+i,j ),
+which is deﬁned to encompass the ﬁrst solvation shell of
+species i and j.
+The residence times are presented in Figure 6 as a function
+of salt concentration at 298 K. Comparatively, the residence
+times are longer for Li+ than for Na+, which follows
+expectations from the diﬀerences in binding energy shown in
+Figure S4. The long residence times suggests that Li+ transport
+is more vehicular (diﬀusing with its solvating molecules) than
+Na+. A more vehicular transport mechanism is associated with
+slower rates of diﬀusion than alternative mechanisms (like
+solvent or anion exchange).43 Both cations show a longer
+residence time with the oxygens of DME than with the oxygens
+of [TFSI]−, which is reﬂective of the favorable solvation of the
+cation by the solvent. Short residence times of cations with
+anions is a hallmark of a “good” electrolyte, one that minimizes
+the cation correlation to the anion and thereby maximizes the
+cation contribution to conductivity (larger α). The residence
+times of both cations with [TFSI]−are small (<3 ns).
+Structural Properties. To assess the inﬂuence of salt
+concentration and cation on the molecular coordination in the
+electrolyte, we computed the radial distribution functions g(r)
+between the cations and the oxygen atoms of DME and
+[TFSI]−, as given in Figure 7. Increasing the Li/Na-salt
+concentration signiﬁcantly aﬀects the g(r) of the cation with
+oxygen atoms of [TFSI]−, with the relative magnitude of the
+ﬁrst solvation shell signiﬁcantly increasing, which indicates
+higher coordination of oxygen atoms around the cations in the
+ﬁrst solvation shell. Alternatively, the g(r) of cations with the
+oxygen atoms of DME exhibits only small changes, with the
+magnitude of the ﬁrst solvation shell slightly decreasing with
+increasing salt concentrations, which indicates a lower
+coordination of oxygen atoms around the cations in the ﬁrst
+solvation shell. Furthermore, the ﬁrst solvation shell peak
+Table 3. Ratio of Ionic Conductivity to Uncorrelated Ionic Conductivity (α), Cation Contribution to Ionic Conductivity (λ+),
+and Transference Numbers as a Function of Salt Concentration at 298 K
+molarity
+α(Li+)
+α(Na+)
+λ+(Li+) (S/m)
+λ+(Na+) (S/m)
+transference(Li+)
+transference(Na+)
+0.5
+0.42
+0.44
+0.53
+0.57
+0.47
+0.47
+1.0
+0.48
+0.43
+0.75
+0.58
+0.47
+0.45
+1.5
+0.53
+0.47
+0.57
+0.48
+0.49
+0.46
+2.0
+0.42
+0.46
+0.21
+0.18
+0.48
+0.50
+The Journal of Physical Chemistry B
+Article
+DOI: 10.1021/acs.jpcb.8b03445
+J. Phys. Chem. B 2018, 122, 8548−8559
+8554
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​122/​36/​8548/​9828318/​jp8b03445.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 8>>
+between Li+ and the oxygen atoms of DME or [TFSI]−is
+around r = 2.1 Å, whereas for Na+ the ﬁrst peak is around r =
+2.4 Å, which can be attributed to the larger size of Na+
+compared to Li+.
+The coordination of DME and [TFSI]−around the cations
+was investigated by computing the average number of oxygen
+atoms from DME and [TFSI]−in the ﬁrst solvation shell of the
+cations, which is presented in Figure 8. For all systems, the
+cations are primarily coordinated to oxygen atoms from DME.
+For the concentration range investigated in this work, the
+coordination number of Li+ and Na+ with the oxygen atoms of
+DME varies between 4.6 and 5.1 and 3.7 and 4.7, respectively.
+Alternatively, the coordination number of Li+ and Na+ with the
+oxygen atoms of [TFSI]−varies between 0.2 and 0.5 and 1.0
+and 1.8, respectively. Increasing the salt concentrations slightly
+increases the coordination number of cations to the oxygen
+atoms of [TFSI]−in the ﬁrst solvation shell. Conversely, the
+coordination number of cations to the oxygen atoms of DME
+in the ﬁrst solvation shell exhibits a slight decrease. This may
+be simply explained by considering that the [TFSI]−that are
+coordinated to Li+ and those that are “free” in solution are in
+equilibrium. Increasing the salt concentration will increase the
+chemical potential of the “free” [TFSI]−. At suﬃciently high
+concentrations, this will overcome free energetic barriers to
+increasing the cation coordination to more [TFSI]−. Similarly,
+this explains the decrease in cation coordination to oxygen
+atoms from DME. The trend discussed above also qualitatively
+agrees with the g(r) distributions between cations and oxygen
+atoms of DME and [TFSI]−.
+Figure 6. Residence time (τ) for (a) bonds of Li+ and Na+ with
+oxygen atoms in DME molecules and (b) bonds of Li+ and Na+ with
+oxygen atoms in [TFSI]−as a function of salt concentration at 298 K.
+Red symbols denote relevant residence times of Li+ cations, and blue
+symbols denote residence times of Na+ cations.
+Figure 7. Radial distribution function (g(r)) at T = 298 K as a
+function of salt concentration for (a) Li+ or Na+ with the oxygen
+atoms of DME and (b) Li+ or Na+ with the oxygen atom of [TFSI]−.
+Red lines denote the Li+−oxygen radial distribution functions, and
+blue lines denote the Na+−oxygen radial distribution functions. Solid
+line denotes the 2.0 M salt concentration, dashed−dotted line denotes
+the 1.0 M salt concentration, and dashed line denotes the 0.5 M salt
+concentration simulation data.
+Figure 8. Coordination number of (a) Li+ and Na+ with the oxygen
+atoms of DME and (b) Li+ and Na+ with the oxygen atoms of
+[TFSI]−as a function of salt concentration at 298 K. Circles denote
+coordination numbers between Li+ and oxygen atoms, and squares
+denote coordination numbers between Na+ and oxygen atoms.
+The Journal of Physical Chemistry B
+Article
+DOI: 10.1021/acs.jpcb.8b03445
+J. Phys. Chem. B 2018, 122, 8548−8559
+8555
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​122/​36/​8548/​9828318/​jp8b03445.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 9>>
+In order to investigate the variations in coordination of
+DME and [TFSI]−around the cations, we evaluated the
+number of DME and [TFSI]−that coordinate to Li+ or Na+
+with a single oxygen atom (monodentate conﬁguration, see
+Figure 9) as well as those having two coordinating oxygen
+atoms (bidentate conﬁguration, see Figure 10). From Figure
+10, the bidentate conﬁguration of DME with both Li+ and Na+
+tends to be more probable, with close to 85−90% of the
+oxygen atoms of DME that are binding to a cation being
+involved in bidentate conﬁgurations. We ﬁnd that the fraction
+of these oxygen atoms involved in bidentate conﬁgurations not
+to vary signiﬁcantly with salt concentration. The Li+ solvation
+shell was found to have a slightly lower percentage of bidentate
+DME molecules than that of Na+. For [TFSI]−solvating Li+
+and Na+, monodentate conﬁgurations tend to be more stable,
+with 25−40% of the binding oxygen atoms being involved in
+bidentate conﬁgurations. We ﬁnd that increasing Li/Na-salt
+concentrations signiﬁcantly increases the fraction of oxygen
+atoms of [TFSI]−involved in bidentate conﬁgurations. Again,
+this can be related to the increase in the chemical potential of
+[TFSI]−in solution, which makes the displacement of DME
+binding to Li+ by [TFSI]−more favorable.
+The most common solvation structures observed at low
+concentrations from our simulations are provided in Figure 9.
+Overall, we ﬁnd that the most common solvation shells of Li+
+have ﬁve oxygen bonds. The oxygen bonds originate from
+either three DME, with two in bidentate conﬁgurations and
+one in a mondentate conﬁguration, or from two DME and a
+[TFSI]−, with the DME being in bidentate conﬁgurations and
+the [TFSI]−being in a monodentate conﬁguration. For Na+,
+the most common solvation shells have six oxygen atoms. In
+this case, the oxygen atoms can originate from three DME,
+where all three DME are in bidentate conﬁgurations, or from
+two DME and one [TFSI]−, where all species are in bidentate
+conﬁgurations.
+As a ﬁnal evaluation of the coordination of molecules and
+anions around cations, we investigated the tendency of Li+ or
+Na+ cations to aggregate into clusters by evaluating the
+networks of cations bound by shared or bridging oxygen atoms
+of DME and [TFSI]−(see Table 4). We did not observe a
+signiﬁcant presence of either Li+ or Na+ clusters. For solutions
+of either Li[TFSI] or Na[TFSI] in DME, as the salt
+concentration increases the cluster size slightly increases,
+with the probability of ﬁnding a Li+ not associated with a
+cluster decreasing from 100% at low concentrations (0.5 M) to
+97.6% at high concentrations (2.0 M) and the probability of
+ﬁnding a Na+ not associated with a cluster decreasing from
+Figure 9. Depiction of the most probable solvation shells of (a and c)
+Li+ and (b and d) Na+ from molecular dynamics simulation. Solvation
+shells composed of only (a and b) DME and (c and d) both DME
+and [TFSI]−are shown. Cations and ligand bonds with the cations
+are given as orange. Solvation shell molecules coordinating to the
+cations through monodentate and bidentate bonds are indicated.
+Figure 10. Distribution of bidentate bonds to Li+ or Na+ from (a) the
+oxygen atoms of DME and (b) the oxygen atoms of [TFSI]−as a
+function of salt concentration. Circles denote Li+, and squares denote
+between Na+.
+Table 4. Percent of Li+ and Na+ Atoms Participating in a
+Cluster of a Given Size as a Function of Salt Concentration
+at 298 K
+cluster size
+molar concentration
+Li+−Cluster (%)
+Na+−Cluster (%)
+1
+0.5
+100 0.00
+93.3
+2
+0.5
+0.00
+6.56
+3
+0.5
+0.00
+0.1
+4
+0.5
+0.00
+0.00
+1
+1.0
+99.64
+90.2
+2
+1.0
+0.36
+9.4
+3
+1.0
+0.00
+0.4
+4
+1.0
+0.00
+0.00
+1
+1.5
+98.95
+79.1
+2
+1.5
+1.05
+18.8
+3
+1.5
+0.05
+2.1
+4
+1.5
+0.00
+0.00
+1
+2.0
+97.57
+73.3
+2
+2.0
+2.43
+21.7
+3
+2.0
+0.04
+4.4
+4
+2.0
+0.00
+0.6
+The Journal of Physical Chemistry B
+Article
+DOI: 10.1021/acs.jpcb.8b03445
+J. Phys. Chem. B 2018, 122, 8548−8559
+8556
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​122/​36/​8548/​9828318/​jp8b03445.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 10>>
+93.3% at low concentrations (0.5 M) to 73.3% at high
+concentrations (2.0 M). The size of the cations appears to be
+correlated to the prevalence of clusters, as Na+ is involved in
+more clusters than Li+.
+The lack of widespread aggregation could explain the noted
+maximum in ionic conductivity as a function of concentration
+in Figure 5a. Electrolytes that readily form large aggregates
+with Li+ and Na+, like ionic liquids,43,68,69 often exhibit
+monotonic decreases in conductivity with increasing salt
+concentration. For low-salt concentration DME electrolytes,
+no aggregation means that adding more salt will increase the
+number of available charge carriers and not signiﬁcantly impact
+ion mobility, which increases conductivity. For high-salt
+concentration DME electrolytes, aggregation is still limited
+but the ratio of cation-complexed DME to DME free in the
+volume is high, which leads to large reductions of the vehicular
+contribution to ion mobility and results in the decrease of
+conductivity.
+■CONCLUSIONS
+Detailed understanding of the thermodynamic, transport, and
+structural properties of electrolytes for advanced battery
+chemistries is crucial for discerning the underlying mechanisms
+that govern these complex systems. This work provides
+atomistic-level insights into key thermodynamic, transport,
+and structural properties of the primary electrolytes (Li[TFSI]
+in DME and Na[TFSI] in DME) used for Li−S, Li−O2, and
+Na−O2 battery applications. High-ﬁdelity, polarizable force
+ﬁelds were developed by ﬁtting parameters to quantum
+chemistry and ab initio molecular dynamics simulation for
+these two electrolyte systems. We computed the density, heat
+of vaporization, viscosity, self-diﬀusion coeﬃcient, and ionic
+conductivity for a wide range of salt concentrations. Molecular
+dynamics simulation predictions are found to be in good
+agreement with experimental results for the entire concen-
+tration range investigated. With increasing salt concentrations,
+both systems exhibited increasing density and viscosity and
+decreasing diﬀusion coeﬃcients. In contrast, the ionic
+conductivity initially increased with salt concentration, reached
+a saturation point, and then decreased. This behavior is related
+to a balance between decreasing diﬀusion coeﬃcients and
+increasing number of cations with increasing salt concen-
+trations. We also found that the correlated cation and anion
+diﬀusion slightly increased with increasing salt concentrations,
+which is reﬂected in increases in residence times observed
+between cations and anions with increasing salt concentrations.
+The Li+ and Na+ residence times with the oxygen atoms of
+DME were signiﬁcantly greater than those with the oxygen
+atoms of [TFSI]−. Transport property diﬀerences also were
+described by diﬀerences in the residence times of the cations
+with the oxygen atoms of DME, with the less mobile Li+ having
+a much longer residence time than Na+.
+Structural properties were also analyzed as a function of salt
+concentration. Both Na+ and Li+ were found to be solvated
+predominately by 2−3 DME and up to 1 [TFSI]−. The
+coordination number between the cations and [TFSI]
+increased while that between the cations and DME decreased
+with increasing salt concentration. For both Li+ and Na+ with
+DME and Na+ with [TFSI]−, bidentate conﬁgurations were
+more likely, while for Li+ with [TFSI]−, monodentate
+conﬁgurations were revealed to be more likely. No signiﬁcant
+evidence of cation/anion clustering was observed. In general,
+an improved understanding of the properties of the electrolytes
+studied in this work should lead to the design of better
+formulations with enhanced performance relevant to advanced
+battery applications.
+■ASSOCIATED CONTENT
+*
+S
+Supporting Information
+The Supporting Information is available free of charge on the
+ACS Publications website at DOI: 10.1021/acs.jpcb.8b03445.
+Structure and energetic comparisons of the force ﬁeld to
+quantum chemistry computations and values of MSD as
+a function of time (PDF)
+■AUTHOR INFORMATION
+Corresponding Author
+*E-mail: john.w.lawson@nasa.gov.
+ORCID
+Justin B. Haskins: 0000-0003-4435-9018
+Colin M. Burke: 0000-0002-8826-0944
+Bryan D. McCloskey: 0000-0001-6599-2336
+Author Contributions
+§T.P.L.-A. and J.B.H.: These authors contributed equally to
+this work.
+Notes
+The authors declare no competing ﬁnancial interest.
+■ACKNOWLEDGMENTS
+This work was supported by funding from the NASA
+Aeronautics Research Mission Directorate’s (ARMD) Con-
+vergent Aeronautics Solutions (CAS) Project.
+■REFERENCES
+(1) Rosenman, A.; Markevich, E.; Salitra, G.; Aurbach, D.; Garsuch,
+A.; Chesneau, F. F. Review on Li-Sulfur Battery Systems: an Integral
+Perspective. Adv. Energy Mater. 2015, 5, 1500212.
+(2) Cuisinier, M.; Hart, C.; Balasubramanian, M.; Garsuch, A.;
+Nazar, L. F. Radical or not Radical: Revisiting Lithium-Sulfur
+Electrochemistry in Nonaqueous Electrolytes. Adv. Energy Mater.
+2015, 5, 1401801.
+(3) Ji, X.; Nazar, L. F. Advances in Li-S Batteries. J. Mater. Chem.
+2010, 20, 9821−9826.
+(4) Bruce, P. G.; Freunberger, S. A.; Hardwick, L. J.; Tarascon, J.-M.
+Li-O2 and Li-S Batteries with High Energy Storage. Nat. Mater. 2012,
+11, 19−29.
+(5) Wenzel, S.; Metelmann, H.; Raiß, C.; Dürr, A.; Janek, J.;
+Adelhelm, P. Thermodynamics and Cell Chemistry of Room
+Temperature Sodium/Sulfur Cells with Liquid and Liquid/Solid
+Electrolyte. J. Power Sources 2013, 243, 758−765.
+(6) Mccloskey, B. D.; Garcia, J. M.; Luntz, A. C. Chemical and
+Electrochemical Differences in Nonaqueous Li-O2 and Na-O2
+Batteries. J. Phys. Chem. Lett. 2014, 5, 1230−1235.
+(7) Hartmann, P.; Bender, C. L.; Sann, J.; Dürr, A. K.; Jansen, M.;
+Janek, J.; Adelhelm, P. A Comprehensive Study on the Cell Chemistry
+of the Sodium Superoxide (NaO2) Battery. Phys. Chem. Chem. Phys.
+2013, 15, 11661−11672.
+(8) Hartmann, P.; Grúbl, D.; Sommer, H.; Janek, J.; Bessler, W. G.;
+Adelhelm, P. Pressure Dynamics in Metal-Oxygen (Metal-Air)
+Batteries: A Case Study on Sodium Superoxide Cells. J. Phys. Chem.
+C 2014, 118, 1461−1471.
+(9) Zhang, X.; Wang, X.-G.; Xie, Z.; Zhou, Z. Recent Progress in
+Rechargeable Alkali Metal-Air Batteries. Green Ener. Environ. 2016, 1,
+4−16.
+(10) Christensen, J.; Albertus, P.; Sanchez-Carrera, R. S.; Lohmann,
+T.; Kozinsky, B.; Liedtke, R.; Ahmed, J.; Kojic, A. A Critical Review of
+Li/Air Batteries. J. Electrochem. Soc. 2011, 159, R1−R30.
+The Journal of Physical Chemistry B
+Article
+DOI: 10.1021/acs.jpcb.8b03445
+J. Phys. Chem. B 2018, 122, 8548−8559
+8557
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​122/​36/​8548/​9828318/​jp8b03445.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 11>>
+(11) Girishkumar, G.; McCloskey, B.; Luntz, A. C.; Swanson, S.;
+Wilcke, W. Lithium-Air Battery: Promise and Challenges. J. Phys.
+Chem. Lett. 2010, 1, 2193−2203.
+(12) Abraham, K.; Jiang, Z. A Polymer Electrolyte-Based
+Rechargeable Lithium/Oxygen Battery. J. Electrochem. Soc. 1996,
+143, 1−5.
+(13) Laoire, C. O.; Mukerjee, S.; Abraham, K. M.; Plichta, E. J.;
+Hendrickson, M. A. Elucidating the Mechanism of Oxygen Reduction
+for Lithium-Air Battery Applications. J. Phys. Chem. C 2009, 113,
+20127−20134.
+(14) Xu, K. Nonaqueous Liquid Electrolytes for Lithium-Based
+Rechargeable Batteries. Chem. Rev. 2004, 104, 4303−4418.
+(15) Borodin, O.; Smith, G. D. Quantum Chemistry and Molecular
+Dynamics Simulation Study of Dimethyl Carbonate: Ethylene
+Carbonate Electrolytes Doped with LiPF6. J. Phys. Chem. B 2009,
+113, 1763−1776.
+(16) Barghamadi, M.; Best, A. S.; Bhatt, A. I.; Hollenkamp, A. F.;
+Musameh, M.; Rees, R. J.; Rüther, T. Lithium-Sulfur Batteries - the
+Solution Is in the Electrolyte, but Is the Electrolyte a Solution? Energy
+Environ. Sci. 2014, 7, 3902.
+(17) Shin, E. S.; Kim, K.; Oh, S. H.; Cho, W. I. Polysulfide
+Dissolution Control: the Common Ion Effect. Chem. Commun. 2013,
+49, 2004−2006.
+(18) Nichols, J. E.; McCloskey, B. D. The Sudden Death
+Phenomena in Nonaqueous Na-O2 Batteries. J. Phys. Chem. C 2017,
+121, 85−96.
+(19) McCloskey, B. D.; Bethune, D. S.; Shelby, R. M.; Mori, T.;
+Scheffler, R.; Speidel, A.; Sherwood, M.; Luntz, A. C. Limitations in
+Rechargeability of Li-O2 Batteries and Possible Origins. J. Phys. Chem.
+Lett. 2012, 3, 3043−3047.
+(20) Veith, G. M.; Nanda, J.; Delmau, L. H.; Dudney, N. J. Influence
+of Lithium Salts on the Discharge Chemistry of Li-Air Cells. J. Phys.
+Chem. Lett. 2012, 3, 1242−1247.
+(21) Bryantsev, V. S.; Uddin, J.; Giordani, V.; Walker, W.; Addison,
+D.; Chase, G. V. The Identification of Stable Solvents for Nonaqueous
+Rechargeable Li-Air Batteries. J. Electrochem. Soc. 2013, 160, A160−
+A171.
+(22) Shui, J.-L.; Okasinski, J. S.; Kenesei, P.; Dobbs, H. A.; Zhao, D.;
+Almer, J. D.; Liu, D.-J. Reversibility of Anodic Lithium in
+Rechargeable Lithium-Oxygen Batteries. Nat. Commun. 2013, 4, 2255.
+(23) McCloskey, B. D.; Speidel, A.; Scheffler, R.; Miller, D. C.;
+Viswanathan, V.; Hummelshøj, J. S.; Nørskov, J. K.; Luntz, A. C. Twin
+Problems of Interfacial Carbonate Formation in Nonaqueous Li-O2
+Batteries. J. Phys. Chem. Lett. 2012, 3, 997−1001.
+(24) McCloskey, B. D.; Bethune, D. S.; Shelby, R. M.; Girishkumar,
+G.; Luntz, A. C. Solvents’ Critical Role in Nonaqueous Lithium-
+Oxygen Battery Electrochemistry. J. Phys. Chem. Lett. 2011, 2, 1161−
+1166.
+(25) Aetukuri, N. B.; McCloskey, B. D.; Garciá, J. M.; Krupp, L. E.;
+Viswanathan, V.; Luntz, A. C. Solvating Additives Drive Solution-
+Mediated Electrochemistry and Enhance Toroid Growth in Non-
+Aqueous Li-O2 Batteries. Nat. Chem. 2015, 7, 50−56.
+(26) Jorgensen, W. L.; Maxwell, D. S.; Tirado-Rives, J. Development
+and Testing of the OPLS All-Atom Force Field on Conformational
+Energetics and Properties of Organic Liquids. J. Am. Chem. Soc. 1996,
+118, 11225−11236.
+(27) Wang, J.; Wolf, R. M.; Caldwell, J. W.; Kollman, P. A.; Case, D.
+A. Development and Testing of a General Amber Force Field. J.
+Comput. Chem. 2004, 25, 1157−1174.
+(28) Vanommeslaeghe, K.; Hatcher, E.; Acharya, C.; Kundu, S.;
+Zhong, S.; Shim, J.; Darian, E.; Guvench, O.; Lopes, P.; Vorobyov, I.;
+Mackerell, A. D.; et al. CHARMM General Force Field: A Force Field
+for Drug-like Molecules Compatible with the CHARMM All-Atom
+Additive Biological Force Fields. J. Comput. Chem. 2010, 31, 671−
+690.
+(29) Martin, M. G.; Siepmann, J. I. Transferable Potentials for Phase
+Equilibria. 1. United-Atom Description of N-Alkanes. J. Phys. Chem. B
+1998, 102, 2569−2577.
+(30) Rajput, N. N.; Murugesan, V.; Shin, Y.; Han, K. S.; Lau, K. C.;
+Chen, J.; Liu, J.; Curtiss, L. A.; Mueller, K. T.; Persson, K. A.
+Elucidating the Solvation Structure and Dynamics of Lithium
+Polysulfides Resulting from Competitive Salt and Solvent Inter-
+actions. Chem. Mater. 2017, 29, 3375−3379.
+(31) Park, J.; Kanduc; Chudoba, R.; Ronneburg, A.; Risse, S.;
+Ballauff, M.; Dzubiella, J. Molecular Simulations of Electrolyte
+Structure and Dynamics in Lithium-Sulfur Battery Solvents. J. Power
+Sources 2018, 373, 70−78.
+(32) Borodin, O.; Smith, G. D. Development of Many-Body
+Polarizable Force Fields for Li-Battery Components: 1. Ether, Alkane,
+and Carbonate-Based Solvents. J. Phys. Chem. B 2006, 110, 6279−
+6292.
+(33) Borodin, O.; Smith, G. D. Development of Many-Body
+Polarizable Force Fields for Li-Battery Components: 2. LiTFSI-
+Doped Oligoether, Polyether, and Carbonate-Based Electrolytes. J.
+Phys. Chem. B 2006, 110, 6293−6299.
+(34) Ren, P.; Ponder, J. W. Polarizable Atomic Multipole Water
+Model for Molecular Mechanics Simulation. J. Phys. Chem. B 2003,
+107, 5933−5947.
+(35) Ponder, J. W.; Wu, C.; Ren, P.; Pande, V. S.; Chodera, J. D.;
+Schnieders, M. J.; Haque, I.; Mobley, D. L.; Lambrecht, D. S.;
+DiStasio, R. A.; et al. Current Status of the AMOEBA Polarizable
+Force Field. J. Phys. Chem. B 2010, 114, 2549−2564.
+(36) Pollard, T. P.; Beck, T. L. Structure and Polarization Near the
+Li+ Ion in Ethylene and Propylene Carbonates. J. Chem. Phys. 2017,
+147, 161710.
+(37) Chang, T.-M.; Dang, L. X. Li+ solvation and kinetics of Li+-
+BF4
+−/PF6
+−Ion Pairs in Ethylene Carbonate. A Molecular Dynamics
+Study with Classical Rate Theories. J. Chem. Phys. 2017, 147, 161709.
+(38) Borodin, O. Polarizable Force Field Development and
+Molecular Dynamics Simulations of Ionic Liquids. J. Phys. Chem. B
+2009, 113, 11463−11478.
+(39) Jing, Z.; Qi, R.; Liu, C.; Ren, P. Computational and
+Experimental Characterization of Pyrrolidinium-Based Ionic Liquid
+for Electrolyte Application. J. Chem. Phys. 2017, 147, 161733.
+(40) Torabifard, H.; Reed, L.; Berry, M. T.; Hein, J. E.; Menke, E.;
+Cisneros, G. A. Computational and Experimental Characterization of
+Pyrrolidinium-Based Ionic Liquid for Electrolyte Application. J. Chem.
+Phys. 2017, 147, 161731.
+(41) Waldman, M.; Hagler, A. T. New Combining Rules for Rare
+Gas van der Waals Parameters. J. Comput. Chem. 1993, 14, 1077−
+1084.
+(42) Kaminski, G. A.; Stern, H. A.; Berne, B. J.; Friesner, R. A.; Cao,
+Y. X.; Murphy, R. B.; Zhou, R.; Halgren, T. A. Development of a
+Polarizable Force Field for Proteins via Ab Initio Quantum Chemistry:
+First Generation Model and Gas Phase Tests. J. Comput. Chem. 2002,
+23, 1515−1531.
+(43) Haskins, J. B.; Bennett, W. R.; Wu, J. J.; Hernández, D. M.;
+Borodin, O.; Monk, J. D.; Bauschlicher, C. W., Jr.; Lawson, J. W.
+Computational and Experimental Investigation of Li-Doped Ionic
+Liquid Electrolytes: [pyr14][TFSI], [pyr13][FSI], and [EMIM]-
+[BF4]. J. Phys. Chem. B 2014, 118, 11295−11309.
+(44) Thole, B. T. Molecular Polarizabilities Calculated with a
+Modified Dipole Interaction. Chem. Phys. 1981, 59, 341−350.
+(45) Plimpton, S. Fast Parallel Algorithms for Short-Range
+Molecular Dynamics. J. Comput. Phys. 1995, 117, 1−19.
+See:
+http://lammps.sandia.gov.
+(46) Tuckerman, M.; Berne, B. J.; Martyna, G. J. Reversible Multiple
+Time Scale Molecular Dynamics. J. Chem. Phys. 1992, 97, 1990−
+2001.
+(47) Kresse, G.; Hafner, J. Ab Initio Molecular Dynamics for Liquid
+Metals. Phys. Rev. B: Condens. Matter Mater. Phys. 1993, 47, 558−561.
+(48) Kresse, G.; Hafner, J. Ab Initio Molecular Dynamics Simulation
+of Liquid-Metal-Amorphous-Semiconductor Transition in Germa-
+nium. Phys. Rev. B: Condens. Matter Mater. Phys. 1994, 49, 14251.
+(49) Kresse, G.; Furthmüller, J. Efficiency of Ab Initio Total Energy
+Calculations for Metals and Semiconductors using a Plane-Wave Basis
+Set. Comput. Mater. Sci. 1996, 6, 15−50.
+The Journal of Physical Chemistry B
+Article
+DOI: 10.1021/acs.jpcb.8b03445
+J. Phys. Chem. B 2018, 122, 8548−8559
+8558
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​122/​36/​8548/​9828318/​jp8b03445.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 12>>
+(50) Blöchl, P. E. Projector Augmented-Wave Method. Phys. Rev. B:
+Condens. Matter Mater. Phys. 1994, 50, 17953.
+(51) Kresse, G.; Joubert, D. From Ultrasoft Pseudopotentials to the
+Projector Augmented-Wave Method. Phys. Rev. B: Condens. Matter
+Mater. Phys. 1999, 59, 1758.
+(52) Frisch, M. J.; et al. Gaussian 09, Revision C.01; Gaussian, Inc.:
+Pittsburg, PA, 2009.
+(53) Becke, A. D. Density-Functional Thermochemistry. III. The
+Role of Exact Exchange. J. Chem. Phys. 1993, 98, 5648−5652.
+(54) Dunning, T. H. Gaussian Basis Set for Use in Correlated
+Molecular Calculations. I. The Atoms Boron through Neon and
+Hydrogen. J. Chem. Phys. 1989, 90, 1007−1023.
+(55) Kendall, R. A.; Dunning, T. H.; Harrison, R. J. Electron
+Affinities of the Fist-Row Atoms Revisited. Systematic Basis Sets and
+Wave Functions. J. Chem. Phys. 1992, 96, 6796−6806.
+(56) Zhang, C.; Ueno, K.; Yamazaki, A.; Yoshida, K.; Moon, H.;
+Mandai, T.; Umebayashi, Y.; Dokko, K.; Watanabe, M. Chelate
+Effects in Glyme/Lithium Bis(trifluoromethansulfonyl)amide Solvate
+Ionic Liquids. I. Stability of Solvate Cations and Correlation with
+Electrolyte Properties. J. Phys. Chem. B 2014, 118, 5144−5153.
+(57) Holz, M.; Weingartner, H. Calibration in Accurate Spin-Echo
+Self-Diffusion Measurements using 1H and Less-Common Nuclei. J.
+Magn. Reson. (1969-1992) 1991, 92, 115−125.
+(58) Holz, M.; Mao, X.; Seiferling, D.; Sacco, A. Experimental Study
+of Dynamic Isotope Effects in Molecular Liquids: Detection of
+Translation-Rotation Coupling. J. Chem. Phys. 1996, 104, 669.
+(59) Hayamizu, K.; Aihara, Y.; Arai, S.; Martinez, C. G. Pulse-
+Gradient Spin-Echo
+1H,
+7Li, and
+19F NMR Diffusion and Ionic
+Conductivity Measurements of 14 Organic Electrolytes Containing
+LiN(SO2CF3)2. J. Phys. Chem. B 1999, 103, 519−524.
+(60) Jerschow, A.; Müller, N. Suppression of Convection Artifacts in
+Stimulated-Echo Diffusion Experiments. Double-Stimulated-Echo
+Experiments. J. Magn. Reson. 1997, 125, 372−375.
+(61) Sinnaeve, D. The Stejskal-Tanner Equation Generalized for
+Any Gradient Shape - an Overview of Most Pulse Sequences
+Measuring Free Diffusion. Concepts Magn. Reson., Part A 2012, 40A,
+39−65.
+(62) Krachkovskiy, S. A.; Bazak, J. D.; Fraser, S.; Halalay, I. C.;
+Goward, G. R. Determination of Mass Transfer Parameters and Ionic
+Association of LiPF6: Organic Carbonates Solutions. J. Electrochem.
+Soc. 2017, 164, A912−A916.
+(63) Brouillette, D.; Perron, G.; Desnoyers, J. E. Apparent Molar
+Volume, Heat Capacity, and Conductance of Lithium Bis-
+(trifluoromethylsulfone)imide in Glymes and Other Aprotic Solvents.
+J. Solution Chem. 1998, 27, 151−182.
+(64) Comelli, F.; Ottani, S.; Francesconi, R.; Castellari, C. Densities,
+Viscosities, Refractive Indices, and Excess Molar Enthalpies of Binary
+Mixtures Containing Poly(ethylene glycol) 200 and 400 +
+Dimethoxymethane and + 1,2-Dimethoxyethane at 298.15 K. J.
+Chem. Eng. Data 2002, 47, 1226−1231.
+(65) Chickos, J. S.; Acree, W. E. Enthalpies of Vaporization of
+Organic and Organometallic Compounds, 1880−2002. J. Phys. Chem.
+Ref. Data 2003, 32, 519−878.
+(66) Côté, J.-F.; Brouillette, D.; Desnoyers, J. E.; Rouleau, J.-F.; St.
+Arnaud, J.-M.; Perron, G. Dielectric Constants of Acetonitrile, γ-
+Butyrolactone, Propylene Carbonate, and 1,2-Dimethoxyethane as a
+Function of Pressure and Temperature. J. Solution Chem. 1996, 25,
+1163−1173.
+(67) Pal, A.; Singh, Y. P. Viscosity in Water + Ethylene Glycol
+Dimethyl, + Diethylene Glycol Dimethyl,+Triethylene Glycol
+Dimethyl, and + Tetraethylene Glycol Dimethyl Ethers at 298.15 K.
+J. Chem. Eng. Data 1996, 41, 1008−1011.
+(68) Andriola, A.; Singh, K.; Lewis, J.; Yu, L. Conductivity, Viscosity,
+and Dissolution Enthalpy of LiNTF2 in Ionic Liquid BMINTF2. J.
+Phys. Chem. B 2010, 114, 11709−11714.
+(69) Serra Moreno, J.; Maresca, G.; Panero, S.; Scrosati, B.;
+Appetecchi, G. B. Sodium-Conducting Ionic Liquid-Based Electro-
+lytes. Electrochem. Commun. 2014, 43, 1−4.
+The Journal of Physical Chemistry B
+Article
+DOI: 10.1021/acs.jpcb.8b03445
+J. Phys. Chem. B 2018, 122, 8548−8559
+8559
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​122/​36/​8548/​9828318/​jp8b03445.​pdf by TSINGHUA UNIV user on 10 October 2026

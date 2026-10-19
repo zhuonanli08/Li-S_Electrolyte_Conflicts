@@ -1,0 +1,798 @@
+
+<<PAGE 1>>
+Electronic Supporting Information:
+Optimizing Cation-π Force-fields for Molecular
+Dynamics Studies of Competitive Solvation in
+Conjugated Organosulfur Polymers for
+Lithium-Sulfur Batteries
+Diptesh Gayen,† Yannik Sch¨utze,‡,¶ Sebastien Groh,† and Joachim Dzubiella∗,†
+†Applied Theoretical Physics – Computational Physics, Physikalisches Institut,
+Albert-Ludwigs-Universit¨at Freiburg, 79104 Freiburg, Germany
+‡Research Group for Simulations of Energy Materials, Helmholtz-Zentrum Berlin f¨ur
+Materialien und Energie GmbH, 14109 Berlin, Germany
+¶Theoretical Chemistry, Institute of Chemistry and Biochemistry, Freie Universit¨at Berlin,
+14195 Berlin, Germany
+E-mail: joachim.dzubiella@physik.uni-freiburg.de
+1
+Supplementary Information (SI) for Physical Chemistry Chemical Physics.
+This journal is © the Owner Societies 2025
+
+<<PAGE 2>>
+Table. S1: By selecting different grid points for fitting benzene’s energy surface, we analyzed
+their effects on the molecule’s open parameters.
+Two different setups were considered -
+setup-A, which consists of 9 points, and setup-B, which consists of 25 points. As we have
+only the ”CA” type of carbon atom in the benzene molecule, the open parameters are fixed
+to C4
+CA−Li+ and σCA−Li+. Further, we found that as the number of grid points increases,
+the outcome of the objective function, which signifies the error of the fit, L2 (see Eq. 5 in
+the manuscript), also increases. For further details, please refer to the section 3.1.1 of the
+manuscript.
+Parameters
+Setup-A
+Setup-B
+C4
+CA−Li+
+104.69
+107.38
+σCA−Li+
+2.69
+2.68
+L2
+0.0043
+0.0086
+Table. S2: By selecting different grid points for fitting thiophene’s energy surface, we ana-
+lyzed their effects on the molecule’s open parameters. Two different setups were considered,
+same as benzene. For thiophene, unlike benzene, there are three different atom types - two
+for carbon atoms (”CW” and ”CS”) and one for sulfur atom (”S”). Therefore, we have a
+total of six open parameters as mentioned in the table. Further, like benzene, we found that
+as the number of grid points increases, the outcome of the objective function, which signifies
+the error of the fit, L2 (see Eq. 5 in the manuscript), also increases. For further details,
+please refer to the section 3.1.1 of the manuscript and the Fig. S3.
+Parameters
+Setup-A
+Setup-B
+C4
+CW−Li+
+161.81
+162.16
+σCW−Li+
+2.71
+2.71
+C4
+CS−Li+
+161.81
+162.16
+σCS−Li+
+2.71
+2.71
+C4
+S−Li+
+190.24
+190.15
+σS−Li+
+2.76
+2.78
+L2
+0.004
+0.010
+Table. S3: By selecting different grid points for fitting benzenethiol’s energy surface, we
+analyzed their effects on the molecule’s open parameters. Two different setups were consid-
+ered, same as benzene. For benzenethiol, like benzene, there is only one atom type - ”CA”
+for carbon. Therefore, we have a total of two open parameters as mentioned in the table.
+Further, like benzene, we found that as the number of grid points increases, the outcome of
+the objective function, which signifies the error of the fit, L2 (see Eq. 5 in the manuscript),
+also increases. For further details, please refer to the section 3.1.1 of the manuscript and the
+Fig. S2.
+Parameters
+Setup-A
+Setup-B
+C4
+CA−Li+
+139.92
+140.60
+σCA−Li+
+2.70
+2.70
+L2
+0.001
+0.013
+2
+
+<<PAGE 3>>
+CA
+(a)
+CA
+(b)
+CW
+CW
+CS
+CS
+(c)
+S
+SH
+(d)
+CA
+SH
+S
+CW
+CW
+CS
+CS
+Fig. S1: Atom types: (a) In benzene, all carbon atoms are classified as the ”CA” type. (b)
+In benzenethiol, the carbon atoms are classified as the ”CA” type, and the sulfur atom as
+the ”SH” type. (c) In thiophene, the carbon atoms bonded to sulfur are classified as the
+”CW” type, and the carbon atoms adjacent to ”CW” are classified as the ”CS” type. (d)
+TBT follows the same atom types as those mentioned for benzenethiol and thiophene.
+3
+
+<<PAGE 4>>
+(a)
+(b)
+(c)
+(d)
+Fig. S2: Two-dimensional representation of the binding energy landscape between a thio-
+phene molecule and a Li+ ion complex from (a) DFT, (b) MS profile without corrections, and
+(c) MS profile with corrections. The x and y axes correspond to spatial positions, while the
+intensity of the plot (represented by a mesh) illustrates the binding energy, ∆E(x, y, zmin)
+(in kcal/mol) between the two entities. The binding energy was calculated at various posi-
+tions, with the z-coordinate allowed to minimize for each point, resulting in this energy
+landscape.
+The blue point represents the location of the minimum energy.
+(d) Bind-
+ing energy curves, ∆E(xmin, ymin, z), for separation of the thiophene-Li+ complex shown
+with B3LYP/6−311++G(d,p) (dash-dot line) functional, OPLS−AA (dashed line), and
+OPLS−AA with corrections (OPLS−AA/corr.) (solid black line).
+4
+
+<<PAGE 5>>
+(a)
+(b)
+(c)
+(d)
+Fig. S3: Two-dimensional representation of the binding energy landscape between a ben-
+zenethiol molecule and a Li+ ion complex from (a) DFT, (b) MS profile without correc-
+tions, and (c) MS profile with corrections. The x and y axes correspond to spatial posi-
+tions, while the intensity of the plot (represented by a mesh) illustrates the binding energy,
+∆E(x, y, zmin) (in kcal/mol) between the two entities. The binding energy was calculated
+at various positions, with the z-coordinate allowed to minimize for each point, resulting in
+this energy landscape. The blue point represents the location of the minimum energy. (d)
+Binding energy curves, ∆E(xmin, ymin, z), for separation of the benzenethiol-Li+ complex
+shown with B3LYP/6−311++G(d,p) (dash-dot line) functional, OPLS−AA (dashed line),
+and OPLS−AA with corrections (OPLS−AA/corr.) (solid black line).
+5
+
+<<PAGE 6>>
+Table. S4: By selecting different number of grid points and varying the number of open
+parameters for fitting ”Free TBT monomer”’s energy surface, we analyzed their effects on
+the molecule’s open parameters. Regarding the number of grid points, two different setups
+were considered: setup-A, which consists of 23 points - 9 points from each zone-1 and zone-3,
+and 5 points from zone-2, and setup-B, which consists of 59 points - 27 points from zone-1 and
+zone-3, and 5 points zone-2. The TBT molecule comprises a total of six different atom types”
+three for carbon atoms (”CA”, ”CW”, and ”CS”), two for sulfur atoms (”S” and ”SH”), and
+one for hydrogen (”HA”). Out of these six, mainly four atoms types were considered for the
+fitting procedure - ”CA”, ”CA”, ”CS”, and ”HA”. A total of three different parameter sets
+were considered: Set-(i) ”CA”, ”CW”, and ”CS” atom types, with ”CW” and ”CS” atom
+types treated as identical, Set-(ii) same as setup (i) expect ”CW” and ”CS” were treated
+as distinct atom types, and Set-(iii) ”CA”, ”CW”, and CS atom types ”S” atom type were
+considered as open parameter. The selected parameters marked with an ”*” were used for
+the simulation of TBT in the solution phase.
+type (i)
+atom (j)
+Cij
+4
+σij
+L2
+Setup-A : 4 parm. - Set(i)
+CA
+Li+
+51.48
+2.68
+0.027
+CW
+Li+
+48.87
+2.72
+0.027
+CS
+Li+
+48.87
+2.72
+0.027
+Setup-B : 4 parm. - Set(i)
+CA
+Li+
+52.12
+2.67
+0.039
+CW
+Li+
+49.94
+2.73
+0.039
+CS
+Li+
+49.94
+2.73
+0.039
+Setup-A : 6 parm. - Set(ii)
+CA
+Li+
+50.91
+2.68
+0.027
+CW
+Li+
+45.26
+2.72
+0.027
+CS
+Li+
+52.77
+2.72
+0.027
+Setup-B: 6 parm. - Set(ii)
+CA
+Li+
+51.59
+2.66
+0.039
+CW
+Li+
+50.20
+2.72
+0.039
+CS
+Li+
+50.26
+2.72
+0.039
+Setup-A: 6 parm.* - Set(iii)
+CA
+Li+
+65.28
+2.80
+0.05
+CW
+Li+
+68.09
+2.87
+0.05
+CS
+Li+
+68.09
+2.87
+0.05
+S
+Li+
+78.28
+2.76
+0.05
+Setup-B: 6 parm. - Set(iii)
+CA
+Li+
+67.73
+2.80
+0.08
+CW
+Li+
+64.25
+2.82
+0.08
+CS
+Li+
+64.25
+2.82
+0.08
+S
+Li+
+76.82
+2.80
+0.08
+6
+
+<<PAGE 7>>
+Table. S5: By selecting different number of grid points and varying the number of open
+parameters for fitting ”PTBT constituent monomer”’s energy surface, we analyzed their
+effects on the molecule’s open parameters. Regarding the number of grid points, two different
+setups were considered: setup-A, which consists of 23 points - 9 points from each zone-1 and
+zone-3, and 5 points from zone-2, and setup-B, which consists of 59 points - 27 points from
+zone-1 and zone-3, and 5 points zone-2. The TBT molecule comprises a total of six different
+atom types” three for carbon atoms (”CA”, ”CW”, and ”CS”), two for sulfur atoms (”S”
+and ”SH”), and one for hydrogen (”HA”). Out of these six, mainly four atoms types were
+considered for the fitting procedure - ”CA”, ”CA”, ”CS”, and ”HA”.
+A total of three
+different parameter sets were considered: Set-(i) ”CA”, ”CW”, and ”CS” atom types, with
+”CW” and ”CS” atom types treated as identical, Set-(ii) same as setup (i) expect ”CW” and
+”CS” were treated as distinct atom types, and Set-(iii) ”CA”, ”CW”, and CS atom types
+”S” atom type were considered as open parameter. The selected parameters marked with
+an ”*” were used for the simulation of TriTBT in the solution phase.
+type (i)
+atom (j)
+Cij
+4
+σij
+L2
+Setup-A: 4 parm. - Set(i)
+CA
+Li+
+62.37
+2.70
+0.03
+CW
+Li+
+125.02
+2.71
+0.03
+CS
+Li+
+125.02
+2.71
+0.03
+Setup-B: 4 parm. - Set(i)
+CA
+Li+
+64.43
+2.70
+0.05
+CW
+Li+
+129.83
+2.72
+0.05
+CS
+Li+
+129.83
+2.72
+0.05
+Setup-A: 6 parm. - Set(ii)
+CA
+Li+
+60.78
+2.67
+0.03
+CW
+Li+
+110.17
+2.74
+0.03
+CS
+Li+
+158.52
+2.74
+0.03
+Setup-B: 6 parm. - Set(ii)
+CA
+Li+
+61.28
+2.68
+0.04
+CW
+Li+
+112.81
+2.71
+0.04
+CS
+Li+
+160.45
+2.77
+0.04
+Setup-A: 6 parm.* - Set(iii)
+CA
+Li+
+59.78
+2.67
+0.02
+CW
+Li+
+114.88
+2.72
+0.02
+CS
+Li+
+114.88
+2.72
+0.02
+S
+Li+
+110.26
+2.65
+0.02
+Setup-A: 6 parm. - Set(iii)
+CA
+Li+
+64.78
+2.69
+0.03
+CW
+Li+
+110.52
+2.67
+0.03
+CS
+Li+
+110.52
+2.67
+0.03
+S
+Li+
+111.08
+2.67
+0.03
+7
+
+<<PAGE 8>>
+(a)
+(b)
+(c)
+Fig. S4: Clustering of Li+-TFSI+ in the case of an implicit solvent for the salt concentration
+(a) Csalt = 0.1 M, (b) Csalt = 0.2 M, and (c) Csalt = 0.3 M.
+8
+
+<<PAGE 9>>
+energy
+barrier
+1st
+2nd
+3rd 4th
+5th
+1st
+2nd
+Fig. S5: Panels (a) and (c) display free energy profiles for TBT and TriTBT with varying
+solvent composition at a fixed salt concentration of Csalt = 0.5 M. Panels (b) and (d) show
+binding free energy profiles for TBT and TriTBT with varying salt concentrations at a fixed
+solvent composition, x = 0.00.
+The corresponding radial distribution functions (RDPs)
+concerning the COM of the oligomers are shown in the insets.
+9
+
+<<PAGE 10>>
+energy
+barrier
+1st
+2nd
+3rd 4th
+5th
+1st
+2nd
+Fig. S6: Panels (a) and (c) display free energy profiles for TBT and TriTBT with varying
+solvent composition at a fixed salt concentration of Csalt = 1.0 M. Panels (b) and (d) show
+binding free energy profiles for TBT and TriTBT with varying salt concentrations at a fixed
+solvent composition, x = 1.00.
+The corresponding radial distribution functions (RDPs)
+concerning the COM of the oligomers are shown in the insets.
+10
+
+<<PAGE 11>>
+0
+5
+10
+15
+r [Å]
+8
+6
+4
+2
+0
+2
+FTBT
+TFSI (r) [Kcal/mol]
+(a)
+= 10.6
+= 8.0
+= 6.0
+0
+5
+10
+15
+r [Å]
+(b)
+0
+5
+10
+r [Å]
+0
+25
+gTBT
+TFSI (r)[×102]
+0
+5
+10
+r [Å]
+0
+100
+gTBT
+TFSI (r)[×102]
+TBT
+2 TBTs
+Fig. S7: Free energy profiles (∆FTBT−TFSI−) as a function of distance for (a) Sys. I a/b/c (a
+single TBT monomer with one LiTFSI salt) and (b) Sys. II (2 TBTs with one LiTFSI salt)
+at three different dielectric constants. Each profile is block-averaged over 500 ns intervals,
+with three lines representing different dielectric constants: violet (ϵ = 6.0), orange (ϵ = 8.0),
+and red (ϵ = 10.6). Shaded regions indicate the standard deviation from the block averages.
+The free energy profiles are calculated with the Boltzmann inversion. Insets display the
+corresponding TFSI−RDPs relative to the center of mass of the TBT oligomers.
+11
+
+<<PAGE 12>>
+energy
+barrier
+1st
+2nd
+3rd 4th
+5th
+1st
+2nd
+Fig. S8: Panels (a) and (c) display free energy profiles for TBT and TriTBT with varying
+solvent composition at a fixed salt concentration of Csalt = 1.5 M. Panels (b) and (d) show
+binding free energy profiles for TBT and TriTBT with varying salt concentrations at a fixed
+solvent composition, x = 0.55.
+The corresponding radial distribution functions (RDPs)
+concerning the COM of the oligomers are shown in the insets.
+12
+
+<<PAGE 13>>
+Computational time required for parameterization
+The computational time for the parameterization of the potential is limited by the com-
+putational time for DFT calculations. For instance, in the case of “Free TBT monomer”
+complexed Li+, optimizing the structure and calculating the ground state energy over 4800
+points took 158 seconds per point. Whereas, in the case of “PTBT constituent monomer”
+complexed with Li+, over 5836 points required 2186 seconds per point. This difference arises
+as the complexity of the latter has increased. Iterative fitting parameters required hundreds
+of iterations – ranging from 324 to 770 iterations at 20-43 seconds each.
+Optimized Coordinates in .xyz Format
+• The following table contains the optimized coordinates in ‘.xyz‘ format for
+Benzene:
+Benzene
+12
+C −1.174819 1.223403
+0.000000
+C 0.221741
+1.233615
+−0.000000
+C −1.864225 0.008815
+0.000000
+C −1.156975
+−1.195462
+−0.000000
+C 0.929020
+0.029305
+−0.000000
+C 0.239640
+−1.185238
+−0.000000
+H 0.759991
+2.181391
+−0.000000
+H 2.018937
+0.037355
+0.000000
+H 0.791460
+−2.125177 0.000000
+H −1.694887
+−2.143404 0.000000
+H −2.954141 0.000639
+0.000000
+H −1.726642 2.163356
+0.000000
+13
+
+<<PAGE 14>>
+• The following table contains the optimized coordinates in ‘.xyz‘ format for
+Benzenethiol:
+Benzenethiol
+13
+C −1.217609 1.217417
+0.000000
+C 0.173607
+1.271786
+0.000000
+C −1.878453
+−0.010502 0.000000
+C −1.131782
+−1.187323 0.000000
+C 0.921675
+0.088785
+−0.000000
+C 0.261298
+−1.143939 0.000000
+H 0.676762
+2.232634
+−0.000000
+S 2.702154
+0.238004
+−0.000000
+H 0.827236
+−2.069062 0.000000
+H −1.632151
+−2.149681
+−0.000000
+H −2.961658
+−0.048793
+−0.000000
+H −1.785330 2.141608
+0.000000
+H 2.977950
+−1.080834 0.000000
+• The following table contains the optimized coordinates in ‘.xyz‘ format for
+Thiophene:
+Thiophene
+9
+S −0.885944 1.746203
+−0.000000
+C −2.130702 0.540429
+−0.000000
+C 0.351837
+0.533258
+0.000000
+C −1.607042
+−0.721418
+−0.000000
+C −0.179051
+−0.725584 0.000000
+14
+
+<<PAGE 15>>
+H 1.391390
+0.823777
+0.000000
+H 0.423091
+−1.624907
+−0.000000
+H −2.214382
+−1.617249 0.000000
+H −3.168597 0.836790
+0.000000
+• The following table contains the optimized coordinates in ‘.xyz‘ format for
+”Free TBT monomer”:
+Free TBT Monomer
+21
+S 12.771638
+1.352331
+−0.856770
+H 14.814219
+7.902784
+−0.850214
+C 13.816365
+8.323482
+−0.823644
+C 11.625426
+5.288436
+−1.501909
+C 13.677766
+5.307448
+−0.234962
+C 12.675082
+3.198188
+−0.874829
+H 14.465136
+5.843890
+0.284929
+H 10.845063
+3.354036
+−2.020916
+C 12.641043
+6.026050
+−0.862821
+C 12.619238
+7.504991
+−0.846136
+H 14.502240
+3.383679
+0.264276
+C 11.636698
+3.891690
+−1.508006
+C 13.697933
+3.911691
+−0.237453
+H 10.830523
+5.811662
+−2.024055
+C 13.580541
+9.663567
+−0.810503
+C 11.473711
+8.261214
+−0.845714
+S 11.814193
+10.026208
+−0.819816
+H 14.285256
+10.480312
+−0.812382
+15
+
+<<PAGE 16>>
+H 10.447610
+7.929010
+−0.821215
+H 11.535235
+1.121681
+−1.417893
+• The following table contains the optimized coordinates in ‘.xyz‘ format for
+”PTBT constituent monomer”:
+PTBT Constituent Monomer
+27
+S 11.634096
+1.382597
+−0.147600
+H 13.169226
+7.809245
+−1.330629
+C 12.413623
+8.253496
+−0.693462
+C 10.281623
+5.244842
+−0.167543
+C 12.659779
+5.281104
+0.134659
+C 11.511609
+3.163138
+−0.081749
+H 13.585536
+5.825853
+0.284951
+H 9.377056
+3.311191
+−0.368320
+C 11.454985
+5.990997
+0.011055
+C 11.452554
+7.471086
+0.040160
+H 13.640350
+3.375309
+0.201381
+C 10.303844
+3.853240
+−0.213911
+C 12.693117
+3.892481
+0.091960
+H 9.336195
+5.757609
+−0.302421
+C 12.275697
+9.601139
+−0.552499
+C 10.579949
+8.255502
+0.758224
+S 10.939062
+9.950747
+0.518289
+C 13.081465
+10.695768
+−1.184211
+C 9.469926
+7.859089
+1.687561
+H 10.312028
+1.126457
+−0.193076
+16
+
+<<PAGE 17>>
+H 13.847422
+10.261538
+−1.830888
+H 12.461355
+11.357681
+−1.796680
+H 13.585253
+11.315038
+−0.435122
+H 9.625572
+6.842357
+2.053343
+H 9.422374
+8.524402
+2.553805
+H 8.490433
+7.892005
+1.197084
+17

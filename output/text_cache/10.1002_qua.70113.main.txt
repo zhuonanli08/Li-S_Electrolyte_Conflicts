@@ -1,0 +1,1291 @@
+
+<<PAGE 1>>
+International Journal of Quantum Chemistry
+RESEARCH ARTICLE
+DFT Equilibrium Thermodynamics of Lithium Polysulfides
+Transformations in Sulfolane Solution
+Mikhail Yur’evich Ovchinnikov1 | Elena Vladimirovna Kuzmina1 | Elena Vladimirovna Karaseva1 | Meng Zhao2 |
+Qiang Zhang2 | Bo-Quan Li2 | Sergey Leonidovich Khursan1 | Vladimir Sergeevich Kolosnitsyn1
+1Ufa Institute of Chemistry UFRC RAS, Ufa, Russia | 2Advanced Research Institute of Multidisciplinary Science, Beijing Institute of Technology, Beijing, China
+Correspondence: Mikhail Yur’evich Ovchinnikov (myuovchinnikov@gmail.com)
+Received: 22 May 2024 | Revised: 26 August 2025 | Accepted: 4 September 2025
+Funding: This work was supported by the Russian Science Foundation (RSF) (RSF-NSFC o21-43-00006) and was performed as part of the Ministry of Science
+and Higher Education of the Russian Federation (Government Order Theme No. 124032600061-3 and 125020601630-6).
+Keywords: comproportionation reaction | density functional theory | disproportionation reaction | lithium polysulfides | sulfolane
+ABSTRACT
+The structure and UV/Vis-absorption spectra of Li2Sn (n = 2–8) in sulfolane solution (Sl), as well as the thermodynamic parameters
+of their com- and disproportionation, have been studied using DFT to gain a deeper understanding of the nontrivial mechanistic
+steps underlying the S-shaped discharge voltage curve of the Li-S electrochemical system. Comproportionation of Li2Sn was estab-
+lished using PBE0/6–311 + G(d,p) approximation with PCM to be thermodynamically favorable: the greater the difference in the
+oxidation states of the interacting forms, the more significant the Gibbs free energy drop. The transformations of Li2S3 and Li2S6
+drop out of the general pattern: dis- and comproportionation for them are allowed equally, which can lead to a smooth change in
+the concentrations of Li2S8, Li2S4, and Li2S2 and, thus, provide a relatively constant potential in the low-voltage part of the Li-S
+battery discharge curve. UV/Vis-absorption spectra of Li2Sn obtained using TD-DFT [TPSS/6–311 + G(d,p)] with PCM + explicit
+solvation were found to present allowed electronic transitions located from 30 000 to 50 000 cm−1. It has also been observed that
+Li2Sn self-association in Sl is relevant mainly for short-chain structures (n = 2–4); there is a dynamic equilibrium between different
+forms of Li2Sn, and the solution is usually presented by a mixture of these forms.
+1
+|
+Introduction
+In recent years, interest in the lithium–sulfur electrochemical
+system (LSES), as one of the most prospective for creating batter-
+ies with high-performance characteristics (high energy density,
+a high number of battery discharge cycles, fire safety, and ecol-
+ogy), has been steadily growing. The advantages of LSES include
+a high theoretical specific energy (2600 W⋅h⋅kg−1) as well as the
+widespread occurrence of lithium and sulfur in the Earth’s crust
+[1–6] that determines the relatively low cost of a battery made on
+their basis.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+© 2025 Wiley Periodicals LLC.
+The electrochemical reduction of sulfur to lithium sulfide in
+lithium–sulfur batteries (LSB) is carried out through the sequen-
+tial formation of lithium polysulfides (Li2Sn, n = 2–8). Sulfur and
+intermediate products of its reduction are soluble in electrolytes
+based on aprotic dipolar solvents and are in equilibrium between
+the liquid phase and the positive electrode of LSB, which makes
+it designated as a liquid cathode battery [7–13].
+The composition and properties of electrolyte systems have a
+great influence on the mechanism of electrochemical transfor-
+mations of lithium polysulfides, since lithium polysulfides form
+International Journal of Quantum Chemistry, 2025; 125:e70113
+1 of 14
+https://doi.org/10.1002/qua.70113
+
+<<PAGE 2>>
+FIGURE 1
+|
+Open circuit voltage (dashed line) and discharge curve
+(solid line) of a lithium sulfur cell at 1 cycle. Potential estimated using
+PBE0/6–311 + G(d,p) (black diamond, gray dash-dotted line) [21]. Con-
+ditions: Electrolyte: 1 M LiClO4 in sulfolane; Separator: Celgard3501;
+Positive electrode composition: S (70% wt.), Ketjenblack EC-600JD (10%
+wt.), Polyethylene oxide MM 4 × 106 (20% wt.). Discharge current density
+0.2 mA⋅cm−2, 303 K [22].
+solvate complexes with electrolyte solvents. Many compounds
+have been proposed as electrolyte solvents for LSB [14, 15]. Of
+great interest as promising electrolyte solvents are sulfones, and,
+in particular, sulfolane (Sl), since it is capable of solvating lithium
+cations through the oxygen atoms of the sulfonic group [16], dis-
+solves and ionizes electrolyte salts well, including lithium poly-
+sulfides. Sulfolane is highly resistant to strong acids, bases, oxi-
+dants, and high temperatures [7, 17], and it is also character-
+ized by moderate toxicity [18, 19]. These properties allow LSBs
+to better meet the requirements of fire safety and environmental
+friendliness.
+Our research team recently considered [20] and subsequently
+modeled, using DFT methodology [21], one of the major elec-
+trochemical trajectories, assuming the sequential generation of
+lithium polysulfides in sulfolane solution (polarizable continuum
+model + explicit solvation), with the number of sulfur atoms
+described by the sequence 2(4-i), where i = 1, 2, 3, 4 is the step
+number of sulfur reduction, as presented in Figure 1.
+As can be seen from Figure 1, the quantum-chemical model of
+sulfur reduction and lithium oxidation in the given interpreta-
+tion during the discharge of LSB is characterized by a drop in
+its potential, asymptotically tending to a certain limiting value
+of E(Li2S2 →Li2S). The revealed feature is consistent with other
+theoretical works [23] and correlates qualitatively well enough
+with the experimental data; however, it does not reproduce the
+sophisticated character of the change in the potential from the
+discharge capacity in detail. One of the reasons for the observed
+discrepancy between the experimental and theoretical data may
+be the neglect of transformations of lithium polysulfides accom-
+panied by a change in the formal charge located on sulfur atoms
+without the participation of the reducing agent, that is, neg-
+ative electrode material, as it is colored red in the following
+scheme [24–27]:
+These transformations do not lead to the generation of cur-
+rent in LSB; however, they make it possible to maintain a
+quasi-stationary concentration of the most thermodynamically
+stable forms of lithium polysulfides for a while. According to
+some researchers [28–31], a slowdown in the potential decrease
+and the formation of pseudo linear parts of the LSB discharge
+voltage profiles can serve as a marker for such reactions, as illus-
+trated by Figure 1. These transformations are characterized by
+considerable variability and can, in general, be expressed as fol-
+lows:
+Li2S𝑘+ Li2S𝑙↔Li2S𝑚+ Li2S𝑛(𝑘, 𝑙, 𝑚, 𝑛∈[1, 8],
+𝑘+ 𝑙= 𝑚+ 𝑛≤14)
+(1)
+where k/l and m/n are the numbers of sulfur atoms in
+lithium polysulfides before and after the reactions of dis- and
+comproportionation (DCRs), respectively. It should be noted that
+octasulfur may also participate in the charge redistribution, in
+addition to Equation (1), at the initial step of LSB discharge, as
+long as its concentration in the electrolyte solution is still quite
+high. The parallel proceeding of these reactions in LSB raises
+an acute issue relative to their reliable experimental identifi-
+cation using electronic/vibrational spectroscopy [28, 29, 32–36]
+and, thus, the construction of a comprehensive scheme of sulfur
+reduction in LSB.
+In the present work, we structured DCRs of lithium polysulfides
+in sulfolane solution and assessed their direction of spontaneous
+progress by calculating their equilibrium thermodynamic param-
+eters using DFT methodology. Having modeled the allowed elec-
+tronic transitions in the approximation of time-dependent DFT
+(TD-DFT), we also accomplished UV/Vis-spectral identification
+of lithium polysulfides to account for the possibility of their exper-
+imental quantification. The performed research allowed us to
+pull a cluster of the most significant reactions and refine the
+electrochemical trajectory of sulfur reduction, taking these into
+account.
+2
+|
+Methods
+2.1
+|
+Experiment
+Lithium polysulfides (Li2Sn, n = 2–8) in sulfolane solution were
+obtained by the reaction of sulfur (S8) and lithium sulfide (Li2S)
+with different stoichiometric ratios (Table 1).
+2 of 14
+International Journal of Quantum Chemistry, 2025
+ 1097461x, 2025, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.70113 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 3>>
+TABLE 1
+|
+The initial mass of sulfur (mg) used for preparing lithium
+polysulfide solutions (Li2Sn). m(Li2S) = 1.8 mg, [LiClO4] = 1.0 M, solvent
+is sulfolane (V = 10 mL), 303 K.
+S8
+1.3
+2.5
+3.8
+5.1
+6.3
+7.6
+8.8
+n
+2
+3
+4
+5
+6
+7
+8
+Sulfur and lithium sulfide were dissolved in sulfolane solutions
+of lithium perchlorate with continuous stirring (200 rpm) on
+a magnetic stirrer for 7–9 days until the samples were com-
+pletely dissolved. The completeness of sample dissolution was
+controlled visually: it was considered that samples were com-
+pletely dissolved if, after centrifugation of the solution at a speed
+of 2500 rpm for 15 min, no solid phase was observed at the bot-
+tom of the glass vessel, and changes in the absorption spec-
+tra ceased. The preparation and storage of lithium polysulfide
+solutions, as well as the filling of the cuvettes, were carried out
+at a temperature of 303 ± 0.1 K. Lithium polysulfide solutions
+were prepared, and the cuvettes were filled in a glovebox under
+an argon atmosphere (the contents of water and oxygen were
+< 0.1 ppm). Absorption spectra of lithium polysulfides in sul-
+folane solutions were recorded in 0.5 mm-thick quartz cuvettes
+on a Shimadzu UV-2600 two-beam spectrometer in the visible
+and ultraviolet ranges (50 000–10 000 cm−1) at a temperature of
+303 ± 0.1 K. When filling the cuvettes, they were washed with test
+solutions at least two times. The corresponding initial sulfolane
+solutions of lithium perchlorate or pure sulfolane containing no
+lithium polysulfides were used as the reference solutions. The
+absorption spectrum of sulfolane was recorded relative to air (see
+Figure S1).
+2.2
+|
+Calculation Procedures
+All the calculations were performed using the Gaussian 09
+Rev. C01 program package [37] for standard conditions (1 atm,
+298.15 K). The primary processing of the quantum chemical com-
+putation results was carried out using the Chemcraft 1.8 (build
+574b) [38]. Geometry optimization, equilibrium vibration fre-
+quency (harmonic) calculation, and natural bond orbital anal-
+ysis (NBO, version 3) [39–43] were performed using PBE0, a
+hybrid GGA (generalized gradient approximation) functional,
+with a predefined amount of DFT (75%) and exact (25%) exchange
+(PBE0, also called PBE1PBE in the Gaussian program) [44,
+45]. Pople’s triple split-valence basis set augmented with d-
+and p-type polarization functions and a set of diffuse functions
+[6–311 + G(d,p) (5D,7F)] [46, 47] was applied. All the structures
+correspond to minima on the PES, as confirmed by a set of pos-
+itive vibrational frequencies found during the Hessian calcula-
+tion. The dispersion correction was not added to the computation
+scheme in this case because it leads to an increase in error along
+with the chosen functional [48]. An integration grid having 175
+radial shells and 974 angular points [49] was used to increase the
+level of accuracy and improve the convergence of structures with
+a flat potential energy surface (PES) in terms of geometry. Wave
+function stability of all the considered structures was checked
+according to technique [50, 51]. Earlier, it was demonstrated that
+the chosen functional is an effective and relevant tool for the
+investigation of lithium polysulfides [52–54].
+FIGURE 2
+|
+General structures of lithium polysulfides (Li2Sn) and
+their associates (Li2Sn-Li2Sm) (n, m = 1–8) treated in calculations.
+The nonspecific solvation by sulfolane was considered within
+an approximation of the polarizable continuum model using the
+integral equation formalism variant (IEF-PCM) [55] at every step
+of geometry optimization as well as in UV/Vis absorption spec-
+tra modeling. Solute cavitation energy in the total energy was
+covered using the Pierotti model [56]. The cavity was extensively
+modified using the UFF force field (the method is supposed to
+model hydrogens by individual spheres [explicit hydrogens]). We
+used the default values of 43.962 and 2.200179 (standard condi-
+tions, 1 atm, 298.15 K) for static (ε0) and dynamic (ε∞) dielectric
+constants, respectively. The solute–solvent boundary was speci-
+fied as the Solvent Accessible Surface (SAS). The sulfolane sol-
+vation radius used in the calculations was estimated based on
+molecular volume calculations (Monte Carlo method) using the
+Gaussian 09 Rev. C01 software package and it was 4.07 Å.
+The specific solvation by sulfolane was covered on the base of
+the solvation scheme of lithium polysulfides used in DFT mod-
+eling of the Li-S electrochemical system [21]: at least two sul-
+folane molecules are involved in the solvation of lithium poly-
+sulfides and their associates via coordination of the oxygens
+of the sulfonic group to lithium, as shown in Figure 2 (Li2S,
+Sl-Li2S-Sl, Li2S-Li2S3, and Sl-Li2S-Li2S3-Sl are characterized by
+structures that are slightly different from the general ones shown
+in Figure 2. See also Table S12 for details). The use of specific sol-
+vation allows us to better assess the thermodynamic parameters
+of some transformations, as well as when modeling the spectral
+data in the UV/Vis region of some solvates.
+Both PCM and PCM + Explicit solvation schemes were used in
+the present work. Bond strength analysis of associates of lithium
+polysulfides based on the Intrinsic Bond Strength Index (IBSI)
+[57] was performed using the MultiWFN 3.8 program [58].
+The experimental spectral data were found [59] to correlate
+most highly with the results of TD-DFT [60–66] modeling
+obtained using the 𝜏-dependent gradient-corrected functional of
+Tao, Perdew, Staroverov, and Scuseria [67] (TPSS, also called
+3 of 14
+ 1097461x, 2025, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.70113 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 4>>
+TPSSTPSS in the Gaussian program). In this regard, the TPSS
+functional was used to model electronic UV/Vis-absorption spec-
+tra. We characterized the oscillator strengths of allowed elec-
+tronic transitions by a Gaussian approximation with a broaden-
+ing of 0.333 eV when modeling the electronic UV/Vis-absorption
+spectrum. All the UV/Vis absorption spectra of lithium polysul-
+fides, their monoanionic forms, and associates are presented in
+Figures S2–S30 (see also Table S10 for details of excitation states).
+Energy characteristics (Etotal, 𝐻˚
+298, and 𝐺˚
+298), the equilibrium
+geometry (Cartesian coordinates, Å), and NBO-point charges
+(a.u.) localized on the atoms of the studied compounds are pre-
+sented in Tables S11 and S12.
+3
+|
+Results
+3.1
+|
+Disproportionation
+and Comproportionation Reactions
+and Thermodynamic Equilibrium of Lithium
+Polysulfides in Sulfolane Solution
+Transformations of lithium polysulfides that are not accompa-
+nied by metallic lithium oxidation and thereby do not lead to the
+generation of electricity are possible at any step of the LSB dis-
+charge. One can generally find at least̃ 50 transformations for
+LSB (see Equation (1)). Having evenly distributed sulfur atoms
+in the resulting products, we tried to reasonably narrow the set of
+the most probable DCRs of lithium polysulfides:
+1. The interaction of lithium polysulfides with the same par-
+ity and different chain lengths leads to the formation of a
+pair of polysulfides with an arithmetic average number of
+elements.
+2. Interaction of lithium polysulfides with different parity and
+chain lengths leads to the formation of a pair of polysulfides
+differing by one sulfur atom;
+3. The interaction of the same lithium polysulfides is accom-
+panied by the formation of two polysulfides differing by two
+sulfur atoms.
+The selection rules described above are illustrated by the con-
+tent of Table 2. They made it possible to narrow the range of
+reactions under consideration from 50 to 28. The thermodynamic
+parameters were calculated taking into account sulfolane as a
+medium in two approximations for the remaining transforma-
+tions: PCM only and PCM + explicit solvation models. The results
+of DFT calculations obtained solely with dielectric continuum
+theory have earlier been shown [21] to be less consistent with
+experimental data in terms of thermodynamic parameters of LSB
+discharge than those estimated on the basis of the hybrid solva-
+tion model. However, PCM-based calculations are characterized
+by lower computational time costs, and therefore make it possi-
+ble to model electronic absorption spectra up to the border of deep
+ultraviolet (̃ 50 000 cm−1) for lithium polysulfide associates, as we
+will discuss below. The results of calculations carried out using
+the hybrid solvation model are presented in Table 3 as more trust-
+worthy. All the reactions, except the disproportionation of lithium
+octasulfide, are given in the simplest stoichiometric ratios, which
+TABLE 2
+|
+Selection rules of Li2Sx-DCR product composition (see
+Equation (1)).
+k, l
+Parity
+Not the same
+The same
+Equal
+—
+m = k(l) −1,
+n = k(l) + 1
+Nonequal
+m = 𝑘+𝑙
+2 −0.5,
+n = 𝑘+𝑙
+2 + 0.5
+𝑘+𝑙
+2 = 𝑚= 𝑛
+makes it easy to compare their thermodynamic parameters. Ther-
+modynamic properties estimated for an expanded set of reactions
+including transformations with elemental sulfur (S8) and lithium
+sulfide dimer (Li2S-Li2S) are collected in Tables S1–S4.
+As can be seen from Table 3, the bolded diagonal elements rep-
+resent the energy characteristics of disproportionation reactions.
+Thermodynamically favorable transformations are Li2S3, Li2S6,
+and Li2S8 in this case. Notably, Table 3 is symmetrical relative to
+the diagonal elements. Comproportionation reactions are repre-
+sented by table elements in italics. Their energy parameters are
+equal in magnitude and opposite in sign to the diagonal elements.
+The rest of Table 3, including 15 duplicated reactions, reflects the
+change in enthalpy and Gibbs free energy upon the interaction
+of lithium polysulfides differing by two or more sulfur atoms in
+chain length.
+Rather high negative values of the thermodynamic parameters of
+these transformations indicate spontaneous comproportionation.
+The latter, in turn, points out that the system tends to the most
+uniform distribution of sulfur atoms between lithium polysul-
+fides upon their interaction, which can be considered as a jus-
+tification for the selection rules proposed above.
+It is natural to assume that the values of enthalpy and Gibbs free
+energy presented in Table 3 are characteristic of dilute solutions
+of standalone polysulfides stabilized by a bulk solvation shell.
+However, in concentrated solutions, which are more typical of
+feasible LSB, polysulfides can form self-associates. We studied the
+structure, as well as energy characteristics, of Li2Sn-Li2Sm asso-
+ciates in this regard. The formation and transformation thermo-
+dynamics of associates consisting of lithium polysulfides with the
+same and different chain lengths are presented below.
+3.2
+|
+Self-Association of Lithium Polysulfides
+We were guided by the geometry of standalone lithium polysul-
+fides when modeling their self-associates as presented in Figure 2
+(see also Table S11). Considered self-associates of lithium polysul-
+fides have two general structural features. (1) The lithium cations
+are grouped between two polysulfides in such a way that each
+one is ionically bonded to at least three of the nearest sulfur
+atoms (S*). The NBO point charges of lithium ions and the termi-
+nal sulfur atoms are approximately equal to +0.8 and −0.7 a.u.,
+respectively (see Table S11). At the same time, the IBSImean val-
+ues of Li-S* and S*-S* bond paths are calculated to be very small
+(0.03 and 0.02, respectively), far below the IBSI covalent domain
+(0.15 < IBSI < 4.00) for Sl-Li2S7-Li2S7-Sl (Figure 3) as an example.
+4 of 14
+International Journal of Quantum Chemistry, 2025
+ 1097461x, 2025, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.70113 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 5>>
+TABLE 3
+|
+Thermodynamic parameters (Δ𝐻˚
+298/Δ𝐺˚
+298, kJ⋅mol−1) of disproportionation and comproportionation reactions of Li2Sn (n = 1–8) estimated using PBE0/6-311 + G(d,p)-PCM + explicit (Sl) level
+of theorya.
+Li2S
+Li2S2
+Li2S3
+Li2S4
+Li2S5
+Li2S6
+Li2S7
+Li2S8
+Li2S
+—
+—
+Li2S2
+(−42.1/−39.8)
+Li2S2 + Li2S3
+(−40.4/−37.4)
+Li2S3
+(−69.0/−63.8)
+Li2S3 + Li2S4
+(−108.7/−105.7)
+Li2S4
+(−136.9/−132.0)
+Li2S4 + Li2S5
+(−151.3/−147.1)
+Li2S2
+—
+Li2S + Li2S3
+(42.1/39.8)
+—
+Li2S3 (1.7/2.4)
+Li2S3 + Li2S4
+(−28.6/−26.4)
+Li2S4
+(−68.3/−68.3)
+Li2S4 + Li2S5
+(−66.2/−65.9)
+Li2S5
+(−80.6/−80.9)
+Li2S3
+Li2S2
+(−42.1/−39.8)
+—
+Li2S2 + Li2S4
+(−1.7/−2.4)
+—
+Li2S4
+(−30.3/−28.8)
+Li2S4 + Li2S5
+(−39.7/−41.9)
+Li2S5
+(−37.6/−39.5)
+Li2S5 + Li2S6
+(−42.6/−41.4)
+Li2S4
+Li2S2 + Li2S3
+(−40.4/−37.4)
+Li2S3 (1.7/2.4)
+—
+Li2S3 + Li2S5
+(30.3/28.8)
+—
+Li2S5
+(−9.4/−13.1)
+Li2S5 + Li2S6
+(2.1/2.5)
+Li2S6 (−2.8/0.5)
+Li2S5
+Li2S3
+(−69.0/−63.8)
+Li2S3 + Li2S4
+(−28.6/−26.4)
+Li2S4
+(−30.3/−28.8)
+—
+Li2S4 + Li2S6
+(9.4/13.1)
+—
+Li2S6 (11.6/15.6)
+Li2S6 + Li2S7
+(−5.0/−1.9)
+Li2S6
+Li2S3 + Li2S4
+(−108.7/−105.7)
+Li2S4
+(−68.3/−68.3)
+Li2S4 + Li2S5
+(−39.7/−41.9)
+Li2S5
+(−9.4/−13.1)
+—
+Li2S5 + Li2S7
+(−11.6/−15.6)
+—
+Li2S7
+(−16.5/−17.5)
+Li2S7
+Li2S4
+(−136.9/−132.0)
+Li2S4 + Li2S5
+(−66.2/−65.9)
+Li2S5
+(−37.6/−39.5)
+Li2S5 + Li2S6
+(2.1/2.5)
+Li2S6
+(11.6/15.6)
+—
+Li2S6 + Li2S8
+(16.5/17.5)
+—
+Li2S8
+Li2S4 + Li2S5
+(−151.3/−147.1)
+Li2S5
+(−80.6/−80.9)
+Li2S5 + Li2S6
+(−42.6/−41.4)
+Li2S6 (−2.8/0.5)
+Li2S6 + Li2S7
+(−5.0/−1.9)
+Li2S7
+(−16.5/−17.5)
+—
+Li2S7 + S8
+(−36.7/−20.0)b
+Note: Bolded diagonal elements represent the energy characteristics of disproportionation reactions. Comproportionation reactions are represented by table elements in italics.
+aSl-Li2Sk-Sl + Sl-Li2Sl-Sl →Sl-Li2Sm-Sl + Sl-Li2Sn-Sl.
+b8Sl-Li2S8-Sl + Sl2 →8Sl-Li2S7-Sl + Sl-S8-Sl.
+5 of 14
+ 1097461x, 2025, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.70113 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 6>>
+FIGURE 3
+|
+Structure of Li2S7-Li2S7 optimized with PBE0/6–311 + G(d,p). The color shows the distribution of NBO point charges (a.u.). Symmetry
+was given in terms of Schönflies notation. Distances between atoms are given in Ångstroms.
+The mean Li–S* coordination distance lies in the range of approx-
+imately 2.3–2.6 Å. Thus, lithium cations may be considered as
+particles that moderately stabilize these formations. (2) The sul-
+fur chain, being of significant length (greater or equal to three
+sulfur atoms), retains, as in a standalone form, a partially closed
+moon-shaped structure.
+We tried to maintain a balance between the number of breaking
+and forming contacts between reaction participants when deriv-
+ing the chemical equation of self-association of lithium polysul-
+fides in sulfolane solution [59]:
+2Sl −Li2S𝑛−Sl + Sl −Li2S𝑚−Sl
+→Sl2 + Sl −Li2S𝑛−Li2S𝑚−Sl
+(2)
+The proposed approach allows us to sufficiently level out the
+basis set superposition error (BSSE). This is especially true in our
+case because there is a significant collectivization of atoms and,
+consequently, orbitals centered on them in the resulting struc-
+ture, which sufficiently complicates the isolation of the original
+fragments within the framework mainly used in BSSE estima-
+tion by the counterpoise correction technique [68, 69], as can
+be seen from Figure 3. Thus, we aimed to evaluate thermody-
+namics through the competition between the two interactions
+(Li2Sx →Sl and Li2Sx →Li2Sx). The abovementioned balance can-
+not be maintained in any way when accounting for the solvent
+exclusively at the continuum level of the theory in this connec-
+tion. The latter can lead, on the one hand, to an underestimation
+of the entropy of the complex relative to the initial reagents and,
+on the other hand, to an overestimation of its stability. Therefore,
+the interaction of two polysulfides was modeled to be accompa-
+nied by the expulsion of two sulfolane molecules when solva-
+tion is taken into account explicitly. Each of the remaining two
+sulfolane molecules is coordinated by the oxygens of the sulfone
+group to lithium cations, as shown in Figures 2 and 3.
+Figure 4 shows the change in the Gibbs free energy upon the
+association of lithium polysulfides with the same and different
+numbers of sulfur atoms, as well as the symmetry of the result-
+ing associate. As can be seen from Figure 4, there is a satisfactory
+correlation at the trend level (for n equal to 1–5 for the same
+and 1–3 for different lithium polysulfides, respectively) between
+the thermodynamic characteristics calculated using PCM only
+and PCM + explicit solvation models. However, the hybrid solva-
+tion model is characterized by a much narrower range of Δ𝐺˚
+298
+(from −70 to −50 kJ⋅mol−1) and generally more credible values.
+The association may be favorable in terms of Gibbs free energy
+change in the middle (for lithium octasulfide) and toward the
+end of the LSB discharge when low molecular weight compounds
+(lithium sulfide and disulfide) are present in the solution accord-
+ing to the presented results. Enthalpy changes, as well as values
+of PCM-based calculations, are collected in Tables S5 and S6.
+3.3
+|
+Disproportionation Reactions of Lithium
+Polysulfides as a Continuation of Self-Association
+Having combined the calculation results for associates formed
+from the same and different lithium polysulfides, we estimated
+the probability of disproportionation reactions that could pro-
+ceed in concentrated solutions, where polysulfide complexes are
+expected to be more stable. As can be seen from Figure 5 (see
+also Table S7), only Li2S5-Li2S5 is capable of disproportiona-
+tion within the hybrid (PCM + explicit) solvation model, whereas
+calculations performed using just the PCM approximation sup-
+port disproportionation for some other complexes (Li2S3-Li2S3,
+Li2S4-Li2S4, and Li2S7-Li2S7).
+6 of 14
+International Journal of Quantum Chemistry, 2025
+ 1097461x, 2025, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.70113 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 7>>
+FIGURE 4
+|
+Gibbs free energy changing during self-association of (a) the same and (b) different lithium polysulfides in sulfolane solution estimated
+in PBE0/6–311 + G(d,p) approximation: PCM (red line) and PCM + explicit (blue dotted line) solvation schemes. Symmetry was given for associates in
+terms of Schönflies notation.
+FIGURE 5
+|
+Gibbs free energy changing during disproportionation
+of lithium polysulfides as part of associates in sulfolane solution esti-
+mated in PBE0/6–311 + G(d,p) approximation: PCM (red line) and
+PCM + explicit (blue dotted line) solvation schemes. Symmetry was given
+for associates before and after transformation in terms of Schönflies
+notation.
+3.4
+|
+UV/Vis Absorption Spectra of Lithium
+Polysulfides and Their Self-Associates
+The potential for self-association of lithium polysulfides and
+changes in the oxidation state of polysulfide chains in their com-
+position complicate the analysis of the electrochemical trajec-
+tory somewhat and raise the urgent question of their identifi-
+cation using spectral methods, especially. We have modeled the
+electronic absorption spectra of Li2Sx in various forms using
+the TD-DFT methodology (TPSS/6–311 + G(d,p)), which have
+proved themselves well enough in calculations of allowed elec-
+tronic transitions of elemental sulfur and its associates in sul-
+folane solutions [59], to clarify this issue. Figure 6 shows the
+calculated (b) and experimental (a) (see “Methods” section)
+absorption spectra of lithium polysulfides. As can be seen from
+Figure 6, there is moderate agreement between the experimental
+and theoretical data at both the qualitative (correlation of spectral
+ranges, general shape of the spectra) and the quantitative (com-
+parable values of extinction coefficients (𝜀)) levels as a whole.
+Some data conflict may be caused not only by the imperfection of
+the quantum chemical approximation used in this study but also,
+obviously, by the more complex composition of the real polysul-
+fide solution.
+It was found (see Figures S2, S4, S5, S7, S9, S11, and S13 for
+details) that as the number of sulfur atoms increases, the differ-
+ence between the absorption spectra obtained within the scope
+of the two aforementioned solvation models decreases. Taking
+this fact into account, as well as the high computational time
+costs associated with calculating electronic transitions for explic-
+itly solvated associates of lithium polysulfides, we limited our-
+selves to covering the medium only at the continuum level of
+theory when modeling the UV/Vis absorption spectra. As can
+be seen from Figure 7, the process of association of polysulfides
+has little effect on electronic transitions (see Figures S17–S24):
+it does not influence the spectral range and slightly reduces the
+extinction coefficients. There is no obvious specificity in chang-
+ing the shape of the spectrum: smoothing (Li2Sn-Li2Sn, n = 1, 2,
+3, 5, 6, and 7) or a blue shift of the absorption maximum (n = 1,
+2, 6, and 8) is observed in some cases. It should also be noted
+that calculated UV/Vis absorption spectra of associates of lithium
+polysulfides (Figure 7a) and their products of disproportionation
+(Figure 7b) with an odd number (n) of sulfur atoms (Li2Sn-Li2Sn
+↔Li2Sn-1-Li2Sn + 1, n = 2–7) are characterized by nearly the same
+shape (see Figures S25–S30 for detailed comparison).
+4
+|
+Discussion
+4.1
+|
+Some Words About Applied Explicit
+and Implicit Solvation Models
+There are two key moments about the DCR of lithium polysul-
+fides. First, the course of the reactions will significantly depend
+on the thermodynamic stability of the reactant(s) and the prod-
+uct(s). Second, the efficiency of solute-solvate interaction is one
+of the main factors of stability. Taking these into consideration,
+7 of 14
+ 1097461x, 2025, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.70113 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 8>>
+FIGURE 6
+|
+(a) Experimental ([LiClO4] = 1.0 M, 303 K) and (b) DFT-modeled (TPSS/6–311 + G(d,p)//PBE0/6–311 + G(d,p), PCM + explicit solva-
+tion scheme) UV/Vis electronic absorption spectra of lithium polysulfides (Li2Sn, n = 1–8) in sulfolane solution.
+FIGURE 7
+|
+DFT-modeled UV/Vis-absorption spectra of (a) Li2Sn-Li2Sn (n = 2–8) and (b) Li2Sn-Li2Sn + 2 (n = 1–6) in sulfolane solution.
+TPSS/6–311 + G(d,p)//PBE0/6–311 + G(d,p), Sulfolane was only covered in PCM approximation.
+we applied two various solvation models based on dielectric con-
+tinuum theory (PCM) as well as the combination of PCM and
+explicit solvation scheme to cover the question of Li2Sn trans-
+formation. Both models show similar results on a qualitative
+level in general, but there are some differences. As may be seen
+from Table 3 as well as Tables S1–S4, the results obtained using
+PCM are characterized by a significantly wider range of val-
+ues compared to the more sophisticated model. PCM also tends
+to underestimate in absolute values the thermodynamic char-
+acteristics for comproportionation reactions, with some minor
+exceptions. It should also be noted that values of enthalpy and
+Gibbs free energy calculated using the PCM + explicit solvation
+model have a high correlation with experimental data, as was
+shown by the results presented in ref. [21]. At the same time,
+PCM-based calculations are less demanding of computational
+time costs, and they correlate well enough in terms of geometrical
+as well as UV/Vis-spectral characteristics at a qualitative level.
+In this connection, we analyzed the thermodynamics of DCR of
+lithium polysulfides estimated using the more précised solvation
+model, whereas disproportionation reactions of self-associates
+were examined using both ones because the composition of
+the complex before and after the reaction remains unchanged
+and, thus, the influence of the solvation shell is formally less
+significant.
+4.2
+|
+The Mechanistic Panorama
+of Disproportionation and Comproportionation
+Reactions of Lithium Polysulfides
+All the interactions presented in Table 3 and Tables S1–S4 may
+be divided into several types. The first type is DCRs reactions
+8 of 14
+International Journal of Quantum Chemistry, 2025
+ 1097461x, 2025, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.70113 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 9>>
+in the traditional sense: the lithium polysulfides involved in the
+transformations differ exactly by two sulfur atoms (Figure 8a).
+As may be seen from the figure, the inclusion of reactions in
+the general scheme practically does not enrich the basic set of
+lithium polysulfides (Li2S8, Li2S4, Li2S2, Li2S) introducing only
+Li2S3. It should be noted that the Gibbs free energy change
+is practically equal to zero for the reversible reaction Li2S3 ↔
+Li2S2 + Li2S4, so the direction of the reaction will depend on
+the excess of certain components. Thus, this type is charac-
+terized by comproportionation reactions in general. As may be
+seen from Figure 5, self-association observed for concentrated
+solutions of lithium polysulfides in sulfolane only enhances
+the role of comproportionation reactions, that is, the system of
+lithium polysulfides with different sulfur chain lengths in sul-
+folane solution tends to an even distribution of sulfur atoms
+between components. The only exception mentioned above is the
+disproportionation of Li2S5. It is noteworthy that the entropy fac-
+tor (see Table S7 and symmetry change in Figure 5) does not have
+a significant effect on the equilibrium thermodynamic quantities.
+The second type is presented only by comproportionation reac-
+tions proceeding between lithium polysulfides differing by three
+sulfur atoms (Figure 8b). Having taken into account the mate-
+rial balance and the trivial stoichiometric ratios of the compo-
+nents, one can expect the formation of two lithium polysulfides
+differing by one sulfur atom in this type of reaction. The genera-
+tion of Li2S3 is also possible in the course of these reactions. The
+third type of reaction (Figure 8c) reflects the interaction between
+lithium polysulfides differing by four sulfur atoms and is also rep-
+resented exclusively by comproportionation. They are the most
+interesting, in our opinion, since they provide the generation of
+Li2S6, a form of polysulfide that determines the variability of LSB.
+Indeed, the resulting Li2S6 may undergo symmetrical fragmen-
+tation upon reduction and, thus, lead to the formation of Li2S3
+or a combination of Li2S7 and Li2S5 according to disproportion-
+ation of type (a). Intensive generation of lithium hexasulfide is
+most likely possible at the initial and middle steps of the LSB dis-
+charge since the reaction Li2S8 + Li2S4 ↔Li2S6 is characterized
+by Δ𝐺˚
+298≈0 kJ⋅mol−1.
+It is important to note that interactions between lithium poly-
+sulfides strongly varying in the number of sulfur atoms can be
+allowed in addition to the types of reactions listed above. More-
+over, such interactions appear to be very beneficial in terms of
+thermodynamic parameters (see Table 3). However, the probabil-
+ity of their occurrence will be low enough if we assume that just
+one form of lithium polysulfide dominates in the LSB and the rest
+are in solution in minor quantities at any time, and the greater the
+difference in the sulfur chain length of interacting polysulfides,
+the lower the concentration of one of them.
+Figure 9 below includes a simplified scheme that combines both
+electrochemical (accompanied by LSB discharge) and nonelec-
+trochemical (accompanied by the redistribution of sulfur atoms
+between lithium polysulfides) transformations. The reduction
+potentials of lithium polysulfides (Data of S8 and Li2Sn (n = 1, 2, 4,
+and 8) reduction potentials were taken from ref. [21]) correlated
+with the experimental discharge curve (Figure 9) were estimated
+using the thermodynamic parameters of their self-association.
+Detailed data on the Li2Sn reduction reactions were presented in
+Table S8.
+FIGURE 8
+|
+The graphical representation of the most thermodynam-
+ically preferable disproportionation and comproportionation reactions of
+lithium polysulfides proceeding between (a) Li2Sn / Li2Sn + 2, (b) Li2Sn /
+Li2Sn + 3, and (c) Li2Sn / Li2Sn + 4. Lithium polysulfides being inaccessi-
+ble under the allocated type of transformation are denoted by gray. Data
+were obtained using PBE0/6–311 + G(d,p)-PCM + explicit level of theory.
+Sulfur reduction is denoted by bold arrows. Lithium polysulfides being
+introduced into LSB by proper type of transformation were marked with
+square brackets. Solvent is sulfolane.
+FIGURE 9
+|
+Schematic representation of the main electrochemical
+(black), disproportionation (blue), and comproportionation (red) reac-
+tions and correlation between experimental (Open circuit voltage [dashed
+line] and discharge curve [solid line] of a lithium sulfur cell) and calcu-
+lated (gray and white diamonds) data set. PBE0/6–311 + G(d,p) approxi-
+mation. Blue and red arrows are dis- and comproportionation reactions,
+respectively.
+We tried to distribute the values of the reduction potentials of
+each of the lithium polysulfides in such a way that the calcu-
+lated data corresponded to the experiment on a quantitative level
+as well. We also kept in mind upon comparative analysis that
+only standard electrode potentials were estimated using the DFT
+technique, and, consequently, a deviation between experimental
+(namely, full-cell reaction potential) and calculated data may be
+high enough, especially at the final part of the discharge curve.
+According to Figure 9, Li2S6 and Li2S3 act as “electrochemical
+9 of 14
+ 1097461x, 2025, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.70113 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 10>>
+buffers,” providing smooth changing of amounts of base forms
+(Li2S8, Li2S4, and Li2S2) in LSB and, thus, resulting in a relatively
+constant potential at the low-voltage part (from 400 to 1200 mAh)
+of the Li-S battery discharge curve. The voltage plateaus found
+upon LSB discharge under low current density conditions [70,
+71] indirectly confirm the presence of several particles with such
+accumulating functions. It should be noted that the scheme
+(Figure 9) proposed as the main mechanism for sulfur reduction
+does not exclude the formation of Li2S5 / Li2S7, and these poly-
+sulfides may additionally contribute to smoothing the potential
+in accordance with the scheme (a) of Figure 8.
+4.3
+|
+UV/Vis-Spectral Properties of Lithium
+Polysulfides
+Localization of the most thermodynamically acceptable nonelec-
+trochemical (DCR) reactions has made it easier to analyze elec-
+tronic UV/Vis-absorption spectra of the whole experimental set
+of lithium polysulfides obtained by dissolving lithium sulfide and
+elemental sulfur in sulfolane solution. The experimental spectra
+(Figure 6) are characterized by several features: (1) the absorp-
+tion region is localized in the range of 20 000–50 000 cm−1 for
+the entire set of experimental molar Li2S/S8 ratios (Table 1);
+(2) a marked blue shift of the main absorption maximum
+(̃ 47 000 cm−1) is observed with a decrease in the initial mole frac-
+tion of elemental sulfur; (3) a change in Li2S/S8 ratio is accompa-
+nied by a smooth change in the shape of the absorption spectrum.
+Assuming, based on the aforementioned observed patterns, that
+the recorded electronic UV/Vis absorption spectra (Figure 6) are
+a superposition of the standalone ones and that one set of lithium
+polysulfides can be transformed into another in conformity with
+the Gibbs free energy of the components, we varied the parame-
+ters in full alignment with the strict stoichiometric relationships
+between lithium sulfide and elemental sulfur in sulfolane solu-
+tion determined by the experimental conditions (see Table 1), as
+represented, for instance, by the following balanced reaction:
+pLi2𝑆+ 7
+8pS8 ⇄(1 −𝑝)
+(
+𝑚
+(
+𝑛Li2𝑆8 + 1 −𝑛
+2
+Li2𝑆8 −Li2𝑆8
+)
++(1 −𝑚)
+(1
+8𝑆8 + Li2𝑆7
+))
+(3)
+where p, m, and n are fitting parameters ranging from 0 to 1 and
+reflecting equilibria between reactants and products of the gen-
+eral reaction, lithium polysulfide and resulting products of its
+disproportionation, as well as the expected form of lithium poly-
+sulfide and its associate, respectively. Thus, the expected lithium
+polysulfides, their associates, as well as polysulfides with nearly
+the same chain length in their most thermodynamically favor-
+able form were included in the reversible reactions to simplify the
+search procedure reasonably and, along with that, avoid excessive
+flexibility of the system of fitting parameters. The reversible reac-
+tions describing the formation of lithium polysulfides from ele-
+mental sulfur and lithium sulfide in sulfolane solution are given
+in the Supporting Information Equations (S1–S8).
+There are two main spectral trends revealed when analyzing
+Figure 10 that must be noted. (1) With a decrease in the molar
+fraction of the dissolved sulfur sample in the sulfolane solution
+(see Table 1), that is, with a decrease in the chain length of
+the expected lithium polysulfide, an increase in the contribution
+to the UV/Vis-spectral composition of its associate is observed.
+The effect is qualitatively consistent with the results of the
+DFT calculation of the change in the Gibbs free energy of the
+self-association presented in Figure 4a. (2) The smaller the mass
+of the dissolved sulfur sample, the less sulfur reacts with lithium
+sulfide and, thus, sulfur being in the free (elemental) state makes
+a greater contribution to the electronic UV absorption spectrum.
+This counterintuitive conclusion may be due to the general sol-
+ubility of S8 in sulfolane solution. Thus, the majority of initial
+reactants do not turn into polysulfides at a lower concentration
+of sulfur because this is more favorable from a thermodynamic
+point of view.
+This can be qualitatively estimated from the reactions below,
+compiled based on the absolute thermodynamic characteristics
+from Table S9 (Δ𝐻˚
+298/Δ𝐺˚
+298 kJ⋅mol−1, PBE0/6–311 + G(d,p)):
+Sl −Li2S −Sl + 7∕8Sl −S8 −Sl
+→Sl −Li2S8 −Sl + 7∕8Sl2,
+(−176.6∕−183.5)
+(4)
+Sl −Li2S −Sl + 3∕4Sl −S8 −Sl
+→Sl −Li2S7 −Sl + 3∕4Sl2,
+(−181.2∕−186.0)
+(5)
+Sl −Li2S −Sl + 5∕8Sl −S8 −Sl
+→Sl −Li2S6 −Sl + 5∕8Sl2,
+(−169.3∕−171.0)
+(6)
+Sl −Li2S −Sl + 1∕2Sl −S8 −Sl
+→Sl −Li2S5 −Sl + 1∕2Sl2,
+(−168.9∕−171.6)
+(7)
+Sl −Li2S −Sl + 3∕8Sl −S8 −Sl
+→Sl −Li2S4 −Sl + 3∕8Sl2,
+(−159.0∕−159.0)
+(8)
+Sl −Li2S −Sl + 1∕4Sl −S8 −Sl
+→Sl −Li2S3 −Sl + 1∕4Sl2,
+(−118.9∕−117.7)
+(9)
+Sl −Li2S −Sl + 1∕8Sl −S8 −Sl
+→Sl −Li2S2 −Sl + 1∕8Sl2,
+(−80.5∕−78.7)
+(10)
+In this case, the changes in enthalpy and Gibbs free energy
+were assessed using the hybrid solvation model (PCM + explicit)
+detailed in refs [21, 59] to follow that two solvent molecules were
+taken into account in the nearest environment of the solute, as
+it was presented in Figure 2 and Table S11. As can be seen from
+reactions (4–10), the formation of short-chain lithium polysul-
+fides is characterized by slightly higher values of the change in
+Gibbs free energy, which fits into the proposed explanation at a
+qualitative level, as well as the results of some recent experiments
+indicating lower solubility of expected short-chain lithium poly-
+sulfides in contrast to long-chain ones.
+4.4
+|
+Possible Role of Monoanionic Forms
+of Lithium Polysulfides in the Formation
+of UV/Vis Absorption Spectra
+In this work, we did not consider the monoanionic forms of
+lithium polysulfides (LiSn
+−) in sulfolane solution, although their
+presence should be deemed quite probable following one of the
+recent theoretical works [72]. There are three reasons for this.
+10 of 14
+International Journal of Quantum Chemistry, 2025
+ 1097461x, 2025, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.70113 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 11>>
+FIGURE 10
+|
+Comparison of experimental electronic UV/Vis-absorption spectra (Figure 6a) and calculated (black dash-dotted line,
+TPSS/6–311 + G(d,p)), Figures 7a and 8 composite ones fitted according to the found mole fractions (see also Equations S1–S8). Lithium polysulfides
+expected on the base of experimental stoichiometry: (a) Li2S8; (b) Li2S7; (c) Li2S6; (d) Li2S5; (e) Li2S4; (f) Li2S3; (g) Li2S2.
+(1) The analyzed experimental solutions (Table 1) contained
+lithium perchlorate salt to be as close as possible to the compo-
+sition of LSB, which should have reduced the potential for the
+formation of monoanionic forms due to an excess of appropriate
+cations. (2) As can be seen from Figures S3, S6, S8, S10, S12, S14,
+and S16, the spectra of monoanionic forms of lithium polysulfides
+somewhat differ from the spectra of undissociated ones. (3) The
+dissociation of lithium polysulfides in sulfolane solution, in terms
+of Gibbs free energy change, is not a spontaneous process under
+standard conditions. Indeed, changes in enthalpy and Gibbs free
+energy are in the range from 210 to 160 kJ⋅mol−1 (PCM + explicit
+solvation model, PBE0/6–311 + G(d,p)) for the dissociation of
+11 of 14
+ 1097461x, 2025, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.70113 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 12>>
+lithium polysulfides (see Table S9), that is, the affinity of the
+lithium cation for the monoanions is naturally higher than for
+neutral solvent (sulfolane) molecules.
+Based on the results of spectral identification of lithium polysul-
+fides with different chain lengths, one can conclude that elec-
+tronic UV/Vis spectroscopy, in our opinion, can be applied to
+the analysis of solutions of lithium polysulfides with great cau-
+tion due to (1) the pronounced compositional nature of the spec-
+trum; (2) nearly the same localization area of the electronic
+UV/Vis-absorption spectra of all the potential participants of
+the electrochemical process; (3) the complicated competition of
+solvation processes and the formation of lithium polysulfides
+and their associates as a consequence of nonelectrochemical
+transformations.
+5
+|
+Conclusion
+One of the pressing issues in the functioning of LSBs is the non-
+trivial shape of the discharge curve correlating weakly with the
+results of calculations of thermodynamic parameters obtained
+using different quantum chemical approximations. In this work,
+various DCRs reactions were examined in detail to gain insight
+into the situation. On the one hand, these reactions are not
+accompanied by lithium oxidation; on the other hand, they sig-
+nificantly affect the redistribution of lithium polysulfide forms
+in solution and, thus, are capable of substantially influencing
+the “momentary” potential of the system. A set of DCR (non-
+electrochemical transformations) was localized using the DFT
+method and a hybrid solvation model that takes into account
+the solvent at both the continuum (PCM) and explicit levels
+of theory. The most important of them are reactions involving
+lithium hexa- and tri-sulfides. These compounds have a feature
+to act as “buffers,” providing a relatively constant potential in the
+range from 400 to 1000 mAh. The latter reasonably agrees with
+the results of experimental studies [70, 71]. The calculated ther-
+modynamic data, together with the experimental and electronic
+UV/Vis absorption spectra modeled in approximation of TD-DFT
+(TPSS/6–311 + G(d,p)) made it possible to form a complete pic-
+ture under which (1) self-association of lithium polysulfides in
+sulfolane solution is relevant mainly for short-chain ones; (2)
+there is a dynamic equilibrium between different forms of lithium
+polysulfides, and thus, the solution is usually multicomponent.
+The latter is indicated by a smooth change in the shape of the
+absorption spectrum when varying the ratio of soluble lithium
+sulfide and elemental sulfur as well as a moderate correlation of
+experimental and calculated electronic UV/Vis absorption spec-
+tra. In our opinion, the results obtained in this work can signifi-
+cantly simplify the analysis of the sulfur reduction process occur-
+ring in LSB, clarifying the range of the most important electro-
+chemical trajectories of sulfur reduction, as well as better under-
+standing the limits of applicability and the possibilities of UV/Vis
+spectral methodology concerning the studied system.
+Author Contributions
+Mikhail Yur’evich Ovchinnikov: conceptualization, formal analysis,
+writing – original draft, investigation, methodology, visualization. Elena
+Vladimirovna Kuzmina: validation. Elena Vladimirovna Karaseva:
+validation. Meng Zhao: data curation. Qiang Zhang: data curation.
+Bo-Quan Li: data curation. Sergey Leonidovich Khursan: data cura-
+tion, project administration. Vladimir Sergeevich Kolosnitsyn: data
+curation, project administration, funding acquisition.
+Acknowledgments
+The quantum chemical calculation was performed on the equipment of
+the Multiaccess Center “Chemistry” of the Ufa Institute of Chemistry
+and Multiaccess Center “Agidel,” Ufa Federal Research Center, Russian
+Academy of Sciences.
+Conflicts of Interest
+The authors declare no conflicts of interest.
+Data Availability Statement
+The data that support the findings of this study are available from the
+corresponding author upon reasonable request.
+References
+1. Y. Yang, G. Zheng, and Y. Cui, “Nanostructured Sulfur Cathodes,”
+Chemical Society Reviews 42, no. 7 (2013): 3018.
+2. X. Hong, J. Mei, L. Wen, et al., “Nonlithium Metal–Sulfur Batteries:
+Steps Toward a Leap,” Advanced Materials 31, no. 5 (2019): 1802822.
+3. L. Peng, Z. Wei, C. Wan, et al., “A Fundamental Look at Electrocatalytic
+Sulfur Reduction Reaction,” Nature Catalysis 3, no. 9 (2020): 762–770.
+4. X. Yu and A. Manthiram, “A Progress Report on Metal–Sulfur Batter-
+ies,” Advanced Functional Materials 30, no. 39 (2020): 2004084.
+5. Y. Zhao, D. Wang, X. Li, et al., “Initiating a Reversible Aqueous
+Zn/Sulfur Battery Through a “Liquid Film”,” Advanced Materials 32, no.
+32 (2020): 2003070.
+6. C. Zhao, G.-L. Xu, Z. Yu, et al., “A High-Energy and Long-Cycling
+Lithium–Sulfur Pouch Cell via a Macroporous Catalytic Cathode With
+Double-End Binding Sites,” Nature Nanotechnology 16, no. 2 (2021):
+166–173.
+7. R. Dominko, R. Demir-Cakan, M. Morcrette, and J.-M. Tarascon, “An-
+alytical Detection of Soluble Polysulphides in a Modified Swagelok Cell,”
+Electrochemistry Communications 13, no. 2 (2011): 117–120.
+8. Y. Diao, K. Xie, S. Xiong, and X. Hong, “Analysis of Polysulfide Dis-
+solved in Electrolyte in Discharge-Charge Process of Li-S Battery,” Jour-
+nal of the Electrochemical Society 159, no. 4 (2012): A421–A425.
+9. M. Hagen, P. Schiffels, M. Hammer, et al., “In-Situ Raman Investiga-
+tion of Polysulfide Formation in Li-S Cells,” Journal of the Electrochemical
+Society 160, no. 8 (2013): A1205–A1214.
+10. M. J. Lacey, K. Edström, and D. Brandell, “Analysis of Soluble Inter-
+mediates in the Lithium–Sulfur Battery by a Simple in Situ Electrochem-
+ical Probe,” Electrochemistry Communications 46 (2014): 91–93.
+11. P. P. R. M. L. Harks, C. B. Robledo, T. W. Verhallen, P. H. L. Notten,
+and F. M. Mulder, “The Significance of Elemental Sulfur Dissolution in
+Liquid Electrolyte Lithium Sulfur Batteries,” Advanced Energy Materials
+7, no. 3 (2017): 1601635.
+12. C. Shen, J. Xie, M. Zhang, et al., “Understanding the Role of Lithium
+Polysulfide Solubility in Limiting Lithium-Sulfur Cell Capacity,” Elec-
+trochimica Acta 248 (2017): 90–97.
+13. P. Zhang, X. Li, Y. Hua, J. Yu, and Y. Ding, “Enhanced Performance
+and Anchoring Polysulfide Mechanism of Carbon Aerogel/Sulfur Mate-
+rial With Cr Doping and Pore Tuning for Li-S Batteries,” Electrochimica
+Acta 282 (2018): 499–509.
+12 of 14
+International Journal of Quantum Chemistry, 2025
+ 1097461x, 2025, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.70113 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 13>>
+14. H. Shin, M. Baek, A. Gupta, K. Char, A. Manthiram, and J. W. Choi,
+“Recent Progress in High Donor Electrolytes for Lithium–Sulfur Batter-
+ies,” Advanced Energy Materials 10, no. 27 (2020): 2001456.
+15. N. Angulakshmi, R. B. Dhanalakshmi, S. Sathya, J.-H. Ahn, and A. M.
+Stephan, “Understanding the Electrolytes of Lithium−Sulfur Batteries,”
+Batteries & Supercaps 4, no. 7 (2021): 1064–1095.
+16. U. Tilstam, “Sulfolane: A Versatile Dipolar Aprotic Solvent,” Organic
+Process Research and Development 16, no. 7 (2012): 1273–1278.
+17. L. V. Sheina, E. V. Kuz’mina, E. V. Karaseva, A. G. Gallyamov, T. R.
+Prosochkina, and V. S. Kolosnitsyn, “Thermochemical and Electrochem-
+ical Stability of Electrolyte Systems based on Sulfolane,” Russian Journal
+of Applied Chemistry 91, no. 9 (2018): 1427.
+18. E. Clark, Kirk-Othmer Encyclopedia of Chemical Technology (Wiley,
+2000).
+19. A. Bak, V. Kozik, P. Dybal, S. Kus, A. Swietlicka, and J. Jampilek,
+“Sulfolane: Magic Extractor or Bad Actor? Pilot-Scale Study on Solvent
+Corrosion Potential,” Sustainability 10, no. 10 (2018): 3677.
+20. D. V. Kolosnitsyn, E. V. Karaseva, E. V. Kuz’mina, and V. S.
+Kolosnitsyn, “About the Possibility of Simulation the Discharge Charac-
+teristics of Lithium-Sulfur Batteries Using Fuzzi Neural Networks,” Rus-
+sian Journal of Electrochemistry 57, no. 3 (2021): 306.
+21. M. Yu. Ovchinnikov, E. V. Kuzmina, E. V. Karaseva, S. L. Khursan,
+and V. S. Kolosnitsyn, “Density Functional Theory Model of Li–S Electro-
+chemical System With Explicit Solvation of Lithium Polysulfides by Sul-
+folane,” International Journal of Quantum Chemistry 122, no. 22 (2022):
+e26985.
+22. E. V. Karaseva, E. V. Kuzmina, D. V. Kolosnitsyn, N. V. Shakirova, L. V.
+Sheina, and V. S. Kolosnitsyn, “The Mechanism of Effect of Support Salt
+Concentration in Electrolyte on Performance of Lithium-Sulfur Cells,”
+Electrochimica Acta 296 (2019): 1102–1114.
+23. L. Wang, T. Zhang, S. Yang, F. Cheng, J. Liang, and J. Chen, “A
+Quantum-Chemical Study on the Discharge Reaction Mechanism of
+Lithium-Sulfur Batteries,” Journal of Energy Chemistry 22, no. 1 (2013):
+72–77.
+24. V. S. Kolosnitsyn, E. V. Karaseva, N. A. Amineva, and G. A. Batyrshina,
+“Cycling Lithium–Sulfur Batteries,” Russian Journal of Electrochemistry
+38, no. 3 (2002): 329–331.
+25. V. S. Kolosnitsyn, E. V. Karaseva, D. Y. Seung, and M. D. Cho, “Cycling
+a Sulfur Electrode in Mixed Electrolytes Based on Sulfolane: Effect of
+Ethers,” Russian Journal of Electrochemistry 38, no. 12 (2002): 1314–1318.
+26. V. S. Kolosnitsyn, E. V. Karaseva, N. V. Shakirova, D. Y. Seung, and
+M. D. Cho, “Cycling a Sulfur Electrode in Electrolytes Based on Sulfolane
+and Linear Ethers (Glymes) in an LiCF3SO3 Solution,” Russian Journal
+of Electrochemistry 38, no. 12 (2002): 1360–1363.
+27. V. S. Kolosnitsyn, E. V. Karaseva, D. Y. Seung, and M. D. Cho, “Cy-
+cling a Sulfur Electrode: Effect of Physicochemical Properties of Elec-
+trolyte Systems,” Russian Journal of Electrochemistry 39, no. 10 (2003):
+1089–1093.
+28. G. Bieker, J. Wellmann, M. Kolek, K. Jalkanen, M. Winter, and
+P. Bieker, “Influence of Cations in Lithium and Magnesium Polysulphide
+Solutions: Dependence of the Solvent Chemistry,” Physical Chemistry
+Chemical Physics 19, no. 18 (2017): 11152–11162.
+29. Q. He, A. T. S. Freiberg, M. U. M. Patel, S. Qian, and H. A. Gasteiger,
+“Operando Identification of Liquid Intermediates in Lithium–Sulfur Bat-
+teries via Transmission UV–Vis Spectroscopy,” Journal of the Electro-
+chemical Society 167, no. 8 (2020): 80508.
+30. S. Lee, K. Sim, J. Kwon, D. Seok, and K. Eom, “Unraveling the Effect of
+Disproportionation of Lithium Polysulfides on the Electrochemical Reac-
+tion and S Utilization in Lithium-Sulfur Battery,” Electrochimica Acta 412
+(2022): 140092.
+31. G. Li, S. Wang, Y. Zhang, M. Li, Z. Chen, and J. Lu, “Revisiting the Role
+of Polysulfides in Lithium–Sulfur Batteries,” Advanced Materials 30, no.
+22 (2018): 1705590.
+32. M. U. M. Patel and R. Dominko, “Application of in Operando
+UV/Vis Spectroscopy in Lithium–Sulfur Batteries,” ChemSusChem 7, no.
+8 (2014): 2167–2175.
+33. R. Steudel and T. Chivers, “The Role of Polysulfide Dianions and Rad-
+ical Anions in the Chemical, Physical and Biological Sciences, Includ-
+ing Sulfur-Based Batteries,” Chemical Society Reviews 48, no. 12 (2019):
+3279–3319.
+34. M. Vijayakumar, N. Govind, E. Walter, et al., “Molecular Structure
+and Stability of Dissolved Lithium Polysulfide Species,” Physical Chem-
+istry Chemical Physics 16, no. 22 (2014): 10923–10932.
+35. K. H. Wujcik, D. R. Wang, A. Raghunathan, et al., “Lithium Polysul-
+fide Radical Anions in Ether-Based Solvents,” Journal of Physical Chem-
+istry C 120, no. 33 (2016): 18403–18410.
+36. M. Zhao, B.-Q. Li, X. Chen, J. Xie, H. Yuan, and J.-Q. Huang, “Redox
+Comediation With Organopolysulfides in Working Lithium-Sulfur Bat-
+teries,” Chem 6, no. 12 (2020): 3297–3311.
+37. M. J. Frisch, G. W. Trucks, H. B. Schlegel, et al., “Gaussian 09,” Revi-
+sion C.01; Gaussian, Inc.: Wallingfort, CT, 2009.
+38. “Chemcraft 1.8 build 595b,” http://www.chemcraftprog.com.
+39. A. E. Reed and F. Weinhold, “Natural Bond Orbital Analysis of
+Near-Hartree–Fock Water Dimer,” Journal of Chemical Physics 78, no. 6
+(1983): 4066–4073.
+40. A. E. Reed and F. Weinhold, “Natural Localized Molecular Orbitals,”
+Journal of Chemical Physics 83, no. 4 (1985): 1736–1740.
+41. A. E. Reed, R. B. Weinstock, and F. Weinhold, “Natural Population
+Analysis,” Journal of Chemical Physics 83, no. 2 (1985): 735–746.
+42. J. E. Carpenter and F. Weinhold, “Analysis of the Geometry of the
+Hydroxymethyl Radical by the “Different Hybrids for Different Spins”
+Natural Bond Orbital Procedure,” THEOCHEM Journal of Molecular
+Structure 169 (1988): 41–62.
+43. J. P. Foster and F. Weinhold, “Natural Hybrid Orbitals,” Journal of the
+American Chemical Society 102, no. 24 (1980): 7211–7218.
+44. C. Adamo and V. Barone, “Toward Reliable Density Functional Meth-
+ods Without Adjustable Parameters: The PBE0 Model,” Journal of Chem-
+ical Physics 110, no. 13 (1999): 6158–6170.
+45. M.
+Ernzerhof
+and
+G.
+E.
+Scuseria,
+“Assessment
+of
+the
+Perdew–Burke–Ernzerhof Exchange-Correlation Functional,” Journal
+of Chemical Physics 110, no. 11 (1999): 5029–5036.
+46. R. Krishnan, J. S. Binkley, R. Seeger, and J. A. Pople, “Self-Consistent
+Molecular Orbital Methods. XX. A Basis Set for Correlated Wave Func-
+tions,” Journal of Chemical Physics 72, no. 1 (1980): 650–654.
+47. J. A. Montgomery, M. J. Frisch, J. W. Ochterski, and G. A. Petersson,
+“A Complete Basis Set Model Chemistry. VI. Use of Density Functional
+Geometries and Frequencies,” Journal of Chemical Physics 110, no. 6
+(1999): 2822–2827.
+48. A. D. Boese, “Density Functional Theory and Hydrogen Bonds: Are
+we There Yet?,” ChemPhysChem 16, no. 5 (2015): 978–985.
+49. V. I. Lebedev and L. Skorokhodov, “Quadrature Formulas of Orders
+41, 47 and 53 for the Sphere,” Russian Academy of Sciences Doklady. Math-
+ematics 45 (1992): 587.
+50. R. Bauernschmitt and R. Ahlrichs, “Stability Analysis for Solutions of
+the Closed Shell Kohn–Sham Equation,” Journal of Chemical Physics 104,
+no. 22 (1996): 9047–9052.
+51. R. Seeger and J. A. Pople, “Self-Consistent Molecular Orbital Meth-
+ods. XVIII. Constraints and Stability in Hartree–Fock Theory,” Journal
+of Chemical Physics 66, no. 7 (1977): 3045–3050.
+13 of 14
+ 1097461x, 2025, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.70113 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 14>>
+52. K. C. Wasalathilake, M. Roknuzzaman, K. Ostrikov, G. A. Ayoko,
+and C. Yan, “Interaction Between Functionalized Graphene and Sulfur
+Compounds in a Lithium–Sulfur Battery—A Density Functional Theory
+Investigation,” RSC Advances 8, no. 5 (2018): 2271–2279.
+53. Z. Ji, B. Han, Q. Li, et al., “Anchoring Lithium Polysulfides via Affini-
+tive Interactions: Electrostatic Attraction, Hydrogen Bonding, or in Par-
+allel?,” Journal of Physical Chemistry C 119, no. 35 (2015): 20495–20502.
+54. B. Wang, S. M. Alhassan, and S. T. Pantelides, “Formation of Large
+Polysulfide Complexes During the Lithium-Sulfur Battery Discharge,”
+Physical Review Applied 2, no. 3 (2014): 034004.
+55. J. Tomasi, B. Mennucci, and R. Cammi, “Quantum Mechanical
+Continuum Solvation Models,” Chemical Reviews 105, no. 8 (2005):
+2999–3094.
+56. R. A. Pierotti, “A Scaled Particle Theory of Aqueous and Nonaqueous
+Solutions,” Chemical Reviews 76, no. 6 (1976): 717–726.
+57. J. Klein, H. Khartabil, J.-C. Boisson, J. Contreras-García, J.-P.
+Piquemal, and E. Hénon, “New Way for Probing Bond Strength,” Journal
+of Physical Chemistry. A 124, no. 9 (2020): 1850–1860.
+58. T. Lu and F. Chen, “Multiwfn: A Multifunctional Wavefunction Ana-
+lyzer,” Journal of Computational Chemistry 33, no. 5 (2012): 580–592.
+59. M. Yu. Ovchinnikov, E. V. Kuzmina, E. V. Karaseva, S. L. Khursan,
+and V. S. Kolosnitsyn, “DFT Model of Elemental Sulfur in Sulfolane Solu-
+tions,” Journal of Physical Chemistry. A 127, no. 43 (2023): 8971–8984.
+60. R. Bauernschmitt and R. Ahlrichs, “Treatment of Electronic Excita-
+tions within the Adiabatic Approximation of Time Dependent Density
+Functional Theory,” Chemical Physics Letters 256, no. 4 (1996): 454.
+61. M. E. Casida, C. Jamorski, K. C. Casida, and D. R. Salahub,
+“Molecular Excitation Energies to High-Lying Bound States From
+Time-Dependent Density-Functional Response Theory:
+Characteriza-
+tion and Correction of the Time-Dependent Local Density Approximation
+Ionization Threshold,” Journal of Chemical Physics 108, no. 11 (1998):
+4439–4449.
+62. R. E. Stratmann, G. E. Scuseria, and M. J. Frisch, “An Efficient Imple-
+mentation of Time-Dependent Density-Functional Theory for the Calcu-
+lation of Excitation Energies of Large Molecules,” Journal of Chemical
+Physics 109, no. 19 (1998): 8218–8224.
+63. C. Van Caillie and R. D. Amos, “Geometric Derivatives of Excitation
+Energies Using SCF and DFT,” Chemical Physics Letters 308, no. 3 (1999):
+249–255.
+64. C. Van Caillie and R. D. Amos, “Geometric Derivatives of Density
+Functional Theory Excitation Energies Using Gradient-Corrected Func-
+tionals,” Chemical Physics Letters 317, no. 1 (2000): 159–164.
+65. F. Furche and R. Ahlrichs, “Adiabatic Time-Dependent Density Func-
+tional Methods for Excited State Properties,” Journal of Chemical Physics
+117, no. 16 (2002): 7433–7447.
+66. G. Scalmani, M. J. Frisch, B. Mennucci, J. Tomasi, R. Cammi, and
+V. Barone, “Geometries and Properties of Excited States in the Gas Phase
+and in Solution: Theory and Application of a Time-Dependent Density
+Functional Theory Polarizable Continuum Model,” Journal of Chemical
+Physics 124, no. 9 (2006): 094107.
+67. J. Tao, J. P. Perdew, V. N. Staroverov, and G. E. Scuseria, “Climbing
+the Density Functional Ladder: Nonempirical Meta–Generalized Gradi-
+ent Approximation Designed for Molecules and Solids,” Physical Review
+Letters 91, no. 14 (2003): 146401.
+68. S. F. Boys and F. Bernardi, “The Calculation of Small Molecular Inter-
+actions by the Differences of Separate Total Energies. Some Procedures
+With Reduced Errors,” Molecular Physics 19, no. 4 (1970): 553–566.
+69. S. Simon, M. Duran, and J. J. Dannenberg, “How Does Basis Set
+Superposition Error Change the Potential Surfaces for Hydrogen-Bonded
+Dimers?,” Journal of Chemical Physics 105, no. 24 (1996): 11024–11031.
+70. V. S. Kolosnitsyn, E. V. Kuzmina, and E. V. Karaseva, “An Inves-
+tigation of the Mechanism of Electrochemical Reduction of Sulfur in
+Lithium-Sulfur Cells,” ECS Meeting Abstracts MA2010-03, no. 1 (2010):
+706.
+71. V. S. Kolosnitsyn, E. V. Kuzmina, and E. V. Karaseva, “The Mechanism
+of Electrochemical Reduction of Lithium Polysulfides in Lithium-Sulfur
+Cells,” ECS Meeting Abstracts MA2010-03, no. 1 (2010): 708.
+72. S. Tsuzuki, T. Kaneko, K. Sodeyama, et al., “Thermodynamic Aspect
+of Sulfur, Polysulfide Anion and Lithium Polysulfide: Plausible Reaction
+Path During Discharge of Lithium–Sulfur Battery,” Physical Chemistry
+Chemical Physics 23, no. 11 (2021): 6832–6840.
+Supporting Information
+Additional supporting information can be found online in the Supporting
+Information section. Data S1: Supporting Information.
+14 of 14
+International Journal of Quantum Chemistry, 2025
+ 1097461x, 2025, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.70113 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

@@ -1,0 +1,2249 @@
+
+<<PAGE 1>>
+www.chemelectrochem.org
+Joint Partial Least Squares Modeling of Experimental and
+Computational Data for Electrolyte Prescreening in
+Lithium–Sulfur Batteries
+Fritz Wortelkamp, Christian Wittekind, Lilli Busch, Simon Weidner, and Ingo Krossing*
+Lithium–sulfur batteries have attracted great research interest
+due to the high theoretical capacity of sulfur of 1672 mAh g1.
+However, they have various problems due to the shuttle current
+caused by molecular sulfur dissolving in the electrolyte. Hence,
+electrolyte design is a key focus when optimizing the batteries.
+This study investigates the relationship between cycling data and
+electrochemical properties measured with cyclovoltammetric
+measurements, shuttle current measurements, and impedance
+spectroscopy. Using the acquired data, a partial least squares
+model to screen solvent candidates in reference to these findings
+is introduced. This model is based on cycling data as well as
+density functional theory-calculated Conductor-like Screening
+Model for Real Solvents data of the solvents and (solvated) lith-
+ium–polysulfides. The usefulness of the converged method is
+demonstrated by using it to identify new possible electrolyte sys-
+tems. A subset of ten selected electrolyte systems is evaluated
+experimentally and their performance is reported. One of those
+electrolytes, 1.4 M LiTFSI, in pimelonitrile solution and without
+any further additives, displays exceptional cycling stability already
+on the first attempt, reaching a state of health of 50% after 115
+cycles and maintaining a Coulombic efficiency of close to 100%
+during the entire cycling procedure.
+1. Introduction
+Lithium-ion batteries (LIBs) are currently the leading technology
+for mobility applications, especially for electric vehicles.[1] Even
+though they have undergone continuous increases in energy
+density over the years, some sectors, like long-distance transpor-
+tation, have an even higher demand in energy densities.[2,3] This
+means new battery technologies are needed to fulfill those
+needs, and one of the promising candidates is the lithium–sulfur
+battery (LiSB) owing to the high theoretical capacity of sulfur of
+1672 mAh g1, the low sulfur prices, and its sustainability.[4–6] The
+need to do the cell reaction in solution rather than in solid state
+has led to problems with harvesting this potential, the biggest
+being the shuttle current that results from dissolved sulfur react-
+ing with the Li electrode, leading to a variety of problems like low
+cyclic stability and self-discharge.[7] Since the cell reaction and the
+shuttle effect are both taking place in the electrolyte, it has been
+the subject of research, trying to find optimized properties that
+suppress shuttle current while still allowing the cell to func-
+tion.[8,9] Significant efforts have been made to use different clas-
+ses of solvents with different solubilities of sulfur to facilitate
+stable cycling.[10] It is challenging to devise an electrolyte design,
+since the mechanism of the sulfur reduction reaction (SRR) is not
+completely understood due to difficulties in detecting the differ-
+ent polysulfides (PSs) with their close relative Gibbs free energy,
+that induces equilibrium reactions between virtually all of
+them.[11–14] Furthermore, there are complicated relationships
+between solvent properties, the solvation structure, and lithium
+plating and stripping which in turn have a great effect on
+cycleability.[15–17] In addition to analytical methods, theoretical
+methods like density functional theory (DFT) coupled with
+molecular dynamics calculations[18] and equilibrium potential
+modeling[18–20] have been employed to better grasp the cell
+chemistry in LiSBs, and they have given some new insights into
+the SRR and lithium plating and stripping.
+Hence, our objective in the first part of this study was not to
+conduct an analysis of the SRR, but rather to evaluate the impact
+of electrolyte properties on battery performance. To achieve this, a
+series of electrochemical measurements of cells with different elec-
+trolytes were conducted and data from our own previous study[21]
+was used. The results have been classified according to two distinct
+categories: those pertaining to the target optimization variables,
+namely discharge capacity and cycling stability, and those related
+to the properties of the electrolyte system, such as electrolyte
+F. Wortelkamp, C. Wittekind, L. Busch, I. Krossing
+Institute for Inorganic and Analytical Chemistry
+Faculty of Chemistry and Pharmacy
+University of Freiburg
+Albertstr. 21, 79104 Freiburg im Breisgau, Germany
+E-mail: krossing@uni-freiburg.de
+F. Wortelkamp, I. Krossing
+Freiburg Materials Research Center (FMF)
+University of Freiburg
+Stefan-Meier-Str. 21, 79104 Freiburg im Breisgau, Germany
+S. Weidner
+Business Engineering
+Swiss Distance University of Applied Sciences (FFHS)
+Schinerstrasse 18, 3900 Brig, Switzerland
+Supporting information for this article is available on the WWW under https://
+doi.org/10.1002/celc.202500256
+© 2025 The Author(s). ChemElectroChem published by Wiley-VCH GmbH. This
+is an open access article under the terms of the Creative Commons Attribution
+License, which permits use, distribution and reproduction in any medium,
+provided the original work is properly cited.
+ChemElectroChem 2025, 12, e202500256 (1 of 16)
+© 2025 The Author(s). ChemElectroChem published by Wiley-VCH GmbH
+ChemElectroChem
+Research Article
+doi.org/10.1002/celc.202500256
+
+<<PAGE 2>>
+resistance or Li potential versus a reference. In the subsequent step,
+these variables were employed to construct a predictive model via
+partial least squares (PLS) regression. This approach is particularly
+well suited to a system with a high degree of covariance.[22,23]
+The resulting model provides insights into the relationship between
+electrolyte composition and cell performance.
+When investigating new electrolyte solvents, a large number
+of candidates are available, and testing each of them is not fea-
+sible. For this reason, we intend to introduce a way of sorting
+through a large dataset of possible candidates using a second
+model using the insights gained in the first part. Here we created
+a PLS model derived from the battery performance data of bat-
+teries with electrolytes containing known solvents and from data
+acquired with the DFT-based Conductor-like Screening Model for
+Real Solvents (COSMO-RS).[24] COSMO-RS has been used in previ-
+ous studies to generate data for machine learning approaches in
+the investigation of electrolytes for LiSBs. For example, it has been
+employed to identify ion pairs suitable for use in ionic liquid elec-
+trolytes or to classify electrolytes by solvent in salt, salt in solvent,
+and solvated ionic liquids.[25,26] Based on these results, it appears
+feasible to use COSMO-RS-calculated data as a substitute for
+experimentally measured electrode potentials, enabling a quick
+and general screening of possible electrolyte systems. In the next
+step we used this model with data from COSMO-RS on a large
+number of solvent candidates to predict the performance of bat-
+teries that contain these solvents as part of their electrolytes.
+From this evaluation, we identified and tested a subset of ten
+promising candidates for new possible electrolyte solvents that
+have never before been published or tested as electrolyte sol-
+vents for LiSBs.
+2. Choice of Electrolytes
+When choosing electrolyte solvents to use for data acquisition,
+we intended to select a diverse set of solvents. This is not an easy
+task, as the majority of solvents used in LiSBs are ethers.[8,10] A
+variety of solvents could in principle be employed for the prepa-
+ration of electrolyte solutions for LiSBs. A sensible classification of
+solvents can be achieved by ordering according to their polysul-
+fide (PS) solubilizing capacities, resulting in three main categories:
+moderately solvating electrolyte solutions, sparingly solvating
+electrolyte solutions (SSEs), and highly solvating electrolyte
+solutions.[27–29] An alternative classification method is based on
+chemical function.[8] The objective of this study was to concen-
+trate on the solvents and to obtain a comprehensive dataset that
+encompasses a diverse range of solvent classes, with a particular
+emphasis on the most significant solvent classes. Furthermore,
+two conducting salts were selected for the purpose of creating
+electrolytes. The most commonly utilized conductive salt in
+LiSBs is LiTFSI (=Li[N(SO2CF3)2].[30] Additionally, Li[Al(Ohfip)4]
+(=lithium
+tetrakis(hexafluoroisopropoxy)aluminate)—a
+very
+weakly coordinating anion—has been employed in LiSBs and
+was selected to facilitate the application of solvents, in which
+the interaction with Liþ is minimized. This is particularly relevant
+to the battery reaction, where the interaction between Liþ and
+the counteranion is minimized, thus facilitating a more compre-
+hensive understanding of solvent effects, i.e., in SSE solvent sys-
+tems.[31] In the second part of the study, only electrolyte mixtures
+using LiTFSi were used. To get meaningful data about the influ-
+ence of the electrolyte solvents themselves on these properties,
+no additives like LiNO3, which can suppress shuttle current and
+increase the stability of the batteries,[32] have been used. The fol-
+lowing sections describe the solvent systems used in part 1 of this
+study.
+2.1. Ether-Based Solvents
+The most widely used electrolyte for LiSBs is based on a mixture
+of 1,3-dioxolane (DOL) and dimethoxyethane (DME), usually
+mixed in a 1:1 ratio.[33] For this reason, the DOL:DME 1:1 and both
+separate solvents were added to the list of solvents used.
+Tetrahydrofuran (THF) has been used as a solvent for LiSBs early
+on due to the high solubility of PSs and the resulting good capac-
+ities.[34] Hexylmethylether (HME) has been used in mixtures with
+DOL to suppress the shuttle effect.[35] Here, it was used in a mix-
+ture with as well as without DOL. Bis(2-methoxyethyl) ether
+(diglyme) has been used as an electrolyte solution with low flam-
+mability compared to DOL:DME mixtures[36] and tetraethylene
+glycol dimethyl ether (TEGDME/tetraglyme) has been used in dif-
+ferent setups using high concentrations of conducting salts.[37,38]
+In this work, they have both been used like regular solvents to get
+data points of similar solvents starting from DME, which can also
+be seen as monoglyme. In a similar vein, the different polyoxy-
+methylene dimethyl ethers (OME) have been of interest.
+Dimethoxymethane (Methylal/OME1), which has been of interest
+due to the lower PS solubility when compared to DME[39] and
+OME3, which have not yet been used in LiSBs, has been included.
+Lastly,
+1,1,2,2-tetrafluoroethyl-2,2,3,3-tetrafluoropropyl
+ether
+(TTE), which has been used in several mixtures as a fluorinated
+cosolvent, was also added to the list.[40] Ethers used as solvents
+in this study are compiled together with their basic solvent char-
+acteristics in Table 1.
+2.2. Nitrogen-Containing Solvents
+1,3-Dimethyl-2-imidazolidinone
+(DMI),[41]
+dimethylformamide
+(DMF),[42] and dimethylacetamide (DMA)[43] have been discussed
+as electrolytes that can be used in LiSBs with high dissolution of
+PSs. Acetonitrile (ACN) is an outlier from the usual electrolytes
+used in this study because when used in regular concentrations,
+it is not stable against lithium, but when used in high concentra-
+tions with a ratio of ACN:LiTFSI of 2:1, it can become stable due to
+its strong bonding with Liþ. This electrolyte has to be diluted with
+TTE to decrease viscosity.[44] The nitrogen-containing solvents are
+compiled in Table 2.
+2.3. Sulfur-Containing Electrolytes
+N,N-Dimethyl triflamide (DMT) is a sparingly solvating electrolyte
+that performs well at elevated temperatures when used with
+ChemElectroChem 2025, 12, e202500256 (2 of 16)
+© 2025 The Author(s). ChemElectroChem published by Wiley-VCH GmbH
+ChemElectroChem
+Research Article
+doi.org/10.1002/celc.202500256
+ 21960216, 2025, 19, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/celc.202500256 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 3>>
+LiAl(Ohfip)4 as a conducting salt.[31] Dimethyl sulfoxide (DMSO) is
+a high dielectric solvent, that has been discussed for use in LiSBs
+for a long time.[45] The sulfur-containing solvents are compiled in
+Table 3.
+2.4. Solvents that were Excluded
+Some solvents can only be used in LiSBs, when using special sul-
+furized polyacrylonitrile electrodes. These electrodes suppress
+the dissolution of PSs and stop side reactions and the shuttle
+effect.[46] This enables the use of electrolytes like carbonates,[47]
+phosphates,[48,49] or siloxanes[50] that would otherwise have
+strong side reactions with the PSs, which would prevent cycling.
+Hence, they were omitted in this study. Other potential electro-
+lyte solvents were not included due to the scope of the study.
+These include, among others, solvent mixtures, various ether sol-
+vents, and sulfolane-based solvents.
+3. Collecting Measurement Data
+In the context of batteries, the properties that are typically of
+interest are those that indicate the performance of the battery,
+such as cycling stability and capacity. These properties do not
+exist in isolation; rather, they are dependent on a number of more
+basic properties, including electrode potentials and electrolyte
+resistance. These connections are not always readily apparent,
+and batteries are a complex system. Indeed, many papers focus
+on a single aspect of the battery, rather than examining the bat-
+tery as a whole. This is why the connections cannot be expressed
+in a simple one-to-one correlation in most cases and more com-
+plex models are required. The data collected here are divided into
+two categories for subsequent modeling. Dependent variables
+are properties of the battery that are not readily quantifiable
+in isolation and that result from mechanisms that span the entire
+battery. This includes most of the properties that determine
+battery
+performance,
+including
+those
+observed
+in
+LiSBs.
+Table 1. Ether solvents used for the LiSB electrolyte formulations in the experimental training data.
+Solvent name
+Formula and short name
+Mp [°C]
+Bp [°C]
+Ref.
+1,3-Dioxolane
+95
+78
+[33,70]
+1,2-Dimethoxyethane
+58
+84
+[33,71]
+Tetrahydrofuran
+107.9
+66.2
+[34,72]
+Hexylmethylether
+N/A
+126
+[35,73]
+Bis(2-methoxyethyl) ether
+64
+161.3
+[36,74]
+Tetraethylene glycol dimethyl ether
+29.7
+278
+[37,38,75,76]
+Dimethoxymethane
+105
+42
+[31,77]
+2,4,6,8-Tetraoxanonane
+43
+156
+[78]
+1,1,2,2-Tetra-fluoroethyl
+2,2,3,3-tetra-fluoropropyl ether
+N/A
+93.2
+[40,79]
+ChemElectroChem 2025, 12, e202500256 (3 of 16)
+© 2025 The Author(s). ChemElectroChem published by Wiley-VCH GmbH
+ChemElectroChem
+Research Article
+doi.org/10.1002/celc.202500256
+ 21960216, 2025, 19, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/celc.202500256 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 4>>
+Independent variables are those that can be measured in isola-
+tion from other properties. These include values such as electrode
+potentials and impedance data. The situation is not one of clear-
+cut, binary decisions, as many of the data points that are classified
+as independent here are in fact correlated with one another. It is,
+however, essential to make this distinction for the purposes of
+modeling, and PLS has been selected for this model, since it is
+an appropriate method for handling data that exhibits collinear-
+ity. The following sections present the methodologies utilized for
+data collection and delineate the groups to which the derived
+data points are assigned.
+3.1. Cyclic Voltammetry
+Cyclic voltammetry (CV) measurements were employed to obtain
+data regarding electrode potentials in diverse electrolytes.
+The potential of the electrodes is dependent upon the solvent used,
+and this affects the performance of batteries.[51] In nonaqueous sol-
+utions,thepotentialsreferencedagainsttheclassical(aqueous)stan-
+dard hydrogen electrode are not applicable, as the shift in potential
+differsforeachsubstancewhenswitchingthesolvent.Inaccordance
+with the recommendations set forth by the International Union of
+Pure and Applied Chemistry (IUPAC), ferrocene (Fc) was employed
+as an internal standard.[52] The idea that the Fc potential is (almost)
+independent ofthesolvent iscalled the“ferroceneassumption”and
+has long been questioned.[53] Although the assumption is flawed, it
+canbestatedthatthechangeinFcpotentialistypicallyconsiderably
+less than that of the electrodes utilized in this experiment.
+Consequently, the decision was made to employ the ferrocene
+assumption but to acknowledge a systematic error of 40 mV in all
+measured Fc potentials. This error aligns with own direct measure-
+ments of the Gibbs transferenergies of the Fc/Fcþ systemmeasured
+between different solvents and using the “ideal” ionic liquid salt
+bridge approach.[54–57]
+3.2. Li-Potential ELi
+The first measurement targeted the Li-potential ELi versus Fc/Fcþ
+reference. This was done by dissolving a few milligrams of Fc in
+each electrolyte and using a Pt working electrode and lithium as
+reference and counter electrodes. This yields a CV curve contain-
+ing an oxidation and a reduction peak, the error on each of which
+was the combination of measurement error and systematic error
+from the ferrocene assumption. The average of these two values
+was then calculated using Gaussian error propagation, which
+yielded the results for Li electrode potentials (ELi) shown in
+Table S1, Supporting Information.
+In general, CV measurements for sulfur cathodes are a bit more
+complex. Depending on the type of electrolyte, the batteries show
+different reaction pathways,[20] which implies that not every CV will
+have the same number of peaks. The method for data point collec-
+tion was performed as reported in our previous work.[21] In general,
+the expected number of peaks is four, two reductive and two oxi-
+dativepeaksmirroringthetwochargeanddischargeplateauscom-
+monly observed in LiSBs.[7,58] They are assigned to the reactions
+shown in Figure 1a. The first is the reaction of S8 to long-chained
+PS Sx
+2 (x = 8, 6, 4) and the second is a reaction of long-chained
+PS Sx
+2 to short-chained PS Sy
+2 (mainly S2
+2). For PLS modeling,
+itis important to have a homogenousand complete dataset, which
+is why it was decided to separate the measured CV data into four
+data points following this pattern as shown in Figure 1b. If there
+were more peaks visible, the main peaks were chosen, as shown
+in Figure 1c, and if there were fewer peaks visible, the value of
+the visible peak was used for both values, as shown in Figure 1d,
+since it was assumed that the entire conversion either took place
+at the same potential or that the potentials are so close together
+that they could not be separated. This method can lead to some
+data points not being captured accurately, for example, when
+the peak identified as the main peak belongs to a side reaction.
+Still, it was deemed more practical than gathering a dataset with
+lots of missing data.
+Table
+3. Sulfur-containing
+solvents
+used
+for
+the
+LiSB
+electrolyte
+formulations in the experimental training data.
+Solvent name
+Formula and short
+name
+Mp [°C]
+Bp [°C]
+Ref.
+N,N-Dimethyl
+triflamide
+36.9
+–
+[31,82]
+Dimethyl sulfoxide
+19
+189
+[45,83]
+Table 2. Nitrogen-containing solvents used for the LiSB electrolyte
+formulations in the experimental training data.
+Solvent name
+Formula and
+short name
+Mp [°C]
+Bp [°C]
+Ref.
+Dimethylformamide
+60.43
+153
+[42,80]
+Dimethylacetamide
+20
+166.1
+[43,80]
+Acetonitrile
+107.9
+66.2
+[44,70]
+1,3-Dimethyl-2-
+imidazolidinone
+8.2
+226
+[41,81]
+ChemElectroChem 2025, 12, e202500256 (4 of 16)
+© 2025 The Author(s). ChemElectroChem published by Wiley-VCH GmbH
+ChemElectroChem
+Research Article
+doi.org/10.1002/celc.202500256
+ 21960216, 2025, 19, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/celc.202500256 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 5>>
+Since ELi was determined in reference to Fc/Fcþ, the potentials
+of the S-electrode were now measured in reference to Li, and the
+values in reference to Fc were calculated from there. Errors were
+once again calculated using Gaussian error propagation.
+S-electrodes show a change in potential when undergoing
+several cycles, which is why data for the first and for the third
+cycles was collected.[58] All data collected this way is shown in
+Table S2, S3, Supporting Information.
+(a)
+(b)
+(c)
+(d)
+S2-
+x
+e
+g
+a
+tlo
+V
+Time
+1: S8 
+2: S2-
+x
+3: S2-
+y
+4: S2-
+x
+S2-
+x
+S2-
+y
+S8
+y < x
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0
+3.5
+4.0
+I
+ES [V vs. Li/Li+]
+1
+3
+2
+4
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0
+3.5
+4.0
+I
+ES [V vs. Li/Li+]
+2.57
+2.17
+1.734
+2.815
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0
+3.5
+4.0
+I
+ES [V vs. Li/Li+]
+1
+2
+3,4
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0
+3.5
+4.0
+I
+ES [V vs. Li/Li+]
+1.808
+1.404
+3.03
+I
+ES [V vs. Li/Li+]
+1: S8
+S2-
+x
+2: S2-
+x
+S2-
+y
+3: S2-
+y
+S2-
+x
+4: S2-
+x
+S8
+y < x
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0
+3.5
+4.0
+I
+ES [V vs. Li/Li+]
+1
+2
+3
+4
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0
+3.5
+4.0
+I
+ES [V vs. Li/Li+]
+2.530
+2.906
+2.305
+1.888
+Figure 1. Assigning numbers to the CV data of S-electrodes measured in the selected electrolyte systems against Li/Li.þ a) Charge and discharge plateaus
+are assigned to the peaks observed in CV. b) CV data with four data points. c) CV data with more than four data points. d) CV data with less than four data
+points. Adapted with permission.[21]
+ChemElectroChem 2025, 12, e202500256 (5 of 16)
+© 2025 The Author(s). ChemElectroChem published by Wiley-VCH GmbH
+ChemElectroChem
+Research Article
+doi.org/10.1002/celc.202500256
+ 21960216, 2025, 19, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/celc.202500256 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 6>>
+In the model, these data points were set as independent var-
+iables as it is a value directly related to the interaction of Liþ and
+PS with the electrolyte. Even though a high battery voltage is also
+a desired property that should be accounted for, the focus in this
+study lies on the capacity and stability of LiSBs.
+3.3. Shuttle Current Measurements
+The shuttle current (IS) can be directly measured in 2032 coin cells
+by holding the voltage at a specific potential value and observing
+the current that results from this.[59] Here it was decided to do
+shuttle current measurements for fully charged batteries. As
+delineated in Figure 2, to get this measurement, the batteries
+were discharged and then charged once to get a formation,
+and when the charge was done, the open-circuit voltage
+(OCV) was measured. Afterward, a constant voltage (CV) step
+was started, and the voltage was set to the OCV value. Any
+current that was measured during this step could be attributed
+to the shuttle current, as any drop in voltage could be explained
+by shuttling of soluble sulfur species to the anode and reacting
+there, which then had to be balanced by a charge current to
+keep the voltage constant. This data is collected in Table S4,
+Supporting Information.
+This IS occupies a distinctive position in the modeling process.
+In examining the variables that warrant optimization of battery
+performance, it is imperative to consider the role of IS as an inde-
+pendent variable. The objective is not to optimize the shuttle cur-
+rent in and of itself but rather to understand its impact on the
+variables of interest. In this context, the reduced cycling stability
+of LiSBs, a consequence of high shuttle currents IS, necessitates its
+inclusion as an independent variable. Conversely, the shuttle cur-
+rent represents a distinctive attribute of the LiSB, necessitating a
+comprehensive understanding. Given that it cannot, like other
+independent variables, be assessed in isolation, it was also
+treated as a dependent variable in its own model.
+3.4. Impedance Measurements
+Impedance measurements were done in the same 2032 coin
+cells as the shuttle current measurement before the shuttle
+current was measured at a depth of discharge (DoD) of 0%.
+Additionally, measurements after the shuttle current were inves-
+tigated, in which the cells were discharged to DoD of 10% and
+evaluated. This was intended to get a data point with minimal
+dissolution of polysulfides and one with more dissolution.
+The equivalent circuit diagram used is shown in Figure 3. This
+contains the electrolyte resistance Rel, the combined effects of the
+electrodes RC/S/Li and constant phase element (CPEC/S/Li), the
+charge
+transfer
+of
+polysulfides
+on
+the
+carbon
+electrode
+RPS and CPEPS, and the diffusion CPEdiff.
+The impedance data of LiSBs depends on the DoD and the
+cycle number, making it hard to choose a single equivalent circuit
+for all states of the battery.[60,61] Additionally, the data from this
+study also showed that the same holds for different electrolytes.
+Nevertheless, the same equivalent circuit was chosen for all data
+points to ensure a homogenous dataset for modeling. This some-
+times led to data points not being able to be collected, which is
+further discussed in the section PLS Model.
+3.5. Cycling Tests
+Cycling of coin cells is the most common method to test batteries
+on a laboratory scale and delivers data connected to the cell per-
+formance. All electrolytes were tested in 2032 coin cells, and the
+data points evaluated were the specific discharge capacity
+(spec. cap. d.) for the formation cycle, for the first cycle, and
+the number of cycles it took for the cell to reach a state of health
+(SoH) of 80 and 50. These data points were chosen as they include
+0
+8
+16
+24
+32
+40
+48
+−5
+0
+5
+10
+15
+20
+25
+30
+t [h]
+I [ A]
+Shuttle current measurement (CV):
+Shuttling occurs, an equivalent current is 
+applied to keep the voltage constant. 
+Maximum current over 48 h is taken as value 
+for the shuttle current IS.
+IS
+2.15
+2.20
+2.25
+2.30
+2.35
+2.40
+U [V]
+0
+5
+10
+15
+−10
+−5
+0
+5
+10
+15
+20
+25
+30
+t [min]
+I [ A]
+OCV: Shuttling occurs, voltage drops over 
+time. No current is applied.
+2.15
+2.20
+2.25
+2.30
+2.35
+2.40
+U [V]
+S8
+Li
+PS shuttle
+e–
+=
+S8
+Li
+PS shuttle
+e–
+PS shuttle
+I = IS
+Figure 2. Scheme of the shuttle current IS measurements. In the first step, OCV was measured, followed by a CV step in which the shuttle current IS was
+measured.
+Rel
+RC/S/Li
+RPS
+CPEdiff
+CPEPS
+CPEC/S/Li
+Electrolyte 
+resistance
+Combined
+contributions
+of the
+electrodes
+Charge 
+transfer
+polysulfides -
+carbon
+diffusion
+Figure 3. Equivalent circuit used for impedance measurements.
+ChemElectroChem 2025, 12, e202500256 (6 of 16)
+© 2025 The Author(s). ChemElectroChem published by Wiley-VCH GmbH
+ChemElectroChem
+Research Article
+doi.org/10.1002/celc.202500256
+ 21960216, 2025, 19, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/celc.202500256 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 7>>
+information about the performance of sulfur in electrolytes and
+the stability of the battery. The data collected from cycling the
+LiSB cells is shown in Table S9, S10, Supporting Information.
+4. Partial Least Squares Models
+For this study, it was decided to develop a PLS model due to the
+method’s strength in handling small datasets and its ability to
+manage strong collinearity.[23] Collinearity in the dataset was
+expected, as previous work has shown a strong linear correlation
+between the sulfur and lithium potentials.[21]
+4.1. Handling Missing Data
+Some of the data collected in the experiments was incomplete,
+which implies some thought had to be put into the handling of
+missing data points. The two main ways described in the litera-
+ture are deletion, pairwise or listwise, or data imputation.[62]
+Excessive imputation can lead to models with low statistical rel-
+evance due to an artificial reduction of variance or biases.[62,63] To
+avoid missing data, it was decided to manually guess data points
+by comparing them with similar points if possible. This was nec-
+essary for missing CV data of HME and THF, where only data for
+the first CV cycle could be measured. In these cases, the data of
+the first cycle was filled in instead of an average value as the dif-
+ferences between measured data and the average were, in gen-
+eral, larger than that between the first and third cycles. When
+data could not be inferred, the imputation method employed
+was to replace the missing data with the mean value. This is
+one of the most straightforward methods, yet it has the effect
+of reducing variance. It should, therefore, only be employed when
+there are few missing data points, representing less than 10% of
+the total, which is the case in this study.[62]
+5. Results and Discussion
+5.1. Part 1: Identifying Important Parameters for Electrolyte
+Optimization
+The first goal of this work was to find out which independent var-
+iables predict a good battery performance indicated by the dis-
+charge capacity as well as the lifetime of the battery and
+identify which properties to optimize for. Additionally, the effects
+on the shuttle current were investigated. All data used was scaled
+and used in its mean-centered form for the PLS regression to make
+them comparable. This way, each β-coefficient indicates the rela-
+tive contribution of a given dependent variable to the correspond-
+ing independent variable. For CV and for impedance data, two sets
+of measurements were performed. For CV data, measurements of
+the first and third cycles were performed, and for impedance data,
+measurements at DoD 0% and 10% were performed.
+Two sets of PLS models were created, one using IS as an inde-
+pendent variable and one using it as a dependent variable. For
+both sets, different combination of data measurements were
+tested and compared considering their explanation of variance
+in the variables IS and spec. cap. d. of the first cycle to see which
+yielded the best results, as detailed in Table 4.
+The dataset that performed the best was the one omitting the
+CV data for cycle three and the impedance data at DoD 10. It
+explained 73% of the variance in IS and 48% of the variance in
+spec. cap. d. The summaries of all models can be found in
+Table S11, S15, Supporting Information. The three dependent var-
+iables chosen for discussion here showed acceptable amounts of
+variance explained. They are discharge capacity for the formation
+and the first cycle and IS. These data points are well suited to dis-
+cuss the performance of the batteries as the discharge capacities
+are generally the most critical measure for a battery, along with its
+cycling stability. One of the main reasons for poor cycling stability
+in LiSBs is the shuttle effect. This implies that the cycling stability
+is also covered by including IS in the discussion. When comparing
+β-coefficients, specific attention should be paid to the variables
+that have a large positive effect on discharge capacity but a neg-
+ative effect on the shuttle current, as these are the most promis-
+ing for optimizing the battery properties. Besides this, variables
+that have a strong effect on the discharge capacity but a weak
+effect on IS are also of interest. Figure 4 shows the relative impor-
+tance of the independent variables for the model handling IS as a
+dependent variable. These variables with a β-coefficient with a
+positive sign are shown in blue and those with a β-coefficient
+with a negative sign in red. The script and data used for modeling
+can be found in the supporting data.[64]
+When comparing the graphs for the model using IS as a
+dependent variable, it can be noted that they all include imped-
+ance data of CPEdiff, a measure of diffusion in the electrolyte. The
+same goes for the electrolyte resistance Rel. This is not surprising
+as these are important for any battery reaction. When moving
+from the discharge capacity of the formation (Figure 4a) to
+the discharge capacity of the first cycle (Figure 4b), it can be seen
+Table 4. Variation of datasets used for PLS models. The model chosen as the best is marked in blue.
+CV data cycle 1
+CV data cycle 3
+Impedance data DoD 0%
+Impedance data DoD 10%
+Variance explained IS
+Variance explained spec. cap. d.
+included
+included
+included
+included
+64%
+41%
+included
+not included
+included
+not included
+73%
+48%
+not included
+included
+not included
+included
+63%
+40%
+included
+not included
+not included
+included
+56%
+42%
+not included
+included
+included
+not included
+66%
+44%
+ChemElectroChem 2025, 12, e202500256 (7 of 16)
+© 2025 The Author(s). ChemElectroChem published by Wiley-VCH GmbH
+ChemElectroChem
+Research Article
+doi.org/10.1002/celc.202500256
+ 21960216, 2025, 19, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/celc.202500256 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 8>>
+that several independent variables lose relative importance, with
+only Q CPEdiff retaining large relative importance. This can be
+explained by the formation cycle, probably including many side
+reactions. The CV variables that most notably lost importance are
+the position of the second charge plateau ES4,c1, the first charge
+plateau ES3,c1, and the potential of lithium ELi. These are probably
+all correlated to side reactions on the lithium negative electrode,
+which are less present after formation. The same holds for the
+combined resistances of the electrodes RC/S/Li. This is most likely
+also correlated to side reactions as impedance measurements
+were taken after formation. This means a cell setup with many
+side reactions would display different values of RC/S/Li when com-
+pared to one with fewer side reactions, as many of these reactions
+are formations of solid electrolyte interphases and cathode elec-
+trolyte interphases, which in turn affect RC/S/Li.
+For these reasons, the discharge capacity of cycle 1 is appar-
+ently the more realistic measure when looking at the discharge
+capacity of LiSB rather than that of the formation. When compar-
+ing the importance of variables for the discharge capacity of the
+first cycle with that of IS, it is noticeable that they are very similar.
+Except for minor differences, all values are about the same size
+and have the same sign. This is contrary to the hoped-for differ-
+ences that would allow for the determination of variables that are
+good candidates for optimization. This changes when IS is han-
+dled as an independent variable, as shown for the specific capac-
+ity of the first cycle in Figure 4d. The shuttle current itself has a
+positive β coefficient. This is in line with what was discussed pre-
+viously. The remaining variables and their changes, when the
+shuttle current is handled as an independent variable, are of
+interest. While the sign of all β-coefficients remains unchanged,
+the relative importance of some of the variables does change.
+Most notably ES2,c1, the potential connected to the second dis-
+charge plateau, rises from second to last to fourth place in impor-
+tance. Another value that significantly changes is the resistance
+correlated to the charge transfer of PSs and the carbon electrode
+RPS which moved from being the least important variable to
+having a significant importance. The most notable drop in impor-
+tance was seen in the variables connected to diffusion α CPEdiff
+and Q CPEdiff. While Q CPEdiff is still the most important variable, it
+lost a significant percentage of the size of its β-coefficient.
+The relative change of all β-coefficients is compiled in Table 5.
+Here, it has to be noted that the explained variance of all
+0
+50
+100
+Relative Importance [%]
+s
+elb
+air
+a
+V
+t
+n
+e
+d
+n
+e
+p
+e
+d
+n
+I
+ES2,c1
+RPS
+Q CPEC/S/Li
+ CPEPS
+ELi
+RC/S/Li
+ES3,c1
+ CPEC/S/Li
+ES1,c1
+ES4,c1
+Q CPEPS
+ CPEdiff
+Rel
+Discharge capacity cycle 1
+Variance explained: 47.63%
+Q CPEdiff
+(a)
+(b)
+(c)
+(d)
+0
+50
+100
+Relative Importance [%]
+s
+elb
+air
+a
+V
+t
+n
+e
+d
+n
+e
+p
+e
+d
+n
+I
+ES2,c1
+RPS
+Q CPEC/S/Li
+ CPEPS
+ELi
+RC/S/Li
+ES3,c1
+ CPEC/S/Li
+ES1,c1
+ES4,c1
+Q CPEPS
+ CPEdiff
+Rel
+Discharge capacity formation
+Variance explained: 49.07%
+Q CPEdiff
+0
+20
+40
+60
+80
+100
+120
+Relative Importance [%]
+s
+elb
+air
+a
+V
+t
+n
+e
+d
+n
+e
+p
+e
+d
+n
+I
+ES2,c1
+RPS
+Q CPEC/S/Li
+ CPEPS
+ELi
+RC/S/Li
+ES3,c1
+ CPEC/S/Li
+ES1,c1
+ES4,c1
+Q CPEPS
+ CPEdiff
+Rel
+Discharge capacity cycle 1
+Variance explained: 49.96%
+IS
+Q CPEdiff
+0
+50
+100
+Relative Importance [%]
+s
+elb
+air
+a
+V
+t
+n
+e
+d
+n
+e
+p
+e
+d
+n
+I
+ES2,c1
+RPS
+Q CPEC/S/Li
+ CPEPS
+ELi
+RC/S/Li
+ES3,c1
+ CPEC/S/Li
+ES1,c1
+ES4,c1
+Q CPEPS
+Q CPEdiff
+ CPEdiff
+Rel
+Shuttle current IS
+Variance explained: 72.67%
+Figure 4. Relative importance of independent variables for the model with IS as a dependent variable. Positive signs of β-coefficients are shown in blue
+and negative signs in red. The datasets used for CV data was that of the first cycle and the dataset used for impedance data was that at DoD0. a) Relative
+importance of independent variables for the discharge capacity of the formation with IS as a dependent variable. b) Relative importance of independent
+variables for the discharge capacity of the first cycle with IS as a dependent variable. c) Relative importance of independent variables for the shuttle current
+IS. d) Relative importance of independent variables for the discharge capacity of the first cycle with IS as an independent variable.
+ChemElectroChem 2025, 12, e202500256 (8 of 16)
+© 2025 The Author(s). ChemElectroChem published by Wiley-VCH GmbH
+ChemElectroChem
+Research Article
+doi.org/10.1002/celc.202500256
+ 21960216, 2025, 19, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/celc.202500256 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 9>>
+dependent variables is not high enough to give definite state-
+ments, but trends can be discussed regardless.
+From these results, the best way to design electrolytes seems
+to be to first pay attention to suppressing the shuttle current as
+far as possible without losing too much battery capacity and then
+paying attention to fine tuning the properties of the electrolyte
+correlated to the variables ES2,c1 and RPS, that have been discussed
+before, and which should raise the battery capacity without
+increasing the shuttle current. This can be achieved using specific
+solvents or fine tuning solvent mixtures to achieve the desired
+properties.
+5.1.1. Cycling Data of Investigated Electrolytes
+The cycling data for all electrolytes of part 1 was used as a basis to
+evaluate the quality of an electrolyte. For this we used the specific
+discharge capacity (spec. cap. d.) of the first cycle (c1) and the
+number of cycles (ncycles, SoH50) before the SoH of the cell dropped
+below 50%. To obtain a single value with which we can assess the
+batteries, we decided to multiply the two measured values, which
+gave the quality factor Q, as shown in Equation (1).
+ncycles;SoH50 · spec:cap:d:c1 ¼ Q
+(1)
+The cycling data, sorted by size of Q, is compiled in Table 6.
+The full set of cycling data used in the PLS model can be found in
+the supporting data.[64]
+5.2. Part 2: Finding Electrolyte Solvents from a Large
+Screening
+The second part of this study aimed to create a method that can
+quickly skim through a large dataset and find suitable candidates
+for electrolytes to use in LiSBs. For this purpose, a large dataset,
+which has been mostly unsorted, was necessary. This made the
+measurement of electrode potentials for each electrolyte mixture
+unfeasible, which is why we opted to instead use calculated
+COSMO-RS data for the chemical potential of the different species
+that are present in solution in the batteries.
+5.2.1. Collecting a Dataset
+To obtain a dataset without too much presorting, we opted to do
+a search on Scifinder for all solvents with a melting point lower
+than 20 °C and a boiling point higher than 50 °C, including every
+substance that is a liquid in this temperature range. The search
+was done on June 21, 2022. This search yielded 3000 com-
+pounds. DFT calculations at the (RI-)BP86/TZVP level were then
+performed for each of these compounds to create the input data
+for use in COSMOtherm (structure optimization in vacuo and
+including the COSMO-model with ϵr set to infinity). The goal of
+these calculations was to calculate the σ-potentials for each sol-
+vent from the experimental dataset and the dataset of the solvent
+candidates as well as the σ-potentials of the adduct of one of
+each solvent molecules with Liþ. The σ-potentials include six val-
+ues assigned to each molecule to describe the σ-surface, which is
+used in COSMO-RS to predict the interactions of molecules in
+solution.[24] The σ-potentials obtained this way were used for fur-
+ther computations to calculate chemical potentials μ of the
+Table 5. Percentage difference in β-coefficients between the discharge
+capacity of the first cycle and IS for the model with IS as a dependent
+variable and the discharge capacity of the first cycle for the model with
+IS as an independent variable.
+Independent
+Variable
+Difference in β-coefficient
+capacity–capacity [%]
+Difference in β-coefficient
+capacity–IS [%]
+ELi
+5
+9
+ES1,c1
+10
+19
+ES2,c1
+39
+35
+ES3,c1
+4
+2
+ES4,c1
+1
+10
+Rel
+17
+29
+RC/S/Li
+10
+7
+Q CPEC/S/Li
+5
+4
+α CPEC/S/Li
+0
+2
+RPS
+16
+10
+Q CPEPS
+9
+8
+α CPEPS
+6
+1
+Q CPEdiff
+32
+83
+α CPEdiff
+32
+53
+Table 6. Cycling data and quality factor Q for all electrolyte mixtures
+ordered by size of Q. Nominal capacity of the positive electrodes is
+875 mAh g1
+which
+is
+lower
+than
+the
+theoretical
+capacity
+of
+1672 mAh g1 due to a high active mass loading, cycling was done at
+25 °C at a rate of 1 C after one formation cycle at 0.1 C. Cells were built
+in a 2032 coin cell setup with a positive electrode with an active
+material loading of 5.28 mg, a lithium coin as negative electrode, and
+60 μL of electrolyte.
+Electrolyte
+spec. disch.
+cap. c1 [mAh g1]
+ncycles, SoH50
+Q
+DOL 1 M LiTFSI
+617
+61
+37 651
+Diglyme 1 M LiTFSI
+623
+56
+34 893
+DME 1 M LiTFSI
+663
+44
+29 193
+DOL 0.2 M LiTFSI
+650
+39
+25 356
+TEGDME 1 M LiTFSI
+568
+41
+23 289
+DMT 1 M LiTFSI
+205
+83
+17 003
+TEGDME 0.2 M LiTFSI
+521
+21
+10 936
+DME 0.2 M LiTFSI
+743
+12
+8921
+DMA 1 M LiTFSI
+681
+13
+8857
+DMF 1 M LiTFSI
+669
+12
+8027
+THF 1 M LiTFSI
+592
+9
+5328
+Methylal 1 M LITFSI
+258
+20
+5168
+OME3 1 M LiTFSI
+358
+14
+5009
+HME 1 M LiTFSI
+315
+12
+3785
+DMT 0.2 M LiTFSI
+118
+24
+2831
+THF 0.2 M LiTFSI
+257
+10
+2567
+DMSO 1 M LiTFSI
+403
+6
+2421
+ChemElectroChem 2025, 12, e202500256 (9 of 16)
+© 2025 The Author(s). ChemElectroChem published by Wiley-VCH GmbH
+ChemElectroChem
+Research Article
+doi.org/10.1002/celc.202500256
+ 21960216, 2025, 19, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/celc.202500256 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 10>>
+different solvates found in LiSBs. They were also used in the PLS
+model directly.
+5.2.2. COSMO-RS Calculations Using COSMOtherm
+The same treatment was applied to the species relevant to describe
+chemical potentials of the sulfur species. This includes the investi-
+gation of elemental sulfur S8, the dianionic PSs S8
+2, S6
+2, S4
+2, S3
+2,
+and S2
+2, the radical anion S3
+, and the polysulfide–Liþ ion-pairs
+LiS8
+, LiS6
+, LiS4
+, LiS3
+, and LiS2
+ in each (experimental and/or cal-
+culated) electrolyte mixture. Furthermore, the chemical potential of
+TFSI and the adduct of one solvent molecule and Liþ in each elec-
+trolyte mixture were also assessed. A rendering of the σ-potentials
+of the lowest energy potentials for sulfur, the polysulfides, the lith-
+ium–polysulfides, and TFSI can be found in Figure S35, Supporting
+Information. The adducts of Liþ and solvents were used in prefer-
+ence over the very small and polarizing “naked” Liþ, as this is a much
+better approximation to Liþ in solution in the COSMO-RS view and is
+expected to yield better results. This is of course only a rough
+approximation since the solvent shell of Liþ is solvent dependent
+and in the best case would be optimized for each solvent individu-
+ally.[65] However, this would exceed the scope of the 3000 solvents
+investigated for this study and defeat the purpose of having an easy
+screening method for solvent candidates in electrolytes. The
+workflow to obtain reliable data is schematically shown in
+Figure
+5
+and
+was
+as
+follows.
+1)
+Conformer
+calculations:
+For
+conformer
+calculations,
+we
+used
+the
+BP-TZVPD-FINE-
+COSMOþGAS-18 template, which is provided by COSMOconfX.[66]
+This was applied to all sulfur species, to all solvents used in this
+study, and to TFSI. This yielded the σ-potentials for all solvents
+of the calculated dataset as well as the experimental dataset. All
+conformers that were found this way were later used in the solubility
+screening. 2) Solvent–Liþ adduct calculations: For all solvents, a cal-
+culation using the BP-TZVPD-FINE-COSMO-SP, which is provided by
+COSMOconfX, was performed for an adduct of the conformer with
+the lowest energy and Liþ.[66] This yielded the σ-potentials for all
+solvent–Liþ adducts of the calculated dataset as well as the experi-
+mental dataset. 3) Solubility screening at 25 °C with COSMOtherm:
+Step 1: 
+database search
+Mp. < −20 °C , Bp. > 50 °C
+yields conformers
+with σ-potentials 
+Step 2: 
+COSMOconfX 
+conformer search
+BP-TZVPD-FINE-COSMO+GAS-18 
+yields solvent candidates
+Step 4:
+COSMOtherm
+solubility screening
+Using all electrolyte mixtures
+yields Li+-adduct 
+with σ-potentials 
+Step 3: 
+COSMOconfX 
+Li+-solvent calculation
+BP-TZVPD-FINE-COSMO-SP
+TFSI−, Li+-solvent, S8, S82−, 
+S62−, S42−, S32−, S22−, S3·−, 
+LiS8−, LiS6−, LiS4−, LiS3−, LiS2−
+yields chemical
+potential data μ for:
+Figure 5. Workflow to obtain σ-potential data for all solvents and chemical
+potential data in the electrolyte mixtures derived from them. In Step 1–3,
+the exemplary solvent ethylacetate, with conformers and Liþ adduct is
+shown with its σ-potentials plotted onto the surface.
+Table 7. Chosen cut-off values for chemical potentials of solvents, solvent–
+Liþ adducts, and TFSI.
+Maximum value experimental
+dataset [kcal mol1]
+Chosen cutoff for calculated
+dataset [kcal mol1]
+μsolv
+4.80
+7
+μsolv-Li
+11.22
+15
+μTFSI
+9.0705
+12
+Table 8. Selected typical examples for compounds that have been filtered
+out of the dataset and the reason why they have been excluded.
+Compound name
+Formula and short name
+Reason for exclusion
+3-Methylheptane
+LiTFSI solubility
+Butylsilane
+LiTFSI solubility
+Acetaldehyde
+Gas at 25 °C, expected
+side reactions
+Phosphinic amide
+Expected side reactions
+Ethylene glycol
+Expected side reactions
+Propylene carbonate
+Expected side reactions
+Sarin
+Toxicity[84]
+Acetonitrile
+Already published[69]
+Tetrahydrofuran
+Already published[34]
+Trimethyl phosphate
+Already published[49]
+ChemElectroChem 2025, 12, e202500256 (10 of 16)
+© 2025 The Author(s). ChemElectroChem published by Wiley-VCH GmbH
+ChemElectroChem
+Research Article
+doi.org/10.1002/celc.202500256
+ 21960216, 2025, 19, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/celc.202500256 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 11>>
+The data from the first two steps was then used to perform a solu-
+bility screening at 25 °C (298.15 K) as implemented in the
+COSMOtherm program.[67] The screening was performed for all com-
+pounds described above in all electrolyte mixtures. Electrolyte mix-
+tures were simulated for each solvent in 51 steps between a mixture
+of solvent:TFSI:solvent–Liþ 1:0:0 and solvent:TFSI:solvent–Liþ 5:1:1.
+This yielded all necessary chemical potential data; the workflow is
+delineated in Figure 5.
+This workflow was performed for all 3000 selected solvents.
+The detailed results of all calculations described here can be
+found in the supporting data.[64] For simplicity reasons, the molal-
+ity of the mixtures used in COSMOtherm was approximated with-
+out further correction as the resulting molarity in the modeling of
+later electrolyte mixtures and vice versa. If molarity was used in an
+experiment, the transformation of the molarity to molality—the
+typical magnitude that the COSMOtherm program uses—for
+each solvent would have been necessary, which would imply a
+significant experimental workload that would run counter to
+the goal of having a simple prescreening method. We are aware
+that this is a very rough approximation and will result in some
+inaccuracies. However, we found that the differences between
+mixtures using different solvents were big enough that this inac-
+curacy between different mixtures using the same solvent was
+acceptable.
+5.2.3. PLS Modeling of the Experimental Dataset
+A PLS model was created for the experimental dataset using the
+calculated COSMOtherm data as independent variables and the
+cycling data as dependent data. The explained variance for spec.
+cap. d. of the first cycle and ncycles, SoH50 were 76.92% and 50.77%,
+Table 9. Electrolyte mixtures selected as candidates for testing in batteries and their calculated Q-values.
+Compound name
+Formula and short name
+LiTFSI conc.
+Q
+Cycled
+Notes
+1,4-Dioxane
+1.7 M
+27 905
+No
+Low LiTFSI solubility
+2-Methylpyrazine
+1.6 M
+24 647
+No
+No discharge or charge observed Figure 6 d
+Dimethyl pimelate
+1.1 M
+24 127
+Yes
+High capacity, quick fade Figure 7c
+Ethyl methane-sulfonate
+1.4 M
+24 114
+No
+No recharge Figure 6b
+Ethylacetate
+1.7 M
+24 112
+No
+Potential fade during OCV Figure 6c
+N-Ethylmorpholine
+1.4 M
+23 453
+Yes
+Either stable or very unstable cycling Figure 7 d
+Pimelonitrile
+1.4 M
+27 802
+Yes
+Low capacity, excellent stability Figure 7b
+γ-Butyrolactone
+1.6 M
+25 806
+No
+Small recharge Figure 6a
+γ-Valerolactone
+1.6 M
+24 740
+Yes
+High initial capacity, quick fade Figure 7a
+1,3-Dioxane
+1.7 M
+27 649
+No
+Low LiTFSI solubility
+ChemElectroChem 2025, 12, e202500256 (11 of 16)
+© 2025 The Author(s). ChemElectroChem published by Wiley-VCH GmbH
+ChemElectroChem
+Research Article
+doi.org/10.1002/celc.202500256
+ 21960216, 2025, 19, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/celc.202500256 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 12>>
+respectively. The full summary of the model can be found in Table
+S18, Supporting Information. These values imply that a significant
+amount of variance is not captured in the model. This is sensible,
+considering that the data used as independent data is not nec-
+essarily suited to predict chemical side reactions in the electrolyte
+as discussed in Part 1. This could include reactions with PSs or the
+lithium negative electrode. However, the values were deemed
+satisfactory to get an estimate of electrolyte performance when
+combined with chemical knowledge. This means that, if the
+model predicts a carbonate like dimethyl carbonate (DMC), which
+is known to react with polysulfides and thus is unsuited for use in
+LiSBs, it falls to the operator to sort it out of the dataset.
+5.2.4. Predictions Using the Calculated Dataset
+In the next step, a prediction of the dependent variables using the
+independent variables for the calculated dataset was performed.
+The script for all PLS operations, as well as the resulting data, can
+be found in the supporting data.[64]
+5.3. Finding and Testing Suitable Electrolyte Mixtures
+In this section promising electrolyte candidates are selected and
+then tested for their viability in coin cells. First, the selection pro-
+cess is outlined followed by the results and their evaluation.
+5.3.1. Filtering the Dataset
+The quality factor Q was calculated for the predicted data, and the
+data was ordered in descending order by Q. Here, it was notice-
+able that some unlikely candidates were present in the dataset
+and yielded very high Q values. This included electrolyte mixtures
+containing some gases like krypton, which were present due to
+inaccuracies in the boiling and melting points of these gases in
+the database, and solvents that would not be able to dissolve
+LiTFSI in the necessary concentration, for example, alkanes.
+These were present since we did not filter the original search,
+and the COMSOtherm calculation was done, regardless if the
+LiTFSI concentration in the investigated solvents was possible
+to reach or not.
+To account for this, we created an adjusted dataset for
+which we filtered out all electrolyte mixtures that had chemical
+potentials μ of solvents μsolv, solvent–Liþ adducts μsolv-Li, and
+TFSI μTFSI that were higher than a certain value. The values
+were chosen based on the maximum values found in the exper-
+imental dataset and are compiled in Table 7. This approach
+removes electrolyte mixtures from the dataset that are not pro-
+ducible. The resulting new dataset can be found in the support-
+ing data.[64]
+We chose the performance of the electrolyte mixture of
+TEGDME with 1 M LiTFSI as the lowest acceptable performance
+0
+3
+6
+9
+12
+15
+1,0
+1,5
+2,0
+2,5
+3,0
+3,5
+]
+V
+[
+e
+g
+a
+tlo
+V
+Time [h]
+rest
+formation
+cycle 1
+(S|GF/D|Li-Coin)
+60 µl electrolyte
+S : NEI,14 mm2, 5.05 mg S
+Li-Coin: LTS Chem ,16 mm2
+GF/D: Whatman
+EMS 1.4 M LiTFSI
+0
+3
+6
+9
+12
+15
+1,5
+2,0
+2,5
+3,0
+]
+V
+[
+e
+g
+a
+tlo
+V
+Time [h]
+rest
+formation
+cycle 1
+(S|GF/D|Li-Coin)
+60 µl electrolyte
+S : NEI,14 mm2, 5.05 mg S
+Li-Coin: LTS Chem ,16 mm2
+GF/D: Whatman
+GBL 1.6 M LiTFSI
+0
+3
+6
+9
+12
+1,0
+1,5
+2,0
+2,5
+3,0
+3,5
+]
+V
+[
+e
+g
+a
+tlo
+V
+Time [h]
+rest
+formation
+cycle 1
+(S|GF/D|Li-Coin)
+60 µl electrolyte
+S : NEI,14 mm2, 5.05 mg S
+Li-Coin: LTS Chem ,16 mm2
+GF/D: Whatman
+2-Methylpyrazine 1.6 M LiTFSI
+0
+3
+6
+9
+12
+−6
+−4
+−2
+0
+2
+4
+]
+V
+[
+e
+g
+a
+tlo
+V
+Time [h]
+rest
+formation
+(S|GF/D|Li-Coin)
+60 µl electrolyte
+S : NEI,14 mm2, 5.05 mg S
+Li-Coin: LTS Chem ,16 mm2
+GF/D: Whatman
+Ethyl acetate 1.7 M LiTFSI
+(a)
+(b)
+(c)
+(d)
+Figure 6. Voltage–time diagrams of rest, formation, and discharge of the first cycle for electrolytes that were unsuccessful in cycling experiments. The rest-
+ing time for all cells was 12 h, and cycling was done between 1.4 and 2.7 V at 25 °C. a) GBL with 1.6 M LiTFSI shows no significant charge–discharge capac-
+ity after the first discharge during formation. b) EMS with 1.4 M LiTFSI shows no significant charge–discharge capacity after the first discharge during
+formation. c) Ethyl acetate with 1.7 M LiTFSI shows a strong voltage decay during rest with an unstable voltage. This is followed by a large voltage drop
+upon applying a current during the formation discharge. d) 2-Methylpyrazine with 1.6 M LiTFSI shows no significant charge or discharge capacity during for-
+mation or cycling.
+ChemElectroChem 2025, 12, e202500256 (12 of 16)
+© 2025 The Author(s). ChemElectroChem published by Wiley-VCH GmbH
+ChemElectroChem
+Research Article
+doi.org/10.1002/celc.202500256
+ 21960216, 2025, 19, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/celc.202500256 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 13>>
+and used the rounded Q value of 23 000 associated with it as the
+lower cutoff for our dataset. Application of this selection proce-
+dure left us with 4273 mixtures, which can also be found in the
+supporting data.[64] These were then inspected by hand to sort
+out unsuitable candidates. Hence, solvents we deemed unlikely
+to dissolve LiTFSI, compounds that were not actually liquid, com-
+pounds we expected to show strong side reactions, highly toxic
+compounds, and compounds that have already been used as
+electrolytes in LiSBs were disregarded as there is no further need
+to demonstrate their viability as electrolyte solvents. Examples of
+all of these can be found in Table 8.
+Furthermore, many of the mixtures contained duplicates of
+solvents with different concentrations of LiTFSI. If there were
+mixtures with different concentrations, we only considered the
+mixture with the highest Q value for each of the solvents. We
+proceeded with ten mixtures to be tested as battery electrolytes
+compiled in Table 9. The two mixtures containing 1,4-dioxane
+and 1,3-dioxane could not be tested in batteries because in
+our hands the (experimental) LiTFSI solubility was too low in
+these solvents.
+5.4. Testing Results for the New Electrolyte Mixtures
+Figure 6 shows the potential–time diagram for rest, formation,
+and the charge of the first cycle for the electrolyte mixtures that
+were unsuccessful.
+γ-butyrolactone (GBL) (Figure 6a) and ethyl methane–sulfo-
+nate (EMS) (Figure 6b) showed no significant recharge after the
+first discharge. They both showed a typical discharge curve and,
+while the battery with GBL still has some capacity during charge,
+the battery using EMS jumps to a voltage above the voltage limit
+of 2.7 V upon applying a charging current and does not retain
+any capacity. This indicates that the PS reacts with the electro-
+lytes similarly to the side reactions observed in carbonate-based
+electrolytes.[68] Ethylacetate (Figure 6c) showed a large potential
+decay during the rest phase. The voltage during this phase is not
+stable. This is a sign of side reactions already occurring during
+this phase, and no significant discharging and charging follow it.
+Upon applying a discharge current, the voltage drops to the
+safety cutoff potential of 5 V. 2-Methylpyrazine (Figure 6d)
+showed no discharging and charging while the voltage is stable
+(a)
+(b)
+(c)
+(d)
+0
+30
+60
+90
+0
+200
+400
+600
+Cycles
+g
+h
+A
+m
+[
+.
+d
+.
+p
+a
+c
+.c
+e
+p
+S
+–1]
+(S|GF/D|Li-Coin), 60 µl electrolyte, S : NEI,14 mm2, 5.05 mg S
+Li-Coin: LTS Chem ,16 mm2, GF/D: Whatman, Average of 3 cells
+]
+%
+[
+E
+C
+SOH 50 reference
+Dimethyl pimelate 
+1 M LiTFSi
+DOL 1 M LiTFSI
+SOH 50
+100
+200
+0
+30
+60
+90
+120
+150
+180
+0
+200
+400
+600
+Cycles
+g
+h
+A
+m
+[
+.
+d
+.
+p
+a
+c
+.c
+e
+p
+S
+–1]
+(S|GF/D|Li-Coin), 60 µl electrolyte, S : NEI,14 mm2, 5.05 mg S
+Li-Coin: LTS Chem ,16 mm2, GF/D: Whatman, Average of 3 cells
+]
+%
+[
+E
+C
+SOH 50 reference
+EMP 
+1.4 M LiTFSI
+DOL 1 M LiTFSI
+SOH 50
+EMP 1.4 M LiTFSI
+100
+125
+0
+30
+60
+90
+0
+200
+400
+600
+Cycles
+g
+h
+A
+m
+[
+.
+d
+.
+p
+a
+c
+.c
+e
+p
+S
+–1]
+(S|GF/D|Li-Coin), 60 µl electrolyte, S : NEI,14 mm2, 5.05 mg S
+Li-Coin: LTS Chem ,16 mm2, GF/D: Whatman, Average of 3 cells
+]
+%
+[
+E
+C
+SOH 50 reference
+GVL 1.6 M LiTFSI
+DOL 1 M LiTFSI
+SOH 50
+100
+0
+50
+100
+150
+200
+0
+200
+400
+600
+Cycles
+g
+h
+A
+m
+[
+.
+d
+.
+p
+a
+c
+.c
+e
+p
+S
+–1]
+(S|GF/D|Li-Coin), 60 µl electrolyte, S : NEI,14 mm2, 5.05 mg S
+Li-Coin: LTS Chem ,16 mm2, GF/D: Whatman, Average of 3 cells
+]
+%
+[
+E
+C
+SOH 50 reference
+Pimelonitrile 
+1.4 M LiTFSI
+DOL 1 M LiTFSI
+SOH 50
+100
+Figure 7. Cycling performance of electrolyte candidates tested at a rate of 1 C. All tested electrolytes are compared to a reference of DOL, 1 M LiTFSI.
+The resting time for all cells was 12 h, and cycling was done between 1.4 and 2.7 V at 25 °C. a) GVL, 1.6 M LiTFSI starts at high capacities which fade quickly.
+b) Pimelonitrile, 1.6 M LiTFSI starts at medium capacities but exhibits exceptional stability and CE close to 100% over all cycles. c) Dimethyl pimelate starts
+at high discharge capacities which immediately drop. d) EMP 1 M LiTFSI starts at medium capacities which either quickly fade or drop followed by a recov-
+ery which then results in a very stable cycling performance.
+ChemElectroChem 2025, 12, e202500256 (13 of 16)
+© 2025 The Author(s). ChemElectroChem published by Wiley-VCH GmbH
+ChemElectroChem
+Research Article
+doi.org/10.1002/celc.202500256
+ 21960216, 2025, 19, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/celc.202500256 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 14>>
+after an initial drop during the rest phase. This might be an indi-
+cator of poor PS solubility.
+The solvents that showed successful cycling are shown in
+Figure 7 together with a reference measurement of DOL with
+1 M LiTFSI. This was the best-performing electrolyte according
+to the Q values (Table 6). It shows high initial capacity coupled
+with a long cycling lifetime. However, the Coulombic efficiency
+(CE) was far below 100% during cycling which is indicative of side
+reactions, most likely large shuttle currents.
+γ-Valerolactone (GVL) with 1.6 M LiTFSI (Figure 7a) starts at a
+high specific discharge capacity, which quickly fades. It exhibits
+CEs over 100% during the initial phase. This is indicative of side
+reactions of PSs with the electrolyte as the PSs are formed during
+discharge but are not available during charging.
+Pimelonitrile with 1.4 M LiTFSI (Figure 7b) shows medium-
+specific discharge capacities. However, it has exceptional stability
+with the capacity showing a linear decline over the whole cycling
+with CEs at almost 100%. This indicates a low amount of side reac-
+tions and suppression of the PS shuttle. This has been reported
+for acetonitrile which, as a sparingly solvating electrolyte, sup-
+presses the PS shuttle.[44,69] When using acetonitrile, the need
+for a high concentration of LiTFSI and the addition of cosolvents
+to lower viscosity were reported. Both are not necessary here. A
+possible explanation for this is that the bidentate pimelonitrile is
+coordinating as a chelate more strongly to Liþ when compared to
+the monodentate acetonitrile.
+Dimethyl pimelate with 1 M LiTFSI (Figure 7c) also shows a
+high discharge capacity in the formation and first cycle, followed
+by a rapid decline in capacity, which probably makes this
+electrolyte unusable. This is coupled with high CE values indicat-
+ing strong side reactions.
+Finally,
+N-Ethylmorpholine
+(EMP)
+with
+1.4 M
+LiTFSI
+(Figure 7d) shows a unique behavior where it shows two pat-
+terns. The first is a medium discharge capacity, which drops
+for the first cycles and then stabilizes, rises, and exceeds the ini-
+tial discharge capacity. This is then followed by stable cycling,
+shown in black. For this reason, SoH 50 was calculated using the
+highest observed capacity and not the capacity of the first cycle.
+The other pattern is that it doesn’t stabilize, resulting in a rapid
+capacity loss, shown in blue. This behavior was observed sepa-
+rately in two different electrolytes using two different batches of
+EMPs by two different providers. It, therefore, seems to be a
+property of the solvent itself and not caused by impurities.
+The cycling data of the second batch can be found in Figure
+S32, Supporting Information. This problem is most likely solv-
+able by implementing suitable formation steps as it seems that
+the pattern observed is decided in the first few cycles. NMR data
+of both batches can be found in Figure S33, S34, Supporting
+Information.
+Of the solvents discussed here, pimelonitrile shows the most
+promising behavior. It shows exceptional cycling stability without
+the need for highly concentrated electrolytes, which have been
+reported for acetonitrile.[44,69] Furthermore, it has a CE close to
+100% during the entire cycling period. The performance of all
+electrolytes is summarized in Table 10.
+6. Conclusion
+In this study, CV data and impedance data were used in conjunc-
+tion with cycling data and shuttle current measurements to cre-
+ate PLS models. The data were collected from LiSBs with different
+electrolyte mixtures to identify which electrolyte properties influ-
+ence the discharge capacity and the shuttle current of these bat-
+tery systems. The first model included IS as a dependent variable
+and showed that it depends on the electrolyte properties much in
+the same way as the discharge capacity. This means an electrolyte
+that facilitates a good battery reaction will also facilitate a strong
+shuttle current. However, when including the shuttle current as
+an independent variable, some key variables could be identified
+that can be optimized to improve the discharge capacity without
+increasing shuttle current, namely, ES2,c1, the potential connected
+to the second discharge plateau, the resistance correlated to the
+charge transfer of PSs, and the carbon electrode RPS and the two
+factors connected to diffusion in the battery α CPEdiff and
+Q CPEdiff. This offers starting points to be considered for optimi-
+zation, when purposefully designing liquid electrolytes for LiSBs.
+We then present a method using PLS to predict battery per-
+formance in LiSBs based on electrolyte mixtures based on these
+findings. It uses electrolyte properties calculated by DFT methods
+with COSMOtherm, which enables an electrolyte screening solely
+based on computational data. This allows for prescreening of
+many possible electrolyte mixtures that could not be screened
+experimentally in a reasonable amount of time. While the method
+has some weaknesses, mainly the inability to predict side reac-
+tions, it fulfills its purpose of prescreening well and delivers good
+results when paired with the manual selection of electrolyte
+candidates.
+We demonstrated the usefulness of this method by applying
+it to a large set of electrolyte solvents withdrawn from the
+Scifinder database and they were only chosen by their melting
+and boiling points. We identified from the analysis ten possible
+electrolyte mixtures with solvents that have never been pub-
+lished for use in LiSBs before. Furthermore, we found and also
+applied three candidates already published as electrolyte sol-
+vents in LiSBs, further showing the method’s effectiveness. We
+Table 10. Cycling data and quality factor Q for all electrolyte mixtures
+ordered by size of Q. Nominal capacity of the positive electrodes is
+874 mAh g1
+which
+is
+lower
+than
+the
+theoretical
+capacity
+of
+1672 mAh g1 due to a high active mass loading, cycling was done at
+25 °C at a rate of 1 C after one formation cycle at 0.1 C. Cells were built
+in a 2032 coin cell setup with a positive electrode with an active
+material loading of 5.05 mg, a lithium coin as negative electrode, and
+60 μL of electrolyte.
+Electrolyte
+spec. cap.
+d. c1 [mAh g1]
+ncycles, SoH50
+Q
+DOL 1 M LiTFSI
+617
+61
+37 651
+Pimelonitrile 1.4 M LiTFSI
+226
+115
+25 990
+EMP 1.4 M LiTFSI
+190
+128
+24 320
+GVL 1.6 M LiTFSI
+361
+10
+3610
+Dimethyl pimelate 1 M LiTFSI
+161
+1
+161
+ChemElectroChem 2025, 12, e202500256 (14 of 16)
+© 2025 The Author(s). ChemElectroChem published by Wiley-VCH GmbH
+ChemElectroChem
+Research Article
+doi.org/10.1002/celc.202500256
+ 21960216, 2025, 19, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/celc.202500256 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 15>>
+then tested the new mixtures in batteries and could identify three
+new working electrolyte solvents for use in LiSBs: γ-valerolactone,
+pimelonitrile, and N-Ethylmorpholine (EMP). Of those the electro-
+lyte pimelonitrile with 1.4 M LiTFSI showed the best cycling
+behavior with exceptional cycling stability and CEs close to
+100% for the whole cycling procedure. We suggest that a system-
+atic optimization of the latter electrolyte including additives, dif-
+ferent salt concentrations, and maybe solvent mixtures may be
+rather promising. If the lower specific capacity accessible in
+the sulfur cathode—compared to ether-based solvents—can
+be balanced out while retaining the high stability of this solvent
+system, this novel electrolyte holds great potential for future
+LiSBs. In addition, also the EMP electrolyte is worth of further
+experimental dedication. However, this clearly exceeds the scope
+of this opening work.
+Acknowledgements
+This work was supported by the Freiburg University and
+Freiburger Materialforschungszentrum and by the European
+Research Council (ERC) in form of the InnoChem grant. The
+authors want to thank Regina Stroh for all her help regarding
+the COSMO suite, Sven Porath for his input in this work,
+Valentin Radtke for many discussions regarding impedance spec-
+troscopy and thermodynamics, Harald Scherer for NMR measure-
+ments, and the whole Krossing group for all their support and
+Moeka Yoshino for help with the TOC graphic.
+Open Access funding enabled and organized by Projekt DEAL.
+Conflict of Interest
+The authors declare no conflict of interest.
+Data Availability Statement
+The Data has been uploaded to zenodo.org with the DOI https://
+doi.org/10.5281/zenodo.14536751 and is available upon request.
+Keywords: lithium metal anodes · lithium–sulfur batteries ·
+modeling · sulfur
+[1] Y. Zhao, O. Pohl, A. I. Bhatt, G. E. Collis, P. J. Mahon, T. Rüther,
+A. F. Hollenkamp, Sustain. Chem. 2021, 2, 167.
+[2] Z. P. Cano, D. Banham, S. Ye, A. Hintennach, J. Lu, M. Fowler, Z. Chen, Nat.
+Energy 2018, 3, 279.
+[3] J. W. Choi, D. Aurbach, Nat. Rev. Mater. 2016, 1, 1.
+[4] J. B. Robinson, K. Xi, R. V. Kumar, A. C. Ferrari, H. Au, M.-M. Titirici, A. Parra-
+Puerto, A. Kucernak, S. D. S. Fitch, N. Garcia-Araez, et al., J. Phys. Energy
+2021, 3, 31501.
+[5] C. Yang, P. Li, J. Yu, L.-D. Zhao, L. Kong, Energy 2020, 201, 117718.
+[6] G. Benveniste, A. Sánchez, H. Rallo, C. Corchero, B. Amante, Resour.
+Conserv. Recycl. Adv. 2022, 15, 200086.
+[7] S. S. Zhang, J. Power Sources 2013, 231, 153.
+[8] Y. Lin, S. Huang, L. Zhong, S. Wang, D. Han, S. Ren, M. Xiao, Y. Meng, Energy
+Storage Mater. 2021, 34, 128.
+[9] M. Cuisinier, C. Hart, M. Balasubramanian, A. Garsuch, L. F. Nazar, Adv.
+Energy Mater. 2015, 5, 1401801.
+[10] Y. Liu, Y. Elias, J. Meng, D. Aurbach, R. Zou, D. Xia, Q. Pang, Joule 2021,
+5, 2323.
+[11] C. Barchasz, F. Molton, C. Duboc, J.-C. Leprêtre, S. Patoux, F. Alloin, Anal.
+Chem. 2012, 84, 3973.
+[12] L. Zhou, D. L. Danilov, F. Qiao, J. Wang, H. Li, R.-A. Eichel, P. H. L. Notten,
+Adv. Energy Mater. 2022, 12, 2202094.
+[13] J. Tan, D. Liu, X. Xu, L. Mai, Nanoscale 2017, 9, 19001.
+[14] L. Zhang, T. Qian, X. Zhu, Z. Hu, M. Wang, L. Zhang, T. Jiang, J.-H. Tian,
+C. Yan, Chem. Soc. Rev. 2019, 48, 5432.
+[15] T. Yang, T. Qian, J. Liu, N. Xu, Y. Li, N. Grundish, C. Yan, J. B. Goodenough,
+ACS Nano 2019, 13, 9067.
+[16] H. Liang, Z. Ma, Y. Wang, F. Zhao, Z. Cao, L. Cavallo, Q. Li, J. Ming, ACS Nano
+2023, 17, 18062.
+[17] Q. Li, G. Liu, Y. Chen, J. Wang,P. Kumar, H. Xie, W. Wahyudi, H. Yu, Z. Wang,
+Z. Ma, J. Ming, Adv. Funct. Mater. 2025, 35, 2420327.
+[18] R. Atwi, N. N. Rajput, Patterns 2023, 4, 100799.
+[19] Q. Li, G. Liu, P. Kumar, F. Zhao, Y. Wang, T. Cai, Y. Chen, H. Xie, W. Wahyudi,
+Z. Ma, J. Ming, Adv. Funct. Mater. 2025, 35, 2416714.
+[20] Y.-T. Zhang, Z.-X. Chen, Y.-W. Song, J.-D. Zhang, X. Chen, B.-Q. Li, R. Zhang,
+J.-Q. Huang, ACS Energy Lett. 2023, 8, 2674.
+[21] F. Wortelkamp, C. Wittekind, L. Busch, I. Krossing, ChemElectroChem 2025,
+e202500109.
+[22] Paul Geladi, Bruce R. Kowalski, Anal. Chim. Acta 1985, 1.
+[23] M. Haenlein, A. M. Kaplan, A Beginner’s Guide To Partial Least Squares
+Analysis 2004.
+[24] A. Klamt, G. Schüürmann, J. Chem. Soc., Perkin Trans. 1993, 2, 799.
+[25] S. Jeschke, P. Johansson, Batteries Supercaps 2021, 4, 1156.
+[26] A. Kilic, O. Abdelaty, M. Zeeshan, A. Uzun, R. Yildirim, D. Eroglu, Chem. Eng.
+J. 2024, 490, 151562.
+[27] L. Cheng, L. A. Curtiss, K. R. Zavadil, A. A. Gewirth, Y. Shao, K. G. Gallagher,
+ACS Energy Lett. 2016, 1, 503.
+[28] J. Chen, K. S. Han, W. A. Henderson, K. C. Lau, M. Vijayakumar, T. Dzwiniel,
+H. Pan, L. A. Curtiss, J. Xiao, K. T. Mueller, Y. Shao, J. Liu, Adv. Energy Mater.
+2016, 6, 1600160.
+[29] A. Gupta, A. Bhargav, A. Manthiram, Adv. Energy Mater. 2019, 9, 1803096.
+[30] Y. Li, S. Guo, Matter 2021, 4, 1142.
+[31] A. Shyamsunder, W. Beichel, P. Klose, Q. Pang, H. Scherer, A. Hoffmann,
+G. K. Murphy, I. Krossing, L. F. Nazar, Angew. Chem. Int. Ed. Engl. 2017, 56,
+6192.
+[32] Yuriy V. Mikhaylik, US7354680B2 2008.
+[33] S. Zhang, K. Ueno, K. Dokko, M. Watanabe, Adv. Energy Mater. 2015,
+5, 1500117.
+[34] R. D. Rauh, K. M. Abraham, G. F. Pearson, J. K. Surprenant, S. B. Brummer,
+J. Electrochem. Soc. 1979, 126, 523.
+[35] C. Weller, J. Pampel, S. Dörfler, H. Althues, S. Kaskel, Energy Tech. 2019,
+7, 1900625.
+[36] A. Benítez, D. Di Lecce, Á. Caballero, J. Morales, E. Rodríguez-Castellón,
+J. Hassoun, J. Power Sources 2018, 397, 102.
+[37] K. Dokko, N. Tachikawa, K. Yamauchi, M. Tsuchiya, A. Yamazaki,
+E. Takashima, J.-W. Park, K. Ueno, S. Seki, N. Serizawa, M. Watanabe,
+J. Electrochem. Soc. 2013, 160, A1304.
+[38] M. Agostini, D.-J. Lee, B. Scrosati, Y. K. Sun, J. Hassoun, J. Power Sources
+2014, 265, 14.
+[39] T. Ma, Y. Ni, Q. Wang, W. Zhang, S. Jin, S. Zheng, X. Yang, Y. Hou, Z. Tao,
+J. Chen, Angew. Chem. 2022, 134, e202207927.
+[40] N. Azimi, Z. Xue, I. Bloom, M. L. Gordin, D. Wang, T. Daniel, C. Takoudis,
+Z. Zhang, ACS Appl. Mater. Interfaces 2015, 7, 9169.
+[41] M. Baek, H. Shin, K. Char, J. W. Choi, Adv. Mater. 2020, 32, 2005022.
+[42] F. Gaillard, E. Levillain, J. P. Lelieur, J. Electroanal. Chem. 1997, 432,
+129.
+[43] G. Zhang, H.-J. Peng, C.-Z. Zhao, X. Chen, L.-D. Zhao, P. Li, J.-Q. Huang,
+Q. Zhang, Angew. Chem. Int. Ed. Engl. 2018, 57, 16732.
+[44] Y. Yamada, K. Furukawa, K. Sodeyama, K. Kikuchi, M. Yaegashi,
+Y. Tateyama, A. Yamada, J. Am. Chem. Soc. 2014, 136, 5039.
+[45] Robert P. Martin, William H. Doub, Julian L. Roberts Jr., Donald T. Sawyer,
+Inorg. Chem. 1973, 12, 1921.
+[46] H. Kim, J.-Y. Hwang, S. Bang, H.-G. Jung, Y.-K. Sun, J. Mater. Chem. A 2022,
+10, 10844.
+[47] S. Warneke, A. Hintennach, M. R. Buchmeiser, J. Electrochem. Soc. 2018,
+165, A2093.
+[48] H. Yang, Q. Li, C. Guo, A. Naveed, J. Yang, Y. Nuli, J. Wang, Chem. Commun.
+2018, 54, 4132.
+ChemElectroChem 2025, 12, e202500256 (15 of 16)
+© 2025 The Author(s). ChemElectroChem published by Wiley-VCH GmbH
+ChemElectroChem
+Research Article
+doi.org/10.1002/celc.202500256
+ 21960216, 2025, 19, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/celc.202500256 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 16>>
+[49] J. Chen, H. Yang, X. Zhang, J. Lei, H. Zhang, H. Yuan, J. Yang, Y. Nuli,
+J. Wang, ACS Appl. Mater. Interfaces 2019, 11, 33419.
+[50] M. Li, H. Chen, Y. Wang, X. Chen, J. Wu, J. Su, M. Wang, X. Li, C. Li, L. Ma,
+et al., J. Mater. Chem. A 2023, 11, 11721.
+[51] S. Ko, T. Obukata, T. Shimada, N. Takenaka, M. Nakayama, A. Yamada,
+Y. Yamada, Nat. Energy 2022, 7, 1217.
+[52] G. Gritzner, J. K˚uta, Electrochm. Acta 1984, 29, 869.
+[53] J. T. Hupp, Inorg. Chem. 1990, 29, 5010.
+[54] A. Ermantraut, V. Radtke, N. Gebel, D. Himmel, T. Koslowski, I. Leito,
+I. Krossing, Angew. Chem. Int. Ed. Engl. 2018, 57, 2348.
+[55] V. Radtke, N. Gebel, D. Priester, A. Ermantraut, M. Bäuerle, D. Himmel,
+R. Stroh, T. Koslowski, I. Leito, I. Krossing, Chem. Eur. J. 2022, 28,
+e202200509.
+[56] V. Radtke, D. Priester, A. Heering, C. Müller, T. Koslowski, I. Leito,
+I. Krossing, Chem. Eur. J. 2023, 29, e202300609.
+[57] Tanja Oppermann, Timo Kienzle, Valentin Radtke, Ingo Krossing,
+Publication in Progress.
+[58] X. Huang, Z. Wang, R. Knibbe, B. Luo, S. A. Ahad, D. Sun, L. Wang, Energy
+Tech. 2019, 7, 1801001.
+[59] D. Moy, A. Manivannan, S. R. Narayanan, J. Electrochem. Soc. 2015, 162, A1.
+[60] A. Irshad, R. Elizalde-Segovia, B. S. Jayathilake, B. Zayat, S. R. Narayanan, J.
+Electrochem. Soc. 2022, 169, 110528.
+[61] S. Walu´s, C. Barchasz, R. Bouchet, F. Alloin, Electrochm. Acta 2020, 359,
+136944.
+[62] A. Olinsky, S. Chen, L. Harlow, Eur. J. Oper. Res. 2003, 151, 53.
+[63] M. S. Grimm, R. Wagner, AoDSA 2020, 6, P04.
+[64] Fritz Wortelkamp, Christian Wittekind, Lilli Busch, Simon Weidner,
+Ingo Krossing, “Supporting Data to “A Partial Least Squares Modelling
+Approach
+for
+Intelligent
+Electrolyte
+Design
+in
+Lithium
+Sulfur
+BatteriesBattery Electrolytes”, can be found under https://doi.org/10.
+5281/zenodo.14536751 2025.
+[65] T. Gerlach, S. Müller, I. Smirnova, AIChE J. 2018, 64, 272.
+[66] BIOVIA, COSMOconfX 2024.
+[67] BIOVIA, COSMOtherm 2024.
+[68] A. Rafie, J. W. Kim, K. K. Sarode, V. Kalra, Energy Storage Mater. 2022, 50,
+197.
+[69] C.-W. Lee, Q. Pang, S. Ha, L. Cheng, S.-D. Han, K. R. Zavadil, K. G. Gallagher,
+L. F. Nazar, M. Balasubramanian, ACS Cent. Sci. 2017, 3, 605.
+[70] D. R. Lide, Handbook Of Organic Solvents, CRC Press 2024.
+[71] B. Flamme, G. Rodriguez Garcia, M. Weil, M. Haddad, P. Phansavath,
+V. Ratovelomanana-Vidal, A. Chagnes, Green Chem. 2017, 19, 1828.
+[72] E. R. Bissel, M. FINGER, J. Org. Chem. 1959, 24, 1259.
+[73] F. Schafiei, J. Chil. Chem. Soc. 2017, 62, 3389.
+[74] Q. Zhong, M. He, Y. Guo, Y. Zhang, J. Chem. Eng. Data 2009, 54, 1666.
+[75] Q. Ma, B. K. Mandal, J. Electrochem. Soc. 2015, 162, A1276.
+[76] C. Wu, T. Li, C. Liao, Q. Xu, Y. Cao, L. Li, J. Yang, J. Electrochem. Soc. 2017,
+164, A1321.
+[77] N. Cayot, C. Lafarge, E. Bou-Maroun, P. Cayot, J. Chromatogr. A 2016, 1456,
+77.
+[78] D. Deutsch, D. Oestreich, L. Lautenschütz, P. Haltenort, U. Arnold, J. Sauer,
+Chem. Ing. Tech. 2017, 89, 486.
+[79] M. Shin, H.-L. Wu, B. Narayanan, K. A. See, R. S. Assary, L. Zhu, R. T. Haasch,
+S. Zhang, Z. Zhang, L. A. Curtiss, A. Gewirth, ACS Appl. Mater. Interfaces
+2017, 9, 39357.
+[80] S. Liu, G. Chang, M. Luo, J. Wuhan Univ. Technol.-Mat. Sci. Edit. 2016,
+31, 700.
+[81] T. Ono, J. Fluor. Chem. 2017, 196, 128.
+[82] S.-T. Fu, S.-L. Liao, J. Nie, Z.-B. Zhou, J. Fluor. Chem. 2013, 147, 56.
+[83] Y.-C. Wen, H.-C. Kuo, J.-L. Guo, H.-W. Jia, J. Phys. Chem. B 2016, 120, 13125.
+[84] R. H. Rengstorff, Arch. Toxicol. 1985, 56, 201.
+Manuscript received: June 23, 2025
+Revised manuscript received: July 30, 2025
+Version of record online: August 26, 2025
+ChemElectroChem 2025, 12, e202500256 (16 of 16)
+© 2025 The Author(s). ChemElectroChem published by Wiley-VCH GmbH
+ChemElectroChem
+Research Article
+doi.org/10.1002/celc.202500256
+ 21960216, 2025, 19, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/celc.202500256 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

@@ -1,0 +1,1154 @@
+
+<<PAGE 1>>
+Enhancing Safety in Li–S Batteries: Mitigating Thermal
+Instabilities via Electrolyte and Separator Pair Optimization
+Divyansh Pandey, Kritika Parihar, and Deepak Punetha*
+1. Introduction
+The future of electric vehicles (EVs) in India is poised for signif-
+icant expansion, driven by a convergence of government policies,
+evolving market dynamics and rising consumer environmental
+awareness. As one of the fastest-growing economies with a
+rapidly expanding middle class, India represents a promising
+market for large-scale EV adoption.[1–3] The Indian government
+has implemented ambitious policies under schemes such as the
+Faster Adoption and Manufacturing of Hybrid and Electric
+Vehicles (FAME) and the National Electric Mobility Mission
+Plan (NEMMP) 2020, aiming to decarbonize the transportation
+sector. These initiatives, supported by incentives like subsidies,
+tax relief, and reduced GST rates, have enhanced the ﬁnancial
+viability of EVs. Concurrently, considerable
+efforts are underway to develop essential
+infrastructure such as public charging
+stations and battery-swapping networks to
+support
+their
+widespread
+integration.
+Lithium-ion batteries (LIBs) have been piv-
+otal in enabling the commercial success of
+EVs due to their high energy density, spe-
+ciﬁc capacity, low self-discharge rate, and
+long cycle life. Commercialized in 1991,
+LIBs outperformed earlier chemistries like
+lead–acid and nickel-based batteries. Lead–
+acid batteries, though used for auxiliary
+functions, lacked sufﬁcient speciﬁc energy
+and energy density (up to 40 Wh kg1 and
+90 Wh L1) to power EVs unlike modern
+LIBs
+(260 Wh kg1
+and
+700 Wh L1).[4]
+Ni–Zn batteries offered high discharge
+rates and thermal stability[5] but were lim-
+ited by low energy density and lifespan.[6]
+Ni-MH batteries improved upon this with
+a speciﬁc energy of 60–120 Wh kg1,[7]
+yet still trailed LIBs. Metal–air batteries
+(e.g., Al–air, Zn–air) promise 3–30 times higher energy densities
+than LIBs, though their practical use in EVs is still constrained
+by recharging and stability challenges. Lithium–sulfur (Li–S) batter-
+ies have emerged as a highly promising next-generation energy
+storage technology, primarily due to their theoretical speciﬁc energy
+(≈2600 Wh kg1), cost-effectiveness, and environmental sustain-
+ability. Despite their potential, practical implementation is currently
+constrained by challenges such as polysulﬁde shuttling, poor con-
+ductivity, and electrode degradation.[8] Sulfur, being abundant and
+low-cost, contributes to reduced battery production costs and is
+environmentally benign relative to materials used in conventional
+LIBs. These characteristics make Li–S batteries attractive for high-
+energy applications in EVs and aerospace. The separator plays
+a critical role in Li–S battery performance and safety, acting
+both as a physical barrier between the electrodes and a control
+medium for polysulﬁde migration. It must exhibit excellent
+mechanical strength, porosity, ﬂexibility, and ionic conductivity.
+Conventional polyoleﬁn separators (e.g., polyethylene and polypro-
+pylene) offer low cost and chemical stability but perform poorly
+under elevated temperatures and in mitigating polysulﬁde diffu-
+sion.[9] This can lead to severe capacity fading and increased safety
+risks.[3] Advanced separators incorporating nonpolyoleﬁn polymers,
+ceramics, nanoﬁbers, or modiﬁed conventional membranes have
+been proposed to overcome these limitations.[10] Materials such
+as naﬁon, polyacrylonitrile, poly(acrylic acid), polyvinylidene ﬂuo-
+ride, polyethylene oxide (PEO), poly(methyl methacrylate), and pol-
+yetherimide have shown potential in improving mechanical and
+D. Pandey
+Department of Electrical Engineering
+Motilal Nehru National Institute of Technology Allahabad
+Prayagraj, U.P. 211004, India
+K. Parihar, D. Punetha
+Department of Electronics and Communication Engineering
+Motilal Nehru National Institute of Technology Allahabad
+Prayagraj, U.P. 211004, India
+E-mail: deepakpunetha@mnnit.ac.in
+The ORCID identiﬁcation number(s) for the author(s) of this article
+can be found under https://doi.org/10.1002/ente.202500550.
+DOI: 10.1002/ente.202500550
+Lithium–sulfur (Li–S) batteries are promising candidates for next-generation
+energy storage, offering high theoretical energy density (2567 Wh kg1) and
+speciﬁc capacity (1675 mAh g1), with environmentally friendly sulfur cathodes.
+However, their practical deployment faces challenges such as polysulﬁde
+shuttling, short cycle life, and high self-discharge—issues exacerbated by thermal
+instability. Excess heat can degrade performance and trigger thermal runaway,
+compromising safety. This study investigates the impact of electrolyte and
+separator selection on thermal behavior, using dimethyl ether, dimethoxy ethane,
+dimethoxy sulﬁde, and acetonitrile as electrolytes, paired with boron nitride,
+titanium dioxide, and polyethylene glycol as separators. Thermal metrics such as
+peak temperatures (319.025 K–328.437 K), internal resistance, and rate of heat
+change are evaluated, along with electrochemical performance (energy stored:
+22.027 kJ; voltage range: 2.38 V to 1.7 V; electrolyte potential: 93.85 mV to
+11.01 mV). The results highlight that strategic electrolyte–separator pairing can
+effectively mitigate heat generation, advancing the safety and reliability of Li–S
+batteries in demanding energy applications.
+RESEARCH ARTICLE
+www.entechnol.de
+Energy Technol. 2025, 13, 2500550
+2500550 (1 of 12)
+© 2025 Wiley-VCH GmbH
+
+<<PAGE 2>>
+electrochemical properties. Polyethylene glycol (PEG)-based coat-
+ings enhance lithium-ion transport and electrolyte uptake by
+increasing hydrophilicity,[11] while carbon-based additives like
+Super P, graphene, and carbon nanotubes improve electronic con-
+ductivity and suppress polysulﬁde migration.[12] Reduced graphene
+oxide (rGO) enhances surface area and offers chemical adsorption
+for sulfur species.[13] TiO2 serves as an effective carbon-free coating
+for polysulﬁde immobilization and improved lithium kinetics,[14]
+and boron nitride (BN) contributes to thermal management and
+lithium metal stabilization by blocking polysulﬁde diffusion.[15]
+Electrolyte selection is equally crucial in Li–S battery design.
+Carbonate-based solvents, such as ethylene carbonate (EC), diethyl
+carbonate, propylene carbonate, and dimethyl carbonate, com-
+monly used in LIBs, are generally incompatible with sulfur cath-
+odes due to parasitic reactions with polysulﬁdes. Nonetheless, they
+may be employed when sulfur is embedded in nanoporous struc-
+tures or polymer matrices. Ether-based solvents such as dime-
+thoxyethane (DME) and dioxolane are more suitable for Li–S
+systems owing to their chemical compatibility with polysulﬁdes
+and ability to enable complete redox reactions.[16] Among ethers,
+tetraethylene glycol dimethyl ether offers superior solvating
+power.[17] Alternatives such as ionic liquids (ILs) and sulfones have
+also been explored, providing beneﬁts such as thermal stability,
+low volatility, and suppression of polysulﬁde solubility. ILs like
+[TFSI]-based compounds improve battery cyclability and capacity
+retention by limiting polysulﬁde dissolution.[18] Less volatile sol-
+vents such as NMP and dimethoxy sulﬁde (DMSO) are being
+evaluated for their favorable dielectric properties, low toxicity,
+and cost-effectiveness in Li–S conﬁgurations.
+Thermal management in Li–S batteries is as critical as opti-
+mizing capacity and energy density. Heat generation correlates
+directly with energy loss and reduced material efﬁciency. To
+improve the electronic conductivity of sulfur cathodes, carbon
+additives are used; however, the sulfur–carbon composite poses
+safety concerns due to its ﬂammability and reactivity at elevated
+temperatures.[19] Excessive internal temperatures can lead to sep-
+arator failure (e.g., melting of polyethylene or polypropylene) and
+trigger thermal runaway.[20] Heat generation in Li–S batteries
+arises from three primary sources: 1) ohmic losses in the elec-
+trolyte, governed by the Nernst–Planck equation; 2) electrochem-
+ical reaction enthalpy at the electrode–electrolyte interface; and
+3) overpotentials, including activation and concentration polari-
+zation. While polysulﬁde shuttling is a known challenge in Li–S
+systems, its effects were intentionally excluded in the present
+model to simplify the computational framework and isolate ther-
+mal behavior. This modeling decision enables focused analysis of
+heat generation and dissipation under controlled discharge con-
+ditions, thereby supporting the evaluation of material-dependent
+thermal responses. The study aims to investigate how thermal
+parameters inﬂuence overall cell performance, particularly with
+respect to power density, energy density, and energy storage.
+2. Theoretical Approach
+2.1. Model Development
+The study has been performed over COMSOL Multiphysics
+Simulation software by designing a 1D hypothetical Li–S
+model using the inbuilt electrochemistry -> tertiary current
+distribution, Nernst–Planck interface module, and heat trans-
+fer in ﬂuids module in combination to design and simulate the
+thermal behavior of the cell, involving two types of studies
+namely, current distribution initialization and time-dependent
+study.
+2.2. Mathematical Equations and Analysis
+2.2.1. Total Current Density Due to Dissolved Ions
+The equation for the general mass balance for the dissolved spe-
+cies in the electrolyte is given by the equation
+∂
+Ci
+∂
+t þ ∇⋅Ni ¼ Ri;tot
+(1)
+where Ni is the total ﬂux of the ith diluted species (mol/(m2 s)).
+Nernst–Planck equation determines the net ﬂux in the electrolyte
+and accounts for the ﬂux of charged solute species (ions) by dif-
+fusion, migration, and convection; these three modes collectively
+form the tertiary current distribution, and these individual
+modes form the ﬁrst, second, and third term of the following
+equation
+Ni ¼ Di∇ci  ziμm;iFci∇ϕl þ civ ¼ Ji þ civ
+(2)
+where ci represents the concentration of ith ion (mol m3), zi rep-
+resents the valency of ith ion, Di is the diffusion coefﬁcient
+(m2 s1), μm,i its mobility (s-mol kg1), F denotes the Faraday
+constant (C mol1), ϕl the electrolyte potential, v is the velocity
+vector (m s1), and Ji represents the molar ﬂux relative to the con-
+vective transport.
+Ji ¼ Di∇ci  ziμm;iFci∇ϕl
+(3)
+The total current density can be given by the summation of the
+ﬂux of all species
+il ¼ F
+X
+ziNi
+(4)
+Here, il is the total current density in the electrolyte due to the
+movement of ions.
+2.2.2. Modes of Heat Generation in the Cell
+Heat sources are generated due to the following three irrevers-
+ible voltage losses in an electrochemical cell: charge transport
+in the electrolyte, charge transport in the solid conductor
+materials, and activation overpotentials in the electrode
+reactions.
+2.2.3. Joule Heating Due to Charge Transport
+Joule heating source is created by transport across (solid) sepa-
+rator material and (ﬂuid) electrolyte material, thus it is termed
+accordingly as
+www.advancedsciencenews.com
+www.entechnol.de
+Energy Technol. 2025, 13, 2500550
+2500550 (2 of 12)
+© 2025 Wiley-VCH GmbH
+ 21944296, 2025, 11, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/ente.202500550 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 3>>
+QJH ¼ ðis ⋅∇ϕs þ il ⋅∇ϕlÞ
+(5)
+For a separator and an electrolyte domain, this is the total
+electrochemical heat source. For porous electrode sources
+due to electrochemical reactions, it is added to the Joule heat-
+ing. Heat transfer was modeled purely through conduction, as
+convection is negligible in the 1D geometry considered. The
+planar domain and boundary conditions assume zero velocity
+ﬁelds, which is appropriate for analyzing internal thermal dis-
+sipation under nonﬂuidic conditions. Hence, the COMSOL
+model accounts for Joule conductive heating only.
+2.2.4. Heating Due to Electrochemical Reactions
+The total heat balance equation for an electrochemical process
+can be given by the following equation
+Heat generated = Total reaction enthalpy – Electrical energy
+leaving the system
+This equation itself suggests that it accounts for the losses of
+the electrochemical cell
+Using Faraday’s laws for an electrode reaction, m, at the inter-
+face between the electron and ion-conducting phase, this corre-
+sponds to
+Qm ¼
+ΔHm
+nmF 
+ΔGm
+nmF  ηm;tot
+
+
+
+
+im
+(6)
+where ΔHm is the enthalpy change of the reaction, and ΔGm is
+the Gibbs free energy of the reaction, ΔGm, deﬁned as
+ΔGm ¼ ΔHm  TΔSm
+(7)
+where ΔSm is the net entropy change. The equilibrium potential
+is related to ΔGm in the following equation
+Eeq;m ¼  ΔGm
+nmF
+(8)
+ηm,tot is the total overpotential, which is deﬁned as
+ηm;tot ¼ ϕs  ϕl  Eeq;m
+(9)
+By the relation
+∂
+Eeq;m
+∂
+T
+¼ ΔSm
+nmF
+(10)
+the local heat source due to the electrochemical conversion pro-
+cess becomes
+Qm ¼
+ϕs  ϕl  Eeq;m þ T
+∂
+Eeq;m
+∂
+T
+
+
+im
+(11)
+The total heat source due to the electrochemical reactions,
+QEC, for an electrode surface is the sum of all individual heat
+sources of the electrode reactions according to
+QEC ¼
+X
+n
+m¼0
+Qm
+(12)
+3. Results and Discussions
+3.1. 1-D Li–S Electrochemical Cell Model
+The design of the model involves 1D geometry, as shown in
+Figure 1, developed using the electrochemical heating multiphy-
+sics interface in COMSOL Multiphysics Version 6.2. The param-
+eters used in the study have been listed in Table 1. The separator
+and the positive (cathode during discharge) porous electrode are
+deﬁned as domains in the geometry. The leftmost boundary rep-
+resents the negative lithium metal electrode, and the rightmost
+boundary represents the positive metal current collector. The
+electrolyte mass and charge transport are modeled using the
+Nernst–Planck equations with electroneutrality. The charge
+transfer reactions are deﬁned using the Nernst equation in com-
+bination with the Butler–Volmer equation, assuming the law of
+mass action. In addition to the earlier six polysulﬁde species, the
+species Liþ and A are included in the electrolyte, where A is
+the counter anion of the lithium salt. The same species are also
+present in the separator domain. Two precipitation–dissolution
+(non-Faradaic) reactions involving the solid species S8 and
+Li2S are included in the model (in both domains). The model
+is based on the Nernst–Planck model, which assumes electro-
+neutrality for which it is assumed that one of the ions is inde-
+pendent of its concentration, which is reasonably the counter
+anion [A1] because it has a relatively high concentration and
+behaves as a spectator ion, while the electrode reactions take
+place. The tertiary current distribution, Nernst–Planck inter-
+face, has been used wherein the model includes the separator
+and the porous electrode, and it has been deﬁned that the reac-
+tion takes place in their domain. In the separator as well as the
+electrolyte, it has been only the precipitation equation that
+leads to the precipitation of Li2S and S8; however, it is a point
+to note that ﬁve sequential reactions have occurred correspond-
+ingly in the cathode. The following ﬁve charge transfer reac-
+tions and six participating polysulﬁde species are considered
+in the positive electrode domain
+1
+2 S8 þ e ⇒1
+2 S2
+8
+3
+2 S2
+8
+þ e ⇒2S2
+6
+S2
+6
+þ e ⇒3
+2 S2
+4
+1
+2 S2
+4
+þ e ⇒S2
+2
+1
+2 S2
+2
+þ e ⇒S2
+The electrode surface reaction has been deﬁned for the Li
+anode in the ﬁrst boundary as follows
+Liþ þ e ⇒Li
+The model analysis and evaluations generate certain parame-
+ters within “Tertiary Current Distribution” interface, which is
+utilized by “Electrochemical Heating Multiphysics” interface
+to calculate the QJH, which is evaluated as the summation of
+www.advancedsciencenews.com
+www.entechnol.de
+Energy Technol. 2025, 13, 2500550
+2500550 (3 of 12)
+© 2025 Wiley-VCH GmbH
+ 21944296, 2025, 11, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/ente.202500550 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 4>>
+three individual heat sources namely, Qohmic, Qreaction, and
+Qoverpotential
+QJH ¼ Qohmic þ Qreaction þ Qoverpotential
+(13)
+To evaluate the above three quantities, COMSOL will require
+temperature as a function of time, which the multiphysics inter-
+face will be getting through the “Heat Transfer in Fluids,” which
+requires a model as listed in Table 1. An analytical function has
+been deﬁned over the model domain to specify various param-
+eters such as density (ρ(x)), speciﬁc heat capacity at constant pres-
+sure (Cp(x)), and thermal conductivity (k(x)). These parameters
+have been assigned across the domain to represent multiple
+materials—including the separator, electrolyte, and cathode—
+and are detailed in the Experimental Section. Table 2 lists all
+the material parameters that have been required throughout
+the model.
+The model has been designed with certain limitations that
+deﬁne the boundary of the model, which include: 1) the geometry
+of the model, being 1D is deﬁned over a length, i.e., from 0(ori-
+gin) to 45 μm, thus, all parameters are bound within this frame.
+2) The operating voltage of the model is 1.7 V, if during model
+simulation, the voltage dips below 1.7 V, the processing termi-
+nates. 3) The current density drawn from the cell for a ﬁxed dis-
+charge rate is given constant which is at 1C discharge rate, and
+the current density is 6.13 A m2. 4) To focus on the primary
+thermal behavior of different separator–electrolyte combinations,
+the model omits cross-electrode polysulﬁde transport (shuttling
+effect). While this exclusion limits direct applicability to long-cycle
+degradation behavior, it enables isolated thermal benchmarking
+and reveals intrinsic material-dependent thermal proﬁles.
+3.2. Simulation Result and Analysis
+The model has been optimized by computing the performance
+parameters and comparing the results of the simulation for vary-
+ing conﬁgurations. Each conﬁguration is designed by taking a
+particular combination of separator and electrolyte material.
+The possible pairs include BN–DME, BN–dimethoxy ethane,
+BN–DMSO,
+BN–acetonitrile,
+TiO2–DME,
+TiO2–dimethoxy
+ethane,
+TiO2–DMSO,
+TiO2–acetonitrile,
+PEO–DME,
+PEO–
+dimethoxy ethane, PEO–DMSO, and PEO–acetonitrile. Thus,
+the result obtained is aimed at realizing an optimized conﬁgura-
+tion that manages to generate a decent electrical output without
+much abnormal thermal behavior, thereby maintaining a suit-
+able environment-friendly and safety-ensured design. The ﬁrst
+plotted study inspects the rate of change of heat as shown in
+Figure 2 and not exactly the amount of heat because the model
+is designed to be highly constrained in terms of its size which
+makes it a very indeterministic property. Also, it has been aimed
+to design a model that has limitations to the rise of temperature
+rather than the heat stored because thermal runaway in battery
+occurs at a point of temperature where self-sustaining reactions
+get triggered due to which the temperature further keeps on
+increasing leading the battery to vent, catch ﬁre, or explode
+due to which the temperature marks the second point of study
+quite reasonably given in Figure 3. Also, the internal resistance is
+taken into consideration as previously discussed on how it affects
+Figure 1. 3D contoured surface representing variation in rate of change of heat across the cell length at constant discharge rate of a) BN–acetonitrile,
+b) BN–DME, c) BN–DMOE, d) BN–DMSO, e) TiO2–acetonitrile, f) TiO2–DME, g) TiO2–DMOE, h) TiO2–DMSO, i) PEG–acetonitrile, j) PEG–DME,
+k) PEG–DMOE, and l) PEG–DMSO.
+www.advancedsciencenews.com
+www.entechnol.de
+Energy Technol. 2025, 13, 2500550
+2500550 (4 of 12)
+© 2025 Wiley-VCH GmbH
+ 21944296, 2025, 11, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/ente.202500550 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 5>>
+Table 1. The parameters deﬁned in COMSOL multiphysics for the modelling of 1D Li-S battery.
+Sr.No
+Name
+Expression
+Description
+1)
+T
+30 [degC]
+“Temperature”
+2)
+Av_0
+132 762 [m^2/m^3]
+“Speciﬁc surface area”
+3)
+Ksp_Li2S_s
+1e2 [mol^3*m^-9]
+“Solubility product”
+4)
+Ksp_S8_s
+19 [mol/m^3]
+“Solubility product”
+5)
+L_sep
+25e-6 [m]
+“Separator thickness”
+6)
+c_A_1m_ref
+1000 [mol/m^3]
+“Reference concentration, salt anion”
+7)
+c_S_2m_ref
+8.27e-10 [mol/m^3]
+“Reference concentration, S2"
+8)
+c_S8_2m_ref
+0.18 [mol/m^3]
+“Reference concentration, S8
+2"
+9)
+c_S8_ref
+19 [mol/m^3]
+“Reference concentration, S8"
+10)
+c_S6_2m_ref
+0.32 [mol/m^3]
+“Reference concentration, S6
+2"
+11)
+c_S4_2m_ref
+0.02 [mol/m^3]
+“Reference concentration, S4
+2"
+12)
+c_S2_2m_ref
+5.23e-7 [mol/m^3]
+“Reference concentration, S2
+2"
+13)
+c_Li_1p_ref
+1001 [mol/m^3]
+“Reference concentration, Liþ”
+14)
+k_S8_s
+5 [1/s]
+“Rate constant, S8 (s) deposition-dissolution”
+15)
+k_Li2S_s
+3.45e-5 [m^6*mol^-2/s]
+“Rate constant, Li2S (s) deposition-dissolution”
+16)
+Vm_S8_s
+1.24e-4 [m^3/mol]
+“Molar volume, S8 (s)”
+17)
+Vm_Li2S_s
+2.4e-5 [m^3/mol]
+“Molar volume, Li2S (s)”
+18)
+M_S8_s
+832.07 [g/mol]
+“Molar mass, S8 (s)”
+19)
+M_Li2S_s
+(32.07þ26.941) [g/mol]
+“Molar mass, Li2S (s)”
+20)
+eps_S8_s_sep_0
+1e-12
+“Initial volume fraction in separator of S8 (s)”
+21)
+eps_Li2S_s_sep_0
+1e-7
+“Initial volume fraction in separator of Li2S (s)”
+22)
+eps_S8_s_pos_0
+0.166
+“Initial volume fraction in electrode of S8 (s)”
+23)
+eps_Li2S_s_pos_0
+1e-7
+“Initial volume fraction in electrode of Li2S (s)”
+24)
+i0_5_ref
+2e-9 [A/m^2] *0þ2e-7 [A/m^2]
+“Exchange current density at reference concentrations, reaction 5"
+25)
+i0_4_ref
+2e-4 [A/m^2]
+“Exchange current density at reference concentrations, reaction 4"
+26)
+i0_3_ref
+0.02 [A/m^2]
+“Exchange current density at reference concentrations, reaction 3"
+27)
+i0_2_ref
+0.02 [A/m^2]
+“Exchange current density at reference concentrations, reaction 2"
+28)
+i0_1_ref
+1.9 [A/m^2]
+“Exchange current density at reference concentrations, reaction 1"
+29)
+i0_Li_ref
+0.5 [A/m^2]
+“Exchange current density at reference concentrations, Li/Liþ reaction”
+30)
+Eeq_5_ref
+2.01[V]-R_const*T/F_const*log((c_S2_2m_ref/1[M])^(-1/2)
+“Equilibrium potential at reference concentrations, reaction 5"
+31)
+Eeq_4_ref
+2.03[V]-R_const*T/F_const*log((c_S4_2m_ref/1[M])^(-1/2)
+“Equilibrium potential at reference concentrations, reaction 4"
+32)
+Eeq_3_ref
+2.23[V]-R_const*T/F_const*log((c_S6_2m_ref/1[M])^(-1)
+“Equilibrium potential at reference concentrations, reaction 3"
+33)
+Eeq_2_ref
+2.35[V]-R_const*T/F_const*log((c_S8_2m_ref/1[M])^(-3/2)
+“Equilibrium potential at reference concentrations, reaction 2"
+34)
+Eeq_1_ref
+2.41[V]-R_const*T/F_const*log((c_S8_ref/1[M])^(-1/2)
+“Equilibrium potential at reference concentrations, reaction 1"
+35)
+Eeq_Li_ref
+0[V]-R_const*T/F_const*log((c_Li_1p_ref/1[M])^(-1))
+“Equilibrium potential at reference concentrations, Li/Liþ reaction”
+36)
+epsl_sep_0
+0.5
+“Electrolyte volume fraction of separator without deposits”
+37)
+epsl_pos_0
+0.7
+“Electrolyte volume fraction of positive electrode without deposits”
+38)
+L_pos
+20e-6 [m]
+“Electrode thickness”
+39)
+sigma_s
+1 [S/m]
+“Electric conductivity, electrode”
+40)
+D_A_1m
+3.5e-12 [m^2/s]
+“Diffusion coefﬁcient, salt anion”
+41)
+D_S_2m
+0.88e-12 [m^2/s]
+“Diffusion coefﬁcient, S2”
+42)
+D_S8_2m
+3.5e-12 [m^2/s]
+“Diffusion coefﬁcient, S8
+2"
+43)
+D_S8
+0.88e-11 [m^2/s]
+“Diffusion coefﬁcient, S8"
+44)
+D_S6_2m
+3.5e-12 [m^2/s]
+“Diffusion coefﬁcient, S6
+2"
+45)
+D_S4_2m
+1.75e-12 [m^2/s]
+“Diffusion coefﬁcient, S4
+2"
+46)
+D_S2_2m
+0.88e-12 [m^2/s]
+“Diffusion coefﬁcient, S2
+2"
+47)
+D_Li_1p
+0.88e-12 [m^2/s]
+“Diffusion coefﬁcient, Liþ”
+www.advancedsciencenews.com
+www.entechnol.de
+Energy Technol. 2025, 13, 2500550
+2500550 (5 of 12)
+© 2025 Wiley-VCH GmbH
+ 21944296, 2025, 11, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/ente.202500550 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 6>>
+Table 1. Continued.
+Sr.No
+Name
+Expression
+Description
+48)
+rho_S8_s
+M_S8_s/Vm_S8_s
+“Density, S8 (s)”
+49)
+rho_Li2S_s
+M_Li2S_s/Vm_Li2S_s
+“Density, Li2S (s)”
+50)
+C
+1 C-rate
+“C-rate”
+51)
+Cap
+16*(c_S8_refþeps_S8_s_pos_0/Vm_S8_s)*L_pos*F_const
+“Cell capacity (theoretical)”
+52)
+Cap_nom
+3.4 [A*h]/A_cell
+“Cell capacity (nominal)”
+53)
+A_cell
+0.28 [m^2]
+“Cell area”
+54)
+i_1C
+Cap_nom/1 [h]
+“1C current density”
+Table 2. The essential material properties during the model study and assessment.
+Material
+Thermal Conductivity
+Heat Capacity at Constant Pressure
+Density
+Boron nitride, BN
+30 W/(m.K)
+1610 J/(kg.K)
+1900 kg m3
+Rutile, TiO2
+11.8 W/(m.K)
+697 J/(kg.K)
+4050 kg m3
+Polyethylene glycol, PEG
+0.3 W/(m.K)
+2800 J/(kg.K)
+1150 kg m3
+Dimethyl ether, DME
+0.015616 W/(m.K)
+1443.1 J/(kg.K)
+1970 kg m3
+Dimethoxy ethane, DMOE
+0.161 W/(m.K)
+2134 J/(kg.K)
+868.3 kg m3
+Dimethyl sulfoxide, DMSO
+0.1567 W/(m.K)
+2008.32 J/(kg.K)
+1023 kg m3
+Acetonitrile
+0.21 W/(m.K)
+2223.76 J/(kg.K)
+798.12 kg m3
+Figure 2. Schematic representation of internal resistance in a surface showing the variation of position along the length of the cell and of time duration
+at a constant discharge rate of a) BN-acetonitrile, b) BN–DME, c) BN–DMOE, d) BN–DMSO, e) TiO2–acetonitrile, f ) TiO2–DME, g) TiO2–DMOE,
+h) TiO2–DMSO, i) PEG–acetonitrile, j) PEG–DME, k) PEG–DMOE, and l) PEG–DMSO.
+www.advancedsciencenews.com
+www.entechnol.de
+Energy Technol. 2025, 13, 2500550
+2500550 (6 of 12)
+© 2025 Wiley-VCH GmbH
+ 21944296, 2025, 11, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/ente.202500550 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 7>>
+the discharge rate of the electrochemical cell. Thus, the internal
+resistance variation across the length of the cell provides a better
+insight into the cumulative performance study. Keeping in mind
+the thermal and electrical output, it is displayed in Figure 4. Later
+light has been thrown over the obtained result of electrolyte
+potential using different combinations. Using these inspection
+parameters, the best conﬁguration possible has been declared.
+3.3. Effect on Rate of Change of Heat
+The heat of the electrochemical 1D cell in the electrolyte and sep-
+arator medium has been calculated using the relation
+dQ ¼ m ⋅Cp ⋅dT
+dQ
+dx ¼ m ⋅Cp ⋅dT
+dt ¼> dQ
+dt ¼ Velemental ⋅ρðxÞ ⋅CpðxÞ ⋅dT
+dt
+It is known that the elemental volume can be given by
+Velemental ¼ Acell ⋅xelemental
+xelemental ¼ Δx ≈1e  7ðassumedÞ
+Parameters like density and heat capacity at constant pressure
+have been deﬁned over the domains in the format of an analytical
+function. As can be seen from the resultant simulation in
+Figure 2, all conﬁgurations using PEG as a separator material
+Figure 3. 3D Schematic surface representation for electrolyte potential for all the combinations of separator–electrolyte in model a) BN–acetonitrile.
+b) BN–DME. c) BN–DMOE. d) BN–DMSO. e) TiO2–acetonitrile. f) TiO2–DME. g) TiO2–DMOE. h) TiO2–DMSO. i) PEG–acetonitrile. j) PEG–DME.
+k) PEG–DMOE. l) PEG–DMSO.
+Figure 4. Temperature variation in electrolytic medium a) for separator: BN, b) for separator: PEG, and c) for separator: TiO.2.
+www.advancedsciencenews.com
+www.entechnol.de
+Energy Technol. 2025, 13, 2500550
+2500550 (7 of 12)
+© 2025 Wiley-VCH GmbH
+ 21944296, 2025, 11, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/ente.202500550 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 8>>
+have fairly high values in comparison to the one using BN and
+TiO2. Also, in cases of BN–DME, TiO2–DME, BN–acetonitrile,
+and TiO2–acetonitrile are, respectively, high in comparison to
+other combinations of BN and TiO2, which seem less sensitively
+variable. Further inspection was carried out on the remaining
+combinations:
+BN–dimethoxyethane
+(DMOE),
+BN–DMSO,
+TiO2–DMOE, and TiO2–DMSO. The rate of change of heat is
+found to be minimal in the DMSO conﬁguration of BN and
+TiO2. The DMOE conﬁguration does not exhibit very high ther-
+mal variation and can be considered as well; however, in terms of
+the rate of heat change, the TiO2–DMSO conﬁguration shows the
+lowest value. It is also notable that in the case of DMOE conﬁg-
+urations, there is a clear irregularity in the 3D surface formed,
+while DMSO conﬁgs have lesser peaks, indicating a lesser no. of
+points of localized heating in the cell.
+Another possible factor of consideration could be internal
+resistance.
+3.4. Internal Resistance Variation
+It is already known that the internal resistance affects the dis-
+charge rate. A high value is expected for discharge rate as there
+can be times when the vehicle is needed to sustain a heavy load,
+maintaining the speed of the vehicle to be constant.
+In Figure 3, the variation along the cell length and different
+time instants during the period of cell operation is mostly simi-
+lar. Only the difference lies in the magnitude. The reason for this
+can be understood from the fact that internal resistance is simply
+given by
+Rint ¼ Velectrolyte
+ði0.2CÞ:Acell
+(14)
+In this formula, it can be seen how Rint is directly proportional
+to the electrolyte potential that has been plotted for each material
+conﬁguration as shown in Figure 4. For every other separator
+material, the value of internal resistance does not change as such
+because it is mainly dependent on electrolytes to conduct electric-
+ity across electrodes. The model has neglected the separator engi-
+neering to establish the complete circuit through it and hence
+taken as a uniform for every separator material.
+Thus, among acetonitrile, DME, DMOE, and DMSO, it can be
+seen that DME always offers the least resistant path, which was
+obvious, keeping in mind that it had the best electrical conduc-
+tivity among its competitors. Even among BN–DME, TiO2–DME,
+and PEG–DME, the least resistant path is provided by PEG–DME
+as obtained in the result.
+The next parameters that are to be inspected before declaring
+any particular conﬁguration to be the best, based on the study
+and purpose, are temperature and cell voltages.
+3.5. Temperature Attained by Cell
+The
+temperature
+of
+the
+model
+is
+calculated
+using
+the
+“Multiphysics” library and has been generated as one of the state
+variables of the model; thus, it does not need to be evaluated
+manually in terms of a mathematical expression. The model
+is isothermal; therefore, all points on the cell domain attain
+the same temperature. An isothermal approximation was
+adopted considering the short domain length (≈45 μm), low heat
+generation rates, and the dominance of thermal conduction. This
+assumption is appropriate for evaluating the intrinsic thermal
+behavior of materials under steady-state, controlled-discharge
+conditions.
+It can be easily interpreted from the obtained result, as shown
+in Figure 5, that there are no signiﬁcant noticeable changes in
+curves as the model opts for different separator materials; how-
+ever, it can be seen that the trend in changes of temperature
+curve for different electrolytic medium is homogeneous for
+Figure 5. Output cell voltage due to Li–S battery with different compositions a) with BN as a separator, b) with PEG as a separator, and c) with TiO2 as a
+separator.
+www.advancedsciencenews.com
+www.entechnol.de
+Energy Technol. 2025, 13, 2500550
+2500550 (8 of 12)
+© 2025 Wiley-VCH GmbH
+ 21944296, 2025, 11, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/ente.202500550 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 9>>
+varying separator material which supports the fact that there is
+not much change in temperature due to change in separator
+material because the material only forms the layer over the sepa-
+rator and not the actual separator mass. On keen observation
+though, this change can be marked that in BN and TiO2, the plots
+are more spread apart than in PEG. Also, max temperature is
+achieved in BN than PEG and TiO2; however, this variation is
+very ﬁne. However, there is a remarkable difference in the case
+of electrolytes. For DME, the rise in temperature is found to be
+the least and highest in the case of acetonitrile, and this trend is
+common for every separator material. Thus, DME seems to be
+the ﬁrst choice, then DMSO, DMOE, and lastly acetonitrile
+3.6. Cell Voltages as Electrical Output of Cell
+It is evident that the cell voltage output, as shown in Figure 6, is
+purely dependent on the cell reaction, and electrochemical equa-
+tions are involved to theoretically determine the cell voltage. The
+model has negated the effect of polysulﬁde deposition (shuttling
+effect) as discussed earlier; therefore, the engineered cell, irre-
+spective of the material, assumes a complete cutoff of polysulﬁde
+deposition. Thus, as an result, all combination achieves similar
+cell voltage.
+This assumption predominates the purpose to solely look out
+for a better cell which ensures higher thermal safety along with
+satisfactory electrical output.
+Now, enough factors are there to declare the most suitable
+conﬁguration, and it will be expected to achieve the better ther-
+mal performance of the system due to which temperature rise
+and rate of change of heat are the prime concerns, while internal
+resistance is the top second priority. Thus, based on the result
+obtained, it has been considered that BN–DME is the most suit-
+able model, as it has the minimum. However, this conﬂicts with
+the rate of change assumption, but the minimum temperature
+offered and signiﬁcantly less resistant path offered without much
+increment in rate of change of heat, which promotes it to be the
+most prominent among the rest. But let’s take the environmental
+factors for once, as there is yet another aim of the model to pre-
+pare eco-friendly design.
+Separators in Li–S batteries play a critical role in preventing
+short circuits while allowing lithium-ion ﬂow. Their sustainabil-
+ity can be assessed based on production impact, recyclability, and
+stability.
+3.7. Polyethylene Glycol
+PEG is derived from ethylene glycol, a petroleum-based chemi-
+cal. However, it is biodegradable and used in pharmaceuticals,
+showing promise as an eco-friendly material. Studies show that
+PEG-based separators can enhance battery life while maintaining
+environmental compatibility. PEG can be synthesized in a green
+manner, and it has relatively low toxicity. Its polymeric nature
+can also be adapted to recycling processes.[21]
+3.8. Boron Nitride
+BN is a highly stable ceramic material. While not biodegradable,
+it offers excellent thermal and chemical stability, enhancing the
+longevity of the battery and reducing the need for frequent
+replacement. BN requires signiﬁcant energy to produce but
+offers minimal toxicity and long-term environmental damage.
+It is recyclable but requires specialized processes, reducing its
+overall environmental friendliness.[22]
+3.9. Titanium Dioxide (TiO2)
+Extraction and reﬁnement of TiO2 have signiﬁcant environmen-
+tal costs. TiO2 has moderate toxicity concerns related to the pro-
+duction process, though it is considered a relatively safe material.
+It is not easily biodegradable, and recycling TiO2 from battery
+separators remains complex.
+Electrolytes serve as the medium for ion transfer and impact
+battery safety, performance, and environmental footprint. Their
+Figure 6. Concentration proﬁle of all the ions involved in the electrochemical chain reactions, i.e., a) for A1, b) for Liþ, c) for S8, d) for S8
+2, e) for S4
+2,
+f) for S2, g) for S6
+2, and h) for S2
+2.
+www.advancedsciencenews.com
+www.entechnol.de
+Energy Technol. 2025, 13, 2500550
+2500550 (9 of 12)
+© 2025 Wiley-VCH GmbH
+ 21944296, 2025, 11, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/ente.202500550 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 10>>
+sustainability depends on the toxicity, volatility, and renewability
+of the chemicals.
+3.10. Dimethyl Ether
+DME is considered a clean fuel and can be produced from renew-
+able resources, including biomass. It is nontoxic and eco-friendly.
+It exhibits high ionic conductivity in Li–S batteries and reduces
+polysulﬁde shuttle effects, extending battery life. Low greenhouse
+gas emissions and nontoxic degradation products make DME the
+most environmentally friendly choice. It is also biodegradable.[23]
+3.11. Dimethoxy Ethane
+DMOE is a solvent with moderate environmental impact. It per-
+forms well in batteries but has slightly higher toxicity and ﬂam-
+mability risks than DME. While not biodegradable, DMOE is
+relatively safe compared to many solvents. However, its synthesis
+from petroleum can contribute to carbon emissions.[24]
+3.12. DMSO
+DMSO is a sulfur-containing compound, meaning its production
+can release harmful sulfur oxides (SOx). It has been found to pro-
+vide high performance in Li–S batteries, but its environmental sus-
+tainability is limited. DMSO is less eco-friendly due to its sulfur
+content and the potential formation of hazardous byproducts.[25]
+3.13. Acetonitrile
+Acetonitrile is a solvent that can be used in many electrochemical
+systems, including Li–S batteries. However, it is highly toxic and
+poses environmental hazards during its production and disposal.
+Acetonitrile is considered harmful to both health and the envi-
+ronment. While effective in terms of battery performance, its tox-
+icity makes it the least environmentally friendly option.[26,27]
+Based on the sustainability and environmental impact of the
+separators and electrolytes, the best conﬁgurations for the Li–S bat-
+tery would involve PEG–DME, followed by PEG–DMOE. The least
+favorable would be combinations involving acetonitrile, especially
+with TiO2 as a separator. However, it is known that the thermal
+and electrochemical performance of PEG is not up to the mark,
+and hence, there is a need to choose a trade-off to accept the
+BN–DME model to be the best choice, as per the analysis.
+The Li–S battery using boron nitride to design its separator
+and dimethyl ether to be used as an electrolyte in the model
+needs further analysis based on various other relevant parame-
+ters. The model involves studying various battery performance-
+speciﬁc parameters to overview the overall performance of this
+conﬁgured system. The concentration proﬁle of all the ions that
+have participated in the reaction is depicted in Figure 6.
+The next parameters studied are the energy stored and power
+density of the given conﬁguration, which essentially account for
+better battery performance. For EV, the model requires high
+power density because it is required so as to withdraw large
+amounts of energy sometimes for heavy applications; however,
+speciﬁc power density is important to constrain that same prow-
+ess in a small size by mass or volume. A plot for power density
+and energy stored, as shown in Figure 7 and Figure 8, has been
+developed with the software.
+Another signiﬁcant parameter that has been analyzed is the
+cell voltage vs capacity plot. It is a fundamental diagnostic tool
+for evaluating the battery’s current state, understanding its aging
+process and optimizing charging–discharging protocols for
+improved performance and longevity. The graph shown in
+Figure 9 depicts the obtained cell voltage vs capacity curve for
+the given plot.
+The Ragone plot, obtained from the optimized Li–S cell model
+developed in this study with a focus on reduced thermal insta-
+bility, was thoroughly analyzed. Figure 10 illustrates a compara-
+tive performance assessment between the simulated results
+generated using the present COMSOL model and experimentally
+reported data by Vivanco and Rodríguez-Monroy.[28] The refer-
+enced study discusses graphene-enhanced Li–S batteries and
+highlights the advantages offered by graphene’s intrinsic
+Figure 7. Energy stored in Li–S battery with BN as a separator and
+dimethyl ether as electrolyte.
+Figure 8. Power density for BN–DME conﬁguration in Li–S battery.
+www.advancedsciencenews.com
+www.entechnol.de
+Energy Technol. 2025, 13, 2500550
+2500550 (10 of 12)
+© 2025 Wiley-VCH GmbH
+ 21944296, 2025, 11, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/ente.202500550 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 11>>
+properties—such as high surface area, superior charge carrier
+mobility, and notable chemical stability. According to the ﬁnd-
+ings, hybrid Li–S systems incorporating graphene and carbon
+nanotubes are capable of achieving energy densities up to
+400 Wh/kg and power densities nearing 10 000 W/kg.
+In contrast, the simulated conﬁguration developed in this
+work, which excludes graphene integration, attains a peak
+energy density of ≈290 Wh kg1 and a power density close to
+810 W kg1. These results are in line with typical values
+observed in conventional Li–S battery systems. The model
+effectively captures the characteristic trade-off between energy
+and power density, closely aligning with the experimental trend
+in the mid-energy range (≈220–290 Wh kg1). Slight deviations
+are attributed to idealized modeling conditions, including the
+omission of polysulﬁde shuttling effects and the assumption of
+uniform temperature distribution.
+4. Conclusion
+This study investigated the thermal and electrochemical perfor-
+mance of twelve separator–electrolyte combinations in Li–S batter-
+ies using a 1D COMSOL Multiphysics model. Among these, the
+BN–DME conﬁguration emerged as the most effective, exhibiting
+a low peak temperature of 319.52 K, high thermal stability, and
+minimal internal resistance (0.0326 Ω). It also achieved a maxi-
+mum voltage of 2.38 V and a stable plateau at 2.025 V—among
+the highest recorded. While the TiO2–DMSO pair showed the
+slowest temperature rise rate, it underperformed in voltage and
+resistance metrics. BN–DME also offers a favorable environmental
+proﬁle compared to acetonitrile- or TiO2-based systems, support-
+ing its sustainability. Though mechanical durability and long-term
+cycling were not simulated, prior studies indicate BN–DME pro-
+vides high ionic conductivity, better heat dissipation, and partial
+suppression of polysulﬁde shuttling—factors beneﬁcial for cycle
+life and structural reliability. The model also delivered energy stor-
+age and power density results, with energy peaking at 22.157 kJ
+and stepwise power behavior indicating consistent electrochemical
+activity. A Ragone plot comparison with experimental data con-
+ﬁrmed the model’s predictive reliability. Overall, the BN–DME
+conﬁguration offers an optimal balance of safety, thermal perfor-
+mance, and efﬁciency for advanced Li–S battery applications.
+Acknowledgements
+The author feels heavily indebted and would like to pay gratitude toward
+the Department of Electronics and Communication Engineering, Motilal
+Nehru National Institute of Technology, for guiding and helping through-
+out the course of work and for the invaluable facilities that were provided.
+Deepak Punetha would like to acknowledge MNNIT Allahabad for
+providing “Institute SEED Grant (Ref. No.: 396/R&C/2023-24 dt. 02nd
+September 2023)” for carrying out this research work.
+Conﬂict of Interest
+The authors declare no conﬂicts of interest.
+Data Availability Statement
+Data sharing is not applicable to this article as no new data were created or
+analyzed in this study.
+Keywords
+energy densities, Joule heating, self-discharge, shuttling effects, speciﬁc
+capacities, thermal runaways
+Received: March 21, 2025
+Revised: June 6, 2025
+Published online: July 6, 2025
+Figure 9. Cell voltage versus capacity curve for optimized Li–S cell
+conﬁguration.
+Figure 10. Ragone plot for a Li–S battery with BN–DME conﬁguration,
+showing the trade-off between energy density and power density as
+obtained from the COMSOL model. The BN–DME pair demonstrates high
+thermal stability and electrochemical efﬁciency, with peak power density
+above 800 W kg1 and energy density up to ≈295 Wh kg1.
+www.advancedsciencenews.com
+www.entechnol.de
+Energy Technol. 2025, 13, 2500550
+2500550 (11 of 12)
+© 2025 Wiley-VCH GmbH
+ 21944296, 2025, 11, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/ente.202500550 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 12>>
+[1] N. Deng, Y. Liu, Q. Li, J. Yan, W. Lei, G. Wang, L. Wang, Y. Liang,
+W. Kang, B. Cheng, Energy Storage Mater. 2019, 23, 314.
+[2] H. S. Ryu, H. J. Ahn, K. W. Kim, J. H. Ahn, K. K. Cho, T. H. Nam,
+Electrochim. Acta 2006, 52, 1563.
+[3] W. Chen, T. Lei, C. Wu, M. Deng, C. Gong, K. Hu, Y. Ma, L. Dai, W. Lv,
+W. He, X. Liu, Adv. Energy Mater. 2018, 8, 1702348.
+[4] R. Schmuch, R. Wagner, G. Hörpel, T. Placke, M. Winter, Nat. Energy
+2018, 3, 267.
+[5] Y. Liu, Z. Yang, J. Yan, J. Electrochem. Soc. 2016, 163, 3146.
+[6] L. Yaqoob, T. Noor, N. Iqbal, J. Energy Storage 2022, 56, 106075
+[7] L. Ouyang, J. Huang, H. Wang, J. Liu, M. Zhu, Mater. Chem. Phys.
+2017, 200, 164.
+[8] S. Liang, Batteries. 2024.
+[9] C. Yuan, X. Yang, P. Zeng, J. Mao, K. Dai, L. Zhang, X. Sun, Nano
+Energy 2021, 84, 105928.
+[10] Y. Huang, L. Lin, C. Zhang, L. Liu, Y. Li, Z. Qiao, J. Lin, Q. Wei,
+L. Wang, Q. Xie, D. L. Peng, Adv. Sci. 2022, 9, 2106004.
+[11] A. Wang, Y. Tu, S. Wang, H. Zhang, F. Yu, Y. Chen, D. Li, Polymers
+2022, 14, 4552.
+[12] L. Chen, H. Yu, W. Li, M. Dirican, Y. Liu, X. Zhang, J. Mater. Chem. A
+2020, 8, 10709.
+[13] Y. Gui, P. Chen, D. Liu, Y. Fan, J. Zhou, J. Zhao, H. Liu, X. Guo, W. Liu,
+Y. Cheng, J. Alloys Compd. 2022, 895, 162495.
+[14] L. Zhou, D. L. Danilov, R. A. Eichel, P. H. Notten, Adv. Energy Mater.
+2021, 11, 2001304.
+[15] L. Cheng, Y. Huang, S. Yin, M. Chen, F. Seidi, C. Deng, H. Xiao, Chem.
+Eng. J. 2024, 485, 150042.
+[16] J. Liu, Y. Zhou, T. Yan, X. P. Gao, Adv. Funct. Mater. 2024, 34,
+2309625.
+[17] Y. Li, F. Wu, Y. Li, M. Liu, X. Feng, Y. Bai, C. Wu, Chem. Soc. Rev. 2022,
+51, 4484.
+[18] É. A. Santos, L. M. Barros, de F. V. Peluso AF, I. Galantini,
+J. M. Gonçalves, R. Maciel Filho, H. Zanin, Chem. Eng. J. 2024, 493,
+152429.
+[19] X.-Q. Zhang, C. Liu, Y. Gao, J. M. Zhang, Y. Q. Wang, Nano 2020, 15,
+2030002.
+[20] Y. Xiao, A. Fu, Y. Zou, L. Huang, H. Wang, Y. Su, J. Zheng, Chem. Eng.
+J. 2022, 438, 135550.
+[21] L. Zhao, J. Fu, Z. Du, X. Jia, Y. Qu, F. Yu, J. Du, Y. Chen, J. Membr. Sci.
+2020, 593, 117428.
+[22] D. Sun, Z. Sun, D. Yang, X. Jiang, J. Tang, X. Wang, EcoEnergy 2023,
+1, 375.
+[23] X. Ma, H. Fu, J. Shen, D. Zhang, J. Zhou, C. Tong, A. M. Rao, J. Zhou,
+L. Fan, B. Lu, Angew. Chem., Int. Ed. 2023, 62, e202312973.
+[24] J. Xu, G. C. Farrington, J. Electrochem. Soc. 1995, 142, 3303.
+[25] M. J. Trahan, S. Mukerjee, E. J. Plichta, M. A. Hendrickson,
+K. M. Abraham, J. Electrochem. Soc. 2012, 160, A259.
+[26] R.
+Zhang,
+X.
+Shi,
+O.
+C.
+Esan,
+Global
+Challenges
+2022,
+6, 2200050.
+[27] S.
+Paul,
+D.
+Acharyya,
+D.
+Punetha,
+Energy
+Storage
+2024,
+6, e70068.
+[28] J. Prieto Vivanco, C. Rodríguez-Monroy, in Proc. 16th LACCEI Int.
+Multi-Conf. Eng., Educ. and Technol.: Innovation in Education and
+Inclusion, Lima, Perú 2018.
+www.advancedsciencenews.com
+www.entechnol.de
+Energy Technol. 2025, 13, 2500550
+2500550 (12 of 12)
+© 2025 Wiley-VCH GmbH
+ 21944296, 2025, 11, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/ente.202500550 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

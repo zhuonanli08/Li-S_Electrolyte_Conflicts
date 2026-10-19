@@ -1,0 +1,1317 @@
+
+<<PAGE 1>>
+R E S E A R C H A R T I C L E
+Modeling the effect of key cathode design parameters on the
+electrochemical performance of a lithium‐sulfur battery
+Nisa Erisen | Nur Ber Emerce | Sevgi Can Erensoy | Damla Eroglu
+Department of Chemical Engineering,
+Middle East Technical University, Ankara,
+Turkey
+Correspondence
+Damla Eroglu, Department of Chemical
+Engineering, Middle East Technical
+University, Ankara 06800, Turkey.
+Email: edamla@metu.edu.tr
+Present Address
+Damla Eroglu's, Department of Chemical
+Engineering, Bogazici University,
+Istanbul 34342, Turkey.
+Email: eroglud@boun.edu.tr
+Funding information
+The Scientific and Technological Research
+Council of Turkey (TUBITAK), Grant/
+Award Number: 116M574
+Summary
+A 1D model is developed for the Li‐S cell to predict the effect of critical cathode
+design parameters—carbon‐to‐sulfur (C/S) and electrolyte‐to‐sulfur (E/S) ratios
+in the cathode—on the electrochemical performance. Cell voltage at 60% depth
+of discharge corresponding to the lower voltage plateau is used as a metric for
+calculating the cell performance. The cathode kinetics in the lower voltage pla-
+teau is defined with a single electrochemical reaction; thus, the model has a sin-
+gle apparent kinetic model parameter, the cathode exchange current density (i0,
+pe). The model predicts that cell voltage increases considerably with increasing
+carbon content until a C/S ratio of 1 is attained, whereas the enhancement in
+the cell voltage at higher ratios is less obvious. The model can capture the effect
+of the C/S ratio on the cathode kinetics by expressing the electrochemically
+active area in the cathode in carbon volume fraction; the C/S ratio in the
+cathode does not affect i0,pe in the model. On the other hand, the electrolyte
+amount has a significant impact on the kinetic model parameter such that
+increasing electrolyte amount improves the cell voltage as a result of increasing
+i0,pe. Therefore, in the model, i0,pe needs to be defined as a function of the
+electrolyte volume fraction, which is known to have a crucial effect on reaction
+kinetics.
+KEYWORDS
+carbon‐to‐sulfur ratio in the cathode, cathode design, electrochemical modeling, electrolyte‐to‐sulfur
+ratio in the cathode, lithium‐sulfur battery
+1 |
+INTRODUCTION
+Li‐S batteries have received major attention as a promis-
+ing candidate for energy storage systems beyond Li‐ion
+batteries due to their high theoretical specific energy of
+2567 Wh kg−1.1 In addition, sulfur is naturally abundant,
+nontoxic, and inexpensive.1-3 Li‐S batteries typically
+contain an Li‐metal anode, a porous separator, and a
+sulfur‐carbon porous cathode filled with an organic elec-
+trolyte. The overall reaction for the Li‐S battery with a
+standard potential of U0 = 2.2 V (vs Li/Li+) is shown in
+Equation 1.1,4
+16Li þ S8 →8Li2S
+(1)
+Although Li‐S batteries are highly attractive, they
+suffer from major challenges, which lead to rapid capacity
+fading and limitations in cycle life. First of all, the
+precipitation of the insulating sulfur and Li2S at the
+cathode surface decreases the electronic conductivity,
+thus the utilization of the active material.1 Second, the
+polysulfide shuttle mechanism that takes place due to
+the migration of the soluble polysulfides in the electrolyte
+could decrease the Coulombic efficiency significantly.1,4-6
+Received: 8 December 2017
+Revised: 8 February 2018
+Accepted: 8 February 2018
+DOI: 10.1002/er.4045
+Int J Energy Res. 2018;42:2631–2642.
+Copyright © 2018 John Wiley & Sons, Ltd.
+wileyonlinelibrary.com/journal/er
+2631
+
+<<PAGE 2>>
+Lastly, Li metal is highly unstable; the surface area
+increases significantly with cycling, which could cause
+Li or electrolyte depletion in the cell.1,7-9
+In Li‐S batteries, cell design has a critical effect on
+both electrochemical performance and systems‐level‐
+specific energy and energy density.1 The carbon‐to‐sulfur
+(C/S) ratio in the cathode is one of these key cell design
+parameters. Due to the insulating nature of sulfur and
+Li2S, carbon should be incorporated into the cathode to
+increase the surface area for e−transfer and electronic con-
+ductivity, which would enhance the reaction kinetics. The
+effect of the C/S ratio on the electrochemical performance
+of an Li‐S battery has been studied previously in the lit-
+erature.2-6 Ding et al2 stated that there is an optimum
+ratio of carbon to sulfur in the cathode that maximizes
+the specific capacity of the cathode. Brückner et al3 also
+investigated the effect of carbon amount and showed that
+60 wt% S gives the highest cathode discharge capacity.
+Xu et al4 confirmed that the C/S ratio in the cathode
+determines the initial discharge capacity as well as the
+cell voltage.
+The electrolyte‐to‐sulfur (E/S) ratio in the cathode is
+another important parameter that defines the reaction
+and polysulfide shuttle mechanisms through the polysul-
+fide electrolyte concentration on the cathode surface.
+Polysulfide electrolyte concentration controls the precipi-
+tation/dissolution reactions and shuttle mechanism, and
+it determines the active material utilization at the cath-
+ode. There are previous studies in the literature investigat-
+ing the effect of the E/S ratio in the cathode on Li‐S cell
+performance.2,3,7,10-14 Ding et al2 studied the effect of elec-
+trolyte amount on the initial discharge capacity of an Li‐S
+cell and concluded that increasing the E/S ratio in the
+cathode increases the capacity significantly. However, a
+large amount of excess electrolyte decreases the energy
+density at the cell and systems level. Zhang10 stated that
+the E/S ratio in the cathode should be optimized for high
+discharge capacity and good capacity retention and deter-
+mined that 10 mL g−1 gives the best performance. Zheng
+et al11 and Kim et al12 both concluded that an E/S ratio
+of 20 mL g−1 leads to better Coulombic efficiency and
+cycle life and higher discharge capacity. All these studies
+in the literature confirm that C/S and E/S ratios in the
+cathode have a critical effect on the cell and systems level
+performance of an Li‐S battery.
+Electrochemical modeling of the reaction and shuttle
+mechanisms in the Li‐S battery has also been studied
+to a great extent. Mikhaylik and Akridge15 developed a
+model that focuses on the shuttle phenomena in Li‐S bat-
+teries. Kumaresan et al16 introduced a comprehensive
+model, including both electrochemical and precipitation
+reactions as well as the transport phenomena in the elec-
+trolyte. Other models based on the study of Kumaresan
+et al16 have also been proposed.17-24 Neidhardt et al17
+developed a 2D model framework describing the multi-
+phase processes in the Li‐S cell. Fronczek and Bessler18
+applied this framework to a 1D model of the Li‐S cell
+and predicted the EIS response of the battery. Hofmann
+et al19 also used this framework to obtain a 1D model
+accounting for the polysulfide shuttle mechanism and
+the precipitation of the active material at the anode.
+Ghaznavi et al20-22 performed a sensitivity analysis to
+identify the most important parameters affecting the cell
+performance, such as the applied discharge current, pre-
+cipitation and electrochemical reaction kinetics, sulfur
+content, and transport properties. Yoo et al23 included
+the solubility and diffusivity of the polysulfides in the
+electrolyte in their model to predict the cycling perfor-
+mance of an Li‐S cell. Zhang et al24 provided a 1D model
+to demonstrate the transport‐limitation mechanism of the
+Li‐S cell. Risse et al25 introduced a linear 4‐state model
+predicting the capacity fade of an Li‐S battery. Zhang
+et al26 accounted for the concentration dependence of
+the electrolyte conductivity in their mechanistic model.
+Ren et al27 incorporated the Li2S precipitation kinetics
+into their model. Al‐Mahmoud et al28 described the self‐
+discharge of an Li‐S cell via a simple, experiment‐based
+model. Marinescu et al29 developed a zero‐dimensional
+model based on the electrochemical reactions proposed
+by Mikhaylik and Akridge15 to describe the voltage
+response of an Li‐S cell during discharge/charge. Finally,
+Thangavel et al30 presented a comprehensive Li‐S dis-
+charge model describing the cathode, which is composed
+of mesoporous carbon particles with sulfur impregnated
+in‐between pores, in multiscale. Their model considers
+the complicated multistep cathode kinetics, as well as
+the precipitation of Li2S.30 To conclude, comprehensive
+electrochemical models describing the detailed reaction
+and shuttle mechanisms in the Li‐S cell have been
+reported extensively, as summarized above. However,
+only a few of these studies focus on modeling the effect
+of key cell design parameters, such as the C/S and E/S
+ratios in the cathode on the electrochemical performance
+of an Li‐S cell.
+In this study, a 1D electrochemical model has been
+developed to predict the effect of C/S and E/S ratios in
+the cathode on the Li‐S cell performance. As is known,
+complicated physical‐based models for the Li‐S cell
+require a number of assigned model parameters. How-
+ever, in our model, the cathode kinetics in each of the
+two voltage plateaus (high or low discharge plateau) is
+described with a single electrochemical reaction; thus,
+the model contains a single apparent kinetic parameter
+in the cathode for each discharge region. Importantly, this
+novel feature of our model allows a direct comparison of
+the model with the experimental data. For instance, the
+2632
+ERISEN ET AL.
+ 1099114x, 2018, 8, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.4045 by Tsinghua University Library, Wiley Online Library on [10/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 3>>
+cathode exchange current density, which is the only
+kinetic model parameter in the cathode, can simply be
+estimated comparing the model predictions for cell resis-
+tance with the experimentally measured impedances. A
+second feature distinguishing our model is that it enables
+the investigation of critical cathode design parameters,
+the C/S ratio, and the E/S ratio in the cathode, on the
+electrochemical performance, namely, the cell voltage of
+an Li‐S cell. The proposed model can successfully capture
+the impact of these key cathode design parameters on the
+cell performance. Therefore, it provides a framework to
+predict and interpret the experimentally observed trends
+as a function of cell design considerations.
+2 |
+MODEL DESCRIPTION
+In this study, a 1D concentration‐independent electro-
+chemical model based on a previous model1,31 is proposed
+to investigate the effect of key cathode design parameters
+—C/S and E/S ratios in the cathode—on the electrochem-
+ical performance of an Li‐S cell. The model is developed
+for a constant‐current, isothermal discharge of an Li‐S cell
+composed of an Li‐metal anode, a porous separator, and a
+porous cathode containing carbon, sulfur, binder, and an
+organic
+electrolyte
+(Figure
+1).
+As
+is
+known,
+the
+electrolyte, binder, and carbon type have a considerable
+effect on the electrochemical performance of the Li‐S cell.
+However, in the scope of this work, the effect of the
+binder, carbon, and electrolyte type has not been investi-
+gated. The properties for the most typical ones have
+been used and assumed constant throughout the study.
+Physicochemical properties of the electrolyte are taken
+for 1 M LiTFSI and 2 wt% LiNO3 in DOL:DME
+(1:1 vol%), neglecting the variation in the physicochemi-
+cal properties of the electrolyte with changing polysulfide
+electrolyte concentration.1 For the binder in the cathode,
+polyvinylidene difluoride at a constant concentration of
+10 wt% is used.1 The BET surface area and density for
+the carbon are taken for the super P carbon.1
+In the development of the model, concentration gradi-
+ents in the cell have been neglected. This assumption is
+based on the previous modeling studies discussing that
+at low current densities, concentration profiles do not
+show significant gradients across the thickness of the cell,
+especially at the discharge depths corresponding to the
+lower voltage plateau.16,21 Therefore, the inhomogeneity
+within the cell resulting from the accumulation of Li2S,
+clogging of the pores, or high variations of the polysulfide
+concentration in the electrolyte that are typically reported
+at high discharge rates or near the end of discharge20,30
+have been disregarded. Another major simplification in
+the model is that each of the two discharge plateaus is
+dominated by a single electrochemical reaction.15,29 This
+model assumes symmetric discharge and charge reactions
+and does not account for the polysulfide shuttle mecha-
+nism. The current‐voltage relationships for the anode,
+separator, and cathode are considered separately in the
+electrochemical model, as described below.
+In the anode, the deposition/dissolution reaction of
+the Li metal shown in Equation 2 is described with But-
+ler‐Volmer kinetics; the overpotential and area‐specific
+impedance (ASI) for the anode are calculated by using
+Equations 3 and 4, respectively. Area‐specific impedance
+FIGURE 1
+Calculation schematic of the electrochemical model developed for the Li‐S cell. The effect of carbon‐to‐sulfur and electrolyte‐to‐
+sulfur ratios in the cathode on the electrochemical performance of the cell is predicted by the model. The kinetic model parameter, cathode
+exchange current density, is estimated using experimental electrochemical impedance spectroscopy data [Colour figure can be viewed at
+wileyonlinelibrary.com]
+ERISEN ET AL.
+2633
+ 1099114x, 2018, 8, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.4045 by Tsinghua University Library, Wiley Online Library on [10/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 4>>
+is a complex integration of all the transport and charge
+transfer resistances in the cell. It is not an inherent prop-
+erty of the battery but rather a function of many elements
+(depth of discharge [DOD], current density, kinetic, and
+transport properties, etc). There are different approaches
+in the literature for the calculation of ASI in battery elec-
+trodes.32 Equation 4 has been used to model the Li anode
+both in Li‐O2
+31 and Li‐S1,33 batteries for a range of current
+densities previously in the literature.
+Liþ þ e−→Li0
+(2)
+I ¼ io;ne exp αne;aF
+RT ηne
+
+
+−exp −αne;cF
+RT
+ηne
+
+
+
+
+(3)
+ASIne ¼ ηne
+I
+(4)
+where ηne is the anode overpotential in V, I is the current
+density in A cm−2, i0,ne is the anode exchange current
+density in A cm−2, αne is the transfer coefficient, and
+ASIne is the ASI of the anode in Ω cm2.
+For the porous separator, Ohm's law is used to
+account for the Ohmic losses due to the transfer of the
+Li+ ions. The overpotential and ASI for the porous sepa-
+rator can be determined by using Equations 5 and 6,
+respectively.
+ηsep ¼ ASIsep × I
+(5)
+ASIsep ¼ Lsep
+κeff;sep
+(6)
+where ηsep is the separator overpotential in V, ASIsep is
+the ASI of the separator in Ω cm2, κeff,sep is the effective
+ionic conductivity of the separator in S cm−1, and Lsep is
+the separator thickness in cm.
+Equations 7a and 7b express the 2‐step electrochemi-
+cal reaction chain proposed by Mikhaylik and Akridge,15
+which is used to describe the cathode kinetics in our
+model. In the present model, each of the two voltage pla-
+teaus is defined with a single electrochemical reaction as
+in the model of Mikhaylik and Akridge15 and Marinescu
+et al.29 This simplification leads to a single apparent
+kinetic parameter in the model for the cathode for each
+discharge region, the cathode exchange current density
+that can be estimated by the comparison with the experi-
+mental cell resistances measured by the electrochemical
+impedance spectroscopy (EIS) method. Therefore, the
+characteristic processes occurring in the cathode during
+the discharge of the Li‐S cell—which are typically captured
+with a multistep reaction mechanism, such as the passiv-
+ation of the active surface area and clogging of the pores
+due to the deposition of Li2S or the increase in the electrolyte
+and charge transfer resistances with increasing polysulfide
+electrolyte concentration—are all expressed via the variation
+in the cathode exchange current density. Because all these
+mechanisms contribute significantly to an increase in the
+total cell resistance, their effect can be captured successfully
+with a single model parameter as proposed in our model.
+1
+4 S0
+8 þ e−↔1
+2 S2−
+4
+High discharge plateau (7a)
+1
+4 S2−
+4 þ e−↔1
+2 S2−þ 1
+4 S2−
+2
+Low discharge plateau (7b)
+The electrochemical model for the cathode is based on
+the porous electrode theory by Newman and Tobias.34 In
+the model, concentration variations are neglected within
+the electrode. As mentioned before, this assumption may
+be applied based on the previous modeling results
+showing that polysulfide concentrations are relatively
+uniform and constant in the second plateau before 80%
+DOD.16,18,21,30 In the development of the electrochemical
+model, the porous electrode is treated macroscopically in
+1D defining the potential and current density in the
+matrix and electrolyte phases. Ohm's law defines the cur-
+rent density for the matrix phase, whereas, the sum of the
+fluxes of charged species by migration, diffusion, and con-
+vection determines the current density for the electrolyte
+phase. Governing equations also include the conservation
+of species and charge in addition to the electroneutrality.
+The current‐voltage relationship for the charge transfer
+is described with an approximation of the Butler‐Volmer
+equation, either Tafel or linear kinetics based on the
+current density. The boundary conditions define zero cur-
+rent for the matrix and electrolyte phases at the cathode‐
+separator
+and
+cathode‐current
+collector
+boundaries,
+respectively. The detailed description of the governing
+equations and boundary conditions can be found in
+Appendix A. This problem can be solved analytically for
+both the Tafel and linear kinetics as shown in Equations 8
+and 9, respectively. The ASI of the cathode is then deter-
+mined as a function of the cathode overpotential as shown
+in Equation 10.
+ηpe ¼ 1
+β
+δ−ϵ
+ð
+Þ ϵ
+δ þ 2
+δ lnsec θ−ψ
+ð
+Þ
+
+
+þ 2ϵ
+δ lnsec ψ
+
+þ ln
+2 Ij jθ2
+ai0;peLpeδ
+
+
+(8)
+2634
+ERISEN ET AL.
+ 1099114x, 2018, 8, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.4045 by Tsinghua University Library, Wiley Online Library on [10/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 5>>
+ηpe ¼ I × Lpe
+κeff þ σeff
+1 þ
+2 þ
+σeff
+κeff
+þ κeff
+σeff
+
+
+coshν
+ν sinhν
+2
+664
+3
+775
+(9)
+ASIpe ¼ ηpe
+I
+(10)
+where ηpe is the cathode overpotential in V, a is the super-
+ficial area in cm−1, Lpe is the thickness of cathode in cm,
+σeff and κeff are the effective electronic and ionic conduc-
+tivities in S cm−1, respectively, and ASIpe is the ASI of
+the cathode in Ω cm2. The other model parameters in
+Equations 8 and 9 are defined in Appendix A.
+The cell voltage at the applied constant‐current den-
+sity is then predicted by the model through the total ASI
+and overpotential of the cell as shown in Equations 11
+to 13.
+ASIcell ¼ ASIne þ ASIsep þ ASIpe
+(11)
+ηcell ¼ ηne þ ηsep þ ηpe
+(12)
+Vcell ¼ U−ηcell
+(13)
+where U is the cell open‐circuit voltage, ηcell is the total
+cell overpotential, and Vcell is the cell voltage, all in V,
+and ASIcell is the total cell ASI in Ω cm2.
+The calculation schematic of the model is presented in
+Figure 1. The effect of two critical design parameters in
+the cell—C/S and E/S ratios in the cathode—on the elec-
+trochemical performance of an Li‐S cell has been investi-
+gated for various current densities by using the proposed
+model. The transport and kinetic parameters and the
+physicochemical properties in the model are shown in
+Table 1. The cathode exchange current density, i0,pe, is
+estimated by comparing the model predictions for the
+total ASI of the cell (Equation 11) directly with the total
+cell resistances experimentally measured in the literature
+by using the EIS method.38-40 The cathode exchange cur-
+rent density calculated by using the cell resistances at
+60% discharge depth has been used throughout the study
+(i0,pe = 6.28 × 10−7 A cm−2).
+The effect of carbon and electrolyte amounts in the
+cathode on cell performance has been examined via the
+cell voltages at the lower voltage plateau predicted by
+the model. In the model, the C/S ratio in the cathode
+affects the cell voltage through the electrochemically
+active area, a. As shown in Table 1, the C/S ratio defines
+TABLE 1
+Parameters in the electrochemical model for T = 298 K
+Thermodynamic cell voltage, U (V)
+2.2
+Current density, I (mA cm−2)
+0.1‐1.0
+Carbon to sulfur wt% in the cathode (wt%)a
+10:80‐67.5:22.5
+C to S ratio in the cathode
+0.125‐3
+Electrolyte vol% in the cathode (vol%)
+50‐95
+E to S ratio in the cathode (mL g−1)b
+0.86‐16.25
+Cathode thickness, Lpe (μm)
+50
+Exchange current density for S reaction, i0, pe (A cm−2)
+6.28 × 10−7
+Transfer coefficient for S reaction, αpe,a, αpe,c
+0.5
+Electrochemically active area in the cathode, a (cm−1)c
+a = 650,000 cm2g−1 · ρC · εC
+Cathode effective ionic conductivity, κeff (S cm−1)d,35,36
+κeff = κ · ε1.5
+Cathode effective electronic conductivity, σeff (S cm−1)e,36
+σeff = σ · εC
+1.5
+Exchange current density for Li deposition/dissolution, i0, ne (A cm−2)1
+10−3
+Transfer coefficient for Li deposition/dissolution, αne,a, αne,c
+37
+0.5
+Separator thickness, Lsep (μm)
+20
+Separator effective ionic conductivity, κeff,sep (S cm−1)1
+6.5 × 10−4
+aThe cathode contains 10 wt% binder.
+bIn the model, E/S ratio and electrolyte volume fraction in the cathode are related through E
+S ratio ¼
+ε
+εS × ρS
+.
+cIn the model, a is defined as a function of the Brunauer‐Emmett‐Teller surface area (650,000 cm2 g−1), density (ρC), and volume fraction of the carbon (εC) in
+the cathode.
+dEffective ionic conductivity for the porous cathode is determined by using Bruggeman's expression.
+eEffective electronic conductivity for the porous cathode is determined by using Bruggeman's expression.
+ERISEN ET AL.
+2635
+ 1099114x, 2018, 8, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.4045 by Tsinghua University Library, Wiley Online Library on [10/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 6>>
+the carbon volume fraction in the cathode and thus deter-
+mines the calculated cell voltage through a (Equations 8
+and 9). Likewise, the model expresses the impact of E/S
+ratio on the cell voltage by means of the electrochemically
+active area; increasing electrolyte volume fraction in the
+cathode reduces a via decreasing εC. The C/S ratio and
+electrolyte volume fraction in the cathode also influence
+the predicted cell voltage as they define the effective elec-
+tronic and ionic conductivities through Bruggeman's
+expression (Table 1), although this effect would be rela-
+tively insignificant.
+3 |
+RESULTS AND DISCUSSION
+Due to the complexity of Li‐S chemistry, cell design has a
+crucial impact on the electrochemical performance of the
+battery. The C/S ratio and electrolyte amount in the cath-
+ode are two of those critical design parameters that have a
+significant effect on both cell‐ and systems‐level perfor-
+mance. In the proposed model, the complicated sulfur
+redox mechanism at the cathode is simplified into a 2‐step
+reaction chain composed of a single electrochemical reac-
+tion in each of the two discharge plateaus, as previously
+discussed. Thus, the cathode kinetics in each discharge
+region is defined with a single apparent kinetic model
+parameter, cathode exchange current density (i0,pe) that
+can be estimated through a direct comparison with the
+experimentally measured impedances. To study the effect
+of carbon and electrolyte amounts in the cathode on the
+electrochemical performance of the Li‐S cell by using this
+model, the cathode exchange current density is deter-
+mined as a function of DOD and cycle number, as
+described below.
+The exchange current density at the cathode is calcu-
+lated comparing the total ASI of the Li‐S cell predicted
+by the model with the cell resistances measured experi-
+mentally by using the EIS method in the literature.38-40
+Electrochemical impedance spectroscopy is one of the
+most useful characterization techniques that clarify the
+complicated electrochemical processes in the battery dur-
+ing charge and discharge. The electrochemical behavior of
+an Li‐S battery has been previously investigated by using
+EIS technique in the literature.38-43
+In Figure 2, the effect of DOD on the cathode kinetics
+can be seen by means of the model calculations for the
+cathode exchange current density for different discharge
+depths. It is apparent from the figure that i0,pe increases
+with increasing DOD to 60% and starts to decrease at fur-
+ther DOD. Mechanistic studies in the literature suggest
+that at the early stages of discharge first sulfur dissolves
+into the electrolyte. Then soluble polysulfides in the elec-
+trolyte are reduced via the multistep electrochemical
+reactions. Finally, precipitation of Li2S becomes predomi-
+nant toward the end of discharge.38,39,41 Because both S
+and Li2S are insulating solids, accumulation of these on
+the cathode surface results in poor electronic conductivity
+and limited electrochemically active surface area. Previ-
+ous EIS studies show that there is a significant increase
+in the resistances associated with the formation and
+growth of Li2S film toward the end of discharge.38,39
+Therefore, it may be suggested that cathode kinetics are
+enhanced up to a certain DOD as the charge transfer resis-
+tance at the cathode decreases as a result of S dissolution,
+leading to higher conductivity and thus better accessibil-
+ity of the active material. However, cathode kinetics is
+worsened as the accumulation of Li2S becomes significant
+toward the end of discharge. Because in this model, an
+apparent kinetic parameter is proposed for the cathode
+kinetics, the trend in Figure 2 can be simply explained
+with the previous discussion. In fact, the kinetic parame-
+ter proposed in the model accounts not only for the
+rate of charge transfer but also for the S dissolution and
+Li2S deposition that reaches a maximum toward the
+half‐discharge. Furthermore, the cathode exchange cur-
+rent densities are estimated ranging from 3 × 10−7 to
+6.3 × 10−7 A cm−2 as shown in Figure 2, which are com-
+parable with the previous studies in the literature.1,31
+Figure 3 presents the change of i0,pe as a function of
+cycle number projected by the model by using experimen-
+tal EIS data.40 The figure shows a significant decrease in
+the cathode exchange current density within the first
+few cycles. Similar to the discussion above, this falling
+may be attributed to the irreversible accumulation of
+Li2S on the cathode surface. The EIS results show that
+there is a noteworthy increase in the Li2S film resistance
+with increased cycling.38 In fact, the predominant reason
+of the capacity fade of a Li‐S battery with cycling has been
+FIGURE 2
+Cathode exchange current density predicted by the
+model as a function of depth of discharge of the Li‐S cell
+2636
+ERISEN ET AL.
+ 1099114x, 2018, 8, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.4045 by Tsinghua University Library, Wiley Online Library on [10/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 7>>
+previously identified as the passivation of the cathode due
+to the accumulation of Li2S.41
+3.1 | Effect of carbon‐to‐sulfur ratio in the
+cathode
+Because of the insulating nature of S, high C/S ratios are
+typically required in the Li‐S cathode. Higher carbon
+amounts lead to an enhancement in both electronic
+conductivity and the electrochemically active surface
+area in the cathode. As a result, utilization of the active
+material and thus the useable specific capacity of the cell
+increase significantly. However, a recent technoeconomic
+analysis of the Li‐S battery shows that there is an opti-
+mum C/S ratio in the cathode at which the energy den-
+sity is maximized and the cost is minimized at the
+systems level.1 Increasing the C/S ratio up to this opti-
+mum level enhances the useable specific capacity, thus
+the systems‐level energy density. However, beyond this
+point, the cathode is not kinetically limited anymore
+and increasing the amount of carbon, which is an inac-
+tive material in the cell, ends up decreasing the sys-
+tems‐level energy density. Consequently, the C/S ratio
+is one of the most critical cathode design parameters that
+have a vital effect on both electrochemical performance
+of the cell and the systems‐level performance of the
+battery. Therefore, the effect of the C/S ratio in the cath-
+ode on the cathode kinetics is investigated by using the
+developed model and presented in Figure 4 for different
+current densities.
+In Figure 4, the change of cell voltage of the Li‐S cell
+as a function of C/S ratio can be seen for current densities
+of 0.1 to 1 mA cm−2. Electrochemical performance of the
+cells is compared through the calculated cell voltages at
+60% DOD corresponding to the second plateau voltage of
+the Li‐S battery. It is evident from the figure that below
+C/S ratios of 1, there is a significant increase in the cell
+voltage with increasing carbon amount. However, at
+higher C/S ratios, the improvement of the cathode kinet-
+ics is less obvious. In addition, this trend appears to be
+independent of the current density applied. Cell voltage
+varies less with the C/S ratio at lower current densities,
+as expected. This trend of the impact of the C/S ratio in
+the cathode on the cell voltage predicted by the model is
+in agreement with the experimentally observed trends.4,5
+In addition, the projected trend in this study is similar to
+the previous modeling results.21
+To validate the model, cell voltages calculated at 60%
+DOD as a function of C/S ratio in the cathode are com-
+pared with the experimental data in the literature
+(Figure 1 in Xu et al4 and Gao and Abruña5) as shown in
+Figure 5. The model is fed with the available experimental
+parameters such as the current density and C/S and E/S
+ratios in the cathode, and estimated cell voltages are com-
+pared with the experimentally measured values at 60%
+DOD that corresponds to the second plateau voltage of
+the cell. It can be seen in Figure 5 that for the available
+data, the model and the experimental results show a good
+agreement. As mentioned previously, in the proposed
+model, the electrochemically active area, a, is specified
+in terms of the carbon volume fraction in the cathode
+(Table 1). Therefore, it can be concluded that the effect
+of C/S ratio on the cathode kinetics can be captured in
+the model by the change in the reaction area in the cath-
+ode without varying the kinetic model parameter i0,pe.
+FIGURE 3
+Cathode exchange current density predicted by the
+model as a function of cycle number
+FIGURE 4
+The effect of carbon‐to‐sulfur ratio in the cathode on
+the calculated cell voltage at 60% depth of discharge of the Li‐S cell
+for different current densities. The electrolyte vol% is ε = 90%, and
+the cathode exchange current density is i0,pe = 6.28 × 10−7 A cm−2
+for all results [Colour figure can be viewed at wileyonlinelibrary.
+com]
+ERISEN ET AL.
+2637
+ 1099114x, 2018, 8, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.4045 by Tsinghua University Library, Wiley Online Library on [10/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 8>>
+3.2 | Effect of electrolyte‐to‐sulfur ratio in
+the cathode
+Li‐S cells usually contain a large amount of excess electro-
+lyte for good capacity retention and improved cyclability;
+E/S ratios higher than 10 mL g−1 are typical in the litera-
+ture.2,3 First, an excess of electrolyte in the cell is neces-
+sary to prevent electrolyte depletion, which may happen
+due to the enhanced side reaction between the lithium
+metal and the electrolyte as a result of the morphology
+change at the anode. An excess of electrolyte is also criti-
+cal at the cathode by defining the concentration of the
+polysulfides at the cathode surface. Both reaction and
+shuttle mechanisms are highly dependent on the polysul-
+fide concentration in the electrolyte; high concentrations
+may result in enhanced polysulfide shuttle mechanism
+or limited sulfur utilization. Therefore, high excess of
+electrolyte is mostly required for high useable specific
+capacity
+and good capacity retention.
+However,
+as
+the electrolyte amount in the cell increases, the systems‐
+level energy density decreases significantly.1,2 A recent
+technoeconomic
+analysis
+concludes
+that
+electrolyte‐
+starved cathodes are required in Li‐S batteries for high
+energy density and low cost.1 Subsequently, the E/S ratio
+in the cathode is one of the most important design factors
+in the Li‐S cell affecting critically both the cell‐ and sys-
+tems‐level performance.
+The effect of E/S ratio on the cathode kinetics is inves-
+tigated by the proposed model and presented in Figure 6
+for different current densities. It can be seen in the figure
+that the cell voltage decreases with increasing E/S ratio
+for all current densities, even though the decrease is less
+obvious at lower i. As discussed, in the developed model,
+electrolyte volume fraction affects the cathode kinetics
+first through the electrochemically active area; increasing
+porosity reduces a by decreasing the carbon volume frac-
+tion at the cathode. The trend seen in the figure can be
+explained by this decrease at the reaction area. Electrolyte
+amount also affects the effective ionic and electronic con-
+ductivities in the model through the Bruggeman's expres-
+sion, but this effect is less significant.
+The trend seen in Figure 6 is unexpected considering
+the previous studies showing that cathode kinetics is
+improved with increasing electrolyte amount.2,3,7,10-14
+This is presented in Figure 7, in which cell voltages pre-
+dicted at 60% DOD are plotted against the experimental
+data in the literature (Figure 3 in Ding et al2) as a function
+of E/S ratio in the cathode. As previously described,
+experimental current density and C/S and E/S ratios in
+the cathode are fed into the model, and model predictions
+are compared with the experimentally measured cell volt-
+ages at 60% DOD corresponding to the second plateau
+voltage of the cell. It can be seen in the figure that the
+experimental trend cannot be captured with the model.
+This suggests that E/S ratio affects the cathode kinetics
+not only through the electrochemically active area but
+also through the kinetic model parameter. Because E/S
+ratio is known to have a great impact on the reaction
+and shuttle mechanisms, this is not unexpected. It can
+be seen that when i0,pe in the model has been changed
+FIGURE 5
+Cell voltages calculated at 60% depth of discharge
+versus experimentally measured cell voltages (Figure 1 in Xu et al4
+and Gao and Abruña5) as a function of C/S ratio in the cathode. The
+electrolyte vol%, current density, cathode thickness, and cathode
+exchange current density are taken as ε = 90%, I = 0.2, or 0.4 mA cm
+−2 (black vs red line), Lpe = 20 μm, and i0,pe = 6.28 × 10−7 A cm−2 for
+all results [Colour figure can be viewed at wileyonlinelibrary.com]
+FIGURE 6
+The
+effect
+of
+electrolyte‐to‐sulfur
+ratio
+in
+the
+cathode on the calculated cell voltage at 60% depth of discharge
+of the Li‐S cell for different current densities. The C/S ratio in the
+cathode is 0.5, and the cathode exchange current density is i0,
+pe = 6.28 × 10−7 A cm−2 for all results [Colour figure can be
+viewed at wileyonlinelibrary.com]
+2638
+ERISEN ET AL.
+ 1099114x, 2018, 8, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.4045 by Tsinghua University Library, Wiley Online Library on [10/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 9>>
+as a function of E/S ratio (blue line in Figure 7), the model
+and experimental results match perfectly. The exchange
+current density increases an order of magnitude (10−9 vs
+10−8 A cm−2) with increasing E/S ratio in Figure 7. There-
+fore, it may be concluded that in the proposed model, the
+excess electrolyte enhances the cathode kinetics majorly
+by improving the reaction rate. The major shortcoming
+of the proposed model is that it cannot predict the
+change of i0,pe as a function of E/S ratio, and therefore,
+it cannot estimate the cell voltages precisely for different
+electrolyte amounts without experimental data input.
+However, if the effect of E/S ratio on the cell resistances,
+thus the cathode exchange current density is systemati-
+cally studied, i0,pe could be defined as a function of electro-
+lyte amount in the model. This will be further examined
+in the future studies.
+In this analysis, the effect of carbon and electrolyte
+amounts on cell performance is studied through cell
+voltage at the lower voltage plateau. Certainly, C/S and
+E/S ratios also have a significant effect on the useable
+specific capacity and cycle life of the cell. Therefore, it
+may be stated that a better way to compare the cathode
+kinetics would be through the useable specific capacity
+of the cell. However, it is not possible for the proposed
+model to project the discharge capacity and the cycle life
+of the battery by means of these cathode design param-
+eters. Likewise, the model does not predict the cell volt-
+age continuously as a function of the discharge capacity;
+even though i0,pe has been estimated for a range of DOD
+in Figure 2, it would be imprecise to model the depen-
+dence of this kinetic parameter on the discharge depth
+without a systematic study coupling experimental and
+modeling work. It should be emphasized here once
+again that the aim in this analysis is to develop a
+predictive model that could capture the effect of these
+parameters on the cell kinetics. In addition, a direct
+comparison with the experimental data is achievable
+by using this model.
+4 |
+CONCLUSIONS
+C/S and E/S ratios in the cathode are critical in
+determining the electrochemical performance as well
+as the systems‐level energy density of a Li‐S battery. In
+this study, the effect of these two key cathode design con-
+siderations on the electrochemical performance of an Li‐S
+cell was modeled. Each of the two discharge plateaus is
+defined with a single electrochemical reaction in the cath-
+ode; thus, the cathode kinetics was defined by using a sin-
+gle apparent kinetic parameter in the model, cathode
+exchange current density, for each discharge region. With
+this simplification, a direct comparison of the model pre-
+dictions with the experimental data was possible. Cathode
+exchange current density was estimated matching the ASI
+of the cell predicted by the model with the total cell resis-
+tances measured experimentally by EIS. This analysis
+showed that cathode kinetics is improved until 60%
+DOD, which may be explained by an enhancement in
+the electronic conductivity and surface area due to the dis-
+solution of the insulating sulfur. However, i0,pe starts to
+decrease at further DODs mainly because of the Li2S accu-
+mulation on the cathode surface. Irreversible accumula-
+tion of Li2S was also predicted to be the reason of the
+significant decrease of i0,pe with cycling. The effect of the
+C/S ratio in the cathode on the Li‐S cell performance
+was investigated for different current densities through
+the predicted cell voltage at 60% DOD, which corresponds
+to the second plateau voltage. Cell voltage increased sig-
+nificantly with carbon amount until a C/S ratio of 1,
+mainly because of the enhanced cathode kinetics with
+increasing electrochemically active surface area. The
+improvement in the cell voltage was less significant at
+higher C/S ratios. Validation with the experimental
+results implied that the model can capture the effect of
+the C/S ratio on the cathode kinetics by determining the
+electrochemically active area in the cathode; the kinetic
+model parameter i0,pe does not depend on this ratio. How-
+ever, for the E/S ratio, the model could predict the
+enhancement in the cathode kinetics with increasing elec-
+trolyte amount only when the cathode exchange current
+density was varied. Therefore, it was concluded that i0,pe
+FIGURE 7
+Cell voltages calculated at 60% depth of discharge
+versus experimentally measured cell voltages (Figure 3 in Ding
+et al2) as a function of E/S ratio in the cathode. The current density
+is 0.0566 mA cm−2, C/S ratio in the cathode is 0.5, and cathode
+thickness is 100 μm for all results. i0,pe is kept constant at
+6.28 × 10−7 A cm−2 for the blue line, whereas it varied between
+7 × 10−9 and 6 × 10−8 A cm−2 for the black line [Colour figure
+can be viewed at wileyonlinelibrary.com]
+ERISEN ET AL.
+2639
+ 1099114x, 2018, 8, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.4045 by Tsinghua University Library, Wiley Online Library on [10/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 10>>
+increases with increasing E/S ratio, and thus, cell kinetics
+were improved.
+ACKNOWLEDGEMENT
+This study was funded by The Scientific and Technologi-
+cal Research Council of Turkey (TUBITAK) grant no.
+116M574.
+NOMENCLATURE
+a
+specific interfacial area per unit volume, cm−1
+ASIcell
+area‐specific impedance of the cell, Ω cm2
+ASIne
+area‐specific impedance of the anode, Ω cm2
+ASIpe
+area‐specific impedance of the cathode, Ω cm2
+ASIsep
+area‐specific impedance of the separator, Ω cm2
+DOD
+depth of discharge, %
+F
+Faraday's constant, C mol−1
+i0,ne
+anode exchange current density, A cm−2
+i0,pe
+cathode exchange current density, A cm−2
+i1
+current density in matrix phase, A cm−2
+i2
+current density in electrolyte phase, A cm−2
+in
+transfer current density, A cm−2
+I
+current density, A cm−2
+j
+dimensionless current density
+Lpe
+cathode thickness, cm
+Lsep
+separator thickness, cm
+R
+universal gas constant, J mol−1 K−1
+T
+temperature, K
+U
+cell open‐circuit voltage, V
+Vcell
+cell voltage, V
+x
+distance from the separator through the cath-
+ode, cm
+y
+dimensionless distance
+GREEK
+α
+transfer coefficient
+β
+αpe,cF/RT34
+δ
+β|I|Lpe (1/κeff + 1/σeff)34
+ϵ
+β|I|Lpe/κeff
+34
+ε
+porosity
+εC
+volume fraction of C in the cathode
+εS
+volume fraction of S in the cathode
+ηcell
+total cell overpotential, V
+ηne
+anode overpotential, V
+ηpe
+cathode overpotential, V
+ηsep
+separator overpotential, V
+θ
+first integration constant for Tafel polarization34
+κ
+cathode ionic conductivity, S cm−1
+κeff
+cathode effective ionic conductivity, S cm−1
+κsep
+separator ionic conductivity, S cm−1
+κeff,sep
+separator effective ionic conductivity, S cm−1
+ν
+ﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ
+L2
+pe αpe;a þ αpe;c
+	
+
+ai0;peF=RT 1=κeff þ 1=σeff
+ð
+Þ
+q
+for linear polarization34
+ρC
+density of C, g cm−3
+ρS
+density of S, g cm−3
+σ
+cathode electronic conductivity, S cm−1
+σeff
+cathode effective electronic conductivity, S cm−1
+Φ1
+matrix potential, V
+Φ2
+electrolyte potential, V
+ψ
+second
+integration
+constant
+for
+Tafel
+polarization34
+ORCID
+Damla Eroglu
+http://orcid.org/0000-0002-7122-8278
+REFERENCES
+1. Eroglu D, Zavadil KR, Gallagher KG. Critical link between mate-
+rials chemistry and cell‐level design for high energy density and
+low cost lithium‐sulfur transportation battery. J Electrochem Soc.
+2015;162:A982‐A990.
+2. Ding N, Chien SW, Hor TSA, Liu Z, Zong Y. Key parameters
+in design of lithium sulfur batteries. J Power Sources. 2014;
+269:111‐116.
+3. Brückner J, Thieme S, Grossmann HT, Dörfler S, Althues H,
+Kaskel S. Lithium‐sulfur batteries: influence of C‐rate, amount
+of electrolyte and sulfur loading on cycle performance. J Power
+Sources. 2014;268:82‐87.
+4. Xu R, Li JCM, Lu J, Amine K, Belharouak I. Demonstration of
+highly efficient lithium‐sulfur batteries. J Mater Chem A.
+2015;3:4170‐4179.
+5. Gao J, Abruña HD. Key parameters governing the energy density
+of rechargeable Li/S batteries. J Phys Chem Lett. 2014;5:882‐885.
+6. Shim J, Striebel KA, Cairns EJ. The lithium/sulfur rechargeable
+cell effects of electrode composition and solvent on cell perfor-
+mance. J Electrochem Soc. 2002;149:A1321‐A1325.
+7. Hagen M, Fanz P, Tübke J. Cell energy density and electrolyte/
+sulfur ratio in Li‐S cells. J Power Sources. 2014;264:30‐34.
+8. Akhtar N, Akhtar W. Prospects, challenges, and latest develop-
+ments in lithium‐air batteries. Int J Energy Res. 2015;39:303‐316.
+9. Tan J, Ryan EM. Structured electrolytes to suppress dendrite
+growth in high energy density batteries. Int J Energy Res.
+2016;40:1800‐1810.
+10. Zhang SS. Improved cyclability of liquid electrolyte lithium/sul-
+fur batteries by optimizing electrolyte/sulfur ratio. Energies.
+2012;5:5190‐5197.
+11. Zheng J, Lv D, Gu M, et al. How to obtain reproducible results
+for lithium sulfur batteries? J Electrochem Soc. 2013;160:A2288‐
+A2292.
+2640
+ERISEN ET AL.
+ 1099114x, 2018, 8, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.4045 by Tsinghua University Library, Wiley Online Library on [10/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 11>>
+12. Kim J‐H, Jin C‐S, Shin K‐H, Yeon S‐H. Optimized cell conditions
+for a high‐energy density, large‐scale Li‐S battery. Int J Energy
+Res. 2016;40:670‐676.
+13. Urbonaite S, Novák P. Importance of ‘unimportant’ experimen-
+tal parameters in Li‐S battery development. J Power Sources.
+2014;249:497‐502.
+14. Choi J‐W, Kim J‐K, Cheruvally G, Ahn J‐H, Ahn H‐J, Kim K‐W.
+Rechargeable lithium/sulfur battery with suitable mixed liquid
+electrolytes. Electrochim Acta. 2007;52:2075‐2082.
+15. Mikhaylik YV, Akridge JR. Polysulfide shuttle study in the Li/S
+battery system. J Electrochem Soc. 2004;151:A1969‐A1976.
+16. Kumaresan K, Mikhaylik Y, White RE. A mathematical model
+for a lithium‐sulfur cell. J Electrochem Soc. 2008;155:A576‐A582.
+17. Neidhardt JP, Fronczek DN, Jahnke T, Danner T, Horstmann B,
+Bessler WG. A flexible framework for modeling multiple
+solid, liquid and gaseous phases in batteries and fuel cells. J
+Electrochem Soc. 2012;159:A1528‐A1542.
+18. Fronczek DN, Bessler WG. Insight into lithium‐sulfur batteries:
+elementary kinetic modeling and impedance simulation. J Power
+Sources. 2013;244:183‐188.
+19. Hofmann AF, Fronczek DN, Bessler WG. Mechanistic modeling
+of polysulfide shuttle and capacity loss in lithium‐sulfur batte-
+ries. J Power Sources. 2014;259:300‐310.
+20. Ghaznavi M, Chen P. Sensitivity analysis of a mathematical
+model of lithium‐sulfur cells part I: applied discharge current
+and cathode conductivity. J Power Sources. 2014;257:394‐401.
+21. Ghaznavi M, Chen P. Sensitivity analysis of a mathematical
+model of lithium‐sulfur cells: part II: precipitation reaction
+kinetics and sulfur content. J Power Sources. 2014;257:402‐411.
+22. Ghaznavi M, Chen P. Analysis of a mathematical model of
+lithium‐sulfur cells part III: electrochemical reaction kinetics,
+transport properties and charging. Electrochim Acta. 2014;
+137:575‐585.
+23. Yoo K, Song M‐K, Cairns EJ, Dutta P. Numerical and experimen-
+tal investigation of performance characteristics of lithium/sulfur
+cells. Electrochim Acta. 2016;213:174‐185.
+24. Zhang T, Marinescu M, Walus S, Offer GJ. Modelling transport‐
+limited discharge capacity of lithium‐sulfur cells. Electrochim
+Acta. 2016;219:502‐508.
+25. Risse S, Angioletti‐Uberti S, Dzubiella J, Ballauff M. Capacity
+fading in lithium/sulfur batteries: a linear four‐state model. J
+Power Sources. 2014;267:648‐654.
+26. Zhang T, Marinescu M, O'Neill L, Wild M, Offer G. Modeling the
+voltage loss mechanisms in lithium‐sulfur cells: the importance
+of electrolyte resistance and precipitation kinetics. Phys Chem
+Chem Phys. 2015;17:22,581‐22,586.
+27. Ren YX, Zhao TS, Liu M, Tan P, Zeng YK. Modeling of lithium‐
+sulfur batteries incorporating the effect of Li2S precipitation. J
+Power Sources. 2016;336:115‐125.
+28. Al‐Mahmoud SM, Dibden JW, Owen JR, Denuault G, Garcia‐
+Araez N. A simple, experiment‐based model of the initial
+self‐discharge of lithium‐sulphur batteries. J Power Sources.
+2016;306:323‐328.
+29. Marinescu M, Zhang T, Offer GJ. A zero dimensional model of
+lithium‐sulfur batteries during charge and discharge. Phys Chem
+Chem Phys. 2016;18:584‐593.
+30. Thangavel V, Xue K‐H, Mammeri Y, et al. Microstructurally
+resolved model for Li‐S batteries assessing the impact of the
+cathode design on the discharge performance. J Electrochem
+Soc. 2016;163:A2817‐A2829.
+31. Gallagher KG, Goebel S, Greszler T, et al. Quantifying the prom-
+ise of lithium‐air batteries for electric vehicles. Energ Environ Sci.
+2014;7:1555‐1563.
+32. Gallagher KG, Nelson PA, Dees DW. Simplified calculation of
+the area specific impedance for battery design. J Power Sources.
+2011;196:2289‐2297.
+33. Deng Y, Li J, Li T, Gao X, Yuan C. Life cycle assessment of
+lithium sulfur battery for electric vehicles. J Power Sources.
+2017;343:284‐295.
+34. Newman JS, Tobias CW. Theoretical analysis of current distribu-
+tion in porous electrodes. J Electrochem Soc. 1962;109:1183‐1191.
+35. Chabot V, Farhad S, Chen Z, Fung AS, Yu A, Hamdullahpur F.
+Effect of electrode physical and chemical properties on lithium‐
+ion battery performance. Int J Energy Res. 2013;37:1723‐1736.
+36. Zhao R, Zhang S, Gu J, Liu J. Modeling the electrochemical
+behaviors of charging Li‐ion batteries with different initial elec-
+trolyte salt concentrations. Int J Energy Res. 2016;40:1085‐1092.
+37. Bates A, Mukherjee S, Schuppert N, Son B, Kim JG, Park S.
+Modeling and simulation of 2D lithium‐ion solid state battery.
+Int J Energy Res. 2015;39:1505‐1518.
+38. Cañas NA, Hirose K, Pascucci B, Wagner N, Friedrich KA,
+Hiesgen R. Investigations of lithium‐sulfur batteries using
+electrochemical
+impedance
+spectroscopy.
+Electrochim
+Acta.
+2013;97:42‐51.
+39. Yuan L, Qiu X, Chen L, Zhu W. New insight into the discharge
+process of sulfur cathode by electrochemical impedance spec-
+troscopy. J Power Sources. 2009;189:127‐132.
+40. Deng Z, Zhang Z, Lai Y, Liu J, Li J, Liu Y. Electrochemical
+impedance spectroscopy study of a lithium/sulfur battery:
+modeling and analysis of capacity fading. J Electrochem Soc.
+2013;160:A553‐A558.
+41. Barchasz C, Leprêtre J‐C, Alloin F, Patoux S. New insights into
+the limiting parameters of the Li/S rechargeable cell. J Power
+Sources. 2012;199:322‐330.
+42. Kolosnitsyn VS, Kuzmina EV, Karaseva EV, Mochalov SE. A
+study of the electrochemical processes in lithium‐sulphur cells
+by impedance spectroscopy. J Power Sources. 2011;196:1478‐1482.
+43. Li Y, Zhan H, Liu S, Huang K, Zhou Y. Electrochemical proper-
+ties of the soluble reduction products in rechargeable Li/S
+battery. J Power Sources. 2010;195:2945‐2949.
+How to cite this article: Erisen N, Emerce NB,
+Erensoy SC, Eroglu D. Modeling the effect of key
+cathode design parameters on the electrochemical
+performance of a lithium‐sulfur battery. Int J Energy
+Res. 2018;42:2631–2642. https://doi.org/10.1002/er.4045
+ERISEN ET AL.
+2641
+ 1099114x, 2018, 8, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.4045 by Tsinghua University Library, Wiley Online Library on [10/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 12>>
+APPENDIX A
+ELECTROCHEMICAL MODEL FOR THE POROUS
+CATHODE
+The electrochemical model for the discharge of the porous
+cathode developed based on the model by Newman and
+Tobias34 is discussed below. One‐dimensional porous cath-
+ode has been modeled based on the following assumptions:
+• single electrochemical reaction in the lower discharge
+plateau (Equation 7b);
+• no change in the concentrations over position and
+time in the lower discharge plateau (<80% DOD);
+• no velocity in the cathode;
+• no double layer charging; and
+• symmetric discharge‐charge reactions (αpe,a = αpe,c = 0.5).
+Equations 8 and 9 are obtained by using the governing
+equations given in Equations A1 to A11.
+ηpe ¼ ϕ1−ϕ2
+(A1)
+i1 ¼ −σeff
+dϕ1
+dx
+(A2)
+i2 ¼ −κeff
+dϕ2
+dx
+(A3)
+di1
+dx þ di2
+dx ¼ 0
+(A4)
+di2
+dx ¼ a in
+(A5)
+The current‐voltage relationship in the cathode is
+described with either Tafel or linear kinetics.
+Tafel Kinetics: |I| > a i0, peLpe.
+The polarization equation for the cathodic case is
+shown in Equation A6.
+di2
+dx ¼ −a i0;pe exp −αpe;cF
+RT
+ϕ1−ϕ2
+ð
+Þ
+
+
+(A6)
+The following dimensionless parameters are intro-
+duced into Equation A6, and a dimensionless differential
+equation is obtained as shown in Equation A7.
+y ¼ x
+Lpe
+; j ¼ i1
+−I; β ¼ αpe;cF
+RT ; δ ¼ Lpe Ij jβ
+1
+κeff
+þ 1
+σeff
+
+
+;
+∈¼ Lpe Ij jβ
+κeff
+d2j
+dy2 ¼ dj
+dy δj−∈
+ð
+Þ
+(A7)
+with the following boundary conditions:
+At y ¼ 0; j ¼ 0
+At y ¼ 1; j ¼ 1
+The analytical solution for Equation A7 is given in
+Equation A8.
+ϕ1 L
+ð Þ−ϕ2 0
+ð Þ ¼ 1
+β
+δ−ϵ
+ð
+Þ ϵ
+δ þ 2
+δ ln sec θ−ψ
+ð
+Þ
+
+
+þ 2ϵ
+δ lnsecψ
+
+þ ln
+2 Ij jθ2
+ai0;peLpeδ
+
+
+(A8)
+where θ ¼ arctan
+2δθ
+4θ2−ϵ δ−ϵ
+ð
+Þ and ψ ¼ arctan ϵ
+2θ
+Linear Kinetics: |I| < a i0, peLpe
+The polarization equation for linear kinetics is shown
+in Equation A9.
+di2
+dx ¼ αpe;a þ αpe;c
+	
+
+a i0;peF
+RT
+ϕ1−ϕ2
+ð
+Þ
+(A9)
+Following the introduction of the dimensionless
+parameters given below, a dimensionless differential
+Equation A10 is obtained.
+y ¼ x
+Lpe
+; j ¼ i1
+−I; v2 ¼ αpe;a þ αpe;c
+	
+
+F × a × i0;pe × Lpe2
+RT
+1
+κeff
+þ 1
+σeff
+
+
+d2j
+dy2 −v2 j−
+σeff
+σeff þ σeff
+
+
+¼ 0
+(A10)
+with the following boundary conditions:
+At y = 0, j = 0
+At y = 1, j = 1
+The analytical solution for the overpotential is then
+obtained as in Equation A11.
+ϕ1 L
+ð Þ−ϕ2 0
+ð Þ ¼ I × Lpe
+κeff þ σeff
+1 þ
+2 þ
+σeff
+κeff
+þ κeff
+σeff
+
+
+coshν
+ν sinhν
+2
+664
+3
+775
+(A11)
+(A10)
+(A7)
+2642
+ERISEN ET AL.
+ 1099114x, 2018, 8, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.4045 by Tsinghua University Library, Wiley Online Library on [10/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

@@ -1,0 +1,1053 @@
+
+<<PAGE 1>>
+& Solubility Prediction
+Predicting the Solubility of Sulfur: A COSMO-RS-Based Approach
+to Investigate Electrolytes for Li–S Batteries
+Steffen Jeschke* and Patrik Johansson[a]
+Abstract: Lithium–sulfur (Li–S) batteries are, in theory, con-
+sidering their basic reactions, very promising from a specific
+energy density point of view, but have poor power rate ca-
+pabilities. The dissolution of sulfur from the C/S cathode in
+the electrolyte is a rate-determining and crucial step for the
+functionality. To date, time-consuming experimental meth-
+ods, such as HPLC/UV, have been used to quantify the corre-
+sponding solubilities. Here, we use a computational fluid-
+phase thermodynamics approach, the conductor-like screen-
+ing model for real solvents (COSMO-RS), to compute the sol-
+ubilities of sulfur in different binary and ternary electrolytes.
+By using both explicit and implicit solvation approaches for
+lithium bistrifluoromethanesulfonimidate (LiTFSI)-containing
+electrolytes, a deviation of <0.4 log units was achieved with
+respect to experimental data, within the range of experi-
+mental error, thus proving COSMO-RS to be a useful tool for
+exploring novel Li–S battery electrolytes.
+Introduction
+The lithium–sulfur battery is considered as a possible next-
+generation battery for energy storage in electric vehicles.
+Using sulfur as the active electrode material is advantageous
+as it is abundant, environmentally friendly, and cheaper than
+any currently used cathode materials. Also, it has a high theo-
+retical capacity of 1672 mAhg@1 and an energy density of the
+order of 2500 Whkg@1, assuming complete reduction to Li2S.[1,2]
+Due to its insulating nature, the cathode is often a combination
+with a porous carbon material (C/S). During discharge, sulfur is
+reduced to various intermediate polysulfides, such as S8
+2@, S6
+2@,
+S4
+2@, and S2
+2@, before S2@ is reached. This process is ideally re-
+versible and the sulfides are oxidized back to sulfur during
+charging. However, Li–S batteries suffer from poor cyclability,
+mainly due to the solubility of elemental sulfur and polysul-
+fides in the electrolyte causing loss of active material. This re-
+sults in capacity fading, increase in internal resistance, poor
+coulombic efficiencies, and self-discharge. Assuming that ele-
+mental sulfur dissolves prior to reduction and hence energy
+production, suppressing and controlling the solubility of sulfur
+should
+clearly
+offer
+an
+approach
+to
+improve
+cycling
+stability.[2–4]
+In order to quantify the solubility of sulfur in various conven-
+tional Li–S battery liquid organic electrolytes, often binary or
+ternary systems,[4] high-performance liquid chromatography
+coupled with a UV detector (HPLC/UV)[5,6] has been used. The
+application of supportive computational methods and predic-
+tive models is useful in reducing the experimental work
+needed for further and optimized solvent selection. However,
+to the best of our knowledge, this has not yet been reported
+for the screening of electrolytes for Li–S batteries.
+In this context, we report herein the application of the con-
+ductor-like screening model for real solvents (COSMO-RS), de-
+veloped by Klamt,[7] to compute the physical properties of
+mixed liquid phases, such as vapor pressure,[8,9] partition and
+activity
+coefficients,[10]
+phase
+equilibria
+prediction
+of
+pKa
+values,[11,12] and redox potentials,[13,14] for Li-S battery solvents
+and electrolytes. COSMO-RS combines a quantum chemical
+(DFT)-based continuum solvation approach for a single mole-
+cule with statistical thermodynamics, and has already proven
+to be an effective and reliable screening tool in relation to
+pharmaceutical drugs,[15,16] industrial separation thermodynam-
+ics,[17] and ionic liquids.[18–20] With regard to Li-based battery de-
+velopment, and Li-ion and Li-air systems in particular, COSMO-
+RS has so far mostly been used for screening large datasets
+(102–105) of small molecules as potential electrolyte sol-
+vents.[21–26] Basic electronic properties,[21] such as ionization po-
+tentials and electron affinities, as well as physicochemical prop-
+erties,[22–26] such as viscosity and melting and boiling tempera-
+tures, were assessed as selection criteria. The predictions have
+provided a sufficient qualitative ranking for a multi-level ap-
+proach[22–24,26] or have been used in quantitative structure–
+property relationship (QSPR)-based methods[22,25] to find new
+electrolytes.
+Herein, we present the first study on applying COSMO-RS as
+a tool for quantitative computational screening in the design
+[a] Dr. S. Jeschke, Prof. P. Johansson
+Department of Physics
+Chalmers University of Technology
+412 96 Gothenburg (Sweden)
+E-mail: steffen.jeschke@chalmers.se
+Supporting information and the ORCID identification number(s) for the au-
+thor(s) of this article can be found under https://doi.org/10.1002/
+chem.201701011: it contains further data sets for calculation of DfusG,
+COSMO-RS s profiles of the investigated solvents, calculated excess proper-
+ties.
+Chem. Eur. J. 2017, 23, 9130 – 9136
+T 2017 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
+9130
+Full Paper
+DOI: 10.1002/chem.201701011
+
+<<PAGE 2>>
+of multi-component electrolytes for Li–S batteries. A three-step
+approach was chosen: I) referencing
+the COSMO-RS per-
+formance to sulfur solubility in organic solvents, II) comparing
+the computed sulfur solubilities for binary and ternary electro-
+lytes with experimental data, and III) analysis of the thermody-
+namic properties related to the dissolution process (Figure 1).
+An essential prerequisite for this approach is a reasonable
+molecular structure of the solute, known for sulfur but not for
+the various polysulfides formed during Li–S battery operation.
+Furthermore, the polysulfides are also salts that release an ad-
+ditional and dissociation-dependent concentration of Li+ ions
+into the electrolyte. Therefore, the conceptual and computa-
+tional approaches for the prediction of polysulfide solubilities
+are very different and beyond the scope of this study.
+As COSMO-RS was originally developed for neutral com-
+pounds or organic ions, such as the bistrifluoromethanesulfoni-
+midate (TFSI) anion, alkali ions such as Li+, with a high charge
+density, might result in significant errors as the polarization
+charge density cannot be compensated by the polarization
+charge of the solvent, ultimately causing a misfit charge in the
+COSMO-RS thermodynamics.[27] Furthermore, the long-range in-
+teractions between ions in dilute electrolytes, as considered in
+Debye–Heckel theory, are in reality also contributing, but are
+not accounted for in COSMO-RS.[28,29] To resolve these short-
+comings, we used organic solvents in step I and two different
+methods to describe the binary and ternary electrolytes in
+step II: A) an implicit solvation of Li+, and B) an explicit solva-
+tion of Li+, in which it is completely replaced by correspond-
+ing solvent- and anion-based clusters. In this way, we could
+also evaluate the effect of the description of the electrolyte at
+the molecular level, both in terms of accuracy and computa-
+tional effort.
+Results and Discussion
+Referencing
+As COSMO-RS has been developed to compute miscibility and
+physical properties solely of liquid phases, the calculation of
+the solubility of sulfur was divided into two steps: a) virtual
+transfer of solid sulfur to a supercooled liquid, and b) mixing
+of the supercooled liquid sulfur with the solvent. For step a,
+the molar free energy of fusion (DfusG) was required. For
+step b, the chemical potentials of pure sulfur (mS) and sulfur
+solvated by a solvent (msolv
+S ) were needed, which could be com-
+puted with high accuracy in COSMO-RS. Thus, the mole frac-
+tion solubility of sulfur (xS) could be obtained according to
+Equation (1), in which T is the temperature and R is the gas
+constant.
+ln xS
+ð
+Þ ¼ mS @ msolv
+S
+@ DfusG
+RT
+ð1Þ
+According to Equation (1), DfusG can either be provided experi-
+mentally to predict xS, or vice versa. As an intrinsic property,
+DfusG should be consistent as long as the virtual and real de-
+scriptions of the investigated solute are identical. Here, ele-
+mental sulfur was simplified to cyclo-S8, being the best-known
+allotrope of sulfur,[30,31] and hence the “virtual” or “computed”
+sulfur is “pure”, whereas “real” sulfur contains “impurities” in
+terms of various allotropes. As a result, the DfusG value ob-
+tained from experimental thermal analysis, 3.6 kJmol@1, and
+those computed by COSMO-RS from experimental solubilities,
+are expected to differ.
+Based on the solubilities of sulfur in ten different organic sol-
+vents of different polarities, as reported by Zheng et al.,[5] DfusG
+values
+were
+calculated
+as
+9.0–15.5 kJmol@1
+(average:
+12.1 kJmol@1) for nine of the solvents, but 19.1 kJmol@1 for
+acetonitrile
+(Table 1),
+a
+solvent
+henceforth
+excluded.
+Additionally, a second dataset comprising experimental solubil-
+ities of sulfur in 15 different organic solvents has been provid-
+ed (Table S1).[32] From this set, an average DfusG of 11.3 kJmol@1
+was obtained for 13 of the solvents, whereas solubilities in the
+other two solvents seemed to be overestimated. However, this
+second dataset dates back to the 1950s and was procured
+through unknown experimental procedures, and for this
+reason a DfusG of 12.1 kJmol@1 (2.9 kcalmol@1) was adopted.
+The simplification to cyclo-S8 in the model, as compared to the
+experimental real allotrope-mixed sulfur, results in a higher
+Figure 1. Conceptual approach of COSMO-RS as a computational support
+for Li-S battery electrolyte screening. For sulfur, only the cyclo-S8 allotrope
+was considered.
+Table 1. Experimental sulfur solubilities in different organic solvents[5]
+and the corresponding calculated molar free energies of fusion (DfusG).
+Solvent[a]
+Density [gcm@3]
+Solubility [mm]
+DfusG [kJmol@1]
+ACN
+0.786
+0.61
+19.7
+Ace
+0.784
+2.11
+15.6
+DMSO
+1.100
+3.94
+9.0
+DMF
+0.944
+5.94
+13.0
+Hex
+0.655
+7.07
+10.8
+EtOH
+0.789
+1.70
+11.0
+DME
+0.868
+9.96
+11.9
+G2
+0.937
+10.26
+11.0
+PC
+1.200
+1.32
+12.9
+Pyr
+0.982
+48.05
+13.3
+[a] acetonitrile (ACN), acetone (Ace), dimethyl sulfoxide (DMSO), dimethyl-
+formamide (DMF), n-hexane (Hex), ethanol (EtOH), dimethoxyethane
+(DME), diglyme (G2), propylene carbonate (PC), pyridine (Pyr).
+Chem. Eur. J. 2017, 23, 9130 – 9136
+www.chemeurj.org
+T 2017 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
+9131
+Full Paper
+ 15213765, 2017, 38, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/chem.201701011 by Tsinghua University Library, Wiley Online Library on [10/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 3>>
+computed DfusG from either dataset of experimental solubili-
+ties.
+Benchmarking
+Binary electrolytes
+In order to verify the reliability of the COSMO-RS approach, the
+solubilities of cyclo-S8 in binary electrolytes containing 0.1m
+and 1.0m LiTFSI were computed and compared to literature
+values.[5] For the implicit solvation approach (approach A),
+three components; solvent, Li+, and TFSI, were considered and
+their mole fractions were directly calculated using the density
+of the corresponding organic solvent (Table 1).
+The explicit solvation approach B reduces the peak of the
+“free” cation and spreads out the s profile closer to the
+s range of @0.02 ea@2 (Figure 2). To maintain constant solven-
+t:LiTFSI ratios in both approaches A and B, the contents of the
+different clusters in B were predicted from an intermolecular
+contact statistics calculation for A. Li+ is exclusively contacted
+by a solvent molecule in the 0.1m LiTFSI electrolytes, which
+corresponds to a fully dissociated LiTFSI salt (Table 2). The con-
+tact statistics calculation was, however, based on the pairwise
+combination of molecular surface segments and therefore de-
+scribed the formation of [Li(solvent)]+ clusters rather than the
+full cation solvation shell. Accordingly, the formation of an
+[Li(TFSI)] cluster becomes more likely for the 1.0m LiTFSI elec-
+trolytes. Moreover, the formation of [Li(solvent)]+ clusters is
+more likely for DMF, DMSO, or Pyr as solvents than for DME,
+G2, or PC, due to the charge distributions; the mesomeric >
+N+=C@O@ form of DMF, the >S+@O@ form of DMSO, and the
+localized lone pair on the nitrogen atom in Pyr, each represent-
+ing predominant interaction sites for the lithium cation. Any
+potential bidentate coordination of Li+ by DME or G2 is not
+accounted for in the contact statistics calculations. Subse-
+quently, the mole fractions of all components in a binary elec-
+trolyte were recalculated and the cyclo-S8/binary electrolyte
+solid–liquid equilibrium was computed to obtain the maximum
+cyclo-S8 mole fraction solubility xS.
+Table 3 shows the significant improvement in calculated sol-
+ubilities for the 0.1m LiTFSI binary electrolyte by using the ex-
+plicit solvation approach, reducing the RMSD from 0.8 to
+0.4 log units. For the 1.0m LiTFSI binary electrolyte, both
+approaches are similarly accurate, but with a slightly better
+performance of the implicit solvation approach. For most elec-
+trolytes, the cyclo-S8 solubility tends to be overestimated, an
+exception being the DMSO-based electrolytes. For neat DMSO,
+a cyclo-S8 DfusG value of 9.0 kJmol@1 was determined above,
+which is about 3 kJmol@1 lower than the mean value used.
+Hence, the solubility might be underestimated due to the
+greater energy required for the virtual melting process.
+The solubility of cyclo-S8 increases as a function of tempera-
+ture for all organic solvents and electrolytes, showing the pro-
+cess of sulfur dissolution to be endothermic (Figures 3 and 4,
+using the lowest RMSD solvation approach for each).
+The solubility trend is: Pyr > DME & G2 > DMF > PC &
+DMSO. It is also clear from Figures 3 and 4 that a higher LiTFSI
+concentration reduces the sulfur solubility.
+Ternary electrolytes
+The cyclo-S8 solubility was calculated for a set of ternary elec-
+trolytes: 1m LiTFSI in TMS:DME with different volumetric ratios
+(9:1!6:4). Again, both the A and B solvation approaches were
+Figure 2. Calculated s profiles of different Li+-solvent clusters. In the
+COSMO spheres, a red area denotes a negatively charged part of the molec-
+ular surface and hence a positive charge density s. A purple area denotes
+a strongly positively charged surface region and a green area denotes a non-
+polar surface region.
+Table 2. Contact probability for Li+ in binary electrolytes.
+DMF
+DMSO
+DME
+G2
+PC
+Pyr
+0.1m LiTFSI electrolyte
+solvent
+1.00
+1.00
+0.99
+0.99
+0.99
+0.99
+TFSI
+0.00
+0.00
+0.01
+0.01
+0.01
+0.01
+1.0m LiTFSI electrolyte
+solvent
+0.89
+0.93
+0.80
+0.81
+0.83
+0.87
+TFSI
+0.11
+0.07
+0.20
+0.19
+0.17
+0.13
+Table 3. Comparison of experimental[5] (exp.) sulfur and calculated cyclo-
+S8 solubilities in various solvents according to the different solvation ap-
+proaches (implicit: A; explicit: B).
+log10(xS) for 0.1m LiTFSI
+log10(xS) for 1.0m LiTFSI
+Solvent
+c[a]
+[mm]
+exp
+A
+B
+c[a]
+[mm]
+exp
+A
+B
+PC
+1.26
+@4.0
+@3.4
+@3.7
+0.63
+@4.3
+@4.0
+@4.0
+DMSO
+3.85
+@3.6
+@2.3
+@3.9
+1.93
+@3.9
+@3.8
+@4.4
+DMF
+5.90
+@3.3
+@2.2
+@2.8
+2.60
+@3.7
+@3.5
+@3.6
+DME
+8.96
+@3.0
+@2.5
+@2.7
+3.99
+@3.4
+@3.3
+@3.3
+G2
+9.51
+@2.9
+@2.3
+@2.7
+3.88
+@3.3
+@3.2
+@3.2
+Pyr
+28.01
+@2.7
+@2.2
+@2.3
+15.91
+@2.9
+@2.9
+@2.8
+RMSD
+0.8
+0.4
+0.2
+0.3
+[a] c=concentration.
+Chem. Eur. J. 2017, 23, 9130 – 9136
+www.chemeurj.org
+T 2017 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
+9132
+Full Paper
+ 15213765, 2017, 38, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/chem.201701011 by Tsinghua University Library, Wiley Online Library on [10/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 4>>
+used. For the Li+-TMS, Li+-DME, and Li+-TFSI clusters, the
+mole fractions were recalculated based on contact statistics
+calculations (Table 4). The Li+ cation is preferentially contacted
+by TMS, but with increasing DME content, the probability of
+Li+-DME contacts increases, whereas the Li+-TFSI contacts
+remain rather constant for all systems.
+Since the exact densities of the different ternary electrolytes
+are unknown, the initial mole fractions of TMS, DME, Li+, and
+TFSI were calculated assuming densities of 1.5 and 1.2 gcm@3
+and the resulting logarithmic mole fraction solubilities were
+averaged (see the Experimental Section).
+As for the binary electrolytes, the two approaches gave simi-
+lar accuracies for the solubility prediction, with RMSDs of 0.4
+and 0.5 log units, respectively (Table 5), and the solubility of
+cyclo-S8 increased with temperature, again indicating an endo-
+thermic dissolution process (Figure 5). With increasing content
+of DME, the solubility of cyclo-S8 increased gradually, a trend
+even more evident at elevated temperatures.
+Thermodynamic analysis
+For a better understanding of the dissolution process and its
+driving forces, a more detailed thermodynamic analysis was
+carried out. By plotting the computed solubilities as ln(xS)
+against 1/T, the dissolution enthalpy (DsolH) and entropy (DsolS)
+could be obtained from the slope and intercept, respectively,
+using the van’t Hoff equation[33,34] [Eq. (2)], in which R is the
+universal gas constant.
+ln xS
+ð
+Þ ¼ @ DsolH
+R
+> 1
+T þ DsolS
+R
+ð2Þ
+Accordingly, the Gibbs free energy of dissolution (DsolG) could
+be obtained using the mean temperature (Tmean) of the investi-
+gated temperature range (303.15 K)[34] [Eq. (3)]:
+DsolG ¼ DsolH @ TmeanDsolS
+ð3Þ
+Figure 3. Solubility of cyclo-S8 in various 0.1m LiTFSI electrolytes as a function
+of temperature according to the explicit (B) solvation approach.
+Figure 4. Solubility of cyclo-S8 in various 1.0m LiTFSI electrolytes as a function
+of temperature according to the implicit (A) solvation approach.
+Table 4. Contact probabilities for Li+ in the ternary electrolytes.
+9:1
+8:2
+7:3
+6:4
+TMS
+0.87
+0.74
+0.65
+0.57
+DME
+0.05
+0.15
+0.23
+0.31
+TFSI
+0.08
+0.11
+0.12
+0.12
+Table 5. Comparison of experimental[6] (exp.) sulfur and calculated cyclo-
+S8 solubilities in ternary 1.0m LiTFSI in TMS:DME electrolytes using the A
+and B solvation approaches.
+log10(xS) for 1.0m LiTFSI
+TMS:DME
+c[a] [mm]
+exp
+A
+B
+9:1
+2.42
+@3.7
+@4.3(:0.1)
+@4.3(:0.0)
+8:2
+3.11
+@3.6
+@4.1(:0.1)
+@4.1(:0.0)
+7:3
+3.27
+@3.5
+@3.9(:0.1)
+@3.9(:0.0)
+6:4
+3.50
+@3.5
+@3.7(:0.1)
+@3.8(:0.1)
+RMSD
+0.4
+0.5
+[a] c=concentration.
+Figure 5. Solubility of cyclo-S8 in 1.0m LiTFSI in TMS:DME as a function of
+temperature according to the implicit (A) solvation approach.
+Chem. Eur. J. 2017, 23, 9130 – 9136
+www.chemeurj.org
+T 2017 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
+9133
+Full Paper
+ 15213765, 2017, 38, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/chem.201701011 by Tsinghua University Library, Wiley Online Library on [10/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 5>>
+To compare the relative contributions of enthalpy (%xH) and
+entropy (%xTS) to the Gibbs free energy of dissolution for the
+process,
+the
+following
+equations
+[Eqs. (4)
+and
+(5)]
+were
+used:[34,35]
+%xH ¼ 100 >
+DsolH
+j
+j
+DsolH
+j
+j þ TDsolS
+j
+j
+ð4Þ
+%xTS ¼ 100 >
+TDsolS
+j
+j
+DsolH
+j
+j þ TDsolS
+j
+j
+ð5Þ
+All resulting thermodynamic data from Equations (2)–(5) are
+listed in Table 6. During the dissolution process, solvent–sol-
+vent and solute–solute interactions are broken and solvent–
+solute interactions are formed. The positive values for DsolS in-
+dicate an overall increase in the degree of freedom. However,
+with a contribution of %xH>80% for all of the investigated
+solutions, the dissolution process of elemental sulfur is clearly
+enthalpy-driven, but endothermic (DsolH>0) and non-sponta-
+neous (DsolG>0). As a result, and in accordance with the calcu-
+lated absolute solubilities of cyclo-S8, the dissolution process is
+broadly favored in the following order: Pyr > G2 & DME >
+DMF > DMSO/PC (the order of DMSO and PC varies with the
+LiTFSI concentration). For the 0.1m electrolytes, lower DsolG
+values were obtained compared to the neat organic solvents,
+indicating that the addition of LiTFSI first favors the solubility
+of cyclo-S8 and then inhibits it upon further increasing the salt
+concentration. This might be attributed to the problems asso-
+ciated with computations on dilute electrolytes with COSMO-
+RS. However, the experimental solubilities[5] for the neat organ-
+ic solvents (Table 1) and the 0.1m LiTFSI electrolytes (Table 3)
+differ only marginally (except for Pyr).
+A similar analysis of the ternary 1.0m LiTFSI TMS:DME elec-
+trolytes revealed an inhibiting effect of TMS on the dissolution
+process of cyclo-S8 (Table 7).
+Conclusion
+Using experimentally determined sulfur solubilities as referen-
+ces, the solubility of cyclo-S8 in binary and ternary electrolytes
+has been shown by COSMO-RS simulations to be an endother-
+mic process facilitated by DME as solvent and increased tem-
+perature, but to decrease as a function of LiTFSI concentration.
+From a methodological perspective, for salt concentrations
+<1m, the explicit solvation approach performs more accurate-
+ly, whereas at >1m the implicit solvation approach is more fa-
+vorable. Overall, the computed solubilities differ from the ex-
+perimental values by <0.4 log units, which is within experi-
+mental error and hence indicates an accurate and reliable per-
+formance of the COSMO-RS simulations. We thus surmise that
+the approach presented here is useful for screening and under-
+standing at the molecular level.
+Experimental Section
+Examined compounds: In the COSMOtherm database, cosmo-files
+for acetonitrile (ACN), acetone (Ace), ethanol (EtOH), n-hexane
+(Hex), pyridine (Pyr), dimethylformamide (DMF), and dimethyl sulf-
+oxide (DMSO) are provided by default. The structures and cosmo-
+files for cyclo-S8, propylene carbonate (PC), dimethoxyethane
+(DME), diglyme (G2), and tetramethylene sulfone (TMS) were
+added. For PC, only the (R)-isomer was used. For G2, a conforma-
+tional search of its dimer was applied by using MOPAC2012 with
+PM7[36,37] in a molecular dynamics structure search at 293 K for
+14 ps in Gabedit[38] (version 2.4.9). The five dimeric structures of
+lowest energy provided ten G2 conformations, which were added
+to the COSMOtherm database. According to Boltzmann population
+analysis in COSMOtherm, however, three of the ten G2 conforma-
+tions represented 99% of the population. Thus, in the interest of
+reducing computational time, the remaining seven conformations
+were ignored.
+For elemental sulfur, the molar free energy of fusion DfusG was cal-
+culated from the corresponding experimental molar heat of fusion
+(DfusH) and melting temperature (Tm) according to Equation (6),
+Table 6. Thermodynamic properties of the dissolution process of cyclo-S8
+in selected organic solvents and binary electrolytes at the mean tempera-
+ture (303.15 K).
+DsolG[a]
+DsolH[a]
+DsolS[b]
+TDsolS[a]
+%xH
+%xTS
+organic solvent
+PC
+21.7
+26.1
+14.6
+4.4
+86
+14
+DMSO
+23.3
+27.0
+12.1
+3.7
+88
+12
+DMF
+18.2
+20.9
+9.1
+2.8
+88
+12
+DME
+17.2
+21.2
+13.4
+4.1
+84
+16
+G2
+17.2
+20.8
+11.8
+3.6
+85
+15
+Pyr
+12.6
+13.3
+2.4
+0.7
+95
+5
+DMK
+18.2
+23.3
+16.9
+5.1
+82
+18
+EtOH
+23.9
+26.8
+9.5
+2.9
+90
+10
+Hex
+18.6
+22.6
+13.5
+4.1
+85
+15
+0.1m LiTFSI electrolyte (approach B)
+PC
+20.6
+25.0
+14.6
+4.4
+85
+15
+DMSO
+21.7
+25.4
+12.3
+3.7
+87
+13
+DMF
+15.7
+18.3
+8.6
+2.6
+87
+13
+DME
+15.2
+19.1
+12.8
+3.9
+83
+17
+G2
+14.9
+18.3
+11.5
+3.5
+84
+16
+Pyr
+12.7
+13.4
+2.4
+0.7
+95
+5
+1.0m LiTFSI electrolyte (approach A)
+PC
+22.3
+26.7
+14.7
+4.5
+86
+14
+DMSO
+21.8
+25.9
+13.8
+4.2
+86
+14
+DMF
+19.6
+22.3
+9.0
+2.7
+89
+11
+DME
+18.1
+22.1
+13.0
+3.9
+85
+15
+G2
+18.1
+21.6
+11.6
+3.5
+86
+14
+Pyr
+16.3
+17.0
+2.2
+0.7
+96
+4
+[a] kJmol@1. [b] J mol@1 K@1.
+Table 7. Thermodynamic properties of the dissolution processes of cyclo-
+S8 in ternary 1.0m LiTFSI in TMS:DME electrolytes at the mean tempera-
+ture (303.15 K).
+TMS:DME
+DsolG[a]
+DsolH[a]
+DsolS[b]
+TDsolS[a]
+%xH
+%xTS
+9:1
+23.8
+28.4
+15.3
+4.6
+86
+14
+8:2
+22.7
+27.3
+15.0
+4.5
+86
+14
+7:3
+21.7
+26.1
+14.7
+4.5
+85
+15
+6:4
+20.8
+25.2
+14.5
+4.4
+85
+15
+[a] kJmol@1. [b] Jmol@1 K@1.
+Chem. Eur. J. 2017, 23, 9130 – 9136
+www.chemeurj.org
+T 2017 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
+9134
+Full Paper
+ 15213765, 2017, 38, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/chem.201701011 by Tsinghua University Library, Wiley Online Library on [10/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 6>>
+withDfusH=17 kJmol@1 (2.1 kJmol@1 for S1
+[39]), Tm=388 K (1158C),
+and T=298.15 K, a value of 3.6 kJmol@1 for DfusG was obtained for
+the cyclo-S8 allotrope.
+DfusG T
+ð Þ ¼ DfusH >
+1 @ T=Tm
+0
+/
+ð6Þ
+Computational methods: Structures were built in the graphical
+user interface (GUI) of TmoleX 4.1 and quantum chemical calcula-
+tions were performed using the TURBOMOLE[40,41] V7.0 program
+package. Geometries were optimized using the BP86 function-
+al[42,43] and TZVP basis set[44] in the gas phase and for a perfect con-
+ductor (COSMO: e=1). Additionally, a single-point calculation at
+the BP86/TZVP//BP86/TZVPD level of theory was performed for
+gas-phase and cosmo-phase geometries in order to generate a fine
+grid cavity surface (FINE) for the molecules, which was saved in
+a cosmo-file. The COSMO-RS calculations were performed using
+COSMOtherm and the BP_TZVPD_FINE_C30_1501 parametrization
+via the COSMOthermX GUI.[45] The solvent screening module was
+used to determine DfusG of cyclo-S8, which represents elemental
+sulfur, according to its solubility in various pure organic solvents.
+The extended mixtures module was used to compute the intermo-
+lecular contact statistics at 273.15 K. The probability, pab, that a seg-
+ment of molecule A is in contact with a segment of molecule B is
+given by Equation (7).
+pab ¼ xBAaAbgagb
+AA
+totalAtotal
+exp @Eab=kT
+0
+/
+ð7Þ
+The solid–liquid module was used to compute solubilities in vari-
+ous binary and ternary electrolytes in a temperature range from
+273.15 to 333.15 K (0 to 608C) in steps of 10 K. All computations
+were performed with regard to the mole fraction of the containing
+compounds. The mole fractions were calculated according to Equa-
+tion (8).
+x1 ¼ n1
+P n
+ð8Þ
+The numbers of moles n of Li+ and TFSI+ were obtained according
+to Equation (9), in which cel is the concentration of LiTFSI in the
+electrolyte and V is the volume (1 mL). For a solvent i, the number
+of moles ni was calculated according to Equation (10) in which 1i,
+Mi, and fi are the density, molar mass, and volume fraction of sol-
+vent i, respectively.
+nLiþ=TFSI ¼ celV
+ð9Þ
+ni ¼ 1iVf i
+Mi
+ð10Þ
+For all binary electrolytes, the density of the organic solvent was
+used. The densities of neat TMS:DME mixtures were calculated, ne-
+glecting a potential volume contraction, according to Equa-
+tion (11).
+1calcd ¼ f TMS1TMS þ f DME1DME
+ð11Þ
+The obtained densities were between 1.1 gcm@3 for a volumetric
+ratio of 6:4 and 1.2 gcm@3 for 9:1. To account for the increase in
+density due to the addition of LiTFSI, the mole fraction solubilities
+of cyclo-S8 xs
+1.5 and xs
+1.2 were computed assuming densities of 1.5
+and 1.2 gcm@3 for all ternary electrolytes, respectively. The results
+obtained at the respective densities were averaged and the stan-
+dard deviation was calculated.
+The root-mean-square deviation (RMSD) was calculated according
+to Equation (12) in which xcalcd
+s,i
+and xexptl
+s,i
+are the calculated and ex-
+perimental mole fraction solubilities, respectively, of cyclo-S8 in sol-
+vent i.
+RMSD ¼
+ﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ
+1
+N
+X
+N
+i¼1
+log10 xcalcd
+s;i
+E
+C
+@ log10 xexptl
+s;i
+E
+C
+E
+C2
+s
+ð12Þ
+Acknowledgements
+The European Commission has provided financial support for
+“High-Energy Lithium Sulfur Cells and Batteries” (HELIS) under
+research grant agreement No. 666221. We thank Dr. Franck
+Eckert (COSMOlogic GmbH & Co. KG) for valuable discussions.
+Conflict of interest
+The authors declare no conflict of interest.
+Keywords: computer chemistry · electrolyte design · lithium–
+sulfur batteries · sulfur · solubility · thermodynamics
+[1] M. R. Busche, P. Adelhelm, H. Sommer, H. Schneider, K. Leitner, J. Janek,
+J. Power Sources 2014, 259, 289–299.
+[2] P. Adelhelm, P. Hartmann, C. L. Bender, M. Busche, C. Eufinger, J. Janek,
+Beilstein J. Nanotechnol. 2015, 6, 1016–1055.
+[3] M. Barghamadi, A. S. Best, A. I. Bhatt, A. F. Hollenkamp, M. Musameh,
+R. J. Rees, T. Rether, Energy Environ. Sci. 2014, 7, 3902–3920.
+[4] J. Scheers, S. Fantini, P. Johansson, J. Power Sources 2014, 255, 204–
+218.
+[5] D. Zheng, X. Zhang, C. Li, M. E. McKinnon, R. G. Sadok, D. Qu, X. Yu, H.-
+S. Lee, X.-Q. Yang, D. Qu, J. Electrochem. Soc. 2015, 162, 203–206.
+[6] S. Yoon, Y.-H. Lee, K.-H. Shin, S. B. Cho, W. J. Chung, Electrochim. Acta
+2014, 145, 170–176.
+[7] A. Klamt, J. Phys. Chem. 1995, 99, 2224–2235.
+[8] M. Diedenhofen, A. Klamt, K. Marsh, A. Sch-fer, Phys. Chem. Chem. Phys.
+2007, 9, 4653–4656.
+[9] T. Banerjee, M. K. Singh, A. Khanna, Ind. Eng. Chem. Res. 2006, 45, 3207–
+3219.
+[10] I. Khan, K. A. Kurnia, T. E. Sintra, J. A. Saraiva, S. P. Pinho, J. A. P. Coutinho,
+Fluid Phase Equilib. 2014, 361, 16–22.
+[11] M. P. Andersson, S. L. S. Stipp, J. Phys. Chem. C 2012, 116, 18779–18787.
+[12] M. P. Andersson, M. H. M. Olsson, S. L. S. Stipp, Langmuir 2014, 30,
+6437–6445.
+[13] J. J. Guerard, J. S. Arey, J. Chem. Theory Comput. 2013, 9, 5046–5058.
+[14] A. V. Marenich, J. Ho, M. L. Coote, C. J. Cramer, D. G. Truhlar, Phys. Chem.
+Chem. Phys. 2014, 16, 15068–15106.
+[15] C. Loschen, A. Klamt, J. Pharm. Pharmacol. 2015, 67, 803–811.
+[16] C. Loschen, A. Klamt, Pharm. Res. 2016, 33, 2794–2804.
+[17] L. Y. Garcia-Chavez, A. J. Hermans, B. Schuur, A. B. de Haan, Sep. Purif.
+Technol. 2012, 97, 2–10.
+[18] J. Palomar, J. S. Torrecilla, J. Lemus, V. R. Ferro, F. Rodr&guez, Phys. Chem.
+Chem. Phys. 2010, 12, 1991.
+[19] M. Gonzalez-Miquel, M. Massel, A. DeSilva, J. Palomar, F. Rodriguez, J. F.
+Brennecke, J. Phys. Chem. B 2014, 118, 11512–11522.
+[20] V. Govinda, T. Vasantha, I. Khan, P. Venkatesu, Ind. Eng. Chem. Res. 2015,
+54, 9013–9026.
+[21] M. Korth, Phys. Chem. Chem. Phys. 2014, 16, 7919–7926.
+[22] T. Husch, N. D. Yilmazer, A. Balducci, M. Korth, Phys. Chem. Chem. Phys.
+2015, 17, 3394–3401.
+[23] S. Brox, S. Rçser, T. Husch, S. Hildebrand, O. Fromm, M. Korth, M. Winter,
+I. Cekic-Laskovic, ChemSusChem 2016, 9, 1704–1711.
+Chem. Eur. J. 2017, 23, 9130 – 9136
+www.chemeurj.org
+T 2017 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
+9135
+Full Paper
+ 15213765, 2017, 38, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/chem.201701011 by Tsinghua University Library, Wiley Online Library on [10/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 7>>
+[24] T. Husch, M. Korth, Phys. Chem. Chem. Phys. 2015, 17, 22596–22603.
+[25] C. Schetter, T. Husch, M. Korth, A. Balducci, J. Phys. Chem. C 2015, 119,
+13413–13424.
+[26] C. Schetter, T. Husch, V. Viswanathan, S. Passerini, A. Balducci, M. Korth,
+J. Power Sources 2016, 326, 541–548.
+[27] A. Klamt, Fluid Phase Equilib. 2016, 407, 152–158.
+[28] O. Toure, F. Audonnet, A. Lebert, C.-G. Dussap, Chem. Eng. Res. Des.
+2014, 92, 2873–2883.
+[29] O. Toure, F. Audonnet, A. Lebert, C.-G. Dussap, Can. J. Chem. Eng. 2015,
+93, 443–450.
+[30] J. J. Griebel, R. S. Glass, K. Char, J. Pyun, Prog. Polym. Sci. 2016, 58, 90–
+125.
+[31] B. Meyer, Chem. Rev. 1976, 76, 367–388.
+[32] H. J. Kandiner, M. Atterer, L. Gmelin, Schwefel, Springer, Heidelberg,
+1974.
+[33] L. Song, Y. Gao, J. Gong, J. Chem. Eng. Data 2011, 56, 2553–2556.
+[34] X.-Y. Qing, H.-L. Fu, G. Shu, M.-J. Liu, J.-Y. Zhou, W.-B. Wu, Y.-L. Zhang, J.-
+J. Zhou, J. Chem. Eng. Data 2015, 60, 1629–1633.
+[35] G. L. Perlovich, S. V. Kurkov, A. Bauer-Brandl, Eur. J. Pharm. Sci. 2003, 19,
+423–432.
+[36] J. D. C. Maia, G. A. Urquiza Carvalho, C. P. Mangueira, S. R. Santana,
+L. A. F. Cabral, G. B. Rocha, J. Chem. Theory Comput. 2012, 8, 3072–
+3081.
+[37] MOPAC2012, James J. P. Stewart, Stewart Computational Chemistry, Ver-
+sion 15.229W web: http://OpenMOPAC.net.
+[38] A.-R. Allouche, J. Comput. Chem. 2011, 32, 174–182.
+[39] D. R. Lide, CRC Handbook of Chemistry and Physics, 93rd ed., 2012, CRC,
+Boca Raton, p. 2664.
+[40] R. Ahlrichs, M. B-r, M. H-ser, H. Horn, C. Kçlmel, Chem. Phys. Lett. 1989,
+162, 165–169.
+[41] TURBOMOLE 7.0. Karlsruhe, Germany: University of Karlsruhe and For-
+schungszentrum Karlsruhe GmbH (1989–2007), TURBOMOLE GmbH
+(since 2007); 2015. http://www.turbomole.com.
+[42] A. D. Becke, Phys. Rev. A 1988, 38, 3098–3100.
+[43] J. P. Perdew, Phys. Rev. B 1986, 33, 8822–8824.
+[44] A. Sch-fer, C. Huber, R. Ahlrichs, J. Chem. Phys. 1994, 100, 5829.
+[45] COSMOtherm C3.0, release 15.01. Leverkusen, Germany: COSMOlogic
+GmbH&Co. KG; 2014. http://www.cosmologic.de.
+Manuscript received: March 6, 2017
+Accepted manuscript online: April 27, 2017
+Version of record online: June 19, 2017
+Chem. Eur. J. 2017, 23, 9130 – 9136
+www.chemeurj.org
+T 2017 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
+9136
+Full Paper
+ 15213765, 2017, 38, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/chem.201701011 by Tsinghua University Library, Wiley Online Library on [10/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

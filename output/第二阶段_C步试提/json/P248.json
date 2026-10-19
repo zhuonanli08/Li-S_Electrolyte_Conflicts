@@ -1,0 +1,44 @@
+{
+  "编号": "P248",
+  "电解液": {
+    "E1": {"名称": "LCE", "配方": "1 M LiTFSI，DME/DOL 1:1 v/v，无 LiNO3"},
+    "E2": {"名称": "HCE", "配方": "LiTFSI:DME:DOL = 1:1.5:1.5（摩尔），约 5.5 M，无 LiNO3"},
+    "E3": {"名称": "LHCE", "配方": "LiTFSI:DME:DOL:TME = 1:1.5:1.5:6（摩尔），约 1.8 M，无 LiNO3"}
+  },
+  "条件": {
+    "C1": {"正极": "S@KB（71.2% S；极片 80:10:10）", "硫载量": "约 0.5 mg cm-2", "硫含量": "复合物 71.2 wt%", "E/S": "", "电解液体积": "约 30 µL", "面积": "",
+           "锂厚": "", "N/P": "", "倍率": "0.5C", "1C定义": "", "温度": "", "电池": "扣式",
+           "原句": "The amount of electrolyte was about 30 µL per battery in Li-S batteries and about 60 µL in other batteries."},
+    "C2": {"正极": "无（Li‖Cu）", "硫载量": "", "硫含量": "", "E/S": "", "电解液体积": "约 60 µL", "面积": "",
+           "锂厚": "", "N/P": "", "倍率": "0.5 mA cm-2，1 mAh cm-2", "1C定义": "", "温度": "", "电池": "扣式", "原句": ""}
+  },
+  "比较": [
+    {"A": "E3", "B": "E2", "条件": "C1", "层": "C", "改变因素": ["稀释剂"],
+     "溶剂化依据": "Raman：S-N-S 峰 LCE 742 → HCE 746 → LHCE 749 cm-1，作者称 LHCE 中 AGG 比例更大（同篇实验）",
+     "指标": [
+       {"指标": "首圈容量", "取值点": "0.5C 第 1 圈（由第 400 圈容量 ÷ 保持率反推）", "A": "约 924", "B": "约 954", "单位": "mAh g-1", "方向": "差异小", "来源": "计算",
+        "原句": "", "备注": "554.68/0.60 与 463.69/0.4862；原文没直接给首圈值"},
+       {"指标": "指定圈数放电容量", "取值点": "第 400 圈", "A": "554.68", "B": "463.69", "单位": "mAh g-1", "方向": "A更好", "来源": "正文",
+        "原句": "After 400 cycles, the capacity still reaches 554.68 mAh g-1 (Fig."},
+       {"指标": "循环保持率或寿命", "取值点": "400 圈", "A": "60", "B": "48.62", "单位": "%", "方向": "A更好", "来源": "正文",
+        "原句": "The capacity retention is just 48.62% (Fig."},
+       {"指标": "全电池库仑效率", "取值点": "400 圈平均", "A": "97.73", "B": "96.52", "单位": "%", "方向": "A更好", "来源": "正文",
+        "原句": "S8), the capacity retention is as high as 60% after 400 cycles (Fig."}
+     ]},
+    {"A": "E3", "B": "E2", "条件": "C2", "层": "C", "改变因素": ["稀释剂"], "溶剂化依据": "同上",
+     "指标": [
+       {"指标": "Li‖Cu 库仑效率", "取值点": "首圈", "A": "93.16", "B": "82", "单位": "%", "方向": "A更好", "来源": "正文",
+        "原句": "Remarkably, in the TME-based LHCE, the Li metal achieved a high initial CE of 93.16% (Fig. 1c), and the CE reached 99.37% after 100 cycles (Fig. 1d)."},
+       {"指标": "Li‖Cu 库仑效率", "取值点": "3 倍过量锂累计容量损失法：失效圈数", "A": ">157", "B": "78", "单位": "圈", "方向": "A更好", "来源": "正文",
+        "原句": "Under treble of excess Li, the battery with LCE and HCE malfunctioned after 65 and 78 cycles, respectively."}
+     ]},
+    {"A": "E2", "B": "E1", "条件": "C2", "层": "C", "改变因素": ["盐浓度"], "溶剂化依据": "Raman：同上",
+     "指标": [
+       {"指标": "Li‖Cu 库仑效率", "取值点": "首圈", "A": "82", "B": "76", "单位": "%", "方向": "A更好", "来源": "正文",
+        "原句": "The initial CE of Li was slightly improved to 82% when HCE was used (Fig. 1b)."},
+       {"指标": "Li‖Cu 库仑效率", "取值点": "3 倍过量锂累计容量损失法：失效圈数", "A": "78", "B": "65", "单位": "圈", "方向": "A更好", "来源": "正文",
+        "原句": "Under treble of excess Li, the battery with LCE and HCE malfunctioned after 65 and 78 cycles, respectively."}
+     ]}
+  ],
+  "备注": "Li–S 只比了 HCE 与 LHCE；首圈值由第 400 圈容量和保持率反推（A 略低、差异 <5%），之后 A 更好——弱的'随运行时间变化'迹象，需看图确认。正极面积未写，E/S 不可算；锂厚未写；低载量 0.5 mg cm-2。"
+}

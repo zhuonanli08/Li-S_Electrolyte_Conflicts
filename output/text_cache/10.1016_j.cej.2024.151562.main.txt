@@ -1,0 +1,1141 @@
+
+<<PAGE 1>>
+Chemical Engineering Journal 490 (2024) 151562
+Available online 23 April 2024
+1385-8947/© 2024 Elsevier B.V. All rights reserved.
+Selection of ionic liquid electrolytes for high-performing lithium-sulfur 
+batteries: An experiment-guided high-throughput machine 
+learning analysis 
+Aysegul Kilic a, Omar Abdelaty a, Muhammad Zeeshan b,e, Alper Uzun b,c,d, Ramazan Yildirim a,*, 
+Damla Eroglu a,* 
+a Bogazici University, Department of Chemical Engineering, 34342 Istanbul, Turkey 
+b Koç University, Department of Chemical and Biological Engineering, 34450 Istanbul, Turkey 
+c Koç University, Koç University TÜPRAS¸ Energy Center (KUTEM), 34450 Istanbul, Turkey 
+d Koç University, Koç University Surface Science and Technology Center (KUYTAM), 34450 Istanbul, Turkey 
+e Case Western Reserve University, Department of Chemical and Biomolecular Engineering, 44106 Cleveland, OH, USA   
+A R T I C L E I N F O  
+Keywords: 
+Li-S battery 
+Ionic liquid 
+Polysulfide solubility 
+Electrolyte viscosity 
+Ionic liquid descriptor 
+A B S T R A C T  
+The polysulfide (PS) shuttle mechanism (PSM) is one of the most significant challenges of lithium-sulfur (Li-S) 
+batteries in achieving high capacity and cyclability. One way to minimize the shuttle effect is to limit the PS 
+solubilities in the battery electrolyte. Ionic liquids (IL) are particularly suited as electrolyte solvents because of 
+their tunable physical and chemical properties. In this work, thousands of ILs are screened to narrow down 
+potentially viable candidates to be used as electrolytes in Li-S batteries. To that end, the COnductor-like 
+Screening Model for Realistic Solvents (COSMO-RS) calculations are performed over more than 36,000 ILs. An 
+extensive database containing PS solubilities and other relevant properties is constructed at 25 ◦C. First, the 
+effectiveness of the COSMO-RS calculations is experimentally tested with six different ILs having a wide range of 
+solubility and viscosity values; a strong correlation between the PS solubility and battery performance is ob­
+tained. After specifying the target limits for promising ILs using the experimental battery performance data, 
+machine learning (ML) tools are used to predict and identify the relationship between IL properties and PS 
+solubilities and structural and molecular descriptors of ILs. The extreme gradient boosting (XGBoost) method 
+successfully predicts the solubility and property values. Association rule mining (ARM) and the feature impor­
+tance analysis show that anion descriptors are more dominant, whereas cations have less impact on the solu­
+bilities and properties of ILs. Finally, the imidazolium and pyridinium ILs with bis_imide and borate anion groups 
+are identified as the most promising ones.   
+1. Introduction 
+Lithium-ion (Li-ion) batteries have so far successfully met the re­
+quirements of many applications and have been widely accepted as 
+state-of-the-art owing to their high voltage range (2.5–4 V), negligible 
+memory effect, long life (>1000 cycles), relatively high energy density 
+(240 Wh/kg; 640 Wh/L), and high energy conversion efficiency for 
+storage purposes. Despite these advantages, Li-ion batteries have a 
+Abbreviations: ARM, Association rule mining; BETA, Bis(pentafluoroethanesulfonyl)amide; BF4, Tetrafluoroborate; BMIM, 1-butyl-3-methyl-imidazolium; 
+C4dmim, 1-butyl-2,3-dimethyli-imidazolium; CF3SO3, Trifluoromethane-sulfonate; COSMO-RS, COnductor-like Screening Model for Realistic Solvents; CPK, Corey, 
+Pauling, and Koltun space filling model; DEME, N,N-diethyl-N-methyl-N-(2-methoxyethyl)-ammonium; DFT, Density functional theory; DME, 1,2-Dimethoxyethane; 
+DOL, 1,3-Dioxolane; FSI, Bis(fluorosulfonyl)imide; HBA, Hydrogen bond acceptor; HBD, Hydrogen bond donor; HOMO, Highest occupied molecular orbital; IL, Ionic 
+liquid; Li-S, Lithium-sulfur; LUMO, Lowest unoccupied molecular orbital; MeSO4, Methyl-sulfate; ML, Machine learning; MW, Molecular weight; P13, 1-methyl-1- 
+propyl-pyrrolidinium; P14, 1-butyl-1-methyl-pyrrolidinium; P2225, Triethyl-pentyl-phosphonium; PF6, Hexafluorophosphate; Phosh/phosphin, Phosphate/phos­
+phininate; PP13, 1-methyl-1-propyl-piperidinium; PP14, 1-butyl-1-methylpiperidinium; PS, Polysulfide; PSM, Polysulfide shuttle mechanism; RMSE, Root-mean- 
+square-error; TBMA, Tributylmethylammonium; TFSI, Bis(trifluoromethane)sulfonimide; XGBoost, Extreme gradient boosting; ZPE, Zero point energy. 
+* Corresponding authors. 
+E-mail addresses: yildirra@boun.edu.tr (R. Yildirim), eroglud@boun.edu.tr (D. Eroglu).  
+Contents lists available at ScienceDirect 
+Chemical Engineering Journal 
+journal homepage: www.elsevier.com/locate/cej 
+https://doi.org/10.1016/j.cej.2024.151562 
+Received 8 February 2024; Received in revised form 8 April 2024; Accepted 21 April 2024   
+
+<<PAGE 2>>
+Chemical Engineering Journal 490 (2024) 151562
+2
+theoretical energy density of 800 Wh/kg, which may be insufficient to 
+meet the targets for future transport and grid storage applications. 
+Furthermore, limited availability and the high cost of some active ma­
+terials manufacturing the Li-ion batteries prevent their wider adapta­
+tion. Therefore, beyond Li-ion battery technologies have been explored 
+to reach the set targets regarding energy density, cost, and other 
+essential properties of future applications [1–4]. In this respect, lithium- 
+sulfur (Li-S) batteries are one of the best alternatives to Li-ion batteries. 
+They have high theoretical gravimetric and volumetric energy densities 
+of 2600 Wh/kg and 2800 Wh/L, respectively. Sulfur, with a theoretical 
+specific capacity of 1675 mAh/g, is an abundant, non-toxic, and envi­
+ronmentally friendly cathode active material. However, Li-S batteries 
+suffer from major drawbacks, namely the shuttling of the polysulfide 
+(PS) intermediates, which is called the polysulfide shuttle mechanism 
+(PSM), the insulating nature of sulfur and Li2S, and lithium anode 
+degradation, that must be resolved before their practical applications 
+and broader commercial adaptations. 
+The PSM is a fatal problem in the Li-S batteries [3–5], typically 
+addressed using specialized cathodes, separators, and/or electrolytes. In 
+general, electrolytes of any battery chemistry are optimized to have high 
+ionic transport (attributed to low viscosity), good chemical, thermal, 
+and electrochemical stability (i.e., wide electrochemical window), low 
+cost, and high safety. The shuttle effect puts an additional constraint on 
+standard electrolyte properties by requiring that the electrolyte has low 
+but finite PS solubility and mobility to minimize the loss of active ma­
+terial and cathode structure degradation while retaining sufficient ki­
+netics in Li-S batteries, especially at high sulfur loadings [6]. This 
+constraint is further complicated by the fact that the PSs form a highly 
+dynamic system that undergoes several rapid disproportionation re­
+actions whereby S-S bonds are continuously being broken and recreated 
+[7,8]. Hence, it is difficult to measure or predict the solubility of PSs in 
+the electrolyte. 
+The typically used liquid electrolytes are ether or aprotic solvent- 
+based electrolytes that offer excellent ionic transport and stability of 
+PS ions. Specifically, the mixture of 1,3-Dioxolane (DOL) and 1,2-Dime­
+thoxyethane (DME) with the lithium bis(trifluoromethane)sulfonimide 
+(LiTFSI) salt is the most common electrolyte used in Li-S batteries. Un­
+fortunately, such solvents suffer from very high PS solubility and, hence, 
+excessive PS shuttle rate. In addition, the low viscosity of the DOL:DME 
+electrolyte also facilitates the fast diffusion of PSs inside the cell. Ionic 
+liquids (ILs) are proposed as alternative electrolyte solvents in the bat­
+tery literature [1,9,10]. IL electrolytes have relatively low PS solubilities 
+and excellent chemical, electrochemical, and thermal stabilities. In 
+addition, many ILs have sufficiently low melting points as well. How­
+ever, their high viscosity and, thus, moderate ionic conductivity chal­
+lenge pose a downside. In the literature, typically bis(trifluoromethane) 
+sulfonimide ([TFSI]-) anion is explored with cations from different 
+groups, including pyrrolidinium, piperidinium, sulfonium, and imida­
+zolium as Li-S battery electrolytes [11–13]. Recently, ILs have been used 
+in hybrid electrolyte systems to combine the benefits and mitigate the 
+drawbacks of both ether-based and IL solvents [12–16]. The most 
+common ethers include DOL, DME, and tetraethylene glycol dimethyl 
+ether (TEGDME). 
+To reap the benefits of IL electrolytes, screening for ILs with optimum 
+electrolyte properties, including low melting point, viscosity, and PS 
+solubility, is necessary. Among them, the most difficult property to 
+measure and predict is the solubility of PSs. Such difficulty arises from 
+the dynamic nature of these ions, in addition to the inherent difficulty of 
+measuring solubility values. To simplify the problem, Ueno et al. [17] 
+measured the total solubility of atomic sulfur, which included all PS 
+species in the system, in the solvate IL electrolytes of equimolar mixtures 
+of lithium salts and triglyme and tetraglyme (Li(Glyme)X) combined 
+with various anions. In the end, they concluded that the stronger the 
+donor ability of the IL, the higher their ability to solvate PSs. More 
+specifically, they found that [TFSI]- and bis(pentafluoroethanesulfonyl) 
+amide ([BETA]-) anions effectively suppressed the dissolution of Li2Sx 
+species while maintaining reasonable conductivity, viscosity, and sta­
+bility. Park et al. [18] from the same group conducted a similar study to 
+measure the solubility of PSs in various common ILs. For the [P14]- 
+[OTF](trifluoromethane-sulfonate) IL, the solubility of PSs was rela­
+tively high, which causes poor cycling performance when used as the 
+electrolyte in a Li-S battery. The results indicated a close connection 
+between the PS solubility in the electrolyte and battery performance. In 
+addition, it was also discussed that when the PS solubilities are similar, 
+the viscosities of the electrolytes become important for good ionic 
+transport in the Li-S cells. Similarly, low PS solubility and high Li+ ion 
+diffusion were found to be the key criteria, especially at low electrolyte- 
+to-sulfur ratios, to attain high energy density Li-S batteries [19]. 
+The presence of such complex and diverse constraints makes the 
+search for optimum ILs a complex, multi-dimensional, and non-linear 
+problem. Extensive experimental testing of a wide set of ILs is not 
+feasible considering that the number of available cations, anions, and 
+their combinations in ILs is staggeringly massive, and experimental 
+testing of even a handful of ILs is heavily time-consuming. Instead, ex­
+perts can use chemical intuition and educated guessing to find and test 
+potentially suitable candidates as a common practice in materials sci­
+ence. This chemical intuition is learned by experience over a long period 
+of time, and learning from previous experiences is the basis for the 
+machine learning (ML) [20]. On the other hand, fast screening calcu­
+lations are helpful in narrowing down potential targets for further 
+investigation, which only requires crude and quick models. One such 
+model is COSMO-RS, which stands for Conductor-Like Screening Model 
+for Real Solvents [21]. COSMO-RS is a well-established quantum 
+chemistry-based computational model to estimate semi-quantitatively 
+the thermodynamic properties of chemical mixtures [22]. The basic 
+idea behind the COSMO-RS model is to treat the interactions in a mo­
+lecular system as if they are between an ensemble of discrete surface 
+screening charge densities, denoted as sigma (σ), for each molecule or 
+ion in the system [23–25]. 
+Although the COSMO-RS model calculations are sufficiently fast, 
+they depend on the surface charge densities of the solvent and solute 
+ions, which are not readily available. Therefore, analysis of a sufficiently 
+large representative set of ILs must be done and interpreted to generalize 
+these results on all ILs. With the assistance of ML algorithms, it is 
+possible to find the hidden correlations between the structural, physical, 
+and chemical properties of the IL and the estimated solubility or other 
+predicted properties. ML is essential for materials search and is 
+becoming more feasible with the continuous growth of large materials 
+databases and simulation tools [20,26]. Similar to our aim here, some 
+studies in the literature utilize both COSMO-RS solubility predictions 
+and ML techniques to determine suitable ILs for their objectives 
+[27–30]. In fact, water and C4 hydrocarbon solubilities in ILs were 
+determined in our previous studies [31,32]. Meanwhile, only two 
+studies in the Li-S battery field have used the COSMO-RS method for 
+solubility calculations. The first study focused on predicting cyclic sulfur 
+solubility in ten solvents, and they correctly captured the experimental 
+values [33]. The same group used ML classification based on PS solu­
+bilities by using the electrolyte descriptors obtained from sigma profiles 
+of electrolytes calculated by the COSMO-RS method for a limited num­
+ber of solvate-ILs, salt-in-solvent and solvent-in-salt electrolytes [34]. 
+These studies indicate that combining COSMO-RS solubility predictions 
+with ML methods is highly promising. Yet, the number of electrolytes 
+investigated in the previous studies is minimal to develop heuristic rules 
+or predictive models. In contrast, this research focuses on the solubility 
+of Li2S8 in around 36,000 ILs for fast screening, building ML models for 
+predictions, and showing structure–property relationships, which have 
+not been addressed before. 
+In this work, around 36,000 IL solvents are screened for their po­
+tential as Li-S battery electrolytes based on their PS (Li2S8) solubilities, 
+viscosities, and melting points obtained by COSMO-RS calculations. 
+Moreover, the cycling performances of Li-S cells with six commercially 
+available ILs having low and high viscosities and PS solubilities are 
+A. Kilic et al.                                                                                                                                                                                                                                     
+
+<<PAGE 3>>
+Chemical Engineering Journal 490 (2024) 151562
+3
+examined experimentally to determine the selection criteria used for ML 
+models; a critical connection between the COSMO-RS solubilities and 
+viscosities and the battery performance is identified. The results are 
+further used to train ML models, specifically XGBoost, which was 
+developed to predict the PS solubility in potentially new ILs as the main 
+objective of the work, and the structure–property relationship in ILs is 
+identified using association rule mining (ARM) using ten descriptors for 
+each anion and cation determined by the density functional theory 
+(DFT) calculations. 
+2. Computational methods 
+2.1. Solubility and property Calculations 
+COSMOThermX software was used for the estimation of Li2S8 solu­
+bilities in ILs at 25 ◦C by performing COSMO-RS calculations [35]. The 
+IL database, COSMObaseIL, was used to form the dataset for this study. 
+COSMOThermX uses the σ-profiles calculated using the DFT functional 
+BP and def2-TZVP level. The dataset comprised 98 anions and 370 
+cations, which adds up to 36,260 pairs of ILs. The long chain Li2S8 was 
+used to model the PSs in the system. In accordance with previous reports 
+about Li2S8 conformation in the solvents [8,36], the linear conformation 
+of Li2S8 was first optimized using DFT by employing the B3LYP/def2- 
+TZVP level theory with the ORCA quantum chemistry software pack­
+age [37]. The optimized structure conformation was then used as an 
+input file for TMOLEX (v.4.5.3) [38] to generate the standard σ-profile 
+file (.cosmo file). The sigma profile and the corresponding surface of the 
+Li2S8 molecule are given in Figure S1 in the Supplementary Material 
+(SM). 
+The IL Screening Module was used to calculate the PS solubility in the 
+ILs at 25 ◦C via equation (1), where C∞
+i and γ∞
+i are the capacity (mol/mol 
+solubility) and activity coefficient of the PS at infinite dilution, 
+respectively. 
+C∞
+i = 1
+γ∞
+i
+(1)  
+The melting point, viscosity, and electrical conductivity were also 
+calculated at 25 ◦C using the IL Properties Module, which also uses the 
+same σ-profile files for the ions. The densities of ILs were calculated 
+using the molecular volume obtained by the COSMO-RS volume calcu­
+lations, whereas COSMO-RS enthalpies were used for the melting point 
+calculations. Finally, the same formula utilizing ionic radius and 
+dielectric energies was used for the viscosity and electronic conductivity 
+calculations. The implemented correlation coefficients were naturally 
+different for each calculation. 
+2.2. Structural descriptors for ILs 
+To calculate structural descriptors for ILs, molecular geometries of 
+cations and anions were individually optimized using Spartan’14 by 
+employing the PM3 semi-empirical method with the default conver­
+gence criteria. Similar to our previous studies [31,32], ten descriptors 
+were calculated for each anion and cation separately: Molecular weight 
+(MW in amu), highest occupied molecular orbital (HOMO) and lowest 
+unoccupied molecular orbital (LUMO) energies (EHOMO, ELUMO in eV), 
+CPK-area (in Å2) and CPK ovality (O) obtained from the space-filling 
+model by Corey, Pauling, and Koltun (CPK), dipole (μ in D), polariz­
+ability (m3), vibrational zero point energy (ZPE in kJ/mol), hydrogen 
+bond donor count (HBD), and hydrogen bond acceptor count (HBA). 
+Although other anion and cation properties can be used as potential 
+descriptors, they were eliminated in our previous works due to cross- 
+correlations and insignificant effects on the models [31,32]. Conse­
+quently, there are 20 descriptors for each IL pair. The distribution of ions 
+in terms of these structural descriptors is given in Fig. 1. The complete 
+dataset, including all the properties and the descriptors, can be found in 
+SM as a Microsoft Office ExcelTM file. 
+2.3. ML modeling 
+Distinct prediction models were trained for each IL property of in­
+terest: the solubility of Li2S8, melting point, viscosity, and electrical 
+conductivity. Random sampling was employed to negate the bias to­
+wards the majority class. Afterward, the dataset was partitioned into 
+training and test sets using a 75 %-25 % split. Given that PS solubility 
+highly depends on the anion type, random assignment of the data entries 
+into each subset was avoided as it overfitted the ions in the set and 
+performed poorly on new ions (due to the strong effects of the anions). 
+Therefore, the splitting was done either according to the anion or the 
+cation groups. In practice, such splitting means that a random 25 % 
+fraction of anions/cations in each anion/cation group was included in 
+the test set, while the remaining ions were used in the training set. This 
+way, the test set contains new anions/cations not encountered during 
+training or validation. The same strategy was used for 5-fold cross- 
+validation, where 20 % of the training ions were selected in the vali­
+dation sets, and the rest were used for training. Even with this additional 
+constraint, successful and robust models were developed. Next, the 
+partitioned dataset, along with the respective values of properties 
+calculated by COSMOThermX, were used to train ML models. XGBoost 
+Fig. 1. The distribution of descriptors for cations and anions in the dataset.  
+A. Kilic et al.                                                                                                                                                                                                                                     
+
+<<PAGE 4>>
+Chemical Engineering Journal 490 (2024) 151562
+4
+algorithm was used in the predictions. The hyperparameters were 
+optimized with a grid search according to the performance criteria of 
+root mean square error (RMSE), which shows the average difference 
+between the predicted and the COSMO-RS calculated values; hence, the 
+lower it is, the better the predictions. In addition, the R-squared (R2) 
+value, the proportion of the difference between the two, ranging be­
+tween 0 and 1, was also reported [39]. The optimized hyperparameters 
+for XGBoost are the maximum depth, number of trees, and learning rate 
+(η) values, which were found to be 3, 225, and 0.1, respectively, for the 
+solubility predictions. The descriptor importance was calculated with 
+these hyperparameters over the training set. 
+After the prediction models were built, the ARM method was utilized 
+to classify the promising anions and cations together with their de­
+scriptors. The classification models were trained as binary classifiers: 
+class A and class B are the favorable and non-favorable levels of related 
+properties and solubilities, respectively. 
+The thresholds of these classes were determined according to the 
+experimental results and the desired characteristics of a battery elec­
+trolyte. In the case of solubility, a threshold value of −0.7 to 0.1 mol/ 
+mol in the log scale was selected as it is comparable to ILs tested in the 
+literature and the performance data obtained in our research [18]. 
+Similarly, limits for the viscosity, ln(conductivity (mS/cm)), and melting 
+point classifications were determined as 100 mPa.s, 2, and 0 ◦C, 
+respectively. In the ARM analysis, all these four targets were held to see 
+the most promising ILs as electrolytes of Li-S batteries. 
+The relationships between the anion/cation groups and their de­
+scriptors with class A in all four criteria were independently analyzed by 
+a single-factor ARM algorithm. Since ARM only works for categorical 
+data, HBA and HBD counts were turned into factors, and the remaining 
+eight numeric descriptors were categorized into ten multiple intervals 
+with a similar number of data points. The performance metrics, such as 
+support, confidence, and lift, were used together to determine the reli­
+ability of a rule. The frequency of a certain descriptor coinciding with 
+the target class in the entire dataset, P(D ∩A), is termed as support. 
+Confidence is the probability that the IL pair belongs to class A given 
+that a certain descriptor is within a particular interval, P(A|D). Lift 
+calculates the correlation by comparing the frequency or the support as 
+compared to random independent coincidence P(D ∩A)/P(A)*P(D). 
+Hence, the lift values larger and smaller than 1.0 correspond to positive 
+and negative correlation, respectively. The more significant the lift 
+value, the stronger the correlation is between the descriptor and that 
+class [40]. Thus, the lift value was considered as the ultimate criterion to 
+assess the association between a descriptor and the solubility, as long as 
+the rule clears the minimum support and confidence thresholds, taken as 
+0.1 % and 3 %, respectively. All the modeling and figure creation were 
+performed in the R Studio environment [41]. 
+3. Results and discussion 
+3.1. Pre-analysis of the dataset 
+In this screening part, we aimed to use a dataset representative of 
+most ILs commonly used and studied, as well as the rare ones in the 
+battery literature. Hence, our dataset spans several cation groups, 
+including imidazolium, pyridinium, and ammonium, in addition to an­
+ions of different types, including fluorinated, chlorinated, carboxylates, 
+oxyanions, amino acids, etc., and more commonly investigated anions in 
+IL electrolytes such as tetrafluoroborate ([BF4]-), hexafluorophosphate 
+([PF6]-) and [TFSI]-. The complete lists of the cations and anions groups 
+are given in Table 1, whereas members of each group are presented in 
+the Excel file provided in SM. The table shows that the most crowded 
+groups are imidazolium and pyridinium for cations, while amino acids 
+and carboxylates for the anions. 
+The COSMO-RS solubility screening results, including solubility, 
+viscosity, conductivity, and melting points, are shown in Fig. 2 
+depending on anion groups, whereas the distributions on the cation 
+groups are presented in Figure S3. When these distributions are 
+compared, solubilities and properties show similar distributions and 
+ranges regardless of the cation groups. On the other hand, noticeable 
+differences are observed when anion groups are considered. This clearly 
+indicates anionic effect dominance on the properties of the ILs. 
+Fig. 2a and Figure S2 for the whole dataset show that the solubility 
+values for each anion group obtained from the calculations span a wide 
+scale of many orders of magnitude from 10-9 to almost 1020 in mol/mol 
+units. This is expected primarily due to the large difference between the 
+activity coefficients of the solute (Li2S8) and the solvents (ILs). Still, the 
+calculations can compare small and larger values, but the extreme re­
+sults should be treated cautiously [42,43]. When ILs with extremely low 
+and high PS solubilities are analyzed, it is seen that some anions give 
+these abnormal solubility values regardless of the cation types. This may 
+indicate COSMO-RS’s failure to predict the properties of these anions. 
+According to the graph, most amino acids, carboxylates, halogens, non- 
+metal oxides, and phosphines fall into the extreme solubility ranges, 
+below 10-3 and above 103 mol/mol, and should be treated cautiously. On 
+the other hand, bis_imide, borate, halo-elemental, and others (the rare 
+ones that do not belong to any of the anion groups listed) anion groups 
+show reasonable solubility values. 
+The PS solubility is not the only criterion when selecting electrolytes 
+for Li-S batteries. Other properties are also essential in the screening 
+process of ILs in search of suitable electrolytes for Li-S batteries; the 
+melting point, viscosity, and conductivity are all significant criteria in 
+Li-S cell electrolyte selection to ensure smooth cell operation. This way, 
+the utilization of highly viscous IL electrolytes must be avoided to allow 
+for appreciable Li+ diffusion. 1 M Li salt containing DOL:DME electro­
+lyte has a viscosity of 1.6 mPa.s and shows sufficient ionic conductivity 
+[19]. In the dataset, the lowest viscosity value calculated using the 
+COSMO-RS is 9.1 mPa.s, which is almost 5-fold higher than that of DOL: 
+DME electrolytes and only 25 % of 36,260 ILs have viscosity values 
+below 134 mPa.s. On the other hand, around 15 % and 7 % of the dataset 
+do not have melting points below 0 ◦C and ln(electronic conductivity) 
+values below 2, respectively. 
+The anion and cation descriptors have been shown to strongly 
+correlate with target properties in previous studies, including the solu­
+bility of water and C4 hydrocarbons in various ILs and the physico­
+chemical properties of ILs [31,32]. The descriptors are simple yet 
+essential structural, electronic, and energetic factors. CPK area and 
+ovality are related to the geometry of ions calculated based on the space- 
+filling model, which is a crucial indicator of the area of potential in­
+teractions with other ions or the PSs. Naturally, the higher the area is, 
+the stronger the interactions in the solution are. However, the ovality 
+effect also plays an important role in the space-filling of ions sur­
+rounding the PSs and each other. Dipole and polarizability represent 
+Table 1 
+The list of cation and anion groups present in the dataset.  
+Cation Group 
+Cation Count 
+Anion Group 
+Anion Count 
+Ammonium 
+49 
+Amino acid 
+16 
+Choline 
+1 
+Bis_imide 
+4 
+Guanidinium 
+20 
+Borate 
+12 
+Imidazolium 
+134 
+Carboxylate 
+16 
+Morpholinium 
+9 
+Cyano 
+3 
+Others 
+4 
+Halo_elemental_complexes 
+7 
+Phosphonium 
+28 
+Halogen 
+4 
+Piperidinium 
+9 
+Nonmetal oxide 
+5 
+Pyrazolium 
+4 
+Others 
+6 
+Pyridinium 
+67 
+Phosphate/ Phosphinate* 
+9 
+Pyrrolidinium 
+19 
+Sulfate 
+9 
+Quinolinium 
+15 
+Sulfonate 
+7 
+Sulfonium 
+5   
+Thiazolium 
+3   
+Uronium 
+3   
+Total 
+370 
+Total 
+98 
+*Abbreviated as Phosp./Phosphin. 
+A. Kilic et al.                                                                                                                                                                                                                                     
+
+<<PAGE 5>>
+Chemical Engineering Journal 490 (2024) 151562
+5
+ions’ charge distribution and susceptibility of that distribution to 
+deformation when interacting with other molecules. These are highly 
+important in studying solvation energy and solubility because they 
+directly relate to the interactions during solvation. The potential for 
+hydrogen bond formation is given by the hydrogen bond donor (HBD) 
+and acceptor (HBA) counts [44]. PSs are all known to be weak bases, in 
+other words, hydrogen bond acceptors [45]. However, this also indicates 
+the potential for the cation and anion to be attracted to each other, 
+which will also affect the solubility. 
+Other important descriptors include electronic and energetic ones, 
+which may affect the solubility less directly. The values of HOMO and 
+LUMO energies calculated by simple DFT calculations contain important 
+information related to ion stability, its potential for electronic in­
+teractions, and bond strength. The vibrational zero-point energy is the 
+lowest vibrational energy level and determines the flexibility or stiffness 
+of the bonds in the molecule to stretching and bending. This property 
+describes the flexibility of ions to structural deformation during the 
+solvation process [46,47]. Finally, the molecular weight of ions is also 
+useful as it gives information about ion diffusion coefficients, density, 
+and viscosity, which indirectly affect solubility. 
+3.2. IL selection criteria for high-performance Li-S batteries 
+Experiments were carried out to see if there is a correlation between 
+PS solubilities and IL properties calculated using the COSMO-RS method 
+and Li-S battery performance. Li-S cells with standard cathodes, carbon 
+black mixed with sulfur using the melt-diffusion strategy, and mixed 
+electrolytes containing organic and IL solvents were prepared. As the 
+organic electrolyte, 1 M LiTFSI and 0.1 M lithium nitrate (LiNO3) con­
+taining DOL:DME (1:1 vol%) was used. First, experiments were per­
+formed to see the effect of the IL/organic solvent ratio (0, 25, and 50 vol 
+% IL) and the electrolyte-to-sulfur (E/S) ratio on the cycling perfor­
+mance (Figure S5); the rest of the experiments were conducted at an IL 
+ratio of 25 vol% and E/S ratio of 13 mL/g. Six commercially available ILs 
+listed in Table 2 were used in the mixed electrolytes. Cycling experi­
+ments were shown for 50 cycles at 0.1C in Fig. 3 (the experimental 
+details and 100-cycle performances of mixed electrolytes, including pure 
+DOL:DME, are provided in Figure S6 in SM). As seen in the table, three 
+different cations, 1-butyl-1-methylpiperidinium ([PP14]+), N,N-diethyl- 
+N-methyl-N-(2-methoxyethyl)-ammonium 
+([DEME]+), 
+and 
+tribu­
+tylmethylammonium ([TBMA]+) with [TFSI]- and three different an­
+ions, 
+hexafluorophosphate 
+([PF6]-), 
+trifluoromethane-sulfonate 
+([CF3SO3]-), and methylsulfate ([MeSO4]-) with 1-butyl-3-methyl-imi­
+dazolium ([BMIM]+) are used in the experiments. These ILs are 
+commercially available, hence easily accessible, and have low/high 
+solubility and viscosity values (melting point and electrical conductivity 
+are only used to confirm the suitable liquid phase of the electrolyte and 
+to ensure no electron flow through the electrolyte). Hence, four of these 
+ILs are projected to have low solubilities ([PP14]-[TFSI], [DEME]- 
+[TFSI], [TBMA]-[TFSI], [BMIM]-[PF6]), whereas the other two 
+([BMIM]-[CF3SO3] and [BMIM]-[MeSO4]) have extremely high values. 
+Moreover, ILs with low and high viscosities also have both high and low 
+solubility cases. Hence, it is possible to identify the effect of COSMO-RS 
+predicted viscosity and solubility values on the performance of Li-S 
+batteries. 
+The results presented in Fig. 3 supported the discussion on the 
+importance of low solubility but also highlighted the effect of viscosity 
+on the Li-S cell performance. Although high viscosity may suppress the 
+PSM by restricting the PS movement, it also prevents the diffusion of Li+
+ions. In this respect, the ILs of [PP14]-[TFSI] and [DEME]-[TFSI] with 
+both low solubility and viscosity show the best cycling performance 
+Fig. 2. The distribution of solubility (a), ln(viscosity(mPa.s)) (b), ln(conductivity(mS/cm)) (c), and melting point(◦C) (d), depending on the anion group.  
+Table 2 
+The COSMO-RS calculations for the experimentally tested six ILs*.  
+Cation 
+Anion 
+COSMO-RS 
+PS Solubility (mol/ 
+mol) 
+COSMO-RS Viscosity (mPa. 
+s) 
+[PP14]+
+[TFSI]- 
+0.20 
+65 
+[DEME]+
+[TFSI]- 
+0.38 
+54 
+[TBMA]+
+[TFSI]- 
+0.04 
+107 
+[BMIM]+
+[PF6]- 
+1.29 
+223 
+[BMIM]+
+[CF3SO3]- 
+847 
+56 
+[BMIM]+
+[MeSO4]- 
+182,635 
+146 
+*[BMIM]+
+1-butyl-3-methyl-imidazolium, 
+[CF3SO3]-: 
+trifluoromethane- 
+sulfonate, 
+[DEME]+: 
+N,N-diethyl-N-methyl-N-(2-methoxyethyl)ammonium, 
+[MeSO4]-: methylsulfate, [PF6]-: hexafluorophosphate, [PP14]+ 1-butyl-1-meth­
+ylpiperidinium, [TBMA]+: tributylmethylammonium, [TFSI]-: bis(trifluoro­
+methane)sulfonimide. 
+**These cells include 25 vol% of the selected IL in the standard electrolyte of 1 M 
+LiTFSI and 0.1 M LiNO3 in DOL:DME (1:1 vol/vol). 
+Fig. 3. The cycling performance of six ILs tested at 0.1C.  
+A. Kilic et al.                                                                                                                                                                                                                                     
+
+<<PAGE 6>>
+Chemical Engineering Journal 490 (2024) 151562
+6
+among the six ILs. On the other hand, Li-S cells with ILs ([TBMA]-[TFSI], 
+[BMIM]-[PF6]) with low PS solubility but higher viscosity performed 
+moderately. Finally, [BMIM]-[CF3SO3] and [BMIM]-[MeSO4] showed 
+almost zero capacity over cycling. These ILs are predicted to have high 
+solubility, indicating that even though low viscosity is required for high 
+performance, low PS solubility is a more critical property. Consistent 
+with this inference, [BMIM]-[CF3SO3] performs poorly, even though it 
+has a low viscosity, proving that mostly PS solubility determines the 
+performance. No conclusions were changed when the cycling perfor­
+mances for 100 cycles, provided in Figure S6, were analyzed. We 
+observe higher performance for Li-S cells with electrolytes having 25 vol 
+% PP14-TFSI compared to the ones with pure DOL:DME electrolytes at 
+the beginning of cycling, but they end up with similar capacities towards 
+the end. Here, we should mention that the cycling experiments were not 
+performed to find the best-performing IL and prove its superiority over 
+the conventional electrolyte. Instead, the six ILs were chosen to study 
+the relation between the predicted solubility and viscosity and the 
+cycling performance with the ILs available for experimentation before 
+the screening analysis. Consequently, these are not the ones that are 
+proven to be promising, yet one out of six ILs offers comparable results 
+with the conventional electrolyte. In the literature, with the optimized 
+cell design parameters, there are some examples where the mixed 
+electrolyte systems surpass the capacity of the organic electrolyte 
+[48–52] and improve the safety conditions of Li-S batteries [53]. Since 
+safety is also a major concern in batteries, the electrochemical and 
+thermal stabilities of the ILs are also a good reason to replace conven­
+tional liquid electrolytes. Here, our main focus is determining the IL 
+property and cycle life connection in Li-S batteries. So, with the exper­
+iments, we aim to define the ranges for high and low for the COSMO-RS 
+calculated values. We expect better results when experimenting with the 
+promising ILs determined from the ARM analysis. In addition, better 
+performance can be obtained with different experimental design con­
+ditions, optimizing the carbon properties, E/S ratio, S loading, and S wt. 
+% in the cell. This is the scope of our next study. 
+The experimental results show that it is possible to use the COSMO- 
+RS predictions for assessing Li-S battery performance. However, these 
+results are only limited to six ILs, and further validation of COSMO-RS 
+results is still needed. Unfortunately, a sufficiently comprehensive 
+experimental study to evaluate the predictions made by the COSMO-RS 
+model is excessively difficult, necessitating a comparison with the 
+available data in the literature. The few studies regarding solubility had 
+limited scope due to difficulties discussed previously. Among them, Park 
+et al. reported PS solubilities for various ILs. The experimentally 
+measured PS solubilities account for a mixture of PSs in the solution due 
+to disproportionation reactions and the subsequent cascade of PS re­
+actions. This difference is partially responsible for the departure of 
+predictions of Li2S8 solubility from experimental measurements of all 
+PSs. Indeed, the measured solubilities are the sum of solubilities of all PS 
+species with various chain lengths and are provided in terms of total 
+atomic sulfur concentration. Despite this and other simplifying as­
+sumptions, the COSMO-RS model results showed an excellent correla­
+tion with the experimental measurements, as shown in Fig. 4. Although 
+there is a significant numerical difference between the COSMO-RS 
+calculated absolute solubility values and experimental ones, the result­
+ing linear correlation has an R2 score of 0.97, showing the success of our 
+method. Consequently, the COSMO-RS calculations can be used to assess 
+ILs qualitatively in solubility calculations. The previous studies on 
+COSMO-RS calculations also pointed out that these calculations can be 
+used qualitatively for an initial analysis that can predict the order of 
+magnitudes of the properties [43,54–57]. 
+Since the actual properties of ILs are not known, determining the 
+limits for high performance should also be done according to the 
+COSMO-RS calculated values. Because of the aforementioned reasons, 
+Park et al. performance data were also included in our analysis. When 
+the 50th cycle capacities of this experimental set are considered, a clear 
+trend for high specific capacity can be determined, as shown in Fig. 5. 
+The PS solubility should neither be too low or too high due to the 
+sluggish reaction kinetics and sulfur loss from the cathode in extremely 
+low and high PS solubilities, respectively [58,59]. Therefore, deter­
+mining the solubility limits is very critical to assess whether an IL will 
+perform well or not as an electrolyte in Li-S batteries. According to 
+Fig. 5, the solubility should be between −0.7 to 0.1 mol/mol in log scale. 
+All these discussions show the importance of solubilities and prop­
+erties in selecting suitable ILs for Li-S battery applications and the suc­
+cess of the COSMO-RS calculations. The COSMO-RS calculations make it 
+possible to calculate the properties of thousands of ILs using “.cosmo” 
+files using special packages like COSMOthermX. On the other hand, once 
+the dataset is constructed, it is valuable to have ML methods that can 
+predict IL properties using the IL descriptors calculated from more 
+conveniently found methods compared to generating “.cosmo” files and 
+using special packages. In addition, hidden relations between ILs and 
+their properties can be identified. In this respect, ML models for pre­
+dicting PS solubility and the IL properties are developed with a dataset 
+consisting of 36,260 ILs and 20 IL descriptors, computed from PM3 semi- 
+empirical calculations, in the search for promising ILs for Li-S battery 
+electrolytes. In addition, using the limit for solubility (−0.7 to 0.1 mol/ 
+mol in log scale) for high performance obtained from experimental re­
+sults, the factors leading to desired properties are obtained. 
+Fig. 4. Experimental polysulfide solubility plotted against the predicted solu­
+bility values by COSMO-RS in log scale. The dotted line is the best-fit line. The 
+experimental data was obtained from [15]. 
+Fig. 5. Experimental 50th cycle capacities (mAh/g) matched with the pre­
+dicted COSMO-RS solubility and viscosity results. The experimental data was 
+obtained from our results in Fig. 3 and from [15]. 
+A. Kilic et al.                                                                                                                                                                                                                                     
+
+<<PAGE 7>>
+Chemical Engineering Journal 490 (2024) 151562
+7
+3.3. Solubility and property predictions 
+The ML models are trained to further understand the trends and 
+heuristics of the solubility correlation with the specified descriptors and 
+to make predictions for new ILs without using the COSMO-RS software. 
+The training of the XGBoost model on randomly chosen combinations of 
+anions and cations performs nearly perfectly with a 5-fold cross- 
+validation R-squared (R2) score of 0.99. It is essential to note the 
+excessive dependence of the predictions on the anion descriptors and the 
+fact that randomly splitting the data generally means that the same 
+anions are present in both training and validation sets. To avoid such 
+overlap, which may lead to the model “memorizing” the anions instead 
+of learning descriptor correlations, the data was split such that randomly 
+chosen anions from each anion group are only present in the validation 
+set. For example, there are four bis_imide anions including [TFSI]- in the 
+dataset. Knowing that anions are more dominant over solubility, once 
+the solubility of [TFSI]- is seen by the model, it will automatically 
+determine the solubility of IL containing [TFSI]- without paying atten­
+tion to the cation types in the validation set. However, restricting [TFSI]- 
+to only train set while including the bis(fluorosulfonyl)imide ([FSI]-) in 
+the validation set, makes the model more robust. This way, the training 
+model learns from similar but non-identical anions. With this restriction, 
+the XGBoost model performance R2 score dropped to 0.98 with a RMSE 
+of 1.4, which still indicates an excellent performance on the available 
+data and eliminates the risk of bias due to data overlap. Meanwhile, the 
+RMSE of the test set increases to 3.05, which shows that the model can 
+capture the PS solubilities in an order of magnitude scale. 
+These results are somewhat similar to water solubility prediction 
+results [31], in the sense that the anion properties are more dominant 
+over the solubilities. However, in this work, the effect of cation prop­
+erties was also found to be important. This inference is observable in 
+Fig. 6, showing the descriptor importance obtained from the analysis of 
+XGBoost results. Some cation descriptors, such as the CPK area and 
+dipole, have noticeable importance. While the anions can still roughly 
+estimate the solubilities, the cations refine these results. The top three 
+descriptors having the dominant effect on PS solubility were electronic 
+HOMO-LUMO levels and dipoles of the anions. The HOMO-LUMO levels 
+were also found to have a significant contribution to ML models on the 
+CO2 solubility [60]. 
+Literature review indicates that ML techniques have been repeatedly 
+used to predict different IL properties, including melting point, density, 
+viscosity, ionic conductivity, and even surface tension [61,62]. Never­
+theless, the presented property prediction models based on our de­
+scriptors were also trained to a high degree of success. Herein, the 
+sampling in the training of these predictions was also anion-based rather 
+than cation-based, as in the solubility classifier. This is because the re­
+sults vary significantly according to the anion groups in these pre­
+dictions, and the cation group-based distributions are similar 
+(Figure S3). The anion-based sampling for melting point, viscosity, and 
+conductivity performed well with RMSE score values of 19.4, 0.48, and 
+1.80, respectively. The descriptor importance plots are given for each 
+property prediction in SM, along with each model’s performance met­
+rics. In the prediction of IL properties of the interest, the cationic 
+properties have found more significance in comparison to solubility 
+predictions. The most significant cation descriptors were found to be 
+MW, dipole, and HOMO level. In parallel with our findings, Zheng et al. 
+also found that the alkyl chain lengths of ILs having different imidazo­
+lium cations with [TFSI]- anion, therefore, MW and dipole, considerably 
+affect the viscosities [63]. Another study found that the anion and cation 
+properties both affect the final IL properties [64]. 
+3.4. Identifying promising ILs for Li-S batteries using ARM 
+Lastly, the descriptor-property and solubility correlations were 
+analyzed using ARM. The ARM method needs both categorical de­
+scriptors and outcomes; hence, most descriptors were divided into ten 
+intervals to see the characteristics of the desired ILs, while the HBA and 
+HBD counts were defined as factors. The limits for both solubility and 
+viscosity values were set according to the experimental findings re­
+ported in Section 3.2. In this respect, the solubility was categorized into 
+a binary class, and class A includes log(solubility) values between −0.7 
+and 0.1 mol/mol as determined from experimental results reported in 
+Fig. 5. On the other hand, viscosities lower than 100 mPa.s were decided 
+to be class A. Given the viscosity of the standard DOL:DME electrolyte is 
+1.6 mPa.s [19], 100 mPa.s is a relevant limit for IL viscosity, set to avoid 
+severe Li+ ion resistance problems. In addition, since the potential ap­
+plications of Li-S batteries are prone to various climate conditions, the 
+melting point of ILs should be low enough so that the cell remains 
+functional in cold climates. Towards that end, ILs with melting points 
+below 0 ◦C are desired, and fortunately, 86.1 % of the dataset satisfies 
+this condition. Finally, the electronic conductivity limit is taken as 2 mS/ 
+cm in the natural logarithm scale. This rough estimation allows us to 
+exclude ILs with considerable electronic conductivity. With these four 
+criteria in place, the number of potential IL candidates drops to only 650 
+from 36,260 data points. The selection process is illustrated in Fig. 7. 
+First, the associations between the anion or cation groups or cati­
+on–anion pairs and the desired properties were investigated. After 
+refining the generated rules using the support and confidence thresh­
+olds, the lift value was used to extract rules with the highest correlation, 
+and the results were sorted according to the lift values. Although the 
+definitions of support, confidence, and lift are already provided in the 
+previous section, an example is provided here to understand the results 
+better. The dataset used in the ARM analysis contained 36,260 total 
+data, with only 650 of them having class A solubility and property 
+(viscosity, melting point, and conductivity). In the dataset, there are 
+1480 ILs with the bis_imide anion group, and only 194 (count value in 
+Table S4) of them are in class A for the four criteria. Hence, the support, 
+confidence, and lift values are calculated as 194/36260 = 0.005, 194/ 
+650 = 0.298, and (194/650)/(1480/36260) = 7.31, respectively. As 
+seen in Table S4, rules satisfying the confidence and support thresholds 
+with the highest three lift values correlate with the anion group, indi­
+cating the trends in anion descriptors are more reliable and determi­
+native than the ones in cation descriptors. These trends can be seen in 
+Fig. 8a for cation and anion groups and Fig. 8b for cation–anion pairs. 
+The bis_imide group is found to be the most promising one with the 
+highest lift, but borates and “Others” groups are also good candidates for 
+Fig. 6. The XGBoost prediction results for log(COSMO-RS Solubility (mol/ 
+mol)) for the train (a), test (b) sets, and relative importance (c) of the de­
+scriptors in the determinative power of the model. 
+A. Kilic et al.                                                                                                                                                                                                                                     
+
+<<PAGE 8>>
+Chemical Engineering Journal 490 (2024) 151562
+8
+Fig. 7. The determination of suitable ILs with the help of experimental results.  
+Fig. 8. ARM results for anion and cation groups independently (a), and anion-cation pairs (b) for low solubility and viscosity.  
+Fig. 9. ARM results for anion descriptors; each point size correlates with support.  
+A. Kilic et al.                                                                                                                                                                                                                                     
+
+<<PAGE 9>>
+Chemical Engineering Journal 490 (2024) 151562
+9
+both cases. However, although imidazolium and pyridinium groups 
+have lower lifts than piperidinium and pyrrolidinium, their synergistic 
+effects are stronger with the anion groups of borates and bis_imides. 
+Specifically, imidazolium_borate and imidazolium_bis_imide ILs are 
+around ten- and five-times more favorable than other ILs for Li-S bat­
+teries, respectively. Imidazolium and [TFSI]- are the most common 
+cation and anion in the Li-S literature, respectively [9]. In addition, it 
+has been reported that combining them improves the Li metal ion 
+morphology and, therefore, increases the cycle life [65]. Given that 
+pyridinium and imidazolium are similar in the completely delocalized 
+aromatic rings [65], pyridinium is the second promising cation group 
+paired with borates. On the other hand, the borate anion group has 12 
+anions in total, including [BF4]-, which is reported to be reactive to­
+wards polysulfides [18]. Fortunately, this anion is not present in the 
+promising IL list. Although no additional articles use ILs with borate 
+anions, in some studies, borate anions, specifically bisoxalatoborate 
+[66–68], are used in Li salts, which positively affect the capacities. 
+Now that the promising groups are identified, we discuss the ARM 
+results on a descriptor basis to identify the rules ending up with favor­
+able ILs. To better extract the trends, Fig. 9 summarizes the ARM results 
+for the anions more concisely. Upon examining the results, the most 
+pronounced rule concerns the anion HOMO energy value. In the data­
+base, low-lying anion HOMO energies in the range of (−7.5):(−6.7) eV 
+result in a nearly five-times more chance of having low PS solubility and 
+viscosity values. This drops significantly to slightly over 2.5-times if the 
+HOMO value dips lower than −7.5 going to −9.9 eV. However, the 
+correlation stands that low HOMO values correlate strongly with low 
+solubility. A similar yet less strong correlation can be seen for the other 
+properties. The other rules that lead to lift values higher than one 
+indicate that desirable anions for low PS solubility and viscosity are 
+more likely to have moderately low LUMO energy ((1.3–4.7] eV), no 
+HBD sites (Count = 0), relatively high MW ((184–299] g/mol) but 
+moderate CPK area ((98.8–145] Å2). Fig. 10 shows that cation de­
+scriptors have clear trends for low solubility and viscosity; lift values 
+above one are obtained for low values of each descriptor, except HBA 
+(Counts 1 and 2), HBD (Count = 0), and LUMO (no clear trend). It is 
+important to emphasize that these trends imply an increased likelihood 
+rather than a confident prediction. 
+Can et al. [31] reported similar results about the dominance of anion 
+descriptors in the ARM analysis when examining the association be­
+tween water solubility in ILs and molecular descriptors. However, the 
+importance of each descriptor differs significantly from the results 
+reported here. That is to be expected because water and Li2S8 have 
+different solvation processes. On the contrary, the solubility of hydro­
+carbons in imidazolium-based ILs showed a strong correlation with both 
+anion and cation descriptors [32]. 
+4. Conclusions 
+In this study, a large-scale screening of ILs was conducted in search of 
+potential Li-S battery electrolytes not only with low PS solubility to limit 
+the shuttle effect but also with low viscosity, electronic conductivity, 
+and melting point. The screening was performed using the COSMO-RS 
+model, and association rule mining and XGBoost algorithms were used 
+as machine learning models. The predictive model developed by the 
+XGBoost algorithm was quite successful, indicating that the solubility 
+can be easily predicted for new ILs, satisfying the main objective of our 
+work. Ten descriptors were analyzed for each anion and cation along 
+with the solubility estimations using association rule mining to find 
+valuable correlations between solubility, property, and IL structural 
+descriptors; solubility limits, which were used as the selection criterion 
+for high performance, were determined experimentally. The feature 
+importance analysis also showed that anion descriptors are leading in 
+solubility prediction, with anion LUMO and HOMO energies, dipole, and 
+CPK area being the most important. Our model verified the generally 
+known fact that imidazolium and pyridinium were the most suitable 
+cations, whereas borates and bis_imides were determined to be the anion 
+choices for high-performing Li-S batteries. To conclude, this study not 
+only offers machine learning models that can be easily utilized to 
+identify promising IL electrolytes for Li-S batteries by an original inte­
+grated methodology coupling high-throughput COSMO-RS and DFT 
+calculations and experimental characterization but also leads to a better 
+understanding of the structure-solubility-performance relation for IL 
+electrolytes. 
+CRediT authorship contribution statement 
+Aysegul Kilic: Writing – original draft, Formal analysis, Data cura­
+tion. Omar Abdelaty: Writing – original draft, Formal analysis. 
+Muhammad Zeeshan: Data curation. Alper Uzun: Writing – review & 
+editing, Supervision, Funding acquisition, Conceptualization. Ramazan 
+Yildirim: Writing – review & editing, Supervision, Funding acquisition, 
+Conceptualization. Damla Eroglu: Writing – review & editing, Super­
+vision, Funding acquisition, Conceptualization. 
+Fig. 10. ARM results for cation descriptors; each point size correlates with support.  
+A. Kilic et al.                                                                                                                                                                                                                                     
+
+<<PAGE 10>>
+Chemical Engineering Journal 490 (2024) 151562
+10
+Declaration of competing interest 
+The authors declare that they have no known competing financial 
+interests or personal relationships that could have appeared to influence 
+the work reported in this paper. 
+Data availability 
+Data will be made available on request. 
+Acknowledgments 
+This study was funded by The Scientific and Technological Research 
+Council of Turkey (TUBITAK), Grant No: 221M542. 
+Appendix A. Supplementary material 
+Supplementary material to this article can be found online at htt 
+ps://doi.org/10.1016/j.cej.2024.151562. 
+References 
+[1] N. Angulakshmi, A.M. Stephan, Efficient electrolytes for lithium-sulfur batteries, 
+Front. Energy Res. 3 (2015), https://doi.org/10.3389/fenrg.2015.00017. 
+[2] T.B. Reddy, D. Linden (Eds.), Linden’s Handbook of Batteries, 4th ed, McGraw-Hill, 
+New York, 2011. 
+[3] X. Shen, H. Liu, X.-B. Cheng, C. Yan, J.-Q. Huang, Beyond lithium ion batteries: 
+Higher energy density battery systems based on lithium metal anodes, Energy 
+Storage Mater. 12 (2018) 161–175, https://doi.org/10.1016/j.ensm.2017.12.002. 
+[4] H. Zhao, N. Deng, J. Yan, W. Kang, J. Ju, Y. Ruan, X. Wang, X. Zhuang, Q. Li, 
+B. Cheng, A review on anode for lithium-sulfur batteries: Progress and prospects, 
+Chem. Eng. J. 347 (2018) 343–365, https://doi.org/10.1016/j.cej.2018.04.112. 
+[5] S. Evers, L.F. Nazar, New approaches for high energy density lithium-sulfur battery 
+cathodes, Acc. Chem. Res. 46 (2013) 1135–1143, https://doi.org/10.1021/ 
+ar3001348. 
+[6] L. Wang, Y. Ye, N. Chen, Y. Huang, L. Li, F. Wu, R. Chen, Development and 
+challenges of functional electrolytes for high-performance lithium-sulfur batteries, 
+Adv. Funct. Mater. 28 (2018) 1800919, https://doi.org/10.1002/ 
+adfm.201800919. 
+[7] R. Steudel, T. Chivers, The role of polysulfide dianions and radical anions in the 
+chemical, physical and biological sciences, including sulfur-based batteries, Chem. 
+Soc. Rev. 48 (2019) 3279–3319, https://doi.org/10.1039/C8CS00826D. 
+[8] M. Vijayakumar, N. Govind, E. Walter, S.D. Burton, A. Shukla, A. Devaraj, J. Xiao, 
+J. Liu, C. Wang, A. Karim, S. Thevuthasan, Molecular structure and stability of 
+dissolved lithium polysulfide species, Phys. Chem. Chem. Phys. 16 (2014) 
+10923–10932, https://doi.org/10.1039/C4CP00889H. 
+[9] N. Angulakshmi, R.B. Dhanalakshmi, S. Sathya, J. Ahn, A.M. Stephan, 
+Understanding the electrolytes of lithium-sulfur batteries, Batteries & Supercaps 4 
+(2021) 1064–1095, https://doi.org/10.1002/batt.202000273. 
+[10] J. Liao, Z. Ye, Nontrivial effects of “trivial” parameters on the performance of 
+lithium-sulfur batteries, Batteries 4 (2018) 22, https://doi.org/10.3390/ 
+batteries4020022. 
+[11] H. Lu, Z. Chen, H. Du, K. Zhang, J. Wang, Z. Hou, J. Fang, The enhanced 
+performance of lithium sulfur battery with ionic liquid-based electrolyte mixed 
+with fluorinated ether, Ionics 25 (2019) 2685–2691, https://doi.org/10.1007/ 
+s11581-018-2814-x. 
+[12] H. Lu, Y. Zhu, B. Zheng, H. Du, X. Zheng, C. Liu, Y. Yuan, J. Fang, K. Zhang, 
+A hybrid ionic liquid-based electrolyte for high-performance lithium–sulfur 
+batteries, New J. Chem. 44 (2020) 361–368, https://doi.org/10.1039/ 
+C9NJ03790J. 
+[13] S. Suriyakumar, M. Kathiresan, A.M. Stephan, Charge-discharge and interfacial 
+properties of ionic liquid-added hybrid electrolytes for lithium-sulfur batteries, 
+ACS Omega 4 (2019) 3894–3903, https://doi.org/10.1021/acsomega.8b03544. 
+[14] Z. Guan, L. Bai, B. Du, An ionic liquid electrolyte additive for high-performance 
+lithium-sulfur batteries, Materials 16 (2023) 7504, https://doi.org/10.3390/ 
+ma16237504. 
+[15] M. Pushpa Selvi, R. Nimma Elizabeth, S. Sinthika, S. Arockia Shyamala Paniyarasi, 
+S. Padmaja, S. Susanna Victoria Backiyaleela, Lithium-Sulfur Batteries with 
+Triethylsulfonium Bis(trifluoromethane sulfonyl)imide Ionic Liquid During First 
+Charge-Discharge Cycling: EIS & DFT Study, Batteries & Supercaps 7 (2024) 
+e202300433. Doi: 10.1002/batt.202300433. 
+[16] H. Watanabe, Y. Sugiura, S. Seki, J. Han, I. Shitanda, M. Itagaki, Y. Umebayashi, 
+Discharge behavior within lithium-sulfur batteries using li–glyme solvate ionic 
+liquids, J. Phys. Chem. C 127 (2023) 6645–6654, https://doi.org/10.1021/acs. 
+jpcc.3c00447. 
+[17] K. Ueno, J.-W. Park, A. Yamazaki, T. Mandai, N. Tachikawa, K. Dokko, 
+M. Watanabe, Anionic effects on solvate ionic liquid electrolytes in rechargeable 
+lithium-sulfur batteries, J. Phys. Chem. C 117 (2013) 20509–20516, https://doi. 
+org/10.1021/jp407158y. 
+[18] J.-W. Park, K. Ueno, N. Tachikawa, K. Dokko, M. Watanabe, Ionic liquid 
+electrolytes for lithium-sulfur batteries, J. Phys. Chem. C 117 (2013) 
+20531–20541, https://doi.org/10.1021/jp408037e. 
+[19] M. Yanagi, K. Ueno, A. Ando, S. Li, Y. Matsumae, J. Liu, K. Dokko, M. Watanabe, 
+Effects of Polysulfide Solubility and Li Ion Transport on Performance of Li–S 
+Batteries Using Sparingly Solvating Electrolytes, J. Electrochem. Soc. 167 (2020) 
+070531, https://doi.org/10.1149/1945-7111/ab7a81. 
+[20] A. Chen, X. Zhang, Z. Zhou, Machine learning: Accelerating materials development 
+for energy storage and conversion, InfoMat 2 (2020) 553–576, https://doi.org/ 
+10.1002/inf2.12094. 
+[21] A. Klamt, Conductor-like screening model for real solvents: a new approach to the 
+quantitative calculation of solvation phenomena, J. Phys. Chem. 99 (1995) 
+2224–2235, https://doi.org/10.1021/j100007a062. 
+[22] A. Klamt, F. Eckert, W. Arlt, COSMO-RS: an alternative to simulation for 
+calculating thermodynamic properties of liquid mixtures, Annu. Rev. Chem. 
+Biomol. Eng. 1 (2010) 101–122, https://doi.org/10.1146/annurev-chembioeng- 
+073009-100903. 
+[23] S. Boobier, D.R.J. Hose, A.J. Blacker, B.N. Nguyen, Machine learning with 
+physicochemical relationships: solubility prediction in organic solvents and water, 
+Nat Commun 11 (2020) 5753, https://doi.org/10.1038/s41467-020-19594-z. 
+[24] R. Franke, B. Hannebauer, On the influence of basis sets and quantum chemical 
+methods on the prediction accuracy of COSMO-RS, Phys. Chem. Chem. Phys. 13 
+(2011) 21344, https://doi.org/10.1039/c1cp22317h. 
+[25] J. Reinisch, M. Diedenhofen, R. Wilcken, A. Udvarhelyi, A. Gl¨oß, Benchmarking 
+Different QM Levels for Usage with COSMO-RS, J. Chem. Inf. Model. 59 (2019) 
+4806–4813, https://doi.org/10.1021/acs.jcim.9b00659. 
+[26] D.H. Barrett, A. Haruna, Artificial intelligence and machine learning for targeted 
+energy storage solutions, Curr. Opin. Electrochem. 21 (2020) 160–166, https://doi. 
+org/10.1016/j.coelec.2020.02.002. 
+[27] S.C. Balchandani, R. Singh, B. Mandal, Experimental and COSMO-RS analysis of 
+CO2 solubility in novel aqueous blends of 1-butyl-3-methyl-imidazolium 
+tetrafluoroborate activated by 2-aminoethyl piperazine and bis(3-aminopropyl) 
+amine for post combustion carbon capture, J. Environ. Chem. Eng. 11 (2023) 
+109099, https://doi.org/10.1016/j.jece.2022.109099. 
+[28] Y. Cao, Z. Wu, Y. Zhang, Y. Liu, H. Wang, Screening of alternative solvent ionic 
+liquids for artemisinin: COSMO-RS prediction and experimental verification, 
+J. Mol. Liq. 338 (2021) 116778, https://doi.org/10.1016/j.molliq.2021.116778. 
+[29] R. Nakhaei-Kohani, S. Atashrouz, F. Hadavimoghaddam, A. Bostani, A. Hemmati- 
+Sarapardeh, A. Mohaddespour, Solubility of gaseous hydrocarbons in ionic liquids 
+using equations of state and machine learning approaches, Sci Rep 12 (2022) 
+14276, https://doi.org/10.1038/s41598-022-17983-6. 
+[30] V. Venkatraman, B.K. Alsberg, Predicting CO2 capture of ionic liquids using 
+machine learning, J. CO2 Util. 21 (2017) 162–168, https://doi.org/10.1016/j. 
+jcou.2017.06.012. 
+[31] E. Can, A. Jalal, I.G. Zirhlioglu, A. Uzun, R. Yildirim, Predicting water solubility in 
+ionic liquids using machine learning towards design of hydro-philic/phobic ionic 
+liquids, J. Mol. Liq. 332 (2021) 115848, https://doi.org/10.1016/j. 
+molliq.2021.115848. 
+[32] A. Jalal, E. Can, S. Keskin, R. Yildirim, A. Uzun, Selection rules for estimating the 
+solubility of C4-hydrocarbons in imidazolium ionic liquids determined by machine- 
+learning tools, J. Mol. Liq. 284 (2019) 511–521, https://doi.org/10.1016/j. 
+molliq.2019.03.182. 
+[33] S. Jeschke, P. Johansson, Predicting the Solubility of Sulfur: A COSMO-RS-Based 
+Approach to Investigate Electrolytes for Li–S Batteries, Chemistry A European J 23 
+(2017) 9130–9136, https://doi.org/10.1002/chem.201701011. 
+[34] S. Jeschke, P. Johansson, Supervised Machine Learning-Based Classification of 
+Li−S Battery Electrolytes, Batteries & Supercaps 4 (2021) 1156–1162, https://doi. 
+org/10.1002/batt.202100031. 
+[35] COSMOThermX Version C30_1601, COSMOlogic GmbH & Co. kG (2005). http:// 
+www.solventextract.org/Organization/COSMOlogic-GmbH-Co-kG (accessed 
+November 17, 2023). 
+[36] M.F. Sgroi, D. Pullini, A.I. Pruna, Lithium Polysulfide Interaction with Group III 
+Atoms-Doped Graphene: A Computational Insight, Batteries 6 (2020) 46, https:// 
+doi.org/10.3390/batteries6030046. 
+[37] F. Neese, F. Wennmohs, U. Becker, C. Riplinger, The ORCA quantum chemistry 
+program package, J. Chem. Phys. 152 (2020) 224108, https://doi.org/10.1063/ 
+5.0004608. 
+[38] C. Steffen, K. Thomas, U. Huniar, A. Hellweg, O. Rubner, A. Schroer, TmoleX—A 
+graphical user interface for TURBOMOLE, J Comput Chem 31 (2010) 2967–2970, 
+https://doi.org/10.1002/jcc.21576. 
+[39] D.L.J. Alexander, A. Tropsha, D.A. Winkler, Beware of R 2: Simple, Unambiguous 
+Assessment of the Prediction Accuracy of QSAR and QSPR Models, J. Chem. Inf. 
+Model. 55 (2015) 1316–1322, https://doi.org/10.1021/acs.jcim.5b00206. 
+[40] P. Yu, D.J. Wild, Fast rule-based bioactivity prediction using associative 
+classification mining, J Cheminform 4 (2012) 29, https://doi.org/10.1186/1758- 
+2946-4-29. 
+[41] Posit team, RStudio: Integrated Development Environment for R, (2023). http:// 
+www.posit.co/. 
+[42] T. Mu, J. Rarey, J. Gmehling, Performance of COSMO-RS with Sigma Profiles from 
+Different Model Chemistries, Ind. Eng. Chem. Res. 46 (2007) 6612–6629, https:// 
+doi.org/10.1021/ie0702126. 
+[43] K. Paduszy´nski, An overview of the performance of the COSMO-RS approach in 
+predicting the activity coefficients of molecular solutes in ionic liquids and derived 
+properties at infinite dilution, Phys. Chem. Chem. Phys. 19 (2017) 11835–11850, 
+https://doi.org/10.1039/C7CP00226B. 
+A. Kilic et al.                                                                                                                                                                                                                                     
+
+<<PAGE 11>>
+Chemical Engineering Journal 490 (2024) 151562
+11
+[44] K. Dong, S. Zhang, J. Wang, Understanding the hydrogen bonds in ionic liquids and 
+their roles in properties and reactions, Chem. Commun. 52 (2016) 6744–6764, 
+https://doi.org/10.1039/C5CC10120D. 
+[45] J. Tan, J. Matz, P. Dong, M. Ye, J. Shen, Appreciating the role of polysulfides in 
+lithium-sulfur batteries and regulation strategies by electrolytes engineering, 
+Energy Storage Mater. 42 (2021) 645–678, https://doi.org/10.1016/j. 
+ensm.2021.08.012. 
+[46] M. Karelson, V.S. Lobanov, A.R. Katritzky, Quantum-Chemical Descriptors in 
+QSAR/QSPR Studies, Chem. Rev. 96 (1996) 1027–1044, https://doi.org/10.1021/ 
+cr950202r. 
+[47] L. Wang, J. Ding, L. Pan, D. Cao, H. Jiang, X. Ding, Quantum chemical descriptors 
+in quantitative structure–activity relationship models and their applications, 
+Chemom. Intel. Lab. Syst. 217 (2021) 104384, https://doi.org/10.1016/j. 
+chemolab.2021.104384. 
+[48] H.K. Seo, Y. Hwa, J.H. Chang, J.Y. Park, J.S. Lee, J. Park, E.J. Cairns, J.M. Yuk, 
+Direct Visualization of Lithium Polysulfides and Their Suppression in Liquid 
+Electrolyte, Nano Lett. 20 (2020) 2080–2086, https://doi.org/10.1021/acs. 
+nanolett.0c00058. 
+[49] L. Wang, J. Liu, S. Yuan, Y. Wang, Y. Xia, To mitigate self-discharge of 
+lithium–sulfur batteries by optimizing ionic liquid electrolytes, Energy Environ. 
+Sci. 9 (2016) 224–231, https://doi.org/10.1039/C5EE02837J. 
+[50] G. Ai, Z. Wang, Y. Dai, W. Mao, H. Zhao, Y. Fu, Y. En, V. Battaglia, G. Liu, 
+Improving the over-all performance of Li-S batteries via electrolyte optimization 
+with consideration of loading condition, Electrochim. Acta 218 (2016) 1–7, 
+https://doi.org/10.1016/j.electacta.2016.09.090. 
+[51] M.-K. Song, Y. Zhang, E.J. Cairns, A. Long-Life, High-Rate Lithium/Sulfur Cell: A 
+Multifaceted Approach to Enhancing Cell Performance, Nano Lett. 13 (2013) 
+5891–5899, https://doi.org/10.1021/nl402793z. 
+[52] Y. Yang, F. Men, Z. Song, Y. Zhou, H. Zhan, N-methoxyethyl-N- 
+methylpyrrolidinium bis(trifluoromethanesulfonyl)imide ionic liquid based hybrid 
+electrolyte for lithium sulfur batteries, Electrochim. Acta 256 (2017) 37–43, 
+https://doi.org/10.1016/j.electacta.2017.10.020. 
+[53] M. Agostini, M. Sadd, S. Xiong, C. Cavallo, J. Heo, J.H. Ahn, A. Matic, Designing a 
+Safe Electrolyte Enabling Long-Life Li/S Batteries, ChemSusChem 12 (2019) 
+4176–4184, https://doi.org/10.1002/cssc.201901770. 
+[54] M. Diedenhofen, A. Klamt, COSMO-RS as a tool for property prediction of IL 
+mixtures—A review, Fluid Phase Equilib. 294 (2010) 31–38, https://doi.org/ 
+10.1016/j.fluid.2010.02.002. 
+[55] T. Zhou, L. Chen, Y. Ye, L. Chen, Z. Qi, H. Freund, K. Sundmacher, An Overview of 
+Mutual Solubility of Ionic Liquids and Water Predicted by COSMO-RS, Ind. Eng. 
+Chem. Res. 51 (2012) 6256–6264, https://doi.org/10.1021/ie202719z. 
+[56] M. Wlazło, E.I. Alevizou, E.C. Voutsas, U. Doma´nska, Prediction of ionic liquids 
+phase equilibrium with the COSMO-RS model, Fluid Phase Equilib. 424 (2016) 
+16–31, https://doi.org/10.1016/j.fluid.2015.08.032. 
+[57] Z. Song, Q. Zeng, J. Zhang, H. Cheng, L. Chen, Z. Qi, Solubility of imidazolium- 
+based ionic liquids in model fuel hydrocarbons: A COSMO-RS and experimental 
+study, J. Mol. Liq. 224 (2016) 544–550, https://doi.org/10.1016/j. 
+molliq.2016.10.026. 
+[58] Z. Wang, Y. Li, H. Ji, J. Zhou, T. Qian, C. Yan, Unity of Opposites between Soluble 
+and Insoluble Lithium Polysulfides in Lithium-Sulfur Batteries, Adv. Mater. 34 
+(2022) 2203699, https://doi.org/10.1002/adma.202203699. 
+[59] X. Gao, Z. Yu, J. Wang, X. Zheng, Y. Ye, H. Gong, X. Xiao, Y. Yang, Y. Chen, S.E. 
+Bone, L.C. Greenburg, P. Zhang, H. Su, J. Affeld, Z. Bao, Y. Cui, Electrolytes with 
+moderate lithium polysulfide solubility for high-performance long-calendar-life 
+lithium–sulfur batteries, Proc. Natl. Acad. Sci. U.S.A. 120 (2023) e2301260120. 
+Doi: 10.1073/pnas.2301260120. 
+[60] M. Aghaie, S. Zendehboudi, Estimation of CO2 solubility in ionic liquids using 
+connectionist tools based on thermodynamic and structural characteristics, Fuel 
+279 (2020) 117984, https://doi.org/10.1016/j.fuel.2020.117984. 
+[61] P. Dhakal, J.K. Shah, Developing machine learning models for ionic conductivity of 
+imidazolium-based ionic liquids, Fluid Phase Equilib. 549 (2021) 113208, https:// 
+doi.org/10.1016/j.fluid.2021.113208. 
+[62] S. Koutsoukos, F. Philippi, F. Malaret, T. Welton, A review on machine learning 
+algorithms for the ionic liquid chemical space, Chem. Sci. 12 (2021) 6820–6843, 
+https://doi.org/10.1039/D1SC01000J. 
+[63] W. Zheng, A. Mohammed, L.G. Hines, D. Xiao, O.J. Martinez, R.A. Bartsch, S. 
+L. Simon, O. Russina, A. Triolo, E.L. Quitevis, Effect of Cation Symmetry on the 
+Morphology and Physicochemical Properties of Imidazolium Ionic Liquids, J. Phys. 
+Chem. B 115 (2011) 6572–6584, https://doi.org/10.1021/jp1115614. 
+[64] A.B. Pereiro, J.M.M. Araújo, S. Martinho, F. Alves, S. Nunes, A. Matias, C.M. 
+M. Duarte, L.P.N. Rebelo, I.M. Marrucho, Fluorinated Ionic Liquids: Properties and 
+Applications, ACS Sustainable Chem. Eng. 1 (2013) 427–439, https://doi.org/ 
+10.1021/sc300163n. 
+[65] N. Nakamura, S. Ahn, T. Momma, T. Osaka, Future potential for lithium-sulfur 
+batteries, J. Power Sources 558 (2023) 232566, https://doi.org/10.1016/j. 
+jpowsour.2022.232566. 
+[66] N. Azimi, Z. Xue, L. Hu, C. Takoudis, S. Zhang, Z. Zhang, Additive Effect on the 
+Electrochemical Performance of Lithium-Sulfur Battery, Electrochim. Acta 154 
+(2015) 205–210, https://doi.org/10.1016/j.electacta.2014.12.041. 
+[67] S. Xiong, X. Kai, X. Hong, Y. Diao, Effect of LiBOB as additive on electrochemical 
+properties of lithium–sulfur batteries, Ionics 18 (2012) 249–254, https://doi.org/ 
+10.1007/s11581-011-0628-1. 
+[68] H. Xiang, P. Shi, P. Bhattacharya, X. Chen, D. Mei, M.E. Bowden, J. Zheng, J.- 
+G. Zhang, W. Xu, Enhanced charging capability of lithium metal batteries based on 
+lithium bis(trifluoromethanesulfonyl)imide-lithium bis(oxalato)borate dual-salt 
+electrolytes, J. Power Sources 318 (2016) 170–177, https://doi.org/10.1016/j. 
+jpowsour.2016.04.017. 
+A. Kilic et al.                                                                                                                                                                                                                                     

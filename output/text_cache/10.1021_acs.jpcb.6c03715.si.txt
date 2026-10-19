@@ -1,0 +1,1014 @@
+
+<<PAGE 1>>
+Supporting Information
+Salt and Solvent Control of Elemental Sulfur
+(cyclo-S8) and Lithium-Ion Diffusion in Liquid Li–S
+Battery Electrolytes Revealed by DFTB Molecular
+Dynamics
+Mirella Fonda Maahurya,b, Abel Natawardajaa,
+Cedric Naravisnu Purwantoa, Aditya Wibawa Sakti∗,a,c, Hiromi Nakaia
+August 19, 2026
+aDepartment of Chemistry and Biochemistry, School of Advanced Science and
+Engineering, Waseda University
+bDepartment of Chemistry, Faculty of Science and Technology, Pattimura University
+cGlobal Center for Science and Engineering, School of Advanced Science and
+Engineering, Waseda University
+∗Corresponding Author: aditya@aoni.waseda.jp
+Contents
+1
+Geometry Benchmark
+S2
+2
+Mean-Squared Displacement
+S7
+2.1
+Quantitative identification of the finite-time diffusive regime . . . . . . .
+S7
+3
+Ensemble Li–O Coordination
+S20
+4
+S8–Solvent Displacement Correlation
+S21
+S1
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-supplement/​5421785/​pdf/​jp6c03715_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 2>>
+1
+Geometry Benchmark
+Geometry benchmarking was performed by comparing optimized DFTB2/PTBP struc-
+tures with the corresponding DFT geometries for PC, DMC, EC, and DIOX and for
+their one-solvent Li+ complexes. The DFT geometry optimizations were performed with
+ORCA using the ωB97X-D3BJ exchange-correlation functional and the def2-TZVP basis
+set. The DFTB calculations used the original PTBP parameter set, second-order SCC-
+DFTB, and D3(BJ) dispersion, consistent with the production simulations. Bonded pairs
+were identified from the DFT structures using a covalent-radius cutoff and then evaluated
+with the same atom indices in the DFTB2/PTBP structures. Bond angles were generated
+from the resulting DFT connectivity. Positive differences indicate longer bond distances
+or larger angles in DFTB2/PTBP relative to DFT.
+Table S1: Summary of geometry differences between DFT and DFTB2/PTBP optimized
+structures. Bond-length differences are reported in Å, angle differences in degrees, and
+Cartesian RMSD in Å after least-squares alignment.
+Molecule
+RMSD
+Nbond
+Bond MAE
+Bond RMSE
+Nangle
+Angle MAE
+Angle RMSE
+PC
+0.150
+13
+0.016
+0.023
+23
+0.857
+1.131
+DMC
+0.054
+11
+0.016
+0.024
+17
+0.885
+1.150
+EC
+0.028
+10
+0.021
+0.028
+17
+1.016
+1.156
+DIOX
+0.118
+11
+0.014
+0.019
+20
+1.074
+1.341
+A non-Li contact was assessed using the S8–OTf−cluster. Both methods retain the
+same two S8 · · · O(triflate) contacts. Their distances are 2.861 and 2.875 Å at the ωB97X-
+D3BJ/def2-TZVP level and 2.598 and 2.598 Å at the DFTB2/PTBP-D3(BJ) level (Ta-
+ble S2). The corresponding S8 and OTf−fragment RMSDs are 0.176 and 0.055 Å, re-
+spectively, showing that the interacting molecular frameworks and the contact motif are
+retained. DFTB2/PTBP gives a moderate shortening of 0.263–0.277 Å for these contacts.
+Table S2: Two shortest intermolecular S8 · · · O(triflate) contacts in the S8–OTf−cluster
+optimized with ωB97X-D3BJ/def2-TZVP and DFTB2/PTBP-D3(BJ). ∆r = rDFTB −
+rDFT.
+Contact
+rDFT (Å)
+rDFTB (Å)
+∆r (Å)
+S8 · · · O(OTf), 1
+2.861
+2.598
+−0.263
+S8 · · · O(OTf), 2
+2.875
+2.598
+−0.277
+The Li–S contact was examined separately using a Li+–S8 cluster. Starting from the
+optimized ωB97X-D3BJ/def2-TZVP structure, the DFTB2/PTBP-D3(BJ) optimization
+converged to a stationary point in 27 steps. The nearest Li–S distance changes from
+2.363 Å at the DFT level to 2.411 Å at the DFTB2/PTBP level, corresponding to a
+deviation of only +0.048 Å (Table S3). This close agreement supports the local Li–S
+contact distance sampled in the simulations.
+Table S3: Nearest Li–S contact in the Li+–S8 cluster optimized with ωB97X-D3BJ/def2-
+TZVP and DFTB2/PTBP-D3(BJ). ∆r = rDFTB −rDFT.
+Interaction
+rDFT (Å)
+rDFTB (Å)
+∆r (Å)
+Li+–S8 (nearest Li–S)
+2.363
+2.411
++0.048
+The isolated-solvent results show that PTBP retains the molecular geometries with
+bond-length MAEs of 0.014–0.021 Å, angle MAEs of 0.86–1.07◦, and aligned Carte-
+sian RMSDs of 0.028–0.150 Å. To test the interaction most directly relevant to Li+
+S2
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-supplement/​5421785/​pdf/​jp6c03715_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 3>>
+solvation, the DFT-optimized Li+–solvent complexes were subsequently optimized with
+DFTB2/PTBP. Table S4 reports the shortest Li–O contact and the aligned heavy-atom
+RMSD. The same Li–O-bound motif was retained in every complex.
+PTBP predicts
+systematically shorter Li–O distances, with deviations of 0.060–0.231 Å; the heavy-atom
+RMSDs remain 0.043–0.141 Å. Preservation of the solvent frameworks and Li–O-bound
+minima provides a fit-for-purpose test of the local geometries sampled during the dynam-
+ics. The observed agreement is therefore suﬀicient to support qualitative and semiquan-
+titative comparisons across the consistently treated electrolyte series, while the modest
+Li–O overcontraction is retained as a limitation.
+Table S4: Geometry comparison for one-solvent Li+ complexes optimized with ωB97X-
+D3BJ/def2-TZVP and DFTB2/PTBP-D3(BJ). RMSD is calculated over the non-
+hydrogen atoms after least-squares alignment. ∆r = rDFTB −rDFT.
+Complex
+rDFT
+Li−O (Å)
+rDFTB
+Li−O (Å)
+∆r (Å)
+Heavy-atom RMSD (Å)
+Li+–PC
+1.727
+1.667
+−0.060
+0.043
+Li+–DIOX
+2.004
+1.773
+−0.231
+0.109
+Li+–EC
+1.733
+1.669
+−0.064
+0.048
+Li+–DMC
+1.865
+1.723
+−0.142
+0.141
+Table S5: Bond-distance comparison between DFT and DFTB2/PTBP optimized ge-
+ometries.
+Molecule
+Bond
+DFT (Å)
+DFTB2/PTBP (Å)
+∆(Å)
+PC
+O1–C2
+1.352
+1.381
+0.028
+PC
+O1–C5
+1.437
+1.469
+0.032
+PC
+C2–O6
+1.355
+1.386
+0.031
+PC
+C2–O8
+1.187
+1.242
+0.055
+PC
+H3–C5
+1.095
+1.096
+0.002
+PC
+H4–C12
+1.089
+1.092
+0.002
+PC
+C5–C12
+1.528
+1.518
+-0.010
+PC
+C5–C13
+1.510
+1.513
+0.003
+PC
+O6–C12
+1.428
+1.454
+0.027
+PC
+H7–C13
+1.092
+1.086
+-0.007
+PC
+H9–C12
+1.094
+1.093
+-0.002
+PC
+H10–C13
+1.093
+1.087
+-0.007
+PC
+H11–C13
+1.091
+1.085
+-0.006
+DMC
+C1–O2
+1.433
+1.452
+0.020
+DMC
+C1–H3
+1.091
+1.089
+-0.002
+DMC
+C1–H4
+1.091
+1.089
+-0.002
+DMC
+C1–H5
+1.088
+1.087
+-0.001
+DMC
+O2–C6
+1.333
+1.373
+0.040
+DMC
+C6–O9
+1.333
+1.374
+0.040
+DMC
+C6–O11
+1.204
+1.253
+0.048
+DMC
+H7–C12
+1.091
+1.089
+-0.002
+DMC
+H8–C12
+1.088
+1.087
+-0.001
+DMC
+O9–C12
+1.432
+1.455
+0.022
+DMC
+H10–C12
+1.091
+1.089
+-0.002
+EC
+O1–C2
+1.352
+1.385
+0.033
+S3
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-supplement/​5421785/​pdf/​jp6c03715_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 4>>
+Molecule
+Bond
+DFT (Å)
+DFTB2/PTBP (Å)
+∆(Å)
+EC
+O1–C5
+1.426
+1.455
+0.029
+EC
+C2–O6
+1.352
+1.385
+0.033
+EC
+C2–O8
+1.187
+1.241
+0.054
+EC
+H3–C5
+1.091
+1.092
+0.001
+EC
+H4–C7
+1.091
+1.092
+0.001
+EC
+C5–C7
+1.537
+1.508
+-0.029
+EC
+C5–H10
+1.091
+1.092
+0.001
+EC
+O6–C7
+1.426
+1.455
+0.029
+EC
+C7–H9
+1.091
+1.092
+0.001
+DIOX
+O1–C2
+1.402
+1.429
+0.027
+DIOX
+O1–C5
+1.420
+1.455
+0.036
+DIOX
+C2–O6
+1.414
+1.434
+0.020
+DIOX
+C2–H7
+1.091
+1.097
+0.006
+DIOX
+C2–H8
+1.102
+1.109
+0.007
+DIOX
+H3–C5
+1.090
+1.092
+0.002
+DIOX
+H4–C10
+1.094
+1.096
+0.002
+DIOX
+C5–C10
+1.532
+1.507
+-0.026
+DIOX
+C5–H11
+1.098
+1.098
+0.000
+DIOX
+O6–C10
+1.427
+1.457
+0.031
+DIOX
+H9–C10
+1.094
+1.094
+0.001
+Table S6: Bond-angle comparison between DFT and DFTB2/PTBP optimized geome-
+tries.
+Molecule
+Angle
+DFT (◦)
+DFTB2/PTBP (◦)
+∆(◦)
+PC
+C2–O1–C5
+109.843
+109.303
+-0.541
+PC
+O1–C2–O6
+110.401
+111.246
+0.845
+PC
+O1–C2–O8
+124.955
+124.543
+-0.412
+PC
+O6–C2–O8
+124.644
+124.211
+-0.432
+PC
+O1–C5–H3
+107.268
+105.385
+-1.883
+PC
+O1–C5–C12
+102.016
+104.451
+2.435
+PC
+O1–C5–C13
+110.316
+108.681
+-1.635
+PC
+H3–C5–C12
+110.764
+111.469
+0.704
+PC
+H3–C5–C13
+110.810
+110.594
+-0.216
+PC
+C12–C5–C13
+115.079
+115.543
+0.464
+PC
+C2–O6–C12
+109.240
+108.954
+-0.286
+PC
+H4–C12–C5
+113.509
+113.591
+0.082
+PC
+H4–C12–O6
+108.886
+107.222
+-1.665
+PC
+H4–C12–H9
+109.839
+109.168
+-0.671
+PC
+C5–C12–O6
+103.444
+105.801
+2.357
+PC
+C5–C12–H9
+111.882
+113.420
+1.538
+PC
+O6–C12–H9
+108.993
+107.206
+-1.787
+PC
+C5–C13–H7
+110.352
+110.810
+0.458
+PC
+C5–C13–H10
+109.819
+110.226
+0.408
+PC
+C5–C13–H11
+110.610
+110.489
+-0.122
+PC
+H7–C13–H10
+108.824
+108.286
+-0.537
+S4
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-supplement/​5421785/​pdf/​jp6c03715_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 5>>
+Molecule
+Angle
+DFT (◦)
+DFTB2/PTBP (◦)
+∆(◦)
+PC
+H7–C13–H11
+108.807
+108.576
+-0.231
+PC
+H10–C13–H11
+108.379
+108.380
+0.000
+DMC
+O2–C1–H3
+110.422
+109.462
+-0.960
+DMC
+O2–C1–H4
+110.428
+109.459
+-0.969
+DMC
+O2–C1–H5
+105.477
+105.869
+0.392
+DMC
+H3–C1–H4
+109.257
+110.462
+1.205
+DMC
+H3–C1–H5
+110.625
+110.745
+0.120
+DMC
+H4–C1–H5
+110.591
+110.731
+0.140
+DMC
+C1–O2–C6
+114.440
+111.886
+-2.554
+DMC
+O2–C6–O9
+108.279
+109.288
+1.009
+DMC
+O2–C6–O11
+125.861
+125.359
+-0.502
+DMC
+O9–C6–O11
+125.860
+125.353
+-0.507
+DMC
+C6–O9–C12
+114.443
+111.794
+-2.648
+DMC
+H7–C12–H8
+110.587
+110.791
+0.204
+DMC
+H7–C12–O9
+110.440
+109.385
+-1.054
+DMC
+H7–C12–H10
+109.246
+110.513
+1.267
+DMC
+H8–C12–O9
+105.492
+105.823
+0.331
+DMC
+H8–C12–H10
+110.598
+110.776
+0.178
+DMC
+O9–C12–H10
+110.439
+109.433
+-1.007
+EC
+C2–O1–C5
+110.725
+108.981
+-1.744
+EC
+O1–C2–O6
+110.666
+111.115
+0.449
+EC
+O1–C2–O8
+124.667
+124.444
+-0.223
+EC
+O6–C2–O8
+124.667
+124.441
+-0.226
+EC
+O1–C5–H3
+108.666
+107.168
+-1.498
+EC
+O1–C5–C7
+103.941
+105.460
+1.520
+EC
+O1–C5–H10
+108.668
+107.177
+-1.491
+EC
+H3–C5–C7
+112.909
+113.717
+0.807
+EC
+H3–C5–H10
+109.477
+109.152
+-0.325
+EC
+C7–C5–H10
+112.900
+113.694
+0.794
+EC
+C2–O6–C7
+110.727
+108.983
+-1.744
+EC
+H4–C7–C5
+112.902
+113.713
+0.811
+EC
+H4–C7–O6
+108.667
+107.177
+-1.490
+EC
+H4–C7–H9
+109.481
+109.150
+-0.331
+EC
+C5–C7–O6
+103.940
+105.460
+1.520
+EC
+C5–C7–H9
+112.907
+113.703
+0.796
+EC
+O6–C7–H9
+108.664
+107.166
+-1.499
+DIOX
+C2–O1–C5
+103.867
+106.338
+2.472
+DIOX
+O1–C2–O6
+106.975
+107.766
+0.791
+DIOX
+O1–C2–H7
+109.128
+109.149
+0.021
+DIOX
+O1–C2–H8
+110.453
+110.265
+-0.188
+DIOX
+O6–C2–H7
+109.750
+109.503
+-0.247
+DIOX
+O6–C2–H8
+109.682
+109.675
+-0.007
+DIOX
+H7–C2–H8
+110.773
+110.435
+-0.338
+DIOX
+O1–C5–H3
+108.657
+106.922
+-1.735
+DIOX
+O1–C5–C10
+102.923
+105.380
+2.456
+DIOX
+O1–C5–H11
+110.288
+108.542
+-1.745
+DIOX
+H3–C5–C10
+113.899
+114.169
+0.270
+S5
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-supplement/​5421785/​pdf/​jp6c03715_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 6>>
+Molecule
+Angle
+DFT (◦)
+DFTB2/PTBP (◦)
+∆(◦)
+DIOX
+H3–C5–H11
+109.532
+108.736
+-0.796
+DIOX
+C10–C5–H11
+111.325
+112.753
+1.428
+DIOX
+C2–O6–C10
+107.362
+107.602
+0.240
+DIOX
+H4–C10–C5
+112.481
+113.391
+0.910
+DIOX
+H4–C10–O6
+110.100
+108.087
+-2.013
+DIOX
+H4–C10–H9
+109.310
+108.479
+-0.831
+DIOX
+C5–C10–O6
+103.918
+105.961
+2.044
+DIOX
+C5–C10–H9
+112.054
+113.393
+1.340
+DIOX
+O6–C10–H9
+108.814
+107.202
+-1.612
+S6
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-supplement/​5421785/​pdf/​jp6c03715_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 7>>
+2
+Mean-Squared Displacement
+2.1
+Quantitative identification of the finite-time diffusive regime
+To test the long-time regime rather than relying only on visual linearity, the logarithmic
+diffusion exponent was evaluated over 20–50 ps as
+α = d ln⟨|r(t) −r(0)|2⟩
+d ln t
+.
+(1)
+Normal diffusion gives α = 1, whereas ballistic and subdiffusive motion give α > 1 and
+α < 1, respectively. Second, linear slopes were compared over four neighboring intervals
+(10–50, 15–50, 20–50, and 25–50 ps). A curve was classified as exhibiting a stable finite-
+time diffusive regime when 0.9 ≤α ≤1.1 over 20–50 ps and the range of fitted diffusion
+coeﬀicients across these windows was no greater than 10% of the reported mean.
+All 52 species–composition curves satisfy both criteria (Table S7). Their 20–50 ps
+exponents span 0.936–1.062, their linear-fit coeﬀicients of determination span 0.9974–
+0.9999, and their fit-window sensitivity is 0.3–5.8%. Most importantly, the slow com-
+ponents satisfy the criteria separately: for Li+, α = 0.981–1.062, R2 = 0.9988–0.9999,
+and window sensitivity is 0.8–4.0%; for OTf–, the corresponding ranges are 0.981–1.042,
+0.9991–0.9999, and 0.3–2.6%. Thus, the 20–50 ps interval lies beyond the initial non-
+diffusive crossover even for the slowly moving ionic species. These diagnostics establish
+a stable diffusive regime within the available records.
+Table S7: MSD-regime diagnostics over 20–50 ps and sensitivity to the four neighboring
+fitting windows.
+Subset
+Number of curves
+α range
+R2 range
+Window sensitivity (%)
+All species
+52
+0.936–1.062
+0.9974–0.9999
+0.3–5.8
+Li+
+12
+0.981–1.062
+0.9988–0.9999
+0.8–4.0
+OTf–
+12
+0.981–1.042
+0.9991–0.9999
+0.3–2.6
+S7
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-supplement/​5421785/​pdf/​jp6c03715_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 8>>
+Figure S1: Mean-squared displacement plot for the PC-based electrolyte containing 5
+wt% salt.
+S8
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-supplement/​5421785/​pdf/​jp6c03715_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 9>>
+Figure S2: Mean-squared displacement plot for the PC-based electrolyte containing 20
+wt% salt.
+S9
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-supplement/​5421785/​pdf/​jp6c03715_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 10>>
+Figure S3: Mean-squared displacement plot for the PC-based electrolyte containing 30
+wt% salt.
+S10
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-supplement/​5421785/​pdf/​jp6c03715_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 11>>
+Figure S4: Mean-squared displacement plot for the PC-based electrolyte containing 40
+wt% salt.
+S11
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-supplement/​5421785/​pdf/​jp6c03715_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 12>>
+Figure S5: Mean-squared displacement plot for the DIOX-based electrolyte containing 5
+wt% salt.
+S12
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-supplement/​5421785/​pdf/​jp6c03715_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 13>>
+Figure S6: Mean-squared displacement plot for the DIOX-based electrolyte containing
+20 wt% salt.
+S13
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-supplement/​5421785/​pdf/​jp6c03715_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 14>>
+Figure S7: Mean-squared displacement plot for the DIOX-based electrolyte containing
+30 wt% salt.
+S14
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-supplement/​5421785/​pdf/​jp6c03715_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 15>>
+Figure S8: Mean-squared displacement plot for the DIOX-based electrolyte containing
+40 wt% salt.
+S15
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-supplement/​5421785/​pdf/​jp6c03715_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 16>>
+Figure S9: Mean-squared displacement plot for the EC–DMC-based electrolyte containing
+5 wt% salt.
+S16
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-supplement/​5421785/​pdf/​jp6c03715_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 17>>
+Figure S10: Mean-squared displacement plot for the EC–DMC-based electrolyte contain-
+ing 20 wt% salt.
+S17
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-supplement/​5421785/​pdf/​jp6c03715_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 18>>
+Figure S11: Mean-squared displacement plot for the EC–DMC-based electrolyte contain-
+ing 30 wt% salt.
+S18
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-supplement/​5421785/​pdf/​jp6c03715_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 19>>
+Figure S12: Mean-squared displacement plot for the EC–DMC-based electrolyte contain-
+ing 40 wt% salt.
+S19
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-supplement/​5421785/​pdf/​jp6c03715_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 20>>
+3
+Ensemble Li–O Coordination
+Li–O coordination numbers were averaged over every Li ion and every frame sampled at
+0.1 ps across the complete ensemble of independent production trajectories, using a 2.6 Å
+cutoff. Error bars in Figure S13 are standard deviations over the pooled Li–frame ob-
+servations and describe the breadth of the instantaneous coordination distribution across
+the trajectory ensemble. In all solvents, increasing salt loading replaces solvent oxygen by
+triflate oxygen in the Li first shell. This ensemble result is consistent with the ensemble-
+averaged ESP trend, while the displayed molecular geometries provide representative
+structural motifs.
+Figure S13: Mean Li–O coordination resolved by triflate and solvent species across the
+complete ensemble of production trajectories. EC and DMC are shown separately. Error
+bars denote standard deviations across pooled Li–frame observations.
+S20
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-supplement/​5421785/​pdf/​jp6c03715_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 21>>
+4
+S8–Solvent Displacement Correlation
+To test correlated motion directly, molecular coordinates were unwrapped across the
+periodic boundaries and molecular center-of-mass positions were sampled every 0.1 ps.
+For each time origin, an S8–solvent pair was classified as a contact when its center-of-mass
+separation was at most 5.0 Å. Pairs outside this cutoff formed the non-contact baseline.
+For a pair set P, the normalized displacement cross-correlation was calculated as
+CP(τ) =
+⟨
+∆rS8
+i · ∆rsolv
+j
+⟩
+P
+√⟨
+|∆rS8
+i |2⟩
+P
+⟨
+|∆rsolv
+j
+|2⟩
+P
+.
+(2)
+The excess correlation is ∆C(τ) = Ccontact(τ) −Cbaseline(τ).
+Contact persistence was
+evaluated from S(τ) = ⟨hij(t0)hij(t0 + τ)⟩/⟨hij(t0)⟩, where hij = 1 inside the cutoff and
+zero otherwise.
+The non-contact baselines in Figure S14 are weakly negative and close to zero (ap-
+proximately −0.004 to −0.027). Small anticorrelations are plausible in a finite periodic
+NV E system because of total-momentum constraints, collective backflow, and the inclu-
+sion of spatially separated pairs in the baseline. Their subtraction slightly increases ∆C;
+therefore, both the raw contact correlation and baseline are shown. Contact correlations
+are substantially more positive than the baseline for all systems, while contact survival
+remains finite. This behavior is consistent with transient local cooperative motion.
+S21
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-supplement/​5421785/​pdf/​jp6c03715_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 22>>
+Figure S14: Normalized S8–solvent displacement correlations and contact-survival prob-
+abilities as functions of lag time for PC, DIOX, and EC/DMC at different LiOTf con-
+centrations. Contact pairs have an initial center-of-mass separation of at most 5.0 Å;
+non-contact pairs provide the baseline.
+S22
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-supplement/​5421785/​pdf/​jp6c03715_si_001/​ by TSINGHUA UNIV user on 24 September 2026

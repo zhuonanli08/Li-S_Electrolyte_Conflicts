@@ -1,0 +1,1224 @@
+
+<<PAGE 1>>
+Understanding the formation chemistry of native
+solid electrolyte interphase over lithium anode and
+its implications using a LiTFSI/TME-TTE electrolyte
+and polysulﬁde additive†
+Bikila Nagasa Olana,‡a Shih-Huang Pan,‡a Bing-Joe Hwang,
+abc Holger Althues,d
+Jyh-Chiang Jiang
+a and Shawn D. Lin
+*a
+To develop high energy density Li batteries, Li metal anodes and in situ plated Li anodes (i.e., the so-called
+anode-free approach) have been extensively studied. However, the high reactivity of the Li metal surface
+can lead to chemical reactions with electrolyte components upon contact. Consequently, the so-called
+native solid electrolyte interphase (SEI) species are formed spontaneously when the Li anode is in
+contact with the electrolyte. This study illustrates the formation chemistry of native SEI over a Li metal
+surface
+using
+lithium
+bis(triﬂuoromethanesulfonyl)imide
+in
+tetramethylene
+sulfone
+and
+1,1,2,2-
+tetraﬂuoroethyl-2,2,3,3-tetraﬂuoropropyl ether (LiTFSI/TMS-TTE) electrolyte with and without lithium
+polysulﬁde (PS) additive. All electrolyte components were found to decompose over the Li surface based
+on
+diﬀuse
+reﬂectance
+infrared
+Fourier-transformed
+spectroscopy
+(DRIFTS),
+X-ray
+photoelectron
+spectroscopy (XPS), and ab initio molecular dynamics (AIMD) simulation. The degradation mechanism
+and the evolved SEI species of each electrolyte component were carefully evaluated. The PS additive can
+signiﬁcantly inﬂuence the composition of native SEI via its decomposition prior to all other electrolyte
+components, which can consequently suppress the degradation of the other electrolyte components,
+namely, TTE, TMS, and LiTFSI. The results indicate the importance of proper selection of electrolyte
+components, which can lead to the possibility of tuning such native SEI species to stabilize the Li surface
+in subsequent electrochemical cycling.
+1.
+Introduction
+With the surging demands of portable electronics, conventional
+Li-ion batteries (LIBs), boasting an energy density of approxi-
+mately 210 W h kg−1, can no longer fulll ambitious technology
+applications in the coming decades.1 In the pursuit of
+advancing next-generation batteries with heightened energy
+density, extensive research has been conducted on lithium (Li)
+metal anodes and in situ plated Li anodes, commonly referred to
+as the anode-free approach. For example, lithium–sulfur
+batteries (LSBs) with Li metal anodes are expected to have
+a theoretical capacity of 1672 mA h g−1, making LSB one of the
+most promising candidates owing to the relatively low cost,
+environmental friendliness, and natural abundance of sulfur
+compared
+to
+lithiated
+transition
+metal
+oxide
+cathode
+materials.2–5 Nevertheless, the high reactivity of the Li anode
+can lead to parasitic and uncontrollable degradation of the
+electrolyte. This oen results in the formation of an unstable
+solid electrolyte interphase,5 which consequently
+impairs
+coulombic eﬃciency and deteriorates the cycling performance
+of the battery.6,7 Understanding the formation chemistry of SEI
+is considered key for improving unavoidable SEI formation.
+SEI formation on an anode surface is mostly expected owing
+to the electrochemical reduction of electrolyte components, and
+the electrolyte components govern the formed SEI species.8–10 In
+addition, SEI can lead to uneven Li deposition and dissolution
+during cycling and aggravate lithium dendrite growth.5,11,12 To
+aDepartment of Chemical Engineering, National Taiwan University of Science and
+Technology, Taipei 10617, Taiwan. E-mail: sdlin@mail.ntust.edu.tw
+bNational Synchrotron Radiation Research Center (NSRRC), Hsinchu, 30076, Taiwan
+cSustainable Energy Development Center, National Taiwan University of Science and
+Technology, Taipei 10617, Taiwan
+dFraunhofer-Institute for Material and Beam Technology IWS, Winterbergstraße 28,
+01277 Dresden, Germany
+† Electronic supplementary information (ESI) available: Optimized Li (100)
+surface, electrolyte components, and boxes for AIMD simulations; FTIR spectra
+for liquid samples; images of Li foils immersed in diﬀerent liquids samples and
+time; energy uctuations of the systems of the AIMD simulations; charge
+evolutions of the degraded TMS and PS molecules; initial and nal charge
+distributions
+of
+the
+reacted
+TFSI
+anions
+in
+AIMD
+simulations;
+videos
+demonstrating the decomposition of TMS, TTE, LiTFSI, and PS additive;
+snapshots of the TFSI degradation process; reduction time steps of electrolyte
+components; Bader charges of atoms from each SEI species; diﬀerence
+spectrum of liquid FTIR of TMS. See DOI: https://doi.org/10.1039/d3ta05910c.
+‡ These authors contributed equally to this work.
+Cite this: J. Mater. Chem. A, 2024, 12,
+3659
+Received 28th September 2023
+Accepted 22nd December 2023
+DOI: 10.1039/d3ta05910c
+rsc.li/materials-a
+This journal is © The Royal Society of Chemistry 2024
+J. Mater. Chem. A, 2024, 12, 3659–3670 | 3659
+Journal of
+Materials Chemistry A
+PAPER
+Published on 27 December 2023
+Licence and permissions
+
+<<PAGE 2>>
+address the challenges associated with the use of Li metal
+anodes, various strategies have been suggested. These include
+fabricating an articial layer on the anode,13–15 implementing
+a composite electrode,16 applying coatings,17 and modifying the
+current collector.18,19 Of these methods, choosing appropriate
+electrolytes and incorporating electrolyte additives are consid-
+ered the most eﬀective for stabilizing lithium metal surfaces.20,21
+Cui et al. reported that a superb electrolyte additive should be
+reactive toward the Li anode to form a robust and chemically
+stable SEI layer but should not be too reactive to prevent
+consuming
+too
+much
+Li.22
+Armand's
+group
+unied
+the
+requirements of a good additive for LSBs, including possessing
+a narrow electrochemical window to guarantee preferential
+reactions with the Li anode and serving as a precursor for SEI
+species building.23
+However, the high reactivity of the Li metal surface intro-
+duces an additional risk in the chemical reduction or decom-
+position of electrolyte components, resulting in the formation
+of what is known as the native SEI.3,24–26 The spontaneous
+formation of native SEI can occur when a Li metal anode comes
+in contact with the electrolyte. The extent of this decomposition
+or reduction of electrolyte components is potentially time
+dependent, leading to an uncontrolled formation of native SEI.
+This uncontrolled formation can signicantly aﬀect subsequent
+electrochemical cycling. Although the occurrence of native SEI
+formation has been documented, the specic reaction mecha-
+nisms between the electrolyte components and the Li metal
+surface remain relatively unexplored. This study delves into the
+formation chemistry of native SEI using a LiTFSI/TMS-TTE
+electrolyte, both with and without the addition of a PS addi-
+tive. By understanding this mechanism, this research aims to
+explore the potential of tuning the native SEI to function as an
+eﬀective articial SEI. This approach could play a crucial role in
+stabilizing the Li metal anode for enhanced performance in
+subsequent electrochemical cycling processes.
+The LiTFST/TME-TTE electrolyte is examined based on the
+previous report by Reuter et al., who demonstrated that a solu-
+bility-limited Li2S8 additive can suppress the shuttling eﬀect
+and improve the electrochemical cycling stability of LSB using
+LiTFSI/TMS-TTE electrolyte.27 The shuttling eﬀect problem in
+LSB is caused by the diﬀusion of soluble high-order lithium
+polysuldes (Li2Sn, 3 # n # 8) from the cathode to the Li anode,
+where insoluble Li2S and Li2S2 can form, resulting in volume
+expansion, active mass shrinking, and even huge capacity
+loss.28–30 The positive impacts of implementing Li2S8 as an
+additive appeared in several reports.22,31–33 Hong et al. demon-
+strated that polysulde additive with LiTFSI/DIOX-DME elec-
+trolyte leads to improved cycling behavior of a Li symmetrical
+cell.32 A study from Aurbach's group also reported that the
+addition of 0.1 M Li2S8 to ether-based electrolyte ensures a low
+rate of parasitic reaction on the Li anode surface, thereby
+stabilizing the cycling behavior for Li–S cell.33 However, to the
+best of our knowledge, how polysulde additives can help
+improve the electrochemical performance is not clearly under-
+stood yet. In this study, we focus on demonstrating the surface
+reactivity of Li metal anode with LiTFST/TMS-TTE (in brief,
+LiTT) electrolyte, leading to native SEI and whether PS additive
+would signicantly inuence the formation of native SEI over Li
+surface. Fourier-transform infrared spectroscopy (FTIR), diﬀuse
+reectance
+infrared
+Fourier-transformed
+spectroscopy
+(DRIFTS), X-ray photoelectron spectroscopy (XPS), and ab initio
+molecular dynamics (AIMD) simulations are applied. The
+results clearly show the spontaneous formation of native SEI
+over the Li surface when in contact with electrolyte components,
+and the PS additive can lead to suppressed decomposition of
+the other components. The systematical understanding of the
+electrolyte reactivity on Li anode as well as the stabilizing
+mechanism by the PS additive can shed light on the future
+validation of using Li anode for high energy density batteries.
+2.
+Experimental and computational
+methods
+2.1
+Electrolyte preparation
+LiTFSI (bis(triuoromethanesulfonyl)imide lithium salt, Sigma
+Aldrich) was rst vacuum dried at 80 °C for three days. It was
+then dissolved in a 1 : 1 volume ratio mixture of TMS (tetra-
+methylene sulfone, Sigma Aldrich, 99% purity) and TTE (1,1,2,2-
+tetrauoroethyl 2,2,3,3-tetrauoropropyl ether, Synquest Labo-
+ratories, 99% purity), with the mixture stirred overnight. TMS
+was heated to 50 °C until it liquied before use. The resultant
+1.5 M LiTFSI in the TMS-TTE mixture was labeled as a LiTT
+electrolyte. To prepare the LiTT-PS electrolyte, appropriate
+amounts of Li2S and sulfur were added to the LiTT electrolyte to
+achieve a concentration of 0.1 M Li2S8 (polysulde, PS). This
+mixture was then stirred continuously for four days at 50 °C and
+subsequently ltered through a PTFE syringe lter (0.2 mm).27,34
+Additionally, a similar concentration of 0.1 M Li2S8 was added
+to both TMS and TTE solvents separately, following the same
+preparation protocol, designated as TMS-PS and TTE-PS,
+respectively.
+2.2
+Fourier-transformed infrared spectroscopy
+measurement
+Fourier transform infrared spectroscopy (FTIR) analyses of the
+liquid samples were conducted using a potassium bromide
+(KBr) sample holder. For in situ diﬀuse reectance infrared
+Fourier transformed spectroscopy (DRIFTS), a custom-built
+three-electrode cell and a DRIFTS sampling accessory were
+utilized. The experiments were carried out with a Nicolet 6700
+FTIR spectrometer equipped with a mercury–cadmium–tellu-
+ride (MCT/A) detector cooled with liquid nitrogen for enhanced
+performance. The cell specically designed for in situ DRIFTS
+was assembled within an argon-lled glove box, ensuring
+a minimal moisture (H2O < 0.1 ppm) and oxygen (O2 < 1 ppm)
+content. Once assembled, the cell was installed in the FTIR
+spectrometer. The electrode position within the cell was
+meticulously adjusted to achieve the maximum signal intensity,
+ensuring optimal conditions for accurate spectroscopic anal-
+ysis.35 The spectrum was recorded by accumulating 250 scans
+with a resolution of 4 cm−1. To establish a baseline, a back-
+ground spectrum was initially recorded over the electrode
+before introducing any electrolyte or solvent into the cell.
+3660 | J. Mater. Chem. A, 2024, 12, 3659–3670
+This journal is © The Royal Society of Chemistry 2024
+Journal of Materials Chemistry A
+Paper
+
+<<PAGE 3>>
+Subsequently, the electrolyte or solvent was introduced into the
+cell, with its ow regulated by a peristaltic pump. This setup was
+crucial to maintain a constant composition of the liquid layer
+over the solid surface during the measurement process. The
+open-circuit voltage (OCV) spectrum was recorded aer 10
+minutes of waiting under a stable circular electrolyte ow.
+2.3
+XPS analysis measurement
+Li foil (450 mm thickness, provided by Honjo Metal) was
+precisely cut to the required size for various tests, such as in situ
+DRIFTS and immersion tests in solvent and electrolyte. These
+tests were conducted for a duration of 24 hours within the
+controlled environment of a glove box to prevent air exposure
+and contamination. Aer immersion, the Li foil was carefully
+dried inside a glove box to maintain its integrity and to prevent
+atmospheric exposure. XPS analysis was performed using
+a PerkinElmer PHI 550 spectrometer with Al Ka (1486.6 eV).
+2.4
+Ab initio molecular dynamics simulations
+The computational approach was carried out by the ab initio
+molecular dynamics (AIMD) simulations, as implemented in
+the Vienna ab initio simulation package (VASP) soware to
+investigate the reaction between the electrolytes and the Li
+metal anode as well as the simultaneously formed SEI compo-
+nents. The periodic DFT study was performed with the projector
+augmented wave (PAW) pseudopotentials to account for the
+ion–core interactions.36,37 The electronic structure calculations
+employed the opt-B86b-vdW nonlocal functional for modeling
+electron
+exchange-correlation
+interactions
+coupled
+with
+a plane-wave basis set featuring a kinetic cutoﬀenergy of
+500 eV.38 The electronic optimization energy threshold and the
+force convergence for structural optimization were set as
+10−4 eV and 10−2 eV Å−1, respectively, and a Brillouin zone
+sampled by a 2 × 2 × 1 Monkhorst–Pack k-point grid was
+selected for all structural relaxations.39 The simulation cells for
+AIMD simulations were constructed by combining Li metal
+surfaces with electrolyte molecules. The (110) orientation was
+modeled as the Li-metal surface because the X-ray diﬀraction
+(XRD) patterns showed that (110) is the most preferred facet.40
+Thus, an eight-layered surface with 4 × 4 supercells was built
+from the optimized Li bulk crystal, while the bottom two layers
+were replaced by helium atoms to avoid the periodic boundary
+interactions between neighboring slabs. Eventually, a vacuum
+layer of 30.9 Å was added to the top of the Li surface in the z-
+direction to accommodate the electrolyte cell. Fig. S1a† shows
+the optimized Li (110) surface model and its lattice parameters.
+The solvents (TMS, TTE), salt (LiTFSI), and additive41 mole-
+cules were optimized using CAM-B3LYP hybrid functional and
+6-311++G (d,p) basis set level in the Gaussian 09 package,42 and
+the optimized structures of each molecule are shown in
+Fig. S1b(e).† The electrolyte cells of the two formulations, (a)
+LiTT and (b) LiTT-PS, were created, and the molecules were
+randomly distributed using the amorphous packing tool in the
+Material Studio package, with dimensions 12.16 Å × 12.16 Å ×
+30.63 Å. Given the volume of the electrolyte, 4 LiTFSI molecules
+are required for a 1.5 M salt concentration; each cell consists of
+13 TMS, 8 TTE, 4 LiTFSI, and 0 or 1 PS molecules in the absence
+or the presence of an additive, respectively, and these numbers
+of molecules in the electrolytes are based on the experimental
+literature above. The cells were then incorporated and placed on
+top of the Li surface, followed by pre-equilibrium classical
+molecular geometry minimizations through conjugate gradient
+for 5000 fs (femtosecond) at 350 K with COMPASS II force eld
+from the Material Studio package to remove possible too-near
+interactions.43,44 The structural congurations of the two elec-
+trolyte formulations (LiTT and LiTT-PS) on the Li (110) surface
+aer geometry minimizations are displayed in Fig. S2.†
+The reactivity of the electrolytes in the absence and the
+presence of PS on the Li anode were then studied by the AIMD
+simulation performed on the incorporated structures under the
+canonical ensemble (NVT) with a Nose thermostat to maintain
+the temperature oscillation around 350 K.45 The total duration
+of each AIMD simulation was set to 15 picoseconds (i.e., 15 000
+fs),41 with a time step of 1 fs, and simulations were conducted at
+the G-point. This setup allowed for a detailed observation of the
+electrolyte decomposition mechanisms on the Li anode surface.
+To analyze and visualize these processes, snapshots extracted
+during the simulations were processed using VirtualNanoLab
+(VNL) soware. In the resultant images, the molecules under-
+going decomposition were highlighted using the ball-and-stick
+model for clarity, while the remaining unreacted molecules
+were depicted in a wireframe format. Additionally, electron
+transfer processes within the system were delineated through
+Bader charge analysis, providing a comprehensive under-
+standing of electrolyte decomposition mechanisms at the
+molecular level.46,47
+3.
+Results and discussion
+3.1
+Identication of electrolyte degradation via in situ
+DRIFTS and FTIR spectra
+As the references to in situ DRIFTS over the Li surface, the FTIR
+spectra of liquid samples of TMS, TTE, and LiTT electrolyte,
+Fig. 1
+FTIR absorbance spectrum of (a) TMS, in situ DRIFTS spectrum
+of (b) TMS, (c) TMS-PS, FTIR absorbance spectrum of (d) TTE, in situ
+DRIFTS spectrum of (e) TTE and in situ DRIFTS spectrum of (f) TTE-PS
+over Li metal. Bare Li foil was used as the background for the in situ
+DRIFTS experiments.
+This journal is © The Royal Society of Chemistry 2024
+J. Mater. Chem. A, 2024, 12, 3659–3670 | 3661
+Paper
+Journal of Materials Chemistry A
+
+<<PAGE 4>>
+with and without PS, were collected, as shown in Fig. S3.† The
+interactions between TMS/TTE solvents and Li foil are depicted
+in Fig. 1, which displays the in situ DRIFTS spectra over Li foil
+using TMS or TTE, both with and without the PS additive. For
+comparative purposes, the FTIR spectra of liquid TMS and TTE
+are included as dashed lines in the gure. The specic band
+assignments are detailed in Table S1.† The in situ DRIFTS
+spectrum obtained over Li foil is expected to include contribu-
+tions from species adsorbed on or reacted with the electrode as
+well as a thin layer of the liquid solvent. The distinct spectral
+features of TMS and TTE when in contact with Li foil, compared
+to their respective liquid IR spectra, unequivocally indicate
+chemical interactions occurring at the Li metal surface. When
+PS additive was included, the spectral characteristics of TTE
+over Li foil more closely resemble those of liquid TTE although
+some diﬀerences remain noticeable. In contrast, the presence of
+PS signicantly altered the DRIFTS spectral features of TMS, yet
+the resulting spectrum did not closely match that of liquid TMS.
+This observation suggests that PS can modulate the chemical
+interactions between TTE/TMS and the Li foil, highlighting its
+potential impact on the electrochemical behavior of the system.
+The in situ DRIFTS spectrum of TMS over Li foil (Fig. 1b)
+reveals red-shied bands compared to that of liquid FTIR
+(Fig. 1a), including nas (asymmetrical stretching) O]S]O
+shied from 1297 to 1289 cm−1, ns (symmetrical stretching)
+O]S]O from 1147 to 1137 cm−1, ns C–S from 735 to 724 cm−1,
+and also bands attributable to s (twisting) CH2, p (wagging) C–
+H, and r (rocking) C–H. These shis suggest a weakening of
+bond strengths likely due to a broken C–S bond or strong
+interactions of TMS's oxygen atoms with the Li metal. When PS
+was added to TMS, the DRIFTS spectrum (Fig. 1c) showed
+broader and weaker bands compared to the spectrum without
+PS (Fig. 1b). The broadening of these bands could be attributed
+to intramolecular interactions, whereas the weaker intensity
+might indicate a lower density of surface species. This is
+possibly owing to the reduced amount of TMS reacting with the
+Li metal, which could be an eﬀect of PS passivation. Notably, the
+ns C–S bands shied to a higher frequency from 724 to 759 cm−1
+in the presence of PS, suggesting the presence of intramolecular
+interactions.48 A probable reason is that the preferentially
+adsorbed/reacted PS on Li resulted in a repel of TMS away from
+the Li surface.
+The in situ DRIFTS spectrum of TTE over the Li foil surface
+(Fig. 1e) displays signicant deviations from the liquid TTE
+spectrum (Fig. 1d). The bands observed at 1185 and 1144 cm−1
+are attributable to nas/vs C–F, respectively, complemented by
+the corresponding d (bending) C–F at 770 cm−1.49 Additionally,
+a distinct shoulder at 1124 cm−1 can be associated with nas C–O.
+The vs. C–O observed at 847 cm−1 exhibits a blue-shifrom its
+position at 835 cm−1 in liquid TTE, and the nas C–O, which
+overlaps with the vs. C–F, also shows a slight blue shifrom
+1122 to 1124 cm−1. These shis suggest the possibility of
+a broken C–O–C bond in the TTE molecule when it interacts
+with the Li surface. Moreover, the pronounced intensity of the
+C–F bands might indicate that their alignment is more
+perpendicular to the Li surface, with the uorine atoms likely
+oriented towards the metal, which agrees with the metal surface
+selection rule.50 Other attributable bands from TTE-related
+species include 2995 (nas C–H), 1437 (u, scissoring, C–H),
+1319/1287 (p C–H), and 970 cm−1 (n C–C/r C–H).51
+With PS added to the TTE (Fig. 1f), noticeable changes were
+observed. Specically, the strong band at 1141 cm−1 altered its
+peak shape compared to the spectrum without PS. This alter-
+ation can be attributed to a combination of broadened bands
+and a change in the relative intensity between n C–F and nas C–
+O. Moreover, the relatively increased intensity of the shoulder
+band at 1122 cm−1 (nas C–O) suggests a potential suppression of
+TTE decomposition in the presence of PS. This observation
+indicates that PS may preferentially adsorb or react with the Li
+metal surface, inuencing the chemical interactions between
+the TTE and the Li surface. XPS analysis reported later identi-
+ed the formation of Li2S with PS, which might passivate the Li
+surface and suppress TTE decomposition.
+Fig. 2 presents the in situ DRIFTS spectra of the LiTT elec-
+trolyte, with and without PS additive, over Li foil at OCV. These
+spectra are compared with the FTIR spectrum of the liquid LiTT
+electrolyte (Fig. 2c) and in situ DRIFTS spectra of TMS (Fig. 2a)
+and TTE (Fig. 2b) over Li foil. The inclusion of the PS additive
+did not signicantly alter the characteristic features of the
+DRIFTS spectrum, apart from causing the bands to become
+broader and weaker compared to the spectrum without PS. This
+broadening eﬀect induced by the presence of PS is likely
+attributable to the molecular interactions between PS and the
+other components in the electrolyte. Further insights are
+provided in Fig. S4,† which illustrates PS-induced band broad-
+ening in the FTIR diﬀerence spectra of the liquid LiTT electro-
+lyte. Aer subtracting the contributions of the TMS-TTE solvent,
+a comparison of the FTIR diﬀerence spectrum of (LiTT-PS-TMS-
+TTE) against that of (LiTT – TMS-TTE) reveals that the bands
+corresponding to O]S]O, S–N–S, and C–S become broader in
+the presence of PS. This suggests that molecular interactions
+occur between PS and the LiTFSI-TMS constituents of the LiTT
+electrolyte.
+The in situ DRIFTS spectra of the LiTT electrolyte over Li foil
+(Fig. 2d) contained primarily feature bands attributable to TTE,
+with additional bands corresponding to LiTFSI and TMS. When
+Fig. 2
+In situ DRIFTS of (a) TMS, (b) TTE, FTIR absorbance spectrum of
+(c) LiTT, in situ DRIFTS of (d) LiTT, and (e) LiTT-PS over Li foil at OCV.
+3662 | J. Mater. Chem. A, 2024, 12, 3659–3670
+This journal is © The Royal Society of Chemistry 2024
+Journal of Materials Chemistry A
+Paper
+
+<<PAGE 5>>
+compared to the FTIR spectrum of the liquid LiTT electrolyte
+(Fig. 2c), notable spectral changes are observed in the LiTT
+spectrum over Li. Specically, the S–N band of LiTFSI becomes
+weaker, and there is a red shiin the n C–S band, moving from
+792 to 781 cm−1. These shis suggest the potential breaking of
+the S–N–S bond in LiTFSI, possibly leading to the formation of
+LiSO2CF3 and Li2NSO2CF3 species. This hypothesis aligns with
+ndings from our previous work on LiTFSI in dimethoxyethane
+(DME)/1,3-dioxolane (DOL) over Li52 and is supported by prior
+DFT calculations involving LiTFSI in DME/DOL.53 A prominent
+band at 1143 cm−1, accompanied by a low-frequency shoulder,
+is attributed to the ns C–F and the nas C–O (shoulder). These
+spectral features likely arise from the decomposition products
+of TTE and the TFSI ion. The strong intensity of the band at
+1143 cm−1 suggests that the C–F and C–O bonds are oriented
+with their oscillating dipoles perpendicular to the Li metal
+surface. Bands observed at 1356 and 1196 cm−1 are assigned to
+the nas and ns O]S]O, respectively. These are attributed to
+LiSO2CF3 and Li2NSO2CF3 species, from the decomposition of
+LiTFSI. Meanwhile, the weaker bands at 1321 and 1143 cm−1,
+corresponding to the nas and ns O]S]O of TMS, respectively,
+indicate a lower presence of TMS on the surface, implying the
+decomposition of TMS, which leads to the formation of
+Li–(C2H4)2–Li, Li2O, and Li2S species, as discussed later with
+theoretical calculations.
+The band features of the in situ DRIFTS of the LiTT-PS over
+the Li surface (Fig. 2e) exhibit similarities to those without PS,
+but the bands become broadened and weakened. Additionally,
+the emergence of a new band at 2690 cm−1, attributed to S–H
+stretching,54 indicates the formation of new species owing to the
+presence of PS. The most plausible explanation for this obser-
+vation is a reaction between TMS and PS, or their derived
+fragments. This hypothesis is expected to lead to a C–S band,
+along with the appearance of the new S–H band. The enhanced
+intensity of the C–S band around ∼735 cm−1 in the presence of
+PS seems to corroborate the formation of this new C–S bond.
+Moreover, the relative weakening of other bands in the presence
+of PS suggests that the species induced by PS might suppress
+the surface reactivity of the Li surface. This hypothesis aligns
+with the results of the DFT calculations presented later in the
+study, which indicate that PS decomposes over the Li surface,
+leading to a passivation eﬀect that could explain the observed
+spectral changes in the DRIFTS analysis.
+The in situ DRIFTS analyses provide evidence that decom-
+posed species from TMS, TTE, and LiTFSI can form over Li foil.
+Furthermore, these analyses indicate that the addition of PS
+additive can suppress decomposition. Li foils were immersed in
+TMS, TTE, and LiTT electrolytes, with and without PS additive,
+in a glove box to observe surface changes. Over time, as shown
+in Fig. S5,† the surface of the Li foils underwent a gradual color
+change. Specically, prolonged immersion in TMS, TTE, and
+LiTT resulted in the formation of dark-colored deposits on the
+Li foil. This darkening intensied with increased immersion
+time, suggesting a gradual decomposition and accumulation of
+species from TMS, TTE, and LiTFSI on the lithium metal
+surface. The progression of color change over time implies an
+increase
+in
+fragmented
+carbonaceous
+species
+due
+to
+decomposition. No signicant black color deposit was observed
+aer a short immersion time of 10 minutes in any of the cases
+although the DRIFTS results already indicated decomposition
+within such a brief contact period. However, the inclusion of PS
+as an additive appeared to reduce the extent of decomposition,
+as indicated by the relatively lighter color of the deposits
+compared to those without PS. As shown in Fig. S5,† the
+decomposition of TTE seemed to be more signicantly sup-
+pressed by PS than TMS and LiTT.
+3.2
+Electrolyte degradation mechanism analyses through
+DFT calculations and AIMD simulations
+3.2.1
+Reactivity of LiTT electrolyte on Li anode surface. The
+DFT calculations and AIMD simulations in this study comple-
+ment the experimental results, oﬀering a systematic and theo-
+retical perspective on the observed phenomena. The focus was
+primarily on examining the reactivity and decomposition
+mechanisms of electrolyte components on Li surfaces with both
+LiTT and LiTT-PS electrolytes. The relative energy uctuations
+of the two systems are depicted in Fig. S6.† As the simulation
+progresses, a trend of decreasing energy change is observed,
+eventually stabilizing, which indicates that the reaction systems
+have reached a state of thermodynamic equilibrium. For the
+LiTT system, the simulation results reveal an initial decompo-
+sition of one LiTFSI molecule, followed by the sequential
+degradation of three TMS solvent molecules and, ultimately, the
+breakdown
+of
+a
+TTE
+molecule
+among
+all
+electrolyte
+components.
+This pattern of a more pronounced breakdown of TMS
+molecules compared to TTE suggests preferential adsorption of
+TMS on the Li surface, as supported by work of Xu et al.55 The
+AIMD simulations showed that the three reacted TMS mole-
+cules followed an identical decomposition pattern, where their
+reactions with the Li surface started at approximately 1720,
+2300, and 3480 fs. Fig. 3 oﬀers top-view snapshots of the
+decomposition of one TMS solvent molecule, showing the most
+illustrative orientation for understanding the degradation
+mechanism in detail. Initially, the TMS molecule remained
+intact with its ring structure lying at on the system until
+around 2300 fs. Subsequently, one S]O bond broke as the
+oxygen atom approached the Li surface, followed by elongation
+Fig. 3
+Extracted snapshots of the TMS solvent adhered to the Li anode
+surface in the LiTT electrolyte formulation at diﬀerent simulation time
+steps.
+This journal is © The Royal Society of Chemistry 2024
+J. Mater. Chem. A, 2024, 12, 3659–3670 | 3663
+Paper
+Journal of Materials Chemistry A
+
+<<PAGE 6>>
+and eventual breakage of the other S]O bond at 2600 fs. This
+process led to the formation of two oxygen ions and a residual
+(CH2)4–S ring on the Li surface. The two oxygens that bound
+with Li eventually formed Li2O, which remained on the surface
+throughout the simulation. At 4960 fs, a ring-opening reaction
+occurred through the cleavage of the S–C1 bond, and another
+rupture of the S–C4 bond at 8800 fs resulted in the formation of
+a (CH2)4 carbon chain and a sulfur fragment. These decompo-
+sition products contributed to the formation of Li2S and
+Li–(CH2)4–Li as SEI components, which persisted on the surface
+until the end of the simulation. A video clip (Video S1 in the
+ESI†) visually details the decomposition process of the TMS
+solvent on the anode, oﬀering a more dynamic perspective. This
+TMS decomposition pathway aligns with the deductions from
+the experimental spectroscopy results discussed earlier. To
+delve further into the electron transfer dynamics, the charge
+evolution of the decomposing TMS molecule is presented in
+Fig. S7.† Over the 15 000 fs simulation, the TMS molecule
+gained approximately 6 jej of electrons, shiing from −0.65 to
+−6.91 jej. The sulfur atom experienced the most signicant
+electron gain, with its nal charge of −1.85 jej, conrming the
+formation of Li2S. Additionally, the charge of the –(CH2)4–
+fragment decreased from nearly neutral at the beginning to
+−1.70 jej by 15 000 fs, indicating a lithium-surrounded chemical
+environment of the carbon chain.
+Fig. 4 illustrates detailed snapshots and Bader charge anal-
+ysis related to the decomposition of the TTE molecule within
+the LiTT system. Two deuorination reactions are observed to
+initiate at 8100 fs when uorine ions migrate towards the Li
+surface, leading to the formation of LiF as a major component
+of the SEI.56,57 About 1000 fs later, C–O cleavage is also detected,
+resulting in the formation of OCF2CF2H and CFHCFCH2
+species. By 10 840 fs, these molecules become fully deuori-
+nated owing to the attractive forces of the Li surface. Following
+deuorination, the OCCH fragment adheres to the surface
+through an O–Li interaction, while the CH2CCH species remain
+stable without further bond elongation for the remainder of the
+simulation. This process is detailed in Video S2,† which
+provides a dynamic visualization of the TTE degradation. Bader
+charge analysis, as shown in each panel in Fig. 4, reveals
+substantial electron transfer to the TTE molecule throughout its
+decomposition. A total of nearly 9 jej was gained, from −0.06 jej
+initially to −8.78 jej at the end. The deuorinated OCCH and
+CH2CCH segments maintain charges of −1.17 jej and −0.87 jej,
+respectively, at the end of the simulation (15 000 fs). Addition-
+ally, a bond length of 1.21 Å between the latter two carbon
+atoms of the CH2CCH species suggests the presence of a C–C
+triple bond.
+Fig. 5 presents the degradation of the LiTFSI salt through an
+analysis of its structural changes and charge evolution over a 15
+000 fs simulation period. The LiTFSI salt remains stable in the
+solvent for only a brief duration of 130 fs, which is a faster rate
+of degradation compared to both TMS and TTE. The rst
+observable reaction is the cleavage of a C–S bond, resulting in
+the formation of a CF3 fragment and a CF3SO2NSO2 species. The
+CF3 species undergoes sequential decomposition over the
+subsequent 800 fs, producing LiF and LiC on the surface.
+Additionally, one N–S bond of the CF3SO2NSO2 species breaks
+at 210 fs, forming an SO2 ion with a charge of −1.60 jej. This is
+followed by the sequential cleavage of two S]O bonds at 555 fs,
+resulting in the formation of Li2S and Li2O due to the attraction
+of the Li surface. The remaining CF3SO2N fragment remains
+stable until 5060 fs when C–S bond elongation occurs, leading
+to the formation of an NSO2 anion that stays adsorbed on the Li
+anode for the remainder of the simulation. The resulting CF3
+species followed an identical decomposition pathway to the
+previously formed CF3 in the next 2400 fs. This decomposition
+mechanism of the TFSI anion is further elucidated in Video S3.†
+The charge evolutions of the TFSI anion and selected species
+NSO2 are illustrated below in each panel of Fig. 5. Initially, the
+TFSI anion carries a charge of almost −1 jej. As the decompo-
+sition progresses, its constituent atoms collectively contribute
+to a charge of −16.55 jej at 15 000 fs, with 15 to 16 electrons from
+the Li anode during the simulation. The nal product, NSO2,
+with a charge of −2.6 jej, is observed on the surface.
+To understand the charge diﬀerences during TFSI−reduc-
+tion, the atomic charge distribution of each constituent atom
+Fig. 4
+Extracted snapshots of the TTE solvent in the LiTT electrolyte
+formulation at diﬀerent simulation time steps. The calculated Bader
+charges corresponding to the TTE molecule, OCCH, and CH2CCH
+fragments are also shown at the bottom of each panel.
+Fig. 5
+Extracted snapshots of the TFSI anion degradation process in
+contact with the Li anode surface in the LiTT electrolyte formulation at
+diﬀerent simulation time steps. Calculated Bader charges corre-
+sponding to the TFSI anion, and the NSO2 fragments are also shown at
+the bottom of each panel.
+3664 | J. Mater. Chem. A, 2024, 12, 3659–3670
+This journal is © The Royal Society of Chemistry 2024
+Journal of Materials Chemistry A
+Paper
+
+<<PAGE 7>>
+before and aer the simulation is depicted and analyzed in
+Fig. S8.† Initially, the C and S atoms in the TFSI−anion exhibit
+average charges of 1.76 jej and 2.84 jej, respectively (Fig. S8a†),
+attributable to the higher electronegativity of the atoms
+surrounding them. In contrast, the F, N, and O atoms start with
+negatively charged values of −0.63, −1.32, and −1.31 jej,
+respectively. Upon the completion of the simulation at 15 000 fs,
+the atomic charges of the decomposed fragments and SEI
+components formed from the TFSI anion show signicant
+diﬀerences compared to their initial states (Fig. S8b†). Notably,
+the two carbon atoms exhibit charges of around −2.94 jej,
+suggesting that they have become carbide ions in lithium-
+enriched environments.
+Furthermore, the atomic charges of the 6 F, 2 O, and 1 S
+atoms are found to be −0.90, −1.64, and −1.78 jej, respectively,
+which support the formation of LiF, Li2O, and Li2S. The NSO2
+fragment that emerged from the decomposition process
+displays a positive charge of 1.87 jej on the sulfur atom, while
+the oxygen and nitrogen atoms maintain charges close to their
+initial values (−1.35 and −1.78 jej, respectively). This analysis
+reveals that most constituent atoms of the TFSI−anion shito
+more negatively charged states owing to electron transfer from
+the Li anode, leading to the anion acquiring 15 to 16 jej. Addi-
+tionally, the exible charge changes observed in the carbon and
+sulfur atoms indicate their capacity to accept additional elec-
+trons compared to other atoms. This detailed charge analysis
+sheds light on the intricate electron transfer processes and
+chemical transformations occurring during the reduction of the
+TFSI−anion in the LiTT system.
+3.2.2
+Reactivity of the electrolyte with polysulde (LiTT-PS)
+on the Li anode surface. In the AIMD simulation, a single PS
+molecule was introduced into the LiTT simulation box to create
+the LiTT-PS formulation. Over the course of the 15 000 fs
+simulation, 3 TMS, 1 LiTFSI, and 1 PS molecules underwent
+reduction, and notably, none of the TTE molecules decom-
+posed. This nding underscores the inuence of PS in inhibit-
+ing the degradation of the TTE solvent. The decomposition of
+the PS additive occurred before the breakdown of LiTFSI and
+TMS. The relevant snapshots of this process are depicted in
+Fig. 6. The long-chain sulfur in the PS molecule rst broke down
+into 1 S2 and 2 S3 ions at 50 fs, which then quickly bound with Li
+atoms within the subsequent 50 fs, indicating the high reac-
+tivity of PS on the Li surface. By 150 fs, further bond cleavages
+resulted in the formation of 2 S2 and 4 S segments, which
+remained adsorbed on the surface until 460 fs. At this point, all
+S–S bonds elongated, with 4–6 Li atoms surrounding each S
+atom, and this conguration remained stable for the rest of the
+simulation. This degradation process of the PS additive is
+visualized in Video S4.† The formation of decomposed sulfur
+species on Li electrodes in contact with polysuldes is also
+supported by XPS and SEM studies reported in the literature.41,58
+Fig. S9† illustrates the charge evolution of the S atoms over
+time, shedding light on the formation of Li2S. The average
+charge value of the sulfur atoms changed from −0.24 jej to
+−1.84 jej by the end of the simulation, which strongly suggests
+the production of Li2S as the major SEI product, resulting from
+the inclusion of PS as an additive.
+In the presence of PS additive, TMSs showed an identical
+degradation pathway to the ones observed in the LiTT formu-
+lation, leading to SEI species, including Li2S, Li2O, and
+Li–(CH2)4–Li. However, the TFSI anion exhibited a notably
+diﬀerent degradation mechanism in the LiTT-PS formulation,
+as illustrated in Fig. S10.† The decomposition of the TFSI anion
+was delayed until 480 fs, beginning with the breaking of one
+S]O bond, followed by N–S bond elongation 20 fs later. This
+resulted in the formation of CF3SO2N and CF3SO fragments. A
+deuorination reaction of the CF3SO2N fragment occurred at
+550 fs, while two F and another O atoms were released from the
+CF3SO fragment attracted to the Li anode. Interestingly, at 750
+fs, the resulting CFS fragment bound with the N atom in the
+other fragment, forming a CF2SO2NCFS segment. This segment
+underwent sequential bond cleavage, leading to its breakdown
+into elemental components that adhered to the surface, form-
+ing LiF, Li2O, Li2S, and LiC, except that one C–N bond remained
+stable until the end of the simulation. The Bader charge
+evolutions of the TFSI−anion and the selected species CN are
+displayed below each panel in Fig. S10.† At the end of the
+simulation, the CN fragment exhibited a charge of about −1 jej,
+suggesting a lithium-binding environment, with the C–N bond
+length of 1.15 Å indicating the characteristics of a triple bond.
+The decomposed TFSI−anion initially had a charge of around
+−1.32 jej, accumulating a total of −20.61 jej as it broke down,
+implying the acquisition of 19 to 20 electrons from the Li anode.
+This represents a signicantly higher level of electron transfer
+compared to the LiTT formulation without the PS additive.
+Fig. S11† illustrates the charges of the elemental constituents
+from the TFSI anion at 15 000 fs of simulation time. Negative
+charges of −3.86, −1.73, −1.67, and −0.90 jej for C, S, O, and F
+atoms, respectively, demonstrate their fully coordinated envi-
+ronments with lithium. Conversely, the carbon (C) and nitrogen
+(N) atoms of the remaining cyanide ion maintained charges of
+0.61 and −1.58 jej, respectively.
+The impact of PS additives on the stability of electrolyte
+components can be elucidated by the HOMO (highest occupied
+molecular orbital) and LUMO (lowest unoccupied molecular
+orbital) energy levels of the electrolytes, as depicted in Fig. S12.†
+Notably, the LUMO levels of the TMS (0.440 eV) and the TTE
+solvents (0.530 eV) are much higher than the LiTFSI salt (−0.842
+Fig. 6
+Extracted snapshots of the PS additive decomposition in the
+LiTT-PS electrolyte formulation at diﬀerent simulation time steps.
+This journal is © The Royal Society of Chemistry 2024
+J. Mater. Chem. A, 2024, 12, 3659–3670 | 3665
+Paper
+Journal of Materials Chemistry A
+
+<<PAGE 8>>
+eV), illustrating the preferential reducibility of LiTFSI salt on the
+Li anode. Moreover, the PS additive exhibits the lowest LUMO
+energy among them, registering at −1.456 eV. This heightened
+reactivity serves as compelling evidence for the initial formation
+of the SEI layer from PS on the Li anode, leading to the afore-
+mentioned inhibition of the degradation of other components.
+Fig. S13† depicts a summarized comparison of the decom-
+position time steps of individual electrolyte components in both
+the LiTT and LiTT-PS systems based on the simulations. In the
+LiTT electrolyte system (Fig. S13a†), the LiTFSI salt is the rst to
+decompose, which occurs at 130 fs. This is followed by the
+decomposition of three TMS molecules at 1720, 2280, and 3480
+fs. Finally, one TTE molecule breaks down at 8100 fs. In
+contrast,
+the
+LiTT-PS
+system
+(Fig.
+S13b†)
+demonstrates
+a noticeable slowdown in the reduction of the electrolyte
+components, where the decomposition of the LiTFSI salt begins
+later at 480 fs. The three TMS molecules react at signicantly
+delayed time steps of 2380, 6320, and 7080 fs. Notably, the
+degradation of the TTE solvent is inhibited in the presence of
+PS. This deceleration in the decomposition processes within the
+LiTT-PS system can be attributed to an alteration in surface
+reactivity. The formation of Li2S as a result of PS decomposition
+at the beginning of the simulation appears to play a key role in
+modulating the interactions and stability of the electrolyte
+components on the Li surface.
+3.3
+Characterization of native SEI components by XPS and
+Bader charge calculations
+To empirically validate the composition of the native SEI
+species, Li foils immersed in various solvents, with and without
+PS, were analyzed. These Li foils, which had been immersed for
+24 hours (Fig. S5†), were dried and then transferred for XPS
+analyses without any exposure to air. This approach follows the
+methodology previously demonstrated for systematically iden-
+tifying SEI components by aligning experimental XPS signals
+with calculated atomic charges.59 To achieve proper XPS curve
+tting, the Bader charges of both the electrolyte components
+and the degradation products in the LiTT and LiTT-PS systems
+were calculated, as presented in Table S2.† The atomic charges
+associated with each atom's bonding environment (including
+Li, S, C, O, F, and N) are similar in both electrolyte formulations.
+Thus, the following discussion is primarily on the results of the
+LiTT-PS simulation. Among lithium nuclei species, the least
+positive atomic charge of 0.057 jej indicates the non-reacted
+surface species (Li0). Lithium atoms showing charges of 0.811,
+0.817, 0.832, 0.843, and 0.851 jej correspond to electrolyte
+decomposition, resulting in the formation of Li2O, Li–C, Li2S,
+Li–N, and LiF, respectively. For the S nuclei species, the
+formation of Li2S from TMS and LiTFSI degradation is indicated
+by the lowest average atomic charge of −1.84 jej. However, C
+atomic charges of −3.862, −0.046, 0.135, 0.395, and 1.706 jej are
+attributed to various bonding environments, including LiC, C–
+C/C–H, C–S, C–O, and C–F bonds, respectively. The three O of
+Li–O, S]O, and C–O bonds appeared in the atomic charges of
+−1.66, −1.29, and −1.01 jej, respectively, while the charges of
+the F and N nuclei species are also listed in Table S2.† These
+results from the AIMD simulations and atomic charge analyses
+are critical for identifying electrolyte degradation pathways in
+the interfacial region. They also play a key role in assisting the
+binding energy tting, thereby enhancing the reliability of XPS
+tting assignments.
+The XPS spectra for Li foils immersed in TTE, TTE-PS, TMS,
+and TMS-PS are presented in Fig. 7, accompanied by detailed
+tting results in Table S3.† For Li foils immersed in TMS and
+TTE, the XPS spectra demonstrate that both solvents undergo
+reactions with the Li surface. The incorporation of PS altered
+the composition of surface species, particularly diminishing
+carbon-related contributions. In the case of TTE immersion,
+both with and without PS, the XPS spectra reveal the formation
+of Li–C and Li–O species. By the addition of PS, the emergence
+of Li2S is suggested by the 54.9 eV peak in the Li 1s spectrum
+and the 161.3 eV peak in the S 2p spectrum. The presence of
+short-chain lithium polysuldes is also noted, as evidenced by
+the 164.5 eV peak in the S 2p spectrum. Furthermore, the lower
+binding energy of lithium polysuldes is corroborated by the
+highest atomic charge from the DFT results (Table S2†). The
+comparative analysis of the C 1s spectra indicates that PS
+inhibited the decomposition of TTE, as suggested by the lower
+percentage composition of C]C/C–C in TTE-PS (C 1s, 7.5%/
+5.8%) compared to TTE (17.1%/32.3%) alone. The same
+conclusion is revealed by the relatively high percentage of Li–C
+(Li 1s, 30.5%) from that immersed in TTE compared to that in
+TTE-PS (Li 1s, 10.1%).
+For Li immersed in TMS, the Li 1s and C 1s spectra at 54.4 eV
+and 282.0 eV, respectively, are attributed to the Li–C of
+Li–(CH2)4–Li (and more fragmented species) formed from TMS
+reacting with Li foil. The Li 1s peak at 53.0 eV and the O 1s peak
+at 529.0 eV suggest the formation of Li–O, indicating >SO2
+decomposition from TMS into Li2O, alongside Li2S species with
+Li 1s 55.1 eV and S 2p 161.3 eV peaks. It is noteworthy that Li2O
+and Li2S could not be revealed in DRIFTS, and the XPS data
+indicated a greater extent of TMS decomposition to more frag-
+mented species than that proposed from the in situ DRIFTS
+results; this is likely because of the longer immersion time of
+the samples for XPS. However, the presence of other interme-
+diates or adsorbed TMS is suggested by additional peaks in the
+O 1s 531 eV and the S 2p peak at 167.7 eV attributed to S]O,
+alongside the S 2p peak at 165.5 eV and the C 1s peak at
+285.7 eV, revealing the presence of the S–C bond. In the TMS-PS
+system, the presence of short-chain polysuldes is evident with
+the S 2p peak at 164.4 eV, and a decrease in the relative intensity
+of Li–O in the Li 1s spectrum suggests that PS suppresses the
+decomposition of >SO2.
+The XPS analysis of Li foils immersed in LiTT electrolytes
+with and without PS is detailed in Fig. 8. The corresponding
+tting results are provided in Table S3.† An additional Li–N
+band in the LiTT system indicates a reaction between the LiTFSI
+and the Li metal anode. The Li 1s peak at 56.8 eV and the N 1s
+peak at 400.1 eV are attributed to Li–N bonding. Additionally,
+the formation of Li–S and potentially Li2S is signied by a Li 1s
+peak at 55.7 eV and an S 2p peak at 162.4 eV. However, the
+contribution from Li2S, resulting from the interaction of Li with
+either TMS or PS, cannot be denitively isolated. The XPS
+3666 | J. Mater. Chem. A, 2024, 12, 3659–3670
+This journal is © The Royal Society of Chemistry 2024
+Journal of Materials Chemistry A
+Paper
+
+<<PAGE 9>>
+spectra further support the formation of various lithium
+compounds, including LiF, Li2S, LiCH2CFCFH, Li–(CH2)4–Li,
+LiOCF2CF2H, and/or Li2O, underpinned by Li–F, Li–S, Li–C, and
+Li–O contributions. These ndings indicate reactions between
+Li and TTE/TMS and with intermediate species from LiTFSI
+decomposition, such as LiSO2CF3 and Li2NSO2CF3. In the LiTT-
+PS system, a notable reduction in the contributions of Li–N, Li–
+F, Li–C, and Li–O is observed. This reduction strongly suggests
+that PS acts as an eﬀective suppressant of the decomposition
+processes of LiTFSI, TTE, and TMS.
+Scheme 1 provides a summary of the adsorption and
+decomposition of electrolyte components on the Li surface. Our
+ndings establish that TMS, TTE, and LiTFSI interact with the
+Li surface upon contact. The XPS analyses reveal a broader
+range of fragmented species than those suggested by DRIFTS
+likely due to extended immersion times. We discuss potential
+intermediates from these decompositions, drawing on band
+shis and intensity changes observed in DRIFTS spectra, while
+AIMD simulations provide crucial insights into decomposition
+mechanisms. Specically, TTE decomposition involves C–F and
+C–O bond breakage, leading to LiOCF2CF2H, CH2CFCFH, and
+LiF, and subsequently forming LiOCCH and CH2CCH frag-
+ments. TMS decomposition yields Li2O and a C4H8–S ring
+intermediate, further breaking down into Li–(CH2)4–Li and Li2S
+species. From a DFT perspective, LiTFSI salt undergoes C–S and
+N–S bond cleavage, forming CF3, SO2, and NSO2CF3 interme-
+diates on Li. Further decomposition likely leads to Li2S, Li2O,
+LiF, surface carbides, and nitrides; NSO2 and CN anions are also
+identied on the surface.
+In the presence of PS, although the breakdown mechanism of
+LiTFSI changes, similar surface species are formed. The DRIFTS
+observations suggest N–S bond breakage in LiTFSI. These results
+highlight the chemical reactivity of the Li metal surface, leading
+to the formation of various SEI species upon contact with the
+electrolyte. The PS additive inuences the decomposition of
+electrolyte solvents and the salt through preferential adsorption/
+Fig. 7
+X-ray photoelectron spectroscopy (XPS) analysis of Li 1s, C 1s, O 1s, and S 2p from lithium electrode is immersed in (a) TTE, (b) TTE-PS, (c)
+TMS, (d) and TMS-PS solvents for 24 hours. The black color represents the original data, and the red and dashed lines represent the ﬁt.
+Fig. 8
+X-ray photoelectron spectroscopy (XPS) analysis of Li 1s, C 1s, O 1s, and S 2p from lithium electrode immersed in (a) LiTT and (b) LiTT-PS
+for 24 hours. The black color represents the original data; the red and dashed lines represent the ﬁt.
+This journal is © The Royal Society of Chemistry 2024
+J. Mater. Chem. A, 2024, 12, 3659–3670 | 3667
+Paper
+Journal of Materials Chemistry A
+
+<<PAGE 10>>
+reaction with Li, which forms Li2S and short-chain lithium pol-
+ysuldes, thus suppressing the decomposition of TMS and TTE.
+However, the potential passivation eﬀect of the PS additive
+cannot be extended to the Cu anode surface. We observed short-
+circuit in Cu‖Li half cells using LiTT-PS electrolyte owing to
+overpotential and instability. The disassembled Cu anode from
+a Cu‖Li half-cell aer the 2nd charge–discharge cycle exhibited
+a thick dark layer (Fig. S16†). The results indicate a reaction
+between Cu and Li2S8, potentially leading to the formation of
+Cu7S4, as suggested in the literature.60,61
+Contrasting the decomposition of TMS and TTE, other
+commonly used solvents, such as DME and DOL, do not undergo
+similar decomposition.52,53 Our previous studies have shown that
+a popularly used LiNO3 additive can decompose into LiNO2 and
+Li2O upon contact with the LiTFSI/DME-DOL electrolyte.52 This
+clearly reveals that native SEI species can form on the Li anode
+surface upon contact with the electrolyte, and the native SEI
+species are governed by the extent of decomposition of electrolyte
+components, including salt, solvent, and additive. Furthermore,
+the reaction extent and accumulated SEI are time dependent,
+suggesting that the cell fabrication period and shelf life can
+impact native SEI formation. The native SEI composition of Li
+metal anodes is crucial for electrochemical cycling performance
+during battery operation. This study underscores the formation
+of native SEI species upon contact between Li anodes and elec-
+trolytes, oﬀering insights for innovative electrolyte design in next-
+generation lithium metal batteries with Li metal anodes and
+potentially for Cu anodes in an anode-free approach.
+4.
+Conclusion
+The chemical decomposition of electrolyte components in the
+LiTT and LiTT-PS electrolyte formulations is a crucial aspect
+inuencing the formation of native SEI on Li surfaces. This
+decomposition, involving TTE, TMS, LiTFSI salt, and PS additive,
+is comprehensively conrmed through DRIFTS, XPS analyses,
+and AIMD simulations. The inclusion of PS additive in the LiTT-
+PS formulation signicantly suppresses the decomposition of
+TTE and TMS and alters the decomposition pathway of the
+LiTFSI salt. Specically, the TTE solvent, upon contact with Li
+metal, undergoes C–O and C–F bond breakages to form LiF,
+LiOCCH, and CH2CCH species in the absence of PS. The
+decomposition of TMS is characterized by the cleavage of S]O
+and C–S bonds, resulting in the formation of Li–(CH2)4–Li, Li2O,
+and Li2S surface species, regardless of the presence of PS. The
+degradation process of LiTFSI salt commences with the cleavage
+of C–S and/or N–S bonds, leading to subsequent bond scissions
+and ultimately yielding constituent atoms/ions on the surface.
+When PS is added to the electrolyte, its decomposition precedes
+that of other components, leading to the formation of Li2S and
+short-chain lithium polysuldes on the Li metal surface. This
+early decomposition of PS eﬀectively passivates the Li surface,
+reducing its reactivity towards other electrolyte components. The
+formation of SEI species from the degradation of these compo-
+nents is corroborated by the good agreement between the XPS
+analyses and the atomic charges calculated from the AIMD
+simulations. This study highlights the formation of native SEI
+species on Li anodes even before the initiation of electrochemical
+cycling. It also underscores that the composition of the SEI is
+profoundly inuenced by electrolyte composition, oﬀering crit-
+ical insights for the development of advanced battery technolo-
+gies with enhanced performance and stability.
+Author contributions
+Bikila Nagasa Olana: investigation, data curation, writing –
+original draof experimental part. Shih-Huang Pan: investiga-
+tion, data curation, writing – original draof AIMD (ab initio
+molecular dynamics) simulation part. Shawn D. Lin: concep-
+tualization, supervision, writing – review & editing. Jyh-Chiang
+Jiang: supervision, writing – review & editing. Bing-Joe Hwang
+& Holger Althues: resources, methodology.
+Conﬂicts of interest
+The authors declare that there are no conicts to declare.
+Acknowledgements
+We gratefully acknowledge the nancial support from the
+National Science and Technology Council (NSTC, 110-2923-E-
+011-002), Taiwan and the Federal Ministry of Education and
+Scheme 1
+Chemical decompositions of TMS, TTE, LiTFSI, and PS adsorbed species over Li metal surface. Color scheme: Li, purple; C, gray-black;
+H, white; O, red; N, blue; F, light green; S, yellow.
+3668 | J. Mater. Chem. A, 2024, 12, 3659–3670
+This journal is © The Royal Society of Chemistry 2024
+Journal of Materials Chemistry A
+Paper
+
+<<PAGE 11>>
+Research, Germany (BMBF), in the bilateral collaboration
+project
+LiBest
+(03XP0133B,
+03XP0133D)
+and
+LiBest2
+(03XP0304B,
+03XP0304C),
+National
+Synchrotron
+Radiation
+Research Center (NSRRC) for XPS analysis and the support of
+facilities from National Taiwan University of Science and
+Technology (NTUST).
+References
+1 C.-X. Zu and H. Li, Energy Environ. Sci., 2011, 4, 2614–2624.
+2 A. Manthiram, Y. Fu, S.-H. Chung, C. Zu and Y.-S. Su, Chem.
+Rev., 2014, 114, 11751–11787.
+3 A.
+Rosenman,
+E.
+Markevich,
+G.
+Salitra,
+D.
+Aurbach,
+A. Garsuch and F. F. Chesneau, Adv. Energy Mater., 2015, 5,
+1500212.
+4 J. Tan, J. Matz, P. Dong, M. Ye and J. Shen, Energy Storage
+Mater., 2021, 42, 645–678.
+5 B. Li, Y. Chao, M. Li, Y. Xiao, R. Li, K. Yang, X. Cui, G. Xu,
+L. Li and C. Yang, Electrochem. Energy Rev., 2023, 6, 7.
+6 W. Xu, J. Wang, F. Ding, X. Chen, E. Nasybulin, Y. Zhang and
+J.-G. Zhang, Energy Environ. Sci., 2014, 7, 513–537.
+7 D. Aurbach, E. Zinigrad, Y. Cohen and H. Teller, Solid State
+Ionics, 2002, 148, 405–416.
+8 S.
+Duangdangchote,
+A.
+Krittayavathananon,
+N.
+Phattharasupakun,
+N.
+Joraleechanchai
+and
+M. Sawangphruk, Chem. Commun., 2019, 55, 13951–13954.
+9 B. N. Olana, L. H. Adem, S. D. Lin, B.-J. Hwang, Y.-C. Hsieh,
+G. Brunklaus and M. Winter, ACS Appl. Energy Mater., 2023,
+6, 4800–4809.
+10 S. J. An, J. Li, C. Daniel, D. Mohanty, S. Nagpure and
+D. L. Wood III, Carbon, 2016, 105, 52–76.
+11 H. Liang, L. Wang, L. Sheng, H. Xu, Y. Song and X. He,
+Electrochem. Energy Rev., 2022, 5, 23.
+12 B. Horstmann, J. Shi, R. Amine, M. Werres, X. He, H. Jia,
+F.
+Hausen,
+I.
+Cekic-Laskovic,
+S.
+Wiemers-Meyer
+and
+J. Lopez, Energy Environ. Sci., 2021, 14, 5289–5314.
+13 G. Ma, Z. Wen, M. Wu, C. Shen, Q. Wang, J. Jin and X. Wu,
+Chem. Commun., 2014, 50, 14209–14212.
+14 H.-K. Jing, L.-L. Kong, S. Liu, G.-R. Li and X.-P. Gao, J. Mater.
+Chem. A, 2015, 3, 12213–12219.
+15 N.-W. Li, Y.-X. Yin, C.-P. Yang and Y.-G. Guo, Adv. Mater.,
+2016, 28, 1853–1858.
+16 H. Qian, X. Li, Q. Chen, W. Liu, Z. Zhao, Z. Ma, Y. Cao,
+J. Wang, W. Li, K. Xu, K. Zhang, W. Yan, J. Zhang and
+X. Li, Adv. Funct. Mater., 2023, 2310143.
+17 R. Demir-Cakan, M. Morcrette, B. Ganguli, A. Gu´eguen,
+R. Dedryv`ere and J.-M. Tarascon, Energy Environ. Sci., 2013,
+6, 176–182.
+18 Q. Li, S. Zhu and Y. Lu, Adv. Funct. Mater., 2017, 27, 1606422.
+19 C.-P. Yang, Y.-X. Yin, S.-F. Zhang, N.-W. Li and Y.-G. Guo,
+Nat. Commun., 2015, 6, 8058.
+20 T. Hirai, I. Yoshimatsu and J. i. Yamaki, J. Electrochem. Soc.,
+1994, 141, 2300.
+21 H. Ota, K. Shima, M. Ue and J.-i. Yamaki, Electrochim. Acta,
+2004, 49, 565–572.
+22 W. Li, H. Yao, K. Yan, G. Zheng, Z. Liang, Y.-M. Chiang and
+Y. Cui, Nat. Commun., 2015, 6, 7436.
+23 H. Zhang, G. Eshetu, X. Judez, C. Li, L. Rodr´ıguez-Mart´ınez
+and M. Armand, Angew. Chem., Int. Ed., 2018, 57, 15002–
+15027.
+24 G. M. Girard, M. Hilder, D. Nucciarone, K. Whitbread,
+S. Zavorine, M. Moser, M. Forsyth, D. R. MacFarlane and
+P. C. Howlett, J. Phys. Chem. C, 2017, 121, 21087–21095.
+25 J. Tan, M. Ye and J. Shen, Mater. Horiz., 2022, 9, 2325–2334.
+26 S. S. Zhang, Electrochim. Acta, 2012, 70, 344–348.
+27 F.
+S.
+Reuter, C.
+J.
+Huang, Y. C.
+Hsieh,
+S.
+Dörer,
+G. Brunklaus, H. Althues, M. Winter, S. D. Lin, B. J. Hwang
+and S. Kaskel, Batteries Supercaps, 2021, 4, 347–358.
+28 Y. Diao, K. Xie, S. Xiong and X. Hong, J. Electrochem. Soc.,
+2012, 159, A1816.
+29 M. Zhao, B.-Q. Li, X.-Q. Zhang, J.-Q. Huang and Q. Zhang,
+ACS Cent. Sci., 2020, 6, 1095–1104.
+30 Y. V. Mikhaylik and J. R. Akridge, J. Electrochem. Soc., 2004,
+151, A1969.
+31 M. Wagner, C. Liebenow and J. Besenhard, J. Power Sources,
+1997, 68, 328–332.
+32 S. Xiong, K. Xie, Y. Diao and X. Hong, J. Power Sources, 2013,
+236, 181–187.
+33 E. Markevich, G. Salitra, H. Yoshida, S. Sawada and
+D. Aurbach, J. Electrochem. Soc., 2022, 169, 010527.
+34 C. Weller, S. Thieme, P. Haertel, H. Althues and S. Kaskel, J.
+Electrochem. Soc., 2017, 164, A3766.
+35 Y. B. Yohannes, S. D. Lin, N.-L. Wu and B.-J. Hwang, J.
+Electrochem. Soc., 2019, 166, A2741–A2748.
+36 G. Kresse and J. Furthmüller, Comput. Mater. Sci., 1996, 6,
+15–50.
+37 P. E. Blöchl, Phys. Rev. B: Condens. Matter Mater. Phys., 1994,
+50, 17953–17979.
+38 J. Klimes, D. R. Bowler and A. Michaelides, Phys. Rev. B:
+Condens. Matter Mater. Phys., 2011, 83.
+39 H. J. Monkhorst and J. D. Pack, Phys. Rev. B: Solid State, 1976,
+13, 5188–5192.
+40 F. Shi, A. Pei, A. Vailionis, J. Xie, B. Liu, J. Zhao, Y. Gong and
+Y. Cui, Proc. Natl. Acad. Sci. U. S. A., 2017, 114, 12138.
+41 R. Grissa, V. Fernandez, N. Fairley, J. Hamon, N. Stephant,
+J. Rolland, R. Bouchet, M. Lecuyer, M. Deschamps and
+D. Guyomard, ACS Appl. Energy Mater., 2018, 1, 5694–5702.
+42 T. Yanai, D. P. Tew and N. C. Handy, Chem. Phys. Lett., 2004,
+393, 51–57.
+43 H. Sun, J. Phys. Chem. B, 1998, 102, 7338–7364.
+44 M. A. Gonz´alez, ´Ecole th´ematique de la Soci´et´e Française de la
+Neutronique, 2011, 12, 169–200.
+45 S. Nose, Mol. Phys., 2002, 100, 191–198.
+46 G. Henkelman, A. Arnaldsson and H. J´onsson, Comput.
+Mater. Sci., 2006, 36, 354–360.
+47 W. Tang, E. Sanville and G. Henkelman, J. Phys.: Condens.
+Matter, 2009, 21, 084204.
+48 R. A. Nyquist, Interpreting Infrared, Raman, and Nuclear
+Magnetic Resonance Spectra, Academic Press, 2001.
+49 W. Groh, Macromol. Chem. Phys., 1988, 189, 2861–2874.
+50 M. Osawa, K.-I. Ataka, K. Yoshii and Y. Nishikawa, Appl.
+Spectrosc., 1993, 47, 1497–1502.
+51 D. S. Warren and A. J. McQuillan, J. Phys. Chem. B, 2008, 112,
+10535–10543.
+This journal is © The Royal Society of Chemistry 2024
+J. Mater. Chem. A, 2024, 12, 3659–3670 | 3669
+Paper
+Journal of Materials Chemistry A
+
+<<PAGE 12>>
+52 B. N. Olana, S. D. Lin and B.-J. Hwang, Electrochim. Acta,
+2022, 416, 140266.
+53 L. E. Camacho-Forero, T. W. Smith, S. Bertolini and
+P. B. Balbuena, J. Phys. Chem. C, 2015, 119, 26828–26839.
+54 R. L. Hudson and P. A. Gerakines, Astrophys. J., 2018, 867,
+138.
+55 X. D. Ren, S. R. Chen, H. Lee, D. H. Mei, M. H. Engelhard,
+S. D. Burton, W. G. Zhao, J. M. Zheng, Q. Y. Li, M. S. Ding,
+M. Schroeder, J. Alvarado, K. Xu, Y. S. Meng, J. Liu,
+J. G. Zhang and W. Xu, Chem, 2018, 4, 1877–1892.
+56 M. He, R. Guo, G. M. Hobold, H. Gao and B. M. Gallant, Proc.
+Natl. Acad. Sci. U. S. A., 2020, 117, 73–79.
+57 R. Pathak, K. Chen, A. Gurung, K. M. Reza, B. Bahrami,
+J. Pokharel, A. Baniya, W. He, F. Wu and Y. Zhou, Nat.
+Commun., 2020, 11, 93.
+58 S. D. Talian, J. Bobnar, J. Moˇskon, R. Dominko and
+M. Gaberˇsˇcek, Electrochim. Acta, 2020, 354, 136696.
+59 L. T. Wu, S. Nachimuthu, D. Brandell and J. C. Jiang,
+Batteries Supercaps, 2022, 5, e202200088.
+60 X. Zhang, A. Wang, R. Lv and J. Luo, Energy Storage Mater.,
+2019, 18, 199–204.
+61 I. Zaafarany and H. Boller, J. Saudi Chem. Soc., 2010, 14, 183–
+189.
+3670 | J. Mater. Chem. A, 2024, 12, 3659–3670
+This journal is © The Royal Society of Chemistry 2024
+Journal of Materials Chemistry A
+Paper

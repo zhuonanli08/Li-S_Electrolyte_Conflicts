@@ -1,0 +1,1255 @@
+
+<<PAGE 1>>
+Article
+Guiding maps of solvents for lithium-sulfur batteries
+via a computational data-driven approach
+Graphical abstract
+Highlights
+d ComBat database provides insights for optimal Li-S
+electrolytes
+d Molecular-level interactions drive ion dissociation and
+electrochemical performance
+d A new quantitative metric classiﬁes Li-S solvents based on
+diffusion mechanism
+d The accompanying open-source code ensures full
+reproducibility of this work
+Authors
+Rasha Atwi, Nav Nidhi Rajput
+Correspondence
+navnidhi.rajput@stonybrook.edu
+In brief
+This study introduces ComBat, an
+extensive database for designing optimal
+lithium-sulfur (Li-S) battery electrolytes.
+By employing computational chemistry to
+scrutinize molecular-level interactions,
+the authors uncover the complex
+interplay of factors dictating polysulﬁde
+solubility and ion dissociation. The
+insights gained from ComBat can
+expedite the development of advanced
+Li-S electrolytes, addressing the need for
+next-generation energy storage devices.
+The open-source nature of ComBat and
+the underlying code ensures full
+reproducibility, making it a valuable
+resource for the electrochemical and
+materials science community.
+Atwi & Rajput, 2023, Patterns 4, 100799
+September 8, 2023 ª 2023 The Author(s).
+https://doi.org/10.1016/j.patter.2023.100799
+ll
+
+<<PAGE 2>>
+Article
+Guiding maps of solvents
+for lithium-sulfur batteries via a
+computational data-driven approach
+Rasha Atwi1 and Nav Nidhi Rajput1,2,*
+1Department of Materials Science and Chemical Engineering, Stony Brook University, Stony Brook, NY 11794, USA
+2Lead contact
+*Correspondence: navnidhi.rajput@stonybrook.edu
+https://doi.org/10.1016/j.patter.2023.100799
+SUMMARY
+Practical realization of lithium-sulfur batteries requires designing optimal electrolytes with controlled disso-
+lution of polysulﬁdes, high ionic conductivity, and low viscosity. Computational chemistry techniques enable
+tuning atomistic interactions to discover electrolytes with targeted properties. Here, we introduce ComBat
+(Computational Database for Lithium-Sulfur Batteries), a public database of 2,000 quantum-chemical
+and molecular dynamics properties for lithium-sulfur electrolytes composed of solvents spanning 16 chem-
+ical classes. We discuss the microscopic origins of polysulﬁde clustering and the diffusion mechanism of
+electrolyte components. Our ﬁndings reveal that polysulﬁde solubility cannot be determined by a single sol-
+vent property like dielectric constant. Rather, observed trends result from the synergistic effect of multiple
+factors, including solvent C/O ratio, ﬂuorination degree, and steric hindrance effects. We propose binding
+energy as a proxy for Li+ dissociation, which is a property that impacts the ionic conductivity. The insights
+obtained in this work can serve as guiding maps to design optimal lithium-sulfur electrolyte compositions.
+INTRODUCTION
+Lithium-ion (Li-ion) batteries have come to be the most promi-
+nent battery technology for portable electronic devices and elec-
+tric vehicles.1–3 Still, development of alternative battery chemis-
+tries is urgently needed to satisfy the ever-growing energy
+storage demands.2 Among various proposed avenues toward
+this goal, lithium-sulfur (Li-S) batteries are recognized as one of
+the most promising next-generation electrochemical energy
+storage systems, owing to their low cost and high energy den-
+sity.4 The Li metal anode based on the stripping/plating mecha-
+nism can provide a high theoretical speciﬁc capacity of 3,860
+mAh g1.5 Meanwhile, the multi-electron conversion chemistry
+at the cost-efﬁcient S cathode also leads to a high theoretical
+speciﬁc capacity of 1,675 mAh g1.5 The result is a cell with
+the prospect of ultrahigh theoretical gravimetric energy density
+of 2,510 Wh kg1, much higher than conventional Li-ion batteries
+(387 Wh kg1).2,6
+Practical realization of this high energy density in Li-S batte-
+ries, however, is constrained by the detrimental shuttle effect
+THE BIGGER PICTURE
+The need for advanced energy storage technologies has led to growing interest in
+lithium-sulfur (Li-S) batteries due to their high theoretical capacity and energy density. However, practical
+application is hindered by a short life cycle and low-rate capability, traceable to electrolyte instability.
+Limited systematic studies on molecular mechanisms governing Li-S electrolyte behavior hinder the devel-
+opment of optimized electrolyte compositions. This work introduces ComBat, a comprehensive database
+providing insights into molecular-level interactions among solvent, salt, and polysulﬁde species in Li-S bat-
+teries. By combining quantum-chemical and molecular dynamics simulations, we investigate critical elec-
+trolyte properties such as binding afﬁnities and diffusion mechanisms. ComBat is a valuable resource for
+systematic, knowledge-driven design of high-performance electrolytes for advanced Li-S batteries.
+Development/Pre-production: Data science output has been
+rolled out/validated across multiple domains/problems
+Patterns 4, 100799, September 8, 2023 ª 2023 The Author(s).
+1
+This is an open access article under the CC BY-NC-ND license (http://creativecommons.org/licenses/by-nc-nd/4.0/).
+ll
+OPEN ACCESS
+
+<<PAGE 3>>
+originating from dissolution of lithium polysulﬁdes (Li2Sx; x = 4–8)
+during cycling and the electrical insulating properties of
+elemental sulfur and the solid reduction products (Li2S and
+Li2S2).7 Severe shuttle phenomena cause poor utilization of ac-
+tive materials, fast self-discharge, inﬁnite charge, low Coulombic
+efﬁciency (CE), increased internal resistance, and rapidly dimin-
+ishing capacity.2,6 Many of these challenges are related to the
+nature and properties of the Li-S electrolyte. The composition
+and stability of the solid-electrolyte interphase (SEI) layer is
+also inherently dependent on the electrolyte and its intimate
+interaction with the Li anode.8,9 Thus, designing electrolytes
+with reduced solubility of high-order Li2Sx is of great signiﬁcance
+for controlling the deleterious side reactions and protecting the
+electrode surface. Such a strategy may complement signiﬁcant
+efforts in composite particle design aimed at conﬁning elemental
+sulfur and anchoring the polysulﬁdes.10–12 Other desired electro-
+lyte properties include high ionic conductivity, low viscosity, high
+chemical stability, and compatibility with the electrodes.
+Liquid electrolytes composed of organic solvents, Li salt, such
+as lithium bis(triﬂuoromethne sulfone) imide (LiTFSI) or lithium
+bis(ﬂuorosulfonyl) imide (LiFSI), and an additive, such as lithium
+nitrate (LiNO3), dominate the mainstream due to their high ionic
+conductivity.2,13 The selection of solvent in particular plays a
+crucial role in the transportation of ions and determines the poly-
+sulﬁde solubility and the Li anode stability. Liquid organic Li-S
+electrolyte solvent demonstrations have gone through a process
+from aliphatic amines to carbonates and then to ethers. Special
+attention has been given to cyclic or linear ‘‘ethers,’’ such as
+tetrahydrofuran (THF), 1,3-dioxolane (DOL), dimethoxyethane
+(DME), and tetra(ethylene glycol)-dimethyl ether (TEGDME),
+owing to their lower vulnerability to nucleophilic attack from S
+centers compared with carbonates.6 The most widely used
+Li-S electrolyte comprises 1 M LiTFSI salt in a binary DOL/
+DME (1/1, v/v) solvent mixture with 1–2 wt % LiNO3.14 This elec-
+trolyte formulation suffers, however, from the high dissolution of
+high-order Li2Sx species, which facilitates the shuttle process
+and subsequent parasitic reactions.15 Therefore, several alterna-
+tive Li-S solvent classes were introduced recently.
+Among the newly proposed electrolytes, ‘‘ﬂuorinated’’ ether
+solvents have received growing interest due to the high electro-
+negativity of ﬂuorine, low melting point, low Li2Sx solubility, and
+ability to build a stable passivation layer on the anode.16–18
+Several studies reported lower self-discharge rates with the
+use of ﬂuorinated co-solvents, but they come at the expense
+of low Li salt solubility, necessitating the use of co-solvents in
+the
+electrolyte
+systems.19–21
+‘‘Sulfone’’-based
+electrolytes
+have been applied in Li-S batteries due to their favorable oxida-
+tive stability and dielectric constant.22–24 However, they are
+usually mixed with ethers to balance their high viscosity and pol-
+ysulﬁde solubility.22 Recently, a localized low concentration
+electrolyte (LLCE) composed of a binary mixture of ﬂuorinated
+and sulfone-based co-solvents has been applied to an Li-S
+cell, showing great promise in polysulﬁde suppression, reduced
+viscosity, and high capacity.25 Wang et al. have reported the use
+of ‘‘phosphate’’ and ‘‘phosphite’’ solvents, such as trimethyl
+phosphate
+(TMP)26
+and
+tris(2,2,2-triﬂuoroethyl)
+phosphite
+(TTFP),27 as co-solvents with carbonates to form an effective
+ﬂame-retardant electrolyte. Additionally, they developed a novel
+intrinsic ﬂame-retardant electrolyte consisting of a mixture of
+TMP and a ﬂuorinated co-solvent, 1,1,2,2-tetra-ﬂuoroethyl-
+2,2,3,3-tetraﬂuoropropyl ether (TTE), which enables a high CE,
+stable, and dendrite-free cycling with Li metal anode.26 Another
+successfully applied electrolyte system is a ‘‘nitrile’’-based
+(acetonitrile [ACN]) sparingly solvating electrolyte with a ﬂuori-
+nated co-solvent.28 The synergistic effect of the nitrile and ﬂuo-
+rinated solvents limits the dissolution and mobility of polysulﬁdes
+while maintaining viscosities that approach that of conventional
+ethers.
+Despite the signiﬁcant body of work on Li-S electrolyte sys-
+tems, there is much that is still not understood in terms of the
+structure-property relationships of electrolytes and the contribu-
+tion of the speciation to the overall ionic transport properties.
+Since it is also unlikely for a single solvent to fulﬁll all the perfor-
+mance metrics of an Li-S electrolyte, understanding how the sol-
+vent affects the solvation structure, and thus the electrolyte
+properties, is of utmost importance to establish design principles
+that ultimately allow their smart design and optimization (e.g.,
+choice of the composition of binary or ternary solvent mixtures).
+Driven by these needs, we seek to understand how the replace-
+ment of DME in the state-of-the art solvent mixture of DOL:DME
+with different classes of commonly reported Li-S solvents alters
+the structure and dynamics of Li-S electrolytes. To do so, we
+leverage our recently developed high-throughput multi-scale
+computational framework29,30 (MISPR: materials informatics
+for structure-property relationships); https://github.com/molmd/
+mispr) to construct a database of Li-S electrolyte properties from
+a series of automated density functional theory (DFT) and clas-
+sical molecular dynamics (CMD) simulations. The publicly avail-
+able
+dataset—Computational
+Database
+for
+Li-S
+Batteries
+(ComBat)31—contains 2,000 properties of 56 Li-S electrolyte
+systems spanning 16 different chemical classes that have
+been previously reported in experimental Li-S studies (see Fig-
+ure 1). The dataset provides crucial atomistic-level insight of
+various properties, including equilibrated conﬁgurations, solva-
+tion structures, diffusion coefﬁcients, ionic conductivities, vis-
+cosities, radial distribution functions, coordination numbers,
+and polysulﬁde clustering. We use the ComBat database to
+highlight the unique behavior of each co-solvent class, develop
+a quantitative model for the primary speciation in solution and
+its relation to the dynamics, and unravel the underpinnings gov-
+erning the polysulﬁde dissolution. We ﬁnd that there is no single
+descriptor that explains the trends in the polysulﬁde solubility.
+We anticipate that this work will serve two purposes: (1) provide
+fundamental insights from a scientiﬁc basis for the understand-
+ing of Li-S electrolytes to accelerate their development and
+achieve parity with lithium-ion electrolytes, and (2) demonstrate
+the capacity of our high-throughput computational framework
+for predicting atomistic properties of electrolytes for a large
+chemical space.
+RESULTS AND DISCUSSION
+Overview of the ComBat database
+The set of 56 co-solvents was built to adequately cover mole-
+cules reported in common Li-S electrolytes used in experimental
+studies. Representation of the co-solvents are provided in
+Table S1. These co-solvents can be grouped into 16 chemical
+classes: acetamide (1–2), acetate (3), azole (4–5), ether (6–19),
+ll
+OPEN ACCESS
+Article
+2
+Patterns 4, 100799, September 8, 2023
+
+<<PAGE 4>>
+ﬂuorinated (20–36), formamide (37), nitrile (38–39), nonpolar
+(40–41), phosphate (42–43), phosphite (44), silane (45), sulﬁde
+(46), sulﬁte (47–48), sulfonamide (49–50), sulfone (51–55), and
+sulfoxide (56). The solvents were retrieved from the PubChem
+database.32 While Figure S1A shows selected small molecules
+in the ComBat dataset, the distribution of solvent sizes (in terms
+of the number of electrons) is wide with a range between 22 and
+162 electrons. We further note that a large number of molecules
+in the database belong to the C-H-O chemical system, but many
+ﬂuorine-, sulfur-, and nitrogen-containing molecules are in-
+cluded as well (Figure S1B). The diversity in phosphorous- and
+silicon-containing molecules is lacking because only a few sol-
+vents with these elements have been explored so far. Consid-
+ering that many chemical classes and the most reported solvents
+are considered in the ComBat dataset, we believe the dataset is
+broad enough to capture a sufﬁciently diverse range of struc-
+tural/dynamical properties to be used to create accurate models
+for Li-S electrolytes.
+While many electrolyte chemistries have been developed for
+Li-S batteries, the most widely used formulation consists of
+1 M LiTFSI in DOL/DME (1/1, v/v). To understand the effect of
+solvents on the properties of Li-S electrolytes, we systematically
+considered two sets of electrolyte systems: (1) 1 M LiTFSI,
+0.25 M Li2S8 in DOL/co-solvent (1/1, v/v), and (2) 1 M LiTFSI in
+DOL/co-solvent (1/1, v/v), leading to a total of 112 modeled elec-
+trolyte systems. A detailed analysis of structural and dynamical
+properties (e.g., radial distribution function [RDF], coordination
+number [CN], diffusion, clustering, .) was performed using the
+ﬁrst set while the ionic conductivity and viscosity calculations
+were performed using the second set. We further note that while
+DME is known to provide high ionic conductivity due to its ability
+to dissociate the salts, it is the main culprit behind the high poly-
+sulﬁde solubility in Li-S battery electrolytes. Therefore, in this
+work we replaced DME in the state-of-the-art electrolyte instead
+of DOL. At the current stage, ComBat contains properties rele-
+vant to these electrolytes, but does not necessarily consider
+the exact electrolyte compositions used in Li-S literature. For
+example, while DMSO was previously used as a unary solvent
+to dissolve 1 M LiTFSI,33–36 it was mixed in an equivolume
+mixture with DOL in this work to ensure consistency across our
+electrolyte systems for comparison purposes. We anticipate
+that the set will be extended with future systematic studies to
+include other anions, additives, and polysulﬁde chain lengths,
+and updates will be made available at https://github.com/
+rashatwi/combat. Methodological details regarding the dataset
+construction, DFT calculations, CMD simulations, and analysis
+can be found in the supplemental information.
+Binding energy as a descriptor for solvent
+coordinating power
+One strategy to achieve solubility and mobility of the supporting
+salt and not polysulﬁdes and create a degree of selective solvation
+is to tune the solvent solvating power. As shown in Figure 2, the
+chemical class and type of the solvent modify the binding energy
+and thus its coordinating ability to the ligand, i.e., Li+ of LiTFSI
+and Li2S8. Overall, solvents of the same chemical class exhibit
+similar orders of binding energy and degrees of Li+ dissociation
+(represented through the size of the scatter points in Figure 2).
+Li+ dissociation is deﬁned as the population of Li+ ions that do
+not have S2 
+8
+in their solvation shells. The degree of solvating po-
+wer ranges from the completely solvating ether-based solvent
+TEGDME to the completely non-solvating silane-based solvent tri-
+ﬂuoromethyl trimethyl silane (TFMTMS). On average, a positive
+correlation isobservedbetween the binding afﬁnity and the degree
+of Li+ dissociation. In general, dissociation is highest in systems
+containing a strongly coordinating solvent, such as sulfone-, sulf-
+oxide-, and azole-based solvents, and lowest in systems contain-
+ing a weakly coordinating solvent, such as nonpolar-, ﬂuorinated-,
+and silane-based solvents. The dissociation and binding energies
+with TEGDME and triglyme (G3) are noticeably different from the
+rest of the ether solvents due to their ability to wrap around the li-
+gands in a more energetically favorable conformation. Similarly,
+1-(2,2,2-triﬂuoroethoxy)-2-methoxyethane (TFEG), 1,1,2,2-tetra-
+ﬂuoro-3-(2-methoxyethoxy) propane (TFPG), and 1,1,1,8,8,8-hex-
+aﬂuoro-3,6-dioxaoctane (DTFEG) are characterized withhigherLi+
+dissociation and binding afﬁnities thanother ﬂuorinatedsolventsin
+the Li-S dataset, which can likely be attributed to the presence of
+more than one oxygen coordinating site and the farther proximity
+of these oxygen atoms from the ﬂuorine sites.
+It has been suggested that the dissolution of a small amount of
+polysulﬁdes can promote the complete reduction of sulfur and
+improve the sulfur utilization rate.37,38 TTE does not solubilize
+polysulﬁdes at room temperature, while DME binds strongly to
+the cation and dissolves polysulﬁdes.17 Area 1 in Figure 2 pre-
+sents a ‘‘sweet spot’’ where the interactions with Li2S8 are stron-
+ger than those of TTE but weaker than those of conventional
+DME. Thus, solvents in Area 1 can be used as selective co-sol-
+vents with optimal cation dissociation. Area 2 constitutes sol-
+vents whose Li2S8 binding afﬁnities are lower than that of TTE
+and result in limited Li+ dissociation that diminishes the electro-
+lyte conductivity. These solvents are best used as diluents to
+decrease the overall polysulﬁde solubility without altering the
+electrolyte structural properties. We lastly note that binding en-
+ergy is a molecular property obtained from DFT calculations of
+individual solvent molecules and ligands. In contrast, the fraction
+Figure 1. Overview of the ComBat database
+Selected DFT- and CMD-computed properties in
+the ComBat database for electrolyte mixtures
+composed of 1 M LiTFSI and 0.25 M Li2S8 in DOL/
+solvent. Calculations are performed using the
+MISPR infrastructure for high-throughput coupled
+DFT-CMD simulations and MDPropTools for anal-
+ysis of simulation trajectories.
+ll
+OPEN ACCESS
+Article
+Patterns 4, 100799, September 8, 2023
+3
+
+<<PAGE 5>>
+of dissociated Li+ from polysulﬁdes is an ensemble property ob-
+tained from fully equilibrated electrolyte mixtures using CMD
+simulations. The revealed correlation between these two proper-
+ties together with the affordable computational cost of binding
+energy calculations make binding energy an effective descriptor
+in fast screening computational studies aimed at ﬁnding new po-
+tential solvent candidates.
+Structure of the lithium solvation shell
+Next, we investigate the structure of the lithium solvation shell as
+a function of the type of the co-solvent in electrolytes composed
+of 1 M LiTFSI and 0.25 M Li2S8 in DOL/co-solvent (1/1, v/v). Fig-
+ure 3A shows the RDF gðrÞ for Li+ - X (Solvent), Li+ - O (DOL), Li+ -
+O (TFSI), Li+ - S (PS), and Li+ - Li+ in selected electrolyte systems
+from each co-solvent chemical class. Similar plots for the full
+Li-S dataset are shown in Figures S3 and S4 along with the
+type of the co-solvent coordinating sites X used in gðrÞ calcula-
+tions. Figure 3B shows the average number of coordinating
+atoms from the electrolyte components in the ﬁrst solvation shell
+of the cation. For the electrolytes investigated in this work, the to-
+tal coordination number of Li+ varies between 3.9 and 5.7. In
+most electrolytes, the closest interaction with Li+ occurs with
+the co-solvent at 1.9 A˚ . The Li+ interactions with the cyclic ether
+DOL are much weaker than those with the co-solvent, which is
+mainly attributed to the lower structural ﬂexibility of DOL mole-
+cules. The ﬂuorinated, nonpolar, silane, and sulﬁde solvents
+are an exception to this behavior, as they scarcely participate
+in solvating Li+, which is evident from the lack of an Li+ - X (Sol-
+vent) gðrÞ peak and their negligible coordination number with the
+metal cation (Figure 3B). Instead, DOL gets introduced to the pri-
+mary Li+ solvation shell in these systems at 1.9 A˚ with a coor-
+dination number of Li+ with oxygen atoms of DOL between 0.9
+and 2.4. These systems are also characterized with the sharpest
+Li+ - S (PS) peaks at a distance 2.1 A˚ and the highest Li+ - S (PS)
+coordination numbers indicating very strong electrostatic inter-
+actions between the cation and the polysulﬁdes.
+In all electrolytes, Li+ interactions with S2 
+8
+occur at a farther
+distance (2.1 A˚ ) than with other components, showcasing the
+ﬂexibility of the polysulﬁdes in accommodating Li+ in their ﬁrst
+solvation shell. Additionally, gðrÞ signifying the Li+ - Li+ correla-
+tion (Figures S5 and S6) in ﬂuorinated, nonpolar, silane, and sul-
+ﬁde systems exhibits two sharp peaks at 4.2 and 5.8 A˚ followed
+by a broader shoulder peak at 8.9 A˚ , indicating highly ordered
+long-range structures where S2 
+8
+acts as a bridge between Li+
+to form Li+ . S . Li+ ionic chains. The Li+ - Li+ peaks are
+less pronounced in systems characterized with strong Li+ - sol-
+vent interactions signifying weak long-range structures such as
+Li+-rich domains (see for example the Li+ - Li+ gðrÞ in acetamide,
+azole, formamide, and nitrile systems in Figures S5 and S6).
+These systems are also characterized with the lowest Li+ - Li+ co-
+ordination numbers, as shown in Figure 3B. Interestingly, despite
+the strong interaction of DMSO with Li+, the Li+ - Li+ gðrÞ in this
+electrolyte exhibits a unique behavior where the ﬁrst peak occurs
+at a close distance of 2.6 A˚ with high intensity, followed by a
+second peak at 7.3 A˚ , and a third broader peak at 14.1 A˚
+(Figure S6).
+The strong Li+ - Li+ interactions are driven by the bridging ef-
+fect originating this time from the DMSO oxygen atom that brings
+two Li+ ions to a shorter distance (see Figure S7A for a visual
+conformation of the bridging mechanism). Figure S7B shows
+that the oxygen atoms on the sulfone functional group also act
+as a bridge to bring two cations together according to Li+ .
+O=S=O . Li+, leading to the observed peaks in the Li+ - Li+
+gðrÞ and an average Li+ - Li+ coordination number of 1.4 in sul-
+fone and sulfonamide electrolytes. Therefore, not only the poly-
+sulﬁde species but also the solvent molecules may contribute to
+the bridging effect. The bridging effect brought by the polysulﬁde
+species leads to signiﬁcant agglomeration and the formation of
+well-deﬁned domains in Li-S electrolytes, as evident from the
+snapshots in Figures S7C and S7D. Sample snapshots of these
+systems conﬁrm that the ﬂuorinated, nonpolar, silane, and sul-
+ﬁde solvents behave as anti-solvents with LiTFSI and Li2S8 being
+localized in the DOL-rich domains. The formed nanodomain
+structures and localization of S2 
+8
+are consistent with the re-
+duced solubility of Li2S8 reported in these solvents19,39–42 and
+are expected to facilitate the conversion of longer polysulﬁdes
+to shorter sulﬁdes.25
+The phosphite solvent has a weaker solvating power com-
+pared with the phosphates because the coordinating oxygen
+sites in the latter are sterically less accessible than the doubly
+bonded oxygen site on the phosphates. Among the ether sol-
+vents, gðrÞ corresponding to the tert-butyl methyl ether
+(MTBE), diisopropyl ether (DIPE), butyl ether (DBE), ethyl propyl
+ether (EPE), and 1-methoxyhexane (HME) systems are visibly
+distinct from the other ether-based systems in the ComBat da-
+taset (Figure S3). Li+ - O (Solvent) interactions in these systems
+are much weaker, which is mainly attributed to the higher sol-
+vent C/O ratio (Table S5) and the extra steric hindrance caused
+by branching in some of these solvent molecules. The weak sol-
+vating power of these solvents leads to stronger Li+ - O (TFSI)
+and Li+ - S (PS) interactions and higher possibility of forming
+contact ion pairs (CIPs) and aggregates (AGGs) in the
+electrolytes.
+Among the ﬂuorinated solvents, DTFEG, TFPG, and TFEG
+exhibit distinct behavior compared with other ﬂuorinated
+Figure 2. Binding afﬁnities from DFT calculations
+Binding energy of solvents in the Li-S dataset with LiTFSI and Li2S8 (LiPS)
+including the degree of Li+ dissociation from S2 
+8
+(indicated by the size of the
+scatter points). Area 1 corresponds to solvents whose binding afﬁnity with
+Li2S8 is higher than TTE but lower than that of DME while Area 2 consists of
+solvents that do not dissolve polysulﬁdes. An interactive plot is hosted on
+GitHub at https://rashatwi.github.io/combat/plots/be.html.
+ll
+OPEN ACCESS
+Article
+4
+Patterns 4, 100799, September 8, 2023
+
+<<PAGE 6>>
+solvents. This can be rationalized by the presence of multiple ox-
+ygen coordinating sites and the ability of these solvents to wrap
+around Li+ and solvate it. Although 1,3-bis(1,1,2,2-tetraﬂuoroe-
+thoxy) propane (FDE) and 1,2-bis(1,1,2,2-tetraﬂuoroethoxy)
+ethane (TFEE) are also composed of two ether oxygen sites,
+the close vicinity of the coordinating oxygen sites to the elec-
+tron-withdrawing ﬂuorine groups limits the coordinating power
+of these solvent molecules. Alternatively, 1,1,2,2,3,3,4,4-octa-
+ﬂuoro-5-(1,1,2,2-tetraﬂuoroethoxy) pentane (OFE) ﬂuorinated
+solvent system is characterized with the sharpest Li+ - S (PS)
+peak (Figure S4), which is caused by its highest ﬂuorination de-
+gree (Table S6). Interestingly, triethyl phosphate (TEP) and TMP
+result in similar structural properties, as shown in Figure S4,
+despite the substantial difference in their dielectric constants
+A
+B
+Figure 3. Structural analysis of selected electrolytes from the ComBat dataset
+(A) Radial distribution function g(r) and (B) coordination number of Li+ - X (Solvent), Li+ - O (DOL), Li+ - O (TFSI), and Li+ - S (PS). Coordination numbers between
+two Li+ ions are also included in the heatmaps. Darker colors indicate higher coordination numbers and stronger interactions, while lighter colors indicate lower
+coordination numbers and weaker interactions between Li+ and the different electrolyte components.
+ll
+OPEN ACCESS
+Article
+Patterns 4, 100799, September 8, 2023
+5
+
+<<PAGE 7>>
+(εTEP = 12.94, εTMP = 21.26). On the other extreme, DIPE and
+N-methyl acetamide (NMA) have very similar dielectric constants
+(3.95 and 3.97, respectively), yet their solvating power is
+completely different. These observations indicate that the sol-
+vating power does not increase monotonically with the solvent
+dielectric constant but is rather the result of an intricate interplay
+among many additional factors, such as C/O ratio, ﬂuorination
+degree, and steric hindrance effects.
+Negligible Li+ - TFSI interactions are observed in systems
+containing acetate, formamide, nitrile, sulﬁte, sulfonamide,
+sulfone, sulfoxide, and some ether solvents, indicating the
+presence of solvent separated ion pairs (SSIPs). The salt in
+these systems is largely dissociated and well dispersed, as
+evident from the sample snapshot in Figure S8A. Nanometric
+aggregates (n-AGGs)8 are observed in electrolytes with ﬂuori-
+nated, nonpolar, silane, and sulﬁde solvents, where the salt
+forms heterogeneous ion-rich domain networks (see Fig-
+ure S8B). The formation of n-AGG structures in these electro-
+lytes is driven by the stronger ion-ion electrostatic interactions
+than the ion-solvent interactions. These n-AGG structures are
+expected to add more complexity to the electrochemical redox,
+transport, and interfacial properties of the electrolyte.8 Addi-
+tionally, DOL and ﬂuorinated solvents separate into two phases
+in ﬂuorinated solvent-based electrolytes, giving rise to the ‘‘ﬂu-
+orous’’ effect.43 Due to the low polarizability of C–F bonds, ﬂu-
+orous domains tend to have limited tendency to interact with
+other molecules in the electrolyte and thus aggregate into a
+separate phase (Figure S9).
+The top four Li+ solvation structures and their probability of
+occurrence obtained from our simulations are provided in
+Figures S10 and S11, and Tables S7–S10. Overall, we ﬁnd that
+there is no single dominant solvation structure, as evident from
+the low probability of the top structure in each system. Structures
+identiﬁed in the high dielectric constant solvents EMS (εEMS =
+57:5), SL (εSL = 44:0), and DMSO (εEMS = 46:5) are an exception
+to this behavior. In these systems, the cation is persistently coordi-
+nated by four co-solvent molecules giving rise to SSIPs or free ions
+at a probability between 42% and 63%. Although high Li+ dissoci-
+ation is desired to achieve the high ionic conductivity needed to
+support high current density, the strong binding of the cation to
+the solvents reduces the Li-ion transference number.44,45 Addi-
+tionally, the high dielectric constant of the solvents inevitably in-
+creases the dipole-dipole forces among the solvent molecules,
+thereby increasing their freezing temperature and reducing the
+low-temperatureperformanceoftheelectrolytes.44,46Thefour-co-
+ordinated [Li(DOL)2(TFSI)1(S8)1]2 cluster exists as a common top
+solvation structure in low dielectric constant ethers, ﬂuorinated,
+nonpolar, and silane solvents, indicating that these solvents do
+not participate in primary solvation and are located outside the
+localized high-concentration Li/DOL pairs or clusters. Ether sol-
+vents with high dielectric constants tightly wrap around the cation
+(see Figure S10 for solvation structures in DEGDME, TEGDME,
+and EEE), which can lead to shrinkage in volume of these solvents
+around Li+ relative to that in the bulk solution. This so-called elec-
+trostriction47 process can also extend to solvent molecules in the
+secondary solvation shell, reducing the available space for anionic
+species in the Li+ solvation shell. Lastly, the previously mentioned
+properties of DTFEG, TFPG, and TFEG lead to a distinct top solva-
+tion structure compared with other ﬂuorinated solvents in the
+ComBat dataset whereby these solvents participate in solvating
+Li+ by contributing two coordinating oxygen atoms.
+Clustering phenomena of the polysulﬁde
+Li2S8 monomer units readily form dynamic clusters in the DOL/
+solvent electrolyte systems. Figure 4A shows the distribution of
+(Li2S8)s cluster sizes in each system averaged over the respec-
+tive classical CMD trajectories over time. The rows in the table
+are arranged in an ascending order of Ps = 1 within each solvent
+class, i.e., Li2S8 polysulﬁde clustering increases moving down-
+ward. The probability of forming a polysulﬁde of cluster size s
+(Ps), averaged over all the electrolyte systems, follows a decay-
+ing exponential function48 of the form Const:e s=M with a char-
+acteristic decay number M 0.7 (Figure 4B). Representative
+clusters of each size are shown in Figure 4C. The cluster size
+distribution indicates that single polysulﬁde monomers prevail
+in the solution, with the tetramer (Li2S8)4 being the largest clus-
+ter formed. Clearly, the aggregation of long-chain Li2S8 is
+strongly dependent on the solvent type. Figure 4A shows
+that, in general, a positive correlation exists between the
+bridging extent and the probability of forming larger Li2S8 clus-
+ters within each solvent class. The bridging extent is a quanti-
+tative property representing the fraction of Li+ ions coordinating
+with more than one polysulﬁde species in their ﬁrst solvation
+shell. Overall, greater bridging extents are accompanied with
+lower probabilities of Li2S8 monomeric units and impeded poly-
+sulﬁde dissolution. Additionally, a loose positive correlation ex-
+ists between the solvent - Li2S8 binding afﬁnity and the degree
+of polysulﬁde clustering within each solvent chemical class.
+Lower binding afﬁnities often lead to higher probabilities of
+forming larger polysulﬁde aggregates.
+The lowest polysulﬁde solubilities are achieved in ﬂuorinated-,
+nonpolar-, silane-, and sulﬁde-containing electrolytes, in agree-
+ment with the non-solvating properties of these solvents dis-
+cussed earlier. Within the ether class, MTBE, DIPE, DBE, and
+EPE result in the lowest polysulﬁde solubility, consistent with pre-
+vious recordings that the room temperature solubility of Li2S8 is
+0.5 M in DOL/DME,49 while it is only 20 mM in MTBE50 and
+4 mM in DIPE.51 The most signiﬁcant bridging occurs in the ﬂuo-
+rinated FDE-based electrolyte, resulting in the agglomeration of
+Li2S8 into separate and well-deﬁned domains, as shown in Fig-
+ure S7C. This enduring Li2S8 clustering network limits the solubility
+of the polysulﬁdes (Ps = 1 = 0:35), thus reducing sulfur loss and
+shuttle effects. We hypothesize that the clustering and aggrega-
+tion of polysulﬁdes in such ﬂuorinated electrolytes is responsible
+for the quasi-solid-state reaction kinetics reported previously
+compared with the dominant solution pathway in DOL/DME elec-
+trolytes.8,52 Conversely, the electrolyte composed of the high-po-
+larity DMSO solvent is the most vulnerable to polysulﬁde shuttle
+effects (Ps = 1 = 0:97) due to a combination of two factors: (1)
+limited polysulﬁde bridging effect (Pbridging = 0:003) and (2) avail-
+ability of free solvent to solvate the cation. These factors prevent
+agglomeration of Li2S8 into separate domains and results in
+the polysulﬁdes becoming much more evenly distributed in the
+simulation box (Figure S7A). This observation is in line with previ-
+ous reports that lower-order polysulﬁdes favor clustering while
+higher-order species prefer monomeric units in DMSO.53 Sul-
+fone-based electrolytes such as those containing SL and
+2-(methyl sulphonyl)propane (IPMS) exhibit bridging extents and
+ll
+OPEN ACCESS
+Article
+6
+Patterns 4, 100799, September 8, 2023
+
+<<PAGE 8>>
+polysulﬁde solubilities on the same order of magnitude as those in
+the DMSO system. For these reasons, SL has been used in a small
+volume ratio when combined with DOL/DME23 or in an equivo-
+lume mixture with a ﬂuorinated solvent.25 The high polysulﬁde sol-
+ubility in sulfone systems can be explained by considering that SL
+is a strong Lewis acid while Li2S8 is a Lewis base leading to strong
+interactions between these two components. It has been experi-
+mentally conﬁrmed that SL can even dissolve Li2S by one order
+of magnitude higher than DOL and DME, thus playing the dual
+role of controlling the Li2S deposition on the cathode and
+improving the stability of the Li anode by acting as an SEI ﬁlm-
+forming additive.23 On the contrary, the electrochemically active
+dimethyl disulﬁde (DMDS) solvent54 is a Lewis base, similar to pol-
+ysulﬁdes, which weakens the solvent-polysulﬁde interactions and
+reduces
+the
+polysulﬁde
+solubility
+(Ps = 1 = 0:72
+in
+DMDS
+compared with 0.97 in SL). We ﬁnally note that no simple, direct,
+or monotonic relationship was found between the dielectric con-
+stant, donor number, C/O, ﬂuorination degree, or other relevant
+solvent properties and the polysulﬁde solubilities as is often sug-
+gested in the literature. Instead, the observed trends are the col-
+lective result of an intricate interplay between these critical met-
+rics. Thus, one should carefully consider as many metrics as
+possible when selecting a candidate solvent for Li-S batteries.
+A
+B
+C
+Figure 4. Polysulﬁde clustering analysis for
+the electrolytes in the ComBat dataset
+(A) Probability of the bridging effect, binding energy
+of the solvent with Li2S8 (kcal/mol), and probability
+of different polysulﬁde cluster sizes. (B) Average
+probability of cluster sizes in the entire dataset along
+with
+the
+ﬁtted
+exponential
+function,
+and
+(C) representative polysulﬁde clusters formed in the
+electrolytes.
+Dynamics of the electrolyte
+Next, we investigated the diffusion mecha-
+nism of the electrolyte species as a func-
+tion of the solvent type. To do that, we
+introduced a quantitative metric termed
+Poverlap that describes the probability of
+overlap between the distribution of the
+diffusion coefﬁcients of the Li+ ion and
+each of the polysulﬁde and the solvent
+(see supplemental information for a de-
+tailed description). Poverlap is normalized
+to yield a value between zero and one. A
+value of zero indicates no overlap between
+the two diffusion distributions, while a va-
+lue of unity indicates similar distributions.
+Figures 5A–5C show the dependence of
+the average self-diffusion coefﬁcients of
+Li+, S2 
+8 , and TFSI, respectively, on
+Poverlap with S2 
+8
+(x axis) and the solvent
+(color bar) for all the electrolyte systems
+in the ComBat dataset. The relation be-
+tween the diffusion coefﬁcients of the ionic
+species and Poverlap with S2 
+8
+is well
+described by an exponential function.
+Higher overlap is associated with slower
+diffusion of all ionic species. However, as is discussed later,
+high overlap does not always imply that the motion of Li+ and
+the polysulﬁde is correlated.
+Four distinct modes of diffusion are observed in the ComBat
+dataset (see Table S11 for the categorization of the solvents
+based on their diffusion mode). Electrolytes in group A (high-
+lighted in yellow in Figures 5A–5C) exhibit high Poverlap with
+both the solvent and the polysulﬁde and slow ionic dynamics.
+A closer inspection of the data reveals that this behavior is mainly
+a characteristic of the phosphate-, phosphite-, sulfonamide-,
+sulfone-, and sulfoxide-containing electrolytes. The slow dy-
+namics in these electrolytes is attributed to the high viscosity
+of the solvents23,36,55,56 and/or the tendency of Li+ to aggregate
+into clusters or networks of Li+ ions bound by shared or bridging
+solvent molecules. An example of the distribution of diffusion co-
+efﬁcients in these systems is shown in Figure 5D for a 1,1,1-tri-
+ﬂuoro-N,N-dimethylmethane sulfonamide (DMT)-based electro-
+lyte (refer to Figures S12 and S13 for distributions of the full
+dataset). Starting with the boxplots, we ﬁnd that the diffusion co-
+efﬁcients of DOL are signiﬁcantly higher than those of the other
+electrolyte species, indicating that most DOL molecules exist
+in the ‘‘free’’ state in the solution. This is evident from the weak
+Li+ - DOL interactions in these systems as shown in the RDFs
+ll
+OPEN ACCESS
+Article
+Patterns 4, 100799, September 8, 2023
+7
+
+<<PAGE 9>>
+in Figure S4. When comparing the violin plots in Figure 5D, it is
+immediately clear that the shape of the diffusion coefﬁcients dis-
+tribution is dependent on the electrolyte component. The Li+,
+polysulﬁde, and solvent distributions exhibit signiﬁcant overlap,
+providing a visual representation of the high Poverlap values in
+these electrolytes. The high Poverlap of Li+ with the polysulﬁde
+in the systems of group A is not caused by the correlated motion
+of the two species but rather by the slow overall dynamics,
+causing the ionic species to move at a similar pace. Because
+the rate capability of a cell is determined by the solvation and
+dissociation of ionic compounds and their subsequent migration
+through the solvent media, the electrolyte viscosity is an impor-
+tant metric for cell manufacturing rate. Thus, we also investi-
+gated the impact of the solvent type on the viscosity (Figure 6).
+Electrolytes in group A display viscosities that are between 1.7
+and 6.4 higher than that in a DOL/DME system, which correlates
+with the low ion mobility in these solvents.
+Group B is also characterized with slow ionic transport but
+Poverlap that is high with the polysulﬁde but low with the solvent
+(highlighted in red in Figures 5A–5C). This type of diffusion
+A
+B
+C
+D
+E
+F
+Figure 5. Dynamics of the Li+ electrolytes in
+the ComBat dataset
+Self-diffusion coefﬁcients of (A) Li+, (B) S2 
+8 , and (C)
+TFSI as a function of the probability of overlapping
+diffusivities between Li+ and S2 
+8
+(PS). The color bar
+reﬂects the probability of overlapping diffusivities
+between Li+ and the solvent used in each electrolyte
+system. The yellow, red, orange, and green bo-
+undary colors are indicative of electrolyte groups A
+to D, respectively. Raincloud plots (i.e., combined
+violin, box, and strip plots) for the CMD-computed
+diffusion coefﬁcients of the solvent, S2 
+8 , Li+, TFSI,
+and DOL in (D) DMT-, (E) OFE-, and (F) ACN-con-
+taining electrolytes reﬂecting the unique diffusion
+behaviors of the electrolytes in the ComBat dataset.
+The strip plots show all the diffusion data for each
+electrolyte component. In the boxplots, the whisker
+tails correspond to the extrema, the boundaries
+correspond to the interquartile range, and the
+horizontal line corresponds to the median. The violin
+plots show the probability density of the diffusion
+coefﬁcients of each electrolyte component. An in-
+teractive plot is hostedon GitHub at https://rashatwi.
+github.io/combat/plots/diffusion.html.
+occurs mostly in nonpolar-, silane-, and
+ﬂuorinated-based
+electrolytes
+excluding
+DTFEG, TFPG, and TFEG systems. Fig-
+ure 5E, corresponding to an OFE-based
+electrolyte, shows that there is almost no
+overlap between the distribution of diffusion
+coefﬁcientsofthe solventand thatofLi+and
+S2 
+8
+in such systems. The ratio of the
+average self-diffusion coefﬁcient of the sol-
+vent to that of Li+ (Dsolvent
+DLi+ ) is estimated to
+range between 6 and 23, which conﬁrms
+that these solvents exist as free molecules
+and do not participate in coordinating with
+Li+. The formation of n-AGGs composed
+of Li+ and S2 
+8
+ions is the origin of the slow
+transport of ions. Once the clusters are formed, the displacements
+of Li+ and polysulﬁdes are restricted to localized motion within or
+around these n-AGGs. The diffusion of Li+ ions through the n-
+AGGs relies on the structural motion, i.e., diffusion of ions through
+successive dissociation/association exchange across labile coor-
+dination structures.8 This mode of diffusion is evident from the
+short Li+ residence time with the solvent (Figures S14 and S15).
+Given that the clusters are relatively immobile, the local motion
+of Li+ ions can barely contribute to long-range charge transport.
+Ionic conductivity studies of these electrolytes composed of 1 M
+LiTFSI in DOL/co-solvent (1/1, v/v) also display values that are,
+on average, between 5.4 and 16.4 times lower than that in the
+DOL/DME system (Figure 6). Such drastic conductivity losses
+are caused by CIP formation and slower ionic mobility in systems
+of group B. The data presented here are consistent with the
+dynamical behavior observed experimentally for ﬂuorinated sol-
+vent-containingelectrolytes58,60andhighlightstheneedforstrate-
+gies that can achieve optimal polysulﬁde solubility without signiﬁ-
+cantly compromising the transport properties. It is also worth
+notingthatalthoughthe viscosities ofsystemsingroup Barelower
+ll
+OPEN ACCESS
+Article
+8
+Patterns 4, 100799, September 8, 2023
+
+<<PAGE 10>>
+thanthoseingroupA (Figure6),theionicconductivitiesofthelatter
+are higher due to their higher ionic dissociation degree.
+Group C (highlighted in orange in Figures 5A–5C) includes acet-
+amide-, formamide-, sulﬁte-, TFEG, and TFPG ﬂuorinated sys-
+tems, and many ether solvents such as DME, DEGDME, and
+TEGDME. These systems are characterized with Poverlap that is
+low with the polysulﬁdes but high with the solvents. The origin of
+this diffusion behavior is attributed to the formation of long-lived
+solvation shells composed of solvent molecules tightly wrapped
+around the cations. For example, the residence time of DME in
+the cation solvation shell is 5.4 ns compared with only 14 ps in
+the OFE electrolyte (Figure S15A). Furthermore, Dsolvent
+DLi+
+varies be-
+tween 1.1 and 1.7 in these systems, suggesting that the Li+ ions
+drift appreciably with their neighboring solvents through vehicular
+motion in the form of positively charged complexes, which is in
+agreement with previously reported experimental evidence.45
+We also note the presence of two peaks in the diffusion coefﬁcient
+distribution of TFEG and TFPG solvents (Figure S13). This obser-
+vation indicates the presence of two distinct groups of TFEG
+and TFPG molecules. The ﬁrst group corresponds to fast solvents
+that exist as free molecules, and the other represents slow sol-
+vents that participate in the ﬁrst solvation shell of the cation.
+Last, systems of group D are characterized with the highest
+ionic diffusion coefﬁcients and low Poverlap with both the solvent
+and the polysulﬁde (highlighted in green in Figures 5A–5C). This
+mode of diffusion occurs in the acetate, nitrile, sulﬁde, and some
+ether-containing electrolytes such as THF and 2-methyl tetrahy-
+drofuran (METHF). Figure 5F, corresponding to an ACN-based
+electrolyte, shows that there is almost no overlap between the
+distribution of diffusion coefﬁcients of Li+ and that of the solvent
+and of S2 
+8
+in such systems. The fast dynamics here are attrib-
+uted to the low viscosity of the solvents36,61 and/or the dominant
+structural diffusion where the neighboring species do not diffuse
+together by a substantial amount. For instance, the ACN ex-
+change rate around the cation is more than six times faster
+than that of DME (Figure S15).
+Conclusion
+In this work, we have developed a database coined ComBat of
+quantum-chemical and molecular dynamics properties for Li-S
+Figure 6. Ionic conductivity and viscosity of the electrolytes in the ComBat dataset
+Horizontal bars correspond to CMD-computed properties for electrolytes composed of 1 M LiTFSI in DOL/co-solvent (1/1, v/v) with error bars representing
+standard deviation. Red hexagons correspond to experimentally reported values from the following references: DME-based electrolyte viscosity57 DME and
+TFEE electrolytes conductivity58 and TTE, TFEPE, and BTFE electrolytes conductivity.59 An interactive plot is hosted on GitHub at https://rashatwi.github.io/
+combat/plots/visc_cond.html.
+ll
+OPEN ACCESS
+Article
+Patterns 4, 100799, September 8, 2023
+9
+
+<<PAGE 11>>
+electrolytes via a high-throughput multi-scale computational
+infrastructure.29 The electrolytes included in the database
+consist of 1 M LiTFSI and 0.25 M Li2S8 in DOL/co-solvent (1/1,
+v/v). The co-solvents span 16 chemical classes that have been
+previously reported in Li-S literature. DFT-computed geome-
+tries, binding energies, RDFs, coordination numbers, diffusion
+coefﬁcients, solvation structures, polysulﬁde clusters, viscos-
+ities, ionic conductivities, and electrolyte conﬁgurations are
+made publicly available.
+We used the ComBat database to develop a fundamental un-
+derstanding of the molecular origins of the reported behavior in
+these electrolyte formulations. We found a positive correlation
+between the degree of Li+ ion dissociation from the polysulﬁdes
+and the binding afﬁnity of the solvent with the salt and the poly-
+sulﬁde. Ion dissociation is a critical property that impacts the
+ionic conductivity and thus the electrochemical performance of
+the battery. We also investigated the structural properties and
+the diffusion mechanism of the electrolyte species. Direct com-
+parisons of diffusion coefﬁcients for a relatively large dataset of
+solvents spanning different chemical classes are unlikely to
+result in meaningful trends and correlations. To overcome this
+challenge, we introduced a quantitative metric that describes
+the probability of overlap between the distribution of the diffusion
+coefﬁcients of two electrolyte species. Using this metric, we
+classiﬁed the Li-S solvents in the ComBat database into four
+groups. We correlated the predicted ensemble properties in
+each group to the solvent properties.
+Last, we note that the ComBat database is a living resource
+and several updates to the database are planned. For example,
+similar systematic studies will be performed in the future to
+include the effect of anions, additives, and various polysulﬁde
+chain lengths. We also plan to include other relevant properties
+such as redox potentials, bond dissociation energies, and trans-
+ference numbers and study the effect of the solvent volumetric
+ratio. With all this in mind, we envision that our work will be
+used to inform and explore viable paths forward to optimize
+the composition of solvent mixtures used in Li-S electrolytes.
+EXPERIMENTAL PROCEDURES
+Resource availability
+Lead contact
+Further information and requests for resources and materials should be
+directed to and will be fulﬁlled by the lead contact, Nav Nidhi Rajput
+(navnidhi.rajput@stonybrook.edu).
+Materials availability
+This study did not generate new, unique reagents.
+Data and code availability
+Other than Gaussian and LAMMPS, all the necessary code used to generate
+and analyze the Li-S dataset (MISPR for workﬂow management: https://
+github.com/molmd/mispr; MDPropTools: for CMD analysis https://github.
+com/molmd/mdproptools; pymatgen for molecule representation and ﬁle i/o
+handling: https://github.com/molmd/pymatgen/tree/molmd_ﬁx; and custo-
+dian for automatic error handling: https://github.com/molmd/custodian) can
+be found on GitHub. The ComBat dataset described in this work is made pub-
+licly available at GitHub (https://github.com/rashatwi/combat) and Zenodo:
+https://doi.org/10.5281/zenodo.7830272.31
+SUPPLEMENTAL INFORMATION
+Supplemental information can be found online at https://doi.org/10.1016/j.
+patter.2023.100799.
+ACKNOWLEDGMENTS
+The authors acknowledge funding from LG Energy Solutions. R.A. acknowl-
+edges support via a Junior Research Award from the Institute for Advanced
+Computational Science (IACS) at Stony Brook University. The authors also
+acknowledge computing resources from IACS.
+AUTHOR CONTRIBUTIONS
+Conceptualization, R.A. and N.N.R.; Methodology, software, validation, formal
+analysis, investigation, data curation, writing – original draft, visualization, R.A.;
+Writing – reviewing & editing, R.A. and N.N.R.; Supervision, project administra-
+tion, and funding acquisition, N.N.R.
+DECLARATION OF INTERESTS
+The authors declare no competing interests.
+Received: December 15, 2022
+Revised: April 21, 2023
+Accepted: June 21, 2023
+Published: July 25, 2023
+REFERENCES
+1. Nitta, N., Wu, F., Lee, J.T., and Yushin, G. (2015). Li-ion battery materials:
+present and future. Mater. Today 18, 252–264. https://doi.org/10.1016/j.
+mattod.2014.10.040.
+2. Li, Y., and Guo, S. (2021). Material design and structure optimization for
+rechargeable lithium-sulfur batteries. Matter 4, 1142–1188. https://doi.
+org/10.1016/j.matt.2021.01.012.
+3. Liu, K., Liu, Y., Lin, D., Pei, A., and Cui, Y. (2018). Materials for lithium-ion
+battery safety. Sci. Adv. 4, eaas9820. https://doi.org/10.1126/sciadv.
+aas9820.
+4. Manthiram, A., Chung, S.H., and Zu, C. (2015). Lithium–sulfur batteries:
+progress and prospects. Adv. Mater. 27, 1980–2006. https://doi.org/10.
+1002/adma.201405115.
+5. Shen, Z., Zhang, W., Mao, S., Li, S., Wang, X., and Lu, Y. (2021). Tailored
+Electrolytes Enabling Practical Lithium–Sulfur Full Batteries via Interfacial
+Protection. ACS Energy Lett. 6, 2673–2681. https://doi.org/10.1021/acse-
+nergylett.1c01091.
+6. Bruce, P.G., Freunberger, S.A., Hardwick, L.J., and Tarascon, J.-M.
+(2011). Li–O2 and Li–S batteries with high energy storage. Nat. Mater.
+11, 19–29. https://doi.org/10.1038/nmat3191.
+7. Manthiram, A., Fu, Y., and Su, Y.-S. (2013). Challenges and prospects of
+lithium–sulfur batteries. Acc. Chem. Res. 46, 1125–1134. https://doi.org/
+10.1021/ar300179v.
+8. Yu, Z., Balsara, N.P., Borodin, O., Gewirth, A.A., Hahn, N.T., Maginn, E.J.,
+Persson, K.A., Srinivasan, V., Toney, M.F., Xu, K., et al. (2021). Beyond
+Local
+Solvation
+Structure:
+Nanometric
+Aggregates
+in
+Battery
+Electrolytes and Their Effect on Electrolyte Properties. ACS Energy Lett.
+7, 461–470. https://doi.org/10.1021/acsenergylett.1c02391.
+9. Zhao, M., Li, B.Q., Peng, H.J., Yuan, H., Wei, J.Y., and Huang, J.Q. (2020).
+Lithium–sulfur batteries under lean electrolyte conditions: challenges and
+opportunities. Angew. Chem. Int. Ed. Engl. 59, 12636–12652. https://doi.
+org/10.1002/anie.201909339.
+10. Zhang, L., Liu, D., Muhammad, Z., Wan, F., Xie, W., Wang, Y., Song, L.,
+Niu, Z., and Chen, J. (2019). Single nickel atoms on nitrogen-doped gra-
+phene enabling enhanced kinetics of lithium–sulfur batteries. Adv.
+Mater. 31, 1903955. https://doi.org/10.1002/adma.201903955.
+11. Wu, F., Chen, S., Srot, V., Huang, Y., Sinha, S.K., van Aken, P.A., Maier, J.,
+and Yu, Y. (2018). A Sulfur–Limonene-Based Electrode for Lithium–Sulfur
+Batteries: High-Performance by Self-Protection. Adv. Mater. 30, 1706643.
+https://doi.org/10.1002/adma.201706643.
+12. Wu, F., Lee, J.T., Fan, F., Nitta, N., Kim, H., Zhu, T., and Yushin, G. (2015).
+A Hierarchical Particle–Shell Architecture for Long-Term Cycle Stability of
+ll
+OPEN ACCESS
+Article
+10
+Patterns 4, 100799, September 8, 2023
+
+<<PAGE 12>>
+Li2S Cathodes. Adv. Mater. 27, 5579–5586. https://doi.org/10.1002/
+adma.201502289.
+13. Wild,
+M.,
+and
+Offer,
+G.J.
+(2019).
+Lithium-sulfur
+Batteries
+(John
+Wiley & Sons).
+14. Chen, J., Han, K.S., Henderson, W.A., Lau, K.C., Vijayakumar, M.,
+Dzwiniel, T., Pan, H., Curtiss, L.A., Xiao, J., Mueller, K.T., et al. (2016).
+Restricting the Solubility of Polysulﬁdes in Li-S Batteries Via Electrolyte
+Salt Selection. Adv. Energy Mater. 6, 1600160. https://doi.org/10.1002/
+aenm.201600160.
+15. Rajput, N.N., Murugesan, V., Shin, Y., Han, K.S., Lau, K.C., Chen, J., Liu,
+J., Curtiss, L.A., Mueller, K.T., and Persson, K.A. (2017). Elucidating the
+solvation structure and dynamics of lithium polysulﬁdes resulting from
+competitive salt and solvent interactions. Chem. Mater. 29, 3375–3379.
+https://doi.org/10.1021/acs.chemmater.7b00068.
+16. Zu, C., Azimi, N., Zhang, Z., and Manthiram, A. (2015). Insight into lithium–
+metal anodes in lithium–sulfur batteries with a ﬂuorinated ether electro-
+lyte. J. Mater. Chem. A Mater. 3, 14864–14870. https://doi.org/10.1039/
+C5TA03195H.
+17. Cheng, L., Curtiss, L.A., Zavadil, K.R., Gewirth, A.A., Shao, Y., and
+Gallagher, K.G. (2016). Sparingly solvating electrolytes for high energy
+density lithium–sulfur batteries. ACS Energy Lett. 1, 503–509. https://
+doi.org/10.1021/acsenergylett.6b00194.
+18. Azimi, N., Xue, Z., Bloom, I., Gordin, M.L., Wang, D., Daniel, T., Takoudis,
+C., and Zhang, Z. (2015). Understanding the effect of a ﬂuorinated ether on
+the performance of lithium–sulfur batteries. ACS Appl. Mater. Interfaces 7,
+9169–9177. https://doi.org/10.1021/acsami.5b01412.
+19. Azimi, N., Weng, W., Takoudis, C., and Zhang, Z. (2013). Improved perfor-
+mance of lithium–sulfur battery with ﬂuorinated electrolyte. Electrochem.
+Commun. 37, 96–99. https://doi.org/10.1016/j.elecom.2013.10.020.
+20. Gordin, M.L., Dai, F., Chen, S., Xu, T., Song, J., Tang, D., Azimi, N., Zhang,
+Z., and Wang, D. (2014). Bis (2, 2, 2-triﬂuoroethyl) ether as an electrolyte co-
+solvent for mitigating self-discharge in lithium–sulfur batteries. ACS Appl.
+Mater. Interfaces 6, 8006–8010. https://doi.org/10.1021/am501665s.
+21. Azimi, N., Xue, Z., Rago, N.D., Takoudis, C., Gordin, M.L., Song, J., Wang,
+D., and Zhang, Z. (2014). Fluorinated electrolytes for Li-S battery: sup-
+pressing the self-discharge with an electrolyte containing ﬂuoroether sol-
+vent. J. Electrochem. Soc. 162, A64–A68. https://doi.org/10.1149/2.
+0431501jes.
+22. Yoon, S., Lee, Y.-H., Shin, K.-H., Cho, S.B., and Chung, W.J. (2014).
+Binary sulfone/ether-based electrolytes for rechargeable lithium-sulfur
+batteries. Electrochim. Acta 145, 170–176. https://doi.org/10.1016/j.elec-
+tacta.2014.09.007.
+23. Liu, Y., Pan, Y., Ban, J., Li, T., Jiao, X., Hong, X., Xie, K., Song, J., Matic, A.,
+and Xiong, S. (2020). Promoted rate and cycling capability of Li–S batteries
+enabled by targeted selection of co-solvent for the electrolyte. Energy
+Storage Mater. 25, 131–136. https://doi.org/10.1016/j.ensm.2019.10.022.
+24. Xu, K., and Angell, C.A. (2002). Sulfone-based electrolytes for lithium-ion
+batteries. J. Electrochem. Soc. 149, A920. https://doi.org/10.1149/1.
+1483866.
+25. Glaser, R., Borodin, O., Johnson, B., Jhulki, S., and Yushin, G. (2021).
+Minimizing Long-Chain Polysulﬁde Formation in Li-S Batteries by Using
+Localized
+Low
+Concentration
+Highly
+Fluorinated
+Electrolytes.
+J. Electrochem. Soc. 168, 090543. https://doi.org/10.1149/1945-7111/
+ac2467.
+26. Chen, J., Yang, H., Zhang, X., Lei, J., Zhang, H., Yuan, H., Yang, J., Nuli, Y.,
+and Wang, J. (2019). Highly Reversible Lithium-Metal Anode and Lithium–
+Sulfur Batteries Enabled by an Intrinsic Safe Electrolyte. ACS Appl. Mater.
+Interfaces 11, 33419–33427. https://doi.org/10.1021/acsami.9b09215.
+27. Wang, J., Lin, F., Jia, H., Yang, J., Monroe, C.W., and NuLi, Y. (2014).
+Towards a safe lithium–sulfur battery with a ﬂame-inhibiting electrolyte
+and a sulfur-based composite cathode. Angew. Chem. Int. Ed. Engl. 53,
+10099–10104. https://doi.org/10.1002/anie.201405157.
+28. Cuisinier,
+M.,
+Cabelguen,
+P.-E.,
+Adams,
+B.D.,
+Garsuch,
+A.,
+Balasubramanian, M., and Nazar, L.F. (2014). Unique behaviour of nonsol-
+vents for polysulphides in lithium–sulphur batteries. Energy Environ. Sci. 7,
+2697–2705. https://doi.org/10.1039/C4EE00372A.
+29. Atwi, R., Bliss, M., Makeev, M., and Rajput, N.N. (2022). MISPR: an open-
+source package for high-throughput multiscale molecular simulations.
+Sci. Rep. 12, 15760. https://doi.org/10.1038/s41598-022-20009-w.
+30. Atwi, R., Chen, Y., Han, K.S., Mueller, K.T., Murugesan, V., and Rajput,
+N.N. (2022). An automated framework for high-throughput predictions of
+NMR chemical shifts within liquid solutions. Nat. Comput. Sci. 2,
+112–122. https://doi.org/10.1038/s43588-022-00200-9.
+31. Atwi, R., and Rajput, N.N. (2023). The ComBat Database: A Database of
+Quantum-Chemical
+and
+Molecular
+Dynamics
+Properties
+for
+Li-S
+Electrolytes. https://doi.org/10.5281/zenodo.7830272.
+32. Kim, S., Chen, J., Cheng, T., Gindulyte, A., He, J., He, S., Li, Q.,
+Shoemaker, B.A., Thiessen, P.A., Yu, B., et al. (2023). PubChem 2023 up-
+date. Nucleic Acids Res. 51, D1373–D1380. https://doi.org/10.1093/nar/
+gkac956.
+33. Zou, Q., and Lu, Y.-C. (2016). Solvent-dictated lithium sulfur redox reac-
+tions: an operando UV–vis spectroscopic study. J. Phys. Chem. Lett. 7,
+1518–1525. https://doi.org/10.1021/acs.jpclett.6b00228.
+34. Baek, M., Shin, H., Char, K., and Choi, J.W. (2020). New high donor elec-
+trolyte for lithium–sulfur batteries. Adv. Mater. 32, 2005022. https://doi.
+org/10.1002/adma.202005022.
+35. Li, Z., Zhou, Y., Wang, Y., and Lu, Y.C. (2019). Solvent-mediated Li2S elec-
+trodeposition: a critical manipulator in lithium–sulfur batteries. Adv. Energy
+Mater. 9, 1802207. https://doi.org/10.1002/aenm.201802207.
+36. He, Q., Gorlin, Y., Patel, M.U.M., Gasteiger, H.A., and Lu, Y.-C. (2018).
+Unraveling the correlation between solvent properties and sulfur redox
+behavior in lithium-sulfur batteries. J. Electrochem. Soc. 165, A4027–
+A4033. https://doi.org/10.1149/2.0991816jes.
+37. Guo, J., Xu, Y., and Wang, C. (2011). Sulfur-impregnated disordered car-
+bon nanotubes cathode for lithium–sulfur batteries. Nano Lett. 11, 4288–
+4294. https://doi.org/10.1021/nl202297p.
+38. Weng, W., Pol, V.G., and Amine, K. (2013). Ultrasound assisted design of
+sulfur/carbon cathodes with partially ﬂuorinated ether electrolytes for
+highly efﬁcient Li/S batteries. Adv. Mater. 25, 1608–1615. https://doi.
+org/10.1002/adma.201204051.
+39. Zheng, J., Ji, G., Fan, X., Chen, J., Li, Q., Wang, H., Yang, Y., DeMella,
+K.C., Raghavan, S.R., and Wang, C. (2019). High-ﬂuorinated electrolytes
+for Li–S batteries. Adv. Energy Mater. 9, 1803774. https://doi.org/10.
+1002/aenm.201803774.
+40. Gu, S., Qian, R., Jin, J., Wang, Q., Guo, J., Zhang, S., Zhuo, S., and Wen, Z.
+(2016). Suppressing the dissolution ofpolysulﬁdes with cosolvent ﬂuorinated
+diether towards high-performance lithium sulfur batteries. Phys. Chem.
+Chem. Phys. 18, 29293–29299. https://doi.org/10.1039/C6CP04775K.
+41. Yang, H.J., and Jung, Y. (2015). Effects of Polysulﬁde Nonsolvents on the
+Electrochemical Performance of Li-S Batteries. Int. J. Electrochem. Sci.
+10, 9049–9055. http://electrochemsci.org/papers/vol10/101109049.pdf.
+42. Liu, T., Shi, Z., Li, H., Xue, W., Liu, S., Yue, J., Mao, M., Hu, Y.s., Li, H.,
+Huang,
+X.,
+et
+al.
+(2021).
+Low-Density
+Fluorinated
+Silane
+Solvent
+Enhancing Deep Cycle Lithium–Sulfur Batteries’ Lifetime. Adv. Mater.
+33, 2102034. https://doi.org/10.1002/adma.202102034.
+43. Berger, R., Resnati, G., Metrangolo, P., Weber, E., and Hulliger, J. (2011).
+Organic ﬂuorine compounds: a great opportunity for enhanced materials
+properties. Chem. Soc. Rev. 40, 3496–3508. https://doi.org/10.1039/
+C0CS00221F.
+44. Fan, X., Ji, X., Chen, L., Chen, J., Deng, T., Han, F., Yue, J., Piao, N., Wang,
+R., Zhou, X., et al. (2019). All-temperature batteries enabled by ﬂuorinated
+electrolytes with non-polar solvents. Nat. Energy 4, 882–890. https://doi.
+org/10.1038/s41560-019-0474-3.
+45. Zhang, S., Ueno, K., Dokko, K., and Watanabe, M. (2015). Recent ad-
+vances in electrolytes for lithium–sulfur batteries. Adv. Energy Mater. 5,
+1500117. https://doi.org/10.1002/aenm.201500117.
+46. Luo, D., Li, M., Zheng, Y., Ma, Q., Gao, R., Zhang, Z., Dou, H., Wen, G.,
+Shui, L., Yu, A., et al. (2021). Electrolyte Design for Lithium Metal
+ll
+OPEN ACCESS
+Article
+Patterns 4, 100799, September 8, 2023
+11
+
+<<PAGE 13>>
+Anode-Based Batteries Toward Extreme Temperature Application. Adv.
+Sci. 8, 2101051. https://doi.org/10.1002/advs.202101051.
+47. Marcus, Y. (2005). Electrostriction, ion solvation, and solvent release on
+ion pairing. J. Phys. Chem. B 109, 18541–18549. https://doi.org/10.
+1021/jp051505k.
+48. Israelachvili,J.N.(2011).IntermolecularandSurfaceForces(Academicpress).
+49. Pan, H., Wei, X., Henderson, W.A., Shao, Y., Chen, J., Bhattacharya, P.,
+Xiao, J., and Liu, J. (2015). On the way toward understanding solution
+chemistry of lithium polysulﬁdes for high energy Li–S redox ﬂow batteries.
+Adv. Energy Mater. 5, 1500113. https://doi.org/10.1002/aenm.201500113.
+50. Sun, K., Wu, Q., and Gan, H. (2018). Molecular insights into ether-based
+electrolytes for Li-FeS2 batteries. Energy Storage Mater. 12, 85–93.
+https://doi.org/10.1016/j.ensm.2017.12.003.
+51. Sun, K., Wu, Q., Tong, X., and Gan, H. (2018). Electrolyte with low polysul-
+ﬁde solubility for Li–S batteries. ACS Appl. Energy Mater. 1, 2608–2618.
+https://doi.org/10.1021/acsaem.8b00317.
+52. Lee, C.-W., Pang, Q., Ha, S., Cheng, L., Han, S.-D., Zavadil, K.R.,
+Gallagher, K.G., Nazar, L.F., and Balasubramanian, M. (2017). Directing
+the lithium–sulfur reaction pathway via sparingly solvating electrolytes
+for high energy density batteries. ACS Cent. Sci. 3, 605–613. https://doi.
+org/10.1021/acscentsci.7b00123.
+53. Vijayakumar, M., Govind, N., Walter, E., Burton, S.D., Shukla, A., Devaraj,
+A., Xiao, J., Liu, J., Wang, C., Karim, A., and Thevuthasan, S. (2014).
+Molecular structure and stability of dissolved lithium polysulﬁde species.
+Phys. Chem. Chem. Phys. 16, 10923–10932. https://doi.org/10.1039/
+C4CP00889H.
+54. Chen, S., Dai, F., Gordin, M.L., Yu, Z., Gao, Y., Song, J., and Wang, D.
+(2016). Functional organosulﬁde electrolyte promotes an alternate reac-
+tion pathway to achieve high performance in lithium–sulfur batteries.
+Angew. Chem. Int. Ed. Engl. 55, 4231–4235. https://doi.org/10.1002/
+anie.201511830.
+55. Hilbig, P., Ibing, L., Wagner, R., Winter, M., and Cekic-Laskovic, I. (2017).
+Ethyl methyl sulfone-based electrolytes for lithium ion battery applica-
+tions. Energies 10, 1312. https://doi.org/10.3390/en10091312.
+56. Feng, S., Huang, M., Lamb, J.R., Zhang, W., Tatara, R., Zhang, Y., Zhu,
+Y.G.,
+Perkinson,
+C.F.,
+Johnson,
+J.A.,
+and
+Shao-Horn,
+Y.
+(2019).
+Molecular design of stable sulfamide-and sulfonamide-based electrolytes
+for aprotic Li-O2 batteries. Chem 5, 2630–2641. https://doi.org/10.1016/j.
+chempr.2019.07.003.
+57. Kim, H.-S., and Jeong, C.-S. (2011). Electrochemical properties of binary
+electrolytes for lithium-sulfur batteries. Bull. Kor. Chem. Soc. 32, 3682–
+3686. https://doi.org/10.5012/bkcs.2011.32.10.3682.
+58. Gao, M., Su, C., He, M., Glossmann, T., Hintennach, A., Feng, Z., Huang,
+Y., and Zhang, Z. (2017). A high performance lithium–sulfur battery
+enabled by a ﬁsh-scale porous carbon/sulfur composite and symmetric
+ﬂuorinated diethoxyethane electrolyte. J. Mater. Chem. A Mater. 5,
+6725–6733. https://doi.org/10.1039/C7TA01057E.
+59. Su, C.C., He, M., Amine, R., and Amine, K. (2019). A Selection Rule for
+Hydroﬂuoroether
+Electrolyte
+Cosolvent:
+Establishing
+a
+Linear
+Free-Energy Relationship in Lithium–Sulfur Batteries. Angew. Chem.
+131, 10701–10705. https://doi.org/10.1002/ange.201904240.
+60. Yue, Z., Dunya, H., Aryal, S., Segre, C.U., and Mandal, B. (2018). Synthesis
+and electrochemical properties of partially ﬂuorinated ether solvents for
+lithiumsulfur battery electrolytes. J. Power Sources 401, 271–277.
+https://doi.org/10.1016/j.jpowsour.2018.08.097.
+61. Ryu, H.S., Ahn, H.J., Kim, K.W., Ahn, J.H., Cho, K.K., Nam, T.H., Kim, J.U.,
+and Cho, G.B. (2006). Discharge behavior of lithium/sulfur with TEGDME
+based electrolytes at low temperature. J. Power Sources 163, 201–206.
+https://doi.org/10.1016/j.jpowsour.2005.12.061.
+ll
+OPEN ACCESS
+Article
+12
+Patterns 4, 100799, September 8, 2023

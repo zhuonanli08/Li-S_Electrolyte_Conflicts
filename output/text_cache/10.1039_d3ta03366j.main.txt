@@ -1,0 +1,1323 @@
+
+<<PAGE 1>>
+Mechanistic insights into trisulfur radical
+generation in lithium–sulfur batteries†
+Xu Han
+and Xuefei Xu
+*
+Trisulfur radicals (LiS3
+$ and S3
+$) are crucial reaction intermediates that can activate new reaction pathways
+to facilitate sulfur species conversion in liquid electrolytes of lithium–sulfur batteries. Understanding the
+complicated solution chemistry of trisulfur radical generation can help to discover new strategies for
+improving sulfur conversion kinetics. In this work, we employ density functional theory (DFT) to
+investigate the generation mechanism of trisulfur radicals in dimethyl sulfoxide (DMSO) and 1,3-
+dioxolane (DOL) solvents. DMSO solvent with a higher dielectric constant and a larger donor number has
+a stronger lithiophilicity than DOL and can weaken the Li–S bonds of Li-containing polysulﬁdes more
+eﬃciently, resulting in the discrepancy that Li2S6 can dissociate into LiS6
+ and S6
+2 in DMSO, while
+keeping a neutral state in DOL. The computed reaction energetics suggest that hexasulﬁdes (Li2S6, LiS6
+,
+and S6
+2) are thermodynamically feasible to generate trisulfur radicals in DMSO, and the generation
+reaction would be more exergonic when hexasulﬁdes are more fully solvated. However, the formation of
+trisulfur radicals in DOL is always unfavorable. Possible reaction mechanisms to produce trisulfur radicals
+are further proposed, and the computed maximum free energy barriers along the proposed pathways
+are 9.62 and 19.08 kcal mol−1 in DMSO and DOL, respectively, that explains the solvent-dependence of
+trisulfur radical generation from the kinetic aspect. This work provides a deeper understanding of
+solution-based sulfur chemistry and contributes to electrolyte optimization for high-rate polysulﬁde
+conversion.
+1.
+Introduction
+Lithium–sulfur (Li–S) batteries, with an ultrahigh theoretical
+energy density as high as 2600 W h kg−1, have proven to be
+a promising alternative to traditional lithium-ion batteries.1,2 As
+opposed to the lithium-ion (de)intercalation mechanism in
+lithium-ion batteries, the cathode reaction of Li–S batteries
+involves the redox conversion of sulfur and lithium polysuldes
+(LiPSs). Some LiPSs (Li2Sx, 2 < x # 8) can dissolve into liquid
+electrolytes. Such inevitable dissolution would lead to the shut-
+tling of LiPSs into the anode side and the subsequent undesirable
+parasitic reactions with the lithium metal, which eventually
+damages the capacity and cycling stability of batteries.3–6
+To suppress this shuttling phenomenon, tremendous eﬀorts
+have been dedicated to reducing LiPS dissolution by strength-
+ening
+their
+anchoring
+and
+conversion
+on
+the
+cathode
+surface.7–12 However, through this surface-based strategy, it is
+hard to fully escape the kinetic constraints of cathode materials
+due to the insulation nature of sulfur bulk deposits.13,14 The
+polysulde-assisted
+solution-based
+pathway
+provides
+an
+alternative solution to inhibit the shuttle eﬀect, as it allows for
+the dissolution of LiPSs but aﬀords an electrolyte environment
+for enhancing interactions of sulfur species.15–20 This strategy
+guarantees a greater improvement of LiPS conversion kinetics
+than the surface-based one as theoretically claimed: (i) the
+soluble sulfur species in electrolytes drastically alleviate the
+dependence of triple-phase interfaces for redox reactions, and
+solution surroundings can enable more smooth mass/charge
+transport;
+(ii)
+solvents
+serve
+as
+mediators
+participating
+directly in the conversion of sulfur species and activate addi-
+tional reaction paths involving S3$ radicals to facilitate the
+eﬀective utilization of sulfur.15,18,21,22
+Since S3$ radicals serve as a key redox intermediate to
+enhance sulfur interconversion reactions, probing into their
+origins can contribute to the understanding of the sulfur redox
+mechanism and to the electrolyte optimization of Li–S batteries.
+It is generally accepted that S3$ is produced by the S–S bond
+cleavage of S62.23,24 Concerning that in situ experiments are
+diﬃcult to distinguish the lithiation states of dissolved poly-
+suldes (e.g., neutral molecules Li2Sx, monoanions LiSx, or
+dianions Sx2),25–27 to be exact, experimentally detected radicals
+are possibly in the form of either LiS3
+$ or S3$, whose parent
+species can be Li2S6, LiS6
+, or S62. For convenience, we refer to
+Li2S6, LiS6
+, and S62 as hexasuldes and to LiS3
+$ and S3$ as
+trisulfur radicals. Interestingly, trisulfur radicals are not
+Center for Combustion Energy, Department of Energy and Power Engineering and Key
+Laboratory for Thermal Science and Power Engineering of Ministry of Education,
+Tsinghua University, Beijing 100084, China. E-mail: xuxuefei@tsinghua.edu.cn
+† Electronic
+supplementary
+information
+(ESI)
+available.
+See
+DOI:
+https://doi.org/10.1039/d3ta03366j
+Cite this: J. Mater. Chem. A, 2023, 11,
+18922
+Received 7th June 2023
+Accepted 10th August 2023
+DOI: 10.1039/d3ta03366j
+rsc.li/materials-a
+18922 | J. Mater. Chem. A, 2023, 11, 18922–18932
+This journal is © The Royal Society of Chemistry 2023
+Journal of
+Materials Chemistry A
+PAPER
+Published on 11 August 2023
+Licence and permissions
+
+<<PAGE 2>>
+observed in all electrolyte systems, and their presence is heavily
+dependent on the solvent types. For example, trisulfur radicals
+have been proven to exist in solvents such as dimethyl sulfoxide
+(DMSO) and N,N-dimethylacetamide (DMA), while they are
+rarely measurable in ether-based solvents such as 1,3-dioxolane
+(DOL) and 1,2-dimethoxy ethane (DME).18,28–31 This solvent-
+dependent phenomenon has been attributed to the discrep-
+ancy of solvent properties including the dielectric constant (3)
+and donor number (DN).16,18,30 The DN of a solvent, proposed by
+Gutmann,32 is dened as the negative reaction enthalpy for the
+1 : 1 adduct formation between the solvent (sol) and the stan-
+dard Lewis acid antimony pentachloride (SbCl5):
+sol + SbCl5 / sol −SbCl5, DN = −DH (kcal mol−1)
+(1)
+where the solvent sol and SbCl5 are both diluted in the reference
+solvent 1,2-dichloroethane (DCE) at 25 °C. A higher DN value
+reects stronger binding strength of the solvent sol as the Lewis
+base.
+Theoretical tools play a vital role in explaining this experi-
+mental observation. Based on DFT methods, Du et al. revealed
+the tendency that the higher the 3 and DN of solvents, the more
+favorable the formation of trisulfur radicals.33 Zhang et al.
+calculated the dissociation constants from Li2S6 to LiS3
+$ and
+displayed the negligible concentration of LiS3
+$ in low 3/DN DME
+solvent.34 Nevertheless, how 3 and DN of solvents inuence the
+formation of trisulfur radicals remains vague, and deeper
+theoretical insights are required.
+Moreover, the generation of free radicals in solution is
+a complex process rather than just breaking S–S bonds because
+the solvation environment intricately aﬀects the structures and
+energetics of dissolved sulfur species. Specically, solvent
+molecules explicitly bond with solutes, and the (de)solvation
+energy would be distinct when solutes are coordinated by
+diﬀerent numbers of solvents, namely in diﬀerent solvation
+statuses
+(e.g.,
+non-solvated,
+partially
+solvated,
+and
+fully
+solvated).35–37 Lin et al. found that varying the concentration of
+electrolytes results in diﬀerent solvation statuses of poly-
+suldes, thus signicantly aﬀecting the open circuit voltage of
+batteries.38 Whether the solvation statuses of sulfur species
+aﬀect the generation of trisulfur radicals is worthy of in-depth
+exploration. Furthermore, in addition to extensive thermody-
+namic studies on the conversion reactions of sulfur species in
+solution,33,34,39–42 kinetic analysis is also necessary to elucidate
+the mechanism. Therefore, a combined kinetics and thermo-
+dynamics investigation with adequate solvation considerations
+would be of crucial signicance for understanding the genera-
+tion of trisulfur radicals in liquid electrolytes.
+In this work, the generation reactions of trisulfur radicals in
+DMSO and DOL are studied by DFT calculations. Here, DMSO
+and DOL are chosen as they are respectively representative high
+3/DN and low 3/DN solvents commonly used in Li–S batteries.43
+We rst study the solvation behavior of reaction-relevant
+species including Li2S6, LiS6
+, S62, LiS3
+$, S3$, and Li+. Pref-
+erential solvation statuses (non-solvated, partially solvated, and
+fully solvated) are identied. Based on the reaction free energies
+of inter-transformation among Li2S6, LiS6
+, and S62 in various
+solvation statuses, the favorable lithiation forms of hexasuldes
+are found to be distinct in DMSO and DOL. Additionally, the
+underlying reason for this observation is discussed. Then the
+decomposition reactions of hexasuldes to form trisulfur radi-
+cals are evaluated from the thermodynamic aspect. In the end,
+combined with a kinetic analysis, possible reaction pathways to
+produce trisulfur radicals are proposed. Our study analyzes the
+critical roles of solvents in the interactions with sulfur species
+and demonstrates the detailed mechanisms for trisulfur radical
+generation in liquid electrolytes.
+2.
+Computational details
+All the density functional calculations were performed using
+a locally modied Gaussian 0944 program with the Minnesota
+Gaussian Functional Module (MN-GFM).45 The Kohn–Sham
+(KS) exchange correlation functional has been carefully selected
+to achieve satisfactory precision and eﬃciency with Wuhan–
+Minnesota
+scaling
+(WMS)46
+calculations
+for
+the
+S62/S3$ þ S3$ gas-phase reaction as the benchmark. The
+details are given in the ESI.† A global-hybrid meta-GGA func-
+tional namely revM06 47 with ultrane integration grids was
+nally utilized for all calculations. Referring to the MG3S basis
+set48 and the Complete Basis Set (CBS) method,49 we utilized
+a combination of Pople-type basis sets50 to obtain high accuracy
+energy. Specically, we adopted 6-311+G(d,p) for all atoms
+except S and 6-311+G(2d) with one extra polarization function
+for S atoms in all geometry optimizations. For simplicity, we
+label this group of basis sets as BASES. Aer the optimization
+step, the potential energy was recalculated with a larger basis
+set, that is, 6-311+G(2df,2p) for non-sulfur atoms and 6-
+311+G(3d2f) for S atoms. This group of basis sets is denoted as
+BASEL. The reasonability of this combination of model chem-
+istry (revM06/BASEL//revM06/BASES) was evaluated and results
+are shown in the ESI.† Unless otherwise stated, all potential
+energies (symbol E) are calculated by using revM06/BASEL and
+all free energies (symbol G) are calculated as the sum of
+potential energies by using revM06/BASEL and free energy
+corrections by using revM06/BASES at room temperature
+(298.15 K). Basis set superposition error (BSSE)51 corrections
+have been considered and found negligibly small (see Table
+S4†). To simulate the solvent environment, we employed a SMD
+continuous
+solvation
+model.52
+Calculation
+setups
+in
+the
+Gaussian 09 program for diﬀerent solvent systems are provided
+in the ESI.† Besides, the solvation shell of solute species was
+treated with explicit solvent molecules.
+In order to examine the stability of solute species solvated by
+diﬀerent numbers of solvent molecules, we calculate the total
+binding free energies (Gb) and the successive binding free
+energies (DGb) using the following equations.
+Gb(n) = G[M(sol)n] −G[M] −nG[sol]
+(2)
+DGb(n) = G[M(sol)n] −G[M(sol)n−1] −G(sol)
+(3)
+where M and sol denote the solute and the solvent molecule
+(DMSO or DOL), respectively. M(sol)n is the solvated M by n
+This journal is © The Royal Society of Chemistry 2023
+J. Mater. Chem. A, 2023, 11, 18922–18932 | 18923
+Paper
+Journal of Materials Chemistry A
+
+<<PAGE 3>>
+solvent molecules. Gb(n) and DGb(n) are the same when n equals
+1. In the free energy calculations of solvated species in solution,
+a correction of +1.89 kcal mol−1 is applied to convert the stan-
+dard state in the gas phase with a pressure of 1 atm and
+a temperature of 298.15 K to the standard state in the solution
+phase with a concentration of 1 mol L−1 and a temperature of
+298.15 K. Similarly, this correction is also applied when calcu-
+lating the reaction free energies and free energy barriers in
+solution. According to the denition of these two kinds of
+binding free energies, Gb(n) reect the binding strength of n
+solvent molecules with the solute, and DGb(n) represent the
+ability to accept the nth solvent molecule for solvation. As
+depicted in Scheme 1, three kinds of possible solvation statuses
+are determined based on Gb(n) and DGb(n + 1). Gb(n = 1) < 0 is
+a prerequisite to ensure thermodynamic feasibility for solva-
+tion, otherwise the solute is in the non-solvated status. With the
+increasing number of solvent molecules available for coordi-
+nation, the solute could be successively in partially solvated and
+fully solvated statuses. Note that a partially solvated solute
+[Gb(n) < 0 and DGb(n + 1) < 0] only exists in the system without
+uncoordinated free solvent molecules because free solvents, if
+any, would spontaneously bind with this solute. Only in fully
+solvated systems [Gb(n) < 0 and DGb(n + 1) > 0] can free solvent
+molecules stably coexist with solutes.
+3.
+Results and discussion
+3.1
+Reactions involved in the generation processes of
+trisulfur radicals
+The trisulfur radicals can be formed directly via the dissociation
+reaction of S62/2S3$. Based on the present calculations, in
+the gas phase, this reaction is exergonic with a free energy
+barrier and reaction free energy of 10.65 and −58.83 kcal mol−1,
+respectively. However, in a practical electrolyte environment,
+the generation of trisulfur radicals is more complicated. Firstly,
+as mentioned before, S62 and S3$ may stay at diﬀerent lith-
+iation states, so in addition to S62 and S3$, we also need to
+consider the roles of Li2S6, LiS6
+, and LiS3
+$ species when
+examining the presence of trisulfur radicals. Secondly, solute–
+solvent interactions may play a vital role in the structures and
+energetics of dissolved species, and thus the solvation eﬀect
+also has to be explicitly considered. Generally, as depicted in
+Scheme 2, two types of reactions are involved in the generation
+processes of trisulfur radicals (LiS3
+$ and S3$) from hexasuldes
+(Li2S6, LiS6
+, and S62). The rst type determines the prefer-
+ential lithiation states of hexasuldes (see reactions R1–R3) in
+diﬀerent solvents, and the second one, including R4–R9,
+corresponds to the decomposition of hexasuldes to form tri-
+sulfur radicals.
+3.2
+Solvation of relevant species
+Reactions R1–R9 in Scheme 2 involve six likely species, namely
+Li2S6, LiS6
+, S62, LiS3
+$, S3$, and Li+. The solvation structures
+of these species are fully explored. For each possible solvation
+status, lots of initial congurations with the coordinated solvent
+molecules in diﬀerent binding sites and orientations are
+designed and fully optimized, and then the most stable struc-
+tures are selected for further analysis. Note that in this work we
+only consider the coordinated solvents in the rst solvation
+shell as the peripheral solvent shells have negligible interac-
+tions with solutes.
+Scheme 1
+Diﬀerent solvation statuses of solutes in solvents: (a) non-solvated, (b) partially solvated, and (c) fully solvated.
+Scheme 2
+Relevant reactions in the generation of trisulfur radicals.
+18924 | J. Mater. Chem. A, 2023, 11, 18922–18932
+This journal is © The Royal Society of Chemistry 2023
+Journal of Materials Chemistry A
+Paper
+
+<<PAGE 4>>
+As shown in Fig. S1–S6†, in the solvation structures of
+lithium polysuldes (Li2S6, LiS6
+, and LiS3
+$), lithium always
+acts as the bridging atom between the sulfur chain and solvent,
+directly binding with the oxygen atoms in DMSO or DOL
+molecules. For S62 and S3$ without lithium, their solvation is
+found to be energetically unfavorable because of positive
+binding free energies with DMSO or DOL (see Table 1). Namely,
+S62 and S3$ are always in the non-solvated status regardless of
+the content of solvent molecules in electrolytes. Such intuitive
+inspection reveals that Li–solvent chemistry plays a crucial role
+in the dissolution and solvation of sulfur species.
+Table 1 shows that Gb(n) values in DMSO solvent are usually
+more negative than those in DOL for each Li-containing species
+(Li2S6, LiS6
+, LiS3
+$, and Li+) with the same number of coordi-
+nated solvents (NCS, n), indicating a stronger solute–solvent
+interaction in DMSO than in DOL. The comparison of Gb(n) in
+DMSO and DOL agrees with the cognition that the DN of DMSO
+(29.8 kcal mol−1)32 is larger than that of DOL (18.0 kcal mol−1).30
+With the increase of NCS (n), Gb(n) rst decreases and then
+increases until the saturation of solvent coordination (see
+Fig. 1a and Table 1). The n value with the most negative Gb(n) is
+denoted as the best NCS. Regardless of the solvent type (DMSO
+or DOL), the best NCS of Li2S6, LiS6
+, LiS3
+$, and Li+ is deter-
+mined to be 4, 2, 2, and 4, respectively. Combined with the
+results of the successive binding free energies [DGb(n + 1)], we
+nd that when n is smaller than the best NCS, the solute stays in
+the partially solvated status because DGb(n + 1) <0. Once n
+equals or exceeds the best NCS, the solute can be seen as fully
+solvated. Note that, in DOL the DGb(n + 1 = 3) of Li2S6 is already
+positive although the NCS of two is less than the corresponding
+best NCS of four. We still classify Li2S6(DOL)2 as partially
+solvated rather than fully solvated because Li2S6(DOL)2 is hard
+to stably coexist with more than one free solvent molecule
+[DGb(4) < 0]. As for LiS6
+ (DOL)2, we consider it to be fully
+solvated because three DOL molecules fail to coexist in the rst
+solvation shell of LiS6
+ based on our geometry optimizations.
+Corresponding optimized structures with the best NCS are
+shown in Fig. 2 and S11†. All of these structures exhibit
+a tetrahedral coordination mode of Li, in which central lithium
+atoms are directly bound to nearby oxygen or sulfur atoms.
+Previous studies also demonstrated this extremely robust four-
+coordinated
+feature
+in
+the
+solvation
+of
+Li+
+or
+lithium
+polysuldes.34,53–55 Note that, as shown in Fig. 1b, the DGb(n) of
+Li+ starts to become positive when n exceeds four, indicating
+that Li+(sol)5 and Li+(sol)6 are less stable than four-coordinated
+Li+(sol)4. However, Li+ is still likely to aggregate more than four
+solvent molecules together owing to the negative Gb values of
+Li+(sol)5 and Li+(sol)6, whose remarkable stability is mainly
+attributed to the intermolecular electrostatics and dispersion
+eﬀect (see Table S6†).
+3.3
+Lithiation states of hexasuldes
+Tables S8–S10† list the computed reaction free energies (DGr)
+for the interconversion reactions of hexasuldes in diﬀerent
+Table 1
+Total binding free energies [Gb(n), in kcal mol−1] and
+successive binding free energies [DGb(n), in kcal mol−1] with diﬀerent
+numbers of coordinated solvents (NCS, n) in DMSO and DOL solvents
+Solute
+n
+Gb(n)
+DGb(n)
+Best NCSa
+DMSO
+DOL
+DMSO
+DOL
+DMSO
+DOL
+Li2S6
+1
+−5.80
+−1.76
+−5.80
+−1.76
+4
+4
+2
+−18.59
+−11.86
+−12.79
+−10.11
+3
+−20.91
+−10.70
+−2.32
+1.16
+4
+−21.29
+−14.38
+−0.38
+−3.68
+5
+−20.37
+−11.31
+0.93
+3.07
+6
+−10.20
+−6.29
+10.17
+5.02
+LiS6
+
+1
+−6.03
+−2.10
+−6.03
+−2.10
+2
+2
+2
+−6.03
+−3.11
+0.00
+−1.02
+S62
+1
+5.30
+5.27
+5.30
+5.27
+N/A
+N/A
+LiS3
+$
+1
+−9.38
+−4.85
+−9.38
+−4.85
+2
+2
+2
+−14.79
+−9.64
+−5.42
+−4.79
+3
+−13.48
+−8.31
+1.31
+1.33
+4
+N/Ab
+−4.77
+N/Ab
+3.54
+S3$
+1
+5.15
+4.28
+5.15
+4.28
+N/A
+N/A
+Li+
+1
+−14.54
+−10.02
+−14.54
+−10.02
+4
+4
+2
+−24.20
+−16.27
+−9.65
+−6.25
+3
+−30.11
+−22.17
+−5.92
+−5.90
+4
+−34.96
+−26.39
+−4.85
+−4.22
+5
+−23.24
+−24.46
+11.72
+1.93
+6
+−16.01
+−13.44
+7.23
+11.02
+a The best NCS is the n value with the most negative Gb(n). b This result
+is not available (N/A) because four DMSO molecules cannot stay in the
+rst solvation shell of LiS3
+$ together.
+Fig. 1
+(a) Total binding free energies [Gb(n)] and (b) successive binding free energies [DGb(n)] of Li+ with varying numbers of coordinated solvents.
+This journal is © The Royal Society of Chemistry 2023
+J. Mater. Chem. A, 2023, 11, 18922–18932 | 18925
+Paper
+Journal of Materials Chemistry A
+
+<<PAGE 5>>
+lithiation states (R1–R3), based on all possible solvation
+statuses of involved species. In terms of the same reaction, DGr
+in DMSO is much lower than that in DOL. Especially, in DMSO,
+some of R1 and R2 are computed to be thermodynamically
+downhill, indicating that Li2S6 in fully solvated status can
+spontaneously dissociate into LiS6
+ (or S62) and Li+. In
+contrast, in DOL, all reactions have positive DGr (even larger
+than 7.46 kcal mol−1), which means that Li2S6, either in the
+partially or fully solvated status, prefers to maintain the neutral
+state and its direct dissociation to form LiS6
+ and S62 is
+unfavorable. Consistent conclusion in DOL solution was drawn
+by previous studies.56,57 We further summarize the lowest DGr of
+R1–R3 for diﬀerent solvation statuses of the hexasulde reac-
+tants in Table 2. With the increase of NCS of reactant species,
+the lowest DGr decreases accordingly, indicating the more fully
+solvated the hexasuldes, the easier their dissociation into
+LiS6
+ (or S62) and Li+.
+To comprehend why hexasuldes exhibit diﬀerent lithiation
+states in DMSO and DOL, we associate this solvent-dependent
+characteristic with the intrinsic nature of solvents. On one
+Fig. 2
+Optimized solvation structures of Li2S6, LiS6
+, LiS3
+$, and Li+ with the best NCS in DMSO. Color scheme: H, light gray; Li, purple; C, gray; O,
+red; S, yellow.
+Table 2
+Lowest reaction free energies (DGr, in kcal mol−1) of R1–R3 for reactants with diﬀerent numbers of coordinated solvents (NCS) in DMSO
+and DOL solvents
+Label
+Reaction
+DGr
+DMSO
+DOL
+R1
+Li2S6ðsolÞ2/LiS6
+ðsolÞ þ LiþðsolÞ
+15.17
+30.42
+Li2S6ðsolÞ3/LiS6
+ðsolÞ þ LiþðsolÞ2
+7.84
+23.00
+Li2S6ðsolÞ4 þ 2sol/LiS6
+ðsolÞ2 þ LiþðsolÞ4
+−2.54
+15.55
+Li2S6ðsolÞ5 þ sol/LiS6
+ðsolÞ2 þ LiþðsolÞ4
+−3.47
+12.48
+Li2S6ðsolÞ6/LiS6
+ðsolÞ2 þ LiþðsolÞ4
+−13.64
+7.46
+R2
+Li2S6ðsolÞ2/S62 þ 2LiþðsolÞ
+36.49
+76.29
+Li2S6ðsolÞ3/S62 þ LiþðsolÞ þ LiþðsolÞ2
+29.16
+68.87
+Li2S6ðsolÞ4 þ 4sol/S62 þ 2LiþðsolÞ4
+−1.64
+46.07
+Li2S6ðsolÞ5 þ 3sol/S62 þ 2LiþðsolÞ4
+−2.57
+43.00
+Li2S6ðsolÞ6 þ 2sol/S62 þ 2LiþðsolÞ4
+−12.74
+37.97
+R3
+LiS6
+ðsolÞ/S62 þ LiþðsolÞ
+21.33
+45.87
+LiS6
+ðsolÞ2 þ 2sol/S62 þ LiþðsolÞ4
+0.90
+30.52
+18926 | J. Mater. Chem. A, 2023, 11, 18922–18932
+This journal is © The Royal Society of Chemistry 2023
+Journal of Materials Chemistry A
+Paper
+
+<<PAGE 6>>
+hand, DMSO has a larger dielectric constant (3 = 46.8)
+compared to DOL (3 = 7.3), providing an implicit solvent envi-
+ronment that facilitates greater polarity of Li–S bonds in DMSO.
+Fig. S14† demonstrates that Li2S6 or LiS6
+ exhibits unevener
+charge distribution in DMSO, with more positively charged
+lithium atoms and more negatively charged sulfur atoms than
+in DOL. Moreover, the average Li–S bond lengths (2.43 and 2.32
+Å) of Li2S6 and LiS6
+ in DMSO are slightly longer than the
+corresponding values in DOL (2.42 and 2.30 Å) and in the gas
+phase (2.38 and 2.29 Å), revealing that DMSO weakens the Li–S
+bonds more eﬀectively than DOL. On the other hand, the DN, as
+a measure of the donor properties of solvents, approximately
+represents the lithiophilicity of solvents in the solvation systems
+with Li–solvent interactions dominant. The solvent molecule
+and sulfur chain are competitive in binding with Li+ so that
+increasing the DN of solvents would cause Li+ to transit from
+a sulfur-preferred to a solvent-preferred coordination state. The
+donor properties of a molecule are also directly related to its
+electrostatic potential values.58 We thus further map the iso-
+surface of electrostatic potential to intuitively compare the DN
+of DMSO and DOL. As apparent in Fig. 3, the oxygen atom
+region of DMSO exhibits more negative electrostatic potential
+than that of DOL, further inducing more powerful binding of Li+
+to DMSO, which is reected in the more negative Gb(n = 1) of Li+
+with one DMSO molecule (−14.54 kcal mol−1) compared to that
+with one DOL molecule (−10.02 kcal mol−1).
+Overall, DMSO solvent with a higher 3 and DN and accord-
+ingly with stronger lithiophilicity contributes to larger polarity
+and weakness of Li–S bonds, so that Li+ separates more easily
+from the sulfur chain, being benecial to the dissociation of
+Li2S6 to LiS6
+ and S62. In contrast, DOL with a low 3 and DN
+makes Li–S bond breaking rather improbable, and Li2S6 thereby
+remains neutral in DOL.
+3.4
+Generation of trisulfur radicals
+3.4.1
+Thermodynamic
+feasibility.
+Aer identifying the
+favorable lithiation forms of hexasuldes in DMSO and DOL, we
+calculate the reaction free energies (DGr) of trisulfur radical
+generation reactions (R4–R9 for DMSO and R4–R6 for DOL). In
+DMSO, we also consider the possibility of R4–R6 reactions with
+unfavorable lithiation state Li2S6 as the reactant because the
+dissociation of Li2S6 into LiS6
+ and S62 can be exergonic but
+also be endergonic depending on the number of available free
+DMSO molecules. R7–R9 are unlikely in DOL because hex-
+asuldes prefer a neutral Li2S6 state as we conclude in Section
+3.3. The results of R4–R8 are shown in Tables S11–S15†. Reac-
+tion R9 (S62/2S3$) occurs in DMSO with a DGr of −0.49 kcal
+mol−1. Exergonic paths of R4–R6 and R9 reactions in DMSO
+demonstrate that the formation of trisulfur radicals is sponta-
+neous through the fragmentation of solvated Li2S6 or of S62.
+However, in DOL, it is thermodynamically unfavorable to
+generate trisulfur radicals, as the DGr values of R4–R6 are all
+positive. As shown in Table 3, which lists the lowest DGr value
+for each kind of trisulfur radical generation reaction with the
+reactant in a specic solvation status, the more complete the
+solvation of hexasuldes, the more thermodynamically feasible
+the generation of trisulfur radicals. The trend is similar to that
+of the reactions R1–R3 observed in Table 2. Although it is not
+favorable to form trisulfur radicals in DOL, we note that in Table
+3, some DGr values of R4 in DOL are relatively low (even as low
+as 3.70 kcal mol−1), implying that LiS3
+$ radicals may exist in
+DOL too but in very small amounts due to the relatively high
+equilibrium constants between the reactant Li2S6 and product
+LiS3
+$. This nding accords well with previous experimental
+observations that a low concentration of radicals was detected
+in DOL solvent.59–61
+Briey, we emphasize the inuences of electrolytes in the
+formation of trisulfur radicals from two aspects. On the one
+hand, solvents with a high 3 and DN induce larger polarity of Li–
+S bonds and exhibit stronger lithiophilicity, which promote the
+dissociation of Li2S6 into LiS6
+ and S62 and the subsequent
+formation of LiS3
+$ or S3$. This nding is consistent with the
+statement by Du et al.33 On the other hand, the present
+systematic solvation simulations show that the full solvation of
+sulfur species is also benecial to produce trisulfur radicals.
+Specically, the solvation statuses (non-solvated, partially
+solvated, and fully solvated) of solute species aﬀect the reac-
+tiveness. The higher the degree of solvation of hexasuldes, the
+more thermodynamically favorable the generation of trisulfur
+radicals.
+In addition to the solvents and sulfur species, there also exist
+other species such as lithium salts in liquid electrolytes. The Li+
+ions in salts are able to compete with Li-containing hexasuldes
+(Li2S6 and LiS6
+) in coordinating with solvents. If we only
+consider the Li+–solvent interactions, it is obvious that the lower
+the salt concentration, the larger the number of free solvent
+Fig. 3
+(a) Electrostatic potential distribution of DMSO and DOL. (b) Optimized structures of DMSO or DOL binding with one Li+. The Li–O bond
+lengths and total binding free energies are labeled.
+This journal is © The Royal Society of Chemistry 2023
+J. Mater. Chem. A, 2023, 11, 18922–18932 | 18927
+Paper
+Journal of Materials Chemistry A
+
+<<PAGE 7>>
+molecules which can coordinate with Li2S6 and LiS6
+. Namely,
+lower salt concentration could lead to more favorable trisulfur
+radical generation. However, apart from the Li+–solvent inter-
+actions, the anions in salts may aﬀect the solvation shell of
+sulfur species by direct binding with the lithium atoms in sulfur
+species. Moreover, the Li+ in the salt can also bond with the
+sulfur chains. How salt–sulfur interactions inuence the tri-
+sulfur radical generation requires another comprehensive
+study, which is beyond the scope of this investigation.
+Although the underlying regulation mechanism needs to be
+further explored, Lin et al. varied the salt concentration to
+regulate the solvation statuses of sulfur species.38 Besides,
+designing new solvents has also been proved successful in
+solvation status regulation.62,63 These regulation strategies may
+be
+referred
+to
+targetedly
+facilitate
+the
+trisulfur
+radical
+generation.
+3.4.2
+Kinetic feasibility and mechanisms. Based on the
+computed reaction energetics, we have identied some reac-
+tions with negative DGr in DMSO (see Tables 3 and S11–S13†)
+that are energetically favorable to generate trisulfur radicals
+from a thermodynamic standpoint. To gain a more thorough
+understanding of these reactions, a kinetic analysis is con-
+ducted, and probable reaction mechanisms from hexasuldes
+to trisulfur radicals are therefore proposed.
+To produce trisulfur radicals from hexasuldes, reaction
+barriers have to be overcome for breaking Li–S and S–S bonds.
+As presented in Table S7,† the dissociation of the S–S bond
+always consumes more energy than that of the Li–S bond.
+Moreover, solvent molecules can directly bind with lithium to
+weaken the Li–S bonds but have little eﬀect on S–S bonds.
+Therefore, we expect that it is kinetically easier to break Li–S
+bonds than S–S bonds. In this work, we focus on determining
+the rate-determining step to assess the kinetic feasibility of the
+whole reaction pathway, so we limit our kinetic analysis to the
+S–S bond breaking steps.
+We
+take
+the
+R6
+reaction
+of
+Li2S6ðDMSOÞ4 þ 4DMSO/2S3$ þ 2LiþðDMSOÞ4
+as
+an
+example for kinetic analysis. The reasons for choosing this
+reaction are (1) this reaction exhibits more negative DGr than all
+R7–R9 reactions; (2) Li2S6(DMSO)4 is more thermodynamically
+dominant than other Li2S6(DMSO)n although some other reac-
+tions of R4–R6 can be more exergonic than this reaction. In
+Li2S6(DMSO)4, each lithium atom coordinates with two terminal
+sulfur atoms and two DMSO molecules (Fig. 2). As shown in
+Fig. 4, the Li–S bond between one lithium atom and one
+terminal sulfur atom of Li2S6(DMSO)4 rst breaks, causing this
+lithium atom and its bound DMSO molecules to move closer to
+the other terminal sulfur atom. Due to the existence of two
+lithium atoms in Li2S6(DMSO)4, this Li–S bond breaking
+process occurs twice successively and the resulting products are
+denoted as Li2S6ðDMSOÞ4
+* and Li2S6ðDMSOÞ4
+** (the superscript
+asterisk and double asterisks here are used to distinguish the
+structures from their isomers), respectively. Li2S6ðDMSOÞ4
+**
+then binds with two additional DMSO molecules to produce
+relatively unstable Li2S6(DMSO)6, and then under the aid of
+another two DMSO to form a more unstable Li2S6(DMSO)8
+complex (with the nearest Li–S distances at both ends of the
+sulfur chain being 5.31 Å and 5.55 Å). Ultra-long Li–S distances
+and the negative DGr suggest that Li2S6(DMSO)8 can easily
+release two Li+(DMSO)4 clusters to form S62. Aerward, the
+Table 3
+Lowest reaction free energies (DGr, in kcal mol−1) of R4−R9 for reactants with diﬀerent numbers of coordinated solvents (NCS) in DMSO
+and DOL solvents
+Label
+Reaction
+DGr
+DMSO
+DOL
+R4
+Li2S6ðsolÞ2/2LiS3
+$ðsolÞ
+14.95
+18.85
+Li2S6ðsolÞ3/LiS3
+$ðsolÞ þ LiS3
+$ðsolÞ2
+11.86
+12.90
+Li2S6ðsolÞ4/2LiS3
+$ðsolÞ2
+6.82
+11.80
+Li2S6ðsolÞ5/2LiS3
+$ðsolÞ2 þ sol
+5.90
+8.73
+Li2S6ðsolÞ6/2LiS3
+$ðsolÞ2 þ 2sol
+−4.27
+3.70
+R5
+Li2S6ðsolÞ2/S3$ þ LiþðsolÞ þ LiS3
+$ðsolÞ
+25.48
+43.75
+Li2S6ðsolÞ3/S3$ þ LiþðsolÞ2 þ LiS3
+$ðsolÞ
+18.15
+36.33
+Li2S6ðsolÞ4 þ 2sol/S3$ þ LiþðsolÞ4 þ LiS3
+$ðsolÞ2
+2.35
+25.11
+Li2S6ðsolÞ5 þ sol/S3$ þ LiþðsolÞ4 þ LiS3
+$ðsolÞ2
+1.42
+22.04
+Li2S6ðsolÞ6/S3$ þ LiþðsolÞ4 þ LiS3
+$ðsolÞ2
+−8.75
+17.01
+R6
+Li2S6ðsolÞ2/2S3$ þ 2LiþðsolÞ
+36.00
+68.64
+Li2S6ðsolÞ3/2S3$ þ LiþðsolÞ þ LiþðsolÞ2
+28.67
+61.22
+Li2S6ðsolÞ4 þ 4sol/2S3$ þ 2LiþðsolÞ4
+−2.13
+38.42
+Li2S6ðsolÞ5 þ 3sol/2S3$ þ 2LiþðsolÞ4
+−3.06
+35.35
+Li2S6ðsolÞ6 þ 2sol/2S3$ þ 2LiþðsolÞ4
+−13.23
+30.32
+R7
+LiS6
+ðsolÞ/LiS3
+$ðsolÞ þ S3$
+10.31
+N/A
+LiS6
+ðsolÞ2/LiS3
+$ðsolÞ2 þ S3$
+4.89
+N/A
+R8
+LiS6
+ðsolÞ/2S3$ þ LiþðsolÞ
+20.84
+N/A
+LiS6
+ðsolÞ2 þ 2sol/2S3$ þ LiþðsolÞ4
+0.41
+N/A
+R9
+S62/2S3$
+−0.49
+N/A
+18928 | J. Mater. Chem. A, 2023, 11, 18922–18932
+This journal is © The Royal Society of Chemistry 2023
+Journal of Materials Chemistry A
+Paper
+
+<<PAGE 8>>
+S62 dianion undergoes an isomerization process with a transi-
+tion state denoted by TS1, generating 1S62* (the superscript 1
+here is used to remind readers that so far, we have been dis-
+cussing the system in the singlet-state potential energy surface
+(PES)) isomer. Through a spin-state crossing of PESs, singlet
+1S62* transforms into a triplet complex 3ðS3$  S3$Þ. It is hard
+to obtain the accurate barrier of this spin-state crossing process
+by single-reference DFT methods (revM06 in this work). We thus
+simply estimate this barrier (the location is labeled with TS2 in
+Fig. 4) based on broken symmetry calculations with spin-
+contamination correction64,65 along the interpolation path
+from 1S62* to 3ðS3$  S3$Þ. The details of estimating the
+energy of TS2 are displayed in Fig. S15.† The estimated barrier
+(1.99 kcal mol−1) is expected to be slightly higher than the
+actual spin-state crossing barrier because the reaction path is
+unoptimized. Finally, 3ðS3$  S3$Þ splits into two separate S3$
+radicals
+spontaneously.
+The
+whole
+pathway
+exhibits
+a maximum free energy barrier of 9.62 kcal mol−1, suggesting
+that the formation of S3$ radicals proceeds easily in DMSO
+even from the kinetic perspective.
+We also access the kinetic feasibility for the reaction
+Li2S6ðDOLÞ4/2LiS3
+$ðDOLÞ2 in DOL as Li2S6(DOL)4 is thermo-
+dynamically dominant among Li2S6(DOL)n. Along with low
+thermodynamic probability, it is also kinetically harder to form
+trisulfur radials in DOL based on the estimated maximum free
+energy barrier of 19.08 kcal mol−1 of this reaction, which is
+higher than that in DMSO. The detailed reaction pathway is
+illustrated in Fig. S16.†
+To validate the generalizability of the ndings in this work,
+we further consider DMA, another high 3/DN solvent. As shown
+in Table S17,† for Li-containing species, the total binding free
+energies (Gb) in DMSO and DMA are obviously more negative
+than those in DOL, meaning that the binding strength between
+the solvents and sulfur species is largely aﬀected by the DN of
+solvents (the DN of DMSO, DMA, and DOL is 29.8, 27.8, and 18.0
+kcal mol−1). This nding is consistent with a previous study by
+Du et al.33 However, the relative magnitudes of Gb between
+DMSO and DMA are uncertain, indicating that the DN is not the
+only factor inuencing the binding strength. The solvent
+structure (such as molecular size and shape) may also aﬀect the
+binding strength. Regarding the relationship between binding
+free energies and the number of coordinated solvents, all rele-
+vant species (Li2S6, LiS6
+, S62, LiS3
+$, S3$, and Li+) exhibit very
+similar behavior in DMA to that in DMSO. Moreover, Fig. S22,
+Tables S18 and S19† demonstrate that the generation of tri-
+sulfur radicals is also thermodynamically and kinetically
+feasible in DMA.
+In addition to trisulfur radicals, we also explore the genera-
+tion of tetrasulfur (LiS4
+$ and S4$) and disulfur (LiS2
+$ and S2$)
+radicals from hexasuldes. Table S21† indicates that the
+formation of tetrasulfur and disulfur radicals is slightly unfa-
+vorable in DMSO and rather unfavorable in DOL. Combined
+with the results about the trisulfur radical generation in Table 3,
+we conclude that hexasuldes prefer to decompose into tri-
+sulfur rather than tetrasulfur and disulfur radicals in DMSO
+and DOL. This nding agrees well with the cognition that tet-
+rasulfur and disulfur radicals are both less stable than trisulfur
+radicals.39,66 Notably, although the generation of tetrasulfur and
+disulfur radicals from hexasuldes is not favorable, some
+experiments detected the tetrasulfur and disulfur radicals in Li–
+S batteries.60,61,67,68 The existence of these two kinds of radicals
+may be attributed to the decomposition of other polysuldes
+with diﬀerent sulfur chain lengths. For example, Steudel et al.
+demonstrated by DFT calculations that S5
+2−can spontaneously
+dissociate into S2
+−.39 Wujcik et al. proposed that tetrasulfur
+radicals can be present via the cleavage of octasuldes.61 The
+Fig. 4
+Proposed generation mechanism of trisulfur radicals in DMSO for the reaction of Li2S6ðDMSOÞ4 þ 4DMSO/2S3
+$ þ 2LiþðDMSOÞ4. Along
+the free energy curve, the numbers represent the free energy change of each step. Inset images show optimized structures with explicit DMSO
+molecules not shown for clarity (complete solvation structures are shown in Fig. S12†). The whole pathway contains two stages (see blue and red
+regions). The ﬁrst stage involves (de)solvation, delithiation, and Li–S bond cleavage steps, and the second one is a process of S–S bond cleavage.
+This journal is © The Royal Society of Chemistry 2023
+J. Mater. Chem. A, 2023, 11, 18922–18932 | 18929
+Paper
+Journal of Materials Chemistry A
+
+<<PAGE 9>>
+detailed formation mechanisms of tetrasulfur and disulfur
+radicals in Li–S batteries need another systematic exploration.
+4.
+Conclusions
+We explore the generation of trisulfur radicals in DMSO and
+DOL solvents by DFT calculations. Two types of reactions
+involved in the radical generation processes are summarized.
+The rst type determines the preferred lithiation state of hex-
+asuldes in solution, and the second one refers to the decom-
+position of hexasuldes to form trisulfur radicals. The solvation
+behavior of relevant species in these reactions, including Li2S6,
+LiS6
+, S62, LiS3
+$, S3$, and Li+, are adequately explored. We
+nd that the Li-containing species all prefer the solvated status,
+in which the Li–solvent chemistry plays a critical role, and the
+tetrahedral coordination conguration of lithium is revealed to
+be the most stable. For S62 and S3$ without lithium, they are
+always in non-solvated status, and their solvation is energeti-
+cally unfeasible.
+The preferential lithiation states of hexasuldes (Li2S6,
+LiS6
+, and S62) are found to be distinct in DMSO and DOL. Due
+to the larger 3 and DN and the consequent stronger lith-
+iophilicity of DMSO than DOL, Li–S bonds are more weakened
+and Li+ are more strongly bound by solvent molecules in DMSO,
+resulting in the spontaneous dissociation of Li2S6 into LiS6
+
+and S62. In contrast, hexasuldes keep mainly in a neutral
+state (Li2S6) in DOL. The computed reaction energetics from
+hexasuldes to trisulfur radicals also heavily depend on the
+solvent type. In particular, trisulfur radicals are very likely to be
+produced in DMSO, and the generation would be thermody-
+namically easier when hexasuldes are more fully solvated.
+However, the formation of trisulfur radicals is always unfavor-
+able in DOL.
+Possible mechanisms for generating trisulfur radicals in
+DMSO and DOL are proposed, along with a kinetic analysis. The
+generation process is highly complex and involves steps such as
+(de)solvation, delithiation, Li–S bond cleavage, and S–S bond
+cleavage. The maximum free energy barriers along the proposed
+pathways are computed to be 9.62 kcal mol−1 in DMSO and
+19.08 kcal mol−1 in DOL, respectively. The results indicate that
+the generation of trisulfur radicals in DMSO is feasible from
+both thermodynamic and kinetic perspectives.
+In summary, compared to DOL, DMSO with a higher 3 and
+DN facilitates the dissociation of Li2S6 into LiS6
+ and S62 and
+subsequent formation of LiS3
+$ and S3$. Moreover, the full
+solvation of sulfur species is also benecial to produce trisulfur
+radicals. Our mechanistic investigation highlights the advan-
+tages of electrolytes with high 3/DN solvents and fully solvated
+polysuldes in facilitating trisulfur radical generation. Consid-
+ering the crucial role of trisulfur radicals in sulfur conversion
+reactions, this work is expected to enlighten the electrolyte
+design toward high kinetic Li–S batteries.
+Conﬂicts of interest
+There are no conicts to declare.
+Acknowledgements
+This work was partly supported by the National Natural Science
+Foundation of China (21973053) and the Creative Seed Fund of
+Shanxi Research Institute for Clean Energy, Tsinghua Univer-
+sity. The authors are grateful to Prof. Donald G. Truhlar for
+helpful assistance on solvation calculations and to Prof. Boquai
+Li and Prof. Xiang Chen for helpful discussions.
+References
+1 X. Ji and L. F. Nazar, J. Mater. Chem., 2010, 20, 9821–9826.
+2 A. Manthiram, Y. Fu and Y.-S. Su, Acc. Chem. Res., 2013, 46,
+1125–1134.
+3 S.-E. Cheon, K.-S. Ko, J.-H. Cho, S.-W. Kim, E.-Y. Chin and
+H.-T. Kim, J. Electrochem. Soc., 2003, 150, A800–A805.
+4 Y. V. Mikhaylik and J. R. Akridge, J. Electrochem. Soc., 2004,
+151, A1969–A1976.
+5 M. R. Busche, P. Adelhelm, H. Sommer, H. Schneider,
+K. Leitner and J. Janek, J. Power Sources, 2014, 259, 289–299.
+6 A. F. Hofmann, D. N. Fronczek and W. G. Bessler, J. Power
+Sources, 2014, 259, 300–310.
+7 Y. Song, Z. Sun, Z. Fan, W. Cai, Y. Shao, G. Sheng, M. Wang,
+L. Song, Z. Liu, Q. Zhang and J. Sun, Nano Energy, 2020, 70,
+104555.
+8 X. Han, Z. Zhang and X. Xu, J. Mater. Chem. A, 2021, 9, 12225–
+12235.
+9 G. Xia, L. Zhang, J. Ye, Z. Fu, X. Li, X. Yang, Z. Zheng, C. Chen
+and C. Hu, Chem. Eng. J., 2022, 431, 133705.
+10 L. Wang, W. Hua, X. Wan, Z. Feng, Z. Hu, H. Li, J. Niu,
+L. Wang, A. Wang, J. Liu, X. Lang, G. Wang, W. Li,
+Q.-H. Yang and W. Wang, Adv. Mater., 2022, 34, 2110279.
+11 P. Zeng, X. Zhou, J. Peng, X. Huang, B. Chang, G. Chen,
+M. Chen, L. Zheng, Y. Pei, J. Su and X. Wang, Adv. Funct.
+Mater., 2023, 33, 2211818.
+12 T. Wang, J. He, X.-B. Cheng, J. Zhu, B. Lu and Y. Wu, ACS
+Energy Lett., 2023, 8, 116–150.
+13 Y. Son, J.-S. Lee, Y. Son, J.-H. Jang and J. Cho, Adv. Energy
+Mater., 2015, 5, 1500110.
+14 S. H. Chung, C. H. Chang and A. Manthiram, Adv. Funct.
+Mater., 2018, 28, 1801188.
+15 M. Cuisinier, C. Hart, M. Balasubramanian, A. Garsuch and
+L. F. Nazar, Adv. Energy Mater., 2015, 5, 1401801.
+16 G. Zhang, H.-J. Peng, C.-Z. Zhao, X. Chen, L.-D. Zhao, P. Li,
+J.-Q. Huang and Q. Zhang, Angew. Chem., Int. Ed., 2018, 57,
+16732–16736.
+17 Z. Li, Y. Zhou, Y. Wang and Y.-C. Lu, Adv. Energy Mater.,
+2019, 9, 1802207.
+18 A. Gupta, A. Bhargav and A. Manthiram, Adv. Energy Mater.,
+2019, 9, 1803096.
+19 H. Wang, Y. Shao, H. Pan, X. Feng, Y. Chen, Y.-S. Liu,
+E. D. Walter, M. H. Engelhard, K. S. Han, T. Deng, G. Ren,
+D. Lu, X. Lu, W. Xu, C. Wang, J. Feng, K. T. Mueller,
+J. Guo, K. R. Zavadil and J.-G. Zhang, Nano Energy, 2020,
+76, 105041.
+20 N. Zhong, C. Lei, R. Meng, J. Li, X. He and X. Liang, Small,
+2022, 18, 2200046.
+18930 | J. Mater. Chem. A, 2023, 11, 18922–18932
+This journal is © The Royal Society of Chemistry 2023
+Journal of Materials Chemistry A
+Paper
+
+<<PAGE 10>>
+21 R. Steudel and T. Chivers, Chem. Soc. Rev., 2019, 48, 3279–
+3319.
+22 H. Shin, M. Baek, A. Gupta, K. Char, A. Manthiram and
+J. W. Choi, Adv. Energy Mater., 2020, 10, 2001456.
+23 T. Chivers and P. J. Elder, Chem. Soc. Rev., 2013, 42, 5996–
+6005.
+24 M. Wild, L. O'Neill, T. Zhang, R. Purkayastha, G. Minton,
+M. Marinescu and G. J. Oﬀer, Energy Environ. Sci., 2015, 8,
+3477–3494.
+25 K. H. Wujcik, D. R. Wang, A. Raghunathan, M. Drake,
+T. A. Pascal, D. Prendergast and N. P. Balsara, J. Phys.
+Chem. C, 2016, 120, 18403–18410.
+26 D. Zheng, D. Liu, J. B. Harris, T. Ding, J. Si, S. Andrew, D. Qu,
+X.-Q. Yang and D. Qu, ACS Appl. Mater. Interfaces, 2017, 9,
+4326–4332.
+27 G. Zhang, Z.-W. Zhang, H.-J. Peng, J.-Q. Huang and Q. Zhang,
+Small Methods, 2017, 1, 1700134.
+28 Q. Zou and Y.-C. Lu, J. Phys. Chem. Lett., 2016, 7, 1518–1525.
+29 G. Bieker, J. Wellmann, M. Kolek, K. Jalkanen, M. Winter
+and P. Bieker, Phys. Chem. Chem. Phys., 2017, 19, 11152–
+11162.
+30 Q. He, Y. Gorlin, M. U. M. Patel, H. A. Gasteiger and Y.-C. Lu,
+J. Electrochem. Soc., 2018, 165, A4027–A4033.
+31 Q. Zou and Y. C. Lu, EcoMat, 2021, 3, e12115.
+32 V. Gutmann, Electrochim. Acta, 1976, 21, 661–670.
+33 G.-Y. Du, C.-Y. Liu and E. Y. Li, Catalysts, 2020, 10, 911.
+34 B. Zhang, J. Wu, J. Gu, S. Li, T. Yan and X.-P. Gao, ACS Energy
+Lett., 2021, 6, 537–546.
+35 P.
+Canepa,
+S.
+Jayaraman,
+L.
+Cheng,
+N.
+N.
+Rajput,
+W. D. Richards, G. S. Gautam, L. A. Curtiss, K. A. Persson
+and G. Ceder, Energy Environ. Sci., 2015, 8, 3718–3730.
+36 X. Chen, N. Yao, B.-S. Zeng and Q. Zhang, Fundam. Res.,
+2021, 1, 393–398.
+37 H. Ji, Z. Wang, Y. Sun, Y. Zhou, S. Li, J. Zhou, T. Qian and
+C. Yan, Adv. Mater., 2023, 35, 2208590.
+38 Y. Lin, J. Zheng, C. Wang and Y. Qi, Nano Energy, 2020, 75,
+104915.
+39 R. Steudel and Y. Steudel, Chem. – Eur. J., 2013, 19, 3162–
+3176.
+40 R. S. Assary, L. A. Curtiss and J. S. Moore, J. Phys. Chem. C,
+2014, 118, 11545–11558.
+41 J. Zhou, X. Zhou, Y. Sun, X. Shen, T. Qian and C. Yan, J.
+Energy Chem., 2021, 56, 238–244.
+42 B. Zhang, Z. Wang, H. Ji, H. Zhang, L. Li, J. Hu, S. Li and
+J. Wu, Chem. Commun., 2023, 59, 4237–4240.
+43 Y. Liu, Y. Elias, J. Meng, D. Aurbach, R. Zou, D. Xia and
+Q. Pang, Joule, 2021, 5, 2323–2364.
+44 M. J. Frisch, G. W. Trucks, H. B. Schlegel, G. E. Scuseria,
+M. A. Robb, J. R. Cheeseman, G. Scalmani, V. Barone,
+G.
+A.
+Petersson,
+H.
+Nakatsuji,
+X.
+Li,
+M.
+Caricato,
+A. Marenich, J. Bloino, B. G. Janesko, R. Gomperts,
+B. Mennucci, H. P. Hratchian, J. V. Ortiz, A. F. Izmaylov,
+J. L. Sonnenberg, D. Williams-Young, F. Ding, F. Lipparini,
+F. Egidi, J. Goings, B. Peng, A. Petrone, T. Henderson,
+D.
+Ranasinghe,
+V.
+G.
+Zakrzewski,
+J.
+Gao,
+N.
+Rega,
+G. Zheng, W. Liang, M. Hada, M. Ehara, K. Toyota,
+R. Fukuda, J. Hasegawa, M. Ishida, T. Nakajima, Y. Honda,
+O.
+Kitao,
+H.
+Nakai,
+T.
+Vreven,
+K.
+Throssell,
+J. A. Montgomery, Jr., J. E. Peralta, F. Ogliaro, M. Bearpark,
+J. J. Heyd, E. Brothers, K. N. Kudin, V. N. Staroverov,
+T. Keith, R. Kobayashi, J. Normand, K. Raghavachari,
+A. Rendell, J. C. Burant, S. S. Iyengar, J. Tomasi, M. Cossi,
+J.
+M.
+Millam,
+M.
+Klene,
+C.
+Adamo,
+R.
+Cammi,
+J. W. Ochterski, R. L. Martin, K. Morokuma, O. Farkas,
+J. B. Foresman, and D. J. Fox, Gaussian 09. Revision C.01,
+Gaussian, Inc., Wallingford CT, 2010.
+45 Y. Zhao, R. Peverati, S. Luo, K. Yang, X. He, H. Yu, and
+D. G. Truhlar, MNGFM: Minnesota Gaussian Functional
+Module,
+version
+6.10,
+University
+of
+Minnesota,
+Minneapolis, MN, 2018.
+46 Y. Zhao, L. Xia, X. Liao, Q. He, M. X. Zhao and D. G. Truhlar,
+Phys. Chem. Chem. Phys., 2018, 20, 27375–27384.
+47 Y. Wang, P. Verma, X. Jin, D. G. Truhlar and X. He, Proc. Natl.
+Acad. Sci. U.S.A., 2018, 115, 10257–10262.
+48 L. A. Curtiss, K. Raghavachari, P. C. Redfern, V. Rassolov and
+J. A. Pople, J. Chem. Phys., 1998, 109, 7764–7776.
+49 J. A. Montgomery, M. J. Frisch, J. W. Ochterski and
+G. A. Petersson, J. Chem. Phys., 1999, 110, 2822–2827.
+50 M. J. Frisch, J. A. Pople and J. S. Binkley, J. Chem. Phys., 1984,
+80, 3265–3269.
+51 S. F. Boys and F. Bernardi, Mol. Phys., 1970, 19, 553–566.
+52 A. V. Marenich, C. J. Cramer and D. G. Truhlar, J. Phys. Chem.
+B, 2009, 113, 6378–6396.
+53 I. Skarmoutsos, V. Ponnuchamy, V. Vetere and S. Mossa, J.
+Phys. Chem. C, 2015, 119, 4502–4515.
+54 T. A. Pascal, K. H. Wujcik, D. R. Wang, N. P. Balsara and
+D. Prendergast, Phys. Chem. Chem. Phys., 2017, 19, 1441–
+1448.
+55 F. Liu, G. Sun, H. B. Wu, G. Chen, D. Xu, R. Mo, L. Shen,
+X. Li, S. Ma, R. Tao, X. Li, X. Tan, B. Xu, G. Wang,
+B. S. Dunn, P. Sautet and Y. Lu, Nat. Commun., 2020, 11,
+5215.
+56 J. J. Chen, R. M. Yuan, J. M. Feng, Q. Zhang, J. X. Huang,
+G. Fu, M. S. Zheng, B. Ren and Q. F. Dong, Chem. Mater.,
+2015, 27, 2048–2055.
+57 E. P. Kamphaus and P. B. Balbuena, J. Phys. Chem. C, 2017,
+121, 21105–21117.
+58 M. D. Perera, J. Desper, A. S. Sinha and C. B. Aakeröy,
+CrystEngComm, 2016, 18, 8631–8636.
+59 Q. Wang, J. Zheng, E. Walter, H. Pan, D. Lv, P. Zuo, H. Chen,
+Z. D. Deng, B. Y. Liaw, X. Yu, X. Yang, J.-G. Zhang, J. Liu and
+J. Xiao, J. Electrochem. Soc., 2015, 162, A474–A478.
+60 J. Xiao, J. Z. Hu, H. Chen, M. Vijayakumar, J. Zheng, H. Pan,
+E. D. Walter, M. Hu, X. Deng, J. Feng, B. Y. Liaw, M. Gu,
+Z. D. Deng, D. Lu, S. Xu, C. Wang and J. Liu, Nano Lett.,
+2015, 15, 3309–3316.
+61 K. H. Wujcik, T. A. Pascal, C. D. Pemmaraju, D. Devaux,
+W. C. Stolte, N. P. Balsara and D. Prendergast, Adv. Energy
+Mater., 2015, 5, 1500285.
+62 X. Q. Zhang, Q. Jin, Y. L. Nan, L. P. Hou, B. Q. Li, X. Chen,
+Z. H. Jin, X. T. Zhang, J. Q. Huang and Q. Zhang, Angew.
+Chem., Int. Ed., 2021, 60, 15503–15509.
+This journal is © The Royal Society of Chemistry 2023
+J. Mater. Chem. A, 2023, 11, 18922–18932 | 18931
+Paper
+Journal of Materials Chemistry A
+
+<<PAGE 11>>
+63 L.-P. Hou, X.-Q. Zhang, N. Yao, X. Chen, B.-Q. Li, P. Shi,
+C.-B. Jin, J.-Q. Huang and Q. Zhang, Chem, 2022, 8, 1083–
+1098.
+64 M.
+Shoji,
+K.
+Koizumi,
+Y.
+Kitagawa,
+T.
+Kawakami,
+S. Yamanaka, M. Okumura and K. Yamaguchi, Chem. Phys.
+Lett., 2006, 432, 343–347.
+65 X. Xu, S. Gozem, M. Olivucci and D. G. Truhlar, J. Phys. Chem.
+Lett., 2013, 4, 253–258.
+66 S. Tsuzuki, T. Kaneko, K. Sodeyama, Y. Umebayashi,
+W. Shinoda, S. Seki, K. Ueno, K. Dokko and M. Watanabe,
+Phys. Chem. Chem. Phys., 2021, 23, 6832–6840.
+67 H. L. Wu, L. A. Huﬀand A. A. Gewirth, ACS Appl. Mater.
+Interfaces, 2015, 7, 1709–1719.
+68 Z. Chang, Y. Qiao, J. Wang, H. Deng, P. He and H. Zhou,
+Energy Stor. Mater., 2020, 25, 164–171.
+18932 | J. Mater. Chem. A, 2023, 11, 18922–18932
+This journal is © The Royal Society of Chemistry 2023
+Journal of Materials Chemistry A
+Paper

@@ -1,0 +1,1411 @@
+
+<<PAGE 1>>
+Modality-Tunable Exfoliated N‑Doped Graphene as Effective
+Electrolyte Additive for High-Performance Lithium−Sulfur Batteries
+Vaidik R. Shah, Ritwick Sinha, Walter J. Cesarski, Xiaosi Gao, Simuck F. Yuk, and Yong Lak Joo*
+Cite This: ACS Appl. Mater. Interfaces 2024, 16, 53950−53962
+Read Online
+ACCESS
+Metrics & More
+Article Recommendations
+*
+sı
+Supporting Information
+ABSTRACT: While chemically doped graphene has shown great promise, the lack of
+cost-effective manufacturing has hindered its use. This study utilizes a facile fabrication
+approach for modality-tunable N-doped graphene via thermal annealing of aqueous-
+phase-exfoliated few-layered graphene from a Taylor−Couette reactor. This method
+demonstrates a high level of N-doping (27 atom % N) and offers modality tunability of
+the C−N bond without foregoing scalability and green chemistry principles. The resulting
+N-doped graphene, with varying N content and doping modality, is utilized in the
+lithium−sulfur battery electrolyte to address low ionic conductivity, lithium polysulfide
+(LiPS) shuttling, and Li anode instability. The study reveals that higher N content and
+pyridinic N modality graphene in the electrolyte positively influence battery performance.
+The results are 2-fold: higher overall N content improves capacity retention (73%) after
+225 cycles at 0.2 C, and pyridinic-type nitrogen demonstrates the best performance at
+high C rates, exhibiting a 4-fold capacity increase relative to the reference cell at 2 C.
+Further, the computational study validates the adsorption affinity of LiPS to pyridinic nitrogen and improved Li+ mobility on the
+graphene backbone observed experimentally. This first experimental study on the impact of N-dopant concentration and modality
+on electrochemical performance provokes insights into tailoring N functionalization to achieve superior electrochemical
+performance.
+KEYWORDS: Taylor−Couette exfoliated graphene, nitrogen-doped graphene, electrolyte additives, lithium−sulfur battery,
+DFT and ab initio MD simulations
+■INTRODUCTION
+While Li-ion batteries (LIB) maintain their dominance as the
+current commercial standard for energy storage, the burgeon-
+ing demand for larger capacities and superior energy densities
+has necessitated the need to look beyond traditional LIB
+technology. To that effect, lithium−sulfur (Li−S) batteries,
+with their ultrahigh theoretical energy density of about 2600
+Wh kg−1 and abundant, environmentally benign sulfur (S)
+cathodes, are seen as promising replacements to achieve energy
+densities beyond 500 Wh kg−1. Despite these advantages, the
+practical applications of Li−S technology are limited by severe
+capacity decay and low Coulombic efficiency, owed largely to
+the shuttle of dissolved polysulfides (Li2Sn, 4 ≤n ≤8) and the
+insulating nature of sulfur (S) and Li2S (final discharge
+product).1,2
+To address these challenges, a multitude of approaches have
+been investigated. Widely adopted strategies include some
+form of cathodic S-encapsulation modifications, such as
+designing advanced conducting cathodic matrices to confine
+LiPS via physical encapsulation,3,4 spraying conducting
+polymer/carbon-supported layers to retard LiPS diffusion,5,6
+incorporating redox mediators compounds to chemically
+confine LiPS and improve redox kinetics,7,8 incorporating
+exotic organic and inorganic-based solid-state electrolytes,9,10
+and separator modifications in the form of composite layering
+of LiPS adsorbant polymers,11,12 carbon-based species,13,14
+porous MOFs,15,16 and complex ion-selective inorganic
+membranes17 to trap dissolved PS and suppress shuttling.
+Though innovative and successful at the lab scale, these
+approaches fail to show promise at commercial scales largely
+due to the high economic stress of utilizing exotic materials
+and the additional complexity and costs associated with cell
+fabrication.18,19 Innovation in low-cost materials and a scalable,
+facile cell fabrication protocol are necessary to truly realize the
+commercialization of Li−S technology.
+In recent years, graphene, a two-dimensional carbon
+nanomaterial with fascinating properties, including high
+theoretical surface area (2630 m−2 g−1)20 and rapid charge
+carrier mobility (200000 V−1 s−1),21 has received interest for
+potential use in various applications such as supercapacitors22
+and high-density energy storage.20 However, due to an almost
+Received:
+July 21, 2024
+Revised:
+September 4, 2024
+Accepted:
+September 19, 2024
+Published: October 1, 2024
+Research Article
+www.acsami.org
+© 2024 American Chemical Society
+53950
+https://doi.org/10.1021/acsami.4c12157
+ACS Appl. Mater. Interfaces 2024, 16, 53950−53962
+Downloaded from pubs.​acs.​org/​aamick/​article-pdf/​16/​40/​53950/​1292655/​am4c12157.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 2>>
+gapless band structure, the scope for direct application has
+been limited. Heteroatomic doping is an effective approach for
+tailoring graphene properties conducive to the battery and
+nanoelectronic devices. While boron, sulfur, and phosphorus
+doping are common, nitrogen-doped graphene (N-Gr),
+synthesized by directly substituting carbon atoms in the
+graphitic lattice, demonstrates interesting electronic conduc-
+tivity23 and chemical interaction properties.24 For instance, the
+Fermi level of an N-doped graphene system is shifted above
+the Dirac point,25 thus suppressing the density of states
+function near the Fermi level. This opens a gap between the
+valence and conductance bands, making it effective for
+electrochemical applications. Another potential advantage is
+that the charge distribution of carbon atoms is altered by
+nearby higher electronegative nitrogen atoms,26 creating an
+activation region suitable for heterocatalytic reactions27 or
+tethering polar nanoparticles like LiPS in Li−S systems.28
+Several studies have demonstrated N doping in carbonaceous
+materials as an efficient strategy to enhance the electrochemical
+performance of Li−S cells.29,30 Zhang et al. fabricated a Li
+plating matrix and showed that N-containing functional
+groups, such as pyridinic and pyrrolic nitrogen in N-Gr, are
+lithophilic and guide metallic Li nucleation and suppress
+dendrite growth.31 Wang et al. demonstrated that N-doped
+graphene frameworks showed great effectiveness in super-
+capacitor and electrocatalysis applications.32 Fu et al. reported
+a methodology to construct an electrochemically recoverable
+protective layer of polysulfides using N-doped carbon dots;
+they posited that the N doping reacted with the LiPS to form a
+solid, recoverable polysulfide encapsulating layer, hence
+arresting LiPS shuttling.33
+Due to the atomic size similarity of carbon and nitrogen,
+direct synthesis of N-Gr via chemical vapor deposition (CVD)
+is common34 yet expensive, as it forgoes scalability. Other
+common methods include segregation growth,35 arc dis-
+charge,36 plasma treatment,37 hydrazine treatment,38 and
+thermal treatment of reduced graphene oxide (r-GO).39
+However, most, if not all, of these methods require harsh
+energy-draining conditions and flammable organic gases and/
+or toxic organic solvents, making them both environmentally
+and economically untenable. Herein, we introduce a facile N-
+doped graphene-based electrolyte additive solution toward the
+goal of achieving high-performance Li−S batteries. We have
+performed thermal annealing of low-defect TCR exfoliated
+graphene, with urea as the nitrogen source, to produce samples
+of N-Gr with highly tunable N at. % between 7−27% on the
+surface with facile modality control between different N-
+dopant configurations pyridinic, pyrrolic, and quaternary.40 In
+addition to obtaining large amounts of functionalized
+graphene, this protocol allows for the streamlined synthesis
+of N-Gr by using a green approach. The pristine graphene itself
+is produced by continuous high shear-induced exfoliation of
+synthetic graphite in an aqueous medium,41 which forgoes the
+organic solvents and enumerable stabilizers commonly used.42
+The setup is designed to be scaled as necessary for industrial
+applications. The structure and composition of prepared N-Gr
+were confirmed by Raman spectroscopy, X-ray photoelectron
+spectroscopy (XPS), elemental analysis (CHNX analysis),
+scanning electron microscopy (SEM), energy-dispersive X-ray
+spectroscopy (EDS), X-ray diffraction (XRD), thermogravi-
+metric analysis (TGA), and Brunauer−Emmett−Teller (BET)
+surface area analysis.
+In this work, we successfully report N-doped graphene as an
+effective electrolytic additive for Li−S batteries. In doing so, we
+have also evaluated the performance of our prepared N-Gr
+additives relative to reference Li−S electrolyte and commercial
+N-Gr as an additive. Further, this study, to the best of our
+knowledge, reports the first approach toward comparing the
+relevant electrochemical performance trends associated with
+changing N-dopant concentration and modality on the
+graphene framework. Our investigation suggests that the
+graphenic network in the electrolyte facilitates the Li+
+conductions and hence enhances ionic conductivity and
+improves cell redox kinetics, leading to improved cycling
+performance and stability, long cycle life, and better high-rate
+capability. Further, we show that the N dopants show affinity
+toward charged LiPS moieties, leading to a reduced polysulfide
+shuttle and, subsequently, a suppressed capacity fade and
+higher Coulombic efficiencies. Additionally, post-mortem
+analysis of the anodes shows a more homogeneous Li surface
+morphology and a significant absence of dendritic growth post
+long-term cycling, which may be ascribed to better regulation
+of Li nucleation on the anode due to Li−N interactions at the
+anode/electrolyte interface. Battery testing revealed that cells
+prepared by the mere addition of N-Gr electrolyte additives
+show a high reversible capacity of 897 mAh gS
+−1 at 0.5 C, a low
+Figure 1. Overall process schematic illustrating graphene exfoliation, N-doping, and Li/S cell fabrication.
+ACS Applied Materials & Interfaces
+www.acsami.org
+Research Article
+https://doi.org/10.1021/acsami.4c12157
+ACS Appl. Mater. Interfaces 2024, 16, 53950−53962
+53951
+Downloaded from pubs.​acs.​org/​aamick/​article-pdf/​16/​40/​53950/​1292655/​am4c12157.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 3>>
+cycling capacity fade of 0.13% per cycle, and a remarkable
+improvement in the rate capability of the cellsa 3-fold and 4-
+fold higher capacity than reference at 1 C (628 mAh gS
+−1) and
+2 C (369 mAh gS
+−1), respectively.
+Computationally, researchers have used density functional
+theory (DFT) calculations to study the binding energies of
+LiPS species with different configurations of polysulfides.
+Though there is variability in the exact mechanism of binding
+proposed, most of the studies show a heightened LiPS
+interaction with N-doped species, leading to improved LiPS
+immobilization.43−45 Despite the plethora of computational
+investigations, there is limited experimental exploration of the
+impact of the amount and modality of N-doping on the
+electrochemical performance of the Li−S system, especially via
+an electrolyte additive approach. To that end, we used DFT
+and ab initio molecular dynamics (AIMD) simulations to
+elucidate our experimental observations and theoretically
+explore the influence of different nitrogen sites on shuttling
+effects and have successfully demonstrated the adsorption
+affinity of pyridinic nitrogen groups on the graphene surface to
+lithium polysulfides, thus limiting LiPS shuttling and
+improving the overall electrochemical cell performance.
+■RESULTS AND DISCUSSION
+Sample Preparation and Characterization. While
+thermal annealing with NH3 is an established method for the
+doping of N onto the surface of graphene layers, it usually
+results in a low at. % of N, a consequence of very high
+annealing temperatures.46 Coupled with the fact that the
+graphene used for doping is usually synthesized using a
+modified form of the Hummers method,47 the process is
+unviable for industrial-scale synthesis. The proposed process in
+the present study, which involves the continuous shear-
+induced exfoliation of graphite in aqueous media, followed
+by doping using urea, is not only cost-effective but also green
+in that it foregoes the use of organic solvents. Figure 1 is an
+illustration of the overall process.
+Four different doped graphene samples (N-Gr 1, N-Gr 2, N-
+Gr 3, and N-Gr 4) were prepared using different ratios (by
+weight) of exfoliated graphene and urea at different reaction
+times and annealing temperatures. Figure 2a−f shows SEM
+(scanning electron microscopy) images of the graphitic
+precursor, exfoliated graphene, and nitrogen-doped graphene.
+The exfoliation process results in the formation of large lateral
+dimension (>10 μm), flat thin sheets (E-Gr = 14.36 μm, N-Gr
+1 = 13.56 μm, N-Gr 2 = 13.04 μm, N-Gr 3 = 12.17 μm, and N-
+Gr 4 = 8.95 μm; Figure S1, Supporting Information), and the
+doping process preserves this morphology.
+The chemical composition and doping modalities were
+studied by using X-ray photoelectron and energy-dispersive X-
+ray spectroscopy (Figure 3a−d). EDS spectra show a uniform
+distribution of nitrogen on the surface of the graphene flakes.
+The high-resolution N 1s spectra of NGr 1−4 (Figure 3a−d)
+were deconvoluted into two primary peaks centered at 398 ±
+0.5 and 400 ± 0.4 eV, which indicate pyridinic (Nprn) and
+pyrrolic (Npyr) bonding modalities, respectively. This bonding
+modality could be altered by changing reaction parameters
+(nitrogen precursor mass, temperature, and annealing time),
+making the process highly tunable. It was experimentally
+observed that the low reaction temperature processes (<500
+°C), with longer times taken to reach reaction temperature,
+resulted in lower nitrogen doping (by at. %) but higher levels
+of pyridinic-type nitrogen bonding. This is the case for N-Gr 1
+and N-Gr 2, which were synthesized under such conditions.
+The spectrum of N-Gr 3 also revealed a higher binding energy
+peak at 401 eV, characteristic of graphitic bonding of nitrogen
+(Ngr). Higher reaction temperature processes, such as the one
+used to synthesize N-Gr 4, show higher levels of N doping (by
+at. %) but an almost equal ratio of pyrrolic to pyridinic-type
+nitrogen bonding. The chemical compositions as well as
+reaction parameters of N-Gr 1−4 are tabulated in Table 1. For
+N-Gr 1, however, the peaks corresponding to pyrrolic and
+graphitic modalities, after deconvolution, appeared to be
+within the margin of error of the instrument. It can be safely
+assumed that N-Gr1 (Figure 3a) comprises purely pyridinic
+graphene. Additional syntheses are listed in Table S8. The N-
+bonding modality was further studied using the C 1s high-
+resolution XPS spectra. Upon analysis of N-Gr 1, the primary
+peaks were ascertained to be the 284.1 and 284.8 eV peaks,
+corresponding to sp2 C−C bonding in the graphene lattice.
+The other peaks correspond to sp2 CN (285.9 eV), sp3 C−
+N, and sp3 C−O (287.8 eV). Beyond 291 eV, the observed
+feature is a result of a π−π shake-up process (Figure S2).
+The chemical structure of the doped graphene was further
+studied by means of Raman spectroscopy. As shown in Figure
+4a, Raman spectra (ELaser = 532 nm) of graphite precursor
+(GP), exfoliated graphene (E-Gr), and the nitrogen-doped
+samples (N-Gr) have three distinct reflexes, corresponding to
+the D (1350 cm−1) band, G (1570 cm−1), and the 2D (2700
+cm−1) band, respectively.41 A fourth reflex, the D′ (1620
+cm−1), can also be observed, albeit not distinct. It can be
+observed that while the exfoliation results in the blue-shift of
+both the G band (from 1567 to 1581 cm−1) and the D band
+(1345−1360 cm−1), N-doping results in the blue-shifting of
+only the D band, with higher levels of blue-shift for higher
+doping levels by at. % (Figure 4b). The D band corresponds to
+structural changes to the graphite lattice, and exfoliation results
+in higher intensity.41 It is observed that the introduction of N
+atoms to the graphenic plane results in an increase in the
+intensity of the D band to levels comparable to those of the G
+band. This is indicative of higher structural defect as a result of
+heteroatom doping on both the plane and the edge, which can
+be confirmed by the increase in the defect levels, as
+characterized by an increase in ID/IG ratio with N doping
+(Figure S5). A blue-shift in the D reflex is also observed. The
+D reflex, indicative of a local defect, is another metric to
+identify doping. As different modalities of N bonding exist on
+the graphenic plane, it must be noted that their contributions
+to overall defects differ; pyridinic and graphitic N have minimal
+impact on the graphene sheet as a result of comparable bond
+lengths of C−C (1.40 Å) and C−N (1.412 Å). However, the
+Figure 2. Surface morphology of graphene flakes. SEM images show
+the difference in morphology between (a) graphitic precursor and (b)
+exfoliated graphenic sheets. SEM also displays the consistent
+morphology of (c) N-Gr1, (d) N-Gr 2, (e) N-Gr-3, and (f) N-Gr 4.
+ACS Applied Materials & Interfaces
+www.acsami.org
+Research Article
+https://doi.org/10.1021/acsami.4c12157
+ACS Appl. Mater. Interfaces 2024, 16, 53950−53962
+53952
+Downloaded from pubs.​acs.​org/​aamick/​article-pdf/​16/​40/​53950/​1292655/​am4c12157.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 4>>
+five-membered pyrrolic ring, with shorter C−N bonds (1.38
+Å), introduces ring strain to the otherwise planar sheet and
+disrupts the graphenic structure.
+It should be noted, however, that post-treatment synthesis of
+graphene leads to doping of the exposed surface, not the bulk.
+This is corroborated by our observations as well; elemental
+analysis was performed to ascertain the wt % of C, N, and O in
+our samples (Table S1), where we observed that the wt %
+values of N are less than the at. % determined via XPS,
+indicative of elemental doping on the surface of the graphene,
+not the bulk. The Brunauer−Emmett−Teller (BET) surface
+areas of N-Gr 1−4 were measured from the absorption/
+desorption nitrogen isotherms (Figure S4). It is observed that
+with an increase in nitrogen doping (both elemental and at.
+%), there is a decrease in the BET surface area, which can be
+attributed to a planar restacking phenomenon between
+graphenic sheets. This is a phenomenon also observed in
+reduced graphene oxide (r-GO), wherein nitrogen doping
+severely reduced the SSA.48 Among other porosity parameters,
+the Barrett−Joyner−Halenda (BJH) average pore width
+measurements, which correspond to the vacancy defects on
+the surface of the graphenic sheet, indicate that the bulk
+material is largely mesoporous, with increasing width for
+increased N-doping. X-ray diffraction (XRD) patterns of E-Gr
+and N-Gr 1−4 (Figure S3) confirm the graphitic nature of the
+material from the characteristic single, symmetric line shape
+corresponding to the (002) peak at 2θ = 26.4°, indicating the
+presence of a single, crystalline structure. There is an increase
+in d-spacing with nitrogen doping, with the highest value being
+for N-Gr 3 (d = 3.381 Å). It should be noted that among the
+N-Gr samples, N-Gr 3 has the highest proportion of pyrrolic-
+type nitrogen doping, which introduces distortions to
+Figure 3. Spectroscopic analysis of the N-Gr samples. (a−d) XPS N 1s spectra of N-Gr 1−4, respectively, with corresponding EDS elemental
+mapping of C, N, and O on the surface of the graphenic microsheets.
+Table 1. Chemical Compositions of N-Gr 1−4 and Their Respective Synthesis Parameters; Surface Characterizations Are
+Tabulated Using XPS Survey Spectra (Figure S2)
+synthesis parameters
+surface characterization
+bonding modality (N)
+G:U (g)
+temp (°C)
+time (min)
+C (at. %)
+N (at. %)
+0 (at. %)
+Nprn (at. %)
+Npyr (at. %)
+Ngr (at. %)
+N-Gr 1
+5:6
+460
+4.5
+84.6
+7.32
+8.08
+7.32
+0.01
+N-Gr 2
+2:3
+502
+5
+85.48
+10.94
+3.59
+5.69
+5.24
+N-Gr 3
+2:3
+462
+5
+79.47
+13.59
+6.94
+3.74
+8.75
+1.10
+N-Gr 4
+1.7:3
+496
+5
+70.7
+26.87
+2.34
+13.59
+13.28
+Figure 4. Raman analysis of the N-Gr samples. (a) Raman spectra
+obtained from GP, E-Gr, and N-Gr. (b) Blue-shift of D and G bands
+with respect to different levels of N-doping.
+ACS Applied Materials & Interfaces
+www.acsami.org
+Research Article
+https://doi.org/10.1021/acsami.4c12157
+ACS Appl. Mater. Interfaces 2024, 16, 53950−53962
+53953
+Downloaded from pubs.​acs.​org/​aamick/​article-pdf/​16/​40/​53950/​1292655/​am4c12157.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 5>>
+graphenic sheets, disrupting the planar structure. Thermogravi-
+metric analysis (TGA) was used to study the thermal stability
+of N-Gr (Figure S3). The minor weight loss between 30 and
+120 °C can be attributed to the loss of water adsorbed to the
+graphene surface. A major reaction is observed at 400 °C,
+which can be attributed to the decomposition of the carbon
+skeletal structure and the loss of oxygen groups bonded to the
+sheet. Overall, N-Gr demonstrates excellent stability at high
+temperatures, with mass losses of about 20% (N-Gr 1:14%, N-
+Gr 2:12%, N-Gr 3:17%, N-Gr 4:20%) in the 20−1000 °C
+range. After the chemical characterization, the graphene
+Figure 5. Electrochemical characterization of additive cells: (a) Cyclic voltammogram (cycle 1, cycle 2) of N-Gr1 + LE and LE cells at a scan rate
+of 0.1 mV s−1. (b) Nyquist plots of additive+LE and LE-only cells before cycling. (c) Galvanostatic charge/discharge profiles at 0.2 C (post
+formation cycling). (d) Shuttling current measurement against time (cells set at 2.38 V during cycling at 0.2 C rate). (e) Polysulfide adsorption test
+for different graphenic materials (stock Li2S6 solution for reference).
+ACS Applied Materials & Interfaces
+www.acsami.org
+Research Article
+https://doi.org/10.1021/acsami.4c12157
+ACS Appl. Mater. Interfaces 2024, 16, 53950−53962
+53954
+Downloaded from pubs.​acs.​org/​aamick/​article-pdf/​16/​40/​53950/​1292655/​am4c12157.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 6>>
+samples were utilized as electrolytic additives in the Li−S
+system.
+Electrochemical Analysis. Extensive electrochemical
+characterization tests were performed to elucidate the
+performance of the N-doped graphenic (N-Gr) additives in
+the Li−S cell. Figure 5a and Figure S7 demonstrate the cyclic
+voltammograms (CV) for cells with N-Gr 1/LE and N-Gr 4/
+LE electrolyte, respectively, compared with reference LE
+(liquid electrolyte) cells at a scan speed of 0.1 mV s−1 in the
+potential window of 1.8−2.8 V vs Li+/Li. During the cathodic
+scan, N-Gr 1/LE shows two reduction peaks at 2.08 and 2.3 V,
+corresponding to sulfur reduction to long-chain soluble
+polysulfides and finally to Li2S. The broader oxidation peak
+at 2.38 V in the anodic scan corresponds to the reversible
+conversion of Li2S to lithium polysulfides and then finally to
+elemental sulfur.49
+Figure 6. Electrochemical performance: (a) Galvanostatic cycling test at 0.2 C rate (post 5 formation cycles at 0.1 C). (b) Rate capability
+performance at different charge/discharge rates of 0.1, 0.2, 0.5, 1, and 2 C and then back to 0.1 C. (c) High-rate capability performance at 1 C rate
+(post 5 formation cycles at 0.1C). (d) Practical pouch cell performance at 0.2 C rate. (e) First plateau discharge capacity analysis at 0.2 C for the
+5th and 10th cycle for various electrolyte combinations.
+ACS Applied Materials & Interfaces
+www.acsami.org
+Research Article
+https://doi.org/10.1021/acsami.4c12157
+ACS Appl. Mater. Interfaces 2024, 16, 53950−53962
+53955
+Downloaded from pubs.​acs.​org/​aamick/​article-pdf/​16/​40/​53950/​1292655/​am4c12157.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 7>>
+The similar CV profile for N-Gr 1/LE, N-Gr 4/LE, and LE
+cells suggests the absence of parasitic side reactions from the
+functional groups on the N-doped graphene. The area under
+the peaks for the N-Gr 1/LE cells is significantly higher than
+that of reference LE cells, indicating superior cycling capacity
+due to better active material utilization and ionic conductivity,
+which was substantiated in subsequent tests. Unlike the LE
+cell, the well-overlapped cyclic voltammograms for N-Gr 1/LE
+cells showcase excellent cycling stability, efficiency, and high
+reversibility of the redox reaction in the cell.50 Further, the
+higher peak current densities for N-Gr 1/LE cells suggest a
+much faster electron transfer rate at the electrode surface
+facilitated by the highly conducting graphene backbone of the
+additives. Additionally, a higher current density suggests that
+the reaction at the electrolyte/electrode is less diffusion-
+limited, caused by the improved Li+ ionic conductivity at the
+interface due to the conducting “graphenic highway”.49,51
+To elucidate the impact of the nitrogen doping modality on
+the cell impedance and ionic conductivity, we performed
+electrochemical impedance tests on full cells (post formation
+cycling) for all the N-Gr cells compared to LE cells. Figure 5b
+illustrates the Nyquist plots for all of the cells. The impedance
+plots for the cells in the open-circuit potential states were
+composed of depressed semicircles in the high-frequency
+domain corresponding to the charge-transfer process and a
+sloped tail in the low-frequency domain corresponding to the
+semi-infinite Warburg impedance as a result of the Li+
+diffusion.52 The impedance spectra were fitted to equivalent
+circuits (shown in Figure S6), and Table S4 displays the EIS
+fitting parameters for the individual spectra. A lower charge
+transfer resistance corresponds to increased ionic conductivity,
+leading to improved electrochemical reaction kinetics and
+hence superior cell performance (highlighted in Figure 6).
+Overall, the graphene-additive cells showed a much lower
+charge transfer resistance compared to that of the LE cell,
+attributed to the improved electronic and ionic conductivity
+from the graphene. On further analysis of the spectra, a clear
+trend in the impedance of the cells emerges. It was observed
+that the cells with the higher pyridinic nitrogen content
+showed a lower impedance and charge transfer resistance at
+the electrolyte/electrode interface primarily caused by
+favorable charge- and ion-transfer processes from the graphene
+network and improved polysulfide mitigation due to the
+interaction of N dopants with LiPS. Pyrrolic doped N at defect
+edges causes the graphenic structure to fold due to the strained
+five-member cyclic structure, disrupting the electron cloud and
+impeding Li+ ion diffusion networks.53 DFT studies have
+shown improved Li+ ion affinity and reduced diffusion barriers
+for pyridinic N compared to pyrrolic N.54 Our experimental
+results closely align with these studies, as N-Gr 1, having a
+higher concentration of pyridinic N-doping (see Table 1 and
+Figure 3), exhibits a lower Rct than N-Gr 4/LE cells. This
+reduced impedance translates to better electrochemical
+stability and elucidates the performance trends illustrated in
+Figure 6.
+To better understand the impact of the electrolyte additives
+on the cycling performance, we studied the galvanostatic
+charge/discharge (GCD) profiles of the cells after formation
+cycling. Figure 5c and Figure S8 show the GCD profile for N-
+Gr 1/LE and N-Gr 4/LE cells, respectively, compared to LE
+cells after five 0.1 C rate charge/discharge cycles. Clearly, the
+additive cells show an improvement in both the first and the
+second plateau capacity. The improvement in the first plateau
+capacity, indicative of improved utilization of long-chain,
+soluble polysulfides, can be explained by the affinity of nitrogen
+toward the lithium polysulfides, which helps reduce the
+deleterious impact of polysulfide shuttling. This hypothesis
+was also validated by our DFT-based studies on the N-LiPS
+interaction. Further, an improvement in the second plateau
+capacity, an inherently kinetically mass-transport limited step,
+further strengthens the argument for an improvement in the
+Li+ ion conductivity due to the graphenic additives in the
+electrolyte and a stable SEI layer formation. In addition, we see
+a marked reduction in the polarization potential, 160 and 183
+mV for N-Gr 1/LE and N-Gr 4/LE cells, respectively, relative
+to 260 mV for reference LE cells. The excellent polysulfide
+immobilization causes reduced anode passivation layer
+formation (post-mortem results, Figure 7) and a marked
+improvement in ionic conductivity, leading to efficient reaction
+kinetics with lower energy barriers.
+Next, a shuttling current measurement test was performed
+on the cells to quantitatively investigate the impact of N-Gr
+additives on suppressing PS shuttling effects. Figure 5d shows
+the results of the shuttling current test at 2.38 V. Studies have
+shown a maximum concentration of LiPS at a potential of 2.38
+V, leading to the highest shuttling current while cycling.33,55
+Higher shuttling current indicates a heightened PS shuttling
+effect and, hence, lower cycling stability and exacerbated
+capacity fade, leading to a lower cell life. As shown in Figure
+5d, the shuttling current for N-Gr/LE cells (0.85 μA for N-Gr
+4/LE and 1.48 μA for N-Gr 1/LE cells) is much lower than
+that for LE cells (2.52 μA), which can be ascribed to the high
+polysulfide adsorption capability of the N-doped graphene
+significantly blocking the shuttle effect. Interestingly, N-Gr 4/
+LE cells showed a lower shuttle current than N-Gr 1/LE cells,
+suggesting that the higher nitrogen content in N-Gr 4 led to
+improved LiPS immobilization. The Coulombic efficiency and
+capacity fade over long-term cycling further substantiate this
+observation (Table S5 and Figure 6a). To validate this
+observed trend of LiPS adsorption by N-Gr, we performed a
+spectroscopy study to measure the polysulfide adsorption
+capability of the different N-doped graphene. The adsorption
+results were also compared with those of commercial graphene
+Figure 7. Post-mortem analysis: (a) Post-mortem images (cathode
+side) of separators after 250 cycles for (i) N-Gr 4/LE, (ii) N-Gr 1/
+LE, (iii) commercial N-Gr/LE, and (iv) LE only cell. (b) Scanning
+electron micrographs of Li anode (separator side) post 250 cycles for
+(i) N-Gr 4, (ii) N-Gr 1, (iii) commercial N-Gr, (iv, v) LE only cells
+(circled image shows dendritic formation), and (vi) pristine Li (for
+reference).
+ACS Applied Materials & Interfaces
+www.acsami.org
+Research Article
+https://doi.org/10.1021/acsami.4c12157
+ACS Appl. Mater. Interfaces 2024, 16, 53950−53962
+53956
+Downloaded from pubs.​acs.​org/​aamick/​article-pdf/​16/​40/​53950/​1292655/​am4c12157.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 8>>
+to deconvolute the physisorption effects of porous graphene.
+Figure 5e shows the results of the polysulfide adsorption test.
+The N-Gr samples show a much higher adsorption affinity to
+LiPS than graphene, buttressing the point that nitrogen doping
+on graphene improves its LiPS affinity and hence its ability to
+suppress polysulfide shuttling. The polysulfide adsorption of
+N-Gr 4 (0.47 g Li2S6/gmat) is higher than N-Gr 1 (0.37 g
+Li2S6/gmat) and commercial N-Gr (0.24 g Li2S6/gmat) because
+of the higher nitrogen content, 26.9%, 7.32%, and 5.91%,
+respectively. Further, we see a marked difference in LiPS
+adsorption capacity for N-Gr 1 compared to commercial N-Gr
+due to the nature of N-doping. N-Gr 1 shows a purely
+pyridinic N-doping modality compared with commercial N-Gr,
+wherein the N-doping modality is primarily pyrrolic (86%)
+(Table S3).
+Post characterization, the electrochemical performance of N-
+doped graphene additives in Li−S cells was evaluated. Figure 6
+displays the results of electrochemical performance tests for the
+N-Gr additive cells. The results of the long-term cycling test
+for the cells are shown in Figure 6a and Table S5. The capacity
+is calculated based on the mass of the sulfur in the cathode.
+The S loading in all the cells is maintained between 1.08−1.12
+mg/cm2 to avoid trend convolution due to the complex
+electrode/electrolyte interactions in thick, highly loaded
+cathodes. Despite the high initial capacity (1258.59 mAh
+gS
+−1), without any graphenic additive, the reference LE cells
+suffered from a severe capacity fade. The low ionic
+conductivity exacerbated by the unchecked polysulfide
+shuttling, both leading to irreversible loss of active material,
+caused the capacity of LE cells to fall to almost 60% after
+merely five formation cycles. After 225 cycles at 0.2 C rate
+cycling, the final capacity was a mere 383.8 mAh gS
+−1 (capacity
+retention: 50.5%), with an average Coulombic efficiency of just
+95.7%. Whereas, generally, the cells with N-doped graphene
+additives showed a much superior cell performance with an
+initial capacity as high as 1376.3 mAh gS
+−1 for N-Gr 1/LE cells,
+an impressive final capacity retention of almost 72.92% for N-
+Gr 4/LE cells (corresponding to an ultralow capacity fade rate
+of 0.13% per cycle), and a high average Coulombic efficiency
+of above 97.5%. It should be noted that the active components
+(cathode, anode) in all these cells were unchanged and that
+these remarkable gains in performance were solely due to the
+incorporation of N-doped graphenic species as electrolyte
+additives. This highlights the exceptional potential of N-
+functionalized graphenic species as electrolyte additives for
+high-performance Li−S batteries.
+Additionally, familiar trends in cycling performance were
+observed. Pyridinic N-rich graphene species showed an
+impressive initial discharge capacity, primarily linked to
+superior Li+ ion conductivity and improved cycling stability
+and efficiency. The capacity retention improved as the N
+doping concentration increased, ascribed to better suppression
+of LiPS shuttling and improved active material utilization. This
+is further substantiated by analyzing the first plateau capacity
+fade, generally assumed to be caused by inefficient reversible
+capacity extraction from the reduction S to long-chain LiPS
+due to polysulfide shuttling.50 As shown in Figure 6b, the first
+plateau capacity attenuation is much lower for N-Gr 3/LE and
+N-Gr 4/LE as compared to N-Gr 1/LE, N-Gr 2/LE, and
+commercial N-Gr due to the high N-content leading to
+improved suppression of the polysulfide shuttle during cycling.
+Next, to investigate the performance of these cells at higher
+current densities, the cells were subjected to a rate capability
+performance test, as shown in Figure 6c. It is evident that the
+N-doped graphene additive cells show a superior performance
+across all cycling current densities. However, the difference in
+performance is pronounced at higher C rate cycling, wherein
+the solid−liquid phase redox kinetics is severely mass transport
+limited.56,57 N-doped graphene additive cells, owing to their
+superior conductivity, show vast improvement in capacity at
+0.5, 1, and 2 C rates. At 0.5 C, the N-Gr 1/LE cell shows an
+initial capacity of 896.85 mAh gS
+−1 compared to 612.3 mAh
+gS
+−1 for the LE cell. At 1 C, the N-Gr 1/LE cell exhibits a
+specific capacity of 628.33 mAh gS
+−1, which is more than 3-fold
+higher than the LE cell (200.6 mAh gS
+−1). At 2 C capacity, the
+N-Gr 1/LE cell (368.6 mAh gS
+−1) exhibits an astonishing 4-
+fold higher capacity than the reference LE cell (88.4 mAh
+gS
+−1). Here, too, like in the long cycling test, we notice a
+similar trend in performance based on the conductivity of the
+pyridinic N dopants, substantiating the claim that improving
+the conductivity of the Li−S cells could result in significant
+improvement in the electrochemical performance of the cell.
+Finally, the N-Gr cells also show superior capacity retention at
+the final 0.1 C step, indicating good redox reversibility and
+cycling stability.
+These electrochemical tests were vital in observing the
+trends and elucidating the impact of N-Gr species; however, it
+was equally important for these additives to be tested under
+commercially relevant practical conditions. To that end, their
+high-rate cycling performance capability was tested at 1 C. As
+shown in Figure 6d, N-Gr cells exhibit an extremely high
+capacity. N-Gr 1/LE and N-Gr 4/LE cells show a high initial
+capacity of 701.3 and 630.2 mAh gS
+−1, respectively, compared
+to 275.4 mAh gS
+−1 for the LE cell. The additive cells also
+showed an impressive capacity retention of above 92.5% and
+an average Coulombic efficiency above 95.1%, whereas the
+reference LE cell suffered from low Coulombic efficiency
+(89.3%) and a severe capacity fade post 40 cycles owing to the
+unmitigated polysulfide shuttling effect and the Coulombic
+inefficiencies with Li anode at high-rate cycling.58 This
+stabilization of the Li anode by the additives was observed
+experimentally in the post-mortem analysis of the cell, as
+shown in Figure 7. The commercial practicability of the N-Gr
+additive electrolyte was further explored in a lab-scale
+prototype single-layer pouch cell architecture. Currently,
+commercial traditional lithium-ion batteries show a normalized
+performance close to about 3 mAh/cm2. Figure 6e shows the
+impressive capacities achieved by the N-Gr additive cells,
+peaking at 6.45 and 5.73 mAh/cm2 for N-Gr 1/LE and N-Gr
+4/LE cells, respectively. Further, the N-Gr additive cells show
+superior cycling stability and high Coulombic efficiencies
+(>95%) compared to LE cells, which, despite having a high
+initial capacity, suffer from severe cycling instability and low
+Coulombic efficiencies (∼91.8%). None of the LE reference
+pouch cells cycled for more than 30 cycles, unlike N-Gr cells
+that exhibited high cycle lives beyond 150 cycles. These results
+further highlight the advantages of incorporating N-Gr
+additives toward mitigating polysulfide shuttling, improving
+ionic conductivity, and stabilizing the anode in Li−S cells.
+Finally, to analyze the actual chemical and morphological
+changes in the cell caused by the additives, we carried out an ex
+situ post-mortem investigation on the separators and Li anodes
+extracted from the N-Gr additive and reference cells. Figure 7a
+shows the images of the separators extracted from the cells
+after 230 charging/discharging cycles. It is evident that the N-
+Gr additive cell separators show a significantly lower
+ACS Applied Materials & Interfaces
+www.acsami.org
+Research Article
+https://doi.org/10.1021/acsami.4c12157
+ACS Appl. Mater. Interfaces 2024, 16, 53950−53962
+53957
+Downloaded from pubs.​acs.​org/​aamick/​article-pdf/​16/​40/​53950/​1292655/​am4c12157.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 9>>
+accumulation of polysulfides, ascribed to the superior
+polysulfide shuttling suppression capability of the N-Gr
+additives. Among N-Gr cells, N-Gr 4/LE separators show
+the least polysulfide accumulation, paralleling the PS
+adsorption test results. Higher nitrogen doping content causes
+increased polysulfide adsorption capacity, leading to superior
+mitigation of PS shuttling. These results are further
+substantiated by the Li SEM images displayed in Figure 7b.
+N-Gr 4/LE Li anodes show a very thin passivation layer
+formation with a largely pristine anode surface. N-Gr 1/LE
+anodes show the formation of a smooth passivation layer on
+the anode. This is remarkably different from the coarse passive
+interface layer covered with clustered mossy dendritic clumps
+visible on the reference LE cell anodes. This stabilization in the
+Li surface morphology due to the reduced anode-side Li2S
+formation, resulting from suppressed PS shuttling, offers the N-
+Gr cells superior cycling stability, Coulombic efficiency,
+reduced impedance, improved ionic conductivity, and hence
+enhanced electrochemical performance.
+Computational Analysis. Alongside experimental anal-
+ysis, theoretical calculations offer a robust and intuitive
+framework to investigate the direct interaction between LiPS
+and additives. To theoretically verify and elucidate the trends
+and results observed experimentally, we utilized DFT and
+AIMD simulations to explore the influence of different
+nitrogen sites on the N-Gr systems toward shuttling
+effects.59−61 As shown in Figure 8, the adsorption energies of
+Li2S4, Li2S6, and Li2S8 were calculated over the pyridinic and
+pyrrolic N sites doped on the graphene surface. The initial
+structures of Li2S4, Li2S6, and Li2S8 were adopted from the
+previous theoretical studies on the Li−S systems.62−64
+We found that the adsorption energy of LiPS is significantly
+higher (≫1.00 eV/molecule) on the pyridinic N sites
+compared to the pyrrolic N sites, regardless of the type of
+LiPS. LiPS species are more strongly anchored at the pyridinic
+N sites relative to pyrrolic N sites, as reflected by the Li−N
+bond distance (1.9 Å for pyridinic N versus 2.2 Å for pyrrolic
+N). Such a trend in anchoring effects was also seen with the
+performance of the N-doped graphene model for Li-ion battery
+applications.54 On analysis of the charge distribution to
+understand the true nature of the interaction, we observe
+that a large charge accumulation is seen between Li and N sites
+on the graphene surface, as shown by the differential charge
+density plots of Li2S4, Li2S6, and Li2S8 over the N-doped
+graphene surface in Figure S13. In fact, larger charge
+accumulation is observed for the Li atom of LiPS directly
+interacting with pyridinic N sites compared to pyrrolic N sites,
+as also described in Table S6, further indicating a stronger
+interaction of pyridinic N sites with LiPS through the Li atom.
+Overall, our theoretical results confirm that the pyridinic N site
+is more effective at minimizing shuttling effects compared to
+the pyrrolic N site, agreeing with the experimental findings on
+improved capacity retention and cycling stability for pyridinic
+N-Gr additives.
+■CONCLUSION
+In summary, we successfully report a facile, scalable, and green
+approach to fabricating highly functionalized, modality-
+tunable, N-doped graphene for additives in ether-based liquid
+electrolytes for Li−S cells. Thermally annealing the TCR
+graphene in urea ensures the cost-effectiveness and scalability
+of the N-Gr production while maintaining environmental
+friendliness, as it foregoes the use of any organic solvents in the
+entire process. The fabricated N-Gr was used as a low-mass-
+loading additive in the ether-based liquid electrolyte Li−S cells.
+This study reports the beneficial role of highly doped N-Gr in
+significantly improving the electrochemical performance of Li−
+S systems via a series of polysulfide adsorption experiments,
+electrochemical characterization and performance tests, and
+cell post-mortem analysis. Our results highlighted several key
+electrochemical performance trends associated with changing
+the N-doping concentration and modality on graphene. With
+increasing pyridinic N-dopant content on graphene, the cell
+showed enhanced ionic conductivity, improved high-rate
+kinetics, and reduced polarization in the cell, explained by
+better Li+ affinity with pyridinic N dopants. Overall, N-Gr with
+a higher pyridinic N-doping content showed improved ionic
+conductivity than those with high pyrrolic N-doping. Further,
+LiPS adsorption studies and cell post-mortem analysis revealed
+that higher N-doping concentration for the additives was
+positively correlated to better LiPS anchoring, showing better
+active material utilization, lower capacity fade, and improved
+cycling stability. This is also corroborated by our DFT and
+AIMD studies, which demonstrate the increased affinity of
+LiPS to pyridinic nitrogen-decorated graphene. This study, to
+the best of our knowledge, incorporates the first attempt to
+integrate both experimental and computational analysis to truly
+elucidate the electrochemical performance of N-doped
+graphenic species in the Li−S system. We strongly believe
+that our study highlights the exceptional potential of N-Gr as
+an efficient, commercially viable electrolytic additive for
+traditional Li−S batteries.
+■MATERIALS AND EXPERIMENTAL METHODS
+Materials. 1-Methyl-2-pyrrolidone (NMP), poly(vinylidene fluo-
+ride) (PVDF, average MW ∼534000), lithium sulfide (Li2S, 99.98%
+trace metal basis), 1,2-dimethoxyethane (DME), 1,3-dioxolane
+(DOL), and bis(trifluoromethane)lithium salt (LiTFSI, 99.95%)
+were purchased from Sigma-Aldrich. Timical Super C65 was
+purchased from MTI Corp. Sulfur powder (sublimed, 100 mesh,
+Figure 8. DFT-optimized configurations of Li2S4, Li2S6, and Li2S8
+adsorbed on the (a) pyridinic and (b) pyrrolic nitrogen site on the
+graphene surface. The green, white, blue, ochre, and yellow balls in
+the DFT models represent carbon, hydrogen, nitrogen, lithium, and
+sulfur atoms, respectively. Bare N-doped graphene surfaces can also
+be found in Figure S12.
+ACS Applied Materials & Interfaces
+www.acsami.org
+Research Article
+https://doi.org/10.1021/acsami.4c12157
+ACS Appl. Mater. Interfaces 2024, 16, 53950−53962
+53958
+Downloaded from pubs.​acs.​org/​aamick/​article-pdf/​16/​40/​53950/​1292655/​am4c12157.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 10>>
+99.5%) and lithium metal (0.75 mm thickness) were purchased from
+Alfa Aesar. Ketjen Black EC-600JD porous carbon was purchased
+from Akzo Nobel Functional Chemicals LLC. Natural graphite
+powder was purchased from Asbury Carbon (50 μm, Lot 21646,
+Container 23). Urea used in the doping process was sourced from
+Sigma-Aldrich (CAS: 57-13-6). These materials were used without
+any further processing. The commercial carbon materials for
+electrolyte additives used in this study are as follows: (1) single-
+layer graphene (ACS Material); (2) N-doped graphene (ACS
+Material). All the carbon materials were used after drying in a
+vacuum oven at 600 °C overnight.
+Few-Layered Graphene and N-Doped Graphene Fabrica-
+tion. Facile, low-cost, aqueous-based graphene was manufactured in-
+house using a patented Taylor−Couette reactor that employs outer
+cylinder rotation with a stationary inner cylinder, along with axial-
+driven flow that recirculates the fluid, creating a semicontinuous
+exfoliation process. Processing parameters for the reactor were as
+follows: gap between inner and outer cylinder (127−1270 μm), shear
+rates (5000−13000 s−1), axial flow rate (100−1000 mL/min),
+processing volume (150−600 mL), and processing time (0.5−3 h).
+After exfoliation, solutions were washed with DI water and
+centrifuged to remove any unexfoliated graphite particles. The doping
+process was performed in a 100 mL stainless steel autoclave reactor.
+Exfoliated graphite and commercial urea were ball milled (30 Hz, 20
+min) to ensure homogeneity. The mixture was then placed in the
+autoclave reactor, which was subsequently purged using Ar gas,
+following which a constant Ar blanket was maintained for the duration
+of the reaction. The reactor was then heated to 350−500 °C over the
+course of 1 h and held at the reaction temperature for 56.5 min. The
+reaction mixture was air-quenched by immediate removal of the
+sample from the reactor, and the unreacted urea was removed by
+washing with DI water and subsequent drying to obtain pristine N-Gr
+samples.
+Materials Characterization. Surface morphology and EDS
+elemental mapping of N-Gr and E-Gr powders were studied by
+SEM (Zeiss Gemini 500 SEM, ETH = 3−5 keV, WD = 5−9 mm).
+Graphene particle width and lateral dimensions were confirmed using
+STEM (Zeiss Gemini 500 STEM, ETH = 30 keV, WD = 2.5 mm) by
+imaging drop-cast graphene solution on a 400 mesh Cu grid (lacey
+carbon support). The thermal stability of N-Gr was studied using
+thermogravimetric analysis (TA Instruments 5500 TGA, 100 °C
+min−1 ramp from 30−1000 °C, N2 atmosphere). Nitrogen doping was
+analyzed using X-ray photoelectron spectroscopy (Scienta Omicron
+ESCA-2SR spectrometer with operating pressure ca. 10−9 Torr,
+monochromatic Al Kα X-rays at 1486.6 eV) with a 1.1 mm diameter
+analysis spot. Photoelectrons were collected at a 90° emission angle
+with a source-to-analyzer angle of 54.7°. A hemispherical analyzer
+determined electron kinetic energy using a pass energy of 200 eV for
+survey scans and 20 eV for high-resolution scans. A flood gun was
+used for charge neutralization of nonconductive samples; all samples
+were charge corrected using graphitic carbon binding energy (284.8
+eV). Nitrogen doping was further quantified (wt %) in triplicate using
+a CE-440 elemental analyzer (Exeter Analytical). Raman spectra from
+5 different areas of graphene powders on a glass slide were obtained
+by Raman spectroscopy (Renishaw InVia confocal Raman micro-
+scope, 532 nm with ULF). X-ray diffraction (XRD) patterns of the
+graphene samples were determined by a D8 Advance ECO powder
+diffractometer (Bruker Corporation) using a high-brilliance 1 kW X-
+ray source. Prior to BET analysis, the samples were degassed under a
+vacuum (10 mmHg) at 120 °C for 2 h. Subsequently, the BET
+specific surface area was determined on an ASAP 2020 Micromeritics
+instrument with N2 gas adsorption at 77 K.
+Electrolyte Fabrication. The liquid electrolyte was fabricated in
+an Ar-filled glovebox (MBraun MB 150B-G) maintained at moisture
+and oxygen levels below 0.1 ppm. The liquid electrolyte was
+fabricated with 1 M lithium bis(trifluoromethanesulfonyl) (LiTFSI)
+and 1 wt % lithium nitrate (LiNO3) dissolved in 1,2-dimethoxyethane
+and 1,3-dioxolane (1:1 by volume). The chemicals were mixed and
+stirred at 1500 rpm overnight. The additive loading was maintained
+between 0.25% w/w of liquid electrolyte solution. The mixture was
+then ultrasonicated for 90 min and thereafter used immediately.
+Cathode Preparation. Mesoporous carbon (C) sulfur (S)
+cathodes were fabricated as cathodes for the Li−S cells. Sulfur and
+Ketjen Black (KB) were homogeneously mixed at a mass ratio of 8:2
+using a mortar and pestle. The mixture was sealed and heated to 155
+°C for 12 h to melt-infiltrate the sulfur in the mesoporous KB host.
+The S-infiltrated mixture was mixed with conductive Super C65 using
+a mortar and pestle. Next, 5% w/w PVDF solution in NMP was added
+to the powder precursor, and the mixture ball was milled for 4 h
+(total, 10 min intervals to prevent overheating) using a Retsch Mixer
+Mill MM 400 in a hardened stainless-steel jar (50 mL capacity) with
+25 3 mm stainless steel beads. NMP was added to the mixture
+periodically to transform the mix into a castable slurry. The final
+composition of the slurry was 70% w/w S/KB mixture, 20% w/w
+Super C65, and 10% w/w PVDF with 12−17 mL of NMP added. The
+slurry was then cast onto a battery-grade Al foil current collector using
+an MSK-AFA-III automatic thick film coater, followed by a 2-step
+drying process: drying at room temperature for 12 h and then drying
+at 60 °C for 6 h in a forced convection dryer. The cathodes were
+stored in a desiccator set at humidity <10%. The cathodes were
+fabricated at 250−400 μm thickness to achieve the corresponding
+mass loading, 1 mg/cm2 for coin cells and 5.85 mg/cm2 for pouch
+cells. The dried casted films were punched into 15 mm diameter discs
+for CR2032 cells and 2 × 3 cm2 for pouch cells. All cell performance
+comparisons were made between cells fabricated from the same sheet
+of the cathode to deconvolute the impact of active material and
+ensure differences in electrochemical performance were solely due to
+differences in electrolyte additives.
+Cell Assembly. CR2032-type coin cells and pouch cells were used
+to evaluate and elucidate the electrochemical performances of
+graphene-based electrolyte additives in the Li−S cell. The coin cells
+were assembled in the Ar-filled glovebox (MBraun MB 150B-G).
+Lithium metal was used as the anode, and the additive-loaded liquid
+electrolyte was employed as the electrolyte with an electrolyte-to-
+sulfur (E/S) ratio of 15 μL/mgS
+−1, and the C−S composite film was
+employed as the cathode. A commercial microporous polypropylene
+membrane (Celgard 2400) was used as the separator. For pouch cells,
+the slurry-casted cathodes were cut into 2 × 3 cm2 rectangles.
+Aluminum tabs (MTI Corp, PLIB-ATC4) were welded onto cathodes
+using a Branson 2000Xd ultrasonic welder to allow electric contact
+outside the insulating pouch. Similarly, nickel tabs (MTI Corp, PLIB-
+NTA4) were welded onto 1 × 0.5 cm2 copper-mesh current
+collectors, which were then pressed onto 2 × 3 cm2 lithium foil of
+0.75 mm thickness in an argon-filled glovebox. Then, in the glovebox,
+the cathode, Celgard 2400 separator, and lithium anode were stacked
+and fixed onto insulative hot-seal aluminum foils with double-sided
+tape (3M 200MP acrylic). The electrolyte was injected into the stack,
+and the aluminum foils were vacuum-sealed on four sides to make a
+pouch. (A gas pouch was created to collect gas formation during
+formation cycling, though there was no visible gas collection.)
+Electrochemical Measurements. The galvanostatic charge−
+discharge cycling test was performed between 1.8 and 2.8 V using a
+Landt CT3002A battery test system. All cells were rested for 3 h prior
+to initiating any electrochemical testing. The testing protocol was as
+follows: (i) five formation cycles at 0.1 C, followed by (ii) 225 cycles
+(or otherwise stated) at a 0.2 C rate. For rate capability testing, the
+cells were charged/discharged between 1.8 and 2.8 V vs Li+/Li at 0.1,
+0.2, 0.5, 1, and 2 C and back to 0.1 C for five cycles each. Capacity
+retentions were calculated against the first cycle after the formation
+steps. A BioLogic SP-150 potentiostat was used for cyclic
+voltammetry (CV) and electrochemical impedance spectrometry
+(EIS). The CV measurements were carried out at a scan rate of 0.02
+mV s−1 within 1.8−2.8 V. EIS analyses were carried out in a frequency
+range of 100 kHz to 0.1 Hz. The shuttling current test was conducted
+by running a cell for 2 complete charge/discharge cycles at 0.1 C;
+then the cell was held at 2.38 V for 36000 s (10 h), and the current
+response was measured and plotted. The measured current at steady
+state measures the shuttling current in the cell. All cycling and
+electrochemical measurements were conducted at 25 °C. For the
+ACS Applied Materials & Interfaces
+www.acsami.org
+Research Article
+https://doi.org/10.1021/acsami.4c12157
+ACS Appl. Mater. Interfaces 2024, 16, 53950−53962
+53959
+Downloaded from pubs.​acs.​org/​aamick/​article-pdf/​16/​40/​53950/​1292655/​am4c12157.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 11>>
+polysulfide adsorption test, first, an adsorption curve for various Li2S6
+concentrations (Figure S9) was prepared by fabricating stock
+solutions of various concentrations of Li2S6 (prepared by mixing
+stoichiometric quantities of Li2S and S in DOL/DME and heating to
+70 °C for 24 h) and measuring their absorbance at 430 nm using a
+UV−vis spectrophotometer and then fitting a concentration
+calibration curve based on the Beer−Lambert law. Then, 25 mg of
+graphenic material is added to 10 mL of 25 mM solution vials of Li2S6
+in DOL/DOE (1:1 v/v). First, the solution is stirred mildly for 3 h
+and then left untouched for 72 h. After 72 h, the solution is filtered,
+and the concentration of the supernatant solution is measured
+postdilution using the UV−vis spectrophotometer and the concen-
+tration calibration curve.
+Computational Methodology. Periodic DFT calculations were
+performed using the Perdew−Burke−Ernzerhof (PBE)65 form of the
+generalized gradient approximation (GGA), as implemented in the
+CP2K software package.66 The Goedecker−Teter−Hutter (GTH)
+pseudopotentials67 are chosen to treat core electrons, and the valence
+electron states are computed with the double-ζ Gaussian basis sets.68
+A 400 Ry cutoff was used to describe the electrostatic terms. The Γ-
+point is sufficient for sampling the Brillouin zone due to the large size
+of the supercell. Long-range dispersion (van der Waals) corrections
+are applied using the Grimmes DFT-D2 approach.69 The lattice
+parameters of graphene basal plane, consisting of 400 atoms, are
+chosen as a = 29.47 Å, b = 34.00 Å, and c = 32.00 Å (α = β = γ = 90°)
+with a vacuum space of 32 Å in the z-direction. The geometry
+optimization of the pristine graphene surface was initially performed
+using the BFGS algorithm. DFT-based AIMD simulations were also
+carried out in the canonical NVT ensembles using a 1.0 fs time step
+and a Nosé−Hoover chain thermostat at 298.15 K. To obtain the
+dynamic features of LiPS interacting with the N-doped graphene
+surface, we select the following systems: (i) a pristine graphene basal
+plane, (ii) pyrrolic and pyridinic-type N atoms doped on the graphene
+basal plane, and (iii) LiPS (Li2S4, Li2S6, and Li2S8) adsorbed on the
+N-doped graphene surface. Well-equilibrated trajectories of at least 5
+ps were sampled for each system to ensure reliable statistical
+properties. Subsequently, we performed computational annealing on
+several structures from the AIMD trajectories to 0 K and further
+optimized them at 0 K, so that the representative structures of
+adsorbed LiPS can be obtained on the N-doped graphene surface.
+Furthermore, the adsorption energy of LiPS (eV/molecule) on the N-
+doped graphene surface (ΔEads) is calculated as follows:
+=
+E
+E
+E
+E
+ads
+tot,ads
+surf,grap
+LiPS,gas
+where Etot,ads represents the energy of adsorbed LiPS on the N-doped
+graphene surface, Esurf,grap is the energy of pristine N-doped graphene
+surface before adsorption, and ELiPS,gas defines the energy of gas-phase
+LiPS. To further understand the charge profile of LiPS adsorbed on
+the N-doped graphene surface, the differential charge density plot
+Δρdiff was obtained by
+=
+diff
+tot,ads
+surf,grap
+LiPS,gas
+where ρtot,ads represents the charge density of adsorbed LiPS on the N-
+doped graphene surface, ρsurf,grap is the charge density of pristine N-
+doped graphene surface before adsorption, and ρLiPS,gas is the charge
+density of gas-phase LiPS. Bader charge analysis70 was also used to
+evaluate a charge transfer between adsorbed LiPS and N-doped
+graphene surface.
+■ASSOCIATED CONTENT
+*
+sı Supporting Information
+The Supporting Information is available free of charge at
+https://pubs.acs.org/doi/10.1021/acsami.4c12157.
+Figures S1−S13 and Tables S1−S8 (PDF)
+■AUTHOR INFORMATION
+Corresponding Author
+Yong Lak Joo −Robert Fredrick Smith School of Chemical
+and Biomolecular Engineering, Cornell University, Ithaca,
+New York 14853, United States;
+orcid.org/0000-0002-
+4646-1625; Phone: +1 607 255 8591; Email: ylj2@
+cornell.edu
+Authors
+Vaidik R. Shah −Robert Fredrick Smith School of Chemical
+and Biomolecular Engineering, Cornell University, Ithaca,
+New York 14853, United States
+Ritwick Sinha −Robert Fredrick Smith School of Chemical
+and Biomolecular Engineering, Cornell University, Ithaca,
+New York 14853, United States;
+orcid.org/0000-0002-
+9732-935X
+Walter J. Cesarski −Department of Chemistry and Life
+Science, United States Military Academy, West Point, New
+York 10996, United States
+Xiaosi Gao −Robert Fredrick Smith School of Chemical and
+Biomolecular Engineering, Cornell University, Ithaca, New
+York 14853, United States;
+orcid.org/0000-0002-3018-
+9508
+Simuck F. Yuk −Department of Chemistry and Life Science,
+United States Military Academy, West Point, New York
+10996, United States;
+orcid.org/0000-0003-1355-4400
+Complete contact information is available at:
+https://pubs.acs.org/10.1021/acsami.4c12157
+Author Contributions
+V.R.S. and R.S. contributed equally to the project. Y.L.J. and
+V.R.S. conceived the project. R.S. designed and executed N-Gr
+and FLG fabrication process and performed subsequent
+chemical characterization. V.R.S. designed and performed the
+electrochemical experiments and cell tests. X.G. fabricated
+pouch cells. W.J.C. and S.F.Y. performed the computational
+studies. All authors analyzed the data and discussed the
+experimental plans. V.R.S. and R.S. drafted the manuscript, and
+all authors were involved in its revision. Y.L.J. supervised the
+whole project.
+Notes
+The authors declare no competing financial interest.
+■ACKNOWLEDGMENTS
+The authors acknowledge Dr. Nicholas Schulman and Dharani
+Prasad for their help in fabricating FLG, N-Gr, and elemental
+analysis of the N-Gr samples. The authors also acknowledge
+Iftekar Ahmed and Prithwiraj De for their assistance with the
+illustrations. This work was partially supported by Saudi
+Aramco and used the Cornell Center of Materials Research
+Shared Facilities, which are supported through the NSF
+MRSEC program (DMR-1719875). Computational Resources
+were provided by user proposals at the National Energy
+Research Scientific Computing Center (NERSC) located at
+Lawrence Berkley National Laboratory (LBNL). The opinions
+expressed herein are those of the authors and not necessarily
+representative of those of the Department of the Army,
+Department of Defense (DoD), or U.S. Government.
+■REFERENCES
+(1) Manthiram, A.; Fu, Y.; Su, Y. S. Challenges and Prospects of
+Lithium-Sulfur Batteries. Acc. Chem. Res. 2013, 46 (5), 1125−1134.
+ACS Applied Materials & Interfaces
+www.acsami.org
+Research Article
+https://doi.org/10.1021/acsami.4c12157
+ACS Appl. Mater. Interfaces 2024, 16, 53950−53962
+53960
+Downloaded from pubs.​acs.​org/​aamick/​article-pdf/​16/​40/​53950/​1292655/​am4c12157.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 12>>
+(2) Shah, V. R. Tailoring Crosslinked Gelled Electrolyte and Probing
+Its Synergistic Performance with Polymer-Ceramic Hybrid Separators
+for High Energy Density Lithium-Sulfur Battery Systems. 2021.
+DOI: 10.7298/9BNZ-T457.
+(3) Seo, S.-D.; Park, D.; Park, S.; Kim, D.-W. “Brain-Coral-Like”
+Mesoporous Hollow CoS2@N-Doped Graphitic Carbon Nanoshells
+as Efficient Sulfur Reservoirs for Lithium-Sulfur Batteries. Adv. Funct.
+Mater. 2019, 29 (38), 1903712.
+(4) Ye, Y.; Wu, F.; Liu, Y.; Zhao, T.; Qian, J.; Xing, Y.; Li, W.;
+Huang, J.; Li, L.; Huang, Q.; Bai, X.; Chen, R. Toward Practical High-
+Energy Batteries: A Modular-Assembled Oval-Like Carbon Micro-
+structure for Thick Sulfur Electrodes. Adv. Mater. 2017, 29 (48),
+1700598.
+(5) Lin, H.; Zhang, S.; Zhang, T.; Cao, S.; Ye, H.; Yao, Q.; Zheng, G.
+W.; Lee, J. Y. A Cathode-Integrated Sulfur-Deficient Co9S8 Catalytic
+Interlayer for the Reutilization of Lost Polysulfides in LithiumSulfur
+Batteries. ACS Nano 2019, 13 (6), 7073−7082.
+(6) Lin, Q.; Ding, B.; Chen, S.; Li, P.; Li, Z.; Shi, Y.; Dou, H.; Zhang,
+X. Atomic Layer Deposition of Single Atomic Cobalt as a Catalytic
+Interlayer for Lithium-sulfur Batteries. ACS Appl. Energy Mater. 2020,
+3 (11), 11206−11212.
+(7) Yuan, Z.; Peng, H. J.; Hou, T. Z.; Huang, J. Q.; Chen, C. M.;
+Wang, D. W.; Cheng, X. B.; Wei, F.; Zhang, Q. Powering Lithium-
+Sulfur Battery Performance by Propelling Polysulfide Redox at
+Sulfiphilic Hosts. Nano Lett. 2016, 16 (1), 519−527.
+(8) Gao, X.; Zheng, C.; Shao, Y.; Shah, V. R.; Jin, S.; Suntivich, J.;
+Joo, Y. L. Lithium Iron Phosphate Enhances the Performance of
+High-Areal-Capacity Sulfur Composite Cathodes. ACS Appl. Mater.
+Interfaces 2023, 15 (15), 19011−19020.
+(9) Fan, Z.; Ding, B.; Li, Z.; Hu, B.; Xu, C.; Xu, C.; Dou, H.; Zhang,
+X. Long-Cycling All-Solid-State Batteries Achieved by 2D Interface
+between Prelithiated Aluminum Foil Anode and Sulfide Electrolyte.
+Small 2022, 18 (44), 2204037.
+(10) Zhao, G.; Suzuki, K.; Yonemura, M.; Hirayama, M.; Kanno, R.
+Enhancing Fast Lithium Ion Conduction in Li4GeO4-Li3PO4 Solid
+Electrolytes. ACS Appl. Energy Mater. 2019, 2 (9), 6608−6615.
+(11) Yu, X.; Wu, H.; Koo, J. H.; Manthiram, A. Tailoring the Pore
+Size of a Polypropylene Separator with a Polymer Having Intrinsic
+Nanoporosity for Suppressing the Polysulfide Shuttle in Lithium-
+Sulfur Batteries. Adv. Energy Mater. 2020, 10 (1), 1902872.
+(12) Deng, C.; Wang, Z.; Wang, S.; Yu, J.; Martin, D. J.; Nanjundan,
+A. K.; Yamauchi, Y. Double-Layered Modified Separators as Shuttle
+Suppressing Interlayers for Lithium-Sulfur Batteries. ACS Appl. Mater.
+Interfaces 2019, 11 (1), 541−549.
+(13) Chung, S. H.; Manthiram, A. High-Performance Li-S Batteries
+with an Ultra-Lightweight MWCNT-Coated Separator. J. Phys. Chem.
+Lett. 2014, 5 (11), 1978−1983.
+(14) Zhou, G.; Li, L.; Wang, D. W.; Shan, X. Y.; Pei, S.; Li, F.;
+Cheng, H. M. A Flexible Sulfur-Graphene-Polypropylene Separator
+Integrated Electrode for Advanced Li-S Batteries. Adv. Mater. 2015,
+27 (4), 641−647.
+(15) Bai, S.; Liu, X.; Zhu, K.; Wu, S.; Zhou, H. Metal-Organic
+Framework-Based Separator for Lithium-Sulfur Batteries. Nature
+Energy 2016, 1 (7), 1−6.
+(16) Bai, S.; Zhu, K.; Wu, S.; Wang, Y.; Yi, J.; Ishida, M.; Zhou, H. A
+Long-Life Lithium-Sulphur Battery by Integrating Zinc-Organic
+Framework Based Separator. J. Mater. Chem. A Mater. 2016, 4 (43),
+16812−16817.
+(17) Hao, J.; Pan, Y.; Chen, W.; Zhu, X.; Zhou, Y.; Chou, S.
+Improving the Li-S Battery Performance by Applying a Combined
+Interface Engineering Approach on the Li2S Cathode. J. Mater. Chem.
+A Mater. 2019, 7 (48), 27247−27255.
+(18) Shah, V.; Joo, Y. L. Incorporation of Functionalized Graphene
+and Its Derivates into Electrolyte: A Facile Approach to Improve the
+Electrochemical Performance of Lithium-Sulfur Batteries. ECS
+Meeting Abstracts 2022, MA2022-01 (1), 82.
+(19) Shah, V.; Joo, Y. L. Incorporating Heteroatom-Doped
+Graphene in Electrolyte for High-Performance Lithium-Sulfur
+Batteries. ECS Meeting Abstracts 2022, MA2022-02 (8), 656.
+(20) Reddy, A. L. M.; Srivastava, A.; Gowda, S. R.; Gullapalli, H.;
+Dubey, M.; Ajayan, P. M. Synthesis of Nitrogen-Doped Graphene
+Films for Lithium Battery Application. ACS Nano 2010, 4 (11),
+6337−6342.
+(21) Balandin, A. A.; Ghosh, S.; Bao, W.; Calizo, I.; Teweldebrhan,
+D.; Miao, F.; Lau, C. N. Superior Thermal Conductivity of Single-
+Layer Graphene. Nano Lett. 2008, 8 (3), 902−907.
+(22) Wang, X.; Ding, Y.; Lu, H.; Chen, F.; Zhang, N.; Ma, M.
+Chemoselective Solution Synthesis of Pyrazolic-Structure-Rich Nitro-
+gen-Doped Graphene for Supercapacitors and Electrocatalysis. Chem.
+Eng. J. 2018, 347, 754−762.
+(23) Usachov, D.; Vilkov, O.; Grüneis, A.; Haberer, D.; Fedorov, A.;
+Adamchuk, V. K.; Preobrajenski, A. B.; Dudin, P.; Barinov, A.;
+Oehzelt, M.; Laubschat, C.; Vyalikh, D. V. Nitrogen-Doped
+Graphene: Efficient Growth, Structure, and Electronic Properties.
+Nano Lett. 2011, 11 (12), 5401−5407.
+(24) Qu, L.; Liu, Y.; Baek, J. B.; Dai, L. Nitrogen-Doped Graphene
+as Efficient Metal-Free Electrocatalyst for Oxygen Reduction in Fuel
+Cells. ACS Nano 2010, 4 (3), 1321−1326.
+(25) Thomsen, C.; Reich, S. Double Resonant Raman Scattering in
+Graphite. Phys. Rev. Lett. 2000, 85 (24), 5214.
+(26) Chen, J.; Han, Y.; Kong, X.; Deng, X.; Park, H. J.; Guo, Y.; Jin,
+S.; Qi, Z.; Lee, Z.; Qiao, Z.; Ruoff, R. S.; Ji, H. The Origin of
+Improved Electrical Double-Layer Capacitance by Inclusion of
+Topological Defects and Dopants in Graphene for Supercapacitors.
+Angew. Chem., Int. Ed. 2016, 55 (44), 13822−13827.
+(27) Hu, H.; Chen, N.; Teng, H.; Yu, R.; Qu, Y.; Sun, J.; Xue, M.;
+Hu, D.; Wu, B.; Li, C.; Chen, J.; Liu, M.; Sun, Z.; Liu, Y.; Li, P.; Fan,
+S.; García de Abajo, F. J.; Dai, Q. Doping-Driven Topological
+Polaritons in Graphene/α-MoO3 Heterostructures. Nature Nano-
+technology 2022, 17 (9), 940−946.
+(28) Yi, G. S.; Sim, E. S.; Chung, Y. C. Effect of Lithium-Trapping
+on Nitrogen-Doped Graphene as an Anchoring Material for Lithium-
+Sulfur Batteries: A Density Functional Theory Study. Phys. Chem.
+Chem. Phys. 2017, 19 (41), 28189−28194.
+(29) Huang, M.; Mi, K.; Zhang, J.; Liu, H.; Yu, T.; Yuan, A.; Kong,
+Q.; Xiong, S. MOF-Derived Bi-Metal Embedded N-Doped Carbon
+Polyhedral Nanocages with Enhanced Lithium Storage. J. Mater.
+Chem. A Mater. 2017, 5 (1), 266−274.
+(30) Pang, Q.; Nazar, L. F. Long-Life and High-Areal-Capacity Li-S
+Batteries Enabled by a Light-Weight Polar Host with Intrinsic
+Polysulfide Adsorption. ACS Nano 2016, 10 (4), 4111−4118.
+(31) Zhang, R.; Chen, X. R.; Chen, X.; Cheng, X. B.; Zhang, X. Q.;
+Yan, C.; Zhang, Q. Lithiophilic Sites in Doped Graphene Guide
+Uniform Lithium Nucleation for Dendrite-Free Lithium Metal
+Anodes. Angew. Chem., Int. Ed. 2017, 56 (27), 7764−7768.
+(32) Wang, C.; Su, K.; Wan, W.; Guo, H.; Zhou, H.; Chen, J.;
+Zhang, X.; Huang, Y. High Sulfur Loading Composite Wrapped by
+3D Nitrogen-Doped Graphene as a Cathode Material for Lithium-
+Sulfur Batteries. J. Mater. Chem. A Mater. 2014, 2 (14), 5018−5023.
+(33) Fu, Y.; Wu, Z.; Yuan, Y.; Chen, P.; Yu, L.; Yuan, L.; Han, Q.;
+Lan, Y.; Bai, W.; Kan, E.; Huang, C.; Ouyang, X.; Wang, X.; Zhu, J.;
+Lu, J. Switchable Encapsulation of Polysulfides in the Transition
+between Sulfur and Lithium Sulfide. Nature Communications 2020, 11
+(1), 1−10.
+(34) Wang, H.; Maiyalagan, T.; Wang, X. Review on Recent
+Progress in Nitrogen-Doped Graphene: Synthesis, Characterization,
+and Its Potential Applications. ACS Catal. 2012, 2 (5), 781−794.
+(35) Zhang, C.; Fu, L.; Liu, N.; Liu, M.; Wang, Y.; Liu, Z. Synthesis
+of Nitrogen-Doped Graphene Using Embedded Carbon and Nitrogen
+Sources. Adv. Mater. 2011, 23 (8), 1020−1024.
+(36) Pham, T. V.; Kim, J. G.; Jung, J. Y.; Kim, J. H.; Cho, H.; Seo, T.
+H.; Lee, H.; Kim, N. D.; Kim, M. J. High Areal Capacitance of N-
+Doped Graphene Synthesized by Arc Discharge. Adv. Funct. Mater.
+2019, 29 (48), 1905511.
+(37) Rybin, M.; Pereyaslavtsev, A.; Vasilieva, T.; Myasnikov, V.;
+Sokolov, I.; Pavlova, A.; Obraztsova, E.; Khomich, A.; Ralchenko, V.;
+Obraztsova, E. Efficient Nitrogen Doping of Graphene by Plasma
+Treatment. Carbon N Y 2016, 96, 196−202.
+ACS Applied Materials & Interfaces
+www.acsami.org
+Research Article
+https://doi.org/10.1021/acsami.4c12157
+ACS Appl. Mater. Interfaces 2024, 16, 53950−53962
+53961
+Downloaded from pubs.​acs.​org/​aamick/​article-pdf/​16/​40/​53950/​1292655/​am4c12157.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 13>>
+(38) Singh, A. K.; Basavaraju, K. C.; Sharma, S.; Jang, S.; Park, C. P.;
+Kim, D. P. Eco-Efficient Preparation of a N-Doped Graphene
+Equivalent and Its Application to Metal Free Selective Oxidation
+Reaction. Green Chem. 2014, 16 (6), 3024−3030.
+(39) Du, M.; Sun, J.; Chang, J.; Yang, F.; Shi, L.; Gao, L. Synthesis of
+Nitrogen-Doped Reduced Graphene Oxide Directly from Nitrogen-
+Doped Graphene Oxide as a High-Performance Lithium Ion Battery
+Anode. RSC Adv. 2014, 4 (80), 42412−42417.
+(40) Figueras, M.; Villar-Garcia, I. J.; Vines, F.; Sousa, C.; De La
+Pena O’Shea, V. A.; Illas, F. Correcting Flaws in the Assignment of
+Nitrogen Chemical Environments in N-Doped Graphene. J. Phys.
+Chem. C 2019, 123 (17), 11319−11327.
+(41) Alamer, M.; Zamani, S.; Fok, K.; Satish, A.; Lim, A. R.; Joo, Y.
+L. Facile Production of Graphenic Microsheets and Their Assembly
+via Water-Based, Surfactant-Aided Mechanical Deformations. ACS
+Appl. Mater. Interfaces 2020, 12 (7), 8944−8951.
+(42) Paton, K. R.; Varrla, E.; Backes, C.; Smith, R. J.; Khan, U.;
+O’Neill, A.; Boland, C.; Lotya, M.; Istrate, O. M.; King, P.; Higgins,
+T.; Barwich, S.; May, P.; Puczkarski, P.; Ahmed, I.; Moebius, M.;
+Pettersson, H.; Long, E.; Coelho, J.; O’Brien, S. E.; McGuire, E. K.;
+Sanchez, B. M.; Duesberg, G. S.; McEvoy, N.; Pennycook, T. J.;
+Downing, C.; Crossley, A.; Nicolosi, V.; Coleman, J. N. Scalable
+Production of Large Quantities of Defect-Free Few-Layer Graphene
+by Shear Exfoliation in Liquids. Nature Materials 2014 13:6 2014, 13
+(6), 624−630.
+(43) Yi, Z.; Su, F.; Cui, G.; Han, P.; Dong, N.; Chen, C.
+Computational Insights into the Interaction between Li2S/Li2S2 and
+Heteroatom-Doped Graphene Materials. ChemistrySelect 2019, 4
+(43), 12612−12621.
+(44) Gong, Y.; Ma, W.; Xu, Z.; Wang, Y. Understanding the
+Interaction of N-Doped Graphene and Sulfur Compounds in a
+Lithium-Sulfur Battery: A Density Functional Theory Investigation.
+New J. Chem. 2022, 46 (25), 12300−12310.
+(45) Yin, L. C.; Liang, J.; Zhou, G. M.; Li, F.; Saito, R.; Cheng, H.
+M. Understanding the Interactions between Lithium Polysulfides and
+N-Doped Graphene Using Density Functional Theory Calculations.
+Nano Energy 2016, 25, 203−210.
+(46) Mou, Z.; Chen, X.; Du, Y.; Wang, X.; Yang, P.; Wang, S.
+Forming Mechanism of Nitrogen Doped Graphene Prepared by
+Thermal Solid-State Reaction of Graphite Oxide and Urea. Appl. Surf.
+Sci. 2011, 258 (5), 1704−1710.
+(47) Hummers, W. S.; Offeman, R. E. Preparation of Graphitic
+Oxide. J. Am. Chem. Soc. 1958, 80 (6), 1339.
+(48) Li, F.; Jiang, X.; Zhao, J.; Zhang, S. Graphene Oxide: A
+Promising Nanomaterial for Energy and Environmental Applications.
+Nano Energy 2015, 16, 488−515.
+(49) Huang, X.; Wang, Z.; Knibbe, R.; Luo, B.; Ahad, S. A.; Sun, D.;
+Wang, L. Cyclic Voltammetry in Lithium-Sulfur Batteries
+Challenges and Opportunities. Energy Technology 2019, 7 (8),
+1801001.
+(50) Zhao, M. Q.; Liu, X. F.; Zhang, Q.; Tian, G. L.; Huang, J. Q.;
+Zhu, W.; Wei, F. Graphene/Single-Walled Carbon Nanotube
+Hybrids: One-Step Catalytic Growth and Applications for High-
+Rate Li-S Batteries. ACS Nano 2012, 6 (12), 10759−10769.
+(51) Mačák, M.; Vyroubal, P.; Kazda, T.; Jaššo, K. Numerical
+Investigation of Lithium-Sulfur Batteries by Cyclic Voltammetry. J.
+Energy Storage 2020, 27, 101158.
+(52) Narayanan, S. R.; Shen, D. H.; Surampudi, S.; Attia, A. I.;
+Halpert, G. Electrochemical Impedance Spectroscopy of Lithium-
+Titanium Disulfide Rechargeable Cells. J. Electrochem. Soc. 1993, 140
+(7), 1854−1861.
+(53) Luo, Z.; Lim, S.; Tian, Z.; Shang, J.; Lai, L.; MacDonald, B.; Fu,
+C.; Shen, Z.; Yu, T.; Lin, J. Pyridinic N Doped Graphene: Synthesis,
+Electronic Structure, and Electrocatalytic Property. J. Mater. Chem.
+2011, 21 (22), 8038−8044.
+(54) Kong, X. K.; Chen, Q. W. Improved Performance of Graphene
+Doped with Pyridinic N for Li-Ion Battery: A Density Functional
+Theory Model. Phys. Chem. Chem. Phys. 2013, 15 (31), 12982−
+12987.
+(55) Moy, D.; Manivannan, A.; Narayanan, S. R. Direct Measure-
+ment of Polysulfide Shuttle Current: A Window into Understanding
+the Performance of Lithium-Sulfur Cells. J. Electrochem. Soc. 2015,
+162 (1), A1−A7.
+(56) Barchasz, C.; Molton, F.; Duboc, C.; Leprêtre, J. C.; Patoux, S.;
+Alloin, F. Lithium/Sulfur Cell Discharge Mechanism: An Original
+Approach for Intermediate Species Identification. Anal. Chem. 2012,
+84 (9), 3973−3980.
+(57) Fan, F. Y.; Carter, W. C.; Chiang, Y. M. Mechanism and
+Kinetics of Li2S Precipitation in Lithium-Sulfur Batteries. Adv. Mater.
+2015, 27 (35), 5203−5209.
+(58) Kim, J. M.; Engelhard, M. H.; Lu, B.; Xu, Y.; Tan, S.; Matthews,
+B. E.; Tripathi, S.; Cao, X.; Niu, C.; Hu, E.; Bak, S. M.; Wang, C.;
+Meng, Y. S.; Zhang, J. G.; Xu, W. High Current-Density-Charging
+Lithium Metal Batteries Enabled by Double-Layer Protected Lithium
+Metal Anode. Adv. Funct. Mater. 2022, 32 (48), 2207172.
+(59) Huang, Y.; Lin, L.; Zhang, C.; Liu, L.; Li, Y.; Qiao, Z.; Lin, J.;
+Wei, Q.; Wang, L.; Xie, Q.; Peng, D. L. Recent Advances and
+Strategies toward Polysulfides Shuttle Inhibition for High-Perform-
+ance Li-S Batteries. Advanced Science 2022, 9 (12), 2106004.
+(60) Li, S.; Zhang, W.; Zheng, J.; Lv, M.; Song, H.; Du, L. Inhibition
+of Polysulfide Shuttles in Li-S Batteries: Modified Separators and
+Solid-State Electrolytes. Adv. Energy Mater. 2021, 11 (2), 2000779.
+(61) Gu, S.; Sun, C.; Xu, D.; Lu, Y.; Jin, J.; Wen, Z. Recent Progress
+in Liquid Electrolyte-Based Li-S Batteries: Shuttle Problem and
+Solutions. Electrochemical Energy Reviews 2018, 1 (4), 599−624.
+(62) Jeon, T.; Lee, Y. C.; Hwang, J. Y.; Choi, B. C.; Lee, S.; Jung, S.
+C. Strong Lithium-Polysulfide Anchoring Effect of Amorphous
+Carbon for Lithium-Sulfur Batteries. Curr. Appl. Phys. 2021, 22,
+94−103.
+(63) Fang, M.; Liu, X.; Ren, J. C.; Yang, S.; Su, G.; Fang, Q.; Lai, J.;
+Li, S.; Liu, W. Revisiting the Anchoring Behavior in Lithium-Sulfur
+Batteries: Many-Body Effect on the Suppression of Shuttle Effect. npj
+Computational Materials 2020, 6 (1), 1−6.
+(64) Zhang, L.; Liang, P.; Man, X.; Wang, D.; Huang, J.; Shu, H. bo;
+Liu, Z.; Wang, L. Fe, N Co-Doped Graphene as a Multi-Functional
+Anchor Material for Lithium-Sulfur Battery. J. Phys. Chem. Solids
+2019, 126, 280−286.
+(65) Perdew, J. P.; Burke, K.; Ernzerhof, M. Generalized Gradient
+Approximation Made Simple. Phys. Rev. Lett. 1996, 77 (18), 3865.
+(66) Vandevondele, J.; Krack, M.; Mohamed, F.; Parrinello, M.;
+Chassaing, T.; Hutter, J. Quickstep: Fast and Accurate Density
+Functional Calculations Using a Mixed Gaussian and Plane Waves
+Approach. Comput. Phys. Commun. 2005, 167 (2), 103−128.
+(67) Goedecker, S.; Teter, M.; Hutter, J. Separable Dual-Space
+Gaussian Pseudopotentials. Phys. Rev. B 1996, 54 (3), 1703.
+(68) VandeVondele, J.; Hutter, J. Gaussian Basis Sets for Accurate
+Calculations on Molecular Systems in Gas and Condensed Phases. J.
+Chem. Phys. 2007, DOI: 10.1063/1.2770708.
+(69) Grimme, S. Semiempirical GGA-Type Density Functional
+Constructed with a Long-Range Dispersion Correction. J. Comput.
+Chem. 2006, 27 (15), 1787−1799.
+(70) Sanville, E.; Kenny, S. D.; Smith, R.; Henkelman, G. Improved
+Grid-Based Algorithm for Bader Charge Allocation. J. Comput. Chem.
+2007, 28 (5), 899−908.
+ACS Applied Materials & Interfaces
+www.acsami.org
+Research Article
+https://doi.org/10.1021/acsami.4c12157
+ACS Appl. Mater. Interfaces 2024, 16, 53950−53962
+53962
+Downloaded from pubs.​acs.​org/​aamick/​article-pdf/​16/​40/​53950/​1292655/​am4c12157.​pdf by TSINGHUA UNIV user on 21 September 2026

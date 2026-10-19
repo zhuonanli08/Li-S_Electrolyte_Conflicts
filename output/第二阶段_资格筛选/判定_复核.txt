@@ -1,0 +1,41 @@
+# 复核改判：对 判定_原始.txt 中存疑（Ⅰ=?）35 篇与漏检抽查发现的问题，读全文相关句后的终判
+# 格式：编号|Ⅰ类|层|改变的因素|Ⅱ类|Ⅱ内容|备注或排除理由|复核依据
+# 判定者：Claude（AI 判定，用户未复核）；依据：复核摘录_存疑.txt / 复核摘录_漏检抽查.txt
+P013|Y|C|电解液：[Li(G4)][TFSA] vs [Li(G4)][TFSA]/4HFE vs LiTFSA-DOL/DME（同一优化碳）|N||主要变量为正极碳孔结构，另含 3 种电解液对比|全文：IOC50(PFA) 在三种电解液中充放电与循环对比
+P047|Y|N+A|S-GSH 正极在含 1 wt% LiNO3 / 无 LiNO3 / 含 Li2S8 电解液中循环|N||主要变量为正极（S-GSH vs S-rGO）|全文：Fig 2C 两种电解液循环；SI 三种电解液库仑效率
+P051|Y|A|2 wt% 气相 SiO2 胶体电解液添加剂 vs 标准电解液|N||胶体添加剂（记录）；另有隔膜观察|全文：Fig 7 有无 SiO2 添加剂循环与库仑效率
+P055|N|||N||排除：单一电解液 [Li(G3)1][TFSA]|全文：仅一种溶剂化离子液体电解液
+P080|Y|C|醚类溶剂 G1–G4 / 15-冠-5（0.5 M LiTFSI），亚纳米限域硫|N||指标为 GITT 过电位与 CV 动力学，无循环寿命|全文：五种电解液 Li‖S GITT 与 CV 对比
+P081|Y|C+N|标准 1.0 M LiTFSI / 0.2 M LiNO3 vs "7M" LiTFSI（无 LiNO3）|?|电池内多硫化物原位 Pt 丝伏安检测（半定量）|性能比较弱，以多硫化物信号为主|全文：两种电解液首次放电的多硫化物信号与放电曲线
+P084|Y|C|盐阴离子：1 M LiTFSI / LiFSI / LiTFSI–LiFSI 双盐|N||主体为原位 AFM，电池循环在 SI|全文：SI Fig S13 三种盐 Li‖S 循环与库仑效率
+P087|N|||N||排除：无锂硫电池（LFP‖Li，碳酸酯中加多硫化物）|全文：电池为 LFP‖Li
+P090|N|||Y|在线质谱测电解液分解；循环后电解液 GC-MS；电极厚度变化|排除：±LiNO3 只比较分解产物，无性能比较|全文：±LiNO3 对比为气体 / 分解产物，无容量对比
+P168|Y|C|离子液体 PYR14TFSI 50 vol% 加入 vs 不加（均含 0.21 M LiNO3）|N||主体为原位液体池 TEM|全文：Fig 1e 两种电解液循环与库仑效率、穿梭电流
+P174|Y|C|溶剂：[Li(G4)][TFSA]:HFE vs [Li(SL)2][TFSA]:HFE（Li‖Li2S 半电池倍率）|N||锂离子–硫 / Li2S（非主层）；另有 Li2S/C 复合物比较|全文：Fig 2 两种电解液倍率对比
+P178|N|||N||排除：同一配方新鲜 vs 老化（DOL 聚合），非设计配方比较——范围边界|全文：fresh vs aged 为同一名义配方
+P240|Y|C|溶剂：G4 基 vs SL 基难溶电解液（贫液，含软包）|N||另有 TiB 正极添加剂（可分离）|全文：TiB-free 正极在两种电解液中放电与软包循环对比
+P254|Y|C|LiTFSI 浓度：50 / 100 / 500 mM（扣式），0.2 vs 1.0 M（2 Ah 软包）|N||机理为主|全文：不同 LiTFSI 浓度扣式与软包电池对比
+P257|N|||N||排除：介体涂于隔膜，电解液固定|全文：sCA 涂覆于 PP 隔膜
+P273|N|||N||排除：纯计算（DFT）|全文：仅 DFT
+P280|N|||N||排除：TFP 加入正极（部分溶入电解液），电解液名义固定——经正极引入组分，范围边界|全文：addition of TFP in the S cathode
+P341|N|||Y|ICP 测循环后正极 / 负极 / 隔膜吸附多硫化物平均链长；循环后电解液几乎倒不出|排除：变量为循环圈数与补加电解液（热失控），无配方性能比较；Ⅱ 关联热安全而非容量衰减|全文：ARC 比较 16 / 45 圈 ± 补液
+P379|N|||N||排除：介体 PG-DAAQ 加入正极，电解液固定|全文：sulfur melt-diffused into PG-DAAQ/KB
+P382|N|||N||排除：只有 Li‖Ni 电池与浸泡，无锂硫电池配方比较|全文：Li‖Ni 循环、浸泡老化
+P383|N|||N||排除：无锂硫电池（Li‖Cu 与 Li-O2）|全文：Li‖Cu、Li-O2 电池
+P426|N|||N||排除：变量为正极 PEO@C/S（PEO 溶入电解液），电解液名义固定——经正极引入组分，范围边界|全文：cathodes with / without PEO
+P435|N|||?|operando FTIR 多硫化物结合|排除：咖啡因为正极添加剂|全文：incorporated as solid powder additive into the cathode
+P441|N|||N||排除：PyDPP 为正极添加剂|全文：additives in sulfur cathodes
+P446|N|||N||排除：DMC vs DME 仅为 AIMD 模拟，电池只用单一电解液|全文：Li‖SPAN 仅用 LDME
+P447|Y|N+C|LiNO3 作唯一盐 vs LiTFSI；LiNO3 浓度（SI 充放电曲线，结论为差异小）|?|operando S K 边谱：正极侧与负极侧电解液中多硫化物与 LiNO3 反应产物（定性）|比较弱，SI 中给方向|全文：Switching from LiTFSI to LiNO3 does not change…（Fig S3）
+P516|N|||N||排除：纯模拟（COMSOL 一维模型）|全文：1D COMSOL 模型
+P519|N|||N||排除：纯计算（DFT / MD）|全文：仅 DFT / MD
+P528|N|||N||排除：变量为正极与预恒电位 CEI，电解液固定|全文：S8@S7Se/PAN-PS vs S8@S7Se/PAN vs S8@SPAN
+P531|N|||N||排除：主要变量为正极催化剂；与含 LiNO3 电池的对照同时改变正极，混杂|全文：CNT / FePC / NH2-MIL-68 / FePC@NH2-MIL-68 正极均无 LiNO3
+P567|N|||N||排除：变量为多硫化物合成路线（Li+联苯+S vs Li2S+S），支持电解液固定——溶液正极，范围边界|全文：Li+BP+S vs Li2S+S catholyte
+P589|N|||N||排除：±LiNO3 只比较 CEI 光谱，无性能比较|全文：in situ FTIR 两种电解液
+P661|Y|M+C|卤化物富集电解液（有机卤化物盐 + DMI）vs 基准；Li‖S、Li‖SeS2 推广验证|N||高价硫族新化学（以 Se 为主）——范围边界，建议纳入并单独标记|全文：applied to Li‖S… increased discharge capacity
+P662|Y|C|LiTFSI-EMIMCl-TTE-A vs 1 M LiTFSI DOL-DME（常规 S-C 正极，SI Fig S33）|N||主体为 Li‖S2Cl2 新化学——范围边界，建议纳入并单独标记|全文：improved the cycling stability of conventional S-C electrodes compared with 1 M LiTFSI in DOL-DME
+P666|Y|A|第二碱金属 TFSI 盐（Na / K / Rb）浓度 vs 标准 1 M LiTFSI + 0.3 M LiNO3|N||多硫化锂液流电池原型（静态电池测试）——溶液正极，范围边界|全文：comparison to a standard static cell
+P283|N|||?|循环后软包电解液提取物 LC-MS 定性多硫化物|排除：单一电解液（LC-MS 定性分析多硫化物）|漏检抽查：Ⅱ 由 N 改 ?（定性物种）
+P381|Y|C|轻质电解液 LiFSI/TEP-DBE vs TEP-TTE 局部高浓 vs DBE|Y|Li‖SPAN 全电池循环中电解液消耗 qNMR（TD 比 TT 消耗少）|SPAN 正极（非主层）|Ⅱ 类二次扫描：Quantitative NMR data confirm that TD electrolyte is less consumed than TT during cycling
+P551|Y|A+N|0.5 M LiPO2F2 vs 0.5 M LiNO3 vs 无添加（贫液）|Y|TGC 测 10 / 50 / 100 圈后负极残余金属锂（两种添加剂对比）|题名称"催化"，M/A 待核|Ⅱ 类二次扫描：Li0 retained in anode cycled for 10, 50, and 100 cycles … quantified by the TGC method

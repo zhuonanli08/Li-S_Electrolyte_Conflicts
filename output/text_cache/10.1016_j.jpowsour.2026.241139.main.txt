@@ -1,0 +1,1067 @@
+
+<<PAGE 1>>
+Dual-function polysulfide mediation for interphase stabilization of lithium 
+metal and reversible sulfur redox
+Hyunjin Jung a,b,1, Moonwon Lee c,d,1
+, Boyeon Kim a,e, Myunghyun Ryu a, Sang-Eun Chun b
+,  
+Kanghoon Yim c,*, Kyu-Nam Jung a,**, Jinhong Lee a,***
+a Renewable Energy Institute, Korea Institute of Energy Research (KIER), 152 Gajeong-ro, Yuseong-gu, Daejeon, 34129, Republic of Korea
+b School of Materials Science and Engineering, Kyungpook National University, Daegu, 41566, Republic of Korea
+c Energy AI & Computational Science Laboratory, Korea Institute of Energy Research (KIER), 152 Gajeong-ro, Yuseong-gu, Daejeon, 34129, Republic of Korea
+d Graduate School of Energy Science and Technology, Chungnam National University, 99 Daehak-ro, Yuseong-gu, Daejeon, 34134, Republic of Korea
+e Department of Polymer Science and Engineering, Chungnam National University, 99 Daehak-ro, Yuseong-gu, Daejeon, 34134, Republic of Korea
+H I G H L I G H T S
+G R A P H I C A L A B S T R A C T
+• Dual-function polysulfide electrolyte 
+stabilizes Li–S interfaces.
+• Li2S6 additive induces thin, stable Li2S- 
+rich SEI on Li metal.
+• Li2S6 promotes 3D Li2S growth and im­
+proves redox reversibility.
+• PS additive improves rate capability and 
+suppressed self-discharge.
+A R T I C L E I N F O
+Keywords:
+Lithium secondary batteries
+Polysulfide additive
+Li-metal anode stability
+3D growth of Li2S
+A B S T R A C T
+Lithium-sulfur batteries are promising next-generation alternatives to lithium-ion batteries owing to their high 
+energy density. However, practical application is hindered by Li dendrite growth, parasitic anode reactions, and 
+undecomposed Li2S accumulation at high sulfur loading, which accelerate capacity fading and impair cycling 
+stability. In this work, we investigate the role of lithium polysulfide additives in stabilizing the Li-metal anode 
+and modulating Li2S deposition morphology at the cathode. Density functional theory (DFT) calculations further 
+elucidate the interaction affinity and polarity of polysulfide additives, providing critical insights into their 
+reactivity with Li metal. Additionally, the polysulfide additives enabled a high initial areal capacity of 5.6 mAh 
+cm−2 (870 mAh g−1) and stable cycling over 200 cycles with a capacity retention of 55% at 0.3C with a high 
+sulfur loading cathode (6.5 mg cm−2), attributed to the induced 3D growth of Li2S. This study proposes a dual 
+interface modulation strategy for Li–S batteries using polysulfide additives, which simultaneously facilitates the 
+* Corresponding author.
+** Corresponding author.
+*** Corresponding author.
+E-mail addresses: khyim@kier.re.kr (K. Yim), mitamire@kier.re.kr (K.-N. Jung), jinhong02@kier.re.kr (J. Lee). 
+1 Equal Contribution.
+Contents lists available at ScienceDirect
+Journal of Power Sources
+journal homepage: www.elsevier.com/locate/jpowsour
+https://doi.org/10.1016/j.jpowsour.2026.241139
+Received 1 April 2026; Received in revised form 10 July 2026; Accepted 30 July 2026  
+Journal of Power Sources 693 (2026) 241139 
+Available online 3 August 2026 
+0378-7753/© 2026 Elsevier B.V. All rights are reserved, including those for text and data mining, AI training, and similar technologies. 
+
+<<PAGE 2>>
+formation of a robust solid electrolyte interphase (SEI) on the Li-metal anode and enhances the reversibility of 
+sulfur redox reactions at the cathode.
+1. Introduction
+With the growing demand for high energy density rechargeable 
+batteries, particularly for unmanned aerial vehicles, lithium-sulfur 
+(Li–S) batteries have emerged as one of the most promising next- 
+generation energy storage technologies [1]. Owing to the high theo­
+retical specific capacity of lithium (3860 mAh g−1) and sulfur (1675 
+mAh g−1), Li–S batteries offer a high energy density up to 2600 Wh kg−1, 
+far exceeding that of conventional lithium-ion batteries (LIBs) [2]. In 
+addition to their energy advantage, sulfur is abundant, inexpensive, and 
+environmentally benign, making Li–S batteries an attractive energy 
+storage system [3–8]. Despite these advantages, the practical imple­
+mentation of Li–S batteries is hindered by severe interfacial instabilities 
+at both electrodes. The Li-metal anode is plagued by dendritic growth 
+and continuous parasitic reactions with the electrolyte, leading to the 
+formation of a chemically unstable and inhomogeneous solid electrolyte 
+interphase (SEI) [9]. These issues result in rapid electrolyte consumption 
+and poor cycle life. On the cathode side, the soluble lithium polysulfide 
+intermediates (Li2Sn, 4 ≤n ≤8) generated during redox conversion 
+readily migrate to the anode, triggering parasitic shuttle reactions 
+[10–12]. Moreover, under practical high sulfur loading conditions 
+(>5 mg cm−2), the sluggish conversion kinetics promote the formation 
+of insulating, two-dimensional (2D) Li2S deposits that passivate the 
+cathode surface, hindering subsequent electrochemical reactions 
+[13–15]. Electrolyte additives have been widely explored to mitigate 
+these issues, including LiNO3 [16,17], tetraethylammonium nitrate 
+[18], LiPO2F2 [19], LiDFOB [20], or specific polysulfides [21–23]. 
+Although lithium polysulfides such as Li2S8 have previously been 
+employed as electrolyte additives in Li–S batteries, their functions have 
+generally been discussed mainly in terms of anode passivation [24–26]. 
+However, 
+the 
+intrinsic 
+physicochemical 
+differences 
+among 
+chain-length-controlled polysulfide species and their coupled effects on 
+both the Li-metal anode and sulfur cathode interfaces have not been 
+systematically elucidated. In particular, the relationships among solva­
+tion energy, molecular dipole moment, Li-metal reactivity, and full-cell 
+performance remain insufficiently understood for polysulfides with 
+different chain lengths. In addition, concentration-dependent perfor­
+mance optimization for each polysulfide species has rarely been sys­
+tematically investigated. Therefore, clarifying how polysulfide chain 
+length and concentration govern interfacial chemistry is essential for 
+establishing rational polysulfide-mediated electrolyte design principles.
+Here, we introduce low-concentration, chain-length-controlled pol­
+ysulfide additives (Li2S4, Li2S6, and Li2S8) as a dual-function electrolyte 
+engineering strategy to stabilize both the anode and cathode. Specif­
+ically, the polysulfide additives are employed as a pre-aging agent that 
+promotes the rapid formation of a uniform sulfur-derived interphase at 
+the onset of cycling. By providing a controlled and homogeneous sulfur- 
+containing chemical interphase, this approach suppresses localized Li 
+corrosion and mitigates early-stage heterogeneity. We further establish a 
+chain-length-dependent additive design by correlating polysulfide sol­
+vation stability and molecular polarity with the evolution of lithium 
+reversibility. Concurrently, this controlled polysulfide mediation is 
+leveraged to modulate the sulfur cathode chemistry by facilitating three- 
+dimensional (3D) Li2S precipitation over traditional 2D film-like growth. 
+This morphological shift effectively alleviates cathode passivation, 
+ensuring that active surface sites remain accessible and preserving rapid 
+redox conversion kinetics even under practical high-loading conditions. 
+This dual-electrode regulation is supported by density functional theory 
+and ab initio molecular dynamics calculations, which elucidate how 
+polysulfide solvation stability and polarity govern interphase evolution, 
+interfacial reaction pathways, and the balance between beneficial 
+passivation and parasitic consumption. Therefore, Li–S pouch cells 
+(5 × 5 cm2) demonstrate enhanced cycling stability and capacity 
+retention, delivering a high reversible initial capacity of 887 mAh g−1 at 
+0.3C over 159 cycles with a sulfur loading of 2.5 mg cm−2. These results 
+show the efficacy of controlled polysulfide additives as a dual-function 
+electrolyte design strategy, which simultaneously suppresses anode 
+degradation and cathode passivation in high-performance Li–S batteries.
+2. Experimental section
+2.1. Materials
+Lithium (Li) metal foils (Honjo Metal Co., Ltd.), 1, 3-Dioxolane (DOL, 
+Sigma-Aldrich), 1, 2-Dimethoxyethane (DME, Sigma-Aldrich), Lithium 
+bis-(trifluoromethanesulfonyl) imide (LiTFSI, Sigma-Aldrich), Lithium 
+nitrate (LiNO3, Sigma-Aldrich), elemental sulfur (S, Sigma-Aldrich), 
+Lithium sulfide (Li2S, Sigma-Aldrich), Ceramic coated separators 
+(Hebei Gellec New Energy, China; thickness: 16 μm, porosity: ~42%), 
+Carbon nanotube (CNT, Sigma-Aldrich), A commercial carbon paper 
+(H23C5, Freudenberg, Germany; thickness: 220 μm, bulk density: 
+~0.50 g/cm3, porosity: ~76%), Polyacrylic acid (PAA), Isopropanol 
+(IPA), deionized (DI) water were used as received without further 
+purification.
+2.2. Preparation of electrolyte
+The blank electrolyte was composed of 1.0 M LiTFSI and 0.2 M LiNO3 
+in DOL/DME (1:1, by volume). Prior to electrolyte preparation, all 
+powder materials were dried in a vacuum oven at 90 ◦C for 24h. The 
+polysulfide containing electrolyte was prepared by dissolving Li2S and 
+elemental sulfur into the blank electrolyte. A 0.2 M concentrated poly­
+sulfide solution was first synthesized and then diluted with the blank 
+electrolyte to obtain lower concentration polysulfide solutions. The final 
+mixtures were stirred at 30-40 ◦C for 24h until homogeneous solutions 
+were obtained. All electrolyte preparation procedures were conducted 
+inside an Ar-filled glovebox.
+2.3. Preparation of S/C composite cathodes
+We fabricated an S/C composite by infiltrating sulfur into CNTs via a 
+melting diffusion process conducted at 155 ◦C, resulting in a sulfur 
+content of 80%. The cathode electrode was prepared by slurry casting a 
+mixture composed of the active S/C composite (90 wt%), a carbon based 
+conductive agent (Super-P, 5 wt%), and a binder solution consisting of 
+high molecular-weight PAA (450,000 g/mol) dissolved in deionized 
+water (10 wt%), which accounted for 5 wt% of the overall formulation. 
+In addition, 4g of a solvent mixture of isopropanol and deionized water 
+(IPA: DI = 5: 95, w/w) was added to adjust the slurry viscosity. The 
+slurry was subsequently mixed using a Resodyn acoustic mixer for 3 min 
+and then cast onto carbon paper. The coated electrodes were dried in an 
+oven at 80 ◦C for 2h.
+2.4. Battery performance evaluation
+The Li | Li symmetric coin cells were assembled in standard CR2032 
+coin cells using ultrathin Li foils (20 μm, 16.0 mm diameter) and 
+ceramic-coated separators (19.0 mm diameter). The cells were tested at 
+a current density of 1.0 mA cm−2 with an areal capacity of 1.0 mAh 
+cm−2, as well as at 5.0 mA cm−2 with areal capacities of 1.0, 2.0, and 3.0 
+mAh cm−2. For interfacial resistance analysis, electrochemical imped­
+ance spectroscopy (EIS) was conducted on Li| Li symmetric cells 
+H. Jung et al.                                                                                                                                                                                                                                    
+Journal of Power Sources 693 (2026) 241139 
+2 
+
+<<PAGE 3>>
+operated at 1.0 mA cm−2 with an areal capacity of 1.0 mAh cm−2, and 
+the impedance was recorded at selected cycling intervals. The spectra 
+were collected from 1 MHz to 1 Hz using an AC amplitude of 10 mV. 
+Additionally, interfacial resistance was further evaluated by utilizing Li | 
+Li symmetric cells under open-circuit conditions, where the impedance 
+was measured as a function of rest time. A VSP-30 electrochemical 
+workstation (Bio-Logic) was used for all measurements. For Li–S coin 
+cell evaluation, Li-metal anodes with a thickness of 200 μm (16.0 mm 
+diameter), sulfur cathodes with areal loadings of 3.2 and 6.5 mg cm−2 
+(14.0 mm diameter), ceramic-coated separators (19.0 mm diameter), 
+and both the blank electrolyte and the polysulfide containing electrolyte 
+(E/S ratio = 20) were used. The galvanostatic cycling of full-range Li–S 
+cells were performed within a voltage window of 1.8–2.8 V at 0.3C 
+(1C = 1675 mA g−1) after two activation cycles at 0.1C. For Li–S pouch 
+cell evaluation, Li-metal anodes with a thickness of 200 μm (5.2 x 
+5.2 cm2), sulfur cathodes with areal loadings of 2.5 mg cm−2 (5 x 5 cm2), 
+ceramic-coated separators (6 x 6 cm2), and both the blank electrolyte 
+and the polysulfide containing electrolyte (E/S ratio = 20) were used. 
+The galvanostatic cycling of full-range Li–S cells was performed within a 
+voltage window of 1.8–2.8 V at 0.3C (1C = 1675 mA g−1) after five 
+activation cycles at 0.05C and 0.1C. Furthermore, to evaluate the pouch 
+cell performance under more practically stringent conditions, another 
+configuration was tested using thin Li-metal anodes with a thickness of 
+20 μm (4 x 4 cm2). For this evaluation, sulfur cathodes with areal 
+loadings ranging from 3.2 to 3.81 mg cm−2 (3.5 x 3.5 cm2) and ceramic- 
+coated separators (4.5 x 4.5 cm2) were utilized, with the E/S ratio set at 
+10. The galvanostatic cycling for these thin-Li pouch cells was conducted 
+within a voltage window of 1.8–2.8 V at a constant current density of 
+0.1C.
+2.5. Materials characterizations
+The surface morphologies of the sulfur cathodes and Li-metal anodes 
+were examined using Field-Emission Scanning Electron Microscopy (FE- 
+SEM, Hitachi S-4800, 5 kV). For analysis, electrodes were rinsed with 
+DME to remove residual electrolyte and subsequently dried. Surface 
+chemical analysis was carried out using an X-ray Photoelectron Spec­
+troscopy (XPS, Thermo Scientific NEXSA G2). For Atomic Force Micro­
+scope (AFM) analysis, Li metal was immersed in the blank electrolyte 
+and an electrolyte containing 0.02 M Li2S6, and aged for 2, 12, and 24 h. 
+After the aging process, the electrodes were rinsed with DME prior to 
+AFM measurements.
+2.6. Li2S deposition testing
+For the Li2S deposition experiments, Li2S6 cells were assembled using 
+carbon paper as the cathode and Li metal as the anode. The electrolyte 
+consisted of 20 μL of 0.2 M Li2S6 dissolved in DME and an additional 
+100 μL of a modified electrolyte containing 0.02 M Li2S6. For compari­
+son, 100 μL of the blank electrolyte was used under otherwise identical 
+conditions. The cells were first discharged to 2.11 V at a constant current 
+of 0.2 mA, followed by a constant-voltage step at 2.02 V for 50 min. The 
+Li2S deposition behavior was analyzed using chronoamperometry-based 
+nucleation models [27,28]. The Bewick–Fleischmann–Thirsk (BFT) 
+models describing 2D progressive (2DP) and instantaneous (2DI) 
+nucleation and the Scharifker–Hills (SH) models describing 3D pro­
+gressive (3DP) and instantaneous (3DI) nucleation were employed [29].
+2.7. Computational details
+For the structural optimization of polysulfide additives (Li2S4, Li2S6, 
+and Li2S8) and calculation of the adsorptions at anode and cathode in­
+terfaces, DFT calculations were performed using the Vienna Ab initio 
+Simulation Package (VASP) [30]. A generalized gradient approximation 
+(GGA) of Perdew-Burke-Ernzerhof (PBE) [31] form was used for the 
+exchange and correlation functionals, and the Grimme-D3 method [32] 
+was applied to consider van der Waals forces. The k-point sampling and 
+cutoff energy of plane-wave basis set were determined to satisfy 
+convergence criteria of total energy changes below 10 meV per atom and 
+pressures below 10 kbar. All structures were fully optimized until the 
+forces on each atom were less than 0.01 eV Å−1. The initial molecular 
+structures of polysulfides and electrolyte (DOL and DME) species were 
+considered from former literatures [33–36]. To accurately mimic the 
+realistic solvation environment, we explicitly accounted for the solvent 
+coordination effect by exploring configurations coordinated with two 
+solvent molecules, as detailed in Fig. S1. For modeling the interfaces of 
+Li-metal anode and sulfur cathode, bcc-Li (1 1 0) surface [37] and S8 (1 
+0 0) surface structures were used, respectively (Fig. S2). For the surface 
+calculations, the bottom layer is fixed during structural relaxation. 
+AIMD simulations were also performed to investigate the solvation 
+structures of polysulfides in the DOL/DME environment. Initial config­
+urations were generated using the PACKMOL package [38], in which 
+atoms were randomly placed in a cubic simulation box with a volume of 
+1 nm3. Each system consisted of one polysulfide together with four DOL 
+and four DME molecules, resulting in a concentration of approximately 
+1 M and a total of ~120 atoms. In this work, LiTFSI is not included in the 
+simulations to avoid computational complexity. All AIMD simulations 
+were performed in the canonical (NVT) ensemble at 300 K using a 
+Nos´e–Hoover thermostat [39,40]. To obtain diverse solvation configu­
+rations between polysulfides and DOL/DME molecules, the simulations 
+were conducted for a total duration of 100 ps with a time step of 2 fs. The 
+solvation energy (Esolvation) of polysulfides was calculated according to 
+the following (1): 
+Esolvation = Esystem −Eavg
+DOL/DME −Egas
+polysulfide
+(1) 
+where Esystem represents the single-point energy of the structure con­
+taining both the polysulfides and DOL/DME along the AIMD trajectory, 
+Eavg
+DOL/DME corresponds to the energy of the pure DOL/DME structure and 
+was defined as the average of single-point energies calculated at same 
+intervals along the AIMD trajectory, and Egas
+polysulfide denotes the energy of 
+the isolated polysulfides. To evaluate the dipole moments of polysulfide 
+structures obtained from AIMD trajectories, DFT calculations were 
+performed using the Gaussian 16 package [41]. The B3LYP exchan­
+ge–correlation functional [42] was employed in conjunction with the 
+6-311++G(d,p) basis set. Solvation effects were accounted for by 
+combining explicitly coordinated DOL and DME molecules with an im­
+plicit continuum model representing the surrounding medium. The 
+implicit solvation effect was described using the integral equation 
+formalism polarizable continuum model (IEFPCM) [43] with a dielectric 
+constant (ε) of 7.1 [44,45], representing the average polarity of a 1:1 
+(v/v) mixture of DOL and DME. In addition, MD simulations assisted by 
+MLIP were performed using the LAMMPS package [46] to investigate 
+solvation structures of polysulfides in a larger super cell. For the inter­
+atomic potential, the pretrained 7net-ompa model [47,48] was 
+employed. The model was validated against AIMD trajectories of 1 M 
+polysulfides in DOL/DME (Fig. S11(d)). The simulation was performed 
+in a cubic cell with a volume of 2 nm3, containing four polysulfide 
+molecules (~1 M) and a solvent mixture of 25 DOL and 25 DME mole­
+cules (~700 atoms in total), and was conducted for a total duration of 
+100 ps with a time step of 1 fs at 300 K.
+3. Result and discussion
+3.1. Characterization of polysulfide additive-induced stabilization of Li 
+metal
+Li metal possesses the lowest reduction potential (−3.04 V vs. SHE), 
+causing spontaneous reduction of electrolyte species upon contact, even 
+during simple surface contact [49]. The resulting decomposition prod­
+ucts accumulate on the Li surface, while concurrent oxidation of Li 
+H. Jung et al.                                                                                                                                                                                                                                    
+Journal of Power Sources 693 (2026) 241139 
+3 
+
+<<PAGE 4>>
+occurs spontaneously, leading to undesirable parasitic reactions. To 
+evaluate the corrosion behavior of the Li-metal anode in a conventional 
+ether-based electrolyte, soaking tests were conducted using fresh 
+Li-metal electrodes in the control electrolyte (1 M LiTFSI in DOL/DME, 
+50/50 v/v, with 0.2 M LiNO3) and in the control electrolyte containing 
+0.02 M Li2S6 additive, as shown in Fig. 1(a). Severe corrosion spots 
+appeared on Li metal in the control electrolyte after only 4 days, and the 
+size of these corrosive regions progressively increased during the 60 
+days soaking test. In contrast, the electrolyte containing 0.02 M Li2S6 
+showed noticeable uniform corrosion, with the Li surface retaining its 
+initial yellowish appearance from 4 days through 60 days of aging. As 
+shown in the SEM results (Fig. 1(b)), Li metal soaked in the base elec­
+trolyte for 13 days exhibited numerous cracks and a highly uneven 
+surface due to aggressive corrosion. In contrast, the electrolyte with 
+0.02 M Li2S6 additive produced a more uniform surface with minimal 
+localized damage and smoother morphology. Cross-sectional analysis 
+further revealed that the control electrolyte led to the formation of a 
+thick, porous corrosion layer (~52 μm), whereas the Li2S6 containing 
+electrolyte resulted in a significantly thinner layer (~33 μm). 
+Furthermore, AFM analysis verified the evolution of surface roughness 
+during the soaking test, showing that the control electrolyte exhibited 
+increasing Rq values of 182, 219, and 245 nm after 2, 12, and 24 h of 
+soaking, respectively (Fig. 1(c)). In contrast, the electrolyte containing 
+0.02 M Li2S6 maintained nearly constant Rq values of 156, 150, and 
+161 nm over the same aging periods, indicating suppressed surface 
+degradation and a stable surface morphology during prolonged expo­
+sure. To characterize the surface chemical composition of Li-metal 
+anode, X-ray photoelectron spectroscopy (XPS) analysis was per­
+formed. A noticeably diminished C-C bonding peak at 284.8 eV was 
+observed for the electrolyte containing 0.02 M Li2S6, signifying sup­
+pressed electrolyte decomposition at the interface [50,51]. This result 
+indicates that, as evidenced by the reduced thickness of the porous layer 
+on the Li metal, the Li2S6 additive promotes the formation of a more 
+compact and uniform thin corrosion layer compared to the control 
+electrolyte (Fig. 1(d)). As expected, the Li2S6 containing electrolyte 
+exhibited a stronger Li2S signal, attributed to the co-oxidation of poly­
+sulfides and electrolyte components. The soluble Li2S6 species act as 
+mild oxidants that are spontaneously reduced to insoluble Li2S on the Li 
+Fig. 1. (a) Optical images of Li metal immersed in control electrolyte and electrolyte with 0.02 M Li2S6 additive over different soaking times. (b) SEM surface and 
+cross-sectional images comparing the morphology and corrosion layer thickness of Li in control and 0.02 M Li2S6 containing electrolytes. (c) AFM analysis of the Li 
+surface morphology after electrolyte dipping test. (d) XPS spectra of Li surfaces after 4 days of soaking, presenting C 1s and S 2p regions for control and 0.02 M Li2S6 
+containing electrolytes. (e) EIS spectra of Li symmetric cells aged for various duration time with control electrolyte, 0.02 M Li2S4, 0.02 M Li2S6, and 0.02M Li2S8 
+additives containing electrolyte.
+H. Jung et al.                                                                                                                                                                                                                                    
+Journal of Power Sources 693 (2026) 241139 
+4 
+
+<<PAGE 5>>
+surface while oxidizing metallic Li to Li+ (Li2S6 + 2Li → 3Li2S). This 
+chemical reduction process drives the formation of a thin, Li2S-rich 
+passivation layer, which competes with and partially suppresses un­
+controlled electrolyte decomposition. To verify whether polysulfides can 
+induce reduction reactions through spontaneous interfacial reaction on 
+the Li-metal anode, we conducted DFT calculations. The calculated 
+interfacial reaction energies (Eint-rxn) of polysulfides on the Li-metal 
+anode confirm that Li2S6, as well as Li2S4 and Li2S8, can readily un­
+dergo reduction reactions upon interaction, forming reaction products at 
+the Li-metal surface regardless of the coordination mode with DOL 
+and/or DME (Fig. S3(a–c)). Furthermore, we investigated the Li kinetics 
+within the Li2S-rich SEI formed via spontaneous interfacial reactions, we 
+calculated the Li-ion diffusion barrier via Li vacancy (VLi) in bulk Li2S 
+using the nudged elastic band (NEB) method (Fig. S3(d)). The calculated 
+diffusion barrier is 0.33 eV, which is notably lower than that of graphite 
+(~0.4 eV) [52]. This low barrier confirms that the Li2S-rich SEI effec­
+tively facilitates Li+ transport. To evaluate the electrochemical resis­
+tance of the corrosion layer and assess its suitability as a protective 
+anode interphase, electrochemical impedance spectroscopy (EIS) mea­
+surements were conducted during the soaking period (Fig. 1(e)). The 
+control electrolyte exhibited a gradual increase in impedance over 10 
+days, indicating the continuous growth of the corrosion layer with aging 
+time. The 0.02 M Li2S4 additive exhibited a sharp increase in impedance 
+within the first 12 h, after which the impedance remained relatively 
+stable for 10 days. However, the overall resistance was approximately 
+twice that of the control electrolyte. The 0.02 M Li2S6 and Li2S8 additives 
+exhibited significantly lower saturated impedance during the aging 
+period compared to the control electrolyte, suggesting the formation of a 
+more stable interfacial layer. The effect of this stabilized interface on 
+electrochemical performance will be further discussed.
+The plating/stripping reversibility of Li metal was systematically 
+evaluated using symmetric cells with 20 μm and 200 μm thick elec­
+trodes, operated at 1 mA cm−2 with areal capacity of 1 mAh cm−2. 
+Electrolytes were prepared with Li2S4, Li2S6, and Li2S8 additives at 
+concentrations ranging from 0.005 M to 0.2 M (Fig. S4). While the 
+overall trends were similar across different polysulfide chain lengths, the 
+0.02 M concentration consistently delivered the most stable cycling 
+performance, indicating that an optimal additive content is critical to 
+balancing interfacial stability. In Fig. 2(a), the cycling stability of Li 
+symmetric cells containing 0.02 M Li2S4, Li2S6, and Li2S8 additives is 
+compared with that of the control electrolyte. The control electrolyte 
+without additives exhibited poor stability, with cycle retention limited 
+to less than 300 h (128 cycles), during which the overpotential increased 
+sharply before eventual cell failure. In contrast, electrolytes containing 
+0.02 M Li2S4, Li2S6, and Li2S8 significantly extended the cycling lifetime 
+to 890 h (480 cycles), 1221 h (590 cycles), and 800 h (380 cycles), 
+respectively. In Fig. S5, the disassembled control cell after 170 h of 
+cycling revealed a thick porous layer on the stripped and plated Li-metal 
+surface, with partially detached Li deposits adhering to the separator. In 
+contrast, the cell containing 0.02 M Li2S6 exhibited a more compact and 
+uniform Li-metal surface even after 400 h, along with a clean separator, 
+indicating that the Li2S6 additive directly influences the Li deposition 
+morphology and suppresses parasitic side reactions. The control elec­
+trolyte showed the highest overpotential in Li symmetric cells due to 
+continuous and nonuniform electrolyte decomposition. In contrast, 
+polysulfide additives lowered the overpotential by forming a sulfur- 
+Fig. 2. (a) Cycling performance of 20 μm Li symmetric cells in the control electrolyte and in electrolytes containing 0.02 M Li2S4, Li2S6, and Li2S8 additives under 
+1 mA cm−2 with a capacity of 1 mAh cm−2. (b) Cross-sectional and surface SEM images of 200 μm Li metals from symmetric cells after 20 cycles at a 1 mA cm−2 and a 
+capacity of 1 mAh cm−2. (c) EIS analysis of 20 μm Li symmetric cells at various cycle numbers in control electrolyte and 0.02 M Li2S6 additive at a current density of 
+1 mA cm−2 and a capacity of 1 mAh cm−2. (d) Coulombic efficiency of 20 μm Li/Cu half cells test at 1 mA cm−2 with areal capacity of 1 mAh cm−2. (e) Voltage 
+profiles of Li/Cu half cells at various cycle numbers, demonstrating the effect of Li2S6 additive on plating/stripping reversibility.
+H. Jung et al.                                                                                                                                                                                                                                    
+Journal of Power Sources 693 (2026) 241139 
+5 
+
+<<PAGE 6>>
+derived Li2S-rich interphase through controlled sacrificial reactions with 
+Li metal. Although the overpotential decreased in the order of 
+Li2S4 > Li2S6 > Li2S8, consistent with the solvation energy trend, Li2S6 
+delivered the best long-term stability because its strong solvation sta­
+bility and lowest dipole moment enabled the formation of a compact, 
+stable interphase while suppressing excessive parasitic reactions, as 
+discussed later. Moreover, as shown in Fig. S6, the electrolyte containing 
+0.02 M Li2S6 exhibited markedly prolonged cycling stability at a high 
+current density of 5 mA cm−2 under various areal capacities (1, 2, and 3 
+mAh cm−2) compared to the control electrolyte. As shown in Fig. 2(b), 
+after 20 cycles, the Li metal in the control electrolyte exhibited a 
+severely cracked and uneven surface, accompanied by the formation of a 
+thick-porous layer approximately 94.4 μm in thickness. In contrast, cells 
+with polysulfide additives (Li2S4, Li2S6, and Li2S8) exhibited more uni­
+form, bundle-like Li morphologies, with porous layer thicknesses of 
+85.7, 65.9, and 78.6 μm, respectively. Notably, the Li2S6 additive 
+induced the thinnest and most compact porous layer, consistent with its 
+superior cycling performance in symmetric cells. This result suggests 
+that the medium chain length of Li2S6 provides an optimal balance for 
+stabilizing the Li surface, effectively suppressing excessive porosity 
+while maintaining structural integrity during repeated plating/strip­
+ping. To investigate the evolution of interfacial resistance during 
+cycling, electrochemical impedance spectroscopy (EIS) was conducted 
+on Li symmetric cells (Fig. 2(c)). The control electrolyte initially 
+exhibited a low impedance of <2 Ω, which included both solid elec­
+trolyte interphase resistance and charge transfer resistance, and this 
+value remained relatively stable up to the 50th cycle. However, after 
+100 cycles, the impedance increased nearly threefold, indicating sig­
+nificant growth of interfacial resistance during repeated Li plating/ 
+stripping. This increase is attributed to the formation of a resistive 
+porous layer on the Li surface, which hindered efficient charge transfer. 
+In contrast, the electrolyte containing 0.02 M Li2S6 exhibited a lower 
+initial impedance of less than <1.5 Ω, which remained stable up to 150 
+cycles. These results indicate that even a small amount of Li2S6 additive 
+effectively reduces interfacial resistance and sustains a stable interface 
+between the electrolyte and the Li-metal anode. To further verify the 
+influence of polysulfide chain length on Li reversibility, Li/Cu half-cell 
+tests were conducted to evaluate the stripping/plating efficiency on a 
+Cu current collector (Fig. 2(d)). In the control electrolyte without ad­
+ditives, the cells displayed unstable Coulombic efficiency from the initial 
+cycles, dropping below 90% by the 10th cycle. Progressive efficiency 
+loss ultimately led to cell failure by the 60th cycle, at which point the 
+Coulombic efficiency had decreased to ~77%. These results indicated 
+the severe instability of Li deposition/stripping in the absence of poly­
+sulfide additives. For the electrolyte containing 0.02 M Li2S4, the Li/Cu 
+half-cell sustained a Coulombic efficiency of ~98% up to the 30th cycle, 
+followed by a progressive decline that culminated in complete cell 
+failure by the 45th cycle. In contrast, the 0.02 M Li2S6 additive delivered 
+markedly improved stability, maintaining ~99% Coulombic efficiency 
+for up to 180 cycles. The longest-chain polysulfide, Li2S8, also achieved 
+high Coulombic efficiency (~99%), but its cycle retention was limited to 
+fewer than 86 cycles, indicating higher long-term stability compared to 
+Li2S4. Fig. 2(e) shows the voltage profiles of the Li/Cu half cells, where 
+the control sample exhibited a gradual decline in the plating to stripping 
+capacity ratio, indicating a decrease in Coulombic efficiency. In 
+contrast, the cell with 0.02 M Li2S6 additive maintained nearly identical 
+overpotentials during plating and stripping, achieving a Coulombic ef­
+ficiency exceeding 99.8%.
+3.2. Theoretical investigation of chain length dependent solvation 
+behavior of polysulfide
+The observations so far, showing pronounced differences in the 
+passivation layer thickness and porosity that are closely correlated with 
+the interfacial resistance and Coulombic efficiency, suggest that poly­
+sulfide additives fundamentally modulate interfacial reactions and the 
+resulting surface-layer properties on the Li-metal anode. Notably, the 
+Li2S6 additive produced the thinnest and most compact porous layer and 
+maintained low interfacial resistance and high reversibility, indicating 
+that Li2S6 additive may play a distinct role from other polysulfide ad­
+ditives. To elucidate the atomic-scale origin of these experimental re­
+sults, we conducted theoretical modeling on the solvation structures and 
+polarity of polysulfide additives as a function of chain length. In Fig. 3
+(a), the calculated solvation energies, which account for the energy 
+difference of each polysulfide structure with or without surrounding 
+electrolytes (1:1 mixture of DOL and DME), are plotted from ab initio 
+molecular dynamics (AIMD) trajectories. (Details of the AIMD simula­
+tions are provided in Experimental Section and Fig. S7–S9) The solva­
+tion energy plot was constructed by averaging every 10 single-point 
+energies calculated at 0.1 ps intervals over the final 50 ps of the AIMD 
+trajectory at 300 K. Though the solvation energies are considerably 
+fluctuating by the finite temperature effect, the obvious trend can be 
+derived that the longer chain length results stronger interaction with 
+electrolytes. As the lower (i.e., stronger) solvation energy indicates 
+greater thermodynamical stability and better dispersibility, Li2S4, Li2S6, 
+and Li2S8 are expected to be increasingly stable and more uniformly 
+distributed in the electrolyte, in that order. Notably, Li2S6 and Li2S8 
+often exhibit similar solvation energies, which is consistent with the 
+experimental observation that these two additives yield significantly 
+lower saturated impedance in the soaking tests (Fig. 1(e)). In addition, 
+we also quantitatively compare the dipole moments of the polysulfide 
+additives as shown in Fig. 3(b), calculated from snapshots sampled every 
+2.5 ps in the final 50 ps of AIMD trajectory. The corresponding time 
+evolution of the dipole moments is provided in Fig. S10. The represen­
+tative solvent-coordinated structures of polysulfides are provided in 
+Fig. 3(c–e), where distinct configurations were selected from structures 
+located near the most probable dipole moment values. Specially, LiS6
+−
+structures were observed in the 50–70 ps region of the AIMD trajectories 
+(Fig. 3(a)). This result is consistent with previous reports indicating that 
+Li2S6 can exist in the electrolyte in the form of LiS6
+−through the disso­
+ciation reaction (Li2S6 → Li+ + LiS6
+−) [53,54]. Consequently, Li2S6 ex­
+hibits the lowest dipole moment values, followed by Li2S4 and Li2S8, 
+respectively. According to recent reports, low-polarity electrolytes 
+suppress side reactions between Li-metal anode and lithium poly­
+sulfides, enhance SEI stability, and protect the electrode interface [55]. 
+In this context, the relatively low dipole moment of Li2S6 additive in­
+dicates that they establish a comparatively low-polar environment at the 
+Li-metal anode interface, which can effectively mitigate excessive 
+parasitic reactions. Overall, the low polarity of Li2S6 supports the for­
+mation of a thin and stable passivation layers in electrolytes containing 
+Li2S6 additive, thereby stabilizing the interface, while its strong solva­
+tion energy enhances the electrochemical performance of the Li-metal 
+anode. In contrast, the longest-chain Li2S8 adopts a ring-opened struc­
+ture (Fig. 3(e)) and exhibits relatively low solvation energy (at 57-85 ps 
+region in Fig. 3(a)). As consequence, ring-opened Li2S8 are more likely to 
+exist in the electrolyte, which leads to lower structural stability 
+compared to the Li2S6. Additional molecular dynamics (MD) simulation 
+performed in a larger simulation cell assisted by machine-learned 
+interatomic potential (MLIP) also support that Li2S6 distributes uni­
+formly in the electrolyte, whereas Li2S8 predominantly exists in 
+ring-opened, dissolved configurations (Fig. S11).
+3.3. Electrochemical performance of Li−S batteries
+To evaluate the effect of polysulfide additives on Li–S cell perfor­
+mance, we conducted cycling tests using a low sulfur loading cathode 
+(3.2 mg cm−2) under 0.3C charge/discharge conditions (current density: 
+1.6 mA cm−2). We evaluated Li–S full cells with various concentrations 
+of Li2S4, Li2S6, and Li2S8 additives, and found that those containing 
+0.02 M of each additive exhibited superior cycling stability and capacity 
+retention (Fig. S12). In Fig. 4(a), the control electrolyte delivered an 
+initial areal capacity of 3.02 mAh cm−2 with nearly 100% Coulombic 
+H. Jung et al.                                                                                                                                                                                                                                    
+Journal of Power Sources 693 (2026) 241139 
+6 
+
+<<PAGE 7>>
+efficiency but exhibited gradual capacity fading up to 215 cycles. In 
+contrast, cells with Li2S4, Li2S6, and Li2S8 additives showed distinct 
+capacity retention behaviors, with initial areal capacities of 3.06, 2.52, 
+and 2.89 mAh cm−2, respectively. Among them, the electrolyte con­
+taining 0.02 M Li2S6 exhibited the highest performance, maintaining a 
+75% capacity retention and 83% Coulombic efficiency over 300 cycles. 
+Fig. 4(b) presents the cycling performance of Li/S cells with a higher 
+sulfur loading cathode (6.5 mg cm−2), which is comparable to conven­
+tional Li-ion battery cathodes that typically deliver areal capacities 
+exceeding 4.5 mAh cm−2. Without polysulfide additives, the Li–S battery 
+demonstrated a retention of less than 106 cycles, which is significantly 
+shorter than that at the lower sulfur loading level. This reduction ten­
+dency originates from the accelerated electrolyte decomposition caused 
+by the high utilization of the Li-metal anode, accompanied by the 
+growth of a porous Li layer, which significantly increases interfacial 
+resistance. However, adding polysulfides to the electrolyte markedly 
+improved cycling stability that the electrolyte containing 0.02 M Li2S6 
+enabled stable operation with 55% capacity retention over 200 cycles, 
+even at a high current density of 3.27 mAh cm−2 (0.3C rate). However, 
+all cells, including the control and 0.02 M Li2S4, Li2S6, and Li2S8 con­
+taining cells, showed a gradual decrease in Coulombic efficiency during 
+prolonged cycling and eventually failed. Post-cycling disassembly 
+revealed electrolyte depletion on the Li-metal surface and separator in 
+all cases, indicating continuous electrolyte consumption caused by 
+parasitic reactions between Li metal, electrolyte, and dissolved poly­
+sulfides (Fig. S13). Nevertheless, the polysulfide additive derived SEI 
+layer retarded electrolyte decomposition on the Li-metal surface, 
+delaying electrolyte depletion and improving cycle retention compared 
+with the control electrolyte. Furthermore, the voltage profiles of the 
+control and polysulfide containing electrolytes were analyzed to 
+examine the evolution of overpotential and to evaluate the reversibility 
+of the Li2S ⇌ S8 redox reaction in Fig. 4(c). In particular, the control 
+electrolyte exhibited a pronounced increase in voltage hysteresis be­
+tween the charge and discharge processes at the 100th cycle, indicating 
+a significant rise in interfacial resistance at the Li-metal/electrolyte 
+interface. The electrolytes containing polysulfide additives exhibited 
+significantly lower increases in voltage hysteresis between the charge 
+and discharge processes throughout the entire cycling period, from the 
+initial state to the final cycle. Furthermore, Q1 and Q2 correspond to the 
+discharge capacities of the first (~2.3 V) and second (~2.1 V) plateaus, 
+respectively. Q1 represents the amount of soluble polysulfides generated 
+during the initial discharge, which readily dissolve into the electrolyte. 
+In contrast, Q2 reflects the efficiency of converting these soluble poly­
+sulfides into solid Li2S [56]. The Q2/Q1 ratio, an indicator of the pol­
+ysulfide conversion reaction, was measured at the 10th cycle as 1.80, 
+1.89, 1.92, and 1.90 for the control, 0.02 M Li2S4, 0.02 M Li2S6, and 
+Fig. 3. (a) Solvation energies of polysulfide additives in a 1:1 mixture of DOL and DME, derived from ab initio molecular dynamics (AIMD) trajectories. The values 
+were sampled from the trajectories, with dashed lines indicating the average values. (b) Dipole moments (μ) of polysulfide additives sampled from AIMD trajectories. 
+(c-e) Representative solvation structures and their corresponding dipole moments for (c) Li2S4, (d) Li2S6, and (e) Li2S8.
+H. Jung et al.                                                                                                                                                                                                                                    
+Journal of Power Sources 693 (2026) 241139 
+7 
+
+<<PAGE 8>>
+0.02 M Li2S8 additives, respectively. Among them, the 0.02 M Li2S6 
+additive exhibited the highest Q2/Q1 ratio, demonstrating that Li2S6 
+additive effectively enhances the reversibility of Li2S conversion. Fig. 4
+(d and e) presents the surface and cross-sectional morphologies of Li 
+deposits for the control and 0.02 M Li2S6 additive after 100 cycles. The Li 
+metal without additives exhibited a cracked and uneven surface, 
+accompanied by a thick, porous layer of 277 μm. In contrast, the 0.02 M 
+Li2S6 additive induced a crack-free Li morphology with a comparatively 
+thin porous layer of 226 μm. Therefore, the incorporation of Li2S6 as an 
+electrolyte additive significantly improves sulfur redox reversibility, 
+suppressing interfacial resistance, and stabilizing Li deposition. SEM 
+analysis of the 10 cycled cathodes revealed a distinct morphological 
+transformation upon the addition of 0.02 M Li2S6 (Fig. S14). The cath­
+ode cycled in the control electrolyte exhibited numerous large crystal­
+line deposits, identified as precipitated polysulfides (Li2S or Li2S2). This 
+insulating layer hinders both electron transport and Li+ diffusion during 
+lithiation and delithiation, thereby increasing cell resistance and 
+reducing active material utilization. In contrast, the cathode cycled with 
+0.02 M Li2S6 additive displayed a smooth, polymer like surface film that 
+uniformly covered the electrode. Besides, we confirmed that Li2S de­
+composes effectively during the charging step by XPS analysis. After the 
+20th cycle, the control sample showed a decreased C-C peak and an 
+increased Li2S peak, indicating the accumulation of Li2S on the cathode 
+surface (Fig. S15). Conversely, the 0.02 M Li2S6 additive exhibited a 
+significantly reduced Li2S peak, confirming superior reversibility and 
+decomposition. Furthermore, pouch type Li/S cells with an active area 
+of 5 × 5 cm2 were fabricated using S loadings of ~3 mg cm−2 (Fig. S16). 
+The control cell exhibited an abrupt short-circuit failure at the 52nd 
+cycle, whereas the cell containing the 0.02 M Li2S6 additive maintained 
+stable cycling with 76% capacity retention up to the 159th cycle. In 
+addition, the 0.02 M Li2S6 containing cell showed a lower overpotential 
+and higher initial specific capacity than the control cell. A similar trend 
+was also observed under more practical pouch-cell conditions with an 
+E/S ratio of 10 and a thin Li-metal anode thickness of 20 μm (Fig. S17). 
+These results demonstrate that the Li2S6 additive significantly improves 
+the cycling stability, sulfur utilization, and reaction kinetics of 
+large-area pouch cells, indicating its potential applicability for practical 
+large-scale Li–S batteries.
+Furthermore, we confirmed that the beneficial effect of the poly­
+sulfide additive is also applicable to other electronically conductive 
+carbon materials, such as Ketjen black, which is widely used as a high- 
+surface-area and highly conductive carbon substrate for sulfur cath­
+odes [57,58]. As shown in Fig. S18, the electrolyte containing 0.02 M 
+Li2S6 exhibited a lower overpotential than the control electrolyte in the 
+Ketjen black-based sulfur cathode, indicating reduced polarization and 
+improved sulfur redox kinetics. This result suggests that the Li2S6 
+Fig. 4. Cycling performance of Li–S full cells using the control electrolyte and electrolytes containing 0.02 M Li2S4, Li2S6, or Li2S8 additives with (a) low-sulfur- 
+loading cathodes of 3.2 mg cm−2 and (b) high-sulfur-loading cathodes of 6.5 mg cm−2. (c) Representative voltage profiles of high-sulfur-loading Li–S cells at 
+selected cycles. Surface and cross-sectional SEM images of Li-metal anodes after cycling in (d) the control electrolyte and (e) the electrolyte containing 0.02 M 
+Li2S6 additive.
+H. Jung et al.                                                                                                                                                                                                                                    
+Journal of Power Sources 693 (2026) 241139 
+8 
+
+<<PAGE 9>>
+additive can enhance electrochemical performance regardless of the 
+carbon matrix used in the sulfur cathode.
+We further examined the effect of the polysulfide additive on Li+ ion 
+kinetics by evaluating the rate capability and voltage polarization of 
+Li–S cells with and without the 0.02 M Li2S6 additive. Although the 
+introduction of Li2S6 into the electrolyte may promote polysulfide 
+shuttle reactions and reduce Coulombic efficiency, the Li2S6 containing 
+cell maintained a higher discharge capacity and stable Coulombic effi­
+ciency across various C-rates from 0.1 to 1.0C, even at a high sulfur 
+loading of 6.5 mg cm−2 (Fig. 5(a)). Even after 30 cycles of the rate 
+capability test, the cell containing the Li2S6 additive maintained a stable 
+discharge capacity of approximately 950 mAh g−1, whereas the control 
+cell exhibited a more pronounced capacity decay. The corresponding 
+voltage profiles at different C-rates (Fig. 5(b and c)) reveal clear dif­
+ferences in electrochemical behavior. The control cell exhibited a 
+noticeable increase in polarization and voltage hysteresis with 
+increasing C-rate, indicative of sluggish redox kinetics and the accu­
+mulation of resistive Li2S layers. In contrast, the Li2S6 added electrolyte 
+showed reduced overpotential and stable discharge/charge plateaus 
+even at 1.0C, suggesting that the Li2S6 additive promotes reversible 
+Li2S/S8 conversion and enhances ion/electron transport kinetics. These 
+results demonstrate that a moderate concentration of Li2S6 effectively 
+improves sulfur utilization, thereby increasing discharge capacity by 
+enhancing sulfur redox reversibility and suppressing cathode surface 
+passivation, ultimately enabling superior rate capability and capacity 
+retention in Li–S batteries. The Li2S6 additive induces a stable interface 
+by sacrificially reacting with Li metal to form Li2S, whereas irreversible 
+corrosion of Li metal otherwise leads to self-discharge. Therefore, the 
+self-discharge behavior was evaluated by measuring the capacity after 
+6 h and 24 h of rest. As the aging time increased from 6 h to 24 h, the 
+initial theoretical capacity of 829 mAh g−1 decreased to 782 mAh g−1 
+and 526 mAh g−1 for the control electrolyte (Fig. 5(d)). In contrast, the 
+0.02 M Li2S6 additive exhibited only minimal capacity fading, with the 
+initial capacity of 930 mAh g−1 decreasing to 909 mAh g−1 and 715 mAh 
+g−1 after 6 h and 24 h, respectively (Fig. 5(e)). The capacity retention 
+ratios of the control and 0.02 M Li2S6 additive were 94.4% and 98.2% 
+after 6 h, which decreased to 65.6% and 87.9% after 24 h (Fig. 5(f)). 
+These results indicate that the SEI layer induced by the Li2S6 additive 
+suppresses corrosion by blocking direct reactions between bare Li metal 
+and dissolved polysulfides from the cathode. This demonstrates that the 
+initial sacrificial corrosion induced by a small amount of 0.02 M Li2S6 
+additive establishes a stable interfacial layer for subsequent cycling, 
+Fig. 5. (a) Rate capability tests of Li/S batteries with and without the 0.02 M Li2S6 additive, showing capacity retention ratio. Voltage profiles at different current 
+densities (0.1C, 0.3C, 0.5C, 0.7C and 1.0C) for (b) without additive and (c) with 0.02 M Li2S6. Voltage profiles for evaluating capacity retention after 6 h and 24 h for 
+(d) control and (e) 0.02 M Li2S6, and (f) comparison of capacity retention ratios. Voltage profiles for evaluating capacity recovery after 6 h and 24 h for (g) control 
+and (h) 0.02 M Li2S6, and (i) comparison of capacity recovery ratios.
+H. Jung et al.                                                                                                                                                                                                                                    
+Journal of Power Sources 693 (2026) 241139 
+9 
+
+<<PAGE 10>>
+rather than reducing the Coulombic efficiency of the Li metal. Further­
+more, we analyzed the capacity recovery after aging for 6 h and 24 h, 
+where the control electrolyte showed a decrease from the initial capacity 
+of 829 mAh g−1 to 814 mAh g−1 and 705 mAh g−1, respectively (Fig. 5
+(g)). In particular, the 0.02 M Li2S6 additive exhibited significantly 
+improved capacity recovery, with the initial capacity of 930 mAh g−1 
+decreasing to 926 mAh g−1 and 868 mAh g−1 after 6 h and 24 h of aging 
+(Fig. 5(h)). Along with enhanced capacity retention, the 0.02 M Li2S6 
+additive also improved capacity recovery, reaching 99.6% and 94.6% 
+after 6 h and 24 h, respectively, compared to 98.2% and 87.9% for the 
+control sample (Fig. 5(i)).
+3.4. Polysulfide mediated modulation of Li2S precipitation behavior
+Chronoamperometry at 2.02 V was employed to study the precipi­
+tation of Li2S on carbon paper substrates during the electrochemical 
+reduction of liquid phase lithium polysulfides. As shown in Fig. 6(a and 
+b) the potentiostatic discharge current–time (i–t) curves reveal the Li2S 
+precipitation process, as characterized by the profile of each curve. To 
+further analyze the Li2S deposition mechanism, both current and time 
+were normalized by the maximum current (im) and its corresponding 
+time (tm) to construct dimensionless i–t plots [59]. These normalized 
+profiles enable the identification of Li2S nucleation and growth behavior 
+based 
+on 
+the 
+Bewick–Fleischman–Thirsk 
+(BFT) 
+model 
+for 
+two-dimensional (2D) surface growth and the Scharifker–Hills (SH) 
+model for three-dimensional (3D) diffusion-controlled growth [60]. The 
+2D deposition occurs via surface limited electrochemical reactions, 
+whereas 3D deposition proceeds through radially expanding nuclei 
+under diffusion control, with both modes capable of following either 
+instantaneous or progressive nucleation. The control sample followed a 
+2D instantaneous growth mode of Li2S, while the introduction of 0.02 M 
+Li2S6 additive facilitated a shift toward 3D instantaneous growth, indi­
+cating enhanced nucleation and spatially uniform Li2S precipitation. 
+The presence of a small amount of 0.02 M Li2S6 additive effectively 
+influences the initial Li2S precipitation and subsequent Li2S reduction, 
+leading to 3D growth behavior. Ex-situ SEM images of the Li2S deposits 
+on the carbon paper substrate (Fig. 6(c)) further support the proposed 
+growth mechanism; the control sample without the additive exhibited a 
+compact, film-like Li2S morphology characteristic of 2D growth, indi­
+cating rapid surface passivation and limited ionic diffusion. In contrast, 
+the cell containing 0.02 M Li2S6 additive produced porous, agglomer­
+ated Li2S particles, consistent with 3D growth behavior and enhanced 
+ion transport pathways [61]. As shown in Fig. S19, the C–C peak in­
+tensity decreased in the control sample, which can be attributed to the 
+coverage of the carbon matrix by the film-like Li2S discharge products. 
+In comparison, the electrolyte containing the Li2S6 additive exhibited a 
+Fig. 6. Analysis of Li2S deposition behavior in Li–S cells with and without the 0.02 M Li2S6 additive. (a) Potentiostatic discharge current–time curves and (b) 
+corresponding dimensionless current–time plots compared with theoretical 2D and 3D nucleation models. (c) SEM images of Li2S deposits formed on carbon paper 
+electrodes after potentiostatic discharge. Calculated adsorption structures and adsorption energies (Eads, eV) of (d) Li and (e) Li2S6 on the S8 surface, and (f) an 
+additional Li following Li2S6 adsorption.
+H. Jung et al.                                                                                                                                                                                                                                    
+Journal of Power Sources 693 (2026) 241139 
+10 
+
+<<PAGE 11>>
+more pronounced decrease in the C–C signal, along with a significantly 
+intensified Li2S-related peak, indicating enhanced Li2S deposition dur­
+ing discharge. DFT calculations reveal that the binding affinity of Li2S6 
+with S8 (−0.70eV) is significantly stronger than that of Li with S8 
+(−0.11eV), indicating that the Li2S6 additive has a much higher 
+adsorption preference on the sulfur surface (Fig. 6(d and e)). More 
+importantly, Li adsorption energy on the pre-adsorbed Li2S6 is also more 
+exothermic (−0.71 eV) than on the bare S8 surface, implying the reduced 
+nucleation overpotential with the Li2S6 decorated sulfur cathode (Fig. 6
+(f)). This substantial thermodynamic preference for localized clustering 
+over lateral dispersion corroborates the observed macroscopic transition 
+from a 2D film to 3D agglomerate growth. To further elucidate the 
+atomic-scale mechanism of the 3D growth, we also investigated the 
+sequential adsorption behavior of Li2S6 (Fig. S20). Notably, a second 
+Li2S6 molecule exhibits a significantly stronger adsorption energy 
+(−1.49 eV) when binding adjacent to a pre-adsorbed Li2S6, which serves 
+as a highly active and vertically oriented nucleation site. Consequently, 
+the transition from a 2D film-like morphology to 3D spherical growth 
+upon the addition of 0.02 M Li2S6 is attributed not only to the altered 
+nucleation energy barrier but also to the mediation of solution-phase 
+kinetics. In the control electrolyte, high interfacial energy drives Li2S 
+to spread laterally (2D) to minimize surface energy, leading to rapid 
+surface passivation. Conversely, the Li2S6 additive promotes a 
+solution-mediated growth pathway. By enriching the interfacial region 
+with long-chain polysulfides, it lowers the desolvation energy barrier for 
+Li+ ions and facilitates the sustained transport of sulfur species toward 
+pre-existing nuclei [62,63]. This shifts the growth from surface-limited 
+(2D) to diffusion-controlled (3D), allowing Li2S to grow vertically into 
+the electrolyte bulk as porous agglomerates rather than a dense, insu­
+lating film.
+4. Conclusion
+A dual function electrolyte strategy using polysulfide additives was 
+developed to simultaneously stabilize the Li-metal anode and regulate 
+sulfur redox reactions. The sulfur-derived stable solid electrolyte inter­
+phase (SEI), formed during the initial aging period with 0.02 M Li2S6 
+additive, enabled stable cycling of a 20 μm Li-symmetric cell for 590 
+cycles at 1 mA cm−2 with areal capacity of 1 mAh cm−2. At the cathode 
+side, Li2S6 additive promotes uniform 3D Li2S growth, preventing sur­
+face passivation and improves sulfur redox reaction reversibility. 
+Consequently, the 0.02 M Li2S6 additive significantly improved the 
+cycling stability of high-sulfur-loading coin type Li–S cells, which 
+delivered an initial areal capacity of 5.6 mAh cm−2 and retained 55% of 
+the capacity after 200 cycles at 0.3C with a sulfur loading of 
+6.5 mg cm−2. Furthermore, improved interfacial kinetics were 
+confirmed by enhanced rate performance, reduced self-discharge, and 
+lower voltage hysteresis. This study demonstrates that controlled poly­
+sulfide mediation provides balanced anode protection and cathode 
+redox enhancement at both electrodes, offering an effective and scalable 
+route toward long life Li–S batteries.
+CRediT authorship contribution statement
+Hyunjin Jung: Conceptualization, Data curation, Methodology. 
+Moonwon Lee: Data curation, Methodology, Software. Boyeon Kim: 
+Data curation, Methodology. Myunghyun Ryu: Data curation, Valida­
+tion. Sang-Eun Chun: Formal analysis. Kanghoon Yim: Investigation, 
+Software, Validation, Visualization, Writing – original draft. Kyu-Nam 
+Jung: Investigation, Supervision, Writing – review & editing. Jinhong 
+Lee: Supervision, Visualization, Writing – original draft, Writing – re­
+view & editing.
+Declaration of competing interest
+The authors declare that they have no known competing financial 
+interests or personal relationships that could have appeared to influence 
+the work reported in this paper.
+Acknowledgements
+The authors acknowledge support from the Ministry of Trade, In­
+dustry, and Resources/Korea Planning & Evaluation Institute of Indus­
+trial Technology (MOTIR/KEIT) (No. RS-2026-25535427). This work 
+was also supported by the National Research Council of Science & 
+Technology (NST) grant funded by the Korean government (MSIT) (No. 
+GTL24013-000).
+Appendix A. Supplementary data
+Supplementary data to this article can be found online at https://doi. 
+org/10.1016/j.jpowsour.2026.241139.
+Data availability
+No data was used for the research described in the article.
+References
+[1] R. Van Noorden, Sulphur back in vogue for batteries, Nature 498 (2013) 416–417, 
+https://doi.org/10.1038/498416a.
+[2] J. Sun, Y. Liu, L. Liu, J. Bi, S. Wang, Z. Du, H. Du, K. Wang, W. Ai, W. Huang, 
+Interface engineering toward expedited Li2S deposition in lithium–sulfur batteries: 
+a critical review, Adv. Mater. 35 (2023) 2211168, https://doi.org/10.1002/ 
+adma.202211168.
+[3] X. Ji, L.F. Nazar, Advances in Li–S batteries, J. Mater. Chem. 20 (2010) 9821–9826, 
+https://doi.org/10.1039/B925751A.
+[4] W. Jan, A.D. Khan, F.J. Iftikhar, G. Ali, Recent advancements and challenges in 
+deploying lithium sulfur batteries as economical energy storage devices, J. Energy 
+Storage 72 (2023) 108559, https://doi.org/10.1016/j.est.2023.108559.
+[5] R. Kumar, J. Liu, J.-Y. Hwang, Y.-K. Sun, Recent research trends in Li–S batteries, 
+J. Mater. Chem. A 6 (2018) 11582–11605, https://doi.org/10.1039/C8TA01483C.
+[6] M.R. Kaiser, Z. Han, J. Liang, S.-X. Dou, J. Wang, Lithium sulfide-based cathode for 
+lithium-ion/sulfur battery: recent progress and challenges, Energy Storage Mater. 
+19 (2019) 1–15, https://doi.org/10.1016/j.ensm.2019.04.001.
+[7] H.J. Peng, J.Q. Huang, X.B. Cheng, Q. Zhang, Review on high-loading and high- 
+energy lithium–sulfur batteries, Adv. Energy Mater. 7 (2017) 1700260, https://doi. 
+org/10.1002/aenm.201700260.
+[8] D. Lei, K. Shi, H. Ye, Z. Wan, Y. Wang, L. Shen, B. Li, Q.H. Yang, F. Kang, Y.B. He, 
+Progress and perspective of solid-state lithium–sulfur batteries, Adv. Funct. Mater. 
+28 (2018) 1707570, https://doi.org/10.1002/adfm.201707570.
+[9] Y.V. Mikhaylik, I. Kovalev, R. Schock, K. Kumaresan, J. Xu, J. Affinito, High energy 
+rechargeable Li-S cells for EV application: status, remaining problems and 
+solutions, ECS Trans. 25 (2010) 23, https://doi.org/10.1149/1.3414001.
+[10] Q. Pang, X. Liang, C.Y. Kwok, L.F. Nazar, Advances in lithium–sulfur batteries 
+based on multifunctional cathodes and electrolytes, Nat. Energy 1 (2016) 16132, 
+https://doi.org/10.1038/nenergy.2016.132.
+[11] Y. Diao, K. Xie, S. Xiong, X. Hong, Analysis of polysulfide dissolved in electrolyte in 
+discharge-charge process of Li-S battery, J. Electrochem. Soc. 159 (2012) 
+A421–A425, https://doi.org/10.1149/2.060204jes.
+[12] J. Li, Z. Niu, C. Guo, M. Li, W. Bao, Catalyzing the polysulfide conversion for 
+promoting lithium sulfur battery performances: a review, J. Energy Chem. 54 
+(2021) 434–451, https://doi.org/10.1016/j.jechem.2020.06.009.
+[13] S. Feng, Z.H. Fu, X. Chen, Q. Zhang, A review on theoretical models for 
+lithium–sulfur battery cathodes, InfoMat 4 (2022) e12304, https://doi.org/ 
+10.1002/inf2.12304.
+[14] E. Peled, I. Shekhtman, T. Mukra, M. Goor, I. Belenkaya, D. Golodnitsky, Improving 
+the durability and minimizing the polysulfide shuttle in the Li/S battery, 
+J. Electrochem. Soc. 165 (2018) A6051–A6058, https://doi.org/10.1149/ 
+2.0101801jes.
+[15] S. Evers, L.F. Nazar, New approaches for high energy density lithium–sulfur battery 
+cathodes, Acc. Chem. Res. 46 (2013) 1135–1143, https://doi.org/10.1021/ 
+ar3001348.
+[16] X. Liang, Z. Wen, Y. Liu, M. Wu, J. Jin, H. Zhang, X. Wu, Improved cycling 
+performances of lithium sulfur batteries with LiNO3-modified electrolyte, J. Power 
+Sources 196 (2011) 9839–9843, https://doi.org/10.1016/j.jpowsour.2011.08.027.
+[17] S.S. Zhang, Role of LiNO3 in rechargeable lithium/sulfur battery, Electrochim. Acta 
+70 (2012) 344–348, https://doi.org/10.1016/j.electacta.2012.03.081.
+[18] F. Ahmed, C. Fang, D. Li, Y. Zhao, G. Liu, Lithium–sulfur batteries with micelle- 
+structured electrolytes and imide-based salts, ACS Appl. Energy Mater. 6 (2023) 
+7212–7220, https://doi.org/10.1021/acsaem.3c00916.
+[19] K.M. Le, A. Phan, C. Anderson, S. Feng, N.T. Tran, L. Shi, M.V. Duong, S. Parab, 
+B. Bhamwala, W. Bao, Catalytic electrolyte additive for high-loading and lean 
+electrolyte Li–S batteries, ACS Appl. Energy Mater. 8 (2025) 9663–9670, https:// 
+doi.org/10.1021/acsaem.5c01295.
+H. Jung et al.                                                                                                                                                                                                                                    
+Journal of Power Sources 693 (2026) 241139 
+11 
+
+<<PAGE 12>>
+[20] L. Yu, S. Chen, H. Lee, L. Zhang, M.H. Engelhard, Q. Li, S. Jiao, J. Liu, W. Xu, J.- 
+G. Zhang, A localized high-concentration electrolyte with optimized solvents and 
+lithium difluoro (Oxalate) borate additive for stable lithium metal batteries, ACS 
+Energy Lett. 3 (2018) 2059–2067, https://doi.org/10.1021/ 
+acsenergylett.8b00935.
+[21] R. Fang, B. Xu, N.S. Grundish, Y. Xia, Y. Li, C. Lu, Y. Liu, N. Wu, J.B. Goodenough, 
+Li2S6-integrated PEO-based polymer electrolytes for all-solid-state lithium-metal 
+batteries, Angew. Chem. Int. Ed. 60 (2021) 17842–17847, https://doi.org/ 
+10.1002/anie.202106039.
+[22] W. Li, H. Yao, K. Yan, G. Zheng, Z. Liang, Y.-M. Chiang, Y. Cui, The synergetic 
+effect of lithium polysulfide and lithium nitrate to prevent lithium dendrite growth, 
+Nat. Commun. 6 (2015) 7436, https://doi.org/10.1038/ncomms8436.
+[23] L. Zhang, M. Ling, J. Feng, L. Mai, G. Liu, J. Guo, The synergetic interaction 
+between LiNO3 and lithium polysulfides for suppressing shuttle effect of lithium- 
+sulfur batteries, Energy Storage Mater. 11 (2018) 24–29, https://doi.org/10.1016/ 
+j.ensm.2017.09.001.
+[24] E. Markevich, G. Salitra, H. Yoshida, S. Sawada, D. Aurbach, An improved cycling 
+performance of different types of composite sulfur–carbon cathodes with the use of 
+lithium polysulfides containing electrolyte solutions, J. Electrochem. Soc. 169 
+(2022) 010527, https://doi.org/10.1149/1945-7111/ac405d.
+[25] W. Li, H. Yao, K. Yan, G. Zheng, Z. Liang, Y.-M. Chiang, Y. Cui, The synergetic 
+effect of lithium polysulfide and lithium nitrate to prevent lithium dendrite growth, 
+Nat. Commun. 6 (2015) 7436, https://doi.org/10.1038/ncomms8436.
+[26] C.-X. Bi, N. Yao, X.-Y. Li, Q.-K. Zhang, X. Chen, X.-Q. Zhang, B.-Q. Li, J.-Q. Huang, 
+Unveiling the reaction mystery between lithium polysulfides and lithium metal 
+anode in lithium–sulfur batteries, Adv. Mater. 36 (2024) 2411197, https://doi.org/ 
+10.1002/adma.202411197.
+[27] M. Zhao, X. Chen, X.Y. Li, B.Q. Li, J.Q. Huang, An organodiselenide comediator to 
+facilitate sulfur redox kinetics in lithium–sulfur batteries, Adv. Mater. 33 (2021) 
+2007298, https://doi.org/10.1002/adma.202007298.
+[28] T. Deng, J. Wang, H. Zhao, Z. Jin, L. Jin, X. Men, J. Wang, Y. Liu, W. Tang, A. 
+M. Abdelkader, Dynamically regulating polysulfide degradation via organic sulfur 
+electrolyte additives in lithium-sulfur batteries, Adv. Energy Mater. 14 (2024) 
+2402319, https://doi.org/10.1002/aenm.202402319.
+[29] Z. Li, Y. Zhou, Y. Wang, Y.C. Lu, Solvent-mediated Li2S electrodeposition: a critical 
+manipulator in lithium–sulfur batteries, Adv. Energy Mater. 9 (2019) 1802207, 
+https://doi.org/10.1002/aenm.201802207.
+[30] G. Kresse, J. Hafner, Ab initio molecular dynamics for liquid metals, Phys. Rev. B 
+47 (1993) 558–561, https://doi.org/10.1103/PhysRevB.47.558.
+[31] J.P. Perdew, K. Burke, M. Ernzerhof, Generalized gradient approximation made 
+simple, Phys. Rev. Lett. 77 (1996) 3865–3868, https://doi.org/10.1103/ 
+PhysRevLett.77.3865.
+[32] S. Grimme, J. Antony, S. Ehrlich, H. Krieg, A consistent and accurate ab initio 
+parametrization of density functional dispersion correction (DFT-D) for the 94 
+elements H-Pu, J. Chem. Phys. 132 (2010) 154104, https://doi.org/10.1063/ 
+1.3382344.
+[33] J.-J. Chen, R.-M. Yuan, J.-M. Feng, Q. Zhang, J.-X. Huang, G. Fu, M.-S. Zheng, 
+B. Ren, Q.-F. Dong, Conductive Lewis base matrix to recover the missing link of 
+Li2S8 during the sulfur redox cycle in Li–S battery, Chem. Mater. 27 (2015) 
+2048–2055, https://doi.org/10.1021/cm5044667.
+[34] N. Khossossi, D. Singh, I. Essaoudi, R. Ahuja, A. Ainane, Unveiling the catalytic 
+potential of two-dimensional boron nitride in lithium–sulfur batteries, Chem. Eng. 
+J. 479 (2024) 147518, https://doi.org/10.1016/j.cej.2023.147518.
+[35] C. Yao, W. Li, K. Duan, C. Zhu, J. Li, Q. Ren, G. Bai, Properties of S-functionalized 
+nitrogen-based MXene (Ti2NS2) as a hosting material for lithium-sulfur batteries, 
+Nanomaterials 11 (2021) 2478, https://doi.org/10.3390/nano11102478.
+[36] M. Cheviri, S. Lakshmipathi, DFT study of chemical reactivity parameters of 
+lithium polysulfide molecules Li2Sn (1≤n≤8) in gas and solvent phase, Comput. 
+Theor. Chem. 1202 (2021) 113323, https://doi.org/10.1016/j. 
+comptc.2021.113323.
+[37] J. Wang, S.-Q. Wang, Surface energy and work function of fcc and bcc crystals: 
+density functional study, Surf. Sci. 630 (2014) 216–224, https://doi.org/10.1016/ 
+j.susc.2014.08.017.
+[38] L. Martínez, R. Andrade, E.G. Birgin, J.M. Martínez, PACKMOL: a package for 
+building initial configurations for molecular dynamics simulations, J. Comput. 
+Chem. 30 (2009) 2157–2164, https://doi.org/10.1002/jcc.21224.
+[39] S. Nos´e, A unified formulation of the constant temperature molecular dynamics 
+methods, J. Chem. Phys. 81 (1984) 511–519, https://doi.org/10.1063/1.447334.
+[40] W.G. Hoover, Canonical dynamics: equilibrium phase-space distributions, Phys. 
+Rev. A 31 (1985) 1695–1697, https://doi.org/10.1103/PhysRevA.31.1695.
+[41] M.J. Frisch, G.W. Trucks, H.B. Schlegel, G.E. Scuseria, M.A. Robb, J.R. Cheeseman, 
+G. Scalmani, V. Barone, G.A. Petersson, H. Nakatsuji, et al., Gaussian 16, Revision 
+C.01, Gaussian, Inc., Wallingford, CT, USA, 2016.
+[42] A.D. Becke, Density-functional thermochemistry. III. The role of exact exchange, 
+J. Chem. Phys. 98 (1993) 5648–5652, https://doi.org/10.1063/1.464913.
+[43] J. Tomasi, B. Mennucci, R. Cammi, Quantum mechanical continuum solvation 
+models, Chem. Rev. 105 (2005) 2999–3094, https://doi.org/10.1021/cr9904009.
+[44] Y. Xu, D. Zheng, W. Ji, N. Abu-Zahra, D. Qu, A molecular dynamics study of the 
+binding effectiveness between undoped conjugated polymer binders and tetra- 
+sulfides in lithium–sulfur batteries, Composites, Part B Eng. 206 (2021) 108531, 
+https://doi.org/10.1016/j.compositesb.2020.108531.
+[45] N.N. Rajput, V. Murugesan, Y. Shin, K.S. Han, K.C. Lau, J. Chen, J. Liu, L.A. Curtiss, 
+K.T. Mueller, K.A. Persson, Elucidating the solvation structure and dynamics of 
+lithium polysulfides resulting from competitive salt and solvent interactions, 
+Chem. Mater. 29 (2017) 3375–3379, https://doi.org/10.1021/acs. 
+chemmater.7b00068.
+[46] A.P. Thompson, H.M. Aktulga, R. Berger, D.S. Bolintineanu, W.M. Brown, P. 
+S. Crozier, P.J. In't Veld, A. Kohlmeyer, S.G. Moore, T.D. Nguyen, LAMMPS-a 
+flexible simulation tool for particle-based materials modeling at the atomic, meso, 
+and continuum scales, Comput. Phys. Commun. 271 (2022) 108171, https://doi. 
+org/10.1016/j.cpc.2021.108171.
+[47] Y. Park, J. Kim, S. Hwang, S. Han, Scalable parallel algorithm for graph neural 
+network interatomic potentials in molecular dynamics simulations, J. Chem. 
+Theor. Comput. 20 (2024) 4857–4868, https://doi.org/10.1021/acs.jctc.4c00190.
+[48] J. Kim, J. Kim, J. Kim, J. Lee, Y. Park, Y. Kang, S. Han, Data-efficient multifidelity 
+training for high-fidelity machine learning interatomic potentials, J. Am. Chem. 
+Soc. 147 (2024) 1042–1054, https://doi.org/10.1021/jacs.4c14455.
+[49] K. Xu, Nonaqueous liquid electrolytes for lithium-based rechargeable batteries, 
+Chem. Rev. 104 (2004) 4303–4418, https://doi.org/10.1021/cr030203g.
+[50] U. Gulzar, A. Lonergan, Y. Zhang, A. Grant, A. Carroll, M. Ferguson, C. O'Dwyer, 
+Understanding the morphological properties of sulfur electrodes for high-capacity 
+and high-power lithium-sulfur batteries, J. Electrochem. Soc. 172 (2025) 010514, 
+https://doi.org/10.1149/1945-7111/ada645.
+[51] C. Li, S. Wang, Z. Wang, Z. Li, C. Zhang, Y. Ma, X. Shi, H. Zhang, D. Song, L. Zhang, 
+Investigation on the necessity of low rates activation toward lithium-sulfur 
+batteries, Adv. Funct. Mater. 35 (2025) 2414159, https://doi.org/10.1002/ 
+adfm.202414159.
+[52] S. Thinius, M.M. Islam, P. Heitjans, T. Bredow, Theoretical study of Li migration in 
+lithium–graphite intercalation compounds with dispersion-corrected DFT methods, 
+J. Phys. Chem. C 118 (2014) 2273–2280, https://doi.org/10.1021/jacs.4c14455.
+[53] Z. Shi, S. Thomas, Z. Tian, D. Guo, Z. Zhao, Y. Wang, S. Li, N. Wehbe, A.-H. Emwas, 
+O.M. Bakr, A tailored highly solvating electrolyte toward ultra lean-electrolyte Li–S 
+batteries, Nano Res. Energy 3 (2024) e9120126, https://doi.org/10.26599/ 
+NRE.2024.9120126.
+[54] B. Zhang, J. Wu, J. Gu, S. Li, T. Yan, X.-P. Gao, The fundamental understanding of 
+lithium polysulfides in ether-based electrolyte for lithium–sulfur batteries, ACS 
+Energy Lett. 6 (2021) 537–546, https://doi.org/10.1021/acsenergylett.0c02527.
+[55] S.-Y. Jung, Y.-P. Chen, Y.-J. Lee, S.H. Kim, J.-S. Bae, X. Chen, S.-H. Yu, Low- 
+polarity solvent-mediated lithium metal stabilization for improved performance in 
+lithium-sulfur batteries, J. Energy Chem. 114 (2026) 737–749, https://doi.org/ 
+10.1016/j.jechem.2025.10.041.
+[56] C.Y. Zhang, C. Zhang, J.L. Pan, G.W. Sun, Z. Shi, C. Li, X. Chang, G.Z. Sun, J. 
+Y. Zhou, A. Cabot, Surface strain-enhanced MoS2 as a high-performance cathode 
+catalyst for lithium–sulfur batteries, eScience 2 (2022) 405–415, https://doi.org/ 
+10.1016/j.esci.2022.07.001.
+[57] L. Xu, Y. Li, Y. Xiang, C. Li, H. Zhu, C. Li, G. Zou, H. Hou, X. Ji, Bridging structure 
+and performance: decoding sodium storage in hard carbon anodes, ACS Nano 19 
+(2025) 14627–14651, https://doi.org/10.1021/acsnano.5c02665.
+[58] L. Xu, S. Li, H. Tu, F. Zhu, H. Liu, W. Deng, J. Hu, G. Zou, H. Hou, X. Ji, Molecular 
+engineering of highly fluorinated carbon dots: tailoring Li+ dynamics and 
+interfacial fluorination for stable solid lithium batteries, ACS Nano 17 (2023) 
+22082–22094, https://doi.org/10.1021/acsnano.3c08935.
+[59] S. Yeom, H. Jo, H. Lee, J.H. Moon, Lithiating cathodes for Li-S batteries: regulating 
+Li2S electrodeposition to enhance sulfur utilization, Energy Storage Mater. 71 
+(2024) 103644, https://doi.org/10.1016/j.ensm.2024.103644.
+[60] L. Zhou, D.L. Danilov, F. Qiao, J. Wang, H. Li, R.A. Eichel, P.H. Notten, Sulfur 
+reduction reaction in lithium–sulfur batteries: mechanisms, catalysts, and 
+characterization, Adv. Energy Mater. 12 (2022) 2202094, https://doi.org/ 
+10.1002/aenm.202202094.
+[61] K. Kim, J. Kim, J.H. Moon, The polysulfide-cathode binding energy landscape for 
+lithium sulfide growth in lithium-sulfur batteries, Adv. Sci. 10 (2023) 2206057, 
+https://doi.org/10.1002/advs.202206057.
+[62] H. Pan, J. Chen, R. Cao, V. Murugesan, N.N. Rajput, K.S. Han, K. Persson, 
+L. Estevez, M.H. Engelhard, J.-G. Zhang, Non-encapsulation approach for high- 
+performance Li–S batteries through controlled nucleation and growth, Nat. Energy 
+2 (2017) 813–820, https://doi.org/10.1038/s41560-017-0005-z.
+[63] L.C. Gerber, P.D. Frischmann, F.Y. Fan, S.E. Doris, X. Qu, A.M. Scheuermann, 
+K. Persson, Y.-M. Chiang, B.A. Helms, Three-dimensional growth of Li2S in 
+lithium–sulfur batteries promoted by a redox mediator, Nano Lett. 16 (2016) 
+549–554, https://doi.org/10.1021/acs.nanolett.5b04189.
+H. Jung et al.                                                                                                                                                                                                                                    
+Journal of Power Sources 693 (2026) 241139 
+12 

@@ -1,0 +1,48 @@
+{
+  "编号": "P002",
+  "电解液": {
+    "E1": {"名称": "1 M LiTFSI", "配方": "1 M LiTFSI，DOL/DME 1:1 v/v，无添加剂"},
+    "E2": {"名称": "1 M LiTDI", "配方": "1 M LiTDI，DOL/DME 1:1 v/v，无添加剂"},
+    "E3": {"名称": "1 M LiTFSI + 添加剂", "配方": "E1 + 0.2 M LiNO3 + 0.04 M Li2S8"},
+    "E4": {"名称": "1 M LiTDI + 添加剂", "配方": "E2 + 0.2 M LiNO3 + 0.04 M Li2S8"}
+  },
+  "条件": {
+    "C1": {"正极": "S-CNT（极片 64 wt% S）薄电极", "硫载量": "<1 mg cm-2", "硫含量": "复合物 80 wt%；极片 64 wt%", "E/S": "S/E 50–70 g L-1（按配方分别优化）", "电解液体积": "", "面积": "0.9 cm2",
+           "锂厚": "400 µm", "N/P": "", "倍率": "C/5", "1C定义": "1675 mA g-1", "温度": "室温", "电池": "CR2032 扣式",
+           "原句": "The active S/E was carefully controlled, [ 29 ] ranging from 15 g L -1 (15 g sulfur per liter of electrolyte) to 100 g L -1 ."},
+    "C2": {"正极": "S-CNT 厚电极（水系粘结剂）", "硫载量": "约 3 mg cm-2", "硫含量": "", "E/S": "", "电解液体积": "", "面积": "0.9 cm2",
+           "锂厚": "400 µm", "N/P": "", "倍率": "C/10（0.5 mA cm-2）5 圈后 C/2（2.4 mA cm-2）", "1C定义": "", "温度": "室温", "电池": "CR2032 扣式",
+           "原句": "The cell is fi rst discharged/ charged at a C/10 (i.e., 10 h) rate (0.5 mA cm -2 ) for 5 cycles, followed by a C/2 (i.e., 2 h) rate (2.4 mA cm -2 ) up to 300 cycles."}
+  },
+  "比较": [
+    {"A": "E2", "B": "E1", "条件": "C1", "层": "C", "改变因素": ["盐阴离子"],
+     "溶剂化依据": "Li2S8 最大溶解度 0.084 vs ≈0.5 M（Table 1，30 °C，实验测量，同篇）→ A 多硫化物溶解更低",
+     "指标": [
+       {"指标": "首圈容量", "取值点": "C/5 第 1 圈", "A": "995", "B": "1170", "单位": "mAh g-1", "方向": "A更差", "来源": "正文",
+        "原句": "The initial capacity is lower for the cell with the LiTDI electrolyte than that for the cell with the LiTFSI electrolyte (995 vs 1170 mAh g -1 )."},
+       {"指标": "循环保持率或寿命", "取值点": "100 圈", "A": "", "B": "", "单位": "保持率（A 高 25%）", "方向": "A更好", "来源": "正文",
+        "原句": "After 100 cycles, the capacity retention is 25% higher with the LiTDI electrolyte than for the LiTFSI electrolyte."},
+       {"指标": "全电池库仑效率", "取值点": "初始", "A": "", "B": "", "单位": "%", "方向": "A更好", "来源": "仅图（文字给方向）",
+        "原句": "In addition, the initial CE of the Li-S cell with the LiTDI electrolyte is much improved (Figure 2 b) due to the reduction in the shuttle mechanism"}
+     ]},
+    {"A": "E2", "B": "E1", "条件": "C2", "层": "C", "改变因素": ["盐阴离子"],
+     "溶剂化依据": "同上",
+     "指标": [
+       {"指标": "首圈容量", "取值点": "第 1 圈", "A": "300", "B": "300", "单位": "mAh g-1", "方向": "差异小", "来源": "正文",
+        "原句": "Both of the cells with the 1 M LiTFSI or LiTDI in DOL/DME electrolytes have only a 300 mAh g -1 discharge capacity due to the large polarization for the thick sulfur cathode."}
+     ]},
+    {"A": "E4", "B": "E3", "条件": "C2", "层": "C", "改变因素": ["盐阴离子"],
+     "溶剂化依据": "同上",
+     "指标": [
+       {"指标": "首圈容量", "取值点": "第 1 圈", "A": "1110", "B": "1140", "单位": "mAh g-1", "方向": "差异小", "来源": "正文",
+        "原句": "both the cells achieved a high initial capacity of 1140 and 1110 mAh g -1 , respectively."},
+       {"指标": "循环保持率或寿命", "取值点": "300 圈（B 150 圈后快速衰减）", "A": "300 圈稳定，570 mAh g-1", "B": "150 圈后快速衰减", "单位": "", "方向": "A更好", "来源": "正文",
+        "原句": "In contrast, the cell with the LiTDI-based electrolyte showed stable cycling at 570 mAh g -1 for 300 cycles."},
+       {"指标": "全电池库仑效率", "取值点": "长循环", "A": "99", "B": "≈80（150 圈后）", "单位": "%", "方向": "A更好", "来源": "正文",
+        "原句": "Therefore, the CE dropped to ≈80% and the capacity decayed quickly after 150 cycles."},
+       {"指标": "其他", "取值点": "300 圈后正极硫保留（EDX）", "A": "54", "B": "约 27（A 的一半）", "单位": "%", "方向": "A更好", "来源": "正文",
+        "原句": "show a 54% sulfur retention in the cathode, which is twice as high as that for the LiTFSI-based electrolyte (Figure 4 c)."}
+     ]}
+  ],
+  "备注": "C1 的 S/E 按配方分别优化，A、B 可能不同（条件不完全匹配）；C2 电解液用量未写。C1 是典型的跨指标权衡：A 首圈低、保持率高。"
+}

@@ -1,0 +1,831 @@
+
+<<PAGE 1>>
+RESEARCH ARTICLE
+www.afm-journal.de
+Designed Construction of Bifunctional Interphase
+Preactivated via Over-Discharge Strategy Toward Stable
+Lithium–Sulfur Batteries
+Wenming Song, Hui Liu, Mai Li, Weiqing Shi, Zilong Jiang, Huifang Li, Lisheng Zhang,
+Peng Wang, Xiaojun Wang, and Zhiming Liu*
+Signiﬁcant challenges remain to be overcome for practical application of high
+energy density lithium–sulfur batteries including poor cyclability induced by
+“the shuttle eﬀect”, parasitic reactions, and uncontrollable growth of lithium
+dendrites. To overcome these problems, a bifunctional solid electrolyte
+interphase layer is successfully constructed by employing an over-discharge
+pre-activation strategy to in situ induce a reduction reaction between lithium
+anode and functional electrolyte additive, 3,3,3-triﬂuoropropylene carbonate
+(TFPC). TFPC exhibits lower electron aﬃnity and LUMO energy levels, facil-
+itating its reaction with lithium metal to form SEI ﬁlms with high mechanical
+robustness and ionic conductivity, resulting in uniform and fast lithium depo-
+sition/stripping and reduced parasitic reactions between lithium polysulﬁdes
+and the lithium anode. As a result, the overall performance of lithium–sulfur
+batteries is improved. The decomposition pathway and action mechanism of
+TFPC are systematically and deeply revealed by density functional theory (DFT)
+calculations, ab initio molecular dynamics (AIMD) simulations, and detailed
+experimental results. The aim of this study is to provide a feasible avenue
+for lithium–sulfur battery interfacial protection and to solve the imminent
+lithium–sulfur battery problem through in-depth investigation of the bonding
+chemistry in TFPC molecules and the clever design of interfacial reactions.
+1. Introduction
+Lithium–sulfur (Li–S) batteries have experienced an explosive in-
+crease in research interest owing to its extremely high theoretical
+capacity (1675 mAh g−1) and high energy density (2600 Wh kg−1),
+W. Song, H. Liu, M. Li, W. Shi, Z. Jiang, H. Li, L. Zhang, P. Wang, X. Wang,
+Z. Liu
+College of Electromechanical Engineering
+Shandong Engineering Laboratory for Preparation and Application of
+High-Performance Carbon-Materials
+Qingdao University of Science and Technology
+Qingdao 266061, P. R. China
+E-mail: zmliu@qust.edu.cn
+W.Song
+School of Engineering
+WestlakeUniversity
+Hangzhou,Zhejiang 310030,P.R.China
+The ORCID identiﬁcation number(s) for the author(s) of this article
+can be found under https://doi.org/10.1002/adfm.202511467
+DOI: 10.1002/adfm.202511467
+as well as the superiority of sulfur (S)
+including earth abundance, low material
+cost, and environmental friendliness.[1–5]
+Although signiﬁcant academic and com-
+mercial progress has been made on Li–S
+batteries over the past few decades, achiev-
+ing stable cycling at near-theoretical ca-
+pacities remains elusive due to the com-
+plexity of the electrode conversion reac-
+tions during battery cycling, which is a
+crucial challenge in realizing the large-
+scale practical application of Li–S batteries.
+Li–S battery relies on redox reactions be-
+tween Li and S, which are reversible and
+complex. In general, discharging process
+involves a multi-step reduction reaction in
+which S is reduced to a series of lithium
+polysulﬁdes (LiPSs, Li2Sn, 4 ≤n ≤8) in-
+termediates then to lithium sulﬁde (Li2S),
+while the charging process is in reverse.[6]
+The LiPSs intermediates are soluble in the
+common electrolytes and tend to diﬀuse
+from the S cathode and migrate to the Li
+anode through electrolytes.[7] As a result,
+the LiPSs are continuously reduced by Li
+anodes, which results in a series of issues
+including a severe active-material loss, and formation of an in-
+sulating interphase on the Li anode. This interphase is mainly
+responsible for the rapid attenuation of the capacity and low
+coulombic eﬃciency (CE) of Li–S batteries.[6–9] In addition, due
+to the inhomogeneous plating/stripping behavior on the Li an-
+ode surface, Li+ easily nucleates on the protuberance, forming
+dendrites and ′dead″ Li, which continuously consume the elec-
+trolyte, leading to inferior cycle performance.[10]
+To overcome these intractable obstacles, various strategies
+have been developed in the past decades for protecting the highly
+reactive Li anode by introducing ﬁlm-forming additives in the
+electrolyte,[11–14] artiﬁcial coating of Li anodes[15] and interlayer
+insertion treatment.[16,17] Among them, construction of the solid-
+electrolyte interphase (SEI) layer on the surface of Li anode
+by introducing a functional electrolyte additive might be one
+of the most crucial eﬀorts. Attributed to its ability to transport
+Li+, SEI enables reversible electrochemical reaction at the Li an-
+ode. A rationally designed SEI is pivotal in stabilizing Li anode
+for reversible operation of Li–S batteries, which has been well
+established.[18] Lithium nitrate (LiNO3) is a well-known additive
+Adv. Funct. Mater. 2026, 36, e11467
+© 2025 Wiley-VCH GmbH
+e11467 (1 of 10)
+
+<<PAGE 2>>
+www.advancedsciencenews.com
+www.afm-journal.de
+in Li–S batteries, which can eﬀectively protect the Li anode by
+forming an SEI ﬁlm. It can be reduced by Li anode to form LixNOy
+species or oxidize sulﬁdes to form LixSOy species, improving Li–S
+battery performance.[13] However, the poor mechanical strength
+of this SEI ﬁlm formed by LiNO3 cannot suﬃciently inhibit Li
+dendrite formation during battery cycling.[19,20] Therefore, func-
+tional electrolyte additives require rational optimization to yield
+SEI ﬁlms combining mechanical strength with ionic conductiv-
+ity.
+Lithium ﬂuoride (LiF) and lithium carbonate (Li2CO3), com-
+mon inorganic ingredients of SEI, are believed to be re-
+sponsible for the stabilization of Li anode interfaces in Li−S
+batteries and positive inﬂuence on battery performance be-
+cause of its contributions to electronic insulation and Li+
+ionic conductivity.[21] Due to the poor mechanical toughness of
+LiF and Li2CO3, the continuous fragmentation and remod-
+eling of the SEI ﬁlm accelerate electrolyte depletion and Li
+dendrite growth during the cycling process.[22–24] Therefore,
+the construction of SEI with high mechanical toughness and
+containing LiF and Li2CO3 is a logically feasible approach.
+Herein, we report on the employment of F-rich ester addi-
+tive, 3,3,3-Triﬂuoropropylene Carbonate (TFPC), as an addi-
+tive in DOL/DME and Li bis(triﬂuoromethanesulphomyl)imide
+(LiTFSI) based electrolytes. TFPC is much more preferred to be
+reduced by Li anode. More importantly, theoretical simulations
+and experimental characterizations veriﬁed that LiF and Li2CO3
+formation were indeed generated as the ﬁnal reductive decompo-
+sition product of TFPC additive as expected. However, the reduc-
+tion potential of TFPC is slightly lower than the standard voltage
+window of Li–S battery (1.7−2.8 V). Therefore, we propose an
+over-discharge pre-activation approach to induce in situ decom-
+position of TFPC forming SEI ﬁlms composed of LiF, Li2CO3 and
+Polyoleﬁns. The three together form a bifunctional SEI ﬁlm with
+high ionic conductivity and high mechanical toughness, thus im-
+proving the coulombic eﬃciency, cycle stability of the battery and
+outstanding rate performance. This strategy provides a new de-
+sign electrolyte approach to promote the commercialization of
+advanced Li–S batteries.
+2. Results and Discussion
+To evaluate the electronic characteristics of TFPC additive and
+DOL/DME electrolytes, we ﬁrst performed a series of density
+functional theory (DFT) calculations to obtain their lowest un-
+occupied molecular orbital (LUMO) energy and electron aﬃnity
+(EA) energy as collected in Figures 1a,b. Compared with DOL
+and DME, TFPC exhibits a much lower LUMO energy, facilitat-
+ing reduction. And then, the calculated EA of TFPC is also lower
+than those of DOL and DME molecules by 1.38 and 1.60 eV, re-
+spectively, as the changes of EA can be well captured by the one-
+electron molecular orbital diagram according to the Koopmans
+theorem and its electron aﬃnity analogue (i.e., EA = ɛLUMO).[25]
+As is well known, a more negative value typically indicates easier
+electron acceptance. Thereby, it indicates that TFPC molecules
+have stronger electron-withdrawing ability and are more readily
+reduced by Li anode compared with DOL and DME molecules.
+The high reactivity of TFPC molecules was veriﬁed by Li metal
+stability experiments. Figures 1c,d show that Li metal was im-
+mersed in DOL: DME (1:1, in v/v) (abbreviated DD) and DOL:
+DME (1:1, in v/v) + TFPC (abbreviated DDT) for 6 h, respectively.
+Subsequently, the soaked Li metal is transferred to LiPSs solu-
+tion for 24 h, and the results show that the Li metal immersed in
+DDT solution fails to change the color of the LiPSs solution. In
+contrast, the Li metal immersed in DD solution causes a signif-
+icant change in the color of the LiPSs solution due to the para-
+sitic reaction between Li metal and LiPSs. Meanwhile, the scan-
+ning electron microscopy (SEM) measurements on the above
+Li metal provide a more visual indication of the parasitic reac-
+tion. The surface of the Li metal immersed in DDT solution has
+a ﬂat and smooth morphology after reaction with LiPSs, while
+the Li metal immersed in DD solution has a rough and porous
+Li foam morphology after reaction with LiPSs. The above DFT
+calculations and experiments simultaneously verify that TFPC
+molecules have higher electron gaining properties, and can form
+an initial passivation ﬁlm on the surface of Li metal to inhibit the
+parasitic reaction of LiPSs.
+In order to investigate the passivation mechanism of Li metal
+by TFPC molecules, reaction process of Li catalyzed decomposi-
+tion of TFPC was explored further by DFT calculations. Reductive
+decomposition process of DOL and DME molecules was also in-
+vestigated for comparison. It is known that Li atom is extremely
+reactive as the valence electron in its outer shell is easily lost to
+form Li+.[26] Optimization results demonstrate that Li+ tends to
+interact with O atoms after the electron transfer process from Li
+atom to electrolyte molecules, where reductive decomposition of
+TFPC, DOL, and DME molecules will be triggered. Detailed in-
+formation of decomposition processes of TFPC induced by Li at-
+tack are displayed in Figure 2a, Figures S1, S2 (Supporting In-
+formation), respectively. Corresponding energy parameters are
+collected in Tables S1−S3 (Supporting Information). For TFPC,
+three diﬀerent potential reductive decomposition pathways were
+considered, as shown in Figure 2a. According to the priority or-
+der of adsorption and reaction processes, Path-1 is an adsorption-
+reaction path as Li adsorbs with O3 (Inset in Figure 2a) ﬁrst and
+then TFPC undergoes ring-opening reaction, while Path-2 and
+Path-3 should belong to reaction-adsorption path because TFPC
+undergoes ring-opening reaction ﬁrst and then Li is adsorbed on
+the O atom (O1 or O2) of the intermediate product.[27] Regardless
+of the pathway, Li adsorption is an exothermic process without
+any energy barrier, and calculated energy releases for attacking
+O3, O1 and O2 atoms involved in TFPC are −1.26, −2.35, and
+−2.47 eV, respectively. The same is true for the Li adsorption pro-
+cess with DOL and DME molecules, but the released energies are
+−0.24 and −0.23 eV, respectively, which are much higher than
+those of TFPC molecules. It means TFPC additives are much
+more preferred to be attacked by Li anode, and chemical compo-
+sitions of formed SEI ﬁlms should be mainly dominated by the
+reductive decomposition products of TFPC additives, not DOL or
+DME electrolyte.
+To conﬁrm the main chemical compositions of regulated SEI
+ﬁlm, decomposition products generated from the reductive reac-
+tion of TFPC additives with the Li anode were explored. As men-
+tioned above, Path-2 and Path-3 triggered by Li attack on ester O
+atoms (O1 and O2) are much more favorable to proceed for TFPC
+additives. For Path-2, it is found that C2─O2 bond will be disso-
+ciated ﬁrst by interacting with Li atom, and Li2CO3 as well as
+Polyoleﬁns will be produced when the intermediate is attacked
+by one more Li atom. Diﬀerently, C1─O1 will be broken by Li
+Adv. Funct. Mater. 2026, 36, e11467
+© 2025 Wiley-VCH GmbH
+e11467 (2 of 10)
+ 16163028, 2026, 1, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202511467 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 3>>
+www.advancedsciencenews.com
+www.afm-journal.de
+Figure 1. Investigation of the electrochemical activity of TFPC molecule. a,b) LUMO energy and EA energy of DOL, DME, and TFPC molecules. LUMO
+charge density and spin density distributions of them are also included. The H, C, O, and Li atoms are shown in white, grey, red, and magenta color,
+respectively. c,d) TFPC molecular high reduction validation experiment.
+attack, and LiF, Li2CO3 as well as Polyoleﬁns will be formed if
+two more Li atoms participate in the decomposition of the inter-
+mediates involved in Path-3.
+Molecular reactive behavior of TFPC molecules on Li (110)
+surface was investigated further by AIMD simulations and the
+temperature was set to 700 K for speeding up the dynami-
+cal evolution. Twelve snapshots of the complete sequence of
+TFPC molecule decomposition on the Li (110) substrate ex-
+tracted from AIMD trajectory were shown in Figure 2b. It is
+observed that AIMD results are consistent with static DFT cal-
+culations. At 450 fs, Li atoms escape from the Li anode sur-
+face and interact with the O1 atom of TFPC molecule. Then,
+one TFPC molecule undergoes ring-opening by breaking C1─O1
+bond at 490 fs, shedding of the F−of TFPC molecules at
+490 fs, shedding of CO3
+2−at 500 fs and formation of the ﬁ-
+nal products (LiF, Li2CO3, and C3H3F2) at 540 fs, respectively.
+This is consistent with Path-3 process obtained from reaction
+mechanism analysis by static DFT calculations as mentioned
+above. Movie S1 (Supporting Information) is the reaction pro-
+cess of Path-3. At 1320 fs, one more TFPC is attacked by
+Li atom and leads to the C2─O2 bond dissociation. Li2CO3
+and C3H3F2 will be generated ﬁnally as a decomposition prod-
+uct, which is in good agreement Path-2 process. As expected,
+the static calculation results are well validated in the AIMD
+simulation.
+LiF and Li2CO3 exhibit higher ionic conductivity and elec-
+tronic insulation as inorganic SEI ﬁlm components to enhance
+the charge transfer rate of Li+, while Polyoleﬁns have better me-
+chanical toughness as an organic SEI ﬁlm component to miti-
+gate the volume expansion of the Li anode and the generation of
+Li dendrites during cycling.[23,28] Both of them complement each
+other to construct stable SEI ﬁlm on the surface of Li anode.
+For better practical application, the activity of the reaction be-
+tween TFPC molecule and Li metal at room temperature was
+explored. Movie S2 (Supporting Information) shows the AIMD
+simulation of TFPC molecule with Li at room temperature in
+the time interval of 400−700 fs. The movie shows that the TFPC
+molecule does not react for a short time but is stably adsorbed on
+the Li metal surface (Figure S3, Supporting Information), indicat-
+ing that the dynamic evolution of the TFPC molecule is slowed
+down at room temperature. In the experiments on the reaction
+of TFPC with Li, therefore, the immersion time of Li in DDT
+solvent is extended to 0.5, 2, and 5 h and is transferred to LiPSs
+solvent to probe the reaction state of TFPC with Li at diﬀerent
+time lengths at room temperature (Figure S4, Supporting Infor-
+mation). The results show the the shorter the immersion time of
+Adv. Funct. Mater. 2026, 36, e11467
+© 2025 Wiley-VCH GmbH
+e11467 (3 of 10)
+ 16163028, 2026, 1, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202511467 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 4>>
+www.advancedsciencenews.com
+www.afm-journal.de
+Figure 2. a) Decomposition pathway of TFPC molecule, in the presence of Li atoms acting as catalyst. b) Selected snapshots of the complete sequence
+of TFPC molecule decomposition on the Li (110) substrate from AIMD simulation. The TFPC before and after decomposition states are circled for better
+clarity.
+the Li metal in DDT, the more obvious the color change of LiPSs
+solvent, i.e., the longer the contact time of TFPC with Li, the
+more signiﬁcant the passivation eﬀect. X-ray photoelectron spec-
+troscopy (XPS) was performed on Li metal that was immersed
+in DDT solvent for 0.5 and 5 h. Figures S5–S7 (Supporting In-
+formation) show full-scan XPS spectrum, high-resolution C 1s
+XPS spectrum, and high-resolution F 1s XPS spectrum. Figure
+S5 (Supporting Information) shows that the intensity of F 1s of
+DDT-5h is signiﬁcantly higher than that of DDT-0.5h. Compari-
+son of Figures S6, S7 (Supporting Information) reveals that the
+proportion of both Li2CO3 and LiF content increased after pro-
+longed immersion. The above results indicate that TFPC decom-
+poses to form denser SEI ﬁlm with the increase of immersion
+time to inhibit the corrosion reaction between Li metal and LiPSs.
+The Li metal protection eﬀect of TFPC additive after more than 5
+h is signiﬁcantly enhanced due to the slow passivation of TFPC
+additive with Li at room temperature.
+The reduction potential of TFPC in Li–S batteries was calcu-
+lated by DFT to explore the possibility of its rapid decomposi-
+tion (Text S1, Supporting Information). According to the calcu-
+lated decomposition path of TFPC molecule (Figure 2a), there
+are two ring-opening sites of the reduced TFPC molecule, which
+correspond to diﬀerent reduction paths and decomposition po-
+tentials, and calculations show that the two theoretical reduction
+potentials are 0.95 and 1.07 V, respectively (Figure 3a). The re-
+duction potentials of the DOL and DME molecules are calcu-
+lated in the same way, and the reduction potential is −1.21 V
+for both (Figure S8, Supporting Information). This potential is
+much lower than the TFPC molecule reduction potential, indi-
+cating that TFPC molecule is theoretically more susceptible to
+decomposition by Li attack in a Li–S battery system. To determine
+the optimal TFPC concentration, Li–S batteries assembled with
+varying TFPC concentrations are subjected to the over-discharge
+pre-activation strategy. Subsequent electrochemical impedance
+spectroscopy (EIS; Figure S9, Supporting Information) demon-
+strates that cells with 3 wt.% TFPC exhibit the lowest interfacial
+impedance. Thus, subsequent experiments utilize this concen-
+tration.
+The actual reduction potential of TFPC additive in Li–S bat-
+teries was tested by cyclic voltammetry (CV) stepwise discharge
+using diﬀerent electrolytes of LDD (1M LiTFSI in DOL/DME 1:1
+v/v) and LDDT (1M LiTFSI in DOL/DME 1:1 v/v + 3 wt.% TFPC)
+with a scan rate of 0.1 mV s−1. When the batteries are gradu-
+ally discharged to 1.0 V (abbreviated LDD-1.0V and LDDT-1.0V,
+Adv. Funct. Mater. 2026, 36, e11467
+© 2025 Wiley-VCH GmbH
+e11467 (4 of 10)
+ 16163028, 2026, 1, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202511467 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 5>>
+www.advancedsciencenews.com
+www.afm-journal.de
+Figure 3. Research on the mechanism of TFPC pre-activation. a) Schematic diagram of the reduction potentials of TFPC molecule calculated by DFT.
+b) Cyclic voltammogram (CV) scans of LDD and LDDT cells over-discharged to 1.0 V with a scan rate of 0.1 mV s−1. c) SEM measurements of the Li
+anode surface. d−f) XPS full scan spectra, high-resolution C 1s spectra and high-resolution F 1s spectra of the Li anode surface. g) Schematic diagram
+of the ﬁlm formation mechanism of TFPC additive.
+respectively), as shown in Figure 3b, there are two reduction
+peaks in the CV curves. The ﬁrst peak appears at ≈2.30 V, which
+indicates the reduction of S8 to LiPSs (Li2Sn, 4 ≤n ≤8); the sec-
+ond peak appears ≈1.90 V, which indicates the further reduction
+of the LiPSs to Li2S2, and eventually to Li2S.[29] However, com-
+pared to LDD-1.0V, the CV curve of LDDT-1.0V shows two ex-
+tra reduction peaks at 1.10 and 1.20 V, respectively (the inset of
+Figure 3b). These two potentials correspond to the ring-opening
+reaction of the TFPC additive, which coincides with the poten-
+tial calculated by DFT in Figure 3a. In the discharge proﬁles for
+LDD-1.0V and LDDT-1.0V shown in Figure S10 (Supporting In-
+formation), there is a sloping plateau ≈1.20 V for LDDT-1.0V
+compared to LDD-1.0V, which corresponds to the reduction po-
+tential in the CV curves. SEM measurements were performed
+to reveal the surface morphology of the Li anodes after initially
+diﬀerent discharge voltages for LDD-1.0V, LDDT-1.7V (the ini-
+tial discharge voltage of the battery with LDDT electrolyte was
+1.7 V) and LDDT-1.0V (Figure 3c). It is noted that the Li anode
+surfaces of both LDDT-1.7V and LDDT-1.0V are ﬂat and smooth.
+On the contrary, the Li anode surface of LDD-1.0V has a rough
+morphology. This indicates that the highly electrochemically ac-
+tive TFPC additive forms SEI ﬁlms with uniform Li+ stripping
+properties.
+XPS measurements were performed on the Li anode surfaces
+of three cells (LDD-1.0V, LDDT-1.7V and LDDT-1.0V) after over-
+discharge pre-activation to further analyze the compositions of
+the SEI ﬁlm. Figure 3d shows the full-scan XPS spectra of the
+Li anodes for LDD-1.0V, LDDT-1.7V, and LDDT-1.0V. The full-
+scan XPS spectra show that the F 1s peak intensity is weak be-
+cause only LiTFSI is partially involved in the reaction in the LDD-
+1.0V cell. The F 1s peak intensity of the LDDT-1.0V is higher
+than the LDDT-1.7V, which indicates that the TFPC additive can
+be suﬃciently decomposed during over-discharge pre-activation.
+Figure 3e shows the high-resolution C 1s spectra with four peaks
+at 284.8, 286.5, 289.9, and 293.1 eV for all Li anodes, corre-
+sponding to Polyoleﬁns (C─H/C─C), C─O, C═O, and Li2CO3,
+respectively.[30] Figure 3f shows high-resolution F 1s spectra with
+two peaks at 684.8 and 686.9 eV for all Li anode, corresponding
+to LiF and ﬂuoride species(-CF3), respectively.[31,32] The compar-
+ison between LDDT-1.7V and LDDT-1.0V shows that the peak
+intensity of Li2CO3 and LiF gradually increases with the depth
+of discharge, which is attributed to the decomposition of TFPC
+Adv. Funct. Mater. 2026, 36, e11467
+© 2025 Wiley-VCH GmbH
+e11467 (5 of 10)
+ 16163028, 2026, 1, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202511467 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 6>>
+www.advancedsciencenews.com
+www.afm-journal.de
+Figure 4. Li metal protection performance. a) Voltage-capacity proﬁles of Li|Cu half-cells. b) Tafel curves of Li|Li symmetric cells. c) SEM measurements
+of Cu electrodes for Li|Cu half-cells. d) Coulombic eﬃciency of Li|Cu half-cells. e) Voltage–time proﬁles of the diﬀerent Li|Li symmetric cells.
+additive into Li2CO3 and LiF induced by the over-discharge pre-
+activation. The other TFPC additive decomposition components
+are Polyoleﬁns. Therefore, the XPS spectra analysis indicates that
+the TFPC additive is able to more completely passivate the Li an-
+ode surface in situ regulated by the over-discharge pre-activation.
+To more visually verify the ﬁlm-formation eﬀect of the over-
+discharge pre-activation strategy, the Li anodes of LDDT-1.0V
+and LDDT-1.7V are immersed in LiPSs solution, respectively, as
+shown in Figure S11 (Supporting Information). After 36 h, the Li
+metal of LDDT-1.7V causes the LiPSs solution to be more signiﬁ-
+cantly light in color than LDDT-1.0V, demonstrating prevents the
+side-reaction between Li anode and LiPSs by forming a superior
+SEI ﬁlm in over-discharge pre-activation strategy. In fact, another
+reason for the solution becoming lighter is that the side of the Li
+anode in contact with the collector does not form SEI ﬁlm and
+reacts with the LiPSs. By beneﬁting from the over-discharge pre-
+activation strategy to induce the eﬃcient decomposition of TFPC
+and to form a more eﬀective bifunctional SEI ﬁlm, LDDT-1.0V
+exhibits better reversible capacity and cycle performance than
+LDDT-1.7V (Figure S12, Supporting Information).
+A schematic diagram of the TFPC additive ﬁlm-formation
+mechanism on the Li anode surface induced by the over-
+discharge pre-activation strategy is shown in Figure 3g. TFPC
+additive continuously reacts with Li anode during the over-
+discharge pre-activation process to form three important SEI ﬁlm
+components, i.e., LiF, Li2CO3, and polyoleﬁns, which are com-
+bined in a mosaic form to construct a bifunctional SEI ﬁlm
+with high ionic conductivity and mechanical toughness. The
+high mechanical toughness of SEI ﬁlms was veriﬁed by atomic
+force microscope (AFM) nanoindentation. Compared to LDD-
+1.0V, LDDT-1.0V shows higher Young’s modulus for SEI ﬁlm
+(48.2 GPa > 17.5 GPa, Figure S13, Supporting Information) on
+the Li metal surface. Therefore, this SEI ﬁlm promotes uniform
+Li+ plating/stripping, inhibits Li dendrite generation, and avoids
+corrosion of LiPSs on Li anodes due to “shuttle eﬀect”.[33]
+To evaluate the eﬀect of bifunctional SEI ﬁlm on the electro-
+chemical performance of Li metal anode, the plating/stripping
+behavior of Li|Cu half-cells was tested at a current density of
+0.5 mA cm−2. Figure S14 (Supporting Information) shows the
+over-discharge pre-activation voltage-capacity proﬁle in Li|Cu
+half-cells, which exhibits a signiﬁcant voltage plateau for TFPC
+decomposition within 1.0–1.2V. It is consistent with DFT calcu-
+lation results (Figure 3a). Figure 4a shows the voltage-capacity
+proﬁle of the 1st circle Li deposition for Li|Cu half-cells with
+LDD electrolyte and LDDT electrolyte. Due to the formation of
+highly ionic conductive SEI ﬁlm by TFPC additive, the nucle-
+ation (64.8 mV < 94.9 mV) and growth (27.0 mV < 40.0 mV)
+voltages of Li+ deposition are eﬀectively reduced compared to
+the LDD electrolyte.[34] The larger peak area for LDDT electrolyte
+(Figure S15, Supporting Information) indicates SEI ﬁlm has
+Adv. Funct. Mater. 2026, 36, e11467
+© 2025 Wiley-VCH GmbH
+e11467 (6 of 10)
+ 16163028, 2026, 1, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202511467 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 7>>
+www.advancedsciencenews.com
+www.afm-journal.de
+superior charge transport capability during the plating/stripping
+process.[35] Moreover, the high ionic conductivity of the SEI ﬁlm
+is also conﬁrmed by the Tafel curve (Figure 4b) and EIS (Figure
+S16, Supporting Information) of the Li|Li symmetric cell. The in-
+set of Figure 4b shows that the exchange current density of the
+LDDT cell (0.906 mA cm−2) is higher than the LDD cell (0.755
+mA cm−2), and EIS measurements show that the LDDT elec-
+trolyte exhibits a smaller interfacial impedance.[36,37] The high
+ionic conductivity of SEI (LiF/Li2CO3) enhances the eﬀective
+Li+ transport and reduces the interfacial ion concentration gra-
+dient, which indirectly increases the exchange current density.
+SEM measurements of the discharged Cu electrode surface, the
+charged Li electrode surface and the charged Cu electrode sur-
+face of the Li|Cu half-cell were performed to visualize the ho-
+mogeneity of Li+ stripping/plating (Figure 4c; Figures S17,S18,
+Supporting Information). In the LDD electrolyte, the uneven Li
+deposition on the electrode surface produces Li dendrites. In con-
+trast, no dendritic and uniform Li deposition is observed on the
+Cu and Li electrodes of the LDDT electrolyte, suggesting that
+the SEI ﬁlm can promote uniform Li+ deposition and stripping
+behavior.
+To conﬁrm the long-term stability and reversibility of the TFPC
+additive for Li metal protection, the Coulombic eﬃciency (CE)
+was tested in Li|Cu half-cell at a current density of 0.5 mA cm−2
+and a capacity density of 1 mAh cm−2 (Figure 4d). Cell failure
+occurs after around 50 cycles for the LDD electrolyte, while the
+LDDT electrolyte remains stable for 250 cycles. The Li|Li symmet-
+ric cell was tested at a constant current density of 1 mA cm−2 and
+a capacity density of 0.5 mAh cm−2 (Figure 4e). It is evident that
+the LDDT electrolyte has a low and stable voltage hysteresis over
+1200 h, whereas the LDD electrolyte short-circuits in 250 h. The
+performance of the Li|Li symmetric cell at high current densities
+was shown in Figure S19 (Supporting Information), where the
+LDDT electrolyte displays a regular increase in overpotential with
+increasing current density, which indicates that the bifunctional
+SEI ﬁlm provides fast ion transport at high current densities. The
+surface morphology of the Li electrode in Li|Li symmetric cell was
+characterized by SEM for 5 h (Figure S20, Supporting Informa-
+tion) and 50 h (Figure S21, Supporting Information). The Li elec-
+trode morphology of the LDDT electrolyte is smoother and ﬂatter
+than the LDD at 5 and 50 h. It demonstrates that the bifunctional
+SEI ﬁlm has more uniform Li+ deposition properties, helping to
+mitigate the generation of Li dendrites.
+In Li–S battery, Figure 5a shows the CV measurements for dif-
+ferent electrolytes with a voltage range of 1.7−2.8 V and a scan
+rate of 0.1 mV s−1. The response current of reduction peaks in the
+LDDT-1.0V battery is larger than LDD-1.0V battery (Ir1 > Ir2), and
+the LDDT-1.0V battery has a smaller electrochemical polarization
+(Vr1 < Vr2). It has the same trend in both 2nd and 3rd circles CV
+measurements for both batteries (Figures S22, S23, Supporting
+Information), which is a result of the stronger electrochemical ki-
+netics of the bifunctional SEI ﬁlms. Typical charge/discharge pro-
+ﬁles for both batteries also reﬂect the same results (Vr1 < Vr2) in
+Figure 5b. This is attributed to the smaller interfacial impedance
+(RSEI) and charge transfer impedance (RCT) of the LDDT-1.0V bat-
+tery in Figure 5c, compared to LDD-1.0V battery. Based on this,
+the lower RSEI and RCT of the bifunctional SEI accelerate the inter-
+face electrochemical reaction and reduce the polarization voltage
+of the battery.
+Figure 5d shows the rate performance of the battery for fast
+charging and discharging. The LDDT-1.0V battery exhibits an
+average reversible capacity of 1174.7, 1083.7, 969.1, 848.4, and
+648 mAh g−1 at rates of 0.1, 0.2, 0.5, 1, and 2 C, respectively.
+The capacity of LDD-1.0V battery decays more with the in-
+crease of rate, especially at 2 C, showing a cliﬀ-type capacity
+decay phenomenon. The LDDT electrolyte exhibits better elec-
+trode/electrolyte interface kinetics, which is attributed to the for-
+mation of bifunctional SEI ﬁlm with high ion diﬀusion prop-
+erties. The cycle performance and CE of two electrolytes were
+shown in Figure 5e. The discharge speciﬁc capacities of the LDD-
+1.0V battery in the 1st and 70th cycles are 1489.3 and 775.8 mAh
+g−1, corresponding to a CE of 93% and 87.2%, respectively. By
+contrast, the cycle performance and CE of the LDDT-1.0V bat-
+tery are signiﬁcantly improved. Its discharge speciﬁc capacity is
+1643.8 mAh g−1 in the 1st cycle and 775.9 mAh g−1 in the 150th cy-
+cle. After 150 cycles, the CE of LDDT-1.0V battery still has 91.7%,
+which thanks to the stable bifunctional SEI ﬁlm that suppresses
+the side reactions of electrolyte and electrodes improving the cy-
+cle lifespan of the battery, which is comparable to state-of-the-art
+systems reported in recent literature (Table S4, Supporting Infor-
+mation).
+In addition, Figure S24 (Supporting Information) shows the
+Li–S battery with the introduction of a conventional LiNO3 addi-
+tive electrolyte (Abbreviated LDD-LiNO3) compared to the LDDT-
+1.0V. At a current density of 0.5 C, the speciﬁc discharge capac-
+ity of LDD-LiNO3 battery is 769.9 mAh g−1 in the 1st circle, and
+the capacity retention after 70 cycles is 70.9%. In contrast, the 1st
+circle discharge speciﬁc capacity of LDDT-1.0V battery is 900.2
+mAh g−1 with a capacity retention rate of 78.0% after 70 cycles.
+This result indicates that the bifunctional SEI ﬁlm has signiﬁcant
+advantages over LiNO3 additive, which has high reversibility and
+cyclic stability.
+The surface morphology of the Li anodes of both batteries at
+10 cycles (Figure 5f), 20 cycles (Figure S25, Supporting Informa-
+tion) was tested by SEM. Compared with the LDD-1.0V battery,
+the SEI ﬁlm of LDDT-1.0V battery is highly mechanically duc-
+tile mitigating the volume expansion of Li metal, therefore its Li
+anode surface is ﬂat. XPS spectra reveal the Li anode surface com-
+ponent composition of both batteries after 10 cycles. Figures 5g,h
+show the high-resolution spectra of C 1s and F 1s on the Li anode
+surface, respectively. It is noteworthy that the peak intensities of
+Polyoleﬁns, Li2CO3, and LiF are stronger for LDDT-1.0V than for
+LDD-1.0V, which is caused by the further decomposition of the
+TFPC additive into ﬁlm during the cycling process. In addition,
+the solvent DOL and DME decomposition in the electrolyte in-
+creases the C─O species, while the decrease of C─O species in
+the cycle after the addition of TFPC additive indicates that the
+solvent decomposition is suppressed.[38] The high-resolution C
+1s and F 1s spectra show the presence of ─CF3 species on the
+Li anode surface of the LDD-1.0V battery. ─CF3 may originate
+from LiNSO2CF3 and LiCF3.[33] Both compounds are products
+of LiTFSI decomposition. It is indicated that the bifunctional
+SEI ﬁlm inhibits the irreversible decomposition caused by Li salt
+penetration into the SEI ﬁlm. Therefore, the TFPC additive with
+the pre-activation strategy forms the bifunctional SEI ﬁlm with
+both high mechanical toughness and high ionic conductivity on
+the Li anode surface, which enhances the kinetics of the elec-
+trode/electrolyte interface and alleviates the volume expansion of
+Adv. Funct. Mater. 2026, 36, e11467
+© 2025 Wiley-VCH GmbH
+e11467 (7 of 10)
+ 16163028, 2026, 1, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202511467 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 8>>
+www.advancedsciencenews.com
+www.afm-journal.de
+Figure 5. a) Cyclic voltammograms (CV) scans for both electrolytes at 0.1 mV s−1. b) The galvanostatic charge/discharge proﬁles of the two electrolytes.
+c) Nyquist curves for two electrolyte cycles of diﬀerent times. d) The diﬀerent C rate performance of two electrolytes. e) Cycle performance and the
+corresponding CE of two electrolytes at 0.5 C rate. f) SEM measurements of the Li anode surface after 10 cycles. XPS spectra of C 1s g) and F 1s h) on
+the surface of Li anodes with 10 cycles.
+the Li anode, thus suppressing side reaction between LiPSs and
+Li anode.
+3. Conclusion
+In this work, we demonstrate a scheme in which over-discharge
+in an electrolyte containing TFPC additive allows in situ inter-
+facial reactions on the Li anode to generate a bifunctional SEI
+ﬁlm with high ionic conductivity and high mechanical tough-
+ness, providing a stable interface for Li–S batteries. This bifunc-
+tional SEI ﬁlm alleviates the growth of Li dendrite, accelerates
+the uniform plating/stripping performance of Li+, and prevents
+the parasitic reaction of LiPSs with Li anodes during charging
+and discharging, which brings a stable cycle performance with
+high Coulombic eﬃciency and outstanding rate performance for
+Li–S battery. The highlight of this work is the ingenious design
+of a simple pre-activation strategy to construct a bifunctional SEI
+ﬁlm by a comprehensive mechanistic study of TFPC molecules
+to solve the inherent problems of the battery from a more funda-
+mental perspective. By combining this strategy with a computa-
+tional approach, we provide a more practical solution to the in-
+herent problem of Li–S batteries, oﬀer an interesting idea for de-
+signing better electrolytes, and enable the development of high-
+capacity Li–S batteries.
+4. Experimental Section
+Electrolyte Preparation:
+TFPC (97% purity) solvent was purchased
+from Energy Chemical. DOL, DME, and LiTFSI were purchased from Dodo
+Chemicals. 1.0 mol L−1 LiTFSI was dissolved in DOL/DME binary solvent
+Adv. Funct. Mater. 2026, 36, e11467
+© 2025 Wiley-VCH GmbH
+e11467 (8 of 10)
+ 16163028, 2026, 1, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202511467 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 9>>
+www.advancedsciencenews.com
+www.afm-journal.de
+(1:1 in v/v) in an argon-ﬁlled glove box and stirred overnight abbreviated
+LDD. TFPC (3 wt.%) was added to the above solution and stirred overnight
+in an argon-ﬁlled glove box as the experimental group abbreviated LDDT.
+Sulfur Cathode Preparation:
+Sulfur (S): conductive carbon (super P,
+Hefei Kejing Material Technology Co): Polyvinylidene ﬂuoride (PVDF, Hefei
+Kejing Material Technology Co) mixing ratio 5:4:1, dissolved the above ma-
+terials with 1-Methyl-2-pyrrolidone (NMP), stirred in a foam mixer until
+viscous. The slurry was coated onto Al foil. The loading of S electrode was
+controlled by the thickness of the slurry, prepared as S electrode material
+(abbreviated S541), and the prepared electrode was dried under vacuum
+at 45 °C for 12 h. The electrode material was pressed into a diameter of
+10 mm with an S loading of 1.0–1.2 mg cm−2 using a sheet press.
+Pre-Activation Step:
+Two hour of resting followed by constant current
+discharge at 0.1 C to 1.0 V (vs Li/Li+). All operations were operated in a
+constant temperature chamber at 25 °C, and the electrolyte volume was
+strictly controlled at 25 μL mg(S loading)−1.
+Characterization:
+The morphology of the Li metal was measured by
+scanning electron microscopy (SEM, Hitachi, SU8010). X-ray photoelec-
+tron spectroscopy (XPS, Thermo Scientiﬁc ESCALAB 250Xi) measure-
+ments were performed using an Al K𝛼excitation source. Atomic force mi-
+croscope (AFM, Bruker Dimension Icon) nanoindentation measurements
+were performed to test Young’s modulus of SEI ﬁlm.
+Electrochemical Measurements:
+Li−S batteries consist of Li foil as the
+counter electrode and S541 cathode as the working electrode. The Li|Cu
+half-cell consists of Li foil as the counter electrode and copper foil as the
+working electrode. Both electrodes of the Li|Li symmetric cell were com-
+posed of Li foil. The above half-cell and Li–S cell tests were performed
+using assembled CR-2032-coin cells, Celgard 2400 separator, and Li foil
+(16 mm, 500 μm) The electrochemical impedance spectroscopy (EIS) was
+performed using an electrochemical workstation (CHI 660E) with a fre-
+quency range of 100 K Hz to 10 mK Hz and an amplitude of 5 mV. Cyclic
+Voltammetry (CV) was performed using an electrochemical workstation
+(CHI 660E) with an amplitude of 5 mV. CV was performed using an elec-
+trochemical workstation (CHI 660E) with a CV voltage test range of 1.7–2.8
+V and a scan rate of 0.1 mV s−1. Tafel curves were tested on Li symmet-
+ric cells using two-electrode system with voltages ranging from −0.2 to
+0.2 V (vs Li+/Li) at a sweep rate of 1.0 mV s−1. Both half-cell and Li−S
+battery galvanostatic charge/discharge tests were performed in the LAND
+CT2001A battery test system.
+DFT Simulations:
+The neutral and radical-anion states for each or-
+ganic electrolyte molecule (DOL, DME, and TFPC) were optimized with
+density functional theory (DFT) calculations performed with Gaussian 16
+Rev. C.01[39] using the Becke’s three-parameter hybrid exchange functional
+combined with the Lee–Yang–Parr correlation functional (B3LYP)[40–42] at
+a 6-31G (d, p) basis set[43,44] level. All geometries were optimized without
+any symmetry restrictions and were conﬁrmed as potential energy surface
+minima by harmonic vibrational frequency calculations at a pressure of 1
+atm and temperature of 298.15 K. Solvent eﬀect was also taken into ac-
+count with the implicit solvation models including polarizable continuum
+model (PCM)[45] and Truhlar’s universal solvent model (SMD)[46] in the
+calculations. A static relative permittivity of 7.15[47] and a dynamic relative
+permittivity of 1.928,[48] which reliably describe the polarity of the solvents
+in 1:1 mixture of DOL and DME. To evaluate the reductive property of each
+electrolyte molecule considered here, the lowest unoccupied molecular or-
+bital (LUMO) energy and the adiabatic electron aﬃnities (EA) were deter-
+mined. The electron aﬃnities were obtained by means of the ΔSCF method
+on the basis of the optimized structures of the neutral and radical-anion
+states.
+AIMD Simulations:
+Symmetry-constrained ab initio molecular dynam-
+ics (AIMD) for the reductive decomposition process of TFPC on Li
+surface were performed by the Vienna Ab initio Simulation Package
+(VASP)[49,50] with the projector-augmented wave (PAW) method.[50] The
+hybrid Perdew–Burke–Ernzerhof (PBE)[51] functional was used for the de-
+scription of the exchange-correlation interaction, and the van der Waals
+interactions were also considered using Grimme’s D3-correction.[52] To
+simulated the lithium anode, a repeated slab model was built that included
+a vacuum region of more than 15 Å along the z-direction and seven layers
+2 × 2 supercell of lithium (110) surface (9.9 Å × 7.0 Å). Five optimized
+TFPC molecules were placed randomly on the surface of Li slab with a
+density, 1.554 g cm−3, close to that of the liquid at atmospheric pressure.
+The simulation time step was chosen as 1 fs and 10.0 ps NVT AIMD sim-
+ulations runs at a temperature of 700 K, controlled by a Nosé–Hoover
+thermostat.[53] Temperature as high as 700 K might seem unrealistic, but
+its sole purpose was to speed up the dynamical evolution (According to
+the AIMD simulation results in previous report,[27] it was demonstrated
+that DOL molecule decomposed ≈800 K, while 1000 K was preferred for
+the decomposition reaction of DME which was relatively more stable than
+DOL. Considering TFPC was more easily to be dissociated compared with
+DOL and DME, 700 K was chosen here for the decomposition simulation
+of TFPC). A kinetic energy cut-oﬀof 400 eV was employed for the plane
+waves, and a Γ-point-only k-sampling method was used. The energy con-
+vergence criterion of 10−6 eV was used for self-consistent calculations and
+the atomic positions were relaxed until the maximal atom force was con-
+verged to 0.02 eV Å−1.
+Supporting Information
+Supporting Information is available from the Wiley Online Library or from
+the author.
+Acknowledgements
+W.S., H.L., and M.L. contributed equally to this work. This work was funded
+by the Taishan Scholar Project of Shandong Province of China (Grant Nos.
+tsqn202211160 and tsqn202312199), the National Natural Science Foun-
+dation of China (Grant Nos. 21905152 and 52302273), the Youth Innova-
+tion Team Project for Talent Introduction and Cultivation in Universities
+of Shandong Province, the China Postdoctoral Science Foundation (Grant
+Nos. 2022M713249), the Shandong Provincial Natural Science Founda-
+tion of China (Grant Nos. ZR2023QE176), and Science and Technology
+Special Project of Qingdao City (24-1-8-cspz-12-nsh).
+Conﬂict of Interest
+The authors declare no conﬂict of interest.
+Data Availability Statement
+The data that support the ﬁndings of this study are available from the
+corresponding author upon reasonable request.
+Keywords
+Li−S batteries, Li anode protection, over-discharge pre-activation,
+solid-electrolyte interphase, TFPC additive
+Received: May 7, 2025
+Revised: June 24, 2025
+Published online: July 11, 2025
+[1] A. Manthiram, S. H. Chung, C. Zu, Adv. Mater. 2015, 27, 1980.
+[2] B. Dunn, H. Kamath, J. M. Tarascon, Science 2011, 334, 928.
+[3] P. G. Bruce, S. A. Freunberger, L. J. Hardwick, J. M. Tarascon, Nat.
+Mater. 2011, 11, 19.
+[4] H. Song, K. Münch, X. Liu, Nature 2025, 637, 846.
+[5] M. Li, H. Liu, H. Li, D. Luan, Z. Liu, X. W. Lou, Angew. Chem., Int. Ed.
+2025, 64, 202503174.
+Adv. Funct. Mater. 2026, 36, e11467
+© 2025 Wiley-VCH GmbH
+e11467 (9 of 10)
+ 16163028, 2026, 1, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202511467 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 10>>
+www.advancedsciencenews.com
+www.afm-journal.de
+[6] M. Li, H. Liu, Z. Cheng, J. He, H. Li, L. Zhang, T. Liu, X. Wang, P.
+Wang, Z. Liu, G. Cui, Adv. Energy Mater. 2025, 15, 2405766.
+[7] Y. Jia, Z. Wang, Z. Han, J. Li, M. Zhang, Z. Lao, Y. Han, R. Gao, J. Gao,
+Z. Zheng, A. Chen, H. Li, R. Mao, K. Tao, J. Li, G. Zhou, Joule 2025, 9,
+101878.
+[8] S. Kim, W. G. Lim, H. Jung, Nat. Commun. 2025, 16, 1649.
+[9] S. Y. Lang, R. J. Xiao, L. Gu, Y. G. Guo, R. Wen, L. J. Wan, J. Am. Chem.
+Soc. 2018, 140, 8147.
+[10] Z. Lao, K. Tao, X. Xiao, G. Zhou, Nat. Commun. 2025, 16, 1075.
+[11] J. Liu, W. Hao, M. Fang, Nat. Commun. 2024, 15, 9356.
+[12] W. Zhang, Y. Lu, Q. Feng, Nat. Commun. 2025, 16, 3344.
+[13] L. Zhang, M. Ling, J. Feng, L. Mai, G. Liu, J. Guo, Energy Storage Mater.
+2018, 11, 24.
+[14] Z. Lin, Z. Liu, W. Fu, N. J. Dudney, C. Liang, Adv. Funct. Mater. 2013,
+23, 1064.
+[15] Q. Cai, G. Li, D. Kong, Chem. Eng. J. 2025, 505, 159156.
+[16] Z. Xiao, Z. Yang, L. Wang, H. Nie, M. Zhong, Q. Lai, X. Xu, L. Zhang,
+S. Huang, Adv. Mater. 2015, 27, 2891.
+[17] X. Ni, T. Qian, X. Liu, N. Xu, J. Liu, C. Yan, Adv. Funct. Mater. 2018, 28,
+1706513.
+[18] R. Gao, B. Huang, M. Zhang, X. Wu, Y. Song, X. Xiao, Z. Piao, Z. Lao,
+Z. Han, G. Zhou, Adv. Mater. 2025, 37, 2502210.
+[19] D. Tian, X. Song, M. Wang, X. Wu, Y. Qiu, B. Guan, X. Xu, L. Fan, N.
+Zhang, K. Sun, Adv. Energy Mater. 2019, 9, 1901940.
+[20] Q. Pang, X. Liang, C. Y. Kwok, L. F. Nazar, Nat. Energy 2016, 1, 16132.
+[21] T. Tao, S. Lu, Y. Fan, W. Lei, S. Huang, Y. Chen, Adv. Mater. 2017, 29,
+1700542.
+[22] X. B. Cheng, R. Zhang, C. Z. Zhao, F. Wei, J. G. Zhang, Q. Zhang, Adv.
+Sci. 2016, 3, 1500213.
+[23] Z. Hu, L. Zhao, T. Jiang, J. Liu, A. Rashid, P. Sun, G. Wang, C. Yan, L.
+Zhang, Adv. Funct. Mater. 2019, 29, 1906548.
+[24] Y. Jin, N. H. Kneusels, P. Magusin, G. Kim, E. Castillo-Martinez, L. E.
+Marbella, R. N. Kerber, D. J. Howe, S. Paul, T. Liu, C. P. Grey, J. Am.
+Chem. Soc. 2017, 139, 14992.
+[25] T. Koopmans, Physica 1934, 1, 104.
+[26] Z. A. Ghazi, Z. Sun, C. Sun, F. Qi, B. An, F. Li, H. M. Cheng, Small
+2019, 15, 1900687.
+[27] X. Chen, T. Z. Hou, B. Li, C. Yan, L. Zhu, C. Guan, X. B. Cheng, H. J.
+Peng, J. Q. Huang, Q. Zhang, Energy Storage Mater. 2017, 8, 194.
+[28] N. von Aspern, G. V. Roschenthaler, M. Winter, I. Cekic-Laskovic,
+Angew. Chem., Int. Ed. 2019, 58, 15978.
+[29] X. Chen, Y. Xu, F. H. Du, Y. Wang, Small Methods 2019, 3, 1900338.
+[30] H. Yang, A. Naveed, Q. Li, C. Guo, J. Chen, J. Lei, J. Yang, Y. Nuli, J.
+Wang, Energy Storage Mater. 2018, 15, 299.
+[31] X. Chen, X. Li, D. Mei, J. Feng, M. Y. Hu, J. Hu, M. Engelhard, J. Zheng,
+W. Xu, J. Xiao, J. Liu, J. G. Zhang, ChemSusChem 2014, 7, 549.
+[32] H. Xiang, P. Shi, P. Bhattacharya, X. Chen, D. Mei, M. E. Bowden, J.
+Zheng, J. G. Zhang, W. Xu, J. Power Sources 2016, 318, 170.
+[33] W. Li, H. Yao, K. Yan, G. Zheng, Z. Liang, Y. M. Chiang, Y. Cui, Nat.
+Commun. 2015, 6, 7436.
+[34] A. Pei, G. Zheng, F. Shi, Y. Li, Y. Cui, Nano Lett. 2017, 17, 1132.
+[35] Z. Piao, P. Xiao, R. Luo, J. Ma, R. Gao, C. Li, J. Tan, K. Yu, G. Zhou, H.
+M. Cheng, Adv. Mater. 2022, 34, 2108400.
+[36] J. Lopez, A. Pei, J. Y. Oh, G. N. Wang, Y. Cui, Z. Bao, J. Am. Chem. Soc.
+2018, 140, 11735.
+[37] Q. Zhao, Z. Tu, S. Wei, K. Zhang, S. Choudhury, X. Liu, L. A. Archer,
+Angew. Chem., Int. Ed. 2018, 57, 992.
+[38] G. G. Eshetu, X. Judez, C. Li, M. Martinez-Ibanez, I. Gracia, O.
+Bondarchuk, J. Carrasco, L. M. Rodriguez-Martinez, H. Zhang, M.
+Armand, J. Am. Chem. Soc. 2018, 140, 9921.
+[39] M. J. Frisch, G. W. Trucks, H. B. Schlegel, G. E. Scuseria, M. A. Robb, J.
+R. Cheeseman, G. Scalmani, V. Barone, G. A. Petersson, H. Nakatsuji,
+X. Li, M. Caricato, et al., Gaussian, 16, Revision C.01, Gaussian, Inc.,
+Wallingford, CT, 2019.
+[40] A. D. Becke, J. Chem. Phys. 1993, 98, 5648.
+[41] A. D. Becke, Phys. Rev. A 1988, 38, 3098.
+[42] C. Lee, W. Yang, R. G. Parr, Phys. Rev. B 1988, 37, 785.
+[43] W. J. Hehre, R. Ditchﬁeld, J. A. Pople, J. Chem. Phys. 1972, 56,
+2257.
+[44] M. M. Francl, W. J. Pietro, W. J. Hehre, J. S. Binkley, M. S. Gordon, D.
+J. Defrees, J. A. Pople, J. Chem. Phys. 1982, 77, 3654.
+[45] M. Cossi, G. Scalmani, N. Rega, V. Barone, J. Chem. Phys. 2002, 117,
+43.
+[46] A. V. Marenich, C. J. Cramer, D. G. Truhlar, J. Phys. Chem. B 2009, 113,
+6378.
+[47] K. Xu, Chem. Rev. 2004, 104, 4303.
+[48] G. Kresse, J. Furthmüller, Phys. Rev. B 1996, 54, 11169.
+[49] G. Kresse, J. Furthmüller, Comput. Mater. Sci. 1996, 6, 15.
+[50] P. E. BloˇAhl, Phys. Rev. B 1994, 50, 17953.
+[51] J. P. Perdew, K. Burke, M. Ernzerhof, Phys. Rev. B 1996, 54, 16533.
+[52] S. Grimme, J. Comput. Chem. 2006, 27, 1787.
+[53] S. Nosé, J. Chem. Phys. 1984, 81, 511.
+Adv. Funct. Mater. 2026, 36, e11467
+© 2025 Wiley-VCH GmbH
+e11467 (10 of 10)
+ 16163028, 2026, 1, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202511467 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

@@ -1,0 +1,764 @@
+
+<<PAGE 1>>
+First-principles study of the effect of mechanical strength on ion
+transport in La-doped LiF-SEI on the Li (001) surface
+Y. Ren a, *, Z. Qi a, X. Ma a, S. Yang a, C. Zhang b, X. Tan a, X. Liu a
+a School of Mechanical Engineering, Inner Mongolia University of Science & Technology, Baotou, Inner Mongolia, 014010, PR China
+b School of Life Science and Technology, Inner Mongolia University of Science & Technology, Baotou, Inner Mongolia, 014010, PR China
+a r t i c l e
+i n f o
+Article history:
+Received 16 November 2020
+Received in revised form
+26 January 2021
+Accepted 14 February 2021
+Available online 17 March 2021
+Keywords:
+La doping
+LiF SEI
+Li-ion transport
+Interface collaboration
+Density functional theory calculation
+a b s t r a c t
+The solid electrolyte interface (SEI) plays an important role in the lithiumesulfur battery system. It not
+only protects the stability of the lithium metal anode interface but also inhibits the growth of lithium
+dendrites during charge and discharge. The relationship between the shape of the SEI and the transport
+behavior of lithium ions affects the homogeneity of lithium dendrites. In this work, ﬁrst-principles
+calculations are used to determine the stable structure and transport properties of the La-doped LiF
+solid electrolyte interface (LaeLiF SEI) on the Li substrate. For the vertical transport of Li ions within the
+LaeLiF SEI, the transport of Li ions in the grain boundary and that in the crystal grain was calculated
+separately. Regarding the plane diffusion behavior of Li ions between the LaeLiF SEI and the lithium
+anode, the diffusion of Li ions on the surface and interface of the lithium anode were calculated. The
+effect of critical tensile strain on the diffusion of Li ions on the surface and interface was investigated. The
+results show that doping with La solves the problem of excessive periodic grain boundary gaps caused by
+the difference between LiF and Li lattices during the deposition process. The periodic gap is reduced from
+0.478 nm to 0.306 nm after La doping. By comparing the migration energy barriers of each path, it is
+found that lithium ions are more likely to be inserted and extracted at the LaeLiF SEI grain boundary. The
+reason is that the existence of the rare earth element La causes the grain boundary to have a more stable
+vacancy structure and a smaller transport energy barrier (0.789 eV). The critical tensile strain reduces the
+diffusion energy barrier (0.813 eV) of Li ions on the surface of the lithium metal anode, which promotes
+the fast diffusion and uniform deposition of Li ions between the interfaces. The establishment of SEI
+transport characteristics under the coupling conditions of mechanical stretching and ion transport is
+expected to improve the Li deposition behavior.
+© 2021 Elsevier Ltd. All rights reserved.
+1. Introduction
+The lithium metal batteries (LMBs) have the advantages of ul-
+trahigh theoretical speciﬁc capacity, lowest redox potential, and
+low volume density. The practical applications of LMBs have faced
+many critical issues, mainly concerning lithium metal anode [1e3].
+Due to the high reaction activity of metal lithium itself, it is easy to
+deposit a layer of solid electrolyte interface (SEI) between the
+surface of the anode and the electrolyte [4]. The uneven deposition/
+peeling phenomenon on the anode surface during the electro-
+chemical cycle effect the stability of the SEI. Therefore, the practical
+application of LMBs is also restricted by dendrite growth and poor
+SEI stability [5e9]. Li ions are mainly deposited on the uneven
+protrusions of the Li anode during the deposition process [10]. As a
+result, Li dendrites are gradually generated, which will pierce the
+diaphragm and contact the battery's cathode, causing a short circuit
+inside the battery and increasing the safety hazard during use. In
+addition, with the growth of Li dendrites, they will fall off at the
+electrode terminal. The electrolyte isolates the connection between
+the detached Li dendrites and the electrode to form “dead lithium”
+The existence of “dead lithium” hinders the transport behavior of
+electrons and ions as well as the consumption of active materials,
+causing serious capacity degradation and other issues.
+To prevent the growth of lithium dendrites and to protect the
+lithium anode, researchers have adopted three different strategies.
+The ﬁrst approach is the design of the metal anode structure, such as
+lithium foam, lithium microspheres, surface-modiﬁed lithium foil,
+and a lithium-philic frame design [11e13]. The second approach is to
+* Corresponding author.
+E-mail address: yuanren@imust.edu.cn (Y. Ren).
+Contents lists available at ScienceDirect
+Materials Today Chemistry
+journal homepage: www.journals.elsevier.com/materials-today-chemistry/
+https://doi.org/10.1016/j.mtchem.2021.100451
+2468-5194/© 2021 Elsevier Ltd. All rights reserved.
+Materials Today Chemistry 20 (2021) 100451
+
+<<PAGE 2>>
+change the SEI composition by adding electrolyte additives and
+lithium salt additives and by solvent optimization and other mea-
+sures such as the addition of CO2, HF, SO2, and ﬂuoroether solvents
+[14e18] to improve the properties of the SEI generated in situ. The
+third approach is to modify the SEI artiﬁcially, optimizing the SEI
+composition and structure to ensure ion conductivity and thereby
+promoting uniform deposition of lithium ions. Simultaneously, the
+mechanical strength of the SEI is improved to overcome the stress
+generated during the charging and discharging process and the
+growth process of lithium dendrites.
+At present, artiﬁcial modiﬁcation of the SEI is a relatively
+promising choice to solve the problem of lithium metal dendrites
+and to protect the lithium metal anodes. The artiﬁcial modiﬁcation
+of the SEI with LiF has always been the objective of researchers in
+this ﬁeld. Cui et al. [19] selectively deposited LiF on defective h-BN
+(hexagonal boron nitride). The mixed LiF/h-BN ﬁlm has good
+chemical and mechanical properties and inhibits the growth of
+lithium dendrites. Wang et al. [20] formed a layer of LiF-rich SEI in
+situ between the lithium metal and the solid-state electrolyte (SSE),
+and it successfully inhibited the penetration of Li dendrites into the
+SSE. The low electronic conductivity and the inherent electro-
+chemical stability of LiF prevent the side reaction between the SSE
+and Li, prevent the further occurrence of interface reactions, and
+achieve the inhibition of lithium dendrites. Cui et al. [21] placed Li
+metal in gaseous Freon R134a to form a dense LiF coating on the
+surface of the Li metal. By adjusting the temperature and pressure
+to control the thickness of the LiF coating, the prepared artiﬁcial SEI
+with chemical stability and high mechanical strength relieved the
+volume change of the lithium metal electrode, interface reactions,
+and other issues. Zhang et al. [22] rationally designed a bi-layer
+artiﬁcial solid electrolyte interface (BL-SEI) composed of covalent
+graphene/h-BN and inorganic SEI components (including LiF, Li2O,
+Li3N, and Li2CO3) through comprehensive ﬁrst-principles ap-
+proaches. In particular, the graphitic layer (GL), with its higher
+mechanical strength and rigidity, can effectively bear the stress
+caused by uneven growth and can inhibit the growth of dendrites,
+and the inorganic layer (IL) can prevent the GL from being corroded
+by the electrolyte due to chemical reactions at the interface. In
+addition, the key interface characteristics of BL-SEI, such as chem-
+ical stability, ionic conductivity, and mechanical properties, were
+calculated. The calculation results show that the graphene/LiF
+combination BL-SEI has the best interface stability and electro-
+chemical performance. The Archer team [23] used radio-frequency
+magnetron sputtering onto exposed Li foil to prepare the LiF
+coating and act on the Li metal anode. Through the constant current
+cycle test, it was found that the cycle characteristics and coulombic
+efﬁciency of the Li anode protected by the LiF coating are signiﬁ-
+cantly better than that of the exposed lithium anode. Lang et al. [24]
+used the in situ reaction between a polyvinylidene ﬂuoride (PVDF)
+and N,N-dimethylformamide (DMF) mixed solution and Li metal to
+synthesize an Li anode stabilized by an excellent LiF layer on
+lithium at different current densities. In the symmetrical battery
+cycle test, the results show that the Li anode protected by LiF has
+superior electrochemical performance compared with the exposed
+lithium anode.
+Studies have shown that lithium ﬂuoride has a simple and stable
+structure and is a good ionic conductor and electronic insulator.
+Whether it is used as a solid electrolyte or the main component of a
+single-component SEI or a composite SEI, lithium ﬂuoride can be
+effectively used for the protection of lithium anode. The rare earth
+element La is widely used in photoelectric materials, catalyst ma-
+terials, and lithium ion cathode material modiﬁcation design. Mo
+et al. [25] calculated the electrochemical window of SSEs (Li3YCl6,
+Li3YBr6) by ﬁrst-principles computations (DFT) to reach 4 V, which
+is much wider than that of the current oxide and sulﬁde SSE
+(1.75e3.71 V for Li0.33La0.56TiO3, and 1.72e2.29 V for Li10GeP2S12),
+they found that the isoform Li3MX6 (M ¼ Dy, Gd, Ho, La, Nd, Sc, Sm,
+Tb, Tm; X ¼ Cl, Br) has good phase stability and is expected to be
+widely used in solid-state lithium batteries. Theoretical algorithms,
+modeling and simulation, and advances in computers have sup-
+plemented experimental work and can greatly help bridge the gap
+between experiment and technology [26,27]. Research on solid
+electrolytes has shown that mixing them with a variety of different
+ion conductors can achieve good overall performance [28]. For this
+reason, the interface model of a La-doped LiF SEI deposited on the
+surface of a lithium metal anode is constructed. Lattice mismatch
+causes the halide LiHa SEI groups to aggregate on the surface of the
+lithium metal to form islands [29]. Using ﬁrst-principles calcula-
+tions to determine the structural stability of LaeLiF placed on the Li
+substrate, the theoretical analysis of the vertical transport behavior
+of lithium ions in the LaeLiF SEI grain boundary and the crystal
+grain, and the fusion of mechanical strain on the plane diffusion the
+impact of lithium dendrites.
+2. Computational method and details
+2.1. Calculation method and parameter setting
+In this article, all DFT calculations were performed using the
+Vienna Ab initio Simulation Package (VASP) within the projector-
+augmented wave method. The PerdeweBurkeeErnzerhof func-
+tion of generalized gradient approximation was used to describe
+electronic exchange and correlation [30,31]. The Gaussian smearing
+method was used to determine the electron occupancy rate, with
+the spread of smearing set to 0.05 eV. The energy cutoff was set as
+400 eV. The NEB method was performed to map the energy land-
+scape of Li-ion migration. The Brillouin zone division used the
+MonkhorstePack
+method
+[32]
+and
+used
+a
+gamma-centered
+5  5  1 K-point mesh. In the process of structure optimization
+and transition state search, we used the HellmanneFeynman force
+as the convergence judgment, and the convergence accuracy was
+0.02 eV/Å. All self-consistent loops were iterated until the total
+energy difference of the systems between the adjacent iterating
+steps was less than 1  104 eV. The calculated lattice constants of
+Li and LiF are 3.44 Å and 3.959 Å, respectively, and the deviations
+from the experimental values of 3.48 Å [33] and 4.027 Å [34] are
+1.45% and 1.69%, respectively.
+2.2. Structural calculation
+According to Shi et al. [35], the surface energy of Li (001) is
+37.01meV/Å2 which is the lowest, (Li (110), Li (111) surface energy
+are 41.28 meV/Å2, 42.76 meV/Å2, respectively). The calculation
+result of Liu et al. [36] shows that LiF (001) surface has the lowest
+surface energy of 25.5 meV/Å2, Therefore, Li (001) surface and LiF
+(001) surface are used to construct the interface model. Due to the
+mismatch between the lattice constants of Li (3.44 Å) and LiF
+(3.959 Å), the Li basis vector was rotated counterclockwise by
+45 degrees along the c axis when constructing the interface model
+(Fig. 1). The Li unit cell is transformed from a body-centered cubic
+structure to a face-centered cubic structure that is the same as the
+LiF lattice. The basis vector of the Li also increases from 3.44 Å to
+4.864 Å, and the 6
+ﬃﬃﬃ
+2
+p
+ 6
+ﬃﬃﬃ
+2
+p
+ 3 Li basis vector of the structure is
+14.594 Å. The interface model is a non-lattice interface structure
+constructed by placing 6  6  3 bulk LiF on the Li substrate under
+the same base vector premise. Moreover, there is a 2.4-nm vacuum
+layer that isolates the periodic inﬂuence of the structure in the
+vertical direction. Due to the lattice difference, there is a gap of
+0.478 nm at the grain boundary of the bulk LiF, and the periodic gap
+Y. Ren, Z. Qi, X. Ma et al.
+Materials Today Chemistry 20 (2021) 100451
+2
+
+<<PAGE 3>>
+at the grain boundary is reduced from 0.478 nm to 0.306 nm by
+doping with La atoms. In the model, La occupies the Li ion position
+at the boundary of the bulk LiF and is three-coordination with in-
+ternal F. The structure can be seen as a frame composed on the
+outside of La with the inside of the structure ﬁlled with LiF to form a
+LaeLiF SEI structure similar to that of a periodic frame (Fig. 2a).
+To study the vertical transport behavior of Li ions in LaeLiF SEI
+grains and grain boundaries and the planar diffusion behavior be-
+tween the interfaces, vacancies were introduced. A vacancy struc-
+ture model was created by artiﬁcially removing one or more atoms
+to provide a path for ion transport. It has been reported that the
+existence of vacancies has little effect on the conductivity of the
+structure but has a certain promotion effect on the ion diffusion
+rate. The vacancy defect formation energy equation Evac is given in
+Eq. (1) [37], where E(a,q) stands for the total energy of the supercell
+with the corresponding defect at charge state of q, E(bulk) is the total
+energy of the SEI supercell, EF is measured with respect to the va-
+lance band maximum EV of the host material, DV is the difference of
+the average electrostatic potential between supercell with defects
+and perfect supercell, and q represents the charge of the gained or
+lost atom. This article does not consider the charge gain and loss,
+and Eq. (1) can be simpliﬁed to Eq. (2) [22].
+Evac ¼ Eða;qÞ  EðbulkÞ 
+X
+nama þ qðEF þ EV þ DVÞ
+(1)
+Evac ¼ Ea  Eb 
+X
+nama
+(2)
+where Eb is the total energy of the SEI supercell (Eb ¼ 702.827 eV,
+applied strain Eb ¼ 662.771 eV), Ea is the energy of the defect
+system after the SEI supercell removes atoms, and ma is the
+chemical
+potential
+of
+the
+defect
+atom
+(mLa
+¼
+4.475
+eV,
+mLi ¼ 1.9 eV), with na being the number of atoms removed. The
+calculation of defect formation energy is used to describe the sta-
+bility of defect SEI structure, the larger the defect formation energy
+is, the more stable the structure is.
+The interface strength is measured by the work of separation
+(Wsep) as Eq. (3) [38,39].
+Wsep ¼ ðEðLaÞLiF þ ELi  EbÞ = A
+(3)
+where E(La)eLiF and ELi are the system energy of the (La)eLiF and Li
+layer in an interface model, and A is the total interface area. A
+greater positive Wsep suggests stronger interfacial cohesion while a
+negative value refers that a heterointerface cannot form. As the
+calculation results of the work of separation show (Supply
+information Table 3), the work of separation of LaeLiF SEI inter-
+face is higher than that of LiF SEI interface. It shows that the doping
+of La increases the stability of the LiF-SEI interface. Strain reduces
+the work of separation of LaeLiF SEI interface and reduces the
+interface stability.
+The transport of lithium ions in the LaeLiF SEI is calculated by
+the NEB method, which is an effective method to ﬁnd the minimum
+energy path and saddle point between two points [40]. By evenly
+inserting N intermediate conformation points in the middle of the
+structure, each conﬁrmation point is connected with adjacent
+conformation points by spring potential energy. Through structural
+relaxation, the respective stable conformations are found, and the
+Fig. 1. (Colored online) Schematic diagram of the basis vector of the lithium substrate
+(the dotted line represents the original 1  1 base vector, and the solid line represents
+the structure
+ﬃﬃﬃ
+2
+p
+
+ﬃﬃﬃ
+2
+p
+base vector).
+Fig. 2. (Colored online) Schematic diagram of the LaeLiF solid electrolyte interface calculation model ((a) Conﬁguration diagram, deﬁning the Li layer in contact with LaeLiF as layer
+one and from bottom to top as layer two, layer three, and layer four. (b) Schematic diagram of vacancy and transport at grain G. (c) Schematic diagram of vacancy and transport at
+grain boundary GB. (d) Schematic diagram of interface I vacancies and interface migration. (e) Schematic diagram of interface I vacancies and surface diffusion of lithium anode).
+Y. Ren, Z. Qi, X. Ma et al.
+Materials Today Chemistry 20 (2021) 100451
+3
+
+<<PAGE 4>>
+corresponding energy is obtained. Then, the reaction path and the
+transition state are predicted to calculate the energy barrier size.
+3. Results and discussion
+3.1. The vertical transport behavior of Li ions in the LaeLiF solid
+electrolyte interface
+Vacancies are the most common point defects in solid materials
+and have a signiﬁcant impact on the physical, mechanical, and
+thermodynamic properties of the material. The parameter that
+characterizes the vacancy is mainly the formation energy of va-
+cancy defects, which is used to describe the stability of the defect
+structure. The greater the formation energy of vacancy defects is,
+the more stable the defect structure is. This article constructs va-
+cancies to provide paths for ion transport and diffusion. Vacancies
+at the grain boundary GB and grain G are formed by removing La or
+Li atoms from each layer from layer one to layer four (Fig. 2b and f
+GBLix/GLix). The calculation results show that the defect formation
+energy at the grain boundary GB is much greater than the vacancy
+defect formation energy at the grain G and interface I (Table 1),
+indicating that the defect structure at the grain boundary GB is
+more stable. This means that the stable defect structure at the grain
+boundary provides a stable transport path for Li ion insertion/
+extraction.
+To study the insertion/extraction behavior of Li ions in the
+LaeLiF SEI, the NEB method was used to calculate the transport
+behavior of Li ions in an inorganic LaeLiF SEI. The initial state is a
+stable structure with vacancies, and the terminal state is a new
+vacancy structure formed after the vacancies exchange coordinate
+positions with adjacent Li/La atoms. Vertical transport is divided
+into two types: The ﬁrst type is the transport of Li ions inside the
+crystal grains with a transport path of GLi1/GLi2/GLi3/GLi4. The
+internal transport process of Li-ions in the LiF grain is from Li base
+layer one to layer four through the LiF SEI to the surface, layer by
+layer (Fig. 2b). The second type is the transport of Li ions in the
+grain boundary, in which Li ions transport between LaeLa grain
+boundaries. Similar to the ﬁrst type of intragrain transport, the
+transport path is GBLi1/GBLi2/GBLi3/GBLi4. The Li ions transition
+from the Li base to the La vacancies of adjacent layers until escaping
+to the surface (Fig. 2c).
+During the vertical detachment and transport of Li ions at the
+LaeLiF SEI grain boundary GB, Li ions ﬁrst need 0.144 eV transport
+activation energy to break the LieLi bond from the GBLi1 position
+and leave the Li substrate (Fig. 3a). Then, they spontaneously
+diffuse to the GBLi2 site with a high defect formation energy and
+relatively stable structure. In the process of migration to GBLi3, to
+overcome the inﬂuence of the interface, Li ions require a large
+transport activation energy (0.789 eV) to cross the saddle point
+(Fig. 3a and Supply information Table 1). Then, they diffuse to GBLi4
+sites with higher defect formation energy. Since Li ions and F ions in
+the transport process at the boundary have fewer LieF bonds, the
+required transport activation energy is lower. During the vertical
+transport of Li ions at the LaeLiF SEI grain G, the deformation of the
+interface structure makes the vertical transport of Li ions from GLi1
+to GLi2 more difﬁcult, and a large transport activation energy
+(1.048 eV) is required to cross the energy barrier. Slightly less
+favorable than the diffusion of Li through LiF (0.75 eV) and (0.81 eV)
+as reported by Greeley [41] and Balbuena [42], respectively. During
+the layer-by-layer migration of GLi2/GLi3/GLi4, Li ions need to
+break the original LieF bond to form a new LieF bond. In the LiF
+crystal grain, Li ions and F ions exist in a six-coordinate state.
+Therefore, during the transport process, the bond energy of 6 LieF
+bonds must be overcome, requiring a larger migration activation
+energy. The energy required for transport is mainly determined by
+the difference between the energy required to break the LieF bonds
+and LieLi bonds and the energy released on forming new LieF
+bonds. The transport path and relatively small energy change
+together determine that the transport energy barrier of Li ions at
+the grain boundary GB is much smaller than the transport energy
+barrier at the grain G (Fig. 3a). It can be seen that the doping by La
+increases the length of the transport path of Li ions but reduces the
+transport energy barrier of Li ions at the GB. The stable defect
+structure and low transport energy barrier promote the rapid
+transport of Li ions at the grain boundary GB, which in turn pro-
+motes the uniform deposition of Li ions at the SEI and stabilizes the
+electrolyte interface to protect the Li anode.
+3.2. The effect of mechanical strength on the plane diffusion of Li
+ions between interfaces
+Mechanical stability and strength are very important to the
+stable cycle of Li metal anode. During charge and discharge, lithium
+metal has a relatively inﬁnite volume change, and its surface
+coating material undergoes repeated mechanical morphology
+changes, which leads to a decrease in coating stability and produces
+cracks [22]. Therefore, mechanical strength is essential for main-
+taining the stability of the structure, especially in the interaction
+between interfaces. The tensile properties of the bulk structure of
+LiF-SEI and LaeLiF in the <001> direction are simulated, and the
+critical tensile strain can be regarded as the upper limit for the
+actual material. With the increase in the amount of stretching in the
+<001> direction of the unit cell, the basis vector in the <100> and
+<010> directions is gradually shortened under the Poisson effect. At
+the same time, the atomic coordinates move slightly with the
+change in the basis vector, gradually evolving from the original
+non-lattice interface to a semilattice interface or even a eutectic
+lattice interface. When the critical strain is reached, the interatomic
+Table 1
+Vacancy defect system energy and vacancy defect formation energy (eV) at grain boundaries, grains, and interfaces.
+XLi1
+XLi2
+XLi3
+XLi4
+Grain boundary (GB)
+Ea(eV)
+684.902
+685.968
+685.369
+685.726
+Evac(eV)
+31.350
+27.709
+28.309
+27.952
+Grain (G)
+Ea(eV)
+700.531
+700.253
+700.584
+700.049
+Evac(eV)
+4.196
+4.474
+4.144
+4.678
+Interface
+Before (IB)
+Ea(eV)
+700.531
+700.511
+700.309
+700.253
+Evac(eV)
+4.196
+4.216
+4.418
+4.474
+After (IA)
+Ea(eV)
+661.733
+661.375
+661.108
+661.487
+Evac(eV)
+2.938
+3.296
+3.563
+3.184
+(Exegesis: Ea is the energy of the defect system after the SEI supercell removes atoms, Evac is the formation energy of vacancy defects, GLix represents the vacancy at the grain.
+ISLix represents the vacancy at the interface (x ¼ 1, 2, 3, 4, S ¼ A, B). Due to the difference in boundary vacancies, GBLix means that Li exists at the boundary layer x. For example,
+GBLi1 means that the Li atom is in boundary GB layer one and that there are three vacancies in layer two, layer three, and layer four. XLi1-Ea represents the energy of the vacancy
+defect system after removing atoms at the XLi1 site, XLi1-Evac represents the formation energy of vacancy defects of the XLi1 site (X ¼ GB, G, IB, IA).).
+Y. Ren, Z. Qi, X. Ma et al.
+Materials Today Chemistry 20 (2021) 100451
+4
+
+<<PAGE 5>>
+bonds at the interface break ﬁrst, resulting in brittle fracture. The
+calculation results show that a La-doped LiF-SEI has lower critical
+tensile strain and ultimate tensile strength. When La is not incor-
+porated, the critical strain of LiF-SEI reaches 13.8%, and the ultimate
+tensile strength reaches 5.85 GPa (Fig. 4 and Supply information
+Table 2). In contrast, after doping with La, the critical tensile
+strain is only 8.23%, and the ultimate tensile strength is also
+reduced to 2.28 GPa (Fig. 4 and Supply information Table 2). The
+main reason is that there are a large number of La dangling bonds at
+the grain boundaries, and the interaction between the interfaces is
+reduced due to the replacement by La.
+As shown in Fig. 2d and e, the vacancies at the interface I are
+labeled as ISLi1, ISLi2, ISLi3, and ISLi4 (S means the state of applying
+tensile strain, S ¼ A/B, A means after strain is applied, and B means
+before strain is applied). Among them, ISLi1, ISLi2, and ISLi3 are va-
+cancies in the same layer on the Li substrate (layer one), and the
+vacancies ISLi4 are located in the LiF layer (layer two) in contact with
+the Li substrate at the interface I. From the vacancy defect forma-
+tion energy data of the same-layer vacancies IBLi1, IBLi2, and IBLi3 at
+the interface I, it can be seen that the synergistic effect of the
+doping element La and the boundary stabilizes the vacancy defect
+structure to a certain extent. The closer the vacancy defect is to the
+grain boundary, the greater the formation energy value (IBLi3-
+Evac > IBLi2-Evac > IBLi1-Evac) and the more stable the corresponding
+structure. After applying 8.29% strain (IALix-Evac) the structure also
+conforms to this rule (Table 1). The ultimate tensile strain causes
+the corresponding vacancy formation energy to decrease, but it
+promotes the formation of vacancies between interfaces to a
+certain extent. For example, the formation energy of vacancy de-
+fects in ISLi1 decreased from 4.196 eV to 2.938 eV, and the formation
+energy of vacancy defects at ISLi2 decreased from 4.216 eV to
+3.296 eV. Most of the reasons for these effects are that the behavior
+of applying strain increases the atomic bond length between the
+interfaces, the internal force between the atoms changes, and the
+interaction between the interfaces decreases, which further re-
+duces the formation energy of vacancies between the interfaces.
+The effect of applying 8.29% tensile strain to the LaeLiF SEI
+interface structure on the plane diffusion behavior of Li ions at the
+interface I was studied. The planar diffusion behavior is the trans-
+port process of Li ions between the interface I, which can be divided
+Fig. 3. (Colored online) The migration activation energy curve and Bader charge transfer curve. ((a) The activation energy curve of Li ion transport in the grain boundary GB and the
+grain G. (b) The activation energy curve of Li ion diffusion on the surface of the lithium anode between interface I. (c) The activation energy curve of Li ion migration between
+interface I. (d) The Bader charge transfer value for each intermediate state during the plane diffusion of Li atoms in interface I).
+Fig. 4. (Colored online) Tensile stressestrain curve of the bulk structure of the LiF-SEI
+and LaeLiF SEI in the <001> direction.
+Y. Ren, Z. Qi, X. Ma et al.
+Materials Today Chemistry 20 (2021) 100451
+5
+
+<<PAGE 6>>
+into two types: Li ions diffusing on the surface of the lithium anode
+(Fig. 2d) and Li ions migrating between the interfaces (Fig. 2e). At
+the same time, under the condition of ultimate tensile strain, the
+plane diffusion behavior and charge transfer of Li ions at the
+interface were calculated, aiming to explore the microscopic effect
+of strain on ion diffusion. In particular, the Bader charge transfer
+value [43] is determined by the bond conﬁguration and electron gas
+reconstruction between the migrated Li and the interface substrate
+Li and LiF.
+The diffusion of Li ions on the surface of the lithium anode
+mainly involves the process of breaking the original LieF single
+bond and then forming a new LieF single bond, which is then
+followed by the process of LieLi bond reconstruction. Strain re-
+duces the diffusion barrier for the diffusion of Li ions on the surface
+of the lithium anode (Fig. 3b). During the diffusion of Li ions from
+ISLi1/ISLi2/ISLi3, the diffusion activation energy barrier decreases
+from 1.432 eV to 0.813 eV (Fig. 3b and Supply information Table 1).
+IBLix is expressed as the diffusion activation energy curve when no
+strain is applied. It can be seen that the curve is smoother and is
+symmetrical about the diffusion energy barrier. When no strain is
+applied, the Bader value is the same as the activation energy curve,
+except for individual intermediate states (Fig. 3d), and it increases
+with increasing activation energy and decreases with decreasing
+activation energy. IALix is expressed as the activation energy curve
+of Li ion diffusion after strain is applied. The size of the activation
+energy curve and the uniformity of the energy barrier are changed.
+In this process, the Bader charge transfer value tends to be stable,
+and the difference in Li ion diffusion position has no obvious in-
+ﬂuence on the Bader charge transfer value. It can be seen that the
+Bader charge transfer value amount for Li ions diffusing in this
+process is mainly affected by the ionicity of the F atoms in the
+adjacent LiF layer. The tensile strain increases the distance between
+the interfaces, which reduces the amount of charge obtained by F
+ions at any position, which is also the reason why the Bader charge
+transfer value of the applied strain tends to be ﬂat. At the same
+time, the Poisson effect caused by the tensile strain reduces the
+length of the surface diffusion path.
+During the migration process of Li ions between the interfaces,
+the migration activation energy curves are basically the same
+(Fig. 3c), and the strain increases the migration energy barrier be-
+tween the interfaces from 1.597 eV to 2.07 eV (Fig. 3c and Supply
+information Table 1). The migration process of Li ions from ISLi1
+to ISLi4 is a process in which Li ions leave the Li substrate and jump
+over the interface to embed in the LiF SEI layer. Strain has little
+effect on the migration activation energy, and the Bader charge
+transfer curves before and after strain are relatively ﬂat and coin-
+cident. The migration process of Li ions from ISLi4 to ISLi3 is a process
+in which Li ions depart from the LiF SEI and return to the Li sub-
+strate; in this process, a larger migration energy barrier is required.
+Except for individual intermediate states, the Bader charge transfer
+of the unapplied strain is proportional to the migration activation
+energy, and the applied strain causes the Bader charge transfer
+value to be inversely proportional to the migration activation en-
+ergy. The mechanical strength ﬁne-tunes the atomic structure of
+the interface, changes the amount of charge transfer, and then
+changes the magnitude of the ion transport energy barrier.
+4. Conclusions
+LiF is an inorganic component of the SEI, and whether used as an
+electrolyte additive material or as artiﬁcial SEI, it has always been a
+focus of research. In this work, ﬁrst-principles calculations are used
+to determine the transport characteristics of Li ions in the LaeLiF
+SEI interface system, including the vertical transport behavior in
+the grain boundary GB and grain G and the plane diffusion behavior
+in the interface I. In addition, strain engineering is added in a dis-
+cussion of the inﬂuence of strain on the plane diffusion behavior in
+the interface I.
+The results show that the incorporation of La reduces the tensile
+strength and strain of the system (the tensile strength is reduced
+from 5.85 GPa to 2.28 GPa, and the strain is reduced from 13.81% to
+8.029%). However, the formation energy of vacancy defects at the
+grain boundary GB is improved, the structure of the vacancy defect
+is stabilized, and a stable transport path is provided for the inser-
+tion/extraction of Li ions. At the same time, the grain boundary GB
+has a smaller migration activation energy barrier than the crystal
+grain (0.813 eV), and the stable defect structure and low transport
+energy barrier promote the rapid migration of Li ions at the grain
+boundary GB. It can be seen that during the charging and dis-
+charging of the battery, the insertion/extraction of Li ions tends
+toward vertical transport at the grain boundaries. The critical ten-
+sile strain reduces the formation energy of void defects between
+the interface I, promotes the formation of vacancies and provides a
+path for plane diffusion of ions. Simultaneously, this strain reduces
+the energy barrier of Li ion diffusion on the lithium metal surface
+(from 1.274 eV to 0.813 eV) and promotes the full diffusion and
+uniform deposition of Li ions between the interfaces. Strain has
+little effect on the migration behavior of Li ions leaving the Li
+substrate and inserting into the LaeLiF SEI interface. Instead, strain
+increases the energy required for lithium ions to escape from the
+SEI. Therefore, the strain causes an increase in the migration barrier
+of lithium ions back and forth between the LaeLiF SEI and the
+lithium anode.
+CRediT author statement
+Yuan Ren: Conceptualization, Methodology, Formal analysis,
+Writing e original draft, Writing e review & editing, Supervision,
+Project administration. Zhaohui Qi: Conceptualization, Software,
+Formal analysis, Data curation, Writing e original draft, Writing e
+review & editing, Visualization. Xiyu Ma: Formal analysis, Soft-
+ware. Shenbo Yang: Formal analysis, Software. Chao Zhang:
+Formal analysis. Xin Tan: Project administration, Formal analysis.
+Xuejie Liu: Formal analysis, Project administration
+Declaration of competing interest
+The authors declare that they have no known competing
+ﬁnancial interests or personal relationships that could have
+appeared to inﬂuence the work reported in this article.
+Acknowledgments
+This research was supported by the National Natural Science
+Foundation of China (Grant Nos. 51702170 and 61765012) and the
+Natural Science Foundation of Inner Mongolia Autonomous Region
+(Grant No. 2020MS05036).
+Appendix A. Supplementary data
+Supplementary data to this article can be found online at
+https://doi.org/10.1016/j.mtchem.2021.100451.
+References
+[1] M.S. Whittingham, Lithium batteries and cathode materials, Chem. Rev. 104
+(2004) 4271e4302.
+[2] H. Li, Z. Wang, L. Chen, X. Huang, Research on advanced materials for Li-ion
+batteries, Adv. Mater. 21 (45) (2009) 4593e4607.
+[3] C. Liu, F. Li, L.P. Ma, H.M. Cheng, Advanced materials for energy storage, Adv.
+Mater. 22 (8) (2010) E28eE62.
+Y. Ren, Z. Qi, X. Ma et al.
+Materials Today Chemistry 20 (2021) 100451
+6
+
+<<PAGE 7>>
+[4] X.B. Cheng, R. Zhang, C.Z. Zhao, F. Wei, J.G. Zhang, Q. Zhang, A review of solid
+electrolyte interphases on lithium metal anode, Adv. Sci. 3 (3) (2016)
+1500213.
+[5] M.Y. Nie, D. Chalasani, D.P. Abraham, Y.J. Chen, A. Bose, B.L. Lucht, Lithium ion
+battery graphite solid electrolyte interphase revealed by microscopy and
+spectroscopy, J. Phys. Chem. C 117 (3) (2013) 1257e1267.
+[6] X. Chen, T.Z. Hou, B. Li, C. Yan, L. Zhu, C. Guan, X.B. Cheng, H.J. Peng, J.Q. Huang,
+Q. Zhang, Towards stable lithium-sulfur batteries: mechanistic insights into
+electrolyte decomposition on lithium metal anode, Energy Storage Mater 8
+(2017) 194e201.
+[7] X.B. Cheng, C. Yan, X. Chen, C. Guan, J.Q. Huang, H.J. Peng, R. Zhang, S.T. Yang,
+Q. Zhang, Implantable solid electrolyte interphase in Lithium-Metal Batteries,
+Inside Chem. 2 (2) (2017) 258e270.
+[8] X.Q. Zhang, X.B. Cheng, X. Chen, C. Yan, Y. Chong, Q. Zhang, Fluoroethylene
+carbonate additives to render uniform Li deposits in lithium metal batteries,
+Adv. Funct. Mater. 27 (10) (2017) 1605989.
+[9] A.P. Wang, S. Kadam, H. Li, S.Q. Shi, Y. Qi, Review on modeling of the anode
+solid electrolyte interphase (SEI) for lithium-ion batteries, Npj Computational
+Materials 4 (1) (2018) 15.
+[10] W.J. Chang, S. Han, K. Jiseon, H. Jinho, C.D. Won, Y.S. Sang, K.J. Tae, K.W. Woo,
+L.J. Hyung, L. Hyunjung, P. Taeseup, S. In-Hwan, L.D. Whang, W.I.I. Park,
+Controlling electric potential to inhibit solid-electrolyte interphase formation
+on nanowire anodes for ultrafast lithium-ion batteries, Nat. Commun. 9 (1)
+(2018) 3461.
+[11] J. Heine, U. Rodehorst, X. Qi, J.P. Badillo, C. Hartnig, U. Wietelmann, M. Winter,
+P. Bieker, Using polyisobutylene as a non-ﬂuorinated binder for coated
+lithium powder (CLiP) electrodes, Electrochim. Acta 138 (2014) 288e293.
+[12] J. Becking, A. Gr€obmeyer, M. Kolek, U. Rodehorst, S. Schulze, M. Winter,
+P. Bieker, M.C. Stan, Lithium-metal foil surface modiﬁcation: an effective
+method to improve the cycling performance of lithium-metal batteries,
+Advanced Materials Interfaces 4 (16) (2017) 1700166.
+[13] X. Guan, A. Wang, S. Liu, G.j. Li, F. Liang, Y.W. Yang, X.J. Liu, J.Y. Luo, Controlling
+nucleation in lithium metal anodes, Small 14 (37) (2018) 1801423.
+[14] T. Osaka, T. Momma, Y. Matsumoto, Y. Uchida, Surface Characterization of
+electrodeposited lithium anode with enhanced cycleability obtained by CO2
+addition, J. Electrochem. Soc. 144 (5) (1997) 1709e1713.
+[15] S. Shiraishi, K. Kanamura, Z. Takehara, Surface condition changes in lithium
+metal deposited in nonaqueous eletrolyte containing HF by dissolution-
+deposition cycles, J. Electrochem. Soc. 146 (5) (1999) 1633e1639.
+[16] I. Stassen, G. Hambitzer, Metallic lithium batteries for high power applica-
+tions, J. Power Sources 105 (2) (2002) 145e150.
+[17] W. Weng, V.G. Pol, K. Amine, Ultrasound assisted design of sulfur/carbon
+cathodes with partially ﬂuorinated ether electrolytes for highly efﬁcient Li-S
+batteries, Adv. Mater. 25 (11) (2013) 1608e1615.
+[18] M.L. Gordin, F. Dai, S. Chen, T. Xu, J. Song, D. Tang, Bis (2, 2, 2-triﬂuoroethyl)
+ether as an electrolyte co-solvent for mitigating self-discharge in lithium-
+sulfur batteries, ACS Appl. Mater. Interfaces 6 (11) (2014) 8006e8010.
+[19] J. Xie, L. Liao, Y. Gong, Y.B. Li, F.F. Shi, A. Pei, J. Sun, R.F. Zhang, B. Kong,
+R. Subbaraman, J. Christensen, Y. Cui, Stitching h-BN by atomic layer depo-
+sition of LiF as a stable interface for lithium metal anode, Science Advances 3
+(11) (2017) 722e726.
+[20] X.L. Fan, X. Ji, F.D. Han, J. Yue, J. Chen, L. Chen, T. Deng, J.J. Jiang, C.S. Wang,
+Fluorinated solid electrolyte interphase enables highly reversible solid-state Li
+metal battery, Science Advances 4 (12) (2018), eaau9245.
+[21] D.C. Lin, Y.Y. Liu, W. Chen, G. Zhou, K. Liu, B. Dunn, Y. Cui, Conformal lithium
+ﬂuoride protection layer on three-dimensional lithium by nonhazardous
+gaseous reagent freon, Nano Lett. 17 (6) (2017) 3731e3737.
+[22] J.G. Zhu, P.K. Li, X. Chen, D. Legut, Y.C. Fan, R.F. Zhang, Y.Y. Lu, X.B. Cheng,
+Q.F. Zhang, Rational design of graphitic-inorganic Bi-layer artiﬁcial SEI for
+stable lithium metal anode, Energy Storage Materials 16 (2018) 426e433.
+[23] L. Fan, H.L. Zhuang, L.N. Gao, Y.Y. Lu, L.A. Archer, Regulating Li deposition at
+artiﬁcial solid electrolyte interphases, J. Mater. Chem. 5 (2017) 3483e3492.
+[24] J.L. Lang, Y.Z. Long, J.L. Qu, X.Y. Luo, H.H. Wei, K. Huang, H.T. Zhang, L.H. Qi,
+Q.F. Zhang, Z.C. Li, H. Wu, One-pot solution coating of high quality LiF layer to
+stabilize Li metal anode, Energy Storage Materials 16 (2019) 85e90.
+[25] S. Wang, Q. Bai, A.M. Nolan, Y.S. Liu, S. Gong, Q. Sun, Y.F. Mo, Lithium chlorides
+and bromides as promising solid-State chemistries for fast ion conductors
+with good electrochemical stability, Angew Chem. Int. Ed. Engl. 58 (24) (2019)
+8039e8043.
+[26] S.Q. Shi, J. Gao, Y. Liu, Y. Zhao, Q. Wu, W.W. Ju, C.Y. Ouyang, R.J. Xiao, Multi-
+scale computation methods: their applications in lithium-ion battery research
+and development, Chin. Phys. B 25 (1) (2016), 018212.
+[27] Z.Y. Zou, N. Ma, A.P. Wang, Y.B. Ran, T. Song, Y. Jiao, J.P. Liu, H. Zhou, W. Shi,
+B. He, D. Wang, Y.J. Li, M. Avdeev, S.Q. Shi, Relationships between Naþ dis-
+tribution, concerted migration, and diffusion properties in rhombohedral
+NASICON, Advanced Energy Mater 10 (30) (2020) 2001486.
+[28] Z.Q. Wang, D. Wang, Z.Y. Zou, T. Song, D.X. Ni, Z.Z. Li, X.C. Shao, W.J. Yin,
+Y.C. Wang, W.W. Luo, M.S. Wu, M. Avdeev, B. Xu, C.Y. Ouyang, S.Q. Shi,
+L.Q. Chen, Efﬁcient potential-tuning strategy through p-type doping for
+designing cathodes with ultrahigh energy-density, National Science Review 7
+(11) (2020) 1768e1775.
+[29] Y. Ren, Z.H. Qi, C. Zhang, S.B. Yang, X.Y. Ma, X.J. Liu, X. Tan, S.Y. Sun, Y.N. Cao,
+The charge transfer of intercalated Li atoms around islands on Li-halide (F, Br,
+Cl) surface of SEIs: a ﬁrst principles calculation, Comput. Mater. Sci. 176
+(2020) 109535.
+[30] P.E. Bl€ochl, Projector augmented-wave method, Phys. Rev. B 50 (24) (1994)
+17953e17979.
+[31] M.C. Payne, M.P. Teter, D.C. Allan, T.A. Arias, J.D. Joannopoulos, Iterative mini-
+mization techniques for ab initio total-energy calculations: molecular dy-
+namics and conjugate gradients, Rev. Mod. Phys. 64 (4) (1992) 1045e1097.
+[32] H.J. Monkhorst, J.D. Pack, Special points for Brillouin-zone integrations, Phys.
+Rev. B 13 (12) (1976) 5188e5192.
+[33] M.S. Anderson, C.A. Swenson, Experimental equations of state for cesium and
+lithium metals to 20 kbar and the high-pressure behavior of the alkali-metals,
+Phys. Rev. B 31 (2) (1985) 668e680.
+[34] L. Bocquet, E. Charlaix, Nanoﬂuidics from bulk to interfaces, Chem. Soc. Rev.
+39 (3) (2010) 1073e1095.
+[35] L. Shi, A. Xu, T.S. Zhao, First-principles investigations of the working mecha-
+nism of 2D h-BN as an interfacial layer for the anode of lithium metal bat-
+teries, ACS Appl. Mater. Interfaces 9 (2) (2017) 1987e1994.
+[36] Z. Liu, Y. Qi, Y.X. Lin, L. Chen, P. Lu, L.Q. Chen, Interfacial study on soild elec-
+trolyte interphase at Li metal anode: implication for Li dendrite growth,
+J. Electrochem. Soc. 163 (3) (2016) A592eA598.
+[37] R. Liu, R.Y. Tian, Y.J. Zhao, Structural stability of Cr-related defect complex in
+diamond for single photon sources: a ﬁrst-principles study, J. Appl. Phys. 113
+(10) (2013) 103516.
+[38] P.P. Zhang, Y.Y. Yang, X.G. Duan, S. Zhao, C.S. Lu, Y.L. Shen, G.S. Shao,
+S.B. Wang, Mechanistic investigations of N-doped graphene/2H(1T)-MoS2 for
+Li/K-ions batteries, Nanomater. Energy 78 (2020) 105352.
+[39] S. Zhao, Y. Li, Z.H. Yang, X.Y. Wang, X.Q. Shi, Atomic-scale dynamics and
+storage performance of Na/K on FeF3 nanosheet, ACS Appl. Mater. Interfaces
+11 (19) (2019) 17425e17434.
+[40] G. Henkelman, B.P. Uberuaga, H. Jόnsson, A climbing image nudged elastic
+band method for ﬁnding saddle points and minimum energy paths, J. Chem.
+Phys. 113 (22) (2000) 9901e9904.
+[41] H. Yildirim, A. Kinaci, M. Chan, J.P. Greeley, First principles analysis of defect
+thermodynamics and ion transport in inorganic SEI compounds: LiF and NaF,
+ACS Appl. Mater. Interfaces 7 (34) (2015) 18985e18996.
+[42] F.A. Soto, A. Marzouk, F. El-Mellouhi, P.B. Ballbuena, Understanding ionic
+diffusion through SEI components for lithium-ion and sodium-ion batteries:
+insights from ﬁrst-principles calculations, Chem. Mater. 30 (10) (2018)
+3315e3322.
+[43] W. Tang, E. Sanville, G. Henkelman, A grid-based Bader analysis algorithm
+without lattice bias, J. Phys. Condens. Matter 21 (8) (2009), 084204.
+Y. Ren, Z. Qi, X. Ma et al.
+Materials Today Chemistry 20 (2021) 100451
+7

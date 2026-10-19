@@ -1,0 +1,894 @@
+
+<<PAGE 1>>
+ORIGINAL PAPER
+1 3
+Topics in Catalysis (2022) 65:966–978
+https://doi.org/10.1007/s11244-022-01642-1
+(1675 mA h g-1) and the low cost of crude sulfur ( < $ 150 
+/ ton).
+The conventional Li-S batteries are typically made of a 
+cathode containing sulfur as active material inserted in a 
+carbon matrix, an anode of lithium metal, an inert separator, 
+and an ether-based electrolyte. If the battery is assembled 
+from these components, it is prepared in a charged state. 
+During a discharge cycle, elemental sulfur, which exists as 
+ring-like octarhombic molecules (S8), is reduced to Li2S as 
+the final product. On the opposite, during a charging cycle, 
+this compound is oxidized to sulfur reversibly. Thus, the 
+overall reaction taking place in the battery can be repre­
+sented as:
+S8 + 16 Li ⇋ 8 Li2S.
+However, the actual charge and discharge processes are 
+extremely complex, accompanied by many multiple side 
+reactions. For the present purpose, the most relevant of these 
+reactions leads to the appearance of soluble polysulfide spe­
+cies of molecular formula Li2Sx with x values ranging from 
+4 to 8, which migrate from one electrode to the other during 
+the battery cycle, leading to the so-called “shuttle” effect. 
+This phenomenon leads to the reaction of these species at the 
+lithium metal anode, which is rapidly followed by battery 
+failure. Moreover, the charging and discharging of lithium 
+1  Introduction
+It has been recently recognized that conventional Li-ion 
+batteries are unlikely to meet all of the goals concerning 
+performance, cost, and scale, required for energy storage, 
+particularly in the case of large-scale applications such as 
+electrified mobility and grids [1].
+In this respect, lithium-sulfur (Li-S) batteries have been 
+proposed as one of the most promising post Li-ion tech­
+nologies. These devices have attracted considerable atten­
+tion primarily due to their high theoretical specific capacity 
+	
+ Martin E. Zoloff Michoff
+martin.zoloff@unc.edu.ar
+	
+ Ezequiel P. M. Leiva
+ezequiel.leiva@unc.edu.ar
+1	
+INFIQC, CONICET and Departamento de Química Teórica y 
+Computacional, Facultad de Ciencias Químicas, Universidad 
+Nacional de Córdoba, Córdoba, Argentina
+2	
+CREAS, CONICET, and CIFTA, Facultad de Ciencias 
+Exactas y Naturales, Universidad Nacional de Catamarca, 
+Catamarca, Argentina
+Abstract
+The present work deals with a first principles comparative study of the decomposition of Li2S and different polysulfides 
+on graphitic surfaces in different dielectric media. This work aims at contributing to the understanding of the reactions 
+that take place during the charging of a lithium-sulfur (Li-S) battery in different solvents. The barrier for the Li-S bond 
+breakage is determined using the nudged elastic band method, and a detailed analysis of the atomic charges along this 
+pathway is performed. The role of the solvent is found to be twofold: on one side, increasing the environment dielectric 
+constant lowers the energy barrier for the decomposition of the polysulfides. On the other hand, it weakens the interaction 
+energy of the adsorbates on the surface. These two effects are opposite. While the first effect is expected to increase the 
+reaction rate, the second one will contribute to decreasing the concentration of poly(sulfide) species on the surface. The 
+present results also suggest that the rate determining step for the overall oxidation process of Li2S to S8 is changed by 
+the nature of the solvent.
+Keywords  Li2S batteries · DFT · Superficial catalysis · Solvent effects
+Accepted: 24 May 2022 / Published online: 10 June 2022
+© The Author(s), under exclusive licence to Springer Science+Business Media, LLC, part of Springer Nature 2022
+Surface Reactivity of Lithium (Poly)sulfides in a Polarizable 
+Environment from First Principles
+Martin E. Zoloff Michoff1 · Flavia E. Lobo Maza2 · Guillermina L. Luque1 · Ezequiel P. M. Leiva1
+
+<<PAGE 2>>
+Topics in Catalysis (2022) 65:966–978
+1 3
+967
+Liang et al. [14] prepared multilayer Ti3C2/Li2S cathodes 
+by ball milling, finding a decrease of 0.6 V in the overpo­
+tential for Li2S oxidation, as compared with a composite 
+graphene/Li2S cathode.
+Shin et al. [15] considered a Li2S@graphene cath­
+ode coated with ZnS and found that the overpotential for 
+the oxidation of Li2S to sulfur decreased, relative to the 
+uncoated cathode. In this work, DFT calculations were used 
+to analyze the interaction of ZnS with DOL and DME, in 
+comparison with graphene as a substrate.
+From the viewpoint of the influence of the solvent, 
+a recent DFT work [16] has shown its relevance in bond 
+cleavage reactions of polysulfide intermediates in bulk solu­
+tion. These authors investigated the relationship between 
+the number of donors and the dielectric constants of the 
+solvent system and the relative stability of different polysul­
+fide intermediates. In this respect, in a recent work [17], we 
+have analyzed the cleavage of Li2S on graphene, MnS and 
+VS2 surfaces in different solvents represented as a dielectric 
+continuum.
+This previous analysis shows the key role of the surface 
+catalysts and the solvent in the oxidation Li2S, as well as the 
+relevance of DFT calculations for their understanding.
+Sulfur- or Li2S- based cathodes typically contain car­
+bon materials to enhance electrical conductivity. Graphene/
+Single-Walled Carbon Nanotube Hybrids exhibit excellent 
+catalytic performance in Li-S batteries [18], and have been 
+used as a reference when comparing with other materi­
+als [11]. Graphene and functionalized graphene have also 
+shown to be very effective for the immobilization of poly­
+sulfides by providing favorable interaction sites for chemi­
+cal adsorption and, thus, contributing to avoid the above 
+mentioned “shuttle” effect [19–22]. For that reason, in this 
+exploratory study, we have considered modeling the carbo­
+naceous material in the cathode by graphene / graphite, to 
+serve as the reference point for future studies of other cata­
+lytic materials.
+While the oxidation of Li2S is the first step in the charging 
+process of the Li-S battery, it is followed by the formation 
+of polysulfide chains, namely S4
+2- and S6
+2-, as demonstrated 
+by in-operando Xray absorption spectroscopy [23]. These 
+species must be further oxidized to finally yield S8, and their 
+detection in solution suggests that their oxidation on the sur­
+face must be relatively slow. Thus, for the understanding of 
+the whole charging process, it is also necessary not only to 
+take into consideration the first step:
+Li2S → LiS + Li+ + e-.
+but also the following ones:
+Li2Sx → LiSx + Li+ + e-.
+with x = 2, 4, 6.
+In a similar fashion to Li2S, surface reactivity of Li2Sx 
+is expected to present an activation barrier that depends on 
+metal anode presents its own problems: dendrite formation, 
+solvent consumption due to the renewed formation of the 
+solid-electrolyte interface, and appearance of dead lithium, 
+which are also the subject of intensive research. For a more 
+detailed analysis on the pros and cons of the Li-S technol­
+ogy, readers are referred to several recent review articles in 
+the literature [2–5].
+An alternative to the preparation of sulfur cathodes is 
+the Li2S cathode paradigm. This compound is embedded 
+in the cathode supporting material and can be efficiently 
+coupled to Li-free anodes, eliminating the use of Li metal 
+as the anode. Several reviews [6–8] have been published 
+also in this topic, including the recent report by Ye et al. 
+[9]. Although the Li2S cathode presents several positive 
+aspects, the main problem of this configuration is the activa­
+tion of Li2S for its oxidation to sulfur. This reaction presents 
+extremely sluggish kinetics, with overpotentials of the order 
+of 3 V. Taking this into consideration, several strategies have 
+been implemented to address this problem, as discussed in 
+[9]: Doping, amorphization, nanostructuring, use of redox 
+mediators, electrolytic additives, and electrocatalysts. The 
+latter approach aims at lowering the activation energy bar­
+rier of the intermediate involved in the rate-determining 
+step, as we discuss in the following.
+Yuan et al. [10] achieved an efficient activation of Li2S 
+by different transition metal phosphine nanoparticles such as 
+Ni2P, Co2P and Fe2P. Using density functional theory (DFT) 
+calculations, these authors showed that the aforementioned 
+phosphines exhibit much higher adsorption energy towards 
+Li2S than pure or N-doped carbon. They also found that the 
+dissociation energies of Li2S on these phosphine surfaces 
+are considerably lower than those on pristine or N-doped 
+carbon, thus supporting the enhanced catalytic activity 
+found for phosphines.
+Zhou et al. [11] performed experiments on the catalytic 
+oxidation of Li2S on different metal sulfides and, with the 
+support of DFT calculations, showed that the energy barrier 
+for the decomposition of Li2S is associated with the bond 
+between the isolated Li ions and the sulfur in the sulfides. A 
+more recent work by He et al. [12] has confirmed the impor­
+tant electrocatalytic behavior of different transition polysul­
+fides (CoS, NiS, MnS) decorating carbon sponges, showing 
+dramatic improvements in reducing the overpotential for 
+Li2S activation.
+Wu et al. [13] used nanostructured Li2S@LiTiO2 com­
+posite electrodes, finding strong bonding of titanate with 
+Li2S and inducing a rapid conversion of long-chain to 
+short-chain polysulfides. DFT calculations showed that 
+long polysulfides strongly adsorb and dissociate on LiTiO2 
+surfaces. It was also found that solvent molecules should 
+be easily displaced from the surface of the catalyst by the 
+polysulfides.
+
+<<PAGE 3>>
+Topics in Catalysis (2022) 65:966–978
+1 3
+968
+Convergence studies were done for setting up the rele­
+vant parameters for each system. The kinetic energy cutoff 
+used for wave functions was 50 Ry, while for charge den­
+sity and potential it was 400 Ry. Brillouin zone integration 
+was approximated using the Monkhorst-Pack [26] scheme 
+with 4 × 4 × 1 k-point sampling. Adsorption structures of 
+the Li2Sx (x = 1, 2, 4, 6) species on the graphene sheet were 
+built by placing either one or both Li atoms on a hollow 
+site, thus giving one structure in which the Li一Li axis is 
+perpendicular to the surface, and another in which the Li一
+Li axis is parallel to the surface. Full geometry optimization 
+was performed with convergence thresholds of 0.001 eV for 
+total energies and 0.03 eV/Å for atomic forces. Adsorption 
+energies were computed as:
+Eads = E(Li2Sx@C) - E(Li2Sx) - E(C) (Eq. 1).
+where E(Li2Sx@C) are the energies of the optimized 
+adsorbates, E(Li2Sx) are the energies of the corresponding 
+isolated polysulfides, and E(C) corresponds to the energy of 
+pristine graphene.
+Bader atomic charges were obtained applying the Bader 
+analysis program developed by Henkelman and co-workers 
+[27].
+Minimum energy pathways for the decomposition of 
+Li2Sx species adsorbed on graphene were determined 
+according to the climbing image nudged elastic band (CI-
+NEB) method [28]. A string of seven images were employed 
+for each reaction step, with a spring constant of 0.43 N/m.
+The Environ library available for Quantum Espresso was 
+implemented for solvent corrections [29, 30]. Two typical 
+the dielectric nature of the solvent. In the present work, we 
+perform a comparative study of the decomposition of Li2Sx 
+(x = 1, 2, 4, 6) adsorbed on graphene / graphite surfaces in 
+contact with different dielectric media.
+2  Computational Methods
+Calculations were performed with the Quantum Espresso 
+computer code. Generalized-gradient approximation (GGA) 
+of the Perdew-Burke-Ernzerhof (PBE) [24] functional was 
+used to describe exchange and correlation effects. Core elec­
+trons were modeled by pseudopotentials in the projected-
+augmented wave method (PAW). Van der Waals interactions 
+were considered through semiempirical Grimme’s DFT-D2 
+correction [25]. Spin polarization was taken into account in 
+all calculations.
+The carbon surface was modeled by a single 6 × 4 gra­
+phene sheet containing a total of 60 carbon atoms. The unit 
+cell employed was tetragonal with cell vectors of 12.31 Å 
+× 12.79 Å in the plane parallel to the carbon layer. A 20 Å 
+vacuum space between slabs in the direction perpendicular 
+to the surface was employed in order to avoid artificial inter­
+action effects with the periodic images.
+Some selected configurations were recalculated using 4 
+graphene layers in order to model graphite, as described in 
+the Supplementary Information (SI) provided. The results 
+were quantitatively similar to those obtained with a single 
+graphene layer, thus validating our model.
+Fig. 1  Top and side views of the different adsorption geometries considered for the Li2Sx (x = 1, 2, 4, 6) species on graphene
+ 
+
+<<PAGE 4>>
+Topics in Catalysis (2022) 65:966–978
+1 3
+969
+3  Results and discussion
+3.1  Adsorption of (Poly)sulfides on Graphene
+We have taken as the starting point for the decomposition 
+reactions the Li2Sx species (x = 1, 2, 4, 6) adsorbed on the 
+carbon surface. Therefore, we have firstly considered the 
+adsorption geometry of the Li2Sx species on graphene. For 
+the larger chain polysulfides with x = 4, 6, and 8, it has been 
+shown that in the most stable adsorption structure on pris­
+tine graphene the molecule binds to the surface via a single 
+Li atom with the hollow site on the surface of graphene [34]. 
+We have then considered two distinct adsorption geometries: 
+One in which the Li一Li axis lies parallel to the surface with 
+both Li atoms positioned on the center of a carbon hexagon; 
+and another in which the Li一Li axis is perpendicular to the 
+solvents used in the field of Li-S batteries were considered 
+in this study: Dimethylformamide (DMF, ε/ε0 = 36.7) and 
+dimethylether (DME, ε/ε0 = 7.2). The dielectric function 
+was defined by the soft-sphere continuum solvation (SSCS) 
+model [31]. This interface model has been proved to be ade­
+quate for lithium, due to its low electronic density. Parabolic 
+point counter charge correction was included for surface 
+calculations to avoid artificial interactions between periodic 
+images [32]. Finally, atomic radii were defined according to 
+Bondi’s work [33]. Calculations taking into account the sol­
+vent environment as a continuous dielectric were performed 
+for the same structures optimized in vacuum without further 
+reoptimization. This was done point by point for the entire 
+reaction pathways.
+Table 1  Adsorption energies, Eads, minimum distance between a Li atom to the carbon surface, dLi-surf, and absolute value of charge transfer 
+between molecule and surface as obtained from the Bader atomic charge analysis, |ΔQ|. In all cases, there is a net gain of electronic charge of the 
+graphene sheet upon adsorption
+(Poly)
+sulfide
+Li一Li axis “parallel”
+Li一Li axis “perpendicular”
+Eads, eV
+dLi-surf, Å
+|ΔQ|, e
+Eads, eV
+dmol-surf, Å
+|ΔQ|, e
+Li2S
+-1.33
+1.993
+0.427
+-0.93
+1.897
+0.254
+Li2S2
+-1.26
+2.004
+0.421
+-0.92
+1.907
+0.230
+Li2S4
+-0.74
+2.211
+0.076
+-0.88
+1.948
+0.041
+Li2S6
+-0.43
+3.275
+0.022
+-0.97
+1.995
+0.022
+Fig. 2  Calculated adsorption energies in vacuum for “parallel” (filled red squares) and “perpendicular” (filled blue circles) modes for the Li2Sx 
+species on graphene. The insets illustrate a general scheme for the different adsorption modes, where the dotted line highlights the Li一Li axis
+ 
+
+<<PAGE 5>>
+Topics in Catalysis (2022) 65:966–978
+1 3
+970
+Li2S2 to “perpendicular”, with only one Li atom pointing 
+towards the surface, for the longer chain polysulfides. This 
+interesting behavior can be readily appreciated in Fig.  2. 
+The Eads values were recalculated with 4 graphene layers 
+(see Table S1 in the SI provided), yielding results quantita­
+tively similar to those reported in Table 1.
+Solvent effects introduced by means of dielectric were 
+considered. Two typical solvents used in lithium batter­
+ies were taken into account: dimethylether (DME) with 
+ε/ε0 = 7.2 and dimethylformamide (DMF) with ε/ε0 = 36.7. 
+As can be readily seen when inspecting Eads values summa­
+rized in Table 2, the adsorption energies are notably reduced 
+when the dielectric constant of the environment is increased.
+surface, with only one Li atom interacting with the center 
+of a carbon hexagon (see Fig. 1). Adsorption energies, Eads, 
+computed according to Eq. 1, are summarized in Table 1 for 
+the calculations performed in vacuum, i.e. with ε/ε0 = 1.
+It is noteworthy that the adsorption energies for the “per­
+pendicular” geometry lie all in the range of ca. 0.9–1.0 eV, 
+and that these values are quantitatively similar to others 
+reported in the literature [29]. On the other hand, Eads val­
+ues for the “parallel” geometry change dramatically from 
+− 1.43 eV for Li2S to -0.43 eV for Li2S6. Hence, there is 
+a “switch” for the preferred adsorption mode for the poly­
+sulfides species Li2Sx from “parallel”, with the molecule 
+interacting with the surface with both Li atoms, for Li2S and 
+Table 2  Adsorption energies, Eads, and absolute value of charge transfer between molecule and surface as obtained from the Bader atomic charge 
+analysis, |ΔQ|, for the most stable adsorbates for each Li2Sx (x = 1, 2, 4, 6) species in DME and DMF as implicit solvents. For most cases, there is 
+a net gain of electronic charge of the graphene sheet upon adsorption. For those marked with an asterisk (*) the net gain if for the molecule
+(Poly)
+sulfide
+DME (ε/ε0 = 7.2)
+DMF (ε/ε0 = 36.7)
+Eads, eV
+|ΔQ|, e
+Eads, eV
+|ΔQ|, e
+Li2S (“Parallel”)
+-0.65
+0.005
+-0.66
+0.053 (*)
+Li2S2 (“Parallel”)
+-0.69
+0.131
+-0.63
+0.002 (*)
+Li2S4 (“Perpendicular”)
+-0.66
+0.009
+-0.57
+0.007
+Li2S6 (“Perpendicular”)
+-0.72
+0.010
+-0.61
+0.012
+Fig. 3  Differential charge analysis for Li2S adsorbed on graphene in the “parallel” mode. The panel on the left shows an isosurface for the dif­
+ferential electronic density (± 0.0025 e/Bohr3, red color for a positive value, i.e. charge accumulation, and blue for a negative value, i.e. charge 
+depletion). On the right panel, the average in the direction perpendicular to the graphene layer is plotted. The dotted lines indicate the z-coordinate 
+of the graphene layer (ca. 6.5 Å) and that of the Li atoms (ca. 8.4 Å)
+ 
+
+<<PAGE 6>>
+Topics in Catalysis (2022) 65:966–978
+1 3
+971
+of the computed Eads with respect to ε/ε0 (see Fig. S3 in the 
+SI provided) shows a good agreement with Born equation, 
+thus explaining the observed results. The larger effect of the 
+dielectric on the “parallel” adsorbates, which is the most 
+stable geometry for the smaller polysulfides Li2S and Li2S2, 
+with respect to the “perpendicular” adsorbates of Li2S4 
+and Li2S6, can be ascribed to the value of charge transfer 
+between molecule and surface as obtained from the Bader 
+atomic charge analysis, |ΔQ| in Table  1, which is much 
+larger for Li2S and Li2S2 (ca. 0.4 e) than for Li2S4 (0.076 e) 
+and Li2S6 (0.022).
+As it can be observed, the reduction of Eads from vacuum 
+to DME is by ca. 2-fold for Li2S and Li2S2, and by ca. 1.3-
+fold for the larger chain polysulfides. A further increment of 
+the dielectric constant (ca. 5-fold from DME to DMF) pro­
+duces a negligible (i.e. within computation error) decrease 
+for Li2S, or only a very mild effect for Li2S2 (10%), Li2S4 
+(15%) and Li2S6 (18%). Although in this work we have 
+selected only two values of the dielectric constant, as repre­
+sentative examples, in a previous work an extensive sweep 
+of ε/ε0 values in a relatively wide range for the adsorption of 
+Li2S on graphene has been performed [17]. The dependence 
+Fig. 4  Projected density of 
+states for the “parallel” adsor­
+bate of Li2S on graphene (top 
+panel), for the pristine surface 
+(middle panel), and for the iso­
+lated molecule (lower panel)
+ 
+
+<<PAGE 7>>
+Topics in Catalysis (2022) 65:966–978
+1 3
+972
+density analysis in vacuum for the “parallel” adsorbate of 
+Li2S on graphene is illustrated in Fig. 3. As it can be seen, this 
+A detailed analysis of the electronic density provides a 
+useful insight into these observations. Differential charge 
+Fig. 5  Reaction pathway for the decomposition of Li2S2 on graphene in vacuum (ε0 = 1, black filled circles), DME (ε0 = 7.2, red filled up triangles), 
+and DMF (ε0 = 36.7, blue filled down triangles). The solid lines are a linear interpolation between the points and serve only a guide for the eye
+ 
+
+<<PAGE 8>>
+Topics in Catalysis (2022) 65:966–978
+1 3
+973
+reported in Table 2. A comparative analysis of the differen­
+tial charge analysis for Li2S adsorbed on graphene (Fig. S4) 
+shows a marked decrease in the charge transfer from the 
+molecule to the carbon surface upon adsorption in a solvent 
+environment with respect to vacuum. This is also evident by 
+comparing Bader charge analysis in vacuum (Table 1) with 
+those in DME and DMF (Table 2). pDOS analysis (Fig. S5) 
+provides an explanation regarding the underlying reasons 
+behind this hampered charge transfer. As stated above, the 
+adsorption of lithium polysulfides on carbon surfaces can 
+be characterized by an interaction between frontier orbit­
+als. Focusing the analysis on Li2S adsorbed on graphene, 
+it can be observed that as the dielectric constant of the 
+environment increases, the orbitals that belong to Li2S are 
+shifted towards lower energies, while those corresponding 
+to graphene are shifted towards higher energies, thus resem­
+bling the pristine surface. Therefore, the energy difference 
+between molecule / surface frontier orbitals increases, thus 
+explaining the decrease in the corresponding Eads values.
+analysis shows that there is a significant charge accumula­
+tion between the molecule and the surface upon adsorption, 
+and that charge depletion is mostly located in the region of 
+the molecule. This picture is further supported by projected 
+density of states (pDOS) as depicted in Fig. 4. Surface and 
+molecule states are mostly preserved upon adsorption (see 
+top panel in Fig. 4), showing that the interaction is mostly 
+of electrostatic nature. The energy difference between fron­
+tier orbitals of the isolated molecule and the pristine surface 
+gives a hint about the direction of electron charge transfer. 
+The difference between HOMO (graphene) and LUMO 
+(Li2S) is 2.06 eV, while between HOMO (Li2S) and LUMO 
+(graphene) is 1.55 eV, thus supporting the fact that it is the 
+surface which gains electron charge upon adsorption. Fur­
+thermore, the states corresponding to the surface are notably 
+shifted towards lower energies in the adsorbate, and in fact 
+the state that corresponds to the LUMO in pristine graphene 
+is partially occupied in the adsorbate.
+When solvent effects are considered, all of the aforemen­
+tioned analysis: differential charge analysis, Bader charges, 
+and pDOS point to a reduced interaction between the mole­
+cule and the surface (see Figs. S4 and S5 in the SI provided), 
+thus supporting a corresponding reduction in Eads values, as 
+Fig. 6  Reaction pathway for the decomposition of Li2S4 on graphene in vacuum (ε0 = 1, black filled circles), DME (ε0 = 7.2, red filled up triangles), 
+and DMF (ε0 = 36.7, blue filled down triangles). The solid lines are a linear interpolation between the points and serve only a guide for the eye
+ 
+
+<<PAGE 9>>
+Topics in Catalysis (2022) 65:966–978
+1 3
+974
+are interacting with graphene. A Li atom is detached in a 
+subsequent step, as shown in Fig. 6 for Li2S4 (see Fig S8 in 
+the SI provided for Li2S6). Decomposition energies, Edec, 
+defined as the energy difference between reactants (i.e. reac­
+tion coordinate, R.C., equals to 0) and products (R.C. = 1), 
+and the barriers for the reactions, E#
+dec, defined as the energy 
+difference between the reactant and the highest energy point 
+along the reaction pathway are summarized in Table 3.
+The effect of solvation is to lower both the thermody­
+namic energy and the barrier for the decomposition reac­
+tions, as it has been already reported for Li2S [17]. Notably, 
+the effect of increasing the dielectric constant of the envi­
+ronment is more pronounced for Li2S, displaying a 3.3-fold 
+decrease in the reaction barrier for DMF with respect to 
+vacuum, whereas for Li2S6 the barrier decreases by 2.8-fold 
+for the same change in dielectric constant.
+To shed more light on these results, the evolution of Bader 
+atomic charges along the reaction pathways was examined 
+3.2  Breakage of Li-S Bond(s) for Supported (Poly)
+sulfides
+Taking the most stable adsorbate as the starting reactant 
+species, the decomposition of the Li2Sx species supported 
+in graphene was explored by means of the climbing image 
+nudged elastic band (CI-NEB) method. The proposed prod­
+uct is the result of detaching one of the Li atoms from the 
+molecule, but still adsorbed on the surface. Two different 
+mechanisms were found: for Li2S and Li2S2, starting from 
+the “parallel” adsorption geometry, Li-S bond breaking in 
+a one step process is observed, as illustrated for Li2S2 in 
+Fig. 5 (see Fig S6 in the SI provided for Li2S). In stark con­
+trast, for the longer sulfur chain species Li2S4 and Li2S6, 
+for which only one Li atom is interacting with the surface 
+in the most stable adsorbate geometry, a 2-step process is 
+observed. In the first step, the Li一Li axis tilts down in such 
+a way that an intermediate species in which both Li atoms 
+Table 3  Energies, Edec, and barriers, E#
+dec, of reaction for the decomposition of Li2Sx (x = 1, 2, 4, 6) species on graphene in vacuum, DME, and 
+DMF. The net Bader charge differences between the decomposition product and the corresponding reactant state (i.e. the adsorbate) for the gra­
+phene layer, are also summarized as Δqc
+(Poly) sulfide
+Vacuum (ε/ε0 = 1)
+DME (ε/ε0 = 7.2)
+DMF (ε/ε0 = 36.7)
+Edec, eV
+E#
+dec, eV
+ΔqC, e
+Edec, eV
+E#
+dec, eV
+ΔqC, e
+Edec, eV
+E#
+dec, eV
+ΔqC, 
+e
+Li2S
+1.74
+2.04
+-0.48
+1.01
+1.18
+-0.15
+0.49
+0.62
++ 0.02
+Li2S2
+1.39
+1.66
+-0.51
+0.89
+1.07
+-0.39
+0.64
+0.77
+-0.16
+Li2S4
+1.53
+1.61
+-0.75
+1.02
+1.12
+-0.50
+0.77
+0.81
+-0.33
+Li2S6
+1.81
+1.81
+-0.45
+1.04
+1.04
+-0.15
+0.63
+0.63
+-0.02
+Fig. 7  Evolution of Bader atomic charges along the reaction pathway for the decomposition of Li2S2 on graphene in vacuum (left panel, back/gray 
+symbols), DME (middle panel, red/pink symbols), and DMF (right panel, blue/cyan symbols). The charges are broken down into graphene surface 
+(filled circles), molecule (filled squares), which in turn is separated into its corresponding contributions from the leaving Li atom (filled down 
+triangles) and the remaining LiS2 fragment (filled up triangles)
+ 
+
+<<PAGE 10>>
+Topics in Catalysis (2022) 65:966–978
+1 3
+975
+surface), in vacuum is ca. 3 eV [17]. This barrier is consid­
+erably lowered by the graphene surface, yielding a value 
+of 2.04 eV (see Table 3). However, when a solvent envi­
+ronment is considered, the catalytic effect of the supporting 
+surface is notoriously diminished. For instance in DME, the 
+barrier of Li2S decomposition is ca. 1 eV for both, the iso­
+lated and surface supported reactions (compare Edec
+# value 
+for the decomposition of Li2S on graphene in DME reported 
+in Table 3 in this work, and that reported in Ref [17] for the 
+isolated reaction).
+Although we have not attempted here to elucidate a 
+detailed mechanism for the overall oxidation reaction of 
+Li2S to yield S8 as the final product, experimental evidence 
+points to the fact that all intermediate Li2Sx species are 
+involved. It is reasonable to assume that the rate determin­
+ing step for all consecutive oxidation reactions is the initial 
+Li-S bond breakage. Therefore, we could then infer, with 
+the data presented in this work, that the rate determining 
+step for the overall oxidation process is changed by the 
+effect of the solvent. As the dielectric constant increases, the 
+highest E#
+dec value is obtained for the Li-S bond breakage 
+of Li2S in vacuum and in DME, whereas the highest E#
+dec 
+value in DMF is for the decomposition of Li2S4.
+The fact that the effect of the solvent on the charge transfer 
+from the LiSx to the surface is quite different for Li2S/Li2S2 
+and Li2S4/Li2S6, poses an interesting question on the effect 
+of the electrode potential (electrochemical potential of elec­
+trons in the working electrode) on the kinetics of the overall 
+in detail. This is shown in Fig. 7 for Li2S2 and in Fig. 8 for 
+Li2S4 as illustrative examples (see Fig. S7 for Li2S and Fig. 
+S9 for Li2S6 in the SI provided). The atomic charges of the 
+molecular species was further broken down into those of the 
+leaving Li atom and the corresponding LiSx fragment.
+It is interesting to note that the charge of the leaving Li 
+atom is ca. +0.9 along the reaction pathway for all adsor­
+bates even in vacuum, a fact that has already been noticed 
+for Li2S [17], but that it can now be generalized for all 
+the larger polysulfides studied here in light of the present 
+results. Upon Li-S bond breakage, the main charge trans­
+fer event that takes place is in the direction LiSx → gra­
+phene, resulting in a net increment of the surface charge 
+between products and reactants for the decomposition reac­
+tions of 0.45–0.51 e for Li2S, Li2S2, and Li2S6, and of 0.75 
+e for Li2S4 in vacuum (see ΔqC values in Table 3). When 
+the dielectric constant of the environment is increased, the 
+charge accumulation of the LiSx fragment is gradually sta­
+bilized. A closer inspection leads to the conclusion that the 
+electron charge increase is mostly located on the S atom, 
+thus gradually resembling the S2- species. This is reminis­
+cent of the observed decrease in the interaction between the 
+Li2Sx species and the carbon surface when the dielectric 
+constant of the environment increases from vacuum to that 
+of any given solvent (cf. Eads values in Tables 1 and 2). This 
+fact has an important consequence on the catalytic activ­
+ity of the carbon surface. The barrier for the decomposition 
+reaction of isolated Li2S (i.e. in the absence of a supporting 
+Fig. 8  Evolution of Bader atomic charges along the reaction pathway for the decomposition of Li2S4 on graphene in vacuum (left panel, back/gray 
+symbols), DME (middle panel, red/pink symbols), and DMF (right panel, blue/cyan symbols). The charges are broken down into graphene surface 
+(filled circles), molecule (filled squares), which in turn is separated into its corresponding contributions from the leaving Li atom (filled down 
+triangles) and the remaining LiS4 fragment (filled up triangles)
+ 
+
+<<PAGE 11>>
+Topics in Catalysis (2022) 65:966–978
+1 3
+976
+decomposition of Li2S2 on graphene is to lower the kinetic 
+barrier for the reaction by ca. 30% in vacuum (ε/ε0 = 1) and 
+in DME (ε/ε0 = 7.2), and by ca. 20% in DMF (ε/ε0 = 36.7). 
+This goes in line with the change of Bader charge for gra­
+phene between the reactant state and the transition state 
+(see Fig. 7), which is ca. -0.4 e in vacuum and DME, but it 
+decreases to ca. -0.15 in DMF. For Li2S4, the effect is more 
+pronounced, yielding a ca. 45% decrease in vacuum and ca. 
+40% in DME and DMF, in agreement with a higher change 
+in Bader charge for the graphene layer that takes place in 
+the decomposition reaction with respect to Li2S2 (compare 
+Figs. 7 and 8).
+4  Conclusions
+We have analyzed the decomposition of Li2S, Li2S2, Li2S4 
+and Li2S6 on graphitic surfaces in different dielectric media. 
+Our aim was to emulate the reaction of these species in 
+different solvents on a typical carbonaceous substrate, as 
+expected to occur in the cathodes of Li-sulfur batteries. 
+Using DFT calculations, we obtained the barriers for these 
+reaction. As a first approximation, it could be assumed that 
+the main effect of an adequate electrode potential would be 
+to shift the Fermi level of the electrode to lower energies 
+and, hence, stabilize any additional electron charge. We 
+could then, within a very simplistic model, assume that the 
+effect of the electrode potential would affect the energetics 
+of the decomposition pathways according to the following 
+equation: E(V) = ENEB + VΔqC, where E(V) is the energy of 
+a given CI-NEB image as a function of the electrochemi­
+cal potential, ENEB is the corresponding energy as obtained 
+from the CI-NEB calculation, V is the value of the electro­
+chemical potential (in Volts), and ΔqC is the net change in 
+the charge of the graphene sheet with respect to the reactant 
+state as given by the Bader analysis for that given structure. 
+The energy profiles for the decomposition pathway of Li2S2 
+and Li2S4 on graphene, taken as a case study, in vacuum, 
+DME, and DMF were recalculated according to the equa­
+tion given above, and the results are illustrated in Figs. 9 
+and 10, respectively.
+Regarding the calculation in vacuum as a lower limit for 
+the environment dielectric constant, then the effect of the 
+electrochemical potential in the range of 0.0–1.0 V for the 
+Fig. 9  Effect of the electrochemical potential for the decomposition reaction of Li2S2 on graphene at the different dielectric constant values studied 
+in this work, from left to right, vacuum (ε/ε0 = 1), DME (ε/ε0 = 7.2), and DMF (ε/ε0 = 36.7). The energy is calculated according to E(V) = ENEB + 
+VΔqC (see text for further explanation) in the range of 0.0–1.0 V for the electrochemical potential
+ 
+
+<<PAGE 12>>
+Topics in Catalysis (2022) 65:966–978
+1 3
+977
+the overall reaction rate. As the environment dielectric con­
+stant increases, the rate determining step changes from the 
+decomposition of Li2S to that of Li2S4.
+Supplementary 
+information  The 
+online 
+version 
+contains 
+supplementary material available at https://doi.org/10.1007/s11244-
+022-01642-1.
+Acknowledgements  E.P.M. Leiva acknowledges grants PIP CONI­
+CET 11220200101189CO, PUE/2017 CONICET, FONCYT PICT-
+2020 SERIE A-03689 and SECyT of the Universidad Nacional de Cór­
+doba. Support by Y-TEC is also gratefully acknowledged. This work 
+used computational resources from CCAD – Universidad Nacional de 
+Córdoba (https://ccad.unc.edu.ar/), and from Laboratorio de Cómputo 
+Avanzado – Facultad de Ingeniería, Universidad Nacional de Entre 
+Ríos (http://ingenieria.uner.edu.ar), which are part of SNCAD – Min­
+CyT, República Argentina.
+Declarations  There are no competing interests.
+References
+1.	
+Tian Y, Zeng G, Rutt A et al (2021) Promises and Challenges 
+of Next-Generation “beyond Li-ion” Batteries for Electric 
+reactions and performed a detailed analysis of the atomic 
+charges along the reaction pathway. As a Li atom is sepa­
+rated from the molecule in the absence of a solvent, a dif­
+ferential positive charge appears on the molecule, with a 
+corresponding negative one appearing on the surface. This 
+already denotes that the solvent may have an influence on 
+the reaction mechanism through media polarization. As the 
+solvent is introduced, a decrease in the dissociation bar­
+rier is observed, but the charge transfer between the mol­
+ecule and the surface is reduced, denoting a weakening of 
+the interaction between the molecule and the surface. This 
+effect is also confirmed by the analysis of the partial den­
+sity of states, which supports a reduced interaction between 
+molecular and surface states for increasing dielectric con­
+stant. The role of the solvent is then twofold: on the one 
+hand, an increasing dielectric constant lowers the energy 
+barrier to decomposition. On the other hand, it weakens the 
+interaction between the adsorbate and the surface. These 
+two effects drive the reaction in opposite directions. While 
+the first is expected to increase the specific reaction rate 
+constant, the second will contribute to decrease the concen­
+tration of poly(sulfide) species on the surface, thus reducing 
+Fig. 10  Effect of the electrochemical potential for the decomposition reaction of Li2S4 on graphene at the different dielectric constant values stud­
+ied in this work, from left to right, vacuum (ε/ε0 = 1), DME (ε/ε0 = 7.2), and DMF (ε/ε0 = 36.7). The energy is calculated according to E(V) = ENEB 
++ VΔqC (see text for further explanation) in the range of 0.0–1.0 V for the electrochemical potential
+ 
+
+<<PAGE 13>>
+Topics in Catalysis (2022) 65:966–978
+1 3
+978
+18.	 Zhao MQ, Liu XF, Zhang Q et al (2012) Graphene/single-walled 
+carbon nanotube hybrids: One-step catalytic growth and appli­
+cations for high-rate Li-S batteries. ACS Nano 6. https://doi.
+org/10.1021/nn304037d
+19.	 Li C, Xi Z, Guo D et al (2018) Chemical Immobilization Effect 
+on Lithium Polysulfides for Lithium–Sulfur Batteries. Small 14 
+https://doi.org/10.1002/smll.201701986
+20.	 Zhang Y, Gao Z, Song N et al (2018) Graphene and its deriva­
+tives in lithium-sulfur batteries. Mater Today Energy 9. https://
+doi.org/10.1016/j.mtener.2018.06.001
+21.	 Liu CY, Li EY (2018) Adsorption Mechanisms of Lithium 
+Polysulfides on Graphene-Based Interlayers in Lithium Sul­
+fur Batteries. ACS Appl Energy Mater. https://doi.org/10.1021/
+acsaem.7b00096. 1:
+22.	 Vélez P, Para ML, Luque GL et al (2019) Modeling of substitu­
+tionally modified graphene structures to prevent the shuttle mech­
+anism in lithium-sulfur batteries. Electrochim Acta 309. https://
+doi.org/10.1016/j.electacta.2019.04.062
+23.	 Cuisinier M, Cabelguen PE, Evers S et al (2013) Sulfur speciation 
+in Li-S batteries determined by operando X-ray absorption spec­
+troscopy. J Phys Chem Lett 4. https://doi.org/10.1021/jz401763d
+24.	 Perdew JP, Burke K, Ernzerhof M (1996) Generalized gradi­
+ent approximation made simple. Phys Rev Lett 77. https://doi.
+org/10.1103/PhysRevLett.77.3865
+25.	 Grimme S (2006) Semiempirical GGA-type density functional 
+constructed with a long-range dispersion correction. J Comput 
+Chem 27. https://doi.org/10.1002/jcc.20495
+26.	 Monkhorst H, Pack J (1976) Special points for Brillonin-
+zone integrations. Phys Rev B 13. https://doi.org/10.1103/
+PhysRevB.13.5188
+27.	 Henkelman G, Arnaldsson A, Jónsson H (2006) A fast and robust 
+algorithm for Bader decomposition of charge density. Comput 
+Mater Sci 36. https://doi.org/10.1016/j.commatsci.2005.04.010
+28.	 Henkelman G, Uberuaga BP, Jónsson H (2000) Climbing 
+image nudged elastic band method for finding saddle points 
+and minimum energy paths. J Chem Phys 113. https://doi.
+org/10.1063/1.1329672
+29.	 Giannozzi P, Andreussi O, Brumme T et al (2017) Advanced 
+capabilities for materials modelling with Quantum ESPRESSO. 
+J Phys Condens Matter 29. https://doi.org/10.1088/1361-648X/
+aa8f79
+30.	 Andreussi O, Dabo I, Marzari N (2012) Revised self-consistent 
+continuum solvation in electronic-structure calculations. J Chem 
+Phys 136. https://doi.org/10.1063/1.3676407
+31.	 Andreussi O, Hörmann NG, Nattino F et al (2019) Solvent-Aware 
+Interfaces in Continuum Solvation. J Chem Theory Comput 15. 
+https://doi.org/10.1021/acs.jctc.8b01174
+32.	 Andreussi O, Marzari N (2014) Electrostatics of solvated systems 
+in periodic boundary conditions. Phys Rev B - Condens Matter 
+Mater Phys 90. https://doi.org/10.1103/PhysRevB.90.245101
+33.	 Bondi A (1964) Van der waals volumes and radii. J Phys Chem 
+68. https://doi.org/10.1021/j100785a001
+34.	 Jand SP, Chen Y, Kaghazchi P (2016) Comparative theoreti­
+cal study of adsorption of lithium polysulfides (Li2Sx) on pris­
+tine and defective graphene. J Power Sources 308. https://doi.
+org/10.1016/j.jpowsour.2016.01.062
+Publisher’s note  Springer Nature remains neutral with regard to juris­
+dictional claims in published maps and institutional affiliations.
+Vehicles and Grid Decarbonization. Chem Rev 121. https://doi.
+org/10.1021/acs.chemrev.0c00767
+2.	
+Zhang ZW, Peng HJ, Zhao M, Huang JQ (2018) Heterogeneous/
+Homogeneous Mediators for High-Energy-Density Lithium–
+Sulfur Batteries: Progress and Prospects. Adv Funct Mater 28. 
+https://doi.org/10.1002/adfm.201707536
+3.	
+Fan X, Sun W, Meng F et al (2018) Advanced chemical strategies 
+for lithium-sulfur batteries: A review. Green Energy Environ 3. 
+https://doi.org/10.1016/j.gee.2017.08.002
+4.	
+Zhang XQ, Liu C, Gao Y et al (2020) Research Progress of Sul­
+fur/Carbon Composite Cathode Materials and the Corresponding 
+Safe Electrolytes for Advanced Li-S Batteries. NANO 15. https://
+doi.org/10.1142/S1793292020300029
+5.	
+Li Y, Guo S (2021) Material design and structure optimization 
+for rechargeable lithium-sulfur batteries. Matter 4. https://doi.
+org/10.1016/j.matt.2021.01.012
+6.	
+Son Y, Lee JS, Son Y et al (2015) Recent Advances in Lithium Sul­
+fide Cathode Materials and Their Use in Lithium Sulfur Batteries. 
+Adv Energy Mater 5. https://doi.org/10.1002/aenm.201500110
+7.	
+Li S, Leng D, Li W et al (2020) Recent progress in develop­
+ing Li2S cathodes for Li-S batteries. Energy Storage Mater 27. 
+https://doi.org/10.1016/j.ensm.2020.02.010
+8.	
+Su D, Zhou D, Wang C, Wang G (2018) Toward High Perfor­
+mance Lithium–Sulfur Batteries Based on Li2S Cathodes and 
+Beyond: Status, Challenges, and Perspectives. Adv Funct Mater 
+28. https://doi.org/10.1002/adfm.201800154
+9.	
+Ye H, Li M, Liu T et al (2020) Activating Li2S as the Lithium-
+Containing Cathode in Lithium-Sulfur Batteries. ACS Energy 
+Lett 5. https://doi.org/10.1021/acsenergylett.0c00936
+10.	 Yuan H, Chen X, Zhou G et al (2017) Efficient Activation of 
+Li2S by Transition Metal Phosphides Nanoparticles for Highly 
+Stable Lithium-Sulfur Batteries. ACS Energy Lett 2. https://doi.
+org/10.1021/acsenergylett.7b00465
+11.	 Zhou G, Tian H, Jin Y et al (2017) Catalytic oxidation of Li2S on 
+the surface of metal sulfides for Li-S batteries. Proc Natl Acad Sci 
+USA 114. https://doi.org/10.1073/pnas.1615837114
+12.	 He J, Chen Y, Manthiram A (2019) Metal Sulfide-Decorated 
+Carbon Sponge as a Highly Efficient Electrocatalyst and Absor­
+bant for Polysulfide in High-Loading Li2S Batteries. Adv Energy 
+Mater 9. https://doi.org/10.1002/aenm.201900584
+13.	 Wu F, Pollard TP, Zhao E et al (2018) Layered LiTiO2 for the pro­
+tection of Li2S cathodes against dissolution: Mechanisms of the 
+remarkable performance boost. Energy Environ Sci 11. https://
+doi.org/10.1039/c8ee00419f
+14.	 Liang X, Yun J, Xu K et al (2019) A multi-layered Ti3C2/Li2S com­
+posite as cathode material for advanced lithium-sulfur batteries. J 
+Energy Chem 39. https://doi.org/10.1016/j.jechem.2019.02.002
+15.	 Shin W, Lu J, Ji X (2019) ZnS coating of cathode facilitates 
+lean-electrolyte Li-S batteries. Carbon Energy 1. https://doi.
+org/10.1002/cey2.10
+16.	 Du G-Y, Liu C-Y, Li E-Y (2020) A DFT investigation on the ori­
+gins of solvent-dependent polysulfide reduction mechanism in 
+rechargeable Li-S batteries. Catalysts 10 https://doi.org/10.3390/
+catal10080911
+17.	 Velasco JJ, Vélez P, Zoloff Michoff ME et al (2021) Role of the 
+solvent in the activation of Li2S as cathode material: A DFT study. 
+J Phys Condens Matter 33. https://doi.org/10.1088/1361-648X/
+ac08b9

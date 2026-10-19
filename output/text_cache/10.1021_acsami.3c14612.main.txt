@@ -1,0 +1,1222 @@
+
+<<PAGE 1>>
+Illuminating Polysulfide Distribution in Lithium Sulfur Batteries;
+Tracking Polysulfide Shuttle Using Operando Optical Fluorescence
+Microscopy
+Kofi Coke, Michael J. Johnson, James B. Robinson, Alexander J. E. Rettie, Thomas S. Miller,*
+and Paul R. Shearing*
+Cite This: ACS Appl. Mater. Interfaces 2024, 16, 20329−20340
+Read Online
+ACCESS
+Metrics & More
+Article Recommendations
+*
+sı
+Supporting Information
+ABSTRACT: High-energy-density lithium sulfur (Li−S) batteries suffer heavily from the
+polysulfide shuttle effect, a result of the dissolution and transport of intermediate polysulfides
+from the cathode, into the electrolyte, and onto the anode, leading to rapid cell degradation.
+If this primary mechanism of cell failure is to be overcome, the distribution, dynamics, and
+degree of polysulfide transport must first be understood in depth. In this work, operando
+optical fluorescence microscope imaging of optically accessible Li−S cells is shown to enable
+real-time qualitative visualization of the spatial distribution of lithium polysulfides, both
+within the electrolyte and porous cathode. Quantitative determinations of spatial
+concentration are also possible at a low enough concentration. The distribution throughout
+cycling is monitored, including direct observation of polysulfide shuttling to the anode and
+consequent dendrite formation. This was enabled through the optimization of a selective
+fluorescent dye, verified to fluoresce proportionally with concentration of polysulfides within
+Li−S cells. This ability to directly and conveniently track the spatial distribution of soluble
+polysulfide intermediates in Li−S battery electrolytes, while the cell operates, has the potential to have a widespread impact across
+the field, for example, by enabling the influence of a variety of polysulfide mitigation strategies to be assessed and optimized,
+including in this work the LiNO3 additive.
+KEYWORDS: Li−S batteries, lithium polysulfides, dendrites, in situ battery characterization, battery degradation, OFM, quantitative,
+electrolyte
+1. INTRODUCTION
+As the world attempts to diversify its energy provision toward
+sustainable and renewable technologies, there is an increasing
+societal acceptance of alternate means of energy generation
+and storage. Next-generation lithium sulfur (Li−S) batteries
+are set to play a key role in this future energy landscape as they
+have theoretical gravimetric specific capacities an order of
+magnitude above current lithium ion (Li-ion) batteries (1672
+mA h g−1), and theoretical energy densities over 5 times higher
+(2567 Wh kg−1).1 They are also safer and more sustainable,
+using sulfur for the cathode, the 16th most naturally abundant
+element in the Earth’s crust and the 4th most extracted, in lieu
+of toxic cobalt, nickel, and manganese transition metals which
+are often sourced unethically.2−4 However, Li−S batteries are
+hindered by the polysulfide (PS) shuttle effectone of the
+most critical issues to solve in lithium sulfur batteries to enable
+their wider proliferation and commercialization.5 PS shuttling
+occurs when high-order soluble lithium PSs, Li2Sx (6 ≤x ≤8),
+are generated at the cathode, diffuse toward the lithium metal
+anode, and undergo parasitic reactions to form lower-order
+PSs, Li2Sx (2 ≤x ≤4). This leads to severe active material loss,
+degradation of the anode solid electrolyte interphase (SEI), the
+acceleration of dendrite formation, and subsequently rapid cell
+failure.6
+The significant detriment of the PS shuttle effect on Li−S
+performance means that it has been a focus of the majority of
+research output on Li−S batteries (Figure S1). In spite of this,
+comparatively little work has gone into methods of character-
+izing the extent of PS shuttling, and thus assessing the efficacy
+of measures taken specifically to mitigate against it. Currently,
+researchers are largely reliant on improvements to Columbic
+efficiency and cycle life to prove the efficacy of shuttle
+mitigation techniques.7−16 However, these data only provide a
+consequential understanding of shuttling via overall cell
+performance which, considering the complexity of Li−S
+battery chemistry, can be impacted by numerous factors
+beyond PS shuttling. Full cycle life assessment is also
+Received:
+October 4, 2023
+Revised:
+March 1, 2024
+Accepted:
+March 8, 2024
+Published: April 10, 2024
+Research Article
+www.acsami.org
+© 2024 The Authors. Published by
+American Chemical Society
+20329
+https://doi.org/10.1021/acsami.3c14612
+ACS Appl. Mater. Interfaces 2024, 16, 20329−20340
+This article is licensed under CC-BY 4.0
+Downloaded from pubs.​acs.​org/​aamick/​article-pdf/​16/​16/​20329/​854036/​am3c14612.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 2>>
+incredibly time-consuming, typically requiring hundreds of
+cycles (corresponding to hundreds of days at the typical rate of
+C/10).
+Several alternative methods to characterize PS shuttling have
+been outlined in the literature. For example, one incredibly
+simple method involves visibly observing the diffusion of deep
+brown PS from one H-Cell to another across a separator or
+interlayer. The extent of diffusion is representative of the
+material’s efficacy in inhibiting shuttle.15,16 This method is fast,
+cheap, and easy but is purely a study of diffusion and thus lacks
+any sort of electrochemical aspect. Nothing can be gleaned
+about the effect the fluctuating PS concentration throughout
+cycling may have, nor can the method be used to assess the
+impact within the whole cell. Additionally, monitoring the
+open-circuit potential of the cell and taking the rate of self-
+discharge as an analogue for the PS shuttle is both quick and
+extremely facile, but provides no spatial and limited electro-
+chemical information, rendering it still difficult to draw a
+definitive conclusion on how or why a shuttle mitigation
+method works to improve performance.17 It also requires
+cycling to pause and hence cannot measure the impacts of
+charge/discharge dynamically (i.e., it is not an operando
+technique). Other methods of directly visualizing PS spatial
+distribution include neutron depth profiling (NDP) of the 6Li
+isotope, providing a high-resolution, nondestructive, spatially
+resolved, and operando measurement of lithium concentration
+(and thus the concentration of intermediate lithium PSs).18
+This is however restricted to one-dimension (1D) and a
+limited depth of ∼21 μm (omitting a large proportion of
+electrolyte), while also requiring complex and expensive
+beamline instrumentation and a high degree of expertise. 1H
+magnetic resonance imaging (MRI) can also yield non-
+destructive operando visualization of PSs throughout cycling,
+wherein the presence of dissolved PS enhances the MRI signal
+and thus indirectly indicates the PS spatial distribution.19
+However, this technique indirectly detects PS through
+enhancement of a certain 1H signal and thus may omit certain
+PS chain lengths, while also being a difficult procedure
+requiring highly specialist equipment. Quantitative assessment
+of PS concentration is possible using optical resonance combs,
+as demonstrated in work from Liu et al.20 Using tilted fiber
+Bragg grating (TFBG) sensors placed in the electrolyte of an
+operando Li−S cell, the refractive index could be correlated
+with the bulk PS concentration within the electrolyte. Further,
+temperature and strain could be measured with the probes,
+which enabled the authors to demonstrate the strong links
+between cycling performance and PS dissolution and
+precipitation phase transitions. The technique is very robust
+in that it allows simultaneous monitoring of several properties,
+alongside quantitative electrolyte PS concentration. However,
+the probe can only provide bulk assessment of the electrolyte
+PS concentration, eliminating any possibility of assessing PS
+concentration gradients or spatial distribution and thus the
+extent of shuttle or kinetics of PS within the electrolyte.
+Additionally, the method is very complex, requiring extensive
+and difficult data analysis, which the authors themselves state
+limits the applicability of the technique. The probe itself is also
+expensive and bulky, further limiting the environments and
+Li−S systems in which this valuable technique can be easily
+employed. A facile method to visualize PSs with high spatial
+and temporal resolution in two-dimensions (2D), allowing
+rapid acquisition and using widely available equipment, would
+be of significant utility to the Li−S research community.
+Optical microscopy, a tool that is widely available and often
+simple to utilize, has previously been used to study the PS-
+induced color change of the Li−S electrolyte, similarly to the
+above-mentioned H-cell diffusion technique, except optical
+microscopy can be used during operando cycling.21 This allows
+nondestructive and fast operando estimations of electrolyte PS
+distribution through correlating changes in image color or
+contrast with PS concentration, and the resulting dendrite
+formation arising from the shuttle can be visualized. However,
+as optical microscopy is limited to the wavelength of visible
+light, it offers relatively low-resolution imaging and tracking
+ability. The method is also limited to only observing very low
+concentrations of PS, as the separator will quickly reach color
+saturation. Fully transparent and colorless electrolytes must
+also be employed as to ensure any color change arises purely
+from PS proliferation. Further, the data produced by this
+method is at best qualitative, due to the complex makeup of
+the Li−S electrolyte making correlations of color change to PS
+distribution alone tenuous.
+Optical fluorescence microscopy (OFM) provides a more
+selective solution for characterization and is used extensively in
+biological systems and materials studies such as tracking cell
+signaling molecules or monitoring catalytic activity.22,23 It
+offers the ease of use of optical microscopy but ensures
+selective imaging of only the fluorescent species within the
+sample; fluorescence intensity can then be directly and
+quantitatively correlated to the concentration of the species.24
+OFM can achieve impressive temporal resolution of hundreds
+of frames per second, high spatial resolution down to hundreds
+of nanometers with ease, and is inherently nondestructive for
+in situ and operando studies.25 OFM also enables illumination
+of large excitation areas, enabling the rapid, facile, and highly
+specific tracking of relevant species across the entire electrolyte
+simultaneously.
+OFM relies on the excitation of the sample through
+bombardment with visible and ultraviolet (UV)-light wave-
+lengths and subsequent detection of weak emitted light of a
+different wavelength, which is separated from incident light
+through spectral emission filters fitted to the microscope.
+OFM has previously been applied to battery materials.
+Padilla et al. attempted to selectively study the movement of
+lithium ions through a microfluidic channel saturated with a Li-
+ion-selective fluorescent dye through OFM.26 Solid LiCl was
+added to the top of the channel, and as it slowly dissolved, the
+movement of the released Li ions through the channel served
+as an analogue for the diffusion of Li ions through the battery
+electrolyte. As the Li ions diffused and their concentration
+increased, the fluorescence signal increased along the channel.
+From this, a model could be established to determine the
+diffusion coefficients of Li ions in different electrolytes.
+However, the setup undergoes no electrochemical control,
+observing only a simple one-way diffusion of lithium ions, and
+as such is unrepresentative of a real battery. Further, no
+attempt is made to quantify the localized Li-ion concentration
+from fluorescence intensity.
+An OFM-based technique will have some advantages and
+disadvantages versus other characterization techniques. For
+example, optical microscopy is an easy and very robust method
+of characterizing phenomena which create significant physical
+changes. For Li−S, the full-color imaging possible with optical
+microscopes enables rich analysis of lithium metal dendrite
+formation - including limited three-dimensional (3D) imaging
+using depth profiling.27,28 Furthermore, significant releases of
+ACS Applied Materials & Interfaces
+www.acsami.org
+Research Article
+https://doi.org/10.1021/acsami.3c14612
+ACS Appl. Mater. Interfaces 2024, 16, 20329−20340
+20330
+Downloaded from pubs.​acs.​org/​aamick/​article-pdf/​16/​16/​20329/​854036/​am3c14612.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 3>>
+PS into the electrolyte will cause discoloration, which can be
+taken as a proxy for PS distribution.21 This is purely qualitative,
+however, and as with the dendrite formation, the limited
+information gleaned makes it difficult to deconvolute and tie
+these observations to specific processes occurring within the
+cell. In situ Raman spectroscopy, Raman mapping, and UV−
+visible spectroscopy (UV−vis) on the other hand provide
+much more information about the chemical and electronic
+structure of materials. They are used in Li−S for quantifying
+the electrolyte composition, giving insight into the concen-
+tration of PS and approximate chain length distribution.29,30
+However, as they generally use point spectra, they lack any
+spatial resolution when employed for operando study, limiting
+the capability of characterizing PS shuttle and near-electrode
+phenomena. They also lack the ease of optical microscopy.
+OFM offers many of the benefits offered by both optical and
+spectroscopic techniques. Using a PS-sensitive fluorescent dye,
+an OFM technique could correlate spatially resolved
+fluorescence intensities to a quantitative assessment of PS
+concentration across the electrolyte, while also visualizing
+dendrites as 2D silhouettes.31 This would offer a much higher
+sensitivity and specificity for electrolyte PS than optical
+microscopy and enable dendrite growth to be linked to
+changes in the electrolyte, although the imaging of the
+dendrites themselves would be much more limited. Further-
+more, it would possess the ability to quantify the electrolyte PS
+concentration offered by in situ Raman, Raman mapping, and
+UV−vis, but in a spatially resolved manner and with the ease
+and speed of optical microscopy.
+Qi et al. employed cadmium sulfide quantum dots as an
+additive to a multiwalled carbon nanotube cathode. The
+quantum dots were intended to adsorb and immobilize PSs,
+while also being naturally fluorescent−with the fluorescence
+response increasing upon binding. Through in situ fluorescence
+spectroscopy and confocal fluorescence imaging, they observed
+an increase in the quantum dot fluorescence response during
+discharge and concluded that this indicated successful
+adsorption of the PSs by the quantum dots and thus
+prevention of the shuttle. This is a very interesting application
+of fluorescence-based characterization of lithium sulfur
+batteries, and is a facile way of proving their successful
+trapping of the PSs and suppression of the polysulfide shuttle
+effect. However, while cadmium sulfide quantum dots are
+effective, they are also a dangerous and unsustainable material
+unlikely to be viable for broader usage in Li−S batteries.
+Further, the technique is only indirectly capable of character-
+izing the PS shuttle, through the increase in binding to the
+specific quantum dot additive. As a result, it has limited
+application in verifying the efficacy of other polysulfide
+mitigation techniques, such as alternative cathode additives
+or morphologies, or changes to the electrolyte. The quantity of
+PS not absorbed by the quantum dots, and thus the true extent
+of shuttle mitigation provided, is also unknown. Additionally,
+the method focuses solely on the cathode, which provides
+limited opportunity for study of PS shuttle and dissolution
+compared to the study of the electrolyte and electrode
+interfaces.
+In this work, we report the application of operando OFM to
+study Li−S battery electrolyte and electrode interfaces,
+enabling facile and potentially quantitative visualization of
+the proliferation and spatial distribution of dissolved PS
+concentration within the electrolyte throughout cycling.
+Through the development of a fluorescent tag that binds to
+PSs, brightness profiles observed throughout cycling are shown
+to reflect the expected fluctuations in PS distribution,
+providing direct visualization of the PS shuttle effect. This
+tool is then used to demonstrate the importance of the anode-
+protective LiNO3 additive, elucidated through the catastrophic
+extent of dendrite formation observed upon its removal, in
+spite of evidence of a consistent extent of shuttle. The ease of
+use of OFM allows facile application to evaluate shuttle
+mitigation techniques, such as new cathodes, electrolyte
+additives, and separators. This technique will help provide
+new research insights and speed up development significantly
+in the area of solid−liquid phase reactions.
+2. MATERIALS AND METHODS
+As none of the components used in a typical Li−S battery are
+inherently fluorescent, a suitable fluorescent dye was required, which
+fluoresces only in the presence of the relevant species. When the
+fluorescent dye binds to the relevant molecule, a nonradiative excited-
+state decay pathway for relaxation is shut off, causing the emission of
+fluorescent light. The binding of the dye molecule can be tailored to
+be specific to a certain molecule, achieving a high degree of selectivity
+useful for complex electrolytes.
+A variety of hydrogen polysulfide fluorescent dyes were found in
+the literature which could be adapted for use on lithium
+polysulfides.31−53 The chosen dye was first synthesized by Zhou et
+al. for use in tracking the metabolic cell signaling molecule H2S2 in
+zebrafish via confocal fluorescence imaging. Its broad linear range,
+ease of synthesis, fast equilibration time, and crucially its high degree
+of selectivity for PSs among other reactive species made it favorable
+for use in Li−S battery study via OFM. The dye was synthesized
+according to the procedure described in the work from Zhou et al.
+and outlined in Figure S2.31,53 A solution of 4-nitro-1,8-napthalic
+anhydride (214 mg, 1 mM, Sigma-Aldrich, 95% purity) dissolved in
+20 mL of ethanol was prepared. Into this solution was added dropwise
+a mixed solution of butylamine (146.28 mg, 2 mM, Sigma-Aldrich,
+99.5% purity) and triethylamine (200 μL, Fisher, 99.7% purity). The
+mixture was heated to reflux for 6 h, before solvent removal via a
+rotary evaporator, and purification with silica gel column chromatog-
+raphy using a dichloromethane (DCM, anhydrous, Sigma-Aldrich, ≥
+99.8% purity) and methanol (anhydrous, Sigma-Aldrich, 99.8%
+purity) (v/v, 15:1) eluent. This gave 2-butyl-6-nitro-1H-benzo[de]-
+isoquinoline-1,3(2H)-dione (PS-Li2Sx) as a brown solid (221.19 mg,
+74.1% yield). 1H NMR and 13C NMR spectra are provided as Figures
+S3 and S4, respectively.
+Standard solutions of PSs are produced according to the method
+employed by Dibden et al.54 The preparation of Li2Sn solutions was
+performed in an Ar-filled glovebox. Lithium sulfide (Li2S, Alfa Aesar,
+99.9% purity) and elemental sulfur (dried, Sigma-Aldrich, 99.98%
+purity) were added to glass vials in stoichiometric ratios to give the
+nominal average chain lengths (n = 2, 4, 6, 8), as calculated by eq 1
+for saturated solutions. These salt mixtures were then dissolved in 10
+mL of a mixture of 1,3-dioxolane (DOL, Sigma-Aldrich, anhydrous,
+99.8% purity) and 1,2-dimethoxyethane (DME, Sigma-Aldrich,
+anhydrous, 99.5% purity) in the volume ratio of 1:1 (DOL/DME).
+To aid the dissolution of the salts, the solutions were heated to 60 °C
+and stirred for 72 h, before cooling to room temperature and stirring
+for a further 48 h. After the 48 h period, the saturated solutions
+(Figure S5) were decanted from the remaining powder cake.
+Li S
+n
+S
+Li S
+(
+1)
+8
+n
+2
+8
+2
++
+(1)
+The performance of the PS-Li2Sx dye was assessed through several
+means. 100 μM Cetrimonium bromide (CTAB) was added while
+characterizing PS-Li2Sx in order to aid solubilization of PS-Li2Sx and
+raise reaction rates. CTAB was removed for the operando optical Li−S
+experiments, however, as the solubilization effect was not needed over
+the long time scale of the OFM experiments and to mitigate any
+chance of altered observations arising from the presence of an
+ACS Applied Materials & Interfaces
+www.acsami.org
+Research Article
+https://doi.org/10.1021/acsami.3c14612
+ACS Appl. Mater. Interfaces 2024, 16, 20329−20340
+20331
+Downloaded from pubs.​acs.​org/​aamick/​article-pdf/​16/​16/​20329/​854036/​am3c14612.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 4>>
+extraneous ionic additive. Spectro-fluoro-photometry was employed
+in order to characterize the fluorescent properties of PS-Li2Sx, with
+the studies performed on a Shimadzu RF-6000 spectrofluoropho-
+tometer.
+Charge/discharge cycling of Li−S cells containing PS-Li2Sx as an
+additive was conducted to ensure the inertness of the dye toward the
+standard performance and mechanism of operation. The nonoptical
+electrochemical cells were coin cells, prepared according to the
+common CR2032 format in a configuration standardized across the
+Faraday Insitution’s LiSTAR project.55 This consists first of the
+bottom coin cell case and a 0.5 mm spacer (PI-KEM), followed by the
+lithium metal anode (14 mm disc, Goodfellow), a separator (16 mm
+disc, Celgard 2400) wetted with 1 M LITFSI, 0.8 M LiNO3, and 1:1
+(v/v) DOL/DME electrolyte (60 μL), a sulfur/carbon composite
+cathode (14 mm disc, NEI Nanomyte BE-70), and then another 0.5
+mm spacer, a spring, and the top case (PI-KEM). The coin cell is then
+crimped to seal (MTI-140 coin cell crimper). When testing the
+impact of PS-Li2Sx on standard cell operation, 20 μM PS-Li2Sx was
+added to the electrolyte composition. Cells were cycled on a Biologic
+BCS-815, with 2 initial formation cycles at a rate of C/20, followed by
+constant current (CC) cycling at C/10.
+To conduct the operando OFM imaging experiments, a cell was
+built using the EL-CELL ECC-Opto-Std optical cell employing a side-
+by-side imaging procedure, as depicted in Figure S6. The cell was
+fitted with a commercial sulfur/carbon composite cathode (NEI
+Nanomyte BE-70−70% sulfur, 20% carbon, 10% PvDF binder) and a
+120 μm lithium foil anode (Sigma-Aldrich) both cut into semicircles
+of 14 mm diameter and arranged atop a glass fiber separator (EL-
+CELL) separated with an approximately 3 mm gap. The separator was
+saturated with approximately 0.3 mL of electrolyte (1 M LiTFSI, 0.8
+M LiNO3, and 20 μM PS-Li2Sx in 1:1 (v/v) DOL/DME), and the gap
+then focused on to represent the electrolyte. This replicates the
+standard Li−S cell design employed for the electrochemical study
+commonly seen throughout the literature and standardized across the
+LiSTAR project.55 Charge/discharge cycling of the cell was performed
+with a Gamry Interface1000 potentiostat, using a current density of
+0.7 mA cm−2 with respect to the active lithium metal surface area. The
+operating procedure of the methodology is outlined in Figure S7.
+Fluorescence imaging is conducted of the Li−S electrolyte saturated
+with PS-Li2Sx during cycling, and the intensity of the emitted
+fluorescence is proportional to the concentration of PS.
+Figure 1. Spectrofluorophotometry characterization of PS-Li2Sx with Li2S4 PS addition. (a) Excitation and emission spectra for 100 μM PS-Li2Sx
+and 100 μM CTAB with 100 μM Li2S4 in methanol; λex = 430 nm, λem = 535 nm. (b) Emission spectra collected at λex = 430 nm for 100 μM PS-
+Li2Sx and 100 μM CTAB with and without the addition of 100 μM Li2S4. (c) Fluorescence intensity of 100 μM PS-Li2Sx and 100 μM CTAB in
+methanol on the addition of 20−100 μM Li2S4, with best-fit line. (d) Fluorescence intensity of 100 μM PS-Li2Sx in 1 M LiTFSI and 1:1 (v/v)
+DOL/DME on addition of 20−300 mM Li2S6 with best-fit curve. Inset: Linear quenching effect demonstrated between 80 and 300 μM with best-fit
+line.
+ACS Applied Materials & Interfaces
+www.acsami.org
+Research Article
+https://doi.org/10.1021/acsami.3c14612
+ACS Appl. Mater. Interfaces 2024, 16, 20329−20340
+20332
+Downloaded from pubs.​acs.​org/​aamick/​article-pdf/​16/​16/​20329/​854036/​am3c14612.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 5>>
+The concentration of PS in the electrolyte of a Li−S separator was
+determined through gravimetric analysis with barium nitrate to form
+barium sulfate.54 After cycling, the PS-saturated glass fiber separator
+was extracted to a round-bottom flask within a glovebox and sealed to
+retain the argon atmosphere. Five mL of ammonium hydroxide (20−
+30%, Sigma-Aldrich) was added, which caused the PS to dissolve into
+the solution from the glass fiber. Then, 5 mL of hydrogen peroxide
+(30% (w/w) in H2O, Sigma-Aldrich) was added with stirring to
+convert sulfur ions to sulfate ions, turning the solution colorless,
+which was then heated to 40 °C for 1 h to remove the excess
+ammonia and hydrogen peroxide. The solution was then diluted with
+deionized water, and 37% hydrochloric acid (HCl, Sigma-Aldrich)
+was added dropwise until the solution was slightly acidic (pH < 7). An
+excess of barium nitrate (synthesized from barium carbonate (≥99%,
+Sigma-Aldrich) and nitric acid (HNO3, 70%, Sigma-Aldrich)) was
+added to form barium sulfate with the sulfate ions, and the solution
+was stirred for 1 h. The final mixture was poured into a preweighed
+filter paper and filtered under vacuum to extract the barium sulfate.
+The retentate was rinsed with deionized water and allowed to dry at
+50 °C for 24 h and subsequently weighed.
+All fluorescence imaging was performed on a ZEISS Axio
+Zoom.V16 microscope with a ZEISS Illuminator HXP 200 C
+fluorescent light source. Excitation and emission fluorescent light
+was filtered (ZEISS Filter Set 38 HE) and collected by an EXview
+HAD CCD II camera (Zeiss AxioCam 506 color). Image processing
+and analysis were performed with the ZEISS ZEN 3.6 pro software,
+and within MATLAB using custom scripts. UV/vis analysis was
+performed with a Shimadzu UV-2600. Optical microscopy confocal
+depth profiling was conducted using a Keyence VHX-7000 digital
+microscope.
+3. RESULTS AND DISCUSSION
+3.1. Synthesis and Characterization of Probe PS-Li2Sx.
+To observe the movement of soluble lithium PSs within the
+electrolyte throughout operando cycling, a lithium PS-sensitive
+fluorescent dye, 2-butyl-6-nitro-1H-benzo[de]isoquinoline-
+1,3(2H)-dione (PS-Li2Sx), was first synthesized and charac-
+terized (see Section 2). This enabled spatial tracking of PSs via
+the localized fluorescent response induced and monitored
+through OFM. When the nitro group on the fluorescent PS-
+Li2Sx molecule is reduced by the lithium PSs it becomes
+fluorescently active.
+UV−vis absorption analysis evidences the PS-Li2Sx as a
+successful indicator of lithium PSs (Figure S8). Compared to
+the 4-nitro-1,8-naphthalic anhydride precursor, PS-Li2Sx has a
+slightly upshifted major peak, to 348 nm from 340 nm, arising
+from the change in structure, although the shape of the curve
+remains unchanged. In the presence of 100 μM Li2S4, the
+spectrum gains a shoulder peak below 320 nm, arising from a
+significant PS-induced change in structure.
+Two areas of peak fluorescence intensity were observed
+through spectrofluorophotometry for a solution of 100 μM PS-
+Li2Sx, 100 μM PSs, and 100 μM CTAB, representative of an
+excitation wavelength (λex) at 430 nm and an emission
+wavelength (λem) at 535 nm (Figure 1). The fluorescence
+intensity at λem notably correlates linearly with Li2S4
+concentration from 10 to 100 μM. This is the linear range of
+the dye and is in agreement with the linear range presented in
+the literature. The λex and λem of PS-Li2Sx represent a large
+Stokes shift of 105 nm, and so there is a minimal chance of
+error in fluorescence detection from phenomena such as an
+overlap of emission/excitation wavelengths.
+For PS-Li2Sx to be applicable to an operando Li−S system, it
+needed to selectively react with only the lithium PSs within the
+electrolyte and be entirely inert to the mechanism of operation.
+Zhou et al., in using PS-Li2Sx for tracking the H2S2 signaling
+molecule in complex biological environments, reported it to
+have high selectivity for PS among reactive oxygen, reactive
+nitrogen, and reactive sulfur species.31 The fluorescence
+response of PS-Li2Sx was first probed when exposed separately
+to sulfur, a 0.1 M solution of the Li2S4 intermediate PS, and the
+pure electrolyte (1 M LiTFSI and 0.8 M LiNO3 in 1:1 (v/v)
+DOL/DME). No notable fluorescence response was produced
+by either sulfur or the electrolyte, regardless of the addition of
+PS-Li2Sx, while the PSs were successfully found only to
+fluoresce in the presence of PS-Li2Sx (Figure S9).
+During the OFM experiments, while at PS concentrations
+between 0.1 and 100 μM, the linear range of PS-Li2Sx (Figure
+1c) can be exploited to extract the PS concentration measured
+at each pixel from fluorescence intensity, and so gain a
+quantitative assessment of the spatial distribution of PS.
+However, as noted in the literature, the operating concen-
+Figure 2. For a Li−S cell both with and without the addition of 20 μM PS-Li2Sx, (a) specific discharge capacity (sulfur mass) against cycle number
+for 20 cycles, with 2 formation cycles at C/20 and a further 18 at C/10, and (b) cycling data showing specific capacity (sulfur mass) taken during
+the third cycles at C/10.
+ACS Applied Materials & Interfaces
+www.acsami.org
+Research Article
+https://doi.org/10.1021/acsami.3c14612
+ACS Appl. Mater. Interfaces 2024, 16, 20329−20340
+20333
+Downloaded from pubs.​acs.​org/​aamick/​article-pdf/​16/​16/​20329/​854036/​am3c14612.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 6>>
+tration is generally far above this range in standard Li−S cells
+without polysulfide shuttle mitigation methods applied, being
+in the range of hundreds of mM.20 As seen in Figure 1d,
+outside of this range a concentration quenching effect is
+instead experienced, where fluorescence intensity decreases
+with increasing PS concentration, with the correlation even
+becoming linear at the concentrations expected in typical Li−S
+cells (>80 mM).56 The analysis at these concentrations is
+qualitative but can be combined with ex situ analysis for
+quantification. To understand the impact of different PS chain
+lengths, stock concentrations of each PS expected throughout
+cycling (Li2S2, Li2S4, Li2S6, and Li2S8) were prepared in 20 μM
+PS-Li2Sx, and a glass fiber separator was saturated with the
+solutions before they were imaged using OFM. It has been
+shown previously that when PS-Li2Sx was utilized with
+hydrogen PS, its high selectivity caused significant depletion
+in the fluorescence response with increasing hydrogen PS
+chain length, with a decrease in fluorescence intensity of 37%
+from H2S2 to H2S3, and 93% from H2S2 to H2S4.31 However,
+this was not reflected in the lithium PS experimental data, as all
+PS chain lengths were observed to fluoresce to a consistent
+intensity, suggesting a mechanism of fluorescence more
+dependent on the ionic lithium component of the polysulfides
+and that fluorescence intensity is purely representative of the
+total PS concentration (Figure S10a). As such, a calibration
+curve was prepared showing the modal fluorescence intensity
+at varying concentrations of Li2S4 between 10 and 100 μM
+(Figure S10b).
+Next, to assess the impact of PS-Li2Sx on the charge−
+discharge behavior of Li−S batteries, coin cells were built
+consisting of a 14 mm diameter Li metal anode, a Celgard
+2400 separator, a 14 mm (70:20 wt %) sulfur/carbon
+composite cathode, and 60 μL of electrolyte (1 M LiTFSI,
+and 0.8 M LiNO3 in 1:1 (v/v) DOL/DME) with and without
+20 μM added PS-Li2Sx. Very similar capacities and charge/
+discharge cycling curves were obtained upon the addition of
+PS-Li2Sx (Figure 2), showing that the fluorescent tag had little
+impact on the electrochemical response. The shape of the Li−S
+charge/discharge curves, as seen in Figure 2b, is indicative of
+the mechanism of operation, with the kinetics of the PSs
+indicated with two plateaus representing first the phase change
+of S8 dissolution, followed by Li2S/Li2S2 deposition. Variation
+in the expected shape of the curve would indicate a disruption
+in the traditionally understood mode of operation. Further, a
+significantly reduced capacity arising from the loss of active
+material would be observed if PS-Li2Sx binds irreversibly to, or
+otherwise denatures, the active PSs. As seen in Figure 2, the
+addition of 20 μM PS-Li2Sx caused very minor changes in
+either the shape of the charge/discharge curve, or in capacity,
+qualifying it for use in operando studies. The difference in
+capacities for the two cells is within the expected variance of
+the commercial standard NEI Nanomyte BE-70 cathodes used,
+which arises due to differences in cathode morphology and
+Figure 3. Cycling data (a, c) and optical fluorescence imaging (b, d) taken during operando study of the electrolyte of a standard Li−S cell, with 20
+μM polysulfide-sensitive PS-Li2Sx fluorescent dye for the first cycle (a, b) and the second cycle (c, d).
+ACS Applied Materials & Interfaces
+www.acsami.org
+Research Article
+https://doi.org/10.1021/acsami.3c14612
+ACS Appl. Mater. Interfaces 2024, 16, 20329−20340
+20334
+Downloaded from pubs.​acs.​org/​aamick/​article-pdf/​16/​16/​20329/​854036/​am3c14612.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 7>>
+sulfur loading.57 Capacity increases beyond the third cycle due
+to the continual dissolution of sulfur increasing sulfur
+utilization.57
+3.2. Operando Optical Fluorescence Microscopic
+Imaging of PS-Li2Sx in a Cycling Li−S Cell. A Li−S cell
+was created within a specialized operando optical microscopy
+cell (EL-CELL) depicted in Figure S6 employing an optical
+side-by-side cell imaging procedure. The components used
+were representative of a common Li−S coin cell.55
+The cell was cycled for 7 complete charge/discharge cycles
+with a current density of 0.7 mA cm−2 with respect to the area
+of lithium (below the critical current density for dendrite
+formation of 1 mA cm−2).58 Light, at the excitation
+wavelength, was shone onto the electrolyte gap, while images
+were taken every minute of the fluorescence response across
+the separator at the emissive wavelength. The cycling curves
+produced from the operando optical cell again matched that
+expected for Li−S, despite high resistance from a substantial 3
+mm electrolyte gap and small active surface area to electrode
+volume ratio. PS-Li2Sx is reported to have a full fluorescence
+activation time of 20 min. Due to the rate of cycling employed,
+where the average discharge/charge step took roughly 10 h,
+this activation time did not lead to inaccuracy on this time
+scale. The relevant cycling data and 1D averaged electrolyte
+gray values are available in the Supporting Information.
+The brightness across the imaged electrolyte was seen to
+vary throughout the charge−discharge cycling, resulting from
+the fluctuations in localized PS speciation and concentration in
+the electrolyte at various potentials. Figure 3 shows the
+fluorescence images taken at mechanistically significant
+potentials from the first two cycles. The initial image, taken
+at the open-circuit potential of 2.21 V (Figure 3b.A), shows a
+degree of fluorescence rather than being completely inactive,
+reflecting that even before the application of current, some of
+the solid S8 within the cathode had dissolved into the
+electrolyte as Li2S8 in a form of self-discharge, reaching an
+equilibrium concentration. The dissolution of S8 into the
+electrolyte as Li2S8 at OCV is an expected phenomenon and is
+reflected in UV−vis studies.59
+The behavior of PS-Li2Sx in this experiment is caused by the
+concentration of the electrolyte being outside of the linear
+range of the fluorophore (0.1 to 100 μM). The concentration
+of PS was measured in the separator of a cell charged to the
+voltage of expected maximum dissolution (2.7 V, as observed
+in work from Liu et al.) using barium sulfate gravimetric
+analysis and was found to be 281 ± 8 mM.20,54 As mentioned
+previously, at concentrations beyond the linear range,
+fluorescence concentration quenching occurs. This results in
+a clear inverse correlation between expected PS concentration,
+and fluorescence intensity (Figure 1d).56 In the study of a high
+PS concentration electrolyte, fluctuations in fluorescence
+intensity corresponding with the inverse expected fluctuation
+in PS concentration (from Li2S2/Li2S and S8 dissolution and
+deposition) can be attributed to fluorescence concentration
+quenching. This provides a useful, though qualitative, assess-
+ment of the spatial proliferation of PS in the electrolyte of the
+cycling Li−S cell. The overall bulk electrolyte concentration
+trends reflect those found with more complex methods in
+existing literature.20 In the ideal Li−S cell, however, to
+maximize sulfur utilization and minimize shuttle, the PS
+concentration within the electrolyte will be as low as can be
+achieved, ideally below the 100 μM linear range. Within this
+range, the fluorescence will correlate linearly with PS
+concentration, allowing for a more precise and quantitative
+assessment of PS electrolyte phenomena (Figure 1d).
+As the discharge begins, the first discharge plateau is
+observed until 2.10 V (Figure 3b.C). At this potential, the S8
+produced via self-discharge begins to be deposited as Li2S and
+an increased fluorescence, and thus a decreased PS
+concentration, is observed at the cathode. Darkening is
+conversely observed at the anode, correlating to increasing
+PS concentration, due to diffusion of solubilized PS to the
+anode down the concentration gradient.
+During further discharge, below 2.10 V, brightness at the
+cathode increases as PS are driven further toward the slow
+process of Li2S/Li2S2 phase change precipitation, decreasing
+PS concentration (Figure 3b.C−H). Also visible during this
+period is a sweeping brightness from the cathode toward the
+anode representing a loss of PS from the anode, both through
+parasitic reaction with the anode depleting the SEI and
+diffusion of PS toward the cathode down the concentration
+gradient arising from Li2S/Li2S2 precipitation.
+Little change appeared as charge began, and solid Li2S/Li2S2
+dissolution was induced, other than for the genesis of dendrite
+formation near the anode (Figure 3b.I,J). As the OFM method
+is still optical imaging (though of fluorescent areas of which
+only the liquid state PS can induce a fluorescence response)
+the solid electrodes appear as dark silhouettes. Dendrite
+formation can thus be seen in the fluorescence images through
+the appearance of growths in the silhouette of the once flat
+lithium metal anode. Further into charge, beyond 2.36 V, the
+brightness at both electrodes decreases and significant dendrite
+formation is observed (Figure 3b.K,L). At the cathode, the
+decreased fluorescence is due to a gradual gain in PS
+concentration from Li2S2/Li2S dissolution. At the anode, the
+PS concentration increase arises from the PS shuttle effect,
+which is directly visualized as the sweeping of darkness
+(representing PS) from the cathode to the anode (Figure
+3b.K−N). This is direct observation of the shuttle effect,
+arising from the diffusion of high-order PS to the anode, and
+subsequent parasitic reactions between the PS and SEI which
+form lower-order PS while also degrading the SEI.
+At around 2.6 V, the PS concentration plateaus at the anode
+and decreases at the cathode. This is due to S8 deposition
+depleting the concentration of solubilized PS at the cathode,
+and subsequently flattening the concentration gradient and
+halting the PS shuttle to the anode.
+Significant dendrite formation was observed during the
+lithium plating of the charge step, despite staying below the
+critical current density for dendrite formation of 1 mA cm−2
+and is clearly the result of intense SEI degradation. As noted
+above, high concentrations of PSs were consistently observed
+at the anode due to a harsh extent of the PS shuttle, leading to
+stripping away of the anode protection layer from parasitic
+reactions.
+The average fluorescence intensity is also taken across the
+entire electrolyte and for the isolated cathode and anode sides
+(Figure 3a). Minimal fluorescence intensity, and thus maximal
+PS concentration, is found at the end of the first discharge
+plateau and at the end of charge. The highest intensity is at the
+end of discharge, featuring the lowest concentration of PS due
+to Li2S2/Li2S precipitation. The anode is notably brighter/
+harbors a lower PS concentration than the cathode at the end
+of charge/start of discharge (Figure 3b.A,3d.B). The anode
+then “overtakes” the cathode concentration at the end of the
+first discharge plateau, where mass deposition of Li2S2/Li2S
+ACS Applied Materials & Interfaces
+www.acsami.org
+Research Article
+https://doi.org/10.1021/acsami.3c14612
+ACS Appl. Mater. Interfaces 2024, 16, 20329−20340
+20335
+Downloaded from pubs.​acs.​org/​aamick/​article-pdf/​16/​16/​20329/​854036/​am3c14612.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 8>>
+begins at the cathode. The anode gains PSs from diffusion,
+which react parasitically with the SEI. At the first charge
+plateau, the concentration of PSs at the cathode interface again
+increases beyond the anode due to the dissolution of Li2S2/
+Li2S increasing concentration. An increase in average cathode
+fluorescence intensity can be seen at the end of charge around
+the second charge plateau, representative of S8 precipitation
+rapidly lowering the PS concentration at the cathode interface.
+The fluorescence changes reflect the expected trends in
+spatial lithium PS concentration, evidencing the method as
+appropriate for a facile operando study of electrolyte PS
+distribution. The most pertinent observation is that of direct
+PS shuttling (Figure 3b.J−M,d.J−M). It is notable that in spite
+of the expectation of a return shuttle of an equal amount of
+low-order PS from the anode back to the cathode, the PS
+concentration remained consistently high at the anode. This
+suggests that the shuttle effect may be more detrimental than
+expected, as the consistently high concentration of PSs at the
+anode will continue to contribute to SEI degradation and
+increase the active material loss.
+The second cycle shows the expected trends in PS
+movement throughout, similar to the first cycle described
+above. Unlike the first cycle, however, it begins with a notably
+higher PS concentration at the cathode than at the anode, with
+the PS concentration at the cathode dropping below the anode
+at the end of the first discharge plateau (2.03 V). This is
+replicated for all future cycles (Figure S11). This is a result of
+the first cycle beginning after a considerable rest period, during
+which an equilibrium concentration of PS was reached
+throughout the electrolyte. All subsequent cycles begin
+immediately after the previous charge step, during which
+solid Li2S2/Li2S dissolution increases the PS concentration at
+the cathode above that of the anode. Cathode PS
+concentration then drops below the anode as discharge
+induces Li2S2/Li2S deposition.
+The second cycle is also darker overall than the first cycle.
+This is due to the increased contact time between the
+electrolyte and the cathode, granting a higher overall
+concentration of PS within the electrolyte and increasing the
+fluorescence quenching effect. The increasing concentration of
+PS within the electrolyte is representative of capacity fade as
+the electrolyte active material is inaccessible to the cathode.
+Seven complete charge/discharge cycles were completed
+during this experiment for this cell, with the same phenomena
+observed throughout cycling as detailed for the first and
+second cycles above (Figure S11). Peak fluorescence intensity
+decreases until the third cycle, at which point it fluctuates
+around the same level (around 47% of the initial peak
+fluorescence intensity), correlating with the cell reaching a
+more stable capacity. Continual dissolution of PS into the
+electrolyte throughout cycling may be expected, arising from
+the continued contact between the electrolyte and active sulfur
+material. It is likely that this plateau at the third cycle is due to
+the electrolyte reaching a saturation point for dissolved PS, also
+stabilizing the corresponding capacity fade from active material
+loss.
+3.3. Operando Optical Fluorescence Microscopic
+Imaging of PS-Li2Sx in a Cycling Li−S Cell without
+Figure 4. Cycling data (a) and optical fluorescence images (bi, bii) taken during operando study of the electrolyte of a standard Li−S cell, omitting
+the SEI protective LiNO3 additive, with 20 μM polysulfide-sensitive PS-Li2Sx fluorescent dye for the first cycle. (bii) Enlarged fluorescence images
+of pores within the cathode and nearby electrolyte during the first cycle at (A) open-circuit potential, (C) first discharge plateau, (G) end of
+discharge, and (N) end of charge.
+ACS Applied Materials & Interfaces
+www.acsami.org
+Research Article
+https://doi.org/10.1021/acsami.3c14612
+ACS Appl. Mater. Interfaces 2024, 16, 20329−20340
+20336
+Downloaded from pubs.​acs.​org/​aamick/​article-pdf/​16/​16/​20329/​854036/​am3c14612.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 9>>
+LiNO3. To demonstrate the applicability of OFM to study the
+impact of electrolyte additives on lithium PS shuttling and
+other common cell processes, a Li−S cell omitting the
+common additive LiNO3 from the electrolyte was also
+visualized using the fluorescence method. LiNO3 is added as
+a sacrificial additive to stabilize the SEI against parasitic
+reactions with PSs and keep the lithium metal anode protected.
+When PSs reach the anode, a high degree of gas evolution from
+SEI degradation was observed from air bubbles on the metal
+surface (Figure 4bi.C−N), leading to increased resistance and
+suggesting increased degradation relative to the prior LiNO3-
+containing cell. This is further evidenced by an increased level
+of dendrite formation, particularly during the second cycle
+(Figure S12b.G).
+While qualitative comparisons can be made between these
+two experiments, due to both cells exploiting the fluorescence
+quenching effect, quantitative comparisons of PS concentration
+cannot be made between them. Despite this cell having the
+same composition as the previous experiment, the overall
+fluorescence intensity of the cell was 52% lower, meaning that
+the overall PS concentration was higher without LiNO3. This is
+due to the less saturated electrolyte accommodating increased
+dissolution of PS.
+The shuttle effect can be seen to occur similarly both with
+and without LiNO3, but only without LiNO3 does dendrite
+formation occur so severely. Hence, these data demonstrate
+that OFM is an ideal platform for the characterization of a wide
+variety of other shuttle mitigation strategies, such as new
+additives, separators, or PS trapping cathode morphologies,
+where the spread of fluorescence will be visibly limited as the
+PSs are trapped by the separator or cathode.
+Throughout the 11 complete charge/discharge cycles
+completed for this cell, a different phenomenon in the
+intensity profiles was noted than in the cell containing
+LiNO3 (Figure S13). Here, the peak fluorescence intensity
+continually decreases throughout cycling, correlated with a
+consistent significant capacity fade. This is due to the lack of
+SEI forming LiNO3 additive allowing continual parasitic
+reaction between PS and the lithium metal anode, leading to
+active material loss through the destruction of PS in the
+electrolyte and subsequently reduced electrolyte PS concen-
+tration.60 Another phenomenon observed in this study are
+“glowing spots” within the cathode, which represent pores
+containing an increased fluorescence intensity compared to the
+bulk electrolyte or at the cathode surface (Figure 4bii). This
+arises from low concentrations of solubilized PSs trapped
+within pores at the visible top surface of the electrodes. The
+prominence of these pores can be seen via optical microscopy
+confocal depth profiling (Figure S14), with diameters of
+around 10−20 μm, and depth of approximately 10 μm. It is
+notable that at the first discharge plateau of the first cycle,
+where S8 begins its first dissolution, the PS concentration
+within these pores is considerably lower than in the
+surrounding electrolyte (Figure 4b.C). While at the end of
+discharge, an equilibrium low PS concentration is eventually
+reached with the electrolyte (Figure 4b.G), at the end of
+charge, the pores continue to contain a lower PS concentration
+than the electrolyte due to the enhanced redeposition of S8 at
+the end of charge (Figure 4b.N). These phenomena suggest
+that the observed pores cannot support high concentrations of
+dissolved PS. They perhaps instead contain regions of
+deposition behavior that are kinetically enhanced above the
+surrounding cathode regions. Further, the movement of
+fluorescence in and out from these pores throughout cycling
+can be correlated with both PS deposition and dissolution
+kinetics at these isolated surface-active areas, and with the rates
+of PS mass transport within the porous cathode morphology.
+4. CONCLUSIONS
+In this work, operando optical fluorescence microscopy has
+been demonstrated to be a powerful and cost-effective tool for
+quantitative study of the dynamics of lithium polysulfides
+within Li−S batteries.
+The polysulfide-sensitive fluorescent dye PS-Li2Sx was
+synthesized and proven to fluoresce selectively in the presence
+of the polysulfide ions within a Li−S cell, while remaining inert
+with regard to the mechanism of standard cell operation. PS-
+Li2Sx was added to the electrolyte of a specialized Li−S optical
+cell, enabling potentially quantitative imaging of the spatial
+distribution of polysulfides within the electrolyte during
+operando cycling. Most notably, the polysulfide shuttle effect
+was directly observed, as was its impact on cell health through
+SEI degradation, leading to excessive dendrite formation.
+Additionally, the efficacy of the LiNO3 electrolyte additive in
+protecting the SEI from parasitic polysulfide reactions and
+reducing dendrite formation from polysulfide shuttling was
+observed.
+This technique has therefore been demonstrated to be a
+highly promising tool for Li−S research, uniquely enabling
+rapid and facile characterization of PS shuttle mitigation
+techniques, such as new electrolyte additives, electrolyte
+compositions, cathode morphologies, and separators. The
+technique can also aid studies of the kinetics and mass
+transport processes within Li−S batteries and beyond. Most
+importantly, the relatively low cost of the experimental tools
+utilized, compared to available alternatives, combined with the
+facile experimental procedure, will allow this technique to be
+widely adopted for Li−S battery characterization across
+academia and industry.
+■ASSOCIATED CONTENT
+*
+sı Supporting Information
+The Supporting Information is available free of charge at
+https://pubs.acs.org/doi/10.1021/acsami.3c14612.
+Review of the relevance of polysulfide shuttle study in
+Li-S literature; synthesis procedure of PS-Li2Sx;
+1H
+NMR and 13C NMR of PS-Li2Sx; stock solutions of PS
+in DOL/DME; schematic illustrations of the optical cell
+setup and the test principle of the technique; UV−vis of
+PS-Li2Sx with and without PS; example images of PS-
+Li2Sx selectivity; calibration curve for PS-Li2Sx fluo-
+rescence intensity against PS concentration; cycling data
+and averaged regional fluorescence intensity for all cycles
+of the experiments; cycling data against key optical
+fluorescence microscopy images for the second cycle of
+the experiment; and optical microscopy confocal depth
+profile of the surface pores present on the NEI cathode
+(PDF)
+■AUTHOR INFORMATION
+Corresponding Authors
+Thomas S. Miller −Electrochemical Innovation Lab,
+Department of Chemical Engineering, University College
+London, London WC1E 7JE, U.K.; The Faraday Institution,
+ACS Applied Materials & Interfaces
+www.acsami.org
+Research Article
+https://doi.org/10.1021/acsami.3c14612
+ACS Appl. Mater. Interfaces 2024, 16, 20329−20340
+20337
+Downloaded from pubs.​acs.​org/​aamick/​article-pdf/​16/​16/​20329/​854036/​am3c14612.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 10>>
+Quad One, Didcot OX11 ORA, U.K.;
+orcid.org/0000-
+0002-2224-5768; Email: t.miller@ucl.ac.uk
+Paul R. Shearing −The Faraday Institution, Quad One,
+Didcot OX11 ORA, U.K.; Department of Engineering
+Science, University of Oxford, Oxford OX1 3PJ, U.K.;
+orcid.org/0000-0002-1387-9531; Email: paul.shearing@
+eng.ox.ac.uk
+Authors
+Kofi Coke −Electrochemical Innovation Lab, Department of
+Chemical Engineering, University College London, London
+WC1E 7JE, U.K.;
+orcid.org/0009-0002-3683-478X
+Michael J. Johnson −Electrochemical Innovation Lab,
+Department of Chemical Engineering, University College
+London, London WC1E 7JE, U.K.
+James B. Robinson −Electrochemical Innovation Lab,
+Department of Chemical Engineering, University College
+London, London WC1E 7JE, U.K.; The Faraday Institution,
+Quad One, Didcot OX11 ORA, U.K.; Advanced Propulsion
+Lab, UCL East, University College London, London E15 2JE,
+U.K.;
+orcid.org/0000-0002-6509-7769
+Alexander J. E. Rettie −Electrochemical Innovation Lab,
+Department of Chemical Engineering, University College
+London, London WC1E 7JE, U.K.; The Faraday Institution,
+Quad One, Didcot OX11 ORA, U.K.; Advanced Propulsion
+Lab, UCL East, University College London, London E15 2JE,
+U.K.
+Complete contact information is available at:
+https://pubs.acs.org/10.1021/acsami.3c14612
+Notes
+The authors declare no competing financial interest.
+■ACKNOWLEDGMENTS
+The authors are grateful for the support of this work by the
+Faraday Institution LiSTAR programme (EP/S003053/1,
+Grant FIRG014, FIRG058). K.C. acknowledges the EPSRC
+Doctoral Training Partnership (EP/N509577/1 and EP/
+T517793/1). M.J.J. acknowledges HORIBA-MIRA, UCL,
+and EPSRC (EP/R513143/1) for a CASE studentship.
+P.R.S. acknowledges the Royal Academy of Engineering for
+the Chair in Emerging Technologies (CiET1718/59).
+■REFERENCES
+(1) Bruce, P. G.; Freunberger, S. A.; Hardwick, L. J.; Tarascon, J. M.
+Li-O2 and Li-S Batteries with High Energy Storage. Nat. Mater. 2012,
+11 (1), 19−29.
+(2) Wild, M.; Offer, G. J. Lithium-Sulfur Batteries; Wild, M.; Offer, G.
+J., Eds.; John Wiley & Sons: Chichester, UK, 2019.
+(3) Haynes, W. M. CRC Handbook of Chemistry and Physics; CRC
+Press, 2016.
+(4) Mineral Commodity Summaries; USGS: Reston, VA, 2022.
+(5) Mikhaylik, Y. V.; Akridge, J. R. Polysulfide Shuttle Study in the
+Li/S Battery System. J. Electrochem. Soc. 2004, 151 (11), No. A1969,
+DOI: 10.1149/1.1806394.
+(6) Tikekar, M. D.; Choudhury, S.; Tu, Z.; Archer, L. A. Design
+Principles for Electrolytes and Interfaces for Stable Lithium-Metal
+Batteries. Nat. Energy 2016, 1 (9), No. 16114, DOI: 10.1038/
+nenergy.2016.114.
+(7) Li, S.; Han, Z.; Hu, W.; Peng, L.; Yang, J.; Wang, L.; Zhang, Y.;
+Shan, B.; Xie, J. Manipulating Kinetics of Sulfurized Polyacrylonitrile
+with Tellurium as Eutectic Accelerator to Prevent Polysulfide
+Dissolution in Lithium-Sulfur Battery under Dissolution-Deposition
+Mechanism. Nano Energy 2019, 60, 153−161, DOI: 10.1016/
+j.nanoen.2019.03.023.
+(8) Soni, R.; Spadoni, D.; Shearing, P. R.; Brett, D. J. L.; Lekakou,
+C.; Cai, Q.; Robinson, J. B.; Miller, T. S. Deploying Proteins as
+Electrolyte Additives in Li−S Batteries: The Multifunctional Role of
+Fibroin in Improving Cell Performance. ACS Appl. Energy Mater.
+2023, 6 (11), 5671−5680, DOI: 10.1021/acsaem.2c04131.
+(9) Park, J. W.; Jo, S. C.; Kim, M. J.; Choi, I. H.; Kim, B. G.; Lee, Y.
+J.; Choi, H. Y.; Kang, S.; Kim, T. Y.; Baeg, K. J. Flexible High-Energy-
+Density Lithium-Sulfur Batteries Using Nanocarbon-Embedded
+Fibrous Sulfur Cathodes and Membrane Separators. NPG Asia
+Mater. 2021, 13 (1), No. 30, DOI: 10.1038/s41427-021-00295-y.
+(10) Luo, J.; Lee, R.-C.; Jin, J.-T.; Weng, Y.-T.; Fang, C.-C.; Wu, N.-
+L. A Dual-Functional Polymer Coating on a Lithium Anode for
+Suppressing Dendrite Growth and Polysulfide Shuttling in Li−S
+Batteries. Chem. Commun. 2017, 53 (5), 963−966.
+(11) Han, D. D.; Wang, Z. Y.; Pan, G. L.; Gao, X. P. Metal-Organic-
+Framework-Based Gel Polymer Electrolyte with Immobilized Anions
+to Stabilize a Lithium Anode for a Quasi-Solid-State Lithium-Sulfur
+Battery. ACS Appl. Mater. Interfaces 2019, 11 (20), 18427−18435.
+(12) Wang, Q.; Guo, J.; Wu, T.; Jin, J.; Yang, J.; Wen, Z. Improved
+Performance of Li-S Battery with Hybrid Electrolyte by Interface
+Modification. Solid State Ionics 2017, 300, 67−72.
+(13) Wang, Q.; Wen, Z.; Jin, J.; Guo, J.; Huang, X.; Yang, J.; Chen,
+C. A Gel-Ceramic Multi-Layer Electrolyte for Long-Life Lithium
+Sulfur Batteries. Chem. Commun. 2016, 52 (8), 1637−1640.
+(14) Yang, Y.; Wang, W.; Meng, G.; Zhang, J. Function-Directed
+Design of Battery Separators Based on Microporous Polyolefin
+Membranes. J. Mater. Chem. A 2022, 10, 14137−14170,
+DOI: 10.1039/d2ta03511a.
+(15) Yang, Y.; Wang, W.; Li, M.; Zhou, S.; Zhang, J.; Wang, A. Plant
+Leaf-Inspired Separators with Hierarchical Structure and Exquisite
+Fluidic Channels for Dendrite-Free Lithium Metal Batteries. Small
+2023, 19 (35), No. 2301237, DOI: 10.1002/smll.202301237.
+(16) He, J.; Chen, Y.; Manthiram, A. Vertical Co9S8 Hollow
+Nanowall Arrays Grown on a Celgard Separator as a Multifunctional
+Polysulfide Barrier for High-Performance Li-S Batteries. Energy
+Environ. Sci. 2018, 11 (9), 2560−2568.
+(17) Schön, P.; Hintz, F.; Krewer, U. Electrochemical Analysis of the
+Reaction Mechanism of Sulfur Reduction as a Function of State of
+Charge. Electrochim. Acta 2019, 295, 926−933.
+(18) Harks, P. P. R. M. L.; Verhallen, T. W.; George, C.; Van Den
+Biesen, J. K.; Liu, Q.; Wagemaker, M.; Mulder, F. M. Spatiotemporal
+Quantification of Lithium Both in Electrode and in Electrolyte with
+Atomic Precision via Operando Neutron Absorption. J. Am. Chem.
+Soc. 2019, 141 (36), 14280−14287.
+(19) Dorai, A.; Kawamura, J.; Omata, T. Visualization of Polysulfide
+Dissolution in Lithium-Sulfur Batteries Using In-Situ NMR Micro-
+imaging. Electrochem. Commun. 2022, 141, No. 107360.
+(20) Liu, F.; Lu, W.; Huang, J.; Pimenta, V.; Boles, S.; Demir-Cakan,
+R.; Tarascon, J. M. Detangling Electrolyte Chemical Dynamics in
+Lithium Sulfur Batteries by Operando Monitoring with Optical
+Resonance Combs. Nat. Commun. 2023, 14 (1), No. 7350,
+DOI: 10.1038/s41467-023-43110-8.
+(21) Sun, Y.; Seh, Z. W.; Li, W.; Yao, H.; Zheng, G.; Cui, Y. In-
+Operando Optical Imaging of Temporal and Spatial Distribution of
+Polysulfides in Lithium-Sulfur Batteries. Nano Energy 2015, 11, 579−
+586.
+(22) Combs, C. A.; Shroff, H. Fluorescence Microscopy: A Concise
+Guide to Current Imaging Methods. Curr. Protoc. Neurosci. 2017, 79,
+2.1.1−2.1.25.
+(23) Sanderson, M. J.; Smith, I.; Parker, I.; Bootman, M. D.
+Fluorescence Microscopy. Cold Spring Harb. Protoc. 2014, 2014 (10),
+1042−1065.
+(24) Yuste, R. Fluorescence Microscopy Today. Nat. Methods 2005,
+2 (12), 902−904.
+(25) Tuson, H. H.; Biteen, J. S. Unveiling the Inner Workings of
+Live Bacteria Using Super-Resolution Microscopy. Anal. Chem. 2015,
+87 (1), 42−63.
+ACS Applied Materials & Interfaces
+www.acsami.org
+Research Article
+https://doi.org/10.1021/acsami.3c14612
+ACS Appl. Mater. Interfaces 2024, 16, 20329−20340
+20338
+Downloaded from pubs.​acs.​org/​aamick/​article-pdf/​16/​16/​20329/​854036/​am3c14612.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 11>>
+(26) Padilla, N. A.; Rea, M. T.; Foy, M.; Upadhyay, S. P.;
+Desrochers, K. A.; Derus, T.; Knapper, K. A.; Hunter, N. H.; Wood,
+S.; Hinton, D. A.; Cavell, A. C.; Masias, A. G.; Goldsmith, R. H.
+Tracking Lithium Ions via Widefield Fluorescence Microscopy for
+Battery Diagnostics. ACS Sens 2017, 2 (7), 903−908.
+(27) Du, W.; Zhang, Z.; Iacoviello, F.; Zhou, S.; Owen, R. E.; Jervis,
+R.; Brett, D. J. L.; Shearing, P. R. Observation of Zn Dendrite Growth
+via Operando Digital Microscopy and Time-Lapse Tomography. ACS
+Appl. Mater. Interfaces 2023, 15 (11), 14196−14205, DOI: 10.1021/
+acsami.2c19895.
+(28) Zhang, Z.; Said, S.; Smith, K.; Zhang, Y. S.; He, G.; Jervis, R.;
+Shearing, P. R.; Miller, T. S.; Brett, D. J. L. Dendrite Suppression by
+Anode Polishing in Zinc-Ion Batteries. J. Mater. Chem. A 2021, 9 (27),
+15355−15362.
+(29) Patel, M. U. M.; Dominko, R. Application of in Operando UV/
+Vis Spectroscopy in Lithium-Sulfur Batteries. ChemSusChem 2014, 7
+(8), 2167−2175.
+(30) Wu, H. L.; Huff, L. A.; Gewirth, A. A. In Situ Raman
+Spectroscopy of Sulfur Speciation in Lithium-Sulfur Batteries. ACS
+Appl. Mater. Interfaces 2015, 7 (3), 1709−1719.
+(31) Zhou, H.; Tang, J.; Sun, L.; Zhang, J.; Chen, B.; Kan, J.; Zhang,
+W.; Zhang, J.; Zhou, J. H2S2-Triggered Off-on Fluorescent Indicator
+with Endoplasmic Reticulum Targeting for Imaging in Cells and
+Zebrafishes. Sens. Actuators, B 2019, 278, 64−72.
+(32) Hou, P.; Wang, J.; Fu, S.; Liu, L.; Chen, S. A New Turn-on
+Fluorescent Probe with Ultra-Large Fluorescence Enhancement for
+Detection of Hydrogen Polysulfides Based on Dual Quenching
+Strategy. Spectrochim. Acta, Part A 2019, 213, 342−346.
+(33) Zeng, L.; Chen, S.; Xia, T.; Hu, W.; Li, C.; Liu, Z. Two-Photon
+Fluorescent Probe for Detection of Exogenous and Endogenous
+Hydrogen Persulfide and Polysulfide in Living Organisms. Anal.
+Chem. 2015, 87 (5), 3004−3010.
+(34) Zhang, C.; Sun, Q.; Zhao, L.; Gong, S.; Liu, Z. A BODIPY-
+Based Ratiometric Probe for Sensing and Imaging Hydrogen
+Polysulfides in Living Cells. Spectrochim. Acta, Part A 2019, 223,
+No. 117295.
+(35) Huang, Y.; Yu, F.; Wang, J.; Chen, L. Near-Infrared
+Fluorescence Probe for In Situ Detection of Superoxide Anion and
+Hydrogen Polysulfides in Mitochondrial Oxidative Stress. Anal. Chem.
+2016, 88 (7), 4122−4129.
+(36) Han, L.; Shi, R.; Xin, C.; Ci, Q.; Ge, J.; Liu, J.; Wu, Q.; Zhang,
+C.; Li, L.; Huang, W. Mitochondrial Specific H2Sn Fluorogenic Probe
+for Live Cell Imaging by Rational Utilization of a Dual-Functional-
+Photocage Group. ACS Sens 2018, 3 (9), 1622−1626.
+(37) A, A. H.; Sreedharan, S.; Ali, F.; Smythe, C. G.; Thomas, J. A.;
+Das, A. Polysulfide-Triggered Fluorescent Indicator Suitable for
+Super-Resolution Microscopy and Application in Imaging. Chem.
+Commun. 2018, 54 (30), 3735−3738.
+(38) Zhang, J.; Zhu, X. Y.; Hu, X. X.; Liu, H. W.; Li, J.; Feng, L. L.;
+Yin, X.; Zhang, X. B.; Tan, W. Ratiometric Two-Photon Fluorescent
+Probe for In Vivo Hydrogen Polysulfides Detection and Imaging
+during Lipopolysaccharide-Induced Acute Organs Injury. Anal. Chem.
+2016, 88 (23), 11892−11899.
+(39) Chen, W.; Pacheco, A.; Takano, Y.; Day, J. J.; Hanaoka, K.;
+Xian, M. A Single Fluorescent Probe to Visualize Hydrogen Sulfide
+and Hydrogen Polysulfides with Different Fluorescence Signals.
+Angew. Chem. 2016, 128 (34), 10147−10150.
+(40) Tang, Y.; Xu, A.; Ma, Y.; Xu, G.; Gao, S.; Lin, W. A Turn-on
+Endoplasmic Reticulum-Targeted Two-Photon Fluorescent Probe for
+Hydrogen Sulfide and Bio-Imaging Applications in Living Cells,
+Tissues, and Zebrafish. Sci. Rep. 2017, 7 (1), No. 12944,
+DOI: 10.1038/s41598-017-13325-z.
+(41) Singha, S.; Kim, D.; Moon, H.; Wang, T.; Kim, K. H.; Shin, Y.
+H.; Jung, J.; Seo, E.; Lee, S. J.; Ahn, K. H. Toward a Selective,
+Sensitive, Fast-Responsive, and Biocompatible Two-Photon Probe for
+Hydrogen Sulfide in Live Cells. Anal. Chem. 2015, 87 (2), 1188−
+1195.
+(42) Li, H. D.; Yao, Q. C.; Fan, J. L.; Jiang, N.; Wang, J. Y.; Xia, J.;
+Peng, X. J. A Fluorescent Probe for H2S In Vivo with Fast Response
+and High Sensitivity. Chem. Commun. 2015, 51 (90), 16225−16228.
+(43) Chen, W.; Rosser, E. W.; Matsunaga, T.; Pacheco, A.; Akaike,
+T.; Xian, M. The Development of Fluorescent Probes for Visualizing
+Intracellular Hydrogen Polysulfides. Angew. Chem. 2015, 127 (47),
+14167−14171.
+(44) Hou, Y.; Yang, X. F.; Zhong, Y.; Li, Z. Development of
+Fluorescent Probes for Hydrogen Polysulfides by Using Cinnamate
+Ester as the Recognition Unit. Sens. Actuators, B 2016, 232, 531−537.
+(45) Ren, Y.; Zhang, L.; Zhou, Z.; Luo, Y.; Wang, S.; Yuan, S.; Gu,
+Y.; Xu, Y.; Zha, X. A New Lysosome-Targetable Fluorescent Probe
+with a Large Stokes Shift for Detection of Endogenous Hydrogen
+Polysulfides in Living Cells. Anal. Chim. Acta 2019, 1056, 117−124.
+(46) Saini, A.; Singh, J.; Kumar, S. Optically Superior Fluorescent
+Probes for Selective Imaging of Cells, Tumors, and Reactive Chemical
+Species. Org. Biomol. Chem. 2021, 19 (24), 5208−5236.
+(47) Gong, X.; Yang, X. F.; Zhong, Y.; Chen, H.; Li, Z. A Flavylium-
+Based Turn-on Fluorescent Probe for Imaging Hydrogen Polysulfides
+in Living Cells. RSC Adv. 2016, 6 (91), 88519−88525.
+(48) Zhao, L.; Sun, Q.; Sun, C.; Zhang, C.; Duan, W.; Gong, S.; Liu,
+Z. An Isophorone-Based Far-Red Emitting Ratiometric Fluorescent
+Probe for Selective Sensing and Imaging of Polysulfides. J. Mater.
+Chem. B 2018, 6 (43), 7015−7020.
+(49) Liu, C.; Chen, W.; Shi, W.; Peng, B.; Zhao, Y.; Ma, H.; Xian, M.
+Rational Design and Bioimaging Applications of Highly Selective
+Fluorescence Probes for Hydrogen Polysulfides. J. Am. Chem. Soc.
+2014, 136 (20), 7257−7260.
+(50) Fang, Q.; Yue, X.; Han, S.; Wang, B.; Song, X. A Rapid and
+Sensitive Fluorescent Probe for Detecting Hydrogen Polysulfides in
+Living Cells and Zebra Fish. Spectrochim. Acta, Part A 2020, 224,
+No. 117410.
+(51) Han, Q.; Mou, Z.; Wang, H.; Tang, X.; Dong, Z.; Wang, L.;
+Dong, X.; Liu, W. Highly Selective and Sensitive One- and Two-
+Photon Ratiometric Fluorescent Probe for Intracellular Hydrogen
+Polysulfide Sensing. Anal. Chem. 2016, 88 (14), 7206−7212.
+(52) Liu, J.; Yin, Z. A Resorufin-Based Fluorescent Probe for
+Imaging Polysulfides in Living Cells. Analyst 2019, 144 (10), 3221−
+3225.
+(53) Sun, Y.; Tang, X.; Zhang, K.; Liu, K.; Li, Z.; Zhao, L. Hydrogen
+Sulfide Detection and Zebrafish Imaging by a Designed Sensitive and
+Selective Fluorescent Probe based on Resorufin. Spectrochim. Acta,
+Part A 2022, 264, No. 120265, DOI: 10.1016/j.saa.2021.120265.
+(54) Dibden, J. W.; Smith, J. W.; Zhou, N.; Garcia-Araez, N.; Owen,
+J. R. Predicting the Composition and Formation of Solid Products in
+Lithium-Sulfur Batteries by Using an Experimental Phase Diagram.
+Chem. Commun. 2016, 52 (87), 12885−12888.
+(55) Robinson, J. B.; Xi, K.; Kumar, R. V.; Ferrari, A. C.; Au, H.;
+Titirici, M. M.; Puerto, A. P.; Kucernak, A.; Fitch, S. D. S.; Araez, N.
+G.; Brown, Z. L.; Pasta, M.; Furness, L.; Kibler, A. J.; Walsh, D. A.;
+Johnson, L. R.; Holc, C.; Newton, G. N.; Champness, N. R.;
+Markoulidis, F.; Crean, C.; Slade, R. C. T.; Andritsos, E. I.; Cai, Q.;
+Babar, S.; Zhang, T.; Lekakou, C.; Kulkarni, N.; Rettie, A. J. E.; Jervis,
+R.; Cornish, M.; Marinescu, M.; Offer, G.; Li, Z.; Bird, L.; Grey, C. P.;
+Chhowalla, M.; Lecce, D. Di.; Owen, R. E.; Miller, T. S.; Brett, D. J.
+L.; Liatard, S.; Ainsworth, D.; Shearing, P. R. 2021 Roadmap on
+Lithium Sulfur Batteries. J. Phys.: Energy 2021, 3 (3), No. 031501.
+(56) Bae, W.; Yoon, T. Y.; Jeong, C. Direct Evaluation of Self-
+Quenching Behavior of Fluorophores at High Concentrations Using
+an Evanescent Field. PLoS One 2021, 16 (2), No. e0247326,
+DOI: 10.1371/journal.pone.0247326.
+(57) Soni, R.; Robinson, J. B.; Shearing, P. R.; Brett, D. J. L.; Rettie,
+A. J. E.; Miller, T. S. Lithium-Sulfur Battery Diagnostics through
+Distribution of Relaxation Times Analysis. Energy Storage Mater.
+2022, 51, 97−107.
+(58) Pope, M. A.; Aksay, I. A. Structural Design of Cathodes for Li-S
+Batteries. Adv. Energy Mater. 2015, 5 (16), No. 1500124,
+DOI: 10.1002/aenm.201500124.
+ACS Applied Materials & Interfaces
+www.acsami.org
+Research Article
+https://doi.org/10.1021/acsami.3c14612
+ACS Appl. Mater. Interfaces 2024, 16, 20329−20340
+20339
+Downloaded from pubs.​acs.​org/​aamick/​article-pdf/​16/​16/​20329/​854036/​am3c14612.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 12>>
+(59) He, Q.; Freiberg, A. T. S.; Patel, M. U. M.; Qian, S.; Gasteiger,
+H. A. Operando Identification of Liquid Intermediates in Lithium−
+Sulfur Batteries via Transmission UV−Vis Spectroscopy. J. Electro-
+chem. Soc. 2020, 167 (8), No. 080508.
+(60) Zhang, L.; Ling, M.; Feng, J.; Mai, L.; Liu, G.; Guo, J. The
+Synergetic Interaction between LiNO3 and Lithium Polysulfides for
+Suppressing Shuttle Effect of Lithium-Sulfur Batteries. Energy Storage
+Mater. 2018, 11, 24−29.
+ACS Applied Materials & Interfaces
+www.acsami.org
+Research Article
+https://doi.org/10.1021/acsami.3c14612
+ACS Appl. Mater. Interfaces 2024, 16, 20329−20340
+20340
+Downloaded from pubs.​acs.​org/​aamick/​article-pdf/​16/​16/​20329/​854036/​am3c14612.​pdf by TSINGHUA UNIV user on 21 September 2026

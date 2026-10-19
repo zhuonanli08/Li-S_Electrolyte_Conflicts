@@ -1,0 +1,1371 @@
+
+<<PAGE 1>>
+nature catalysis
+https://doi.org/10.1038/s41929-023-01041-z
+Article
+Machine-learning-assisted design of a binary 
+descriptor to decipher electronic and 
+structural effects on sulfur reduction 
+kinetics
+In the format provided by the 
+authors and unedited
+
+<<PAGE 2>>
+1 
+ 
+Contents 
+Supplementary Notes  ................................................................................................................................... 1 
+Supplementary Figures  .............................................................................................................................. 10 
+Supplementary Tables  ...................................................................................................................35 
+Supplementary References  ......................................................................................................................... 40 
+ 
+ 
+ 
+
+<<PAGE 3>>
+2 
+ 
+Supplementary Note 1: Pearson Correlation Analysis 
+The Pearson correlation coefficient is used to quantify the degree of linear correlation between 
+variables 𝑋 and 𝑌 of two sets of data. In addition to the IBand and ILatt, various features of the TMCs 
+are considered, such as the number ratio of metal to non-metal (Nm/x), the atomic number of non-
+metal (Nx), the atomic mass of non-metal (Mx), the periodic table row number of non-metal (RNx), 
+the coordination atom number (CN), the atomic radius of non-metal (Rx), the atomic radius ratio 
+of metal to non-metal (Rm/x), the packing fraction (PF), the outermost empty orbital number of 
+non-metal (Ox), the valence electron number of non-metal (Vx), the electronegativity of non-metal 
+(Px), the electronegativity ratio of metal to non-metal (Pm/x), Fermi energy (Ef), and the band gap 
+(Eg). The definition is as follows: 
+𝜌௑,௒ൌ
+∑
+൫𝑋௜െ𝑋൯൫𝑌௜െ𝑌൯
+ே
+௜ୀଵ
+ට∑
+൫𝑋௜െ𝑋൯
+ଶ
+ே
+௜ୀଵ
+ට∑
+൫𝑌௜െ𝑌൯
+ଶ
+ே
+௜ୀଵ
+ሺ1ሻ 
+where 𝑋௜, 𝑌௜ correspond to different features and their corresponding correlation to 
+overpotential (peak current). 𝑋 and 𝑌 correspond to their mean value. Note that the Pearson 
+correlation coefficient value ranges from -1 to 1. When this value is equal to 0, no relationship 
+between 𝑋 and 𝑌 can be obtained. If this value is greater than 0, it indicates a positive correlation. 
+Otherwise, there is a negative correlation. Besides, the higher the absolute value, the stronger the 
+correlation. 
+ 
+ 
+
+<<PAGE 4>>
+3 
+ 
+Supplementary Note 2: Preparation and Structural Characterization 
+First, Ni(OH)2 nanoparticles were synthesized using a conventional hydrothermal method. 7.11 
+g NiCl2ꞏ6H2O and 10 g urea were dissolved in 300 mL deionized water. The solution was 
+vigorously stirred and heated at 90 ℃ for 3 h. After washing and filtration, the Ni(OH)2 product 
+was obtained. Then, after heat treatment at 300 ℃ for 3 h in Ar gas in the tube furnace, the Ni(OH)2 
+was converted into NiO. Finally, the NiO was converted into Ni-anions with various non-metal 
+anions (NiS2, and NiSe2) via gas-solid reactions in a tube furnace with sulfur, and selenium as the 
+conversion sources.  
+X-ray diffraction (XRD) was employed to study the structural phase of the NiO, NiS2, and 
+NiSe2, displayed in Supplementary Fig. 15. The diffraction peaks can be well assigned to NiO, 
+NiS2, and NiSe2, respectively, indicating the successful preparation of Ni-based compounds with 
+various anions. As illustrated in field-emission scanning electron microscopy (FE-SEM) images 
+(Supplementary Fig. 16a), the original Ni(OH)2 had a three-dimensional (3D) structure with 
+secondary nanosheets. After heat treatment, NiO remains irregular and smooth two-dimensional 
+(2D) nanosheets (Supplementary Fig. 16b). NiS2 and NiSe2 show particle morphology with a 
+diameter of 100-200 nm (Supplementary Fig. 16c, d). Transmission electron microscopy (TEM) 
+analysis indicates NiSe2 has a particle size of 200 nm (Supplementary Fig. 17a). High-resolution 
+TEM images (Supplementary Fig. 17b) of NiSe2 indicate a 0.262 nm lattice spacing associated 
+with the (111) face of NiSe2. An inverse fast-Fourier-transform image (Supplementary Fig. 17c) 
+also indicates a defined crystal structure for NiSe2 rather than the disordered structure. The well-
+defined diffraction rings of the selected area electron diffraction pattern (Supplementary Fig. 17d) 
+of NiSe2 indicated poly-crystallinity. Furthermore, mapping images and energy-dispersive spectra 
+in Supplementary Fig. 17e confirmed uniform distributed elements throughout the structure (see 
+other materials in Supplementary Figs. 18 and 19). N2 adsorption-desorption measurements were 
+conducted to measure the specific surface area, showing the catalytic materials present a similarly 
+low specific area (Supplementary Fig. 20). 
+Chemical composition results from an inductively coupled plasma indicate a 1:2.02 ratio (Ni: 
+Se) for NiSe2 (Supplementary Table 4), similar to the expected stoichiometry (1:2), which 
+indicates saturated coordination of Se to the Ni center without Se vacancies. Hence, the 
+corresponding compound is NiSe2 rather than NiSe2-x. High-resolution Ni 2p X-ray photoelectron 
+spectroscopy (XPS) of NiSe2 is deconvoluted into three couples of doublet peaks (Supplementary 
+
+<<PAGE 5>>
+4 
+ 
+Fig. 21a). One couple of doublet peaks at 853.5 eV (2p3/2) and 870.7 eV (2p1/2) corresponds to Ni2+ 
+of NiSe2. Another couple of doublet peaks at 855.3 eV (2p3/2) and 873.7 eV (2p1/2) correspond to 
+nickel oxides. The satellite peaks at higher binding energies of 860.1 eV and 877.4 eV, further 
+support the appearance of oxidized nickel on the surface. The two prominent peaks at 54.9 eV 
+(3d5/2) and 55.7 eV (3d3/2) in the Se 3d XPS spectrum suggest the existence of the Ni-Se bond. 
+Additionally, the shoulder peak at 58.5 eV is assigned to Se-O owing to slight surface oxidation 
+(Supplementary Fig. 21b). The high-resolution Ni 2p XPS of NiO has 2p3/2 (main peak at 853.6 
+eV, shoulder peak at 855.4 eV, and shake-up satellite peak at 860.6 eV) and 2p1/2 (main peak at 
+872.8 eV and satellite peak at 879.0 eV) typically (Supplementary Fig. 22a). The deconvolution 
+of O 1s electron binding energy to Gaussian fit for NiO, Ni2O3, and adsorbed O of H2O peaks are 
+529.1 eV, 530.9 eV, and 532.5 eV (Supplementary Fig. 22b). The high-resolution Ni 2p XPS of 
+NiS2 (Supplementary Fig. 23a) shows that the two peaks located at about 857.5 eV and about 875.2 
+eV are assigned to the spin-orbit doublet of 2p orbital of Ni2+ (Ni2+ 2p3/2 and Ni2+ 2p1/2) along with 
+two typical Ni2+ shake up satellites. For the S 2p spectrum in Supplementary Fig. 23b, the two 
+strong peaks at about 162.6 and 164.1 eV are attributed as the S 2p3/2 and S 2p1/2. The peak at about 
+169.0 eV could be recognized as a S-O bond due to surface oxidization.  
+ 
+ 
+
+<<PAGE 6>>
+5 
+ 
+Supplementary Note 3: FEM simulation methods 
+The simulation process of the Li-S battery was conducted by the finite element method on the 
+COMSOL Multiphysics 6.0 platform. The model was made up of a metallic lithium anode foil and 
+a porous-carbon, sulfur cathode separated by a porous separator, and the deposition of Li2S was 
+defined as occurring at the interface between the cathode and the electrolyte. 
+Mass Transport 
+For the transport of different ions in the liquid phase, it is driven by the migration because of 
+the electric field and the diffusion because of the concentration gradient, which can be expressed 
+by the Nernst−Planck equation: 
+𝑁௜,௠ൌെ𝐷௜,௠ቆ𝛻𝐶௜
+௕൅𝑧௜𝐹𝐶௜
+௕
+𝑅𝑇
+𝛻𝜙௘ቇ
+ሺ2ሻ 
+where Di,m is the diffusion coefficient of species i (i = Li+, S8(l), S8 2−, S6 2−, S4 2−, S2 2−, S2−, and 
+A−, which is the anion of the lithium salt used in the electrolyte) and the index m corresponds to 
+each domain (sep for separator and cat for cathode). 𝑁௜,௠ is ions flux, 𝐶௜
+௕ is the concentration of 
+species i in the electrolyte, 𝑧௜ the charge number of species i, and 𝜙௘ is the electrolyte potential. 
+Charge transfer 
+At the interface of the electrolyte and the anode, the reaction process of Li-ions can be described 
+by the simplified reaction: 
+𝐿𝑖ା൅𝑒ି
+⇌𝐿𝑖
+ሺ3ሻ 
+In the cathode, the solid sulfur (S8(s)) in the active particles dissolves into the electrolyte and 
+forms S8(l), which would be reduced to lower-order polysulfide anions through a chain of 
+electrochemical reactions as follows: 
+1
+2 𝑆଼ሺ௟ሻ൅𝑒ି
+⇌1
+2 𝑆଼ଶି
+ሺ4ሻ 
+3
+2 𝑆଼ଶି൅𝑒ି
+⇌2𝑆଺
+ଶି
+ሺ5ሻ 
+𝑆଺
+ଶି൅𝑒ି
+⇌3
+2 𝑆ସ
+ଶି
+ሺ6ሻ 
+1
+2 𝑆ସ
+ଶି൅𝑒ି
+⇌𝑆ଶ
+ଶି
+ሺ7ሻ 
+1
+2 𝑆ଶ
+ଶି൅𝑒ି
+⇌𝑆ଶି
+ሺ8ሻ 
+
+<<PAGE 7>>
+6 
+ 
+The charge transfer rate of the electrochemical reaction can be indicated by the local current 
+density, for each reaction j, which is given by the Butler-Volmer equation: 
+𝑖ൌ𝑖௘௫,௝൥ෑቆ𝐶௜
+𝐶௜,௥௘௙
+ቇ
+௣௜,௝
+exp ൬𝛼௔,௝𝐹𝜂௝
+𝑅𝑇
+൰െෑቆ𝐶௜
+𝐶௜,௥௘௙
+ቇ
+௤௜,௝
+exp ൬𝛼௖,௝𝐹𝜂௝
+𝑅𝑇
+൰൩
+ሺ9ሻ 
+where 𝑖௘௫,௝ is exchange current density, to simulate the impact of the catalyst, we increased the 
+exchange current density by a factor of 5 for each step of the polysulfide conversion reaction 
+compared to the sample without the catalyst. 𝛼௔,௝ and 𝛼௖,௝ are the anodic and cathodic charge 
+transfer coefficients, respectively, 𝐶௜,௥௘௙ is the reference concentration and 𝐶௜ is the concentration 
+of each species i near the interface between electrode and electrolyte, 𝜂௝ is overpotential, which 
+can be calculated from: 
+𝜂𝑗ൌ𝜙௦െ𝜙௘െ𝑈௝,௥௘௙
+ሺ10ሻ 
+where 𝜙௦ and 𝜙௘ is the solid phase potential and electrolyte potential, 𝑈௝,௥௘௙ is the the equilibrium 
+potential of each reaction j. 
+Thermodynamics 
+The open-circuit potential for reaction j at the reference concentrations 𝐶௜,௥௘௙ assumed to be 
+equal to initial concentration of species i is given by the Nernst equation: 
+𝑈௝,௥௘௙ൌ𝑈௝
+ఏെ𝑅𝑇
+𝑛௝𝐹෍ቊ𝑠௜,௝𝑙𝑛ቈ𝐶𝑖,𝑟𝑒𝑓
+1000቉ቋ
+௜
+ሺ11ሻ 
+ 𝑈௝
+ఏ is the standard equilibrium potential of each reaction. 
+Precipitation/Dissolution of S8 and Li2S 
+The rate of precipitation of species Li2S and S8, assuming that the precipitation reaction is 
+kinetically controlled can be written as: 
+𝑅௞ൌ𝐾௞൭ෑ𝐶௜
+ఊ೔,ೖ
+௜
+െ𝐾௦௣,௞൱
+ሺ12ሻ 
+where 𝑅௞ is the rate of precipitation of the solid species (k=Li2S, S8), 𝐾௦௣,௞ is the solubility product 
+of k in the electrolyte and 𝐾௞ is the rate constant and 𝛾௜,௞ is the number of moles of ionic species i 
+in the solid species k. 
+In order to simulate the random nucleation and growth process of Li2S, we set a random 
+distribution function at the electrode-electrolyte interface, the function is generated by: 
+
+<<PAGE 8>>
+7 
+ 
+fሺx, yሻൌ෍
+෍
+aሺm, nሻcosሾ2πሺmx ൅nyሻ൅φሺm, nሻሿ
+୒
+୬ୀି୒
+୑
+୫ୀି୑
+ሺ13ሻ 
+where x and y are the spatial coordinates; m and n are the spatial frequencies; aሺm, nሻ is the 
+amplitude; and φሺm, nሻ is the phase angle. The amplitude is randomly generated by a Gaussian 
+distribution function, and the phase angle and spatial frequency are derived from a uniform random 
+distribution in a limited interval. 
+ 
+ 
+
+<<PAGE 9>>
+8 
+ 
+Supplementary Note 4: Machine Learning Analysis to Develop Binary Descriptor 
+A machine learning analysis using Monte Carlo simulation and the genetic algorithm was 
+conducted to construct the binary descriptor (BD). The problem can be formulated as an 
+optimization: 
+𝑚𝑖𝑛
+𝐵𝐷 𝐽መൌ𝐽1ሺ𝐵𝐷ሻ൅𝐽2ሺ𝐵𝐷ሻ
+ሺ14ሻ 
+where, 𝐽ଵ and 𝐽ଶ are the deterministic coefficients using BD to regress the overpotential and the 
+peak current, respectively. 
+The deterministic coefficient can be defined as: 
+𝐽ൌ1 െ∑
+ሺ𝑦െ𝑦෤ሻଶ
+௠
+௜ୀଵ
+∑
+ሺ𝑦െ𝑦തሻଶ
+௠
+௜ୀଵ
+ሺ15ሻ 
+where, 𝑦 is the observed value for the overpotential (peak current), while 𝑦෤ is the predicted value 
+accordingly. 𝑦ത is the mean value for the experimentally observed value for the overpotential (peak 
+current). 
+The optimization problem is solved using a built-in genetic algorithm in MATLAB R2022a 
+version. All the experiments are conducted in MATLAB R2022a on a workstation with an Intel(R) 
+Core (TM) i5-10400 CPU @ 2.90GHz processor. The Monte Carlo method is applied to ensure a 
+large body of coefficient combinations is tested such that the built model is unbiased to specific 
+descriptor constructions. Let the selection of three coefficients be a random event 𝐴. Assuming 
+200 Monte Carlo random experiments are conducted ( 𝐴ଵ, 𝐴ଶ, . . . , 𝐴ଶ଴଴), then the model 
+performance is statistically averaged over these 200 random events. In this work, we assume that 
+the coefficient candidates obey a uniform distribution. The according random seed generator is 
+v5uniform in MATLAB R2022a. The generation of the random sequence under uniform 
+distribution is as follows: 
+𝑥௜ൌ𝜆𝑥௜ିଵെ𝑚𝐾௜
+ሺ16ሻ 
+𝑟௜ൌ𝑥௜𝑚ିଵ
+ሺ17ሻ 
+𝑟̂௜ൌሺ𝑏െ𝑎ሻ𝑟௜െ𝑎
+ሺ18ሻ 
+where, 𝜆 and 𝑚 are random settings. 𝐾௜ is the integer part of 
+ఒ௫೔షభ
+௠. 𝑟௜ is the 𝑖௧௛ uniform random 
+number on ሺ0,1ሻ. 𝑟̂௜ is the 𝑖௧௛ uniform random number on ሺ𝑎, 𝑏ሻ. In this work, 𝑎 and 𝑏 are not 
+bounded. After random sampling of coefficients, the constructed descriptor is used to present the 
+corresponding catalysis behavior. According to the law of large numbers, when sample size 𝑁 is 
+large enough, 𝑧 converges to expectation 𝐸ሾ𝑧ሿ: 
+
+<<PAGE 10>>
+9 
+ 
+𝐸ሾ𝑧ሿൌ𝑧ൌ1
+𝑁෍𝑧௜
+ே
+௜ୀଵ
+ሺ19ሻ 
+where, 𝑧௜ is the model prediction error. Accordingly, 𝐸ሾ𝑧ሿ is the probability expectation of model 
+prediction error. As such, model performance evaluation is of statistical confidence.  
+ 
+ 
+
+<<PAGE 11>>
+10 
+ 
+ 
+Supplementary Fig. 1 | Comparison of the adsorption energy (eV) to Li2S6 of a, Ti-based,1-5 b, 
+V-based,4,6-8 c, Mn-based,9-11 d, Fe-based,4,12-14 e, Co-based,4,15,16 f, Ni-based,17-21 g, Mo-based,4,22-
+24 and h, W-based4,25-28 TMCs with different anions. 
+ 
+ 
+ 
+Supplementary Fig. 2 | EIS measurements of electrodes with NiO at various temperatures of 
+various voltages. 
+ 
+
+<<PAGE 12>>
+11 
+ 
+ 
+Supplementary Fig. 3 | a, Fitting curve of simplified-contact-Randles equivalent circuit of the 
+cathode. The first semicircle corresponds to the deposition of the insoluble Li2S2 on the surface 
+(Rsurf), the second semicircle is attributed to the charge transfer process (RCT), and the tail line 
+represents the Warburg resistance (ZW) in the cathode. By fitting the charge transfer resistance 
+measured at different temperatures into the Arrhenius equation, the Ea of the conversion from Li2S4 
+to Li2S2 can be derived. b, An Arrhenius plot demonstrating a linear correlation between the 
+logarithmic values of the reciprocal of charge transfer resistance and the reciprocal of absolute 
+temperatures at different voltages. c, Activation energy profiles for various voltages. 
+ 
+ 
+ 
+Supplementary Fig. 4 | a, Discharge profiles of Li-S batteries with a sulfur loading of 3 mg cm-2. 
+b, The enlarged image of the discharge profile, showing the huge overpotential from Li2S4 to Li2S2. 
+ 
+
+<<PAGE 13>>
+12 
+ 
+ 
+Supplementary Fig. 5 | The (a, b) adsorption configuration and (c, d) adsorption energy between 
+solvents (DOL and DME) and various lithium (poly)sulfides. 
+
+<<PAGE 14>>
+13 
+ 
+ 
+Supplementary Fig. 6 | The side views of the geometric configurations of adsorption models. 
+
+<<PAGE 15>>
+14 
+ 
+ 
+Supplementary Fig. 7 | The top views of the geometric configurations of adsorption models. 
+ 
+ 
+
+<<PAGE 16>>
+15 
+ 
+ 
+Supplementary Fig. 8 | The Pearson correlation coefficient (importance of features) for 
+adsorption energy between various Ni-based TMCs and Li2S4. IBand is defined in Fig 1. Please refer 
+to Supplementary Note 1 for the definition of each feature. 
+ 
+ 
+Supplementary Fig. 9 | IBand and adsorption energy of various TMCs for Li2S4. To ensure 
+comparability between the selected data, all selected data in these references are based on the same 
+framework of density functional theory. All of them used the projector-augmented pave potential 
+to describe the electron-ion interactions. The Perdew-Burke-Ernzerhof function of the generalized 
+gradient approximation was used to describe the electron exchange and correlation energy in these 
+references. 
+ 
+
+<<PAGE 17>>
+16 
+ 
+ 
+Supplementary Fig. 10 | a, The charge profile of Li-S batteries with a sulfur loading of 3 mg cm-
+2. b, The enlarged image of the charge profile, showing the huge overpotential for the oxidation of 
+Li2S. 
+ 
+ 
+ 
+Supplementary Fig. 11 | Side view schematic representations of the corresponding decomposition 
+pathways for Li2S on NiO, Ni3C, NiSe2, NiS2, and Ni2P. 
+
+<<PAGE 18>>
+17 
+ 
+ 
+Supplementary Fig. 12 | The Pearson correlation coefficient (importance of features) for 
+delithiation energy barrier. ILatt is defined in Fig 1. Please refer to Supplementary Note 1 for the 
+definition of each feature. 
+ 
+
+<<PAGE 19>>
+18 
+ 
+ 
+Supplementary Fig. 13 | Side view schematic representations of the corresponding decomposition 
+pathways for Li2S4 on Ni3C, NiO, NiS2, and NiSe2. The strong interaction between Ni2P and Li2S4 
+results in the breaking of Li-S bonds in LiPSs, which complicated energy profile calculations and, 
+consequently, precluded analysis in this regard. The numbers are linked to those in Supplementary 
+Fig 14. 
+
+<<PAGE 20>>
+19 
+ 
+ 
+Supplementary Fig. 14 | The relationship between the reaction energy for the step from Li2S4 to 
+Li2S2 and ILatt of various Ni-based TMCs. ILatt is defined in Fig 1. The numbers are linked to those 
+in Supplementary Fig 13. 
+ 
+ 
+ 
+ 
+Supplementary Fig. 15 | XRD patterns of various Ni-based TMCs. 
+ 
+
+<<PAGE 21>>
+20 
+ 
+ 
+Supplementary Fig. 16 | SEM images of a, Ni(OH)2, b, NiO, c, NiS2, and d, NiSe2. 
+ 
+ 
+ 
+Supplementary Fig. 17 | Material characterization of NiSe2. a, TEM image, and b, high-resolution 
+TEM image of NiSe2. Scale bar, 5 nm. c, inverse fast-Fourier-transform lattice images of NiSe2. 
+Inset: Lattice distance profiles of the region in blue. d, selected-area electron diffraction pattern. 
+Scale bar, 5 nm-1. e, Scanning TEM-high-angle annular dark-field (STEM-HAADF) image and 
+mapping images of NiSe2. Scale bar, 100 nm. 
+ 
+
+<<PAGE 22>>
+21 
+ 
+ 
+Supplementary Fig. 18 | EDS mapping images of NiO. Scale bar, 5 μm. 
+ 
+ 
+ 
+Supplementary Fig. 19 | EDS mapping images of NiS2. Scale bar, 5 μm. 
+ 
+ 
+ 
+Supplementary Fig. 20 | Nitrogen adsorption-desorption isotherms of Ni-based catalysts. 
+ 
+ 
+
+<<PAGE 23>>
+22 
+ 
+ 
+Supplementary Fig. 21 | High-resolution XPS spectra of a, Ni 2p and b, Se 3d of NiSe2. a.u., 
+arbitrary units. 
+ 
+ 
+Supplementary Fig. 22 | High-resolution XPS spectra of a, Ni 2p and b, O 1s of NiO. a.u., 
+arbitrary units. 
+ 
+ 
+Supplementary Fig. 23 | High-resolution XPS spectra of a, Ni 2p and b, S 2p of NiS2. a.u., 
+arbitrary units. 
+
+<<PAGE 24>>
+23 
+ 
+ 
+Supplementary Fig. 24 | XRD patterns of pristine NiO and NiO after adsorption experiment. 
+The diffraction peaks remain consistent characteristic peaks with those of pure NiO at 37°, 43°, 
+62°, and 75°, indicating no change in the crystal structure. 
+ 
+ 
+ 
+Supplementary Fig. 25 | High-resolution XPS spectra of a, Ni 2p and b, O 1s and c, S 2p of 
+pristine NiO and NiO after adsorption experiment. a.u., arbitrary units. The Ni 2p and O 1s 
+spectrum are similar to the pristine NiO, indicating a similar surface element composition after 
+LiPSs adsorption experiments. In detail, the high-resolution Ni 2p XPS of the washed NiO shows 
+2p 3/2 (main peak at 853.3 eV, shoulder peak at 854.7 eV, and shake-up satellite peak at 860.1 eV) 
+and 2p1/2 (main peak at 872.3 eV and satellite peak at 878.6 eV). All peaks shifted toward lower 
+binding energy after adsorption, suggesting increased nickel electron density via electron transfer. 
+20
+40
+60
+80
+Intensity (a.u.)
+2 Theta
+Pristine NiO
+Washed NiO
+
+<<PAGE 25>>
+24 
+ 
+For the O 1s spectrum, the three peaks at about 529.2 eV, 530.98 eV, and 532.52 eV were attributed 
+as the NiO, Ni2O3, and adsorbed O of H2O peaks. All peaks shifted toward higher binding energy, 
+indicating reduced oxygen electron density via electron transfer. Different from pristine NiO, weak 
+peaks can be detected in the S 2p spectrum of the washed NiO. The 161.8 and 163.5 eV peaks are 
+assigned to the terminal and bridging sulfurs, respectively.29 Both peaks shifted toward higher 
+binding energy, indicating a reduction in the sulfur electron density via electron transfer. Other S 
+2p peaks at 166.5 and 168.4 eV correspond to the thiosulfate and polythionate complexes.30 
+ 
+ 
+ 
+Supplementary Fig. 26 | S 2p XPS of the NiS2 sample before and after the adsorption test. 
+ 
+ 
+Supplementary Fig. 27 | Se 3d XPS of the NiSe2 sample before and after the adsorption test. 
+
+<<PAGE 26>>
+25 
+ 
+ 
+Supplementary Fig. 28 | Shuttle currents of Li-S cells with different catalysts. 
+ 
+ 
+Supplementary Fig. 29 | Potentiostatic intermittent titration technique (PITT) profiles of Li | Li2S 
+cells, showing the kinetics of the delithiation process. 
+ 
+0.0
+0.3
+0.6
+0.9
+1.2
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Current (mA)
+Time (ks)
+ NiO
+ NiS2
+ NiSe2
+1.6
+1.8
+2.0
+2.2
+2.4
+Voltage (V)
+
+<<PAGE 27>>
+26 
+ 
+ 
+Supplementary Fig. 30 | Plots of CV peak current for a, Peak C and b, Peak A. 
+ 
+ 
+Supplementary Fig. 31 | The potential response curves of the electrodes with various catalysts 
+during GITT measurement. 
+ 
+ 
+ 
+Supplementary Fig. 32 | Chronoamperometric curves of Li2S6 symmetric cells. 
+
+<<PAGE 28>>
+27 
+ 
+ 
+Supplementary Fig. 33 | Tafel plots of peak A and D on various catalytic surfaces of CV curves. 
+ 
+ 
+ 
+Supplementary Fig. 34 | Potentiostatic discharge profiles of Li2S nucleation on the a, NiO, b, 
+NiS2 and c, NiSe2 cathode. 
+ 
+ 
+ 
+Supplementary Fig. 35 | SEM images of the final Li2S deposits on a, NiO, b, NiS2 and c, NiSe2. 
+ 
+ 
+
+<<PAGE 29>>
+28 
+ 
+ 
+Supplementary Fig. 36 | Potentiostatic charge profiles at 2.35 V on a, NiO, b, NiS2, and c, NiSe2 
+surfaces to evaluate the dissolution behavior of Li2S. 
+ 
+ 
+ 
+Supplementary Fig. 37 | XRD patterns of a, Ni2P and b, Ni3C. Like NiS2 and NiSe2, the gas-solid 
+reaction converted NiO to Ni2P with NaPO2H2 as the phosphorous source in a tube furnace. 
+Ni(NO3)2ꞏ6H2O (1.0 g) and urea (2.0 g) were dissolved in ethanol and then dried at 80 ℃. Then 
+the sample was placed into the sealed tube furnace and annealed at 380 ℃ for 4 h with Ar as the 
+protection gas to get the Ni3C. XRD peaks can be well assigned to the Ni2P and Ni3C, indicating 
+the successful preparation. 
+ 
+
+<<PAGE 30>>
+29 
+ 
+ 
+Supplementary Fig. 38 | CV curves of symmetric cells using a, Ni2P and b, Ni3C at a scan rate 
+of 0.1 mV s-1. 
+ 
+ 
+ 
+Supplementary Fig. 39 | Linear regression fitting between the a, overpotential, b, peak current, 
+and the IBand (s-p). 
+
+<<PAGE 31>>
+30 
+ 
+ 
+Supplementary Fig. 40 | Linear regression fitting between the a, overpotential, b, peak current, 
+and the IBand (d-p). 
+ 
+ 
+ 
+Supplementary Fig. 41 | Linear regression fitting between the a, overpotential, b, peak current, 
+and the ILatt. 
+ 
+
+<<PAGE 32>>
+31 
+ 
+ 
+Supplementary Fig. 42 | CV curves of symmetric cells using (a) TiN, (b) TiO2, (c) VN, (d) Mn4N, 
+(e) Mn3P, and (f) CoO at a scan rate of 0.1 mV s-1. 
+ 
+ 
+ 
+Supplementary Fig. 43 | Linear regression fitting between the (a) overpotential, (b) peak current, 
+and the BD after adding other representative catalysts. 
+ 
+
+<<PAGE 33>>
+32 
+ 
+ 
+Supplementary Fig. 44 | Charge-discharge profiles of CNT/NiS2-based cells during the first 100 
+cycles at 1 C. 
+ 
+ 
+0
+3
+6
+9
+1.6
+2.0
+2.4
+2.8
+ 3.6 mg cm-2
+ 5.7 mg cm-2
+ 8.2 mg cm-2
+Voltage (V)
+Area Capacity (mAh cm2)
+CNT/NiSe2
+Current density: 0.05 C
+ 
+Supplementary Fig. 45 | Charge-discharge profiles of CNT/NiSe2-based cell with various high-
+sulfur loading. 
+ 
+ 
+
+<<PAGE 34>>
+33 
+ 
+ 
+Supplementary Fig. 46 | Cycling performances of cathodes with NiSe2 with various high-sulfur 
+loading. 
+ 
+ 
+ 
+Supplementary Fig. 47 | Cycling performance of NiSe2-based battery at 0.05 C with a 15.0 mg 
+cm-2 sulfur loading. 
+ 
+ 
+ 
+Supplementary Fig. 48 | Cycling performance of NiSe2-based battery at a temperature from 55 to 
+-20 ℃. 
+0
+5
+10
+15
+20
+25
+30
+35
+40
+0
+6
+12
+18
+24
+Areal Capacity (mAh cm-2)
+Cycle Number
+0.05 C
+S loading: 15.0 mg cm-2 
+E/S: 8.0 μL mg-1
+Commercial LIBs
+CNT/NiSe2
+0
+20
+40
+60
+80
+100
+Coulombic Efficiency (%)
+0
+10
+20
+30
+40
+50
+0.0
+0.4
+0.8
+1.2
+1.6
+ CNT
+ CNT/NiSe2
+Capacity (Ah g-1)
+Cycle Number
+55°C
+25°C
+15°C
+0°C
+-5°C
+-10°C
+-20°C
+0°C
+10°C
+25°C
+
+<<PAGE 35>>
+34 
+ 
+0.0
+0.2
+0.4
+0.6
+1.8
+2.1
+2.4
+2.7
+ CNT
+ CNT/NiSe2
+Voltage (V)
+Capacity (Ah g-1)
+ 
+Supplementary Fig. 49 | Charge-discharge profiles of CNT and CNT/NiSe2-based cells cycling 
+at 0 ℃. 
+ 
+ 
+Supplementary Fig. 50 | a, Assembling method for the Ah-level Li-S pouch cell, together with 
+the thickness of each component. b, The mass proportion for one layer of the sulfur cathode, 
+showing the sulfur content is 64.2%.  
+ 
+ 
+
+<<PAGE 36>>
+35 
+ 
+Supplementary Table 1 | Calculation details of the IBand for Ni-based TMCs. IBand is defined in 
+Fig 1. 
+Catalyst 𝜀௣ of anion (eV) 
+𝜀ௗ of cation (eV) 
+IBand 
+Adsorption Energy of 
+catalyst with Li2S4 (eV) 
+Ni3C 
+0.751 
+-2.445 
+1.177 
+-4.86 
+Ni2P 
+-0.028 
+-1.924 
+1.374 
+-6.07 
+NiO 
+-1.018 
+-3.488 
+4.425 
+-3.29 
+NiSe2 
+-1.391 
+-4.085 
+5.580 
+-3.05 
+NiS2 
+-2.207 
+-4.743 
+7.663 
+-1.76 
+Li2S4: 𝜀௦ of Li: 0.5 eV, 𝜀௣ of S: -1.46 eV 
+ 
+ 
+Supplementary Table 2 | The reported adsorption energy between various TMCs and Li2S4 and 
+retrieved band center from the Materials Project database. IBand is defined in Fig 1. 
+Catalyst 
+𝜀ௗ of cation 
+(eV) 
+𝜀௣ of anion 
+(eV) 
+IBand 
+Adsorption 
+energy (eV) 
+Reference 
+TiN 
+1.58152 
+-0.94724 
+4.97772 
+-3.28 
+31 
+Fe3O4 
+-1.3846 
+-2.4445 
+5.94065 
+-2.89 
+32 
+Co9S8 
+-1.0775 
+-2.48008 
+6.22214 
+-2.97 
+33 
+VN 
+0.26297 
+-2.06269 
+6.30549 
+-1.89 
+34 
+Ni3N 
+-1.17095 
+-2.57581 
+6.34959 
+-2.19 
+35 
+MnO 
+-0.06893 
+-2.355 
+6.66279 
+-2.68 
+36 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+<<PAGE 37>>
+36 
+ 
+Supplementary Table 3 | Calculation details of the ILatt for Ni-based TMCs. 𝑟௖௔௧௔௟ and ILatt are 
+defined in Fig 1. 
+Catalyst 
+𝑟௖௔௧௔௟ (Å) 
+ILatt (Li2S) 
+Energy  
+Barrier (eV) 
+ILatt (Li2S4) 
+Energy  
+Barrier (eV) 
+NiO 
+2.08 
+1.003 
+2.074 
+1.145 
+2.240 
+Ni2P 
+2.20 
+0.948 
+2.271 
+1.082 
+- 
+NiS2 
+2.39 
+0.873 
+0.905 
+0.996 
+1.963 
+Ni3C 
+2.55 
+0.818 
+1.121 
+0.934 
+1.172 
+NiSe2 
+3.19 
+0.654 
+0.755 
+0.746 
+1.098 
+Li2S: 𝑟௅௜ିௌ 2.086 Å Li2S4: 𝑟௅௜ିௌ 2.381 Å 
+ 
+ 
+Supplementary Table 4 | Inductively coupled plasma of NiSe2. 
+Sample 
+Mass percent (wt%) 
+(Ni: Se) 
+Atomic ratio 
+(Ni: Se) 
+NiSe2 
+25.86: 70.53 
+1:2.02 
+ 
+ 
+Supplementary Table 5 | Reference parameters about kinetic and thermodynamic properties in 
+FEM simulation. i0j,ref: exchange current density for each reaction j. aa,j, ac,j: anodic and cathodic 
+charge transfer coefficient. nj: number of electrons transferred. Uj: standard equilibrium potential 
+of each reaction j. 
+Reaction(j) 
+i0j,ref (A m-2) 
+aa,j 
+ac,j 
+nj 
+Uj (V) 
+(3) 
+0.394 
+0.5 
+0.5 
+1 
+0.0 
+(4) 
+1.972 
+0.5 
+0.5 
+1 
+2.39 
+(5) 
+0.019 
+0.5 
+0.5 
+1 
+2.37 
+(6) 
+0.019 
+0.5 
+0.5 
+1 
+2.24 
+(7) 
+1.97E-4 
+0.5 
+0.5 
+1 
+2.04 
+(8) 
+1.97E-7 
+0.5 
+0.5 
+1 
+2.01 
+
+<<PAGE 38>>
+37 
+ 
+Supplementary Table 6 | Reference parameters about transport properties and reference 
+concentrations in FEM simulation. zi: charge number of species i. Di,0: diffusion coefficient of 
+species i. Ci,ref: reference concentration of species i in the electrolyte. 
+Specie(i) 
+zi 
+Di,0 (m2s-1) 
+Ci,ref (mol m-3) 
+ 
+1 
+1E-10 
+1001.04 
+ 
+0 
+1E-9 
+19 
+ 
+-2 
+6E-10 
+0.178 
+ 
+-2 
+6E-10 
+0.324 
+ 
+-2 
+1E-10 
+0.02 
+ 
+-2 
+1E-10 
+5.229E-7 
+ 
+-2 
+1E-10 
+8.267E-10 
+ 
+-1 
+4E-10 
+1000 
+ 
+ 
+Supplementary Table 7 | Reference parameters for precipitation reactions in FEM simulation. 
+Precipitate 
+Rate Constant 
+Solubility Product 
+Molar Volume 
+ 
+1[s-1] 
+19 [mol m-3] 
+1.239E-4 
+ 
+1E-4[m6 mol2 s-1] 
+1E2[mol3 m-9] 
+2.768E-5 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+<<PAGE 39>>
+38 
+ 
+Supplementary Table 8 | Calculation details of the BD for Ni-based TMCs. IBand, ILatt and BD 
+are defined in Fig 1. 
+Catalyst 
+IBand (s-p) 
+IBand (d-p) 
+ILatt 
+BD 
+Overpotential (V) 
+Peak Current (mA) 
+NiO 
+3.036 
+1.389 
+1.145 
+1.6227 
+-0.350 
+-0.615 
+NiS2 
+5.414 
+2.249 
+0.996 
+1.2241 
+-0.270 
+-0.740 
+NiSe2 
+3.782 
+1.798 
+0.746 
+0.9890 
+-0.230 
+-0.990 
+Ni2P 
+1.056 
+0.318 
+1.082 
+1.5797 
+-0.340 
+-0.590 
+Ni3C 
+0.502 
+0.675 
+0.934 
+1.5273 
+-0.290 
+-0.500 
+ 
+ 
+Supplementary Table 9 | Calculation details of the BD for various TMCs. 𝑟௖௔௧௔௟ and BD are 
+defined in Fig 1. 
+Catalyst 
+𝜀ௗ of cation (eV) 
+𝜀௣ of anion (eV) 
+𝑟௖௔௧௔௟ (Å) 
+BD 
+TiN 
+-3.4475 
+-3.9980 
+2.17 
+0.5866 
+TiO2 
+-4.2500 
+-3.8555 
+1.99 
+0.9183 
+VN 
+-3.2275 
+-2.5635 
+2.17 
+1.0096 
+Mn4N 
+-4.3790 
+-3.4930 
+2.21 
+0.8753 
+Mn3P 
+-4.2855 
+-2.1440 
+2.42 
+1.1479 
+CoO 
+-3.8445 
+-2.6485 
+1.99 
+1.2398 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+<<PAGE 40>>
+39 
+ 
+Supplementary Table 10 | The mass for each component in the Ah-level Li-S batteries. 
+Component 
+Mass (g) 
+Cathode 
+2.22 
+Anode 
+0.88 
+Al foil & Cu foil 
+0.35 
+Separator 
+0.13 
+Electrolyte 
+5.69 
+Tab & package 
+1.27 
+Total 
+10.54 
+ 
+The following equation was used to calculate the specific energy density of the pouch cell:  
+𝐸௚ൌ𝑉𝐶
+∑𝑚௜
+ሺ20ሻ 
+where Eg is the energy density (Wh kg-1), V is the average output voltage (V), which is 
+approximately 2.1 V for this pouch cell, C is the discharge capacity (Ah), and mi is the mass for 
+each component in the pouch cell (g). The total weight includes the weight of cathode (CNT loaded 
+melamine formaldehyde, sulfur, conductive carbon, binder, and catalyst), anode (200 μm Li foil), 
+Al/Cu foil, separator, electrolyte (ρelectrolyte = 1.0 g mL-1), tab, and Al plastic film (88 μm). The 
+specific energy density of the assembled 1.427-g-sulfur pouch cell was thus calculated to be 402 
+Wh kg-1. 
+37-55 
+ 
+ 
+ 
+
+<<PAGE 41>>
+40 
+ 
+Supplementary References 
+1 
+Zhang, S. Y. et al. Theoretical kinetic quantitative calculation predicted the expedited 
+polysulfides degradation. Nano Res., 1-8, (2022). 
+2 
+Zhang, Q. et al. Understanding the anchoring effect of two-dimensional layered materials 
+for lithium–sulfur batteries. Nano Lett. 15, 3780-3786, (2015). 
+3 
+Li, C. et al. Conductive and polar titanium boride as a sulfur host for advanced lithium–
+sulfur batteries. Chem. Mater. 30, 6969-6977, (2018). 
+4 
+Xiao, W., He, Q. & Zhao, Y. Virtual screening of two-dimensional selenides and transition 
+metal doped SnSe for lithium-sulfur batteries: A first-principles study. Appl. Surf. Sci. 570, 151213, 
+(2021). 
+5 
+Li, Z. et al. A 3D Nitrogen-Doped Graphene/TiN Nanowires Composite as a Strong 
+Polysulfide Anchor for Lithium–Sulfur Batteries with Enhanced Rate Performance and High Areal 
+Capacity. Adv. Mater. 30, 1804089, (2018). 
+6 
+Song, Y. et al. Synchronous immobilization and conversion of polysulfides on a VO 2–
+VN binary host targeting high sulfur load Li–S batteries. Energy Environ. Sci. 11, 2620-2630, 
+(2018). 
+7 
+Zhang, L. et al. Enhanced polysulfide regulation via porous catalytic V2O3/V8C7 
+heterostructures derived from metal–organic frameworks toward high-performance Li–S batteries. 
+ACS Nano 14, 8495-8507, (2020). 
+8 
+Zhu, X. et al. In situ assembly of 2D conductive vanadium disulfide with graphene as a 
+high-sulfur-loading host for lithium–Sulfur batteries. Adv. Energy Mater. 8, 1800201, (2018). 
+
+<<PAGE 42>>
+41 
+ 
+9 
+Chen, Z., Lv, W., Kang, F. & Li, J. Theoretical Investigation of the Electrochemical 
+Performance of Transition Metal Nitrides for Lithium–Sulfur Batteries. J. Phys. Chem. C 123, 
+25025-25030, (2019). 
+10 
+Guo, K. et al. Polysulfides shuttling remedies by interface-catalytic effect of Mn3O4-
+MnPx heterostructure. Energy Stor. Mater. 36, 496-503, (2021). 
+11 
+Liu, G. et al. Modulating the dp orbital coupling of manganese chalcogenides for efficient 
+polysulfides conversion in lithium–sulfur batteries. J. Power Sources 552, 232244, (2022). 
+12 
+Huang, S. et al. Regulating the polysulfide redox conversion by iron phosphide 
+nanocrystals for high-rate and ultrastable lithium-sulfur battery. Nano Energy 51, 340-348, (2018). 
+13 
+Sun, W. et al. Rational construction of Fe2N@ C yolk–shell nanoboxes as multifunctional 
+hosts for ultralong lithium–sulfur batteries. ACS Nano 13, 12137-12147, (2019). 
+14 
+Sun, W. et al. Monodispersed FeS2 Electrocatalyst Anchored to Nitrogen-Doped Carbon 
+Host for Lithium–Sulfur Batteries. Adv. Funct. Mater. 32, 2205471, (2022). 
+15 
+Wu, L. et al. Scalable 3D Honeycombed Co3O4 Modified Separators as Polysulfides 
+Barriers for High-Performance Li–S Batteries. ACS Appl. Mater. Interfaces 14, 35894-35904, 
+(2022). 
+16 
+Zhou, J. et al. Deciphering the modulation essence of p bands in Co-based compounds on 
+Li-S chemistry. Joule 2, 2681-2693, (2018). 
+17 
+Hong, X.-J. et al. Sulfophilic and lithophilic sites in bimetal nickel-zinc carbide with fast 
+conversion of polysulfides for high-rate Li-S battery. Chem. Eng. J. 404, 126566, (2021). 
+18 
+Shi, L. et al. Fe-cation Doping in NiSe2 as an Effective Method of Electronic Structure 
+Modulation towards High-Performance Lithium-Sulfur Batteries. ChemSusChem 14, 1710-1719, 
+(2021). 
+
+<<PAGE 43>>
+42 
+ 
+19 
+Wang, J. et al. Infixing NiS2 nanospheres into a three-dimensional rGO/CNTs-Li carbon 
+composite as superior electrocatalyst for high-performance Li− S batteries. ChemNanoMat 6, 976-
+983, (2020). 
+20 
+Wu, Y. et al. Realizing fast polysulfides conversion within yolk-shelled NiO@ HCSs 
+nanoreactor as cathode host for high-performance lithium-sulfur batteries. J. Mater. Chem. A 10, 
+16309-16318, (2022). 
+21 
+Yang, S. et al. Ni2P electrocatalysts decorated hollow carbon spheres as bi-functional 
+mediator against shuttle effect and Li dendrite for Li-S batteries. Nano Energy 90, 106584, (2021). 
+22 
+Deng, T. et al. Mo2C - Embedded Carbon Nanofibers as the Interlayer in High -
+Performance Lithium-Sulfur Batteries. ChemElectroChem 9, e202101519, (2022). 
+23 
+Lei, D. et al. Facile Synthesis of Heterostructured MoS2–MoO3 Nanosheets with Active 
+Electrocatalytic Sites for High-Performance Lithium–Sulfur Batteries. ACS Nano 15, 20478-
+20488, (2021). 
+24 
+Ma, F. et al. Mo2N Quantum Dots Decorated N-Doped Graphene Nanosheets as Dual-
+Functional Interlayer for Dendrite-Free and Shuttle-Free Lithium-Sulfur Batteries. Adv. Funct. 
+Mater. 32, 2206113, (2022). 
+25 
+Lei, T. et al. Multi-functional layered WS2 nanosheets for enhancing the performance of 
+lithium–sulfur batteries. Adv. Energy Mater. 7, 1601843, (2017). 
+26 
+Sahu, T. S. et al. Regulating Polysulfide Conversion Kinetics Using Tungsten Diboride as 
+Additive For High-Performance Li–S Battery. Small 18, 2203222, (2022). 
+27 
+Wang, S. et al. Immobilizing Polysulfide via Multiple Active Sites in W18O49 for Li-S 
+batteries by Oxygen Vacancy Engineering. Energy Stor. Mater. 43, 422-429, (2021). 
+
+<<PAGE 44>>
+43 
+ 
+28 
+Wu, Y. et al. Ultradispersed WxC nanoparticles enable fast polysulfide interconversion for 
+high-performance Li-S batteries. Nano Energy 59, 636-643, (2019). 
+29 
+Yao, W. et al. P-Doped NiTe2 with Te-Vacancies in Lithium-Sulfur Batteries Prevents 
+Shuttling and Promotes Polysulfide Conversion. Adv. Mater. 34, e2106370, (2022). 
+30 
+Xu, J. et al. Donor dominated triazine-based microporous polymer as a polysulfide 
+immobilizer and catalyst for high-performance lithium-sulfur batteries. Chem. Eng. J. 392, 123694, 
+(2020). 
+31 
+Li, Z. et al. A 3D Nitrogen-Doped Graphene/TiN Nanowires Composite as a Strong 
+Polysulfide Anchor for Lithium–Sulfur Batteries with Enhanced Rate Performance and High Areal 
+Capacity. Adv. Mater. 30, 1804089, (2018). 
+32 
+Shen, J. et al. Mechanistic Understanding of Metal Phosphide Host for Sulfur Cathode in 
+High-Energy-Density Lithium–Sulfur Batteries. ACS Nano 13, 8986-8996, (2019). 
+33 
+Chen, T. et al. Metallic and polar Co9S8 inlaid carbon hollow nanopolyhedra as efficient 
+polysulfide mediator for lithium−sulfur batteries. Nano Energy 38, 239-248, (2017). 
+34 
+Peng, H.-J. et al. Enhanced Electrochemical Kinetics on Conductive Polar Mediators for 
+Lithium-Sulfur Batteries. Angew. Chem. Int. Ed. 55, 12990-12995, (2016). 
+35 
+Shen, Z. et al. Rational Design of a Ni(3)N(0.85) Electrocatalyst to Accelerate Polysulfide 
+Conversion in Lithium-Sulfur Batteries. ACS Nano 14, 6673-6682, (2020). 
+36 
+Liu, G. et al. Modulating the d-p orbital coupling of manganese chalcogenides for efficient 
+polysulfides conversion in lithium–sulfur batteries. J. Power Sources 552, 232244, (2022). 
+37 
+Luo, L., Li, J., Yaghoobnejad Asl, H. & Manthiram, A. In-Situ Assembled VS4 as a 
+Polysulfide Mediator for High-Loading Lithium–Sulfur Batteries. ACS Energy Lett. 5, 1177-1185, 
+(2020). 
+
+<<PAGE 45>>
+44 
+ 
+38 
+Zhong, M. e. et al. A Cost- and Energy Density-Competitive Lithium-Sulfur Battery. 
+Energy Stor. Mater. 41, 588-598, (2021). 
+39 
+Ma, Z. et al. Wide-Temperature-Range Li–S Batteries Enabled by Thiodimolybdate 
+[Mo2S12] 2–as a Dual-Function Molecular Catalyst for Polysulfide Redox and Lithium 
+Intercalation. ACS Nano 16, 14569-14581, (2022). 
+40 
+Chen, Y. et al. Co–Fe mixed metal phosphide nanocubes with highly interconnected-pore 
+architecture as an efficient polysulfide mediator for lithium–sulfur batteries. ACS Nano 13, 4731-
+4741, (2019). 
+41 
+Kim, M.-S. et al. Facile and scalable fabrication of high-energy-density sulfur cathodes for 
+pragmatic lithium-sulfur batteries. J. Power Sources 422, 104-112, (2019). 
+42 
+Li, Y. et al. Two Birds with One Stone: Interfacial Engineering of Multifunctional Janus 
+Separator for Lithium–Sulfur Batteries. Adv. Mater. 34, 2107638, (2022). 
+43 
+Luo, L., Chung, S. H., Yaghoobnejad Asl, H. & Manthiram, A. Long-life lithium–sulfur 
+batteries with a bifunctional cathode substrate configured with boron carbide nanowires. Adv. 
+Mater. 30, 1804149, (2018). 
+44 
+Qie, L. & Manthiram, A. High-energy-density lithium–sulfur batteries based on blade-cast 
+pure sulfur electrodes. ACS Energy Lett. 1, 46-51, (2016). 
+45 
+Fang, Z. et al. Mesoporous carbon nanotube aerogel-sulfur cathodes: A strategy to achieve 
+ultrahigh areal capacity for lithium-sulfur batteries via capillary action. Carbon 166, 183-192, 
+(2020). 
+46 
+Hu, S. et al. Ionic-Liquid-Assisted Synthesis of FeSe–MnSe Heterointerfaces with 
+Abundant Se Vacancies Embedded in N, B Co - Doped Hollow Carbon Microspheres for 
+Accelerating the Sulfur Reduction Reaction. Adv. Mater. 34, 2204147, (2022). 
+
+<<PAGE 46>>
+45 
+ 
+47 
+Xue, W. et al. Intercalation-conversion hybrid cathodes enabling Li–S full-cell 
+architectures with jointly superior gravimetric and volumetric energy densities. Nat. Energy 4, 
+374-382, (2019). 
+48 
+Huang, Y. et al. Sulfur Cathodes with Self-Organized Cellulose Nanofibers in Stable Ah-
+Level,> 300 Wh kg− 1 Lithium–Sulfur Cells. Adv. Energy Mater., 2202474, (2022). 
+49 
+Zhao, C.-X. et al. Semi-immobilized molecular electrocatalysts for high-performance 
+lithium–sulfur batteries. J. Am. Chem. Soc. 143, 19865-19872, (2021). 
+50 
+Zhao, C. et al. A high-energy and long-cycling lithium–sulfur pouch cell via a macroporous 
+catalytic cathode with double-end binding sites. Nat. Nanotechnol. 16, 166-173, (2021). 
+51 
+Zhao, M. et al. Redox comediation with organopolysulfides in working lithium-sulfur 
+batteries. Chem 6, 3297-3311, (2020). 
+52 
+Song, Y.-W. et al. Cationic lithium polysulfides in lithium&#x2013;sulfur batteries. Chem 
+8, 3031-3050, (2022). 
+53 
+Yao, W. et al. Dynamic Intercalation–Conversion Site Supported Ultrathin 2D 
+Mesoporous SnO2/SnSe2 Hybrid as Bifunctional Polysulfide Immobilizer and Lithium Regulator 
+for Lithium–Sulfur Chemistry. ACS Nano 16, 10783-10797, (2022). 
+54 
+Shi, L. et al. Reaction heterogeneity in practical high-energy lithium–sulfur pouch cells. 
+Energy Environ. Sci. 13, 3620-3632, (2020). 
+55 
+Guo, H. et al. Ternary Transition Metal Sulfide as High Real Energy Cathode for Lithium–
+Sulfur Pouch Cell Under Lean Electrolyte Conditions. Small Methods 6, 2101402, (2022). 
+ 

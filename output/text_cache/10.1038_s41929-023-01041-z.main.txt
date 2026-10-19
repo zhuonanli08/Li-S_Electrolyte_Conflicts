@@ -1,0 +1,1662 @@
+
+<<PAGE 1>>
+Solvation Structure of Conjugated Organosulfur Polymers for
+Lithium−Sulfur Battery Cathodes
+Diptesh Gayen, Yannik Schütze, Sebastien Groh, and Joachim Dzubiella*
+Cite This: ACS Appl. Polym. Mater. 2023, 5, 4799−4810
+Read Online
+ACCESS
+Metrics & More
+Article Recommendations
+*
+sı
+Supporting Information
+ABSTRACT: Lithium−sulfur (Li/S) batteries constitute a prom-
+ising, next-generation energy storage technology due to their high
+theoretical energy density and low cost. To increase sustainability,
+processability, and battery performance, conducting organic
+polymers have become a focus of research for the development
+of better cathode materials. Here, we investigate the solvation
+structure of a single conjugated poly(4-(thiophen-3-yl)-
+benzenethiol) (PTBT) polymer as a high-potential macro-
+molecular candidate for synthesizing optimized cathodes in Li/S
+batteries. Using molecular dynamics (MD) simulation with newly
+optimized force-field parameters, we examine the effects of
+polymer length and various molar fractions of the popular
+dimethoxyethane (DME) and dioxolane (DOL) solvents on the structure of the PTBT polymer at a temperature of 300 K. We
+characterize basic polymeric properties as well as the composition-dependent solvent adsorption structure and thermodynamics and
+uncover significant tunability by the solvent. Importantly, we find an interesting cosolvency effect, namely that a solvent mixture
+composed of 25% DME and 75% DOL leads to maximum swelling behavior, which should be important for optimizing cathode
+fractality and permeability in applications. Our study thus reveals intriguing polymer−solvent correlations and serves as an important
+prerequisite for future MD studies of realistic polymeric cathode structures and processes, e.g., toward charge transport in vulcanized
+(S-linked) network topologies.
+KEYWORDS: Solvent quality, cosolvency effect, conjugated polymer, polymer cathode, molecular dynamics simulations,
+force-field development, lithium-sulfur batteries, solvation structure
+1. INTRODUCTION
+The lithium−sulfur (Li/S) battery1−6 is a promising electro-
+chemical system with a high theoretical specific capacity of
+1672 mA hg−1 and a favorable specific energy density of 2567
+Wh kg−1, making it a promising alternative for a traditional Li-
+ion battery. Furthermore, sulfur is a naturally abundant, easily
+available, and relatively inexpensive material that is also
+environmentally friendly, all of which is favorable for battery
+applications. However, despite the above-mentioned theoreti-
+cal advantages, a few drawbacks need to be overcome in order
+to be commercially viable. These include (i) the insulating
+nature of elemental sulfur and sulfur-containing organic
+compounds,7 (ii) the formation and diffusion of low- and
+high-order lithium polysulfide, which lead to capacity
+degradation over time due to the polysulfide shuttle effect,8,9
+and (iii) the volumetric expansion of the Li/S cell that can
+cause degradation of the electrodes.10
+Up to now, two major strategies have been proposed for
+designing the cathode to limit the shuttle effect. Based on the
+first strategy, although the production and dissolution of
+polysulfides still occur with a solid cathode, the structure of the
+cathode prevents the shuttling of polysulfides from the cathode
+to the anode.11−14 However, the nonpolarity of the carbon
+materials results in insufficient physical confinement of lithium
+polysulfides leading to low coulomb efficiency, rapid capacity
+decay, and self-discharge.15 The second strategy involves the
+use of conjugated organosulfur-based polymer systems16−19
+that chemically confine the polysulfides, thereby minimizing
+their transport from the cathode to the anode.
+Organosulfur-based polymers20,21 have attracted much
+attention due to their abundant resources, environmental
+friendliness, and adaptable structure. In organosulfur-based
+polymers, rather than being free, sulfur chains are introduced
+between organic functional groups (R) by means of covalent
+C−S bonds. Such an organosulfur-based polymer offers a S−S
+bond, which splits during reduction (RSm
+−) and reforms during
+oxidation (RSmR), where m is the rank of the sulfur chain. This
+Received:
+February 27, 2023
+Accepted:
+May 23, 2023
+Published: June 10, 2023
+Article
+pubs.acs.org/acsapm
+© 2023 American Chemical Society
+4799
+https://doi.org/10.1021/acsapm.3c00379
+ACS Appl. Polym. Mater. 2023, 5, 4799−4810
+Downloaded from pubs.​acs.​org/​aapmcd/​article-pdf/​5/​7/​4799/​3321539/​ap3c00379.​pdf by TSINGHUA UNIV user on 03 October 2026
+
+<<PAGE 2>>
+strong chemical bond between the sulfur chain and the organic
+group suppresses the shuttle effect and thus prevents capacity
+fading. Recently, Zou et al.22 have presented an overview of the
+benefits of sulfur-containing polymers, the latest advancement,
+and an in-depth analysis of the mechanism in Li/S batteries.
+However, nonconjugated organosulfur compounds show very
+poor conductivity.20 To improve conductivity, conjugated
+organic compounds such as polypyrrole, polyaniline, and
+polythiophene can be added to the backbone of the
+organosulfur-based polymer.23 Like organosulfur-based poly-
+mers, conjugated organic compounds can also chemically
+confine the polysulfide and thus prevent the shuttle effect.16 In
+summary, a conjugated organosulfur-based polymer can reduce
+the polysulfide shuttle effect by confinement of sulfur atoms,
+increase the conductivity of the polymer, and effectively reduce
+the volume change of the sulfur cathode during the charge/
+discharge process.
+Therefore, in the present work, we consider poly(4-
+(thiophene-3-yl)benzenethiol) (PTBT) (Figure 1) as a
+conjugated organosulfur-based polymer in which 4-(thio-
+phene-3-yl)benzenethiol (TBT) (Figure 1) acts as a monomer.
+The PTBT polymer is a flexible, conjugated, carbon-additive-
+free cathode for Li/S batteries.24 The thiophene ring in TBT
+acts as the conjugated backbone, while benzenethiol is the
+organosulfur-based side chain. In recent work, some of us have
+shown that out of different regioregularities of thiophene
+groups, a head-to-tail/head-to-tail regularity leads to a
+crystalline phase, while a head-to-head/tail-to-tail regularity
+shows no long-range order.25
+The TBT monomer has an active sulfur binding site in the
+benzenethiol group, which helps to confine the polysulfide
+during the discharge process. The structure of PTBT and
+vulcanized PTBT, known as S/PTBT24 (see Figure 1), has
+been investigated both theoretically26 and experimentally.24 It
+has been found that the S/PTBT cathode exhibits a reversible
+capacity of around 870 mAhg−1 at 0.1C (C-rate: the speed at
+which a battery is fully charged or discharged), and cycling
+performance is better than the physical mix of sulfur & PTBT
+cathode.24
+Among the other components in lithium−sulfur batteries,
+the solvent, the electrolyte types, and the electrolyte
+composition27 play significant roles in enhancing the initial
+capacity and cyclic stability. The choice of solvent must be
+carefully matched to the specific cathode material in order to
+achieve optimal performance. The basic requirements of a
+solvent for lithium−sulfur batteries are (i) a high ionic
+conductivity, (ii) a moderate polysulfide solubility, (iii) a low
+viscosity, and (iv) it should be electrochemically stable against
+lithium.28 For polymer-based cathodes, since the solvent
+quality controls the polymer conformation, the solvent quality
+should also be viewed as a basic requirement.
+Wang et al.28 reported that ether-type solvents have good
+solubility of elemental sulfur and good stability against the
+polysulfides in an electrolyte solution. One solvent that has
+been found to have good solubility of elemental sulfur and
+good stability against polysulfides in an electrolyte solution is
+1,3-dioxolane (DOL)29 (Figure 2c). This cyclic ether solvent
+has a low polysulfide solubility and kinetics, but it has a more
+stable solid electrolyte interface on the anode.30 On the other
+hand, 1,2-dimethoxyethane (DME) (Figure 2d) is a polar
+ether-type solvent with a relatively low viscosity that is reactive
+with lithium30 but provides high polysulfide solubility and
+kinetics.
+Recent developments have demonstrated that binary
+mixtures of DME and DOL are found to be suitable solvents
+for Li/S batteries.28,30−32 These solvents are able to balance
+the trade-off between polysulfide solubility and viscosity,
+resulting in improved performance and stability for lithium−
+sulfur batteries. Luque Di Salvo et al.33 recently conducted a
+study using the ether-based solvents DME and DOL to study
+the conformational space of lithium polysulfide (PS). The
+results showed a clear dominance of the closed conformer of
+PS over the open conformer. Apart from that, several
+theoretical and experimental studies34−36 have been performed
+Figure 1. Schematic figure of the preparation of the sulfur/poly(4-
+(thiophene-3-yl)benzenethiol) (S/PTBT) cathode. First, TBT
+monomers are electropolymerized to form a PTBT polymer. Second,
+the vulcanization process (the addition of polysulfides) can lead to (a)
+intrachain and (b) interchain between two TBT units. Adapted with
+permission from ref 26. Copyright 2021 Royal Society of Chemistry.
+Figure 2. Stick-ball representations of the (I) monomers and (II)
+solvent molecules involved in our simulations. In (I), we can see (a)
+an S/PTBT monomer and (b) a TBT monomer. Different colors
+represent different atom types as follows: in gray HA, in light green
+HS, in black CA, in dark green CS, in brown CW, in yellow S, and in
+light yellow SH. In (II), solvent molecules (c) 1,3-dioxolane (DOL)
+and (d) 1,2-dimethoxyethane (DME) are considered in this study.
+ACS Applied Polymer Materials
+pubs.acs.org/acsapm
+Article
+https://doi.org/10.1021/acsapm.3c00379
+ACS Appl. Polym. Mater. 2023, 5, 4799−4810
+4800
+Downloaded from pubs.​acs.​org/​aapmcd/​article-pdf/​5/​7/​4799/​3321539/​ap3c00379.​pdf by TSINGHUA UNIV user on 03 October 2026
+
+<<PAGE 3>>
+to shed light on the DME/DOL solvent properties, while a
+detailed theoretical investigation of the structural properties of
+a conjugated organosulfur-based polymer embedded in a
+mixture of DME and DOL solvent is still missing.
+As a first step toward a polymer-based cathode, the aim of
+this study is to reveal the structural and dynamical properties
+of a single PTBT polymer interacting with a mixture of DME
+and DOL solvents. Mixed solvents with varying compositions
+have been demonstrated by simulations to have intricate effects
+on polymer conformations because of the complex interplay
+between side-chain chemistry and hydrogen bonding effects.37
+Our results on the solvent-mediated conformational behavior
+of a single polymer will then help to rationalize the complex
+mechanical behavior of the whole cathode material in future
+studies. The objectives of this paper are, in particular, to (i)
+construct and optimize the force field for PTBT and S/PTBT
+polymers, (ii) characterize the basic polymeric properties such
+as bond length, persistence length, contour length, and the
+characteristic ratio of PTBT, and (iii) reveal how a certain
+composition of DME and DOL solvent can be used as a design
+parameter to optimize the solvation and structural properties
+of a conjugated organosulfur-based polymer. Our study thus
+lays the ground for further MD studies of realistic polymeric
+cathode structures and processes, for example, to construct S-
+linked cathode network topologies and study electrolyte
+transport.38
+The paper is structured as follows. First, we introduce the
+polymer and provide a brief overview of the PTBT and S/
+PTBT polymers. We then proceed to discuss the force fields
+used for both the polymer and solvents, providing details on
+the simulation methods and parameters used. In the following
+section, we present and analyze the simulation results, focusing
+on the basic properties of the polymer, its conformation, and
+the adsorption properties of the solvent. Finally, we summarize
+our findings and draw conclusions in the last section.
+2. COMPUTER SIMULATIONS AND ANALYSIS
+METHODS
+2.1. PTBT and S/PTBT Polymer. The preparation of a S/PTBT
+polymer is illustrated in Figure 1. In the first step, TBT monomers are
+electropolymerized to form a PTBT polymer. In the next step, the
+sulfur is embedded into the PTBT framework during vulcanization to
+form a free-standing S/PTBT polymer. Schütze et al.26 suggested two
+different ways in which polysulfide can bind to the TBT units: (i) the
+sulfur chain can connect two adjacent TBT units of the same polymer
+chain to form an intrachain (Figure 1(a)) and (ii) a sulfur chain can
+form interchain cross-linking TBT monomers that belong to different
+polymer chains (Figure 1(b)).
+TBT is the basic polymeric unit, both for PTBT and S/PTBT
+polymers. A TBT unit consists of 20 atoms, which can be grouped
+into 7 different atom types, CA, CW, CS, HA, HS, SH, and S, based
+on the OPLS-AA force field39 as described in Figure 2. In the case of
+S/PTBT, two TBT units are connected to each other via a sulfur
+chain of rank m, or in other words, by a sulfur chain containing m
+sulfur atoms. While in principle, the vulcanization process can lead to
+both intra and interchains, Schütze et al.26 demonstrated using density
+functional theory (DFT) data combined with a statistical binding
+model that S/PTBT with interchains and a chain length of m = 5 has
+the highest probability of being formed during the vulcanization
+process. Since no empirical potential to model such a system is
+available in the open literature, a force field was developed for both
+PTBT and S/PTBT polymers.
+2.2. Force Fields. 2.2.1. Polymer. All bonds and angles are
+constructed with harmonic potentials, while OPLS39 and cossq40
+(cosine square term) are considered for dihedrals and improper
+dihedrals, respectively. Flexible harmonic bonds were chosen to be
+consistent with the bonded force field of the solvent molecules. The
+parameters for the bonds, angles, and most of the dihedrals are taken
+from the original OPLS-AA force field, as they do not contribute to
+any physicochemical properties.41 While the backbone dihedral
+parameter S−CW−CW−S (Figure S4) of PTBT is adapted from
+the ones proposed by Wildman et al.,41 the parameters of the dihedral
+interactions in the sulfur chain, namely CA−CA−S−S (Figure
+S3(b)), CA−S−S−S (Figure 3(c)), and S−S−S−S (Figure 3(d)),
+are parametrized. Out of these three dihedrals, CA−CA−S−S is used
+to validate the parametrization method in this study. In the OPLS
+framework, the dihedral energy, Edihd, is written as
+=
+[
++
+] +
+[
+] +
+[
++
+]
++
+[
+]
+E
+k
+k
+k
+k
+2 1
+cos( )
+2 1
+cos(2 )
+2 1
+cos(3 )
+2 1
+cos(4 )
+dihd
+dihedrals
+1
+2
+3
+4
+(1)
+where ki’s are the Fourier coefficients, and ϕ is the dihedral’s angle.
+The potential energy of the total system, Etotal, can be decomposed
+as the sum of the potential energy without the dihedral energy,
+Ezero‑dihd, and the dihedral energy, Edihd, as42
+=
++
+E
+E
+E
+total
+zero
+dihd
+dihd
+(2)
+While constraining the angle of the unknown dihedral, Etotal and
+Ezero‑dihd can be calculated through DFT and molecular statics (energy
+minimization) calculations, respectively, and thus, Edihd can be
+estimated numerically as a function of the constrained dihedral
+angle. By fitting the dihedral energy profile to eq 1, one can then
+parametrize the Fourier coefficients for a specific dihedral. In this
+study, Etotal is calculated with GAMESS43 using the “long-range
+correlation corrected” functional CAM-B3LYP44 with the 6-31G basis
+set. A convergence criterion for the total energy was set at 2.3 · 10−6
+kcal/mol. The Ezero‑dihd is calculated with LAMMPS40 using a
+conjugate gradient minimization algorithm with a tolerance for
+relative energy and force of 10−7 and 2.3 · 10−6 kcal/mol/Å,
+respectively. We have considered the phenyl disulfide (PHS2
+−) (see
+Figure 3. Relative energy profiles for (a) CA−S−S−S and (b) S−S−
+S−S dihedrals are calculated using the (c) phenyl trisulfide, PHS3
+−,
+and (d) phenyl tetrasulfide, PHS4
+−, anions (red circles represent the
+dihedral of interest), respectively. The black line represents the profile
+of the DFT energy, Etotal, while the red line corresponds to the profile
+obtained from the molecular statics’ energy minimization, Ezero‑dihd,
+which excludes the dihedral contribution. We subtracted the Ezero‑dihd
+profile from the Etotal profile to obtain the Edihd, blue line. Then, we fit
+this subtracted profile to the OPLS framework using eq 1, shown as
+the dashed magenta line. Finally, we added the Etotal and the fitted
+profile to obtain the “complete” profile, represented by the dashed
+orange line.
+ACS Applied Polymer Materials
+pubs.acs.org/acsapm
+Article
+https://doi.org/10.1021/acsapm.3c00379
+ACS Appl. Polym. Mater. 2023, 5, 4799−4810
+4801
+Downloaded from pubs.​acs.​org/​aapmcd/​article-pdf/​5/​7/​4799/​3321539/​ap3c00379.​pdf by TSINGHUA UNIV user on 03 October 2026
+
+<<PAGE 4>>
+Figure S3(b)), phenyl trisulfide (PHS3
+−) (see Figure 3(c)), and phenyl
+tetrasulfide (PHS4
+−) (see Figure 3(d)) groups to parametrize the CA−
+CA−S−S, CA−S−S−S, and S−S−S−S dihedrals. For each dihedral
+of interest, 19 constraining dihedral angles are taken into
+consideration, and for each constraining angle, the above-mentioned
+molecules are optimized by DFT calculations and by molecular statics
+to obtain Etotal and Ezero‑dihd, respectively.
+The methodology presented above has been validated through the
+reproduction of the dihedral energy profile of the CA−CA−S−S
+dihedral reported by Jungen et al.45 (see Figure S3 in SI). The
+calculated and fitted dihedral energy values for the CA−S−S−S and
+S−S−S−S are shown in Figure 3(a,b), respectively. The dihedral
+angle at which the energies are minimum for both CA−S−S−-S and
+S−S−S−S is around 80°, which is in accordance with previous
+studies.45,46 However, the energy barrier for CA−S−S−S (10.9 kcal/
+mol) is found to be lower than the energy barrier for S−S−S−S (16.5
+kcal/mol). The energy barrier for S−S−S−S is overestimated by
+approximately 3 kcal/mol when compared to the barrier obtained
+when considering tetrasulfide.46 Such a change in the energy barrier is
+thought to be due to the presence of the benzene group.
+The nonbonded interactions are treated by a combination of
+Lennard-Jones (LJ) and electrostatics potentials, while the electro-
+statics interactions are decomposed in short- and long-range
+contributions. The LJ and the short-range Coulomb potentials are
+truncated at 1 and 0.8 nm, respectively. The long-range electrostatic
+interactions are evaluated with the particle−particle−particle−mesh47
+(PPPM) method with a desired relative error in forces of 10−4 kcal/
+(mol Å). The classical geometrical combination rules, σij = (σiiσjj)1/2
+and ϵij = (ϵiiϵjj)1/2, are considered for the LJ size and energy
+parameters, respectively. Finally, all pairs of connected atoms
+separated by up to three bonds (1−2, 1−3, and 1−4 pairs) are
+excluded from nonbonded interactions.
+Unlike the “hard parameters” of the bond length and angle,
+dihedrals are soft and highly coupled to the electrostatics. Therefore,
+partial charges for both PTBT and S/PTBT polymers are para-
+metrized. We note that we do not expect that slightly different partial
+charges in the vulcanized PTBT (S/PTBT) compared to the model
+compounds (PHS−, PHS2
+−, and PHS3
+−) to significantly affect the force-
+field parameters (CA−CA−S−S, CA−S−S−S, and S−S−S−S−S), as
+contribution of the relative energy difference from the MD simulation
+is smaller than that from the DFT calculation (see Figures S3 and
+3(a,b)). We obtain the partial charges by utilizing the restrained
+electrostatic potential48 (RESP) scheme. We chose this scheme
+because it is robust and allows us to accurately detect the variations in
+the molecular environment we are studying. The molecular
+electrostatic potential surface is obtained from the single-point
+calculation CAM-B3LYP/cc-pVTZ using the molecular package
+GAMESS. The RESP charges are calculated using the MOLBY49
+software.
+In Tables S1 and S5, we have listed the charges for DiTBT and S/
+PTBT monomers, respectively. To ensure the charge neutrality of the
+molecule, we have confirmed that the net charge for each individual
+residue is zero, allowing for the construction of long polymer chains
+without losing charge neutrality.
+The force field was validated by recovering structural properties of
+DiTBT-Sm-DiTBT for m = 3−18 in the gas phase predicted by DFT
+calculations (see Figures S4 and S5).
+2.2.2. Solvents. The force field used for the simulation of DME and
+DOL solvents is the optimized version developed by Park et al.32 As
+summarized in Table S9, the mass densities of bulk solvents for
+various molar fractions are reported and compared to available data
+from the literature.
+2.3. Simulation Details. All-atom MD simulations are carried out
+with the LAMMPS simulation package.40 The simulations are
+performed using the following protocol. For the different PTBT
+chains considered in this work, a short MD simulation (∼20 ps) in
+vacuum is performed to coil up the chain. Then, the chain is solvated
+with DME, DOL, or a combination of both in different ratios. After
+minimization, the temperature of the system is equilibrated at 400 K
+for 2 ns in the NVT ensemble, and once equilibrated, a barostat is
+turned on to stabilize the pressure at 1 bar while maintaining the
+temperature at 400 K within a time interval of 2 ns. Finally, the
+temperature is decreased from 400 to 300 K within a time interval of
+2 ns while maintaining the pressure at 1 bar. The production
+simulations are carried out in the NPT ensemble at constant pressure
+and temperature of 1 bar and 300 K, respectively, with a time step of 1
+fs. The pressure is controlled by a Nose-Hoover barostat50 with a time
+constant of 1 ps, and the temperature is controlled by a Nose-Hoover
+thermostat51 with a time constant of 0.1 ps. For analysis, snapshots
+are saved every 20 ps.
+Nine different PTBT chain lengths are studied in this work. The
+chain length, n, is varied by changing the number of monomers
+between 3 and 40. The interactions between these polymers and a
+solvent (DME, DOL, and the mixture of both) are simulated for 600
+ns for n = 5−40 and 200 ns for the case of n = 3. To minimize
+interactions between the polymer and its own periodic images, the
+box size was scaled with the chain length. Table S10 summarizes the
+number of solvent molecules for each solvent composition and each
+chain length.
+The organic solvent composition is expressed using the molar
+fraction, x, of DME in the solvent as
+=
++
+x
+N
+N
+N
+DME
+DOL
+DME
+(3)
+where NDOL and NDME correspond to the number of DOL and DME
+molecules, respectively. The values of x considered are 0 (pure DOL),
+0.25, 0.50, 0.75, and 1 (pure DME).
+2.4. Analysis. 2.4.1. Persistence Length, Contour Length, and
+Kuhn Length. The polymer stiffness is characterized by the
+persistence length,52 lp, which can be understood as the distance
+over which the orientation of the bonds persists. The persistence
+length is determined by first measuring the autocorrelation, C(s), of
+two bond vectors (ai, aj) (where ai = ri −ri−1 with ri is the position of
+the ith monomer) separated by s = |i −j| bonds. C(s) is defined as
+=
+·
+C s
+a a
+( )
+i
+j
+(4)
+where ⟨.⟩represents the ensemble average.
+Then, to calculate lp, C(s) is fitted with an exponential functional
+form of the type
+i
+k
+jjjjjj
+y
+{
+zzzzzz
+=
+C s
+l
+sl
+l
+( )
+exp
+b
+b
+p
+2
+(5)
+where lb = |ai| is the average bond length between two consecutive
+thiophene groups’ centers of mass (COMs). For flexible chains, one
+can expect that the persistence length is in the same order as the bond
+length, while for semiflexible chains, the persistence length is larger
+than the bond length.52
+In the case of a semiflexible polymer, the Kuhn length, lk, is defined
+as twice the persistence length,53 lk = 2lp, and the contour length, lc, is
+obtained as lc = slb.52 According to Flory,52 in the case of a semiflexible
+polymer, the characteristic ratio, C∞, is related to the persistence
+length and bond length of the polymer as
+=
+C
+l
+l
+2
+1
+p
+b
+(6)
+2.4.2. Radius of Gyration. We estimate the radius of gyration, Rg,
+of the PTBT chains for different values of solvent molar fractions.
+From Flory’s law,52 the dependence of the radius of gyration of a
+polymer upon chain length, n, can be written as
+=
+R
+bn
+g
+(7)
+where ν is the Flory exponent and b is the scaling constant. The
+magnitude of the Flory exponent gives access to the quality of the
+solvent. Thus, for polymers in poor solvent conditions, ν ≈0.33, for
+real chains at theta solvent conditions, ν ≈0.5, and in good solvent
+conditions, ν ≈0.58.52 Experimentally, it was revealed that mixing
+two individual poor solvents can lead to a binary solvent with a good
+ACS Applied Polymer Materials
+pubs.acs.org/acsapm
+Article
+https://doi.org/10.1021/acsapm.3c00379
+ACS Appl. Polym. Mater. 2023, 5, 4799−4810
+4802
+Downloaded from pubs.​acs.​org/​aapmcd/​article-pdf/​5/​7/​4799/​3321539/​ap3c00379.​pdf by TSINGHUA UNIV user on 03 October 2026
+
+<<PAGE 5>>
+quality.54 This effect is referred to as “cosolvency.” Inversely, the
+mixture of two good solvents can lead to a poor solvent, also known as
+a “co-non-solvency” effect.55
+2.4.3. Intramolecular Structure Factor. An important structural
+descriptor for a single-chain polymer is the intramolecular structure
+factor, S(q). It describes the conformation of a polymer chain
+according to the spatial correlations between monomers within a
+single chain. The intramolecular structure factor for polymers of chain
+length, n, is given by56
+=
+=
+S q
+n
+qr
+qr
+( )
+1
+sin(
+)
+k
+n
+l k
+n
+kl
+kl
+1
+(8)
+where q is the magnitude of the wavevector, and rkl is the distance
+between monomers k and l along the polymer chains.
+For analyzing the data, the structure factor of the PTBT polymer is
+compared to the ones obtained for (i) an ideal chain, Sideal(q), and (ii)
+a solid sphere model, Ssolid(q). The structure factors obtained in the
+framework of an ideal chain and solid sphere models are defined by52
+=
+[
++
+]
+S
+q
+n
+q R
+q R
+q R
+( )
+2
+(
+)
+exp(
+)
+1
+g
+g
+g
+ideal
+2
+2
+2
+2
+2
+2
+2
+(9)
+and
+i
+k
+jjjjjjj
+y
+{
+zzzzzzz
+=
+[
+]
+S
+q
+n
+qR
+qR
+qR
+qR
+( )
+3
+( 5/3
+)
+sin( 5/3
+)
+( 5/3
+)cos( 5/3
+)
+g
+g
+g
+g
+solid
+3
+2
+(10)
+2.4.4. Relaxation Time and Rouse Time. The relaxation time, τ,
+gives us information about the “memory” of the configuration at a
+given time t0 to the subsequent configurations at time t0 + t. This
+relaxation time can be estimated by the decay of the time-dependent
+autocorrelation function of Rg.57 It is defined by
+=
+C
+t
+R t R
+R
+( )
+( )
+(0) /
+(0)
+RR
+g
+g
+g
+2
+(11)
+where R̅g(t) = Rg(t) −⟨Rg⟩is shifted by ⟨Rg⟩so that the function
+CRR(t) decays to zero for convenience. The relaxation time is obtained
+by fitting the time autocorrelation function to an exponential function
+in the form CRR(t) ≈exp(−t/τ). The relaxation time can be compared
+to the theoretical Rouse time,57 τr, which is defined as τr = s⟨Re
+2⟩/
+3π2D, where D is the diffusion coefficient of the PTBT polymer, s is
+the number of bonds in the polymer chain, and Re is the end-to-end
+distance. For ideal chains, Re is related to Rg by relation ⟨Re
+2⟩= 6 ⟨Rg
+2⟩,
+which we assume roughly holds for all our chains. Therefore, for
+statistical reasons, we estimate the Rouse time using the radius of
+gyration.
+2.4.5. Solvent Adsorption and Thermodynamic Properties. The
+Kirkwood Buff (KB) integral is a measure of the accumulation/
+depletion of solvent molecules in the vicinity of the polymer. The KB
+integral,58 Γij(R′), between species of types i and j, is calculated by
+integrating the radial distribution function (RDF), gij(r).58,59 In the
+thermodynamic limit, Γij(R′) is defined as
+=
+[
+]
+R
+g r
+r
+( )
+( )
+1 4
+dr
+ij
+R
+ij
+0
+2
+(12)
+where R′ is the extent of integration beyond which the RDF
+approaches unity. Physically, the KB integral reflects the mutual
+affinities between the particle types. Thus, a positive value of Γij shows
+positive affinity or accumulation of particles of type j with particles of
+type i, while a negative value shows negative affinity or depletion.
+The computation of the KB integral in a finite system under closed
+boundary conditions requires special treatment when the density
+fluctuations are nonlocal, and the simulation cell is smaller than any of
+the correlation lengths.60,61 In this work, while our boxes are
+sufficiently large, we further tried to minimize the finite size errors of
+the KB integrals by averaging g(r)s beyond a truncation distance
+(bulk value) and substituting the obtained average in place of unity in
+eq 12.62
+We are interested in calculating the accumulation/depletion of
+solvent molecules in the vicinity of both a trimer and a polymer chain.
+For a trimer, we calculated the RDF between the COM of the central
+monomer (MON) and the solvent molecules’ COM, while for a
+polymer chain, n = 5−40, we calculated the RDF between the COM
+of the whole PTBT (POL) and the solvent molecules’ COM.
+The partial molar volume (PMV),58 V0, is defined as the change in
+volume of the solution upon adding a solute while keeping the same
+number of solvent molecules, temperature, and pressure. In
+simulations, the PMV can be calculated directly from the KB integral.
+Since only one polymer chain interacting with a solvent is considered
+in this study, we assume the polymer is infinitely dilute (ρPTBT →0)
+in the mixture of DOL and DME.63 For notation purposes, the
+symbols p, a, and b refer to PTBT, DOL, and DME, respectively, and
+the PMVs of a TBT monomer, DOL, and DME are noted Vp
+0, Va
+0, and
+Vb
+0, respectively. In the limit of infinite dilution, Vp
+0 is a function of the
+KB integral of PTBT-DOL, Γpa, and PTBT-DME, Γpb. Vp
+0 is given by
+=
+V
+k T
+V
+V
+p
+B
+T
+a
+a
+pa
+b
+b
+pb
+0
+0
+0
+(13)
+where ρa and ρb are the DOL and DME number density, respectively.
+Similarly, Va
+0 and Vb
+0 are defined as
+=
++
+V
+1
+(
+)
+a
+b
+bb
+ba
+0
+(14)
+and
+=
++
+V
+1
+(
+)
+b
+a
+aa
+ba
+0
+(15)
+It is convenient to express the partial molar volume of the PTBT in
+terms of the isothermal compressibility, κT, and the two auxiliary
+quantities η and ζ. κT, η, and ζ are given by
+= k T
+T
+B
+(16)
+=
++
++
++
+(
+2
+)
+a
+b
+a b
+aa
+bb
+ab
+(17)
+=
++
++
++
+1
+(
+)
+a aa
+b bb
+a b
+aa bb
+ab
+2
+(18)
+In pure solvent conditions (x = 0 and x = 1), the above set of
+equations can be simplified. For x = 0, Γbb = Γba = 0, while Γaa = Γba =
+0 for x = 1. As a consequence, the auxiliary quantities η and ζ reduce
+to (i) when x = 0, η = ρa, and ζ = 1 + ρaΓaa and (ii) when x = 1, η =
+ρb, and ζ = 1 + ρbΓbb.
+Finally, the coordination number, Ni(RM), is the number of solvent
+molecules of type i in the first solvation shell surrounding a single
+molecule of type j, and it is given by
+=
+N R
+g r r
+(
+)
+4
+( ) dr
+i
+M
+i
+R
+ij
+0
+2
+M
+(19)
+where in general, RM is the extent of the first solvation shell defined as
+the location of the first minimum following the first peak of the RDF.
+This is a commonly used approach for analyzing the properties of bulk
+liquids.64
+3. RESULTS AND DISCUSSION
+3.1. Basic Polymeric Properties. To understand the
+solvent effect on the polymer, basic polymeric properties such
+as persistence length and Kuhn length are calculated for the
+PTBT polymer. In addition to these two length scales, we also
+report the average bond length and the contour length of the
+PTBT polymer.
+The average bond length, lb, averaged over all the polymer
+chain configurations is lb = 0.37 ± 0.02 nm. Since the
+persistence length is a quantity defined in the limit of an
+ACS Applied Polymer Materials
+pubs.acs.org/acsapm
+Article
+https://doi.org/10.1021/acsapm.3c00379
+ACS Appl. Polym. Mater. 2023, 5, 4799−4810
+4803
+Downloaded from pubs.​acs.​org/​aapmcd/​article-pdf/​5/​7/​4799/​3321539/​ap3c00379.​pdf by TSINGHUA UNIV user on 03 October 2026
+
+<<PAGE 6>>
+infinitely long chain, only n = 30, 35, and 40 are considered in
+the calculation of the persistence length. Using eq 4, we
+calculated the bond−bond autocorrelation function, consider-
+ing only the backbone of the PTBT polymer. The average
+persistence lengths are reported in Table 1 for different molar
+fractions. Our result shows that the PTBT is slightly stiffer in
+the case of x = 0.25 than for the other considered solvent
+compositions. Since the persistence length is larger than the
+bond length, PTBT can be considered as a semiflexible
+polymer, and thus, lk = 2lp. Kuhn lengths are summarized in
+Table 1 for the five solvent molar fractions considered in this
+study. In addition, the value of C∞for PTBT at different x
+values are reported in Table 1, by applying eq 6.
+As shown in Table S9, we have observed that the average
+contour length of PTBT increased linearly with the chain
+length. As expected, the solvent molar fraction does not seem
+to have any impact on the magnitude of the contour length.
+3.2. Polymer Conformation and Solvent Quality.
+Snapshots extracted from the simulations for n = 40 are
+shown in Figure 4 to illustrate the changes in the polymer’s
+state from a collapsed to a moderately expanded state as the
+solvent transitions from a pure solvent to a mixed solvent. To
+gain further insight, the radius of gyration and structure factor
+of the polymer were calculated at different values of x.
+The average radius of gyration, as calculated and reported in
+Table S10, generally increases as the chain length increases. In
+Figure 5(a), the Rg’s are plotted against n for all the
+configurations. By fitting Rg values to Flory’s scaling law (eq
+7), the scaling constant and the Flory exponent can be
+determined as a function of the molar fraction. The results of
+this fitting are shown in Figure 5(b) and reported in Table S13.
+We found the smallest Flory exponents ν = 0.3 and ν = 0.34
+in the cases of pure DOL (x = 0) and pure DME (x = 1),
+respectively. However, for mixtures of DME and DOL, the
+Flory exponent increased up to ν = 0.41 for a molar fraction of
+x = 0.25. This is consistent with the observed changes in
+persistence length and the characteristic ratio of the polymer
+obtained as a function of x. The lower value of the Flory
+exponent indicates a more compact chain, particularly in the
+case of pure DOL and pure DME. However, when we mix
+these two poor solvents, the chains slightly expand, that is,
+resulting in a so-called “cosolvency”65 effect in our polymer−
+solvent system. Nonetheless, “cosolvency” should be important
+for applications where the cathode material can thus be tuned
+in fractality and permeability by scanning through solvent
+compositions in this regime.
+The intramolecular structure factors were used to analyze
+the qualitative behavior of the solvent quality. The S(q)
+obtained for PTBT polymers with different chain lengths in a
+solvent mixture of molar fraction x = 0.25 are reported in
+Figure 6, where, for comparison purposes, the structure factor
+of the ideal chain, Sideal(q), and the one of the solid sphere,
+Ssolid(q), are plotted as well. Sideal(q) and Ssolid(q) are calculated
+using eqs 9 and 10, respectively, with a chain length, n = 40,
+and a radius of gyration Rg = 1.67 nm. The structure factor of
+the polymer system can be decomposed into three distinct
+regions based on the magnitude of the wave vector. The first
+region (I) is defined for wavevectors, q < 2 nm−1, while the
+third region, the fractal regime, (III), is obtained for the largest
+wave vectors, q > 4.2 nm−1. Between these two extreme
+regions, there is an “intermediate scale regime” (II) bounded
+by the structure factor of the ideal chain model and the one of
+the solid sphere model. Since the first region provides
+information about the length scale of the polymer chain, we
+can see in Figure 6 that the magnitude of the structure factor
+Table 1. Calculated Average Persistence Length, lp, Kuhn Length, lk, and Characteristic Ratio, C∞, Averaged over Three PTBT
+Chains (n = 30, 35, and 40) for Different Molar Fractionsa
+x
+0
+0.25
+0.5
+0.75
+1
+lp [nm]
+0.7(±0.1)
+0.8(±0.5)
+0.7(±0.3)
+0.7(±0.1)
+0.7(±0.2)
+lk [nm]
+1.4(±0.1)
+1.6(±0.5)
+1.4(±0.3)
+1.4(±0.1)
+1.4(±0.2)
+C∞
+2.79
+3.21
+2.91
+2.85
+2.83
+aThe statistical error is reported in the parentheses.
+Figure 4. Snapshots extracted from the simulation for chain length, n
+= 40, in the case of molar fractions, (a) x = 0 (collapsed), (b) x = 0.25
+(moderately expanded), and (c) x = 1 (collapsed) . For visualization
+purposes, we only present the backbone (thiophene group) of the
+polymer without the solvent molecules and also marked the two ends
+(red colors).
+Figure 5. (a) Radius of gyration, Rg, for n = 5−40 is plotted as a
+function of chain length, n, for all solvents. The symbols depict the
+simulation results, and the different dotted lines represent fits using
+the Flory scaling equation, eq 7. (b) Resulting Flory exponent (black
+circle) as a function of the molar fraction, with a dotted line as a guide
+to the eye. Fitting parameters are summarized in Table S13.
+ACS Applied Polymer Materials
+pubs.acs.org/acsapm
+Article
+https://doi.org/10.1021/acsapm.3c00379
+ACS Appl. Polym. Mater. 2023, 5, 4799−4810
+4804
+Downloaded from pubs.​acs.​org/​aapmcd/​article-pdf/​5/​7/​4799/​3321539/​ap3c00379.​pdf by TSINGHUA UNIV user on 03 October 2026
+
+<<PAGE 7>>
+scales linearly with the chain length. In the third region in
+which the structure factor provides structural information at a
+length scale lower than the Kuhn length, we observe a short-
+range structuring of the polymer.
+In a solvent mixture with molar fraction x = 0.25, the
+“intermediate scaling regime” is shifted toward the ideal chain
+model. This is consistent with the moderately expanded state
+of the polymer, as previously determined by the Flory
+exponent analysis, because the ideal chain model is more
+effective in describing the swollen state of the polymer (Figure
+4(b)) compared to the solid chain model. The agreement
+between the structure factor of the polymer and the ideal chain
+model supports the conclusion that the polymer is moderately
+expanded.
+A similar trend is observed in the pure solvent configurations
+(x = 0 and x = 1) for which a larger discrepancy of the
+“intermediate scale regime”56 with one of the ideal chains is
+obtained, suggesting a collapsed state of the polymer (see
+Figure S6(a,b) in the Supporting Information for the structure
+factors obtained for x = 0 and x = 1, respectively).
+Among the many possible dynamic properties, chain
+relaxation was studied. In Figure S7, we have plotted the
+autocorrelation function, CRR, of the Rg with n. From that, the
+estimated relaxation time, τ, decreases with a decrease of n.
+Since there was no significant difference in the viscosity among
+different solvent molar fractions,32 we calculated τ for n = 40
+using all concentrations. Our result indicates that τ ≈2.5 ± 0.7
+ns, which is of the same order of magnitude as the estimated
+Rouse time, τr = 1 ns. To estimate the Rouse time, we
+calculated the diffusion coefficient of different sizes of polymer
+in the normal diffusive (Fickian) regime (see Figure S7), which
+falls within the range of 8 to 40 · 10−5 cm2/s.
+3.3. Polymer−Solvent Interactions and Solvent
+Adsorption. 3.3.1. Solvent Adsorption to Polymer Mono-
+mers. To shed light on the interaction of a single monomer
+with solvent molecules, we have studied a trimer, n = 3, with
+solvent molecules. We chose to examine a trimer because it
+cannot bend along the backbone, which helps to eliminate
+many-body interactions.66 The solvation structure of the
+solvent molecules surrounding the trimer is illustrated in
+Figure 7(a) by the RDF between the central monomer of the
+trimer and DOL solvent molecules, gMON‑DOL(r), and the RDF
+between the central monomer and DME solvent molecules,
+gMON‑DME(r), for various concentrations of the solvent mixture.
+In the case of DOL, the first maximum peak is at r = 0.5 nm
+and is closer to the polymer than the peak of DME, which is at
+r = 0.56 nm. Furthermore, the magnitude of the first peak is
+Figure 6. Intramolecular structure factor, S(q), of PTBT polymer
+chains, is obtained for various chain lengths, n = 5−40, in a solvent
+mixture with a molar fraction x = 0.25. A unique S(q) shape is
+observed for wavelength, q > 2.0 nm−1. We have also plotted the S(q)
+for two limiting cases considering n = 40, with one being an ideal
+chain, Sideal(q) (gray dashed line), and the other being a solid sphere,
+Ssolid(q) (black dashed-dotted line). The fractal regime (region III) is
+clearly distinct from both the ideal chain and solid sphere.
+Figure 7. (a) RDFs between the COM of the central monomer of the trimer (MON) and the COM of the solvent molecules gMON‑DOL(r) and
+gMON‑DME(r) are shown for the limiting cases of pure DOL (x = 0) and pure DME (x = 1) as well as intermediate ratios x = 0.25, 0.5, and 0.75. The
+solid and dotted connecting lines represent the DOL and DME solvents, respectively. (Inset b) The KB integrals between the MON and DOL
+solvents, ΓMON‑DOL, and MON and DME solvents, ΓMON‑DME, are shown for the different molar fractions. The statistical errors were calculated
+using the block averaging technique, where the trajectory was divided into four equal parts (every 50 ns). (c) The coordination number, Ni, of
+DME (blue square) and DOL (red circle) molecules around the MON as a function of the molar fraction x. The dotted connecting lines are
+plotted as guides to the eye. (Inset d) Comparison between the ratio of the coordination number, DOL/DME vs x, over the first solvation (RM)
+shell and in the bulk.
+ACS Applied Polymer Materials
+pubs.acs.org/acsapm
+Article
+https://doi.org/10.1021/acsapm.3c00379
+ACS Appl. Polym. Mater. 2023, 5, 4799−4810
+4805
+Downloaded from pubs.​acs.​org/​aapmcd/​article-pdf/​5/​7/​4799/​3321539/​ap3c00379.​pdf by TSINGHUA UNIV user on 03 October 2026
+
+<<PAGE 8>>
+always larger than the bulk value when considering DOL, while
+in the case of DME, it is always below the bulk value. From
+Figure 7(a), the radius of the first solvation shell is about r =
+0.71 nm for both DOL and DME, and it appears to be
+independent of the molar fraction of the solvent mixture.
+The consequence is an interesting depletion behavior along
+the mixed coordinate as presented in Figure 7(b). We have
+calculated the KB integral of a single trimer in different molar
+fractions using eq 12, considering the RDFs presented in
+Figure 7(a). At x = 0, ΓMON−DOL is around −0.63 nm3; here,
+the negative sign refers to the depletion (exclusion, i.e.,
+negative adsorption) of the solvent molecules around the
+trimer. By adding DME to the pure DOL solvent, we observe
+that DOL is less depleted than in the pure DOL condition.
+Furthermore, our data show that the amount of depleted DOL
+is proportional to x in the mixture (ΓMON‑DOL increases from
+−0.43 to −0.17 nm3 when x increases from 0.25 to 0.75,
+respectively). Inversely, by adding DOL to the pure DME
+solution, we can see that DME is more depleted than in the
+pure DME solvent. In addition, the depletion decreases with
+the decrease of x (ΓMON‑DME decreases from −0.59 to −0.72
+nm3 when x decreases from 0.75 to 0.25, respectively). Finally,
+for any fixed value of x in [0.25,0.75], ΓMON‑DOL is larger than
+ΓMON‑DME. This clearly demonstrates that DOL is less depleted
+around the trimer than DME.
+To interpret the quantitative differences of the solvent
+behavior, the coordination number, Ni, in the first solvation
+shell is calculated using eq 19 and plotted in Figure 7(c) with
+respect to x. For x = 0 and x = 1, the average Ni’s of DOL and
+DME are 10.3 and 7.1, respectively. At a symmetric molar
+fraction (x = 0.5), the Ni of DOL is about 4.4, which is higher
+than the Ni of DME, 4.0. As a result, the ratio (DOL/DME) of
+the Ni’s of the solvent molecule in the first solvation shell (see
+Figure 7(d)) is higher than the bulk value. The same trend is
+observed for the other two solvent compositions (x = 0.25 and
+x = 0.75). Therefore, we can conclude that, regardless of the
+solvent mixture, the number of DOL molecules is always larger
+than the number of DME molecules in the vicinity of the
+polymer.
+3.3.2. Global Solvent Exclusion around the Polymer. The
+effective accumulation/depletion behavior of a PTBT polymer
+chain in the presence of DME and DOL solvent can be
+qualitatively understood by analyzing the RDFs, gPOL‑DOL(r)
+and gPOL‑DME(r) (see Figure 8(a)). For clarity, we have
+reported the RDFs obtained for different solvent molar
+fractions only in the case of n = 35, since the data obtained
+for the other chain lengths show a similar trend (see Figure
+S8). The analysis of the RDFs revealed that the accumulation
+of solvent molecules near the polymer region is always higher
+for DOL than DME. It is worth noting that the COM of a
+polymer may not necessarily be located within the polymer
+itself. As a result, a significant peak at r = 0 in the RDF would
+indicate the presence of a few solvent molecules located near
+the COM. However, they have nonsignificant contributions to
+the coordination number.
+To reveal the accumulation (or depletion) properties of
+solvent molecules around PTBT polymers, we calculated the
+KB integral between the polymer and solvents for chain length
+n = 35 using eq 12. The results are plotted in Figure 8(b). As it
+can be seen, the corresponding KB integral follows the same
+trend as the one obtained for a trimer (see Figure 7(b)). Thus,
+with the addition of DME to the pure DOL solution, ΓPOL−DOL
+around the polymer is less depleted than ΓPOL−DOL obtained
+for x = 0. Inversely, with the addition of DOL to the pure
+DME solution, DME is more depleted around the polymer
+than in the pure DME solvent. Finally, for any fixed molar
+fraction in [0.25, 0.75], ΓPOL‑DOL > ΓPOL‑DME. So, DOL is less
+depleted around the polymer than DME.
+In addition, to quantitatively compare the solvent behavior,
+we have calculated the number of “confined” solvent
+molecules, Nc, within the average Rg = 1.35 nm for chain
+length n = 35, as shown in Figure 8(c). The Nc’s in the case of
+Figure 8. (a) RDFs between the COM of the whole polymer with chain length n = 35 and the COM of the solvent molecules. In other words, we
+plot the normalized density distribution of solvent around the polymer center of mass. gPOL‑DOL(r) and gPOL‑DME(r) are shown for the limiting cases
+x = 0 (DOL only) and x = 1 (DME only), respectively, and intermediate ratios x = 0.25, 0.5, and 0.75 for both cases. The solid lines and dotted
+lines are for the DOL and DME solvents, respectively. The vertical solid line at r = 1.35 nm signifies the average radius of gyration for n = 35 over
+different molar fractions. (Inset b) KB integrals between the polymer and DOL solvent (ΓPOL‑DOL) and polymer and DME solvent (ΓPOL‑DME) are
+shown for the different molar fractions. The statistical errors were calculated using the block averaging technique, where the trajectory was divided
+into six equal parts (every 100 ns). (c) The numbers of solvent DME (blue square) and DOL (red circle) molecules confined, Nc, in a sphere of
+radius Rg centered at the polymer COM as a function of x. The dotted connecting lines are plotted as guides to the eye. (Inset d) Comparison
+between the ratio of the Nc, DOL/DME vs x until Rg and in the bulk.
+ACS Applied Polymer Materials
+pubs.acs.org/acsapm
+Article
+https://doi.org/10.1021/acsapm.3c00379
+ACS Appl. Polym. Mater. 2023, 5, 4799−4810
+4806
+Downloaded from pubs.​acs.​org/​aapmcd/​article-pdf/​5/​7/​4799/​3321539/​ap3c00379.​pdf by TSINGHUA UNIV user on 03 October 2026
+
+<<PAGE 9>>
+pure DOL (x = 0) and pure DME (x = 1) are around 55.8 and
+43.5, respectively. As the DME molar fraction increases, Nc
+decreases and increases for DOL and DME, respectively.
+Furthermore, at a symmetric molar fraction (x = 0.5), the Nc of
+DOL is around 25.7, which is larger than the one of DME
+(DME’s Nc is 23.3). Consequently, the ratio of DOL over
+DME is about 1.11, which is larger than the bulk value of 1.
+Similarly, for other mixing molar fractions, we have observed
+the same trend as reported in Figure 8(d). As a result, we
+conclude that regardless of the molar fraction, up to the
+average radius of gyration, the number of DOL molecules is
+always higher than the number ofDME molecules, consistent
+with the trends in solvent−monomer adsorption discussed
+before. To support this finding, we conducted a hydrogen
+bond analysis and indeed found that DOL molecules
+preferentially associate with the polymer compared to DME
+molecules. Although the two solvent molecules have a similar
+polarity (reflected by similar oxygen partial charges in the force
+field32 qO−DME = −0.44 e and qO−DOL = −0.40 e), the more
+flexible and linear DME (see Figure 2) involves bending and
+entropic constraints in hydrogen bonding, making binding less
+likely than for the rather stiff DOL. Details of the hydrogen
+bond analysis are provided in the Supporting Information,
+including Figures S10 and S11.
+As discussed in Figure 5(b), the Flory exponent is
+nonmonotonic with molar fraction, and such a nonmonotonic
+behavior is known as “cosolvency”. Mechanisms such as
+preferential solvation, competitive hydrogen bonding, and
+geometric frustration have been proposed to explain
+phenomena like “cosolvency” and “co-non-solvency”.67,68 In
+this work, the recurring collapse of the polymer with increasing
+DOL concentration (toward x = 0) may be due to a decrease
+in the effective solvation of the polymer by the DOL solvent.
+This reduction of polymer solvation may be caused by the
+increased preferential mutual coordination of DOL molecules
+by each other in the bulk region in the absence of DME.
+According to preferential solvation theory,63 a combination of
+interactions involving the polymer−solvent and solvent−
+solvent (here given by DOL−DOL, DME−DME, and
+DOL−DME) drives the final adsorption and the polymer
+state. We have seen before that DOL has a general preference
+to the polymer than DME, probably because of hydrogen
+bonding and less entropic penalties for the stiff DOL to bind
+(Figure S10). Furthermore, since DOL−DME coordination is
+less preferred than DOL−DOL or DME−DME coordination
+(as reported in Figure S12, ΓDOL−DOL > 0 > ΓDME−DME >
+ΓDOL−DME), then DOL moves in excess to the polymer. This
+effect must be maximized for a certain composition (which we
+find to be about x = 0.25) because for x = 0 and 1 only DOL or
+DME is present in the bulk, respectively. Hence, the change of
+solvent compositions, for which DOL−DOL, DME−DME,
+and DOL−DME coordination are all different, could lead to a
+decrease in the effective solvation of the polymer by the solvent
+for x = 0, causing collapse again.
+In order to investigate the interactions between the solvents
+and how they affect the properties of the mixture, we
+calculated the PMVs of DOL, VDOL
+0
+, and DME, VDME
+0
+using
+eqs 14 and 15, respectively. In Table 2, VDOL
+0
+and VDME
+0
+are
+summarized for different molar fractions. In the pure cases, for
+x = 0 and x = 1, compared to previously reported results,69 we
+observed deviations of 7 and 3.5%, respectively. As can be seen,
+when we add 25% of DME to the pure DOL solutions, VDOL
+0
+increased from 73.8 to 77.5 cm3/mol and then to 86.3 cm3/
+mol in the case of 75% DME or x = 0.75. This shows that with
+the addition of DME to pure DOL, VDOL
+0
+increases. Inversely,
+with the addition of DOL to the pure DME solution, VDME
+0
+decreased from 108.3 to 95.5 cm3/mol in the case of x = 0.25.
+This shows that VDME
+0
+is compressed in the presence of the
+DOL.
+Finally, we determined the PMV of the TBT monomer, Vp
+0,
+using eq 13. In Table 2, the Vp
+0 of the TBT monomer averaged
+over short chain lengths (n = 3, 5 and 10) is reported at various
+molar fractions. In particular, when the molar fraction is x =
+0.25, Vp
+0 is the largest among other solvent molar fractions.
+This suggests that PTBT is more soluble in the mixture of 25%
+DME and 75% DOL. The result shows that the Vp
+0 follows the
+same trend as the one obtained from the Flory exponent (see
+Table S13). Hence, the PMV is tunable by solvent
+composition but only in a few percent range. In experiments,
+however, this could lead to macroscopically measurable
+swelling or shrinking effects for various solvent compositions,
+which might be useful to control.
+4. CONCLUSION
+In this study, we used MD simulations to investigate the
+structural properties of PTBT oligomers and polymers in DME
+and DOL mixtures of various compositions for application in
+lithium−sulfur batteries. We considered nine different chain
+lengths and five different molar fractions, varying from pure
+DOL (x = 0) to pure DME (x = 1). To accomplish this task,
+we have developed the force field for the missing dihedrals of
+conjugated organosulfur polymer, S/PTBT, using a combina-
+tion of density functional theory and MD simulation for three
+dihedrals. We utilized the RESP method to calculate the
+charges for the PTBT and S/PTBT monomers. Finally, using
+the combination of OPLS methods and newly developed
+parameters, we were able to construct the full force field for
+PTBT and S/PTBT polymers. We further validated the force
+field of PTBT and S/PTBT systems by recovering structural
+properties of DiTBT−Sm−DiTBT for m = 1−18.
+We reported the bond length, persistence length, and
+contour length of PTBT. Assuming PTBT to be a semiflexible
+polymer, we reported the Kuhn length and characteristic ratio
+of the PTBT polymer. To estimate the solvent quality, we
+calculated the Flory exponent by scaling the radius of gyration
+with polymer size. Our result shows a compact chain condition
+in the cases of x = 0 and x = 1, whereas, in the case of x = 0.25,
+the polymer is in a moderately expanded state. Intriguingly,
+Table 2. Calculated Partial Molar Volume [in cm3/mol] of a TBT Monomer, Vp
+0, DOL, VDOL
+0
+, and DME, Vp
+0 for Different Molar
+Fractions, xa
+x
+0
+0.25
+0.5
+0.75
+1
+Vp
+0
+112.9(±3.3)
+128.4(±1.5)
+122.2(±1.1)
+117.2(±0.7)
+116.2(±1.7)
+VDOL
+0
+73.8(±0.3)
+77.5(±0.3)
+83.3(±0.2)
+86.3(±0.3)
+-
+VDME
+0
+-
+95.5(±0.3)
+97.9(±0.2)
+103.6(±0.3)
+108.3(±0.5)
+aThe statistical error is reported in parentheses.
+ACS Applied Polymer Materials
+pubs.acs.org/acsapm
+Article
+https://doi.org/10.1021/acsapm.3c00379
+ACS Appl. Polym. Mater. 2023, 5, 4799−4810
+4807
+Downloaded from pubs.​acs.​org/​aapmcd/​article-pdf/​5/​7/​4799/​3321539/​ap3c00379.​pdf by TSINGHUA UNIV user on 03 October 2026
+
+<<PAGE 10>>
+when we mix the two poor solvents, we observe a cosolvency
+effect with a maximum good solvent quality for a certain molar
+ratio. This might have implications for cathode design to
+potentially optimize cathode accessibility and permeability to
+electrolytes. Our qualitative analysis of the intramolecular
+structure factor supported these findings.
+Our study of the monomer−solvent system in the mixture of
+DOL and DME has revealed that DOL is less depleted than
+DME. This was done by analyzing the RDFs and calculating
+the KB integral between the monomer and solvent molecules.
+We also found that the coordination number of DOL around a
+single monomer is higher than that of DME, regardless of the
+solvent molar fraction. Furthermore, to further understand the
+polymer−solvent behavior, we calculated solvent distributions
+between solvents and the whole polymer. We observed
+consistently higher DOL accumulation as in the monomer−
+solvent case. Finally, we calculated the averaged partial molar
+volume of a TBT monomer over different chain lengths, which
+we find tunable (while not a large effect) by solvent
+composition. These findings provide important insights into
+the adsorption thermodynamics of DOL and DME with the
+polymer.
+Since the polysulfide solubility is not relevant for the
+optimization of the solvent-electrolyte when considering an
+organosulfur-based cathode, one needs to consider the effect of
+the solvent on the structural property of the polymer primarily.
+In conclusion, our study of the monomer−solvent and
+polymer−solvent systems in the mixture of DME and DOL
+revealed important insight into how the solvent composition
+can tune polymer structural properties. Hence, our work
+provides important insights into the adsorption and
+interactions of DME and DOL with the conjugated organo-
+sulfur polymer. With the constructed force fields, it also serves
+as a first methodical step for the development and study of
+further MD simulations of a more realistic polymeric network,
+structures, and processes, such as vulcanized (S-linked)
+polymers and whole network topologies. In future work, we
+plan to investigate the impact of adding salts to the solvated
+polymeric systems to gain a deeper understanding of their
+behavior as electrolytes for Li−S batteries and design more
+efficient electrolytes. In terms of structural flexibility and
+polymer solvation structure, the presence of Li ions and
+counteranions might induce important changes, such as the
+occurrence of cation-pi structures,70 “sandwich” structures,70
+and related conformational constraints.
+■ASSOCIATED CONTENT
+*
+sı Supporting Information
+The Supporting Information is available free of charge at
+https://pubs.acs.org/doi/10.1021/acsapm.3c00379.
+Force-field parameters for PTBT and S/PTBT, along
+with the validation of the force-field dihedral method
+and total force field. Average densities of DME−DOL
+mixtures with varying molar fractions. Summary of
+simulation details. Contour length of the polymer for
+different chain lengths. Table of an averaged radius of
+gyration and calculated Flory exponent. Structure factor
+of the polymer for x = 0 and x = 1. Mean square
+displacement of a single chain PTBT. Autocorrelation
+function of the radius of gyration for various chain
+lengths. Radial distribution functions between the center
+of mass of the polymer and solvents for different chain
+lengths. Heatmap plot of C−H···O angles vs C···O
+distance for C−H donor from the polymer and O
+acceptor from DOL and DME solvent molecules.
+Sensitivity analysis of the KB-integral calculations
+(PDF)
+■AUTHOR INFORMATION
+Corresponding Author
+Joachim Dzubiella −Applied Theoretical Physics −
+Computational Physics, Physikalisches Institut, Albert-
+Ludwigs-Universität Freiburg, 79104 Freiburg, Germany;
+Research Group for Simulations of Energy Materials,
+Helmholtz-Zentrum Berlin für Materialien und Energie
+GmbH, 14109 Berlin, Germany;
+orcid.org/0000-0001-
+6751-1487; Email: joachim.dzubiella@physik.uni-
+freiburg.de, joachim.dzubiella@helmholtz-berlin.de
+Authors
+Diptesh Gayen −Applied Theoretical Physics −
+Computational Physics, Physikalisches Institut, Albert-
+Ludwigs-Universität Freiburg, 79104 Freiburg, Germany;
+orcid.org/0000-0001-9054-5685
+Yannik Schütze −Research Group for Simulations of Energy
+Materials, Helmholtz-Zentrum Berlin für Materialien und
+Energie GmbH, 14109 Berlin, Germany; Theoretical
+Chemistry, Institute of Chemistry and Biochemistry, Freie
+Universität Berlin, 14195 Berlin, Germany;
+orcid.org/
+0000-0002-7934-0969
+Sebastien Groh −Applied Theoretical Physics −
+Computational Physics, Physikalisches Institut, Albert-
+Ludwigs-Universität Freiburg, 79104 Freiburg, Germany;
+orcid.org/0000-0003-0022-7048
+Complete contact information is available at:
+https://pubs.acs.org/10.1021/acsapm.3c00379
+Notes
+The authors declare no competing financial interest.
+■ACKNOWLEDGMENTS
+The authors thank V. G. Ruiz, S. Milster, and N. Göth for
+helpful discussions. We thank for the support by the state of
+Baden-Württemberg through bwHPC through Grant No.
+INST 39/963-1 FUGG (bw-ForCluster NEMO). We acknowl-
+edge funding of the project through the Deutsche For-
+schungsgemeinschaft (DFG) Priority Programme “Polymer-
+based batteries” (SPP 2248, project number 441211139).
+■REFERENCES
+(1) Ji, X.; Nazar, L. F. Advances in Li-S batteries. J. Mater. Chem.
+2010, 20, 9821−9826.
+(2) Yin, Y.-X.; Xin, S.; Guo, Y.-G.; Wan, L.-J. Lithium-Sulfur
+Batteries: Electrochemistry, Materials, and Prospects. Angew. Chem.,
+Int. Ed. 2013, 52, 13186−13200.
+(3) Cuisinier, M.; Hart, C.; Balasubramanian, M.; Garsuch, A.;
+Nazar, L. F. Radical or Not Radical: Revisiting Lithium-Sulfur
+Electrochemistry in Nonaqueous Electrolytes. Adv. Energy Mater.
+2015, 5, 1401801.
+(4) Rosenman, A.; Markevich, E.; Salitra, G.; Aurbach, D.; Garsuch,
+A.; Chesneau, F. F. Review on Li-Sulfur Battery Systems: an Integral
+Perspective. Adv. Energy Mater. 2015, 5, 1500212.
+(5) Wang, T.; He, J.; Cheng, X.-B.; Zhu, J.; Lu, B.; Wu, Y. Strategies
+toward High-Loading Lithium−Sulfur Batteries. ACS Energy Letters
+2023, 8, 116−150.
+ACS Applied Polymer Materials
+pubs.acs.org/acsapm
+Article
+https://doi.org/10.1021/acsapm.3c00379
+ACS Appl. Polym. Mater. 2023, 5, 4799−4810
+4808
+Downloaded from pubs.​acs.​org/​aapmcd/​article-pdf/​5/​7/​4799/​3321539/​ap3c00379.​pdf by TSINGHUA UNIV user on 03 October 2026
+
+<<PAGE 11>>
+(6) Gao, H.; Deng, N.; Wang, G.; Wang, X.; Liu, Y.; Zhang, L.;
+Liang, Y.; Yan, J.; Cheng, B.; Kang, W. Overview of the Latest
+Developments and Perspectives about Noncarbon Sulfur Host
+Materials for High Performance Lithium-Sulfur Batteries. Energy
+Fuels 2022, 36, 7284−7320.
+(7) Yang, L.; Li, Q.; Wang, Y.; Chen, Y.; Guo, X.; Wu, Z.; Chen, G.;
+Zhong, B.; Xiang, W.; Zhong, Y. A review of cathode materials in
+lithium-sulfur batteries. Ionics 2020, 26, 5299−5318.
+(8) Song, M.-K.; Cairns, E. J.; Zhang, Y. Lithium/sulfur batteries
+with high specific energy: old challenges and new opportunities.
+Nanoscale 2013, 5, 2186.
+(9) Evers, S.; Nazar, F. L. New Approaches for High Energy Density
+Lithium−Sulfur Battery Cathodes. Acc. Chem. Res. 2013, 46, 1135−
+1143.
+(10) Peng, H.-J.; Huang, J.-Q.; Cheng, X.-B.; Zhang, Q. Review on
+High-Loading and High-Energy Lithium-Sulfur Batteries. Adv. Energy
+Mater. 2017, 7, 1700260.
+(11) Cao, J.; Chen, C.; Zhao, Q.; Zhang, N.; Lu, Q.; Wang, X.; Niu,
+Z.; Chen, J. A Flexible Nanostructured Paper of a Reduced Graphene
+Oxide-Sulfur Composite for High-Performance Lithium-Sulfur
+Batteries with Unconventional Configurations. Adv. Mater. 2016,
+28, 9629−9636.
+(12) Liu, X.; Xu, N.; Qian, T.; Liu, J.; Shen, X.; Yan, C. Stabilized
+Lithium−Sulfur Batteries by Covalently Binding Sulfur onto the
+Thiol-Terminated Polymeric Matrices. Small 2017, 13, 1702104.
+(13) Xu, Z.; Fan, M.; Wang, J.; Zhang, F.; Lin, W.; Zhang, H. Trace
+Iron-Decorated Nitrogen/Sulfur Co-Doped Hierarchically Porous
+Carbon for Oxygen Reduction and Lithium−Sulfur Batteries. ACS
+Applied Energy Materials 2020, 3, 2719−2726.
+(14) Jin, J.; Cai, W.; Cai, J.; Shao, Y.; Song, Y.; Xia, Z.; Zhang, Q.;
+Sun, J. MOF-derived hierarchical CoP nanoflakes anchored on
+vertically erected graphene scaffolds as self-supported and flexible
+hosts for lithium−sulfur batteries. Journal of Materials Chemistry A
+2020, 8, 3027−3034.
+(15) Eftekhari, A.; Kim, D.-W. Cathode materials for lithium−sulfur
+batteries: a practical perspective. Journal of Materials Chemistry A
+2017, 5, 17734−17776.
+(16) Ren, S.; Sang, P.; Guo, W.; Fu, Y. Organosulfur polymer-based
+cathode materials for rechargeable batteries. Polym. Chem. 2022, 13,
+5676−5690.
+(17) Zhang, Q.; Huang, Q.; Hao, S.-M.; Deng, S.; He, Q.; Lin, Z.;
+Yang, Y. Polymers in Lithium−Sulfur Batteries. Advanced Science
+2022, 9, 2103798.
+(18) Sang, P.; Song, J.; Guo, W.; Fu, Y. Hyperbranched organosulfur
+polymer cathode materials for Li-S battery. Chemical Engineering
+Journal 2021, 415, 129043.
+(19) Liu, J.; Wang, M.; Xu, N.; Qian, T.; Yan, C. Progress and
+perspective of organosulfur polymers as cathode materials for
+advanced lithium-sulfur batteries. Energy Storage Materials 2018, 15,
+53−64.
+(20) Pan, Z.; Brett, D. J. L.; He, G.; Parkin, I. P. Progress and
+Perspectives of Organosulfur for Lithium−Sulfur Batteries. Adv.
+Energy Mater. 2022, 12, 2103483.
+(21) Hu, G.; Sun, Z.; Shi, C.; Fang, R.; Chen, J.; Hou, P.; Liu, C.;
+Cheng, H.-M.; Li, F. A Sulfur-Rich Copolymer@CNT Hybrid
+Cathode with Dual-Confinement of Polysulfides for High-Perform-
+ance Lithium-Sulfur Batteries. Adv. Mater. 2017, 29, 1603835.
+(22) Zou, R.; Liu, W.; Ran, F. Sulfur-containing polymer cathode
+materials: From energy storage mechanism to energy density. InfoMat
+2022, 4, e12319.
+(23) Huang, S.; Guan, R.; Wang, S.; Xiao, M.; Han, D.; Sun, L.;
+Meng, Y. Polymers for high performance Li-S batteries: Material
+selection and structure design. Prog. Polym. Sci. 2019, 89, 19−60.
+(24) Ning, J.; Yu, H.; Mei, S.; Schütze, Y.; Risse, S.; Kardjilov, N.;
+Hilger, A.; Manke, I.; Bande, A.; Ruiz, V. G.; Dzubiella, J.; Meng, H.;
+Lu, Y. Constructing Binder- and Carbon Additive-Free Organosulfur
+Cathodes Based on Conducting Thiol-Polymers through Electro-
+polymerization for Lithium-Sulfur Batteries. ChemSusChem 2022, 15,
+e202200434.
+(25) Schütze, Y.; Gayen, D.; Palczynski, K.; de Oliveira Silva, R.; Lu,
+Y.; Tovar, M.; Partovi-Azar, P.; Bande, A.; Dzubiella, J. How
+Regiochemistry Influences Aggregation Behavior and Charge Trans-
+port in Conjugated Organosulfur Polymer Cathodes for Lithium−
+Sulfur Batteries. ACS Nano 2023, 17, 7889−7900.
+(26) Schütze, Y.; de Oliveira Silva, R.; Ning, J.; Rappich, J.; Lu, Y.;
+Ruiz, V. G.; Bande, A.; Dzubiella, J. Combined first-principles
+statistical mechanics approach to sulfur structure in organic cathode
+hosts for polymer based lithium−sulfur (Li−S) batteries. Phys. Chem.
+Chem. Phys. 2021, 23, 26709−26720.
+(27) Gao, J.; Lowe, M. A.; Kiya, Y.; Abruña, H. D. Effects of Liquid
+Electrolytes on the Charge−Discharge Performance of Rechargeable
+Lithium/Sulfur Batteries: Electrochemical and in-Situ X-ray Absorp-
+tion Spectroscopic Studies. J. Phys. Chem. C 2011, 115, 25132−
+25137.
+(28) Wang, W.; Wang, Y.; Huang, Y.; Huang, C.; Yu, Z.; Zhang, H.;
+Wang, A.; Yuan, K. The electrochemical performance of lithium−
+sulfur batteries with LiClO4 DOL/DME electrolyte. J. Appl.
+Electrochem. 2010, 40, 321−325.
+(29) Peled, E.; Sternberg, Y.; Gorenshtein, A.; Lavi, Y. Lithium-
+Sulfur Battery: Evaluation of Dioxolane-Based Electrolytes. J.
+Electrochem. Soc. 1989, 136, 1621−1625.
+(30) Mikhaylik, Y. V.; Kovalev, I.; Schock, R.; Kumaresan, K.; Xu, J.;
+Affinito, J. High Energy Rechargeable Li-S Cells for EV Application:
+Status, Remaining Problems and Solutions. ECS Trans. 2010, 25, 23−
+34.
+(31) Zhang, S. Improved Cyclability of Liquid Electrolyte Lithium/
+Sulfur Batteries by Optimizing Electrolyte/Sulfur Ratio. Energies
+2012, 5, 5190−5197.
+(32) Park, C.; Kanduč, M.; Chudoba, R.; Ronneburg, A.; Risse, S.;
+Ballauff, M.; Dzubiella, J. Molecular simulations of electrolyte
+structure and dynamics in lithium−sulfur battery solvents. J. Power
+Sources 2018, 373, 70−78.
+(33) Luque Di Salvo, J.; Luque, G. L.; De Luca, G. Lithium
+polysulfide conformer analysis in ether-based solvents for Li-batteries.
+Mol. Syst. Des. Eng 2022, 7, 364−373.
+(34) Zhang, Y. Z.; Liu, S.; Li, G. C.; Li, G. R.; Gao, X. P. Sulfur/
+polyacrylonitrile/carbon multi-composites as cathode materials for
+lithium/sulfur battery in the concentrated electrolyte. J. Mater. Chem.
+A 2014, 2, 4652−4659.
+(35) Adams, B. D.; Carino, E. V.; Connell, J. G.; Han, K. S.; Cao, R.;
+Chen, J.; Zheng, J.; Li, Q.; Mueller, K. T.; Henderson, W. A.; Zhang,
+J.-G. Long term stability of Li-S batteries using high concentration
+lithium nitrate electrolytes. Nano Energy 2017, 40, 607−617.
+(36) Andersen, A.; Rajput, N. N.; Han, K. S.; Pan, H.; Govind, N.;
+Persson, K. A.; Mueller, K. T.; Murugesan, V. Structure and Dynamics
+of Polysulfide Clusters in a Nonaqueous Solvent Mixture of 1, 3-
+Dioxolane and 1, 2-Dimethoxyethane. Chem. Mater. 2019, 31, 2308−
+2319.
+(37) Nayar, D.; Folberth, A.; van der Vegt, N. F. A. Molecular origin
+of urea driven hydrophobic polymer collapse and unfolding
+depending on side chain chemistry. Phys. Chem. Chem. Phys. 2017,
+19, 18156−18161.
+(38) Diddens, D.; Heuer, A. Lithium Ion Transport Mechanism in
+Ternary Polymer Electrolyte-Ionic Liquid Mixtures: A Molecular
+Dynamics Simulation Study. ACS Macro Lett. 2013, 2, 322−326.
+(39) Jorgensen, W. L.; Maxwell, D. S.; Tirado-Rives, J. Development
+and Testing of the OPLS All-Atom Force Field on Conformational
+Energetics and Properties of Organic Liquids. J. Am. Chem. Soc. 1996,
+118, 11225−11236.
+(40) Thompson, A. P.; Aktulga, H. M.; Berger, R.; Bolintineanu, D.
+S.; Brown, W. M.; Crozier, P. S.; in ’t Veld, P. J.; Kohlmeyer, A.;
+Moore, S. G.; Nguyen, T. D.; Shan, R.; Stevens, M. J.; Tranchida, J.;
+Trott, C.; Plimpton, S. J. LAMMPS - a flexible simulation tool for
+particle-based materials modeling at the atomic, meso, and continuum
+scales. Comput. Phys. Commun. 2022, 271, 108171.
+(41) Wildman, J.; Repiščák, P.; Paterson, M. J.; Galbraith, I. General
+Force-Field Parametrization Scheme for Molecular Dynamics
+ACS Applied Polymer Materials
+pubs.acs.org/acsapm
+Article
+https://doi.org/10.1021/acsapm.3c00379
+ACS Appl. Polym. Mater. 2023, 5, 4799−4810
+4809
+Downloaded from pubs.​acs.​org/​aapmcd/​article-pdf/​5/​7/​4799/​3321539/​ap3c00379.​pdf by TSINGHUA UNIV user on 03 October 2026
+
+<<PAGE 12>>
+Simulations of Conjugated Materials in Solution. J. Chem. Theory
+Comput. 2016, 12, 3813−3824.
+(42) Kania, A.; Sarapata, K.; Gucwa, M.; Wójcik-Augustyn, A.
+Optimal Solution to the Torsional Coefficient Fitting Problem in
+Force Field Parametrization. J. Phys. Chem. A 2021, 125, 2673−2681.
+(43) Barca, G. M.; Bertoni, C.; Carrington, L.; Datta, D.; De Silva,
+N.; Deustua, J. E.; Fedorov, D. G.; Gour, J. R.; Gunina, A. O.; Guidez,
+E.; Harville, T.; Irle, S.; Ivanic, J.; Kowalski, K.; Leang, S. S.; Li, H.; Li,
+W.; Lutz, J. J.; Magoulas, I.; Mato, J.; Mironov, V.; Nakata, H.; Pham,
+B. Q.; Piecuch, P.; Poole, D.; Pruitt, S. R.; Rendell, A. P.; Roskop, L.
+B.; Ruedenberg, K.; Sattasathuchana, T.; Schmidt, M. W.; Shen, J.;
+Slipchenko, L.; Sosonkina, M.; Sundriyal, V.; Tiwari, A.; Galvez
+Vallejo, J. L.; Westheimer, B.; Wloch, M.; Xu, P.; Zahariev, F.;
+Gordon, M. S. Recent developments in the general atomic and
+molecular electronic structure system. J. Chem. Phys. 2020, 152,
+154102.
+(44) Yanai, T.; Tew, D. P.; Handy, N. C. A new hybrid exchange−
+correlation functional using the Coulomb-attenuating method (CAM-
+B3LYP). Chem. Phys. Lett. 2004, 393, 51−57.
+(45) Jungen, S.; Paenurk, E.; Chen, P. Synthesis, Spectroscopic, and
+Structural Characterization of Organyl Disulfanides and a Tetrasulfa-
+nide. Inorg. Chem. 2020, 59, 12322−12336.
+(46) Rajput, N. N.; Murugesan, V.; Shin, Y.; Han, K. S.; Lau, K. C.;
+Chen, J.; Liu, J.; Curtiss, L. A.; Mueller, K. T.; Persson, K. A.
+Elucidating the Solvation Structure and Dynamics of Lithium
+Polysulfides Resulting from Competitive Salt and Solvent Inter-
+actions. Chem. Mater. 2017, 29, 3375−3379.
+(47) Hockney, R.; Eastwood, J. Computer Simulation Using Particles;
+CRC Press, 1988.
+(48) Woods, R.; Chappelle, R. Restrained electrostatic potential
+atomic partial charges for condensed-phase simulations of carbohy-
+drates. Journal of Molecular Structure: THEOCHEM 2000, 527, 149−
+156.
+(49) Nagata, T. Molby: Graphical Molecular Modeling Software
+with Integrated Ruby Interpreter. Bull. Chem. Soc. Jpn. 2014, 87, 902−
+904.
+(50) Martyna, G. J.; Tobias, D. J.; Klein, M. L. Constant pressure
+molecular dynamics algorithms. J. Chem. Phys. 1994, 101, 4177−4189.
+(51) Evans, D. J.; Holian, B. L. The Nose-Hoover thermostat. J.
+Chem. Phys. 1985, 83, 4069−4074.
+(52) Rubinstein, M. Polymer physics; Oxford University Press:
+Oxford, 2003.
+(53) Zheng, M.; Chi, Y.; Hu, Q.; Tang, H.; Jiang, X.; Zhang, L.;
+Zhang, S.; Pang, H.; Xu, Q. Carbon nanotube-based materials for
+lithium−sulfur batteries. Journal of Materials Chemistry A 2019, 7,
+17204−17241.
+(54) Wolf, B. A.; Blaum, G. Measured and calculated solubility of
+polymers in mixed solvents: Monotony and cosolvency. J. Polym. Sci.,
+Polym. Phys. Ed. 1975, 13, 1115−1132.
+(55) Mukherji, D.; Marques, C. M.; Kremer, K. Polymer collapse in
+miscible good solvents is a generic phenomenon driven by preferential
+adsorption. Nat. Commun. 2014, 5, 4882.
+(56) Gartner, T. E.; Jayaraman, A. Modeling and Simulations of
+Polymers: A Roadmap. Macromolecules 2019, 52, 755−786.
+(57) Dzubiella, J. Molecular Insights into the Ion-Specific Kinetics of
+Anionic Peptides. J. Phys. Chem. B 2010, 114, 7098−7103.
+(58) Kirkwood, J. G.; Buff, F. P. The Statistical Mechanical Theory
+of Solutions. I. J. Chem. Phys. 1951, 19, 774−777.
+(59) Weerasinghe, S.; Smith, P. E. A Kirkwood-Buff Derived Force
+Field for Mixtures of Urea and Water. J. Phys. Chem. B 2003, 107,
+3891−3898.
+(60) Ganguly, P.; van der Vegt, N. F. A. Convergence of Sampling
+Kirkwood−Buff Integrals of Aqueous Solutions with Molecular
+Dynamics Simulations. J. Chem. Theory Comput. 2013, 9, 1347−1355.
+(61) Milzetti, J.; Nayar, D.; van der Vegt, N. F. A. Convergence of
+Kirkwood−Buff Integrals of Ideal and Nonideal Aqueous Solutions
+Using Molecular Dynamics Simulations. J. Phys. Chem. B 2018, 122,
+5515−5526.
+(62) Patel, N.; Dubins, D. N.; Pomès, R.; Chalikian, T. V. Parsing
+Partial Molar Volumes of Small Molecules: A Molecular Dynamics
+Study. J. Phys. Chem. B 2011, 115, 4856−4862.
+(63) Ben-Naim, A. Inversion of the Kirkwood−Buff theory of
+solutions: Application to the water−ethanol system. J. Chem. Phys.
+1977, 67, 4884−4890.
+(64) Hansen, J.-P.; McDonald, I. R. Theory of Simple Liquids, 4th ed.;
+Elsevier: Oxford, 2013.
+(65) Dudowicz, J.; Freed, K. F.; Douglas, J. F. Communication:
+Cosolvency and cononsolvency explained in terms of a Flory-Huggins
+type theory. J. Chem. Phys. 2015, 143, 131101.
+(66) Chudoba, R.; Heyda, J.; Dzubiella, J. Temperature-Dependent
+Implicit-Solvent Model of Polyethylene Glycol in Aqueous Solution. J.
+Chem. Theory Comput. 2017, 13, 6317−6327.
+(67) Bharadwaj, S.; van der Vegt, N. F. Does preferential adsorption
+drive cononsolvency? Macromolecules 2019, 52, 4131−4138.
+(68) Rodríguez-Ropero, F.; Hajari, T.; van der Vegt, N. F.
+Mechanism of polymer collapse in miscible good solvents. J. Phys.
+Chem. B 2015, 119, 15780−15788.
+(69) Scheers, J.; Fantini, S.; Johansson, P. A review of electrolytes for
+lithium−sulphur batteries. J. Power Sources 2014, 255, 204−218.
+(70) Lamoureux, G.; Orabi, E. A. Molecular modelling of cation−π
+interactions. Mol. Simul. 2012, 38, 704−722.
+ACS Applied Polymer Materials
+pubs.acs.org/acsapm
+Article
+https://doi.org/10.1021/acsapm.3c00379
+ACS Appl. Polym. Mater. 2023, 5, 4799−4810
+4810
+Downloaded from pubs.​acs.​org/​aapmcd/​article-pdf/​5/​7/​4799/​3321539/​ap3c00379.​pdf by TSINGHUA UNIV user on 03 October 2026

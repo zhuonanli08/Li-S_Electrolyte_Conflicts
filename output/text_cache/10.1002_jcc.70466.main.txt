@@ -1,0 +1,1352 @@
+
+<<PAGE 1>>
+1 of 18
+Journal of Computational Chemistry, 2026; 47:e70466
+https://doi.org/10.1002/jcc.70466
+WILEYlogo
+Journal of Computational Chemistry
+RESEARCH ARTICLE
+Lithium Surface Restructuring and Dendrite-­Like 
+Protrusion Formation in Li-­S Electrolytes From Reactive 
+Molecular Simulations With Machine-­Learned Potentials
+Mirella Fonda Maahury1,2  |  Sabrina Chin-yun Shen3  |  Kayvon Tabrizi3  |  Sam Walton Norwood3  |  
+Cedric Naravisnu Purwanto1  |  Ganes Shukri4  |  Hasan Al Rasyid5  |  Aditya Wibawa Sakti1,6
+1Department of Chemistry and Biochemistry, Waseda University, Tokyo, Japan  |  2Department of Chemistry, Pattimura University, Ambon, 
+Indonesia  |  3Mirror Physics Corporation, New York, New York, USA  |  4Department of Engineering Physics, Bandung Institute of Technology, Bandung, 
+Indonesia  |  5Department of Electrical Engineering, Nurul Jadid University, Probolinggo, Indonesia  |  6Global Center for Science and Engineering, Waseda 
+University, Tokyo, Japan
+Correspondence: Aditya Wibawa Sakti (aditya@aoni.waseda.jp)
+Received: 26 March 2026  |  Revised: 1 July 2026  |  Accepted: 2 July 2026
+Keywords: BASIS | Li-­S battery | lithium protrusion | MLIP | molecular dynamics
+ABSTRACT
+Lithium-­metal anodes present remarkable theoretical capacity for advanced batteries. However, their practical application is hin­
+dered by interfacial instabilities and dendritic lithium morphologies, which undermine safety and longevity. This study utilizes 
+machine-­learned interatomic potentials to conduct molecular dynamics simulations of the interface between a lithium-­metal 
+anode and an electrolyte composed of elemental sulfur (S8), propylene carbonate (PC), and lithium Otf (LiOTf). Because the 
+employed neutral MLIP does not explicitly describe electrode potential, electron transfer, or charge-­state evolution, the simu­
+lations are interpreted as reactive structural models of lithium redistribution, aggregation, and protrusion growth rather than 
+as a complete electrochemical plating/stripping description. Within this scope, the simulations provide atomistic insight into 
+early dendrite-­like lithium protrusions across different electrolyte compositions. Species detection, connection-­matrix analysis, 
+maximum protrusion height, and local-­order analysis are used as complementary structural descriptors of interfacial reorgani­
+zation. Supporting benchmarks against DFT include RDF validation for the interface model and structural and reaction-­energy 
+comparisons for adsorption and reaction in modeled lithium clusters. These benchmarks indicate that the r2SCAN readout gives 
+more consistent structural and energetic agreement for the present lithium surface chemistry, whereas the 휔 B97X readout is 
+retained as a sensitivity test for readout dependence. The findings provide an atomic-­level view of how S8, PC, and Otf− correlate 
+with lithium aggregation and morphology changes in S8/PC/LiOtf electrolytes, while clarifying the present limits of pre-­trained 
+MLIPs for mechanistic electrochemical interpretation.
+1   |   Introduction
+Lithium-­sulfur (Li-­S) batteries present an appealing potential to 
+replace the currently prevalent lithium-­ion (Li-­ion) batteries in 
+response to rapidly growing energy requirements [1]. Li-­S bat­
+teries offer a compelling option for future energy storage tech­
+nologies, as they provide significantly higher theoretical energy 
+density and utilize more economic raw materials compared to 
+conventional Li-­ion batteries [2, 3]. Nonetheless, effective imple­
+mentation of Li-­S batteries faces significant challenges due to 
+unwanted side reactions between the electrolyte and electrode. 
+These unwanted side reactions lead to the formation of a solid 
+electrolyte interphase (SEI), which results in the consump­
+tion of active lithium from the anode [4]. The SEI can result in 
+© 2026 Wiley Periodicals LLC.
+
+<<PAGE 2>>
+2 of 18
+Journal of Computational Chemistry, 2026
+unregulated dendrite growth, [5] which presents considerable 
+safety hazards and significantly diminishes the cycle life of the 
+battery.
+Numerous factors influence the formation of dendrites, and 
+understanding this process remains a significant challenge in 
+the field of battery research. Many studies demonstrate that 
+the current density and operating temperature impact the for­
+mation of lithium dendrites [6–9]. Another important aspect 
+is the composition and concentration of the electrolyte. The 
+specific ions present and their concentrations in the electro­
+lyte have a considerable influence on both the rate and the 
+morphology of dendrite formation. Unstable electrolytes or 
+elevated ion concentrations can promote the growth of den­
+drites [10–12].
+Dendrite growth does not have a universally accepted expla­
+nation; rather, it is typically recognized as an instability that 
+emerges from the interplay of various physical and chemical 
+processes occurring at the interface of a material. In Li-­S sys­
+tems, confronted with these obstacles, researchers have pro­
+posed three strategies for inhibiting the growth of lithium 
+dendrites: focusing on the electrolyte, [13–18] anode, [12, 19–24] 
+and separator [25–28]. Each stabilization strategy has its inher­
+ent limitations, so combining their strengths, such as pairing an 
+optimized anode with suitable additives or electrolyte modifica­
+tions to stabilize the SEI and reduce side reactions, is essential. 
+For industrial Li-­S batteries, major progress is needed in high-­
+loading sulfur cathodes, stable anodes, advanced separators and 
+electrolytes, and manufacturing, especially to improve perfor­
+mance with lean electrolytes, balanced electrode capacities, and 
+under extreme temperatures [29]. Given these constraints, it is 
+essential to conduct computational studies to explore anode-­
+electrolyte interactions to observe the formation of dendrites at 
+a molecular timescale.
+Prior investigations have yielded valuable insights into lithium 
+metal anode dynamics, as demonstrated by Camacho-­Forero 
+and Balbuena, who employed DFT-­based simulations to un­
+cover the mechanisms by which charged interfaces enhance 
+electrolyte decomposition and SEI formation. However, their 
+methodology is constrained by substantial computational cost, 
+which limits the timescales available for analysis [30]. Lee et al. 
+utilized advanced imaging and computational modeling to dy­
+namically observe dendrite growth and its relationship with 
+interfacial reactions; however, the transferability of their mod­
+els across various chemical conditions may be limited [31]. In 
+comparison to these methods, Machine-­Learned Interatomic 
+Potentials (MLIPs) provide the capability to effectively simulate 
+larger and more intricate systems over extended timescales with 
+accuracy close to ab initio levels, tackling issues of scalability 
+and transferability. Nonetheless, MLIPs rely on high-­quality 
+training data and may occasionally fall short in terms of physi­
+cal interpretability.
+This study focuses on early interfacial lithium restructur­
+ing at the interface between lithium metal anodes and liquid 
+electrolytes, addressing a critical process related to dendritic 
+morphology development in lithium metal batteries. The 
+investigation was conducted through molecular dynamics 
+(MD) simulations, employing the Basis-­v0 MLIP with two 
+task heads, namely r2SCAN and 휔 B97X. In particular, this 
+study examines the impact of adding elemental sulfur (S8) to 
+the electrolyte, systematically adjusting its concentration to 
+assess its correlation with lithium aggregation, protrusion 
+height, and interfacial structural order. We emphasize that 
+the present simulations do not impose an electrode potential 
+and do not explicitly describe electron transfer; therefore, the 
+term dendrite is used operationally to denote anisotropic, 
+dendrite-­like lithium protrusions and aggregates that emerge 
+from the simulated lithium surface. The mechanistic dis­
+cussion is consequently restricted to structural correlations, 
+bond-­formation/bond-­breaking events available to the MLIP, 
+and readout-­dependent solvent decomposition, rather than to 
+a complete electrochemical deposition mechanism.
+2   |   Methodology
+2.1   |   MLIP Development and Training
+2.1.1   |   Model Development
+Here we outline the development of the pre-­trained Basis-­v0 
+model, an E(3)-­equivariant message-­passing graph neural net­
+work. Basis-­v0 was implemented in PyTorch and is used at in­
+ference time as an ASE calculator. The source code is available 
+from the corresponding author upon reasonable request.
+2.2   |   Multitask Training
+­
+­
+­
+1
+­
+­
+­
+­
+­
+­
+32
+2
+         
+­
+­
+­
+ 1096987x, 2026, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.70466 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 3>>
+3 of 18
+Journal of Computational Chemistry, 2026
+the force and energy error MAE of individual readout heads on 
+their corresponding validation datasets throughout training.
+ 
+­
+3
+ 
+­
+2.2.1   |   Training Data
+­
+­
+1
+­
+         
+­
+­
+­
+         
+­
+­
+­
+TABLE 1    |    Basis-­v0 training datasets and their corresponding levels 
+of theory.
+Dataset
+Level of theory
+ANI-­2X
+휔 B97X
+GEMS
+PBE0-­MBD
+MPtrj
+PBE (MP)
+OC20
+RPBE
+ODAC
+PBE-­D3
+OMAT
+PBE (OMAT)
+sAlex
+PBE (Alexandria)
+SPICE
+wB97M-­D3BJ
+Transition1X
+휔 B97X
+MatPES-­r2SCAN
+r2SCAN
+NABLA
+휔 B97X-­D/def2-­SVP
+RGD1
+B3LYP-­D3/TZVP
+HEA-­25
+PBEsol
+ 1096987x, 2026, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.70466 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 4>>
+4 of 18
+Journal of Computational Chemistry, 2026
+both calculated with 휔 B97X using matched settings, each data­
+set was produced with a unique level of theory and/or unique 
+DFT settings and was thus trained with a unique readout layer. 
+The OMAT, MPtrj, and sAlex datasets each use PBE DFT with 
+unique DFT settings, so they are trained with unique readouts.
+MD simulations were performed in ASE using the r2SCAN and 
+휔 B97X readout heads.
+2.3   |   Simulation Details and Analyses Methods
+­
+­
+Supporting Information
+­
+Li13
+Li20
+S8
+S4
+­
+­
+­
+S8
+­
+Li+
+S8
+4
+The structures of all adopted electrolyte components were ini­
+tially optimized at DFT level with 휔B97X functional and def2-­
+SVP basis set [33, 34]. All DFT calculations for these electrolyte 
+components were done using the ORCA program package [35] 
+integrated with our in-­house CMMDE code.
+­
+36
+37
+37, 38
+­
+S8
+Li+
+­
+39
+S8
+ 
+2
+NVE NVT
+NPT
+ 
+­
+ 
+­
+NVT
+NPT
+NPT
+x
+y
+ 
+z
+­
+ 
+40, 41
+­
+­
+5
+ 
+­
+ 
+NVT
+휔
+After completing all MD simulations, a comprehensive anal­
+ysis was conducted, namely species detection, time-­course 
+changes in lithium membership in the initial anode region, 
+connection-­matrix analysis, lithium protrusion height, and 
+tetrahedral order parameter analysis. In this manuscript, 
+dendrite-­like growth is defined operationally as the emergence 
+of an anisotropic lithium-­rich protrusion from the initially flat 
+lithium surface. This definition is structural. It does not imply 
+that the simulation directly resolves electrochemical plating, 
+electron transfer, or charge-­state evolution. Accordingly, the 
+phrase “lithium depletion from the anode region” refers to 
+spatial redistribution of lithium atoms out of the initially de­
+fined anode slab region, not loss of lithium atoms or chemical 
+consumption.
+The time-­course analysis was used to track the number of lith­
+ium atoms that remain within the initial anode region and the 
+         
+­
+S8
+­
+­
+TABLE 2    |    Number of electrolyte components in the adopted models.
+Model
+CS8 [M]
+NS8
+NPC
+NOtf
+NLi+
+NDIO
+NTFSI
+1
+1
+10
+100
+32
+32
+—
+—
+2
+0.6
+6
+100
+32
+32
+—
+—
+3
+0.3
+3
+100
+32
+32
+—
+—
+4
+0
+0
+100
+32
+32
+—
+—
+5
+—
+—
+100
+1
+1
+—
+—
+6
+—
+—
+—
+32
+32
+100
+—
+7
+—
+—
+100
+—
+32
+—
+32
+8
+—
+—
+—
+—
+32
+100
+32
+ 1096987x, 2026, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.70466 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 5>>
+5 of 18
+Journal of Computational Chemistry, 2026
+number of detected lithium-­containing species. The resulting 
+slope or fitted rate constant is therefore interpreted as a descrip­
+tor of redistribution and protrusion development within the fi­
+nite simulation cell. It is not treated as a true electrochemical 
+dendrite growth rate. The distance between atoms in the system 
+is calculated using Equation (1).
+where x, y, and z represent the coordinates of each atom in the 
+system. i and j denote atomic indices in the distance calcula­
+tion. After acquiring the rij value, we assess whether the two 
+species with that rij value form a single connected species. The 
+determining threshold is rc, which refers to the cutoff distance. 
+If rij < rc, the two atoms are considered connected; if rij > rc, they 
+are not considered connected. For this analysis, rc is 2 Å. After 
+this step, the number for each species is determined as Ns. The 
+average number of species can be calculated using Equation (2). 
+Finally, the variance of each species in the system can be cal­
+culated using Equation (3), where 휎2
+s is the variance of species 
+s, Ns
+(ti
+) is the population of species s at frame i, Ns is the aver­
+age population over the trajectory, and N is the total number of 
+simulation frames. Small variance indicates a persistent species 
+population, whereas large variance indicates a transient or rap­
+idly changing species population.
+The maximum displacement of a lithium along the z-­axis 
+can be calculated using Equation (4). The lithium protrusion 
+height at time ti was then calculated relative to the initial sur­
+face position:
+where H(ti
+) is the protrusion height at frame i (Å), zlowest
+(ti
+) is 
+the lowest z-­coordinate reached up to frame i, and zmin
+(t0
+) is the 
+initial minimum z-­coordinate.
+The 
+tetrahedral 
+parameter, 
+q, 
+was 
+evaluated 
+using 
+Equation (5). This parameter was employed as a local-­order 
+descriptor of lithium coordination around the growing protru­
+sion. It does not by itself identify a dendrite or electrochemical 
+growth process; rather, it complements the visual snapshots 
+and maximum-­height metric by indicating changes in local 
+packing and coordination order during protrusion growth. 
+In the corresponding histograms, the “Low-­ q” class denotes 
+lithium atoms with the lowest local tetrahedral order, which 
+we interpret as a highly distorted or weakly ordered coordi­
+nation environment. The “Low order” and “Partially ordered” 
+classes correspond to intermediate local packing environ­
+ments, whereas the “Crystalline” class denotes lithium atoms 
+whose nearest-­neighbor geometry is closest to tetrahedral/
+crystalline-­like local order. These labels therefore describe 
+local structural order only and are not used as direct evidence 
+of electrochemical dendrite formation.
+where 휓jk represents the angle created between the bonds ex­
+tending from a Li-­atom to its four closest neighboring atoms.
+Finally, the time-­course changes of the chemical species formed 
+by bond rearrangements at the anode-­electrolyte interface were 
+analyzed for both 휔 B97X and r2SCAN task heads.
+3   |   Results and Discussion
+3.1   |   MLIP Development and Training
+To efficiently and accurately run MD simulations over extended 
+time and length scales, we rely on an E(3)-­equivariant message-­
+passing graph neural network, MLIP, called Basis-­v0. Basis-­v0 
+(1)
+jcc 7
+0466 -di
+sp - 000 1
+(2)
+jc c 7
+0
+46
+6 - d
+is
+p-0
+002
+(3)
+jc
+c 7 0
+4
+66
+- d i
+sp-
+000
+3
+(4)
+jcc7
+0 4 66-disp-00
+04
+(5)
+j c c 7 0
+4
+66
+- d i
+sp
+- 0 0 0 5
+         
+­
+2
+ 1096987x, 2026, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.70466 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 6>>
+6 of 18
+Journal of Computational Chemistry, 2026
+was trained on a broad corpus of atomistic data curated from 
+open-­source DFT datasets [42–54] providing diverse coverage of 
+chemical space, using a multi-­fidelity learning strategy [55] to 
+enable training a single unified model across different levels of 
+theory and chemical domains.
+The architecture of Basis-­v0 combines the node-­wise body-­ordered 
+tensor product introduced by the MACE architecture [56] with 
+more expressive edge representations generated by a deep com­
+position of equivariant edge-­wise update functions. In contrast to 
+the standard equivariant convolution used by architectures such 
+as MACE, NequIP [57], and SevenNet [58] to update edge features, 
+Basis-­v0 uses a sequence of environment-­dependent equivariant 
+functions to construct edge representations iteratively. We call the 
+number of update functions in this sequence the recursion depth, 
+a hyperparameter R. Conceptually, increasing R enables the model 
+to learn more expressive descriptions of the local chemical envi­
+ronment without extending its receptive field (similar to Allegro 
+[59]). We find that models with higher R reliably provide improved 
+accuracy in practice. Further details on the design of Basis-­v0 are 
+provided in the Supporting Information.
+In contrast to MLIPs developed for individual chemical systems, 
+Basis-­v0 is a pre-­trained MLIP trained on a large, diverse data­
+set and designed to perform reactive MD simulations of complex 
+chemical systems without requiring upfront system-­specific 
+training. To enable training on varied sources of atomistic data, 
+Basis-­v0 is equipped with a separate readout layer for each DFT 
+level of theory in the pre-­training corpus. At the same time, all 
+other model parameters are shared across levels of theory. This 
+enables simultaneous training on multiple DFT datasets across 
+different domains of chemistry, improving the model's robust­
+ness and chemical representation while providing higher accu­
+racy in domains with higher-­fidelity training data [55].
+As a result of the multi-­fidelity learning strategy, Basis-­v0 pro­
+vides readouts for different levels of theory. By default, we perform 
+simulations using energies and forces derived from the readout, 
+matched to the r2SCAN [47, 60] level of theory, which is a high 
+level of theory suitable for general chemistry. Other readouts are 
+expected to perform better in specific domains of chemistry, given 
+the available training data. Thus, we also performed simulations 
+with the 휔 B97X [33, 46, 48, 53] readout, which was hypothesized 
+to provide high accuracy for the small-­molecule reactive chemistry 
+relevant to the electrolyte. In the present adsorption and reaction 
+benchmarks for modeled lithium clusters, however, the r2SCAN 
+readout gives substantially smaller reaction-­energy deviations 
+than the 휔 B97X readout for the representative lithium surface 
+motifs, so r2SCAN is treated as the primary readout and 휔 B97X 
+as a readout-­sensitivity comparison.
+3.2   |   Interfacial Structural Evolution and Bond 
+Rearrangements
+­
+­
+­
+6a
+­
+ 
+S8
+­
+6
+6b
+S8
+ 
+­
+ 
+S8
+Otf−
+6–8
+6c
+ 
+S8
+­
+ 
+Otf−
+6d
+S8
+ 
+Otf−
+­
+S8
+S8
+­
+7
+7a
+­
+ 
+S8
+ 
+S8
+Otf−
+7b
+S8
+ 
+ 
+Otf−
+7c
+ 
+S8
+−­
+ 
+­
+S8
+7d
+S8
+S8
+3.3   |   Time-­Course Changes of Lithium 
+Redistribution
+­
+­
+­
+­
+­
+8
+휔
+S8
+Analysis of the data shows that the number of lith­
+ium atoms in the initial anode region decreases over the 
+course of the simulation. For a decrease in concentra­
+tion from 1.0 M to 0.0 M, the linear equations are as fol­
+lows: 
+y1 = −0.384x + 322.1010; 
+y2 = −0.2139x + 324.7357; 
+y3 = −0.3688x + 324.0970; and y4 = −0.2203x + 323.4954. The 
+gradient value was observed to have a non-­monotonic relationship 
+(6)
+jcc 7 046 6 -disp-0006
+(7)
+jcc 7 04 6 6-di s p-0007
+(8)
+jcc 7 0466 - disp-0008
+ 1096987x, 2026, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.70466 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 7>>
+7 of 18
+Journal of Computational Chemistry, 2026
+to the S8 concentration: a 44% reduction in the gradient value 
+was observed when moving from a concentration of 1 M to 
+0.6 M; a 72% increase in the gradient was observed when mov­
+ing from a concentration of 0.6 to 0.3 M; and finally, a 40% re­
+duction in the gradient value was observed when moving from 
+a concentration of 0.3 to 0 M. Thus, in the 휔 B97X simulations, 
+S8 concentration does not produce a simple monotonic trend in 
+lithium redistribution.
+9
+S8
+휔
+­
+­
+k
+k
+S8
+ 
+−1
+k
+S8
+S8
+­
+­
+S8
+S8
+­
+­
+10
+­
+yPC = −0.2203x + 323.4952
+yDIO = −0.2369x + 322.9035
+­
+휔
+−1
+휔
+­
+         
+­
+­
+ 
+휔
+ 
+ 
+ 
+ 
+S8
+ 1096987x, 2026, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.70466 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 8>>
+8 of 18
+Journal of Computational Chemistry, 2026
+­
+Otf−
+−
+­
+11
+휔
+­
+휔
+­
+         
+­
+­
+ 
+ 
+ 
+ 
+ 
+S8
+         
+­
+­
+휔
+S8
+         
+­
+­
+­
+S8
+ 1096987x, 2026, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.70466 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 9>>
+9 of 18
+Journal of Computational Chemistry, 2026
+to PC and DIO solvents are yPC = −0.07684x + 324.36740 and 
+yDIO = −0.254x + 325.8516. The gradient values for the afore­
+mentioned trendline equations suggest that lithium redistribu­
+tion in the DIO solvent exceeds that observed in the PC solvent 
+for the 휔 B97X readout. In contrast, the r2SCAN readout head 
+shows the opposite pattern, with fitted constants, k, for PC and 
+DIO being 0.1802 and 0.1304 ps −1, respectively. This readout de­
+pendence indicates that solvent and salt trends should be inter­
+preted cautiously.
+3.4   |   The Connection Matrix (Cmat)
+­
+S8
+S8
+­
+휔
+12
+휔
+12a
+S8
+   
+Li+
+Li+
+C4H6O4
+Li+
+C4H6O3
+Li+
+­
+(C4H6O4
+)
+Li+
+C4H6O4
+Li+
+C4H6O3
+Li+
+C4H6O3
+Li+
+S8
+Li+
+Li+
+­
+Li+
+CF3O3S
+12b
+­
+S8
+ 
+Li+
+C4H6O3
+         
+­
+휔
+         
+­
+­
+휔
+ 1096987x, 2026, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.70466 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 10>>
+10 of 18
+Journal of Computational Chemistry, 2026
+red coloration associated with this interaction. The reverse is 
+true for the interaction between Li+ ions and sulfur atoms from 
+S8. The interaction between the two is characterized by a yellow 
+color, suggesting a strong interaction occurring over a consider­
+able distance. A similar phenomenon is observed in the inter­
+action between Li+ ions and Li+ ions. The cmat results for these 
+two atoms yield a yellow color, signifying a strong interaction at 
+a long distance. Figure 12c illustrates the cmat corresponding to 
+0.3 M S8. The interaction between Li+ ions and O3 (C4H6O3) at 
+0.3 M S8 yields a similar color to that observed cmat at 0.6 M S8, 
+both producing a red color that signifies a strong interaction at 
+close distance. The interaction between Li+ ions and the sulfur 
+atoms in S8 is notably strong, even at a considerable distance. 
+This discovery aligns with the interaction observed between Li+ 
+ions and Li+ ions, which results in a yellow coloration. The dis­
+tinction lies in the interaction between Li+ ions and the O1 atom 
+(C4H6O3), represented in purple. This interaction occurs at a 
+close distance and is moderately weak. Figure 12d illustrates the 
+cmat corresponding to a concentration of 0 M S8. A pattern sim­
+ilar to that at 0.3 M is observed. A significant interaction occurs 
+at close range between Li+ ions and O3 (C4H6O3), as evidenced 
+by the color red. A strong long-­range interaction exists between 
+Li+ ions and sulfur atoms from CF3O3S, as indicated by the color 
+yellow. A weak interaction occurs at short distances between Li+ 
+ions and O3 (C4H6O3) atoms, as indicated in light purple.
+­
+13
+13a
+S8
+ 
+ 
+휔
+­
+Li+
+Li+
+C4H6O4
+Li+
+C4H6O4
+Li+
+C4H6O3
+Li+
+C4H6O3
+Li+
+C4H6O3
+Li+
+C4H6O4
+­
+Li+
+C4H6O4
+­
+Li+
+S8
+Li+
+Li+
+13b
+S8
+ 
+Li+
+C4H6O3
+         
+휔
+S8
+ 
+ 
+ 
+ 
+ 1096987x, 2026, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.70466 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 11>>
+11 of 18
+Journal of Computational Chemistry, 2026
+interaction occurs between Li+ ions and O1, O2, and O3. The 
+opposite interaction occurs between Li+ ions and sulfur atoms 
+in S8, producing a yellow color. This color indicates a strong in­
+teraction at a long distance. The similar trend also occurs for 
+the interaction between Li+ ions and Li+ ions, where a yellow 
+color marks a long-­distance interaction. Cmat for 0.3 M S8 also 
+shows the same trend as for a concentration of 0.6 M. There is 
+a strong interaction that occurs at close range between Li+ ions 
+and O1, O2, and O3 atoms in C4H6O3. Strong and Long-­range 
+interactions occur between Li+ ions and sulfur atoms from S8, 
+as well as between Li+ ions and Li+ ions, indicated by the yel­
+low color. For the absence of S8 (model 4), there is a strong 
+interaction at close range between Li+ ions and O1, O2, and O3 
+atoms from the C4H6O3 molecule, which is highlighted in red. 
+There is a strong long-­range interaction between Li+ ions and 
+Li+ ions, indicated by the yellow color.
+3.5   |   Lithium Protrusion Growth
+z ­
+­
+z ­
+14
+14a
+휔
+ 
+14a
+­
+ 
+ 
+S8
+ 
+휔
+S8
+­
+ 
+S8
+­
+ 
+­
+ 
+S8
+­
+S8
+Although these simulated protrusions should not be inter­
+preted as complete electrochemical dendrites, the observed 
+surface restructuring may still be relevant to dendrite nucle­
+ation in practical lithium-­metal batteries. In operating cells, 
+dendrite nucleation is favored at interfacial heterogeneities 
+where local curvature, lithium coordination, SEI chemistry, 
+and ion flux can concentrate deposition. The present simu­
+lations identify electrolyte-­dependent lithium displacement, 
+         
+S8
+ 
+ 
+ 
+ 
+ 1096987x, 2026, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.70466 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 12>>
+12 of 18
+Journal of Computational Chemistry, 2026
+local ordering changes, and small protrusive motifs that could 
+serve as atomistic precursors to such heterogeneities if cou­
+pled to an applied potential and continued lithium deposition. 
+Therefore, the broader significance of the present results is not 
+that they reproduce full dendrite growth, but that they reveal 
+how S8, solvent, and salt coordination can perturb the lithium 
+surface and generate local structural motifs that may seed or 
+modulate dendrite nucleation under realistic electrochemical 
+conditions.
+­
+­
+­
+15
+­
+휔
+­
+16
+­
+­
+­
+16
+휔
+­
+3.6   |   Tetrahedral Order Parameter
+­
+­
+q
+q
+17
+18
+­q
+­
+­
+q
+S8
+17
+18
+휔
+17
+         
+z ­
+­
+휔
+         
+z ­
+휔
+ 1096987x, 2026, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.70466 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 13>>
+13 of 18
+Journal of Computational Chemistry, 2026
+first observed protrusion time and at 40 ps. For 1 M S8, the tetra­
+hedral distribution at 2.6 ps yielded a value of 7.3%, increasing 
+to 22.9% at 40 ps. At 0.6 M S8, the first protrusion was observed 
+at 26.5 ps with a value of 4.2%, increasing to 12.5% at 40 ps. At 
+0.3 M S8, the value increased from 6.2% at 1.5 ps to 9.9% at 40 ps. 
+Without S8, the value was 4.2% at 40 ps. Overall, the tetrahedral 
+order parameter in the 휔 B97X readout shows local ordering 
+during protrusion growth, but it does not show a simple mono­
+tonic dependence on S8 concentration. In the case of PC and Otf, 
+direct oxygen-­lithium coordination is observed near the anode, 
+suggesting that the liquid electrolyte components also play an 
+important role in lithium redistribution.
+18
+18a
+ 
+S8
+ 
+ 
+ 
+S8
+ 
+ 
+­
+S8
+Otf−
+S8
+C3H6
+­
+­
+­
+4   |   Conclusions
+We conducted MD simulations utilizing the Basis-­v0 multi-­
+fidelity pre-­trained MLIP to investigate lithium metal/liquid 
+electrolyte interfaces at various S8 concentrations. The simula­
+tions employed two Basis-­v0 readout heads, trained on 휔 B97X 
+and r2SCAN DFT data, respectively. Because the present neu­
+tral MLIP simulations do not explicitly describe electrode po­
+tential, electron transfer, or charge-­state evolution, the observed 
+structures should be interpreted as dendrite-­like lithium protru­
+sions and aggregates rather than as a complete electrochemical 
+deposition process.
+Within this structural interpretation, the simulations show lith­
+ium redistribution away from the initial anode region, growth of 
+anisotropic lithium protrusions, changes in local lithium coor­
+dination order, and electrolyte-­dependent bond rearrangements. 
+The lithium atom count in the initial anode region is therefore 
+a redistribution descriptor, not a measure of lithium consump­
+tion. The maximum height and tetrahedral order analyses pro­
+vide complementary structural information, but the tetrahedral 
+order parameter alone is not a unique morphology identifier.
+The two MLIP readout heads behave differently for the ad­
+opted interface system. The 휔 sB97X readout gives lith­
+ium protrusion growth without strong solvent dissociation, 
+whereas the r2SCAN readout describes PC dissociation into 
+C3H6, consistent with previous ab initio simulation results re­
+ported elsewhere [30]. The Supporting Information includes 
+both RDF validation against a VASP r2SCAN trajectory and 
+BASIS–DFT comparisons of optimized structures, bond dis­
+tances, and electronic reaction energies for adsorption and re­
+action in modeled lithium clusters. In these modeled-­cluster 
+tests, BASIS-­r2SCAN gives lower reaction-­energy deviations 
+than BASIS-­ 휔 B97X for the representative lithium surface 
+reactions. For this reason, the r2SCAN readout is considered 
+the more reliable description for interfacial metal/electrolyte 
+chemistry in the present study, while the 휔 B97X readout is 
+used to assess readout sensitivity.
+The role of S8 is therefore best described as modulatory rather 
+than essential. S8 participates in Li–S coordination and, in the 
+r2SCAN redistribution metric, higher S8 concentration cor­
+relates with faster lithium redistribution from the initial anode 
+region. However, dendrite-­like lithium protrusions are also ob­
+served in the absence of S8, and the tetrahedral order parameter 
+does not show a monotonic S8-­concentration trend. These results 
+indicate that PC and Otf− are also important drivers of interfa­
+cial lithium restructuring. The added DFT benchmarks support 
+the use of BASIS-­r2SCAN for structural and relative energetic 
+trends in the selected lithium surface motifs, but a complete 
+electrochemical dendrite-­growth mechanism would still require 
+explicit treatment of electrode potential, charge-­state evolution, 
+and electron-­transfer pathways.
+         
+z ­
+­
+­
+휔
+ 1096987x, 2026, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.70466 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 14>>
+14 of 18
+Journal of Computational Chemistry, 2026
+         
+ 
+휔
+S8
+ 
+ 
+ 
+ 
+ 1096987x, 2026, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.70466 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 15>>
+15 of 18
+Journal of Computational Chemistry, 2026
+         
+ 
+S8
+ 
+ 
+ 
+ 
+ 1096987x, 2026, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.70466 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 16>>
+16 of 18
+Journal of Computational Chemistry, 2026
+From the perspective of practical lithium-­metal batteries, these 
+restructuring events are relevant because early protrusions, 
+distorted coordination environments, and electrolyte-­induced 
+surface heterogeneities can provide preferential sites for later 
+lithium deposition once an electrochemical driving force is pres­
+ent. The present results therefore suggest molecular factors that 
+may influence dendrite nucleation, while maintaining the dis­
+tinction between structural precursors observed in neutral MD 
+and full dendrite growth in an operating cell.
+Author Contributions
+Mirella Fonda Maahury: writing – original draft, investigation, 
+formal analysis, data curation. Sabrina Chin-­yun Shen: writing – 
+original draft, investigation, visualization, methodology, resources, 
+software. Kayvon Tabrizi: writing – original draft, investigation, 
+visualization, methodology, resources, software. Sam Walton 
+Norwood: writing – original draft, writing – review and editing, 
+investigation, visualization, methodology, resources, validation, 
+software. Cedric Naravisnu Purwanto: writing – original draft, 
+investigation, data curation. Ganes Shukri: writing – review and 
+editing, funding acquisition, validation. Hasan Al Rasyid: writing 
+– review and editing, validation. Aditya Wibawa Sakti: conceptual­
+ization, writing – original draft, writing – review and editing, data cu­
+ration, formal analysis, funding acquisition, validation, supervision, 
+project administration.
+Acknowledgments
+The computations were partially performed using Research Center 
+for Computational Science, Okazaki, Japan (Project: 25-­IMS-­C155). 
+M.F.M. acknowledges the Indonesia Endowment Fund for Education/
+Lembaga Pengelola Dana Pendidikan (LPDP) for research funding. 
+G.S. would like to acknowledge research fund granted by the Bandung 
+Institute of Technology under “Riset Unggulan ITB 2024” contract no. 
+959/IT1.B07.1/TA.00/2024.
+Funding
+This work was supported by Institut Teknologi Bandung—959/
+IT1.B07.1/TA.00/2024.
+Conflicts of Interest
+The authors declare no conflicts of interest.
+Data Availability Statement
+The data that support the findings of this study are available from the 
+corresponding author upon reasonable request.
+References
+1. Robert F. Service, “A Boost for Lithium-­Sulfur Batteries,” Science 339, 
+no. 6115 (2013): 20–21.
+2. Y. Zhang, X. Zhang, S. R. P. Silva, B. Ding, P. Zhang, and G. Shao, 
+“Lithium–Sulfur Batteries Meet Electrospinning: Recent Advances and 
+the Key Parameters for High Gravimetric and Volume Energy Density,” 
+Advanced Science 9 (2022): 2103879.
+3. J. Zhou and A. Sun, “Progress in the Advancement of Atomically Dis­
+persed Catalysts for Enhanced Performance Lithium-­Sulfur Batteries,” 
+Chemical Engineering Journal 488 (2024): 150719.
+4. G. Bieker, M. Winter, and P. Bieker, “Electrochemical In Situ Investi­
+gations of SEI and Dendrite Formation on the Lithium Metal Anode,” 
+Physical Chemistry Chemical Physics 17, no. 14 (2015): 8670–8679.
+5. K. N. Wood, E. Kazyak, A. F. Chadwick, et al., “Dendrites and Pits: 
+Untangling the Complex Behavior of Lithium Metal Anodes Through 
+Operando Video Microscopy,” ACS Central Science 2, no. 11 (2016): 
+790–801.
+6. F. Aguesse, W. Manalastas, L. Buannic, et al., “Investigating the Den­
+dritic Growth During Full Cell Cycling of Garnet Electrolyte in Direct 
+Contact With Li Metal,” ACS Applied Materials & Interfaces 9, no. 4 
+(2017): 3808–3816.
+7. X. Gao, Y.-­N. Zhou, D. Han, et al., “Thermodynamic Understanding 
+of Li-­Dendrite Formation,” Joule 4, no. 9 (2020): 1864–1879.
+8. H. E. Park, C. H. Hong, and W. Y. Yoon, “The Effect of Internal Re­
+sistance on Dendritic Growth on Lithium Metal Electrodes in the Lith­
+ium Secondary Batteries,” Journal of Power Sources 178, no. 2 (2008): 
+765–768.
+9. R. Zhang, X.-­B. Cheng, C.-­Z. Zhao, et  al., “Conductive Nano­
+structured Scaffolds Render Low Local Current Density to Inhibit 
+Lithium  Dendrite Growth,” Advanced Materials 28, no. 11 (2016): 
+2155–2162.
+10. O. Crowther and A. C. West, “Effect of Electrolyte Composition on 
+Lithium Dendrite Growth,” Journal of the Electrochemical Society 155, 
+no. 11 (2008): A806.
+11. S.-­K. Jeong, H.-­Y. Seo, D.-­H. Kim, et al., “Suppression of Dendritic 
+Lithium Formation by Using Concentrated Electrolyte Solutions,” Elec­
+trochemistry Communications 10, no. 4 (2008): 635–638.
+12. B. Li, C. Yu, M. Li, et al., “A Review of Solid Electrolyte Interphase 
+(SEI) and Dendrite Formation in Lithium Batteries,” Electrochemical 
+Energy Reviews 6 (2023): 7.
+13. F. Ding, W. Xu, G. L. Graff, et al., “Dendrite-­Free Lithium Depo­
+sition via Self-­Healing Electrostatic Shield Mechanism,” Journal of the 
+American Chemical Society 135, no. 11 (2013): 4450–4456.
+14. J. Qian, W. A. Henderson, W. Xu, et al., “High Rate and Stable 
+Cycling of Lithium Metal Anode,” Nature Communications 6 (2015): 
+6362.
+15. S. Tang, G. Chen, F. Ren, et al., “Modifying an Ultrathin Insulat­
+ing Layer to Suppress Lithium Dendrite Formation Within Garnet 
+Solid Electrolytes,” Journal of Materials Chemistry A 9, no. 6 (2021): 
+3576–3583.
+16. T. Zhengyuan, Y. Kambe, Y. Lu, and L. A. Archer, “Nanoporous 
+Polymer-­Ceramic Composite Electrolytes for Lithium Metal Batteries,” 
+Advanced Energy Materials 4 (2014): 1300654.
+17. G. Wang, X. Xiong, D. Xie, et al., “Suppressing Dendrite Growth by 
+a Functional Electrolyte Additive for Robust Li Metal Anodes,” Energy 
+Storage Materials 23 (2019): 701–706.
+18. X. XiaoLong, S. J. Wang, H. Wang, et al., “The Suppression of Lith­
+ium Dendrite Growth in Lithium Sulfur Batteries: A Review,” Journal 
+of Energy Storage 13 (2017): 387–400.
+19. Z. Liang, G. Zheng, C. Liu, et al., “Polymer Nanofiber-­Guided Uni­
+form Lithium Deposition for Battery Electrodes,” Nano Letters 15, no. 5 
+(2015): 2910–2916.
+20. W. Liu, W. Li, D. Zhuo, et al., “Core–Shell Nanoparticle Coating as 
+an Interfacial Layer for Dendrite-­Free Lithium Metal Anodes,” ACS 
+Central Science 3, no. 2 (2017): 135–140.
+21. T. J. Richardson and G. Chen, “Solid Solution Lithium Alloy Cermet 
+Anodes,” Journal of Power Sources 174, no. 2 (2007): 810–812.
+22. M.-­H. Ryou, Y. M. Lee, Y. Lee, M. Winter, and P. Bieker, “Mechani­
+cal Surface Modification of Lithium Metal: Towards Improved Li Metal 
+Anode Performance by Directed Li Plating,” Advanced Functional Ma­
+terials 25, no. 6 (2015): 834–841.
+23. K. Yan, H.-­W. Lee, T. Gao, et  al., “Ultrathin Two-­Dimensional 
+Atomic Crystals as Stable Interfacial Layer for Improvement of Lithium 
+Metal Anode,” Nano Letters 14, no. 10 (2014): 6016–6022.
+ 1096987x, 2026, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.70466 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 17>>
+17 of 18
+Journal of Computational Chemistry, 2026
+24. X. Zhang, A. Wang, X. Liu, and J. Luo, “Dendrites in Lithium Metal 
+Anodes: Suppression, Regulation, and Elimination,” Accounts of Chem­
+ical Research 52, no. 11 (2019): 3223–3232.
+25. J. Wang, S. Yi, J. Liu, et al., “Suppressing the Shuttle Effect and Den­
+drite Growth in Lithium–Sulfur Batteries,” ACS Nano 14, no. 8 (2020): 
+9819–9831.
+26. Y. Yang, W. Wang, L. Li, B. Li, and J. Zhang, “Stable Cycling of Li–S 
+Batteries by Simultaneously Suppressing Li-­Dendrite Growth and Poly­
+sulfide Shuttling Enabled by a Bioinspired Separator,” Journal of Mate­
+rials Chemistry A 8, no. 7 (2020): 3692–3700.
+27. T. Zhang, J. Yang, X. Zhixin, et al., “Suppressing Dendrite Growth 
+of a Lithium Metal Anode by Modifying Conventional Polypropylene 
+Separators With a Composite Layer,” ACS Applied Energy Materials 3, 
+no. 1 (2020): 506–513.
+28. J. Zhu, C. Chen, L. Yao, et  al., “Highly Porous Polyacrylonitrile/
+Graphene Oxide Membrane Separator Exhibiting Excellent Anti-­Self-­
+Discharge Feature for High-­Performance Lithium–Sulfur Batteries,” 
+Carbon 101 (2016): 272–280.
+29. Z. Liu, L. Sun, X. Liu, and Q. Lu, “Stabilization Strategies of Lithium 
+Metal Anode Toward Dendrite-­Free Lithium-­Sulfur Batteries,” Chem­
+istry – A European Journal 30 (2024): e202402032.
+30. L. E. Camacho-­Forero, “Effects of Charged Interfaces on Electrolyte 
+Decomposition at the Lithium Metal Anode,” Journal of Power Sources 
+472 (2020):228449.
+31. H. G. Lee, S. Y. Kim, and J. S. Lee, “Dynamic Observation of Den­
+drite Growth on Lithium Metal Anode During Battery Charging/Dis­
+charging Cycles,” npj Computational Materials 8 (2022): 103.
+32. I. Batatia, P. Benner, Y. Chiang, et al., “A Foundation Model for At­
+omistic Materials Chemistry,” arXiv Preprint (2023): 154.
+33. J.-­D. Chai and M. Head-­Gordon, “Long-­Range Corrected Hybrid 
+Density Functionals With Damped Atom–Atom Dispersion Correc­
+tions,” Physical Chemistry Chemical Physics 10, no. 44 (2008): 6615.
+34. F. Weigend and R. Ahlrichs, “Balanced Basis Sets of Split Valence, 
+Triple Zeta Valence and Quadruple Zeta Valence Quality for H to Rn: 
+Design and Assessment of Accuracy,” Physical Chemistry Chemical 
+Physics 7 (2005): 3297.
+35. F. Neese, Software Update: The orca Program System—Version 5.0, 
+WIREs Computational Molecular Science 12 (Wiley, 2022).
+36. J. Wang, W. Wang, P. A. Kollman, and D. A. Case, “Automatic Atom 
+Type and Bond Type Perception in Molecular Mechanical Calculations,” 
+Journal of Molecular Graphics and Modelling 25, no. 2 (2006): 247–260.
+37. J. Wang, R. M. Wolf, J. W. Caldwell, P. A. Kollman, and D. A. Case, 
+“Development and Testing of a General Amber Force Field,” Journal of 
+Computational Chemistry 25 (2004): 1157–1174.
+38. D. A. Case, H. M. Aktulga, K. Belfon, et al., “Amber Tools,” Journal 
+of Chemical Information and Modeling 63, no. 20 (2023): 6183–6191.
+39. L. Martínez, R. Andrade, E. G. Birgin, and J. M. Martínez, “Pack­
+mol: A Package for Building Initial Configurations for Molecular Dy­
+namics Simulations,” Journal of Computational Chemistry 30 (2009): 
+2157–2164.
+40. M. J. Abraham, T. Murtola, R. Schulz, et  al., “GROMACS: High 
+Performance Molecular Simulations Through Multi-­Level Parallelism 
+From Laptops to Supercomputers,” SoftwareX 1-­2 (2015): 19–25.
+41. D. Van Der Spoel, E. Lindahl, B. Hess, G. Groenhof, A. E. Mark, and 
+H. J. C. Berendsen, “GROMACS: Fast, Flexible, and Free,” Journal of 
+Computational Chemistry 26 (2005): 1701–1718.
+42. L. Barroso-­Luque, M. Shuaibi, X. Fu, et al., “Open Materials 2024 
+(OMat24) Inorganic Materials Dataset and Models,” arXiv Preprint 
+(2024): 19.
+43. L. Chanussot, A. Das, S. Goyal, et  al., “The Open Catalyst 2020 
+(oc20) Dataset and Community Challenges,” ACS Catalysis 11 (2021): 
+6059–6072.
+44. B. Deng, P. Zhong, K. J. Jun, et al., “Chgnet as a Pretrained Universal 
+Neural Network Potential for Charge-­Informed Atomistic Modelling,” 
+Nature Machine Intelligence 5 (2023): 1031–1041.
+45. C. Devereux, J. S. Smith, K. K. Huddleston, et al., “Extending the 
+Applicability of the ANI Deep Learning Molecular Potential to Sulfur 
+and Halogens,” Journal of Chemical Theory and Computation 16 (2020): 
+4192–4202.
+46. P. Eastman, P. K. Behara, D. L. Dotson, et al., “Spice, a Dataset of 
+Drug-­Like Molecules and Peptides for Training Machine Learning Po­
+tentials,” Scientific Data 10, no. 11 (2023): 11.
+47. A. D. Kaplan, R. Liu, J. Qi, et al., “A Foundational Potential Energy 
+Surface Dataset for Materials,” arXiv Preprint 2503 (2025): 04070.
+48. K. Khrabrov, A. Ber, A. Tsypin, et  al., “nabla2 Dft: A Universal 
+Quantum Chemistry Dataset of Drug-­Like Molecules and a Benchmark 
+for Neural Network Potentials,” arXiv Preprint (2024): 21.
+49. N. Lopanitsyna, G. Fraux, M. A. Springer, S. De, and M. Ceriotti, 
+“Modeling High-­Entropy Transition-­Metal Alloys With Alchemical 
+Compression,” arXiv Preprint 2212 (2022): 13254.
+50. J. Schmidt, H.-­C. Wang, T. F. T. Cerqueira, S. Botti, and M. A. L. 
+Marques, “A Dataset of 175k Stable and Metastable Materials Calculated 
+With the PBEsol and SCAN Functionals,” in A New Dataset of 175k Sta­
+ble and Metastable Materials Calculated With the PBEsol and SCAN 
+Functionals, vol. 9 (Scientific Data, 2022), 64.
+51. M. Schreiner, A. Bhowmik, T. Vegge, J. Busk, and O. Winther, 
+“Transition1x—A Dataset for Building Generalizable Reactive Machine 
+Learning Potentials, Scientific Data 9,” (2022).
+52. A. Sriram, S. Choi, Y. Xiaohan, et al., “The Open DAC 2023 Dataset 
+and Challenges for Sorbent Discovery in Direct Air Capture,” in The 
+Open Dac 2023 Dataset and Challenges for Sorbent Discovery in Direct 
+Air Capture, vol. 10 (ACS Central Science, 2024), 923–941.
+53. O. T. Unke, M. Stöhr, S. Ganscha, et al., “Biomolecular Dynamics 
+With Machine-­Learned Quantum-­Mechanical Force Fields Trained 
+on Diverse Chemical Fragments,” in Biomolecular Dynamics With 
+Machine-­Learned Quantum-­Mechanical Force Fields Trained on Diverse 
+Chemical Fragments, vol. 10 (Science Advances, 2024).
+54. Q. Zhao, S. M. Vaddadi, M. Woulfe, et al., “Comprehensive Explora­
+tion of Graphically Defined Reaction Spaces,” in Scientific Data, vol. 10 
+(Nature, 2023), 145.
+55. I. Batatia, C. Lin, J. Hart, et al., “Cross Learning Between Electronic 
+Structure Theories for Unifying Molecular, Surface, and Inorganic 
+Crystal Foundation Force Fields,” arXiv Preprint (2025): 25380.
+56. I. Batatia, D. P. Kovács, G. N. C. Simm, C. Ortner, and G. Csányi, 
+“Mace: Higher Order Equivariant Message Passing Neural Networks for 
+Fast and Accurate Force Fields,” Advances in Neural Information Pro­
+cessing Systems (2022): 11423–11437.
+57. S. Batzner, A. Musaelian, L. Sun, et  al., “E(3)-­Equivariant Graph 
+Neural Networks for Data-­Efficient and Accurate Interatomic Poten­
+tials,” Nature Communications 13 (2022): 2453.
+58. Y. Park, J. Kim, S. Hwang, and S. Han, “Scalable Parallel Algorithm 
+for Graph Neural Network Interatomic Potentials in Molecular Dynam­
+ics Simulations,” Journal of Chemical Theory and Computation 20, no. 
+11 (2024): 4857–4868.
+59. A. Musaelian, S. Batzner, A. Johansson, et al., “Learning Local Equi­
+variant Representations for Large-­Scale Atomistic Dynamics,” Nature 
+Communications 14 (2023): 579.
+60. J. W. Furness, A. D. Kaplan, J. Ning, J. P. Perdew, and J. Sun, 
+“Accurate and Numerically Efficient r2 Scan Meta-­Generalized 
+ 1096987x, 2026, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.70466 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 18>>
+18 of 18
+Journal of Computational Chemistry, 2026
+Gradient Approximation,” Journal of Physical Chemistry Letters 11 
+(2020): 8208–8215.
+Supporting Information
+Additional supporting information can be found online in the Supporting 
+Information section. Figure S1: Model 1 (ωB97X): tetrahedral order pa­
+rameter distribution (left) and MD snapshot (right). Figure S2: Model 2 
+(ωB97X): tetrahedral order parameter distribution (left) and MD snap­
+shot (right). Figure S3: Model 3 (ωB97X): tetrahedral order parameter 
+distribution (left) and MD snapshot (right). Figure S4: Model 4 (ωB97X): 
+tetrahedral order parameter distribution (left) and MD snapshot (right). 
+Figure S5: Model 5 (ωB97X): tetrahedral order parameter distribution 
+(left) and MD snapshot (right). Figure S6: Model 6 (ωB97X): tetrahedral 
+order parameter distribution (left) and MD snapshot (right). Figure S7: 
+Model 7 (ωB97X): tetrahedral order parameter distribution (left) and 
+MD snapshot (right). Figure S8: Model 8 (ωB97X): tetrahedral order pa­
+rameter distribution (left) and MD snapshot (right). Figure S9: Model 
+1 (r2SCAN): tetrahedral order parameter distribution (left) and MD 
+snapshot (right). Figure S10: Model 2 (r2SCAN): tetrahedral order pa­
+rameter distribution (left) and MD snapshot (right). Figure S11: Model 
+3 (r2SCAN): tetrahedral order parameter distribution (left) and MD 
+snapshot (right). Figure S12: Model 4 (r2SCAN): tetrahedral order pa­
+rameter distribution (left) and MD snapshot (right). Figure S13: Model 
+5 (r2SCAN): tetrahedral order parameter distribution (left) and MD 
+snapshot (right). Figure S14: Model 6 (r2SCAN): tetrahedral order pa­
+rameter distribution (left) and MD snapshot (right). Figure S15: Model 
+7 (r2SCAN): tetrahedral order parameter distribution (left) and MD 
+snapshot (right). Figure S16: Model 8 (r2SCAN): tetrahedral order pa­
+rameter distribution (left) and MD snapshot (right). Table S1: Method-­
+level reaction-­energy deviation summary for the BASIS–DFT adsorption 
+and reaction benchmarks in modeled lithium clusters. Absolute devia­
+tions are ∣ΔEBASIS−ΔEDFT∣ in kcal mol−1 overall reactions listed in 
+Table S2. Table S2: Larger-­cluster electronic reaction-­energy comparison 
+between DFT and BASIS. DFT and BASIS values are reaction energies 
+in kcal mol−1; ∆ is BASIS minus DFT in kcal mol−1. Table S3: All-­atom 
+geometry RMSD after rigid Kabsch alignment to the corresponding DFT-­ 
+optimized structure. RMSD values are reported in Å. Table S4: Bond-­
+distance deviation summary against DFT. Bond pairs were detected 
+from the DFT-­optimized structure using covalent radii. Mean absolute, 
+RMS, and maximum absolute deviations are reported in Å. Table S5: 
+Individual bond distances in the BASIS–DFT adsorption and reaction 
+benchmarks in modeled lithium clusters. DFT and BASIS bond distances 
+are reported in Å; Δr is BASIS minus DFT in Å. Table S6: Composition 
+of the benchmark system used for the RDF comparison. Table S7: RDF 
+peak summary over the VASP r2SCAN overlap window. S–S is evaluated 
+over 3–5 Å; all other pairs are evaluated over 0.8–5 Å. Peak positions are 
+reported in Å. Figure S17: Peak-­normalized RDF comparison for Li-­
+containing pairs. Figure S18: Peak-­normalized RDF comparison for 
+sulfur-­containing pairs. The S–S comparison is shown over the 3–5 Å 
+evaluation window. 
+ 1096987x, 2026, 19, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.70466 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

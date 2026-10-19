@@ -1,0 +1,1438 @@
+
+<<PAGE 1>>
+Structure and Physicochemical Properties of Solutions of Lithium
+Polysulfides in Tetrasolvate of Lithium Perchlorate with Sulfolane
+Molecular Dynamics Modeling
+Elena V. Kuzmina,* Alfia R. Yusupova, Elena V. Karaseva, Xiang Chen, Qiang Zhang,
+and Vladimir S. Kolosnitsyn
+Cite This: J. Phys. Chem. B 2024, 128, 7833−7847
+Read Online
+ACCESS
+Metrics & More
+Article Recommendations
+*
+sı
+Supporting Information
+ABSTRACT: Lithium polysulfides are intermediate products formed
+during the discharge and charge of lithium−sulfur batteries and have
+good solubility in electrolyte solutions. Therefore, the properties and
+structure of solutions of lithium polysulfides in electrolyte solutions
+affect the energy characteristics of the lithium−sulfur battery. In this
+work, the structure and physicochemical properties (density, ionic
+conductivity, and self-diffusion coefficients) of solutions of lithium
+disulfide, tetrasulfide, and octasulfide in lithium perchlorate tetrasolvate
+with sulfolane in a wide range of concentrations (0.2−12 M) were
+studied using the molecular dynamics method. With increasing
+concentrations of lithium polysulfides, the proportion of sulfur atoms
+in the coordination sphere of the lithium cation increases and the
+proportion of sulfolane molecules decreases. It has been established
+that the ability of the polysulfide anion to act as a bridging ligand leads to the formation of clusters, including lithium perchlorate,
+lithium polysulfides, and sulfolane. It has been shown that the tendency to form clusters increases with an increasing number of
+sulfur atoms in the polysulfide anion. At high concentrations of lithium polysulfides, regardless of their size, the electrolyte system
+becomes a single cluster. With an increase in the concentration of lithium polysulfides in the electrolyte system, its density increases
+and the ionic conductivity and diffusion coefficients of the system components decrease.
+■INTRODUCTION
+The physicochemical properties of electrolyte systems based
+on sulfolane, lithium salts, and lithium polysulfides of various
+sizes are of great interest in connection with the development
+of lithium−sulfur batteries (LSBs).1,2 The specific energy of
+the lithium−sulfur electrochemical system is 2600 W h/kg,3
+which is approximately 5 times the specific energy of lithium-
+ion electrochemical systems. A comparison of the energy
+characteristics of lithium−sulfur and lithium-ion electro-
+chemical systems suggests the possibility of creating batteries
+with a specific energy that is at least 2−3 times larger than the
+specific energy of the best examples of lithium-ion batteries
+(LIBs).4,5 However, despite significant efforts, it has still not
+been possible to create LSBs with characteristics that meet the
+requirements of the modern market.6 The specific energy of
+the best samples of lithium−sulfur cell prototypes barely
+reaches 400−450 W h/kg with a cycling duration of no more
+than 100−150 cycles.7 (see Table 1)
+The difficulties in developing LSBs are due to the feature of
+the lithium−sulfur electrochemical system. Sulfur in the solid
+state is a dielectric and therefore has low electrochemical
+activity. However, sulfur is soluble in electrolyte systems based
+on aprotic dipolar solvents (ADSs) and can be sorbed from
+solutions on the surface of electronic conductors, for example,
+on the surface of various carbon materials, carbon black,
+Received:
+December 25, 2023
+Revised:
+July 30, 2024
+Accepted:
+July 31, 2024
+Published: August 7, 2024
+Table 1. Possible Mechanism of Electrochemical Sulfur
+Reduction at Discharge of LSBs10
+equation
+stage
+S8+2Li+ + 2e−+ nSol→Li2S8·nSolv
+1
+Li2S8 + 2Li++2e−+ nSol→2Li2S4·nSolv
+2
+2Li2S4·nSolv + 4Li++4e−→2Li2S↓+2Li2S3·nSolv
+3
+2Li2S3nSolv↔Li2S4·nSolv + Li2S2·nSolv
+4
+Li2S4·nSolv + 2Li++2e−→Li2S↓+Li2S3·nSolv
+5
+Li2S3·nSolv + 2Li++2e−→Li2S↓+Li2S2·nSolv
+6
+2Li2S2·nSolv↔Li2S↓+ Li2S3·nSolv + nSolv
+7
+Li2S3·nSolv + 2Li+ + 2e−→Li2S↓+ Li2S2·nSolv
+8
+Li2S2·nSolv + 2Li+ + 2e−→2Li2S↓+·nSolv
+9
+Article
+pubs.acs.org/JPCB
+© 2024 American Chemical Society
+7833
+https://doi.org/10.1021/acs.jpcb.3c08374
+J. Phys. Chem. B 2024, 128, 7833−7847
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​128/​32/​7833/​14962807/​jp3c08374.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 2>>
+carbon nanotubes, carbon fibers, and graphene. In the sorption
+state, sulfur is capable of undergoing electrochemical trans-
+formations.
+When discharging and charging LSBs, intermediate products
+of the electrochemical reduction of sulfur are formed that are
+highly soluble in electrolytes−lithium polysulfides (Li2Sn).8,9
+The solubility of sulfur and lithium polysulfides in electrolytes
+causes several negative consequences: high self-discharge rates,
+short cycling times, and low specific energy of LSBs.
+Electrochemical reduction of sulfur proceeds through the
+sequential reduction of lithium polysulfides of various sizes
+(Table 1). The end product of the electrochemical reduction
+of sulfur is lithium sulfide.10
+When the resulting polysulfides are dissolved in electrolytes,
+the molecules of electrolyte solvents bind in the solvation
+shells of the lithium cations included in their composition and
+the formation of solvation complexes occurs.10,11 The binding
+of solvent molecules occurs before the formation of lithium
+tetrasulfide. The electrochemical reduction of lithium
+tetrasulfide is not accompanied by the binding of additional
+solvent molecules since as a result of reduction lithium sulfide
+is formed, which is released from the solution in a solid form.
+When the solubility limit of LPS in electrolytes is reached, their
+solvate complexes are released into a separate phase.
+Consequently, the amount of electrolyte solution required
+for the complete reduction of sulfur is determined by the
+solvate number of the lithium cation included in the
+composition of lithium tetrasulfide. To ensure deep electro-
+chemical reduction of sulfur during LSB discharge or oxidation
+of lithium sulfide during their charging, the electrolyte must be
+sufficient for solvation of the lithium cation, included in the
+composition of lithium tetrasulfide.
+In the limiting case, during the discharge and charge of
+LSBs, all solvent molecules find themselves bound in the
+solvation shells of lithium cations, which are part of both
+background salts and lithium polysulfides. This leads to the
+formation of a solvate complex mixture of lithium polysulfides
+and lithium salts. With a minimum electrolyte content in LSBs,
+lithium cations can be solvated not only by the anions of
+lithium salts and solvent molecules but also by sulfur atoms
+that are part of the polysulfide anions. In addition, the
+formation of lithium polysulfide clusters is possible as a result
+of the interaction of the lithium cation with the sulfur atoms of
+the neighboring polysulfide chains.
+The stability and composition of lithium polysulfide
+complexes with solvent molecules included in electrolyte
+systems affect the energy characteristics of LSBs.10−12
+Normally, the amount of electrolyte in the LSB should be
+reduced to achieve high specific energy. In many cases, the
+electrolyte/sulfur weight ratio in LSBs lies in the range of 20−
+3. To achieve acceptable specific energy, the electrolyte/sulfur
+ratio in LSBs should not exceed 2.0.7
+As LSB electrolytes, as a rule, one molar solutions of lithium
+salts in individual or mixed ADSs are used.13 In most studies,
+the solvent/lithium salt molar ratio is in the range of 12−10.14
+If we take the solvate number of the lithium cation in an
+electrolyte solution to be equal to four, then the concentration
+of free (not participating in solvation) solvent molecules will
+be about 6−8 M. From simple calculations, it follows that if the
+solvate numbers of the lithium cation included in the solvate
+complexes of lithium salts and lithium polysulfides are equal,
+the electrolyte/sulfur weight ratio is in the range of 7−10.
+One of the methods to reduce the amount of electrolyte is to
+reduce the solubility of the resulting lithium polysulfides in
+electrolyte systems. Most often, this is achieved by introducing
+weakly solvating nonpolar solvents into the electrolyte
+composition, which are most often fluoroethers of various
+structures.15
+Recently, solvate ionic liquids have attracted increasing
+interest as LSB electrolytes.16 They are highly concentrated
+solutions of lithium salts that do not contain free solvent
+molecules. By their chemical nature, such systems are solvate
+complexes of lithium salts with ADSs. Lithium polysulfides can
+dissolve in these systems, despite the absence of free solvent
+molecules. However, the mechanisms of polysulfide dissolution
+and the structures of the resulting systems are not clear.
+For the targeted development of electrolyte systems for
+LSBs, it is necessary to understand the interaction mechanisms
+of various sizes of lithium polysulfides with the components of
+electrolyte systems: solvents and anions of background salts.
+It was previously shown17 that lithium polysulfides in
+electrolyte solutions undergo self-association, or clustering,
+that occurs due to the interaction of the two terminal sulfur
+atoms of the polysulfide anion and the lithium cation.
+Understanding the mechanisms of self-association of lithium
+polysulfides is extremely important for optimizing the
+composition of electrolyte systems for LSBs.
+Clustering studies were carried out using both experimental
+and theoretical methods.15,17−22 The properties of lithium
+polysulfides (Li2S4, Li2S6, and Li2S8) and their mixtures in 1,3-
+dioxolane and 1,2-dimethoxyethane were studied using MD
+and DFT methods.18 It has been shown that short-chain
+lithium polysulfides (Li2S4) tend to form larger clusters,
+especially at high concentrations, compared to long-chain
+lithium polysulfides (Li2S8). The reason is the localization of
+charge on the terminal sulfur atoms in short-chain polysulfide
+anions. These results are consistent with the results of work on
+the structure and solubility of lithium polysulfides in dimethyl
+sulfoxide.22 It has been shown that lithium tetrasulfide Li2S4
+predominantly forms dimers while Li2S8 is in the form of
+monomers.
+The properties and structure of long-chain lithium
+polysulfides (Li2S6 and Li2S8) in dimethoxyethane and 1,3-
+dioxolane were studied using molecular dynamics (MD) and
+quantum chemistry methods.21 It has been shown that lithium
+polysulfides practically do not dissociate in solutions. The
+authors determined the first solvation shell for the lithium
+cation Li+, as well as for lithium polysulfides (Li2S6, Li2S8
+closed, and Li2S8 linear) in pure solvents and in solvents
+containing a background salt. Simulations in the presence of
+additional lithium cations showed that the polysulfide anion is
+capable of coordinating more than two lithium cations.
+The influence of background salts on conductivity, diffusion
+coefficients, structures of solvation complexes, and clustering in
+electrolyte solutions containing lithium polysulfides was also
+studied using MD methods in the works of Rajput et al.17 and
+Park et al.20 They showed that the self-diffusion coefficients of
+Li+, polysulfide anions, and solvents (1,3-dioxolane and 1,2-
+dimethoxyethane) decrease with the addition of 1 M LiTFSI.
+It has been shown that the diffusion coefficients and ionic
+conductivity are also significantly affected by the polysulfide
+chain length. The contribution of short chains such as S4
+2−to
+conductivity is lower than that of longer polysulfide chains
+such as S6
+2−or S8
+2−, despite the fact that the diffusion
+coefficient of S4
+2−is higher than that of longer polysulfide
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.3c08374
+J. Phys. Chem. B 2024, 128, 7833−7847
+7834
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​128/​32/​7833/​14962807/​jp3c08374.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 3>>
+chains. The low conductivity of Li2S4 can be explained by its
+low degree of dissociation and formation of large clusters in
+solution. The clustering of lithium polysulfides is reduced
+when 1 M LiTFSI is added to the electrolyte solution. The
+authors showed that the addition of salt, due to competitive
+interactions between the TFSI−and Sn
+2−anions with Li+
+cations, weakens the Li+−Sn
+2−bonds, which leads to an
+increase in the solubility of lithium polysulfides. However, at
+the same time, highly concentrated electrolytes can reduce the
+solubility of the polysulfides. A high salt concentration reduces
+the mobility of ionic compounds, which can negatively affect
+the ionic conductivity of the electrolyte.17
+The physicochemical properties and structure of a solution
+of lithium polysulfides in 1,2-dimethoxyethane in the presence
+of LiTFSI salt and bis-2,2,2-trifluoroethyl ether were studied.15
+It was shown that the addition of ether led to an increase in the
+clustering of lithium polysulfide resulting in a decrease in its
+solubility.15 Thus, the dissolution of lithium polysulfides in
+electrolyte solutions of LSBs leads to a change in their
+physicochemical properties: density, viscosity, and ionic
+conductivity. To optimize the composition of LSB electrolytes,
+it is important to understand how the content of lithium
+polysulfides in electrolyte solutions, their composition, and the
+composition of the clusters they form affect the physicochem-
+ical properties of electrolyte solutions.
+Sulfolane-based solvate ionic liquids are promising electro-
+lyte systems for LSBs.23 The advantages of sulfolane are a high
+boiling point (287.3 °C), a high flash point (165 °C), and a
+high dielectric constant (43.3−44), as well as good solubility of
+lithium polysulfides. Sulfolane has low toxicity, which is very
+important when used as an electrolyte solvent in batteries.24
+LSBs with sulfolane-based electrolytes remain operational up
+to 160 °C.25 In electrolytes based on sulfolane, a significant
+contribution to ion transport is made by the hopping
+mechanism, which significantly increases their specific ionic
+conductivity.26 An important property of sulfolane-based
+electrolytes is an increase in the transfer numbers of lithium
+cations with increasing concentrations of lithium salt solutions,
+which leads to an increase in the cationic conductivity of
+sulfolane electrolytes, including highly concentrated ones.1
+Sulfolane-based electrolytes for LSBs are of great interest.2,27
+MD studies were carried out in highly concentrated solutions
+of lithium polysulfides in sulfolane.1,28 Of great interest as a
+promising electrolyte for LSBs is lithium perchlorate
+tetrasolvate with sulfolane (LiClO4·4SL).23 This electrolyte
+has a high ionic conductivity (1.7 × 10−3 ohm−1 cm−1 at 30
+°C) and is in a liquid phase over a wide temperature range. In
+this work, the physicochemical properties and structure of
+various lithium polysulfide solutions (Li2S2, Li2S4, Li2S8) in
+lithium perchlorate tetrasolvate with sulfolane were studied
+using the MD method in a wide range of concentrations to
+assess the possibility of using LiClO4·4SL as an LSB
+electrolyte.
+■METHODS
+Experiment. Preparation of Lithium Polysulfide Solu-
+tions. In this work, we used sulfur (S8, ≥99.0%, Sigma-
+Aldrich), lithium sulfide (Li2S, 99.98% trace metals basis,
+Sigma-Aldrich), lithium perchlorate (LiClO4, battery grade,
+99.995%, Aldrich), and sulfolane (99%, Aldrich). S8 and
+LiClO4 were dried in a vacuum oven at 40 and 70 °C,
+respectively, for at least 7 days. Sulfolane (99%, Aldrich) was
+purified and dried by vacuum double distillation.
+2.4 M solution of lithium perchlorate in sulfolane was
+prepared by dissolution of LiClO4 in sulfolane. The water
+content in the 2.4 M LiClO4 in sulfolane was ≤50 ppm. A
+coulometric titration in Fischer reagent medium using a
+Titroline7500 KF trace automatic titrator (SI Analytics) was
+used to estimate the water content into solutions.
+Lithium polysulfides (Li2Sn) in sulfolane solution were
+obtained by the reaction of sulfur and lithium sulfide in 2.4 M
+solutions of LiClO4 in sulfolane. Sulfur and lithium sulfide
+were dissolved in 2.4 M solutions of LiClO4 in sulfolane with
+continuous stirring (200 rpm) on a magnetic stirrer for 7−9
+days until full dissolution of the reagents at 30 °C. The molar
+ratio of sulfur and lithium sulfide was 7:1, 3/1, and 1/1. The
+completeness of the dissolution was controlled visually: it was
+considered that all solid particles were completely dissolved if
+after centrifugation of the solution at a speed of 2500 rpm for
+15 min, no solid phase was observed at the bottom of the glass
+vessel.
+Figure 1. Structures of (a) perchlorate anion (ClO4
+−), (b) disulfide anion (S2
+2−), (c) tetrasulfide anion (S4
+2−), (d) octasulfide anion (S8
+2−), and
+(e) sulfolane. Color marks of atoms: O is red, S is yellow, C is gray, H is white, and Cl is green.
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.3c08374
+J. Phys. Chem. B 2024, 128, 7833−7847
+7835
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​128/​32/​7833/​14962807/​jp3c08374.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 4>>
+Measurements of Conductivity and Density. The ionic
+conductivity and density of lithium salt solutions in sulfolane
+were measured at 303 K in an air thermostat and the accuracy
+of temperature stabilization was ±0.1°.
+The ionic conductivity of lithium polysulfide solutions was
+measured in hermetic conductometric cells with platinum
+black electrodes calibrated by standard KCl solution at a
+frequency of 1 kHz. The error in measuring the ionic
+conductivity did not exceed 3%.
+Density was measured by a standard pycnometric method in
+Biron-type pycnometers with a graduated scale of 1 mL. The
+error of measurement did not exceed 2%.
+All work on preparing lithium polysulfide solutions and
+filling pycnometers and conductometric cells was carried out in
+a glovebox in an argon atmosphere (oxygen and water content
+less than 1 ppm).
+Molecular Dynamics Simulation. The modeling of
+lithium polysulfide solutions in tetrasovolvate of lithium
+perchlorate with sulfolane by the classical MD method was
+carried out in the Gromacs version 2023.1 software package.29
+We used the nonpolarizable OPLS-AA force field.30 Modeling
+objects are listed in Figure 1. The parameters of the sulfolane
+(SL) molecule were identical to the work.31 The parameters of
+polysulfide anions (bond lengths, bond and tetrahedral angles,
+and charges) were calculated in the Gaussian 09 software
+package32 using the B3LYP density functional theory method33
+using the aug-cc-pVTZ basis set.34 Partial charges are
+summarized in Table 1S. The force field describing constants
+were calculated using the LigParGen service of the Jorgensen
+group.35 A specified number of lithium cations (Li+),
+polysulfide anions (S2
+2−, S4
+2−, and S8
+2−), background salt
+ions (ClO4
+−), and solvent molecules were placed in a box with
+periodic boundary conditions (Figure S1).
+The number of Li+, Sn
+2−(PSn), ClO4
+−, and SL particles was
+selected so that the molar ratios of lithium perchlorate
+tetrasolvate (LiClO4·4SL) and lithium polysulfide Li2Sn varied
+from 0.1 to 10 (Tables S2 and S3). For the following text, the
+S2
+2−anion is PS2, S4
+2−is PS4, and S8
+2−is PS8. The number of
+particles and the size of the MD box were selected based on
+previously conducted MD simulations,31,36 the results of which
+are in good agreement with experimental data on density and
+ionic conductivity.
+After energy minimizing with a convergence criterion of
+1000 kJ/mol/nm, the system was equilibrated using an
+annealing procedure from 500 to 303 K. Next, modeling was
+sequentially carried out in the isobaric−isothermal ensemble
+(NPT) for 20 ns to calculate the density of the system and in
+the isochoric-isothermal ensemble (NVT) for 40 ns to
+calculate the self-diffusion and ionic conductivity coefficients.
+The simulation time was chosen based on previously
+performed MD calculations of the physicochemical properties
+of solutions of electrolyte solutions by our research
+group31,36,37 and others.38,39 A constant temperature was
+maintained by a Nose−Hoover thermostat40,41 with a
+parameter τ = 0.2 ps. Temperature T = 303 K. The pressure
+was maintained constant [10,1325 Pa (1 atm)] by a Berendsen
+barostat42 with a parameter τ = 0.2 ps. The integration step
+was 1 fs. At the initial moment, the atoms were given random
+(in magnitude and direction) velocities and normalized in such
+a way that the kinetic energy of the system corresponded to a
+given temperature.
+The works43−45 state that in nonpolarizable force fields,
+interionic interactions are overestimated. This leads to an
+underestimation of the ionic conductivity and self-diffusion
+coefficient calculated values. To level out this effect, the
+charges of cations and anions of dissolved salts are usually
+reduced by 10−30%.43−45 Previously,31 in order to more
+accurately describe the properties and structure of a 1 M
+solution of lithium perchlorate in sulfolane, solutions were
+simulated by MD using this approachthe charges of the
+lithium cation and perchlorate anion were reduced to 70, 80,
+and 90%. The most optimal results were obtained when taking
+into account the counterion charges of 80%.31 Therefore, in
+this work, we performed MD simulations with 80%
+consideration of the counterion charge. For each four-
+component system, several sequential simulations were
+performed to calculate the data and estimate uncertainties.
+In sequential simulations, the results are statistically
+independent and are normally distributed. The error in parallel
+calculations of density did not exceed 0.1% and the coefficients
+of self-diffusion and ionic conductivity −10%.
+Coordination Number of the Lithium Cation. Initially,
+radial distribution functions (RDFs) of each sulfur atom
+included in the anion around the lithium cation were
+constructed to calculate the coordination number of the
+lithium cation over the polysulfide anion (N(PSn)). Each
+calculated RDF was integrated. Calculations were performed
+by using modeling packages implemented in the GROMACS
+software package. The coordination number of the lithium
+cation at the sulfur atom was taken to be the value of the
+integral distribution function corresponding to the position of
+the minimum on the RDF following the first maximum.
+The coordination number of the lithium cation to the
+perchlorate anion (N(ClO4
+−)) and sulfolane (N(SL)) was
+calculated similarly. RDFs and cumulative distribution
+functions are given in Supporting Information (Figures S2−
+S4).
+Transport Properties. Transport properties of the electro-
+lytes were calculated based on data on particle trajectories
+obtained as a result of MD simulations. The root-mean-square
+deviation (MSD) of ions and solvent molecules from their
+initial positions allows us to estimate diffusion coefficients.
+Mathematically, MSD is given by the equation
+N
+r t
+r
+MSD
+1
+( ( )
+(0))
+i
+N
+i
+i
+1
+2
+=
+=
+(1)
+where N is the total number of particles, ri(0) is the initial
+position, and ri(t) is the position of the particle at time t.
+Logarithmic MSD curves are provided in the Supporting
+Materials for ratios of Li2Sn/LiClO4·4SL = 10/1, 1/1, and 1/10
+(Tables S4−S6). To get more accurate diffusive properties of
+the particles, calculation of D+ and D−was made at β(t) = 1,
+which is defined as
+t
+t
+( )
+dlg(MSD)
+dlg( )
+=
+(2)
+Thus, the calculation of diffusion coefficients was carried out
+in the following sequence: (a) calculation of MSD, (b) plotting
+the function lg(MSD) from lg(t), and (c) determination of the
+area at which β(t) ∼1. It was found that the value β(t) ∼1 for
+cations and perchlorate anion varies within the simulation time
+2−13 ns, for sulfolane −2 to 18 ns.
+To calculate the diffusion coefficient, the Einstein−
+Smoluchowski relation was used, which is mathematically
+expressed as
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.3c08374
+J. Phys. Chem. B 2024, 128, 7833−7847
+7836
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​128/​32/​7833/​14962807/​jp3c08374.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 5>>
+D
+Nt
+r t
+r
+lim 1
+6
+( ( )
+(0))
+t
+j
+N
+i
+i
+1
+2
+=
+=
+(3)
+Ionic conductivity from MD simulations is calculated using
+the Nernst−Einstein equation46−49
+e
+Vk T
+z ND
+i
+i
+i
+i
+uncorr
+2
+B
+2
+=
+(4)
+where e is the electron charge, V is the volume of the
+simulation box, kB is Boltzmann’s constant, T is the
+temperature, t is the time, zi and zj are the charges over ions
+i and j in electrons, Di is the diffusion coefficient, and N is the
+number of ions in the simulation cell. It should be noted that
+the scope of the applicability of this equation is limited to its
+use only for ideal dilute solutions in which all particles are
+dissociated. In this work, we also study highly concentrated
+solutions of lithium polysulfides, which have a low degree of
+dissociation and are capable of forming clusters of various
+sizes. Therefore, the mobility and number of charge carriers
+should be taken into account when calculating ionic
+conductivity. Mobility is determined by the form of existence
+of particles in solution (ion or cluster) and is characterized by
+the diffusion coefficient. The number of charge carriers is
+determined by the degree of electrolytic dissociation. When
+studying the transport properties of electrolyte solutions of
+lithium polysulfides in mixtures of 1,2-dimethoxyethane and
+1,3-dioxolane in the presence of lithium bistrifluoromethane-
+sulfonylimide (LiTFSI), the authors proposed to replace the
+total number of cations and anions by the number of
+dissociated ions to calculate the specific ionic conductivity
+using the Nernst−Einstein equation.20 The dissociated (free)
+lithium cation, which is a charge carrier, must be solvated only
+by solvent molecules. Thus, to calculate the fraction of
+dissociated lithium ions (ω) in solutions of lithium polysulfides
+in lithium perchlorate tetrasolvate with sulfolane, we proposed
+the following equation
+N
+N
+N
+N
+(PSn)
+(ClO )
+total
+4
+total
+=
+(5)
+where Ntotal is the total coordination number of the lithium
+cation and N(PSn) and N(ClO4
+−) are the coordination
+numbers of the lithium cation with respect to the polysulfide
+and perchlorate anions, respectively.
+Taking into account the fraction of dissociated lithium ions,
+calculated according to eq 4, the ionic conductivity is
+calculated as follows
+e
+Vk T
+z ND
+i
+i i
+i
+i
+dis
+2
+B
+=
+(6)
+where λdis is the specific ionic conductivity taking into account
+the proportion of dissociated lithium ions and ω is the fraction
+of dissociated lithium ions. ClO4
+−ions are almost completely
+dissociated, therefore
+1
+ClO4 = . The Li+ cation and poly-
+sulfide anions are in the following equilibrium20
+Li S
+Li
+(LiS )
+n
+x
+2
+V
++
++
+Further dissociation to 2Li+ + Sx
+2−is much less likely, so we
+neglect this. Thus, the modified Nernst−Einstein equation has
+the following form20
+e
+k T (2C w
+C
+)D
+2C w
+D
+C
+D
+dis
+2
+B
+PS
+Li
+ClO
+Li
+PS
+Li
+PS
+ClO
+ClO
+4
+4
+4
+=
+[
++
++
++
+]
++
++
++
+(7)
+The transport numbers of the lithium cation were calculated
+using eq 7.
+t
+D
+D
+D
+D
+Li
+Li
+PSn
+ClO4
+=
++
++
++
++
+(8)
+where DLi
++ is the self-diffusion coefficient of the lithium cation,
+m2·s−1, DPSn is the self-diffusion coefficient of the polysulfide
+anion, m2·s−1, and DClO4is the self-diffusion coefficient of the
+chlorine anion acids, m2·s−1. Note that the diffusion coefficient
+is calculated for lithium cations in various forms, in the form of
+both a free ion and a particle associated with a counterion.
+■DISCUSSION
+Structure of the Solvation Shell of Lithium Cations. In
+order to study the structure of the solvation shell of lithium
+cations in lithium polysulfide solutions in lithium perchlorate
+tetrasolvate with sulfolane, functions of the radial distribution
+of oxygen and sulfur atoms of the sulfolane molecule, sulfur
+atoms of the polysulfide anion, and oxygen and chlorine atoms
+of the perchlorate anion around lithium cations were
+constructed (Figures S2−S4 Supporting Information). Since
+most of the RDF curve shapes do not change when the
+Figure 2. MD simulations of the RDFs (solid lines) of O and S of sulfolane (a) and O and Cl atoms of perchlorate anions (b) and their integrals
+(dashed lines) relative to Li+ at the ratio of Li2Sn/LiClO4·4SL = 10/1. Atom types are marked in the legend.
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.3c08374
+J. Phys. Chem. B 2024, 128, 7833−7847
+7837
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​128/​32/​7833/​14962807/​jp3c08374.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 6>>
+composition of the systems under study is varied, in order to
+save space, curves for only one composition are presented
+(Figure 2)
+The RDF describes the two-dimensional probability
+distribution of finding a particle (solvent molecules, ions, or
+individual atoms) at a distance r from the reference particle.
+The first maximum position of the RDF of solvent molecules
+or anion atoms around lithium cations corresponds to the
+distance between the lithium cation and its first solvation shell.
+It is known that the first solvation shell of the lithium cation is
+usually located at a distance of 0.17−0.21 nm.50,51
+Previously, we discussed in detail the forms of the RDFs of
+oxygen, sulfur, and chlorine atoms of sulfolane molecules and
+the lithium perchlorate anion around the lithium cation,31,36 so
+we will not provide a detailed analysis in the presented work.
+We only note that based on the analysis of the shape of the
+RDF of the S and O atoms of the sulfolane molecule relative to
+the lithium cation (Figure 2a), we can conclude that the
+lithium cation interacts with only one oxygen atom of
+sulfolane, and the second oxygen atom does not participate
+in the solvation of the same lithium cation and is inverted in
+the opposite direction from him. The second oxygen atom of
+the sulfolane molecule can coordinate with the second lithium
+cation and act as a bridging ligand.36
+We have previously shown that the lithium perchlorate
+anion interacts very weakly with the lithium cation with only
+one oxygen atom at a molar ratio of lithium perchlorate and
+sulfolane less than 1/10.36 This is indicated by low peaks in the
+curves of the RDFs of the perchlorate anion oxygen atoms
+around the lithium cation (Figure 2b).
+The RDFs of the disulfide anion of sulfur atoms around the
+lithium cation and their integral forms are identical (Figure
+3a). In the R(Li−S(PS2)) curves, only one peak is observed,
+the maximum of which is located at 0.214 nm. One lithium
+cation simultaneously coordinates both sulfur atoms of PS2
+disulfide anions.
+The terminal sulfur atoms of the tetrasulfide anion are
+equivalent to each other (Figures S1 and S4), and the internal
+ones (Figures S2 and S3) are equivalent to each other;
+therefore, the RDFs are presented only for one sulfur atom of
+each type. It is interesting to note that the maxima on the RDF
+of the terminal and internal sulfur atoms are close and amount
+to 0.214 and 0.218 nm (Figure 3b). The distance between
+sulfur atoms in the PS4 anion is 0.209 nm, i.e., both atoms
+enter the first solvation shell of the lithium cation
+simultaneously. It should be noted that the shapes of the
+peaks of the RDF of the terminal and internal sulfur atoms of
+the tetrasulfide anion is different. The RDF peak of the
+tetrasulfide anion terminal sulfur atom is clear and narrow,
+slightly asymmetrical, and broadens with increasing distance to
+the lithium cation (the length of the peak base is approximately
+0.08 nm). The RDF peak of the internal sulfur atom is broader
+and asymmetrical. The length of the peak base is approximately
+0.13 nm. The maximum RDF R(Li+−S1) is approximately
+three times lower than the maximum RDF R(Li+−S2). The
+more distorted peak shape of the RDF of the lithium
+tetrasulfide anion second sulfur atom indicates that the
+Figure 3. MD simulations of the RDFs of PS2 (a), PS4(b), and PS8 (c,d) (solid lines) and their integrals (dashed lines) relative to Li+. Li2S2 in
+LiClO4·4 sulfolane. The concentrations of Li2Sn in LiClO4·4SL are C(Li2S2) = 12.6 M (a), C(Li2S4) = 9.0 M (b), C(Li2S8) = 0.4 M (c), and
+C(Li2S8) = 5.4 M (d). The number of sulfur atoms is shown in the legend.
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.3c08374
+J. Phys. Chem. B 2024, 128, 7833−7847
+7838
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​128/​32/​7833/​14962807/​jp3c08374.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 7>>
+position of the lithium cation relative to the second sulfur atom
+varies. This indicates that the interaction of the lithium cation
+with the second sulfur atom of the tetrasulfide anion is weaker
+than that with the first terminal atom. The lithium cation can
+simultaneously coordinate all of the sulfur atoms of the
+tetrasulfide anion.
+It is important to note that, regardless of the concentration
+of lithium tetrasulfide, the curves of the RDFs of the terminal
+and internal sulfur atoms of the tetrasulfide anion around the
+lithium cation always exhibit peaks with maxima at 0.214 and
+0.218 nm (Figures S2−S28). This fact indicates that in
+solutions, regardless of the concentration, lithium tetrasulfide
+does not completely dissociate even in the first step.
+The RDF of the terminal and internal sulfur atoms of the
+octasulfide anion around the lithium cation are the same for
+the pairs, as shown in Figures S1−S8, therefore the RDFs are
+presented only for one sulfur atom of each type (Figure 3c,d).
+The concentration of the lithium octasulfide solution affects
+the shape of the RDFs R(Li−S(PS8)). For Li2S8 solutions with
+a concentration of less than 0.7 M, two clear peaks with
+maxima at 0.218 and 0.240 nm are observed on the curves of
+the RDFs, Figures S1 and S2, of sulfur atoms around the
+lithium cation but not for sulfur atoms, Figures S3 and S4. In
+dilute solutions, the lithium cation coordinates only with the
+terminal sulfur atoms of the polysulfide chain (Figures S2−S28
+and 5c).
+For solutions of lithium octasulfide in lithium perchlorate
+tetrasolvate with a concentration of Li2S8, broad overlapping
+peaks appear for the sulfur atoms, as shown in Figures S3 and
+S4. For example, the RDFs of R(Li−S3(PS8)) exhibit two
+broadened overlapping peaks with maxima at 0.234 and 0.266
+nm (Figure 3d). The RDFs of R(Li−S4(PS8)) exhibit two
+broadened overlapping peaks with maxima at 0.236 and 0.27
+nm. The distances between the positions of the first maxima on
+the curves of the RDFs of the first, second, third, and fourth
+sulfur atoms of the octasulfide anion do not exceed 0.05 nm,
+which is significantly less than the length of the S−S bond in
+the anion. The complex shape of the RDFs of sulfur atoms of
+the octasulfide anion indicates the ability of the lithium
+octasulfide anion to coordinate with one lithium cation
+simultaneously by all sulfur atoms. Such coordination is
+possible only if the octasulfide anion coils around a lithium
+cation or simultaneously coordinates the sulfur atoms of two
+octasulfide anions into a lithium cation.
+Coordination Numbers of Lithium Cations. Analysis of
+the results of MD modeling showed that the composition of
+the coordination sphere of the lithium cation in the LiClO4
+4SL−Li2Sn system is determined by both the concentration of
+lithium polysulfides and the length of the polysulfide chain
+(the dimensions of lithium polysulfides). With an increase in
+the concentration of lithium polysulfide in lithium perchlorate
+tetrasolvate, the coordination number at the sulfur atom of the
+Figure 4. Influence of the concentration of lithium polysulfides on the coordination numbers of the lithium cation to the polysulfide anion (a),
+sulfolane (b), perchlorate anion (c), and total N (d).
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.3c08374
+J. Phys. Chem. B 2024, 128, 7833−7847
+7839
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​128/​32/​7833/​14962807/​jp3c08374.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 8>>
+polysulfide anions increases, and at the oxygen atom of the
+sulfolane molecule it decreases (Figure 4).
+The sulfur atoms of the octasulfide anion have the least
+solvating ability. The solvating ability of sulfur atoms included
+in the composition of di- and tetrasulfide anions is almost the
+same. The perchlorate anion has a weaker solvating ability
+compared with sulfolane and polysulfide anions. To the
+greatest extent, the perchlorate anion solvates the lithium
+cation at high concentrations of lithium polysulfides. This is
+especially pronounced in solutions of lithium octasulfide.
+In general, the coordination number of the lithium cation at
+low concentrations of lithium polysulfides is close to 5 and
+increases as the concentration of polysulfides increases. In
+solutions of lithium disulfide, the coordination number of the
+lithium cation is practically independent of the concentration
+(Figure 4d). As the length of the polysulfide chain increases
+and the concentration of polysulfides in the system increases,
+the total coordination number of lithium cations increases
+[N(PS4) ≈5, N(PS8) ≈6].
+This occurs because the lithium cation, in addition to
+coordinating with the four sulfur atoms of one tetrasulfide
+anion, can coordinate with the terminal sulfur atom of another
+tetrasulfide anion. Also, one lithium cation can simultaneously
+coordinate with the two terminal sulfur atoms of two different
+tetrasulfide anions and the terminal and terminal sulfur atoms
+of a third tetrasulfide anion (Figure 5).
+The octasulfide anion can take on various conformational
+formslinear and cyclic. In this case, the lithium cation can be
+located both inside the polysulfide ring, coordinating all sulfur
+atoms with different contributions (so that in total Ntotal = 6),
+and along the terminal sulfur atoms of different octasulfide
+anions (Figure 5c).
+The effect of the length of the polysulfide chain on the value
+of the average coordination number of the lithium cation can
+be explained by the increase in the conformational flexibility of
+the polysulfide chain as its length increases. The disulfide anion
+has the greatest rigidity; therefore, at a high content of lithium
+disulfide in the system, the lithium cation is predominantly
+coordinated with four sulfur atoms of two disulfide anions
+(Figure 5a). The oxygen atoms of the sulfolane molecule and
+the perchlorate anion additionally solvate the lithium cation
+until the average solvate number is close to 5.
+Figure 5. Snapshot of MD simulation of the Li2Sn/LiClO4·4SL system at the ratio of n(Li2Sn)/n(LiClO4·4SL) = 10/1 (a−c) and 1/10 (d−f). Color
+marks of atoms: Li is blue, S is yellow, O is red, C is gray, and H is white.
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.3c08374
+J. Phys. Chem. B 2024, 128, 7833−7847
+7840
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​128/​32/​7833/​14962807/​jp3c08374.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 9>>
+It is also worth noting that one polysulfide anion can
+coordinate with two lithium cations. This fact is consistent
+with the data from.21 Instantaneous MD images of dilute
+solutions of lithium polysulfides in lithium perchlorate
+tetrasolvate [ratio of n(Li2Sn)/n(LiClO4·4SL) = 1/10] show
+the formation of structures in which disulfide and tetrasulfide
+anions interact with several lithium cations (Figure 5d,e). For
+the octasulfide anion at this ratio of the components of the
+system, such interactions are not observed (Figure 5e).
+The proportion of free lithium cations, calculated by eq 4,
+decreases with the increasing concentration of lithium
+polysulfide due to an increase in the degree of lithium
+polysulfide clustering (Figure 6). In the range of lithium
+polysulfide concentrations less than 1 M, the proportion of free
+lithium cations does not depend on the degree of polysulfide.
+As the concentration of lithium polysulfides increases to more
+than 1 M, the proportion of free lithium cations decreases with
+increasing degree of polysulfide.
+Clustering of Lithium Polysulfides. To estimate the size
+and composition of the resulting polysulfide clusters, functions
+of the radial distribution of polysulfide anions relative to each
+other were constructed. In the RDF curves for all types of
+polysulfide anions (Figure 7a−c), sharp peaks with a maximum
+at 0.35−0.36 nm are observed. With an increasing concen-
+tration of lithium polysulfides, the height of the peaks
+increases, which indicates an increase in the intensity of
+interaction of polysulfide anions with each other. From the
+integral functions of the radial distribution of polysulfide
+anions relative to each other (Figure S6), it is clear that with
+increasing length of the polysulfide anion, the number of
+contacts increases. Analysis of the RDF curves showed that
+regardless of the length of the polysulfide chain, the distance
+between PS anions is approximately 0.45 nm (Figure 7). This
+distance was taken as the minimum distance between
+polysulfide clusters when analyzing the structure of lithium
+polysulfide solutions of various sizes in sulfolane tetrasolvate of
+lithium perchlorate.
+We also studied the interaction of polysulfide anions with
+sulfolane molecules (Figure 7d−f). Several sharp peaks are
+observed in the RDF curves of sulfolane molecules relative to
+polysulfide anions for dilute solutions. With an increase in the
+concentration of lithium polysulfides, a broadening of the
+peaks is observed as well as a decrease in their intensity, which
+is associated with a decrease in the number of PS and SL
+contacts (Figure 7). This is also evident from the integral
+functions of the radial distribution of sulfolane molecules
+relative to polysulfide anions (Figure S7): with the increasing
+concentration of lithium polysulfides, the step height decreases.
+It is also interesting to note that with an increase in the
+length of the polysulfide anion on the RDFs of polysulfide
+anions relative to each other and their integrals (Figures 7 and
+S7), there is an increase in the gap between the curves with
+concentrations of 2.18 and 5.65 M for PS2, 2.02 and 4.76 M
+for PS4, and 1.76 and 3.50 M for PS8. This is because, at a
+high concentration of lithium polysulfide (5.65−12.58 M for
+PS2, 4.76−9.01 M for PS4, and 3.50−5.44 M for PS8), a high
+degree of clustering is observed. Accordingly, there are more
+contacts between polysulfide anions than in dilute solutions
+(∼0.2−2.0 M).
+Cluster analysis, carried out using Gromacs program
+algorithms, shows the distribution of sizes (number of
+atoms) of clusters formed in the systems under study,
+depending on their composition (Figure 8). From an analysis
+of the number of atoms in a particular cluster, it follows that
+both neutral and charged (cationic and anionic) clusters of
+lithium polysulfides can form in the solutions we study.
+From the cluster distribution diagrams (Figure 8), it follows
+that in highly concentrated solutions (purple marker), ionic
+cross-linking occurs, as a result of which all polysulfide anions
+and lithium cations form a single cluster (Figure 8). With a
+decrease in the concentration of lithium polysulfides, cationic
+and anionic clusters of different compositions are formed. First,
+a lithium cation unbound with polysulfide anions begins to be
+present in the solution (Figure 8a,d,g). Second, lithium
+polysulfides are predominantly present in the form of charged
+cationic and anionic clusters, rather than neutral (Li2Sn)y
+clusters. This fact confirms our calculations of the coordination
+numbers of the lithium cation on the polysulfide anions: more
+than 2 lithium cations can be coordinated with the polysulfide
+anion. It should be noted that the complete binding of
+polysulfide anions and lithium cations into a single cluster for
+lithium polysulfides of various compositions occurs at different
+concentrations. Thus, in the Li2S2−[LiClO4·4SL] system, all
+disulfide anions and lithium cations are bound into a single
+positively charged cluster at a lithium disulfide concentration
+of 12.58 M, in the Li2S4−[LiClO4·4SL] system at a
+concentration of −9.0 M, and in the Li2S8−[LiClO4·4SL]
+system at a concentration of 5.13 M. Thus, we can conclude
+that with increasing degree of polysulfide, the tendency of
+lithium polysulfides to form clusters increases. Thus, studies of
+the clustering processes of lithium polysulfides have shown that
+reducing the amount of solvent in the system leads to the
+binding of lithium polysulfides into a single cluster.
+■PHYSICOCHEMICAL PROPERTIES OF SOLUTIONS
+OF LITHIUM POLYSULFIDES IN LITHIUM
+PERCHLORATE TETRASOLVATE IN SULFOLANE
+In order to study the influence of the structure of solutions on
+the physicochemical properties, the density, self-diffusion
+coefficients, specific ionic conductivity, and transport numbers
+of solutions of lithium polysulfides in lithium perchlorate
+tetrasolvate with sulfolane were calculated. To verify the
+convergence of the systems, density and ionic conductivity of
+Figure 6. Influence of the concentration of lithium polysulfides on the
+fraction of free lithium cations in the xLi2Sn−[LiClO4 ·4SL] system.
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.3c08374
+J. Phys. Chem. B 2024, 128, 7833−7847
+7841
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​128/​32/​7833/​14962807/​jp3c08374.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 10>>
+LiClO4·4SL and lithium polysulfide solutions were measured
+(results are summarized in Table 2). The measured and
+calculated values of the density of these solutions calculated on
+the basis of MD simulations are in good agreement with
+experimental data (Table 2). The calculated values of ionic
+conductivity (λdis) are 1.1−1.2 times lower than measured ones
+(Table 2). We assume that over the entire range of studied
+concentrations of lithium polysulfides in the LiClO4·4SL
+solution this trend persists.
+Figure 9 shows isotherms of density and ionic conductivity
+of solutions of lithium polysulfides in LiClO4·4SL. The density
+of lithium polysulfide solutions increases linearly with the
+increasing concentration (Figure 9). It is important to note
+that the degree of polysulfide affects the density of lithium
+polysulfide solutions. As the degree of polysulfide increases, the
+density of lithium polysulfide solutions in LiClO4·4SL
+increases at the same Li2Sn concentration. The increase in
+the density of lithium polysulfide solutions with an increasing
+degree of polysulfide at the same concentration can be
+explained by an increase in the tendency of lithium polysulfides
+to form clusters. As noted above, the formation of lithium
+Figure 7. MD simulations of the RDFs of polysulfide anions PS2 (a), PS4 (b), and PS8 (c) relative to each other and PS2 (d), PS4 (e), and PS8 (f)
+relative to sulfolane molecules. The legend indicates the concentration (M) of lithium polysulfides in the solution.
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.3c08374
+J. Phys. Chem. B 2024, 128, 7833−7847
+7842
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​128/​32/​7833/​14962807/​jp3c08374.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 11>>
+octasulfide clusters is observed at a lower concentration than
+that of lithium tetrasulfide and disulfide.
+The ionic conductivity of solutions of lithium polysulfides in
+LiClO4·4SL was measured for the concentrations shown in
+Table 2. The calculated values of the specific ionic conductivity
+of solutions of lithium polysulfides in LiClO4·4SL are in good
+agreement with experimental data (Table 2).
+The specific ionic conductivity of solutions of lithium
+polysulfides in LiClO4·4SL decreases with the increasing
+concentration of lithium polysulfides (Figure 9b). With the
+increasing Li2Sn concentration, the specific ionic conductivity
+for all studied solutions of lithium polysulfides in lithium
+perchlorate tetrasolvate decreases (Figure 9b) due to a
+decrease in the proportion of free ions.
+Diffusion Coefficients. The self-diffusion coefficients of
+Li+, ClO4
+−, PS, and SL decrease with an increasing
+concentration of lithium polysulfides to 1 M (Figure 10).
+With a subsequent increase in the Li2Sn concentration, the
+coefficients stabilized. The self-diffusion coefficients of lithium
+cations are not dependent on the size of the polysulfide (Figure
+10a). The self-diffusion coefficients of polysulfide anion cations
+decrease with decreasing polysulfide size (Figure 10b). In the
+Li2Sn concentration range of 0−1 M, the self-diffusion
+coefficients of the perchlorate anion do not depend on the
+size of the polysulfide, but in more concentrated solutions, the
+self-diffusion coefficients of ClO4
+−in Li2S8 solutions are
+significantly lower than in solutions of Li2S2 or Li2S4 in LiClO4·
+4SL (Figure 10d). In the Li2Sn concentration range of 0−1 M,
+the self-diffusion coefficients of sulfolane do not depend on the
+size of the polysulfide, but in more concentrated solutions, it
+Figure 8. Distribution diagrams of particles most likely to exist in solutions of Li2S2 (a−c), Li2S4 (d−f), and Li2S8 (g−i) in lithium perchlorate
+tetrasolvate in sulfolane. The legend indicates the concentration of the corresponding lithium polysulfide.
+Table 2. Experimental and Calculated Densities and Specific
+Ionic Conductivity of Lithium Perchlorate Tetrasolvate and
+Lithium Polysulfides in a Solution of Lithium Perchlorate
+Tetrasolvate in Sulfolane (t = 30 °C)
+C, M
+ρ, kg·m−3
+λ, 10-3 S cm−1
+exp
+calc
+exp
+λdis
+LiClO4·4SL
+2.35
+138037
+138037
+1.40
+0.25
+Li2S2
+0.12
+1385
+1389
+1.10
+0.91
+Li2S4
+0.32
+1393
+1395
+1.01
+0.86
+Li2S8
+0.24
+1401
+1402
+0.72
+0.65
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.3c08374
+J. Phys. Chem. B 2024, 128, 7833−7847
+7843
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​128/​32/​7833/​14962807/​jp3c08374.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 12>>
+decreases with increasing size of lithium polysulfides (Figure
+10d).
+It should be noted that the self-diffusion coefficients of Li+
+and Sn
+2−have close values and their values are approximately 2
+times lower than the values of the coefficients of ClO4
+−and
+sulfolane. Initial decrease of the self-diffusion coefficients
+indicates low particle dynamics and high viscosity of solutions
+containing a larger amount of lithium polysulfides (Figure 10).
+Transport Numbers. The transport numbers of the
+lithium cation in solutions of lithium polysulfides in lithium
+perchlorate tetrasolvate with sulfolane sharply decrease with an
+increasing Li2Sn concentration to 1 M and change slightly with
+a further increase in the concentration (Figure 11).
+Figure 9. Dependence of density (a) and ionic conductivity (b) (taking into account the number of charge carriers) of solutions of lithium
+polysulfides in lithium perchlorate tetrasolvate with sulfolane on the concentration of Li2Sn.
+Figure 10. Changes in the self-diffusion coefficients of the components of the Li2Sn−[LiClO4·4SL] system with changes in the concentration of
+lithium polysulfide: (a) Li+; (b) polysulfide anions; (c) ClO4
+−anions; and (d) sulfolane molecules. The types of polysulfides are indicated in the
+legend.
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.3c08374
+J. Phys. Chem. B 2024, 128, 7833−7847
+7844
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​128/​32/​7833/​14962807/​jp3c08374.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 13>>
+■CONCLUSIONS
+Our research group52 has shown that it is impossible to obtain
+concentrated solutions of lithium polysulfides by directly
+reacting sulfur with lithium metal or lithium sulfides in
+solutions. Experimental data on ionic conductivity were
+obtained only for lithium polysulfides in a solution of lithium
+perchlorate in sulfolane with a concentration of no more than
+0.5 M.52 During the discharge process, the concentrations of
+lithium polysulfides can reach higher concentrations. In this
+regard, we studied the physicochemical properties of lithium
+polysulfides in lithium perchlorate solutions over a wide range
+of concentrations. Since this cannot be done by experimental
+methods, we applied theoretical methods, namely, the MD
+method.
+Modeling the structure and physicochemical properties of
+solutions of lithium polysulfides of various sizes in the solvate
+complex of lithium tetrasulfide with sulfolane using the MD
+method showed that polysulfide anions are capable of
+coordinating the lithium cation. With an increase in the
+concentration of lithium polysulfides, the composition of the
+solvation shell of the lithium cation changes: the number of
+sulfur atoms of polysulfide anions increases and the number of
+sulfolane molecules decreases. The perchlorate anion has the
+weakest solvating properties.
+Polysulfide anions are capable of acting as bridging ligands
+and interacting with several lithium cations. Lithium cations
+are capable of cross-linking polysulfide chains, which ultimately
+leads to the formation of polysulfide clusters. The tendency of
+lithium polysulfides to form clusters increases with the number
+of sulfur atoms in the polysulfide chain. At high concentrations
+of lithium polysulfides, the electrolyte system turns into a
+single cluster. The formation of clusters has a significant effect
+on the physicochemical properties of lithium polysulfide
+solutions. With an increase in the concentration of lithium
+polysulfides in the electrolyte system, its density increases, and
+the ionic conductivity and diffusion coefficients of the system
+components decrease.
+■ASSOCIATED CONTENT
+*
+sı Supporting Information
+The Supporting Information is available free of charge at
+https://pubs.acs.org/doi/10.1021/acs.jpcb.3c08374.
+Snapshot of the MD box; composition of studied
+systems; MD simulation of RDFs for all studied systems;
+snapshot of the MD surface of lithium polysulfide
+clusters; snapshot of MD simulation of Li2Sn in LiClO4·
+4SL; and partial charges on atoms of polysulfide anions,
+perchlorate anions, and sulfolane molecules (PDF)
+■AUTHOR INFORMATION
+Corresponding Author
+Elena V. Kuzmina −Ufa Institute of Chemistry UFRS RAS,
+Ufa 450054, Russia;
+orcid.org/0000-0002-3758-4762;
+Email: kuzmina@anrb.ru
+Authors
+Alfia R. Yusupova −Ufa Institute of Chemistry UFRS RAS,
+Ufa 450054, Russia;
+orcid.org/0000-0002-8944-9204
+Elena V. Karaseva −Ufa Institute of Chemistry UFRS RAS,
+Ufa 450054, Russia
+Xiang Chen −Beijing Key Laboratory of Green Chemical
+Reaction Engineering and Technology, Department of
+Chemical Engineering, Tsinghua University, Beijing 100084,
+China;
+orcid.org/0000-0002-7686-6308
+Qiang Zhang −Beijing Key Laboratory of Green Chemical
+Reaction Engineering and Technology, Department of
+Chemical Engineering, Tsinghua University, Beijing 100084,
+China;
+orcid.org/0000-0002-3929-1541
+Vladimir S. Kolosnitsyn −Ufa Institute of Chemistry UFRS
+RAS, Ufa 450054, Russia
+Complete contact information is available at:
+https://pubs.acs.org/10.1021/acs.jpcb.3c08374
+Funding
+The work was financially supported by the Russian Science
+Foundation (a joint project with the State Natural Science
+Foundation of China, NSFC), project RSF-NSFC No. 21-43-
+00006 “Ion-solvate complexes of lithium polysulfides and their
+electrochemical behavior in LSBs”.
+Notes
+The authors declare no competing financial interest.
+■ACKNOWLEDGMENTS
+The calculations were performed on equipment at the Center
+for the Collective Use “Chemistry” of the Ufa Institute of
+Chemistry of the UFRC RAS and RCCU ≪Agidel≫of the
+UFRC RAS.
+■REFERENCES
+(1) Nakanishi, A.; Ueno, K.; Watanabe, D.; Ugata, Y.; Matsumae, Y.;
+Liu, J.; Thomas, M. L.; Dokko, K.; Watanabe, M. Sulfolane-Based
+Highly
+Concentrated
+Electrolytes
+of
+Lithium
+Bis-
+(trifluoromethanesulfonyl)amide: Ionic Transport, Li-Ion Coordina-
+tion, and Li-S Battery Performance. J. Phys. Chem. B 2019, 123,
+14229−14238.
+(2) Tonoya, T.; Yamamoto, H.; Matsui, Y.; Hinago, H.; Ishikawa, M.
+A Sulfolane-Based Electrolyte Optimized for Microporous Activated
+Carbon-Sulfur Composites for Lithium Sulfur Batteries. Electro-
+chemistry. 2022, 90, 107003.
+(3) Zu, C.-X.; Li, H. Thermodynamic analysis on energy densities of
+batteries. Energy Environ. Sci. 2011, 4, 2614−2624.
+Figure 11. Dependence of the transport number of the lithium cation
+of the Li2Sn−[LiClO4·4SL] system on the concentration of lithium
+polysulfide.
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.3c08374
+J. Phys. Chem. B 2024, 128, 7833−7847
+7845
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​128/​32/​7833/​14962807/​jp3c08374.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 14>>
+(4) Bruce, P. G.; Freunberger, S. A.; Hardwick, L. J.; Tarascon, J. M.
+Li-O2 and Li-S batteries with high energy storage. Nat. Mater. 2012,
+11, 19−29.
+(5) Kolosnitsyn, V. S.; Karaseva, E. V. Lithium-sulfur batteries:
+Problems and solutions. Russ. J. Electrochem. 2008, 44, 506−509.
+(6) Chen, Z. X.; Zhao, M.; Hou, L. P.; Zhang, X. Q.; Li, B. Q.;
+Huang, J. Q. Toward Practical High-Energy-Density Lithium-Sulfur
+Pouch Cells: A Review. Adv. Mater. 2022, 34, No. e2201555.
+(7) Leonet, O.; Donoro, A.; Fernandez-Barquin, A.; Kvasha, A.;
+Urdampilleta, I.; Blazquez, J. A. Understanding of Crucial Factors for
+Improving the Energy Density of Lithium-Sulfur Pouch Cells. Front
+Chem. 2022, 10, 888750.
+(8) Zha, C.; Yang, F.; Zhang, J.; Zhang, T.; Dong, S.; Chen, H.
+Promoting polysulfide redox reactions and improving electronic
+conductivity in lithium-sulfur batteries via hierarchical cathode
+materials of graphene-wrapped porous TiO2 microspheres with
+exposed (001) facets. J. Mater. Chem.A 2018, 6, 16574−16582.
+(9) Mikhaylik, Y. V.; Akridge, J. R. Polysulfide Shuttle Study in the
+Li/S Battery System. J. Electrochem. Soc. 2004, 151, A1969−A1976.
+(10) Karaseva, E. V.; Kuzmina, E. V.; Kolosnitsyn, D. V.; Shakirova,
+N. V.; Sheina, L. V.; Kolosnitsyn, V. S. The mechanism of effect of
+support salt concentration in electrolyte on performance of lithium-
+sulfur cells. Electrochim. Acta 2019, 296, 1102−1114.
+(11) Kolosnitsyn, V. S.; Karaseva, E. V.; Kuzmina, E. V.; Ivanov, A.
+L. Reasons for the effect of the amount of electrolyte on the
+performance of lithium-sulfur cells. Russ. J. Electrochem. 2016, 52,
+273−282.
+(12) Song, M. K.; Cairns, E. J.; Zhang, Y. Lithium/sulfur batteries
+with high specific energy: old challenges and new opportunities.
+Nanoscale 2013, 5, 2186−2204.
+(13) Liu, Y.; Elias, Y.; Meng, J.; Aurbach, D.; Zou, R.; Xia, D.; Pang,
+Q. Electrolyte solutions design for lithium-sulfur batteries. Joule. 2021,
+5, 2323−2364.
+(14) Zerrin, T.; Shang, R.; Dong, B.; Aguilar, E. C.; Malvin, J.;
+Ozkan, M.; Ozkan, C. S. An overlooked parameter in Li-S batteries:
+The impact of electrolyte-to-sulfur ratio on capacity fading. Nano
+Energy 2022, 104, 107913−107927.
+(15) Kamphaus, E. P.; Balbuena, P. B. Localized High Concentration
+Electrolyte and Its Effects on Polysulfide Structure in Solution. J. Phys.
+Chem. C 2021, 125, 20157−20170.
+(16) Seki, S.; Serizawa, N.; Takei, K.; Umebayashi, Y.; Tsuzuki, S.;
+Watanabe, M. Long-cycle-life Lithium-sulfur Batteries with Lithium
+Solvate Ionic Liquids. Electrochemistry. 2017, 85, 680−682.
+(17) Rajput, N. N.; Murugesan, V.; Shin, Y.; Han, K. S.; Lau, K. C.;
+Chen, J.; Liu, J.; Curtiss, L. A.; Mueller, K. T.; Persson, K. A.
+Elucidating the Solvation Structure and Dynamics of Lithium
+Polysulfides Resulting from Competitive Salt and Solvent Inter-
+actions. Chem. Mater. 2017, 29, 3375−3379.
+(18) Andersen, A.; Rajput, N. N.; Han, K. S.; Pan, H.; Govind, N.;
+Persson, K. A.; Mueller, K. T.; Murugesan, V. Structure and Dynamics
+of Polysulfide Clusters in a Nonaqueous Solvent Mixture of 1,3-
+Dioxolane and 1,2-Dimethoxyethane. Chem. Mater. 2019, 31, 2308−
+2319.
+(19) Zhang, J.; Yang, J.; Liu, Z.; Zheng, B. Interaction Mechanisms
+between Lithium Polysulfides/Sulfide and Small Organic Molecules.
+ACS Omega 2021, 6, 4995−5000.
+(20) Park, C.; Ronneburg, A.; Risse, S.; Ballauff, M.; Kanduč, M.;
+Dzubiella, J. Structural and Transport Properties of Li/S Battery
+Electrolytes: Role of the Polysulfide Species. J. Phys. Chem. C 2019,
+123, 10167−10177.
+(21) Kamphaus, E. P.; Balbuena, P. B. First-Principles Investigation
+of Lithium Polysulfide Structure and Behavior in Solution. J. Phys.
+Chem. C 2017, 121, 21105−21117.
+(22) Vijayakumar, M.; Govind, N.; Walter, E.; Burton, S. D.; Shukla,
+A.; Devaraj, A.; Xiao, J.; Liu, J.; Wang, C.; Karim, A.; Thevuthasan, S.
+Molecular structure and stability of dissolved lithium polysulfide
+species. Phys. Chem. Chem. Phys. 2014, 16, 10923−10932.
+(23) Karaseva, E. V.; Savvina, A. A.; Kuzmina, E. V.; Mochalov, S. E.;
+Kolosnitsyn, V. S. Studying the Composition of Solvate Complexes of
+Lithium Perchlorate with Sulfolane via Vacuum Gravimetry. Russ. J.
+Phys. Chem. A 2022, 96, 93−98.
+(24) Brown, V. K. H.; Ferrigan, L. W.; Stevenson, D. E. Acute
+Toxicity and Skin Irritant Properties of Sulfolane. Br. J. Ind. Med.
+1966, 23, 302−304.
+(25) Parfitt, C. E. Characterisation, Modeling and Management of
+Lithium-Sulfur Batteries for Spacecraft Application; University of
+Warwick, School of Engineering, 2012.
+(26) Ho, J. S.; Borodin, O. A.; Ding, M. S.; Ma, L.; Schroeder, M. A.;
+Pastel, G. R.; Xu, K. Understanding Lithium-ion Transport in
+Sulfolane- and Tetraglyme-Based Electrolytes Using Very Low-
+Frequency Impedance Spectroscopy. Energy Environ. Mater. 2022, 6,
+1−9.
+(27) Kolosnitsyn, V. S.; Karaseva, E. V.; Amineva, N. A.; Batyrshina,
+G. A. Cycling Lithium-Sulfur Batteries. Russ. J. Electrochem. 2002, 38,
+329−331.
+(28) Ikeda, S.; Tsuzuki, S.; Sudoh, T.; Shigenobu, K.; Ueno, K.;
+Dokko, K.; Watanabe, M.; Shinoda, W. Lithium-Ion Dynamics in
+Sulfolane-Based Highly Concentrated Electrolytes. J. Phys. Chem. C
+2023, 127, 13837−13845.
+(29) Van Der Spoel, D.; Lindahl, E.; Hess, B.; Groenhof, G.; Mark,
+A. E.; Berendsen, H. J. C. GROMACS: Fast, flexible, and free. J.
+Comput. Chem. 2005, 26, 1701−1718.
+(30) Jorgensen, W. L.; Tirado-Rives, J. The OPLS [optimized
+potentials for liquid simulations] potential functions for proteins,
+energy minimizations for crystals of cyclic peptides and crambin. J.
+Am. Chem. Soc. 1988, 110, 1657−1666.
+(31) Kuzmina, E. V.; Karaseva, E. V.; Kolosnitsyn, V. S. Molecular
+Dynamics Studies of the Physicochemical Properties and Structure of
+the 1 M LiClO4 Solution in Sulfolane. Russ. J. Phys. Chem. A 2022, 96,
+115−124.
+(32) M. J. Frisch, G. W. T., Schlegel, H. B.; Scuseria, G. E.; Robb, M.
+A.; Cheeseman, J. R.; Scalmani, G.; Barone, V.; Petersson, G. A.;
+Nakatsuji, H.; Li, X.; Caricato, M.; Marenich, A.; Bloino, J.; Janesko,
+B. G.; Gomperts, R.; Mennucci, B.; Hratchian, H. P.; Ortiz, J. V.;
+Izmaylov, A. F.; Sonnenberg, J. L.; D., Williams-Young; Ding, F.;
+Lipparini, F.; Egidi, F.; Goings, J.; Peng, B.; Petrone, A.; Henderson,
+T.; Ranasinghe, D.; Zakrzewski, V. G.; Gao, J.; Rega, N.; Zheng, G.;
+Liang, W.; Hada, M.; Ehara, M.; Toyota, K.; Fukuda, R.; Hasegawa, J.;
+Ishida, M.; Nakajima, T.; Honda, Y.; Kitao, O.; Nakai, H.; Vreven, T.;
+Throssell, K.; Montgomery, J. A., Jr, Peralta, J. E.; Ogliaro, F.;
+Bearpark, M.; Heyd, J. J.; Brothers, E.; Kudin, K. N.; Staroverov, V.
+N.; Keith, T.; Kobayashi, R.; Normand, J.; Raghavachari, K.; Rendell,
+A.; Burant, J. C.; Iyengar, S. S.; Tomasi, J.; Cossi, M.; Millam, J. M.;
+Klene, M.; Adamo, C.; Cammi, R.; Ochterski, J. W.; Martin, R. L.;
+Morokuma, K.; Farkas, O.; Foresman, J. B.; Fox, D. J. Gaussian 09,
+Revision C: Wallingford CT, 2016.
+(33) Becke, A. D. Density-functional thermochemistry. III. The role
+of exact exchange. J. Chem. Phys. 1993, 98, 5648−5652.
+(34) Kendall, R. A.; Harrison, R. J.; Dunning, T. H., Jr. Electron
+affinities of the first-row atoms revisited. Systematic basis sets and
+wave functions. J. Chem. Phys. 1992, 96, 6796−6806.
+(35) Dodda, L. S.; Cabeza de Vaca, I.; Tirado-Rives, J.; Jorgensen,
+W. L. LigParGen web server: an automatic OPLS-AA parameter
+generator for organic ligands. Nucleic Acids Res. 2017, 45, W331−
+W336.
+(36) Yusupova, A. R.; Kuzmina, E. V.; Kolosnitsyn, V. S. Theoretical
+Investigation of the Structure and Physicochemical Properties of
+Alkaline and Alkaline Earth Metal Perchlorate Solutions in Sulfolane.
+J. Phys. Chem. B 2022, 126, 7676−7685.
+(37) Kuzmina, E. V.; Karaseva, E. V.; Eroglu, D.; Kolosnitsyn, V. S.
+Molecular Dynamics Simulation of the Concentration Effect on the
+Structure and Physicochemical Properties of Lithium Perchlorate
+Solutions in Sulfolane. Russ. J. Phys. Chem. A 2022, 96, 993−1003.
+(38) Dokko, K.; Watanabe, D.; Ugata, Y.; Thomas, M. L.; Tsuzuki,
+S.; Shinoda, W.; Hashimoto, K.; Ueno, K.; Umebayashi, Y.;
+Watanabe, M. Direct Evidence for Li Ion Hopping Conduction in
+Highly Concentrated Sulfolane-Based Liquid Electrolytes. J. Phys.
+Chem. B 2018, 122, 10736−10745.
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.3c08374
+J. Phys. Chem. B 2024, 128, 7833−7847
+7846
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​128/​32/​7833/​14962807/​jp3c08374.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 15>>
+(39) Mukherji, S.; Avula, N. V. S.; Balasubramanian, S. Refined
+Force Field for Liquid Sulfolane with Particular Emphasis to Its
+Transport Characteristics. ACS Omega 2020, 5, 28285−28295.
+(40) Nosé, S. A molecular dynamics method for simulations in the
+canonical ensemble. Mol. Phys. 1984, 52, 255−268.
+(41) Hoover, W. G. Canonical dynamics: Equilibrium phase-space
+distributions. Phys. Rev. A 1985, 31, 1695−1697.
+(42) Berendsen, H. J. C.; Postma, J. P. M.; van Gunsteren, W. F.;
+DiNola, A.; Haak, J. R. Molecular dynamics with coupling to an
+external bath. J. Chem. Phys. 1984, 81, 3684−3690.
+(43) Leontyev, I.; Stuchebrukhov, A. Accounting for electronic
+polarization in non-polarizable force fields. Phys. Chem. Chem. Phys.
+2011, 13, 2613−2626.
+(44) Self, J.; Fong, K. D.; Persson, K. A. Transport in Super-
+concentrated LiPF6 and LiBF4/Propylene Carbonate Electrolytes.
+ACS Energy Lett. 2019, 4, 2843−2849.
+(45) Liu, H.; Maginn, E. A molecular dynamics investigation of the
+structural and dynamic properties of the ionic liquid 1-n-butyl-3-
+methylimidazolium bis(trifluoromethanesulfonyl)imide. J. Chem. Phys.
+2011, 135, 124507.
+(46) Borodin, O.; Giffin, G. A.; Moretti, A.; Haskins, J. B.; Lawson, J.
+W.; Henderson, W. A.; Passerini, S. Insights into the Structure and
+Transport of the Lithium, Sodium, Magnesium, and Zinc Bis-
+(trifluoromethansulfonyl)imide Salts in Ionic Liquids. J. Phys. Chem. C
+2018, 122, 20108−20121.
+(47) Borodin, O.; Smith, G. D. Quantum Chemistry and Molecular
+Dynamics Simulation Study of Dimethyl Carbonate: Ethylene
+Carbonate Electrolytes Doped with LiPF6. J. Phys. Chem. B 2009,
+113, 1763−1776.
+(48) Borodin, O. Challenges with prediction of battery electrolyte
+electrochemical stability window and guiding the electrode -
+electrolyte stabilization. Curr. Opin. Electrochem. 2019, 13, 86−93.
+(49) Kubisiak, P.; Eilmes, A. Estimates of Electrical Conductivity
+from Molecular Dynamics Simulations: How to Invest the Computa-
+tional Effort. J. Phys. Chem. B 2020, 124, 9680−9689.
+(50) Ong, M. T.; Verners, O.; Draeger, E. W.; van Duin, A. C.;
+Lordi, V.; Pask, J. E. Lithium ion solvation and diffusion in bulk
+organic electrolytes from first-principles and classical reactive
+molecular dynamics. J. Phys. Chem. B 2015, 119, 1535−1545.
+(51) Borodin, O.; Olguin, M.; Ganesh, P.; Kent, P. R.; Allen, J. L.;
+Henderson, W. A. Competitive lithium solvation of linear and cyclic
+carbonates from quantum chemistry. Phys. Chem. Chem. Phys. 2016,
+18, 164−175.
+(52) Kolosnitsyn, V. S.; Kuzmina, E. V.; Karaseva, E. V. Influence of
+Lithium Salts on Physicochemical Properties of Lithium Polysulphide
+Solutions in Sulfolane. ECS Trans. 2009, 19, 25−30.
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.3c08374
+J. Phys. Chem. B 2024, 128, 7833−7847
+7847
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​128/​32/​7833/​14962807/​jp3c08374.​pdf by TSINGHUA UNIV user on 21 September 2026

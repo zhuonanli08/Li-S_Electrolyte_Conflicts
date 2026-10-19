@@ -1,0 +1,970 @@
+
+<<PAGE 1>>
+Journal of The
+Electrochemical Society
+     
+OPEN ACCESS
+Methods—Ampero-Coulometry: A New Technique
+for Understanding Lithium-Sulfur Electrochemistry
+To cite this article: Umair Gulzar et al 2023 J. Electrochem. Soc. 170 030503
+ 
+View the article online for updates and enhancements.
+You may also like
+Revolutionizing lithium sulfur batteries:
+advanced nanocarbon scaffolds for
+superior sulfur cathodes
+Xiao-Fei Yu, Bin Liu, Bin He et al.
+-
+Chemo-Mechanical Hysteresis of Sulfur
+Conversion Electrodes via Operando
+Acoustic Transmission
+Kerry Sun, Gunnar Thorsteinsson,
+Alexandra Stiber et al.
+-
+Polysulfide Speciation in Li–S Battery
+Electrolyte via In-Operando Optical
+Imaging and Ex-Situ UV-vis Spectra
+Analysis
+Gbenga S. Taiwo, Ali Rashti, Mritunjay
+Mishra et al.
+-
+This content was downloaded from IP address 47.156.116.107 on 03/10/2026 at 15:16
+
+<<PAGE 2>>
+Methods—Ampero-Coulometry: A New Technique for
+Understanding Lithium-Sulfur Electrochemistry
+Umair Gulzar,1,*,z Alex Lonergan,1,* Vladimir Egorov,1 Yan Zhang,1,* Alex Grant,1
+Aoife Carroll,1 and Colm O’Dwyer1,2,3,*,z
+1School of Chemistry, University College Cork, Cork, T12 YN60, Ireland
+2Micro-Nano Systems Centre, Tyndall National Institute, Lee Maltings, Cork, T12 R5CP, Ireland
+3Environmental Research Institute, University College Cork, Cork T23 XE10, Ireland
+Despite limited commercial success, lithium sulfur technology (LST) is still far from competing existing Li-ion technology. One of
+the main reasons hindering the success of LST is the complexity of lithium-sulfur chemistry during electrochemical charging and
+discharging. Dissolution of sulfur species in the electrolyte solution exacerbates the difﬁculties of this system. Therefore, a
+comprehensive understanding of sulfur species and their kinetics during charge/discharge process is paramount for a high-
+performance lithium-sulfur battery. We present a new technique we refer to as Ampero-Coulometry, which takes the
+chronoamperometric (galvanostatic) charge-discharge curves and mathematically transforms them to a series of curves that reveal
+the cation diffusional rate inside carbon-sulfur porous electrodes at different states of charge/capacity. This technique allowed us to
+track the overall Li+ ion diffusional rate inside a Li-S cell over a complete state of discharge. As dissolution of sulfur species and
+their interplay inside a porous sulfur electrode has a signiﬁcant role in limiting Li-S battery capacity, and method allows correlation
+between the known mechanism of polysulﬁde dissolution, the kinetics of a sulfur electrode, and its response.
+© 2023 The Author(s). Published on behalf of The Electrochemical Society by IOP Publishing Limited. This is an open access
+article distributed under the terms of the Creative Commons Attribution 4.0 License (CC BY, http://creativecommons.org/licenses/
+by/4.0/), which permits unrestricted reuse of the work in any medium, provided the original work is properly cited. [DOI: 10.1149/
+1945-7111/acbca0]
+Manuscript submitted December 1, 2022; revised manuscript received January 19, 2023. Published March 7, 2023.
+Supplementary material for this article is available online
+Lithium-Sulfur (Li-S) technology has long been sought after as
+an alternative to lithium-ion technology for a variety of niche
+applications. One of the main advantages is that some Li-S cells
+can reach practical energy densities of 500–600 Wh kg−1 using
+cheaper, lighter and environmentally benign sulfur electrodes.1
+However, Li-S technology is limited by its low power density and
+modest cycling performance.2 Key problems that include electrode
+degradation, solubility of active material (sulfur) inside electrolyte
+and consequent shuttle effect need to be addressed before its
+commercialization. The last two decades have seen signiﬁcant effort
+in solving these problems where a lot of focus was put on improving
+power density and cycle life, often by developing new conductive
+host materials for the sulfur cathode.3,4
+To address the shuttle effect, various strategies have been
+developed for polysulﬁde (PS) conﬁnement using micro porous
+and polysulﬁde adsorbent materials.5 Modifying separators with
+various inorganic and polar materials also proved to be effective
+against the shuttle effect.6,7 Recently, concepts from catalysis have
+also been applied to Li-S batteries to improve sulfur utilization and
+cycling stability.8,9 Despite signiﬁcant progress, dissolution of
+polysulﬁdes, their kinetics and diffusion in the electrolyte during
+cell operation is not yet clear. As the capacity and rate capability of
+Li-S battery is strongly linked to the complex interplay of PSs,
+understanding their intrinsic kinetics at electrode/electrolyte inter-
+face is necessary to reveal the full potential of LSBs.
+The evolution of these PSs in liquid phase has been tracked using
+UV–vis,10,11
+IR,12
+LC,13–15
+NMR,14,16
+and
+some
+electrochemical17–20 and theoretical methods21,22 while their pro-
+gressive deposition on electrode surfaces has been monitored using
+XRD and TEM measurements.16,23–25 One of the most referenced
+studies is based on ex situ liquid chromatography coupled with
+UV–vis and electron spin resonance spectroscopy.13 There, the
+authors proposed that S6
+–2/S3
+•– species of PSs are formed in ﬁrst
+discharge plateau which subsequently reduced to S4
+–2 during the
+transition region between 1st and 2nd plateau. During the second
+voltage plateau the S4
+–2 species are subsequently reduced to S3
+•–,
+S2
+–2, and S1
+–2 forms, where S1
+–2 corresponds to the deposition of
+Li2S. Although the study provides an insight to the mechanism of
+PSs, these ex situ results do not necessarily represent real-time Li-S
+chemistry where all reactions are happening simultaneously in a
+ﬁxed electrolyte system. To solve this problem, operando studies
+have been employed to track the formation and dissolution of PSs
+species inside working Li-S batteries.24,26,27 In one study,27 X-ray
+absorption spectroscopy was used to detect not only the amorphous
+and crystalline redox products (S8 and Li2S) but also the dissolved
+PSs. After monitoring PSs evolution during the charging process, the
+authors concluded that PSs species remains at relatively constant
+composition and concentrations. Unfortunately, their technique was
+unable to differentiate different PSs signals consequently limiting its
+use as tool for identifying PSs species inside electrolyte solution.
+On the other hand, UV–vis spectroscopy stands out as a very
+practical technique to differentiate long and small chain chromo-
+phoric PSs inside electrolyte solution. Some of the earlier studies
+suggested that S8
+–2 and S3
+•– radical ions are predominant in high
+donor number solvent28–31 (i.e. DMSO and DMF) while S4
+–2 show
+higher concentrations in low donor number solvents32 including
+DOL: DME, the most commonly used electrolyte solvent in Li-S
+battery. Later Patel et al.11 used UV–vis spectroscopy on a pouch
+cell and conﬁrmed the presence of S8
+–2 and S6
+–2 species during 1st
+plateau, S4
+–2 and S3
+•– species during 2nd plateau and lithium sulﬁde
+at the end of discharge curve. However, in a very recent study,
+Gasteiger’s group9 not only conﬁrmed the presence of S4
+–2 species
+in the ﬁrst plateau but also identiﬁed a the trisulﬁde radical species
+S3
+•–, which appears during transition stage between the 1st and 2nd
+plateaus. They showed that elemental S8 is converted to S4
+–2 during
+the 1st discharge plateau, where contrary to Patel’s study, other
+polysulﬁdes (i.e. S8
+–2 and S6
+–2) are barely detected. These S4
+–2
+species get reduced to a meta-stable PS species S3
+•– in the transition
+stage of 1st and 2nd plateau and dominates the second discharge
+plateau. So far, UV–Vis spectroscopy has been the most successful
+technique to understand the formation and consumption of PSs
+inside electrolyte. However, these operando techniques detect only
+those PSs that can easily diffuse within the electrolyte during the
+experiment. Consequently, PSs with faster kinetics and lower
+diffusion are difﬁcult to detect using these techniques. For example,
+Qi et al.9 in their study suggested that it is quite possible that S8
+–2
+zE-mail: umair.gulzar@ucc.ie; c.odwyer@ucc.ie
+*Electrochemical Society Member.
+Journal of The Electrochemical Society, 2023 170 030503
+
+<<PAGE 3>>
+species did convert to S6
+–2 species during the 1st plateau, however,
+due to lower diffusion and fast kinetics, quickly converted into S4
+–2
+species, hence not detectable in electrolyte.
+Electrochemical techniques such as cyclic voltammetry and
+chronoamperometry are powerful as they provide information on
+PSs interplay at electrode/electrolyte interface. In one such case,
+Patrick et al.21 provided a quantitative insight into the reaction
+mechanism of PSs using cyclic voltammetry at different depths of
+discharge. They suggested that the performance of a Li-S battery is
+strongly linked to chemical disproportionation and the equilibrium
+between multiple PSs species. Ma et al.33 used an H-type electrolytic
+cell to quantitatively measure the intrinsic kinetics of various PSs
+conversions. They used steady state polarization curves to obtain
+redox potentials, exchange current densities, reaction orders and
+activation energy for PSs conversion. These results, in particular
+Tafel slopes and exchange current density, were used to predict the
+mechanism of PSs dissolution and their inﬂuence on a typical charge
+discharge proﬁle of Li-S battery.
+Chronopotentiometry (CP), chronoamperometry (CA) and chron-
+ocoulometry (CC) belong to a family of electrochemical techniques
+that involve an application of “step” potential or current. In case of
+CP, a “step” current is applied while change in potential is measured
+against time. Also known in battery community as galvanostatic or
+constant current method, this technique is widely applied to obtain a
+charge/discharge proﬁle of a battery and also used to understand
+electrode behavior. On the other hand, CA and CC methods apply a
+“step” voltage to observe current and charge, respectively, against
+passing time. Although less commonly used, both methods are the
+fastest way of charging or discharging a battery. For experiments
+where t →∞, the capacities are equal to nominal capacities,
+however, for realistic experimental durations (i.e. t = ∞), the
+capacities obtained are somewhat less than the nominal capacity.
+This is due to the fact that reactions with faster rates have sufﬁcient
+time to take place in some systems. In this sense, a current transient
+in CA contains information on the rate capability of a cell34,35 which
+can be used to understand electrode kinetics. Recently, CA and CC
+have been utilized in addressing speciﬁc issues related to interfacial
+kinetics36–38 and diffusion phenomena.39,40 In particular, Heubner et
+al.34 used a simple CA method to determine that rate capability of
+porous electrodes in LIB. They showed that the CA response can be
+mathematically transformed into C-rates which are comparable to
+the C-rates obtained using conventional CP method. Later, Tian et
+al.41 modiﬁed Heubner’s work to predict C-rate over a longer range
+using a more realistic approach. Instead of using theoretical
+capacities, they used true capacities of a working LIB enabling
+them to predict C-rate more accurately over a long range.
+In our effort to understand the kinetics of PSs inside a working
+Li-S cell, we used chronoamperometric experiments to develop a
+new technique named Ampero-Coulometry (AC). The technique
+uses experimental data from CA and mathematically transforms
+them to reveal diffusional rate inside carbon-sulfur porous electrodes
+over a complete state of discharge. As dissolution of PSs and their
+interplay inside a porous sulfur electrode has a signiﬁcant role in
+limiting Li-S battery capacity, we were able to relate the known
+mechanism of PSs dissolution with the kinetics of sulfur electrodes
+and its performance. The method also provides this information in a
+much shorter timeframe compared to longer term cycling measure-
+ments, and is generally applicable to any battery, supercapacitor or
+electrochemical system where galvanostatic and/or potentiostatic
+measurements are made.
+Experimental
+Materials preparation.—Carbon-Sulfur composites were pre-
+pared by mixing elemental sulfur (99.998% trace metal basis,
+Sigma Aldrich) with Super-P conductive carbon black (TIMCAL,
+MTI Corporation) in weight ratios of 7:3. After grinding, the mixture
+was heated at 155 °C in an inert atmosphere in order to melt diffuse
+sulfur inside the carbon matrix.
+Materials characterization.—The morphology of sulfur elec-
+trodes was evaluated using scanning electron microscopy (SEM)
+images obtained from a FEI Quanta 650 SEM operated at spot size 3
+and 15 kV beam voltage. Energy dispersive X-ray analysis was also
+performed to track the distribution of sulfur onto the surface of
+electrodes. Raman scattering analysis of carbon black and C/S
+composite was carried out using a Renishaw inVia Raman spectro-
+meter in conjunction with a 30-mW Ar+ laser at an excitation
+wavelength of 514 nm. The laser was focused using a 40 × objective
+lens and signals were collected using a RenCam charge-coupled
+device (CCD) camera. The crystal structure of the sulfur was
+conﬁrmed by X-ray diffraction (XRD) using a Philips X’pert Pro
+MPD equipped with a Panalytical Empyrean Cu X-ray tube and a
+Philips X’celerator detector. Thermogravimetric analysis was carried
+out using a Perkin Elmer TGA 4000 instrument. Samples of C/S
+composite were heated at a ramp rate of 5 °C min−1 from room
+temperature to 600 °C under an inert atmosphere.
+Li-S cell fabrication and electrochemical characterization.—
+Cathode slurries were prepared by grinding C/S composites, Super-P
+conductive
+carbon
+black
+and
+multiwalled
+carbon
+nanotubes
+(MWCNTs) in a water suspension of carboxymethyl cellulose/
+styrene butadiene rubber (CMC-SBR) binder (MTI Corporation).
+Ethanol was used to adjust the viscosity of as-prepared slurry. The
+ﬁnal slurry consists of 80% C/S composite, 11% Super-P conductive
+carbon, 8% CMC-SBR binder and 1% MWCNTs. Electrodes were
+prepared by coating slurries on aluminum (Al) sheets (20 μm
+thickness) using a doctor blade and cut into discs (area = 0.78
+cm2). Electrodes were not pressed in order to achieve maximum
+areal porosity and PSs dissolution. The average thickness of each
+electrode (incl. Al current collector) was 130 μm while the average
+areal mass loading was 2.0 mg(s) cm−2. Geometrical porosity (pg)
+was calculated using Eq. 1,
+=
+−
+[ ]
+p
+V
+V
+V
+1
+g
+g
+d
+g
+where Vg and Vd are the geometrical and dense volume of the C/S
+electrode. The geometrical volume was calculated as
+π
+=
+V
+r t
+g
+2
+where t is the electrode thickness. The dense volume Vdwas
+calculated using the density and relative mass of each electrode
+material.
+Electrochemical testing was carried out using 0.78 cm2 circular
+Lithium disks (Sigma Aldrich) as a reference electrode and as-
+prepared C/S composite based cathode. These electrodes were
+separated by glass ﬁber separator (Whatman GF/D) soaked with
+60 μl electrolyte solution which consist of 0.4 M LiTFSi, 0.6 M
+LiNO3 and DOL: DME (1:1). Electrodes were assembled in a PAT
+test cell (EL-CELL), connected to PAT-stand-4 docking station (EL-
+CELL) and placed inside temperature-controlled environment to
+maintain a constant temperature of 25°C. Chronoamperometry (CA)
+and galvanostatic chronopotentiometry (CP) experiments were
+performed using VMP3 multichannel potentiostat (Biologic) con-
+trolled by EC Lab software. Initially, ﬁve CP cycles were performed
+on each cell at 0.1 C followed by a CA experiment. For step-
+chronoamperometry, three voltage steps (2.20 V, 1.90 V, and
+1.80 V) were chosen based on the discharge proﬁle obtained from
+chronopotentiometry. The electrochemical methods leading to the
+ampero-coulometric curve outlined later are depicted below in Fig. 1
+schematically. Starting with a standard galvanostatic discharge curve
+at constant current in Fig. 1a, the cell then undergoes a chron-
+oamperometric measurement depicted in Fig. 1b at constant poten-
+tial. This potential is equivalent to the cutoff potential V1 of the
+discharge curve from Fig. 1a and is applied for a time equivalent to
+the time t1 taken to reach a value of current that is identical to the
+applied current I1 in galvanostatic measurements. Once the current is
+integrated (Fig. 1c) to a charge, the charge can be converted to AC
+curve as we discuss further on.
+Journal of The Electrochemical Society, 2023 170 030503
+
+<<PAGE 4>>
+Results and Discussion
+Porous carbon-sulfur cathodes.—Figure 2 details the nature of
+the porous C/S cathode used in this ampero-coulometric analysis.
+Once cast, the C/S composite electrode material was ﬁrst analyzed
+using Raman spectroscopy. Figure 2a shows two prominent D and G
+peaks at 1357 and 1597 cm−1, respectively known from disordered
+and defective sp2 carbon and the second peak at 1597 cm−1 is related
+to the vibrational modes of graphitic carbons.42 The
+/
+I
+I
+D
+G ratio was
+close to unity which can be explained by the defective nature of
+conductive carbon matrix.19 Moreover, a broad peak between 250
+and 450 cm−1 can be linked to sulfur encapsulated inside carbon
+matrix43 while the peak centered at 800 cm−1 can be attributed to
+glass substrate.44,45 The data also showed a peak at 2276 cm−1 from
+functional group impurities (C–H, C–O, C–S). XRD analysis also
+conﬁrmed the presence of elemental sulfur (Fig. 2b) where all
+reﬂections (those indexed and marked and remaining peaks) match
+with JCPDS 08–0247. The C−S composite showed typical peaks
+associated with highly crystalline sulfur on a broad carbon peak
+centered at 25°, with the full XRD spectrum show in the
+Supplementary Materials, Fig. S1.
+The sulfur content was uniformly distributed over the mor-
+phology of the overall composite materials as seen in SEM and EDX
+data in Figs. 2c,2d and at higher magniﬁcation in Fig. S2,
+Supplementary Material. These ﬁndings were conﬁrmed using
+high resolution core-level photoemission spectrum from S 2p in
+Fig. 2e suggesting that some of the sulfur is chemically linked to the
+carbon matrix.46 These peaks can be assigned to aromatic sulfur
+(162.3 eV), S−C group (164.4 eV), S−O−C group (165.5 eV) and
+Figure 1. Schematic representation of the various electrochemical measurements of the Li-S battery including (a) galvanostatic measurements (chron-
+opotentiometry) at an applied current I1, (b) chronoamperometry acquired from OCV to a potential equivalent to the cutoff lower potential V1 from (a). The
+potential is applied for time t1 equal to the time taken to reach a value of current I1 identical to that of the applied current in (a), and (c), integration of the
+measured current up to time t1.
+Figure 2. (a) Raman scattering spectrum and (b) XRD diffraction pattern of the C-S composite material indexed to JCPDS 08–0247. (c) SEM and (d) EDX map
+of the C-S composite, the light yellow-green color in the EDX map represents elemental sulfur. (e,f) X-ray photoelectron spectra from S 2p and C 1 s core levels.
+(g) N2 adsorption/desorption isotherms for the C/S and the non-sulfur containing super-P carbon, with BET calculated surface areas and pore volumes. (h)
+Thermogravimetric analysis of the C/S composite.
+Journal of The Electrochemical Society, 2023 170 030503
+
+<<PAGE 5>>
+other oxidized sulfur species (169.2 eV).47 In the C 1 s core-level in
+Fig. 2f, we note three prominent peaks at 284.8, 287.4 and 289.6 eV
+can be attributed to C−C, C−O and C = O groups, respectively.
+N2 physisorption analysis was performed to determine the
+surface area and pore size distribution of the as-prepared C/S
+composite. Figure 2g shows N2 adsorption/desorption isotherm
+obtained for conductive super-P and C/S composite. Pristine con-
+ductive super-P carbon showed a type II isotherm indicating macro
+pore sizes >50 nm.48 Total surface area and pore volumes of pristine
+conductive Super-P carbon were found to be 62.8 m2 g−1 and 0.004
+cm3 g−1, respectively while the C/S composite showed a signiﬁ-
+cantly lower value (5.3 m2 g−1) due to sulfur encapsulation of
+majority of the pore volume. Thermogravimetric analysis (TGA)
+was used to determine the sulfur content in C/S composites and in
+Fig. 2h illustrates a sharp decrease in weight when temperature
+increases from 115 to 300 °C corresponding to the removal of sulfur.
+TGA results also conﬁrmed that sulfur accounts for ∼70% of the
+total weight in C/S composites. Geometrical porosity of C/S
+composite electrodes was calculated using Eq. 1, and lies in the
+range of 75%–80%.
+The ampero-coulometry method.—Figure 3a shows a typical
+chronopotentiometric V(t) response of the C/S Li-S cell cathode
+commonly referred to as a galvanostatic charge-discharge, and for
+reference we also show the ﬁrst ﬁve charge/discharge cycles of a
+similar cell in Supplementary Materials, Fig. S3. The response
+(Fig. 3a, the 5th cycle) is characteristic of a Li-S cell with a Li metal
+anode. In tandem, we also ran a chronoamperometric (CA) I(t)
+response curve shown in Fig. 3b, where a potential of 1.8 V
+(corresponding to the lower cutoff of the galvanostatic discharge in
+Fig. 3a) is applied. This method has been used recently to very
+quickly characterize the rate behavior (capacity vs. rate) of an
+batteries across a wide range of C-rates in a much shorter time
+compared
+to standard rate-dependent galvanostatic cycle
+life
+tests.34,35,49–51 This CA curve can then be transformed into a
+chronocoulometric curve by simply integrating the current over the
+course of experiment, as we show in Fig. 3c. By combining the two
+curves in Fig. 3b and 3c (i.e. plotting I vs Q) results in a curve in
+Fig. 3d, which we call an ampero-coulometric (AC) curve. As will
+be shown, this curve is sensitive to, and reveals, the processes
+involved in a Li–S battery. One of the main advantages of this
+method is that it allows the capacities obtained from chronopoten-
+tiometry (CP) or galvanostatic discharge to be compared or super-
+imposed with chronoamperometric (CA) discharge proﬁle, when the
+CA current is limited to the applied current or C-rate used in the CP
+method. It is important to mention that generally there is no cutoff
+current in a CA measurement. To compare it to the discharge proﬁle
+obtained from CP method at 0.1 C (0.170 mA), we limited the
+current according to that value. If we were to discharge our Li-S cell
+at 0.01 C (0.0170 mA) in a galvanostatic CP measurement, we
+would stop our experiment at 0.0170 mA in CA method.
+In our case, we discharge a Li–S cell using a CP method by
+drawing a constant current of 0.170 mA (0.1 C). After charging, the
+cell was subjected to chronoamperometry where the cutoff voltage
+was set to 1.8 V. The experiment was stopped when the current
+reaches the value of 0.170 mA which is equal to the constant current
+applied in CP method. The chronoamperometric capacities obtained
+from CA method were plotted against current and compared with the
+gravimetric capacity obtained from CP method. By comparing to
+other reports involving potential step methods transformed to rate
+behavior,41,49 we found that capacity obtained from CP method (573
+Figure 3. (a) Charge-discharge curve for the Li-S cell at a speciﬁc current of 166 mA g−1, corresponding to 0.25 mA cm−2. (b) Current vs time plots obtained
+after chronoamperometric experiment performed on the Li–S cell at a constant potential of 1.8 V (cutoff from the galvanostatic discharge). (c)
+Chronocoulometric plot obtained by integrating the current in (b) over time. (d) Ampero-coulometric plot obtained by plotting current against the state of
+charge (gravimetric capacity). (e) Schematic summary of the applied currents and potentials for each measurement type shown in (a)-(d).
+Figure 4. (a) Ampero-coulometric plots obtained from chronoamperometric
+experiment on the Li-S cell. (b) Differential ampero-coulometric curve
+obtained from the slopes of ampero-coulometric plot in (a).
+Journal of The Electrochemical Society, 2023 170 030503
+
+<<PAGE 6>>
+mAh g−1) was almost equal to the capacity obtained from CA
+method (568 mAh g−1) if the experiment is stopped at a limiting
+current of 0.170 mA (i.e. the constant current used in CP method).
+As CA method is the fastest way of charging/discharging a battery,
+time required to discharge our Li–S cell using CA method (0.43 h)
+was 9.5 × less than the CP method (4.1 h). Such fast electrode/cell
+assessment times are possible with careful use of CA curves and can
+always be compared to standard CP (galvanostatic) curves for
+comparison/checking.
+Figure 4a shows a typical discharge curve of Li–S cell obtained
+from CP method which is superimposed with an ampere-coulome-
+teric curve obtained for the same Li–S cell. Although the two curves
+show similar capacities, the AC curve displays a reducing slope that
+ﬁnishes when the capacity reaches a value of 170 mAh g−1. A
+relatively ﬂat region was observed from 170–280 mAh g−1 followed
+by another decreasing slope which ﬂattens as it reaches the
+maximum capacity of 567 mAh g−1. On the other hand, CP curve
+showed an upper and lower plateau at 2.43 and 2.1 V respectively. It
+is important to mention that both these plateaus are not ﬂat and
+detailed inspection of CP curve and its relation to ampere-coulo-
+metric (AC) curve will be discussed further on.
+By differentiating the ampero-coulometric (AC) curve and
+plotting its slope dI
+dC
+m against capacity, we were able to produce a
+differential amperometric capacity plot showing two prominent
+peaks in the region 0–170 mAh g−1 and 170–570 mAh g−1
+(Fig. 4b). Interestingly these peaks lie in the same region of the
+two upper and lower plateaus usually obtained using CP method.
+Although the quantity dI
+dC
+m seems dimensionally similar to C-rate (
+i.e. h−1), the C-rate has a speciﬁc deﬁnition strictly related to CP
+charge-discharge curves. For example, complete discharge at 1 C rate in
+1 h requires a constant discharge current (i). As the current is constantly
+decreasing in CA method, the strict deﬁnition of C-rate used in CP
+method is not applicable. Although Tian et al.41 and Heubner’s et al.34
+have used the concept of C-rate in their CA method, due to different
+mathematical transformation used in our case, we deﬁne the quantity
+dI
+dC
+m as a diffusional rate instead of the C-rate. In this context the
+diffusional rate represents the rate of change of current during the state-
+of-charge in the Li–S cell and reveals useful information about the
+kinetics of Li–S electrochemistry. Plotting dI
+dC
+m or diffusional rate
+against time resulted in a differential ampero-coulometric (AC) plot
+which can be compared with CP discharge curve allowing us to
+correlate the interplay of PS species and their effect on diffusional rates
+and the kinetics of Li−S cell.
+Before making these linkages, we also sought to understand the
+connection between the differential ampero-coulometric representa-
+tion and diffusional kinetics within electrodes. The data is reminis-
+cent also of the Cottrell relation for a diffusion limited system and so
+we produced a Cottrell plot (i vs t1/2) (Fig. 5a) from the same CA
+data in Fig. 2. Interestingly, the overall shape of the Cottrell curve in
+Fig. 5a is very similar to the AC curve (Fig. 3a) where the decreasing
+slope is followed by plateau and a second decreasing slope. This
+current-time response observed in Fig. 5a can be represented by the
+Cottrell equation (Eq. 2)
+⎜
+⎟
+⎛
+⎝
+⎞
+⎠
+π
+=
+[ ]
+−
+i
+D FAC
+t
+2
+0
+1 2
+where D is the diffusion coefﬁcient in cm2 s−1, F is the Faraday
+constant (96,485 C mol−1), A is the area of sulfur electrode in cm2, C0
+is the concentration of Li+ ions inside electrolyte solution (presumably
+crowded with PSs) in mol cm−3, and t is the time in sec.
+Using the same Eq. 2 we were able to mathematically correlate
+the similar shapes observed in both Cottrell and ampero-coulometric
+(AC) plots.
+Squaring Eq. 2 on both sides gives
+⎛
+⎝
+⎞
+⎠
+⎛
+⎝
+⎞
+⎠
+π
+π
+=
+=
+[ ]
+i
+D F A C
+t
+or i
+D F A C
+it
+3
+2
+2 2
+0
+2
+2 2
+0
+2
+where
+=
+Q
+it in coulombs. In order to convert Q into speciﬁc
+capacity (Cs) and i into speciﬁc current im we scale with the capacity
+(in this example, C = 0.2778 mAh) and the mass of active material
+which gives
+⎜
+⎟
+⎛
+⎝
+⎞
+⎠
+π
+=
+[ ]
+i
+C
+DF A C
+C m
+1
+4
+m
+s
+s
+2 2
+0
+2
+2
+where im is the current density (mA g−1), C is the capacity (mAh
+g−1) and ms is the mass of active material. As the form of Eqs. 2 and
+3 are similar, associated plots yield similar shapes (Figs. 4a and 5a).
+The derivative of Eq. 4, i.e. dI
+dC
+m gives
+⎜
+⎟
+⎛
+⎝
+⎞
+⎠
+π
+= −
+[ ]
+dI
+dC
+C
+DF A C
+C
+m
+1
+5
+m
+s
+s
+s
+2
+2 2
+0
+2
+2
+which links the differential ampero-coulometric rate, or diffusional
+rate dI
+dC ,
+m
+s
+to the diffusion constant D of Li+ ions. Figure 5b shows
+Figure 5. Cottrell plot (i vs t1/2) obtained from chronoamperometric (CA)
+experiment data. (b) Slope of the Cottrell plot as a function of capacity
+obtained from chronoamperometric measurements.
+Journal of The Electrochemical Society, 2023 170 030503
+
+<<PAGE 7>>
+the slope of the Cottrell relation from Fig. 5a as a function of the
+capacity from the CA data and we can see the correlation or
+similarity of the plot to the AC method being proposed here
+suggesting that the diffusion-limited behavior of the Li+ ions is a
+suitable relative “tracer” for the diffusion-limited processes and their
+rate variation in the Li-S system, at least to assess the AC technique
+and trends in potential step measurements via the Cottrell relation to
+typical galvanostatic data. As the dissolution of PS inside the
+electrolyte affects the diffusion of Li+ ions, it should also affect
+diffusional rate over the course of discharge.
+In Fig. 6a we present a differential ampero-coulometric plot
+obtained from CA data and superimposed with the discharge proﬁle
+obtained from CP method at 0.1 C (0.170 mA g−1). Depending on
+the change in diffusional rate, we divided this plot into four regions.
+Discharging a Li−S cell involves Li+ ion diffusion towards the
+sulfur electrode and the associated rate of diffusion should decrease
+as the cell approaches its full state-of-discharge. However, we
+believe that dissolution of PSs and their diffusion towards the
+opposite Li electrode will affect the Li+ diffusion rate. Therefore, as
+the concentration of PSs species inside electrolyte/electrode inter-
+face changes, the rate of cation diffusion should also modify
+accordingly. These changes are clearly visible in Fig. 6a where the
+diffusional rates are elevated and then decrease in “waves” as the
+battery moves towards complete discharge. At ﬁrst, an increase of
+diffusional rate was observed until the capacity reaches the value of
+100 mAh g−1 (Region I). We believe that the increase in diffusional
+rate is the result of unused PS species that did not convert to sulfur
+during the previous charging process. During the voltage window of
+Region I, (to 2.2 V), the reaction follows
++
++
+⇔
+−
++
+−
+S
+Li
+e
+Li S
+2
+2
+R
+8
+2
+2
+6
+1
+at a rate R .1 Readers can refer to Fig. S4, Supplementary Material, for
+an expanded view of each of Regions I—IV.
+During the subsequent CA experiment, these PSs are the ﬁrst to
+get reduced thereby clearing up excess PSs species at the porous
+electrode surface. As the PS concentration decreases inside the
+pores, diffusional rate of Li+ ion towards the sulfur electrode should
+increase as shown in Fig. 6a, Region I. Once the accessible PSs have
+been utilized, the sulfur electrode starts producing higher order PSs
+(S8 to S6) to be dissolved inside electrolyte. A higher PSs
+concentration inside the porous electrode will likely hinder the
+diffusional rate for Li+ ions, hence, decreasing the diffusional rate
+(Fig.
+6a,
+Region
+II).
+Here,
+the
+process
+follows
++
++
+⇔
+−
++
+−
+S
+Li
+e
+Li S
+4
+4
+2
+R
+8
+2
+2
+4
+2
+at a rate
+<
+R
+R .
+2
+1 The cation diffusional
+rate in this region (see Supplementary Material, Fig. S5) also reaches
+its lowest value as the capacity approaches 200 mAh g−1, which is
+also the end of 1st plateau region and the start of 2nd plateau region
+(Fig. 6a, Region III). As the concentration of S6 species reduces,
+R1 can again increase stabilizing the total cell rate which contains
+contributions from R1 and R .
+2
+Recently, Kang et al.52 have suggested that end of ﬁrst plateau
+region is the result of PSs concentration reaching a maximum inside
+the porous electrode. These results are consistent with our differ-
+ential ampero-coulometric plot where diffusional rates associated
+with the overall reaction reach their minimum value at the end of
+ﬁrst discharge plateau. Comparison to parallel measurement from
+potential step data in the framework of the Cottrell equation for Li+
+cation diffusion (Fig. S5) also show this trend. Afterwards, the
+diffusional rates increase in Fig. 6, Region III until the capacity
+reaches 400 mAh g−1. In this region, PSs of higher order dissociate
+to smaller PSs species via
++
++
+⇔
+−
++
+−
+S
+Li
+e
+Li S
+16
+16
+8
+R
+8
+2
+2
+2
+as reported
+elsewhere.9,11
+Due to their smaller size and higher solubility in the electrolyte,
+these low order PSs (S4 and S2) move out of porous regions into the
+separator, hence reducing the concentration of PSs in the cathode
+and increasing the diffusional rate local to (unblocking) the cathode
+surfaces. This kinetic change can be observed in the green region of
+CP discharge proﬁle (and for comparison also in Fig. 5b) where we
+see the voltage rise until the capacity reaches the value of ∼400
+mAh g−1. Finally, the remaining lower order PSs convert into
+lithium sulﬁde and deposit onto the porous electrode surface. The
+diffusion inside the solid lithium sulﬁde is translated in the Region
+IV of our differential ampero-coulometric plot (Fig. 6a) where
+diffusional rates reach their second lowest values due to the blocking
+nature of lithium sulﬁde particles. To verify that our differential
+ampere-coulometric plots are reproducible and correspond to the
+assigned region of a typical CP discharge curve, we repeated CA
+measurements on the same cell at different voltage steps of 2.2, 1.9
+and 1.8 V (Figs. 6b, 6c). The step voltages were selected based on
+the known PSs dissolution mechanism identiﬁed above where higher
+PSs are produced in the rage of 2.4–2.2 V, smaller order PSs are
+produced from 2.1–1.9 V while deposition of Li2S happens at the
+end of discharge (1.9–1.8 V). The rationale behind this experiment
+was to conﬁrm whether the shape of CA curve obtained with a 1.8 V
+cutoff corresponds to assigned polysulﬁde processes. We hypothe-
+sized that if the shape of CA curves obtained at these small potential
+steps (2.2, 1.9, and 1.8 V) correspond with the sections of CA curve
+obtained with a 1.8 V cutoff, then the polysulﬁde dissolution
+processes, which are voltage dependent, must be linked to that
+particular section of the curve, hence the dissolution process.
+Figure 6. (a) Differential ampero-coulometric plot (black) and chronopotentiometric discharge proﬁle (red) of Li-S cell distributed in four regions (I-IV)
+showing kinetic processes related to Sx
+−2 production, x ⩾6 (I), Sx
+−2 buildup, x ⩾6 (II), Sx
+−2 production, x ⩾2 (III), and Li2S formation (IV). (b)
+Amperocoulometric and (c) differential ampero-coulometric plots obtained at potentials steps of 2.2 V, 1.9 V, and 1.8 V.
+Journal of The Electrochemical Society, 2023 170 030503
+
+<<PAGE 8>>
+Figures 6b and 6c show AC plot along with differential AC curves
+⎜
+⎟
+⎛
+⎝
+⎞
+⎠
+dI
+dC
+m
+s
+obtained at a step voltage of 2.2, 1.9 and 1.8 V. It is evident
+that the proﬁle of the curves in Figs. 6b, 6c match well with the
+individual sections of the curve in Figs. 4a,4b where ﬁrst current
+decreases linearly (similar to Fig. 6b, 2.2V) followed by a hump
+(consistent with Fig. 6b, 1.9V) and further decrease until it reaches a
+plateau (corresponding to Fig. 6b, 1.8 V). Consequently, it proves
+our hypothesis that the diffusional processes we assigned to the
+individual sections of the Figs. 4a, 4b correspond to the processes
+that occur during these voltage ranges (i.e. 2.2, 1.9, 1.8 V).
+Moreover, the capacities obtained in these potential step plots (150
+mAh g−1 at 2.2 V, 500 mAh g−1 at 1.9 V and 80 mAh g−1 at 1.8 V)
+are similar to the capacity obtained during relevant sections of the
+AC curves in Figs. 4a, 4b. However, due to smaller potential step
+from open circuit (2.2 V), the current and capacity obtained in these
+plots (Figs. 6b, 6c) are expectedly a little lower compared to the
+ampero-coulometric plot shown earlier in Figs. 4a, 4b. Nevertheless,
+these plots conﬁrm that the change in diffusional rate in regions I
+and II are related to upper plateau of the CP discharge proﬁle.
+While the Cottrell plot analysis showed a remarkable similarity to
+the ampero-coulometric curve in shape, its diffusion limited re-
+sponse is often assumed to be representative of cation diffusion,
+whereas the Li-S system involved PSs that are also mobile. For
+comparison we also estimated the diffusion constants from the
+Cottrell relation and these can be found in Fig. S5, Supplementary
+Material. Although the processes in the Li-S system involve PSs, the
+Li+ cations are involved in all reactions for PS formation and
+tracking Li+ diffusion constant is an indicator for cation diffusion up
+to the point where PSs in various orders are formed. For comparison,
+D for PSs (down to Li2S4) are reported in the range ∼1.5–2.0 ×
+10−11 cm2 s−1 and our estimates of DLi range from 1–13 × 10−10
+cm2 s−1 over the entire discharge, closely following the response
+from AC data. All these observations suggest that our ampero-
+coulometric data is a simple and useful way of correlating kinetics of
+Li−S system with the state of discharge involving both the Li+
+diffusion and the reaction rate associated with PS formation,
+dissolution, diffusion and deposition. As shown, once Li2S deposi-
+tion occurs, the diffusion rate (and representative Li+ diffusion
+constant) are severely retarded and total capacity becomes limited.
+Conclusions
+We have developed a simple ampere-coulometric technique to
+understand the kinetics of a typical Li−S cell. Our technique uses a
+simple mathematical transformation of chronoamperometric data (I
+vs t) and reveals useful information on the diffusion of Li+ inside a
+Li−S cell. Moreover, it allows a comparison and simultaneous
+observation of the kinetic and thermodynamic changes inside a Li−S
+cell. Applying this method during the discharging of Li−S cell
+revealed more information on PS dissolution and their shuttle effect.
+The rate-related technique is useful in identifying the ranges of
+voltage where the shuttle effect takes place and may prove useful for
+Li-S cells when parameters such as sulfur or carbon loading are
+modiﬁed, when porosity is varied or with different electrolyte
+concentrations, type etc are introduced. The approach in principle
+is also amenable to other electrochemical systems and we hope
+others might ﬁnd it to be a useful tool for interpreting or comparing
+the response of materials or cells with more sensitivity compared to
+differential capacity data or related approaches, while doing so over
+shorter experimental times.
+Acknowledgments
+Supporting from the Irish Research Council under an Advanced
+Laureate Award (IRCLA/19/118) and Government of Ireland
+Postdoctoral Fellowship (GOIPD/2021/438) are gratefully acknowl-
+edged. Support is also acknowledged from the European Union’s
+Horizon 2020 research and innovation program under grant
+agreement No 825114. This work is partly supported by Enterprise
+Ireland Commercialisation Fund as part of the European Regional
+Development Fund under contract no. CF-2018–0839-P.
+ORCID
+Colm O’Dwyer
+https://orcid.org/0000-0001-7429-015X
+References
+1. X. Yang, X. Li, K. Adair, H. Zhang, and X. Sun, Electrochemical Energy Reviews,
+1, 239 (2018).
+2. S. Dörﬂer, H. Althues, P. Härtel, T. Abendroth, B. Schumm, and S. Kaskel, Joule,
+4, 539 (2020).
+3. F. Li, Q. Liu, J. Hu, Y. Feng, P. He, and J. Ma, Nanoscale, 11, 15418 (2019).
+4. T. Li, X. Bai, U. Gulzar, Y. J. Bai, C. Capiglia, W. Deng, X. Zhou, Z. Liu, Z. Feng,
+and R. Proietti Zaccaria, Adv. Funct. Mater., 29, 1901730 (2019).
+5. W. Ren, W. Ma, S. Zhang, and B. Tang, Energy Storage Mater., 23, 707 (2019).
+6. N. Deng, Y. Wang, J. Yan, J. Ju, Z. Li, L. Fan, H. Zhao, W. Kang, and B. Cheng,
+J. Power Sources, 362, 243 (2017).
+7. X. Yu, J. Joseph, and A. Manthiram, J. Mater. Chem. A, 3, 15683 (2015).
+8. H. Wu, H. Jiang, Y. Yang, C. Hou, H. Zhao, R. Xiao, and H. Wang, J. Mater.
+Chem. A, 8, 14498 (2020).
+9. Z. Ye, Y. Jiang, L. Li, F. Wu, and R. Chen, Adv. Mater., 32, e2002168 (2020).
+10. Q. He, A. T. S. Freiberg, M. U. M. Patel, S. Qian, and H. A. Gasteiger,
+J. Electrochem. Soc., 167, 080508 (2020).
+11. M. U. Patel, R. Demir-Cakan, M. Morcrette, J. M. Tarascon, M. Gaberscek, and
+R. Dominko, ChemSusChem, 6, 1177 (2013).
+12. N. Saqib, G. M. Ohlhausen, and J. M. Porter, J. Power Sources, 364, 266 (2017).
+13. C. Barchasz, F. Molton, C. Duboc, J. C. Lepretre, S. Patoux, and F. Alloin, Anal.
+Chem., 84, 3973 (2012).
+14. A. Kawase, S. Shirai, Y. Yamoto, R. Arakawa, and T. Takata, Phys. Chem. Chem.
+Phys., 16, 9344 (2014).
+15. D. Zheng, X. Zhang, J. Wang, D. Qu, X. Yang, and D. Qu, J. Power Sources, 301,
+312 (2016).
+16. J. Xiao et al., Nano Lett., 15, 3309 (2015).
+17. N. A. Cañas, K. Hirose, B. Pascucci, N. Wagner, K. A. Friedrich, and R. Hiesgen,
+Electrochim. Acta, 97, 42 (2013).
+18. Z. Deng, Z. Zhang, Y. Lai, J. Liu, J. Li, and Y. Liu, J. Electrochem. Soc., 160, A553
+(2013).
+19. U. Gulzar, T. Li, X. Bai, M. Colombo, A. Ansaldo, S. Marras, M. Prato,
+S. Goriparti, C. Capiglia, and R. Proietti Zaccaria, ACS Appl. Mater. Interfaces,
+10, 5551 (2018).
+20. Y.-C. Lu, Q. He, and H. A. Gasteiger, J. Phys. Chem. C, 118, 5733 (2014).
+21. P. Schön, F. Hintz, and U. Krewer, Electrochim. Acta, 295, 926 (2019).
+22. B. Zhang, J. Wu, J. Gu, S. Li, T. Yan, and X.-P. Gao, ACS Energy Lett., 6, 537
+(2021).
+23. J. Nelson, S. Misra, Y. Yang, A. Jackson, Y. Liu, H. Wang, H. Dai, J. C. Andrews,
+Y. Cui, and M. F. Toney, J. Am. Chem. Soc., 134, 6337 (2012).
+24. D. R. Wang et al., J. Electrochem. Soc., 165, A3487 (2018).
+25. H. L. Wu, L. A. Huff, J. L. Esbenshade, and A. A. Gewirth, ACS Appl. Mater.
+Interfaces, 7, 20820 (2015).
+26. Y. Gorlin, A. Siebel, M. Piana, T. Huthwelker, H. Jha, G. Monsch, F. Kraus, H.
+A. Gasteiger, and M. Tromp, J. Electrochem. Soc., 162, A1146 (2015).
+27. Y. Gorlin, M. U. M. Patel, A. Freiberg, Q. He, M. Piana, M. Tromp, and H.
+A. Gasteiger, J. Electrochem. Soc., 163, A930 (2016).
+28. D.-H. Han, B.-S. Kim, S.-J. Choi, Y. Jung, J. Kwak, and S.-M. Park,
+J. Electrochem. Society, 151, E283 (2004).
+29. E. Levillain, F. Gaillard, P. Leghie, A. Demortier, and J. P. Lelieur, J. Electroanal.
+Chem., 420, 167 (1997).
+30. E. Levillain and F. Gaillard, J. Electroanal. Chem., 398, 77 (1995).
+31. R. Bonnaterre and G. Cauquis, J. Chem. Soc., Chem. Commun., 293 (1972).
+32. Q. Zou and Y. C. Lu, J. Phys. Chem. Lett., 7, 1518 (2016).
+33. X. Ma, H. Yang, Y. Li, X. Zhou, Z. Zhang, D. Duan, X. Hao, and S. Liu, Chem.
+Eng. J., 427, 131586 (2022).
+34. C. Heubner, C. Lämmel, A. Nickol, T. Liebmann, M. Schneider, and A. Michaelis,
+J. Power Sources, 397, 11 (2018).
+35. C. Heubner, J. Seeba, T. Liebmann, A. Nickol, S. Börner, M. Fritsch,
+K. Nikolowski, M. Wolter, M. Schneider, and A. Michaelis, J. Power Sources,
+380, 83 (2018).
+36. P. Bai and M. Z. Bazant, Nat. Commun., 5, 3585 (2014).
+37. G. Férey, F. Millange, M. Morcrette, C. Serre, M.-L. Doublet, J.-M. Grenèche, and
+J.-M. Tarascon, Angew. Chem. Int. Ed., 46, 3259 (2007).
+38. J. Li, X. Xiao, F. Yang, M. W. Verbrugge, and Y.-T. Cheng, J. Phys. Chem. C, 116,
+1472 (2011).
+39. A. V. Ivanishchev, A. V. Churikov, I. A. Ivanishcheva, and A. V. Ushakov, Ionics,
+22, 483 (2015).
+40. H. Lindstro, S. Sodergren, A. Solbrand, H. Rensmo, J. Hjelm, A. Hagfeldt, and S.-
+E. Lindquist, J. Phys. Chem. B, 101, 7710 (1997).
+41. R. Tian, P. J. King, J. Coelho, S.-H. Park, D. V. Horvath, V. Nicolosi, C. O’Dwyer,
+and J. N. Coleman, J. Power Sources, 468 (2020).
+42. M. Metzger, P. Walke, S. Solchenbach, G. Salitra, D. Aurbach, and H. A. Gasteiger,
+J. Electrochem. Soc., 167 (2020).
+43. E. Umeshbabu, B. Zheng, J. Zhu, H. Wang, Y. Li, and Y. Yang, ACS Appl. Mater.
+Interfaces, 11, 18436 (2019).
+Journal of The Electrochemical Society, 2023 170 030503
+
+<<PAGE 9>>
+44. A. K. Yadav and P. Singh, RSC Adv., 5, 67583 (2015).
+45. C. Han, M. Chen, R. Rasch, Y. Yu, B. Zhao, R. G. Reddy, P. Chaubal, P.
+C. Pistorius, and U. Pal, Advances in Molten Slags, Fluxes, and Salts: Proceedings
+of the 10th International Conference on Molten Slags, Fluxes and Salts 2016,
+Editors, p. 175, Cham (2016).
+46. C. Luo, E. Hu, K. J. Gaskell, X. Fan, T. Gao, C. Cui, S. Ghose, X. Q. Yang, and
+C. Wang, Proc Natl Acad Sci U S A, 117, 14712 (2020).
+47. B. J. Lindberg, K. Hamrin, G. Johansson, U. Gelius, A. Fahlman, C. Nordling, and
+K. Siegbahn, Phys. Scr., 1, 286 (1970).
+48. M. Kruk and M. Jaroniec, Chem. Mater., 13, 3169 (2001).
+49. R. Tian, S. H. Park, P. J. King, G. Cunningham, J. Coelho, V. Nicolosi, and J.
+N. Coleman, Nat. Commun., 10, 1933 (2019).
+50. R. Tian, N. Alcala, S. J. O’Neill, D. Horvath, J. Coelho, A. Grifﬁn, Y. Zhang,
+V. Nicolosi, C. O’Dwyer, and J. N. Coleman, ACS Appl. Energy Mater., 3, 2966
+(2020).
+51. R. Tian, P. J. King, J. Coelho, S.-H. Park, D. V. Horvath, V. Nicolosi, C. O’Dwyer,
+and J. N. Coleman, J. Power Sources, 468, 228220 (2020).
+52. N. Kang, Y. Lin, L. Yang, D. Lu, J. Xiao, Y. Qi, and M. Cai, Nat. Commun., 10,
+4597 (2019).
+Journal of The Electrochemical Society, 2023 170 030503

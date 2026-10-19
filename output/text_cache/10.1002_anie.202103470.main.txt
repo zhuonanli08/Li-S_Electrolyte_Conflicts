@@ -1,0 +1,776 @@
+
+<<PAGE 1>>
+Electrochemistry Hot Paper
+Electrolyte Structure of Lithium Polysulfides with Anti-Reductive
+Solvent Shells for Practical Lithium–Sulfur Batteries
+Xue-Qiang Zhang+, Qi Jin+, Yi-Ling Nan+, Li-Peng Hou, Bo-Quan Li, Xiang Chen, Zhe-
+Hui Jin, Xi-Tian Zhang, Jia-Qi Huang, and Qiang Zhang*
+Abstract: The lithium–sulfur (Li–S) battery is regarded as
+a promising secondary battery. However, constant parasitic
+reactions between the Li anode and soluble polysulfide (PS)
+intermediates significantly deteriorate the working Li anode.
+The rational design to inhibit the parasitic reactions is plagued
+by the inability to understand and regulate the electrolyte
+structure of PSs. Herein, the electrolyte structure of PSs with
+anti-reductive solvent shells was unveiled by molecular dy-
+namics simulations and nuclear magnetic resonance. The
+reduction resistance of the solvent shell is proven to be a key
+reason for the decreased reactivity of PSs towards Li. With
+isopropyl ether (DIPE) as a cosolvent, DIPE molecules tend to
+distribute in the outer solvent shell due to poor solvating power.
+Furthermore, DIPE is more stable than conventional ether
+solvents against Li metal. The reactivity of PSs is suppressed by
+encapsulating PSs into anti-reductive solvent shells. Conse-
+quently, the cycling performance of working Li–S batteries was
+significantly improved and a pouch cell of 300 Whkg@1 was
+demonstrated. The fundamental understanding in this work
+provides an unprecedented ground to understand the electro-
+lyte structure of PSs and the rational electrolyte design in Li–S
+batteries.
+Introduction
+The pursuit of sustainable society and carbon neutrality by
+utilizing renewable but intermittent energy, such as wind and
+solar energy, requires long-lived, stable and low-cost energy
+storage systems.[1] Besides, the vision for wireless life also
+stimulates the demand for portable electronics with high
+specific energy and long durability. Therefore, rechargeable
+batteries based on the energy storage mechanism of con-
+version reactions beyond the intercalation reactions of Li-ion
+batteries are reviving.[2,3] Lithium–sulfur (Li–S) battery
+emerges as a promising candidate due to the theoretically
+high specific energy and low material cost.[4] The specific
+energy of practical Li–S batteries at a cell level is also
+attractive, as it can be over 500 Whkg@1 when using S/carbon
+composite cathode.[5] In contrast to the intercalation mech-
+anism of Li-ion batteries, S/carbon cathode falls into a solid–
+liquid–solid conversion mechanism.[4] Soluble Li polysulfide
+(PS) intermediates, e.g., Li2S4–8, are generated from solid S8 at
+the first plateau and then are reductively transformed into
+solid Li2S2 or Li2S at the second plateau during a discharge
+process.[4] Owing to facile charge transfer and the redox
+mediation to solid products, dissolved PSs facilitate the high
+specific capacity and high discharge voltage of S/carbon
+cathode compared with other types of S cathode.[6–8] There-
+fore, the solution-mediated stage with dissolved PSs is pivotal
+for fully utilizing high specific energy of Li–S batteries with S/
+carbon composite cathode.
+However, dissolved PSs induce severe challenges for
+stable Li metal anode despite their key role in promoting the
+conversion of S. Li metal is highly reductive and the parasitic
+reactions between Li and PSs are inevitable. Generally, the
+consumption of Li metal anode by the parasitic reactions and
+its corresponding contribution to the decay of a battery are
+concealed thanks to the sufficient supply of fresh Li,[9] when
+employing mild conditions for fundamental researches, in-
+cluding much excessive Li (> 500 mm), flooded electrolytes
+(> 20.0 mLmgS
+@1), and low S loading (< 2.0 mgScm@2).[10]
+However, practical conditions with limited Li (< 50 mm), lean
+electrolytes
+(< 3.0 mLmgS
+@1),
+and
+high
+S
+loading
+(> 4.0 mgScm@2) are necessary for the aim of specific energy
+over 500 Whkg@1.[11] Limited Li can be rapidly depleted by
+the parasitic reactions when negative/positive (N/P) capacity
+ratio decreases from 30 to 1.6, rendering a bottleneck of long-
+cycling practical Li–S batteries.[12,13] Furthermore, a non-
+uniform Li deposition, namely Li filaments or dendrites,
+provides a large reactive surface area exposed to PSs.[14] The
+[*] X.-Q. Zhang,[+] L.-P. Hou, Dr. X. Chen, Prof. Q. Zhang
+Beijing Key Laboratory of Green Chemical Reaction Engineering and
+Technology, Department of Chemical Engineering
+Tsinghua University
+Beijing 100084 (P. R. China)
+E-mail: zhang-qiang@mails.tsinghua.edu.cn
+Q. Jin,[+] Prof. X.-T. Zhang
+Key Laboratory for Photonic and Electronic Bandgap Materials
+Ministry of Education, School of Physics and Electronic Engineering
+Harbin Normal University
+Harbin 150025 (P. R. China)
+Y.-L. Nan,[+] Prof. Z.-H. Jin
+School of Mining and Petroleum Engineering, Department of Civil
+and Environmental Engineering, University of Alberta
+Edmonton ABT6G 1H9 (Canada)
+Dr. B.-Q. Li, Prof. J.-Q. Huang
+Advanced Research Institute of Multidisciplinary Science
+Beijing Institute of Technology
+Beijing 100081 (P. R. China)
+[+] These authors contributed equally to this work.
+Supporting information and the ORCID identification number(s) for
+the author(s) of this article can be found under:
+https://doi.org/10.1002/anie.202103470.
+Angewandte
+Chemie
+Research Articles
+How to cite: Angew. Chem. Int. Ed. 2021, 60, 15503–15509
+International Edition:
+doi.org/10.1002/anie.202103470
+German Edition:
+doi.org/10.1002/ange.202103470
+15503
+Angew. Chem. Int. Ed. 2021, 60, 15503 – 15509
+T 2021 Wiley-VCH GmbH
+
+<<PAGE 2>>
+parasitic reactions between Li anode and dissolved PSs are
+then accelerated. Therefore, suppressing the parasitic reac-
+tions with PSs to protect Li metal anode is imperative,
+especially for practical Li–S batteries.
+Compared with physical hosts/barriers[15–17] and chemical
+catalysis/adsorption[18–21] to confine the diffusion or promote
+the transformation of PSs, electrolyte design, especially the
+fundamental understanding of electrolyte structure, provides
+an intrinsic and rational method to inhibit the parasitic
+reactions.[22–24] The electrolyte structure in Li–S batteries is
+unprecedented due to the dissolution of PS intermediates. In
+common Li-ion batteries, electrolyte structure only focuses on
+solvents and Li salts because no electrode redox product
+dissolves into electrolyte. However, in Li–S batteries, the
+dissolution of PSs is integrant and then the electrolyte
+structure of PSs is critical. Recently, sparingly solvating
+electrolytes were proposed to mitigate parasitic reactions by
+decreasing the solubility of PSs in electrolytes,[25] such as
+solvated ionic liquids,[26] concentrated electrolytes,[27,28] and
+high carbon-to-oxygen (C/O) ratio ethers.[29–32] However,
+when the concentration of PSs is less than the upper limit of
+the solubility of sparing solvating electrolytes, all PSs are still
+dissolved as like in conventional electrolyte but the parasitic
+reactions in sparingly solvating electrolytes are mitigated,
+which implies that the low solubility of PSs in electrolyte is
+not the inherent reason of mitigating parasitic reactions.
+Instead, the electrolyte structure of PSs is the possible
+underlying reason. Furthermore, sparingly solvating electro-
+lytes suppress the parasitic reactions at the significant cost of
+kinetic performance of S cathode, which is unfavorable in
+practical batteries.[25,33] Therefore, the fundamental under-
+standing and rational regulation of electrolyte structures of
+PSs is strongly required to understand and inhibit the parasitic
+reactions between PSs and Li metal.
+In this contribution, the electrolyte structure of PSs in
+typical two types of electrolyte was investigated by molecular
+dynamics (MD) simulations and nuclear magnetic resonance
+(NMR) measurements. In an electrolyte, a dissolved PS is
+mainly surrounded by two shells of solvent, that is inner or
+outer shell. The reactivity of PSs with Li was proved to highly
+depends on the reduction resistance of the outer solvent shells
+of PSs. In a conventional electrolyte, 1,3 dioxolane (DOL)
+with weak solvating power yet high reactivity dominates in
+the outer shell around PSs (Figure 1a). In an electrolyte with
+isopropyl ether (DIPE) as a cosolvent, DIPE molecules tend
+to distribute in the outer solvent shell around PSs due to poor
+solvating power and the inner shell is only composed of DOL
+and dimethoxyethane (DME, Figure 1b). DIPE molecule has
+a higher stability than conventional ether solvents against Li
+metal and thus the reduction resistance of the outer shell is
+improved. Consequently, PSs were encapsulated into anti-
+reductive solvent shells to mitigate the parasitic reactions.
+Meanwhile, the dissolution of PSs is ensured by the conven-
+tional ether solvents in the inner shell, facilitating the kinetic
+performance of S cathode. Therefore, a working Li–S battery
+under practical conditions delivered 120 cycles compared to
+62 cycles
+in
+conventional
+ether
+electrolytes.
+Moreover,
+a pouch cell (1.6 Ah) with a specific energy of 300 Whkg@1
+was achieved to evaluate the potential under a practical scene.
+Results and Discussion
+Electrolyte structure of PSs
+The conventional ether electrolyte, i.e., 1.0 M Li bis(tri-
+fluoromethanesulphonyl)imide (LiTFSI) in DOL/DME (1:1,
+by vol., denoted as PSE), is the state-of-the-art electrolyte in
+Li–S batteries. The parasitic reactions between Li and PSs are
+notorious owing to a relatively high solubility (ca. 0.5 M Li2S8)
+of PSs in the conventional ether electrolyte.[6,29] In order to
+investigate the electrolyte structure of different types of
+dissolved PSs, a low concentration (2.5 mM) of PS was
+employed to ensure a thorough dissolution. Moreover, the
+electrolyte structures of typical PSs, such as S4
+2@, S6
+2@, and
+S8
+2@, were, respectively studied by MD simulations to provide
+a full view. S4
+2@ was then selected as an example for a detailed
+illustration due to similar electrolyte structures of dissolved
+PSs.
+In the conventional ether electrolyte, S4
+2@ interacts with
+Li+ strongly due to the shortest distance (0.18 nm) from S4
+2@
+center as in previous reports,[34,35] although Li2S4 is dissolved
+into the electrolyte. The terminal S atom plays a vital role in
+interacting with Li+.[36] Meanwhile, Li+ is solvated by solvents,
+such as DOL and DME, forming solvation sheaths around Li+
+(Figure S3).[37] Due to the strong binding, S4
+2@ is also involved
+in the solvation sheath of Li+ according to the range of
+classical primary solvation sheath ( & 0.2 nm, Figure S3).[38]
+Objectively, from the view of S4
+2@, S4
+2@ is surrounded by the
+solvent shells. Solvent shells are composed of the solvents in
+the solvation sheath of Li+. According to radial distribution
+functions (RDFs) around S4
+2@ (Figure 2a), there are two
+concentric solvent shells with their peaks at 0.60 and 1.00 nm
+from S4
+2@, respectively. The two solvent shells are denoted as
+shell 1 and 2 outward from the center. Both solvent shells are
+the mixtures of DOL and DME. DME has a higher adsorp-
+tion peak in the inner shell as shown in number density
+distribution (Figure S5), because the solvating power of DME
+is stronger than that of DOL.[39] On the other hand, the
+number density of DOL molecules in the outer shell 2 is
+larger than that of DME. The electrolyte structure of PSs is
+also in a good agreement with the empirical role of DME and
+DOL in the conventional ether electrolyte.[7] DME facilitates
+the high solubility of PSs and fast kinetical reactions. Mean-
+while, DOL is unstable against Li metal and is easily
+decomposed to form SEI. Consequently, it is inferred that
+severe parasitic reactions stem from specific electrolyte
+Figure 1. Scheme of electrolyte structure of PS in a) PSE and b) EPSE.
+Li ion and S4
+2@ are marked by blue and yellow, respectively.
+Angewandte
+Chemie
+Research Articles
+15504
+www.angewandte.org
+T 2021 Wiley-VCH GmbH
+Angew. Chem. Int. Ed. 2021, 60, 15503 – 15509
+ 15213773, 2021, 28, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.202103470 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 3>>
+structure of PSs. The outer shell with a large amount of DOL
+can be easily reduced, exposing PSs against Li metal to induce
+the parasitic reactions.
+When DIPE as a co-solvent is introduced into the
+conventional ether electrolyte, the components of outer
+solvent shell are altered. DIPE has a limited solubility of
+PSs (< 4.0 mM) and a high solubility of LiTFSI (> 3.0 M,
+Figure S6) due to its high carbon/oxygen (C/O) ratio and large
+steric hindrance for coordinating with O atom in molecule
+structure.[29] Meanwhile, DIPE is also miscible with DOL and
+DME and displays less reactivity with Li metal than DOL
+(Figure S7). In this work, a moderate amount of DIPE was
+optimized for a compromise between the suppression of
+parasitic reactions and the satisfactory kinetic performance of
+S cathode, achieving an electrolyte composed of 1.0 M LiTFSI
+in DIPE/DOL/DME (3:3.5:3.5, by vol., denoted as EPSE).
+The ionic conductivity of EPSE (6.5 mScm@1) is high enough
+to support the moderate battery rate compared to PSE of
+12.6 mScm@1 and the sparingly solvating electrolyte of
+< 2 mScm@1.[30] In EPSE, S4
+2@ is surrounded by two concentric
+solvent shells at 0.60 and 1.10 nm (Figure 2b). Shell 1 is only
+composed of DOL and DME, which can facilitate the
+dissolution of PSs and then normal kinetic performance of S
+cathode. DIPE molecules are crowded out and become the
+building blocks of the outer solvent shell. The total density of
+DOL, especially in the outer shell, is reduced although its
+distribution around S4
+2@ almost do not change after adding
+DIPE (Figure S5). The distribution of DME in inner shell
+1 changes obviously in order to dissolve the same number of
+PSs after the introduction of DIPE with a low solubility of PSs
+(Figure S5). Furthermore, the reduction resistance of the
+outer shell against Li metal is enhanced due to the recruit-
+ment of DIPE which is more reductively stable than DOL,
+and the decreased number of DOL in the outer solvent shell.
+The parasitic reactions between the inside PS and Li metal are
+kinetically obstructed by the anti-reductive outer shell, as PS
+is encapsulated into an anti-reductive solvent shell containing
+DIPE, mitigating its exposure to fresh Li. Consequently, an
+encapsulating PS electrolyte (EPSE) is obtained. The spatial
+distribution functions (SDFs) and snapshots around S4
+2@
+display the distributions of solvents, S4
+2@, and Li+ in a visual-
+ized view (Figure 2c–f). Similar conclusions were drawn from
+other systems with S6
+2@ and S8
+2@ (Figure S1, S2).
+NMR measurements were further implemented to inves-
+tigate the solvation structure of Li ions in electrolytes, which
+can confirm the solvent shell structure of PSs predicted from
+MD simulations. The changes in chemical shift of 17O nuclei of
+solvent were recorded when PSs was added into neat solvent
+mixtures of EPSE (Figure 3a). The ion–dipole interaction
+between ethereal O in solvent and Li ions is the strong.[40] The
+change in electronic environment of 17O nuclei indicates the
+variation of the ion–dipole interaction and the solvation
+structure of Li ions. When 0.05 M Li2S8 was added into EPSE,
+the chemical shifts of 17O nuclei in DIPE, DME, and DOL
+apparently exhibit upfield displacements but in much differ-
+ent values. In particular, if the lone pair of 17O are involved in
+ion–dipole interaction, then, the nuclear shielding increases as
+Figure 2. MD simulations of electrolyte structure. The RDFs around
+S4
+2@, g(r), in a) PSE and b) EPSE. The radial distance is the center of
+mass (COM) distance between center (S4
+2@) and selected (S4
+2@, DME,
+DOL, Li+, and DIPE) molecules. The g(r) of Li+ and S4
+2@ is reduced by
+30 and 20 times for a better comparison. Shell 1 or 2 is the shell
+composed of solvents, in which 1 or 2 is marked according to the
+distance from the COM of S4
+2@. SDFs of Li+ (80 nm@3) and DOL
+(56 nm@3) in c) PSE and Li+ (80 nm@3), DOL (56 nm@3), and DIPE
+(8 nm@3) in d) EPSE around S4
+2@. Snapshots of the molecular distribu-
+tions around S4
+2@ in e) PSE and f) EPSE obtained from MD simula-
+tions. DME and TFSI@ are omitted here for a clear comparison in (e)
+and (f).
+Figure 3. Nuclear magnetic resonance (NMR) spectra of 7Li and 17O in
+various electrolytes measured at 508C. a) Natural abundance 17O-NMR
+spectra of EPSE without Li2S8 (green) and EPSE with 0.05 M Li2S8
+(red). The inset is that the interaction with Li ion decreases in the
+order of DME, DOL and DIPE. b) 7Li-NMR spectra of 0.10 M Li2S8 in
+PSE and EPSE (solid), and 1.0 M LiTFSI + 0.10 M Li2S8 in PSE and
+EPSE (dash). PSE and EPSE, herein, are the neat solvent mixtures
+without Li salt.
+Angewandte
+Chemie
+Research Articles
+15505
+Angew. Chem. Int. Ed. 2021, 60, 15503 – 15509
+T 2021 Wiley-VCH GmbH
+www.angewandte.org
+ 15213773, 2021, 28, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.202103470 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 4>>
+reported.[41,42] The chemical shift of 17O nuclei in DME and
+DOL decreases from @25.0 to @25.4 ppm, 34.6 to 34.3 ppm,
+respectively. However, the chemical shift of
+17O nuclei in
+DIPE slightly decreases from 61.0 to 60.9 ppm. The upfield
+displacement of 17O nuclei in DME is the most significant
+because the ion–dipole interaction decreases in the order of
+DME, DOL, and DIPE. DME displays strongest solvating
+power among DME, DOL, and DIPE.[39] When DIPE with
+a limited solubility of Li2S8 is introduced into electrolyte, in
+the primary solvation sheath, stronger ion–dipole interaction
+between PSs and DME and even more DME molecules in
+EPSE are required to ensure the full dissolution of Li2S8
+compared with PSE. The slight upfield displacement of 17O
+nuclei in DIPE implies that DIPE weakly interacts with Li
+ions and DIPE is mainly recruited into the secondary
+solvation sheath, resembling to the solvation structure of
+the diluent around Li ions in localized high-concentration
+electrolyte.[43]
+Spontaneously, the introduction of DIPE inevitably
+decreases the number of solvents which can strongly interact
+with Li ions compared with PSE. Therefore, the deshielding
+of Li ions is reasonable and then the chemical shift of 7Li was
+monitored (Figure 3b). In 1.20 M LiTFSI in PSE and EPSE
+(Figure S8), the chemical shift of 7Li nearly has no difference
+because both PSE and EPSE have high solubility of LiTFSI.
+When 0.10 M Li2S8 was added into neat solvent mixtures of
+EPSE, the chemical shift of 7Li increases from 2.7 to 2.8 ppm,
+exhibiting a downfield displacement. The deshielding of Li
+ions is in line with the expectations. DIPE shows sparingly
+solvating power to a Li ion compared with DME and DOL.
+DIPE is recruited into the secondary sheath of a Li ion, which
+decreases the amounts of DME and DOL interacting with Li
+ions, thus inducing the deshielding of Li ions. The downfield
+displacement of Li ions from 1.4 to 1.5 ppm also appears when
+0.10 M Li2S8 was added into EPSE with 1.0 M LiTFSI. The
+solvation structure of Li ions from PSs is not disturbed by the
+addition of LiTFSI. The solvation structure of Li ions has
+a good agreement with MD simulation results and then solidly
+supports the conjecture of solvent shell structure of PSs, in
+which PSs are encapsulated in anti-reductive solvent shells in
+EPSE.
+The stability of electrolytes with PSs against Li metal
+The stability of bulk EPSE and PSE against Li metal was
+monitored to prove the effect of the encapsulation of PSs in
+anti-reductive solvent shells. However, solid electrolyte
+interphase (SEI) on Li metal anode can also be tailored to
+block PSs.[44] The interference from SEI is excluded aforehand
+(Figure S9). A Li foil formed SEI in EPSE firstly, and then it
+was immersed into brown PSE with 2.5 mM PSs (based on
+Li2S8). After immersion of 24 h, PSE faded into a colorless
+solution, implying that the SEI formed by EPSE cannot
+restrain the reactions between PSs and Li.
+However, when a bare Li foil was directly immersed into
+EPSE or PSE with 2.5 mM PSs, EPSE maintains yellow for
+24 h compared with the rapid discolorment of PSE (Fig-
+ure 4a, b). The unchanged color of EPSE with dissolved PSs
+implies that the parasitic reactions are mitigated in EPSE.
+After immersion, the Li foil in PSE with PSs is corroded
+obviously due to the parasitic reduction reactions, exhibiting
+a porous and loose morphology (Figure 4c).[45] In contrast, the
+Li foil in EPSE is unspoiled, giving a compact morphology
+(Figure 4d, S10). Furthermore, the components on the sur-
+face of Li foil were detected (Figure 4e, f). The atomic
+concentration of S on the Li surface in EPSE is much lower
+than that in PSE (0.17% vs. 2.96%). Specifically, the
+components containing SO4
+2@ and SO3
+2@, and Li2S were
+detected on the surface of Li foil in PSE, in which the atomic
+concentration of S from Li2S is 1.63% according to the peak
+area ratio (Figure 4 f). However, there is only little Li2S on the
+surface of Li foil in EPSE. The parasitic reactions between the
+encapsulated PSs in EPSE and Li metal are greatly mitigated.
+Consequently, the electrolyte structure of PSs is the under-
+lying reason of mitigating parasitic reactions rather than the
+superficial phenomenon of low solubility of PSs.
+Li–S batteries in LiNO3-free electrolytes
+The mitigation of the parasitic reactions in EPSE was
+assessed in Li–S full batteries and no LiNO3 was used. The
+mild conditions with a thick Li anode (500 mm), flooded
+electrolytes (16 mLmgS
+@1), and a low loading S cathode (1.2
+mgScm@2) were employed in consideration of the full
+dissolution of PSs. When E/S ratio is 16 mLmgS
+@1, the
+Figure 4. The stability of bulk electrolytes against Li metal. a) Schemes
+of direct immersion of bare Li into EPSE (left) and PSE (right). b) The
+optical images recording the color change of EPSE (left) and PSE
+(right) immersed with bare Li after 0 and 24 h. c, d) Surface morphol-
+ogy, e) XPS spectra of S 2p, and f) the peak area ratio of S species of
+bare Li after immersion in PSE and EPSE.
+Angewandte
+Chemie
+Research Articles
+15506
+www.angewandte.org
+T 2021 Wiley-VCH GmbH
+Angew. Chem. Int. Ed. 2021, 60, 15503 – 15509
+ 15213773, 2021, 28, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.202103470 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 5>>
+concentration of Li2S8 is 0.24 M theoretically and 0.14 M
+practically (based on 60% of theoretically specific capacity,
+i.e., 1000 mAhg@1).[46] 0.14 M Li2S8 is easily dissolved into
+EPSE and PSE. In a Li–S cell with PSE, the specific capacity
+at the 1st cycle is 907 mAhg@1 and fades to 655 mAhg@1 within
+5 cycles at 0.1 C (Figure 5a, S11). The CE is 85% and 59% at
+the 1st and 5th cycle, respectively. Much low CE and rapid
+failure of Li–S batteries are obtained, which are in a good
+agreement with the previous reports when only employing
+PSE.[47] However, significantly improved cycling stability and
+CE are achieved in EPSE. The specific capacity at the 1st cycle
+is 1037 mAhg@1 and fades to 596 mAhg@1 within 100 cycles.
+The CE is 91% at the 1st and 100th cycle although there is
+a fluctuation during cycles. The shuttle of PSs is mitigated
+based on the increased CE, which is also proved by the
+decreased shuttle current (Figure 5b). At varied potentio-
+static voltages, the batteries in EPSE exhibit significantly
+reduced shuttle current by at least 17 times than that in PSE.
+Significantly improved CE and decreased shuttle current are
+in line with the expectations of the mitigated parasitic
+reactions in EPSE.
+The morphology of Li metal anode disassembled from Li–
+S batteries were recorded (Figure 5c, d). The deposited Li
+from PSE is loose and porous after 5 cycles. However,
+a compact and uncorroded morphology of Li metal anode is
+achieved in EPSE. Although the SEI formed in EPSE cannot
+block PSs, yet SEI contributes to improving the uniformity of
+Li deposition (Figure S12). There are SO4
+2@, SO3
+2@, and Li2S
+on the top layer of SEI next to electrolyte in both EPSE and
+PSE, which decompose from TFSI@ and PSs (Figure 5e,
+S13).[48] The bottom layer of SEI close to Li metal anode was
+further investigated after sputtering, providing a full view to
+understand the change of SEI components. Surprisingly, after
+5-min sputtering, SO4
+2@ and SO3
+2@ components disappear and
+only Li2S remains at the bottom of SEI from EPSE. However,
+the bottom components of SEI from PSE have little change
+compared with the top components. With increased sputter-
+ing time, i.e., the SEI closer to Li, the atomic concentration of
+S decreases. Quantitatively, the atomic concentration of S
+atom in SEI is lower in EPSE than PSE, 2.1% vs. 4.0% at the
+top, and 0.7% vs. 1.9% at the bottom. In a short conclusion,
+the parasitic reactions are significantly suppressed in EPSE
+due to the encapsulated electrolyte structure of PSs, although
+PSs are fully dissolved in a Li–S battery.
+Li–S batteries under practical conditions in LiNO3-containing
+electrolytes
+EPSE was further evaluated in Li–S batteries under
+practical conditions and in pouch cells. An ultrathin Li anode
+(50 mm), lean electrolytes (7.5 mLmgS
+@1), and a high loading S
+cathode (4.0 mgScm@2) were included in a coin cell.[49] The
+amount of electrolyte is relatively higher than 5.0 mLmgS
+@1 in
+order to maximize the reliability of a coin cell because there is
+much useless volume adsorbing the electrolyte compared with
+a pouch cell.[50] Moreover, LiNO3 as a well-known additive
+was employed to enhance the performance of Li–S batteries.
+The performance of Li–S batteries under mild conditions was
+significantly improved (Figure S14).
+In particular, under practical conditions, Li–S batteries
+maintain stable within 120 cycles in EPSE and 62 cycles in
+PSE when capacity retention reaches 60% (Figure 6a). The
+specific capacity and CE at the 5th cycle are 909 mAhg@1 and
+Figure 5. Electrochemical performance of LiNO3-free electrolyte in Li–S
+batteries under mild conditions. a) Cycling performance and CE of Li–
+S batteries with PSE and EPSE electrolytes at 0.1 C. b) Shuttle current
+versus applied potentiostatic charging voltage. The morphology of
+deposited Li after 5 cycles in c) PSE and d) EPSE. e) XPS spectra of S
+2p on the surface of Li at the 5th cycle in EPSE (left) and PSE (middle)
+after 0- and 5-min sputtering. The right panel is the evolution of the
+atomic concentration of S with sputtering time.
+Figure 6. Cycling performance of various electrolytes with LiNO3
+additives in Li–S batteries under practical conditions. a) The perfor-
+mance of Li–S batteries under practical conditions and b) the corre-
+sponding voltage–specific capacity profiles at the 5th and 60th cycle at
+0.1 C. c) Cycling performance of a Li–S pouch cell and the correspond-
+ing voltage–specific capacity at the 5th cycle at 0.025 C. The detailed
+test conditions and optical image of the pouch cell are inset in (b) and
+(d), respectively.
+Angewandte
+Chemie
+Research Articles
+15507
+Angew. Chem. Int. Ed. 2021, 60, 15503 – 15509
+T 2021 Wiley-VCH GmbH
+www.angewandte.org
+ 15213773, 2021, 28, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.202103470 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 6>>
+95.5% in PSE, and 889 mAhg@1 and 98.5% in EPSE (Fig-
+ure 6b). The slightly decreased specific capacity in EPSE
+results from the decreased capacity of the first plateau. The
+dissolution of PSs in EPSE is limited due to the introduction
+of DIPE. The theoretical concentration of PSs required to be
+dissolved at E/S ratio of 7.5 mLmgS
+@1 is 0.50 M Li2S8, which is
+beyond the limitation of EPSE (ca. 0.20 M Li2S8) but near the
+limitation of PSE (0.50 M Li2S8). Thus, the kinetical perfor-
+mance and the specific capacity at the first plateau slightly
+decrease because the first plateau is a solution-mediated
+process which is sensitive to the dissolution of PSs. Still, the
+kinetic performance of S cathode under practical conditions
+in EPSE is also competitive with PSE and significantly
+outperforms sparingly solvating electrolyte. After 45 cycles,
+specific capacity and CE fade more rapidly than before in
+PSE due to the consumption of fresh Li (Figure S15).
+However, the knee point with EPSE is significantly delayed
+to the 90th cycle. Then, a slower decay is in EPSE than PSE
+after the knee point. Furthermore, uniform and uncorroded
+morphology of Li deposition after cycles is also achieved in
+EPSE under practical conditions (Figure S16). Although the
+full dissolution of PSs is much difficult in EPSE, the
+encapsulation of partial dissolved PSs still functions. Con-
+sequently, the parasitic reactions are well mitigated and Li
+metal anode is stabilized in EPSE according to the double
+lifespan under practical conditions.
+Pouch cells were further assembled to explore the
+potential of EPSE in practical. A pouch cell (1.6 Ah) with
+ultrathin Li anodes (50 mm), lean electrolytes (3.0 mLmgS
+@1),
+and high loading S cathodes (6.1 mgScm@2) was employed,
+which is harsher than a coin cell. The specific energy of the
+pouch cell is 300 Whkg@1 including the mass of the all
+components of a pouch cell (Figure 6c, S17).[13] The pouch cell
+can maintain capacity retention of 81% with an average CE
+of 96.4% after 23 cycles (Figure S18). The specific capacity of
+the 1st cycle is 1172 mAhg@1 (Figure 6d). Although the
+discharge polarization voltage inevitably increases by 60 mV
+due to sharply increased concentration of PSs (0.75 M Li2S8 in
+practical) and large viscosity of electrolyte as expected, it is
+comparable with the normal performance of PSE,[32,51] ensur-
+ing high energy density of a pouch cell. Therefore, it is
+concluded that the introduction of encapsulated PSs in EPSE
+significantly enhances the lifespan and CE of Li–S batteries
+under practical conditions even at the pouch cell level.
+Conclusion
+The electrolyte structure of PSs, that is the two solvent
+shells around PSs, was unveiled by the combinations of
+molecular dynamics simulations and experimental measure-
+ments. The reduction resistance of the solvent shells plays
+a vital role in decreasing the reactivity of PSs against Li metal.
+By the molecular-scale regulation, PSs can be encapsulated
+into anti-reductive solvent shells in order to decrease the
+reactivity of PSs. While employing an electrolyte with DIPE
+as a cosolvent, DIPE molecules tend to distribute in the outer
+solvent shell around PSs. DIPE molecule has a higher stability
+than conventional ether solvents and thus the reduction
+resistance of the outer shell against Li metal is improved,
+obstructing the parasitic reactions. Furthermore, the dissolu-
+tion of PSs is ensured by the conventional ether solvents in the
+inner shell, which maintains the satisfying kinetic perfor-
+mance of S cathode. When it comes to practical conditions
+with a limited Li anode (50 mm), a high loading S cathode
+(4.0 mgScm@2), and a low E/S ratio (7.5 mLmgS
+@1), the lifespan
+of Li–S batteries increased from 62 to 120 cycles. A pouch cell
+(1.6 Ah) with a specific energy of 300 Whkg@1 delivered
+stable cycling within 23 cycles. The fundamental understand-
+ing in this work provides a fresh ground to understand the
+electrolyte structure of PSs and the rational electrolyte design
+in Li–S and analogous batteries in which the reaction
+intermediates of electrode are reactive and dissolved into
+electrolytes.
+Acknowledgements
+This work was supported by National Natural Science
+Foundation
+of
+China
+(U1801257,
+22061132002,
+and
+21825501), National Key Research and Development Pro-
+gram (2016YFA0202500), Discovery Grant from Natural
+Sciences and Engineering Research Council of Canada
+(NSERC RGPIN-2017-05080), and Tsinghua University
+Initiative Scientific Research Program. This research was
+enabled in part by support provided by Westgrid (http://www.
+westgrid.ca)
+and
+Compute
+Canada
+(http://www.
+computecanada.ca). As a part of the University of AlbertaQs
+Future Energy Systems research initiative, this research was
+made possible in part thanks to funding from the Canada First
+Research Excellence Fund.
+Conflict of interest
+The authors declare no conflict of interest.
+Keywords: electrolyte structure · lithium metal anode · lithium–
+sulfur batteries · polysulfide encapsulation · solvent shell
+[1] S. Chu, Y. Cui, N. Liu, Nat. Mater. 2017, 16, 16.
+[2] M. Marinaro, D. Bresser, E. Beyer, P. Faguy, K. Hosoi, H. Li, J.
+Sakovica, K. Amine, M. Wohlfahrt-Mehrens, S. Passerini, J.
+Power Sources 2020, 459, 228073.
+[3] D. Lin, Y. Liu, Y. Cui, Nat. Nanotechnol. 2017, 12, 194.
+[4] A. Manthiram, Y. Fu, S. H. Chung, C. Zu, Y. S. Su, Chem. Rev.
+2014, 114, 11751.
+[5] M. Hagen, D. Hanselmann, K. Ahlbrecht, R. Maca, D. Gerber, J.
+Tubke, Adv. Energy Mater. 2015, 5, 1401986.
+[6] A. Gupta, A. Bhargav, A. Manthiram, Adv. Energy Mater. 2019,
+9, 1803096.
+[7] S. S. Zhang, J. Power Sources 2013, 231, 153.
+[8] C. Shen, J. Xie, M. Zhang, P. Andrei, M. Hendrickson, E. J.
+Plichta, J. P. Zheng, Electrochim. Acta 2017, 248, 90.
+[9] S. Drvaricˇ Talian, G. Kapun, J. Mosˇkon, A. Vizintin, A. Randon-
+Vitanova, R. Dominko, M. Gabersˇcˇek, Chem. Mater. 2019, 31,
+9012.
+[10] S. H. Chung, A. Manthiram, Adv. Mater. 2019, 31, 1901125.
+[11] M. Zhao, B. Q. Li, X. Q. Zhang, J. Q. Huang, Q. Zhang, ACS
+Cent. Sci. 2020, 6, 1095.
+Angewandte
+Chemie
+Research Articles
+15508
+www.angewandte.org
+T 2021 Wiley-VCH GmbH
+Angew. Chem. Int. Ed. 2021, 60, 15503 – 15509
+ 15213773, 2021, 28, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.202103470 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 7>>
+[12] X. B. Cheng, C. Yan, J. Q. Huang, P. Li, L. Zhu, L. D. Zhao, Y. Y.
+Zhang, W. C. Zhu, S. T. Yang, Q. Zhang, Energy Storage Mater.
+2017, 6, 18.
+[13] L. L. Shi, S. M. Bak, Z. Shadike, C. Q. Wang, C. J. Niu, P.
+Northrup, H. K. Lee, A. Y. Baranovskiy, C. S. Anderson, J. Qin,
+S. Feng, X. D. Ren, D. Y. Liu, X. Q. Yang, F. Gao, D. P. Lu, J.
+Xiao, J. Liu, Energy Environ. Sci. 2020, 13, 3620.
+[14] W. Xu, J. L. Wang, F. Ding, X. L. Chen, E. Nasybutin, Y. H.
+Zhang, J. G. Zhang, Energy Environ. Sci. 2014, 7, 513.
+[15] X. Ji, K. T. Lee, L. F. Nazar, Nat. Mater. 2009, 8, 500.
+[16] S. Xin, L. Gu, N. H. Zhao, Y. X. Yin, L. J. Zhou, Y. G. Guo, L. J.
+Wan, J. Am. Chem. Soc. 2012, 134, 18510.
+[17] B. Q. Li, S. Y. Zhang, L. Kong, H. J. Peng, Q. Zhang, Adv. Mater.
+2018, 30, 1707483.
+[18] Y. S. Su, A. Manthiram, Chem. Commun. 2012, 48, 8817.
+[19] M. Zhao, H. J. Peng, Z. W. Zhang, B. Q. Li, X. Chen, J. Xie, X.
+Chen, J. Y. Wei, Q. Zhang, J. Q. Huang, Angew. Chem. Int. Ed.
+2019, 58, 3779; Angew. Chem. 2019, 131, 3819.
+[20] T. F. Liu, H. L. Hu, X. F. Ding, H. D. Yuan, C. B. Jin, J. W. Nai,
+Y. J. Liu, Y. Wang, Y. H. Wan, X. Y. Tao, Energy Storage Mater.
+2020, 30, 346.
+[21] B. Q. Li, H. J. Peng, X. Chen, S. Y. Zhang, J. Xie, C. X. Zhao, Q.
+Zhang, CCS Chem. 2019, 1, 128.
+[22] Q. Pang, X. Liang, C. Y. Kwok, L. F. Nazar, Nat. Energy 2016, 1,
+16132.
+[23] M. R. Kaiser, S. Chou, H. K. Liu, S. X. Dou, C. Wang, J. Wang,
+Adv. Mater. 2017, 29, 1700449.
+[24] S. Xiong, M. Regula, D. Wang, J. Song, Electrochem. Energy Rev.
+2018, 1, 388.
+[25] L. Cheng, L. A. Curtiss, K. R. Zavadil, A. A. Gewirth, Y. Y.
+Shao, K. G. Gallagher, ACS Energy Lett. 2016, 1, 503.
+[26] K. Ueno, J. W. Park, A. Yamazaki, T. Mandai, N. Tachikawa, K.
+Dokko, M. Watanabe, J. Phys. Chem. C 2013, 117, 20509.
+[27] L. Suo, Y. S. Hu, H. Li, M. Armand, L. Chen, Nat. Commun.
+2013, 4, 1481.
+[28] M. Cuisinier, P. E. Cabelguen, B. D. Adams, A. Garsuch, M.
+Balasubramanian, L. F. Nazar, Energy Environ. Sci. 2014, 7,
+2697.
+[29] K. Sun, Q. Wu, X. Tong, H. Gan, ACS Appl. Energy Mater. 2018,
+1, 2608.
+[30] K. Dokko, N. Tachikawa, K. Yamauchi, M. Tsuchiya, A.
+Yamazaki, E. Takashima, J. W. Park, K. Ueno, S. Seki, N.
+Serizawa, M. Watanabe, J. Electrochem. Soc. 2013, 160, A1304.
+[31] Q. Pang, A. Shyamsunder, B. Narayanan, C. Y. Kwok, L. A.
+Curtiss, L. F. Nazar, Nat. Energy 2018, 3, 783.
+[32] C. Weller, S. Thieme, P. H-rtel, H. Althues, S. Kaskel, J.
+Electrochem. Soc. 2017, 164, A3766.
+[33] S. Dçrfler, S. Walus, J. Locke, A. Fotouhi, D. J. Auger, N. Shateri,
+T. Abendroth, P. H-rtel, H. Althues, S. Kaskel, Energy Technol.
+2021, 9, 2000694.
+[34] K. S. Han, J. Chen, R. Cao, N. N. Rajput, V. Murugesan, L. Shi,
+H. Pan, J.-G. Zhang, J. Liu, K. A. Persson, K. T. Mueller, Chem.
+Mater. 2017, 29, 9023.
+[35] C. Park, A. Ronneburg, S. Risse, M. Ballauff, M. Kanducˇ, J.
+Dzubiella, J. Phys. Chem. C 2019, 123, 10167.
+[36] K. H. Wujcik, T. A. Pascal, C. D. Pemmaraju, D. Devaux, W. C.
+Stolte, N. P. Balsara, D. Prendergast, Adv. Energy Mater. 2015, 5,
+1500285.
+[37] X. Bogle, R. Vazquez, S. Greenbaum, A. Cresce, K. Xu, J. Phys.
+Chem. Lett. 2013, 4, 1664.
+[38] M. Li, C. Wang, Z. Chen, K. Xu, J. Lu, Chem. Rev. 2020, 120,
+6783.
+[39] C. C. Su, M. He, R. Amine, Z. Chen, K. Amine, Angew. Chem.
+Int. Ed. 2018, 57, 12033; Angew. Chem. 2018, 130, 12209.
+[40] X. Deng, M. Y. Hu, X. Wei, W. Wang, Z. Chen, J. Liu, J. Z. Hu, J.
+Power Sources 2015, 285, 146.
+[41] I. P. Gerothanassis, Prog. Nucl. Magn. Reson. Spectrosc. 2010, 56,
+95.
+[42] M. T. B8raldin, E. Vauthier, S. Flisz#r, Can. J. Chem. 1982, 60,
+106.
+[43] X. Ren, L. Zou, X. Cao, M. H. Engelhard, W. Liu, S. D. Burton,
+H. Lee, C. Niu, B. E. Matthews, Z. Zhu, C. Wang, B. W. Arey, J.
+Xiao, J. Liu, J.-G. Zhang, W. Xu, Joule 2019, 3, 1662.
+[44] G. Li, Q. Huang, X. He, Y. Gao, D. Wang, S. H. Kim, D. Wang,
+ACS Nano 2018, 12, 1500.
+[45] M. T. Lee, H. D. Liu, D. Brandell, Batteries Supercaps 2020, 3,
+1370.
+[46] F. Y. Fan, Y. M. Chiang, J. Electrochem. Soc. 2017, 164, A917.
+[47] D. Aurbach, E. Pollak, R. Elazari, G. Salitra, C. S. Kelley, J.
+Affinito, J. Electrochem. Soc. 2009, 156, A694.
+[48] S. Z. Xiong, K. Xie, Y. Diao, X. B. Hong, J. Power Sources 2014,
+246, 840.
+[49] A. Bhargav, J. R. He, A. Gupta, A. Manthiram, Joule 2020, 4,
+285.
+[50] X. Q. Zhang, T. Li, B. Q. Li, R. Zhang, P. Shi, C. Yan, J. Q.
+Huang, Q. Zhang, Angew. Chem. Int. Ed. 2020, 59, 3252; Angew.
+Chem. 2020, 132, 3278.
+[51] X. Y. Huang, J. J. Xue, M. Xiao, S. J. Wang, Y. N. Li, S. C. Zhang,
+Y. Z. Meng, Energy Storage Mater. 2020, 30, 87.
+Manuscript received: March 10, 2021
+Accepted manuscript online: April 29, 2021
+Version of record online: June 4, 2021
+Angewandte
+Chemie
+Research Articles
+15509
+Angew. Chem. Int. Ed. 2021, 60, 15503 – 15509
+T 2021 Wiley-VCH GmbH
+www.angewandte.org
+ 15213773, 2021, 28, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.202103470 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

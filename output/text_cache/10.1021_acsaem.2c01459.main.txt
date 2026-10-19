@@ -1,0 +1,964 @@
+
+<<PAGE 1>>
+Homogeneous Organometallic Catalysts for Improved
+Electrochemical Kinetics of Li−S Batteries
+Rahul Jayan, Md Shahriar Nahian, and Md Mahbubul Islam*
+Cite This: ACS Appl. Energy Mater. 2022, 5, 9782−9790
+Read Online
+ACCESS
+Metrics & More
+Article Recommendations
+ABSTRACT: The dissolution of polysulfides into electrolytes and sluggish electro-
+chemical conversion kinetics primarily impede the practical realization of Li−S batteries.
+Homogeneous catalysis is an effective strategy to overcome the challenges involved
+under lean electrolyte conditions. Metallocenes, a class of organometallic compounds,
+hold promise to anchor and catalyze polysulfides. In this study, we used first-principles
+density functional theory (DFT) simulations to understand the role of metallocenes
+(using titanocene (TiCp2) as an archetypical example) as homogeneous catalysts in the
+electrolyte medium to suppress the shuttle effect and promote the reaction kinetics. The
+calculated electrochemical stability window of TiCp2 reveals that the composition is
+electrochemically inactive in the operating potential range of Li−S batteries and can thus
+be leveraged as an additive to expedite the reduction kinetics of soluble lithium
+polysulfides (LiPSs). We studied the detailed characteristic behavior of LiPS interactions
+with TiCp2 in both gas and solvent phases and the kinetics of elementary sulfur
+reduction reactions (SRRs). We found that TiCp2 provides adequate binding toward various LiPSs to mitigate the shuttle effect, and
+the structural integrity of LiPSs is well retained without any chemical decomposition. The catalyzing effect of TiCp2 is evident from
+the observed significant reduction in the SRR barriers, particularly for the rate-determining step, which is expected to favorably
+promote the deposition of Li2S on the cathode surface. We further propose a mechanistic scheme of TiCp2 homogeneous catalyst-
+boosted sulfur redox cycles. Overall, our simulations predicted moderate binding and improved kinetics of polysulfide chemistry with
+the metallocene-based homogeneous catalyst and are expected to lead to a paradigm shift in the design of organometallic additives
+for achieving high-performance metal−sulfur batteries.
+KEYWORDS: homogeneous catalyst, additive, titanocene, shuttle effect, DFT
+1. INTRODUCTION
+Lithium−sulfur batteries (LiSBs) are inevitably being consid-
+ered as a game-changing technology to meet the demand for
+safe and high-performance energy storage systems for the next
+generation. Li−S batteries work on the principles of electro-
+chemical redox reactions (S + 2Li →Li2S) and possess an
+incredibly high energy density (2600 Wh kg−1), theoretical
+capacity (1675 mAh g−1), lower cost, and environmental
+benignity.1,2 However, the commercialization of Li−S batteries
+is hindered by major scientific hurdles such as the dissolution
+of higher-order polysulfides into the electrolyte, known as the
+“shuttle effect,” and sluggish electrochemical reaction kinetics
+of the battery chemistry.2−4 The dissolution of higher-order
+polysulfides into solvents such as ether results in a significant
+loss of active materials, a short cycle life, and irreversible
+capacity fading. On the other hand, the sluggish conversion
+kinetics detrimentally affects the rate performance and
+reversible specific capacity, which renders rapid charging
+functionality impractical.5 Moreover, the limited mass-loading
+issues caused by the poor electron conductivity of sulfur and
+the volume change in the cathode material because of sulfur
+agglomeration during cycling preclude the utilization of the
+complete theoretical energy density in practical applica-
+tions.6−8
+In the last decade, the improvement of the specific capacity
+and cycling stability in LiSBs by constructing conductive
+scaffolds has received significant attention.6,9 The physical
+prevention of lithium polysulfide (LiPS) leakage using
+nanocarbon materials with a variety of dimensional config-
+urations has been shown to reduce LiPS crossover.10,11
+Mesoporous carbon, graphene, hollow carbon spheres,
+metal−organic framework particles, hollow carbon nanofibers,
+and conductive polymers are used as preferred carbon-based
+host materials.12−15 In recent years, to anchor LiPSs and boost
+their conversion rates via catalytic processes, techniques
+Received:
+May 13, 2022
+Accepted:
+July 18, 2022
+Published: July 26, 2022
+Article
+www.acsaem.org
+© 2022 American Chemical Society
+9782
+https://doi.org/10.1021/acsaem.2c01459
+ACS Appl. Energy Mater. 2022, 5, 9782−9790
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​5/​8/​9782/​3442986/​ae2c01459.​pdf by TSINGHUA UNIV user on 03 October 2026
+
+<<PAGE 2>>
+incorporating heteroatoms or external mediators onto the
+carbon surface have been proposed.16−18 In addition, the
+longevity and electrode stability of LiSBs can be improved
+using functional binders and separators in conjunction with
+lithium metal protectors.19−22 Although sizeable progress has
+been made in the improvement of the cycle life and the
+understanding of polysulfide reaction mechanisms in the Li−S
+system, for the vast majority of the studies, thin-film sulfur
+electrodes (2 mg cm−2) and/or flooded electrolytes are used,
+with an E/S ratio (mL/g) of at least 20.23 The high volume of
+electrolyte results in a low energy density in Li−S batteries.
+For a competitive energy density and low cost of LiSBs,
+reduction of the electrolyte volume to at least E/S < 5 is
+essential.24 However, lowering the E/S ratio inevitably results
+in adverse conditions in Li−S batteries. First, they exhibit weak
+reversibility and poor sulfur reaction kinetics because of the
+low quantity of the polysulfide redox mediator for the
+transition from higher-order LiPSs to lower-order ones and
+significant polarization. Second, most carbon-based cathode
+materials generally require a higher volume of electrolyte to
+moisten the cathode surface. However, under lean electrolyte
+conditions, the irregular and uncontrollable accumulation of
+insulating S/Li2S passivates the electrolyte−electrode interface
+regulating the sulfur redox reactions further, and dwindles the
+cell capacity.25
+In recent years, several strategies have been investigated to
+improve sulfur reactions in a lean electrolyte environment.26
+The approaches include the use of heterogeneous electro-
+catalysts or homogeneous/heterogeneous mediators to accel-
+erate the S8/Li2S conversion kinetics and modulate the
+morphology of solid accumulation.27−29 Heterogeneous
+electrocatalysis of polysulfides in cathodes such as metals,
+organic composites, and heteroatom-doped carbon materials
+demonstrates performance improvements in terms of de-
+creased polarization, extended cycle lifetimes, and improved
+rate capabilities.26 However, the catalytic reaction efficacy in
+heterogeneous catalysis is considerably affected by the limited
+accessibility of the catalyst surface and the poor diffusion of
+LiPS from the bulk electrolyte to the catalytic reaction sites.26
+The limitations of heterogeneous catalysis in addressing the
+shuttling and slow kinetics of polysulfides can be overcome
+with a homogeneous catalyst dissolved in the electrolyte
+solution as an additive, which captures and accelerates the LiPS
+conversion at the homogeneous interfaces.26,30 The use of
+additives modifies the Li anode/electrolyte interface and alters
+the polysulfide dissolution, thereby regulating the cathode−
+electrolyte interfaces.31 For example, Wu et al. reported that
+the use of biphenyl-4,4′-dithiol (BPD) as an additive for LiSB
+considerably improved the capacity retention because of the
+suppression of polysulfide dissolution and expedited charge−
+discharge kinetics with BPD−short-chain polysulfide complex
+formation.31 Liu et al. claimed that the electrolyte additive
+dithiothreitol (DTT) can favorably mitigate polysulfide
+shuttling and promote the reaction kinetics by selectively
+cleaving the S−S bonds of polysulfides.32
+Recently, organic additives with enhanced catalytic ability
+and electrolyte stability have been used as homogeneous
+catalysts in LiSBs because of their capability to capture LiPS,
+boost the electrochemical reaction kinetics, and control Li2S
+nucleation. For example, Luo et al. used density functional
+theory (DFT) calculations and electrochemical character-
+izations to study the effect of nickel chloride dimethoxy-
+methane additives as homogeneous catalysts for LiSBs, and
+they claimed that under lean electrolyte conditions, say E/S ≈
+5, the battery exhibited a stable capacity of 784 mAh g−1 at 0.1
+C for 500 cycles.33 Recently, metallocene-based organometallic
+compounds with distinct electronic properties, along with a
+valence electron count and modification of metal−carbon
+(M−C) bonds, showed incredible catalytic properties in redox-
+flow batteries (RFB),34−37 olefin polymerization,38,39 anti-
+cancer reagents, etc.40 For example, Ding et al. found that the
+design of Li−RFB with a cobaltocene redox mediator
+improved the working potential to 1.7 V; in addition, the
+working potential was increased to 2.1 V when methyl groups
+were added to the Cp ring, illustrating the possibility of
+tailoring the properties of metallocene through functionaliza-
+tion.34 Another approach is to use metallocenes as extrinsic
+redox mediators besides polysulfides to aid the polysulfide
+conversion reactions and the growth of Li2S in LiSBs.41−43 A
+number of imide-based redox mediators developed by Helms
+and co-workers for Li−S chemistry have shown potential to
+achieve high capacities.43 Aurbach and co-workers used redox
+mediators to retrieve most of the theoretical capacity of Li2S
+during the first activation and to lower the charging
+overpotential to 2.9 V.44 In addition, a cobaltocene-based
+redox mediator with its reduction potential within the
+polysulfide reduction region was in turn found to act as an
+electron-transfer agent between the polysulfides and the
+conductive substrate.45 In contrast, metallocenes such as
+nickelocene (NiCp2) and 1,1′-bis(diphenylphosphino)-
+ferrocene (DPPF) are reported to be electrochemically inactive
+within the LiSB operating potential window; however, they can
+potentially act as chemical adsorbents for trapping poly-
+sulfides.42 The striking disparity observed between NiCp2 and
+DPPF compared with other metallocene-based redox media-
+tors demonstrates that not all metallocenes can act as redox
+mediators.42 In fact, the observation opens up a new avenue to
+leverage metallocenes as electrolyte additives when their
+electrochemical stability windows are outside of the operating
+potential range of LiSBs. Although there are a significant
+number of studies on metallocenes as redox mediators for
+LiSBs, there exists a wide knowledge gap concerning the
+development of homogeneous metallocene-based additives to
+promote the sulfur conversion kinetics under lean electrolyte
+conditions.
+Herein, for the first time, we use metallocenes (titanocene
+(TiCp2) as an archetypical example) as functional additives to
+suppress the shuttle effect and enhance the electrochemical
+performance of LiSBs. The unique structural feature of the
+bent titanocene allows direct interactions of adsorbates with
+the transition metal. TiCp2 has been previously found to
+exhibit superior activity toward nitrogen reduction and oxygen
+evolution reactions.40,46,47 To the best of our knowledge, no
+studies have been conducted to investigate the LiPS interaction
+with the bent titanocene. We employ first-principles DFT
+calculations to understand the interactions of TiCp2 with
+polysulfides. The TiCp2 homogeneous catalyst exhibits a
+moderate binding strength toward various LiPS species and
+acts as a catalyst to expedite the rate-determining steps in
+sulfur reduction reactions (SRR) over the discharging process.
+On the basis of insights obtained from the adsorption energy
+calculations, we proposed a mechanistic scheme for the sulfur
+redox cycle facilitated by the homogeneous TiCp2 catalyst.
+During discharge, the higher chemical affinity of TiCp2 toward
+LiPS compared with 1,2-dimethoxyethane (DME) results in
+the formation of the TiCp2@LiPS complex and promotes the
+ACS Applied Energy Materials
+www.acsaem.org
+Article
+https://doi.org/10.1021/acsaem.2c01459
+ACS Appl. Energy Mater. 2022, 5, 9782−9790
+9783
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​5/​8/​9782/​3442986/​ae2c01459.​pdf by TSINGHUA UNIV user on 03 October 2026
+
+<<PAGE 3>>
+overall SRR kinetics of Li−S batteries. On the other hand,
+upon charging, TiCp2 rebinds with DME in the electrolyte
+because of the much lower affinity of TiCp2 toward S8
+compared with DME, and the sulfur redox cycles continue
+to occur during the charge−discharge cycles.
+2. CALCULATION METHODOLOGY
+All of the geometric optimization simulations were performed
+using the DFT method. We used the B3LYP hybrid functional
+along with the 6-31+G* basis set for the C/H/O and
+LALNDZ effective core potentials (ECPs) for the Ti atom for
+all of the calculations. To account for the solvent effect, the
+COSMO-SMD implicit solvation model was used considering
+diethyl ether as the medium with a dielectric constant of ε =
+4.5, which is close to the dielectric constants of DME and 1,3-
+dioxolane (DOL).48,49 We calculated Gibbs free energies at a
+temperature of 298 K using the procedure outlined in our
+previous study.50 The empirical dispersion correction utilizing
+Grimme’s DFT-D2 method was employed to improve the
+accuracy of the adsorption calculations. We used NWChem
+software for all of the calculations.51
+3. RESULTS AND DISCUSSION
+3.1. Structure of TiCp2. We relaxed the titanocene
+(TiCp2) at the B3LYP/(6-31+G* and LALNDZ) level of
+theory, and the optimized configuration was found to result in
+a bent geometry. The optimized structure (illustrated in Figure
+1) has a Cp−M−Cp (θ) angle of 134.24°, and the calculated
+bending angle (Y = (180 −θ)/2)) is 22.88°. The observed
+value of Y is lower when compared with those of other bent
+metallocenes such as VCp2, WCp2, and MoCp2 because there
+are fewer nonbonding electrons to interact with the Cp ring of
+the titanocene.40 Moreover, hydrogens in the Cp ring bent
+outward because of the effective overlap of diffuse unoccupied
+d orbitals with the ring.40 The calculated Cp−M−Cp (θ) angle
+mainly depends on the overlap between the filled p orbitals of
+C and d orbitals of Ti. The optimized geometry results in a
+Cp−Ti bond length of 2.2 Å, comparable to those of other
+works.40
+3.2. Electrochemical Stability Window. It is generally
+known that the interconversion of Li2S4 and Li2S (∼2.1 V vs
+Li/Li+) and the conversion of S8 to Li2S4 (∼2.5 V vs Li/Li+)
+are the two key electrochemical reaction steps in the redox
+chemistry of S in LiSBs. Redox mediators are a class of
+homogeneous catalysts whose electrochemical potentials are
+carefully matched with the sulfur conversion reaction
+potentials.42,43 In contrast to redox mediators, to work as
+electrolyte additives, homogeneous catalysts for LiSBs must
+have an inactive electrochemical redox behavior toward the
+interconversion sulfur redox reactions within the operating
+potential window of the batteries. In this regard, we calculated
+the reduction and oxidation potentials of the studied TiCp2
+based on the thermodynamic cycles shown in Figure 2. The
+calculated reduction and oxidation potentials of TiCp2 with
+respect to Li/Li+ are 0.35 and 1.98 V, respectively. It is evident
+from the results that TiCp2 undergoes single-electron
+reduction outside the operating window of the LiSB (1.8−
+2.8 V vs Li/Li+), an important criterion for the design of
+electrolyte additives. Again, the calculated oxidation potential
+of 1.98 V is lower when compared with that of Li2S oxidation
+(∼2.4 V vs Li/Li+). The oxidized TiCp2 in the working
+potential range will get reduced back by receiving electrons
+from the current collector. The observation illustrates that the
+studied TiCp2 is not involved in the redox mediation process
+for Li2S activation unlike redox mediators such as ferrocene
+and decamethylferrocene.44 A similar kind of observation was
+made in other metallocenes such as cobaltocene, nickelocene,
+and dibenzenechromium; because of their lower oxidation
+potentials compared with Li2S decomposition, they act as
+chemical adsorbents.42,45 Overall, the comparison of the
+electrochemical stability window of TiCp2 and the operating
+potential range of LiSB highlights the relevance of TiCp2 as an
+electrolyte additive, and TiCp2 is expected to chemically
+adsorb and accelerate the reduction kinetics of LiPSs.
+3.3. Binding of LiPSs with TiCp2. During the discharge of
+Li−S batteries, LiPSs are generated as a result of lithiation onto
+the sulfur cathode. The optimized geometric configurations of
+LiPSs and their bond lengths were analyzed in our previous
+study.18 To elucidate the binding behavior of bent titanocene
+for efficient homogeneous catalysis, the interactions between
+TiCp2 and S8/Li2Sn (where n = 1, 2, 4, 6, and 8) were
+investigated. Typically, the heterogeneous catalyst on the
+cathode surface, for example, the basal plane of transition metal
+dichalcogenides (TMDs) or single-atom catalyst (SAC)-based
+materials, are found to interact with the LiPSs in two binding
+configurations.52 The Li binds with nonmetal atoms, whereas
+transition metal atoms on the substrate covalently bind with
+Figure 1. Optimized geometric configuration of the bent TiCp2
+metallocene.
+Figure 2. Thermodynamic cycle for the (a) reduction (red) and (b) oxidation potential (ox) calculations, where g and sol represent the gas phase
+and solution phase, respectively.
+ACS Applied Energy Materials
+www.acsaem.org
+Article
+https://doi.org/10.1021/acsaem.2c01459
+ACS Appl. Energy Mater. 2022, 5, 9782−9790
+9784
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​5/​8/​9782/​3442986/​ae2c01459.​pdf by TSINGHUA UNIV user on 03 October 2026
+
+<<PAGE 4>>
+the sulfur in the LiPSs. In transition metal-based SACs,
+polysulfides adsorbed through the TM−S bond (where S is
+from the LiPSs) regulate the LiPS adsorption behavior and
+electrocatalysis. Herein, to find the most favorable binding
+configuration for the TiCp2 homogeneous catalyst, we initially
+positioned the LiPS species in the vicinity of both the
+cyclopentadienyl rings and the Ti atom of TiCp2. The most
+stable geometric configurations after relaxation are shown in
+Figure 3. The LiPS anchored to the TiCp2 through covalent
+bond formation via a single Ti−S bond exhibits stronger
+interactions compared with the weak van der Waals interaction
+between S8 and the Cp ring of TiCp2. The binding energies of
+S8/LiPSs on the TiCp2 substrate were calculated using the
+expression Ebind = ELi
+d2S
+dn + ETiCp
+d2 −ELi
+d2S
+dn+TiCp
+d2, wherein ELi
+d2S
+dn,
+ETiCp
+d2, and ELi
+d2S
+dn+TiCp
+d2 represent the energies of isolated LiPS,
+TiCp2, and the LiPS-adsorbed TiCp2 system, respectively. The
+positive value of binding energies indicates an exothermic
+adsorption process. The binding energies of S8 and various
+LiPS on TiCp2 and their corresponding bond lengths are
+illustrated in Figure 4 and Table 1. The exothermic binding of
+S8/LiPS on TiCp2 suggests favorable binding interactions
+between them. Figure 3 displays that the S8 cluster prefers to
+be anchored parallel to the TiCp2 with a minimum separation
+distance of 2.889 Å, and the calculated binding energy is 0.36
+eV, indicating a weaker interaction with TiCp2. In contrast,
+upon the incorporation of Li atoms, the soluble long-chain
+LiPSs (such as Li2S8, Li2S6, and Li2S4) are anchored with the
+TiCp2 via Ti−S bonding, with the minimum separation
+distances calculated to be 2.675, 2.557, and 2.537 Å,
+respectively. The calculated binding energies of Li2S8, Li2S6,
+and Li2S4, anchored on TiCp2, are 1.69, 1.81, and 1.89 eV,
+respectively. The binding energies of the insoluble Li2S2 (2.07
+eV) and Li2S (2.52 eV) toward TiCp2 are higher when
+compared with those of soluble polysulfides, indicating their
+stronger chemical affinity. From Table 1, it is clear that the
+minimum distance between LiPS and TiCp2 decreases from
+2.674 Å for Li2S8 to 2.435 Å for Li2S when the number of S
+atoms in LiPS decreases. Figure 4 illustrates that the binding
+energies increase with increasing lithiation, with the lowest
+binding energy in the case of Li2S8, and a similar kind of
+binding behavior is observed in graphene and other two-
+dimensional (2D) materials.53−56 Furthermore, Figure 3
+proves that interactions of S8 with TiCp2 do not lead to any
+structural deformations, whereas the binding of LiPSs results in
+a slight distortion compared with their isolated structures;
+however, no chemical dissociations were observed.
+The competitive interactions of LiPSs with heterogeneous/
+homogeneous catalysts compared with their interactions with
+commonly used electrolyte solvents are known to regulate the
+Figure 3. Top and side views of the most stable geometric
+configurations of S8/LiPS-adsorbed TiCp2.
+Figure 4. (a) Calculated adsorption energies of S8/LiPS on TiCp2 (in both gas and solvent phases) and DME. (b) Anchoring factor analysis of
+various LiPS on TiCp2.
+Table 1. Minimum Intramolecular Li−S Bond Distance and
+the Shortest Distance (in Å) Between LiPS and the Studied
+TiCp2 Catalyst
+TiCp2 (gas phase)
+TiCp2 (solvent phase)
+LiPS
+ΔdLi−S
+dLi/S‑AM
+ΔdLi−S
+dLi/S‑AM
+Li2S8
+0.053
+2.674
+0.086
+2.675
+Li2S6
+0.067
+2.557
+0.082
+2.631
+Li2S4
+0.096
+2.537
+0.121
+2.562
+Li2S2
+0.129
+2.495
+0.187
+2.513
+Li2S
+0.122
+2.435
+0.182
+2.434
+ACS Applied Energy Materials
+www.acsaem.org
+Article
+https://doi.org/10.1021/acsaem.2c01459
+ACS Appl. Energy Mater. 2022, 5, 9782−9790
+9785
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​5/​8/​9782/​3442986/​ae2c01459.​pdf by TSINGHUA UNIV user on 03 October 2026
+
+<<PAGE 5>>
+shuttle effect. To understand the efficacy of the studied
+homogeneous catalyst in capturing the LiPS at homogeneous
+interfaces and suppressing the shuttle effect, we studied the
+binding energies of TiCp2−LiPS with those of the DME−LiPS
+systems. Although the actual electrolyte system is quite
+complex, consisting of lithium salts, solvents, and additives,57
+the key components involved in the shuttle phenomenon are
+the solvent molecules; hence, we considered only electrolyte
+solvents for our study. Notably, LiPSs interact more extensively
+with DME molecules than they do with DOL in a commonly
+used mixed electrolyte solution of DME and DOL.58−60 This
+suggests that LiPS would largely associate with the DME in the
+electrolyte environment. Hence, we studied the binding
+interaction of various LiPSs with explicit DME molecules.
+The anchoring mechanism of TiCp2 is understood with the aid
+of an anchoring factor ΔE = ETiCp
+d2
+b
+−Esol
+b , where ETiCp
+d2
+b
+and Esol
+b
+denote the binding energies of LiPSs anchored on TiCp2 and
+DME, respectively. The positive value for ΔE shows that the
+binding interaction of LiPS with TiCp2 is stronger than that of
+electrolyte solvents. The most stable geometric configuration
+of DME-adsorbed LiPS structures reported in our previous
+studies considered the LiPS interaction with DME through a
+single Li−O bond.18,54 The calculated binding energies of the
+explicit DME solvent with LiPSs are 1.14 eV for Li2S8, 1.15 eV
+for Li2S6, 1.13 eV for Li2S4, 1.05 eV for Li2S2, and 1.12 eV for
+Li2S. From the anchoring factor analysis (see Figure 4), we
+found that ΔE is positive for all of the LiPSs, which is a clear
+indication that the polysulfides will preferably be anchored to
+the TiCp2 compared with DME molecules. We also calculated
+the binding energies of LiPSs with TiCp2 using the COSMO-
+SMD implicit solvent model. The calculated binding energies
+presented in Figure 4 are found to be lower than the gas-phase
+calculations. Overall, the binding energies of the higher-order
+LiPSs with TiCp2 are higher than those of electrolyte solvents
+when explicit solvents are considered.
+To obtain a deeper insight into the interactions of LiPSs
+with TiCp2, we decoupled the contribution of chemical and
+physical vdW interactions toward the binding energies at
+various stages of lithiated products in both gas and solution
+phases. Figure 5 illustrates the ratio of vdW interactions
+calculated based on the formula
+=
+R
+E
+E
+E
+(
+)
+b
+b
+vdW
+novdW
+b
+vdW
+, where
+Eb
+vdW and Eb
+novdW represent the binding energies of LiPSs with
+and without the vdW functional, respectively. The figure
+illustrates that for both gas and solution phases, the vdW
+interactions dominate the unlithiated stage of TiCp2 (R nearly
+90%), which suggests the absence of covalent interactions in
+the case of S8 and TiCp2. In contrast to S8 adsorption, the
+value of R for higher-order LiPSs is in the range of 35−70%,
+which clearly shows that as the lithiation process proceeds, the
+strength of the vdW interaction is reduced, whereas the
+percentage of chemical interaction increases at the same time.
+The ratio of the vdW interaction for soluble LiPSs is a clear
+indication that their anchoring behavior is impacted by both
+the physical and chemical interactions. In addition, the
+weightage of vdW interaction was observed to decrease with
+increased lithiation in contrast to the trend of vdW binding
+energies, attaining the lowest value in the case of Li2S for both
+gas and solvent phases (R about 25−30%). Overall, we
+conclude from the ratio of the vdW interaction that for S8
+species, the binding energy is entirely dominated by the
+physical vdW interactions stemming from the S atoms, whereas
+for both soluble and insoluble LiPSs, the binding energies are
+influenced by both the physical vdW interaction and covalent
+chemical interactions originating from the TM−S bonds. A
+similar behavior of the vdW ratio was also observed in other
+studies.54,61,62
+3.4. Sulfur Reduction Reaction (SRR). To understand
+the discharge performance of LiSBs with homogeneous
+catalysts, we investigated the entire SRR process on TiCp2.
+The Gibbs free energy calculation details for SRR are provided
+in our previous study.63 Long-chain soluble LiPSs, namely,
+Li2S8, Li2S6, and Li2S4, are formed as a result of the reaction
+between Li ions and S8 species, which in turn finally convert to
+insoluble Li2S2 and Li2S, due to the accelerated reduction
+process with suitable catalysts. Figure 6 shows the free energies
+of each SRR step on the TiCp2 catalyst in both gas and
+solution phases. For comparison, we calculated the SRR free
+energies for the isolated LiPSs both in the vacuum and also in
+the solvent phase. The results indicate spontaneous exothermic
+reactions for the first step of reduction of S8 to Li2S8 (ΔG =
+−6.153 eV (gas phase) and −6.147 eV (solvent phase)) on
+TiCp2. The reduction of Li2S8 to Li2S6 is also exothermic for
+both the gas (ΔG = −0.591 eV) and the solvent phase (ΔG =
+−0.494 eV). Next, three successive reduction processes from
+Li2S6 to Li2S4, Li2S2, and Li2S are found to be endothermic for
+Figure 5. Computed ratio of vdW interaction of S8/LiPS on TiCp2
+(in both gas and solvent phases).
+Figure 6. Gibbs free energies of each sulfur reduction step in the
+vacuum and on TiCp2 (a) gas and (b) solvent phases.
+ACS Applied Energy Materials
+www.acsaem.org
+Article
+https://doi.org/10.1021/acsaem.2c01459
+ACS Appl. Energy Mater. 2022, 5, 9782−9790
+9786
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​5/​8/​9782/​3442986/​ae2c01459.​pdf by TSINGHUA UNIV user on 03 October 2026
+
+<<PAGE 6>>
+LiPS on TiCp2 in both gas and solvent phases. Typically, the
+fourth and fifth reduction steps involving the transformation of
+Li2S4 to Li2S2 and Li2S are considered as the rate-limiting steps
+in the overall discharge process of LiSBs.64 The statement is
+well corroborated with the observed higher values of ΔG for
+isolated Li2S2/Li2S formation with ΔG = 1.240 eV and ΔG =
+1.064 eV in the gas phase and ΔG = 0.929 eV and ΔG = 0.855
+eV in the solvent phase, respectively, making the conversion
+reactions highly endothermic in nature. We found that the
+TiCp2 catalyst greatly reduces the Gibbs free energies of the
+rate-limiting step of Li2S4 →Li2S2 to ΔG = 0.972 eV (gas) and
+ΔG = 0.759 eV (solvent). Again, for the conversion of Li2S2 →
+Li2S, the barriers are reduced to ΔG = 0.719 eV (gas) and ΔG
+= 0.591 eV (solvent). That is, when compared with the rate-
+determining SRR of isolated LiPS in the vacuum, the energy
+barrier with the aid of the TiCp2 catalyst is reduced by 21.6%.
+Again, when considering the influence of solvation on the SRR,
+we found that the energy barrier of the rate-determining step is
+reduced by 18.3% with the addition of TiCp2. Our simulation
+results clearly demonstrate that the energy barrier for the rate-
+determining step in the presence of the TiCp2 catalyst is
+smaller than that without TiCp2, illustrating the faster rate of
+conversion of higher-order LiPSs into short-chain Li2S because
+of a lower reaction energy barrier, thus strongly proving that
+the studied homogeneous catalyst accelerates the redox
+kinetics, enhancing the electrochemical performance of LiSBs.
+3.5. Proposed Mechanisms of TiCp2 Interactions with
+LiPSs. The proposed reaction mechanism of LiSB on the
+TiCp2 homogeneous catalyst is illustrated in Figure 7. The
+chosen catalyst, TiCp2, dissolves in the electrolyte as an
+additive. Based on our simulation results, we found that the
+affinity of TiCp2 toward LiPS (1.69 eV for Li2S8) is much
+higher than that toward DME (0.70 eV). Hence, TiCp2 on the
+electrolyte solution tends to bind with Li2S8 to form the
+TiCp2−Li2S8 complex, liberating the DME. Our simulation
+results show higher binding energies of LiPSs with the TiCp2
+than that with DME, illustrating the effectiveness in
+suppressing the shuttle effect. Moreover, the acceleration of
+SRR during the discharge process is evident from the Gibbs
+free energy calculations. This observation illustrates that the
+studied TiCp2 catalyst could effectively accelerate the
+reduction of soluble higher-order polysulfides to insoluble
+Li2S. It is important to note that as the homogeneous catalyst
+undergoes molecular interactions with polysulfides, it can
+increase the utilization of the catalyst; that is, the addition of a
+lower amount of TiCp2 into the electrolyte could accelerate a
+larger amount of LiPS.33 Thus, the Li2S nucleation and growth
+process is expected to improve on the cathode surface with the
+aid of the TiCp2 catalyst, thereby improving the electro-
+chemical performance. Previously, it has been experimentally
+reported that the use of cobaltocene resulted in an increased
+amount of Li2S precipitation on the cathode carbon cloth.45
+Our observation of the reduced free energy barriers of SRR
+indicates the facile transformation of higher-order LiPSs into
+Li2S, which is well correlated with the experimental
+observation.33,45 Next, during the charging process, because
+of the much lower interaction between TiCp2 and S8 (0.30 eV)
+compared with that of TiCp2 with DME (0.70 eV), TiCp2 is
+expected to be liberated and subsequently dissolved and
+coordinated with DME in the electrolyte solution, realizing the
+sulfur redox reaction cycle (see Figure 7). Hence, the addition
+of TiCp2 into the electrolyte reduces the LiPS shuttling due to
+their stronger chemical interaction and accelerates the SRR
+kinetics at homogeneous interfaces, which is essential for the
+practical realization of LiSBs.
+4. CONCLUSIONS
+In summary, for the first time, the homogeneous catalyst,
+TiCp2, is introduced into the commonly used electrolyte as an
+additive for Li−S batteries. We used DFT calculations to
+understand the potential of TiCp2 as a homogeneous catalyst
+by systematically exploring their interaction with LiPSs at
+homogeneous interfaces. The electrochemical stability window
+calculations reveal that TiCp2 can work as an additive to
+accelerate the reduction kinetics of soluble LiPSs because of
+the electrochemical inactivity within the operating potential
+range of LiSBs. We studied the binding behavior of TiCp2 with
+various LiPSs in both gas and solvent phases. The calculated
+binding energies of LiPS with TiCp2 are in the range of 1.30−
+2.52 eV. The chemical affinity of the TiCp2−LiPS complex
+arises from the formation of a strong Ti−S bond. Further, the
+comparison of calculated binding energies with that of the
+commonly used DME electrolyte solvent demonstrates the
+effectiveness of the studied homogeneous catalyst in
+suppressing the shuttling of polysulfides. Our analysis of the
+bonding characteristics illustrates that the physical vdW is
+dominant for S8 interaction, whereas chemical interactions
+Figure 7. Proposed TiCp2 homogeneous catalyst-boosted sulfur redox cycle mechanism for Li−S batteries.
+ACS Applied Energy Materials
+www.acsaem.org
+Article
+https://doi.org/10.1021/acsaem.2c01459
+ACS Appl. Energy Mater. 2022, 5, 9782−9790
+9787
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​5/​8/​9782/​3442986/​ae2c01459.​pdf by TSINGHUA UNIV user on 03 October 2026
+
+<<PAGE 7>>
+originating from TM−S are dominant in the entire lithiation
+process. Furthermore, the Gibbs free energy profiles of SRR
+steps reveal that all of the intermediate reactions are more
+favorable, and barriers are much lower in the presence of the
+TiCp2 catalyst compared with isolated LiPS in vacuum and
+solvent phases. Moreover, the homogeneous catalyst-promoted
+catalytic conversion of S8 to Li2S is an indication of improved
+Li2S deposition on the cathode with a decrease in LiPS
+accumulation in the electrolyte, which favorably improves the
+capacity retention and electrochemical reaction kinetics.
+Overall, this study provides an improved understanding of
+the homogeneous catalytic process in LiSBs using titanocene as
+a representative additive to electrolytes. The insights
+developed will further stimulate the investigation of novel
+organometallic homogeneous catalysts based on the large
+family of metallocenes to boost the electrochemical perform-
+ance of LiSBs.
+■AUTHOR INFORMATION
+Corresponding Author
+Md Mahbubul Islam −Department of Mechanical
+Engineering, Wayne State University, Detroit, Michigan
+48202, United States;
+orcid.org/0000-0003-4584-2204;
+Email: gy5553@wayne.edu
+Authors
+Rahul Jayan −Department of Mechanical Engineering, Wayne
+State University, Detroit, Michigan 48202, United States;
+orcid.org/0000-0003-4073-3770
+Md Shahriar Nahian −Department of Mechanical
+Engineering, Wayne State University, Detroit, Michigan
+48202, United States
+Complete contact information is available at:
+https://pubs.acs.org/10.1021/acsaem.2c01459
+Notes
+The authors declare no competing financial interest.
+■ACKNOWLEDGMENTS
+M.M.I. acknowledges the startup funds from Wayne State
+University.
+■REFERENCES
+(1) Manthiram, A.; Chung, S.-H.; Zu, C. Lithium−Sulfur Batteries:
+Progress and Prospects. Adv. Mater. 2015, 27, 1980−2006.
+(2) Pang, Q.; Liang, X.; Kwok, C. Y.; Nazar, L. F. Advances in
+Lithium−Sulfur Batteries Based on Multifunctional Cathodes and
+Electrolytes. Nat Energy 2016, 1, 1−11.
+(3) Seh, Z. W.; Sun, Y.; Zhang, Q.; Cui, Y. Designing High-Energy
+Lithium−Sulfur Batteries. Chem. Soc. Rev. 2016, 45, 5605−5634.
+(4) Peng, H.-J.; Zhang, Q. Designing Host Materials for Sulfur
+Cathodes: From Physical Confinement to Surface Chemistry. Angew.
+Chem., Int. Ed. 2015, 54, 11018−11020.
+(5) Zeng, Z.; Liu, X. Sulfur Immobilization by “Chemical Anchor” to
+Suppress the Diffusion of Polysulfides in Lithium−Sulfur Batteries.
+Adv. Mater. Interfaces 2018, 5, No. 1701274.
+(6) Wang, D.-W.; Zeng, Q.; Zhou, G.; Yin, L.; Li, F.; Cheng, H.-M.;
+Gentle, I. R.; Lu, G. Q. M. Carbon−Sulfur Composites for Li−S
+Batteries: Status and Prospects. J. Mater. Chem. A 2013, 1, 9382−
+9394.
+(7) Zheng, C.; Niu, S.; Lv, W.; Zhou, G.; Li, J.; Fan, S.; Deng, Y.;
+Pan, Z.; Li, B.; Kang, F.; Yang, Q.-H. Propelling Polysulfides
+Transformation for High-Rate and Long-Life Lithium−Sulfur
+Batteries. Nano Energy 2017, 33, 306−312.
+(8) Gao, M.-R.; Xu, Y.-F.; Jiang, J.; Yu, S.-H. Nanostructured Metal
+Chalcogenides: Synthesis, Modification, and Applications in Energy
+Conversion and Storage Devices. Chem. Soc. Rev. 2013, 42, 2986−
+3017.
+(9) Liang, X.; Rangom, Y.; Kwok, C. Y.; Pang, Q.; Nazar, L. F.
+Interwoven MXene Nanosheet/Carbon-Nanotube Composites as Li-
+S Cathode Hosts. Adv. Mater. 2017, 29, No. 1603040.
+(10) Zhang, S. S. Liquid Electrolyte Lithium/Sulfur Battery:
+Fundamental Chemistry, Problems, and Solutions. J. Power Sources
+2013, 231, 153−162.
+(11) Schuster, J.; He, G.; Mandlmeier, B.; Yim, T.; Lee, K. T.; Bein,
+T.; Nazar, L. F. Spherical Ordered Mesoporous Carbon Nanoparticles
+with High Porosity for Lithium−Sulfur Batteries. Angew. Chem. 2012,
+124, 3651−3655.
+(12) Cao, Y.; Li, X.; Aksay, I. A.; Lemmon, J.; Nie, Z.; Yang, Z.; Liu,
+J. Sandwich-Type Functionalized Graphene Sheet-Sulfur Nano-
+composite for Rechargeable Lithium Batteries. Phys. Chem. Chem.
+Phys. 2011, 13, 7660−7665.
+(13) Zheng, G.; Yang, Y.; Cha, J. J.; Hong, S. S.; Cui, Y. Hollow
+Carbon Nanofiber-Encapsulated Sulfur Cathodes for High Specific
+Capacity Rechargeable Lithium Batteries. Nano Lett. 2011, 11, 4462−
+4467.
+(14) Zheng, J.; Tian, J.; Wu, D.; Gu, M.; Xu, W.; Wang, C.; Gao, F.;
+Engelhard, M. H.; Zhang, J.-G.; Liu, J.; Xiao, J. Lewis Acid−Base
+Interactions between Polysulfides and Metal Organic Framework in
+Lithium Sulfur Batteries. Nano Lett. 2014, 14, 2345−2352.
+(15) Wang, J.; Yang, J.; Xie, J.; Xu, N. A Novel Conductive
+Polymer−Sulfur Composite Cathode Material for Rechargeable
+Lithium Batteries. Adv. Mater. 2002, 14, 963−965.
+(16) Gong, B.; Song, X.; Shi, Y.; Liu, J.; Hao, C. Understanding the
+Inhibition of the Shuttle Effect of Sulfides (S ≤3) in Lithium−Sulfur
+Batteries by Heteroatom-Doped Graphene: First-Principles Study. J.
+Phys. Chem. C 2020, 124, 3644−3649.
+(17) Hou, T.-Z.; Chen, X.; Peng, H.-J.; Huang, J.-Q.; Li, B.-Q.;
+Zhang, Q.; Li, B. Design Principles for Heteroatom-Doped Nano-
+carbon to Achieve Strong Anchoring of Polysulfides for Lithium−
+Sulfur Batteries. Small 2016, 12, 3283−3291.
+(18) Jayan, R.; Islam, M. M. First-Principles Investigation of the
+Anchoring Behavior of Pristine and Defect-Engineered Tungsten
+Disulfide for Lithium−Sulfur Batteries. J. Phys. Chem. C 2020, 124,
+27323−27332.
+(19) Chen, J.; Henderson, W. A.; Pan, H.; Perdue, B. R.; Cao, R.;
+Hu, J. Z.; Wan, C.; Han, K. S.; Mueller, K. T.; Zhang, J.-G.; Shao, Y.;
+Liu, J. Improving Lithium−Sulfur Battery Performance under Lean
+Electrolyte through Nanoscale Confinement in Soft Swellable Gels.
+Nano Lett. 2017, 17, 3061−3067.
+(20) Li, G.; Lei, W.; Luo, D.; Deng, Y.; Deng, Z.; Wang, D.; Yu, A.;
+Chen, Z. Stringed “Tube on Cube” Nanohybrids as Compact
+Cathode Matrix for High-Loading and Lean-Electrolyte Lithium−
+Sulfur Batteries. Energy Environ. Sci. 2018, 11, 2372−2381.
+(21) Pan, H.; Han, K. S.; Engelhard, M. H.; Cao, R.; Chen, J.;
+Zhang, J.-G.; Mueller, K. T.; Shao, Y.; Liu, J. Addressing Passivation in
+Lithium−Sulfur Battery Under Lean Electrolyte Condition. Adv.
+Funct. Mater. 2018, 28, No. 1707234.
+(22) Bhargav, A.; He, J.; Gupta, A.; Manthiram, A. Lithium-Sulfur
+Batteries: Attaining the Critical Metrics. Joule 2020, 4, 285−291.
+(23) Lv, D.; Zheng, J.; Li, Q.; Xie, X.; Ferrara, S.; Nie, Z.; Mehdi, L.
+B.; Browning, N. D.; Zhang, J.-G.; Graff, G. L.; Liu, J.; Xiao, J. High
+Energy Density Lithium−Sulfur Batteries: Challenges of Thick Sulfur
+Cathodes. Adv. Energy Mater. 2015, 5, No. 1402290.
+(24) Eroglu, D.; Zavadil, K. R.; Gallagher, K. G. Critical Link
+between Materials Chemistry and Cell-Level Design for High Energy
+Density and Low Cost Lithium-Sulfur Transportation Battery. J.
+Electrochem. Soc. 2015, 162, No. A982.
+(25) Cheng, L.; Curtiss, L. A.; Zavadil, K. R.; Gewirth, A. A.; Shao,
+Y.; Gallagher, K. G. Sparingly Solvating Electrolytes for High Energy
+Density Lithium−Sulfur Batteries. ACS Energy Lett. 2016, 1, 503−
+509.
+ACS Applied Energy Materials
+www.acsaem.org
+Article
+https://doi.org/10.1021/acsaem.2c01459
+ACS Appl. Energy Mater. 2022, 5, 9782−9790
+9788
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​5/​8/​9782/​3442986/​ae2c01459.​pdf by TSINGHUA UNIV user on 03 October 2026
+
+<<PAGE 8>>
+(26) Zhao, M.; Li, B.-Q.; Peng, H.-J.; Yuan, H.; Wei, J.-Y.; Huang, J.-
+Q. Lithium−Sulfur Batteries under Lean Electrolyte Conditions:
+Challenges and Opportunities. Angew. Chem., Int. Ed. 2020, 59,
+12636−12652.
+(27) Zhou, T.; Lv, W.; Li, J.; Zhou, G.; Zhao, Y.; Fan, S.; Liu, B.; Li,
+B.; Kang, F.; Yang, Q.-H. Twinborn TiO2−TiN Heterostructures
+Enabling Smooth Trapping−Diffusion−Conversion of Polysulfides
+towards Ultralong Life Lithium−Sulfur Batteries. Energy Environ. Sci.
+2017, 10, 1694−1703.
+(28) Ye, C.; Jiao, Y.; Jin, H.; Slattery, A. D.; Davey, K.; Wang, H.;
+Qiao, S.-Z. 2D MoN-VN Heterostructure To Regulate Polysulfides
+for Highly Efficient Lithium-Sulfur Batteries. Angew. Chem., Int. Ed.
+2018, 57, 16703−16707.
+(29) Li, Y.; Wu, J.; Zhang, B.; Wang, W.; Zhang, G.; Seh, Z. W.;
+Zhang, N.; Sun, J.; Huang, L.; Jiang, J.; Zhou, J.; Sun, Y. Fast
+Conversion and Controlled Deposition of Lithium (Poly)Sulfides in
+Lithium-Sulfur Batteries Using High-Loading Cobalt Single Atoms.
+Energy Storage Mater. 2020, 30, 250−259.
+(30) Zhang, Z.-W.; Peng, H.-J.; Zhao, M.; Huang, J.-Q.
+Heterogeneous/Homogeneous Mediators for High-Energy-Density
+Lithium−Sulfur Batteries: Progress and Prospects. Adv. Funct. Mater.
+2018, 28, No. 1707536.
+(31) Wu, H.-L.; Shin, M.; Liu, Y.-M.; See, K. A.; Gewirth, A. A.
+Thiol-Based Electrolyte Additives for High-Performance Lithium-
+Sulfur Batteries. Nano Energy 2017, 32, 50−58.
+(32) Liu, M.; Chen, X.; Chen, C.; Ma, T.; Huang, T.; Yu, A.
+Dithiothreitol as a Promising Electrolyte Additive to Suppress the
+“Shuttle Effect” by Slicing the Disulfide Bonds of Polysulfides in
+Lithium-Sulfur Batteries. J. Power Sources 2019, 424, 254−260.
+(33) Luo, C.; Liang, X.; Sun, Y.; Lv, W.; Sun, Y.; Lu, Z.; Hua, W.;
+Yang, H.; Wang, R.; Yan, C.; Li, J.; Wan, Y.; Yang, Q.-H. An Organic
+Nickel Salt-Based Electrolyte Additive Boosts Homogeneous Catalysis
+for Lithium-Sulfur Batteries. Energy Storage Mater. 2020, 33, 290−
+297.
+(34) Ding, Y.; Zhao, Y.; Li, Y.; Goodenough, J. B.; Yu, G. A High-
+Performance All-Metallocene-Based, Non-Aqueous Redox Flow
+Battery. Energy Environ. Sci. 2017, 10, 491−497.
+(35) Hwang, B.; Park, M.-S.; Kim, K. Ferrocene and Cobaltocene
+Derivatives for Non-Aqueous Redox Flow Batteries. ChemSusChem
+2015, 8, 310−314.
+(36) Ziegler, C.; Boika, A. Metallocene-Based Compounds for Redox
+Flow Batteries; Elsevier, 2021.
+(37) Zhao, Z.; Zhang, B.; Schrage, B. R.; Ziegler, C. J.; Boika, A.
+Investigations Into Aqueous Redox Flow Batteries Based on
+Ferrocene Bisulfonate. ACS Appl. Energy Mater. 2020, 3, 10270−
+10277.
+(38) Laine, A.; Coussens, B. B.; Hirvi, J. T.; Berthoud, A.;
+Friederichs, N.; Severn, J. R.; Linnolahti, M. Effect of Ligand
+Structure on Olefin Polymerization by a Metallocene/Borate Catalyst:
+A Computational Study. Organometallics 2015, 34, 2415−2421.
+(39) Chung, T. C.; Xu, G.; Lu, Y.; Hu, Y. Metallocene-Mediated
+Olefin Polymerization with B−H Chain Transfer Agents: Synthesis of
+Chain-End Functionalized Polyolefins and Diblock Copolymers.
+Macromolecules 2001, 34, 8040−8050.
+(40) Senthilnathan, D.; Vaideeswaran, S.; Venuvanalingam, P.;
+Frenking, G. Antitumor Activity of Bent Metallocenes: Electronic
+Structure Analysis Using DFT Computations. J. Mol. Model. 2011, 17,
+465−475.
+(41) Tsao, Y.; Lee, M.; Miller, E. C.; Gao, G.; Park, J.; Chen, S.;
+Katsumata, T.; Tran, H.; Wang, L.-W.; Toney, M. F.; Cui, Y.; Bao, Z.
+Designing a Quinone-Based Redox Mediator to Facilitate Li2S
+Oxidation in Li-S Batteries. Joule 2019, 3, 872−884.
+(42) Zhao, M.; Peng, H.-J.; Wei, J.-Y.; Huang, J.-Q.; Li, B.-Q.; Yuan,
+H.; Zhang, Q. Dictating High-Capacity Lithium−Sulfur Batteries
+through Redox-Mediated Lithium Sulfide Growth. Small Methods
+2020, 4, No. 1900344.
+(43) Gerber, L. C. H.; Frischmann, P. D.; Fan, F. Y.; Doris, S. E.;
+Qu, X.; Scheuermann, A. M.; Persson, K.; Chiang, Y.-M.; Helms, B. A.
+Three-Dimensional Growth of Li2S in Lithium−Sulfur Batteries
+Promoted by a Redox Mediator. Nano Lett. 2016, 16, 549−554.
+(44) Meini, S.; Elazari, R.; Rosenman, A.; Garsuch, A.; Aurbach, D.
+The Use of Redox Mediators for Enhancing Utilization of Li2S
+Cathodes for Advanced Li−S Battery Systems. J. Phys. Chem. Lett.
+2014, 5, 915−918.
+(45) Kim, K. R.; Lee, K.-S.; Ahn, C.-Y.; Yu, S.-H.; Sung, Y.-E.
+Discharging a Li-S Battery with Ultra-High Sulphur Content Cathode
+Using a Redox Mediator. Sci. Rep. 2016, 6, No. 32433.
+(46) Fijalkowski, K. J. Enhanced Activity of Titanocene Complex for
+Electrocatalytic Nitrogen Reduction Reaction. Catalysts 2021, 11,
+No. 389.
+(47) Wang, H.; Lin, H.; Long, Y.; Ni, B.; He, T.; Zhang, S.; Zhu, H.;
+Wang, X. Titanocene Dichloride (Cp2TiCl2) as a Precursor for
+Template-Free Fabrication of Hollow TiO2 Nanostructures with
+Enhanced Photocatalytic Hydrogen Production. Nanoscale 2017, 9,
+2074−2081.
+(48) Marenich, A. V.; Cramer, C. J.; Truhlar, D. G. Universal
+Solvation Model Based on Solute Electron Density and on a
+Continuum Model of the Solvent Defined by the Bulk Dielectric
+Constant and Atomic Surface Tensions. J. Phys. Chem. B 2009, 113,
+6378−6396.
+(49) Klamt, A.; Schüürmann, G. COSMO: A New Approach to
+Dielectric Screening in Solvents with Explicit Expressions for the
+Screening Energy and Its Gradient. J. Chem. Soc., Perkin Trans. 2
+1993, 0, 799−805.
+(50) Jayan, R.; Islam, M. M. Mechanistic Insights into Interactions of
+Polysulfides at VS2 Interfaces in Na−S Batteries: A DFT Study. ACS
+Appl. Mater. Interfaces 2021, 13, 35848−35855.
+(51) Aprà, E.; Bylaska, E. J.; de Jong, W. A.; Govind, N.; Kowalski,
+K.; Straatsma, T. P.; Valiev, M.; van Dam, H. J. J.; Alexeev, Y.;
+Anchell, J.; Anisimov, V.; Aquino, F. W.; Atta-Fynn, R.; Autschbach,
+J.; Bauman, N. P.; Becca, J. C.; Bernholdt, D. E.; Bhaskaran-Nair, K.;
+Bogatko, S.; Borowski, P.; Boschen, J.; Brabec, J.; Bruner, A.; Cauët,
+E.; Chen, Y.; Chuev, G. N.; Cramer, C. J.; Daily, J.; Deegan, M. J. O.;
+Dunning, T. H.; Dupuis, M.; Dyall, K. G.; Fann, G. I.; Fischer, S. A.;
+Fonari, A.; Früchtl, H.; Gagliardi, L.; Garza, J.; Gawande, N.; Ghosh,
+S.; Glaesemann, K.; Götz, A. W.; Hammond, J.; Helms, V.; Hermes,
+E. D.; Hirao, K.; Hirata, S.; Jacquelin, M.; Jensen, L.; Johnson, B. G.;
+Jónsson, H.; Kendall, R. A.; Klemm, M.; Kobayashi, R.; Konkov, V.;
+Krishnamoorthy, S.; Krishnan, M.; Lin, Z.; Lins, R. D.; Littlefield, R.
+J.; Logsdail, A. J.; Lopata, K.; Ma, W.; Marenich, A. V.; Martin del
+Campo, J.; Mejia-Rodriguez, D.; Moore, J. E.; Mullin, J. M.; Nakajima,
+T.; Nascimento, D. R.; Nichols, J. A.; Nichols, P. J.; Nieplocha, J.;
+Otero-de-la-Roza, A.; Palmer, B.; Panyala, A.; Pirojsirikul, T.; Peng,
+B.; Peverati, R.; Pittner, J.; Pollack, L.; Richard, R. M.; Sadayappan, P.;
+Schatz, G. C.; Shelton, W. A.; Silverstein, D. W.; Smith, D. M. A.;
+Soares, T. A.; Song, D.; Swart, M.; Taylor, H. L.; Thomas, G. S.;
+Tipparaju, V.; Truhlar, D. G.; Tsemekhman, K.; Van Voorhis, T.;
+Vázquez-Mayagoitia, Á.; Verma, P.; Villa, O.; Vishnu, A.; Vogiatzis, K.
+D.; Wang, D.; Weare, J. H.; Williamson, M. J.; Windus, T. L.;
+Woliński, K.; Wong, A. T.; Wu, Q.; Yang, C.; Yu, Q.; Zacharias, M.;
+Zhang, Z.; Zhao, Y.; Harrison, R. J. NWChem: Past, Present, and
+Future. J. Chem. Phys. 2020, 152, No. 184102.
+(52) Chen, X.; Peng, H.-J.; Zhang, R.; Hou, T.-Z.; Huang, J.-Q.; Li,
+B.; Zhang, Q. An Analogous Periodic Law for Strong Anchoring of
+Polysulfides on Polar Hosts in Lithium Sulfur Batteries: S- or Li-
+Binding on First-Row Transition-Metal Sulfides? ACS Energy Lett.
+2017, 2, 795−801.
+(53) Jand, S. P.; Chen, Y.; Kaghazchi, P. Comparative Theoretical
+Study of Adsorption of Lithium Polysulfides (Li2Sx) on Pristine and
+Defective Graphene. J. Power Sources 2016, 308, 166−171.
+(54) Jayan, R.; Islam, M. M. Functionalized MXenes as Effective
+Polyselenide Immobilizers for Lithium−Selenium Batteries: A Density
+Functional Theory (DFT) Study. Nanoscale 2020, 12, 14087−14095.
+(55) Zhang, Q.; Wang, Y.; Seh, Z. W.; Fu, Z.; Zhang, R.; Cui, Y.
+Understanding the Anchoring Effect of Two-Dimensional Layered
+Materials for Lithium−Sulfur Batteries. Nano Lett. 2015, 15, 3780−
+3786.
+ACS Applied Energy Materials
+www.acsaem.org
+Article
+https://doi.org/10.1021/acsaem.2c01459
+ACS Appl. Energy Mater. 2022, 5, 9782−9790
+9789
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​5/​8/​9782/​3442986/​ae2c01459.​pdf by TSINGHUA UNIV user on 03 October 2026
+
+<<PAGE 9>>
+(56) Xu, Y.; Ou, X.; Zhang, X. Theoretical Study of Two-
+Dimensional α-Tellurene with Pseudo-Heterospecies as a Promising
+Elemental Anchoring Material for Lithium−Sulfur Batteries. J. Phys.
+Chem. C 2021, 125, 4623−4631.
+(57) Kamphaus, E. P.; Balbuena, P. B. Long-Chain Polysulfide
+Retention at the Cathode of Li−S Batteries. J. Phys. Chem. C 2016,
+120, 4296−4305.
+(58) Pascal, T. A.; Wujcik, K. H.; Wang, D. R.; Balsara, N. P.;
+Prendergast, D. Thermodynamic Origins of the Solvent-Dependent
+Stability of Lithium Polysulfides from First Principles. Phys. Chem.
+Chem. Phys. 2017, 19, 1441−1448.
+(59) Liu, Q.; Mu, D.; Wu, B.; Wang, L.; Gai, L.; Wu, F. Insight on
+Lithium Polysulfide Intermediates in a Li/S Battery by Density
+Functional Theory. RSC Adv. 2017, 7, 33373−33377.
+(60) Rajput, N. N.; Murugesan, V.; Shin, Y.; Han, K. S.; Lau, K. C.;
+Chen, J.; Liu, J.; Curtiss, L. A.; Mueller, K. T.; Persson, K. A.
+Elucidating the Solvation Structure and Dynamics of Lithium
+Polysulfides Resulting from Competitive Salt and Solvent Inter-
+actions. Chem. Mater. 2017, 29, 3375−3379.
+(61) Wang, Y.; Shen, J.; Xu, L.-C.; Yang, Z.; Li, R.; Liu, R.; Li, X.
+Sulfur-Functionalized Vanadium Carbide MXene (V2CS2) as a
+Promising Anchoring Material for Lithium−Sulfur Batteries. Phys.
+Chem. Chem. Phys. 2019, 21, 18559−18568.
+(62) Wang, D.; Li, F.; Lian, R.; Xu, J.; Kan, D.; Liu, Y.; Chen, G.;
+Gogotsi, Y.; Wei, Y. A General Atomic Surface Modification Strategy
+for Improving Anchoring and Electrocatalysis Behavior of Ti3C2T2
+MXene in Lithium-Sulfur Batteries. ACS Nano 2019, 13, 11078−
+11086.
+(63) Jayan, R.; Islam, M. M. Mechanistic Insights into Interactions of
+Polysulfides at VS2 Interfaces in Na−S Batteries: A DFT Study. ACS
+Appl. Mater. Interfaces 2021, 13, 35848−35855.
+(64) Song, X.; Qu, Y.; Zhao, L.; Zhao, M. Monolayer Fe3GeX2 (X =
+S, Se, and Te) as Highly Efficient Electrocatalysts for Lithium−Sulfur
+Batteries. ACS Appl. Mater. Interfaces 2021, 13, 11845−11851.
+ACS Applied Energy Materials
+www.acsaem.org
+Article
+https://doi.org/10.1021/acsaem.2c01459
+ACS Appl. Energy Mater. 2022, 5, 9782−9790
+9790
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​5/​8/​9782/​3442986/​ae2c01459.​pdf by TSINGHUA UNIV user on 03 October 2026

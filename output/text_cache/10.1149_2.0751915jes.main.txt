@@ -1,0 +1,932 @@
+
+<<PAGE 1>>
+Journal of The
+Electrochemical Society
+     
+OPEN ACCESS
+Understanding the Impact of a Nonafluorinated
+Ether-Based Electrolyte on Li-S Battery
+To cite this article: Jiayu Cao et al 2019 J. Electrochem. Soc. 166 A3653
+ 
+View the article online for updates and enhancements.
+You may also like
+Ab initio calculation of nuclear-structure
+corrections in muonic atoms
+C Ji, S Bacca, N Barnea et al.
+-
+Approximate thumbnail encryption utilizing
+a chaotic map with enhanced parameter
+space
+Lizong Li
+-
+Extra tree regressor and Tree-structured
+parzen estimator based machine learning
+model for predicting nanofluid’s Nusselt
+number
+Shekhar, Koj Sambyo and Sunil Kumar
+Gupta
+-
+This content was downloaded from IP address 71.187.248.215 on 08/10/2026 at 13:40
+
+<<PAGE 2>>
+Journal of The Electrochemical Society, 166 (15) A3653-A3659 (2019)
+A3653
+Understanding the Impact of a Nonaﬂuorinated Ether-Based
+Electrolyte on Li-S Battery
+Jiayu Cao,1,2 Adam Tornheim,1 Tobias Glossmann,3,∗Andreas Hintennach,4 Tomas Rojas,5
+Quinton Meisner,
+1,∗Ritu Sahore,1 Qian Liu,1 Yan Wang,
+2 Anh Ngo,5 Larry A. Curtiss,5
+and Zhengcheng Zhang
+1,z
+1Chemical Sciences and Engineering Division, Argonne National Laboratory, Argonne, Illinois 60439, USA
+2Materials Science and Engineering, Worcester Polytechnic Institute, Worcester, Massachusetts 01609, USA
+3Mercedes-Benz Research & Development North America, Inc. Redford, Michigan 48239, USA
+4Daimler AG (Mercedes-Benz Cars), Group Research, HPC G012-BB, 71034 Boeblingen, Germany
+5Materials Science Division, Argonne National Laboratory, Argonne, Illinois 60439, USA
+The impact of the electrolyte solvation structure on the performance of Li-S battery was investigated using an electrolyte sys-
+tem containing various solvent ratios of DOL and a nonaﬂuorinated ether: 1,1,2,2-tetraﬂuoroethyl-2,2,3,3,3-pentaﬂuoropropyl
+ether (TPE). The cell testing results indicate that increasing the TPE ratio led to both a higher discharge capacity and a higher
+Coulombic efﬁciency. The Li electrodes from the Li/Li symmetric cells showed that the one in higher TPE-content electrolyte
+has a smoother and more continuous SEI layer. AIMD simulation revealed the solvation structure of DOL/TPE – lithium poly-
+sulﬁde changes when the TPE concentration increases, which dictates the lithium polysulﬁde solubility in such electrolyte.
+These results shed light on the underpinned mechanism of the improved Coulombic efﬁciency and cycling performance of the
+Li-S cell.
+© The Author(s) 2019. Published by ECS. This is an open access article distributed under the terms of the Creative Commons
+Attribution 4.0 License (CC BY, http://creativecommons.org/licenses/by/4.0/), which permits unrestricted reuse of the work in any
+medium, provided the original work is properly cited. [DOI: 10.1149/2.0751915jes]
+Manuscript submitted September 11, 2019; revised manuscript received October 23, 2019. Published November 5, 2019.
+The consumption of limited fossil fuel resources is continuously
+rising during the past two decades,1,2 and atmospheric pollution and
+consequentclimatechangescausedbyusingfossilfuel3 becomesmore
+serious. These problems have prompted interest in renewable ener-
+gies, such as water, wind, solar energies, to replace traditional fossil
+fuel.4 Among the various kinds of electrical energy storage systems,
+the Li-ion battery (LIB) has been one of the most competitive candi-
+dates for energy storage due to their high theoretical energy density
+and long calendar life.1–7 Nevertheless, the energy density of most
+commercial LIBs are about 200−300 Wh/kg2,8 which has already
+been a limitation when applying them in pure electric vehicles. The
+limited energy density of LIBs results in a short driving range (i.e.,
+<300 km) for pure electric vehicles.8–10 In order to achieve the re-
+quirement of a higher energy density, the lithium sulfur (Li-S) battery
+is a promising candidate to replace traditional LIB as a next gener-
+ation energy storage device.11,12 The theoretical charge-storage ca-
+pacity of sulfur (1675 mAh/g) is an order of magnitude higher than
+that of the traditional insertion-compound cathodes (e.g., LiCoO2,
+LiNi0.5Mn0.3Co0.2O2, and LiFePO4),11 and also sulfur is the cheap-
+est solid-state cathode material for energy storage devices.
+The capacity of Li-S batteries comes from the reversible redox re-
+action S + 2Li ↔Li2S. The ﬁnal insoluble product Li2S is generated
+during the last redox reaction. Before the Li2S is produced, sulfur is
+reduced to various long-chain polysulﬁde intermediates, which are
+soluble in the organic electrolyte.13,14 The polysulﬁdes can have a
+negative impact on the Coulombic efﬁciency (CE) and capacity of
+the Li-S battery:15–17 during charging and discharging, various kinds
+of soluble higher-order lithium polysulﬁdes Li2Sx (4<x<8) are gen-
+erated and part of them dissolve into the electrolyte and diffuse to
+lithium anode surface. Due to the high reactivity of lithium anode,
+the diffused higher-order polysulﬁdes can be reduced to lower-order
+polysulﬁdes Li2Sx (2<x<4), which will then diffuse back to the sulfur
+cathode surface and be re-oxidized to higher-order ones. This contin-
+uous reduction-oxidation cycling process is referred to as polysulﬁde
+redox “shuttling.” Polysulﬁde redox shuttling causes extremely low
+CE because it shortens the discharge step and extends charge step of
+a voltage-limited battery, and it also contributes to capacity fading of
+the battery during cycling due to the loss of the active material from
+the deposition of ﬁnal discharged product, Li2S, on lithium anode.
+∗Electrochemical Society Member.
+zE-mail: zzhang@anl.gov
+The instability of the Li anode is also a main obstacle for the com-
+mercialization of Li-S batteries.4,18 The volume change causes cracks
+and ﬁssures in the solid-electrolyte-interface (SEI) that results in con-
+tinuous electrolyte and Li consumption by reacting with each other
+or with dissolved polysulﬁde during cycling. This ﬁnally results in a
+thick SEI and inhomogeneous deposition of Li dendrites,19 the former
+causes high impedance in batteries, the latter is likely to pierce the
+separator,18,19 causing a short circuit of the cell. The polysulﬁde redox
+shuttling phenomenon and stabilizing the Li anode/electrolyte inter-
+face can be alleviated by forming a resilient and robust passivation
+SEI layer, which can help overcome the poor cycle life and low sulfur
+utilization of Li-S batteries.20
+In order to address these problems, tremendous efforts have been
+made by many research groups. Part of them have focused on opti-
+mizing sulfur electrodes by incorporating sulfur into various host ma-
+terials such as, carbonaceous materials (including carbon matrix,21,22
+hollow carbon sphere,23,24 porous carbon,25,26 carbon nanotube,27,28
+and graphene),29,30 conducting polymers,31 metal oxides,32 and metal
+or covalent organic frameworks.33 These host materials can promote
+electron transfer, trap the polysulﬁde to constrain the redox shut-
+tling process and relieve the volume expansion of Li-anode. How-
+ever, the high cost and complex formation process of these electrodes
+are main barriers. In another direction, some of research groups add
+additives the electrolyte helping form a protective passivation layer
+over the Li-anode. For example, LiNO3 has been utilized by many
+researchers. Mikhaylik et al. found that LiNO3 can suppress poly-
+sulﬁde shuttling,34 this result was explained by Aurbach et al. by
+LiNO3 decomposing at the lithium surface, preventing reactions be-
+tween lithium and polysulﬁde.35 However, as an additive, LiNO3 has
+several drawbacks. First, LiNO3 is consumed gradually during cy-
+cles and also decomposes at the cathode below 1.8 V.36 Further-
+more, LiNO3 is easily to be oxidized, in pouch cells to produce ex-
+treme gassing that causes serious safety issues.37 Taking into con-
+sideration the issues discussed above, new electrolytes are consid-
+ered as alternative methods for the development of reliable Li-S bat-
+teries. New electrolyte design and materials have been attempted
+to solve these issues.38–41 One of the prominent strategies to miti-
+gate the lithium polysulﬁde crossover is highly concentrated liquid
+electrolytes, also described by different groups as sparingly solvat-
+ing electrolytes, salt-in-solvent electrolytes, solvate ionic liquids or
+localized high-concentration electrolytes for lithium-ion battery, to
+drastically minimize Li2Sx dissolution.42,43 Examples for Li-S battery
+
+<<PAGE 3>>
+A3654
+Journal of The Electrochemical Society, 166 (15) A3653-A3659 (2019)
+Figure 1. (a)
+Chemical
+structure
+of
+1,1,2,2-tetraﬂuoroethyl-2,2,3,3-
+tetraﬂuoropropyl ether (TTE) and (b) 1,1,2,2-tetraﬂuoroethyl-2,2,3,3,3-
+pentaﬂuoropropyl ether (TPE).
+application include (CH3CN)2LiTFSI/TTE,44 and (glyme)/LiTFSI
+(triglyme or tetraglyme).45
+Previously, a great improvement on the electrochemical perfor-
+mance of lithium-sulfur cells has been reported by using a ﬂuorinated
+ether -1,1,2,2-tetraﬂuoroethyl-2,2,3,3-tetraﬂuoropropyl ether -TTE
+(Figure 1a) as cosolvent blended with 1,3-dioxolane (DOL).2,6,20,46,47
+In this paper, we studied a new nonaﬂuorinated ether, 1,1,2,2-
+tetraﬂuoroethyl-2,2,3,3,3-pentaﬂuoropropyl ether (TPE) (Figure 1b),
+as a Li-S electrolyte. The TPE has one more F substituting H com-
+pared with previously reported TTE, therefore TPE has a higher ﬂu-
+orination degree compared with TTE. We report the electrochemical
+performance of the Li-S battery, which composed of a sulfur com-
+posite cathode, a DOL/TPE electrolyte and a lithium-metal anode. In
+order to understand the mechanism in the new Li-S system, the elec-
+trode and electrolyte were studied systematically by electrochemical
+methods, analytical technique such as air-free scanning electron mi-
+croscopy (SEM), energy-dispersive X-ray spectroscopy (EDS), and
+ab-initio molecular dynamics simulation.
+Overall, a comparison of cells containing different solvent ratios of
+DOL/TPE shows that increasing the TPE concentration leads to both
+an improved discharge capacity and higher CE due to the solvation
+structure change and its effect on suppressing the dissolution of Li2Sx
+and redox shuttling behavior.
+Experimental
+Materials.—Nonaﬂuorinated
+ether,
+1,1,2,2-tetraﬂuoroethyl-
+2,2,3,3,3-pentaﬂuoropropyl
+ether
+(TPE)
+was
+purchased
+from
+Manchester Organics (97%) and dried with 4Å molecular sieves
+before use. 1,3-dioxolane (DOL) was purchased from Sigma-Aldrich,
+vacuum distilled, dried over 4Å molecular sieves for 24 h, and ﬁltered
+before use. Lithium bis(triﬂuoromethanesulfonyl) imide (LiTFSI)
+was purchased from Sigma-Aldrich (99.95%) and dried at 150°C
+under vacuum overnight. 0.5 M LiTFSI solutions were formulated
+with 4:1, 2:1, or 1:2 DOL: TPE solvent ratios by volume. The
+synthesis and electrochemical performance of porous carbon used
+in this study has been reported before.48 Carbon-sulfur composites
+were prepared via melt-inﬁltration method. Typically, carbon and
+sulfur powders in a weight ratio of 1:4 were mixed in a mortar and
+pestle to disperse the sulfur uniformly into the carbon. The mixture
+was then sealed in a stainless-steel pressure reactor and heated at
+160°C for 18 h. Electrodes were fabricated by coating a slurry of
+carbon-sulfur composite, carbon black (Super P), and polyvinylidene
+ﬂuoride binder in a weight ratio of 80:12:8 onto an aluminum foil.
+After drying at 60°C for 12 h, the sulfur loading was determined to
+be 1.2 mg/cm2. Lithium metal electrodes (MTI) were 15.6 mm in
+diameter. Polyoleﬁn separators (Celgard 2325) punched to 16 mm
+diameter were used for Li-S cells, and glass ﬁber (Fisher Scientiﬁc)
+separators were used for the Li/Li symmetric cells.
+Li-S battery cycling test.—2032 coin cells were used for all ex-
+periments, and all coin cell assembly was conducted in an argon-
+atmosphere glovebox. Sulfur electrodes were punched to 14.2 mm
+disks and dried at 50°C in an Ar-ﬁlled glovebox before use. The coin
+cells were assembled using 20 μL electrolyte per milligram of sulfur,
+with half of the electrolyte added on the Li anode and the other half on
+the separator. After assembly, the cells were transferred to a battery
+tester (Maccor 4100) and cycled at a C/10 rate from 2.6 to 1.0 V, with
+C-rate corresponding to the theoretical capacity of the sulfur content
+of the electrode (1675 mA/g of sulfur).
+Li/Li symmetric cell test.—Li/Li symmetric cells were constructed
+with two identical 15.6 mm diameter Li metal electrodes and a glass
+ﬁber separator and 170 μL electrolyte. After assembly, the Li/Li sym-
+metric cells were transferred to the battery cycler and cycled gal-
+vanostatically at +/−0.27 mA until 1.5 mAh charge had passed, or
+until cell voltage reached +/−1 V, for 50 cycles. After the electro-
+chemical protocol was completed, the cells were transferred back to
+an argon-atmosphere glovebox and disassembled for FT-IR and SEM
+characterization.
+SEM characterization.—Scanning electron microscopy (SEM) and
+energy dispersive spectroscopy (EDS) were performed with a JEOL
+JSM-6610LV SEM and Oxford Instruments XMax detector with
+AZtecEnergy software, respectively. Lithium anodes harvested from
+the Li/Li symmetric cells were rinsed in 2 mL of dry DOL twice and
+dried via evaporation. The Li samples were mounted inside an air-tight
+transfer holder and placed into the SEM column.
+FT-IR measurement.—FT-IR spectra were collected on a Thermo
+Scientiﬁc Nicolet iS5 FT-IR equipped with a Thermo Scientiﬁc iD5
+ATR attachment placed in an argon-ﬁlled glovebox. Pieces of the an-
+ode were gently pressed unto the ATR attachment and the spectrum
+collected for 1000 scans at 0.482 cm−1 resolution with background
+subtraction.
+Simulations.—Ab-initio molecular dynamics (AIMD) calculations
+were used within the generalized gradient approximation in the form
+of the exchange-correlation functional developed by Perdew, Burke,
+and Ernzerhof (PBE)49 as implemented in the Vienna ab initio Soft-
+ware Package (VASP).50–53 The energy cutoff for the plane waves was
+set at 600 eV, and the Brillouin zone was sampled using the Г point.
+The electrolyte systems are created in a 15 × 15 × 15 Å supercells
+with ∼300 atoms in all cases and considering periodic boundary con-
+ditions in all directions. Volume ratios of 4:1, 1:1 and 1:2 for DOL to
+TPE are considered for the electrolyte; these molecules are initially as-
+signed random positions and orientations inside the cell. The number
+of molecules of each compound is estimated to be consistent with vol-
+ume ratios and experimental densities. However, we are still limited to
+a relatively small supercell size due to the computational complexity
+of the system; this means that adding one molecule of Li2S6 in this
+volume represents a concentration close to 0.5 M, which is large in
+comparison with the experimental values. Nevertheless, the locality of
+the solvation as well as the comparison among the volume ratio con-
+tinues to be valid and complementary to the experimental results. Each
+electrolyte was equilibrated at 300 K for 14 ps using a time step of
+1 fs; the temperature was maintained using a Nose-Hoover thermostat.
+Results and Discussion
+Electrochemical performance.—The cycling metrics of three
+DOL/TPE/LiTFSI electrolytes in the Li-S batteries are shown in
+Figure 2. In Figure 2a, the initial discharge capacity ranges from 1100–
+1170 mAh/g for these three kinds of electrolytes, with ﬁnal gravimetric
+capacities of 630, 660, 770 mAh/g for the 4:1, 1:1, and 1:2 ratios, re-
+spectively. Figure 2b shows the CE of the three electrolytes surveyed,
+with stark differences in the measured CE. It should be noted that as
+the electrochemical protocol begins with a discharge step followed
+by a charge step, the CE is calculated from the (n+1th discharge)/(nth
+charge),otherwiseCEwouldbeartiﬁciallyinﬂatedandcouldbehigher
+than 100% for some cells. In Figure 2b, it can be seen that the 4:1 ra-
+tio leads to exceptionally low initial CE of ∼50%, although capacity
+loss from one cycle to another is much lower than the CE indicates.
+Throughout the cycling protocol, the CE of the 4:1 ratio and 1:1 ratio
+increases, while the 1:2 ratio stays roughly constant at 99%.
+
+<<PAGE 4>>
+Journal of The Electrochemical Society, 166 (15) A3653-A3659 (2019)
+A3655
+0
+10
+20
+30
+40
+50
+0
+200
+400
+600
+800
+1000
+1200
+4:1, 0.5 M LiTFSI
+ 1:1, 0.5 M LiTFSI
+ 1:2, 0.5 M LiTFSI
+Discharge Capacity (mAh/g)
+Cycle Number
+(a)
+0
+10
+20
+30
+40
+50
+40
+60
+80
+100
+4:1, 0.5 M LiTFSI
+ 1:1, 0.5 M LiTFSI
+ 1:2, 0.5 M LiTFSI
+Coulombic Efficiency (%)
+Cycle Number
+(b)
+Figure 2. (a) Li-S cell capacity with 4:1, 1:1, and 1:2 DOL/TPE/LiTFSI electrolyte and (b) corresponding Coulombic efﬁciency. (Average sulfur loading was
+1.2 mg/cm2, E/S = 20 mL/g, current density was 2.01 mA/cm2).
+Figures 2a–2b indicate some clear insight into the stabilities of both
+electrode-electrolyte interfaces with the various electrolytes. First, the
+reasonably stable cycling (55% retention after 50 cycles) shows that
+with the 4:1 ratio, the low CE and large capacity of irreversible reac-
+tions can be attributed to shuttling reactions. These shuttling reactions
+therefore preclude the existence of a properly passivated Li electrode,
+as a functional SEI would prevent the reduction of the shuttling compo-
+nent. The high CE and stable cycling of the 1:2 ratio therefore indicates
+either the presence of a functional SEI on the lithium or signiﬁcantly
+lower solubility of the shuttling component. Both of these qualities of
+an electrolyte could be tied to the relative composition and lithium salt
+concentration used.
+In order for an electrolyte to be ionically conductive, there must
+be a lithium salt that dissociates to form mobile Li ions. In tradi-
+tional Li-S batteries with organic electrolytes composed of DOL and
+1,2-dimethoxyethane (DME), both solvents can solvate the lithium
+salt. If these electrolytes are not saturated with the lithium salt, free,
+uncoordinated solvent molecules can then solvate the intermediate
+discharge products, polysulﬁdes of the form Li2Sx. Lithium poly-
+sulﬁdes have been shown to participate in shuttling reactions in the
+literature.54–58 Furthermore, these undercoordinated solvents can also
+participate in the dissolution of SEI components on the lithium elec-
+trode, which are intrinsically lithium salts as well.
+For this system, using the TPE co-solvent the sole coordinating
+solventcomponentisDOL.AsthesolventratioofDOL:TPEdecreases
+(with a constant lithium salt), the concentration of undercoordinated
+DOL is decreasing as well. As was shown in previous work with a
+ﬂuorinated ether cosolvent, lithium polysulﬁde solubility decreases,
+and CE increases substantially.
+Figure 3a shows the voltage proﬁles of cells contain three testing
+electrolytes at the ﬁrst cycle. For the discharge curves, while the 4:1
+ratio shows a high (∼2.1 V) plateau, the lower DOL ratio electrolytes
+show a depressed plateau, with the 1:2 showing a plateau of ∼1.7 V.
+At the end of the discharge plateaus, the 4:1 ratio shows a sharper po-
+larization (more vertical line), while the 1:2 ratio shows a more sloped
+proﬁle. The differences in plateau voltages for the three electrolytes
+on discharge are not mirrored for the subsequent charge, as the charge
+voltage plateaus all occur at approximately the same voltage.
+Figures 3b–3c summarize the voltage proﬁles at cycles 1, 10, 20,
+30, 40, and 50 with various electrolytes. First, for the 4:1 electrolyte,
+the initial discharge has both the largest capacity and highest plateau of
+all subsequent cycles. The overpotential on both discharge and charge
+cycles grow monotonically throughout the cycling protocol, with a
+commensurate decrease in cycling capacities, while the general shape
+is preserved. The 1:1 ratio shows a slightly different trend, in that
+the ﬁrst discharge shows a depressed voltage proﬁle, which may be
+due to electrode wetting. The ﬁrst charge proﬁle and subsequent dis-
+charge proﬁles (10th and 20th cycle) do not show a signiﬁcantly higher
+overpotential than the 4:1, so this increased overpotential appears to be
+limited to the initial charge. However, in contrast to 4:1 ratio, both dis-
+charge and charge overpotential of 1:1 ratio group increase steadily
+and largely over the rest of the cycling protocol, suggesting a rise
+of interfacial impedance. The 1:2 ratio shows a large overpotential
+on all discharge voltage proﬁles, with an initial plateau of roughly
+1.9 V.
+Post-test analysis.—Solvation structure plays a signiﬁcant role in
+the cell performance. Furthermore, the electrolytes also showed dif-
+ferent passivation capability on the surface of lithium anode when dif-
+ferent electrolytes were used as indicated by the Coulombic efﬁciency
+data shown in Figure 2b. To understand if the lithium anode passiva-
+tion also impacts the cell performance, Li/Li symmetrical cells were
+assembled and cycled repeated with different electrolytes. Figure 4a
+showed the voltage proﬁles of Li/Li cell cycled with three electrolytes.
+These Li/Li symmetric cells showed minimum overpotential growth
+after 220 hours deposition and stripping, indicating that TPE-based
+electrolytes are able to passivate the lithium anode. However, the solid-
+electrolyte-interface (SEI) formed by the electrolytes differs in terms
+of morphology and chemical composition. The harvested lithium an-
+ode was then subject to SEM and FT-IR analysis. Figure 4b showed the
+FT-IR spectra of the lithium anode harvested from the Li/Li symmet-
+ric cells. Characteristic broad peaks associated with the decomposi-
+tion/polymerization of the DOL were observed from the 4:1 DOL:TPE
+cycled anode, different vibrational peaks that originated from the ﬂu-
+orinated species were observed from 1300 cm−1 to 1000 cm−1 for
+the both 1:1 and 1:2 DOL:TPE electrolytes. These peaks did not
+simply arise from a component of an initial electrolyte component
+as evidenced by the FT-IR spectra collected for the individual sol-
+vent DOL and TPE.59 Both SEM and the FT-IR data indicate that
+higher TPE concentration electrolytes dominates the SEI process on
+the surface of lithium anode rather than the DOL forming the protec-
+tion layer and preventing the redox reaction of dissolved Li2Sx in the
+electrolyte.
+Figures 5 are the SEM images of cycled lithium anode from Li/Li
+symmetric cells. Figure 5a shows the lithium morphology cycled in
+4:1 DOL:TPE electrolyte. The surface was heavily deposited by the
+decomposition products of the electrolyte with large isolated agglom-
+eration caused by the polymerization of DOL. When the TPE concen-
+tration is increased in the electrolyte, the lithium morphology changes.
+Figures 5b–5c show the SEM images of lithium cycled with the higher
+TPE concentration electrolytes (1:1 and 1:2 DOL:TPE). The surface
+of the lithium was transitioned to a more smooth surface with ﬁne
+distributed particles (Figure 5b) and more integrated and homoge-
+neous without large particles and no cracking was observed (Fig-
+ure 5c) for the anode cycled with the highest TPE concentration (1:2
+DOL:TPE), which signiﬁcantly contrasts with that shown in Figure 4a.
+
+<<PAGE 5>>
+A3656
+Journal of The Electrochemical Society, 166 (15) A3653-A3659 (2019)
+0
+200
+400
+600
+800 1000 1200 1400 1600
+1.0
+1.2
+1.4
+1.6
+1.8
+2.0
+2.2
+2.4
+2.6
+Voltage (V)
+Capacity (mAh/g)
+4:1 0.5 M
+1:1 0.5 M
+1:2 0.5 M
+(a)
+1st Cycle
+0
+200 400 600 800 1000 1200 1400 1600
+1.0
+1.2
+1.4
+1.6
+1.8
+2.0
+2.2
+2.4
+2.6
+Voltage
+Capacity (mAh/g)
+1
+10
+20
+30
+40
+50
+4:1 DOL/TPE 0.5M LiTFSI
+(b)
+0
+200
+400
+600
+800
+1000
+1200
+1.0
+1.2
+1.4
+1.6
+1.8
+2.0
+2.2
+2.4
+2.6
+Voltage
+Capacity (mAh/g)
+1
+10
+20
+30
+40
+50
+1:2 DOL/TPE 0.5M LiTFSI
+(d)
+0
+200
+400
+600
+800
+1000
+1200
+1.0
+1.2
+1.4
+1.6
+1.8
+2.0
+2.2
+2.4
+2.6
+Voltage
+Capacity (mAh/g)
+1
+10
+20
+30
+40
+50
+1:1 DOL/TPE 0.5M LiTFSI
+(c)
+Figure 3. (a) 1st cycle voltage proﬁles of Li-S cells with three testing electrolytes (4:1, 1:1, and 1:2 ratios of DOL:TPE), and voltage proﬁles of the Li-S cell
+with (b) 4:1 ratio DOL:TPE electrolyte, (c) 1:1 ratio DOL: TPE electrolyte, and (d) 1:2 ratio DOL:TPE electrolyte. (Average sulfur loading was 1.2 mg/cm2,
+E/S = 20 mL/g, current density was 2.01 mA/cm2).
+Figures 5d–5f are the magniﬁed SEM images of Figures 5a–5c.
+Electrochemical data and post-test analysis all indicate that lithium
+anode surface passivation and the electrolyte solvation power of Li2Sx
+contribute simultaneously to the improved Li-S cell electrochemical
+performance.
+AIMD simulation.—To deeply understand the improvement in
+Li-S cell with TPE based electrolytes, the solvation structure was
+calculated by AIMD simulation for the electrolyte, the isolated
+Li2S6 molecule, and electrolyte in the presence of a Li2S6 molecule.
+The solvation energy is deﬁned as E = Eelec+Li2S6 −(Eelec + ELi2S6 ),
+0
+40
+80
+120
+160
+200
+240
+-100
+-50
+0
+50
+100
+Voltage (mV)
+Time [h]
+DOL/TPE 4/1
+DOL/TPE 1/1
+DOL/TPE 1/2
+(a)
+3000
+2500
+1500
+1000
+Wavenumbers (cm-1)
+DOL:TPE 1:2
+DOL:TPE 1:1
+DOL:TPE 4:1
+(b)
+Figure 4. (a) Voltage proﬁles of Li-Li Symmetric cells contain three testing electrolytes (4:1, 1:1, and 1:2 ratios of DOL: TPE), (b) FT-IR spectra of the Li anode
+harvested from the cycled Li/Li symmetric cells.
+
+<<PAGE 6>>
+Journal of The Electrochemical Society, 166 (15) A3653-A3659 (2019)
+A3657
+Figure 5. (a-c) SEM images of lithium anode harvested from Li/Li symmetric cells containing three electrolytes (4:1, 1:1, and 1:2 ratios of DOL:TPE) and (d-f)
+magniﬁed SEM images of (a-c).
+where Eelec+Li2S6, Eelec and ELi2S6 represent the free energy of the last
+AIMD step for electrolyte in the presence of the Li2S6, the electrolyte
+and the isolated Li2S6, respectively. Under this deﬁnition, the most
+negative solvation energy represents the strongest solvation energy of
+the lithium polysulﬁde in the electrolyte. We also found negligible
+charge transfer between the electrolyte and polysulﬁde by performing
+Bader analysis using the code developed by Henkelman et al.60
+Figure 6 showed the Li2S6 solvation structures in the DOL/TPE
+electrolytes, along with the solvation energies from the last step of
+the calculation. The most negative solvation energy is represented by
+the 4:1 volume ratio at −1.61 eV, followed by the 1:1 volume ratio
+at −0.92 eV and 1:2 volume ratio at −0.41 eV. From these results,
+the magnitude of the solvation energy of the Li2S6 depends on the
+concentration of TPE concentration in the electrolyte.
+The radial pair distribution function was calculated using the av-
+erage trajectories of the molecules over the last picosecond of the
+calculation. As shown in Figures 7a–7c, the ﬁrst solvation shell of
+the Li2S6 (located around 3Å) is composed by DOL molecules for all
+three volume ratios considered, while the TPE molecules are located in
+outer shells. The location of the closest TPE molecules also shows pro-
+portionality with the concentration, for 4:1 volume ratio electrolyte,
+Figure 6. Solvation structures and energies of Li2S6 in 4:1, 1:1 and 1:2
+DOL:TPE electrolytes.
+the TPE appear at around 7 Å from the Li2S6, for 1:1 volume ratio at
+around 6 Å and ﬁnally at 5 Å for 1:2 volume ratio. The coordination
+number of the Li2S6 was also calculated and the data were shown in
+Figures 7d–7f. These results reveal that as the TPE molecules reach
+closer to the LiPS, the solvation with DOL molecules presents a coor-
+dination number in the ﬁrst shell of ∼1.8 at the 4:1 volume ratio, and
+∼1.5 and 0.5 for 1:1 and 1:2 volume ratio.
+Based on these calculations, as the concentration of TPE in-
+creases, the number of DOL molecules in the immediate vicinity
+of the LiPS decreases, thus lowering the solvation energy and con-
+sequently decreasing the solubility of the LiPS in the electrolyte.
+This result correlates well with the Coulombic efﬁciency and cycling
+performance.
+We also simulated the interaction of TPE with the lithium. TPE
+molecules are adsorbed on the Li (100) surface with a binding en-
+ergy of −0.28 eV with O atom in TPE as close as possible to the
+Li surface. It has been reported that the absorption of a Li atom
+with TPE in exchange for an H atom is also energetically favor-
+able when it is considered that the H atom is adsorbed by the Li
+surface.59
+To complement the study of that reaction, we calculated the adsorp-
+tion of the TPE conﬁguration with the lowest reaction energy over the
+Li slab with an H atom on the surface. This calculation is illustrated in
+Figure 8. After the electron relaxation, the Li atom that was initially
+attached to the molecule returns to the surface, on top of that, a ﬂuo-
+rine atom migrates from the TPE toward the surface, which suggests
+the formation of LiF as part of SEI and the unsaturated ﬂuorinated
+ether. The binding energy of this conﬁguration, with respect to the
+optimized TPE conﬁguration and Li surface with the H atom, is esti-
+mated to be −2.25 eV, which suggest that the reaction is energetically
+favorable.
+Conclusions
+The impact of a nonaﬂuorinated ether, 1,1,2,2-tetraﬂuoroethyl-
+2,2,3,3,3-pentaﬂuoropropyl
+ether
+(TPE),
+was
+explored
+as
+an
+electrolyte co-solvent for Li-S battery. The high TPE concentration
+electrolyte showed signiﬁcantly improved Coulombic efﬁciency and
+capacity retention. AIMD simulation revealed the solvation energy
+and solvation structure of DOL/TPE electrolyte changes with varying
+TPE concentrations. Furthermore, the reaction of TPE with lithium
+anode is calculated to be thermodynamically favorable forming LiF
+and unsaturated ﬂuorinated species as the dominate SEI components.
+These simulation results correlate well with the electrochemical data
+such as Coulombic efﬁciency and capacity retention.
+
+<<PAGE 7>>
+A3658
+Journal of The Electrochemical Society, 166 (15) A3653-A3659 (2019)
+2
+4
+6
+8
+10
+0.00
+0.02
+0.04
+0.06
+0.08
+0.10
+0.12
+g(r)
+r(A)
+Li2S6-TPE
+Li2S6-DOL
+DOL:TPE 1:2
+(b)
+2
+4
+6
+8
+10
+0.00
+0.02
+0.04
+0.06
+0.08
+0.10
+0.12
+g(r)
+r(A)
+Li2S6-TPE
+ Li2S6-DOL
+DOL:TPE 4:1
+(a)
+2
+4
+6
+8
+10
+0.00
+0.02
+0.04
+0.06
+0.08
+0.10
+0.12
+g(r)
+r(A)
+Li2S6-TPE
+Li2S6-DOL
+DOL:TPE 1:1
+(c)
+0
+2
+4
+6
+8
+10
+0
+2
+4
+6
+8
+10
+Coordination Number
+r(A)
+Li2S6-TPE
+Li2S6-DOL
+(f)
+DOL:TPE 1:1
+2
+4
+6
+8
+10
+0
+2
+4
+6
+8
+10
+Coordination Number
+r(A)
+Li2S6-TPE
+Li2S6-DOL
+DOL:TPE 1:1
+(e)
+2
+4
+6
+8
+10
+0
+2
+4
+6
+8
+10
+Coordination Number
+r(A)
+Li2S6-TPE
+Li2S6-DOL
+DOL:TPE 4:1
+(d)
+Figure 7. (a-c) Pair distribution function g(r) for the DOL and TPE molecules with respect to the Li2S6, and (d-f) coordination number for the DOL and TPE
+molecules with respect to the Li2S6. For all cases the large peak at ∼3Å in the g(r) represents the ﬁrst solvation shell of the lithium polysulﬁde, which is carried
+out exclusively by the DOL molecules.
+Acknowledgments
+This research is supported by Daimler AG/Mercedes-Benz Re-
+search & Development North America, Inc. Argonne, a U.S. Depart-
+ment of Energy laboratory, is operated by UChicago Argonne, LLC
+under contract DE-AC02-06CH11357. We gratefully acknowledge the
+computing resources provided on Bebop, a high-performance comput-
+ing cluster operated by the Laboratory Computing Resource Center at
+Argonne National Laboratory.
+Figure 8. (a) Top and side view of the coordinates of TPE with Li (001) sur-
+face in the lowest reaction energy conﬁguration before performing electronic
+optimization, and (b) top and side view of the TPE-Li interaction after elec-
+tronic relaxation. (Green, brown, gray and pink represent Li, C, F, and H atom,
+respectively).
+ORCID
+Quinton Meisner
+https://orcid.org/0000-0002-9342-0412
+Yan Wang
+https://orcid.org/0000-0003-1060-2956
+Zhengcheng Zhang
+https://orcid.org/0000-0002-0467-5801
+References
+1. A. Rosenman, E. Markevich, G. Salitra, D. Aurbach, A. Garsuch, and F. F. Chesneau,
+Review on Li-Sulfur Battery Systems: an Integral Perspective, Adv. Energy Mater.,
+5(16), 1500212 (2015).
+2. C. Zu, N. Azimi, Z. Zhang, and A. Manthiram, Insight into lithium–metal anodes in
+lithium–sulfur batteries with a ﬂuorinated ether electrolyte, J. Mater. Chem. A, 3(28),
+14864 (2015).
+3. M. Agostini, B. Scrosati, and J. Hassoun, An Advanced Lithium-Ion Sulfur Battery
+for High Energy Storage, Adv. Energy Mater., 5(16), 1500481 (2015).
+4. M. A. Pope and I. A. Aksay, Structural Design of Cathodes for Li-S Batteries, Adv.
+Energy Mater., 5(16), 1500124 (2015).
+5. Y. Yin, X. Zhang, X. Du, T. Zhou, N. Li, W. Xu, and C. Li, Efﬁcient Charging of
+Lithium–Sulfur Batteries by Triboelectric Nanogenerator Based on Pulse Current,
+Adv. Mater. Technol., 4(2), 1800326 (2019).
+6. N. Azimi, Z. Xue, I. Bloom, M. L. Gordin, D. Wang, T. Daniel, C. Takoudis, and
+Z. Zhang, Understanding the Effect of a Fluorinated Ether on the Performance of
+Lithium–Sulfur Batteries, ACS Appl. Mater. Interfaces, 7(17), 9169 (2015).
+7. L. Wang, Y. Wang, and Y. Xia, A high performance lithium-ion sulfur battery based
+on a Li2S cathode using a dual-phase electrolyte, Enegr. Environ. Sci., 8(5), 1551
+(2015).
+8. B. Scrosati, J. Hassoun, and Y.-K. Sun, Lithium-ion batteries, A look into the future,
+Enegr. Environ. Sci., 4(9), 3287 (2011).
+9. M. M. Thackeray, C. Wolverton, and E. D. Isaacs, Electrical energy storage for
+transportation—approaching the limits of, and going beyond, lithium-ion batteries,
+Enegr. Environ. Sci., 5(7), 7854 (2012).
+10. X. Ji and L. F. Nazar, Advances in Li–S batteries, J. Mater. Chem., 20(44), 9821
+(2010).
+11. A. Manthiram, Y. Fu, S.-H. Chung, C. Zu, and Y.-S. Su, Rechargeable Lithium–Sulfur
+Batteries, Chem. Rev., 114(23), 11751 (2014).
+12. Y. Yang, G. Zheng, and Y. Cui, Nanostructured sulfur cathodes, Chem. Soc. Rev.,
+42(7), 3018 (2013).
+13. S. S. Zhang, Liquid electrolyte lithium/sulfur battery: Fundamental chemistry, prob-
+lems, and solutions, J. Power Sources, 231, 153 (2013).
+14. A. Kawase, S. Shirai, Y. Yamoto, R. Arakawa, and T. Takata, Electrochemical re-
+actions of lithium–sulfur batteries: an analytical study using the organic conversion
+technique, Phys. Chem. Chem. Phys., 16(20), 9344 (2014).
+15. L. Chen and L. L. Shaw, Recent advances in lithium–sulfur batteries, J. Power
+Sources, 267, 770 (2014).
+
+<<PAGE 8>>
+Journal of The Electrochemical Society, 166 (15) A3653-A3659 (2019)
+A3659
+16. S. S. Zhang and J. A. Read, A new direction for the performance improvement of
+rechargeable lithium/sulfur batteries, J. Power Sources, 200, 77 (2012).
+17. M. Zheng, S. Zhang, S. Chen, Z. Lin, H. Pang, and Y. Yu, Activated graphene with
+tailored pore structure parameters for long cycle-life lithium–sulfur batteries, Nano
+Res., 10(12), 4305 (2017).
+18. X.-B. Cheng, H.-J. Peng, J.-Q. Huang, F. Wei, and Q. Zhang, Dendrite-Free Nanos-
+tructured Anode: Entrapment of Lithium in a 3D Fibrous Matrix for Ultra-Stable
+Lithium–Sulfur Batteries, Small, 10(21), 4257 (2014).
+19. Z.Li,J.Huang,B.Yann Liaw,V.Metzler,andJ.Zhang,Areviewoflithiumdeposition
+in lithium-ion and lithium metal secondary batteries, J. Power Sources, 254, 168
+(2014).
+20. N. Azimi, Z. Xue, N. D. Rago, C. Takoudis, M. L. Gordin, J. Song, D. Wang, and
+Z. Zhang, Fluorinated electrolytes for Li-S battery: suppressing the self-discharge
+with an electrolyte containing ﬂuoroether solvent, J. Electrochem. Soc., 162(1), A64
+(2015).
+21. S. Xin, L. Gu, N.-H. Zhao, Y.-X. Yin, L.-J. Zhou, Y.-G. Guo, and L.-J. Wan, Smaller
+Sulfur Molecules Promise Better Lithium–Sulfur Batteries, JACS, 134(45), 18510
+(2012).
+22. Z. Li, L. Yuan, Z. Yi, Y. Sun, Y. Liu, Y. Jiang, Y. Shen, Y. Xin, Z. Zhang, and
+Y. Huang, Insight into the Electrode Mechanism in Lithium-Sulfur Batteries with
+Ordered Microporous Carbon Conﬁned Sulfur as the Cathode, Adv. Energy Mater.,
+4(7), 1301473 (2014).
+23. C. Zhang, H. B. Wu, C. Yuan, Z. Guo, and X. W. Lou, Conﬁning sulfur in double-
+shelled hollow carbon spheres for lithium–sulfur batteries, Angew. Chem. Int. Ed.
+Engl., 51(38), 9592 (2012).
+24. W. Zhou, C. Wang, Q. Zhang, H. D. Abruña, Y. He, J. Wang, S. X. Mao, and X. Xiao,
+Tailoring pore size of nitrogen-doped hollow carbon nanospheres for conﬁning sulfur
+in lithium–sulfur batteries, Adv. Energy Mater., 5(16), 1401752 (2015).
+25. S. Zhang, M. Zheng, Z. Lin, N. Li, Y. Liu, B. Zhao, H. Pang, J. Cao, P. He, and Y. Shi,
+Activated carbon with ultrahigh speciﬁc surface area synthesized from natural plant
+material for lithium–sulfur batteries, J. Mater. Chem. A, 2(38), 15889 (2014).
+26. X. Yang, N. Yan, W. Zhou, H. Zhang, X. Li, and H. Zhang, Sulfur embedded in
+one-dimensional French fries-like hierarchical porous carbon derived from a metal–
+organic framework for high performance lithium–sulfur batteries, J. Mater. Chem. A,
+3(29), 15314 (2015).
+27. J.-Q. Huang, H.-J. Peng, X.-Y. Liu, J.-Q. Nie, X.-B. Cheng, Q. Zhang, and F. Wei,
+Flexible all-carbon interlinked nanoarchitectures as cathode scaffolds for high-rate
+lithium–sulfur batteries, J. Mater. Chem. A, 2(28), 10869 (2014).
+28. H. S. Kang and Y. K. Sun, Freestanding Bilayer Carbon–Sulfur Cathode with Func-
+tion of Entrapping Polysulﬁde for High Performance Li–S Batteries, Adv. Funct.
+Mater., 26(8), 1225 (2016).
+29. R. Fang, S. Zhao, S. Pei, X. Qian, P.-X. Hou, H.-M. Cheng, C. Liu, and F. Li, Toward
+more reliable lithium–sulfur batteries: an all-graphene cathode structure, ACS Nano,
+10(9), 8676 (2016).
+30. M.-K. Song, Y. Zhang, and E. J. Cairns, A long-life, high-rate lithium/sulfur cell:
+a multifaceted approach to enhancing cell performance, Nano Lett., 13(12), 5891
+(2013).
+31. W. Zhou, Y. Yu, H. Chen, F. J. DiSalvo, and H. C. D. Abrun˜a, Yolk–shell struc-
+ture of polyaniline-coated sulfur for lithium–sulfur batteries, JACS, 135(44), 16736
+(2013).
+32. C. J. Hart, M. Cuisinier, X. Liang, D. Kundu, A. Garsuch, and L. F. Nazar, Rational
+design of sulfur host materials for Li–S batteries: correlating lithium polysulphide
+adsorptivity and self-discharge capacity loss, Chem. Commun., 51(12), 2308 (2015).
+33. Y.-J. Li, J.-M. Fan, M.-S. Zheng, and Q.-F. Dong, A novel synergistic composite with
+multi-functional effects for high-performance Li–S batteries, Enegr. Environ. Sci.,
+9(6), 1998 (2016).
+34. Y. V. Mikhaylik and J. R. Akridge, Polysulﬁde shuttle study in the Li/S battery system,
+J. Electrochem. Soc., 151(11), A1969 (2004).
+35. D. Aurbach, E. Pollak, R. Elazari, G. Salitra, C. S. Kelley, and J. Afﬁnito, On the
+surface chemical aspects of very high energy density, rechargeable Li–sulfur batteries,
+J. Electrochem. Soc., 156(8), A694 (2009).
+36. A. Rosenman, R. Elazari, G. Salitra, E. Markevich, D. Aurbach, and A. Garsuch, The
+effect of interactions and reduction products of LiNO3, the anti-shuttle agent, in Li-S
+battery systems, J. Electrochem. Soc., 162(3), A470 (2015).
+37. M. Hagen, D. Hanselmann, K. Ahlbrecht, R. Maça, D. Gerber, and J. Tübke, Lithium–
+sulfur cells: the gap between the state-of-the-art and the requirements for high energy
+battery cells, Adv. Energy Mater., 5(16), 1401986 ( 2015).
+38. J. Scheers, S. Fantini, and P. Johansson, A review of electrolytes for lithium–sulfur
+batteries, J. Power Sources, 255, 204 (2014).
+39. P. Bonnick, E. Nagai, and J. Muldoon, Perspective—lithium-sulfur batteries, J. Elec-
+trochem. Soc., 165(1), A6005 (2018).
+40. K. Sun, A. K. Matarasso, R. M. Epler, X. Tong, D. Su, A. C. Marschilok,
+K. J. Takeuchi, E. S. Takeuchi, and H. Gan, Effect of Electrolyte on High Sulfur
+Loading Li-S Batteries, J. Electrochem. Soc., 165(2), A416 (2018).
+41. N. B. Emerce and D. Eroglu, Effect of Electrolyte-to-Sulfur Ratio in the Cell on the
+Li-S Battery Performance, J. Electrochem. Soc., 166(8), A1490 (2019).
+42. L. Cheng, L. A. Curtiss, K. R. Zavadil, A. A. Gewirth, Y. Shao, and K. G. Gallagher,
+Sparingly solvating electrolytes for high energy density lithium–sulfur batteries, ACS
+Energy Letters, 1(3), 503 (2016).
+43. Y. Yamada, J. Wang, S. Ko, E. Watanabe, and A. Yamada, Advances and issues in
+developing salt-concentrated battery electrolytes, Nature Energy, 1 (2019).
+44. M. Cuisinier, P. E. Cabelguen, B. D. Adams, A. Garsuch, M. Balasubramanian, and
+L. F. Nazar, Unique behavior of nonsolvents for polysulphides in lithium–sulfur bat-
+teries, Enegr. Environ. Sci., 7(8), 2697 (2014).
+45. K. Dokko, N. Tachikawa, K. Yamauchi, M. Tsuchiya, A. Yamazaki, E. Takashima,
+J.-W. Park, K. Ueno, S. Seki, and N. Serizawa, Solvate ionic liquid electrolyte for
+Li–S batteries, J. Electrochem. Soc., 160(8), A1304 (2013).
+46. N. Azimi, W. Weng, C. Takoudis, and Z. Zhang, Improved performance of lithium–
+sulfur battery with ﬂuorinated electrolyte, Electrochem. Commun., 37, 96 (2013).
+47. M. L. Gordin, F. Dai, S. Chen, T. Xu, J. Song, D. Tang, N. Azimi, Z. Zhang, and
+D. Wang, Bis (2, 2, 2-triﬂuoroethyl) ether as an electrolyte co-solvent for mitigating
+self-discharge in lithium–sulfur batteries, ACS Appl. Mater. Interfaces, 6(11), 8006
+(2014).
+48. R. Sahore, B. D. A. Levin, M. Pan, D. A. Muller, F. J. DiSalvo, and E. P. Giannelis,
+Design principles for optimum performance of porous carbons in lithium–sulfur bat-
+teries, Adv. Energy Mater., 6(14), 1600134 (2016).
+49. J. P. Perdew, K. Burke, and M. Ernzerhof, Generalized gradient approximation made
+simple, Phys. Rev. Lett., 77(18), 3865 (1996).
+50. G. Kresse and J. Hafner, Ab initio molecular dynamics for liquid metals, Phys. Rev.
+B, 47(1), 558 (1993).
+51. G. Kresse and J. Hafner, Ab initio molecular-dynamics simulation of the liquid-metal–
+amorphous-semiconductor transition in germanium, Phys. Rev. B, 49(20), 14251
+(1994).
+52. G. Kresse and J. Furthmüller, Efﬁciency of ab-initio total energy calculations for
+metals and semiconductors using a plane-wave basis set, Comput. Mater. Sci., 6(1),
+15 (1996).
+53. G. Kresse and J. Furthmüller, Efﬁcient iterative schemes for ab initio total-energy
+calculations using a plane-wave basis set, Phys. Rev. B, 54(16), 11169 (1996).
+54. I. Bauer, S. Thieme, J. Brückner, H. Althues, and S. Kaskel, Reduced polysulﬁde
+shuttle in lithium–sulfur batteries using Naﬁon-based separators, J. Power Sources,
+251, 417 (2014).
+55. S. Xiong, K. Xie, Y. Diao, and X. Hong, Characterization of the solid electrolyte
+interphase on lithium anode for preventing the shuttle mechanism in lithium–sulfur
+batteries, J. Power Sources, 246, 840 (2014).
+56. A. F. Hofmann, D. N. Fronczek, and W. G. Bessler, Mechanistic modeling of poly-
+sulﬁde shuttle and capacity loss in lithium–sulfur batteries, J. Power Sources, 259,
+300 (2014).
+57. X. Ji, S. Evers, R. Black, and L. F. Nazar, Stabilizing lithium–sulfur cathodes using
+polysulphide reservoirs, Nano Commun. Netw., 2, 325 (2011).
+58. H. Al Salem, G. Babu, V. C. Rao, and L. M. R. Arava, Electrocatalytic polysulﬁde
+traps for controlling redox shuttle process of Li–S batteries, JACS, 137(36), 11542
+(2015).
+59. Q. J. Meisner, T. Rojas, N. L. D. Rago, J. Cao, J. Bareño, T. Glossmann,
+A. Hintennach, P. C. Redfern, D. Pahls, and L. Zhang, Lithium–sulfur battery with
+partially ﬂuorinated ether electrolytes: Interplay between capacity, coulombic efﬁ-
+ciency and Li anode protection, J. Power Sources, 438, 226939 (2019).
+60. W. Tang, E. Sanville, and G. Henkelman, A grid-based Bader analysis algorithm
+without lattice bias, J. Phys.: Condens. Matter, 21(8), 084204 (2009).

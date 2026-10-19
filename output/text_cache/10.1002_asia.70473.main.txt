@@ -1,0 +1,821 @@
+
+<<PAGE 1>>
+Chemistry – An Asian Journal
+RESEARCH ARTICLE
+Adiponitrile-Enabled Low-Solvation Strategy to Mitigate the
+Shuttle Effect in Lithium–Sulfur Batteries
+Fangfang Liu1
+Lijuan Feng1
+Huijuan You2
+Jianwei Ren3
+Yangjie Liang2
+Hui Wang2
+1Shandong Engineering Research Center of Green and High-Value Marine Fine Chemical, Weifang University of Science and Technology, Weifang, China
+2College of Chemical Engineering, Qingdao University of Science and Technology, Qingdao, China
+3Department of Chemical Engineering, University of
+Pretoria, Hatfield, South Africa
+Correspondence: Huijuan You (yhjcandy99@163.com)
+Yangjie Liang (liang20010922@126.com)
+Hui Wang (wangh@qust.edu.cn)
+Received: 26 September 2025
+Revised: 14 November 2025
+Accepted: 19 November 2025
+Keywords: adiponitrile | electrolyte additive | lithium–sulfur batteries | reduced solvation structure
+ABSTRACT
+Lithium–sulfur batteries are promising for meeting growing global energy needs and supporting sustainable development.
+However, the shuttle effect is a key barrier to their wide use. Reducing Li+ ion solvation is an effective solution. In this study,
+adiponitrile (ADN), featuring two highly electronegative cyano groups, forms a stable [Li(ADN)]+ complex that contracts the
+solvation shell of Li+. Its moderate molecular size also helps form a denser interfacial protective film on the sulfur cathode, boosting
+surface stability. Density functional theory (DFT) simulations show ADN’s cyano groups bind strongly to Li+, forming stable local
+structures that suppress polysulfide migration and improve cycle stability. Experimentally, batteries with ADN retain 75% of initial
+capacity after 120 cycles at 0.2 C and have a 744 mAh g−1 discharge capacity at 2 C. X-ray photoelectron spectroscopy (XPS) confirms
+ADN-Li+ interaction and reveals ADN’s role in regulating the electrolyte’s solvation environment. This work provides new insights
+for electrolyte design in next-generation Li–S batteries.
+1
+Introduction
+In the realm of emerging energy storage technologies, lithium–
+sulfur (Li–S) batteries have garnered considerable attention due
+to their distinctive performance attributes [1–3]. As demand
+intensifies globally for advanced storage systems, especially in
+electric vehicles, unmanned aerial systems, electrified aviation,
+and grid-scale applications, Li–S batteries stand out with a
+theoretical energy density as high as 2600 Wh kg−1. Coupled
+with their cost-effective raw materials and environmentally
+sustainable characteristics, they present promising prospects for
+widespread deployment [4–6]. Despite substantial advances in
+fundamental research, the translation of Li–S batteries into
+practical systems remains fraught with technical obstacles. A
+primary issue arises during cycling: lithium polysulfides are
+formed as the intermediate soluble species during redox reac-
+tions. They can traverse the porous separator and interact with the
+lithium metal anode, where they initiate parasitic reactions and
+contribute to lithium surface degradation. This process not only
+accelerates lithium corrosion but also fosters irregular lithium
+dendrite formation [7–9]. As these dendrites grow, they may
+eventually pierce the separator, create pathways for internal short
+circuits, and pose significant safety threats. In extreme cases,
+such failures can endanger user safety [10–12]. Moreover, the
+accumulation of polysulfides on the lithium surface contributes
+to the development of a fragile and unstable solid–electrolyte
+interphase (SEI). Thus, the lifespan of the lithium metal is
+reduced. Additionally, the dissolution and diffusion of sulfur-
+containing intermediates severely hamper the active material’s
+retention by leading to sulfur utilization loss and shortened
+battery cycling life [13–15]. To address these persistent challenges,
+extensive research efforts have been devoted to enhancing the sta-
+© 2025 Wiley-VCH GmbH
+Chemistry – An Asian Journal, 2025; 20:e70473
+https://doi.org/10.1002/asia.70473
+1 of 11
+
+<<PAGE 2>>
+bility and overall performance of Li–S batteries. On the cathode
+side, Li and collaborators [16] developed a novel catalyst design by
+anchoring Fe/Co dual single atoms onto porous nitrogen-doped
+carbon derived from waste biomass. This “neighboring dual-atom
+relay catalysis” approach marks a significant advancement in
+cathode engineering. By accelerating the redox kinetics of lithium
+polysulfides, the strategy effectively suppresses the shuttle effect
+and thereby enhances both the long-term cycling stability and
+charge–discharge efficiency of the battery. In related work, Sun
+et al. [17] introduced zeolitic imidazolate frameworks (ZIFs) and
+their derivatives into sulfur cathodes. Materials such as ZIF-67
+and ZIF-8, recognized for their high surface area and porous
+architecture, serve as physical confinement hosts for sulfur
+species. These frameworks enhance ionic transport, mitigate
+cathode volume expansion, and significantly improve specific
+capacity and capacity retention. For the lithium metal anode,
+several approaches have been proposed to mitigate corrosion
+and stabilize the interface. These include the construction of
+three-dimensional porous architectures [18–20], the application
+of lithium-rich alloys [8, 21–24], and the fabrication of artificial
+solid electrolyte interphases [25–28]. While these techniques can
+enhance the mechanical and electrochemical stability of lithium
+metal, they often demand substantial amounts of electrolyte and
+involve intricate manufacturing processes, which limit their fea-
+sibility for large-scale or commercial deployment. Compared to
+the previously mentioned approaches, incorporating functional
+additives into the electrolyte presents a more cost-effective and
+scalable strategy for enhancing Li–S battery performance. Even
+in small concentrations, such additives can substantially modify
+the physicochemical properties of the electrolyte, leading to
+improvements in overall battery behavior [29–31].
+Electrolyte additives address the polysulfide shuttle effect and
+performance degradation through diverse mechanisms. For
+instance, metal nitrate-based additives such as lithium nitrate
+(LiNO3) are known to facilitate the in-situ formation of a robust
+SEI on the lithium anode. This protective layer helps miti-
+gate side reactions with polysulfides and stabilizes the lithium
+surface [32]. Organic sulfur-containing compounds, such as 4-
+mercaptopyridine (4-Mpy), can modulate the redox conversion
+pathways of polysulfides, promoting the formation of Li2S in
+a three-dimensional morphology. This process enhances the
+reaction kinetics and cyclic durability of the system [33]. Mean-
+while, iodide-based additives such as lithium iodide have been
+explored as redox mediators to expedite the conversion of soluble
+polysulfides and improve electrochemical reversibility [34, 35].
+Moreover, recent studies have shown that amino acids, such as
+L-leucine (Leu), can reduce the degree of Li+ ion solvation when
+used as electrolyte additives. Even at a concentration as low
+as 0.1 wt.%, L-leucine has been reported to enhance electrolyte
+wettability on separators and facilitate Li+ ion transport. Simulta-
+neously, it accelerates the solidification of polysulfides into Li2S,
+effectively reduces their diffusion, and suppresses the shuttle
+effect [36]. These findings underscore the potential of weakly
+solvating electrolyte additives to manipulate electrode–electrolyte
+interactions. By decreasing the solubility and mobility of inter-
+mediate polysulfides, such additives offer a viable pathway to
+mitigate shuttle-related losses and extend battery lifespan [37–40].
+Those earlier findings have demonstrated that nitrile-based addi-
+tives offer a promising route for mitigating lithium polysulfide
+shuttling and thereby extend the operational life of Li–S batteries.
+The strong coordination interactions between cyano functional
+groups and cobalt sites within the sulfur cathode led to the
+formation of a stable interfacial layer. This barrier significantly
+restricts the diffusion of polysulfide intermediates into the elec-
+trolyte and enhances structural stability at the electrode surface.
+Specifically, adiponitrile (ADN), characterized by its dual cyano
+groups with high polarity, can engage in coordination with
+Li+ ions. This interaction modifies the solvation environment
+of Li+, which produces a more stable solvation sheath that
+hinders the co-migration of polysulfides and Li+ ions toward
+the anode. As a result, the suppressed shuttle effect markedly
+leads to improved coulombic efficiency and enhanced structural
+integrity of the electrodes. Experimental results highlight that
+Li–S cells containing ADN additives maintained 75% of their
+initial capacity after 120 cycles at a current density of 0.2 C.
+Moreover, these cells demonstrated outstanding rate capability by
+delivering a reversible discharge capacity of 744 mAh g−1 even at
+a higher rate of 2 C. These outcomes indicate that ADN facilitates
+weak solvation of Li+ ions, reducing the mobility of dissolved
+polysulfides and significantly improving the cycling durability of
+the battery system.
+2
+Results and Discussion
+Scanning electron microscopy (SEM) characterization (Figure 1a–
+d) reveals significant differences in the surface morphology of
+lithium metal electrodes after cycling in various electrolyte sys-
+tems. The electrode cycled in the baseline electrolyte (Figure 1a)
+exhibits a rough and irregular surface, indicative of uneven
+lithium deposition. This morphology is primarily attributed to
+the severe polysulfide shuttle effect, which induces localized
+corrosion of the lithium metal and thereby disrupts uniform
+plating. The corresponding cross-sectional view (Figure 1b) shows
+a loose and disordered SEI. This results from the repeated break-
+down and regeneration of the interfacial layer during lithium
+plating and stripping. This instability facilitates the growth of
+irregular lithium dendrites and causes uncontrollable volumetric
+fluctuations, posing substantial safety and performance chal-
+lenges. In contrast, the lithium surface in cells containing ADN
+additives (Figure 1c) appears significantly smoother and more
+compact with minimal dendritic features. This improvement
+highlights ADN’s ability to effectively suppress lithium corrosion
+and promote the formation of a more uniform SEI. Figure 1d
+further illustrates the reduced depth of lithium corrosion in ADN-
+containing systems compared to the baseline. This underscores
+the additive’s role in limiting polysulfide solubility and transport.
+Such suppression of parasitic reactions at the anode interface
+contributes to prolonged electrode lifespan. Figure 1e presents
+the high-resolution Li 1s XPS spectra of both the cathode and
+anode after 50 cycles. In the control cell, the peak at 54.9 eV
+corresponds to Li–S bonds, 55.4 eV indicates the presence of
+Li–N bonds, and the 56.0 eV peak is attributed to Li–F bonds,
+which are the primary decomposition products of lithium salts.
+In the cell with the AND additive, all Li 1s binding energies
+shift to higher values after cycling. This shift arises from the
+weak solvation effect of AND on Li+, which reduces the electron
+cloud density around Li+ and increases its attraction to sur-
+rounding electrons, thereby raising the binding energy [41]. These
+findings collectively confirm that ADN acts as a key functional
+2 of 11
+Chemistry – An Asian Journal, 2025
+ 1861471x, 2025, 24, Downloaded from https://aces.onlinelibrary.wiley.com/doi/10.1002/asia.70473 by Tsinghua University Library, Wiley Online Library on [01/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 3>>
+FIGURE 1
+SEM images of the lithium metal anode after 50 charge/discharge cycles. (a–b) Top-view and cross-sectional SEM images of the control
+cell. (c–d) Top-view and cross-sectional SEM images of the cell with ADN additive. (e) High-resolution Li 1s XPS spectra of the sulfur cathode and lithium
+anode two surfaces after 50 cycles.
+additive by decreasing the solvation strength of Li+, thereby
+enhancing the electrochemical stability of the lithium metal
+anode.
+Excessive solubility of polysulfides in the electrolyte can sig-
+nificantly shorten the life cycle of Li–S batteries [42]. Density
+functional theory (DFT) was employed as a technique to calculate
+binding energies and examine the coordination patterns between
+Li+ ions and various solvent molecules. As illustrated in Figure 2a,
+the solvation structures of Li+ with increasing numbers of
+coordinating molecules are modeled. These results show that,
+as more solvent molecules attempt to coordinate with a single
+Li+ ion, steric hindrance becomes increasingly pronounced.
+Geometric optimization of these ion-solvent complexes revealed
+that due to the bulky nature of the TFSI−anion, a Li+ ion can at
+most associate with three TFSI−molecules to form a Li+(TFSI)3
+complex. Conversely, it can coordinate with up to four ADN
+molecules to form a Li+(ADN)4 structure. The total energies
+(E) of these configurations are shown in Figure 2b. Among
+them, the Li+(TFSI)(ADN)2 complex exhibits the highest energy,
+approximately 0.28 Hartree, which is notably higher than that of
+Li+(TFSI)2. This indicates that the introduction of ADN modifies
+the solvation environment through transitioning the coordina-
+tion structure from Li+(TFSI)2 to Li+(TFSI)(ADN)2. A schematic
+comparison of the solvation structures before and after ADN
+addition is shown in Figure 2c. ADN is a polar organic molecule
+characterized by the presence of nitrile groups at both ends,
+which contribute to its significant dipole moment. Compared to
+conventional ether-based solvents, commonly used for dissolving
+lithium polysulfides, ADN displays a distinct solvation behavior
+due to differences in polarity and molecular interactions. In gen-
+eral, solvation involves interactions such as electrostatic forces or
+hydrogen bonding between solvent molecules and solute species,
+forming a solvation shell. Ether solvents, like dimethoxyethane
+(DME), possess lone-pair electrons on their oxygen atoms, which
+can strongly coordinate with Li+ ions in polysulfide species to
+enhance their solubility. Although ADN is highly polar, its nitrile
+groups interact with Li+ ions in a manner different from ether
+molecules and offer relatively weaker coordination strength.
+When ADN is introduced into a solvent system that already sup-
+ports polysulfide dissolution, it may disrupt the existing solvation
+shell by competing with the original solvent molecules. As a
+result, ADN can partially displace ether molecules and destabilize
+the solvation shell around Li+ ions. This disruption decreases the
+stability of lithium-polysulfide complexes and ultimately reduces
+the solubility of polysulfides in the electrolyte. The solubility of
+lithium polysulfides depends heavily on the integrity and strength
+of their surrounding solvation environment. Altering the solvent
+composition by adding ADN impacts the molecular structure
+and stability of this shell, thereby suppressing the dissolution of
+polysulfides in the liquid phase.
+As observed in Figure 3a, the cyclic voltammetry (CV) profiles
+obtained at a slow scan rate of 0.1 mV s−1 demonstrate the
+beneficial role of the CEI layer derived from ADN in promoting
+the conversion of lithium polysulfides. Distinct cathodic peaks
+are observed at 2.30 and 2.03 V. They correspond to the sequential
+reduction of long-chain polysulfides (S8 →Li2S4) and short-
+chain species (Li2S4 →Li2S), respectively. The anodic peaks
+appearing at 2.34 and 2.40 V reflect the reversibility of oxidation
+processes. When compared to the control cells without ADN,
+those containing this additive exhibit both higher peak current
+densities and a narrower voltage separation between redox peaks
+(318 mV). This indicates improved reaction kinetics. Since the
+deposition of Li2S is the rate-limiting step during discharge and
+is often hindered by its uneven nucleation and growth [43–
+44], the earlier onset of Li2S formation in the presence of ADN
+suggests that the additive promotes more uniform deposition.
+Additionally, the internal redox kinetics can be evaluated through
+Li+ ion diffusion characteristics [45]. As shown in Figure 3b,c, CV
+measurements were conducted at varying scan rates of 0.1–0.5 mV
+s−1. Using the Randles–Sevcik equation, Figure 3d–f presents
+the linear fitting results between peak current densities and the
+square root of scan rates at different potentials.
+As presented in Table 1, the Li+ ion diffusion coefficients were
+determined from the slopes of the linear fitting curves. It is
+evident that the cell containing ADN consistently exhibits higher
+Chemistry – An Asian Journal, 2025
+3 of 11
+ 1861471x, 2025, 24, Downloaded from https://aces.onlinelibrary.wiley.com/doi/10.1002/asia.70473 by Tsinghua University Library, Wiley Online Library on [01/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 4>>
+FIGURE 2
+(a) Structural models depicting the solvation configurations of Li+ ions coordinated with various numbers of solvent molecules. (b)
+Binding energies associated with the stepwise coordination of solvent molecules to Li+ ions in the solvation complex. (c) Schematic representation of
+the structural arrangements in different electrolyte solutions.
+diffusion coefficients at Peaks A, B, and C. This suggests that the
+incorporation of ADN significantly enhances the redox kinetics
+during charge and discharge processes. The improved reaction
+kinetics are primarily attributed to the role played by ADN in
+constructing a high-quality cathode–electrolyte interphase (CEI)
+layer, which facilitates efficient ion transport. The participation
+of ADN in forming this interfacial layer not only helps suppress
+the polysulfide shuttle effect but also accelerates the conversion
+of intermediate polysulfides. Meanwhile, the kinetics of both
+reduction and oxidation steps directly influence performance
+in Li–S batteries. As demonstrated in Figure S1a,b, the ADN-
+containing cells show lower Tafel slopes compared to those
+without the additive. A smaller Tafel slope indicates faster
+reaction kinetics, which reinforces the conclusion that ADN
+enhances electrochemical processes. This CEI layer likely lowers
+the activation barrier for the reduction of lithium polysulfides to
+Li2S in promoting faster discharge reactions. Concurrently, dur-
+ing the oxidation step, the interphase assists the transformation
+of Li2S back to elemental sulfur (S8) and increases the oxidation
+rate. Overall, the results confirm that ADN, through its role in
+CEI formation, significantly improves the redox kinetics and,
+consequently, the electrochemical performance of the battery.
+The impact of different concentrations of two electrolyte additives
+on battery performance was further investigated. By performing
+charge-discharge tests at 0.1 C and long-cycle tests at 0.2 C on
+batteries assembled with various concentrations of electrolyte
+additives, the optimal concentration was identified. As shown
+in Figure S2a, the battery with a 60 mM concentration of
+ADN additive exhibited the highest discharge capacity at 0.1
+C, and it also demonstrated the best long-cycle stability at 0.2
+C (Figure S2b). This is because ADN, as a weakly solvating
+additive, interacts chemically with polysulfides, which inhibited
+their dissolution and shuttle effect in the electrolyte. At the
+60 mM concentration, the optimal balance between the additive
+4 of 11
+Chemistry – An Asian Journal, 2025
+ 1861471x, 2025, 24, Downloaded from https://aces.onlinelibrary.wiley.com/doi/10.1002/asia.70473 by Tsinghua University Library, Wiley Online Library on [01/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 5>>
+FIGURE 3
+(a) CV curves of cells with and without ADN additive captured at 0.1 mV s−1. (b) CV curves of the ADN-containing cell at scan rates
+ranging from 0.1 to 0.5 mV s−1. (c–f) Linear fitting results for redox peaks: (d) Peak A, (e) Peak B, and (f) Peak C.
+TABLE 1
+The Li+ ion diffusion coefficients at Peaks A, B, and C.
+DLi
++ (cm2 s−1)
+A (cathodic peak) S8 →LiPS
+(Li2Sn,4 ≤n ≤8)
+B (cathodic peak) LiPS
+(Li2Sn,2 ≤n < 4) →Li2S2/Li2S
+C (anodic peak) Li2S2/Li2S →LiPS
+(Li2Sn, 2 ≤n < 8)
+Without
+2.04 × 10−9
+4.07 × 10−9
+8.76 × 10−9
+With ADN
+3.10 × 10−9
+4.80 × 10−9
+1.18 × 10−8
+Abbreviation: ADN, adiponitrile.
+and polysulfides effectively suppresses the shuttle effect without
+causing an increase in electrolyte viscosity or hindering ion
+transport, which can occur at excessively high additive concen-
+trations. These results indicate that the addition of 60 mM of the
+additive yields the best performance. For clarity, unless specified
+otherwise, all additive concentrations mentioned hereafter are
+60 mM. To assess the contribution of ADN to the capacity,
+sulfur-free batteries were assembled. As shown in Figure S2c, the
+capacity provided by the added ADN was minimal (0.007 mAh);
+thus, its contribution to the battery capacity can be considered
+negligible.
+Figure 4a shows the constant current charge-discharge curves of
+the battery at the current density of 0.1 C. The battery with the
+ADN additive exhibited a higher discharge capacity (1182 mAh
+g−1), while the control battery had a discharge capacity of only
+989 mAh g−1. During discharge in Li–S batteries, the high voltage
+plateau capacity (QH) corresponds to the conversion process from
+S8 to soluble long-chain lithium polysulfides Li2S8, Li2S6, and
+Li2S4), while the low voltage plateau capacity (QL) corresponds
+to the transformation of long-chain polysulfides into insoluble
+discharge products like Li2S2/ Li2S through a multistep reaction.
+The ratio of these two capacities (QL/QH) can intuitively reflect
+the degree to which both stages of the reaction occur. As shown
+in Figure 4b, the ADN-added battery exhibited a higher (QL/QH)
+value. This is because ADN induces weak solvation of Li+ ions,
+which thins the solvation shell around Li+ and facilitates des-
+olvation, thereby promoting the complete conversion of lithium
+polysulfides. Figure 4c presents a comparison of the performance
+differences between the two battery systems through multi-rate
+tests conducted from 0.1 to 2 C (with a theoretical sulfur-
+based capacity of 1675 mAh g−1). The battery with ADN showed
+discharge capacities of 1133, 919, 799, 746, and 588 mAh g−1 at
+0.1, 0.2, 0.5, 1, and 2 C, respectively. Upon reverting the current
+density to 0.2 C, the cell maintained a discharge capacity of
+870 mAh g−1, corresponding to a retention rate of 94.7%. In
+contrast, the control cell retained 91.9% of its capacity when
+the current density was restored to 0.2 C following a series of
+discharge cycles at varying rates. This is attributed to the addition
+of ADN, which reduces the solvation of Li+ ions, suppresses the
+dissolution of polysulfides, and effectively mitigates their loss,
+resulting in excellent electrochemical reversibility of the ADN-
+containing battery. By comparing the charge-discharge curves in
+Figure 4d,e, the electrochemical behavior differences between the
+two batteries at different current densities are evident. The battery
+with ADN maintains intact charge-discharge platform features
+Chemistry – An Asian Journal, 2025
+5 of 11
+ 1861471x, 2025, 24, Downloaded from https://aces.onlinelibrary.wiley.com/doi/10.1002/asia.70473 by Tsinghua University Library, Wiley Online Library on [01/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 6>>
+FIGURE 4
+(a) First cycle charge-discharge curve at 0.1 C; (b) polarization voltage and high/low plateau discharge capacity; (c) rate performance;
+(d) charge-discharge curve of the control battery at different rates; (e) charge-discharge curve at different rates for the battery with ADN; (f) polarization
+voltage; (g) cycling stability at 0.2 C; and (h) deposition curve of Li2S at 2.05 V.
+even at a high current density of 2 C, while the control battery
+shows significant polarization, which becomes more pronounced
+as the current density increases (Figure 4f). This further confirms
+that ADN helps in the redox process of polysulfides. Figure 4g
+shows the cycling stabilities from batteries with the baseline
+electrolyte and those with ADN at 0.2 C. The battery with
+ADN had an initial discharge capacity of 948 mAh g−1, and
+after 120 cycles, it demonstrated excellent cycling stability by
+retaining a reversible capacity of 708 mAh g−1 (75% retention).
+In contrast, the control battery experienced a capacity decay to
+487 mAh g−1 (58% retention) after the same number of cycles.
+The performance difference arises from the weak solvation effect
+of ADN on Li+, which inhibits the diffusion of polysulfides
+into the electrolyte. In other words, their migration across the
+separator is significantly suppressed, reducing the irreversible
+loss of active sulfur, minimizing side reactions at the interface
+by limiting contact between polysulfides and the lithium anode,
+and ultimately prolonging the lifespan of the lithium anode.
+Consequently, the battery with ADN exhibits a longer cycling
+life. Figure 4h demonstrates the catalytic effect of ADN on the
+nucleation process of Li2S, using a potentiostatic current-time
+method. The battery with ADN shows a shorter deposition time
+(8750 s), which is attributed to the weak interaction between
+ADN and Li+. Specifically, the AND additive reduces the solvation
+degree of Li+, resulting in a thinner solvation shell and weaker
+binding interactions. This facilitates a higher migration rate
+of Li+ within the electrolyte, allowing the ions to reach the
+electrode surface more rapidly and effectively participate in the
+Li2S deposition reaction. Overall, the addition of ADN suppresses
+the polysulfide shuttle effect, accelerates the transfer of Li+, and
+improves the charging-discharging performance and cycling life
+of the battery.
+Subsequently, the open-circuit voltage (OCV) was systematically
+measured over time (Figure 5) to quantitatively characterize
+the self-discharge behavior of different batteries. As shown in
+Figure 5a, the OCV of the control battery continuously decreased
+during the rest period, which is attributed to the dissolution
+of polysulfides that causes the active sulfur to gradually leach
+out, leading to self-discharge. In contrast, the battery with the
+6 of 11
+Chemistry – An Asian Journal, 2025
+ 1861471x, 2025, 24, Downloaded from https://aces.onlinelibrary.wiley.com/doi/10.1002/asia.70473 by Tsinghua University Library, Wiley Online Library on [01/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 7>>
+FIGURE 5
+Open-circuit voltage (OCV) versus time curve during storage for (a) the control battery and (b) the battery with ADN additive. Long-
+term cycling performance of the control and AND-containing cells: (c) at 0.5 C for extended cycles, and (d) at 0.2 C under high sulfur loading and
+lean-electrolyte conditions.
+ADN additive did not exhibit significant OCV decay over a 2-
+week rest period (Figure 5b), indicating that the self-discharge
+effect was almost absent in this case. This further demonstrates
+that the ADN additive, by promoting low solvation, effectively
+reduces the solubility of lithium polysulfides. Additionally, the
+protective layer formed at the cathode with ADN helps limit the
+dissolution of polysulfides and thus suppresses their shuttle effect
+during both the charge-discharge process and long-term storage.
+As a result, the irreversible loss of active sulfur is significantly
+reduced, and the long-cycle performance of the Li–S battery is
+improved.
+To further evaluate the practical application potential of Li–
+S batteries and achieve high energy density, long-term cycling
+tests of different cells were conducted at a current density of
+0.5 C for 400 cycles (Figure 5c). The results show that the cell
+with AND additive exhibited an initial discharge capacity of
+780.7 mAh g−1 and an average Coulombic efficiency (CE) of
+95.67% during cycling. In comparison, the control cell delivered
+a lower initial capacity of 628.3 mAh g−1, which decayed rapidly
+over cycles, and its CE dropped significantly to an average of
+92.69% by 150 cycles. This improvement with AND is attributed to
+its effective suppression of polysulfide dissolution and migration
+at the electrode interface, minimizing active sulfur loss and
+enhancing cycling performance.
+The supplementary tests under high sulfur loading and lean-
+electrolyte conditions were also performed. As shown in
+Figure 5d, under a sulfur loading of 4.0 mg cm−2, an electrolyte-
+to-sulfur ratio of 10 µL mg−1, and a current density of 0.2 C,
+the AND-containing cell delivered an initial discharge capacity
+of 820.7 mAh g−1 and retained 535.3 mAh g−1 after 250 cycles,
+corresponding to a capacity retention of 65.2%. In contrast, the
+control cell exhibited an initial capacity of 716.1 mAh g−1 and
+a remaining capacity of only 327.1 mAh g−1, with a capacity
+retention of 45.7%, both significantly lower than the AND group.
+Chemistry – An Asian Journal, 2025
+7 of 11
+ 1861471x, 2025, 24, Downloaded from https://aces.onlinelibrary.wiley.com/doi/10.1002/asia.70473 by Tsinghua University Library, Wiley Online Library on [01/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 8>>
+FIGURE 6
+(a) Voltage-time curve of the Li||Li symmetric cell; (b) zoomed-in view (c) Rate performance of Li//Li symmetric cells, (d) Locally
+magnified voltage-time profile.
+This enhanced performance results from the weak solvation
+effect of AND on Li+, which restricts polysulfide diffusion into
+the electrolyte, suppresses the shuttle effect, and significantly
+improves cycling stability, leading to high-capacity retention and
+an extended cycle life.
+The Li||Li symmetric cells were assembled to further investigate
+the impact of the additive on the performance of the lithium
+anode. Figure 6a illustrates the voltage–time profiles of various
+symmetric lithium cells. The battery using the baseline electrolyte
+exhibited significant voltage fluctuations and a high overpotential
+of 82 mV. This phenomenon can be attributed to the instability
+of the SEI layer, which requires continuous formation of a
+new SEI layer. This leads to uneven lithium deposition and
+thus higher overpotential. In contrast, the battery with ADN
+additive displayed a lower overpotential of 18 mV and operated
+stably for over 450 h (Figure 6b). This improvement is due
+to the low solvation effect of the added ADN on Li+, which
+reduces the solubility of lithium polysulfides. Furthermore, the
+protective layer formed at the cathode inhibits the shuttle effect
+of lithium polysulfides. As a consequence, parasitic reactions
+between polysulfides and lithium metal are significantly reduced,
+which protects the lithium anode by decreasing corrosion of
+the lithium metal, and ultimately extends the lifespan of the
+lithium metal. Consequently, the battery with ADN maintains
+a low overpotential even after long cycles. To investigate the
+changes in lithium deposition/dissolution characteristics, the
+current density was varied (1–4 mA cm−2) while maintaining a
+deposition capacity of 1 mAh cm−2, as shown in Figure 6c. As
+indicated, the battery with ADN exhibited a low overpotential,
+and the overpotential increased slowly with the increase in
+current density. Additionally, as seen in Figure 6d, once the
+current density was reverted to 1 mAh cm−2, the overpotential
+remained low. However, the battery with the baseline electrolyte
+exhibited a sharp increase in overpotential when the current
+density reached 4 mAh cm−2, and the overpotential fluctuated
+in subsequent cycles. Apparently, the results suggest that the
+battery with the ADN additive has significant advantages in
+the Li||Li symmetric cell cycling. This is because ADN reduces
+the solubility of lithium polysulfides, suppresses their shuttle
+effect, significantly mitigates the corrosion of lithium metal by
+polysulfides, and extends the lifespan of lithium metal during
+the cycling process. The addition of ADN plays a crucial role in
+improving the battery’s cycling stability.
+As shown in Figure S3a, impedance tests were conducted on
+the batteries with and without the ADN additive after differ-
+ent numbers of cycles. The first semicircle corresponds to the
+electrode interface of the battery, referred to as the interface
+resistance (RCEI), while the second semicircle is called the charge
+transfer resistance (Rct). Compared to fresh batteries, both the
+untreated and ADN-added batteries displayed two semicircles
+after cycling, indicating the formation of a CEI layer on the
+electrode surface during cycling. It can be seen that, whether
+before cycling, after 50 cycles, or after 100 cycles, the impedance
+of the battery with ADN is lower than that of the battery
+without the additive. This indicates that the addition of ADN
+effectively improves the charge transfer rate. Additionally, the
+Rct values of the ADN-added batteries are smaller, suggesting
+that the CEI layer formed with ADN has better conductivity,
+which can effectively promote the conversion of polysulfides.
+Figure S3b shows the evolution of Rct with the number of
+cycles: for the battery without ADN, the Rct value shows a
+continuous increase, which is attributed to the accumulation of
+electrolyte decomposition products during cycling, leading to an
+increase in interface resistance. Additionally, the unstable CEI
+layer continuously forms to consume the electrolyte. In contrast,
+the impedance of the ADN-added battery increases more slowly,
+as ADN helps form a stable, high-quality electrode interface
+layer and inhibits excessive oxidation and decomposition of the
+8 of 11
+Chemistry – An Asian Journal, 2025
+ 1861471x, 2025, 24, Downloaded from https://aces.onlinelibrary.wiley.com/doi/10.1002/asia.70473 by Tsinghua University Library, Wiley Online Library on [01/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 9>>
+electrolyte. This results in better stability for the battery. To assess
+the electrolyte stability, linear sweep voltammetry (LSV) tests
+were conducted (Figure S3c). The results show that the baseline
+electrolyte system exhibits good electrochemical inertness up to
+3.9 V. However, as the potential continues to shift positively,
+the current response increases. This observation indicates the
+onset of electrolyte component oxidation and decomposition.
+The electrolyte with ADN added shows an increase in oxida-
+tion current only around 5 V, suggesting that ADN enhances
+the oxidation stability of the electrolyte. It suppresses the
+oxidation and decomposition of ether-based solvents, which
+significantly contributes to the long cycle life and safety of the
+battery.
+To further reveal the antioxidant capabilities of the electrolyte
+and ADN, frontier molecular orbital energy calculations were
+performed for DOL, DME, and ADN. The highest occupied
+molecular orbital (HOMO) represents the molecular orbital with
+the highest electron occupancy, and electrons are easily lost from
+the HOMO. The lowest unoccupied molecular orbital (LUMO)
+represents the molecular orbital with the lowest energy level that
+can accept electrons. The lower the LUMO energy, the stronger
+the reduction ability of the molecule, while the higher the HOMO
+energy, the stronger the oxidation ability of the molecule. As
+shown in Figure S4a, the HOMO energies of DOL, DME, and
+ADN are −6.70, −6.69, and −8.89 eV, respectively. The LUMO
+energies of DOL, DME, and ADN are 2.36, 2.49, and 0.53 eV,
+respectively. ADN has the lowest LUMO and HOMO energies,
+indicating that it has a higher oxidation potential. As shown in
+Figure S4b, from the independent gradient model (IGMH), it
+can be concluded that van der Waals forces exist between ADN
+and DOL/DME. Under this synergistic effect, the addition of
+ADN enhances the overall oxidation resistance of the electrolyte.
+As a result, the electrolyte is less likely to decompose during
+long-term cycling, thereby improving the battery’s lifespan while
+significantly enhancing the safety of the battery.
+3
+Conclusion
+In summary, the participation of AND substantially enhances
+the overall performance of Li–S batteries. First, the strongly
+polar cyano group in the ADN molecular structure interacts
+with Li+ ions and participates in the solvation of Li+ ions.
+The Li+ ion solvation structure involving ADN is more stable,
+which helps reduce the energy barrier for Li+ ion desolvation
+at the electrode surface, allowing Li+ ions to more easily trans-
+fer and undergo intercalation/deintercalation reactions at the
+electrode-electrolyte interface. This leads to improved charging
+and discharging efficiency, as well as enhanced rate performance
+of the battery. Second, the solvation of Li+ ions involving ADN
+forms a relatively stable structure around the Li+ ions, which
+makes it more difficult for polysulfides to penetrate the solvation
+shell and migrate to the lithium anode with lithium ions. This
+significantly alleviates the polysulfide shuttle effect and leads to
+an enhancement in the battery’s long-term cycling performance
+as well as rate capability. After 120 cycles at 0.2 C, the battery
+with ADN maintains a capacity retention of up to 75%. Moreover,
+the battery with ADN exhibits exceptional high-rate charge and
+discharge performance, retaining a discharge capacity of 744 mAh
+g−1 at 2 C. This work demonstrates the potential of ADN as an
+additive and provides insights into the design of advanced Li–S
+battery electrolytes.
+Acknowledgments
+The authors thank the support from the Natural Science Foundation of
+Shandong Province of China (ZR2022MB118) for this work.
+Conflicts of Interest
+The authors declare no conflicts of interest.
+Data Availability Statement
+The data that support the findings of this study are available from the
+corresponding author upon reasonable request.
+References
+1. S. Chen, G. Li, Z. Zhu, et al., “Single-Atom Catalysts for Lithium-Sulfur
+Batteries: Research Progress and Prospects,” Journal of Energy Chemistry
+107 (2025): 440–458, https://doi.org/10.1016/j.jechem.2024.12.074.
+2. J. Zhou and A. Sun, “Redox Mediators for High Performance Lithium-
+Sulfur Batteries: Progress and Outlook,” Chemical Engineering Journal
+495 (2024): 153648, https://doi.org/10.1016/j.cej.2024.153648.
+3. Y. Liang, J. Shao, S. Ji, et al., “Shortening Sulfur Redox Pathway via
+Coupled Li O and C S Bonds in Li S Batteries,” Journal of Energy Storage
+139 (2025): 118506, https://doi.org/10.1016/j.est.2025.118506.
+4. R. F. Service, “Lithium-Sulfur Batteries Poised for Leap,” Science 359
+(2018): 1080–1081, https://doi.org/10.1126/science.359.6380.1080.
+5. G. Li, Z. Chen, and J. Lu, “Lithium-Sulfur Batteries for Commercial
+Applications,” Chemistry (Weinheim An Der Bergstrasse, Germany) 4
+(2018): 3–7, https://doi.org/10.1016/j.chempr.2017.12.012.
+6. H.-J. Peng, Z.-W. Zhang, J.-Q. Huang, et al., “Lithium-Sulfur Batteries:
+A Cooperative Interface for Highly Efficient Lithium–Sulfur Batter-
+ies,” Advanced Materials 28 (2016): 9550, https://doi.org/10.1002/adma.
+201670303.
+7. C.-X. Bi, N. Yao, X.-Y. Li, et al., “Unveiling the Reaction Mystery
+Between Lithium Polysulfides and Lithium Metal Anode in Lithium–
+Sulfur Batteries,” Advanced Materials 41 (2024): 2411197.
+8. Z. Kaixin, J. Qi, Z. Liyuan, L. Lu, W. Lili, and Z. Xitian, “Achieving
+Dendrite-Free Lithium Deposition on the Anode of Lithium–Sulfur
+Battery by LiF-Rich Regulation Layer,” Electrochimica Acta 393 (2021):
+138981.
+9. Y. Liang, F. Liu, J. Ren, et al., “Tailoring Biphasic High-Halogen SEI
+via Organochlorine Isomeric Effect for Stable Lithium Metal Anodes,”
+Journal of Energy Chemistry 111 (2025): 316–327, https://doi.org/10.1016/
+j.jechem.2025.07.073.
+10. J. Ju, S. Dong, Y. Cui, et al., “Leakage-Proof Electrolyte Chemistry
+for a High-Performance Lithium–Sulfur Battery,” Angewandte Chemie
+International Edition 60 (2021): 16487–16491, https://doi.org/10.1002/anie.
+202103209.
+11. W. Zhuangzhuang, Z. Nanxiang, F. Tao, W. Feng, Z. Teng, and
+C. Renjie, “A Copolymer Microspheres-Coated Separator to Enhance
+Thermal Stability of Lithium-Sulfur Batteries,” Chemical Engineering
+Journal 430 (2021): 132678.
+12. Y. Wang, J. Liu, H. Ji, et al., “Optimizing Si─O Conjugation to Enhance
+Interfacial Kinetics for Low-Temperature Rechargeable Lithium-Ion Bat-
+teries,” Advanced Materials 37 (2024): 2412155, https://doi.org/10.1002/
+adma.202412155.
+13. L. Li, X.-J. Yang, Y.-Y. Li, et al., “Inhibiting Shuttle Effect of Lithium
+Polysulfides by Double Metal Selenides for High-Performance Lithium–
+Chemistry – An Asian Journal, 2025
+9 of 11
+ 1861471x, 2025, 24, Downloaded from https://aces.onlinelibrary.wiley.com/doi/10.1002/asia.70473 by Tsinghua University Library, Wiley Online Library on [01/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 10>>
+Sulfur Batteries,” Rare Metals 43 (2024): 2546–2559, https://doi.org/10.
+1007/s12598-024-02616-w.
+14. C.-C. Su, M. He, R. Amine, Z. Chen, and K. Amine, “The Relationship
+Between the Relative Solvating Power of Electrolytes and Shuttling Effect
+of Lithium Polysulfides in Lithium–Sulfur Batteries,” Angewandte Chemie
+International Edition 57 (2018): 12033–12036, https://doi.org/10.1002/anie.
+201807367.
+15. T. Yang, T. Qian, X. Shen, et al., “Single-Cluster Au as an Usher for
+Deeply Cyclable Li Metal Anodes,” Journal of Materials Chemistry A 7
+(2019): 14496, https://doi.org/10.1039/C9TA02640A.
+16. Q. Wu, K. Chen, Z. Shadike, and C. Li, “Relay-Type Catalysis by a
+Dual-Metal Single-Atom System in a Waste Biomass Derivative Host for
+High-Rate and Durable Li–S Batteries,” ACS Nano 18 (2024): 13468–13483,
+https://doi.org/10.1021/acsnano.3c09919.
+17. H. Sun and J. Zhu, “Low-Dimensional Nanomaterials and Their
+Assembled Structures and Interfaces for Energy Applications,” ACS
+Applied Nano Materials 7 (2024): 27797–27800, https://doi.org/10.1021/
+acsanm.4c06610.
+18. X. Bian, C. Lv, M. Li, et al., “Carbon Nanofiber Framework With Three-
+Dimensional Interconnected Porous Structure as High-Performance Li S
+Battery Interlayer to Enhance Lithium Polysulfides Adsorption,” Journal
+of Energy Storage 110 (2025): 115312, https://doi.org/10.1016/j.est.2025.
+115312.
+19. H. Gu, R. Zhang, P. Wang, S. Xie, C. Niu, and H. Wang, “Construction
+of Three-Dimensional Ordered Porous Carbon Bulk Networks for High
+Performance Lithium-Sulfur Batteries,” Journal of Colloid and Interface
+Science 533 (2018): 445–451, https://doi.org/10.1016/j.jcis.2018.08.093.
+20. J.-H. Zuo, P.-B. Zhai, Q.-Q. He, et al., “In-Situ Constructed Three-
+Dimensional MoS 2 –MoN Heterostructure as the Cathode of Lithium–
+Sulfur Battery,” Rare Metals 41 (2022): 1743–1752, https://doi.org/10.1007/
+s12598-021-01910-1.
+21. R. A. Ahmed, K. V. Carballo, K. P. Koirala, et al., “Lithicone-Protected
+Lithium Metal Anodes for Lithium Metal Batteries With Nickel-Rich
+Cathode Materials,” Small Structures 5 (2024): 2400174, https://doi.org/
+10.1002/sstr.202400174.
+22. W. Jia, J. Zhang, L. Zheng, H. Zhou, W. Zou, and L. Wang, “Lithium-
+Rich Alloy as Stable Lithium Metal Composite Anode for Lithium
+Batteries,” eScience 4 (2024): 100266, https://doi.org/10.1016/j.esci.2024.
+100266.
+23. W. Jing, K. Zou, X. Dai, et al., “Li-Indium Alloy Anode for High-
+Performance Li-Metal Batteries,” Journal of Alloys and Compounds 924
+(2022): 166517, https://doi.org/10.1016/j.jallcom.2022.166517.
+24. L. L. Kong, L. Wang, Z. C. Ni, S. Liu, G. R. Li, and X. P. Gao,
+“Lithium–Magnesium Alloy as a Stable Anode for Lithium–Sulfur Bat-
+tery,” Advanced Functional Materials 29 (2019): 1808756, https://doi.org/
+10.1002/adfm.201808756.
+25. S. Chen, B. Ding, Q. Lin, et al., “Construction of Stable Solid Electrolyte
+Interphase on Lithium Anode for Long-Cycling Solid-state Lithium–
+Sulfur Batteries,” Journal of Electroanalytical Chemistry 880 (2021): 114874,
+https://doi.org/10.1016/j.jelechem.2020.114874.
+26. M. Hajian Foroushani, S. Maroufi, R. Khayyam Nekouei, and V.
+Sahajwalla, “Artificial Solid Electrolyte Interphase: The Holy Grail for Li-
+S Batteries,” Renewable and Sustainable Energy Reviews 212 (2025): 115453,
+https://doi.org/10.1016/j.rser.2025.115453.
+27. M.-Z. Huang, T. Hu, Y.-T. Zhang, Z. Zhang, J. Yu, and Z.-Y. Yang, “In
+Situ Constructing a Stable Solid Electrolyte Interface by Multifunctional
+Electrolyte Additive to Stabilize Lithium Metal Anodes for Li–S Batter-
+ies,” ACS Applied Materials & Interfaces 14 (2022): 17959–17967, https://
+doi.org/10.1021/acsami.1c25151.
+28. H. Li-Peng, Y. Li-Yang, B. Chen-Xi, et al., “High-Valence Sulfur-
+Containing Species in Solid Electrolyte Interphase Stabilizes Lithium
+Metal Anodes in Lithium–Sulfur Batteries,” Journal of Energy Chemistry
+68 (2021): 300–305.
+29. G. Ai, Z. Wang, Y. Dai, et al., “Improving the Over-All Performance of
+Li-S Batteries via Electrolyte Optimization With Consideration of Loading
+Condition,” Electrochimica Acta 218 (2016): 1–7, https://doi.org/10.1016/j.
+electacta.2016.09.090.
+30. J. Li, Z. Fan, J. Guo, et al., “Insights Into the Efficient Roles of Boron-
+Containing Additives for Li-Ion Batteries,” Surfaces and Interfaces 48
+(2024): 104309, https://doi.org/10.1016/j.surfin.2024.104309.
+31. M. Xingkai, S. Xinmei, W. Yaoda, et al., “Polyhalogenated Heterocycle
+Additive Induced In-Situ 3D Gelatinous Polymerization With Polysul-
+fides for Shuttle Effect Inhibited Lithium-Sulfur Batteries,” Chemical
+Engineering Journal 513 (2025): 162921.
+32. Q. Zhang, J. Zhang, X. Yue, et al., “Optimizing LiNO 3 Conversion
+Through a Defective Carbon Matrix as Catalytic Current Collectors for
+Highly Durable and Fast-Charging Li Metal Batteries,” Nano Letters 25
+(2025): 1389–1396, https://doi.org/10.1021/acs.nanolett.4c05058.
+33. H. Dai, C. Gallagher, S.-M. Bak, et al., “Mechanistic Understanding of
+a Bifunctional Carbonate Additive for Enhanced Performance in Lithium-
+Sulfur Battery,” Energy Storage Materials 76 (2025): 104123, https://doi.
+org/10.1016/j.ensm.2025.104123.
+34. L.-L. Su, M.-X. Wu, S.-Y. Sun, et al., “Long-Cycling Lithium–Sulfur
+Batteries Enabled by Reactivating Inactive Lithium,” ACS Energy Letters
+1 (2024): 313–319.
+35. J. Zhong, L. Ren, C. Ying, Y. Guo, J. Liu, and W.-H. Zhong, “Amino
+Acid as a Multifunctional Electrolyte Additive for Enhancing Li−S Battery
+Performance,” Journal of Energy Storage 109 (2025): 115251, https://doi.
+org/10.1016/j.est.2024.115251.
+36. H. Raza, S. Bai, J. Cheng, et al., “Li-S Batteries: Challenges, Achieve-
+ments and Opportunities,” Electrochemical Energy Reviews 6 (2023): 29,
+https://doi.org/10.1007/s41918-023-00188-4.
+37. X. Liu, X. Shen, H. Li, et al., “Ethylene Carbonate-Free Propylene
+Carbonate-Based Electrolytes With Excellent Electrochemical Compat-
+ibility for Li-Ion Batteries Through Engineering Electrolyte Solvation
+Structure,” Advanced Energy Materials 11 (2021): 2003905, https://doi.org/
+10.1002/aenm.202003905.
+38. Z. Wang, C. Su, R. Xu, et al., “Weak Traction Effect Modulates Anionic
+Solvation Transition for Stable-Cycling and Fast-Charging Lithium Metal
+Batteries,” Energy Storage Materials 75 (2025): 104105, https://doi.org/10.
+1016/j.ensm.2025.104105.
+39. J. Zhou, T. Qian, T. Yang, M. Wang, J. Guo, and C. Yan, “Nanomeshes
+of Highly Crystalline Nitrogen-Doped Carbon Encapsulated Fe/Fe 3 C
+Electrodes as Ultrafast and Stable Anodes for Li-Ion Batteries,” Journal
+of Materials Chemistry A 3 (2015): 15008–15014, https://doi.org/10.1039/
+C5TA03312H.
+40. Y. Liang, S. Ji, F. Liu, et al., “Directional Construction of Highly
+Ductile Dual-Halide Interface to Enhance Lithium-Ion Transport and
+Stabilization of Lithium Metal Anode,” Chemical Engineering Journal 525
+(2025): 170206, https://doi.org/10.1016/j.cej.2025.170206.
+41. K. Nie, Q. Fu, R. Gao, et al., “Dual-Functional Chloropyrazine
+Additives for Enhanced Performance of Lithium-Sulfur Batteries,” Energy
+Storage Materials 63 (2023): 103011, https://doi.org/10.1016/j.ensm.2023.
+103011.
+42. M. Yanagi, K. Ueno, A. Ando, et al., “Effects of Polysulfide Solubility
+and Li Ion Transport on Performance of Li–S Batteries Using Sparingly
+Solvating Electrolytes,” Journal of The Electrochemical Society 167 (2020):
+070531, https://doi.org/10.1149/1945-7111/ab7a81.
+43. C. Tong, H. Chen, S. Jiang, et al., “Suppress Loss of Polysulfides in
+Lithium–Sulfur Battery by Regulating the Rate-Determining Step via 1T
+MoS 2 –MnO 2 Covering Layer,” ACS Applied Materials & Interfaces 15
+(2023): 1175–1183, https://doi.org/10.1021/acsami.2c18594.
+44. J. Sun, Y. Liu, L. Liu, et al., “Expediting Sulfur Reduction/Evolution
+Reactions With Integrated Electrocatalytic Network: A Comprehensive
+Kinetic Map,” Nano Letters 22 (2022): 3728–3736, https://doi.org/10.1021/
+acs.nanolett.2c00642.
+10 of 11
+Chemistry – An Asian Journal, 2025
+ 1861471x, 2025, 24, Downloaded from https://aces.onlinelibrary.wiley.com/doi/10.1002/asia.70473 by Tsinghua University Library, Wiley Online Library on [01/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 11>>
+45. M. Nazarian-Samani, M. Nazarian-Samani, S. Haghighat-Shishavan,
+and K.-B. Kim, “Cobalt-Doping-Induced Ultrathin Solid-Electrolyte Inter-
+phase Construction and Shuttle Effect Inhibition in Cu3PS4-Carbon
+Nanotube Hybrid Enabling Superior Potassium-Ion Storage,” Journal of
+Power Sources 580 (2023): 233440, https://doi.org/10.1016/j.jpowsour.2023.
+233440.
+Supporting Information
+Additional supporting information can be found online in the Supporting
+Information section.
+Supportingfile 1: asia70473-sup-0001-SuppMat.docx
+Chemistry – An Asian Journal, 2025
+11 of 11
+ 1861471x, 2025, 24, Downloaded from https://aces.onlinelibrary.wiley.com/doi/10.1002/asia.70473 by Tsinghua University Library, Wiley Online Library on [01/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

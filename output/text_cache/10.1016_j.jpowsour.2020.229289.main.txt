@@ -1,0 +1,1069 @@
+
+<<PAGE 1>>
+Journal of Power Sources 485 (2021) 229289
+Available online 1 December 2020
+0378-7753/© 2020 Elsevier B.V. All rights reserved.
+Polysulfide reduction and Li2S phase formation in the presence of lithium 
+metal and solid electrolyte interphase layer 
+Ethan P. Kamphaus a, Perla B. Balbuena a,b,c,* 
+a Department of Chemical Engineering, Texas A&M University, College Station, TX 77843, USA 
+b Department of Materials Science and Engineering, Texas A&M University, College Station, TX 77843, USA 
+c Department of Chemistry, Texas A&M University, College Station, TX 77843, USA   
+H I G H L I G H T S 
+G R A P H I C A L A B S T R A C T 
+• Passivation layer effectiveness depends 
+on electrolyte interfacial components. 
+• Favorability of Li2S formation demon­
+strated over a variety of passivation 
+layers. 
+• Li2S phase nucleation stabilizes the 
+reduction products of Li2S8.  
+A R T I C L E I N F O  
+Keywords: 
+Density functional theory 
+Lithium metal reactivity 
+Passivation layers 
+Molecular dynamics 
+A B S T R A C T  
+Lithium sulfur battery is an attractive next generation technology that can meet many demands of modern so­
+ciety. Unfortunately, the lithium sulfur battery faces unique issues related to the polysulfide shuttle effect, that is 
+due to reduction products dissolving in the electrolyte and their subsequent reduction on the lithium metal 
+electrode. This adds further problems to the already challenging needs of understanding and engineering a solid 
+electrolyte interphase (SEI) layer with desired properties. One of the most important SEI properties is its 
+passivation of lithium metal which is critically important to the overall battery performance. Passivation is 
+difficult to measure experimentally without the influence of many factors. This study reports an investigation of 
+the reduction of the intermediate Li2S8 over lithium already passivated with Li2O, Li2CO3, LiOH, LiF and Li2S 
+along with exploration of Li2S8 reduction over pristine lithium nanoclusters using first principles computational 
+models. Significant formation of Li2S phase nucleation is found to stabilize the reduction products of the Li2S8. 
+The formation of Li2S is explored in-depth with lithium nanocluster-based models determining a 2 V potential 
+increase for the reduction of polysulfides due to the formation of Li2S. This investigation demonstrates passiv­
+ation effects of important SEI components including Li2S.   
+1. Introduction 
+Energy storage in the form of batteries continues to become more 
+integral to many parts of modern life. Whether the application is 
+portable electronics such as laptops, phones or other devices, or long- 
+range electric vehicles, there is a consumer demand for longer lasting 
+* Corresponding author. Department of Chemical Engineering, Texas A&M University, College Station, TX 77843, USA. 
+E-mail address: balbuena@tamu.edu (P.B. Balbuena).  
+Contents lists available at ScienceDirect 
+Journal of Power Sources 
+journal homepage: www.elsevier.com/locate/jpowsour 
+https://doi.org/10.1016/j.jpowsour.2020.229289 
+Received 4 September 2020; Received in revised form 24 November 2020; Accepted 26 November 2020   
+
+<<PAGE 2>>
+Journal of Power Sources 485 (2021) 229289
+2
+and greater charge life battery technology. Advanced energy storage is 
+also desired for other applications like storing green energy off grid and 
+increasing resilience of current energy grid [1–3]. Depending on the 
+application, there are many different battery technologies that may 
+fulfill the desired requirements. For many applications, the battery 
+chemistry of focus has been lithium-based technologies [4]. Though it is 
+important to note that there are many different possibilities in the field 
+of advanced energy storage especially regarding different battery sys­
+tems [5–9]. 
+Lithium batteries are desirable for their high energy density, good 
+cycling life, and body of knowledge and development. Most of currently 
+implemented lithium battery technology utilizes lithium ion technology 
+which some commercial systems have a theoretical energy density of 
+~400 Wh kg−1 [10]. Though these values are good for many technol­
+ogies there is a demand to increase energy density while maintaining 
+similar cycle life. There are several next generation lithium technologies 
+that could meet this goal while not having to reinvent the entire battery 
+chemistry. One such option is the lithium-sulfur battery (LiSB). The LiSB 
+offers a theoretical energy density of 2600 Wh kg−1 [11–13]. This would 
+be a definite and major improvement over the conventional lithium ion 
+battery technology. However, the use of sulfur as an electrode in­
+troduces problems that must be solved. The two largest challenges fac­
+ing the LiSB is the use of a lithium metal anode and the polysulfide 
+shuttle effect [14–16]. 
+Since the sulfur cathode offers higher capacity, the corresponding 
+anode must have a higher capacity to match. Most of the focus has been 
+on using a lithium metal anode to satisfy this requirement [10]. How­
+ever, lithium metal is highly reactive which reacts with the electrolyte to 
+form the solid electrolyte interphase (SEI) layer on the electrode. This 
+changes many of the properties which is very challenging from a battery 
+design perspective [17]. Much is unknown about the properties of the 
+SEI especially regarding their passivation due to challenging experi­
+mental environments and the highly reactive systems. The SEI is also 
+closely related to the formation of lithium dendrites which can ruin 
+battery life and create significant hazards [18,19]. How does one engi­
+neer an electrode to have the desired properties when much is unknown 
+about the SEI, the reactions are difficult to control and experiments are 
+challenging to execute? 
+The polysulfide shuttle effect is a problem specific to the lithium 
+sulfur battery [20,21]. This effect arises from the dissolution of sulfur 
+reduction products on the cathode. This causes active material loss from 
+the cathode that enters the electrolyte and shuttles or moves through the 
+electrolyte. The dissolved polysulfides will inevitably shuttle to the 
+lithium electrode where they will complete their reduction forming Li2S 
+and Li2S2 [22]. This contributes to loss of active cathode material as well 
+as adds to the SEI introducing yet more chemical species that will change 
+the properties of the electrode. 
+There have been many investigations of the SEI both computational 
+and experimental focusing on different aspects. Some experiments have 
+focused on characterizing the SEI in situ determining how and what 
+species are present. XPS experiments have provided fine chemical 
+insight into the surface of the SEI [23–25]. New techniques have been 
+developed to allow for molecular level precision such as soft landing 
+ionization [26–28]. Other investigations have explored characterizing 
+the properties of the SEI to determine how to engineer the SEI to our 
+advantage [29–31]. Due to the challenging environment, computational 
+work has been utilized well to assist in investigations of SEI chemistry 
+and properties. Computational chemistry and materials science simu­
+lations and calculations have long been used in the field of electro­
+chemistry to probe fundamental processes [32–34].A wide variety of 
+computational studies have explored properties of materials, reaction 
+energetics and pathways, and other detailed chemical information [16, 
+31,35,36]. There still is a lack of knowledge of SEI passivation properties 
+with different electrolyte compositions as well as the reduction reactions 
+of polysulfide species. A better fundamental understanding of these 
+processes is necessary for the intelligent design and engineering of the 
+LiSB to bring the battery from the laboratory to practical 
+implementation. 
+In this work, we used two different types of simulation to explore 
+reduction of polysulfides in the presence of an SEI and without. For the 
+investigation of electrochemical systems with SEI, interfaces are criti­
+cally important. The chemistry that governs the reactions in a system 
+such as the lithium-sulfur battery has many components which are 
+inherently heterogeneous. By using large models that contain not only 
+the lithium-SEI interface but also the SEI-electrolyte interface, a simu­
+lation can be built and explored that contains many of the important 
+interfacial dynamics. These models can provide critical information 
+such as trends in passivation with different electrolyte compositions, the 
+reduction reactions occurring in the system at different points in time, 
+and interfacial structures and dynamics of the different materials. These 
+models provide significant improvement to previous models which 
+looked at thinner films or were not able to incorporate SEI, lithium metal 
+and electrolyte into one simulation. The more that can be simulated in 
+one box, the less assumptions that must be made. 
+For the systems without SEI, lithium nanoclusters provide a 
+computationally cheaper and higher level of theory pathway to inves­
+tigate important battery chemistry. With computational chemistry 
+simulations, there is a tradeoff between the size of the simulation and 
+the level of theory used. Though small systems like nanoclusters are 
+missing many aspects that one would look for in a practical battery, 
+these models contain some of the most fundamentally important aspects 
+of battery chemical and electronic properties. In this case, enough 
+lithium atoms to react like a metal and some molecules of an electrolyte 
+may constitute a model system. Though, more assumptions must be 
+made, the nanoclusters of lithium can give an alternative perspective 
+and tool to explore polysulfide speciation, reduction potentials, and SEI 
+phase formation. 
+Here we report on the reduction of Li2S8 and relative passivation of 
+systems with lithium and Li2O, Li2CO3, LiF, LiOH and Li2S in the pres­
+ence of a DME electrolyte with Li2S8. We found that Li2O and Li2S 
+experienced the most polysulfide reduction followed by Li2CO3, LiF and 
+LiOH respectively. Unlike in previous simulations with similar models, 
+there was significant formation of Li2S phase nucleation adding to the 
+existing SEI. Due to limitations of the periodic boundary conditions 
+methods, obtaining a closer look at the formation of Li2S from an en­
+ergetics and finer structure perspective requires the use of additional 
+methods. In order to investigate these ideas further, lithium nanocluster 
+models were used to determine reduction potentials and explore the 
+formation of Li2S with a novel analysis method based on ideas from 
+graph theory. This combined approach provides multiple perspectives 
+and a more comprehensive view of the reduction of polysulfides over a 
+lithium metal anode that is critical to understanding lithium sulfur 
+battery performance. 
+2. Methodology 
+2.1. Multiple interface lithium/SEI/Li2S8 with DME models 
+These electrode/electrolyte interfacial models were simulated using 
+Vienna ab initio simulation package (VASP) [37–39] using the slab 
+model approximation to represent the electrode surface in contact with 
+the electrolyte. VASP was chosen due to its high performance, available 
+simulation methods and wide usage. Electron-nuclei interactions are 
+implemented via projector augmented wave pseudopotentials and the 
+dynamic 
+electron 
+correlation 
+was 
+described 
+with 
+the 
+Perdew-Burke-Ernzerhof 
+generalized 
+gradient 
+approximation 
+(PBE-GGA). All of these models use periodic boundary conditions (PBC) 
+to represent solid structures [40,41]. For this study, density functional 
+theory (DFT) calculations were used to determine the electronic struc­
+ture and then the forces for ab-initio molecular dynamics (AIMD) sim­
+ulations. A NVT ensemble was implemented at 330 K with a Nose 
+thermostat with 0.5 as the damping parameter. 400 eV was used as a 
+E.P. Kamphaus and P.B. Balbuena                                                                                                                                                                                                          
+
+<<PAGE 3>>
+Journal of Power Sources 485 (2021) 229289
+3
+cutoff energy with 1 × 10−6 eV as the electronic convergence parameter. 
+Gaussian smearing was used with a smearing parameter of 0.5. A 2 × 2 
+×1 Monkhorst-Pack K point grid was used for surface Brillouin zone 
+integration [42]. The structures used are the same for Li2O, LiOH, 
+Li2CO3 and LiF as in previous publications [43,44]. The Li2S layer was 
+built for this work following previously established procedure [43]. The 
+AIMD simulations were run for ~15 ps per simulation in order to pro­
+vide enough time to obtain a sampling of processes in the system and 
+observe polysulfide reduction. All charge analysis for these systems was 
+obtained with the Bader partial charge scheme [45–47]. 
+All the systems for the AIMD simulations were created by separately 
+optimizing bulk lithium and SEI structures. Li (100) facet was chosen for 
+the lithium surface based on previous calculations where it was found to 
+have the lowest surface energy [48,49]. The SEI facets were chosen 
+based on what facets would minimize the lattice mismatch between the 
+lithium and SEI. If the lattice mismatch is too high, the simulation is 
+unable to converge or provide reasonable results due to the energy 
+introduced from the strain of the mismatch. The initial interfacial dis­
+tance between the SEI and lithium was calculated by finding the distance 
+that provided the minimum energy in a potential energy scan. In this 
+work the surfaces used for Li2O, LiOH, Li2CO3, LiF and Li2S respectively 
+are 100, 100, 101,100 and 100. For the case of Li2O and Li2S, the 
+resulting slabs created by cutting at the 100 planes are asymmetric. One 
+side of the slab has Li on the surface whereas the other surface is an 
+exposed O/S layer. For both the Li2O and Li2S, the orientation where the 
+oxygen/sulfur layer was exposed to the lithium slab had a significantly 
+lower interfacial energy (Table S-2/S-3). We selected this orientation 
+because a lower interfacial energy is critical to the convergence and 
+physicality of the results of the model. For all of the surfaces used, these 
+planes do not necessarily provide the lowest surface energy out of all 
+possible facets when the surfaces are exposed to vacuum. However, 
+there are multiple interfaces in our system and we must balance the 
+interfacial energy, lattice mismatch and surface energy along with 
+computational limitations. The results reported here should be consid­
+ered unique to the particular planes that are being used. The structures 
+were then optimized before adding an electrolyte layer on top of the SEI. 
+The electrolyte layer was incorporated by amorphously packing a vac­
+uum slab with solvent molecules (1,3 – dimethoxyethane) and one Li2S8 
+molecule. This particular choice of solvent was made because DME is a 
+commonly used solvent in lithium sulfur battery technology and Li2S8 is 
+the most likely polysulfide to shuttle from the sulfur electrode to the 
+lithium electrode. The longer the chain length of the polysulfide (# of 
+sulfur atoms) the more soluble the species is and therefore more likely to 
+shuttle. The polysulfide was placed near the surface in a configuration 
+such that the sulfur atoms were all close (<3 Å) from the surface. Finally, 
+a single helium layer was added on top of the electrolyte to prevent 
+interactions across the Z-axis of the system. This stops the electrolyte 
+from reacting with the bottom of the lithium slab due to periodic 
+boundary conditions. 
+2.2. Nanocluster models 
+These models were simulated with Gaussian09 [50] and visualized 
+with GaussView 6 [51]. The hybrid exchange-correlation functional 
+used to solve the first principles equation was B3PW91 with a 
+6–311++G (d,p) basis set for all the lithium clusters. All of the models 
+utilize implicit solvent of DME by using the IEFPCM solvent model in 
+Gaussian09 [23,52]. The model solvent used was THF with a dielectric 
+constant of 7.2. These methods were chosen based on keeping methods 
+similar to previous publications for these models for comparison [44]. 
+All simulations were submitted for geometry optimizations and fre­
+quency calculations. This allows for the calculation of the free energy 
+and determine that a structure is not in a transition state. The initial 
+structures for the models were created by separately optimizing the 
+structures of each polysulfide and each lithium cluster. Then the opti­
+mized models were placed near each other such that the polysulfide 
+species was centered on the cluster and ~1.5 Å distance from the 
+lithium. The coordination representation based on graph theory was 
+made using the NetworkX package in python [53]. The Kamada-Kawai 
+force directed drawing algorithm was used to create the map layout 
+[54]. 
+3. Results and discussion 
+3.1. Li/SEI/Li2S8 with DME (periodic interface models) 
+First, we characterize the passivation effects and structural changes 
+in the passivation layer when the Li metal is covered by a thin layer of 
+common SEI components: Li2CO3, LiF, Li2O, LiOH and Li2S. The 
+passivation effect is tested by following the dynamic evolution of the 
+system when exposed to an electrolyte composed of Li2S8 dissolved in 
+DME solvent. The initial and final configurations of all of the multi 
+interface systems are shown in Figures S-1 to S-5 and the energy over 
+time is displayed in Figure S-6. 
+Fig. 1 shows a summary of the simulation where Li2CO3 is used as the 
+passivation layer. Over the 15 ps of simulation time, the Li2S8 underwent 
+four reduction reactions. The first three occurred in the first 4 ps 
+reducing the S8 into S3, 2 S2 and one S species. At about 12 ps, a final 
+reaction occurs where the S3 is reduced into a S2 and S. Based on the 
+Bader charge curves, the polysulfide curve tracks with the lithium curve 
+thus implying that the electrons for the reduction are coming from the 
+lithium slab. It is important to note that the lithium curve does not 
+match the polysulfide curve exactly due to the transfer of charge be­
+tween the lithium and SEI layers. The Li2CO3 SEI curve has some elec­
+tron build up at the beginning of the simulation (~2 e) which is similar 
+to our previous studies. This initial charge comes from the lithium slab 
+which likely occurs because of the favorability of the interfacial struc­
+ture between the lithium and the Li2CO3 but there is some instability in 
+the curve which we was reported before with Li/Li2CO3 [43,55]. 
+As seen from the system snapshots, the products of the polysulfide 
+reduction are closely coordinating with the Li2CO3 surface indicating 
+initial phase formation of LixS2 or LixS. Compared to our previous work 
+with LiTFSI and LiFSI, the Li2S8 experienced an additional ~4 e−
+of 
+reduction. 
+The polysulfide in the LiF system (Figure S-7) experienced less 
+reduction extent than that on Li2CO3. There were two reduction re­
+actions in this system. First the S8 was divided into a S5 and a S3 around 1 
+ps into the simulation. Then the S5 experienced further reduction by 2 
+ps, breaking into an S3 and an S2. These products underwent no more 
+reactions for the time of the simulation. From the snapshots, it is clear 
+that the reduction products did not significantly modify the surface of 
+the LiF. This is a different outcome than in the Li2CO3 simulation, where 
+the polysulfide reduction products heavily coordinated and modified the 
+interface. This is due to the difference in surface structure. Li2CO3 has 
+lithium atoms that are less coordinated and have more degrees of 
+freedom in the surface layer than LiF. The Bader charge curves 
+demonstrate that the electrons which reduced the Li2S8 came solely from 
+the lithium layer which agrees with previous work. As with the Li2CO3, 
+the Li2S8 had a greater extent of reduction than both LiTFSI and LiFSI. 
+For LiOH, the Li2S8 was reduced only one time, Figure S-8. The re­
+action occurred in the first 2 ps of the simulation, a S8 was broken into 
+two S4 fragments. These remaining polysulfides remain intact for the 
+rest of the simulation time. The Bader charge curves are dynamic in this 
+system akin to the Li2CO3 simulation. The lithium curve decreases in 
+number of electrons as the Li2S8 curve increases which shows that the 
+electrons for the reduction are originating from the lithium metal as with 
+the LiF and Li2CO3 systems. The LiOH net Bader charge curve has a large 
+spike in it at 11.5 ps. This is similar to the dynamism seen in the Li2CO3 
+curve but the LiOH sudden charge increase is longer lived. This part of 
+the simulation was analyzed by watching the system frame by frame and 
+there was no significant change to the geometry or behavior of the 
+system. In comparison to LiTFSI and LiFSI, Li2S8 was reduced the same 
+E.P. Kamphaus and P.B. Balbuena                                                                                                                                                                                                          
+
+<<PAGE 4>>
+Journal of Power Sources 485 (2021) 229289
+4
+Fig. 1. Li/Li2CO3/Li2S8 +DME system: 1) Net Bader charges over time of lithium slab – purple, helium slab – blue, DME – red, Li2S8 – yellow, and Li2CO3 – turquoise; 
+2) Snapshots of system at labels on charge graph without DME; 3) Reactions for the corresponding snapshots. Color code for atoms: S: yellow; O: red; Li: purple; C: 
+grey. (For interpretation of the references to color in this figure legend, the reader is referred to the Web version of this article.) 
+Fig. 2. Li/Li2S/Li2S8 +DME system 1) Net Bader charges over time of lithium slab – purple, helium slab – blue, DME – red, Li2S8 – yellow, and Li2S – turquoise 2) 
+Snapshots of system at labels on charge graph 3) Reactions for the corresponding snapshots. Color code for atoms: Li: purple; S: yellow. (For interpretation of the 
+references to color in this figure legend, the reader is referred to the Web version of this article.) 
+E.P. Kamphaus and P.B. Balbuena                                                                                                                                                                                                          
+
+<<PAGE 5>>
+Journal of Power Sources 485 (2021) 229289
+5
+amount as LiTFSI and was reduced less than LiFSI. 
+The Li2O system, Figure S-9, exhibits quite different behavior than 
+the previous simulations. The largest difference is in the speed that the 
+system reacts with the Li2S8. It can be observed from the first frame that 
+the polysulfide has already been reduced by ~8 e. This can be confirmed 
+from the snap shots as well. At frame A, many changes have already 
+occurred in the system as seen by the broken PS bonds and movements of 
+Li atoms. No additional reactions occur in the system for the rest of the 
+simulation. Another interesting change in behavior from previous work 
+done with Li2O, is that the SEI has a nearly constant net Bader charge of 
+~0 e. In previous simulations, we found that in the first frame the 
+lithium transferred a large number of electrons to the Li2O. In this 
+simulation, we see the lithium passing a large number of electrons to the 
+polysulfide directly. We have hypothesized that the reason for the quick 
+electron transfer was due to the favorable interface between lithium and 
+Li2O. This quick transfer of electrons was recently reported on by an 
+experimental study [56]. That effect could still be important here but 
+with the added question of how it transfers to the Li2S8 as quickly. 
+Perhaps this is an extension of the nucleophilic reactions that Li2O can 
+have or due to the reduction products closely interacting with the sur­
+face lithium atoms. When comparing the Li2S8 to LiFSI and LiTFSI 
+simulations, the Li2S8 was reduced further than the lithium salts on this 
+surface. 
+Li2S is a possible SEI component because the SEI in this case is 
+formed by reactions between lithium and the electrolyte. Due to the 
+polysulfide shuttle effect, polysulfides will be present in the electrolyte 
+which can then react with lithium to form Li2S if they are fully reduced. 
+The Li2S simulation presented here was created according to previously 
+established procedure. 
+Fig. 2 summarizes the results for the Li2S system. The Li2S8 un­
+dergoes a series of quick reactions between 0 and 1 ps. Then the 
+remaining polysulfide products remain unreduced for the rest of the 
+simulation time. From the Bader charge curve, the Li2S layer started 
+with ~5 e from the lithium layer. This is similar to observations from the 
+Li2O which have similar interfaces. In the case of the Li2O, an oxygen 
+layer was exposed to the lithium metal layer where in Li2S, there is a S 
+layer exposed to the lithium. During the first picosecond when the 
+polysulfide is being reduced, the electrons for the reduction come from a 
+combination of the lithium and Li2S layers. As with the Li2CO3 and Li2O, 
+the small chained polysulfide by products of the reduction are closely 
+interacting with the lithium atoms on the surface of the Li2S. The charges 
+of the Li2S layer by layer are included in Figure S-28. As found in our 
+previous work, the surfaces which are exposed to the interface have a 
+different net Bader charge per atom than those in the bulk of the Li2S. 
+The bulk net Bader charges for both the lithium and the sulfur layers are 
+quite similar which implies the presence of a bulk charge structure. 
+Taking a closer look at the geometry of the system in Figure S-10b, 
+the formation of new Li2S is present. On the left there are only 4 layers of 
+sulfur and on the right, there are 5 layers of sulfur. There is an additional 
+layer of sulfur that is not present in the initial simulation configuration. 
+The additional sulfur from this layer comes from the byproducts of the 
+Li2S8 reduction which is 2 S2 and 4 S species. It is worth noting that the 
+new Li2S layer does not have the same number of atoms as the already 
+existing layers. However, there were only two lithium ions from the 
+Li2S8 but there are several lithium atoms in the new 5th layer. The video 
+of the system shows that lithium atoms diffuse from lower layers in the 
+Li2S and from the lithium metal itself to make up these atoms in the new 
+layer (Figure S-11) The lithium atoms in the new layer originate in the 
+first layer of lithium in the Li2S layer, but other lithium atoms diffuse 
+upward to replace the lithium atoms that moved from the top layer. 
+The Li2S system was not the only simulation to nucleate a new Li2S 
+phase. Li2O and Li2CO3 showed close coordination with the Li2S8 
+reduction products and lithium atoms which were on the surface. This 
+behavior was not observed for LiOH and LiF. The reason behind this 
+difference is due to the structure of the SEI layers. In the structures 
+where more lithium atoms are exposed to the top layer, such as Li2O and 
+Li2S, many surface Li atoms are pulled from the surface and are incor­
+porated into a new Li–S layer. Li2CO3, LiF and LiOH have less lithium 
+atoms on the surface but in the case of Li2CO3, the lithium atoms have 
+more degrees of freedom. This allows the facile coordination of lithium 
+atoms compared to LiF and LiOH. 
+Figure S-12 (Tables S–1) compares the different SEIs by extent of 
+reduction and time it took the simulation to reach that extent. The 
+reactivity trend of the systems was Li2O––Li2S > Li2CO3> LiF > LiOH. 
+Compared to our LiFSI and LiTFSI work the trends are partially different. 
+In the case of LiTFSI, there were no differences in the extent of the 
+reduction but some systems were faster than others (Li2O >
+LiOH––Li2CO3). In the case of LiFSI, there were significant differences in 
+the observed extent of reductions leading to more refined trends in 
+reactivity (Li2O > LiOH > LiF––Li2CO3). The biggest difference is in the 
+position of LiOH and Li2CO3. With LiTFSI and LiTFSI, the Li2CO3 was 
+one of the most passivating materials but with Li2S8 it’s the 3rd least 
+passivating SEI. LiOH which passivated LiTFSI and LiFSI less than 
+Li2CO3 and LiF now passivates Li2S8 the most. This is particularly 
+interesting because the species being reduced changes the trend of 
+passivation. This would mean that there is no general passivation trend 
+but it depends on the particular chemical species in question other than 
+for Li2O’s lack of passivation. There were also differences in the 
+reduction times compared to the LiFSI and LiTFSI systems as well. In the 
+cases with noticeable Li2S formation, the kinetics were much faster. 
+We hypothesize the reason behind this change in trend is due to the 
+formation of Li2S phases. As we identified, Li2O, Li2S and Li2CO3 seem to 
+nucleate a new Li2S phase. Given the favorability of Li2S formation, the 
+ability to form Li2S would cause the reduction to be driven to a higher 
+extent since the resulting Li2S would be stabilized. The initial formation 
+of Li2S has been observed before in another computational study that 
+looked at similar systems. This study used different structures that 
+involved a much higher degree of surface strain which causes the sys­
+tems to be generally more reactive. 
+In these simulations, the Li2S8 was reduced into small fragments such 
+as S3, S2 or S. In Li2S, Li2O, LiF and Li2CO3, there were no species larger 
+than S3. In LiOH, there were two long lived S4 fragments. When inves­
+tigating the polysulfide speciation during the reactions there are some 
+observations such as that longer fragments are preferentially reduced 
+into smaller fragments. For instance, this happens in the LiF system, 
+where at the B- > C reaction, the S5 is reduced instead of the S3. This was 
+investigated in previous work with a different level of theory [57]. The 
+conclusion from this previous work is that longer chained polysulfides 
+will be preferentially reduced due to their more favorable electron af­
+finity. This observation is confirmed using a different level of theory and 
+in the presence of the five different SEI surfaces. 
+3.2. Li nanocluster with LiSx and Li2Sx 
+From the multiple interface models, several observations are clear. 
+One, the polysulfide will undergo reduction reactions to some extent 
+creating a wide variety of polysulfide chain length speciation. Two, the 
+polysulfide’s reduction products can form Li2S quite easily and that 
+modifies the passivation trends of the SEI. These two aspects are 
+particularly interesting for further investigation given the importance of 
+polysulfide’s reduction reactions with the lithium metal anode. These 
+model systems can be used to probe the formation of a Li2S phase at a 
+more precise level. Figure S-13 shows an overview of the systems used 
+to explore these aspects. The polysulfide species were placed near the 
+lithium nanocluster in the presence of an implicit solvent. Then each 
+system was optimized to find the ground state minimum energy 
+configuration which provides the thermodynamically stable structure, 
+properties and energetics which can be used for further analysis. These 
+simulations allow for a closer look at the chemistry identified in the 
+previous AIMD simulations. 
+The first systems explored were ones with no additional electrons 
+added to the system. This is equivalent to a completely unpolarized 
+E.P. Kamphaus and P.B. Balbuena                                                                                                                                                                                                          
+
+<<PAGE 6>>
+Journal of Power Sources 485 (2021) 229289
+6
+electrode. These simulations demonstrate the reactions and structures 
+one would expect with exposing lithium metal to the different sized 
+polysulfides in solution. We refer to these simulations and the associated 
+energy differences as cluster formation. This is because with a total 
+excess charge of 0 e, all of the chemical processes that occur are related 
+to bringing a polysulfide and lithium nanocluster together from infinite 
+separation. An example system is shown in Figure S-14. 
+The structures on the left are the polysulfide and lithium clusters 
+independently optimized and the structure on the right is the final ge­
+ometry for the cluster formation. From this example, there are several 
+observations that can be made. One such observation is that the Li2S5 is 
+completely dissociated into 5 distinct S-containing species. Another is 
+that the cluster formation energy is very strong or large and negative. 
+This indicates that the formation of this particular cluster is highly 
+favorable. The Gcluster is the cluster formation free energy which will be 
+discussed later. 
+Due to the large number of simulations run with the lithium nano­
+cluster, the speciation of the polysulfide species is investigated. For the 
+smaller lithium clusters, the extent of polysulfide reduction was less than 
+in larger clusters which is expected due to the number of lithium atoms. 
+Unlike in the AIMD simulations which are time based, the lithium 
+nanocluster models are based on thermodynamics so one cannot follow 
+a particular species being reduced into progressively smaller fragments. 
+However, it is clear from the reduction products of the nanoclusters that 
+longer chained species are not favorable. The largest species observed is 
+S5 which can only be found in the Li1 simulations. The dissociation of 
+long chained polysulfides has been investigated by our group and found 
+similar results that in the presence of many lithium atoms, the poly­
+sulfide is almost completely reduced and dissociated [49]. 
+In our previous study with lithium nanoclusters, DME, LiTFSI and 
+LiFSI were probed using the same methodology [44]. In these simula­
+tions, the extent of reduction was not at the same magnitude as with the 
+polysulfides. This also matches with comparisons in reactivity with the 
+PBC multiple interface simulations. The resulting reduction products of 
+the LiTFSI and LiFSI would separate from the salt molecule and attach to 
+the surface which was considered to be the beginning of possible phase 
+formation of some types of SEI such as LiF or Li2O. In the case of the 
+polysulfides, the reduction products cause a significant amount of 
+change to the overall geometry of the cluster. Instead of sulfur just 
+coordinating on the surface, in many cases the sulfur is deeply incor­
+porated into the structure. This is a large difference in behavior 
+compared to the previously studied systems and must be unique to the 
+polysulfides and formation of Li2S. 
+Investigating the phase formation of Li2S is challenging from exam­
+ining the structures visually. This is because of the amount of defor­
+mation of the clusters that the sulfur reduction products caused via 
+incorporation into the nanoclusters. This led us to develop an alternative 
+characterization technique based on analyzing the systems with a 
+coordination-based technique. Instead of using the normal XYZ co­
+ordinates, we reduced the dimensionality of the geometry by using only 
+the distances between atoms (From XYZ to R coordinates). This data was 
+used to create a new representation of the system utilizing graph theory. 
+In this representation, each atom is a node and if the atoms are within 
+3.5 Å of each other, then an edge is drawn between them which is 
+weighted according to the calculated distance. An example of the co­
+ordination representation is demonstrated in Fig. 3. 
+The advantage of this representation is that it allows an easier 
+analysis of what atoms are connected to which other atoms without 
+ambiguity which becomes even more useful as cluster sizes increase. The 
+reduction of dimensionality with this representation does change the 
+structure of the cluster which should be considered. From Fig. 3, we can 
+identify that the polysulfide was reduced once, resulting in a S2 and S3 
+fragment. The S3 fragment is closely coordinating with the Li atom while 
+the S2 fragment is closely coordinating with the original Li+ ions. The 
+coordination representation can also be used to show other types of data 
+as well such as the atomic partial charges of the system (Figures S-15 and 
+S-16). Figure S-9 shows the same system, but with the inclusion of 
+atomic polar tensor (APT) [58] partial charges as a secondary color 
+scheme. The results here show what is expected for the sulfur species. 
+That is the terminal sulfur atoms such as 3 and 5 are more negatively 
+charged than a bridge sulfur atom such as 4. All of the lithium atoms in 
+the system are similarly charged regardless if they were initially a 
+lithium ion or a lithium atom. They all have high positive values due to 
+oxidation for the reduction of the sulfur as well as polarization effects 
+from the terminal sulfur atoms. Centrality measures were also explored 
+and discussed in the SI (Figures S-17/S-18). 
+Though the geometries of the nanoclusters seem to be widely vari­
+able from a first glance there are many general trends that the coordi­
+nation representations follow. Based on the characteristics of the 
+coordination representation, several families of similar structures were 
+identified. In the small lithium nanoclusters (Li1 and Li5), three families 
+were more common than others. These were named PS (polysulfide), 
+Chain, and Structured. Examples are shown in Fig. 4. The PS family has 
+the characteristic of a mostly intact polysulfide which is seen in the 
+representation as sulfur atoms in close proximity with many shared 
+edges. This type of structure is common to any simulation where longer 
+chained polysulfides remain intact. The Chain family is identified by the 
+coordination representation having pinch point atoms that are shared 
+with other distinct parts of the cluster. This pattern is representative of 
+clusters in which the atoms are loosely coordinating and connecting to 
+each other. The Structured family is characterized by the distinctive 
+patterned look that arises from the coordination of a sulfur to ~4 lithium 
+atoms that are shared amongst multiple sulfur atoms. These three fam­
+ilies all arise due to different charge states, polysulfide sizes, and 
+nanocluster sizes. The PS family is common for low charge state and low 
+number of lithium atoms since the polysulfides are extensively reduced 
+otherwise. The chain structure is common for systems with a low 
+number of lithium atoms where the polysulfide has experienced more 
+reduction. Finally, the structured family arises when the polysulfide is 
+completely reduced and the system is at a higher charge state. 
+In the larger systems, there are two families of coordination repre­
+sentation that are more common: Cluster and Central families (Fig. 5). 
+The Cluster family is characterized by the lack of incorporation of sulfur 
+into the lithium structure. This corresponds to when the polysulfide 
+reduction products stay on the surface of the nanocluster. The Central 
+family corresponds to when the polysulfide is incorporated into the 
+Fig. 3. Left- Original Structure of Li2S5 with Li1 1st 
+reduction. Right – Graph theory coordination repre­
+sentation. Each node represents an atom. Each line 
+represents an edge which corresponds to a distance of 
+less than 3.5 Å. The length of the edge is proportional 
+to the calculated distance. Color code: Yellow- S, Blue 
+– Li+ ions in the initial configuration, Purple – Li 
+atoms in the initial configuration. (For interpretation 
+of the references to color in this figure legend, the 
+reader is referred to the Web version of this article.)   
+E.P. Kamphaus and P.B. Balbuena                                                                                                                                                                                                          
+
+<<PAGE 7>>
+Journal of Power Sources 485 (2021) 229289
+7
+structure which is seen by the amount of lithium sulfur edges present in 
+a graph. The Cluster family is more favored when the polysulfide chain 
+lengths are smaller and lower overall charge state. Otherwise the Central 
+structure is favored. 
+From these observations, it is clear that different structural families 
+are favored as the extent of reduction for the polysulfides increase and as 
+the overall charge state of the system increases. With less lithium atoms 
+and added electrons, the structures are more reminiscent of the previ­
+ously studied DME, LiFSI and LiTFSI systems where there is reduction 
+but the lithium stays more intact. However, a difference in behavior 
+arises as more reduction occurs where the sulfur is incorporated into 
+lithium forming a Li2S phase. The fact that the Li2S phases formed 
+spontaneously in the simulations indicates their energetic favorability. 
+This means that the sulfur became incorporated into the nanocluster 
+structure because it provided the lowest possible energy (ground state). 
+Since this was not present with the reduction of the lithium salts, this 
+implies that Li2S is more stable and favorable. This also agrees with the 
+above discussed multiple interface simulations which showed a large 
+amount of Li2S formation compared to formation of Li2O or LiF studied 
+in previous work. 
+The partial charges in the system confirm what is reasonably ex­
+pected based on previous studies of electron distributions in polysulfide 
+species and lithium atoms (Figure S-16). The most interesting observa­
+tions are the presences of lithium atoms with a positive charge which 
+tends to happen when close to sulfur atoms. This is caused by a com­
+bination of polarization and that the electrons required to break the 
+sulfur bonds had to come from a combination of any added charge to the 
+system and the oxidation of the lithium atoms. In the case of the larger 
+clusters, some lithium atoms have a negative partial charge which is due 
+to peculiarities in the charge density assignments that most partial 
+Fig. 4. Examples of coordination representation families that are more common for small lithium nanoclusters. Color code: Yellow- S, Blue – Li+ ions in the initial 
+configuration, Purple – Li atoms in the initial configuration. (For interpretation of the references to color in this figure legend, the reader is referred to the Web 
+version of this article.) 
+Fig. 5. Examples of coordination representation families that are more common in larger structures. Color code: Yellow- S, Blue – Li+ ions in the initial configuration, 
+Purple – Li atoms in the initial configuration. (For interpretation of the references to color in this figure legend, the reader is referred to the Web version of 
+this article.) 
+E.P. Kamphaus and P.B. Balbuena                                                                                                                                                                                                          
+
+<<PAGE 8>>
+Journal of Power Sources 485 (2021) 229289
+8
+charge schemes have problems with. 
+3.2.1. Applying coordination representation to Li/SEI/Li2S8 models 
+The coordination representation established in the previous section 
+is not specific to just a molecular system. This type of analysis can be 
+used for any system such as the larger systems with multiple interfaces. 
+Since the main objective of this representation is to explore Li2S phase 
+formation, only a small part of those systems is relevant. The interface 
+between the SEI and the electrolyte was trimmed so that the only 
+remaining species were the lithium atoms in direct contact with the 
+polysulfide and the polysulfide itself. The decision not to include DME or 
+the non-lithium parts of the SEI was made to allow for easy comparison 
+to the nanocluster models. An example of the coordination representa­
+tion applied to the Li/LiF/Li2S8 system excluding non-Li and S atoms is 
+shown in Figure S-19. The number of atoms is not constant for each 
+frame because some atoms will move further away or closer to the 
+interface during the dynamics. The other atom types were removed for 
+better clarity of figures and to compare to the nanocluster systems. 
+Figure S-20 contains examples for systems where the atom types were 
+not removed. 
+The Lithium atoms in LiF (Fig. 5) are connected in very orderly way 
+that looks squarish. This is not surprising given the structure of the LiF 
+and that the lithium atoms remain closely bound to the fluorine for the 
+duration of the simulation. The polysulfide is reduced twice but still 
+remains closely interacting with the lithium ions. The sulfur remains 
+coordinated to mainly the same lithium atoms without being incorpo­
+rated into the structure. The structure of Li2CO3 is much less organized 
+looking than LiF due to the increased movement of the Li2CO3. The 
+largest behavior difference here is the incorporation of the sulfur atoms 
+into the lithium structure. The remaining polysulfide fragments become 
+separated as they coordinate more closely with the lithium atoms but 
+there are some lithium atoms shared amongst the sulfur atoms. 
+Like LiF, LiOH experienced less reduction than some of the other 
+simulations which is noticeable by the clearly intact polysulfide. The 
+lithium atom structure remains mostly unperturbed as the sulfur is never 
+incorporated. This is similar to the PS family of coordination 
+representation. Another interesting observation is that the lithium atom 
+coordination is very stable. From previous analysis of the structure with 
+atom density profiles, there was a significant amount of rearrangement 
+present in the LiOH. Though this rearrangement occurs, the lithium- 
+lithium coordination remains constant. 
+As discussed earlier, the Li2O system (Fig. 6) exhibits the most 
+reduction for the Li2S8. Even though the S8 is reduced by ~8 e, there is a 
+long lived S3 species that lasts throughout the entire simulation (sulfur 
+atoms 28, 26, and 25). The coordination representations here are almost 
+indistinguishable from the nanocluster simulations in the cases of the 
+Central family because the sulfur atoms are well incorporated into the 
+lithium structure and the ratio of lithium atoms to sulfur atoms is close 
+to the Li15 nanocluster models. This demonstrates that the Li nanocluster 
+models can provide similar behaviors to the much large simulations with 
+both a higher level of theory and reduced computational cost. 
+For the Li2S, we observed the clearest example of Li2S phase for­
+mation out of all of the investigated systems. The coordination repre­
+sentation shows the progression of the polysulfide from being on the 
+edge of the representation to being mostly incorporated into the struc­
+ture by structures D and E. There are few differences between the green 
+nodes and yellow nodes regarding their coordination which further 
+demonstrates how a new layer of Li2S was formed in the simulation. 
+Figure S-21 and Figure S-22 show the average coordination numbers 
+for different species in each of these systems over time. For the inves­
+tigation of Li2S phase formation, the S–Li and Li–S graphs are particu­
+larly valuable. There are very clear differences between the SEI’s. Li2S 
+and Li2O have a significantly higher Li–S average coordination whereas 
+LiF and Li2CO3 are similar with LiOH taking the lowest average number. 
+This mostly follows the reactivity trends which is expected since the 
+formation of Li2S is possible when the polysulfide is reduced to smaller 
+species such as S and S2. This also explains why LiF and Li2CO3 have 
+such similar values. From the coordination representations and visual 
+observation, we would expect that Li2CO3 would have higher Li–S 
+average coordination, but this fails to account for the fact that each of 
+the species the Li2S8 was reduced into are still closely coordinating with 
+the Li2CO3 surface. The trends for the S–S average coordination also are 
+Fig. 6. Coordination representations of SEI/Li2S8 interface corresponding with structures in the multi interface PBC models. Color Code: Purple = Li atoms in initial 
+configuration, Yellow = Sulfur atoms, Blue = Lithium ions in initial configuration. Green = Sulfur from Li2S. (For interpretation of the references to color in this 
+figure legend, the reader is referred to the Web version of this article.) 
+E.P. Kamphaus and P.B. Balbuena                                                                                                                                                                                                          
+
+<<PAGE 9>>
+Journal of Power Sources 485 (2021) 229289
+9
+representative of reduction extent of the polysulfide since in every sys­
+tem other than Li2S, the only sulfur present is from the Li2S8 species. 
+3.2.2. Cluster formation and reduction energies 
+One advantage of using a different type of simulation with higher 
+level of theory is the relative ease of determining reduction energies. The 
+lithium nanoclusters are used to determine the cluster formation energy 
+(from infinite separation to close contact with no added electrons) as 
+well as the first and second reduction potentials. First, we examined the 
+cluster formation energy which is represented by Gcluster. This is defined 
+as Gcluster = GLi+PS – GLi - GPS. From first observation, the numbers for the 
+cluster formation energies are quite chaotic in general (Tables S–4). 
+Some values for cluster formation are within reasonability (i.e. ~-2 eV), 
+while others are high in magnitude (>|5| eV). There is no obvious trend 
+from just looking at the cluster formation energies but there are some 
+large differences in the extent of polysulfide reduction from the simu­
+lations. Fig. 7 shows the scatter plot of cluster formation energies as a 
+function of the number of sulfur bonds broken. What is clear from these 
+scatter plots is that the cluster formation energy is highly linear based on 
+how many sulfur bonds were broken during the optimization. This ex­
+plains the variation in Tables S–4. There is a ~ - 4 eV change in the 
+cluster formation energy per S bond that is broken. This implies that 
+there is a −4 eV per reduction of the polysulfide. Even though no elec­
+trons are being added to the system, there is a transfer of electrons from 
+the lithium atoms to the sulfur atoms. This number is higher than ex­
+pected from our previous electron affinity calculations by around −2 eV 
+[57]. The only difference in these simulations is the presence of the 
+lithium nanocluster. This additional stabilization in the energy is pro­
+vided by the interactions between the polysulfide and lithium cluster 
+which is essentially the formation of Li2S. The -4eV corresponds to ~ 3 V 
+vs Li/Li+. This compares well with the experimentally determined 
+voltage plateau associated with the reduction of S8. 
+This linear trend was accounted for by subtracting the slope times the 
+number of sulfur bonds broken from the cluster formation energies. This 
+was done to allow for comparisons in the energies that were not related 
+to the extent of reduction of the polysulfide species. Figure S-23 is the 
+same data with the correction of the linear trend. These scatter plots now 
+show no trend as expected, thus confirming the physical meaning of the 
+slope in Fig. 7. 
+In order to recreate what processes would occur in battery operation, 
+electrons were added to these systems. In the cluster formation energies, 
+the simulations had no excess electrons. However, in battery operation 
+there will be polarization that can be accounted for in these simulations 
+by adding 1 e−and then 2 e−to determine the first and second reduction 
+potentials. Figures S-24 and S-25 have the non-modified cluster forma­
+tion energies along with the 1st and 2nd reduction potential energies in 
+the terms of eV for the Li2PS and LiPS systems respectively. 
+From the reduction potentials alone, there are few conclusions to be 
+drawn. For most of the systems, there is no connection between the 
+length of the polysulfides and the reduction energies. There doesn’t 
+seem to be any connection between the cluster size and the reduction 
+trends either. This implies that the simulations must be examined on a 
+case by case basis to characterize the reduction energies. Other than the 
+final geometry of the structure, two other types of data were used to look 
+at the reductions. One is the HOMO of the system and the other is the 
+spin density if defined. The HOMO shows where the highest energy 
+electron is located which is an approximation for where the most 
+recently added electron should be located to determine what was 
+reduced. A better measure for this is the spin density which is the dif­
+ference in spin up and spin down electrons which shows where an 
+Fig. 7. Scatter plot of cluster formation energies as a function of number of S bonds broken with for Li2PS and LiPS with the results of a linear regression for each.  
+Fig. 8. Li2S6 with Li5 2nd reduction. For the spin density, blue indicates excess 
+electrons and green depleted electrons. For the HOMO, green and red distin­
+guish between phase of electrons. (For interpretation of the references to color 
+in this figure legend, the reader is referred to the Web version of this article.) 
+E.P. Kamphaus and P.B. Balbuena                                                                                                                                                                                                          
+
+<<PAGE 10>>
+Journal of Power Sources 485 (2021) 229289
+10
+unpaired electron is localized. Unfortunately, the spin density is not 
+defined for systems where there are no unpaired electrons (spin multi­
+plicity of 0 or singlet spin state). In these cases, only the HOMO is used. 
+For most of the simulations, the HOMO agrees with the spin density but 
+this is not always the case. Fig. 8 shows a characterization of Li2S6 over 
+Li5 2nd reduction. 
+This simulation shows that Li2S6 has had four bonds broken which is 
+one more than the 1st reduction structure. The spin density is localized 
+on the S2 fragment that is on the edge of the structure. In this case, the 
+HOMO is localized on the other sulfur atoms in the system. In either 
+case, the surfaces in the systems localized on the sulfur atoms so for this 
+reduction the polysulfide would be considered reduced. The S6 was 
+reduced further in the second reduction which is associated with a po­
+tential of 1.09 V. This type of analysis was repeated for all the other 
+lithium nanocluster simulations that were run. The resulting reduction 
+energies are shown in Tables S–3 which are color coded by which 
+component in the simulation were reduced. It is interesting that only the 
+small clusters show preferential S reduction, whereas in the larger 
+clusters (>~15 atoms) Li is always reduced. This is further discussed 
+below. 
+One interesting observation from the deconvoluted cluster formation 
+energies is that the Li2PS systems have generally more positive cluster 
+formation energies than the neutral LiPS systems. For the Li1 nanocluster 
+simulations, the cluster formation energies of the Li2PS are ~2 eV 
+(Figure S-26) which is associated with polysulfide reduction whereas 
+the LiPS systems are ~ −3 eV *(Figure S-27) with the same type of 
+reduction. Though the values are not as constant, this same trend is 
+found in all of the other nanocluster systems. This means that LiPS 
+species have a higher affinity for lithium and would be expected to form 
+these clusters spontaneously unlike the Li2PS systems. This is likely due 
+to a difference in stability between the two types of polysulfides. 
+When looking beyond the Li1 clusters, there is more variation in the 
+cluster formation energies. For the Li2PS curve with Li5, there are values 
+close to 0, 0.5 and values around 3 eV (Figure S-24). From closer ex­
+amination, the values that are closer to 0 and negative are all associated 
+with the lithium being reduced. The values that are around 2 eV or 
+higher were the simulations where the polysulfide was reduced. This 
+result shows that as the lithium clusters become larger, the size starts to 
+influence the behavior. Now that there are 5 lithium atoms in the cluster, 
+there is observation of localization of the spin density in the lithium 
+cluster. For the LiPS models with this cluster, the cases associated with 
+lithium reduction are more positive than the sulfur cases. In the other 
+larger clusters (Li10, Li15 and Li20), the generalizations of the corrected 
+cluster formation become less clear. For instance, in the Li2PS with Li15 
+systems, all of the systems are associated with the lithium cluster being 
+reduced but the values range from the ~0.5 eV–~2.0 eV. A possible 
+reason for the increased spread of cluster formation energies is due to 
+changes in the geometry and in the products of the simulation. Once the 
+nanocluster sizes are in the 10-lithium atom or greater range, the ratio of 
+sulfur to lithium becomes such that the metallic nature of the lithium 
+remains intact even with extensive reduction. 
+4. Conclusions 
+The reduction of polysulfide over lithium metal in the presence of SEI 
+and without SEI is a critically important process in the operation of the 
+LiSB due to the polysulfide shuttle effect and reactivity of lithium metal. 
+From our PBC simulations with multiple interfaces we observed that 
+none of the test SEI layers: Li2O, Li2CO3, LiOH, Li2S, LiF were able to 
+completely passivate the reduction compared to bare Li metal. Out of 
+these systems, Li2O and Li2S were the least passivating while LiOH was 
+the most passivating to Li2S8. The trends for passivation did not match 
+the previously determined trends for passivation that were determined 
+with LiFSI and LiTFSI which demonstrates that the passivation trends 
+need to be analyzed considering the particular species being reduced. 
+When the reduced molecule is Li2S8, these results suggest that this is due 
+to the formation of Li2S. The simulations where Li2S was able to form 
+experienced more reduction and clear formation of Li2S on top of the 
+other SEI components. The extent of this phase formation was far more 
+than observed for LiF or Li2O in previous systems. 
+The formation of Li2S was then explored with lithium nanoclusters 
+representing nuclei of the Li deposition process, and the marked increase 
+in phase formation was observed again. Compared to previous publi­
+cations with these systems, small amounts of LiF or Li2O were formed. 
+With polysulfide reduction, much of the sulfur was completely incor­
+porated into the structure of the lithium which demonstrates the ther­
+modynamic favorability of Li2S phase formation. We also reported the 
+cluster formation and reduction energies for these systems which pro­
+vides expected reduction energies after accounting for additional poly­
+sulfide reduction. There is an associated ~ −4 eV for each sulfur bond 
+broken in the polysulfide which is due the expected 2 eV reduction of a 
+polysulfide and an additional 2 eV due to stabilization by the lithium 
+including Li2S formation. 
+These results demonstrate the inevitability of polysulfide reduction 
+and subsequent formation of Li2S on the Li metal surface, even if covered 
+by passivation layers. Li2S phases on the lithium metal provide little 
+passivation to polysulfides partially due to the ability to form more Li2S. 
+The inclusion of Li2S as a SEI component is necessary in discussions of 
+the SEI for lithium sulfur battery technology. 
+CRediT authorship contribution statement 
+Ethan P. Kamphaus: Conceptualization, Methodology, Computa­
+tions, Formal analysis, Writing - original draft, preparation. Perla B. 
+Balbuena: Supervision, Writing - review & editing. 
+Declaration of competing interest 
+The authors declare that they have no known competing financial 
+interests or personal relationships that could have appeared to influence 
+the work reported in this paper. 
+Acknowledgements 
+This material is based upon work supported by the U.S. Department 
+of Energy’s Office of Energy Efficiency and Renewable Energy (EERE), 
+as part of the Battery 500 Consortium, Award Number DE-EE0008210. 
+Supercomputer resources from the Texas A&M University High Perfor­
+mance Computer Center and Texas Advanced Computing Center (TACC) 
+are gratefully acknowledged. 
+Appendix A. Supplementary data 
+Supplementary data to this article can be found online at https://doi. 
+org/10.1016/j.jpowsour.2020.229289. 
+References 
+[1] B. Dunn, H. Kamath, J.-M. Tarascon, Electrical energy storage for the grid: a 
+battery of choices, Science 334 (6058) (2011) 928–935. 
+[2] J.B. Goodenough, K.-S. Park, The Li-ion rechargeable battery: a perspective, J. Am. 
+Chem. Soc. 135 (4) (2013) 1167–1176. 
+[3] T. Kim, W. Song, D.-Y. Son, L.K. Ono, Y. Qi, Lithium-ion batteries: outlook on 
+present, future, and hybridized technologies, J. Mater. Chem. 7 (7) (2019) 
+2942–2964. 
+[4] A. Manthiram, A reflection on lithium-ion battery cathode chemistry, Nat. 
+Commun. 11 (1) (2020) 1–9. 
+[5] R.-A. Eichel, Electrochemical Energy Storage: Next Generation Battery Concepts, 
+Springer Nature, 2019. 
+[6] Q. Tan, X. Li, B. Zhang, X. Chen, Y. Tian, H. Wan, L. Zhang, L. Miao, C. Wang, 
+Y. Gan, Valence engineering via in situ carbon reduction on octahedron sites 
+Mn3O4 for ultra-long cycle life aqueous Zn-ion battery, Advanced Energy Materials 
+10 (38) (2020) 2001050. 
+[7] Q. Tan, X. Chen, H. Wan, B. Zhang, X. Liu, L. Li, C. Wang, Y. Gan, P. Liang, 
+Y. Wang, Metal–organic framework-derived high conductivity Fe3C with porous 
+E.P. Kamphaus and P.B. Balbuena                                                                                                                                                                                                          
+
+<<PAGE 11>>
+Journal of Power Sources 485 (2021) 229289
+11
+carbon on graphene as advanced anode materials for aqueous battery- 
+supercapacitor hybrid devices, J. Power Sources 448 (2020) 227403. 
+[8] C. Wang, Z. Song, H. Wan, X. Chen, Q. Tan, Y. Gan, P. Liang, J. Zhang, H. Wang, 
+Y. Wang, Ni-Co selenide nanowires supported on conductive wearable textile as 
+cathode for flexible battery-supercapacitor hybrid devices, Chem. Eng. J. 400 
+(2020) 125955. 
+[9] Y. Gan, C. Wang, X. Chen, P. Liang, H. Wan, X. Liu, Q. Tan, H. Wu, H. Rao, 
+H. Wang, High conductivity Ni12P5 nanowires as high-rate electrode material for 
+battery-supercapacitor hybrid devices, Chem. Eng. J. 392 (2020) 123661. 
+[10] D. Lin, Y. Liu, Y. Cui, Reviving the lithium metal anode for high-energy batteries, 
+Nat. Nanotechnol. 12 (3) (2017) 194. 
+[11] P.G. Bruce, S.A. Freunberger, L.J. Hardwick, J.-M. Tarascon, Li–O 2 and Li–S 
+batteries with high energy storage, Nat. Mater. 11 (1) (2012) 19–29. 
+[12] Z.W. Seh, Y. Sun, Q. Zhang, Y. Cui, Designing high-energy lithium–sulfur batteries, 
+Chem. Soc. Rev. 45 (20) (2016) 5605–5634. 
+[13] S. Evers, L.F. Nazar, New approaches for high energy density lithium–sulfur battery 
+cathodes, Accounts Chem. Res. 46 (5) (2013) 1135–1143. 
+[14] A.F. Hofmann, D.N. Fronczek, W.G. Bessler, Mechanistic modeling of polysulfide 
+shuttle and capacity loss in lithium–sulfur batteries, J. Power Sources 259 (2014) 
+300–310. 
+[15] C. Weller, J. Pampel, S. D¨orfler, H. Althues, S. Kaskel, Polysulfide shuttle 
+suppression by electrolytes with low-density for high-energy lithium–sulfur 
+batteries, Energy Technol. 7 (12) (2019) 1900625. 
+[16] A. Wang, S. Kadam, H. Li, S. Shi, Y. Qi, Review on modeling of the anode solid 
+electrolyte interphase (SEI) for lithium-ion batteries, npj Computational Materials 
+4 (1) (2018) 1–26. 
+[17] W. Wang, X. Yue, J. Meng, J. Wang, X. Wang, H. Chen, D. Shi, J. Fu, Y. Zhou, 
+J. Chen, Lithium phosphorus oxynitride as an efficient protective layer on lithium 
+metal anodes for advanced lithium-sulfur batteries, Energy Storage Mater. 18 
+(2019) 414–422. 
+[18] D. Aurbach, E. Zinigrad, Y. Cohen, H. Teller, A short review of failure mechanisms 
+of lithium metal and lithiated graphite anodes in liquid electrolyte solutions, Solid 
+State Ionics 148 (3–4) (2002) 405–416. 
+[19] W. Xu, J. Wang, F. Ding, X. Chen, E. Nasybulin, Y. Zhang, J.-G. Zhang, Lithium 
+metal anodes for rechargeable batteries, Energy Environ. Sci. 7 (2) (2014) 
+513–537. 
+[20] X. Liang, C. Hart, Q. Pang, A. Garsuch, T. Weiss, L.F. Nazar, A highly efficient 
+polysulfide mediator for lithium–sulfur batteries, Nat. Commun. 6 (1) (2015) 1–8. 
+[21] Z. Lin, C. Liang, Lithium–sulfur batteries: from liquid to solid cells, J. Mater. Chem. 
+3 (3) (2015) 936–958. 
+[22] X.-B. Cheng, J.-Q. Huang, H.-J. Peng, J.-Q. Nie, X.-Y. Liu, Q. Zhang, F. Wei, 
+Polysulfide shuttle control: towards a lithium-sulfur battery with superior capacity 
+performance up to 1000 cycles by matching the sulfur/electrolyte loading, 
+J. Power Sources 253 (2014) 263–268. 
+[23] E. Nagai, T.S. Arthur, P. Bonnick, K. Suto, J. Muldoon, The discharge mechanism 
+for solid-state lithium-sulfur batteries, MRS Adv. 4 (49) (2019) 2627–2634. 
+[24] Y.-X. Song, Y. Shi, J. Wan, S.-Y. Lang, X.-C. Hu, H.-J. Yan, B. Liu, Y.-G. Guo, 
+R. Wen, L.-J. Wan, Direct tracking of the polysulfide shuttling and interfacial 
+evolution in all-solid-state lithium–sulfur batteries: a degradation mechanism 
+study, Energy Environ. Sci. 12 (8) (2019) 2496–2506. 
+[25] V. Shutthanandan, M. Nandasiri, J. Zheng, M.H. Engelhard, W. Xu, S. Thevuthasan, 
+V. Murugesan, Applications of XPS in the characterization of Battery materials, 
+J. Electron. Spectrosc. Relat. Phenom. 231 (2019) 2–10. 
+[26] K.D.D. Gunaratne, V. Prabhakaran, Y.M. Ibrahim, R.V. Norheim, G.E. Johnson, 
+J. Laskin, Design and performance of a high-flux electrospray ionization source for 
+ion soft landing, Analyst 140 (9) (2015) 2957–2963. 
+[27] J. Laskin, G.E. Johnson, J. Warneke, V. Prabhakaran, From isolated ions to 
+multilayer functional materials using ion soft landing, Angew. Chem. Int. Ed. 57 
+(50) (2018) 16270–16284. 
+[28] P. Su, V. Prabhakaran, G.E. Johnson, J. Laskin, In situ infrared 
+spectroelectrochemistry for understanding structural transformations of precisely 
+defined ions at electrochemical interfaces, Anal. Chem. 90 (18) (2018) 
+10935–10942. 
+[29] I. Yoon, S. Jurng, D.P. Abraham, B.L. Lucht, P.R. Guduru, Measurement of 
+mechanical and fracture properties of solid electrolyte interphase on lithium metal 
+anodes in lithium ion batteries, Energy Storage Mater. 25 (2020) 296–304. 
+[30] Y.-X. Lin, Z. Liu, K. Leung, L.-Q. Chen, P. Lu, Y. Qi, Connecting the irreversible 
+capacity loss in Li-ion batteries with the electronic insulating properties of solid 
+electrolyte interphase (SEI) components, J. Power Sources 309 (2016) 221–230. 
+[31] F. Single, B. Horstmann, A. Latz, Dynamics and morphology of solid electrolyte 
+interphase (SEI), Phys. Chem. Chem. Phys. 18 (27) (2016) 17810–17814. 
+[32] T. Zhang, D. Li, Z. Tao, J. Chen, Understanding electrode materials of rechargeable 
+lithium batteries via DFT calculations, Prog. Nat. Sci.: Mater. Int. 23 (3) (2013) 
+256–272. 
+[33] Y. Ma, P.B. Balbuena, DFT study of reduction mechanisms of ethylene carbonate 
+and fluoroethylene carbonate on Li+-adsorbed Si clusters, J. Electrochem. Soc. 161 
+(8) (2014) E3097. 
+[34] M. Xu, W. Li, X. Zuo, J. Liu, X. Xu, Performance improvement of lithium ion battery 
+using PC as a solvent component and BS as an SEI forming additive, J. Power 
+Sources 174 (2) (2007) 705–710. 
+[35] D. Bedrov, O. Borodin, J.B. Hooper, Li+ transport and mechanical properties of 
+model solid electrolyte interphases (SEI): insight from atomistic molecular 
+dynamics simulations, J. Phys. Chem. C 121 (30) (2017) 16098–16109. 
+[36] S. Kranz, T. Kranz, T. Graubner, Y. Yusim, L. Hellweg, B. Roling, Influence of the 
+formation current density on the transport properties of galvanostatically formed 
+model-type solid electrolyte interphases, Batteries & Supercaps 2 (12) (2019) 
+1026–1036. 
+[37] G. Kresse, J. Furthmüller, Efficiency of ab-initio total energy calculations for metals 
+and semiconductors using a plane-wave basis set, Comput. Mater. Sci. 6 (1) (1996) 
+15–50. 
+[38] G. Kresse, J. Hafner, Ab initio molecular dynamics for liquid metals, Phys. Rev. B 
+47 (1) (1993) 558. 
+[39] G. Kresse, J. Furthmüller, J. Hafner, Theory of the crystal structures of selenium 
+and tellurium: the effect of generalized-gradient corrections to the local-density 
+approximation, Phys. Rev. B 50 (18) (1994) 13181. 
+[40] P.E. Bl¨ochl, Projector augmented-wave method, Phys. Rev. B 50 (24) (1994) 
+17953. 
+[41] J.P. Perdew, K. Burke, M. Ernzerhof, Generalized gradient approximation made 
+simple, Phys. Rev. Lett. 77 (18) (1996) 3865. 
+[42] H.J. Monkhorst, J.D. Pack, Special points for Brillouin-zone integrations, Phys. 
+Rev. B 13 (12) (1976) 5188. 
+[43] E.P. Kamphaus, S. Angarita-Gomez, X. Qin, M. Shao, M. Engelhard, K.T. Mueller, 
+V. Murugesan, P.B. Balbuena, Role of inorganic surface layer on solid electrolyte 
+interphase evolution at Li-metal anodes, ACS Appl. Mater. Interfaces 11 (34) 
+(2019) 31467–31476. 
+[44] E.P. Kamphaus, K. Hight, M. Dermott, P.B. Balbuena, Model systems for screening 
+and investigation of lithium metal electrode chemistry and dendrite formation, 
+Phys. Chem. Chem. Phys. 22 (2) (2020) 575–588. 
+[45] W. Tang, E. Sanville, G. Henkelman, A grid-based Bader analysis algorithm without 
+lattice bias, J. Phys. Condens. Matter 21 (8) (2009), 084204. 
+[46] E. Sanville, S.D. Kenny, R. Smith, G. Henkelman, Improved grid-based algorithm 
+for Bader charge allocation, J. Comput. Chem. 28 (5) (2007) 899–908. 
+[47] G. Henkelman, A. Arnaldsson, H.J.C.M.S. J´onsson, A fast and robust algorithm for 
+Bader decomposition of charge density 36 (3) (2006) 354–360. 
+[48] L.E. Camacho-Forero, T.W. Smith, P.B. Balbuena, Effects of high and low salt 
+concentration in electrolytes at lithium–metal anode surfaces, J. Phys. Chem. C 121 
+(1) (2017) 182–194. 
+[49] L.E. Camacho-Forero, T.W. Smith, S. Bertolini, P.B. Balbuena, Reactivity at the 
+lithium–metal anode surface of lithium–sulfur batteries, J. Phys. Chem. C 119 (48) 
+(2015) 26828–26839. 
+[50] M.J. Frisch, G.W. Trucks, H.B. Schlegel, G.E. Scuseria, M.A. Robb, J.R. Cheeseman, 
+G. Scalmani, V. Barone, B. Mennucci, G.A. Petersson, H. Nakatsuji, M. Caricato, 
+X. Li, H.P. Hratchian, A.F. Izmaylov, J. Bloino, G. Zheng, J.L. Sonnenberg, M. Hada, 
+M. Ehara, K. Toyota, R. Fukuda, J. Hasegawa, M. Ishida, T. Nakajima, Y. Honda, 
+O. Kitao, H. Nakai, T. Vreven, J.A. Montgomery Jr., J.E. Peralta, F. Ogliaro, 
+M. Bearpark, J.J. Heyd, E. Brothers, K.N. Kudin, V.N. Staroverov, R. Kobayashi, 
+J. Normand, K. Raghavachari, A. Rendell, J.C. Burant, S.S. Iyengar, J. Tomasi, 
+M. Cossi, N. Rega, J.M. Millam, M. Klene, J.E. Knox, J.B. Cross, V. Bakken, 
+C. Adamo, J. Jaramillo, R. Gomperts, R.E. Stratmann, O. Yazyev, A.J. Austin, 
+R. Cammi, C. Pomelli, J.W. Ochterski, R.L. Martin, K. Morokuma, V.G. Zakrzewski, 
+G.A. Voth, P. Salvador, J.J. Dannenberg, S. Dapprich, A.D. Daniels, ¨O. Farkas, J. 
+B. Foresman, J.V. Ortiz, J. Cioslowski, D.J. Fox, Gaussian 09, Revision D.01, 2009. 
+[51] R. Dennington, Todd A. Keith, J.M. Millam, GaussView, Version 6, 6, Semichem Inc., 
+Shawnee Mission, KS, 2016. 
+[52] J. Tomasi, B. Mennucci, R. Cammi, Quantum mechanical continuum solvation 
+models, Chem. Rev. 105 (8) (2005) 2999–3094. 
+[53] A. Hagberg, P. Swart, D. S Chult, Exploring Network Structure, Dynamics, and 
+Function Using NetworkX, Los Alamos National Lab.(LANL), Los Alamos, NM 
+(United States), 2008. 
+[54] T. Kamada, S. Kawai, An algorithm for drawing general undirected graphs, Inf. 
+Process. Lett. 31 (1) (1989) 7–15. 
+[55] E.P. Kamphaus, S. Angarita-Gomez, X. Qin, M. Shao, P.B. Balbuena, Effects of solid 
+electrolyte interphase components on the reduction of LiFSI over lithium metal, 
+ChemPhysChem (2020). 
+[56] R. Guo, B.M. Gallant, Li2O solid electrolyte interphase: probing transport 
+properties at the chemical potential of lithium, Chem. Mater. (2020). 
+[57] E.P. Kamphaus, P.B. Balbuena, Effects of dimethyl disulfide cosolvent on Li–S 
+battery chemistry and performance, Chem. Mater. 31 (7) (2019) 2377–2389. 
+[58] N.S. Kumar, H. Singh, An APT charge based descriptor for atomic level description 
+of chemical Raman enhancement by adsorption of 4-Mercaptopyridine on 
+semiconducting nanaoclusters: a theoretical study, Vib. Spectrosc. 107 (2020) 
+103019. 
+E.P. Kamphaus and P.B. Balbuena                                                                                                                                                                                                          

@@ -1,0 +1,946 @@
+
+<<PAGE 1>>
+Identifying Key Parameters for Mixed Organic Electrolytes for
+Lithium−Sulfur Battery
+Mihir Parekh, Nawraj Sapkota, Brooke Henry, Matthew Everette, Ling Fan, Bingan Lu, Ming Hu,
+Christopher Sutton, and Apparao M. Rao*
+Cite This: ACS Appl. Energy Mater. 2025, 8, 903−911
+Read Online
+ACCESS
+Metrics & More
+Article Recommendations
+*
+sı
+Supporting Information
+ABSTRACT: Engineered electrolytes are critical for high-performance lithium−sulfur batteries (LSBs). Present electrolyte selection
+for simultaneously forming a stable bilateral solid−electrolyte interface (SEI) on both electrodes is largely heuristic. Although the
+dielectric constant, viscosity, dipole moment, donor number, and orbital energy levels have all been used for electrolyte screening,
+their effectiveness has not been systematically studied. Here, the effectiveness of these parameters was investigated using a key metric
+of battery performance. Based on 51 mixed electrolytes investigated in this study, the enhanced stability of LSBs is attributed to the
+mixed electrolytes’ high dielectric constant (ε > 35), which ensures the separation of the LiTFSI salt ions and potentially reduces
+dendrite growth. However, 3 other high dielectric (ε > 35) mixed electrolytes based on diglyme exhibited a % drop of > ± 1.4%,
+which is ∼2 times larger than the % drop exhibited by batteries with high dielectric (ε > 35) compositions devoid of diglyme.
+Classical molecular dynamics indicated the presence of large diglyme molecules in the solvation shell, causing a ∼30% reduction in
+diffusivity and adversely affecting battery performance. This study indicates that a high dielectric constant (ε > 35) along with the
+absence of large molecules in the solvation shell are good criteria for LSB mixed electrolyte selection.
+KEYWORDS: mixed electrolytes, high dielectric constant, small solvation shell, high diffusivity, capacity retention
+1. INTRODUCTION
+Lithium metal batteries are of significant research interest for
+next-generation energy storage devices because lithium is the
+lightest known metal and has a very high theoretical capacity of
+3860 mA h/g because of the largest negative reduction
+potential (−3.04 V) versus the standard hydrogen electrode
+among alkali metals.1 Combining the lithium anode and sulfur-
+based cathode has been explored extensively as a strategy for
+next-generation batteries because sulfur is abundant, cheap,
+and has a high theoretical capacity of 1675 mA h/g.2 However,
+lithium−sulfur batteries (LSBs) have been limited by rapid
+capacity fade and low cycle life because of dead Li formation3
+associated with dendrite growth and the polysulfide shuttle.4
+Reducing dendrite growth in lithium metal batteries has
+been a topic of intense interest.5 Controlling mass trans-
+port,6−16 stabilizing the solid electrolyte interphase (SEI) with
+electrolyte additives17−20 and protective layers,21,22 creating
+artificial SEI layers,23,24 using 3D structured anodes and 3D
+mixed ionic conductors to reduce local current density,2,25 and
+homogenizing lithium nucleation and flux1,26 are some of the
+methods that have been investigated to control dendrite
+growth.
+The polysulfide shuttle in LSBs leads to rapid capacity
+deterioration because of repeated reactions between poly-
+sulfides and lithium. Moreover, carbonate solvents tend to
+react irreversibly with polysulfides23 in batteries with tradi-
+tional sulfur electrodes. It has been shown that using
+Received:
+September 24, 2024
+Revised:
+January 6, 2025
+Accepted:
+January 7, 2025
+Published: January 15, 2025
+Article
+www.acsaem.org
+© 2025 American Chemical Society
+903
+https://doi.org/10.1021/acsaem.4c02435
+ACS Appl. Energy Mater. 2025, 8, 903−911
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​8/​2/​903/​40363690/​ae4c02435.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 2>>
+carbonate-based electrolytes leads to the formation of special
+complexes, the desolvation of solvated lithium ions in
+micropores, and the assimilation of short-chain sulfur in
+micropores.27 Different strategies, such as microporous-
+mesoporous carbon−sulfur composite microstructures28−31
+and sulfurized polyacrylonitrile (SPAN) cathode,4 have been
+adopted to mitigate the polysulfide shuttle effect in LSBs when
+carbonate electrolytes are used. Fan et al.2 reported that while
+ethers generally form a stable solid electrolyte interphase (SEI)
+on the lithium metal anode, carbonates generally form a stable
+SEI on the SPAN cathode. Hence, electrolytes obtained by
+mixing ethers and carbonates generally were found to promote
+bilateral SEI formation, which mitigates polysulfide shuttle and
+dendrite growth.2 Thus, using mixed electrolytes that promote
+bilateral SEI formation is one strategy that can tackle both the
+issues associated with LSBs: polysulfide shuttle and dendrite
+growth. However, as reported in Ref.2 not all combinations of
+ethers and carbonates were measured to have a high capacity
+retention, indicating that specific ethers and carbonates must
+be combined carefully.
+Alternatively, the energy gap between the energies of the
+highest occupied molecular orbital (HOMO) and the lowest
+unoccupied molecular orbital (LUMO), also known as the
+HOMO−LUMO gap, has been used to predict the electrolytes'
+ability to generate an SEI layer on the electrodes.2 This makes
+it clear that simply mixing ethers and carbonates may not
+guarantee a stable bilateral SEI. While stable bilateral SEI
+formation may enable higher capacity retention, the overall
+rate performance of a battery is governed by the diffusivity of
+Li+ ions. Assuming a constant temperature, diffusivity itself
+depends on the salt’s solubility, solvation shell structure, and
+viscosity.32 Various parameters such as dielectric constant,33
+dipole moment,34,35 donor number,36,37 and carbon−oxygen
+ratio38,39 have been used traditionally to select electrolyte
+solvents with higher salt solubility. Since developing LSBs that
+not only adopt bilateral SEI strategy but also exhibit high
+capacity is a priority, electrolyte selection involves using all the
+above-mentioned parameters.
+The use of several parameters listed above has made it
+difficult to develop a coherent strategy for electrolyte selection.
+In this work, batteries were prepared and tested with 51
+electrolytes containing both ethers and carbonates (Figure 1)
+to examine the effectiveness of the several parameters listed
+above in predicting the battery’s rate performance. The
+solvation shell structure was examined using classical molecular
+dynamics (MD) simulations, and the diffusivity was calculated
+to rationalize the experimental results. Using this experiment-
+MD nexus, it is clear that for LSBs based on sulfurized
+polyacrylonitrile (SPAN) electrodes, a high dielectric constant
+(ε > 35) is a necessary but not a sufficient condition for
+electrolyte selection to ensure high capacity retention and
+excellent rate performance. Additionally, the electrolyte
+components should be selected wisely so that the solvation
+shell structure radius is not too large, as it may lead to sluggish
+Li+ ion diffusion kinetics, which further affects battery
+performance.
+2. METHODS
+2.1. SPAN Cathode Preparation. Initially, elemental S and
+polyacrylonitrile (PAN, Mw = 150,000) were mixed uniformly in a
+mass ratio of 3:1. SPAN was synthesized at 450 °C in an N2
+atmosphere by chemical vapor deposition. The temperature was
+raised at 5 °C/min and then held constant at 450 °C for 6 h.
+Synthesized SPAN (36.49% S, 15.74% N, 0.5% H, 41.48% C) was
+then mixed with carboxymethyl cellulose and carbon black in a mass
+ratio of 70:15:15. The resulting mixture was dissolved in water, and
+the solution was stirred overnight. The resulting slurry was then
+coated on carbon-coated aluminum foil to make the cathode, which
+was first air-dried and then dried at ∼100 °C for 12 h in an oven.
+2.2. Electrolyte selection. All the tested electrolytes have a
+concentration of 1 M and use lithium bis(trifluoromethanesulfonyl)-
+imide (LiTFSI) as the salt.
+2.3. Battery testing. One of the major mechanical causes for
+capacity degradation in LSBs is dendrite growth at higher C rates.40
+However,40 to ensure that LSBs with mixed electrolytes perform well
+even at both higher and lower C rates, rate performance was tested by
+cycling the batteries (CR2032 type coin cells with SPAN cathode, a
+Celgard polypropylene separator, and lithium metal anode) at several
+C rates. Specifically, after preconditioning the batteries at 0.1C, they
+were cycled for 5 cycles each at 0.25C, 1C, 7.5C, and 1C, and 10
+cycles at 0.25C. The % drops in average capacity at 0.25C for the
+initial 5 and final 10 cycles were used to evaluate the rate performance
+of the battery across different C rates.
+2.4. Molecular Dynamics. Classical MD simulations were run
+using LAMMPS (Large Scale Atomic/Molecular Massively Parallel
+Simulator).41 A nonpolarizable force field comprising bonded and
+nonbonded interactions was used for the simulations.42 Parameters
+for solvents such as EC, DME, DOL, diglyme, and PC were obtained
+from
+Ligpargen, 4 3 −4 5
+while
+those
+for
+Li +
+and
+bis-
+(trifluoromethanesulfonyl)imide (TFSI-) were obtained from Jensen
+and Jorgensen et al.46 and Gouveia et al.,47 respectively. While
+polarizable force fields may provide more accurate answers, a
+nonpolarizable force field was chosen to minimize computational
+cost. Additionally, the parameters for the nonpolarizable force field
+obtained from the literature have previously been bench-
+marked42−45,47 using experiments and quantum chemistry. Lastly,
+nonpolarizable force fields have also been used in the literature for
+battery electrolyte simulations.42,48
+Molecules were initially packed using either Packmol49,50 or
+Moltemplate.51 All simulations were performed for a concentration of
+Figure 1. Molecular structure of solvents used in this study.
+ACS Applied Energy Materials
+www.acsaem.org
+Article
+https://doi.org/10.1021/acsaem.4c02435
+ACS Appl. Energy Mater. 2025, 8, 903−911
+904
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​8/​2/​903/​40363690/​ae4c02435.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 3>>
+1 M with approximately 1500 solvent molecules. The energy of the
+initial configuration was minimized by a conjugated gradient energy
+minimization scheme with a convergence criterion of 1 × 10−4 kcal/
+mol for energy and 1 × 10−4 kcal/(mol Å) for force. Following
+minimization, equilibration was performed for 5 ns in an isothermal−
+isobaric ensemble (NPT) using a Nose−Hoover thermostat and
+barostat with a damping constant of 1 ps for both barostat and
+thermostat. Equilibration pressure and temperature were set to 1 bar
+and 300 K. Next, in an annealing process, the electrolyte was heated
+to 400 K in 1 ns, held at 400 K for 2 ns, and then cooled to 300 K in 2
+ns. Annealing was conducted to ensure the electrolyte was well mixed
+and localized configurations did not exist. Subsequently, the
+simulation was run for 60 ns in an NVT ensemble at 300 K. A time
+step of 1 fs was used throughout the simulations. Three independent
+simulations with different starting configurations were run per
+electrolyte, and the reported values were averaged.
+The last 10 ns were used to study the solvation shell structure.
+Diffusivity was calculated by averaging slopes of linear curves (for
+mean square displacement versus time) for every 1 ns over the last 10
+ns. It was calculated using eq 1, where r(t) is the atom’s position, t is
+time, and D is diffusivity.
+D
+d
+dt
+r t
+1
+6 lim
+(
+( ))
+t
+2
+=
+(1)
+The procedure for calculating dielectric constants and viscosities of
+multisolvent mixtures is listed in Section 3.
+3. THEORY AND CALCULATION
+3.1. Procedure to Calculate Dielectric Constant of
+Multisolvent Mixtures. Equation 2 shows the relationship
+between polarization per unit volume (p) and the dielectric
+constant (ε).
+p
+(
+1)(2
+1)
+9
+=
++
+(2)
+Polarization per unit volume (p) for a solvent mixture is
+given by eq 3 where x is the mole fraction and v is the molar
+volume.
+p
+xvp
+xv
+i
+n
+i i i
+i
+n
+i i
+1
+1
+=
+=
+=
+(3)
+The subscript i has been used to denote different solvents in
+an n solvent mixture. Eqs 2 and 3 were used to calculate the
+dielectric constant of the solvent mixture, given the relative
+proportion of various solvents in the mixture.
+3.2. Procedure to Calculate the Viscosity of Multi-
+solvent Mixtures. The viscosity of multisolvent mixtures is
+calculated using eq 4, where η is the dynamic viscosity and G is
+the interaction parameter. The rules to calculate the interaction
+parameter G and a few values have been listed in a database
+developed by Isdale et al.52
+x
+xxG
+ln(
+)
+ln( )
+0.5
+i
+n
+i
+i
+i
+n
+j
+n
+i j
+ij
+mix
+1
+1
+1
+=
++
+=
+=
+=
+(4)
+All other properties for mixed electrolytes are calculated by
+volume averaging the corresponding properties of the
+electrolyte components (solvents only) listed in Table S1.
+4. RESULTS AND DISCUSSION
+The collected data set includes electrolyte compositions
+prepared by mixing ethers (1,2 dimethoxyethane (DME), 1,3
+dioxolane (DOL)), and carbonates (propylene carbonate
+(PC), dimethyl carbonate (DMC), ethylene carbonate (EC),
+and ethyl methyl carbonate (EMC)). DME is a linear low
+viscosity ether, and DOL is a cyclic ether that shows good
+cycling performance because of its low dipole moment.50 DME
+and DOL are mixed in equal volumes to create an electrolyte
+(DME50DOL50) which has been traditionally used in
+LSBs.2,50−52 To promote bilateral SEI formation on the
+lithium metal anode and the SPAN cathode,2 DME50DOL50 is
+mixed with PC/DMC/EMC such that the compositions have
+the formula CarbonatexDME(100−x)/2DOL(100−x)/2 where 0 ≤x
+≤100 in increments of 10. Additionally, batteries were
+prepared and tested with EC50DME25DOL25, as it showed the
+Figure 2. Capacity retention at 7.5C2 versus (a) dielectric constant and (b) dynamic viscosity. % drop versus dielectric constant for compositions
+selected from ref 2 has been shown in (c). Distribution of dielectric constants of electrolytes for the data set based on ref 2 and the new data set
+have been shown in (d,e), respectively. The abbreviations in the legend for Figure (a) are as follows: PC: propylene carbonate, DME: 1,2
+dimethoxyethane, DOL: 1,3 dioxolane, EMC: ethyl methyl carbonate, and EC: ethylene carbonate.
+ACS Applied Energy Materials
+www.acsaem.org
+Article
+https://doi.org/10.1021/acsaem.4c02435
+ACS Appl. Energy Mater. 2025, 8, 903−911
+905
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​8/​2/​903/​40363690/​ae4c02435.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 4>>
+highest capacity retention and best rate performance among all
+the 60 electrolytes that Fan et al. tested.2
+It was also observed that among all the electrolyte selection
+parameters, the dielectric constant (data shown in Figure 2a)
+had the highest Pearson correlation coefficients (shown in
+Table 1) with capacity retention. This may be explained by
+high-dielectric solvents improving a battery’s cycle life due to
+higher salt solubility and reduced dendrite growth. A high
+dielectric constant also decreases the electric field strength
+between the two electrodes, mitigating the detrimental
+dendrite growth.32 However, a high dielectric constant can
+also promote polysulfide shuttle because of long chain
+polysulfide dissolution, consequently decreasing the Coulom-
+bic efficiency and cycle life ,50 which is mitigated when SPAN
+is used as the cathode. These initial trends were identified for
+electrolyte compositions prepared by mixing ethers (DME,
+DOL) and carbonates (PC, DMC, EC, EMC).
+Moreover, as shown in Figure 2c, it was observed that
+compositions with a high dielectric constant in the initial data
+set also exhibited a low % drop (<±2.5%). This is an important
+observation as it allows us to use % drop as an indicator for
+electrolyte choice rather than relying on the time−consuming
+capacity retention experiments.
+Based on the initial observation that the electrolytes with
+high ε showed higher capacity retention and % drop, several
+more electrolytes were prepared and tested (by mixing
+relatively high dielectric solvents) to get a relatively uniform
+dielectric constant distribution, as shown in Figure 2d,e. To
+this end, compositions were subsequently prepared and tested
+that consisted of a high ε carbonate (PC, ε = 65.5) and high ε
+ethers (DME, ε = 7.069, and diglyme, ε = 7.23) in the form:
+(1) PCxdiglyme100−x where x = 10, 30, 50, 70, and 90, (2)
+diglymexDME(100−x)/2PC(100−x)/2 where x = 10, 30, 50, 70, and
+90, and (3) PC100−xDME/DOLx where x is 20,50, and 90.
+Ternary compositions with two high ε carbonates and an ether
+( d i g l y m e 8 0 D E C 1 0 P C 1 0 ,
+D M C 1 5 P C 7 0 D O L 1 5 ,
+DOL15PC70DOL15), and ternary compositions involving
+diglymexDME(100−x)/2DOL(100−x)/2 were also prepared.
+Figure 3 shows that a high dielectric constant typically leads
+to good rate performance even in the newly prepared
+electrolytes. Specifically, as shown in Figure 4, high dielectric
+compositions such as DMC15PC70DOL15, DOL50PC50,
+DME50PC50, etc. are good electrolytes and exhibit an average
+% drop < ± 0.8% (for rate performance of all 51 electrolytes cf.
+Figures 4 and S1−S5). However, high dielectric compositions
+based on diglyme have poor rate capability (% drop > ± 1.4%).
+This is because diglyme is a large linear molecule (radius of
+gyration ∼1.5 times the highest among other solvents), and the
+presence of diglyme in the solvation shell leads to a larger
+solvation shell structure. Diglyme has a high dielectric
+constant, and hence it coordinates with Li+ ions in the
+Table 1. Pearson Correlation Coefficients for Various
+Electrolyte Selection Parameters with Capacity Retention at
+7.5C
+metric
+R2 value
+dielectric constant
+0.7113
+viscosity
+0.3819
+dipole moment
+0.3012
+donor number
+0.0998
+HOMO energy
+0.0847
+LUMO energy
+0.0230
+HOMO−LUMO gap
+0.0192
+c/o ratio
+0.0109
+Figure 3. % drop versus (a) dielectric constant and (b) dynamic viscosity for the electrolytes newly added to the data set. The abbreviations in the
+legend for Figure (a) are as follows: PC: propylene carbonate, DMC: dimethyl carbonate, DEC: dietheyl carbonate, Dig: diglyme, DME: 1,2
+diemthoxyethane, and DOL: 1,3 dioxolane.
+Figure 4. Rate performance (% drop) of the identified 8 ‘good
+electrolytes’ (except EC50_DME25_DOL25) exhibiting a % drop <
+± 0.8% with 5 cycles at 0.25C, 5 cycles at 1C, 5 cycles at 7.5C, and 10
+cycles at 0.25C. The abbreviations are as follows: PC: propylene
+carbonate, DME: 1,2 dimethoxyethane, DOL: 1,3 dioxolane, DMC:
+dimethyl carbonate, DIG: diglyme.
+ACS Applied Energy Materials
+www.acsaem.org
+Article
+https://doi.org/10.1021/acsaem.4c02435
+ACS Appl. Energy Mater. 2025, 8, 903−911
+906
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​8/​2/​903/​40363690/​ae4c02435.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 5>>
+solvation shell structure. This can be seen from the radial
+distribution functions of two different compositions digly-
+me50PC50 and diglyme50DME25PC25 (Figure 5). Figure 5 also
+shows that diglyme coordinates with Li+ at about 2 Å, thus
+entering the solvation shell structure. Figure 6 shows the co-
+ordination number as a function of distance for both
+diglyme50PC50 and diglyme50DME25PC25. According to eq
+5,32 bulky solvation shells (large r) can lead to lower
+diffusivities
+D
+kT
+r
+6
+=
+(5)
+where D is diffusivity, k is Boltzmann’s constant, T is
+temperature, r is the solvation shell structure radius, and η is
+dynamic viscosity.
+Table 2 shows that the diffusivity values for diglyme-based
+compositions are much lower compared to EC50DME25DOL25,
+which shows a much lower % drop of 0.88%. Thus, a high
+dielectric constant with a smaller solvation shell structure
+ensures a long-life, fast charging, energy-dense LSB with a
+SPAN cathode.
+While better rate performance and higher capacity retention
+at higher ε are along expected lines, as explained above,
+improved capacity retention and better rate performance at
+higher viscosity values are contrary to the expectations. This
+may be explained using eq 5, which shows that D ∝1/(rη).
+Thus, viscosity is not the only factor that governs diffusivity.
+While this explains that a high dielectric constant is a
+necessary but not sufficient condition for designing a good
+electrolyte, Table 1 also shows that other metrics are not
+strongly correlated with capacity retention. The reasons for
+such poor correlations are listed next.
+4.1. Dipole moment. Solvents with higher dipole
+moments enable higher salt solubility,53,54 which is expected
+to enhance ionic conductivity, rate performance, and capacity
+retention. The poor correlation shown in Figures S6a, S7a and
+S8a and Table 1 may result from the fact that even nonpolar
+solvents with polar bonds can exhibit salt solubility.
+4.2. Donor number. Donor number is defined as the
+negative of the enthalpy of the 1:1 adduct formation reaction
+between the chosen compound and a standard Lewis acid
+SbCl5 in a solvent with zero donor number (1,2 dichloro-
+ethane). Hence, a high donor number indicates a higher
+propensity to donate electrons, implying that a solvent with a
+high donor number could coordinate with lithium cations
+easily. However, a high donor number can also promote
+polysulfide dissolution, thus leading to poor capacity retention
+Figure 5. Radial distribution function for (a) Diglyme50PC50 and (b) Diglyme50DME25PC25. The abbreviations are as follows: PC: propylene
+carbonate, DME: 1,2 dimethoxyethane, LiTFSI: lithium bis(trifluoromethanesulfonyl)imide.
+Figure 6. Co-ordination number for (a) Diglyme50PC50 and (b) Diglyme50DME25PC25. The abbreviations are as follows: PC: propylene carbonate,
+DME: 1,2 dimethoxyethane, LiTFSI: lithium bis(trifluoromethanesulfonyl)imide.
+Table 2. Diffusivity values calculated by Molecular
+Dynamics for various Electrolyte compositions
+composition
+diffusivity (m2/s)
+EC50DME25DOL25
+1.60 × 10−10 ± 1.22 × 10−11
+Dig50PC50
+1.03 × 10−10 ± 0.84 × 10−11
+Dig50DME25PC25
+1.17 × 10−10 ± 0.16 × 10−10
+ACS Applied Energy Materials
+www.acsaem.org
+Article
+https://doi.org/10.1021/acsaem.4c02435
+ACS Appl. Energy Mater. 2025, 8, 903−911
+907
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​8/​2/​903/​40363690/​ae4c02435.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 6>>
+and a high % drop.37 This explains the poor correlation shown
+in Figures S6b, S7b, and S8b.
+4.3. C/O Ratio. A higher C/O ratio (i.e., carbon to oxygen
+ratio) is expected to reduce the polysulfide shuttle problem in
+LSBs38,39 because a higher number of O atoms increases
+lithium polysulfide solubility, thus increasing the polysulfide
+shuttle. However, Figures S6c, S7c, S8c, and Table 1 show a
+poor correlation between capacity retention and % drop with
+C/O ratio. This can be explained by the fact that in
+multisolvent mixtures, solubility and solvation shell structures
+result from a complex interplay between various solvents and
+salt ions. While a high C/O ratio is expected to reduce
+polysulfide shuttle, it may also reduce the solvating ability
+because O is a highly electronegative element that can act as a
+co-ordination site for the formation of the solvation shell
+structure. Furthermore, in multisolvent mixtures, the C/O
+ratio of a single solvent or the volume-averaged C/O ratio of
+the solvent mixture may still not be a good criterion as the
+proportion of solvents in the solvation shell structure may not
+necessarily correspond to the proportion of solvents in the
+mixture. Additionally, the C/O ratio fails to account for
+solvent−solvent interactions and hence is a poor predictor.
+4.4. HOMO, LUMO, and HOMO−LUMO Gap. The
+HOMO energy, LUMO energy, and HOMO−LUMO energy
+gap have all been used to screen electrolytes based on their
+electrochemical stability window (ESW). However, these
+metrics fail to account for solvation energy, solvent−solvent,
+and solvent−salt interactions. While determining the ESW for
+electrolytes, it is necessary to account for the oxidation and
+reduction stability for all the electrolyte species, such as
+solvated cations, free salt anions, and free solvent molecules.
+HOMO energy, LUMO energy, and HOMO−LUMO energy
+gap only account for the ESW of free solvent molecules, thus
+leading to a poor correlation with both capacity retention and
+percentage drop, as seen from Figures S6d−f, S7d−f, S8d−f,
+and Table 1. Accurate calculation of HOMO, LUMO energies
+and HOMO−LUMO gap for all the entities (e.g., solvation
+shell structures with varying numbers of solvent molecules
+and/or anions, free solvent molecules, free anions, etc.) present
+within the electrolyte can sometimes involve a mixture of
+computationally costly MD simulations and ab initio DFT
+calculations. MD simulations would be required to identify the
+‘entities’ for which HOMO−LUMO calculations need to be
+performed. Furthermore, such MD simulations should be
+performed near the electrode−electrolyte interface as
+“solvation shell structures” deform in the vicinity of electrodes
+due to the presence of polar solvents and/or cations/
+anions.53,54 Once, the 'entities' are identified, ab initio
+calculations using Molecular Orbital (MO) theory may be
+performed to obtain the HOMO, LUMO energies and the
+HOMO−LUMO gap. An alternative method to calculate the
+HOMO, LUMO energies of the identified entities, especially
+the solvation shell structures, could be utilizing the
+“thermodynamic” cycle proposed by Kazemiabnavi et al.,55
+which utilizes the solvation energies and the previously known
+HOMO, LUMO energies of the solvents to calculate the
+HOMO, LUMO energies and the HOMO−LUMO gap for the
+“solvation shell structures”. However, this is not the norm and
+has not yet been widely adopted by the literature because it is a
+2 step process involving costly computations in either case.
+Currently, to the best of our knowledge, there is no easy
+solution to this problem other than performing cyclic
+voltammetry or linear sweep voltammetry experiments to
+obtain the electrochemical stability window.
+Thus, from among the several metrics that have been used
+for electrolyte selection, only the dielectric constant seems to
+be a metric that could be used for electrolyte selection for Li-
+SPAN batteries. A high dielectric constant, and the absence of
+large molecules from the solvation shell structure are the
+criteria that may be used for next-generation electrolyte
+selection and design for Li-SPAN batteries.
+In recent years, one of the major thrusts in electrolyte
+engineering for the LSBs has been the development of
+electrolytes that support fast diffusion and stable SEI formation
+on both electrodes. A recent review article by Miao et al.56
+highlights the trends in developing ether-based and carbonate-
+based highly concentrated, localized highly concentrated
+electrolytes. However, Miao et al.56 also pointed out the
+need for better transport properties as concentrated electro-
+lytes typically lag behind in this respect. Because our study is
+originally based on the “bilateral SEI strategy”, which utilizes
+both ethers and carbonates (two of the most commonly used
+functional groups for LSB electrolytes), this study is
+proceeding in the correct direction. Furthermore, in the
+current manuscript, we have clearly identified electrolyte
+design conditions to enable “faster diffusion” by focusing on
+having a “smaller solvation shell”. Moreover, recently used
+solvents for electrolytes such as triethyl phosphate,57 fluoro-
+ethylene carbonate, and methyl propionate58 have relatively
+high dielectric constants (13.2, 78.4, 6.3).58−60 Additionally,
+intrinsically safe tetrapropoxysilane-based electrolytes with a
+high dielectric constant have been used for LSBs at 80 °C.61
+The fact that high dielectric constant organic electrolytes with
+functional groups other than carbonates and ethers (the ones
+that the current manuscript focuses on), such as esters and
+silane-based ethers, have also been demonstrated to work well
+in LSBs exemplifies the versatility of the proposed condition of
+high dielectric constant.
+Therefore, novel future solvents for next-generation electro-
+lytes may be selected based on similarity from the Grover
+feature data set as long as they follow the general rule of having
+a high dielectric constant (ε > 35) and a low radius of gyration.
+5. CONCLUSIONS
+Various parameters such as dielectric constant, viscosity, dipole
+moment, HOMO−LUMO energies, donor number, number of
+oxygen atoms, c/o ratio, and relative solvating power have
+been used in the literature for electrolyte screening.
+Furthermore, the analysis shows that specifically for SPAN
+cathode-based LSBs, the dielectric constant is directly
+correlated with capacity retention at high C rates. Additionally,
+it was found that a high dielectric constant also implied low %
+drop. Hence, to overcome the challenge of long experimental
+times, % drop was used as the metric for electrolyte selection.
+Newly identified high dielectric (ε > 35) compositions such as
+D M C 1 5 P C 7 0 D O L 1 5 ,
+D O L 5 0 P C 5 0 ,
+D M E 5 0 P C 5 0 ,
+DMC15PC70DME15 exhibit good rate capability (average %
+drop ±0.63%). However, it was found that high dielectric
+electrolytes based on diglyme show a low diffusivity and exhibit
+a % drop > ± 1.4%. Furthermore, classical MD simulations
+show that the presence of a bulky solvent in the solvation shell
+significantly reduces the diffusivity, thus affecting the battery
+performance. Thus, a high dielectric constant is a necessary but
+not sufficient condition for LSB electrolyte selection. Along
+ACS Applied Energy Materials
+www.acsaem.org
+Article
+https://doi.org/10.1021/acsaem.4c02435
+ACS Appl. Energy Mater. 2025, 8, 903−911
+908
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​8/​2/​903/​40363690/​ae4c02435.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 7>>
+with a high dielectric constant, the absence of large molecules
+in the solvation shell structure ensure a good rate performance.
+■ASSOCIATED CONTENT
+Data Availability Statement
+The data would be made available upon reasonable request.
+For access to data please contact the corresponding author
+Apparao M. Rao (arao@clemson.edu).
+*
+sı Supporting Information
+The Supporting Information is available free of charge at
+https://pubs.acs.org/doi/10.1021/acsaem.4c02435.
+Electrolyte properties (S1) and descriptions (S2), rate
+performance data (S3), and correlation of capacity
+retention and % drop with electrolyte properties (S4)
+(PDF)
+■AUTHOR INFORMATION
+Corresponding Author
+Apparao M. Rao −Department of Physics and Astronomy and
+Clemson Nanomaterials Institute, Clemson University,
+Clemson, South Carolina 29634, United States;
+orcid.org/0000-0002-1450-3499; Email: arao@
+clemson.edu
+Authors
+Mihir Parekh −Department of Chemistry and Biochemistry,
+University of South Carolina, Columbia, South Carolina
+29208, United States;
+orcid.org/0000-0002-3513-934X
+Nawraj Sapkota −Department of Physics and Astronomy and
+Clemson Nanomaterials Institute, Clemson University,
+Clemson, South Carolina 29634, United States;
+orcid.org/0000-0002-2266-6562
+Brooke Henry −Department of Physics and Astronomy and
+Clemson Nanomaterials Institute, Clemson University,
+Clemson, South Carolina 29634, United States;
+orcid.org/0009-0009-7706-0267
+Matthew Everette −Department of Physics and Astronomy
+and Clemson Nanomaterials Institute, Clemson University,
+Clemson, South Carolina 29634, United States;
+orcid.org/0009-0009-9145-8239
+Ling Fan −School of Physics and Electronics, Hunan
+University, Changsha 410082, P. R. China;
+orcid.org/
+0000-0002-4813-3895
+Bingan Lu −School of Physics and Electronics, Hunan
+University, Changsha 410082, P. R. China;
+orcid.org/
+0000-0002-0075-5898
+Ming Hu −Department of Mechanical Engineering, University
+of South Carolina, Columbia, South Carolina 29208, United
+States;
+orcid.org/0000-0002-8209-0139
+Christopher Sutton −Department of Chemistry and
+Biochemistry, University of South Carolina, Columbia, South
+Carolina 29208, United States;
+orcid.org/0000-0003-
+1206-8080
+Complete contact information is available at:
+https://pubs.acs.org/10.1021/acsaem.4c02435
+Author Contributions
+Conceptualization: MP, CS, AMR Data curation: MP, LF, BL
+Formal analysis: MP Funding Acquisition: CS, AMR
+Investigation: MP, NS, BH, ME, BL, LF, Methodology: MP,
+NS, MH, CS, AMR, Project Administration: CS, AMR
+Resources: CS, AMR Supervision: CS, AMR Visualization:
+MP, NS Writing- original draft: MP Writing-review and
+editing: MP, LF, BH, ME, BL, MH, CS, AMR.
+Funding
+This work was supported by GEAR (21-GE01) and SC-
+EPSCoR. BH and ME were supported through the National
+Science Foundation (grant number 1950557).
+Notes
+The authors declare no competing financial interest.
+■ACKNOWLEDGMENTS
+All the experiments needed to obtain data for % drop were
+performed at Clemson Nanomaterials Institute, Clemson
+University, USA. We would like to thank Dr. Morteza Sabet
+for helping with the Table of Contents figure.
+■REFERENCES
+(1) Shen, Y.; Zhang, Y.; Han, S.; Wang, J.; Peng, Z.; Chen, L.
+Unlocking the Energy Capabilities of Lithium Metal Electrode with
+Solid-State Electrolytes. Joule 2018, 2 (9), 1674−1689.
+(2) Fan, L.; Chen, S.; Zhu, J.; Ma, R.; Li, S.; Podila, R.; Rao, A. M.;
+Yang, G.; Wang, C.; Liu, Q.; Xu, Z.; Yuan, L.; Huang, Y.; Lu, B.
+Simultaneous Suppression of the Dendrite Formation and Shuttle
+Effect in a Lithium−Sulfur Battery by Bilateral Solid Electrolyte
+Interface. Advanced Science 2018, 5 (9), 1700934.
+(3) Kuzmina, E.; Karaseva, E.; Kolosnitsyn, D.; Sheina, L. V.;
+Shakirova, N.; Kolosnitsyn, V. Sulfur redistribution between positive
+and negative electrodes of lithium-sulfur cells during cycling. J. Power
+Sources 2018, 400, 511−517.
+(4) Wang, J.; Yang, J.; Xie, J.; Xu, N. A Novel Conductive Polymer-
+Sulfur Composite Cathode Material for Rechargeable Lithium
+Batteries. Adv. Mater. 2002, 14 (13−14), 963−965.
+(5) Parekh, M.; Shan, S.; Sabet, M.; Rahn, C. D.; Rao, A. M. A
+Snapshot Review of Electric Field’s Role in Crystallization at
+Electrochemical Interfaces. MRS Adv. 2024, 9 (13), 1058−1066.
+(6) Yang, X.; Wen, Z.; Zhu, X.; Huang, S. Electrodeposition of
+Lithium Film under Dynamic Conditions and Its Application in All-
+Solid-State Rechargeable Lithium Battery. Solid State Ionics 2005, 176
+(11−12), 1051−1055.
+(7) Wang, A.; Deng, Q.; Deng, L.; Guan, X.; Luo, J. Eliminating Tip
+Dendrite Growth by Lorentz Force for Stable Lithium Metal Anodes.
+Adv. Funct. Mater. 2019, 29 (25), 1902630.
+(8) Tan, J.; Ryan, E. M. Computational Study of Electro-Convection
+Effects on Dendrite Growth in Batteries. J. Power Sources 2016, 323,
+67−77.
+(9) Crowther, O.; West, A. C. Effect of Electrolyte Composition on
+Lithium Dendrite Growth. J. Electrochem. Soc. 2008, 155 (11), A806.
+(10) Wlasenko, A.; Soltani, F.; Zakopcan, D.; Sinton, D.; Steeves, G.
+M. Diffusion-Limited and Advection-Driven Electrodeposition in a
+Microfluidic Channel. Phys. Rev. E 2010, 81 (2), 021601.
+(11) Parekh, M.; Rahn, C. Dendrite Suppression and Energy Density
+in Metal Batteries With Electrolyte Flow Through Perforated
+Electrodes. In Energy. In Vol; American Society of Mechanical
+Engineers, 2020; Vol. 8..
+(12) Parekh, M. N.; Rahn, C. D. Reducing Dendrite Growth in
+Lithium Metal Batteries by Creeping Poiseuille and Couette Flows. J.
+Electrochem. Soc. 2020, 167 (16), 160525.
+(13) Parekh, M. N.; Rahn, C. D.; Archer, L. A. Controlling Dendrite
+Growth in Lithium Metal Batteries through Forced Advection. J.
+Power Sources 2020, 452, 227760.
+(14) Shan, S.; Parekh, M. N.; Kou, R.; Wang, D.; Rahn, C. D.
+Aqueous Zinc Sulfate Flow Through a Copper Mesh Anode Improves
+Zinc Metal Electrodeposition Morphology and Impedance. J.
+Electrochem. Soc. 2023, 170 (9), 092501.
+(15) Shan, S.; Parekh, M. N.; Kou, R.; Wang, D.; Rahn, C. D.
+Increasing the Cycle Life of Zinc Metal Anodes and Nickel-Zinc Cells
+Using Flow-Through Alkaline Electrolytes. J. Electrochem. Soc. 2024,
+171 (3), 032503.
+ACS Applied Energy Materials
+www.acsaem.org
+Article
+https://doi.org/10.1021/acsaem.4c02435
+ACS Appl. Energy Mater. 2025, 8, 903−911
+909
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​8/​2/​903/​40363690/​ae4c02435.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 8>>
+(16) Parekh, M.; Rahn, C. D. Normal Electrolyte Flow Helps in
+Controlling Dendrite Growth in Zinc Metal Batteries. In Proceedings
+of the 2022 ASME Power Conference; ASME: Pittsburgh, 2022.
+(17) Li, G.; Gao, Y.; He, X.; Huang, Q.; Chen, S.; Kim, S. H.; Wang,
+D. Organosulfide-Plasticized Solid-Electrolyte Interphase Layer
+Enables Stable Lithium Metal Anodes for Long-Cycle Lithium-Sulfur
+Batteries. Nat. Commun. 2017, 8 (1), 850.
+(18) Zheng, J.; Engelhard, M. H.; Mei, D.; Jiao, S.; Polzin, B. J.;
+Zhang, J.-G.; Xu, W. Electrolyte Additive Enabled Fast Charging and
+Stable Cycling Lithium Metal Batteries. Nat. Energy 2017, 2 (3),
+17012.
+(19) Qian, J.; Henderson, W. A.; Xu, W.; Bhattacharya, P.;
+Engelhard, M.; Borodin, O.; Zhang, J.-G. High Rate and Stable
+Cycling of Lithium Metal Anode. Nat. Commun. 2015, 6 (1), 6362.
+(20) Suo, L.; Hu, Y.-S.; Li, H.; Armand, M.; Chen, L. A New Class of
+Solvent-in-Salt Electrolyte for High-Energy Rechargeable Metallic
+Lithium Batteries. Nat. Commun. 2013, 4 (1), 1481.
+(21) Liu, Y.; Lin, D.; Yuen, P. Y.; Liu, K.; Xie, J.; Dauskardt, R. H.;
+Cui, Y. An Artificial Solid Electrolyte Interphase with High Li-Ion
+Conductivity, Mechanical Strength, and Flexibility for Stable Lithium
+Metal Anodes. Adv. Mater. 2017, 29 (10), 1605531.
+(22) Zhu, B.; Jin, Y.; Hu, X.; Zheng, Q.; Zhang, S.; Wang, Q.; Zhu, J.
+Poly(Dimethylsiloxane) Thin Film as a Stable Interfacial Layer for
+High-Performance Lithium-Metal Battery Anodes. Adv. Mater. 2017,
+29 (2), 1603755.
+(23) Li, N.-W.; Yin, Y.-X.; Yang, C.-P.; Guo, Y.-G. An Artificial Solid
+Electrolyte Interphase Layer for Stable Lithium Metal Anodes. Adv.
+Mater. 2016, 28 (9), 1853−1858.
+(24) Akhtar, N.; Sun, X.; Yasir Akram, M.; Zaman, F.; Wang, W.;
+Wang, A.; Chen, L.; Zhang, H.; Guan, Y.; Huang, Y. A Gelatin-Based
+Artificial SEI for Lithium Deposition Regulation and Polysulfide
+Shuttle Suppression in Lithium-Sulfur Batteries. J. Energy Chem. 2021,
+52, 310−317.
+(25) Zhang, C.; Liu, S.; Li, G.; Zhang, C.; Liu, X.; Luo, J.
+Incorporating Ionic Paths into 3D Conducting Scaffolds for High
+Volumetric and Areal Capacity, High Rate Lithium-Metal Anodes.
+Adv. Mater. 2018, 30 (33), 1801328.
+(26) Wang, C.; Wang, A.; Ren, L.; Guan, X.; Wang, D.; Dong, A.;
+Zhang, C.; Li, G.; Luo, J. Controlling Li Ion Flux through Materials
+Innovation for Dendrite-Free Lithium Metal Anodes. Adv. Funct.
+Mater. 2019, 29 (49), 1905940.
+(27) Markevich, E.; Salitra, G.; Talyosef, Y.; Chesneau, F.; Aurbach,
+D. ReviewOn the Mechanism of Quasi-Solid-State Lithiation of
+Sulfur Encapsulated in Microporous Carbons: Is the Existence of
+Small Sulfur Molecules Necessary? J. Electrochem. Soc. 2017, 164 (1),
+A6244−A6253.
+(28) Wang, D.-W.; Zhou, G.; Li, F.; Wu, K.-H.; Lu, G. Q.; Cheng,
+H.-M.; Gentle, I. R. A Microporous−Mesoporous Carbon with
+Graphitic Structure for a High-Rate Stable Sulfur Cathode in
+Carbonate Solvent-Based Li−S Batteries. Phys. Chem. Chem. Phys.
+2012, 14 (24), 8703.
+(29) Takahashi, T.; Yamagata, M.; Ishikawa, M. A Sulfur−
+Microporous Carbon Composite Positive Electrode for Lithium/
+Sulfur and Silicon/Sulfur Rechargeble Batteries. Prog. Nat. Sci.:Mater.
+Int. 2015, 25 (6), 612−621.
+(30) Xu, Y.; Wen, Y.; Zhu, Y.; Gaskell, K.; Cychosz, K. A.; Eichhorn,
+B.; Xu, K.; Wang, C. Confined Sulfur in Microporous Carbon Renders
+Superior Cycling Stability in Li/S Batteries. Adv. Funct. Mater. 2015,
+25 (27), 4312−4320.
+(31) Zheng, S.; Han, P.; Han, Z.; Zhang, H.; Tang, Z.; Yang, J. High
+Performance C/S Composite Cathodes with Conventional Carbo-
+nate-Based Electrolytes in Li-S Battery. Sci. Rep. 2014, 4 (1), 4842.
+(32) The Stokes-Einstein Law for Diffusion in Solution Proc. R. Soc.
+London, Ser. A 1924, 106, (740), 724−749
+(33) Kim, J. Y.; Shin, D. O.; Chang, T.; Kim, K. M.; Jeong, J.; Park,
+J.; Lee, Y. M.; Cho, K. Y.; Phatak, C.; Hong, S.; Lee, Y.-G. Effect of
+the Dielectric Constant of a Liquid Electrolyte on Lithium Metal
+Anodes. Electrochim. Acta 2019, 300, 299−305.
+(34) Halls, M. D.; Tasaki, K. High-Throughput Quantum Chemistry
+and Virtual Screening for Lithium Ion Battery Electrolyte Additives. J.
+Power Sources 2010, 195 (5), 1472−1478.
+(35) Sodeyama, K.; Igarashi, Y.; Nakayama, T.; Tateyama, Y.;
+Okada, M. Liquid Electrolyte Informatics Using an Exhaustive Search
+with Linear Regression. Phys. Chem. Chem. Phys. 2018, 20 (35),
+22585−22591.
+(36) Amine, R.; Liu, J.; Acznik, I.; Sheng, T.; Lota, K.; Sun, H.; Sun,
+C.; Fic, K.; Zuo, X.; Ren, Y.; Ei-Hady, D. A.; Alshitari, W.; Al-Bogami,
+A. S.; Chen, Z.; Amine, K.; Xu, G. Regulating the Hidden Solvation-
+Ion-Exchange in Concentrated Electrolytes for Stable and Safe
+Lithium Metal Batteries. Adv. Energy Mater. 2020, 10 (25), 2000901.
+(37) Arnaud-Neu, F.; Delgado, R.; Chaves, S. Critical Evaluation of
+Stability Constants and Thermodynamic Functions of Metal
+Complexes of Crown Ethers (IUPAC Technical Report). Pure Appl.
+Chem. 2003, 75 (1), 71−102.
+(38) Sun, K.; Wu, Q.; Tong, X.; Gan, H. Electrolyte with Low
+Polysulfide Solubility for Li−S Batteries. ACS Appl. Energy Mater.
+2018, 1 (6), 2608−2618.
+(39) Lin, Y.; Huang, S.; Zhong, L.; Wang, S.; Han, D.; Ren, S.; Xiao,
+M.; Meng, Y. Organic Liquid Electrolytes in Li-S Batteries: Actualities
+and Perspectives. Energy Storage Mater. 2021, 34, 128−147.
+(40) Snyder, C.; Apblett, C.; Grillet, A.; Beechem, T.; Duquette, D.
+Measuring Li + Inventory Losses in LiCoO 2/Graphite Cells Using
+Raman Microscopy. J. Electrochem. Soc. 2016, 163 (6), A1036−
+A1041.
+(41) Thompson, A. P.; Aktulga, H. M.; Berger, R.; Bolintineanu, D.
+S.; Brown, W. M.; Crozier, P. S.; in ’t Veld, P. J.; Kohlmeyer, A.;
+Moore, S. G.; Nguyen, T. D.; Shan, R.; Stevens, M. J.; Tranchida, J.;
+Trott, C.; Plimpton, S. J. LAMMPS - a Flexible Simulation Tool for
+Particle-Based Materials Modeling at the Atomic, Meso, and
+Continuum Scales. Comput. Phys. Commun. 2022, 271, 108171.
+(42) Hou, T.; Fong, K. D.; Wang, J.; Persson, K. A. The Solvation
+Structure, Transport Properties and Reduction Behavior of Carbo-
+nate-Based Electrolytes of Lithium-Ion Batteries. Chem. Sci. 2021, 12
+(44), 14740−14751.
+(43) Dodda, L. S.; Cabeza de Vaca, I.; Tirado-Rives, J.; Jorgensen,
+W. L. LigParGen Web Server: An Automatic OPLS-AA Parameter
+Generator for Organic Ligands. Nucleic Acids Res. 2017, 45 (W1),
+W331−W336.
+(44) Jorgensen, W. L.; Tirado-Rives, J. Potential Energy Functions
+for Atomic-Level Simulations of Water and Organic and Biomolecular
+Systems. Proc. Natl. Acad. Sci. U.S.A. 2005, 102 (19), 6665−6670.
+(45) Dodda, L. S.; Vilseck, J. Z.; Tirado-Rives, J.; Jorgensen, W. L.
+1.14*CM1A-LBCC: Localized Bond-Charge Corrected CM1A
+Charges for Condensed-Phase Simulations. J. Phys. Chem. B 2017,
+121 (15), 3864−3870.
+(46) Jensen, K. P.; Jorgensen, W. L. Halide, Ammonium, and Alkali
+Metal Ion Parameters for Modeling Aqueous Solutions. J. Chem.
+Theory Comput. 2006, 2 (6), 1499−1509.
+(47) Gouveia, A. S. L.; Bernardes, C. E. S.; Tomé, L. C.; Lozinskaya,
+E. I.; Vygodskii, Y. S.; Shaplov, A. S.; Lopes, J. N. C.; Marrucho, I. M.
+Ionic Liquids with Anions Based on Fluorosulfonyl Derivatives: From
+Asymmetrical Substitutions to a Consistent Force Field Model. Phys.
+Chem. Chem. Phys. 2017, 19 (43), 29617−29624.
+(48) Basel, J.; Sapkota, N.; Parekh, M.; Rao, A. M. Electrolyte
+Optimization for Sodium-Sulfur Batteries. Appl. Phys. Lett. 2024, 124
+(12), 123901.
+(49) Martínez, L.; Andrade, R.; Birgin, E. G.; Martínez, J. M.
+PACKMOL: A Package for Building Initial Configurations for
+Molecular Dynamics Simulations. J. Comput. Chem. 2009, 30 (13),
+2157−2164.
+(50) Martínez, J. M.; Martínez, L. Packing Optimization for
+Automated Generation of Complex System’s Initial Configurations
+for Molecular Dynamics and Docking. J. Comput. Chem. 2003, 24 (7),
+819−825.
+(51) Jewett, A. I.; Stelter, D.; Lambert, J.; Saladi, S. M.; Roscioni, O.
+M.; Ricci, M.; Autin, L.; Maritan, M.; Bashusqeh, S. M.; Keyes, T.;
+Dame, R. T.; Shea, J.-E.; Jensen, G. J.; Goodsell, D. S. Moltemplate: A
+ACS Applied Energy Materials
+www.acsaem.org
+Article
+https://doi.org/10.1021/acsaem.4c02435
+ACS Appl. Energy Mater. 2025, 8, 903−911
+910
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​8/​2/​903/​40363690/​ae4c02435.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 9>>
+Tool for Coarse-Grained Modeling of Complex Biological Matter and
+Soft Condensed Matter Physics. J. Mol. Biol. 2021, 433 (11), 166841.
+(52) Isdale, J. D.; McGillivray, J. C.; Cartwright, G. East Kilbride,
+Glasgow, G75 OQV Prediction of Viscosity of Organic Liqid Mixtures by
+a Group Contribution Method, 1981.
+(53) Xing, L.; Zheng, X.; Schroeder, M.; Alvarado, J.; von Wald
+Cresce, A.; Xu, K.; Li, Q.; Li, W. Deciphering the Ethylene
+Carbonate−Propylene Carbonate Mystery in Li-Ion Batteries. Acc.
+Chem. Res. 2018, 51 (2), 282−289.
+(54) Ming, J.; Cao, Z.; Li, Q.; Wahyudi, W.; Wang, W.; Cavallo, L.;
+Park, K.-J.; Sun, Y.-K.; Alshareef, H. N. Molecular-Scale Interfacial
+Model for Predicting Electrode Performance in Rechargeable
+Batteries. ACS Energy Lett. 2019, 4 (7), 1584−1593.
+(55) Kazemiabnavi, S.; Zhang, Z.; Thornton, K.; Banerjee, S.
+Electrochemical Stability Window of Imidazolium-Based Ionic
+Liquids as Electrolytes for Lithium Batteries. J. Phys. Chem. B 2016,
+120 (25), 5691−5702.
+(56) Miao, Q.; Solan, N.; Hyun, G.; Holoubek, J.; Liu, P. Electrolyte
+Engineering for Long-Life Li-SPAN Batteries. ACS Energy Lett. 2023,
+8 (11), 4818−4830.
+(57) Phan, A. L.; Nan, B.; Le, P. M. L.; Miao, Q.; Wu, Z.; Le, K.;
+Chen, F.; Engelhard, M.; Dan Nguyen, T.; Han, K. S.; Heo, J.; Zhang,
+W.; Baek, M.; Xu, J.; Zhang, X.; Liu, P.; Ma, L.; Wang, C. Lightweight
+Electrolyte Design for Li/Sulfurized Polyacrylonitrile (SPAN)
+Batteries. Adv. Mater. 2024, 36 (35), 2406594.
+(58) Cai, G.; Holoubek, J.; Xia, D.; Li, M.; Yin, Y.; Xing, X.; Liu, P.;
+Chen, Z. An Ester Electrolyte for Lithium−Sulfur Batteries Capable of
+Ultra-Low Temperature Cycling. Chem. Commun. 2020, 56 (64),
+9114−9117.
+(59) www.stenutz.com. https://www.stenutz.eu/chem/solv6.
+php?name=triethyl%20phosphate, (accessed Nov 25, 2024).
+(60) Chun, M.-J. Functional Electrolytes for Improving Electro-
+chemical Performances of Carbon-Coated Porous Silicon Anodes in
+Lithium-Ion Batteries. Master’s thesis, Ulsan national Institute of
+Science and Technology, 2014.
+(61) Ma, H.; Wang, Q.; Lu, H.; Si, Y.; Kong, X.; Wang, J. An
+Intrinsic Safe Siloxane Ether-Based Electrolyte for Lithium-Sulfur
+Batteries at High Temperatures. Chem. Eng. J. 2024, 479, 147557.
+ACS Applied Energy Materials
+www.acsaem.org
+Article
+https://doi.org/10.1021/acsaem.4c02435
+ACS Appl. Energy Mater. 2025, 8, 903−911
+911
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​8/​2/​903/​40363690/​ae4c02435.​pdf by TSINGHUA UNIV user on 21 September 2026

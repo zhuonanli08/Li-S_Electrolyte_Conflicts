@@ -1,0 +1,1191 @@
+
+<<PAGE 1>>
+Advanced Energy Materials 
+www.advenergymat.de
+RESEARCH ARTICLE
+Multi-modal Operando Analysis of Lithium–Sulfur 
+Batteries: A Comparative Study on the Influence of 
+Electrolyte Composition 
+Oliver Löhmann1 
+Pouya Partovi-Azar2 , 3 
+Mirco Ruttert4 
+Sebastian Risse1 
+1 Institute for Electrochemical Energy Storage, Helmholtz-Zentrum Berlin für Materialien und Energie GmbH, Berlin, Germany 
+2 Institute of Chemistry, 
+Martin Luther University Halle-Wittenberg, Halle (Saale), Germany 
+3 Physikalisch-Technische Bundesanstalt (PTB), Berlin, Germany 
+4 E-Lyte Innovations 
+GmbH, Münster, Germany 
+Correspondence: Oliver Löhmann ( oliver.loehmann@helmholtz-berlin.de)
+Sebastian Risse ( sebastian.risse@helmholtz-berlin.de) 
+Received: 3 June 2026 
+Revised: 17 August 2026 
+Accepted: 29 August 2026 
+Keywords: impedance spectroscopy | lithium–sulfur battery | multimodal operando analysis | raman spectroscopy | UV–vis spectroscopy 
+ABSTRACT 
+The effect of electrolytes on battery cell performance is multifaceted, and it is difficult to isolate their impact on individual 
+processes. Operando analysis of batteries is a powerful tool to investigate battery degradation mechanisms. By combining 
+different techniques on the same cell a wider perspective can be opened and enables easier cross-correlation. Here, we introduce 
+a fully laboratory-based multimodal operando platform that synchronizes EIS/DRT, Raman spectroscopy, UV–vis reflectance 
+spectroscopy, temperature monitoring, and galvanostatic cycling in one sealed Li–S cell. The platform is demonstrated over an 
+extended observation window of up to 20 cycles to compare electrolyte-dependent polysulfide speciation, transport limitations, 
+and resistance evolution. The experimental design is optimized for reproducible mechanistic characterization and is not intended 
+as a benchmark of practical cell performance or long-term cycle life. 
+1 
+Introduction 
+Lithium–sulfur (Li–S) batteries are considered promising candi- 
+dates for next-generation electrochemical energy storage because 
+sulfur offers a high theoretical specific capacity of 1675 𝑚 𝐴ℎ 𝑔− 1 
+and, when combined with lithium metal, a theoretical gravimet- 
+ric energy density of approximately 2600 𝑊ℎ 𝑘𝑔− 1 based on the 
+active materials [ 1–3 ]. These values substantially exceed those of 
+conventional intercalation-based lithium-ion battery chemistries 
+[ 4 ]. In addition, sulfur is abundant, inexpensive, and potentially 
+associated with a lower environmental impact than cathode 
+materials containing nickel or cobalt [ 1–3 ]. However, translating 
+these intrinsic material-level advantages into practical cell-level 
+energy density and long-term stability remains challenging. The 
+insulating nature of elemental sulfur and 𝐿𝑖2 𝑆, large changes 
+in the physical state and molar volume of the active material, 
+unstable lithium-metal interfaces, and the dissolution and migra- 
+tion of lithium polysulfides collectively limit sulfur utilization, 
+Coulombic efficiency, and cycle life [ 2, 3, 5–9 ]. 
+The electrolyte plays a particularly complex role because it is 
+not merely an ion-conducting medium but directly determines 
+sulfur speciation, reaction pathways, mass transport, and interfa- 
+cial stability. Mixtures of 1,3-dioxolane and 1,2-dimethoxyethane 
+containing LiTFSI and 𝐿𝑖𝑁𝑂3 are among the most widely used 
+benchmark electrolytes for liquid-electrolyte Li–S batteries [ 5–
+10 ]. DME provides comparatively strong solvation and facilitates 
+the dissolution and transport of long-chain lithium polysulfides, 
+whereas DOL contributes to interfacial film formation and can 
+undergo polymerization under suitable conditions. The resulting 
+solution-mediated reaction pathway promotes sulfur utilization 
+and enables the characteristic two-plateau discharge profile. 
+This is an open access article under the terms of the Creative Commons Attribution License, which permits use, distribution and reproduction in any medium, provided the 
+original work is properly cited. 
+© 2026 The Author(s). Advanced Energy Materials published by Wiley-VCH GmbH 
+Advanced Energy Materials , 2026; 0:e71554 
+https://doi.org/10.1002/aenm.71554
+1 of 13
+
+<<PAGE 2>>
+At the same time, soluble polysulfides migrate between the 
+electrodes and participate in parasitic reduction and oxidation 
+reactions, giving rise to self-discharge, low Coulombic effi- 
+ciency, lithium corrosion, electrolyte consumption, and loss of 
+electrochemically accessible sulfur [ 5, 7–9 ]. 𝐿𝑖𝑁𝑂3 is therefore 
+commonly added to promote the formation of a passivating 
+interphase on lithium metal and to suppress continuous polysul- 
+fide reduction at the negative electrode [ 6 ]. Nevertheless, 𝐿𝑖𝑁𝑂3 
+is gradually consumed during cycling and does not eliminate 
+the underlying transport of soluble polysulfides through the 
+electrolyte [ 6, 10 ]. The concentration and molecular structure 
+of dissolved polysulfides also influence the physicochemical 
+properties of the electrolyte itself. 
+Experimental and computational studies have shown that poly- 
+sulfide chain length, concentration, degree of dissociation, ion 
+association, and clustering affect viscosity, ionic conductivity, 
+diffusion coefficients, and charge-carrier populations [ 11–13 ]. 
+Short-chain species may exhibit comparatively high molecular 
+diffusivity while contributing less effectively to conductivity 
+because of stronger ion association and cluster formation [ 12 ]. 
+The addition of LiTFSI modifies these interactions further by 
+competing for solvent molecules and changing the coordination 
+and dissociation equilibria of lithium polysulfides [ 11, 12 ]. These 
+effects are closely coupled to the electrolyte-to-sulfur ratio. 
+Under lean-electrolyte conditions, dissolution and precipitation 
+consume a substantial fraction of the available solvent, and 
+concentration gradients, pore blockage, and transport limitations 
+become increasingly important. Under highly flooded conditions, 
+variations in polysulfide concentration and the corresponding 
+changes in bulk transport properties are diluted, but they are not 
+necessarily eliminated [ 10–14 ]. Consequently, the solution resis- 
+tance measured in an operating cell represents a coupled response 
+involving salt concentration, polysulfide speciation, viscosity, 
+conductivity, wetting, and the effective ionic transport geometry. 
+Reducing the effective solvating power of the electrolyte has 
+emerged as an alternative strategy for limiting polysulfide disso- 
+lution. Partially fluorinated ethers and hydrofluoroethers exhibit 
+weak coordination toward 𝐿𝑖+ and lithium polysulfides and 
+can be used either as primary solvents or as nominally inert 
+diluents in localized high-concentration electrolytes [ 15–18 ]. In 
+DME/TTE mixtures, TTE reduces the effective solvent activity 
+and increases the local salt-to-coordinating-solvent ratio, thereby 
+decreasing polysulfide solubility and modifying the balance 
+between solution-mediated and surface-mediated sulfur conver- 
+sion [ 15, 17 ]. Related fluorinated-ether systems have demonstrated 
+that reduced polysulfide solubility can suppress shuttle reactions 
+and improve lithium-metal compatibility, particularly under 
+restricted electrolyte conditions [ 16, 18 ]. However, weak solvation 
+also reduces the availability and mobility of dissolved reaction 
+intermediates. Depending on electrolyte composition, sulfur 
+loading, current density, and electrode architecture, this can 
+increase polarization, alter the relative lengths of the discharge 
+plateaus, restrict sulfur utilization, and intensify mass-transport 
+limitations [ 15–18 ]. Weakly solvating electrolytes therefore do 
+not simply remove the polysulfide problem but shift the bal- 
+ance between polysulfide confinement, reaction kinetics, ionic 
+transport, and interfacial stability. Sulfolane-based electrolytes 
+provide a further route toward low polysulfide solubility. Sul- 
+folane has a high dielectric constant and high oxidative stability, 
+but its strong dipolar character, comparatively high viscosity, 
+and specific 𝐿𝑖+ coordination lead to transport properties that 
+differ substantially from conventional ether electrolytes [ 19 ]. 
+Highly concentrated LiTFSI/sulfolane electrolytes and their 
+mixtures with TTE or related hydrofluoroethers can form anion- 
+rich coordination structures while substantially reducing the 
+solubility of lithium polysulfides [ 19, 20 ]. This can suppress 
+shuttle currents and alter sulfur-conversion pathways, but the 
+associated viscosity and reduced mobility can also cause concen- 
+tration polarization and hinder ion and active-species transport 
+[ 19 ]. Accordingly, DOL/DME/LiTFSI/ 𝐿𝑖𝑁𝑂3 , DME/TTE/LiTFSI, 
+and sulfolane/TTE/LiTFSI formulations represent established 
+but chemically distinct electrolyte concepts rather than newly 
+introduced compositions. They span a broad range of polysulfide- 
+solvation behavior and are therefore suitable model systems for 
+investigating how solvation, transport, and interfacial processes 
+are coupled. 
+Because the electrochemical response of a Li–S cell results from 
+several simultaneously evolving reactions, ex situ characteri- 
+zation alone cannot fully resolve the underlying mechanisms. 
+A broad range of in situ and operando methods has conse- 
+quently been developed to monitor sulfur conversion, polysulfide 
+transport, precipitation, interfacial resistance, and morphological 
+degradation during battery operation [ 21–24 ]. Electrochemical 
+impedance spectroscopy provides time-dependent information 
+on electrolyte resistance, interfacial polarization, charge transfer, 
+and diffusion-related processes. Electrode-resolved experiments 
+and distribution-of-relaxation-times analyses have demonstrated 
+that high-frequency contributions are frequently dominated by 
+the lithium-metal electrode and its interphase, whereas slower 
+contributions include sulfur-cathode charge transfer, precipita- 
+tion and dissolution processes, and ionic or polysulfide transport 
+[ 21, 22, 25, 26 ]. However, because these contributions can overlap 
+in a two-electrode cell, impedance data benefit strongly from 
+correlation with complementary chemical probes. Operando 
+Raman spectroscopy has been applied to follow the formation 
+and consumption of elemental sulfur and different polysul- 
+fide populations close to the sulfur cathode [ 27–30 ]. Operando 
+UV–vVis spectroscopy provides complementary sensitivity to 
+dissolved sulfur species in the electrolyte and has been used to 
+distinguish spectral regions associated with different polysulfide 
+chain lengths and to monitor their potential-dependent evolution 
+[ 31–33 ]. X-ray absorption spectroscopy, diffraction, and imaging 
+offer additional information on sulfur speciation, solid-phase 
+formation, electrode morphology, and lithium degradation [ 9, 21, 
+22, 28, 34 ]. 
+These methods have provided substantial mechanistic insight, 
+but most studies apply one principal analytical technique or 
+combine data obtained from separate cells. Even when several 
+techniques are used, differences in cell geometry, sampling 
+position, cycling history, and electrolyte inventory can complicate 
+direct temporal correlation [ 21–24, 31, 34 ]. Optical operando 
+measurements introduce additional methodological challenges. 
+Optical access is frequently created using a window and a 
+localized aperture through an electrode, current collector, or 
+separator [ 24, 27, 29–31, 33, 35 ]. Such configurations enable direct 
+spectroscopic access but can locally alter stack pressure, current 
+distribution, electrolyte volume, and transport pathways. More- 
+over, a measurement through one macroscopic aperture probes 
+2 of 13
+Advanced Energy Materials, 2026
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71554 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 3>>
+FIGURE 1 
+(A) Image of the used setup. Raman probe is directing from the top toward the backside of the cathode. The UV–vis probe is facing a 
+small electrolyte filled pocket next to the separator from the left. From the right a temperature sensor is mounted. Electrical connection to the potentiostat 
+is realized from the back by the red and green connections mounted to the top and bottom part of the operando cell. (B) Zoom-in drawing of the cell. 
+The cut-out reveals the inner part of the cell. The cell is turned 45 ◦counterclockwise with respect to image A. (C) Multimodal operando data set as a 
+function of time. From top to bottom: Voltage profile, solution resistance, DRT analysis, UV–vis spectra, Raman spectra and temperature. The point of 
+measurement is marked by individual colors for each method, respectively. 
+only a limited region of the electrode, which may not reflect 
+spatially heterogeneous processes occurring elsewhere in the cell 
+[ 35 ]. Perforated and optically accessible current collectors have 
+therefore previously been employed to increase the accessible 
+electrode area and reduce the dependence of the measurement 
+on a single large opening [ 24, 27, 29–31, 35 ]. Nevertheless, 
+distributed optical access does not by itself demonstrate complete 
+statistical equivalence between the probed region and the whole 
+electrode, and the electrochemical influence of the modified 
+current collector must be evaluated independently. 
+In the present study, we introduce an integrated, fully laboratory- 
+based platform that combines galvanostatic cycling, electrochem- 
+ical impedance spectroscopy with distribution-of-relaxation- 
+times analysis, Raman spectroscopy, UV–vis reflectance spec- 
+troscopy, and temperature monitoring in the same sealed, coin- 
+cell-compatible Li–S cell. The individual electrolyte compositions 
+and the use of a perforated current collector are not claimed 
+as novel. Instead, the three established electrolyte systems are 
+deliberately selected as model formulations spanning strongly, 
+intermediately, and weakly solvating conditions. Raman spec- 
+troscopy probes sulfur species in the immediate vicinity of the 
+cathode, whereas UV–vis spectroscopy monitors dissolved poly- 
+sulfides in the bulk electrolyte. Their synchronized correlation 
+with voltage, solution resistance, relaxation-time descriptors, and 
+temperature enables electrolyte-dependent reaction and degrada- 
+tion processes to be compared within the same electrochemical 
+cell. The cell architecture uses a fully perforated, carbon-coated 
+aluminum current collector to provide distributed optical access 
+and to reduce the dependence of Raman measurements on a 
+single macroscopic aperture. Comparative measurements with 
+non-perforated current collectors are used to evaluate the electro- 
+chemical influence of this modification. The design is optimized 
+for stable and reproducible multimodal characterization rather 
+than for maximizing practical cell-performance metrics. In par- 
+ticular, the optical measurement volumes, low sulfur loading, and 
+electrolyte-rich conditions represent deliberate methodological 
+compromises. The platform is operated for up to 20 charge–
+discharge cycles, extending the observation period beyond the 
+few cycles commonly investigated in multimodal spectroscopic 
+experiments. To the best of our knowledge, the synchronized 
+combination of EIS/DRT, Raman spectroscopy, UV–vis spec- 
+troscopy, and temperature monitoring over this duration has 
+not previously been demonstrated in one sealed Li–S cell. The 
+resulting data provide a temporally aligned view of local sulfur 
+speciation, bulk polysulfide evolution, interfacial and transport- 
+related impedance changes, and progressive cell degradation. 
+2 
+Experimental Section 
+2.1 
+Materials and Cell Assembly 
+A well-established cathode material based on sulfur, carbon black 
+and Polyvinylidene fluoride (PVDF) was used for this comparison 
+study [ 36 ]. Briefly, Sulfur (490 mg) and Carbon Black Super-P (210 
+mg) were mixed with carbon disulfide (3 mL) and ground until 
+complete solvent evaporation. The mixture was transferred to a 
+100 mL single-necked round-bottom flask and air was exchanged 
+by argon. The closed flask was heated to 155 ◦C for 12 h. The mix- 
+ture was ground again after heat treatment. PVDF (1 g, HSV900 
+PVDF binder, MTI) was dissolved in N-Methyl-2-pyrrolidon (30 
+mL, NMP) by heating up to 80 ◦C and stirring for 1 h. The cathode 
+slurry was prepared by mixing C/S powder (350 mg), Carbon 
+Black (100 mg), PVDF solution (1.5 mL) and NMP (3.5 mL). 
+The slurry was stirred for 2 h including 10 min ultrasonification 
+treatment in between. The slurry was coated on a carbon coated 
+and perforated aluminum foil. The foil was perforated with a 
+honeycomb structure, where an individual honeycomb has a size 
+of 0.5 × 0.25 𝑚 𝑚2 and a center-to-center distance of 1.67 mm. 
+A microscope image of the coated and uncoated foil is shown 
+in the supporting information (Figure S1 ). The thickness of the 
+coating was adjusted to 220 𝜇𝑚 . The coated current collector 
+was dried overnight at ambient conditions. In a second step, it 
+was transferred to a vacuum oven and dried at 45 ◦C and reduced 
+pressure for 1 h. The resulting cathodes have an areal loading of 
+0.73 mg sulfur per 𝑐𝑚2 . Finally, 14 mm disks were punched out 
+and used as cathodes for the coin cells. The dried cathodes have 
+a sulfur content of 49 𝑤 𝑡 % (approx. 0.8 mg sulfur per cathode). 
+The areal loading is lower compared to other similar studies 
+due to the usage of a perforated current collector. Nevertheless, 
+the perforation of the current collector opens the possibility to 
+Advanced Energy Materials, 2026
+3 of 13
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71554 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 4>>
+TABLE 1 
+Composition of electrolytes used. E1 is a good solvent for 
+polysulfides, while E2 and E3 are medium and bad solvent, respectively 
+[ 10, 37 ]. 
+Name 
+Solvent 
+Additive 
+E1 
+DOL:DME (1:1 vol.) 
+1 𝑀 𝐿𝑖 𝑇 𝐹𝑆 𝐼, 2 𝑤 𝑡 % 𝐿𝑖𝑁𝑂3 
+E2 
+DME:TTE (1:1 vol.) 
+1 𝑀 𝐿𝑖 𝑇 𝐹𝑆 𝐼
+E3 
+SL:TTE (1:1 vol.) 
+1 𝑀 𝐿𝑖 𝑇 𝐹𝑆 𝐼
+study the electrodes in a more representative fashion with respect 
+to a cell design with a single large hole [ 28 ]. It is crucial to 
+minimize the perturbation of the cathode to aim for a minimal 
+negative impact on the cell performance [ 35 ]. A multi-cycle 
+comparison of cells with perforated and non-perforated current 
+collectors is shown in Supporting Information (Figure S2 ). Both 
+configurations retain the characteristic two-plateau Li–S voltage 
+profile over repeated cycling, indicating that the perforation 
+does not introduce a gross change in the sulfur-conversion 
+mechanism. The comparison is qualitative, however, because the 
+cells were assembled with the same absolute electrolyte volume 
+but different sulfur loadings and therefore different E/S ratios. 
+Quantitative differences, particularly during charge, cannot be 
+attributed exclusively to the current-collector geometry. 
+Batteries were assembled in an argon glovebox. For that, a self- 
+made measurement cell (see Figure 1B ) based on the coin cell 
+format 2032 was equipped with a Li metal chip (14 mm × 200 
+𝜇𝑚 ), a polypropylene separator (MTI, USA, 16 mm × 25 𝜇𝑚 ) and 
+a prepared cathode. 80 𝜇L electrolyte was added to the cathode 
+with a mechanical pipette. In this study, different electrolytes are 
+used and their compositions are shown in Table 1 . The formulated 
+battery-grade electrolytes were provided by E-Lyte Innovations 
+GmbH. The individual raw materials, including solvents, salts, 
+and additives, were obtained from external suppliers and, where 
+required, post-treated by E-Lyte, for example by additional drying, 
+to meet the specified battery-grade requirements. The identities 
+of the raw-material suppliers cannot be disclosed due to existing 
+confidentiality agreements. 0.5 mm of the Li chip was cut off from 
+the edge to form a small pocket enabling UV–vis spectroscopy on 
+the bulk electrolyte in the vicinity of the separator. 
+The high electrolyte-to-sulfur ratio of approximately 100 𝜇𝐿∕𝑚𝑔
+sulfur was selected to ensure complete wetting of the cathode and 
+reproducible filling of the dedicated optical volumes adjacent to 
+the Raman and UV–vis probes. These electrolyte-rich conditions 
+dilute changes in polysulfide concentration and therefore atten- 
+uate their influence on the measured bulk-electrolyte resistance 
+compared with lean-electrolyte cells. The cell architecture was 
+deliberately optimized for stable and reproducible multimodal 
+operando characterization rather than for maximizing sulfur 
+utilization or practical cell-level performance. In particular, the 
+perforated current collector, the 49 𝑤 𝑡 . % sulfur composite, the low 
+areal sulfur loading, and the additional electrolyte-filled optical 
+volumes represent methodological compromises required for the 
+simultaneous spectroscopic measurements. The reported specific 
+capacities should therefore be interpreted within the compar- 
+ative mechanistic scope of this study and not as performance 
+benchmarks for practically optimized Li–S cells. 
+2.2 
+Multimodal Operando Measurements 
+Li–S batteries still lack long-term stability. Thus, investigating 
+chemical processes under operando conditions is crucial for 
+understanding the degradation mechanism. Therefore, we devel- 
+oped up a multi-spectroscopic setup enabling the investigation 
+from different perspectives on the same cell. An overview of the 
+setup and its outcome is shown in Figure 1 . 
+Galvanostatic cycling and simultaneous electrochemical 
+impedance spectroscopy (EIS) were measured with an Interface 
+1010E (Gamry Instruments, USA). For that, customized 
+measurement scripts enable EIS measurements ( 𝐴𝑚𝑎𝑥 = 𝐶∕50 ) 
+while charging and discharging with a current of 𝐶∕10 within 
+a voltage window from 1.8 to 2.8 V. Continuous measurements 
+were done in a frequency range from 250 kOhm to 250 mOhm 
+collecting 10 measurement points per frequency decade. 
+In parallel, Raman spectroscopy was carried out from the back- 
+side of the cathode with an i-Raman Plus spectrometer (BWTek, 
+USA). The excitation wavelength was 532 nm. Measurement time 
+for individual spectra varies between 10 and 40 s depending on 
+signal intensity. Spectra were collected every 1–2 min. The sap- 
+phire window and the perforated current collector provide optical 
+access to the electrolyte and cathode region. Raman spectroscopy 
+is performed through one selected perforation using a fixed fiber 
+probe that interrogates a local focal volume close to the cathode. 
+The present configuration provides spectroscopic information but 
+does not generate a spatially resolved optical image or Raman 
+map. Although the distributed perforation pattern avoids reliance 
+on one large macroscopic opening and provides several potential 
+optical access points across the electrode, only one perforation 
+is probed during an individual operando experiment. To assess 
+the sensitivity of the spectral fingerprint to local probe place- 
+ment, a freshly assembled cell containing E1 was additionally 
+examined with a Raman microscope at three spatially separated 
+locations. At each location, spectra were acquired both through 
+the aperture and on the adjacent coated current-collector land. 
+After background correction, the characteristic Raman bands 
+were reproduced for all positions and both sampling geometries 
+(Figure S3 ), indicating that the relevant spectral fingerprints 
+are not specific to one perforation or to whether the probe 
+intersects an aperture or the adjacent current collector. This 
+control supports the spatial robustness of the spectral assignment 
+in the freshly assembled cell. However, because the operando 
+fiber probe remains fixed and the validation was performed before 
+cycling, the time-resolved operando spectra are interpreted as 
+local measurements rather than as proof of complete electrode- 
+wide equiv alence. The focal plane ( 𝑑 = 75 𝜇𝑚 ) was positioned 
+between the sapphire window and the current collector by a 
+height scan, and the lateral position was adjusted by maximizing 
+the electrolyte fluorescence signal. The representativeness of a 
+single perforation was proved with a Raman microscope as shown 
+in Figure S3 in the supporting information. 
+UV–vis spectroscopy was carried out in the vicinity of the separa- 
+tor. Thus, it probes the bulk electrolyte between the electrodes. 
+The UV–vis probe consists of seven fixed optical fibers in a 
+6-in-1-out configuration and measures reflected intensity from 
+the electrolyte-filled pocket adjacent to the separator. It is not 
+4 of 13
+Advanced Energy Materials, 2026
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71554 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 5>>
+configured for imaging and therefore provides information on 
+dissolved polysulfide species in the bulk electrolyte but no direct 
+morphological information on sulfur deposits or the lithium 
+electrode. The UV radiation was generated by a deuterium light 
+source (DH-2000, Ocean Optics, USA) while the Vis radiation 
+was generated by a Tungsten Halogen light source (HL-2000, 
+Ocean Optics, USA). Both sources were merged into one optical 
+fiber. Then, the combined UV–vis light was splitted. One part 
+was directed to the sample. Its reflection was measured with a 
+spectrometer (Maya 2000, Ocean Optics, USA). The other part 
+of the UV–vis light was directed into a second spectrometer 
+of the same type mentioned before, to record time-dependent 
+fluctuations of the light sources. Spectra were collected every 
+minute with a varying measurement time between 5 and 15 s 
+depending on signal intensity. Furthermore, temperature was 
+measured with an NTC Thermistor (44031RC, Measurement 
+Specialties, USA) connected to a LS335 (Lakeshore, USA) every 10 
+s. As a reference, an identical, empty cell was placed next to the 
+setup to compensate for environmental temperature fluctuations. 
+2.3 
+Data Processing and Analysis 
+All data were processed and analyzed with self-written python 
+(Version 3.12) scripts [ 38 ]. In order to handle the massive amount 
+of heterogeneous data, all files were merged into a single hdf5 file 
+[ 39 ]. The data sets are annotated with their respective timestamp 
+in order to align the data after processing. 
+Impedance spectroscopy data were processed in a consecutive 
+multi-step process. First, a linear drift correction was applied to 
+account for voltage drift during the measurement of individual 
+frequency points with frequencies lower than 100 Hz. Afterwards, 
+each data set was time corrected by a 2D interpolation in order 
+to get time consistency for each measurement. Finally, data were 
+checked by Z-Hit test to prove consistency of the data correction 
+(see Figure S4 ). Impedance analysis was done by the evaluation 
+of the distribution of relaxation times (DRT) [ 40–42 ]. The DRT 
+was integrated between 10− 6 and 10− 3 s and between 10− 3 and 
+100 s to obtain descriptors denoted as the fast and slow pro- 
+cesses, respectively. Electrode-resolved DRT studies using 𝐿 𝑖||𝐿 𝑖
+and 𝑆 ||𝑆 symmetric cells have located lithium-metal/SEI-related 
+polarization predominantly in the microsecond-to-millisecond 
+range, including characteristic contributions in the kHz regime 
+[ 25, 26, 43, 44 ]. In contrast, sulfur-cathode charge transfer 
+and polysulfide or ion diffusion have been observed at longer 
+relaxation times ranging from milliseconds to several seconds. 
+The fast and slow processes are therefore interpreted as being 
+predominantly associated with the lithium-metal electrode and 
+sulfur cathode, respectively [ 25 ]. However, owing to the two- 
+electrode conf iguration used here, overlapping contributions 
+cannot be completely excluded. 
+The UV–vis spectra were corrected for time-dependent fluctua- 
+tions of the light sources and converted to absorbance according 
+to A = -log(R). Based on the spectral assignment reported 
+by Häcker et al.,[ 32 ] two wavelength regions were evaluated 
+separately: 380 − 430 𝑛 𝑚 as a descriptor for predominantly 
+short-chain polysulfides and 470 − 500 𝑛 𝑚 as a descriptor for pre- 
+dominantly long-chain polysulfides. Integration of these regions 
+yields two time-dependent measurands that can be compared 
+directly with the Raman-derived species evolution. The complete 
+analysis is shown in Figure S6 . 
+Raman spectra were corrected using asymmetric least-squares 
+baseline estimation (smoothness = 104 − 105 , asymmetry = 
+0 . 08 − 0 . 1 ) [ 45 ], normalized by their integration time, and 
+smoothed with a Savgol filter (window length = 6 − 10 , polyno- 
+mial order = 2) using parameters selected to remove the broad 
+fluorescence background without suppressing the narrow sulfur- 
+related bands. The influence of this processing is illustrated 
+in Figure S7 . Afterward, principal component analysis (PCA of 
+scikit-learn [ 46 ]) was used to identify the main components 
+and multi-variate curve resolution (pyMCR [ 47 ]) to track their 
+evolution over time. The original time-resolved Raman data, their 
+reconstruction by the MCR components, and the correspond- 
+ing residuals are compared in Figure S8 , demonstrating that 
+the principal spectral features are retained without systematic 
+residual structures. 
+2.4 
+Quantum-Chemical Calculations 
+Two series of quantum-chemical calculations were performed to 
+simulate the Raman activity of S8 and Li-polysulfide molecules 
+Li 2 S8 , Li 2 S6 , and Li 2 S4 . 
+In the first calculations, the finite-temperature effects were 
+taken into account by performing density-functional theory- 
+based ab initio molecular dynamics simulations (AIMD), where 
+the Wannier polarizability method [ 48–51 ] were employed for the 
+simulation of Raman signals. The AIMD simulations were carried 
+out in vacuum first in the canonical ensemble for equilibration for 
+20 ps followed by another 20 ps of AIMD simulations in micro- 
+canonical ensemble for sampling [ 52–54 ]. In these simulations 
+we have used PBE exchange-correlation functional [ 55 ] together 
+with DFT-D3 method [ 56 ] to account for dispersion interactions. 
+Additionally, we employed a double-zeta basis set for all the atoms 
+optimized for molecular systems (DZVP-MOLOPT) [ 57 ], while 
+the core electrons were effectively taken into account using GTH 
+pseudopotentials [ 58, 59 ]. The above simulations were carried out 
+using the CP2K software package [ 60 ]. 
+In the second calculations, we performed all-electron DFT cal- 
+culations with Orca package [ 61 ] were the Raman shifts and 
+intensities were calculated using static polarizabilities obtained 
+via linear response theory. In these calculations, there were 
+no explicit treatment of finite-temperature effects and the 
+Raman peaks were broadened using Gaussian functions with 
+FWHM of 10 cm − 1 . The solvent effects were included using 
+the conductor-like polarizable continuum model [ 62 ] with a 
+dielectric constant of 𝜖= 7 . 2 for the DOL:DME mixture, and 
+𝜖= 6 . 5 for the DOL:DME mixture together with 1M LiTFSI. In 
+these calculations, we used PBE0 hybrid exchange correlation 
+functional [ 63 ] together with a triple-zeta basis set, namely 
+def2-TZVP [ 64 ]. 
+3 
+Results and Discussion 
+All data streams were recorded on the same electrochemical 
+cell, assigned to a common time base, and evaluated using 
+Advanced Energy Materials, 2026
+5 of 13
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71554 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 6>>
+FIGURE 2 
+Comparison of the spectra derived from MCR and theoretical calculations. 
+synchronized descriptors. This enables direct comparison of the 
+voltage response and impedance evolution with Raman-detected 
+sulfur species close to the cathode and UV–vis-detected polysul- 
+fides in the bulk electrolyte. For example, changes in solution 
+resistance at the transition between the two discharge plateaus 
+can be evaluated together with the simultaneous evolution of 
+short- and long-chain polysulfide signatures. The agreement 
+between independent methods provides a self-consistent mecha- 
+nistic picture, although the observed correlations should not be 
+interpreted as proof of causality without additional controlled 
+perturbation experiments. 
+3.1 
+Interpretation of Operando Raman Spectra 
+Several publications tried to address the interpretation of Raman 
+spectra during operando analysis of batteries. As shown in the 
+supporting information Tables S1 – S3 a clear picture is not 
+available. Here, MCR was used to identify the most prominent 
+bands to interpret the charge over state of change and time. 
+The resulting spectra can be a superposition of different species 
+with similar behavior. The classification of the various species 
+was based on theoretical calculations. A comparison of the 
+main components derived from MCR for the second cycle and 
+theoretical calculations are shown in the left panels of Figure 2 , 
+while the right panels show the corresponding concentrations 
+over time. 
+It should be noted here that the calculations could be consid- 
+ered only as a guide to understand the Raman trends during 
+charge/discharge and the exact peak positions and intensities 
+should not be directly compared to experiments, given the 
+oversimplified structures considered in theoretical calculations. 
+On the one hand, the concentration curve suggests that compo- 
+nent 0 could be assigned to long-chain polysulfides. On the other 
+hand, the theoretical calculations show that a Raman activity 
+should be present at around 200 cm − 1 in polysulfides with sulfur 
+chains consisting of three or more covalently bonded sulfur atoms 
+[ 49, 52, 53 ]. This activity is, however, absent in the component 
+0. Additionally, the activities in 350–420 cm − 1 range align with 
+the theoretically predicted activities in long-chain polysulfides, 
+namely Li 2 S8 and Li 2 S6 . Therefore, we assign component 0 
+to long-chain polysulfides, which could be strongly anchored 
+by the carbon material, so that the vibrations at 200 cm − 1 
+would be sterically hindered. Such an effect has been reported 
+previously [ 52 ]. They could form at the early discharge stages 
+and then transform to the shorter chains, as the concentration in 
+component 0 suggests. 
+Based on its concentration profile, component 1 could be assigned 
+to short-chain polysulfides. For comparison, calculated Raman 
+activities of a single Li 2 S4 in vacuum are shown in orange. This 
+system represents an oversimplified model system for short-chain 
+polysulfides. However, apart from the activity around ∼480 cm − 1 , 
+6 of 13
+Advanced Energy Materials, 2026
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71554 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 7>>
+FIGURE 3 
+Top: Voltage profile, Middle: Heatmap of UV–vis absorbance. Regions of interest are marked in blue and orange for long-chain and 
+short-chain polysulfides, respectively. Bottom: Time-dependent integrals of the regions of interest. 
+a qualitative similarity is observed in peak positions at lower 
+wave numbers. 
+It is clear that the component 2 in the middle-left panel should 
+be assigned to S8 , as it largely matches with the theoretically 
+computed Raman activity of an S8 molecule (orange curve). 
+Component 3 could be assigned to long-chain polysulfides, based 
+on its concentration profile. Additionally, the activities at around 
+200 cm − 1 and 450 cm − 1 (theoretically predicted to emerge due to 
+in-plane and out-of-plane bending of the S–S–S angle, and S–S 
+stretching vibrations, respectively) are both present in component 
+3. Therefore, the activities in component 3 could be related 
+to long-chain polysulfides whose vibrations are not sterically 
+hindered through strong anchoring to carbon. 
+As the activities in component 4 do not even qualitatively match 
+those of polysulfides, we would assign that to the background 
+including the used sapphire window. 
+3.2 
+Interpretation of Operando UV–Vis Spectra 
+UV–vis spectroscopy reveals the interaction of matter and light 
+by excitation of electrons. The local environment of the electrons 
+influences the absorption properties of the electrons. An overview 
+of absorbances of sulfur species in different solvents and elec- 
+trolytes was reported by Häcker et al. [ 32 ]. As discussed for Raman 
+spectroscopy, it is hard to get a clear picture. Nevertheless, the 
+region around 400 nm can be assigned to short-chain polysulfides 
+and the region around 480 nm to long-chain polysulfides. Similar 
+observation was obtained by Patel et al. by analyzing UV–vis 
+reflection [ 65 ]. 
+A UV–vis measurement is shown in Figure 3 . The absorbance 
+heatmap shows cycle dependent absorption. We assigned the 
+regions between 380 and 430 nm and between 470 and 500 
+nm to short-chain and long-chain polysulfides, respectively. 
+The integral of these regions results in two time-dependent 
+measurands shown in the plot below. An absolute quantification 
+is not possible due to the lack of a reliable reference sample. 
+An exemplary measurement over 20 cycles is shown in the 
+Supporting Information (Figure S7 ). 
+3.3 
+Influence of the Electrolyte Composition 
+The electrolyte has a crucial influence on the cycle performance 
+[ 66 ]. It affects the formation of the solid electrolyte interface and 
+it acts as a solvent for the soluble intermediate species, namely 
+polysulfides of different chain length [ 67 ]. Figure 4A shows the 
+capacity fading curves as well as the coulombic efficiency (CE) for 
+the three different investigated electrolytes. Six different samples 
+were measured for each electrolyte. The error bars represent the 
+standard deviation for each quantity. 
+The absolute specific capacities obtained with the present cells are 
+lower than those of performance-optimized Li–S cathodes. This 
+difference arises from the characterization-oriented cell design 
+rather than from an attempt to maximize sulfur utilization. The 
+cathode contains 49 𝑤 𝑡 . % sulfur at an areal sulfur loading of 
+approximately 0 . 73 𝑚 𝑔 𝑐𝑚− 2 and is deposited on a fully perforated 
+current collector to provide optical access. Furthermore, the 
+cell contains dedicated electrolyte-filled volumes for Raman and 
+UV–vis spectroscopy and is operated at an electrolyte-to-sulfur 
+ratio of approximately 100 𝜇𝐿 𝑚𝑔− 1 sulfur. These conditions 
+were selected to provide stable optical boundary conditions and 
+reproducible multimodal measurements over extended cycling. 
+Accordingly, the capacities are used here to compare the relative 
+behavior of the three electrolyte systems and should not be 
+interpreted as practical performance benchmarks. 
+The capacity decreases with cycle number for all three elec- 
+trolytes. On average for each electrolyte, the initial CE is almost 
+the same for all investigated electrolytes due to the same anode 
+and cathode material. Within the first six cycles the capacity 
+loss is the highest for E2 while E3 shows a moderate loss of 
+capacity with lower and more linear fading. E3 is the worst 
+Advanced Energy Materials, 2026
+7 of 13
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71554 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 8>>
+FIGURE 4 
+(A) Mean coulombic efficiency (top) and mean specific capacity (bottom) as a function of cycle number for the individual electrolytes. 
+Error bars represent the standard deviation. The C-rate was C/10 within a voltage window of 1.8 V–2.8 V. (B) - (C): Voltage versus specific capacity of the 
+second, 10th and 20th cycle of E1, E2 and E3, respectively. 
+solvent for polysulfides and shows the lowest capacity fading 
+due to a better suppression of the shuttle effect. Figure 4B–D 
+show selected voltage profiles for the second, 10th and 20th cycles 
+for each electrolyte. E1 has two clearly visible plateaus at 2.3 
+and 2.1 V. The presence of two plateaus indicates a two step 
+process during the discharge. Both decrease over cycle number, 
+which indicates a decreased availability of active material. During 
+charge, only a high voltage plateau at 2.3 V is visible. This means 
+that the transition during charge is not a step-wise process as 
+for the discharge. Again, the width of the plateau decreases with 
+cycle number. For the initial cycles of E2, also a high and a low 
+voltage plateau is visible for the discharge process. While the low 
+voltage plateau decreases with cycle number, the high voltage 
+plateau smears out. While charging, no clear plateaus are visible. 
+This indicates that the evolution of long-chain polysulfides is 
+suppressed. Kim et al. [ 15 ] reported that the voltage of the first 
+discharge plateau shifts to higher voltage with weaker solvation 
+of the polysulfides for ether based solvents. The same is visible in 
+our study where the first discharge plateau of E1 (DOL:DME) has 
+a lower voltage than for E2 (DME:TTE). A direct comparison is 
+shown in supporting information (Figure S9 ). E3 does not show 
+a high voltage plateau during discharge. Even with increasing 
+cycle number the shape of the discharge curve does not change 
+until reaching the low voltage plateau. That indicates a stable 
+transition process from solid Sulfur to short-chain polysulfides. 
+The low voltage plateau decreases with cycle number but not 
+as fast as for the other two electrolytes. During charge, the 
+high voltage plateau is well pronounced in comparison to the 
+other electrolytes. The analysis of the voltage profiles indicates 
+that different processes take place for the conversion of solid 
+sulfur to lithium sulfide. To reveal the underlying mechanisms, 
+three different spectroscopy methods were carried out on the 
+sample cell under operando conditions. This means that for every 
+composition within the electrolyte spectra from different points 
+of view were collected. Figure 5 shows the first three cycles 
+including their spectroscopic analysis. 
+E1 and E2 show a comparable solution resistance, while E3 has a 
+significantly higher one by a factor of 4. It shows that the transport 
+of the soluble polysulfides is more hindered for E3. This results in 
+a lower diffusion current, lower mass transport, lower mobility 
+and a subsequent hindered charge transfer as measured for the 
+slow resistance. 
+Furthermore, E1 and E2 exhibit local maxima in the solu- 
+tion resistance near the transition between the high- and 
+low-voltage plateaus during discharge. These features coincide 
+with a maximum of the Raman-derived short-chain-polysulfide 
+descriptor for E1 and a maximum of the long-chain-polysulfide 
+descriptor for E2. The temporal correlation is consistent with 
+concentration- and speciation-dependent changes in electrolyte 
+transport properties, including viscosity, ionic conductivity, ion 
+association, and molecular diffusion. However, the present 
+impedance measurements do not independently resolve these 
+individual contributions. Quantitative measurements reported 
+for related electrolytes illustrate the magnitude and strong 
+formulation dependence of these effects. For DOL/DME (1:1), 
+the ionic conductivity of 1 𝑀LiTFSI reaches 14 . 7 𝑚 𝑆 𝑐𝑚− 1 
+at 25 ◦C , whereas 𝐿𝑖2 𝑆4 - and 𝐿𝑖2 𝑆6 -containing solutions exhibit 
+substantially lower conductivities [ 11 ]. In DME/TTE (1:1) elec- 
+8 of 13
+Advanced Energy Materials, 2026
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71554 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 9>>
+FIGURE 5 
+Data analysis for the first three cycles for E1 (A), E2 (B) and E3 (C), respectively. From top to bottom: Voltage profile, resistances 
+derived from DRT analysis, concentrations based on Raman spectra analysis, normalized integral of the UV–vis intensity between 400 and 600 nm, and 
+temperature. 
+trolytes, pristine formulations show viscosities of approximately 
+3 𝑚𝑃 𝑎 𝑠 , while polysulfide saturation can increase the viscosity 
+by up to approximately 300 % , depending on the lithium salt, 
+and also modifies the ionic conductivity [ 17 ]. Sulfolane-based 
+electrolytes generally exhibit lower ionic conductivity and higher 
+viscosity: LiTFSA/sulfolane reaches a maximum conductivity of 
+2 . 7 𝑚 𝑆 𝑐𝑚− 1 at 1 𝑀, whereas at 3.2 𝑀the viscosity increases 
+to 952 𝑚𝑃 𝑎 𝑠 and the conductivity decreases to 0 . 3 𝑚 𝑆 𝑐𝑚− 1 
+[ 19 ]. Moreover, a 0.3 𝑚 𝑜𝑙 𝑘𝑔− 1 𝐿 𝑖2 𝑆6 solution in sulfolane 
+has been reported to exhibit a viscosity of 30 𝑚𝑃 𝑎 𝑠 and a 
+conductivity of 0.987 𝑚 𝑆 𝑐𝑚− 1 [ 68 ]. Because the present cells 
+were operated under highly flooded conditions, the polysulfide- 
+induced changes in these bulk properties are expected to be 
+attenuated. The measured solution resistance is therefore used 
+as a qualitative comparative descriptor and does not consti- 
+tute a direct measurement of electrolyte viscosity or ionic 
+conductivity. 
+E1 and E2 show a local maximum for the slow process around 
+the fully discharged state. Although the maximum is moving 
+out of the observation limit (see Figure S10 ), it is visible that 
+this process has its highest resistance at the end of discharge. 
+Here, the Raman band for the short-chain polysulfides shows 
+an intensity drop. This can be attributed to the depletion of 
+short-chain polysulfides near the cathode at the end of dis- 
+charge. UV–vis spectroscopy probes the bulk electrolyte. Here, 
+E1 and E2 show different compositions near the fully discharged 
+state. While for E1 the short-chain polysulfides induce a local 
+maximum, E2 shows a depletion of short-chain polysulfides 
+in the bulk electrolyte. That means while for E1 the transport 
+of polysulfides to the cathode is hindered, for E2 an overall 
+depletion is visible due to lower solubility. The same is visible 
+for E2 at the fully charge state but not for E1 which can also be 
+attributed to the lower solubility of the polysulfides in E2. E3 
+shows a different development of the slow process resistance. 
+It shows a high resistance during discharge which increases 
+even further reaching the fully discharge state. Furthermore, 
+a local maximum is visible during charge before reaching the 
+high voltage plateau. Raman spectroscopy shows the presence 
+of elemental sulfur at the fully charged state. During charging 
+the concentration of the long-chain polysulfides increases up 
+to the point where elemental sulfur occurs. During discharge 
+long-chain polysulfides are present with a lower concentration at 
+the beginning and a rapid decrease. Short-chain polysulfides are 
+almost not present due to the poor solvent and also not visible by 
+UV–vis spectroscopy. 
+The fast process shows a comparable behavior after the first 
+initial cycle for E1 and E2. Both have a local maximum at the 
+beginning of the discharge. This maximum can be attributed 
+to the hindered plating process of lithium at the beginning 
+of the discharge. The same local maximum is visible for E3 
+due to the same reason. Furthermore, a local maximum before 
+reaching the high voltage plateau during charging is visible for 
+E3. As discussed for the slow process, the transport of the long- 
+chain polysulf ides is hindered due to low solubility. Following 
+the evolution of the concentrations derived from the Raman 
+analysis as well as the UV–vis intensities reveal a comprehensible 
+mechanism for E1 and E2. At the beginning of discharge long- 
+chain polysulf ides occur. E1 and E2 behave differently during 
+the transition from the high to the low voltage plateau. For E1 
+long-chain polysulfides undergo a comproportionation reaction 
+resulting in a high short-chain polysulfides concentration, while 
+the concentration of long-chain polysulfides increases further 
+without comproportionation for E2. During charge a conversion 
+from elemental sulfur via short-chain polysulfides to long-chain 
+polysulfides is visible for E1 and E2. Reaching the state of full 
+charge all Raman intensities of the polysulfides decrease and the 
+Raman bands of solid, elemental sulfur appears. This shows that 
+full transition to solid sulfur happens. This is not visible for all 
+the samples investigated because the nucleation of Sulfur occurs 
+at local hot spots, which are not necessarily in the probe volume 
+of the Raman measurements. Nevertheless, comparing the UV–
+vis analysis, polysulfides are still present in the bulk electrolyte 
+for E1 while for E2 a depletion in the electrolyte is visible at the 
+state of full charge. 
+Advanced Energy Materials, 2026
+9 of 13
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71554 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 10>>
+FIGURE 6 
+Data analysis for 20 cycles of E1. From top to bottom: Voltage profile, resistances derived from DRT analysis, Raman band intensities, 
+normalized integral of the UV–vis intensity between 400 and 600 nm, and temperature. 
+While discharging, the Raman band of solid sulfur rapidly 
+decreases while first the long-chain polysulfides are produced. 
+During further discharge, the intensity for all soluble polysulfides 
+decreases. E1 shows a significant amount remaining of the short- 
+chain polysulf ides in the bulk while E2 shows a depletion. This 
+can be attributed to lower solubility of polysulfides in E2 than 
+in E1. E3 does not show any presence of short-chain polysulfides 
+at all. In general, the temperature signals do not show any cycle 
+dependent behavior for all electrolytes. This can be caused by the 
+small amount of active material. 
+3.4 
+Long-Term Cell Degradation 
+The used setup also enables us to investigate the long-term 
+behavior. Figure 6 shows the data analysis of E1 over 20 cycles. 
+10 of 13
+Advanced Energy Materials, 2026
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71554 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 11>>
+Time needed for a full cycle decreases over time due to decreasing 
+capacity as shown in Figure 4A . Nevertheless, the shape of the 
+voltage profile does not significantly change as indicated by 
+Figure 4B . This means that the process is reversible but the 
+amount of active material available for energy storage decreases. 
+The solution resistance increases with cycle number and the 
+previous discussed local maximum while discharge get much 
+more pronounced. The resistance of the slow process gets an 
+additional local maximum at the fully charged state with higher 
+cycle number. This indicates that during cycling the polysulfide 
+transport to the cathode gets more hindered. The concentrations 
+derived from Raman analysis show a decrease of intensity 
+induced by the lower amount of available active material near the 
+cathode. Nevertheless, saturation of the short-chain polysulfides 
+species occurs in the bulk electrolyte as indicated by the UV–
+vis signal. Additionally, the difference between local minima and 
+maxima decreases, which shows that polysulfides are still present 
+but less active. This could also be induced by a passivation of 
+the cathode’s surface. The temperature signal does not show 
+any cycle-dependent behavior. Small fluctuation over the long 
+measurement time could be induced externally because measure- 
+ments were not conducted in temperature-controlled conditions. 
+The long-term measurements of the further investigated elec- 
+trolytes are shown in the Supporting Information (Figures S11 
+and S12 ). 
+4 
+Conclusions 
+In summary, this work establishes a fully laboratory-based 
+multimodal operando platform that synchronizes galvanostatic 
+cycling, EIS/DRT, Raman spectroscopy, UV–vis reflectance spec- 
+troscopy, and temperature monitoring in a single sealed Li–S cell 
+over up to 20 cycles. The combination of local Raman probing 
+near the cathode and UV–vis probing of the bulk electrolyte 
+enables chemical and electrochemical changes to be correlated 
+without relying on measurements from separate cells. Three cen- 
+tral findings emerge from the correlated data. First, the strongly 
+solvating DOL/DME-based electrolyte promotes pronounced for- 
+mation and persistence of soluble short-chain polysulfide species. 
+Second, the DME/TTE and particularly the SL/TTE formula- 
+tions suppress dissolved-polysulfide signatures but simultane- 
+ously exhibit stronger transport-related resistance contributions, 
+demonstrating the trade-off between reduced polysulfide solu- 
+bility and ionic transport. Third, extended cycling reveals a pro- 
+gressive increase in solution and slow-process resistance together 
+with decreasing local Raman intensities, while dissolved poly- 
+sulfides remain detectable in the bulk electrolyte. This behavior 
+is consistent with a gradual loss of electrochemically accessible 
+active material and increasingly hindered transport rather than 
+a fundamental change in the sulfur-conversion pathway. The 
+novelty of the study therefore does not lie in the individual 
+electrolyte formulations, but in the synchronized, extended- 
+duration correlation of local speciation, bulk-electrolyte com- 
+position, and impedance evolution. The platform provides a 
+versatile framework for comparative mechanistic investiga- 
+tions of electrolyte–electrode interactions, while the deliberately 
+characterization-oriented cell design means that the measured 
+capacities should not be interpreted as practical performance 
+benchmarks. 
+Acknowledgments 
+O.L. would like to thank Moritz Exner (Adelhelm group, HU Berlin) for 
+his help during the Raman microscopy measurements. 
+Open access funding enabled and organized by Projekt DEAL. 
+Funding 
+Funded by the Deutsche Forschungsgemeinschaft (DFG, German 
+Research Foundation) – project number 441211139. 
+Conflicts of Interest 
+The authors declare no conflicts of interest. 
+Data Availability Statement 
+Raw data are available via Helmholtz-Zentrum Berlin data service (DOI: 
+10.5442/ND000020 ) [ 69 ]. 
+References 
+1 . J. Guo and J. Liu, “A Binder-Free Electrode Architecture Design 
+for Lithium–sulfur Batteries: A Review,” Nanoscale Advances 1 (2019): 
+2104–2122, https://doi.org/10.1039/C9NA00040B . 
+2 . G. Li, S. Wang, Y. Zhang, M. Li, Z. Chen, and J. Lu, “Revisiting the Role 
+of Polysulfides in Lithium –Sulfur Batteries,” Advanced Materials 30, no. 
+22 (2018): 1705590, https://doi.org/10.1002/adma.201705590 . 
+3 . M. Sawangphruk, “New Materials for Lithium–Sulfur Batteries: Chal- 
+lenges and Future Directions,” Chemical Communications 61 (2025): 
+7770–7794, https://doi.org/10.1039/D5CC01150G . 
+4 . J. Xie and Y.-C. Lu, “A Retrospective on Lithium-Ion Batteries,” Nature 
+Communications 11, no. 1 (May 2020), https://doi.org/10.1038/s41467-020- 
+16259-9 . 
+5 . Y. V. Mikhaylik and J. R. Akridge, “Polysulfide Shuttle Study in the Li/S 
+Battery System,” Journal of The Electrochemical Society 151, no. 11 (2004): 
+A1969, https://doi.org/10.1149/1.1806394 . 
+6 . S. S. Zhang, “Role of LiNO3 in Rechargeable Lithium/Sulfur Battery,”
+Electrochimica Acta 70 (May 2012): 344–348, https://doi.org/10.1016/j. 
+electacta.2012.03.081 . 
+7 . Y. Diao, K. Xie, S. Xiong, and X. Hong, “Shuttle Phenomenon –
+The Irreversible Oxidation Mechanism of Sulfur Active Material in Li–
+S Battery,” Journal of Power Sources 235 (August 2013): 181–186, https:// 
+doi.org/10.1016/j.jpowsour.2013.01.132 . 
+8 . C. Barchasz, F. Molton, C. Duboc, J.-C. Leprâtre, S. Patoux, and 
+F. Alloin, “Lithium/Sulfur Cell Discharge Mechanism: An Original 
+Approach for Intermediate Species Identification,” Analytical Chemistry 
+84, no. 9 (April 2012): 3973–3980, https://doi.org/10.1021/ac2032244 . 
+9 . M. Cuisinier, P.-E. Cabelguen, S. Evers et al., “Sulfur Speciation in Li–S 
+Batteries Determined by Operando X-Ray Absorption Spectroscopy,” The 
+Journal of Physical Chemistry Letters 4, no. 19 (2013): 3227–3232, https:// 
+doi.org/10.1021/jz401763d . 
+10 . Y. Liu, Y. Elias, J. Meng et al., “Electrolyte Solutions Design for 
+Lithium-Sulfur Batteries,” Joule 5, no. 9 (2021): 2323–2364, https://doi.org/ 
+10.1016/j.joule.2021.06.009 . 
+11 . M. Safari, C. Y. Kwok, and L. F. Nazar, “Transport Properties of 
+Polysulfide Species in Lithium–Sulfur Battery Electrolytes: Coupling of 
+Experiment and Theory,” ACS Central Science 2, no. 8 (2016): 560–568, 
+https://doi.org/10.1021/acscentsci.6b00169 . 
+12 . C. Park, A. Ronneburg, S. Risse, M. Ballauff, M. Kanduč, and J. 
+Dzubiella, “Structural and Transport Properties of Li/S Battery Elec- 
+trolytes: Role of the Polysulfide Species,” The Journal of Physical 
+Chemistry C 123, no. 16 (April 2019): 10167–10177, https://doi.org/10.1021/ 
+acs.jpcc.8b10175 . 
+Advanced Energy Materials, 2026
+11 of 13
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71554 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 12>>
+13 . M. Agostini, S. Xiong, A. Matic, and J. Hassoun, “Polysulfide- 
+containing Glyme-based Electrolytes for Lithium Sulfur Battery,” Chem- 
+istry of Materials 27, no. 13 (2015): 4604–4611, https://doi.org/10.1021/acs. 
+chemmater.5b00896 . 
+14 . F. Wu, F. Chu, G. A. Ferrero et al., “Boosting High-Performance in 
+Lithium –Sulfur Batteries via Dilute Electrolyte,” Nano Letters 20, no. 7 
+(May 2020): 5391–5399, https://doi.org/10.1021/acs.nanolett.0c01778 . 
+15 . S. C. Kim, X. Gao, S.-L. Liao, et al., “Solvation-Property Relationship 
+of Lithium-Sulphur Battery Electrolytes,” Nature Communications 15, no. 
+1 (February 2024), https://doi.org/10.1038/s41467- 023- 44527- x. 
+16 . S. Drvarič Talian, S. Jeschke, A. Vizintin, et al., “Fluorinated 
+Ether Based Electrolyte for High-Energy Lithium–Sulfur Batteries: 
+Li < sup > + < /sup > Solvation Role Behind Reduced Polysulfide Solubility,”
+Chemistry of Materials 29, no. 23 (November 2017): 10037–10044, https:// 
+doi.org/10.1021/acs.chemmater.7b03654 . 
+17 . S. Kirchhoff, P. Härtel, S. Dörfler, T. Abendroth, H. Althues, 
+and S. Kaskel, “Lithium-Sulfur-Batteries under Lean Electrolyte Con- 
+ditions: Improving Rate Capability by the Choice of the Lithium 
+Salt in Dimethoxyethane-Hydrofluoroether-Based Electrolyte,” Batteries 
+& Supercaps 7, no. 9 (2024): e202400155, https://doi.org/10.1002/batt. 
+202400155 . 
+18 . J. Zheng, G. Ji, X. Fan, et al., “High–Fluorinated Electrolytes for Li–S 
+Batteries,” Advanced Energy Materials 9, no. 16 (February 2019), https:// 
+doi.org/10.1002/aenm.201803774 . 
+19 . A. Nakanishi, K. Ueno, D. Watanabe, et al., “Sulfolane- 
+Based 
+Highly 
+Concentrated 
+Electrolytes 
+of 
+Lithium 
+Bis(trifluoromethanesulfonyl)amide: 
+Ionic 
+Transport, 
+Li-Ion 
+Coordination, 
+and 
+Li–S 
+Battery 
+Performance,”
+The Journal 
+of Physical Chemistry C 123, no. 23 (May 2019): 14229–14238, 
+https://doi.org/10.1021/acs.jpcc.9b02625 . 
+20 . M. Idemoto, H. Nara, and T. Momma, “Anthraquinone-Based Charge 
+Redox Mediator in Sulfolane-Based Electrolyte for Lithium–Sulfur Bat- 
+teries,” ACS Applied Energy Materials 9, no. 9 (April 2026): 5831–5838, 
+https://doi.org/10.1021/acsaem.6c00595 . 
+21 . É. A. Santos, M. M. Amaral, B. S. Damasceno, et al., “Advanced In 
+Situ/Operando Characterizations of Lithium-Sulfur Batteries: A Sine Qua 
+Non,” Nano Energy 130 (2024): 110098, https://doi.org/10.1016/j.nanoen. 
+2024.110098 . 
+22 . T. J. Leckie, S. D. Robertson, and E. Brightman, “Recent Advances in 
+In Situ/Operando Characterization of Lithium-Sulfur Batteries,” Energy 
+Advances 3 (2024): 2479–2502, https://doi.org/10.1039/D4YA00416G . 
+23 . L.-S. Shen, Z.-W. Yuan, J.-X. Tian et al., “Operando Studies of Lithium- 
+Sulfur Redox Reactions: A Review,” eScience 6, no. 3 (2026): 100503, 
+https://doi.org/10.1016/j.esci.2025.100503 . 
+24 . J. Tan, D. Liu, X. Xu, and L. Mai, “In Situ/Operando Characteriza- 
+tion Techniques for Rechargeable Lithium-Sulfur Batteries: A Review,”
+Nanoscale 9 (2017): 19001–19016, https://doi.org/10.1039/C7NR06819K . 
+25 . R. Soni, J. B. Robinson, P. R. Shearing, D. J. Brett, A. J. Rettie, and 
+T. S. Miller, “Lithium-Sulfur Battery Diagnostics Through Distribution of 
+Relaxation Times Analysis,” Energy Storage Materials 51 (October 2022): 
+97–107, https://doi.org/10.1016/j.ensm.2022.06.016 . 
+26 . S. Risse, N. A. Cañas, N. Wagner, E. Härk, M. Ballauff, and K. A. 
+Friedrich, “Corr elation of Capacity Fading Processes and Electrochemical 
+Impedance Spectra in Lithium/Sulfur Cells,” Journal of Power Sources 
+323 (August 2016): 107–114, https://doi.org/10.1016/j.jpowsour.2016. 
+05.032 . 
+27 . D. Blanchard and M. Slagter, “In operando Raman and Optical 
+Study of Lithium Polysulfides Dissolution in Lithium–sulfur Cells with 
+Carrageenan Binder,” Journal of Physics: Energy 3, no. 4 (Sep 2021): 
+044003, https://doi.org/10.1088/2515-7655/ac0b37 . 
+28 . R. Liu, Z. Wei, L. Peng et al., “Establishing Reaction Networks in the 
+16-Electron Sulfur Reduction Reaction,” Nature 626, no. 7997 (January 
+2024): 98–104, https://doi.org/10.1038/s41586- 023- 06918- 4 . 
+29 . J. Hannauer, J. Scheers, J. Fullenwarth, B. Fraisse, L. Stievano, 
+and P. Johansson, “The Quest for Polysulfides in Lithium–Sulfur Bat- 
+tery Electrolytes: An Operando Confocal Raman Spectroscopy Study,”
+ChemPhysChem 16, no. 13 (2015): 2755–2759, https://doi.org/10.1002/cphc. 
+201500448 . 
+30 . S. Lang, S.-H. Yu, X. Feng, M. R. Krumov, and H. D. Abruña, “Under- 
+standing the Lithium–Sulfur Battery Redox Reactions via Operando 
+Confocal Raman Microscopy,” Nature Communications 13, no. 1 (August 
+2022): 7350, https://doi.org/10.1038/s41467-022-32139-w. 
+31 . F. Liu, W. Lu, J. Huang et al., “Detangling Electrolyte Chemical 
+Dynamics in Lithium Sulfur Batteries by Operando Monitoring with 
+Optical Resonance Combs,” Nature Communications 14, no. 1 (November 
+2023), https://doi.org/10.1038/s41467-023-43110-8 . 
+32 . J. Häcker, D. H. Nguyen, T. Rommel, Z. Zhao-Karger, N. Wagner, 
+and K. A. Friedrich, “Operando UV/Vis Spectroscopy Providing Insights 
+into the Sulfur and Polysulfide Dissolution in Magnesium–Sulfur Bat- 
+teries,” ACS Energy Letters 7, no. 1 (2022): 1–9, https://doi.org/10.1021/ 
+acsenergylett.1c02152 . 
+33 . Q. He, A. T. S. Freiberg, M. U. M. Patel, S. Qian, and H. A. 
+Gasteiger, “Operando Identification of Liquid Intermediates in Lithium–
+Sulfur Batteries via Transmission UV–vis Spectroscopy,” Journal of The 
+Electrochemical Society 167, no. 8 (January 2020): 080508, https://doi.org/ 
+10.1149/1945-7111/ab8645 . 
+34 . R. Müller, T. Boenke, S. Dörfler et al., “Multimodal Operando Analysis 
+of Lithium Sulfur Multilayer Pouch Cells: An In-Depth Investigation on 
+Cell Component Design and Performance,” Advanced Energy Materials 
+15, no. 17 (2025): 2404256, https://doi.org/10.1002/aenm.202404256 . 
+35 . R. N. Samajdar, Y. Zhou, O. Rodríguez et al., “Designing Realistic 
+Operando Raman Battery Experiments: Examining Measurement Valid- 
+ity and Spatial Inhomogeneities,” Chemistry of Materials 38, no. 2 (January 
+2026): 782–790, https://doi.org/10.1021/acs.chemmater.5c02418 . 
+36 . S. Urbonaite, T. Poux, and P. Novák, “Progress Towards Commercially 
+Viable Li–S Battery Cells,” Advanced Energy Materials 5, no. 16 (April 
+2015), https://doi.org/10.1002/aenm.201500118 . 
+37 . M. D. P. Ramos, O. Pajuelo-Corral, N. Goujon, D. Devaux, and 
+I. Villaluenga, “Comprehensive Lithium Polysulfide Diffusion Insights 
+within Solid-State Electrolytes,” ACS Electrochemistry 2, no. 4 (2026): 
+785–800, https://doi.org/10.1021/acselectrochem.5c00547 . 
+38 . G. Van Rossum and F. L. Drake, Python 3 Reference Manual (CreateS- 
+pace, 2009). 
+39 . The HDF Group, “Hierarchical Data Format, version 5,” (2025), 
+https://github.com/HDFGroup/hdf5 . 
+40 . B. A. Boukamp, “Distribution (function) of Relaxation Times, Suc- 
+cessor to Complex Nonlinear Least Squares Analysis of Electrochemical 
+Impedance Spectroscopy?,” Journal of Physics: Energy 2, no. 4 (aug 2020): 
+042001, https://doi.org/10.1088/2515-7655/aba9e0 . 
+41 . T. H. Wan, M. Saccoccio, C. Chen, and F. Ciucci, “Influence of the 
+Discretization Methods on the Distribution of Relaxation Times Decon- 
+volution: Implementing Radial Basis Functions with DRTtools,” Elec- 
+trochimica Acta 184 (2015): 483–499, https://doi.org/10.1016/j.electacta. 
+2015.09.097 . 
+42 . M. Saccoccio, T. H. Wan, C. Chen, and F. Ciucci, “Optimal Regular- 
+ization in Distribution of Relaxation Times applied to Electrochemical 
+Impedance Spectroscopy: Ridge and Lasso Regression Methods - A 
+Theoretical and Experimental Study,” Electrochimica Acta 147 (2014): 
+470–482, https://doi.org/10.1016/j.electacta.2014.09.058 . 
+43 . S. Waluś, C. Barchasz, R. Bouchet, and F. Alloin, “Electrochemical 
+Impedance Spectroscopy Study of Lithium–sulfur Batteries: Useful Tech- 
+nique to Reveal the Li/S Electrochemical Mechanism,” Electrochimica 
+Acta 359 (November 2020): 136944, https://doi.org/10.1016/j.electacta. 
+2020.136944 . 
+44 . C.-S. Cho, Y.-W. Wu, M.-W. Liao, J.-K. Chen, and C.-C. Li, “In Situ 
+Analysis of Cathode and Anode Impedances to Probe the Performance 
+12 of 13
+Advanced Energy Materials, 2026
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71554 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 13>>
+Degradation of Lithium–Sulfur Batteries,” Journal of Power Sources 620 
+(November 2024): 235235, https://doi.org/10.1016/j.jpowsour.2024.235235 . 
+45 . P. H. Eilers and H. F. Boelens, “Baseline Correction With Asymmetric 
+Least Squares Smoothing,” Leiden University Medical Centre Report 1, no. 
+1 (2005): 5. 
+46 . F. Pedregosa, G. Varoquaux, A. Gramfort et al., “Scikit-Learn: Machine 
+Learning in Python,” Journal of Machine Learning Research 12 (2011): 
+2825–2830. 
+47 . C. H. Camp, “pyMCR: A Python Library for Multivariate Curve 
+Resolution Analysis With Alternating Regression (MCR-AR),” Journal of 
+Research of the National Institute of Standards and Technology 124 (June 
+2019): 1–10, https://doi.org/10.6028/jres.124.018 . 
+48 . P. Partovi-Azar and T. D. Kühne, “Efficient “On-the-Fly” Calculation 
+of Raman Spectra From Ab Initio Molecular Dynamics: Application to 
+Hydrophobic/Hydrophilic Solutes in Bulk Water,” Journal of Computa- 
+tional Chemistry 36, no. 29 (2015): 2188–2192. 
+49 . P. Partovi-Azar, T. D. Kühne, and P. Kaghazchi, “Evidence for the 
+Existence of Li 2 S 2 Clusters in Lithium–Sulfur Batteries: Ab Initio Raman 
+Spectroscopy Simulation,” Physical Chemistry Chemical Physics 17, no. 34 
+(2015): 22009–22014. 
+50 . P. Partovi-Azar and T. D. Kühne, “Full Assignment of Ab Initio 
+Raman Spectra at Finite Temperatures Using Wannier Polarizabilities: 
+Application to Cyclohexane Molecule in Gas Phase,” Micromachines 12, 
+no. 10 (2021): 1212. 
+51 . P. Partovi-Azar, “Efficient Method for Estimating the Dynamics of 
+the Full Polarizability Tensor During Ab Initio Molecular Dynamics 
+Simulations,” Physical Review B 108, no. 23 (2023): 235157. 
+52 . R. Kiani, M. Steimecke, M. Alqaisi, M. Bron, D. Sebastiani, and P. 
+Partovi-Azar, “Characterization of Sulfur/Carbon Copolymer Cathodes 
+for Li–S Batteries: A Combined Experimental and Ab Initio Raman 
+Spectroscopy Study,” Royal Society of Chemistry Advances 13, no. 40 
+(2023): 27756–27763. 
+53 . R. Kiani, H. Sheng, T. Held et al., “Ab Initio Simulation of Raman 
+Fingerprints of Sulfur/Carbon Copolymer Cathodes During Discharge of 
+Li- S Batteries,” ChemPhysChem 26, no. 3 (2025): 202400681. 
+54 . P. Hönicke, Y. Kayser, and P. Partovi-Azar, “Theoretical Calculation 
+of Finite-Temperature X-Ray Absorption Fine Structure: Application to 
+Sodium K-Edge in NaCl,” ChemElectroChem 13 (2025): 202500342. 
+55 . J. P. Perdew, K. Burke, and M. Ernzerhof, “Generalized Gradient 
+Approximation Made Simple,” Physical Review Letters 77, no. 18 (1996): 
+3865. 
+56 . S. Grimme, J. Antony, S. Ehrlich, and H. Krieg, “A Consistent and 
+Accurate Ab Initio Parametrization of Density Functional Dispersion 
+Correction (DFT-D) for the 94 Elements H-Pu,” The Journal of Chemical 
+Physics 132, no. 15 (2010): 154104. 
+57 . J. VandeVondele and J. Hutter, “Gaussian Basis Sets for Accurate 
+Calculations on Molecular Systems in Gas and Condensed Phases,” The 
+Journal of Chemical Physics 127, no. 11 (2007): 114105. 
+58 . S. Goedecker, M. Teter, and J. Hutter, “Separable Dual-Space Gaussian 
+Pseudopotentials,” Physical Review B 54, no. 3 (1996): 1703. 
+59 . M. Krack, “Pseudopotentials for H to Kr Optimized for Gradient- 
+Corrected Exchange-Correlation Functionals,” Theoretical Chemistry 
+Accounts 114, no. 1 (2005): 145–152. 
+60 . T. D. Kühne, M. Iannuzzi, M. Del Ben et al., “CP2K: An Electronic 
+Structure and Molecular Dynamics Software Package-Quickstep: Effi- 
+cient and Accurate Electronic Structure Calculations,” The Journal of 
+Chemical Physics 152, no. 19 (2020): 194103. 
+61 . F. Neese, F. Wennmohs, U. Becker, and C. Riplinger, “The ORCA 
+Quantum Chemistry Program Package,” The Journal of Chemical Physics 
+152, no. 22 (2020): 224108. 
+62 . M. Garcia-Ratés and F. Neese, “Effect of the Solute Cavity on the 
+Solvation Energy and its Derivatives within the Framework of the 
+Gaussian Charge Scheme,” Journal of Computational Chemistry 41, no. 
+9 (2020): 922–939. 
+63 . C. Adamo and V. Barone, “Toward Reliable Density Functional 
+Methods Without Adjustable Parameters: The PBE0 Model,” The Journal 
+of Chemical Physics 110, no. 13 (1999): 6158–6170. 
+64 . F. Weigend and R. Ahlrichs, “Balanced Basis Sets of Split Valence, 
+Triple Zeta Valence and Quadruple Zeta Valence Quality for H to 
+Rn: Design and Assessment of Accuracy,” Physical Chemistry Chemical 
+Physics 7, no. 18 (2005): 3297–3305. 
+65 . M. U. M. Patel and R. Dominko, “Application of In Operando UV/Vis 
+Spectroscopy in Lithium–Sulfur Batteries,” ChemSusChem 7, no. 8 (2014): 
+2167–2175, https://doi.org/10.1002/cssc.201402215 . 
+66 . L. J. H. P. G. Bruce, S. A. Freunberger, and J.-M. Tarascon, “Li–O2 and 
+Li–S Batteries With High Energy Storage,” Nature Materials 11, no. 1 (Dec 
+2011): 19–29, https://doi.org/10.1038/NMAT3191 . 
+67 . Q. He, Y. Gorlin, M. U. M. Patel, H. A. Gasteiger, and Y.-C. Lu, 
+“Unraveling the Correlation Between Solvent Properties and Sulfur Redox 
+Behavior in Lithium-Sulfur Batteries,” Journal of The Electrochemical 
+Society 165, no. 16 (Dec 2018): A4027, https://doi.org/10.1149/2.0991816jes . 
+68 . E. Karaseva, E. Kuzmina, D. Kolosnitsyn, N. Shakirova, L. Sheina, and 
+V. Kolosnitsyn, “The Mechanism of Effect of Support Salt Concentration 
+in Electrolyte on Performance of Lithium-Sulfur Cells,” Electrochimica 
+Acta 296 (February 2019): 1102–1114, https://doi.org/10.1016/j.electacta. 
+2018.11.019 . 
+69 . O. Löhmann, P. Partovi-Azar, M. Ruttert, and S. Risse, “Multi-Modal 
+Operando Analysis of Lithium-Sulfur Batteries: A Comparative Study on 
+the Influence of Electrolyte Composition. – Raw Data” (2026), https://doi. 
+org/10.5442/ND000020 . 
+Supporting Information 
+Additional supporting information can be found online in the Supporting 
+Information section. 
+Supporting Information: aenm71554-sup-0001-SuppMat.pdf 
+Advanced Energy Materials, 2026
+13 of 13
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71554 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

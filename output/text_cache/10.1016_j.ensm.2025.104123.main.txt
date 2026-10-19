@@ -1,0 +1,1062 @@
+
+<<PAGE 1>>
+Mechanistic understanding of a bifunctional carbonate additive for 
+enhanced performance in lithium-sulfur battery
+Huidong Dai a,*
+, Colin Gallagher b, Seong-Min Bak c, Luisa Gomes a, Kevin Yang b,  
+Ruizhi Dong a, Srinidi Badhrinathan d, Qing Zhao b, Yonghua Du e, Gaind P. Pandey d,*,  
+Sanjeev Mukerjee a,*
+a Department of Chemistry and Chemical Biology, Northeastern University, 360 Huntington Avenue, Boston, Massachusetts, 02115, United States
+b Department of Chemical Engineering, Northeastern University, 360 Huntington Avenue, Boston, Massachusetts, 02115, United States
+c Department of Materials Science and Engineering, Yonsei University, 50 Yonsei-ro, Seodaemoon-gu, Seoul, 120-749, South Korea
+d Giner Inc., 89 Rumford Avenue, Newton, Massachusetts, 02466, United States
+e National Synchrotron Light Source II, Brookhaven National Laboratory, Upton, New York, 11973, United States
+A R T I C L E I N F O
+Keywords:
+Lithium-sulfur batteries
+Carbonate additives
+Solvation structure
+Sulfur reduction reaction
+Operando spectroscopy
+A B S T R A C T
+Lithium-sulfur (Li-S) batteries stand promising for next-generation energy storage systems due to their high 
+specific capacity and cost-effectiveness. However, their commercialization is hindered by sluggish sulfur 
+reduction reaction (SRR) kinetics and polysulfide migration. To address these challenges, we introduce bis(4- 
+nitrophenyl) carbonate (BNC) as a bifunctional electrolyte additive. At an optimal concentration, BNC lever­
+ages its polar nature to anchor soluble polysulfides while simultaneously modifying the Li+ solvation structure at 
+the molecular level, enhancing SRR kinetics. This dual functionality is confirmed through molecular dynamics 
+simulations and electrochemical analyses. In situ electrochemical impedance spectroscopy (EIS) further shows 
+that optimal BNC concentration reduces activation energy for polysulfides formation by 40.6%. Operando 
+spectroscopic techniques, including Raman and X-ray absorption spectroscopy (XAS), demonstrate BNC’s dual 
+effect, with a focus on the middle-chain polysulfides conversion, supported by detailed polysulfide quantifica­
+tion. X-ray fluorescence (XRF) mapping reveals decreased sulfur deposition on lithium, indicating the effec­
+tiveness of shuttle suppression. These effects contribute to outstanding cycling performance under practical 
+conditions, achieving 650.93 mAh gsulfur
+-1 
+and coulombic efficiency of 93% over 200 cycles at a C-rate of C/2. This 
+work not only offers valuable insights into the use of unconventional carbonate-based additives but also provides 
+a blueprint for advancing Li-S battery designs through targeted solvation structure modifications.
+1. Introduction
+Renewable energy strategies such as hydrogen production, fuel cells, 
+and rechargeable batteries are crucial for achieving a sustainable, low- 
+carbon future [1–5]. Among these, lithium-sulfur (Li-S) batteries have 
+emerged as particularly promising candidates for advancing energy 
+storage technology beyond the current state-of-the-art lithium-ion bat­
+teries (LIBs) [6]. With a theoretical energy density nearly five times 
+greater than that of LIBs, largely due to sulfur’s exceptional capacity of 
+1672 mAh gsulfur
+-1
+, Li-S batteries far surpass conventional cathode mate­
+rials like cobalt, nickel, and manganese oxides [7]. In addition to their 
+high energy density, sulfur’s environmental friendliness, non-toxic na­
+ture, and widespread availability make Li-S batteries a cost-effective and 
+sustainable option for applications such as electric vehicles and 
+grid-scale energy storage [8,9].
+However, despite these compelling advantages, significant chal­
+lenges remain that hinder the commercial viability of Li-S batteries. Key 
+issues include sulfur’s low electrical conductivity, parasitic reactions on 
+the anode, and substantial volume changes during cycling [10–13]. 
+Among these, the sluggish kinetics of lithium polysulfide conversion 
+during the sulfur reduction reaction (SRR) and the notorious "shuttling 
+effect", where dissolved polysulfides migrate to the anode and cause 
+capacity loss, are particularly problematic [14–16]. Furthermore, the 
+formation of solid sulfur byproducts exacerbates electrode passivation, 
+while the volatility of lithium polysulfides raises safety concerns, 
+collectively impairing battery performance and limiting both cycle life 
+* Corresponding authors.
+E-mail addresses: h.dai@northeastern.edu (H. Dai), gpandey@ginerinc.com (G.P. Pandey), s.mukerjee@northeastern.edu (S. Mukerjee). 
+Contents lists available at ScienceDirect
+Energy Storage Materials
+journal homepage: www.elsevier.com/locate/ensm
+https://doi.org/10.1016/j.ensm.2025.104123
+Received 18 December 2024; Received in revised form 6 February 2025; Accepted 11 February 2025  
+Energy Storage Materials 76 (2025) 104123 
+Available online 14 February 2025 
+2405-8297/© 2025 The Author(s). Published by Elsevier B.V. This is an open access article under the CC BY-NC-ND license ( http://creativecommons.org/licenses/by- 
+nc-nd/4.0/ ). 
+
+<<PAGE 2>>
+and capacity retention [17]. These challenges necessitate innovative 
+strategies to unlock the full potential of Li-S technology and pave the 
+way for its practical implementation in next-generation energy storage 
+systems [15,18].
+To overcome the critical challenges faced by Li-S batteries, a wide 
+range of strategies have been explored, including electrolyte/cathode 
+modifications, single-atom catalysts, artificial solid-electrolyte in­
+terfaces (SEI), and functionalized two-dimensional materials [19–25]. 
+Among these approaches, carbonate-based solvents and additives have 
+been largely overlooked due to their inherent polar nature, which ren­
+ders them vulnerable to nucleophilic attack by sulfur atoms in poly­
+sulfides [26,27]. Nevertheless, a few studies have demonstrated that 
+carbonate-based electrolytes can enhance anode stability and improve 
+overall safety in Li-S batteries, highlighting their potential benefits [28,
+29]. Despite recent advances, the precise role of carbonate additives in 
+Li-S batteries remains elusive, and the development of a bifunctional 
+carbonate additive capable of concurrently enhancing polysulfide con­
+version kinetics and immobilizing soluble polysulfides remains under­
+explored. This study addresses this critical gap by providing a 
+comprehensive understanding of the mechanisms driving such dual 
+functionality, which is essential for fully harnessing the potential of 
+carbonate-based systems in practical Li-S battery applications.
+In this study, we introduce bis(4-nitrophenyl) carbonate (BNC) as an 
+electrolyte additive aimed to modify the Li+ solvation structure with 
+intermediate polysulfides (Li2Sx, 1<x<8) for enhanced SRR kinetics as a 
+solvation-property modifier, and also to anchor the soluble polysulfides 
+(Li2Sx, 6<x<8) from migration as a polysulfide mediator. BNC was first 
+introduced by Yang and Goodenough in a Li-S battery study, where they 
+demonstrated that BNC immobilize the soluble polysulfides [30]. 
+However, our findings reveal that BNC is capable of altering Li+ coor­
+dination environment and its solvation structures to enhance the SRR 
+kinetics at optimized concentration. Moreover, its functionality is highly 
+concentration-dependent, as excessive BNC levels result in aggressive 
+and irreversible nucleophilic reactions, leading to capacity degradation. 
+This work employs a combination of simulations and experiments, using 
+ab initio molecular dynamics (AIMD) and nuclear magnetic resonance 
+(NMR) to validate the alterations in Li+
+solvation structure. 
+Fourier-transform infrared (FTIR) and ultraviolet-visible (UV–vis) 
+spectroscopy confirm polysulfide preservation at optimal BNC concen­
+trations, while extensive electrochemical experiments demonstrate im­
+provements in SRR kinetics. Sophisticated operando spectroscopic 
+techniques, including Raman and X-ray absorption spectroscopy (XAS), 
+provide direct insights into polysulfide formation and transformation 
+under the dual effect of BNC. The synergic effect of BNC culminates in an 
+impressive capacity retention of 83.97%, delivering 650.93 mAh gsulfur
+-1 
+at C-rate of C/2 (0.08% capacity decay per cycle) with a columbic ef­
+ficiency of 92.96% over prolonged cycles. This performance is achieved 
+under practical conditions with a sulfur loading of 4 mg cm-2 and an 
+electrolyte-to-sulfur (E/S) ratio of 8 μL mgsulfur
+-1
+. This work bridges a 
+critical knowledge gap by providing a fundamental understanding of the 
+mechanisms underlying the carbonate electrolyte additives, paving the 
+way for advancements in Li-S battery technology.
+2. Results and discussion
+2.1. Solvation structure modification
+BNC can induce aggressive nucleophilic reactions with polysulfides if 
+its concentration is not carefully regulated, leading to sulfur depletion 
+(Figure S1) and subsequent capacity decay, as discussed in the electro­
+chemical performance section [30]. To confirm that a lower BNC con­
+centration (0.01 M) effectively moderates this reaction while preserving 
+the Li-ion solvation structure, FTIR and UV–vis spectra were analyzed 
+immediately following the addition of BNC to a Li2S6 solution (in 
+Fig. 1. Experimental Validation and Quantum Mechanical Calculation/Simulations. Panel (A) displays the FTIR spectra of Li2S6 solutions after the addition of BNC 
+and following 48 hours of rest, while panel (B) illustrates the evolution of UV–vis spectra over the 48-hour rest period, with the inset showing the appearance change 
+after the addition. Panels (C) and (D) present the 7Li NMR spectra for electrolytes without and with Li2S6, respectively. Panel (E) presents the snapshot of the 
+molecular distribution of DME/DOL and BNC around Li2S6 from AIMD simulation. Panel (F) depicts the specific distribution of DME and DOL molecules within the 
+inner and outer shell in the without and with BNC.
+H. Dai et al.                                                                                                                                                                                                                                      
+Energy Storage Materials 76 (2025) 104123 
+2 
+
+<<PAGE 3>>
+dimethoxyethane (DME) and dioxolane (DOL)) and after 48 hours of 
+rest. FTIR spectra (Fig. 1A) demonstrate distinct differences between the 
+0.01 M and 0.11 M BNC samples. In the 0.01 M BNC system, both the 
+initial and 48-hour spectra display prominent peaks at 1107 and 945 
+cm-1, corresponding to Li2S6, as confirmed by standard references 
+(Figures S2A-C) [31]. In contrast, the 0.11 M BNC samples exhibit a 
+distinct peak at 1454 cm-1, indicative of nucleophilic reaction products 
+formed from the interaction of BNC and Li2S6 (Fig. 1A, S2C). This peak 
+appears immediately after BNC addition, reflecting an aggressive reac­
+tion at high concentrations. In contrast, at a lower concentration of 0.01 
+M, this peak is hardly observed, indicating the reaction is notably sub­
+dued, and Li2S6 remains largely preserved. It is worth noting that after 
+48 hours, the 0.01 M BNC exhibits a slight increase in the 1454 cm-1 
+peak, indicating that the reaction proceeds gradually in a moderated 
+mode (Fig. 1A, green line). Crucially, the co-existence of the 1454 cm-1 
+with the Li2S6-related peaks at 1107 and 945 cm-1 underscores the 
+preservation of the polysulfide environment. These findings highlight 
+the compatibility of 0.01 M BNC in Li-S batteries, balancing moderated 
+reactivity with effective polysulfide preservation.
+UV–vis spectra were collected at intervals of one minute during the 
+first 45 minutes and subsequently at 45-minute intervals for up to 48 
+hours after the addition of BNC (Fig. 1B, S3A-D). BNC exhibits a char­
+acteristic peak at 307 nm, while its reaction product shows a peak at 397 
+nm (Figure S3C). By plotting the intensity of these peaks over time, the 
+dissolution of BNC and the progression of the nucleophilic reaction were 
+monitored (Fig. 1B). At 0.01 M, BNC dissolves rapidly during the first 45 
+mins and the nucleophilic reaction intensifies gradually as these two 
+peaks increase. After 45 mins, both BNC and its reaction products reach 
+a plateau, indicating that the system achieves equilibrium, allowing the 
+co-existence of BNC and Li2S6. In contrast, the UV–vis spectra for 0.11 M 
+BNC exhibit discontinuities and sharp noise due to the rapid nucleo­
+philic reaction, which results in immediate precipitation that saturates 
+the instrument’s detection limit (Figure S3B). The combined FTIR and 
+time-dependent UV–vis results confirm that optimizing BNC concen­
+tration can effectively moderate the nucleophilic reaction while pre­
+serving both BNC and Li2S6. The inset in Fig. 1B highlights the stark 
+contrast in visual appearance: the 0.11 M BNC sample shows significant 
+color change and precipitation at the bottom of the vial, while the 0.01 
+M BNC sample shows minimal change. Additional photographs illus­
+trating BNC interactions with various polysulfides are provided in 
+Figure S1.
+To validate the reaction pathway, FTIR and X-ray absorption near 
+edge structure (XANES) analyses were performed on precipitates formed 
+with various polysulfides (Figures S2C, S4A-F). XANES results reveal 
+that precipitates from polysulfide retain an intact S-S cyclic structure, 
+with a consistent peak at 2473.3 eV, while Li2S precipitates primarily 
+exhibit Li2S with a peak at 2474.2 eV, confirming minimal BNC reac­
+tivity with insoluble polysulfides (Figure S4F), the detailed peak iden­
+tification and analysis can be found in SI (see Ex Situ XAS Sample 
+Analysis). FTIR spectra further indicate that precipitates from Li2S8 and 
+Li2S6 share identical functional groups (Figure S2C), aligning with re­
+action pathways outlined in Schemes I and II in the SI and supported by 
+prior studies [30,32,33].
+To understand the impact of BNC at lower concentration on Li+
+solvation structure, co-axial 7Li NMR experiments were conducted as 
+shown in Figures S5A-C. The experiments were conducted in triplicate to 
+eliminate potential errors and artifacts (Figures S6A-B). Fig. 1C shows 
+the initial investigations focused on electrolytes with varying concen­
+trations of BNC in the absence of Li2S6. Notably, the 0.01 M BNC elec­
+trolyte displays a downfield shift with a chemical shift of 0.035 ppm, 
+indicative of de-shielded Li-ion (Fig. 1C). The observed de-shielding 
+phenomenon suggests enhanced interactions between Li-ions and an­
+ions within the inner solvation shell due to weakened interaction be­
+tween Li-ions and DME [34]. This downfield shift can be attributed to 
+charge redistribution within the Li+-DME solvated cluster, induced by 
+the lone electron pairs of the oxygen atoms in BNC [30,35]. This 
+structural modification weakens the Li+-DME interaction, lowering the 
+desolvation energy barrier for Li+ and thereby facilitating its reaction 
+with lithium polysulfides (LiPSs), ultimately enhancing the sulfur 
+reduction reaction SRR [31]. However, at higher BNC concentrations 
+(0.11 M), the 7Li peak shifts towards lower ppm values, exhibiting a 
+lesser downfield shift observed at 0.01 M. This observation is attributed 
+to hydrogen bonding interactions between BNC molecules, as indicated 
+by DFT calculations ranging from -0.11 to -0.17 eV (Figure S7, Table S1), 
+which cause excessive BNC at 0.11 M to aggregate and form clusters 
+within the Li+-DME solvated structure. These aggregates primarily 
+reduce the effectiveness of BNC in weakening Li+-DME solvation 
+structure and disrupts the association between Li+ and anions compared 
+to the optimal 0.01 M concentration. Importantly, this result was 
+observed in the absence of any LiPSs, demonstrating that even without 
+the aggressive nucleophilic reaction between BNC and LiPSs, higher 
+concentrations of BNC are less favorable. This underscores the critical 
+importance of optimizing BNC concentration to achieve a balance be­
+tween its solvation and reactivity roles in the electrolyte.
+Further 7Li NMR experiments were conducted on the electrolyte 
+containing Li2S6. As shown in Fig. 1D, the chemical shift at 0.01 M BNC 
+remains almost unchanged compared to the case without Li2S6 (0.022 
+ppm vs. 0.035 ppm), reflecting strengthened interactions between Li- 
+ions and anions, including S6
+2-. This heightened affinity of Li-ions holds 
+promise for the SRR, where multiple Sx
+2- anions play a critical role. In 
+contrast, the 0.11 M BNC electrolyte exhibited a more pronounced 
+downfield shift in the presence of Li2S6. This downfield shift clearly 
+reflects significant changes in the LiPSs coordination environment in the 
+presence of BNC. The aggressive nucleophilic reactions between BNC 
+and Li2S6, as confirmed by FTIR and UV–vis (Figs. 1A-B), lead to the 
+depletion of both BNC and polysulfides. The reaction products disrupt 
+the original Li+ solvation structure, increasing the deshielding effect of 
+Li+ in the inner solvation shell. Although this alteration seems advan­
+tageous for enhancing SRR kinetics, the extensive sulfur depletion 
+counteracts these benefits, ultimately causing severe capacity decay. 
+Therefore, the contrasting trends observed in the 7Li NMR experiments 
+with and without Li2S6 underscore the critical importance of optimizing 
+BNC concentration to balance its solvation and reactivity roles, avoiding 
+detrimental effects while maximizing performance benefits.
+To understand the underlying mechanism of BNC on the solvation 
+structure alteration, AIMD simulations was employed focusing on the 
+solvation structure of the Li2S6 (in DOL/DME) as shown in Figs. 1E-F, S8 
+[36]. In the absence of BNC, both DME and DOL are distributed within 
+the inner solvation shell, defined as the region within 6 Å of the sulfur 
+cluster’s center of mass (Figure S8), with DME showing a slight stronger 
+affinity for Li2S6. This preference arises from the dipole-dipole interac­
+tion strength between the solvents and LiPSs, as reflected by the donicity 
+(Gutmann donor number, DN) of the solvent, where DME (24 kcal/mol) 
+slightly exceeds DOL (21.2 kcal/mol) [35,37].
+The introduction of BNC, however, induces a significant redistribu­
+tion of the solvation structure. DME is completely expelled from the 
+inner shell to the outer shell, and most of the DOL molecules are simi­
+larly displaced (Figs. 1E-F). This shift is driven by the incorporation of 
+BNC into the Li+ solvation structure, which alters the local charge dis­
+tribution within the Li2S6-DOL/DME solvated cluster. BNC’s strong 
+interaction with Li+ disrupts the original coordination environment, 
+weakening the binding of DOL and DME to Li2S6. As a result, Li2S6 be­
+comes more easily desolvated from the cluster, facilitating its partici­
+pation in the SRR.
+This shift is further corroborated by radial distribution function 
+(RDF) analysis, which shows a sharp peak for DME at approximately 5.8 
+Å being markedly suppressed in the presence of BNC (Figure S9). The 
+bond length between oxygen atoms in DME and lithium atoms in Li2S6 
+averages 1.92 Å in our AIMD simulations without BNC. However, no 
+similar chemical bond forms when BNC is introduced, aligning with the 
+observed solvent molecular distributions and RDF changes. This alter­
+ation in the solvation structure of Li2S6 is attributed to a weakening of 
+H. Dai et al.                                                                                                                                                                                                                                      
+Energy Storage Materials 76 (2025) 104123 
+3 
+
+<<PAGE 4>>
+DME’s solvating power, reducing the constraints on polysulfides and 
+allowing greater interaction with anions (Sx
+2-) during the SRR. This hy­
+pothesis aligns well with our observation from 7Li NMR experiments and 
+is further supported by DFT calculations (Figures S10-S11, Table S2). 
+AIMD simulations thus provide valuable molecular-level insights into 
+the solvent behavior under the influence of BNC, offering a fundamental 
+understanding of its impact on the solvation structure.
+2.2. Electrochemical characterization
+To elucidate the electrochemical activity associated with BNC ad­
+ditives, we conducted a series of cyclic voltammetry (CV) experiments 
+between baseline and 0.01 M BNC electrolytes. Figs. 2A and S12 depict 
+the characteristics CV curves of Li-S batteries. The CV curves reveal two 
+cathodic peaks and two anodic peaks, corresponding to the conversions 
+between long-chain to middle-chain polysulfides and middle-chain to 
+short-chain polysulfides, respectively. The similar trends observed in the 
+CV curves of both the baseline and 0.01 M BNC electrolytes (Figure S12, 
+Fig. 2A) under various scan rates suggest that the nucleophilic reaction 
+at the optimal BNC concentration does not significantly affect the SRR. 
+To gain deeper insight into the changes in SRR kinetics induced by BNC, 
+we employed Randles-Sevick analysis to determine the Li-ion diffusion 
+(DLi) in the baseline and 0.01 M BNC electrolytes. The absolute value of 
+the slope for peak A2, corresponding to the middle-chain to short-chain 
+polysulfide conversion, increased from 5.4 to 7.9 (Fig. 2B), indicating a 
+46.3% improvement in the Li-ion diffusion compared to the baseline. 
+This result reflects improved SRR kinetics for middle-chain polysulfides 
+under the BNC additive. Randles-Sevick’s analysis of other peaks (B1, B2) 
+Fig. 2. Electrochemical Characterization of SRR. Panel (A) displays the CV curves obtained at scan rates ranging from 0.05 to 0.5 mV s-1 for 0.01 M BNC electrolytes. 
+Panel (B) illustrates the Randles-Sevcik plot, depicting the cathodic peak current versus the square root of the scan rate used to derive DLi values, with linear fitting 
+results denoted by dashed lines. Panels (C and D) display the CV in a symmetric cell with Li2S6 catholyte for baseline and 0.01 M BNC electrolytes, respectively. 
+Panels (E and F) showcase the Li2S nucleation rate at 2.05 V for baseline and 0.01 M BNC electrolytes, respectively. Panel (G) exhibits the Nyquist plot captured at a 
+depth of discharge (DoD) ranging from 59.5% to 66.1% at 303 K, alongside the equivalent circuit model, with fitting results represented by solid lines. The elements 
+within the equivalent circuit model include: Rs, representing the combined internal resistance encompassing interfacial contact resistance, electrolyte ohmic 
+resistance, and intrinsic resistance of the current collector; REEI and CPEEEI, indicating the resistance and capacitance of the interface layer between electrode and 
+electrolyte, respectively; Rct and CPEelectrode signify the charge-transfer resistance and double-layer capacitance, respectively; while Wwarburg accounts for the 
+diffusion effect of Li-ions. Panel (H) portrays the Arrhenius plots for the 0.01 M BNC electrolyte at various DoD levels, with linear fitting results denoted by dashed 
+lines. Panel (I) illustrates the activation energies, Ea, of different electrolytes at various DoD stages throughout the entire discharge process. The coin cells used had an 
+areal sulfur loading of 4 mg cm-2 and E/S ratio of 8 µL mg-1.
+H. Dai et al.                                                                                                                                                                                                                                      
+Energy Storage Materials 76 (2025) 104123 
+4 
+
+<<PAGE 5>>
+is provided in Figure S13, with full results summarized in Table S3. 
+These findings demonstrate that BNC significantly promotes SRR ki­
+netics, especially in the middle-chain conversion step, which typically 
+exhibits the most sluggish kinetics.
+To obtain a more precise understanding of the middle-chain poly­
+sulfide conversion, we conducted additional CV experiments using 
+stainless steel symmetric cells with Li2S6 as catholyte in both baseline 
+and 0.01 M BNC electrolytes (Fig. 2C-D). Control groups without Li2S6 
+were also assessed, represented by the black solid lines. The cathodic 
+peak a (-0.08 V) and anodic peak c (0.08 V) are associated with con­
+version of S6
+2- according to the reaction: [38–40]. 
+S2−
+6 + 10e−+ 12Li+ ↔6Li2S
+(1) 
+Similarly, the anodic peak b (-0.02 V) and cathodic d (0.02 V) 
+associated with the conversion of S6
+2-: [40]. 
+4S2−
+6 ↔8e−+ 3S8
+(2) 
+Notably, the higher current responses at peaks a and c in 0.01 M BNC 
+electrolyte indicate a faster conversion of S6
+2- to Li2S, corroborating our 
+findings from the Randles-Sevcik analysis. Employing Li2S6 as the 
+catholyte in symmetrical cells provides more direct evidence that BNC 
+effectively enhances SRR kinetics for middle-chain polysulfide conver­
+sion, reinforcing our conclusions from AIMD simulations and 7Li NMR 
+studies. Furthermore, EIS tests on the symmetric cells reveal lower 
+charge transfer resistance in the 0.01 M BNC electrolyte (Figure S14), 
+indicating that the BNC additive enhances overall electrochemical 
+kinetics.
+Potentiostatic discharge experiments were employed to investigate 
+the nucleation and growth of Li2S, the final product of SRR. This process 
+involves a liquid-solid phase transition and represents the stage with the 
+highest energy barrier in the SRR, providing valuable insights into the 
+kinetic impact of BNC [41,42]. As shown in Fig. 2E and 2F, the 0.01 M 
+BNC electrolyte possesses a higher Li2S nucleation response current and 
+earlier nucleation time compared to the baseline. Moreover, the Li2S 
+nucleation capacity in the 0.01 M BNC electrolyte exceeded that of the 
+baseline by approximately 30 mAh gsulfur
+-1
+. These observations indicate 
+that BNC facilitates the nucleation and growth of Li2S, likely resulting 
+from the enhanced conversion of middle-chain polysulfides. This 
+enhancement underscores the significant role of BNC in improving SRR 
+kinetics, particularly in overcoming the energy barrier associated with 
+the liquid-solid phase transition.
+Consequently, a more sophisticated in situ EIS investigation was 
+executed to scrutinize the activation energy (Ea) of SRR at various DoD, 
+unveiling nuanced kinetics information for each polysulfide conversion 
+step. Coin cells were prepared and discharged at a C-rate of C/20 across 
+temperatures ranging from 273 to 333 K at 15 K intervals. EIS mea­
+surements were acquired repeatedly after discharging the cell for one 
+hour until the cell reached the discharge cutoff voltage (Figures S15A- 
+B). The EIS data and corresponding fitting results are depicted in 
+Figures S16-S17. In this analysis, the reciprocal of charge transfer 
+resistance (1/Rct) is utilized as a proxy for the SRR rate, as polysulfide 
+conversion is inherently governed by charge transfer involving Li-ions 
+and anions [43,44]. The Ea is subsequently determined using the 
+Arrhenius equation. This approach allows for a focused investigation 
+into the effect of BNC on the electrochemical reaction kinetics, inde­
+pendent of electrode/electrolyte interfacial transport phenomena that 
+concurrently occur during the SRR process.
+Fig. 2G presents the detailed EIS data and corresponding fitting re­
+sults obtained at 303 K for the two electrolytes at DoD ranging from 
+59.5% to 66.1%, a region where the most sluggish kinetics was expected 
+to occur. The EIS results unveil that the 0.01 M BNC electrolyte exhibits 
+the lowest charge transfer resistance (Rct). The corresponding Arrhenius 
+plot for the 0.01 M BNC electrolyte is presented in Fig. 2H, while the 
+baseline electrolyte’s Arrhenius plot is shown in Figure S18. The Ea 
+values at different DoD are summarized in Fig. 2I and Table S4, 
+revealing that, for each electrolyte, Ea values at around 4.3 to 4.7%, 33.8 
+to 39.4%, and 59.5 to 66.1% are higher than their adjacent positions, 
+signifying these DoD as crucial steps or rate-determining steps. In fact, 
+these specified DoD ranges align with the two plateaus on the discharge 
+voltage profile: 4.3 to 4.7% represents the initial elemental sulfur to 
+long-chain polysulfide conversion, and 33.8 to 66.1% represents middle- 
+chain to short-chain polysulfides conversion—where liquid-solid and 
+solid-solid phase transitions occur. The 0.01 M BNC electrolyte exhibits 
+consistently lower Ea values throughout the entire DoD, highlighting the 
+enhanced kinetics induced by BNC, particularly within the 33.8 to 
+66.1% DoD range, where sluggish kinetics are associated with phase 
+transitions.
+The galvanostatic intermittent titration technique (GITT) results 
+further substantiate the superior kinetics, as illustrated in Figures S19A- 
+B. The gap between the working voltage and the equilibrium voltage 
+encapsulates the total voltage polarization, encompassing activation 
+polarization (ƞact), ohmic polarization (ƞohm), and concentration polar­
+ization (ƞcon). The instantaneous voltage recovery includes the cumu­
+lative effect of ƞact and ƞohm because they are only present during an 
+applied current as depicted in Figure S19B. The gradual voltage recovery 
+over time corresponds to ƞcon, reflecting the hysteretic diffusion of 
+reactive species. The EIS data reveals that the ohmic resistance (Rs) re­
+mains nearly unchanged, rendering the variation of ƞohm reasonably 
+negligible (Figures S16-S17, S19B). For the 0.01 M BNC electrolyte, ƞact 
+manifests the lowest value of 20.66 mV, in contrast to the baseline 
+electrolytes (62.45 mV), stemming from reduced hindrance in the 
+nucleation and deposition of short-chain polysulfides (Figure S19B).
+2.3. Operando Raman spectroscopy
+Operando Raman is a practical technique for monitoring chemical 
+reaction pathways without any destructive interruptions, as demon­
+strated in our previous research (Figures S20A-B) [45]. Figs. 3A-C pre­
+sent conventional Raman spectra of a Li-S battery using the baseline 
+electrolyte. Throughout a typical discharge process, elemental sulfur 
+(S8) undergoes a conversion sequence, transforming into long-chain 
+polysulfides (Li2Sx, 6<x<8), followed by middle-chain polysulfides 
+(Li2Sx, 3<x<5), and ultimately into short-chain polysulfides, also 
+referred to as insoluble polysulfides (Li2Sx, 1<x<2) [46]. In Fig. 3A, the 
+characteristic Raman shift peak of elemental sulfur is identified at 217 
+cm-1 in black. The two major intermediates, long-chain and 
+middle-chain polysulfides, are denoted by red and blue colors, show­
+casing their characteristic Raman shifts at 400 and 453 cm-1, respec­
+tively. These peak assignments align with our ex-situ samples of 
+different polysulfides and electrolytes (Figures S21A-B) and previous 
+studies [46]. Fig. 3A depicts the overall Raman peak changes during the 
+full discharge process, with two plateaus separated by purple dash lines. 
+Fig. 3B zooms into the portion before the DoD reaches 25%, emphasizing 
+the change of the two intermediate polysulfides in the 1st plateau. 
+Fig. 3C displays the corresponding intensity heatmap for Fig. 3A after 
+normalization to the highest peak in each spectrum to enhance the 
+visualization of polysulfide changes throughout the discharge process. 
+The operando Raman spectra of the baseline electrolyte elucidate that 
+long-chain and middle-chain polysulfides coexist throughout almost the 
+entire 1st plateau region (before DoD of 25%), with middle-chain pol­
+ysulfides dominating in the subsequent 2nd plateau region until DoD 
+reaches approximately 88%. While the insensitivity of short-chain pol­
+ysulfides (Li2Sx, x<4) to Raman shift prevents direct observation, our 
+forthcoming operando XAS technique, detailed in the next section, will 
+address this missing piece of the puzzle.
+During operando Raman spectroscopy with 0.01 M BNC electrolytes, 
+significant deviations in the spectra were observed compared to the 
+baseline configuration. In Figs. 3D and 3E, the intensity of long-chain 
+and middle-chain polysulfides is noticeably suppressed, indicating a 
+diminished presence of these key intermediate polysulfides compared to 
+the baseline electrolyte. The intensity heatmap (Fig. 3F) of the 0.01 M 
+H. Dai et al.                                                                                                                                                                                                                                      
+Energy Storage Materials 76 (2025) 104123 
+5 
+
+<<PAGE 6>>
+BNC electrolyte further supports this observation, as the characteristic 
+peak of middle-chain polysulfides disappears upon reaching a DoD of 
+37%. This outcome is attributed, first, to modified kinetics facilitated by 
+a tailored Li+ solvation structure that enhances the conversion of soluble 
+polysulfides, and second, to the controlled nucleophilic reaction induced 
+by BNC, which minimizes polysulfide dissolution into the electrolyte. At 
+higher BNC concentrations (0.05 and 0.11 M), this nucleophilic reaction 
+becomes significantly more aggressive, as evidenced by the further 
+suppression of these characteristic peaks during the SRR (Figures S22A- 
+D). These results suggest that elevated BNC concentrations do not 
+consistently benefit Li-S batteries, as excessive nucleophilic reactions 
+lead to sulfur depletion and subsequent capacity shrinkage, as reflected 
+in the cycling performance discussed in a later section.
+The operando Raman results thus serve as a further validation of the 
+hypothesis derived from AIMD simulations, reinforcing the outcomes 
+observed in 7Li NMR by providing direct observations of SRR kinetics 
+enhancement and polysulfide immobilization. More importantly, the 
+operando Raman findings underscore the necessities of optimizing BNC 
+concentration to ensure an undisturbed SRR pathway. However, they 
+lack crucial insights into short-chain polysulfides (Li2Sx, x<4), which are 
+essential for a comprehensive understanding of SRR kinetics.
+2.4. Operando XAS
+X-ray absorption spectroscopy (XAS) is a critical tool for investi­
+gating sulfur evolution in Li-S batteries, offering elemental sensitivity 
+that enables the precise detection of short-chain polysulfides (Li2Sx, 
+x<4), which are challenging to observe with Raman spectroscopy. 
+Monitoring the formation of these polysulfides is critical for two key 
+reasons. First, this phase of the SRR involves a significant phase transi­
+tion that severely hinders reaction kinetics. Second, short-chain 
+polysulfides are less susceptible to nucleophilic reactions with BNC, 
+providing a more accurate assessment of BNC’s impact on improving 
+reaction kinetics. To ensure accurate data interpretation, a compre­
+hensive set of standard reference samples was prepared (Figures S23A- 
+D), with detailed peak identifications provided in the SI (see Ex Situ XAS 
+Sample Analysis).
+Operando XAS spectra for the 0.01 M BNC electrolyte were collected 
+during the first discharge cycle at a C-rate of C/10, with the cell setup 
+illustrated in Figure S20C. The spectra (Fig. 4A) and corresponding in­
+tensity heatmap (Fig. 4B) reveal the emergence of a peak at 2471.5 eV 
+(hereby denoted as "pre-edge peak"; see SI for detailed explanation) as 
+the DoD approaches 10%, signifying the formation of Li2Sx (6<x<8) 
+during the 1st plateau phase of the voltage profile. Fig. 4B shows that 
+this pre-edge peak intensifies as the DoD reaches 37%, indicating the 
+formation and predominance of Li2Sx (3<x<5). These observations align 
+seamlessly with our operando Raman spectra, yet XAS uniquely captures 
+the continuous increase of the pre-edge signal from a DoD of 39% to 
+75%, marking the formation of short-chain polysulfides (Li2Sx, 2<x<4), 
+as confirmed by standard references in Figures S23A-D. Moreover, a 
+shift of peak from 2473.3 eV (hereby denoted as "main peak"; see SI for 
+detailed explanation) to 2474.2 eV is observed beyond a DoD of 92% in 
+Fig. 4B, directly indicating the formation of Li2S, the final SRR product.
+Here, in order to quantify polysulfides, we employed a specialized 
+method known as multivariate curve resolution-alternating least squares 
+(MCR-ALS) to unveil the "pure component(s)” within the operando 
+spectra, as elaborated in detail in the SI [47–49]. This method isolates 
+spectra representing mixtures of compounds, such as polysulfides, for 
+tracking their evolution during discharge. It is important to note that the 
+term "pure component(s)" does not imply compositional purity; instead, 
+it refers to the most representative spectrum within the dataset. Oper­
+ando XAS spectra and corresponding MCR-ALS analyses for baseline and 
+Fig. 3. Operando Raman Spectroscopy. Panels (A-C) and (D-F) show the operando Raman spectra during the full discharge process, an enlarged view before 25% 
+DoD, and the normalized intensity heatmap for the baseline and 0.01 M BNC electrolytes, respectively. Elemental sulfur is denoted in black, long-chain polysulfides in 
+red and middle-chain polysulfides in blue. All experiments were conducted at a C-rate of C/20 during its first cycle, with areal sulfur loading of 4 mg cm-2 and E/S 
+ratio of 8 µL mg-1.
+H. Dai et al.                                                                                                                                                                                                                                      
+Energy Storage Materials 76 (2025) 104123 
+6 
+
+<<PAGE 7>>
+0.11 M BNC electrolytes are depicted in Figures S24-S25, respectively.
+For the 0.01 M BNC electrolyte, pure component #3 exhibits a weak 
+pre-edge peak at 2471.5 eV and a main peak shift to 2474.2 eV, sug­
+gesting a composition of short-chain polysulfides (Li2Sx, 2<x<4), along 
+with a notable proportion of Li2S (Fig. 4C). Notably, this main peak shift 
+is absent in both the baseline and 0.11 M BNC electrolytes (Figures S24- 
+S25), indicating that BNC at optimal concentration facilitates poly­
+sulfide conversion, enhancing the formation of Li2S. Furthermore, the 
+composition ratio of pure component #3 at 100% DoD is higher in the 
+0.01 M BNC electrolyte than in the baseline or 0.11 M BNC electrolytes, 
+underscoring a more complete 16-electron transfer reaction, attributed 
+to enhanced kinetics (Fig. 4D). Another critical observation is pure 
+component #2 (mixture of Li2S6 and Li2S4, representing long-chain 
+polysulfides) reaches its maximum at 15% DoD in 0.01 M BNC, earlier 
+than in the baseline, suggesting the synergic effect of BNC, consistent 
+with our Raman results. In contrast, pure component #2 remains below 
+30% throughout the discharge process in the 0.11 M BNC electrolyte, 
+indicating excessive nucleophilic reactions between BNC and poly­
+sulfides, which hinder SRR progression.
+The MCR-ALS deconvolution confirms XAS’s capability to overcome 
+Raman’s limitations in detecting short-chain polysulfides (Li2Sx, x<4). 
+Surprisingly, analysis revealed that the final SRR product in the baseline 
+electrolyte is not predominantly Li2S, contrary to the theoretical 16-elec­
+tron conversion from S8 to Li2S (Figure S24E). This incomplete SRR, 
+attributed to sluggish phase transition kinetics, persists even at the 
+discharge cutoff voltage, emphasizing the need for further improvement 
+in Li-S battery kinetics. These findings align with previous reports on 
+incomplete 16-electron transformations and underscore the critical 
+Fig. 4. Operando XANES Spectra and MCR-ALS Deconvolution Results. Panel (A) exhibits the complete operando XANES spectra during its initial discharge at a C- 
+rate of C/10 with areal sulfur loading of 4 mg cm-2 and E/S ratio of 8 µL mg-1, while panel (B) illustrates the corresponding heatmap of intensity variations with the 
+voltage change at different DoDs. Panel (C) shows the "pure components" derived from the MCR-ALS deconvolution and compared with standard references. Panel 
+(D) shows the compositional ratio evolution during lithiation across the three electrolytes.
+H. Dai et al.                                                                                                                                                                                                                                      
+Energy Storage Materials 76 (2025) 104123 
+7 
+
+<<PAGE 8>>
+importance of enhancing SRR efficiency to fully realize the potential of 
+Li-S batteries [50,51].
+2.5. Polysulfides shuttling suppression
+The impact of BNC on suppressing polysulfide migration was inves­
+tigated using X-ray fluorescence (XRF) mapping to analyze anode sur­
+faces extracted from coin cells subjected to varying cycle numbers with 
+different electrolytes. Since the sulfur atoms in the LiTFSI salt commonly 
+used in Li-S batteries could interfere with XRF mapping, a pre-treatment 
+procedure was implemented to wash the electrodes (see Washing Pro­
+cedure in SI), ensuring the removal of LiTFSI while preserving poly­
+sulfides. Validation of this washing procedure is detailed in Figures S26- 
+S27.
+Normalized XRF mapping results reveal the sulfur accumulation 
+divergence on the anodes (Figs. 5A-B and E-F). In the 0.01 M BNC 
+electrolyte, sulfur deposition is consistently lower compared to the 
+baseline, regardless of the cycle number, as reflected by the color in­
+tensity. This result provides direct evidence of suppressed polysulfide 
+shuttling in the BNC electrolyte, particularly pronounced during the 
+initial cycling stages, attributed to the controlled nucleophilic reactions 
+between BNC and polysulfides at optimal concentrations, as corrobo­
+rated by UV–vis and FTIR results.
+To gain a comprehensive understanding of sulfur composition on the 
+anode, XANES analysis was conducted at two distinct locations identi­
+fied from XRF maps: high sulfur accumulation (L1, green circles) and 
+low sulfur accumulation (L2, cyan circles). This strategy ensures that 
+sulfur composition data accounts for the inhomogeneous surface 
+Fig. 5. Normalized XRF Map and XANES Results. XRF maps of anodes after 1 cycle in (A) baseline and (B) 0.01 M BNC electrolytes, with corresponding XANES 
+spectra at high sulfur accumulation (L1, green circle) shown in (C) and low sulfur accumulation (L2, cyan circle) in (D). XRF maps and XANES results after 25 cycles 
+are presented in the same pattern throughout panels (E-H). Panel (I) displays the shuttle current measurements under low E/S (8 µL mg-1) and high E/S ratio (15 µL 
+mg-1) conditions, highlighting the impact of BNC on suppressing polysulfide shuttling. Panel (J) provides a schematic illustration of BNC’s dual functionality in Li-S 
+batteries, showcasing its role in polysulfide immobilization and kinetic enhancement for improved battery performance.
+H. Dai et al.                                                                                                                                                                                                                                      
+Energy Storage Materials 76 (2025) 104123 
+8 
+
+<<PAGE 9>>
+chemistry on the anode. After the first cycle, a prominent pre-edge peak 
+was observed in the baseline electrolyte (red solid lines, Figs. 5C-D) at 
+both L1 and L2, indicating a higher ratio of residual polysulfides 
+compared to the 0.01 M BNC electrolyte (green solid lines, Figs. 5C-D). 
+This highlights BNC’s ability to anchor soluble polysulfides and mitigate 
+their migration to the anode. After 25 cycles, the pre-edge peak intensity 
+in the baseline electrolyte remained significantly higher than in the 0.01 
+M BNC electrolyte at both locations, further highlighting reduced re­
+sidual polysulfides on the anode in the BNC system.
+To further examine parasitic reactions between LiPSs and the lithium 
+metal anode, shuttle current measurements were conducted in coin cells 
+using both the baseline and 0.01 M BNC electrolytes (Fig. 5I). To better 
+evaluate BNC’s ability to suppress polysulfide shuttling, a higher E/S 
+ratio (15 µL mg⁻¹) was used to create a saturated electrolyte environ­
+ment, where more pronounced shuttle effects are expected. As shown in 
+Fig. 5I, the baseline electrolyte exhibits significantly higher shuttle 
+currents under both E/S conditions, indicating more severe parasitic 
+reactions between LiPSs and lithium due to increased polysulfide 
+migration. This effect is particularly evident in the 2.30–2.45 V range, 
+where elemental sulfur from the cathode undergoes the most extensive 
+reduction to soluble LiPSs. In contrast, the BNC-containing electrolyte 
+demonstrates nearly negligible shuttle currents under both E/S condi­
+tions, with only a slight increase around 2.35 V, highlighting BNC’s 
+remarkable ability to suppress polysulfide shuttling. This result further 
+corroborates the findings from XRF mapping and confirms BNC’s 
+effectiveness in stabilizing the electrolyte environment.
+The shuttle current measurements support the conclusions drawn 
+from XRF and XANES analyses, which attribute BNC’s impact to two key 
+effects: first, its ability to immobilize polysulfides, preventing their 
+migration to the anode; and second, its role in improving SRR kinetics, 
+leading to fewer residual polysulfides being formed. These findings align 
+with and reinforce the conclusions drawn from operando Raman and 
+XAS results, underscoring the effectiveness of BNC at optimal concen­
+trations, as illustrated in Fig. 5J. Full XRF mapping comparisons for 
+anode and cathode surfaces are provided in Figures S28-S29.
+2.6. Electrochemical performance
+The cycling performance of Li-S batteries with different electrolytes 
+is presented in Fig. 6A. The coin cells were equipped with cathodes 
+Fig. 6. Electrochemical Performance and Literature Comparison. Panel (A) shows cycling performance at a C/2 rate following a stabilization protocol of 3 cycles at 
+C/15 and 3 cycles at C/5. The 0.01 M BNC electrolyte achieved 206 cycles, the baseline 154 cycles, and the 0.11 M BNC electrolyte 122 cycles. Panel (B) provides a 
+summary of specific discharge/charge curves at the 7th cycle at C/2 (1st cycle after stabilization). Panel (C) illustrates the rate capability performance, showcasing C- 
+rates in the order of C/10, C/5, C/2, 1C, 2C and back to C/10, each containing 10 cycles. Panel (D) compiles reported E/S ratio, areal sulfur loading, and capacity 
+retention (capacity decay per cycle) in recent literature [52–57]. Detailed values are provided in Table S5.
+H. Dai et al.                                                                                                                                                                                                                                      
+Energy Storage Materials 76 (2025) 104123 
+9 
+
+<<PAGE 10>>
+featuring a sulfur areal loading of 4 mg cm-2 and operated at a low E/S 
+ratio of 8 µL mg-1. The porosity of cathode is determined around 
+60–64.5% based on the theoretical calculation and SEM (Figure S30). 
+Following an initial stabilization phase of three cycles at C/15 and three 
+cycles at C/5, all subsequent cycles were conducted at a C-rate of C/2. 
+Additional prolonged cycling data at lower C-rate is provided in 
+Figure S31. Each electrolyte was tested in triplicate, with cell-to-cell 
+consistency validated in Figures S32A-C. The water content in all elec­
+trolytes was approximately 4 ppm, as measured by Karl Fischer titration 
+(see Supplementary Information).
+The 0.01 M BNC electrolyte demonstrated superior cycling perfor­
+mance, with a lifespan of 206 cycles at C/2, compared to 154 cycles for 
+the baseline and 122 cycles for the 0.11 M BNC electrolyte (Fig. 6A). At 
+horizontal comparison of the 122nd cycle, the discharge capacity for the 
+0.01 M BNC electrolyte reached 677.19 mAh gsulfur
+-1
+, representing a 
+27.67% improvement over the baseline (530.42 mAh gsulfur
+-1
+) and and a 
+remarkable 79.17% enhancement over the 0.11 M BNC electrolyte 
+(377.96 mAh gsulfur
+-1
+). Over 206 cycles, the 0.01 M BNC electrolyte 
+retained 83.97% of its initial capacity (first post-stabilization cycle) with 
+a capacity of 650.93 mAh gsulfur
+-1 
+This corresponds to a minimal capacity 
+decay rate of 0.08% per cycle. Additionally, the coulombic efficiency 
+(CE) for the 0.01 M BNC electrolyte reached 92.96%, surpassing the 
+baseline (88.23%) and indicating enhanced sulfur utilization and more 
+effective suppression of polysulfide shuttling. Interestingly, although the 
+0.11 M BNC electrolyte exhibited faster capacity decay, it maintained a 
+higher CE than the baseline, suggesting partial suppression of poly­
+sulfide shuttling despite aggressive nucleophilic reactions.
+When compared horizontally to the shortest lifespan of 122 cycles, 
+the CE for the 0.01 M BNC electrolyte is 98.82%, while the 0.11 M BNC 
+and baseline electrolytes exhibit CEs of 95.59% and 91.90%, respec­
+tively. This is an intriguing result, as despite the 0.11 M BNC electrolyte 
+exhibiting inferior capacity retention and a reduced cycle life, its CE still 
+surpasses that of the baseline electrolyte. This trend precisely un­
+derscores the delicate balance required in optimizing BNC concentration 
+for Li-S battery performance. BNC induces an aggressive nucleophilic 
+reaction that depletes active sulfur species, leading to capacity decay 
+and a shorter lifespan. However, this same nucleophilic reaction also 
+contributes to polysulfide immobilization by excessively anchoring 
+dissolved polysulfides, thereby suppressing their diffusion and miti­
+gating the shuttle effect. Despite this suppression mechanism, the trade- 
+off is ultimately unfavorable, as the substantial sulfur depletion out­
+weighs the benefits of reduced polysulfide migration, leading to dra­
+matic capacity decay and reduced lifespan.
+The discharge and charge curves for the 1st post-stabilization cycle 
+(7th cycle) further corroborate these findings (Fig. 6B). The polarization 
+observed in the 0.01 M BNC electrolyte was reduced to 212 mV, 
+compared to 234 mV in the baseline and 292 mV in the 0.11 M BNC 
+electrolyte. This reduced polarization aligns with earlier observations 
+from electrochemical characterization and operando spectroscopic ob­
+servations, highlighting improved middle-chain polysulfide conversion 
+kinetics in the 0.01 M BNC electrolyte. At higher cycle numbers, this 
+improvement persisted, as shown in Figures S33A-C. Conversely, the 
+discharge curves for the 0.11 M BNC electrolyte displayed a diminished 
+two-plateau feature, with the second plateau nearly halving after 100 
+cycles (Figure S33C), indicating severe sulfur depletion due to excessive 
+nucleophilic reactions.
+The rate capability of the electrolytes was assessed by incrementally 
+increasing the C-rate from C/10 to 2C, followed by a return to C/10 
+(Fig. 6C). At 2C, the 0.01 M BNC electrolyte exhibited a higher specific 
+capacity (420.27 mAh gsulfur
+-1
+) compared to the baseline (275.26 mAh gsulfur
+- 
+1) and 0.11 M BNC electrolyte (226.29 mAh gsulfur
+-1
+), demonstrating su­
+perior SRR kinetics. Upon reverting to C/10, the 0.01 M BNC electrolyte 
+achieved a discharge capacity of 803.13 mAh gsulfur
+-1 
+with a CE of 97.02%, 
+indicating excellent capacity recovery. This performance significantly 
+exceeded that of the baseline (695.35 mAh gsulfur
+-1
+) and the 0.11 M BNC 
+electrolyte (553.13 mAh gsulfur
+-1
+), highlighting the optimal electrolyte’s 
+enhanced stress tolerance from Li+ intercalation. The specific charge/ 
+discharge voltage profiles from the rate capability test are presented in 
+Figure S34.
+When benchmarked against reported data at similar C-rates (Fig. 6D
+and Table S5), [52–57]. through comparison of E/S ratio, areal sulfur 
+loading and capacity decay per cycle, BNC as an electrolyte additive 
+exhibited an exceptional stable cycling performance with 0.08% ca­
+pacity decay per cycle (over 200 cycles at C/2) at a practical E/S ratio (8 
+µL mg-1) and areal sulfur loading (4 mg cm-2). These findings underscore 
+the promising potential of BNC as an electrolyte additive for advancing 
+Li-S battery systems.
+3. Conclusions
+In conclusion, this study demonstrates the effectiveness of BNC as a 
+bifunctional electrolyte additive in improving SRR kinetics and sup­
+pressing polysulfide migration in Li-S batteries. Unlike previous studies 
+that emphasized BNC’s role in immobilizing polysulfides through 
+nucleophilic reactions, our findings reveal that BNC can enhance SRR 
+kinetics by altering the Li+ solvation structure at an optimal concen­
+tration, as evidenced by AIMD simulations and 7Li NMR analysis. 
+However, excessive BNC concentrations result in aggressive nucleo­
+philic reactions that deplete sulfur and cause capacity decay.
+FTIR and UV–vis analyses confirmed that BNC can coexist with Li2S6 
+under moderated nucleophilic reactions, enabling dual functionalities: 
+modifying the Li+ solvation structure to enhance SRR kinetics and 
+immobilizing soluble polysulfides to mitigate the shuttling effect. Ki­
+netic improvements were validated through comprehensive electro­
+chemical experiments, including CV and Li2S nucleation studies, and 
+further corroborated by in situ EIS, which highlighted reductions in 
+activation energy for polysulfide conversion. Operando Raman spec­
+troscopy demonstrated BNC’s synergistic effect on SRR kinetics and 
+polysulfide immobilization, while operando XAS provided detailed in­
+sights into enhanced kinetics, particularly for middle-chain polysulfides, 
+with quantification achieved through MCR-ALS analysis. Additionally, 
+XRF mapping with XANES analyses and shuttle current tests revealed 
+BNC’s effectiveness in suppressing polysulfide migration, especially 
+when comparing anode and cathode surfaces after varying cycle 
+numbers.
+These synergistic effects collectively contribute to improved cycling 
+performance in high-loading configurations, achieving a sulfur areal 
+loading of 4 mg cm-2 and low E/S ratio of 8 µL mg-1. The optimized 
+system delivers a capacity retention of 83.97% at a C-rate of C/2, with a 
+coulombic efficiency of 92.96% over 200 cycles, outperforming existing 
+benchmarks in the literature. This work highlights the potential of BNC 
+as a model additive for broader electrolyte modifications, paving the 
+way for advanced designs that enhance the electrochemical perfor­
+mance of Li-S batteries.
+Supporting information
+Materials details and cathode fabrication procedures, DFT calcula­
+tion and AIMD simulation, FTIR spectra, UV–vis spectra, 7Li NMR 
+spectra, CV plots, linear fitting of Randles-Sevcik plots, in situ EIS and 
+fitting results, Arrhenius plots and fitting results, GITT plot, operando 
+Raman spectra, normalized XAS spectra of standard reference, operando 
+XAS spectra and MCR-ALS analysis results, XRF mapping and XANES 
+spectra, summary of specific capacity and capacity retention between 
+literature and this study.
+Data availability
+The data that supports the findings of this study are available from 
+the corresponding authors upon reasonable request.
+H. Dai et al.                                                                                                                                                                                                                                      
+Energy Storage Materials 76 (2025) 104123 
+10 
+
+<<PAGE 11>>
+Declaration of generative AI and AI-assisted technologies in the 
+writing process
+The authors confirm that during the preparation of this work, 
+ChatGPT was utilized solely to polish the language and improve the 
+readability of the manuscript. Following the use of this tool, the authors 
+thoroughly reviewed and edited the material as necessary and take full 
+responsibility for the accuracy and integrity of the publication.
+CRediT authorship contribution statement
+Huidong Dai: Writing – review & editing, Writing – original draft, 
+Visualization, Validation, Supervision, Project administration, Method­
+ology, Investigation, Formal analysis, Data curation, Conceptualization. 
+Colin Gallagher: Writing – review & editing, Software. Seong-Min 
+Bak: Writing – review & editing, Data curation. Luisa Gomes: Writing – 
+review & editing, Formal analysis, Data curation. Kevin Yang: Data 
+curation. Ruizhi Dong: Data curation. Srinidi Badhrinathan: Valida­
+tion. Qing Zhao: Writing – review & editing, Supervision. Yonghua Du: 
+Supervision, Software, Resources, Data curation. Gaind P. Pandey: 
+Writing – review & editing, Validation, Supervision, Resources, Meth­
+odology, Investigation, Conceptualization. Sanjeev Mukerjee: Super­
+vision, Project administration.
+Declaration of competing interest
+The authors declare that they have no known competing financial 
+interests or personal relationships that could have appeared to influence 
+the work reported in this paper.
+Acknowledgements
+The authors extend their sincerest gratitude to Dr. Jason Guo, di­
+rector of the NMR Facility at Northeastern University, for the assistance 
+in conducting the NMR experiments. This work utilized an NMR spec­
+trometer that was purchased with funding from a National Institutes of 
+Health SIG grant (S10OD032452). The content is solely the re­
+sponsibility of the authors and does not necessarily represent the official 
+views of the National Institutes of Health. The Horiba XploRA Plus 
+Confocal Raman Microscope was purchased from the Army Research 
+Office with the Defense University Research Instrumentation Program 
+(DURIP) under Grant No. W911NF2010145. The authors express 
+appreciation for the financial support received through the National 
+Science Foundation (NSF) Industry-University Cooperative Research 
+Centers Program (IUCRC) under Grant No. IIP-2052796, and the U.S. 
+Department of Energy (DOE) grant from the Vehicle Technology Office 
+under Grant No. DE-EE0009646, led by Giner Inc. S.-M. Bak acknowl­
+edges the Yonsei University Research Fund of 2023-22-0158. The 
+research made use of the 8-BM beamline at the National Synchrotron 
+Light Source II (NSLS-II), a U.S. Department of Energy (DOE) Office of 
+Science User Facility operated by Brookhaven National Laboratory 
+under Contract No. DE-SC0012704.
+Supplementary materials
+Supplementary material associated with this article can be found, in 
+the online version, at doi:10.1016/j.ensm.2025.104123.
+References
+[1] H. Nishiyama, T. Yamada, M. Nakabayashi, Y. Maehara, M. Yamaguchi, 
+Y. Kuromiya, Y. Nagatsuma, H. Tokudome, S. Akiyama, T. Watanabe, 
+Photocatalytic solar hydrogen production from water on a 100-m2 scale, Nature 
+598 (7880) (2021) 304–307.
+[2] H. Dai, R. Besser, Fluidization analysis for catalytic decomposition of methane over 
+carbon blacks for solar hydrogen production, Int. J. Hydrogen. Energy 46 (79) 
+(2021) 39079–39094.
+[3] K. Jiao, J. Xuan, Q. Du, Z. Bao, B. Xie, B. Wang, Y. Zhao, L. Fan, H. Wang, Z. Hou, 
+Designing the next generation of proton-exchange membrane fuel cells, Nature 595 
+(7867) (2021) 361–369.
+[4] H. Dai, R. Besser, Understanding hydrogen sulfide impact on a portable, 
+commercial, propane-powered solid-oxide fuel cell, Appl. Energy 307 (2022) 
+118163.
+[5] Z. Zhu, T. Jiang, M. Ali, Y. Meng, Y. Jin, Y. Cui, W. Chen, Rechargeable batteries for 
+grid scale energy storage, Chem. Rev. 122 (22) (2022) 16610–16751.
+[6] P.G. Bruce, S.A. Freunberger, L.J. Hardwick, J.-M. Tarascon, Li–O2 and Li–S 
+batteries with high energy storage, Nat. Mater. 11 (2012) 19–29, https://doi.org/ 
+10.1038/nmat3191.
+[7] Y. Sun, N. Liu, Y. Cui, Promises and challenges of nanomaterials for lithium-based 
+rechargeable batteries, Nat. Energy 1 (7) (2016) 1–12.
+[8] G. Zhou, H. Chen, Y. Cui, Formulating energy density for designing practical 
+lithium–sulfur batteries, Nat. Energy 7 (4) (2022) 312–319.
+[9] Y. Chen, T. Wang, H. Tian, D. Su, Q. Zhang, G. Wang, Advances in lithium–sulfur 
+batteries: from academic research to commercial viability, Adv. Mater. 33 (29) 
+(2021) 2003666.
+[10] S. Badhrinathan, H. Dai, G.P. Pandey, Challenges and approaches to designing 
+high-energy density lithium-sulfur pouch cells, Batter. Supercaps. (2024) 
+e202400544.
+[11] T. Liu, H. Hu, X. Ding, H. Yuan, C. Jin, J. Nai, Y. Liu, Y. Wang, Y. Wan, X. Tao, 12 
+years roadmap of the sulfur cathode for lithium sulfur batteries (2009–2020), 
+Energy Storage Mater. 30 (2020) 346–366, https://doi.org/10.1016/j. 
+ensm.2020.05.023.
+[12] M. Wild, L. O’Neill, T. Zhang, R. Purkayastha, G. Minton, M. Marinescu, G.J. Offer, 
+Lithium sulfur batteries, a mechanistic review, Energy Environ. Sci. 8 (2015) 
+3477–3494, https://doi.org/10.1039/C5EE01388G.
+[13] X.Y. Li, S. Feng, M. Zhao, C.X. Zhao, X. Chen, B.Q. Li, J.Q. Huang, Q. Zhang, 
+Surface gelation on disulfide electrocatalysts in lithium–sulfur batteries, 
+Angewandte Chemie 134 (7) (2022) e202114671.
+[14] Z.-X. Chen, Q. Cheng, X.-Y. Li, Z. Li, Y.-W. Song, F. Sun, M. Zhao, X.-Q. Zhang, B.- 
+Q. Li, J.-Q. Huang, Cathode kinetics evaluation in lean-electrolyte lithium–sulfur 
+batteries, J. Am. Chem. Soc. 145 (30) (2023) 16449–16457.
+[15] Y.-W. Song, L. Shen, X.-Y. Li, C.-X. Zhao, J. Zhou, B.-Q. Li, J.-Q. Huang, Q. Zhang, 
+Phase equilibrium thermodynamics of lithium–sulfur batteries, Nat. Chem. Eng. 1 
+(9) (2024) 588–596.
+[16] Y.-W. Song, L. Shen, N. Yao, X.-Y. Li, C.-X. Bi, Z. Li, M.-Y. Zhou, X.-Q. Zhang, 
+X. Chen, B.-Q. Li, Cationic lithium polysulfides in lithium–sulfur batteries, Chem. 8 
+(11) (2022) 3031–3050.
+[17] Q. Cheng, Z.-X. Chen, X.-Y. Li, L.-P. Hou, C.-X. Bi, X.-Q. Zhang, J.-Q. Huang, B.- 
+Q. Li, Constructing a 700 Wh kg−
+1-level rechargeable lithium-sulfur pouch cell, 
+J. Energy Chem. 76 (2023) 181–186.
+[18] X. Ji, L.F. Nazar, Advances in Li–S batteries, J. Mater. Chem. 20 (2010) 9821, 
+https://doi.org/10.1039/b925751a.
+[19] L.P. Hou, Z. Li, N. Yao, C.X. Bi, B.Q. Li, X. Chen, X.Q. Zhang, Q. Zhang, Weakening 
+the solvating power of solvents to encapsulate lithium polysulfides enables long- 
+cycling lithium-sulfur batteries, Adv. Mater. 34 (45) (2022), https://doi.org/ 
+10.1002/adma.202205284.
+[20] Z. Li, L.P. Hou, N. Yao, X.Y. Li, Z.X. Chen, X. Chen, X.Q. Zhang, B.Q. Li, Q. Zhang, 
+Correlating polysulfide solvation structure with electrode kinetics towards long- 
+cycling lithium-sulfur batteries, Angew. Chem. Int. Ed. Engl. 62 (43) (2023), 
+https://doi.org/10.1002/anie.202309968.
+[21] Y. Zhang, C. Kang, W. Zhao, Y. Song, J. Zhu, H. Huo, Y. Ma, C. Du, P. Zuo, S. Lou, 
+dp hybridization-induced “trapping–Coupling–Conversion” enables high-efficiency 
+Nb single-atom catalysis for Li–S batteries, J. Am. Chem. Soc. 145 (3) (2023) 
+1728–1739.
+[22] M. Fang, J. Han, S. He, J.-C. Ren, S. Li, W. Liu, Effective screening descriptor for 
+MXenes to enhance sulfur reduction in lithium–sulfur batteries, J. Am. Chem. Soc. 
+145 (23) (2023) 12601–12608, https://doi.org/10.1021/jacs.3c01834.
+[23] X. Shen, T. Qian, P. Chen, J. Liu, M. Wang, C. Yan, Bioinspired polysulfiphobic 
+artificial interphase layer on lithium metal anodes for lithium sulfur batteries, ACS. 
+Appl. Mater. Interfaces. 10 (36) (2018) 30058–30064.
+[24] J. Liu, T. Qian, N. Xu, M. Wang, J. Zhou, X. Shen, C. Yan, Dendrite–free and 
+ultra–high energy lithium sulfur battery enabled by dimethyl polysulfide 
+intermediates, Energy Storage Mater. 24 (2020) 265–271.
+[25] X. Liu, T. Qian, J. Liu, M. Wang, H. Chen, C. Yan, High coulombic efficiency 
+cathode with nitryl grafted sulfur for Li-S battery, Energy Storage Mater. 17 (2019) 
+260–265.
+[26] M. He, X. Li, X. Yang, C. Wang, M.L. Zheng, R. Li, P. Zuo, G. Yin, X. Sun, Realizing 
+solid-phase reaction in Li–S batteries via localized high-concentration carbonate 
+electrolyte, Adv. Energy Mater. 11 (31) (2021) 2101004.
+[27] R. Steudel, T. Chivers, The role of polysulfide dianions and radical anions in the 
+chemical, physical and biological sciences, including sulfur-based batteries, Chem. 
+Soc. Rev. 48 (12) (2019) 3279–3319.
+[28] X. Li, M. Banis, A. Lushington, X. Yang, Q. Sun, Y. Zhao, C. Liu, Q. Li, B. Wang, 
+W. Xiao, A high-energy sulfur cathode in carbonate electrolyte by eliminating 
+polysulfides via solid-phase lithium-sulfur transformation, Nat. Commun. 9 (1) 
+(2018) 4509.
+[29] Z. Xu, J. Wang, J. Yang, X. Miao, R. Chen, J. Qian, R. Miao, Enhanced performance 
+of a lithium–sulfur battery using a carbonate-based electrolyte, Angewandte 
+Chemie Int. Ed. 55 (35) (2016) 10372–10375.
+[30] T. Yang, T. Qian, J. Liu, N. Xu, Y. Li, N. Grundish, C. Yan, J.B. Goodenough, A new 
+type of electrolyte system to suppress polysulfide dissolution for lithium-sulfur 
+battery, ACS. Nano 13 (2019) 9067–9073, https://doi.org/10.1021/ 
+acsnano.9b03304.
+H. Dai et al.                                                                                                                                                                                                                                      
+Energy Storage Materials 76 (2025) 104123 
+11 
+
+<<PAGE 12>>
+[31] L. Gomes, H. Dai, D. Chambers, V.R. Sanctis, K. Yang, R. Dong, A. Do, T. Ji, 
+S. Mukerjee, Comprehensive study on solvent dynamics in gel polymer electrolytes 
+for lithium-sulfur battery, ChemRxiv. (2025), https://doi.org/10.26434/chemrxiv- 
+2025-1szzf.
+[32] N. Rostami, M.G. Dekamin, E. Valiey, H. Fanimoghadam, Chitosan-EDTA-cellulose 
+network as a green, recyclable and multifunctional biopolymeric organocatalyst for 
+the one-pot synthesis of 2-amino-4 H-pyran derivatives, Sci. Rep. 12 (1) (2022) 
+8642.
+[33] D. Nedumaran, A. Pandurangan, Effect of H3PW12O40 impregnation on Sn-MCM- 
+41 mesoporous molecular sieves and their physico-chemical properties, Mater. Res. 
+Bull. 61 (2015) 1–8.
+[34] Y. Wang, Z. Cao, Z. Ma, G. Liu, H. Cheng, Y. Zou, L. Cavallo, Q. Li, J. Ming, Weak 
+solvent–solvent interaction enables high stability of battery electrolyte, ACS. 
+Energy Lett. 8 (3) (2023) 1477–1484.
+[35] X.-Y. Li, S. Feng, Y.-W. Song, C.-X. Zhao, Z. Li, Z.-X. Chen, Q. Cheng, X. Chen, X.- 
+Q. Zhang, B.-Q. Li, Kinetic evaluation on lithium polysulfide in weakly solvating 
+electrolyte toward practical lithium–sulfur batteries, J. Am. Chem. Soc. 146 (21) 
+(2024) 14754–14764.
+[36] Z. Li, L.P. Hou, N. Yao, X.Y. Li, Z.X. Chen, X. Chen, X.Q. Zhang, B.Q. Li, Q. Zhang, 
+Correlating polysulfide solvation structure with electrode kinetics towards long- 
+cycling lithium–sulfur batteries, Angewandte Chemie 135 (43) (2023) 
+e202309968.
+[37] V. Gutmann, Empirical parameters for donor and acceptor properties of solvents, 
+Electrochim. Acta 21 (9) (1976) 661–670.
+[38] W. Yao, C. Tian, C. Yang, J. Xu, Y. Meng, I. Manke, N. Chen, Z. Wu, L. Zhan, 
+Y. Wang, P-doped NiTe2 with Te-vacancies in lithium–sulfur batteries prevents 
+shuttling and promotes polysulfide conversion, Adv. Mater. 34 (11) (2022) 
+2106370.
+[39] H. Lin, L. Yang, X. Jiang, G. Li, T. Zhang, Q. Yao, G.W. Zheng, J.Y. Lee, 
+Electrocatalysis of polysulfide conversion by sulfur-deficient MoS 2 nanoflakes for 
+lithium–sulfur batteries, Energy Environ. Sci. 10 (6) (2017) 1476–1486.
+[40] Z. Liang, D. Yang, P. Tang, C. Zhang, J. Jacas Biendicho, Y. Zhang, J. Llorca, 
+X. Wang, J. Li, M. Heggen, Atomically dispersed Fe in a C2N based catalyst as a 
+sulfur host for efficient lithium–sulfur batteries, Adv. Energy Mater. 11 (5) (2021) 
+2003507.
+[41] Y. Yao, H. Wang, H. Yang, S. Zeng, R. Xu, F. Liu, P. Shi, Y. Feng, K. Wang, W. Yang, 
+A dual-functional conductive framework embedded with TiN-VN heterostructures 
+for highly efficient polysulfide and lithium regulation toward stable Li–S full 
+batteries, Adv. Mater. 32 (6) (2020) 1905658.
+[42] X. Sun, Y. Qiu, B. Jiang, Z. Chen, C. Zhao, H. Zhou, L. Yang, L. Fan, Y. Zhang, 
+N. Zhang, Isolated Fe-Co heteronuclear diatomic sites as efficient bifunctional 
+catalysts for high-performance lithium-sulfur batteries, Nat. Commun. 14 (1) 
+(2023) 291.
+[43] N. Ogihara, S. Kawauchi, C. Okuda, Y. Itou, Y. Takeuchi, Y. Ukyo, Theoretical and 
+experimental analysis of porous electrodes for lithium-ion batteries by 
+electrochemical impedance spectroscopy using a symmetric cell, J. Electrochem. 
+Soc. 159 (7) (2012) A1034–A1039, https://doi.org/10.1149/2.057207jes.
+[44] Z. Li, I. Sami, J. Yang, J. Li, R.V. Kumar, M. Chhowalla, Lithiated metallic 
+molybdenum disulfide nanosheets for high-performance lithium–sulfur batteries, 
+Nat. Energy 8 (1) (2023) 84–93, https://doi.org/10.1038/s41560-022-01175-7.
+[45] H. Dai, L. Gomes, D. Maxwell, S. Zamani, K. Yang, D. Atienza, N. Dale, S. Mukerjee, 
+Exploring the role of an electrolyte additive in suppressing surface reconstruction 
+of a Ni-rich NMC cathode at ultrahigh voltage via enhanced in situ and operando 
+characterization methods, ACS. Appl. Mater. Interfaces. 16 (7) (2024) 8639–8654.
+[46] S. Lang, S.H. Yu, X. Feng, M.R. Krumov, H.D. Abru˜na, Understanding the 
+lithium–sulfur battery redox reactions via operando confocal Raman microscopy, 
+Nat. Commun. (2022) 13, https://doi.org/10.1038/s41467-022-32139-w.
+[47] J.P. Smith, E.C. Holahan, F.C. Smith, V. Marrero, K.S. Booksh, A novel multivariate 
+curve resolution-alternating least squares (MCR-ALS) methodology for application 
+in hyperspectral Raman imaging analysis, Analyst 144 (18) (2019) 5425–5438, 
+https://doi.org/10.1039/C9AN00787C.
+[48] J. Felten, H. Hall, J. Jaumot, R. Tauler, A. De Juan, A. Gorzs´as, Vibrational 
+spectroscopic image analysis of biological material using multivariate curve 
+resolution–alternating least squares (MCR-ALS), Nat. Protoc. 10 (2) (2015) 
+217–240.
+[49] H. Motegi, Y. Tsuboi, A. Saga, T. Kagami, M. Inoue, H. Toki, O. Minowa, T. Noda, 
+J. Kikuchi, Identification of reliable components in multivariate curve resolution- 
+alternating least squares (MCR-ALS): a data-driven approach across metabolic 
+processes, Sci. Rep. 5 (1) (2015) 15710.
+[50] Y.-C. Lu, Q. He, H.A. Gasteiger, Probing the lithium–sulfur redox reactions: a 
+rotating-ring disk electrode study, J. Phys. Chem. C 118 (11) (2014) 5733–5741.
+[51] Y. Zhong, Q. Wang, S.-M. Bak, S. Hwang, Y. Du, H. Wang, Identification and 
+catalysis of the potential-limiting step in lithium-sulfur batteries, J. Am. Chem. Soc. 
+145 (13) (2023) 7390–7396.
+[52] Y. Ding, X. Li, Y. Chen, Y. Pi, J. Yu, L. Yuan, F. Wang, Hit two birds with one stone: 
+a bi-functional selenium-substituted organosulfur polymer additive for high- 
+performance lithium-sulfur batteries, Chem. Eng. J. 482 (2024) 148803, https:// 
+doi.org/10.1016/j.cej.2024.148803.
+[53] W. Lu, Z. Wang, G. Sun, S. Zhang, L. Cong, L. Lin, S. Chen, J. Liu, H. Xie, Y. Liu, 
+Anchoring polysulfide with artificial solid electrolyte interphase for dendrite-free 
+and low N/P ratio Li-S batteries, J. Energy Chem. 80 (2023) 32–39, https://doi. 
+org/10.1016/j.jechem.2023.01.032.
+[54] L.-Y. Yao, L.-P. Hou, Y.-W. Song, M. Zhao, J. Xie, B.-Q. Li, Q. Zhang, J.-Q. Huang, 
+X.-Q. Zhang, Recycling inactive lithium in lithium–sulfur batteries using organic 
+polysulfide redox, J. Mater. Chem. A 11 (14) (2023) 7441–7446, https://doi.org/ 
+10.1039/D3TA00096F.
+[55] R. Xu, J. Shao, K. Gao, Y. Chen, J. Li, Y. Liu, X. Hou, H. Ji, S. Yi, L. Zhang, et al., 
+Highly stable lithium sulfur batteries enhanced by flocculation and solidification of 
+soluble polysulfides in routine ether electrolyte, J. Colloid. Interface Sci. 649 
+(2023) 223–233, https://doi.org/10.1016/j.jcis.2023.06.065.
+[56] Y. Liu, K. Xiao, S. Yang, J. Sun, S. Li, X. Liu, D. Cai, Y. Zhang, H. Nie, Z. Yang, 
+Organic electrolyte additive: dual functions toward fast sulfur conversion and 
+stable Li deposition for advanced Li–S batteries, Small. (2024) 2309890.
+[57] W. Zhang, F. Ma, Q. Wu, Z. Zeng, W. Zhong, S. Cheng, X. Chen, J. Xie, Dual- 
+functional organotelluride additive for highly efficient sulfur redox kinetics and 
+lithium regulation in lithium–sulfur batteries, Energy Environ. Mater. 6 (3) (2023) 
+e12369, https://doi.org/10.1002/eem2.12369.
+H. Dai et al.                                                                                                                                                                                                                                      
+Energy Storage Materials 76 (2025) 104123 
+12 

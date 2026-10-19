@@ -1,0 +1,866 @@
+
+<<PAGE 1>>
+ChemistrySelect
+Research Article
+doi.org/10.1002/slct.202405238
+www.chemistryselect.org
+SupramoleculesAppliedtoEnergyStorageDevices:Studyon
+theMechanismofCucurbiturilInhibitionofthePolysulfide
+ShuttleEffect
+Huayan Zhang,[a] Xuecheng Zhang,[a] He Yuan,[a] Yi Liu,[a] Xinyuan Jiang,[a] Mengyao Wang,[a]
+Qiqi Zhang,[a] Ju Xie,*[a] and Lubin Ni*[a]
+Lithium-sulfur (Li-S) batteries are considered promising candi-
+dates for next-generation high-energy-density storage devices;
+however, their commercialization remains hindered by several
+challenges. Supramolecular macrocyclic compounds, owing to
+their unique structures and properties, hold significant potential
+for improving Li-S battery performance. In this study, the inclu-
+sion mechanism of lithium polysulfides (LiPSs) by cucurbiturils
+(CB[n], n = 6,7) was systematically investigated. Density func-
+tional theory (DFT) calculations were employed to analyze the
+recognition capabilities of CB[6] and CB[7] for polysulfides. The
+results indicate that both CB[6] and CB[7] effectively encapsu-
+late polysulfides through non-covalent interactions. Specifically,
+CB[6] exhibits a stronger affinity for medium-chain sulfur species,
+with the most pronounced encapsulation observed for Li2S4. In
+contrast, CB[7] demonstrates superior encapsulation efficiency
+for longer-chain sulfur species, with the most stable inclusion
+occurring for Li2S6. Furthermore, molecular dynamics (MD) simu-
+lations based on DFT calculations revealed that Li2S4@CB[6] and
+Li2S6@CB[7] exhibit high stability in battery electrolytes. These
+findings suggest that CB[6] and CB[7], as supramolecular mate-
+rials, can effectively inhibit the dissolution and migration of
+polysulfides in Li-S batteries, mitigating the “shuttle effect” and
+significantly enhancing battery cycle life and charge-discharge
+efficiency. This research provides valuable insights into the
+optimization of materials for Li-S battery applications.
+1. Introduction
+The increasing energy consumption and environmental pollu-
+tion associated with conventional fuels have driven the ongoing
+search for alternative energy sources. Among them, rechargeable
+lithium-sulfur (Li-S) batteries have garnered significant research
+attention due to their high energy density (2600 Wh/kg), excel-
+lent theoretical specific capacity (1675 mAh/g), low cost, non-
+toxicity, environmental friendliness, and abundant raw material
+reserves[1–3] However, despite these advantages, Li-S batteries
+still face several challenges in practical applications, including
+active sulfur loss, low Coulombic efficiency, limited cycle life,
+and self-discharge, which hinder their widespread adoption.[3,4]
+During the charging and discharging process of Li-S batter-
+ies, soluble long-chain lithium polysulfides (Li2Sn, n = 4–8) are
+generated. Due to concentration gradients, these polysulfides
+migrate across the battery separator and reach the lithium
+anode surface, where they are reduced to short-chain polysul-
+fides (Li2Sn, n = 2–4). Driven by both the electric field and
+concentration differences, the short-chain polysulfides then dif-
+fuse back to the cathode via the electrolyte, where they are
+[a] H. Zhang, X. Zhang, H. Yuan, Y. Liu, X. Jiang, M. Wang, Q. Zhang, J. Xie, L. Ni
+School of Chemistry & Chemical Engineering, Yangzhou University,
+Yangzhou, Jiangsu 225002, P. R. China
+E-mail: xieju@yzu.edu.cn
+lbni@yzu.edu.cn
+Supporting information for this article is available on the WWW under
+https://doi.org/10.1002/slct.202405238
+re-oxidized to long-chain polysulfides (n = 4–8). This continuous
+cycling of polysulfides between electrodes through the sepa-
+rator is known as the “shuttle effect”. A severe shuttle effect
+can lead to uncontrolled volume expansion and lithium den-
+drite growth, ultimately compromising the stability and safety of
+Li-S batteries.[5–8] To address these challenges, researchers have
+explored various strategies, including designing efficient and
+stable sulfur host materials,[9,10] modifying battery separators,[11]
+incorporating supramolecular frameworks,[12] and developing
+atom-doped materials.[13] Regardless of the approach, the pri-
+mary objective remains to facilitate rapid molecular transfor-
+mation of LiPSs,[8] suppress the shuttle effect, and enhance
+the exposure of adsorption sites for LiPSs.[14,15] In recent years,
+there has been increasing interest in the study of macrocyclic
+supramolecular compounds due to their unique structures, host-
+guest chemical properties,[16–22] and multifunctional applications
+across various fields, including materials science and energy
+storage.[23–25] Several studies have explored the potential use
+of macrocyclic supramolecules in Li-S batteries. For example,
+Sun et al.[26] developed ion-imprinted macroporous membranes
+(IIMMs) using crown ethers, which showed high selectivity for
+lithium ions. In 2018, Yang et al.[27] used β-cyclodextrin poly-
+mers hybridized with graphene as efficient sulfur host materials
+to prevent LiPSs from shuttling, leveraging host-guest interac-
+tions within the supramolecular system. More recently, crown
+ether-based supramolecular covalent organic frameworks,[28]
+polyoxometalate-cyclodextrin cluster organic supramolecular
+frameworks,[29] and Keggin-type polyoxometalate ester-crown
+ether complexes[30] have been investigated for their applications
+in Li-S batteries.
+ChemistrySelect 2025, 10, e202405238 (1 of 10)
+© 2025 Wiley-VCH GmbH
+
+<<PAGE 2>>
+ChemistrySelect
+Research Article
+doi.org/10.1002/slct.202405238
+Cucurbituril (CB[n]) is a class of supramolecular macrocyclic
+compounds that feature a central cavity and two polar car-
+bonyl ports at the top and bottom. Its structure, resembling a
+pumpkin, is a hollow, gourd-shaped macromolecule formed by
+n glycoluril units, where the number of glycoluril units deter-
+mines the size of the cavity in CB[n].[31,32] The unique cavity
+structure, coupled with its highly symmetrical and rigid archi-
+tecture, offers substantial advantages for the construction of
+novel supramolecular self-assembled complexes based on CB[n].
+These features also enhance the encapsulation and recogni-
+tion of guest molecules, which may include biomolecules, small
+organic compounds, or LiPSs.[33–35] Notably, in 2017, Zhang et al.
+demonstrated the use of supramolecular cucurbituril CB[6] as
+a separator coating to facilitate the storage and transport of
+polysulfides in Li-S batteries.[36] Despite extensive research on
+supramolecular macrocyclic compounds in Li-S batteries, stud-
+ies on cucurbiturils in this context remain limited. We believe
+that exploring the application of cucurbiturils in Li-S batteries
+through both experimental and theoretical research holds signif-
+icant potential and value. Additionally, the precise mechanism by
+which cucurbiturils inhibit the polysulfide shuttle effect remains
+unclear. Therefore, it is crucial to deepen our understanding of
+these mechanisms to provide insights for developing materials
+that can effectively mitigate the polysulfide shuttle effect. Com-
+putational simulations,[37–39] as powerful tools, are commonly
+employed to address these mechanistic challenges.
+In this study, we propose a computational method to inves-
+tigate the encapsulation mechanism of LiPSs by cucurbiturils
+(CB[n]). Given that the size of the CB[n] cavity and the diameter
+of its doorway may selectively influence the specific recognition
+of guest molecules,[40] we selected the experimentally validated
+cucurbituril CB[6] and its homolog CB[7], for comparison. Density
+functional theory (DFT) calculations were employed to elucidate
+the molecular recognition mechanism of CB[n] for polysulfides.
+Additionally, molecular dynamics (MD) simulations were con-
+ducted to examine the storage and transport of polysulfides by
+CB[n] within the battery’s operating environment. The aim of
+this study is to demonstrate how these macrocyclic structures
+can enhance the performance of Li-S batteries through theo-
+retical calculations and simulations, to explore their potential
+application areas, and to provide theoretical guidance for future
+experimental research.
+2. Computational Detail
+2.1. DFT Calculations
+In the investigation of lithium polysulfides (LiPSs) and cucurbi-
+turils (CB[n]), comprehensive structural optimizations were car-
+ried out using DFT calculations at the M06-2X/def2-SVP level of
+theory. The M06-2X functional is a meta-GGA hybrid functional
+that incorporates a high proportion of Hartree–Fock exchange
+(approximately 54%). It is particularly effective in describing
+non-covalent interactions, transition state energies, and main-
+group chemistry, making it well-suited for studies involving
+hydrogen bonding, π-π interactions, and molecular reaction
+mechanisms.[41,42] The def2-SVP basis set was chosen for its
+optimal balance between computational accuracy and efficiency.
+Following structural optimization, frequency analysis was
+performed at the same theoretical level to confirm the absence
+of imaginary frequencies, ensuring the stability of the optimized
+structures. Additionally, the frequency analysis provided thermo-
+dynamic properties at 298.15 K and 1 atm. All DFT calculations
+were conducted using the Gaussian 16 package.[43]
+In this study, the formation of the host-guest complex is rep-
+resented by Reaction (1). The binding energy (E) and thermo-
+dynamic properties (H, G) are calculated using Equation (2).
+CB [n] + LiPSs →LiPSs@CB [n]
+(1)
+X = XLiPSs@CB[n] −
+
+XCB[n] + XLiPSs
+
+(2)
+Here, XLiPSs@CB[n], XCB[n], and XLiPSs represent the respective
+energies (E) including zero-point vibration energies or thermody-
+namic terms (H and G) of the LiPSs@CB[n], CB[n] and the guest
+species (LiPSs), respectively.
+The formation mechanism of sulfur chains follows the reac-
+tions below.[44]
+I: Li2Sn, n ≥4)
+S8 + 2Li+ + 2e−→Li2S8
+3Li2S8 + 2Li+ + 2e−→4Li2S6
+Li2S8 + 2Li+ + 2e−→2Li2S4
+II:(Li2Sn, n ≤4)
+Li2S4 + 2Li+ + 2e−→2Li2S2
+Li2S2 + 2Li+ + 2e−→2Li2S
+In this work, we systematically analyzed the interaction char-
+acteristics of CB[6] and CB[7] with Li2S2, Li2S4, Li2S6, and Li2S8
+molecules using the Interacting gradient model for Hirschfeld
+partitioning (IGMH) method.[45] The IGMH method, which com-
+bines isosurface maps and gradient scatter plots, provides a
+quantitative and intuitive approach to assessing the interaction
+strength and characteristics between host and guest molecules.
+The foundation of IGMH is established through the use of
+Equation (3).
+IGMH (r) = sign (λ2) ρ (r) /∇ρ
+(3)
+The IGMH method not only identifies the interaction regions
+but also maps the sign(λ2)ρ(r) function onto the isosurfaces
+of δg, using different colors to represent interaction types and
+intensities. In Equation (3), λ2 is the second-largest eigenvalue
+of the electron density Hessian matrix, and sign() denotes the
+ChemistrySelect 2025, 10, e202405238 (2 of 10)
+© 2025 Wiley-VCH GmbH
+ 23656549, 2025, 11, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/slct.202405238 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 3>>
+ChemistrySelect
+Research Article
+doi.org/10.1002/slct.202405238
+Figure 1. The IGMH approach presents a chemical explanation of (λ2)ρ and a standard coloring scale.
+sign function. ρ(r) represents the electron density at a given
+point r, where higher values in the interaction region indicate
+stronger interactions. The product of sign(λ2) and ρ(r), yield-
+ing sign(λ2)ρ(r), differentiates interaction types and intensities.
+This serves as a standard coloring scheme in IGMH plots, with
+different colors corresponding to conventional interpretations,
+as illustrated in Figure 1.[45] The Multiwfn program[46–48] was
+employed for IGMH, frontier molecular orbital (FMO), and elec-
+trostatic potential (ESP) analyses, with visualization performed
+using the VMD program.[49]
+2.2. Molecular Dynamics (MD) Simulations
+Suppressing the polysulfide shuttle effect is a key factor
+in enhancing the performance of Li-S batteries. To investi-
+gate the host-guest interactions between CB[n] and LiPSs in
+commonly used electrolyte solvents 1,3-dioxolane (DOL) and
+dimethoxyethane (DME)[50] molecular dynamics (MD) simula-
+tions were conducted using the Materials Studio (MS) software
+platform.[51] All MD simulations were performed with the uni-
+versal force field (UFF).[52–54] Previous experimental studies have
+demonstrated that graphene serves as a highly conductive sub-
+strate and a soft template for directing the growth of CB
+nanoparticles.[36] Given that cucurbituril particles loaded onto
+graphene are at the nanoscale, modeling tens of thousands
+of nanocomposites is computationally impractical. Therefore,
+our simulations primarily focus on elucidating the host-guest
+complex behavior between CB[n] and LiPSs in electrolyte sol-
+vents, whereas graphene is considered a structural support and
+conductive substrate, as observed in previous studies. Since
+graphene does not directly influence the host-guest interactions
+under investigation, it is not explicitly included in the model.
+In MS, an amorphous cell (AC) module was used to construct
+a cubic simulation box containing a single host-guest complex
+and 500 solvent molecules (DOL:DME = 1:1). The system first
+underwent a relaxation process, followed by multiple geometric
+optimizations and simulated annealing steps using the Forcite
+module to establish a well-equilibrated simulation setup and
+identify the most stable conformation. Finally, the system was
+simulated in an NVT ensemble[55,56] with a time step of 1 fs,
+employing the Nosé method[57] to maintain a constant volume
+and a temperature of 298 K. Trajectory data was recorded at stan-
+dard intervals of 5 ps, generating a total of 4000 frames over a
+simulation period of 20 ns.
+Figure 2. Structures and relevant parameters (in Å) of CB[6] and CB[7].
+3. Results and Discussion
+CB[n] represents a broad class of supramolecular macrocyclic
+compounds, where n denotes the number of glycoluril units,
+thereby determining the cavity size of each cucurbituril.[40]
+Among these, CB[6] was first reported by Xie et al. in 2017 as a
+supramolecular capsule capable of reversibly storing and trans-
+porting LiPSs in Li-S batteries. The research team experimentally
+demonstrated that a composite film[36] was successfully fabri-
+cated using conductive graphene-guided CB[6] growth, signifi-
+cantly enhancing the performance of Li-S batteries. In this study,
+we selected cucurbit[6]uril (CB[6]) and cucurbit[7]uril (CB[7]),
+hereinafter referred to as CB[6] and CB[7], as host molecules to
+investigate their mechanisms of LiPSs storage and transport.
+Understanding the structure and size of the host CB[n] and
+the guest molecule enables a preliminary assessment of whether
+the host cavity can encapsulate the guest. As shown in Figure 2,
+the optimized structures and key parameters of CB[6] and CB[7]
+were obtained using M06-2X/def2-SVP calculations. The opti-
+mized structures retain a highly symmetrical configuration, with
+the black dashed lines in the figure indicating the port size of
+7.14 Å for the upper and lower polar carbonyl groups, whereas
+the distance between the two ports measures 6.19 Å. The central
+cavity, measuring 11.67 Å, is highlighted by an orange-red dashed
+line in the figure. LiPSs were also optimized using the same com-
+putational method, with the longest lithium polysulfide chain
+ChemistrySelect 2025, 10, e202405238 (3 of 10)
+© 2025 Wiley-VCH GmbH
+ 23656549, 2025, 11, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/slct.202405238 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 4>>
+ChemistrySelect
+Research Article
+doi.org/10.1002/slct.202405238
+Figure 3. Frontier molecular orbitals (FMO) of CB[6] and CB[7], along with electrostatic potential (ESP) maps.
+measuring 5.12 Å (see Supporting Information, Figures S1 and S2,
+for detailed parameters and electrostatic potential (ESP) plots of
+LiPSs). These results suggest that, based on cavity size, CB[6] is
+capable of encapsulating LiPSs. Furthermore, the cavity size of
+CB[7] is significantly larger than that of CB[6], allowing for a com-
+parative investigation of how hosts with different cavity sizes
+interact with and store polysulfides.
+3.1. Frontier Molecular Orbitals and ESP
+The highest occupied molecular orbital (HOMO) and the lowest
+unoccupied molecular orbital (LUMO) are fundamental concepts
+in molecular orbital (MO) theory and frontier molecular orbital
+(FMO) theory.[58,59] These orbitals serve as essential tools for
+understanding chemical reaction mechanisms and predicting
+molecular properties. As shown in Figure 3, the frontier molec-
+ular orbitals (HOMO and LUMO) of the host molecules CB[6]
+and CB[7] are depicted. Both host molecules exhibit similar
+orbital distributions. Specifically, the HOMO is primarily local-
+ized on the urea units of the cucurbiturils, whereas the LUMO
+is primarily localized around the hydrogen and carbon atoms
+of the cucurbituril structure. Furthermore, the overlap between
+the HOMO and LUMO orbitals facilitates charge transfer within
+the molecule, enhancing its potential for charge delocalization
+and reactivity. As shown in Figure 3, The ESP mapping is dis-
+played alongside the extrema of CB[6] and CB[7], illustrating
+the electrostatic surface potential characteristics of their molecu-
+lar structures. CB[6] exhibits a significantly negative electrostatic
+potential (−60.69 kcal/mol) at the upper and lower portals,
+whereas a positively charged region (31.16 kcal/mol) is observed
+near the periphery of its glycoluril units. The negative regions
+correspond to areas of high electron density, primarily associ-
+ated with carbonyl groups, whereas the positive regions may be
+attributed to the presence of positively charged hydrogen atoms.
+Similarly, CB[7] exhibits highly negative portals (−65.99 kcal/mol)
+and a positively charged periphery near its glycoluril units
+(30.81 kcal/mol). The green coloration within the central cav-
+ity indicates near electrostatic neutrality, suggesting that both
+CB[6] and CB[7] can effectively bind neutral or charged guest
+molecules.
+The more negative potential of CB[7] indicates a slightly
+stronger affinity for such guests compared to CB[6]. However,
+the suitability of a particular cucurbituril also depends on the
+size of the guest molecule, which plays a crucial role in deter-
+mining the preferred host-guest interaction. Further analysis of
+the HOMO-LUMO energy gaps of CB[6] and CB[7] reveals val-
+ues of approximately 9.63 and 9.62 eV, respectively. This indicates
+that CB[6] and CB[7] exhibit nearly identical electronic properties
+in terms of the HOMO-LUMO gap, which is a key parameter in
+understanding their reactivity and stability. The comparable gap
+values suggest that both CB[6] and CB[7] can participate in simi-
+lar electronic interactions with guest molecules. Additionally, the
+relatively large HOMO-LUMO gap implies high overall stability
+and low kinetic reactivity, making these cucurbituril molecules
+well-suited for encapsulating polysulfides in lithium-sulfur (Li-S)
+batteries.[60]
+To further investigate their electronic structures, the partial
+density of states (PDOS) calculation was performed for cucurbi-
+turils. The PDOS plots of CB[6] (Figure S3a) and CB[7] (Figure S3b)
+illustrate the electronic state distributions of carbon (C), nitrogen
+(N), oxygen (O), and hydrogen (H). While the overall PDOS trends
+for both compounds are similar, subtle differences are observed.
+The electronic density of states for C is comparable in CB[6]
+and CB[7], with the peak in CB[7] slightly shifted toward higher
+energy. In contrast, the contribution of N is notably enhanced
+in CB[7], suggesting a more significant role of nitrogen in its
+electronic structure. The contributions of O and H remain rel-
+atively unchanged, with O exhibiting a similar distribution in
+both compounds and H showing minimal contribution. These
+subtle differences may influence their interactions with guest
+molecules in distinct ways. By analyzing these structural and
+electronic properties, we gain deeper insights into the encapsu-
+lation and storage capabilities of CB[6] and CB[7] for polysulfides,
+underscoring their potential applications in Li-S batteries.
+3.2. Host-Guest Inclusion Complexes
+The 1:1 inclusion complexes formed by CB[6] and CB[7] with
+LiPSs were obtained using the M06-2X/def2-SVP method. Their
+optimized structures and frontier molecular orbitals (FMOs) are
+ChemistrySelect 2025, 10, e202405238 (4 of 10)
+© 2025 Wiley-VCH GmbH
+ 23656549, 2025, 11, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/slct.202405238 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 5>>
+ChemistrySelect
+Research Article
+doi.org/10.1002/slct.202405238
+Figure 4. Geometric structures and frontier molecular orbitals (FMO) of the 1:1 host-guest inclusion complexes LiPSs@CB[6] and LiPSs@CB[7].(H = HOMO,
+L = LUMO).
+presented in Figure 4, whereas the corresponding infrared (IR)
+spectra from frequency analysis are shown in Figure S4 in the
+Supporting Information. In all optimized structures, the high-
+est occupied molecular orbital (HOMO) is localized on the
+adsorbed LiPSs, indicating a strong electron-donating ability,
+whereas the lowest unoccupied molecular orbital (LUMO) is pri-
+marily situated on the macrocyclic cucurbituril cavity, suggesting
+charge transfer between the macrocycle and the LiPSs. How-
+ever, as the chain length of the LiPSs increases, the LUMO
+orbitals gradually shift, particularly in CB[6]. Beginning with Li2S4,
+as the electron-accepting ability of polysulfides increases, the
+LUMO orbitals progressively expand onto the polysulfide surface,
+reflecting the transition from short-chain to long-chain sulfur
+species. By the time Li2S8 is reached, it becomes evident that
+long-chain sulfur species exhibit both strong electron-accepting
+and electron-donating capabilities. This further highlights their
+extreme instability and their tendency to convert into short-
+chain sulfur species through electron transfer. In CB[7], the
+electron-accepting ability of the macrocycle appears to be
+stronger relative to short-chain sulfur species. However, with
+Li2S8, the polysulfides remain dominant, corroborating the obser-
+vations from the ESP maps. The ESP maps of the host-guest
+inclusion complexes are provided in the Supporting Information
+(Figure S5), illustrating the electron transfer interactions between
+the host and guest molecules. The ESP maps indicate that after
+encapsulating LiPSs within the macrocyclic cavity, the complex
+still exhibits a negative potential, primarily due to the presence
+of sulfur inside the cavity. Notably, in the ESP maps of CB[6],
+slight color variations are observed at points a and b, whereas in
+CB[7], distinct positive potentials are evident at points c, d, and
+e. From a geometric perspective, the guest molecules LiPSs are
+encapsulated within the cucurbituril cavity. In CB[6], the guest
+molecules are predominantly positioned in the central region of
+the cavity. However, in CB[7], short-chain sulfur species, such as
+Li2S2 and Li2S4, tend to localize toward one side of the cavity,
+causing slight deformation of the macrocyclic structure.
+Thus, we hypothesize that although both CB[6] and CB[7]
+can encapsulate and recognize LiPSs, their cavities exhibit dis-
+tinct encapsulation and recognition effects depending on the
+sulfur chain length. We further speculate that the interaction
+forces between sulfur chains and the macrocyclic cavity may
+contribute to the slight deformation of the host structure and
+the shift in the guest’s spatial distribution within the cavity. To
+validate this hypothesis, further analysis and visualization using
+the interacting gradient model for Hirschfeld partitioning (IGMH)
+are necessary.
+3.3. Interaction Analysis in Host-Guest Complexes
+The IGMH method is fundamentally based on decomposing the
+electronic density of a system into contributions from individ-
+ual molecules or fragments using Hirshfeld partitioning. This
+decomposition enables the calculation of the electronic density
+gradient in interaction regions, providing a quantitative assess-
+ment of the strength and nature of intermolecular interactions.
+ChemistrySelect 2025, 10, e202405238 (5 of 10)
+© 2025 Wiley-VCH GmbH
+ 23656549, 2025, 11, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/slct.202405238 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 6>>
+ChemistrySelect
+Research Article
+doi.org/10.1002/slct.202405238
+Figure 5. Colored isosurface maps (left) and colored scatter plots (right) of the CB[n]@LiPSs complexes.
+By combining isosurface maps and gradient scatter plots, the
+IGMH method serves as a powerful analytical tool for visualizing
+the spatial distribution and intensity variations of intermolecular
+interactions. This visualization aids in comprehending complex
+inclusion processes, offering valuable insights into host-guest
+interactions at the molecular level.
+As shown in Figure 5, the inclusion process of polysulfides
+(Li2S2, Li2S4, Li2S6, and Li2S8) with CB[6] and CB[7] is primar-
+ily governed by non-covalent interactions, including van der
+Waals forces, electrostatic interactions, and steric effects. By inte-
+grating the isosurface plot on the left with the scatter plot
+on the right, a more detailed analysis of the forces between
+the host and guest molecules can be conducted. The isosur-
+face plot illustrates the spatial distribution of interaction forces
+using a color gradient, which can be interpreted using the
+standard color scale provided on the right side of the scat-
+ter plot. This allows for the identification of interaction types.
+For a detailed explanation of how to interpret the interaction
+forces based on the color scale, refer to the annotation in
+Figure 1.
+In the scatter plot, the blue and green regions correspond
+to attractive forces, such as van der Waals and electrostatic
+interactions, whereas the red regions indicate repulsive forces,
+typically caused by steric hindrance and electron repulsion.
+The isosurface and scatter plots clearly demonstrate that van
+der Waals and electrostatic interactions are the dominant and
+most uniformly distributed forces in host-guest interactions. For
+short-chain polysulfides (Li2S2 and Li2S4), CB[6] exhibits strong
+encapsulation capabilities. The isosurface maps reveal a uni-
+form distribution of light blue and light green regions, indicating
+that van der Waals and electrostatic forces predominantly gov-
+ern the system, with minimal repulsive interactions between the
+ChemistrySelect 2025, 10, e202405238 (6 of 10)
+© 2025 Wiley-VCH GmbH
+ 23656549, 2025, 11, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/slct.202405238 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 7>>
+ChemistrySelect
+Research Article
+doi.org/10.1002/slct.202405238
+Table 1. Total charge values of the host and the guest in the host-guest
+complex.
+Li2S4@CB[6]
+Total Charge
+Li2S6@CB[7]
+Total Charge
+Host CB[6]
+−0.016
+Host CB[7]
+−0.013
+Guest Li2S4
+0.016
+Guest Li2S6
+0.013
+molecules. In contrast, for long-chain polysulfides (Li2S6, Li2S8),
+some areas of the isosurface plot extend into the 0.01–0.03
+range on the scatter plot, suggesting that steric hindrance, lead-
+ing to stronger repulsive interactions Consequently, the CB[6]
+cavity is better suited for encapsulating short-chain polysul-
+fides, facilitating efficient encapsulation and enhancing binding
+stability. By comparison, CB[7], with its larger cavity, exhibits
+greater adaptability for long-chain polysulfides. The isosurface
+plot shows that van der Waals and electrostatic interactions
+between the Li2S6, Li2S8, and CB[7] remain strong and uni-
+formly distributed, with distinct light blue and light green
+regions. However, for short-chain polysulfides (Li2S2 and Li2S4),
+their shorter molecular chains tend to localize on one side of
+the CB[7] cavity, causing uneven stress distribution. This imbal-
+ance is likely to result in less stable interactions within the
+larger cavity, a finding further corroborated by binding energy
+analysis.
+In conclusion, CB[6] is better suited for encapsulating shorter-
+chain polysulfides (Li2S2 and Li2S4), whereas CB[7] is more effec-
+tive for encapsulating longer-chain polysulfides (Li2S6 and Li2S8).
+The larger molecular cavity of CB[7] effectively reduces steric hin-
+drance when accommodating longer polysulfide chains, leading
+to more stable binding interactions. This comprehensive analysis
+of intermolecular interactions offers valuable theoretical insights
+into the potential application of cucurbit[n]urils in Li-S batteries.
+3.4. Electron Transfer Analysis in Complexes
+Natural bond orbital (NBO) analysis is a powerful method for
+investigating charge transfer and conjugation interactions within
+molecular systems.[61] In this work, NBO analysis divided the
+inclusion complex into two primary fragments: the host frag-
+ment (CB[n], fragment 1) and the subdivided guest fragments,
+namely fragment 2 (S element), fragment 3 (Li element), and
+fragment 4 (Li element). For the charge distribution of these
+subdivided guest fragments, refer to Tables S1 and S2 in the
+Supporting Information. Furthermore, the direction of charge
+transfer in the host-guest complex can be determined by analyz-
+ing the charge distribution of these molecular fragments. Table 1
+presents the total charge distribution of the host fragment, guest
+fragment, and the overall host-guest complex. The results indi-
+cate that the host fragment carries a negative charge, whereas
+the guest fragment carries a positive charge, confirming that
+charge transfer occurs from the guest to the host. The NBO
+analysis results are consistent with the structural and electronic
+analyses of the host, guest, and host-guest complex, further
+validating the findings above.
+Table 2. Binding energies and thermodynamic changes for the inclusion
+complexes of CB[6] and CB[7] with LiPSs.
+Complex
+Eb/(kJ mol−1)a)
+H/(kJ·mol−1)
+G/(kJ·mol−1)
+Li2S2@CB[6]
+−119.00
+−173.87
+−113.99
+Li2S4@CB[6]
+−177.45
+−260.03
+−187.23
+Li2S6@CB[6]
+−149.91
+−251.53
+−164.98
+Li2S8@CB[6]
+−70.24
+−196.30
+−100.89
+Li2S2@CB[7]
+−89.93
+−147.37
+−34.56
+Li2S4@CB[7]
+−151.76
+−205.64
+−151.30
+Li2S6@CB[7]
+−192.72
+−263.68
+−193.91
+Li2S8@CB[7]
+−177.02
+−176.13
+−209.34
+a)Including ZPVE and BSSE Corrections
+3.5. Energy of Host-Guest Complexes
+The energy changes associated with the formation of host-guest
+complexes provide insights into the recognition ability of the
+host molecule. The initial energy-related data are presented in
+Table S3 in the Supporting Information.
+To enhance energy accuracy, the basis set superposition error
+(BSSE) correction[62] and Zero-Point Vibrational Energy(ZPVE)
+is incorporated into the binding energy (E), denoted as Eb.
+The corrected binding energy (Eb) is calculated using Equa-
+tion (4), whereas H and G are derived from Equation (2). In
+this study, the values of Eb, H, and G are summarized in
+Table 2.
+Eb = ELiPSs@CB[n] −
+
+ECB[n] + ELiPSs
+
++ EBSSE
+(4)
+Table 2 presents the binding energies (Eb), enthalpy
+changes (H), and Gibbs free energy changes (G) for the host-
+guest complexes of CB[6] and CB[7] with various lithium polysul-
+fides (LiPSs). The data indicate that CB[6] exhibits the strongest
+interaction with Li2S4, with a binding energy of −177.45 kJ/mol,
+an enthalpy change of −260.03 kJ/mol, and a Gibbs free energy
+change of −187.23 kJ/mol, suggesting that the Li2S4@CB[6] com-
+plex is the most thermodynamically stable. In contrast, the
+interaction between Li2S8 and CB[6] is the weakest, with a bind-
+ing energy of only −70.24 kJ/mol. This weaker interaction is
+attributed to the relatively small cavity of CB[6], which induces
+significant spatial repulsion when accommodating the larger
+Li2S8 molecule. For CB[7], the strongest interaction occurs with
+Li2S6, featuring a binding energy of −192.72 kJ/mol, an enthalpy
+change of −263.68 kJ/mol, and a Gibbs free energy change of
+−193.91 kJ/mol, indicating that the Li2S6@CB[7] complex is the
+most thermodynamically stable. Conversely, the weakest encap-
+sulation is observed for Li2S2, as CB[7]’s larger cavity increases the
+interaction distance with the smaller Li2S2 molecule, leading to
+weaker van der Waals forces.
+Additionally, these results support our initial hypothesis that
+cucurbiturils with different cavity sizes exhibit selective encapsu-
+lation behaviors toward guest molecules.
+Overall, CB[6] and CB[7] exhibit distinct thermodynamic
+behaviors when encapsulating LiPSs of varying chain lengths.
+ChemistrySelect 2025, 10, e202405238 (7 of 10)
+© 2025 Wiley-VCH GmbH
+ 23656549, 2025, 11, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/slct.202405238 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 8>>
+ChemistrySelect
+Research Article
+doi.org/10.1002/slct.202405238
+Figure 6. Snapshots selected from MD simulations of Li2S4@CB[6] and Li2S6@CB[7] in a (DOL:DME = 1:1) solvent.
+CB[6] forms the most stable complex with Li2S4, whereas CB[7]
+exhibits the strongest and most thermodynamically stable inter-
+action with Li2S6. These findings provide crucial theoretical
+insights into the potential application of CB[6] and CB[7] as
+encapsulating materials for polysulfides in Li-S batteries.
+3.6. MD Simulations of LiPSs@CB[n]
+To further investigate the molecular encapsulation capabilities
+of CB[n], MD simulations were performed in the electrolyte sol-
+vent of Li-S batteries. Based on DFT calculations, CB[n] has been
+identified as a promising host for Li2S4 and Li2S6. However,
+the underlying encapsulation mechanisms remain unexplored in
+experimental studies.
+This section presents the MD simulation results for the
+Li2S4@CB[6] and Li2S6@CB[7] complexes in a solvent mix-
+ture of DME and DOL. For each MD system, temperature
+and energy fluctuations within the trajectory files remained
+within 5%,[52] and all systems successfully reached equilib-
+rium. The structural evolution of the host-guest complexes
+was monitored over a 20 ns simulation, with snapshots
+recorded and analyzed at 5 ns, 10 ns, 15 ns, and 20 ns
+intervals. Representative snapshots extracted from the MD
+simulations
+are
+displayed
+in
+the
+corresponding
+figures.
+The relationships between energy, temperature, and sim-
+ulation time are provided in the Supporting Information
+(Figure S6).
+As shown in Figure 6, both host-guest complexes remained
+stable in the solvent throughout the simulation, with Li2S4 and
+Li2S6 consistently encapsulated within the cavity structures of
+CB[6] and CB[7], respectively. This finding suggests that the rel-
+atively flexible cavity structure of CB[n] plays a crucial role in
+retaining guest molecules within or near the cavity. As illus-
+trated in Figure S6, the energy and temperature curves stabilized
+within the first 5 ns of the simulation, indicating that equi-
+librium was achieved early in the process. Throughout the
+simulation, CB[n] continuously confined the respective guest
+molecules within its cavity in the solvent, further validating its
+specific molecular recognition and encapsulation capabilities.
+Thus, as a host compound, CB[n] functions as a molecular cap-
+sule, effectively isolating and extracting guest molecules from
+the electrolyte while facilitating their storage and transport dur-
+ing battery cycling. These findings underscore the significant
+ChemistrySelect 2025, 10, e202405238 (8 of 10)
+© 2025 Wiley-VCH GmbH
+ 23656549, 2025, 11, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/slct.202405238 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 9>>
+ChemistrySelect
+Research Article
+doi.org/10.1002/slct.202405238
+potential of CB[n] in mitigating LiPSs dissolution and migration
+in Li-S batteries.
+4. Conclusion
+In this study, the structure, properties, and host-guest chem-
+istry of macrocyclic CB[n] were investigated using computational
+simulations. DFT calculations confirmed that CB[n] maintains a
+highly symmetrical structure at the M06-2X/def2-SVP compu-
+tational level. Its rigid, electron-rich cavity effectively coordi-
+nates with LiPSs, the selected guest molecules. The interaction
+between CB[n] and LiPSs is primarily governed by van der Waals
+forces and electrostatic interactions. Additionally, energy analy-
+sis highlights the strong potential of CB[n] as a host material for
+LiPSs, a conclusion further supported by MD simulations con-
+ducted in a solvent mixture of DME and DOL. Specifically, the
+encapsulation of Li2S4 in CB[6] and Li2S6 in CB[7] demonstrates
+great potential for optimizing Li-S battery materials. The mod-
+erate interaction strength and stable encapsulation state effec-
+tively inhibit polysulfide dissolution and migration, mitigating
+the shuttle effect and thereby enhancing both the cycle life and
+charge-discharge efficiency of the battery. This study provides a
+theoretical foundation for the future design of lithium-sulfur bat-
+tery materials and offers insights into improving LiPSs stability
+through the rational selection of macrocyclic molecules.
+Furthermore, future experimental studies could explore the
+fabrication of novel battery separators by optimizing the mixing
+ratio of CB[6] and CB[7], paving the way for enhanced Li-S battery
+performance.
+Supporting Information
+Supporting Information is available from the Wiley Online Library
+or the author.
+Acknowledgements
+This work was supported by the National Natural Science Foun-
+dation of China (Nos. 21971221, 21401162), the Natural Science
+Foundation of Jiangsu Province (BK20241930), the Yangzhou
+University Interdisciplinary Research Foundation for Chemistry
+Discipline (yzuxk202010), “Qing Lan Project” in Colleges and
+Universities of Jiangsu Province.
+Conflict of Interests
+The authors declare no conflict of interest.
+Data Availability Statement
+Research data are not shared.
+Keywords: Cucurbiturils
+• Density functional theory (DFT)
+calculations • Host-guest inclusion complexes • Lithium poly-
+sulfides • Lithium-sulfur (Li-S) batteries • Molecular dynamics
+(MD) simulations
+[1] X. Y. Zhao, J. P. Tu, Y. Lu, J. B. Cai, Y. J. Zhang, X. L. Wang, C. D. Gu,
+Electro. Acta. 2013, 113, 256–262.
+[2] Y. Liu, J. Zhang, X. C. Liu, J. X. Guo, L. F. Pan, H. F. Wang, Q. M. Su, G.
+H. Du, Mater. Lett. 2014, 133, 193–196.
+[3] Q. Z. Zhu, Q. Zhao, Y. B. An, B. Anasori, H. R. Wang, B. Xu, Nano. Energy
+2017, 33, 402–409.
+[4] H. G. Chen, C. H. Wang, W. L. Dong, W. Liu, Z. L. Du, L. W. Chen, Nano.
+Lett. 2014, 15, 798–802.
+[5] C. F. Zhang, S. L. Chou, Z. P. Guo, Z. P. Guo, S. X. Dou, Adv. Funct. Mater.
+2024, 34, 2308001.
+[6] Z. F. An, S. Y. Xu, J. H. Lee, A. Park, M. Lee, N. C. S. Selvam, G. H. Choi,
+P. Zhang, J. W. Ho, W. B. Lee, P. J. Yoo, Mater. Today Energy. 2023, 36,
+101345.
+[7] Y. C. Wu, N. Wu, X. Y. Jiang, S. Q. Duan, T. S. Li, Q. P. Zhou, M. Chen, G.
+W. Diao, Z. Wu, L. B. Ni, Inorg. Chem. 2023, 62, 15440–15449.
+[8] J. Song, Y. Y. Jiang, Y. Z. Lu, Y. D. Cao, Y. X. Zhang, L. Fan, H. Liu, G. Gao,
+Inorg. Chem. Front. 2024, 11, 1710–1723.
+[9] Z. P. Shi, J. H. Xu, Y. J. Wang, Y. D. Peng, W. L. Zhao, H. Y. Yu, Z. X. Yang,
+S. T. Yang, Y. H. Yin, ACS. Sustain. Chem. Eng. 2023, 11, 16267–16278.
+[10] L. B. Ni, G. J. Zhao, Y. T. Wang, Y. Y. Liao, G. Yang, G. W. Diao, Chem.
+Asian J. 2017, 12, 3128–3134.
+[11] X. Y. Jiang, Y. C. Wu, Z. X. Lv, G. Yang, M. Y. Wang, Q. P. Zhou, Y. J. Shen,
+M. Chen, L. B. Ni, G. W. Diao, Chem. - Eur. J. 2024, 30, e202402706.
+[12] T. Guo, Y. C. Ding, C. Xu, W. X. Bai, S. C. Pan, M. L. Liu, M. Bi, J. W. Sun,
+X. P. Ouyang, X. Wang, Y. S. Fu, J. W. Zhu, Adv. Sci. 2023, 10, 2302518.
+[13] T. Ali, C. L. Yan, ChemSusChem 2019, 13, 1447–1479.
+[14] L. N. Zhang, T. S. Li, X. C. Zhang, Z. Y. Ma, Q. P. Zhou, Y. Liu, X. Y. Jiang,
+H. Y. Zhang, L. B. Ni, G. W. Diao, J. Mater. Chem. A 2023, 11, 3105–3117.
+[15] B. Yu, Q. He, Y. Zhao, Appl. Surf. Sci. 2021, 558, 149928.
+[16] P. G. de Lima, R. G. Viegas, O. V. de Oliveira, Comput. Theor. Chem. 2021,
+1206, 113465.
+[17] T.
+Burkhanbayeva,
+A.
+Ukhov,
+D.
+Fedorishin,
+A.
+Gubankov,
+I.
+Kurzina, A. Bakibaev, R. Yerkassov, T. Mashan, F. Suyundikova, N.
+Nurmukhanbetova, A. Khamitova, Materials 2024, 17, 2041.
+[18] J. Xie, Q. Y. Liang, B. Y. Liu, Z. Q. Xi, Z. S. Yang, X. C. Zhang, H. Yuan, T.
+Y. Zhang, Comput. Theor. Chem. 2023, 1226, 114183.
+[19] Z. Q. Xi, Z. S. Yang, X. C. Zhang, H. Yuan, W. T. Wang, M. X. He, J. Xie,
+ChemPhysChem 2023, 24, e202300527.
+[20] J. Xie, Z. Q. Xi, Y. W. Yang, X. C. Zhang, Z. S. Yang, M. X. He, Int. J.
+Quantumchem. 2023, 124, e27253.
+[21] H. Y. Wang, Y. Zhou, J. H. Lu, Q. Y. Liu, G. Y. Chen, Z. Tao, X. Xiao, Arab.
+J. Chem. 2020, 13, 2271–2275.
+[22] J. Xie, Z. Q. Xi, Z. S. Yang, X. C. Zhang, H. Yuan, Y. W. Yang, L. B. Ni, M.
+X. He, J. Mol. Struct. 2023, 1281, 135073.
+[23] A. H. Abdelhay, A. D. Bani-Yaseen, Mater. Today Chem. 2024, 40, 102259.
+[24] W. Xu, J. Xiao, D. Y. Wang, J. Zhang, J. G. Zhang, Electrochem. Solid-State
+Lett. 2010, 13, A48–A51.
+[25] J. Xie, H. Z. Shi, C. Shen, L. Huan, M. X. He, M. Chen, J. Chem. Sci. 2021,
+133, 2.
+[26] D. S. Sun, Y. Z. Zhu, M. J. Meng, Y. Qiao, Y. S. Yan, C. X. Li, Sep. Purif.
+2017, 175, 19–26.
+[27] L. B. Ni, G. Yang, Q. Wang, S. Q. Duan, C. Shen, J. Xie, G. S. Niu, H. Li,
+M. Chen, G. W. Diao, Energy Storage Mater. 2019, 21, 378–389.
+[28] D. D. Han, L. H. Sun, Z. Q. Li, W. L. Qin, L. P. Zhai, Y. Y. Sun, S. Tang, Y.
+Z. Fu, Energy Storage Mater. 2024, 65, 103143.
+[29] L. B. Ni, J. Gu, X. Y. Jiang, H. J. Xu, Z. Wu, Y. C. Wu, Y. Liu, J. Xie, Y. G.
+Wei, G. W. Diao, Angew. Chem., Int. Ed. 2023, 62, e202306528.
+[30] G. Yang, Y. C. Wu, Z. X. Lv, X. Y. Jiang, J. H. Shi, Y. Z. Zhang, M. Chen, L.
+B. Ni, G. W. Diao, Y. G. Wei, Chem. Commun. 2023, 59, 788–791.
+[31] X. Dai, X. Y. Jin, Q. M. Ge, J. Zhao, M. Liu, H. Cong, Z. Tao, N. Jiang, New.
+J. Chem. 2021, 45, 21638–21645.
+[32] D. M. Rahul, K. Kim, Nat. Chem. 2023, 15, 438-438.
+[33] Y. M. Zhao, M. Y. Wei, L. L. Tan, Z. X. Luo, J. H. Peng, C. G. Wei, F. Y.
+Kang, J. G. Wang, Small. 2023, 20, 2308164.
+ChemistrySelect 2025, 10, e202405238 (9 of 10)
+© 2025 Wiley-VCH GmbH
+ 23656549, 2025, 11, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/slct.202405238 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 10>>
+ChemistrySelect
+Research Article
+doi.org/10.1002/slct.202405238
+[34] M. L. Xu, S. Li, X. D. Li, C. F. Chen, Y. Q. Zhang, Mater. Chem. Phys. 2023,
+302, 127711.
+[35] O. A. Zhiko, D. Y. Miasnikova, O. V. Vashchenko, N. A. Pinchukova, O. I.
+Zbruyev, S. V. Shishkina, A. Kyrychenko, V. A. Chebanov, J. Mol. Struct.
+2023, 1294, 136532.
+[36] J. Xie, H. J. Peng, J. Q. Huang, W. T. Xu, X. Chen, Q. Zhang, Angew.
+Chem., Int. Ed. 2017, 56, 16223–16227.
+[37] T. Wang, J. R. He, X. B. Cheng, J. Zhu, B. G. Lu, Y. P. Wu, ACS Energy Lett.
+2023, 8, 116–150.
+[38] Z. C. Liu, R. Wang, P. P. Zhang, C. C. Dun, J. J. Urban, S. Yang, T. Wang,
+Y. Ma, Y. R. Zhong, J. R. He, Z. Zhu, X. S. Xiong, W. J. Fan, Q. Zhou, H.
+Y. Yang, X. B. Cheng, F. X. Wang, Y. Huang, Y. P. Wu, Energy Environ. Sci.
+2024, 17, 2173.
+[39] H. Liu, S. T. Sun, B. Jin, Energy Mater. 2024, 4, 400053.
+[40] S. Funk, J. Schatz, J. Inclusion. Phenom. Macrocyclic. Chem. 2019, 96, 1–27.
+[41] Y. Zhao, D. G. Truhlar, Acc. Chem. Res. 2008, 41, 157–167.
+[42] Y. Zhao, D. G. Truhlar, Theor. Chem. Acc. 2007, 120, 215–241.
+[43] M. J. Frisch, G. W. Trucks, H. B. Schlegel, G. E. Scuseria, M. A. Robb, J.
+R. Cheeseman, G. Scalmani, V. Barone, G. A. Petersson, H. Nakatsuji, X.
+Li, M. Caricato, A. V. Marenich, J. Bloino, B. G. Janesko, R. Gomperts, B.
+Mennucci, H. P. Hratchian, J. V. Ortiz, A. F. Izmaylov, J. L. Sonnenberg,
+D. Williams-Young, F. Ding, F. Lipparini, F. Egidi, J. Goings, B. Peng,
+A. Petrone, T. Henderson, D. Ranasinghe, V. G. Zakrzewski, J. Gao, N.
+Rega, G. Zheng, W. Liang, M. Hada, M. Ehara, K. Toyota, R. Fukuda, J.
+Hasegawa, M. Ishida, T. Nakajima, Y. Honda, O. Kitao, H. Nakai, T. Vreven,
+K. Throssell, J. A. Montgomery, Jr., J. E. Peralta, F. Ogliaro, M. J. Bearpark,
+J. J. Heyd, E. N. Brothers, K. N. Kudin, V. N. Staroverov, T. A. Keith, R.
+Kobayashi, J. Normand, K. Raghavachari, A. P. Rendell, J. C. Burant, S. S.
+Iyengar, J. Tomasi, M. Cossi, J. M. Millam, M. Klene, C. Adamo, R. Cammi,
+J. W. Ochterski, R. L. Martin, K. Morokuma, O. Farkas, J. B. Foresman, D.
+J. Fox, Gaussian 16, Inc., Wallingford CT 2016.
+[44] P. Panigrahi, Y. Pal, T. Hussain, R. Ahuja, Appl. Surf. Sci. 2021, 558, 149850.
+[45] T. Lu, Q. X. Chen, J. Comput. Chem. 2022,43, 539–555.
+[46] T. Lu, C. W. Chen, J. Comput. Chem. 2012, 33, 580–592.
+[47] T. Lu, C. W. Chen, J. Mol. Graph. Model. 2012, 38, 314–323.
+[48] T. Lu, J. Chem. Phys. 2024, 161, 082503.
+[49] H. William, D. Andrew, S. Klaus, J. Mol. Graph. 1996, 14, 33–38.
+[50] A. Andersen, N. N. Rajput, K. S. Han, H. L. Pan, N. Govind, K. A. Persson,
+K. T. Mueller, V. Murugesan, Chem. Mater. 2019, 31, 2308–2319.
+[51] X. F. Ma, W. H. Zhu, J. J. Xiu, H. M. Xiao, J. Hazard. Mater. 2008, 156,
+201–207.
+[52] K. Rappe, W. A. Goddard III, J. Phys. Chem. 1991, 95, 3358–3363.
+[53] F. J. Feher, J. F. Walzer, Inorg. Chem. 1991, 30, 1689–1694.
+[54] S. A. K. Rappe, C. J. Casewit, K. S. Colwell, W. A. Goddard, W. M. Skiff, J.
+Am. Chem. Soc. 1992, 114, 10024–10035.
+[55] T. T. Debela, Y. R. Lim, H. W. Seo, I. S. Kwon, I. H. Kwak, J. Park, W. I.
+Cho, H. S. Kang, ACS. Appl. Mater. 2018, 10, 37928–37936.
+[56] K. Aoyagi, M. Otani, Meet. Abstr. 2019, 40, 1952.
+[57] S. Nosé, Mol. Phys. 1984, 52, 255–268.
+[58] G. Klopman, JACS 1968, 90, 223–234.
+[59] S. R. Peerannawar, S. P. Gejji, Phys. Chem. Chem. Phys. 2012, 14, 8711–8722.
+[60] R. Casares, Á. Martínez-Pinel, S. Rodríguez-González, I. R. Márquez, L.
+Lezama, M. T. González, E. Leary, V. Blanco, J. G. Fallaque, C. Díaz, F.
+Martín, J. M. Cuerva, A. Millán, J. Mater. Chem. C. 2022, 10, 11775–11782.
+[61] F. Chekkal, N. Naili, A. Benaissa, M. A. Zerizer, B. Zouchoune, N. Redjem,
+Struct. Chem. 2024, 35, 1539–1549.
+[62] S. F. Boys, F. Bernardi, J. Mol. Phys. 1970, 19, 553–566.
+Manuscript received: November 5, 2024
+ChemistrySelect 2025, 10, e202405238 (10 of 10)
+© 2025 Wiley-VCH GmbH
+ 23656549, 2025, 11, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/slct.202405238 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

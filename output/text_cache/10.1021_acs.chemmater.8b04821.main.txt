@@ -1,0 +1,1545 @@
+
+<<PAGE 1>>
+Eﬀects of Dimethyl Disulﬁde Cosolvent on Li−S Battery Chemistry
+and Performance
+Ethan P. Kamphaus and Perla B. Balbuena*
+Department of Chemical Engineering, Texas A&M University, College Station, Texas 77843, United States
+*
+S Supporting Information
+ABSTRACT: Lithium−sulfur battery’s (LISB) performance is
+still held back by undesirable side reactions. One of these side
+reactions is known as the polysulﬁde shuttle eﬀect which is a
+consequence of soluble sulfur reduction products, polysulﬁdes.
+Polysulﬁde migration induces other side reactions at the anode
+surface. In addition, slow kinetics of the main discharge products
+induces large overpotentials during charge. Researchers have
+been searching for ways to counteract these eﬀects through
+many diﬀerent strategies. One such strategy that could mitigate
+part of these problems is to use novel electrolytes that contain
+sulfur that can modify battery chemistry while providing
+additional energy capacity. Sulfur-containing electrolytes such
+as dimethyl disulﬁde (DMDS) have shown increased perform-
+ance, but the mechanisms are not known. First-principles
+computational chemistry simulations are used to determine diﬀerent aspects of battery performance to ascertain why this
+additive helps. We found that DMDS modiﬁes the reduction pathway that leads to a diﬀerent ﬁnal product, LiSCH3, than a
+traditional LISB, and this product is more soluble in the electrolyte, which could facilitate the charge reaction. DMDS favorably
+reacts with S8 to form dimethyl polysulﬁdes in agreement with experimental results. The new ﬁnal reduction products are
+electronically insulating, but they are more soluble and therefore more reversible than the traditional end product, Li2S, which
+would increase the battery performance. The results indicate that DMDS will change the sulfur battery chemistry for the better
+in some ways and similar in others which provide fundamental insight into the experimental evidence. In addition, we provide a
+schematic for screening novel electrolytes for the LISB.
+■INTRODUCTION
+Energy storage technology is as relevant and important today
+as it was at the time of its inception. The technology revolution
+giving us portable electronics, electric vehicles, and more was
+enabled by the development of high-performance rechargeable
+batteries such as the lithium-ion battery (LIB). Though this
+revolution was a big step change for modern society, there is
+still a strong demand to take battery development further to
+enable even greater advances. Technologies such as long-range
+electric vehicles, longer lasting personal electronics, and even
+large-scale energy storage for green energy applications all
+require better batteries.1−4
+Currently, the leading practical battery technology that sees
+common use is the LIB.5,6 Available commercial LiBs have a
+gravimetric energy density around 250 w h kg−1 or 650 W h
+L−1.7 However, to reach the applications that we identiﬁed
+previously, signiﬁcant advances to the performance of batteries
+must be made.3 Researchers are exploring several diﬀerent
+avenues for increasing battery performance from improving the
+LIB by using a pure lithium metal anode to switching battery
+chemistries completely.8,9 There is a limit on the amount of
+energy storage that a battery can provide which is based on the
+thermodynamics of the chemistry involved. Because the
+scientiﬁc community is researching the LIB, the battery
+technology is approaching its maximum theoretical limit
+which means that sometime in the future, to push batteries
+farther, diﬀerent chemistries will have to be explored.10,11
+Next-generation batteries that utilize other chemistries have
+been focused in recent years. Examples include multivalent
+cation, lithium−air, and lithium−sulfur batteries (LiSB). Each
+of these new chemistries requires almost a complete redesign
+of the battery, but they have theoretical limits higher than the
+LIB.10 Unfortunately, new chemistries also introduce new and
+challenging problems as well. On the basis of a combination of
+factors including theoretical performance and perceived
+feasibility of implementation, the LiSB is considered to be
+potentially the closest technology to the marketplace.12 The
+LiSB has a theoretical energy density of 2600 W h kg−1 which
+is a signiﬁcant improvement over traditional LiB systems.13
+The theoretical energy density is usually never obtained, so the
+rule of thumb to estimate overall battery performance is to
+reduce the theoretical value by a factor of 3.10 Before the LiSB
+Received:
+November 19, 2018
+Revised:
+March 6, 2019
+Published: March 7, 2019
+Article
+pubs.acs.org/cm
+Cite This: Chem. Mater. 2019, 31, 2377−2389
+© 2019 American Chemical Society
+2377
+DOI: 10.1021/acs.chemmater.8b04821
+Chem. Mater. 2019, 31, 2377−2389
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​31/​7/​2377/​12638633/​cm8b04821.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 2>>
+can transition from the laboratory or supercomputer into our
+pockets, some of its speciﬁc problems need to be solved. The
+LiSB technology faces three large problems: the use of a
+lithium metal anode, the polysulﬁde shuttle eﬀect, and the
+need of overcoming a signiﬁcant overpotential during charge.14
+The lithium metal anode is a problem that troubles other
+battery chemistries such as the LiB and the lithium air battery
+as well. Lithium is a highly reactive metal which creates a solid
+electrolyte interphase layer that is diﬃcult to engineer and
+manipulate to increase battery performance.11 The polysulﬁde
+shuttle eﬀect and the diﬃculties with the charge reaction are
+unique to the LiSB chemistry and present very diﬃcult
+problems to solve.15
+These eﬀects arise from the solubility of products generated
+by discharge reactions. During discharge, the anode is the
+lithium metal and the cathode is a sulfur/carbon composite.
+The lithium atoms are oxidized and released into solution,
+whereas the associated electrons travel to the cathode where
+they reduce the sulfur that then combines with Li ions coming
+from the anode. The cathode starts oﬀas elemental sulfur with
+a S8 crown structure that is reduced into smaller and smaller
+fragments until the ultimate ﬁnal product Li2S. These
+fragments represent reaction intermediates called lithium
+polysulﬁdes, LixSy. The longer chained lithium polysulﬁdes (y
+≥6) are soluble in the electrolyte so during the discharge of
+the battery, an active cathode material will leave the electrode
+and diﬀuse through the electrolyte. Once in the electrolyte, the
+lithium polysulﬁdes will eventually be transported to the
+lithium metal anode where the reduction will ﬁnish thus
+generating Li2S. This compound is highly nonsoluble and has
+poor oxidation kinetics. In other words, it becomes very
+diﬃcult to remove the Li2S from the lithium metal anode once
+a lithium polysulﬁde reaches there. Moreover, Li2S is also
+formed on the cathode because of the reduction of the PS
+species that do not shuttle away thus insulating that electrode
+as well. This leads to the loss of active cathode material and
+passivation of both electrodes which causes poor cyclability
+and thus prevents the LiSB from being used in general
+applications.16−18 In the LiSB scientiﬁc community, there are
+various possible strategies that are being investigated to
+combat this parasitic eﬀect. Techniques such as anchoring
+the polysulﬁde to the cathode,19−21 using a solid-state
+electrolyte to prevent polysulﬁde dissolution,21,22 using novel
+separators and modifying the electrolyte composition all have
+been explored experimentally, computationally, and theoret-
+ically.23−25 One particular method is promising because it is
+easy to implement and may mitigate at least some of these
+eﬀects at a fundamental level: modifying the electrolyte.26−28
+The electrolyte serves a very important purpose to the
+operation of any battery technology. Quite simply, its role in
+the battery is to allow ions to dissolve which makes the
+oxidation of a metal more favorable because a reduced ion has
+a more favorable energy in solution instead of that in the
+metallic position.29 Electrolytes are chosen for a variety of
+reasons, the main ones being the ionic conductivity and the
+compatibility of the electrolyte with the electrodes. The ionic
+conductivity is directly related to the ability of the electrolyte
+to transport metal ions critical to cell reactions, and
+compatibility with the electrodes is critical to having stable
+and controlled reactions.29−31 Researchers have explored the
+use of “nonsolvents” such as ﬂuorine-containing compounds
+which aim to have a good enough ionic conductivity while
+greatly restricting the dissolution of polysulﬁdes.30,32 Others
+have moved to the idea of using a solid-state electrolyte which
+would solve these problems as well.33,34 One recent idea that
+shows potential is the use of a sulfur-containing electrolyte for
+use within the LiSB.26,35−37
+Sulfur-containing electrolytes are interesting because they
+can attempt to tune the ionic conductivity and the favorability
+of the dissolution of intermediate lithium polysulﬁdes as well as
+they add extra sulfur to the battery. The addition of extra sulfur
+which can potentially be reduced increases the energy capacity
+of the battery.30 Essentially by adding sulfur, one can make the
+electrolyte an energetically active battery component. This
+strategy is to just simply change the battery chemistry to see if
+that will change the performance in an advantageous way. A
+couple of diﬀerent sulfur-containing molecules have been
+tested for performance characteristics, but there is no clear
+consensus about which molecules are better or even what all of
+the eﬀects of the sulfur-containing additives are. There are
+some drawbacks from using a system with an electrochemically
+active electrolyte. Depending on the ratio of sulfur to
+electrolyte, the electrolyte could be depleted thus adding to
+the problems the Li−S system faces. The reduction of the
+electrolyte components could also cause self-discharge with the
+Li metal anode.
+One such sulfur-containing additive is dimethyl disulﬁde
+(DMDS) and its close family member dimethyl trisulﬁde.
+Wang’s group has brought this additive to attention and
+proposed its use in LiSB systems for increased perform-
+ance.26,35,37 DMDS is a well-studied chemical that has found
+use in other applications unrelated to electrochemical systems.
+It was researched previously for applications in desulfurization
+processes that occur in the reﬁning of crude oil because of its
+nature to react with elemental sulfur and hydrogen sulﬁde as
+well as providing some assistance in catalysis.38,39 In a reﬁnery,
+this is desired so that sulfur can be removed in one of the many
+steps involved in reﬁning oil. This implies that DMDS would
+be compatible in a LiSB system and would make chemical
+changes which could be advantageous. With a combination of
+diﬀerent experimental techniques, Wang’s group investigated
+how the battery chemistry changes and what improvements
+could be observed. They found that the addition of 50% by
+volume DMDS to the electrolyte changes the traditional
+reduction pathway that lithium polysulﬁdes undergo during
+discharge. The modiﬁed reduction pathway was proposed to
+give more reversible kinetics, reduce the viscosity of the
+intermediates, and provide additional sulfur loading to the
+battery because the DMDS is electrochemically active.26,35
+Their ﬁndings suggest that the addition of these sulfur-
+containing electrolytes can deﬁnitively improve the battery by
+increasing cycle life and increasing speciﬁc capacity. Just like
+when switching from LIB to LiSB, changing the electrolyte
+signiﬁcantly will cause large changes in the battery chemistry
+and performance.
+A change to the reduction pathway of the lithium
+polysulﬁdes can create drastic changes in the operation and
+design; some of which can provide advantages, whereas others
+might start new problems. Because of the complexity of
+electrochemical systems, it can be very diﬃcult for
+experimental researchers to deconvolute the chemical
+processes that occur. One way to break down these
+complicated systems to observe the impact of changing battery
+chemistry is to explore individual parts of the system and
+investigate them individually. Although this task can be
+extraordinarily diﬃcult for experimentalists, the power of
+Chemistry of Materials
+Article
+DOI: 10.1021/acs.chemmater.8b04821
+Chem. Mater. 2019, 31, 2377−2389
+2378
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​31/​7/​2377/​12638633/​cm8b04821.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 3>>
+ﬁrst-principles computational chemistry can help the scientiﬁc
+community explore each part of the battery individually to
+determine the reasons why this additive shows increased
+performance.40,41 However, one of the drawbacks of these
+techniques is the size and scale of what can be simulated. Every
+interconnected process of the battery chemistry cannot be
+simulated simultaneously, and some assumptions must be
+made.
+We have used accurate and sound theoretical methods to
+explore diﬀerent aspects of the LiSB system if the traditional
+electrolyte was modiﬁed to include DMDS. Using exper-
+imental investigations as a guide, we have explored several
+diﬀerent aspects of how the cosolvent could change the battery
+chemistry and thus performance as well as provide further
+validation to the experimental results. First-principles and ab
+initio simulations were used to investigate important behaviors
+of the LiSB such as the new reduction pathway thermody-
+namics, solvation, and dissolution behavior, and the electronic
+properties of the new ﬁnal reduction products. We found that a
+new reduction pathway is favored by the DMDS which shows a
+ﬁnal reduction product with more favorable dissolution
+behavior although still is insulating such as Li2S. These results
+agree with Wang’s experimental ﬁndings, and they add
+additional insights into the new chemistry. Given the
+preliminary nature of this work, we did not incorporate the
+interactions between Li metal and the DMDS and subsequent
+species though they will be critical to the use of this additive.
+Future work will examine this and more aspects of the system
+to make the models increasingly realistic.
+■METHODOLOGY
+Two diﬀerent types of computational modeling techniques
+were used for this work. Vienna ab initio simulation package
+(VASP) was used for periodic boundary condition (PBC)
+models where a simulation box is repeated inﬁnitely in the
+three spatial directions.9,42,43 VASP was used for solid-state
+and ab initio molecular dynamics (AIMD) simulations of the
+electrolyte. We also utilized Gaussian 09 for non-PBC
+simulations but with more complex level of theory.44 Gaussian
+was used to calculate the electron aﬃnities and change of free-
+energy of reactions, ΔGrxns.
+For all of the VASP calculations, the projector augmented
+wave basis set was used with pseudopotentials.45,46 The K-
+point mesh for the basis sets depended on the particular model
+to ensure accurate results. The Monkhorst−Pack K-point mesh
+and cutoﬀenergy for each model can be found in Table S1.47
+Density functional theory (DFT) was used to carry out all
+optimizations and energy calculations for the PBC simulations.
+We utilized the Perdew−Burke−Ernzerhof generalized gra-
+dient approximation (PBE-GGA) functional to describe
+electron structure and behavior.48 In all of the simulations,
+the systems were treated as spin polarized so the up and down
+spin electrons were solved separately. For the solid-state
+calculations, the structures were optimized with DFT + U to
+ensure accurate structures with the U values taken from the
+literature.49 The optimized solid-state structures were used to
+calculate the numerical Hessian matrix of the energy to
+determine vibrational modes to temperature correct the ﬁnal
+energy of the structure. In the AIMD simulations, a canonical
+(NVT) ensemble was used to explore the time evolution of the
+system. The temperature in all simulations was set at 300 K to
+represent room temperature. A Car−Parrinello MD algorithm
+was implemented with a Nose thermostat set to a value of 0.5
+to control for temperature variations. The DFT-D3 method
+with Becke−Johnson damping was also utilized as an empirical
+dispersion correction technique to capture van der Waals
+interactions that ab initio methods miss.50
+The non-PBC calculations carried out with Gaussian 09 all
+used the same general methodology, DFT geometry
+optimizations, and frequency calculations done in an implicit
+solvent ﬁeld. On the basis of the previous work done in the
+group and prevalence in literature, hybrid functional B3PW91
+was used. For the ΔGrxn values, the 6-311++G(d,p) split
+valence basis set was used.51,52 For the electron aﬃnity (EA)
+calculations, the cc-pvtz basis set was used as described in the
+Supporting Information. The frequencies from the optimized
+geometry are used to include vibrational corrections to the 0 K
+DFT ground state energy. All of the non-PBC calculations
+were done at room temperature. Because all of the relevant
+chemistry is taking place in the electrolyte, gas-phase results
+would not be as useful as liquid results. We used an IEFPCM
+self-consistent ﬁeld technique within Gaussian 09 to represent
+a DME electrolyte.53 This method applies a ﬁeld throughout
+the simulation that mimics the eﬀect of a bulk solvent without
+adding signiﬁcant diﬃculty to the computation.
+■RESULTS AND DISCUSSION
+DMDS Dissociation. As Wang’s group and other
+researchers found in systems with sulfur-containing electro-
+lytes, the sulfur cosolvents will react with the sulfur to form a
+new reduction pathway.30 DMDS will react with elemental
+sulfur to produce a long-chained dimethyl polysulﬁde
+(DMPS), CH3S10CH3. This reaction has been reported
+occurring without the presence of an external potential, but
+as already stated, DMDS is electrochemically active. Because
+we are employing ﬁrst-principles method based on sound
+fundamental theories, we made no assumptions in our models
+and tested all possible situations. For DMDS to react without
+an external potential, the S−S bond has to be cleaved
+generating two SCH3 radicals. The reported value for the bond
+dissociation energy of DMDS S−S bond is relatively low, so
+this mechanism is plausible.54 These radical fragments would
+then react with the S8 elemental crown structure giving a linear
+DMPS molecule.
+With AIMD simulations, we explored the stability, structure,
+and reactivity of DMDS in a simpliﬁed electrolyte. In Figure
+S1, a single DMDS molecule was placed in a box surrounded
+by DME which corresponds to a 94/6% vol DME/DMDS
+electrolyte. This was done as a control before using a more
+realistic model for the electrolyte. In this case, no dissociation
+of the DMDS was observed which means that there would be
+no radical fragments to react with the S8. To gain a more
+quantitative view of the favorability of the dissociation, non-
+PBC calculations were used to calculate the thermodynamics
+of this reaction 1. The ΔGrxn for this dissociation without any
+extra electrons is positive or thermodynamically unfavorable. If
+electrons are added to the system, then the reaction becomes
+favorable (Table S2).
+↔
+CH S CH
+2SCH
+3 2
+3
+3
+(1)
+Figure S2 uses a model closer to the experiments with a 50%
+vol DME/DMDS and a 50% vol DME/DMDS electrolyte with
+S8. In the even mixture without S8, the DMDS still remains
+intact. This indicates that DMDS will not spontaneously
+dissociate in the electrolyte mixture. To directly test the
+experimental reaction pathway, in Figure S3, S8 was placed in
+Chemistry of Materials
+Article
+DOI: 10.1021/acs.chemmater.8b04821
+Chem. Mater. 2019, 31, 2377−2389
+2379
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​31/​7/​2377/​12638633/​cm8b04821.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 4>>
+the electrolyte. In this case, no dissociation or reaction was
+observed between species. There could be several reasons for
+why no reaction was seen. For instance, the reaction conditions
+(temperature/pressure) could be diﬀerent or that the nature of
+the reaction between DMDS and S8 is less understood. For
+instance, some literature refers to DMDS dissolving S8 but not
+reacting with it, whereas others use the terms interchange-
+ably.38,39 A close interaction versus a reaction between the
+species could be diﬃcult to discern especially if the reaction is
+easily reversible.
+The previous reactions discussed all lacked an external
+potential and could be considered to be disconnected from an
+electrochemical system. As researchers have pointed out, one
+of the advantages of using sulfur cosolvents in the electrolyte is
+that they can provide additional energy capacity as they can be
+reduced similar to the elemental sulfur. A reaction product
+from the reduction of DMDS could be part of a new reduction
+pathway. In PBC systems, the addition of excess electrons to
+the system to emulate the eﬀect of an external potential near a
+polarized surface can be problematic. In a non-PBC simulation,
+the number of electrons can be speciﬁed easily without
+creating any problems. However, because of interactions of one
+cell with its “image” (one of the repeat cells of the cell), just
+adding or removing electrons will introduce inaccuracies into
+Figure 1. DMDS in DME with 1 Li atom AIMD (94/6% vol DME/DMDS at 300 K). Snapshot of the system is on left (10 × 10 × 15 Å). Net
+Bader charge as a function of time and (A) overall starting components and (B) reduction of DMDS components.
+Figure 2. DMDS in DME with 2 Li atom AIMD. Snapshot of the system is on left (10 × 10 × 15 Å). Net Bader charge as a function of time and
+(A) overall starting components and (B) reduction of DMDS components.
+Chemistry of Materials
+Article
+DOI: 10.1021/acs.chemmater.8b04821
+Chem. Mater. 2019, 31, 2377−2389
+2380
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​31/​7/​2377/​12638633/​cm8b04821.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 5>>
+the energies computed from the simulation.55 A relatively
+simple way around this is to inject an electron via placing a
+metal atom that is likely to oxidize into the system.
+Fortunately, this can be done very easily with a lithium
+atom, and it is also representative of a real system, that is,
+lithium ions being present in the electrolyte phase. Such a
+system was used in Figure 1.
+From visual observation, at the end of the AIMD simulation,
+the DMDS was reduced. By examining the net Bader charges,
+extra insight can be gained.56−58 The DMDS gained one
+electron throughout the simulation. The Li atom was oxidized,
+and this electron was localized in the DMDS, thus reducing it
+into two SCH3 fragments. The corresponding reaction is
+shown by eq 1bb. The charge states of the products are ∼−0.5
+|e| which is represented by grouping the two SCH3 fragments
+together. Note that the partial charges are fractional which is
+nonphysical by quantum chemistry interpretations. This is
+because no partial charge scheme is perfect and the partial
+charges are meant to give a descriptive idea of where the
+electrons in the system lie.
++
+→
+−
+−
+CH S CH
+e
+(2SCH )
+3 2
+3
+3
+1
+(1b)
+Another lithium atom was added to the system to observe
+how the dynamics would change if the reduction was a 2e−
+process. Figure 2 shows the corresponding results for this
+system. Within the ﬁrst picosecond of the simulation, both
+lithium atoms release their electrons which then reduce the
+DMDS. The DMDS gains two electrons, and from the
+snapshot of the system, the S−S bond was clearly broken.
+Figure S4 gives a view of the DMDS molecule atom by atom
+(excluding the hydrogen atoms) to determine where the
+electrons were transferred to. It can be seen quite clearly that
+the electrons that reduced the DMDS molecule are primarily
+centered on the sulfur atoms and both DMDS half fragments
+are similar in charge states. This reaction corresponds with
+reaction 1c identiﬁed below. As concluded earlier, the more
+electrons added to the DMDS the more favorable the
+reduction becomes.
++
+→
+−
+−
+CH S CH
+2e
+2SCH
+3 2
+3
+3
+1
+(1c)
+On the basis of our models, the spontaneous dissociation of
+DMDS in solution or DMDS in the presence of elemental
+sulfur is not favored or observed, but in an electron-rich
+environment then DMDS is broken by the S−S bonds into two
+smaller molecules. These SCH3 fragments whether their charge
+state is radical or ionic can react with other sulfur-containing
+species that may be present in a LiSB-like S8, lithium
+polysulﬁdes, or even other DMDS molecules. These reactions
+will be the driving force for creating a new reduction pathway.
+New Reduction Pathway. As Wang identiﬁed previously,
+the new reduction pathway starts when DMDS reacts with
+elemental sulfur. In order to run ﬁrst-principles simulations,
+the geometry of the system is required. This necessitates either
+using experimental information for the structure of a molecule
+or testing a variety of guess geometries to determine which are
+the lowest energy and thus the most favorable. Instead of
+guessing diﬀerent structural conﬁgurations, geometries from
+DFT optimizations were used as initial reactant conﬁgurations
+without making any assumptions about the ﬁnal structure.
+Figure 3 shows the input and optimized product. Reaction 2a
+corresponds to the reaction shown.
++
+→
+2SCH
+S
+CH S CH
+3
+8
+3 10
+3
+(2a)
+Several diﬀerent initial conﬁgurations were tested but the
+only conﬁguration that caused a reaction is the one shown.
+The ﬁnal structure is an example of a DMPS which is very
+similar in structure to the lithium polysulﬁdes except the extra
+length and methyl groups that cap the molecules. As described
+in the previous section, SCH3 can be generated by diﬀerent
+types of reactions. This means that based on what method or
+reaction conditions are present, the oxidation state of the
+SCH3 fragments is variable. Using the optimized DMPS
+molecule, the ΔGrxn was calculated for the three diﬀerent
+possibilities of charge state for the SCH3 molecules: both
+neutral, one neutral and one radical, and both in radical states.
+The corresponding ΔGrxns are shown in Table S2. The trend
+with reaction 2a is that the neutral SCH3 fragments reacting
+with the S8 is more favorable than anionic SCH3 fragments. All
+of these results were calculated with the DMPS being in a
+neutral charge state. The reactions involving anionic SCH3
+fragments might be unfavorable because of the ﬁnal charge
+state of the DMPS. Having a reaction involving anionic SCH3
+fragments and neutral DMPS molecules corresponds to
+electrochemical reductions as denoted by the change in the
+oxidation state. The geometry of DMPS as shown in Figure 3
+is only stable in this conﬁguration with a neutral charge state.
+As electrons are added to the DMPS molecule and optimized,
+the molecule will break an S−S bond just like the DMDS did.
+DMDS is a type of DMPS just shorter chained than the
+product of the reaction between DMDS and elemental sulfur.
+So far, we have focused our discussion on the reactions
+between DMDS and elemental sulfur. However, this begs the
+question; can the SCH3 fragments react with other sulfur
+species that are not S8? We tested this by running an AIMD
+simulation with two SCH3 fragments and a Li2S8 lithium
+polysulﬁde together in the electrolyte. This would represent a
+case where already formed SCH3 fragments would potentially
+react with the intermediate reduction products of S8. Figure 4
+contains the results of the simulation.
+Early in the simulation, the SCH3 #2 fragment approached
+the Li2S8 and reacted with the polysulﬁde. The fragment did
+not add onto the end of the PS but instead reacted with one of
+the nonterminal sulfur atoms. This reaction generated a
+methylpolysulﬁde (MPS) and a short chained PS (reaction 3).
++
+→
++
++
+−
+−
++
+Li S
+SCH
+S CH
+S
+2Li
+2 8
+3
+7
+3
+1
+2
+1
+(3)
++
+→
+−
+−
+S
+SCH
+S CH
+2
+1
+3
+3
+3
+1
+(4)
+The overall Bader charge of the SCH3 fragment does not
+change noticeably over time, but we do observe an increase in
+partial charge for the Li2S8 and a reduction in charge for the
+Figure 3. Input and output of reaction between SCH3 and elemental
+sulfur.
+Chemistry of Materials
+Article
+DOI: 10.1021/acs.chemmater.8b04821
+Chem. Mater. 2019, 31, 2377−2389
+2381
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​31/​7/​2377/​12638633/​cm8b04821.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 6>>
+other SCH3 fragment forming S7CH3. This increase in charge
+is due to the reaction occurring between the Li2S8 and the
+SCH3. As one of the sulfur bonds breaks and the electrons
+rearrange, the Li2S8 temporarily loses some electron local-
+ization which is balanced by a decrease in the other SCH3
+fragment. This is also seen by the S2 partial charge curve; the
+charge increases before dropping to ∼−1 |e|. The sudden
+decrease in charge is associated with a reaction with the other
+SCH3 fragment which forms a 2nd MPS, S3CH3
+−1 (reaction
+4). Throughout the rest of the simulation, the two MPS
+fragments do not react or interchange atoms. From these
+simulations, the reaction of DMDS to form SCH3 fragments
+which then react with sulfur species to form DMPS or MPS
+molecules has been proven to be a possible pathway. Even if
+the S8 has already been reduced into an intermediate PS
+species, the DMDS can still modify the reduction process to
+form MPS/DMPS species.
+In Wang’s studies, the authors observed a variety of diﬀerent
+length DMPS species, demonstrating experimentally that the
+DMPS would reduce and a new reduction pathway was
+observed. In order to study the reduction of DMPS with DFT,
+two options are available. One is to guess the diﬀerent reaction
+pathways and determine which is the most energetically
+favorable. Or AIMD can be employed to take as many
+assumptions out of the model as possible. DMPS can be placed
+in a simulation cell with lithium atoms, and the reduction can
+be observed stochastically because of the nature of molecular
+dynamics.
+Figure 4. Snapshot of 2 SCH3 neutral fragments with Li2S8 before and after simulation (15 × 15 × 15 Å). Net Bader charge as a function of time
+and (A) total components of system and (B) the sulfur-containing components.
+Figure 5. Snapshot of DMPS in DME with one Li atom is on left before and after simulation (15 × 15 × 15 Å). Net Bader charge as a function of
+time and (A) total system components and (B) reduction of DMPS components.
+Chemistry of Materials
+Article
+DOI: 10.1021/acs.chemmater.8b04821
+Chem. Mater. 2019, 31, 2377−2389
+2382
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​31/​7/​2377/​12638633/​cm8b04821.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 7>>
+Figure S5 represents a control case for the reduction of
+DMPS. This system was created by taking the optimized
+structure from the non-PBC calculations and building a cell
+around it. No electrons are added to the system, and no
+reactions are observed. Because the S−S bond usually is
+relatively weak, dissociation of the DMPS was a possibility but
+no dissociation or anything close to it happened in the run.
+Even with the inclusion of explicit solvent, the structure is very
+similar to that of implicit solvent used in the non-PBC
+simulations. In Figure 5, we added one Li atom to study a 1e−
+reduction mechanism of DMPS.
+On the basis of the control simulation, DMPS should have a
+neutral overall Bader charge in solution. The simulation takes
+around 0.5 ps before the DMPS moves from a neutral charge
+state to a charge state near −1 |e|, whereas the Li atom loses
+∼1 |e| worth of charge. To understand the reduction more
+clearly, we examined the charges of diﬀerent structures
+observed in the AIMD. The excess electron quickly reduces
+the DMPS into two MPS fragments, S6CH3 and S4CH3. These
+species are stable until ∼6 ps when the end SCH3 part of the
+S4CH3 species attaches itself to the terminal sulfur end of the
+S6CH3 species forming a S3 fragment and a DMPS molecule,
+CH3S7CH3. The reactions are summarized below.
++
+→
++
+−
+−
+−
+CH S CH
+e
+S CH
+S CH
+3 10
+3
+6
+3
+1/2
+4
+3
+1/2
+(5)
++
+→
++
+−
+−
+−
+S CH
+S CH
+CH S CH
+S
+6
+3
+1/2
+4
+3
+1/2
+3 7
+3
+3
+1
+(6)
+From our earlier DFT calculations, the charge state of the
+species involved in the reactions is important to the energetics.
+Because one electron was added to the system, what is the
+expected charge state of the product MPS fragments? If one
+were to think in the terms of organic chemistry, they might
+expect the formation of an anionic S6CH3 fragment along with
+a radical S4CH3 fragment. In the Bader partial charge analysis,
+these species would have a net partial charge of −1 and 0.
+From Figure 5, this was not the observed outcome. Instead
+both MPS fragments have a partial charge somewhere in
+between these two cases which implies that the state of the
+fragments is somewhere between a radical and an anion.
+Because of how close the two fragments are, this diﬀerence
+does not matter.
+Figure 6 shows the results for a DMPS system that is
+reduced by two electrons. The ﬁnal products that were
+observed are two S5CH3 MPS (reaction 7). Compared to the
+previous system, there are some slight diﬀerences. One is that
+the DMPS reduced exactly in half unlike the reduction with
+1e−where the DMPS splits into S = 4 and S = 6 fragments.
+Another important diﬀerence is that the MPS fragments do not
+combine to form a DMPS species, instead they are stable for
+the rest of the runtime of the simulation. This is most likely
+due to the charge of the MPS fragments. In the 1e−simulation,
+they were both ∼−0.5 |e| compared to ∼−1 |e| in this
+simulation. The ﬁrst system is more stable with a DMPS
+species and 1e−on a PS molecule versus in the 2nd system, 2
+MPS molecules stabilize the energy more favorably.
++
+→
+−
+−
+CH S CH
+2e
+2S CH
+3 10
+3
+5
+3
+1
+(7)
+Because the operations of batteries create electron-rich
+environments particularly near electriﬁed interfaces, we
+continued the trend of AIMD simulations. Figure S6 shows
+the results for a system with 3e added. The largest diﬀerence in
+this model compared to the previous calculations is that the
+extent of reactions increases with the addition of another
+electron. The ﬁnal reduction products in this case consist of S3,
+S4CH3, and S3CH3. The trends of the partial charges are very
+similar to the previous simulations. The Li atoms added to the
+model rapidly lose their electrons which are transferred to the
+DMPS species. One important observation about the reaction
+is that the reduction reactions occur simultaneously. The
+partial charge curves for the three products all increase in
+charge at the same time. In this simulation, the DMPS was not
+split into 2 MPS that then formed 2 MPS and a PS. Instead the
+DMPS was reduced directly into 2 MPS and a PS. Because
+these results represent the energetically favorable outcome of a
+Figure 6. Snapshot of DMPS in DME with two Li atoms is on left before (15 × 15 × 15 Å). Net Bader charge as a function of time and
+components in system are on the right.
+Chemistry of Materials
+Article
+DOI: 10.1021/acs.chemmater.8b04821
+Chem. Mater. 2019, 31, 2377−2389
+2383
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​31/​7/​2377/​12638633/​cm8b04821.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 8>>
+DMPS with 3 added electrons, we can connect the reduction
+products to the previous models. If we added an additional
+electron to the 2e−system, we would expect the formation of 2
+MPS and PS in accordance with this simulation. This would
+have to be accomplished by the reduction of one of the S5CH3
+fragments.
+The results for the 4 electron reduction are given in Figure
+S7. With this number of electrons, the observed ﬁnal reduction
+products were S2, S3, S4CH3, and SCH3. As noted with the
+previous system, all of the products from the reaction are
+formed at the same time and not through a series of
+intermediate reactions. One interesting aspect of this
+simulation is the presence of a S4CH3 MPS species. The fact
+that it did not get reduced further implies that if more
+electrons were added to the ﬁnal results of Figure S6, then
+instead of the electrons reducing the MPS fragments equally, it
+would be more favorable to reduce one MPS preferentially.
+Figure 7 contains the results for an AIMD simulation with 5
+Li atoms added. The ﬁnal reduction products consist of S1, S2,
+S3CH3, and S4CH3. The charge behavior of the Li atoms
+behaves the same as previously but the magnitude of the
+charge that DMPS gains is noticeably “oﬀ” by one electron.
+This can be thought of as a rounding eﬀect. In the simulations,
+the Li partial charge is not exactly +1. Instead, it is more like
+0.8 |e| which is missing 0.2 |e| per Li atom. This trend is
+observable in all of the AIMD simulations. For instance in
+Figure S7, the DMPS gains a total of less than 3.5 |e| when it
+should be gaining 4. As described earlier, fractional electrons
+are nonphysical. The Bader partial charge scheme is just an
+approximate way to divide the electron density in a familiar
+and descriptive way. Though the DMPS has not gained a
+discrete number of electrons, it still gained a signiﬁcant amount
+of charge versus the 4 Li atom simulation. The reduction
+products here favor a fuller reduction of the PS over the
+smaller fragment MPS species.
+In the AIMD simulations, several trends were observed. The
+general reduction mechanism is that DMPS is split into MPS
+fragments which are then reduced into PS or smaller MPS.
+Once the MPS is small enough, it seems like the PS reduction
+is more favored than MPS. Another observation is that several
+polysulﬁdes were generated. This shows that even in a new
+reduction pathway, it may still be possible to generate
+traditional polysulﬁde reduction products. Experimental
+evidence found that the favored ﬁnal reaction products were
+LiS2CH3 and LiSCH3. In our simulations, we observed the
+formation of LiSCH3, but not the formation of LiS2CH3.
+Though AIMD gives an assumption-free and stochastic way to
+explore the DMPS reduction pathway, it unfortunately does
+not provide the whole picture. For instance, will the polysulﬁde
+or the DMPS reduction pathway be favored? What will the
+ﬁnal reduction products be? According to Wang et al., DMPS
+is favored over polysulﬁde reduction pathway but the AIMD
+simulations would struggle to prove that. One of the goals of
+this work is to develop a computational procedure that can be
+used to screen sulfur-containing electrolytes. The AIMD
+simulations we have showed are useful but take signiﬁcant
+computational time and power. We have developed another
+ﬁrst-principles method that can be used to determine if a
+sulfur-containing species will change the reduction pathway of
+a LiSB.
+Electron Aﬃnity. Another ﬁrst-principles calculation that
+can provide great insight into this system is the determination
+of EA. The EA of a molecule is simply calculated by eq 8
+shown below where N is deﬁned as the number of electrons.
+=
+−
++
+E
+E
+EA
+N
+N
+1
+(8)
+In words, the EA is the diﬀerence in energy between a
+molecule with an extra electron added and the neutral case.
+This concept is closely related to the ionization potential which
+is the opposite calculation; an electron is removed instead of
+added. EA and ionization potentials have a rich history in the
+ﬁeld of ﬁrst-principles calculations and computational chem-
+istry. These calculations can also provide great insight
+especially for electrochemical systems. Researchers have
+previously quantiﬁed a relationship between electrochemical
+reactivity and EA.59 By calculating the electron aﬃnities, it is
+Figure 7. Snapshot of DMPS in DME with ﬁve Li atom is on left (15 × 15 × 15 Å). Net Bader charge as a function of time and components in
+system are on the right.
+Chemistry of Materials
+Article
+DOI: 10.1021/acs.chemmater.8b04821
+Chem. Mater. 2019, 31, 2377−2389
+2384
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​31/​7/​2377/​12638633/​cm8b04821.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 9>>
+possible to discern critical information about the new
+reduction pathways favorability, reaction steps and relative
+reactivity. In general, the more favorable the EA, the more
+reactive the molecule in an electrochemical system that favors
+electron transfer. EA provides an advantage over changes in
+free energy of reactions, ΔGrxn because in these systems with
+sulfur, the ΔGrxn for reduction is highly favorable and nearly
+irreversible, and thus it is very diﬃcult to draw conclusions. It
+is worth noting that these ΔGrxn do not exactly correspond to
+the reduction and oxidation processes observed in a traditional
+battery. Those reactions will occur in the presence of an
+external potential that will change the energetics of the
+reactions. These ΔG values are determined to see if one of
+these particular reactions is energetically more viable than
+another.
+We calculated the electron aﬃnities for three diﬀerent types
+of molecules of all possible lengths with less than 10 sulfur
+atoms: DMPS, MPS, and PS. The electron aﬃnities were
+calculated by ﬁrst optimizing the neutral species and then
+adding an electron and optimizing again. This means that our
+reported electron aﬃnities are adiabatic and not vertical. To
+make the simulation as accurate as possible, we tested four
+diﬀerent computational methods: B3PW91/6-311++G(d,p)
+and B3PW91/aug-cc-PVTZ with and without the Yamaguchi
+spin correction.60,61 The results indicated that the use of
+B3PW91/aug-cc-PVTZ with the spin correction would give
+the most accurate results (Figure S8).
+The electron aﬃnities reported in Figure 8 give several
+interesting trends. One is that the DMPS species with
+CH3SxCH3 (x ≥2) have lower electron aﬃnities than any of
+the other species. This means that these DMPS species are
+more susceptible to reaction than any MPS or PS species. This
+corroborates the AIMD simulations earlier where the S5CH3
+species underwent reduction before the S2CH3 or S3 species.
+For most of the cases, the EA follows a trend: DMPS < MPS <
+PS. This provides a fundamental insight into the new reduction
+pathway. On the basis of these calculations, the DMPS species
+are more reactive and thus will react preferentially over the
+polysulﬁde species. This provides ﬁrst-principles justiﬁcation
+for the development of a new reduction pathway and
+corroborates Wang’s experimental results.
+The general trend of EA is broken by a few particular cases.
+One example is the small DMPS/MPS/PS (# of S atoms <2).
+From Figure 8, there is large step change in DMPS EA for any
+species smaller than DMPS. A similar observation can be made
+for the polysulﬁdes when going to a lone S. In fact, the EA for
+S is actually positive which means that adding an electron is
+unfavorable and thus the sulfur will not reduce any further.
+This result which restates the obvious that Li2S is the ﬁnal
+reduction product shows that the methodology is not critically
+ﬂawed in this sense. Also, the preferential reduction of longer
+chained polysulﬁdes is predicted by our EA model.
+The MPS curve shows a peculiar behavior for species with a
+low number of sulfur atoms (SxCH3 where x ≤4). Out of
+these smaller chained species, S2CH3 has the lowest EA. S3CH3
+and S4CH3 break the trend by having higher electron aﬃnities,
+whereas SCH3 and CH3 continue with the trend. This result is
+particularly interesting because relative to the MPS curve
+S3CH3 and S4CH3 will be less reactive than they “should be”.
+This would cause a relative accumulation of those species. This
+is especially true for S4CH3 because it has one of the highest
+electron aﬃnities that are still negative. Wang’s paper reported
+NMR experiments where peaks of S4CH3 and S3CH3 were
+relatively long lived in the early stages of reduction which
+agrees with our EA model. We also observed the eﬀects of this
+in our AIMD models. All of the stable MPS species were of S =
+4 or lower. This part of the EA graphs is very close to the PS
+values. Any MPS larger than S = 4 was observed to be reduced
+but if the MPS was smaller, the AIMD sometimes reduced the
+PS species preferentially to the MPS.
+The EA model for exploring the reduction pathway agrees
+with experimental evidence and provides a fundamental reason
+for why the new reduction pathway is favored. This model also
+sets a precedent for computational design of a sulfur-
+containing electrolyte battery. Assuming that one is hoping
+for the generation of a new reduction pathway, then whatever
+additive or cosolvent is used must have an EA lower than PS to
+change the reduction pathway. This clear guideline can
+potentially streamline the selection and screening process for
+new sulfur-containing cosolvent electrolytes.
+Now that the impact of the cosolvent has been investigated,
+explored, and determined to impact the reduction pathway.
+The next question is: what are the consequences of changing
+the reduction chemistry? If the new cosolvent like DMDS is
+truly good for the battery performance, then it should have
+impacts that would change the battery chemistry for the better.
+As previously identiﬁed, the root cause of the polysulﬁde
+shuttle eﬀect has to deal with the solubility of polysulﬁdes in
+the electrolyte as well as the insolubilities of the ﬁnal reduction
+products (Li2S and Li2S2). Another major problem is the
+passivating behavior of Li2S on the anode because it will
+insulate the electrode and decrease battery performance. We
+applied more computational chemistry methods to explore
+how some of these behaviors would change with the new
+reduction chemistry.
+Solubility of Final Discharge Products. Changing the
+electrolyte and reduction pathway could have an impact on the
+solubility of these species which could modify the shuttle eﬀect
+entirely. From a ﬁrst-principles perspective, the solubility of a
+species is based on the diﬀerence in energy between that
+species in the solid state versus in the electrolyte. The free
+energy associated with solubility (dissolution energy) is shown
+below in eq 9, where Gelectrolyte is the free energy of the
+molecule in the solution phase and Gsolid state is the free energy
+of the molecule in the solid state. If the dissolution free energy
+is negative or the more negative it is, the more favorable the
+solubility becomes.
+Δ
+=
+−
+G
+G
+G
+dissolution
+electrolyte
+solid state
+(9)
+Figure 8. EA comparison for DMPS, MPS, and PS species at triple
+zeta with Yamaguchi spin contamination correction level of theory.
+Chemistry of Materials
+Article
+DOI: 10.1021/acs.chemmater.8b04821
+Chem. Mater. 2019, 31, 2377−2389
+2385
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​31/​7/​2377/​12638633/​cm8b04821.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 10>>
+The free energies required for these formulas can be
+calculated with ﬁrst-principles methods that rely on statistical
+thermodynamic formulas taking the usual 0 K DFT energy for
+the system and adding on the eﬀects of entropy and enthalpy
+due to vibrations. For the solid state, the systems were
+optimized and then those structures were run in a calculation
+that determines the vibrational modes from a numerical
+hessian. For the liquid systems, a traditional geometry
+optimization is incredibly computationally expensive and will
+rarely optimize to a true ground state. Instead, AIMD was used
+at relatively long time scales (20 ps) to equilibrate the system
+and then that structure was used for the vibrational mode
+calculation. The formulas used to obtain the free energy (G)
+from the 0 K are given below.62
+i
+k
+jjjjjjjjjj
+i
+k
+jjjjjjjjjj
+y
+{
+zzzzzzzzzz
+Ä
+Ç
+ÅÅÅÅÅÅÅÅÅ
+i
+k
+jjjj
+y
+{
+zzzz
+É
+Ö
+ÑÑÑÑÑÑÑÑÑ
+y
+{
+zzzzzzzzzz
+∑
+ω
+κ
+=
+−
+−
+ℏ
+ω
+κ
+ω
+κ
+ℏ
+ℏ( )
+S
+T
+T
+( )
+exp
+ln 1
+exp
+vib
+T
+T
+i
+i
+i
+i
+k
+jjjjjj
+Ä
+Ç
+ÅÅÅÅÅÅÅÅÅ
+i
+k
+jjjj
+y
+{
+zzzz
+É
+Ö
+ÑÑÑÑÑÑÑÑÑ
+y
+{
+zzzzzz
+∑
+ω
+ω
+ω
+κ
+=
+ℏ
++ ℏ
+ℏ
+−
+−
+H
+T
+T
+( )
+1
+2
+exp
+1
+i
+i
+i
+vib
+1
+=
++
+G
+H
+kTS
+vib
+vib
+vib
+=
++
+G
+E
+Gvib
+Two diﬀerent electrolytes were tested, DME and 50/50
+DME/DMDS by volume, on three diﬀerent species, S8 Li2S
+and LiSCH3. LiSCH3 is the predicted ﬁnal product for the
+complete reduction of DMPS. This species is analogous as the
+ﬁnal reduction product to Li2S. The liquid systems are
+displayed in Figure S8, and the solid systems are displayed in
+Figure 9.
+For the most part, the AIMD liquid simulations ran without
+much worth of note except for the Li2S case with the DME/
+DMDS mixture electrolyte. In this particular simulation, the
+Li2S reacted with one of the DMDS molecules making a SCH3
+and an S2CH3 fragment. This goes along with our observation
+in Figure 5 that the DMDS molecule or its fragments can react
+with polysulﬁde species. This reaction could be more favorable
+than the other cases considered because Li2S energetically
+prefers to be precipitated as a solid. Suspending a Li2S
+molecule in solution like in the AIMD simulation causes the
+Li2S to be in a less favorable and thus higher energy state.
+The solid structures of Li2S and S8 were pulled from
+previous studies that relied on experimental evidence for the
+accurate structural information used to simulate the materi-
+als.63,64 Unlike the other two materials, the structure of
+LiSCH3 was not readily available. Wang’s group reported XRD
+data for LiSCH3 but it is diﬃcult to create a geometry input for
+ﬁrst-principles calculations with that information alone.
+Fortunately, a research team sometime in the past explored
+the chemistries and structures of similar materials.64 On the
+basis of their information, it was possible to construct a
+reasonable LiSCH3 cell for optimization. Using a built in
+function within the software package Materials Studio, a
+calculated XRD spectra for the optimized material matches
+Wang’s reported XRD very closely Figure S9.65
+Table 1 lists the results of the dissolution calculations. First,
+if we examine the results for the S8 system, we see that both in
+DME and DME/DMDS that the dissolution is not favored.
+Because of the nature of DFT and the calculation method-
+ology, pragmatic decisions had to be made about accuracy
+versus feasibility. This means that each number could have a
+systemic error so the numbers alone cannot be taken
+quantitatively. However, comparing the numbers against each
+other will allow for the cancellation of these systemic errors
+and the results have a comparative meaning. With that in mind,
+we see that the DME solvent is better at dissolving the S8 into
+the electrolyte than the DME/DMDS solvent mixture. This
+result is intriguing because from earlier studies DMDS has
+been studied to interact with sulfur in order to process it in
+reﬁneries and and so forth. Perhaps, these results indicate that
+DMDS does not solvate the S8 well but instead reacts with it
+under certain conditions. These results agree with our previous
+studies, solvents such as DME and other sulfur compounds do
+not interact well with sulfur by itself.19
+One of the problems with the LiSB is the insoluble and
+passivating Li2S ﬁnal reduction product. Li2S and Li2S2
+precipitate from the electrolyte onto the electrode which
+means that they have unfavorable dissolution energies. Our
+results agree with those conclusions especially relative to the
+S8. Li2S is more insoluble than S8 as expected with the relative
+energies in mind. For Li2S in the DME/DMDS mixture, the
+Li2S is more favorable to dissolve. In this particular system, the
+Li2S reacted with the DMDS which is most likely why the
+dissolution energy is more favorable.
+Finally with LiSCH3, both the solvation energies are
+relatively low. They are less favorable than the S8 DME case
+but they are much closer than the other explored systems. We
+can also conclude that LiSCH3 is more likely to be dissolved in
+a DME/DMDS solution showing favorable interactions. One
+of the conclusions to draw is that Li2S is insoluble which
+creates problems from a kinetic and passivation standpoint so a
+less soluble ﬁnal reduction product can help increase the
+battery performance. LiSCH3 instead of Li2S will lessen this
+problem and increase the solubility and help with the
+irreversibility of the ﬁnal reduction product.
+Electronic Structure and Behavior of Final Reduction
+Products. Another factor that hurts the battery performance is
+the insulating behavior of Li2S. As described earlier, when the
+Figure 9. Solid simulation cells used to for vibrational calculations
+after optimization.
+Table 1. ΔGdissolution (eV) for LiSCH3, Li2S, and S8 in DME
+and DME/DMDS Solvents
+solvent
+LiSCH3
+Li2S
+S8
+DME
+0.38
+1.36
+0.13
+DME/DMDS
+0.20
+0.70
+1.19
+Chemistry of Materials
+Article
+DOI: 10.1021/acs.chemmater.8b04821
+Chem. Mater. 2019, 31, 2377−2389
+2386
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​31/​7/​2377/​12638633/​cm8b04821.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 11>>
+dissolved lithium polysulﬁdes transport to the anode, they will
+ﬁnish their reduction. This would not be so harmful to the
+battery performance if their solubility was larger and if the Li2S
+was not insulating. The Li2S will stop the ﬂow of electrons
+from the anode and thus stop the electrode from behaving as it
+should. The density of states of Li2S proves that the material is
+an insulator with a wide enough band gap to make the
+probability of electrons to jump from the valence band
+maximum to the conduction band minimum unlikely. In
+addition, the same Li2S insulating properties make the charge
+reaction kinetically slow and impose an overpotential.
+Because the reduction pathway has been modiﬁed, LiSCH3
+could have a diﬀerent electronic structure that could be
+potentially less insulating than Li2S. The same LiSCH3 cell was
+used as shown in Figure 9 for the density of states calculation.
+Two diﬀerent levels of theory were used for the calculation:
+PBE and HSE06. The PBE functional tends to delocalize
+electrons and overestimate band gaps, whereas the HSE06
+functional introduces direct Hartree−Fock exchange contribu-
+tions. This hybrid functional localizes electrons more than
+PBE, is generally more accurate, and usually slightly under-
+estimates the band gap. Both systems are shown in Figure 10.
+The calculated band gap (Figure 10) increases from the PBE
+to the HSE06 simulation, but HSE06 is more theoretically
+accurate so it provides a better estimate. The band gaps are not
+particularly large but LiSCH3 is deﬁnitely in the insulator
+camp, meaning that it would still passivate/insulate the anode.
+Eithiraj et al. calculated the band gap of Li2S from ﬁrst-
+principles calculations, and they reported that the energy of the
+band gap was around 3 eV.66 Comparing this result to our
+calculations, the band gaps of LiSCH3 and Li2S are very similar
+and thus LiSCH3 will not provide any advantage in
+performance when it comes to the insulation of the electrodes.
+■CONCLUSIONS
+We used ﬁrst-principles computational methods to explore the
+new battery chemistry and the impact on performance when
+the electrolyte contains cosolvent DMDS is.
+AIMD simulations show that DMDS struggled to sponta-
+neously react or dissociate by itself or near S8 in solution, but it
+reduces with the addition of electrons to the solution
+emulating conditions near a charged electrode. The DMDS
+reduction reaction was paired with S8 to accurately determine
+the structure of DMPS, the starting molecule of the new
+reduction pathway. The reduction of DMPS was investigated
+with both AIMD and EA calculations to determine that DMPS
+will preferentially be reduced over polysulﬁdes thus justifying
+the new reduction pathway. This method illustrates a practical
+screening tool to design other sulfur containing cosolvents. We
+also found in agreement with experimental results that the
+S4CH3 and S3CH3 species would be longer lived in the
+reduction based on EA behavior.
+We explored the consequences of the new chemistry on
+factors that the LISB typically struggles with. Solubility
+calculations show that the new ﬁnal reduction product,
+LiSCH3, is more soluble and therefore more reversible than
+Li2S which would signiﬁcantly help the battery charge.
+However, from electronic structure calculations, the band
+gap of solid LiSCH3 is very similar to Li2S which means that
+LiSCH3 will still insulate/passivate the electrode which
+provides no advantage over Li2S.
+Overall, the new reduction pathway is promising and should
+provide an increase in performance over the traditional
+mechanism. The DMDS reacting with S8 or other lithium
+polysulﬁdes to generate DMPS species that then undergo the
+reaction can lead to more reversible ﬁnal reduction products
+and also serve as extra sulfur that can be reduced thus
+increasing the speciﬁc capacity. However, we have not explored
+the possible eﬀects of the migration of the new products to the
+anode side. On the basis of our calculations, we provide
+guidelines for cosolvent selection and apply a systematic
+exploration of important issues that the new pathway could ﬁx.
+For future work, we hope to extend the methods here to screen
+sulfur-containing cosolvents to engineer a better battery and to
+explore more aspects of how the new chemistries would aﬀect
+performance.
+These preliminary results can be improved in future work by
+incorporating more aspects of the battery system. Most
+noticeably, the interactions between the new components
+and the Li metal anode since Li anode compatibility are critical
+to selection of components for battery design. It would also
+expand the work to examine the competitive kinetics of
+reduction between the species to add to the understanding.
+■ASSOCIATED CONTENT
+*
+S
+Supporting Information
+The Supporting Information is available free of charge on the
+ACS Publications website at DOI: 10.1021/acs.chemma-
+ter.8b04821.
+Solutions of DMDS in various solvents; charge evolution
+in simulations of DMDS solutions with 2 Li atoms;
+DMPS in solution; structure and charges of a DMPS
+solution with 3 Li atoms added and 4 Li atoms added;
+comparison of various methodologies to compute EA of
+DMPS, MPS and PS; setting and spectra of vibrational
+Figure 10. Density of states for LiSCH3 using (A) PBE functional and
+(B) HSE06 functional.
+Chemistry of Materials
+Article
+DOI: 10.1021/acs.chemmater.8b04821
+Chem. Mater. 2019, 31, 2377−2389
+2387
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​31/​7/​2377/​12638633/​cm8b04821.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 12>>
+calculations; parameters used in PBC simulations; and
+results of DFT-based thermodynamics (PDF)
+■AUTHOR INFORMATION
+Corresponding Author
+*E-mail: balbuena@tamu.edu.
+ORCID
+Perla B. Balbuena: 0000-0002-2358-3910
+Notes
+The authors declare no competing ﬁnancial interest.
+■ACKNOWLEDGMENTS
+This material is based upon the work supported by the U.S.
+Department of Energy’s Oﬃce of Energy Eﬃciency and
+Renewable Energy (EERE), as part of the Battery 500
+Consortium, award number DE-EE0008210. This work was
+also supported in part by the Assistant Secretary for Energy
+Eﬃciency and Renewable Energy, Oﬃce of Vehicle Tech-
+nologies of the U.S. Department of Energy under contract no.
+DE-EE0006832 under the Advanced Battery Materials
+Research (BMR) Program. Supercomputer resources from
+Texas A&M University High Performance Computer Center
+and Texas Advanced Computing Center (TACC) are
+gratefully acknowledged.
+■REFERENCES
+(1) Crabtree, G. Perspective: The Energy-Storage Revolution.
+Nature 2015, 526, S92.
+(2) Goodenough, J. B.; Park, K.-S. The Li-Ion Rechargeable Battery:
+A Perspective. J. Am. Chem. Soc. 2013, 135, 1167−1176.
+(3) Pesaran, A. A.; Markel, T.; Tataria, H. S.; Howell, D. Battery
+Requirements for Plug-in Hybrid Electric Vehicles--Analysis and Ration-
+ale; National Renewable Energy Lab.(NREL): Golden, CO (United
+States), 2009.
+(4) Nazar, L. F.; Cuisinier, M.; Pang, Q. Lithium-Sulfur Batteries.
+MRS Bull. 2014, 39, 436−442.
+(5) Etacheri, V.; Marom, R.; Elazari, R.; Salitra, G.; Aurbach, D.
+Challenges in the Development of Advanced Li-Ion Batteries: A
+Review. Energy Environ. Sci. 2011, 4, 3243−3262.
+(6) Barré, A.; Deguilhem, B.; Grolleau, S.; Gérard, M.; Suard, F.;
+Riu, D. A Review on Lithium-Ion Battery Ageing Mechanisms and
+Estimations for Automotive Applications. J. Power Sources 2013, 241,
+680−689.
+(7) Manthiram, A. An Outlook on Lithium Ion Battery Technology.
+ACS Cent. Sci. 2017, 3, 1063−1069.
+(8) Lin, D.; Liu, Y.; Cui, Y. Reviving the Lithium Metal Anode for
+High-Energy Batteries. Nat. Nanotechnol. 2017, 12, 194−206.
+(9) Armand, M.; Tarascon, J.-M. Building Better Batteries. Nature
+2008, 451, 652−657.
+(10) Zu, C.-X.; Li, H. Thermodynamic Analysis on Energy Densities
+of Batteries. Energy Environ. Sci. 2011, 4, 2614−2624.
+(11) Thackeray, M. M.; Wolverton, C.; Isaacs, E. D. Electrical energy
+storage for transportation-approaching the limits of, and going
+beyond, lithium-ion batteries. Energy Environ. Sci. 2012, 5, 7854−
+7863.
+(12) Bruce, P. G.; Freunberger, S. A.; Hardwick, L. J.; Tarascon, J.-
+M. Li−O2 and Li−S Batteries with High Energy Storage. Nat. Mater.
+2011, 11, 19−29.
+(13) Ji, X.; Lee, K. T.; Nazar, L. F. A highly ordered nanostructured
+carbon-sulphur cathode for lithium-sulphur batteries. Nat. Mater.
+2009, 8, 500−506.
+(14) Zhang, S. S. Liquid Electrolyte Lithium/Sulfur Battery:
+Fundamental Chemistry, Problems, and Solutions. J. Power Sources
+2013, 231, 153−162.
+(15) Wang, Q.; Jin, J.; Wu, X.; Ma, G.; Yang, J.; Wen, Z. A Shuttle
+Effect Free Lithium Sulfur Battery Based on a Hybrid Electrolyte.
+Phys. Chem. Chem. Phys. 2014, 16, 21225−21229.
+(16) Hofmann, A. F.; Fronczek, D. N.; Bessler, W. G. Mechanistic
+modeling of polysulfide shuttle and capacity loss in lithium-sulfur
+batteries. J. Power Sources 2014, 259, 300−310.
+(17) Qie, L.; Zu, C.; Manthiram, A. A High Energy Lithium-Sulfur
+Battery with Ultrahigh-Loading Lithium Polysulfide Cathode and its
+Failure Mechanism. Adv. Energy Mater. 2016, 6, 1502459.
+(18) Kumaresan, K.; Mikhaylik, Y.; White, R. E. A Mathematical
+Model for a Lithium-Sulfur Cell. J. Electrochem. Soc. 2008, 155, A576.
+(19) Kamphaus, E. P.; Balbuena, P. B. Long-Chain Polysulfide
+Retention at the Cathode of Li-S Batteries. J. Phys. Chem. C 2016,
+120, 4296−4305.
+(20) Chung, S.-H.; Singhal, R.; Kalra, V.; Manthiram, A. Porous
+Carbon Mat as an Electrochemical Testing Platform for Investigating
+the Polysulfide Retention of Various Cathode Configurations in Li-S
+Cells. J. Phys. Chem. Lett. 2015, 6, 2163−2169.
+(21) Hassoun, J.; Scrosati, B. Moving to a Solid-State Configuration:
+A Valid Approach to Making Lithium-Sulfur Batteries Viable for
+Practical Applications. Adv. Mater. 2010, 22, 5198−5201.
+(22) Nagao, M.; Hayashi, A.; Tatsumisago, M. Sulfur−Carbon
+Composite Electrode for All-Solid-State Li/S Battery with Li2S−P2S5
+Solid Electrolyte. Electrochim. Acta 2011, 56, 6055−6059.
+(23) Chung, S.-H.; Manthiram, A. Bifunctional Separator with a
+Light-Weight Carbon-Coating for Dynamically and Statically Stable
+Lithium-Sulfur Batteries. Adv. Funct. Mater. 2014, 24, 5299−5306.
+(24) Zhang, S.; Ueno, K.; Dokko, K.; Watanabe, M. Recent
+Advances in Electrolytes for Lithium-Sulfur Batteries. Adv. Energy
+Mater. 2015, 5, 1500117.
+(25) Kamphaus, E. P.; Balbuena, P. B. First-Principles Investigation
+of Lithium Polysulfide Structure and Behavior in Solution. J. Phys.
+Chem. C 2017, 121, 21105−21117.
+(26) Chen, S.; Gao, Y.; Yu, Z.; Gordin, M. L.; Song, J.; Wang, D.
+High Capacity of Lithium-Sulfur Batteries at Low Electrolyte/Sulfur
+Ratio Enabled by an Organosulfide Containing Electrolyte. Nano
+Energy 2017, 31, 418−423.
+(27) Cheng, L.; Curtiss, L. A.; Zavadil, K. R.; Gewirth, A. A.; Shao,
+Y.; Gallagher, K. G. Sparingly Solvating Electrolytes for High Energy
+Density Lithium-Sulfur Batteries. ACS Energy Lett. 2016, 1, 503−509.
+(28) Shyamsunder, A.; Beichel, W.; Klose, P.; Pang, Q.; Scherer, H.;
+Hoffmann, A.; Murphy, G. K.; Krossing, I.; Nazar, L. F. Inhibiting
+Polysulfide Shuttle in Lithium-Sulfur Batteries through Low-Ion-
+Pairing Salts and a Triflamide Solvent. Angew. Chem., Int. Ed. 2017,
+56, 6192−6197.
+(29) Xu, K. Nonaqueous Liquid Electrolytes for Lithium-Based
+Rechargeable Batteries. Chem. Rev. 2004, 104, 4303−4418.
+(30) Wu, H.-L.; Shin, M.; Liu, Y.-M.; See, K. A.; Gewirth, A. A.
+Thiol-Based Electrolyte Additives for High-Performance Lithium-
+Sulfur Batteries. Nano Energy 2017, 32, 50−58.
+(31) Shin, M.; Wu, H.-L.; Narayanan, B.; See, K. A.; Assary, R. S.;
+Zhu, L.; Haasch, R. T.; Zhang, S.; Zhang, Z.; Curtiss, L. A.; Gewirth,
+A. A. Effect of the Hydrofluoroether Cosolvent Structure in
+Acetonitrile-Based Solvate Electrolytes on the Li+ Solvation Structure
+and Li-S Battery Performance. ACS Appl. Mater. Interfaces 2017, 9,
+39357−39370.
+(32) Cuisinier, M.; Cabelguen, P.-E.; Adams, B. D.; Garsuch, A.;
+Balasubramanian, M.; Nazar, L. F. Unique behaviour of nonsolvents
+for polysulphides in lithium-sulphur batteries. Energy Environ. Sci.
+2014, 7, 2697−2705.
+(33) Sun, C.; Liu, J.; Gong, Y.; Wilkinson, D. P.; Zhang, J. Recent
+Advances in All-Solid-State Rechargeable Lithium Batteries. Nano
+Energy 2017, 33, 363−386.
+(34) Suriyakumar, S.; Gopi, S.; Kathiresan, M.; Bose, S.; Gowd, E.
+B.; Nair, J. R.; Angulakshmi, N.; Meligrana, G.; Bella, F.; Gerbaldi, C.;
+Stephan, A. M. Metal organic framework laden poly(ethylene oxide)
+based composite electrolytes for all-solid-state Li-S and Li-metal
+polymer batteries. Electrochim. Acta 2018, 285, 355−364.
+Chemistry of Materials
+Article
+DOI: 10.1021/acs.chemmater.8b04821
+Chem. Mater. 2019, 31, 2377−2389
+2388
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​31/​7/​2377/​12638633/​cm8b04821.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 13>>
+(35) Chen, S.; Dai, F.; Gordin, M. L.; Yu, Z.; Gao, Y.; Song, J.;
+Wang, D. Functional Organosulfide Electrolyte Promotes an Alternate
+Reaction Pathway to Achieve High Performance in Lithium-Sulfur
+Batteries. Angew. Chem., Int. Ed. 2016, 55, 4231−4235.
+(36) Gu, S.; Wen, Z.; Qian, R.; Jin, J.; Wang, Q.; Wu, M.; Zhuo, S.
+Carbon Disulfide Cosolvent Electrolytes for High-Performance
+Lithium Sulfur Batteries. ACS Appl. Mater. Interfaces 2016, 8,
+34379−34386.
+(37) Chen, S.; Wang, D.; Zhao, Y.; Wang, D. Superior Performance
+of a Lithium-Sulfur Battery Enabled by a Dimethyl Trisulfide
+Containing Electrolyte. Small Methods 2018, 2, 1800038.
+(38) Lappas, A. A.; Bezergianni, S.; Vasalos, I. A. Production of
+Biofuels via Co-Processing in Conventional Refining Processes. Catal.
+Today 2009, 145, 55−62.
+(39) McAllan, D. T.; Cullum, T. V.; Dean, R. A.; Fidler, F. A. The
+Preparation and Properties of Sulfur Compounds Related to
+Petroleum. I. The Dialkyl Sulfides and Disulfides1. J. Am. Chem.
+Soc. 1951, 73, 3627−3632.
+(40) Zheng, Y.; Jiao, Y.; Jaroniec, M.; Qiao, S. Z. Elektrochemie der
+Wasserstoffentwicklungsreaktion: Optimierung durch Korrelation von
+Experiment und Theorie. Angew. Chem., Int. Ed. 2015, 127, 52−66.
+(41) Greeley, J.; Jaramillo, T. F.; Bonde, J.; Chorkendorﬀ, I.;
+Nørskov, J. K. Computational High-Throughput Screening of
+Electrocatalytic Materials for Hydrogen Evolution. In Materials for
+Sustainable Energy: A Collection of Peer-Reviewed Research and Review
+Articles from Nature Publishing Group; World Scientiﬁc, 2011; pp
+280−284.
+(42) Kresse, G.; Hafner, J. Ab initiomolecular dynamics for liquid
+metals. Phys. Rev. B: Condens. Matter Mater. Phys. 1993, 47, 558−561.
+(43) Kresse, G.; Hafner, J. Ab initiomolecular-dynamics simulation
+of the liquid-metal-amorphous-semiconductor transition in germa-
+nium. Phys. Rev. B: Condens. Matter Mater. Phys. 1994, 49, 14251.
+(44) Frisch, M. J.; Trucks, G. W.; Schlegel, H. B.; Scuseria, G. E.;
+Robb, M. A.; Cheeseman, J. R.; Scalmani, G.; Barone, V.; Mennucci,
+B.; Petersson, G. A.; Nakatsuji, H.; Caricato, M.; Li, X.; Hratchian, H.
+P.; Izmaylov, A. F.; Bloino, J.; Zheng, G.; Sonnenberg, J. L.; Hada, M.;
+Ehara, M.; Toyota, K.; Fukuda, R.; Hasegawa, J.; Ishida, M.;
+Nakajima, T.; Honda, Y.; Kitao, O.; Nakai, H.; Vreven, T.;
+Montgomery, J. A., Jr.; Peralta, J. E.; Ogliaro, F.; Bearpark, M.;
+Heyd, J. J.; Br, E.; Kudin, K. N.; Staroverov, V. N.; Kobayashi, R.;
+Normand, J.; Raghavachari, K.; Rendell, A.; Burant, J. C.; Iyengar, S.
+S.; Tomasi, J.; Cossi, M.; Rega, N.; Millam, J. M.; Klene, M.; Knox, J.
+E.; Cross, J. B.; Bakken, V.; Adamo, C.; Jaramillo, J.; Gomperts, R.;
+Stratmann, R. E.; Yazyev, O.; Austin, A. J.; Cammi, R.; Pomelli, C.;
+Ochterski, J. W.; Martin, R. L.; Morokuma, K.; Zakrzewski, V. G.;
+Voth, G. A.; Salvador, P.; Dannenberg, J. J.; Dapprich, S.; Daniels, A.
+D.; Farkas, Ö.; Foresman, J. B.; Ortiz, J. V.; Cioslowski, J.; Fox, D. J.
+Gaussian 09, Revision E.01; Gaussian, Inc.: Wallingford CT, 2009.
+(45) Blöchl, P. E. Projector Augmented-Wave Method. Phys. Rev. B:
+Condens. Matter Mater. Phys. 1994, 50, 17953.
+(46) Kresse, G.; Joubert, D. From Ultrasoft Pseudopotentials to the
+Projector Augmented-Wave Method. Phys. Rev. B: Condens. Matter
+Mater. Phys. 1999, 59, 1758−1775.
+(47) Monkhorst, H. J.; Pack, J. D. Special Points for Brillouin-Zone
+Integrations. Phys. Rev. B: Condens. Matter Mater. Phys. 1976, 13,
+5188−5192.
+(48) Perdew, J. P.; Burke, K.; Ernzerhof, M. Generalized Gradient
+Approximation Made Simple. Phys. Rev. Lett. 1996, 77, 3865−3868.
+(49) Devey, A.; Grau-Crespo, R.; de Leeuw, N. H. Electronic and
+Magnetic Structure of Fe 3 S 4: GGA+ U Investigation. Phys. Rev. B:
+Condens. Matter Mater. Phys. 2009, 79, 195126.
+(50) Becke, A. D.; Johnson, E. R. A Density-Functional Model of the
+Dispersion Interaction. J. Chem. Phys. 2005, 123, 154101.
+(51) Wang, Y.; Perdew, J. P. Correlation Hole of the Spin-Polarized
+Electron gas, with Exact Small-Wave-Vector and High-Density
+Scaling. Phys. Rev. B: Condens. Matter Mater. Phys. 1991, 44,
+13298−13307.
+(52) Perdew, J. P.; Chevary, J. A.; Vosko, S. H.; Jackson, K. A.;
+Pederson, M. R.; Singh, D. J.; Fiolhais, C. Atoms, Molecules, Solids,
+and Surfaces: Applications of the Generalized Gradient Approx-
+imation for Exchange and Correlation. Phys. Rev. B: Condens. Matter
+Mater. Phys. 1992, 46, 6671−6687.
+(53) Tomasi, J.; Mennucci, B.; Cammi, R. Quantum Mechanical
+Continuum Solvation Models. Chem. Rev. 2005, 105, 2999−3094.
+(54) Jursic, B. S. Computation of Bond Dissociation Energy for
+Sulfides and Disulfides with Ab Initio and Density Functional Theory
+Methods. Int. J. Quantum Chem. 1997, 62, 291−296.
+(55) Schultz, P. A. Local Electrostatic Moments and Periodic
+Boundary Conditions. Phys. Rev. B: Condens. Matter Mater. Phys.
+1999, 60, 1551−1554.
+(56) Tang, W.; Sanville, E.; Henkelman, G. A Grid-Based Bader
+Analysis Algorithm without Lattice Bias. J. Phys.: Condens. Matter
+2009, 21, 084204.
+(57) Sanville, E.; Kenny, S. D.; Smith, R.; Henkelman, G. Improved
+grid-based algorithm for Bader charge allocation. J. Comput. Chem.
+2007, 28, 899−908.
+(58) Henkelman, G.; Arnaldsson, A.; Jónsson, H. A Fast and Robust
+Algorithm for Bader Decomposition of Charge Density. Comput.
+Mater. Sci. 2006, 36, 354−360.
+(59) Cárdenas-Jirón, G. I.; Gutiérrez-Oliva, S.; Melin, J.; Toro-
+Labbé, A. Relations between Potential Energy, Electronic Chemical
+Potential, and Hardness Profiles. J. Phys. Chem. A 1997, 101, 4621−
+4627.
+(60) Szabo, A.; Ostlund, N. S. Modern Quantum Chemistry:
+Introduction to Advanced Electronic Structure Theory; Courier
+Corporation: New York City, U.S, 2012.
+(61) Jensen, F. Introduction to Computational Chemistry; John Wiley
+& Sons: West Sussex, U.K., 2017.
+(62) McQuarrie, D. A. Statistical Thermodynamics; Harper & Row:
+New York City, U.S, 1973.
+(63) Perez Beltran, S.; Balbuena, P. B. Formation of Multilayer
+Graphene Domains with Strong Sulfur−Carbon Interaction and
+Enhanced Sulfur Reduction Zones for Lithium−Sulfur Battery
+Cathodes. ChemSusChem 2018, 11, 1970−1980.
+(64) Weiss, E.; Joergens, U. Die Kristallstrukturen der Alkalime-
+thylmercaptide CH3SM (M= Li, Na, K). Chem. Ber. 1972, 105, 481−
+486.
+(65) Dassault Systèmes BIOVIA, D. S. Materials Studio, 16.1.0.21;
+Dassault Systèmes: San Diego, 2018.
+(66) Eithiraj, R. D.; Jaiganesh, G.; Kalpana, G.; Rajagopalan, M.
+First-Principles Study of Electronic Structure and Ground-State
+Properties of Alkali-Metal Sulfides −Li2S, Na2S, K2S and Rb2S. Phys.
+Status Solidi B 2007, 244, 1337−1346.
+Chemistry of Materials
+Article
+DOI: 10.1021/acs.chemmater.8b04821
+Chem. Mater. 2019, 31, 2377−2389
+2389
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​31/​7/​2377/​12638633/​cm8b04821.​pdf by TSINGHUA UNIV user on 08 October 2026

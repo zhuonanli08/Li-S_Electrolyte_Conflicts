@@ -1,0 +1,116 @@
+Supplementary Material
+
+
+
+Dataset Details
+
+Figure S1. The sigma (σ) profile and corresponding sigma surface of Li2S8 molecule obtained from TMOLEX
+
+
+
+
+Figure S2. The COSMO-RS solubility (mol/mol) of ILs (a) and its log transformation for the entire dataset
+
+
+
+
+
+Figure S3. The COSMO-RS calculated a) log(solubility (mol/mol)) b) ln(viscosity (mPa.s)), c) ln(conductivity (S/cm)), d) melting point (C)  of ILs based on cation groups
+
+COSMO-RS Solubility Validations from literature
+
+
+Table S1. COSMO-RS and experimental solubilities of Li2S8
+
+BETA: bis(pentafluoroethylsulfonyl)amide, C4dmim: 1-butyl-2,3-dimethyli-imidazolium, DEME:N,N-diethyl-N-methyl-N-(2-methoxyethyl)-ammonium, FSI: bis(fluorosulfonyl)imide, OTF: trifluoromethane-sulfonate, P13:1-methyl-1-propyl-pyrrolidinium, P14: 1-butyl-1-methyl-pyrrolidinium, P2225: triethyl-pentyl-phosphonium, PP13:1-methyl-1-propyl-piperidinium, TFSI: bis(trifluoromethane)sulfonimide
+
+
+
+
+
+Experimental Details
+
+To test the performances of the selected six ionic liquids, two-electrode CR2032 Li-S coin cells were prepared using pure lithium metal (170 µm thick, 2.01 cm2 area, MTI) as the anode, a polymeric separator (25 µm thick, 3.1 cm2 area, MTI) and the composite cathode. The composite cathode was prepared using the melt-diffusion strategy. First, sulfur and carbon black (Timcal Super C65, MTI) were mixed in 70:30 mass ratios and kept in a vacuum oven at 155 ◦C for 12 hours. The final sulfur amount of the resulting composite was 65.3 wt.%, which is determined by thermal gravimetric analysis (TGA). The cathode powder was prepared by mixing 70 wt.% of this composite with 20 wt. % of additional carbon black and 10 wt.% polyvinylidene fluoride (PVDF, MTI), and the slurry was obtained using N-methyl-2-pyrrolidone (NMP) solvent. Using the doctor-blade method, the slurries were pasted onto aluminum foil (15 µm thick, MTI) and dried overnight. The final cathodes had a 2.01 cm2 area and approximately 2 mg/cm2 sulfur loadings. As electrolytes, the organic electrolyte was prepared first by mixing equal volumes of 1,3-Dioxolane (DOL, Sigma Aldrich):1,2-Dimethoxyethane (DME, Sigma Aldrich) (1:1 vol.%) solvents containing lithium salts as 1 M lithium bis-trifluoromethanesulfonimide (LiTFSI, Sigma Aldrich) and 0.1 M lithium nitrate (LiNO3, Sigma Aldrich). First, the effect of IL to DOL:DME ratio in the electrolyte and the E/S ratio were determined by preparing pure DOL:DME, 25-75 vol.% and 50-50 vol.% IL/organic mixed electrolytes and Li-S cells with E/S ratios of 13 mL/g and 8 mL/g, respectively. In the rest of the experiments, the selected ionic liquids were mixed with as-prepared organic electrolytes at a ratio of 25-75 vol.%, and IL-organic electrolytes were obtained. An E/S ratio of 13 mL/g was used in all cells. Cycling performances of the cells were determined galvanostatically at 0.1C, where current rates were adjusted by taking 1675 mAh/g as the theoretical specific capacity of sulfur. 
+
+
+Table S2. The cationic and the anionic properties of the selected ionic liquids used in Li-S cells.
+
+BMIM: 1-butyl-3-methyl-imidazolium, CF3SO3: trifluoromethane-sulfonate, DEME: N,N-diethyl-N-methyl-N-(2-methoxyethyl)ammonium, MeSO4: methylsulfate, PF6: hexafluorophosphate, PP14: 1-butyl-1-methylpiperidinium, TBMA: tributylmethylammonium, TFSI: bis(trifluoromethane)sulfonimide
+
+
+
+Figure S4. Voltage profiles of the Li-S cells with selected IL/organic electrolytes at the 1st, 5th, 10th, and 50th cycles
+
+
+Figure S5. The effect of IL/DOL:DME vol.% for PP14- and DEME-TFSI ILs (a) and the effect of the E/S ratio for PP14-TFSI IL.
+
+
+
+Figure S6. The extended performances of selected IL/organic electrolytes at 0.1C for 100 cycles (a) and the corresponding Coulombic efficiencies (b)
+
+
+
+Prediction Results
+
+Table S3. The hyperparameters used in XGboost analysis*
+
+* The other factors were ser as gamma=1, subsample = 1, min_child_weight = 1, colsample_bytree = 0.8
+
+
+
+Figure S7. Prediction results of melting point for train (a), test (b) sets and model importance (c)
+
+
+
+
+
+Figure S8. Prediction results of ln(viscosity) for train (a), test(b) sets and model importance (c)
+
+
+Figure S9. Prediction results of ln(conductivity) for train (a), test(b) sets and model importance (c)
+
+
+ARM Result
+
+Table S4. ARM results for classification of Li2S8 solubility (top results for anionic and cationic descriptors)*
+
+* The rules satisfying the ~3% confidence and ~0.1% support thresholds are shown.
+**RHS:Right hand side of the condition {Solubility=A, Viscosity=A, Melting point=A, Conductivity=A}RHS
+
+Abbreviation | Cosmo-RS Li2S8(mol/mol) | log(CosmoRS Li2S8) | Park et al. Li2S8 | log(Park et al. Li2S8)
+P13_TFSI | 0.43 | -0.36 | 10.68 | 1.03
+P13_BETA | 0.11 | -0.97 | 2.45 | 0.39
+P13_FSA | 0.04 | -1.44 | 1.58 | 0.20
+P14_TFSI | 0.25 | -0.60 | 8.86 | 0.95
+PP13_TFSI | 0.34 | -0.47 | 5.98 | 0.78
+C4DMIM_TFSI | 0.36 | -0.44 | 5.43 | 0.73
+DEME_TFSI | 0.38 | -0.42 | 7.69 | 0.89
+P2225_TFSI | 0.09 | -1.05 | 4.16 | 0.62
+P14_OTF | 1357.63 | 3.13 | 957.50 | 2.98
+ | Abb. | Mol.Wt (amu) | E.HOMO (eV) | E.LUMO (eV) | Dipole (debye) | CPK Area(Å) | CPK Ovality | Polarizability | HBD Count | HBA Count | ZPE (kJ.mol)
+Cation | PP14 | 156.3 | -14.9 | -4.2 | 3.8 | 219.3 | 1.3 | 55.2 | 0.0 | 1.0 | 799.2
+Cation | DEME | 90.1 | -10.6 | 2.5 | 0.0 | 136.3 | 1.3 | 47.0 | 0.0 | 2.0 | 359.7
+Cation | TBMA | 200.4 | -14.7 | -4.2 | 2.4 | 295.4 | 1.5 | 60.6 | 0.0 | 1.0 | 1073.6
+Cation | BMIM | 125.2 | -14.6 | -5.0 | 7.9 | 202.8 | 1.4 | 53.2 | 0.0 | 2.0 | 572.3
+Anion | TFSI | 280.1 | -7.2 | 2.1 | 0.0 | 208.4 | 1.5 | 52.2 | 0.0 | 7.0 | 132.5
+Anion | PF6 | 145.0 | -9.1 | 5.4 | 0.0 | 100.4 | 1.2 | 43.9 | 0.0 | 0.0 | 37.2
+Anion | CF3SO3 | 149.1 | -6.4 | 4.8 | 2.4 | 117.9 | 1.2 | 45.8 | 0.0 | 4.0 | 64.6
+Anion | MeSO4 | 111.1 | -6.1 | 6.3 | 7.7 | 109.8 | 1.2 | 45.0 | 0.0 | 5.0 | 131.4
+Models | Max_depth | Nrounds | Eta
+Solubility | 3 | 225 | 0.1
+ln(viscosity) | 4 | 150 | 0.1
+ln(conductivity) | 3 | 250 | 0.1
+Melting point | 4 | 300 | 0.1
+RHS | Support | Confidence | Lift | Count
+Anion_group=Bis_imide | 0.005 | 0.298 | 7.31 | 194
+Anion_group=Borate | 0.009 | 0.502 | 4.10 | 326
+Anion_group=Others | 0.002 | 0.103 | 1.68 | 67
+Cation_group=Piperidinium | 0.001 | 0.038 | 1.58 | 25
+Cation_group=Pyrrolidinium | 0.001 | 0.080 | 1.56 | 52
+Cation_group=Morpholinium | 0.001 | 0.034 | 1.39 | 22
+Anion_group=Halo_elemental_complexes | 0.002 | 0.092 | 1.29 | 60
+Cation_group=Quinolinium | 0.001 | 0.051 | 1.25 | 33
+Cation_group=Pyridinium | 0.004 | 0.209 | 1.16 | 136
+Cation_group=Ammonium | 0.003 | 0.140 | 1.06 | 91
+Cation_group=Imidazolium | 0.006 | 0.358 | 0.99 | 233
+Cation_group=Guanidinium | 0.001 | 0.032 | 0.60 | 21

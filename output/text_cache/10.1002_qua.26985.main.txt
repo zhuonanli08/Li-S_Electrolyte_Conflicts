@@ -1,0 +1,951 @@
+
+<<PAGE 1>>
+R E S E A R C H A R T I C L E
+Density functional theory model of Li–S electrochemical
+system with explicit solvation of lithium polysulfides by
+sulfolane
+Mikhail Yur'evich Ovchinnikov
+|
+Elena Vladimirovna Kuzmina
+|
+Elena Vladimirovna Karaseva
+|
+Sergey Leonidovich Khursan
+|
+Vladimir Sergeevich Kolosnitsyn
+Ufa Institute of Chemistry of Ufa Federal
+Research Center of Russian Academy of
+Sciences, Ufa, Russia
+Correspondence
+Mikhail Yur'evich Ovchinnikov, Ufa Institute of
+Chemistry of Ufa Federal Research Center of
+Russian Academy of Sciences, 71 Pr.
+Oktyabrya, Ufa 450054, Russia.
+Email: myuovchinnikov@gmail.com
+Funding information
+Russian Science Foundation (RSF), Grant/
+Award Number: RSF-NSFC №21-43-00006
+Abstract
+The structure of lithium polysulfides has been studied using density functional the-
+ory. The thermodynamic characteristics of their most probable transformations in
+sulfolane (Sl) have been evaluated. Various models of lithium oxidation and reduction
+of sulfur are studied by the PBE1PBE/6–311 + G(d,p) approximation, considering the
+influence of the solvation environment by the IEF-PCM. The most probable mecha-
+nism of sulfur reduction in the Li–S system is considered (Voltage vs. Li/Li+):
+(I) S8 + 2Li ! Li2S8 (2.6 V), (II) Li2S8 + 2Li ! 2Li2S4 (2.3 V), (III) Li2S4 + 2Li ! 2Li2S2
+(1.6 V), (IV) Li2S2 + 2Li ! 2Li2S (1.3 V). It was shown that the potential of the reduc-
+tion of sulfur compounds is substantially determined by the composition of the sol-
+vate complexes of lithium polysulfides. The solvate complex Li2S82Sl is the most
+stable in the form of a «broken crown». The preference of the fragmentation of Li2S8
+into LiS4
+ and LiS4 upon electron transfer is shown using FMO theory.
+K E Y W O R D S
+density functional theory, frontier orbitals, lithium polysulfides, solvation, sulfolane
+1
+|
+INTRODUCTION
+The lithium–sulfur electrochemical system (LSES) is considered as one of the most promising systems for developing batteries with outstanding
+specific energy characteristics since it has a high theoretical specific energy (2600 Wh kg1). An important advantage of the Li–S system is the
+low toxicity of sulfur, its widespread occurrence in nature, and, as a result, availability and low cost.
+Sulfur and intermediate products of its reduction (lithium polysulfides) are soluble in electrolyte solutions and are equilibrium distributed
+between the electrolyte solutions [1–3] and the positive electrode of lithium–sulfur batteries (LSB), which are batteries with a liquid cath-
+ode [4–10].
+During the LSB discharge, sulfur is reduced to lithium polysulfides, which form solvate complexes upon dissolution [11, 12]. The stability and
+composition of complexes of lithium polysulfides with solvent molecules of the electrolyte system affect the characteristics of the LSB: discharge
+voltage profiles, depth of sulfur reduction during discharge, and specific energy [11, 13–15]. Electrochemical reduction of sulfur, which occurs
+during discharge, is a complex process and is conducted in several stages (Figure 1) [16].
+S8 þ2Li ! Li2S8,
+ð1Þ
+Received: 9 February 2022
+Revised: 28 April 2022
+Accepted: 11 July 2022
+DOI: 10.1002/qua.26985
+Int J Quantum Chem. 2022;122:e26985.
+http://q-chem.org
+© 2022 Wiley Periodicals LLC.
+1 of 15
+https://doi.org/10.1002/qua.26985
+
+<<PAGE 2>>
+Li2S8 þ2Li ! 2Li2S4,
+ð2Þ
+Li2S4 þ2Li ! 2Li2S2,
+ð3Þ
+Li2S2 þ2Li ! 2Li2S:
+ð4Þ
+Initially, sulfur is reduced to lithium octasulfide (section I on the discharge voltage profile), then the generated lithium octasulfide is reduced
+to lithium tetrasulfide (section II on the discharge voltage profile). Lithium tetrasulfide is reduced through a series of intermediate transformations
+to lithium disulfide (section III on the discharge voltage profile). At the final stage of the LSB discharge, lithium disulfide is reduced to lithium sul-
+fide (section IV on the discharge voltage profile). The presented description of the process of electrochemical reduction of sulfur is highly simplis-
+tic and does not fully reflect the whole variety of chemical, physicochemical, and electrochemical processes occurring in lithium–sulfur batteries
+during their discharge. Note that as the length of the polysulfide chain decreases, the rate of electrochemical transformations of lithium poly-
+sulfides decreases.
+The composition and properties of electrolyte systems have a great influence on the kinetics of electrochemical transformations of lithium
+polysulfides, since lithium polysulfides form solvate complexes with electrolyte solvents. The composition and properties of lithium polysulfide
+solvates, formed during the LSB discharge, are determined by the properties of electrolyte solvents. Many compounds have been proposed as
+electrolyte solvents for LSB electrolytes [17, 18]. Sulfones are of great interest as promising electrolyte solvents, and, in particular, sulfolane (Sl),
+since it is capable of solvating lithium cations by oxygen atoms of the sulfonic group [19], dissolving, and ionizing electrolyte salts well, including
+lithium polysulfides. Sulfolane is highly resistant to strong acids, bases, and oxidants, as well as it is of high thermal stability [4, 20]. Sulfolane is of
+moderate toxicity [21–23].
+Despite the variety of experimental and theoretical studies, the composition and structure of solvate complexes of lithium polysulfides with
+different coordination and electrolyte solvents are not completely clear; there is no understanding of the most probable trajectories of their elec-
+trochemical transformations.
+A number of theoretical works have been published on the study of the structure of lithium polysulfides and the reactions of their reduction
+to lithium sulfide [24–27]. In particular, the effect of organic solvents on the processes of clustering of polysulfide structures in the Li–S electro-
+chemical system was modeled [25]. It is important to note that the effect of the solvent on the structure and mechanism of the reduction of lith-
+ium polysulfides in published works is usually made, at the continuum level (IEF-PCM) [28]. The main reasons for the rare use of explicit solvation
+models [29] in modeling electrochemical systems are:
+1. the ambiguity of the construction of the first solvation sphere of the solute;
+2. the increase in the error of the theoretical estimate due to the flat shape of the potential energy surface (PES) of their structure;
+3. limitation of the use of high-level ab initio methods for calculating the electronic structure due to the potentially high computational cost;
+FIGURE 1
+Open circuit voltage (dashed line) and discharge curve (solid line) of a lithium–sulfur cell at 1st cycle. Conditions: Electrolyte: 1 M
+LiClO4 in sulfolane; separator: Celgard®3501; positive electrode composition: S (70% wt.), Ketjenblack EC-600JD (10% wt.), polyethylene oxide
+MM 4  106 (20% wt.). Discharge current density 0.2 mA cm2, 303 K [12]
+2 of 15
+OVCHINNIKOV ET AL.
+ 1097461x, 2022, 22, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26985 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 3>>
+4. dimensional inconsistency and incomplete accounting for the correlated motion of electrons within the framework of high-performance den-
+sity functional theory (DFT) quantum chemical approximations.
+Despite the above limitations, the complication of the model of the solvation sphere of lithium polysulfides by additional solvent molecules is
+necessary for establishing the most stable conformations of lithium polysulfides and, as a consequence, the thermodynamic characteristics of their
+transformations.
+Thus, the aim of this work was to assess the effect of sulfolane solvation of lithium polysulfides with different order on the thermodynamics
+of the processes of their electrochemical transformations, and to develop an adequate model of redox processes in the Li–S electrochemical sys-
+tem by DFT methods.
+2
+|
+METHODS
+All the calculations were carried out using Gaussian 09, Revision C.01 [30] program package for standard conditions (1 atm, 298.15 K). The pri-
+mary processing of quantum chemical computation results including structure comparing was performed using Chemcraft 1.8 (build 574b) [31].
+Geometry optimization, equilibrium vibrational frequency calculation, and natural bond orbital analysis (NBO, version3) [32–36] were performed
+at the level of density functional theory. PBE generalized gradient functional with a predefined amount of exact exchange (PBE1PBE also known
+as PBE0) [37, 38] was used. Earlier, it was demonstrated that the chosen functional is an effective and relevant tool for the investigation of lithium
+polysulfides [39–41]. Pople's triple split-valence basis set augmented with d- and p-type polarization functions and a set of diffuse functions
+[6–311 + G(d,p) (5D,7F)] [42, 43] was applied. The dispersion correction was not added to the computation scheme in this case because it leads
+to an increase of error along with chosen functional [44]. Integration grid having 175 radial shells and 974 angular points [45] was used to increase
+the level of accuracy and improve the convergence of structures with flat potential energy surface (PES) in terms of geometry. Open shell
+unrestricted wave function (unrestricted Kohn–Sham equations in case of DFT computations) was used for structures with unpaired electrons
+and spin polarization. Wave function stability was checked according to technique [46, 47] for all chemical species considered in this work.
+Enthalpy and Gibbs free energy of some model transformations of lithium polysulfides calculated using PBE1PBE functional and G4 composite
+technique (G4, geometry optimization was performed using B3LYP/GTBas3) (6D, 7F) [48].
+As may be seen from Table 1, chosen functional, PBE1PBE, allows us to get the results reasonably consistent with those of high-level sophis-
+ticated calculations. Note that the energy is overestimated by 40 kJ mol1 (it is equivalent to voltage difference 0.5 V) compared with the G4
+method for structures S3 and S5. The observed picture may be caused by an insufficient covering of static electron correlation at the level of the
+density functional theory in view of the quasi-degeneracy of the singlet and triplet PES of the pointed sulfur compounds and as a consequence,
+the multiconfigurational character of their wave function.
+The thermodynamic parameters of electrochemical transformations were considered based on the properties of stable complexes of lithium
+polysulfides and individual compounds with only positive values of the Hessian matrix in this work. The electron density topology (charge (q),
+TABLE 1
+Thermodynamic parameters of the model polysulfides reduction. Solvation effects were covered using IEF-PCM
+Reaction
+PBE1PBE/6–311 + G(d,p)
+G4
+ΔH (kJ mol1)
+ΔG (kJ mol1)
+ΔH (kJ mol1)
+ΔG (kJ mol1)
+S2 + 1e ! S2˙
+268.1
+267.6
+264.3
+263.8
+S2˙ + 1e ! S2
+2
+58.7
+59.6
+50.6
+51.3
+S3 + 1e ! S3˙
+364.3
+366.7
+327.0
+329.8
+S3˙ + 1e ! S3
+2
+1.3
+1.1
+1.2
+1.1
+S4 + 1e ! S4˙
+366.0
+363.5
+364.2
+362.1
+S4˙ + 1e ! S4
+2
+82.9
+81.6
+80.1
+79.2
+S5 + 1e ! S5˙
+301.4
+309.3
+255.1
+265.5
+S5˙ + 1e ! S5
+2
+150.2
+149.2
+148.4
+145.3
+S6 + 1e ! S6˙
+217.9
+235.5
+199.2
+218.8
+S6˙ + 1e ! S6
+2
+211.7
+210.9
+180.9
+180.3
+S8 + 1e ! S8˙
+238.2
+249.5
+214.4
+225.0
+S8˙ + 1e ! S8
+2
+213.5
+221.3
+199.5
+207.7
+Li+ + 1e ! Li
+408.0
+409.7
+393.6
+395.3
+OVCHINNIKOV ET AL.
+3 of 15
+ 1097461x, 2022, 22, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26985 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 4>>
+electron density (ρ) and its Laplacian (r2ρ) at bond critical points (BCP), coordination number (CN) of lithium ions in the composition of sulfide
+complexes) were analyzed using the method of R. Bader “Atoms in Molecules” [49, 50]. The method is implemented in AIMAll Professional
+10.05.04 [51] and MultiWFN 3.7 [52] program packages.
+We tried covering properties of condensed phase by implicit (nonspecific, continuum) and explicit (specific) solvent schemes considering the
+crucial role of a solvent in the reduction of lithium polysulfides.
+The nonspecific solvation by sulfolane was considered in approximation of polarizable continuum model using integral equation formalism vari-
+ant (IEF-PCM) [28] at every step of geometry optimization. Solute cavitation energy in the total energy was covered using the model of Pierotti
+[53]. The Cavity was extensively modified using UFF force field (the method is supposed to model hydrogens by individual spheres [explicit hydro-
+gens]). We used the default values of 43.962 and 2.200179 (standard conditions, 1 atm, 298.15 К) for static (ε0) and dynamic (ε∞) constants,
+respectively. The solute-solvent boundary was specified as Solvent Accessible Surface (SAS). The specific solvation scheme is presented in the
+“Results and Discussion” section. The sulfolane solvation radius used in the calculations was estimated on the basis of molecular volume calcula-
+tions using Gaussian 09 Rev. C01 software package and it was 4.07 Å.
+Equilibrium geometry (Cartesian coordinates, Å) and NBO-point charges (a.e.) localized on the nuclei of the compounds used for energy calcu-
+lation of the processes under study are collected in the “Data S1” (see Table S1).
+3
+|
+RESULTS AND DISCUSSION
+The development of an adequate model of the electrochemical system is a non-trivial task because of the variety of physicochemical processes
+occurring during its functioning. The Li–S electrochemical model system, studied in this work, consists of solid negative electrode (metallic lithium)
+and lithium polysulfides of various structures Li2Sn (n = 1…8), which are sequentially formed during the reduction of elemental sulfur S8 and stabi-
+lized by a solvent, sulfolane. In the framework of the model used, we did not consider the composition of the positive electrodes and the pro-
+cesses on their surface: adsorption and reduction of participants in electrochemical processes on the electrode surface, the passivation of the
+electrode surface with lithium sulfide and etc. Another model limitation is ignoring the participation of the support salt in electrochemical
+processes.
+The specificity of reactions in electrochemical cells makes it possible to separate the description of oxidation and reduction processes. The
+proposed model includes several components:
+• oxidation of a lithium atom at the negative electrode, solvation of the generated lithium cation and its release into solution;
+• reduction of sulfur to lithium sulfide with the formation of intermediate compounds - solvated lithium polysulfides.
+In both cases, solvation effects play a key role, which affects the thermodynamics of the electrochemical reduction of sulfur and lithium poly-
+sulfides of various dimensions. In work [27], the effect of the solvent was described using the polarized continuum model, but the sufficiency of
+this approach for obtaining reliable estimates is not obvious. Thus, Table 2 shows the thermodynamic characteristics (ΔH, ΔG) of four reactions
+for the reduction of sulfur and lithium polysulfides to lithium sulfide, calculated considering only the IEF-PCM solvation model.
+The values of E, estimated using only the continuum model, demonstrate the experimentally observed trend of the change in E(OCV), how-
+ever, with a significant overestimation of the potential at the initial stages of sulfur reduction (Table 2). Obviously, it is necessary to correct E
+using the combined model of solvation of active species by sulfolane, which is a solvation cluster in a continuous medium (EXPL + PCM). This
+approach has been implemented for both lithium oxidation and sulfur reduction.
+The factors complicating the description of electrochemical processes, but apparently necessary for constructing of the adequate model of
+Li–S electrochemical system, are the processes occurring at the interface between the solid and liquid phases: the oxidation of lithium on the
+metal surface, as well as the transition of lithium sulfide from solution to the solid state. These factors were taken into account within the
+TABLE 2
+Thermodynamic parameters and potentials for the reduction of sulfur and lithium polysulfides to lithium sulfide in sulfolane,
+estimated using the polarized continuum model (IEF-PCM). Calculation in the PBE1PBE/6–311 + G(d,p) approximation
+Reactions
+ΔH (kJ mol1)
+ΔG (kJ mol1)
+Eo ¼ ΔGo
+2F (V)
+E (OCV) (experiment) (V)
+2Li + S8 ! Li2S8
+743.0
+680.8
+3.53
+2.45
+2Li + Li2S8 ! 2Li2S4
+631.1
+606.5
+3.14
+2.3
+2Li + Li2S4 ! 2Li2S2
+421.5
+405.2
+2.10
+2.1
+2Li + Li2S2 ! 2Li2S
+300.0
+289.3
+1.50
+–
+4 of 15
+OVCHINNIKOV ET AL.
+ 1097461x, 2022, 22, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26985 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 5>>
+framework of several increasingly complex models, which is necessary to select the most optimal model that combines moderate computational
+costs and an acceptable accuracy of describing the change in the potential of the LSES during its discharge.
+3.1
+|
+Lithium oxidation at the negative electrode
+To estimate the thermodynamic parameters of lithium oxidation, we analyzed several models. The results of DFT calculations are summarized in
+Table 3. The geometric parameters of the participants in chemical transformations are shown in Table S1 of Data S1. Along with the absolute
+value
+of
+the
+potential
+(Etheor(ABS)),
+it
+is
+given
+the
+value,
+corrected
+for
+the
+potential
+of
+a
+standard
+hydrogen
+electrode
+(Etheor(SHE) = Etheor(ABS)  E(0.5H2/H+); E(0.5H2/H+) = 4.9 V). The method for calculating the potential of a standard hydrogen electrode,
+as well as the potential of a lithium electrode in an aqueous medium, is described in the Data S1.
+The first model is the least resource-intensive and assumes implicit solvent accounting (PCM). The low value of the calculated potential
+(Etheor(ABS) = 4.2 V, Etheor(SHE) = +0.6 V) of lithium oxidation indicates the insufficiency of the model and the need to explicitly consider the
+solvation effects that contribute to the stabilization of the oxidized form of lithium.
+Second model. Taking into account the high dipole moment (μ = 4.7 D), polarity (ε0 = 43.962), and structural features of the sulfolane mole-
+cule, we described the interaction of the lithium cation with the solvent at an explicit level to eliminate the above-described drawback of the con-
+tinuum model. For this purpose, a lithium cation complex with two sulfolane molecules was modeled (Figure 2 and Table S1).
+When sulfolane is coordinated to Li+, the positive charge on the lithium cation decreases compared with the results of the continuum model
+(Δq[Li+] = 0.116 a.u.). In the optimized structure of the Sl–Li+–Sl complex, bidentate binding of the cation by the sulfolane molecule takes place,
+which makes it possible to compensate for the imperfection of the continuum model. This model has only the stabilization of the Li+ cation by
+sulfolane molecules and leads to an overestimated value of the absolute potential of lithium oxidation 0.8 V (Etheor(SHE) = +4.0 V) compared
+to the value of the first model.
+It is well known that oxygen has a high affinity to lithium; therefore, the sulfolane molecule can also coordinate to the neutral lithium atom. In
+the third model, the physical meaning of the described interaction is the presence of the solvation layer at the interface between the negative
+electrode and the electrolyte solution. The model of solvation of the Li atom by one sulfolane molecule led to a reasonable decrease in the abso-
+lute potential of lithium oxidation 1.9 V (Etheor(SHE) = +2.9 V).
+The disadvantage of the above models is that they ignore the state of aggregation of metallic lithium. The Li/Li+ potential is formed not by
+one Li atom but by the material of the negative electrode, that is, some energy must be spent to break the bonds in the crystal lattice of the metal.
+To cover this energy component in the fourth and fifth models, we considered the Li dimer and a cluster of six Li atoms (Figure 3), solvated by
+one sulfolane molecule as an electron donor. These models provide additional stabilization of the Li atom on the surface of the negative electrode
+by 0.4 V (Etheor(SHE) = +2.6 V) and 0.7 V (Etheor(SHE) = +2.3 V) compared with the third model. Note that the model of a cluster of lithium
+atoms Lin (n ≤9) was used in calculating the change in the Gibbs energy of an LSES in [25]. However, the authors of the work limited themselves
+to an explicit description of only the solid phase of the electrode, sequentially increasing the cluster due to alkali metal atoms. It was found that
+for nine lithium atoms, the change in the relative total energy within the chosen approximation becomes negligible. The solvation of the oxidized
+form of lithium in the form of polysulfides (Li2Sn)8/n (n = 1, 2, 4) was taken into account by the authors of [25] on the continuum level of theory.
+In the model, we used a 3D cluster with a smaller size Li6 (Figure 3C), which provides the 3D structure of the metal both in the initial state and
+after the release of the lithium-ion into the volume of the electrolyte solution (Figure 3D). The size of the lithium cluster was chosen based on the
+results of calculations of the redox potentials Li/Li+ and 0.5H2/H+ for the aqueous medium. It is shown (Equations (S1–S4)) that the cluster model
+(Li6-water) of a lithium electrode (Etheor(SHE) = 3.022–3.264 V) makes it possible to reproduce the reference data (Eexp[Li/Li+] = +3.040 V
+[54]). Simpler forms of describing the anode tend to overestimate the potential, as demonstrated by the Equations S2–S4 of the Data S1
+(Table S2).
+Thus, as the scheme for modeling the processes occurring on the negative electrode becomes more sophisticated, the calculated value of the
+potential Etheor(SHE) changes significantly and became 2.3–2.6 V for the most complicated models (Table 3). Our estimations are in good agree-
+ment with the data of [25], in which Etheor(SHE) values were calculated in the range 2.1–2.8 V. for oxygen-containing solvents (THF, acetone,
+dimethyl sulfoxide).
+3.2
+|
+Fragmentation of the polysulfide chain
+Fragmentation of lithium polysulfides is one of the key aspects of sulfur reduction in LSES. Lithium octasulfide, first in the series of polysulfides,
+can exist in various conformations. When modeling lithium octasulfide taking into account solvation at both the continuum level and using the
+combined model, two of its conformations were localized, which we conventionally designated as “helix” and “broken crown” (“BC”) (Figure 4).
+The “BC” conformation exhibits significantly higher thermodynamic stability regardless of the used solvation model. Thus, the change in the Gibbs
+OVCHINNIKOV ET AL.
+5 of 15
+ 1097461x, 2022, 22, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26985 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 6>>
+TABLE 3
+Thermodynamic parameters and potential of lithium oxidation at the negative electrode, theoretically estimated in various model schemes. Sulfolane (IEF-PCM), PBE1PBE/6–311 + G
+(d,p), 298.15 K
+№
+Model
+Model detailing
+ΔH (kJ mol1)
+ΔG (kJ mol1)
+Eo
+theor ABS
+ð
+Þ ¼ ΔGo
+F (V)
+Etheor(SHE)e (V)
+a
+b
+c
+d
+(I)
+Li  1e ! Li+
++
+
+
+
+408.0
+409.7
+4.2
++0.6
+(II)
+Li  1e + Sl2 ! Sl–Li+–Sl
++
++
+
+
+42.2
+80.4
+0.8
++4.0
+(III)
+Li–Sl  1e + Sl2 ! Sl + Sl–Li+–Sl
++
++
++
+
+176.4
+187.9
+1.9
++2.9
+(IV)
+Li2–Sl  1e + Sl2 ! Li–Sl + Sl–Li+–Sl
++
++
++
++
+213.3
+217.4
+2.3
++2.6
+(V)
+Li6–Sl  1e + Sl2 ! Li5–Sl + Sl–Li+–Sl
++
++
++
+++
+237.4
+246.8
+2.6
++2.3
+aSolvent is considered at the continuum level.
+bTwo sulfolane molecules solvate the lithium after its oxidation to lithium ions.
+cInteraction with solvent at the negative electrode/solution interface is considered.
+dThe bond of the oxidized lithium atom with the crystal lattice of the negative electrode is considered.
+eThe values of the potentials correspond to the oxidation reaction of lithium Li0 ! Li+ + 1e, therefore they are negative. Literature provides the potential for reduction reactions.
+6 of 15
+OVCHINNIKOV ET AL.
+ 1097461x, 2022, 22, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26985 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 7>>
+free energy during the conformational transition from a “BC” to a “helix” calculated within the continuous (PCM) and combined (EXPL + PCM)
+models is 83.8 and 64.9 kJ mol1, respectively. Thus, we considered only the “BC” conformation upon further modeling the fragmentation of lith-
+ium octasulfide. The transfer of an electron to the vacant orbital of the S8
+2 fragment destabilizes the latter and leads to the decay of octasulfide.
+Since an electron occupied one of the lower vacant molecular orbitals, we analyzed the LUMO energies and their composition to determine the
+most likely pathways for octasulfide fragmentation. The first seven natural vacant MOs are σ*(S–S) antibinding orbitals of the polysulfide. Taking
+into account the symmetry of the Li2S82Sl complex, the set of orbitals is expected to represent three pairs of degenerate LUMOs localized at S3–
+S5 (0.0181), S2–S6 (0.0159), and S–S7 (0.0456) bonds, and one S4–S4 (0.0090) orbital (the MO energies are given in Hartree). From a comparison
+of the MO energies, it can be assumed that the decomposition of octasulfide proceeds along the S3–S5 direction. On the other hand, the addition
+of an “extra” electron and optimization of the [Li2S82Sl]˙ structure leads to spontaneous defragmentation of the polysulfide chain into
+FIGURE 3
+Complexes of lithium and sulfolane molecules describing the surface layer of the negative electrode (Table S1): (A) Li2–Sl; (B) Li–Sl;
+(C) Li6–Sl; (D) Li5–Sl. Distances between atoms are presented in Ångstroms
+FIGURE 2
+Model of explicit solvation of lithium by sulfolane (Sl–Li+–Sl). The values of NBO charges in a.u. are given in parentheses,
+distances between atoms are presented in Ångstroms
+OVCHINNIKOV ET AL.
+7 of 15
+ 1097461x, 2022, 22, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26985 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 8>>
+fragments of equal size. In this regard, we performed a complete optimization of the structures [Sl–Li–S3  S5–Li–Sl]˙ and [Sl–Li–S4  S4–Li–
+Sl]˙, which are the products of the two directions of decomposition of lithium octasulfide (Figure 4). According to the calculation results, when
+an electron is captured by lithium octasulfide, its symmetric fragmentation (ΔΔH = 0.4 kJ mol1, ΔΔG = 4.0 kJ mol1) is more favorable with
+FIGURE 4
+Conformation “helix” and “BC” of the lithium octasulfide complex with two sulfolane molecules (Sl–Li+–S8
+2–Li+–Sl) and two
+possible ways of their fragmentation. Bond lengths are presented in Ångstroms
+8 of 15
+OVCHINNIKOV ET AL.
+ 1097461x, 2022, 22, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26985 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 9>>
+the formation of a tetrasulfide pair S4
+2 and S4˙. Acceptance of the second electron completes the fragmentation of Li2S8 with the formation of
+lithium tetrasulfide.
+In turn, the most probable transformation of Li2S4 upon its reduction is also symmetric decomposition with the formation of lithium disulfide,
+as evidenced by an energy gap of 90 kJ mol1 between the lower LUMOs, the population of which determines the direction of tetrasulfide frag-
+mentation along S2–S2 or S–S3 bonds (Figure 5). The thermodynamics of the two directions of decomposition is also in favor of the symmetric
+direction: the difference in the Gibbs free energies of the decomposition products of Li2S4 is 39.8 kJ mol1.
+3.3
+|
+Solvation of lithium polysulfides
+To build the solvate shell of lithium polysulfides, we based on the conclusions of experiments with Li–S electrochemical cells, according to which one
+solvent molecule corresponds to one lithium cation in the solvate complex of lithium polysulfide with sulfolane [11]. Thus, the total composition of
+the solvate can be represented by the formula Li2Sn2Sl, n = 2, 4, 8. Compared with the results of the PCM model, the solvation of lithium poly-
+sulfides by two sulfolane molecules changes the calculation results: the geometric structure of Li2Sn, electron density, and also affects the
+FIGURE 5
+Fragmentation of a complex of lithium tetrasulfide with two sulfolane molecules (Sl–Li+–S4
+2–Li+–Sl). Bond lengths are presented
+in Ångstroms
+OVCHINNIKOV ET AL.
+9 of 15
+ 1097461x, 2022, 22, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26985 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 10>>
+thermodynamics of charge transfer. Key interatomic distances and characteristics of electron density distribution for critical bond points (ρ(BCP), r2ρ,
+ellipticity, NBO-point charges on sulfur and lithium atoms) are summarized in Tables S4 and S5 of Data S1 (see also Table S3 for more details).
+3.3.1
+|
+Structure
+The spiral configuration of the polysulfide chain with terminal sulfur atoms stabilizing two lithium cations is the main structural motif of lithium
+polysulfides (Figure 6 and Data S1).
+Among all the quantitative differences, one should highlight the following: the bond between the lithium cation and the nearest sulfur atom is
+elongated by 0.1 Å, as well as the S–S bond length of all polysulfides slightly decreases when PCM model was changed to the combined
+EXPL + PCM model. It should be noted that the geometric parameters of Li2Sn (n = 1, 2, 4, 8) in their most stable conformations, calculated within
+the PBE1PBE approximation chosen in this work, are in qualitative agreement with the results obtained at the levels of the UM11/6–311 + G(d,p)
+(DMSO, SMD PCM) [27] and B3LYP/6–311G(3df) [25]. The S–S bond lengths calculated by us are shorter by 0.05 Å. Taking into account the dif-
+ferences in the used density functionals, solvation models, and the nature of solvents, the observed deviation does not seem to be fundamental.
+3.3.2
+|
+Electron density
+The aforementioned trend in the changing in the calculated bond lengths Li–S and S–S at the switch from PCM to EXPL + PCM model illustrates
+the importance of explicitly taking into account the solvent for a correct description of the properties of lithium polysulfides. The calculated effect
+can be explained by the partial transfer of electron density from sulfolane to the lithium cation and, as a consequence, a decrease in the degree of
+ionicity of the Li–S bond, as indicated by the lower values of NBO charges on Li cations obtained using the EXPL + PCM approach. Solvation also
+affects the properties of S–S bonds. As it can be seen from Table S4, within the EXPL + PCM approach, for all compounds of the general formula
+Li2Sn (n = 2, 4, 8), an increase in the electron density ρ is observed, with the exception of S3–S4 (S5–S6) bonds of lithium octasulfide.
+3.3.3
+|
+Thermodynamics and changes in the primary solvation shell
+The transfer of an electron to the polysulfide complex is accompanied by a rearrangement of the electronic and geometric structure, a change in
+the nearest ionic-solvate environment. To describe the thermodynamics of the reduction of polysulfides, a model simplification was applied, when
+each half-reaction (a–d) includes four successive stages (see Table 4):
+FIGURE 6
+The structure of lithium tetrasulfide and its complex with two sulfolane molecules (Sl–Li+–S4
+2–Li+–Sl). Bond lengths are
+presented in Ångstroms
+10 of 15
+OVCHINNIKOV ET AL.
+ 1097461x, 2022, 22, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26985 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 11>>
+1. The transfer of an electron to a neutral structure. An electron populates one of the lower vacant orbitals of the compound, weakening the S–S
+bonds of the polysulfide (or S8). According to the results of quantum-chemical calculations presented in Figures 4 and 5, for the half-reactions
+(b) and (c), the most preferable is symmetric decay, when the fragments [Sl–Li–S4  S4–Li–Sl]˙ and [Sl–Li–S2  S2–Li–Sl]˙, respectively.
+2. Neutralization of the charge of the negatively charged complex due to the addition of the lithium cation from the Sl–Li+–Sl complex. The con-
+sequence of charge compensation is the formation of a reaction complex with an odd number of electrons, i.e. intermediate of a radical nature.
+3. It is obvious that such an intermediate has a high affinity for the electron; therefore, the second electron is captured, as a rule, more efficiently
+than the first. The efficiency of electron acceptance decreases with the breaking up of the polysulfide chain.
+4. The formation of the polysulfide complex of the lower dimension is completed due to the addition of the second lithium cation.
+Half-reactions (a - d) are characterized by the individual ratio of the contributions of each of the four stages identified to the energetics of
+the reduction of sulfur-containing compounds. Indeed, as can be seen from the calculated data (Table 4), a change in the ion-solvation environ-
+ment within the framework of the use of an explicit solvation scheme makes a significant contribution to the reduction potential of the polysulfide
+chain (see Table 4, even stages), which increases with its fragmentation. Indeed, for stages a.1 and a.2, the resolvation of S8 does not provide even
+a 30% change in the Gibbs energy, while in the half reaction d, the change in the solvation shell and the subsequent formation of lithium sulfide is
+characterized by a 70% contribution to the total energetics of the process.
+The reduction of lithium disulfide to lithium sulfide deserves a separate and detailed commentary. Lithium sulfide formed during the discharge
+of the electrochemical system is deposited on the surface of the positive electrode. This releases molecules of solvent that take part in the solva-
+tion of lithium polysulfides. The deposition of Li2S has a significant effect on the functionality of the lithium–sulfur electrochemical system. As
+shown by the calculation results (Table S6), modeling the reduction and defragmentation of one Li2S2 to two Li2S molecules within the implicit
+model of solvation leads to unsatisfactory results when calculating the potential at stage IV of the LSES discharge (Figure 1). The formation of a
+mini-cluster (Li2S)2 is significant but does not sufficiently improve the results of calculating E.
+TABLE 4
+Thermodynamic parameters and potentials of the most probable stages of reduction of polysulfides to lithium sulfide. Sulfolane
+(IEF-PCM), PBE1PBE/6–311 + G(d,p), 298.15 K
+Half-reaction
+ΔH
+(kJ mol1)
+ΔG
+(kJ mol1)
+Eo
+theor ABS
+ð
+Þ ¼  ΔGo
+nF
+(V)
+Etheor(SHE)a
+(V)
+(a) S8 + 2e ! S8
+2
+981.1
+989.6
++5.1
++0.3
+(a.1) Sl–S8–Sl + 1e ! Sl–S8˙–Sl
+286.8
+291.2
++4.3
+0.5
+(a.2) Sl–S8˙–Sl + Sl–Li+–Sl ! Sl–Li+–S8˙–Sl + Sl2
+122.6
+126.7
+(a.3) Sl–Li+–S8˙–Sl + 1e ! Sl–Li+–S8
+2–Sl
+413.0
+407.1
++5.9
++1.1
+(a.4) Sl–Li+–S8
+2–Sl + Sl–Li+–Sl ! Sl–Li+–S8
+2–Li+–Sl + Sl2
+158.8
+164.7
+(b) S8
+2 + 2e ! 2S4
+2
+945.9
+940.7
++4.9
++0.0
+(b.1) Sl–Li+–S8
+2–Li+–Sl + 1e ! Sl–Li+–S4
+2–S4˙–Li+–Sl
+296.9
+297.9
++4.5
+0.4
+(b.2) Sl–Li+–S4
+2–S4˙–Li+–Sl + Sl–Li+–Sl ! Sl–Li+–S4
+2–Li+–Sl + Sl–
+Li+–S4˙–Sl
+130.0
+131.7
+(b.3) Sl–Li+–S4˙–Sl + 1e ! Sl–Li+–S4
+2—Sl
+331.5
+326.1
++5.3
++0.4
+(b.4) Sl–Li+–S4
+2–Sl + Sl–Li+–Sl ! Sl–Li+–S4
+2–Li+–Sl + Sl2
+187.6
+185.0
+(c) S4
+2 + 2e ! 2S2
+2
+806.5
+804.6
++4.2
+0.7
+(c.1) Sl–Li+–S4
+2–Li+–Sl + 1e ! Sl–Li+–S2
+2–S2˙–Li+–Sl
+238.9
+243.9
++3.7
+1.2
+(c.2) Sl–Li+–S2
+2–S2˙–Li+–Sl + Sl–Li+–Sl ! Sl–Li+–S2
+2–Li+–Sl + Sl–
+Li+–S2˙–Sl
+105.8
+108.8
+(c.3) Sl–Li+–S2˙–Sl + 1e ! Sl–Li+–S2
+2—Sl
+252.1
+238.7
++4.7
+0.2
+(c.4) Sl–Li+–S2
+2–Sl + Sl–Li+–Sl ! Sl–Li+–S2
+2–Li+–Sl + Sl2
+209.8
+213.2
+(d) S2
+2 + 2e ! 2S2
+739.0
+741.8
++3.8
+1.0
+(d.1) Sl–Li+–S2
+2–Li+–Sl + 1e ! Sl–Li+–[S–S]˙3–Li+–Sl
+95.8
+102.1
++3.7
+1.1
+(d.2) Sl–Li+–[S–S]˙3–Li+–Sl + Sl–Li+–Sl ! Sl–Li+–S2–Li+–S˙–Li+–
+Sl + Sl2
+261.7
+259.4
+(d.3) Sl–Li+–S2–Li+–S˙–Li+–Sl + 1e ! Sl–Li+–S2–Li+–S2–Li+–Sl
+22.6
+18.0
++3.9
+0.9
+(d.4) Sl–Li+–S2–Li+–S2–Li+–Sl + Sl–Li+–Sl ! Sl–(Li2S)2–Sl + Sl2
+404.1
+398.3
+aThe Sl2 designation corresponds to the cyclic form of the sulfolane dimer.
+OVCHINNIKOV ET AL.
+11 of 15
+ 1097461x, 2022, 22, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26985 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 12>>
+The explicit model of solvation of lithium sulfide dimer (Figure 7) provides an acceptable accuracy of describing the thermodynamics of disul-
+fide reduction, the calculated value of E = +1.3 V (compare with 1.6 V, Figure 1). Thus, the features of the solvation of the processes leading
+to the formation of Li2S are reflected in the form of the used half-reactions (Table 4). Unlike a.2–c.2, step d.2 describes the decomposition of the
+polysulfide chain (S2
+3˙) without fragmentation into solvated particles. In this case, free sulfolane is released in the form of Sl2 dimer. Step d.4
+describes the formation of a solvated lithium sulfide dimer (Sl–(Li2S)2–Sl), which is considered to be the nucleus of the crystalline phase formed at
+the reduction of lithium disulfide.
+We limited the used model of Li2S precipitation to a solvated lithium sulfide dimer for the following reasons. Firstly, this model provides an
+acceptable accuracy of calculating the potential of the LSES. Second, the model describes the release of solvent molecules during the formation
+of a solid phase (which does not take into account the model of the solvated monomer of Li2S). Thirdly, the model is quite simple, which is impor-
+tant for reducing resource computational costs. According to the results [25], lithium sulfide is potentially capable of forming a covalently bound
+cluster (Li2S)8. In our opinion, since lithium sulfide is generated from disulfide, one should expect the formation of complex structures as a result
+of the aggregation of microclusters, which are products of reduction of Li2S2, the simplest representative of which is the (Li2S)2 dimer.
+3.4
+|
+Thermodynamics of the discharge of Li–S electrochemical system
+To calculate the thermodynamic parameters of the LSES discharge process, we combined the results of modeling the half-reactions occurring on
+the negative (lithium oxidation) and positive (sulfur reduction) electrodes. It should be noted that for the oxidation of lithium, the most detailed
+models for considering solvation effects were chosen, which most reliably describe the oxidation potential of an alkali metal. The data are summa-
+rized in Table 5, where the key structural differences of the previously presented lithium oxidation models are highlighted.
+As it can be seen from the results of calculating the thermodynamic characteristics of reactions (1–4), the complex approach (EXPL + PCM)
+to considering the effect of the condensed medium (sulfolane and the crystalline phase of the electrode) on the energetics of electron transfer
+processes provides a satisfactory description of the change in the potential of the LSES during its discharge. Indeed, the considered model of sul-
+fur reduction to lithium sulfide in combination with various models of lithium oxidation (Table 5) reproduces not only the general trend of change
+in E at different stages of the discharge of the LSES, which is achievable already at the continuum level of solvation (Table 2), but also the abso-
+lute values of the potential. It is important to note that (III - V) models of lithium oxidation take into account the explicit factors of interaction
+between an atom (crystal lattice) and a cation (solvation by sulfolane) of the alkali metal on the negative electrode, which is necessary for an ade-
+quate description of the LSES potential. The most reliable results were obtained in the framework of the V model, in which special attention is
+paid to the process of solvation of the lithium cation at the interface between the solid phase and the electrolyte solution, as well as to changes
+on the electrode surface. The observed deviations from the experimental dependence of the LSES potential on the specific discharge capacity (up
+to 30 kJ mol1 at the 3rd stage of the discharge) may be due to the model constraints described above. The developed LSES model can be easily
+modified. In our opinion, the most natural candidates for improving the model are possible processes of disproportionation/crosslinking of
+FIGURE 7
+Reduction of lithium disulfide and the formation of a solvated dimer (Sl–(Li2S)2–Sl). Bond lengths are presented in Ångstroms
+12 of 15
+OVCHINNIKOV ET AL.
+ 1097461x, 2022, 22, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26985 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 13>>
+polysulfide intermediates, including those involving polysulfides with an odd number of sulfur atoms. It is also of interest to improve the model by
+including an explicit description of the interaction of the support salt with the LSES components.
+4
+|
+CONCLUSIONS
+Quantum-chemical calculations of the reduction of sulfur to lithium sulfide, as well as the oxidation of lithium on the negative electrode in the
+sulfolane medium, were performed using the DFT approximation [PBE1PBE/6–311 + G(d,p)]. A mixed model of solvation of lithium polysulfides
+is proposed, within which the solvent is taken into account both at the continuum level and explicitly through coordination with respect to the
+alkali metal cation in the complex of the general formula Li2Sn2Sl (n = 2, 4, 8). Possible directions of fragmentation of polysulfide chains were
+selected using boundary MOs. The energetic preference of symmetric fragmentation of S8
+2 and S4
+2 has been established, which is in agreement
+with the results of calculations by the authors of [25]. Models of lithium oxidation on the negative electrode, considering the stabilization of the
+alkali metal atom and cation before and after oxidation to varying degrees, are proposed. It was shown that the most reliable is the model
+according to which lithium in the composition of a metal electrode is described by a six-atom cluster, and in solution—in the form of the symmetric
+solvate complex Sl–Li+–Sl. Combining the models of the processes occurring on the positive and negative electrodes made it possible to obtain
+the value of the lithium–sulfur electrochemical system's potential at various stages of its discharge, which is reasonably consistent with the exper-
+iment. Thus, an adequate model of the Li–S electrochemical system has been developed with an explicit description of the solvation of lithium
+polysulfides by sulfolane. It can be used as a basic model for a detailed description of the processes taking place in the LSES. A number of factors
+affecting the electrochemical properties have not been adequately studied. In particular, this is the interaction of polysulfides with support salts
+and with each other. The response of the proposed model to taking these interactions into account will make it possible to determine the role and
+scale of the effect of these factors, and the need for further detailing of the model. Work in this direction seems to be of top priority in the devel-
+opment of the topics of our research.
+AUTHOR CONTRIBUTIONS
+Mikhail Yur'evich Ovchinnikov: Conceptualization; investigation; methodology; visualization; writing – original draft. Elena Vladimirovna
+Kuzmina: Methodology; validation; writing – original draft. Elena Vladimirovna Karaseva: Validation; writing – original draft. Sergey Leonidovich
+Khursan: Data curation; formal analysis; validation; writing – original draft. Vladimir Sergeevich Kolosnitsyn: Conceptualization; data curation;
+formal analysis; funding acquisition; validation; writing – original draft.
+TABLE 5
+Thermodynamic parameters and potential of the considered stages of sulfur reduction to lithium sulfide. Sulfolane (IEF-PCM),
+PBE1PBE/6–311 + G(d,p), 298.15 K
+Modela
+Reaction
+ΔH (kJ mol1)
+ΔG (kJ mol1)
+Eo ¼  ΔGo
+2F (V)
+S8 + 2Li ! Li2S8
+(III)
+2Li–Sl + Sl–S8–Sl ! 2Sl + Sl–Li+–S8
+2–Li+–Sl
+628.4
+613.8
++3.2
+(IV)
+2Li2–Sl + Sl–S8–Sl ! 2Li–Sl + Sl–Li+–S8
+2–Li+–Sl
+554.6
+554.9
++2.9
+(V)
+2Li6–Sl + Sl–S8–Sl ! 2Li5–Sl + Sl–Li+–S8
+2–Li+–Sl
+506.4
+496.1
++2.6
+Li2S8 + 2Li ! 2Li2S4
+(III)
+2Li–Sl + Sl–Li+–S8
+2–Li+–Sl + Sl2 ! 2Sl + 2Sl–Li+–S4
+2–Li+–Sl
+593.2
+564.9
++2.9
+(IV)
+2Li2–Sl + Sl–Li+–S8
+2–Li+–Sl + Sl2 ! 2Li–Sl + 2Sl–Li+–S4
+2–Li+–Sl
+519.4
+505.9
++2.6
+(V)
+2Li6–Sl + Sl–Li+–S8
+2–Li+–Sl + Sl2 ! 2Li5–Sl + 2Sl–Li+–S4
+2–Li+–Sl
+471.2
+447.2
++2.3
+Li2S4 + 2Li ! 2Li2S2
+(III)
+2Li–Sl + Sl–Li+–S4
+2–Li+–Sl + Sl2 ! 2Sl + 2Sl–Li+–S2
+2–Li+–Sl
+453.7
+428.8
++2.2
+(IV)
+2Li2–Sl + Sl–Li+–S4
+2–Li+–Sl + Sl2 ! 2Li–Sl + 2Sl–Li+–S2
+2–Li+–Sl
+380.0
+369.9
++1.9
+(V)
+2Li6–Sl + Sl–Li+–S4
+2–Li+–Sl + Sl2 ! 2Li5–Sl + 2Sl–Li+–S2
+2–Li+–Sl
+331.7
+311.1
++1.6
+Li2S2 + 2Li ! 2Li2S ((Li2S)2)
+(III)
+2Li–Sl + Sl–Li+–S2
+2–Li+–Sl ! 2Sl + Sl–(Li2S)2–Sl
+386.2
+365.9
++1.9
+(IV)
+2Li2–Sl + Sl–Li+–S2
+2–Li+–Sl ! 2Li–Sl + Sl–(Li2S)2–Sl
+312.4
+307.0
++1.6
+(V)
+2Li6–Sl + Sl–Li+–S2
+2–Li+–Sl ! 2Li5–Sl + Sl–(Li2S)2–Sl
+264.2
+248.3
++1.3
+aModel number according to Table 2.
+OVCHINNIKOV ET AL.
+13 of 15
+ 1097461x, 2022, 22, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26985 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 14>>
+FUNDING INFORMATION
+This work was financially supported by the Russian Science Foundation (RSF) (Grant “Polysulfide ion-solvent complexes and their electrochemical
+behavior in lithium–sulfur batteries” No. RSF-NSFC №21-43-00006).
+CONFLICT OF INTEREST
+The authors declare no competing financial interest.
+DATA AVAILABILITY STATEMENT
+The data that support the findings of this study are available from the corresponding author upon reasonable request.
+ORCID
+Mikhail Yur'evich Ovchinnikov
+https://orcid.org/0000-0002-7276-0872
+Elena Vladimirovna Kuzmina
+https://orcid.org/0000-0002-3758-4762
+Elena Vladimirovna Karaseva
+https://orcid.org/0000-0002-8447-7230
+Sergey Leonidovich Khursan
+https://orcid.org/0000-0003-1879-944X
+Vladimir Sergeevich Kolosnitsyn
+https://orcid.org/0000-0003-1318-6943
+REFERENCES
+[1] C. Zha, F. Yang, J. Zhang, T. Zhang, S. Dong, H. Chen, J. Mater. Chem. A 2018, 6, 16574.
+[2] C. Zha, D. Wu, T. Zhang, J. Wu, H. Chen, Energy Storage Mater. 2019, 17, 118.
+[3] C. Zha, D. Wu, X. Gu, H. Chen, J. Energy Chem. 2021, 59, 599.
+[4] R. Dominko, R. Demir-Cakan, M. Morcrette, J.-M. Tarascon, Electrochem. Commun. 2011, 13, 117.
+[5] Y. Diao, K. Xie, S. Xiong, X. Hong, J. Electrochem. Soc. 2012, 159, A421.
+[6] M. Hagen, P. Schiffels, M. Hammer, S. Dörfler, J. Tübke, M. J. Hoffmann, H. Althues, S. Kaskel, J. Electrochem. Soc. 2013, 160, A1205.
+[7] P. Zhang, X. Li, Y. Hua, J. Yu, Y. Ding, Electrochim. Acta 2018, 282, 499.
+[8] M. J. Lacey, K. Edström, D. Brandell, Electrochem. Commun. 2014, 46, 91.
+[9] C. Shen, J. Xie, M. Zhang, P. Andrei, M. Hendrickson, E. J. Plichta, J. P. Zheng, Electrochim. Acta 2017, 248, 90.
+[10] P. P. R. M. L. Harks, C. B. Robledo, T. W. Verhallen, P. H. L. Notten, F. M. Mulder, Adv. Energy Mater. 2017, 7, 1601635.
+[11] V. S. Kolosnitsyn, E. V. Karaseva, E. V. Kuzmina, A. L. Ivanov, Russ. J. Electrochem. 2016, 52, 273.
+[12] E. V. Karaseva, E. V. Kuzmina, D. V. Kolosnitsyn, N. V. Shakirova, L. V. Sheina, V. S. Kolosnitsyn, Electrochim. Acta 2019, 296, 1102.
+[13] M.-K. Song, E. J. Cairns, Y. Zhang, Nanoscale 2013, 5, 2186.
+[14] A. Bhargav, J. He, A. Gupta, A. Manthiram, Joule 2020, 4, 285.
+[15] S. Dörfler, H. Althues, P. Härtel, T. Abendroth, B. Schumm, S. Kaskel, Joule 2020, 4, 539.
+[16] E. V. Kuz'mina, E. V. Karaseva, N. V. Chudova, A. A. Mel'nikova, V. S. Kolosnitsyn, Russ. J. Electrochem. 2019, 55, 978.
+[17] H. Shin, M. Baek, A. Gupta, K. Char, A. Manthiram, J. W. Choi, Adv. Energy Mater. 2020, 10, 2001456.
+[18] N. Angulakshmi, R. B. Dhanalakshmi, S. Sathya, J.-H. Ahn, A. M. Stephan, Batter. Supercaps 2021, 4, 1064.
+[19] U. Tilstam, Org. Process Res. Dev. 2012, 16, 1273.
+[20] L. V. Sheina, E. V. Kuz'mina, E. V. Karaseva, A. G. Gallyamov, T. R. Prosochkina, V. S. Kolosnitsyn, Russ. J. Appl. Chem. 2018, 91, 1427.
+[21] E. Clark, Kirk-Othmer Encyclopedia of Chemical Technology, Wiley, Hoboken, N.J 2000.
+[22] V. K. H. Brown, L. W. Ferrigan, D. E. Stevenson, Br. J. Ind. Med. 1966, 23, 302.
+[23] A. Bak, V. Kozik, P. Dybal, S. Kus, A. Swietlicka, J. Jampilek, Sustainability 2018, 10, 3677.
+[24] R. S. Assary, L. A. Curtiss, J. S. Moore, J. Phys. Chem. C 2014, 118, 11545.
+[25] L. Wang, T. Zhang, S. Yang, F. Cheng, J. Liang, J. Chen, J. Energy Chem. 2013, 22, 72.
+[26] N. Shao, X.-G. Sun, S. Dai, D.-e. Jiang, J. Phys. Chem. B 2011, 115, 12120.
+[27] G.-Y. Du, C.-Y. Liu, E. Y. Li, Catalysts 2020, 10, 911.
+[28] J. Tomasi, B. Mennucci, R. Cammi, Chem. Rev. 2005, 105, 2999.
+[29] Q. Liu, D. Mu, B. Wu, L. Wang, L. Gai, F. Wu, RSC Adv. 2017, 7, 33373.
+[30] M. J. Frisch, G. W. Trucks, H. B. Schlegel, G. E. Scuseria, M. A. Robb, J. R. Cheeseman, G. Scalmani, V. Barone, B. Mennucci, G. A. Petersson, H.
+Nakatsuji, M. Caricato, X. Li, H. P. Hratchian, A. F. Izmaylov, J. Bloino, G. Zheng, J. L. Sonnenberg, M. Hada, M. Ehara, K. Toyota, R. Fukuda, J.
+Hasegawa, M. Ishida, T. Nakajima, Y. Honda, O. Kitao, H. Nakai, T. Vreven, J. A. Montgomery, J. E. Peralta Jr., F. Ogliaro, M. Bearpark, J. J. Heyd, E.
+Brothers, K. N. Kudin, V. N. Staroverov, T. Keith, R. Kobayashi, J. Normand, K. Raghavachari, A. Rendell, J. C. Burant, S. S. Iyengar, J. Tomasi, M. Cossi,
+N. Rega, J. M. Millam, M. Klene, J. E. Knox, J. B. Cross, V. Bakken, C. Adamo, J. Jaramillo, R. Gomperts, R. E. Stratmann, O. Yazyev, A. J. Austin, R.
+Cammi, C. Pomelli, J. W. Ochterski, R. L. Martin, K. Morokuma, V. G. Zakrzewski, G. A. Voth, P. Salvador, J. J. Dannenberg, S. Dapprich, A. D. Daniels,
+O. Farkas, J. B. Foresman, J. V. Ortiz, J. Cioslowski, D. J. Fox, Gaussian 09, Revision C.01, Gaussian, Inc., Wallingfort, CT 2009.
+[31] Chemcraft 1.8 build 595b. http://www.chemcraftprog.com
+[32] J. E. Carpenter, F. Weinhold, J. Mol. Struct.—THEOCHEM 1988, 169, 41.
+[33] J. P. Foster, F. Weinhold, J. Am. Chem. Soc. 1980, 102, 7211.
+[34] A. E. Reed, F. Weinhold, J. Chem. Phys. 1983, 78, 4066.
+[35] A. E. Reed, F. Weinhold, J. Chem. Phys. 1985, 83, 1736.
+[36] A. E. Reed, R. B. Weinstock, F. Weinhold, J. Chem. Phys. 1985, 83, 735.
+[37] C. Adamo, V. Barone, J. Chem. Phys. 1999, 110, 6158.
+14 of 15
+OVCHINNIKOV ET AL.
+ 1097461x, 2022, 22, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26985 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 15>>
+[38] M. Ernzerhof, G. E. Scuseria, J. Chem. Phys. 1999, 110, 5029.
+[39] K. C. Wasalathilake, M. Roknuzzaman, K. Ostrikov, G. A. Ayoko, C. Yan, RSC Adv. 2018, 8, 2271.
+[40] Z. Ji, B. Han, Q. Li, C. Zhou, Q. Gao, K. Xia, J. Wu, J. Phys. Chem. C 2015, 119, 20495.
+[41] B. Wang, S. M. Alhassan, S. T. Pantelides, Phys. Rev. Appl. 2014, 2, 034004.
+[42] R. Krishnan, J. S. Binkley, R. Seeger, J. A. Pople, J. Chem. Phys. 1980, 72, 650.
+[43] J. A. Montgomery, M. J. Frisch, J. W. Ochterski, G. A. Petersson, J. Chem. Phys. 1999, 110, 2822.
+[44] A. D. Boese, ChemPhysChem 2015, 16, 978.
+[45] V. I. Lebedev, L. Skorokhodov, Rus. Acad. Sci. Dokl. Math. 1992, 45, 587.
+[46] R. Bauernschmitt, R. Ahlrichs, J. Chem. Phys. 1996, 104, 9047.
+[47] R. Seeger, J. A. Pople, J. Chem. Phys. 1977, 66, 3045.
+[48] L. A. Curtiss, P. C. Redfern, K. Raghavachari, J. Chem. Phys. 2007, 126, 84108.
+[49] R. F. W. Bader, Atoms in Molecules: A Quantum Theory, Clarendon Press, Oxford 1995.
+[50] I. S. Bushmarinov, K. A. Lyssenko, M. Y. Antipin, Russ. Chem. Rev. 2009, 78, 283.
+[51] T. A. Keith, AIMAll Professional Version 10.05.04, TK Gristmill Software, TK Gristmill Software Overland Park KS, USA. 2010 (aim.tkgristmill.com).
+[52] T. Lu, F. Chen, J. Comput. Chem. 2012, 33, 580.
+[53] R. A. Pierotti, Chem. Rev. 1976, 76, 717.
+[54] S. G. Bratsch, J. Phys. Chem. Ref. Data 1989, 18, 1.
+SUPPORTING INFORMATION
+Additional supporting information can be found online in the Supporting Information section at the end of this article.
+How to cite this article: M. Y. Ovchinnikov, E. V. Kuzmina, E. V. Karaseva, S. L. Khursan, V. S. Kolosnitsyn, Int. J. Quantum Chem. 2022,
+122(22), e26985. https://doi.org/10.1002/qua.26985
+OVCHINNIKOV ET AL.
+15 of 15
+ 1097461x, 2022, 22, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26985 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

@@ -1,0 +1,934 @@
+
+<<PAGE 1>>
+Supporting information:
+Solvation structure of conjugated organosulfur
+polymers for lithium-sulfur battery cathodes
+Diptesh Gayen,† Yannik Sch¨utze,‡,¶ Sebastien Groh,† and Joachim Dzubiella∗,†,‡
+†Applied Theoretical Physics – Computational Physics, Physikalisches Institut,
+Albert-Ludwigs-Universit¨at Freiburg, 79104 Freiburg, Germany
+‡Research Group for Simulations of Energy Materials, Helmholtz-Zentrum Berlin f¨ur
+Materialien und Energie GmbH, 14109 Berlin, Germany
+¶Theoretical Chemistry, Institute of Chemistry and Biochemistry, Freie Universit¨at Berlin,
+14195 Berlin, Germany
+E-mail: joachim.dzubiella@physik.uni-freiburg.de,joachim.dzubiella@helmholtz-berlin.de
+1
+Force Field
+Classical molecular dynamics simulation (MD) was performed using the LAMMPS1 MD
+simulations package. The bonded and non-bonded parameters for DOL and DME are taken
+from Park et al.2 For the polymer, most of the bonded parameters were taken from the
+OPLS3 database. Specially the backbone dihedral was taken from Wildman et al.4
+1.1
+PTBT
+PTBT consists of a total of 7 different atom types, 11 different bond types, 16 different angle
+types, and 29 different dihedral types.
+S-1
+Downloaded from pubs.​acs.​org/​aapmcd/​article-supplement/​357151/​pdf/​ap3c00379_si_001/​ by TSINGHUA UNIV user on 09 October 2026
+
+<<PAGE 2>>
+Fig. S1: Chemical structure of a central two-monomer unit of a PTBT chain. Atom types
+are labeled with different numerical suffixes.
+S-2
+Downloaded from pubs.​acs.​org/​aapmcd/​article-supplement/​357151/​pdf/​ap3c00379_si_001/​ by TSINGHUA UNIV user on 09 October 2026
+
+<<PAGE 3>>
+Table. S1: Non-bonded parameters used in MD simulations of PTBT. PTBT atom types
+are defined in Fig. S1.
+Atom type
+σ [˚A] 1
+ϵ [kcal/mol] 2
+q [e] 3
+C1
+3.55
+0.070
+0.030
+C2
+3.55
+0.076
+-0.142
+C3
+3.55
+0.076
+-0.065
+C4
+3.55
+0.070
+-0.115
+C5
+3.55
+0.070
+0.065
+S1
+3.55
+0.250
+-0.060
+S2
+3.55
+0.250
+-0.220
+H1
+2.42
+0.030
+0.142
+H2
+2.42
+0.030
+0.160
+H3
+0.00
+0.000
+0.155
+1. From Ref. [1]
+2. From Ref. [2]
+3. This work
+S-3
+Downloaded from pubs.​acs.​org/​aapmcd/​article-supplement/​357151/​pdf/​ap3c00379_si_001/​ by TSINGHUA UNIV user on 09 October 2026
+
+<<PAGE 4>>
+Table. S2: The bond-stretching parameters of PTBT. The bond stretching potential is de-
+fined by the harmonic expression: Ebond = kr
+2 (r −req)2. To ensure full compatibility with
+OPLS-AA functional forms, it is recommended to divide the force constants provided here
+by 2.
+Bond type
+req [˚A] 1
+kr [kcal/mol/˚A2] 1
+C1-C2; C1-C3
+1.367
+500.0
+C1-S1
+1.740
+500.0
+C5-S2
+1.760
+500.0
+C2-C3; C3-C4
+1.424
+938.0
+C1-C1
+1.375
+1024.0
+C2-H1
+1.080
+734.0
+C4-C4; C4-C5
+1.400
+938.0
+C4-H2
+1.080
+734.0
+S2-H3
+1.336
+500.0
+1. From Ref. [1]
+Table. S3: The angle-bending parameters of PTBT. The angle-bending potential is defined
+by the harmonic expression: Eangle = kθ
+2 (θ −θeq)2. To ensure full compatibility with OPLS-
+AA functional forms, it is recommended to divide the force constants provided here by 2.
+Angle type
+θeq [deg] 1
+kθ [kcal/mol/θ2] 1
+C1-S-C1
+97.0
+148.0
+C1-C2-C3
+107.3
+140.0
+C1-C3-C4
+125.7
+140.0
+S1-C1-C2; S-C1-C3
+111.0
+140.0
+S1-C1-C1
+113.4
+70.0
+C3-C2-H1
+127.5
+70.0
+C3-C4-C4
+120.0
+126.0
+C1-C2-H1
+125.7
+70.0
+C1-C1-C3
+130.1
+140.0
+C2-C3-C4
+127.5
+140.0
+C4-C4-C4; C4-C4-C5; C4-C5-C4
+120.0
+126.0
+C4-C4-H2; C5-C4-H2
+120.0
+140.0
+C4-C5-S2
+120.0
+140.0
+C5-S2-H2
+96.0
+100.0
+1. From Ref. [1]
+S-4
+Downloaded from pubs.​acs.​org/​aapmcd/​article-supplement/​357151/​pdf/​ap3c00379_si_001/​ by TSINGHUA UNIV user on 09 October 2026
+
+<<PAGE 5>>
+Table. S4: The torsional parameters of PTBT. The torsional potential is defined by the
+multi-harmonic expression: Etorsion = P
+dihedrals
+k1
+2 [1 + cos(ϕ)] + k2
+2 [1 −cos(2ϕ)] + k3
+2 [1 +
+cos(3ϕ)] + k4
+2 [1 −cos(4ϕ)].
+Dihedral type
+k1
+k2
+k3
+k4
+C1-S1-C1-C3; C1-S1-C1-C1;
+C1-C3-C3-H1; C1-C3-C4-C4;
+S-C1-C2-C3; S-C1-C2-H1;
+C3-C2-C1-C1; C3-C4-C4-C4;
+C3-C4-C4-H2; C1-C2-C3-C4;
+C1-C1-C3-C4; H1-C2-C3-C4;
+H1-C2-C1-C1; S1-C1-C3-C4;
+C4-C4-C4-H2; C4-C4-C4-C4;
+C4-C4-C3-C2; H2-CA-CA-H2;
+H2-C4-C5-S2 1
+0.00
+7.250
+0.00
+0.00
+S1-C1-C1-S1 ; S1-C1-C1-C3 1
+-0.91
+2.361
+-0.19
+-0.47
+C4-C5-S2-H3 2
+0.00
+1.100
+0.00
+0.00
+C2-C1-C1-C3 1
+0.00
+10.750
+0.00
+0.00
+1. From Ref. [1]
+2. From Ref. [3]
+S-5
+Downloaded from pubs.​acs.​org/​aapmcd/​article-supplement/​357151/​pdf/​ap3c00379_si_001/​ by TSINGHUA UNIV user on 09 October 2026
+
+<<PAGE 6>>
+1.2
+S/PTBT
+Fig. S2: Chemical structure of a S/PTBT chain. Atom types are labeled with different
+numerical suffixes.
+S-6
+Downloaded from pubs.​acs.​org/​aapmcd/​article-supplement/​357151/​pdf/​ap3c00379_si_001/​ by TSINGHUA UNIV user on 09 October 2026
+
+<<PAGE 7>>
+Table. S5: The non-bonded parameters used in our MD simulations of S/PTBT. S/PTBT
+atom types are defined in Fig. S2.
+Atom type
+σ [˚A] 1
+ϵ [kcal/mol] 1
+q [e] 2
+C1
+3.55
+0.070
+0.030
+C2
+3.55
+0.076
+0.030
+C3
+3.55
+0.076
+-0.156
+C4
+3.55
+0.070
+0.060
+C5
+3.55
+0.070
+0.040
+C6
+3.55
+0.070
+-0.150
+C7
+3.55
+0.070
+-0.090
+C8
+3.55
+0.070
+0.080
+S1
+3.55
+0.250
+-0.060
+S2
+3.55
+0.250
+-0.130
+S3
+3.55
+0.250
+-0.030
+H1
+2.42
+0.030
+0.156
+H2
+2.42
+0.030
+0.100
+H3
+2.42
+0.030
+0.130
+1. From Ref. [1]
+2. This work
+Table. S6: The bond-stretching parameters of S/PTBT. The bond stretching potential is
+defined by the harmonic expression: Ebond = kr
+2 (r −req)2. To ensure full compatibility with
+OPLS-AA functional forms, it is recommended to divide the force constants provided here
+by 2.
+Bond type
+req [˚A]
+kr[kcal/mol/˚A2]
+S2-S3 1
+2.133
+309.7
+1. From Ref. [2]
+S-7
+Downloaded from pubs.​acs.​org/​aapmcd/​article-supplement/​357151/​pdf/​ap3c00379_si_001/​ by TSINGHUA UNIV user on 09 October 2026
+
+<<PAGE 8>>
+Table. S7: The angle-stretching parameters of S/PTBT. The angle-bending potential is
+defined by the harmonic expression: Eangle = kθ
+2 (θ −θeq)2. To ensure full compatibility with
+OPLS-AA functional forms, it is recommended to divide the force constants provided here
+by 2.
+Angle type
+θeq [deg]
+kθ [kcal/mol/θ2 ]
+C8-S2-S3 1
+105.50
+67.11
+S2-S3-S3 1
+112.74
+73.55
+1. From Ref. [2]
+Table. S8: The torsional parameters of S/PTBT. The torsional potential is defined by the
+multi-harmonic expression: Etorsion = P
+dihedrals
+k1
+2 [1 + cos(ϕ)] + k2
+2 [1 −cos(2ϕ)] + k3
+2 [1 +
+cos(3ϕ)] + k4
+2 [1 −cos(4ϕ)].
+Dihedral type
+k1
+k2
+k3
+k4
+C7-C8-S2-S3 1
+-0.24
+7.800
+-0.07
+0.157
+C8-S2-S3-S3 1
+3.23
+-0.791
+2.34
+-1.000
+S2-S3-S3-S2 1
+3.13
+-11.860
+-3.84
+-1.760
+1. this work
+S-8
+Downloaded from pubs.​acs.​org/​aapmcd/​article-supplement/​357151/​pdf/​ap3c00379_si_001/​ by TSINGHUA UNIV user on 09 October 2026
+
+<<PAGE 9>>
+1.3
+Force Field Method Validation
+ɸ
+CA
+CA
+S
+S
+(a)
+(b)
+Fig. S3: (a) Relative energy profile for CA-CA-S-S. The black line represents the profile
+of the DFT energy, Etotal, while the red line corresponds to the profile obtained from the
+molecular statics energy minimization, Ezero-dihd, which excludes the dihedral contribution.
+We subtracted the Ezero-dihd profile from the Etotal profile to obtain the Edihd blue line. Then,
+we fit this subtracted profile to the OPLS framework (see Eq. 1 in the manuscript), shown
+as the dashed magenta line. Finally, we added the Etotal and the fitted profile to obtain
+the ’complete’ profile, represented by the dashed orange line. The relative dihedral energy
+for CA-CA-S-S calculated by Jungen et al.5 is represented by the grey dashed line. (b) The
+phenyl disulfide, PHS−
+2 , group was used to parameterize the CA-CA-S-S dihedral (red circles
+represent the dihedral of interest).
+S-9
+Downloaded from pubs.​acs.​org/​aapmcd/​article-supplement/​357151/​pdf/​ap3c00379_si_001/​ by TSINGHUA UNIV user on 09 October 2026
+
+<<PAGE 10>>
+1.4
+Force Field Validation
+ϕS-CW-CW-S
+dC-C
+⍺S-S-S
+Fig. S4: An illustration of the DiTBT-Sm-DiTBT for m = 3, with distance, dC−C, between
+terminating carbon atoms, sulfur bond angle, αS−S−S, and dihedral angle, ϕS−CW−CW−S,
+between neighboring thiophene rings are indicated by red dashed lines.
+S-10
+Downloaded from pubs.​acs.​org/​aapmcd/​article-supplement/​357151/​pdf/​ap3c00379_si_001/​ by TSINGHUA UNIV user on 09 October 2026
+
+<<PAGE 11>>
+0.50
+0.75
+dC C [nm] 
+(a)
+DFT
+MD
+100
+110
+120
+S S S [deg]
+(b)
+4
+6
+8
+10
+12
+14
+16
+18
+sulfur rank s
+50
+100
+S CW CW S [deg]
+(c)
+Fig. S5: Comparison of structural properties, (a) distance, dC−C, between the terminating
+carbon atoms, (b) sulfur bond angle, αS−S−S, and (c) dihedral angle, ϕS−CW−CW−S, between
+neighbouring thiophene rings (see Fig. S4), between DFT and optimization of the molecule’s
+geometry by minimizing the total energy of the system using the developed force field (molec-
+ular statics) when considering a DiTBT-2Sm-DiTBT molecule with different sulfur rank, m,
+in the gas phase. The values of dC−C, αS−S−S, and ϕS−CW−CW−S are calculated as the av-
+erage over 20 configurations that are extracted from MD simulations and minimized with
+both DFT and molecular statics.
+S-11
+Downloaded from pubs.​acs.​org/​aapmcd/​article-supplement/​357151/​pdf/​ap3c00379_si_001/​ by TSINGHUA UNIV user on 09 October 2026
+
+<<PAGE 12>>
+Table. S9: The average densities of different molar fractions of DME-DOL mixtures, calcu-
+lated in this work, are presented [in kg m−3] and compared to available experimental and
+simulation data. The statistical error is presented in the parenthesis.
+x
+sim.(this work)
+exp. data6 7
+sim.2
+0
+1019.2(±0.7)
+1059
+1047
+0.25
+961.3(±0.6)
+980
+0.5
+914.7(±0.2)
+924
+0.75
+873.1(±0.4)
+877
+1
+839.6(±0.4)
+861
+853
+2
+Simulation Details
+Table. S10: A summary of the number of simulated solvent molecules and corresponding
+system size (in parenthesis) [in nm] for various molar fractions, x, and the polymer chain
+lengths, n, ranging from 3 to 40 is provided.
+n
+x = 0
+x = 0.25
+x = 0.5
+x = 0.75
+x = 1
+3
+512 (4)
+512 (4.1)
+512 (4.3)
+512 (4.4)
+512 (4.5)
+5
+1000 (5)
+1728 (6.2)
+1728 (6.3)
+1728 (6.5)
+1000 (5.6)
+10
+1000 (5)
+1728 (6.2)
+1728 (6.3)
+1728 (6.5)
+1000 (5.6)
+15
+1728 (6)
+2744 (7.2)
+2744 (7.4)
+2744 (6.5)
+1728 (6.7)
+20
+1728 (6)
+2744 (7.2)
+2744 (7.4)
+2744 (6.5)
+1728 (6.7)
+25
+2744 (7)
+4096 (8.2)
+4096 (8.5)
+4096 (8.6)
+2744 (8)
+30
+2744 (7)
+4096 (8.2)
+4096 (8.5)
+4096 (8.7)
+2744 (9)
+35
+4096 (8)
+4096 (8.2)
+4096 (8.5)
+4096 (8.7)
+4096 (9)
+40
+4096 (8)
+8000 (10.5)
+5832 (9.6)
+8000 (10.8)
+4096 (9)
+3
+Basic Polymeric Properties
+In the case of the worm-like chain model,8 the persistence length, lp, is related to the bond
+length, lb, and bond angle, θ, of a polymer by
+lp = lb
+2
+θ2.
+(1)
+S-12
+Downloaded from pubs.​acs.​org/​aapmcd/​article-supplement/​357151/​pdf/​ap3c00379_si_001/​ by TSINGHUA UNIV user on 09 October 2026
+
+<<PAGE 13>>
+The Flory characteristic ratio of the worm-like chain is very large:
+C∞= 1 + cos θ
+1 −cos θ ≊2 −(θ/2)
+(θ2/2) .
+(2)
+Using Eq. 2 and Eq. 1, we can write the Flory characteristic ratio as
+C∞= 2lp
+lb
+−1.
+(3)
+The flory characteristics ratio depends on the local stiffness of the polymer.
+Table. S11: The average contour length, lc [in nm], computed across all the chain lengths,
+n, and solvent molar fractions, x. The statistical error is reported in parentheses.
+n
+5
+10
+15
+20
+25
+30
+35
+40
+lc
+1.80(0.02) 3.30(0.02) 5.17(0.03) 6.98(0.03) 8.83(0.04) 10.62(0.04)12.51(0.04)14.36(0.04)
+S-13
+Downloaded from pubs.​acs.​org/​aapmcd/​article-supplement/​357151/​pdf/​ap3c00379_si_001/​ by TSINGHUA UNIV user on 09 October 2026
+
+<<PAGE 14>>
+4
+Polymer Conformation and Solvent Quality
+4.1
+Radius of Gyration
+Table. S12: Averaged radius of gyration, Rg [in nm], for the PTBT chains obtained in
+different solvent molar fractions, x. The statistical error is reported in parentheses.
+n
+x = 0
+x = 0.25
+x = 0.5
+x = 0.75
+x = 1
+5
+0.7(±0.01)
+0.7(±0.01)
+0.69(±0.01) 0.7(±0.01)
+0.7(±0.01)
+10
+0.95(±0.01) 0.88(±0.01) 0.88(±0.01) 0.88(±0.01) 0.91(±0.01)
+15
+1.07(±0.01) 1.1(±0.01)
+1.12(±0.01) 1.1(±0.01)
+1.1(±0.01)
+20
+1.12(±0.01) 1.2(±0.01)
+1.21(±0.01) 1.19(±0.01) 1.22(±0.01)
+25
+1.37(±0.01) 1.38(±0.01) 1.32(±0.01) 1.19(±0.01) 1.31(±0.01)
+30
+1.25(±0.01) 1.46(±0.01) 1.56(±0.01) 1.57(±0.01) 1.25(±0.01)
+35
+1.26(±0.01) 1.4(±0.01)
+1.38(±0.01) 1.27(±0.01) 1.47(±0.01)
+40
+1.43(±0.01) 1.67(±0.01) 1.47(±0.01) 1.48(±0.01) 1.44(±0.01)
+Table. S13: The calculated Flory exponent, ν, and scaling constant, b, as a function of molar
+fractions, x. The statistical error is reported in parentheses.
+x
+0
+0.25
+0.5
+0.75
+1
+ν
+0.30(±0.04) 0.41(±0.04) 0.37(±0.05) 0.35(±0.07) 0.34(±0.05)
+b
+0.46(±0.06) 0.35(±0.04) 0.40(±0.06) 0.40(±0.09) 0.42(±0.05)
+S-14
+Downloaded from pubs.​acs.​org/​aapmcd/​article-supplement/​357151/​pdf/​ap3c00379_si_001/​ by TSINGHUA UNIV user on 09 October 2026
+
+<<PAGE 15>>
+4.2
+Structure Factor
+5 × 10
+1
+100
+2 × 100
+5 × 100
+q [1/nm]
+100
+101
+S(q) 
+I
+II
+III
+5
+10
+15
+20
+25
+30
+35
+40
+40, ideal
+40, solid
+(a) x = 0
+5 × 10
+1
+100
+2 × 100
+5 × 100
+q [1/nm]
+100
+101
+S(q) 
+I
+II
+III
+5
+10
+15
+20
+25
+30
+35
+40
+40, ideal
+40, solid
+(b) x = 1
+Fig. S6: Intramolecular structure factor for PTBT in case of (a) pure DOL (x = 0), and (b)
+pure DME (x = 1).
+4.3
+MSD of Polymer
+(The radial mean squared displacement (MSD) of the center of mass (COM) of the single
+chain polymer can be expressed as
+S-15
+Downloaded from pubs.​acs.​org/​aapmcd/​article-supplement/​357151/​pdf/​ap3c00379_si_001/​ by TSINGHUA UNIV user on 09 October 2026
+
+<<PAGE 16>>
+MSD(t) = ⟨|rCOM(t) −rCOM(0)|2⟩,
+(4)
+where rCOM(t) is the position vector of the COM of the polymer at time t, rCOM(0) is
+the position vector of the COM at time 0, and ⟨⟩denotes the average over all timesteps.
+The diffusion coefficient D can be calculated from the MSD using Einstein’s relation in
+3D,
+MSD(t) = 6Dt,
+(5)
+where t is the time interval over which the MSD is measured. Therefore, the diffusion
+coefficient can be calculated from the slope of the MSD plot using a linear fit.
+10
+2
+10
+1
+100
+101
+102
+t [ns]
+100
+101
+102
+103
+104
+105
+MSD [nm2]
+5
+10
+15
+20
+25
+30
+35
+40
+D = 38 *10
+5 cm2/s
+D = 8 *10
+5 cm2/s
+Fig. S7: Log-log plot of the mean square displacements (MSD) of the COM of polymers with
+varying chain length, n (see legend), as a function of time (t) for a solvent molar fraction
+x = 0.25. The behavior is normal diffusive as indicated by the dashed lines (∝t1) for two
+different diffusion constants (see legend).
+S-16
+Downloaded from pubs.​acs.​org/​aapmcd/​article-supplement/​357151/​pdf/​ap3c00379_si_001/​ by TSINGHUA UNIV user on 09 October 2026
+
+<<PAGE 17>>
+4.4
+Relaxation Time
+10
+2
+10
+1
+100
+101
+102
+t [ns]
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+CRR(t)
+5
+10
+15
+20
+25
+30
+35
+40
+Fig. S8: A semi-logarithmic plot of the autocorrelation function, CRR(t), of the Rg for
+n = 5 −40 (see legend) as a function of time, t, for a solvent molar fraction of x = 0.25.
+S-17
+Downloaded from pubs.​acs.​org/​aapmcd/​article-supplement/​357151/​pdf/​ap3c00379_si_001/​ by TSINGHUA UNIV user on 09 October 2026
+
+<<PAGE 18>>
+5
+Polymer-Solvent Interactions and Solvent Adsorp-
+tion
+5.1
+RDF
+(a)
+(b)
+(c)
+(d)
+(e)
+(f)
+(g)
+Fig. S9: Plot of RDF and KB-integral of POL-DOL and POL-DME at different chain lengths:
+(a) 5, (b) 10, (c) 15, (d) 20, (e) 25, (f) 30, and (g) 40.
+S-18
+Downloaded from pubs.​acs.​org/​aapmcd/​article-supplement/​357151/​pdf/​ap3c00379_si_001/​ by TSINGHUA UNIV user on 09 October 2026
+
+<<PAGE 19>>
+5.2
+CH...O Interactions
+n = 5
+n = 40
+Possible h bonds
+below 0.32 nm and 
+angle in the range of 
+90° and 180°.
+1.37
+0.38
+0.86
+0.67
+0.38
+0.94
+x = 0.25
+x = 0.5
+x = 0.75
+(a)
+(b)
+(c)
+(d)
+(e)
+(f)
+9.65
+2.63
+5.91
+4.32
+2.68
+6.40
+Possible h bonds
+below 0.32 nm and 
+angle in the range of 
+90° and 180°.
+Fig. S10: Color plots: Normalized count (w.r.t. the number of configuration samples) of
+hydrogen bonds for a C. . . O distance between 0.26 nm and 0.32 nm and a C-H. . . O angle
+between 90° and 180° for different molar fractions (x = 0.25 (a and d), 0.5 (b and e), and
+0.75 (c and f)) and numbers of monomers (n = 5 and 40). The number of possible hydrogen
+bonds obtained for a C. . . O distance below 0.32 nm and C-H. . . O angle in the range of 90°
+and 180° for each DOL and DME solvent molecule, is indicated below each plot.
+To investigate why the number of DOL molecules is consistently larger than the number of
+DME molecules around the polymer, we conducted a hydrogen bond analysis. Specifically,
+we calculated the C-H. . . O interactions, where C-H from the polymer acted as a donor and O
+from the solvent molecule acted as an acceptor. We performed this analysis for different molar
+fractions (x = 0.25, 0.5, and 0.75) and numbers of monomers (n = 5 and 40). Subsequently,
+a sensitivity analysis was performed by varying both the C-O distance between 0.25 nm and
+0.32 nm and the CH-O angle between 90° and 180°, as suggested by Steiner.9 Within the
+specified distance and angle, the total number of possible hydrogen bonds was calculated
+and reported in Fig. S10.
+The number of hydrogen bonds per DOL molecule is defined as the ratio between the
+S-19
+Downloaded from pubs.​acs.​org/​aapmcd/​article-supplement/​357151/​pdf/​ap3c00379_si_001/​ by TSINGHUA UNIV user on 09 October 2026
+
+<<PAGE 20>>
+number of hydrogen bonds involving the polymer and DOL and the total number of DOL
+acting as potential acceptor, and analogously for DME. The ratio of hydrogen bond per
+solvent molecule between DOL and DME is then defined as:
+rh =
+
+Number of hydrogen bonds with DOL
+total number of possible DOL acceptors
+
+
+Number of hydrogen bonds with DME
+total number of possible DME acceptors
+.
+(6)
+0.25
+0.50
+0.75
+x
+0.6
+0.8
+1.0
+1.2
+1.4
+rh
+DOL molecules favor 
+ hydrogen bonds
+DME molecules favor 
+ hydrogen bonds
+n = 5
+n = 40
+Fig. S11: Ratio of hydrogen bonds per solvent molecule between DOL and DME, rh, plotted
+against the solvent molar fraction, x = (0.25, 0.5, and 0.75), for chain lengths, n = 5 and 40.
+The plot shows that, the ratio is always consistently higher than one. These results support
+the finding that DOL molecules are more likely to form hydrogen bonds with the polymer
+than DME molecules.
+If rh is greater than one, a DOL molecule is more likely to make a hydrogen bond with the
+polymer than a DME molecule. If one assumes that the ratio of DME and DOL molecules
+S-20
+Downloaded from pubs.​acs.​org/​aapmcd/​article-supplement/​357151/​pdf/​ap3c00379_si_001/​ by TSINGHUA UNIV user on 09 October 2026
+
+<<PAGE 21>>
+near the polymer is similar in magnitude to what was obtained at the radius of gyration (See
+Fig. 8d), one can then easily show that the number of hydrogen bonds per DOL molecule
+is always higher than the number of hydrogen bonds per DME molecule (also depicted in
+Fig. S11). This suggests that the number of DOL molecules is always higher than DME
+molecules.
+0
+0.25
+0.5
+0.75
+1
+x
+0.15
+0.10
+0.05
+0.00
+SOL
+SOL [nm3]
+Fig. S12: Total KB integrals between solvent molecules, ΓSOL−SOL, as a function of molar
+fraction, x. We calculate ΓDOL−DOL for x = 0 and ΓDME−DME for x = 1. For the solvent
+mixture, we obtain ΓSOL−SOL by summing the contributions from ΓDOL−DOL, ΓDOL−DME, and
+ΓDME−DME.
+S-21
+Downloaded from pubs.​acs.​org/​aapmcd/​article-supplement/​357151/​pdf/​ap3c00379_si_001/​ by TSINGHUA UNIV user on 09 October 2026
+
+<<PAGE 22>>
+5.3
+KB Integral
+(a)
+(b)
+(c)
+(d)
+(e)
+Fig. S13: Running KB integrals, Γij(R
+′), for molar fractions of (a) x = 0.25, (b) x = 0.5, (c)
+x = 0.75, (d) x = 0, and (e) x = 1, are calculated for a chain length, n = 10.
+S-22
+Downloaded from pubs.​acs.​org/​aapmcd/​article-supplement/​357151/​pdf/​ap3c00379_si_001/​ by TSINGHUA UNIV user on 09 October 2026
+
+<<PAGE 23>>
+References
+(1) Thompson, A. P.; Aktulga, H. M.; Berger, R.; Bolintineanu, D. S.; Brown, W. M.;
+Crozier, P. S.; in ’t Veld, P. J.; Kohlmeyer, A.; Moore, S. G.; Nguyen, T. D.; Shan, R.;
+Stevens, M. J.; Tranchida, J.; Trott, C.; Plimpton, S. J. LAMMPS - a flexible simulation
+tool for particle-based materials modeling at the atomic, meso, and continuum scales.
+Comp. Phys. Comm. 2022, 271, 108171.
+(2) Park, C.; Kanduˇc, M.; Chudoba, R.; Ronneburg, A.; Risse, S.; Ballauff, M.; Dzubiella, J.
+Molecular simulations of electrolyte structure and dynamics in lithium–sulfur battery
+solvents. Journal of Power Sources 2018, 373, 70–78.
+(3) Jorgensen, W. L.; Maxwell, D. S.; Tirado-Rives, J. Development and Testing of the
+OPLS All-Atom Force Field on Conformational Energetics and Properties of Organic
+Liquids. Journal of the American Chemical Society 1996, 118, 11225–11236.
+(4) Wildman, J.;
+Repiˇsˇc´ak, P.;
+Paterson, M. J.;
+Galbraith, I. General Force-Field
+Parametrization Scheme for Molecular Dynamics Simulations of Conjugated Materials
+in Solution. Journal of Chemical Theory and Computation 2016, 12, 3813–3824.
+(5) Jungen, S.; Paenurk, E.; Chen, P. Synthesis, Spectroscopic, and Structural Character-
+ization of Organyl Disulfanides and a Tetrasulfanide. Inorganic Chemistry 2020, 59,
+12322–12336.
+(6) Giner, B.; Artigas, H.; Haro, M.; Lafuente, C.; L´opez, M. Viscosities of binary mixtures of
+1, 3-dioxolane or 1, 4-dioxane with isomeric chlorobutanes. Journal of Molecular Liquids
+2006, 129, 176–180.
+(7) Gurung, B. B.; Roy, M. N. Study of Densities, Viscosities and Ultrasonic Speeds of Binary
+Mixtures Containing 1, 2-Dimethoxyethane and an Alkan-l-ol at 298.15 K. Journal of
+Solution Chemistry 2006, 35, 1587–1606.
+S-23
+Downloaded from pubs.​acs.​org/​aapmcd/​article-supplement/​357151/​pdf/​ap3c00379_si_001/​ by TSINGHUA UNIV user on 09 October 2026
+
+<<PAGE 24>>
+(8) Rubinstein, M. Polymer physics; Oxford University Press: Oxford, 2007.
+(9) Steiner, T. C–H··· O hydrogen bonding in crystals. Crystallography reviews 2003, 9,
+177–228.
+S-24
+Downloaded from pubs.​acs.​org/​aapmcd/​article-supplement/​357151/​pdf/​ap3c00379_si_001/​ by TSINGHUA UNIV user on 09 October 2026

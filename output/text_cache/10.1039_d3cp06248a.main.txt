@@ -1,0 +1,1120 @@
+
+<<PAGE 1>>
+9998 | Phys. Chem. Chem. Phys., 2024, 26, 9998–10007
+This journal is © the Owner Societies 2024
+Cite this: Phys. Chem. Chem. Phys.,
+2024, 26, 9998
+The reduction behavior of sulfurized
+polyacrylonitrile (SPAN) in lithium–sulfur batteries
+using a carbonate electrolyte: a computational
+study†
+S. V. Klostermann,a J. Kappler,b A. Waigum,
+a M. R. Buchmeiser,
+b A. Ko¨hn
+a
+and J. Ka¨stner
+*a
+Lithium–sulfur batteries (LSBs) have attracted attention due to their high theoretical energy density. This
+and various other advantages, such as the availability and non-toxicity of sulfur, raise interest in LSBs
+against the background of the energy revolution. However, a polysulfide shuttle mechanism can
+adversely affect the electrochemical performance of the cell. The sulfur redox properties are influenced,
+for example, by the electrolyte and the cathode material. Here, a computational study of the discharge
+process of an LSB with sulfurized poly(acrylonitrile) (SPAN) as the cathode material in combination with
+a carbonate electrolyte is presented. The nucleation of produced solid Li2S is compared to soluble Li2S.
+Dominating species are determined by comparing the Gibbs free energy of several species. We found
+that multiple lithiation steps occur before each Li2S detachment, preventing longer-chain polysulfide
+cleavage and a polysulfide shuttle. Through nucleating on the nitrogen-rich backbone of SPAN, Li2S
+units are stabilized by interactions with each other and with the nitrogen atoms. Experimental data show
+a potential drop and plateau during discharge, which is consistent with the calculated discharge profiles
+of SPAN with both soluble and nucleated Li2S, and hints at a direct solid–solid transition in the Li-SPAN
+cell during discharge when using carbonate-based electrolytes.
+I. Introduction
+By pledging the Paris Agreement as the European Green Deal,
+parties of the EU-27 agreed to reduce their total greenhouse gas
+(GHG) emissions by at least 40% of below 1990 levels by 2030
+and to achieve net zero emissions by 2050.1 Amongst all
+sectors, the transport sector, including international aviation,
+accounts for nearly 30% of the total CO2 footprint in the EU.2
+With the proposed target to decarbonize the transportation
+sector, there is a growing need for lightweight, cost-eﬃcient,
+and environmentally benign batteries. In partcular in the
+aviation sector, the main technical challenge in implementing
+battery-powered aircraft is the gravimetric energy density of
+state-of-the-art batteries.3
+Lithium–sulfur-batteries (LSBs) utilize elemental lithium
+(3860 mA h g1) and sulfur (a-S8; 1672 mA h g1) as active
+materials, which results in high theoretical gravimetric energy
+densities of up to 2567 W h kg1.4,5 In addition to its favorable
+electrochemical properties, elemental sulfur is non-toxic and
+broadly available on the raw material market due to the high
+production volume out of the hydrodesulfurization process
+(HDS, oil refinery) in contrast to Ni, Co, and Mn, which are
+commonly used in state-of-the-art cathodes in LIBs.6 Despite
+the multitude of the aforementioned favorable properties of
+this battery type, they have only been used rarely in technical
+applications to date. Major drawbacks of this battery chemistry
+are related to sulfur’s redox properties. As carbonate electro-
+lytes are prone to decomposition via a nucleophillic attack of
+intermediary polysulfides as described by Yim et al.,7 ether-
+based electrolytes are commonly used in LSBs.8,9 However,
+intermediary lithium polysulfides dissolve in these electrolytes
+and can migrate to the Li anode and reduce the concentration
+gradient. As a result, a continuous sulfur loss occurs, com-
+monly referred to as the polysulfide shuttle mechanism.10
+The density difference of a-S8 (r = B2.07 g cm3) and Li2 S
+(r = B1.66 g cm3) creates an internal mechanical stress in the
+cathode upon cycling due to volume contraction/expansion,
+ultimately leading to electrode delamination, particle cracking,
+and loss of electrical contact.11
+a Institute for Theoretical Chemistry, University of Stuttgart, Pfaﬀenwaldring 55,
+70569 Stuttgart, Germany. E-mail: kaestner@theochem.uni-stuttgart.de
+b Institute of Polymer Chemistry, University of Stuttgart, Pfaﬀenwaldring 55,
+70569 Stuttgart, Germany
+† Electronic supplementary information (ESI) available. See DOI: https://doi.org/
+10.1039/d3cp06248a
+Received 22nd December 2023,
+Accepted 19th February 2024
+DOI: 10.1039/d3cp06248a
+rsc.li/pccp
+PCCP
+PAPER
+Published on 28 February 2024
+Licensed under CC-BY 4.0
+
+<<PAGE 2>>
+This journal is © the Owner Societies 2024
+Phys. Chem. Chem. Phys., 2024, 26, 9998–10007 | 9999
+Sulfurized poly(acrylonitrile) (SPAN) is a prominent cathode
+material with the potential to overcome a variety of the above
+mentioned drawbacks of conventional sulfur/S8-cathodes.12 Its
+high cycle stability and compatibility with various chemically
+diﬀerent electrolytes and anodes (e.g., K, Na, Mg, Al, Li) make
+this cathode material an outstanding candidate for post-Li-ion
+cell chemistries.13 Furthermore, the carbonaceous backbone of
+SPAN allows the buﬀering of volume expansion and contraction
+due to the sheering of the graphitic planes in response to
+mechanical stress upon cycling.14 In particular, the stability
+of SPAN in carbonate electrolytes is a distinctive feature, as
+conventional metal–sulfur-batteries using a carbonate-based
+electrolyte only generate a stable cell behavior if combined
+with a cathode in which sulfur is addressed as allotropes with
+short chain length (g-sulfur; S2–S4).7,15–17
+Gathering insight into the redox behavior of SPAN and
+conventional S-cathodes by means of in situ or operando tech-
+niques is challenging due to the amorphicity of the material
+and its structural complexity, as well as the experimental and
+technical complexity of in situ measurements in general.18
+Moreover, the high self-absorption of sulfur when applying X-
+ray absorption spectroscopy near the absorption edge (XANES),
+which is sensitive to the oxidation state or atomic surrounding
+of S, impedes precise quantitative analysis.19 These limitations
+motivate a theoretical approach to elucidate the lithiation
+behavior of SPAN on an atomic scale.
+In recent years, SPAN has become the focus of theoretical
+research. Besides investigating the structural motifs in SPAN
+involving preferred conformers with inter- and intramolecular
+sulfur chains,20 the intercalation properties were also investi-
+gated. Theoretical studies are showing that SPAN can capture
+polysulfides21,22 and is not only a host material for lithium
+storage but also an active material exhibiting chemisorption of
+polysulfides in ether-based electrolytes. Apart from the elucida-
+tion of the discharge mechanism of SPAN in ether-based
+electrolytes,23,24 further theoretical work investigated the for-
+mation of a passivating solid–electrolyte interphase on the
+SPAN surface.25
+Although the lithiation behavior of SPAN is crucial for the
+charge and discharge process, to our knowledge, no theoretical
+study has so far investigated this process in carbonate-based
+electrolytes, which is what we aim at here. For this purpose, a
+representative structural model for SPAN, which covers all
+chemical motifs and has an appropriate size for DFT calcula-
+tions, is selected. The step-wise cleavage of a sulfur side-chain
+of SPAN in connection with the resulting redox potentials is
+investigated. Two approaches are pursued, with and without
+the nucleation of the nascent Li2S molecules at the backbone
+of SPAN.
+II. Computational methods
+All DFT calculations are carried out in ChemShell26,27 via
+DL-FIND.28 Turbomole V7.4.129 is used for density functional
+theory (DFT) and the conductor-like screening model (COSMO)30
+with a dielectric constant of e = 89.831 for ethylene carbonate.
+All local coupled-cluster computations were performed using the
+MOLPRO program package (2022.1).32–34 These computations
+were run without COSMO, instead a correction for the solvation
+energy was computed at the HF level as DCOSMO = EHF,COSMO  EHF.
+A.
+Benchmark studies
+DFT functionals for comparison comprise BP86-D3(BJ),35–38
+cam-B3LYP,39 M06,40 PBE0-D3(BJ),41,42 TPSSh-D3(BJ),43 and
+B3LYP-D3(BJ)35,44 with the def2-SVP45 basis set, as well as
+PBEh-3c46 with the def2-mSVP46 basis set for geometry optimi-
+zations. At the optimized geometries, single-point energy cal-
+culations with the def2-TZVPD basis set47 were performed. For
+comparison of the optimized geometries, calculations with the
+second-order Møller–Plesset perturbation theory (MP2)48 with
+def2-SVP basis set were carried out using COSMO. Single point
+energies were compared to a high-level explicitly correlated
+local coupled-cluster (LCC) method (PNO-LCCSD(T)-F12)49–52
+using the cc-pVTZ-F12 basis.53 Atomic charges based on the
+natural bond orbitals (NBO)54 scheme were calculated.
+B.
+Mechanistic investigations
+As a result of the benchmark studies, see below, geometries
+were optimized at the PBEh-3c/def2-mSVP level to obtain the
+structures, the thermal correction, and free energy contributions at
+300 K. On these optimized geometries, single-point energies were
+calculated at the cam-B3LYP/def2-TZVPD level of theory. Reaction
+paths were obtained by performing nudged-elastic band (NEB)55,56
+calculations at the PBEh-3c/def2-mSVP level.
+Experimentally, the redox potential is usually measured
+against Li/Li+. In our computations, we model it through the
+Nernst equation:
+E V vs: Li=Liþ
+ð
+Þ ¼ DG
+redox
+nF
+ Eabs
+Li=Liþ
+(1)
+where DG
+redox is the Gibbs free energy diﬀerence (in eV) for a
+reaction with implicit solvation (e = 89.8) involving the addition
+of n electrons, F is the Faraday constant (F = 1 eV V1), and
+Eabs
+Li=Liþ is the estimated absolute redox potential of Li/Li+. The
+latter cannot be calculated easily with our computational setup.
+Instead, we used secondary reference electrodes, namely
+Fe2+/Fe3+ and Cu2+/Cu3+. We calculated their absolute redox
+potentials with a computational setting as described previously,57
+i.e., with an explicit solvation sphere of 18 water molecules in
+addition to implicit solvation, but with the same level of theory
+used
+in
+all
+our
+further
+simulations.
+This
+resulted
+in
+Eabs
+Fe2þ=Fe3þ ¼ 5:681 V and Eabs
+Cu2þ=Cu3þ ¼ 7:660 V. From the diﬀer-
+ence between the experimental redox potentials of Fe2+/Fe3+
+(Eexp: vs: SHE
+Fe2þ=Fe3þ ¼ 0:771 V58) and Li/Li+ (Eexp: vs: SHE
+Li=Liþ
+¼ 3:040 V59)
+we can estimate Eabs
+Li=Liþ. With Fe2+/Fe3+ as a secondary refer-
+ence, we obtain Eabs
+Li=Liþ ¼ 1:871 V, while with Cu2+/Cu3+,
+we obtain Eabs
+Li=Liþ ¼ 2:220 V. For all results reported in this
+work, we use the average of these two values, namely
+Eabs
+Li=Liþ ¼ 2:045 V.
+Paper
+PCCP
+
+<<PAGE 3>>
+10000 | Phys. Chem. Chem. Phys., 2024, 26, 9998–10007
+This journal is © the Owner Societies 2024
+The model structure for SPAN, see Fig. 1, was chosen according
+to the structure proposal by Buchmeiser et al.,60–62 containing
+a thioamide group and polysulfides bound in a vinylogous
+motif.63,64 Derived from the typical elemental composition (C, H,
+N, S) of SPAN, a chain length of S5 represents the statistically most
+probable length. The model chosen here represents the structural
+properties, considering only intramolecular sulfur chains.
+A variety of possible isomers was considered to obtain the
+minimum-energy structure for each redox state. This involved
+investigating various factors such as diﬀerent Li+ placements,
+electron and Li+ addition, and detachment of Li2S. The objective is
+to identify the most suitable structure for each reduction step.
+The naming convention of the states in this study follows
+the following scheme: x_Liy, where x denotes the number of
+electrons transferred to the initial, neutral SPAN model and
+y the number of bound lithium cations.
+III. Results and discussion
+A.
+Choice of the level of theory
+To choose a suitable DFT functional for the following mecha-
+nistic investigations, we compared a series of functionals
+(see Section II A) to reference methods. Thereby, we distin-
+guished between geometry optimizations and electronic energy
+calculations.
+1.
+Level of theory for geometry optimizations. To identify a
+suitable level of an electronic structure method, we compared
+the sulfur–sulfur bond lengths and the NBO charge distribution
+of the negatively charged complex to those obtained with MP2
+as a reference method. MP2 had been found suitable for
+describing sulfur bonds in sulfur-rich compounds.65
+We compared the uncharged structure 0 and the structures
+2a and 2b with charge 2e (see Fig. 1). Structures 0 and 2a
+contain an intact S5 chain while it is cleaved in 2b. The goal of
+the comparison was to answer two questions: (i) How is the
+charge of the additional two electrons distributed? (ii) Does the
+negative charge result in a spontaneous breaking of the bond to
+2b, or does the chain remain intact (2a) in the optimization?
+The charges are compared in Table 1. We report the indivi-
+dual charge diﬀerences of the sulfur atoms S1 to S5, which
+make up the S5 chain and provide the sums of charges for other
+areas of the model. The exact division and detailed charges can
+be found in the ESI,† in Fig. S1 and Tables S1–S3. Carbons
+S refers to six carbon atoms at the side of the backbone close to
+the S5 chain, Carbons N refers to four carbon atoms between
+the nitrogen atoms of the backbone.
+It is particularly important for the investigation of SPAN
+reduction that the S–S bonds are well-described. Indications for
+that are a proper structure and a proper charge distribution.
+After geometry optimization of the charged structures, MP2
+and four of the functionals result in metastable structure 2a, in
+which the S5 chain remains intact. Here, most of the additional
+charge is located in the thione moiety and the carbon atoms
+close to the S5 chain. In contrast, three of the tested functionals
+lead to the spontaneous breaking of the bond between S1 and
+S2 and, thus, to structure 2b. Here, the majority of the charge
+localizes in the S5 chain, especially in the atoms S1 and S2.
+Where comparable, 2b has a lower energy than 2a as can be
+seen in the ESI,† Table S4.
+The S4–S5 sulfur bond lengths, on which most of the charge
+difference is located, are compared in Table 2. Here, it is
+obvious that all the functionals lead to longer bond lengths
+than MP2 (which results in 2.09 Å). The closest to the MP2
+Fig. 1
+Schematic representation of the structures 0 (charge = 0e), 2a
+(charge = 2e) with intact S5 chain (both top left) 2b (charge = 2e) with
+the S4–S1 cleaved S5 chain (top right) and 2c with S3–S2 cleaved sulfur
+chain (bottom). The split S–S bond is marked in red.
+Table 1
+Diﬀerences in the NBO charges (in e) between structure 0 and structures 2a or 2b for diﬀerent levels of theory
+Opt. structure
+2a
+2b
+2a
+Atom area
+MP2
+BP86-D3(BJ)
+TPSSh-D3(BJ)
+B3LYP-D3(BJ)
+M06
+cam-B3LYP
+PBE0-D3(BJ)
+PBEh-3c
+S5
+0.030
+0.385
+0.416
+0.396
+0.054
+0.040
+0.044
+0.040
+S4
+0.090
+0.477
+0.571
+0.586
+0.117
+0.115
+0.103
+0.098
+S3
+0.024
+0.082
+0.044
+0.020
+0.059
+0.048
+0.056
+0.047
+S2
+0.064
+0.177
+0.147
+0.145
+0.082
+0.067
+0.073
+0.073
+S1
+0.033
+0.209
+0.166
+0.160
+0.038
+0.033
+0.035
+0.032
+S S5 chain
+0.241
+1.166
+1.256
+1.266
+0.350
+0.302
+0.311
+0.291
+S (thione)
+0.202
+0.096
+0.087
+0.089
+0.193
+0.188
+0.209
+0.211
+Carbons S
+0.645
+0.188
+0.165
+0.164
+0.531
+0.531
+0.532
+0.567
+Carbons N
+0.165
+0.075
+0.059
+0.055
+0.116
+0.116
+0.108
+0.111
+S Nitrogen
+0.263
+0.227
+0.223
+0.223
+0.305
+0.344
+0.328
+0.324
+PCCP
+Paper
+
+<<PAGE 4>>
+This journal is © the Owner Societies 2024
+Phys. Chem. Chem. Phys., 2024, 26, 9998–10007 | 10001
+reference is PBEh-3c (2.13 Å), which also shows reasonable
+charges. Thus, we found PBEh-3c/def2-mSVP to be the most
+suitable method for optimizing the geometries.
+2.
+Level of theory for the energy. In order to get improved
+estimates of reaction energies, single point (SP) calculations
+with more accurate methods were carried out for the PBEh-3c
+optimized structures. We choose the three functionals that gave
+metastable structure 2a in the geometry optimization (M06,
+cam-B3LYP, PBE0-D3(BJ) and PBEh-3c) and a larger basis set
+(def2-TZVPD) and benchmarked the predicted relative energies
+for the structure 0, 2a, 2b, and 2c against high-level local
+coupled-cluster (LCC) calculations.
+The resulting energies are listed in Table 3. The hybrid DFT
+functional PBE0-D3(BJ) results in a significant endothermic
+process with a mean diﬀerence value to the LCC energies of
+0.139 eV. The smallest mean deviation of 0.055 eV from the
+coupled-cluster values is achieved with the range-separated
+cam-B3LYP functional. Consequently, we calculated energy
+diﬀerences with cam-B3LYP in the following investigations of
+the discharge mechanism.
+B.
+The discharge mechanism
+One of the main challenges of LSBs is the low capacity and the
+degradation of the cells during charging and discharging. The
+main reason for this is the solubility of the resulting long-chain
+polysulfide intermediates in ether-based electrolytes. These can
+migrate through the electrolyte to the anode, which represents
+an irreversible loss of active material (polysulfide shuttle).63,64
+By employing SPAN as a cathode material, the use of carbonate-
+based electrolytes, in which polysulfides are insoluble, is pos-
+sible. Experiments indicate that during the discharge process
+in carbonate-based electrolytes, the formation of long-chain
+polysulfides is suppressed, and insoluble Li2S is formed
+directly.66 This direct solid–solid transformation results in a
+higher cyclability and higher cell capacity because nucleation at
+the backbone during the discharge process allows reversible
+storage of Li2S. The redox chemistry of the SPAN cathode in
+carbonate-based electrolytes is part of our investigations
+because, despite being crucial for the understanding of lithium
+storage during discharge, to the best of our knowledge, it has
+not been investigated theoretically so far. In the following, we
+will discuss our results of the discharge mechanism first under
+the assumption that Li2S is dissolved in ethylene carbonate
+(EC) and then assuming that Li2S nucleates at the SPAN back-
+bone to clarify the differences that result in the mechanism
+energetically and consequently electrochemically.
+1
+Discharge mechanism with soluble Li2S. An overview of
+the geometries and energies along a simplified discharge
+mechanism, i.e., one in which we assume that Li2S is dissolved
+in EC rather than nucleated at the SPAN backbone, is shown in
+Fig. 2. Energies in Fig. 2 are reported relative to structure 0, the
+neutral SPAN model, solvated Li+, solvated Li2S and electrons
+obtained from vacuum, i.e., absolute reduction potentials.
+Minima along the discharge path are considered, while possi-
+ble energy barriers are ignored.
+The addition of the first electron to our SPAN model 0 leads
+to 1_Li0 and is strongly exergonic by 4.143 eV, corresponding to
+an absolute redox potential of 4.143 V. During the discharge
+process, Li+ ions are produced at the anode. These are mobile
+and are also available at the cathode. Furthermore, Li+ is
+required for the electrochemical formation of Li2S during the
+discharge process. Thus, we have to take the association of Li+
+to our SPAN model into account. Attaching one Li+ ion from the
+solution to structure 0 is exergonic by 0.523 eV. However,
+attaching one Li+ ion to the anionic reduced form 1_Li0 is
+already exergonic by 0.992 eV. After a further reduction step of
+1_Li0 to 2_Li0, attaching one Li+ ion is even more exergonic, by
+1.752 eV. The geometries of 1_Li0 and 2_Li0 are very similar to
+that of 0 and, therefore, not shown. Details are provided in
+Table S6 of the ESI.† Thus, under standard concentrations, one
+Li+ ion is expected to attach to our model in a concerted
+manner already at the first reduction step. Qualitatively, the
+same holds for all subsequent reduction steps. The first exer-
+gonic Li+ addition is possible for concerted transfers of elec-
+trons and Li+ ions, which is what we focus on in the following
+discussion. To test where the Li+ ions are likely to attach at each
+step, diﬀerent placements were considered and compared
+based on their energy diﬀerences. One indication for likely
+binding sites was the spin density of open-shell reduced inter-
+mediates. We found that spin density, which is often better
+localized, is more appropriate than the charge density to find
+Table 2
+S4–S5 bond length after optimization for 2a for different levels of theory
+MP2
+BP86-D3(BJ)
+TPSSh-D3(BJ)
+B3LYP-D3(BJ)
+M06
+cam-B3LYP
+PBE0-D3(BJ)
+PBEh-3c
+Structure
+2a
+2b
+2b
+2b
+2a
+2a
+2a
+2a
+S4–S5 Bond length/Å
+2.09
+—
+—
+—
+2.20
+2.19
+2.16
+2.13
+Table 3
+Energy diﬀerences and their deviation from the coupled-cluster reference for structures 0 to 2a, 2b and 2c in eV
+Structure
+LCC
+M06
+cam-B3LYP
+PBE0-D3(BJ)
+PBEh-3c
+2a
+7.528
+7.575
+0.047
+7.547
+0.019
+7.657
+0.129
+7.844
+0.316
+2b
+8.511
+8.348
+0.163
+8.536
+0.024
+8.218
+0.294
+8.581
+0.070
+2c
+8.090
+7.911
+0.178
+8.123
+0.123
+7.837
+0.252
+8.239
+0.150
+Mean D to LCC
+—
+0.098
+0.055
+0.139
+0.179
+Paper
+PCCP
+
+<<PAGE 5>>
+10002 | Phys. Chem. Chem. Phys., 2024, 26, 9998–10007
+This journal is © the Owner Societies 2024
+out where the electron of the last reduction is preferentially
+located. Four diﬀerent possible sites for Li+ were tried in each
+of the first three reduction steps, fewer for the subsequent
+steps. The one with the lowest Gibbs energy for each step was
+considered for the continuation of the discharge cycle. Details
+and exemplary images of the spin densities are given in the
+ESI.†
+The binding of Li+ ions was found to possess only low
+barriers. As an example, we discuss the barrier of the third
+Li+ addition, i.e., the step from 2_Li2 to 3_Li3 based on
+electronic energies at the PBEh-3c/def2-mSVP level of theory.
+Reducing 2_Li2 by one electron and placing a Li+ ion 10.35 Å
+away from the nearest sulfur atom lowers the energy by
+4.579 eV compared to 2_Li2. Starting from that, the further
+approach of Li+ lowers the energy by 0.029 eV. The actual
+attachment of Li+ requires overcoming a barrier of merely
+0.097 eV, which is small compared to the thermal energy at
+ambient conditions of (0.025 eV). Thus, we expect kinetic
+eﬀects to play only a negligible role in the discharge process
+and focus the following discussion on equilibrium states.
+Fig. 2
+Schematic representation of the proposed reduction mechanism of SPAN assuming soluble Li2S.
+PCCP
+Paper
+
+<<PAGE 6>>
+This journal is © the Owner Societies 2024
+Phys. Chem. Chem. Phys., 2024, 26, 9998–10007 | 10003
+Overall, the combination of two elementary processes is
+observed during the discharge: (i) lithiation of the sulfur chain
+by the addition of a Li+ cation with the concerted transfer of an
+electron, and (ii) the detachment of a Li2S molecule from the
+cleaved sulfur chain. We found step (ii) to be exergonic always
+in conjunction with (i). This conjunction can be explained by the
+low lithiation barrier found and the expected rapid accessibility of
+the lithium cations due to their assumed uniform distribution in
+the cathode material. As a consequence, this allows simultaneous
+lithiation during Li2S detachment with an accompanying electron
+transfer, which is also energetically favored.
+Already the first addition of an electron/Li+ pair leads to the
+breaking of the S5 chain into an S1 and an S4 part. As discussed
+in the Computational methods section, we find that the S4–S5
+bond breaks preferentially. Our lowest-energy solutions consis-
+tently contain a bridging lithium cation between the two
+residues of the cleaved sulfur chain. The lowest-energy sites
+for further Li+ placements are at the free end of the longer
+sulfur chain, where a large part of the charge is localized
+according to the population analysis (see also Section 3.1.1).
+Upon reduction of 3_Li3, we find that the electron and Li+
+transfer triggers the first detachment of Li2S, resulting in 4_Li2,
+as can be seen in Table 4. Direct addition of an electron and Li+ to
+3_Li3 would result in 4_Li4 with an energy of 1.063 eV higher than
+4_Li2 + Li2S in solution. Alternatives, like another abstraction of
+Li2S yielding 4_Li1, are higher in energy, 1.102 eV above 4_Li2. One
+could also envisage that Li2S is split oﬀ3_Li3 upon its formation in
+the third reduction step. However, we found the resulting structure
+3Li_1 to be 0.881 eV higher in energy than 3_Li3. The resulting
+structure 4_Li2 has a bridging lithium cation and a lithium cation
+at the free end of the remaining S3 chain.
+The attachment of a further Li+ in the subsequent reduction
+step results in 5_Li3, where one Li+ ion bridges the remains of
+the sulfur chain. The next Li2S detachment is found after one
+more reduction step with another lithium cation/electron addi-
+tion, resulting in the structure 6_Li2. After the next two
+reduction steps, resulting in a further Li2S detachment with a
+further Li+ attachment, the resulting structure 8_Li2 has two
+remaining sulfur atoms, which are now coordinated to Li+. This
+state may well be the end of the regular discharge process.
+Further addition of a lithium cation and an electron causes one
+of the remaining sulfur atoms, which are covalently bound to
+the carbon backbone via a C–S bond, to be detached as Li2S.
+The vacant site is saturated by a lithium cation. While these
+processes are still exergonic, the associated cell potentials show
+a noticeable drop, see below.
+In 12_Li2, where the two remaining sulfur atoms are
+detached from the SPAN backbone, all theoretically available
+sulfur was transformed into Li2S by solid-state transitions.
+2.
+Discharge mechanism with Li2S nucleation. Li2S can,
+rather than being dissolved in EC, nucleate at the nitrogen
+backbone of SPAN, since it is a non-soluble end-product of the
+reduction mechanism of SPAN. To investigate that mechanism,
+we followed the same procedure as for the mechanism with
+Li2S in solution, see above. However, after each release of Li2S,
+we attached it to the nitrogen backbone. Since the latter
+accumulates a negative charge, the partially positively charged
+lithium of Li2S can provide strong interactions, as shown in our
+previous work.66 Due to the limitations of our structural model,
+we have to attach Li2S to the opposite side of our molecular
+model than that of the sulfur chain from which Li2S was
+released. In the realistic condensed phase, we assume Li2S to
+attach to the nitrogen backbone of a diﬀerent SPAN chain in
+close proximity to the position of its release. Consequently, our
+structural model can only be seen as one possible configuration
+out of many. More structural and electronic variability is
+expected for the real system.
+The first four reaction steps are the same as in the mecha-
+nism with soluble Li2S, since no Li2S is formed yet. Attaching
+Li2S to the backbone is exergonic by 0.750 eV in 4_Li2. Almost
+all subsequent intermediates are also lower in energy when Li2S
+nucleation is considered, see Table 5. One example of a result-
+ing geometry is depicted in Fig. 3, where 6_Li2 is shown with its
+two nucleated Li2S units. It can be seen that the nucleated Li2S
+units interact with each other in addition to the nitrogen
+atoms. This ensures the reversible accessibility of lithium.
+Due to the internal Li2S interaction, proximity to the SPAN
+backbone can be facilitated even with increased Li2S formation,
+preventing the loss of active material to the electrolytes.
+3.
+Redox properties. Fig. 2 shows the sequence of reaction
+steps along a path of minimal energy for the discharge process.
+While these species are likely to be formed in the order
+presented, at any particular equilibrium condition, only one
+of the species of Fig. 2 is expected to be present in high
+Table 4
+Gibbs free energies for the first Li2S detachment step and the
+subsequent reduction step relative to 3_Li3
+System
+DG1/eV
+Step
+3_Li3
+0.000
+3_Li1 + Li2S
+0.891
+Detachment
+4_Li2 + Li2S
+5.359
+Detachment + Li+/e
+4_Li4
+4.296
+Li+/e
+4_Li0 + 2Li2S
+1.938
+Detachment
+5_Li1 + 2Li2S
+9.472
+Detachment + Li+/e
+5_Li3 + 1Li2S
+10.322
+Li+/e
+Table 5
+Calculated relative Gibbs free energies in eV of the stepwise
+discharge mechanism of SPAN with soluble and nucleated Li2S
+n
+Soluble
+Nucleation
+D
+0
+0.000
+0.000
+0.000
+1
+5.135
+5.135
+0.000
+2
+11.434
+11.434
+0.000
+3
+16.304
+16.304
+0.000
+4
+21.663
+21.977
+0.314
+5
+26.626
+26.193
+0.432
+6
+31.784
+32.615
+0.831
+7
+36.720
+37.697
+0.977
+8
+42.326
+42.296
+0.030
+9
+47.111
+47.283
+0.172
+10
+51.029
+50.572
+0.457
+11
+55.447
+54.390
+1.058
+12
+59.962
+61.320
+1.358
+Paper
+PCCP
+
+<<PAGE 7>>
+10004 | Phys. Chem. Chem. Phys., 2024, 26, 9998–10007
+This journal is © the Owner Societies 2024
+concentration. The external conditions determining the equili-
+brium are the electrode potential E1 and the chemical potential
+of Li+. We assume the latter to be constant, as discussed above.
+The electrode potential E1, however, changes during the
+discharge.
+For a given E1, the Gibbs free energy of each species can be
+calculated according to
+G E
+ð
+Þ ¼ DG þ nFEabs ¼ DG þ nF E þ Eabs
+Li=Liþ
+
+
+:
+(2)
+Here, G(E1) is the Gibbs free energy of a particular species
+relative to that of structure 0, E1 is the cell potential vs. Li/Li+,
+and DG1 is the standard Gibbs free energy of that species as
+reported in Fig. 2 and Table 5. To compare G(E1) of the diﬀerent
+species, we set G(E1) = 0 eV for structure 0 as reference. For
+structure 1_Li1, as an example, n = 1 and eqn (2) becomes
+G(E1) = 5.135 eV + 1F(E1 + 2.045 V).
+(3)
+The results, however, are independent of the choice of
+reference.
+Using eqn (2), we can compare the Gibbs free energies of all
+species. The ratio of the concentrations of two species in
+equilibrium can be calculated by
+c1
+c2
+¼ exp DG1;2
+RT
+
+
+(4)
+Correspondingly, at room temperature, a diﬀerence in Gibbs
+free energy of 0.1 eV corresponds to a factor of 55 between the
+concentrations.
+All Gibbs free energies of the mechanism with soluble Li2S
+are depicted in Fig. 4, those for nucleated Li2S in Fig. 5. At large
+E1, structure 0 has the lowest free energy. This means that at the
+end of the charging process, i.e., when the externally applied
+voltage is high, structure 0 dominates among those states that
+we considered. According to our results in Fig. 4, the fully
+charged cell shows a potential E1 = 3.672 V vs. Li/Li+. At that cell
+potential, the lines G(E1) for structures 0 and 2_Li2 intersect, 0
+is converted to 2_Li2 taking up two electrons in the discharge
+process. It is also obvious from Fig. 4 that the Gibbs free energy
+of species 1_Li1 is always higher than that of 0 or 2_Li2. This
+means that whenever 1_Li1 is formed, it disproportionates and
+never dominates any equilibrium. The same holds for species
+3_Li3, 4_Li2, 5_Li1, 6_Li2, 7_Li2, 10_Li2 and 11_Li3 (see Fig. 2).
+In contrast, the species 0, 2_Li2, 8_Li2, 9_Li3, and 12_Li2
+dominate along the discharge process assuming soluble Li2S.
+They form the convex hull in Fig. 4. The values of E1 of their
+intersection points are the cell potentials that can be found
+during the discharge process.
+Using eqn (2) and (4), we can calculate the concentrations of
+all species at each value of the potential. From their changes,
+we can derive the number of consumed electrons, which leads
+to the discharge curves shown in Fig. 6.
+It can be seen that the S5 chain receives the first two
+electrons paired with lithium cations starting at a cell voltage
+of 3.672 V vs. Li/Li+, which is also where the splitting of the
+Fig. 4
+Free energy G(E1) of the individual species during the discharge
+with soluble Li2S vs. the cell potential.
+Fig. 5
+Free energy G(E1) of the individual species during the discharge
+process with Li2S nucleation vs. the cell potential.
+Fig. 3
+Structure 6_Li2 with two Li2S units nucleated at the SPAN back-
+bone. Distances in Å. Color coding: grey = carbon, blue = nitrogen, yellow
+= sulfur, pink = lithium, white = hydrogen.
+PCCP
+Paper
+
+<<PAGE 8>>
+This journal is © the Owner Societies 2024
+Phys. Chem. Chem. Phys., 2024, 26, 9998–10007 | 10005
+chain occurs. The next 6 electrons, which also involve the
+detachment of 3Li2S units are obtained at a cell voltage around
+3.104 V for soluble Li2S. Taking Li2S nucleation into account
+(see Fig. 5, 2 of the 6 electrons are transferred at a cell voltage of
+around 3.672 V). At around 2.741 V, 9 electrons per S5 chain
+have been transferred. At lower cell voltage (2.238 V) for soluble
+Li2S and 2.748 V for nucleated Li2S, the remaining two sulfur
+atoms at the SPAN backbone are gradually removed, cleaved oﬀ
+as Li2S, C–Li bonds are formed, and another three electrons are
+transferred. The transfer of these last 3 electrons may be seen
+as deep discharge.
+The two discharge processes we discuss here can only be
+interpreted as representatives of the real system. Structural
+variations in the SPAN backbone and additional species in
+the battery material are expected to lead to a smearing of the
+discrete potential steps depicted in Fig. 6. Moreover, we derive the
+discharge curve purely from equilibrium properties and assume
+fast redox reactions compared to the speed of the discharge.
+Kinetic eﬀects may further change the discharge curve.
+C.
+Discussion and relation to the experiment
+Our investigations of the discharge mechanism show step-wise
+detachment of sulfur as Li2S by the coupled accumulation of
+lithium cations and electrons. The lithium is found to be
+incorporated at the nitrogen-rich backbone of the SPAN matrix
+by nucleation.
+The steps of the discharge mechanism, as found here, show
+multiple lithiation before each detachment of Li2S. This may be
+due to the stabilizing eﬀect of the lithium cations, which were
+found to preferentially reside between the two negatively
+charged ends of the sulfur chain. Through such bridging
+lithium cations and other cations surrounding the free chain
+ends, the negative charge delivered by the transferred electrons
+to the entire SPAN matrix and the free sulfur ends can be
+stabilized. Cleavage of longer-chain polysulfide intermediates
+is suppressed.
+The DFT studies suggest a mechanism how Li2S nucleates at
+the nitrogen-rich SPAN backbone. We particularly point out the
+interactions between the Li2S units, which, in addition to their
+interaction with the nitrogen atom of the SPAN backbone, have
+a stabilizing eﬀect and may facilitate the direct solid–solid
+transition, ensuring the reversible availability of lithium.
+Comparison of the free energies of the diﬀerent species
+along the discharge process provides information on the domi-
+nant species at each cell potential. Obtaining the transferred
+charge from the change in concentration, we are able to
+simulate an idealized discharge curve. Such a curve can directly
+be compared to experimental discharge curves like the one
+shown in Fig. 7. However, our DFT result is idealized in several
+ways. First, we assume the instantaneous formation of an
+equilibrium. In a real cell, the diﬀusion of Li+ will limit the
+equilibration, smoothing the discharge curve. Moreover, we
+take only one structural model of SPAN into account. In the real
+cell, diﬀerent sulfur chain lengths and diﬀerent structural
+features and environments of the sulfur chains will be present.
+While we consider our model to be representative, the real
+variability will lead to a further smoothing of the discharge
+curve. It should also be noted that the cell potential vs. Li/Li+
+that we obtain is somewhat overestimated compared to
+Fig. 6
+Discharge curve of the cell potential vs. the number of electrons
+for soluble Li2S and nucleated Li2S.
+Fig. 7
+Experimental (a) potential profile (0.2C) of the initial and second
+cycle and (b) cyclovoltammograms of exemplary cycles of Li-SPAN cells in
+a carbonate electrolyte. Electrolyte: 1 M LiPF6 in DMC:EC (V:V – 1 : 1) + 10
+wt% – FEC vs. Li/Li+.66
+Paper
+PCCP
+
+<<PAGE 9>>
+10006 | Phys. Chem. Chem. Phys., 2024, 26, 9998–10007
+This journal is © the Owner Societies 2024
+experimental data from Fig. 7. This can also be caused by our
+assumption of instantaneous equilibration or, e.g., by inaccura-
+cies in our estimation of the Li/Li+ reference.
+In order to substantiate this postulate, experimental data
+(see Fig. 7) can be used. Fig. 7a on the top shows the potential
+profile of an exemplary Li-SPAN cell in a carbonate-based
+electrolyte. The initial discharge of the cell exhibits a sharp
+potential drop at the beginning and forms a plateau at about
+1.6 V. This is consistent with the potential curve shown in Fig. 6
+as a function of electrons transferred. It should be mentioned
+that the calculated redox potentials show only the decomposi-
+tion potentials of the S5 chain chosen as representative. In the
+cyclovoltammogram (CV) of the same exemplary Li-SPAN cell,
+reduction potentials at 1.8 V and 1.5 V are visible, which speak
+for a direct solid–solid transition, since a reduced reduction
+range is recognizable in comparison to liquid–solid transitions.
+IV. Conclusion
+The discharge mechanism of a Li-SPAN cell with a carbonate-
+based electrolyte was investigated based on DFT simulations.
+We found that the discharge occurs in a step-wise reduction of
+the sulfur chain forming Li2S in a solid–solid transition. We
+found the nucleation of Li2S at the SPAN backbone to be
+energetically favored. It facilitates the re-use of sulfur in the
+subsequent charging process and avoids material loss. Our result-
+ing discharge curve, while showing several discrete potential
+drops, generally agrees with the available experimental data.
+Conflicts of interest
+There are no conflicts to declare.
+Acknowledgements
+The authors acknowledge support by the state of Baden-
+Wu¨rttemberg through bwHPC and the German Research Foun-
+dation (DFG) through grant no INST 40/575-1 FUGG (JUSTUS 2
+cluster). We thank the Deutsche Forschungsgemeinschaft
+(DFG, German Research Foundation) for supporting this work
+by funding – EXC2075 – 390740016 under Germany’s Excellence
+Strategy. We acknowledge the support by the Stuttgart Center
+for Simulation Science (SimTech).
+References
+1 M. Siddi, et al., UPI REPORT, 2020, 114, 1–14.
+2 M. Robaina and A. Neves, Res. Transp. Econ., 2021, 90,
+101074.
+3 A. Barke, W. Cistjakov, D. Steckermeier, C. Thies, J.-
+L. Popien, P. Michalowski, S. Pinheiro Melo, F. Cerdas,
+C. Herrmann and U. Krewer, et al., J. Ind. Ecol., 2022, 27,
+795–810.
+4 L. F. Nazar, M. Cuisinier and Q. Pang, MRS Bull., 2014, 39,
+436–442.
+5 P. G. Bruce, L. J. Hardwick and K. Abraham, MRS Bull., 2011,
+36, 506–512.
+6 B. Meyer, Chem. Rev., 1976, 76, 367–388.
+7 T. Yim, M.-S. Park, J.-S. Yu, K. J. Kim, K. Y. Im, J.-H. Kim,
+G. Jeong, Y. N. Jo, S.-G. Woo and K. S. Kang, et al., Electro-
+chim. Acta, 2013, 107, 454–460.
+8 S. S. Zhang, J. Power Sources, 2013, 231, 153–162.
+9 Y. Liu, Y. Elias, J. Meng, D. Aurbach, R. Zou, D. Xia and
+Q. Pang, Joule, 2021, 5, 2323–2364.
+10 M. Wild, L. O’neill, T. Zhang, R. Purkayastha, G. Minton,
+M. Marinescu and G. Oﬀer, Energy Environ. Sci., 2015, 8,
+3477–3494.
+11 S. Walus´, G. Oﬀer, I. Hunt, Y. Patel, T. Stockley, J. Williams and
+R. Purkayastha, Energy Storage Mater., 2018, 10, 233–245.
+12 X. Zhao, C. Wang, Z. Li, X. Hu, A. A. Razzaq and Z. Deng,
+J. Mater. Chem. A, 2021, 9, 19282–19297.
+13 M. S. Ahmed, S. Lee, M. Agostini, M.-G. Jeong, H.-G. Jung,
+J. Ming, Y.-K. Sun, J. Kim and J.-Y. Hwang, Adv. Sci., 2021,
+8, 2101123.
+14 S. Perez Beltran and P. B. Balbuena, J. Phys. Chem. C, 2021,
+125, 13185–13194.
+15 L. Wang, X. He, J. Li, M. Chen, J. Gao and C. Jiang,
+Electrochim. Acta, 2012, 72, 114–119.
+16 Z. Wu, S.-M. Bak, Z. Shadike, S. Yu, E. Hu, X. Xing, Y. Du,
+X.-Q. Yang, H. Liu and P. Liu, ACS Appl. Mater. Interfaces,
+2021, 13, 31733–31740.
+17 R. Pai, A. Singh, M. H. Tang and V. Kalra, Commun. Chem.,
+2022, 5, 17.
+18 J. Tan, D. Liu, X. Xu and L. Mai, Nanoscale, 2017, 9,
+19001–19016.
+19 G. Almkvist, K. Boye and I. Persson, J. Synchrotron Rad.,
+2010, 17, 683–688.
+20 T. Zhu, J. E. Mueller, M. Hanauer, U. Sauter and T. Jacob,
+ChemElectroChem, 2017, 4, 2494–2499.
+21 S. Bertolini and T. Jacob, ACS Omega, 2021, 6, 9700–9708.
+22 S. Bertolini and T. Jacob, Electrochem. Sci. Adv., 2022, 2, e2100129.
+23 T. Zhu, J. E. Mueller, M. Hanauer, U. Sauter and T. Jacob,
+ChemElectroChem, 2017, 4, 2975–2980.
+24 S. Perez Beltran and P. B. Balbuena, ACS Appl. Mater.
+Interfaces, 2020, 13, 491–502.
+25 S. P. Beltran and P. B. Balbuena, J. Mater. Chem. A, 2021, 9,
+7888–7902.
+26 P. Sherwood, A. H. de Vries, M. F. Guest, G. Schreckenbach,
+C. R. A. Catlow, S. A. French, A. A. Sokol, S. T. Bromley, W. Thiel
+and A. J. Turner, et al., J. Mol. Struct., 2003, 632, 1–28.
+27 S. Metz, J. Ka¨stner, A. A. Sokol, T. W. Keal and P. Sherwood,
+Wiley Interdiscip. Rev.: Comput. Mol. Sci., 2014, 4, 101–110.
+28 J. Ka¨stner, J. M. Carr, T. W. Keal, W. Thiel, A. Wander and
+P. Sherwood, J. Phys. Chem. A, 2009, 113, 11856–11865.
+29 University of Karlsruhe and Forschungszentrum Karlsruhe
+GmbH, TURBOMOLE V7.4.5 2019, 1989-2007, available
+from https://www.turbomole.com.
+30 A. Klamt and G. Schu¨u¨rmann, J. Chem. Soc., Perkin Trans. 2,
+1993, 799–805.
+31 W. M. Haynes, CRC handbook of chemistry and physics, CRC
+Press, 2014.
+PCCP
+Paper
+
+<<PAGE 10>>
+This journal is © the Owner Societies 2024
+Phys. Chem. Chem. Phys., 2024, 26, 9998–10007 | 10007
+32 H.-J. Werner, P. J. Knowles, G. Knizia, F. R. Manby and
+M. Schu¨tz, Wiley Interdiscip. Rev. Comput. Mol. Sci., 2012, 2,
+242–253.
+33 H.-J. Werner, P. J. Knowles, F. R. Manby, J. A. Black, K. Doll,
+A. Heßelmann, D. Kats, A. Ko¨hn, T. Korona and D. A. Kreplin,
+et al., Chem. Phys., 2020, 152, 144107.
+34 H.-J. Werner and P. J. Knowles, et al. MOLPRO, 2022.1, a
+package of ab initio programs, https://molpro.net/.
+35 A. D. Becke, Phys. Rev. A: At., Mol., Opt. Phys., 1988, 38,
+3098.
+36 J. P. Perdew, Phys. Rev. B: Condens. Matter Mater. Phys., 1986,
+33, 8822.
+37 S. Grimme, J. Antony, S. Ehrlich and H. Krieg, J. Chem. Phys.,
+2010, 132, 154104.
+38 S. Grimme, S. Ehrlich and L. Goerigk, J. Comput. Chem.,
+2011, 32, 1456–1465.
+39 T. Yanai, D. P. Tew and N. C. Handy, Chem. Phys. Lett., 2004,
+393, 51–57.
+40 Y. Zhao and D. G. Truhlar, Theor. Chem. Acc., 2008, 120,
+215–241.
+41 J. P. Perdew, K. Burke and M. Ernzerhof, Phys. Rev. Lett.,
+1996, 77, 3865.
+42 C. Adamo and V. Barone, J. Chem. Phys., 1999, 110, 6158–6170.
+43 J. Tao, J. P. Perdew, V. N. Staroverov and G. E. Scuseria, Phys.
+Rev. Lett., 2003, 91, 146401.
+44 C. Lee, W. Yang and R. G. Parr, Phys. Rev. B: Condens. Matter
+Mater. Phys., 1988, 37, 785.
+45 F. Weigend and R. Ahlrichs, Phys. Chem. Chem. Phys., 2005,
+7, 3297–3305.
+46 S.
+Grimme,
+J.
+G.
+Brandenburg,
+C.
+Bannwarth
+and
+A. Hansen, J. Chem. Phys., 2015, 143, 054107.
+47 F. Weigend, Phys. Chem. Chem. Phys., 2006, 8, 1057–1065.
+48 C. Møller and M. S. Plesset, Phys. Rev., 1934, 46, 618.
+49 Q. Ma and H.-J. Werner, Wiley Interdiscip. Rev.: Comput. Mol.
+Sci., 2018, 8, e1371.
+50 M. Schwilk, Q. Ma, C. Ko¨ppl and H.-J. Werner, J. Chem.
+Theory Comput., 2017, 13, 3650–3675.
+51 Q. Ma, M. Schwilk, C. Ko¨ppl and H.-J. Werner, J. Chem.
+Theory Comput., 2017, 13, 4871–4896.
+52 Q. Ma and H.-J. Werner, J. Chem. Theory Comput., 2018, 14,
+198–215.
+53 K. A. Peterson, T. B. Adler and H.-J. Werner, Chem. Phys.,
+2008, 128, 084102.
+54 A. E. Reed, L. A. Curtiss and F. Weinhold, Chem. Rev., 1988,
+88, 899–926.
+55 H. Jo´nsson, G. Mills and K. W. Jacobsen, Classical and
+quantum dynamics in condensed phase simulations, World
+Scientific, 1998, pp. 385–404.
+56 G. Henkelman, B. P. Uberuaga and H. Jo´nsson, Chem. Phys.,
+2000, 113, 9901–9904.
+57 M. Uudsemaa and T. Tamm, J. Phys. Chem. A, 2003, 107,
+9997–10003.
+58 W. C. Schumb, M. S. Sherrill and S. B. Sweetser, J. Am. Chem.
+Soc., 1937, 59, 2360–2365.
+59 N. Wiberg, E. Wiberg and A. F. Holleman, Lehrbuch der
+Anorganischen Chemie, 102. Aufl, 2007.
+60 J. Fanous, M. Wegner, J. Grimminger, A. Andresen and
+M. R. Buchmeiser, Chem. Mater., 2011, 23, 5024–5028.
+61 J. Fanous, M. Wegner, J. Grimminger, M. Rolﬀ, M. B. Spera,
+M. Tenzer and M. R. Buchmeiser, J. Mater. Chem., 2012, 22,
+23240–23245.
+62 J. Fanous, M. Wegner, M. B. Spera and M. R. Buchmeiser,
+J. Electrochem. Soc., 2013, 160, A1169.
+63 S.
+Warneke,
+A.
+Hintennach
+and
+M.
+R.
+Buchmeiser,
+J. Electrochem. Soc., 2018, 165, A2093.
+64 S. Warneke, M. Eusterholz, R. K. Zenn, A. Hintennach,
+R. E. Dinnebier and M. R. Buchmeiser, J. Electrochem.
+Soc., 2017, 165, A6017.
+65 M. W. Wong, inQuantum-Chemical Calculations of Sulfur-
+Rich Compounds, ed. R. Steudel, Springer Berlin Heidelberg,
+Berlin, Heidelberg, 2003, pp. 1–30.
+66 J. Kappler, S. V. Klostermann, P. L. Lange, M. Dyballa,
+L. Veith, T. Schleid, T. Weil, J. Ka¨stner and M. R. Buchmeiser,
+Batter. Supercaps, 2023, 6, e202200522.
+Paper
+PCCP

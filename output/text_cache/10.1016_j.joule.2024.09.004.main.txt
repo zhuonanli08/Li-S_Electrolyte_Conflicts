@@ -1,0 +1,1322 @@
+
+<<PAGE 1>>
+Article
+Polysulﬁde-incompatible additive suppresses
+spatial reaction heterogeneity of Li-S batteries
+Graphical abstract
+Highlights
+d Polysulﬁde-incompatible additive induces in situ CEI
+construction
+d Interphase engineering enables effective electrolyte wetting
+and ion transportation
+d Synchrotron analysis reveals the correlation between SEI/CEI
+and cell-level behavior
+Authors
+Chen Zhao, Heonjae Jeong,
+Inhui Hwang, ..., Lei Cheng, Gui-Liang Xu,
+Khalil Amine
+Correspondence
+xug@anl.gov (G.-L.X.),
+amine@anl.gov (K.A.)
+In brief
+The practical applications of high-energy
+and low-cost lithium-sulfur batteries are
+hindered by unsatisfactory cell
+performance under high sulfur loading
+and lean electrolyte conditions. We show
+that the spontaneous reaction of
+sparingly solvated polysulﬁdes with
+polysulﬁde-incompatible Lewis acid
+additive (LAA) can induce in situ
+formation of a homogeneous cathode-
+electrolyte interphase (CEI) on thick and
+tortuous cathode to promote the
+electrolyte wetting and ion
+transportation. This work resolves the
+controversy around the role of
+polysulﬁde-incompatible additives and
+enriches the additive categories for
+lithium-sulfur batteries.
+Zhao et al., 2024, Joule 8, 3397–3411
+December 18, 2024 ª 2024 Elsevier Inc. All rights are reserved, including those for
+text and data mining, AI training, and similar technologies.
+https://doi.org/10.1016/j.joule.2024.09.004
+ll
+
+<<PAGE 2>>
+Article
+Polysulﬁde-incompatible additive suppresses
+spatial reaction heterogeneity of Li-S batteries
+Chen Zhao,1,7 Heonjae Jeong,2,6,7 Inhui Hwang,3 Tianyi Li,3 Yang Wang,3 Jianming Bai,4 Luxi Li,3 Shiyuan Zhou,1
+Chi Cheung Su,1 Wenqian Xu,3 Zhenzhen Yang,1 Manar Almazrouei,1,5 Cheng-Jun Sun,3 Lei Cheng,2 Gui-Liang Xu,1,8,*
+and Khalil Amine1,*
+1Chemical Sciences and Engineering Division, Argonne National Laboratory, Lemont, IL 60439, USA
+2Materials Science Division, Argonne National Laboratory, Lemont, IL 60439, USA
+3X-ray Science Division, Argonne National Laboratory, Lemont, IL 60439, USA
+4National Synchrotron Light Source II, Brookhaven National Laboratory, Upton, NY 11973, USA
+5Department of Mechanical and Aerospace Engineering, United Arab Emirates University, Al Ain, Abu Dhabi 15551, United Arab Emirates
+6Present address: Department of Electronic Engineering, Gachon University, 1342 Seongnam-daero, Sujeong-gu, Seongnam-si,
+Gyeonggi-do 13120, South Korea
+7These authors contributed equally
+8Lead contact
+*Correspondence: xug@anl.gov (G.-L.X.), amine@anl.gov (K.A.)
+https://doi.org/10.1016/j.joule.2024.09.004
+SUMMARY
+Rational electrolyte engineering for practical pouch cells remains elusive because the correlation between
+the cathode/solid-electrolyte interphase layer and cell-level reaction behavior is poorly understood. Here,
+by combining multiscale characterization and computational modeling, we show that—counter to the con-
+ventional perception of polysulﬁde-incompatible additives—the spontaneous reaction of sparingly solvated
+polysulﬁdes with Lewis acid additives (LAAs) can induce in situ formation of a homogeneous interphase on
+thick and tortuous S cathode. Multiscale synchrotron X-ray characterization consistently afﬁrms that such
+interface design could effectively eliminate the notorious problems of polysulﬁde shuttle and lithium corro-
+sion and, more importantly, provide an interconnected ‘‘ion transport highway’’ to alleviate the uneven ion
+transport within the tortuous S cathode. Hence, this design dramatically reduces the reaction heterogeneity
+of lithium-sulfur (Li-S) pouch cells under lean electrolyte conditions. This work resolves controversy around
+the role of polysulﬁde-incompatible additives in high-energy Li-S pouch cells and highlights the importance
+of suppressing reaction heterogeneity for practical batteries.
+INTRODUCTION
+Lithium-sulfur (Li-S) batteries are promising alternatives to
+commercial lithium-ion batteries for ever-growing electric
+vehicle applications due to their improved energy density (2–
+3 times higher), reduced cost, and lower supply chain risk.1
+Signiﬁcant efforts, including cathode design,2 electrolyte engi-
+neering,3,4 and lithium protection,5–7 have been devoted to
+mitigating the long-standing challenges of polysulﬁde (LiPS)
+shuttling and lithium dendrite growth, with notable suc-
+cess—in the laboratory. When these strategies are evaluated
+in practical pouch cells, however, the results are often
+CONTEXT & SCALE
+The ineffective electrolyte wetting and sluggish ion transport in thick tortuous S cathode
+dramatically hinder lithium-sulfur (Li-S) cell performance, especially under practical high S loading and lean
+electrolyte conditions. Meanwhile, the insufﬁcient understanding of the relationship between solid/cathode-
+electrolyte properties and cell-level behavior further limits practical Li-S battery development. To subse-
+quently enhance the electrolyte wetting/ion transportation inside a thick S cathode and deepen the mecha-
+nism understanding, in this work, we reveal that the polysulﬁde-incompatible Lewis acid additive (LAA),
+which has long been considered unsuitable for Li-S batteries due to the chemical compatibility, can induce
+the in situ homogeneous interphase layer formation within the tortuous S cathode to promote ion transpor-
+tation. Our conception is validated by a suite of fundamental investigations, including advanced synchrotron
+characterization and computational simulations.
+Joule 8, 3397–3411, December 18, 2024 ª 2024 Elsevier Inc. 3397
+All rights are reserved, including those for text and data mining, AI training, and similar technologies.
+ll
+
+<<PAGE 3>>
+disappointing, showing lower speciﬁc capacity and shorter
+cycle life.8
+Several phenomena contribute to poor performance in current
+Li-S battery designs. (1) A serious problem that involves the
+entire battery is polysulﬁde shuttling: LiPS species form at the
+cathode, consume sulfur, and migrate through the separator to
+the Li anode, where (in dissolved form) they contribute to corro-
+sion of the anode and thus consumption of Li. The loss of inven-
+tory S and Li shortens battery life. (2) At the Li anode, Li ions can
+pile up into dendrites that extend from the surface. This dendrite
+growth impedes Li ions from being efﬁciently and evenly plated
+on and stripped from the anode surface during charging and dis-
+charging. (3) At the cathode (a sulfur-carbon composite), the
+issue is the high tortuosity of the thick electrode, leading to slug-
+gish ion transport. Extra electrolyte is needed to fully penetrate
+the composite and provide a continuous conductive pathway
+for the Li ions. (4) Finally, when a battery design is scaled up to
+practical dimensions (a pouch cell), the necessary reactions
+may take place unevenly throughout the cell, an issue called re-
+action heterogeneity. To achieve practical performance, these
+processes must be controlled while also maximizing charge den-
+sity, which means using as much sulfur as possible (to increase
+charge) and as little electrolyte and Li metal as possible (to
+reduce weight).
+The electrochemical redox reactions of sulfur—in particular,
+the liquid (e.g., Li2S6)-to-solid (Li2S) step that provides three-
+quarters of theoretical capacity—take place on the heteroge-
+neous liquid (electrolyte)/solid (Li2S)/solid (electrode) triple-
+phase boundary,9,10 while the stripping/plating behavior of
+lithium metal is governed by the physiochemical properties of
+the solid-electrolyte interphase (SEI).11,12 Note that the underly-
+ing interfacial chemistries are signiﬁcantly different depending
+on whether the cell is operating under high S loading/lean elec-
+trolyte conditions or low loading/ﬂooded electrolyte conditions
+(Figure S1); the former conditions remain poorly understood.
+High S loading increases the porosity and tortuosity of the elec-
+trode,13–15 which not only requires excess electrolyte ﬁlling to
+fully wet the electrode but also leads to greater inhomogeneity
+of ion/electron distribution across the entire electrode.16–18
+Both effects signiﬁcantly change the properties of the cathode-
+electrolyte interphase (CEI). On the other hand, the repeated
+formation/dissolution of the SEI leads to a heterogeneous distri-
+bution of electrolyte-derived components (e.g., LiF, Li2O, and
+LixN) and to increased electrode thickness, thus challenging
+the stripping/plating efﬁciency and reversibility of thin lithium
+metal.19 Many reported electrolytes, such as concentrated20
+and localized highly concentrated electrolytes,21 ﬂuorinated
+electrolytes,22 and new solvents,23 can suppress the shuttle
+effect and stabilize the Li anode to some extent,20,24,25 but the
+reported cell performance under high S loading and low electro-
+lyte/sulfur (E/S) ratio remains signiﬁcantly unsatisfactory.
+Electrolyte additives,26 such as lithium tetraﬂuoroborate
+(LiBF4),27–29 lithium bis(oxalate)borate,30,31 dual salts,32 and
+others, have frequently been used in lithium-ion batteries to
+construct a high-quality interface ﬁlm via self-sacriﬁcial decom-
+position; the resulting ﬁlm improves the long-term cycling
+stability. However, these additives have long been considered
+unsuitable for Li-S batteries because of their poor chemical
+compatibility with LiPS.25 For example, the Lewis acid nature
+of LiBF4 triggers a chemical reaction with the commonly used
+ether electrolyte in Li-S batteries (i.e., ring-opening polymeriza-
+tion of 1,3-dioxolane [DOL] molecules). It also causes a reaction
+with LiPS (a Lewis base), as shown in Equation 1, which was pro-
+posed by Zhang et al.26,33:
+LiBF4 + Li2Sn / LiBSnF2 + 2LiF
+(Equation 1)
+This reaction causes irreversible loss of LiPS and leads to
+dramatic capacity decay during cycling,34,35 which has been
+validated by a series of investigations using various analytical
+characterization approaches.34,36,37 As an alternative, Li-S bat-
+teries have been made with polysulﬁde-compatible addi-
+tives.4,38–40 However, even with these more suitable additives,
+the reported cycle life is still insufﬁcient. Moreover, the effects
+of SEI/CEI on the cell-level reaction behavior of Li-S batteries
+containing these alternative additives remain poorly understood.
+Here, by utilizing a suite of synchrotron diffraction and absorp-
+tion techniques with complementary interface characterization
+and computational modeling, we systematically decipher an un-
+expected role of polysulﬁde-incompatible additives: they sup-
+press the reaction heterogeneity of Li-S batteries under high
+cathode loading and lean electrolyte conditions via interaction
+with the sparingly dissolved LiPS. Although this additive has
+demonstrated chemical incompatibility with LiPS intermediates,
+we show that—contrary to the conventional intuition—a pre-
+cisely controlled reaction between sparingly solvated LiPS
+(achieved by tailoring the solvation structures of the electrolyte)
+and LiBF4 additive can induce in situ formation of homogeneous
+interphase layers at thick and tortuous S cathode to construct an
+ion transport highway (Figure 1A). Unlike the concept of using
+carbonate-based electrolyte, which is also polysulﬁde-incom-
+patible but highly relies on the use of short-chain S or sulfurized
+polyacrylonitrile,41 our strategy based on ether solvents has no
+limitation of S form and can achieve high cathode S content. In
+addition to simultaneously suppressing both the shuttle effect
+and lithium dendrite growth, these attributes dramatically reduce
+reaction heterogeneity at the cell level, as evidenced by high-en-
+ergy X-ray diffraction (HEXRD) mapping of Li-S pouch cells.
+Meanwhile, the introduction of polysulﬁde-incompatible com-
+pounds extends the electrolyte additive categories for further
+Li-S battery development, and the CEI optimization can be
+achieved by modifying the physicochemical properties of poly-
+sulﬁde-incompatible additives and applying appropriate cath-
+ode structure design. Different from conventional self-sacriﬁcial
+additives, we believe this work is the ﬁrst demonstration of the
+use of polysulﬁde-incompatible additives to induce the CEI for-
+mation in Li-S batteries and offers new additive design strategies
+as alternatives to enable high-energy and long-life Li-S batteries
+with suppressed spatial reaction heterogeneity.
+RESULTS
+To keep the focus on the role of additives, the cathode host and
+anode were simply commercial Ketjenblack and bare lithium
+metal, respectively. Cathode and anode structures would
+need to be investigated in the future to achieve optimal
+3398 Joule 8, 3397–3411, December 18, 2024
+Article
+ll
+
+<<PAGE 4>>
+electrochemical performance. Because the absence of highly
+soluble LiPS would affect the cathode redox kinetics,42 Se
+dopant with higher electronic conductivity (5.0 3 1024 106
+cm1 U) than S (1.0 3 1012 106 cm1 U) was involved to pro-
+mote the cathode redox under solid-solid phase transition.43
+Therefore, the cathode as investigated was a composite of Ket-
+jenblack and selenium-doped (10 wt% or 4.31 atom%) sulfur
+(Se/S), with active Se/S content of 70 wt% (denoted KB-Se/
+S),43 delivering a theoretical speciﬁc capacity of 1,575 mAh
+g1. Note that all the calculations of current densities and spe-
+ciﬁc capacities in this work were based on the weight of Se/S.
+We chose the 1,1,2,2-tetraﬂuoroethyl-2,2,3,3-tetraﬂuoropropyl
+ether (TTE) solvent as the diluent because it has a low donor
+number and it would not participate in direct Li+ coordination.44
+In addition, the non-ﬂammable TTE solvent can induce the for-
+mation of robust LiF-rich SEI, and it exhibits good chemical
+compatibility with Se/S redox.22,45 Therefore, in designing the
+electrolyte, we constructed a localized highly concentrated sol-
+vation structure to reduce free solvents in the electrolytes to sol-
+vate polysulﬁdes while maintaining a low viscosity (1.5 M lithium
+bis(triﬂuoromethanesulfonyl)imide [LiTFSI] in TTE/dimethoxy-
+ethane [DME], 10:3, v/v). The viscosity of LAA-0.05 was tested
+to be 5.74 cP at 21C, which is comparable/lower than most re-
+ported (localized) high-concentration electrolytes (Table S1).
+Meanwhile, we used a Lewis acid additive (LAA) LiBF4 to inves-
+tigate the role of polysulﬁde-incompatible additives (denoted
+LAA-x, where x is the molar concentration of LiBF4). By evalu-
+ating the cycling performance of a KB-Se/S cathode with
+different concentrations of LiBF4 additive, we determined that
+the optimal electrolyte formulation is 0.05 M LiBF4, designated
+LAA-0.05 (Figure S2).
+Cathode (de)lithiation chemistry and in situ CEI
+formation
+As shown in Figure 1B, typical two discharge plateaus of KB-Se/
+S cathode in DME/DOL electrolyte correspond to the solid-
+liquid-solid (de)lithiation during discharge/charge. By contrast,
+one main discharge plateau was observed in the LAA-0.05 elec-
+trolyte, indicating a quasi-solid-solid (de)lithiation. To gain in-
+sights into the cathode lithiation process, S K-edge X-ray ab-
+sorption
+near
+edge
+spectroscopy
+(XANES)
+of
+KB-Se/S
+electrodes (Se/S loading: 4.0 mg cm2) at different discharge
+states in DME/DOL and LAA-0.05 electrolytes were conducted.
+Before discharge, both samples exhibit one peak at 2,472 eV
+Figure 1. In situ CEI formation via interaction between sparingly dissolved LiPS and LAA additive
+(A) Chemistry of LAA-0.05 electrolyte in Li-Se/S cells under high Se/S loading and lean electrolyte conditions.
+(B) Voltage proﬁles of Li-Se/S cells in DME/DOL electrolyte and LAA-0.05 electrolyte.
+(C and D) S K-edge XANES spectra of KB-Se/S cathode at different discharging states in (C) DME/DOL electrolyte and (D) LAA-0.05 electrolyte.
+Joule 8, 3397–3411, December 18, 2024 3399
+Article
+ll
+
+<<PAGE 5>>
+and a distinct concave feature at 2,476 eV, consistent with pre-
+vious X-ray absorption spectroscopy (XAS) studies of S8
+46–48
+(reference material and detailed calibration can be found in Fig-
+ure S3). After proceeding the discharge process to the higher
+voltage plateau (200 mAh g1) that corresponds to the formation
+of long-chain LiPS in DME/DOL electrolyte,49,50 a small peak
+located at 2,470 eV correlates to the terminal charged S atoms
+of soluble LiPS emerged (Figure 1C). In addition, a peak located
+at 2,480 eV is assigned to the formation of Li2S,51 indicating the
+concurrent formation of LiPS and Li2S at the ﬁrst discharge
+plateau. This behavior has also been observed in a previous in
+situ nuclear magnetic resonance (NMR) study of Li-S batteries
+in DME/DOL electrolyte.52 At the end of discharge (1.2 V), the
+Li2S and LiPS peaks continue to coexist, indicating the incom-
+plete reduction of Li2Sn in the thick KB-Se/S electrode. By sharp
+contrast, in LAA-0.05 electrolyte, because of the construction of
+localized high-concentration solvation structure, S exhibits a
+different redox reaction pathway, as evidenced by the continu-
+ously increased intensity of the Li2S peak and the absence of
+LiPS peak (2,470 eV) throughout the discharge process
+(Figure 1D).
+In situ Se K-edge XANES of the KB-Se/S cathode was also
+conducted during the charge/discharge process to dynamically
+probe the (de)lithiation mechanism in DME/DOL, LAA-0, and
+LAA-0.05 electrolytes (reference material and detailed calibra-
+tion can be found in Figure S4). As shown in Figures 2A, 2B,
+and S5, in the case of DME/DOL electrolyte, the Se K-edge grad-
+ually shifts to lower energy during discharge, suggesting the
+continuous formation of soluble lithium polyselenides (LiPSe).
+At the end of the discharge (1.2 V), the Se K-edge jumps to higher
+energy, indicating the depletion of active material and the forma-
+tion of Li2Se. To better differentiate the changes in the edge po-
+sition, the ﬁrst derivatives of the XANES are shown in Figure S6A;
+they clearly show that the Se K-edge gradually shifts from
+12,658.6 to 12,657.5 eV at the beginning of the discharging pro-
+cess and then jumps to 12,659.6 eV at the end, corresponding
+well with the previously reported two-step solid-liquid-solid Se
+transformation in DME/DOL electrolyte,53 which was further vali-
+dated from the cyclic voltammetry (CV) test where two distinct
+cathodic peaks at 2.3 and 1.9 V are observed (Figure S7A).
+In LAA-0 electrolyte without involving LiBF4, because of the
+reduced free solvents in localized concentrated electrolytes,
+the cathode undergoes a quasi-solid-solid transformation as
+the Se K-edge does not exhibit visible edge shift during
+discharge/charge (Figures 2C, 2D, and S6B). Nevertheless, there
+is no obvious edge jump at the end of discharge (1.2 V) in LAA-0
+electrolyte (Figure 2D), indicating the insufﬁcient active material
+reduction in LAA-0 electrolyte. Conversely, for the LAA-0.05
+electrolyte, the Se K-edge did not undergo a marked shift but
+with a gradual intensity decrease during discharge (Figures 2E
+and 2F). Details of the edge shift can be inferred from the ﬁrst de-
+rivatives of the XANES (Figure S6C), which exhibits a peak at
+12658.5 eV that is constant during discharge but then jumps to
+12,659.6 eV at 1.2 V, suggesting the absence of LiPSe and
+more thorough utilization of active material during (de)lithiation.
+The CV test of the cell with LAA-0.05 electrolyte exhibits only
+one reduction peak and one oxidation peak, conﬁrming the
+direct solid-solid cathode transition process (Figure S7B).
+More importantly, compared with the case of LAA-0 without
+involving LiBF4, the depletion of active material in LAA-0.05 indi-
+cates the involvement of LiBF4 can greatly improve the active
+material utilization.
+The interaction between sparingly dissolved LiPS and LiBF4 as
+well as the subsequent CEI formation were investigated by den-
+sity functional theory (DFT) simulations, NMR, and X-ray photo-
+electron spectroscopy (XPS) studies. As shown in Figure S8,
+compared with other components in the LAA-0.05 electrolyte
+(DME, LiTFSI, and TTE), LiBF4 exhibits higher binding energy
+(1.08 eV) toward Li2S6, due to the strong Lewis acid (LiBF4)–
+Lewis base (LiPS) interaction. The presence of nucleophilic
+Sn
+2 could induce the interaction between Li+ and BF4
+, yielding
+the LiF and BF3. The resulting Lewis acid BF3 could thus form ad-
+ducts with Sn
+2. NMR investigations were conducted to quantify
+the amount of LiBF4 in LAA-0.05 before and after formation cy-
+cles. As shown in Figure 2G, it is notable that the quantity of
+LiBF4 signiﬁcantly decreased by 85% (TTE solvent was used
+to quantitatively analyze the LiBF4 because the TTE amount is
+>100 times higher than LiBF4 in fresh LAA-0.05 electrolyte, and
+the cell was brieﬂy operated for merely one cycle) after the initial
+formation cycle. Additionally, after the second cycle, the LiBF4
+signal almost disappeared, suggesting that the LAA-0.05 elec-
+trolyte would not trigger continuous parasitic reactions but rather
+induce an instant formation of CEI ﬁlm on the cathode surface
+during the ﬁrst formation cycles. XPS characterization was con-
+ducted to analyze the cathode interphase features (note that we
+increased the LiBF4 concentration to 0.1 M in the XPS study to
+amplify signal intensity for investigation as shown in Figure S9).
+As shown in Figure 2H (XPS ﬁtting parameters, see Table S2),
+the peak located at 191.2 eV can be assigned to the B–S
+bond,54 conﬁrming the interaction between BF4
+ and Sn
+2.
+Meanwhile, peaks located at 190.0 and 192.3 eV can be as-
+signed to B–N and B–O species, respectively,55,56 suggesting
+the B–N and B–O components in the as-formed CEI. Peak
+located at 194.9 eV can be assigned to the B–F bond originating
+from the BF4
+ residual.57 Based on the above DFT, NMR, and
+XPS studies, it is evident that the sparingly dissolved LiPS can
+react with the LiBF4 additive to induce in situ CEI formation on
+the cathode surface, and such CEI formation reaction will stop
+after the depletion of LiBF4 during the formation cycles to avoid
+continuous active material consumption. Additionally, the active
+carbon skeleton of KB-Se/S composite can help to support the
+CEI (Figure S10) to avoid fracture during cycling. Nevertheless,
+appropriate cathode structure engineering is needed in future
+development to enhance the CEI stability and thus further in-
+crease the battery lifespan.
+Ion transport and bulk phase transformation
+Electrochemical performance testing (Figures 3A and S11)
+shows that the KB-Se/S cathode demonstrates higher speciﬁc
+capacity, higher Coulombic efﬁciency, and better cycling stabil-
+ity with LAA-0.05 electrolyte than with LAA-0 and DME/DOL
+electrolytes. In addition, the gradually elevated discharge
+voltage plateau (205 mV) and discharge capacity in LAA-0.05
+electrolyte (Figure 3B) indicate that the as-formed CEI can sub-
+sequently enhance the ionic transport to improve the redox ki-
+netics and active material utilization efﬁciency. When the areal
+3400 Joule 8, 3397–3411, December 18, 2024
+Article
+ll
+
+<<PAGE 6>>
+Se/S loading is increased to 6.0 mg cm2 and the E/S ratio is
+reduced to 7.0 mL mg1, the KB-Se/S cathode with LAA-0.05
+electrolyte delivers a high initial areal capacity of 7.01 mAh
+cm2 and maintains a reversible areal capacity of 5.11 mAh
+cm2 after 50 cycles (Figure 3C). Moreover, after further
+decreasing the E/S ratio to as low as 3.0 mL mg1, the KB-Se/
+S cathode can still deliver a reversible and stable speciﬁc capac-
+ity of 1164.58 mAh g1 in LAA-0.05 electrolyte (Figure S12), con-
+ﬁrming the in situ-formed CEI can effectively enhance the cell
+performance even under high cathode loading and lean electro-
+lyte conditions.
+Additionally, the cycling performance of the KB-Se/S cathode
+with LAA-0.05 electrolyte was further evaluated at low tempera-
+ture (0C), which is important in practical applications and
+requires facilitated ion transport to address the decreased
+ion migration kinetics (Figure S13A).58,59 After a few cycles of
+activation
+(Figure
+S13B),
+the
+KB-Se/S
+electrode
+(Se/S
+loading: 3 mg cm2) can maintain a reversible areal capacity of
+Figure 2. Cathode (de)lithiation chemistries and CEI formation
+(A and B) In situ Se K-edge XANES contour (A) and spectra (B) for KB-Se/S cathode during initial cycle in DME/DOL electrolyte (areal S loading: 5.0 mg cm2, E/S
+ratio: 7.0 mL mg1).
+(C and D) In situ Se K-edge XANES contour (C) and spectra (D) for KB-Se/S cathode during initial cycle in LAA-0 electrolyte (areal S loading: 5.0 mg cm2, E/S
+ratio: 7.0 mL mg1).
+(E and F) In situ Se K-edge XANES contour (C) and spectra (D) for KB-Se/S cathode during initial cycle in LAA-0.05 electrolyte (areal S loading: 5.0 mg cm2, E/S
+ratio: 7.0 mL mg1).
+(G) 19F-NMR spectra of fresh LAA-0.05, electrolyte after 1 cycle in Li-Se/S cell, and electrolyte after 2 cycles in Li-Se/S cell.
+(H) High-resolution B 1s XPS spectrum of cycled KB-Se/S cathode in LAA-0.1 electrolyte.
+Joule 8, 3397–3411, December 18, 2024 3401
+Article
+ll
+
+<<PAGE 7>>
+>3.0 mAh cm2 for over 50 cycles (Figures S13A and S13C), con-
+ﬁrming the feasibility of using LAA-0.05 electrolytes under low-
+temperature operation. In situ electrochemical impedance spec-
+troscopy (EIS) of the KB-Se/S cathode in LAA-0.05 electrolyte
+with an areal Se/S loading of 4.0 mg cm2 and an E/S ratio of
+7.0 mL mg1 was conducted to validate the effectiveness of
+as-induced CEI in facilitating ion transport. As shown in Fig-
+ure 3D, the charge transfer resistance (Rct) was notably
+decreased from 30 to 20 U after the initial cycle and remained
+similar at the third cycle, indicating the in situ-formed CEI can
+effectively promote the electrolyte wetting and ion transportation
+inside the cathode, consequently delivering a high and reversible
+Figure 3. Ion transport and bulk phase transformation
+(A) Cycling performance of KB-Se/S cathode in DME/DOL, LAA-0, and LAA-0.05 electrolytes.
+(B) Voltage proﬁles of various cycles of KB-Se/S cathode in LAA-0.05 electrolyte.
+(C) Cycling performance of KB-Se/S cathode with LAA-0.05 electrolyte with high areal Se/S loading of 6.0 mg cm2 and E/S ratio of 7.0 mL mg1.
+(D) In situ EIS results and the corresponding discharge voltage proﬁles of KB/Se-S cathode in LAA-0.05 electrolyte.
+(E) In situ HEXRD spectra and corresponding voltage proﬁles of KB-Se/S cathode during initial discharge and charge process in LAA-0.05 electrolyte.
+(F) ToF-SIMS depth proﬁles of F secondary ion under different sputtering time of KB-Se/S cathodes after initial cycle in LAA-0 and LAA-0.05 electrolytes (5.0 mg
+cm2, 5.0 mL mg1).
+(G and H) ToF-SIMS chemical mapping (F) of KB-Se/S cathodes after initial cycle in (G) LAA-0 and (H) LAA-0.05 electrolytes.
+3402 Joule 8, 3397–3411, December 18, 2024
+Article
+ll
+
+<<PAGE 8>>
+areal capacity of >5.0 mAh cm2 even under high cathode
+loading and low E/S ratio conditions (Figure 3D). To validate
+the universality of the electrolyte design concept, other polysul-
+ﬁde-incompatible additives (e.g., LiPF6 and LiFSI) were further
+explored. As shown in Figure S14, the electrolyte involving
+LiPF6 or LiFSI both exhibits improved speciﬁc capacity and
+cycling stability than that of plain LAA-0 electrolyte and conven-
+tional DME/DOL electrolyte. The observed cell performance
+improvement further solidiﬁes our electrolyte design concept
+and validates its universality.
+To investigate the bulk phase transformation of thick electrode
+(Se/S loading: 5.0 mg cm2) with a low E/S ratio of 6.5 mL mg1
+during charge/discharge in LAA-0.05 electrolyte, in situ HEXRD
+was conducted. As shown in Figure 3E, the peaks at the pristine
+state located at 1.95, 2.03, 2.09, 2.15, 2.54, 2.62, and 2.69
+can be assigned to the (026), (311), (206), (313), (137), (333), and
+(244) peaks of pristine S, respectively. During discharge, the in-
+tensity of these S diffraction peaks gradually decreases, and
+they fully disappear at around 2 h (200 mAh g1), suggesting
+the effective reduction of S active material. Meanwhile, the peaks
+located at 2.02, 5.10, and 5.25, which can be assigned to the
+(111), (331), and (420) diffraction peaks of crystalline Li2S, begin
+to appear at around 7.6 h (760 mAh g1), indicating the contin-
+uous precipitation of crystalline Li2S. Note that amorphous or
+nanocrystalline Li2S should form early in the discharge process;
+these forms are beyond the detection limit of XRD but have been
+well-tracked by the XAS studies (Figures 1C and 1D). During the
+charging process, the intensity of Li2S diffraction peaks begins to
+decrease, and the peaks have fully vanished at 16.3 h (590 mAh
+g1). In addition, the S diffraction peaks begin to form at 275
+mAh g1 and keep increasing in intensity upon further charge,
+corresponding to the full oxidization of Li2S back to S. These
+HEXRD results show that the in situ-formed CEI by the
+LAA-0.05 electrolyte can promote a highly reversible redox reac-
+tion
+even
+under
+high
+mass
+loading
+and
+low
+electrolyte
+conditions.
+To further validate the effectiveness of LAA-induced CEI in
+promoting the electrolyte wetting ability in thick cathode under
+lean electrolyte conditions, we conducted time-of-ﬂight second-
+ary ion mass spectrometry (ToF-SIMS) of KB-Se/S cathodes
+(Se/S loading: 5.0 mg cm2) after initial cycle at a low E/S ratio
+of 5.0 mL mg1 in LAA-0 and LAA-0.05 electrolytes. Noted that
+the binder used in the cathode laminate was a carboxymethyl
+cellulose (CMC)/styrene-butadiene rubber (SBR) mixture that
+does not contain any F, so the F signal in the ToF-SIMS can be
+used as an indicator of electrolyte wetting/penetration ability.
+As shown in Figure 3F, for LAA-0 electrolytes, the F signal inten-
+sity continuously decreases as the sputtering depth increases,
+and it can only maintain an 84.7% signal intensity after 800 s
+of sputtering, indicating poor electrolyte wetting/penetration.
+By contrast, for the LAA-0.05 electrolyte (Figure 3F), the F signal
+exhibits a stable intensity as the sputtering time increases,
+indicating the efﬁcient LAA-0.05 electrolyte penetration after
+involving the LAA additive. The 2D F elements mapping (Fig-
+ure 3G) also reveals the inhomogeneous LAA-0 electrolyte distri-
+butions inside the cathode without involving the LAA additive,
+while the LAA-0.05 is uniformly dispersed (Figure 3H), conﬁrming
+that the LiBF4-derived CEI can effectively promote the electro-
+lyte wetting/penetration as well as achieve homogeneous elec-
+trolyte distribution inside thick and tortuous cathode under
+limited electrolyte usage.
+Interphase analysis
+The chemical composition of the SEI and its spatial distribution
+govern the interfacial ion transport kinetics and mechanical
+properties60 and, hence, plays a crucial role in the Li stripping/
+plating behavior of practical Li-S pouch cells, especially for
+thin Li metal anodes. We evaluated Li stripping/plating stability
+in both Li-Cu and Li-Li cells containing either the DME/DOL or
+the LAA-0.05 electrolyte. As shown in Figures 4A–4C, compared
+with the DME/DOL electrolyte, the Li-Cu cells with LAA-0.05
+electrolyte exhibit improved Coulombic efﬁciency and longer
+cycling stability (from 100 to 350 cycles). Furthermore, in the
+Li-Li symmetrical cell test under a higher current density of 1
+mA cm2 and a higher areal capacity of 3 mAh cm2
+(Figures 4D and S15), the cell with LAA-0.05 electrolyte also dis-
+played much lower overpotential (25 mV) and longer cycling
+stability. Additionally, since the majority of LiBF4 is consumed
+for CEI formation, the LAA-0 exhibits similar Li stripping/plating
+performance and overpotential (30 mV) as the case with
+LAA-0.05 electrolyte (Figure 4D). Although the LiBF4 additive
+may have limited effectiveness in modifying anode interphase
+properties, the cathode improvement originated from involving
+LiBF4 still secures its necessity for Li-S batteries.
+Li stripping/plating stability under low Li excess was further
+evaluated because the use of a thin Li metal anode is vital to
+achieving high-energy density.61 Typically, a cell with such an
+anode will suffer from low cycling stability because of the intrinsic
+high reactivity of Li metal with electrolytes. As shown in Fig-
+ure S16, to maintain a 2 3 Li excess during the test, 9.0 mAh
+cm2 of Li was deposited on the surface of Cu at a current den-
+sity of 0.5 mA cm2 (Li-Cu cell). Afterward, the continuous Li
+stripping/plating test (Li-Li cell) was conducted at 0.5 mA cm2
+with an areal capacity of 3.0 mAh cm2. In LAA-0.05 electrolytes,
+the cell with 2 3 Li excess can be stably cycled over 550 h with a
+small overpotential of 25 mV (Figure S16). The Li cycling stabil-
+ity was further evaluated with only 1 3 Li excess and a higher
+areal capacity of 4 mAh cm2 (Figure 4E); this cell still exhibited
+stable cycling performance for over 450 h with a slightly
+increased overpotential of 30 mV, conﬁrming that the good Li
+cycling stability and suppressed Li side reaction are due to the
+formation of a robust SEI in the presence of the LAA-0.05 elec-
+trolyte. Additionally, scanning electron microscopy (SEM) char-
+acterizations of cycled Li metal foils from Li-Li symmetric cells
+with both DME/DOL and LAA-0.05 electrolytes (Figure S17)
+further validate the improved Li stripping/plating homogeneity
+in LAA-0.05 electrolyte.
+To gain insights into the composition and distribution of the
+SEI formed in the DME/DOL and LAA-0.05 electrolytes, we per-
+formed ab initio molecular dynamics (AIMD) simulations using a
+Li (001) slab. For the DME/DOL electrolyte, a 6 3 6 3 3 supercell
+was employed, consisting of 216 Li atoms (six Li layers of
+8.653 A˚ ). For the LAA electrolyte, a 5 3 5 3 3 supercell was
+used, consisting of 150 Li atoms. The detailed structure model
+is given in the computational methods section in the supple-
+mental information. Given that LiBF4 is consumed (with LiPS)
+Joule 8, 3397–3411, December 18, 2024 3403
+Article
+ll
+
+<<PAGE 9>>
+Figure 4. Anode stability and SEI analysis
+(A and B) Cycling performance of Li-Cu cells in DME/DOL electrolyte and LAA-0.05 electrolyte at a current density of 0.5 mA cm2 and areal capacities of (A) 0.5
+mAh cm2 and (B) 1.0 mAh cm2.
+(C) Voltage proﬁles of various cycles of the Li-Cu cells in LAA-0.05 electrolyte at areal capacities of (top) 0.5 mAh cm2 and (bottom) 1.0 mAh cm2.
+(D) Voltage proﬁles of Li-Li symmetric cells in DME/DOL, LAA-0, and LAA-0.05 electrolytes.
+(E) Voltage proﬁle of Li-Li symmetrical cell in LAA-0.05 electrolyte with 1 3 Li excess.
+(F and G) AIMD charge transfer results of the reaction between Li metal and (F) DME/DOL electrolyte and (G) LAA-0.05 electrolyte.
+(H and I) AIMD trajectory results of the reaction between Li metal and (H) DME/DOL electrolyte and (I) LAA-0.05 electrolyte at 10 ps.
+3404 Joule 8, 3397–3411, December 18, 2024
+Article
+ll
+
+<<PAGE 10>>
+to form a CEI and that its concentration is already low (0.05 M) in
+the LAA-0.05 electrolyte, the LiBF4 was neglected in the AIMD
+investigation of SEI formation to avoid the tremendous computa-
+tional demand. Nevertheless, XPS characterization of cycled Li
+metal anode was carried out to investigate the B-containing
+SEI species, and the result conﬁrms the existence of B-O and
+B-N containing SEI components on the surface of cycled Li metal
+anode (Figure S18).
+To examine the atomistic trajectories based on different en-
+ergy cutoff values and ensure the accuracy of the simulation re-
+sults, we used two distinct plane wave energy cutoffs (400 and
+460 eV) in the AIMD simulations and investigated the impact of
+spin polarization effects on the AIMD results. As shown in Fig-
+ure S19, the trajectories and charge transfer results for 400
+and 460 eV were found to be comparable. The results also
+exhibit negligible spin density, and the changes in both atomistic
+trajectories and charge transfer closely resemble those of the
+non-spin polarization condition (Figure S20), conﬁrming the reli-
+ability of the AIMD simulation results. Figures 4F and 4G show
+the AIMD charge transfer plots for the species in the two electro-
+lytes. For the DME/DOL electrolyte, the majority of the decom-
+posed species available for SEI formation are TFSI and NO3
+
+anions, as evidenced by their high charge transfer during relax-
+ation. As shown more clearly in Figure S21, the LiTFSI and
+LiNO3 quickly bond with Li metal, and the LiNO3 is reduced to
+LiNO2 within 1 ps. At 2 ps, Li–N and Li–O SEI species can be
+identiﬁed. Further decomposition of TFSI and NO3
+ leads to
+the formation of isolated Li–F, Li–C, Li–O, and Li–N SEI species
+on the surface of Li metal (Figure 4H), a characteristic feature
+of mosaic SEI,62 resulting in a longer Li+ transport pathway and
+sluggish diffusion kinetics. Furthermore, they would cause inho-
+mogeneous Li+ ﬂux distribution during stripping/plating63 (Fig-
+ure S1A). For the LAA electrolyte, the electrolyte exhibited higher
+reactivity with Li metal because of the involvement of TTE sol-
+vent, which is reﬂected in the fact that the energy of the lowest
+unoccupied
+molecular
+orbital
+is
+lower
+(Figure
+S22)
+for
+LAA-0.05 (2.22 eV) than for DME/DOL electrolyte (2.35 eV).
+Therefore, the TTE solvent quickly bonds with the Li metal sur-
+face, and abundant Li-F local domains form within 1 ps (Fig-
+ure S23). In the LAA-0.05 electrolyte, the majority of SEI species
+come from the decomposition of the TTE solvent, and at 10 ps, a
+uniform Li-F-rich SEI ﬁlm homogeneously covers the surface of
+Li metal (Figure 4I). This ﬁlm can reduce the interfacial tortuosity
+of the Li metal anode and thus promote the improved lithium
+stripping/plating needed to achieve high current densities and
+areal capacities. The anode interfacial features were further vali-
+dated via the XPS characterizations of cycled Li metal from the
+Li-Li symmetric cells in DME/DOL and LAA-0.05 electrolytes.
+For Li metal anodes in the DME/DOL electrolyte, we observed
+a large fraction of metallic Li–Li bonds and a low fraction of Li–
+F compounds (Figure S24), indicating the formation of a thin
+and fragile SEI (XPS ﬁtting parameters see Table S3). By
+contrast, for the LAA-0.05 electrolyte, the signal for Li–F bonds
+dominates (Figure S24), indicating that the LAA-0.05 electrolyte
+can induce the formation of a high-quality, F-rich SEI on the sur-
+face of a Li metal anode (XPS ﬁtting parameters see Table S4),
+which corresponds well with the AIMD simulation results. More-
+over, the Li–F bond also dominates the XPS signal for cycled Li
+metal foil in LAA-0 electrolyte (Figure S25, XPS ﬁtting parameters
+see Table S5), suggesting similar interphase properties for both
+LAA-0 and LAA-0.05 cases.
+Since cathode dissolving species and subsequent cathode/
+anode crosstalk greatly affect the interphase properties and
+cell stability,6 such effects were evaluated via SEM, XPS,
+and ToF-SIMS investigations. The ToF-SIMS F depth proﬁling
+and 3D reconstruction results of cycled KB-Se/S cathode in
+DME/DOL and LAA-0.05 electrolytes (Figure S26) suggest that
+a thin (16 nm) and uniform F-rich CEI was formed on cycled
+cathode with LAA-0.05 electrolyte. In the case of DME/DOL elec-
+trolyte, a broad F signal with a thickness of 90 nm was
+observed, which was caused by the active material dissolu-
+tion-migration-deposition process and CEI stacking. As shown
+in Figure 5A, for cycled KB-Se/S cathode in the DME/DOL elec-
+trolyte, strong Li-S and Se signals are detected on the surface of
+the cathode due to repeated dissolution/deposition of LiPS/
+LiPSe during cycling, indicating the existence of severe active
+material dissolution and migration in DME/DOL electrolyte
+(XPS ﬁtting parameters see Table S6). By contrast, for the
+LAA-0.05 electrolyte, because of the suppressed LiPS solubility
+and the dominant F-rich CEI layer formation (Figures S26 and
+S27, XPS ﬁtting parameters see Tables S7 and S8), no obvious
+Li–S or Se signals can be observed in the Li 1s spectrum (Fig-
+ure 4A), and a strong Li–F signal is detected on the surface of
+the cycled cathode, suggesting the robust F-rich CEI construc-
+tion and suppressed active material dissolution/migration in
+LAA-0.05 electrolyte (XPS ﬁtting parameters see Table S9).
+Planar and cross-section SEM investigations of cathodes in a
+pristine state, after the initial cycle, and after 20 cycles were con-
+ducted. As shown in Figures S28A–S28D and S29A–D, the B and
+F signals can be detected after the initial cycle, indicating the CEI
+formation originated from the LiBF4 additive. Moreover, after 20
+cycles, homogeneous B and F signals can still be detected
+(Figures S28E, S28F, S29E, and S29F, suggesting good CEI sta-
+bility. In addition, SEM and ToF-SIMS were conducted to inves-
+tigate the Li2S deposition behavior in DME/DOL and LAA-0.05
+electrolytes. As shown in Figures S30A and S30B, due to the
+active material dissolution and migration in DME/DOL electro-
+lyte, isolated Li2S particles can be identiﬁed at the discharged
+cathode. In the case of LAA-0.05 electrolyte, since the cathode
+undergoes (quasi) solid-solid phase transition, no obvious Li2S
+agglomerate/particle
+was
+found
+at
+the
+discharged
+state
+(Figures S30C and S30D), which was further validated via the
+ToF-SIMS chemical mappings and element 3D reconstructions
+(Figure S31). Moreover, as shown in Figure 5B, in the DME/
+DOL electrolyte, the inhomogeneous F-containing species com-
+bined with the strong and uneven Se signal distribution resulted
+in a chemically and morphologically heterogeneous SEI forma-
+tion on the cycled Li metal anode surface. In the case of
+LAA-0.05 electrolyte, no obvious Se signal can be detected on
+the surface of the cycled Li metal because of suppressed forma-
+tion of LiPS/LiPSe (Figure 5C). More importantly, a uniform F-rich
+SEI layer was formed on the surface of the cycled Li metal, indi-
+cating the LAA-0.05 electrolyte can well address the cathode/
+anode crosstalk and induce homogeneous SEI formation to sup-
+port stable cycling performance. Since the Li+ is transported
+along the grain boundaries between different SEI/CEI phases,64
+Joule 8, 3397–3411, December 18, 2024 3405
+Article
+ll
+
+<<PAGE 11>>
+the as-formed homogeneous SEI/CEI can thus decrease the Li+
+transport resistance. To further quantify cathode/anode cross-
+talk caused by the ﬂooding of cathode dissolving species at a
+larger scale (1.5 mm 3 1.5 mm), we performed synchrotron
+X-ray ﬂuorescence microscopy (XFM) mapping of cycled Li
+metal anode in the DME/DOL and LAA-0.05 electrolytes. In
+DME/DOL electrolyte, the high solubility of LiPS/LiPSe has led
+to the deposition of a high-content non-uniform S- and Se-con-
+taining layer on the cycled Li metal (Figure 5D), while in the
+LAA-0.05 electrolyte, we observed signiﬁcantly lower signals
+for S and Se, with much less heterogeneity (Figure 5E).
+Pouch cell evaluation
+Reaction homogeneity at the cell level is an important factor in
+evaluating realistic pouch cells, but it has been signiﬁcantly over-
+looked in Li-S cell development, which has led to a huge gap be-
+tween laboratory research and practical cell development. We
+used synchrotron HEXRD mapping (Figure 6A) to examine dis-
+charged (1.2 V) Li-Se/S pouch cells with DME/DOL, LAA-0,
+and LAA-0.05 electrolytes. The distribution of the peaks of Li2S
+(111) and S (222) across the entire pouch cell is used to represent
+reaction heterogeneity within the cell. Because LiPS is highly sol-
+uble in the DME/DOL electrolyte, the S active material undergoes
+a series of dissolution-migration-deposition processes during
+operation. Therefore, as shown in Figures 6B and S32, a non-uni-
+form distribution of Li2S was observed after only one discharge
+process, with the majority of the discharge products concen-
+trated on the edge of the electrode. Moreover, as shown in the
+region outlined in white in Figure 6C, even at a cutoff voltage of
+1.2 V, there is still a lot of S detected at the two edges of the elec-
+trode (a detailed stacking plot is shown in Figure S32), indicating
+the insufﬁcient reduction of S at the practical cell level. In addi-
+tion, since the S residual region overlaps with some of the highly
+concentrated Li2S region (two edges of the electrode), there is a
+large chance that dead S will form during prolonged cycling,
+which will further aggravate reaction heterogeneity and eventu-
+ally affect the Li distribution on the anode side, accelerating
+cell failure (Figure S33). In the case with LAA-0 electrolyte,
+because of the suppressed LiPS solubility, the Li2S distribution
+uniformity was greatly improved (Figure 6D) compared with
+that of DME/DOL electrolyte. However, the S residual region
+can still be found on the discharged cathode (Figure 6E), indi-
+cating the insufﬁcient reduction of active material and severe
+cathode reaction heterogeneity. By sharp contrast, due to the
+synergistic cooperation of improved ion transport, suppressed
+LiPS formation, and improved lithium stripping/plating enabled
+by the LAA-0.05 electrolyte, the reaction homogeneity and the
+uniformity of the active material distribution were greatly
+improved: the Li2S signal is homogeneous distributed with no
+obvious Li2S agglomeration on the discharged S cathode
+Figure 5. Interface characterizations
+(A) High-resolution Li 1s XPS of cycled KB-Se/S cathodes in LAA-0.05 and DME/DOL electrolytes.
+(B and C) ToF-SIMS chemical mappings and 3D chemical reconstructions (Fand Se) of cycled Li metal foil in Li-Se/S cell with (B) DME-based electrolyte and (C)
+LAA-0.05 electrolyte.
+(D and E) XFM images of S and Se elements of cycled Li metal foils in (D) DME/DOL electrolyte and (E) LAA-0.05 electrolyte. The color bar indicates the signal
+intensity changing from blue (low) to red (high).
+3406 Joule 8, 3397–3411, December 18, 2024
+Article
+ll
+
+<<PAGE 12>>
+Figure 6. Pouch cell characterizations
+(A) Schematic for HEXRD full-scale scanning of Li-Se/S pouch cell.
+(B and C) HEXRD full-scale scanning contour of Li-Se/S pouch cell at discharge state (1.2 V) in the DME/DOL electrolyte with the diffraction peak for (B) Li2S (111)
+and (C) S (222) (white box indicates the residual S at the edges of the pouch cell).
+(D and E) HEXRD full-scale scanning contour of Li-Se/S pouch cell at discharge state (1.2 V) in the LAA-0 electrolyte, with the diffraction peak for (D) Li2S (111) and
+(E) S (222).
+(F and G) HEXRD full-scale scanning contour of Li-Se/S pouch cell at discharge state (1.2 V) in the LAA-0.05 electrolyte, with the diffraction peak for (F) Li2S (111)
+and (G) S (222).
+(H) Selected HEXRD scan patterns of discharged Li-Se/S pouch cells with the LAA-0.05 electrolyte.
+(I) Cycling performance of Li-Se/S pouch cells with thin (50 mm) Li metal foil during charge/discharge in DME/DOL, LAA-0, and LAA-0.05 electrolytes at 50 mA g1.
+Joule 8, 3397–3411, December 18, 2024 3407
+Article
+ll
+
+<<PAGE 13>>
+(Figure 6F). More importantly, because the CEI (formed in situ on
+the cathode surface) enhances the Li+ diffusion kinetics, S utili-
+zation is dramatically improved: only negligible S diffraction
+peaks are detected in the discharged pouch cell with LAA-0.05
+electrolyte (Figures 6G and 6H).
+To evaluate the cycling stability of pouch cells, we assembled
+two Li-Se/S pouch cells with 200 mg Se/S loading (areal Se/S
+loading: 5.0 mg cm2) and a thin Li metal foil anode (50 mm) using
+DME/DOL, LAA-0, and LAA-0.05 electrolytes. As shown in
+Figures 6I and S34, a high initial speciﬁc capacity of 1321.6
+mAh g1 (cell capacity: 264.3 mAh) was achieved, indicating a
+high and reversible Se/S utilization even in a practical pouch
+cell with a thin Li metal anode. Furthermore, the cell can still
+maintain a speciﬁc capacity of 868 mAh g1 after 50 cycles.
+By contrast, the Li-Se/S pouch cell with the conventional DME/
+DOL electrolyte delivered a much lower speciﬁc capacity of
+926.7 mAh g1, along with poor Coulombic efﬁciency during
+cycling, resulting in a much shorter cycling life. Moreover, the un-
+satisfactory Li-Se/S pouch cell performance and sudden failure
+in the LAA-0 electrolyte (Figure 6I) might be explained by the
+electrolyte depletion due to the lack of robust LiBF4-derived
+SEI and CEI layers. Additionally, the Se/S loading was further
+increased to 500 mg with a decreased E/S ratio of 4.0 mL
+mg1. As shown in Figure S35, the 500 mg Li-Se/S pouch cell
+can deliver a stable capacity of 0.52 Ah under an E/S ratio of
+4.0 mL mg1, conﬁrming the proposed electrolyte strategy can
+effectively enhance the pouch cell performance under practical
+operation conditions. Additionally, the performance of pouch
+cell based on LAA-0.05 electrolyte is comparable/superior to
+recently reported Li-S electrolyte work (Table S10), and the stack
+energy density is estimated to be 292.48 Wh kg1. The strong re-
+sults for LAA-0.05 lead us to believe that coupling the LAA-0.05
+electrolyte with rational cathode host design (e.g., our double-
+end binding sites host1) could signiﬁcantly improve the cell en-
+ergy density and cycle life of Li-Se/S pouch cells.
+DISCUSSION
+In summary, through a combination of advanced multiscale di-
+agnostics and computational modeling, we have discovered an
+unexpected role for supposedly polysulﬁde-incompatible addi-
+tives: in an appropriately designed electrolyte, they can sup-
+press the reaction heterogeneity of Li-Se/S pouch cells under
+high sulfur loading and lean electrolyte conditions. This behavior
+emerged in the presence of an electrolyte whose structure was
+tailored to suppress the solvation of polysulﬁdes, thereby mini-
+mizing side reactions with the LAA. The spontaneous reaction
+of the LAA—in this case, LiBF4—with the sparingly solvated pol-
+ysulﬁdes induces in situ formation of cathode/solid-electrolyte
+homogeneous interphases to construct the ionic transport high-
+way. Furthermore, we showed that such interphase design could
+address several formidable challenges of high-energy Li-S bat-
+teries at one stroke, including the notorious issue of polysulﬁde
+shuttle, as well as uncontrolled lithium nucleation/growth, slug-
+gish ion transport within a tortuous S electrode, and severe reac-
+tion heterogeneity at the practical cell level. Our work indicates
+an urgent need to revisit the roles of electrolyte additives;
+in particular, the newly developed polysulﬁde-incompatible
+additives should be studied, rather than focusing on traditional
+self-sacriﬁcial additives only. Our work also indicates that
+suppression of reaction heterogeneity is required during the
+cycling of high-energy Li-Se/S pouch cells to maximize the cycle
+life.
+EXPERIMENTAL PROCEDURES
+Methods
+Preparation of KB-Se/S composite
+Appropriate amounts of Ketjenblack (EC-600JD, Nouryon), S powder, and Se
+powder (wS:wSe = 9:1) were mixed well and ground into a ﬁne powder with a
+weight ratio of 7:3 S/Se:Ketjenblack. The mixture was transferred into an auto-
+clave in a glovebox and heated in a 155C oven for 13 h, after which the KB-Se/
+S composite powder was collected.
+Preparation of electrolytes
+Two groups of electrolytes were used in the characterization studies. (1) LAA-x
+electrolytes (x indicates the Lewis acid LiBF4 concentration): 1.5 M LiTFSI into
+TTE/DME = 10:3 (v/v) solvent with x M LiBF4 (x = 0–0.15). (2) DME/DOL elec-
+trolyte: 1.0 M LiTFSI into DME/DOL = 1:1 (v/v) solvent with 0.2 M LiNO3
+additive.
+In situ HEXRD during charge/discharge
+The in situ HEXRD characterization was conducted at beamline 11-ID-C of the
+Advanced Photon Source at Argonne National Laboratory at an X-ray wave-
+length of 0.1173 A˚ . The in situ cells were assembled using a high-loading cath-
+ode (5.0 mg cm2) and a lithium metal foil anode in a coin-type cell with two
+holes (f = 2 mm) on both the cathode and anode cases. The E/S ratio was
+6.5 mL mg1. The in situ cells were charged/discharged using a MACCOR bat-
+tery cycler under a constant current density of 100 mA g1 within the voltage
+range of 1.2–3.0 V. The diffraction patterns were calibrated using a lanthanum
+hexaboride standard and subsequently integrated into diffraction peaks using
+Argonne’s
+GSAS-II
+software
+(https://subversion.xray.aps.anl.gov/trac/
+pyGSAS). Rietveld reﬁnements of the in situ HEXRD diffraction patterns
+were carried out by using the GSAS-II software to collect the lattice
+parameters.
+In situ XANES of the Se K-edge
+The in situ XANES characterizations in DME/DOL, LAA-0, and LAA-0.05 elec-
+trolytes were conducted at beamline 20-BM-B of the Advanced Photon
+Source at Argonne National Laboratory. The XAS data were processed with
+the Athena and Artemis software package. The in situ cell conﬁguration as
+well as the electrochemical testing system are similar to the in situ HEXRD
+investigation as described above.
+Ex situ X-ray absorption ﬁne structure spectroscopy of the S K-edge
+The ex situ XAS of the S K-edge was conducted at beamline 9-BM of the
+Advanced Photon Source at Argonne National Laboratory.
+XFM of cycled electrodes
+The XFM data were collected at the 2-ID-D beamline of the Advanced Photon
+Source, Argonne National Laboratory. The XFM data were processed and
+quantiﬁed by using XRF_Maps (https://github.com/AdvancedPhotonSource/
+XRF-Maps).
+Interphase and morphology characterizations
+ToF-SIMS characterizations were conducted on a TOF-SIMS 5 (IONTOF
+GmbH) instrument, and the imaged area was 30 mm 3 30 mm. After cycling,
+the cells were disassembled inside an Ar-ﬁlled glove box to permit collection
+of the cycled electrodes, which were placed in a vacuum-sealed box to avoid
+moisture contamination and transferred into the ToF-SIMS equipment. The
+XPS characterizations were conducted on a Physical Electronics PHI 5600
+multi-technique system. SEM observations and elemental line-scanning
+were performed on a Hitachi S-4800 microscope. NMR analyses were carried
+out on a 300-MHz NMR spectrometer.
+Pouch cell HEXRD scanning characterizations
+The pouch cell HEXRD mapping characterizations were conducted at beam-
+line 17-BM-B of the Advanced Photon Source at Argonne National Laboratory
+and beamline 28-ID-2 of the National Light Source II of Brookhaven National
+Laboratory. (Details of the testing conﬁguration can be found in Figure 5A.)
+3408 Joule 8, 3397–3411, December 18, 2024
+Article
+ll
+
+<<PAGE 14>>
+The 2D patterns were calibrated using a standard LaB6 sample and converted
+to one-dimensional patterns using the GSAS-II software.
+Electrochemical characterizations
+For the preparation of the KB-Se/S cathode, a suitable amount of KB-Se/S
+composite, CMC/SBR binder (CMC:SBR = 1:2 by weight), and Ketjenblack
+were mixed well with a weight ratio of 8:1:1 in deionized water. Afterward,
+the slurry was cast on the surface of Al foil and dried in a 55C vacuum oven
+overnight. The laminated electrode was then cut into a f = 14 mm round
+disk. The areal loading of Se/S cathode was controlled to be 2.0 mg cm2 un-
+less otherwise speciﬁed. The Li-Se/S cells, Li-Cu cells, and Li-Li symmetric
+cells were assembled in an Ar-ﬁlled glove box using the CR2032-type coin
+cell case. A piece of f = 16 mm Li metal foil was used as the anode, and Cel-
+gard 2,400 was used as the separator. The pouch cells with a Se/S loading of
+4.0 mg cm2 for HEXRD scanning were assembled by using a 30 mm 3 40 mm
+piece of KB-Se/S laminate as the cathode, 200 mm thick Li metal foil as the
+anode, and Celgard 2,400 as the separator. A 30 mm 3 40 mm piece of Cu
+foil was used as the anode current collector. One Al tab was riveted on the
+KB-Se/S laminate, and one Ni tab was riveted on the Cu foil. After injecting
+the electrolyte of either LAA-0.05 or DME/DOL with E/S ratio = 10 mL mg1,
+the pouch cell was sealed under vacuum. Then the pouch cells were galvanos-
+tatically discharged to 1.2 V at the rate of 0.1 C. After discharge, the pouch
+cells were subjected to HEXRD scanning.
+The cycling performance of pouch cells in DME/DOL, LAA-0, and LAA-0.05
+electrolytes was assembled based on the same procedure as described above
+except the Se/S loading was 200 mg, the cathode and anode sizes were
+controlled to be 50 mm 3 80 mm, and the thickness of the Li metal foil was
+50 mm. The pouch cell with 500 mg Se/S loading (areal Se/S loading: 5 mg
+cm2) was assembled based on the same procedure except the thickness
+of Li metal was 200 mm.
+Computational simulations
+Details of the DFT and AIMD simulations can be found in the supplemental
+information.
+RESOURCE AVAILABILITY
+Lead contact
+Further information and requests for resources should be directed to and will
+be fulﬁlled by the lead contact, Gui-Liang Xu (xug@anl.gov).
+Materials availability
+All unique reagents generated in this study are available from the lead contact
+without restriction.
+Data and code availability
+All data are available in the main text or the supplemental information from the
+lead contact upon request.
+ACKNOWLEDGMENTS
+Research at Argonne National Laboratory was funded by the US Department
+of Energy (DOE) Vehicle Technologies Ofﬁce. Support from Tien Duong of
+DOE’s Vehicle Technologies Ofﬁce is gratefully acknowledged. This research
+used resources of the Advanced Photon Source, a US Department of Energy
+(DOE) Ofﬁce of Science user facility operated for the DOE Ofﬁce of Science by
+Argonne National Laboratory under contract no. DE-AC02-06CH11357. This
+research used the 28-ID-2(XPD) beamline of the National Synchrotron Light
+Source II, a DOE Ofﬁce of Science User Facility operated for the DOE Ofﬁce
+of Science by Brookhaven National Laboratory under contract no. DE-
+SC0012704.
+AUTHOR CONTRIBUTIONS
+C.Z. and G.-L.X. conceived the idea and designed the experiment. K.A. and
+G.-L.X. supervised the project. C.Z. prepared the electrolytes and conducted
+the electrochemical tests. H.J. and L.C. conducted the theoretical simulations.
+C.Z., I.H., and C.-J.S. conducted the ex situ and in situ XAS characterizations
+and analysis. C.Z., T.L., Y.W., S.Z., W.X., and J.B. conducted the in situ and
+pouch cell HEXRD scanning. C.Z. and Z.Y. conducted the XPS tests. C.Z. con-
+ducted the ToF-SIMS tests. C.Z. and L.L. conducted the XFM tests. C.C.S.
+conducted the NMR tests. S.Z., Z.Y., and M.A. conducted the SEM character-
+izations. C.Z. and G.-L.X. wrote the manuscript with input from all authors. All
+authors discussed the results and commented on the manuscript.
+DECLARATION OF INTERESTS
+For G.-L.X., C.Z., and K.A., a US non-provisional patent application, patent
+application no. 17954839, has been ﬁled for this work.
+SUPPLEMENTAL INFORMATION
+Supplemental information can be found online at https://doi.org/10.1016/j.
+joule.2024.09.004.
+Received: May 2, 2024
+Revised: August 18, 2024
+Accepted: September 16, 2024
+Published: October 8, 2024
+REFERENCES
+1. Zhao, C., Xu, G.L., Yu, Z., Zhang, L.C., Hwang, I., Mo, Y.X., Ren, Y.X.,
+Cheng, L., Sun, C.J., Ren, Y., et al. (2021). A high energy and long-cycling
+lithium-sulfur pouch cell via a macroporous catalytic cathode with double-
+end binding sites. Nat. Nanotechnol. 16, 166–173. https://doi.org/10.
+1038/s41565-020-00797-w.
+2. Zhang, Y., Kang, C., Zhao, W., Song, Y., Zhu, J., Huo, H., Ma, Y., Du, C.,
+Zuo, P., Lou, S., and Yin, G. (2023). d-p Hybridization-Induced ‘‘Trapping–
+Coupling–Conversion’’ Enables High-Efﬁciency Nb Single-Atom Catalysis
+for Li–S Batteries. J. Am. Chem. Soc. 145, 1728–1739. https://doi.org/10.
+1021/jacs.2c10345.
+3. Hou, L.P., Li, Z., Yao, N., Bi, C.X., Li, B.Q., Chen, X., Zhang, X.Q., and
+Zhang, Q. (2022). Weakening the solvating power of solvents to encapsu-
+late lithium polysulﬁdes enables long-cycling lithium–sulfur batteries. Adv.
+Mater. 34, e2205284. https://doi.org/10.1002/adma.202205284.
+4. Li, X.-Y., Feng, S., Zhao, C.-X., Cheng, Q., Chen, Z.-X., Sun, S.-Y., Chen,
+X., Zhang, X.-Q., Li, B.-Q., Huang, J.-Q., and Zhang, Q. (2022). Regulating
+Lithium Salt to Inhibit Surface Gelation on an Electrocatalyst for High-
+Energy-Density Lithium–Sulfur Batteries. J. Am. Chem. Soc. 144,
+14638–14646. https://doi.org/10.1021/jacs.2c04176.
+5. Xue, P., Zhu, K., Gong, W., Pu, J., Li, X., Guo, C., Wu, L., Wang, R., Li, H.,
+Sun, J., et al. (2022). ‘‘One Stone Two Birds’’ Design for Dual-Functional
+TiO2-TiN
+Heterostructures
+Enabled
+Dendrite-Free
+and
+Kinetics-
+Enhanced Lithium–Sulfur Batteries. Adv. Energy Mater. 12, 2200308.
+https://doi.org/10.1002/aenm.202200308.
+6. Xie, C., Zhao, C., Jeong, H., Li, T., Li, L., Xu, W., Yang, Z., Lin, C., Liu, Q.,
+Cheng, L., et al. (2023). Suppressing Universal Cathode Crossover in High-
+Energy Lithium Metal Batteries via a Versatile Interlayer Design. Angew.
+Chem. Int. Ed. 62, e202217476. https://doi.org/10.1002/anie.202217476.
+7. Hou, L.-P., Yao, L.-Y., Bi, C.-X., Xie, J., Li, B.-Q., Huang, J.-Q., and Zhang,
+X.-Q. (2022). High-valence sulfur-containing species in solid electrolyte
+interphase stabilizes lithium metal anodes in lithium–sulfur batteries.
+J. Energy Chem. 68, 300–305. https://doi.org/10.1016/j.jechem.2021.
+12.024.
+8. Zhao, M., Li, B.-Q., Zhang, X.-Q., Huang, J.-Q., and Zhang, Q. (2020). A
+Perspective toward Practical Lithium–Sulfur Batteries. ACS Cent. Sci. 6,
+1095–1104. https://doi.org/10.1021/acscentsci.0c00449.
+9. Yuan, H., Peng, H.-J., Huang, J.-Q., and Zhang, Q. (2019). Sulfur Redox
+Reactions at Working Interfaces in Lithium–Sulfur Batteries: A Perspec-
+tive. Adv. Mater. Interfaces 6, 1802046. https://doi.org/10.1002/admi.
+201802046.
+10. Zhong, Y., Wang, Q., Bak, S.-M., Hwang, S., Du, Y., and Wang, H. (2023).
+Identiﬁcation and Catalysis of the Potential-Limiting Step in Lithium-Sulfur
+Joule 8, 3397–3411, December 18, 2024 3409
+Article
+ll
+
+<<PAGE 15>>
+Batteries. J. Am. Chem. Soc. 145, 7390–7396. https://doi.org/10.1021/
+jacs.2c13776.
+11. Shi, F., Pei, A., Boyle, D.T., Xie, J., Yu, X., Zhang, X., and Cui, Y. (2018).
+Lithium metal stripping beneath the solid electrolyte interphase. Proc.
+Natl. Acad. Sci. USA 115, 8529–8534. https://doi.org/10.1073/pnas.
+1806878115.
+12. Tan, S., Kim, J.-M., Corrao, A., Ghose, S., Zhong, H., Rui, N., Wang, X.,
+Senanayake, S., Polzin, B.J., Khalifah, P., et al. (2023). Unravelling the con-
+voluted and dynamic interphasial mechanisms on Li metal anodes. Nat.
+Nanotechnol. 18, 243–249. https://doi.org/10.1038/s41565-022-01273-3.
+13. Kang, N., Lin, Y., Yang, L., Lu, D., Xiao, J., Qi, Y., and Cai, M. (2019). Cath-
+ode porosity is a missing key parameter to optimize lithium-sulfur battery
+energy density. Nat. Commun. 10, 4597. https://doi.org/10.1038/s41467-
+019-12542-6.
+14. Li, Y., Fu, K.K., Chen, C., Luo, W., Gao, T., Xu, S., Dai, J., Pastel, G., Wang,
+Y., Liu, B., et al. (2017). Enabling High-Areal-Capacity Lithium–Sulfur Bat-
+teries: Designing Anisotropic and Low-Tortuosity Porous Architectures.
+ACS Nano 11, 4801–4807. https://doi.org/10.1021/acsnano.7b01172.
+15. Han, Z., Li, S., Xiong, R., Jiang, Z., Sun, M., Hu, W., Peng, L., He, R., Zhou,
+H., Yu, C., et al. (2022). Low Tortuosity and Reinforced Concrete Type
+Ultra-Thick Electrode for Practical Lithium–Sulfur Batteries. Adv. Funct.
+Mater. 32, 2108669. https://doi.org/10.1002/adfm.202108669.
+16. Feng, S., Singh, R.K., Fu, Y., Li, Z., Wang, Y., Bao, J., Xu, Z., Li, G., Ander-
+son, C., Shi, L., et al. (2022). Low-tortuous and dense single-particle-layer
+electrode for high-energy lithium-sulfur batteries. Energy Environ. Sci. 15,
+3842–3853. https://doi.org/10.1039/D2EE01442D.
+17. Shi, L., Bak, S.-M., Shadike, Z., Wang, C., Niu, C., Northrup, P., Lee, H.,
+Baranovskiy, A.Y., Anderson, C.S., Qin, J., et al. (2020). Reaction hetero-
+geneity in practical high-energy lithium–sulfur pouch cells. Energy Environ.
+Sci. 13, 3620–3632. https://doi.org/10.1039/D0EE02088E.
+18. Ren, Y., Bhargav, A., Shin, W., Sul, H., and Manthiram, A. (2022). Anode-
+Free Lithium–Sulfur Cells Enabled by Rationally Tuning Lithium Polysulﬁde
+Molecules. Angew. Chem. Int. Ed. 61, e202207907. https://doi.org/10.
+1002/anie.202207907.
+19. Liu, H., Cheng, X.-B., Xu, R., Zhang, X.-Q., Yan, C., Huang, J.-Q., and
+Zhang, Q. (2019). Plating/Stripping Behavior of Actual Lithium Metal
+Anode. Adv. Energy Mater. 9, 1902254. https://doi.org/10.1002/aenm.
+201902254.
+20. Pang, Q., Shyamsunder, A., Narayanan, B., Kwok, C.Y., Curtiss, L.A., and
+Nazar, L.F. (2018). Tuning the electrolyte network structure to invoke
+quasi-solid state sulfur conversion and suppress lithium dendrite forma-
+tion in Li–S batteries. Nat. Energy 3, 783–791. https://doi.org/10.1038/
+s41560-018-0214-0.
+21. Zheng, J., Ji, G., Fan, X., Chen, J., Li, Q., Wang, H., Yang, Y., DeMella,
+K.C., Raghavan, S.R., and Wang, C. (2019). High-Fluorinated Electrolytes
+for Li–S Batteries. Adv. Energy Mater. 9, 1803774. https://doi.org/10.
+1002/aenm.201803774.
+22. Zhao, C., Daali, A., Hwang, I., Li, T., Huang, X., Robertson, D., Yang, Z.,
+Trask, S., Xu, W., Sun, C.-J., et al. (2022). Pushing Lithium–Sulfur Batteries
+towards Practical Working Conditions through a Cathode–Electrolyte Syn-
+ergy. Angew. Chem. Int. Ed. 61, e202203466. https://doi.org/10.1002/
+anie.202203466.
+23. Dong, L., Liu, J., Chen, D., Han, Y., Liang, Y., Yang, M., Yang, C., and He,
+W. (2019). Suppression of Polysulﬁde Dissolution and Shuttling with Gluta-
+mate Electrolyte for Lithium Sulfur Batteries. ACS Nano 13, 14172–14181.
+https://doi.org/10.1021/acsnano.9b06934.
+24. Liu, T., Shi, Z., Li, H., Xue, W., Liu, S., Yue, J., Mao, M., Hu, Y.-S., Li, H.,
+Huang, X., et al. (2021). Low-Density Fluorinated Silane Solvent Enhancing
+Deep Cycle Lithium–Sulfur Batteries’ Lifetime. Adv. Mater. 33, e2102034.
+https://doi.org/10.1002/adma.202102034.
+25. He, M., Li, X., Yang, X., Wang, C., Zheng, M.L., Li, R., Zuo, P., Yin, G., and
+Sun, X. (2021). Realizing Solid-Phase Reaction in Li–S Batteries via Local-
+ized High-Concentration Carbonate Electrolyte. Adv. Energy Mater. 11,
+2101004. https://doi.org/10.1002/aenm.202101004.
+26. Zhang, S.S. (2006). A review on electrolyte additives for lithium-ion batte-
+ries. J. Power Sources 162, 1379–1394. https://doi.org/10.1016/j.jpows-
+our.2006.07.074.
+27. Ellis, L.D., Xia, J., Louli, A.J., and Dahn, J.R. (2016). Effect of Substituting
+LiBF4 for LiPF6 in High Voltage Lithium-Ion Cells Containing Electrolyte
+Additives. J. Electrochem. Soc. 163, A1686–A1692. https://doi.org/10.
+1149/2.0851608jes.
+28. Ellis, L.D., Hill, I.G., Gering, K.L., and Dahn, J.R. (2017). Synergistic Effect
+of
+LiPF6
+and
+LiBF4
+as
+Electrolyte
+Salts
+in
+Lithium-Ion
+Cells.
+J. Electrochem. Soc. 164, A2426–A2433. https://doi.org/10.1149/2.
+0811712jes.
+29. Zuo, X., Fan, C., Liu, J., Xiao, X., Wu, J., and Nan, J. (2013). Lithium Tetra-
+ﬂuoroborate as an Electrolyte Additive to Improve the High Voltage Perfor-
+mance of Lithium-Ion Battery. J. Electrochem. Soc. 160, A1199–A1204.
+https://doi.org/10.1149/2.066308jes.
+30. Ta¨ ubert, C., Fleischhammer, M., Wohlfahrt-Mehrens, M., Wietelmann, U.,
+and Buhrmester, T. (2010). LiBOB as Electrolyte Salt or Additive for
+Lithium-Ion Batteries Based on LiNi0.8Co0.15Al0.05O2 / Graphite.
+J. Electrochem. Soc. 157, A721. https://doi.org/10.1149/1.3374666.
+31. Liu, J., Chen, Z., Busking, S., Belharouak, I., and Amine, K. (2007). Effect of
+electrolyte additives in improving the cycle and calendar life of graphite/
+Li1.1[Ni1/3Co1/3Mn1/3]0.9O2
+Li-ion
+cells.
+J.
+Power
+Sources
+174,
+852–855. https://doi.org/10.1016/j.jpowsour.2007.06.225.
+32. Weber, R., Genovese, M., Louli, A.J., Hames, S., Martin, C., Hill, I.G., and
+Dahn, J.R. (2019). Long cycle life and dendrite-free lithium morphology in
+anode-free lithium pouch cells enabled by a dual-salt liquid electrolyte.
+Nat. Energy 4, 683–689. https://doi.org/10.1038/s41560-019-0428-9.
+33. Zhang, S.S. (2013). Liquid electrolyte lithium/sulfur battery: Fundamental
+chemistry, problems, and solutions. J. Power Sources 231, 153–162.
+https://doi.org/10.1016/j.jpowsour.2012.12.102.
+34. Karaseva, E.V., Khramtsova, L.A., Lobov, A.N., Kuzmina, E.V., Eroglu, D.,
+and Kolosnitsyn, V.S. (2022). Features of cycling of lithium-sulfur cells with
+electrolytes based on sulfolane solutions of LiPF6 and LiBF4. J. Power
+Sources 548, 231980. https://doi.org/10.1016/j.jpowsour.2022.231980.
+35. Liu, G., Sun, Q., Li, Q., Zhang, J., and Ming, J. (2021). Electrolyte Issues in
+Lithium–Sulfur
+Batteries:
+Development,
+Prospect,
+and
+Challenges.
+Energy Fuels 35, 10405–10427. https://doi.org/10.1021/acs.energyfuels.
+1c00990.
+36. Zheng, D., Yang, X.-Q., and Qu, D. (2016). Stability of the Solid Electrolyte
+Interface on the Li Electrode in Li–S Batteries. ACS Appl. Mater. Interfaces
+8, 10360–10366. https://doi.org/10.1021/acsami.6b02242.
+37. Ueno, K., Park, J.-W., Yamazaki, A., Mandai, T., Tachikawa, N., Dokko, K.,
+and Watanabe, M. (2013). Anionic Effects on Solvate Ionic Liquid Electro-
+lytes in Rechargeable Lithium–Sulfur Batteries. J. Phys. Chem. C 117,
+20509–20516. https://doi.org/10.1021/jp407158y.
+38. Lin, Y., Zhou, Y., Huang, S., Xiao, M., Han, D., Qin, J., Wang, S., and Meng,
+Y. (2022). Catalytic Disproportionation for Suppressing Polysulﬁde Shuttle
+in Li–S Pouch Cells: Beyond Adsorption Interactions. Adv. Energy Mater.
+12, 2201912. https://doi.org/10.1002/aenm.202201912.
+39. Sun, J., Zhang, K., Fu, Y., and Guo, W. (2023). Benzoselenol as an organic
+electrolyte additive in Li-S battery. Nano Res. 16, 3814–3822. https://doi.
+org/10.1007/s12274-022-4361-z.
+40. Lian, J., Guo, W., and Fu, Y. (2021). Isomeric Organodithiol Additives for
+Improving Interfacial Chemistry in Rechargeable Li–S Batteries. J. Am.
+Chem. Soc. 143, 11063–11071. https://doi.org/10.1021/jacs.1c04222.
+41. Raﬁe, A., Kim, J.W., Sarode, K.K., and Kalra, V. (2022). A review on the use
+of carbonate-based electrolytes in Li-S batteries: A comprehensive
+approach enabling solid-solid direct conversion reaction. Energy Storage
+Mater. 50, 197–224. https://doi.org/10.1016/j.ensm.2022.03.015.
+42. Li, S., Ma, J., Zeng, Z., Hu, W., Zhang, W., Cheng, S., and Xie, J. (2020).
+Enhancing the kinetics of lithium–sulfur batteries under solid-state
+3410 Joule 8, 3397–3411, December 18, 2024
+Article
+ll
+
+<<PAGE 16>>
+conversion by using tellurium as a eutectic accelerator. J. Mater. Chem. A
+8, 3405–3412. https://doi.org/10.1039/C9TA13191D.
+43. Xu, G.-L., Sun, H., Luo, C., Estevez, L., Zhuang, M., Gao, H., Amine, R.,
+Wang, H., Zhang, X., Sun, C.-J., et al. (2019). Solid-State Lithium/
+Selenium–Sulfur Chemistry Enabled via a Robust Solid-Electrolyte Inter-
+phase. Adv. Energy Mater. 9, 1802235. https://doi.org/10.1002/aenm.
+201802235.
+44. Su, C.-C., He, M., Amine, R., and Amine, K.A. (2019). A Selection Rule for
+Hydroﬂuoroether Electrolyte Cosolvent: Establishing a Linear Free-Energy
+Relationship in Lithium–Sulfur Batteries. Angew. Chem. Int. Ed. 58, 10591–
+10595. https://doi.org/10.1002/anie.201904240.
+45. Zhao, C., Xu, G.-L., Zhao, T., and Amine, K. (2020). Beyond the Polysulﬁde
+Shuttle and Lithium Dendrite Formation: Addressing the Sluggish Sulfur
+Redox Kinetics for Practical High-Energy Li-S Batteries. Angew. Chem.
+Int. Ed. 59, 17634–17640. https://doi.org/10.1002/anie.202007159.
+46. Cuisinier, M., Cabelguen, P.-E., Evers, S., He, G., Kolbeck, M., Garsuch,
+A., Bolin, T., Balasubramanian, M., and Nazar, L.F. (2013). Sulfur Specia-
+tion in Li–S Batteries Determined by Operando X-ray Absorption Spec-
+troscopy. J. Phys. Chem. Lett. 4, 3227–3232. https://doi.org/10.1021/
+jz401763d.
+47. Gorlin, Y., Patel, M.U.M., Freiberg, A., He, Q., Piana, M., Tromp, M., and
+Gasteiger, H.A. (2016). Understanding the Charging Mechanism of
+Lithium-Sulfur Batteries Using Spatially Resolved Operando X-Ray Ab-
+sorption Spectroscopy. J. Electrochem. Soc. 163, A930–A939. https://
+doi.org/10.1149/2.0631606jes.
+48. Lee, C.-W., Pang, Q., Ha, S., Cheng, L., Han, S.-D., Zavadil, K.R., Gal-
+lagher, K.G., Nazar, L.F., and Balasubramanian, M. (2017). Directing the
+Lithium–Sulfur Reaction Pathway via Sparingly Solvating Electrolytes for
+High Energy Density Batteries. ACS Cent. Sci. 3, 605–613. https://doi.
+org/10.1021/acscentsci.7b00123.
+49. Su, Y.-S., Fu, Y., Cochell, T., and Manthiram, A. (2013). A strategic
+approach to recharging lithium-sulphur batteries for long cycle life. Nat.
+Commun. 4, 2985. https://doi.org/10.1038/ncomms3985.
+50. Guo, J., and Liu, J. (2019). A binder-free electrode architecture design for
+lithium–sulfur batteries: a review. Nanoscale Adv. 1, 2104–2122. https://
+doi.org/10.1039/C9NA00040B.
+51. Gorlin, Y., Siebel, A., Piana, M., Huthwelker, T., Jha, H., Monsch, G.,
+Kraus, F., Gasteiger, H.A., and Tromp, M. (2015). Operando Characteriza-
+tion of Intermediates Produced in a Lithium-Sulfur Battery. J. Electrochem.
+Soc. 162, A1146–A1155. https://doi.org/10.1149/2.0081507jes.
+52. See, K.A., Leskes, M., Grifﬁn, J.M., Britto, S., Matthews, P.D., Emly, A.,
+Van der Ven, A., Wright, D.S., Morris, A.J., Grey, C.P., and Seshadri, R.
+(2014). Ab Initio Structure Search and in Situ 7Li NMR Studies of Discharge
+Products in the Li–S Battery System. J. Am. Chem. Soc. 136, 16368–
+16377. https://doi.org/10.1021/ja508982p.
+53. Cui, Y., Abouimrane, A., Lu, J., Bolin, T., Ren, Y., Weng, W., Sun, C., Mar-
+oni, V.A., Heald, S.M., and Amine, K. (2013). (De)lithiation mechanism of Li/
+SeS(x) (x = 0-7) batteries determined by in situ synchrotron X-ray diffrac-
+tion and X-ray absorption spectroscopy. J. Am. Chem. Soc. 135, 8047–
+8056. https://doi.org/10.1021/ja402597g.
+54. Gonbeau, D., Bouih, H., Pﬁster-Guillouzo, G., Menetrier, M., and Levas-
+seur, A. (1995). X-ray photoelectron spectrum of glassy B2S3. Experi-
+mental and theoretical study. Faraday Trans. 91, 93–97. https://doi.org/
+10.1039/FT9959100093.
+55. Burke, A.R., Brown, C.R., Bowling, W.C., Glaub, J.E., Kapsch, D., Love,
+C.M., Whitaker, R.B., and Moddeman, W.E. (1988). Ignition mechanism
+of the titanium–boron pyrotechnic mixture. Surf. Interface Anal. 11,
+353–358. https://doi.org/10.1002/sia.740110614.
+56. Gouin, X., Grange, P., Bois, L., L’Haridon, P., and Laurent, Y. (1995). Char-
+acterization of the nitridation process of boric acid. J. Alloys Compd. 224,
+22–28. https://doi.org/10.1016/0925-8388(95)01532-9.
+57. Hendrickson, D.N., Hollander, J.M., and Jolly, W.L. (1970). Core-electron
+binding energies for compounds of boron, carbon, and chromium. Inorg.
+Chem. 9, 612–615. https://doi.org/10.1021/ic50085a035.
+58. Cai, G., Holoubek, J., Li, M., Gao, H., Yin, Y., Yu, S., Liu, H., Pascal, T.A.,
+Liu, P., and Chen, Z. (2022). Solvent selection criteria for temperature-
+resilient lithium–sulfur batteries. Proc. Natl. Acad. Sci. USA 119,
+e2200392119. https://doi.org/10.1073/pnas.2200392119.
+59. Fan, C.-Y., Zheng, Y.-P., Zhang, X.-H., Shi, Y.-H., Liu, S.-Y., Wang, H.-C.,
+Wu, X.-L., Sun, H.-Z., and Zhang, J.-P. (2018). High-Performance and
+Low-Temperature Lithium–Sulfur Batteries: Synergism of Thermodynamic
+and Kinetic Regulation. Adv. Energy Mater. 8, 1703638. https://doi.org/10.
+1002/aenm.201703638.
+60. Adenusi, H., Chass, G.A., Passerini, S., Tian, K.V., and Chen, G. (2023).
+Lithium Batteries and the Solid Electrolyte Interphase (SEI)—Progress
+and Outlook. Adv. Energy Mater. 13, 2203307. https://doi.org/10.1002/
+aenm.202203307.
+61. Xie, C., Zhao, C., Jeong, H., Liu, Q., Li, T., Xu, W., Cheng, L., Xu, G.-L.,
+Amine, K., and Chen, G. (2024). Regulating Li Nucleation and Growth Het-
+erogeneities via Near-Surface Lithium-Ion Irrigation for Stable Anode-Less
+Lithium Metal Batteries. Small 20, e2306868. https://doi.org/10.1002/smll.
+202306868.
+62. Cheng, X.-B., Yan, C., Peng, H.-J., Huang, J.-Q., Yang, S.-T., and Zhang,
+Q. (2018). Sulfurized solid electrolyte interphases with a rapid Li+ diffusion
+on dendrite-free Li metal anodes. Energy Storage Mater. 10, 199–205.
+https://doi.org/10.1016/j.ensm.2017.03.008.
+63. Li, Y., Huang, W., Li, Y., Pei, A., Boyle, D.T., and Cui, Y. (2018). Correlating
+Structure and Function of Battery Interphases at Atomic Resolution Using
+Cryoelectron Microscopy. Joule 2, 2167–2177. https://doi.org/10.1016/j.
+joule.2018.08.004.
+64. Tan, J., Matz, J., Dong, P., Shen, J., and Ye, M. (2021). A Growing Appre-
+ciation for the Role of LiF in the Solid Electrolyte Interphase. Adv. Energy
+Mater. 11, 2100046. https://doi.org/10.1002/aenm.202100046.
+Joule 8, 3397–3411, December 18, 2024 3411
+Article
+ll

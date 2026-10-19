@@ -1,0 +1,128 @@
+Investigation and determination of electrochemical reaction kinetics in lithium-sulfur batteries with electrolyte LiTFSI in DOL/DME
+Sean Grabea, Matthew Denta, Shumaila Babara,b, Teng Zhanga,b, Stephen Tennisona,b, John F. Wattsa,b and Constantina Lekakoua,b,z 
+a Centre of Engineering Materials, School of Mechanical Engineering Sciences, University of Surrey, Guildford GU2 7XH, United Kingdom
+b The Faraday Institution, Quad One, Harwell Campus, Didcot OX11 0RA, United Kingdom
+z Corresponding Author E-mail Address: C.Lekakou@surrey.ac.uk
+
+NOMENCLATURE (for manuscript and SI file):
+Ap: specific pore wall surface area 
+Asl-l,s,p: solid-liquid interfacial area of species s in pore size p
+: molar concentration of s species in electrolyte volume of pore p
+cs,ref: reference concentration
+Cs-sat: saturation concentration of species s in the electrolyte
+df: fiber diameter of cathode host
+dp: pore size for pore size p (pore diameter for cylinrical and spherical pores or pore thickness for slit pores)
+: size of desolvated ion or molecule of species s
+: size of solvated ion or molecule of species s
+dV: local numerical volume
+: diffusion coefficient of species s in pore p
+Es: solvation energy for first solvent shell around ion or molecule of species s
+F: Faraday constant
+: decay factor if electrochemical energy, EEC, is less than 
+Hc: cathode thickness
+Iapp: applied current demsiy at current collector
+ie: ion current density in the electrolyte phase
+ij,p: current density due to electrochemical reaction j in pore size p
+io,j,ref: empirical current density value due to electrochemical reaction j for  and hj = 0
+isol: electron current density in solid phase
+ks: mass transfer coefficient of species ks in electrolyte solvent system
+ms,: stoichiometric coefficient of species s in electrochemical reaction j
+n: timestep
+NA: Avocadro’s number
+ns: coordination number of species s
+nj is the number of electrons transferred in reaction j
+Ns is the flux of species s
+R: ideal gas constant
+Rs,p: net rate between the rate of dissolution and the rate of precipitation of species s in pore size p
+rs,p: the rate of all the electrochemical reactions j
+T: absolute temperature
+t: time
+ti,p: transference number of species s in pore size p
+Uj,ref: open-circuit potential (OCP) for reaction j
+: empirical OCP value for = 1000 mol m-3
+vp: specific pore volume 
+Vs: volume of ion or molecule of species s
+x: the through-thickness direction in the cell from x = 0 at the current collector of the anode to x = L at the current collector of the cathode
+zs number of transferred electrons for ion or molecule of species s
+
+Greek Symbols
+aaj: anodic charge transfer coefficient for reaction j
+acj: cathodic charge transfer coefficient for reaction j
+: volume fraction of species s in volume of pore p
+s,p: constrictivity of species s in pore p
+s,p: desolvation energy barrier of species s in pore p
+ni: change of coordination number in desolvation of species s in small micropore
+DV: battery cell potential
+o: vacuum permittivity
+p: pore fraction of pore p
+r: relative permittivity of the electrolyte
+ viscosity of electrolyte
+: viscosity of solvent
+hj: overpotential for reaction j
+ra,ch: areal density of cathode host
+s = conductivity
+se = conductivity of electrolyte phase
+ssol = conductivity of solid phase
+e: potential of electrolyte phase
+sol: potential of solid-phase
+
+Subscripts
+e: electrolyte phase
+j: electrochemical reaction
+n: timestep
+p: pore size p, where p is integer from 1 to Np 
+s: species (electrolyte ion: Li+, TFSI-, sulfide ion, S8 or S4)
+sol: solid phase
+
+Table SI- 1. Additional equations of the continuum model of the electrochemical processes in a Li-S battery
+
+
+Table SI- 2. Additional input data to the algorithm, beyond the data given in the main manuscript
+
+REFERENCES
+C. Park, M. Kanduč, R. Chudoba, A. Ronneburg, S. Risse, M. Ballauff, J. Dzubiella, Molecular simulations of electrolyte structure and dynamics in lithium–sulfur battery solvents, J. Power Sources, 373, 70-78 (2018)
+M. Dent, E .Jakubczyk, T. Zhang and C. Lekakou, Kinetics of sulphur dissolution in lithium–sulphur batteries, Journal of Physics: Energy, 4 (2), 024001 (2022)
+H.A. Adeoye, M. Dent, J.F. Watts, S. Tennison and C. Lekakou, Solubility and dissolution kinetics of sulfur and sulfides in electrolyte solvents for lithium-sulfur and sodium-sulfur batteries, Journal of Chemical Physics, in press (2023)
+S. Babar and C. Lekakou, Molecular modeling of electrolyte and polysulfide ions for lithium-sulfur batteries, Ionics, 27, 635-642 (2021)
+K. Lasetta, J.P. Baboo and C. Lekakou, Modeling and simulations of the sulfur infiltration in activated carbon fabrics during composite cathode fabrication for lithium-sulfur batteries, Journal of Composites Science, 5 (3), 65 (2021)
+S. Grabe, J.P. Baboo, S. Tennison, T. Zhang, C. Lekakou, E.I. Andritsos, Q. Cai, S. Downes, S. Hinder and J.F. Watts, Sulfur infiltration and allotrope formation in porous cathode hosts for lithium‐sulfur batteries, AIChE journal, e17638 (2022)
+K. Kumaresan, Y. Mikhaylik and R.E. White, A mathematical model for a lithium–sulfur cell, J. Electrochem. Soc., 155, A576-A583 (2008)
+
+
+Current flux of ions s from pore p-1 to pore p: 
+ | (SI.1)
+Decay factor if electrochemical energy, EEC, is less than :
+ | (SI.2)
+Desolvation energy barrier for ds < dp < dsolv. s (for larger pores: Δni = 0):
+     | (SI.3)
+ | (SI.4)
+ | (SI.5)
+ | (SI.6)
+ | (SI.7)
+ | (SI.8)
+ | (SI.9)
+ | (SI.10)
+ | (SI.11)
+ | (SI.12)
+          | (SI.13) 
+ | (SI.14)
+ | (SI.15)
+       (Nernst-Einstein equation)   | (SI.16)
+ELECTROLYTE SOLUTION | ELECTROLYTE SOLUTION | ELECTROLYTE SOLUTION | ELECTROLYTE SOLUTION | ELECTROLYTE SOLUTION | ELECTROLYTE SOLUTION | ELECTROLYTE SOLUTION | ELECTROLYTE SOLUTION | ELECTROLYTE SOLUTION | ELECTROLYTE SOLUTION
+ (mPas)[1] | 0.51 |  |  |  |  |  |  |  | 
+Species s: | Li2S | Li2S2 | Li2S4 | Li2S6 | Li2S8 | S8 | S4 | Li+ | TFSI-
+Cs-sat (mol m-3) | 60 | 250 | 1250 | 917 | 750 | 5 | 10 |  | 
+ks (m s-1)[2,3] | 1.5x10-3 | 135x10-3 | 3.5x10-3 | 3.5x10-3 | 3.5x10-3 | 7.2x10-4 | 7.2x10-4 |  | 
+[4] | 0.75 | 0.81 | 1.11 | 1.38 | 1.2 | 1.2 | 1.1 | 0.54 | 0.61
+[4-6] | 0.36 | 0.36 | 0.37 | 0.48 | 0.53 | 0.7 | 0.4 | 0.18 | 0.29
+Vs
+ (m3 mol-1)[4,7] | 1.47x10-5 | 2.94x10-5 | 5.88x10-5 | 8.82x10-5 | 12.4x10-5 | 12.4x10-5 | 5.88x10-5 | 1.3x10-5 | 20.3x10-5
+s 
+(kJ mol-1)[4,6] | 70 | 140 | 280 | 420 | 564 | 564 | 1 | 110 | 1100
+CATHODE | CATHODE | CATHODE | CATHODE | CATHODE | CATHODE | CATHODE | CATHODE | CATHODE | CATHODE
+Hc (mm) | 0.5 |  |  |  |  |  |  |  | 
+ssol,carbon 
+(S m-1) | 93.45 |  |  |  |  |  |  |  | 
+ssol,sulfur (S m-1) | 0.5x10-15 |  |  |  |  |  |  |  | 
+ra,ch (kg m-2) | 0.12 |  |  |  |  |  |  |  | 
+df (mm) | 14 |  |  |  |  |  |  |  | 

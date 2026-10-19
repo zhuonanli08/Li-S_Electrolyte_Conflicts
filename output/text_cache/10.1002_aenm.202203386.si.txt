@@ -1,0 +1,1290 @@
+
+<<PAGE 1>>
+Supporting Information
+for Adv. Energy Mater., DOI: 10.1002/aenm.202203386
+Understanding of Low-Porosity Sulfur Electrode for High-
+Energy Lithium–Sulfur Batteries
+Yucheng Fu,* Rajesh K Singh, Shuo Feng, Jun Liu, Jie
+Xiao, Jie Bao, Zhijie Xu, and Dongping Lu*
+
+<<PAGE 2>>
+1 
+Understanding of Low-Porosity Sulfur Electrode for High-Energy 
+Lithium-Sulfur Batteries 
+Yucheng Fu1,*, Rajesh K Singh2, Shuo Feng2, Jun Liu2, Jie Xiao2, Jie Bao2, Zhijie Xu1, 
+Dongping Lu2,* 
+1Physical and Computational Science Directorate, Pacific Northwest National Laboratory, 
+Richland, WA 99352, USA 
+2Energy and Environmental Directorate, Pacific Northwest National Laboratory, Richland, 
+WA 99352, USA 
+ 
+Contents 
+S1. Electrode performance comparison 
+S2. Experiment 
+S3. Multiscale Li-S battery modeling 
+S3.1. Three-dimensional (3-D) pore-scale electrode wetting model  
+S3.2. One dimensional (1-D) Li-S battery model 
+S4. Influence of the low-porosity electrode wettability 
+ 
+ 
+                                                 
+* Corresponding Author 
+
+<<PAGE 3>>
+2 
+S1 Electrode performance comparison 
+ 
+Table. S 1 Multiscale Li-S model calculation of electrode wetting and energy density at 72% 
+and 45% porosity with different secondary particle sizes. The sulfur mass loading is 4 mg/cm2. 
+Porosity 
+Secondary 
+particle size 
+Cathode 
+Thickness 
+Electrode 
+Wetting 
+Specific 
+Capacity 
+Volumetric 
+Capacity 
+Gravimetric 
+Capacity 
+Gravimetric 
+Capacity 
+(with electrolyte) 
+[-] 
+[  ] 
+[  ] 
+[%] 
+[mAh/gs] 
+[mAh/cm3] 
+[mAh/g] 
+[mAh/g] 
+72% 
+90 
+120 
+100 
+1000 
+333 
+638 
+255 
+72% 
+60 
+120 
+100 
+1000 
+333 
+638 
+255 
+72% 
+40 
+120 
+100 
+1000 
+333 
+638 
+255 
+72% 
+20 
+120 
+100 
+1000 
+333 
+638 
+255 
+45% 
+90 
+60 
+95 
+917 
+611 
+585 
+404 
+45% 
+60 
+60 
+86 
+855 
+570 
+545 
+388 
+45% 
+40 
+60 
+80 
+787 
+525 
+502 
+365 
+45% 
+20 
+60 
+53 
+483 
+322 
+308 
+247 
+ 
+S2 Experiment 
+Two types of low-porosity electrodes were prepared, and the corresponding discharge curves 
+were measured with those electrodes to validate the proposed multiscale model. To synthesize 
+the electrode material, the Nitrogen-doped integrated Ketjen Black/Sulfur (NKB/S) composite 
+was prepared using a modified previously reported approach [1,2]Typically, KB powder 
+(AkzoNobel) and poly(melamine-co-formaldehyde) methylated solution (Sigma-Aldrich) were 
+blended thoroughly at a weight ratio of 1:1, and the mixture then was dried and carbonized at 
+900 °C under Ar atmosphere for 10 hours. The collected NKB was heat treated with sulfur 
+(weight ratio NKB:S = 1:4) at 155°C for 12 hours resulted in the formation of secondary NKB/S, 
+which then were sieved and separated into different size ranges. 
+To prepare the cathode, carbon nanofiber (Sigma-Aldrich) first was dispersed in a 
+polyacrylic acid (Sigma-Aldrich) dimethylformamide (DMF) solution (2 wt%) to form a uniform 
+slurry. Then, the NKB/S particles were added and thoroughly mixed in a Thinky mixer for 15 
+minutes (ARE-310, Thinky). The weight ratio of NKB/S, carbon nanofiber, and polyacrylic acid 
+was controlled at 8:1:1, respectively, and the solid content in the slurry was 20%. The obtained 
+slurry was cast onto the aluminum foil with a sulfur loading of 4 mg cm-2
+ and dried in a vacuum 
+oven at 60 °C for 12 hours. 
+
+<<PAGE 4>>
+3 
+The resulting low-porosity electrodes come with two different particle size. The large-
+particle cathode (LPC) was prepared using secondary particles with a size of around 90   . The 
+small-particle cathode (SPC) was prepared using secondary particles with a size of around 20 
+  . Porosities of the electrodes were controlled by manipulating electrode thickness by 
+calendering. For a 4 mg cm-2 cathode with 64% sulfur content, the electrode porosity was 
+estimated to be 45%, with an electrode thickness of 60 µm for both the LPC and SPC. To 
+qualitatively understand the wetting of the LPC and SPC, energy dispersive spectroscopy (EDS) 
+was used to track the electrolyte (lithium bis(trifluoromethanesulfonyl)imide (LiTFSI, Gotion), 
+1,3-dioxolane (DOL, Gotion) and 1,2-dimethoxyethane (DME, Gotion) (1:1, v/v)) distribution 
+inside the electrode. Fluorine only comes from LiTFSI, which can be a good indicator of 
+electrolyte wetting conditions. As can be seen in Fig. S 1, the LPC provides a more uniform 
+wetting pattern across the whole electrode, while the electrolyte inside the SPC only partially 
+wets the electrode, indicating worse wetting. 
+To measure the discharge curve, 2032-type coin cells were assembled in an Ar-filled 
+glovebox. The electrode area was 1.26 cm2 with a 250-µm lithium anode. A Celgar-2400 
+separator with a 1.9 cm diameter and 25 µm thickness was used in all coin cells. The electrolyte 
+was 1 M LiTFSI/DOL/DME and 0.3 M LiNO3. The electrolyte-to-sulfur ratio was controlled at a 
+lean-electrolyte condition of E/S = 4 µL/mgs. The coin cells were rested for 3 hours and then 
+tested on a LANHE battery tester CT3001A at 0.1 C (1 C = 1,000 mA/g) at 30 °C in a voltage 
+range of 1.8–2.8 V.  
+ 
+
+<<PAGE 5>>
+4 
+ 
+Fig. S 1 Visualization of the LPC (a-d) and SPC (e-h) electrode wetting conditions using the 
+Scanning Electron Microscopes (SEM)/Electron Dispersive X-ray Spectroscopy (EDS). The 1M 
+LiTFSI/DOL/DME was used as the electrolyte for wetting the electrode. 
+ 
+ 
+
+<<PAGE 6>>
+5 
+S3 Multiscale Li-S battery modeling 
+The governing equations and physics of the 3-D pore-scale electrode model and the 1-D 
+device-scale model is provided in this section. The strategy of integrating results of those models 
+into the multiscale Li-S battery model framework is discussed by explicitly considering the low-
+porosity electrode wetting influences simulated with first-principal.  
+ 
+S3.1 Three-dimensional (3-D) pore-scale electrode wetting model  
+The 3-D pore-scale electrode model aims to simulate electrolyte infiltration based on the first 
+principles. The acquired wetting distribution is used as the input profiles for the 1-D device-scale 
+electrochemical Li-S battery model for discharge predictions. The cathodes were generated using 
+the discrete element method (DEM). The secondary NKB/S particles (Fig. S 2e-f) were 
+represented with spherical particles of similar size (20 µm or 90 µm) to generate the SPC and 
+LPC, respectively. After settling down the locations of the spherical particles in the DEM, the 
+electrode geometry can be extracted for the electrolyte infiltration simulations. The CFD-
+generated cathodes have a porosity of 42%, which is close to the experimental cases after 
+calendaring.  
+This electrolyte infiltration process is simulated with the 3-D Computational Fluid Dynamics 
+(CFD) with the commercial software, STAR-CCM+ [3]. The initial setup of the 3-D pore-scale 
+model is shown in Fig. S 2(a-c). The volume of fluid (VOF) [4] is adopted to simulate the 
+gas/liquid, two-phase flow during the electrolyte infiltration. In the VOF simulation, the mass 
+and momentum conservation equations are solved iteratively using the segregated solver together 
+with SIMPLE algorithm [5]. The mass conservation equation has the form of: 
+
+
+0,
+t
+
+
+
+
+
+u
+ 
+(S1) 
+and the momentum conservation equation has the form: 
+
+
+
+
+
+
+T
+,
+p
+t
+
+
+
+
+
+
+
+
+
+
+σ
+u
+uu
+u
+u
+g
+F  
+(S2) 
+where   is density,   is viscosity,   is pressure, and     is the surface tension force that appears 
+at the liquid–gas interface. The terms   and   are the volume fraction weighted density and 
+viscosity in the corresponding computational cells: 
+
+
+1
+L
+G
+
+
+
+
+
+
+
+,  
+(S3) 
+
+<<PAGE 7>>
+6 
+
+
+1
+,
+L
+G
+
+
+
+
+
+
+
+  
+(S4) 
+where   is the volume fraction of the liquid phase. Air is used for the gas phase with properties 
+               and                 The liquid phase properties (            , 
+            ) [6] represent the electrolyte used in the Li-S battery tests. The interfacial 
+surface tension force,    , is computed using a continuum surface force model as [7]:  
+
+
+σ
+F
+n , 
+(S5) 
+where   is the surface tension coefficient,   is the local surface mean curvature, and   is surface 
+normal vector. For the electrolyte, the surface tension is determined as        mN/m [8]. On 
+the wall region, the unit surface normal  ̂ is enforced as  ̂       ̂     , where  ̂ and  ̂  are 
+the unit normal and tangential vectors on the wall surface, respectively. The contact angle   
+measures where the gas–liquid interface meets at the electrode surface. In this test, the contact 
+angle of       is selected for 3-D model.  
+The transport of the volume fraction   is governed by: 
+
+
+0.
+t
+
+
+
+
+
+
+u
+ 
+(S6) 
+The gas-phase volume fraction can be acquired directly as 1- . By solving Eq. (S6), mixture 
+density and viscosity in Eq. (S3) and (S4) can be obtained for each computational cell.  
+The generated electrode computational domain has a thickness of 120 µm and the yellow 
+region has a thickness of 60 µm for the LPC and the SPC wetting data calculation. As shown in 
+the figure, the SPC (Fig. S 2a) has around six to eight layers of particles while the LPC (Fig. S 
+2b) has only one to two layers of particles in the visualized electrodes. The electrolyte location is 
+initialized at the height of 100 µm to 200 µm during the CFD simulations. Driven by gravity, the 
+electrolyte will flow into the electrode pores, and the air will be pushed out from the top of the 
+electrode. When calculating the wetting profile, the bottom 60-µm thickness will be used, which 
+is the same thickness as the low-porosity electrode used for the experiment. This also eliminates 
+the boundary effect of the secondary particle packs in the top layers (>60 µm). 
+ 
+
+<<PAGE 8>>
+7 
+ 
+Fig. S 2 (a-c) Setup of the 3-D pore-scale model for electrode wetting simulations. (d) Setup of 
+the 1-D Li-S battery electrochemical model. The separator and cathode layers have a 
+thickness of 25 m and 60 m, respectively. (e) The SEM image of 20 m secondary 
+particles. (f) The SEM image of 90 m secondary particles. 
+ 
+S3.2 One dimensional (1-D) Li-S battery model 
+The discharge curve of the Li-S battery is modeled with the 1-D geometry setup, as shown in 
+Fig. S 2 (d). The separator is 25 m thick, and the cathode is 60 µm thick, which brings the total 
+domain size of x = 85 µm. The numerical model is adapted from the Kumaresan [9], which 
+includes the electrochemical reactions, species transport, and Li2S precipitation. The 
+electrochemical reaction pathway is assumed to consist of five equations that reduce the solid 
+      in the sequence of    
+     
+     
+     
+       . Electrode wetting is explicitly incorporated 
+into this 1-D device-scale model for analyzing its effect on species diffusion, available specific 
+Initial Electrolyte 
+(H = 100 -200 
+) 
+LPC/SPC region 
+(H = 0-60 
+)
+Interested Region
+60 
+(a)
+(b)
+(c)
+Separator-
+cathode interface
+Cathode-current 
+collector interface
+Secondary particles 
+(H = 0
+) 
+Separator
+25 
+60 
+x
+Anode
+Cathode
+Li+
+1D Computational Domain
+(d)
+50 
+(e)
+50 
+(f)
+
+<<PAGE 9>>
+8 
+area, and sulfur reactions. The dimensions and physical properties of the Li-S battery are based 
+on the tested cells with low-porosity electrodes, which is summarized in Table. S 2.  
+During discharge, the lithium metal at anode surface is oxidized as: 
+Li
+Li
+.
+e
+
+
+
+
+  
+(S7) 
+At the initial stage of discharge, the solid phase sulfur S8(s) dissolves into the electrolyte as 
+soluble sulfur S8(l): 
+
+)
+8(
+8 .
+s
+l
+S
+S
+
+  
+(S8) 
+The S8(l) has low solubility of 0.019 M; therefore, the S8(s) will only continue to dissolve when 
+S8(l) is being consumed during the battery discharge process. The dissolved S8(l) will be 
+eventually reduced to S2- through multistep of electrochemical reactions. The intermediate 
+polysulfides types and number of reaction steps can vary in different proposed models [10–12]. In 
+this study, we adopt the five-step electrochemical reaction pathway in the 1-D device scale 
+model as shown in Eq. (S9)-(S13): 
+
+2
+8
+8
+1
+1
+S
+S ,
+2
+2
+l
+e
+
+
+
+  
+(S9) 
+2
+2
+8
+6
+3 S
+2S ,
+2
+e
+
+
+
+
+
+  
+(S10) 
+2
+2
+6
+4
+3
+S
+S ,
+2
+e
+
+
+
+
+
+ 
+(S11) 
+2
+2
+4
+2
+1 S
+S ,
+2
+e
+
+
+
+
+
+  
+(S12) 
+2
+2
+2
+1 S
+S .
+2
+e
+
+
+
+
+
+  
+(S13) 
+Precipitations begins during the later stage of the discharge process as concentrations of Li+ 
+ion and S2- increase. The reported compositions of the precipitates were still non-unanimous. 
+Among all precipitates, Li2S(s) and Li2S2,(s) are the two most likely precipitates because of their 
+low solubility. However, Li2S2 is not thermodynamically stable as suggested by Cunningham et 
+al. [13] and has not been observed in the discharge products using the in-situ X-ray diffraction [14]. 
+Therefore, Li2S(s) is selected as the only precipitate in the 1-D model with the following reaction 
+equation: 
+2
+2
+(s)
+2Li
+S
+Li S .
+
+
+
+
+  
+(S14) 
+
+<<PAGE 10>>
+9 
+The faradic current density, ij, due to the jth electrochemical reaction can be assumed to 
+follow the Butler-Volmer equation as: 
+,
+,
+0,
+,
+,
+exp
+exp
+.
+2
+2
+i j
+i j
+s
+s
+i
+i
+j
+j
+j
+j
+i
+i
+i ref
+i ref
+C
+C
+F
+F
+i
+i
+C
+RT
+C
+RT
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+(S15) 
+The i0,j is the exchange current density for the jth reaction, and the        is the i species 
+reference concentration at the start of discharge with values listed in Table. S 3. The      is the ith 
+species stoichiometric coefficient in the jth reaction. The F, R, and T terms are the Faraday's 
+constant, molar gas constant, and cell temperature, respectively. The overpotential,   , is defined 
+as the potential difference between actual voltage and the equilibrium potential as: 
+,
+,
+j
+s
+l
+j ref
+U
+
+
+
+
+
+
+ 
+(S16) 
+where    and    are the electrode and electrolyte potential, respectively. The equilibrium 
+potential, Uj,ref, at the species concentration of Ci,ref is calculated using the Nernst equation as: 
+,
+,
+,
+3
+ln
+,
+10
+i ref
+j ref
+j
+i j
+j
+C
+RT
+U
+U
+s
+n F
+
+
+
+
+
+
+
+
+
+
+  
+(S17) 
+The   
+  is the standard reaction potential with the specie concentration of 103
+ mol/m3. The 
+reaction kinetics related parameters (i0,j,   
+ ) are summarized in Table. S 3. Those are the 
+assumed parameters for fitting the low-porosity electrode discharge curve.  
+The evolution of species i inside the separator and electrode can be described with the 
+Nernst-Planck equation as: 
+,
+l
+i
+i
+i
+C
+r
+R
+t
+
+
+
+
+
+
+i
+N
+ 
+(S18) 
+where    stands volume fraction of the electrolyte, which can be treated as a constant value in the 
+separator or fully wetted electrode, which equals to the volume fraction of the pores   . In the 
+low-porosity electrode, the nonuniform electrolyte distribution makes       a function of the 
+electrode thickness x and requires 3-D pore-scale model input to establish the electrolyte wetting 
+profile. The flux Ni term includes effect of species diffusion and migration as: 
+,
+eff
+eff
+i
+i
+i
+i
+i
+l
+D
+D
+C
+z
+FC
+RT
+
+
+
+
+
+i
+N
+  
+(S19) 
+
+<<PAGE 11>>
+10 
+The term zi is the charge number of species i. The term   
+    is the effective diffusion coefficient 
+of species i, which is defined by the Bruggeman correlation: 
+
+
+1.5 .
+eff
+i
+i
+l
+D
+x
+D
+x
+
+
+
+
+
+
+  
+(S20) 
+The term Di stands for the standard diffusion coefficient in the bulk electrolyte. Porosity is 
+defined with the electrolyte volume fraction,      , instead of the pore volume fraction. This 
+accounts the wetting effect for the diffusion speed inside the electrode. The Di values can be 
+found in Table. S 4.  
+The electrochemical reaction rate, ri, is calculated by including all current densities, ij that 
+involved the ith species with the form of: 
+,
+,
+i j j
+eff
+i
+v
+j
+j
+s i
+r
+a
+n F
+
+
+  
+(S21) 
+where      is the stoichiometric coefficient of species i in the jth electrochemical reaction and nj is 
+the number of electrons transferred in reaction j. The term   
+    is the effective specific area of 
+the separator or electrode, which is defined similarly to   
+    as: 
+
+
+
+1.5
+,0
+0
+,0
+.
+l
+l
+eff
+v
+p
+l
+x
+x
+a
+a
+x
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+(S22) 
+The term    stands for the electrode specific area under fully wetted conditions, which is treated 
+as constant. The term 
+
+,0
+l
+p
+x
+
+
+ in the Eq.(S22) accounts for the wetting percentage of the 
+electrode, which provides electrolyte access to the sulfur at the initial stage. The third term 
+accounts the electrolyte volume change influence on surface area during the discharge process. 
+The source term    stands for the ith species dissolution or precipitation rate related to the solid 
+species k (S8(s) or Li2S) 
+'
+,
+,
+i
+i k
+k
+k
+R
+R
+
+
+  
+(S23) 
+where      is the number of moles of ionic species i in the solid species k. The rate of dissolution 
+(S8(s)) or precipitation (Li2S)   
+  has the form of  
+,
+,
+,
+i k
+k
+k
+k
+i
+sp k
+i
+R
+k
+C
+K
+
+
+
+
+
+
+
+
+
+
+  
+(S24) 
+
+<<PAGE 12>>
+11 
+where the    stands for the dissolution or precipitation rate constant and       is the solubility 
+product of solid species k. The term       is the volume fraction of the solid species, which can 
+vary along the electrode thickness direction. The    change can be determined by: 
+ 
+' ,
+k
+k
+k
+V R
+t
+
+
+
+
+  
+(S25) 
+where  ̃  is the partial molar volume of the solid species. The values of those parameters are 
+summarized in Table. S 5. 
+The electrolyte current    and electrode current    satisfy the continuity equation in the 
+computational domain as: 
+0.
+l
+s
+
+
+
+i
+i
+  
+(S26) 
+where the electrode current can be acquired from Ohm's law as         . The electrolyte 
+phase current can be related to the species transport by     ∑    
+ 
+. On the other hand, the 
+current in the electrolyte phase should be equal to the current produced by the electrochemical 
+reactions on the electrode surface, which requires the constraint of: 
+.
+eff
+l
+v
+j
+j
+a
+i
+
+
+
+i
+  
+(S27) 
+The boundary conditions applied for the 1-D device scale model follows the setup used by 
+Ghaznavi and Chen [15]. 
+ 
+ 
+ 
+
+<<PAGE 13>>
+12 
+Table. S 2 Li-S battery properties with low-porosity electrode. (Experimental measured or 
+assumed) 
+Parameters 
+Separator 
+Cathode 
+Thickness L [  ] 
+25 
+60 
+Areal A [cm2] 
+1.26 
+1.26 
+Specific area a0 [m-1] 
+- 
+98,400 
+Initial pore volume fraction    [-] 
+0.5 
+0.45 
+Initial sulfur volume fraction         [-] 
+        
+0.32 
+Accessible       percentage   [%]  
+- 
+0.61 
+Initial Li2S fraction       [-] 
+       
+       
+ 
+Table. S 3 Parameters of reaction kinetics and thermodynamics. (Assumed parameters). 
+Reaction 
+i0,j [A/m2] 
+nj [-] 
+  
+  [V] 
+S7 
+0.5 
+1 
+0.0 
+S9 
+1.9 
+1 
+2.45 
+S10 
+0.02 
+1 
+2.4 
+S11 
+       
+1 
+2.39 
+S12 
+       
+1 
+2.17 
+S13 
+       
+1 
+2.01 
+ 
+Table. S 4 Species transport properties and initial concentration. (Adapted from [16]) 
+Species (i) 
+zi 
+Di [ m2 s-1] 
+Ci,ref [mol m-3] 
+Li+ 
+1 
+           
+1001 
+      
+0 
+           
+19 
+  
+   
+-2 
+          
+0.18 
+  
+   
+-2 
+          
+0.32 
+  
+   
+-2 
+           
+0.02 
+  
+   
+-2 
+           
+          
+    
+-2 
+           
+           
+   
+-1 
+          
+1,000 
+ 
+Table. S 5 Precipitation and dissolutions parameters for S8,(s) and Li2S(s). (Adapted from [16]) 
+Precipitat
+e 
+kk 
+    
+ ̃  [m3 mol-1] 
+      
+5.0 [s-1] 
+19 [mol m-3] 
+          
+     
+          [m6 mol2 s-1] 
+100 [mol3 m] 
+         
+ 
+ 
+ 
+
+<<PAGE 14>>
+13 
+ 
+S4 Influence of the low-porosity electrode wettability 
+The proposed 1-D device-scale Li-S model takes inputs from the electrolyte distribution 
+profile provided by the 3-D pore-scale model to model the heterogeneous electrochemical 
+reactions and precipitations inside the low-porosity electrode. This provides an integrated 
+multiscale model capability to predict the Li-S battery discharge curve when electrode wetting 
+becomes a limiting factor.  
+In the electrode or separator, the porosity,  , generally stands for the pore volume fraction, 
+  , which is defined as the fraction of pore volumes over the total electrode volume. In a fully 
+saturated electrode, the filled electrolyte volume fraction    equals to the pore volume fraction 
+  . However, for the partially wetted electrode, the pore volume would consist of the electrolyte 
+volume,      , and the air volume,        , as a function of the location x in the electrode. Air 
+trapped inside the electrode occupies a portion of the electrode pore space and limits electrolyte 
+access in those local regions. This unsaturated wetting behavior is expected to affect several 
+aspects of the electrochemical reactions and precipitation processes. First, use of the loaded       
+will be limited in the unsaturated electrode region filled by the trapped air. This also limits the 
+accessible effective       volume fraction  ̃  for reaction in the discharge process. At the start of 
+discharge, the  ̃     profile can be dictated by the initial electrolyte distribution         as: 
+
+
+,0
+,
+l
+s
+s
+p
+x
+x
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+(S28) 
+where   = 0.32 is the loaded sulfur volume fraction and the coefficient        describes the 
+percentage of available loaded sulfur in the fully wetted electrode condition. Second, the 
+transport properties of the species also are affected by the wetting of the electrode. For an 
+electrode consisting of spherical particles, the Bruggeman correlation can be used to estimate the 
+effective diffusion coefficients and the mass transport process. In the unsaturated electrode, the 
+actual electrolyte volume fraction    instead of the pore volume fraction    should be used for 
+calculating the effective diffusion coefficient   
+    as: 
+
+1.5 ,
+eff
+i
+i
+l
+D
+D
+x
+
+
+
+
+
+
+  
+(S29) 
+
+<<PAGE 15>>
+14 
+where    stands for the ith species diffusion coefficient in the bulk region. Last but not least, 
+the decreased electrolyte amount also will result in less active electrode surface area for 
+electrochemical reactions, increasing actual areal current density given the same discharge 
+C-rate.  
+
+
+
+1.5
+,0
+0
+,0
+.
+l
+l
+eff
+v
+p
+l
+x
+x
+a
+a
+x
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+(S30) 
+This equation includes two factors. The first fraction term describes the initial electrolyte 
+distribution         effect on the active electrode surface. With fully saturated electrodes 
+(       ), the initial electrode surface area would equal the measured electrode specific area a0. 
+In the partially wetted electrode, the region with less electrolyte will provides less reaction active 
+surface area accordingly. The exponential term 
+
+
+1.5
+,0
+l
+l
+x
+x
+
+
+
+
+
+
+
+
+
+
+ considers the effect of electrolyte 
+volume change, attributed to the dissolution of solid S8(s) in the early stage and the precipitation 
+of Li2S at the later stage.  
+During discharging, dissolution of S8(s) and precipitation of Li2S will change the pore size and 
+hence the electrolyte volume profile. This is calculated by the following equation: 
+
+
+
+
+8( ),0
+8( )
+2
+,0
+Li S
+.
+s
+s
+l
+l
+s
+s
+x
+x
+x
+x
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+(S31) 
+With the evolution of      , the transport properties and electrode reaction surface area 
+would also evolve as suggested by Eq. (S29) and (S30). Those will affect the S8(s) dissolution and 
+Li2S precipitation behavior in return. The coupling of those factors is implemented and solved in 
+the multiscale Li-S models. 
+ 
+ 
+
+<<PAGE 16>>
+15 
+ 
+Fig. S 3 The electrolyte and air distribution along the electrode thickness x (1-D model 
+coordinate) with (a) 40 µm and (b) 60 µm secondary particles. (c)Li-S discharge curves with 
+electrode using 40 µm and 60 µm secondary particles at 0.1C. The electrode has a thickness of 
+60 µm with 4 mg/cm2 sulfur loading. 
+ 
+Fig. S 4 Comparison of discharge capacity of the low porosity electrode at different C-rate. 
+Four low-porosity electrodes are calculated with secondary particle sizes of 20 µm, 40µm, 60µm 
+and 90 µm. 
+Lean electrolyte 
+E/S = 4
+60 
+40 
+Electrolyte 
+Electrode 
+Air 
+S-C interface
+C-CC interface
+(a)
+(b)
+(c)
+
+<<PAGE 17>>
+16 
+ 
+Fig. S 5 Comparison of electrode (a) wetting conditions and (b) specific capacity at different 
+sulfur mass loading conditions. The 3 mg/cm2, 4 mg/cm2, 6 mg/cm2 sulfur loading correspond to 
+the electrode thickness of 45 µm, 60 µm and 90 µm, respectively.  
+ 
+ 
+ 
+Fig. S 6 Visualization of various low-porosity electrode designs generated by the 3-D pore-
+scale model. (a) Electrode with 60 µm secondary particles. (b) Electrode with a mix of 40 µm 
+and 60 µm secondary particles. (c) Electrode with secondary particles following a normal size 
+distribution. (d) Perforated electrode with 20 µm secondary particles. 
+ 
+ 
+(a)
+(b)
+(a)
+(b)
+(perforated)
+(c)
+(d)
+
+<<PAGE 18>>
+17 
+References 
+[1] 
+S. Feng, R. K. Singh, Y. Fu, Z. Li, Y. Wang, J. Bao, Z. Xu, G. Li, C. Anderson, L. Shi, Y. 
+Lin, P. G. Khalifah, W. Wang, J. Liu, J. Xiao, D. Lu, Energy Environ Sci 2022, DOI 
+10.1039/d2ee01442d. 
+[2] 
+D. Lv, J. Zheng, Q. Li, X. Xie, S. Ferrara, Z. Nie, L. B. Mehdi, N. D. Browning, J. G. 
+Zhang, G. L. Graff, J. Liu, J. Xiao, Adv Energy Mater 2015, 5, 1. 
+[3] 
+CD-adapco, 2019. 
+[4] 
+C. W. Hirt, B. D. Nichols, J Comput Phys 1981, 39, 201. 
+[5] 
+R. H. Pletcher, J. C. Tannehill, D. Anderson, Computational Fluid Mechanics and Heat 
+Transfer, CRC Press, 2012. 
+[6] 
+J. J. Hu, G. K. Long, S. Liu, G. R. Li, X. P. Gao, Chemical Communications 2014, 50, 
+14647. 
+[7] 
+J. U. Brackbill, D. B. Kothe, J Comput Phys 1992, 335354. 
+[8] 
+C. Sauter, R. Zahn, V. Wood, J Electrochem Soc 2020, 167, 100546. 
+[9] 
+K. Kumaresan, Y. Mikhaylik, R. E. White, J Electrochem Soc 2008, 155, A576. 
+[10] M. Cuisinier, P. E. Cabelguen, S. Evers, G. He, M. Kolbeck, A. Garsuch, T. Bolin, M. 
+Balasubramanian, L. F. Nazar, Journal of Physical Chemistry Letters 2013, 4, 3227. 
+[11] Z. Liu, P. P. Mukherjee, ACS Appl Mater Interfaces 2017, 9, 5263. 
+[12] M. Ghaznavi, P. Chen, J Power Sources 2014, 257, 394. 
+[13] P. T. Cunningham, S. A. Johnson, E. J. Cairns, J Electrochem Soc 1972, 119, 1448. 
+[14] N. A. Cañas, S. Wolf, N. Wagner, K. A. Friedrich, J Power Sources 2013, 226, 313. 
+[15] M. Ghaznavi, P. Chen, J Power Sources 2014, 257, 402. 
+[16] T. Zhang, M. Marinescu, S. Walus, G. J. Offer, Electrochim Acta 2016, 219, 502. 
+  

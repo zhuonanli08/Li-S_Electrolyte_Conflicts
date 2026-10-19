@@ -1,0 +1,795 @@
+
+<<PAGE 1>>
+Article
+Quantum-mechanics-based molecular
+dynamics simulations of the structure and
+performance of sulfur-enriched Li3PS4
+cathodes
+Sulfur-enriched sulﬁdes are promising cathode materials, and further
+understanding of their atomistic structures and charge-discharge mechanisms are
+needed. Here, Morozov et al. validate computational methodologies that provide
+a basis for in silico examination of sulﬁde cathode materials to interface with
+advanced electrolytes suitable for application in lithium-sulfur batteries.
+Sergey I. Morozov, Boris V.
+Merinov, Tridip Das, Sergey V.
+Zybin, Moon Young Yang,
+William A. Goddard III
+merinov@caltech.edu (B.V.M.)
+wag@caltech.edu (W.A.G.)
+Highlights
+Sulfur-enriched sulﬁdes are
+promising cathode materials for
+lithium-sulfur batteries
+The Li3PS4+5 cathode structure
+and its changes during the
+discharge process are predicted
+The predicted discharge curve for
+the sulfur-enriched cathode
+agrees well with the experiment
+Computational results provide a
+basis for examining other
+promising cathode materials
+Morozov et al., Cell Reports Physical Science 4,
+101326
+March 15, 2023 ª 2023
+https://doi.org/10.1016/j.xcrp.2023.101326
+ll
+OPEN ACCESS
+
+<<PAGE 2>>
+Article
+Quantum-mechanics-based molecular dynamics
+simulations of the structure and performance
+of sulfur-enriched Li3PS4 cathodes
+Sergey I. Morozov,1 Boris V. Merinov,2,3,* Tridip Das,2 Sergey V. Zybin,2 Moon Young Yang,2
+and William A. Goddard III2,*
+SUMMARY
+Sulfur-enriched Li3PS4 is a promising cathode for lithium-sulfur bat-
+teries, but there is not yet clear structural information about this ma-
+terial. Here, we use quantum-mechanics-based molecular dynamics
+to predict the structures of the fully charged Li3PS4+5 and various
+stages of discharge to nearly discharged Li3+9PS4+5 at 298 K. We
+predict that the fully charged cathode has a distorted orthorhombic
+structure similar to Li3PS4, but with additional S4 and S8 chains each
+linked to an S atom of a PS4 anion. This leads to a density of 2.19
+g/cm3 for this material. For the nearly discharged cathode, we ﬁnd
+that the lithium atoms insert into all SS bonds, with none of the
+aforementioned chains remaining, leading to a density of 1.71
+g/cm3. We examined the discharge process as lithium ions from
+the electrolyte diffuse into the cathode and react with the SS
+chains to form Li2S. The predicted discharge curve agrees well
+with the experiment.
+INTRODUCTION
+Lithium-sulfur (Li-S) batteries are one of the most promising candidates for next-gen-
+eration high-performance Li-batteries. However, several challenges must be
+resolved for large-scale commercial applications of Li-S batteries. The most critical
+are (1) large volume expansion as the sulfur-based cathode discharges; (2) the ‘‘shut-
+tle effect’’ of lithium polysulﬁdes upon cycling, in which polysulﬁdes formed at the sul-
+fur cathode dissolve in the liquid electrolyte and migrate into electrochemical cells,
+leading to parasitic side reactions and degradation of the cell performance and a
+short cycle-life; (3) reduced charge/discharge rates due to the low Li-ion conductivity
+of the current cathode materials; and (4) applications using metallic lithium anodes to
+improve electrochemical cell energy density lead to dendritic growth through the
+liquid electrolyte during continuous cycling, which causes serious safety issues.
+Incorporating solid-state materials into Li-S batteries has the potential to solve these
+problems, which would constitute a breakthrough for energy storage devices. In this
+regard, Li-containing sulﬁdes are of particular interest because they are attractive for
+applications both as an electrolyte and as a cathode material.1–10
+In a conventional Li-S battery, elemental sulfur (S8) in the sulfur-based cathode is
+electrochemically reduced to long-chain soluble polysulﬁdes, Li2Sn (3 % n % 6),
+and short-chain insoluble Li2S or Li2S2.11,12 The dissolution and migration of polysul-
+ﬁde species (the shuttle effect) cause sulfur loss and cathode structure degradation,
+leading to a short cycle lifetime.
+1Department of Physics of Nanoscale Systems,
+South Ural State University, 76 Lenin Avenue,
+454080 Chelyabinsk, Russia
+2Materials and Process Simulation Center, MC
+139-74, California Institute of Technology,
+Pasadena, CA 91125, USA
+3Lead contact
+*Correspondence:
+merinov@caltech.edu (B.V.M.),
+wag@caltech.edu (W.A.G.)
+https://doi.org/10.1016/j.xcrp.2023.101326
+Cell Reports Physical Science 4, 101326, March 15, 2023 ª 2023
+This is an open access article under the CC BY-NC-ND license (http://creativecommons.org/licenses/by-nc-nd/4.0/).
+1
+ll
+OPEN ACCESS
+
+<<PAGE 3>>
+Instead of S8, here we focus on modiﬁed sulfur-enriched compounds based on PS4
+anions. In particular, Li3PS4+n has been shown to be a good candidate as the cathode
+for all solid-state Li-S batteries (1) because the high Li-ion conductivities (104 to
+105 S/cm) are comparable to those of lithium metal oxides and phosphates
+(conventional cathode materials for Li-ion batteries), and (2) because of excellent
+electrochemical reversibility during charge-discharge battery cycling.10
+S8 reacts with lithium thiophosphate (Li3PS4) in tetrahydrofuran (THF) to form new
+SS single bonds (Figure 110). The newly formed SS bonds can form chains that
+link to the S atoms in PS4 groups giving rise to polysulﬁdophosphate materials
+with the general formula Li3PS4+n, where n is the number of additional S. During
+charge-discharge cycling, reversible electrochemical reactions involving adding or
+removing Li to break or form SS bonded chains lead from the fully charged
+Li3PS4+n to the fully discharged Li3+2nPS4+n cathode material and vice versa
+(Figure 210).
+Raman spectra conﬁrmed that the electrochemical insertion and removal of Li ions in
+the S-enriched cathode is a reversible reaction of Li3PS4+5 to a mixture of Li2S and
+Li3PS4 with the electrochemical scission and formation of SS bonds. It was reported
+that Li3PS4+n remained stable over at least 300 cycles with an energy efﬁciency of
+60% at room temperature and 83% at 60C.10 Important is that the voltage pro-
+ﬁle does not have the 2 plateaus observed in conventional Li-S batteries. This indi-
+cates that the electrochemical reactions in Li3PS4+n proceed through pathways
+differently from the conventional sulfur-based cathode materials.
+To provide a basis for advancing this PS4-based cathode technology, we used quan-
+tum mechanics-based molecular dynamics (QM-MD) to predict the atomic level
+structures and energetics for the fully charged Li3PS4+5 structure and the various
+stages of discharge to the fully discharged Li3+10PS4+5 system. We report the evolu-
+tion of the structure and potential during the charge and discharge processes.
+RESULTS AND DISCUSSION
+The fully charged (Li3PS4+5)8 system
+Figure 3A shows our predicted (Li3PS4+5)8 bulk structure in the fully charged state.
+The corresponding CIF-ﬁle is in Table S1. It can be described as a distortion of the
+experimental Li3PS4 structure13 in which one S of each PS4 unit has an additional
+S3 or S7 chain attached, forming S4 and S8 chains. The initial orthorhombic Li3PS4
+structure is composed of PS4-tetrahedral anion layers with Li atoms occupying
+Figure 1. Schematic of the formation of polysulﬁdophosphate
+The formation of polysulﬁdophosphate Li3PS4+n, n = (x + y + z)/3, via reaction of sulfur with Li3PS4 in THF at room temperature is shown.10
+ll
+OPEN ACCESS
+2
+Cell Reports Physical Science 4, 101326, March 15, 2023
+Article
+
+<<PAGE 4>>
+positions in the layer and between them (Figure 3B). Each Li is coordinated to 4 S
+with bonds ranging from 2.18 to 2.75 A˚ , while each P has 4 PS bonds in the range
+of 2.02–2.07 A˚ .
+We expected that the addition of sulfur chains into the parent Li3PS4 structure might
+lead to signiﬁcant rearrangements, but the PS4 framework keeps the overall arrange-
+ment of the parent structure. The PS4 layers are easily distinguished in the predicted
+(Li3PS4+5)8 structure. Li atoms in the PS4 layers and between them are similar to the
+parent structure.
+The minimized (Li3PS4+5)8 structure was used to analyze the fully charged system. We
+ﬁnd 4 S8 chains, 4 S4 chains, and 24 S bonded only to P (see Table 1). Thus, each of
+the 8 P atoms is bonded to 3 isolated S atoms plus one Sn chain. Each of the 8 Sn
+chains has a terminal S atom attached to the P of a PS4 tetrahedron, while the other
+terminus is coordinated with 1 Li atom in the case of S8 chains and 2 Li atoms in the
+case of S4 chains (a 2.5-A˚ cutoff was applied for the SLi distances). One of these 2 Li
+atoms is bonded only to the end of the S4 chain while the other has additional bonds
+with the chain penultimate S atom (which has a bond with another Li as well) and with
+one of the S atoms of the PS4 tetrahedron (Table S4). The Sn chains bend signiﬁ-
+cantly, allowing sharing of the Li atoms by the S atoms. The internal S atoms of
+the S8 chains are not bonded to Li atoms.
+The fully discharged (Li3+10PS4+5)8 system
+To model the discharge process on the sulfur-enriched cathode, we started with a
+slab based on the predicted (Li3PS4+5)8 bulk structure but added a vacuum that
+could accommodate the addition of Li atoms. We then went through cycles of grad-
+ually adding 8 Li on the top and bottom of this slab (Figure S2), equilibrating, and
+then adding 8 more. We expected that the additional Li would react with additional
+S, breaking the SS chains to form Li2S.
+First, we placed 8 Li atoms on the top of the slab and perform energy minimization
+of the system at 0 K, then added 8 more Li atoms on the bottom of the slab and
+again optimized the system at 0 K, and so on up to 80 additional Li atoms. How-
+ever, when the number of the additional Li atoms in the slab was 80, one of the
+PS4 tetrahedra decomposed into PS3 and Li2S. After a series of unsuccessful at-
+tempts to prevent decomposition of the PS4 tetrahedron, we decided to make
+the process of the addition of Li at the last step smoother and more gradual.
+The last step was partitioned into 4 substeps, adding only 2 atoms at each substep
+Figure 2. Schematic of the reversible electrochemical reactions
+The expected reversible charge and discharge reaction of Li3PS4+n is shown.10
+ll
+OPEN ACCESS
+Cell Reports Physical Science 4, 101326, March 15, 2023
+3
+Article
+
+<<PAGE 5>>
+with subsequent relaxation of the model. This approach was successful, and after
+adding all 8 atoms using the above procedure, we obtained the slab with the 80
+additional Li atoms at 0 K. But upon heating up to 300 K, one of the PS4 tetrahedra
+decomposed again. Hence, we decided not to use this slab with 80 additional Li
+atoms in our further calculations at 300 and 500 K.
+The sulfur chain distribution vs. the number of additional Li in the energy-minimized
+structure at 0 K is shown in Table 1. Similar distributions obtained at 300 and 500 K
+are in Tables S2 and S3.
+In the beginning, without any additional Li, there were 24 S atoms belonging to the 8
+PS4-tetrahedral anionic groups, 4 S8 chains, and 4 S4 chains. When we added 8 addi-
+tional Li they broke the 4 S8 chains into 3 S2 chains, 1 S3 chain, 1 S5 chain, and 3 S6
+chains. Adding more Li atoms in groups of 8 leads to further breaking of the longer
+chains to form shorter chains. Finally, when the number of additional Li was 80, 1 S2
+chain (dimer) remained with 38 single S bonded to Li (38 Li2S) in addition to 32 S
+atoms of the 8 PS4 tetrahedra. This is the result of the reaction of the Li ions with
+the additional S to form Li2S during the discharge process. Similar to the initial
+(Li3PS4)8 structure, all PS4 tetrahedra are isolated from each other in the
+(Li3+10PS4+5)8 discharged structure and have no bonds with the added S. This result
+is consistent with the Raman spectra of the Li3PS4+5 cathode material in the charged
+state before cycling and at the end of ﬁrst discharge.10 Each S atom of the S2 dimer is
+bonded to 4 Li atoms. The length of the S-Li bonds varies from 2.27 to 2.39 A˚
+(Table S5).
+Analysis of the (Li3+nPS4+5)8 structure evolution during discharge
+We used our 300 K simulations to compare our predictions with experimental re-
+sults performed at room temperature. First, we analyzed the evolution of the SS
+pair radial distribution function (RDF) vs. the number of additional Li atoms in the
+sulfur-enriched cathode structure. We found 2 peaks: the peak at 2.05 A˚ corre-
+sponds to the SS bond distance in the sulfur chains, while the peak at 3.40 A˚
+corresponds to the intra SS of the PS4 tetrahedra, as observed in the charged
+(Li3PS4+5)8 system (Figure 4A). With increasing numbers of Li atoms, the intensity
+of the peak at 2.05 A˚ decreases, while the intensity of the 3.40 A˚ peak does
+not change signiﬁcantly, while a new peak appears and grows around 4 A˚
+Figure 3. Predicted and experimental structures
+The computationally predicted (Li3PS4+5)8 structure (A) vs. the experimental (Li3PS4)8 structure (B).
+ll
+OPEN ACCESS
+4
+Cell Reports Physical Science 4, 101326, March 15, 2023
+Article
+
+<<PAGE 6>>
+corresponding to SS distances between PS4 groups (Figures 4B and 4C). As the
+number of additional Li approaches twice the number of added S atoms, the SS
+RDF of the sulfur-enriched cathode becomes increasingly similar to the RDF of
+pure Li3PS4 (Figure 4D14). Our simulations suggest that the limit is 72 additional
+Li upon discharge compared with 40 S for fully charged. This indicates that the dis-
+charged system mostly consists of Li2S and Li3PS4.
+In the S-enriched fully charged (Li3PS4+5)8 system, we ﬁnd that each P has 4 S neigh-
+bors, but the ﬁrst PS bond of the Sn chain has an average bond length of 2.19 A˚ ,
+while the remaining 3 S of the PS4 tetrahedron have the P-S bond lengths of
+2.09 A˚ or less (see Table S6). The number of Li neighbors for each of these 3 S atoms
+is mostly 1 or 2, but sometimes it is 0 or 3. The average SS bond distance is 2.08 A˚ .
+The average PSS angle is 112.1, while the average SSS angle is 104.0. The
+average PSSS dihedral angle is 82.2 and the average SSSS dihedral angle
+is 90.0. As mentioned above, each of the Sn chains starts with an S atom belonging
+to a PS4 tetrahedron and ends with S coordinated with Li atoms. Each Li bonds to 1 to
+3 S neighbors with an average distance of 2.5 A˚ .
+In the half-discharged system (Li3+5PS4+5)8, there are 2 S4, 2S3, and 10 S2 chains in addi-
+tion to 9 single S bonded to Li (9 Li2S) and 32 S atoms of the 8 PS4 tetrahedra (Table S7).
+Each of the S4 chains is connected to a PS4 tetrahedron as is one of the S2 chains. Both S3
+trimers and 9 S2 dimers are isolated with no bonds to the PS4 tetrahedra. Similar to the
+fully charged (Li3PS4+5)8 system, each P has 4 S neighbors and the beginnings of the S4
+chains bondedto P have a bond length of 2.15 A˚ , while 3 remaining S of the correspond-
+ing PS4 tetrahedra have PS bond lengths of 2.10 A˚ or less (see Table S7). Each of these
+3 S atoms is bonded mostly to 1 or 2 Li atoms, but 0 or 3 occur rarely. One of the 2 S4
+chains ends with S coordinated to one Li atom while the other chain ends with S bonded
+to 2 Li. The SS distances in these S4 chains vary from 2.01 to 2.11 A˚ , while the SS dis-
+tances range from 2.08 to 2.17 A˚ in the isolated S3 trimers and from 2.06 to 2.24 A˚ in the
+isolated S2 dimers. Each S in these trimers and dimers is coordinated with 1 to 3 Li and
+each Lihas mainlyfrom 1 to3 S neighborswithin the2.5-A˚ distance.The SS bond inthe
+S2dimer connectedto thePS4 tetrahedron is 2.01 A˚ and theending S is coordinatedto 2
+Li atoms at distances of 2.31 and 2.40 A˚ .
+In the nearly discharged (Li3+9PS4+5)8 system, we ﬁnd that almost all Sn chains are
+broken due to reactions with Li to form Li2S so that the PS4 tetrahedra no longer
+Table 1. Sulfur chain evolution (numbers of Sn chains)
+Liadd
+S
+S2
+S3
+S4
+S5
+S6
+S7
+S8
+0
+24
+4
+4
+8
+24
+3
+1
+4
+1
+3
+16
+24
+8
+4
+5
+24
+28
+8
+4
+4
+32
+33
+9
+3
+3
+40
+38
+10
+2
+2
+48
+44
+8
+4
+56
+49
+10
+1
+64
+58
+4
+2
+72
+65
+2
+1
+80
+70
+1
+Eighty Li were gradually added to the fully charged cathode, (Li3PS4+5)8, to form the fully discharged
+(Li3+10PS4+5)8 cathode structure, based on minimized structures (0 K). The results for 300 and 500 K are
+in Tables S2 and S3.
+ll
+OPEN ACCESS
+Cell Reports Physical Science 4, 101326, March 15, 2023
+5
+Article
+
+<<PAGE 7>>
+have bonds to additional S. The remaining 1 S3 and 2 S2 (see Table 1) are isolated
+and bonded only with Li: the S3 chain is coordinated with 3 Li, while one of the S2 is
+bonded with 4 Li atoms and the other S2 has 5 Li neighbors. Each P is coordinated
+with 4 S with PS distances of 1.95–2.15 A˚ (the average PS distance is 2.05 A˚ , see
+Table S8) and each Li has from 1 to 3 S neighbors within the distance of 2.5 A˚
+(similar to the fully charged system).
+Adding Li to the S-enriched (Li3+nPS4+5)8 slab structure leads to a linear increase in
+volume from 2,061.34 A˚ 3 for n = 0 to 3,002.58 A˚ 3 for n = 9, an increase of 46%
+relative to the fully charged (Li3PS4+5)8 cathode system (Figure 5 and Table S9).
+However, an Li battery can be discharged only to a certain cutoff voltage to avoid
+serious damage to the battery. The cutoff voltage for an LiS battery is 1.5 V. In
+experiments on the S-enriched Li3PS4+5 cathode,10 the battery was discharged to
+1.2 V, which corresponds to 20 additional Li (out of the 72) in our simulation. The
+volume expansion for this amount of Li is 15% relative to the fully charged
+(Li3PS4+5)8 cathode system. This is signiﬁcantly lower than the 80% volume expan-
+sion during discharge in a conventional Li–S battery with a typical carbon-based
+porous cathode.
+Figure 4. Radial distribution functions and integrated number of bonds for SS pairs
+The SS pair radial distribution function (g(r), blue, left axis) and integrated number of bonds (N,
+orange, right axis) is shown for the following: (A) Li3PS4+5; (B) Li3PS4+5 with 40 additional Li; (C)
+Li3PS4+5 with 72 additional Li; and (D) experimental Li3PS4.14
+ll
+OPEN ACCESS
+6
+Cell Reports Physical Science 4, 101326, March 15, 2023
+Article
+
+<<PAGE 8>>
+Li-ion diffusivity and conductivity of the different cathode states
+We performed 30 ns NVT MD simulations at 300 K to estimate Li-ion diffusivity and
+conductivity in our predicted cathode structures of 3 different cathode states with
+different Li concentrations: (1) fully charged with no excess Li in the formula unit,
+Li3PS4+5; (2) partially discharged with 6 excess Li in the formula unit, Li3+6PS4+5;
+and (3) nearly discharged with 9 excess Li in the formula unit, Li3+9PS4+5 (Table 2
+and Figure S4). Experimental data on Li-ion conductivity are available only for the
+fully charged case, Li3PS4+5.10 The corresponding value is 3.3 3 105 S/cm at 300
+K, while the computationally predicted value is 13.4 3 105 S/cm at 300 K. We as-
+sume that our predicted Li-ion conductivity is higher than the experimental because
+the single crystal models were used in our simulations, whereas slurry, prepared by
+dispersing Li3PS4+5, WVA-1500 carbon, and PVC binder in THF and then coated on a
+b-Li3PS4 solid electrolyte pellet and dried under vacuum at 80C, was used in the
+experiment.10 We also predict that the Li-ion conductivity in the S-enriched
+Li3PS4+5 cathode linearly decreases with discharging and related Li-ion concentra-
+tion increasing in the system (Figure S4).
+Dependence of potential on discharging
+We analyzed the (Li3+nPS4+5)8 slabs as additional Li atoms were added (Figure S2) to
+predict the dependence of the voltage vs. speciﬁc capacity for the (Li3PS4+5)8
+cathode.
+The electronic Fermi levels were calculated on each step of our QM-MD simulations
+of the discharged cathode with different numbers of intercalated Li atoms to eval-
+uate
+the
+uncertainty caused by ﬂuctuations
+in
+the
+internal
+slab
+structure
+(Table S10). The resulting average values of EC
+F were used to determine the lower
+limit estimate for the battery voltage from Equations 3 and 4.
+The predicted lower estimate of the discharge curve agrees reasonably well with the
+experimental results within calculated RMS error bars (Figure 6). This serves as addi-
+tional validation of the reliability of the predicted Li3PS4+5 and Li3+nPS4+5 structures
+and their evolution during discharging.
+Summarizing, Sulfur-enriched sulﬁdes are promising materials for application as
+cathodes in Li-S batteries because they provide extended charge-discharge cy-
+clability and exhibit Li-ion conductivities of 104 to 105 S/cm, signiﬁcantly higher
+than that of conventional carbon/sulfur cathode materials for a Li-S battery
+(107 S/cm).
+Based on QM-MD simulations, we determined the structure of the fully charged sys-
+tem Li3PS4+5 and followed the changes during the discharge to the fully discharged
+Li3+10PS4+5.
+During the charge-discharge cycling, we examined the reversible electrochemical
+reactions with breaking and forming SS chain bonds in the Li3PS4+5 cathode
+Table 2. Li-ion diffusivity and conductivity of different cathode states
+Cathode state
+Vcell, A˚ 3
+D, cm2/s
+s, S/cm
+Fully charged (Li3PS4+5)
+7585.1
+22.79
+13.40
+Partially discharged (Li3+6PS4+5)
+8091.4
+4.77
+7.90
+Nearly discharged (Li3+9PS4+5)
+8696.9
+2.63
+5.39
+The conductivity and diffusivity for fully charged (Li3PS4+5), partially discharged (Li3+6PS4+5), and nearly
+discharged (Li3+9PS4+5) are shown.
+ll
+OPEN ACCESS
+Cell Reports Physical Science 4, 101326, March 15, 2023
+7
+Article
+
+<<PAGE 9>>
+materials. Our predicted voltage vs. speciﬁc capacity dependence for the Li3PS4+5
+cathode is in good agreement with experimental results.
+The increase of the cathode ionic conduction by 2 orders of magnitude using these
+PS4-based cathodes would signiﬁcantly improve the cathode performance and efﬁ-
+ciency of the Li-S battery. Possibly, the ionic conductivity could be increased further
+by doping these PS4-based sulﬁdes, with such cations as V and Mo to create more
+vacancies for fast Li-ion diffusion.
+Another possibility is to start with sulﬁdes that have higher Li-ion conductivity. For
+instance, we could start with superionic conductors such as Li6(PS4)SCl, Li5(PS4)Cl2,
+and Li7P3S11, which have conductivities of 7.1 3 103,15 6.5 3 102 (computationally
+predicted16), and 1.7 3 102 S/cm,17 respectively.
+We will next use the QM results obtained in this work to develop parameters for the
+ReaxFF reactive force ﬁeld to enable MD simulations at more realistic time scales of
+20 ns and longer with spatial scales from 10 nm (100,000 atoms) to 30 nm (million
+atoms). This would provide more realistic simulations of charge-discharge pro-
+cesses in sulfur-enriched cathode materials and for predicting the structures and
+properties of the electrode/electrolyte interface with sulﬁde-based electrodes
+and electrolytes.
+The
+improved
+understanding
+of
+the
+atomistic
+structures
+and
+charge-
+discharge mechanism for these PS4-based cathodes with our now validated
+methodologies will provide a basis for examining other promising cathode mate-
+rials to interface with advanced electrolytes suitable for applications to Li-S
+batteries.
+EXPERIMENTAL PROCEDURES
+Resource availability
+Lead contact
+Further information and requests for resources should be directed to and will be fulﬁlled
+by the lead contact, Boris Merinov (merinov@caltech.edu).
+Figure 5. Volume of the slab with additional Li
+Volume of the (Li3+nPS4+5)8 slab is shown as a function of the number of additional lithium.
+ll
+OPEN ACCESS
+8
+Cell Reports Physical Science 4, 101326, March 15, 2023
+Article
+
+<<PAGE 10>>
+Materials availability
+No new materials were generated in this study.
+Data and code availability
+All data generated and analyzed during this study are included in the article and its
+supplemental information. Any additional information required is available from the
+lead contact upon request.
+Model building
+We started with the experimental orthorhombic crystal structure of Li3PS4
+13 and
+added 5 S per formula unit to build the fully charged system, Li3PS4+5. Here we
+used a periodic cell with 8 formula units (Li3PS4)8, which expands to (Li3PS4+5)8 to
+obtain the fully charged system.
+First, we increased the experimental unit cell parameters of the initial (Li3PS4)2 structure
+by 10% and added 10 additional S atoms into the voids of the respective framework to
+build the (Li3PS4+5)2 structure (Figure S1). Then we carried out a sequence of energy
+minimizations of the cell volume and atomic coordinates to obtain the minimum energy
+structure. Next, we expanded this to a 2 3 2 3 1 superstructure to build an (Li3PS4+5)8
+(001) surface slab model, consisting of 24 Li atoms, 8 PS4 anions each coupled to S
+chains with a total of 40 S, for a total of 104 atoms, (Li3PS4+5)8. The structure of this
+(Li3PS4+5)8 slab was reoptimized again leading to a cell box with dimensions: a =
+20.003, b = 16.168, c = 30.0 A˚ , and a = b = g = 90⁰ including a vacuum layer of
+20 A˚ along the z-direction. This slab was heated to 500 K over 2 ps, equilibrated for
+1 ps at 500 K, cooled down to 300 K over 1 ps, and then equilibrated at 300 K for 1 ps.
+Figure 6. Experimental and theoretically predicted voltage vs. speciﬁc capacity
+Experimental (black and red lines) and theoretically predicted (blue line) voltage vs. speciﬁc
+capacity for the Li3PS4+5 cathode at 300 K. The RMS error bars are based on the mean square
+deviation of the Fermi energy during QM-MD simulations of the different cathode conﬁgurations.
+ll
+OPEN ACCESS
+Cell Reports Physical Science 4, 101326, March 15, 2023
+9
+Article
+
+<<PAGE 11>>
+This (Li3PS4+5)8 slab (Figure S2) was then used for further QM-MD simulations to
+describe various stages of the discharge process.
+To build the fully discharged (Li3+10PS4+5)8 model from the (Li3PS4+5)8 bulk structure,
+we added a total of 80 Li atoms in 10 groups, allowing them to diffuse into the
+corresponding slabs. The vacuum layer thickness was then decreased to 2 A˚ and
+QM-MD simulations allowing the volume to relax at 0 GPa and 300 K (NPT) were per-
+formed for 5 ps. Then energy minimizations of the cell volume and atomic coordi-
+nates were carried out to obtain the minimum energy structures (Figure S3).
+Computational methods: QM-MD
+The QM-MD simulations (also called AIMD) were performed with the Vienna Ab Ini-
+tio Simulation Package (VASP),18–20 which implements the projector augmented
+wave (PAW) method for DFT. We applied the Perdew-Burke-Ernzerhof (PBE) gener-
+alized gradient approximation (GGA-PBE)21 with the D3 (Becke-Johnson) empirical
+corrections22,23 for long-range pairwise van der Waals attractive forces (approxi-
+mating the London dispersion).
+The energy cutoff for the plane-wave basis expansion was 500 eV to achieve good
+accuracy. We used the conjugate gradient algorithm to relax the atomic positions
+of the optimized structure. The electronic convergence and geometry optimization
+force criteria were set to 105 eV and 103 eV/A˚ , respectively.
+For the bulk Brillouin zone integration, we applied a G-centered k-point mesh in all
+QM-MD simulations within the supercell. Methfessel-Paxton order 1 smearing of
+electronic occupations was used with a width of 0.2 eV in our simulations.
+All simulations were spin unrestricted to permit the spin changes during the simulations
+needed to ﬁnd the lowest barrier pathway in bond rearrangements of S atoms and to
+ﬁnd the minimum energy structures during cell optimization and slab annealing.
+Computational methods: Classical MD
+To calculate diffusivity and conductivity of different cathode states, Li3PS4+5 (the fully
+charged system), Li3+6PS4+5 (the partially discharged system), and Li3+9PS4+5 (the
+nearly discharged system), we performed MD simulations with the Universal Force
+Field (UFF)24 on the corresponding bulk structures, using LAMMPS.25 The UFF pa-
+rameters for the van der Waals interaction and PS bond distance were used from
+our previous work.22 We adjusted the SS bond distance parameter based on our
+DFT calculated SS distance in Li3PS4+5. The UFF parameters were used for bond
+angle and dihedral coefﬁcients (Table S11). The DDEC6 method26 was applied to
+assign atomic charges calculated for the DFT minimized bulk structures. Then, we
+built superstructures by tripling the respective cells along the z-direction (1 3 1 3
+3) relative to the DFT minimized unit cells (Figure S3). These structures obtained
+were minimized using the UFF. After velocity initializations at 10 K, the structures
+were heated to 300 K and the 1 ns NPT MD simulations were carried out to remove
+residual stress. An additional 20 ns NVT dynamics was required for Li3+9PS4+5 to
+address pressure ﬂuctuations. Finally, a 30-ns NVT MD simulation was performed
+on each structure at 300 K to predict the Li-ion diffusivity.
+Ion diffusion coefﬁcients (D) were derived from the corresponding mean square
+displacement (MSD) curves as follows:
+MSDðtÞ h CðrðtÞ  rðtoÞÞ2D = 6Dt
+(Equation 1)
+ll
+OPEN ACCESS
+10
+Cell Reports Physical Science 4, 101326, March 15, 2023
+Article
+
+<<PAGE 12>>
+Ionic conductivities were calculated from the diffusion coefﬁcients using the Nernst–
+Einstein equation:
+s = Dcz2F2
+RT
+(Equation 2)
+where D is the diffusion coefﬁcient, c is the charge carrier concentration, z is the car-
+rier charge, F is the Faraday constant, R is the gas constant, and T is the temperature.
+Voltage-speciﬁc capacity
+The voltage vs. speciﬁc capacity dependence for the Li3PS4+5 cathode was pre-
+dicted by locating the Fermi level in the electronic band structures of the anode,
+pure Li metal electrode, and the cathode material with intercalated Li atoms upon
+charging.27–29 The open circuit cell voltage was related to the difference of the elec-
+tron chemical potentials as given by the difference of the Fermi levels between the
+cathode and anode. The electron chemical potential of the cathode and corre-
+sponding Fermi level varies with the concentration of the intercalated Li atoms
+due to the changes in the band structure.
+The open circuit cell voltage V can be expressed by the Gibbs free energy change
+(DG), or the difference in elemental Li chemical potentials of the cathode, mC, and
+anode, mA27,28:
+ eV = DG = mC  mA = Dme + DmLi +
+(Equation 3)
+where Dme is the difference of electron chemical potentials, and DmLi+ is the differ-
+ence of Li+ ion chemical potentials of electrode materials. We calculated the elec-
+tron chemical potential contribution from the difference of the cathode and anode
+Fermi energies with respect to the vacuum level:
+Dme = mC
+e  mA
+e = EC0
+F
+ EA0
+F + DEC
+F
+(Equation 4)
+where EA0
+F
+= EA
+F is the Fermi level in the electronic band structure of the Li metal
+anode, EC0
+F
+is the Fermi level of the Li3PS4+5 cathode material in the fully charged sys-
+tem, and D EC
+F = EC
+F – EC0
+F
+is the upward shift of the cathode Fermi energy, EC
+F , upon
+discharge. The experimental measurements of the electronic work function for
+different electrode materials demonstrate that the chemical potential of the elec-
+trons provides a major contribution to the battery voltage.28,29
+SUPPLEMENTAL INFORMATION
+Supplemental information can be found online at https://doi.org/10.1016/j.xcrp.
+2023.101326.
+ACKNOWLEDGMENTS
+Financial support for this research from the Hong Kong Quantum AI Lab, AIR@In-
+noHK of Hong Kong Government is gratefully acknowledged. We thank Dr. Guan-
+hua Chen for the helpful discussions.
+AUTHOR CONTRIBUTIONS
+S.I.M., methodology, software, resources, formal analysis, data curation, visualiza-
+tion, writing – original draft; B.V.M., conceptualization, investigation, formal anal-
+ysis, writing – review & editing, supervision; T.D., software, formal analysis, investi-
+gation; S.Z, methodology, software, formal analysis, data curation; writing – review &
+editing; M.Y.Y., software, formal analysis, investigation; W.A.G., project administra-
+tion, funding acquisition, writing – review & editing, supervision.
+ll
+OPEN ACCESS
+Cell Reports Physical Science 4, 101326, March 15, 2023
+11
+Article
+
+<<PAGE 13>>
+DECLARATION OF INTERESTS
+The authors declare no competing interests.
+Received: July 26, 2022
+Revised: December 8, 2022
+Accepted: February 13, 2023
+Published: March 7, 2023
+REFERENCES
+1. Phani Dathar, G.K., Balachandran, J., Kent,
+P.R.C., Rondinone, A.J., and Ganesh, P. (2017).
+Li-ion site disorder driven superionic
+conductivity in solid electrolytes: a ﬁrst-
+principles investigation of b-Li3PS4. J. Mater.
+Chem. 5, 1153–1159.
+2. Deiseroth, H.-J., Kong, S.-T., Eckert, H.,
+Vannahme, J., Reiner, C., Zaiss, T., and
+Schlosser, M. (2008). Li6PS5X: a class of
+crystalline Li-rich solids with an unusually high
+Li+ mobility. Angew. Chem. Int. Ed. Engl. 47,
+755–758.
+3. de Klerk, N.J.J., Rosłon, I., and Wagemaker,
+M. (2016). Diffusion mechanism of Li
+argyrodite solid electrolytes for Li-ion
+batteries and prediction of optimized halogen
+doping: the effect of Li vacancies, halogens,
+and halogen disorder. Chem. Mater. 28,
+7955–7963.
+4. Wenzel, S., Sedlmaier, S.J., Dietrich, C., Zeier,
+W.G., and Janek, J. (2018). Interfacial reactivity
+and interphase growth of argyrodite solid
+electrolytes at lithium metal electrodes. Solid
+State Ionics 318, 102–112.
+5. Chu, I.-H., Nguyen, H., Hy, S., Lin, Y.-C.,
+Wang, Z., Xu, Z., Deng, Z., Meng, Y.S., and
+Ong, S.P. (2016). Insights into the
+performance limits of the Li7P3S11 superionic
+conductor: a combined ﬁrst-principles and
+experimental study. ACS Appl. Mater.
+Interfaces 8, 7843–7853.
+6. Murakami, M., Shimoda, K., Shiotani, S.,
+Mitsui, A., Ohara, K., Onodera, Y., Arai, H.,
+Uchimoto, Y., and Ogumi, Z. (2015).
+Dynamical origin of ionic conductivity for
+Li7P3S11 metastable crystal as studied by 6/7Li
+and 31P solid-state NMR. J. Phys. Chem. C
+119, 24248–24254.
+7. Kato, Y., Saito, R., Sakano, M., Mitsui, A.,
+Hirayama, M., and Kanno, R. (2014). Synthesis,
+structure and lithium ionic conductivity of solid
+solutions of Li10(Ge1xMx)P2S12 (M = Si, Sn).
+J. Power Sources 271, 60–64.
+8. Zhang, Q., Cao, D., Ma, Y., Natan, A., Aurora,
+P., and Zhu, H. (2019). Sulﬁde-based solid-state
+electrolytes: synthesis, stability,and potential
+for all-solid-state batteries. Adv. Mater. 31,
+1901131.
+9. Wu, J., Liu, S., Han, F., Yao, X., and Wang, C.
+(2021). Lithium/sulﬁde all-solid-state batteries
+using sulﬁde electrolytes. Adv. Mater. 33,
+2000751.
+10. Lin, Z., Liu, Z., Fu, W., Dudney, N.J., and
+Liang, C. (2013). Lithium
+polysulﬁdophosphates: a family of lithium-
+conducting sulfur-rich compounds for
+lithium–sulfur batteries. Angew. Chem. Int.
+Ed. Engl. 52, 7460–7463.
+11. Ji, X., and Nazar, L.F. (2010). Advances in Li-S
+batteries. J. Mater. Chem. 20, 9821–9826.
+12. Bruce, P.G., Freunberger, S.A., Hardwick, L.J.,
+and Tarascon, J.-M. (2012). Li–O2 and Li–S
+batteries with high energy storage. Nat. Mater.
+11, 19–29.
+13. Homma, K., Yonemura, M., Kobayashi, T.,
+Nagao, M., Hirayama, M., and Kanno, R. (2011).
+Crystal structure and phase transitions of the
+lithium ionic conductor Li3PS4. Solid State
+Ionics 182, 53–58.
+14. Kim, J.-S., Jung, W.D., Choi, S., Son, J.-W., Kim,
+B.-K., Lee, J.-H., and Kim, H. (2018). Thermally
+induced S-sublattice transition of Li3PS4 for fast
+lithium-ion conduction. J. Phys. Chem. Lett. 9,
+5592–5597.
+15. Feng, X., Chien, P.-H., Wang, Y., Patel, S.,
+Wang, P., Liu, H., Immediato-Scuotto, M., and
+Hu, Y.-Y. (2020). Enhanced ion conduction by
+enforcing structural disorder in Li-deﬁcient
+argyrodites Li6 xPS5 xCl1+ x. Energy Storage
+Mater. 30, 67–73.
+16. Das, T., Merinov, B.V., Yang, M.Y., and
+Goddard III, W.A. (2022). Structural, dynamic,
+and diffusion properties of Li6(PS4)SCl
+superionic conductor from molecular dynamics
+simulations; prediction of a dramatically
+improved conductor. J. Mater. Chem. 10,
+16319–16327.
+17. Seino, Y., Ota, T., Takada, K., Hayashi, A., and
+Tatsumisago, M. (2014). A Sulphide lithium
+superion conductor is superior to liquid ion
+conductors for use in rechargeable batteries.
+Energy Environ. Sci. 7, 627–631.
+18. Kresse, G., and Furthmu¨ ller, J. (1996).
+Efﬁciency of ab-initio total energy
+calculations for metals and semiconductors
+using a plane-wave basis set. Comput.
+Mater. Sci. 6, 15–50.
+19. Kresse, G., and Furthmu¨ ller, J. (1996). Efﬁcient
+iterative schemes for ab initio total-energy
+calculations using a plane-wave basis. Phys.
+Rev. B Condens. Matter 54, 11169–11186.
+20. Kresse, G., and Joubert, D. (1999). Ultrasoft
+pseudopotentials to the projector
+augmented-wave method. Phys. Rev. B 59,
+1758–1775.
+21. Perdew, J.P., Burke, K., and Ernzerhof, M.
+(1996). Generalized gradient approximation
+made simple. Phys. Rev. Lett. 77,
+3865–3868.
+22. Grimme, S., Antony, J., Ehrlich, S., and
+Krieg, H. (2010). A consistent and accurate
+ab initio parametrization of density
+functional dispersion correction (DFT-D)
+for the 94 elements H-Pu. J. Chem. Phys.
+132, 154104.
+23. Grimme, S., Ehrlich, S., and Goerigk, L. (2011).
+Effect of the damping function in dispersion
+corrected density functional theory. J. Comput.
+Chem. 32, 1456–1465.
+24. Rappe, A.K., Casewit, C.J., Colwell, K.S.,
+Goddard, W.A., and Skiff, W.M. (1992).
+UFF, a full periodic table force ﬁeld for
+molecular mechanics and dynamics
+simulations. J. Am. Chem. Soc. 114,
+10024–10035.
+25. Plimpton, S. (1995). Fast parallel algorithms for
+short-range molecular dynamics. J. Comput.
+Phys. 117, 1–19.
+26. Manz, T.A., and Limas, N.G. (2016). Introducing
+DDEC6 atomic population analysis: part 1.
+Charge partitioning theory and methodology.
+RSC Adv. 6, 47771–47801.
+27. Gerischer, H., Decker, F., and Scrosati, B.
+(1994). The electronic and the ionic
+contribution to the free energy of alkali metals
+in intercalation compounds. J. Electrochem.
+Soc. 141, 2297–2300.
+28. Cherkashinin, G., Hausbrand, R., and
+Jaegermann, W. (2019). Performance of Li-ion
+batteries: contribution of electronic factors to
+the battery voltage. J. Electrochem. Soc. 166,
+A5308–A5312.
+29. Schuld, S., Hausbrand, R., Fingerle, M.,
+Jaegermann, W., and Weitzel, K.-M.
+(2018). Experimental studies on work
+functions of Li+ ions and electrons in the
+battery electrode material LiCoO2: a
+thermodynamic cycle combining ionic and
+electronic structure. Adv. Energy Mater.
+8, 1703411.
+ll
+OPEN ACCESS
+12
+Cell Reports Physical Science 4, 101326, March 15, 2023
+Article

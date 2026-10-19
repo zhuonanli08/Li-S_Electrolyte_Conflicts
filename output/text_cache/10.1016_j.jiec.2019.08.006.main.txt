@@ -1,0 +1,1119 @@
+
+<<PAGE 1>>
+Study for an effect of LiNO3 on polysulﬁde multistep reaction in
+Li/S battery
+Jaesool Shim, Tae Jo Ko*, Kisoo Yoo*
+School of Mechanical Engineering, Yeungnam University, Gyeongsan, Gyeonsanbukdo, South Korea
+A R T I C L E 
+I N F O
+Article history:
+Received 5 July 2019
+Received in revised form 26 July 2019
+Accepted 2 August 2019
+Available online 9 August 2019
+Keywords:
+Li/S cell
+LiNO3 additive
+Irreversible reaction
+Lithium sulﬁde
+A B S T R A C T
+Lithium nitrate (LiNO3) has been reported as a novel additive to improve the cycling performance of Li/S
+batteries because LiNO3 suppresses the polysulﬁde shuttling problem. However, several studies indicate
+that LiNO3 instead decreases the battery performance due to the formation of irreversible products at the
+cathode. In this study, we investigated the role of LiNO3 in irreversible product formation. To elucidate the
+effect of LiNO3, electrolytes with an excess concentration of LiNO3 were employed in the Li/S cell for
+discharge and cyclic voltammetry tests. In the discharge test, a distortion of the discharge proﬁle near the
+end of the discharge was clearly observed for the Li/S battery using a 0.8 M LiNO3 electrolyte. The third
+plateau (distortion) representing the irreversible reaction was signiﬁcantly more pronounced when a
+poor cathode that was not subjected to heat-treatment was used. In addition, cyclic voltammetry tests
+showed an extra cathodic peak at 1.5 V corresponding to the irreversible reaction. It was conﬁrmed that
+the irreversible product can be partially recovered to high-order polysulﬁdes and elemental S8 by
+applying a potential of over 2.9 V. Finally, to provide a more detailed explanation, we carried out a
+computational simulation of the irreversible reaction. The simulation indicated that the reaction was
+related to the formation of crystallized lithium sulﬁde, and the simulation results successfully
+reproduced the third plateau (distortion) in the discharge proﬁle.
+© 2019 The Korean Society of Industrial and Engineering Chemistry. Published by Elsevier B.V. All rights
+reserved.
+Introduction
+In recent decades, Li-ion batteries have revolutionized portable
+electronic devices such as laptops, cell phones, etc., due to their
+high energy and power density. However, their practical energy
+density is still limited to 200 Wh/kg [1], which is insufﬁcient to
+meet the current demands of the automotive industry and the
+portable electronics market. For example, the driving range of the
+Nissan Leaf, one of the most popular electric vehicles (EV), is
+limited to 200 km despite employing a state-of-art Li-ion battery
+[2]. Therefore, as the EV market continues to grow, the demand for
+next-generation batteries that can surpass the performance of Li-
+ion battery continues to increase. Among the myriad candidates,
+Li/S batteries have received particular attention as alternative
+energy storage devices, since the obtainable energy density of the
+Li/S battery is three times that of commercial Li-ion batteries,
+which would allow the driving range of EVs to be extended to
+400 km.
+Despite the high expectations for Li/S batteries, their practical
+application is still hindered by many obstacles, such as their short-
+term cycling ability, overcharge problem, and the loss of active
+sulfur in the cathode. The problems are mainly attributed to the
+soluble polysulﬁdes during the multistage reaction at the sulfur
+cathode. While octa-sulfur (S8(s)) and Li2S(s) are mostly insoluble in
+conventional 
+electrolytes 
+such 
+as 
+DOL/DME, 
+TEGDME, 
+and
+PEGDEM [3], high-order polysulﬁde intermediates (e.g., S8
+2,
+S6
+2, and S4
+2) are soluble in these electrolytes, resulting in
+polysulﬁde shuttling problems across the anode and cathode [4].
+Hence, the key challenges for the practical application of Li/S
+batteries are trapping the polysulﬁdes at the cathode side,
+alleviating the diffusion of polysulﬁdes into the electrolyte, and
+suppressing parasitic reaction at the anode side [5]. Among the
+myriad approaches to trap the polysulﬁdes at the cathode side, a
+breakthrough by Nazar dramatically improved the cycling ability of
+Li/S batteries through the use of highly ordered interwoven
+composites 
+as 
+the 
+cathode 
+[6]. 
+The 
+carbon-sulfur 
+cathode
+successfully encapsulates the polysulﬁdes in its mesoporous
+carbon 
+framework, 
+insulating 
+the 
+active 
+sulfur. 
+Since 
+this
+breakthrough, sulfur encapsulation techniques have been studied
+intensively [7–10]. In addition to cathode manipulation, the
+* Corresponding authors.
+E-mail addresses: tjko@yu.ac.kr (T.J. Ko), kisooyoo@yu.ac.kr (K. Yoo).
+https://doi.org/10.1016/j.jiec.2019.08.006
+1226-086X/© 2019 The Korean Society of Industrial and Engineering Chemistry. Published by Elsevier B.V. All rights reserved.
+Journal of Industrial and Engineering Chemistry 80 (2019) 283–291
+Contents lists available at ScienceDirect
+Journal of Industrial and Engineering Chemistry
+journal homepa ge: www.elsev ier.com/locate/jie c
+
+<<PAGE 2>>
+electrolyte can also be modiﬁed to suppress the polysulﬁde
+shuttling problem. The Watanabe group reported a dramatic
+improvement in the cycling ability of Li/S batteries by using ionic
+liquids based electrolyte since polysulﬁdes are very poorly soluble
+into the electrolytes [3,4,11]. In the same manner, the dissolution of
+polysulﬁdes from the cathode can be alleviated by adding lithium
+polysulﬁdes as co-salts [12]. The ﬁnal key approach is protecting
+the anode reaction surface from the dissolved polysulﬁdes by
+forming an anode protective layer (APL). According to previous
+studies [13,14], lithium nitrate (LiNO3) signiﬁcantly contributes to
+the formation of a protective ﬁlm on the lithium metal surface, and
+the APL can successfully suppress the polysulﬁde shuttling
+problem, resulting in better cycling performance in Li/S batteries.
+Furthermore, LiNO3 still plays a signiﬁcant role and exhibits a
+synergetic effect with strategies that detain the polysulﬁdes at the
+cathode side and alleviate the diffusion of polysulﬁdes into the
+electrolyte [12,15].
+In spite of the beneﬁts of LiNO3 as an electrolyte additive for Li/S
+batteries, Zhang et al. reported that LiNO3 adversely affects the
+multistage redox process at the cathode side [14,16]. These studies
+attributed the irreversible reduction of LiNO3 to the slow kinetics
+of Li2S2 reduction, which is a negative effect of the additive. Even
+though the effect of LiNO3 was demonstrated in the studies, the
+relation between LiNO3 and multistage reduction reaction of
+polysulﬁde is in unveil. Furthermore, Barghamadi et al. studied the
+effect of the LiNO3 concentration in an ionic liquid-organic mixed
+electrolyte on an Li/S battery [17]; however, the study was carried
+out with too narrow of a LiNO3 concentration range (0.05-0.4 mol/
+kg : LiNO3/solvent), and could not clearly elucidate the negative
+effect of LiNO3 on the multistage reduction reaction. With this
+motivation, we investigated the electrical performance of a Li/S cell
+with 
+a 
+wide 
+range 
+of 
+LiNO3
+concentrations 
+(0–1.0 mol/L).
+Additionally, continuum-based simulations were carried out using
+this concentration range to show the effects of LiNO3 on the
+multistage 
+reduction 
+reaction 
+by 
+employing 
+electrode 
+and
+precipitation-dissolution kinetics. Here, it was postulated that
+reaction speed of the kinetics might distort the discharge proﬁle of
+the Li/S battery. Therefore, we compared the second plateau of the
+discharge proﬁles of the Li/S battery that were obtained from the
+experiments in which the LiNO3 concentration in the electrolyte
+was varied to those obtained from the continuum analysis. The
+changes in the discharge proﬁle with different LiNO3 concen-
+trations in the electrolyte were elucidated based on the continu-
+um-based simulation, which clearly reproduced the precipitation
+and dissolution of Li2S2(s) and Li2S as well as the reduction reaction
+of the polysulﬁdes.
+Model and simulation
+Chemical reactions
+The Li/S cell consists of a lithium anode and sulfur-carbon
+cathode. During the discharge process, the lithium is oxidized at
+the anode side, while the sulfur is reduced at the cathode side. The
+reduction reaction at the cathode side is a multi-step reduction
+reaction in which cyclo-octa-sulfur (S8), which is stable at standard
+temperature and pressure, sequentially decomposes to lower-
+order polysulﬁdes. Eventually, the ﬁnal reduction product S2
+forms lithium-sulﬁde (Li2S) with the lithium ions that pass through
+the separator (note Fig. 1). The overall reactions involving electron
+transfer during the discharge process can be represented as
+follows:
+Anode: Li → Li+ + e
+(1)
+Cathode: S8(l) + 2e→ S8
+2-
+(2a)
+Cathode: 3S8
+2 + 2e→ 4S6
+2
+(2b)
+Cathode: 2S6
+2 + 2e→ S4
+2
+(2c)
+Cathode: S4
+2 + 2e→ 2S2
+2
+(2d)
+Cathode: 3S2
+2 + 2e→ 2S2
+(2e)
+Precipitation and dissolution also occur at the cathode side.
+Based on previous reports [18,19], Li2S2(s) and Li2S(s) were
+considered as the possible phases of crystalline lithium-sulﬁde
+in this study. The overall precipitation and dissolution reactions are
+as follows:
+S8(s) → S8(l)
+(3b)
+2Li+ + S2
+2 → Li2S2(s)
+(3b)
+2Li+ + S2 → Li2S(s)
+(3c)
+where the subscripts s and l represent the solid and liquid
+(solvated) phases, respectively. We assumed that precipitation/
+dissolution reaction occurred only at the cathode side.
+Nomenclature
+Symbol description unit
+a 
+Speciﬁc surface area of cathode (m2/m3)
+Ci
+Concentration of species i (mol/m3)
+Ci;ref
+Reference concentration of species i (mol/m3)
+Ci;ave Average concentration of species i in cathode (mol/m3)
+Di
+Diffusivity of species i (m2/s)
+F 
+Faraday constant (C/mol)
+ii
+Current density due to reaction i (A/m2)
+iref
+0
+Exchange current density of electrochemical reaction
+(A/m2)
+iload
+Load current density (A/m2)
+Kk
+Solubility parameter of precipitate k
+kk;l
+Rate constant of precipitate k
+kps
+Reaction rate constant of high-order polysulﬁdes
+reduction on Li anode (1/s)
+Ni
+Superﬁcial ﬂux of species I (mol/m2-s)
+R 
+Gas constant (J/mol-K)
+T 
+Temperature K
+t 
+Time sec
+Vk
+Molar volume of the precipitate k (m3/mol)
+zi
+Charge number of species i
+a 
+Symmetry coefﬁcient
+e 
+Porosity of porous material
+ek
+Volume fraction of precipitate k
+’l
+Liquid phase electric potential (V)
+’s
+Solid phase electric potential (V)
+hi
+Surface overpotential for electrochemical reaction i (V)
+l 
+ionic conductivity (S/m)
+s 
+Electric conductivity (S/m)
+284 
+J. Shim et al. / Journal of Industrial and Engineering Chemistry 80 (2019) 283–291
+
+<<PAGE 3>>
+Mathematical model
+In this section, we brieﬂy review the mathematical model of a
+Li/S battery. The general formulations of the ion transport, electron
+transfer reaction, and charge conservation (see Appendix) are
+based on our previous study [19]. In this study, an additional
+electric potential drop caused by electrical passivation was added
+to the existing physico-chemical model. Due to the insulating
+nature of crystalline polysulﬁde (Li2S(s)), electric passivation
+worsens as Li2S(s) is deposited on the cathode surface. Hence,
+the electric potential drop is formulated based on the amount of
+Li2S(s) (Fig. 2). The thickness of the Li2S(s) layer is directly
+proportional to the fraction of Li2S(s) (eLi2SðsÞ). Here, the potential
+drop due to Li2S(S) is modeled as an exponentially increasing
+voltage loss.
+’ohm ¼ icaRohmsinh eLi2SðsÞ
+eref
+ 
+
+ð4Þ
+where, ica, eref , and Rohm are the local current density at the
+cathode, reference porosity, and electrical resistivity. Notably,
+there is no Ohmic loss when the fraction of Li2S(s) is zero (i.e., no
+Li2S(s)), while the loss increases with the current density and
+fraction of Li2S(s). Finally, the surface overpotential (h) is calculated
+as:
+hi ¼ ’s  ’l  Ui  ’ohm
+ð5Þ
+Fig. 2. Schematic illustration of electric passivation due to lithium peroxide on the electrode particles in a Li/S battery. (For interpretation of the references to color in the text,
+the reader is referred to the web version of this article.)
+Fig. 1. Schematic drawing of a Li/S cell, and the chemical reactions at the anode and cathode sides in the cell. The Li/S cell consists of a metal-type lithium anode, porous
+sulfur–carbon cathode, and polymer separator. Here, the porous separator and cathode are wetted with electrolyte, which provides for lithium ion movement. Dissolution and
+precipitation occur at the cathode during discharge.
+J. Shim et al. / Journal of Industrial and Engineering Chemistry 80 (2019) 283–291 
+285
+
+<<PAGE 4>>
+where ’s, ’l, and U are the solid phase potential, liquid phase
+potential, and open circuit potential, respectively. i indicates the
+species of polysulﬁde associated with the multistep reaction. In
+this study, the self-discharge reactions of polysulﬁde at the anode
+side were not considered, since we were focused on the effect of
+LiNO3 on the ﬁrst discharge state.
+Numerical method
+Inthiswork, aﬁnite volumemethodwasusedtoconstructalinear
+algebraic equation for the numerical modeling of the Li/S battery.
+Discretized algebraic equations were obtained using an upwind
+scheme for both the mass conservation and charge conservation
+equations since the diffusive term is dominant. The time-dependent
+equations were solved by an implicit method for numerical stability.
+The Thomas algorithm was used to solve the tri-diagonal system of
+linear algebraic equations. The tolerances for the mass and charge
+conservation equations were 105. The numerical simulations were
+performed using an Intel Xeon 2.2 GHz CPU.
+Experimental
+The activated-carbon/sulfur-graphene oxide (AC-Sulfur) nano-
+composite powder used as the active material for the sulfur
+cathode in this study was synthesized following the method of
+Song et al. [20]; the procedure is brieﬂy described here. The S-GO
+nanocomposite was obtained from a mixture of sodium sulﬁde
+nonahydrate (Na2S9H2O)/sulfur (1:3 mol ratio), activated carbon
+(AC), and an aqueous solution of CTAB. Here, the acetone was
+dispersed with intensive sonication. The aqueous solution was
+added to a 2 M HCOOH solution and ﬁltered using a GHP
+membrane. The resulting AC-Sulfur composite was heat-treated
+at 155 C for 12 h in a tube furnace under an Ar atmosphere.
+The sulfur electrodes were prepared from the S-GO nano-
+composite by mixing the S-GO with carbon black (Super C65) and
+polyvinylidene ﬂuoride (PVDF) at a weight ratio of 70:20:10 in the
+solvent N-methyl-2-pyrrolidone (NMP). The resulting slurry was
+applied to pure aluminum foil using a doctor blade (MTI Micrometer
+Adjustable Film Applicator) with sulfur loading of 1.5 mg/cm2 and
+then dried in a vacuum oven at 50 C for 48 h. The electrode was cut
+into circular pieces with diameters of 12.7 mm for cell assembly.
+For the electrolyte, a 1 M solutions of lithium bis(triﬂuorome-
+thylsulfonyl)imide (LiTFSI, Sigma-Aldrich) in a mixture of the
+organic solvents 1,3-dioxolane (DOL) and dimethoxyethane (DME)
+(1:1 by volume) were prepared with various concentrations of
+lithium nitrate (LiNO3) from 0.1 to 1.0 M to evaluate the effect of
+LiNO3 on the irreversible reaction in the Li/S cell.
+Li/S coin cells (CR2032-type) were assembled in an argon-ﬁlled
+glove box using a lithium metal foil (99.98%, Cyprus Foote Mineral)
+and the sulfur electrode as the anode and cathode, respectively.
+Celgard-2340 was used as the separator. The discharge and charge
+tests (constant-current load condition) of the coin cells were
+carried out using a battery cycler (Biologics BCS-805) at a load
+current density of 0.1C (1C = 1675 mA/g) between 1.5 and 2.8 V. The
+cell capacity was normalized by the weight of sulfur. Cyclic
+voltammetry (CV) tests were also conducted using a potentiostat
+(Biologics SP-300) over a potential range from 1.2 to 2.8 V vs. Li+/Li
+at a scan rate of 0.5 mV/s. All the electrochemical characterizations
+were conducted at 25 C inside a temperature-controlled chamber.
+Results and discussion
+Discharge characteristics
+In this section, the discharge proﬁles of the Li/S cell for different
+concentrations of the additive LiNO3 are discussed. As described
+above in the experimental section, the electrolytes were synthe-
+sized using DOL/DME (1:1) as the solvent, the salt Li-TFSI, and the
+additive LiNO3. In this study, the LiNO3 concentration was varied
+from 0.0 to 1.0 M (Case-1: 0.0 M / Case-2: 0.2 M / Case-3: 0.5 M /
+Case-4: 0.8 M / Case-5: 1.0 M). Fig. 3 shows that insoluble lithium
+nitrate was present on the bottom of the vial for the 1.0 M case,
+indicating that up to 0.8 M of LiNO3 could be dissolved in the
+electrolyte. First, we investigated the Li/S cell for Cases 1–4. Fig. 4
+shows the discharge and charge proﬁles for the different LiNO3
+concentrations. In Case-1, a traditional discharge proﬁle with a ﬁrst
+(2.3 V) and second (2.1 V) potential plateau was observed. A
+speciﬁc capacity of 800 mA h/g speciﬁc capacity was obtained for
+this case; the low capacity was attributed to sulfur loss and
+shuttling problems. As Watanabe et al. reported, organic solvent-
+based electrolytes such as DOL:DME show poor cell performance
+without additives to suppress polysulﬁde shuttling. The charge
+proﬁle demonstrates that the Li/S cell could not be fully charged,
+and an inﬁnitely long charging time was observed (Fig. 2, black
+dash-dot-dot line). However, in Case-2 with 0.2 M of LiNO3, the
+speciﬁc capacity during the discharge operation improved from
+800 to 900 mA h/g, and the cell was fully charged (Fig. 2, red dash-
+dot-dot line). The concentration of LiNO3 in the electrolyte was
+further increased to 0.5 M to (Case-3). The discharge-charge proﬁle
+and speciﬁc capacity were similar to those of Case-2, but a small
+distortion of the second plateau was observed due to the reactions
+described in Eq. 2-d/e and 3-b/c. Furthermore, a clear distortion
+was seen with 1.0 M LiNO3 (Case-4). In this experiment, the
+distortion was signiﬁcantly greater, and a discharge potential of
+1.9 V was detected at 85% depth of discharge (DOD). Therefore, we
+attributed the distortion of the discharge proﬁle and the decreased
+potential to the negative effect of LiNO3 on the Li/S cell.
+From these observations, we postulated that the distortion of
+the second plateau in the Li/S battery would be more clearly
+apparent for a bulk sulfur-carbon cathode because the negative
+effect of LiNO3 on the ﬁnal stage reaction of the reduction and
+precipitation process would be more strongly induced due to the
+poor activity of this cathode. For this purpose, we investigated the
+discharge proﬁles for the bulk sulfur cathode with varying LiNO3
+concentrations (0.2 M and 1.0 M). We prepared the two types of
+cathodes that consisted of a sulfur-activated carbon mixture and
+Super C-45 (conductive carbon black). The quality of the sulfur
+cathode was determined by whether or not it was subjected to the
+heat treatment process. In this experiment, the activated sulfur
+was obtained from sodium sulfate and deposited on the activated
+carbon. After the chemical process, the activated carbon was
+impregnated with sulfur via the heat treatment method known as
+the melt-diffusion process. The heat treatment process produced a
+high-quality sulfur cathode. The poor cathode obtained without
+the heat treatment process induced a high reaction resistivity as
+well as sulfur loss.
+Fig. 5 shows the voltage proﬁles of the Li/S cell with the two
+types of cathode for varying concentrations of LiNO3 in the
+electrolyte. To show the variance clearly, we used electrolytes in
+which 0.2 M and 1.0 M LiNO3 were dissolved. No evident distortion
+of the second plateau in the voltage proﬁle was observed with the
+0.2 M LiNO3 electrolyte for either cathode. However, a lower initial
+cell potential (2.27 V) was observed for the Li/S cell using the heat-
+treated cathode. This was attributed to high concentration
+polarization [19], since the nanostructure of the sulfur-impregnat-
+ed carbon alleviates octa-sulfur dissolution in the electrolyte. On
+the other hand, the cell potential proﬁles were signiﬁcantly
+distorted in the Li/S cells when the 1.0 M LiNO3 electrolyte was
+used. An unexpected potential drop was observed at 70% DOD.
+Furthermore, a lower speciﬁc capacity was obtained with the 1.0 M
+LiNO3 electrolyte for the untreated cathode. Hence, we concluded
+that LiNO3 negatively affected the battery discharge by interfering
+286 
+J. Shim et al. / Journal of Industrial and Engineering Chemistry 80 (2019) 283–291
+
+<<PAGE 5>>
+with the last stage of the multistep sulfur reduction and
+precipitation reaction; thus, the usage of LiNO3 should be carefully
+considered even though LiNO3 can suppress the polysulﬁde
+shuttling problem by inducing the formation of an APL layer.
+Cyclic voltammetry test
+To observe of the side reactions that occur due to an excessive
+concentration of LiNO3 in the electrolyte, a cyclic voltammetry
+test was carried out on an Li/S battery using an electrolyte
+containing 1.0 M LiNO3. Because LiNO3 is consumed to form the
+anode protective layer [21], it was postulated that the retardance
+of the reduction reaction due to LiNO3 would be observed more
+clearly if the aging process were omitted. Hence, two Li/S coin
+cells 
+were 
+prepared; 
+for 
+one, 
+CV 
+testing 
+was 
+performed
+immediately after cell fabrication, while the other was tested
+24 h for the aging time at anode surface before carrying out the
+CV test. In the test, the voltage was swept from 1.2 to 2.8 V and
+1.5 to 2.8 V for the non-aged and aged cells, respectively. A lower
+potential limit (1.2 V) was chosen for the non-aged cell to clearly
+show the expected side reaction when the reaction is activated at
+1.5 V. Fig. 6 shows the results for the two cells. In both tests, two
+clear peaks corresponding to the ﬁrst and second plateaus in the
+discharge proﬁle were observed (Fig. 6(a) and (d)) while an extra
+peak was observed clearly for the non-aged Li/S cell at 1.5 V
+(Fig. 6(a)). In addition, the positive scans for the non-aged cell
+Fig. 4. Discharge proﬁles with varying LiNO3 concentrations in the electrolyte for
+the cathode (melt-diffusion).
+Fig. 5. Discharge proﬁles for varying LiNO3 concentrations in the electrolyte for the
+bulk carbon cathode.
+Fig. 3. Electrolytes (DOL/DME(1:1)+ LiTFSI (1 M)) with varying LiNO3 concentrations. The LiNO3 could not completely dissolve into the electrolyte in the 1.0 M LiNO3 case.
+J. Shim et al. / Journal of Industrial and Engineering Chemistry 80 (2019) 283–291 
+287
+
+<<PAGE 6>>
+demonstrate that reactions involved in charging state mostly
+disappeared, since the discharge products resulting from the side
+reaction due to excessive LiNO3 are irreversible (Fig. 6(a)).
+However, the irreversible product could be partially recovered to
+high-order polysulﬁdes by applying a higher voltage during the
+reverse scanning process. An anodic peak located at around 2.9 V
+corresponded to the formation of long-chain polysulﬁdes and
+elemental sulfur (S8) appeared during the scanning process
+(Fig. 6(b)). Typical cathodic peaks near 2.1 and 2.4 V correspond-
+ing to the reduction of elemental S8 and polysulﬁdes were
+observed clearly in the CV test when the potential was cycled up
+to 3.0 V (Fig. 6(c)). Additionally, we compared the discharge
+proﬁles of the two cells, and the extra plateau (discharge
+distortion) was more signiﬁcant for the non-aged cell (Fig. 7(a)).
+Based on these results, it can be concluded that the presence of
+excessive LiNO3 in the electrolyte introduced the discharge
+distortion, which resulted from the irreversible reaction.
+Implications of the reduction reaction rate
+A DFT (density functional theory) based study previously
+indicated that a large Gibbs free energy results in a slow electron
+transfer reaction, which leads to low exchange current density
+[22]. In order to investigate the effect of LiNO3 on the reaction, a
+continuum based-simulation of the Li/S cell was carried out for
+varying exchange current densities. The value of the exchange
+current density for the S2
+2 reduction reaction (S2
+2 → S2) was
+controlled. The exchange current density was assumed to be 1.576
+or 0.925 mA/m in the absence (Case-A) or presence (Case-B) of
+LiNO3, respectively. Other parameters are presented in Table 1.
+Fig. 8(a) shows the simulated potential proﬁle during the
+discharge state. In this simulation case (in the absence of LiNO3),
+the typical discharge proﬁle associated with the and second
+potential plateaus was obtained. As has been previously reported,
+those 
+two 
+plateaus 
+are 
+attributed 
+to 
+the 
+dissolution 
+and
+precipitation reactions of crystalline S8(s) and Li2S(s) [19]. For
+example, the species S8(l), which is a reactant in the production of
+S8
+2, is continuously generated due to the dissolution of S8(s),
+resulting in constant discharge potential. The product species S2
+Fig. 6. (a/b) Cyclic voltammetry proﬁle for the non-aged Li/S (voltage range: (a):1.2–2.8 V / (b):1.2–3.0 V), (c) CV proﬁle of ﬁrst cycling with different voltage range. (d) Cyclic
+voltammetry proﬁle for the aged Li/S cell (scan rate for all test: dV/dt = 0.5 mV/s).
+Fig. 7. Discharge proﬁle for (a) non-aged and (a) aged Li/S cells (load condition: 0.2C rate).
+Table 1
+Values of parameters used for numerical simulation.
+Precipitate species 
+Rate constant (ki) 
+Solubility factor (Ki)
+Li2S2(S)
+598.9 (m3/mol-s) 
+8.62 (mol2/m6)
+Li2S(s)
+3.4375e-4 (m6/mol2-s) 
+9.95e-3 (mol3/m9)
+288 
+J. Shim et al. / Journal of Industrial and Engineering Chemistry 80 (2019) 283–291
+
+<<PAGE 7>>
+is consumed due to precipitation of Li2S(s) (Fig. 8(b)). Consequently,
+the discharge potentials of the ﬁrst and second plateau regime are
+maintained at 2.4 V and 2.2 V. Fig. 8(c) shows that the multistep
+reduction reaction of the polysulﬁdes occurs sequentially from S8(l)
+to S2. At the early discharge stage, the reduction reaction of S8(s) is
+predominant (black dotted line), followed by those of S8
+2 (dashed
+line), S6
+2 (dash-dotted line), S4
+2 (red solid line), and S2
+2 (blue
+solid line). It is noteworthy that the reduction reaction of S4
+2 and
+S2
+2 occur simultaneously at the second plateau stage.
+On the other hand, an additional potential drop was observed
+for Case-B at 60% DOD (Fig. 9(a)). In this simulation case, the
+multistep reduction reactions of polysulﬁde were similar to those
+Fig. 8. Numerical simulation of the Li–S cell employing an electrolyte without LiNO3. (a) Cell potential proﬁle with various precipitation kinetic constants and solubility
+factors. (b) Numerically predicted volume fraction of crystalline S8(s), Li2S2(s), and Li2S(s) with varying precipitation kinetic constants and solubility factors. (c) Exchange
+current density corresponding to the multistep reaction of polysulﬁde. (For interpretation of the references to color in the text, the reader is referred to the web version of this
+article.)
+Fig. 9. Numerical simulation for a Li–S cell employing an electrolyte containing LiNO3. (a) Cell potential proﬁle with varying precipitation kinetic constants and solubility
+factors. (b) Numerically predicted volume fraction of crystalline S8(s), Li2S2(s), and Li2S(s) with varying precipitation kinetic constants and solubility factors. (c) Exchange
+current density corresponding to the multistep reaction of polysulﬁde.
+J. Shim et al. / Journal of Industrial and Engineering Chemistry 80 (2019) 283–291 
+289
+
+<<PAGE 8>>
+of Case-A, except for the reduction of S4
+2 and S2
+2. In Case-A,
+these reduction reactions occurred concurrently, while in Case-B
+(in the presence of LiNO3), the reduction of S4
+2 was faster than
+that of S2
+2. As described above, a lower exchange current density
+was assumed for the reduction reaction of S2
+2 in Case-B.
+Therefore, the current density due to the reduction of S4
+2 was
+higher than that of S2
+2 at the early second plateau regime in
+Fig. 7(c). Furthermore, the slow reduction reaction resulted in the
+accumulation of S2
+2, which induced the precipitation of Li2S2(s).
+In this stage, a constant cell potential was obtained since the
+concentration of reactive ions (S2
+2, S2) was maintained. The
+concentration of S2
+2 was maintained due to the equilibrium
+between the precipitation of Li2S2(s), which consumed S2
+2, and
+the 
+reduction 
+of S4
+2, which 
+supplied S2
+2. Similarly, 
+the
+concentration of S2- was maintained due to the equilibrium
+between the precipitation of Li2S(s), which consumed S2, and the
+reduction of S2
+2, which supplied S2 (see volume fraction
+increases of Li2S2(s) and Li2S(s) in Fig. 9(b)). However, at 60%
+DOD, the S2
+2 in electrolyte was depleted and the dissolution of
+Li2S2(s) occurred. The S2
+2 supplied from the dissolution of Li2S2(s)
+was reduced to S2. Hence, the last reduction reaction affording the
+load current also depends on the precipitation reaction. The
+additional reaction step interfered with the multistep reduction
+reaction of polysulﬁde, and, consequently, a cell potential drop is
+induced at the singular stage.
+The simulation results for the cell potential proﬁle during the
+discharge state were in good agreement with experimental
+ﬁndings. We assumed that LiNO3 retarded the reduction of S2
+2,
+introducing an additional voltage drop; this phenomenon was
+observed in both the experimental and numerical studies. In
+particular, the experimentally observed effect of LiNO3 on the
+multistep reduction reaction of polysulﬁde was also elucidated in
+the numerical simulation, thus enabling investigation of the
+concentrations of the reactive species, fraction of crystalline
+lithium-sulﬁde, and current density corresponding to the polysul-
+ﬁde reduction reaction.
+Conclusions
+In this study, the effects of LiNO3 on Li/S batteries were
+investigated. We postulated that excessive LiNO3 would induce
+the irreversible reaction at cathode; to test this, the electrical
+performance of Li/S batteries employing electrolytes containing
+0.1–0.8 M 
+of 
+LiNO3
+were 
+investigated. 
+First, 
+an 
+additional
+discharge plateau near the end of discharge was clearly observed
+only for the Li/S battery with a high concentration LiNO3
+electrolyte. Furthermore, a similar test was carried out using
+an inferior cathode to address the irreversible reaction in the
+electrode. In the test, two types of sulfur cathode (with/without
+heat treatment) were prepared for the Li/S battery, and we
+observed a clear discharge distortion in the discharge test for Li/S
+battery employing the inferior sulfur cathode. Additionally, cyclic
+voltammetry data indicated that the irreversible reaction resulted
+from excessive LiNO3. In this test, two types of Li/S batteries
+(aged/non-aged) 
+were 
+prepared 
+for 
+comparison. 
+Based 
+on
+previous reports indicating the LiNO3 contributes to the forma-
+tion of an anode protective layer (APL) and is consumed during
+the reaction, it was expected that the non-aged Li/S battery would
+clearly show the irreversible reaction. Indeed, we observed an
+additional current peak in the CV charge for the non-aged Li/S
+battery. Finally, a multi-step reaction for lithium polysulﬁde
+crystallization related to the irreversible reaction was proposed,
+and a numerical simulation was carried out. In the simulation, we
+obtained a similar distortion proﬁle for an Li/S battery with
+excessive LiNO3 dissolved in the electrolyte. Thus, based on both
+the numerical and experimental investigations, the irreversible
+reaction related to the formation of lithium polysulﬁde at the
+cathode side was attributed to the dissolution of an excessive
+amount of LiNO3 in the electrolyte.
+Acknowledgements
+This work was supported by the Basic Science Program through
+the National Research Foundation of Korea (NRF) funded by the
+Ministry of Education (grant number NRF -2017R1A4A101558) and
+a 2017 Yeungnam University Research Grant.
+Appendix A
+Current density at the anode and cathode
+The current densities due to lithium oxidation and sulfur
+reduction accompanied by electron transfer are modeled by
+Butler–Volmer equation as below.
+Reaction 
+Species 
+Mathematical Model
+Oxidation
+at anode
+Li
+iLi ¼ iref
+Li
+exp aF
+RThLi
+ 
+  exp  1a
+ð 
+ÞF
+RT hLi
+ 
+
+h 
+i
+Reduction
+at
+cathode
+S8ðlÞ
+iS8ðlÞ ¼ iref
+S8ðlÞ
+CS2
+8
+Cref
+S2
+8
+  
+!0:5
+exp aF
+RThS8ðlÞ
+ 
+
+
+CS8ðlÞ
+Cref
+S8ðlÞ
+  
+!0:5
+exp  1a
+ð 
+ÞF
+RT hS8ðlÞ
+ 
+
+2
+4
+3
+5
+S2
+8
+iS2
+8
+¼ iref
+S8ðlÞ
+CS2
+6
+Cref
+S2
+6
+  
+!2
+exp aF
+RThS2
+8
+ 
+
+
+CS2
+8
+Cref
+S2
+8
+  
+!1:5
+exp  1a
+ð 
+ÞF
+RT hS2
+8
+ 
+
+2
+4
+3
+5
+S2
+6
+iS2
+6
+¼ iref
+S2
+6
+CS2
+4
+Cref
+S2
+4
+  
+!1:5
+exp aF
+RThS2
+6
+ 
+
+
+CS2
+6
+Cref
+S2
+6
+  
+!
+exp  1a
+ð 
+ÞF
+RT hS2
+6
+ 
+
+2
+4
+3
+5
+S2
+4
+iS2
+4
+¼ iref
+S2
+4
+CS2
+2
+Cref
+S2
+2
+  
+!
+exp aF
+RThS2
+4
+ 
+
+
+CS2
+4
+Cref
+S2
+4
+  
+!0:5
+exp  1a
+ð 
+ÞF
+RT hS2
+4
+ 
+
+2
+4
+3
+5
+S2
+2
+iS2
+2
+¼ iref
+S2
+2
+CS2
+Cref
+S2
+ 
+
+exp aF
+RThS2
+2
+ 
+
+
+CS2
+2
+Cref
+S2
+2
+  
+!0:5
+exp  1a
+ð 
+ÞF
+RT hS2
+2
+ 
+
+2
+4
+3
+5
+Species transport equations
+The mass transport equations in the electrolyte for the species
+involved in the electrochemical reaction are formulated on a
+porous material based on the Bruggeman correlation as
+@ eCi
+ð 
+Þ
+@t
+¼ r  e1:5DirCi
+ 
+ þ zivieCir’l þ Si
+where i is a species (Liþ, S8ðlÞ, S2
+8 , S2
+6 , S2
+4 , S2
+2 , S2) in the
+electrolyte, and Si is the source/sink term for the species due to
+oxidation/reduction and precipitation/dissolution reactions. The
+source/sink terms are formulated as:
+SLiþ ¼ 2 
+1
+VLi2S8ðsÞ
+@eLi2S8ðsÞ
+@t
+þ
+1
+VLi2S6ðsÞ
+@eLi2S6ðsÞ
+@t
+þ
+1
+VLi2S4ðsÞ
+@eLi2S4ðsÞ
+@t
+"
+ 
+þ
+1
+VLi2S2ðsÞ
+@eLi2S2ðsÞ
+@t
+þ
+1
+VLi2SðsÞ
+@eLi2SðsÞ
+@t
+#
+SS8ðlÞ ¼ a
+2FiS8ðlÞ 
+1
+VS8ðsÞ
+@eS8ðsÞ
+@t
+SS2
+8 ¼ a
+2F iS8ðlÞ þ 3iS2
+8
+ 
+
+290 
+J. Shim et al. / Journal of Industrial and Engineering Chemistry 80 (2019) 283–291
+
+<<PAGE 9>>
+SS2
+6 ¼ a
+F 2iS2
+8 þ iS2
+6
+ 
+
+SS2
+4 ¼ a
+2F 3iS2
+6 þ iS2
+4
+ 
+
+SS2
+2 ¼ a
+2F 2iS2
+4 þ iS2
+2
+ 
+
+
+1
+VLi2S2ðsÞ
+@eLi2S2ðsÞ
+@t
+SS2 ¼ a
+F iS2
+ 
+ 
+1
+VLi2SðsÞ
+@eLi2SðsÞ
+@t
+In the source/sink terms, the volume fractions of the solid phase
+species (S8, Li2S2, Li2S) involved in dissolution and precipitation
+reactions are modeled as:
+@eS8ðsÞ
+@t
+¼ VS8ðsÞ kS8ðsÞ;1eS8ðsÞ CS8 lð Þ  KS8 lð Þ
+ 
+
+þ kS8ðsÞ;2CS8 lð Þ
+eS8ðsÞ
+" 
+#
+@eLi2S2ðsÞ
+@t
+¼ VLi2S2ðsÞ kLi2S2;1eLi2S2ðsÞ C2
+LiþCS2
+2  KS2
+2
+ 
+
+þ kLi2S2;2
+C2
+LiþCS2
+2
+eLi2S2ðsÞ
+2
+4
+3
+5
+@eLi2SðsÞ
+@t
+¼ VLi2SðsÞ kLi2S;1eLi2SðsÞ C2
+LiþCS2  KS2
+ 
+
+þ kLi2S;2
+C2
+LiþCS2
+eLi2SðsÞ
+" 
+#
+Electric potential
+The electric potential in the battery can be calculated from the
+charge conservation equation. Here, the potentials are obtained
+separately in the electrolyte (’s) and electrolyte (’l) such as
+In the electrolyte : r  e1:5lr’l
+ 
+
+¼ r  F
+X
+zie1:5DirCi
+ 
+
+h 
+i
+ a iS2
+8 þ iS2
+6 þ iS2
+4 þ iS2
+2 þ iS2
+ 
+
+In the positive electrode : r  
+1  e
+ð 
+Þ1:5s r’s
+h 
+i
+¼ a iS2
+8 þ iS2
+6 þ iS2
+4 þ iS2
+2 þ iS2
+ 
+
+where l and s  are the ionic and electrical conductivity,
+respectively.
+Boundary condition
+At the anode-electrolyte interface, lithium ions are supplied by
+the oxidation reaction, and the ﬂux can be formulated from the
+load current (NLiþ ¼ iload=F), while zero ﬂux (Ni ¼ 0) is applied to
+the cathode-current corrector interface. Similar, the magnitude of
+the current corresponds to the load current at the anode-
+electrolyte interface (lr’l ¼ iload) while it is zero (r’l ¼ 0) at
+the cathode-current corrector interface. On the other hand, the
+electrical potential of the electrode is deﬁned only in the solid
+electrode, so that the zero current (r’s ¼ 0) is deﬁned at the
+separator-cathode side with the load current (sr’s ¼ iload) at the
+cathode-current corrector interface.
+Parameters
+In this study, the properties and constant values are same as in
+Ref. [18], except the rate constants and solubility factors for the
+precipitation/dissolution reaction.
+References
+[1] M.-K. Song, E.J. Cairns, Y. Zhang, Nanoscale 5 (6) (2013) 2186, doi:http://dx.doi.
+org/10.1039/c2nr33044j.
+[2] P.G. Bruce, S.A. Freunberger, L.J. Hardwick, J.M. Tarascon, Nat. Mater. Rev. 11 (1)
+(2012) 19, doi:http://dx.doi.org/10.1038/nmat3191.
+[3] J.-W. Park, K. Ueno, N. Tachikawa, K. Dokko, M. Watanabe, J. Phys. Chem. C 117
+(40) (2013) 20531, doi:http://dx.doi.org/10.1021/jp408037e.
+[4] J.-W. Park, et al., J. Phys. Chem. C 117 (9) (2013) 4431, doi:http://dx.doi.org/
+10.1021/jp400153m.
+[5] Y.V. Mikhaylik, J.R. Akridge, J. Electrochem. Soc. 151 (11) (2004) A1969, doi:
+http://dx.doi.org/10.1149/1.1806394.
+[6] X. Ji, K.T. Lee, L.F. Nazar, Nat. Mater. 8 (6) (2009) 500, doi:http://dx.doi.org/
+10.1038/nmat2460.
+[7] S. Moon, Y.H. Jung, W.K. Jung, D.S. Jung, J.W. Choi, D.K. Kim, Adv. Mater. 25 (45)
+(2013) 6547, doi:http://dx.doi.org/10.1002/adma.201303166.
+[8] X.Y. Zhao, et al., Electrochim. Acta 113 (2013) 256, doi:http://dx.doi.org/
+10.1016/j.electacta.2013.09.078.
+[9] H. Chen, et al., Sci. Rep. 3 (2013) 1910, doi:http://dx.doi.org/10.1038/srep01910.
+[10] M. Li, et al., ACS Appl. Mater. Interfaces 9 (9) (2017) 8047, doi:http://dx.doi.org/
+10.1021/acsami.6b12546 2017/03/08.
+[11] K. Dokko, et al., J. Electrochem. Soc.160 (8) (2013) A1304, doi:http://dx.doi.org/
+10.1149/2.111308jes.
+[12] S. Chen, F. Dai, M.L. Gordin, D. Wang, RSC Adv. 3 (11) (2013) 3540.
+[13] S. Xiong, K. Xie, Y. Diao, X. Hong, Electrochim. Acta 83 (2012) 78.
+[14] S.S. Zhang, Electrochim. Acta 70 (2012) 344, doi:http://dx.doi.org/10.1016/j.
+electacta.2012.03.081.
+[15] G. Zheng, Y. Yang, J.J. Cha, S.S. Hong, Y. Cui, Nano Lett. 11 (10) (2011) 4462.
+[16] S.S. Zhang, J. Electrochem. Soc. 159 (7) (2012) A920.
+[17] M. Barghamadi, A.S. Best, A.F. Hollenkamp, P. Mahon, M. Musameh, T. Rüther,
+Electrochim. Acta 222 (2016) 257.
+[18] K. Kumaresan, Y. Mikhaylik, R.E. White, J. Electrochem. Soc. 155 (8) (2008)
+A576, doi:http://dx.doi.org/10.1149/1.2937304.
+[19] K. Yoo, M.-K. Song, E.J. Cairns, P. Dutta, Electrochim. Acta 213 (2016) 174.
+[20] M.-K. Song, Y. Zhang, E.J. Cairns, Nano Lett. 13 (12) (2013) 5891, doi:http://dx.
+doi.org/10.1021/nl402793z 2013/12/11.
+[21] Y.-X. Wang, S.-L. Chou, H.-K. Liu, S.-X. Dou, J. Power Sources 244 (0) (2013) 240,
+doi:http://dx.doi.org/10.1016/j.jpowsour.2012.11.152.
+[22] S. Kazemiabnavi, P. Dutta, S. Banerjee, Phys. Chem. Chem. Phys. 17 (17) (2015)
+11740, doi:http://dx.doi.org/10.1039/c4cp06121g.
+J. Shim et al. / Journal of Industrial and Engineering Chemistry 80 (2019) 283–291 
+291

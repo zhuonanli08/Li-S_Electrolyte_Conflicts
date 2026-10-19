@@ -1,0 +1,710 @@
+
+<<PAGE 1>>
+S1
+Supporting Information
+Role of Electrolyte Concentration in Polysulfide Shuttle and Electrochemical 
+Performance of Lithium-Sulfur Batteries 
+Md Shahriar Nahian1, #, Arpan K. Sharma1, #, Bairav S. Vishnugopi1, JiYoung Seo2, Lirong 
+Zhong2, Lili Shi2, and Partha P. Mukherjee1, *
+1School of Mechanical Engineering, Purdue University, West Lafayette, IN 47907, USA
+2Energy & Environment Directorate, Pacific Northwest National Laboratory Richland, WA 
+99354, USA
+# M.S.N and A.K.S contributed equally to this work
+*Correspondence: pmukherjee@purdue.edu
+Downloaded from pubs.​acs.​org/​aelccp/​article-supplement/​5074333/​pdf/​nz6c00391_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 2>>
+S2
+S1. Computational framework to predict electrochemical performance
+S1.1. Reaction mechanism
+At the anode, lithium undergoes oxidation:
+𝐿𝑖→𝐿𝑖+ + 𝑒―
+(S1)
+Li⁺ is transported across the cell through electrolyte, while electrons travel through the conductive 
+carbon network due to the poor electronic conductivity of sulfur (S8). During discharge, the 
+following reactions occur:
+Dissolution of solid sulfur:
+𝑆8(𝑙)→𝑆8(𝑠) 
+(S2)
+Dissolved sulfur to higher-chain polysulfide:
+1
+2𝑆2―
+8 →1
+2 𝑆
+8(𝑙) + 𝑒― 
+(S3)
+Higher-chain to medium-chain polysulfides:
+𝑆2―
+4 →1
+2 𝑆
+2―
+8
++ 𝑒― 
+(S4)
+Medium-chain polysulfide electrodeposition:
+2
+3𝐿𝑖2𝑆→4
+3𝐿𝑖+ + 1
+6𝑆2―
+4
++ 𝑒― 
+(S5)
+Downloaded from pubs.​acs.​org/​aelccp/​article-supplement/​5074333/​pdf/​nz6c00391_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 3>>
+S3
+S1.2. Computation of effective microstructural properties.
+The microstructures for the cell cathode are generated stochastically using the commercial tool 
+GeoDict,1–5 and the effective microstructural properties, like tortuosity, electronic conductivity, 
+and specific active area, are calculated using Direct Numerical Simulations (DNS) as discussed 
+below.1,5 
+We compute the microstructural inputs by procedurally growing precipitate within a pristine 
+mesoporous carbon scaffold and then evaluating transport on the voxelized geometry. The scaffold 
+is defined by pristine porosity 𝜀0, mean pore radius 𝑅𝑝, and a representative elementary volume 
+(REV) pre-validated for size and resolution independence. Precipitation is permitted on carbon–
+pore and precipitate-pore interfaces, with a morphology factor 𝜔 biasing local attachment; 
+interfacial sites are ranked using the deposition metric.
+𝑒𝑖= (1―𝜔)
+6
+𝑁𝑐𝑎𝑟𝑏𝑜𝑛+ 𝜔
+6𝑁𝑝𝑟𝑒𝑐𝑖𝑝𝑖𝑡𝑎𝑡𝑒 
+(S6)
+A cumulative priority map is assembled, and the top 𝑁𝑠𝑖𝑚𝑢𝑙𝑡𝑎𝑛𝑒𝑜𝑢𝑠 sites are filled per increment. 
+After each increment, we recompute interfacial areas (carbon/pore, carbon/precipitate, 
+precipitate/pore) and repeat these growth-characterization steps until the target precipitate fraction 
+is reached; multiple independent realizations are generated at each state to quantify variability and 
+ensure REV/resolution independence. Directional pore tortuosity (𝜏𝑥, 𝜏𝑦, 𝜏𝑧)is obtained by solving 
+the steady diffusion problem in the pore domain with boundary and interface conditions specified 
+in the following equations:
+Downloaded from pubs.​acs.​org/​aelccp/​article-supplement/​5074333/​pdf/​nz6c00391_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 4>>
+S4
+𝐶= 1 𝑎𝑡 𝑥= 𝑥𝑙𝑒𝑓𝑡 
+(S7)
+𝐶= 0 𝑎𝑡 𝑥= 𝑥𝑟𝑖𝑔ℎ𝑡 
+(S8)
+∂𝐶
+∂𝑛= 0 𝑎𝑡 𝑡ℎ𝑒 𝑜𝑡ℎ𝑒𝑟 𝑓𝑜𝑢𝑟 𝑝𝑙𝑎𝑛𝑒𝑠 
+(S9)
+∂𝐶
+∂𝑛= 0 𝑎𝑡 𝑡ℎ𝑒 𝑝𝑜𝑟𝑒 𝑠𝑜𝑙𝑖𝑑 𝑖𝑛𝑡𝑒𝑟𝑓𝑎𝑐𝑒 
+(S10)
+The steady-state concentration balance is solved in the pore phase:
+∇. (𝐷∇𝐶) = 0 
+(S11)
+The flux-equivalence relation in the following relation is given by:
+―𝐷𝜀
+𝜏𝑥
+𝐶𝑥𝑟𝑖𝑔ℎ𝑡―𝐶𝑥𝑙𝑒𝑓𝑡
+𝑥𝑟𝑖𝑔ℎ𝑡―𝑥𝑙𝑒𝑓𝑡
+= ― ∫𝑥=𝑥𝑙𝑒𝑓𝑡𝐷∂𝐶
+∂𝑥𝑑𝑦𝑑𝑧= ― ∫𝑥=𝑥𝑟𝑖𝑔ℎ𝑡𝐷∂𝐶
+∂𝑥𝑑𝑦𝑑𝑧 
+(S12)
+yields 𝜀
+𝜏 along the chosen axis, and the same procedure is repeated for the other two directions to 
+capture anisotropy, with isotropic averages reported when appropriate. Effective electronic 
+conductivity of the connected carbon network (𝜎𝑒𝑓𝑓,𝑥, 𝜎𝑒𝑓𝑓,𝑦,𝜎𝑒𝑓𝑓,𝑧) is computed by solving charge 
+conservation in the solid phase while treating pores and precipitate as insulators, using the 
+boundary and interface conditions specified in:
+𝜙= 1 𝑎𝑡 𝑥= 𝑥𝑙𝑒𝑓𝑡 
+(S13)
+𝜙= 0 𝑎𝑡 𝑥= 𝑥𝑟𝑖𝑔ℎ𝑡 
+(S14)
+Downloaded from pubs.​acs.​org/​aelccp/​article-supplement/​5074333/​pdf/​nz6c00391_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 5>>
+S5
+∂𝜙
+∂𝑛= 0 𝑎𝑡 𝑡ℎ𝑒 𝑜𝑡ℎ𝑒𝑟 𝑓𝑜𝑢𝑟 𝑝𝑙𝑎𝑛𝑒𝑠 
+(S15)
+∂𝜙
+∂𝑛= 0 𝑎𝑡 𝑡ℎ𝑒 𝑐𝑎𝑟𝑏𝑜𝑛― 𝑝𝑜𝑟𝑒 𝑎𝑛𝑑 𝑐𝑎𝑟𝑏𝑜𝑛 𝑝𝑟𝑒𝑐𝑖𝑝𝑖𝑡𝑎𝑡𝑒 𝑖𝑛𝑡𝑒𝑟𝑓𝑎𝑐𝑒𝑠  
+(S16)
+∇. (𝜎∇𝜙) = 0 
+(S17)
+The directional effective conductivity then follows from.
+― 𝜎𝑒𝑓𝑓
+𝑥
+𝜀
+𝜏𝑥
+𝜙𝑥𝑟𝑖𝑔ℎ𝑡―𝜙𝑥𝑙𝑒𝑓𝑡
+𝑥𝑟𝑖𝑔ℎ𝑡―𝑥𝑙𝑒𝑓𝑡
+= ― ∫𝑥=𝑥𝑙𝑒𝑓𝑡𝜎∂𝜙
+∂𝑥𝑑𝑦𝑑𝑧= ― ∫𝑥=𝑥𝑟𝑖𝑔ℎ𝑡𝜎∂𝜙
+∂𝑥𝑑𝑦𝑑𝑧 (S18)
+ In practice, 𝜎𝑒𝑓𝑓 primarily follows the carbon fraction and remains robust until approaching the 
+solid percolation threshold, whereas 𝜏 is sensitive to 𝜀0, 𝑅𝑝 , precipitate fraction, 𝜔, and because 
+precipitation redirects and constricts electrolyte pathways. The resulting property set-directional 
+interfacial areas, 𝜏𝑥,𝑦,𝑧 and  𝜎𝑒𝑓𝑓,𝑥,𝑦,𝑧 tabulated as functions of  𝜀0, 𝑅𝑝 , precipitate fraction, 𝜔-is 
+passed to the continuum cell model, where it informs ionic/ohmic transport closures and the 
+evolution of reaction area without reliance on figure-based explanations. The plausibility of these 
+formulations has been demonstrated previously.6
+Table S1. Mathematical correlation of microstructural properties used in the model as a function 
+of precipitation amount, morphology, and porosity.  
+Property
+Mathematical Relation
+Coefficient of 
+determination, 
+𝑅2
+Downloaded from pubs.​acs.​org/​aelccp/​article-supplement/​5074333/​pdf/​nz6c00391_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 6>>
+S6
+Active area (carbon-
+electrolyte interface)
+𝑎1 = 1
+𝑅𝑝
+0.194794 + 4.636493(1 ― 𝜀0) ― 6.299025(1 ― 𝜀0)2 .
+(1 ― (
+𝜀2
+0.247642 + 0.508887𝜔2.862174 )
+0.171546
+0.985191
+Tortuosity
+𝜏= 0.841432 ― 𝜀2(0.582207 + 0.829378𝜀2 ― 0.121772𝜔) .
+𝜀―(2.149351―𝜀2(1.936327―2.920928𝜀2+0.173031𝜔))
+0.968584
+Conductivity
+𝜎= 1.480809𝜎0(1 ― 𝜀0)2.130685
+0.983681
+S1.3. Description of the electrolyte:
+All the ionic and neutral species coexist in the electrolyte phase, and their relative concentrations 
+will depend on reaction rates as well as transport interactions. Modified concentration solution 
+theory has been utilized to depict these multispecies interactions.7,8 The transport laws utilized in 
+our model are as follows:
+Li+ ionic flux:
+𝑁𝑝= ―(𝐷𝑝𝑝∇𝐶𝑝+ 𝐷𝑝𝑥∇𝐶𝑥+ 𝐷𝑝𝑦∇𝐶𝑦+ 𝐷𝑝𝑠∇𝐶𝑠) + 𝑡𝑝
+𝐼
+𝐹+ 𝐶𝑝𝑉 
+(S19)
+Dissolved sulfur flux:
+𝑁𝑠= ―(𝐷𝑠𝑝∇𝐶𝑝+ 𝐷𝑠𝑥∇𝐶𝑥+ 𝐷𝑠𝑦∇𝐶𝑦+ 𝐷𝑠𝑠∇𝐶𝑠) + 𝑡𝑠
+𝐼
+𝐹+ 𝐶𝑠𝑉 
+(S20)
+Long-chain polysulfide flux:
+𝑁𝑥= ―(𝐷𝑥𝑝∇𝐶𝑝+ 𝐷𝑥𝑥∇𝐶𝑥+ 𝐷𝑥𝑦∇𝐶𝑦+ 𝐷𝑥𝑠∇𝐶𝑠) + 𝑡𝑥
+𝐼
+𝐹+ 𝐶𝑥𝑉 
+(S21)
+Downloaded from pubs.​acs.​org/​aelccp/​article-supplement/​5074333/​pdf/​nz6c00391_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 7>>
+S7
+Medium-chain polysulfide flux:
+𝑁𝑝= ―(𝐷𝑦𝑝∇𝐶𝑝+ 𝐷𝑦𝑥∇𝐶𝑥+ 𝐷𝑦𝑦∇𝐶𝑦+ 𝐷𝑦𝑠∇𝐶𝑠) + 𝑡𝑦
+𝐼
+𝐹+ 𝐶𝑦𝑉 
+(S22)
+Ionic current:
+ 𝐼= ―(𝜅∇𝜙𝑒+ 𝜅𝑝 ∇ln 𝐶𝑝+ 𝜅𝑠 ∇ln 𝐶𝑠+ 𝜅𝑥 ∇ln 𝐶𝑥+ 𝜅𝑦 ∇ln 𝐶𝑦) 
+(S23)
+Local charge neutrality: 
+𝐶𝑝+ 𝑧𝑎𝐶𝑎―2𝐶𝑥―2𝐶𝑦= 0 
+(S24)
+Ionic conductivity utilized in our model is a function of species concentrations, particularly the 
+most dominant species Li+ and S2―
+4 . Ionic conductivity variation with Li+ and S2―
+4 concentration 
+is demonstrated in Figure S1.
+Figure S1: Variation in ionic conductivity as a function of S2―
+4 and Li+ concentrations in the 
+electrolyte.
+Downloaded from pubs.​acs.​org/​aelccp/​article-supplement/​5074333/​pdf/​nz6c00391_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 8>>
+S8
+S1.4. Electrochemical Performance Model
+The computed microstructural descriptors are integrated into a physics-informed framework to 
+predict the charge-discharge behavior of Li-S batteries. The complex, non-linear electrochemical 
+response of these systems stems from the coupled interplay of interfacial reaction kinetics, ionic 
+transport through the electrolyte, and spatially heterogeneous species evolution within the S 
+cathode. These phenomena span multiple length scales, from the particle level to the porous 
+electrode scale, and are governed by the following set of conservation and reaction equations, 
+which form the basis of the electrochemical performance model developed in this study.8,9 All the 
+Kinetic parameters used in this model are adopted from Kumaresan et al.10 
+1. Species balance in electrolyte phase:
+Species balance description for individual species can be expressed by the following equation:
+∂
+∂𝑡(𝜀𝐶𝑖) = ― ∇.𝑁𝑖+ 𝑅𝑖 
+(S25)
+Where 𝜀 is local porosity, 𝐶𝑖 is species concentration, 𝑁𝑖 is species flux, and 𝑅𝑖 is local species 
+generation rate. 
+𝐿𝑖+ balance:
+∂
+∂𝑡𝜀𝐶𝑝= ∇.(𝐷𝑝𝑝∇𝐶𝑝+ 𝐷𝑝𝑥∇𝐶𝑥+ 𝐷𝑝𝑦∇𝐶𝑦+ 𝐷𝑝𝑠∇𝐶𝑠) ―
+𝑡𝑝
+𝐹∇.𝐼+ 𝑅𝑝 
+(S26)
+Downloaded from pubs.​acs.​org/​aelccp/​article-supplement/​5074333/​pdf/​nz6c00391_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 9>>
+S9
+Dissolved sulfur balance:
+∂
+∂𝑡(𝜀𝐶𝑠) = ∇.(𝐷𝑠𝑝∇𝐶𝑝+ 𝐷𝑠𝑥∇𝐶𝑥+ 𝐷𝑠𝑦∇𝐶𝑦+ 𝐷𝑠𝑠∇𝐶𝑠) ― 𝑡𝑠
+𝐹∇.𝐼+ 𝑅𝑠 
+(S27)
+Long-chain polysulfide balance:
+∂
+∂𝑡(𝜀𝐶𝑥) = ∇.(𝐷𝑥𝑝∇𝐶𝑝+ 𝐷𝑥𝑥∇𝐶𝑥+ 𝐷𝑥𝑦∇𝐶𝑦+ 𝐷𝑥𝑠∇𝐶𝑠) ― 𝑡𝑥
+𝐹∇.𝐼+ 𝑅𝑥 
+(S28)
+Medium-chain polysulfide balance:
+∂
+∂𝑡𝜀𝐶𝑦= ∇.(𝐷𝑦𝑝∇𝐶𝑝+ 𝐷𝑦𝑥∇𝐶𝑥+ 𝐷𝑦𝑦∇𝐶𝑦+ 𝐷𝑦𝑠∇𝐶𝑠) ―
+𝑡𝑦
+𝐹∇.𝐼+ 𝑅𝑦 
+(S29)
+Ionic current balance:
+∇.  𝜅∇𝜙𝑒+ 𝜅𝑝 ∇ln 𝐶𝑝+ 𝜅𝑠 ∇ln 𝐶𝑠+ 𝜅𝑥 ∇ln 𝐶𝑥+ 𝜅𝑦 ∇ln 𝐶𝑦+ 𝐽  =  0 
+(S30)
+The electric potential in the solid phase (sulfur particles) at the cathode can be determined using 
+Ohm’s law as follows:
+∇. 𝜎𝑒𝑓𝑓
+𝑠
+ ∇𝜙𝑠= 𝐽  
+(S31)
+𝜙𝑠 is the solid phase potential, 𝜙𝑒 electrolyte phase potential, 𝐽 is total volumetric electrochemical 
+reaction rate, defined as:
+𝐽= ∑𝑘𝑎𝐼𝑘 
+(S32)
+Downloaded from pubs.​acs.​org/​aelccp/​article-supplement/​5074333/​pdf/​nz6c00391_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 10>>
+S10
+where 𝑘 represents individual electrochemical reactions (S3-S5)
+The individual species generation rates (𝑅𝑖) are composed of these reactions as well.
+𝑅𝑝= 4
+3
+𝑗𝐿𝑖2𝑆→𝐿𝑖2𝑆4
+𝐹
+ 
+(S33)
+𝑅𝑥= ― 1
+2
+𝑗𝐿𝑖2𝑆8→𝑆(𝑙)
+𝐹
++ 1
+2
+𝑗𝐿𝑖2𝑆4→𝐿𝑖2𝑆8
+𝐹
+ 
+(S34)
+𝑅𝑦= ― 𝑗𝐿𝑖2𝑆4→𝐿𝑖2𝑆8
+𝐹
++ 1
+6
+𝑗𝐿𝑖2𝑆→𝐿𝑖2𝑆4
+𝐹
+ 
+(S35)
+𝑅𝑠= 1
+2
+𝑗𝐿𝑖2𝑆8→𝑆(𝑙)
+𝐹
+― 𝑅𝑆(𝑑𝑖𝑠𝑠𝑜𝑙𝑢𝑡𝑖𝑜𝑛) 
+(S36)
+The reactions (S2 and S5) also alter the solid content and porosity as follows: 
+∂𝜀𝑠
+∂𝑡= 𝑉𝑠𝑅𝑆(𝑑𝑖𝑠𝑠𝑜𝑙𝑢𝑡𝑖𝑜𝑛) 
+(S37)
+∂𝜀𝐿𝑖2𝑆
+∂𝑡
+= ― 𝑉𝐿𝑖2𝑆𝑅𝐿𝑖2𝑆→𝐿𝑖2𝑆4 
+(S38)
+∂
+∂𝑡𝜀+ 𝜀𝑆+ 𝜀𝐿𝑖2𝑆= 0 
+(S39)
+Here 𝜀𝑆 is the volume fraction of solid sulfur and 𝜀𝐿𝑖2𝑆 is the volume fraction of Li2S. The capacity 
+and applied current of a Li-S cathode are correlated to sulfur loading. 
+𝑄𝑐𝑎𝑝𝑎𝑐𝑖𝑡𝑦= 16𝐹𝜀0
+𝑆𝐿𝑐𝑎𝑡
+3600𝑉𝑠 [𝐴ℎ 𝑚―2]   
+(S40)
+𝐼𝑎𝑝𝑝= 𝐶𝑟𝑎𝑡𝑒. 𝑄𝑐𝑎𝑝𝑎𝑐𝑖𝑡𝑦  [𝐴 𝑚―2]   
+(S41)
+Downloaded from pubs.​acs.​org/​aelccp/​article-supplement/​5074333/​pdf/​nz6c00391_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 11>>
+S11
+S1.5. Dissolution and precipitation at cathode:
+In Li-S cathodes, solid sulfur dissolves and Li2S precipitates dynamically during discharge, 
+causing continuous evolution of pore volume and the electrochemically active interfacial area. 
+Equations S37-S39 compute the local volume fractions of solid sulfur and Li2S within the cathode 
+by enforcing phase balance during dissolution/precipitation. The resulting solid volume fraction 
+modifies the available electrolyte-filled pore volume and the carbon-electrolyte interface that 
+sustains electrochemical reactions.
+To account for precipitation-induced microstructure evolution in a physically consistent and 
+reproducible manner, the effective tortuosity and active area are updated as explicit functions of 
+(1) the instantaneous solid volume fractions and (2) precipitation morphology, using the 
+correlations summarized in Table S1 (implementation details are provided in Section S1.2). This 
+treatment follows the mechanistic picture that precipitation introduces two distinct but coupled 
+resistive modes, surface passivation and pore blockage. 
+Both solid sulfur and Li2S are treated as electronically insulating phases, and therefore the 
+electrochemically active interface is restricted to the carbon-electrolyte interphase. At the 
+beginning of discharge, solid sulfur occupies a substantial fraction of the pore space and covers 
+portions of the carbon surface, reducing the initially accessible carbon-electrolyte interface. As 
+discharge starts, sulfur dissolution exposes additional carbon surface, which increases the available 
+active area. At later stages, Li2S begins to precipitate and progressively deposits on carbon, 
+reducing the carbon-electrolyte interface again and inducing surface passivation. This loss of 
+active area increases the kinetic overpotential through reduced availability of reaction sites, 
+Downloaded from pubs.​acs.​org/​aelccp/​article-supplement/​5074333/​pdf/​nz6c00391_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 12>>
+S12
+consistent with the established passivation mechanism in Li-S cathodes11,12. We can quantify 
+passivation using a dimensionless surface passivation factor:
+𝑆𝑢𝑟𝑓𝑎𝑐𝑒 𝑝𝑎𝑠𝑠𝑖𝑣𝑎𝑡𝑖𝑜𝑛 𝑓𝑎𝑐𝑡𝑜𝑟= 1 ― 𝑎
+𝑎0
+(S42)
+Where 𝑎 is the instantaneous electrochemically active area and 𝑎0 is the reference active area 
+corresponding to the un-passivated carbon-electrolyte interface. This metric ranges from 0 (no 
+passivation) to 1 (complete passivation) and directly reflects the severity of interfacial starvation.
+In parallel with surface coverage, precipitation reduces electrolyte-filled pore volume and 
+increases pore-phase transport resistance by decreasing porosity and increasing tortuosity. The 
+instantaneous pore-phase transport capability is tracked using the evolving ratio  𝜀
+𝜏 . We quantify 
+pore blockage using a dimensionless pore blockage factor:
+𝑃𝑜𝑟𝑒 𝑏𝑙𝑜𝑐𝑘𝑎𝑔𝑒 𝑓𝑎𝑐𝑡𝑜𝑟= 1 ―
+𝜀
+𝜏
+𝜀0
+𝜏0
+(S43)
+𝜀𝑜 and 𝜏0 are the initial porosity and tortuosity, respectively. This definition mirrors established 
+microstructure-resistance descriptors where loss of pore connectivity and constriction increase 
+transport resistance and can ultimately starve the cathode. Surface passivation primarily increases 
+kinetic polarization by reducing reaction sites, whereas blockage increases transport polarization 
+by reducing effective pore connectivity. Since the model updates related parameters, these resistive 
+contributions evolve self-consistently during discharge and feed directly into the regime maps. 
+This coupling ensures that the reported transport-limited and reaction-limited boundaries arise 
+from precipitation-induced microstructure evolution.
+Downloaded from pubs.​acs.​org/​aelccp/​article-supplement/​5074333/​pdf/​nz6c00391_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 13>>
+S13
+ S1.6. Chemical reactions at anode:
+During the discharge process, successive reduction of S occurs at cathode contributing to gain of 
+overall electrochemical energy. However, these soluble polysulfides can travel to the anode and 
+react chemically with highly reactive Li metal (Figure S2). This out-of-circuit reaction causes 
+low-capacity utilization and is called shuttle defect. 
+1. Chemical reduction of dissolved sulfur:
+𝐿𝑖+ 1
+2𝑆8(𝑙)
+𝑟𝑒𝑑𝑢𝑐𝑡𝑖𝑜𝑛 𝐿𝑖+ + 1
+2𝑆2―
+8 
+(S44)
+2. Chemical reduction of higher-chain polysulfide:
+𝐿𝑖+ 1
+2𝑆2―
+8
+𝑟𝑒𝑑𝑢𝑐𝑡𝑖𝑜𝑛 𝐿𝑖+ + 1
+2𝑆2―
+4 
+(S45)
+3. Chemical reduction of medium-chain polysulfide:
+𝐿𝑖+ 1
+3𝐿𝑖+ + 1
+6𝑆2―
+4
+𝑟𝑒𝑑𝑢𝑐𝑡𝑖𝑜𝑛 2
+3𝐿𝑖2𝑆 
+(S46)
+Where the reactions rates at the anode is defined as:
+𝑅1 = 𝑘1
+𝐶𝑠
+𝐶𝑟𝑒𝑓
+𝑠
+1
+2
+ 
+(S47)
+𝑅2 = 𝑘2
+𝐶𝑥
+𝐶𝑟𝑒𝑓
+𝑥
+1
+2
+ 
+(S48)
+𝑅3 = 𝑘3
+𝐶𝑦
+𝐶𝑟𝑒𝑓
+𝑦
+1
+6
+𝐶𝑝
+𝐶𝑟𝑒𝑓
+𝑝
+1
+3
+ 
+(S49)
+Downloaded from pubs.​acs.​org/​aelccp/​article-supplement/​5074333/​pdf/​nz6c00391_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 14>>
+S14
+Chemical reactions at the anode surface appear as interface fluxes and are incorporated in anode-
+separator boundary conditions:
+For Li+: 
+𝑁𝑝(𝑎𝑛𝑜𝑑𝑒―𝑠𝑒𝑝𝑎𝑟𝑎𝑡𝑜𝑟) =
+𝐽𝑎𝑝𝑝
+𝐹+ 𝑅1 + 𝑅2 ― 1
+3𝑅3 
+(S50)
+Dissolved sulfur:
+𝑁𝑠(𝑎𝑛𝑜𝑑𝑒―𝑠𝑒𝑝𝑎𝑟𝑎𝑡𝑜𝑟) = ― 1
+2𝑅1 
+(S51)
+Long-chain polysulfide: 
+𝑁𝑥(𝑎𝑛𝑜𝑑𝑒―𝑠𝑒𝑝𝑎𝑟𝑎𝑡𝑜𝑟) = 1
+2𝑅1 ― 1
+3𝑅2 
+(S52)
+Medium-chain polysulfide: 
+𝑁𝑦(𝑎𝑛𝑜𝑑𝑒―𝑠𝑒𝑝𝑎𝑟𝑎𝑡𝑜𝑟) = 𝑅2 ― 1
+6𝑅3 
+(S53)
+Polysulfide shuttle is associated with two distinct interactions, the transport of sulfur species from 
+cathode through electrolyte and chemical reduction of sulfur species at anode. The separator 
+behaves as a host space for these physicochemical interactions. Integrating sulfur species 
+concentrations over the separation length gives the flux differences mentioned in the following 
+equations: 
+∂
+∂𝑡( ∫𝐿𝑠𝑒𝑝𝜀𝐶𝑠𝑑𝑥 ) = 𝑁
+𝑠(𝑎𝑛𝑜𝑑𝑒―𝑠𝑒𝑝𝑎𝑟𝑎𝑡𝑜𝑟) ― 𝑁𝑠(𝑐𝑎𝑡ℎ𝑜𝑑𝑒―𝑠𝑒𝑝𝑎𝑟𝑎𝑡𝑜𝑟) 
+(S54)
+Downloaded from pubs.​acs.​org/​aelccp/​article-supplement/​5074333/​pdf/​nz6c00391_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 15>>
+S15
+∂
+∂𝑡( ∫𝐿𝑠𝑒𝑝𝜀𝐶𝑥𝑑𝑥 ) = 𝑁
+𝑥(𝑎𝑛𝑜𝑑𝑒―𝑠𝑒𝑝𝑎𝑟𝑎𝑡𝑜𝑟) ― 𝑁𝑥(𝑐𝑎𝑡ℎ𝑜𝑑𝑒―𝑠𝑒𝑝𝑎𝑟𝑎𝑡𝑜𝑟) 
+(S55)
+∂
+∂𝑡( ∫𝐿𝑠𝑒𝑝𝜀𝐶𝑦𝑑𝑥 ) = 𝑁
+𝑦(𝑎𝑛𝑜𝑑𝑒―𝑠𝑒𝑝𝑎𝑟𝑎𝑡𝑜𝑟) ― 𝑁𝑦(𝑐𝑎𝑡ℎ𝑜𝑑𝑒―𝑠𝑒𝑝𝑎𝑟𝑎𝑡𝑜𝑟) 
+(S56)
+Fluxes at the anode-separator interface refer to the chemical reduction reactions (S44-S46) while 
+fluxes at the cathode-separator interface are quantified from generalized transport laws. The 
+difference between these fluxes contributes to sulfur species accumulation in the separator.
+Figure S2: (a) Liquid sulfur and PSs migrate from the cathode to the anode, where they chemically 
+react with Li metal. The extent of sulfur crossover and the amount consumed at the anode are 
+Downloaded from pubs.​acs.​org/​aelccp/​article-supplement/​5074333/​pdf/​nz6c00391_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 16>>
+S16
+indicated and depend on factors such as the E/S ratio and salt concentration. Chemical redox 
+reactions at the anode are categorized as either reversible or irreversible shuttling. (b) 
+Electrochemical performance with and without consideration of the shuttle effect. (c) Evolution of 
+chemical redox activity at the anode during discharge.
+Reversible and irreversible shuttle phase maps at different porosities:
+Figure S3: Reversible shuttle and irreversible shuttle behavior as functions of salt concentration 
+and E/S ratio at different cathode porosities (a-b) 60%, (c-d) 90%
+Downloaded from pubs.​acs.​org/​aelccp/​article-supplement/​5074333/​pdf/​nz6c00391_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 17>>
+S17
+Key performance descriptors:
+Figure S4: Key performance descriptors of a Li-S battery and their dependence on salt 
+concentration (0.1 M and 3.0 M).
+S1.7. Conservation of sulfur and sulfur species:
+Because sulfur does not exit the electrochemical system but instead transitions between different 
+phases, its total amount is implicitly conserved throughout the numerical simulations. Initially, 
+sulfur is present as solid impregnated sulfur and therefore initial sulfur content is:
+𝑆𝑡𝑜𝑡𝑎𝑙(𝑡= 0) = ∫𝐿𝑐𝑎𝑡
+𝜀𝑠
+𝑉𝑠𝑑𝑥= 𝜀0
+𝑆
+𝑉𝑠𝐿𝑐𝑎𝑡 
+(S57)
+At any time t, sulfur content can be quantified as:
+Downloaded from pubs.​acs.​org/​aelccp/​article-supplement/​5074333/​pdf/​nz6c00391_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 18>>
+S18
+𝑆𝑡𝑜𝑡𝑎𝑙(𝑡) = ∫𝐿𝑐𝑎𝑡
+𝜀𝑠
+𝑉𝑠𝑑𝑥+ ∫𝐿𝑐𝑎𝑡+𝐿𝑠𝑒𝑝(𝜀𝐶𝑠+ 𝜀𝐶𝑥+ 1
+2𝜀𝐶𝑦)𝑑𝑥+ ∫𝐿𝑐𝑎𝑡
+𝜀𝐿𝑖2𝑆
+8𝑉𝐿𝑖2𝑆𝑑𝑥+ ∫𝐿𝑐𝑎𝑡
+𝜑𝐿𝑖2𝑆
+8𝑉𝐿𝑖2𝑆𝑑𝑥 (S58)
+Here 𝜑𝐿𝑖2𝑆 is the volume of Li2S deposited on the anode due to chemical reduction of medium-
+chain polysulfide. 𝜑𝐿𝑖2𝑆 also refers to the irreversible sulfur loss from the inventory. 
+𝑑𝜑𝐿𝑖2𝑆
+𝑑𝑡
+= 𝑉𝐿𝑖2𝑆
+2𝑅7
+3 
+(S59)
+S1.8. Boundary Conditions for Electrochemical Performance Model
+The boundary conditions employed in the electrochemical performance model are summarized in 
+Table S2. A Dirichlet boundary condition is imposed at the cathode-current collector interface for 
+the solid electrolyte potential, 𝜙e, which is essential to avoid ill-posedness in the elliptic partial 
+differential equations governing charge conservation. 13,14  
+Table S2. Boundary conditions for the electrochemical model. 
+Equation
+Anode-separator 
+boundary (x = 0)
+Separator-cathode 
+boundary (x = Lsep)
+Cathode-current 
+collector (x = Lsep + 
+Lcat)
+𝐿𝑖+ species balance
+― 𝐷𝑗
+𝜀
+𝜏
+∂𝐶𝑗
+∂𝑥=
+𝐽𝑎𝑝𝑝
+𝐹
+flux continuity 
+∂𝐶𝑗
+∂𝑥= 0
+Sulfur and 
+polysulfide balance
+∂𝐶𝑗
+∂𝑥= 0
+flux continuity 
+∂𝐶𝑗
+∂𝑥= 0
+Electrolyte phase 
+potential
+∂𝜙𝑒
+∂𝑥= 0
+flux continuity 
+∂𝜙𝑒
+∂𝑥= 0 (or 𝜙𝑒= 0)
+Downloaded from pubs.​acs.​org/​aelccp/​article-supplement/​5074333/​pdf/​nz6c00391_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 19>>
+S19
+Solid phase potential 
+not applicable 
+∂𝜙𝑐
+∂𝑥= 0
+―𝜎𝑒𝑓𝑓
+𝑠
+∂𝜙𝑐
+∂𝑥= 𝐽𝑎𝑝𝑝
+*Dirichlet boundary condition to ensure solution of elliptical partial differential equations
+S2. Experimental methods and results
+S2.1 Experimental methods
+Preparation of the sulfur/IKB composite. All reagents were used as received without further 
+purification. The integrated Ketjenblack (IKB) host was synthesized following a previously 
+reported method.15 Briefly, Ketjenblack (KB, AkzoNobel) and citric acid (Sigma-Aldrich) were 
+dispersed in deionized water at a mass ratio of 1:1 and stirred at 60 °C for 2 h. Ethylene glycol 
+(Sigma-Aldrich) was subsequently added at a molar ratio of ethylene glycol/citric acid = 2:1, and 
+the suspension was heated to 130 °C and stirred for 6 h. The resulting mixture was dried overnight 
+and then carbonized in a tube furnace at 800 °C for 10 h under flowing argon. The carbonized 
+product (IKB) was ground and sieved through a 100-mesh screen. The S/IKB composite was 
+obtained via a melt-infiltration process. Elemental sulfur powder (Alfa Aesar) was mixed with 
+IKB and heated at 155 °C for 12 h in a sealed vessel. The sulfur content in the resulting composite 
+was 80 wt%.
+Preparation of the sulfur electrode. Conventional sulfur cathodes were prepared using a slurry-
+casting method. S/IKB composite, Super P (MTI Corp.), and polyacrylic acid (Sigma-Aldrich) 
+were mixed in deionized water at a weight ratio of 88:7:5 to form a homogeneous slurry. The 
+slurry was cast onto carbon-coated aluminum foil using a doctor blade. The electrodes were dried 
+at 60 °C under vacuum for 12 h, followed by punching into disks (diameter: 12.7 mm). The 
+Downloaded from pubs.​acs.​org/​aelccp/​article-supplement/​5074333/​pdf/​nz6c00391_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 20>>
+S20
+cathodes exhibited a sulfur loading of 5.5-6.5 mg cm-2 and a pristine porosity of approximately 
+80%. The overall sulfur content in the electrode was 70.4 wt%.
+Cell assembly. CR2032-type coin cells (Xiamen Tmax Battery Equipment Ltd.) were assembled 
+in an argon-filled glovebox (O2 and H2O < 1 ppm). Lithium metal foil (250 µm thick, Xiamen 
+Tmax) was used as the anode, Celgard 2400 (20 µm thickness) as the separator, and the sulfur 
+cathode as described above. Cathode and anode diameters were 12.7 mm and 16 mm, 
+respectively. Electrolytes containing 0.3, 1.0, and 3.0 M LiTFSI (Solvionic) were prepared in a 
+1:1 (v/v) mixture of 1,3-dioxolane (DOL, Gotion) and dimethoxyethane (DME, Gotion). The E/S 
+ratio was fixed at 10 µL mg-1. Assembled cells were rested for 12 h prior to testing to ensure 
+complete electrolyte wetting.
+Electrochemical Test. Galvanostatic cycling was conducted using a LANHE CT2001A battery 
+tester at 30 °C and 0.1 C (1 C = 1000 mA g-1). Electrochemical impedance spectroscopy (EIS) 
+was performed using a Bio-Logic VSP Classic potentiostat in the frequency range from 0.1 Hz 
+to 1 MHz with a perturbation amplitude of 5 mV at 30 °C. 
+Characterization. The viscosity and ionic conductivity of electrolytes (0.3, 1.0, and 3.0 M 
+LiTFSI in DOL/DME) were measured as a function of temperature. Viscosity was measured 
+using an Anton Paar rheometer (MCR-102e) equipped with a DG26.7 double-gap geometry and 
+C-PTD200 temperature control system. Samples were cooled to 0 °C prior to testing. During 
+measurement, the temperature was ramped from 0 to 60 °C over 45 min at a constant shear rate 
+of 50 s-1, and viscosity values were recorded every 30 s. After each measurement, the geometry 
+was disassembled, cleaned, dried, and reassembled. Nitrogen flow was applied to minimize air 
+exposure during testing.
+Downloaded from pubs.​acs.​org/​aelccp/​article-supplement/​5074333/​pdf/​nz6c00391_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 21>>
+S21
+Ionic conductivity was measured using a Bio-Logic MCS-10 system in a thermostated chamber 
+(±0.2 °C accuracy) over the temperature range of 20-60 °C. At each temperature point, the 
+electrolyte was equilibrated for 20 min prior to measurement.
+S2.2 Experimental results
+Figure S5: (a) Experimental discharge profiles of Li-S cells at 0.1 C with electrolytes containing 
+varying LiTFSI in DOL/DME (1/1 v/v). The results are used to validate the predictions from the 
+microstructure-resolved, physics-based model, which captures the influence of electrolyte 
+concentration on discharge behavior and voltage response. (b) Viscosity measurement of 
+electrolytes containing x M LiTFSI in DOL/DME (1/1 v/v) (x = 0.3, 1, and 3) as a function of 
+temperature from 0 °C to 60 °C.
+Downloaded from pubs.​acs.​org/​aelccp/​article-supplement/​5074333/​pdf/​nz6c00391_si_001/​ by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 22>>
+S22
+References
+(1)
+Chen, C.-F.; Verma, A.; Mukherjee, P. P. Probing the Role of Electrode Microstructure in 
+the Lithium-Ion Battery Thermal Behavior. J. Electrochem. Soc. 2017, 164 (11), E3146. 
+https://doi.org/10.1149/2.0161711jes.
+(2)
+Math2Market GmbH. GeoDict User Guide 2022; Math2Market GmbH: DE, 2021.
+(3)
+Vishnugopi, B. S.; Verma, A.; Mukherjee, P. P. Fast Charging of Lithium-Ion Batteries via 
+Electrode Engineering. J. Electrochem. Soc. 2020, 167 (9), 090508. 
+https://doi.org/10.1149/1945-7111/ab7fb9.
+(4)
+Bielefeld, A.; Weber, D. A.; Janek, J. Microstructural Modeling of Composite Cathodes for 
+All-Solid-State Batteries. J. Phys. Chem. C 2019, 123 (3), 1626–1634. 
+https://doi.org/10.1021/acs.jpcc.8b11043.
+(5)
+Mistry, A. N.; Smith, K.; Mukherjee, P. P. Secondary-Phase Stochastics in Lithium-Ion 
+Battery Electrodes. ACS Appl. Mater. Interfaces 2018, 10 (7), 6317–6326. 
+https://doi.org/10.1021/acsami.7b17771.
+(6)
+Dysart, A. D.; Burgos, J. C.; Mistry, A.; Chen, C.-F.; Liu, Z.; Hong, C. N.; Balbuena, P. B.; 
+Mukherjee, P. P.; Pol, V. G. Towards Next Generation Lithium-Sulfur Batteries: Non-
+Conventional Carbon Compartments/Sulfur Electrodes and Multi-Scale Analysis. J. 
+Electrochem. Soc. 2016, 163 (5), A730. https://doi.org/10.1149/2.0481605jes.
+(7)
+Mistry, A. N.; Mukherjee, P. P. Electrolyte Transport Evolution Dynamics in Lithium–
+Sulfur Batteries. J. Phys. Chem. C 2018, 122 (32), 18329–18335. 
+https://doi.org/10.1021/acs.jpcc.8b05442.
+(8)
+Newman, J.; Balsara, N. P. Electrochemical Systems; John Wiley & Sons, 2021.
+(9)
+Newman, J.; Tiedemann, W. Porous-Electrode Theory with Battery Applications. AIChE 
+Journal 1975, 21 (1), 25–41. https://doi.org/10.1002/aic.690210103.
+(10) Kumaresan, K.; Mikhaylik, Y.; White, R. E. A Mathematical Model for a Lithium–Sulfur 
+Cell. J. Electrochem. Soc. 2008, 155 (8), A576. https://doi.org/10.1149/1.2937304.
+(11) Mistry, A.; Mukherjee, P. P. Precipitation–Microstructure Interactions in the Li-Sulfur 
+Battery Electrode. J. Phys. Chem. C 2017, 121 (47), 26256–26264. 
+https://doi.org/10.1021/acs.jpcc.7b09997.
+(12) Andrei, P.; Shen, C.; Zheng, J. P. Theoretical and Experimental Analysis of Precipitation 
+and Solubility Effects in Lithium-Sulfur Batteries. Electrochimica Acta 2018, 284, 469–
+484. https://doi.org/10.1016/j.electacta.2018.07.045.
+(13) Kreyszig, E. Advanced Engineering Mathematics, 9. ed., international ed.; Wiley: Hoboken, 
+NJ, 2006.
+(14) Greenberg, M. D. Advanced Engineering Mathematics; Upper Saddle River, N.J. : Prentice 
+Hall, 1998.
+(15) Lv, D.; Zheng, J.; Li, Q.; Xie, X.; Ferrara, S.; Nie, Z.; Mehdi, L. B.; Browning, N. D.; 
+Zhang, J.-G.; Graff, G. L.; Liu, J.; Xiao, J. High Energy Density Lithium–Sulfur Batteries: 
+Challenges of Thick Sulfur Cathodes. Advanced Energy Materials 2015, 5 (16), 1402290. 
+https://doi.org/10.1002/aenm.201402290.
+Downloaded from pubs.​acs.​org/​aelccp/​article-supplement/​5074333/​pdf/​nz6c00391_si_001/​ by TSINGHUA UNIV user on 24 September 2026

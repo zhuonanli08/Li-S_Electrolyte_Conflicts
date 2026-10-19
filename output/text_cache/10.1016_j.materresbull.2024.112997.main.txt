@@ -1,0 +1,831 @@
+
+<<PAGE 1>>
+Research Papers
+Modeling the dependence of electrolyte design on lithium-sulfur
+battery performance
+Ayca Firtin a,1, Kagan Yuksel a,1, Elena V. Karaseva b, Elena V. Kuzmina b,
+Vladimir S. Kolosnitsyn b, Damla Eroglu a,*
+a Department of Chemical Engineering, Bogazici University, Istanbul 34342, Turkey
+b Department of Electrochemical Energy, Ufa Institute of Chemistry – Subdivision of the Ufa Federal Research Centre of the Russian Academy of Sciences (UIC UFRC
+RAS), Ufa 450054, Russia
+A R T I C L E I N F O
+Keywords:
+Lithium-sulfur batteries
+Electrolyte design
+Electrochemical modeling
+Electrolyte-to-sulfur ratio
+A B S T R A C T
+Herein, we offer two electrochemical models, a zero-dimensional (0-D) and a one-dimensional (1-D) model, to
+mechanistically explore the impact of the electrolyte-to-sulfur (E/S) ratio and electrolyte properties on the
+discharge behavior of a lithium-sulfur (Li-S) cell. The electrochemically active area in both models is defined
+based on the carbon weight fraction and reference porosity, so the influence of the carbon loading and E/S ratio
+on the reaction kinetics is included. Mass transfer of the species must be considered to model the reliance of the
+discharge capacity on the current density. Instead, the 0-D model is more responsive to the influence of the E/S
+ratio on the discharge capacity. The effect of electrolyte properties can be modeled implicitly through model
+parameters. The 0-D model is less sensitive to the variance in model parameters than the 1-D model in terms of
+the predicted capacity.
+1. Introduction
+The interest in lithium-sulfur (Li-S) batteries has dramatically
+increased in the last couple of decades since developing technologies
+such as electric vehicles suffer from the moderate capacities and high
+prices of the current battery systems. Li-S batteries are considered to be
+one of the most promising technologies for the future because they have
+a significantly high theoretical specific energy [1–6]. In addition, sul-
+fur’s natural abundance as a cathode active material in Li-S batteries is
+expected to make these batteries cheaper than commercial ones. Besides
+their cost, Li-S batteries are relatively eco-friendly due to sulfur being
+non-toxic. So, Li-S batteries may play a critical role in diminishing
+vehicle carbon emissions [7].
+Although Li-S batteries are promising candidates for energy storage
+in the future, critical challenges must be dealt with before the
+commercialization of these batteries. The primary obstacle Li-S batteries
+face is limited cycle life as a consequence of irreversible capacity fading.
+This is first because of the polysulfide shuttle mechanism, resulting from
+the dissolution of polysulfides, which forms due to the complex reaction
+mechanism between Li and S in the electrolyte. The polysulfide shuttle
+mechanism gives rise to deformation on the anode surface, loss of the
+active material in the cathode, and reduced coulombic efficiency
+[8–11]. The passivation of the cathode surface due to the accumulation
+of insulating S and Li2S and the uncontrolled increase in the Li surface
+area depleting the electrolyte in the cell are other mechanisms
+contributing to the fast capacity fade of the Li-S battery.
+The multi-step electrochemical and dissolution/precipitation re-
+actions and polysulfide shuttle mechanism involving soluble poly-
+sulfides in the electrolyte lead to electrolyte design being one of the most
+crucial factors in improving the Li-S battery performance. Both the
+amount and the properties of the electrolyte system control the
+discharge capacity, cycle life, and energy density of the battery. The
+electrolyte-to-sulfur (E/S) ratio is a commonly used metric to quantify
+the electrolyte amount in the cell. This is a significant design parameter
+due to its vast effect on electrochemical performance and energy den-
+sity. The E/S ratio must be sufficiently high to ensure complete solvation
+of the produced polysulfides and adequate wetting of the cathode to
+facilitate the reaction kinetics and, thus, the sulfur utilization [12].
+Increasing the E/S ratio typically improves the cell voltage and capacity,
+whereas it adversely impacts the energy density of the batteries at the
+* Corresponding author.
+E-mail address: eroglud@boun.edu.tr (D. Eroglu).
+1 Ayca and Kagan equally contributed to the work.
+Contents lists available at ScienceDirect
+Materials Research Bulletin
+journal homepage: www.elsevier.com/locate/matresbu
+https://doi.org/10.1016/j.materresbull.2024.112997
+Received 17 April 2024; Received in revised form 17 June 2024; Accepted 14 July 2024
+Materials Research Bulletin 180 (2024) 112997 
+Available online 20 July 2024 
+0025-5408/© 2024 Elsevier Ltd. All rights are reserved, including those for text and data mining, AI training, and similar technologies. 
+
+<<PAGE 2>>
+pack level [13–17]. Similarly, the electrolyte composition and proper-
+ties influence the battery performance as they control the reaction,
+dissolution/precipitation, and shuttle mechanisms through the solvation
+of the polysulfides [18]. Even though the effects of electrolyte amount,
+properties, and composition on the Li-S cell performance have been
+experimentally studied vastly [19–25], there is a limited number of
+works on the mechanistic investigation of this connection between the
+electrolyte design and the battery performance.
+An obvious way to mechanistically investigate the impact of elec-
+trolyte design on the discharge performance of a Li-S cell would be
+through physics-based models. Electrochemical models with different
+levels
+of
+complexity
+(zero-
+vs.
+one-dimensional)
+describing
+the
+discharge behavior of a Li-S cell have been offered previously. Zero-
+dimensional (0-D) models ignore the mass transport of the species and
+thus the change in their concentration within the cell even though
+electrochemical kinetics are considered. In contrast, one-dimensional
+(1-D) models account for both the rate kinetics and transport phenom-
+ena. Even though 1-D models are better at capturing the battery physics,
+0-D models have the advantage of fewer assumed model parameters and
+computational time [26]. The concentration-dependent 1-D model
+proposed by Kumaresan et al. [27] is a pioneer in the field, considering
+five electrochemical and five dissolution/precipitation reactions in the
+cathode. We recently reported 1-D models based on Kumaresan et al.
+[27] with a simplified reaction mechanism involving two electro-
+chemical and two dissolution/precipitation reactions [28,29]. For the
+0-D models, the models by Marinescu et al. [30,31] and Zhang et al. [32]
+were highly explored in the literature. Even though all these models
+successfully capture the discharge behavior of a Li-S cell, the mecha-
+nistic exploration of the impact of materials and cell design, specifically
+electrolyte design, is relatively limited in the literature. As seen in
+Table 1, our group aims to develop models in which cell design pa-
+rameters can be easily controlled, and their impact on the discharge
+profile can be calculated.
+Herein,
+we
+propose
+two
+electrochemical
+models,
+a
+0-D
+concentration-independent and a 1-D concentration-dependent model,
+to study the influence of the electrolyte, both the E/S ratio and the
+electrolyte properties, on the discharge performance of a Li-S cell. In
+both models, we define the electrochemically active area in the cathode
+so that it depends on the carbon loading and the initial porosity
+changing with the E/S ratio. This way, the dependence of Li-S battery
+performance on materials and cathode design can be directly projected,
+which is typically not straightforward to model. The development of
+electrochemical models predicting the effect of materials and cathode
+design on battery performance not only enables experimental studies to
+accelerate but is also critical to gaining a mechanistic point of view. The
+0-D and 1-D models are compared based on the projected discharge
+profiles regarding the C-rate, E/S ratio, and electrolyte properties. With
+this analysis, we can understand the most critical factors in modeling the
+impact of electrolyte design on the Li-S battery performance.
+2. Model development
+2.1. Zero-dimensional (0-D) model development
+A concentration-independent and time-dependent, zero-dimensional
+electrochemical model based on Zhang et al. [32] is developed in this
+study. The dissolution reaction of S8(s), which is not taken into account
+in Zhang et al. [32], is added to the presented model because defining
+the mass fraction of sulfur in the solid matrix is crucial to be able to
+control the design parameters such as sulfur loading, carbon-to-sulfur
+ratio (C/S), and electrolyte-to-sulfur ratio (E/S) in the model. Further-
+more, in contrast to the Zhang et al. [32] model, the electrochemically
+active area in the cathode is defined based on the carbon mass fraction
+and a reference electrolyte volume fraction. By doing so, it is possible to
+control the influence of the carbon amount (or the C/S ratio, in other
+words) and the initial porosity (or the E/S ratio, in other words) on the
+electrochemically active area in the cathode.
+There are several assumptions in this model. Firstly, the isothermal
+discharge temperature of the Li-S cell is 298 K. Secondly, as there is no
+noteworthy effect of the overpotential of the anode and separator on the
+cell voltage, they are ignored in this model. Also, at the end of the
+discharge, the precipitation of only one polysulfide, Li2S, is assumed to
+take place, while the polysulfide shuttle mechanism is not considered.
+Thus, five electrochemical reactions and two precipitation/dissolution
+reactions of elemental sulfur, S8, and lithium sulfide, Li2S, are assumed
+for the discharge of the cell, given in Eqs. (1)–(5) and (6), (7),
+respectively.
+0.5S0
+8 + e−→0.5S2−
+8
+(1)
+3
+/
+2S2−
+8 + e−→2S2−
+6
+(2)
+S2−
+6 + e−→3
+/
+2S2−
+4
+(3)
+0.5S2−
+4 + e−→S2−
+2
+(4)
+0.5S2−
+2 + e−→S2−
+(5)
+2Li+ + S2−→Li2S
+(6)
+S8(s)→S0
+8
+(7)
+Therefore, a total of 22 variables are considered in this model: CLi+,
+CS0
+8, CS2−
+8 , CS2−
+6 , CS2−
+4 , CS2−
+2 , CS2−, i ⋫, i ⋬, i ⋭, i ⋮, i …, η1, η2, η3, η4, η5, ε,
+εLi2S, εS0
+8, Vcell, Rs where Ci are the concentrations of the species i=Li+,
+S8
+0, S8
+2-, S6
+2-, S4
+2-, S2
+2-, S2- in mol/m3, ij and ηj are the current densities and
+surface overpotentials for the electrochemical reactions j=1-5 in A/m2
+and V, respectively, ε and εk are the volume fractions of the electrolyte
+(porosity, in other words) and the precipitates k=Li2S, S8
+0, Vcell is the cell
+voltage in V, and Rs is the electrolyte resistance in Ω.
+For the material balance of species except for CLi
++, the Nernst-Planck
+Table 1
+Comparison of the proposed models with the relevant ones in the literature.
+Zhang et al. [27]
+0-D model proposed
+Kumaresan et al. [32]
+1-D model proposed
+0-D
+0-D
+1-D
+1-D
+Electrochemical Rxns
+5
+5
+5
+5
+Precipitation/Dissolution Rxns
+1
+2
+5
+2
+Polysulfide Shuttle Mechanism
+No
+No
+No
+No
+Butler-Volmer Kinetics
+Yes
+Yes
+Yes
+Yes
+Mass Transfer
+No
+No
+Yes
+Yes
+Cathode Porosity
+Yes
+Yes
+Yes
+Yes
+Active Area Based on C and Electrolyte Loading
+No
+Yes
+No
+Yes
+Definition of Cell Design Parameters
+Carbon Loading
+No
+Yes
+No
+Yes
+Electrolyte-to-Sulfur Ratio
+No
+Yes
+Yes
+Yes
+Sulfur Loading
+No
+Yes
+Yes
+Yes
+Cathode Thickness
+Yes
+Yes
+Yes
+Yes
+A. Firtin et al.
+Materials Research Bulletin 180 (2024) 112997 
+2 
+
+<<PAGE 3>>
+equation is used; the term related to the mass flux is ignored because
+there is no spatial change in the concentrations in the zero-dimensional
+model. The time-dependent change of CS2−
+8 ,CS2−
+6 , CS2−
+4 ,CS2−
+2
+depends only
+on electrochemical reactions whereas dissolution/precipitation reaction
+rates are also considered for the calculation of concentrations of
+S0
+8 and S2−. As for the calculation of CLi+ , electroneutrality principle is
+used. The Butler-Volmer equation defines the current densities raised
+from the electrochemical reactions. The porosity and volume fractions of
+the precipitated species are controlled by the dissolution/precipitation
+reaction rates. Governing equations for all variables, the initial condi-
+tions, and the parameters used in the model are given in Supporting
+Information (SI) in Tables S1–S6.
+2.2. One-dimensional (1-D) model development
+A time- and concentration-dependent one-dimensional electro-
+chemical model with five electrochemical reactions (Eqs. (1)–(5)) and
+two precipitation/dissolution reactions (Eqs. (6), (7)) is offered based on
+Abdulkadiroglu et al. [28], using the porous electrode theory. In addi-
+tion to assuming that the anode can supply unlimited lithium, the as-
+sumptions used in the 0-D model are valid in the 1-D model.
+The model considers a total of 20 variables CLi+, CS0
+8, CS2−
+8 , CS2−
+6 ,
+CS2−
+4 , CS2−
+2 , CS2−, CA−, i ⋫, i ⋬, i ⋭, i ⋮, i …, θs, θe, i s, i e, ε, εLi2S, εS0
+8
+where Ci are the concentrations of the species i=Li+, S8
+0, S8
+2-, S6
+2-, S4
+2-, S2
+2-,
+S2-, A in mol/m3, ij are the current densities for the electrochemical
+reactions j=1-5 in A/m2, θs and θe and is and ie are the solid- and liquid-
+phase potentials and current densities in V and A/m2, respectively, ε and
+εk are the volume fractions of the electrolyte (porosity, in other words)
+and the precipitates k=Li2S, S8
+0. Vcell, the cell voltage in V, is calculated
+as a model output rather than a variable.
+As in the 0-D model, the Nernst-Planck equation is used to define the
+concentrations of species in this model. However, the mass flux term due
+to diffusion and migration is considered here as the concentrations of the
+species change depending on both time and space in this model. In
+addition, the concentration of A- (for instance, TFSI- in the LiTFSI salt in
+the electrolyte) is defined as CA−and calculated by the electroneutrality
+principle. The current densities of each electrochemical reaction are
+determined by the Butler-Volmer equation as in the 0-D model. The
+current density of the liquid phase is defined according to the porous
+electrode theory by the flux of charged species, whereas the solid-phase
+current density is calculated by Ohm’s law. Governing equations, initial
+conditions, boundary conditions, and model parameters are detailed in
+SI in Tables S1–S6.
+As discussed above, a modified definition for the electrochemically
+active area in the cathode is used for the presented model (Table S1).
+This area is based on the carbon mass fraction and a reference electrolyte
+volume fraction in the cathode to capture the effect of the carbon
+amount and the initial porosity on the cathode kinetics.
+3. Results and discussion
+Fig. 1 represents the discharge profiles predicted by the two models.
+It can be seen in the figure that both models are successful in capturing
+the characteristic features of a Li-S cell discharge curve; there are two
+discharge plateaus and a voltage dip between them. The first discharge
+plateau is at around 2.35V, and the second discharge plateau is at
+around 2.2V. Predicted discharge capacities at 0.1C are about 1000 mAh
+g-1. As evident in the figure, the 0-D and 1-D models can project almost
+the same discharge profile at a given C-rate, indicating that the con-
+centration dependence of the species is not critical to capturing the
+characteristic discharge behavior.
+Fig. 2 illustrates how the discharge profiles change with varying C-
+rates for both models. As also discussed in the previous studies in the
+literature, predicting the right trend on the effect of current density on
+the discharge performance is not trivial. This is apparent in the figure;
+the 0-D and 1-D models calculate different behavior. For instance, the C-
+rate does not affect the discharge capacity for the 0-D model, whereas
+increasing the C-rate leads to a decrease in the discharge capacity for the
+1-D model. This reduction in the discharge capacity becomes significant,
+especially at higher current densities. The predicted discharge capacity
+not being responsive to the C-rate at low C-rates is not entirely reason-
+able; however, this is well-known for the electrochemical models based
+on Kumaresan et al. [27,33]. Yet, the mass transport of the species must
+be considered to model the dependence of the discharge capacity of a
+Li-S cell on the current density.
+Even though the concentration-independent model cannot predict
+the change in the discharge capacity with changing C-rate, both models
+successfully project the decrease in the voltage of the plateaus (espe-
+cially for the second plateau) as current density increases, as expected
+from the experimental trends [34–39]. This is anticipated since both
+models consider the reaction kinetics in a similar manner. On the other
+hand, the voltage decrease with increasing C-rate in the 0-D model is
+higher than that of the 1-D case; this can be stemmed from the ohmic
+overpotential explicitly included in the 0-D model (Table S1). For
+instance, the voltage of the 2nd discharge plateau of the 1-D model is at
+2.1V, whereas it is at 1.95V for the 0-D model at a C-rate of 4C.
+Fig. 3 presents the change in the calculated discharge capacities with
+the E/S ratio. As discussed above, in both models, we modified the
+definition of the electrochemically active area to account for the influ-
+ence of the initial porosity, which depends on the given E/S ratio, on the
+reaction kinetics. With this alteration, we can account for the improved
+cathode wetting at higher E/S ratios (Fig. S1). As seen in Fig. 3, elevated
+E/S ratios lead to higher discharge capacities and voltages, as expected
+from the experimental trends [7,15,40,41]. Low E/S ratios result in high
+overpotentials and low active material utilization due to hindered
+cathode kinetics [11,40,42]. Both models successfully capture this
+anticipated behavior. Yet, the change in capacity with changing elec-
+trolyte amounts is more evident in the 0-D model than in the 1-D model.
+Surprisingly, by neglecting the mass transfer of the species and thus the
+concentration change within the cathode, the predicted discharge per-
+formance becomes more sensitive to the E/S ratio. For instance, the 0-D
+model projects a significant decrease in the capacities of both plateaus
+with a decreasing E/S ratio, while the upper voltage plateau capacity
+Fig. 1. Predicted discharge profiles of Li-S cells at 0.1C for the 0-D and 1-D
+models. The E/S ratio is 16 mL g-1, and S loading is 1.2 mg cm-2.
+A. Firtin et al.
+Materials Research Bulletin 180 (2024) 112997 
+3 
+
+<<PAGE 4>>
+seems to be insensitive to the E/S ratio in the 1-D model. Similarly, the
+1-D model fails to predict the inferior performance expected at very low
+E/S ratios (3 and 6 mL g-1) [13], unlike the 0-D model. Yet, the pro-
+jections of the 1-D model may still be accurate for different electrolyte
+systems; previous experimental studies conducted with other electro-
+lytes report similar trends to the 1-D model predictions for the influence
+of the E/S ratio on the discharge behavior [34,39].
+Our previous discussions clearly show that the models can directly
+express the impact of the E/S ratio on the discharge profile. On the other
+hand, modeling the influence of the electrolyte type and properties is not
+straightforward. A reasonable approach would be to capture it implicitly
+through the model parameters. Redox chemistry of the Li-S batteries is
+affected by the physiochemical properties of the electrolyte, such as the
+donor number, dielectric constant, and acceptor number, which are
+related to the solubility and precipitation/dissolution of the species
+forming in the electrochemical reactions [39]. Since the electrolyte has a
+crucial impact on the reaction mechanisms and kinetics, one way to
+model this dependence would be through the exchange current densities
+[43]. Figs. 4 and 5 display the dependence of the calculated discharge
+profiles on the exchange current densities for the 0-D and 1-D models,
+respectively. We observe similar trends in both figures; none of the ex-
+change current densities alter the discharge capacity for both models.
+When the first reaction exchange current density, i01, is lowered, the
+upper discharge plateau slightly shifts downward in the 0-D model. On
+the other hand, i01, i02, and i03 do not affect the discharge profile of the
+1-D model in Fig. 5a, b, and c, respectively. In the 0-D model, lowering
+i03 leads to a slightly elevated capacity of the lower voltage plateau.
+However, these changes are subtle. The exchange current densities for
+the fourth and the fifth reactions lead to the most prominent change in
+the discharge profiles; a decrease in i04 and i05 in both models results in a
+downward shift in the second discharge plateau as higher overpotentials
+are required at hindered kinetics. Increasing none of these kinetic pa-
+rameters results in a change in the predicted performance. To sum up,
+the presented models cannot project the impact of the electrolyte type
+and properties on the discharge capacity through the kinetic model
+parameters.
+Other obvious model parameters affected by the electrolyte type and
+properties are the precipitation rate constants (kk) and solubility
+Fig. 2. Predicted discharge profiles of Li-S cells at different C-rates for the a) 0-D and b) 1-D models.
+Fig. 3. Effect of the E/S ratio on the predicted discharge profiles of a Li-S cell for the a) 0-D and b) 1-D models at 0.1C.
+A. Firtin et al.
+Materials Research Bulletin 180 (2024) 112997 
+4 
+
+<<PAGE 5>>
+products (Kspk) for Li2S and S8, as the electrolyte defines not only the
+electrochemical reaction kinetics but also the precipitation kinetics. The
+solubility of Li2Sx is related to the donor number of the electrolyte
+solvent. The dissolution of Li2Sx is significantly high in electrolytes with
+high donor numbers because of the electrostatic force between Li+ and
+Sx
+2-; solvents with high donor numbers can coordinate the Li+ cation,
+Fig. 4. Effect of exchange current densities, (a) i01, (b) i02, (c) i03, (d) i04, and (e) i05, on the predicted discharge profiles of Li-S cells for the 0-D model.
+Fig. 5. Effect of exchange current densities, (a) i01, (b) i02, (c) i03, (d) i04, and (e) i05, on the predicted discharge profiles of Li-S cells for the 1-D model.
+A. Firtin et al.
+Materials Research Bulletin 180 (2024) 112997 
+5 
+
+<<PAGE 6>>
+effectively separating the Li+ cation and polysulfide anions. Electrolytes
+with high donor numbers can hinder the passivation of the cathode
+surface by the Li2S precipitation and stabilize the S3
+•- radical, increasing
+the sulfur utilization in the cell [44–46]. On the other hand, electrolytes
+with lower donor numbers are better for preventing the polysulfide
+shuttle mechanism and, thus, for improved cycling performance. Despite
+this, Li+ conductivity is lower for solvents with low donor numbers due
+to the strong Lewis acidity of Li+ [1,47,48]. As a result of this critical
+correlation between the electrolyte properties and the dissolution of the
+polysulfides, precipitation rate constants (kk) and solubility products
+(Kspk) for Li2S and S8 are varied for the investigation of the effect of the
+electrolyte properties on battery performance.
+The sensitivity analysis results on these model parameters are pre-
+sented in Figs. 6 and 7 for the 0-D and 1-D models. An increase in kLi2S
+leads to an upward shift in the second discharge plateau for both models
+while decreasing kLi2S results in an opposite effect in Figs. 6a and 7a; yet,
+this parameter does not impact the predicted discharge capacity for both
+models. In contrast, the 0-D and 1-D models predict opposite trends for
+the sulfur precipitation rate constant in Figs. 6b and 7b, respectively.
+Increasing kS8 doesn’t lead to a capacity change in the 1-D model, while
+it leads to a decrease in the capacity in the 0-D model. Oppositely,
+decreasing kS8 in the 1-D model results in a capacity reduction, while it
+does not affect the capacity in the 0-D model. This is rather surprising as
+lower S80 concentrations and, thus, lower first discharge plateau ca-
+pacities are expected at worse sulfur dissolution kinetics. Moving on to
+the solubility products, increasing KspLi2S reduces the second plateau
+voltage for the 0-D model in Fig.6c, whereas it does not lead to any
+voltage and capacity change for the 1-D model in Fig. 7c. Lowering KspS8
+for the 0-D model reduces the discharge capacity slightly in Fig.6d; on
+the other hand, a decrease in KspS8 significantly lowers the discharge
+capacity for the 1-D model in Fig. 7d. To summarize, the 0-D model is
+less sensitive to the parameters related to the precipitation kinetics, and
+the discharge capacity can only be adjusted through the S8 precipitation
+rate constant. On the other hand, the impact of the electrolyte type on
+the discharge capacity can be controlled through the S8 precipitation
+rate, both through kS8 and KspS8, for the 1-D model.
+The next parameter to consider to model the influence of the elec-
+trolyte on the discharge performance would be the electrolyte conduc-
+tivity, σ. As seen in Fig. 6e, the electrolyte conductivity only impacts the
+calculated cell voltage and does not lead to a capacity change for the 0-D
+model. The whole discharge profile shifts downward with decreasing σ,
+which may be explained by the direct impact of the conductivity on the
+Ohmic overpotential through the electrolyte resistance in the cell
+voltage calculation for the 0-D model (Table S1).
+The impact of diffusion coefficients is also investigated for the 1-D
+model in Fig. 7e, as the electrolyte type and properties have a crucial
+influence on mass transport. As shown in the figure, increasing the
+diffusion coefficients doesn’t lead to any significant change, whereas
+decreasing the diffusion coefficients results in a prominent reduction in
+the discharge capacity. Up to 0.01-fold, the first plateau capacity doesn’t
+change; however, further decrease also leads to a decline in the first
+plateau capacity. Consequently, an apparent advantage of the 1-D model
+is controlling the discharge capacities through the diffusion coefficients
+of the species.
+To sum up, the 1-D model shows superiority over the 0-D model as
+there are more model parameters to be controlled for capturing the in-
+fluence of electrolyte properties on the discharge capacity, in addition to
+the fact that it projects the impact of the C-rate more accurately. How-
+ever, as discussed above, the predicted discharge capacities vary less
+significantly with changing E/S ratios in the 1-D model. In fact, the
+degree of the dependence of the capacity on the electrolyte amount also
+differs with the electrolyte type. Since the model projections are highly
+responsive to the changes in kS8, KspS8, and Di0, we investigated the
+change of the voltage profile with E/S ratio for different values of these
+model parameters for the 1-D model. Figs. S2–S4 show that the degree of
+sensitivity of the discharge capacities on the E/S ratio can be controlled
+in the 1-D model by altering kS8, KspS8, or Di0. For lower assumed values
+of these parameters, the predicted discharge capacities decrease more
+significantly with decreasing E/S ratios.
+As discussed above, our focus here is to model the influence of the
+Fig. 6. Effect of (a) kLi2S, (b) kS8, (c) KspLi2S, (d) KspS8, and (e) σ on the predicted discharge profiles of Li-S cells for the 0-D model.
+A. Firtin et al.
+Materials Research Bulletin 180 (2024) 112997 
+6 
+
+<<PAGE 7>>
+electrolyte, both the amount and properties, on the discharge perfor-
+mance of a Li-S cell. We haven’t investigated the impact of other critical
+materials and cathode design factors, such as carbon design, on the
+discharge performance in the scope of the current work; however, the
+proposed models can be used to study the dependence of the perfor-
+mance on the properties and amount of carbon in the cathode as a result
+of the proposed definition for the electrochemically active area. Both
+models can explore the impact of the specific surface area of carbon on
+the cathode kinetics by a variation of the specific surface area parameter
+(a0). Similarly, the electronic conductivity of the cathode σ can be varied
+in the 1-D model to discuss the effect of carbon properties on the
+discharge performance. Moreover, the influence of the carbon amount
+(often quantified as the carbon-to-sulfur ratio) on the cathode kinetics
+may be discussed for both models by changing the cathode carbon
+weight fraction, wC, which directly affects the electrochemically active
+surface area. The influence of carbon design on Li-S battery performance
+may be explored using the proposed models in a future study.
+4. Conclusions
+Two electrochemical models, a zero-dimensional and a one-
+dimensional model, were proposed to mechanistically investigate the
+influence of the electrolyte-to-sulfur ratio and electrolyte properties on
+the discharge performance of a Li-S battery. Both models include five
+electrochemical and two dissolution/precipitation reactions. In the 0-D
+model, the mass transfer of species and, thus, the concentration variance
+within the cell is ignored, while the 1-D model accounts for the transport
+phenomena and calculates the change of concentrations concerning
+both time and space. Both models project the electrochemically active
+area as a function of carbon weight fraction and reference porosity in the
+cathode. With this modification, the change in the area and, thus,
+cathode kinetics with changing carbon loading and E/S ratio are
+considered. The 0-D and 1-D models are compared based on the pre-
+dicted discharge profiles as a function of the C-rate, E/S ratio, and
+electrolyte properties. Here are the main conclusions:
+• The 0-D and 1-D models predict very similar discharge profiles at a
+given C-rate, indicating that the concentration dependence of the
+species is not essential to capture the characteristic discharge profile
+of a Li-S cell.
+• Both models successfully predict the decrease in the plateau voltages
+(specifically the second plateau) as the C-rate increases. However,
+the discharge capacity is only affected by the C-rate in the 1-D model
+and not in the 0-D model, indicating that considering transport
+phenomena is crucial to predicting the impact of current density on
+the capacity.
+• Both models effectively capture the fact that both the cell voltage and
+capacity are improved with increasing E/S ratio. However, the pre-
+dicted discharge capacities vary more significantly with changing E/
+S ratios in the 0-D model.
+• The influence of the electrolyte type and properties on the discharge
+performance is implicitly modeled through the parameters for both
+models. Exchange current densities and electrolyte conductivity only
+affect the calculated cell voltage in both models. The 0-D model
+predictions are less responsive to the precipitation kinetics, and the
+discharge capacity can only be controlled through the S8 precipita-
+tion rate constant. In contrast, for the 1-D model, the impact of the
+electrolyte properties on the discharge capacity can be defined
+through the S8 precipitation rate, both through kS8 and KspS8. The
+diffusion coefficients of the species in the 1-D model can also control
+the discharge capacities.
+• The degree of sensitivity of the discharge capacities on the E/S ratio
+can be controlled in the 1-D model by kS8, KspS8, and Di0. The pre-
+dicted
+discharge
+capacities
+decrease
+more
+significantly
+with
+decreasing E/S ratios for lower assigned values of these parameters.
+To conclude, the critical connection between electrolyte design and
+the
+discharge
+performance
+of
+a
+Li-S
+cell
+was
+mechanistically
+Fig. 7. Effect of (a) kLi2S, (b) kS8, (c) KspLi2S, (d) KspS8, and (e) Di0 on the predicted discharge profiles of Li-S cells for the 1-D model.
+A. Firtin et al.
+Materials Research Bulletin 180 (2024) 112997 
+7 
+
+<<PAGE 8>>
+investigated. Both models could analyze the most vital factors in
+modeling the influence of electrolyte design on the Li-S battery perfor-
+mance. Yet, the 1-D model is more successful in capturing the impact of
+the C-rate, E/S ratio, and electrolyte properties on the discharge profile.
+CRediT authorship contribution statement
+Ayca Firtin: Writing – original draft, Formal analysis, Data curation.
+Kagan Yuksel: Writing – original draft, Formal analysis, Data curation.
+Elena V. Karaseva: Writing – review & editing, Funding acquisition.
+Elena V. Kuzmina: Writing – review & editing, Funding acquisition.
+Vladimir S. Kolosnitsyn: Writing – review & editing, Funding acqui-
+sition. Damla Eroglu: Writing – review & editing, Supervision, Funding
+acquisition, Conceptualization.
+Declaration of competing interest
+The authors declare that they have no known competing financial
+interests or personal relationships that could have appeared to influence
+the work reported in this paper.
+Data availability
+Data will be made available on request.
+Acknowledgments
+This study was funded by the Scientific and Technological Research
+Council of Turkey (TUBITAK), Grant No: 220N164, and the Russian
+Foundation for Basic Research (RFBR), Grant No: 21-53- 46005.
+Supplementary materials
+Supplementary material associated with this article can be found, in
+the online version, at doi:10.1016/j.materresbull.2024.112997.
+References
+[1] M. Baek, H. Shin, K. Char, J.W. Choi, New high donor electrolyte for lithium–sulfur
+batteries, Adv. Mater. 32 (2020) 2005022, https://doi.org/10.1002/
+adma.202005022.
+[2] H.M. Bilal, K. Yuksel, D. Eroglu, Influence of sulfur loading on lithium-sulfur
+battery performance for different cathode carbon types, ChemistrySelect 8 (2023)
+e202203944, https://doi.org/10.1002/slct.202203944.
+[3] P.G. Bruce, S.A. Freunberger, L.J. Hardwick, J.M. Tarascon, Li–O2 and Li–S
+batteries with high energy storage, Nat. Mater. 11 (2012) 19–29, https://doi.org/
+10.1038/nmat3191.
+[4] E. Cha, M.D. Patel, T.Y. Choi, W. Choi, L.S. Batteries, The effect of high sulfur
+loading on the electrochemical performance, ECS Trans. 85 (2018) 295, https://
+doi.org/10.1149/08513.0295ecst.
+[5] E. Cha, M. Patel, S. Bhoyate, V. Prasad, W. Choi, Nanoengineering to achieve high
+efficiency practical lithium–sulfur batteries, Nanoscale Horiz. 5 (2020) 808–831,
+https://doi.org/10.1039/C9NH00730J.
+[6] C. Shen, J. Xie, M. Zhang, P. Andrei, J.P. Zheng, M. Hendrickson, E.J. Plichta, A Li-
+Li2S4 battery with improved discharge capacity and cycle life at low electrolyte/
+sulfur ratios, J. Power Sources 414 (2019) 412–419, https://doi.org/10.1016/j.
+jpowsour.2019.01.029.
+[7] F.Y. Fan, Y.M. Chiang, Electrodeposition kinetics in Li-S batteries: effects of low
+electrolyte/sulfur ratios and deposition surface composition, J. Electrochem. Soc.
+164 (2017) A917, https://doi.org/10.1149/2.0051706jes.
+[8] G. Di Donato, T. Ates, H. Adenusi, A. Varzi, M.A. Navarra, S. Passerini, Electrolyte
+measures to prevent polysulfide shuttle in lithium-sulfur batteries, Batter.
+Supercaps 5 (2022) e202200097, https://doi.org/10.1002/batt.202200097.
+[9] F.Y. Fan, M.S. Pan, K.C. Lau, R.S. Assary, W.H. Woodford, L.A. Curtiss, W.C. Carter,
+Y.M. Chiang, Solvent effects on polysulfide redox kinetics and ionic conductivity in
+lithium-sulfur batteries, J. Electrochem. Soc. 163 (2016) A3111, https://doi.org/
+10.1149/2.1181614jes.
+[10] J. Jiang, Q. Fan, H. Liu, S. Chou, K. Konstantinov, J. Wang, Understanding the
+effects of the low-concentration electrolyte on the performance of high-energy-
+density Li–S batteries, ACS Appl. Mater. Interfaces 13 (2021) 28405–28414,
+https://doi.org/10.1021/acsami.1c07883.
+[11] Y. Zhao, J. Zhang, J. Guo, Cathode–electrolyte interfacial processes in
+lithium‖sulfur batteries under lean electrolyte conditions, ACS Appl. Mater.
+Interfaces 13 (2021) 31749–31755, https://doi.org/10.1021/acsami.1c08615.
+[12] A. Kilic, D. Eroglu, Characterization of the effect of cell design on Li−S battery
+resistance using electrochemical impedance spectroscopy, ChemElectroChem 8
+(2021) 963–971, https://doi.org/10.1002/celc.202100165.
+[13] H.M. Bilal, D. Eroglu, Assessment of Li-S battery performance as a function of
+electrolyte-to-sulfur ratio, J. Electrochem. Soc. 168 (2021) 030502, https://doi.
+org/10.1149/1945-7111/abe7a2.
+[14] S.H. Chung, C.H. Chang, A. Manthiram, Progress on the critical parameters for
+lithium–sulfur batteries to be practically viable, Adv. Funct. Mater. 28 (2018)
+1801188, https://doi.org/10.1002/adfm.201801188.
+[15] N.B. Emerce, D. Eroglu, Effect of electrolyte-to-sulfur ratio in the cell on the Li-S
+battery performance, J. Electrochem. Soc. 166 (2019) A1490, https://doi.org/
+10.1149/2.0621908jes.
+[16] N. Erisen, N.B. Emerce, S.C. Erensoy, D. Eroglu, Modeling the effect of key cathode
+design parameters on the electrochemical performance of a lithium-sulfur battery,
+Int. J. Energy Res. 42 (2018) 2631–2642, https://doi.org/10.1002/er.4045.
+[17] D. Eroglu, K.R. Zavadil, K.G. Gallagher, Critical link between materials chemistry
+and cell-level design for high energy density and low cost lithium-sulfur
+transportation battery, J. Electrochem. Soc. 162 (2015) A982, https://doi.org/
+10.1149/2.0611506jes.
+[18] E.V. Karaseva, E.V. Kuzmina, D.V. Kolosnitsyn, N.V. Shakirova, L.V. Sheina, V.
+S. Kolosnitsyn, The mechanism of effect of support salt concentration in electrolyte
+on performance of lithium-sulfur cells, Electrochim. Acta 296 (2019) 1102–1114,
+https://doi.org/10.1016/j.electacta.2018.11.019.
+[19] Y. Ishino, K. Takahashi, W. Murata, Y. Umebayashi, S. Tsuzuki, M. Watanabe,
+M. Kamaya, S. Seki, Effect of electrolyte composition on performance and stability
+of lithium–sulfur batteries, Energy Technol. 7 (2019) 1900197, https://doi.org/
+10.1002/ente.201900197.
+[20] H. Lu, Z. Chen, Y. Yuan, H. Du, J. Wang, X. Liu, Z. Hou, K. Zhang, J. Fang, Y. Qu,
+A rational balance design of hybrid electrolyte based on ionic liquid and
+fluorinated ether in lithium sulfur batteries, J. Electrochem. Soc. 166 (2019)
+A2453, https://doi.org/10.1149/2.0321912jes.
+[21] A. Nakanishi, K. Ueno, D. Watanabe, Y. Ugata, Y. Matsumae, J. Liu, M.L. Thomas,
+K. Dokko, M. Watanabe, Sulfolane-based highly concentrated electrolytes of
+lithium bis(trifluoromethanesulfonyl)amide: ionic transport, Li-Ion coordination,
+and Li–S battery performance, J. Phys. Chem. C 123 (2019) 14229–14238, https://
+doi.org/10.1021/acs.jpcc.9b02625.
+[22] L.V. Sheina, A.L. Ivanov, E.V. Karaseva, V.S. Kolosnitsyn, The effect of lithium bis
+(oxalato)borate on the galvanostatic charge–discharge cycling of lithium electrode
+in sulfolane solutions of lithium perchlorate, Russ. J. Electrochem. 58 (2022)
+210–215, https://doi.org/10.1134/S102319352201013X.
+[23] F. Wu, J.T. Lee, N. Nitta, H. Kim, O. Borodin, G. Yushin, Lithium iodide as a
+promising electrolyte additive for lithium–sulfur batteries: mechanisms of
+performance enhancement, Adv. Mater. 27 (2015) 101–108, https://doi.org/
+10.1002/adma.201404194.
+[24] S. Yoon, Y.H. Lee, K.H. Shin, S.B. Cho, W.J. Chung, Binary sulfone/ether-based
+electrolytes for rechargeable lithium-sulfur batteries, Electrochim. Acta 145 (2014)
+170–176, https://doi.org/10.1016/j.electacta.2014.09.007.
+[25] C. Zhang, A. Yamazaki, J. Murai, J.W. Park, T. Mandai, K. Ueno, K. Dokko,
+M. Watanabe, Chelate effects in Glyme/Lithium Bis(trifluoromethanesulfonyl)
+amide solvate ionic liquids, part 2: importance of solvate-structure stability for
+electrolytes of lithium batteries, J. Phys. Chem. C 118 (2014) 17362–17373,
+https://doi.org/10.1021/jp504099q.
+[26] C. Xu, T. Cleary, G. Li, D. Wang, H. Fathy, Parameter identification and sensitivity
+analysis for zero-dimensional physics-based lithium-sulfur battery models, ASME
+Lett. Dyn. Syst. Control 1 (2021), https://doi.org/10.1115/1.4050125.
+[27] K. Kumaresan, Y. Mikhaylik, R.E. White, A mathematical model for a
+lithium–sulfur cell, J. Electrochem. Soc. 155 (2008) A576, https://doi.org/
+10.1149/1.2937304.
+[28] B. Abdulkadiroglu, H. Bektas, D. Eroglu, How to model the cathode area in lithium-
+sulfur batteries? ChemElectroChem 9 (2022) e202101553 https://doi.org/
+10.1002/celc.202101553.
+[29] N. Erisen, D. Eroglu, Modeling the discharge behavior of a lithium-sulfur battery,
+Int. J. Energy Res. 44 (2020) 10599–10611, https://doi.org/10.1002/er.5701.
+[30] M. Cornish, M. Marinescu, Toward rigorous validation of Li-S battery models,
+J. Electrochem. Soc. 169 (2022) 060531, https://doi.org/10.1149/1945-7111/
+ac7750.
+[31] M. Marinescu, T. Zhang, G.J. Offer, A zero dimensional model of lithium–sulfur
+batteries during charge and discharge, Phys. Chem. Chem. Phys. 18 (2016)
+584–593, https://doi.org/10.1039/C5CP05755H.
+[32] T. Zhang, M. Marinescu, L. O’Neill, M. Wild, G. Offer, Modeling the voltage loss
+mechanisms in lithium–sulfur cells: the importance of electrolyte resistance and
+precipitation kinetics, Phys. Chem. Chem. Phys. 17 (2015) 22581–22586, https://
+doi.org/10.1039/C5CP03566J.
+[33] M. Ghaznavi, P. Chen, Sensitivity analysis of a mathematical model of
+lithium–sulfur cells part I: applied discharge current and cathode conductivity,
+J. Power Sources 257 (2014) 394–401, https://doi.org/10.1016/j.
+jpowsour.2013.10.135.
+[34] F. Huang, L. Gao, Y. Zou, G. Ma, J. Zhang, S. Xu, Z. Li, X. Liang, Akin solid–solid
+biphasic conversion of a Li–S battery achieved by coordinated carbonate
+electrolytes, J. Mater. Chem. A 7 (2019) 12498–12506, https://doi.org/10.1039/
+C9TA02877C.
+[35] M. Jiang, Z. Zhang, B. Tang, T. Dong, H. Xu, H. Zhang, X. Lu, G. Cui, Polymer
+electrolytes for Li-S batteries: polymeric fundamentals and performance
+A. Firtin et al.
+Materials Research Bulletin 180 (2024) 112997 
+8 
+
+<<PAGE 9>>
+optimization, J. Energy Chem. 58 (2021) 300–317, https://doi.org/10.1016/j.
+jechem.2020.10.009.
+[36] R. Sun, Y. Bai, Z. Bai, L. Peng, M. Luo, M. Qu, Y. Gao, Z. Wang, W. Sun, K. Sun,
+Phosphorus vacancies as effective polysulfide promoter for high-energy-density
+lithium–sulfur batteries, Adv. Energy Mater 12 (2022) 2102739, https://doi.org/
+10.1002/aenm.202102739.
+[37] Q. Wu, Z. Yao, X. Zhou, J. Xu, F. Cao, C. Li, Built-In catalysis in confined
+nanoreactors for high-loading Li–S batteries, ACS Nano 14 (2020) 3365–3377,
+https://doi.org/10.1021/acsnano.9b09231.
+[38] Y. Yan, Y. Yin, Y. Guo, L.J. Wan, Effect of cations in ionic liquids on the
+electrochemical performance of lithium-sulfur batteries, Sci. China Chem. 57
+(2014) 1564–1569, https://doi.org/10.1007/s11426-014-5154-3.
+[39] M. Yanagi, K. Ueno, A. Ando, S. Li, Y. Matsumae, J. Liu, K. Dokko, M. Watanabe,
+Effects of polysulfide solubility and Li ion transport on performance of Li–S
+batteries using sparingly solvating electrolytes, J. Electrochem. Soc. 167 (2020)
+070531, https://doi.org/10.1149/1945-7111/ab7a81.
+[40] Q. Jin, X. Qi, F. Yang, R. Jiang, Y. Xie, L. Qie, Y. Huang, The failure mechanism of
+lithium-sulfur batteries under lean-ether-electrolyte conditions, Energy Storage
+Mater. 38 (2021) 255–261, https://doi.org/10.1016/j.ensm.2021.03.014.
+[41] K. Sun, A.K. Matarasso, R.M. Epler, X. Tong, D. Su, A.C. Marschilok, K.J. Takeuchi,
+E.S. Takeuchi, H. Gan, Effect of electrolyte on high sulfur loading Li-S batteries,
+J. Electrochem. Soc. 165 (2018) A416, https://doi.org/10.1149/2.0071803jes.
+[42] S. Chen, Y. Gao, Z. Yu, M.L. Gordin, J. Song, D. Wang, High capacity of lithium-
+sulfur batteries at low electrolyte/sulfur ratio enabled by an organosulfide
+containing electrolyte, Nano Energy 31 (2017) 418–423, https://doi.org/10.1016/
+j.nanoen.2016.11.057.
+[43] S. Lang, X. Feng, J. Seok, Y. Yang, M.R. Krumov, A. Molina Villarino, M.A. Lowe, S.
+H. Yu, H.D. Abru˜na, Lithium–sulfur redox: challenges and opportunities, Curr.
+Opin. Electrochem. 25 (2021) 100652, https://doi.org/10.1016/j.
+coelec.2020.100652.
+[44] K. Dokko, N. Tachikawa, K. Yamauchi, M. Tsuchiya, A. Yamazaki, E. Takashima, J.
+W. Park, K. Ueno, S. Seki, N. Serizawa, M. Watanabe, Solvate ionic liquid
+electrolyte for Li–S batteries, J. Electrochem. Soc. 160 (2013) A1304, https://doi.
+org/10.1149/2.111308jes.
+[45] A. Elabd, J. Kim, D. Sethio, S. Kang, T. Kang, J.W. Choi, A. Coskun, Dual functional
+high donor electrolytes for lithium–sulfur batteries under lithium nitrate free and
+lean electrolyte conditions, ACS Energy Lett. 7 (2022) 2459–2468, https://doi.org/
+10.1021/acsenergylett.2c00874.
+[46] H. Shin, M. Baek, A. Gupta, K. Char, A. Manthiram, J.W. Choi, Recent progress in
+high donor electrolytes for lithium–sulfur batteries, Adv. Energy Mater 10 (2020)
+2001456, https://doi.org/10.1002/aenm.202001456.
+[47] A. Gupta, A. Manthiram, Unifying the clustering kinetics of lithium polysulfides
+with the nucleation behavior of Li 2 S in lithium–sulfur batteries, J. Mater. Chem. A
+9 (2021) 13242–13251, https://doi.org/10.1039/D1TA02779D.
+[48] M.R. Kaiser, S. Chou, H.K. Liu, S.X. Dou, C. Wang, J. Wang, Structure–property
+relationships of organic electrolytes and their effects on Li/S battery performance,
+Adv. Mater. 29 (2017) 1700449, https://doi.org/10.1002/adma.201700449.
+A. Firtin et al.
+Materials Research Bulletin 180 (2024) 112997 
+9 

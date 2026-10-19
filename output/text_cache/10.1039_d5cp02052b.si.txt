@@ -1,0 +1,278 @@
+
+<<PAGE 1>>
+Supplementary Information
+Hückel anion based concentrated electrolytes for lithium-sulfur 
+batteries†
+Aginmariya Kottarathil,abc N. Tan Luong,b‡ Carolina Cruz Cardona, b‡ Steffen Jeschke,d‡ 
+Tomooki Hosaka,b‡ Grażyna Zofia Żukowska,a‡ Maciej Marczewski,a‡ Wladyslaw Wieczorekac‡  
+and Patrik Johanssonbc*
+a Warsaw University of Technology, Faculty of Chemistry, 00664, Warszawa, Poland.
+b Chalmers University of Technology, Department of Physics, 412 96, Gothenburg, Sweden.
+c Alistore-ERI, CNRS FR 3104, 15 Rue Baudelocque, 80039 Amiens, France.
+d Centre for Catalysis and Clean Energy, School of Environment and Science, Griffith University, Gold Coast campus QLD 4215, Australia.
+LIST OF CONTENTS
+DETAILED DESCRIPTION FOR MOLECULAR DYNAMICS (MD) SIMULATIONS..........................2
+FIGURES .......................................................................................................................................................3
+TABLE .........................................................................................................................................................12
+LIST OF FIGURES
+Fig. S1............................................................................................................................................................................3
+Fig. S2............................................................................................................................................................................4
+Fig. S3............................................................................................................................................................................5
+Fig. S4............................................................................................................................................................................6
+Fig. S5............................................................................................................................................................................7
+Fig. S6............................................................................................................................................................................8
+Fig. S7............................................................................................................................................................................9
+Fig. S8..........................................................................................................................................................................10
+Fig. S 9.........................................................................................................................................................................11
+Fig. S10........................................................................................................................................................................11
+LIST OF TABLES
+Table S1. .....................................................................................................................................................................12
+Table S2. .....................................................................................................................................................................12
+1
+Supplementary Information (SI) for Physical Chemistry Chemical Physics.
+This journal is © the Owner Societies 2025
+
+<<PAGE 2>>
+Detailed description for Molecular Dynamics (MD) Simulations
+Classical molecular dynamics (MD) simulations were performed using the LAMMPS (Large-scale 
+Atomic/Molecular Massively Parallel Simulator) software package [1], employing the non-polarizable OPLS-AA 
+(Optimized Potentials for Liquid Simulations All-Atom) force field [2]. Molecular topology files, Lennard-Jones 
+parameters, and bonded parameters were generated using the LigParGen server [3–5] and the fftool package [6]. To 
+account for electronic screening effects and enhance the accuracy of interionic interaction predictions, a scaling 
+factor of 0.8 was applied to the partial charges of all ions, following common practices for non-polarizable force 
+fields [7–8].
+Force field parameters for the anions were adapted from their corresponding neutral counterparts due to the 
+absence of direct parameters for these specific ions; i.e., TDI (4,5-dicyano-2-(trifluoromethyl)imidazolide ion) was 
+parameterized based on TDI0 (4,5-dicyano-2-(trifluoromethyl)imidazole)–and the same for PDI and HDI. Bond 
+lengths, angles, and dihedral parameters were transferred from the neutral analogues, assuming minimal structural 
+changes upon deprotonation. van der Waals (vdW) parameters were similarly retained, given that they are largely 
+dependent on atom types, which do not change with ionization. Partial atomic charges for each anion were 
+recalculated using density functional theory (DFT) at the B3LYP/6-31G(d) level, employing the CHELPG 
+(CHarges from ELectrostatic Potentials using a Grid-based method) to capture the effects of deprotonation 
+accurately.
+To examine the influence of salt concentration on the coordination environment of the lithium cations, 
+simulations were carried out for 0.3, 0.6, 1.0, and 2.0 M electrolytes. Each within a cubic simulation box containing 
+appropriate ratios of DME, DOL, Li+ and anions to achieve the desired concentration.
+The simulation protocol began with an initial equilibration in the isothermal-isobaric ensemble (NPT) at a 
+high temperature of 800 K for 2 ns. This high-temperature equilibration step was used to overcome potential 
+pseudo-equilibrium states and ensure thorough sampling of conformational space. The system was then cooled to 
+300 K and equilibrated for an additional 5 ns in the NPT ensemble to reach the desired temperature and pressure. A 
+further equilibration was performed in the canonical ensemble (NVT) at 300 K for 5 ns, resulting in a total 
+equilibration time of 12 ns. Temperature and pressure control were maintained using a Nosé-Hoover thermostat and 
+barostat, with damping constants of 100 fs for temperature and 1000 fs for pressure, respectively. Following 
+equilibration, an NVT production run of 15 ns was performed at 300 K to collect data for structural and dynamic 
+analyses.
+All simulations were conducted at a constant temperature of 300 K and a pressure of 1 atm. The Nosé-
+Hoover thermostat (temperature damping of 100 fs) and barostat (pressure damping of 1000 fs) were employed to 
+maintain the target conditions during the NPT phases. Electrostatic interactions were calculated using the particle-
+particle-particle-mesh (PPPM) method, with periodic boundary conditions applied in all directions.
+To investigate the coordination environment of lithium ions, radial distribution functions (RDFs) and 
+coordination numbers were calculated between lithium ions, the anions, and the solvent molecules. These properties 
+were obtained using LAMMPS subroutines, allowing for a detailed examination of how varying electrolyte 
+concentrations affect the solvation structure and ion pairing tendencies in the mixed DME solvent system.
+2
+
+<<PAGE 3>>
+FIGURES
+Fig. S1. Comparison of Raman spectra of (a) anion-related vibrational bands (νC≡N, νC=Cring, and νCNring), and (b,c) 
+solvent-related vibrational bands of (b) DOL and (c) DME in 0-2.0 M LiTDI, LiPDI, and LiHDI electrolytes in 
+DOL:DME solvent mixture (1:1, v/v) with those of the corresponding solid salts (dot lines). Bands of N–C–N 
+bending (δNCN, ~1000-950 cm−1) vibrations can be resolved in LiTDI electrolytes but they are overlapped by DOL 
+bands in LiPDI and LiHDI electrolytes. The scale bars were provided on top of the figures for these ranges: 2200-
+2300, 1200-1600, 900-1000, and 800-900 cm–1.
+3
+
+<<PAGE 4>>
+Fig. S2. Curve fitting results of 0.1–2.0 M LiTDI electrolytes.
+4
+
+<<PAGE 5>>
+Fig. S3. Curve fitting results of 0.1–2.0 M LiPDI electrolytes.
+5
+
+<<PAGE 6>>
+Fig. S4. Curve fitting results of 0.1–2.0 M LiHDI electrolytes.
+6
+
+<<PAGE 7>>
+Fig. S5.  (a-c) Examples of σ-potentials for electrolytes with 1.0 and 2.0 M salt concentrations. (d-f) σ-profiles for 
+S82–, Li+ and Hückel salt anions.
+7
+
+<<PAGE 8>>
+Fig. S6. Operando Raman (a,d,g) spectra and corresponding (b,e,h) difference spectra and (c,f,i) voltage profiles at 
+C/10 of Li-S cells using (a,b,c) 0.3, (d,e,f) 1.0, and (g,h,i) 2.0 M LiTDI electrolytes. Photoluminescence (PL) 
+abnormalities are profound after the 2.0 V plateau.
+8
+
+<<PAGE 9>>
+Fig. S7. Operando Raman (a,d,g) spectra and corresponding (b,e,h) difference spectra and (c,f,i) voltage profiles at 
+C/10 of Li-S cells using (a,b,c) 0.3, (d,e,f) 1.0, and (g,h,i) 2.0 M LiPDI electrolytes. PL abnormalities are profound 
+after the 2.0 V plateau.
+9
+
+<<PAGE 10>>
+Fig. S8. Operando Raman (a,d,g) spectra and corresponding (b,e,h) difference spectra and (c,f,i) voltage profiles at 
+C/10 of Li-S cells using (a,b,c) 0.3, (d,e,f) 1.0, and (g,h,i) 2.0 M LiHDI electrolytes. PL abnormalities are profound 
+after the 2.0 V plateau.
+10
+
+<<PAGE 11>>
+Fig. S9. (a) Selected raw Raman spectra (shifted along the intensity-axis for clarity) from operando experiment 
+using a Li-S cell with 1.0 M LiTDI electrolyte, cycled at C/10. The spectra show PL effects after the 2.0 V plateau 
+of the 1st discharge (DC1) and these completely cover the Raman peaks at the reverse charge (C1). (b) Baseline-
+subtracted Raman spectra of the same experiment and its corresponding voltage profile. The baseline correction 
+unfortunately cannot recover any Raman peaks during the charge process. Other electrolytes show the same 
+behavior, as PL abnormalities can be seen after baseline correction in Fig. S6-8.
+Fig. S10. Discharge capacities and Coulombic efficiencies for a Li-S coin cell using 2.0 M LiHDI 
+electrolyte with addition of 0.2 M LiNO3, cycled at C/10 for 10 cycles.
+ 
+11
+
+<<PAGE 12>>
+TABLES
+Table S1. Number of solvent molecules and ions used in the MD simulations.
+Concentration (M) 
+#DOL 
+#DME 
+#Li 
+#Anion 
+0.3 
+874 
+589 
+18 
+18 
+0.6 
+854 
+575 
+36 
+36 
+1.0 
+827 
+557 
+58 
+58 
+2.0 
+768 
+517 
+107 
+107 
+Table S2. Lithium coordination number (CN) with DME calculated from Raman spectra and molar ratios of 
+Li:DME and Li:DOL in 0.1–2.0 M LiTDI, LiPDI and LiHDI in DOL:DME (1:1, v/v) electrolytes.
+Lithium CN
+Molar ratio
+Concentration 
+(M)
+LiTDI
+LiPDI
+LiHDI
+Li:DME
+Li:DOL
+0.1
+4.3
+5.1
+4.8
+1:44.4
+1:71.5
+0.3
+2.6
+3.1
+3.1
+1:14.8
+1:23.8
+0.6
+2.1
+2.3
+2.7
+1:7.4
+1:11.9
+1.0
+2.2
+2.6
+2.6
+1:4.4
+1:7.2
+2.0
+1.5
+2.0
+1.8
+1:2.2
+1:3.6
+Table S3. Derived molar fractions from Raman spectra used for COSMO-RS calculation. 
+Electrolyte
+Free anion
+Li+–DME
+or free Li+
+Li+–anion
+(CIPs+AGGs)
+DOL
+Free DME
+1.0 M LiTDI
+0.036
+0.036
+0.035
+0.512
+0.165
+2.0 M LiTDI
+0.047
+0.047
+0.078
+0.448
+0.003
+1.0 M LiPDI
+0.036
+0.036
+0.036
+0.512
+0.166
+2.0 M LiPDI
+0.042
+0.042
+0.084
+0.448
+0.009
+1.0 M LiHDI
+0.021
+0.021
+0.051
+0.512
+0.180
+2.0 M LiHDI
+0.032
+0.032
+0.093
+0.448
+0.019
+References
+[1]
+S. Plimpton, “Fast Parallel Algorithms for Short-Range Molecular Dynamics” J. Comput. Phys. 117, 1, 1–19, 
+1995. doi: 10.1006/jcph.1995.1039.
+[2]
+W. L. Jorgensen, D. S. Maxwell, and J. Tirado-Rives, “Development and Testing of the OPLS All-Atom Force 
+Field on Conformational Energetics and Properties of Organic Liquids” J. Am. Chem. Soc. 118, 45, 11225–
+11236, 1996. doi: 10.1021/ja9621760.
+[3]
+W. L. Jorgensen and J. Tirado-Rives, “Potential energy functions for atomic-level simulations of water and 
+organic and biomolecular systems” Proc. Natl. Acad. Sci. U. S. A. 102, 19,6665–6670, 2005. doi: 
+10.1073/pnas.0408037102.
+[4]
+L. S. Dodda, J. Z. Vilseck, J. Tirado-Rives, and W. L. Jorgensen, “1.14*CM1A-LBCC: Localized Bond-Charge 
+Corrected CM1A Charges for Condensed-Phase Simulations” J. Phys. Chem. B 121, 15, 3864–3870, 2017. 
+12
+
+<<PAGE 13>>
+doi: 10.1021/acs.jpcb.7b00272.
+[5]
+L. S. Dodda, I. Cabeza de Vaca, J. Tirado-Rives, and W. L. Jorgensen, “LigParGen web server: an automatic 
+OPLS-AA parameter generator for organic ligands” Nucleic Acids Res. 45, W1, W331–W336, 2017. doi: 
+10.1093/nar/gkx312.
+[6]
+A. A. H. Pádua, “Resolving dispersion and induction components for polarisable molecular simulations of 
+ionic liquids” J. Chem. Phys. 146, 20, 2017. doi: 10.1063/1.4983687.
+[7]
+J. Self, K. D. Fong, and K. A. Persson, “Transport in Superconcentrated LiPF6 and LiBF4 /Propylene Carbonate 
+Electrolytes” ACS Energy Lett. 4, 12, 2843–2849, 2019. doi: 10.1021/acsenergylett.9b02118.
+[8]
+Z. Yu et al., “Rational solvent molecule tuning for high-performance lithium metal battery electrolytes” 
+Nat. Energy 7, 1, 94–106, 2022. doi: 10.1038/s41560-021-00962-y.
+13

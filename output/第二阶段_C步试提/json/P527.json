@@ -1,0 +1,34 @@
+{
+  "编号": "P527",
+  "电解液": {
+    "E1": {"名称": "DOL/DME", "配方": "1 M LiTFSI，DOL/DME 1:1 v/v，2 wt% LiNO3"},
+    "E2": {"名称": "DOL/HMPA-6", "配方": "1 M LiTFSI，DOL + 6 vol% HMPA，2 wt% LiNO3"}
+  },
+  "条件": {
+    "C1": {"正极": "S/C（摘录中未见具体载量）", "硫载量": "", "硫含量": "", "E/S": "", "电解液体积": "", "面积": "",
+           "锂厚": "", "N/P": "", "倍率": "0.1C 活化 3 圈后 0.2C", "1C定义": "", "温度": "", "电池": "扣式",
+           "原句": "(f) Cycling stability data recorded at 0.2 C after activation at 0.1 C for 3 cycles."},
+    "C2": {"正极": "无（Li‖Li）", "硫载量": "", "硫含量": "", "E/S": "", "电解液体积": "40 µL", "面积": "",
+           "锂厚": "", "N/P": "", "倍率": "5 mA cm-2，1 mAh cm-2", "1C定义": "", "温度": "", "电池": "扣式", "原句": ""}
+  },
+  "比较": [
+    {"A": "E2", "B": "E1", "条件": "C1", "层": "C", "改变因素": ["溶剂种类", "溶剂比例"],
+     "溶剂化依据": "DFT：Li+-HMPA 结合能 2.86 eV > DME 2.75 eV（模拟）；作者称 HMPA 对 Li+ 亲和力高、多硫化物溶解度低；MD：AGG+CIP 83.7% vs 78.5%",
+     "指标": [
+       {"指标": "首圈容量", "取值点": "0.2C 首圈（活化后）", "A": "1101.0", "B": "882.4", "单位": "mAh g-1", "方向": "A更好", "来源": "正文",
+        "原句": "As shown in Fig. 6f, the Li-S cell containing the DOL/HMPA-6 electrolyte initially exhibited a higher specific capacity than the cell containing the DOL/DME electrolyte (1101.0 vs. 882.4 mAh g-1, respectively)."},
+       {"指标": "指定圈数放电容量", "取值点": "第 300 圈", "A": "619.6", "B": "295.6", "单位": "mAh g-1", "方向": "A更好", "来源": "正文",
+        "原句": "After 300 cycles, the specific capacity measured for the cell containing the DOL/HMPA-6 electrolyte retained signifi cantly more of its initial value than the control (619.6 vs. 295.6 mAh g-1, respectively)."},
+       {"指标": "倍率容量", "取值点": "2C", "A": "606.4", "B": "181.5", "单位": "mAh g-1", "方向": "A更好", "来源": "正文",
+        "原句": "At 2 C, the specific capacity measured for the Li-S cell containing the DOL/HMPA-6 electrolyte was 3.34 times higher than the value measured for the cell containing the DOL/DME electro lyte (606.4 vs. 181.5 mAh g-1)."},
+       {"指标": "多硫化物溶解或穿梭", "取值点": "2.35 V 漏电流", "A": "0.57", "B": "1.4", "单位": "mA g-1", "方向": "A更好", "来源": "正文",
+        "原句": "At 2.35 V, where the polysulfide shuttle effect occurred most severely, the leakage current value measured for the cell containing the DOL/HMPA-6 electrolyte was less than half of the value measured for the control (i.e., 0.57 vs. 1.4 mA g-1, respectively), indicating that the DOL/HMPA-6 electrolyte is effective at suppressing the shuttle effect."}
+     ]},
+    {"A": "E2", "B": "E1", "条件": "C2", "层": "C", "改变因素": ["溶剂种类", "溶剂比例"], "溶剂化依据": "同上",
+     "指标": [
+       {"指标": "过电位或动力学", "取值点": "Li‖Li 5 mA cm-2 极化（>600 h）", "A": "0.06", "B": "0.25", "单位": "V", "方向": "A更好", "来源": "正文",
+        "原句": "These beneficial ef fects manifested in high performance devices as Li//Li symmetric cells containing a HMPA-based electrolyte generated a significantly lower polarization voltage in stripping/plating cycling tests (for more than 600 h at 5 mA cm-2) when compared to analogous cells that contained a conventional electrolyte (c.f., 0.06 vs. 0.25 V, respectively)."}
+     ]}
+  ],
+  "备注": "A 全面占优（首圈、300 圈、倍率、穿梭、负极）——'强 Li+ 亲和 + 低多硫化物溶解'属解耦型，是打破权衡的候选（需核对照是否偏弱）。硫载量、E/S、锂厚在摘录中缺失。另有 HMPA 4–10 vol% 系列只比了电导率和迁移数。"
+}

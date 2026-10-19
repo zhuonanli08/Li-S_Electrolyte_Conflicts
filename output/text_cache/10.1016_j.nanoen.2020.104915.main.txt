@@ -1,0 +1,1033 @@
+
+<<PAGE 1>>
+Nano Energy 75 (2020) 104915
+Available online 19 May 2020
+2211-2855/© 2020 Elsevier Ltd. All rights reserved.
+The origin of the two-plateaued or one-plateaued open circuit voltage in 
+Li–S batteries 
+Yuxiao Lin a,1, Jing Zheng b,1, Chunsheng Wang b,**, Yue Qi a,* 
+a Department of Chemical Engineering and Materials Science, Michigan State University, East Lansing, MI, 48824,, USA 
+b Department of Chemical and Biomolecular Engineering, University of Maryland, College Park, MD, 20742, USA   
+A R T I C L E I N F O  
+Keywords: 
+Li-S batteries 
+First principle calculation 
+Li-polysulfide solvation 
+Nano structure design 
+Concentrated electrolyte 
+A B S T R A C T  
+Li–S batteries have been actively pursued as a storage device of high energy density. Interestingly, most of the 
+discharging curves for Li–S batteries show either one plateau or two plateaus. Understanding the mechanism and 
+conditions of the one-plateaued discharging curves can provide guidance for Li–S battery design to prevent the 
+Li-polysulfide (Li-PS) dissolution. In this article, we first calculated a solvent-dependent open circuit voltage 
+(OCV) using density functional theory (DFT) when both crystals (S, Li2S, Li) and dissolved Li-PS molecules (such 
+as Li2S4) are involved in the discharging reactions. We successfully predicted the two-plateaued OCV with fully 
+solvated Li-PS and the one-plateaued OCV with non-solvated Li-PS, in agreement with experimental observa­
+tions. Furthermore, if Li-PS changes from partial or non-solvated state to fully solvated state, its formation energy 
+increases, leading to a transition from the one-plateaued to the two-plateaued OCV. The partially solvated Li-PS 
+can be realized either by a highly-concentrated electrolyte or by minimizing the pore size in the carbon/sulfur 
+composites to limit the number of solvents transported into the pores, which changes the complex liquid-solid 
+reactions of Li–S chemistry to a single solid-state reaction. The solid-state reaction allows Li–S batteries to 
+operate in lean electrolytes with less Li excess. A new Li-PS dissolution mitigation strategy based on this syn­
+ergetic effect is therefore proposed by modeling and verified by experiments.   
+1. Introduction 
+Li–S batteries have been actively pursued as one of the next gener­
+ation energy storage devices because of their high specific capacity, high 
+specific energy density, and low cost [1,2]. The potential curve of Li–S 
+batteries is a direct signature of the electrochemical reactions occurring 
+during charge/discharge of sulfur cathodes. Interestingly, most of the 
+discharging curves for sulfur cathode show either a single plateau or two 
+plateaus. The two-plateaued discharging curves of sulfur cathode were 
+typically observed in ether-based liquid electrolytes [3–6]. The first 
+plateau at 2.3–2.4 V has been attributed to the lithiation reaction from 
+elemental S to dissolved Li-polysulfide (Li-PS). The second plateau at 
+around 2.0–2.1 V has been attributed to the continuous lithiation of the 
+dissolved Li-PS to the precipitated crystalline Li2S2 and Li2S. In com­
+parison, the one-plateaued discharging curves, sometimes with a slope, 
+were believed to be the characteristic for the solid-state reaction from 
+solid state S to solid-state Li2S2 and Li2S, when the soluble Li-PS was not 
+formed due to the absence of free solvent in electrolytes [7–9]. The 
+sloped plateau was due to the overpotential in solid electrolyte [10]. 
+Sulfur cathodes in which S was confined in the nanopores of a carbon 
+matrix displayed one-plateaued discharging curves in carbonate-based 
+liquid electrolytes because S was sealed inside of carbon pores by 
+in-situ formed solid electrolyte interphase (SEI) [11–14]. So far, there is 
+no consistent model that has clarified the difference between the 
+two-plateaued and one-plateaued OCVs from the reaction mechanisms 
+point of view. 
+Li–S batteries suffer from Li-PS shuttling in the liquid reaction at the 
+high-voltage plateau and poor reaction kinetics in the solid-state reac­
+tion low-voltage plateau. Therefore the Li–S batteries are very chal­
+lenged to operate in the lean electrolyte with less Li excess in the anode 
+[15]. In addition, even though solid electrolytes can mitigate Li-PS 
+shuttling problem, the induced high overpotential and slow Li trans­
+port still limited the practical energy and power density [16]. Alterna­
+tively, nanopore-C/S cathode materials in the carbonate-based liquid 
+* Corresponding author. 
+** Corresponding author. 
+E-mail addresses: cswang@umd.edu (C. Wang), yueqi@egr.msu.edu (Y. Qi).   
+1 These authors contributed equally to this work. 
+Contents lists available at ScienceDirect 
+Nano Energy 
+journal homepage: http://www.elsevier.com/locate/nanoen 
+https://doi.org/10.1016/j.nanoen.2020.104915 
+Received 21 December 2019; Received in revised form 22 February 2020; Accepted 30 April 2020   
+
+<<PAGE 2>>
+Nano Energy 75 (2020) 104915
+2
+electrolyte with only one-plateau demonstrated supper cycling stability 
+due to the absence of Li-PS and fast Li transport in the liquid electrolyte, 
+[13,14,17–22]. Both confinement and separation mechanisms had been 
+proposed to explain this unique phenomenon. In the confinement 
+mechanism, it was hypothesized that the pore volume was too small to 
+store S8 monomer and long chain Li-PS [23,24]. Thus, the small S al­
+lotropes such as S2 and S4 were incorporated into the pores and long 
+chain Li-PS such as Li2S8, Li2S6, and Li2S4 could not be generated in the 
+discharging reaction due to the confinement of nanopores. In the sepa­
+ration mechanism, the formation of SEI from the decomposition of 
+carbonate electrolytes could seal the pore, blocking the electrolytes from 
+diffusing into the pores [20]. In ether electrolytes with less SEI forma­
+tion, if the pore size was well controlled to only allow Li-ion diffusion 
+while blocking both Li-PS and electrolyte solvent, there would be a great 
+chance to trap the Li-PS inside the pores [20,25]. The plateaus on the 
+discharging curves were also related to the chemistry of electrolyte 
+solvent [26]. A single plateau was observed when electrolyte solvent 
+with low Li-PS solubility was used, while two plateaus were observed 
+with an electrolyte that could dissolve more Li-PS [27]. The 
+one-plateaued discharging curves and mitigated Li-PS shuttle problem 
+were also observed with extremely high Li salt concentration in the 
+electrolyte [28–32]. Therefore, the discharge plateau is highly depen­
+dent on the solvation status of the Li-PS, which is subject to change with 
+the pore size, solvent chemistry, and electrolyte concentration. Besides, 
+single metal atoms were reported to trap the dissolved Li-PS, catalyti­
+cally convert the discharge reaction [33], but no obvious change of 
+discharge plateaus was observed. 
+These fundamentals must be understood in order to precisely design 
+Li–S batteries, as neither of the design idea discussed above provided a 
+complete solution for Li–S batteries. In terms of the pore size, the opti­
+mum pore size only allowing Li-ion diffusion, according to our recent 
+investigation, was less than 1 nm, which requires costly synthesis pro­
+cesses [23,24,34]. If the pore size is within 3–5 nm, larger than the 
+solvent molecule and soluble Li-PS, a carbonate electrolyte [17,35–37] 
+has to be used to seal the pores through SEI formation. Unfortunately, Li 
+metal anode does not cycle well in carbonate based electrolyte [38–40]. 
+Furthermore, the use of the highly-concentrated electrolyte suffers from 
+high viscosity and slow Li transport property [41,42]. Thus, new Li–S 
+design strategies, that simultaneously tuning the pore size, solvent 
+chemistry, and electrolyte concentration, are required. 
+Theoretical prediction of the solvent dependent open circuit poten­
+tial (OCV) still faces challenges. Density functional theory (DFT) has 
+long been used to predict the OCV of electrodes that store lithium via 
+intercalation [43,44] and alloying [45,46] solid-state reactions. In fact, 
+if the lithiation reaction of S was modeled as a solid-state reaction, Li2S 
+would be the only thermodynamically stable phase, consistent with the 
+Li–S phase diagram [47]. Using crystalline S and Li2S, Yang et al. 
+computed the convex hull of all crystalline Li-PS (without solvation due 
+to periodic boundary conditions) with plane-wave DFT. It was found 
+that all Li-PS were thermodynamically unstable as they lay above the 
+tie-line between S and Li2S [48]. Thus, only one plateau in the dis­
+charging curves should be expected. With the same plane-wave DFT 
+method, B. Wang et al. [49] showed the discharging reaction path was 
+altered depending on whether the structures of S (represented as S8 
+monomer), Li-PS and Li2S were modeled as monomers or clusters in a 
+vacuum, both are different from those obtained by treating Li-PS as 
+crystal structures. L. Wang et al. [50] first added the temperature effect 
+due to vibrations and the solvation effect, modeled by polarizable con­
+tinuum model (PCM), to compute the free energy with local-basis set 
+DFT implemented in Gaussian. Their predicted OCV showed several 
+plateaus. By changing Li, Li2S, Li-PS from monomer to cluster structures 
+while maintaining the monomer structure of S8, the predicted OCV 
+curves showed multiple plateaus within the similar voltage range with 
+experimental observation. It is, therefore, reasonable to treat Li-PS as 
+either monomers or clusters [51–53]. However, Li2S and S should not be 
+treated as dissolved monomer or clusters, as they have very low 
+solubility in the electrolyte. Furthermore, according to Canepa et al. 
+[54], the calculated solvation energy based on different solvation 
+models might be inconsistent. Including the solvation effect appropri­
+ately in the Li-PS system remains another computational challenge. 
+Therefore, a systematic investigation of the influence of the solvation 
+effects at finite temperature on the prediction of OCV is required and 
+important. 
+In the present work, the primary focus was to understand the origin 
+of the two-plateaued or one-plateaued OCV curves in Li–S batteries. The 
+temperature and solvation effects were added to DFT calculations in 
+order to capture their influence on the OCV profile. The structures used 
+in the model were selected to better mimic the Li–S battery system. Li, S, 
+and Li2S were treated as crystal structures due to their low solubility in a 
+typical liquid electrolyte and the smallest soluble Li-PS, Li2S4 was 
+treated as molecules and clusters. The reason to skip other Li-PS species, 
+such as Li2S8, and Li2S6, and arguably Li2S7 or Li2S5 [51,52], in our 
+calculations, is that only one plateau at 2.3–2.4 V was seen in most 
+experiment. That means the OCVs ascribed to the transformation from 
+the crystal S to various Li-PS species will fall into a very narrow energy 
+range, which can be represented by the direct transformation from S to 
+Li2S4. The recent eutectic solvent dissolves all Li-PS and Li2S is inter­
+esting but beyond the focus of this paper [55]. The S3 radical recently 
+observed by Q. Wang et al. [56] was not included in our calculation 
+since it mainly served as a reaction intermedia and would not change the 
+reaction energies that lead to the OCV curve. The mixed electrolyte 
+solvent of dimethoxyethane (DME) and dioxolane (DOL) is often used in 
+Li–S battery. B. Wang et al. [49] suggested that DOL provided slightly 
+larger binding energy to Li-PS than DME. Therefore, DOL was chosen as 
+the electrolyte solvent in our model. It is expected that the 
+solvent-dependent OCV can be extended to other solvents, such as DME, 
+based on different solvation energies. The solvation energies of Li2S4 in 
+liquid DOL electrolytes were calculated with different solvation models 
+and the subsequent OCVs from these solvation models were compared 
+with the experimental observations in order to determine which model 
+was more appropriate. This comparison also revealed that the origin of 
+the one-plateaued or two-plateaued discharging curves was due to the 
+solvation of the Li-PS. Thus, the fully solvated, partially solvated, and 
+non-solvated Li2S4 were correlated with the design of C/S cathode in the 
+experiment. 
+Our calculations suggested that a single potential plateau can be 
+expected if the nanopores from carbon matrix create more concentrated 
+and less solvated Li2S4 inside the pores than in the bulk electrolyte, or 
+the formation of fully solvated Li2S4 is inhibited due to limited amount 
+of solvent in a highly-concentrated electrolyte. For the first time, the 
+theoretical foundation to combine the influence of decreasing pore size 
+and increasing electrolyte concentration on the OCV curve was pro­
+vided. Based on this, a synergetic effect of the pore size in a carbon 
+matrix and the salt concentration in the electrolyte will result in a 
+transition from the two-plateaued to the one-plateaued. This has been 
+demonstrated in both modeling and systematic experiments. This syn­
+ergetic effect provides a new strategy to mitigate the Li-PS shuttle 
+problem in Li–S batteries. 
+2. Method 
+2.1. OCV and formation energy calculations 
+The average OCV for a typical lithiation reaction 
+Lix1X þ ðx2   x1ÞLi ¼ Lix2X;
+(1)  
+with reference to Li-metal as 0 V is defined as 
+OCV ¼   ΔG
+Δxe ¼   ½GðLix2XÞ   GðLix1XÞ   ðx2   x1ÞGðLiÞ
+ðx2   x1Þe
+;
+(2)  
+where ΔG is the change of Gibbs free energy in reaction (1), Δx is the 
+Y. Lin et al.                                                                                                                                                                                                                                      
+
+<<PAGE 3>>
+Nano Energy 75 (2020) 104915
+3
+transferred number of electrons, and e is the charge on one electron. 
+GðLix2XÞ, GðLix1XÞ and GðLiÞ are the Gibbs free energy of phase Lix1X, 
+Lix2X, and Li-metal, respectively. Here, we mainly consider the reaction 
+from S (crystal) → 1
+4Li2S4(molecule) → Li2S (crystal). Additional calcu­
+lations were also performed for other Li-PS molecules, such as Li2S8 and 
+Li2S6, to verify the main conclusions. The crystal structures of Li, S, and 
+Li2S were obtained from the Materials Project [57]. To determine 
+whether the solvated molecular Li2xS would be thermodynamically 
+stable, its formation energy with respect to the crystalline S and Li2S was 
+calculated as 
+GformðLi2xSÞ ¼ GðLi2xSÞ   ð1   xÞGðSÞ   xGðLi2SÞ:
+(3) 
+A positive GformðLi2xSÞ means that its formation is not thermody­
+namically favorable. Thus one step discharging reaction from S crystal to 
+Li2S crystal, corresponding to the one-plateaued OCV, is expected. On 
+the other hand, if GformðLi2xSÞ is negative, the formed Li2xS will partici­
+pate in the two-step discharging reaction and result in a two-plateaued 
+OCV. 
+For crystalline phases, such as Li, S, and Li2S, the temperature 
+dependent terms in Gibbs free energy include only the vibration 
+contribution: 
+GðLixX crystalÞ ¼ EDFTðcrystalÞ þ EvibðTÞ   TSvibðTÞ:
+(4) 
+For the dissolved molecular, specifically Li2S4 in DOL, the Gibbs free 
+energy includes the solvation energy and the temperature dependent 
+contributions of translation, rotation, vibration, of the molecule,   
+In equation (4) and (5), ​ EDFTðcrystalÞ and EDFTðgasÞ are the DFT 
+minimized energy of crystals and molecules at 0K. Evib, Erot and Etra are 
+the vibrational, rotational and translational enthalpy, while Svib, Srot and 
+Stra are the vibrational, rotational and translational entropy. Esolv is the 
+solvation energy, calculated from different solvation models detailed in 
+Section 2.2. 
+Because the plane-wave DFT is more efficient for crystals and the 
+local-basis set DFT is the typical choice for molecule and cluster calcu­
+lations, both were applied to the structures they are suitable for. Com­
+parisons were made to several special cases (crystalline Li, Li2S, S, and 
+cluster solvation model) for validation purposes. Specifically, spin- 
+polarized, all-electron, local basis set (Double Numerical plus polariza­
+tion, DNP [58]) DFT implemented in Dmol3 [59] in Materials Studio was 
+used. The exchange-correlation was treated with the generalized 
+gradient approximation (GGA) Perdew-Wang-91 functional [60]. To 
+capture the temperature effect, the contributions from vibration, rota­
+tion, and translation were calculated through vibrational analysis by 
+finite differences of analytic gradients, based on the detailed formula 
+from Hirano’s work [61]. Only the ion positions were relaxed during 
+energy minimizations, until one of the three convergence criteria, as 3
+10  4 eV/system energy change, 0.05eV/Å force, and 0.005 Å displace­
+ment, was reached. For comparison, the energy of the Dmol3 minimized 
+structures were recalculated with the plane-wave DFT implemented in 
+the Vienna ab initio simulation package (VASP). Potentials constructed 
+with the full potential projector augmented wave (PAW) method were 
+used for the elemental constituents [62]. The exchange-correlation was 
+treated with the GGA Perdew-Burke-Ernzerhof (PBE) functional [63]. 
+The cutoff energies and K-points used are listed in Table S1 in the 
+Supporting Information (SI). 
+2.2. Solvation energy calculations 
+2.2.1. Solvation models 
+The solvation energy is the energy associated with dissolving an 
+isolated solute molecule (gas phase) in a solvent to form the solution, 
+which can be calculated as 
+Esolv ¼ E½solution   E½solvent   E½soluteðisoÞ:
+(6) 
+Different solvation models, namely explicit model [64], implicit 
+model [65,66], cluster model [67–69], and combined model [54] are 
+often used in computing solvation energies. In the explicit model, both 
+the solution and the solvent are modeled with full atomistic liquid 
+structures, at the corresponding concentration and density [70,71]. 
+E½solution and E½solvent are the average energy obtained from molecular 
+dynamics (MD) or Monte Carlo (MC) simulations. In the implicit model, 
+a single solute molecule embedded in a dielectric continuum media is 
+used to represent the solution. The solute and the solvent interaction can 
+be calculated via the conductor-like screening model (COSMO) [65] or 
+the polarizable continuum model (PCM) [66]. The error for implicit 
+solvation models depends on the dielectric constant, ε [72]. The cluster 
+model can be considered as a simplified explicit model, by considering 
+only the first solvation shell [68,69], which can be extracted from liquid 
+structure via MD simulations. Then E½solution and E½solvent are the 
+energies of the first solvation shell and the solvent molecule in vacuum, 
+respectively. In the combined model, the first solvation shell is 
+embedded in a dielectric continuum [54], to obtain E½solution with 
+COSMO or PCM model. E½solvent is the energy of a solvent molecule 
+embedded in the dielectric continuum. Comparing these models, the 
+explicit model represents the liquid structure and dynamics properly, 
+but its accuracy is often scarified by using classic forcefield. To be more 
+accurate, ab initio MD can be used, but with a smaller structure and a 
+shorter time. DFT method is often used for the cluster model, implicit 
+model, and the combined model with DFT method. Considering the 
+cluster model ignores the solvation shell and solvent interaction, the 
+combined model provides a combination of the implicit and cluster 
+model. 
+In this paper, the solvation energies calculated from these models 
+will be compared. The energetic terms in the explicit model, namely 
+E½solution, E½solvent and E½soluteðisoÞ, were all calculated through VASP 
+as stated in section 2.1. In the implicit model and combined model, the 
+energetic terms were calculated through Dmol3 with COSMO solvation 
+model [65], in which the solvent was treated as a continuum with a 
+permittivity ε ¼ 7.2 for DOL electrolyte [73]. In the cluster model, the 
+energetic terms were calculated in both methods for validation 
+purposes. 
+2.3. Solution structures 
+To sample more configurations and save simulation time, classical 
+MD and ab initio MD (AIMD) were used to prepare the initial structures 
+for the DFT energy minimizations. While the lowest minimized energies 
+were chosen to calculate the solvation energy, several configurations 
+were used to indicate the fluctuation. The sampling process for Li2S4, as 
+an example, was summarized in Table S2 in SI, and stated in more detail 
+below. 
+The first solvation shell structure is important for the cluster model 
+and the combined model. The structure of the first solvation shell for a 
+fully solvated Li2S4 was obtained from a dilute solution of randomly 
+packed Li2S4 and DOL molecules at a ratio of 1:100 simulated by 
+GðLixX solvÞ ¼ ​ EDFTðgasÞ þ ½EvibðTÞ   TSvibðTÞ þ ½ErotðTÞ   TSrotðTÞ þ ½EtraðTÞ   TStraðTÞ þ Esolv:
+(5)   
+Y. Lin et al.                                                                                                                                                                                                                                      
+
+<<PAGE 4>>
+Nano Energy 75 (2020) 104915
+4
+classical MD. The forcefield types within the Compass [74] and the 
+atomic charges of each atom type were listed in Table S3 in the SI. The 
+optimized cell was subject to a classical MD simulation with an NPT 
+ensemble, using Nose algorithm [75] and Berendsen algorithm [76] to 
+control the temperature at 298K and pressure at 1 atm for 50 ps with a 
+time step of 1 fs. The MD simulation time was sufficient to give a 
+converged solution density of 1.06  0.01 g/cm3 in the last 20 ps. The 
+first solvation shell structure was determined as Li2S4⋅4DOL by 
+analyzing the radial distribution function (RDF) and the coordination 
+number (CN) around the Li2S4 in the MD trajectory. At last, the first 
+solvation shell Li2S4⋅4DOL was extracted from the three configurations 
+with the lowest potential energy in the MD simulation after equilibrium 
+to be the initial configuration for DFT energy minimization. 
+To represent the fully solvated solution structure in the explicit 
+model, 1 Li2S4 molecule and 20 DOL molecules were packed into the 
+periodic simulation cell with an initial density of 1.06 g/cm3. The 
+converged density was 1.19  0.02 g/cm3 based on classical NPT MD 
+simulation. This density was 12% higher than the solution with a Li2S4: 
+DOL ratio of 1:100, indicating that this solution deviates from the ideal 
+dilute solution. To better describe the solvent-solute interaction, AIMD 
+implemented in VASP with NVT ensemble at a timestep of 1 fs was 
+performed for 1.5 ps at 300K. The average potential energy during the 
+last 1 ps AIMD simulation were both recorded to obtain the solvation 
+energy and estimate its fluctuation. Three configurations with the lowest 
+potential energy from AIMD simulations were used as the initial con­
+figurations for DFT energy minimization. 
+Explicit and cluster models were chosen to investigate the partially 
+solvated Li2S4. In the explicit model, a solution of 10 Li2S4 molecules and 
+20 DOL molecules were used to simulate a highly-concentrated solution. 
+The converged density averaged from NPT MD simulation was 1.41 
+0.014 g/cm3. After that, a similar process of AIMD and DFT were also 
+followed to obtain the solvent structures for explicit calculations. In the 
+cluster model, a Li2S4⋅2DOL cluster was created for the first solvation 
+shell of a partially solvated Li2S4 by removing 2 DOL molecules from the 
+optimized full solvation shell Li2S4⋅4DOL, then subject to a classical NVT 
+MD simulation at 298K for 50 ps. The configuration with the lowest 
+potential energy was used as the initial configuration for DFT energy 
+minimization. 
+Non-solvated Li2S4 was first simulated as a monomer (isolated 
+molecule). Five different configurations of isolated Li2S4 were optimized 
+in DFT calculation. The optimized structure with the lowest energy was 
+chosen to represent the Li2S4 monomer. Since non-solvated Li2S4 could 
+agglomerate into clusters, Li2S4 molecules were arranged under 
+different configurations as (Li2S4)n cluster. The initial configurations of 
+larger clusters were built based on the optimized configuration of 
+smaller clusters. 
+2.4. Experiments 
+The electrolytes were prepared as follows: lithium bis (trifluoro­
+methane sulphonyl) imide (LiN(SO2CF3)2, LiTFSI) salt purchased from 
+TCI was used as received. 1,2-dimethoxyethane (DME) and 1,3-dioxo­
+lane (DOL) were obtained from Sigma-Aldrich. 1 M, 3 M and 6 M 
+LiTFSI/(DME þ DOL) electrolytes were prepared by dissolving a 
+designed amount of salt into the corresponding solvent. “M” is used to 
+represent the molar concentration, i.e., 1 mol of salt dissolved in a liter 
+of solvent (not the electrolyte solution). The volume ratio of DOL and 
+DME was set to be 1:1 in this work. Three carbon matrixes with different 
+average pore sizes were used. These included CMK3 (average pore size 
+of 5 nm), CMK8 (average pore size of 3 nm) and CMS (average pore size 
+of 1 nm), with pore sizes labeled in the parenthesis, respectively. The 
+carbon/sulfur (S@CMK3, S@CMK8, and S@CMS) composites were 
+prepared by a melting sulfur diffusion method. In detail, a certain 
+amount of carbon matrix and sulfur were uniformly grounded together, 
+sealed in a glass tube under vacuum, and then heated at 155 C for 15 h. 
+The sulfur loading was 60% for S@CMK3 and S@CMK8, and 50% for 
+S@CMS. 
+For the working electrode preparation, carbon/sulfur composite, 
+conductive carbon, polyvinylidene difluoride (PVDF) with a weight 
+ratio of 8:1:1 were mixed in a certain amount of N-methylpyrrolidinone 
+(NMP) solvent to form a homogeneous slurry by stirring for 4 h. The 
+slurry was coated onto a thin Al foil and dried at 65 C for 14 h in a 
+vacuum. 
+The coin cells (CR2032) were assembled in an argon-filled glove box, 
+with the prepared working electrode, pure lithium metal foil as the 
+counter electrode, a sheet of polypropylene microporous (PP Celgard) 
+film as the separator. Cyclic voltammetry (CV) measurements were 
+performed on a CHI660D electrochemical workstation with a scan rate 
+of 0.1 mV/s (CH Instrument, Shanghai, China). 
+3. Results 
+3.1. Temperature effect in crystalline phases 
+The calculated energy contributions for all species at both 0 K and 
+300 K are listed in Table S5 in the SI. At 0 K and 300 K, the vibrational 
+contributions, namely EvibðTÞ  TSvibðTÞ, for crystalline S, Li, and Li2S, 
+were all less than 0.05 eV. These small vibrational contributions 
+confirmed the typical assumption that the temperature effect for crystals 
+can be neglected in the calculation of the OCV in equation (2) and the 
+relative formation energy (ΔGform) in equation (3). The OCV of the direct 
+reaction of 2Li þ S ¼ Li2S was 2.13 V at 0 K and 2.10 V at 300 K. This 
+confirmed that for OCV calculations in solid, the TΔS term in equation 
+(4) was often dropped, as it was relatively much smaller than ΔE at room 
+temperatures for solids [77]. The calculated OCV at 0 K from VASP was 
+2.04 V. The difference between Dmol3 and VASP method was less than 
+0.1V, suggesting the results from the two methods can be combined and 
+compared. All of the computed OCV values were in good agreement with 
+most experiments in all solid-state Li–S battery [7,10]. 
+Fig. 1. The structures and formation energies of non-solvated Li-PS. The opti­
+mized structure of (a) Li2S4 monomer and (b) (Li2S4)8 cluster. Li and S atom are 
+represented by purple and yellow, respectively. The distance of S–S and S–Li 
+bonds are labeled for Li2S4. (c) The calculated Gibbs free energy of Li2S4, with 
+different configurations, as a function of cluster size n. (d) The predicted rela­
+tive formation energy of non-solvated Li2S4, Li2S6, and Li2S8 with respect to the 
+crystalline S and Li2S. 
+Y. Lin et al.                                                                                                                                                                                                                                      
+
+<<PAGE 5>>
+Nano Energy 75 (2020) 104915
+5
+3.2. Temperature effect for non-solvated Li2S4 
+However, the temperature effect became significant for molecular 
+Li2S4. The optimized configuration of a non-solvated Li2S4 monomer is 
+shown in Fig. 1a. According to Table S5 in SI, the vibrational contri­
+bution at 0 K or the zero-point energy (ZPE) was 0.24 eV. At 300K, the 
+free energy contributed from the vibration, rotation, and translation was 
+up to   0.67 eV per Li2S4 molecule. 
+The relative formation energy of Li2S4 in the gas phase obtained 
+through equation (3) was 0.52 eV at 0K and 0.33 eV at 300 K. It was 
+observed in the experiment that Li2S4 molecules may dynamically 
+aggregate into clusters even at a low concentration of 0.2 M [78]. 
+Therefore, the Gibbs free energy per formula Li2S4, GDFTðLi2S4Þn= n, was 
+plotted as a function of cluster size n in Fig. 1c. For easy comparison, the 
+Gibbs free energy of Li2S4 monomer was shifted to 0. The optimized 
+Gibbs free energy related to different initial configurations were shown 
+as data points. For the monomer, all different initial configurations 
+relaxed into one final configuration. The energy of the dimers showed 
+large dependence on the initial configurations. The larger clusters built 
+upon the lowest energy dimers showed less fluctuation in the minimized 
+energy. The lowest energies clearly showed that GDFTðLi2S4Þn=n 
+decreased with increasing cluster size till it converged within 0.05 eV 
+when n is larger than 6. Therefore, the optimized structure of (Li2S4)8 
+cluster, as shown in Fig. 1b, was chosen to represent the Li2S4 cluster in a 
+vacuum. The difference between Gibbs free energy at 0K and 300K also 
+dropped from 1eV to 0.4eV with increasing cluster size. These results 
+suggested that the temperature effect on free energy cannot be ignored 
+for the Li2S4 molecule or clusters, thus the following calculation mainly 
+focused on the Gibbs free energy at 300 K. 
+Fig. 1d plots the relative formation energies of non-solvated Li2S4, 
+Li2S6, and Li2S8 with respect to a tie line between the crystalline S and 
+Li2S. As discussed in Section 3.1, the temperature effect (from 0 K to 300 
+K) on the Gibbs free energy of crystalline S and Li2S was negligible and 
+thus the position of the tie line can be treated as a constant. The relative 
+formation energy of the non-solvated Li2S4 cluster was therefore 0.30 
+eV at 0 K and 0.19 eV at 300 K. Regardless of monomer or cluster, the 
+relative formation energy of Li2S4 remained positive without the sol­
+vent. Li2S6 and Li2S8 monomers also showed positive relative formation 
+energies at 300 K with respect to S and Li2S, indicating all Li-PS 
+including Li2S4, Li2S6 and Li2S8 should not form. Consequently, a one- 
+plateaued discharging curve was expected. 
+3.3. Fully solvated Li2S4 
+For the cluster model and combined model, the first solvation shell of 
+Li2S4⋅4DOL (Fig. 2a) was extracted based on classical MD simulations of 
+1 Li2S4 in 100 DOL by analyzing the RDF and the CN around the Li2S4. 
+Fig. 2b shows the cumulative CN as a function of the cutoff distance for 
+the Li–O distance. The two CN steps meant that each Liþ in the Li2S4 
+coordinated with 2 DOL molecules via Li–O ionic bond at ~2 Å, and the 
+second nearest Li–O neighbors were ~4 Å away. To further differentiate 
+the Li–S bonds, the two S atoms at the end of S4
+2  anion were defined as S 
+(end) and the two S atoms in the middle were defined as S (mid). Each 
+Liþ in the Li2S4 also formed ionic bonds with the two S (end) at ~2.4 Å. 
+Thus, the first solvation shell was Li2S4⋅4DOL, in which each Li at the 
+end of Li2S4 was coordinated to 2 O atoms from two different DOL 
+molecules at a distance around 2 Å. 
+The liquid solution model (shown in Fig. 2c) used for AIMD calcu­
+lations had one Li2S4 and 20 DOL molecules. The first solvation shell 
+around the Li2S4 is highlighted in Fig. 2c and its cumulative CN is shown 
+in Fig. 2d, which had exactly the same first nearest neighbor bonding 
+and CN as that from the larger liquid simulation cell shown in Fig. 2b, 
+except the Li–O CN kept increasing after 4 Å. This suggested that the first 
+solvation shell was consistent with the large cells but the second sol­
+vation shell was not fully formed in the AIMD simulation cell. 
+Table 1 compares the four different solvation models utilized to 
+calculate the solvation energy for a fully solvated Li2S4 molecule. At 300 
+K, the Gibbs free energy of the fully solvated Li2S4 monomer, regardless 
+the solvation model, was lower than that of the non-solvated (Li2S4)8 
+cluster, suggesting that formation of clusters of Li2S4 in dilute solution 
+Fig. 2. The solvation structure and energy for the fully solvated Li-PS monomer. The optimized configuration of Li2S4⋅4DOL solvation shell and their cumulative CN 
+in (a)(b) the cluster model and (c)(d) the explicit model. The Li, S, C, O, and H are represented as purple, yellow, grey, red and white, respectively. The distance of 
+Li–S and Li–O are labeled. The relative formation energy of the fully solvated Li2S4 monomer at 0 K and 300 K, and fully solvated Li2S6 and Li2S8 at 300 K compared 
+with crystalline S and Li2S (e). The labels indicate the temperature, and the solvation model, namely (I) for implicit, (Cl) for cluster, (Cm) for combined, and (E) for 
+explicit models, respectively. The error bar indicates the results due to a range of sampled configurations. 
+Y. Lin et al.                                                                                                                                                                                                                                      
+
+<<PAGE 6>>
+Nano Energy 75 (2020) 104915
+6
+was not energetically favorable, although it was reported that they 
+dynamically exist [78] in the electrolyte or energetically favorable on 
+the Li anode surface [79]. Thus, only a solvated monomer of Li2S4 was 
+considered further to mimic the solvated Li-PS. 
+The solvation energy calculated by the implicit model was only 
+  0.80 eV, much smaller than that calculated by the other three models, 
+falling into the range of   2.09  0.18 eV. In the cluster model, a dif­
+ference of 0.22 eV in the solvation energy calculated by VASP and 
+Dmol3 was also observed. This difference was within the same level of 
+the deviation caused by different solvation models, expect the implicit 
+model. 
+Fig. 2e shows the relative formation energy of the fully solvated Li-PS 
+monomers, predicted by different solvation models. The cluster model, 
+explicit model, and the combined model all predicted negative relative 
+formation energies for the fully solvated Li2S4 at 300K, within a range 
+from   0.17 eV to   0.25 eV. This suggested that the fully solvated Li2S4 
+was a thermodynamically stable product in the discharging reaction. 
+The fully solvated Li2S8 and Li2S6 also showed negative formation en­
+ergies (using the cluster model). Since the formation energy of S crystal, 
+fully solvated Li2S8, Li2S6 and Li2S4 almost resided on the same line, the 
+slope of this line resulted in the same discharge potential plateau of 
+~2.43 V. The phase change from fully solvated Li2S4 to crystalline Li2S 
+led to another OCV plateau of, thus the two-plateaued OCV was ex­
+pected. This was in agreement with most experiment observations in 
+typical Li–S batteries with liquid electrolytes [3,6]. The solvation energy 
+deviation of 0.18 eV due to different solvation models and calculation 
+methods only caused less than 0.1 V shift of the discharging plateaus, 
+deemed to be acceptable. On the other hand, the positive relative for­
+mation energy predicted by the implicit model at 300 K (0.13 eV) led to 
+an inaccurate conclusion, that the fully solvated Li2S4 was not thermo­
+dynamically stable, which was against the experimental observations. 
+Thus, the implicit solvation model was not appropriate for the solvation 
+energy calculation of Li2S4 in DOL solvent. The single plateau for all 
+dissolved Li-PS phases verified our previous decision that Li2S4 can be 
+used to represent all Li-PS for OCV calculations. So the rest of the cal­
+culations only focused on Li2S4 at different solvation states. 
+Fig. 2e also shows the temperature effect on the relative formation 
+energy of the fully solvated Li2S4 monomer. The relative formation en­
+ergy was only   0.02 eV at 0 K (considering the solvation energy with the 
+combined model and the ZPE). The slightly negative value indicated the 
+two discharging plateaus would be very close, almost overlapping, on 
+the OCV. Thus, the temperature had a significant effect on the OCV of 
+reactions involving dissolved molecules. These results also suggested 
+that the voltage difference on OCV decreased with temperature, thus 
+lowering the operating temperature might be helpful to mitigate the Li- 
+PS desolvation problem. 
+3.4. Partially solvated Li2S4 and the transition from the two-plateaued 
+OCV to the one-plateaued OCV 
+The partially solvated Li2S4⋅may exist in high concentration solutes. 
+A liquid simulation cell of 10 Li2S4 and 20 DOL was used for the explicit 
+solvation model. The solution structure after 2 ps AIMD simulations and 
+its corresponding CN plots are shown in Fig. 3a and b. Comparing Fig. 3b 
+with the fully solvated Li2S4 in Fig. 2c, the first nearest neighbor Li–O 
+and Li–S (end) bonds almost maintained the same distance. However, 
+the coordination number changed. In the partially solvated Li2S, each 
+Liþ was coordinated with 1 O in DOL but coordinated with more S (end) 
+with CN ¼ 2.7. The continuous climbing of all bonds beyond the distance 
+of 3.5 Å, indicating the second solvation shell was not fully formed. The 
+change of CN in the highly-concentrated solution strongly suggested that 
+the interaction between DOL and Liþ was weakened due to the limited 
+amount of DOL, while the interaction between S4
+2 and Liþ was 
+enhanced by the formation of a Li-PS network as shown from the 
+snapshot in Fig. 3b. A cluster of Li2S4⋅2DOL was used to represent the 
+partial solvation shell in the cluster model. The optimized structure and 
+its corresponding CN plot are shown in Fig. 3c and d, which shows the 
+CN of the Li–O, Li–S (end) and Li–S (mid) bonds was 1, 2 and 1, 
+respectively, similar to that in Fig. 3b. 
+The calculated partial solvation energies from VASP were   1.44 eV 
+from the explicit model and   1.30 eV from the cluster model. For 
+comparison, the calculated solvation energy from Dmol3 was   1.43 eV 
+with the cluster model. These consistent solvation energies for the 
+partially solvated Li2S4 were smaller (in the absolute value) than the 
+  2.09 eV solvation energy of a fully solvated Li2S4. The corresponding 
+formation energy of the partially solvated Li2S4 was   0.01 to   0.04 eV, 
+recommending two-plateaued OCVs. But since these values were close to 
+zero, these voltages of the two plateaus would fall into a very narrow 
+range. 
+3.5. Synergy effect of pore size and salt concentration on the OCVs 
+The relative formation energies at 300K for the fully solvated Li2S4, 
+partially solvated Li2S4, and non-solvated Li2S4 are summarized in 
+Fig. 4a. The solvation energy for the fully solvated Li2S4 was represented 
+as the average value of   2.09 eV from the cluster model, combined 
+model and explicit model shown in Table 1, resulting a relative forma­
+tion energy of   0.22 eV shown as the green dot in Fig. 4a. A solvation 
+energy of   0.03 eV was also obtained by averaging the values of the 
+cluster and explicit model for the partially solvated Li2S4., leading to a 
+relative formation energy of   0.05 eV shown as the blue dot in Fig. 4a. 
+Table 1 
+Esolv for the fully and partially solvated Li2S4 in DOL solvent calculated by 
+different solvation models (Unit: eV). The fluctuations are due to different 
+configurations in the sampling scheme.    
+Implicit 
+Model 
+Explicit 
+Model 
+Cluster 
+Model 
+Combined 
+Model 
+Fully 
+solvated 
+Dmol3 
+  0.80 
+[þ0.01]  
+  2.27 
+[þ0.08] 
+  2.16 
+[þ0.03] 
+VASP  
+  1.91 
+[þ0.02] 
+  2.05  
+Partially 
+solvated 
+Dmol3   
+  1.43 
+[þ0.08]  
+VASP  
+  1.44 
+[þ0.03] 
+  1.30   
+Fig. 3. Structures of the partially solvated Li2S4. (a) The liquid structure of 
+10Li2S4⋅20DOL in the explicit model and (c) the Li2S4⋅2DOL solvation shell in 
+the cluster model, along with their cumulative CN as a function of cutoff radius 
+in (b) and (d), respectively. The color code is the same as Fig. 2. 
+Y. Lin et al.                                                                                                                                                                                                                                      
+
+<<PAGE 7>>
+Nano Energy 75 (2020) 104915
+7
+The non-solvated Li2S4 was represented as an isolated Li2S4 monomer 
+shown as a black dot and isolated (Li2S4)8 cluster shown as a purple dot, 
+separately. They both led to positive relative formation energy. The 
+resulted OCVs based on the relative formation energies at 300K are 
+shown in Fig. 4b. 
+The one-plateaued OCV was predicted for non-solvated Li2S4. The 
+discharging plateau, attributed to the single step discharging reaction of 
+2Li þ S ¼ Li2S, was 2.11 V. This was in good agreement with most ex­
+periments in all solid-state Li–S batteries [7–9]. This prediction was also 
+valid with carbonate electrolyte when S was sealed inside of carbon 
+pores by in-situ formed SEI [36,80]. Therefore, carbonate electrolytes 
+were 
+suitable 
+for 
+nano-porous 
+carbon/sulfur 
+cathodes. 
+The 
+two-plateaued OCV was predicted for fully solvated Li2S4. The voltages 
+of the two plateaus predicted to be 2.43 V and 1.99, were in agreement 
+with the experimental observation in general Li–S battery with 
+ether-based liquid electrolyte without any special design [3–6]. If Li2S4 
+is fully solvated in the electrolyte, especially when the pores are at the 
+micron level, it is subject to severe Li-PS shuttle problems. In such a case, 
+the solubility of the Li-PS in the electrolyte in microporous carbon/­
+sulfur electrode becomes one of the key parameters affecting the elec­
+trochemical performance and energy density of the Li–S batteries, as 
+shown in our previous analytical model [81]. 
+For partially solvated Li2S4, the increase of partial solvation energy 
+made the two plateaus on the OCV much closer, as the first plateau 
+dropped to 2.15 V while the second plateau increased to 2.09 V. Further 
+increase in the Li2S4 concentration in DOL would eventually create a 
+single plateaued OCV. This was consistent with experimental observa­
+tions in concentrated electrolyte [24–26]. Especially, Zhang [24] has 
+also shown that while the second discharging plateau almost maintained 
+the same position, the first discharging plateau gradually dropped when 
+the concentration of the electrolyte increased. This would be an efficient 
+method to avoid Li-PS dissolution. When the Li-salt concentration in the 
+electrolyte increases, the amount of free solvent molecules drops 
+dramatically as more solvent molecules are needed in forming the Li-ion 
+solvation shell. Thus, there will be less free solvent molecules available 
+to form full solvation shells around the newly generated Li-PS. The 
+partially solvated Li-PS can continue to be lithiated while reducing the 
+amount of Li-PS that can shuttle through the electrolyte. In the experi­
+ment, the cycling performance is generally improved with the use of 
+highly concentrated electrolyte [25]. 
+The structure of C/S cathode with S filled nano-pores will impact the 
+local solvation structure of Li-PS. If the pore size is large enough for the 
+first solvation shell Li2S4⋅4DOL to pass, the pores will not impose any 
+constraints on the electrolyte concentration or diffusion, leading to se­
+vere Li-PS shuttle problems. The size of Li2S4⋅4DOL is ~1 nm as shown in 
+Fig. 2a. Thus, extremely small pores on the order of ~1 nm will allow Liþ
+diffusion while limiting the diffusion of DOL molecules and blocking the 
+diffusion of Li2S4⋅4DOL solvation shell. If any Li2S4 can be formed inside 
+these pores, it will likely exist as a non-solvated monomer or cluster, 
+leading to a one-plateaued OCV. Several experiments indeed have 
+created nanopore size on the order ~1 nm and reported one-plateaued 
+discharging curves in the liquid electrolyte [14,82]. We hypothesize 
+that partial solvation can be achieved inside the pores within the size 
+range of 1–5 nm, where both Li-ion and solvent molecules can diffuse in, 
+but the diffusion of the newly formed Li2S4⋅4DOL solvation shell out of 
+the pore will be limited, due to the comparable size of solvation shell and 
+pore size. This was similar to the reverse osmosis phenomena in gra­
+phene membrane with similar pore size for water desalination [83]. This 
+can create a local higher Li-PS concentration and result in a partially 
+solvated state inside the pore. The formation of Li2S4 will become less 
+energetically favorable with increasing Li2S4 concentration. This ex­
+plains why some so called “quasi one-plateaued” discharging curves 
+were still displayed when the pore size was much larger than the size of 
+the solvent [17,35–37]. Also, due to the limited amount of solvent, the 
+diffusion of Li2S4 into electrolyte will also be hindered. As a result, fewer 
+Li-PS will be involved in the PS shuttle, mitigating Li-PS shuttle problem. 
+As discussed above, solely decreasing pore size in carbon matrix [23, 
+24,34] with standard concentration of electrolyte, or solely using highly 
+concentrated electrolyte(generally above 5 M) with large pore size in 
+carbon matrix [17,35–37], as done in many previous researches faced 
+extreme challenges due to costly synthesis process and slow Li-ion 
+transport property. The significance of our model is that, for the first 
+time, the influences of decreasing pore size and increasing electrolyte 
+concentration on the OCV could be successfully combined, since they 
+can both help to create a partially solvated Li-PS in a liquid electrolyte. 
+Based on this, we proposed that the most efficient method to limit the PS 
+dissolution problem is to take advantage of the synergetic effect between 
+pore size and electrolyte concentration, which provided a new strategy 
+to convert the two plateaued discharging curves to one plateaued dis­
+charging curves and mitigate the PS dissolution. 
+To confirm the synergetic effect between pore size and electrolyte 
+concentration, Li–S batteries made of LiTFSI/(DME þ DOL) electrolyte 
+systems in the concentration range of 1 M~6 M along with the S@CMS 
+cathode with nanopores size ranging from 1 nm to 5 nm have been 
+assembled and tested. Fig. 5a, shows the cyclic voltammograms (CV) at 
+the 5th cycle in 1 M LiTFSI/(DME þ DOL) electrolyte with S@CMK3 (5 
+nm) S@CMK8 (3 nm) and S@CMS (1 nm) cathode, respectively. The 
+corresponding galvanostatic discharging curves are shown with the 
+same color in Fig. s1a, and the full CV curves from 1st to 5th cycle are 
+displayed in Figs. s2a–c in the supporting materials. For S@CMK3 and 
+S@CMK8, the two reduction peaks were distinctly observed in Fig. 5a. 
+This was consistent with the typical two-plateaued discharging curves 
+shown in green and red in Fig. s1a. Furthermore, the two reduction 
+peaks for S@CMK8 with the average pore size of 3 nm were closer than 
+that for S@CMK3 with 5 nm pores. For the S@CMS with 1 nm pore, the 
+Fig. 4. The calculated (a) relative formation energies and (b) the corresponding 
+OCVs for Li2S4 in different solvation status at 300K. The energy of crystalline S 
+and Li2S are already shifted to 0 for easy comparison in (a). 
+Y. Lin et al.                                                                                                                                                                                                                                      
+
+<<PAGE 8>>
+Nano Energy 75 (2020) 104915
+8
+two peaks became broader. The corresponding black discharging curve 
+in Fig. s1a also showed two much closer discharging plateaus. Thus, the 
+experimental results confirmed the prediction that the two reduction 
+plateaus will move closer with decreasing pore sizes of the carbon 
+matrix. 
+The galvanostatic discharging curves of S@CMK3 and S@CMS 
+cathode at the 10th cycle in LiTFSI/(DME þ DOL) electrolyte with 
+different concentrations are shown in Fig. 5b and c. The corresponding 
+CV curves in the 5th cycle are shown with the same color in Figure s1b 
+and s1c, and the full CV curves from the 1st to 5th cycle are displayed in 
+Figure s2c ~ h in the supporting materials. For S@CMK3 with 5 nm 
+pore, when the electrolyte concentration increased from the 1 M–3 M, 
+the two plateaus in Fig. 5b and the two peaks in Figure s1b became 
+closer. This confirmed our prediction that an increase of salt concen­
+tration in the electrolyte can also make the two reduction plateaus 
+closer. In even highly concentrated 6 M and 9 M electrolytes, the dis­
+charging curves shown as dark blue and grey in Fig. 5b gradually 
+showed a gradual transition to the one-plateaued type. This was also 
+consistent with the broad CV peaks in Figure s1b. For S@CMS with 1 nm 
+pores, complete one plateaued discharging curves were displayed for 3 
+M and 6 M electrolytes, shown as yellow and light blue in Fig. 5c. One 
+broad CV peak in the entire range of reduction can be seen in Figure s1c. 
+The use of CMS with 1 nm pores reduced the critical electrolyte con­
+centration to 3 M, above which a one-plateaued OCV was observed, 
+confirming the synergetic effect of pore size and electrolyte concentra­
+tion. The use of 3 M electrolyte can facilitate faster Li transport in the 
+electrolyte, compared with that in a 6 M or 9 M electrolyte. The use of 1 
+nm pore, can also form a higher local concentration of Li or Li-PS and 
+create a partially solvated Li-PS inside the pore. The combining effect 
+will mitigate the Li-PS shuttling problem more efficiently, compared 
+with the use of a 3 nm or 5 nm pore size. The combination of the 3 M 
+electrolyte and 1 nm pore provided a new strategy to convert the two 
+plateaued discharging curves to one plateaued discharging curves and 
+mitigate the Li-PS dissolution. 
+It was worth noting that the second plateau of all galvanostatic dis­
+charging curves in Fig. 5b and c and s1a became quite sloped when the 
+state of discharge was higher than 70%. This was due to the increasing 
+overpotential due to the continuous deposition of the insulating Li2S2/ 
+Li2S layer [84]. 
+It was worth emphasizing here that our primary focus in this research 
+was to understand the origin of the two-plateaued and one-plateaued 
+discharging curves in the typical ether-based electrolyte and achieve 
+one-plateaued discharging curves through the synergetic effect between 
+decreasing pore size and increasing electrolyte concentration. Even 
+though much previous research showed that the cycling stabilities of 
+Li–S batteries displaying one-plateaued OCV curves were much better 
+than that with two-plateaued OCV curves [20,23–25,28–32], future 
+characterizations are still needed to confirm the influence of the syn­
+ergetic effect on the cycling stability. Furthermore, some insights are 
+also expected from our calculation for the design of new electrolytes. 
+Smaller solvation energy due to waker interaction between the solvent 
+and Li-PS should be helpful to mitigate the Li-PS dissolution. In such a 
+case, the fully solvated Li-PS will not be energetically favorable even at 
+low concentrations. This is consistent with the concept of sparingly 
+solvated electrolytes [85]. Furthermore, liquid electrolyte structure with 
+nano-heterogeneity [86], promoting the Li diffusion in the concentrated 
+electrolytes, can be further explored to enhance the rate performance. 
+4. Conclusions 
+In summary, we have devised a method based on density functional 
+theory (DFT) calculations to predict the temperature and solvent 
+dependent OCV when both crystals (S, Li2S, Li) and dissolved molecules 
+(Li-PS, such as Li2S4) are involved in the discharging reaction. The en­
+ergies of S, Li2S, Li crystal, and Li2S4 molecule were successfully calcu­
+lated and combined with consistent results from plane-wave DFT and 
+basis set DFT. The temperature and solvation effect on the predicted free 
+energy and the open circuit voltage (OCV) curves for Li–S batteries were 
+systematically investigated. It was also shown that while the effect of 
+temperature was negligible for predicting OCV curves associated only 
+with solid-phase transformation, it played a deterministic role in the free 
+energy of dissolved molecules, such as Li-PS. The consistency in the 
+solvation structure and solvation energy in different models confirmed 
+that the solvation effect was estimated appropriately. With the appro­
+priate treatment of temperature and solvation effect, we successfully 
+predicted two-plateaued OCV with fully solvated Li2S4 and one- 
+plateaued OCV with non-solvated Li2S4, in agreement with 
+Fig. 5. Cyclic voltammograms and galvanostatic discharging curve of Li–S 
+batteries. (a)CV in 1 M LiTFSI/(DME þ DOL) electrolyte paired with cathodes 
+with different carbon matrix pore sizes (labeled in parenthesis), S@CMK3, 
+S@CMK8, and S@CMS, respectively. (b)galvanostat discharging curves of 
+S@CMK3 cathode in LiTFSI/(DME þ DOL) electrolyte at concentrations of 1 M, 
+3 M, 6 M and 9 M. (c) galvanostat discharging curves of S@CMS cathode in 
+LiTFSI/(DME þ DOL) electrolyte at concentrations of 1 M, 3 M and 6 M. The 
+cyclic voltammograms were tested with a sweep rate of 0.1 mV/s at the 5th 
+cycle. The galvanostatic discharging curves were tested at a 0.1C rate in the 
+10th cycle. 
+Y. Lin et al.                                                                                                                                                                                                                                      
+
+<<PAGE 9>>
+Nano Energy 75 (2020) 104915
+9
+experimental observation in typical Li–S battery with liquid or solid 
+electrolytes. 
+Driven by the modeling, it was also predicted that the relative for­
+mation energy of Li2S4 increased in the order of fully solvated Li2S4, 
+partially solvated Li2S4 and non-solvated Li2S4. Thus, the transition from 
+two-plateaued to one-plateaued discharging curves was attributed to the 
+change of the solvation state of the Li-PS. At last, the fully solvated, 
+partially solvated, and non-solvated Li2S4 were correlated with the 
+design of C/S cathode by the varying pore size of the carbon matrix in 
+the experiment. A new mechanism that nanopores from carbon matrix 
+can create concentrated and partially solvated Li2S4 inside was pro­
+posed. For the first time, the theoretical foundation was provided to 
+combine the influence of decreasing pore size and increasing electrolyte 
+concentration on the OCV curve. Based on this, a synergetic effect of 
+pore size in carbon matrix and salt concentration in the electrolyte in the 
+conversion from two-plateaued and one-plateaued discharging curves 
+was predicted and also confirmed through experiments. 
+Author contributions 
+The manuscript was written through the contributions of all authors. 
+Funding sources 
+U.S. Department of Energy, Office of Science, Basic Energy Sciences 
+under Award number DESC0001160. 
+Declaration of competing interest 
+The authors declare no conflict of interest. 
+CRediT authorship contribution statement 
+Yuxiao Lin: Conceptualization, Methodology, Investigation, Writing 
+- original draft, Writing - review & editing. Jing Zheng: Methodology, 
+Validation, Writing - review & editing. Chunsheng Wang: Conceptu­
+alization, Methodology, Supervision, Writing - review & editing. Yue 
+Qi: Conceptualization, Methodology, Supervision, Writing - original 
+draft, Writing - review & editing. 
+Acknowledgment 
+We acknowledge the support for degradation mechanism modeling 
+as part of Nanostructures for Electrical Energy Storage (NEES), an En­
+ergy Frontier Research Center funded by the U.S. Department of Energy, 
+Office of Science, Basic Energy Sciences under Award number 
+DESC0001160. 
+Appendix A. Supplementary data 
+Supplementary data to this article can be found online at https://doi. 
+org/10.1016/j.nanoen.2020.104915. 
+References 
+[1] M.-K. Song, E.J. Cairns, Y. Zhang, Nanoscale 5 (2013) 2186. 
+[2] J. Lochala, D. Liu, B. Wu, C. Robinson, J. Xiao, ACS Appl. Mater. Interfaces 9 
+(2017) 24407–24421. 
+[3] D.-W. Wang, Q. Zeng, G. Zhou, L. Yin, F. Li, H.-M. Cheng, I.R. Gentle, G.Q.M. Lu, 
+J. Mater. Chem. A 1 (2013) 9382–9394. 
+[4] S.S. Zhang, J. Power Sources 231 (2013) 153–162. 
+[5] R. Dominko, A. Vizintin, G. Aquilanti, L. Stievano, M.J. Helen, R. Munnangi, 
+M. Fichtner, Isl. Arc 165 (2018) 5014–5019. 
+[6] S. Talian, S. Jeschke, A. Vizintin, K. Pirnat, G. Aquilanti, P. Johansson, R. Dominko, 
+Chem. Mater. 29 (2017) 10037–10044. 
+[7] C. Zhang, Y. Lin, J. Liu, J. Mater. Chem. 3 (2015) 10760–10766. 
+[8] Y. Zhang, T. Liu, Q. Zhang, X. Zhang, S. Wang, X. Wang, L. Li, L.Z. Fan, C.W. Nan, 
+Y. Shen, J. Mater. Chem. A 6 (2018) 23345–23356. 
+[9] X. Fan, X. Ji, F. Han, J. Yue, J. Chen, L. Chen, T. Deng, J. Jiang, C. Wang, Sci. Adv. 
+4 (2018) eaau9245. 
+[10] Z. Lin, Z. Liu, W. Fu, N.J. Dudney, C. Liang, Angew. Chem. Int. Ed. 52 (2013) 
+7460–7463. 
+[11] E. Markevich, G. Salitra, Y. Talyosef, F. Chesneau, D. Aurbach, J. Electrochem. Soc. 
+164 (2017) A6244–A6253. 
+[12] L. Qie, W.M. Chen, Z.H. Wang, Q.G. Shao, X. Li, L.X. Yuan, X.L. Hu, W.X. Zhang, Y. 
+H. Huang, Adv. Mater. 24 (2012) 2047–2050. 
+[13] B. Zhang, X. Qin, G.R. Li, X.P. Gao, Energy Environ. Sci. 3 (2010) 1531. 
+[14] A. Rosenman, E. Markevich, G. Salitra, Y. Talyosef, F. Chesneau, D. Aurbach, 
+J. Electrochem. Soc. 163 (2016) A1829–A1835. 
+[15] M.R. Busche, P. Adelhelm, H. Sommer, H. Schneider, K. Leitner, J. Janek, J. Power 
+Sources 259 (2014) 289–299. 
+[16] D. Lei, K. Shi, H. Ye, Z. Wan, Y. Wang, L. Shen, B. Li, Adv. Funct. Mater. 28 (2018) 
+1707570. 
+[17] X. Ji, K.T. Lee, L.F. Nazar, Nat. Mater. 8 (2009) 500–506. 
+[18] O. Ogoke, G. Wu, X. Wang, A. Casimir, L. Ma, T. Wu, J. Lu, J. Mater. Chem. 5 
+(2017) 448–469. 
+[19] D.-W. Wang, G. Zhou, F. Li, K.-H. Wu, G. Q. (Max) Lu, H.-M. Cheng, I.R. Gentle, 
+Phys. Chem. Chem. Phys. 14 (2012) 8703. 
+[20] Y. Zhou, C. Zhou, Q. Li, C. Yan, B. Han, K. Xia, Q. Gao, J. Wu, Adv. Mater. 27 
+(2015) 3774–3781. 
+[21] Y. Xu, Y. Wen, Y. Zhu, K. Gaskell, K.A. Cychosz, B. Eichhorn, K. Xu, C. Wang, Adv. 
+Funct. Mater. 25 (2015) 4312–4320. 
+[22] X. Li, M. Banis, A. Lushington, X. Yang, Q. Sun, Y. Zhao, C. Liu, Q. Li, B. Wang, 
+W. Xiao, et al., Nat. Commun. 9 (2018) 4509. 
+[23] S. Xin, L. Gu, N.H. Zhao, Y.X. Yin, L.J. Zhou, Y.G. Guo, L.J. Wan, J. Am. Chem. Soc. 
+134 (2012) 18510–18513. 
+[24] M. Helen, M.A. Reddy, T. Diemant, U. Golla-Schindler, R.J. Behm, U. Kaiser, 
+M. Fichtner, Sci. Rep. 5 (2015) 12146. 
+[25] T. Fujimori, A. Morelos-Gomez, Z. Zhu, H. Muramatsu, R. Futamura, K. Urita, 
+M. Terrones, T. Hayashi, M. Endo, S. Young Hong, et al., Nat. Commun. 4 (2013) 
+1–8. 
+[26] J. Chen, K.S. Han, W.A. Henderson, K.C. Lau, M. Vijayakumar, T. Dzwiniel, H. Pan, 
+L.A. Curtiss, J. Xiao, K.T. Mueller, et al., Adv. Energy Mater. 6 (2016) 1–6. 
+[27] J.-W. Park, K. Yamauchi, E. Takashima, N. Tachikawa, K. Ueno, K. Dokko, 
+M. Watanabe, J. Phys. Chem. C 117 (2013) 4431–4440. 
+[28] Y.Z. Zhang, S. Liu, G.C. Li, G.R. Li, X.P. Gao, J. Mater. Chem. 2 (2014) 4652–4659. 
+[29] L. Suo, Y.-S. Hu, H. Li, M. Armand, L. Chen, Nat. Commun. 4 (2013) 1481. 
+[30] D. Lv, P. Yan, Y. Shao, Q. Li, S. Ferrara, H. Pan, G.L. Graff, B. Polzin, C. Wang, 
+J. Zhang, et al., Chem. Commun. 51 (2015) 13454–13457. 
+[31] J. Zheng, X. Fan, G. Ji, H. Wang, S. Hou, K.C. DeMella, S.R. Raghavan, J. Wang, 
+K. Xu, C. Wang, Nano Energy 50 (2018) 431–440. 
+[32] J. Zhou, Y. Guo, C. Liang, L. Cao, H. Pan, Chem. Commun. 54 (2018) 5478–5481. 
+[33] G. Zhou, S. Zhao, T. Wang, S. Yang, B. Johannessen, H. Chen, C. Liu, Y. Ye, Y. Wu, 
+Y. Peng, et al., Nano Lett. 20 (2019) 1252–1261. 
+[34] Z. Li, Y. Jiang, L. Yuan, Z. Yi, C. Wu, Y. Liu, P. Strasser, Y. Huang, ACS Nano 8 
+(2014) 9295–9303. 
+[35] J.T. Lee, K. Eom, F. Wu, H. Kim, D.C. Lee, B. Zdyrko, G. Yushin, ACS Energy Lett. 1 
+(2016) 373–379. 
+[36] E. Markevich, G. Salitra, A. Rosenman, Y. Talyosef, F. Chesneau, D. Aurbach, 
+Electrochem. Commun. 60 (2015) 42–46. 
+[37] B. Zhang, C. Lai, Z. Zhou, X.P. Gao, Electrochim. Acta 54 (2009) 3708–3713. 
+[38] C. Fang, X. Wang, Y.S. Meng, Trends Cognit. Sci. 1 (2019) 152–158. 
+[39] Y. Zhang, Y. Zhong, Q. Shi, S. Liang, H. Wang, J. Phys. Chem. C 122 (2018) 
+21462–21467. 
+[40] R. Miao, J. Yang, Z. Xu, J. Wang, Y. Nuli, L. Sun, Sci. Rep. 6 (2016) 2–10. 
+[41] L. Suo, O. Borodin, T. Gao, M. Olguin, J. Ho, X. Fan, C. Luo, C. Wang, K. Xu, Science 
+350 (2015) 938. 
+[42] X. Dong, Z. Guo, Z. Guo, Y. Wang, Y. Xia, Joule 2 (2018) 902–913. 
+[43] Y.S. Meng, M.E. Arroyo-de Dompablo, Energy Environ. Sci. 2 (2009) 589. 
+[44] S.P. Ong, V.L. Chevrier, G. Hautier, A. Jain, C. Moore, S. Kim, X. Ma, G. Ceder, 
+Energy Environ. Sci. 4 (2011) 3680. 
+[45] Y. Yamaguchi, T. Takeuchi, H. Sakaebe, H. Kageyama, H. Senoh, T. Sakai, 
+K. Tatsumi, J. Electrochem. Soc. 157 (2010) A630. 
+[46] I.A. Courtney, J.S. Tse, O. Mao, J. Hafner, J.R. Dahn, Phys. Rev. B Condens. Matter 
+58 (1998) 15583–15588. 
+[47] H. Okamoto, J. Phase Equil. 16 (1995) 94–97. 
+[48] G. Yang, S. Shi, J. Yang, Y. Ma, J. Mater. Chem. 3 (2015) 8865–8869. 
+[49] B. Wang, S.M. Alhassan, S.T. Pantelides, Phys. Rev. Appl. 2 (2014) 1–7. 
+[50] L. Wang, T. Zhang, S. Yang, F. Cheng, J. Liang, J. Chen, J. Energy Chem. 22 (2013) 
+72–77. 
+[51] R.S. Assary, L.A. Curtiss, J.S. Moore, J. Phys. Chem. C 118 (2014) 11545–11558. 
+[52] L.E. Camacho-Forero, T.W. Smith, S. Bertolini, P.B. Balbuena, J. Phys. Chem. C 119 
+(2015) 26828–26839. 
+[53] J.J. Chen, R.M. Yuan, J.M. Feng, Q. Zhang, J.X. Huang, G. Fu, M. Sen Zheng, 
+B. Ren, Q.F. Dong, Chem. Mater. 27 (2015) 2048–2055. 
+[54] P. Canepa, S. Jayaraman, L. Cheng, N.N. Rajput, W.D. Richards, G.S. Gautam, L. 
+A. Curtiss, K.A. Persson, G. Ceder, Energy Environ. Sci. 8 (2015) 3718–3730. 
+[55] Q. Cheng, W. Xu, S. Qin, S. Das, T. Jin, A. Li, A.C. Li, B. Qie, P. Yao, H. Zhai, et al., 
+Angew. Chem. Int. Ed. 58 (2019) 5557–5561. 
+[56] Q. Wang, J. Zheng, E. Walter, H. Pan, D. Lv, P. Zuo, H. Chen, Z.D. Deng, B.Y. Liaw, 
+X. Yu, et al., J. Electrochem. Soc. 162 (2015) A474–A478. 
+[57] T. Gao, M. Noked, A.J. Pearse, E. Gillette, X. Fan, Y. Zhu, C. Luo, L. Suo, M. 
+A. Schroeder, K. Xu, et al., J. Am. Chem. Soc. 137 (2015) 12388–12393. 
+[58] B. Delley, J. Chem. Phys. 92 (1990) 508. 
+Y. Lin et al.                                                                                                                                                                                                                                      
+
+<<PAGE 10>>
+Nano Energy 75 (2020) 104915
+10
+[59] B. Delley, J. Chem. Phys. 113 (2000) 7756–7764. 
+[60] J.P. Perdew, Y. Wang, Phys. Rev. B 45 (1992) 244–249. 
+[61] J.P. Stewart, MOPAC Manual, seventh ed., 1993. 
+[62] P.E. Bl€ochl, Phys. Rev. B 50 (1994) 17953–17979. 
+[63] J.P. Perdew, K. Burke, M. Ernzerhof, Phys. Rev. Lett. 77 (1996) 3865–3868. 
+[64] K. Leung, C.M. Tenney, J. Phys. Chem. C 117 (2013) 24224–24235. 
+[65] A. Klamt, G. Schüürmann, J. Chem. Soc., Perkin Trans. 2 (1993) 799–805. 
+[66] M. Cossi, N. Rega, G. Scalmani, V. Barone, J. Comput. Chem. 24 (2003) 669–681. 
+[67] S. Yanase, T. Oi, J. Nucl. Sci. Technol. 39 (2002) 1060–1064. 
+[68] Y. Li, K. Leung, Y. Qi, Acc. Chem. Res. 49 (2016) 2363–2370. 
+[69] I. Skarmoutsos, V. Ponnuchamy, V. Vetere, S. Mossa, J. Phys. Chem. C 119 (2015) 
+4502–4515. 
+[70] M. Shakourian-Fard, G. Kamath, K. Smith, H. Xiong, S.K.R.S. Sankaranarayanan, 
+J. Phys. Chem. C 119 (2015) 22747–22759. 
+[71] B. Jiang, V. Ponnuchamy, Y. Shen, X. Yang, K. Yuan, V. Vetere, S. Mossa, 
+I. Skarmoutsos, Y. Zhang, J. Zheng, J. Phys. Chem. Lett. 7 (2016) 3554–3559. 
+[72] A. Warshel, S.T. Russell, Q. Rev. Biophys. 17 (1984) 283–422. 
+[73] D. Meyerstein, Can. J. Chem. 45 (1967) 884–886. 
+[74] H. Sun, J. Phys. Chem. B 102 (1998) 7338–7364. 
+[75] S. Nose, Mol. Phys. 52 (1984) 255–268. 
+[76] H.J.C. Berendsen, J.P.M. Postma, W.F. Van Gunsteren, A. Dinola, J.R. Haak, 
+J. Chem. Phys. 81 (1984) 3684–3690. 
+[77] I.A. Courtney, J.S. Tse, O. Mao, J. Hafner, J.R. Dahn, Phys. Rev. B Condens. Matter 
+58 (1998) 15583–15588. 
+[78] M.I. Nandasiri, L.E. Camacho-Forero, A.M. Schwarz, V. Shutthanandan, 
+S. Thevuthasan, P.B. Balbuena, K.T. Mueller, V. Murugesan, Chem. Mater. 29 
+(2017) 4728–4737. 
+[79] Z. Liu, S. Bertolini, P.B. Balbuena, P.P. Mukherjee, ACS Appl. Mater. Interfaces 8 
+(2016) 4700–4708. 
+[80] F. He, X. Wu, J. Qian, Y. Cao, H. Yang, X. Ai, D. Xia, J. Mater. Chem. A 6 (2018) 
+23396–23407. 
+[81] N. Kang, Y. Lin, L. Yang, D. Lu, J. Xiao, Y. Qi, M. Cai, Nat. Commun. 10 (2019) 
+4597. 
+[82] W.-J. Zhang, J. Power Sources 196 (2011) 13–24. 
+[83] S. Homaeigohar, M. Elbahri, NPG Asia Mater. 9 (2017) e427. 
+[84] J. Zheng, M. Gu, M.J. Wagner, K.A. Hays, X. Li, P. Zuo, C. Wang, J. Zhang, L. Liu, 
+J. Xiao, J. Electrochem. Soc. 160 (2013) 1624–1628. 
+[85] L. Cheng, L.A. Curtiss, K.R. Zavadil, A.A. Gewirth, Y. Shao, K.G. Gallagher, ACS 
+Energy Lett. 1 (2016) 503–509. 
+[86] O. Borodin, L. Suo, M. Gobet, X. Ren, F. Wang, A. Faraone, J. Peng, M. Olguin, 
+M. Schroeder, M.S. Ding, et al., ACS Nano 11 (2017) 10462–10471. 
+Y. Lin et al.                                                                                                                                                                                                                                      

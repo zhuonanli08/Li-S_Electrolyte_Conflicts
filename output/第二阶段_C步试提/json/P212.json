@@ -1,0 +1,35 @@
+{
+  "编号": "P212",
+  "电解液": {
+    "E1": {"名称": "DEGDME_HCE", "配方": "LiTFSI 与 LiNO3 各 1.5 mol kg-1，二甘醇二甲醚"},
+    "E2": {"名称": "TREGDME_HCE", "配方": "LiTFSI 与 LiNO3 各 2 mol kg-1，三甘醇二甲醚"}
+  },
+  "条件": {
+    "C1": {"正极": "S:Sn 80:20 复合物（极片 80:10:10，碳布集流体）", "硫载量": "复合物约 1.3 mg cm-2（硫约 1.04）", "硫含量": "复合物 80 wt%", "E/S": "", "电解液体积": "60 µL", "面积": "1.54 cm2",
+           "锂厚": "", "N/P": "", "倍率": "C/5", "1C定义": "1675 mA g-1", "温度": "25 °C", "电池": "CR2032",
+           "原句": "The cells cycled at the current of C/5 employed 60 µL of electrolyte solution and a voltage range of 1.9-2.8 V, while voltage limits of 1.6 and 2.8 V and an electrolyte/sulfur ratio of 20 µL mg-1 were adopted for the cells tested at 1C."},
+    "C2": {"正极": "同 C1", "硫载量": "同 C1", "硫含量": "", "E/S": "", "电解液体积": "60 µL", "面积": "1.54 cm2",
+           "锂厚": "", "N/P": "", "倍率": "C/5", "1C定义": "1675 mA g-1", "温度": "35 °C", "电池": "CR2032", "原句": ""}
+  },
+  "比较": [
+    {"A": "E1", "B": "E2", "条件": "C1", "层": "C", "改变因素": ["溶剂种类", "盐浓度"],
+     "溶剂化依据": "",
+     "指标": [
+       {"指标": "首圈容量", "取值点": "C/5（作者给的最大 / 典型容量）", "A": "约 800", "B": "约 340", "单位": "mAh g-1(S)", "方向": "A更好", "来源": "正文",
+        "原句": "Furthermore, galvanostatic measurements of the Li/S cells carried out using the constant current rate of C/5 at 25 and 35 °C indicated for DEGDME_HCE capacities of about 800 and 1300 mAh gS -1, respectively, while lower values of about 340 and 890 mAh gS -1 were obtained for TREGDME_HCE."},
+       {"指标": "循环保持率或寿命", "取值点": "50 圈（相对最大容量）", "A": "92", "B": "88", "单位": "%", "方向": "差异小", "来源": "正文",
+        "原句": "Furthermore, the cell using DEGDME_HCE shows over the 50 cycles of the tests an excellent retention of the maximum capacity with values ranging from 92% at room temperature to 90% at 35 °C (Figure 2b), while lower but still satisfactory values of 88% at room temperature and 77% at 35 °C are observed for the cell using the more-viscous TREGDME_HCE (Figure 2d)."},
+       {"指标": "过电位或动力学", "取值点": "CV 峰形与稳态阻抗", "A": "", "B": "", "单位": "", "方向": "A更好", "来源": "仅图（文字给方向）",
+        "原句": "the former shows smoother less-polarized peaks and a slightly lower steady-state impedance with respect to the latter"}
+     ]},
+    {"A": "E1", "B": "E2", "条件": "C2", "层": "C", "改变因素": ["溶剂种类", "盐浓度"],
+     "溶剂化依据": "",
+     "指标": [
+       {"指标": "首圈容量", "取值点": "C/5 最大容量", "A": "约 1320", "B": "约 890", "单位": "mAh g-1(S)", "方向": "A更好", "来源": "正文",
+        "原句": "In particular, the cycling trends reported in Figure 2b and d reveal that the cell using DEGDME_HCE delivers at 35 °C a maximum specific capacity of about 1320 mAh gS -1"},
+       {"指标": "循环保持率或寿命", "取值点": "50 圈（相对最大容量）", "A": "90", "B": "77", "单位": "%", "方向": "A更好", "来源": "正文",
+        "原句": "Furthermore, the cell using DEGDME_HCE shows over the 50 cycles of the tests an excellent retention of the maximum capacity with values ranging from 92% at room temperature to 90% at 35 °C (Figure 2b), while lower but still satisfactory values of 88% at room temperature and 77% at 35 °C are observed for the cell using the more-viscous TREGDME_HCE (Figure 2d)."}
+     ]}
+  ],
+  "备注": "E/S 可由 60 µL、1.54 cm2、硫约 1.04 mg cm-2 推算（约 37）。A 全面占优（无权衡），作者归因于黏度低、电导高；没有溶剂化强弱依据。保持率以'最大容量'为基准，不是首圈。锂厚未写。正极为 S:Sn 复合物（硫-金属，主层归属可再核）。"
+}

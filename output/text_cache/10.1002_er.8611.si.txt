@@ -1,0 +1,284 @@
+Assessment of Ionic Liquid Electrolytes for High-Performance Lithium-Sulfur Batteries using Machine Learning
+Aysegul Kilic, Ramazan Yildirim*, Damla Eroglu*
+A. Kilic, Prof. R. Yildirim, Prof. D. Eroglu
+Bogazici University, Department of Chemical Engineering, 34342 Istanbul, Turkey
+
+Table of contents
+List of abbreviations
+Attachment: Database
+Governing equations of modified BatPac model
+Additional figures and tables
+Figure S1. The sensitivity analysis for energy density (Wh/L) determined at cathode discharge capacities of 600mAh/g S, 1000 mAh/g and 1400 mAh/g of modified BatPac model
+Figure S2. The sensitivity analysis for specific energy (Wh/kg) determined at cathode discharge capacities of 600mAh/g S, 1000 mAh/g and 1400 mAh/g of modified BatPac model
+Figure S3. Lift vs. peak discharge capacity of electrolyte salt (a) and additive to (b) molecular solvent
+Figure S4. Lift vs. peak discharge capacity of encapsulation material (a), conductive additive (b) and binder (c) inside sulfur cathode
+Figure S5. Lift vs. peak discharge capacity of encapsulation material wt.% (a), conductive additive wt.% (b) and sulfur wt.% (c) inside sulfur cathode
+Figure S6. Lift vs. peak discharge capacity of anode material wt.% (a) and separator (b)
+Table S1. ARM results for energy densities ≥ 60 Wh/L
+
+
+
+
+List of abbreviations
+
+
+Database
+
+
+
+
+Governing equations of modified BatPaC model
+For the system-level calculations, the following design equations are used.
+
+
+
+
+
+
+
+In the model, the cell area is re-calculated if the cathode thickness exceeds a pre-defined maximum electrode thickness:
+
+
+In the system-level performance model, a one-dimensional electrochemical model is used to calculate the overpotential and area specific impedance of each cell component as described below.
+
+1-D Electrochemical Model
+
+The electrochemical model developed in our previous works is reproduced here [1]–[3]. This model calculates the cell voltage by taking the anode, porous separator, cathode and both positive and negative current collectors into account. This concentration-independent model calculates the overpotential and ASI of the individual components at a specified degree of discharge. 
+
+The governing equations for each component are given below:
+
+
+Cathode:
+Sulfur cathode is assumed as a porous structure consisting of sulfur, carbon, binder and electrolyte. In addition, it was assumed that there is only one reaction taking place in each discharge plateau.
+
+
+
+
+For the calculation of the cathode overpotential, the porous electrode model developed by Newman and Tobias was used[4] where either Tafel or linear kinetics is applied depending on the current density.
+
+For Tafel kinetics, :
+
+
+
+For Linear kinetics, :
+
+
+
+Anode:
+The oxidation of lithium takes place in the anode and the Butler-Volmer equation is used to calculate its kinetics.
+
+
+
+
+
+
+
+Separator:
+Ohm’s law is used to calculate the separator resistance and its overpotential. 
+
+
+
+
+
+
+
+Cell:
+After the total cell overpotential is calculated, cell voltage at constant current density is determined by subtracting the total overpotential from the thermodynamic cell voltage. 
+
+
+
+
+
+
+The parameters used in the system-level and electrochemical model
+
+
+The list of symbols used in this part is following:
+
+
+
+
+Additional figures and tables
+
+Figure S1. The sensitivity analysis for the calculated energy density (Wh/L) determined at cathode discharge capacities of 600mAh/g S, 1000 mAh/g and 1400 mAh/g using the modified BatPac model
+
+
+
+Figure S2. The sensitivity analysis for the calculated specific energy (Wh/kg) determined at cathode discharge capacities of 600mAh/g S, 1000 mAh/g and 1400 mAh/g using the modified BatPac model
+
+
+
+Figure S3. Lift vs. peak discharge capacity of electrolyte salt (a) and additive (b) of molecular solvent
+
+
+Figure S4. Lift vs. peak discharge capacity of encapsulation material (a), conductive additive (b) and binder (c) in the sulfur cathode
+
+
+
+
+Figure S5. Lift vs. peak discharge capacity of encapsulation material wt.% (a), conductive additive wt.%(b) and sulfur wt.% (c) in the sulfur cathode
+
+
+
+Figure S6. Lift vs. peak discharge capacity of anode material (a) and separator (b)
+
+
+
+
+
+
+Table S1. ARM results for energy densities ≥ 60 Wh/L
+
+
+
+References
+
+[1]	N. Erisen, N.B. Emerce, S.C. Erensoy, D. Eroglu, Int. J. Energy Res. 2018, 42, 2631.
+[2]	N.B. Emerce, D. Eroglu, J. Electrochem. Soc.  2019, 166, A1490.
+[3]	H.M. Bilal, D. Eroglu, J. Electrochem. Soc. 2021, 168, 30502.
+[4]	J.S. Newman, C.W. Tobias, J. Electrochem. Soc. 1962, 109, 1183.
+
+Abbreviations | Full Name |  | Abbreviations | Full Name
+ACN | acetonitrile |  | P13 | n-methyl-n-propylpyrrolidinium
+ARM | association rule mining |  | P14 | n- butyl-n-methylpyrrolidinium
+BatPaC | Battery Performance and Cost |  | P1A3 | n-Methyl-n-Allylpyrrolidinium
+BETA | bis(pentafluoroethanesulfonyl)amide |  | P2225 | triethylpentylphosphonium
+BF4 | tetrafluoroborate |  | PAA | polyacrylic acid
+C4dmim | 1-butyl-2,3-dimethylimidazolium |  | PDC | peak discharge capacity (mAh/g S)
+CMC | carboxymethyl cellulose |  | PEDOT | poly(3,4-ethylenedioxythiophene)
+DEME | n,n-diethyl-n-methyl-n-(2-methoxyethyl)-ammonium |  | PEO | poly(ethylene oxide)
+DME | 1,2-dimethoxyethane |  | PMIM | 1-methyl-3-propylimidazolium
+DMSO | dimethylsulfoxide |  | PP13 | n-methyl-n-propylpiperidinium
+DOL | 1,3-Dioxolane |  | PP14 | n-methyl-n-butylpiperidinium
+E/S | electrolyte-to-sulfur |  | PS | polysulfide
+EMI | 1-ethyl-3-methylimidazolium |  | PSM | polysulfide shuttle mechanism
+ETFE | ethyl- 1,1,2,2-tetrafluoroethylether |  | PSS | polystyrene sulfonate
+FSI | bis(fluorosufonyl)imide |  | PVA | polyvinyl alcohol
+HFE | 1,1,2,2-tetrafluoroethyl 2,2,3,3-tetrafluoropropyl ether |  | PVDF | polyvinylidene fluoride
+IL | ionic liquid |  | RTIL | room temperature ionic liquid
+Li(G3) | Li(triglyme) |  | SBR | styrene-butadiene rubber
+Li(G4) | Li(tetraglyme) |  | SIL | solvate ionic liquid
+LiFSI | Li bis(fluorosulfonyl)imide |  | TEGDME | tetraethylene glycol dimethyl ether
+LiODFB | Lithium difluoro(oxalate)borate |  | TES | triethylsulfonium
+LiPAA | Lithium polyacrylate |  | TFSI | bis(trifluoromethanesulfonyl)imide
+LiTFSI | Li bis(trifluoromethanesulfonyl)amide |  | TFTFE | 1,1,2,2-Tetrafluoroethyl 2,2,2-trifluoroethyl ether
+ML | machine learning |  | TMU | n,n,n’,n’-tetramethylurea
+MS | molecular solvent |  | TTE | 1,1,2,2-tetrafluoroethyl- 2,2,3,3-tetrafluoropropyl ether
+P1,2O1 | n-methoxyethyl-n-methylpyrrolidinium |  |  | 
+Open-circuit cell voltage, Uocv,p (V) | 2.2
+Power, P (kW) | 80
+Energy, E (kWh) | 118
+Maximum cathode thickness, Lpe, max (μm)   | 150
+Average battery open-circuit voltage, Ubatt (V)  | 360
+Target voltage efficiency at rated power, [V/Uocv,p] | 0.8
+Useable state of charge window, (%)  | 85
+Temperature, T (K) | 298
+Separator thickness, Lsep (μm) | 20
+Separator effective ionic conductivity, eff,sep (S/cm) | 6.5 × 10−4
+Cathode transfer coefficient, αpe,a, αpe,c | 0.5
+Anode exchange current density, i0,ne (A/cm2) | 10−3
+Anode transfer coefficient, αne,a, αne,c | 0.5
+Cathode electrochemically active area, a (1/cm) | A = 650000 cm2/g · c · εc
+Cathode effective ionic conductivity, eff (S/cm) | eff = · ε1.5
+Cathode effective electronic conductivity, σeff (S/cm) | σeff = σ · εc1.5
+Cathode exchange current density, i0,pe (A/cm2) | 10−6
+Cathode electronic conductivity, σ (S/cm) | 100
+Cathode ionic conductivity,  (S/cm) | 0.01
+C/S ratio in the cathode | 0.80
+Positive electrode specific capacity, cpe,act (mAh/g S) | 600, 1000, 1400
+Electrolyte volume fraction in the cathode, ε | 90
+C-rate (mA/g S)  | C/5
+a | cathode electrochemically active area, cm2 /cm3 
+Acathode | cathode area, cm2
+Acell | cell area, cm2
+ASI | area-specific impedance, Ω cm2
+ASIcc+ | positive current collector ASI, Ω cm2
+ASIcc- | negative current collector ASI, Ω cm2
+ASIcell | total ASI of the cell, Ω cm2
+ASIne | negative electrode ASI, Ω cm2
+ASIp | ASI of the cell at rated power, Ω cm2
+ASIpe | positive electrode ASI, Ω cm2
+ASIsep | separator ASI, Ω cm2
+BatPaC | battery performance and cost model 
+C | cell capacity, Ah 
+cpe | positive electrode capacity mAh/cm3
+DOD | depth of discharge, % 
+F | Faraday’s constant, C/mol 
+E | battery pack energy, kWh 
+I | current density, A/cm2
+Ie | average current density, A/cm2
+Ip | current density at rated power, A/cm2
+io,ne | negative electrode exchange current density, A/cm2
+io,pe | positive electrode exchange current density, A/cm2
+Lpe | positive electrode thickness, cm
+Lpe,max | maximum cathode thickness, cm
+Lsep | separator thickness, cm
+Ncell | number of cells in a pack 
+P	 | battery pack power, kW 
+R | gas constant, J/(mol.K) 
+T | temperature, K 
+Uocv,p | open-circuit cell voltage, V 
+Ubatt | average open-circuit battery voltage, V 
+Vcell | cell voltage, V
+Ve | voltage at rated energy, V
+Vp | voltage at rated power, V
+ws | sulfur weight fraction in the cathode
+Greek | 
+ | transfer coefficient 
+ | ape,cF/RT
+ | β∣I∣Lpe(1/eff +1/eff) 
+ | electrolyte volume fraction in the cathode
+ | first integration constant for Tafel polarization 
+ | positive electrode ionic conductivity, S/cm
+ | (L2pe (pe,a +pe,c)ai0,pe F/RT (1/eff +1/eff))1/2
+ | positive electrode electronic condutivity, S/cm
+b | binder volume fraction in the cathode
+c | carbon volume fraction in the cathode
+c | carbon density, g/cm3
+cc- | negative current collector overpotential, V
+cc+ | positive current collector overpotential, V
+cell | total overpotential of the cell, V
+dis | discharged volume fraction in the cathode, mAh/cm3
+eff | positive electrode effective ionic conductivity, S/cm 
+eff | positive electrode effective electronic conductivity, S/cm
+ne | negative electrode overpotential, V
+pe | positive electrode overpotential, V
+s | S volume fraction in the cathode
+sep | separator overpotential, V
+sep | separator ionic conductivity, S/cm
+sep,eff | separator effective ionic conductivity, S/cm
+ψ | second integration constant for Tafel polarization
+ | β∣I ∣ Lpe /eff
+ | 
+ | 
+ | 
+ | 
+ | 
+ | 
+ | 
+ | 
+Factors | Levels | Support | Confidence | Lift | Count
+Conductive_Material_Categorized | Others4 | 0.010 | 0.050 | 5.10 | 1
+Binder_Categorized | CMC | 0.069 | 0.350 | 3.97 | 7
+E/S_Ratio_Categorized | 0-15.0 | 0.186 | 0.950 | 3.59 | 19
+S_Loading_Cat | >4.0 | 0.088 | 0.450 | 3.06 | 9
+Conductive_Material_Categorized | None | 0.069 | 0.350 | 2.98 | 7
+Encapsulation_wt%_Categorized | 30-35 | 0.069 | 0.350 | 2.98 | 7
+Molecular_Solvent_Categorized | TEGDME | 0.049 | 0.250 | 2.83 | 5
+Encapsulation_Material_Categorized | Carbon Nanotube | 0.049 | 0.250 | 2.55 | 5
+IL_Abbreviation | P1,2O1_TFSI | 0.049 | 0.250 | 2.55 | 5
+S_wt%_Categorized | 0-50 | 0.049 | 0.250 | 2.32 | 5
+Conductive_wt%_Categorized | 0 | 0.069 | 0.350 | 2.10 | 7
+IL_Abbreviation | Li(G4)_TFSI | 0.069 | 0.350 | 1.88 | 7
+Conductive_wt%_Categorized | 20 | 0.088 | 0.450 | 1.84 | 9
+S_wt%_Categorized | >60 | 0.098 | 0.500 | 1.82 | 10
+Encapsulation_Material_Categorized | Ketjen Black | 0.069 | 0.350 | 1.70 | 7
+Encapsulation_Material_Categorized | Graphene Oxide | 0.049 | 0.250 | 1.59 | 5
+Encapsulation_wt%_Categorized | >35 | 0.049 | 0.250 | 1.59 | 5
+Electrolyte_Salt_Categorized | None | 0.069 | 0.350 | 1.49 | 7
+IL/Solvent_vol.%_Categorized | 100 | 0.069 | 0.350 | 1.49 | 7
+Molecular_Solvent_Categorized | No | 0.069 | 0.350 | 1.49 | 7
+Separator_Categorized | Polymer | 0.167 | 0.850 | 1.45 | 17
+Encapsulation_Material_Categorized | Mesoporous carbon | 0.029 | 0.150 | 1.28 | 3
+Conductive_Material_Categorized | Acetylene black | 0.049 | 0.250 | 1.21 | 5
+Molecular_Solvent_Categorized | DOL:DME | 0.078 | 0.400 | 1.20 | 8

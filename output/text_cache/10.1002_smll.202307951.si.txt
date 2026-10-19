@@ -1,0 +1,233 @@
+Supporting Information 
+High-efficiency Lithium Metal Stabilization and Polysulfide Suppression in Li-S Battery Enabled by Weakly Solvating Solvent
+Thuy Duong Pham, Abdullah Bin Faheem, Junam Kim, Seung-Hyeok Ma, Kyungwon Kwak*, and Kyung-Koo Lee*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Experimental
+Characterization of solvation structure
+During the measurements, the samples were sealed in a capillary tube. The intensity was normalized with respect to the Raman band at 1400–1500 cm−1 (assigned to CH2 bending/scissoring mode and CH3 bending mode). The spectra were deconvoluted using a Gaussian–Lorentzian function spectroscopic analysis.
+Electrochemical measurements
+The lithium transference number (t+) was measured using a combination of direct-current (DC) polarization and AC impedance in a symmetrical lithium cell. t+ can be calculated using Eq. (S1)[1]: 
+
+where ∆V is the applied voltage (10 mV), and I0 and Iss are the initial current and steady current, respectively, in the DC polarization process. R0 and Rss are the initial charge-transfer resistance and steady charge-transfer resistance, respectively, during the DC polarization process.
+Electrochemical impedance spectroscopy (EIS) in the frequency range of 10 mHz to 1.0 MHz with an amplitude of 10 mV was used to evaluate the electrolyte stability and resistance of the cell systems. The Li||Li symmetric cells were measured by EIS after 10, 24, 48, and 72 h. Transference number, LSV, and EIS were performed using a Bio-logic VMP3 instrument at room temperature.
+Galvanostatic experiments were carried out using CR2032-type coin cells on a WBCS3000L battery cycler system (Wonatech, Korea) at a constant temperature of 25 °C or 50 °C. The CE of the lithium electrode was examined using Li||Cu cells with polypropylene film (PP, Wellcos Corporation) as a separator, and Cu served as the substrate for Li metal deposition. The current density for the Li metal plating/stripping was set at 0.25mA cm−2. During each cycle, 0.25 mAh cm−2 of Li metal was deposited on the Cu substrate at various current densities and then stripped until the potential reached 1.0 V versus Li/Li+. The Li||SPAN coin cells were monitored in galvanostatic mode within a voltage range of 1.0–3.0 V versus Li/Li+. The Li||SPAN cells were first cycled at 0.1 C for two cycles and then cycled at 0.3 C (1.0 C ≈ 1672 mA gS−1 based on a percentage of sulfur in SPAN cathode materials). Each coin cell was filled with 70 µL of the electrolyte. The tested coin cells were assembled in an Ar-filled glove box.
+Characterization of electrodes
+The morphology and surface components were investigated by SEM and XPS. Before analysis, Cu substrates with lithium deposited were immersed in pure DME or DMM solvent for 12 h, followed by washing with pure DME or DMM several times to remove the salt residue, and then dried in the vacuum chamber of an Ar-filled glove box for 24 h. SEM images were taken using a Hitachi S4800 instrument at an accelerating voltage of 5 kV and an absorbed current of 10 µA. XPS measurements were conducted to characterize the chemical species using a K-alpha X-ray photoelectron spectrometer (Thermo Fisher) with a monochromatic Al Kα source (1486.7 eV) for excitation. All spectra were referenced using the C 1s line at 285.0 V for comparison. All samples were prepared in a glove box and transported to SEM and XPS instruments in a glass container filled with Ar gas.
+Computational Methods
+Quantum mechanical calculations
+Quantum mechanical calculations were performed using DFT (B3LYP) methods in the Gaussian 16 package, with the 6–311++g(d,p) basis set [2]. The solvation effects were captured by the conductor-like polarizable continuum model (CPCM) [3], where the solvation environment was set to the DOL:DME solvent and DX:DMM as the implicit solvents and set the dielectric constant of the implicit solvent to 7.32 and 2.43, respectively. Among the various optimized conformations, the structure with the lowest electronic energy was used.
+The binding energy (Eb) between two components was defined as follows:
+                                                               
+where Etotal, EA, and EB are the total energy of the A–B complexes, A component, and B component, respectively. A and B can be Li+, TFSI–, and solvents.
+The absolute oxidation/reduction potential of solvents in the gas phase was calculated by equation (S3):
+
+
+where  is reduction/oxidation potential, G*(M), G*(M-.), and G*(M+.) are the free energy values of the solvated molecule of interest and its reduced and oxidized form at 298.15 K, respectively, F is the Faraday constant, and n (n = 1) is the number of electrons in the redox reaction.
+The optimized structure, and LUMO energies of the free solvents, free TFSI−, and associated complexes (Li+ ··· TFSI−) were obtained 
+Classical molecular dynamics	
+The solvation structures present in the DOL:DME and DX:DMM based electrolytes were further investigated by classical molecular dynamics (CMD) simulations. For this, CMD simulations of the 1.0 м LiTFSI in DOL:DME (1:1, by vol), 0.4 м LiTFSI in DX:DMM (1:1, by vol), and 0.1 м Li2S8 in DOL:DME (1:1, by vol) or DX:DMM (1:1, by vol) systems was carried out. The number of salt and solvent molecules for each system is summarized in Table S4. The force field parameters for Li+ and S82– were taken from Hu et al.,[4] where the employed force fields have been shown to reasonably reproduce experimental densities for different types of lithium polysulfides. For the case of TFSI−, the force field parameters from Lopes et al. were employed.[5] The force fields for the solvent molecules were obtained from OPLS.[6] The partial charges of the ions were scaled to 0.8 times their original values to mimic atomic polarizability.[7] 
+The starting structure was created by the Packmol program.[8] The simulation box was first subjected to a 1 ns heating period from 0 to 800 K. This was followed by a 1 ns cooling stage from 800 to 298 K. Both the heating and cooling were performed at the NVT ensemble. This was followed by NPT simulations at 298 K and 1 atm for 10 ns to obtain an equilibrated box size. Further production runs were carried with the NPT ensemble for 40 ns, where the coordinates were saved every 0.1 ps. All CMD simulations were carried out using the AMBER 22 software package.[9]  The temperature was controlled with a Langevin thermostat and the parameter for collision frequency was set to 1.0 ps–1. All hydrogen bonds were kept fixed with the SHAKE algorithm and a time step of 1.0 fs was used. A cutoff distance of Å 12 for non-bonded interactions and the Particle Mesh Ewald (PME) method was used to take into account long-range electrostatic interactions. 
+The ionic conductivity can be determined using the following Einstein equation:[10] 
+
+where e represents the elementary charge, V is the simulation box volume, kB signifies the Boltzmann constant, and T denotes the temperature in Kelvin. At time t, the displacement of ions i and j with charges zi and zj is represented by Ri(t) and Rj(t), respectively. N is the total number of ions i and j. Table S5 lists the calculated densities and ionic conductivities for 1.0 м LiTFSI in DOL:DME (1:1, by vol) and 0.4 м LiTFSI in DX:DMM (1:1, by vol), in comparison to the experimental values. 
+The coordination numbers (CNs) of the molecules of type i surrounding a molecule of type j were calculated using the following equation:[11]
+
+where ρi is the number density of the molecule i, r is the distance, and R total distance covered by the center-of-mass (COM) radial distribution functions (RDFs), gji(r).
+For the type of solvation structures present in the 1.0 м LiTFSI in DOL:DME (1:1, by vol) and 0.4 м LiTFSI in DX:DMM (1:1, by vol) electrolytes, the coordination distribution of the cations around the anions was calculated (Figure 4c). The criteria for identifying whether a cation is located within the first coordination shell of an anion was established by analyzing the COM RDFs between Li+ and TFSI–.
+				
+
+
+
+
+
+
+
+
+
+
+
+
+Figure S1. (a) LSV curves of the investigated electrolytes on a Pt electrode in a three-electrode system with a scan rate of 2 mV s–1 at 25 oC. (b) Calculated oxidation/reduction potential of pure solvents by quantum mechanical calculations.
+
+
+
+Figure S2. Electrochemical impedance spectroscopy (EIS) of the investigated electrolytes. (a,b) Nyquist plots of Li||Li cells with (a) reference ether-based electrolyte (REE) and (b) low-concentration weakly solvating electrolyte (LWE) with respect to standing time. (c) The equivalent circuit for electrochemical impedance spectra; where Rb denotes the resistance of the bulk electrolyte; RSEI and CPESEI are the resistance and the constant phase element of the SEI layer, respectively, corresponding to the semicircle at high frequency. The Rct and CPEdl are the resistances from charge transfer and the double-layer capacitance, respectively, which correspond to the semicircle at medium frequency. W is the Warburg element used to supplement Li+ migration through the electrode-electrolyte interfaces and is represented by the slope line in the low-frequency region. (d) Change in SEI resistance with respect to standing time. The cells were stored at 25 oC.
+
+Figure S3. C 1s XPS characterization of the Li deposited collected from Li||Cu cell. The Li||Cu cells are evaluated at 25 °C under a constant current density of 0.25 mA cm−2 for 1 h, followed by stripping at the same current density until a cut-off voltage of 1.0 V versus Li/Li+ is reached.
+
+
+
+
+
+
+Figure S4. Energetic diagram for the LUMOs of free mixed solvents, free TFSI− anions, CIP, and AGG in different solvents obtained by DFT calculations.
+
+
+
+
+
+
+
+
+
+
+
+Figure S5. (a,b) The color changes of two samples with (a) REE and (b) LWE containing the same amount of Li2S8 after 1 day were recorded by the digital camera. (c) The ultraviolet-visible spectrophotometry. The samples for UV-Vis measurement are the solutions from the standing samples for 1 day.
+
+
+
+
+
+
+
+
+
+
+
+
+Figure S6. CV curves of Li||SPAN half cells with (a) REE and (b) LWE at a scan rate of 0.1 mVs-1.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Figure S7. Nyquist plots of a Li||SPAN cell with REE and LWE after different cycles.
+
+
+
+
+
+
+Figure S8. SEM images of the cycled Li anodes collected from Li||SPAN after 10 cycles at current density of 0.3 C using (a,b) REE and (c,d) LWE.
+
+
+
+
+
+Figure S9. Rate performance of the Li||SPAN cell using REE and LWE.
+
+
+
+
+
+Table S1. Elemental analysis data of SPAN electrode
+
+
+
+
+
+
+
+
+
+
+
+
+
+Table S2. Physical properties of pure solvents and electrolytes.
+
+
+
+
+
+
+Table S3. Comparison of our work with recent electrolyte works on Li||SPAN cell at 25 oC.
+
+
+
+Table S4. Number of salt and solvent molecules for each of the simulated systems using classical molecular dynamics.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Table S5. The calculated densities and ionic conductivities obtained from classical molecular dynamics, compared to experimental measurements.
+
+References
+[1]	J. Evans, C. A. Vincent, P. G. Bruce, Polymer 1987, 28, 2324.
+[2]	Gaussian 16, Revision A.03, M. J. Frisch, G. W. Trucks, H. B. Schlegel, G. E. Scuseria, M. A. Robb, J. R. Cheeseman, G. Scalmani, V. Barone, G. A. Petersson, H. Nakatsuji, X. Li, M. Caricato, A. V. Marenich, J. Bloino, B. G. Janesko, R. Gomperts, B. Mennucci, H. P. Hratchian, J. V. Ortiz, A. F. Izmaylov, J. L. Sonnenberg, D. Williams-Young, F. Ding, F. Lipparini, F. Egidi, J. Goings, B. Peng, A. Petrone, T. Henderson, D. Ranasinghe, V. G. Zakrzewski, J. Gao, N. Rega, G. Zheng, W. Liang, M. Hada, M. Ehara, K. Toyota, R. Fukuda, J. Hasegawa, M. Ishida, T. Nakajima, Y. Honda, O. Kitao, H. Nakai, T. Vreven, K. Throssell, J. A. Montgomery Jr., J. E. Peralta, F. Ogliaro, M. J. Bearpark, J. J. Heyd, E. N. Brothers, K. N. Kudin, V. N. Staroverov, T. A. Keith, R. Kobayashi, J. Normand, K. Raghavachari, A. P. Rendell, J. C. Burant, S. S. Iyengar, J. Tomasi, M. Cossi, J. M. Millam, M. Klene, C. Adamo, R. Cammi, J. W. Ochterski, R. L. Martin, K. Morokuma, O. Farkas, J. B. Foresman, D. J. Fox, Gaussian, Inc., Wallingford CT 2016. [3]	M. Cossi, N. Rega, G. Scalmani, V. Barone, J. Comput. Chem. 2003, 24, 669.
+[4]	T. Hu, Y. Wang, F. Huo, H. He, S. Zhang, ChemPhysChem 2021, 22, 419.
+[5]	J. N. Canongia Lopes, A. A. H. Pádua, Theor. Chem. Acc. 2012, 131, 1.
+[6]	L. S. Dodda, I. C. De Vaca, J. Tirado-Rives, W. L. Jorgensen, Nucleic Acids Res. 2017, 45, W331.
+[7]	B. Doherty, X. Zhong, S. Gathiaka, B. Li, O. Acevedo, J. Chem. Theory Comput. 2017, 13, 6131.
+[8]	L. Martínez, R. Andrade, E. G. Birgin, J. M. Martínez, J. Comput. Chem. 2009, 30, 2157.
+[9]	D.A. Case, I.Y. Ben-Shalom, S.R. Brozell, D.S. Cerutti, T.E. Cheatham, III, V.W.D. Cruzeiro, T.A. Darden, R.E. Duke, D. Ghoreishi, M.K. Gilson, H. Gohlke, A.W. Goetz, D. Greene, R Harris, N. Homeyer, Y. Huang, S. Izadi, A. Kovalenko, T. Kurtzman, T.S. Lee, S. LeGrand, P. Li, C. Lin, J. Liu, T. Luchko, R. Luo, D.J. Mermelstein, K.M. Merz, Y. Miao, G. Monard, C. Nguyen, H. Nguyen, I. Omelyan, A. Onufriev, F. Pan, R. Qi, D.R. Roe, A. Roitberg, C. Sagui, S. Schott-Verdugo, J. Shen, C.L. Simmerling, J. Smith, R. Salomon-Ferrer, J. Swails, R.C. Walker, J. Wang, H. Wei, R.M. Wolf, X. Wu, L. Xiao, D.M. York and P.A. Kollman (2018), AMBER 2018, University of California, San Francisco.
+[10]	O. Borodin, J. Phys. Chem. B 2009, 113, 11463.
+[11]	C. Park, M. Kanduč, R. Chudoba, A. Ronneburg, S. Risse, M. Ballauff, J. Dzubiella, J. Power Sources 2018, 373, 70.
+[12]	D. R. Lide, CRC Handbook of Chemistry and Physics, 2006.
+[13]	J. Holoubek, Q. Yan, H. Liu, Z. Wu, X. Xing, H. Zhou, J. Luo, Z. Chen, P. Liu, ACS Appl. Energy Mater. 2021, 4, 6422.
+[14]	C. X. Zhao, W. J. Chen, M. Zhao, Y. W. Song, J. N. Liu, B. Q. Li, T. Yuan, C. M. Chen, Q. Zhang, J. Q. Huang, EcoMat 2021, 3, 1.
+[15]	S. Tan, H. Liu, Z. Wu, C. Weiland, S.-M. Bak, A. Ronne, P. Liu, M. S. Whittingham, Z. Shadike, E. Hu, X.-Q. Yang, J. Electrochem. Soc. 2022, 169, 030513.
+[16]	T. Ma, Y. Ni, D. Li, Z. Zha, S. Jin, W. Zhang, L. Jia, Q. Sun, W. Xie, Z. Tao, J. Chen, Angew. Chemie - Int. Ed. 2023, 62, DOI 10.1002/anie.202310761.
+[17]	X. Liu, T. Diemant, A. Mariani, X. Dong, M. E. Di Pietro, A. Mele, S. Passerini, Adv. Mater. 2022, 34, DOI 10.1002/adma.202207155.
+[18]	Q. Wu, F. Ma, W. Zhang, H. Yan, X. Chen, S. Cheng, J. Xie, ACS Appl. Energy Mater. 2023, 6, 7138.
+[19]	M. Li, H. Chen, Y. Wang, X. Chen, J. Wu, J. Su, M. Wang, X. Li, C. Li, L. Ma, X. Li, Y. Chen, J. Mater. Chem. A 2023, 11, 11721.
+
+Nitrogen (%) | Carbon (%) | Hydrogen (%) | Sulfur (%) | Oxygen (%)
+14.76 | 39.88 | 0.22 | 38.78 | 6.36
+Solvent/Electrolyte | ε[12] | Dipole moment | tbp (oC)
+[12] | tmp (oC)
+[12] | η (cP) | σ
+(mS cm−1) | t+
+1,3-dioxolane (DOL) | 7.34 | 1.39 | 78.0 | -97.2 | 0.59 ± 0.005 | - | -
+1,2-dimethoxyethane (DME) | 7.30 | 1.71 | 85.0 | -58.0 | 0.46 ± 0.004 | - | -
+1,4-dioxane (DX) | 2.20 | 0.4 | 101.1 | 11.8 | 1.20 ± 0.01 | - | -
+Dimethoxymethane (DMM) | 2.65 | 0.91 | 42.0 | -105.0 | 0.33 ± 0.002 | - | -
+1.0 м LiTFSI in DOL:DME (1:1 by vol., REE) | - | - | - | - | 1.57 ± 0.02 | 11.06 ± 0.1 | 0.36 ± 0.02
+0.4 м LiTFSI in DX:DMM (1:1 by vol., LWE) | - | - | - | - | 1.29 ± 0.02 | 0.30 ± 0.05 | 0.56 ± 0.03
+No | Electrolyte | Discharge capacity (mAh g–1) | Capacity retention (%) | Ref.
+1 | 0.4 м LiTFSI in DX:DMM (1:1 by vol) | ~470 mAh g−1 after 100 cycles | 70% after 100 cycles | Our study
+2 | 1.0 м LiTFSI in DOL:DME (1:1 by vol) | ~311 mAh g−1 after 100 cycles | 50% after 100 cycles | Our study
+3 | 1.0 м LiFSI in DEE | ~376 mAh g−1 after 100 cycles | 63% after 100 cycles | [13]
+4 | 1.0 м LiFSI in DOL:DME (1:1 by vol) + 2 wt% LiNO3 | ~207 mAh g−1 after 100 cycles | 36% after 100 cycles | [13]
+5 | 1.0 м LiPF6 in EC:DEC (1:1 by weight) | ~190 mAh g−1 after 100 cycles | 36% after 100 cycles | [14]
+6 | 1.0 м LiPF6 in EC:DEC (1:1 by weight) + 100 mм BEAQ  | ~300 mAh g−1 after 100 cycles | 54% after 100 cycles | [14]
+7 | 1.0 м LiFSI in isoxazole/TTE (1:4.5 by vol) + 10% FEC | ~400 mAh g−1 after 100 cycles | ~72% after 100 cycles | [15]
+8 | 1.0 м LiFSI in isoxazole/TTE (1:3 by vol) + 10% FEC | ~400 mAh g−1 after 100 cycles | ~72% after 100 cycles | [15]
+9 | 1.0 м LiFSI in DME | 133.1 mAh g−1 after 60 cycles | 27.1% after 60 cycles | [16]
+10 | 1.0 м LiFSI in BME (butyl methyl ether) | 361 mAh g−1 after 80 cycles | 71.7% after 80 cycles | [16]
+11 | [LiFSI]1[EmimFSI]2 | ~275 mAh g−1 after 100 cycles | ~48% after 100 cycles | [17]
+12 | [LiFSI]1[EmimFSI]2[mFBn]2 | ~500 mAh g−1 after 100 cycles | ~80% after 100 cycles | [17]
+13 | 1.0 м LiFSI in DOL:DME (1:1 by vol) + 0.2 M LiNO3 | ~283 mAh g−1 after 100 cycles | 47% after 100 cycles | [18]
+14 | 1.0 м LiFSI in DOL:DME (1:1 by vol) + 0.2 M LiNO3 + 0.05 M Li2Se | ~500 mAh g−1 after 100 cycles | 80% after 100 cycles | [18]
+15 | 1.5 M LiFSI in DME | ~300 mAh g−1 after 100 cycles | 60% after 100 cycles | [19]
+System | Salt | DOL/DX | DME/DMM
+1.0 м LiTFSI in DOL:DME (1:1, by vol) | 71 | 510 | 343
+0.4 м LiTFSI in DX:DMM (1:1, by vol) | 32 | 475 | 457
+0.1 м Li2S8 in DOL:DME (1:1, by vol) | 16 | 1020 | 686
+0.1 м Li2S8 in DX:DMM (1:1, by vol) | 16 | 950 | 914
+Electrolyte | Density (g cm–3) | Density (g cm–3) | Ionic Conductivity (mS cm–1) | Ionic Conductivity (mS cm–1)
+Electrolyte | MD | Exp. | MD | Exp.
+LiTFSI in DOL:DME | 1.091 | 1.251 | 6.18 | 11.06
+LiTFSI in DX:DMM | 1.007 | 1.075 | 0.68 | 0.30

@@ -1,0 +1,1283 @@
+
+<<PAGE 1>>
+Battery Energy 
+RESEARCH ARTICLE
+Intraparticular Heterogeneity Limits Capacity in 
+Lithium–Sulfur Batteries With Carbonate Electrolyte 
+Ayca Senol Gungor1 | Jean‐Marc von Mentlen1 | Francisco Javier García‐Soriano2 | Christian Zaubitzer3 | Milivoj Plodinec3 |
+Jean G. A. Ruthes4 | Sven Dunkel5 | Volker Presser4,6,7 | Alen Vizintin2 | Vanessa Wood1
+| Christian Prehal5
+1Department of Information Technology and Electrical Engineering, ETH Zürich, Zürich, Switzerland | 2Department of Materials Chemistry, National Institute 
+of Chemistry, Ljubljana, Slovenia | 3Scientific Center for Optical and Electron Microscopy, ScopeM, ETH Zürich, Zürich, Switzerland | 4INM ‐ Leibniz Institute 
+for New Materials, Saarbrücken, Germany | 5Department of Chemistry and Physics of Materials, University of Salzburg, Salzburg, Austria | 6Department of 
+Materials Science and Engineering, Saarland University, Saarbrücken, Germany | 7saarene – Saarland Center for Energy Materials and Sustainability, 
+Saarbrücken, Germany
+Correspondence: Vanessa Wood (vwood@ethz.ch) | Christian Prehal (christian.prehal@plus.ac.at)
+Received: 9 December 2025 | Revised: 25 February 2026 | Accepted: 16 March 2026
+Funding: European Research Council, Grant/Award Number: 101078271; Horizon 2020 Framework Programme, Grant/Award Number: 958174
+Keywords: carbon particle size | CEI formation | cryogenic electron microscopy | electrochemical performance | intraparticular heterogeneity | lithium–sulfur 
+batteries | nanoporous carbons | solid‐state sulfur conversion
+ABSTRACT
+The formation of a stable cathode‐electrolyte interphase (CEI) is critical for the performance of lithium–sulfur (Li–S) 
+batteries with carbonate‐based electrolytes, as it suppresses parasitic polysulfide reactions and enables solid‐state sulfur 
+conversion. In nanoporous carbon hosts, the CEI together with nanopore confinement plays a key role in capacity 
+retention and long‐term cycling. Yet, its spatial formation, stability, and contribution to electrochemical performance 
+remain poorly understood, partly due to challenges in characterization caused by beam and air sensitivity. Here, we 
+employ cryogenic transmission electron microscopy (cryo‐TEM) with electron energy loss spectroscopy and energy‐ 
+dispersive X‐ray spectroscopy, X‐ray photoelectron spectroscopy and electrochemical testing together with galvanostatic 
+intermittent titration technique measurements to elucidate how carbon particle size affects CEI formation and electro­
+chemical performance. We find that the CEI is not a uniform surface film but extends heterogeneously into the particle 
+bulk. Mass transport during the first discharge dictates CEI development, and larger particles suffer from inactive regions 
+due to the preferential CEI formation only in the outer regions of the particles. During extended cycling, charge transfer 
+resistance at confined CEI/active material/carbon interfaces emerges as the dominant performance‐limiting factor. These 
+findings show that particle size controls CEI formation during initial discharge, offering guidance for designing carbon 
+hosts from nano‐ to micrometer length scales in Li–S battery cathodes.
+1
+|
+Introduction 
+Lithium–sulfur (Li–S) batteries containing carbonate electrolyte 
+offer several advantages over ether‐based electrolytes, including 
+compatibility with lean electrolyte conditions and therefore 
+higher energy densities [1, 2], lower flammability [3], and sig­
+nificant mitigation of capacity fading associated with soluble 
+polysulfides [4, 5]. The conversion between sulfur and Li2S can 
+proceed via a solid‐state pathway in carbonate electrolytes, 
+enabled by the in‐situ formation of a protective cathode‐ 
+electrolyte interphase (CEI) [1, 2, 6, 7] and supported by the 
+physical confinement in carbon micropores (pore size below 
+2 nm) [8–13]. This interphase formation is driven by the elec­
+trochemical decomposition of the electrolyte and a nucleophilic 
+This is an open access article under the terms of the Creative Commons Attribution License, which permits use, distribution and reproduction in any medium, provided 
+the original work is properly cited. 
+© 2026 The Author(s). Battery Energy published by Xijing University and John Wiley & Sons Australia, Ltd. 
+1 of 14 
+Battery Energy, 2026; 5:e70111 
+https://doi.org/10.1002/bte2.70111
+
+<<PAGE 2>>
+reaction between the carbonate molecules and polysulfides 
+during the first discharge [14–19].
+The CEI comprises a complex structure containing LiF, Li2CO3, 
+lithium alkyl carbonate (ROCO2Li)/lithium alkyl oxides (ROLi), 
+polycarbonates, thiocarbonates, and sulfur‐oxygen species, such as 
+LixSOy (e.g., Li2SO4) [1, 6, 7, 11, 18, 20–22]. Its formation is es­
+sential for suppressing polysulfide side reactions [4, 22], mini­
+mizing the accumulation of poorly conductive discharge products 
+on the cathode surface, and enabling stable cycling performance in 
+contrast to ether‐based electrolytes [6, 10, 18, 21].
+Previous studies on sulfur–carbon composites generally report a 
+homogeneous sulfur distribution on a particle scale after melt 
+infiltration, as evidenced by electron microscopy with conven­
+tional energy dispersive X‐ray spectroscopy (EDS) analyses, and 
+thus focus primarily on cathode preparation quality [23–27]. 
+However, such measurements provide limited insight into 
+heterogeneity that may develop during electrochemical opera­
+tion, particularly during the first discharge when CEI formation 
+and solid‐state sulfur conversion occur. In carbonate‐based 
+systems relying on physical confinement, this discharge‐ 
+induced heterogeneity is expected to play a decisive role in 
+governing electrochemical performance [28, 29]. Despite this 
+importance, the structure and formation dynamics of the CEI in 
+nanoporous carbons remain poorly understood [10, 16]. 
+Surface‐sensitive techniques such as XPS have identified CEI 
+components on the particle surface [1, 6, 20–22]. In contrast, 
+bulk‐sensitive probes like nuclear magnetic resonance [11, 30], 
+Fourier transform infrared spectroscopy [19, 31], or X‐ray 
+methods like X‐ray absorption spectroscopy and X‐ray diffrac­
+tion (XRD) [17] have provided complementary bulk chemical 
+information. However, these approaches either lack spatial 
+resolution or depth sensitivity [32], limiting insights into where 
+and how the CEI forms inside carbon nanoparticles. Raman 
+spectroscopy could, in principle, provide spatial mapping, but 
+the assignment of peaks requires complex theoretical modeling 
+[23]. Overall, a clear link between the CEI structure and elec­
+trochemical performance has yet to be established, particularly 
+within the confined geometry of high‐surface‐area nanoporous 
+carbons where electrolyte access may be restricted.
+To bridge this gap, electron microscopy combined with spectros­
+copy offers a powerful approach. Techniques such as scanning 
+transmission electron microscopy (STEM) with EDS or electron 
+energy loss spectroscopy (EELS) provide spatially resolved chem­
+ical information at the nanometer scale [33, 34] and have been 
+successfully applied to study the CEI [35, 36] and SEI [37–42], 
+both in Li–S batteries and other types of batteries. However, their 
+application to Li–S batteries is complicated [32] by the air, beam, 
+and vacuum sensitivity of sulfides, sulfur, and interphase com­
+ponents [16, 43–48]. Cryogenic electron microscopy [49], including 
+cryo‐FIB‐SEM for lamella preparation [32, 43] and cryo‐STEM/ 
+EELS, enables the preservation of the native chemical environ­
+ment and offers high‐resolution structural and compositional 
+mapping across individual particles.
+In this study, we investigate the spatially resolved CEI forma­
+tion, its relationship to the nano‐ and microscale structure of 
+the commercially available C/S composite cathode without 
+further modification, and its correlation with electrochemical 
+performance in carbonate‐based Li‐S batteries. Building on our 
+previous work, which focused on design parameters such as 
+nanopore size and sulfur loading [28], this study highlights the 
+interplay between microstructure (particle‐level) and nanos­
+tructure (pore‐level) in governing the overall electrochemical 
+behavior. Nanoporous carbons with identical average pore size 
+(0.8 nm) but different particle sizes spanning from 1 to 8 µm are 
+tested by means of galvanostatic cycling and the galvanostatic 
+intermittent titration technique (GITT). Cryo‐FIB‐SEM and 
+cryo‐STEM/EELS reveal the internal heterogeneity of CEI and 
+active material distribution in a single discharged C/S particle. 
+Cryo‐TEM analysis and X‐ray photoelectron spectroscopy (XPS) 
+of discharged Li–S battery electrodes further highlight the 
+complex CEI structure on the particle surface. A simple analysis 
+that considers the particle‐size‐dependent intraparticular het­
+erogeneity rationalizes the correlation between active volume 
+fraction, particle size, and capacity.
+2
+|
+Results and Discussion 
+We start by investigating the effect of the conductive nano­
+porous carbon microstructure on specific capacity and rate 
+performance (Figure 1). To minimize the influence of variables 
+other than particle size, the same activated carbon material was 
+used throughout the study. The as‐received activated carbon, 
+with a pore size of 0.8 nm [28], is denoted as AC08 and has an 
+average particle size of 8–9 µm with a broad size distribution 
+(Figure 1a). Particle downsizing was achieved through ball 
+milling, with the milling rate controlling the resulting particle 
+size. Ball milling at 500 rpm and 800 rpm for 2h reduced the 
+average particle size to 4–5 µm and 0.5–1 µm, respectively, 
+while also narrowing the particle size distribution (Figure 1b,c). 
+Note that the particle size distribution is generated by approx­
+imating the particles as spherical. The effects of ball milling on 
+the nanopore and atomic structure of the carbons were mon­
+itored using Raman spectroscopy. Raman spectroscopy results 
+confirm that there are no significant structural changes due to 
+ball milling (Supporting Information Figure S1).
+The C/S cathodes were prepared by melt‐infiltrating the dif­
+ferently ball‐milled carbons with sulfur using a C/S mass ratio 
+of 1:1 (confirmed by thermogravimetric analysis (TGA) mea­
+surements, Supporting Information Figure S2, and by gas 
+sorption analysis in our previous study [28]). The galvanostatic 
+(dis)charge profiles (GCPL) at a rate of C/10 are presented in 
+Figure 1d. A single voltage plateau is observed in all profiles 
+(Figure 1d), confirming the solid‐state conversion mechanism, 
+regardless of carbon particle size [1, 6, 12, 18, 22]. By reducing 
+the particle size (by up to a factor of eight), a significant 
+decrease in overpotential is observed, accompanied by a nearly 
+twofold increase in specific discharge capacity (capacity per 
+gram of S). The rate performance was further evaluated at 
+various discharging/charging rates of C/40, C/20, C/10, C/5, 
+and C/2.5 for all the particle sizes (Figure 1e). Across all tested 
+rates, cathodes incorporating smaller carbon particles con­
+sistently outperform those with larger ones, demonstrating en­
+hanced sulfur utilization and improved rate performance. At a 
+rate of C/2.5, the cathodes with the smallest carbon particles 
+achieved a specific capacity of approximately 600 mAh gs
+−1, 
+compared to only about 300 mAh gs
+−1 for those with larger 
+particles. This particle size‐performance relation cannot be 
+attributed to cathode nanostructure differences, as the 
+2 of 14 
+Battery Energy, 2026
+ 27681696, 2026, 3, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/bte2.70111 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 3>>
+nanostructure and sulfur loading remain comparable after ball 
+milling (Supporting Information Figures S1–S2). The relative 
+capacity changes across different rates are similar for all particle 
+sizes, indicating that sulfur utilization is consistently better with 
+smaller particles, but not necessarily the kinetics.
+Capacity retention was calculated during cell cycling between 
+0.5 and 3.0 V at a C/10 rate (Figure 1f and Supporting 
+Information Figure S3 for the gravimetric and total capacities). 
+The results are presented in two formats: (1) discharge capacity 
+retention relative to the second discharge capacity (Qdisn/Qdis2), 
+excluding the first discharge due to CEI formation (upper 
+graph), and (2) capacity retention relative to the preceding 
+cycle's discharge capacity (lower graph). A more rapid capacity 
+loss is observed during the initial 5–10 cycles, particularly in 
+cells with the smallest carbon particles in the cathodes. Poten­
+tial contributors to the observed capacity fade include CEI re­
+structuring, interfacial side reactions, and mechanically 
+induced effects. In this work, we attribute the more pronounced 
+capacity fade in electrodes composed of smaller particles pri­
+marily to an increased loss of active sulfur species resulting 
+from weaker effective confinement. This reduced confinement 
+facilitates the diffusion of sulfur and intermediate polysulfide 
+(PS) species out of the carbon host during the early discharge 
+cycles, simultaneously leading to irreversible reactions with the 
+carbonate solvent and, thus, loss of electrochemically active 
+material and associated capacity fade. Across all particle sizes, 
+the discharge capacity reaches a plateau after approximately 
+30–40 cycles, followed by minimal fading thereafter. Moreover, 
+capacity fading is evident not only during continuous cycling at 
+C/10 but also during rate capability measurements at any rate. 
+Notably, the fading is more pronounced at lower current den­
+sities (C/40 and C/20), which may be linked to slower side‐ 
+reaction rates driven by polysulfide shuttling and polysulfide 
+reactions at the anode.
+GITT measurements, along with the analysis of voltage relax­
+ation times, provide additional insights into the evolution of 
+overpotentials and mass transport kinetics during cycling 
+[50, 51]. The cells with cathodes of different particle sizes were 
+cycled between 0.5 and 3.0 V at a rate of C/10. Every 
+100 mAhgs
+−1 of capacity, the cells rest for 2 h at open‐circuit 
+FIGURE 1 | Electrochemical performance as a function of carbon particle size. Scanning electron micrographs of (a) pristine 1‐1 S‐melt in­
+filtrated carbon particles, (b) after 500 rpm ball milling, (c) and after 800 rpm ball milling. The size distributions are given on the right side of each 
+micrograph; they become narrower with increasing ball‐milling intensity. The average sizes are given below the micrographs; the spherical particle 
+sketches are representative and drawn to scale. (d) The GCPL curves of the electrodes with differently ball‐milled carbons are indicated as color tones 
+and line style. The light gray continuous line represents the non‐ball‐milled particles with an average size of 8 µm, the dashed gray line represents the 
+500‐rpm ball‐milled particles with an average size of 4 µm, and the dash‐dotted black line represents the 800‐rpm ball‐milled particles with an 
+average size of 1 µm. Smaller particles give lower overpotentials and higher capacities. (e) The specific discharge capacities of the 800‐rpm ball‐milled 
+(triangle shape), 500‐rpm ball‐milled (sphere shape), and non‐ball‐milled (square shape) carbon particles are given for the rates of C/40, C/20, C/10, 
+C/5, and C/2.5. (f) Capacity retention as a function of cycling number, at the rate of C/10. The upper graph shows the ratio of the discharge capacity 
+of the nth cycle over the discharge capacity of the 2nd cycle; the lower graph shows the ratio of the discharge capacities of the nth cycle over the 
+previous cycle, with the graph on the right side being a zoomed version. Regardless of the particle size, there is a more distinct capacity fading in the 
+first 5–10 cycles. 
+3 of 14 
+Battery Energy, 2026
+ 27681696, 2026, 3, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/bte2.70111 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 4>>
+voltage (OCV). The absence of a voltage plateau at approxi­
+mately 2.3 V versus Li/Li⁺ during the first discharge confirms 
+the in situ CEI formation and subsequent solid‐state S/Li2S 
+conversion in the carbonate system [12, 18, 52] (Figure 2a–c). 
+Both the shapes and overpotentials of the first discharge change 
+significantly with the carbon particle size. For the non‐ball‐ 
+milled carbon, the initial discharge reveals a high overpotential 
+and a sloped, hump‐like profile instead of a well‐defined pla­
+teau (Figure 2a). As the particle size decreases, the discharge 
+profile becomes flatter, with significantly reduced over­
+potentials (Figure 2b,c). In the subsequent cycles, the over­
+potentials become comparable across all particle sizes and 
+approach the equilibrium voltage near 2.1 V versus Li/Li⁺ 
+(Figure 2d,e,f) [12, 18]. The curves show the typical shape of 
+solid‐state S/Li2S conversion in microporous carbons and car­
+bonate electrolytes. Despite this similarity in overpotentials, the 
+capacity differs by approximately 600 mAhgs
+−1 across the 
+samples. These relations between overpotentials and particle 
+size suggest that the CEI/Li2S formation during the first dis­
+charge may be mass‐transport‐limited, while the subsequent 
+solid‐state S/Li2S conversion is not.
+The relaxation time constants , approximated by taking 
+e
+1/
+values of the normalized time‐dependent potential relaxation 
+FIGURE 2 | Quantifying overpotentials and relaxation time constants using the galvanostatic intermittent titration technique (GITT). The GITT 
+curves during the first discharge are shown for electrodes with (a) non‐ball milled, (b) 500‐rpm ball‐milled, and (c) 800‐rpm ball‐milled particles, 
+respectively. The corresponding GITT curves for further cycling, first charge, and second discharge, are presented in (d), (e), and (f), in the same 
+order. All electrodes have a C/S ratio of 1, and the cycling rate is C/10. The red curves serve as a guide to the eye, connecting the relaxation voltages 
+after 2 h of open circuit voltage (OCV). Despite significant differences during the first discharge, overpotentials and relaxation times become 
+comparable in the subsequent cycles. Panels (g–i) show the relaxation time constants, approximated by 1/e values at normalized relaxation 
+voltage curves during the OCV periods of the GITT measurements (1−1/e during discharge and 1/e during charge). During the first discharge, 
+electrodes with larger carbon particles exhibit time constants up to three times higher. In the following cycles, the relaxation time constants are 
+comparable despite the eight‐fold difference in particle size. 
+4 of 14 
+Battery Energy, 2026
+ 27681696, 2026, 3, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/bte2.70111 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 5>>
+curves (Supporting Information Figure S4), can provide further 
+evidence for that hypothesis. They are often linked to the rate of 
+mass transport during cycling [53]. The most pronounced dif­
+ferences in relaxation times occur during the CEI formation 
+process in the first discharge: the smallest particles exhibit 
+relaxation times significantly lower than those of the largest 
+(non‐ball‐milled) particles (Figure 2g–i). This is consistent with 
+the approximation 
+L D
+/
+2
+for mass transport into spherical 
+particles, where L is the particle diameter, and D is the diffu­
+sivity, indicating enhanced transport kinetics in smaller parti­
+cles. Note that in a recent study using operando small‐angle 
+neutron scattering, we indeed show that CEI formation occurs 
+within the bulk of the nanoporous particles, and not only on 
+their outer surface [28]. In the subsequent cycles following CEI 
+formation, the relaxation times decrease and are comparable 
+across all particle sizes, despite the eight‐fold size difference in 
+L. Additionally, across all samples, the relaxation times become 
+lower during sulfur lithiation and higher during Li2S delithia­
+tion, which may be linked to changes in charge transfer rates 
+during charge and discharge [1, 52].
+Overall, electrochemical and GITT data suggest a complex 
+interplay between particle size, mass transport, CEI formation, 
+and overall electrochemical performance. Smaller particles 
+outperform larger ones at all tested rates, exhibiting up to a 
+2‐2.5‐fold increase in specific capacity. The distinct over­
+potentials and relaxation time differences during the first dis­
+charge imply that the in situ CEI/Li2S formation is mass‐ 
+transport‐limited. Possible contributions to mass transport 
+limitation include Li⁺ transport or diffusion of reduced sulfur 
+species (polysulfides). However, Li+ transport also governs the 
+solid‐state sulfur conversion in subsequent cycles, where no 
+significant particle‐size‐dependent differences in relaxation 
+behavior are observed (Figure 2d–i). This suggests that Li+ 
+diffusion is unlikely to be the dominant rate‐limiting factor 
+during the first discharge. Instead, it may be related to PS dif­
+fusion and the chemical reactions between PS species and 
+carbonate molecules, leading to the formation of CEI compo­
+nents, such as lithium ethylene monocarbonate and others [11]. 
+However, distinguishing the individual contributions to mass 
+transport limitation is challenging and requires further sys­
+tematic studies. The particle‐size independent timescales for 
+mass transport during further S/Li2S solid‐state conversion, 
+along with the differences in capacities, may imply a non‐ 
+uniform distribution of CEI/active material within the particles. 
+Larger particles may be incompletely filled with Li2S/CEI after 
+the first discharge, leading to incomplete sulfur utilization.
+These findings highlight the significance of the irreversible CEI/ 
+Li2S structure formation after the first discharge. Heterogene­
+ities within particles of different sizes may explain the differ­
+ences in observed capacities. To address this, we next examine 
+the elemental distribution across a single discharged C/S par­
+ticle using cryo‐STEM with EDS and EELS.
+Our microscopy measurements aim to determine whether the 
+observed differences in electrochemical behavior across particle 
+sizes correlate with variations in the spatial distribution of 
+sulfur or CEI/active material during cycling. TGA measure­
+ments performed on the respective melt‐infiltrated carbon 
+powders confirm efficient melt infiltration into the porous 
+carbon matrix. Regardless of particle size, all sulfur was found 
+to reside within the nanoporous carbon particles, with no 
+significant surface sulfur detected. Sulfur contents were 
+48.5 mass%, 49.0 mass%, and 49.7 mass% for non‐ball milled, 
+500‐rpm ball milled, and 800‐rpm ball milled particles, respec­
+tively (Supporting Information Figure S2).
+To spatially resolve CEI components and discharge products, 
+EDS and EELS were conducted under cryo‐vacuum conditions, 
+minimizing electron beam‐ and air‐ induced damage [33]. For 
+sample preparation, non‐ball‐milled AC08 particles were ex­
+tracted from an electrode after the first discharge by gentle 
+scratching and transferred to carbon tape on a sample holder. A 
+large particle, potentially exhibiting the most pronounced mass 
+transport effects, was selected (Figure 3a, left), and its central 
+region was milled using a focused ion beam with the sample 
+under cryo conditions (cryo‐FIB) after coating with a protective 
+platinum layer. The several µm thick lamella was then trans­
+ferred to a TEM grid (Figure 3a, middle) and thinned to a 
+100–200 nm window, as confirmed by electron transparency 
+and the EELS t/λ values (Figure 3a, right). Additional details on 
+sample preparation and characterization are provided in the 
+Methods section.
+The cryo‐EDS analysis of the cryo‐FIB‐prepared lamella reveals a 
+relatively homogeneous sulfur distribution within the studied area 
+(about 2 µm deep from the particle surface), with only a weak 
+gradient in concentration (Figure 3b,c). It is not possible to 
+definitively determine the origin of the detected sulfur; it may arise 
+from 
+discharge 
+products 
+(Li2S, 
+Li2Sx), 
+CEI 
+components 
+(thiocarbonates), or residual unconverted sulfur. As LiF is one of 
+the known components of the CEI in carbonate‐based electrolytes 
+[1, 2, 7, 12, 21], the fluorine concentration is assumed to be directly 
+related to the LiF and thus CEI distribution within the particle 
+[2, 54]. We find that the LiF concentration increases towards the 
+particle surface. Significant amounts could only be detected to a 
+depth of 1 µm beneath the particle surface (Figure 3d).
+STEM‐EELS provides complementary high‐resolution elemental 
+and chemical bonding information. A line‐scan (Figure 3e) reveals 
+the presence of LiF, as identified by its characteristic core‐loss 
+signature at 62–69 eV (Figure 3f; see also Supporting Information 
+Figure S5). Although cryo‐conditions mitigate electron beam‐ 
+damage, Li2S remains susceptible to beam‐induced degradation in 
+STEM‐EELS, similar to certain organic CEI components [55]. 
+However, STEM‐EELS enabled the identification of sulfur or 
+sulfur‐containing species, based on the distinct core‐loss spectrum 
+recorded at about 200 nm depth from the surface (Figure 3f, ref­
+erence spectra in Supporting Information Figure S5). Due to the 
+low signal intensity, we cannot conclusively attribute the signal to 
+unreacted bulk sulfur; contributions from other species, such as 
+Li2Sx, cannot be excluded.
+Figure 3g compares the S and LiF concentration profiles along a 
+300 nm line scan. To compensate for thickness variations 
+caused by FIB sectioning, all signal intensity integrals were 
+normalized by the t/λ ratio, a relative thickness measure cal­
+culated from the zero‐loss signal that is also plotted on the 
+secondary axis to validate data quality. LiF and S concentrations 
+show an inverse correlation: we observe a LiF peak within the 
+first ~100 nm, where sulfur content is lowest. Beyond this 
+region, sulfur levels generally increase toward the particle 
+center, whereas the LiF content generally drops. These oppos­
+ing trends reflect the complex processes governing CEI 
+formation and sulfur conversion during the first discharge. 
+5 of 14 
+Battery Energy, 2026
+ 27681696, 2026, 3, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/bte2.70111 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 6>>
+The presence of LiF, typically formed electrochemically at the 
+carbon/electrolyte interface, appears most pronounced near 
+the particle surface, where electrolyte accessibility is highest. 
+The inverse concentration profiles of LiF and sulfur species 
+suggest that LiF preferentially forms in areas where sulfur has 
+already been consumed or is absent [11], consistent with limited 
+mass transport deeper into the particle interior. Together, the 
+EDS and EELS data indicate that CEI formation extends beyond 
+a thin surface layer into the particle bulk, with a pronounced 
+LiF gradient pointing to diffusion‐limited growth in larger 
+particles.
+The ex situ cryo‐TEM micrographs in Figure 4a–c (also 
+Supporting Information Figure S6) of the discharged electrodes 
+with 800‐rpm ball‐milled particles provide visual insights into 
+the CEI morphology on the particle surface. Note that in con­
+trast to the particle cross‐section in Figure 3, there was no FIB‐ 
+milling involved. Qualitatively, the contrast differences on the 
+FIGURE 3 | Probing the intraparticular chemical composition using cryo‐FIB/SEM, cryo‐TEM/EDS, and cryo‐STEM/electron energy loss 
+spectroscopy (EELS). (a) Lamella preparation for cryo‐EDS and cryo‐EELS. An electrode with non‐ball‐milled carbon particles was scratched off onto 
+carbon tape after the first discharge. The selected particle was coated with Pt, and a several‐micron‐thick lamella was extracted from the particle 
+center (marked in red in a‐left) using cryo‐FIB‐SEM. After transfer to a Cu TEM grid, the lamella was further thinned using cryo‐FIB‐SEM until a 
+final thickness of 100–200 nm was achieved (image on the right). (b) STEM micrograph of the lamella window. The white‐marked area indicates the 
+region used for quantitative EDS net intensity analysis of the discharged non‐ball milled particle. (c) EDS maps for sulfur K‐line (green) and fluorine 
+K‐line (purple) of the discharged non‐ball‐milled particle. Sulfur is distributed throughout the depth of the carbon particle, while fluorine is more 
+localized toward and on the particle surface. (d) Quantitative EDS net intensity profiles for sulfur K‐line (green) and fluorine K‐line (purple), 
+extracted from the regions marked in (c). We attribute the fluorine signal to LiF, detected at approximately 1 μm depth from the surface. (e) STEM 
+micrograph showing the EELS line measurement areas. The blue and red squares indicate the locations where energy‐loss spectra of LiF and sulfur 
+were collected, respectively. (f) EELS of sulfur L‐edge (red) and Li K‐edge (blue), recorded at marked points along the line marked in (e). The t/λ 
+values (gray) confirm consistent measurement quality across the 300 nm scan length. The data show a lithium K‐edge which can be attributed to LiF 
+phase within the first 100 nm, followed by an inverse distribution trend between sulfur and LiF. (g) Left: Energy‐loss spectrum of Li K‐edge, with 
+characteristic peaks at 65–68 eV for LiF phase, measured at ~50 nm depth. Right: Core‐loss spectrum of sulfur L‐edge at ~200 nm depth, showing a 
+characteristic shoulder starting at ~160–165 eV, with overall lower intensity, indicating reduced sulfur content. 
+6 of 14 
+Battery Energy, 2026
+ 27681696, 2026, 3, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/bte2.70111 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 7>>
+surface of the particles reveal that the CEI is not a homoge­
+neous film on the particle surface and has a varying thickness of 
+several tens of nanometers. Lattice fringes of crystalline Li2S 
+and LiF features were identified. Using a fast Fourier transform 
+(FFT) analysis, the lattice fringes could be assigned to the (111) 
+plane of LiF [56] and the (111) plane of Li2S [12, 18]. These 
+nanocrystalline phases are embedded in the CEI layer on the 
+particle surface, which likely consist of additional organic and 
+inorganic phases [6, 12, 20]. Overall, these observations point to 
+a structurally complex and non‐uniform CEI layer on the par­
+ticle surface, which may contribute to the limited rate 
+performance of our Li–S system. Heterogeneous, particulate 
+surface structures are also visible in the SEM micrographs after 
+the first discharge, with slight differences depending on particle 
+size (Supporting Information Figure S7).
+To further corroborate the chemical composition of the dis­
+charged particle surfaces, XPS was performed for the non‐ball‐ 
+milled and 800‐rpm ball‐milled samples at the end of the first 
+discharge. Prior to analysis, the cathodes were carefully rinsed 
+with DMC to remove excess surface salt deposits and enhance 
+the signal from the particle surfaces. Figure 4b–f presents the 
+FIGURE 4 | Transmission electron microscopy (TEM) and X‐ray photoemission spectroscopy (XPS) measurements to probe the particle surface. 
+(a) TEM micrographs of the discharged only 800‐rpm ball‐milled C–S particles without binder. The images suggest that the CEI forms a hetero­
+geneous layer composed of crystalline phases, solid clusters, and organic components. Crystalline Li2S (111) and LiF (111) reflections are marked as 
+FFT filtered images on a discharged particle. (b–f) High‐resolution XPS spectra of the non‐ball milled cathode (top row) and the 800‐rpm ball milled 
+cathode (bottom row) in the discharged state after the first cycle: (b) S 2p, (c) F 1s, (d) Li 1s, and (e) C 1s (Si‐CH3 contribution is due to the tape on 
+which the samples were placed), and (f) P 2p. Circular dots represent the experimental data, the gray line corresponds to the composite fitted 
+spectrum, and the black line indicates the background. FFT, fast Fourier transform. 
+7 of 14 
+Battery Energy, 2026
+ 27681696, 2026, 3, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/bte2.70111 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 8>>
+high‐resolution spectra for the different elements along with 
+their deconvolution. Supporting Information Table S1 shows 
+the atomic concentrations of the detected elements, and 
+Supporting Information Tables S2–S6 summarize peak as­
+signments, their corresponding sources, and the FWHM val­
+ues. Both cathodes exhibit the same chemical contributions for 
+each element. The main difference lies in the S 2p spectra, 
+which display five distinct components. Three peaks are 
+associated with reduced sulfur species: Li2S at 160.7 eV, and 
+polysulfides showing two characteristic signals corresponding 
+to terminal sulfur (162.0 eV) and bridging sulfur (163.7 eV) 
+[57–59]. In the ball‐milled sample, these three contributions 
+account for 33% of the total sulfur signal, compared with only 
+16% in the non‐ball‐milled electrode. The fourth component at 
+164.6 eV corresponds to C–S bonds, originating from interac­
+tions between solvent molecules and polysulfides. Finally, the 
+peak at 169.7 eV is assigned to oxidized sulfur species, most 
+likely Li2SO4, due to its high binding energy. This signal has 
+the highest intensity in both samples but likely results from 
+surface reactions within the CEI and typically decreases in the 
+bulk of the electrode [1, 60].
+The F 1s spectrum contains four distinct contributions. The 
+most prominent peak, at 685.5 eV, is assigned to LiF, which has 
+its counterpart in the Li 1s spectrum at 55.7 eV. LiF originates 
+from both the decomposition of fluoroethylene carbonate and 
+the reaction of LiPF6 with DMC [58]. The latter pathway also 
+generates POF3, which appears in the F 1s spectrum at 688.9 eV 
+(overlapping with the PF6 anion signal) and in the P 2p spec­
+trum at 134.2 eV. The other two contributions in the F 1s 
+spectrum are assigned to the C–F bonds (from FEC) at 686.3 eV 
+and at 687.8 eV (from −CHF–OCO2‐type compound). The 
+−CHF–OCO2 species also originate from FEC decomposition 
+and are accompanied by a corresponding peak in the C 1s 
+spectrum at 287.2 eV (C–F) and at 289.9 eV (CO3
+2−) [61, 62]. 
+Another important CEI component is lithium carbonate, 
+formed via DMC decomposition, which is observed at 289.9 eV 
+in the C 1s spectrum and at 56.3 eV in the Li 1s spectrum. 
+Overall, XPS confirms the presence of LiF and Li2S as key 
+components of the CEI layer on the particle surface, with a 
+higher Li2S concentration observed in the ball‐milled samples. 
+To what extent surface‐Li2S contributes to the reversible 
+capacity remains to be clarified. However, given their small 
+overall amount, as determined by XRD (see Ref [28]), we 
+believe their contribution is negligible.
+An estimate of residual sulfur can be derived from the ratio of 
+the bridging to terminal sulfur peak areas in the S 2p spectrum. 
+Assuming Li2S2 as the dominant polysulfide, as terminal‐to‐ 
+bridging sulfur area ratios exceeding 2:1 would be inconsistent 
+with the measured spectra, the deconvolution of the CEI sulfur 
+signal yields approximate contributions of 25% residual sulfur, 
+45% Li2S2, and 30% Li2S. It should be emphasized that these 
+values are semi‐quantitative and representative only of the CEI 
+region probed by XPS [57].
+STEM‐EELS confirms the presence of sulfur‐containing species 
+at the particle surface at nanoscale resolution. In contrast, XPS 
+offers higher chemical‐state sensitivity for sulfur and allows 
+quantitative differentiation between reduced sulfur species and 
+oxidized sulfur compounds. However, this information is only 
+true for the outer surface of the CEI layer on the C/S particle 
+(approx. 5–10 nm).
+The EDS and EELS results indicate an increased presence of LiF 
+(i.e., the CEI) in the first 100 nm beneath the particle surface; a 
+detectable concentration extends to about 1 µm underneath the 
+surface. The sulfur distribution, on the other hand, is relatively 
+homogeneous across the particle inside. CEI components and 
+their defect‐rich grain boundaries possess favorable Li‐ion 
+conductivity [2, 54, 56, 63–65] but lack electron conductivity, 
+while the carbon host shows the opposite behavior. Therefore, 
+we hypothesize that regions where sulfur, carbon, and CEI 
+species are in close proximity serve as electrochemically active 
+regions after the initial formation cycle. These regions likely 
+enable enhanced mass transport and charge transfer kinetics 
+due to the presence of triple‐phase boundaries (TPBs, 
+Figure 5a). TPBs have been recognized as critical for efficient 
+electrochemical conversion in all‐solid‐state Li–S batteries 
+[66–68] and Li2S nucleation in glymes [69, 70]. Considering our 
+findings, we propose a similar mechanism in our system, with 
+efficient solid‐state S/Li2S conversion only in regions where 
+sulfur, carbon, and CEI components co‐locate.
+To further support this hypothesis, we performed a plausibility 
+check by correlating rate‐dependent capacities with the esti­
+mated fraction of electrochemically active particle volume 
+across different particle sizes. Assuming spherical particle 
+geometry with a mean size as shown in Figure 1a–c and LiF 
+presence restricted to the 1 μm outermost layer, we approxi­
+mated the relative active region volume across the different 
+particle sizes (Figure 5b). For an average particle size of 8 μm, 
+this volume fraction is approximately 0.6. By downsizing the 
+particles, the ratio increases. For the 800‐rpm ball‐milled par­
+ticles, we assumed a maximum volume fraction of 1.
+Using the experimentally measured rate performance of 
+800‐rpm ball‐milled particles as reference, we calculated the 
+expected rate capability of larger particles by scaling with the 
+corresponding active region volume fractions (Figure 5c–e). 
+The resulting predicted capacities (red curves) are in reasonable 
+agreement with experimental data (blue curves), capturing the 
+general trend. This analysis should be seen as a simplified 
+consistency check, and the assumed active region thickness of 
+1 µm is admittedly arbitrary. However, it provides a useful 
+qualitative benchmark. Importantly, the key indicator is not the 
+absolute capacity values that overlay, but rather the fact that the 
+rate‐dependent capacity curves show the same relative change 
+across all particle sizes. Taken together, these observations 
+suggest that performance is not solely determined by mass 
+transport limitations but is strongly influenced by the fraction 
+of sulfur that is electrochemically accessible after the first dis­
+charge. Thus, smaller particles, with a larger proportion of 
+electrochemically active material, enable higher capacities, 
+while larger particles contain inactive regions that limit 
+capacity.
+In our previous study, completed with larger carbon particles of 
+varying pore sizes, we proposed that delithiation is slower than 
+lithiation, leading to capacity limitations during fast charging 
+[28]. However, the Li–S batteries could still be discharged at 
+higher rates. To explore whether particle size influences this 
+asymmetry, we performed a charge‐rate test using the smallest 
+particles. Cells were discharged at a fixed rate of C/5 while 
+charged at varying rates. Similar to the results with larger 
+particles, the discharge capacity follows the previous charge 
+capacity (Figure 5f). However, under slow‐discharge/fast‐ 
+8 of 14 
+Battery Energy, 2026
+ 27681696, 2026, 3, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/bte2.70111 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 9>>
+charge conditions, the overall capacities decreased (Figure 5g), 
+confirming delithiation as the limiting process. These results 
+demonstrate an intrinsic asymmetry between lithiation and 
+delithiation, but do not by themselves identify the underlying 
+limiting mechanism. Based on our earlier mechanistic analysis 
+using GITT, EIS, and galvanostatic cycling with a systematic 
+variation of nanopore size and sulfur pore filling, the observed 
+overpotential and relaxation trends were inconsistent with 
+dominant Li+ mass‐transport limitations and instead point to 
+an interfacial kinetic constraint at the carbon/active material/ 
+CEI interface during Li2S/S conversion [28]. Consistent with 
+this interpretation, even at matched charge‐discharge rates, the 
+specific charge capacities remained lower than their corre­
+sponding discharge capacities, indicating that charge‐transfer 
+resistance, particularly during charging [70], persists as a lim­
+iting factor independent of particle size. We speculate that this 
+intrinsic limitation originates from the swelling and shrinking 
+of active materials within the pores during cycling [1, 52], a 
+nanoscale phenomenon that cannot be mitigated by particle 
+downsizing alone.
+3
+|
+Conclusions 
+In conclusion, this study highlights the critical role of particle 
+size and its impact on in situ CEI formation in governing 
+electrochemical performance in Li–S batteries with solid‐state 
+conversion in nanoporous carbons. Smaller particles deliver 
+FIGURE 5 | Particle size‐dependent rate and capacity limitations in solid‐state S/Li2S conversion. (a) Schematic illustration of electrochemically 
+active regions with triple‐phase boundaries, which are preferably located near the particle surface. Light‐colored regions in the spherical particle 
+represent more active zones, while darker regions correspond to less active areas. (b) Estimated ratio of the active material region volume to the total 
+particle volume as a function of particle size. For 1 µm‐sized particles, this ratio approaches unity. (c, d) Predicted rate performance (red curves) for 
+non‐ball milled and 500‐rpm ball milled carbon particles, respectively, based on their active volume fractions. The predictions are derived from the 
+measured performance of 800‐rpm ball‐milled particles, shown in (e) as the blue curve. (f) Specific capacities of 800‐rpm ball‐milled carbon for 
+constant discharge rate (C/5) and varying charge rates (C/20 to C/5). Filled symbols represent charging capacities; unfilled symbols show the 
+subsequent discharge capacities. (g) Specific capacities for constant charge rate (C/5) and varying discharge rates (C/20 to C/5). Filled symbols 
+represent discharge capacities; unfilled symbols show the subsequent charge capacities. Both (f) and (g) confirm the dependence of performance on 
+the charge rate. (h) Schematic illustration of the delithiation process, where sulfur volume shrinkage during charging is suggested to slow down 
+charge transfer, making charging the rate‐limiting step for all particle sizes. 
+9 of 14 
+Battery Energy, 2026
+ 27681696, 2026, 3, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/bte2.70111 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 10>>
+higher specific capacities across various cycling rates. GITT and 
+relaxation time analyses reveal that mass transport limitations, 
+particularly pronounced in larger particles, are most impactful 
+during the first discharge, thereby affecting the CEI/Li2S 
+formation.
+To probe the structure of CEI and active materials, we em­
+ployed cryogenic electron microscopy to overcome the materi­
+als' intrinsic beam and vacuum sensitivity. TEM results in 
+combination with EDS and EELS show the inhomogeneity of 
+LiF, Li2S, and S on the surface and across the inside of an 
+individual discharged particle. LiF, as an important CEI com­
+ponent tends to concentrate within the first micron from the 
+particle surface instead of forming solely a thin film on the 
+surface. Triple‐phase regions, co‐locating active material 
+(S/Li2S), carbon, and LiF, appear to function as electro­
+chemically active regions. Their spatial extent decreases with 
+increasing particle size, likely because of mass transport limi­
+tation in the first discharge, limiting the effective reaction vol­
+ume and contributing to reduced capacities and rate capability.
+Taken together, these results imply that the performance is ruled 
+by a multiscale interplay of rate and capacity‐limiting mecha­
+nisms. Mass transport during the first discharge determines CEI 
+formation and internal distribution of active material, while 
+charge transfer resistance during charging remains a rate‐limiting 
+factor independent of particle size. These findings suggest two 
+design pathways for improving performance: (i) Tailoring particle 
+size and morphology to promote uniform CEI throughout the 
+particle, and (ii) enhancing charge transfer kinetics during solid‐ 
+state 
+conversion 
+through 
+controlled 
+nanopore 
+structures 
+(e.g., smaller nanopores), as demonstrated in previous work [28] 
+or surface functionalities.
+Our results establish the importance of in situ CEI/Li2S for­
+mation for determining electrochemical performance, but the 
+stability of the CEI and its role in capacity fading during the 
+initial cycles remain open questions. Addressing these aspects, 
+together with the cathode design strategies identified here, will 
+be essential for advancing Li–S batteries with solid‐state con­
+version in confinement.
+4
+|
+Experimental Section 
+4.1
+|
+Materials 
+Elemental sulfur (powder, 99.98% trace metals basis, Sigma 
+Aldrich, and without any further processing) and microporous 
+activated carbon (dried at 200°C under vacuum overnight), 
+MSP20 (denoted as AC08), were mixed manually with different 
+weight ratios in an agar mortar. AC08 has a mean pore size of 
+about 0.8 nm, and is provided by Kansai Coke and Chemicals 
+and Kuraray Chemicals Co. The AC08‐powder was used as‐ 
+received and after ball milling under two different conditions. 
+The powder was milled using a Fritsch Planetary Micro Mill 
+(Pulverisette 7) with tungsten carbide balls (1.6 mm in diame­
+ter) without a solution medium. We used rotation speeds of 
+500 rpm and 800 rpm and milled for 30 min with a 10 min 
+resting period four times (160 min). The ball‐to‐powder mass 
+ratio was kept at 10. Before melt‐infiltration, the non‐ and ball‐ 
+milled carbons were heated to 200°C overnight to get rid of the 
+bound water in the pores. Then they were mixed with elemental 
+sulfur at a sulfur‐to‐carbon mass ratio of 1:1 in an agar mortar. 
+The prepared mixture was melt‐infiltrated at 155°C for 7–8 h in 
+a sealed evacuated glass oven (Büchi). The final sulfur mass 
+content was verified by weight and through thermogravimetric 
+analysis (TGA).
+The electrodes were prepared by mixing carbon composite with 
+polyacrylic acid (PAA, Mv 450.000, Sigma Aldrich, 10 mass% 
+suspension in water) at a 9/1 mass ratio with drops of additional 
+ethanol (≥ 99.8%, Sigma Aldrich) and water for better misci­
+bility. The slurries were mixed with IKA overhead stirrer (IKA) 
+at maximum speed (10 min) together with a vortex mixer 
+(5 min). The resulting slurry was coated on Aluminum foil as a 
+100–200 μm thick film using a Doctor Blade coater and dried at 
+50°C under vacuum (10 mbar) for 2 h. The film electrodes 
+coated after drying have a thickness in the range of 20–50 µm.
+After drying, the electrodes were cut (puncher diameter 
+13 mm), resulting in a geometrical surface area of 1.32 cm2. The 
+sulfur loadings varied from 1.7 to 2.5 mgscm−2. As an electro­
+lyte, a solution of 1 M lithium hexafluorophosphate (LiPF6) in 
+fluoroethylene carbonate (FEC): dimethyl carbonate (DMC) (by 
+volume 1:4) was used, and E/S ratio is kept at 20. All solvents 
+were dried with molecular sieves (3 Å, beads, 8–12 mesh, Sigma 
+Aldrich), and the salt was dried under vacuum overnight.
+4.2
+|
+Methods 
+TGA measurements were performed at the National Institute of 
+Chemistry, Slovenia, to determine the sulfur content. The mea­
+surements were conducted on a STA 449 F3 Jupiter under an 
+argon atmosphere, in an alumina crucible (Al2O3) with a heating 
+rate of 10°C min−1 up to a maximum temperature of 900°C.
+Raman spectroscopy was conducted at INM Saarbrücken 
+with a Renishaw in Via Raman microscope employing an Nd‐ 
+YAG laser (532 nm) at a power of 799 μW. For each sample, 
+spectra from 10 points were recorded with cosmic ray 
+removal treatment with 10 s exposure time and three accu­
+mulation periods. Before each measurement, the system was 
+calibrated with a silicon wafer that was later used as a sample 
+holder.
+Scanning electron microscopy (SEM) images for the particle 
+size analysis were recorded after ball milling followed by drying 
+and S‐melt infiltration at 1‐1 S‐C mass ratio. The SEM samples 
+of electrodes after discharge were washed with diethylene glycol 
+dimethyl ether (2 G, anhydrous, 99.5%, Sigma Aldrich) and 
+dried under vacuum for 5–10 min. All steps were completed in 
+an Ar‐filled glovebox, and the samples were transferred inside a 
+vacuum transfer holder. All scanning electron micrographs 
+were taken with a Hitachi SU‐8200 at 1 kV acceleration voltage 
+with backscattered and secondary electron detectors. The par­
+ticle size analysis was completed for all S‐infiltrated carbon 
+powders with or without ball milling, based on 300 particles 
+randomly selected in FiJi from scanning electron micrographs 
+of different regions. Considering the heterogeneous shapes, the 
+diameters were calculated from an assumed spherical shape. 
+After masking as spheres (an example given in Supporting 
+Information Figure S8) and thresholding, the diameters were 
+calculated from the areas, assuming a spherical shape repre­
+sented as Gaussian size distribution graphs with illustrated 
+standard deviations.
+10 of 14 
+Battery Energy, 2026
+ 27681696, 2026, 3, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/bte2.70111 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 11>>
+All custom‐built coin‐cell‐type electrochemical cells were as­
+sembled under an inert atmosphere in an argon‐filled glovebox. 
+The cells consisted of an aluminum current collector (18 mm in 
+diameter), coated film C/S cathode, a both‐side‐ceramic‐coated 
+polypropylene separator (20 mm in diameter), and a metallic 
+lithium anode (18 mm in diameter, 110 μm thick, FMC Lithium 
+corporation). The electrolyte‐to‐sulfur‐ratio was kept at 
+20 μLmgs
+−1 to ensure continuous separator wetting.
+All electrochemical characterization was performed with a Bio­
+logic VMP3 or MPG2 potentiostat/galvanostat. Galvanostatic cy­
+cling was done (also for capacity retention tests) between 3.0 and 
+0.5 V versus Li/Li+ with a rate of C/10 (except for the rate per­
+formance tests). The rate capability tests investigating the effect of 
+ball milling (or carbon particle size) started with formation dis­
+charge at C/10 and were followed by 5 discharge/charge cycles at 
+each rate. Similarly, for the charge/discharge rate experiments, all 
+cells were first discharged, and if needed, charged once at the rate 
+of C/10. During the GITT (galvanostatic intermittent titration 
+technique) measurements for every 100 mAhgs
+−1 capacity, the 
+cells were rested at the OCV for 2 h until the relaxation voltage 
+equilibrated. The relaxation voltage versus time indicates sufficient 
+equilibration while maintaining experimental efficiency. The time‐ 
+dependent potential relaxation during OCV was normalized and 
+shown in Supporting Information Figure S4. From each curve, 
+relaxation time constant values were approximated based on 
+1−1/e values during discharge and 1/e values during charge.
+Cryo‐FIB‐SEM measurements were performed at ScopeM using 
+a Helios NanoLab 600i dual‐beam microscope (FEI/Thermo 
+Fisher Scientific). A lamella was prepared for subsequent EELS, 
+EDS, and TEM analysis after the first discharge of a non‐ball‐ 
+milled electrode. For that, the electrode was removed after the 
+first discharge, and the active material was gently scratched 
+onto a carbon tape in an argon‐filled glovebox (O₂ < 0.1 ppm, 
+H₂O < 0.1 ppm). All the sample handling was completed in an 
+argon‐filled glovebox to minimize exposure to air and moisture, 
+including the transport, which is accomplished by a vacuum 
+holder. Samples were subsequently transferred to the FIB‐SEM 
+instrument using an EM VCT100 vacuum cryo transfer system 
+(Leica). The stage temperature during cryo‐FIB‐SEM operations 
+was maintained at approximately −150°C under high vacuum 
+conditions (pressure, ~2e10−6 mbar). A single particle with a 
+size of 15 μm (approximately in all directions) was selected for 
+cross‐sectioning. SEM imaging was performed whenever 
+needed throughout the processes of particle selection, milling, 
+and transfer of the lamella. It was conducted at 3 kV using a 
+secondary electron detector (ETD or ICE, Thermo Fisher Sci­
+entific) with a SEM working distance of about 4 mm. Prior to 
+the milling procedure and before cooling down the sample, the 
+selected particle was coated with a platinum (Pt) protective 
+layer of approximately 3–5 μm thickness. Pt was selected to 
+deposit for both the protection of active material and to provide 
+better contrast to the sample surface during TEM measure­
+ments. Initial milling was carried out at 30 kV with a Ga⁺ ion 
+beam, with currents adjusted based on the milling stage in a 
+range of 1–10 nA, producing a lamella several micrometers 
+thick to ensure mechanical stability of the window. The thick 
+lamella was then transferred to a copper TEM lift‐out grid 
+(Lacey Carbon Type‐A Copper TEM grid, TedPella, no. 01890) 
+using a micromanipulator (EasyLift). Mounting the lamella to 
+the manipulator and to the TEM lift‐out grid was done through 
+a redeposition welding process, as standard FIB‐induced dep­
+osition is not possible under cryo conditions. A thin measure­
+ment window (2–5 μm in lateral size and ending with 
+~100–200 nm in thickness) was finally prepared by gentle 
+thinning at progressively reduced ion beam acceleration volt­
+ages and currents, suitable for sensitive structures, by ensuring 
+minimal damage. The final thickness was verified by both 
+electron transparency at 2–3 kV and by monitoring τ/λ values 
+during EELS acquisition in later stages. Finally, the mounted 
+lamella on the copper grid was transferred back to the argon‐ 
+filled glove box (EM VCT100 Vacuum cryo transfer system, 
+Leica) for mounting to a cryo‐vacuum TEM holder for the 
+subsequent TEM, STEM, EELS, and EDS characterization 
+under cryogenic conditions [71]. TEM measurements were 
+carried out on a double Cs‐corrected JEOL GrandARM operated 
+at 300 kV (ETH Zürich) equipped with two large area SDD EDX 
+detectors with 100 mm2 active area; total solid angle: 1.6 sr for 
+dual EDS and GATAN 965 GIF Quantum ER EELS Spectrom­
+eter/Imaging Filter, combined with Cryo Vacuum Transfer 
+Holder by MelBuild, which is then cooled to −193°C by intro­
+ducing liquid nitrogen (LN2). For the EDS and EELS analysis, 
+the programs of Analysis Station (JEOL) and GMS3 (Gatan) 
+were used, respectively. The integrals of the signals were cal­
+culated within these programs, and the results were presented 
+as a moving average of 5.
+For the ball milled particle, the TEM sample preparation was 
+slightly different, since the particle is not larger than 1–2 µm, 
+and preparing a lamella containing a single particle would be 
+practically not possible. There are two sample preparation 
+techniques: either the electrodes with the 800‐rpm ball‐milled 
+particles were scratched off after the first discharge, or the ball‐ 
+milled particles were discharged directly to remove the influ­
+ence of the binder material on a glassy carbon disc. Details of 
+the powder discharge are described in Ref [55]. Electrodes/ 
+particles were discharged to 0.5 V at a rate of C/10. The dis­
+charged electrode/particles were transferred to the TEM grid 
+and measured directly. All transfer processes were conducted 
+under cryo‐vacuum conditions.
+XPS was performed on both ball‐milled (800 rpm) and non‐ball‐ 
+milled cathodes at the end of the first discharge. To avoid con­
+tamination, cells were disassembled in an argon‐filled glovebox. 
+The electrodes were rinsed with dimethyl carbonate (DMC) to 
+remove residual surface salt and subsequently dried under 
+dynamic vacuum overnight. After drying, samples were trans­
+ferred to the vacuum transfer module of the Versaprobe 3 AD 
+spectrometer to prevent air exposure. XPS measurements were 
+conducted using a Versaprobe 3 AD system (Physical Electronics) 
+equipped with a monochromatic Al Kα X‐ray source (1486.6 eV) 
+operating at 50 W. Spectra were collected at room temperature 
+under ultra‐high vacuum conditions (10−9 mbar). The X‐ray beam 
+size was set to 200 μm, and a 1 mm2 area was scanned for each 
+sample. A dual‐beam charge neutralization system (1 V, 20 μA) 
+was employed to mitigate surface charging effects, as the samples 
+were mounted on non‐conductive double‐sided adhesive tape, 
+ensuring accurate determination of binding energies. The analysis 
+comprised both wide‐range survey scans and high‐resolution core‐ 
+level spectra for phosphorus (P 2p), sulfur (S 2p), carbon (C 1s), 
+oxygen (O 1s), and fluorine (F 1s). Survey spectra were acquired 
+using a pass energy of 224 eV with an energy resolution of 0.8 eV, 
+while core‐level spectra were recorded at a pass energy of 27 eV 
+11 of 14 
+Battery Energy, 2026
+ 27681696, 2026, 3, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/bte2.70111 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 12>>
+and a resolution of 0.05 eV. Spectral deconvolution was carried out 
+using Voigt line shapes and a Shirley‐type background subtraction, 
+as implemented in the Ulvac‐PHI Multipak software. Binding 
+energy calibration was referenced to the Au 4f7/2 peak at 83.99 eV 
+from a sputtered gold standard, ensuring accurate energy 
+alignment across all measurements.
+Author Contributions 
+Ayca Senol Gungor conducted experiments and data analysis of elec­
+trochemical characterization and electron microscopy. Sven Dunkel 
+contributed the electrochemistry measurements and data analysis. 
+Jean‐Marc von Mentlen and Milivoj Plodinec carried out cryo‐ 
+microscopy together with EDS and EELS. Christian Zaubitzer was 
+responsible for lamella preparation with cryo‐FIB microscopy. Volker 
+Presser and Jean G. A. Ruthes carried out Raman spectroscopy. Fran­
+cisco Javier García‐Soriano and Alen Vizintin conducted the TGA and 
+XPS measurements. Ayca Senol Gungor, Christian Prehal, and Vanessa 
+Wood conceptualized the work. Ayca Senol Gungor and Christian 
+Prehal wrote the initial version of the manuscript. All authors con­
+tributed to the results interpretation and revised the manuscript.
+Acknowledgements 
+We acknowledge the funding for the ALISA project (project number 9359) 
+provided by the m‐ERA.NET network (part of the European Union's 
+Horizon 2020 research and innovation program (under grant agreement 
+No. 958174)), and the Slovenian Ministry of Higher Education, Science, 
+and Innovation. AV further acknowledges financial support from the 
+Slovenian Research and Innovation Agency (ARIS), research core funding 
+P2‐0423 and project GC‐0004. This work was funded by the European 
+Union (ERC‐2022‐STG, SOLIDCON, 101078271). Views and opinions ex­
+pressed are, however, those of the authors only and do not necessarily 
+reflect those of the European Union or the European Research Council 
+Executive Agency. Neither the European Union nor the granting authority 
+can be held responsible for them. ASG and JMM acknowledge the 
+financial support for the ALISA project from the Swiss Federal Office of 
+Energy SFOE. Additionally, ASG acknowledges the valuable support from 
+Mario Mücklich (ETH Zürich). ASG, CZ, and MP recognize the support of 
+ScopeM facilities. JGAR and VP acknowledge the financial support for the 
+ALISA project from the German Federal Ministry for Education and 
+Research (BMBF, 03XP0504A). Open Access funding provided by Paris 
+Lodron Universitat Salzburg/KEMÖ.
+Conflicts of Interest 
+The authors declare no conflicts of interest.
+Data Availability Statement 
+The data that support the findings of this study are available at https:// 
+doi.org/10.5281/zenodo.17841176.
+References 
+1. X. Chen, H. Ji, Z. Rao, et al., “Insight Into the Fading Mechanism of 
+the Solid‐Conversion Sulfur Cathodes and Designing Long Cycle 
+Lithium–Sulfur Batteries,” Advanced Energy Materials 12, no. 1 (2021): 
+2102774, https://doi.org/10.1002/aenm.202102774.
+2. X. Chen, L. Yuan, Z. Li, et al., “Realizing an Applicable “Solid → 
+Solid” Cathode Process via a Transplantable Solid Electrolyte Interface 
+for Lithium–Sulfur Batteries,” ACS Applied Materials & Interfaces 11, 
+no. 33 (2019): 29830–29837, https://doi.org/10.1021/acsami.9b07787.
+3. L. Wang, Y. Ye, N. Chen, et al., “Development and Challenges of 
+Functional Electrolytes for High‐Performance Lithium–Sulfur Batte­
+ries,” Advanced Functional Materials 28, no. 38 (2018): 1800919, https:// 
+doi.org/10.1002/adfm.201800919.
+4. G. Li, S. Wang, Y. Zhang, M. Li, Z. Chen, and J. Lu, “Revisiting 
+the Role of Polysulfides in Lithium–Sulfur Batteries,” Advanced 
+Materials 30, no. 22 (2018): e1705590, https://doi.org/10.1002/ 
+adma.201705590.
+5. J. Liu, H. Chen, W. Chen, Y. Zhang, and Y. Zheng, “New Insight Into 
+the ‘Shuttle Mechanism’ of Rechargeable Lithium–Sulfur Batteries,” 
+ChemElectroChem 6, no. 10 (2019): 2782–2787, https://doi.org/10.1002/ 
+celc.201900420.
+6. A. Rosenman, E. Markevich, G. Salitra, Y. Talyosef, F. Chesneau, and 
+D. Aurbach, “Facile Synthesis and Very Stable Cycling of Poly­
+vinylidene Dichloride Derived Carbon: Sulfur Composite Cathode,” 
+Journal of the Electrochemical Society 163, no. 9 (2016): A1829–A1835, 
+https://doi.org/10.1149/2.0151609jes.
+7. E. Markevich, G. Salitra, A. Rosenman, Y. Talyosef, F. Chesneau, and 
+D. Aurbach, “The Effect of a Solid Electrolyte Interphase on the 
+Mechanism of Operation of Lithium–Sulfur Batteries,” Journal of 
+Materials Chemistry A 3, no. 39 (2015): 19873–19883, https://doi.org/10. 
+1039/c5ta04613k.
+8. X. Ji, K. T. Lee, and L. F. Nazar, “A Highly Ordered Nanostructured 
+Carbon–Sulphur Cathode for Lithium–Sulphur Batteries,” Nature 
+Materials 8, no. 6 (2009): 500–506, https://doi.org/10.1038/nmat2460.
+9. J. Li, L. Gao, F. Pan, et al., “Engineering Strategies for Suppressing 
+the Shuttle Effect in Lithium–Sulfur Batteries,” Nano‐Micro Letters 16, 
+no. 1 (2023): 12, https://doi.org/10.1007/s40820-023-01223-1.
+10. W. P. Wang, J. Zhang, J. Chou, et al., “Solidifying Cathode– 
+Electrolyte Interface for Lithium–Sulfur Batteries,” Advanced Energy 
+Materials 11, no. 2 (2020): 2000791, https://doi.org/10.1002/aenm. 
+202000791.
+11. L. Wang, Y. Lin, S. DeCarlo, et al., “Compositions and Formation 
+Mechanisms of Solid‐Electrolyte Interphase on Microporous Carbon/ 
+Sulfur Cathodes,” Chemistry of Materials 32, no. 9 (2020): 3765–3775, 
+https://doi.org/10.1021/acs.chemmater.9b05027.
+12. E. Markevich, G. Salitra, Y. Talyosef, F. Chesneau, and 
+D. Aurbach, “Review—On the Mechanism of Quasi‐Solid‐State 
+Lithiation of Sulfur Encapsulated in Microporous Carbons: Is the 
+Existence of Small Sulfur Molecules Necessary?,” Journal of the 
+Electrochemical Society 164, no. 1 (2016): A6244–A6253, https://doi. 
+org/10.1149/2.0391701jes.
+13. B. Zhang, X. Qin, G. R. Li, and X. P. Gao, “Enhancement of Long 
+Stability of Sulfur Cathode by Encapsulating Sulfur Into Micropores of 
+Carbon Spheres,” Energy & Environmental Science 3, no. 10 (2010): 
+1531–1537, https://doi.org/10.1039/c002639e.
+14. Z. Li, L. Yuan, Z. Yi, et al., “Insight Into the Electrode Mechanism in 
+Lithium–Sulfur Batteries With Ordered Microporous Carbon Confined 
+Sulfur as the Cathode,” Advanced Energy Materials 4, no. 7 (2013): 
+1301473, https://doi.org/10.1002/aenm.201301473.
+15. M. Liu, L. J. Hu, Z. K. Guan, et al., “Tailoring Cathode‐Electrolyte 
+Interface for High‐Power and Stable Lithium–Sulfur Batteries,” Nano‐ 
+Micro Letters 17, no. 1 (2024): 85, https://doi.org/10.1007/s40820- 
+024-01573-4.
+16. I. Sungjemmenla, V. S. K., C. B. Soni, V. Kumar, and Z. W. Seh, 
+“Understanding the Cathode–Electrolyte Interphase in Lithium‐Ion 
+Batteries,” Energy Technology 10, no. 9 (2022): 2200421, https://doi.org/ 
+10.1002/ente.202200421.
+17. J. Gao, M. A. Lowe, Y. Kiya, and H. D. Abruña, “Effects of Liquid 
+Electrolytes on the Charge–Discharge Performance of Rechargeable 
+Lithium/Sulfur Batteries: Electrochemical and In‐Situ X‐Ray Absorp­
+tion Spectroscopic Studies,” Journal of Physical Chemistry C 115, no. 50 
+(2011): 25132–25137, https://doi.org/10.1021/jp207714c.
+18. F. He, X. Wu, J. Qian, et al., “Building a Cycle‐Stable Sulphur 
+Cathode by Tailoring Its Redox Reaction Into a Solid‐Phase Conversion 
+Mechanism,” Journal of Materials Chemistry A 6, no. 46 (2018): 
+23396–23407, https://doi.org/10.1039/c8ta08159j.
+12 of 14 
+Battery Energy, 2026
+ 27681696, 2026, 3, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/bte2.70111 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 13>>
+19. T. Yim, M.‐S. Park, J.‐S. Yu, et al., “Effect of Chemical Reactivity of 
+Polysulfide Toward Carbonate‐Based Electrolyte on the Electrochemical 
+Performance of Li–S Batteries,” Electrochimica Acta 107 (2013): 
+454–460, https://doi.org/10.1016/j.electacta.2013.06.039.
+20. Z. Shen, W. Zhang, S. Mao, S. Li, X. Wang, and Y. Lu, “Tailored 
+Electrolytes Enabling Practical Lithium–Sulfur Full Batteries via In­
+terfacial Protection,” ACS Energy Letters 6, no. 8 (2021): 2673–2681, 
+https://doi.org/10.1021/acsenergylett.1c01091.
+21. J. T. Lee, K. Eom, F. Wu, et al., “Enhancing the Stability of Sulfur 
+Cathodes in Li–S Cells via In Situ Formation of a Solid Electrolyte 
+Layer,” ACS Energy Letters 1, no. 2 (2016): 373–379, https://doi.org/10. 
+1021/acsenergylett.6b00163.
+22. F. Huang, L. Gao, Y. Zou, et al., “Akin Solid–Solid Biphasic Con­
+version of a Li–S Battery Achieved by Coordinated Carbonate Electro­
+lytes,” Journal of Materials Chemistry A 7, no. 20 (2019): 12498–12506, 
+https://doi.org/10.1039/c9ta02877c.
+23. C. Li, Y. Li, Y. Fan, et al., “Mapping Techniques for the Design of 
+Lithium‐Sulfur Batteries,” Small 18, no. 14 (2022): e2106657, https:// 
+doi.org/10.1002/smll.202106657.
+24. G. Yang, R. Tao, C. J. Jafta, et al., “Investigating Multiscale Spatial 
+Distribution of Sulfur in a CNT Scaffold and Its Impact on Li–S Cell 
+Performance,” Journal of Physical Chemistry C 125, no. 24 (2021): 
+13146–13157, https://doi.org/10.1021/acs.jpcc.1c02288.
+25. G. Zhou, D.‐W. Wang, F. Li, et al., “A Flexible Nanostructured 
+Sulphur–Carbon Nanotube Cathode With High Rate Performance for 
+Li‐S Batteries,” Energy & Environmental Science 5, no. 10 (2012): 
+8901–8906, https://doi.org/10.1039/c2ee22294a.
+26. J. Zhang, Z. Dong, X. Wang, et al., “Sulfur Nanocrystals An­
+chored Graphene Composite With Highly Improved Electro­
+chemical Performance for Lithium–Sulfur Batteries,” Journal of 
+Power Sources 270 (2014): 1–8, https://doi.org/10.1016/j.jpowsour. 
+2014.07.089.
+27. G. Hu, Z. Sun, C. Shi, et al., “A Sulfur‐Rich Copolymer@Cnt Hybrid 
+Cathode With Dual‐Confinement of Polysulfides for High‐Performance 
+Lithium–Sulfur Batteries,” Advanced Materials 29, no. 11 (2016): 
+1603835, https://doi.org/10.1002/adma.201603835.
+28. A. Senol Gungor, J. M. von Mentlen, J. G. A. Ruthes, et al., “Un­
+derstanding Rate and Capacity Limitations in Li‐S Batteries Based on 
+Solid‐State Sulfur Conversion in Confinement,” ACS Applied Materials 
+& Interfaces 16, no. 49 (2024): 67651–67661, https://doi.org/10.1021/ 
+acsami.4c13183.
+29. F. J. García‐Soriano, F. Cometto, S. Raviolo, et al., “Biocarbon From 
+Olive Pomace Residue as a Sulfur Host for Carbonate‐Based Lithium‐ 
+Sulfur Batteries,” Communications Materials 6, no. 1 (2025): 122, 
+https://doi.org/10.1038/s43246-025-00846-8.
+30. S. Haber and M. Leskes, “What Can We Learn From Solid State 
+NMR on the Electrode‐Electrolyte Interface?,” Advanced Materials 30, 
+no. 41 (2018): e1706496, https://doi.org/10.1002/adma.201706496.
+31. Y. Chen, Q. He, Y. Mo, et al., “Engineering an Insoluble Cathode 
+Electrolyte Interphase Enabling High Performance NCM811//Graphite 
+Pouch Cell at 60°C,” Advanced Energy Materials 12, no. 33 (2022): 
+2201631, https://doi.org/10.1002/aenm.202201631.
+32. D. Cheng, B. Lu, G. Raghavendran, M. Zhang, and Y. S. Meng, 
+“Leveraging Cryogenic Electron Microscopy for Advancing Battery 
+Design,” Matter 5, no. 1 (2022): 26–42, https://doi.org/10.1016/j.matt. 
+2021.11.019.
+33. K. Liang, X. Yuan, X. Chen, et al., “A Beginner's Guide to Cryo‐Em 
+for Battery Research,” Nano Letters 25, no. 18 (2025): 7210–7223, 
+https://doi.org/10.1021/acs.nanolett.5c00740.
+34. X. C. Ren, X. Q. Zhang, R. Xu, J. Q. Huang, and Q. Zhang, “Analyzing 
+Energy Materials by Cryogenic Electron Microscopy,” Advanced Materials 
+32, no. 24 (2020): e1908293, https://doi.org/10.1002/adma.201908293.
+35. Z. Zhang, J. Yang, W. Huang, et al., “Cathode‐Electrolyte Interphase in 
+Lithium Batteries Revealed by Cryogenic Electron Microscopy,” Matter 4, 
+no. 1 (2021): 302–312, https://doi.org/10.1016/j.matt.2020.10.021.
+36. X. Xing, Y. Li, X. Wang, V. Petrova, H. Liu, and P. Liu, “Cathode 
+Electrolyte Interface Enabling Stable Li–S Batteries,” Energy Storage 
+Materials 21 (2019): 474–480, https://doi.org/10.1016/j.ensm.2019. 
+06.022.
+37. W. Huang, D. T. Boyle, Y. Li, et al., “Nanostructural and Electro­
+chemical Evolution of the Solid‐Electrolyte Interphase on Cuo Nano­
+wires Revealed by Cryogenic‐Electron Microscopy and Impedance 
+Spectroscopy,” ACS Nano 13, no. 1 (2019): 737–744, https://doi.org/10. 
+1021/acsnano.8b08012.
+38. B. Han, Z. Zhang, Y. Zou, et al., “Poor Stability of Li2Co3 in the Solid 
+Electrolyte Interphase of a Lithium‐Metal Anode Revealed by Cryo‐ 
+Electron Microscopy,” Advanced Materials 33, no. 22 (2021): e2100404, 
+https://doi.org/10.1002/adma.202100404.
+39. M. J. Zachman, Z. Tu, S. Choudhury, L. A. Archer, and 
+L. F. Kourkoutis, “Cryo‐Stem Mapping of Solid‐Liquid Interfaces and 
+Dendrites in Lithium‐Metal Batteries,” Nature 560, no. 7718 (2018): 
+345–349, https://doi.org/10.1038/s41586-018-0397-3.
+40. W. Huang, H. Wang, D. T. Boyle, Y. Li, and Y. Cui, “Resolving 
+Nanoscopic and Mesoscopic Heterogeneity of Fluorinated Species in 
+Battery Solid‐Electrolyte Interphases by Cryogenic Electron Micros­
+copy,” ACS Energy Letters 5, no. 4 (2020): 1128–1135, https://doi.org/10. 
+1021/acsenergylett.0c00194.
+41. Y. Li, Y. Li, A. Pei, et al., “Atomic Structure of Sensitive Battery 
+Materials and Interfaces Revealed by Cryo–Electron Microscopy,” 
+Science 358, no. 6362 (2017): 506–510.
+42. C. X. Bi, N. Yao, X. Y. Li, et al., “Unveiling the Reaction Mystery 
+Between Lithium Polysulfides and Lithium Metal Anode in Lithium‐ 
+Sulfur Batteries,” Advanced Materials 36, no. 41 (2024): e2411197, 
+https://doi.org/10.1002/adma.202411197.
+43. X. Wang, Y. Li, and Y. S. Meng, “Cryogenic Electron Microscopy 
+for Characterizing and Diagnosing Batteries,” Joule 2, no. 11 (2018): 
+2225–2234, https://doi.org/10.1016/j.joule.2018.10.005.
+44. J. Conder, C. Marino, P. Novák, and C. Villevieille, “Do Imaging 
+Techniques Add Real Value to the Development of Better Post‐Li‐Ion 
+Batteries?,” Journal of Materials Chemistry A 6, no. 8 (2018): 3304–3327, 
+https://doi.org/10.1039/c7ta10622j.
+45. S. Zhou, J. Shi, S. Liu, et al., “Visualizing Interfacial Collective 
+Reaction Behaviour of Li‐S Batteries,” Nature 621, no. 7977 (2023): 
+75–81, https://doi.org/10.1038/s41586-023-06326-8.
+46. Z. Ju, H. Yuan, O. Sheng, et al., “Cryo‐Electron Microscopy for 
+Unveiling the Sensitive Battery Materials,” Small Science 1, no. 11 
+(2021): 2100055, https://doi.org/10.1002/smsc.202100055.
+47. D. B. Nash, “Sulfur in Vacuum: Sublimation Effects on Frozen 
+Melts, and Applications to Io's Surface and Torus,” Icarus 72 (1987): 
+1–34.
+48. C. Raiß, K. Peppler, J. Janek, and P. Adelhelm, “Pitfalls in the 
+Characterization of Sulfur/Carbon Nanocomposite Materials for 
+Lithium–Sulfur Batteries,” Carbon 79 (2014): 245–255, https://doi.org/ 
+10.1016/j.carbon.2014.07.065.
+49. B. D. A. Levin, M. J. Zachman, J. G. Werner, et al., “Characterization 
+of Sulfur and Nanostructured Sulfur Battery Cathodes in Electron 
+Microscopy 
+Without 
+Sublimation 
+Artifacts,” 
+Microscopy 
+and 
+Microanalysis 23, no. 1 (2017): 155–162, https://doi.org/10.1017/ 
+S1431927617000058.
+50. K. Liao and A. Manthiram, “Impact of Cathode Microstructure on 
+Sulfur Redox Kinetics in Lithium–Sulfur Batteries,” Advanced Energy 
+Materials 15 (2025): 2502062, https://doi.org/10.1002/aenm.202502062.
+51. Z. X. Chen, Q. Cheng, X. Y. Li, et al., “Cathode Kinetics Evaluation 
+in Lean‐Electrolyte Lithium‐Sulfur Batteries,” Journal of the American 
+13 of 14 
+Battery Energy, 2026
+ 27681696, 2026, 3, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/bte2.70111 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 14>>
+Chemical Society 145, no. 30 (2023): 16449–16457, https://doi.org/10. 
+1021/jacs.3c02786.
+52. X. Ji and L. F. Nazar, “Advances in Li–S Batteries,” Journal of 
+Materials Chemistry 20, no. 44 (2010): 9821, https://doi.org/10.1039/ 
+b925751a.
+53. M. L. Para, C. A. Calderón, S. Drvarič Talian, et al., “Extending the 
+Conversion Rate of Sulfur Infiltrated Into Microporous Carbon in 
+Carbonate Electrolytes,” Batteries & Supercaps 5, no. 5 (2022): 
+e202100374, https://doi.org/10.1002/batt.202100374.
+54. T. Li, X.‐Q. Zhang, P. Shi, and Q. Zhang, “Fluorinated Solid‐ 
+Electrolyte Interphase in High‐Voltage Lithium Metal Batteries,” Joule 
+3, no. 11 (2019): 2647–2661, https://doi.org/10.1016/j.joule.2019.09.022.
+55. J. M. von Mentlen, A. S. Güngör, T. Demuth, et al., “Unraveling 
+Multiphase Conversion Pathways in Lithium‐Sulfur Batteries Through 
+Cryo Transmission Electron Microscopy and Machine Learning‐ 
+Assisted Operando Neutron Scattering,” ACS Nano 19, no. 17 (2025): 
+16626–16638, https://doi.org/10.1021/acsnano.5c00536.
+56. X. Q. Zhang, T. Li, B. Q. Li, et al., “A Sustainable Solid Electrolyte 
+Interphase for High‐Energy‐Density Lithium Metal Batteries Under 
+Practical Conditions,” Angewandte Chemie International Edition 59, 
+no. 8 (2020): 3252–3257, https://doi.org/10.1002/anie.201911724.
+57. A. Vizintin, M. Lozinšek, R. K. Chellappan, et al., “Fluorinated 
+Reduced Graphene Oxide as an Interlayer in Li–S Batteries,” Chemistry 
+of Materials 27, no. 20 (2015): 7070–7081, https://doi.org/10.1021/acs. 
+chemmater.5b02906.
+58. D. J. Tarimo, F. J. García‐Soriano, A. Vizintin, C. Prehal, and 
+V. Presser, “Performance of Microporous Carbon Cathodes and Impact 
+of Cathode/Solid Electrolyte Interphase Formation Using Carbonate 
+and Ether‐Based Electrolytes in Lithium–Sulfur Batteries,” ACS Applied 
+Energy Materials 8, no. 16 (2025): 12139–12156, https://doi.org/10.1021/ 
+acsaem.5c01629.
+59. Y. Zhong, K. R. Yang, W. Liu, P. He, V. Batista, and H. Wang, “Mech­
+anistic Insights Into Surface Chemical Interactions Between Lithium Poly­
+sulfides and Transition Metal Oxides,” Journal of Physical Chemistry C 121, 
+no. 26 (2017): 14222–14227, https://doi.org/10.1021/acs.jpcc.7b04170.
+60. F. J. García‐Soriano, S. A. Ceppi, F. P. Cometto, et al., “Sepiolite as a 
+Novel Polysulfide Trapper for Energy Applications: An Electrochemical, 
+X‐Ray Spectroscopic and DFT Study,” Physical Chemistry Chemical 
+Physics 25, no. 36 (2023): 24761–24769, https://doi.org/10.1039/ 
+d3cp03157h.
+61. Y. Wang, Y. Liu, Y. Tu, and Q. Wang, “Reductive Decomposition of 
+Solvents and Additives Toward Solid‐Electrolyte Interphase Formation 
+in Lithium‐Ion Battery,” Journal of Physical Chemistry C 124, no. 17 
+(2020): 9099–9108, https://doi.org/10.1021/acs.jpcc.9b10535.
+62. C. Xu, F. Lindgren, B. Philippe, et al., “Improved Performance of the 
+Silicon Anode for Li‐Ion Batteries: Understanding the Surface Modifi­
+cation Mechanism of Fluoroethylene Carbonate as an Effective Elec­
+trolyte Additive,” Chemistry of Materials 27, no. 7 (2015): 2591–2599, 
+https://doi.org/10.1021/acs.chemmater.5b00339.
+63. H. Kim, F. Wu, J. T. Lee, et al., “In Situ Formation of Protective 
+Coatings on Sulfur Cathodes in Lithium Batteries With Lifsi‐Based 
+Organic Electrolytes,” Advanced Energy Materials 5, no. 6 (2014): 
+1401792, https://doi.org/10.1002/aenm.201401792.
+64. J. Tan, J. Matz, P. Dong, J. Shen, and M. Ye, “A Growing Appre­
+ciation for the Role of Lif in the Solid Electrolyte Interphase,” Advanced 
+Energy Materials 11, no. 16 (2021): 2100046, https://doi.org/10.1002/ 
+aenm.202100046.
+65. S. Lorger, K. Narita, R. Usiskin, and J. Maier, “Enhanced Ion 
+Transport in Li2O and Li2S Films,” Chemical Communications 57, no. 53 
+(2021): 6503–6506, https://doi.org/10.1039/d1cc00557j.
+66. D. Wang, B. Gwalani, D. Wierzbicki, et al., “Overcoming the Con­
+version Reaction Limitation at Three‐Phase Interfaces Using Mixed 
+Conductors Towards Energy‐Dense Solid‐State Li‐S Batteries,” Nature 
+Materials 24, no. 2 (2025): 243–251, https://doi.org/10.1038/s41563- 
+024-02057-x.
+67. C. Wang, K. Adair, and X. Sun, “All‐Solid‐State Lithium Metal 
+Batteries With Sulfide Electrolytes: Understanding Interfacial Ion and 
+Electron Transport,” Accounts of Materials Research 3, no. 1 (2021): 
+21–32, https://doi.org/10.1021/accountsmr.1c00137.
+68. X. Zhu, L. Wang, Z. Bai, J. Lu, and T. Wu, “Sulfide‐Based 
+All‐Solid‐State Lithium‐Sulfur Batteries: Challenges and Perspectives,” 
+Nano‐Micro Letters 15, no. 1 (2023): 75, https://doi.org/10.1007/s40820- 
+023-01053-1.
+69. F. Y. Fan, W. C. Carter, and Y. M. Chiang, “Mechanism and Kinetics 
+of Li2S Precipitation in Lithium‐Sulfur Batteries,” Advanced Materials 
+27, no. 35 (2015): 5203–5209, https://doi.org/10.1002/adma.201501559.
+70. H. Yuan, H. J. Peng, J. Q. Huang, and Q. Zhang, “Sulfur Redox 
+Reactions at Working Interfaces in Lithium–Sulfur Batteries: A Per­
+spective,” Advanced Materials Interfaces 6, no. 4 (2019): 1802046, 
+https://doi.org/10.1002/admi.201802046.
+71. Y. Shin, D. Stepien, M. Hepp, B. Butz, D. Bresser, and 
+S. Fleischmann, “Cryogenic Electron Microscopy Workflows for the 
+Characterization of Electrochemical Interfaces and Interphases in Bat­
+teries,” Journal of Power Sources 556 (2023): 232515, https://doi.org/10. 
+1016/j.jpowsour.2022.232515.
+Supporting Information 
+Additional supporting information can be found online in the 
+Supporting Information section. 
+Figure S1: Raman spectra of AC08 powders prepared with different ball 
+milling speeds. Figure S2: TGA results of AC08 powders with prepared 
+with different ball milling speeds. Figure S3: Long term cycling per­
+formance of electrodes prepared at different ball milling speeds with a 
+mass ratio of 1:1. Figure S4: Normalized relaxation curves of electrodes 
+prepared at different ball milling speeds (mass ratio 1:1), recorded at 
+OCV during GITT. Figure S5: Reference EELS spectra based on Gatan 
+EELS Atlas. Figure S6: Transmission electron microscopy (TEM) 
+measurements for 800‐rpm ball milled particles after the first discharge. 
+Figure S7: Scanning electron micrographs of electrodes after the first 
+discharge: (a) non‐ball milled (b) 500‐rpm ball milled and (c) 800‐rpm 
+ball milled. Figure S8: Representative spherical masks used for particle 
+size distribution analysis. Table S1: Detailed XPS data representing 
+elemental content in atomic percent. Table S2: Type of function, 
+binding energies (BE), full width half maxima (FWHM), and source of 
+the C 1s deconvoluted spectra in Figure 4. Table S3: Type of function, 
+binding energies (BE), full width half maxima (FWHM) and source of 
+the F 1s deconvoluted spectra in Figure 4. Table S4: Type of function, 
+binding energies (BE), full width half maxima (FWHM) and source of 
+the P 1p deconvoluted spectra in Figure 4. Table S5: Type of function, 
+binding energies (BE), full width half maxima (FWHM) and source of 
+the S 2p deconvoluted spectra in Figure 4. Table S6: Type of function, 
+binding energies (BE), full width half maxima (FWHM) and source of 
+the Li 1s deconvoluted spectra in Figure 4.
+14 of 14 
+Battery Energy, 2026
+ 27681696, 2026, 3, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/bte2.70111 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

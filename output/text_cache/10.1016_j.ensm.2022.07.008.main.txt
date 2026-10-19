@@ -1,0 +1,953 @@
+
+<<PAGE 1>>
+Energy Storage Materials 52 (2022) 85–93
+Available online 13 July 2022
+2405-8297/© 2022 Elsevier B.V. All rights reserved.
+Toward unveiling structure and property relationships from ionic ordering 
+in Li/S battery electrolytes: Neutron total scattering and molecular 
+dynamics simulations 
+Chanbum Park a,b, Matej Kanduˇc c, Thomas F. Headen d, Tristan G.A. Youngs d, 
+Joachim Dzubiella a,e, Sebastian Risse f,* 
+a Research Group for Simulations of Energy Materials, Helmholtz-Zentrum Berlin für Materialien und Energie GmbH, Hahn Meitner Platz 1, Berlin 14109, Germany 
+b Lehrstuhl für Theoretische Chemie, Ruhr-Universit¨at Bochum, Universit¨atsstraße 150, Bochum 44801, Germany 
+c Department of Theoretical Physics, Joˇzef Stefan Institute, Jamova 39, Ljubljana 1000, Slovenia 
+d ISIS Neutron and Muon Source, Rutherford Appleton Laboratory, Harwell Campus, Didcot OX11 0QX, United Kingdom 
+e Applied Theoretical Physics-Computational Physics, Physikalisches Institut, Albert-Ludwigs-Universit¨at Freiburg, Hermann-Herder-Straße 3, Freiburg 79104, Germany 
+f Department for Electrochemical Energy Storage, Helmholtz-Zentrum Berlin für Materialien und Energie GmbH, Hahn Meitner Platz 1, Berlin 14109, Germany   
+A R T I C L E I N F O  
+Keywords: 
+Lithium/sulfur battery 
+Electrolyte structure 
+Neutron total scattering 
+Molecular dynamics simulation 
+A B S T R A C T  
+With their high energy density and environmental friendliness, lithium/sulfur (Li/S) batteries represent a 
+promising candidate for the post-lithium-ion era. However, complex degradation mechanisms and a lack of 
+microscopic insight into the molecular structure of the polysulfide (PS) and ether-based electrolyte materials 
+have hindered the broad commercialization of this energy storage system so far. Here, neutron scattering ex­
+periments combined with electronic-continuum corrected molecular dynamics simulations of typical ether-based 
+electrolytes for lithium/sulfur batteries were used to elucidate the complex electrolyte and PS structure. We find 
+that a delicate balance between ion-ion and ion-solvent interactions steers the ordering and undesired clustering 
+of Li+ and PS ions at moderate concentrations (> 1 M). In particular, ‘solvent-separated’ Li+ ions and PS/anions 
+induce a cation and anion short-ranged alternating structure. At these moderate concentrations, we show the 
+onset of the decoupling of diffusion processes of Li+ ions into caged and jump diffusions within the 3D TFSI−
+networks. Our study and the presented combination of methods are extendable to other electrolytes and com­
+positions and provide a significant step forward in the modeling and understanding of next-generation battery 
+materials.   
+1. Introduction 
+Driven by the ever-growing electric vehicle sales and renewable 
+energy generation, the demand for energy storage systems increases. 
+Highly efficient and economically attractive battery technologies are 
+expected to play a crucial role in transitioning to a sustainable energy 
+system. Lithium-sulfur (Li/S) batteries are a promising candidate for 
+next-generation energy storage systems because of their low cost, safety, 
+and high theoretical specific energy of 2600 W h kg−1 [1]. 
+However, the commercial applications of Li/S batteries are still 
+hindered by several intrinsic problems, such as the dendrite formation 
+and the reactive Li-metal electrode, the significant volume change of the 
+active materials, the insulating properties of S8 and Li2S, and the poly­
+sulfide (PS) shuttle during the charging. Among these issues, the PS 
+shuttle is considered to be the primary factor causing rapid capacity 
+fading and low Coulombic efficiency [2]. The shuttle effect is caused by 
+highly soluble intermediate PS ions, which escape from the cathode side, 
+and "shuttle" between the cathode and anode during charging, resulting 
+in parasitic reactions on the Li metal anode. Subsequently, it forms 
+insulating layers on the Li metal surface, leading to fast capacity fading 
+in Li/S batteries. 
+Various strategies have been attempted to address this shuttle effect. 
+Abbreviations: Li/S, lithium/sulfur; PS, polysulfide; MD, molecular dynamics; E/S, electrolyte/sulfur; d-DME, deuterated 1,2-dimethoxyethane; d-THF, deuterated 
+tetrahydrofuran; LiTFSI, lithium bis(trifluoromethanesulfonyl)imide lithium salt; NIMROD, the Near and InterMediate Range Order Diffractometer; ECC, the elec­
+tronic continuum correction; RDFs, radial distribution functions. 
+* Corresponding author. 
+E-mail address: sebastian.risse@helmholtz-berlin.de (S. Risse).  
+Contents lists available at ScienceDirect 
+Energy Storage Materials 
+journal homepage: www.elsevier.com/locate/ensm 
+https://doi.org/10.1016/j.ensm.2022.07.008 
+Received 21 January 2022; Received in revised form 13 June 2022; Accepted 5 July 2022   
+
+<<PAGE 2>>
+Energy Storage Materials 52 (2022) 85–93
+86
+They include the physical confinement of sulfur into a highly ordered 
+porous carbon [3–5], the chemisorption between the host materials and 
+sulfur [6–9], interlayer materials [10,11], or sulfurized-conductive 
+polymers [12,13]. From the electrolyte side, highly concentrated elec­
+trolytes [14], ionic liquids [15], restricting the polysulfide solubility, or 
+the use of sparingly solvating electrolytes [16–20] have been explored. 
+Recently, the opposite direction of maximizing the solubility of poly­
+sulfides by using high donor solvents or salts has also been actively 
+studied in the context of the low electrolyte/sulfur (E/S) ratio [21–24]. 
+The formation of the ionic pairs or aggregates strongly depends on 
+the ionic strength, concentration, polar/non-polar, donor ability, and 
+the shapes of ions and solvents [2,18]. Such ion pairs or aggregates 
+affect ionic conductivity, diffusion, and solubility of Li+ and PS ions in 
+Li/S electrolytes. The shuttling PS species during charging can be 
+influenced by the Li+-Sn
+2– association or clustering [25]. 
+Although the properties of electrolytes for Li/S batteries are critical 
+to the electrochemistry [26] and the shuttle effect [15,18,23,27,28], a 
+deeper understanding of the structure of Li/S electrolytes is still 
+controversial. Previously, density functional theory calculations [29,30] 
+revealed that Li/PS clusters or networks are more favorable than simple 
+Li2Sn. Studies with classical force-field based molecular dynamics (MD) 
+simulations [31,32] also reported aggregated PSs in the solutions. 
+Andersen et al. [32] found that the computationally calculated NMR and 
+X-ray absorption spectroscopies for the aggregated PSs chains agree with 
+experiments. Meanwhile, our previous study [25] showed that the ten­
+dency to cluster decreases with PS chain length, though single PS units 
+prevail. Up to now, several experimental and theoretical studies have 
+been investigating the stable PS species in the Li/S battery electrolytes. 
+Nevertheless, the structure of the liquid PS electrolytes is still not fully 
+understood. 
+In this study, we use a combination of neutron scattering experi­
+ments and the electronic continuum corrected (ECC) method [33–40], 
+‘ECC-MD’ simulations to elucidate the liquid PS electrolyte structure. 
+Neutron scattering experiments can provide a total structure factor for 
+liquid electrolytes, a robust experimental benchmark for solution 
+structure. At the same time, MD simulation trajectories can be used to 
+obtain the total structure factor. As shown previously, ECC-MD can 
+provide consistent insight into electrolyte structure and dynamics in 
+organic and aqueous solvents [25,34,39,41]. Combining neutron ex­
+periments and MD simulations provides direct insights into the liquid 
+structural properties of electrolytes for Li/S batteries and elucidates the 
+complex interaction of the lithium salts with the PS. 
+2. Experimental section 
+All chemicals were used without further purification and were pur­
+chased from Sigma Aldrich except for the deuterated dimethoxyethane 
+(d-DME), which was ordered from Eurisotop. Lithium sulfide and sulfur 
+were mixed in the respective ratios to obtain the desired stoichiometric 
+ratio for the different concentrations of PS solutions (0.1, 0.5, and 1.0 
+M). The two fully deuterated solvents used are tetrahydrofuran (d-THF) 
+and 1,2-dimethoxyethane (d-DME). THF was used instead of the mainly 
+used 1,3-dioxolane (DOL) because of its more straightforward deutera­
+tion procedure and its chemical similarity. The various solutions were 
+mixed with PS, lithium bis(trifluoromethanesulfonyl)imide lithium salt 
+(LiTFSI), and LiNO3. In order to gain a clearer picture of the liquid 
+structure and the functionality of real electrolytes for PS batteries, we 
+prepared an electrolyte solution (‘EL’), which was utilized in Li/S bat­
+tery experiments [42,43]. The investigated chemical compounds are 
+shown in Fig. 1 and their solutions summarized in Table 1 (detailed 
+computational setup is tabulated in Table S1 in the Supporting Infor­
+mation (SI)). 
+Neutron diffraction data were collected using the Near and Inter­
+Mediate Range Order Diffractometer (NIMROD) instrument [44] at the 
+ISIS spallation neutron source (Harwell, U.K.). The liquid samples were 
+prepared in a glovebox filled with argon atmosphere, and null scattering 
+Ti0.68Zr0.32 alloy cells were used, as this avoids potential issues with 
+cell background subtraction from Bragg peaks. These flat sample con­
+tainers had internal dimensions of 35 × 35 × 1 mm and were loaded into 
+an automatic sample changer. All measurements were conducted at 
+room temperature, which was around 24 ◦C. The neutron scattering of 
+the samples was measured with a beam size of 30 × 30 mm for at least 2 
+h. The measured neutron scattering was reduced to the differential 
+scattering cross-section F(q) using the program GudrunN [45,46]. This 
+program summarizes the time-of-flight scattering from all detectors to a 
+single q-scale, normalizes to a 3 mm VNb plate calibration standard, 
+subtracts the scattering from the sample container and empty instru­
+ment, and applies corrections for beam attenuation, multiple scattering, 
+and inelastic scattering [47]. 
+3. Molecular dynamics simulations 
+For atomistic modeling, we used the OPLS-AA force field [48] for the 
+THF and DME solvents, Dang parameters for Li+ ions [49], the DREID­
+ING force field for the S atoms [50], and the CL&P force field for TFSI– 
+ions [51]. Lennard-Jones interaction parameters (σij and εij) between 
+different species (i and j) were calculated using the geometric combi­
+nation rules. 
+The chosen combination of force field parameters has been shown to 
+reproduce very well experimental diffusion coefficients, conductivity, 
+Fig. 1. Illustration of the ions (a to e) and solvent molecules (f and g) in the 
+investigated solutions. 
+Table 1 
+Investigated solutions in experiments and MD simulations. In the sample name 
+LTx-PSy, x stands for LiTFSI concentration and y for polysulfide concentration.  
+Sample name 
+Composition 
+LT0-PS00 
+deuterated tetrahydrofuran (D-THF) 
+LT1-PS00 
+D-THF + 1.0 M LiTFSI 
+LT0-PS05 
+D-THF + 0.5 M Li2S6 
+LT0-PS10 
+D-THF + 1.0 M Li2S6 
+LT0-PS4101 
+D-THF + 1.0 M Li2S4 
+LT1-PS05 
+D-THF + 1.0 M LiTFSI + 0.5 M Li2S6 
+LT1-PS10 
+D-THF + 1.0 M LiTFSI + 1.0 M Li2S6 
+EL 
+D-THF/d-DME (1:1, v:v) + 0.25 M LiNO3 + 1.0 M LiTFSI + 0.1 
+M Li2S8 
+LT0-PS4101 
+THF + 1.0 M Li2S4 
+LT0-PS2101 
+THF + 1.0 M Li2S2 
+LT05-PS205- 
+NO051 
+THF + 0.5 M LiNO3 + 0.5 M Li2S2 
+LT05-PS2051 
+THF + 0.5 M LiTFSI + 0.5 M Li2S2 
+1The systems are investigated with only MD simulations. 
+C. Park et al.                                                                                                                                                                                                                                    
+
+<<PAGE 3>>
+Energy Storage Materials 52 (2022) 85–93
+87
+viscosity, and density of similar solutions [25,41,]. Notably, the in­
+teractions between ions, especially between Li+ions and terminal S 
+atoms, require special attention, as they are the ones responsible for PS 
+clustering and aggregation [25]. Therefore, properly modeling these 
+interactions is crucial to reproduce the experimental results. To that end, 
+we compared two options for ionic interactions: (1) In the conventional 
+approach (termed ’conv’), we used original LJ parameters and formal 
+(integer) ionic charges, as provided by the used force fields. (2) In the 
+second approach (termed ’ECC’), we used the electronic continuum 
+correction (ECC) method [33], in which all ionic charges were reduced 
+by the high-frequency diffractive index n = 1.4 of THF in order to mimic 
+the electronic polarizability implicitly, which is not included in the 
+classical force field [25,41]. In addition, the LJ size parameter between 
+the Li+ ion and S atoms was increased from the original σLi−S = 0.233 to 
+0.275 nm, as rationalized in our previous work [25]. 
+MD simulations were carried out with the GROMACS simulation 
+package using the velocity Verlet algorithm for integrating Newton’s 
+equations of motion [52]. Initial simulation structures of ions in the 
+solvent were constructed with the PACKMOL package [53]. The mole­
+cules were randomly inserted into the simulation box and then first 
+equilibrated by the energy minimization procedure, followed by an NPT 
+simulation (fixed number of particles, pressure, and temperature) using 
+the Berendsen et al. [54] and Parrinello and Rahman [55] barostats (the 
+equilibrated cubic box size L was ~7 nm). The production simulations 
+were carried out with a time step of 2 fs in the NVT ensemble (fixed 
+number of particles, volume, and temperature) at 298 K (see Table S1). 
+The atom positions were stored every 6 ps. The temperature was 
+controlled by the Nos´e-Hoover chain thermostat [56] with a time con­
+stant of 0.8 ps. The cutoff of the non-bonded interactions was set to 1.2 
+nm, with a standard dispersion correction for energy and pressure. The 
+particle mesh Ewald method with a Fourier spacing of 0.12 nm and a 1.2 
+nm real-space cutoff was used for calculating electrostatic interactions 
+[57]. The LINCS algorithm was used for all bond constraints [58]. Pe­
+riodic boundary conditions were used to approximate infinite bulk 
+behavior. The equilibration was quantified by monitoring the average 
+molecular cluster size <N> of PS, see Fig. S1 in the SI. A cluster was 
+defined as a group of PS ions whose at least one terminal S atom ap­
+proaches a terminal S atom of another PS ion within at least 0.53 nm 
+[25]. 
+Radial distribution functions (RDFs), mean square displacement 
+(MSD), and the van Hove function were obtained using a GROMACS 
+utility. The static structure factors were obtained using the ‘DLPUtils’ 
+analysis code [52,59]. The measured total structure factor F(q) in the 
+simulations can be constructed from a weighted sum of all of the partial 
+structure factors Sij(q) [46] 
+F(q) =
+∑
+i,j≥i
+(
+2 −δij
+)
+cicjbibj
+(
+Sij(q) −1
+)
+(1)  
+where q is the scattering vector of length 4π(sinθ)/λ for a neutron of 
+wavelength λ scattered at an angle of 2θ. Here, ci and bi are the atomic 
+fraction and the neutron scattering length of atom i, respectively. The 
+partial structure factor Sij(q) is then related to the RDF, gij(r), of the atom 
+pair ij by a Fourier transform 
+Sij(q) −1 = 4πρ0
+q
+∫∞
+0
+r
+[
+gij(r) −1
+]
+sin(qr)dr,
+(2)  
+where ρ0 is the atomic number density of the solution. Given that the 
+positions of all atoms in the system are known, the total structure factor 
+F(q) can be calculated and compared to the experimental total structure 
+factor. 
+4. Results 
+Fig. 2 shows the total structure factor, F(q), from the neutron 
+scattering data collected on 100 % deuterated THF (solid gray line) and 
+MD simulations using the ECC correction (red dashed line) and the 
+conventional approach (blue dotted dash line). In general, the quality of 
+the structure factor from the ECC approach is found to yield better 
+agreement with the experimental data than the conventional approach. 
+The main peak is located around 1.4 Å−1, and the tail slightly fluctuates 
+between 2.5 and 3.5 Å−1
+. The agreement with the simulation is also good 
+for samples containing only light hydrogen (see Fig. S2 in the SI). 
+However, because of the low scattering contrast in this system, neither 
+the experimental or simulated total structure factors show a low q peak, 
+and therefore this dataset does not afford as robust an experimental 
+structural benchmark as the fully deuterated samples. 
+In Fig. 2d–g, we observe a distinctive, low q peak between 0.4 and 
+0.9 Å−1 in the scattering data and the ECC simulations. This low q peak 
+increases in intensity with concentrations of PS and LiTFSI. In the EL 
+Fig. 2. Structure factors F(q) obtained from neutron scattering and MD simu­
+lations in different solutions. The neutron scattering data are collected on 100 
+% deuterated solvents (gray solid lines). MD simulations using the ECC and 
+conventional approaches are shown in red dashed and blue dash-dotted lines, 
+respectively. The solid and dashed vertical lines show the positions of the main 
+peak in LT0-PS00 and the low q peak in LT1-PS00, respectively. 
+C. Park et al.                                                                                                                                                                                                                                    
+
+<<PAGE 4>>
+Energy Storage Materials 52 (2022) 85–93
+88
+system (Fig. 2g), however, the peak is rather weak. Using shorter PS 
+chains in LT0-PS410 also features the main peak at around 1.4 Å−1 but 
+not the low q peak (Fig. S3 in the SI). Note that experimental data for the 
+latter are not available. 
+Overall, the ECC simulation approach is able to capture the varia­
+tions of the main peak around 1.4 Å−1 and the low q peak at 0.4–0.9 Å−1 
+in different solutions. This comparison validates the ECC simulation 
+approach as a suitable model capable of reproducing the experimental 
+results. Therefore, the MD simulation analysis and predictions in the 
+following will be based on the ECC approach. 
+In general, the structure factor F(q) in Fig. 2 features two peaks: the 
+main one at around 1.4 Å−1 and the low q peak between 0.4 and 0.9 Å−1. 
+The main peak can be attributed to the size and packing of the THF 
+molecules and is therefore present in all samples (see the RDF analysis 
+and the partial structure factor in Figs. S4 and S5 in the SI. Note that 
+peaks in F(q) and real-space correlation lengths are related via r = 2π/q). 
+The low q peak develops by adding LiTFSI salt or PS into the THF solvent 
+(LT1-PS00, Fig. 2b, and Fig. S5 in the SI). Partial structure factor analysis 
+reveals that adding LiTFSI in LT1-PS00 increases the contributions from 
+the C-D and D-D atom pairs (carbon ‘C’ and deuterium ‘D’) to the low q 
+peak (shown in Fig. S5 in the SI). Even though the Li-Li and N-N pairs 
+also feature the same low q peak, their absolute contribution is negli­
+gible (see Fig. S6). Namely, the weighted structure factor cicjbibjSij(q) is 
+dominated by the carbon ‘C’ and deuterium ‘D’ species from solvent 
+molecules. Meanwhile, as the LiTFSI ion pairs feature a long-range 
+correlation and also affect the solvent structure (‘C’ and ‘D’ species), 
+they contribute to the low q peak. 
+Similar observations regarding LiTFSI were reported by Aguilera 
+et al. [60], stating that the low q peak between 0.8 and 1.0 Å−1 in 
+LiTFSI/tetraglyme (G4) electrolytes is due to a charge alternation of 
+Li+/G4 complexes and TFSI anions. Namely, the long carbon and oxygen 
+chain in G4 embraces (chelates) Li+ ions, forming solvent-separated ion 
+pairs. These Li+/G4 complexes act as positive ions, and together with 
+TFSI anions, they form alternating structures reminiscent of ionic liquids 
+[60]. Although the chelate effect is not expected to occur in our systems 
+with the THF solvent, we attribute the low q peak in the presence of 
+LiTFSI salt to an alternating structure of Li+ and TFSI−ions. In addition, 
+the angular distributions of TFSI-Li-TFSI formations within the second 
+solvation shell of Li+ ions present preferential angles around 90 degrees 
+(see Fig. S7 in the SI). Namely, instead of random configurations of Li+
+Fig. 3. Radial distribution functions (RDFs) derived from ECC-MD simulations for different solutions: (a) LT0-PS10, (b) LT1-PS10, and (c) EL. Representative 
+snapshots of Li+ solvation shell are shown in (d) for LT0-PS10, (e) for LT1-PS10, and (f) for EL. 
+C. Park et al.                                                                                                                                                                                                                                    
+
+<<PAGE 5>>
+Energy Storage Materials 52 (2022) 85–93
+89
+and TFSI−
+ions, they rather form a short-ranged alternation of 
+Li-ion/solvent and TFSI ion in the solution. We corroborate this notion 
+by the partial structure factor and RDF analysis in Figs. S5, S6, and S8 in 
+the SI. 
+Moreover, the low q peak evolves with an increasing concentration 
+of the PS component (Li2Sn) alone, that is, even without LiTFSI (LT0- 
+PS10). A significant contribution to the peak in this case stems from the 
+Li-Li pairing, as implied by the RDF and partial structure factor results in 
+Figs. 3a, S9, S10, and S11a in the SI. In LT0-PS05 (Fig. 2c), the con­
+centration of Li2S6 is probably too low to engender the peak, even 
+though it features a fairly identical Li-Li RDF as LT0-PS10 (see Fig. S9 in 
+the SI). 
+It is interesting to take a deeper look into the local environment of 
+Li+ ions. Li+ ions are solvated well by the THF solvent (see Fig. 3d), as 
+indicated by a strong Li-OTHF peak in Fig. 3a. As follows from the co­
+ordination number analysis (Fig. S12 in the SI), each Li+ in LT0-PS10 is 
+on average surrounded by ~3.4 THF molecules and 0.5 terminal sulfur 
+atoms of PS chains. Similarly to the Li+ solvation in LT1-PS00, the 
+solvent-separated Li+ ions and PS terminals configure an alternating 
+structure and lead to the long-range correlations that are manifested in 
+the low q peak at 0.4–0.9 Å−1 in Fig. 2d. 
+Fig. 2e and f show that the low q peak grows with an increasing 
+concentration of Li2S6 particularly strong in the presence of LiTFSI. The 
+position of the low q peak accords with the RDF peaks of the Li-Li, SS6- 
+NTFSI, and NTFSI-NTFSI pairs (Figs. 3b and S11b). The first peak of Li-NTFSI 
+at ~4 Å is contributed to the TFSI−ions interacting with Li+ ions in a 
+monodentate way, whereas the second peak at ~7 Å comes from the 
+TFSI−
+ions in the second solvation shell of Li+ ions. A snapshot of a 
+TFSI−ion in the first solvation shell of Li+ is shown in Fig. 3e. The co­
+ordination number of Li+ ions by TFSI−ions increases by ~50 % (from 
+0.16 to 0.25, see Fig. S12d and e in the SI) when going from LT1-PS05 to 
+LT1-PS10. This can be interpreted that adding Li2S6 increases the 
+alternating structure of TFSI−ions. 
+Interestingly, adding 0.25 M LiNO3 into the 0.1 M Li2S8 + 1 M LiTFSI 
+(EL solution) features only a weak low q peak. We also observe that the 
+RDF peak for Li-Li at around 9 Å, which corresponds to the low q peak, in 
+Fig. 3a and b is absent in Fig. 3c (EL solution). Thus, the low q peak in the 
+EL solution (Fig. 2g) does not stem from Li+ ions but instead from anion- 
+anion pair correlations involving TFSI: SS6-NTFSI, NTFSI-NTFSI, and NTFSI- 
+NNO3 (also see Fig. S11c). 
+Based on our observation described above, Li+ ions in LT0-PS10, 
+LT1-PS10, and EL are closely surrounded by OTHF and S atoms. NO −
+3 
+ions in EL are also able to tightly bound to Li+ ions (see a pronounced 
+peak at low r in Fig. 3c). Meanwhile, the pair distributions of anion- 
+anion pairs, except NNO3-NNO3, are found at a larger r than Li-OTHF 
+and Li-anion. 
+We now take a closer look at how PS molecules in the simulations 
+cluster together. Our previous study showed that PS ions are very in­
+clined to cluster together, especially at higher concentrations [25]. Here, 
+we also observe that the clustering of PS tends to increase with PS and 
+LiTFSI concentration, as shown in Fig. 4. Yet, single PS ions still prevail 
+at the investigated concentrations. The most extensive clustering is 
+therefore observed at the highest concentrations of PS and LiTFSI 
+simultaneously, which is in the LT1-PS10 solution, albeit only with 
+around 10% of dimers and 1% of trimers. In contrast, the EL solution 
+forms the fewest PS clusters among all the solutions. The major reason is 
+that S8 is less prone to clustering than S6, owing to less localized charges 
+at its termini [25]. By the same token, substituting S6
+2– by S4
+2– and S2
+2– 
+increases clustering (see Fig. S13 in the SI). The short PS (e.g., 
+LT0-PS210) exhibits the formation of large precipitates. Yet, the clus­
+tering sizes decrease significantly when LiNO3 or LiTFSI are added to the 
+solutions. Interestingly, the low q peak does not stem from PS clustering. 
+Namely, conv-MD simulations, which are prone to unrealistically 
+excessive clustering (see Fig. S13b in the SI), do not produce the low q 
+peak in Fig. S3 in the SI. 
+To elucidate the relation between the low q peak in F(q) and the 
+alternating charge structure, we further analyze the charge-charge cor­
+relations, defined as 
+Q(r) =
+∑
+i={+,−}
+4πziρigLi,i(r)rdr
+(3)  
+where zi, ρi, and gLi, i(r) are the valency, the number density of ion i, and 
+the RDF between Li+ ion and ion i. Evaluated Q(r) for different systems, 
+shown in Fig. 5, exhibit asymptotically decaying oscillations, which 
+indicates a long-range ordering of anions and cations around the Li+ ion. 
+Notably, the charge oscillations in panels d–f are much stronger than 
+those in panels a–c and exhibit several local minima at small r. Impor­
+tantly, the ionic strength of the solutions shown in panels a–c is weaker 
+than in the solutions in panels d–f. We suppose that adding LiTFSI salt 
+into the solution increases the packing of solvent-separated cations and 
+anions, which induces an alternating structure. In the case of EL (panel 
+f), we can find a tiny positive peak at around 5 Å followed by relatively 
+weak anion/cation oscillations compared with those in panels d and e. 
+According to the RDF for Li-NNO3 in Fig. 3c, the Li+ and NO −
+3 ions form 
+strong ion pairs or triples (see Fig. 3f). 
+The charge-charge correlations reveal the locally ordered alternating 
+structure in spite of the complex ionic constituents. Moreover, the 
+angular distributions of anion-Li-anion formations within the second 
+solvation shell of Li+ ions, which corresponds to the low q peak in F(q), 
+enable us to picture the 3D configurations of anion-Li-anion (see 
+Fig. S7). The angular distributions of TFSI-Li-TFSI in LT1-PS00 and EL 
+peak at around 90 degrees. In the case of LT1-PS10, a more pronounced 
+peak around 80 degrees is found. Namely, TFSI−ions around Li+ have a 
+slight preference for angular arrangement within the second solvation 
+shell, reminiscent of a short-ranged alternating structure. 
+We now turn to the transport properties of the species in the inves­
+tigated systems, see Fig. 6. The systems with low concentrations of PS 
+feature higher self-diffusion coefficients of all species compared to those 
+with high PS concentrations. For example, the self-diffusion coefficient 
+of Li+ is about ten times smaller in LT1-PS10 than in LT0-PS10 and EL. 
+In the same graph, we also plot reciprocal values of the viscosities (η) 
+evaluated from the simulations. Apparently, the self-diffusion co­
+efficients follow the Stokes–Einstein relation D ∝1/η quite well for not 
+too concentrated electrolytes. However, the diffusion coefficients in 
+highly concentrated PS systems (LT1-PS05 and LT1-PS10) deviate from 
+the viscosity trend. We believe that this lowering of diffusion coefficients 
+Fig. 4. Cluster size distributions in a log-lin representation obtained from ECC- 
+MD simulations for the investigated solutions. 
+C. Park et al.                                                                                                                                                                                                                                    
+
+<<PAGE 6>>
+Energy Storage Materials 52 (2022) 85–93
+90
+is due to associations of ionic species into larger and less mobile clusters 
+[25]. 
+Additional insight into the diffusion dynamics can be gained from 
+mean squared displacements (MSD) of Li+ ions (see Fig. S14). Very 
+generally, MSD enters the normal diffusion regime (MSD ∝ t) after a 
+sufficient lapsed time. The normal diffusion regime is commonly pre­
+ceded by a sub-diffusion regime (MSD ∝ tα with α < 1). We observe that 
+the crossover time into the normal diffusion regime is longer for higher 
+PS concentrations, culminating in the LT1-PS10 system. 
+Note that in glass-forming supercooled liquids and dense colloidal 
+suspensions, sub-diffusive regimes can be extremely long, resulting in a 
+quasi sub-diffusive plateau [61,62]. 
+Moreover, as shown by our analysis with the van Hove functions (see 
+Fig. S15), the MSDs in weakly concentrated systems (LT1-PS00, LT0- 
+PS05) are nearly Gaussian distributed. However, they start to deviate 
+from Gaussianity in EL, LT0-PS10, LT1-PS05, and particularly in LT1- 
+PS10 (see the inset of panel f in Fig. S15). In the latter systems, the 
+tails of the distributions are ticker (nearly exponential) than in the 
+Gaussian distribution. The exponential tails are a universal signature of 
+the jump (or hopping) diffusion: the particle dwells most of the time in a 
+local cage and performers larger jumps into a new cage after a large 
+enough thermal fluctuation. In our case, the entrapment of Li ions is due 
+to the association with PS ions. 
+As we have seen from RDFs in Fig. 3, the first Li+ solvation shell is 
+mainly dominated by solvent molecules, followed by PS. Thus, Li+ ions 
+diffuse with their solvating molecules, termed a vehicle diffusion. By 
+adding LiTFSI salt into the PS solution (e.g., LT1-PS10), a short-ranged 
+alternating structure among TFSI and Li within the second solvation 
+shell of Li+ starts to form, which is also seen in the enhanced RDF peak at 
+around 10 Å. The diffusion coefficients of Li+ and TFSI−in LT1-PS10 
+(Fig. 6) and the autocorrelation function (Fig. S17) imply that their 
+motions are fairly synchronized. We suppose that the ‘semi-ordered’ 
+anion structure within the second solvation shell of Li+ influences the 
+diffusion of Li+ in such a way that the Li+ diffusion process is composed 
+of caged and jump diffusions. 
+5. Discussion 
+We have shown that the main peak and the low q peak in Fig. 2 are 
+related to the packing of solvent molecules and the alternating structure 
+of cations and anions. ECC-MD simulations indicate that this alternating 
+structure occurs only when ions are separated by solvent molecules. 
+Fig. 7 shows representative snapshots of ion distributions in different 
+systems. The dashed lines depict the connectivity of Li+ ions in the 
+distance 7-12 Å (which corresponds to the low q peak in F(q)). In LT0- 
+PS10, Li+ and S 2−
+6 
+ions are uniformly distributed over space (Fig. 7a), 
+but S 2−
+6 
+ions are able to contact Li+ ions via terminal S atoms instead 
+(see Fig. 3d), forming weak Li+-S6 networks. Although the electrostatic 
+force from Li+ ions attract anions, Li+ and S 2−
+6 
+ion pairs are frequently 
+disrupted by solvent molecules (reflected by the coordination number of 
+the terminal S 2−
+6 
+in Fig. S12c). This is attributed to the relatively lower 
+electron density at terminal S atoms of S 2−
+6 
+ions compared to shorter PS 
+chains [25]. 
+Adding LiTFSI into the solution (cf. LT0-PS10 and LT1-PS10) in­
+creases the packing of ions, and Li+ ions are more uniformly distributed 
+in LT1-PS10 (Fig. 7b) than in LT0-PS10 (Fig. 7a). Similar to S 2−
+6 
+ions in 
+LT0-PS1, the binding affinity of S 2−
+6 
+and TFSI−to Li+ions is not intense 
+enough to entirely replace solvent molecule in the first solvation shell of 
+Li+ ions. The delicate balance between the ionic and solvent interactions 
+leads to a regular distance between the ionic species, as shown in the 
+RDFs in Fig. 3 and the alternating net charge in Fig. 5. 
+It can be conceived that the intensity of the low q peak observed in 
+Fig. 2 can also be related to the binding affinity or the donor ability of 
+ions and solvent molecules. Depending on the binding affinity, ionic 
+species can be categorized as a ’solvent-separated ion pair’ (SSIP), 
+’contact ion pair’ (CIP), or aggregate. By classifying ionic species for PS 
+electrolytes, we can have an approximate ranking for increasing ionic 
+Fig. 5. Charge-charge correlations Q(r) referenced with respect to Li+ ions in 
+(a) LT1-PS00, (b) LT0-PS05, (c) LT0-PS10, (d) LT1-PS05, (e) LT1-PS10, and (f) 
+EL using ECC-MD. 
+Fig. 6. Self-diffusion coefficients of the spiecies in selected systems. The 
+reciprocal values of electrolytes’ viscosities are shown by gray crosses (right 
+scale) for comparison with the Stokes–Einstein relation. 
+C. Park et al.                                                                                                                                                                                                                                    
+
+<<PAGE 7>>
+Energy Storage Materials 52 (2022) 85–93
+91
+strength of ion pairs/triples. With that, we can predict the solubility and 
+reaction pathways of PS chains with different combinations of ions and 
+solvents based on the ionic association strength. In our previous study 
+[41], we categorize Li+-TFSI- as a SSIP and Li+ −NO−
+3 as a CIP or 
+aggregate. Considering the F(q), RDFs, and the coordination number 
+analysis, S 2−
+6 
+chains also can be categorized as SSIPs. This SSIP of 
+Li+-S 2−
+6 
+facilitates the dissociated free Li+ ions, resulting in high con­
+ductivity and transference number in the solutions [25]. 
+Meanwhile, the strong ionic interactions alter the solvation structure 
+of Li+ ions and PS clustering to a large degree. Recent studies show that 
+high donor number solvents and salts can facilitate Li2S nucleation 
+growth and its kinetics [21,63]. The nucleation and growth of Li2S are 
+controlled by the diffusion of PS in the solutions. We assume that the 
+repulsive interaction between the high donor anions and PSs can in­
+fluence the shape of the Li2S nucleation. Similarly, other high-donor salt 
+anions, such as Br−, CF3CO −
+3 , and I−
+ions, are expected to exhibit 
+similar solvation structures as Li+ −NO−
+3 observed in this study. This 
+result is surprising because the actual motivation for adding LiNO3 to the 
+electrolyte is the passivation of the lithium anode [64]. This 
+cluster-breaking effect, therefore, represents a second positive effect 
+against cluster formation. 
+We suppose that the strongly bound NO −
+3 ions to Li+ ions are very 
+closely related to the chemistry of the solid-electrolyte interface (SEI) 
+layer [65]. As the NO −
+3 ions are smaller than the PS ions, it is more likely 
+to find a Li+ −NO−
+3 pair near the electrode surface, which also decreases 
+the presence of Li-PS pairs at the same spot. It is known that closely 
+associated 
+cations 
+and 
+anions 
+shift 
+the 
+lowest 
+unoccupied 
+molecular-orbital energies of anions [65], consequently, anions will be 
+reduced to form inorganic compounds for SEI layers. Therefore, the 
+quality of the SEI layer can be partly deduced from the Li+ ion solvation 
+structure. 
+To reduce the polysulfide shuttle effect, highly concentrated TFSI−
+electrolytes are often used [66,67]. As the result of the high ionic 
+strength and steric effects, TFSI−ions localize within the second solva­
+tion shell of Li+ ions in the investigated systems in this study. Having 
+shown that Li+ and TFSI−
+ions form ‘semi-ordered’ structures, the 
+character of the alternating structure will be enhanced at higher TFSI−
+concentrations or lower temperatures. A recent study on transport 
+properties of Li+ ions in “solvent-in-salts” systems found relatively fast 
+diffusion of water and Li+ ions in highly concentrated TFSI−
+systems 
+with a slow relaxation time [68]. Likewise, the diffusion of Li+ is 
+strongly affected by the solvation and shape of solvent molecules and the 
+anionic structure within the second solvation shell. We suppose that 
+high donor ability and large solvent molecules tend to trap Li+ ions in 
+fairly ordered anionic networks, resulting in a jump diffusion process. 
+On the other hand, for small solvent molecules, such as water, the 
+effective radius of the Li+ ion solvation shell is expected to be small. As a 
+consequence, vehicle diffusion would be possible within the anionic 
+networks. With this hypothesis, small solvent molecules will assist fast 
+diffusion of Li+ ions and increase the transference number in these 
+anionic networks. 
+6. Conclusion 
+By comparing neutron scattering experiments and force-field based 
+electronic-continuum corrected MD simulations, we investigate the 
+structure and clustering behavior of PS in THF solutions. Neutron scat­
+tering data show pronounced low q peaks between 0.4 and 0.9 Å−1 in 
+LT0-PS10 and LT1-PS10. MD simulations reproduce the structure factor 
+F(q) very well, along with the low q peak. The latter is attributed to the 
+long-range Li+-Li+ and anion-anion correlations as an alternating 
+structure of cations and anions in the solutions. This observation in­
+dicates that the anions with low donor numbers (i.e., TFSI−
+and S 2−
+6 
+ions) form SSIPs with Li+ ions. SSIPs in moderate concentrations (> 1 M) 
+Fig. 7. Representative snapshots from ECC-MD of (a) LT0-PS10 (b) LT1-PS10, 
+and (c) EL. The solvent molecules are not shown. The dotted lines connect Li- 
+ions whose distance are between 7 and 12 Å. 
+C. Park et al.                                                                                                                                                                                                                                    
+
+<<PAGE 8>>
+Energy Storage Materials 52 (2022) 85–93
+92
+induce the cation and anion alternating structures. In contrast, the an­
+ions with high donor numbers (i.e., NO−
+3 ) form CIPs or aggregates. We 
+observe that adding LiNO3 salt into the PS solutions reduces the clus­
+tering of PS. Highly coupled NO −
+3 and Li+ ions prevent PS from forming 
+larger clusters by screening electrostatic potentials. The relative posi­
+tions of cations and anions in the solutions give rise to a short-ranged 
+alternating structure, especially among TFSI and Li ions. Meanwhile, 
+the SSIP interaction between Li+ and S 2−
+6 
+ions shows prevalent mono­
+mer PS units instead of large clusters of PSs. 
+The self-diffusion coefficients of the species in the investigated so­
+lutions with low ionic strength are inversely proportional to viscosity. 
+Yet, the solutions with high ionic strength (LT1-PS05 and LT1-PS10) 
+show a long sub-diffusive regime, and the diffusion coefficients 
+deviate from the Stokes–Einstein relation. Based on the van Hove 
+analysis, the diffusion process of Li+ ions can be regarded as caged and 
+jump diffusions in these solutions. The long relaxation times of Li+ and 
+its surrounding anions within the second solvation shell imply that their 
+motions are correlated, which affects the diffusion process. 
+MD simulations reveal that a delicate balance between ion-ion and 
+ion-solvent interactions influences the ordering and clustering of ions. 
+These ion-ion and ion-solvent interactions are crucial in low E/S ratios in 
+porous environments to control the PS chains’ solubility while maxi­
+mizing the transport of Li+ ions. 
+The combination of neutron scattering experiments and MD simu­
+lations is expected to play a vital role also in further studies, e.g., to shed 
+light on atomic-level solvation structures of various donor number salts, 
+or the effects of variations of solvent types and compositions for Li/S 
+battery electrolytes or other energy storage devices. 
+Associated content 
+Supporting Information. The Supporting Information is available 
+free of charge on the website. It contains details on simulation box sizes, 
+duration of the production runs and numbers of ions/molecules in MD 
+simulations; Average polysulfides clustering size; Experimental total 
+structure factor with the different deuteration percentage in THF; Total 
+structure factor computed from MD simulations for LT0-PS410; Radial 
+distribution functions evaluated from ECC-MD simulations for LT0- 
+PS05/PS10 and LT1-PS05/PS10.; Cluster size distributions derived 
+from MD simulations for LT0-PS410; Radial distribution functions 
+derived from MD simulations for a pure THF solvent; Radial distribution 
+functions of all atom combinations derived from ECC-MD simulations 
+for LT1-PS00; Coordination numbers of Li-ions in the investigated 
+solutions. 
+Author contributions 
+S.R. conceived the idea. S.R., J.D., M.K., and T.Y. designed and su­
+pervised the project. S.R., C.P., and T.H. conducted the experiments. S.R. 
+and T.H. analyzed experimental data. C.P. performed MD simulations 
+and analyzed simulation data. The manuscript was written through 
+contributions of all authors. All authors have given approval to the final 
+version of the manuscript. 
+Notes 
+The authors declare no competing financial interest. 
+CRediT authorship contribution statement 
+Chanbum Park: Methodology, Formal analysis, Investigation, Re­
+sources, Writing – original draft, Visualization, Writing – review & 
+editing. Matej Kanduˇc: Writing – review & editing, Supervision. 
+Thomas F. Headen: Methodology, Software, Investigation, Writing – 
+review & editing. Tristan G.A. Youngs: Methodology, Software, 
+Investigation, Writing – review & editing. Joachim Dzubiella: Re­
+sources, Writing – review & editing, Supervision, Project administration, 
+Funding acquisition. Sebastian Risse: Conceptualization, Investigation, 
+Writing – review & editing, Supervision, Project administration, Fund­
+ing acquisition. 
+Declaration of Competing Interest 
+The authors declare that they have no known competing financial 
+interests or personal relationships that could have appeared to influence 
+the work reported in this paper. 
+Data availability 
+Data will be made available on request. 
+Acknowledgment 
+This work was supported by the DFG Priority Programme "Polymer- 
+based Batteries" (SPP 2248). M.K. acknowledges the financial support 
+from the Slovenian Research Agency (Contract Nos. P1-0055 and J1- 
+1701). We are grateful for the granted beamtime and the technical 
+support at the NIMROD instrument at the STFC ISIS Facility in the 
+United Kingdom [Risse et al. [42]: Total Scattering Investigation of 
+Electrolytes for Li/S Batteries – First Proof of polysulfide clustering, 
+STFC ISIS Facility, https://doi.org/10.5286/ISIS.E.RB1910470]. 
+Supplementary materials 
+Supplementary material associated with this article can be found, in 
+the online version, at doi:10.1016/j.ensm.2022.07.008. 
+References 
+[1] L.F. Nazar, M. Cuisinier, Q. Pang, Lithium-sulfur batteries, MRS Bull. 39 (2014) 
+436–442. 
+[2] S. Zhang, K. Ueno, K. Dokko, M. Watanabe, Recent advances in electrolytes for 
+lithium–sulfur batteries, Adv. Energy Mater. 5 (2015), 1500117. 
+[3] G. Zheng, Y. Yang, J.J. Cha, S.S. Hong, Y. Cui, Hollow carbon nanofiber- 
+encapsulated sulfur cathodes for high specific capacity rechargeable lithium 
+batteries, Nano Lett. 11 (2011) 4462–4467. 
+[4] X. Ji, K.T. Lee, L.F. Nazar, A highly ordered nanostructured carbon-sulphur cathode 
+for lithium-sulphur batteries, Nat. Mater. 8 (2009) 500–506, https://doi.org/ 
+10.1038/nmat2460. 
+[5] Y. Xu, Y. Wen, Y. Zhu, K. Gaskell, K.A. Cychosz, B. Eichhorn, K. Xu, C. Wang, 
+Confined sulfur in microporous carbon renders superior cycling stability in Li/S 
+batteries, Adv. Funct. Mater. 25 (2015) 4312–4320, https://doi.org/10.1002/ 
+adfm.201500983. 
+[6] L. Ji, M. Rao, H. Zheng, L. Zhang, Y. Li, W. Duan, J. Guo, E.J. Cairns, Y. Zhang, 
+Graphene oxide as a sulfur immobilizer in high performance lithium/sulfur cells, 
+J. Am. Chem. Soc. 133 (2011) 18522–18525. 
+[7] X. Liang, Y. Rangom, C.Y. Kwok, Q. Pang, L.F. Nazar, Interwoven MXene 
+nanosheet/carbon-nanotube composites as Li–S cathode hosts, Adv. Mater. 29 
+(2017), 1603040. 
+[8] K. Chen, Z. Sun, R. Fang, Y. Shi, H.-M. Cheng, F. Li, Metal–organic frameworks 
+(MOFs)-derived nitrogen-doped porous carbon anchored on graphene with 
+multifunctional effects for lithium–sulfur batteries, Adv. Funct. Mater. 28 (2018), 
+1707592. 
+[9] Z. Liang, G. Zheng, W. Li, Z.W. Seh, H. Yao, K. Yan, D. Kong, Y. Cui, Sulfur cathodes 
+with hydrogen reduced titanium dioxide inverse opal structure, ACS Nano 8 (2014) 
+5249–5256. 
+[10] Y.S. Su, A. Manthiram, A new approach to improve cycle performance of 
+rechargeable lithium–sulfur batteries by inserting a free-standing MWCNT 
+interlayer, Chem. Commun. 48 (2012) 8817–8819. 
+[11] R. Singhal, S.H. Chung, A. Manthiram, V. Kalra, A free-standing carbon nanofiber 
+interlayer for high-performance lithium–sulfur batteries, J. Mater. Chem. A 3 
+(2015) 4530–4538. 
+[12] S. Wei, L. Ma, K.E. Hendrickson, Z. Tu, L.A. Archer, Metal–sulfur battery cathodes 
+based on PAN–sulfur composites, J. Am. Chem. Soc. 137 (2015) 12143–12152. 
+[13] S. Moon, Y.H. Jung, D.K. Kim, Enhanced electrochemical performance of a 
+crosslinked polyaniline-coated graphene oxide-sulfur composite for rechargeable 
+lithium–sulfur batteries, J. Power Sources 294 (2015) 386–392. 
+C. Park et al.                                                                                                                                                                                                                                    
+
+<<PAGE 9>>
+Energy Storage Materials 52 (2022) 85–93
+93
+[14] L. Suo, Y.S. Hu, H. Li, M. Armand, L. Chen, A new class of solvent-in-salt electrolyte 
+for high-energy rechargeable metallic lithium batteries, Nat. Commun. 4 (2013) 
+1481. 
+[15] H.K. Seo, Y. Hwa, J.H. Chang, J.Y. Park, J.S. Lee, J. Park, E.J. Cairns, J.M. Yuk, 
+Direct visualization of lithium polysulfides and their suppression in liquid 
+electrolyte, Nano Lett. 20 (2020) 2080–2086. 
+[16] A. Shyamsunder, W. Beichel, P. Klose, Q. Pang, H. Scherer, A. Hoffmann, G. 
+K. Murphy, I. Krossing, L.F. Nazar, Inhibiting polysulfide shuttle in lithium–sulfur 
+batteries through low-ion-pairing salts and a triflamide solvent, Angew. Chem. Int. 
+Ed. 56 (2017) 6192–6197. 
+[17] J. Chen, K.S. Han, W.A. Henderson, K.C. Lau, M. Vijayakumar, T. Dzwiniel, H. Pan, 
+L.A. Curtiss, J. Xiao, K.T. Mueller, Y. Shao, J. Liu, Restricting the solubility of 
+polysulfides in Li-S batteries via electrolyte salt selection, Adv. Energy Mater. 6 
+(2016) 1–6, https://doi.org/10.1002/aenm.201600160. 
+[18] L. Cheng, L.A. Curtiss, K.R. Zavadil, A.A. Gewirth, Y. Shao, K.G. Gallagher, 
+Sparingly solvating electrolytes for high energy density lithium–sulfur batteries, 
+ACS Energy Lett. 1 (2016) 503–509. 
+[19] C.W. Lee, Q. Pang, S. Ha, L. Cheng, S.D. Han, K.R. Zavadil, K.G. Gallagher, L. 
+F. Nazar, M. Balasubramanian, Directing the lithium–sulfur reaction pathway via 
+sparingly solvating electrolytes for high energy density batteries, ACS Cent. Sci. 3 
+(2017) 605–613. 
+[20] W. Weng, V.G. Pol, K. Amine, Ultrasound assisted design of sulfur/carbon cathodes 
+with partially fluorinated ether electrolytes for highly efficient Li/S batteries, Adv. 
+Mater. 25 (2013) 1608–1615, https://doi.org/10.1002/adma.201204051. 
+[21] H. Chu, H. Noh, Y.J. Kim, S. Yuk, J.H. Lee, J. Lee, H. Kwack, Y. Kim, D.K. Yang, H. 
+T. Kim, Achieving three-dimensional lithium sulfide growth in lithium-sulfur 
+batteries using high-donor-number anions, Nat. Commun. 10 (2019) 1–12. 
+[22] A. Gupta, A. Bhargav, A. Manthiram, Evoking high-donor-number-assisted and 
+organosulfur-mediated conversion in lithium–sulfur batteries, ACS Energy Lett. 6 
+(2020) 224–231. 
+[23] Q. He, Y. Gorlin, M.U.M. Patel, H.A. Gasteiger, Y.C. Lu, Unraveling the correlation 
+between solvent properties and sulfur redox behavior in lithium-sulfur batteries, 
+J. Electrochem. Soc. 165 (2018) A4027. 
+[24] H. Chu, J. Jung, H. Noh, S. Yuk, J. Lee, J.H. Lee, J. Baek, Y. Roh, H. Kwon, D. Choi, 
+et al., Unraveling the dual functionality of high-donor-number anion in lean- 
+electrolyte lithium-sulfur batteries, Adv. Energy Mater. 10 (2020), 2000493. 
+[25] C. Park, A. Ronneburg, S. Risse, M. Ballauff, M. Kanduˇc, J. Dzubiella, Structural 
+and transport properties of Li/S battery electrolytes: role of the polysulfide species, 
+J. Phys. Chem. C. 123 (2019) 10167–10177, https://doi.org/10.1021/acs. 
+jpcc.8b10175. 
+[26] A. Gupta, A. Bhargav, J.P. Jones, R.V Bugga, A. Manthiram, Influence of lithium 
+polysulfide clustering on the kinetics of electrochemical conversion in 
+lithium–sulfur batteries, Chem. Mater. 32 (2020) 2070–2077. 
+[27] J.W. Park, K. Yamauchi, E. Takashima, N. Tachikawa, K. Ueno, K. Dokko, 
+M. Watanabe, Solvent effect of room temperature ionic liquids on electrochemical 
+reactions in lithium–sulfur batteries, J. Phys. Chem. C 117 (2013) 4431–4440. 
+[28] C. Weller, J. Pampel, S. D¨orfler, H. Althues, S. Kaskel, Polysulfide shuttle 
+suppression by electrolytes with low-density for high-energy lithium–sulfur 
+batteries, Energy Technol. 7 (2019) 1–12, https://doi.org/10.1002/ 
+ente.201900625. 
+[29] B. Wang, S.M. Alhassan, S.T. Pantelides, Formation of large polysulfide complexes 
+during the lithium-sulfur battery discharge, Phys. Rev. Appl. 2 (2014) 34004. 
+[30] P. Partovi-Azar, T.D. Kühne, P. Kaghazchi, Evidence for the existence of Li 2 S 2 
+clusters in lithium–sulfur batteries: ab initio Raman spectroscopy simulation, Phys. 
+Chem. Chem. Phys. 17 (2015) 22009–22014. 
+[31] N.N. Rajput, V. Murugesan, Y. Shin, K.S. Han, K.C. Lau, J. Chen, J. Liu, L.A. Curtiss, 
+K.T. Mueller, K.A. Persson, Elucidating the solvation structure and dynamics of 
+lithium polysulfides resulting from competitive salt and solvent interactions, 
+Chem. Mater. 29 (2017) 3375–3379. 
+[32] A. Andersen, N.N. Rajput, K.S. Han, H. Pan, N. Govind, K.A. Persson, K.T. Mueller, 
+V. Murugesan, Structure and dynamics of polysulfide clusters in a nonaqueous 
+solvent mixture of 1,3-dioxolane and 1,2-dimethoxyethane, Chem. Mater. 31 
+(2019) 2308–2319, https://doi.org/10.1021/acs.chemmater.8b03944. 
+[33] I.V. Leontyev, A.A. Stuchebrukhov, Electronic continuum model for molecular 
+dynamics simulations, J. Chem. Phys. (2009) 130, https://doi.org/10.1063/ 
+1.3060164. 
+[34] M. Kohagen, P.E. Mason, P. Jungwirth, Accurate description of calcium solvation 
+in concentrated aqueous solutions, J. Phys. Chem. B 118 (2014) 7902–7909. 
+[35] B.J. Kirby, P. Jungwirth, Charge scaling manifesto: a way of reconciling the 
+inherently macroscopic and microscopic natures of molecular simulations, J. Phys. 
+Chem. Lett. 10 (2019) 7531–7536. 
+[36] E. Pluhaˇrov´a, H.E. Fischer, P.E. Mason, P. Jungwirth, E. Pluhaˇrov´a, H.E. Fischer, P. 
+E. Mason, P. Jungwirth, Hydration of the chloride ion in concentrated aqueous 
+solutions using neutron scattering and molecular dynamics molecular dynamics, 
+Mol. Phys. 112 (2014) 1230–1240, https://doi.org/10.1080/ 
+00268976.2013.875231. 
+[37] S. Yadav, A. Chandra, Preferential solvation, ion pairing, and dynamics of 
+concentrated aqueous solutions of divalent metal nitrate salts, J. Chem. Phys. 147 
+(2017), 244503. 
+[38] P.E. Mason, E. Wernersson, P. Jungwirth, Accurate description of aqueous 
+carbonate ions: an effective polarization model verified by neutron scattering, 
+J. Phys. Chem. B 116 (2012) 8145–8153. 
+[39] E. Pluhaˇrov´a, P.E. Mason, P. Jungwirth, Ion pairing in aqueous lithium salt 
+solutions with monovalent and divalent counter-anions, J. Phys. Chem. A 117 
+(2013) 11766–11773. 
+[40] E. Dubou´e-Dijon, P.E. Mason, H.E. Fischer, P. Jungwirth, Changes in the hydration 
+structure of imidazole upon protonation: neutron scattering and molecular 
+simulations, J. Chem. Phys. 146 (2017), 185102. 
+[41] C. Park, M. Kanduˇc, R. Chudoba, A. Ronneburg, S. Risse, M. Ballauff, J. Dzubiella, 
+Molecular simulations of electrolyte structure and dynamics in lithium–sulfur 
+battery solvents, J. Power Sources 373 (2018) 70–78. 
+[42] S. Risse, E. H¨ark, B. Kent, M. Ballauff, Operando analysis of a lithium/sulfur battery 
+by small-angle neutron scattering, ACS Nano 13 (2019) 10233–10241. 
+[43] S. Risse, C.J. Jafta, Y. Yang, N. Kardjilov, A. Hilger, I. Manke, M. Ballauff, 
+Multidimensional operando analysis of macroscopic structure evolution in lithium 
+sulfur cells by X-ray radiography, Phys. Chem. Chem. Phys. 18 (2016) 
+10630–10636. 
+[44] D.T. Bowron, A.K. Soper, K. Jones, S. Ansell, S. Birch, J. Norris, L. Perrott, 
+D. Riedel, N.J. Rhodes, S.R. Wakefield, et al., NIMROD: the near and intermediate 
+range order diffractometer of the ISIS second target station, Rev. Sci. Instrum. 81 
+(2010) 33905. 
+[45] A.K. Soper, GudrunN and GudrunX: programs for correcting raw neutron and X-ray 
+diffraction data to differential scattering cross section, Science & Technology 
+Facilities Council, Swindon, UK, 2011. 
+[46] D.A. Keen, A comparison of various commonly used correlationfunctions for 
+describing total scattering, J. Appl. Cryst. 34 (2001) 172–177, https://doi.org/ 
+10.1107/S0021889800019993. 
+[47] A.K. Soper, The radial distribution functions of water as derived from radiation 
+total scattering experiments: is there anything we can say for sure? Int. Sch. Res. 
+Notes 2013 (2013) 1–67. 
+[48] W.L. Jorgensen, D.S. Maxwell, J. Tirado-Rives, Development and testing of the 
+OPLS all-atom force field on conformational energetics and properties of organic 
+liquids, J. Am. Chem. Soc. 118 (1996) 11225–11236. 
+[49] L.X. Dang, Development of nonadditive intermolecular potentials using molecular 
+dynamics: solvation of Li+ and F−
+ions in polarizable water, J. Chem. Phys. 96 
+(1992) 6970–6977, https://doi.org/10.1063/1.462555. 
+[50] S.L. Mayo, B.D. Olafson, W.A. Goddard, DREIDING: a generic force field for 
+molecular simulations, J. Phys. Chem. 94 (1990) 8897–8909. 
+[51] J.N. Canongia Lopes, A.A.H. P´adua, Molecular force field for ionic liquids 
+composed of triflate or bistriflylimide anions, J. Phys. Chem. B 108 (2004) 
+16893–16898, https://doi.org/10.1021/jp0476545. 
+[52] D. van der Spoel, E. Lindahl, B. Hess, G. Groenhof, A.E. Mark, H.J.C. Berendsen, 
+GROMACS: fast, flexible, and free, J. Comput. Chem. 26 (2005) 1701–1718. 
+[53] L. Martínez, R. Andrade, E.G. Birgin, J.M. Martínez, PACKMOL: a package for 
+building initial configurations for molecular dynamics simulations, J. Comput. 
+Chem. 30 (2009) 2157–2164. 
+[54] H.J.C. Berendsen, J.P.M. Postma, W.F. van Gunsteren, A. DiNola, J.R. Haak, 
+Molecular dynamics with coupling to an external bath, J. Chem. Phys. 81 (1984) 
+3684–3690, https://doi.org/10.1063/1.448118. 
+[55] M. Parrinello, A. Rahman, Polymorphic transitions in single crystals: a new 
+molecular dynamics method, J. Appl. Phys. 52 (1981) 7182–7190, https://doi.org/ 
+10.1063/1.328693. 
+[56] S. Nos´e, A molecular dynamics method for simulations in the canonical ensemble, 
+Mol. Phys. 52 (1984) 255–268. 
+[57] T. Darden, D. York, L. Pedersen, Particle mesh Ewald: an N⋅log(N) method for 
+Ewald sums in large systems, J. Chem. Phys. 98 (1993) 10089–10092, https://doi. 
+org/10.1063/1.464397. 
+[58] B. Hess, H. Bekker, H.J.C. Berendsen, J.G.E.M Fraaije, et al., LINCS: a linear 
+constraint solver for molecular simulations, J. Comput. Chem. 18 (1997) 
+1463–1472. 
+[59] T.G.A. Youngs, DLPUTILS: calculate properties from molecular dynamics 
+trajectories, (2016). 
+[60] L. Aguilera, S. Xiong, J. Scheers, A. Matic, A structural study of LiTFSI-tetraglyme 
+mixtures: from diluted solutions to solvated ionic liquids, J. Mol. Liq. 210 (2015) 
+238–242, https://doi.org/10.1016/j.molliq.2015.04.053. 
+[61] B. Wang, J. Kuo, S.C. Bae, S. Granick, When Brownian diffusion is not Gaussian, 
+Nat. Mater. 11 (2012) 481–485, https://doi.org/10.1038/nmat3308. 
+[62] P. Chaudhuri, L. Berthier, W. Kob, Universal nature of particle displacements close 
+to glass and jamming transitions, Phys. Rev. Lett. 99 (2007) 2–5, https://doi.org/ 
+10.1103/PhysRevLett.99.060604. 
+[63] Z. Li, Y. Zhou, Y. Wang, Y.C. Lu, Solvent-mediated Li2S electrodeposition: a critical 
+manipulator in lithium-sulfur batteries, Adv. Energy Mater. 1802207 (2018), 
+1802207, https://doi.org/10.1002/aenm.201802207. 
+[64] L. Zhang, M. Ling, J. Feng, L. Mai, G. Liu, J. Guo, The synergetic interaction 
+between LiNO3 and lithium polysulfides for suppressing shuttle effect of lithium- 
+sulfur batteries, Energy Storage Mater. 11 (2018) 24–29. 
+[65] X. Ren, P. Gao, L. Zou, S. Jiao, X. Cao, X. Zhang, H. Jia, M.H. Engelhard, B. 
+E. Matthews, H. Wu, H. Lee, C. Niu, C. Wang, B.W. Arey, J. Xiao, J. Liu, J.G. Zhang, 
+W. Xu, Role of inner solvation sheath within salt–solvent complexes in tailoring 
+electrode/electrolyte interphases for lithium metal batteries, Proc. Natl. Acad. Sci. 
+U. S. A. 117 (2020) 28603–28613, https://doi.org/10.1073/pnas.2010852117. 
+[66] R. Cao, J. Chen, K.S. Han, W. Xu, D. Mei, P. Bhattacharya, M.H. Engelhard, K. 
+T. Mueller, J. Liu, J.-G. Zhang, Effect of the anion activity on the stability of Li 
+metal anodes in lithium-sulfur batteries, Adv. Funct. Mater. 26 (2016) 3059–3066. 
+[67] P. Zeng, Y. Han, X. Duan, G. Jia, L. Huang, Y. Chen, A stable graphite electrode in 
+superconcentrated LiTFSI-DME/DOL electrolyte and its application in lithium- 
+sulfur full battery, Mater. Res. Bull. 95 (2017) 61–70. 
+[68] Z. Li, R. Bouchal, T. Mendez-Morales, A.L. Rollet, C. Rizzi, S. Le Vot, F. Favier, 
+B. Rotenberg, O. Borodin, O. Fontaine, M. Salanne, Transport properties of Li-TFSI 
+Water-in-salt electrolytes, J. Phys. Chem. B 123 (2019) 10514–10521, https://doi. 
+org/10.1021/acs.jpcb.9b08961. 
+C. Park et al.                                                                                                                                                                                                                                    

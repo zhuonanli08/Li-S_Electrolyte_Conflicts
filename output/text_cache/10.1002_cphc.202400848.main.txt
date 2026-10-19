@@ -1,0 +1,846 @@
+
+<<PAGE 1>>
+www.chemphyschem.org
+The Interaction of Ether-Based Functionalized Ionic Liquids
+in Lithium–Sulfur Batteries: A First-Principles Study
+Chengren Li, Nan Zhou, Jiaxin Tang, Chen Wang, Rongde Sun, Baifeng Yang, Zhigao Chen,
+Xiaohan Lu, Zhen Chang, Shaoze Zhang,* Changjun Peng, and Honglai Liu
+Ionic liquids (ILs) as electrolytes in lithium-sulfur (Li-S) batteries
+effectively mitigate the shuttle effect. Solvated cationic ether-
+based ILs, comprising [Li(G1)2]þ, [Li(G2)2]þ, [LiG3]þ, [LiG4]þ, or
+[LiG6]þ paired with bis(trifluoromethyllsulfonyl)imide ([TFSA]–)
+anions, are evaluated for their ability to suppress short-chain
+lithium polysulfide (LiPS: Li2S1, Li2S2, Li2S4) adsorption on lith-
+ium metal. The chelating capacity of solvated cations governs
+interactions with LiPSs and anions. Solvation via Liþ chelation
+prevents free Liþ fusion with LiPSs, reducing shuttle effects.
+Remarkably, the cyclic [LiG6]þ cation exhibits superior Liþ che-
+lation, stability, and minimized LiPS adsorption compared to lin-
+ear cations. Ab initio molecular dynamics simulations confirm
+ether-based ILs stabilize anions and lower LiPS-lithium surface
+reactivity. These findings highlight solvated cation ILs as tailored
+electrolytes to control interfacial LiPS behavior, advancing high-
+performance Li─S battery design.
+1. Introduction
+Ether-based solvents, renowned for their strong solvation capa-
+bility, are widely employed in metal salt electrolytes due to their
+ability to form solvated cations through coordination between
+metal ions and ether oxygen lone pairs.[1] Glymes, polyether
+molecules with multiple ether oxygen groups, have garnered
+significant attention as high-concentration lithium salt solvents
+for advanced battery systems, including lithium–sulfur (Li─S)
+batteries.[2,3] Their low volatility, chemical stability, and structural
+similarity to poly(ethylene oxide)-based electrolytes make them
+ideal candidates for suppressing lithium polysulfides (LiPS)
+dissolution.[4–6] Notably, crystalline solvates formed by glymes
+and lithium salts exhibit tunable Liþ coordination numbers (4–6),
+as demonstrated in systematic studies by Henderson et al.[7–11]
+Li─S batteries stand out for their exceptional theoretical
+energy density (2600 Wh kg1) and cost-effectiveness, driven by
+sulfur’s high capacity (1675 mAh g1) and natural abundance.[12–18]
+However, the persistent “shuttle effect"—where soluble LiPS inter-
+mediates migrate and react with the lithium anode—severely
+degrades cycling stability and hinders commercialization.[19–24]
+Recent advances highlight glyme-based solvated ionic liquids
+(SILs) as promising solutions. For instance, [Li(G4)][BETI] (bis(penta-
+fluoroethenesulfonyl)amide, [BETI]) SILs achieve 98.5% Coulombic
+efficiency over 100 cycles by stabilizing LiPS intermediates, while
+their cyclic solvated cation structures effectively mitigate free Liþ
+reactivity.[25–29]
+Despite these advances, the atomistic mechanisms governing
+LiPS adsorption on lithium metal surfaces in SIL electrolytes
+remain poorly understood. Conventional ionic liquids (ILs), with
+their high polarity and tunable ion interactions offer unique
+opportunities to modulate LiPS behavior. Yet, the subtle interplay
+between solvated cations, anions, and LiPS at electrode interfaces
+is challenging to probe experimentally. In this work, we address
+this gap through a first-principles study of ether-functionalized
+SILs
+composed
+of
+bis(trifluoromethyllsulfonyl)imide
+[TFSA]
+anions and glyme-Liþ cations ([Li(G1)2]þ, [Li(G2)2]þ, [LiG3]þ,
+[LiG4]þ, and a novel cyclic [LiG6]þ). Using surface electrostatic
+potential (ESP),[30] independent gradient model (IGM),[31] atoms-
+in-molecules (AIM),[32] and electron density difference (EDD) anal-
+yses, we reveal how cation chelation strength governs LiPS
+adsorption dynamics. Crucially, our designed cyclic [LiG6]þ dem-
+onstrates unparalleled Liþ SEQUESTration capability, effectively
+suppressing LiPS–lithium surface interactions while maintaining
+structural integrity—a finding corroborated by ab initio molec-
+ular dynamics (AIMD)[33–35] simulations. This work establishes
+a molecular-level rationale for SIL design to combat the shuttle
+effect, advancing high-performance Li─S battery development.
+2. Computational Method
+The calculations performed in this study relied on version 5.3.5 of
+the VASP (Vienna Ab-initio Simulation Package) software.[36–39] To
+C. Li, N. Zhou, J. Tang, C. Wang, R. Sun, B. Yang, Z. Chen, X. Lu,
+Z. Chang, S. Zhang
+National Engineering Research Center of Vacuum Metallurgy
+Kunming University of Science and Technology
+Kunming, Yunnan 650093, China
+E-mail: szzhang@kust.edu.cn
+C. Li, N. Zhou, J. Tang, C. Wang, R. Sun, B. Yang, Z. Chen, X. Lu,
+Z. Chang, S. Zhang
+Engineering Laboratory for Advanced Battery and Materials of Yunnan
+Province
+Kunming University of Science and Technology
+Kunming, Yunnan 650093, China
+C. Peng, H. Liu
+Key Laboratory for Advanced Materials and School of Chemistry &
+Molecular Engineering
+East China University of Science and Technology
+Shanghai 200237, China
+Supporting information for this article is available on the WWW under https://
+doi.org/10.1002/cphc.202400848
+ChemPhysChem 2025, 26, e202400848 (1 of 11)
+© 2025 Wiley-VCH GmbH
+ChemPhysChem
+Research Article
+doi.org/10.1002/cphc.202400848
+
+<<PAGE 2>>
+accurately capture the interactions involving all valence elec-
+trons, encompassing ion pairs, lithium polysulfides, and lithium
+metal surfaces, the projected augmented wave method with
+all-electron[40] implementation was employed. After the conver-
+gence test in Figure S21, Supporting Information, the cutoff
+energy of the plane wave fundamental group converged at
+450 eV, so the cutoff energy of the plane wave fundamental
+group is selected to be 450 eV (see Note S1 for a detailed expla-
+nation of cutoff). The electron exchange was modeled using the
+Perdew–Burke–Ernzerh of generalization within the framework of
+the generalized gradient approximation.[41] In order to ade-
+quately account for van der Waals interactions, Grimme’s DFT-
+D3 correction,[42] incorporating BJ damping,[43] was incorporated
+into the calculations. The energy convergence criterion of
+1  105 eV was employed, and the force convergence criterion
+was set at 0.05 eV Å1 per atom.
+To approach a simulation that aligns more closely with the
+real-world scenario, a four-layer structure of lithium surface
+was constructed. Within this structure, the upper two layers
+undertook optimization in a full optimization mode, while the
+lower two lithium layers were subjected to optimization through
+a freezing simulation approach. In addition, a vacuum layer with a
+thickness of 20 Å was introduced along the c-axis direction in
+order to minimize the influence of the periodic individual struc-
+ture cells, that is, the final construction of the a-axis, b-axis, and
+c-axis structure cell boxes of sizes 20.64, 20.64, and 25.16 Å,
+respectively. The analysis of all calculations was conducted using
+the Multiwfn 3.8.1 program[44] and the visualization of the results
+was achieved using the VMD 1.9.3 software.[45] The AIMD simu-
+lations were performed with a time step of 0.5 fs, employing
+gamma-point-only sampling in the Brillouin zone without consid-
+ering symmetry for k-point integration. All systems underwent
+canonical (NVT) ensemble simulations at 298.15 K for 4 picosec-
+onds, with trajectory data recorded at 1 ps intervals. Detailed
+computational parameters and methodological specifications
+are provided in the Supporting Information Note S2.
+The process of cation formation can be understood as the
+glymes Gm seizing upon the Liþ that was initially bound to
+the [TFSI] anion, effectively chelating the Liþ within itself. This
+leads to the creation of a solvated cation, which undergoes
+the following reaction
+ðGmÞn þ LiTFSA ! ½LiðGmÞnTESA
+(1)
+Given that the structure of glymes tends to exhibit cyclic char-
+acteristics as the number of glymes increases, we selected a
+group of glymes, namely G1, G2, G3, and G4. G1 (monoglyme)
+and G2 (diglyme) are short-chain oligoethers with two and three
+oxygen atoms per molecule, respectively. A single G1/G2 mole-
+cule cannot provide sufficient oxygen atoms to fully coordinate
+Liþ (preferred coordination number: 4–6). Longer glymes (G3, G4,
+G6) exhibit a strong chelate effect due to their multidentate coor-
+dination, which stabilizes Liþ through entropic and enthalpic
+gains from forming cyclic complexes. Shorter glymes (G1, G2) lack
+sufficient chain length to form stable cyclic complexes, using two
+molecules compensates for this deficiency, enabling effective Liþ
+coordination (Two G1 molecules ([Li(G1)2]þ) provide four oxygen
+atoms, satisfying Liþ coordination and two G2 molecules
+([Li(G2)2]þ) provide six oxygen atoms, forming a stable octahedral
+coordination.).[46] We proceeded to construct a series of solvated
+cations, including [Li(G1)2]þ, [Li(G2)2]þ, [LiG3]þ, [LiG4]þ, and
+[LiG6]þ.
+Through this investigation, our aim was to explore the distinct
+interactions between ether-based functionalized ILs and the
+surface of lithium metal, with a specific focus on their effects
+in lithium–sulfur batteries. It should be noted that due to the chal-
+lenging nature of long-chain lithium polysulfides reaching the
+lithium metal surface in lithium–sulfur batteries, this study con-
+centrated on the theoretical exploration of short-chain lithium
+polysulfides, namely Li2S1 and Li2S2, along with the transition
+state Li2S4, in combination with ILs on the lithium metal surface.
+3. Results and Discussion
+3.1. The Geometric and the Energetic Information
+The sign of ESP (Vr), whether positive or negative, indicates
+whether the dominant contribution to the ESP at a given position
+(r) arises from the nuclear charge or electronic contributions.[30] In
+Figure 1, we provide ESP maps for anions and cations, while also
+indicating their respective maximum (Vs,max) and minimum (Vs,min)
+ESP values. These values allow for a comparison of the attractive
+or repulsive abilities of these species.
+The negative ESP for anion arises due to the strong electron-
+absorbing capacity of the oxygen atoms, resulting in the cluster-
+ing of the most negative ESPs around these atoms (5.01 eV). The
+cations display scattered positive ESPs that are concentrated
+around Liþ ions. These potentials exhibit a fluctuating pattern,
+alternating between decreasing and elevating as the number
+of glymes increases. In particular, [LiG6]þ showcases the highest
+positive ESP of 9.23 eV. Figure 1 illustrates that the number of
+covalent bonds formed between individual glyme molecules
+and lithium (Li) atoms increases incrementally from 2 to 5 as
+the cation progresses from [Li(G1)2]þ to [LiG4]þ, indicating a cor-
+responding enhancement in chelating ability. Conversely, despite
+[LiG6]þ exhibiting the highest positive ESP value, it forms only
+three Li─O covalent bonds due to its complete ring structure,
+which constrains the ability of Li atoms to establish covalent
+interactions with each oxygen atom. The cyclic conformation
+of [LiG6]þ allows oxygen atoms to coordinate with Liþ in a near-
+planar arrangement (Figure 1), forming a rigid solvation shell that
+minimizes Liþ exposure. This contrasts with linear glymes (e.g.,
+[LiG3]þ), where partial coordination leaves “exposed” Liþ sites vul-
+nerable to polysulfide interaction. The high-surface ESP of [LiG6]þ
+(9.23 eV, Figure 1) generates a strong repulsive field against neg-
+atively charged sulfur atoms in polysulfides (e.g., Sx
+2), reducing
+adsorption affinity. The specific bonding capability and stability of
+this configuration require further investigation through subse-
+quent analyses. Through this chelating capacity, Liþ ions that
+are bound to the anions are effectively SEQUESTered, making
+it more challenging for free Liþ ions in the surrounding environ-
+ment to react with S8 and form intermediate lithium polysulfides.
+ChemPhysChem 2025, 26, e202400848 (2 of 11)
+© 2025 Wiley-VCH GmbH
+ChemPhysChem
+Research Article
+doi.org/10.1002/cphc.202400848
+ 14397641, 2025, 12, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/cphc.202400848 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 3>>
+Consequently, this process impedes the subsequent conversion
+of lithium polysulfides.
+The issue of the shuttle effect in lithium–sulfur batteries
+presents a significant challenge in the field, as the adsorption
+and deposition of insoluble short-chain lithium polysulfides, such
+as Li2S1 and Li2S2, onto the surface of lithium metal leads to cor-
+rosion and depletion of active substances. This poses a formida-
+ble obstacle for scientists to overcome.[47–50] As a result, we
+directed our focus not only to the anions and cations themselves
+but also to their interaction with lithium polysulfides on the lith-
+ium metal surface. To better approximate the real-world scenario,
+we included the discussion of the adsorption of lithium polysul-
+fides, even though only a relatively small fraction of Li2S4 in the
+transition state approaches the surface of the lithium metal. This
+approach allows us to explore the transitional process from Li2S4
+to Li2S1 and Li2S2, as well as the specific adsorption properties of
+short-chain lithium polysulfides. The adsorption energy quantifies
+the thermodynamic favorability of interactions between the IL
+components (cations, anions, Li2Sx, x = 1, 2, 4) and the lithium
+metal surface. It is calculated as
+Eads ¼ Esystem  ðEisolution þ EsurfaceÞ
+(2)
+Esystem: Total energy of the optimized structure containing the
+lithium metal surface, IL (cation/anion), and lithium polysulfide.
+Eisolation: Sum of energies of the isolated cation, anion, and lithium
+polysulfide,
+each computed
+in
+a
+large
+vacuum supercell
+(40  40  40 Å) to avoid periodic boundary interactions. Esurface:
+Energy of the pristine lithium metal surface. A negative Eads
+indicates favorable adsorption (exothermic process), while a pos-
+itive value suggests repulsion. The adsorption energies are sub-
+sequently compiled in Figure 2.
+It becomes evident that the adsorption energy progressively
+increases with the growing number of sulfur atoms present in the
+lithium polysulfide. This phenomenon can be attributed to the
+Figure 2. The adsorption energy diagram of each system.
+Figure 1. The ESP surfaces (isosurface values at 0.001 a.u.) of isolated cations and anions, together with Vs,max and Vs,min. Bond distances between the
+lithium (Li) and oxygen (O) atoms are also annotated (the unmarked portion is identical to the symmetrical portion).
+ChemPhysChem 2025, 26, e202400848 (3 of 11)
+© 2025 Wiley-VCH GmbH
+ChemPhysChem
+Research Article
+doi.org/10.1002/cphc.202400848
+ 14397641, 2025, 12, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/cphc.202400848 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 4>>
+strong electron-absorbing nature of the sulfur atoms, which pro-
+motes their binding to lithium atoms on the lithium metal sur-
+face. Moreover, an increased number of sulfur atoms provides
+more binding sites, leading to a natural elevation in the adsorp-
+tion energy.
+In contrast, the adsorption energy does not consistently rise
+with an increase in the number of glymes. Surprisingly, it follows a
+distinct pattern depending on the specific binding of different
+lithium polysulfides. When binding with Li2S1, various cations
+exhibit similar and relatively lower adsorption energies, which
+hover around 8.0 eV. This behavior suggests that the capacity
+of Li2S1 to absorb Li atoms approaches saturation when con-
+fronted with solvated cations. Therefore, none of these cations
+display a propensity to approach the lithium metal surface further
+under the influence of different cations.
+However, in the case of binding with Li2S2, both [Li(G1)2]þ and
+[LiG4]þ cations demonstrate a decrease in adsorption energy
+compared to the binding with Li2S1. This decrease can be attrib-
+uted to the structural characteristics of these cations. The ring-like
+but smaller notched rings of [Li(G1)2]þ and [LiG4]þ possess a
+higher positive ESP in comparison to the [Li(G2)2]þ cation, result-
+ing in a greater affinity for Li2S2 binding. Thus, a stronger IL bind-
+ing occurs, leading to an overall reduction in the adsorption
+energy.
+During the binding process of Li2S4, the adsorption energy
+continues to increase with the incorporation of ethylene glycol
+dimethyl ether-like chains up to [LiG3]þ. However, it undergoes
+a sudden decrease at [LiG4]þ and continues to decrease until
+[LiG6]þ. This nonmonotonic trend is rooted in the structural
+and electronic evolution of the solvated cations: shorter glymes
+(G1–G3) adopt linear configurations, allowing Liþ to coordinate
+with multiple oxygen atoms while leaving residual sites for
+Li2S4 adsorption. As the chain elongates (G4–G6), the glymes fold
+into cyclic conformations (e.g., crown ether-like for [LiG6]þ), fully
+saturating Liþ coordination and sterically blocking Li2S4 access.
+Cyclic cations [LiG6]þ exhibit higher surface ESPs (e.g., 9.23 eV
+for [LiG6]þ vs. 6.76 eV for [LiG3]þ, Figure 1), creating stronger
+repulsion against the electron-rich sulfur atoms in Li2S4. G4 marks
+the critical chain length where glymes transition from linear to
+cyclic coordination. While [LiG4]þ retains partial flexibility, its
+incipient cyclic structure begins to shield Liþ and introduce steric
+hindrance, causing the abrupt adsorption energy decrease. The
+trend intensifies in [LiG6]þ due to full ring closure. While linear
+[LiG3]þ partially stabilizes Liþ, its incomplete coordination leaves
+“exposed” Liþ sites that bind Li2S4. In contrast, cyclic cations
+achieve full Liþ encapsulation, eliminating these reactive sites.
+3.2. Interaction Analysis
+In 1985, Bader introduced a topological analysis known as
+(“AIM”),[32] which utilizes wave function analysis to examine elec-
+tron density. This theory identifies critical points (CP) as the loca-
+tions in which the electron density gradient reaches zero. Using
+this method, a comprehensive and intuitive understanding of
+chemical bonding and interatomic interactions in molecules can
+be attained through the analysis of electron density gradients.
+During the AIM analysis, the systems under investigation were
+identified based on the identification of CP between their respec-
+tive atoms in the molecular structure. These interactions were
+visualized in the molecular image through the use of red dots,
+representing the bonds between the atoms, which were con-
+nected by red bond paths. Moreover, the bond energy (EB),
+obtained from the potential energy density (V) at the CP, serves
+as a valuable descriptor for characterizing the strength of each
+interaction.[51,52]
+EB ¼ 1
+2 V
+(3)
+This analysis aimed to investigate the diverse array of inter-
+molecular bonds that are established and to determine their
+respective bonding energies.
+In light of the innovative and outstanding performance dem-
+onstrated by the [LiG6]þ system in the preceding section, we
+have chosen to feature [LiG6]þ as the representative system in
+the main text to avoid redundancy in visual representations.
+The remaining systems, [Li(G1)2]þ to [LiG4]þ, are presented in the
+supplementary materials. Figure 3 illustrates the AIM diagrams of
+the anions, cations, and lithium polysulfide within the [LiG6]þ
+system, along with the bond energies associated with various
+types of bonds.
+In Figure 3 and Figure S1 to S4, Supporting Information, the
+Li2S2 system exhibits a distinctive characteristic wherein it does
+not require a singular strong bond to establish a robust overall
+interaction. This can be attributed to the fact that, unlike Li2S1,
+which boasts a simplistic structure with individual strong Li···O
+bonds, and Li2S4, which incorporates a greater number of sulfur
+atoms that provide ample bonding sites, the Li2S2 system man-
+ifests a homogeneous interaction region paired with relatively
+moderate bond strength. Consequently, this system ensures an
+overall favorable interaction due to the presence of a uniform
+interaction region and a reasonably strong bond.
+Considering the influence of different cations, it is noteworthy
+that the [LiG6]þ system exhibits the highest EB, measuring at
+606.58 meV. This observation can be attributed to the unique
+annular structure of [LiG6]þ, which offers an increased number of
+binding sites for O atoms. As a result, the formation of Li····O
+bonds with lithium polysulfides becomes more facile, resulting
+in higher bond energies. Additionally, the presence of a more sta-
+ble cyclic structure within [LiG6]þ augments its propensity for
+establishing interactions. While [LiG3]þ forms more Li─O bonds,
+their longer lengths and distributed electron density result in
+weaker individual bonds. The cyclic [LiG6]þ compensates for
+fewer bonds with shorter, denser, and electrostatically reinforced
+interactions, achieving superior per-EB.
+While [LiG6]þ exhibits the highest individual EB, the system
+that demonstrates the greatest overall bond strength is the
+[LiG3]þ system, as illustrated in Figure S3, Supporting Information.
+Although [LiG3]þ does not possess the highest individual EB, its
+enhanced stability can be attributed to the greater number of
+robust Li···O covalent bonds present within this system compared
+to [LiG6]þ. This observation is consistent with the results from ESP
+analysis, in which [LiG3]þ ranks second in terms of EB, surpassed
+ChemPhysChem 2025, 26, e202400848 (4 of 11)
+© 2025 Wiley-VCH GmbH
+ChemPhysChem
+Research Article
+doi.org/10.1002/cphc.202400848
+ 14397641, 2025, 12, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/cphc.202400848 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 5>>
+only by [LiG6]þ. Furthermore, the elevated positive ESP of [LiG3]þ,
+which is second only to that of [LiG6]þ, further substantiates the
+high adsorption energies observed across various lithium polysul-
+fide systems during the adsorption energy analysis.
+Additionally, we incorporated the bond energies of Li─O inter-
+actions in each cation into Figure 4. The data reveal that while
+[LiG6]þ does not form more covalent bonds as anticipated, it
+exhibits relatively higher bond energies. This observation prompts
+us to reevaluate the composition of the chelating capacity, sug-
+gesting that covalent bond energies should be considered signifi-
+cant factors alongside the quantity of covalent bonds formed.
+In 2017, Lefebvre et al. introduced a novel visual modeling
+approach rooted in the electron density gradient (∇ϱ) concept,
+known as the IGM.[31] This method offers the capability to
+Figure 4. AIM diagram of cations and energy of the bond.
+Figure 3. AIM diagram of [LiG6][TFSA]-Li2Sn (n = 1, 2, 4) and energy of bond.
+ChemPhysChem 2025, 26, e202400848 (5 of 11)
+© 2025 Wiley-VCH GmbH
+ChemPhysChem
+Research Article
+doi.org/10.1002/cphc.202400848
+ 14397641, 2025, 12, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/cphc.202400848 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 6>>
+selectively identify interactions between specified fragments,
+allowing for tailored analysis based on the user’s definitions.
+The IGM analysis predominantly relies on δg and its various forms
+of isosurfaces to effectively illustrate interactions within chemical
+systems. Notably, it is important to highlight that the magnitude
+of the δg peak in the atomic interaction region exhibits a positive
+correlation with the strength of the interaction.[53] Consequently,
+the δg function serves as a valuable tool for characterizing the
+varying strengths of distinct interactions.
+In Figure 5, we depict these interactions by colorizing strong
+interactions, such as hydrogen bonding, in blue, and weak inter-
+actions, such as van der Waals forces, in green. Additionally, we
+present a 2D scatterplot, which illustrates the relationship
+between δginter and the symbol (λ2)ϱ in the corresponding system.
+By examining the scatterplot, we can observe distinct spikes in
+the region with negative values of the horizontal coordinate.
+These spikes signify the presence of attractive forces within
+the system. Conversely, spikes in the region with positive values
+of the horizontal coordinate indicate the presence of repulsive
+forces due to the site-damping effect in the ring structure.
+The weak interactions of Liþ within the cation exhibit a fluc-
+tuation pattern consistent with the trend observed in the maxi-
+mum positive ESP analysis. Figure 5 and S5 to S8, Supporting
+Information, reveal that, with the increasing number of glymes,
+the fluctuations exhibit a continuous pattern of alternating
+decreases and increases. It is clear that the spatial arrangement
+and magnitude of the positive ESP within the cation play a crucial
+role in its ability to chelate Liþ.
+Interestingly, the interactions between anions and lithium
+polysulfides, as well as those between lithium polysulfides and
+the lithium metal surface, show minimal variation with the
+increasing presence of glymes. This observation underscores
+the significant influence of cations in the adsorption process,
+highlighting that their role is paramount. In contrast, the interac-
+tions between anions and the metal surface generally surpass
+those between lithium polysulfides and the surface. These find-
+ings emphasize the complex interplay of forces in these systems
+and underscore the importance of cation design for optimizing
+the performance of lithium–sulfur batteries.
+This discrepancy can be attributed to the inherent disparity
+in electron-attracting capabilities between the O and S atoms
+in lithium polysulfide. Specifically, the O atom exhibits a stronger
+tendency to attract electrons than its sulfur counterpart.
+Furthermore, the relatively low level of anion–cation interactions
+can be explained by the formation of a relatively stable structure
+through the chelation of Liþ by the cation itself. This stability
+reduces the interaction between the cation and anion. This is sup-
+ported by the observation that fewer, lower-energy bonds are
+formed between the anion and cation in AIM analyses.
+Similarly, we illustrated the weak interactions within each
+cation in Figure 7. The analysis indicates that [LiG6]þ continues
+to exhibit the strongest weak interactions. By integrating the
+number of covalent bonds formed, the respective bond ener-
+gies, and the weak interactions, we can categorize the chelating
+ability in the following order: [LiG6]þ > [Li(G1)2]þ > [LiG3]þ >
+[LiG4]þ > [Li(G2)2]þ.
+3.3. Electron Transfer Analysis
+When two fragments interact and form a complex, it often leads
+to a transfer of charge between the fragments. The investigation
+of charge transfer has been a prominent focus in the field of
+chemistry. EDD (Δϱ) analysis is a commonly employed qualitative
+technique for studying charge transfer. In the case of a complex
+composed of fragments A and B, the EDD can be defined in the
+following manner
+Δϱ ¼ ϱAB  ϱA  ϱB
+(4)
+where ϱAB, ϱA, and ϱB denote the electron densities of the overall
+system subsequent to optimization and the electron densities of
+fragments A and B, respectively (where A and B retain the same
+coordinates as those in the complex). By graphing the isosurfaces
+of the Δϱ function within 3D space and coloring the isosurfaces
+differently for positive or negative values, we can observe the
+amalgamation or dispersal of electron density amid the frag-
+ments during the formation of the complex. This visualization
+technique permits us to obtain a clearer depiction of the procliv-
+ity of electrons to migrate between complexes. EDD analyses
+were carried out for various systems, and the findings are pre-
+sented in the figure, with red indicating the region of escalating
+electron density and blue indicating the region of diminishing
+density.
+The solvated cation formed by the coordination of Liþ
+with the cation demonstrates remarkable stability, exhibiting
+minimal electron transfer interactions with the anion, lithium
+polysulfide, and the surface, as depicted in Figure 6 and
+Figure S9 to S12, Supporting Information. While this character-
+istic is also observed in the system with [LiG4]þ, it is further
+enhanced by the cyclic structure of [LiG6]þ. This finding is cor-
+roborated by subsequent AIMD analysis, which further validates
+the superior performance of [LiG6]þ in mitigating lithium poly-
+sulfide adsorption.
+The reduced solubility of polysulfides in the IL electrolyte is
+further supported by the EDD analysis. As shown in Figure 8, the
+limited electron transfer between Li2Sx and the IL components
+indicates weak Lewis acid–base interactions, which are critical
+for stabilizing dissolved polysulfide species. This contrasts sharply
+with conventional electrolytes (e.g., DOL/DME), where strong
+Li2Sx solvation leads to severe shuttle effects. The diagrams elu-
+cidate that the transfer of electrons is predominantly observed
+between lithium polysulfide and anions. This observation aligns
+with the relative stability of cations as indicated by the IGM
+Figure 5. RGB standard fills different weak interaction isosurfaces.
+ChemPhysChem 2025, 26, e202400848 (6 of 11)
+© 2025 Wiley-VCH GmbH
+ChemPhysChem
+Research Article
+doi.org/10.1002/cphc.202400848
+ 14397641, 2025, 12, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/cphc.202400848 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 7>>
+analysis. The reduced electron transfer with increasing glyme
+number stems from longer glymes (e.g., G4–G6) forming cyclic
+or folded structures that fully coordinate Liþ, isolating it from
+direct interaction with polysulfides. This minimizes Liþ-mediated
+electron transfer pathways. Extended glyme chains delocalize
+electron density across multiple oxygen atoms, reducing local-
+ized electron-rich sites available for charge transfer to polysul-
+fides (EDD analysis, Figure 8). The cyclic [LiG6]þ conformation
+creates both physical barriers (steric hindrance) and electro-
+static repulsion (high ESP, 9.23 eV) that prevent polysulfide
+anions (e.g., Sx
+2) from approaching the lithium surface. A dis-
+cernible trend emerges, wherein electrons tend to migrate from
+the lithium metal surface toward the lithium polysulfide and
+anions. Conversely, anions exhibit a predilection for transferring
+electrons to cations. As the number of sulfur (S) atoms within the
+lithium polysulfide increases, the propensity for electron trans-
+fer from the lithium surface to the polysulfide augments, while
+the inclination for electron transfer to the anion diminishes. It
+becomes apparent that Li2S4, possessing a greater number of
+binding sites, assumes a pivotal role as a mediator for electron
+transfer during the adsorption process. Moreover, with an esca-
+lation in the quantity of glymes present, the electron transfer
+from the lithium metal surface to the anion undergoes a decline.
+This implies that the enhanced chelating capacity of the cation
+inhibits the binding of anions to the Li atoms on the lithium
+metal surface, consequently reducing the availability of free
+Liþ ions for neutralizing the shuttling effect of lithium polysul-
+fide intermediates.
+3.4. Ab Initio Molecular Dynamics
+To enhance our understanding of the influence of ether-containing
+functionalized ILs on the adsorption of lithium polysulfides onto
+lithium metal surfaces, we conducted an AIMD analysis. This inves-
+tigation builds upon previously obtained static results and focuses
+on the effects of [Li(G1)2]þ to [LiG6]þ systems during the adsorp-
+tion processes of Li2S1 and Li2S2 on lithium metal surfaces.
+In order to distinguish the Li atoms in the figure, we replaced
+the color of the surface Li atoms with a lime color. Based on pre-
+vious findings, it has been determined that only a small fraction of
+Li2S4 participates in the reaction at the lithium metal surface.
+Consequently, our AIMD analysis focuses solely on structural
+models involving Li2S1 and Li2S2. As illustrated in Figure S13,
+Supporting Information, the anion [TFSA] in the [Li(G1)2]þ sys-
+tem experiences chain decomposition by 3 ps, ultimately result-
+ing in complete decomposition by 4 ps. Concurrently, Li2S1
+demonstrates a strong reactivity with the lithium metal surface.
+In contrast, Figure S14, Supporting Information, reveals that while
+the anion remains intact, Li2S2 still attracts additional lithium
+atoms on the lithium metal surface, indicating a propensity for
+further decomposition into Li2S1.
+Figure S15, Supporting Information, through S20 depict scenar-
+ios where, despite the absence of anion decomposition, lithium
+polysulfides exhibit a gradual tendency to approach the lithium
+metal surface and attract more lithium atoms across different
+cation systems from [Li(G2)2]þ to [LiG4]þ. However, as shown in
+Figure 7 and 8, in the system featuring the cation [LiG6]þ, lithium
+Figure 6. Weak interaction diagram between [LiG6][TFSA], Li2Sn (n = 1, 2, 4), and lithium metal surface.
+ChemPhysChem 2025, 26, e202400848 (7 of 11)
+© 2025 Wiley-VCH GmbH
+ChemPhysChem
+Research Article
+doi.org/10.1002/cphc.202400848
+ 14397641, 2025, 12, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/cphc.202400848 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 8>>
+polysulfide exhibits a distinct trend of moving away from the lith-
+ium metal surface, failing to attract additional lithium atoms.
+It can be seen that ether group-containing functionalized ILs
+do have the property of stabilizing anions and mitigating the
+reaction between lithium polysulfide and lithium metal surfaces.
+The ILs consisting of the cation [LiG6]þ show the best stability and
+also have the potential to prevent further decomposition of lith-
+ium polysulfide while reacting with the lithium metal surface
+Figure 9 and 10.
+3.5. Comparison with the Experimental Results
+Murphy and co-workers conducted an investigation into the
+nanostructures of typical SILs ([Li(G4)][TFSI]) categorized as
+“good” and compared them to SILs ([Li(G4)][NO3]) classified as
+“poor".[54] The study utilized neutron diffraction and empirical
+potential structure refinement simulation fits. In the case of
+Figure 7. Comparison of weak interactions within each cation.
+Figure 9. The snapshots from AIMD simulations for [LiG6][TFSA]-Li2S1/Li.
+Figure 8. Diagram of the EDD between [LiG6][TFSA], Li2Sn (n = 1, 2, 4), and lithium metal surface.
+ChemPhysChem 2025, 26, e202400848 (8 of 11)
+© 2025 Wiley-VCH GmbH
+ChemPhysChem
+Research Article
+doi.org/10.1002/cphc.202400848
+ 14397641, 2025, 12, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/cphc.202400848 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 9>>
+[Li(G4)][TFSI], the lithium ions establish robust bonds with G4,
+resulting in the formation of stable complex cations with lithium
+ions uniformly dispersed throughout the bulk. Conversely, the
+interaction between lithium ions and G4 in [Li(G4)][NO3] is feeble,
+leading to the existence of regions with varying concentrations of
+lithium ions within the volume—some lithium-rich and others
+lithium-poor. These structural features correlate with the sup-
+pressed polysulfide solubility observed in our simulations. For
+instance, the uniform dispersion of Liþ ions in [Li(G4)][TFSI] creates
+a chemically homogeneous environment that limits the thermody-
+namic driving force for polysulfide dissolution, consistent with our
+adsorption energy and EDD results. Additionally, the diminished
+number of connections between lithium ions and G4 in
+[Li(G4)][NO3] yields a solvent structure that is relatively uncompli-
+cated, featuring weak intermolecular connections. This structural
+characteristic facilitates the diffusion of lithium ions within the
+system. The presence of stronger intermolecular bonds in
+[Li(G4)][TFSI] is further supported by the identification of strong
+Li···O interactions in the AIM analysis conducted in this study.
+Furthermore, the comprehensive and robust interactions can be
+substantiated by the IGM analysis performed in this investigation.
+The role of solid–electrolyte interface (SEI) films in batteries, uti-
+lizing ILs ([N2,2,1(2O1)][TFSI] and [Li(G4)][TFSI]), was investigated by
+Nakatani and co-workers.[55] It was observed that [Li(G4)][TFSI]
+demonstrates the ability to generate a resilient SEI film on the car-
+bon electrode, thereby impeding further degradation of the electro-
+lyte. This finding is consistent with the observation that [Li(G4)][TFSI]
+maintains a robust independence from the lithium metal surface
+and exhibits minimal interaction with the surface, as determined
+through IGM and EDD analyses conducted in this study.
+4. Conclusion
+The present study focuses on examining the adsorption behavior
+of ether-containing functionalized ILs, composed of a combination
+of bis(trifluoromethylsulfonyl)imide [TFSI] anion and cations
+[Li(G1)2]þ, [Li(G2)2]þ, [LiG3]þ, [LiG4]þ, and [LiG6]þ, on the lithium
+metal surface within the context of lithium–sulfur batteries.
+Specifically, the investigation explores the interaction between
+these ILs and Li2S1, Li2S2, and Li2S4.
+The number of covalent bonds formed between individual
+glyme molecules and lithium (Li) atoms increases from two to five
+as the cation changes from [Li(G1)2]þ to [LiG4]þ, indicating a sig-
+nificant enhancement in chelating capacity. However, despite
+[LiG6]þ exhibiting the highest positive ESP, it forms only three
+Li─O bonds due to its intact ring structure. This configuration
+may also facilitate the formation of high-bond-energy Li─O inter-
+actions. Furthermore, [LiG6]þ is characterized by strong internal
+weak interactions, which contribute to its stability and overall
+bonding characteristics.
+The number of sulfur (S) atoms in lithium polysulfide signifi-
+cantly affects adsorption energy, with a higher count of S atoms
+resulting in increased adsorption energy due to their preference
+to bind with lithium (Li) atoms on the lithium metal surface.
+However, the relationship between adsorption energy and the
+number of glymes is not strictly linear, as the chelating ability
+of the cations plays a crucial role in mediating interactions
+between lithium polysulfide and the lithium surface. Among var-
+ious lithium polysulfide species, Li2S4 stands out for its abundance
+of binding sites, facilitating electron transfer within the system.
+The Li2S2 species is also critical due to its homogeneous structure
+and moderate bond strength, with bonding energy increasing
+alongside the number of glymes. Furthermore, electron transfer
+dynamics reveal that the chelating ability of cations impacts the
+interaction between lithium polysulfides and the lithium metal
+surface; specifically, an increase in glyme quantity correlates with
+a decrease in electron transfer, highlighting the cation’s role in
+modulating these interactions.
+In conclusion, both cations and anions are pivotal in the lith-
+ium polysulfide system. Their ESPs, chelating abilities, and inter-
+actions with lithium polysulfide and lithium metal surfaces
+Figure 10. The snapshots from AIMD simulations for [LiG6][TFSA]-Li2S2/Li.
+ChemPhysChem 2025, 26, e202400848 (9 of 11)
+© 2025 Wiley-VCH GmbH
+ChemPhysChem
+Research Article
+doi.org/10.1002/cphc.202400848
+ 14397641, 2025, 12, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/cphc.202400848 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 10>>
+profoundly affect the system’s overall stability and electron trans-
+fer processes. The designed [LiG6]þ compound demonstrates
+exceptional performance, characterized by its high capacity for
+Liþ chelation and pronounced ESP, which collectively confer
+remarkable stability and mitigate the adsorption of lithium poly-
+sulfides onto lithium surfaces. Furthermore, AIMD analysis indi-
+cates that ether group-containing functionalized ILs effectively
+stabilize anions and reduce reactions between lithium polysulfide
+and lithium metal surfaces. The IL comprising the cation [LiG6]þ
+exhibits superior stability and holds promise for preventing fur-
+ther decomposition of lithium polysulfide during interactions
+with the lithium metal surface. Understanding the structural char-
+acteristics of glymes and the cyclic nature of the cations is critical
+for elucidating the intricate stability and reaction mechanisms
+inherent to the lithium polysulfide system.
+Acknowledgements
+This research was
+sponsored by National Natural Science
+Foundation of China (22108111), China Undergraduate Innova-
+tion and Entrepreneurship Training Program (202210674025,
+202410674078), Yunnan Province Undergraduate Innovation and
+Entrepreneurship Training Program (S202310674135), Xingdian
+Talent Support Project (YNQR-QNRC-2020-081), and Kunming
+University of Science and Technology Analysis and Testing
+Funding (2023M20222202134).
+Conflict of Interest
+The authors declare no conflict of interest.
+Author Contributions
+Chengren Li: investigation (lead); writing—original draft (lead).
+Shaoze Zhang: funding acquisition (lead); investigation (equal);
+supervision (lead); writing—original draft (equal); writing—review
+editing (lead). Changjun Peng: software (supporting). Honglai Liu:
+software (supporting). supervision (supporting). Nan Zhou: inves-
+tigation (supporting). Jiaxin Tang: investigation (supporting). Chen
+Wang: investigation (supporting). Rongde Sun: investigation (sup-
+porting). Yang Baifeng: investigation (supporting). Zhigao Chen:
+investigation (supporting). Xiaohan Lu: investigation (supporting).
+Zhen Chang: investigation (supporting).
+Data Availability Statement
+The data that support the findings of this study are available in
+the supplementary material of this article.
+Keywords: ionic liquids · lithium–sulfur batteries · solvated
+cations
+[1] K. Xu, Chem. Rev. 2004, 104, 4303.
+[2] J. Scheers, S. Fantini, P. Johansson, J. Power Sources 2014, 255, 204.
+[3] M. Balaish, A. Kraytsberg, Y. Ein-Eli, Phys. Chem. Chem. Phys. 2014, 16,
+2801.
+[4] C. P. Rhodes, R. Frech, Macromolecules. 2001, 34, 2660.
+[5] A. Sutjianto, L. A. Curtiss, J. Phys. Chem. A 1998, 102, 968.
+[6] D. Brouillette, G. Perron, J. E. Desnoyers, J. Solution Chem. 1998,
+27, 151.
+[7] W. A. Henderson, F. McKenna, M. A. Khan, N. R. Brooks, V. G. Young Jr,
+R. Frech, Chem. Mater. 2005, 17, 2284.
+[8] W. A. Henderson, N. R. Brooks, V. G. Young, Chem. Mater. 2003, 15,
+4685.
+[9] W. A. Henderson, N. R. Brooks, W. W. Brennessel, V. G. Young, Chem. Mater.
+2003, 15, 4679.
+[10] Y. G. Andreev, V. Seneviratne, M. Khan, W. A. Henderson, R. E. Frech,
+P. G. Bruce, Chem. Mater. 2005, 17, 767.
+[11] W. A. Henderson, J. Phys. Chem. B. 2006, 110, 13177.
+[12] D. Guo, M. Yuan, X. Zheng, M. Li, C. Nan, G. Sun, X. Huang, H. Li, J. Energy
+Chem. 2022, 73, 5.
+[13] S. Li, B. Jin, X. Zhai, H. Li, Q. Jiang, ChemistrySelect 2018, 3, 2245.
+[14] F. Xu, X. Li, F. Xiao, S. Xu, X. Zhang, P. He, H. Zhou, Mater. Technol. 2016, 31,
+517.
+[15] L. Ze-Chen, W. Peng-Fei, W. Jian-Cang, T. Shu-Hui, Y. Ting-Feng, J. Ind. Eng.
+Chem. 2023, 124, 68.
+[16] D. Lisa, M. Uttam, S. Neeraj, L. A. Henrik, J. Electrochem. Soc. 2023, 170,
+010522.
+[17] T. Liu, H. Hu, X. Ding, H. Yuan, C. Jin, J. Nai, Y. Liu, Y. Wang, Y. Wan, X. Tao,
+Energy Storage Mater. 2020, 30, 346.
+[18] H. Yuan, T. Liu, Y. Liu, J. Nai, Y. Wang, W. Zhang, X. Tao, Chem. Sci. 2019, 10,
+7484.
+[19] B. Almudena, A.-G. Juan, C. Yu-Chuan, C. Álvaro, M. Julián, B. Daniel,
+Renewable and Sustainable Energy Rev. 2021, 154, 111783.
+[20] H. Jianmei, W. Peng, Z. Hua, S. Ning, A. Xuguang, X. Baojuan, X. Shenglin,
+Chin. Chem. Lett. 2024, 35, 109543.
+[21] L. Liu, D. Zhang, X. Xu, Z. Liu, J. Liu, Chem. Res. Chin. Univ. 2021, 37,
+210.
+[22] H. Li, S. Ma, J. Li, F. Liu, H. Zhou, Z. Huang, S. Jiao, Y. Kuang, Energy Storage
+Mater. 2020, 26, 203.
+[23] J. Li, L. Gao, F. Pan, C. Gong, L. Sun, H. Gao, J. Zhang, Y. Zhao, G. Wang,
+H. Liu, Nano-Micro Lett. 2023, 16, 12.
+[24] B. Liu, S. Wang, Q. Yang, G.-H. Hu, C. Xiong, Appl. Sci. 2018, 8, 79.
+[25] W. Ren, W. Ma, S. Zhang, B. Tang, Energy Storage Mater. 2019, 23,
+707.
+[26] J. Wang, S. Yi, J. Liu, S. Sun, Y. Liu, D. Yang, K. Xi, G. Gao, A. Abdelkader,
+W. Yan, S. Ding, R. V. Kumar, ACS Nano 2020, 14, 9819.
+[27] G. Di Donato, T. Ates, H. Adenusi, A. Varzi, M. A. Navarra, S. Passerini,
+Batteries Supercaps 2022, 5, e202200097.
+[28] M. Cuisinier, P.-E. Cabelguen, B. Adams, A. Garsuch, M. Balasubramanian,
+L. Nazar, Energy Environ. Sci. 2014, 7, 2697.
+[29] K. Ueno, J.-W. Park, A. Yamazaki, T. Mandai, N. Tachikawa, K. Dokko,
+M. Watanabe, J. Phys. Chem. C 2013, 117, 20509.
+[30] P. Politzer, D. G. Truhlar, Chemical applications of atomic and molecular
+electrostatic potentials: Reactivity, structure, scattering, and energetics of
+organic, inorganic, and biological systems, Springer Science & Business
+Media, Berlin 2013.
+[31] C. Lefebvre, G. Rubez, H. Khartabil, J.-C. Boisson, J. Contreras-García,
+E. Hénon, Phys. Chem. Chem. Phys. 2017, 19, 17928.
+[32] R. F. Bader, Acc. Chem. Res. 1985, 18, 9.
+[33] M. E. Tuckerman, Quantum Simul. Complex Many-body Syst.: Theory
+Algorithms 2002, 10, 269.
+[34] F. Jensen, Introduction To Computational Chemistry, John wiley & sons, NY,
+US 2017.
+[35] D. Marx, J. Hutter, Ab Initio Molecular Dynamics: Basic Theory And
+Advanced Methods, Cambridge University Press, Cambridge 2009.
+[36] G. Kresse, J. Hafner, Phys. Rev. B 1993, 47, 558.
+[37] G. Kresse, J. Hafner, Phys. Rev. B 1994, 49, 14251.
+[38] G. Kresse, J. Furthmüller, Phys. Rev. B 1996, 54, 11169.
+[39] G. Kresse, J. Furthmüller, Comput. Mater. Sci. 1996, 6, 15.
+[40] G. Kresse, D. Joubert, Phys. Rev. B 1999, 59, 1758.
+[41] J. P. Perdew, K. Burke, M. Ernzerhof, Phys. Rev. Lett. 1996, 77, 3865.
+[42] S. Grimme, J. Antony, S. Ehrlich, H. Krieg, J. Chem Phys. 2010, 132,
+154104.
+[43] A. D. Becke, E. R. Johnson, J. Chem. Phys. 2005, 123.
+[44] T. Lu, F. Chen, J. Comput. Chem. 2012, 33, 580.
+[45] W. Humphrey, A. Dalke, K. Schulten, J. Mol. Graphics 1996, 14, 33.
+[46] C. Zhang, A. Yamazaki, J. Murai, J.-W. Park, T. Mandai, K. Ueno, K. Dokko,
+M. Watanabe, J. Phys. Chem. C 2014, 118, 17362.
+ChemPhysChem 2025, 26, e202400848 (10 of 11)
+© 2025 Wiley-VCH GmbH
+ChemPhysChem
+Research Article
+doi.org/10.1002/cphc.202400848
+ 14397641, 2025, 12, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/cphc.202400848 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 11>>
+[47] Y.-W. Song, J.-L. Qin, C.-X. Zhao, M. Zhao, L.-P. Hou, Y.-Q. Peng, H.-J. Peng,
+B.-Q. Li, J. Energy Chem. 2022, 64, 568.
+[48] L. Zhou, D. L. Danilov, F. Qiao, J. Wang, H. Li, R. A. Eichel, P. H. L. Notten,
+Adv. Energy Mater. 2022, 12, 2202094.
+[49] H. Li, R. Meng, Y. Guo, C. Ye, D. Kong, B. Johannessen, M. Jaroniec,
+S. Z. Qiao, Angew. Chem. Int. Ed. Engl. 2022, 61, e202213863.
+[50] G. Zhou, H. Tian, Y. Jin, X. Tao, B. Liu, R. Zhang, Z. W. Seh, D. Zhuo, Y. Liu,
+J. Sun, J. Zhao, C. Zu, D. S. Wu, Q. Zhang, Y. Cui, Proc. Natl. Acad. Sci. U S A.
+2017, 114, 840.
+[51] E. Espinosa, E. Molins, C. J. C. P. L. Lecomte, Chem. Phys. Lett. 1998, 285,
+170.
+[52] S. Jenkins, I. J. C. P. L. Morrison, Chem. Phys. Letters 2000, 317, 97.
+[53] V. Previtali, C. Trujillo, J.-C. Boisson, H. Khartabil, E. Hénon, I. Rozas, Phys.
+Chem. Chem. Phys. 2017, 19, 31177.
+[54] T. Murphy, S. K. Callear, N. Yepuri, K. Shimizu, M.
+Watanabe,
+J. N. Canongia Lopes, T. Darwish, G. G. Warr, R. Atkin, Phys. Chem. Phys.
+2016, 18, 17224.
+[55] N. Nakatani, K. Kishida, K. Nakagawa, J. Electrochem. Soc. 2018, 165, A1621.
+Manuscript received: August 30, 2024
+Revised manuscript received: March 5, 2025
+Version of record online: March 25, 2025
+ChemPhysChem 2025, 26, e202400848 (11 of 11)
+© 2025 Wiley-VCH GmbH
+ChemPhysChem
+Research Article
+doi.org/10.1002/cphc.202400848
+ 14397641, 2025, 12, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/cphc.202400848 by Tsinghua University Library, Wiley Online Library on [23/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

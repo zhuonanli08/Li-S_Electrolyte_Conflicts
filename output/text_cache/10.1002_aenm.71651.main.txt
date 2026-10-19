@@ -1,0 +1,1773 @@
+
+<<PAGE 1>>
+Advanced Energy Materials 
+www.advenergymat.de
+RESEARCH ARTICLE
+Decoupling Quasi- Solid- State Sulfur Conversion 
+Mechanisms in Weakly Solvating and Locally High 
+Concentration Electrolytes 
+Boyi Pang1 , 2 , 3 
+Huanxin Li1 , 2 , 3 
+Liam Bird3 , 4 
+Yiming Guo2 , 3 
+Bochen Li2 , 3 
+Xiaoxia Guo2 , 3 
+Roby Soni2 , 3 
+Yi Zeng2 , 4 
+Paul R. Shearing3 , 5 
+Thomas S. Miller1 , 2 , 3 
+Rhodri Jervis1 , 2 , 3 
+Alexander J. Kibler1 , 2 , 3 
+James B. Robinson1 , 2 , 3 
+1 Advanced Propulsion Lab, Marshgate, University College London, London, UK 
+2 Electrochemical Innovation Lab, Roberts Building, University College 
+London, London, UK 
+3 The Faraday Institution, Quad One, Becquerel Avenue, Harwell Science and Innovation Campus, Didcot, UK 
+4 National Engineering 
+Research Center of Vacuum Metallurgy, School of Metallurgical and Energy Engineering, Kunming University of Science and Technology, Kunming, China 
+5 ZERO institute, Holywell House, Osney Mead, Oxford, UK 
+Correspondence: Alexander J. Kibler ( a.kibler@ucl.ac.uk)
+James B. Robinson ( j.b.robinson@ucl.ac.uk) 
+Received: 5 June 2026 
+Revised: 13 August 2026 
+Accepted: 16 September 2026 
+Keywords: lithium–sulfur batteries | localized high-concentration electrolytes | polysulfide shuttling | quasi-solid-state conversion | solvation structures | weakly 
+solvating electrolytes 
+ABSTRACT 
+Lithium–sulfur (Li–S) batteries offer high theoretical energy density but are constrained by polysulfide dissolution, shuttling, and 
+sluggish conversion. Here, a weakly solvating electrolyte comprising cyclopentyl methyl ether (CME) and 1,1,2,2-tetrafluoroethyl 
+2,2,3,3-tetrafluoropropyl ether (TTE; CME–TTE) is compared with a localized high-concentration electrolyte comprising 
+diethylene glycol dimethyl ether (G2) and TTE (G2–TTE). Molecular dynamics (MD) simulations show that G2–TTE combines 
+multidentate G2 coordination with appreciable bis(trifluoromethanesulfonyl)imide (TFSI− ) participation, whereas CME–TTE 
+exhibits weaker, predominantly monodentate solvent coordination and stronger relative anion association. Galvanostatic 
+intermittent titration technique (GITT), distribution of relaxation times (DRT), square-wave voltammetry (SWV), shuttle-current 
+measurements, operando ultraviolet–visible (UV–vis) and Raman spectroscopy, physical-property measurements, post-cycling 
+characterization, and time-of-flight secondary ion mass spectrometry (ToF-SIMS) link coordination to electrochemical behavior. 
+Both formulations restrict extensive bulk polysulfide accumulation, but G2–TTE maintains more effective localized ion transport 
+and interfacial conversion. G2–TTE cells consequently deliver capacities above 900 mAh g− 1 after 200 cycles with nearly 100% 
+Coulombic efficiency. A two-cathode pouch cell delivers 600 mAh g− 1 after 50 cycles at an electrolyte-to-sulfur ratio of 1.37 µL 
+mg− 1 . These results identify coordination connectivity, anion participation, and transport as coupled design parameters for 
+quasi-solid-state Li–S batteries. 
+1 
+Introduction 
+Lithium-sulfur (Li-S) batteries stand out as promising candidates 
+for advanced energy storage, offering a theoretical energy density 
+( ≈ 2,600 Wh kg− 1 ) substantially exceeding that of state-of-the- 
+art lithium-ion technologies ( ≈ 400–700 Wh kg− 1 based on active 
+materials) [ 1, 2 ]. This benefit, combined with the earth abundance 
+and low cost of sulfur, makes Li-S systems particularly attractive 
+for next-generation high-energy applications. However, practi- 
+cal deployment has been severely hampered by fundamental 
+electrochemical barriers. Despite extensive research efforts, prac- 
+tical energy densities remain limited to 300–500 Wh kg− 1 , far 
+This is an open access article under the terms of the Creative Commons Attribution License, which permits use, distribution and reproduction in any medium, provided the 
+original work is properly cited. 
+© 2026 The Author(s). Advanced Energy Materials published by Wiley-VCH GmbH 
+Advanced Energy Materials , 2026; 0:e71651 
+https://doi.org/10.1002/aenm.71651
+1 of 20
+
+<<PAGE 2>>
+short of the theoretical potential, with cycle lives restricted to 
+100–200 cycles under typical operating conditions [ 3, 4 ]. 
+Unlike intercalation-based systems, Li–S batteries operate via 
+a complex multi-electron reduction mechanism that requires 
+the sequential conversion of S8 into soluble lithium polysul- 
+fides (LiPS; Li2 Sx , 4 ≤ x ≤ 8) and ultimately into solid Li2 S. 
+This fundamental solution-mediated pathway introduces severe 
+kinetic bottlenecks and multiplies opportunities for homoge- 
+neous and heterogeneous side reactions [ 5–7 ]. The most promi- 
+nent consequence of this mechanism is the “shut tle effect,”
+whereby intermediate polysulfides dissolve in conventional liq- 
+uid electrolytes and migrate uncontrollably between the positive 
+and negative electrodes, acting as an internal redox mediator 
+that mimics a chemical short circuit [ 8, 9 ] This continu- 
+ous crossover leads to the irreversible loss of active sulfur, 
+severe poisoning of the Li anode, and structural passivation of 
+the positive electrode. Compounding these chemical crossover 
+issues, the intrinsically insulating nature of elemental sulfur 
+restricts electrical conductivity, resulting in poor active material 
+utilization and sluggish reaction kinetics [ 10, 11 ]. Ultimately, 
+these intertwined degradation mechanisms manifest electro- 
+chemically as lowered Coulombic efficiency (CE) and severe 
+capacity decay (typically 3–5% per cycle in standard ethers) 
+[ 12, 13 ]. 
+Various approaches have been deployed to mitigate these chal- 
+lenges. Strategies for polysulfide localization include sulfur host 
+encapsulation in conductive carbon matrices [ 13–16 ], advanced 
+separator and interlayer designs featuring functional coatings 
+[ 17, 18 ], the incorporation of protective interfacial layers [ 18–20 ] 
+and heterogeneous redox mediators [ 21, 22 ]. While these struc- 
+tural and catalytic interventions successfully inhibit polysulfide 
+migration kinetically within the operational timeframe of a cycle, 
+they still operate within fundamentally highly solvating liquid 
+environments [ 23 ]. Consequently, rather than eliminating the 
+intrinsic thermodynamic driving force for macroscopic polysul- 
+fide dissolution into the bulk electrolyte, they largely manage 
+its symptoms [ 24, 25 ]. In recent years, electrolyte molecular 
+engineering has been recognized as the most direct and adaptive 
+means to globally control Li-polysulfide chemistry, reaction 
+pathways, and interfacial stability, offering unique advantages by 
+operating within existing cell architectures and directly address- 
+ing root causes of failure rather than treating symptoms [ 21, 22, 
+26 ]. 
+A key conceptual advance has been the recognition that con- 
+trolled modulation of solvation strength can suppress polysulfide 
+dissolution such that sulfur redox chemistry is fundamentally 
+redirected toward quasi-solid-state (QSS) sulfur conversion [ 24, 
+27 ]. In this regime, the transformation of S8 to Li2 S occurs pre- 
+dominantly at solid-liquid interfaces [ 28, 29 ]. While intermediate 
+polysulfides are still formed, their limited solubility confines 
+their accumulation predominantly to the cathode region. Con- 
+sequently, extensive bulk dissolution, diffusion and delayed 
+precipitation are substantially suppressed [ 25, 30, 31 ]. 
+Two complementary electrolyte-design strategies have been 
+developed to restrict polysulfide dissolution: weakly solvating 
+electrolytes (WSEs) and localized high-concentration electrolytes 
+(LHCEs). WSEs employ solvents with intrinsically low effective 
+coordination ability towards Li+ and lithium polysulfides (LiPSs). 
+The reduced stabilization of solvated LiPS species increases the 
+thermodynamic cost of dissolution and restricts the conventional 
+dissolution–diffusion reaction pathway, while the associated ion 
+pairing, solvent coordination and transport properties can also 
+influence interfacial kinetics and polarization [ 27–29 ]. As shown 
+in Table S1 , although cyclopentyl methyl ether (CME) exhibits a 
+moderate nominal donor number (DN = 20.0) [ 32 ], its monoden- 
+tate coordination geometry, together with the steric constraints 
+imposed by its cyclic structure, results in a relatively low effective 
+solvating power [ 27, 33, 34 ]; when paired with ultra-low-DN 
+1,1,2,2-tetrafluoroethyl 2,2,3,3-tetrafluoropropyl ether (TTE, DN = 
+1.9) [ 35 ], the resulting CME–TTE electrolyte restricts extensive 
+polysulfide dissolution. 
+By contrast, localized high-concentration electrolytes (LHCEs) 
+suppress LiPS dissolution through a different molecular mecha- 
+nism. A high salt-to-solvent ratio incorporates most coordinating 
+solvent molecules into Li+ -centred complexes, thereby reducing 
+the amount and activity of free solvent available to solvate LiPSs 
+[ 36–38 ]. Diethylene glycol dimethyl ether (G2) (DN = 19.2) [ 39 ] 
+contains three ether oxygen atoms and can coordinate Li+ in 
+a multidentate configuration. Under concentrated conditions, 
+the limited availability of uncoordinated G2 increases TFSI− 
+participation in the primary Li+ coordination environment and 
+favours contact-ion-pair and aggregate formation relative to 
+dilute electrolyte formulations [ 40–42 ]. A weakly coordinating 
+diluent such as TTE can then reduce the macroscopic viscosity 
+while largely preserving this locally concentrated solvent–salt 
+structure. Thus, WSEs restrict LiPS solvation primarily through 
+weak effective solvent coordination, whereas LHCEs achieve 
+the same macroscopic objective through limited free-solvent 
+availability and persistent locally concentrated coordination. 
+Increased anion participation in LHCEs may additionally favour 
+anion-derived interphase formation at the lithium-metal surface 
+[ 43, 44 ]. 
+Both strategies result in altered sulfur redox mechanisms, 
+mitigating some of the challenges associated with polysulfide 
+shuttle, while also delivering promising cycle stability and rate 
+capability that are difficult to achieve in conventional systems. 
+Recently, Pang et al. [ 45 ]. demonstrated a quasi-solid-state Li- 
+S system achieving an initial discharge capacity of 1,408 mAh 
+g− 1 
+S with capacity retention exceeding 80% after 200 cycles at 
+0.1 C, coupled with a stable capacity of ≈ 800 mAh g− 1 
+S at high 
+current density (1 C). This performance substantially exceeds 
+that of both weakly solvating alternatives and conventional 1,3- 
+dioxolane-1,2-dimethoxyethane (DOL–DME) electrolyte controls 
+under identical test conditions. However, direct comparative 
+and mechanistic understanding remain insufficiently explored. 
+Explicit investigation of quantitative links between electrolyte 
+systems, reaction polarization evolution, and overall improved 
+battery operation is essential for predicting how molecular 
+design choices translate into measurable electrochemical behav- 
+ior across the full state-of-charge window, pivotal for the rational 
+design of high-performance Li-S batteries [ 46, 47 ]. 
+In this study, we systematically compare a weakly solvat- 
+ing electrolyte (CME–TTE) and a localized high-concentration 
+electrolyte (G2–TTE) as two distinct strategies for promoting 
+quasi-solid-state sulfur conversion [ 46, 48–50 ]. By combining 
+2 of 20
+Advanced Energy Materials, 2026
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71651 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 3>>
+classical molecular dynamics simulations with multimodal elec- 
+trochemical diagnostics—including galvanostatic intermittent 
+titration technique (GITT), distribution of relaxation times (DRT) 
+analysis, square-wave voltammetry (SWV), and direct shuttle- 
+current measurements—and complementary physical-property 
+measurements, operando UV–vis and Raman spectroscopy, post- 
+cycling examination, and ToF- SIMS characterization of the 
+interphase formed during Li plating/stripping in G2–TTE, we 
+develop a coherent structure–property–mechanism picture of 
+the two electrolyte systems. The results show that both for- 
+mulations restrict extensive bulk polysulfide dissolution but 
+produce markedly different coordination environments and 
+kinetic responses. In particular, G2–TTE combines multiden- 
+tate solvent coordination with appreciable anion participation, 
+enabling more effective localized sulfur conversion and improved 
+full-cell performance. These findings establish molecular and 
+electrochemical design principles for simultaneously regulating 
+polysulfide confinement, ion transport and interfacial stability in 
+Li–S batteries. 
+2 
+Results and Discussion 
+To determine whether these two electrolyte-design principles are 
+reflected in their molecular coordination structures, MD simula- 
+tions were performed for the G2–TTE LHCE and CME–TTE WSE. 
+Representative local coordination clusters and simulation boxes 
+are shown in Figure 1a,b for G2–TTE and Figure 1d,e for CME–
+TTE. The bulk Li–O RDFs and running CNs reveal markedly 
+different Li+ coordination environments (Figure 1c,f ). In G2–TTE, 
+the coordination numbers at 3.0 Å are approximately 3.63 for 
+O(G2) and 1.78 for O(TFSI− ), indicating that multidentate G2 
+coordination coexists with appreciable TFSI− participation. By 
+contrast, CME–TTE exhibits coordination numbers of approxi- 
+mately 1.19 for O(CME) and 3.03 for O(TFSI− ), demonstrating 
+a substantially greater relative contribution from the anion as 
+a consequence of the weak and monodentate coordination of 
+CME. Li–O(TTE) coordination is negligible in both systems, 
+confirming that TTE is largely excluded from the primary Li+ 
+coordination environment. The MD results therefore reveal that 
+the two formulations restrict solvent participation through dis- 
+tinct coordination structures. G2–TTE combines multidentate 
+G2 coordination with appreciable TFSI− participation within a 
+locally concentrated environment, whereas CME–TTE exhibits 
+weaker, predominantly monodentate solvent coordination and an 
+even greater relative TFSI− contribution. Thus, the distinction 
+between the two systems arises from the combined effects of 
+solvent denticity, solvent participation and anion association, 
+rather than from the anion fraction alone. The distinction 
+between the two solvation structures is retained in the presence of 
+Li2 S6 . Representative environments of Li+ neighboring Li2 S6 are 
+shown in Figure 1g,h . For Li+ within 3.0 Å of Li2 S6 , G2–TTE gives 
+coordination numbers of approximately 1.99 for S(Li2 S6 ), 1.21 
+for O(TFSI− ), and 2.02 for O(G2), compared with 2.35, 1.55, and 
+0.89 for S(Li2 S6 ), O(TFSI− ), and O(CME), respectively, in CME–
+TTE (Figure 1i ). Furthermore, the 2.02 G2–O contacts originate 
+from only approximately 0.79 G2 molecules per selected Li+ , 
+whereas approximately 0.89 CME–O contacts arise from 0.90 
+CME molecules (Figure 1j ). This comparison confirms that G2 
+maintains multidentate coordination near Li2 S6 , while CME–
+TTE accommodates Li2 S6 through a more strongly polysulfide- 
+and anion-associated coordination network. These descriptors 
+provide quantitative distinctions between the modelled molec- 
+ular environments experienced by Li2 S6 ; their consequences for 
+dissolved-polysulfide accumulation and sulfur conversion are 
+examined experimentally below. Additional bulk and Li2 S6 -local 
+RDF, coordination-number and neighbouring-molecule analyses 
+are provided in Figures S45–S47 . A simplified field-induced 
+interfacial model of G2–TTE is also presented in Figure S48 
+to illustrate qualitative electrolyte redistribution near idealized 
+charged surfaces; this model is not used as a quantitative 
+representation of the electrical double layer in an operating 
+cell. 
+The consequences of these distinct coordination structures were 
+subsequently examined by galvanostatic measurements. Figure 2 
+compares the galvanostatic charge-discharge profiles of Li-S 
+cells employing G2-TTE, CME-TTE, DOL-DME, and DOL-DME- 
+0.2 M LiNO3 under standard symmetric cycling conditions. 
+Clear differences in plateau morphology are observed among 
+the four electrolytes. In conventional ether systems, the upper 
+voltage plateau (around 2.25 V) typically corresponds to the 
+liquid-phase reduction of solid sulfur (S8 ) to long-chain soluble 
+polysulfides (Li2 S8 , Li2 S6 ), while the lower, prolonged plateau 
+(around 2.1 V) represents the further liquid-to-solid conversion 
+into insoluble short-chain species (Li2 S4 , Li2 S2 and ultimately 
+Li2 S). Although G2-TTE (Figure 2a ) exhibits two plateaus, these 
+two reaction stages manifest at nearly identical operational 
+potentials, presenting a severely minimized voltage gap con- 
+nected by an abbreviated gentle slope. Chemically, this merging 
+of plateaus signifies a deviation from the traditional solution- 
+mediated pathway. Consistent with mechanistic insights from 
+conceptually similar weakly solvating and high-concentration 
+paradigms, the depletion of free solvent strongly suppresses the 
+dissolution of long-chain intermediates, effectively forcing QSS 
+conversion that bypasses massive liquid-phase supersaturation 
+[ 51 ]. 
+This behavior contrasts with the more conventional plateau 
+distributions observed in DOL-DME (Figure 2c ) and DOL-DME- 
+LiNO3 (Figure 2d ), which display a more dominant high-voltage 
+contribution. In DOL-DME, the charge capacity exceeds the 
+preceding discharge capacity at all three rates, with the largest 
+mismatch at 0.05 C. The excess charge is characteristic of 
+repetitive redox conversion of soluble polysulfides and directly 
+reveals persistent shuttle behavior in the conventional electrolyte. 
+Notably, the cell with the DOL-DME-0.2 M LiNO3 electrolyte at 
+the extremely low rate of 0.01 C (Figure 2d ) exhibits an anomalous 
+discharge capacity exceeding the theoretical limit of sulfur (1675 
+mAh g− 1 ). The anomalous capacity is mainly associated with 
+irreversible reduction of the nitrate additive and concurrent elec- 
+trolyte decomposition during prolonged low-current operation at 
+low voltage. 
+The contribution from these parasitic reactions is further 
+reflected by a poor initial CE of 81.2%. As widely established in 
+ether-based systems, under the extended operational timeframe, 
+these processes generate substantial apparent excess capacity 
+[ 52 ]. Meanwhile, CME-TTE exhibits two distinct plateaus and has 
+a higher overpotential. These systematic differences suggest that 
+the solvation environment alters the apparent sulfur conversion 
+regime even under identical operating conditions. Rather than 
+Advanced Energy Materials, 2026
+3 of 20
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71651 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 4>>
+FIGURE 1 
+Molecular origins of distinct Li+ solvation in G2–TTE and CME–TTE. (a), (d) Representative local two-Li coordination clusters; (b,e) 
+simulation boxes; (c,f) bulk Li–O radial distribution functions (RDFs) and running coordination numbers (CNs); (g,h) local structures around Li+ 
+neighboring Li2 S6 ; and (i,j) corresponding atomic CNs and unique neighboring-molecule counts. For (g–j), Li+ within 3.0 Å of Li2 S6 was selected. 
+4 of 20
+Advanced Energy Materials, 2026
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71651 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 5>>
+FIGURE 2 
+Galvanostatic charge-discharge profiles. Voltage profiles of (a) G2-TTE, (b) CME-TTE, (c) DOL-DME, and (d) DOL-DME-0.2 M LiNO3 
+at 0.01C(first cycle), 0.05C(second cycle), and 0.2C(third cycle). Asymmetric charge–discharge curves under (e) slow-discharge/fast-charge (0.05C 
+discharge/0.2C charge) and (f) fast-discharge/slow-charge (0.2C discharge/0.05C charge) conditions. In (e) and (f), dash lines represent the charging 
+processes. 
+Advanced Energy Materials, 2026
+5 of 20
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71651 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 6>>
+FIGURE 3 
+Quantitative analysis of voltage polarization and regional capacity distribution. (a–c) charge and discharge plateaus properties (a) at 
+0.01 C (first cycle); (b) at 0.05 C (second cycle); (c) at 0.2C (third cycle); (d–f) discharge capacity at different regions: (d) at 0.01C (first cycle); (e) at 0.05 
+C (second cycle); (f) at 0.2 C (third cycle). 
+merely shifting operational voltages, the macroscopic solvation 
+structure fundamentally re-routes the thermodynamic stability 
+of intermediates, dictating whether the cell operates via a highly 
+soluble liquid cascade or a spatially confined, interfacial pathway 
+[ 53 ]. 
+A close inspection of the galvanostatic discharge profiles reveals 
+a fundamental shift in the sulfur reduction mechanism, high- 
+lighted by the distinct presence or absence of the nucleation 
+overpotential dip at the onset of the lower voltage plateau. 
+In conventional ether electrolytes DOL-DME with or without 
+LiNO3 , a pronounced voltage dip is clearly observed prior to 
+the lower plateau. This dip is a classic kinetic signature of 
+the dissolution-diffusion-precipitation pathway [ 24 ], represent- 
+ing the supersaturation of highly soluble long-chain polysulfides 
+in the liquid phase [ 54 ] and the subsequent activation energy 
+barrier required for the homogeneous nucleation of solid Li2 S 
+[ 55 ]. 
+In stark contrast, the nucleation dip is absent from the discharge 
+profiles of both G2–TTE and CME–TTE, indicating that their 
+sulfur-reduction pathways differ from the delayed dissolution–
+supersaturation–precipitation process observed in conventional 
+DOL–DME electrolytes. This behavior is particularly notable 
+for CME–TTE. As shown in Figure 3d , CME–TTE derives a 
+substantial fraction of its initial discharge capacity from the high- 
+voltage region, comparable to that of the conventional DOL–DME 
+electrolyte. This sizeable high-voltage contribution confirms that 
+considerable sulfur conversion occurs before the lower plateau. 
+When considered together with the absence of a subsequent 
+nucleation dip, the result is consistent with the initially formed 
+polysulfide intermediates being retained predominantly near 
+the cathode and undergoing continued interfacial conversion, 
+rather than accumulating in the bulk electrolyte until delayed 
+precipitation occurs. 
+In these weakly solvating electrolytes, restricted dissolution 
+prevents extensive diffusion and accumulation of long-chain 
+intermediates in the bulk electrolyte. The surface-confined inter- 
+mediates can therefore proceed directly through QSS conversion 
+at the solid-liquid interface, avoiding the delayed supersaturation 
+and nucleation process characteristic of conventional DOL-DME. 
+This interfacial pathway maintains the initial sulfur utilization 
+while eliminating the characteristic nucleation overpotential. 
+To further probe the kinetic reliance of the QSS conversion 
+pathway, asymmetric charge-discharge protocols were employed 
+(Figure 2e,f ). Under slow-discharge/fast-charge conditions, G2- 
+TTE maintains a high discharge capacity, indicating that extended 
+discharge times partially compensate for kinetically hindered 
+conversion by enabling prolonged interfacial transformation. 
+In contrast, under fast-discharge/slow-charge conditions, the 
+performance of G2-TTE converges toward that of DOL-DME, 
+implying that rapid discharge imposes a kinetic bottleneck on 
+solid-state or interfacial sulfur conversion, even when sufficient 
+pre-charging is provided. 
+Notably, CME–TTE exhibits a distinct capacity response under 
+the asymmetric charge–discharge protocols. This behavior can- 
+not be attributed to low bulk viscosity because CME–TTE has 
+the highest measured viscosity and the lowest ionic conductivity 
+among the investigated electrolytes. Its response instead reflects 
+the combined effects of restricted polysulfide dissolution and rate- 
+dependent bulk and interfacial transport. Although the weak, 
+predominantly monodentate coordination of CME limits solvent 
+stabilization of polysulfide species, the present measurements 
+do not allow the contributions of ion-pair reorganization, Li+ 
+desolvation, viscosity and ionic conductivity to be separated 
+quantitatively [ 56, 57 ]. The influence of bulk electrolyte prop- 
+erties was further evaluated through viscosity, wettability and 
+apparent ionic-conductivity measurements (Tables S30–S32 and 
+6 of 20
+Advanced Energy Materials, 2026
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71651 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 7>>
+Figure S32 ). CME–TTE exhibits the highest viscosity (41.74 ± 
+1.87 mPa s) and the lowest apparent ionic conductivity (0.014 
+mS cm− 1 ) among the investigated formulations, whereas G2–
+TTE shows intermediate values of 16.84 ± 2.40 mPa s and 0.134 
+mS cm− 1 , respectively. Nevertheless, CME–TTE wets both the 
+Celgard separator and sulfur cathode instantaneously, excluding 
+inadequate macroscopic wetting as the origin of its elevated 
+polarization. These measurements show that bulk transport 
+contributes to the observed kinetic differences, but cannot alone 
+account for the contrasting sulfur-conversion behavior because 
+G2–TTE still suppresses shuttling and sustains cycling despite 
+having lower apparent ionic conductivity and higher viscosity 
+than the conventional DOL–DME electrolytes. 
+To further quantitatively resolve the kinetic behaviors observed 
+across various and asymmetric C-rates, the plateau voltages 
+(Figure 3a–c ) and their corresponding capacity contributions 
+(Figure 3d–f ) were analyzed. For the conventional DOL-DME 
+baseline, the incorporation of the LiNO3 additive raises the charge 
+plateau and produces a consistently larger full-cell voltage gap 
+than the additive-free electrolyte. The lower discharge plateau 
+is slightly reduced at 0.01 C and becomes comparable to DOL- 
+DME at 0.05 and 0.2 C. The enhanced polarization reflects the 
+combined effects of LiNO3 [ 52 ]. 
+Intriguingly, the LHCE G2-TTE electrolyte, exhibits a modest 
+overpotential at low C-rates, comparable to that of the LiNO3 - 
+free baseline. Here, the macroscopic polarization is defined as 
+the voltage gap between the median oxidation plateau and the 
+lower reduction plateau. However, at 0.2C (Figure 3c ), G2-TTE 
+undergoes a sharp surge in voltage hysteresis, eventually sur- 
+passing the polarization of the conventional DOL-DME systems. 
+This severe rate-dependent polarization is consistent with a 
+QSS conversion mechanism [ 24 ]. The conventional DOL-DME 
+electrolyte exhibits a low overpotential because its reactions 
+proceed via a liquid-phase pathway. 
+The severe rate-dependent polarization of G2-TTE is fundamen- 
+tally rooted in its unique solvation structure [ 24, 28, 47 ], Unlike 
+conventional ethers, G2-TTE significantly suppresses polysulfide 
+dissolution. Consequently, the sulfur conversion is forced into 
+a surface-mediated QSS pathway. Driving this localized, solid- 
+state transformation at high currents naturally demands a higher 
+activation energy to overcome sluggish charge-transfer and mass- 
+transport limitations, thereby causing the observed surge in 
+voltage hysteresis. 
+To further quantitatively resolve the sulfur utilization and mech- 
+anistic evolution across various C-rates, the total discharge 
+capacities at 0.01C, 0.05C, and 0.2C were systematically deconvo- 
+luted into four distinct regions: high plateau, low plateau, slope 
+plateau, and non-plateau capacities (Figure 3d–f ). 
+For the conventional DOL-DME-LiNO3 reference, the capacity 
+distribution evolves markedly with the applied rate. During the 
+initial cycle at an extremely slow discharge rate of 0.01C, up to 
+49% of the discharge capacity manifests as non-plateau capacity. 
+This specific capacity contribution occurs entirely within the low- 
+voltage region between 1.8 V and the 1.5 V lower cutoff. This 
+extensive low-voltage capacity indicates that the wide charge- 
+discharge window exacerbates the irreversible reduction of LiNO3 
+and associated parasitic reactions [ 58 ]. During the subsequent 
+third cycle at 0.2 C, this anomalous non-plateau contribution is 
+substantially reduced. The higher current shortens the residence 
+time in the low-voltage region, while prior nitrate consumption 
+and the associated interphase formation further limit continuous 
+parasitic reduction. Together, these effects suppress the anoma- 
+lous low-voltage capacity and restore a more plateau-dominated 
+discharge profile. 
+In contrast, the monodentate CME-TTE electrolyte shows a 
+well-defined regional capacity distribution across the tested 
+conditions. Its low plateau capacity dominated the overall output, 
+rising from 53% at 0.01C to 65% at 0.2C. Furthermore, the non- 
+plateau contribution of CME-TTE approaches zero at 0.2 C. The 
+contraction of the low-voltage tail reflects increasing polariza- 
+tion, which drives the cell to the lower cutoff before slower 
+deep-conversion processes can proceed. Improving the cathode 
+architecture through smaller sulfur particles and a more highly 
+dispersed conductive network should alleviate this interfacial 
+bottleneck and increase sulfur utilization at higher rates. 
+The localized high-concentration electrolyte, G2-TTE, displays 
+rate-dependent changes in its overall capacity and regional capac- 
+ity distribution. At the intermediate rate of 0.05C, it achieves the 
+highest low-plateau fraction among all systems (68%). This high 
+fraction indicates an extensive deep reduction of intermediate 
+species to terminal solid products (Li2 S2 /Li2 S) via a confined 
+solid-state conversion pathway. At 0.2 C, the non-plateau fraction 
+increases to 29%, while the low-plateau fraction decreases to 
+49%, indicating that a larger proportion of sulfur conversion is 
+displaced to lower potentials before reaching the cutoff. This 
+redistribution is consistent with delayed formation of terminal 
+Li2 S during rapid reduction. The associated increase in high rate 
+overpotential arises from slower propagation of the localized 
+conversion interface and increasingly restricted Li ions transport 
+through progressively accumulated insulating Li2 S 
+The galvanostatic discharge-charge profiles and regional capac- 
+ity dissections establish clear differences in full-cell voltage 
+polarization and conversion pathways. However, these bulk 
+measurements only provide the global thermodynamic and mass- 
+transport responses. To understand the fundamental causes of 
+these rate-dependent phenomena, it is necessary to examine the 
+specific reaction kinetics at the solid-liquid interface. Therefore, 
+CV at varied scan rates and operando DRT analysis (Figure 4 ) 
+were conducted. These techniques were used to separate the 
+micro-kinetic reaction steps and to identify the individual interfa- 
+cial impedance components. A closer inspection of the ultra-slow 
+CV profiles (0.01 mV s− 1 , Figure 4a–d insets) unveils fundamental 
+shifts in the thermodynamic reaction pathways dictated by the 
+solvation environments. In the conventional DOL-DME systems 
+(with and without LiNO3 ) (Figure 4c,d ), the cathodic scan 
+presents two distinctly separated reduction peaks. This classical 
+bifurcation signifies a highly solvated, two-step liquid-phase 
+mechanism, wherein the initial formation of highly soluble long- 
+chain polysulf ides is thermodynamically uncoupled from the 
+subsequent liquid-to-solid Li2 S nucleation [ 59 ]. 
+The cathodic peaks in both G2-TTE (Figure 4a ) and CME- 
+TTE (Figure 4b ) electrolytes are closely adjacent, indicating a 
+shift toward QSS-like conversion, with reduced macroscopic 
+Advanced Energy Materials, 2026
+7 of 20
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71651 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 8>>
+FIGURE 4 
+Kinetic and impedance evolution in different solvation environments. Cyclic voltammetry (CV) profiles of coin cells employing (a) 
+G2-TTE; (b) CME-TTE; (c) DOL-DME; (d) DOL-DME-0.2 M LiNO3 at various scan rate from 0.01 to 5 mV s− 1 (insets: detailed CVs at 0.01 mV s− 1 ):; 
+Voltage-resolved contour maps of the DRT at various states of discharge for respective four electrolytes: (e) G2-TTE; (f) CME-TTE; (g) DOL-DME; (h) 
+DOL-DME-0.2 M LiNO3. 
+polysulfide dissolution. In these cases, the intermediate species 
+are likely more confined to the electrode surface, facilitating 
+an uninterrupted, in situ solid-to-solid reduction that bypasses 
+prolonged liquid-phase diffusion. However, the solvation mech- 
+anism (LHCE vs. WSE) of these two electrolytes results in vastly 
+divergent kinetic efficiencies for the QSS pathway. Operating 
+as an LHCE, the G2-TTE system maintains sharp reduction 
+peaks. The multidentate G2 solvent constructs a coordinating 
+localized solvation sheath around Li+ , which is encapsulated by 
+the non-solvating TTE diluent. This localized solvation structure 
+is expected to promote anion-derived interphase formation at the 
+electrode interface. The comparatively sharp and less negatively 
+shifted reduction peaks observed for G2–TTE are consistent with 
+facilitated interfacial charge transfer, although the respective 
+contributions of Li+ desolvation and interphase transport cannot 
+be independently resolved from the CV data alone [ 60 ]. Con- 
+versely, CME–TTE exhibits broader and more negatively shifted 
+cathodic features, indicating greater overall kinetic polarization 
+during deep sulfur conversion. However, these electrochemical 
+features do not uniquely identify the molecular origin of the 
+kinetic limitation. The MD results show weak, predominantly 
+monodentate solvent coordination together with greater relative 
+TFSI− association, while the physical-property measurements 
+show that CME–TTE has the highest viscosity and lowest 
+ionic conductivity among the investigated electrolytes. Bulk ion 
+transport, ion association and interfacial reorganization may 
+therefore contribute jointly to the observed polarization. Because 
+systematic binding-energy calculations were not performed, the 
+kinetic response is not assigned exclusively to a specific Li+ 
+desolvation or ion-pair dissociation barrier [ 61 ]. CME–TTE pro- 
+duces a weakly solvent-coordinated, anion-involved solvation 
+environment. Although this environment suppresses LiPS disso- 
+lution, the limited solvent-mediated ion transport and restricted 
+interfacial reorganization can impose kinetic penalties during 
+deep sulfur conversion. These kinetic disparities become more 
+pronounced at elevated scan rates (5 mV s− 1 ). For the CME- 
+TTE and the DOL-DME-LiNO3 systems, the distinct cathodic 
+reduction peaks completely vanish, degenerating into sluggish, 
+capacitive-like tailing. This peak disappearance indicates severe 
+mass-transport limitations and substantial polarization. The spe- 
+cific physical origins of this limitation differ between the two 
+systems. In the weakly solvating CME-TTE system, this severe 
+polarization originates from the high desolvation energy barrier 
+of contact ion pairs, which restricts the interfacial Li+ supply 
+rate [ 28 ]. Conversely, in the traditional LiNO3 system, this kinetic 
+failure is ascribed to the thick, continuously evolving solid- 
+electrolyte interphase (SEI) layer causing excessive ionic transfer 
+resistance. Remarkably, the LHCE G2-TTE formulation stands 
+alone in preserving identifiable reduction peak features even 
+at 5 mV s− 1 . The retention of identifiable reduction features 
+in G2–TTE at 5 mV s− 1 is consistent with comparatively facile 
+interfacial charge transfer. Voltage-resolved DRT contour maps 
+(Figure 4e–h ) enable the deconvolution of the discharge kinetics 
+into characteristic timeframes, allowing for more precise analysis 
+than conventional electrochemical impedance spectroscopy (EIS) 
+measurements. To isolate the intrinsic reaction kinetics from any 
+cumulative cycling history or degradation effects, these operando 
+DRT measurements were conducted on independent, freshly 
+assembled cells. According to the established DRT analytical 
+framework for Li-S batteries (Table 1 ) by Soni et al. [ 62 ], specific 
+electrochemical processes correspond to distinct relaxation time 
+constants ( τ). Based on the DRT framework summarized in 
+Table 1 , a feature near log10 ( τ) ≈ − 0.4 has previously been 
+associated with polysulfide-related mass transport. However, 
+because DRT relaxation-time assignments are not necessarily 
+unique, the potential dependence, peak width, and persistence 
+of this feature must be considered together when distinguish- 
+ing extended liquid-phase transport from localized interfacial 
+conversion. 
+We next consider the conventional electrolytes. Before the DRT 
+inversion, only the terminal semi-infinite Warburg segment was 
+excluded from each impedance spectrum, while the remain- 
+ing resolved low-frequency responses were retained. Within 
+this retained frequency window, DOL–DME exhibits a broad 
+long-timescale relaxation at log10 ( τ) > 0 during discharge 
+8 of 20
+Advanced Energy Materials, 2026
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71651 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 9>>
+TABLE 1 
+DRT relaxation-time regions and their associated physical processes in Li–S batteries [ 62 ]. 
+DRT Peak 
+Approximate time constant τ
+log10 ( τ) 
+Assignment 
+1 
+3 µs 
+− 5.52 
+Inter-particle resistance 
+2 
+14.14–28.4 µs 
+− 4.85– − 4.55 
+Double-layer relaxation 
+3 
+44.88 µs 
+− 4.35 
+Solid-electrolyte interphase 
+4 
+0.3 ms 
+− 3.52 
+Positive electrode charge transfer 
+5 
+5 ms 
+− 2.30 
+Positive electrode charge transfer 
+6 
+50 ms 
+− 1.30 
+Positive electrode charge transfer 
+7 
+0.4 s 
+− 0.40 
+Polysulfide diffusion 
+8 
+10 s 
+1.00 
+Diffusion 
+(Figure 4g and Figure S7 ). Its potential-dependent emergence and 
+persistence are consistent with slow polysulfide-related transport. 
+Because the terminal semi-infinite diffusion contribution was 
+excluded and DRT assignments are not unique, this response 
+is interpreted comparatively rather than as a direct quantitative 
+measure of bulk diffusion. Upon addition of LiNO3 (Figure 4h 
+and Figure S10 ), the broad long-timescale response is strongly 
+reduced during the initial discharge, consistent with suppression 
+of continuous polysulfide transport following anode passivation. 
+The intermediate-frequency responses also shift towards shorter 
+relaxation times, indicating altered interfacial kinetics, although 
+these shifts cannot be assigned exclusively to a single charge- 
+transfer or nucleation process. 
+Although the quasi-solid-state electrolytes simplify the over- 
+all DRT landscape by suppressing persistent low-frequency 
+responses associated with extensive liquid-phase transport, their 
+different coordination and transport properties produce distinct 
+kinetic signatures. CME–TTE (Figure 4f and Figure S4 ) exhibits 
+persistent features near log10 ( τ) ≈ − 3.5 and − 1, together with 
+a higher-frequency response near log10 ( τ) ≈ − 4.5. Based on 
+previously reported DRT frameworks for Li–S batteries, these 
+frequency regions may contain contributions from interfacial 
+charge transfer, ion transport and terminal sulfur conversion. 
+However, DRT assignments are not unique and should not be 
+made from the relaxation time alone. 
+In particular, the high-frequency feature should not be attributed 
+to inadequate electrolyte wetting because CME–TTE instan- 
+taneously wets both the Celgard separator and the sulfur 
+cathode. The persistence and broadening of the CME–TTE 
+responses instead indicate sustained kinetic limitations during 
+discharge. Considering its high viscosity, low ionic conductiv- 
+ity, weak predominantly monodentate solvent coordination and 
+greater relative anion association, these limitations most likely 
+reflect combined bulk-transport and interfacial contributions. 
+In the absence of systematic binding-energy calculations, the 
+individual contributions of Li+ desolvation, ion-pair dissocia- 
+tion and interfacial charge transfer cannot be quantitatively 
+separated. 
+Finally, the LHCE-based G2-TTE system (Figure 4e and Figure 
+S1 ) exhibits a distinctly different impedance profile. A narrow 
+feature near log10 ( τ) ≈ − 0.4 emerges in G2–TTE only around 
+2.1 V and subsequently disappears at lower potentials. In contrast 
+to the broad and persistent low-frequency response observed 
+in conventional DOL–DME, the restricted potential window 
+and transient nature of this feature are consistent with short- 
+range mass transport coupled to interfacial Li2 S formation. This 
+interpretation is based on the combined potential dependence, 
+peak width, and temporal evolution of the DRT response, rather 
+than on the relaxation time alone. Within the LHCE microenvi- 
+ronment, the dominant high-frequency charge-transfer response 
+near log10 ( τ) ≈ − 3 is consistent with relatively facile initial 
+interfacial kinetics. The anion-involved solvation structure and 
+ToF-SIMS results suggest that an anion-derived interphase may 
+contribute to this behavior, although its individual contribution 
+cannot be quantitatively separated from the effects of the local 
+solvation environment. Driven by this facile initial conversion, 
+the subsequent Li2 S nucleation proceeds rapidly at 2.1 V. The 
+transient nature of the diffusion peak at log10 ( τ) of ca. − 0.4 
+indicates that intermediate species are rapidly consumed through 
+localized phase transitions. Consequently, the transient DRT 
+response is consistent with localized mass transport during 
+terminal Li2 S formation, without the persistent low-frequency 
+diffusion feature observed in the conventional DOL–DME 
+electrolyte. 
+A comprehensive understanding of the electrochemical behav- 
+ior of the G2-TTE system necessitates a systematic decoupling 
+of its dynamic impedance evolution. Figure 5a presents the 
+Nyquist plots tracking the state-of-discharge (SOD) impedance 
+from the fully charged state down to 1.5 V. During the ini- 
+tial high-voltage conversion (2.4 V to 2.2 V), the cell exhibits 
+low interfacial resistance. However, an abrupt impedance spike 
+emerges precisely at 2.1 V, marked by a significant expansion 
+of the charge-transfer semicircle. Under the highly confined 
+conditions of a localized high-concentration electrolyte, this 
+transient resistance maximum corresponds to the sluggish 
+kinetics of Li2 S nucleation. The primary contributors to this 
+extreme interfacial resistance are the inherently poor electronic 
+conductivity of the precipitating solid intermediates and the 
+massive activation energy required for solid-phase nucleation 
+on the carbon matrix. As the discharge deeply progresses to 
+1.9 V and 1.5 V, the overall impedance gradually decreases. 
+This progressive impedance recovery is a characteristic hall- 
+mark of surface-mediated QSS conversions [ 47, 63 ]. Unlike 
+conventional highly solvating systems where continuous bulk 
+precipitation permanently passivates and clogs the electrode 
+matrix, the localized multidentate solvation sheath limits mass 
+Advanced Energy Materials, 2026
+9 of 20
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71651 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 10>>
+FIGURE 5 
+Decoupling of QSS dynamics and quantitative suppression of parasitic interfacial reactions in G2-TTE system (a) EIS of G2-TTE cell 
+at different voltages; (b) DRT peaks analysis of G2-TTE cell at 2.1 V; (c) Discharging SWV of G2-TTE cell from 3.0 V to 1.5 V; (d) Relationship between 
+peak areas and transferred electrons and the average transition state LiPS; (e) Lithium plating/stripping of G2-TTE Cells; (f) Shuttle current between 
+two plateaus in G2-TTE cells. 
+dissolution. This confinement preserves localized interfacial ion- 
+transport pathways, enabling sustained solid-to-solid reduction 
+over a narrow potential window without catastrophic elec- 
+trode passivation. The individual kinetic bottlenecks governing 
+this highly resistive conversion stage (2.1 V) are elucidated 
+through an advanced peak deconvolution of the DRT pro- 
+file (Figure 5b ). The deconvoluted spectrum indicates that 
+the impedance response at 2.1 V is dominated by interfacial 
+charge-transfer contributions rather than by a broad, persis- 
+tent low-frequency diffusion process. In addition, Fit Peak 7 
+appears as a sharp feature near log10 ( τ) ≈ − 0.4. Its narrow 
+profile, transient appearance, and localization around 2.1 V are 
+consistent with restricted short-range mass transport during 
+interfacial Li2 S formation. Nevertheless, this DRT feature alone 
+does not provide direct proof that bulk diffusion is entirely 
+absent. 
+10 of 20
+Advanced Energy Materials, 2026
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71651 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 11>>
+In G2–TTE, the locally concentrated coordination environment 
+restricts extensive long-range dissolution of sulfur intermediates. 
+The resulting conversion pathway therefore involves predomi- 
+nantly local structural reorganization and interfacial transforma- 
+tion near the cathode rather than accumulation of a macroscopic 
+supersaturated polysulfide solution. This interpretation is con- 
+sistent with the absence of a detectable supersaturation-related 
+voltage dip in the galvanostatic discharge profile. Nevertheless, 
+the electrochemical response does not imply that dissolved inter- 
+mediates or nucleation barriers are completely absent; rather, 
+their spatial extent and persistence are substantially reduced 
+relative to conventional DOL–DME. 
+Given the inherent limitations of CV peak integration arising 
+from persistent background and capacitive currents, as discussed 
+in our previous work [ 64 ], SWV was employed to better iso- 
+late Faradaic processes (Figure 5c ). By effectively suppressing 
+non-Faradaic contributions, SWV enables a more selective inter- 
+rogation of discrete redox events and their associated charge 
+transfer [ 65 ]. Integration of the SWV peak areas therefore pro- 
+vides a more direct measure of electron-transfer steps and the 
+inferred population of sulfur intermediates. Using the proposed 
+quantitative framework (Figure 5d ), analysis of G2-TTE yields 
+an effective reduction product of x = 2.11. This does not imply 
+that, for the G2-TTE electrolyte, S is reduced exclusively to Li2 S2.11 
+in the first reduction step, but rather that the average S content 
+in the intermediate products is 2.11. This indicates that Li2 S2 or 
+adjacent species are the most significant discharge intermediates, 
+whilst longer-chained reduction products such as Li2 S4 , Li2 S6 and 
+Li2 S8 account for only a small fraction. This result is consistent 
+with the QSS conversion pathway, in which the reduction of 
+sulfur occurs primarily via solid-solid interface reactions rather 
+than through solution-mediated pathways. Under these condi- 
+tions, the formation of fully solvated long-chain polysulphides 
+is significantly suppressed, thereby limiting side reactions asso- 
+ciated with the shuttle mechanism. Complementary operando 
+spectroscopy further supports the restricted accumulation of 
+dissolved polysulfides in the TTE-based electrolytes. Operando 
+UV–vis measurements reveal a pronounced absorption response 
+between approximately 400 and 500 nm in DOL–DME, consis- 
+tent with substantial accumulation of dissolved medium- and 
+long-chain polysulfides in the probed bulk-electrolyte region 
+(Figures S33–S36 ). No comparable feature is observed for G2–
+TTE or CME–TTE. In G2–TTE, operando Raman spectroscopy 
+detects transient electrolyte-phase bands assigned to S6 
+2 − , S4 
+2 − 
+and S3 ∙− during discharge (Figures S39–S41 ). These signals 
+emerge during the intermediate-voltage region and return to 
+the pre-discharge baseline by the end of discharge. Although 
+their intensities are not used for inter-species concentration 
+quantification, their temporal evolution is consistent with the 
+transient formation and subsequent consumption of dissolved 
+intermediates rather than the persistence of a bulk polysulfide 
+reservoir. 
+To assess the practical stability of the electrolyte at the metal 
+anode interface, fundamental lithium plating/stripping mea- 
+surements were strictly evaluated using standard Li||Cu half- 
+cells (Figure 5e and Figure S16 ). In this configuration, G2-TTE 
+exhibits remarkably flat voltage profiles, low overpotentials, 
+and a highly stable CE over extended cycles. These results 
+indicate a highly reversible lithium deposition process and a 
+significant suppression of electrolyte-induced parasitic reactions 
+at the anode. To further examine the interphase associated 
+with this stable Li plating/stripping behavior, ToF-SIMS was 
+performed on a Cu electrode recovered from a Li ∥ Cu cell after 
+repeated Li plating/stripping in G2–TTE (Figures S42–S44 ). The 
+two- and three-dimensional ion distributions and sputter-time 
+profiles reveal LiF-related fragments together with TFSI-derived 
+sulfur–oxygen and molecular fragments. Their depth-dependent 
+evolution supports the formation of a compositionally graded 
+interphase, with a greater contribution from molecular and 
+organic fragments near the outer surface and increasingly promi- 
+nent LiF-related signals towards the interior. Combined with 
+the stable Li ∥ Cu electrochemical response, this compositionally 
+graded, LiF-containing interphase is consistent with an SEI capa- 
+ble of supporting reversible Li deposition and stripping. Moving 
+to the full-cell environment, these stable anode characteristics 
+synergistically complement the cathode’s localized conversion 
+kinetics. This is confirmed by shuttle current measurements 
+(Figure 5f and Figure S17 ), where G2-TTE displays near-zero inter- 
+plateau leakage currents. This behavior constitutes direct macro- 
+electrochemical evidence for strongly suppressed polysulfide 
+crossover and the restriction of long-range active mass dissolution 
+[ 66, 67 ]. Together, these decoupled half-cell and full-cell obser- 
+vations validate the mechanistic picture of a solvation-regulated 
+QSS architecture. The localized interfacial conversion pathways 
+inherently mitigate shuttle-induced capacity decay, while simul- 
+taneously improving anode compatibility, thereby highlighting 
+the practical advantages of this design principle for advanced 
+sulfur electrochemistry. The electrochemical observations are 
+further supported by post-cycling examination of the cell compo- 
+nents (Figures S37 and S38 ). The cathodes and separators recov- 
+ered from the G2–TTE and CME–TTE cells exhibit substantially 
+less visible material detachment and yellow staining than those 
+from the conventional DOL–DME-based cells. The corresponding 
+Li surfaces are also comparatively smooth and clean, whereas vis- 
+ibly roughened and darkened surfaces are observed after cycling 
+with DOL–DME and DOL–DME–LiNO3 . Optical microscopy 
+further reveals substantially less visible Li degradation in G2–TTE 
+than in DOL–DME–LiNO3 after approximately 10 cycles. These 
+qualitative observations corroborate the reduced bulk polysulfide 
+migration and fewer parasitic reactions inferred from the elec- 
+trochemical and spectroscopic measurements but are not treated 
+as quantitative measurements of shuttle flux or corrosion rate. 
+To further examine the interphase formed during Li deposition, 
+ToF-SIMS was performed on a Cu electrode recovered from a 
+Li ∥ Cu cell after repeated Li plating/stripping in G2–TTE (Figures 
+S42–S44 ). The two- and three-dimensional ion distributions 
+and sputter-time profiles reveal LiF-related fragments together 
+with TFSI-derived sulfur–oxygen and molecular fragments. Their 
+depth-dependent evolution supports the formation of a composi- 
+tionally graded, LiF-containing interphase in G2–TTE. Because 
+ToF-SIMS was performed only for this electrolyte, the result 
+is used to establish its interfacial composition rather than to 
+claim a quantitatively superior interphase relative to the other 
+formulations. 
+Galvanostatic intermittent titration technique (GITT) was 
+employed to quantitatively decouple the thermodynamic 
+hysteresis and kinetic polarizations during the discharge process. 
+Figure 6a illustrates the differences between the three types 
+of polarizations. Together, these three types of polarizations 
+Advanced Energy Materials, 2026
+11 of 20
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71651 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 12>>
+FIGURE 6 
+(a) Schematic diagram of polarization mechanism in Li-S batteries; (b) Decoupling the ηohm , ηact , and ηcon through the GITT; 
+(c) Decoupling the ηohm through the EIS; (d) Voltage-capacity results of G2-TTE cell GITT; (e) Voltage-time results of G2-TTE cell GITT; (f) ηohm of 
+G2-TTE cell over Time; (g) ηact of G2-TTE cell over Time; (h) ηcon of G2-TTE cell over Time; (i) Li+ diffusion effects of G2-TTE cell; (j) Distribution of 
+ηohm , ηact , and ηcon of G2-TTE cell. 
+constitute the voltage recovery during the rest phase (Figure 6b ); 
+concentration polarization ( ηcon ) is calculated based on the 
+voltage at the fifth second following the start of the rest process 
+[ 68 ]. Ohmic polarization ( ηohm ) is calculated by multiplying 
+the ohmic impedance measured by EIS by the discharge 
+current (Figure 6c ). Activation polarization ( ηact ) is obtained by 
+subtracting the ηohm from the voltage difference between the 
+start of the rest phase and the fifth second [ 68 ]. As depicted in 
+the voltage-capacity profile (Figure 6d ), the optimized G2-TTE 
+system delivers a capacity of ≈ 1500 mAh g− 1 . 
+Notably, continuous galvanostatic discharge of the G2–TTE cell 
+exhibits two closely spaced operational plateaus (Figure 2a ), 
+whereas the quasi-equilibrium potentials estimated from the 
+relaxed GITT response form a smoother, nearly continuous 
+voltage profile. This difference indicates that the separation 
+of the two operational plateaus is influenced substantially by 
+kinetic polarization. The first region is associated with the 
+relatively facile initial reduction of sulfur, whereas the lower- 
+voltage region contains a larger kinetic contribution associated 
+with deeper conversion and Li2 S formation. GITT alone does 
+not determine the solvation free energies of the intermediates 
+or exclude underlying phase transitions; rather, the result shows 
+that the observed plateau separation reflects the coupling of 
+a relatively smooth quasi-equilibrium potential evolution with 
+rate-dependent kinetic barriers [ 69 ]. 
+A deeper, timescale-resolved kinetic deconvolution reveals the 
+distinct operational superiority of G2-TTE compared to its coun- 
+terparts (see complete GITT profiles in Figure S18 ). For all 
+functional systems, the total overpotential is overwhelmingly dic- 
+tated by the ηcon . In G2-TTE, ηcon surges to a transient maximum 
+precisely around the 150–200 hour mark. This transient peak 
+corresponds to the onset of solid Li2 S nucleation. As documented 
+in classical microstructural impedance studies [ 70 ], the abrupt 
+precipitation of highly insulating Li2 S temporarily passivates the 
+reactive surface and structurally constricts localized ion-transport 
+pathways, resulting in a sharp spike in mass-transport resistance. 
+Subsequently, as the quasi-solid-state conversion interface stabi- 
+lizes and transport pathways reorganize, this resistance gradually 
+decreases. 
+Unlike the localized stability of G2-TTE, conventional DOL-DME 
+systems fail to sustain this kinetic momentum. Although their 
+ηcon also declines post-nucleation, their active surfaces become 
+physically isolated by dense and uncontrolled bulk precipitation 
+of insulating lithium sulfide. The direct electrochemical evidence 
+for this severe interfacial passivation is the continuous escalation 
+12 of 20
+Advanced Energy Materials, 2026
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71651 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 13>>
+of their ηact during the terminal discharge stage, which climbs 
+steadily to over 12 mV (Figure S18c, d ). Concurrently, their ηohm 
+displays a progressive stepwise increase. This coupled rise in both 
+activation and ohmic barriers demonstrates that severe contin- 
+uous passivation renders solid-state charge transfer increasingly 
+unviable. Conversely, the ηact of G2-TTE steadily declines and 
+stabilizes after the initial nucleation barrier, indicating a highly 
+reversible interfacial charge-transfer process with no evidence 
+of pronounced progressive macroscopic passivation. Notably, 
+for G2-TTE, the ηohm remains extraordinarily small ( < 0.8 mV) 
+throughout the entire deep discharge. Minor transient fluctu- 
+ations in ηohm are observed across various electrolyte systems 
+near the end of the plateau, likely corresponding to minor 
+stress relaxation within the carbon host or localized electrolyte 
+redistribution. However, the consistently minimized absolute 
+magnitude of ηohm in G2-TTE suggests that pronounced macro- 
+scopic electrical-contact degradation is limited. Consequently, the 
+overarching overpotential in the localized G2-TTE system appears 
+to be governed predominantly by the dynamic interplay of ηact and 
+ηcon . 
+Furthermore, the weakly solvating CME-TTE reflects the kinetic 
+effects of its interfacial limitations. Driven by restricted ion flux, it 
+exhibits a ηohm exceeding 11 mV and a ηact above 33 mV, alongside 
+persistent dual-peak concentration polarizations. These com- 
+bined kinetic barriers do not cause macroscopic capacity failure 
+but directly translate into a moderate increase in the overall 
+operational overpotential compared to G2-TTE, as detailed in 
+Figure S18b .An additional kinetic indicator is the evolution of 
+the apparent lithium-ion diffusion coefficient during the initial 
+stages of both charge and discharge as presented in Figures 
+S18 and S19 . For the highly solvating DOL-DME system and 
+the weakly solvating CME-TTE system, the diffusion coefficient 
+experiences a sharp decrease immediately following the onset 
+of the applied current. As established in fundamental mass- 
+transport studies [ 30, 71 ], this initial decrease in highly solvating 
+liquid systems such as DOL-DME is a physical manifestation of 
+highly concentrated polysulfide species rapidly accumulating at 
+the electrode interface. This localized accumulation physically 
+restricts the phase boundary and creates a transient kinetic 
+barrier that is only alleviated once bulk liquid-phase diffusion 
+equilibrates [ 72, 73 ]. Conversely, in the CME-TTE system, this 
+immediate decrease is consistent with its restricted ion flux and 
+significantly elevated ohmic resistance identified earlier. Upon 
+the application of current, the inherently sluggish transport 
+of lithium ions in this weakly solvating environment fails to 
+match the immediate interfacial redox demand. This discrepancy 
+directly leads to a severe initial kinetic limitation at the solid 
+interface before a steady state can be established. 
+Among the electrolytes studied, G2-TTE is the only one that 
+substantially mitigates this initial diffusional drop. Its DLi 
++ 
+remains exceptionally flat and highly responsive from the very 
+first galvanostatic pulse. This initial stability provides evidence 
+consistent with the proposed role of the localized solvation 
+environment in which G2-TTE prevents both viscous liquid-layer 
+accumulation and interfacial Li+ starvation. Instead, the G2- 
+TTE system sustains an immediate and sufficient interfacial Li+ 
+flux from the very onset of the applied current. This optimized 
+localized coordination environment ensures that the necessary 
+interfacial charge transfer is sustained during reduction, thereby 
+avoiding the delayed equilibration and the initial kinetic stagna- 
+tion typical of its conventional and weakly solvating counterparts. 
+The apparent ascending fluctuation observed near the very end 
+of the discharge process is essentially a mathematical testing 
+artifact, arising because the transient voltage hits the lower cut- 
+off limit before completing the full 10-minute galvanostatic pulse, 
+thereby deviating from the semi-infinite boundary conditions 
+required by Sand’s equation [ 74 ]. 
+The charging process inherently involves the sluggish activation 
+of insulating solid Li2 S; under these conditions, the comparative 
+interfacial stability of G2-TTE can be clearly observed. The corre- 
+sponding charging GITT profiles (Figure S19 ) immediately expose 
+the vulnerability of the conventional liquid-phase electrolytes. 
+The bare DOL-DME and LiNO3 -containing systems (Figure 
+S19c, d ) exhibit large anodic overcharging, with apparent capaci- 
+ties exceeding 2500 and 2000 mAh g− 1 , respectively. This endless 
+charging phenomenon is characteristic of the severe polysulfide 
+shuttle effect, where parasitic redox cycling consumes the applied 
+current [ 75 ]. 
+Extracting lithium ions from the dense lithium sulfide matrix 
+reveals significant differences in interfacial extraction and resol- 
+vation kinetics among the tested systems. CME–TTE exhibits 
+a broad concentration-polarization response during charge. Its 
+high viscosity, low apparent ionic conductivity and anion- 
+associated, weakly solvent-coordinated environment indicate 
+that bulk transport and interfacial reorganization jointly restrict 
+the oxidation process, although their individual contributions 
+cannot be separated from the present measurements. This 
+restricted interfacial ion transfer away from the solid surface 
+results in a highly broadened concentration polarization peak 
+reaching up to 720 mV alongside a persistently high ηohm near 
+10 mV. Conversely, the localized environment of G2-TTE effec- 
+tively overcomes the initial lithium sulfide surface activation 
+barrier. This extraction process is electrochemically manifested as 
+a localized concentration polarization peak near 200 hours. Once 
+this initial oxidative activation is achieved, the concentration 
+polarization of G2-TTE reduces rapidly. This decrease indicates 
+that the apparent transport limitation becomes less pronounced 
+after the initial oxidative activation. Consistently, the apparent 
+Li+ transport parameter of G2–TTE varies less during charge than 
+those of the other electrolyte systems, although it should not be 
+interpreted as an intrinsic solid-state diffusion coefficient. 
+The intrinsic kinetic properties of the electrolytes directly govern 
+their overall cycling and rate performance. Figure 7a displays 
+the continuous galvanostatic cycling at 0.05C. The G2-TTE cell 
+exhibits an initial reversible capacity of approximately 1200 
+mAh g− 1 and maintains structural stability over 200 cycles 
+with a Coulombic efficiency approaching 100%. In contrast, 
+the conventional highly solvating DOL-DME electrolyte exhibits 
+severe capacity fluctuation and a low Coulombic efficiency near 
+80% due to persistent polysulfide shuttling. Additionally, the 
+lithium nitrate modified system shows rapid capacity fading. It is 
+important to acknowledge that the uniform deep discharge cutoff 
+voltage utilized in these comparative protocols was specifically 
+optimized to fully exploit the inherently highly polarized capac- 
+ity of the quasi-solid-state electrolytes. For the lithium nitrate 
+modified system, this extended low-voltage excursion inevitably 
+triggers severe and irreversible electrochemical decomposition 
+Advanced Energy Materials, 2026
+13 of 20
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71651 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 14>>
+FIGURE 7 
+(a) cycling performance at 0.05C of coin cells based on G2-TTE and CME-TTE electrolytes; (b) rate performance of coin cells based 
+on G2-TTE and CME-TTE electrolytes; (c) the first cycle of charge and discharge curve at 0.05C of pouch cell based on G2-TTE electrolyte; (d) cycling 
+performance of the G2–TTE pouch cell; inset: photograph of the pouch cell and its post-discharge open-circuit voltage of 2.136 V. 
+of the nitrate additive on the cathode surface. This localized 
+decomposition acts synergistically with unmitigated active mate- 
+rial loss and resistive interfacial build-up to rapidly passivate the 
+electrode. Restricting the voltage range could preserve the nitrate 
+additive but would correspondingly limit the total accessible 
+capacity. Therefore, the ability of G2-TTE to operate stably across 
+this wider functional voltage window represents a significant 
+practical advantage. In contrast to this stability, the weakly 
+solvating CME-TTE system exhibits a pronounced continuous 
+capacity decay within 100 cycles while retaining a highly stable 
+Coulombic efficiency. This combination of high reversibility 
+and progressive capacity loss confirms the absence of massive 
+polysulfide shuttling. Instead, as anticipated from its sluggish 
+interfacial charge transfer discussed previously, the growing 
+kinetic overpotential causes the operational voltage to prema- 
+turely reach the cutoff limit during each cycle. This progressive 
+kinetic limitation prevents complete phase conversion and leads 
+to the cumulative electrical isolation of unreacted sulfur species. 
+The rate capability evaluation presented in Figure 7b delineates 
+the distinct current-dependent limits of the tested systems. 
+At lower rates from 0.01C to 0.1C, both TTE-based solvation- 
+engineered electrolytes deliver substantial capacities with G2- 
+TTE demonstrating a moderate advantage. As the current density 
+increases to 0.5C, a distinct performance gap emerges. G2- 
+TTE retains a capacity of approximately 700 mAh g− 1 , whereas 
+CME-TTE drops to roughly 580 mAh g− 1 . Based on the kinetic 
+limitations identified earlier, this clear difference in capacity 
+retention is consistent with more effective localized ion transport 
+in G2-TTE. This enhanced mass transport successfully accommo- 
+dates the elevated lithium-ion flux at 0.5C. Notably, when the rate 
+is further elevated to 1C, the capacities of both G2-TTE and CME- 
+TTE drop sharply to approximately 240 mAh g− 1 and 200 mAh 
+g− 1 , respectively. This phenomenon indicates that an extreme 
+current density of 1C fundamentally exceeds the mass transport 
+capabilities of the quasi-solid-state conversion interface. At this 
+elevated rate, the sluggish interfacial kinetics inherent to both 
+systems fail to sustain complete phase conversion before the 
+operational voltage prematurely reaches the discharge cutoff 
+limit. 
+The distinct impact of high-rate polarization is further evidenced 
+when the current density is reverted to 0.01C. The CME-TTE cell 
+exhibits a capacity overshoot exceeding its initial value. Rather 
+than a purely structural rearrangement, this capacity increase 
+implies that the extreme localized overpotential experienced at 
+1C forced the electrochemical activation of previously passivated 
+sulfur species. These forcefully activated regions subsequently 
+14 of 20
+Advanced Energy Materials, 2026
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71651 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 15>>
+contribute to the total capacity only when evaluated under the 
+relaxed kinetic conditions at 0.01C. Conversely, G2-TTE exhibits 
+a partial capacity reduction of approximately 1100 mAh g− 1 upon 
+returning to 0.01C. This minor irreversible loss suggests that 
+the rapid phase conversion and corresponding severe localized 
+volume expansion induced at 1C caused permanent mechanical 
+decoupling of a minor fraction of the active material from the 
+conductive matrix. Therefore, the micro-solvating environment 
+of G2-TTE restricts macroscopic precipitation but remains sus- 
+ceptible to rapid volume-induced mechanical isolation under 
+extreme rate conditions. 
+To evaluate the practical applicability of the G2-TTE electrolyte, 
+scaled-up 2-layers pouch cells (80 × 100 mm) were assembled 
+and tested under stringent lean-electrolyte conditions (E/S 1.37 µL 
+mg− 1 ). The G2-TTE pouch cell displays the characteristic quasi- 
+solid- state single-plateau voltage profile (Figure 7c ) with a stable 
+polarization hysteresis (0.91 V). It is imperative to highlight the 
+dramatic transition in operational parameters: while the coin 
+cell evaluations were conducted under flooded conditions with 
+an abundant E/S ratio of approximately 46 µL mg− 1 (60 µL 
+per 12 mm diameter cell with a sulfur loading of 1.14 mg 
+cm− 2 ), the pouch cells operated with a more than 30-fold 
+reduction in electrolyte availability. This severe reduction in the 
+electrolyte inventory intrinsically dictates a greater degree of 
+electrochemical polarization and heightened interfacial mass- 
+transport resistance in the large-format but is a necessary test 
+for commercial applicability. Excess electrolyte not only increases 
+total system weight and diminishes the fundamental gravimetric 
+energy density advantage of lithium-sulfur batteries but more 
+importantly masks underlying kinetic and operational difficul- 
+ties. Evaluating the system under lean electrolyte conditions is 
+therefore essential to expose and address the true interfacial mass 
+transport limitations required for practical commercialization. 
+Operating under these severely restricted mass-transport param- 
+eters under which conventional highly solvated systems typically 
+suffer from rapid electrolyte depletion, the G2-TTE pouch cell 
+sustains 50 continuous cycles (Figure 7d ). The cell delivers a 
+reversible capacity of ≈ 600 mAh g− 1 at the 50th cycle. After 
+discharge, the pouch cell exhibited an open-circuit voltage of 
+2.136 V, confirming that it remained electrochemically active after 
+cycling. 
+Notably, a measurable acceleration in capacity fade and a con- 
+current minor fluctuation in CE (decreasing below 99%) are 
+recorded during the final 10 cycles (Cycles 40–50). Based on 
+the preceding kinetic characterizations, this terminal degrada- 
+tion is attributed primarily to the intrinsic limitations of the 
+solid-state conversion mechanism when subjected to extreme 
+lean-electrolyte constraints across large geometric areas. First, as 
+evidenced by the substantial voltage hysteresis (0.91 V) compared 
+to coin cells, the macroscopic pouch cell operates under elevated 
+internal resistance. Second, as established in the GITT analysis, 
+ηcon appears to dominate the mass-transport kinetics of the QSS 
+mechanism. Over prolonged cycling within the highly restricted 
+electrolyte volume, localized concentration gradients gradually 
+intensify. Concurrently, the inherent cyclic volume variations 
+between solid sulfur and Li2 S induce progressive mechanical 
+stress within the cathode matrix. The superposition of intensify- 
+ing concentration polarization and structural degradation leads to 
+the gradual electronic and ionic isolation of the insulating active 
+materials. This loss of accessible material prematurely triggers the 
+discharge cut-off voltage, manifesting as the continuous capacity 
+decay observed in the late stages. Despite these geometric and 
+kinetic limitations, achieving 50 reversible cycles under an E/S 
+ratio of 1.37 µL mg− 1 demonstrates the feasibility of the G2- 
+TTE QSS approach under lean-electrolyte pouch-cell conditions, 
+although further cell engineering will likely be needed to improve 
+durability. 
+3 
+Conclusions 
+This study presents a systematic evaluation of four repre- 
+sentative electrolyte formulations spanning conventional ether 
+electrolytes, a weakly solvating electrolyte and a localized high- 
+concentration electrolyte: two conventional highly solvating 
+electrolytes (DOL-DME, DOL-DME-0.2MLiNO3 ), a WSE (CME- 
+TTE) and a LHCE(G2- TTE). By integrating DRT, GITT, and SWV 
+analyses, we provide quantitative evidence for how these distinct 
+solvation architectures dictate interfacial mass transport and 
+determine their respective kinetic limits. 
+The conventional electrolyte facilitates rapid liquid-phase conver- 
+sion at the cost of pronounced polysulfide shuttling. In contrast, 
+both the WSE and LHCE formulations shift the reaction toward a 
+QSS mechanism, strongly suppressing macroscopic shuttling and 
+the supersaturation-induced nucleation overpotential. However, 
+clear kinetic disparities exist between the two quasi-solid-state 
+strategies. The weakly solvating electrolyte approach utilizes 
+globally weak solvent-solute interactions to inhibit polysulfide 
+dissolution. While effective thermodynamically, this global weak 
+solvation results in sluggish bulk ion transport and provides 
+a remarkably low thermodynamic driving force to extract and 
+resolvate lithium ions at the interface. This severe restriction 
+in interfacial ion flux fundamentally limits the reaction kinet- 
+ics. Consequently, the system suffers from elevated ohmic and 
+activation barriers that rapidly culminate in massive concen- 
+tration polarization during operation. This overarching mass 
+transport limitation prevents complete structural conversion and 
+causes gradual capacity degradation over prolonged cycling. Con- 
+versely, G2–TTE combines multidentate G2 coordination with 
+appreciable anion participation within a locally concentrated 
+environment. Although CME–TTE exhibits a greater relative 
+TFSI− contribution, its weak and predominantly monodentate 
+solvent coordination is accompanied by more restricted bulk ion 
+transport and larger kinetic polarization. The balanced coordi- 
+nation environment in G2–TTE appears to limit macroscopic 
+polysulfide mobility while preserving more effective localized 
+ion transport and interfacial charge transfer, as reflected by 
+the transient DRT feature at log10 ( τ) ≈ − 0.4 near the 2.1 V 
+conversion region. Consequently, G2–TTE sustains more effective 
+QSS conversion, together with nearly 100% Coulombic efficiency 
+and superior rate capability. 
+Ultimately, the mechanistic superiority of the LHCE system is 
+further demonstrated in scaled-up pouch cells (80 × 100 mm), 
+which deliver 600 mAh g− 1 after 50 cycles under lean-electrolyte 
+conditions (E/S = 1.37 µL mg− 1 ), demonstrating that the elec- 
+trochemical benefits associated with the G2–TTE formulation 
+can be retained under lean-electrolyte pouch-cell conditions 
+under practical, electrolyte-starved configurations. Collectively, 
+Advanced Energy Materials, 2026
+15 of 20
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71651 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 16>>
+TABLE 2 
+Formulations of the four electrolytes. 
+Electrolyte systems 
+Solvents 
+Solids 
+G2-TTE 
+G2:TTE = 1:1 (v:v) 
+G2:LiTFSI = 1.5:1 (mol:mol) 
+CME-TTE 
+CME:TTE = 1:1 (v:v) 
+1 M LiTFSI 
+DOL-DME 
+DOL:DME = 1:1 (v:v) 
+1 M LiTFSI 
+DOL-DME-LiNO3 
+DOL:DME = 1:1 (v:v) 
+1 M LiTFSI and 0.2 M LiNO3 
+this comparative framework demonstrates that successful high- 
+energy Li- S battery design requires more than thermodynamic 
+polysulfide suppression alone: rational electrolyte selection must 
+simultaneously engineer localized solvation environments that 
+preserve efficient interfacial charge transfer and sustain con- 
+tinuous solid-state mass transport throughout deep conversion. 
+These quantitative mechanistic principles provide a founda- 
+tion for the targeted design of next-generation lithium-sulfur 
+batteries. 
+4 
+Experimental Section 
+4.1 
+Electrode and Electrolyte Preparation 
+Electrodes were produced using an adapted method to those 
+previously reported [ 45 ] in which polyvinylidene fluoride-co- 
+hexafluoropropylene (PVDF-HFP, Sigma-Aldrich, 99%) was dis- 
+solved in ethyl acetate (EA, Sigma-Aldrich, 99%) at 60◦C at a 
+ratio of 1 g per 20 mL. The active materials—sulfur (Sigma- 
+Aldrich, 99%), Ketjen black EC-600JD (Nouryon, 99%), PVDF- 
+HFP in EA, and Super P (SP, Fisher, 99%)—were thoroughly 
+mixed with hexyl butyrate (HB, Sigma-Aldrich, 98%) at a mass 
+ratio of 55:30:10:5 under continuous stirring for 2 h using a 
+magnetic mixer (Camlab) at 60◦C. After incorporating the active 
+material and stirring, the slurry was coated onto aluminium 
+foil (MSE Supplies) at a wet thickness of 50 µm and dried in 
+a controlled dry room at 60◦C for 60 min. The dried electrodes 
+were cut into circular discs (12 mm diameter), and the thickness 
+was measured to be 47 µm, yielding an areal mass loading 
+of 1.14 mg S cm− 2 and an areal capacity of 1.90 mAh cm− 2 . 
+All electrode processes were performed in an Ar-filled glove 
+box. 
+Electrolytes 
+were 
+prepared 
+by 
+dissolving 
+lithium 
+bis(trifluoromethanesulfonyl)imide (LiTFSI, Sigma-Aldrich, 
+99%) into predefined solvent combinations. The G2-TTE 
+electrolyte consisted of diethylene glycol dimethyl ether (G2, 
+Sigma-Aldrich, 99.9%) and 1,1,2,2-tetrafluoroethyl 2,2,3,3- 
+tetrafluoropropyl ether (TTE, Sigma-Aldrich, 99%) at a volume 
+ratio of 1:1, with the salt ratio set to G2:LiTFSI (mol/mol) set 
+to 1.5:1. For CME-TTE, cyclopentyl methyl ether (CME, Sigma- 
+Aldrich, 99.9%) and TTE (Sigma-Aldrich, 99%) were used at 
+1:1 (vol/vol) with 1 M LiTFSI. DOL-DME electrolytes used 1,3- 
+dioxolane (DOL, Sigma-Aldrich, 99.8%) and 1,2-dimethoxyethane 
+(DME, Sigma-Aldrich, 99.5%) at a 1:1 volume ratio, with 1 M 
+LiTFSI. DOL-DME-0.2 M LiNO3 was prepared by adding 
+0.2 M lithium nitrate (LiNO3 , Sigma-Aldrich, 99.9%) into the 
+DOL-DME electrolyte as shown in Table 2 . 
+4.2 
+Coin and Pouch Cell Assembly 
+For coin cell assembly, Celgard 2000 separators, lithium foil (MTI, 
+thickness: 0.6 mm, diameter: 16 mm, 99%), a single wave spring 
+(MTI, Al-Clad stainless steel wave spring for CR2032/CR2016 
+Cases), a stainless steel spacer (MTI, 15.8 mm diameter ×1.0 mm 
+thickness), and coin cell casings (MTI, Al-Clad CR2032 Coin Cell 
+Case) were used. Electrolyte was added at a volume of 60 µL 
+per cell. For lithium plating/stripping tests, similar coin cell 
+components were utilized, but the positive electrode was replaced 
+with copper foil (MTI, diameter: 15 mm). 
+Pouch cell fabrication was performed in a dry room (dew point 
+less than − 40◦C) with semi-automated equipment to ensure 
+proper alignment of electrodes. A sandwich configuration com- 
+prised two single-sided sulfur cathodes and one double-sided 
+lithium-plated copper foil anode (electrode size: 80 × 100 mm; 
+sulfur loading: ≈ 182.4 mg). Tabs were welded with an ultrasonic 
+metal welder (MTI MSK-4200 W, PI-KEM, UK): aluminium 
+tabs for cathodes (welding time: 0.08 s), nickel tabs for anodes 
+(welding time: 0.06 s). Electrodes were sealed in aluminium- 
+plastic laminate pouches, allowing space for gas evolution during 
+formation. Electrolyte (G2-TTE, 250 µL) was dispensed by vac- 
+uum injection (MTI MSK-113-CP, PI-KEM, UK). the prepared 
+pouch cells were placed in an Ar-filled glove box and left to stand, 
+allowing the ionic conductivity and interfacial properties to reach 
+equilibrium. After rest, excess pouch film, previously retained to 
+allow for gas release, was trimmed using a vacuum sealer (MTI 
+MSK-115A-LS, PI-KEM, UK). 
+4.3 
+Electrochemical Testing 
+Electrochemical characterization was performed on both coin 
+and pouch cells to comprehensively evaluate their performance 
+under various conditions. Rate capability, cycling stability, asym- 
+metric charge and discharge profile, cyclic voltammetry (CV), 
+GITT, shuttle current measurements, lithium plating/stripping 
+behavior in coin cells, and pouch cell performance were assessed 
+using a battery testing system (BCS-805, BioLogic). Charge- 
+discharge prof iles were obtained at multiple C-rates (1 C = 
+1675 mA g− 1 S) within a voltage range of 1.5–3.5 V. Cycling 
+stability was measured at 0.1 C following an initial 0.01 C 
+activation cycle, using the same voltage window. For the asym- 
+metric charge–discharge tests, the cells were first cycled once 
+at 0.01 C for activation. Subsequently, they were tested under 
+two distinct protocols within a voltage range of 1.5 to 3.5 V: 
+slow-discharge/fast-charge (discharging at 0.05 C and charging 
+at 0.2 C), or fast-discharge/slow-charge (discharging at 0.2 C 
+16 of 20
+Advanced Energy Materials, 2026
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71651 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 17>>
+and charging at 0.05 C). For all galvanostatic charge–discharge 
+measurements, a maximum step duration equal to the reciprocal 
+of the nominal C-rate (e.g., 100, 20, and 5 h at 0.01, 0.05, 
+and 0.2 C, respectively) was additionally imposed. Thus, each 
+charge or discharge step was terminated upon reaching either the 
+voltage cutoff or the predefined time limit, whichever occurred 
+first. This common protocol was applied to all electrolyte for- 
+mulations to enable a consistent comparison of the accessible 
+sulfur-conversion behavior within the same operational window. 
+GITT tests employed 10-minute current pulses followed by two- 
+hour relaxation periods, with pulses terminated at either the 10- 
+minute mark or when the target voltage was reached, whichever 
+occurred first. Shuttle current was measured after fresh coin cells 
+completed one cycle at 0.01 C, followed by six sequential constant 
+voltage tests with equally spaced voltage steps between two 
+discharge plateaus, each step lasting four hours. 
+Lithium plating/stripping tests were performed by charging 
+and discharging cells at a constant current of 1.675 mA for 
+one hour, continuing over 50 cycles. SWV and electrochemical 
+impedance spectroscopy (EIS) analyses were conducted using a 
+potentiostat (VMP-300, BioLogic). For SWV, the pulse height was 
+set at 10.0 mV, pulse width at 50 s, step height at 1.0 mV, and a 
+scan rate of 0.01 mV s− 1 . The DRT analyses were mathematically 
+derived from the EIS spectra, which were recorded over a 
+frequency range from 10 kHz to 0.1 Hz. Detailed methodologies 
+for the DRT calculations, including the Tikhonov regularization 
+procedure, Kramers-Kronig (K-K) validity tests, and spectral 
+reconstruction verifications, were comprehensively elucidated in 
+the Supplementary Information. 
+4.4 
+Molecular Dynamics Simulations 
+Classical molecular dynamics simulations were performed using 
+the Large-scale Atomic/Molecular Massively Parallel Simulator 
+(LAMMPS). The second-generation General Amber Force Field 
+(GAFF2) was employed to describe Li+ , TFSI− , G2, TTE and CME, 
+while the sulfur-chain component of Li2 S6 was described using 
+the Universal Force Field (UFF). The van der Waals and short- 
+range Coulombic cut-offs were set to 1.1 and 1.2 nm, respectively, 
+and long-range electrostatic interactions were evaluated using 
+the particle–particle particle–mesh method. Atomic charges for 
+TFSI− , G2, TTE and CME were obtained through restrained 
+electrostatic potential fitting based on Becke three-parameter 
+Lee–Yang–Parr (B3L YP)/def2 split-valence polarization (def2- 
+SVP) calculations performed using Gaussian 16, with subsequent 
+charge fitting conducted using Multiwfn [ 76–80 ]. 
+For the bulk-electrolyte simulations, cubic cells with initial 
+dimensions of 80 × 80 × 80 Å3 were constructed. The G2–TTE 
+system contained 200 LiTFSI ion pairs, 300 G2 molecules and 
+283 TTE molecules, whereas the CME–TTE system contained 100 
+LiTFSI ion pairs, 429 CME molecules and 332 TTE molecules. The 
+corresponding polysulfide-containing systems were constructed 
+using the same electrolyte compositions with the addition of 
+25 Li2 S6 units. The initial configurations were equilibrated in 
+the constant-number, pressure, and temperature (NPT) ensemble 
+at 600 K for 3 ns, cooled from 600 to 298 K over 3 ns, and 
+further equilibrated at 298 K for 2 ns. Production simulations 
+were subsequently conducted in the constant-number, volume, 
+and temperature (NVT) ensemble at 298 K for 15 ns using a time 
+step of 1 fs. During annealing, the pressure was maintained at 
+1 bar, with temperature- and pressure-coupling time constants of 
+0.1 and 10 ps, respectively. 
+Author Contributions 
+Boyi Pang : conceptualization, investigation, Writing – original draft, 
+methodology, visualization, Writing – review and editing, formal analysis, 
+data curation. Huanxin Li : methodology, investigation, writing – review 
+and editing, formal analysis. Liam Bird : investigation, writing – review 
+and editing, formal analysis. Yiming Guo : investigation, writing – review 
+and editing, formal analysis. Bochen Li : investigation, writing – review 
+and editing, formal analysis. Xiaoxia Guo : investigation, writing – review 
+and editing, formal analysis. Roby Soni : writing – review and editing, 
+formal analysis. Yi Zeng : investigation, formal analysis, writing – review 
+and editing, visualization, data curation, software. Paul R. Shearing : 
+writing – review and editing, funding acquisition, supervision, resources. 
+Thomas S. Miller : writing – review and editing, supervision. Rhodri 
+Jervis : writing – review and editing, supervision. Alexander J. Kibler : 
+writing – review and editing, investigation, conceptualization. James B. 
+Robinson : conceptualization, investigation, funding acquisition, writing 
+– review and editing, supervision, resources, project administration. 
+Acknowledgements 
+The authors would like to acknowledge the Faraday Institution (Fara- 
+day.ac.uk; EP/S003053/1) for funding via the LiSTAR research programme 
+(FIRG094). James B. Robinson would also like to acknowledge Innovate 
+UK for funding (Project Number: 10040939). Paul R. Shearing was 
+supported by the Department of Science, Innovation and Technology 
+(DSIT) and the Royal Academy of Engineering under the Chair in 
+Emerging Technologies programme (CiET1718/59). 
+Funding 
+Faraday Institution (EP/S003053/1; FIRG094); Innovate UK (10040939); 
+Department of Science, Innovation and Technology and Royal 
+Academy of Engineering Chair in Emerging Technologies programme 
+(CiET1718/59). 
+Conflicts of Interest 
+The authors declare no conflicts of interest. 
+Data Availability Statement 
+The data that support the findings of this study are available from the 
+corresponding authors upon reasonable request. 
+References 
+1 . A. Manthiram, Y. Fu, S. H. Chung, C. Zu, and Y. S. Su, “Rechargeable 
+Lithium–Sulfur Batteries,” Chemical Reviews 114, no. 23 (2014): 11751–
+11787, https://doi.org/10.1021/cr500062v. 
+2 . H. J. Peng, J. Q. Huang, X. B. Cheng, and Q. Zhang, “Review on 
+High-Loading and High-Energy Lithium–Sulfur Batteries,” Advanced 
+Energy Materials 7, no. 24 (2017): 1700260, https://doi.org/10.1002/aenm. 
+201700260 . 
+3 . M. Zhao, B. Q. Li, X. Q. Zhang, J. Q. Huang, and Q. Zhang, “A Perspec- 
+tive Toward Practical Lithium–Sulfur Batteries,” ACS Central Science 6, 
+no. 7 (2020): 1095–1104, https://doi.org/10.1021/acscentsci.0c00449 . 
+4 . Z. X. Chen, M. Zhao, L. P. Hou, X. Q. Zhang, B. Q. Li, and J. Q. Huang, 
+“Toward Practical High-Energy-Density Lithium–Sulfur Pouch Cells: A 
+Advanced Energy Materials, 2026
+17 of 20
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71651 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 18>>
+Review,” Advanced Materials 34, no. 35 (2022): 2201555, https://doi.org/ 
+10.1002/adma.202201555 . 
+5 . G. Zhou, H. Chen, and Y. Cui, “Formulating energy density for 
+designing practical lithium–sulfur batteries,” Nature Energy 7, no. 4 
+(2022): 312–319, https://doi.org/10.1038/s41560-022- 01001- 0 . 
+6 . H. Yuan, H. J. Peng, J. Q. Huang, and Q. Zhang, “Sulfur Redox Reac- 
+tions at Working Interfaces in Lithium–Sulfur Batteries: A Perspective,”
+Advanced Materials Interfaces 6, no. 4 (2019): 1802046, https://doi.org/10. 
+1002/admi.201802046 . 
+7 . X.-Y. Li, M. Zhao, Y.-W. Song, et al., “Polysulfide chemistry in metal–
+sulfur batteries,” Chemical Society Reviews 54, no. 10 (2025): 4822–4873, 
+https://doi.org/10.1039/d4cs00318g . 
+8 . J. B. Robinson, K. Xi, R. V. Kumar, et al., “2021 roadmap on Lithium 
+Sulfur Batteries,” Journal of Physics: Energy 3, no. 3 (2021): 031501, https:// 
+doi.org/10.1088/2515-7655/abdb9a . 
+9 . R. Fang, S. Zhao, Z. Sun, D. W. Wang, H. M. Cheng, and F. Li, “More 
+Reliable Lithium-Sulfur Batteries: Status, Solutions and Prospects,”
+Advanced Materials 29, no. 48 (2017): 1606823, https://doi.org/10.1002/ 
+adma.201606823 . 
+10 . L. Zhou, D. L. Danilov, F. Qiao, et al., “Sulfur Reduction Reaction in 
+Lithium–Sulfur Batteries: Mechanisms, Catalysts, and Characterization,”
+Advanced Energy Materials 12, no. 44 (2022): 2202094, https://doi.org/10. 
+1002/aenm.202202094 . 
+11 . L. Fan, M. Li, X. Li, W. Xiao, Z. Chen, and J. Lu, “Interlayer Material 
+Selection for Lithium-Sulfur Batteries,” Joule 3, no. 2 (2019): 361–386, 
+https://doi.org/10.1016/j.joule.2019.01.003 . 
+12 . Y. Liu, J. Li, X. Deng, et al., “Regulating Electrolyte Solvation 
+Structures via Diluent-Solvent Interactions for Safe High-Voltage Lithium 
+Metal Batteries,” Small 20, no. 31 (2024): 2311812, https://doi.org/10.1002/ 
+smll.202311812 . 
+13 . S. S. Zhang, “Liquid Electrolyte Lithium/Sulfur Battery: Fundamental 
+Chemistry, Problems, and Solutions,” Journal of Power Sources 231 (2013): 
+153–162, https://doi.org/10.1016/j.jpowsour.2012.12.102 . 
+14 . H.-J. Peng, J.-Q. Huang, M.-Q. Zhao, et al., “Nanoarchitectured 
+Graphene/CNT@Porous Carbon With Extraordinary Electrical Conduc- 
+tivity and Interconnected Micro/Mesopores for Lithium-Sulfur Batteries,”
+Advanced Functional Materials 24, no. 19 (2014): 2772–2781, https://doi. 
+org/10.1002/adfm.201303296 . 
+15 . Z. W. Seh, Y. Sun, Q. Zhang, and Y. Cui, “Designing high-energy 
+lithium–sulfur batteries,” Chemical Society Reviews 45, no. 20 (2016): 
+5605–5634, https://doi.org/10.1039/C5CS00410A . 
+16 . S. Li, B. Jin, X. Zhai, H. Li, and Q. Jiang, “Review of Carbon Materials 
+for Lithium-Sulfur Batteries,” ChemistrySelect 3, no. 8 (2018): 2245–2260, 
+https://doi.org/10.1002/slct.201703112 . 
+17 . H. J. Peng, J. Q. Huang, and Q. Zhang, “A review of flexible lithium–
+sulfur and analogous alkali metal–chalcogen rechargeable batteries,”
+Chemical Society Reviews 46, no. 17 (2017): 5237–5288, https://doi.org/10. 
+1039/C7CS00139H . 
+18 . Y. S. Su and A. Manthiram, “A new approach to improve cycle 
+performance of rechargeable lithium–sulfur batteries by inserting a free- 
+standing MWCNT interlayer,” Chemical Communications 48, no. 70 
+(2012): 8817–8819, https://doi.org/10.1039/C2CC33945E . 
+19 . J. Li, L. Gao, F. Pan, et al., “Engineering Strategies for Suppressing the 
+Shuttle Effect in Lithium–Sulfur Batteries,” Nano-Micro Letters 16, no. 1 
+(2023): 12, https://doi.org/10.1007/s40820- 023- 01223- 1 . 
+20 . X. B. Cheng, R. Zhang, C. Z. Zhao, and Q. Zhang, “Toward Safe 
+Lithium Metal Anode in Rechargeable Batteries: A Review,” Chemi- 
+cal Reviews 117, no. 15 (2017): 10403–10473, https://doi.org/10.1021/acs. 
+chemrev.7b00115 . 
+21 . X. Gao, X. Zheng, Y. Tsao, et al., “All-Solid-State Lithium–Sulfur Bat- 
+teries Enhanced by Redox Mediators,” Journal of the American Chemical 
+Society 143, no. 43 (2021): 18188–18195, https://doi.org/10.1021/jacs.1c07754 . 
+22 . J. Zhou and A. Sun, “Redox Mediators for High Performance Lithium- 
+sulfur Batteries: Progress and Outlook,” Chemical Engineering Journal 495 
+(2024): 153648, https://doi.org/10.1016/j.cej.2024.153648 . 
+23 . X. Y. Li, S. Feng, M. Zhao, et al., “Surface Gelation on Disulfide Electro- 
+catalysts in Lithium–Sulfur Batteries,” Angewandte Chemie International 
+Edition 61, no. 7 (2022): 202114671, https://doi.org/10.1002/anie.202114671 . 
+24 . C. W. Lee, Q. Pang, S. Ha, et al., “Directing the Lithium–Sulfur 
+Reaction Pathway via Sparingly Solvating Electrolytes for High Energy 
+Density Batteries,” ACS Central Science 3, no. 6 (2017): 605–613, https:// 
+doi.org/10.1021/acscentsci.7b00123 . 
+25 . X.-Y. Li, S. Feng, C.-X. Zhao, et al., “Regulating Lithium Salt to Inhibit 
+Surface Gelation on an Electrocatalyst for High-Energy-Density Lithium–
+Sulfur Batteries,” Journal of the American Chemical Society 144, no. 32 
+(2022): 14638–14646, https://doi.org/10.1021/jacs.2c04176 . 
+26 . N. W. Li, Y. X. Yin, C. P. Yang, and Y. G. Guo, “An Artificial 
+Solid Electrolyte Interphase Layer for Stable Lithium Metal Anodes,”
+Advanced Materials 28, no. 9 (2016): 1853–1858, https://doi.org/10.1002/ 
+adma.201504526 . 
+27 . Y. Liu, Y. An, C. Fang, et al., “Surface-localized Phase Mediation 
+Accelerates Quasi-solid-state Reaction Kinetics in Sulfur Batteries,”
+Nature Chemistry 17, no. 4 (2025): 614–623, https://doi.org/10.1038/s41557- 
+025-01735-w. 
+28 . X.-Y. Li, S. Feng, Y.-W. Song, et al., “Kinetic Evaluation on Lithium 
+Polysulfide in Weakly Solvating Electrolyte Toward Practical Lithium–
+Sulfur Batteries,” Journal of the American Chemical Society 146, no. 21 
+(2024): 14754–14764, https://doi.org/10.1021/jacs.4c02603 . 
+29 . Y.-W. Song, L. Shen, X.-Y. Li, et al., “Phase equilibrium thermody- 
+namics of lithium–sulfur batteries,” Nature Chemical Engineering 1, no. 
+9 (2024): 588–596, https://doi.org/10.1038/s44286-024-00115-4 . 
+30 . J. Ke, Z. Wang, H. Zhu, et al., “Suppression Strategies for the Polysul- 
+fide Shuttle Effect in Electrolyte Systems,” Communications Materials 6, 
+no. 1 (2025): 237, https://doi.org/10.1038/s43246- 025- 00953- 6 . 
+31 . Q. Pang, X. Liang, C. Y. Kwok, J. Kulisch, and L. F. Nazar, “A 
+Comprehensive Approach Toward Stable Lithium–Sulfur Batteries With 
+High Volumetric Energy Density,” Advanced Energy Materials 7, no. 6 
+(2017): 1601630, https://doi.org/10.1002/aenm.201601630 . 
+32 . F. Cataldo, “A Revision of the Gutmann Donor Numbers of a Series 
+of Phosphoramides Including TEPA,” European Chemical Bulletin 2015 
+(2015): 92–97. 
+33 . Z. Wang, R. Han, D. Huang, et al., “Co-Intercalation-Free Ether- 
+Based Weakly Solvating Electrolytes Enable Fast-Charging and Wide- 
+Temperature Lithium-Ion Batteries,” ACS Nano 17, no. 18 (2023): 18103–
+18113, https://doi.org/10.1021/acsnano.3c04907 . 
+34 . X.-Y. Li, B.-Q. Li, S. Feng, et al., “Two-Stage Solvation of Lithium Poly- 
+sulfides in Working Lithium–Sulfur Batteries,” Journal of the American 
+Chemical Society 147, no. 18 (2025): 15435–15447, https://doi.org/10.1021/ 
+jacs.5c01588 . 
+35 . J. Chen, H. Zhang, M. Fang, C. Ke, S. Liu, and J. Wang, “Design 
+of Localized High-Concentration Electrolytes via Donor Number,”
+ACS Energy Letters 8, no. 4 (2023): 1723–1734, https://doi.org/10.1021/ 
+acsenergylett.3c00004 . 
+36 . Y. Guo, R. Soni, K. Coke, et al., “Fibroin: A Multi-Functional Bio- 
+Derived Binder for Lithium–Sulfur Batteries,” ACS Sustainable Chemistry 
+& Engineering 13, no. 34 (2025): 13726–13739, https://doi.org/10.1021/ 
+acssuschemeng.5c01291 . 
+37 . R. Soni, Y. Guo, M. Golomb, N. Xavier, Q. Cai, and T. Miller, “An 
+Intermediate Solvation Regime to Enable Efficient Quasi-Solid-State 
+Conversion in Li–S Batteries,” ChemRxiv (2025), https://doi.org/10.26434/ 
+chemrxiv- 2025- bzvpl . 
+38 . X.-Y. Li, B.-Q. Li, T. Jin, et al., “Competitive Anion Coor dination 
+Overcomes Charge-Transfer Barriers for Lithium–Sulfur Batteries,” Joule 
+10, no. 2 (2026): 102259, https://doi.org/10.1016/j.joule.2025.102259 . 
+18 of 20
+Advanced Energy Materials, 2026
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71651 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 19>>
+39 . M. L. Divya, Y. S. Lee, and V. Aravindan, “Solvent Co-Intercalation: 
+An Emerging Mechanism in Li-, Na-, and K-Ion Capacitors,” ACS Energy 
+Letters 6, no. 12 (2021): 4228–4244, https://doi.org/10.1021/acsenergylett. 
+1c01801 . 
+40 . Y. Yamada, J. Wang, S. Ko, E. Watanabe, and A. Yamada, “Advances 
+and Issues in Developing Salt-Concentrated Battery Electrolytes,” Nature 
+Energy 4, no. 4 (2019): 269–280, https://doi.org/10.1038/s41560- 019- 0336- z . 
+41 . K. Ueno, K. Yoshida, M. Tsuchiya, N. Tachikawa, K. Dokko, and 
+M. Watanabe, “Glyme–Lithium Salt Equimolar Molten Mixtures: Con- 
+centrated Solutions or Solvate Ionic Liquids?,” The Journal of Physical 
+Chemistry B 116 (2012): 11323–11331, https://doi.org/10.1021/jp307378j . 
+42 . D. Zhang, Y. Liu, D. Li, et al., “Salt Dissociation and Localized High- 
+concentration Solvation at the Interface of a Fluorinated Gel and Polymer 
+Solid Electrolyte,” Energy & Environmental Science 18, no. 1 (2025): 227–
+235, https://doi.org/10.1039/d4ee04078c . 
+43 . H. Chu, H. Noh, Y.-J. Kim, et al., “Achieving Three-dimensional 
+Lithium Sulfide Growth in Lithium-sulfur Batteries Using High-donor- 
+number Anions,” Nature Communications 10, no. 1 (2019): 188, https:// 
+doi.org/10.1038/s41467- 018- 07975- 4 . 
+44 . S. Chen, J. Zheng, D. Mei, et al., “High-Voltage Lithium-Metal Bat- 
+teries Enabled by Localized High-Concentration Electrolytes,” Advanced 
+Materials 30, no. 21 (2018): 1706102, https://doi.org/10.1002/adma. 
+201706102 . 
+45 . B. Pang, H. Li, Y. Guo, et al., “A Quasi-solid-state High-rate Lithium 
+Sulfur Positive Electrode Incorporating Li10 GeP2 S12 ,” Communications 
+Materials 6, no. 1 (2025): 175, https://doi.org/10.1038/s43246- 025- 00901- 4 . 
+46 . S. Gadea, A. Soria-Fernández, A. Santiago, D. Carriazo, and J. 
+Castillo, “Design Strategies and Future Directions of Sparingly Solvating 
+Electrolytes for Lithium-sulfur Batteries,” Communications Materials 7, 
+no. 1 (2025): 9, https://doi.org/10.1038/s43246- 025- 01026- 4 . 
+47 . Y. Shao, B. Pang, L. Bird, J. B. Robinson, and P. R. Shearing, 
+“Contemporary Tr ends in Lithium-Sulfur Battery Design: A Comparative 
+Review of Liquid, Quasi-Solid, and All-Solid-State Architectures and 
+Mechanisms,” Advanced Energy Materials 16, no. 2 (2026): 03239, https:// 
+doi.org/10.1002/aenm.202503239 . 
+48 . X. Li, L. Yuan, D. Liu, J. Xiang, Z. Li, and Y. Huang, “Solid/Quasi-Solid 
+Phase Conversion of Sulfur in Lithium–Sulfur Battery,” Small 18, no. 43 
+(2022): 2106970, https://doi.org/10.1002/smll.202106970 . 
+49 . P. Dutta, J. M. Mentlen, S. Mondal, et al., “Bridging Solution and 
+Solid-State Mechanism: Confined Quasi-Solid-State Conversion in Li–S 
+Batteries,” ACS Energy Letters 10, no. 11 (2025): 5722–5732, https://doi.org/ 
+10.1021/acsenergylett.5c02093 . 
+50 . Z. Wang, S. Weng, H. Zhang, et al., “Balancing Anodic Stability 
+and Cathodic Kinetics in Practical Lithium-Sulfur Batteries with Non- 
+fluorinated Weakly Solvating Solvents,” Advanced Science 12, no. 37 
+(2025): 17305, https://doi.org/10.1002/advs.202417305 . 
+51 . M. Cuisinier, P. E. Cabelguen, B. D. Adams, A. Garsuch, M. 
+Balasubramanian, and L. F. Nazar, “Unique behaviour of nonsolvents 
+for polysulphides in lithium–sulphur batteries,” Energy & Environmental 
+Science 7, no. 8 (2014): 2697–2705, https://doi.org/10.1039/C4EE00372A . 
+52 . S. S. Zhang, “Role of LiNO3 in Rechargeable Lithium/Sulfur Battery,”
+Electrochimica Acta 70 (2012): 344–348, https://doi.org/10.1016/j.electacta. 
+2012.03.081 . 
+53 . T. A. Pascal, K. H. Wujcik, D. R. Wang, N. P. Balsara, and D. 
+Prendergast, “Thermodynamic Origins of the Solvent-dependent Stabil- 
+ity of Lithium Polysulfides From First Principles,” Physical Chemistry 
+Chemical Physics 19, no. 2 (2017): 1441–1448, https://doi.org/10.1039/ 
+C6CP06889H . 
+54 . C. D. Parke, L. Teo, D. T. Schwartz, and V. R. Subramanian, “Progress 
+on continuum modeling of lithium–sulfur batteries,” Sustainable Energy 
+& Fuels 5, no. 23 (2021): 5946–5966, https://doi.org/10.1039/D1SE01090E . 
+55 . F. Y. Fan, W. C. Carter, and Y. M. Chiang, “Mechanism and Kinetics of 
+Li 2 S Precipitation in Lithium–Sulfur Batteries,” Advanced Materials 27, 
+no. 35 (2015): 5203–5209, https://doi.org/10.1002/adma.201501559 . 
+56 . S. C. Kim, X. Gao, S.-L. Liao, et al., “Solvation-property Relationship 
+of Lithium-sulphur Battery Electrolytes,” Nature Communications 15, no. 
+1 (2024): 1268, https://doi.org/10.1038/s41467- 023- 44527- x. 
+57 . M. Karbak, K. Yim, Y. Shirley Meng, Y. Shao, and W. Xu, “Weakly 
+Solvating Electrolytes: A Solvation-centric Paradigm for Rechargeable 
+Metal Batteries,” Chemical Science 16, no. 44 (2025): 20694–20717, https:// 
+doi.org/10.1039/D5SC06221G . 
+58 . S. S. Zhang, “A New Finding on the Role of LiNO3 in Lithium-sulfur 
+Battery,” Journal of Power Sources 322 (2016): 99–105, https://doi.org/10. 
+1016/j.jpowsour.2016.05.009 . 
+59 . C. Barchasz, F. Molton, C. Duboc, J. C. Leprêtre, S. Patoux, and 
+F. Alloin, “Lithium/Sulfur Cell Discharge Mechanism: An Original 
+Approach for Intermediate Species Identification,” Analytical Chemistry 
+84, no. 9 (2012): 3973–3980, https://doi.org/10.1021/ac2032244 . 
+60 . X. Fan, L. Chen, X. Ji, et al., “Highly Fluorinated Interphases Enable 
+High-Voltage Li-Metal Batteries,” Chem 4, no. 1 (2018): 174–185, https:// 
+doi.org/10.1016/j.chempr.2017.10.017 . 
+61 . C. Xie, X. Yi, D. Liu, et al., “Designing Weakly Solvating Electrolytes for 
+Low-Temperature Lithium Batteries,” Advanced Energy Materials (2026) 
+06473, https://doi.org/10.1002/aenm.202506473 . 
+62 . R. Soni, J. B. Robinson, P. R. Shearing, D. J. L. Brett, A. J. E. Rettie, and 
+T. S. Miller, “Lithium-sulfur Battery Diagnostics Through Distribution of 
+Relaxation Times Analysis,” Energy Storage Materials 51 (2022): 97–107, 
+https://doi.org/10.1016/j.ensm.2022.06.016 . 
+63 . M. H. Pai and A. Manthiram, “Electrolyte Design and Optimization 
+for Alkali Metal-Sulfur Batteries,” Advanced Energy Materials 15, no. 40 
+(2025): 2502691, https://doi.org/10.1002/aenm.202502691 . 
+64 . H. Li, B. Pang, L. Bird, et al., “Accelerated Reaction Kinetics in Quasi- 
+Solid- State Li–S Batteries via Li10 GeP2 S12 : From Mechanistic Insights to 
+Pouch Cell Realisation,” Batteries & Supercaps 9, no. 6 (2026): 70348, 
+https://doi.org/10.1002/batt.70348 . 
+65 . S. J. Cobb and J. V. Macpherson, “Enhancing Square Wave Voltam- 
+metry Measurements via Electrochemical Analysis of the Non-Faradaic 
+Potential Window,” Analytical Chemistry 91, no. 12 (2019): 7935–7942, 
+https://doi.org/10.1021/acs.analchem.9b01857 . 
+66 . H. K. Seo, Y. Hwa, J. H. Chang, et al., “Direct Visualization of Lithium 
+Polysulfides and Their Suppression in Liquid Electrolyte,” Nano Letters 
+20, no. 3 (2020): 2080–2086, https://doi.org/10.1021/acs.nanolett.0c00058 . 
+67 . D. Moy, A. Manivannan, and S. R. Narayanan, “Direct Measurement 
+of Polysulfide Shuttle Current: A Window Into Understanding the 
+Performance of Lithium-Sulfur Cells,” Journal of The Electrochemical 
+Society 162, no. 1 (2014): A1, https://doi.org/10.1149/2.0181501jes . 
+68 . J. S. Horner, G. Whang, D. S. Ashby, et al., “Electrochemical Modeling 
+of GITT Measurements for Improved Solid-State Diffusion Coefficient 
+Evaluation,” ACS Applied Energy Materials 4, no. 10 (2021): 11460–11469, 
+https://doi.org/10.1021/acsaem.1c02218 . 
+69 . J. Kim, S. Park, S. Hwang, and W. S. Yoon, “Principles and Applications 
+of Galvanostatic Intermittent Titration Technique for Lithium-ion Batter- 
+ies,” Journal of Electrochemical Science and Technology 13, no. 1 (2021): 
+19–31, https://doi.org/10.33961/jecst.2021.00836 . 
+70 . C. Prehal, J.-M. von Mentlen, S. Drvaric Talian, et al., “On the 
+Nanoscale Structural Evolution of Solid Discharge Products in Lithium- 
+sulfur Batteries Using Operando Scattering,” Nature Communications 13, 
+no. 1 (2022): 6326, https://doi.org/10.1038/s41467-022-33931-4 . 
+71 . M. Safari, C. Y. Kwok, and L. F. Nazar, “Transport Properties of 
+Polysulfide Species in Lithium–Sulfur Battery Electrolytes: Coupling of 
+Experiment and Theory,” ACS Central Science 2, no. 8 (2016): 560–568, 
+https://doi.org/10.1021/acscentsci.6b00169 . 
+Advanced Energy Materials, 2026
+19 of 20
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71651 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 20>>
+72 . S. H. Chung and A. Manthiram, “Current Status and Future Prospects 
+of Metal–Sulfur Batteries,” Advanced Materials 31, no. 27 (2019): 1901125, 
+https://doi.org/10.1002/adma.201901125 . 
+73 . S. J. Kim, Y. Jeoun, J. Park, S. H. Yu, and Y. E. Sung, “Design 
+considerations for lithium–sulfur batteries: Mass transport of lithium 
+polysulfides,” Nanoscale 12, no. 28 (2020): 15466–15472, https://doi.org/10. 
+1039/D0NR02936J . 
+74 . W. Weppner and R. A. Huggins, “Determination of the Kinetic 
+Parameters of Mixed-Conducting Electrodes and Application to the 
+System Li3 Sb,” Journal of The Electrochemical Society 124, no. 10 (1977): 
+1569–1578, https://doi.org/10.1149/1.2133112 . 
+75 . Y. V. Mikhaylik and J. R. Akridge, “Polysulfide Shuttle Study in the Li/S 
+Battery System,” Journal of The Electrochemical Society 151, no. 11 (2004): 
+A1969, https://doi.org/10.1149/1.1806394 . 
+76 . S. Plimpton, “Fast Parallel Algorithms for Short-Range Molecular 
+Dynamics,” Journal of Computational Physics 117, no. 1 (1995): 1–19, 
+https://doi.org/10.1006/jcph.1995.1039 . 
+77 . J. Wang, R. M. Wolf, J. W. Caldwell, P. A. Kollman, and D. A. Case, 
+“Development and Testing of a General Amber Force Field,” Journal of 
+Computational Chemistry 25, no. 9 (2004): 1157–1174, https://doi.org/10. 
+1002/jcc.20035 . 
+78 . A. K. Rappé, C. J. Casewit, K. S. Colwell, W. A. Goddard, and W. M. 
+Skiff, “UFF, a Full Periodic Table Force Field for Molecular Mechan- 
+ics and Molecular Dynamics Simulations,” Journal of the American 
+Chemical Society 114, no. 25 (1992): 10024–10035, https://doi.org/10.1021/ 
+ja00051a040 . 
+79 . M. J. Frisch, G. W. Trucks, H. B. Schlegel, et al., Gaussian 16 , Revision 
+C.01, Gaussion Inc., Wallingford, CT, (2019). 
+80 . T. Lu and F. Chen, “Multiwfn: a Multifunctional Wavefunction 
+Analyzer,” Journal of Computational Chemistry 33, no. 5 (2012): 580–592, 
+https://doi.org/10.1002/jcc.22885 . 
+Supporting Information 
+Additional supporting information can be found online in the Supporting 
+Information section. 
+Supporting File : aenm71651-sup-0001-SuppMat.docx. 
+20 of 20
+Advanced Energy Materials, 2026
+ 16146840, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.71651 by Tsinghua University Library, Wiley Online Library on [02/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

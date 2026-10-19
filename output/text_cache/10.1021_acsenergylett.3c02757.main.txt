@@ -1,0 +1,907 @@
+
+<<PAGE 1>>
+Interfacial Electrochemical Lithiation and
+Dissolution Mechanisms at a Sulfurized
+Polyacrylonitrile Cathode Surface
+Dacheng Kuai,‡ Shen Wang,‡ Saul Perez-Beltran, Sicen Yu, Gerard A. Real, Ping Liu,*
+and Perla B. Balbuena*
+Cite This: ACS Energy Lett. 2024, 9, 810−818
+Read Online
+ACCESS
+Metrics & More
+Article Recommendations
+*
+sı
+Supporting Information
+ABSTRACT: Advances in sulfurized-polyacrylonitrile (SPAN)-
+based cathode materials promise safer and more efficient
+lithium−sulfur (Li-S) battery performance. To elucidate
+electrolyte−cathode interfacial electrochemistry and polysulfide
+(PS) dissolution, we emulate discharge SPAN reactions via ab
+initio molecular dynamics (AIMD) simulations. Plausible
+structures and their lithiation profiles are cross-validated via
+Raman/IR spectroscopy and density functional theory (DFT).
+Lithium bis(fluorosulfonyl)imide (LiFSI) plays versatile roles in
+the Li-SPAN cell electrochemistry, primarily as the major source
+in forming the cathode−electrolyte interphase (CEI), further
+verified via X-ray photoelectron spectroscopy and AIMD.
+Besides being a charge carrier and CEI composer, LiFSI
+mediates the PS generation processes in SPAN electrochemical lithiation. Analysis of AIMD trajectories during progressive
+lithiation reveals that, compared to carbonates, ether solvents enable stronger solvation and chemical stabilization for both salt
+and SPAN structures. Differentiated CEI formation and electrochemical lithiation decomposition pathways and products are
+profoundly associated with the intrinsic nature of lithium bonding with oxygen and sulfur.
+W
+ithin the cohort of next-generation energy storage
+devices, lithium−sulfur (Li-S) batteries promise
+superior cost economy and theoretical energy
+density.1,2 Many investigations focus on developing sulfur-
+based cathode materials by elevating their electronic and ionic
+conductivity and cell energy density. Sulfur is intrinsically a
+good electronic insulator. High specific capacity is positively
+associated with sulfur loading, but difficulties in transport and
+irreversible structural changes during cycling may compromise
+the electrochemical performance. One strategy for balancing
+the two major cell property criteria is to bind sulfur atoms onto
+a conductive matrix. Carbon-based materials have been
+developed for this purpose, including sulfurized carbon
+nanotubes,3 graphene,4 and polyacrylonitrile (PAN).5 The
+emerging sulfurized-polyacrylonitrile (SPAN) materials dem-
+onstrate excellent cycling performance and reversibility,
+although limited information about structures and redox
+pathways hinders larger scale applications.5−7
+Cross-talk of active species results in anode/cathode
+deactivation and capacity fading in Li-S batteries.8 Such a
+shuttling effect can be alleviated by tuning the electrolyte and
+suppressing polysulfide (PS) dissolution. Ether-based electro-
+lytes usually have a higher sulfur utilization rate,9 while
+carbonate-based ones commonly have better cycling stabil-
+ities.10 A mechanistic understanding of the solvents’ roles in
+representative chemical events during SPAN cycling is pivotal
+in rational engineering of battery materials. Density functional
+theory (DFT)-based molecular modeling offers in-depth
+electronic structure and potential energy surface informa-
+tion.11,12 Elucidating the explicit solvent−intermediate inter-
+actions and interfacial effects beyond the continuous solvent
+approaches are vital to predicting the corresponding reaction
+behaviors and kinetics.13−15 In the SPAN case, the C/N−S and
+S−S cleavage/formation reactions usually take place at the
+electrolyte−cathode interface, where the electrolyte solvent,
+Received:
+December 20, 2023
+Revised:
+January 20, 2024
+Accepted:
+January 25, 2024
+Published: February 5, 2024
+Letter
+http://pubs.acs.org/journal/aelccp
+© 2024 The Authors. Published by
+American Chemical Society
+810
+https://doi.org/10.1021/acsenergylett.3c02757
+ACS Energy Lett. 2024, 9, 810−818
+This article is licensed under CC-BY 4.0
+Downloaded from pubs.​acs.​org/​aelccp/​article-pdf/​9/​3/​810/​19256987/​nz3c02757.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 2>>
+salt, and PAN backbone may simultaneously contribute to the
+reaction.
+Bonding categories involved in the SPAN electrochemical
+lithiation/delithiation are typically diverse,16 and many efforts
+have been made to enhance the fundamental understanding of
+the complex interfacial electrochemical reaction mechanisms.17
+In addition to PS cleavage and reattachment, the PAN
+backbone experiences structural and chemical rearrangements
+during cycling.18 To facilitate the atomistic understanding of
+sulfur cathodes, classical theoretical approaches19−21 have
+proved useful for describing phenomena such as PAN
+vulcanization at an atomistic level.22 The SPAN lithiation23
+and solvation effects in linear and cyclic carbonate electro-
+lytes24 were further studied at the ab initio level of theory.
+Cathode−electrolyte interphase (CEI) layers play an
+essential role in tuning the electrochemical performance of
+Li-S battery systems.25 Carbonate species from solvent
+decomposition and polymer cathode additives protect the
+cathode from severe sulfur dissolution26 and form an
+electrostatically repulsive barrier.27 Other electrolyte formula-
+tions have enabled reduced shuttling effects, long Li-SPAN cell
+lifespan, and wide temperature tolerance.28 The LiFSI salt not
+only serves as a charge carrier but also easily dissociates in
+redox reactions, contributing to the solid−electrolyte inter-
+phase (SEI)29 and CEI.30
+Herein we identify plausible SPAN structures obtained in
+vulcanization processes and elucidate their corresponding
+lithiation/reduction mechanisms. We compare the roles of
+carbonate and ether electrolytes during the interfacial lithiation
+of SPAN structures and explore the unique role of LiFSI in the
+chemistry at the SPAN−electrolyte interface. We obtain an
+overview of the lithiation reactions and solvation effects as a
+function of SPAN structural features and site-dependent
+lithiation energetics and further assess the interactions between
+electrolyte species and reaction intermediates during electro-
+chemical lithiation through ab initio molecular dynamics
+(AIMD) simulations incorporating detailed electronic struc-
+ture analysis of key chemical events.
+Many proposed SPAN structures have been probed with
+characterization techniques including solid-state nuclear
+magnetic resonance (ss-NMR),31,32 X-ray photoelectron spec-
+troscopy (XPS),32 Fourier transform infrared spectroscopy
+(FTIR), and X-ray diffraction (XRD),33,32 summarized by
+Zhao et al.5 To estimate and verify the thermodynamic
+favorability of different sulfur chain types, we compute the
+thermochemistry of forming designated C−S and N−S bonds.
+Compared to C−C bonding, the shorter N−C distance leads
+to the C2v symmetry of the pyridine units in PAN backbone,
+which makes it challenging to optimize the SPAN structure in
+periodic boundary conditions without fully relaxing the ring
+tension. Here we select a structure with four pyridine units to
+serve as the PAN backbone in estimating the vulcanization
+energies. To eliminate the formation energy variations in
+different sulfur allotropes and to make unbiased comparisons
+among species, Figure 1 shows the average electronic energy of
+each S atom in the S8 molecule as the Sn energetics on the
+product side when calculating the vulcanization energetics.
+Note that this approach underestimates the thermodynamic
+favorability in many cases because smaller and more active
+sulfur molecules are readily available under the high vulcan-
+ization temperature.34 For instance, when the S2 molecule is
+used as the starting molecule for obtaining the bridge−CN
+structure, enthalpy changes for “parallel” (para) and
+“perpendicular” (perp) configurations become −87.66 and
+−91.68 kcal/mol, and the free energy changes at 723 K reach
+−10.29 and −14.36 kcal/mol, respectively.
+Figure 1. SPAN structural studies via (a) DFT calculations of vulcanization reaction energetics at 723 K and (b) Raman spectra of DFT-
+verified SPAN models and experimental measurements before and after electrochemical lithiation. The “+” and “++” signs in (a) suggest
+positive values below and above 25 kcal/mol, respectively; “−” suggests negative values larger than −25 kcal/mol; “∼” indicates positive and
+negative values that vary depending on structures in the same category and reference starting materials. The atomic charge signs only serve
+the purpose of visualization and do not reflect the actual charge states. Detailed thermodynamic and electronic structure information is
+available in Figure S1. In (b), vibrations on PAN backbones such as C−H and C−N are not labeled for clarity.
+ACS Energy Letters
+http://pubs.acs.org/journal/aelccp
+Letter
+https://doi.org/10.1021/acsenergylett.3c02757
+ACS Energy Lett. 2024, 9, 810−818
+811
+Downloaded from pubs.​acs.​org/​aelccp/​article-pdf/​9/​3/​810/​19256987/​nz3c02757.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 3>>
+As suggested for S−C(sp2), S−C(sp3), and S−N formation,
+the even-numbered sulfur chains are thermodynamically more
+stable than the odd-numbered ones, not only by themselves
+(see Figure S1 for details) but also when attached to PAN
+backbones. The energy barriers for the transition between Sy-
+and Sz-type structures were calculated to be as high as 81.42
+kcal/mol when an S4 chain is attached, suggesting that such
+transformation is highly unlikely. Meanwhile, when attempting
+to optimize the structure of bridging sulfur chains that connect
+PAN on nitrogen sites, local minima were always located when
+the S−C(sp3) covalent bonds are formed instead (see Figure
+S2 for details).
+Spectroscopic methods are powerful in resolving bonding
+information in solid-state materials. To further understand and
+validate the SPAN structural models and discharge profiles
+derived from the first-principles calculations, we study the
+Raman and infrared (IR) spectroscopy of pristine SPAN and
+the evolutions due to the first discharge process. Computed
+structures are summed and normalized from two major
+plausible SPAN molecular models: “bridging” Sx-PAN (x =
+2, 3) and “single-sided” S3-PAN. Most of the Raman/IR-active
+vibrations have good agreement with the detected peaks from
+experiment and empirical assignments (Figure 1b). The
+overestimated H atomic ratio in saturating the peripheral
+PAN atoms, together with the presumed molar ratios of all
+proposed SPAN structures, is responsible for the wavenumber
+and intensity displacements between simulation and measure-
+ment. After complete lithiation, an observable increase in the
+intensity ratio of the D-band to G-band (Id:Ig) signals a
+reduced degree of structural order following lithiation
+processes. The spectra display characteristic D-band and G-
+band features within the 1000−1500 cm−1 range. Notably, in
+the region below 1000 cm−1, a series of peaks associated with
+C−S, N−S, and S−S bonds are observed. Regarding the
+Raman spectra of pristine SPAN, there are uncertainties in
+peak assignments below 1000 cm−1.18,35 Peaks around 900
+cm−1 were assigned to either a C−S or S−S vibrational mode.
+Recent studies have also suggested an N−S vibrational mode
+occupying this same spectral position. All these peaks diminish
+upon discharge completion, suggesting either cleavage of these
+bonds or a transition into a lithiated form with a diminished
+Raman scattering cross-section. In addition, a novel peak
+Figure 2. DFT-calculated lithiation free energy profiles of different PS chain categories bonded to 4 units of pyridine oligomer(s) backbones.
+(a) Free energy energetics of a single-sided SPAN molecular model computed in the gas phase and via the SMD model. (b) Lithiation free
+energy profile comparison between S2-bridged and S3-bridged molecular models. (c) Performance variation from gas phase to implicit
+solvation. Each color in parts b and c represents the corresponding bridging configuration (S2/3 with “parallel” (para) or “perpendicular”
+(perp) backbone relative angles). Dashed lines facilitate comparison at the equivalent lithiation stages with respect to the left-side data
+points.
+ACS Energy Letters
+http://pubs.acs.org/journal/aelccp
+Letter
+https://doi.org/10.1021/acsenergylett.3c02757
+ACS Energy Lett. 2024, 9, 810−818
+812
+Downloaded from pubs.​acs.​org/​aelccp/​article-pdf/​9/​3/​810/​19256987/​nz3c02757.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 4>>
+emerging near 600 cm−1 after discharge was attributed to Li−
+N vibrations instead of the C−S lithium-related compound
+discussed in earlier reports.36−38 Assisted by the DFT
+predictions, all peaks are reassigned accordingly with more
+details in Figure S3, in addition to the FTIR spectra shown in
+Figure S4.
+In this study, we explored the impact of di- and trisulfide
+bridging on free energy variations in SPAN. To provide
+experimental support, we conducted time-of-flight secondary
+ion mass spectrometry (ToF-SIMS) analysis. The findings,
+presented in Figure S5, reveal the presence of S−, S2
+−, and S3
+−
+ions (m/z 32, 64, and 96) in the synthesized SPAN. Notably,
+ions representing longer sulfur chains, such as S4
+−(m/z 128)
+and S5
+−(m/z 160), were almost undetectable. This suggests a
+minimal presence of longer sulfur chains (Sx, where x > 3) in
+SPAN. Therefore, we primarily focused on the lithiation
+behaviors of disulfide and trisulfide structures. The first
+reaction step initiates from electron uptake to serve as a
+comparison against lithiation via Li+. The following steps are
+calculated by continuously introducing lithium atoms to the
+designated sites, as indicated in Figure 2 (details available in
+Figures S6 and S7). According to the free energy profiles,
+solvation by continuum solvent manipulates the early stage of
+the lithiation reactions. Polarities and charge distributions of
+reduced intermediates vary greatly in these steps, resulting in
+significant changes in solvation heat. The “linear” SPAN in
+Figure 2a has an S3 chain bonded on the carbon side of an H-
+saturated 4-unit PAN oligomer. In such a structure, the
+electron uptake and Li+ coordination steps in the continuum
+solvation model experience significant energy uphill and
+downhill, while electrochemical relaxation is less irregular in
+gas-phase processes. A similar phenomenon was observed in
+other SPAN structures where PS is bonded to sp3 carbon
+atoms, as indicated in Figure S8. This suggests that the
+solvation environment could be critical to electrochemical
+cycling in C−PS-bonded “linear” SPAN structures and may
+result in energy barriers in the early discharge processes.
+Besides the PS anchored on single-sided C(sp2), bridging
+sulfur chains between PANs also have considerable abundance.
+Depending on the PS availability and relative distances
+between two PAN backbones, different varieties of bridging
+PSs are likely to exist in freshly synthesized SPAN and after
+electrochemical cycles. We analyze differences between
+disulfide- and trisulfide-bridged SPAN structures and solvation
+effects. During charging/discharging cycles, the PAN frame-
+work could either remain stationary due to the rigid
+surrounding space or twist to fit for lower steric hindrance.
+Therefore, we optimized geometries with frozen far-end
+carbons as well as the ones without constraints shown in
+Figure 2c with color coding. The lithiation energetics of S2-
+and S3-bridged SPANs are generally consistent with each other,
+except that the S2 case has more negative free energy changes
+than the S3 one by 0.8−1.2 kcal/mol in the first and third
+lithiation steps. Introducing solvation to PS-bridged SPANs
+does not induce significant free energy variations.
+Due to the electronegative nature of S and O, PS dissolution
+is usually mediated through Li+ coordination, as Li is the only
+abundant cationic species in Li-S battery systems. When
+clustered with PSs, the electronic structures and binding
+energetics of [Li-solvent]+ are profoundly altered. With
+representative [Li2Sx-solvent] cluster configurations, Figure 3
+demonstrates how binding energies between Li2Sx and the
+solvent (Li+−Osolvent bond formation energy) evolve with
+respect to the sulfur chain length in different solvation
+environments. The dielectric constant is one of the critical
+parameters in presenting the solvation strength, especially
+when evaluating with the continuum solvation models.39 We
+selected dielectric constants of 4.24, 7.43, and 109 to model
+environments with low to high solvation effects, influenced by
+the salt effect on the solvent’s dielectric properties. The low
+constants (4.24 and 7.43) represent solvents like diethyl ether
+and tetrahydrofuran, while the highest constant (109) reflects
+the highly polar environment of an ethylene carbonate−
+vinylene carbonate solvent, broadening the model’s applic-
+ability across diverse electrolyte systems. It is important to note
+that these values represent average conditions in our implicit
+solvation model rather than specific solvents or electrolytes.
+Being statistically 95% confident, sulfur chain length x is
+positively correlated with the DOL-Li2Sx binding free energies,
+but not in the other two solvents; the dielectric constant has a
+negative contribution toward the binding energies between
+DMC and Li2Sx, while there is no significant impact on DME
+or DOL. Clear boundaries between Li and S atoms in
+electronic Laplacian isosurfaces (blue glassy structure in Figure
+3) reveal bonding ionicity between Li+ and Sx
+2−. In contrast,
+despite poor electronic Li and O(solvent) density overlap in all
+clusters, positive Laplacian values in their bridging spaces
+suggest semi-covalent Li+−O(solvent) bonding. In Li+-mediated
+solvent−SPAN interactions, the PSs bonded on the PAN
+backbone display consistent Li+−S or Li+−O(solvent) bonding
+nature, as discussed. Therefore, it is reasonable to treat [Li+-
+solvent] as an ionic cluster that dissolves PSs via electrostatic
+forces.
+The simplified molecular model reflects the performance of
+SPAN’s individual sulfur chain categories, while coexisting PS
+varieties induce higher complexity in the SPAN electronic
+structures as well as in the corresponding lithiation reaction
+profiles. AIMD simulations (Figure 4) further help to elucidate
+the electrolytes’ roles in the SPAN lithiation reaction pathways
+and the dissolution of generated PS species at interfacial (∼10
+nm) scales. We compare two diluted electrolyte systems:
+DMC-solvated 1.2 M LiFSI and DME-solvated 1.0 M LiFSI.
+DME’s stronger PS dissolution capability compared to DMC
+profoundly affects SPAN’s electrochemical lithiation reaction
+mechanisms. The pristine SPAN structure was retrieved from
+Figure 3. Binding free energy between Li2Sx and solvent molecule
+evolution with respect to the Sx chain length in different implicit
+solvation systems. The right-side figures denote the electronic
+Laplacian isosurfaces (isovalue = 0.09) of the corresponding
+structures (x = 3).
+ACS Energy Letters
+http://pubs.acs.org/journal/aelccp
+Letter
+https://doi.org/10.1021/acsenergylett.3c02757
+ACS Energy Lett. 2024, 9, 810−818
+813
+Downloaded from pubs.​acs.​org/​aelccp/​article-pdf/​9/​3/​810/​19256987/​nz3c02757.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 5>>
+previous work.22 According to Figure 4a,b, the electronic spin
+density is primarily distributed along the PAN backbone,
+suggesting that the high-spin-state electrons mainly exist
+among the carbon and nitrogen atoms with delocalized
+electrons instead of staying on the PSs. These light atoms
+with high-spin electrons have higher priority to couple with
+external electrons than sulfur atoms when discharging. This is
+also associated with the irreversible capacity loss due to an
+aromaticity decrease after the first discharge cycle (Figure
+S9).18 During the lithiation process, the monosulfide species
+dissolved in the electrolyte continuously increase for both
+solvents; in the meantime, the counts of disulfides and
+trisulfides in the electrolyte increase when the PSs dissociate
+from the PAN backbone and oscillate during the dynamic
+electrochemical lithiation. Figure 4c shows a clear dependence
+of the PS dissolution on the chain length, nature of the solvent,
+and Li/S ratio. Note that not all disulfide structures were
+eventually converted to monosulfide. As stated in the previous
+binding energy analysis, the high solubility of PS in DME
+results in a larger population of intermediate LixS2
+x−2 and
+LixS3
+x−2 species being dissolved compared with that in DMC.
+The average PS chain length evolution profile offers an
+overview of the C/N−S and S−S bond cleavage progress
+during lithiation. A shorter average PS chain length suggests a
+higher bond cleavage level induced by lithiation. DMC induces
+less dissolution and stabilization for PSs, thus leading to
+phenomena including (1) PS rearrangement events reflected in
+fluctuations in Figure 4d and (2) slower and less complete C/
+N/S−S bond cleavages in high lithiation stages.
+As a major source of CEI composition, LiFSI decomposition
+on the SPAN CEI is confirmed from prior reports17,18 and
+further elucidated in this work via XPS. Aside from the
+previously observed N(1s) and S(2p) signals,18 F−ion and S−
+F bonding signals were detected on the SPAN due to LiFSI
+defluorination and dissociation, as Figure S10 denotes.
+According to the AIMD simulations of the CEI-forming
+process, solvation dynamics in carbonate and ether electrolyte
+lead not only to differentiated PS behavior during lithiation but
+also to LiFSI degradation pathway variation, as suggested in
+Figures S11 and S12. In the DMC electrolyte system, N−S
+cleavage has higher priority than defluorination caused by S−F
+breaking, while DME solvation has an opposite result. Within
+Figure 4. Overview of the SPAN structure and electrochemical lithiation reactions from AIMD. (a) Top view of pristine SPAN structure
+shown in repeated cell units, with dashed lines indicating the cell margins. (b) Electronic spin density distribution of the “upper layer”
+moiety. The number of hydrogen atoms on peripheral C/N atoms in the molecular model is determined by the pristine bonding conditions.
+(c) PS count percentage by lengths in DMC (blue circle) and DME (red dot) liquid electrolyte phases as a function of discharge Li/S ratio.
+(d) Average PS chain length (number of units) evolution profile during lithiation. The shadow areas indicate the corresponding 90%
+confidence intervals.
+Figure 5. Electronic analysis of DME-LiFSI-mediated S−S cleavage. (a) General configuration of the dissociation event. Dashed lines
+between S atoms indicate broken bonds. (b) Free energy profiles comparison between charge-transfer and geometry-induced decomposition
+pathways. Electronic Laplacian (c) and electron density (d) isosurfaces of the configuration at 780 fs, after the cleavage is accomplished
+(isovalue = 0.09) in the charge-induced path.
+ACS Energy Letters
+http://pubs.acs.org/journal/aelccp
+Letter
+https://doi.org/10.1021/acsenergylett.3c02757
+ACS Energy Lett. 2024, 9, 810−818
+814
+Downloaded from pubs.​acs.​org/​aelccp/​article-pdf/​9/​3/​810/​19256987/​nz3c02757.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 6>>
+the AIMD ensemble, LiFSI degradation generates a more
+diverse group of product fragments, in a faster manner, in the
+carbonate electrolyte than in DME. Within the picosecond
+simulation time scale, for the first time, we observe that only in
+the DMC-based electrolyte system, after the SO2F−and
+NSO2F2−fragments are generated by N−S cleavage, the SO2
+2−
+fragment from further SO2F−degradation can covalently bond
+with PS on the SPAN cathode surface. Previously the reduced
+SO2 species were recognized in enhancing the graphite anode’s
+performance.40 This process allows post-synthesis surface
+modification to the SPAN structure during charging/
+discharging cycles, resulting in effects similar to those reported
+by Ein-Eli et al.40 Within the AIMD time frame, the remaining
+fragments of FSI degradation have a higher preference to
+adsorb on the SPAN surface than diffusing in electrolyte, thus
+facilitating CEI formation, with solvent-dependent composi-
+tions. This also explains why predominant XPS signals from
+LiFSI fragments can be detected after the cathode residual-
+cleaning protocols.
+Significant chemical events observed in AIMD simulations
+enhance our understanding of lithiation reaction mechanisms.
+We retrieve partial geometries of representative chemical
+events, focusing on PS cleavage and dissolution processes at
+the SPAN−electrolyte interface. In the DME-solvated system,
+PSs are well stabilized and experience consecutive S−S
+cleavages. Figure 5 shows that, for a Li:S ratio of 1:1, an S4
+radical chain which has one side bonded to the PAN backbone
+heterolytically cleaves into an S3 and an S atom. The S3
+structure coordinates with multiple Li+ and dissolves in the
+electrolyte, while S remains bonded to the PAN structure.
+Beyond its common role in serving as an ionic charge carrier,
+FSI−is constantly observed mediating the electrochemical
+lithiation and facilitating the solvation shell formation for PSs
+according to our AIMD simulations. The bonding natures,
+including semi-covalency and ionicity, of Li+-O/S in the whole
+configuration remain consistent with the ones discussed for
+Li2Sx-solvent clusters. Thus, FSI−together with DME
+coordinates with Li+ to act as an entity when participating in
+the PS reductive evolution (Figure 5a).
+According to the Bader charge analysis of the AIMD
+trajectory,41 the whole Li-FSI-DME-PS-PAN complex takes up
+one electron throughout the S−S cleavage process. To clarify
+the triggering factors in this reaction, we performed single-
+point calculations based on two paths: (1) electron uptake
+takes place first, which leads to the increase in the S−S
+distance (curve with blue circles in Figure 5b), and (2)
+geometry variations promote the charge transfer to initiate
+(curve with gray triangles in Figure 5b). The charge-transfer-
+induced pathway experiences only 8.87 kcal/mol free energy
+uphill, while the geometry-variation-induced one requires
+overcoming a 27.83 kcal/mol barrier, which is significantly
+less likely to happen in a picosecond process. After the S−S
+cleavage, the dissociated S atoms do not have overlapping
+electronic density or Laplacian (Figure 5c,d), while the Li−O
+and Li−S coordinations retain their semi-covalent and ionic
+properties, respectively. Therefore, our evidence suggests that
+the major cause of PS dissociation is electron transfer into the
+SPAN cathode materials, assisted by the electrolyte-mediated
+Li+ coordination.
+Figures S13 and S14 provide in-depth information regarding
+the charge distribution variations during SPAN’s electro-
+chemical lithiation. Similar to the PS length distributions,
+atomic charges have more vigorous fluctuations in DMC
+electrolyte than in DME. Unlike the presumed scenarios in
+which SSPAN atoms take the external charges by transforming
+into lithiated PS, according to our Bader charge analysis, sulfur
+in general receives only approximately 40% of the external
+charges, while the remaining 60% are transferred to the C on
+the PAN backbone after Li:S approaches 2:1. This is associated
+with the electronic structures reflected in Figure 4b, where
+most of the high-spin electronic density is accumulated on C
+and N atoms that have higher priority in coupling with
+electrons during the discharging process. The later-stage
+electrochemical lithiation mainly leads to distortions in the
+PAN electronic structures. This agrees well with the discharge/
+charge curve determined by Wang et al., indicating that the
+irreversible capacity loss is due to the transformation into non-
+aromatic structures.18 Interestingly, upon reaching a Li:S ratio
+of 1:1, more than 65% of the charge transferred to S, which
+corresponds to the moment when the largest amount of
+trisulfide species left the PAN backbone. This suggests that
+most of the sulfur reduction takes place in the first half of the
+discharging process.
+In conclusion, based on DFT computations, we found that
+the PSs binding with the carbon atoms with sp2 hybridization
+on a single side of the PAN backbone, as well as the ones
+bridging two neighbor PAN chains, are plausible structures in
+SPAN. The corresponding Raman and IR spectroscopic
+measurements further confirmed the proposed structures.
+The electrochemical lithiation of the single-sided SPAN
+structures has a stronger tendency to be impacted by the
+solvation environment than the bridging PS case. Via first-
+principles AIMD approaches, we also analyzed the electrolyte’s
+dissolution and its influence on the first charging cycle. The PS
+length and dielectric constant have statistical correlations with
+the [Li2Sx-solvent] binding energies in certain solvent systems;
+however, they do not alter the solvation strength order: linear
+carbonate (DMC) < cyclic ether (DOL) < linear ether
+(DME). DMC’s weak solvation effects result in diminishing PS
+stabilization during the reduction reactions. This phenomenon
+is evidenced by the shorter average PS chain lengths and
+altered charge distributions observed in our study. Conversely,
+the robust solvation associated with DME tends to promote
+significant PS shuttling and potential anode degradation in
+subsequent charge/discharge cycles. Strategies to mitigate
+these adverse effects stemming from the strong dissolution of
+DME include (1) functionalizing, especially by fluorinating, the
+linear ether structures to tune PS solubility,42 (2) employing a
+higher proportion of cyclic ethers and carbonates in the
+electrolyte composition to balance solvation strength, and (3)
+developing advanced electrolyte additives that can more
+effectively control solvation dynamics and PS behavior while
+keeping Li metal anode stability as another key target.
+When we further resolved the AIMD trajectories of SPAN
+lithiation, we found that LiFSI’s contribution in Li-SPAN
+chemistry goes beyond its roles as charge carrier and anode
+SEI source component. The interfacial LiFSI fragmentation on
+the SPAN surface is confirmed from both AIMD simulation
+and XPS signals. The degradation product fragments on the
+cathode become part of CEI, and the SO2
+2−could further bond
+with PS in the SPAN system by forming S−S bonds.
+Furthermore, FSI−mediates the S−S cleavages in PS through
+semi-covalent Li+-O coordination and Li+-S electrostatic
+interactions, allowing electron-transfer-induced pathways to
+proceed with a low energy barrier. The insights into the
+versatile roles of the LiFSI-DME system bring new rationale in
+ACS Energy Letters
+http://pubs.acs.org/journal/aelccp
+Letter
+https://doi.org/10.1021/acsenergylett.3c02757
+ACS Energy Lett. 2024, 9, 810−818
+815
+Downloaded from pubs.​acs.​org/​aelccp/​article-pdf/​9/​3/​810/​19256987/​nz3c02757.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 7>>
+next-generation Li-SPAN electrolyte design: the presence of
+dual oxygens in DME, with optimal distances for chelating Li+,
+is a positive factor to maintain. Based on the DME framework,
+the electrolyte solvent engineering direction is to reduce the PS
+dissolution strength to a moderate level and further expand the
+voltage tolerance window. Fluorination has been proven to be
+a promising strategy for these purposes in creating a desired
+SEI on LMB anodes.42,43 However, how the DME with
+different degrees of fluorination would interact with SPAN
+cathode materials with LiFSI remains unresolved and could be
+a potential direction to explore both experimentally and via
+multiscale simulations.
+■EXPERIMENTAL DETAILS
+DFT analysis was performed at the B3LYP/aug-cc-pVDZ level
+of theory based on the Gaussian 16 package. Grimme DFT-D3
+dispersion correction was employed in all calculations.44 All
+structures were optimized to their energy local minimum
+without an imaginary vibrational mode. Implicit solvation
+effects were evaluated based on the SMD model.45 The
+electronic density and Laplacian isosurfaces were generated via
+the Multiwfn package46 and visualized with VMD.47
+The initial configuration of AIMD simulations was obtained
+by packing electrolyte solvents and LiFSI with SPAN
+structure48,49 in a slab of 35.00 × 13.06 × 11.31 Å3 dimensions
+based on the Amorphous Cell Packing module in Materials
+Studio (v8.0). Two electrolytes, i.e., DMC- and DME-solvated
+LiFSI systems, were studied. The liquid-phase density was
+verified to be consistent with the available data. The AIMD
+simulations were performed via Vienna Ab initio Simulation
+Package (VASP) 5.4.4.50 The Perdew−Burke−Ernzerhof
+(PBE) functional was used to describe the electron exchange
+and correlation energies within the generalized gradient
+approximation (GGA).51 Electron−ion interactions were
+considered within the projector augmented wave (PAW)
+pseudopotentials48,49,52,53 in a slab with dimensions of 35.00 ×
+13.06 × 11.31 Å3 based on the Amorphous Cell Packing
+module in Materials Studio (v8.0). Each batch of the AIMD
+based on the NVT ensemble was run for 10 ps with a 1.2 fs
+time step. To emulate the battery discharging process, 2 Li
+atoms were introduced within 1.5 Å radial distance with
+respect to N atoms in the final frame to initiate the next
+simulation cycle. The lithiation cycles end when the Li:S ratio
+approaches 2:1. The DMC-solvated simulation system ceased
+when 36 “external” Li atoms were introduced, and the DME
+case lasted until 42 Li atoms were introduced. The atomic
+Bader charges were analyzed based on the grid-based method
+developed by Henkelman et al.41 The Open Visualization Tool
+(OVITO 3.7.5)54 was employed in post-simulation analysis
+and visualization.
+■ASSOCIATED CONTENT
+*
+sı Supporting Information
+The Supporting Information is available free of charge at
+https://pubs.acs.org/doi/10.1021/acsenergylett.3c02757.
+Vulcanization reaction energetics (Figure S1); electron
+density isosurfaces (Figure S2); DFT-predicted Raman
+spectra (Figure S3); experimental and DFT-predicted
+FTIR spectra (Figure S4); ToF-SIMS spectrum of
+SPAN (Figure S5); stepwise SPAN geometry change in
+lithiation (Figure S6); lithiation-led geometry change in
+bridging SPAN configurations (Figure S7); electro-
+chemical reduction free energies (Figure S8); discharge/
+charge profiles (Figure S9); high-resolution XPS analysis
+(Figure S10); FSI decomposition pathways (Figure
+S11); S2−SO2 formation (Figure S12); charge evolu-
+tions during SPAN lithiation (Figures S13 and S14);
+description of experimental methods (PDF)
+■AUTHOR INFORMATION
+Corresponding Authors
+Ping Liu −Department of Nanoengineering and Materials
+Science and Engineering Program, University of California,
+San Diego, La Jolla, California 92093, United States;
+Email: piliu@ucsd.edu
+Perla B. Balbuena −Department of Chemical Engineering,
+Department of Chemistry, and Department of Materials
+Science and Engineering, Texas A&M University, College
+Station, Texas 77843, United States;
+orcid.org/0000-
+0002-2358-3910; Email: balbuena@tamu.edu
+Authors
+Dacheng Kuai −Department of Chemical Engineering and
+Department of Chemistry, Texas A&M University, College
+Station, Texas 77843, United States
+Shen Wang −Department of Nanoengineering, University of
+California, San Diego, La Jolla, California 92093, United
+States
+Saul Perez-Beltran −Department of Chemical Engineering,
+Texas A&M University, College Station, Texas 77843,
+United States
+Sicen Yu −Department of Nanoengineering, University of
+California, San Diego, La Jolla, California 92093, United
+States
+Gerard A. Real −Department of Chemical Engineering, Texas
+A&M University, College Station, Texas 77843, United
+States
+Complete contact information is available at:
+https://pubs.acs.org/10.1021/acsenergylett.3c02757
+Author Contributions
+‡D.K. and S.W. contributed equally.
+Funding
+This work was supported by the Assistant Secretary for Energy
+Efficiency and Renewable Energy, Office of Vehicle Tech-
+nologies, of the U.S. Department of Energy (DOE) through
+the Advanced Battery Materials Research (BMR) Program
+(Battery500 Consortium phase 2) under DOE Contract No.
+DE-AC05-76RL01830 from the Pacific Northwest National
+Laboratory (PNNL). Computational resources from the Texas
+A&M University High Performance Research Computing are
+gratefully acknowledged. S.W. and P.L. acknowledge support
+from the Office of Vehicle Technologies of the U.S. DOE
+through the BMR Program (Battery500 Consortium) under
+Contracts DE-EE0007764 and PNNL-595241 from the Pacific
+Northwest National Laboratory (PNNL). Part of the work
+used the UCSD-MTI Battery Fabrication Facility and the
+UCSD-Arbin Battery Testing Facility. The use of FTIR and
+Raman facilities was supported by the National Science
+Foundation (NSF) through the UC San Diego Materials
+Research Science and Engineering Center (UCSD MRSEC),
+Grant No. DMR-201192. The authors acknowledge the use of
+facilities and instrumentation at the UC Irvine Materials
+Research Institute (IMRI), which is supported in part by the
+ACS Energy Letters
+http://pubs.acs.org/journal/aelccp
+Letter
+https://doi.org/10.1021/acsenergylett.3c02757
+ACS Energy Lett. 2024, 9, 810−818
+816
+Downloaded from pubs.​acs.​org/​aelccp/​article-pdf/​9/​3/​810/​19256987/​nz3c02757.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 8>>
+NSF through the UC Irvine Materials Research Science and
+Engineering Center (DMR-2011967). XPS was performed
+using instrumentation funded in part by the NSF Major
+Research Instrumentation Program under Grant No. CHE-
+1338173.
+Notes
+The authors declare no competing financial interest.
+■ACKNOWLEDGMENTS
+The authors acknowledge Prof. Jun Liu and Jiayi (Bella) Wu
+for Tof-SIMS experiments. We also acknowledge the valuable
+insights and discussions with Dr. Enyuan Hu and Dr. Sha Tan.
+■REFERENCES
+(1) Zhao, M.; Li, B.-Q.; Zhang, X.-Q.; Huang, J.-Q.; Zhang, Q. A
+Perspective toward Practical Lithium−Sulfur Batteries. ACS Cent. Sci.
+2020, 6 (7), 1095−1104.
+(2) Li, G.; Wang, S.; Zhang, Y.; Li, M.; Chen, Z.; Lu, J. Revisiting the
+Role of Polysulfides in Lithium−Sulfur Batteries. Adv. Mater. 2018, 30
+(22), 1705590.
+(3) Yuan, Z.; Peng, H.-J.; Huang, J.-Q.; Liu, X.-Y.; Wang, D.-W.;
+Cheng, X.-B.; Zhang, Q. Hierarchical Free-Standing Carbon-Nano-
+tube Paper Electrodes with Ultrahigh Sulfur-Loading for Lithium−
+Sulfur Batteries. Adv. Funct. Mater. 2014, 24 (39), 6105−6112.
+(4) Yan, L.; Xiao, M.; Wang, S.; Han, D.; Meng, Y. Edge sulfurized
+graphene nanoplatelets via vacuum mechano-chemical reaction for
+lithium−sulfur batteries. J. Energy Chem. 2017, 26 (3), 522−529.
+(5) Zhao, X.; Wang, C.; Li, Z.; Hu, X.; Abdul Razzaq, A.; Deng, Z.
+Sulfurized polyacrylonitrile for high-performance lithium sulfur
+batteries: advances and prospects. J. Mater. Chem. A 2021, 9 (35),
+19282−19297.
+(6) Yang, H.; Chen, J.; Yang, J.; Wang, J. Prospect of Sulfurized
+Pyrolyzed Poly(acrylonitrile) (S@pPAN) Cathode Materials for
+Rechargeable Lithium Batteries. Angew. Chem. Int. 2020, 59 (19),
+7306−7318.
+(7) Wang, J.; Yang, J.; Xie, J.; Xu, N. A Novel Conductive Polymer−
+Sulfur Composite Cathode Material for Rechargeable Lithium
+Batteries. Adv. Mater. 2002, 14 (13−14), 963−965.
+(8) Ren, W.; Ma, W.; Zhang, S.; Tang, B. Recent advances in shuttle
+effect inhibition for lithium sulfur batteries. Energy Stor. Mater. 2019,
+23, 707−732.
+(9) Guo, J.; Xu, Y.; Wang, C. Sulfur-Impregnated Disordered
+Carbon Nanotubes Cathode for Lithium−Sulfur Batteries. Nano Lett.
+2011, 11 (10), 4288−4294.
+(10) Huang, F.; Gao, L.; Zou, Y.; Ma, G.; Zhang, J.; Xu, S.; Li, Z.;
+Liang, X. Akin solid−solid biphasic conversion of a Li-S battery
+achieved by coordinated carbonate electrolytes. J. Mater. Chem. A
+2019, 7 (20), 12498−12506.
+(11) Kuai, D.; Balbuena, P. B. Solvent Degradation and Polymer-
+ization in the Li-Metal Battery: Organic-Phase Formation in Solid-
+Electrolyte Interphases. ACS Appl. Mater. Interfaces 2022, 14 (2),
+2817−2824.
+(12) Kuai, D.; Balbuena, P. B. Inorganic Solid Electrolyte Interphase
+Engineering Rationales Inspired by Hexafluorophosphate Decom-
+position Mechanisms. J. Phys. Chem. C 2023, 127 (4), 1744−1751.
+(13) Roytman, V. A.; Singleton, D. A. Solvation Dynamics and the
+Nature of Reaction Barriers and Ion-Pair Intermediates in
+Carbocation Reactions. J. Am. Chem. Soc. 2020, 142 (29), 12865−
+12877.
+(14) Kuai, D.; Cheng, H.; Kuan, K.-Y.; Yan, X. Accelerated five-
+component spiro-pyrrolidine construction at the air−liquid interface.
+Chem. Commun. 2021, 57 (31), 3757−3760.
+(15) Andersen, A.; Rajput, N. N.; Han, K. S.; Pan, H.; Govind, N.;
+Persson, K. A.; Mueller, K. T.; Murugesan, V. Structure and Dynamics
+of Polysulfide Clusters in a Nonaqueous Solvent Mixture of 1,3-
+Dioxolane and 1,2-Dimethoxyethane. Chem. Mater. 2019, 31 (7),
+2308−2319.
+(16) Hu, C.; Dai, L. Doping of Carbon Materials for Metal-Free
+Electrocatalysis. Adv. Mater. 2019, 31 (7), 1804672.
+(17) Tan, S.; Rahman, M. M.; Wu, Z.; Liu, H.; Wang, S.; Ghose, S.;
+Zhong, H.; Waluyo, I.; Hunt, A.; Liu, P.; et al. Structural and
+Interphasial Stabilities of Sulfurized Polyacrylonitrile (SPAN)
+Cathode. ACS Energy Lett. 2023, 8 (6), 2496−2504.
+(18) Wang, S.; Lu, B.; Cheng, D.; Wu, Z.; Feng, S.; Zhang, M.; Li,
+W.; Miao, Q.; Patel, M.; Feng, J.; et al. Structural Transformation in a
+Sulfurized Polymer Cathode to Enable Long-Life Rechargeable
+Lithium−Sulfur Batteries. J. Am. Chem. Soc. 2023, 145 (17), 9624−
+9633.
+(19) Islam, M. M.; Ostadhossein, A.; Borodin, O.; Yeates, A. T.;
+Tipton, W. W.; Hennig, R. G.; Kumar, N.; van Duin, A. C. T. ReaxFF
+molecular dynamics simulations on lithiated sulfur cathode materials.
+Phys. Chem. Chem. Phys. 2015, 17 (5), 3383−3393.
+(20) Islam, M. M.; Bryantsev, V. S.; van Duin, A. C. T. ReaxFF
+Reactive Force Field Simulations on the Influence of Teflon on
+Electrolyte Decomposition during Li/SWCNT Anode Discharge in
+Lithium-Sulfur Batteries. J. Electrochem. Soc. 2014, 161 (8), E3009.
+(21) Kowalik, M.; Ashraf, C.; Damirchi, B.; Akbarian, D.; Rajabpour,
+S.; van Duin, A. C. T. Atomistic Scale Analysis of the Carbonization
+Process for C/H/O/N-Based Polymers with the ReaxFF Reactive
+Force Field. J. Phys. Chem. B 2019, 123 (25), 5357−5367.
+(22) Perez Beltran, S.; Balbuena, P. B. Sulfurized Polyacrylonitrile
+(SPAN): Changes in Mechanical Properties during Electrochemical
+Lithiation. J. Phys. Chem. C 2021, 125 (24), 13185−13194.
+(23) Perez Beltran, S.; Balbuena, P. B. Sulfurized Polyacrylonitrile
+for High-Performance Lithium−Sulfur Batteries: In-Depth Computa-
+tional Approach Revealing Multiple Sulfur’s Reduction Pathways and
+Hidden Li+ Storage Mechanisms for Extra Discharge Capacity. ACS
+Appl. Mater. Interfaces 2021, 13 (1), 491−502.
+(24) Perez Beltran, S.; Balbuena, P. B. A solid electrolyte interphase
+to protect the sulfurized polyacrylonitrile (SPAN) composite for Li-S
+batteries: computational approach addressing the electrolyte/SPAN
+interfacial reactivity. J. Mater. Chem. A 2021, 9 (12), 7888−7902.
+(25) Wang, W.-P.; Zhang, J.; Chou, J.; Yin, Y.-X.; You, Y.; Xin, S.;
+Guo, Y.-G. Solidifying Cathode−Electrolyte Interface for Lithium−
+Sulfur Batteries. Adv. Energy Mater. 2021, 11 (2), 2000791.
+(26) Wang, L.; Lin, Y.; DeCarlo, S.; Wang, Y.; Leung, K.; Qi, Y.; Xu,
+K.; Wang, C.; Eichhorn, B. W. Compositions and Formation
+Mechanisms of Solid-Electrolyte Interphase on Microporous Car-
+bon/Sulfur Cathodes. Chem. Mater. 2020, 32 (9), 3765−3775.
+(27) Yan, M.; Huang, R.; Wang, Z.-Y.; Wang, C.-Y.; Wang, W.-P.;
+Zhang, J.; Zhu, Y.-H.; Liu, Z.; Xin, S.; Wan, L.-J.; et al. A Polysulfide-
+Repulsive, In Situ Solidified Cathode−Electrolyte Interface for High-
+Performance Lithium−Sulfur Batteries. J. Phys. Chem. C 2023, 127
+(3), 1355−1362.
+(28) He, Y.; Zou, P.; Bak, S.-M.; Wang, C.; Zhang, R.; Yao, L.; Du,
+Y.; Hu, E.; Lin, R.; Xin, H. L. Dual Passivation of Cathode and Anode
+through Electrode−Electrolyte Interface Engineering Enables Long-
+Lifespan Li Metal−SPAN Batteries. ACS Energy Lett. 2022, 7 (9),
+2866−2875.
+(29) Galvez-Aranda, D. E.; Seminario, J. M. Li-Metal Anode in
+Dilute Electrolyte LiFSI/TMP: Electrochemical Stability Using Ab
+Initio Molecular Dynamics. J. Phys. Chem. C 2020, 124 (40), 21919−
+21934.
+(30) Ren, X.; Zou, L.; Cao, X.; Engelhard, M. H.; Liu, W.; Burton, S.
+D.; Lee, H.; Niu, C.; Matthews, B. E.; Zhu, Z.; et al. Enabling High-
+Voltage Lithium-Metal Batteries under Practical Conditions. Joule
+2019, 3 (7), 1662−1676.
+(31) Wang, W.; Cao, Z.; Elia, G. A.; Wu, Y.; Wahyudi, W.; Abou-
+Hamad, E.; Emwas, A.-H.; Cavallo, L.; Li, L.-J.; Ming, J. Recognizing
+the Mechanism of Sulfurized Polyacrylonitrile Cathode Materials for
+Li-S Batteries and beyond in Al-S Batteries. ACS Energy Lett. 2018, 3
+(12), 2899−2907.
+(32) Huang, C.-J.; Lin, K.-Y.; Hsieh, Y.-C.; Su, W.-N.; Wang, C.-H.;
+Brunklaus, G.; Winter, M.; Jiang, J.-C.; Hwang, B. J. New Insights into
+the N−S Bond Formation of a Sulfurized-Polyacrylonitrile Cathode
+ACS Energy Letters
+http://pubs.acs.org/journal/aelccp
+Letter
+https://doi.org/10.1021/acsenergylett.3c02757
+ACS Energy Lett. 2024, 9, 810−818
+817
+Downloaded from pubs.​acs.​org/​aelccp/​article-pdf/​9/​3/​810/​19256987/​nz3c02757.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 9>>
+Material for Lithium−Sulfur Batteries. ACS Appl. Mater. Interfaces
+2021, 13 (12), 14230−14238.
+(33) Weret, M. A.; Jeffrey Kuo, C.-F.; Zeleke, T. S.; Beyene, T. T.;
+Tsai, M.-C.; Huang, C.-J.; Berhe, G. B.; Su, W.-N.; Hwang, B.-J.
+Mechanistic understanding of the Sulfurized-Poly(acrylonitrile)
+cathode for lithium-sulfur batteries. Energy Stor. Mater. 2020, 26,
+483−493.
+(34) Eckert, B.; Steudel, R. Molecular Spectra of Sulfur Molecules
+and Solid Sulfur Allotropes. In Elemental Sulfur and Sulfur-Rich
+Compounds II; Steudel, R., Ed.; Springer: Berlin Heidelberg, 2003; pp
+31−98.
+(35) Huang, C.-J.; Cheng, J.-H.; Su, W.-N.; Partovi-Azar, P.; Kuo, L.-
+Y.; Tsai, M.-C.; Lin, M.-H.; Panahian Jand, S.; Chan, T.-S.; Wu, N.-L.;
+et al. Origin of shuttle-free sulfurized polyacrylonitrile in lithium-
+sulfur batteries. J. Power Sources 2021, 492, No. 229508.
+(36) Hwang, T. H.; Jung, D. S.; Kim, J.-S.; Kim, B. G.; Choi, J. W.
+One-Dimensional Carbon−Sulfur Composite Fibers for Na-S
+Rechargeable Batteries Operating at Room Temperature. Nano Lett.
+2013, 13 (9), 4532−4538.
+(37) Wang, X.; Qian, Y.; Wang, L.; Yang, H.; Li, H.; Zhao, Y.; Liu, T.
+Sulfurized Polyacrylonitrile Cathodes with High Compatibility in
+Both Ether and Carbonate Electrolytes for Ultrastable Lithium−
+Sulfur Batteries. Adv. Funct. Mater. 2019, 29 (39), 1902929.
+(38) Kim, H.; Kim, C.; Sadan, M. K.; Yeo, H.; Cho, K.-K.; Kim, K.-
+W.; Ahn, J.-H.; Ahn, H.-J. Binder-free and high-loading sulfurized
+polyacrylonitrile cathode for lithium/sulfur batteries. RSC Adv. 2021,
+11 (26), 16122−16130.
+(39) Yao, N.; Chen, X.; Shen, X.; Zhang, R.; Fu, Z.-H.; Ma, X.-X.;
+Zhang, X.-Q.; Li, B.-Q.; Zhang, Q. An Atomic Insight into the
+Chemical Origin and Variation of Dielectric Constant in Liquid
+Electrolytes. Angew. Chem., Int. Ed. 2021, 60 (39), 21473−21478.
+(40) Ein-Eli, Y.; Thomas, S. R.; Koch, V. R. The Role of SO 2 as an
+Additive to Organic Li-Ion Battery Electrolytes. J. Electrochem. Soc.
+1997, 144 (4), 1159.
+(41) Tang, W.; Sanville, E.; Henkelman, G. A grid-based Bader
+analysis algorithm without lattice bias. J. Phys.: Condens. Matter 2009,
+21 (8), No. 084204.
+(42) Gao, X.; Yu, Z.; Wang, J.; Zheng, X.; Ye, Y.; Gong, H.; Xiao, X.;
+Yang, Y.; Chen, Y.; Bone, S. E.; et al. Electrolytes with moderate
+lithium polysulfide solubility for high-performance long-calendar-life
+lithium−sulfur batteries. Proc. Natl. Acad. Sci. U.S.A. 2023, 120 (31),
+No. e2301260120.
+(43) Yu, Z.; Rudnicki, P. E.; Zhang, Z.; Huang, Z.; Celik, H.;
+Oyakhire, S. T.; Chen, Y.; Kong, X.; Kim, S. C.; Xiao, X.; et al.
+Rational solvent molecule tuning for high-performance lithium metal
+battery electrolytes. Nat. Energy 2022, 7 (1), 94−106.
+(44) Grimme, S.; Antony, J.; Ehrlich, S.; Krieg, H. A consistent and
+accurate ab initio parametrization of density functional dispersion
+correction (DFT-D) for the 94 elements H-Pu. J. Chem. Phys. 2010,
+132 (15), 154104.
+(45) Marenich, A. V.; Cramer, C. J.; Truhlar, D. G. Universal
+Solvation Model Based on Solute Electron Density and on a
+Continuum Model of the Solvent Defined by the Bulk Dielectric
+Constant and Atomic Surface Tensions. J. Phys. Chem. B 2009, 113
+(18), 6378−6396.
+(46) Lu, T.; Chen, F. Multiwfn: A multifunctional wavefunction
+analyzer. J. Comput. Chem. 2012, 33 (5), 580−592.
+(47) Humphrey, W.; Dalke, A.; Schulten, K. VMD: Visual molecular
+dynamics. J. Mol. Graphics 1996, 14 (1), 33−38.
+(48) Perez Beltran, S.; Balbuena, P. B. First-principles explorations of
+the electrochemical lithiation dynamics of a multilayer graphene
+nanosheet-based sulfur−carbon composite. J. Mater. Chem. A 2018, 6
+(37), 18084−18094.
+(49) Perez Beltran, S.; Balbuena, P. B. Formation of Multilayer
+Graphene Domains with Strong Sulfur−Carbon Interaction and
+Enhanced Sulfur Reduction Zones for Lithium−Sulfur Battery
+Cathodes. ChemSusChem 2018, 11 (12), 1970−1980.
+(50) Kresse, G.; Hafner, J. Ab initio molecular dynamics for liquid
+metals. Phys. Rev. B 1993, 47 (1), 558−561.
+(51) Perdew, J. P.; Burke, K.; Ernzerhof, M. Generalized Gradient
+Approximation Made Simple. Phys. Rev. Lett. 1996, 77 (18), 3865−
+3868.
+(52) Blöchl, P. E. Projector augmented-wave method. Phys. Rev. B
+1994, 50 (24), 17953−17979.
+(53) Kresse, G.; Joubert, D. From ultrasoft pseudopotentials to the
+projector augmented-wave method. Phys. Rev. B 1999, 59 (3), 1758−
+1775.
+(54) Stukowski, A. Visualization and analysis of atomistic simulation
+data with OVITO−the Open Visualization Tool. Model. Simul. Mater.
+Sci. Eng. 2010, 18 (1), No. 015012.
+ACS Energy Letters
+http://pubs.acs.org/journal/aelccp
+Letter
+https://doi.org/10.1021/acsenergylett.3c02757
+ACS Energy Lett. 2024, 9, 810−818
+818
+Downloaded from pubs.​acs.​org/​aelccp/​article-pdf/​9/​3/​810/​19256987/​nz3c02757.​pdf by TSINGHUA UNIV user on 21 September 2026

@@ -1,0 +1,1121 @@
+
+<<PAGE 1>>
+This journal is © the Owner Societies 2024
+Phys. Chem. Chem. Phys., 2024, 26, 19247–19256 | 19247
+Cite this: Phys. Chem. Chem. Phys.,
+2024, 26, 19247
+Reaction kinetics of lithium–sulfur batteries
+with a polar Li-ion electrolyte: modeling
+of liquid phase and solid phase processes
+Simon Bacon,ab Shumaila Babar,ab Matthew Dent,a Allan Foster,ab
+Joseph Paul Baboo,a Teng Zhang,ab John F. Wattsab and Constantina Lekakou
+*ab
+The present investigation fits the reaction kinetics of a lithium–sulfur (Li–S) battery with polar electrolyte
+employing a novel two-phase continuum multipore model. The continuum two-phase model considers
+processes in both the liquid electrolyte phase and the solid precipitates phase, where the diffusion
+coefficients of the Li+ ions in a solvent-softened solid state are determined from molecular dynamics
+simulations. Solubility experiments yield the saturation concentration of sulfur and lithium sulfides in the
+polar electrolyte employed in this study. The model describes the transport of dissolved molecular and
+ion species in pores of different size in solvated or desolvated form, depending on pore size. The Li–S
+reaction model in this study is validated for electrolyte 1 M LiPF6 in EC/DMC. It includes seven redox
+reactions and two cyclic non-electrochemical reactions in the cathode, and the lithium redox reaction
+at the anode. Electrochemical reactions are assumed to take place in the electrolyte solution or the solid
+state and cyclic reactions are assumed to take place in the liquid electrolyte phase only. The determina-
+tion of the reaction kinetics parameters takes place via fitting the model predictions with experimental
+data of a cyclic voltammetry cycle with in operando UV-vis spectroscopy.
+Introduction
+Enormous research eﬀort has been invested worldwide on Li–S
+batteries but there are still challenges to overcome to realize the
+high theoretical capacity and energy density at cell level and
+ensure good cyclability and long lifetime.1 Cathode host mate-
+rials are targeted to accommodate maximum amount of sulfur
+and its expansion while soluble polysulfides are trapped from
+moving to the anode by physical restriction,2–4 high tortuosity
+in 2D materials5–7 or functional groups that may also act as
+electrocatalysts.8,9 Further research has focused on the devel-
+opment of separators and interlayers to eliminate the shuttling
+of soluble polysulfides and protect the anode10–12 and on the
+optimization of the electrolyte.13 In order to design the micro-
+structure and chemical structure of these materials for Li–S
+batteries challenged by complex and competing processes,
+multipore continuum models are needed beyond the classical
+zero-dimensional (0-d) models encountered in the literature
+which are used to fit electrochemical reaction kinetics, usually
+two-step reactions for Li–S batteries.14,15
+One-dimensional (1-d) models have been proposed for Li–S
+batteries16–18 and many incorporate multistage reactions. How-
+ever, the fitted reaction kinetics parameters of such models are
+microstructure dependent and functional groups dependent
+with regards to the specific cathode and separator which were
+used in the associated experimental study. Such reaction
+kinetics parameters cannot be used universally for the design
+of materials and schedule optimization of Li–S batteries with
+different materials microstructure and functionalities.
+Following the continuum multipore model developed and
+validated for electrochemical double layer capacitors (EDLCs) by
+our group,19,20 this model has been extended to Li–S batteries21
+including a multistep reaction mechanism in the liquid electrolyte
+phase only. A recent study employed this model to determine the
+electrochemical reaction kinetics parameters of a six-step electro-
+chemical reaction chain for a Li–S battery with a porous carbon
+cathode host and electrolyte 1 M LiTFSI in DOL:DME 1:1 v/v.22
+This reaction chain followed the order in discharge23: from S8, to
+Li2S8, to Li2S6, to Li2S4, to Li2S2 and to Li2S, also from S4 to Li2S4 in
+ultramicropores, with the reverse reactions and reaction chain
+during charge. No physical and chemical processes were consid-
+ered in solid state, although there is a considerable amount of
+precipitated sulfur or sulfides in Li–S battery cells and a consider-
+able amount of undissolved sulfur was predicted till the end of
+slow discharge at 0.05C.21,22
+a Centre of Engineering Materials, School of Mechanical Engineering Sciences,
+University of Surrey, Guildford GU2 7XH, UK. E-mail: C.Lekakou@surrey.ac.uk
+b The Faraday Institution, Quad One, Harwell Campus, Didcot OX11 0RA, UK
+Received 17th May 2024,
+Accepted 26th June 2024
+DOI: 10.1039/d4cp02061h
+rsc.li/pccp
+PCCP
+PAPER
+Published on 03 July 2024
+Licensed under CC-BY-NC 4.0
+
+<<PAGE 2>>
+19248 | Phys. Chem. Chem. Phys., 2024, 26, 19247–19256
+This journal is © the Owner Societies 2024
+From a broader viewpoint, a typical electrolyte for Li-ion
+batteries such as 1 M LiPF6 in EC : DMC 1 : 1 v/v is of much
+lower cost than the electrolyte 1 M LiTFSI in DOL : DME 1 : 1 v/v,
+given the lower commercial cost of salt (500 US$ per kg for
+LiPF6 versus 650 US$ per kg by BASF24) and the fact that LiPF6
+has 1.9 times lower molecular weight than LiTFSI, which
+combined with the slightly lower cost of the EC and DMC
+solvents compared to DOL and DME result in 2.7 times lower
+cost for the 1 M LiPF6 in EC : DMC 1 : 1 v/v electrolyte. The high
+dielectric constant of EC may oﬀer higher sulfur solubility in
+EC:DMC which would favor lean electrolyte battery cells,25 a
+major requirement in the targeted metrics of Li–S batteries.26
+In fact, this may be seen from the difference of the Hansen
+solubility parameter d between sulfur and solvent:27–29 where
+dsulfur = 33.1 MPa1/2 (ref. 30) is closer to dEC : DMC 1 : 1 v/v =
+22.9 MPa1/2 (with dEC = 29.6 MPa1/2 and dDMC = 18.7 MPa1/2)
+rather than dDOL : DME 1 : 1 v/v = 19.0 MPa1/2.31 Another advantage
+of the carbonate-based electrolytes for Li–S batteries is their low
+flammability due to the low volatility of these solvents com-
+pared to DOL and DME.
+A major disadvantage of carbonate solvents is their irrever-
+sible reaction with polysulfide intermediates to form a sulfide
+carbonate complex32,33 which consumes active material at the
+expense of battery capacity and cycling life. Considering a Li–S
+battery with a 50 wt% sulfur in Ketjenblack EC 600 JD based
+cathode, cells with electrolyte 1 M LiTFSI in TEGDME were
+compared to cells with electrolyte 1 M LiTFSI in EC:EMC 1:1 v/v.33
+The comparison revealed that whereas the cell with the
+ether electrolyte exhibited a discharge capacity from 1280 to
+800 mA h gS
+1 after 10 cycles at 0.1C, the cell with the carbonate
+electrolyte started with a low discharge capacity of 380 mA h gS
+1
+which fell to negligible capacity in the second cycle at 0.1C and
+remained so after 10 cycles.33
+However, this might be controlled and reduced: in a study
+of Li–S battery with microporous carbon cathode host using
+electrolyte 1 M LiPF6 in EC/DMC,4 sulfides were formed inside
+the ultramicropores limiting their side reactions with the
+carbonate solvents as well as their shuttling effects. This
+improved the discharge capacity from an initial 1900 mA h gS
+1
+to 1000 mA h gS
+1 after 20 cycles at 0.05C for the electrolyte
+1 M LiPF6 in EC/DMC compared to an initial capacity of
+1250 mA h gS
+1 falling to 470 mA h gS
+1 after 20 cycles at
+0.05C for the electrolyte 1 M LiTFSI in DOL/DME.4 Further-
+more, researchers considering carbonate electrolytes for Li–S
+batteries have been investigating solid-state reactions, such as
+conversion from solid S8 to precipitate Li2S4 and further con-
+version to precipitates Li2S2 and Li2S targeting the solid–solid
+reactions on the surface of each precipitate,34 or even direct
+conversion from S8 to Li2S.34 The latter was revealed in Li–S cell
+with 65 wt% S in Ketjenblack EC 600 JD based cathode with a
+30 nm layer of alucone coating and electrolyte 1 M LiPF6 in
+EC : DEC 1 : 1 v/v which exhibited a single voltage plateau
+around 1.8 V in discharge with a discharge capacity to 1 V of
+650 mA h gS
+1 in first discharge falling to 400 mA h gS
+1 after
+100 cycles.35 Trapping sulfur and sulfides in the microporous
+cathode host and using a carbonate electrolyte yielded a single
+plateau discharge at low voltage, while in operando XANES
+revealed direct conversion of S8 to Li2S in assumed solid-state
+reaction.35 An alternative Li–S cell with cathode based on
+BP2000 (black pearl carbon 2000) with a high proportion
+of micropores of 0.7 nm (size of S8 allotrope) and 1M LiPF6 in
+EC/DEC electrolyte exhibited a discharge curve falling from
+2 to 1 V with an initial capacity of 1200 mA h gS
+1 falling to
+800 mA h gS
+1 after 100 cycles.35 These studies demonstrate
+the need for optimized design of the cathode microstructure in
+Li–S battery cells with carbonate electrolytes to maximize the
+rate of Li+ ion diffusion and redox reactions in semisolid or
+solid state and avoid the parasitic reactions of sulfides with the
+carbonate solvents in the liquid phase. Simulations based on a
+physicochemical model would be very valuable for such opti-
+mization, and hence, a physicochemical multipore continuum
+model is needed taking into account processes in both
+the liquid electrolyte phase and the solid (or semisolid)
+precipitate state.
+For the analysis and modeling of these reactions, data of
+sulfur and sulfides solubility in carbonate solvents is needed.
+Unfortunately, such data is missing from the literature. Hence,
+the first task in this study is to detemine the saturation
+concentration of sulfur and sulfides in a typical carbonate
+solvent system employed for Li-ion electrolytes. Furthermore,
+for the model to consider both reactions with Li+ ions at solid
+precipitate surface or in the bulk of the solid precipitate,
+molecular dynamics (MD) simulations will be conducted to
+determine the diﬀusion coeﬃcient of Li+ ions in solid or
+semisolid, since semisolid sulfur or sulfides have been encoun-
+tered in solubility studies from the diﬀusion of DME or DOL
+solvents in the solid phase.36,37
+As we have already determined the electrochemical reaction
+kinetics for Li–S batteries with electrolyte 1 M LiTFSI in DOL/
+DME using a multipore continuum model,22 this study focuses
+on the determination of the reaction kinetics in Li–S batteries
+using the higher dielectric constant electrolyte 1 M LiPF6 in
+EC : DMC 1 : 1 v/v. For such highly polar electrolyte solvent
+system,
+cyclic
+(non-electrochemical)
+polysulfide
+reactions
+between S8
+2 sulfides, to S6
+2 and S8, and S3 radical anion
+(from S6
+2) take place in the liquid electrolyte phase at the first
+plateau during discharge, rather than the gradual change from
+S8
+2 to S6
+2 to S4
+2 in the DOL/DME solution.23 Furthermore,
+there is speculation on whether the electrochemical reactions
+progress directly to S2 bypassing S2
+2 or not, for either liquid
+or solid phase reactions. Considering the solubility data of
+sulfur and all above sulfides in carbonate solvent mixture to be
+collected as the first task in this study, and also inputting the
+diffusion coefficients of Li+ ions in solid or semisolid phase
+from MD simulations to be conducted in this study, reactions
+will be considered in both liquid and solid phase in the novel
+model to be developed in this study. Overall, we shall investi-
+gate the reaction chain in this study for a carbonaceous cathode
+host (without the presence of any electrocatalysts) via monitor-
+ing the evolution of sulfides during the cyclic voltammetry (CV)
+of a Li–S battery using in operando UV-vis spectroscopy.
+We shall then employ our multipore continuum model,21,22
+Paper
+PCCP
+
+<<PAGE 3>>
+This journal is © the Owner Societies 2024
+Phys. Chem. Chem. Phys., 2024, 26, 19247–19256 | 19249
+after novel modifications to include the new reactions for the
+electrolyte 1 M LiPF6 in EC/DMC and physicochemical pro-
+cesses in solid and semisolid phase, in simulations of the CV
+test to fit the kinetics of these electrochemical and cyclic
+reactions on the basis of experimental CV data and in operando
+UV-vis data.
+MD simulations
+ReaxFF molecular dynamics (MD) simulations using software
+of the Ansterdam modeling suite (AMS) were carried out
+employing the ReaxFF force field for the system of S and Li
+atoms.38 A model of a-S8 allotrope of 128 S atoms was created in
+a slit pore of slit size (‘a’ dimension) of 0.91 nm. This pore was
+considered suﬃciently large to accommodate the formation of
+S8 during sulfur infiltration of the cathode host in a micro-
+porous carbon host. Li diﬀusion was considered in this sulfur
+structure by inserting 43 Li atoms (equivalent to the stoichio-
+metry of Li2S6). The procedure of MD simulations in the AMS
+software comprised the following steps: The model was
+inported in the AMS software and the structure’s geometry
+was optimized involving lattice relaxation under the LiS.ﬀ
+parameters of the Reaxﬀforce field. Simulated annealing was
+conducted to generate an amorphous system by heating from
+300 K to 1600 K over 5000 fs, followed by simulated cooling of
+1250 fs from 1600 K to 300 K. The amorphous system was
+optimized as earlier by lattice relaxation. The diﬀusion coeﬃ-
+cient of the Li atoms was computed by the AMS software via the
+velocity autocorrelation function, over a period of 27 500 fs with
+a sampling frequency of 5. Diﬀusion coeﬃcients were com-
+puted for several temperatures from which an Arrhenius plot
+was constructed to extrapolate diﬀusion coeﬃcients for diﬀer-
+ent temperatures, including room temperature at 21 1C. The
+procedure was repeated for slit pore sizes of 0.85 nm (Fig. 1)
+and 0.75 nm. For smaller slit pores, the g-S8 allotrope crystal
+was used in the initial model, and the procedure of MD
+simulations were repeated for slit pores of 0.69 and 0.63 nm.
+Furthermore, the procedure was repeated to also determine the
+diﬀusion coeﬃcient of Li in the Li2S, cubic F %m3m crystal
+structure in all slit pore sizes of 0.91, 0.85, 0.75, 0.69 and
+0.63 nm. The values of the so determined diﬀusion coeﬃcients
+of lithium at 21 1C were in the range of 1031 (pore of 0.91 nm)
+to 10110 m2 s1 (pore of 0.63 nm). This renders impossible
+diﬀusion of Li+ ions in the bulk of solid sulfur or solid sulfides
+during the cycling of the Li–S battery, even at the slow rate
+of 0.05C.
+The next step was to consider the diﬀusion of Li+ ions in
+‘‘softened’’ solids, i.e. semisolid state. Considering solvent
+diﬀusion coeﬃcients in solid sulfur or lithium sulfides in the
+range of 1012 to 109 m2 s1,37 DMC solvent molecules were
+inserted into the above sulfur and lithium sulfide structures at
+a molecular ratio of 50 : 50, and the same type of MD simula-
+tions were repeated. This yielded a Li+ ion diﬀusion coeﬃcient
+of (8.6  0.2)  107 m2 s1 of one Li+ ion in ‘‘soft’’ S8, (3.8 
+0.5)  1011 m2 s1 in the ‘‘soft’’ 43 Li – 128 S system
+(equivalent to Li2S6) and (3.4  0.4)  1012 m2 s1 in ‘‘soft’’
+Li2S. These values have been averaged over all the examined slit
+pore sizes (0.91, 0.85, 0.75, 0.69 and 0.63 nm).
+Physicochemical model
+On the basis of the findings via the MD simulations, a two-
+phase reaction model is presented, covering: (a) reactions in the
+liquid electrolyte phase with electron transfer in electrochemi-
+cal reactions occurring at the solid–electrolyte interface; and (b)
+solid-state reactions in the ‘‘soft’’ precipitate layer covering the
+pore walls. A continuum multipore model is adopted based on
+the volume-averaged species transport equations in the trans-
+verse direction through the cell thickness for a Li–S battery cell
+as in the schematic diagram in Fig. 2.
+Each pore of size p from the local discretized pore size
+distribution (PSD) contains a liquid electrolyte phase and a
+solid precipitates phase. Every pair of point x through the
+battery cell thickness and pore size p is characterized by the
+cathode host or separator volume fraction, ehost,p, the liquid
+electrolyte volume fraction which is equal to the pore fraction,
+ep, assuming electrolyte saturated porous medium,39 and the
+solid precipitates volume fraction, eprecipitate,p, where
+ehost,p + ep + eprecipitate,p = 1
+(1)
+Fig. 1
+Snapshots of the 128 S – 43 Li system in the 0.85 nm slit pore
+during the 1600 K MD simulations.
+Fig. 2
+Schematic diagram of the Li–S battery cell and the boundary
+conditions for the numerical solution, where Ns is the flux of species s
+and Iapp is the applied current density.
+PCCP
+Paper
+
+<<PAGE 4>>
+19250 | Phys. Chem. Chem. Phys., 2024, 26, 19247–19256
+This journal is © the Owner Societies 2024
+Each phase may contain any of the species s, where these
+species are molecules S8 or S4 depending on pore size, sulfide
+ions S2, S2
+2, S4
+2, S6
+2, S8
+2, radical anion S3, and electro-
+lyte ions Li+ and PF6
+. These are defined by species concentra-
+tions Cs,l,p and Cs,s,p in the liquid and solid phase, respectively,
+and corresponding species volume fractions, as,l,p, and as,s,p,
+which are related via the equations:
+as,l,p = Cs,l,pNAVs
+(2)
+as,s,p = Cs,s,pNAVs
+(3)
+where Vs is the volume of ion or molecule of species s and NA is
+the Avogadro number.
+The
+following
+volume-averaged
+equations
+describe
+all
+species transport, production or consumption in the liquid
+electrolyte phase, the Li+ ion transport,21,22 production or
+consumption in the solid precipitates phase (in fact, assumed
+to be semisolid phase), and the solid species (other than Li+)
+production or consumption in the solid precipitates phase at
+each position x through the cell and pore size p from the PSD
+(indicated by subscript p in the diﬀerent variables and terms):
+@epas;l;p
+@t
+ NAVs
+zsF
+@
+@x ieFs;Decayts;l;pas;l;p
+
+
+¼ @
+@x epDs;l;pFs;Decay
+@as;l;p
+@x
+
+
+þ Is;p1=p  Is;p=pþ1
+Dx
+þ rs;p;liq;elect þ rs;p;liq;cyclic þ Rs;p
+(4)
+@eprecipitate;paLiþ;s;p
+@t
+ NAVLiþ
+zLiþF
+@iLiþ;sol
+@y
+¼ @
+@y eprecipitate;pDLiþ;s;p
+@aLiþ;s;p
+@y
+
+
+þ rLiþ;p;sol;elect
+(5)
+@eprecipitate;pas;s;p
+@t
+¼ rs;p;sol;elect  Rs;p
+(6)
+The transport eqn (4) of any species s in the liquid electrolyte
+phase includes the drift current term where ie is the current
+density in the liquid electrolyte phase, zs is the number of
+transferred electrons for species s and F is the Faraday con-
+stant; the diﬀusion term, where Ds,l,p is the diﬀusivity of species
+s in the liquid electrolyte phase, given by a modified Stokes–
+Einstein relation as a function of the species size, pore p
+tortuosity and constrictivity relating the species s size to the
+pore size p6,19–21 and the electrolyte viscosity (see ref. 40 for
+viscosity value of electrolyte 1 M LiPF6 in EC : DMC 1 : 1 v/v,
+changing during the electrochemical cycle as in ref. 21), and
+ts,l,p is the transference number of species s in the liquid
+electrolyte phase; the interpore fluxes Is,p1/p  Is,p/p+1
+19,20
+assuming a hierarchical PSD. The species s size is that of the
+solvated species s41 or for smaller pores it is the size of the
+desolvated species s.41 If the pore size p is even smaller than
+the size of desolvated species s, no s species exists in this pore
+size, in either the liquid or the solid phase. Fs,decay is a decay
+factor applied to all flux terms in eqn (4) for each desolvated
+species s, expressing the probability of desolvation depending
+on whether there is sufficient electrochemical energy to over-
+come the desolvation energy required.6,19,20 rs,p,liq.elect is the
+rate of all the electrochemical reactions related with species s in
+the liquid electrolyte phase, and rs,p,liq.cyclic is the rate of all the
+cyclic chemical reactions related to species s in the liquid
+electrolyte phase.
+Only Li+ ion transport may take place in the solid phase
+according to eqn (5). The Li+ ion transport eqn (5) in the solid
+state considers transport of Li+ ions through the y-direction
+(transverse direction) of the solid precipitate layer lining the slit
+pore walls (flat walls). It includes the drift current term, where
+iLi+,sol is the current density of Li+ ions in the solid phase, and
+the diﬀusion term, where DLi+,s,p is the diﬀusivity of Li+ ions in
+the solid phase (assumed as semisolid phase in this study)
+determined by the MD simulations.
+Eqn (6) describes the production or consumption rate of any
+other species s apart from Li+ in the solid phase due to Rs,p
+which is the net rate of species s precipitation or dissolution,
+respectively (also appearing in the liquid electrolyte phase in
+eqn (4)), and to rs,p,sol,elect which is the rate of the electroche-
+mical reactions involving species s in the solid phase. rs,p,sol,elect
+also appears in eqn (5) regarding all electrochemical reactions
+involving Li+ ions in the solid phase. Rs,p is a function of the
+concentration diﬀerence between Cs,l,p and the saturation
+concentration of species s, Csat,s, in the liquid electrolyte.21,22
+Data of Csat,s for each species s considered in this study in
+electrolyte solvent system EC/DMC 1 : 1 v/v is presented in
+Table 1 as results of the solubility experiments conducted in
+this study.
+The walls of each pore are assumed to be lined with a solid
+layer of sulfur or sulfides precipitates of volume fraction
+eprecipitate,p. ep, eprecipitate,p and the thickness of the precipitate
+layer, Hsol.layer,p, change as a function of the rate of dissolution
+or precipitation of species according to the equations:
+dep
+dt ¼
+X
+s
+Rs;p
+(7)
+deprecipitate;p
+dt
+¼ 
+X
+s
+Rs;p
+(8)
+Table 1
+Saturation concentration, Csat,s data at 21 1C in EC/DMC 1 : 1 v/v,
+in the format of molar concentrations (M) in S-mol L1, and comparison
+with Csat,s data in DOL/DME 1 : 1 v/v36,37
+Solute
+Csat,s, in EC/DMC (S mol L1)
+Csat,s, in DOL/DME (S mol L1)
+S8
+0.01
+0.11
+Li2S8
+0.044
+6
+Li2S6
+0.037
+5.5
+Li2S4
+0.033
+5
+Li2S3
+0.027
+Li2S2
+0.012
+0.5
+Li2S
+0.005
+0.060
+Paper
+PCCP
+
+<<PAGE 5>>
+This journal is © the Owner Societies 2024
+Phys. Chem. Chem. Phys., 2024, 26, 19247–19256 | 19251
+dHsol:layer;p
+dt
+¼  DV
+ASEI
+X
+s
+Rs;p
+(9)
+Fig. 3 presents the reaction scheme adopted in the model of
+this study according to the findings and proposed schemes by
+Lu et al.23 The reaction scheme comprises the lithium redox
+reaction at the anode, 7 redox reactions in the cathode and
+2 cyclic reactions without any electron transfer. It is assumed
+that the cyclic reactions take place in the liquid electrolyte
+solution only, excluding any chance for reaction in the solid
+state of any precipitated species s. The electrochemical
+reactions are assumed to take place in the liquid electrolyte
+phase and in the solid phase, depending on the local reactant
+concentrations in each phase.
+rs,p,liq.cyclic in eqn (4) denotes the rate of cyclic reactions i =
+1,2 that take place only in the liquid electrolyte phase as
+follows:
+rs;p;liq:cyclic ¼ NAVs
+X
+i
+ms;i
+ki;f
+Y
+s
+C
+Ps;i
+s;l;p  ki;b
+Y
+s
+C
+Qs;i
+s;l;p
+(
+)
+(10)
+where ki,f and ki,b are the constants of forward and backward
+reactions i, ms,i is the stoichiometric coeﬃcient of species s in
+reaction i, Ps,i = ms,i and Qs,j = ms,j.
+rs,p,elect denotes the rate of all the electrochemical reactions j
+occurring in the liquid electrolyte phase or the solid phase,
+rs,p,liq.elect and rs,p,sol.elect, respectively:
+rs;p;elec ¼ NAVsAp
+X
+j
+ms;jij;p
+njF
+(11)
+where Ap is the specific area of the porous cathode in pore size p
+and nj is the number of electrons transferred in reaction j. ij,p is
+the current density due to electrochemical reaction j given by
+the Butler–Volmer equation16,21,22 as a function of io,jref (to be
+determined via fitting in this study), the concentration of
+species Cs,p in the liquid electrolyte phase, Cs,l,p, or in the solid
+phase, Cs,s,p (including the Li+ ion concentration CLi+,s,p), and
+the overpotential Zj for reaction j which is given by:
+Zj = fsol  fe  Uj,ref
+(12)
+where fsol and fe are the potential of the solid and liquid
+phase, respectively, and Uj,ref is the open-circuit potential (OCP)
+for reaction j at a reference concentration cs,ref:16
+Uj;ref ¼ Uo
+j  RT
+njF
+X
+s
+ms;j ln cs;ref
+1000
+
+
+(13)
+where R is the gas constant and T is the absolute temperature.
+The system of equations is solved using the time implicit
+finite volume/finite diﬀerence numerical method,42,43 with
+boundary conditions as presented in Fig. 2, where Iapp varies
+during the simulation of a CV test and is inputted from the
+experimental data as in ref. 22.
+Experimental
+Solubility experiments
+The first experimental stage was to determine the saturation
+concentration values of sulfur and sulfides Li2S8, Li2S6, Li2S4,
+Li2S3, Li2S2 and Li2S in the EC : DMC 50 : 50 v/v solution.
+Sulfides Li2Sx, x = 2, 3, 4, 6, 8 were prepared as a stoichiometric
+mixture of Li2S and sulfur in the EC/DMC solvent system in test
+tubes. After manual shaking (repeated periodically), the test
+tubes were left at 21 1C in a BINDER environmental chamber
+and monitored for solubility after the first 24 h and periodically
+every few hours up to seven days for low solubility compounds.
+The saturation concentration was thus determined as the
+concentration above which precipitation started.
+Fabrication
+Activated carbon fabric (ACF) Kynols ACC-507-15 (Kynol Eur-
+ope GmbH, Hamburg, Germany) of 0.6 mm thickness, areal
+density of 12 mg cm2 and specific surface area SSABET =
+1461 m2 g1(ref. 44–46) was used as the cathode host. Follow-
+ing the technique described in ref. 44 and 45 sulfur was
+impregnated in the ACF by heating over its melting point to
+33 wt% sulfur in the composite S-ACF cathode. The discretized
+PSDs of the ACF host (from experimental data20) and 33 wt%
+S-ACF cathode as fabricated (from simulations in ref. 44 and 45,
+given in ref. 22) were employed as initial condition of the
+cathode microstructure in the current simulations.
+The Li–S battery cell comprised a 5  5 mm S-ACF cathode,
+an aluminium current collector (on the cathode side) with a
+small central hole, Celgard 3500 separator, a 5  5 mm lithium
+foil anode and electrolyte 1 M LiPF6 in EC : DMC (50 : 50 v/v).
+The assembly was housed in a three-part case with a quartz
+glass window on the side of the cathode, by the hole of
+the aluminium current collector on the cathode as shown in
+Fig. 4(a).
+Cell testing
+Electrochemical testing of the Li–S cell was conducted using a
+Gamry Interface 1010E potentiostat and involved a CV test of
+one cycle of discharge/charge at a scan rate of 0.041 mV s1.
+In operando UV-vis spectroscopy was conducted during this CV
+cycle on the cathode window using a portable StellarNet system
+Fig. 3
+Scheme of electrochemical reactions j and chemical reactions i
+(without any electron transfer) considered in the model of this study.
+Reactions i = 1 and 2 occur only in the liquid electrolyte phase; the
+electrochemical reactions may occur in the liquid or the solid phase.
+PCCP
+Paper
+
+<<PAGE 6>>
+19252 | Phys. Chem. Chem. Phys., 2024, 26, 19247–19256
+This journal is © the Owner Societies 2024
+presented in Fig. 4(b), which comprised a SL1-SL3 Combo
+deuterium and halogen light source of 200–2300 nm range, a
+BLK CXR UV-VIS spectrometer of 273–900 nm range and a
+R600-8-UVVIS-SR reflectance probe. The reflectance spectra
+were recorded every 10 minutes.
+Results and discussion
+Solubility data
+The obtained saturation concentration, Csat,s, data in the car-
+bonate system EC/DMC at 21 1C are presented in Table 1,
+together with a comparison of the corresponding data for the
+DOL/DME solvent system.36,37 It is clear that the sulfur and
+sulfides are almost insoluble in the EC/DMC solvent system,
+with all solubilities even lower than the solubility of Li2S in
+DOL/DME. Hence, it might be assumed that any reactions
+occur either at the surface of the solid precipitates (sulfur or
+sulfides) or in the bulk of the precipitates with Li+ ions that may
+diﬀuse through the solid bulk or a semisolid bulk, comprising a
+softened precipitate with diﬀused solvent.
+It is well known that each solution may contain a mixture of
+sulfides in addition to the main sulfides. Cyclic reactions
+between soluble sulfides23 would ultimately lead to the produc-
+tion of sulfur precipitates, which might explain the seemingly
+negligible solubility of all sulfides in EC/DMC. Reactions of the
+sulfides with the carbonate solvents also create precipitates of
+irreversible side products32,33 and this is another reason to
+explain the low solubility values in EC/DMC displayed in
+Table 1. On the other hand, the EC/DMC mixture might well
+be a poor solvent system at least for the sulfides. It is surprising
+that it is also a poorer solvent for sulfur than the DOL/DME
+system, despite its estimated Hansen solubility parameter
+being closer to that of sulfur than the estimated Hansen
+solubility parameter of DOL/DME.
+Electrochemical and in operando UV-vis test data of Li–S cell
+Fig. 5 presents the experimental CV curves (Fig. 5(a)) and the
+reflectance spectra from the in operando UV-vis monitoring
+during the first CV cycle of the Li–S battery cell, including the
+expected wavelength position for the absorbance peaks of the
+lithium sulfides from experimental data in the literature.47
+The color of each spectrum in Fig. 5(b) and (c) corresponds
+to the appropriate voltage according to the voltage color scale in
+each plot. The intensity of the reflectance valley (i.e. the intensity of
+absorbance) is assumed to be proportional to the concentration of
+the corresponding lithium sulfide identified by its wavelength,
+with the wavelength positions of each sulfide indicated in Fig. 5(b)
+and (c) as follows: Li2S8 at 560 nm; L2S6 at 460 nm; Li2S4 at 405 nm;
+Li2S3 at 630 nm; and Li2S2 at 365 nm. A small gap in the reflectance
+spectra in Fig. 5(b) (between a blue and a green spectrum) is due to
+an interruption in the automatic saving of the in operando UV-vis
+spectra (while the CV test was still going on and the CV data were
+being saved), with the in operando UV-vis periodic recording
+restarted by the operator and the time gap (translated to voltage
+gap) of the interruption taken into account in plotting the data
+in Fig. 5(b).
+Fig. 6(a) and (b) display the in operando profiles of the UV-vis
+absorbance peaks related to Li2S2, Li2S3, Li2S4, Li2S6 and Li2S8
+concentrations, superimposed with the corresponding CV
+curves during discharge and charge, respectively. The presence
+of Li2S2 in the UV-vis spectra clarifies that the step of Li2S2
+formation is part of the reaction chain.23
+In Fig. 5(b) and 6(a), at the start of discharge, there is very
+little amount of Li2S8, some Li2S6 and substantial Li2S4. There
+are two reasons that might explain this. From the results of the
+simulation of sulfur infiltration under heat into the ACF during
+cathode fabrication,44,45 a considerable amount of sulfur has
+Fig. 4
+Experimental set up for the Li–S battery testing: (a) three-part cell
+case with o-ring and top with a small hole in the middle under which a
+25  25 mm square quartz glass plate is placed over the battery cathode;
+(b) schematic diagram of the in operando UV-vis system monitoring a Li–S
+battery cell.
+Fig. 5
+Electrochemical test data from the first CV cycle of a Li–S battery cell: (a) CV curves in discharge (blue) and charge (red) at 0.041 mV s1. In
+operando UV-vis spectra during (b) discharge and (c) charge, including the expected position for the absorbance peaks of the lithium sulfides.
+Paper
+PCCP
+
+<<PAGE 7>>
+This journal is © the Owner Societies 2024
+Phys. Chem. Chem. Phys., 2024, 26, 19247–19256 | 19253
+infiltrated pore sizes 0.46 and 0.58 nm in the form of S4 and
+pore size 0.69 nm in the form of S6. Pores greater than 0.7 nm
+up to 1.3 nm contain S8. When electrolyte is added, some
+amount of these sulfur allotropes dissolve in the electrolyte
+and appear in the UV-vis spectrum in Fig. 5(b) and 6(a) at the
+start of discharge at 2.6 V. Cyclic reactions also occur at this
+stage, as will be explained shortly. At the end of discharge, the
+absorbance peaks of these sulfides have been reduced as
+expected due to the formation and precipitation of Li2S.
+Another reason might be that the reactions in the semisolid
+state bypass the formation of high order sulfides Li2S8 and
+Li2S6, and instead form directly low order sulfides.33,35
+Fig. 5(c) and 6(b) present the reflectance UV-spectra during
+charge: they depict the continuous decrease of the Li2S2 and
+Li2S4 through their absorbance peak (increase of its reflectance)
+and formation of Li2S8, specially towards the end.
+Fitting the reaction kinetics model
+The first step of fitting the reaction kinetics parameters was to
+use the UV-vis profiles in Fig. 6 to fit the parameters of
+chemical reactions i = 1,2 (independently from the electroche-
+mical reactions j) as:
+k1,f = 0.091 s1 k1,b = 9  105 m0.75 mol0.25 s1
+k2,f = 0.0119 m1.5 mol0.5 s1 k2,b = 4.767  104 s1
+and these values were used as initial guess in the trial-and-
+error procedure of fitting the reaction kinetics parameters. The
+trial-and-error procedure was conducted manually, determin-
+ing the relative error between predictions and experimental
+data of the CV test at the end of each trial on the basis of
+the least squares method, until the average relative error fell
+below 1%.
+Fig. 7 depicts the predictions from the simulation of the first
+CV cycle, with the inputted best fitted parameter values pre-
+sented in Table 2, against the corresponding experimental data.
+The good agreement between simulation and experiment jus-
+tifies the use of the 10-reaction model in the volume-averaged
+continuum multipore model of Li–S batteries with Li-ion
+electrolyte in the EC/DMC solvent system.
+Fig. 8 presents the predicted concentration profiles of sulfides
+in the liquid electrolyte solution and in the precipitated solid
+phase during discharge and charge of the first CV cycle, averaged
+over all pore sizes. After checking the predicted concentration
+profiles at diﬀerent positions in the cathode, no significant
+variation was observed through the cathode thickness, indicating
+that the low solubility of sulfur and lithium sulfides in EC/DMC
+eliminated the migration of sulfides through and away from the
+cathode, unlikely what is usually observed in an DOL/DME-based
+electrolyte and predicted in ref. 22 for the same cathode, where
+DOL/DME is a much better solvent system than the EC/DMC
+system as demonstrated in Table 1.
+The next step is a comparison between the predicted
+concentration profiles of Fig. 8 and the experimental UV vis
+absorbance peak profiles in Fig. 6. One might conclude that the
+experimental profiles represent the sulfides in the solution in
+the macropores and any precipitated sulfides in the solid phase
+on or near the surface of the AC fibers of cathode and have
+missed any species in the pores deeply in the AC fibers. Hence,
+the experimental data do not represent the full picture of the
+predicted results.
+Fig. 8 illustrates the importance of the solid phase in the Li–
+S battery cathode with Li-ion electrolyte in EC/DMC solvent
+system, where in fact the model assumes this phase to be a
+semisolid phase in terms of the Li+ ion diffusivity values
+employed. Species concentrations are of several orders of
+magnitude higher in the ‘‘solid’’ phase (Fig. 8(b) and (d))
+than in the liquid electrolyte solution (Fig. 8(a) and (c)),
+where the species concentration is limited by the saturation
+concentration given in Table 1, and precipitation occurs for
+concentrations above the saturation concentration. Electroche-
+mical reactions also occur in this ‘‘solid’’ phase, with local
+concentration of the transported Li+ ions steadily around
+7700 mol m3 during discharge, about 10 times lower than
+the Li+ ion concentration in the liquid phase.
+During discharge electrochemical and mainly cyclic reac-
+tions create a constant presence of Li2S8, Li2S6 and Li2S3 in the
+liquid electrolyte phase in Fig. 8(a) which is up to their satura-
+tion concentration, with precipitation to the solid phase there-
+after. However, the solid phase with no upper concentration
+limit illustrates the progress of the electrochemical reactions in
+the production and consumption of Li2S8 and Li2S4. The model
+does not include any cyclic reactions in the solid phase which
+Fig. 6
+In operando profiles of the absorbance peaks related to lithium
+sulfides detected from the UV-vis spectra, superimposed with the corres-
+ponding CV curves during (a) discharge and (b) charge from the first CV
+cycle of a Li–S battery cell.
+Fig. 7
+Results of first CV cycle: predictions versus experimental data.
+PCCP
+Paper
+
+<<PAGE 8>>
+19254 | Phys. Chem. Chem. Phys., 2024, 26, 19247–19256
+This journal is © the Owner Societies 2024
+explains the absence of Li2S6 and Li2S3 in the predicted
+concentration profiles in the solid phase during discharge.
+Li2S2 production is predicted to a small extent due to cyclic
+reactions in the liquid phase during discharge, from the
+beginning of discharge. However, there is clearly a peak in
+the concentration of Li2S2 in the liquid electrolyte phase just
+after the low voltage CV valley and in the solid phase during the
+whole width of the low voltage CV valley during discharge in
+Fig. 8(a) and (b) attributed to the electrochemical reactions.
+A small amount of Li2S production is also predicted in the
+liquid electrolyte phase at low voltages during discharge in
+Fig. 8(a). The experimental data of Fig. 6(a) may be seen as a
+combination of the predicted corresponding species concentra-
+tions in the liquid and solid phases in Fig. 8(a) and (b) during
+CV discharge.
+Similar mechanisms in terms of the predicted eﬀects of
+cyclic reactions are observed in the predicted concentration
+profiles of Li2S8, Li2S6 and Li2S3 in the liquid electrolyte phase
+during charge in Fig. 8(c), with a low amount of precipitated
+Li2S3 in Fig. 8(d). The small amount of Li2S in the liquid phase
+is predicted to be converted to Li2S2, with the predicted Li2S2
+concentration profile in the liquid phase during charge reflect-
+ing the Li2S2 profile predicted in discharge (Fig. 8(a)), although
+maintaining higher predicted concentration levels during
+charge. Net Li2S4 production is predicted in the liquid electro-
+lyte phase during charge with a concentration peak at the high
+voltage plateau. The solid phase in Fig. 8(d) displays predicted
+Li2S2 production around only the low voltage peak during CV
+charge and predicted concentration plateaus for Li2S3, Li2S4,
+Li2S6 and Li2S8 attributed to continuous precipitation from the
+liquid phase (electrochemical and cyclic reactions) and selected
+electrochemical reactions in the solid phase. The predicted
+Li2S8 concentration profile in the solid phase curves down
+towards the end of charge due to its consumption in the
+electrochemical reaction for the production of S8.
+Conclusions
+This study fitted the parameters of a multiple reaction model of
+Li–S battery with a polar Li-ion electrolyte, which is of interest
+to Li–S batteries due to its lower cost and flammability com-
+pared with the typical electrolyte of 1 M LiTFSI in DOL : DME
+1 : 1 v/v. The first stage of investigations concluded that sulfur
+and sulfides exhibited much lower solubility in this Li-ion
+electrolyte in the polar solvent system EC : DMC 1 : 1 v/v, which
+directed the research efforts in the development of a novel
+continuum multipore model for metal–sulfur batteries with
+physical and chemical processes taking place in both the liquid
+electrolyte phase and the solid phase of precipitates. MD
+simulations yielded reasonable values for the diffusion coeffi-
+cient of Li+ ions in semisolid precipitate state of sulfur and
+lithium sulfides, where the solid phase has softened by the
+presence of solvent molecules which are assumed to have
+diffused in the solid state according to the values of solvent
+diffusion coefficients in the solid sulfur and sulfide state
+determined in previous experimental study.37 Hence, these
+values of the diffusion coefficient of Li+ ions were inputted in
+the simulations, assuming that the ‘‘solid’’ phase is in fact in
+semisolid state.
+Simulations of the first CV cycle of a Li–S battery cell with
+ACF cathode host revealed very little transport of sulfur and
+Table 2
+Values of the parameters of electrochemical reactions ( j) and chemical reactions (i) after the best fitting of the CV predictions to the CV
+experimental data
+Electrochemical reaction j
+Uj
+o (V)
+io,jref (A m2)
+j = 1
+Li 2 Li+ + e
+0
+0.394
+j = 2
+1
+2 S8 + e 2 1
+2 S8
+2
+2.56
+1.972
+j = 3
+1
+2 S4 + e 2 1
+2 S4
+2
+2.41
+1.9  103
+j = 4
+S6
+2 + e 2 1.5 S4
+2
+2.35
+24.0
+j = 5
+1
+2 S8
+2 + e 2 S4
+2
+2.14
+1.9  102
+j = 6
+1
+2 S4
+2 + e 2 S2
+2
+1.93
+1.97  102
+j = 7
+1
+3 S3* + e 2 1
+3 S2
+2 + 1
+3 S2
+1.85
+1.97  102
+j = 8
+1
+2 S2
+2 + e 2 S2
+1.80
+1.97  102
+Chemical reaction i
+ki,f
+ki,b
+i = 1
+S8
+2 2 S6
+2 + 1
+4 S8
+9.1  103 s1
+9  105 m0.75 mol0.25 s1
+i = 2
+1
+2 S6
+2 2 S3*
+0.0119 m1.5 mol0.5 s1
+4.767  104 s1
+Fig. 8
+Predicted concentration profiles of the lithium sulfides in the
+cathode during (a) and (b) CV discharge and (c) and (d) CV charge of the
+first CV cycle of Li–S battery cell; (a) and (c) concentration profiles in liquid
+electrolyte phase, (b) and (c) concentration profiles in the solid phase.
+Paper
+PCCP
+
+<<PAGE 9>>
+This journal is © the Owner Societies 2024
+Phys. Chem. Chem. Phys., 2024, 26, 19247–19256 | 19255
+sulfides away from the cathode, which was attributed to the low
+solubility of sulfur and sulfides in the polar electrolyte, which
+has proven beneficial in almost eliminating the ‘‘shuttling’’
+effect.
+According to past studies of Li–S batteries with polar elec-
+trolyte and evidence of the presence of different sulfides from
+in operando UV-vis characterization during the CV test in this
+study, a reaction model of 8 electrochemical reactions in both
+the liquid electrolyte phase and the solid phase, and 2 cyclic
+reactions in the liquid electrolyte phase only was constructed.
+The two cyclic reactions observed in electrolytes with carbonate
+solvents in Li–S batteries are generally considered parasitic
+consuming active material. The liquid–solid phase continuum
+model of this study predicted the positive role of the high
+precipitation rate in this electrolyte which limited the degree of
+such reactions.
+The reaction kinetics parameters determined from the fit-
+ting of the CV simulation predictions to experimental data are
+most valuable as they are valid for Li-ion electrolyte in carbo-
+nate solvents, such as EC : DMC 1 : 1 v/v, and any cathode host
+without any functional groups, as the liquid–solid phase, con-
+tinuum model of this study takes into account the PSD of the
+cathode host and the cathode. The benefit of this model is that
+the electrochemical and chemical reaction constants and para-
+meters fitted in this study can be used universally for the design
+of the microstructure and geometry of cathode and separator
+materials of Li–S batteries with a polar electrolyte, or for the
+optimization of the operating schedule of this type of Li–S
+batteries. This may encourage the further development of Li–S
+batteries with low cost polar electrolytes beyond the currently
+typical electrolyte 1 M LiTFSI in DOL/DME.
+Author contributions
+Simon Bacon: methodology, formal analysis, investigation, data
+curation, visualization. Shumaila Babar: methodology, software.
+Matthew Dent: methodology, formal analysis, investigation.
+Joseph Paul Baboo: methodology, investigation, supervision. Allan
+Foster: methodology, software, formal analysis, investigation,
+writing – review & editing, visualization. Teng Zhang: methodo-
+logy, supervision. John F. Watts: methodology, supervision. Con-
+stantina Lekakou: conceptualization, methodology, software, vali-
+dation, formal analysis, investigation, resources, data curation,
+writing – original draft, supervision, funding acquisition.
+Data availability
+Data is available after reasonable request to the corresponding
+author.
+Conflicts of interest
+There are no conflicts to declare.
+Acknowledgements
+We acknowledge funding by the Faraday Institute under the
+LiSTAR project (EP/S003053/1, Grant FIRG014) and by EPSRC
+under the HiPoBat project (EP/R022852/1).
+References
+1 K. Zhu, C. Wang, Z. Chi, F. Ke, Y. Yang, A. Wang, W. Wang
+and L. Miao, Front. Energy Res., 2019, 7, 123.
+2 X. Ji, K. T. Lee and L. F. Nazar, Nat. Mater., 2009, 8, 500.
+3 G. Xu, B. Ding, P. Nie, L. Shen, H. Dou and X. Zhang,
+ACS Appl. Mater. Interfaces, 2014, 6, 194.
+4 M. Helen, T. Diemant, S. Schindler, R. J. Behm, M. Danzer,
+U. Kaiser, M. Fichtner and M. A. Reddy, ACS Omega, 2018,
+3, 11290.
+5 Y. Cao, Y. Lin, J. Wu, X. Huang, Z. Pei, J. Zhou and G. Wang,
+ChemSusChem, 2020, 13, 1392.
+6 J. P. Baboo, S. Babar, D. Kale, C. Lekakou and G. M.
+Laudone, Nanomaterials, 2021, 11, 2899.
+7 E. C. Vermisoglou, T. Giannakopoulou, G. Romanos,
+N. Boukos, V. Psycharis, C. Lei, C. Lekakou, D. Petridis
+and C. Trapalis, Appl. Surf. Sci., 2017, 392, 244.
+8 E. I. Andritsos, C. Lekakou and Q. Cai, J. Phys. Chem. C,
+2021, 125, 18108.
+9 E. Hojaji, E. I. Andritsos, Z. Li, M. Chhowalla, C. Lekakou
+and Q. Cai, Int. J. Mol. Sci., 2022, 23, 15608.
+10 X. Wu, L. Fan, Y. Qiu, M. Wang, J. Cheng, B. Guan, Z. Guo,
+N. Zhang and K. Sun, ChemSusChem, 2018, 11, 3345.
+11 Y. Chen, G. Zhou, W. Zong, Y. Ouyang, K. Chen, Y. Lv,
+Y. E. Miao and T. Liu, Comp. Commun., 2021, 25, 100679.
+12 A. K. Murugesh, A. Uthayanan and C. Lekakou, Appl. Phys. A,
+2010, 100, 135.
+13 A. Gupta, A. Bhargav and A. Manthiram, Adv. Energy Mater.,
+2019, 9, 1803096.
+14 Y. V. Mikhaylik and J. R. Akridge, J. Electrochem. Soc., 2004,
+151, A1969.
+15 M. Marinescu, T. Zhang and G. J. Oﬀer, Phys. Chem. Chem.
+Phys., 2016, 18, 584.
+16 K. Kumaresan, Y. Mikhaylik and R. E. White, J. Electrochem.
+Soc., 2008, 155, A576.
+17 A. F. Hofmann, D. N. Fronczek and W. G. Bessler, J. Power
+Sources, 2014, 259, 300.
+18 T. Danner, G. Zhu, A. F. Hofmann and A. Latz, Electrochim.
+Acta, 2015, 184, 124.
+19 F.
+Markoulidis,
+J.
+Bates,
+C.
+Lekakou,
+R.
+Slade
+and
+G. M. Laudone, Carbon, 2020, 164, 422.
+20 J. Bates, F. Markoulidis, C. Lekakou and G. M. Laudone, C,
+2021, 7, 15.
+21 S. Grabe, M. Dent, T. Zhang, S. Tennison and C. Lekakou,
+J. Power Sources, 2023, 580, 233470.
+22 S.
+Grabe,
+T.
+Zhang,
+S.
+Tennison
+and
+C.
+Lekakou,
+J. Electrochem. Soc., 2023, 170, 020527.
+23 Y.-C. Lu, Q. He and H. A. Gasteiger, J. Phys. Chem. C, 2014,
+118, 5733.
+PCCP
+Paper
+
+<<PAGE 10>>
+19256 | Phys. Chem. Chem. Phys., 2024, 26, 19247–19256
+This journal is © the Owner Societies 2024
+24 R. Younesi, G. M. Veith, P. Johansson, de K. Edstrombe and
+T. Vegge, Energy Environ. Sci., 2015, 8, 1905.
+25 C. Luo, E. Hu, K. J. Gaskell, X. Fan, T. Gao, C. Cui, S. Ghose,
+X.-Q. Yang and C. Wang, Proc. Natl. Acad. Sci. U. S. A., 2020,
+117, 14712.
+26 A. Bhargav, J. He, A. Gupta and A. Manthiram, Joule, 2020,
+4, 285.
+27 E. M. Kampouris, C. D. Papaspyrides and C. N. Lekakou,
+Conserv. Recycl., 1987, 10, 315.
+28 E. M. Kampouris, C. D. Papaspyrides and C. N. Lekakou,
+Polym. Eng. Sci., 1988, 28, 534.
+29 E.
+C.
+Vermisoglou,
+M.
+Giannouri,
+N.
+Todorova,
+T. Giannakopoulou, C. Lekakou and C. Trapalis, Waste
+Manage. Res., 2016, 34, 337.
+30 R. Guo, A. G. Talma, R. N. Datta, W. K. Dierkes and J. W. M.
+Noordermeer, Macromol. Mater. Eng., 2009, 294, 330.
+31 C. M. Hansen, Hansen solubility parameters, a users’ handbook,
+CRC Press, London, 1999.
+32 R. Dominko, A. Vizintin, G. Aquilanti, L. Stievano, M. J.
+Helen,
+A.
+R.
+Munnangi,
+M.
+Fichtner
+and
+I.
+Arcon,
+J. Electrochem. Soc., 2018, 165, A5014.
+33 T. Yim, M.-S. Park, J.-S. Yu, K. J. Kim, K. Y. Im, J.-H. Kim,
+G. Jeong, Y. N. Jo, S.-G. Woo, K. S. Kang, I. Lee and Y.-J. Kim,
+Electrochim. Acta, 2013, 107, 454.
+34 A. Rafie, J. W. Kim, K. K. Sarode and V. Kalra, Energy Storage
+Mater., 2022, 50, 197.
+35 X. Li, M. Banis, A. Lushington, X. Yang, Q. Sun, Y. Zhao,
+C. Liu, Q. Li, B. Wang, W. Xiao, C. Wang, M. Li, J. Liang,
+R. Li, Y. Hu, L. Goncharova, H. Zhang, T.-K. Sham and
+X. Sun, Nat. Commun., 2018, 9, 4509.
+36 M. Dent, E. Jakubczyk, T. Zhang and C. Lekakou, J. Phys.
+Energy, 2022, 4, 024001.
+37 H. A. Adeoye, M. Dent, J. F. Watts, S. Tennison and
+C. Lekakou, J. Chem. Phys., 2023, 158, 6.
+38 M. M. Islam, A. Ostadhossein, O. Borodin, T. Yeates, W. W.
+Tipton, R. G. Hennig, N. Kumarf and A. C. T. van Duin, Phys.
+Chem. Chem. Phys., 2015, 17, 3383.
+39 M. Dent, S. Grabe and C. Lekakou, Batteries Supercaps, 2024,
+7, e202300327.
+40 A. Celeste, L. Silvestri, M. Agostini, M. Sadd, S. Palumbo,
+J. K. Panda, A. Matic, V. Pellegrini and S. Brutti, Batteries
+Supercaps, 2020, 3, 1059.
+41 S. Babar and C. Lekakou, Ionics, 2021, 27, 635.
+42 A. D. Gosman, C. Lekakou, S. Politis, R. I. Issa and
+M. K. Looney, AIChE J., 1992, 38, 1946.
+43 Y. Elsayed, C. Lekakou and P. Tomlins, Biotechnol. Bioeng.,
+2019, 116, 1509.
+44 S. Grabe, J. P. Baboo, S. Tennison, T. Zhang, C. Lekakou,
+E. I. Andritsos, Q. Cai, S. Downes, S. Hinder and J. F. Watts,
+AIChE J., 2022, 68, e17638.
+45 K. Lasetta, J. P. Baboo and C. Lekakou, J. Compos. Sci., 2021,
+5, 65.
+46 F. Markoulidis, C. Lei and C. Lekakou, Electrochim. Acta,
+2017, 249, 122.
+47 G. Bieker, J. Wellmann, M. Kolek, K. Jalkanen, M. Winter
+and P. Bieker, Phys. Chem. Chem. Phys., 2017, 19, 11152.
+Paper
+PCCP

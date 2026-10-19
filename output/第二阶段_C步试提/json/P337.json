@@ -1,0 +1,45 @@
+{
+  "编号": "P337",
+  "电解液": {
+    "E1": {"名称": "标准电解液（R-SEI）", "配方": "1 M LiTFSI，DOL/DME 1:1 v/v，2 wt% LiNO3"},
+    "E2": {"名称": "氟化电解液（F-SEI）", "配方": "1 M LiTFSI，DOL/DME/TFTFE 4.5:4.5:1 v/v，2 wt% LiNO3"},
+    "E3": {"名称": "FN-SEI（E2 + LiNO3 缓释膜）", "配方": "E2，另在隔膜与锂之间放 LNO-SRF（LiNO3 约 1.2 mg cm-2）"}
+  },
+  "条件": {
+    "C1": {"正极": "无（Li‖Cu）", "硫载量": "", "硫含量": "", "E/S": "", "电解液体积": "40 µL", "面积": "",
+           "锂厚": "50 µm", "N/P": "", "倍率": "1 mA cm-2，1 mAh cm-2", "1C定义": "", "温度": "", "电池": "CR2032",
+           "原句": "The Li plating/stripping CEs were tested in Li||Cu cells at a current density of 1 mA cm-2, capacity of 1 mAh cm-2."},
+    "C2": {"正极": "无（Li‖Li）", "硫载量": "", "硫含量": "", "E/S": "", "电解液体积": "40 µL", "面积": "",
+           "锂厚": "100 µm（正文）/ 50 µm（SI），前后不一", "N/P": "", "倍率": "1 mA cm-2，1 mAh cm-2", "1C定义": "", "温度": "", "电池": "CR2032", "原句": ""},
+    "C3": {"正极": "CNT/S", "硫载量": "5 mg cm-2（8.36 mAh cm-2）", "硫含量": "", "E/S": "5", "电解液体积": "", "面积": "",
+           "锂厚": "50 µm（10 mAh cm-2）", "N/P": "约 1.2（作者给）", "倍率": "0.1C", "1C定义": "", "温度": "", "电池": "CR2032",
+           "原句": "Hence, we employed a commercial-level carbon nanotubes/sulfur cathode (S loading: 5 mg cm2, 8.36 mA h cm2), a limited amount of Li (50 µm, 10 mA h cm2) with an N/P ratio of around 1.2, and lean electrolyte (5 µL mgS 1)."}
+  },
+  "比较": [
+    {"A": "E2", "B": "E1", "条件": "C1", "层": "C", "改变因素": ["溶剂比例", "稀释剂"],
+     "溶剂化依据": "",
+     "指标": [
+       {"指标": "Li‖Cu 库仑效率", "取值点": "平均 CE（Zhang 法）", "A": "99.02", "B": "98.46", "单位": "%", "方向": "A更好", "来源": "正文",
+        "原句": "In addition, the cell with FN-SEI had the highest CE of 99.63%, exceeding those cells with R-SEI (98.46%), F-SEI (99.02%), and N-SEI (99.17%)."},
+       {"指标": "Li‖Cu 库仑效率", "取值点": "CE 开始快速衰减的圈数", "A": "98", "B": "25", "单位": "圈", "方向": "A更好", "来源": "正文",
+        "原句": "The Li||Cu cell with FN-SEI also showed a high stability over 400 cycles, while the CE for R-SEI, F-SEI, and N-SEI decayed rapidly within 25, 98, and 135 cycles, respectively (Fig. 4d)."}
+     ]},
+    {"A": "E2", "B": "E1", "条件": "C2", "层": "C", "改变因素": ["溶剂比例", "稀释剂"], "溶剂化依据": "",
+     "指标": [
+       {"指标": "锂对称电池寿命", "取值点": "短路 / 失效", "A": "1054", "B": "560", "单位": "h", "方向": "A更好", "来源": "正文",
+        "原句": "S9), much longer than that of the Li||Li cell with R-SEI (560 h), F-SEI (1054 h), and N-SEI (1400 h) (Fig. 4c)."}
+     ]},
+    {"A": "E3", "B": "E1", "条件": "C3", "层": "N", "改变因素": ["稀释剂", "LiNO3", "其他（LiNO3 缓释膜，非电解液组分）"], "溶剂化依据": "",
+     "指标": [
+       {"指标": "首圈容量", "取值点": "0.1C 第 1 圈", "A": "约 1250", "B": "约 1250", "单位": "mAh g-1", "方向": "差异小", "来源": "正文",
+        "原句": "S14, Li||S cells with R-SEI and FN-SEI exhibited nearly identical initial discharge capacities of about 1250 mA h g1."},
+       {"指标": "循环保持率或寿命", "取值点": "B 约 25 圈后快速衰减；A 250 圈", "A": "250 圈稳定", "B": "约 25 圈后快速衰减", "单位": "圈", "方向": "A更好", "来源": "正文",
+        "原句": "After approximately 25 cycles, the discharge capacity for R-SEI decreased rapidly with concurrent dramatic fluc- tuations in CE because of severe dendrite growth and exhaustion of LiNO3."},
+       {"指标": "多硫化物溶解或穿梭", "取值点": "第 25 圈穿梭电流", "A": "约 B 的 1/5", "B": "", "单位": "", "方向": "A更好", "来源": "正文",
+        "原句": "However, after 25 cycles the shuttle current of the FN-SEI cell was approximately five times lower than that of the R-SEI cell, indicating that FN-SEI main- tained a dense state during cycling."},
+       {"指标": "其他", "取值点": "25 圈后负极活性锂比例（TGC）", "A": "91.2", "B": "14.5", "单位": "%", "方向": "A更好", "来源": "正文",
+        "原句": "anode with R-SEI was only 14.5% after 25 cycles due to serious side reactions, while 91.2% active Li was preserved for Li anode with FN-SEI (Fig."}
+     ]}
+  ],
+  "备注": "C3 是苛刻条件（5 mg cm-2、E/S 5、50 µm 锂、N/P≈1.2），首圈相同、约 25 圈后分化，并有 TGC 活性锂定量（Ⅱ 类证据，K1）。但 E3 同时加了 LiNO3 缓释膜（非电解液组分）和共溶剂，纯电解液比较只有 E2 vs E1（负极侧）。0.5C 下 100 圈 80.6% vs 61.3% 的条件只在 SI 图，未提取。Li‖Li 锂厚正文与 SI 不一致。"
+}

@@ -1,0 +1,2099 @@
+
+<<PAGE 1>>
+Theoretical and experimental analysis of precipitation and solubility
+effects in lithium-sulfur batteries
+Petru Andrei a, b, *, Chao Shen a, b, Jim P. Zheng a, b, c
+a Department of Electrical and Computer Engineering, Florida A&M University and Florida State University, Tallahassee, FL 32310, USA
+b Aero-Propulsion, Mechatronics and Energy Center, Tallahassee, FL 32310, USA
+c Center for Advanced Power Systems, Florida State University, Tallahassee, FL 32310, USA
+a r t i c l e i n f o
+Article history:
+Received 15 February 2018
+Received in revised form
+27 March 2018
+Accepted 10 July 2018
+Available online 24 July 2018
+Keywords:
+Precipitation
+Nucleation
+Lithiumesulfur batteries
+Lithium polysulﬁde solubility
+Speciﬁc capacity
+a b s t r a c t
+A rate-dependent nucleation theory is developed to analyze the dependence of the capacity of lithium-
+sulfur (Li-S) batteries on discharge rates. The theory is based on expressing the nucleation rate of solid
+products in terms of the surface oversaturation of the precipitating species and rewriting the classical
+Kolmogorov-Avrami model in the form of a differential system of equations. By coupling this system of
+equations with the multicomponent transport equations we are able to explain qualitatively well the
+decrease of the speciﬁc capacity with increasing discharge rates and the characteristics of the discharge
+curves under variable discharge currents in Li-S batteries. Special attention is given to accurately
+determine the values of model parameters from experimental data, including the solubility constants of
+the solid products and the mobilities and diffusivities of the ions. The anodes of the batteries used in our
+analysis were made using Li foils and the cathodes were fabricated using freestanding carbon nanotube
+foams, on which solid sulfur was uniformly distributed to maximize the dissolution rate. The experi-
+mental data combined with the theoretical analysis show that the capacity limitation in our batteries is
+due to surface passivation by the ﬁnal reaction products. In order to increase the speciﬁc capacity of Li-S
+batteries under normal discharge rates we conclude that it is better to avoid the solid precipitation of
+intermediate lithium polysulﬁdes (LiPS) by using electrolytes with a high solubility of LiPS. In addition, it
+is better to use catalyst particles in the cathode that would promote the nucleation rate at speciﬁed
+locations. The number of catalyst particles should not be too small to avoid electrolyte oversaturation or
+too large to avoid the rapid passivation of the carbon surface with solid products.
+© 2018 Elsevier Ltd. All rights reserved.
+1. Introduction
+Environmentally friendly, relatively inexpensive because of the
+low cost of sulfur, and having a high theoretical capacity, lithium-
+sulfur (Li-S) batteries are promising candidates to replace tradi-
+tional Li-ion batteries in many applications from portable elec-
+tronics to electric vehicle transportation and grid storage. Li-S
+batteries have a theoretical capacity of 1672 mAh/gS and, when
+built using a Li metal anode, their speciﬁc energy density is 3e5
+folds higher than that of Li-ion batteries [1e5]. Despite their large
+speciﬁc capacity, the current Li-S batteries with liquid electrolyte
+have a large electrolyte/sulfur (E/S) ratio, which decreases their
+practical capacity much below the theoretical limit [6e10].
+Designing Li-S batteries with low E/S ratios will require a detailed
+understanding of the physical and chemical processes that take
+place inside the cell during discharge and charge. This understating
+will likely come from a combination of experimental and theoret-
+ical
+investigations
+of
+the
+materials
+properties,
+precipitation,
+dissolution, and kinetic processes in the battery.
+Although there is much experimental research on Li-S batteries
+the number of theoretical and numerical investigations is rather
+limited. Most of the existing theoretical models are based on the
+mathematical model proposed by Kumaresan et al. [11] and can
+describe fairly well the discharge voltage under low discharge
+currents. However, the existing models are somewhat contradic-
+tory and often use assumptions that are either far away from the
+experimentally measured data or not veriﬁed under highdischarge
+rates. These models generally fail to describe the rate-dependent
+capacity of conventional Li-S batteries. In this article we combine
+* Corresponding author. Department of Electrical and Computer Engineering,
+Florida A&M University and Florida State University, Tallahassee, FL 32310, USA.
+E-mail address: pandrei@eng.famu.fsu.edu (P. Andrei).
+Contents lists available at ScienceDirect
+Electrochimica Acta
+journal homepage: www.elsevier.com/locate/electacta
+https://doi.org/10.1016/j.electacta.2018.07.045
+0013-4686/© 2018 Elsevier Ltd. All rights reserved.
+Electrochimica Acta 284 (2018) 469e484
+
+<<PAGE 2>>
+theoretical and experimental data to develop a physics-based
+model for the discharge of Li-S batteries, which is valid under
+both low and high discharge rates. Our model is also based on the
+original transport model presented in Ref. [11] but carefully ac-
+counts for oversaturation, nucleation, precipitation, and surface
+coverage phenomena under variable discharge rates.
+There is much debate in the literature about the reasons for the
+rate-dependence of the discharge capacity in Li-S batteries. We are
+currently aware of only a few simulation attempts to model the
+decrease of the discharge capacity of Li-S batteries with increasing
+discharge rate [12e17]. Zhang et al. [12,13] have attributed the
+decrease of the discharge capacity to the sluggish transport char-
+acteristics or anions and cations in the electrolyte, which results in
+a deﬁciency of sulfur ions in the cathode at high discharge rates.
+The electrolyte used in Ref. [12] is sulfolane-based which is possible
+to have a very low conductivity. To reproduce the voltage proﬁles at
+high discharge rates the authors decreased the mobility and
+diffusivity coefﬁcients of the ions by 1-to-2 orders of magnitude
+below
+the
+values
+currently
+used
+for
+1,2-dimethoxyethane
+(DME):1,3-dioxolane (DOL)-based electrolytes. In this way, the
+electrolyte conductivity becomes 1-to-2 orders of magnitude
+smaller than the values of the conductivity reported experimen-
+tally for DME:DOL (1:1 v:v). For instance, the ionic conductivity of
+Li2S6 calculated using the values of the mobility coefﬁcients used in
+Ref. [12] is 0.068 S/m, which is more than one order of magnitude
+smaller than the experimental value of 1 S/m in DME:DOL (1:1 v:v).
+Although it is possible to design electrolytes with high viscosity,
+this model cannot explain the decrease of the capacity at high
+discharge rates in batteries with typical electrolytes, which have a
+conductivity of around 1 S/m. In addition, the model predicts a
+relatively fast recovery of the capacity after the rate of the discharge
+is decreased from 1 C to 0.1 C. The recovery time should be of the
+order of seconds according to the model parameters, while most of
+the experimental data shows that the recovery is much slower, of
+the order of hours.
+Thangavel et al. [15] explain the decrease of the discharge ca-
+pacity by a combination of two phenomena. First, they assume that
+the cathodes simulated in their analysis are made of porous parti-
+cles with pore radius of 3 nm. At high discharge rates the entrance
+of these pores is being clogged with Li2S, thus reducing the capacity
+of the battery. This model explains qualitatively well the rate-
+dependence of the total capacity, however it is applicable specif-
+ically to cathodes made of porous particles, such as the ones pre-
+sented in their work. If one applies the model to cathodes made of
+nanoscale non-porous particles or CNT networks (like in this work),
+the model predicts that the discharge capacity does not change
+signiﬁcantly with the discharge rate. Second, the authors assume
+that the Li2S reaction product can grow on the surface of the par-
+ticles up to a maximum tunneling thickness of 5 nm. This
+assumption is not supported by scanning electron microscopy
+(SEM) and atomic force microscopy (AFM) images taken by other
+authors, which show that the reaction product can grow in shapes
+as large as 500 nm [14,18] or even 1 mm and above [19e21]. In
+addition, the probability of electron tunneling across the potential
+barrier of the insulating layer is negligibly small if the thicknesses
+of the barrier is larger than 2 nm and the voltage drop across the
+barrier is below 1 V (see, for instance [22]), which implies that the
+carbon is passivated relatively fast, as soon as the Li2S starts
+depositing on the surface of the carbon.
+Hofmann et al. [16] use a slightly modiﬁed version of Kumar-
+esan's model [11] and showed that they correctly reproduce the
+ﬁnal capacities of the Li-S batteries if the consumption fraction of
+solid S8(s) is carefully considered. Their model considers four re-
+actions at the cathode, polysulﬁde shuttle effects, and irreversible
+transport of active material from cathode to anode. Although the
+model does not explain why the elemental sulfur is not fully dis-
+solved and consumed during discharge, it still provides a simple
+way to model capacity loss at high discharge rates.
+A model that recently received increased attention in the
+research community is to attribute the premature death of Li-S
+batteries to surface coverage with solid Li2S [14,17,23]. To explain
+the dependence of capacity on discharge rate, Ren et al. [14] assume
+that the nucleation rate is rate-dependent according to an equation
+initially proposed by Milchev et al. [24] for the attachment rate in
+the electrolytic nucleation of metals and later used by Lau et al. [25]
+to study precipitation effects in Li-air batteries. However, the rate-
+dependent precipitation theory presented in Ref. [24] was devel-
+oped for the electro-crystallization of metals, in which the ions in
+the electrolyte attach directly to the surface of the electrode. In the
+case of Li-S batteries, after the formation of the initial nuclei seeds,
+the Li2S molecules diffuse in the electrolyte and precipitate on the
+surface of the existing seeds, away from the surface of the elec-
+trode. The growth of the solid Li2S is phenomenologically different
+from the electrolytic nucleation in metals because Li2S is highly
+insulating and does not contain free electrons to promote electro-
+chemical deposition on its surface (like the metal-on-metal depo-
+sition would do). To account for the rate of surface coverage the
+authors use a two-dimensional version of the Kolmogorov phase
+transformation
+theory
+[26],
+which
+results
+into
+an
+integro-
+differential system of equations. By solving these equations self-
+consistently with the classical multicomponent transport equa-
+tions, the authors show that the nucleation rate is faster at higher
+discharge rates, which leads to a faster surface coverage and, hence,
+a decreased capacity. The results provided by the model are also
+supported by SEM images of the cathode coverage and the model
+correctly explains the rate-dependent capacity in Li-S batteries.
+In this article we develop a rate-dependent nucleation theory
+appropriate for the solid reaction products in Li-S batteries and use
+this theory to explain qualitatively the capacity loss at high
+discharge rates. The theory is similar to the model developed by
+Ren et al. [14] in the sense that it attributes that death of Li-S
+batteries to surface passivation, however, in this work, the math-
+ematical equations are framed entirely in the form of a system of
+partial differential equations that can be implemented easily in
+ordinary or partial differential equation solvers. The equation for
+the nucleation rate is relatively similar to the one used in Ref. [14]
+but, here, it is derived on a phenomenological basis, speciﬁcally for
+the precipitation of reaction products in Li-S batteries. In this way,
+the derivation for the nucleation rate can be viewed as proof for the
+equation employed in Ref. [14].
+Finally, one should note that ﬁnite-element models for the
+simulation of Li-S batteries have also been developed by other
+authors. In general, these models describe fairly well the voltage as
+a function of capacity for low discharge or charge rates but do not
+predict correctly or have not been tested yet for higher rates. For
+instance, the model of Kumaresan et al. [11] predicts that the
+discharge capacity is independent on the discharge rate for rates
+below 1 C. Similarly, the models presented in Refs. [27,28] cannot
+explain the decrease of the speciﬁc capacity when the discharge
+rate is increasing to 1 C and beyond.
+2. Experimental
+The cells used in this study were made using Li foil anodes
+(0.25 mm, MTI), polypropylene separators (25 mm, Celgard 2400),
+and carbon nanotube (CNT) foam-based cathodes. The CNT foams
+contained CNTs with an average diameter of 10 nm and a length of
+2 mm, which were assembled in a freestanding three-dimensional
+mesh using the method presented in Refs. [7,29]. The obtained CNT
+foams had a thickness of 100 mm and a density of 125 mg/cm3. The
+P. Andrei et al. / Electrochimica Acta 284 (2018) 469e484
+470
+
+<<PAGE 3>>
+porosity and speciﬁc area of the cathodes (without sulfur) were
+measured using the nitrogen adsorption-desorption method and
+were estimated at 96% and 392 m2/g, respectively. An SEM image of
+the freestanding CNT mesh is presented in Fig. 1a. Solid sulfur
+microparticles were added to the cathodes and heated at 158 C to
+form a uniformly distributed layer of S8(s) as shown in the SEM
+image presented in Fig.1b. The sulfur content of the cathodes is 60%
+and the sulfur loading per electrode is 1.9 mg/cm2. The sulfur
+content was estimated based on the initial amount of sulfur to be
+approximately 9.5% by volume. The electrolyte was composed of
+1 M bis(triﬂuoromethane)sulfonimide (LiTFSI) and 0.1 M LiNO3 in
+DME:DOL (1:1 v:v). Finally, the anodes, the separators, and the
+cathodes were assembled into CR2032-type coin cells.
+The voltage characteristics of the cells are represented in Fig. 2
+for different discharge rates ranging from 0.1 C to 1 C. As ex-
+pected, the speciﬁc capacity of Li-S batteries is rate-dependent. The
+capacity of the ﬁrst plateau is relatively independent on the
+discharge rate, while the capacity of the second plateau decreases
+with increasing discharge rate. An important feature of the
+discharge curves of our batteries is that they have two dips: one at
+beginning of the discharge (“A”) and one at approximately
+400 mAh/gS (“B”). Dip “A” is due to the fact that, in our batteries, the
+active area of the cathode is relatively small at the beginning of the
+discharge (see Fig. 1b that shows that the initial solid S8(s) covers
+practically the entire active area of the cathode). For this reason, the
+cells require a large initial overpotential to start the discharge of the
+battery. This phenomenon is particularly visible at high discharge
+rates and, in this study, will be modelled mathematically by a
+phenomenological equation, eq. (34). A similar behavior was
+observed in Refs. [17,30]. The voltage decrease at point “B” is due to
+electrolyte oversaturation, which is required to start the nucleation
+process.
+To verify if the decrease of the discharge capacity with
+increasing discharge rates is due to the sluggish transport of the
+electrolyte in the cathode, we have repeated the experimental
+measurements presented in Ref. [13]. In particular, we have dis-
+charged the battery at a relatively “low” discharge rate of 0.2 C up to
+approximately 50%, after which we continued the discharge at a
+“high” discharge rate of 1 C. When the voltage of the battery
+reached 1.8 V (i.e. the battery is almost “dead”) we changed the rate
+to 0.2 C and measured the discharge voltage. The results of these
+measurements
+are
+represented
+in
+Fig.
+3.
+Two
+important
+Fig. 1. SEM image of the CNT cathode before loading (a) and after loading (b) with solid
+sulfur, S8(s). S8(s). The solid S8(s) is deposited approximately uniformly as a thin layer on
+the surface of the CNT bundles.
+Fig. 2. Experimental discharge curves measured at different C rates.
+Fig. 3. Cell voltage under variable discharge rate of consecutive 0.2 C-1 C-0.2 C steps
+(continuous line). The dash lines represent the cell voltage under constant discharge
+rates of 0.2 C and 1 C, respectively.
+P. Andrei et al. / Electrochimica Acta 284 (2018) 469e484
+471
+
+<<PAGE 4>>
+observations can be made from these measurements.
+1. Unlike in Ref. [13], the speciﬁc capacity at the end of the
+discharge with variable rate (see the continuous line in Fig. 2) is
+different from the discharge capacity obtained under the “low”
+discharge rate of 0.2 C. Although we have repeated these mea-
+surements for multiple times using different “high” and “low”
+discharge rate and switched from “low”-to-“high” and “high”-
+to-“low” rates at different states-of-discharge, the discharge
+capacity under variable discharge rate was always lower than
+the discharge capacity under the “low” discharge rate. This fact
+shows that the decrease of the discharge capacity with
+increasing discharge rates in our batteries is not due to the
+sluggish transport characteristics of the electrolyte as explained
+in Refs. [12,13]. The reason for the decrease of the speciﬁc ca-
+pacity at high discharge rates should be related to the different
+cathode passivation dynamics under “low” and “high” discharge
+rates.
+2. The speciﬁc capacity measured at 1 C from the moment when
+the solid product deposition starts until the death of the battery
+is signiﬁcantly lower than the speciﬁc capacity obtain at the
+same rate during the variable discharge measurement (compare
+SC1 ¼414 mAh/gS to SC2 ¼ 482 mAh/gS in Fig. 3). This fact is
+somewhat counterintuitive as we expect some of the active area
+of the carbon to be passivated with solid products between
+points “D” and “E” and reduce the active area available for
+discharge from point “E” to “F”. This phenomenon is due to the
+different dynamics in which nuclei appear on the surface of the
+carbon, as it will be shown in the results section.
+Both observations will be explained in section 4 by using the
+mathematical model developed below.
+3. Theory
+To develop a mathematical model for the discharge of Li-S
+batteries we need to determine the fundamental transport and
+electrochemical processes that limit the discharge of these batte-
+ries. Identifying the main phenomena that take place during
+discharge will enable us to build a realistic model that describes the
+operation of the battery. The material parameters that enter into
+the governing equations need to be determined using data taken as
+much as possible from direct measurements of the material prop-
+erties instead of ﬁtting the ﬁnal discharge curves with simulation
+results. The model developed below is based on the classical
+multicomponent transport equations in porous media, which can
+accurately capture ohmic and diffusion losses in the electrolyte.
+First, we focus on the role of precipitation and surface coverage in
+the cathode and then we summarize the model equations. Phe-
+nomena such as polysulﬁde shuttling and side reactions that take
+place mostly during charging are neglected in this work.
+The anode is made of a Li metal. The only electrochemical re-
+action at the anode is assumed to be
+Li4Liþþe
+(1)
+The cathode is made of a matrix of carbon nanotubes (CNT) that
+are randomly distributed (see Fig. 1). Following the model by
+Kumaresan et al. [11], at the cathode, we consider the following
+electrochemical reactions
+1
+2S0
+8þe41
+2S2
+8
+(2)
+3
+2S2
+8 þe42S2
+6
+(3)
+S2
+6 þe43
+2S2
+4
+(4)
+1
+2S2
+4 þe4S2
+2
+(5)
+1
+2S2
+2 þe4S2
+(6)
+and dissolution/precipitation reactions
+S8ðsÞ4S8
+(7)
+2LiþþS2
+8 4Li2S8ðsÞ
+(8)
+2LiþþS2
+6 4Li2S6ðsÞ
+(9)
+2LiþþS2
+4 4Li2S4ðsÞ
+(10)
+2LiþþS2
+2 4Li2S2ðsÞ
+(11)
+2LiþþS24Li2SðsÞ
+(12)
+Although some authors consider that some of the electro-
+chemical reactions (2)e(12) might not take place in Li-S batteries
+[31,32], due to the lack of conclusive data we include all of them in
+our analysis. Particular cases such as the case when lithium poly-
+sulﬁde (LiPS) is reduced from a higher order product to a lower
+order product by bypassing some of the intermediate reaction steps
+can be described in our model by increasing the reaction rates and
+solubilities of one or more of the intermediate products. In addition
+to the above reactions, it is likely that multiple disproportionation
+and possibly comproportionation reactions also take place during
+discharge [33,34]. These reactions can take place throughout the
+volume of the electrolyte and not necessarily at the CNT/electrolyte
+interface. Including these reactions in the model is relatively
+straightforward, however, this requires identifying the exact reac-
+tant and product species and determining the reactions rate co-
+efﬁcients carefully. The mass transport of the intermediate species
+can be described in the same way as presented in section 3.2 below.
+Although in this work we neglect disproportionation and com-
+proportionation reactions, it is expected that these reactions play
+an important role during the charge and discharge and will provide
+a better understanding of the operation of Li-S batteries in the
+future.
+3.1. Nucleation, precipitation, and surface coverage
+The precipitation of solid products is believed to be the main
+reason for the active surface coverage and passivation. The model
+for nucleation, precipitation, and surface coverage developed in
+this section is based on the following observations:
+1. Since the electric resistivity of Li2S is large and the electron
+tunneling current is negligibly small for the thicknesses of Li2S
+layers observed experimentally, electrochemical reactions can
+take place only at the electrolyte/carbon interface and not at the
+Li2S/electrolyte interface. The carbon surface underneath the
+P. Andrei et al. / Electrochimica Acta 284 (2018) 469e484
+472
+
+<<PAGE 5>>
+Li2S deposit product becomes passivated as soon as the Li2S
+seeds are formed.
+2. The SEM images presented in the literature suggest that the size
+of the ﬁnal Li2S product can be as large as hundreds of nano-
+meters or even micrometers. Therefore, we conclude that the
+S2 ions (or Li2S molecules in case such molecules are formed
+directly as a result of the cathode reaction) diffuse away from
+the carbon surface and eventually attach to existing L2S seeds,
+like in Fig. 4a and Fig. 4b.
+3. In agreement with the classical theory of precipitation, we as-
+sume that the Li2S nuclei can form only on the surface of the
+carbon, as shown in Fig. 4c and d. Therefore, we exclude isolated
+formation of the Li2S seeds away from the carbon/electrolyte
+interface. Such formations would be energetically less favorable
+than on the surface of the carbon. This fact is also suggested by
+current SEM studies that show that the Li2S deposits on the
+surface of the carbon.
+Although the above observations were made for the precipita-
+tion of Li2S, we assume that they are also valid for any other
+precipitating species in reactions (8)e(12).
+The driving force of the initial nucleation process (i.e. the for-
+mation of the solid seeds) is the oversaturation at the surface of the
+carbon, also called surface oversaturation, Sk;surf , where k denotes
+the solid reaction products Li2S8(s), Li2S6(s), Li2S4(s), Li2S2(s), and
+Li2S(s),.
+According
+to
+the
+classical
+nucleation
+theory,
+for
+oversaturations Sk;surf [1, the nucleation rate is proportional to
+SN
+k;surf expð  B ln2Sk;surf Þ, where N is a power coefﬁcient that de-
+pends on the type of nucleation and B is a dimensionless thermo-
+dynamic parameter) [35]. In our work, in order to simplify the
+numerical implementation and decrease the number of ﬁtting pa-
+rameters, we approximate the increasing exponential factor from
+the last expression with a power function. In this way, the number
+of nuclei of solid species k that appear per unit area and unit time is
+approximated by a power law
+nk ¼ Mk
+
+SNk
+k;surf  1
+
+(13)
+where Mk and Nk are some ﬁtting parameters. The “-1” term in eq.
+(13) was introduced to correctly describe the equilibrium condition
+under which nk ¼ 1 when Sk;surf ¼ 1. It is important to notice that
+eq. (13) is accurate for Sk;surf [1 and might need to be modiﬁed
+when modeling dissolution processes (such as the dissolution of
+S8(s)). For this reason index k in (13) does not include S8(s).
+The
+surface
+oversaturation
+is
+deﬁned
+as
+Sk;surf ¼
+Q
+i
+agi;k
+i;surf =Ksp;k, where ai;surf are the activities of the ionic species
+at the surface of the carbon, Ksp;k is the solubility product, and
+gi;k is the number of moles of ionic species i in the solid species
+k, which can be found by writing chemical reactions (7)e(12) in
+the form P
+i
+gi;kMi4MkðsÞ. Expressing activities as concentrations,
+Fig. 4. Nucleation and growth of Li2S in a micropore on the surface of the carbon. Liþ ions are not represented to simplify the illustration. The concentration of S2 ions on the
+surface of the carbon at high discharge rates (ﬁgs. (a) and (c)) is higher than the concentration on the surface at low discharge rates (ﬁgs. (b) and (d)). Therefore, the nucleation rate
+of Li2S is higher at high discharge rates. The dash arrows in (c) denote the locations where concentrations ci;surf and ci are deﬁned.
+P. Andrei et al. / Electrochimica Acta 284 (2018) 469e484
+473
+
+<<PAGE 6>>
+we approximate
+Sk;surf ¼
+Q
+i
+cgi;k
+i;surf
+Ksp;k
+(14)
+where i denotes S2
+8 , S2
+6 , S2
+4 , S2
+2 , and S2. Notice that the con-
+centrations of ionic species that enter in the deﬁnition of the sur-
+face oversaturation are equal to the concentrations of these species
+near the surface of the carbon, ci;surf (see the red dots in Fig. 4a and
+b). Since ci;surf increases with the discharge rate, the model devel-
+oped below predicts a rate-dependent nucleation rate in Li-S bat-
+teries. This result is also consistent with experimental observations
+by other groups [14,36,37].
+To compute the concentration of the ionic species at the surface
+the carbon (ci;surf ) we notice that the production rate of ionic spe-
+cies at the surface can be written approximately as RizDi
+ci;surf ci
+Li
+,
+where ci is the concentration of this species away from the surface,
+Di is the diffusivity of the ionic species, and Li is a characteristic
+length describing the diffusion of species i in bulk electrolyte, but
+close to the carbon surface. In writing the last equation we assumed
+that the migration (drift) ﬂux is much smaller than the diffusion
+ﬂux, which is an approximation often used in Li-S systems and
+which allows to simplify the mathematical model signiﬁcantly
+[15,16]. Notice that if the diffusing species are uncharged molecules
+such as Li2S, the migration ﬂux vanishes and the above approxi-
+mation is accurate. The last equation shows that ci;surf increases
+with the production rate of species i at the carbon/electrolyte
+interface as ci;surf ¼ ci þ liRi, where li  Li=Di is a parameter that
+depends on the diffusivity and diffusion length of the ionic species
+next to the carbon surface. Due to the rough approximations used
+to derive this equation, the equation should be regarded as
+phenomenological and parameter li should be treated as a ﬁtting
+parameter. With these approximations, the oversaturation at the
+surface of the carbon can be written as:
+Sk;surf ¼
+Q
+i
+ðci þ liRiÞgi;k
+Ksp;k
+(15)
+Eq. (15) shows that the surface oversaturation increases with
+the reaction rate. This equation should be used with care in nu-
+merical simulations. It works relatively well for the case when there
+is a net generation of species i on the surface of the carbon (i.e.
+Ri > 0), however, it might create numerical instabilities if ci þ
+liRi < 0. Therefore, if this equation is used for other species than the
+generation of S2, the term in parenthesis should be set to 0 if ci þ
+liRi < 0 (notice that for species S2ci þ liRi is always positive).
+Eqs. (13) and (15) describe the nucleation rate in our model. It
+can be shown that the nucleation rate given by eq. (13) is mathe-
+matically similar to the nucleation rate used by Ren et al. [14] and
+Lau et al. [25] (see eq. (4) from these references), which applies to
+discharge at moderate and high rates. Indeed, in the case of large
+surface oversaturations, ci;surf [ci and eqs. (13) and (15) imply that
+nkx Mk
+K
+Nk
+sp;k
+Q
+i
+ðci þ liRiÞNkgi;kx Mk
+K
+Nk
+sp;k
+Q
+i
+ðliRiÞNkgi;k. Since the reaction rates
+are proportional to exp
+
+ah
+VT
+
+where a is the symmetry factor, VT is
+the thermal voltage, and h is the overpotential (see eq. (23)), it
+follows that nk  exp
+
+ah
+VT
+
+, where the proportionality factor is
+concentration dependent, which is the same as eq. (4) from
+Refs. [14] and [25].
+Since precipitation is believed to play a major role on the
+performance of Li-S batteries, one of the most important contri-
+butions of this work is to develop a physics-based model for surface
+coverage. Next, we denote the relative surface coverage of precip-
+itate k by qk, where 0  qk  1. We make the assumption that the
+different types of precipitates are isolated from each other, so the
+total (relative) surface coverage is q ¼ P
+k
+qk  1. There exist many
+mathematical models to describe q in the literature. A common
+approach is to assume that the coverage is proportional to
+ðε=εinitialÞx, where ε and εinitial are the actual and initial volume
+fractions of the electrolyte and x  1:5 is an empirical parameter
+describing the morphology of the precipitate. Although this model
+is widely used in the literature it does not properly take into
+consideration the nucleation rates of each precipitate. A more ac-
+curate model is to keep track of the size distribution of the nuclei at
+each location inside the cell and adjust it accordingly during the
+discharge of the battery [14,25]. This approach is equivalent to
+integrating over the number of nuclei at each moment in time. The
+model developed in Appendix A and summarized below is
+conceptually similar to the above integral model, however it is
+written in a purely differential form suitable for implementation in
+standard simulators. It is based on writing the Kolmogorov equa-
+tion in differential form (instead of writing it in integral form like in
+Refs. [14,25]) and using the oversaturation in the transport chan-
+nels (Sk) as the driving force for nucleation
+Sk ¼
+Q
+i
+cgi;k
+i
+Ksp;k
+(16)
+where i denotes S2
+8 , S2
+6 , S2
+4 , S2
+2 , and S2. The concentrations of
+the ionic species that enter in the deﬁnition of the oversaturation
+are equal to the concentrations of these species away from the
+carbon surface, ci. As shown in Fig. 4a, due to the relatively large
+size of the deposit product, the concentration of the species in the
+channel (ci) is different from the concentration of the species at the
+carbon surface (ci;surf ).
+According to the discussion in Appendix A, the relative coverage
+with solid product k is described by the following system of
+equations
+vqk
+vt ¼ K0
+kSkð1  qÞFk
+(17)
+vFk
+vt ¼ SkGk
+(18)
+vGk
+vt ¼ Mk
+
+SNk
+k  1
+
+(19)
+where K0
+k are rate constants describing how fast the reaction
+product grows once a nucleation seed is formed, and Fk and Gk are
+integration functions that satisfy the following initial conditions
+Fkð0Þ ¼ Gkð0Þ ¼ 0. Notice that we introduced partial derivatives in
+eqs. (17)-(19) because, unlike in Appendix A where the derivation
+was performed at a given location inside the cathode, functions qk,
+Fk, and Gk now depend on time and position. Function Gk denotes
+the number of nuclei per unit area of species k at time t, while Fk
+measures the rate at which the surface coverage of one non-
+overlapping nucleus increases in time.
+The total (relative) coverage of the solid products is given by q ¼
+P
+k
+qk. The surface coverage can be found by solving system
+(17)e(19) self-consistently with the transport system of equations
+presented in the next section.
+P. Andrei et al. / Electrochimica Acta 284 (2018) 469e484
+474
+
+<<PAGE 7>>
+3.2. Summary of model equations
+Charge and mass transport are governed by the continuity
+equations for each species in the electrolyte and electrons in the
+CNT matrix
+vεci
+vt þ V$  ziu0
+iciVf  D0
+iVci
+ þ að1  qÞRi 
+X
+k0
+gi;k0rk0 ¼ 0
+(20)
+V,ðs0VVÞ þ
+X
+j
+Rj ¼ 0
+(21)
+where Ri ¼ P
+j
+si;jRj, zi is the charge number of species i, ci is the
+concentration of species i, a is the speciﬁc area computed by
+neglecting the solid precipitates, f is the potential of the electro-
+lyte, V is the potential of the electrons, si;j are the stoichiometric
+coefﬁcients of species i in electrochemical reaction j, Rj is the re-
+action rate in reaction j, and rk0 is the consumption rate of specie k0
+in the precipitation reaction. The stoichiometric coefﬁcients of
+species i in electrochemical reaction j, si;j, are obtained by writing
+electrochemical reactions (1)e(6) as P
+i
+si;jMzi
+i
+¼ e. The (effective)
+mobilities and diffusivities in the porous material are related to the
+“bulk” mobilities and diffusivities using Bruggeman relations
+u0
+i ¼ εbui and u0
+i ¼ εbui. Similar relation is used to compute the
+effective conductivity of the CNT network s0 ¼ εb
+CNTs, where εCNT is
+the fraction of the CNT network.
+The volume fraction of each solid reaction product changes in
+time because of precipitation/dissolution reactions
+vεk0
+vt ¼ Vk0rk0
+(22)
+where Vk0 are the partial molar volumes of the precipitates. The
+fraction of the electrolyte is computed as ε ¼ 1  εCNT  P
+k0 εk0.
+Index i in eqs. (20)-(22) denotes the 8 mobile species in the
+electrolyte Liþ, S8, S2
+8 , S2
+6 , S2
+4 , S2
+2 , S2, and A (where A denotes
+the anions in the fresh electrolyte); j denotes the 5 electrochemical
+reactions for the formation of S2
+8 , S2
+6 , S2
+4 , S2
+2 , and S2(i.e. eqs.
+(2)e(6)); and k0 denotes the 6 solid species S8ðsÞ, Li2S8ðsÞ, Li2S6ðsÞ,
+Li2S4ðsÞ, Li2S2ðsÞ, and Li2SðsÞ. Although the fresh electrolyte used in
+our experiments contained two different anions (TFSI and NO
+3 ),
+to simplify the equations, we consider that both anions have the
+same mobility and diffusivity and describe them by A.
+The reaction rates are related to the local concentrations of each
+species
+Rj ¼ i0j
+F
+2
+4 Y
+i;si;j > 0
+ 
+ci
+cref
+i
+!si;j
+e
+ah
+VT 
+Y
+i;si;j < 0
+ 
+ci
+cref
+i
+!si;j
+eð1aÞh
+VT
+3
+5
+(23)
+rk ¼ kk0εk0
+"Y
+i
+ðciÞgi;k0  Ksp;k0
+#
+(24)
+where h ¼ V  f  U0 and cref
+i
+are reference concentrations deter-
+mined from the reference voltages of each electrochemical reaction
+Uj;ref ¼ U0 þ
+VT
+nj
+P
+i
+si;j ln cref
+i
+1000. The reference concentrations are
+assumed to be equal to the initial concentrations so that Rj ¼ 0 for a
+fresh battery, in which the open circuit voltage is U0 ¼ 2:45V. An
+approximation that we made in eq. (23) is that we did not use the
+species concentrations at the surface of the carbon, ci;surf but,
+instead, we used concentrations ci, which are deﬁned away from
+the surface. This approximation is good because the overpotential is
+calculated in the terms of potential f, which is also deﬁned away
+from the surface of the carbon (and not at the carbon/electrolyte
+interface).
+The reaction rate at the anode is
+RA ¼ i0;Liþ
+F
+"
+cLi
+cref
+Li
+e
+ahA
+VT  e
+ð1aÞhA
+VT
+#
+(25)
+where F is the Faraday's constant and hA ¼ VA  f is the over-
+potential in the anode reaction. Eq. (25) enters as a boundary
+condition in the transport system of equations. In the last equation
+VA is the potential of the electrons in the Li metal. The voltage of the
+battery is computed as the potential of the cathode at the electric
+contact minus the potential of the anode.
+If all the precipitation reactions are considered, eqs. (17)-(22)
+form a system of 30 differential equations that should be subject
+to boundary conditions and solved to compute variables ci, εk0, qk,
+Fk, and Gk. Despite the large number of equations in (17)e(22) the
+system can be written in matrix form and implemented numeri-
+cally easily because of its repetitive form. If only one species is
+considered to precipitate (e.g. Li2S) the number of differential
+equations decreases to 14.
+In the next subsections we focus on the determination of model
+parameters, including ion mobilities and diffusivities, solubility
+products, exchange current densities, reactions potentials, and
+nucleation-related parameters.
+3.3. Ion mobilities and diffusivities
+Ion mobilities, ui, and diffusivities, Di, are the most important
+parameters that describe mass and charge transport in bulk elec-
+trolytes. Unfortunately, the mobilities and diffusivities of the ions
+are difﬁcult to measure directly and these parameters need to be
+determined indirectly from measurements of the electrolyte con-
+ductivity (k) and transference numbers (ti), which can be written as
+k ¼ F
+X
+i
+z2
+i uici
+(26)
+ti ¼
+z2
+i uici
+P
+i
+z2
+i uici
+(27)
+If the electrolyte conductivity and transference numbers of each
+ion are measured experimentally, eqs. (26) and (27) can be used to
+compute ions mobilities ui ¼ kti=z2
+i Fci. In this work we use the
+experimental data by Fan et al. [38] and Suo et al. [39], which is in
+agreement with data published by other research groups [40,41].
+This data is valid for LiTFSI dissolved in DME:DOL (1:1 v:v), which is
+the same electrolyte as in our experiments. To derive an analytical
+equation for the electrolyte conductivity we ﬁt the experimental
+data with kðcLiÞ ¼ C1cLi  ecLi=C2, where C1 and C2 are ﬁtting pa-
+rameters. This function was selected in order for the electrolyte
+conductivity to be in agreement with the dilute solution theory (in
+particular, k should satisfy kð0Þ ¼ 0 and increase linearly with cLi at
+low lithium concentrations); in addition, this functional form
+shows a decrease of the electrolyte conductivity at high lithium
+concentrations in agreement with the existing experimental data.
+The transference number of Li ions is ﬁtted to function tLiþðcLiÞ ¼
+tþðcLiÞ ¼ C3 þ C4 tanh cLiC5
+C6 , where C3, C4, C5, and C6 are ﬁtting
+P. Andrei et al. / Electrochimica Acta 284 (2018) 469e484
+475
+
+<<PAGE 8>>
+parameters. The ﬁtted and experimental data is presented in Fig. 5,
+where
+kðcLiÞ ¼ 2:43  103cLie
+cLi
+1074
+(28)
+tþðcLiÞ ¼ 0:604 þ 0:124 tanh cLi  2; 404
+87:3
+(29)
+where the conductivity is measured in S/m and the lithium con-
+centration in mol/m3. Using equations (26)-(29) we compute the
+mobility of Li ions (measured in m2/Vs) as
+uLi ¼ 3:123  109e
+cLi
+1074
+
+4:87 þ tanh
+cLi  2; 404
+87:3
+	
+(30)
+Although the electrolyte measured in Refs. [38] and [39] con-
+tains only ions Liþ, S2
+6 , and A, we assume that the expression
+derived above for the mobility of Liþ remains the same when other
+LiPS species are used. To compute the mobility of the two anions we
+need to make some assumptions about their transference numbers.
+The easiest assumption is to assume that the transference numbers
+of anions are equal to each other and use the constraint that
+Pn
+i¼1ti ¼ 1, where n ¼ 8 is the total number of species i in the
+electrolyte. However, this assumption results in ui ¼
+kðcLiÞ
+z2
+i Fciti ¼
+kðcLiÞ
+z2
+i Fci
+1tþðcLiÞ
+n1
+, which implies that ui/∞when ci/0, for isLiþ. To
+avoid this singularity, which contradicts the diluted solution the-
+ory, we need to assume that the transference numbers of anions
+depend linearly on the concentration of each ion, which is also
+suggested by eq. (27). The easiest way is to assume that they
+depend linearly on each ion concentration ti ¼ zici
+cLi ½1  tþðcLiÞ for
+all isLiþ. In this way, we arrive at the following equation for the
+mobilities of anions in the electrolyte
+ui ¼ kðcLiÞ
+z2
+i Fci
+ti ¼ kðcLiÞ
+z2
+i Fci
+ zici
+cLi
+½1  tþðcLiÞ
+¼ kðcLiÞ
+jzijFcLi
+½1  tþðcLiÞ
+for all isLiþ
+(31)
+Introducing (29) into (31) we obtain the following equation for
+the mobility of the anions
+ui ¼ 3:123  109
+jzij
+ e
+cLi
+1074
+
+3:19  tanh
+cLi  2; 404
+87:3
+
+
+	
+for all isLiþ
+(32)
+The diffusivities of the Li-S catholytes should be computed using
+the Einstein relations Di ¼
+
+1 þ d ln fi
+d ln ci
+
+VTui, where fi are the molar
+concentration activity coefﬁcients and VT ¼ kT
+q
+is the thermal
+voltage. Due to the lack of available data in the literature for the
+activity coefﬁcients in Li-S catholytes, we approximate, what is
+usually done in the literature
+DizVTui
+(33)
+However, notice that according to measurements of the activity
+Fig. 5. Electrolyte conductivity and Li-ion transference. The horizontal axis of the
+experimental data was adjusted to indicate the Li ion concentration in the electrolyte.
+Fig. 6. Ion mobilities and diffusivities computed using eqs. (30), (32) and (33). The
+continuous lines are computed using a constant transference number of Liþ of 0.48.
+The dashed lines are computed using eqs. (29) and (32). The inﬂection points at
+cLiz2:4 M are due to the sudden change of the Liþ transference number at this
+concentration.
+P. Andrei et al. / Electrochimica Acta 284 (2018) 469e484
+476
+
+<<PAGE 9>>
+coefﬁcients in LiPF6-based electrolytes made by Valoen et al. [42]
+we expect eq. (33) to slightly underestimate the value of the
+diffusion coefﬁcients.
+Eqs. (30), (32) and (33) describe the mobilities and diffusivities
+of the ions in the electrolyte. The coefﬁcients in these equations
+have been identiﬁed for LiTFSI to DME:DOL (which is the electrolyte
+used in our experiments) and they need to be slightly adjusted
+when used for other Li-S electrolytes, such as LiTFSI in diglyme,
+triglyme or tetraglyme. By allowing the mobilities and diffusivities
+of the ions to depend on the concentration of the electrolyte we
+indirectly assume that the ion mobilities and diffusivities depend
+on the state-of-charge of the cell and effects such as electrolyte
+viscosity are included in simulations.
+Fig. 6 presents the dependence of the ion mobilities and diffu-
+sivities as a function of the lithium concentration. The dashed lines
+are computed using eqs. (29) and (32) and the continuous lines are
+computed using a constant transference number of Liþ of 0.48. The
+diffusivities are computed using eq. (33). Note that the values of the
+diffusivities
+are
+relatively
+close
+to
+the
+values
+assumed
+in
+Refs. [11,15] but signiﬁcantly higher than the values used in
+Ref. [12]. Due to the high values of the diffusion coefﬁcients of ionic
+species in LiTFSI to DME:DOL, the rate-dependent capacities cannot
+be attributed to the sluggish ion transport in batteries using this
+electrolyte. Relatively similar values for the transference number of
+Liþ and diffusion coefﬁcients of Liþ, A, and solvent molecules in
+LiTFSI have been recently measured experimentally by Hayamizu
+[43] using pulsed-gradient spin-echo nuclear magnetic resonance
+(NMR). For instance, the transference number of Liþ was approxi-
+mately 0.41, while the diffusion coefﬁcients of Liþ and A were
+between 6  1010 and 9  1010 m2/s. The slightly larger values
+reported for the diffusivities of Liþ and A are due to approximation
+(33).
+Fig. 6 shows that the mobilities and diffusivities of polysulﬁdes
+decrease signiﬁcantly when the concentration of Li ions is
+increasing. This effect is expected because polysulﬁdes tend to form
+aggregates leading to a gel-type consistency of the electrolyte when
+their concentration, particularly the concentration of higher-order
+species, is increased. Although eqs. (30) and (32) depend mainly
+on the concentration of Li-ions and do not depend explicitly on the
+concentration of each anion, these equations are still expected to
+describe the degradation of mass transport properties correctly
+under normal Li ion and polysulﬁde concentrations.
+3.4. Solubility products
+The solubility products of solid species in the electrolyte play a
+major role on the speciﬁc capacity of Li-S batteries [7,29,44].
+Therefore, we need to carefully determine the solubility products of
+solid species in the cathode. In the previous reported simulations
+the solubility products were not determined experimentally and
+their values were simply assumed.
+The solubility of elemental sulfur changes signiﬁcantly with the
+concentration of the LiPS in the electrolyte. For instance, the solu-
+bility of sulfur in DME is 9.96 mol/m3, while the solubility in an
+electrolyte from discharged Li-S batteries is 16.6 mol/m3 [45]. In our
+simulations, due to the lack of available data in the literature, we
+use KS8 ¼ 10 mol/m3. This value is approximately half of the
+currently assumed value of 19 mol/m3 used in most numerical
+simulations [11,12,15].
+To evaluate the solubility of LiPS we mix Li2S and S powder in
+stoichiometric ratios of 1: n-1 to produce Li2Sn in a blank electrolyte
+of DME:DOL (1:1 v:v). The solubility products of Li2Sn is measured
+separately for n ¼ 4, 6, and 8 by slowly increasing the amount of
+blank electrolyte until the powder is fully dissolved. For more
+details on how the experiments were performed we recommend
+[7]. The measured concentrations of saturation for Li2S4, Li2S6, Li2S8
+are [S] ¼ 2 M, 6 M, and 7 M, respectively, which lead to the solubi-
+lity products presented in Table 1. These values are in agreement
+with data published by other authors for similar electrolytes. For
+instance, Pan et al. [46] found that the maximum sulfur concen-
+tration of the Li2S6 in DME:DOL is ~[S] ¼ 6 M.
+The solubilities of Li2S and Li2S2 are negligible according to our
+experiments and other published data [11,12,15,27,47e49].
+3.5. Exchange current densities and reaction potentials
+The voltage drop in Li-S batteries is due in part to diffusion and
+conductivity losses and in part to kinetic losses. Since the diffusion
+coefﬁcients and mobilities have already been determined in section
+3.2 independently (i.e. not by ﬁtting the discharge curves), the
+diffusion and conductivity losses are accurately accounted in our
+simulations and the remaining voltage drop is due entirely to ki-
+netic losses. Therefore, we can determine the exchange current
+densities and reaction potentials that enter in the Butler-Volmer
+equation by ﬁtting plateaus of the discharge voltage and the
+slope between two plateaus with the numerical simulations. The
+values of the exchange current densities and reaction potentials
+determined in this way are presented in Table 2, while the reference
+concentrations are presented in Table 3.
+3.6. Surface oversaturation
+The main effect of parameters li is to decrease the speciﬁc ca-
+pacity of the battery as a function of the reaction rate. Therefore,
+parameters li are determined by ﬁtting the total speciﬁc capacity of
+the battery at different discharge rates with simulation results. To
+simplify the identiﬁcation but also the numerical implementation
+we focus only on the formation of Li2S(s) nuclei and set the values of
+li for all the other products to zero. The results of this identiﬁcation
+are presented in Table 3.
+3.7. Nucleation related parameters
+The parameters describing the nucleation of solid species are K0
+k
+and Mk. Since these parameters appear as product in surface
+coverage for precipitate k (which can be observed by solving eqs.
+(17)-(19)), they cannot be determined simultaneously from the
+surface coverage. Therefore, in this work we set K0
+k ¼ 102 m2 s1
+and determine Mk by ﬁtting the experimental discharge charac-
+teristics with simulations results. Due to the large number of ﬁtting
+parameters and to the fact that the existing experimental reports
+do not suggest unanimously that other reaction products besides
+Li2S are present in the battery, we use negligibly small values for
+MLi2S8ðsÞ, MLi2S6ðsÞ, MLi2S4ðsÞ, and MLi2S2ðsÞ and focus only on ﬁtting MLi2SðsÞ.
+The results of this identiﬁcation are presented in Table 1.
+4. Results and discussion
+The transport model presented above was implemented in our
+in-house simulator, RandFlux [50], which is a ﬁnite element
+simulation platform that allows solving general systems of one-
+dimensional
+(1-D),
+two-dimensional
+(2-D),
+and
+three-
+dimensional (3-D) partial differential equations. Currently, the
+platform implements defaults models for the simulation of elec-
+trochemical
+systems
+described
+by
+the
+multicomponent
+and
+concentrated solution theory (e.g. Li-S, metal-air, and Li-ion bat-
+teries), fuels cells, nanoscale and power semiconductor devices. The
+discretized transport systems of equations are solved using the
+P. Andrei et al. / Electrochimica Acta 284 (2018) 469e484
+477
+
+<<PAGE 10>>
+Newton method, in which the Jacobians are computed by automatic
+differentiation.
+For the battery simulated in this work, the initial S8(s) covers
+most of the active area of the CNTs (see Fig. 1b), which results in a
+relatively small dip at the beginning of the discharge curves for high
+discharge rates. Therefore, we model the speciﬁc area that enters in
+the left-hand side of eq. (20) by an empirical function
+a ¼ a0 exp
+" 
+εS8ðsÞ
+εS8ðsÞ;initial
+!m
+ln qini
+#
+(34)
+where m is a ﬁtting parameter, a0 is the total speciﬁc surface area of
+the carbon, and qini is the initial fraction of the uncovered area of
+the cathode. In our simulations qini ¼ 103, which means that 99.9%
+of the cathode surface is initially covered with S8(s). The total spe-
+ciﬁc surface area of the carbon was estimated from the total surface
+area (392 m2/g) and the mass density of the CNT foam (1.25  105 g/
+m3) to be a0 ¼ 4.9  107 m2/m3. The values of all the other geometry
+and structure related parameters of the battery simulated in this
+section are presented in Table 4.
+Eqs. (17)-(22) were discretized on a 1-D grid that covered the
+separator and cathode regions. The transport system was subject to
+appropriate boundary conditions (see for instance [11]) and solved
+iteratively in time using the backward Euler method. The total
+number of mesh points was 100, which proved to be sufﬁciently
+high to minimize the discretization errors. The total time for the
+computation of the discharge voltage of the battery at a given
+discharge current is less than ﬁve minutes on a personal computer
+operating at 3 GHz.
+The simulated voltage characteristics under different discharge
+rates ranging from 0.1 C to 1 C are represented in Fig. 7. Notice that
+the model describes correctly the most important features of the
+voltage characteristics, including the two voltage dips observed in
+the experimental characteristics (see Fig. 2) and the speciﬁc ca-
+pacity of the cells as a function of the discharge rates. The slight
+Table 1
+Parameters for dissolution, nucleation, and precipitation.
+Product (k;k0)
+Initial fraction, εk0;initial
+Rate constant, kk0
+Solubility product, Ksp;k0
+Molar volume, Vk0 (m3 mol1)
+K0
+k(m2)
+Mk(m2 s1)
+Nk
+Separator
+Cathode
+S8ðsÞ
+0
+0.087
+1 s1
+10 mol/m3
+1.239  104
+Li2S8ðsÞ
+10e6
+10e6
+103 mol2 m6 s1a
+1.531  109 mol3 m9
+1.361  104
+102
+1026a
+1
+Li2S6ðsÞ
+10e6
+10e6
+103 mol2 m6 s1a
+2  109 mol3 m9
+1.038  104
+102
+1026a
+1
+Li2S4ðsÞ
+10e6
+10e6
+103 mol2 m6 s1a
+5  108 mol3 m9
+7.415  105
+102
+1026a
+1
+Li2S2ðsÞ
+10e6
+10e6
+103 mol2 m6 s1a
+3  103 mol3 m9
+4.317  105
+102
+1026a
+1
+Li2SðsÞ
+10e5
+10e5
+5  108 mol2 m6 s1
+3  103 mol3 m9
+2.768  105
+102
+1.5  1021
+1.2
+a These values are negligibly small and do so signiﬁcantly inﬂuence the solid precipitation.
+Table 2
+Kinetic parameters at cathode (calculated by ﬁtting the discharge curves). The ex-
+change current density at the anode is i0;Liþ ¼ 1 A/m2.
+Reaction (j)
+i0;j (A m2)
+Uj;ref (V)
+(2)
+0.6
+2.40
+(3)
+0.1
+2.39
+(4)
+10e2
+2.18
+(5)
+10e4
+1.95
+(6)
+10e8
+1.95
+Table 3
+Reference concentrations (calculated based on the assumed values of Uj;ref ) and
+parameters li that deﬁne the surface oversaturation.
+Species (i)
+zi
+ci;ref (mol m3)
+li (s m1)
+Liþ
+1
+1
+0
+S8
+0
+1.90  102
+0
+S2
+8
+2
+3.97  104
+0
+S2
+6
+2
+8.88  104
+0
+S2
+4
+2
+8.69  106
+0
+S2
+2
+2
+1.17  1011
+0
+S2
+2
+1.36  1014
+1010
+A
+1
+0.9974a
+b
+a Computed based on charge neutrality.
+b Species not participating in the electrochemical reaction.
+Table 4
+Miscellaneous model and geometry parameters.
+Parameter
+Value
+a
+0.5
+a0
+4.9  107 m2/m3
+b
+1.5
+LC
+104 m
+LS
+2.5  105 m
+m
+1.2
+εCNT (cathode)
+0.06
+ε (separator)
+0.41
+VA
+0 V
+VT
+0.026 V
+U0
+2.45 V
+s
+10 S/m
+qini
+10e3
+Fig. 7. Simulated cell voltages under different discharge rates.
+P. Andrei et al. / Electrochimica Acta 284 (2018) 469e484
+478
+
+<<PAGE 11>>
+differences between the experimental and simulated discharge
+characteristics at 1 C during the ﬁrst part of the discharge are due to
+the simplistic way in which eq. (34) treats surface coverage by solid
+sulfur.
+The main reason for the decrease of the speciﬁc capacity at high
+discharge rates is cathode passivation due to deposition of solid
+products. This fact, can be observed in Fig. 8, which presents the
+average surface coverage, 〈q〉, under different discharge rates. The
+average surface coverage is computed by averaging the surface
+coverage, qðrÞ, at each mesh point inside the cathode, according to
+〈q〉¼
+1
+Vcathode
+R
+cathode
+qðrÞdr , where Vcathode is the volume of the cath-
+ode. During the ﬁrst part of the discharge (i.e. before reaching the
+oversaturation point) the surface coverage decreases because of the
+dissolution of solid sulfur, which was initially deposited on the
+surface of the carbon. During the second part of the discharge, the
+surface coverage increases because of the production and deposi-
+tion of reaction products Li2S8ðsÞ, Li2S6ðsÞ, Li2S4ðsÞ, Li2S2ðsÞ, and
+Li2SðsÞ. As expected, the battery cannot be further discharged when
+the surface coverage becomes equal to 1. This is the main reason for
+the sudden death of the Li-S batteries in our study.
+Fig. 8 also shows that, at high discharge rates, the solid depo-
+sition of Li2S can start before the entire solid S8(s) has been dis-
+solved in the electrolyte. For this reason, if the deposition of Li2S
+occurs on the surface of S8(s) it is possible that some sulfur might
+remain isolated and not able to participate in the electrochemical
+reactions. This fact can be another reason why the Li2S batteries
+fabricated in the laboratory can hardly reach their maximum
+theoretical discharge capacity. In order to avoid this phenomenon
+and improve the speciﬁc capacity of Li-S batteries one should use
+electrolytes with high solubility of S8(s).
+Fig. 9 presents the average number of nuclei of Li2S per unit area
+on the carbon, FLi2S, as a function of speciﬁc capacity. In agreement
+with the discharge characteristics, we observe three main regions
+on this ﬁgure. “Region 1” corresponds to the initial dissolution of
+solid sulfur in the cathode. In this region, the number of nuclei per
+unit area is increasing slowly but still remains relatively negligible.
+In “region 2”, the concentration of Li2S molecules increases
+abruptly, oversaturating the surface of the carbon. The nucleation
+rate is very high in this region. When enough nuclei have been
+formed and they provide enough growing seeds for the solid
+product deposition, the concentration of Li2S starts decreasing and
+the solid product starts growing on the surface of the cathode. This
+growing process takes place in “region 3”. The oversaturation dip
+labeled with letter “B” in Figs. 2 and 7 takes place at the end of
+“region 2” and beginning of “region 3”.
+To emphasize the importance of using the surface over-
+saturation during the nucleation process, Fig. 10 presents the
+average oversaturation in the transport channels (SLi2S;surf , see eq.
+(16)) and on the surface of the carbon (SLi2S;surf , see eq. (15)) at the
+same discharge rates as in the previous two ﬁgures. During the ﬁrst
+part of the discharge (i.e. on the ﬁrst plateau) both SLi2S and SLi2S;surf
+are equal to zero because the nucleation seeds have not been
+formed yet. Starting at approximately 200 mAh/gS for the discharge
+at 1 C and at around 300 mAh/gS for the discharge at the other rates,
+both SLi2S and SLi2S;surf increase and the nucleation seeds start to
+form on the surface of the carbon. Once the nuclei are formed, the
+oversaturation SLi2S starts decreasing monotonically (see Fig. 10a),
+however the surface oversaturation SLi2S;surf increases further (see
+Fig. 10b). This behavior is due to the fact that, when the active area
+of the cathode is decreasing, the reaction rate given by eq. (23)
+needs to increase correspondingly to provide the same amount of
+discharge current. Consequently, the nucleation rate, which is
+proportional to the surface oversaturation, increases even more
+during the second plateau of discharge.
+It is apparent from Fig. 10 that the electrolyte needs to be
+signiﬁcantly oversaturated in order for the nucleation process to
+start and the battery to be discharged at a rate of 0.1 C or above.
+From eq. (24) and the values of the solubility products and reaction
+rates reported in Table 3 it follows that the dissolution of solid
+species is a very slow process (at least a few orders of magnitude
+slower than the precipitation rate under normal discharge condi-
+tions). For this reason, in order to improve the speciﬁc capacity of
+Li-S batteries under normal discharge conditions it is essential to
+avoid the solid formation of intermediate LiPS and the only solid
+material formed in the cathode to be the ﬁnal Li2S product. This
+effect could be achieved by increasing the solubility of the inter-
+mediate LiPS as much as possible and protecting the anode elec-
+trode. A similar result was obtained experimentally by Shen et al.
+[7] in Li-S batteries.
+Next, let us focus on the discharge characteristics at variable
+rate. By following the same procedure as in the experimental sec-
+tion, we discharge the battery by approximately 50% at 0.2 C, then
+Fig. 8. Average surface coverage in the cathode under different discharge rates.
+Fig. 9. Normalized average number of Li2S nuclei per unit area.
+P. Andrei et al. / Electrochimica Acta 284 (2018) 469e484
+479
+
+<<PAGE 12>>
+we discharge at 1 C until the voltage of the battery is 1.8 V (i.e. the
+battery is almost dead), after which we continue with a discharge at
+0.2 C. The result of this simulation is presented in Fig. 10 with
+continuous, while the discharges at 1 C and 0.2 C are represented
+with dash lines. The two main observations made in section 2 about
+the experimental voltage curve at variable discharge rate are also
+valid for the simulations presented in Fig. 11.
+First, in qualitative agreement with the experimental data
+shown in Fig. 3, the voltage of the battery during the discharge from
+point “F” to point “G” is smaller than the voltage between the same
+speciﬁc capacities on the 0.2 C curve (see the red dash line in
+Fig. 11). In addition, the total speciﬁc capacity obtained by dis-
+charging the battery at variable rate (at point “G”) is smaller than
+the speciﬁc capacity obtained by discharging the battery at a con-
+stant rate of 0.2 C. These results are due to the fact that the rate at
+which the nuclei appear during the 1 C region of the discharge are
+different from the rate at which they are would appear if the rate
+was 0.2 C; for this reason, the rate at which surface coverage
+changes is different during the 1 C discharge (i.e. from point “E” to
+“F”) than during discharge at 0.2 C, and the cathode becomes
+passivated faster at 1 C than at 0.2 C.
+Second, also in agreement with the experimental data, the ca-
+pacity from point “B” to “C” in Fig. 11 (SC1) is smaller than the ca-
+pacity from point “E” to “F” (SC2). This result is somewhat
+unexpected because the cathode is partly covered with solid Li2S at
+point “E” and we expect that the remaining capacity be smaller
+than the one obtained by starting from point “B”, where the cath-
+ode is completely uncovered. The explanation of this phenomenon
+is due to the fact that the surface coverage increases much faster
+from point “B” to “C” than from “E” to “F”. Indeed, in the case of
+constant discharge at 1 C, the initial number of nuclei at point “B” is
+0, which results in a large surface oversaturation and a formation of
+a large number of nucleation seeds at point “B”. These seeds will
+grow in size uniformly from “B” to “C” until completely covering
+and passivating the surface of the cathode. If the battery is dis-
+charged at 0.2 C a smaller number of nucleation seeds are formed at
+point “D” because the surface oversaturation is much smaller than
+at point “B”. The relatively small number of nuclei will grow slowly
+from “D” to “E”. When the discharge rate is changed to 1 C at point
+“E”, the cathode surface already contains a small number of
+nucleation seeds that provide growing centers for further discharge
+(from “E” to “F”). This phenomenon is consistent with the experi-
+mental results published in Fig. 3.
+Finally, the above result prompts up to the conclusion that in
+order to increase the capacity of Li-S batteries it is better to artiﬁ-
+cially introduce a small number of nucleation seeds in the cathode,
+which will avoid reaching large surface oversaturations during the
+discharge of the battery. The number of nucleation seeds should not
+be too large so the nuclei will touch each other and passivate the
+surface of the carbon too soon during the growth process, however
+it should be large enough to allow the molecules of the solid
+product to deposit easily and avoid excessive oversaturation.
+Practically, this can be achieved by adding catalyst particles that
+would promote the nucleation of the solid product in speciﬁc lo-
+cations of the cathode. The catalyst particles should work as
+nucleation seeds during the precipitation process. In addition to
+increasing the speciﬁc capacity, the catalyst particles will also
+eliminate the voltage dip at the beginning of the last plateau in
+Figs. 3 and 7.
+Fig. 10. Average oversaturation (a) and surface oversaturation of Li2S (b) in the cathode
+as a function of the speciﬁc capacity.
+Fig. 11. Simulated cell voltage under variable discharge rate of consecutive 0.2 C-1 C-
+0.2 C steps (continuous line). The dash lines represent the cell voltage under constant
+discharge rates of 0.2 C and 1 C, respectively. Speciﬁc capacity SC1 measured from the
+beginning of the precipitation process until the death of the battery at 1 C is smaller
+than speciﬁc capacity SC2.
+P. Andrei et al. / Electrochimica Acta 284 (2018) 469e484
+480
+
+<<PAGE 13>>
+5. Conclusions
+After reviewing the various phenomena that result in rate-
+dependent speciﬁc capacities in Li-S batteries, we conclude that
+the sudden death of the batteries fabricated in our study is due to
+surface passivation of the active area of the cathode with solid re-
+action products. To explain the discharge characteristics of the Li-S
+batteries we developed a mathematical model based on the classical
+Kolmogorov-Avrami
+nucleation
+theory.
+However,
+instead
+of
+expressing the model in integral form and keeping track of the
+numberand size distribution of the nucleation seeds ateach location
+inside the battery as it is usually done in the literature, we write the
+surface coverage in the form of a system of differential equations
+(see eqs. (17)-(19)). This system can be coupled with the classical
+transport equations in multicomponent electrolytes (see eqs. (20)-
+(24)) and solved efﬁciently using the ﬁnite element technique.
+An important feature of our model is that it uses surface over-
+saturation as the driving force for nucleation. Since the surface
+oversaturation is rate-dependent, the nucleation rate depends on
+the current rate of discharge. We have shown that, the nucleation
+rate is higher at high discharge rates, which results in a larger
+number of nuclei of relatively small size on the surface of the
+cathode. At low discharge rates the nucleation rate is lower, the
+number of nuclei is smaller, however, the nuclei grow in larger
+sizes. Based on this model we are able to describe qualitatively
+correctly the decrease of the capacity of Li-S batteries with
+increasing discharge rate and explain the experimental values of
+the speciﬁc capacity obtained under variable discharge currents.
+The model can also be applied to the study of electrochemical
+impedance spectra (EIS) of Li-S batteries by linearizing the trans-
+port equation and applying the small-signal perturbation technique
+to evaluate the complex impedance. EIS can provide important
+information about the kinetic dynamics and relaxation times in the
+battery [51e53].
+Acknowledgments
+This work was supported by the National Science Foundation
+under Grant No. 1609860. The authors would also like to
+acknowledge J. Xie and M. Zheng for providing the CNT foams and
+SEM images presented in this work.
+Appendix A. Equation Chapter (Next) Section 1
+To develop a model for the growth of solid products we assume
+that nucleation takes place on the surface of the electron conduc-
+tive material and nuclei grow in the perpendicular direction to the
+interface and parallel to the surface (see Fig. A.1). We also assume
+that the precipitation process starts at t ¼ 0 and nuclei are formed
+on the surface of the electron conductive material with at a time-
+dependent nucleation rate nkðtÞ (expressed in nuclei per unit area
+and unit time), where index k can be Li2S8ðsÞ, Li2S6ðsÞ, Li2S4ðsÞ,
+Li2S2ðsÞ, and Li2SðsÞ. We denote the volume at time t of one nucleus
+formed at time t0 by Vkðt0; tÞ and the surface area occupied by this
+nucleus by Akðt0;tÞ, t0  t. Vk and Ak are the volume and the coverage
+calculated by assuming that the nucleus does not touch or interact
+with other nuclei during the growth process.
+The driving force for the grown of the nuclei is oversaturation,
+SkðtÞ. If skðt0; tÞ is the external surface area at time t of one nucleus
+formed at time t0 (excluding the area of the base), the rate at which
+the volume of the nucleus changes in time is
+vVkðt0; tÞ
+vt
+¼ Kkskðt0; tÞSkðtÞ; t  t0
+(A.1)
+where Vkðt0; t0Þ ¼ 0 and Kk is a rate constant describing how fast the
+nucleus grows once the seed is formed. To ﬁnd the dependence of
+the external surface area sk on volume Vk we assume that the
+precipitates are semispherical with radius rk. In the case of semi-
+spherical precipitates sk ¼ 2pr2
+k, which yields sk ¼ ð18pÞ1=3V2=3
+k
+.
+Using this equation, eq. (A.1) becomes
+vVkðt0; tÞ
+vt
+¼ ð18pÞ1=3KkV2=3
+k
+ðt0; tÞSkðtÞ; t  t0
+(A.2)
+which can be integrated to give
+Vkðt0; tÞ ¼ 3ð18pÞK3
+k
+2
+4
+Zt
+t0
+SkðtÞdt
+3
+5
+3
+t  t0
+(A.3)
+The surface on which the precipitates grow is limited by the
+total surface area of the electrode, Amax. Therefore, by following the
+analysis by Kolmogorov [26] and Avrami [54,55], we write the rate
+at which the area coved by all the nuclei of species k increases in
+time as
+dAk;totalðtÞ
+dt
+¼
+
+1  AtotalðtÞ
+Amax
+	 dAk0ðtÞ
+dt
+(A.4)
+where AtotalðtÞ ¼ P
+k
+Ak;totalðtÞ is the total area covered by the pre-
+cipitates and dAk0ðtÞ
+dt
+is the rate at which the surface coved by the
+nuclei would grow if there were no overlapping regions (i.e. all the
+precipitates would grow isolated from each other). Dividing eq.
+(A.4) by Amax, we obtain
+dqkðtÞ
+dt
+¼ ½1  qðtÞ dqk0ðtÞ
+dt
+(A.5)
+where qkðtÞ ¼ Ak;totalðtÞ
+Amax
+is the surface coverage, qðtÞ ¼ P
+k
+qkðtÞ, and
+qk0ðtÞ is the hypothetical surface coverage calculated as if the
+growth fronts did not overlap
+qk0ðtÞ ¼
+Zt
+0
+nkðt0ÞAkðt0; tÞdt0
+(A.6)
+Notice that by integrating (A.5) we obtain the 2-D Kolmogorov
+equation, qkðtÞ ¼ 1  exp½  R t
+t0 nkðt0ÞAkðt0;tÞdt0, which was used in
+Refs. [14,25] to model surface coverage in Li-air and Li-S batteries.
+However, in this work, we are not interested in ﬁnding an integral
+equation for the surface coverage as we aim at deriving a differ-
+ential system of equations that describes surface coverage qkðtÞ.
+Introducing eq. (A.6) into (A.5) and using that Akðt0; t0Þ ¼ 0, we
+obtain the following equation for surface coverage
+Fig. A.1. Growth of the precipitate on the electron conductive surface (i.e. carbon).
+P. Andrei et al. / Electrochimica Acta 284 (2018) 469e484
+481
+
+<<PAGE 14>>
+dqkðtÞ
+dt
+¼ ½1  qðtÞ
+Zt
+0
+nkðt0Þ dAkðt0; tÞ
+dt
+dt0
+(A.7)
+The coverage area of one nucleus depends on volume Vk. For
+semispherical nuclei Ak ¼ pr2
+k, V ¼ 2pr3
+k=3 and we obtain Ak ¼
+ð9p=4Þ1=3V2=3
+k
+. Hence, eq. (A.7) becomes
+dqkðtÞ
+dt
+¼ 2ð9p=4Þ1=3
+3
+½1  qðtÞ
+Zt
+0
+nkðt0ÞV1=3
+k
+ðt0; tÞ vVkðt0; tÞ
+vt
+dt0
+(A.8)
+Using (A.2) and (A.6), eq. (A.8) becomes
+dqkðtÞ
+dt
+¼ 6p31=3K2
+k SkðtÞ½1  qðtÞ
+Zt
+0
+nkðt0Þ
+2
+4
+Zt
+t0
+SkðtÞdt
+3
+5ðt0; tÞdt0
+(A.9)
+The last integro-differential equation can be written in the form
+of a system of ﬁrst-order differential equations by introducing
+notations
+FkðtÞ ¼
+Zt
+0
+nkðt0Þ
+2
+4
+Zt
+t0
+SkðtÞdt
+3
+5ðt0; tÞdt0
+(A.10)
+GkðtÞ ¼
+Zt
+0
+nkðt0Þdt0
+(A.11)
+Since
+dFkðtÞ
+dt
+¼ nkðt0Þ
+2
+4
+Zt
+t0
+SkðtÞdt
+3
+5
+t0¼t
+þ
+Zt
+0
+nkðt0Þ d
+dt
+2
+4
+Zt
+t0
+SkðtÞdt
+3
+5dt0
+¼ SkðtÞ
+Zt
+0
+nkðt0Þdt0 ¼ SkðtÞGkðtÞ
+(A.12)
+eq. (A.9) can be split into three ordinary differential equations
+dqkðtÞ
+dt
+¼ 6p31=3K2
+k SkðtÞ½1  qkðtÞFkðtÞ
+(A.13)
+dFkðtÞ
+dt
+¼ SkðtÞGkðtÞ
+(A.14)
+dGkðtÞ
+dt
+¼ nkðtÞ
+(A.15)
+The initial conditions for functions Fk and Gk can be obtained by
+introducing t ¼ 0 in (A.10) and (A.11), respectively: Fkð0Þ ¼ Gkð0Þ ¼
+0. By deﬁning K0
+k ¼ 6p31=3K2
+k system (A.13)e(A.15) leads to eqs.
+(17)-(19).
+Appendix B. Nomenclature
+a
+total speciﬁc area of the cathode excluding the area
+covered by S8(s), m2 m3
+a0
+speciﬁc area of the cathode including the area covered
+by S8(s), m2 m3
+ai;surf
+activities of species i at the surface of the carbon, mol
+m3
+A-
+anions in the LiTFSI salt and LiNO3 electrolyte additive
+b
+Bruggeman constant
+ci
+concentration of species i in the channels, mol m3
+ci:surf
+concentration of species i at the surface of the carbon,
+mol m3
+Di
+diffusion coefﬁcient of species i in bulk material, m2 s1
+D0
+i
+effective value of the diffusion coefﬁcient of species i, m2
+s1
+fi
+molar concentration activity coefﬁcients of species i
+F
+Faraday constant, 96,485, C mol1
+Fk
+integration function, m2 s
+Gk
+integration function describing the number of nuclei per
+unit area, m2
+i0;j
+exchange current density for the j-th electrochemical
+reaction, A m2
+k
+Boltzmann constant, 1.38  1023 J K1
+kk0
+precipitation rate constant for species k0 (units depends
+on specie)
+K0
+k
+parameter describing how fast precipitation product k
+grows once the nucleation seed is formed, m2
+Ksp;k0
+solubility product for species k0 (units depends on
+species)
+LC
+cathode width, m
+LS
+separator width, m
+m
+parameter describing the area coverage with S8(s)
+nj
+number of electrons participating in the j-th
+electrochemical reaction
+nk
+number of nuclei of species k that appear peer unit area
+of the carbon and unit time, m2 s1
+Mk
+parameter deﬁned in eq. (13), m2 s1
+Nk
+parameter deﬁned in eq. (13)
+q
+absolute value of electron charge, 1.6  1019 C
+R
+ideal gas constant, 8,3143 J mol1 K1
+RA
+reaction rate at the anode (production of species i at the
+surface of the carbon), mol m2 s1
+Ri
+reaction rate (production of species i at the surface of
+the carbon), mol m2 s1
+rk0
+precipitation rate of species k0 (dissolution is deﬁned as
+ rk0), mol m3 s1
+si;j
+stoichiometric coefﬁcients of species i in
+electrochemical reaction j
+Sk
+oversaturation of ionic species entering the formation of
+solid species k in the channels
+Sk;surf
+oversaturation of ionic species entering the formation of
+solid species k at the surface of the carbon
+t, t0
+time, s
+ti
+transference number of species i
+tþ
+transference number of cations (same as tLiþ)
+T
+temperature, K
+ui
+mobility of species i in bulk material, m2 s1 V1
+u0
+i
+effective value of the mobility of species i, m2 s1 V1
+U0
+open circuit voltage of battery at initial conditions, V
+Uj;ref
+reference open circuit voltage for electrochemical
+reaction j, V
+VT
+thermal voltage, VT ¼ kT=q
+V
+potential of electrons, V
+VA
+open circuit voltage of the anode reaction with respect
+to the Li electrode, V
+Vk0
+partial molar volumes of the precipitates, m3 mol1
+zi
+charge number of species i, m3 mol1
+Greek symbols
+P. Andrei et al. / Electrochimica Acta 284 (2018) 469e484
+482
+
+<<PAGE 15>>
+a
+symmetry factor
+ε
+fraction of the electrolyte
+gi;k
+number of moles of ionic species i in the solid species k
+k
+electrolyte conductivity, S m1
+li
+parameter deﬁned in eq. (15), s m1
+h
+overpotential at the cathode, V
+hA
+overpotential at the anode, V
+s
+conductivity of the electron conductive material, S m1
+f
+electrostatic potential of electrolyte, V
+q
+total relative coverage
+qk
+relative coverage of species k
+qini
+initial fraction of the uncovered area of the cathode
+Subscripts and superscripts
+CNT
+carbon nanotube or carbon phase
+i
+indexes the 8 mobile species in the electrolyte Liþ, S8,
+S2
+8 , S2
+6 , S2
+4 , S2
+2 , S2, and A
+j
+indexes the 5 electrochemical reactions at the cathode,
+eqs. (2)e(6)
+k
+indexes the 5 precipitates Li2S8ðsÞ, Li2S6ðsÞ, Li2S4ðsÞ,
+Li2S2ðsÞ, and Li2SðsÞ
+k0
+indexes the 6 solid species S8ðsÞ, Li2S8ðsÞ, Li2S6ðsÞ, Li2S4ðsÞ,
+Li2S2ðsÞ, and Li2SðsÞ
+surf
+surface of carbon
+ref
+reference value
+(s)
+solid
+References
+[1] X. Ji, L.F. Nazar, Advances in Li-S batteries, J. Mater. Chem. 20 (2010)
+9821e9826.
+[2] H. Liao, H. Zhang, H. Hong, Z. Li, Y. Lin, Novel ﬂower-like hierarchical carbon
+sphere with multi-scale pores coated on PP separator for high-performance
+lithium-sulfur batteries, Electrochim. Acta 257 (2017) 210e216.
+[3] Y.V. Mikhaylik, J.R. Akridge, Polysulﬁde shuttle study in the Li/S battery sys-
+tem, J. Electrochem. Soc. 151 (2004) A1969eA1976.
+[4] M. Eom, S. Son, C. Park, S. Noh, W.T. Nichols, D. Shin, High performance all-
+solid-state lithium-sulfur battery using a Li2S-VGCF nanocomposite, Electro-
+chim. Acta 230 (2017) 279e284.
+[5] H. Ben youcef, O. Garcia-Calvo, N. Lago, S. Devaraj, M. Armand, Cross-linked
+solid polymer electrolyte for all-solid-state rechargeable lithium batteries,
+Electrochim. Acta 220 (2016) 587e594.
+[6] P. Bonnick, E. Nagai, J. Muldoon, Perspectivedlithium-sulfur batteries,
+J. Electrochem. Soc. 165 (2018) A6005eA6007.
+[7] C. Shen, J. Xie, M. Zhang, P. Andrei, M. Hendrickson, E.J. Plichta, J.P. Zheng,
+Understanding the role of lithium polysulﬁde solubility in limiting lithium-
+sulfur cell capacity, Electrochim. Acta 248 (2017) 90e97.
+[8] B.D. McCloskey, Attainable gravimetric and volumetric energy density of LieS
+and Li ion battery cells with solid separator-protected Li metal anodes, J. Phys.
+Chem. Lett. 6 (2015) 4581e4588.
+[9] D. Eroglu, K.R. Zavadil, K.G. Gallagher, Critical link between materials chem-
+istry and cell-level design for high energy density and low cost lithium-sulfur
+transportation battery, J. Electrochem. Soc. 162 (2015) A982eA990.
+[10] M. Hagen, P. Fanz, J. Tübke, Cell energy density and electrolyte/sulfur ratio in
+LieS cells, J. Power Sources 264 (2014) 30e34.
+[11] K. Kumaresan, Y. Mikhaylik, R.E. White, A mathematical model for a lithium-
+sulfur cell, J. Electrochem. Soc. 155 (2008) A576eA582.
+[12] T. Zhang, M. Marinescu, S. Walus, G.J. Offer, Modelling transport-limited
+discharge capacity of lithium-sulfur cells, Electrochim. Acta 219 (2016)
+502e508.
+[13] T. Zhang, M. Marinescu, S. Walus, P. Kovacik, G.J. Offer, What limits the rate
+capability of Li-S batteries during discharge: charge transfer or mass transfer?
+J. Electrochem. Soc. 165 (2018) A6001eA6004.
+[14] Y.X. Ren, T.S. Zhao, M. Liu, P. Tan, Y.K. Zeng, Modeling of lithium-sulfur bat-
+teries incorporating the effect of Li2S precipitation, J. Power Sources 336
+(2016) 115e125.
+[15] V. Thangavel, K.-H. Xue, Y. Mammeri, M. Quiroga, A. Mastouri, C. Guery,
+P. Johansson, M. Morcrette, A.A. Franco, A microstructurally resolved model
+for Li-S batteries assessing the impact of the cathode design on the discharge
+performance, J. Electrochem. Soc. 163 (2016) A2817eA2829.
+[16] A.F. Hofmann, D.N. Fronczek, W.G. Bessler, Mechanistic modeling of poly-
+sulﬁde shuttle and capacity loss in lithiumesulfur batteries, J. Power Sources
+259 (2014) 300e310.
+[17] A. Mistry, P.P. Mukherjee, Precipitationemicrostructure interactions in the Li-
+Sulfur battery electrode, J. Phys. Chem. C 121 (2017) 26256e26264.
+[18] Q. Pang, D. Kundu, M. Cuisinier, L.F. Nazar, Surface-enhanced redox chemistry
+of polysulphides on a metallic and polar host for lithium-sulphur batteries,
+Nat. Commun. 5 (2014) 4759.
+[19] H. Pan, J. Chen, R. Cao, V. Murugesan, N.N. Rajput, K.S. Han, K. Persson,
+L. Estevez, M.H. Engelhard, J.-G. Zhang, K.T. Mueller, Y. Cui, Y. Shao, J. Liu, Non-
+encapsulation
+approach
+for
+high-performance
+LieS
+batteries
+through
+controlled nucleation and growth, Nat. Energy 2 (2017) 813e820.
+[20] S.-Y. Lang, Y. Shi, Y.-G. Guo, D. Wang, R. Wen, L.-J. Wan, Insight into the
+interfacial process and mechanism in lithiumesulfur batteries: an in situ AFM
+study, Angew. Chem. Int. Ed. 55 (2016) 15835e15839.
+[21] Y. Ma, H. Zhang, B. Wu, M. Wang, X. Li, H. Zhang, Lithium sulfur primary
+battery with super high energy density: based on the cauliﬂower-like struc-
+tured C/S cathode, Sci. Rep.-Uk 5 (2015) 14949.
+[22] H.Y. Yang, H. Niimi, G. Lucovsky, Tunneling currents through ultrathin oxide/
+nitride dual layer gate dielectrics for advanced microelectronic devices,
+J. Appl. Phys. 83 (1998) 2327e2337.
+[23] Z. Liu, P.P. Mukherjee, Mesoscale elucidation of surface passivation in the
+LieSulfur battery cathode, ACS Appl. Mater. Interfaces 9 (2017) 5263e5271.
+[24] A. Milchev, S. Stoyanov, R. Kaischev, Atomistic theory of electrolytic nucle-
+ation: I, Thin Solid Films 22 (1974) 255e265.
+[25] S. Lau, L.A. Archer, Nucleation and growth of lithium peroxide in the LieO2
+battery, Nano Lett. 15 (2015) 5995e6002.
+[26] A.N. Kolmogorov, A statistical theory for the recrystallisation of metals, Izv.
+Akad. Nauk SSSR Ser. Mat. 3 (1937) 355e359.
+[27] T. Danner, G. Zhu, A.F. Hofmann, A. Latz, Modeling of nano-structured cath-
+odes for improved lithium-sulfur batteries, Electrochim. Acta 184 (2015)
+124e133.
+[28] M. Ghaznavi, P. Chen, Analysis of a mathematical model of lithium-sulfur cells
+Part III: electrochemical reaction kinetics, transport properties and charging,
+Electrochim. Acta 137 (2014) 575e585.
+[29] C. Shen, J. Xie, M. Zhang, J.P. Zheng, M. Hendrickson, E.J. Plichta, Communi-
+cationdeffect of lithium polysulﬁde solubility on capacity of lithium-sulfur
+cells, J. Electrochem. Soc. 164 (2017) A1220eA1222.
+[30] F.-f. Zhang, X.-b. Zhang, Y.-h. Dong, L.-m. Wang, Facile and effective synthesis
+of reduced graphene oxide encapsulated sulfur via oil/water system for high
+performance lithium sulfur cells, J. Mater. Chem. 22 (2012) 11452e11454.
+[31] H. Park, H.S. Koh, D.J. Siegel, First-Principles study of redox end members in
+lithiumesulfur batteries, J. Phys. Chem. C 119 (2015) 4675e4683.
+[32] Z. Feng, C. Kim, A. Vijh, M. Armand, K.H. Bevan, K. Zaghib, Unravelling the role
+of Li2S2 in lithiumesulfur batteries: a ﬁrst principles study of its energetic and
+electronic properties, J. Power Sources 272 (2014) 518e521.
+[33] M. Wild, L. O'Neill, T. Zhang, R. Purkayastha, G. Minton, M. Marinescu,
+G.J. Offer, Lithium sulfur batteries, a mechanistic review, Energy Environ. Sci. 8
+(2015) 3477e3494.
+[34] S. Drvaric Talian, J. Moskon, R. Dominko, M. Gaberscek, Reactivity and diffu-
+sivity of Li polysulﬁdes: a fundamental study using impedance spectroscopy,
+ACS Appl. Mater. Interfaces 9 (2017) 29760e29770.
+[35] D. Kashchiev, G.M. van Rosmalen, Review: nucleation in solutions revisited,
+Cryst. Res. Technol. 38 (2003) 555e574.
+[36] H. Noh, J. Song, J.-K. Park, H.-T. Kim, A new insight on capacity fading of
+lithiumesulfur batteries: the effect of Li2S phase structure, J. Power Sources
+293 (2015) 329e335.
+[37] F.Y. Fan, W.C. Carter, Y.-M. Chiang, Mechanism and kinetics of Li2S precipi-
+tation in lithiumesulfur batteries, Adv. Mater. 27 (2015) 5203e5209.
+[38] F.Y. Fan, M.S. Pan, K.C. Lau, R.S. Assary, W.H. Woodford, L.A. Curtiss,
+W.C. Carter, Y.-M. Chiang, Solvent effects on polysulﬁde redox kinetics and
+ionic conductivity in lithium-sulfur batteries, J. Electrochem. Soc. 163 (2016)
+A3111eA3116.
+[39] L. Suo, Y.-S. Hu, H. Li, M. Armand, L. Chen, A new class of Solvent-in-Salt
+electrolyte for high-energy rechargeable metallic lithium batteries, Nat.
+Commun. 4 (2013) 1481.
+[40] R. Younesi, G.M. Veith, P. Johansson, K. Edstrom, T. Vegge, Lithium salts for
+advanced lithium batteries: Li-metal, Li-O2, and Li-S, Energy Environ. Sci. 8
+(2015) 1905e1922.
+[41] R. Raccichini, J.W. Dibden, A. Brew, J.R. Owen, N. García-Araez, Ion speciation
+and transport properties of LiTFSI in 1,3-dioxolane solutions: a case study for
+LieS battery applications, J. Phys. Chem. B 122 (2018) 267e274.
+[42] L.O. Valoen, J.N. Reimers, Transport properties of LiPF6-based Li-ion battery
+electrolytes, J. Electrochem. Soc. 152 (2005) A882eA891.
+[43] K. Hayamizu, Direct relations between ion diffusion constants and ionic
+conductivity for lithium electrolyte solutions, Electrochim. Acta 254 (2017)
+101e111.
+[44] L. Cheng, L.A. Curtiss, K.R. Zavadil, A.A. Gewirth, Y. Shao, K.G. Gallagher,
+Sparingly solvating electrolytes for high energy density lithiumesulfur bat-
+teries, ACS Energy Lett. 1 (2016) 503e509.
+[45] D. Zheng, X. Zhang, C. Li, M.E. McKinnon, R.G. Sadok, D. Qu, X. Yu, H.-S. Lee, X.-
+Q. Yang, D. Qu, Quantitative chromatographic determination of dissolved
+elemental sulfur in the non-aqueous electrolyte for lithium-sulfur batteries,
+J. Electrochem. Soc. 162 (2015) A203eA206.
+[46] H. Pan, X. Wei, W.A. Henderson, Y. Shao, J. Chen, P. Bhattacharya, J. Xiao, J. Liu,
+On the way toward understanding solution chemistry of lithium polysulﬁdes
+for high energy LieS redox ﬂow batteries, Adv. Energy Mater. 5 (2015)
+1500113en/a.
+[47] M. Marinescu, T. Zhang, G.J. Offer, A zero dimensional model of lithium-sulfur
+P. Andrei et al. / Electrochimica Acta 284 (2018) 469e484
+483
+
+<<PAGE 16>>
+batteries during charge and discharge, Phys. Chem. Chem. Phys. 18 (2016)
+584e593.
+[48] T. Zhang, M. Marinescu, L. O'Neill, M. Wild, G. Offer, Modeling the voltage loss
+mechanisms in lithium-sulfur cells: the importance of electrolyte resistance
+and precipitation kinetics, Phys. Chem. Chem. Phys. 17 (2015) 22581e22586.
+[49] M. Marinescu, L. O'Neill, T. Zhang, S. Walus, T.E. Wilson, G.J. Offer, Irreversible
+vs reversible capacity fade of lithium-sulfur batteries during cycling: the ef-
+fects
+of
+precipitation
+and
+shuttle,
+J.
+Electrochem.
+Soc.
+165
+(2018)
+A6107eA6118.
+[50] RandFlux, Florida A&M University and Florida State University, Tallahassee,
+FL, http://www.eng.fsu.edu/ms/RandFlux, Florida A&M University and Florida
+State University, pp. User manual v. 0.6.
+[51] J. Conder, C. Villevieille, S. Trabesinger, P. Novak, L. Gubler, R. Bouchet,
+Electrochemical impedance spectroscopy of a LieS battery: Part 1. Inﬂuence of
+the electrode and electrolyte compositions on the impedance of symmetric
+cells, Electrochim. Acta 244 (2017) 61e68.
+[52] J. Conder, C. Villevieille, S. Trabesinger, P. Novak, L. Gubler, R. Bouchet, Elec-
+trochemical impedance spectroscopy of a LieS battery: Part 2. Inﬂuence of
+separator chemistry on the lithium electrode/electrolyte interface, Electro-
+chim. Acta 255 (2017) 379e390.
+[53] N.A. Ca~nas, K. Hirose, B. Pascucci, N. Wagner, K.A. Friedrich, R. Hiesgen, In-
+vestigations of lithiumesulfur batteries using electrochemical impedance
+spectroscopy, Electrochim. Acta 97 (2013) 42e51.
+[54] M. Avrami, Kinetics of phase change II, J. Phys. Chem. A 8 (1940) 212e224.
+[55] M. Avrami, Kinetics of phase change I, J. Phys. Chem. A 7 (1939) 1103e1112.
+P. Andrei et al. / Electrochimica Acta 284 (2018) 469e484
+484

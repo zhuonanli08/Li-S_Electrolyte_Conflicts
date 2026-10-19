@@ -1,0 +1,1277 @@
+
+<<PAGE 1>>
+R E S E A R C H A R T I C L E
+Modeling the discharge behavior of a lithium-sulfur battery
+Nisa Erisen1
+|
+Damla Eroglu2
+1Department of Chemical Engineering,
+Middle East Technical University,
+Ankara, Turkey
+2Department of Chemical Engineering,
+Bogazici University, Istanbul, Turkey
+Correspondence
+Damla Eroglu, Department of Chemical
+Engineering, Bogazici University,
+Istanbul, Turkey 34342.
+Email: eroglud@boun.edu.tr
+Funding information
+Türkiye Bilimsel ve Teknolojik Aras¸tirma
+Kurumu, Grant/Award Number: 116M574
+Summary
+In lithium-sulfur (Li-S) batteries, the discharge performance depends greatly on
+a number of cell design parameters because of the complex reaction mecha-
+nisms in the cathode. Electrolyte-to-sulfur (E/S) ratio and carbon-to-sulfur (C/S)
+ratio in the cell are key examples of these critical design factors that define the
+Li-S battery performance. Here, a 1-D electrochemical model is reported to cal-
+culate the dependence of the discharge behavior of a Li-S battery on the E/S and
+C/S ratios. Proposed model describes the complex kinetics through two electro-
+chemical and two dissolution/precipitation reactions. Concentration variations
+in the cathode are also taken into account in the model. Characteristic aspects
+of the discharge profile of a Li-S battery -the two distinct voltage plateaus and
+the voltage dip in between- are captured in the predicted voltage curve. Similar
+trends on the discharge performance of the Li-S cell with varying E/S and C/S
+ratios are projected; both voltage and discharge capacity of the Li-S battery are
+improved substantially with increasing C/S or E/S ratio up to a certain point,
+whereas, the dependence of the discharge performance on these factors is less
+substantial at higher ratios. This model offers a mechanistic interpretation of the
+influence of cell design on the Li-S battery performance.
+K E Y W O R D S
+carbon-to-sulfur ratio, cell design, electrochemical modeling, electrolyte-to-sulfur ratio, lithium-
+sulfur batteries
+1
+|
+INTRODUCTION
+Lithium-Sulfur (Li-S) batteries have gained major consid-
+eration in recent years due to their high theoretical gravi-
+metric energy density and high-capacity, inexpensive and
+abundant cathode materials.1-6 In Li-S batteries, the bat-
+tery performance depends vastly on cell design because
+of the complex mechanisms taking place in the cell.1-5
+Carbon-to-sulfur (C/S) and electrolyte-to-sulfur (E/S)
+ratios in the cell are commonly investigated examples of
+these design factors that define the battery perfor-
+mance.1-4 C/S ratio determines the electrochemical sur-
+face area in the cathode along with its electronic
+conductivity and thus has a key impact on the cathode
+kinetics.1-3 Similarly, E/S ratio controls the reaction and
+shuttle kinetics in the cell and therefore dictates the sul-
+fur utilization.1,2,4 Consequently, both the cell voltage
+and the discharge capacity of a Li-S battery are signifi-
+cantly sensitive to these factors, specifically until a cer-
+tain threshold. The influence of C/S and E/S ratios on
+the discharge behavior of a Li-S cell has been experimen-
+tally explored extensively in the literature.7-17 However,
+mechanistic interpretations of the connection between
+cell design and discharge performance are very limited.
+Cathode kinetics in a Li-S battery is extremely compli-
+cated with numerous electrochemical and precipitation
+reactions. Subsequently, there is an extensive research effort
+on
+the
+modeling
+of
+Li-S
+batteries.18-28
+As
+example,
+Kumaresan et al19 proposed a detailed 1-D model for the
+discharge of a Li-S cell, in which the cathode kinetics is
+Received: 27 February 2020
+Revised: 10 June 2020
+Accepted: 10 June 2020
+DOI: 10.1002/er.5701
+Int J Energy Res. 2020;44:10599–10611.
+wileyonlinelibrary.com/journal/er
+© 2020 John Wiley & Sons Ltd
+10599
+
+<<PAGE 2>>
+described with six electrochemical and five dissolution/pre-
+cipitation reactions. In their model, Kumaresan et al19 con-
+sidered the concentration variations along the cell and thus
+the transport of the species in the electrolyte, while disre-
+garding the polysulfide shuttle mechanism. Following this
+work, many others proposed models based on the afore-
+mentioned study.20,21,23-27 These previous models offer an
+insight into the complex mechanisms in a Li-S cell; yet,
+modeling efforts on the influence of cathode design on
+these characteristic processes are much more limited.2-4
+In this study, we aim to model the dependence of the
+discharge performance of a Li-S battery on the critical cell
+design parameters (C/S ratio and E/S ratio). A 1-D electro-
+chemical model is reported to capture and interpret the
+influence of E/S and C/S ratios on the discharge capacity
+and voltage profile. Therefore, with the model discussed
+here, we offer a mechanistic explanation to the experimen-
+tal trends reported in the literature on the influence of cell
+design on the discharge behavior of the Li-S battery.
+2
+|
+MODEL DEVELOPMENT
+Herein, we present a 1D concentration- and time-
+dependent electrochemical model of a Li-S cell. As stated
+above, Kumaresan et al19 developed a detailed model for
+the Li-S cell, which has been adopted subsequently by
+many others in the literature. Therefore, the model pro-
+posed in this study is also based on Kumaresan et al.19 As
+shown in Figure 1, our modeling domain includes only
+the porous cathode. This simplification is done to obtain
+a less complicated model with fewer assumed parame-
+ters. This approach has also been taken by the others pre-
+viously since the Li-S cell overpotential is typically
+dominated by the cathode.18,28 The assumptions in the
+model are listed below:
+• A 1-D concentration- and time-dependent electro-
+chemical model of a Li-S cell is demonstrated for an
+isothermal, constant-current discharge. The model
+accounts for the porous cathode only; the contribu-
+tions of the anode and separator overpotentials to the
+cell overpotential are neglected.
+• A reaction mechanism in which each of the high and
+low voltage plateaus are represented by a single elec-
+trochemical reaction is used to describe the cathode
+kinetics.2,18,22,28 Consequently, the model discounts
+the polysulfide shuttle mechanism or the side reac-
+tions. The discharge-charge reactions in the cathode
+are assumed to be symmetric and the transfer coeffi-
+cients are taken as 0.5.
+• The only polysulfide that can precipitate during dis-
+charge is Li2S(s).
+• Carbon
+volume
+fraction
+controls
+the
+cathode
+active area.
+• The anode can supply unlimited amount of Li.
+The reaction mechanism in the model is described in
+Equations
+(1)-(4).
+As
+mentioned
+before,
+unlike
+Kumaresan et al,19 there are two electrochemical reac-
+tions [Equations (2) and (3)] in our model. In addition,
+the dissolution/precipitation reactions of S8(s) and Li2S(s),
+which is the only discharge product that precipitates, are
+taken into account in Equations (1) and (4), respectively.
+This suggested reaction mechanism considering two dis-
+solution/precipitation and two electrochemical reactions
+has been proposed previously by Hoffmann et al.22 Since
+our aim here is to model the dependency of the discharge
+behavior of a Li-S cell on the C/S and E/S ratios as simple
+as possible, a less complicated reaction scheme (com-
+pared to six electrochemical and five dissolution/precipi-
+tation reactions in Kumaresan et al19) has been preferred.
+Consequently, in the model there are five species present
+in the electrolyte, Li+, S8
+0, S4
+2−, S2−, A−, and two
+precipitates, Li2S(s) and S8(s), in the cathode during
+discharge.
+S8 sð Þ $ S8
+0
+ð1Þ
+1
+4S8
+0 + e−$ 1
+2S4
+2−
+ð2Þ
+1
+6S4
+2−+ e−$ 2
+3S2−
+ð3Þ
+2Li + + S2−$ Li2S sð Þ
+ð4Þ
+There
+are
+14
+variables
+in
+the
+model:
+CLi + ,
+CS80,CS42−,CS2−,CA−
+are the concentrations of the Li+,
+S8
+0, S4
+2−, S2−, A−ions, respectively, i1 and i2 are the
+FIGURE 1
+Schematic diagram of the Li-S cell in the model
+10600
+ERISEN AND EROGLU
+ 1099114x, 2020, 13, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.5701 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 3>>
+current densities of the electrochemical reactions shown
+in Equation (2) and (3), respectively, ϕs and ϕe and is and
+ie are the solid- and liquid-phase potentials and current
+densities, respectively, ε is cathode porosity (or the elec-
+trolyte volume fraction in other words) and εLi2S sð Þ and
+εS8 sð Þ are the volume fractions of Li2S(s) and S8(s) precipi-
+tates, respectively. In order to investigate the change of
+these 14 parameters with respect to time and position in
+the cathode, the governing equations [Equations (5)-(18)]
+given in Table 1 are used. The detailed description of the
+model is given in Supporting information. The model is
+developed using a block tri-diagonal matrix algorithm in
+FORTRAN29 by using 501 node points and 0.1 second
+time-step size. Doubling the node points or halving the
+time-step size ends up with a negligible change in the
+results.
+Discharge profiles are predicted using the proposed
+model to explore the impact of C/S and E/S ratios on the
+discharge behavior of a Li-S battery. Tables 2 to 4 report
+the model parameters used in these analyses.
+As shown in Table 2, the cathode specific surface area is
+defined as a function of the carbon volume fraction. In the
+previous models, the change in the area with changing
+porosity as a consequence of the precipitation of discharge
+products has been considered. However, as will be discussed
+in the next section, the alteration proposed here is required
+to include the impact of the C/S ratio on reaction kinetics.
+Therefore, the equation proposed by Kumaresan et al
+(Equation 16 in Reference 19) is modified here to define the
+electrochemically active area based on the carbon volume
+fraction in the cell. On the other hand, the impact of E/S ratio
+on the discharge behavior can be realized inherently, most
+probably due to the inclusion ofdissolution/precipitation
+reactions in the reaction mechanism. Yet, for examining the
+influence of E/S ratio on the discharge behavior exclusively,
+both the carbon volume fraction and the sulfur loading were
+kept constant in the model in this part of the analysis. In the
+model any variation in the porosity leads to a change in both
+carbon and sulfur volume fractions and consequently in sul-
+fur loading at a given thickness. Keeping the carbon volume
+fraction constant for each E/S ratio cancels the impact of εc
+on the cell area thus on the cathode kinetics. Moreover, the
+cathode thickness is changed with varying E/S ratio so that
+the sulfur loading remains constant and thus its influence on
+the discharge capacity is disabled in the model. Another pos-
+sible way of investigating the impact of E/S ratio on the cath-
+ode kinetics would be by keeping the C/S ratio constant.
+However, in that case the electrochemically active area must
+be defined in terms of the C loading rather than the carbon
+volume fraction in the cathode so that changing porosity
+does not affect the electrochemically active area additionally
+via changing εc. This will be considered in our future work.
+3
+|
+RESULTS AND DISCUSSION
+The discharge profile predicted by the model is shown in
+Figure 2. It can be discussed that the proposed profile
+captures the essential characteristics of the discharge
+behavior.
+For
+instance,
+the
+two
+distinct
+discharge
+TABLE 1
+Governing equations in
+the electrochemical model
+Variable
+Cathode governing equations
+CLi +
+∂εCLi +
+∂t
+= −∂NLi +
+∂x
+−RLi +
+(5)
+CS80
+∂εCS80
+∂t
+= −
+∂NS80
+∂x
++ rS80 −RS80
+(6)
+CS42−
+∂εCS42−
+∂t
+= −
+∂NS42−
+∂x
++ rS42−
+(7)
+CS2−
+∂εCS2−
+∂t
+= −∂NS2−
+∂x
++ rS2−−RS2−
+(8)
+CA−
+CA−= CLi + −2CS42−−2CS2−
+(9)
+i1
+i1 = i0,1ref
+CS42−
+CS42−,ref
+
+1=2
+exp αa1F
+RT η1
+
+
+−
+CS80
+CS80,ref
+
+1=4
+exp −αc1F
+RT η1
+
+
+(
+)
+(10)
+i2
+i2 = i0,2ref
+CS2−
+CS2−,ref
+
+2=3
+exp αa2F
+RT η2
+
+
+−
+CS42−
+CS42−,ref
+
+1=6
+exp −αc2F
+RT η2
+
+
+
+	
+(11)
+ϕs
+is = −σ ∂ϕs
+∂x
+(12)
+ϕe
+ie = FP
+i
+ziNi
+(13)
+is
+is + ie = Iapp
+(14)
+ie
+∂ie
+∂x = a i1 + i2
+ð
+Þ
+(15)
+ε
+∂ε
+∂t = −
+~V Li2S sð ÞR0
+Li2S sð Þ + ~V S8 sð Þ R0
+S8 sð Þ
+
+
+(16)
+εLi2S
+∂εLi2S sð Þ
+∂t
+= ~VLi2S sð ÞR0
+Li2S sð Þ
+(17)
+εS8 sð Þ
+εS8 sð Þ = 1−ε−εLi2S sð Þ −εcarbon −εbinder
+(18)
+ERISEN AND EROGLU
+10601
+ 1099114x, 2020, 13, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.5701 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 4>>
+plateaus are obvious in the figure. Moreover, the voltage
+dip between the two plateaus is apparent in the profile.
+With the intention of interpreting the discharge behavior
+further, the model predictions for the concentration pro-
+files of Li+, S8
+0, S4
+2−, S2−and A−ions at different dis-
+charge depths are presented in Figure 3. As seen in
+Figure 3A, Li+ concentration increases along the cathode
+in the early stages of discharge, whereas, it decreases con-
+tinuously once the precipitation of Li2S(s) in the cathode
+initiates. On the other hand, S8
+0 concentration decreases
+constantly throughout discharge since any dissolved S8
+0
+is immediately consumed by the first electrochemical
+reaction (Figure 3B). Consequently, near the end of dis-
+charge S8
+0 concentration is practically zero almost for the
+entire cathode. The concentration profile of S4
+2−shown
+in Figure 3C follows a different trend; S4
+2−concentration
+increases significantly throughout the cathode in the
+early stages of discharge due to its production in the first
+electrochemical reaction. However, as soon as the second
+voltage plateau is reached and thus the second electro-
+chemical reaction starts to dominate, S4
+2−concentration
+starts to decrease constantly all along the cathode till the
+end of discharge. Figure 3D shows that S2−concentration
+increases dramatically in the first discharge plateau,
+while it diminishes steadily as the discharge continues
+with the Li2S(s) precipitation in the second voltage pla-
+teau. Interestingly, S2−concentration shows a maximum
+near the separator/cathode interface, which becomes
+apparent specifically at the end of discharge. Finally, the
+concentration of A−decreases across the cathode with
+increasing discharge depth as a result of the electro-
+neutrality principle (Figure 3E). It may be discussed that
+the concentration gradients for all species are less signifi-
+cant near the cathode/current collector interface at
+almost all discharge depths. This may be explained by the
+migration of the reaction front towards the separator/
+cathode interface as the discharge proceeds.
+TABLE 2
+Model parameters
+High voltage plateau standard
+potential, U1
+0(V)
+2.35
+Low voltage plateau standard
+potential, U2
+0 (V)
+2.0
+Exchange current density of first
+electrochemical reaction, io, 1ref
+(A cm−2)
+1.0 × 10−6
+Exchange current density of second
+electrochemical reaction, io, 2ref
+(A cm−2)
+0.5 × 10−6
+Temperature, T (K)
+298
+Current density at 1C, I (mA cm−2)19 a
+2.275
+Carbon:Sulfur:Binder weight ratios
+(wt%)
+45:45:10
+C/S ratio
+1
+Initial cathode porosity, εinitial
+0.90
+E/S ratio (mL g S−1)
+10.48
+Cathode thickness, L (μm)19
+41
+Transfer coefficients, αa, αc
+19
+0.5
+Cathode electronic conductivity, σ
+(S m−1)28
+1.0
+Cathode electrochemically active area,
+a (cm−1)b
+a = AρC εC
+ε
+εinitial
+
+1:5
+Initial Li2S(s) volume fraction in the
+cathode, εLi2Sinitial
+21
+1.0 × 10−4
+aA fixed C-rate of 1C is used in the model.
+bCathode electrochemically active area suggested by Kumaresan
+et al19 is modified.1-4
+TABLE 3
+Model parameters in the
+investigation of the effect of C/S ratio*
+Carbon:Sulfur weight ratios (wt%)a
+10:80
+30:60
+45:45
+60:30
+70:20
+75:15
+C/S ratio
+0.125
+0.5
+1
+2
+3.5
+5
+Initial cathode porosity, εinitial
+0.90
+aBinder amount is 10 wt% in all cells. *A fixed C-rate of 1C is used in the model.
+TABLE 4
+Model parameters in the
+investigation of the effect of E/S ratio*
+Carbon:Sulfur weight ratios (wt%)a
+5.7:84.3
+17.8:72.2
+23.5:66.5
+40:50
+C/S ratio
+0.07
+0.25
+0.35
+0.80
+Initial cathode porosity, εinitial
+0.8
+0.94
+0.95
+0.97
+E/S ratio (mL g S−1)
+2.4
+10.0
+14.5
+33.6
+Carbon volume fraction, εC
+0.0128
+Cathode thickness, L (μm)
+32
+118
+168
+381
+Sulfur loading (mg cm−2)
+1.1
+aBinder amount is 10 wt% in all cells. *A fixed C-rate of 1C is used in the model.
+10602
+ERISEN AND EROGLU
+ 1099114x, 2020, 13, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.5701 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 5>>
+In Figure 4, the variation of the volume fractions of
+the electrolyte, Li2S(s) and S8(s) during discharge is pres-
+ented. As seen in Figure 4A, cathode porosity increases
+in the early stages of discharge by the sulfur dissolution,
+whereas, it decreases continually at the low voltage pla-
+teau due to the Li2S(s) precipitation. Li2S(s) and S8(s) vol-
+ume fraction profiles shown in Figure 4B,C, respectively,
+are in parallel with this discussion. Li2S(s) volume frac-
+tion is almost zero everywhere in the cathode in the high
+voltage plateau, while it increases significantly with
+increasing discharge depth in the second voltage plateau.
+On the other hand, S8(s) volume fraction decreases drasti-
+cally in the high voltage plateau as expected and con-
+tinues to decrease further as the discharge proceeds. At
+the end of discharge, almost all solid S is consumed in
+the cell. It is apparent in Figure 4A that the decrease in
+the porosity is greater near the separator/cathode inter-
+face, specifically at higher discharge depths. This may be
+again explained by the Li2S(s) volume fraction profile
+(Figure 4B); Li2S(s) volume fraction shows a maximum
+near the separator/cathode boundary. Therefore, it may
+be discussed that both the porosity and the Li2S(s) volume
+fraction become less uniform in the cathode as the dis-
+charge proceeds. This is a direct consequence of the non-
+uniform distributions of the concentrations and current
+densities within the cathode at higher discharge depths.
+3.1
+|
+Effect of C/S ratio on the discharge
+profile
+Predicted discharge profiles of Li-S cells at different C/S
+ratios are presented in Figure 5. Increasing the C/S ratio
+up to 2 increases the cell voltage significantly. However,
+any further rise in the C/S ratio does not create a sub-
+stantial change in the cell voltage. The dependence of the
+FIGURE 2
+Predicted discharge profile of a Li-S cell at 1C
+FIGURE 3
+Concentration profiles of, A, Li+, B S8
+0, C, S4
+2−, D, S2−, and E, A−at different discharge depths at 1C [Colour figure can be
+viewed at wileyonlinelibrary.com]
+ERISEN AND EROGLU
+10603
+ 1099114x, 2020, 13, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.5701 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 6>>
+discharge capacity on the C/S ratio is also apparent in the
+figure. The discharge capacity diminishes considerably at
+the lowest C/S ratio of 0.125, yet increasing the C/S ratio
+to 0.5 enhances the discharge capacity in a great manner.
+Any further increase in the C/S ratio after this point leads
+to a slight decrease in the capacity.
+As known, C/S ratios of 0.125, 0.5, and 1.0 are com-
+monly investigated examples in the Li-S literature. Our
+results predict that the Li-S cell with a C/S ratio of 0.125
+performs poorly both in terms of discharge voltage and
+capacity. In contrast, the Li-S cell with C/S = 0.5
+exhibits the highest discharge capacity among all cases
+as well as a considerably higher voltage compared to
+lower C loadings. The cell with a C/S ratio of 1, on the
+other hand, performs satisfactorily both based on the
+cell voltage and discharge capacity. It displays a higher
+cell voltage compared to the cell with C/S = 0.5, while
+achieving almost the same discharge capacity. It is also
+apparent in the figure that the voltage profile for
+C/S = 0.125 is considerably different than the others; it
+exhibits no first discharge plateau and a continuously
+decreasing voltage near the end of discharge rather than
+a sudden drop in the cell voltage. This trend has been
+previously reported in the literature for low C/S ratios
+(or high S loadings).10
+FIGURE 5
+The effect of C/S ratio in the cathode on the
+discharge profile of a Li-S cell at 1C [Colour figure can be viewed at
+wileyonlinelibrary.com]
+FIGURE 4
+The change in the, A, porosity, B, Li2S(S) volume fraction, and C, S8(s) volume fraction in the cathode at different discharge
+depths at 1C [Colour figure can be viewed at wileyonlinelibrary.com]
+10604
+ERISEN AND EROGLU
+ 1099114x, 2020, 13, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.5701 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 7>>
+The proposed electrochemical model captures the
+effect of C/S ratio on the cell performance by calculating
+the cathode active surface area based on the C/S ratio.
+Therefore, increasing the C/S ratio enhances the kinetics
+through the available surface area and thus improves cell
+voltage and capacity up to a certain point. However,
+when the kinetic limitations in the cathode are no longer
+significant, cell voltage becomes independent of the C
+loading. At these high C/S ratios, the capacity worsens
+slightly due to the reduction in the sulfur amount in the
+cathode. These trends predicted here are consistent with
+the previous experimental studies.3,9,10 Consequently, the
+proposed model can successfully capture the influence of
+the C/S ratio on the Li-S cell voltage and capacity.
+So as to further examine the impact of C loading on
+the discharge behavior, concentration profiles of S8
+0, S4
+2−,
+and S2−ions are compared in Figure 6 for C/S ratios of
+0.125, 1 and 5 both at the beginning of discharge and at
+940 mAh g S−1. The first obvious observation is that C/S
+ratio has a significant influence on the concentrations
+within the cathode. Lower C/S ratios result in higher S8
+0
+concentrations in the cathode (Figure 6A). At the begin-
+ning of discharge this may be due to a higher S loading in
+the cathode with a lower C/S ratio. On the other hand,
+diminished kinetics at lower ratios may be the reason of a
+higher S8
+0 concentration at greater discharge depths. For
+instance, at 940 mAh g S−1, S8
+0 concentrations for the
+cells with C/S = 1 and C/S = 5 are nearly identical
+suggesting a less pronounced impact of C/S ratio on this
+concentration at the second voltage plateau for higher
+ratios. Figure 6B shows that S4
+2−concentration at the ini-
+tial stage of discharge is significantly lower for the cell
+with C/S = 5, which may be due to a faster conversion of
+S4
+2−into S2−. This is consistent with the fact that the dis-
+charge profile for this cell presents a noticeably shorter
+high voltage plateau. Yet, at 940 mAh g S−1, the cell with
+C/S = 0.125 shows the lowest S4
+2−concentration within
+the cathode indicating that this cell is almost fully dis-
+charged at this time. In Figure 6c, the highest S2−concen-
+tration is obtained initially in the cathode with C/S = 5,
+FIGURE 6
+Comparison of, A, S8
+0, B, S4
+2−, and C, S2−concentration profiles for different C/S ratios at 100 mAh g S−1 (solid lines) and
+940 mAh g S−1 (dashed lines) [Colour figure can be viewed at wileyonlinelibrary.com]
+ERISEN AND EROGLU
+10605
+ 1099114x, 2020, 13, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.5701 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 8>>
+which confirms the previous discussion on the fast reduc-
+tion kinetics of S4
+2−into S2−at this ratio. On the other
+hand, C/S = 1 shows a very low initial S2−concentration
+suggesting that the conversion of S4
+2−into S2−has not
+started yet at this ratio. At 940 mAh g S−1, S2−concentra-
+tion for C/S = 1 is a little higher than C/S = 5, which is
+consistent with the slightly higher capacity of this cell.
+Unlike the other ratios, the cell with C/S = 0.125 presents
+a nonuniform S2−distribution, which may again be attrib-
+uted to its closeness to the fully discharged state.
+In Figure 7, the variation of average S8
+0, S4
+2−, and S2−
+concentrations with the depth of discharge is given for
+different C/S ratios. As expected from our discussions
+above, C/S ratio has a clear impact on the variation of the
+average species concentrations with the discharge capac-
+ity. As seen in Figure 7A, as the C/S ratio in the cathode
+increases, S8
+0 concentration starts to decrease more rap-
+idly in the early stages of discharge due to the faster
+reduction kinetics in the cathode. In parallel with this,
+the average S4
+2−concentration reaches to a lower maxi-
+mum value as the C/S ratio in the cathode increases since
+the reduction kinetics of S4
+2−into S2−is faster at higher
+C
+loadings
+(Figure
+7B).
+However,
+the
+cell
+with
+C/S = 0.125 does not follow the aforementioned trend;
+this may be because that at very low C/S ratios the con-
+version of S8
+0 into S4
+2−may be hindered. In Figure 7C,
+the impact of C/S ratio on the variance of average S2−
+concentration with depth of discharge may be interpreted
+in parallel with the previous discussions; the conversion
+of S4
+2−into S2−and thus the precipitation of Li2S start
+later as the C/S ratio in the cathode decreases. However,
+S2−concentration profile for C/S = 0.125 is again dis-
+obeying this trend. As mentioned above, the cell with
+C/S = 0.125 does not exhibit an upper voltage plateau in
+Figure 5; this unexpected S2−concentration profile for
+the cell with the lowest C/S ratio may be the reason of
+this projection.
+As known, carbon properties such as the specific sur-
+face area, pore size and electronic conductivity also have
+a significant effect on the Li-S battery performance. We
+have not investigated the impact of these design factors
+on the discharge performance in the scope of the current
+FIGURE 7
+Average, A, S8
+0, B, S4
+2−, and C, S2−concentrations as a function of discharge capacity for different C/S ratios [Colour figure
+can be viewed at wileyonlinelibrary.com]
+10606
+ERISEN AND EROGLU
+ 1099114x, 2020, 13, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.5701 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 9>>
+work; however, the proposed model can be used to study
+this dependence on the carbon properties. In the model,
+a, the electrochemically active surface area is defined as a
+function of the initial specific surface area of the cathode
+(A) as shown in Table 2. Therefore, the model can cap-
+ture the impact of the carbon specific surface area on the
+cathode kinetics by a variation in this model parameter.
+Similarly, the electronic conductivity of the cathode σ
+can be altered to discuss the effect of carbon properties
+on the discharge performance. Pore size, on the other
+hand, does not have an obvious influence on any model
+parameter. Its impact on the cell performance may be
+discussed indirectly through the change in the carbon
+specific surface area and electronic conductivity. This
+may be further investigated in a future study.
+3.2
+|
+Effect of E/S ratio on the discharge
+profile
+Discharge profiles calculated with different E/S ratios are
+presented in Figure 8. It is clear in the figure that the
+lowest E/S ratio of 2.4 mL g S−1 leads to a much worse
+performance with a lower cell voltage and capacity com-
+pared to the other ratios. Moreover, it can be seen in the
+figure that there is no apparent high voltage plateau in
+this lowest E/S ratio. On the other hand, increasing E/S
+ratio up to 10 mL g S−1 improves the cell capacity in a
+significant manner; in fact, this cell shows the highest
+discharge capacity among all the cases. A further increase
+in the E/S ratio up to 14.5 mL g S−1 enhances the cell
+voltage considerably, while not improving the capacity
+any further. It can be concluded that the discharge profile
+becomes less sensitive to the E/S ratio beyond this value
+as the cell with E/S = 33.6 mL g S−1 shows a similar cell
+voltage to the cell with E/S = 14.5 mL g S−1 but a slightly
+lower capacity. All these conclusions follow the experi-
+mental examinations reported previously.12,14,15
+Similar to the previous part, with the intention of fur-
+ther interpreting the impact of E/S ratio on the discharge
+behavior, concentration profiles of S8
+0, S4
+2−, and S2−ions
+are shown in Figure 9A-C, respectively, for E/S ratios of
+2.4, 14.5, and 33.6 mL g S−1 both at the beginning of dis-
+charge and at 940 mAh g S−1. It is clear in the figures that
+at the early stages of discharge, polysulfide concentra-
+tions within the cell are much higher for the lower E/S
+ratios, which is a direct consequence of the limited elec-
+trolyte amount in these cells. Moreover, concentration
+variations in the cathode are much more significant for
+the cell with E/S = 2.4 mL g S−1. Nevertheless, concen-
+tration profiles for E/S ratios of 14.5 and 33.6 mL g S−1
+are relatively similar, specifically for the S2−ion. Lastly,
+based on the concentration profiles in Figure 9 it may be
+suggested that the cell with the lowest electrolyte amount
+is almost fully discharged at 940 mAh g S−1. These obser-
+vations are all consistent with the discharge capacities
+predicted in Figure 8.
+In Figure 10, the change of average S8
+0, S4
+2−, and S2−
+concentrations with discharge capacity is presented for
+different E/S ratios. It can be seen in Figure 10A that the
+sudden decrease in the S8
+0 concentration becomes more
+obvious in the early stages of discharge for higher E/S
+ratios. The cell with the lowest E/S ratio of 2.4 mL g S−1
+exhibits higher and relatively more stable S8
+0 concentra-
+tions compared to higher ratios. Surprisingly, the cell
+with E/S = 33.6 mL g S−1 does not show a rapid decrease
+in the S8
+0 concentration unlike the cells with E/S = 10
+and 14.5 mL g S−1. In Figure 10B, it can be seen that the
+maximum
+S4
+2−
+concentration
+reached
+lowers
+with
+increasing E/S ratio. The cell with E/S = 2.4 mL g S−1
+does not follow this observation as the kinetics at this
+lowest E/S ratio may be severely hindered. Figure 10B
+also exhibits that the maximum average S4
+2−concentra-
+tions projected are lower than the ones calculated assum-
+ing full conversion of sulfur into S42−. Consequently, the
+upper voltage plateau capacities projected in Figure 8 are
+lower
+than
+the
+theoretical
+capacity.
+Finally,
+in
+Figure 10C it can be discussed that the maximum value
+of the average S2−concentration is lower and reached at
+higher capacities as the E/S ratio increases. However, it
+should be mentioned that the concentration profile for
+E/S = 33.6 mL g S−1 shows a local maximum around
+300 mAh g S−1, which may indicate that the precipitation
+starts earlier in this cell; this may be the reason of the
+slightly reduced upper voltage capacity observed in
+Figure 8 for E/S = 33.6 mL g S−1.
+FIGURE 8
+The effect of E/S ratio in the cathode on the
+discharge profile of a Li-S cell at 1C [Colour figure can be viewed at
+wileyonlinelibrary.com]
+ERISEN AND EROGLU
+10607
+ 1099114x, 2020, 13, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.5701 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 10>>
+As stated in Section 2, Li2S(s) has been accepted as the
+only solid discharge product in our model. Herein, it
+should be emphasized that at very low E/S ratios the pre-
+cipitation of other solid discharge products could be
+important. However, we believe that this assumption,
+which has also been adopted by many others in the
+literature,20-22,27,28 is acceptable for all E/S ratios investi-
+gated here since the average S4
+2−concentrations do not
+exceed the maximum solubility limit at any discharge
+capacity in our projections (Figure 10B). It should be
+mentioned that there may be instances in which the solu-
+bility limit is surpassed locally in the cathode since
+Figure 10 presents the average concentrations. Yet, this
+should not create a major divergence in the results.
+Here, we should emphasize that even though the
+predicted discharge profiles match the experimentally
+observed trends, quantitative agreement of model pre-
+dictions with experimental results is not straightfor-
+ward. For example, even though a Li-S battery is
+expected to be discharged in 1 hour at 1C in theory, the
+discharge time of a battery at this rate is much lower in
+practice. Likewise, an E/S ratio of 2.4 mL g S−1 may
+cause a much worse performance in reality. These quan-
+titative deviations between the experimental data and
+the model predictions are most probably due to the exis-
+tence of a number of assumed parameters in the model,
+which cannot be measured individually. A detailed sen-
+sitivity analysis is conducted (not given here) and it is
+concluded that the model has high sensitivity to these
+assumed parameters; consequently, fitting the predicted
+discharge profile with an experimentally measured
+curve is tricky.
+One apparent disagreement between the model and
+the experimental results is that the capacity ratio of the
+upper to lower discharge plateau should be around 1:3,
+whereas, this ratio is considerably lower in our model
+predictions. As a result of the sensitivity analysis con-
+ducted to investigate the reason of this disagreement, it is
+seen that changing the exchange current densities for
+either of the reactions ends up changing only the second
+FIGURE 9
+Comparison of, A, S8
+0, B, S4
+2−, and C, S2−concentration profiles for different E/S ratios at 100 mAh g S−1 (solid lines) and
+940 mAh g S−1 (dashed lines) [Colour figure can be viewed at wileyonlinelibrary.com]
+10608
+ERISEN AND EROGLU
+ 1099114x, 2020, 13, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.5701 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 11>>
+plateau capacity. The only two parameters that the first
+discharge plateau capacity is sensitive to are ks8 (only up
+to a certain value) and the cathode thickness (or S load-
+ing in other words). This observation suggests that defin-
+ing the upper plateau with a single electrochemical
+reaction may be an over simplification; even though the
+model successfully captures the overall capacity of the
+cell and the impact of the C/S and E/S ratios on the volt-
+age profile and overall capacity, the upper plateau capac-
+ity is underestimated. Therefore, it may be suggested that
+the presence of high order polysulfides in the model may
+play a critical role in the estimation of the upper plateau
+capacity. One other drawback of our model is that the
+impact of the current density on the discharge capacity
+can only be realized at high C-rates. The model predicts a
+major capacity loss at 2C and above, whereas, the dis-
+charge capacity is overestimated at lower current densi-
+ties.
+Incorporating
+the
+rate
+dependence
+of
+Li2S(s)
+precipitation, as in the models in the literature defining
+the surface nucleation and growth dynamics as a func-
+tion of the current density,30-32 may be beneficial for
+capturing the influence of the current density on the dis-
+charge time. Nevertheless, the model can still success-
+fully capture the change in the trends at high C-rates,
+which is critical to explain the effect of these design fac-
+tors on the Li-S battery performance mechanistically.
+4
+|
+CONCLUSIONS
+In this report, a 1-D electrochemical model is demon-
+strated to predict the dependence of the discharge
+behavior of a Li-S cell on the critical design factors, C/S
+and E/S ratios. Cathode kinetics is defined via a simpli-
+fied reaction mechanism, which considers two electro-
+chemical and two dissolution/precipitation reactions.
+Predicted voltage curves for the Li-S cell capture the key
+features of a distinctive discharge profile including the
+high and low voltage plateaus and the voltage dip in
+between. The discharge voltage and capacity of the Li-S
+battery are both enhanced substantially at higher C/S
+ratios due to an enhancement in the cathode area.
+FIGURE 10
+Average, A, S8
+0, B, S4
+2−, and C, S2−concentrations as a function of discharge capacity for different E/S ratios [Colour
+figure can be viewed at wileyonlinelibrary.com]
+ERISEN AND EROGLU
+10609
+ 1099114x, 2020, 13, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.5701 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 12>>
+However, further increase in the C/S ratio causes a
+slight drop in the discharge capacity due to a reduction
+in the sulfur loading. Furthermore, cell voltage becomes
+independent of the carbon loading at higher ratios. Sim-
+ilarly, increasing the E/S ratio up to a certain value
+enhances both the discharge voltage and capacity con-
+siderably by an improvement in the cathode kinetics,
+whereas the discharge profile happens to be less depen-
+dent on the electrolyte amount at higher E/S ratios. To
+sum up, the proposed model offers a mechanistic inter-
+pretation of the impact of two important design parame-
+ters (C/S ratio and E/S ratio) on the discharge behavior
+of a Li-S battery.
+ACKNOWLEDGMENTS
+This study was funded by the Scientific and Technologi-
+cal Research Council of Turkey (TUBITAK), Grant No:
+116M574. This paper was presented at the fourth Interna-
+tional Symposium on Materials for Energy Storage and
+Conversion,
+mESC-IS
+2019,
+Akyaka,
+Mugla,
+11-13
+September 2019.
+NOMENCLATURE
+a
+electrochemically
+active
+area
+in
+the
+cath-
+ode, m2 m−3
+A
+initial specific surface area of the cathode, m2 g−1
+b
+Bruggeman's coefficient
+Ci
+concentration of species i, mol m−3
+Ci, ref
+reference concentration of species i, mol m−3
+Di
+diffusion coefficient of species i, m2 s−1
+Di, 0
+bulk diffusion coefficient of species i, m2 s−1
+Ecell
+cell voltage, V
+F
+Faraday's constant, C mol−1
+i1
+first electrochemical reaction current density,
+A m−2
+i2
+second electrochemical reaction current density,
+A m−2
+ie
+liquid-phase current density, A m−2
+is
+solid-phase current density, A m−2
+ij
+current density due to electrochemical reaction j,
+A m−2
+io, jref
+exchange current density of electrochemical reac-
+tion j, A m−2
+Iapp
+applied current density, A m−2
+kk
+precipitation
+rate
+constant
+of
+precipitate
+k,
+units vary
+Ksp, k
+solubility product of precipitate k, units vary
+L
+thickness of the cathode, μm
+nj
+number of electrons transferred in electrochemi-
+cal reaction j
+Ni
+flux of species i, mol m−2 s−1
+pi, j
+anodic reaction order of species i in electrochem-
+ical reaction j
+qi, j
+cathodic reaction order of species i in electro-
+chemical reaction j
+ri
+production/consumption rate of species i due to
+electrochemical reactions, mol m−3 s−1
+Ri
+production/consumption rate of species i due to
+precipitation reactions, mol m−3 s−1
+R
+universal gas constant, J mol−1 K−1
+R0
+k
+production rate of precipitate k, mol m−3 s−1
+si, j
+stoichiometric coefficient of species i due to elec-
+trochemical reaction j
+t
+time, s
+T
+temperature, K
+U0
+j
+standard open-circuit potential of electrochemi-
+cal reaction j, V
+Uj, ref
+open-circuit potential of electrochemical reaction
+j, V
+x
+distance from the separator through the cath-
+ode, μm
+~Vk
+molar volume of precipitate k, m3 mol−1
+zi
+charge number of species i
+GREEK LETTERS
+αAJ
+anodic transfer coefficient of reaction j
+αcj
+cathodic transfer coefficient of reaction j
+ε
+cathode porosity
+εC
+volume fraction of C in the cathode
+εinitial
+initial porosity of the cathode
+εk
+volume fraction of precipitate k
+εLi2Sinitial initial Li2S(s) volume fraction in the cathode
+εS8 sð Þinitial initial S8(s) volume fraction in the cathode
+ξ
+empirical morphology parameter
+ρC
+density of C, g cm−3
+σ
+cathode effective electronic conductivity, S cm−1
+ϕe
+liquid-phase potential, V
+ϕs
+solid-phase potential, V
+ORCID
+Damla Eroglu
+https://orcid.org/0000-0002-7122-8278
+REFERENCES
+1. Eroglu D, Zavadil KR, Gallagher KG. Critical link between
+materials chemistry and cell-level design for high energy den-
+sity
+and
+low
+cost
+lithium-sulfur
+transportation
+battery.
+J Electrochem Soc. 2015;162:A982-A990.
+2. Erisen N, Emerce NB, Erensoy SC, Eroglu D. Modeling the
+effect of key cathode design parameters on the electrochemical
+performance of a lithium-sulfur battery. Int J Energy Res. 2018;
+42(8):2631-2642.
+3. Michaelis C, Erisen N, Eroglu D, Koenig GM Jr. Electrochemical
+performance and modeling of lithium-sulfur batteries with vary-
+ing carbon to sulfur ratios. Int J Energy Res. 2019;43(2):874-883.
+4. Emerce NB, Eroglu D. Effect of electrolyte-to-sulfur ratio in the
+cell on the Li-S battery performance. J Electrochem Soc. 2019;
+166(8):A1490-A1500.
+10610
+ERISEN AND EROGLU
+ 1099114x, 2020, 13, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.5701 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 13>>
+5. Kilic A, Odabas¸ı Ç, Yildirim R, Eroglu D. Assessment of critical
+materials and cell design factors for high performance lithium-
+sulfur batteries using machine learning. Chem Eng J. 2020;390:
+124117.
+6. Chung S-H, Chang C-H, Manthiram A. Progress on the critical
+parameters for lithium-sulfur batteries to be practically viable.
+Adv Funct Mater. 2018;28:1801188.
+7. Ding N, Chien SW, Hor TSA, Liu Z, Zong Y. Key parameters in
+design of lithium sulfur batteries. J Power Sources. 2014;269:
+111-116.
+8. Brückner J, Thieme S, Grossmann HT, Dörfler S, Althues H,
+Kaskel S. Lithium-sulfur batteries: influence of C-rate, amount
+of electrolyte and sulfur loading on cycle performance. J Power
+Sources. 2014;268:82-87.
+9. Xu R, Li JCM, Lu J, Amine K, Belharouak I. Demonstration of
+highly efficient lithium-sulfur batteries. J Mater Chem A. 2015;
+3:4170-4179.
+10. Gao J, Abruña HD. Key parameters governing the energy den-
+sity of rechargeable Li/S batteries. J Phys Chem Lett. 2014;5:
+882-885.
+11. Shim J, Striebel KA, Cairns EJ. The lithium/sulfur rechargeable
+cell effects of electrode composition and solvent on cell perfor-
+mance. J Electrochem Soc. 2002;149:A1321-A1325.
+12. Hagen M, Fanz P, Tübke J. Cell energy density and elec-
+trolyte/sulfur ratio in Li-S cells. J Power Sources. 2014;264:
+30-34.
+13. Zhang
+SS. Improved
+cyclability
+of liquid
+electrolyte lit-
+hium/sulfur batteries by optimizing electrolyte/sulfur ratio.
+Energies. 2012;5:5190-5197.
+14. Zheng J, Lv D, Gu M. How to obtain reproducible results for
+lithium sulfur batteries? J Electrochem Soc. 2013;160:A2288-
+A2292.
+15. Kim J-H, Jin C-S, Shin K-H, Yeon S-H. Optimized cell condi-
+tions for a high-energy density, large-scale Li-S battery. Int J
+Energy Res. 2016;40:670-676.
+16. Urbonaite S, Novák P. Importance of 'unimportant' experimen-
+tal parameters in Li-S battery development. J Power Sources.
+2014;249:497-502.
+17. Choi J-W, Kim J-K, Cheruvally G, Ahn J-H, Ahn H-J, Kim K-
+W. Rechargeable lithium/sulfur battery with suitable mixed liq-
+uid electrolytes. Electrochim Acta. 2007;52:2075-2082.
+18. Mikhaylik YV, Akridge JR. Polysulfide shuttle study in the Li/S
+battery system. J Electrochem Soc. 2004;151:A1969-A1976.
+19. Kumaresan K, Mikhaylik Y, White RE. A mathematical model
+for a lithium-sulfur cell. J Electrochem Soc. 2008;155:A576-
+A582.
+20. Neidhardt
+JP,
+Fronczek
+DN,
+Jahnke
+T,
+Danner
+T,
+Horstmann B, Bessler WG. A flexible framework for modeling
+multiple solid, liquid and gaseous phases in batteries and fuel
+cells. J Electrochem Soc. 2012;159:A1528-A1542.
+21. Fronczek DN, Bessler WG. Insight into lithium-sulfur batteries:
+elementary
+kinetic
+modeling
+and
+impedance
+simulation.
+J Power Sources. 2013;244:183-188.
+22. Hofmann AF, Fronczek DN, Bessler WG. Mechanistic model-
+ling of polysulfide shuttle and capacity loss in lithium-sulfur
+batteries. J Power Sources. 2014;259:300-310.
+23. Ghaznavi M, Chen P. Sensitivity analysis of a mathematical
+model of lithium-sulfur cells part I: applied discharge current
+and cathode conductivity. J Power Sources. 2014;257:394-401.
+24. Ghaznavi M, Chen P. Sensitivity analysis of a mathematical
+model of lithium-sulfur cells: part II: precipitation reaction
+kinetics and sulfur content. J Power Sources. 2014;257:402-411.
+25. Ghaznavi M, Chen P. Analysis of a mathematical model of
+lithium-sulfur cells part III: electrochemical reaction kinetics,
+transport properties and charging. Electrochim Acta. 2014;137:
+575-585.
+26. Yoo K, Song M-K, Cairns EJ, Dutta P. Numerical and experi-
+mental investigation of performance characteristics of lit-
+hium/sulfur cells. Electrochim Acta. 2016;213:174-185.
+27. Zhang T, Marinescu M, Walus S, Offer GJ. Modelling transport
+limited discharge capacity of lithium-sulfur cells. Electrochim
+Acta. 2016;219:502-508.
+28. Marinescu M, Zhang T, Offer GJ. A zero dimensional model of
+lithium-sulfur batteries during charge and discharge. Phys
+Chem Chem Phys. 2016;18:584-593.
+29. Newman J, Thomas-Alyea KE. Electrochemical Systems. Hobo-
+ken, New Jersey: John Wiley & Sons; 2004.
+30. Ren YX, Zhao TS, Liu M, Tan P, Zeng YK. Modeling of
+lithium-sulfur batteries incorporating the effect of Li2S precipi-
+tation. J Power Sources. 2016;336:115-125.
+31. Andrei P, Shen C, Zheng JP. Theoretical and experimental
+analysis of precipitation and solubility effects in lithium-sulfur
+batteries. Electrochim Acta. 2018;284:469-484.
+32. Danner T, Latz A. On the influence of nucleation and growth
+of S8 and Li2S in lithium-sulfur batteries. Electrochim Acta.
+2019;322:134719.
+SUPPORTING INFORMATION
+Additional supporting information may be found online
+in the Supporting Information section at the end of this
+article.
+How to cite this article: Erisen N, Eroglu D.
+Modeling the discharge behavior of a lithium-
+sulfur battery. Int J Energy Res. 2020;44:
+10599–10611. https://doi.org/10.1002/er.5701
+ERISEN AND EROGLU
+10611
+ 1099114x, 2020, 13, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/er.5701 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

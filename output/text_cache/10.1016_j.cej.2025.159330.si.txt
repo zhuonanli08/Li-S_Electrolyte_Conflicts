@@ -1,0 +1,258 @@
+Supporting information
+Stereochemistry-directed Solvent Molecular Design for Advanced Lithium-Sulfur Batteries
+Dexiang Xua,b, Zifeng Liub, Fuyong Liub, Miao Chenb, Dan Zhoub, Zhubing Xiaoa,b,*
+a Key Laboratory of Green and Precise Synthetic Chemistry and Applications, Ministry of Education; Anhui Key Laboratory of Synthetic Chemistry and Applications; School of Chemistry and Materials Science, Huaibei Normal University, Huaibei, Anhui 235000, P. R. China.
+b Henan Key Laboratory of Quantum Materials and Quantum Energy, School of Future Technology, Henan University Zhengzhou 450046, China
+
+*Corresponding author.
+E-mail address: zbxiao@vip.henu.edu.cn
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Experimental section
+Electrochemical measurements: All the cells were assembled in an Ar-filled glove box below 1.0 ppm. CR-2025 coin cells were assembled in an Ar-filled glove box using the HCG/S-coated aluminum foil as the cathode, lithium foil as anode, and Celgard 2400 as the separator. The cyclic voltammetry (CV) and electrochemical impedance spectra (EIS) were measured in the CHI660E electrochemical work station. CV was carried out at a scan rate of 0.1-0.5 mV s-1 within a voltage window of 1.7-2.8 V. The frequency range of the EIS test is between 100 kHz and 0.01 Hz with 5 mV amplitude. The frequency cut-off of in-situ EIS measurements 100 kHz-0.01 Hz with 5 mV amplitude. The value of each discharge depth is shown in Figure S18, each point corresponds to the specific stages that were conducted with EIS measurement in different electrolytes.
+The Li2S deposition experiment was measured with assembled cells using carbon paper as the cathode and lithium foil as the anode. In the cell assembly process, 20 μL electrolyte containing 0.2 M Li2S6 was added on the carbon paper side and another 20 μL electrolyte CE/STE was dropped on the Li foil side. The cell was first 3 discharged at constant current to the 2.06 V and then discharged with the constant voltage at 2.05 V until the current was below 10−5 A for the nucleation and deposition of Li2S.
+
+Materials Characterizations: The morphologies of Li depositions and Li2S depositions were characterized by scanning electron microscopy (SEM, JSM-7001F). The SEI components of Li-S cells were further characterized through X-ray photoelectron spectroscopy (XPS, AXIS, SUPRA+). X-ray diffraction (XRD) patterns were recorded in the range of 2θ = 5-50° on a desktop X-ray diffractometer (RIGAKU-Miniflex II) with Cu Kα radiation (λ= 1.5406 Å). Thermogravimetric analysis (TGA) was measured at a heating rate of 10 °C min-1 using a TAQ600 thermo-gravimetric analyzer. The Raman measurements of the electrolytes were conducted on a Renishaw inVia device between 200 and 2000 cm-1. The electrolytes of DME/MPE (1 : 1, by vol.), 0.2 M LiTFSI in DME and 0.2 M LiTFSI in DME/MPE (1 : 1, by vol.) were configured for testing. NMR analyses were conducted on Varian VNMRS 500 MHz spectrometers. 0.2 M Li2S8 was added to the configured CE and STE electrolytes for testing. The viscosity of the electrolytes was measured on an TA DHR2 with a controlled shear rate and shear stress at 25 ℃.
+
+Ex-situ XRD measurements: HCG/S electrodes were firstly activated at 0.2 C for three cycles. The cycled electrodes were extracted from coin cells in an Ar-filled glove box and then dried in Ar-filled glove box after washing by DOL/DME mixture. The cycled electrodes at different charge/discharge state were sealed before the XRD measurement.
+
+Classic MD simulation: Classical molecular dynamics (MD) simulations were performed using the GROMACS MD simulation package version. The initial configurations were obtained by randomly packing molecules in a periodic cubic box of size 70×70×70 Å3 using PACKMOL. The initial configuration was first minimized using the steepest descent method, employing a convergence criterion of 1000 kcal/(mol Å), and then using the conjugate-gradient energy minimization scheme, employing a convergence criterion of 10 kcal/(mol Å). The systems were equilibrated in an isothermal-isobaric ensemble (constant NPT) using a Berendsen barostat to maintain the pressure of 1 bar with a time constant of 2 ps for 2 ns. All systems were then melted at 400 K for 2 ns and subsequently annealed from 400 to 298 K in three steps for 3 ns. Finally, production runs of 20 ns were then obtained in the canonical ensemble (NPT) using an improved velocity-rescaling algorithm proposed by Bussi et al. with a time constant of 0.2 ps at 298 K. The viscosity simulation was performed using another box of 42×42×126 Å3 according to the perturbation method of the reported works.
+
+AIMD simulation: For the CE simulation, single monomer Li2S6 molecules were placed at the center of 16×16×16 Å3 boxes with a 1 : 1 mixture of 10 DME and 10 DOL molecules around occupying the remaining volume of the box. Likewise, a 3 : 3 : 4 mixture of DME, DOL, MPE was placed around Li2S6 in the other box to simulate the STE environment. Each of the three Li2S6 monomer systems was solvated with their respective DOL/DME mixtures using the PACKMOL program. The CP2K software was used to perform optimizations, NVT simulations, and NPT simulations in the same fashion (i.e., same types of basis sets, pseudopotentials, NVT/NPT thermostat, NPT barostat, NVT/NPT temperature, and NPT pressure). The SHAKE algorithm was used for hydrogen-bearing bonds (1.1 Å for C-H bonds) to extend the time step of the NVT and NPT simulations to 1 fs. The simulation time for all of the NVT and NPT DOL/DME-solvated Li2S6 system simulations was 5 ps.
+Following the NPT simulations, NVT metadynamics simulations were performed on each of the DOL/DME-solvated Li2S6 monomer systems using the final NPT trajectory frame structures and cell lattice parameters. Each of the metadynamics simulations used two collective variables to scan (1) the monomer sulfur coordination number and (2) the DOL/DME solvent oxygen coordination number of one of the two lithium atoms in each of the Li2S6 monomer systems. A harmonic wall potential constraint of 1000 kcal/mol was placed on the Li-S distance of the other Li atom (with r0 = 2.7 Å) to allow for the scanning of the free energy of a single Li migration to and from the sulfur chain monomer. Small repulsive Gaussian hills with a height of 2 × 10-3 Hartree and a width of 0.2 Hartree were added at a frequency of every 50 time steps for both the Li-S and Li-O coordination number collective variables.
+
+Quantum chemical calculation: Quantum chemical calculations were performed using the ORCA 5.0.1 program package. For the frontier molecular orbital energy, electrostatic energy, the overall reaction energy and the binding energy, B97-3c was first used to optimize the molecular structure for a stable configuration and then r2SCAN-3c was performed to calculate the single-point energy and output molecular orbital state, electrostatic energy state.
+For the binding energy, Eb was defined as
+
+where the ,  and  refers to the final single point energy of the optimized configuration of the binding state of molecular 1 with molecular 2, the separated state of molecular 1 and molecular 2, respectively.
+
+The parameters of COMSOL Multiphysics: The modeling of Li+ electrodeposition was performed by using COMSOL Multiphysics 5.4 based on the finite element method. Nernst-Planck-Possion equation was adopted to describe the behaviors of charged ions. The concentration-dependent Bulter-Volmer equation was employed to introduce the reaction of electrode surface. Deformed geometry interfaces were applied to the anode and cathode interface and the moving speed of meshes was equal to the deposited rate. The initial concentration of Li+ was set to 1.0 mol L-1. The exchange current density was set to be 30 A m-2. The time of deposition was 2000 s.
+
+Li-S pouch-cell assembly and the evaluation of energy density: In a typical experiment, the lithium foil (50 μm, 68×64 mm, 93.57 mg), HCG/S cathode (64×60 mm, 264.24 mg), E/S (5.0 μL mg-1) and PP separator (74×70 mm, 41.44 mg) were applied to assemble Li-S pouch cells and evaluate the energy densities. The energy density was calculated following formula: 
+    Eq. 1
+where U is average voltage of the cell (~2.1 V) , MA is the mass of active materials, Cs is the specific capacity. In the thick freestanding sulfur electrode of our experiment, the areal sulfur loading is 5.2 mg cm-2 (199.7 mg, 38.4 cm2). The packaging and tabs were excluded for calculating the energy density is in this work.
+Taking the first cycle for example, the initial discharge capacity is 1070 mAh g-1. The corresponding energy density:
+
+
+
+
+2. Supplementary Figures
+
+Table S1. Density and viscosity of solvents.
+
+
+
+
+Figure S1. EIS spectra of the Li-S cell with different concentrations of MPE.
+
+Figure S2. (a) The simulated viscosity curves using GROMACS software and (b) experimental result measured by rotary rheometer.
+
+
+Figure S3. The contact angle test in (a) CE and (b) STE.
+
+Figure S4. The LUMO energy level of the DME, DOL, and MPE solvents.
+
+Figure S5: UV-vis spectra of the (a) Li2S8 and (b) Li2S4 solution with/without MPE.
+
+
+
+Figure S6. The calculated rdf in STE.
+
+
+Figure S7. The Raman spectra of TFSI after adding MPE.
+
+Figure S8. The 7Li NMR of electrolytes with 0.2 M Li2S8.
+
+Table S2. A summary of solvation structures in CE.
+
+
+
+
+Table S3. A summary of solvation structures in STE.
+
+
+
+
+Figure S9. The calculated solvation energies of different solvation structures.
+
+
+Figure S10. The percentage occupied of main solvation structures.
+
+
+
+Figure S11. Temperature-dependent  EIS spectra of a) STE and b) CE. c) Arrhenius behavior of Li+ de-solvation in different electrolytes.
+Calculation of activation energy (Ea)
+The experimental determination of the de-solvation energy was obtained from the equation: 
+
+where R is the resistance of symmetrical battery, T is the absolute temperature, Ea is the activation energy of de-solvation, A is the apparent rate constant.
+
+Figure S12. Finite element analysis of Li deposition behavior simulated by COMSOL Multiphysics 5.6. in CE at a current density of 0.5 mA cm-2.
+
+
+Figure S13. Charge/discharge profiles of Li-Cu cells.
+
+
+Figure S14. The Li morphologies deposited on Cu foil in (a) CE and (b) STE.
+
+
+
+
+
+
+Figure S15. The cross-section SEM images of Li deposited on Cu foil after 300 cycles in Li-Cu cells for the (a) CE and (b) STE.
+
+
+Figure S16. The Li plating/stripping processes of Li||Li symmetric cell operated at a current density of (a) 0.32 mA cm-2 and a capacity density of 0.32 mAh cm-2 and (b) 1 mA cm-2, 1 mAh cm-2. (c) The polarization voltage curves using different electrolytes at the current density of 1 mA cm-2. (d) Rate performance of Li||Li symmetric cell at different current density.
+
+
+Figure S17. SEM images of the Li morphology after cycling in Li||Li symmetric cells in (a, b) CE and (c, d) STE.
+
+
+Figure S18: In-situ EIS measurements conducted at different discharge depth for the cell with CE or STE.
+
+
+Figure S19. The CV profiles of cells based on (a) CE and (b) STE at different scan rates. Peak current versus square root curve of scan rate for cells based on (c) CE and (d) STE.
+
+
+Figure S20. The profiles and SEM images of (a, c) CE and (b, d) STE in Li deposition.
+
+
+Figure S21. The cycling performances of CE and STE at 0.5 C.
+
+
+Figure S22. The charge/discharge profile of CE and STE at 0.5 C.
+
+Table S4. The cell performance comparison with previous literatures.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Figure S23. (a) SEM image of HCG. (b, c) SEM images of HCG/S. Corresponding elemental (d) S and (e) C maps of HCG/S from figure (c).
+
+
+
+Figure S24. TGA plots of HCG and HCG/S.
+
+
+Figure S25. XRD patterns of (a) S, (b) HCG and (c) HCG/S.
+
+
+
+
+Figure S26. Rate performances of STE under gelid conditions (-30 ℃).
+
+
+Figure S27. The charge/discharge profiles with different current densities at -30 ℃ of (a) CE and (b) STE.
+
+Figure S28. The SEM images of cathodes after cycling in Li-S batteries with (a, c) CE and (b, d) STE.
+
+
+
+
+
+
+
+
+
+
+
+
+References
+[1] G. Kresse, J. Furthmüller, Phys. Rev. B 1996, 54, 11169. 
+[2] G. Kresse, D. Joubert, Phys. Rev. B 1999, 59, 1758. 
+[3] C. Luo, X. Liang, Y. Sun, W. Lv, Y. Sun, Z. Lu, W. Hua, H. Yang, R. Wang, C. Yan, J. Li, Y. Wan, Q.-H. Yang, Energy Storage Mater. 2020, 33, 290.
+[4] M. Zhao, B.-Q. Li, X. Chen, J. Xie, H. Yuan, J.-Q. Huang, Chem 2020, 6, 3297. 
+[5] M. Zhao, X. Chen, X. Y. Li, B. Q. Li, J. Q. Huang, Adv. Mater. 2021, 33, e2007298. 
+[6] J. Xie, H. J. Peng, Y. W. Song, B.-Q. Li, Y. Xiao, M. Zhao, H. Yuan, J. Q. Huang, Q. Zhang, Angew. Chem. Int. Ed. 2020, 59, 17670.
+[7] C. X. Zhao, X. Y. Li, M. Zhao, Z. X. Chen, Y. W. Song, W. J. Chen, J. N. Liu, B. 
+Wang, X. Q. Zhang, C. M. Chen, B. Q. Li, J. Q. Huang, Q. Zhang, J. Am. Chem. Soc. 2021, 143, 19865.
+[8] X. Y. Li, S. Feng, C. X. Zhao, Q. Cheng, Z. X. Chen, S. Y. Sun, X. Chen, X. Q. 
+Zhang, B. Q. Li, J. Q. Huang, Q. Zhang, J. Am. Chem. Soc. 2022, 144, 14638.
+[9] X.-Q. Zhang, Q. Jin, Y.-L. Nan, L.-P. Hou, B.-Q. Li, X. Chen, Z.-H. Jin, X.-T. Zhang, J.-Q. Huang, Q. Zhang, Angew. Chem. Int. Ed. 2021, 60, 15503-15509.
+[10] L.-P. Hou, Z. Li, N. Yao, C.-X. Bi, B.-Q. Li, X. Chen, X.-Q. Zhang, Q. Zhang, Adv. Mater. 2022, 34, 2270312.
+[11] L.-P. Hou, X.-Q. Zhang, N. Yao, X. Chen, B.-Q. Li, P. Shi, C.-B. Jin, J.-Q. Huang, Q. Zhang, Chem 2022, 8, 1083-1098.
+[12] H. Cheng, S. Zhang, B. Zhang, Y. Lu, Small 2023, 19, 2206375.
+Abbreviation | Reagents Name | Density (25 °C) | Viscosity
+(mPa s-1)
+DME | dimethoxyethane | 0.84 | 0.46
+DOL | 1,3- Dioxolane | 1.07 | 0.59
+MPE | methyl butyl ether | 0.72 | 0.31
+MBE | methyl butyl ether | 0.75 | 0.33
+Solvation structure | Frequency | Percentage
+(%) | De-solvation energy
+(kJ mol-1)
+Li000 | 8 | 5.71 | 0
+Li001 | 0 | 0 | -178.0975418
+Li010 | 4 | 2.86 | -144.4929012
+Li020 | 2 | 1.43 | -284.6894473
+Li030 | 0 | 0 | -420.080032
+Li100 | 41 | 29.29 | -260.8198134
+Li101 | 0 | 0 | -352.0545259
+Li110 | 13 | 9.29 | -372.8875174
+Li120 | 1 | 0.71 | -461.8709116
+Li200 | 65 | 46.43 | -435.1608334
+Li210 | 1 | 0.71 | -505.8143675
+Li300 | 5 | 3.57 | -527.4340356
+Average | Average | Average | -346.9915014
+Solvation structure | Frequency | Percentage
+(%) | De-solvation energy
+(kJ mol-1)
+Li000 | 7 | 7 | 0
+Li001 | 1 | 1 | -178.0975418
+Li010 | 3 | 3 | -144.4929012
+Li020 | 1 | 1 | -284.6894473
+Li030 | 5 | 5 | -420.080032
+Li100 | 39 | 39 | -260.8198134
+Li101 | 1 | 1 | -352.0545259
+Li110 | 6 | 6 | -372.8875174
+Li120 | 5 | 5 | -461.8709116
+Li200 | 31 | 31 | -435.1608334
+Li210 | 1 | 1 | -505.8143675
+Li300 | 0 | 0 | -527.4340356
+Average | Average | Average | -315.2161063
+Sulfur
+loading
+[mg cm-2 ]
+ | Capacity at
+low current
+[mAh g−1 ]
+ | Capacity at high
+current [mAh g−1 ]
+ | Cycles number
+(rate)/decay rate
+[%]
+ | Refs
+
+1.0 | 979(0.3 C) | 635(3 C) | 500 ( 1 C)/0.050 | [3]
+1.2 | 1136(0.1 C) | 810(1 C) | 250 (4 C)/0.250 | [4]
+1.2 | 1218 (0.1 C) | 817 (2 C) | 350 (0.5 C)/0.091 | [5]
+1.3 | 1200 (0.2 C) | 750 (2 C) | 300 (0.5 C)/0.083 | [6]
+1.2 | 1126 (0.2 C) | 649 (4 C) | 200 (2 C)/0.110 | [7]
+1.2 | 1208 (0.2C) | 655 (4 C) | 275 (2 C)/0.171 | [8]
+1.2 | 1037 (0.1 C) | - | 100 (0.1 C)/0.125 | [9]
+1.3 | 1001 (0.1 C) | - | - | [10]
+1.1 | 1016 (0.1 C) | - | - | [11]
+1.5 | 1092 (0.2 C) | 864 (0.5 C) | 200 (0.2 C)/0.0715 | [12]
+1.1 | 1067 (0.5 C) | 944 (5 C) | 500 (5C)/0.095 | This work

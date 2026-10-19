@@ -1,0 +1,564 @@
+
+<<PAGE 1>>
+1
+Scientific Reports | 6:33154 | DOI: 10.1038/srep33154
+www.nature.com/scientificreports
+Building better lithium-sulfur 
+batteries: from LiNO3 to solid  
+oxide catalyst
+Ning Ding1, Lan Zhou1,2, Changwei Zhou1, Dongsheng Geng1, Jin Yang1, Sheau Wei Chien1, 
+Zhaolin Liu1, Man-Fai Ng3, Aishui Yu2, T. S. Andy Hor1,4, Michael B. Sullivan3 & Yun Zong1
+Lithium nitrate (LiNO3) is known as an important electrolyte additive in lithium-sulfur (Li-S) batteries. 
+The prevailing understanding is that LiNO3 reacts with metallic lithium anode to form a passivation 
+layer which suppresses redox shuttles of lithium polysulfides, enabling good rechargeability of Li-S 
+batteries. However, this view is seeing more challenges in the recent studies, and above all, the inability 
+of inhibiting polysulfide reduction on Li anode. A closely related issue is the progressive reduction of 
+LiNO3 on Li anode which elevates internal resistance of the cell and compromises its cycling stability. 
+Herein, we systematically investigated the function of LiNO3 in redox-shuttle suppression, and propose 
+the suppression as a result of catalyzed oxidation of polysulfides to sulfur by nitrate anions on or in the 
+proximity of the electrode surface upon cell charging. This hypothesis is supported by both density 
+functional theory calculations and the nitrate anions-suppressed self-discharge rate in Li-S cells. The 
+catalytic mechanism is further validated by the use of ruthenium oxide (RuO2, a good oxygen evolution 
+catalyst) on cathode, which equips the LiNO3-free cell with higher capacity and improved capacity 
+retention over 400 cycles.
+With high energy density and low cost, lithium-sulfur (Li-S) batteries are considered among the most promising 
+candidates for next-generation energy storage devices1–3. The history of Li-S battery research dates back to 1960s4, 
+with most of the early works (1960–1990s) in primary batteries focusing on electrolyte optimization and sulfur 
+utilization improvement5. The early research on the rechargeable ones, however, encountered the serious issue of 
+fast capacity decay with very limited number of cycles (<​20)6–9. The main cause of the poor rechargeability has 
+been known as lithium polysulfide redox shuttles (LiPSs, soluble intermediates in charge/discharge reactions), 
+which internally short-circuit the battery and display an ultra-long voltage plateau at ~2.35 V on charging10. 
+Tricks were employed to rectify the cycling behavior by fixing the charge time in each subsequent cycle, which 
+however led to partial charging with little improvement to the fast capacity decay of the batteries6. In addition, 
+LiPSs redox shuttle was also found responsible for high self-discharge rate, warranting the urgency of research 
+need in the development of high-performance Li-S batteries11.
+In 2008, Mikhaylik revealed the efficacy of LiNO3 in suppressing LiPSs redox shuttles as a big breakthrough, 
+enabling a real rechargeable Li-S battery with a coulombic efficiency (CE) of close to 100%12. Coincidentally, 
+the introduction of LiNO3 was found to concurrently improve the sulfur utilization rate in the cathode13. These 
+promising results have made LiNO3 the most important electrolyte additive and almost appear in every reported 
+Li-S cell thereafter14–18. The function of LiNO3, according to the prevailing understanding, is to form an elec-
+trically insulating layer on Li anode via a spontaneous reduction reaction which prevents further reduction of 
+polysulfides thereon19. The passivation layer was identified as LixNOy by Aurbach et al. using Fourier transform 
+infrared (FTIR) spectroscopy and X-ray photoelectron spectroscopy (XPS)13. Later, Wen and co-workers reported 
+LiNO3-induced formation of smooth and dense solid electrolyte interphase (SEI) layer on Li anode20, serving as 
+1Institute of Materials Research and Engineering (IMRE), A*STAR (Agency for Science, Technology and Research), 2 
+Fusionopolis Way, Innovis #08-03, Singapore 138634, Republic of Singapore. 2Department of Chemistry, Shanghai 
+Key Laboratory of Molecular Catalysis and Innovative Materials, Institute of New Energy, Fudan University, Shanghai 
+200438, P.R. China. 3Institute of High Performance Computing (IHPC), A*STAR (Agency for Science, Technology 
+and Research), 1 Fusionopolis Way, Connexis #16-16, Singapore 138632, Republic of Singapore. 4Department 
+of Chemistry, National University of Singapore, 3 Science Drive 3, Singapore 117543, Republic of Singapore. 
+Correspondence and requests for materials should be addressed to Z.L. (email: zl-liu@imre.a-star.edu.sg) or 
+M.-F.N. (email: ngmf@ihpc.a-star.edu.sg) or Y.Z. (email: y-zong@imre.a-star.edu.sg)
+received: 10 June 2016
+accepted: 17 August 2016
+Published: 15 September 2016
+OPEN
+
+<<PAGE 2>>
+www.nature.com/scientificreports/
+2
+Scientific Reports | 6:33154 | DOI: 10.1038/srep33154
+a protection layer to the reductive Li metal21. Inspired by these promising results, significantly more efforts 
+were devoted to rechargeable Li-S battery research on nanostructured sulfur cathode development, leading 
+to the revelation of a large number of interesting materials and findings22–26. Nevertheless, recent work of K. 
+Amine’s group showed the irrelevance of redox shuttle suppression to the LixNOy layer27, triggering new think-
+ing on future Li-S battery development. Another related phenomenon that echoes this argument is the finding 
+of progressive LiNO3 reduction on Li anode, which suggests the ineffectiveness of a LixNOy layer in preven-
+tion of LiPSs reduction28. All these unambiguously justified the necessity of relooking into the role of LiNO3 
+in rechargeable Li-S batteries. Herein, we revisit some key factors that influence LiPSs redox shuttles, clarify 
+the roles of LixNOy passivation layers, and propose a new mechanism that redox shuttle suppression in the 
+presence of LiNO3 is due to the strong binding between the soluble high-order LiPSs and nitrate (NO3
+−) ani-
+ons adsorbed on carbon substrate, which promotes the oxidation of polysulfide to sulfur on charging. This is 
+supported by density functional theory (DFT) calculations and NO3
+−-induced low self-discharge rate in Li-S 
+batteries. As the progressive reduction of LiNO3 compromises long-term cycling stability of Li-S batteries 
+by gradual increase of the internal resistance, we propose the substitution of soluble LiNO3 with solid oxide 
+catalyst of good polysulfide oxidation reaction (PSOR) activity, to which ruthenium oxide was found as a 
+preferable choice.
+Results and Discussion
+Rationale of experimental conditions. 
+Initial coulombic efficiency (ICE) of a rechargeable battery 
+reflects the reversibility of its cell reactions in the first cycle and is typically above 90% for commercial Li-ion 
+batteries. In a Li-S battery with LiNO3-free electrolyte, ICE varies notably due to the different extent of redox 
+shuttles. To clarify the role of LiNO3, general factors that influence ICE must be fixed, e.g. Li salts concentration 
+and applied current29, in all cells are 1 M LiTFSI in DOL/DME (v/v, 1:1) and 0.1 mA, respectively.
+In addition, sulfur loading density (SLD) was found to affect ICE (Fig. S1, Supplementary Information). At SLD 
+<​0.8 mg cm−2, ICE experienced a quasi-linear decrease with the increase of SLD; whereas at SLD >​1.1 mg cm−2, 
+increase of SLD elevates ICE slowly. Interestingly, at 0.8 <​SLD <​1.1 mg cm−2 ICE exhibits a buffer-like behavior 
+and fluctuates at 62 ±​ 5%. This unique feature is ideal for the study of redox shuttle effect, as the effect of SLD to 
+ICE can be neglected if it is fixed at 0.9 ±​ 0.1 mg cm−2.
+Moreover, the volume of electrolyte shows a direct impact on ICE (Fig. S2, Supplementary Information). On a Li-S 
+cell with 80 μ​L of electrolyte, an ultra-long charge voltage plateau at 2.35 V presents with an ICE of 66.4%. In contrast, 
+as the electrolyte was reduced to 10 μ​L, a similar cell delivers a decent cycling performance with an ICE as high as 
+Figure 1.  Temperature effect on the galvanostatic discharge-charge voltage profiles of sulfur-graphite 
+composite cycled in LiNO3-free electrolyte. The cell was tested at the temperature of 60 °C (a), room 
+temperature (b) and −​10 °C (c). At higher temperature the shuttle phenomenon became more distinct.
+
+<<PAGE 3>>
+www.nature.com/scientificreports/
+3
+Scientific Reports | 6:33154 | DOI: 10.1038/srep33154
+99.1%. The notably higher ICE at smaller volume of electrolyte was likely due to the increased viscosity of electrolyte 
+at much higher LiPSs concentration that slowed down the diffusion of LiPSs from cathode to anode. This was 
+supported by the “recovered” low CE when the cell was given sufficient time for relaxation between charges 
+(Fig. S3, Supplementary Information). The electrolyte volume effect to the cycling performance of Li-S cells can 
+be found in a systematic study by Zhang30, showing the importance of electrolyte volume optimization to the 
+high performance cells. In this study, we fixed the electrolyte volume as 80 μ​L in cells for ICE study, and 30 μ​L 
+in those for cycling/storage tests.
+Further, ICE varies with the change of the operating temperature of the cells (Fig. 1). At a higher tempera-
+ture, e.g. 60 °C, the severe redox shuttles internally short-circuited the Li-S cell, leading to “infinite” charging; 
+whereas at an operating temperature of −​10 °C, ICE of 84.9% was achieved with redox shuttling phenomenon 
+hardly visible. At conventional operating temperature, i.e. room temperature of 25 °C, a Li-S cell with 80 μ​L 
+electrolyte and SLD of 0.9 mg cm−2 delivers ICE of 66.4%. Such cells with moderate ICE values are ideal for the 
+Figure 2.  Galvanostatic discharge-charge voltage profiles of Li-S batteries (with sulfur-graphite composite). 
+(a) 1st cycle of a Li-S cell cycled in LiNO3-free electrolyte, with an ICE of 66.4% as the benchmark. (b) The 2 cycles 
+of the cell cycled in LiNO3-contained electrolyte which was later dissembled to obtained LixNOy coated Li anode 
+and carbon/sulfur cathode. The reduction of LiNO3 on cathode leads to a CE value of ~100%. LixNOy passivation 
+layers formed on both sides of electrodes, assigned to a-LixNOy for anode side and c-LixNOy for cathode side, 
+respectively. (c) The first cycle of the reassembled cell from the used Li anode (with a-LixNOy surface coating) 
+and a fresh carbon/sulfur cathode in LiNO3-free electrolyte, showing an ICE of 52.2%. (d) The first cycle of the 
+reassembled cell with a fresh Li anode and the used carbon/sulfur cathode (with c-LixNOy surface coating) in 
+LiNO3-free electrolyte, giving an ICE of 99.4%.
+
+<<PAGE 4>>
+www.nature.com/scientificreports/
+4
+Scientific Reports | 6:33154 | DOI: 10.1038/srep33154
+clarification on the role and efficacy of LiNO3 additive in Li-S batteries. All experiments were thus conducted at 
+room temperature unless stated otherwise.
+Inability of LixNOy layers on electrodes in redox shuttle suppression. 
+To re-evaluate the efficacy 
+of a LixNOy passivation layer in redox shuttle suppression, we constructed 3 types of Li-S cells, i.e. with 
+LixNOy passivation layer only on anode or cathode, or absent on both electrodes, and get them cycled in 
+LiNO3-free electrolyte, respectively. The results show that in the absence of LiNO3 and LixNOy passivation 
+layer, a Li-S cell delivers a reproducible initial coulombic efficiency (ICE) of 66.4% (Fig. 2a). At this ICE the 
+LiPSs redox shuttle phenomenon is severe and reflected as an abnormally high charge capacity (or “infinite 
+charging”). In contrast, a replicate cell cycled in LiNO3-contained electrolyte gave a reversible efficiency 
+of ~100% in 2nd cycle (Fig. 2b), showing the efficacy of LiNO3 in electrolyte for redox-shuttle suppression. 
+The overshoot of ICE above a unit in the 1st cycle (and slightly in the 2nd cycle) was due to the side reaction 
+of LiNO3 reduction on cathode (forming LixNOy layer) at the voltage below 1.85 V (Fig. S4, Supplementary 
+Information).
+As a “used” Li-S cell with LixNOy layers on both electrodes was disassembled at full-charge state (2.8 V) in an 
+Ar-filled glove box, a-LixNOy protected anode and c-LixNOy covered cathode were collected (a and c here stand 
+for anode and cathode, respectively). After cleansed using fresh electrolyte solvent, the a-LixNOy/Li anode was 
+coupled with a new carbon/sulfur cathode to form a new Li-S cell in LiNO3-free electrolyte (Fig. 2c). Surprisingly, 
+with a discharge capacity of 765 mAh g−1 the cell showed a charge capacity of 1464 mAh g−1, which corresponds 
+to an ICE of as low as 52.2%. This result suggests the inability of a-LixNOy layer in LiPSs redox shuttle suppres-
+sion, echoing the previous report of Amine et al.27.
+Interestingly, a Li-S cell assembled using the cleansed c-LixNOy covered cathode and a fresh Li anode in 
+LiNO3-free electrolyte was able to deliver an ICE of 99.4% (Fig. 2d), indicating excellent redox-shuttle suppres-
+sion. Nevertheless, a notable drop in the cell capacity (300 vs. 765 mAh g−1) is likely due to the dissolution of 
+sulfur/LiPSs into the electrolyte in the previous cell during the preparation of c-LixNOy covered cathode. This 
+was supported by a higher capacity retention (511 mAh g−1) when the electrolyte volume was reduced from 80 to 
+30 μ​L. It is worth noting that this high ICE does not necessarily originate from the c-LixNOy layer. The c-LixNOy 
+covered cathode with a rough surface was difficult to be fully cleansed, leaving LiNO3 residues on (or in the 
+proximity of) the cathode surface or inside the binder polymer matrix which works in its own way to suppress 
+the redox shuttles.
+The necessity of c-LixNOy for high ICE was further excluded by cycling a freshly assembled Li-S cell of Li 
+anode and carbon/sulfur cathode in LiNO3-contained electrolyte with a cut-off voltage of 2.0 V, whereby the 
+reduction of LiNO3 on cathode unlikely took place and hence a c-LixNOy layer was absent31. Nonetheless, the 
+ICE value was found as high as that of the cell discharged to 1.5 V with the formation of c-LixNOy (Fig. S5, 
+Supplementary Information). Similar experiment has also been carried out by Zhang recently and NO3 radical 
+intermediate was proposed as the key in shuttle suppression32. In our experiment, LiNO3 was replaced by NaNO3 
+in the electrolyte (Fig. S6, Supplementary Information) and a high ICE was also obtainable. These results have 
+clearly suggested that instead of c-LixNOy, it was NO3
+− anions adsorbed on (or in the proximity of) cathode sup-
+pressing the redox shuttles.
+Stronger binding of LiPSs to NO3
+−-theoretical calculations and self-discharge test. 
+A possi-
+ble mechanism for redox shuttle suppression by NO3
+− anions on (or in the proximity of) the graphitic elec-
+trode surface is that these anions promote/catalyse a faster oxidation of soluble high-order LiPSs into element 
+sulfur on charging such that fewer LiPSs diffuse to anode surface to undergo a reduction reaction. At higher 
+charge voltage (2.35 V plateau) the redox shuttle phenomenon is a competing process with the oxidation of 
+Li2S4 →​ Li2S6 →​ Li2S8 →​ S8. With Li2S6 as the most stable LiPS33, a stronger binding of Li2S6 to NO3
+− anions on 
+(or in the proximity of) graphite than directly to C atoms of graphite would support the proposed oxidation 
+mechanism34. Hence, we calculated the adsorption energies of Li2S6 onto NO3
+− anions covered graphite and onto 
+Figure 3.  Optimized structures of Li2S6 on NO3 covered graphite and pure graphite models, and the 
+corresponding adsorption energies. (a) Li2S6 on NO3
+− covered graphite; (b) Li2S6 on graphite. Red, blue, 
+yellow, purple, grey and white balls represent O, N, S, Li, C and H atoms, respectively. The numbers indicate the 
+bond lengths in Å.
+
+<<PAGE 5>>
+www.nature.com/scientificreports/
+5
+Scientific Reports | 6:33154 | DOI: 10.1038/srep33154
+pure graphite in electrolyte solvent, respectively. The density functional theory (DFT) modelling data (Fig. 3) 
+shows that on NO3
+− anions covered graphite Li atoms in Li2S6 “bond” to O atoms in NO3
+− with a “bond-length” 
+of 1.978 or 1.971 Å, comparable to a typical N−​H hydrogen bond (1.97 Å). In contrast, on pure graphite Li atoms 
+interacted to C atoms. The Li−​C distance in this case was 3.400 Å, which came to the edge of distance for dis-
+persive interaction. Clearly, it has suggested much stronger Li−​O interactions between Li and O of NO3
+− than 
+Li−​C interactions between Li and C of graphite. This is further supported by the larger adsorption energy for 
+Li2S6 on NO3
+− (−​20.24 kcal mol−1) than that on pure graphite (−​6.51 kcal mol−1). Similar scenario has also been 
+reported previously by Wang et al. in a study of graphene oxides35. Such notably strong binding can be seen as the 
+first step of the proposed catalytic mechanism. Since it was known that LiPSs→​sulfur conversion on pure carbon 
+was hardly possible in the absence of LiNO3
+36,37, the strong LiPSs/NO3
+− bonding enabled oxidation conversion of 
+polysulfides on cathode upon charging of the battery could be seen as a catalytic process.
+The strong LiPSs/NO3
+− interaction should also help suppress the reduction of S8 to Li2S6 for storage, which 
+is reflected as lower self-discharge rate in battery. This was proven by monitoring the impedance changes of a 
+fully-charged Li-S cell with electrolyte containing 5.0 wt% of LiNO3 over 10 days of storage at room temper-
+ature, using its LiNO3-free counterpart as the control (Fig. 4a,b). In the Nyquist plot the first semi-circle at 
+high frequency range was attributed to the resistance of solid electrolyte interface (RSEI), whereas the second 
+one at middle frequency range was ascribed to the charge transfer (Rct). The simulation data shows that for the 
+cell with LiNO3-contained electrolyte RSEI increased from 37.2 to 70.1 Ω​ over 10 days (Fig. S7, Supplementary 
+Information), which was notably higher than that of its LiNO3-free counterpart (from 38.8 to 42.3 Ω​). Fast 
+increase of RSEI in the presence of LiNO3 electrolyte additive is attributed to progressive reduction of LiNO3 
+on Li anode29. Here, the drop of Rct is more of a concern, as it reflects the state-of-charge of a cell31. Rct is larger 
+for higher charged state, and its sharper decrease indicates faster self-discharge. Thus, the slower drop of Rct 
+(27.1 →​ 24.0 Ω​, or 3.1 Ω​) for the cell with LiNO3-contained electrolyte as compared to that of its LiNO3-free 
+counterpart (22.8 →​ 12.8 Ω​, or 10.0 Ω​) is suggesting the clear inhibition of self-discharge by LiNO3. This is under-
+standable, as NO3
+− anions covered graphite were able to hold LiPSs more tightly and thus notably slowed down 
+the self-discharge process (S8 →​ LiPSs).
+The inhibited self-discharge in cells with LiNO3-contained electrolyte was echoed by its higher open circuit 
+voltage (OCV, 2.33 V) after 10 days of aging at room temperature as compared to that of the LiNO3-free coun-
+terpart (2.16 V, Fig. S8, Supplementary Information). The self-discharge suppression is achieved through the 
+strong interactions between Li and O of NO3
+− anions covered graphite and irrelevant to the presence of the 
+c-LixNOy layer on cathode, evidenced by a similar OCV when setting a higher cut-off voltage (2.0 V). In cells 
+with LiNO3-free electrolyte, self-discharge over time led to the disappearance of the upper voltage plateau cor-
+responding to the series reductions of S8 →​ Li2S8 →​ Li2S6 →​ Li2S4 in the following discharge (Fig. 4c). As LiPSs 
+in electrolyte can diffuse to the surface of Li anode and eventually precipitate thereon in the form of solid Li2S/
+Li2S2
+13, irreversible capacity decay was seen with only 61.5% of capacity retention after the storage of 10 days (475 
+vs. 772 mAh g−1). In sharp contrast, cells with LiNO3-contained electrolyte were able to retain 97.0% of capacity 
+(783 vs. 807 mAh g−1) over the same period (Fig. 4d). The significantly suppressed self-discharge in the presence 
+of LiNO3 provides a solid support to the stronger interaction of NO3
+− anions on graphite to LiPSs (Li2S6) in Li−​O 
+“bonding” mode. This further supported the catalytic mechanism of redox-shuttle suppression by LiNO3.
+Despite its high efficacy on LiPSs redox shuttle suppression and self-discharge mitigation, use of LiNO3 in 
+electrolyte brings in two noticeable drawbacks to the cycling stability of Li-S cells. One is the progressive reduc-
+tion of LiNO3 on Li anode, elevating cell internal resistance which lowers the discharge voltage28; the other is 
+the formation of LixNOy passivation layer on cathode at low voltage which destabilizes the cathode upon charg-
+ing and induces faster capacity decay31,38. It is worth noting that cells with LiNO3 in electrolyte are generally 
+in a non-equilibrium state, whereby the free LiNO3 will be gradually depleted by continuous reduction on 
+both electrodes. Eventually NO3
+− anions on (or in the proximity of) graphite will diffuse into the electrolyte 
+and get consumed as well. This is evidenced by the clear decrease of CE in long-term cycling test of cells using 
+Figure 4.  Self-discharge test of Li-S batteries (with sulfur-graphite composite). Nyquist plots and capacity 
+change of the cells with no LiNO3 (a,c), 5.0 wt% of LiNO3 (b,d) stored at room temperature over 10 days. 
+Electrolyte volume: 30 μ​L.
+
+<<PAGE 6>>
+www.nature.com/scientificreports/
+6
+Scientific Reports | 6:33154 | DOI: 10.1038/srep33154
+LiNO3-contained electrolyte in previous studies16,39–41. Searching of a replacement for LiNO3 becomes necessary 
+for Li-S batteries with long-term cycling stability.
+Replacing LiNO3 with transition metal oxides. 
+Different from Zhang’s proposal of NO3 radical inter-
+mediate as the key to promote LiPSs→​sulfur conversion32, we believe that the shuttle suppression could be 
+achieved by incorporating solid transition metal oxides into cathode as a catalyst of polysulfide oxidation reac-
+tions (PSOR). Some transition metal oxides were employed previously as polysulfide absorbents to improve the 
+performance of Li-S cells, with Magné​li-phase Ti4O7 being a successful example42,43. Moreover, MnO2
+44, ZrO2
+45, 
+La2O3
+46, NiFe2O4
+47 and Ni3(NO3)2(OH)4
+48 as a major component in cathode, were found to improve the Li-S 
+cell performances in different ways. The new understanding on the role of LiNO3 in this work makes us believe 
+that transition metal oxides may be used in low content to “catalyze” the oxidation of the adsorbed polysulfide, 
+if their interactions are strong. To validate this catalytic mechanism, we introduced low content (<3 wt% in the 
+sulfur electrode) of transition metal oxides (18 in total) to investigate their activities towards PSOR. In each 
+experiment one of the 18 transition metal oxides, selected from Period 4 (Fig. S9, Supplementary Information), 
+5 (Fig. S10, Supplementary Information), and rare earth elements in the lanthanide series (Fig. S11, 
+Supplementary Information) of the periodic table, was loaded onto graphite. The composition and structure of 
+these graphite/oxide composites were confirmed by their respective X-ray diffraction (XRD) patterns (Fig. S12, 
+Supplementary Information). After mixing with sulfur to form the cathode, the shuttle effect of LiPSs in the 
+obtained Li-S cell was studied. The ICE data (Fig. 5a) clearly shows that V2O3, MnO, CdO and Fe3O4 imposed a 
+negative effect on ICE (<​50%), whereas anatase-TiO2, rutile-TiO2, Cr2O3, ZnO, RuO2 and most rare earth oxides 
+improved the ICE (>​80%) as compared to bare graphite (ICE: 66.4%). It is noteworthy that a direct correlation 
+between CE value and different transition metal oxide here would be hardly achievable. Their binding affinity to 
+polysulfides could be an important factor which, however, is extremely difficult to be accurately quantified due 
+Figure 5.  (a) ICE data of the Li-S cells with the introduction of different transition metal oxides on graphite 
+substrate. (b) HAADF-STEM image of RuO2-MWCNTs composite. (c,d) Galvanostatic discharge-charge 
+voltage profiles of the cell with RuO2 catalyst cycled in LiNO3-free electrolyte (top) and the bared MWCNTs-
+sulfur electrode cycled in the electrolyte with 2.0 wt% of LiNO3 additive (bottom) at the cycling rate of C/20 
+(from 1st to 30th cycle) and C/2 (in 5th, 50th, 100th, 150th, 200th, 250th and 300th cycle). (e) Comparison of the 
+cycling performance of the cell with RuO2 catalyst and that with LiNO3 additive (at C/2). The cells were first 
+stabilized at C/20 for 3 times.
+
+<<PAGE 7>>
+www.nature.com/scientificreports/
+7
+Scientific Reports | 6:33154 | DOI: 10.1038/srep33154
+to various complications, e.g. crystal phase, dominating surface atoms, orientation, overall exposure to surface of 
+electrode made from slurry method, etc. These factors could vary notably for different metal oxide species. One 
+point to note could be the adverse impact of V2O3 and MnO with notable reduction power, which may compete 
+with the “polysulfide oxidation reaction” and make the latter more difficult to take place. A clearer picture may 
+be available after more discrete research on various transition metal oxides are studies in great details in future.
+Coincidentally, RuO2, an efficient catalyst towards oxygen evolution reaction (OER)49, was found to be the 
+most effective catalyst towards PSOR among these oxides, furnishing Li-S cells with the highest CE (92.5%) 
+and superior cycling stability as compared to their LiNO3-based counterparts (Fig. 5b–d). The discharge 
+capacity can be improved by replacing graphite (17.8 m2 g−1, Fig. S13, Supplementary Information) with 
+large surface area carbon, e.g. multi-walled carbon nanotubes (MWCNTs, 256.3 m2 g−1). Figure 5b shows 
+the high-angle annular dark-field scanning transmission electron microscopy (HAADF-STEM) image of 
+MWCNTs decorated with RuO2 and the bright dots indicate the location of well-dispersed RuO2 nanoparti-
+cles. By employing a cathode of MWCNTs/sulfur composite with 2.87 wt% RuO2, initial discharge capacity 
+of as high as 1298 mAh g−1 was achieved at a current density of C/20 (1C =​ 1672 mAh g−1, Fig. 5c). In con-
+trast, the MWCNTs/sulfur composite based Li-S cells without RuO2 gave additional two potential plateaus at 
+lower voltages (<​1.89 V, Fig. S14, Supplementary Information), attributing to the reduction of LiNO3 which 
+is detrimental to the long-term cycling stability of the cell. One may eliminate LiNO3 reduction at cathode 
+side by setting a higher cut-off voltage, as suggested by Aurbach38; however, the progressive LiNO3 reduc-
+tion on Li anode remains an issue28. It is hence not surprising to see faster capacity fading in cells cycled in 
+LiNO3-contained electrolyte than in the ones with RuO2 as a replacement (Figs 5c and S15, Supplementary 
+Information). The improvement of battery performance becomes more pronounced at elevated cycling rate 
+(C/2), reflected as higher capacity and smaller voltage gap (Fig. 5d). For instance, in 5th cycle the cell with 
+RuO2 delivers a discharge capacity of 912.4 mAh g−1, which is notably higher than the one with LiNO3 additive 
+(729.8 mAh g−1). Meanwhile, the much smaller voltage gap (0.266 vs. 0.686 V, in 5th cycle at a discharge capacity 
+of 400 mAh g−1) corresponds to a higher round-trip efficiency of the cell equipped with RuO2 (84.1 vs. 61.6%). 
+The lower discharge voltage at higher rate for battery using LiNO3 additive was likely due to the higher impedance 
+caused by the introduction of LixNOy layer as a result of LiNO3 reduction. This again shows the advantage of using 
+transition metal oxide, whereby the LixNOy layer formation can be avoided. In a long-cycling test for batteries 
+with transition metal oxide or LiNO3, similar capacity fading trends were observed for both cells in the first 250 
+cycles except higher capacity for the former in the same cycle. The similar fading trend was likely due to the loss 
+(with cycling) of active materials (sulfur) on cathode which still remains an issue to be solved. The lower capacity 
+(retention) at C/2 for the one with LiNO3 additive was due to its higher impedance from the LixNOy layers as we 
+discussed before. Adverse effect rising from the LiNO3 progressive reduction started to become more prominent 
+from 250 cycles, and the cells become unstable as clearly evidenced by the oscillated CE values (Fig. 5e). The same 
+phenomenon is also observed in Li-S cells with graphite/sulfur electrodes (Fig. S16, Supplementary Information) 
+and also a recent study by Janek et al.50. Interestingly, a Li-S cell with RuO2 on cathode exhibited a constant CE 
+and was able to deliver a discharge capacity of 513.3 mAh g−1 (@C/2) even after 400 cycles.
+Conclusion
+In summary, we re-examined the efficacy of LixNOy layers on both anode and cathode in redox shuttle suppres-
+sion, and found both ineffective. Previously observed convincing phenomenon of redox shuttle suppression by 
+LiNO3 additive in electrolyte could have functioned through the NO3
+− anions on or in the proximity of the gra-
+phitic surface in sulfur cathode. These anions bind strongly to LiPSs via “bond-like” interaction, facilitating fast 
+LiPSs→​sulfur conversion which mitigates the diffusion of LiPSs to anode in charge process. The stronger binding 
+was confirmed by DFT calculations and echoed by LiNO3-enabled low self-discharge rate in Li-S batteries. To 
+replace LiNO3 for long-term cycling stability, low content insoluble solid transition metal oxide was incorporated 
+into carbon substrate in sulfur cathode. RuO2, a prominent OER catalyst, enables an ICE of 92.5% with improved 
+long-term cycling stability. This work opens a new research path for the development of Li-S batteries, i.e. using 
+polysulfide oxidation catalysts as enablers to realize long-term cycling stability.
+Methods
+Materials and electrochemical characterizations. 
+Primary synthetic graphite (TIMCAL TIMREX®​ 
+KS6), multi-walled carbon nanotubes (MWCNTs, Aldrich, O.D. ×​ L: 6–9 nm ×​ 5 μ​m, purity: >​95%), precipitated 
+sulfur powder (Alfa Aesar, 99.5%) and poly(vinylidenefluoride) (PVDF, Solef®​ 5130) were used as received. The 
+graphite/sulfur cathode was prepared by manually mixing graphite and sulfur (w/w, 1:1) in an agate mortar 
+to form a graphite/sulfur composite which was then formulated to a slurry with PVDF in 1-methyl-2-pyrro-
+lidinone (NMP, anhydrous, Aldrich) (w/w: 95/5), and cast evenly onto a piece of aluminum (Al) foil. For the 
+CNT/sulfur cathode, PVDF content was increased to 10 wt% to ensure strong adhesion of active material on 
+Al foil. After drying in air at 80 °C for 2 h, electrode discs of 15 mm in diameter were punched out and trans-
+ferred into an argon-filled glove box (MBraun) for assembly of Li-S cells. The electrolyte used was 1 M lithium 
+bis(trifluoro-methanesulfonyl) imide (LiTFSI, Aldrich, 99.0%) in a solvent of 1,2-Dimethoxyethane (DME, Alfa 
+Aesar, 99+​%) and 1,3-Dioxolane (DOL, Alfa Aesar, 99.5%) (v/v, 1:1), or with additional 5.0 wt% of lithium nitrate 
+(LiNO3, Aldrich, 99.0%) as additive. The lithium salts were further dried at 150 °C for 15 h before transferring 
+into the glove box.
+The impregnation of RuO2 was via co-precipitation method. 0.26 g of MWCNTs (or KS6 graphite) was first 
+dispersed in a solvent (100 mL) of 2-propanol and acetone (v/v, 1:1) under sonication. Then ruthenium chlo-
+ride (RuCl3·xH2O, Alfa Aesar) was dissolved in the above suspension. Subsequently, sodium hydroxide solution 
+(0.1 g mol−1, 12 mL) was slowly added with vigorous stirring at room temperature. The obtained composite was 
+collected by centrifugation at 6,000 rpm, then thoroughly washed by deionized water until no chloride ions was 
+
+<<PAGE 8>>
+www.nature.com/scientificreports/
+8
+Scientific Reports | 6:33154 | DOI: 10.1038/srep33154
+detected by silver nitrate solution, and finally dried at 180 °C for 15 h. The synthesized ruthenium compound 
+was determined to be rutile RuO2 (JCPDS #43-1027) by X-ray diffraction pattern (Bruker D8 Advance) and the 
+loading on carbon is 6.38 wt% (or 2.87 wt% in RuO2-MWCNTs-sulfur cathode), confirmed by thermogravimetric 
+analysis (TGA, TA Instruments Q500). TEM image was collected from the monochromated transmission electron 
+microscope (FEI, Titan) in a scanning mode. The RuO2-MWCNTs-sulfur cathode is composed of 45 wt% of sul-
+fur, 45 wt% of RuO2-MWCNTs composite and 10 wt% of PVDF, with the sulfur loading density of 0.66 mg cm−2. 
+The RuO2-graphite-sulfur cathode contains 47.5 wt% of sulfur, 47.5 wt% of RuO2-graphite composite and 5 wt% 
+of PVDF, with a typical sulfur loading density of ~0.9 mg cm−2. The cells were cycled in the electrolyte containing 
+1 M LiTFSI in DME/DOL (v/v, 1:1), or with additional 2.0 wt% of LiNO3 as additive.
+Electrochemical performance was studied using CR2032-type coin cells with Li metal (diameter: 15.8 mm) 
+counter electrode and Celgard 2400 separator. The cells were tested on a multichannel battery tester (Shenzhen 
+Neware) at a constant current of 0.1 mA. The cycling voltage range was set between 1.5 and 2.8 V. To clarify the 
+role of LixNOy passivation layers, the Li-S cells were run over 3 cycles and disassembled at full-charge state (2.8 V) 
+in a glove box. The obtained cycled electrodes were washed a few times using a mixture solvent of DME and DOL 
+(v/v, 1:1, pre-treated by metallic lithium stripes over 48 h) before re-assembling into new cells with a fresh counter 
+electrode and LiNO3-free electrolyte. Electrochemical impedance spectra (EIS) were recorded on an Autolab 
+instrument in the frequency range of 100 kHz to 50 mHz at room temperature. To amplify the self-discharge 
+effect, the sulfur loading density (SLD) of the cells for storage test was reduced to 0.8 mg cm−2.
+Computational methods. 
+A single layer of graphite (coronene structure) was adopted to represent the 
+simplest cluster model of graphite, with Li2S6 as the most stable LiPSs being used in DFT calculations. The opti-
+mized Li2S6 exhibited a ring-like structure which resembles cyclo-octasulfur (S8). The additive NO3
+− and Li2S6 
+placed above the plane of the graphite model were used as the starting geometry. Geometry optimization was 
+performed using unrestricted wB97XD density functional in Gaussian 09 suite of program51,52. The selected func-
+tional uses Grimme’s D2 empirical dispersion correction53 that accounts for long-range interactions corrections. 
+The 6-31+​ G(d,p) basis sets were adopted for H, Li, C, N O and S atoms54–56. The selected basis sets contained dif-
+fuse functions which describes charged species. Self-consistency-field energy convergence was set at 10−6 Hartree. 
+1,2-dimethoxyethane (DME) is used as the solvent within the polarization continuum model (PCM)57. Four 
+parameters are set for this solvent: the static dielectric constant (eps) =​ 7.2; the molecular radius of the solvent 
+(rsolv) =​ 2.78255 Å; the density of the solvent (density) =​ 0.005804 particles Å−1 and the molar volume of the 
+solvent (vmol) =​ 103.7911 cm−3. The rest are based on the default parameters of water solvent. Zero-point energy 
+corrections obtained from vibrational frequency calculations in solvent are included in the adsorption energy 
+(Ead) calculations. Ead is calculated using the formula:
+=
+−
++
+E
+E
+E
+E
+(
+)
+(1)
+ad
+additive Li S
+graphite
+additive graphite
+Li S
+/
+2 6/
+/
+2 6
+where Eadditive/Li2S6/graphite, Eadditive/graphite and ELi2S6 are the total energy of optimized models of additive/Li2S6/graph-
+ite, additive/graphite, and Li2S6 polysulfide, respectively. The more negative adsorption energy indicates stronger 
+binding strength.
+References
+1.	 Scrosati, B. & Garche, J. Lithium batteries: status, prospects and future. J. Power Sources 195, 2419–2430 (2010).
+2.	 Yin, Y.-X., Xin, S., Guo, Y.-G. & Wan, L.-J. Lithium-sulfur batteries: electrochemistry, materials, and prospects. Angew. Chem. Int. 
+Ed. 52, 13186–13200 (2013).
+3.	 Bruce, P. G., Freunberger, S. A., Hardwick, L. J. & Tarascon, J.-M. Li-O2 and Li-S batteries with high energy storage. Nat. Mater. 11, 
+19–29 (2012).
+4.	 Danuta, H. & Juliusz, U. inventors; Electric Techniques Corp., assignee. Electric dry cells and storage batteries. United States patent 
+US 3,043,896. 1962 Jun 10.
+5.	 Manthiram, A., Fu, Y., Chung, S.-H., Zu, C. & Su, Y.-S. Rechargeable lithium-sulfur batteries. Chem. Rev. 114, 11751–11787 (2014).
+6.	 Marmorstein, D. et al. Electrochemical performance of lithium/sulfur cells with three different polymer electrolytes. J. Power Sources 
+89, 219–226 (2000).
+7.	 Trofimov, B. A. et al. Vinyl ethers with polysulfide and hydroxyl functions and polymers therefrom as binders for lithium-sulfur 
+batteries. J. Appl. Polym. Sci. 101, 4051–4055 (2006).
+8.	 Yuan, L. X. et al. Improved dischargeability and reversibility of sulfur cathode in a novel ionic liquid electrolyte. Electrochem. 
+Commun. 8, 610–614 (2006).
+9.	 Wang, J. et al. Sulphur-polypyrrole composite positive electrode materials for rechargeable lithium batteries. Electrochim. Acta 51, 
+4634–4638 (2006).
+10.	 Wang, Q. et al. A shuttle effect free lithium sulfur battery based on a hybrid electrolyte. Phys. Chem. Chem. Phys. 16, 21225–21229 
+(2014).
+11.	 Ryu, H. S. et al. Self-discharge characteristics of lithium/sulfur batteries using TEGDME liquid electrolyte. Electrochim. Acta 52, 
+1563–1566 (2006).
+12.	 Mikhaylik Y. V. inventor; Sion Power Corp., assignee. Electrolytes for lithium sulfur cells. United States patent US 7,354,680. 2008 
+Apr 8.
+13.	 Aurbach, D. et al. On the surface chemical aspects of very high energy density, rechargeable Li-sulfur batteries. J. Electrochem. Soc. 
+156, A694–A702 (2009).
+14.	 Chung, W. J. et al. The use of elemental sulfur as an alternative feedstock for polymeric materials. Nat. Chem. 5, 518–524 (2013).
+15.	 Li, Z. et al. A highly ordered meso@microporous carbon-supported sulfur@smaller sulfur core-shell structured cathode for Li-S 
+batteries. ACS Nano 8, 9295–9303 (2014).
+16.	 Zhao, Y., Wu, W., Li, J., Xu, Z. & Guan, L. Encapsulating MWNTs into hollow porous carbon nanotubes: a tube-in-tube carbon 
+nanostructure for high-performance lithium-sulfur batteries. Adv. Mater. 26, 5113–5118 (2014).
+17.	 Wang, Z.-L., Xu, D., Xu, J.-J. & Zhang, X.-B. Oxygen electrocatalysts in metal-air batteries: from aqueous to nonaqueous electrolytes. 
+Chem. Soc. Rev. 43, 7746–7786 (2014).
+18.	 Qiu, Y. et al. High-rate, ultralong cycle-life lithium/sulfur batteries enabled by nitrogen-doped graphene. Nano Lett. 14, 4821–4827 
+(2014).
+
+<<PAGE 9>>
+www.nature.com/scientificreports/
+9
+Scientific Reports | 6:33154 | DOI: 10.1038/srep33154
+19.	 Manthiram, A., Fu, Y. & Su, Y.-S. Challenges and prospects of lithium-sulfur batteries. Acc. Chem. Res. 46, 1125–1134 (2013).
+20.	 Liang, X. et al. Improved cycling performances of lithium sulfur batteries with LiNO3-modified electrolyte. J. Power Sources 196, 
+9839–9843 (2011).
+21.	 Jayaprakash, N., Shen, J., Moganty, S. S., Corona, A. & Archer, L. A. Porous hollow carbon@sulfur composites for high-power 
+lithium-sulfur batteries. Angew. Chem. Int. Ed. 50, 5904–5908 (2011).
+22.	 Seh, Z. W. et al. Sulphur-TiO2 yolk-shell nanoarchitecture with internal void space for long-cycle lithium-sulphur batteries. Nat. 
+Commun. 4, 2327 (2013).
+23.	 Chen, R. et al. Graphene-based three-dimensional hierarchical sandwich-type architecture for high-performance Li/S batteries. 
+Nano Lett. 13, 4642–4649 (2013).
+24.	 Yang, Y., Zheng, G. & Cui, Y. Nanostructured sulfur cathodes. Chem. Soc. Rev. 42, 3018–3032 (2013).
+25.	 Evers, S. & Nazar, L. F. New approaches for high energy density lithium-sulfur battery cathodes. Acc. Chem. Res. 46, 1135–1143 
+(2013).
+26.	 Xin, S. et al. Smaller sulfur molecules promise better lithium-sulfur batteries. J. Am. Chem. Soc. 134, 18510–18513 (2012).
+27.	 Xu, R., Li, J. C. M., Lu, J., Amine, K. & Belharouak, I. Demonstration of highly efficient lithium-sulfur batteries. J. Mater. Chem. A 3, 
+4170–4179 (2015).
+28.	 Zhang, S. S. Role of LiNO3 in rechargeable lithium/sulfur battery. Electrochim. Acta 70, 344–348 (2012).
+29.	 Mikhaylik, Y. V. & Akridge, J. R. Polysulfide shuttle study in the Li/S battery system. J. Electrochem. Soc. 151, A1969–A1976 (2004).
+30.	 Zhang, S. S. Improved Cyclability of Liquid Electrolyte Lithium/Sulfur Batteries by Optimizing Electrolyte/Sulfur Ratio. Energies 5, 
+5190–5197 (2012).
+31.	 Zhang, S. S. Effect of discharge cutoff voltage on reversibility of lithium/sulfur batteries with LiNO3-contained electrolyte. 
+J. Electrochem. Soc. 159, A920–A923 (2012).
+32.	 Zhang, S. S. A new finding on the role of LiNO3 in lithium-sulfur battery. J. Power Sources 322, 99–105 (2016).
+33.	 Diao, Y., Xie, K., Xiong, S. & Hong, X. Analysis of polysulfide dissolved in electrolyte in discharge-charge process of Li-S battery. 
+J. Electrochem. Soc. 159, A421–A425 (2012).
+34.	 Kawase, A., Shirai, S., Yamoto, Y., Arakawa, R. & Takata, T. Electrochemical reactions of lithium–sulfur batteries: an analytical study 
+using the organic conversion technique. Phys. Chem. Chem. Phys. 16, 9344–9350 (2014).
+35.	 Wang, B., Alhassan, S. M. & Pantelides, S. T. Formation of large polysulfide complexes during the lithium-sulfur battery discharge. 
+Phys. Rev. Appl. 2, 034004 (2014).
+36.	 Cheon, S.-E. et al. Rechargeable Lithium Sulfur Battery I. Structural Change of Sulfur Cathode During Discharge and Charge. 
+J. Electrochem. Soc. 150, A796–A799 (2003).
+37.	 Akridge, J. R., Mikhaylik, Y. V. & White, N. Li/S fundamental chemistry and application to high-performance rechargeable batteries. 
+Solid State Ionics 175, 243–245 (2004).
+38.	 Rosenman, A. et al. The effects of interactions and reduction products of LiNO3, the anti-shuttle agent, in Li-S battery system. 
+J. Electrochem. Soc. 162, A470–A473 (2015).
+39.	 Li, L. et al. Enhanced cycling stability of lithium sulfur batteries using sulfur polyaniline-graphene nanoribbon composite cathodes. 
+ACS Appl. Mater. Interfaces 6, 15033–15039 (2014).
+40.	 Zhang, B. et al. Novel hierarchically porous carbon materials obtained from natural biopolymer as host matrixes for lithium-sulfur 
+battery applications. ACS Appl. Mater. Interfaces 6, 13174–13182 (2014).
+41.	 Zhou, W., Yu, Y., Chen, H., DiSalvo, F. J. & Abruna, H. D. Yolk-shell structure of polyaniline-coated sulfur for lithium-sulfur 
+batteries. J. Am. Chem. Soc. 135, 16736–16743 (2013).
+42.	 Pang, Q., Kundu, D., Cuisinier, M. & Nazar, L. F. Surface-enhanced redox chemistry of polysulphides on a metallic and polar host 
+for lithium-sulphur batteries. Nat. Commun. 5, 5759 (2014).
+43.	 Tao, X. et al. Strong sulfur binding with conducting magneli-phase TinO2n−1 nanomaterials for improving lithium-sulfur batteries. 
+Nano Lett. 14, 5288–5294 (2014).
+44.	 Li, Z., Zhang, J. & Lou, X. W. Hollow carbon nanofibers filled with MnO2 nanosheets as efficient sulfur hosts for lithium-sulfur 
+batteries. Angew. Chem. Int. Ed. 54, 12886–12890 (2015).
+45.	 Wan, C., Wu, W., Wu, C., Xu, J. & Guan, L. A layered porous ZrO2/RGO composite as sulfur host for lithium-sulfur batteries. RSC 
+Adv. 5, 5102–5106 (2015).
+46.	 Sun, F. et al. A high-rate lithium-sulfur battery assisted by nitrogen-enriched mesoporous carbons decorated with ultrafine La2O3 
+nanoparticles. J. Mater. Chem. A 1, 13283–13289 (2013).
+47.	 F1an, Q., Liu, W., Weng, Z., Sun, Y. & Wang, H. Ternary hybrid material for high-performance lithium-sulfur battery. J. Am. Chem. 
+Soc. 137, 12946–12953 (2015).
+48.	 Jiang, J. et al. Encapsulation of sulfur with thin-layered nickel-based hydroxides for long-cyclic lithium-sulfur cells. Nat. Commun. 
+6, 8622 (2015).
+49.	 Over, H. et al. Atomic-scale structure and catalytic reactivity of the RuO2(110) surface. Science 287, 1474–1476 (2000).
+50.	 Kulisch, J., Sommer, H., Brezesinski, T. & Janek, J. Simple cathode design for Li-S batteries: cell performance and mechanistic 
+insights by in operando X-ray diffraction. Phys. Chem. Chem. Phys. 16, 18765–18771 (2014).
+51.	 Chai, J.-D. & Head-Gordon, M. Long-range corrected hybrid density functionals with damped atom-atom dispersion corrections. 
+Phys. Chem. Chem. Phys. 10, 6615–6620 (2008).
+52.	 Gaussian 09, Revision E.01, Frisch, M. J. et al. Gaussian, Inc., Wallingford CT, 2009.
+53.	 Grimme, S. Semiempirical GGA-type density functional constructed with a long-range dispersion correction. J. Comput. Chem. 27, 
+1787–1799 (2006).
+54.	 Hehre, W. J., Ditchfie, R. & Pople, J. A. Self-consistent molecular-orbital methods. 12. Further extensions of gaussian-type basis sets 
+for use in molecular-orbital studies of organic-molecules. J. Chem. Phys. 56, 2257–2261 (1972).
+55.	 Dill, J. D. & Pople, J. A. Self-consistent molecular-orbital methods. 15. Extended gaussian-type basis sets for lithium, beryllium, and 
+boron. J. Chem. Phys. 62, 2921–2923 (1975).
+56.	 Francl, M. M. et al. Self-consistent molecular-orbital methods. 23. A polarization-type basis set for 2nd-row elements. J. Chem. Phys. 
+77, 3654–3665 (1982).
+57.	 Miertus, S., Scrocco, E. & Tomasi, J. Electrostatic Interaction of a Solute with a Continuum. A Direct Utilization of ab Initio 
+Molecular Potentials for the Prevision of Solvent Effects. Chem. Phys. 55, 117–129 (1981).
+Acknowledgements
+This work was partially supported by a core research grant of the Institute of Materials Research and Engineering 
+(IMRE/14-1C0243), and grants under Advanced Energy Storage Research Program of Science and Engineering 
+Research Council (Award numbers: 1229904044 & 1229904045), A*STAR (Agency for Science, Technology 
+and Research), Singapore. N.D. thanks L. Mechthild of University College London and E. Alter of University of 
+Waterloo for their suggestions in manuscript preparation.
+
+<<PAGE 10>>
+www.nature.com/scientificreports/
+10
+Scientific Reports | 6:33154 | DOI: 10.1038/srep33154
+Author Contributions
+Y.Z., Z.L., T.S.A.H. and N.D. conceived and designed the experiments. N.D., L.Z., C.Z., D.G., J.Y., S.W.C. and A.Y. 
+synthesized the materials and performed the battery test. M.-F.N. and M.B.S. carried out the calculations. N.D. 
+and Y.Z. analyzed the data and wrote the manuscript. All authors contributed to the discussions and revisions of 
+the manuscript.
+Additional Information
+Supplementary information accompanies this paper at http://www.nature.com/srep
+Competing financial interests: The authors declare no competing financial interests.
+How to cite this article: Ding, N. et al. Building better lithium-sulfur batteries: from LiNO3 to solid oxide 
+catalyst. Sci. Rep. 6, 33154; doi: 10.1038/srep33154 (2016).
+This work is licensed under a Creative Commons Attribution 4.0 International License. The images 
+or other third party material in this article are included in the article’s Creative Commons license, 
+unless indicated otherwise in the credit line; if the material is not included under the Creative Commons license, 
+users will need to obtain permission from the license holder to reproduce the material. To view a copy of this 
+license, visit http://creativecommons.org/licenses/by/4.0/
+ 
+© The Author(s) 2016

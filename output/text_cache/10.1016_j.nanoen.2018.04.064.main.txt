@@ -1,0 +1,817 @@
+
+<<PAGE 1>>
+Contents lists available at ScienceDirect
+Nano Energy
+journal homepage: www.elsevier.com/locate/nanoen
+Full paper
+Plateau targeted conditioning: An additive-free approach towards robust SEI
+formation in Li-S batteries for enhanced capacity and cycle life
+Jeﬀrey Bella,1, Rachel Yeb,1, Daisy Patinoa, Kazi Ahmedc, Andrew Scotta, Leon Pengd,
+Zafer Mutlua,b, Mihrimah Ozkanc,⁎, Cengiz S. Ozkana,b,⁎⁎
+a Materials Science and Engineering Program, University of California, Riverside, CA 92521, United States
+b Department of Mechanical Engineering, University of California, Riverside, CA 92521, United States
+c Department of Electrical and Computer Engineering, University of California, Riverside, CA 92521, United States
+d Department of Computer Science and Engineering, University of California, Riverside, CA 92521, United States
+A R T I C L E I N F O
+Keywords:
+Energy storage
+Lithium-sulfur (Li-S) batteries
+Solid electrolyte interphase (SEI)
+Electrochemical impedance spectroscopy (EIS)
+Electric vehicle (EV)
+A B S T R A C T
+Lithium-sulfur (Li-S) is one of the most promising next-generation lithium-ion battery systems due to its high
+theoretical speciﬁc capacity. However, Li-S batteries suﬀer from a short cycling life, poor mechanical stability
+and low coulombic eﬃciency. Developing a robust solid electrolyte interphase (SEI) plays a critical role in
+alleviating these issues. Current approaches for a robust SEI are mostly based on using additives, which nega-
+tively impact the energy density. Herein, newly developed electrochemical conditioning techniques were applied
+to study their eﬀects on the formation of the SEI in Li-S batteries. The dynamic mechanisms in the battery
+associated with each conditioning technique were investigated using city and highway models based on real
+world driving conditions. City and highway models incorporated various electrochemical characterization
+techniques while introducing varying levels of cycling stress. As an additive free approach, the novel plateau
+targeted conditioning method improves Li-S SEI formation that increases battery capacity and cycling stability.
+This work will pave the way for the realization of additive free approaches to improving the performance of Li-S
+batteries.
+1. Introduction
+With demand for fossil fuels in decline while clean energy becomes
+more cost eﬃcient, automotive companies are adopting electric ve-
+hicles (EV) for future transportation needs. However, current lithium
+ion battery (LiB) technologies are not capable of the performance re-
+quired for EVs to be economically competitive with internal combustion
+engines. Conventional EV battery packs utilize lithium nickel manga-
+nese cobalt oxide (NMC) or lithium nickel cobalt aluminum oxide
+(NCA) cathodes capable of up to 300 highway miles due to a limited
+cathode capacity of 170 mA h/g. In order to facilitate further im-
+plementation of EVs, battery technologies capable of yielding longer
+driving ranges at lower prices need to be explored. One of the primary
+materials under consideration for next generation of LiBs is sulfur.
+Sulfur is a high capacity, energy dense, and abundant cathode material
+with a theoretical capacity of 1675 mA h/g and energy density of
+2600 W h/kg. However, lithium-sulfur (Li-S)s’ electrochemistry pre-
+sents several challenges that inhibit it from being commercialized [1].
+Li-S batteries face three major challenges: detrimental volumetric
+changes, poor electrical conductivity, and polysulﬁde shuttling [2].
+Volumetric changes result from the density diﬀerence between sulfur
+and lithium sulﬁde [3]. An 80% volume change mechanically expands
+and contracts the electrode, degrading its structure and conductive
+network with each cycle. Sulfur's poor electrical conductivity requires a
+large amount of carbon additive to achieve practical current rates
+greater than C/10 or 1.675 mA h/g [4]. However, excess additives de-
+crease an electrode's sulfur content and creates deadweight in the
+electrode. This limits the cell's potential energy density, making it im-
+practical for industry. Polysulﬁde shuttling in Li-S results from the long
+chain polysulﬁdes (Li2S8 – Li2S4) being highly soluble in ether elec-
+trolytes, which are commonly used in Li-S batteries due to their pre-
+ferred high ionic conductivity [5]. Once (Li2S8 – Li2S4) dissolves in the
+ether based electrolyte, polysulﬁdes shuttle from the sulfur electrode
+across the separator collecting on the counter electrode (lithium foil).
+These polysulﬁdes form an insulating layer during delithiation, redu-
+cing ionic conductivity while causing capacity loss from dead sulfur [6].
+https://doi.org/10.1016/j.nanoen.2018.04.064
+Received 16 February 2018; Received in revised form 9 April 2018; Accepted 23 April 2018
+⁎ Corresponding author.
+⁎⁎ Corresponding author at: Materials Science and Engineering Program, University of California, Riverside, CA 92521, United States.
+1 These authors contributed equally to this work.
+E-mail addresses: mihri@ee.ucr.edu (M. Ozkan), cozkan@engr.ucr.edu (C.S. Ozkan).
+Nano Energy 49 (2018) 498–507
+Available online 25 April 2018
+2211-2855/ © 2018 Published by Elsevier Ltd.
+T
+
+<<PAGE 2>>
+Various methods have been demonstrated to alleviate these afore-
+mentioned issues in sulfur's electrochemistry, each having varying de-
+grees of improvement on the cell's performance. For example, to pre-
+vent mechanical pummeling in sulfur electrodes, researchers have
+proposed using the structures engineered with void spaces [7]. The
+engineered void spaces have extra room to accommodate expansion of
+sulfur but reduces the overall volumetric energy density of the cell. To
+tackle the issues of poor electrical conductivity, a combination of
+carbon nanotubes (CNTs), graphene, reduced graphene oxide (rGO),
+and other assorted highly conductive carbons in varying amounts have
+been utilized [8,9]. The conductive carbons help mitigate conductivity
+issues but at the expense of adding weight to the battery and increasing
+cost. To suppress polysulﬁde shuttling, several groups have employed
+various thin ﬁlms or core shell structures such as graphene paper and
+pomegranate like carbon structures [10,11]. These structures trap
+polysulﬁdes within the cathode, increasing performance; however, the
+methods utilized to achieve this are impractical for commercialization.
+Beyond issues in Li-S material electrochemistry, issues exist in the Li-S
+battery electrochemistry.
+Common issues in Li-S battery electrochemistry resulting from cy-
+cling are electrolyte degradation, poor solid electrolyte interphase (SEI)
+formation, and gas evolution. All of these are common issues found in
+all LiB systems [12,13]. Among these issues, it is a consensus amongst
+researchers that SEI formation plays a key role in mitigating the ne-
+gative behavior of the Li-S electrodes. The most common method for
+alleviating SEI formation issues is using additives, such as phosphorous
+pentasulﬁde,
+lithium
+nitrate,
+polysulﬁdes,
+and
+lithium
+iodide
+[14,15–17]. Additive use focusing on robust SEI formation falls under
+three categories: reduction type, reaction type, and morphology
+modiﬁer. However, additive use in Li-S tends to have adverse eﬀects on
+energy density, internal resistance, and cycling stability while additive-
+free approaches to robust SEI formation have not garnered enough at-
+tention [18,19].
+Herein, we develop an additive free conditioning technique towards
+robust SEI formation that targets speciﬁc voltage plateaus Li-S batteries.
+Current practice in Li-S batteries is to slowly discharge/charge
+(C/20 – C/100) for one to three cycles before increasing to higher
+current rates [20,21–24]. However, conditioning practices are seldom
+understood, yet it has the potential to increase cell performance at little
+cost regardless of electrode design. We present three diﬀerent methods
+for conditioning a Li-S cell tested by models inspired by city and
+highway driving conditions. Performance and health eﬀects of the three
+conditioning methods on the cells are investigated using galvanostatic
+intermittent titration technique (GITT), cyclic voltammetry (CV), gal-
+vanostatic cycling with potential limitation (GCPL), and potentiostatic
+electrochemical impedance spectroscopy (PEIS). All batteries are cycled
+under the same city and highway models to ensure comparable results.
+Currents are calculated based on information gathered from EVs driving
+rates. Below we show a novel additive-free approach to robust SEI
+formation for enhanced cycling performance characterized via custom
+testing models.
+2. Methods
+2.1. Electrode synthesis
+The battery used for the EV testing consists of a sulfur electrode
+countered by a lithium metal anode. The sulfur electrode was made
+with 20 wt% poly(acrylic acid) (PAA, 1800 g/mol, Sigma-Aldrich), and
+80 wt% acetylene black sulfur composite (ABS) that was made by dis-
+solving 200 mg of sulfur (S, 99.998% trace metals basis, Sigma-Aldrich)
+in 20 ml of dimethyl sulfoxide (DMSO, Fisher Chemical) at 90 °C, he-
+ated by a heating jacket (Brisk Heat). 129 mg of acetylene black (Alfa
+Aesar, 50% compressed) was then added to the solution. The solution
+was stirred for 3 h before the heating jacket was removed, and the so-
+lution was allowed to cool while stirring. The resulting ABS composite
+was then washed by anhydrous ethanol (Decon Labs, Inc.) several times
+to ensure the removal of DMSO and dried at 60 °C for 24 h. To make the
+sulfur electrode, 20 wt% PAA (450,000 MW) and 80 wt% ABS was
+mixed with 1-methyl-2-pyrrolidinone (NMP, Sigma-Aldrich) and then
+casted on a large piece of aluminum foil (Alfa Aesar, 0.025 mm thick-
+ness, 99.45% purity) by a doctor blade (MTI Automatic Thick Film
+Coater, BYK Doctor Blade). The casted electrode sheet was then dried in
+a convection oven (Cole-Parmer, Stable Temp) at 60 °C for 24 h. The
+electrodes were calendered with 0.04 mm gap using a calendering
+machine (IRM) before being constructed into a coin cell.
+2.2. Electrochemical characterization
+To make the sulfur half cell, a lithium foil electrode (16 mm in
+diameter) was ﬁrst put inside a negative cap (MTI type 2032 coin cell
+case). Next, separators (Celgard 25 µm 3501) of various sizes were
+placed on top to prevent any possibility of shorting. Sulfur electrode
+(16 mm in diameter) was then placed on top followed by two spacers, a
+spring, and the positive cap while electrolyte was added in between
+(1:1 DOL:DME, 1 wt% LiNO3, 1 M LiTFSI). The battery was then sealed
+using a battery crimper (MTI, MSK-160D). All cell assembly was done
+inside an Ar ﬁlled glovebox (H2O < 0.5 ppm, O2 < 0.2 ppm, Vacuum
+Atmosphere Co.). The battery was then tested under room temperature
+with a Bio Logic (BCS 810 Testing Module) using diﬀerent testing
+methods, including GCPL, CV, PEIS and GITT in voltage window ran-
+ging from 1.7 V to 2.8 V.
+3. Results and discussion
+Various battery testing methods were used to evaluate cells pre/
+during/post simulated driving. The sulfur electrodes were made using
+an ABS composite with PAA as detailed in the methods section. The Li-S
+cells were then assembled into coin cells with lithium foil acting as the
+counter electrode. The sulfur loading for each battery is 2.5 mg/cm2.
+The cells were then conditioned using three diﬀerent methods: Method
+1 applies a current rate of C/50 (0.175 mA) during discharge and
+charge for 3 cycles. This is the common average of conditioning
+methods reported by researchers and thus it was used as the datum in
+this study. Method 2 applies current pulses at 10 min intervals at C/50
+for 3 cycles. The rest between current pulses allows for voltage equal-
+ization, which will prolong the discharge process and maximize mate-
+rial reduction in the electrode. Lastly, Method 3 applies a rate of C/50
+during discharge from 2.8 V to 2.1 V and a rate of C/100 (0.0875 mA)
+from 2.1 V to 1.7 V. This method avoids excess polysulﬁde shuttling in
+the voltage plateau associated with the formation of long chain poly-
+sulﬁdes, while targeting the lower voltage plateau, at a slower rate,
+associated solid formation on the carbon matrix, 2.1 V. All methods
+charge batteries at a rate of C/50; each conditioning procedure is re-
+peated for three cycles. Fig. 4c–f, the proposed schematic for datum and
+plateau targeted conditionings eﬀect on SEI formation along with the
+resulting eﬀects on the battery system. A unconditioned control battery
+was tested in conjunction. The performance results of the uncondi-
+tioned batteries can be found in the Supplementary information (Fig.
+S3).
+The cells then underwent two diﬀerent testing models, one based on
+real world driving conditions found in the city (city model) and the
+other based on real world driving conditions found on the highway
+(highway model). Each model simulates a driving distance of 36.5
+miles, the average distance driven by a person each day. At the end of
+each simulated day cells were fully charged, simulating users charging
+EVs overnight, and PEIS was taken. This driving/charging cycle was
+repeated 7 times (week) before a cycle of GITT. GITT was used to ex-
+amine lithium diﬀusivity within the cell, giving a detailed picture of
+changes to the electrodes conductive network. Ten full discharge/
+charge cycles were then applied to the cell to simulate aging. Post
+aging, CV was instituted to check the health of electrochemical
+J. Bell et al.
+Nano Energy 49 (2018) 498–507
+499
+
+<<PAGE 3>>
+reactions. Lastly, the driving-charging-PEIS-GITT-aging-CV process was
+repeated four times while doing PEIS at points of interest.
+The city model was designed to simulate diﬀerent discharge/charge
+rates a EV battery was subjected to while driving in a city. Contrary to
+conventional constant current rated cycling used in research, the city
+model consists of a series of diﬀerent discharge/charge rates reﬂecting
+diﬀerent energy consumption needs in a EV. To simulate real world
+driving conditions, corresponding discharge/charge rates were esti-
+mated based on data released for the Tesla Model S. From Tesla's oﬃ-
+cial website, the discharge rate of the 75D Model S is around C/5 at
+60 mph [25]. Considering that the speciﬁc capacity of a Li-S cell is 6
+times the speciﬁc capacity of current commercial cells, the base dis-
+charge rate used for the city and highway models was calculated as
+C/30. Based on the constant driving condition, light and hard accel-
+eration were simulated using C/10 and C/5; C/100 was used to simu-
+late energy recovery during braking. A driving route was designed
+based on Google maps, shown in Fig. 1a, consisting of lights, stop signs,
+turns, freeway mergers, freeway entrances/exits and speed bumps.
+Fig. 1e shows the detailed rate changes of the city model. In a similar
+fashion, a highway model was designed, Fig. 1b. Comparatively, the
+highway model contains less current rate variation resulting in a re-
+duced stress load for batteries tested on the highway model. As a result,
+city and highway cycled batteries give diﬀerent performance char-
+acteristics. Current rates associated with diﬀerent speeds can be found
+in Table S1, while common driving variable test protocols can be found
+in Table 1.
+Fig. 1c and d, voltage ﬂuctuations of city and highway models, re-
+spectively, during a simulated driving day. According to Fig. 1c, a fully
+charged battery experiencing severe current ﬂuctuation from the city
+model will discharge to around 2 V. Crossing the 2.1 V threshold in-
+dicates that the battery has passed the higher kinetic region (Li2S8-
+Li2S3) entering the lower kinetic region (Li2S2-Li2S) [26]. Fig. 1d, bat-
+teries experiencing reduced current ﬂuctuation from the highway
+model will remain in the higher kinetic region (Li2S8-Li2S3). The dif-
+ference in end voltages is an indicator of stresses placed on the battery,
+although both simulate the same driving distance. Batteries cycled by
+the city model experienced increased stresses than those cycled by the
+highway model.
+PEIS is a non-destructive method that characterizes the integrity of
+the electrode-electrolyte interface, passivation layers, electronic con-
+ductivity of electrode material, diﬀusion of lithium within electrode,
+Fig. 1. (a) Map of city driving route from google maps. (b) Map of highway driving route from google maps. (c) Voltage variation of Method 1 battery going through
+city cycling model (CA). (d) Voltage variation of Method 1 battery going through highway cycling model. (e) Current change of each simulated condition used in city
+and highway model.
+Table 1
+Current rate used to simulate driving interactions.
+City & highway model
+Driving interaction
+Condition
+Current
+Stop Sign
+Brake, Stop, Hard Acceleration,
+Constant Driving
+C/100, 0, C/5, C/30
+Speed Bump
+Brake, Light Acceleration, Constant
+Driving
+C/100, C/10, C/30
+Stop Light
+Brake, Rest, Hard Acceleration,
+Constant Driving
+C/100, 0, C/5, C/30
+Freeway Entrance
+Hard Acceleration, Light
+Acceleration, Constant Driving
+C/5, C/10, C/30
+Freeway Merge
+Brake, Light Acceleration, Constant
+Driving
+C/100, C/10, C/30
+J. Bell et al.
+Nano Energy 49 (2018) 498–507
+500
+
+<<PAGE 4>>
+and diﬀusion of lithium-ions in electrolyte near electrode surface [27].
+Complex impedance was measured for a selected number of frequency
+points between the bounds of 10 kHz and 10 mHz. Fig. 3e shows the
+electrical equivalent circuit used to model the impedance of Li-S cells at
+a fully charged state. Additionally, raw experimental data along with
+the curve ﬁtted experimental data is depicted in Fig. 2e and f. All
+batteries for each testing model were investigated with PEIS post day of
+driving and post GITT, aging, and CV (non-driving EIS data are avail-
+able in the Supplementary information document, Figs. S4 and S5).
+Value of the equivalent series resistance (ESR) represents the total
+resistance contributed by solution resistance, charge transfer resistance,
+and contact resistance in the batteries [27]. Fig. 2a shows the evolution
+of ESR for the city model. City ESR is highest for Method 1 battery and
+lowest for Method 2 battery. High ESR resistance for Method 1 battery
+can be attributed to the corrosion of the lithium metal anode. This re-
+sults from poor solid-electrolyte interphase (SEI) formation exhibited in
+Fig. 2b by the low Rsei values. A previous study showed that once
+polysulﬁde
+concentration
+in
+the
+electrolyte
+passes
+a
+threshold
+(c > 0.5 M), polysulﬁdes corrode the lithium metal, breakdown lithium
+SEI, form dendrites, and creates dead lithium [28]. This ultimately
+creates excess resistance in the lithium anode increasing ESR (Fig. 2a).
+Contrarily, city ESR for Methods 2 and 3 batteries provide evidence of
+electrochemical durability, indicated by the stability in ESR from week
+1 to 4. Electrochemical durability in a half cell is important but hard to
+achieve due to the presence of a lithium counter electrode, shown by
+Delpuech at el [29]. Method 1 battery shows a ESR drop from week 1,
+this concurs with drop in the Rct and an increase in Qw2 from week 1 to
+week 2 where Qw2 represents lithium capacitance in the electrolyte.
+Low ESR values for method 2 battery are attributed to changes in
+electrolyte ionic conductivity. Unlike Method 1 battery, where it is
+believed the polysulﬁde electrolyte concentration passed a threshold,
+Method 2 battery stayed in the beneﬁcial range of polysulﬁde shuttling
+(0.1 M < c < 0.5 M). This prevents lithium corrosion while also en-
+hancing ionic conductivity [30]. Therefore, Method 2 battery which has
+more polysulﬁde shuttling, based of capacity diﬀerences, has the lowest
+ESR [27]. This diﬀerence in polysulﬁde shuttling is determined by SEI
+layer quality. Comparing to Method 2, Method 3's plateau targeted
+constant current rate allows formation of a robust SEI layer with
+minimal defects which greatly mitigates polysulﬁde shuttling. A sec-
+ondary beneﬁt of polysulﬁde mitigation is reducing parasitic eﬀects on
+the lithium anode. Parasitic reactions cause the formation of an un-
+stable SEI layer on the lithium anode, while stable SEI attributes greatly
+to the stability of the battery. A robust SEI layer forming on both
+electrodes is supported by the stability in coulombic eﬃciency. The
+Fig. 2. Impedance parameters of batteries tested by the city model after each driving days (a) ESR. (b) Rsei. (c) Rct. (d) Qw2. (e) Experimental PEIS curves for
+simulated week 1 of driving for Method 3. (f) Experimental data vs curve ﬁtted data.
+J. Bell et al.
+Nano Energy 49 (2018) 498–507
+501
+
+<<PAGE 5>>
+schematic for this proposed mechanism is depicted in Fig. 4e and f.
+Fig. 2b shows Rsei changes for the city model. Rsei quantizes the
+resistance associated with the formation of the SEI layer, a higher Rsei
+indicates thicker SEI layers. Sulfur does not natively form any perma-
+nent passivation ﬁlm similar to SEI layers observed in silicon or carbon
+electrodes [31]. We propose the SEI resistance observed in our sulfur
+electrodes mainly originate from the carbon additive, but may also be
+aﬀected by polysulﬁdes and electrolyte composition. Shown in Fig. 2b,
+it is observed that Method 2 battery has the highest resistance value
+compared to Methods 1 and 3 batteries. Method 2 battery's high Rsei
+results from the distinct characteristics of this conditioning method that
+utilized pulsed currents. We propose that the pulsed currents during the
+conditioning cycles cause volumetric expansion of sulfur to rupture the
+SEI layer prematurely formed during rest periods [32]. Each con-
+secutive pulse repeats this detrimental process, causing an thick, non-
+homogeneous SEI layer to form on the cathode, which results in in-
+eﬃcient lithium-ion conducting pathways.
+The change in Rct for the city cycling is shown in Fig. 2c. Rct is the
+charge transfer resistance at the electrode electrolyte interface which
+gives insights into the kinetics of the battery [27]. As shown in Fig. 2c,
+all cells show a stabilizing trend in their kinetics during week 4. For
+weeks 1–3, all cells exhibit erratic behavior resulting from electrode
+degradation, mechanical or chemical, due to continued stresses placed
+on the cell by the city cycling model.
+The evolution of the ESR and Rsei for highway cycles is shown in
+Fig. 3. ESR increases for all batteries week 1, but stabilizes by week 3. In
+contrast to Methods 1 and 2 batteries, ESR for Method 3 battery con-
+tinue to increase during week 2. ESR is dominated by solution re-
+sistance, or electrolyte conductivity, but also takes into account changes
+in SEI resistance. This relationship is shown Fig. 3b which the increase
+in ESR is attributed to the spike in Rsei week 2.
+Rsei for all batteries increases during week 1 but stabilize by week 2
+with the exception of Method 3 battery. In city cycling, it is observed
+that the SEI originates from the carbon additive but may also in-
+corporate polysulﬁdes into the measurement. For highway cycling, we
+propose that the structure of the delithiated polysulﬁdes also aﬀects the
+Rsei. The highway cycling model's discharge never reaches the second
+plateau (2.1 V), as shown in Fig. 1d, indicating the sole formation of
+electrolyte soluble long chain polysulﬁdes. When long chain poly-
+sulﬁdes delithiate into sulfur, the resulting sulfur particles gather on the
+conductive network and SEI layer. Sulfur gathering on the SEI layer can
+be mistaken as a contributing factor to Rsei. As sulfur becomes in-
+creasingly densiﬁed on the SEI layer with each successive cycle, Rsei
+increases proportionally, shown in Fig. 3b. This phenomenon occurs in
+all batteries during week 1 but only exists for Method 3 battery in week
+2. The increasing Rsei for Method 3 battery during week 2 results from
+it having a stronger SEI layer, mitigating polysulﬁde shuttling. It is
+speculated that the other two methods allow more sulfur loss located on
+the surface layers of the electrode to polysulﬁde shuttling, while
+Method 3 retained the majority of surface layer sulfur longer. Once the
+surface layer of sulfur is lost to polysulﬁde shuttling, Rsei stops in-
+creasing.
+The change in Rct for the highway model is shown in Fig. 3c. Week
+1 to week 4 show a stabilizing trend for all batteries. Unlike the erratic
+behavior evidenced by Rct city cycling in Fig. 2c, highway cycling does
+not experience this erratic behavior. We propose that the diﬀerence
+stems from the varying stresses placed on the batteries. Shown in
+Fig. 1a and b, highway cycling only experiences 65 current rate changes
+for total drive, compared to 270 current rate changes in city cycling.
+Hence the current rate changes in highway cycling do not cause
+Fig. 3. Impedance parameters of batteries tested by the highway model after each driving days (a) ESR. (b) Rsei. (c) Rct. (d) Qw2. (e) Electrical equivalent circuit
+used for PEIS.
+J. Bell et al.
+Nano Energy 49 (2018) 498–507
+502
+
+<<PAGE 6>>
+suﬃcient stress to damage the electrode-electrolyte interface. As such,
+batteries subjected to all methods show stabilizing trends, with Method
+3 battery experiencing the least resistance. Method 3 battery's low re-
+sistance results from a better electrode-electrolyte interface built during
+the conditioning cycles.
+CV is a electrochemistry technique that measures current generated
+by the battery while cycling the battery potential at a given rate. When
+an electrode is cycled under CV, the reduction of electrode material
+causes current to increase forming a cathodic peak. When the surface
+material has been reduced, lithium ions diﬀuse through the surface
+layer to continue the reduction process, thus causing the peak current to
+drop. As an adaption to the previous theory, a battery that has better
+kinetics will be able to reduce surface material faster, thus causing the
+cathodic peak to shift upward in potential. A battery that has greater
+quantity of active material to reduce will cause a greater peak intensity
+[33].
+CV for all batteries were carried out in a voltage window of 1.7 V
+and 2.8 V at each week end. Fig. 4a and b show the CV proﬁles for
+batteries at week 4 end. The CV curves presented align with typical
+sulfur CV curves found in literature [34]. Sulfur's CV consists of two
+cathodic peaks at 2.1 V and 2.35 V, and one anodic peak at 2.35 V. The
+cathodic peak at 2.35 V corresponds to the formation of long chain
+polysulﬁdes, while the peak at 2.1 V results from the formation of Li2S.
+Slight variations in peak voltage between batteries results from dif-
+ferent conditioning methods altering kinetics of the system. Variations
+in peak voltage is seen in both city and highway model batteries.
+Fig. 4a, all city model batteries have the same anodic peak voltage of
+2.25 V representing long chain polysulﬁde formation, while peaks re-
+presenting Li2S formation varies. Method 1 battery for the city model
+has the highest Li2S peak voltage at 1.95 V, Method 2 and 3 batteries
+have a peak voltage of 1.9 V and 1.85 V respectively. Variance in peak
+voltage corresponding to Li2S results from changes in ionic conductivity
+due to the diﬀering concentration of polysulﬁdes in the electrolyte [30].
+As discussed in the previous section, Method 3 battery is proposed to
+shuttle a reduced amount of polysulﬁdes comparatively, resulting in the
+lowest peak voltage. In comparison, Method 1 with the highest quantity
+of polysulﬁdes, results in the highest peak voltage. Method 1 and 3
+batteries also have higher peak intensities than Method 2, indicating
+higher material reduction, this is further proven in Fig. 7a.
+Fig. 4b shows the CV curves for the highway model batteries. Fig. 4a
+and b, Method 1 battery for the highway model have lower cathodic
+and higher anodic peak voltages compared to Method 1 battery for the
+city model and the other two highway model batteries. The diﬀerence
+in peak voltages results from reduced cycling stress, minimizing poly-
+sulﬁde shuttling and mechanical degradation. The ionic conductivity
+boost, resulting from polysulﬁde shuttling in highway Method 1 battery
+Fig. 4. (a) CV of Method 1, 2, & 3 batteries tested by city model. (b) CV of Method 1, 2, & 3 batteries tested by highway model. (c) Proposed SEI formation for datum
+conditioning. (d) Proposed resulting eﬀect of datum conditioning. (e) Proposed SEI formation for plateau targeted conditioning. (f) Proposed resulting eﬀect of
+plateau targeted conditioning.
+J. Bell et al.
+Nano Energy 49 (2018) 498–507
+503
+
+<<PAGE 7>>
+does not compensate for the low ionic and electric conductivity re-
+sulting from poor SEI and conductive network. Method 2 and 3 bat-
+teries however, have well developed SEI and good mechanical stability.
+This result in Method 2 and 3 batteries having higher cathodic peak
+voltages and lower anodic peak voltages than Method 1 battery while
+having the same order (Method 2 battery peak voltage higher than
+Method 3 battery peak voltage) with city cycling CV following the same
+logic. Lastly, the peak intensity of Method 3 battery is the highest,
+followed by Method 1 and then Method 2 batteries, this is also in ac-
+cordance with the trend shown in Fig. 7b.
+The driving models employed GITT once a week to measure the rate
+of lithium-ion diﬀusivity in the electrodes (Fig. 5). GITT uses a series of
+current pulses, each followed by a relaxation period. Herein, electrodes
+were pulsed at C/50 for 10 min, immediately followed by 10 min rests.
+This interval was repeated until complete discharge/charge. Oscilla-
+tions in the voltage proﬁle represent changes between the pulsed vol-
+tages and steady state voltages [35]. Shorter oscillations throughout the
+voltage proﬁle are ideal, indicating minimal voltage excitations during
+the relaxation period; this represents a homogenous material reduction
+and improved lithium diﬀusivity. However, small oscillations may also
+be indicative of poor material access to the conductive network, re-
+ferred to as material participation below [36].
+Fig. 5a shows conditioning Method 1 yields the highest rate of li-
+thium diﬀusivity amongst Methods 2 and 3 after 1 week of the city
+model. The high diﬀusivity rate is representative of a network with ease
+of Li ion transport, high ionic conductivity, and uniform material re-
+duction. Ease of Li ion transport stems from a high concentration of
+polysulﬁde shuttling during the conditioning cycles. Consequently,
+vacancies are created in the electrode from polysulﬁde shuttling, de-
+creasing material participation and creating better Li ion transport
+pathways. Additionally, shuttling increases polysulﬁde concentration in
+the electrolyte, producing a higher electrolyte ionic conductivity.
+Ultimately, these factors combined result in uniform material utiliza-
+tion. As a result, excitation of steady state voltage is minimized, and
+observed as shorter voltage oscillations in Fig. 5a. The Method 1 battery
+has the smallest voltage oscillations in week 1 and remains as such due
+to poor material participation.
+In contrast, Method 2 battery has the largest voltage oscillations,
+indicating slower overall rate of material reduction. We infer the
+overall slower material reduction is attributed to reduced polysulﬁde
+shuttling in addition to a larger active material to conductive network
+ratio. This large ratio results from the current pulses forcing additional
+active material to participate in the discharge reaction, furthering me-
+chanical degradation. The low lithium diﬀusivity also results from the
+large SEI resistance (Fig. 2b). A large SEI resistance decreases the
+overall diﬀusion rate of lithium-ions into the electrode, resulting in
+Method 2 battery as the least diﬀusing one. Method 3 battery's im-
+proved diﬀusivity relative to Method 2 battery results from an eﬀective
+conductive network and low SEI resistance. Method 3 battery's poor
+diﬀusivity relative to Method 1 battery however, is due to reduced
+polysulﬁde shuttling and increased sulfur utilization.
+Ideally, ionic diﬀusivity in Li-S batteries should remain consistent
+throughout cycling. Consistency in diﬀusivity indicates steady active
+material utilization, minimal polysulﬁde shuttling, and electrode me-
+chanical stability. However, in Fig. 5b–d, voltage oscillations in each
+successive week decrease in width, indicating improved lithium diﬀu-
+sivity throughout the city model. The continuing changes in diﬀusivity
+results from active material loss, mechanical changes in the electrodes,
+decreased material participation, or changes in electrolyte polysulﬁde
+concentration. It is observed that the voltage oscillations for each bat-
+tery in Week 4 of the city model are similar, resulting from the increase
+in ionic conductivity due to polysulﬁde shuttling. Once electrode de-
+gradation reaches the limit, all batteries reach similar conductivities
+and capacities (Fig. 7). Diﬀerences in performance at the end of deep
+Fig. 5. GITT for Methods 1,2, & 3 batteries after (a) week 1, (b) week 2, (c) week 3 and (d) week 4 of city model driving.
+J. Bell et al.
+Nano Energy 49 (2018) 498–507
+504
+
+<<PAGE 8>>
+cycling is then determined by factors such as active material partici-
+pation, SEI quality, mechanical stability, and conductive network
+quality in the electrodes. Ultimately, active material participation is the
+predominant variable contributing to ionic diﬀusivity at week 4 end in
+the city model.
+GITT analysis of the highway model batteries diﬀer starkly to the
+city model batteries, Fig. 6. However, the trend is in accordance with
+the ﬁrst two weeks of city model batteries. Highway model GITT pro-
+ﬁles appears thinner than the city model proﬁles. This is due to the
+minimal amount of volume expansion created by less stressful highway
+model. As shown in Fig. 1d, the batteries undergoing the highway
+model stayed in the ﬁrst voltage plateau, indicating the sole formation
+of long chain polysulﬁdes. Long chain polysulﬁdes create up to 20%
+volumetric change compared to the 80% change in lithium sulﬁdes
+formed during the second voltage plateau [3]. The small volume change
+causes the electrode to undergo minimal mechanical degradation re-
+sulting in a better conductive network compared to the city model.
+Another explanation for the shorter voltage oscillations is stated in the
+PEIS section. As long chain polysulﬁdes delithiate, delithiated poly-
+sulﬁdes fall out of electrolyte and disperse evenly on the electrode's
+conductive network. As a result, the dispersed sulfur is homogeneously
+attached to the conductive network improving the electrical con-
+ductivity of the electrode. As such, method 2 battery does not experi-
+ence much expansion, and is no longer the least diﬀusing, Fig. 6a. The
+diﬀusivity of the batteries after week 2, Fig. 6b, are in the order of
+polysulﬁde retention. Method 3 battery has the least polysulﬁde shut-
+tling while having the worst diﬀusivity. This is caused by a low con-
+centration of polysulﬁdes in the electrolyte. However, at the end of
+week 3 and 4 (Fig. 6c & 6d), Method 3 battery's diﬀusivity increases and
+surpasses the other two batteries. This is because all batteries experi-
+ence polysulﬁde saturation in the electrolyte over time and reach si-
+milar ionic conductivity, but Method 3 battery's minimized mechanical
+degradation due to a robust SEI layer maintained the best electrical
+conductivity network. Contrary to city model, the conductive network
+is the predominant variable contributing to ionic diﬀusivity at week 4
+in the highway model; low coulombic eﬃciency degradation for the
+highway model further supports this conclusion (Fig. 7d).
+All batteries were discharged/charged for ten cycles post GITT to
+simulate aging. The corresponding speciﬁc capacity vs cycle number for
+each battery is shown in Fig. 7a and b, respectively, for city and
+highway models. Wave like variation in capacity is caused by changes
+in room temperature during testing. All batteries show ﬂuctuations in
+capacity due to temperature changes, it is observed that batteries un-
+dergoing condition Method 3 ﬂuctuate the least. This results from the
+stable and high quality SEI layer created during conditioning [37]. In
+both the city and highway model batteries, Method 3 yields the highest
+capacity while Method 2 yields the lowest. Since all batteries have the
+same sulfur loading, a higher capacity is indicative of less active ma-
+terial loss during the previous testing routine and more material utili-
+zation during aging cycles. Active material loss can be a result of poor
+SEI layer causing polysulﬁde shuttling into the electrolyte and the
+counter electrode, or sulfur detaching from the conductive network
+during volume expansion/contraction [27]. Better material utilization
+can result from a better mechanical structure and SEI layer. The relia-
+bility of method 3 is observed by the similar starting capacity at city
+and highway aging cycle 1, city: 651 mAh/g, highway: 652 mA h/g.
+This aging cycle takes place after all batteries have been driven for 1
+week followed by GITT. Method 1 and Method 2 batteries however,
+show noticeable diﬀerences in the city and highway model capacities
+(City:
+553 mA h/g
+and
+509 mA h/g,
+highway:
+612 mA h/g
+and
+588 mA h/g). due to the more aggressive stresses of the city model. This
+indicates that Method 3 yields superior capacity retention under
+stressed conditions.
+Method 3 yields higher capacity batteries due to better SEI layer,
+Fig. 6. GITT for Methods 1,2, & 3 batteries after (a) week 1, (b) week 2, (c) week 3 and (d) week 4 of highway model driving.
+J. Bell et al.
+Nano Energy 49 (2018) 498–507
+505
+
+<<PAGE 9>>
+which decreases further polysulﬁde shuttling. A robust SEI layer formed
+during conditioning prevents cracking of the SEI layer during high
+stress. This reduces material exposure to the electrolyte and prevents
+the generation of new and excess SEI. Furthermore, the robust SEI layer
+creates better mechanical stability and ionic pathways, which further
+stabilizes battery performance, resulting in 440 mA h/g city capacity
+and 494 mA h/g highway capacity after 4 weeks of testing. Method 2
+yields the lowest capacities, 367 mA h/g for city and 364 mA h/g for
+highway at week 4, resulting from its increased volumetric expansion
+relative to the other methods. Volume expansion degrades lithium
+diﬀusivity and rate capability of the battery. This is observed in Fig. 5,
+where Method 2 battery yields larger voltage oscillation under the same
+current. GCPL capacity is measured by the amount of current battery
+can take at a speciﬁed unit of time before it reaches a set voltage, a
+large voltage ﬂuctuation will result in a lower capacity. In conjunction
+with increased volumetric expansion, current pulses create excess SEI.
+Excess SEI consumes additional lithium salt, carbon additive, and li-
+thium ions which can be attributed to the decreased capacity of Method
+2 batteries. Method 1 batteries yields 411 mA h/g city capacity and
+444 mA h/g highway capacity at week 4 end. This is due to a weaker
+SEI than Method 3 and less mechanical degradation than Method 2.
+Due to the city model's increased stress relative to the highway
+model, rate of capacity degradation diﬀers. Fig. 7a shows the city model
+battery capacities converging toward an equilibrium point, 16.6% dif-
+ference between Method 2 and 3 batteries at the end, while Fig. 7b
+shows the highway model battery capacities decreasing with similar
+rates, 26.3% diﬀerence between Method 2 and 3 batteries at the end.
+The capacity convergence of the city model batteries is noticeable
+within the 40 aging cycles because of the high testing stress causing the
+battery to lose sulfur rapidly to polysulﬁde shuttling and mechanical
+degradation. Once the electrolyte reaches polysulﬁde saturation, the
+rate of capacity degradation slows down. As a result, all batteries will
+reach a similar ﬁnal capacity, creating a converging capacity plot.
+Fig. 7c and d show the aging cycle coulombic eﬃciency (CE) for
+both city and highway models. Large spikes in CE up to 103% exist at
+the start of each aging cycle (1st, 11st, 21st, and the 31st cycle) due to
+GITT testing before aging cycles. GITT disrupts the CE of the following
+cycle by overcharging the battery and activating sulfur that does not
+participate normally due to limitations in the conductive network. As a
+result, the following cycle has an increased discharge capacity and a CE
+over 100%. In both Fig. 7c and d, Method 3 batteries have the highest
+and most stable CE. A stable CE indicates minimized polysulﬁde shut-
+tling, consistent conductive pathways, and stability under temperature
+ﬂuctuations [38]. These advantages results from a robust SEI layer. We
+propose the robust SEI layer of Method 3 batteries traps polysulﬁdes
+inside the SEI, causing a minimal amount of polysulﬁdes to travel
+across the electrolyte and to the lithium counter electrode. This in turns
+reduces the damage polysulﬁdes can cause to the lithium SEI while also
+reducing temperature impact on the electrolyte. This is in good agree-
+ment with Fig. 7a and b, which show minimized capacity ﬂuctuation in
+Method 3 batteries. Large diﬀerence exists between city and highway
+model CE because city model generates excess cycling stress compared
+to highway model. As shown in Fig. 7a–c and d, higher testing stress
+causes increased capacity and CE degradation rate.
+4. Conclusion
+We have demonstrated three diﬀerent conditioning methods for Li-S
+batteries to study their eﬀects on formation of the SEI layer for both
+anode and cathode. It was observed through the testing models, that
+plateau targeted conditioning (Method 3) creates a robust SEI layer on
+the sulfur and lithium electrode. We propose that this is attributed to
+Fig. 7. Galvanostatic cycling with limited potential for Method 1, 2, & 3 batteries tested by city model (a) and highway model. (b) Coulombic eﬃciency for Method 1,
+2, & 3 batteries tested by city model (c) and highway model (d).
+J. Bell et al.
+Nano Energy 49 (2018) 498–507
+506
+
+<<PAGE 10>>
+the slower rate, targeting the second plateau, allocating more time for
+steady formation of the SEI layer while reducing time spent in the ﬁrst
+plateau associated with long chain polysulﬁdes. The resulting SEI layer
+suppresses the diﬀusion of polysulﬁdes out of the cathode onto the li-
+thium electrode, improves ionic pathways, maintains mechanical in-
+tegrity, increases capacity, and enhances cycling stability of the Li-S
+battery. Additionally, this technique bypasses the use of additives and
+their associated adverse eﬀects. In conclusion, plateau targeted con-
+ditioning provides the ﬁeld of energy storage a novel, facile approach to
+improve battery performance.
+Acknowledgements
+We gratefully acknowledge ﬁnancial support from the University of
+California, Riverside, CA, and Vantage Advanced Technologies LLC,
+Corona, CA (grant numbers 007937 and 007938).
+Conﬂicts of interest
+There are no conﬂicts of interest to declare.
+Appendix A. Supplementary information
+Supplementary data associated with this article can be found in the
+online version at http://dx.doi.org/10.1016/j.nanoen.2018.04.064.
+References
+[1] M. Wild, L. O'Neill, T. Zhang, R. Purkayastha, G. Minton, M. Marinescu, G. Oﬀer,
+Lithium sulfur batteries, a mechanistic review, Energy Environ. Sci. 8 (12) (2015)
+3477–3494.
+[2] S.S. Zhang, Liquid electrolyte lithium/sulfur battery: fundamental chemistry, pro-
+blems, and solutions, J. Power Sources 231 (2013) 153–162.
+[3] M.M. Islam, A. Ostadhossein, O. Borodin, A.T. Yeates, W.W. Tipton, R.G. Hennig,
+N. Kumar, A.C. van Duin, ReaxFF molecular dynamics simulations on lithiated
+sulfur cathode materials, Phys. Chem. Chem. Phys. 17 (5) (2015) 3383–3393.
+[4] S.-E. Cheon, K.-S. Ko, J.-H. Cho, S.-W. Kim, E.-Y. Chin, H.-T. Kim, Rechargeable
+lithium sulfur battery II. Rate capability and cycle characteristics, J. Electrochem.
+Soc. 150 (6) (2003) A800–A805.
+[5] H. Yamin, A. Gorenshtein, J. Penciner, Y. Sternberg, E. Peled, Lithium sulfur battery
+oxidation/reduction mechanisms of polysulﬁdes in THF solutions, J. Electrochem.
+Soc. 135 (5) (1988) 1045–1048.
+[6] Y.V. Mikhaylik, J.R. Akridge, Polysulﬁde shuttle study in the Li/S battery system, J.
+Electrochem. Soc. 151 (11) (2004) A1969–A1976.
+[7] L. Xiao, Y. Cao, J. Xiao, B. Schwenzer, M.H. Engelhard, L.V. Saraf, Z. Nie,
+G.J. Exarhos, J. Liu, A soft approach to encapsulate sulfur: polyaniline nanotubes
+for lithium‐sulfur batteries with long cycle life, Adv. Mater. 24 (9) (2012)
+1176–1181.
+[8] J. Guo, Y. Xu, C. Wang, Sulfur-impregnated disordered carbon nanotubes cathode
+for lithium–sulfur batteries, Nano Lett. 11 (10) (2011) 4288–4294.
+[9] S.-R. Chen, Y.-P. Zhai, G.-L. Xu, Y.-X. Jiang, D.-Y. Zhao, J.-T. Li, L. Huang, S.-G. Sun,
+Ordered mesoporous carbon/sulfur nanocomposite of high performances as cathode
+for lithium–sulfur battery, Electrochim. Acta 56 (26) (2011) 9549–9555.
+[10] I. Bauer, S. Thieme, J. Brückner, H. Althues, S. Kaskel, Reduced polysulﬁde shuttle
+in lithium–sulfur batteries using Naﬁon-based separators, J. Power Sources 251
+(2014) 417–422.
+[11] H. Wang, Y. Yang, Y. Liang, J.T. Robinson, Y. Li, A. Jackson, Y. Cui, H. Dai,
+Graphene-wrapped sulfur particles as a rechargeable lithium–sulfur battery cathode
+material with high capacity and cycling stability, Nano Lett. 11 (7) (2011)
+2644–2647.
+[12] A. Millner, Modeling lithium ion battery degradation in electric vehicles, in:
+Proceedings of the IEEE Conference on Innovative Technologies for an Eﬃcient and
+Reliable Electricity Supply (CITRES), 2010, pp. 349–356.
+[13] W. Kong, H. Li, X. Huang, L. Chen, Gas evolution behaviors for several cathode
+materials in lithium-ion batteries, J. Power Sources 142 (1) (2005) 285–291.
+[14] W. Li, H. Yao, K. Yan, G. Zheng, Z. Liang, Y.-M. Chiang, Y. Cui, The synergetic eﬀect
+of lithium polysulﬁde and lithium nitrate to prevent lithium dendrite growth, Nat.
+Commun. (2015) 6.
+[15] Z. Lin, Z. Liu, W. Fu, N.J. Dudney, C. Liang, Phosphorous pentasulﬁde as a novel
+additive for high‐performance lithium‐sulfur batteries, Adv. Funct. Mater. 23 (8)
+(2013) 1064–1069.
+[16] F. Wu, J.T. Lee, N. Nitta, H. Kim, O. Borodin, G. Yushin, Lithium iodide as a pro-
+mising electrolyte additive for lithium–sulfur batteries: mechanisms of performance
+enhancement, Adv. Mater. 27 (1) (2015) 101–108.
+[17] J. Scheers, S. Fantini, P. Johansson, A review of electrolytes for lithium–sulphur
+batteries, J. Power Sources 255 (2014) 204–218.
+[18] N. Ding, L. Zhou, C. Zhou, D. Geng, J. Yang, S.W. Chien, Z. Liu, M.-F. Ng, A. Yu,
+T.A. Hor, Building better lithium-sulfur batteries: from LiNO3 to solid oxide cata-
+lyst, Sci. Rep. 6 (2016) 33154.
+[19] L. Ji, M. Rao, S. Aloni, L. Wang, E.J. Cairns, Y. Zhang, Porous carbon nanoﬁ-
+ber–sulfur composite electrodes for lithium/sulfur cells, Energy Environ. Sci. 4 (12)
+(2011) 5053–5059.
+[20] H. Xiang, P. Shi, P. Bhattacharya, X. Chen, D. Mei, M.E. Bowden, J. Zheng, J.-
+G. Zhang, W. Xu, Enhanced charging capability of lithium metal batteries based on
+lithium bis (triﬂuoromethanesulfonyl) imide-lithium bis (oxalato) borate dual-salt
+electrolytes, J. Power Sources 318 (2016) 170–177.
+[21] Q. Pang, D. Kundu, L.F. Nazar, A graphene-like metallic cathode host for long-life
+and high-loading lithium–sulfur batteries, Mater. Horiz. 3 (2) (2016) 130–136.
+[22] X. Liang, A. Garsuch, L.F. Nazar, Sulfur cathodes based on conductive MXene na-
+nosheets for high‐performance lithium–sulfur batteries, Angew. Chem. Int. Ed. 54
+(13) (2015) 3907–3911.
+[23] X. Liang, C. Hart, Q. Pang, A. Garsuch, T. Weiss, L.F. Nazar, A highly eﬃcient
+polysulﬁde mediator for lithium–sulfur batteries, Nat. Commun. (2015) 6.
+[24] Q. Pang, J. Tang, H. Huang, X. Liang, C. Hart, K.C. Tam, L.F. Nazar, A nitrogen and
+sulfur dual‐doped carbon derived from polyrhodanine@ cellulose for advanced li-
+thium–sulfur batteries, Adv. Mater. 27 (39) (2015) 6021–6028.
+[25] Tesla 2017. "Tesla.com." 〈https://www.tesla.com/models〉. June 2017.
+[26] J.-J. Chen, R.-M. Yuan, J.-M. Feng, Q. Zhang, J.-X. Huang, G. Fu, M.-S. Zheng,
+B. Ren, Q.-F. Dong, Conductive lewis base matrix to recover the missing link of
+Li2S8 during the sulfur redox cycle in Li–S battery, Chem. Mater. 27 (6) (2015)
+2048–2055.
+[27] Z. Deng, Z. Zhang, Y. Lai, J. Liu, J. Li, Y. Liu, Electrochemical impedance spectro-
+scopy study of a lithium/sulfur battery: modeling and analysis of capacity fading, J.
+Electrochem. Soc. 160 (4) (2013) A553–A558.
+[28] C. Yan, X.-B. Cheng, C.-Z. Zhao, J.-Q. Huang, S.-T. Yang, Q. Zhang, Lithium metal
+protection through in-situ formed solid electrolyte interphase in lithium-sulfur
+batteries: the role of polysulﬁdes on lithium anode, J. Power Sources 327 (2016)
+212–220.
+[29] N. Delpuech, N. Dupre, P. Moreau, J.S. Bridel, J. Gaubicher, B. Lestriez,
+D. Guyomard, Mechanism of silicon electrode aging upon cycling in full lithium‐ion
+batteries, ChemSusChem (2016).
+[30] D.-R. Chang, S.-H. Lee, S.-W. Kim, H.-T. Kim, Binary electrolyte based on tetra
+(ethylene glycol) dimethyl ether and 1, 3-dioxolane for lithium–sulfur battery, J.
+Power Sources 112 (2) (2002) 452–460.
+[31] E. Markevich, G. Salitra, Y. Talyosef, F. Chesneau, D. Aurbach, On the mechanism of
+quasi-solid-state lithiation of sulfur encapsulated in microporous carbons: is the
+existence of small sulfur molecules necessary? J. Electrochem. Soc. 164 (1) (2017)
+A6244–A6253.
+[32] N. Liu, H. Wu, M.T. McDowell, Y. Yao, C. Wang, Y. Cui, A yolk-shell design for
+stabilized and scalable Li-ion battery alloy anodes, Nano Lett. 12 (6) (2012)
+3315–3321.
+[33] D.A. Skoog, F.J. Holler, S.R. Crouch, Principles of Instrumental Analysis, Cengage
+Learning, Boston, MA, 2017.
+[34] Y.-S. Su, A. Manthiram, A new approach to improve cycle performance of re-
+chargeable lithium–sulfur batteries by inserting a free-standing MWCNT interlayer,
+Chem. Commun. 48 (70) (2012) 8817–8819.
+[35] D.W. Dees, S. Kawauchi, D.P. Abraham, J. Prakash, Analysis of the galvanostatic
+intermittent titration technique (GITT) as applied to a lithium-ion porous electrode,
+J. Power Sources 189 (1) (2009) 263–268.
+[36] M.-S. Park, J.-S. Yu, K.J. Kim, G. Jeong, J.-H. Kim, T. Yim, Y.-N. Jo, U. Hwang,
+S. Kang, T. Woo, Porous carbon spheres as a functional conducting framework for
+use in lithium–sulfur batteries, RSC Adv. 3 (29) (2013) 11774–11781.
+[37] S.-B. Lee, S.-I. Pyun, The eﬀect of electrolyte temperature on the passivity of solid
+electrolyte interphase formed on a graphite electrode, Carbon 40 (13) (2002)
+2333–2339.
+[38] N. Li, M. Zheng, H. Lu, Z. Hu, C. Shen, X. Chang, G. Ji, J. Cao, Y. Shi, High-rate
+lithium–sulfur batteries promoted by reduced graphene oxide coating, Chem.
+Commun. 48 (34) (2012) 4106–4108.
+J. Bell et al.
+Nano Energy 49 (2018) 498–507
+507

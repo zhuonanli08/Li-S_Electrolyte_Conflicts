@@ -1,0 +1,187 @@
+# P413  10.1016/j.cej.2024.151562  2024 CEJ
+题名：Selection of ionic liquid electrolytes for high-performing lithium-sulfur batteries - An experiment-guided high-throughput machine learning analysis
+B 步：层 C；改变的因素：离子液体筛选 + 25 vol% PP14-TFSI vs DOL:DME；备注：
+
+## 实验部分
+（未切出实验部分）
+
+## 正文（含数字的句子与图表注）
+- Chemical Engineering Journal 490 (2024) 151562 Available online 23 April 2024 1385-8947/© 2024 Elsevier B.V.
+- To that end, the COnductor-like Screening Model for Realistic Solvents (COSMO-RS) calculations are performed over more than 36,000 ILs.
+- An extensive database containing PS solubilities and other relevant properties is constructed at 25 ◦C.
+- Finally, the imidazolium and pyridinium ILs with bis_imide and borate anion groups are identified as the most promising ones. 1.
+- Introduction Lithium-ion (Li-ion) batteries have so far successfully met the re quirements of many applications and have been widely accepted as state-of-the-art owing to their high voltage range (2.5-4 V), negligible memory effect, long life (>1000 cycles), relatively high energy density (240 Wh/kg; 640 Wh/L), and high energy conversion efficiency for storage purposes.
+- Contents lists available at ScienceDirect Chemical Engineering Journal journal homepage: www.elsevier.com/locate/cej https://doi.org/10.1016/j.cej.2024.151562 Received 8 February 2024; Received in revised form 8 April 2024; Accepted 21 April 2024 Chemical Engineering Journal 490 (2024) 151562 2 theoretical energy density of 800 Wh/kg, which may be insufficient to meet the targets for future transport and grid storage applications.
+- Therefore, beyond Li-ion battery technologies have been explored to reach the set targets regarding energy density, cost, and other essential properties of future applications [1-4].
+- They have high theoretical gravimetric and volumetric energy densities of 2600 Wh/kg and 2800 Wh/L, respectively.
+- Sulfur, with a theoretical specific capacity of 1675 mAh/g, is an abundant, non-toxic, and envi ronmentally friendly cathode active material.
+- However, Li-S batteries suffer from major drawbacks, namely the shuttling of the polysulfide (PS) intermediates, which is called the polysulfide shuttle mechanism (PSM), the insulating nature of sulfur and Li2S, and lithium anode degradation, that must be resolved before their practical applications and broader commercial adaptations.
+- The PSM is a fatal problem in the Li-S batteries [3-5], typically addressed using specialized cathodes, separators, and/or electrolytes.
+- The shuttle effect puts an additional constraint on standard electrolyte properties by requiring that the electrolyte has low but finite PS solubility and mobility to minimize the loss of active ma terial and cathode structure degradation while retaining sufficient ki netics in Li-S batteries, especially at high sulfur loadings [6].
+- This constraint is further complicated by the fact that the PSs form a highly dynamic system that undergoes several rapid disproportionation re actions whereby S-S bonds are continuously being broken and recreated [7,8].
+- Specifically, the mixture of 1,3-Dioxolane (DOL) and 1,2-Dime thoxyethane (DME) with the lithium bis(trifluoromethane)sulfonimide (LiTFSI) salt is the most common electrolyte used in Li-S batteries.
+- Ionic liquids (ILs) are proposed as alternative electrolyte solvents in the bat tery literature [1,9,10].
+- In the literature, typically bis(trifluoromethane) sulfonimide ([TFSI]-) anion is explored with cations from different groups, including pyrrolidinium, piperidinium, sulfonium, and imida zolium as Li-S battery electrolytes [11-13].
+- Recently, ILs have been used in hybrid electrolyte systems to combine the benefits and mitigate the drawbacks of both ether-based and IL solvents [12-16].
+- To simplify the problem, Ueno et al. [17] measured the total solubility of atomic sulfur, which included all PS species in the system, in the solvate IL electrolytes of equimolar mixtures of lithium salts and triglyme and tetraglyme (Li(Glyme)X) combined with various anions.
+- More specifically, they found that [TFSI]- and bis(pentafluoroethanesulfonyl) amide ([BETA]-) anions effectively suppressed the dissolution of Li2Sx species while maintaining reasonable conductivity, viscosity, and sta bility.
+- Park et al. [18] from the same group conducted a similar study to measure the solubility of PSs in various common ILs.
+- For the [P14]- [OTF](trifluoromethane-sulfonate) IL, the solubility of PSs was rela tively high, which causes poor cycling performance when used as the electrolyte in a Li-S battery.
+- Similarly, low PS solubility and high Li+ ion diffusion were found to be the key criteria, especially at low electrolyte- to-sulfur ratios, to attain high energy density Li-S batteries [19].
+- This chemical intuition is learned by experience over a long period of time, and learning from previous experiences is the basis for the machine learning (ML) [20].
+- One such model is COSMO-RS, which stands for Conductor-Like Screening Model for Real Solvents [21].
+- COSMO-RS is a well-established quantum chemistry-based computational model to estimate semi-quantitatively the thermodynamic properties of chemical mixtures [22].
+- The basic idea behind the COSMO-RS model is to treat the interactions in a mo lecular system as if they are between an ensemble of discrete surface screening charge densities, denoted as sigma (σ), for each molecule or ion in the system [23-25].
+- ML is essential for materials search and is becoming more feasible with the continuous growth of large materials databases and simulation tools [20,26].
+- Similar to our aim here, some studies in the literature utilize both COSMO-RS solubility predictions and ML techniques to determine suitable ILs for their objectives [27-30].
+- In fact, water and C4 hydrocarbon solubilities in ILs were determined in our previous studies [31,32].
+- The first study focused on predicting cyclic sulfur solubility in ten solvents, and they correctly captured the experimental values [33].
+- The same group used ML classification based on PS solu bilities by using the electrolyte descriptors obtained from sigma profiles of electrolytes calculated by the COSMO-RS method for a limited num ber of solvate-ILs, salt-in-solvent and solvent-in-salt electrolytes [34].
+- In contrast, this research focuses on the solubility of Li2S8 in around 36,000 ILs for fast screening, building ML models for predictions, and showing structure-property relationships, which have not been addressed before.
+- In this work, around 36,000 IL solvents are screened for their po tential as Li-S battery electrolytes based on their PS (Li2S8) solubilities, viscosities, and melting points obtained by COSMO-RS calculations.
+- Chemical Engineering Journal 490 (2024) 151562 3 examined experimentally to determine the selection criteria used for ML models; a critical connection between the COSMO-RS solubilities and viscosities and the battery performance is identified.
+- The results are further used to train ML models, specifically XGBoost, which was developed to predict the PS solubility in potentially new ILs as the main objective of the work, and the structure-property relationship in ILs is identified using association rule mining (ARM) using ten descriptors for each anion and cation determined by the density functional theory (DFT) calculations. 2.
+- Computational methods 2.1.
+- Solubility and property Calculations COSMOThermX software was used for the estimation of Li2S8 solu bilities in ILs at 25 ◦C by performing COSMO-RS calculations [35].
+- COSMOThermX uses the σ-profiles calculated using the DFT functional BP and def2-TZVP level.
+- The dataset comprised 98 anions and 370 cations, which adds up to 36,260 pairs of ILs.
+- The long chain Li2S8 was used to model the PSs in the system.
+- In accordance with previous reports about Li2S8 conformation in the solvents [8,36], the linear conformation of Li2S8 was first optimized using DFT by employing the B3LYP/def2- TZVP level theory with the ORCA quantum chemistry software pack age [37].
+- The optimized structure conformation was then used as an input file for TMOLEX (v.4.5.3) [38] to generate the standard σ-profile file (.cosmo file).
+- The sigma profile and the corresponding surface of the Li2S8 molecule are given in Figure S1 in the Supplementary Material (SM).
+- The IL Screening Module was used to calculate the PS solubility in the ILs at 25 ◦C via equation (1), where C∞ i and γ∞ i are the capacity (mol/mol solubility) and activity coefficient of the PS at infinite dilution, respectively.
+- C∞ i = 1 γ∞ i (1) The melting point, viscosity, and electrical conductivity were also calculated at 25 ◦C using the IL Properties Module, which also uses the same σ-profile files for the ions.
+- The implemented correlation coefficients were naturally different for each calculation. 2.2.
+- Structural descriptors for ILs To calculate structural descriptors for ILs, molecular geometries of cations and anions were individually optimized using Spartan’14 by employing the PM3 semi-empirical method with the default conver gence criteria.
+- Similar to our previous studies [31,32], ten descriptors were calculated for each anion and cation separately: Molecular weight (MW in amu), highest occupied molecular orbital (HOMO) and lowest unoccupied molecular orbital (LUMO) energies (EHOMO, ELUMO in eV), CPK-area (in Å2) and CPK ovality (O) obtained from the space-filling model by Corey, Pauling, and Koltun (CPK), dipole (µ in D), polariz ability (m3), vibrational zero point energy (ZPE in kJ/mol), hydrogen bond donor count (HBD), and hydrogen bond acceptor count (HBA).
+- Although other anion and cation properties can be used as potential descriptors, they were eliminated in our previous works due to cross- correlations and insignificant effects on the models [31,32].
+- Conse quently, there are 20 descriptors for each IL pair.
+- The distribution of ions in terms of these structural descriptors is given in Fig. 1.
+- The complete dataset, including all the properties and the descriptors, can be found in SM as a Microsoft Office ExcelTM file. 2.3.
+- ML modeling Distinct prediction models were trained for each IL property of in terest: the solubility of Li2S8, melting point, viscosity, and electrical conductivity.
+- Afterward, the dataset was partitioned into training and test sets using a 75 %-25 % split.
+- In practice, such splitting means that a random 25 % fraction of anions/cations in each anion/cation group was included in the test set, while the remaining ions were used in the training set.
+- The same strategy was used for 5-fold cross- validation, where 20 % of the training ions were selected in the vali dation sets, and the rest were used for training.
+- Chemical Engineering Journal 490 (2024) 151562 4 algorithm was used in the predictions.
+- In addition, the R-squared (R2) value, the proportion of the difference between the two, ranging be tween 0 and 1, was also reported [39].
+- The optimized hyperparameters for XGBoost are the maximum depth, number of trees, and learning rate (η) values, which were found to be 3, 225, and 0.1, respectively, for the solubility predictions.
+- In the case of solubility, a threshold value of -0.7 to 0.1 mol/ mol in the log scale was selected as it is comparable to ILs tested in the literature and the performance data obtained in our research [18].
+- Similarly, limits for the viscosity, ln(conductivity (mS/cm)), and melting point classifications were determined as 100 mPa.s, 2, and 0 ◦C, respectively.
+- Hence, the lift values larger and smaller than 1.0 correspond to positive and negative correlation, respectively.
+- The more significant the lift value, the stronger the correlation is between the descriptor and that class [40].
+- Thus, the lift value was considered as the ultimate criterion to assess the association between a descriptor and the solubility, as long as the rule clears the minimum support and confidence thresholds, taken as 0.1 % and 3 %, respectively.
+- All the modeling and figure creation were performed in the R Studio environment [41]. 3.
+- Results and discussion 3.1.
+- Hence, our dataset spans several cation groups, including imidazolium, pyridinium, and ammonium, in addition to an ions of different types, including fluorinated, chlorinated, carboxylates, oxyanions, amino acids, etc., and more commonly investigated anions in IL electrolytes such as tetrafluoroborate ([BF4]-), hexafluorophosphate ([PF6]-) and [TFSI]-.
+- The complete lists of the cations and anions groups are given in Table 1, whereas members of each group are presented in the Excel file provided in SM.
+- The COSMO-RS solubility screening results, including solubility, viscosity, conductivity, and melting points, are shown in Fig. 2 depending on anion groups, whereas the distributions on the cation groups are presented in Figure S3.
+- Fig. 2a and Figure S2 for the whole dataset show that the solubility values for each anion group obtained from the calculations span a wide scale of many orders of magnitude from 10-9 to almost 1020 in mol/mol units.
+- This is expected primarily due to the large difference between the activity coefficients of the solute (Li2S8) and the solvents (ILs).
+- Still, the calculations can compare small and larger values, but the extreme re sults should be treated cautiously [42,43].
+- According to the graph, most amino acids, carboxylates, halogens, non- metal oxides, and phosphines fall into the extreme solubility ranges, below 10-3 and above 103 mol/mol, and should be treated cautiously.
+- This way, the utilization of highly viscous IL electrolytes must be avoided to allow for appreciable Li+ diffusion. 1 M Li salt containing DOL:DME electro lyte has a viscosity of 1.6 mPa.s and shows sufficient ionic conductivity [19].
+- In the dataset, the lowest viscosity value calculated using the COSMO-RS is 9.1 mPa.s, which is almost 5-fold higher than that of DOL: DME electrolytes and only 25 % of 36,260 ILs have viscosity values below 134 mPa.s.
+- On the other hand, around 15 % and 7 % of the dataset do not have melting points below 0 ◦C and ln(electronic conductivity) values below 2, respectively.
+- The anion and cation descriptors have been shown to strongly correlate with target properties in previous studies, including the solu bility of water and C4 hydrocarbons in various ILs and the physico chemical properties of ILs [31,32].
+- Dipole and polarizability represent Table 1 The list of cation and anion groups present in the dataset.
+- Cation Group Cation Count Anion Group Anion Count Ammonium 49 Amino acid 16 Choline 1 Bis_imide 4 Guanidinium 20 Borate 12 Imidazolium 134 Carboxylate 16 Morpholinium 9 Cyano 3 Others 4 Halo_elemental_complexes 7 Phosphonium 28 Halogen 4 Piperidinium 9 Nonmetal oxide 5 Pyrazolium 4 Others 6 Pyridinium 67 Phosphate/ Phosphinate* 9 Pyrrolidinium 19 Sulfate 9 Quinolinium 15 Sulfonate 7 Sulfonium 5 Thiazolium 3 Uronium 3 Total 370 Total 98 *Abbreviated as Phosp./Phosphin.
+- Chemical Engineering Journal 490 (2024) 151562 5 ions’ charge distribution and susceptibility of that distribution to deformation when interacting with other molecules.
+- The potential for hydrogen bond formation is given by the hydrogen bond donor (HBD) and acceptor (HBA) counts [44].
+- PSs are all known to be weak bases, in other words, hydrogen bond acceptors [45].
+- This property describes the flexibility of ions to structural deformation during the solvation process [46,47].
+- Finally, the molecular weight of ions is also useful as it gives information about ion diffusion coefficients, density, and viscosity, which indirectly affect solubility. 3.2.
+- As the organic electrolyte, 1 M LiTFSI and 0.1 M lithium nitrate (LiNO3) con taining DOL:DME (1:1 vol%) was used.
+- First, experiments were per formed to see the effect of the IL/organic solvent ratio (0, 25, and 50 vol % IL) and the electrolyte-to-sulfur (E/S) ratio on the cycling perfor mance (Figure S5); the rest of the experiments were conducted at an IL ratio of 25 vol% and E/S ratio of 13 mL/g.
+- Six commercially available ILs listed in Table 2 were used in the mixed electrolytes.
+- Cycling experi ments were shown for 50 cycles at 0.1C in Fig. 3 (the experimental details and 100-cycle performances of mixed electrolytes, including pure DOL:DME, are provided in Figure S6 in SM).
+- As seen in the table, three different cations, 1-butyl-1-methylpiperidinium ([PP14]+), N,N-diethyl- N-methyl-N-(2-methoxyethyl)-ammonium ([DEME]+), and tribu tylmethylammonium ([TBMA]+) with [TFSI]- and three different an ions, hexafluorophosphate ([PF6]-), trifluoromethane-sulfonate ([CF3SO3]-), and methylsulfate ([MeSO4]-) with 1-butyl-3-methyl-imi dazolium ([BMIM]+) are used in the experiments.
+- Hence, four of these ILs are projected to have low solubilities ([PP14]-[TFSI], [DEME]- [TFSI], [TBMA]-[TFSI], [BMIM]-[PF6]), whereas the other two ([BMIM]-[CF3SO3] and [BMIM]-[MeSO4]) have extremely high values.
+- The results presented in Fig. 3 supported the discussion on the importance of low solubility but also highlighted the effect of viscosity on the Li-S cell performance.
+- In this respect, the ILs of [PP14]-[TFSI] and [DEME]-[TFSI] with both low solubility and viscosity show the best cycling performance Fig. 2.
+- Table 2 The COSMO-RS calculations for the experimentally tested six ILs*.
+- Cation Anion COSMO-RS PS Solubility (mol/ mol) COSMO-RS Viscosity (mPa. s) [PP14]+ [TFSI]- 0.20 65 [DEME]+ [TFSI]- 0.38 54 [TBMA]+ [TFSI]- 0.04 107 [BMIM]+ [PF6]- 1.29 223 [BMIM]+ [CF3SO3]- 847 56 [BMIM]+ [MeSO4]- 182,635 146 *[BMIM]+ 1-butyl-3-methyl-imidazolium, [CF3SO3]-: trifluoromethane- sulfonate, [DEME]+: N,N-diethyl-N-methyl-N-(2-methoxyethyl)ammonium, [MeSO4]-: methylsulfate, [PF6]-: hexafluorophosphate, [PP14]+ 1-butyl-1-meth ylpiperidinium, [TBMA]+: tributylmethylammonium, [TFSI]-: bis(trifluoro methane)sulfonimide. **These cells include 25 vol% of the selected IL in the standard electrolyte of 1 M LiTFSI and 0.1 M LiNO3 in DOL:DME (1:1 vol/vol).
+- The cycling performance of six ILs tested at 0.1C.
+- Chemical Engineering Journal 490 (2024) 151562 6 among the six ILs.
+- On the other hand, Li-S cells with ILs ([TBMA]-[TFSI], [BMIM]-[PF6]) with low PS solubility but higher viscosity performed moderately.
+- Finally, [BMIM]-[CF3SO3] and [BMIM]-[MeSO4] showed almost zero capacity over cycling.
+- Consistent with this inference, [BMIM]-[CF3SO3] performs poorly, even though it has a low viscosity, proving that mostly PS solubility determines the performance.
+- No conclusions were changed when the cycling perfor mances for 100 cycles, provided in Figure S6, were analyzed.
+- We observe higher performance for Li-S cells with electrolytes having 25 vol % PP14-TFSI compared to the ones with pure DOL:DME electrolytes at the beginning of cycling, but they end up with similar capacities towards the end.
+- In the literature, with the optimized cell design parameters, there are some examples where the mixed electrolyte systems surpass the capacity of the organic electrolyte [48-52] and improve the safety conditions of Li-S batteries [53].
+- This difference is partially responsible for the departure of predictions of Li2S8 solubility from experimental measurements of all PSs.
+- Despite this and other simplifying as sumptions, the COSMO-RS model results showed an excellent correla tion with the experimental measurements, as shown in Fig. 4.
+- Although there is a significant numerical difference between the COSMO-RS calculated absolute solubility values and experimental ones, the result ing linear correlation has an R2 score of 0.97, showing the success of our method.
+- The previous studies on COSMO-RS calculations also pointed out that these calculations can be used qualitatively for an initial analysis that can predict the order of magnitudes of the properties [43,54-57].
+- When the 50th cycle capacities of this experimental set are considered, a clear trend for high specific capacity can be determined, as shown in Fig. 5.
+- The PS solubility should neither be too low or too high due to the sluggish reaction kinetics and sulfur loss from the cathode in extremely low and high PS solubilities, respectively [58,59].
+- According to Fig. 5, the solubility should be between -0.7 to 0.1 mol/mol in log scale.
+- In this respect, ML models for pre dicting PS solubility and the IL properties are developed with a dataset consisting of 36,260 ILs and 20 IL descriptors, computed from PM3 semi- empirical calculations, in the search for promising ILs for Li-S battery electrolytes.
+- In addition, using the limit for solubility (-0.7 to 0.1 mol/ mol in log scale) for high performance obtained from experimental re sults, the factors leading to desired properties are obtained.
+- The experimental data was obtained from [15].
+- Experimental 50th cycle capacities (mAh/g) matched with the pre dicted COSMO-RS solubility and viscosity results.
+- The experimental data was obtained from our results in Fig. 3 and from [15].
+- Chemical Engineering Journal 490 (2024) 151562 7 3.3.
+- The training of the XGBoost model on randomly chosen combinations of anions and cations performs nearly perfectly with a 5-fold cross- validation R-squared (R2) score of 0.99.
+- With this restriction, the XGBoost model performance R2 score dropped to 0.98 with a RMSE of 1.4, which still indicates an excellent performance on the available data and eliminates the risk of bias due to data overlap.
+- Meanwhile, the RMSE of the test set increases to 3.05, which shows that the model can capture the PS solubilities in an order of magnitude scale.
+- These results are somewhat similar to water solubility prediction results [31], in the sense that the anion properties are more dominant over the solubilities.
+- This inference is observable in Fig. 6, showing the descriptor importance obtained from the analysis of XGBoost results.
+- The HOMO-LUMO levels were also found to have a significant contribution to ML models on the CO2 solubility [60].
+- Literature review indicates that ML techniques have been repeatedly used to predict different IL properties, including melting point, density, viscosity, ionic conductivity, and even surface tension [61,62].
+- This is because the re sults vary significantly according to the anion groups in these pre dictions, and the cation group-based distributions are similar (Figure S3).
+- The anion-based sampling for melting point, viscosity, and conductivity performed well with RMSE score values of 19.4, 0.48, and 1.80, respectively.
+- In parallel with our findings, Zheng et al. also found that the alkyl chain lengths of ILs having different imidazo lium cations with [TFSI]- anion, therefore, MW and dipole, considerably affect the viscosities [63].
+- Another study found that the anion and cation properties both affect the final IL properties [64]. 3.4.
+- The limits for both solubility and viscosity values were set according to the experimental findings re ported in Section 3.2.
+- In this respect, the solubility was categorized into a binary class, and class A includes log(solubility) values between -0.7 and 0.1 mol/mol as determined from experimental results reported in Fig. 5.
+- On the other hand, viscosities lower than 100 mPa.s were decided to be class A.
+- Given the viscosity of the standard DOL:DME electrolyte is 1.6 mPa.s [19], 100 mPa.s is a relevant limit for IL viscosity, set to avoid severe Li+ ion resistance problems.
+- Towards that end, ILs with melting points below 0 ◦C are desired, and fortunately, 86.1 % of the dataset satisfies this condition.
+- Finally, the electronic conductivity limit is taken as 2 mS/ cm in the natural logarithm scale.
+- With these four criteria in place, the number of potential IL candidates drops to only 650 from 36,260 data points.
+- The selection process is illustrated in Fig. 7.
+- The dataset used in the ARM analysis contained 36,260 total data, with only 650 of them having class A solubility and property (viscosity, melting point, and conductivity).
+- In the dataset, there are 1480 ILs with the bis_imide anion group, and only 194 (count value in Table S4) of them are in class A for the four criteria.
+- Hence, the support, confidence, and lift values are calculated as 194/36260 = 0.005, 194/ 650 = 0.298, and (194/650)/(1480/36260) = 7.31, respectively.
+- As seen in Table S4, rules satisfying the confidence and support thresholds with the highest three lift values correlate with the anion group, indi cating the trends in anion descriptors are more reliable and determi native than the ones in cation descriptors.
+- These trends can be seen in Fig. 8a for cation and anion groups and Fig. 8b for cation-anion pairs.
+- The bis_imide group is found to be the most promising one with the highest lift, but borates and “Others” groups are also good candidates for Fig. 6.
+- Chemical Engineering Journal 490 (2024) 151562 8 Fig. 7.
+- Chemical Engineering Journal 490 (2024) 151562 9 both cases.
+- Imidazolium and [TFSI]- are the most common cation and anion in the Li-S literature, respectively [9].
+- In addition, it has been reported that combining them improves the Li metal ion morphology and, therefore, increases the cycle life [65].
+- Given that pyridinium and imidazolium are similar in the completely delocalized aromatic rings [65], pyridinium is the second promising cation group paired with borates.
+- On the other hand, the borate anion group has 12 anions in total, including [BF4]-, which is reported to be reactive to wards polysulfides [18].
+- Although no additional articles use ILs with borate anions, in some studies, borate anions, specifically bisoxalatoborate [66-68], are used in Li salts, which positively affect the capacities.
+- To better extract the trends, Fig. 9 summarizes the ARM results for the anions more concisely.
+- In the data base, low-lying anion HOMO energies in the range of (-7.5):(-6.7) eV result in a nearly five-times more chance of having low PS solubility and viscosity values.
+- This drops significantly to slightly over 2.5-times if the HOMO value dips lower than -7.5 going to -9.9 eV.
+- The other rules that lead to lift values higher than one indicate that desirable anions for low PS solubility and viscosity are more likely to have moderately low LUMO energy ((1.3-4.7] eV), no HBD sites (Count = 0), relatively high MW ((184-299] g/mol) but moderate CPK area ((98.8-145] Å2).
+- Fig. 10 shows that cation de scriptors have clear trends for low solubility and viscosity; lift values above one are obtained for low values of each descriptor, except HBA (Counts 1 and 2), HBD (Count = 0), and LUMO (no clear trend).
+- Can et al. [31] reported similar results about the dominance of anion descriptors in the ARM analysis when examining the association be tween water solubility in ILs and molecular descriptors.
+- That is to be expected because water and Li2S8 have different solvation processes.
+- On the contrary, the solubility of hydro carbons in imidazolium-based ILs showed a strong correlation with both anion and cation descriptors [32]. 4.
+- Chemical Engineering Journal 490 (2024) 151562 10 Declaration of competing interest The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+- Acknowledgments This study was funded by The Scientific and Technological Research Council of Turkey (TUBITAK), Grant No: 221M542.
+- Supplementary material Supplementary material to this article can be found online at htt ps://doi.org/10.1016/j.cej.2024.151562.
+
+## SI（含数字的电池相关句子与图表注）
+- The sigma (σ) profile and corresponding sigma surface of Li2S8 molecule obtained from TMOLEX Figure S2.
+- The COSMO-RS calculated a) log(solubility (mol/mol)) b) ln(viscosity (mPa.s)), c) ln(conductivity (S/cm)), d) melting point (C) of ILs based on cation groups COSMO-RS Solubility Validations from literature Table S1.
+- First, sulfur and carbon black (Timcal Super C65, MTI) were mixed in 70:30 mass ratios and kept in a vacuum oven at 155 ◦C for 12 hours.
+- The final sulfur amount of the resulting composite was 65.3 wt.%, which is determined by thermal gravimetric analysis (TGA).
+- Using the doctor-blade method, the slurries were pasted onto aluminum foil (15 µm thick, MTI) and dried overnight.
+- The final cathodes had a 2.01 cm2 area and approximately 2 mg/cm2 sulfur loadings.
+- As electrolytes, the organic electrolyte was prepared first by mixing equal volumes of 1,3-Dioxolane (DOL, Sigma Aldrich):1,2-Dimethoxyethane (DME, Sigma Aldrich) (1:1 vol.%) solvents containing lithium salts as 1 M lithium bis-trifluoromethanesulfonimide (LiTFSI, Sigma Aldrich) and 0.1 M lithium nitrate (LiNO3, Sigma Aldrich).
+- First, the effect of IL to DOL:DME ratio in the electrolyte and the E/S ratio were determined by preparing pure DOL:DME, 25-75 vol.% and 50-50 vol.% IL/organic mixed electrolytes and Li-S cells with E/S ratios of 13 mL/g and 8 mL/g, respectively.
+- In the rest of the experiments, the selected ionic liquids were mixed with as-prepared organic electrolytes at a ratio of 25-75 vol.%, and IL-organic electrolytes were obtained.
+- An E/S ratio of 13 mL/g was used in all cells.
+- Cycling performances of the cells were determined galvanostatically at 0.1C, where current rates were adjusted by taking 1675 mAh/g as the theoretical specific capacity of sulfur.
+- BMIM: 1-butyl-3-methyl-imidazolium, CF3SO3: trifluoromethane-sulfonate, DEME: N,N-diethyl-N-methyl-N-(2-methoxyethyl)ammonium, MeSO4: methylsulfate, PF6: hexafluorophosphate, PP14: 1-butyl-1-methylpiperidinium, TBMA: tributylmethylammonium, TFSI: bis(trifluoromethane)sulfonimide Figure S4.
+- Voltage profiles of the Li-S cells with selected IL/organic electrolytes at the 1st, 5th, 10th, and 50th cycles Figure S5.
+- The effect of IL/DOL:DME vol.% for PP14- and DEME-TFSI ILs (a) and the effect of the E/S ratio for PP14-TFSI IL.
+- The extended performances of selected IL/organic electrolytes at 0.1C for 100 cycles (a) and the corresponding Coulombic efficiencies (b) Prediction Results Table S3.
+- Prediction results of melting point for train (a), test (b) sets and model importance (c) Figure S8.
+- Prediction results of ln(viscosity) for train (a), test(b) sets and model importance (c) Figure S9.
+- Prediction results of ln(conductivity) for train (a), test(b) sets and model importance (c) ARM Result Table S4.
+- ARM results for classification of Li2S8 solubility (top results for anionic and cationic descriptors)* * The rules satisfying the ~3% confidence and ~0.1% support thresholds are shown. **RHS:Right hand side of the condition {Solubility=A, Viscosity=A, Melting point=A, Conductivity=A}RHS Abbreviation | Cosmo-RS Li2S8(mol/mol) | log(CosmoRS Li2S8) | Park et al.

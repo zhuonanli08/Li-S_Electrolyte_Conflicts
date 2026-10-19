@@ -1,0 +1,1783 @@
+
+<<PAGE 1>>
+Salt and Solvent Control of Elemental Sulfur (Cyclo‑S8) and Lithium-
+Ion Diffusion in Liquid Li−S Battery Electrolytes Revealed by DFTB
+Molecular Dynamics
+Mirella Fonda Maahury, Abel Natawardaja, Cedric Naravisnu Purwanto, Aditya Wibawa Sakti,*
+and Hiromi Nakai
+Cite This: J. Phys. Chem. B 2026, 130, 9605−9623
+Read Online
+ACCESS
+Metrics & More
+Article Recommendations
+*
+sı
+Supporting Information
+ABSTRACT: In recent years, lithium−sulfur (Li−S) batteries have
+become attractive owing to their high energy density and higher charge-
+storage capacity than Li-ion batteries. Despite this, practical applications of
+Li−S batteries remain limited by several challenges that still need to be
+resolved, including Li-dendrite formation, which leads to short-circuiting.
+In the present study, divide-and-conquer density-functional tight-binding
+molecular dynamics (DC-DFTB-MD) simulations examine neutral cyclo-
+S8, while lithium polysulfides and polysulfide anions are not included.
+Increasing LiOTf concentration generally reduces the self-diffusion
+coefficients because denser, more highly coordinated ionic environments
+restrict translational motion. The Li+ ion preferentially coordinates with
+electronegative oxygen atoms of the solvent and triflate anion, whereas
+nonpolar, neutral S8 interacts mainly through induced-polarization and
+dispersion forces. These competing coordination environments explain the weak direct Li+−S8 association and the coupled decline of
+ionic and molecular mobility with salt loading.
+■INTRODUCTION
+Ion battery technology has received considerable attention
+owing to its widespread use in daily-life applications.1−3
+Among these technologies, the Li-ion battery is the most well-
+known, and its applications range from portable electronic
+devices, such as cellular phones, digital cameras, global
+positioning system devices, tablets, and laptop computers.4
+Lithium−sulfur (Li−S) batteries are one of the most
+promising batteries due to their high theoretical specific
+capacity of 1675 mA h g−1 and energy density of 2600 W
+kg−1.5 However, the polysulfide shuttle effect and dendrite
+growth, caused by irregular Li deposition, hinder the
+commercial viability of Li−S batteries.6 Mitigation of
+polysulfide shuttling and lithium dendrite growth has been
+tackled via various methods, most notably through separator
+and cathode design. In addition to these approaches, the
+optimization of the electrolyte system is an effective alternative
+to simultaneously suppress polysulfide shuttling and dendrite
+growth.7
+Since the shuttling effect is directly tied to the diffusion of
+polysulfides between the electrodes and their dissolution into
+the electrolyte, suppressing polysulfide diffusion is crucial in
+suppressing the shuttle effect.8 Recent work suggests electro-
+lytes with high-donor-number salt anions with labile fluorine
+groups are effective in suppressing lithium dendrite growth in
+addition to polysulfide shuttling.9,10 One such salt anion is
+trifluoromethanesulfonate ([OTf]−), which has been observed
+to have greater coordination strength with Li+ in comparison
+to the traditional bis (trifluoromethanesulfonyl)imide anions
+([TFSI]−), leading to better electrochemical properties.11
+However, the use of such electrolytes may come at the
+expense of the reduced redox kinetics.12 The present model
+addresses neutral elemental sulfur (cyclo-S8) and Li+-ion
+transport. It does not directly simulate lithium polysulfide
+transport or the shuttle mechanism. Thus, balancing the salt
+concentration and different solvent systems with respect to
+elemental sulfur and lithium-ion diffusion is of great
+importance. Obtaining optimal conditions across different
+salt concentrations and solvent types necessitates extensive
+experimentation in the laboratory. Because such experiments
+require considerable time and effort and may be affected by
+human error, computational studies are essential for examining
+the phenomena that arise when the salt concentrations and
+solvent types are altered. Electrolyte phenomena as a
+Received:
+June 6, 2026
+Revised:
+August 19, 2026
+Accepted:
+August 28, 2026
+Published: September 4, 2026
+Article
+pubs.acs.org/JPCB
+© 2026 American Chemical Society
+9605
+https://doi.org/10.1021/acs.jpcb.6c03715
+J. Phys. Chem. B 2026, 130, 9605−9623
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​130/​37/​9605/​68394083/​acs.​jpcb.​6c03715.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 2>>
+comprehensive system can be explored through computational
+methods by conducting molecular simulations using the
+density-functional tight-binding (DFTB) approach.
+DFTB is a DFT-derived quantum-mechanical technique that
+is frequently employed in molecular simulations because it
+allows for large system sizes and extended simulation
+timeframes while explicitly describing the electronic struc-
+ture.13,14 When properly parameterized, DFTB can produce
+DFT-comparable trends in energetics and structures at
+significantly lower computing costs.15 However, its accuracy
+remains dependent on the system and parameters. The second-
+order self-consistent charge model (DFTB2) provides an
+attractive balance between the accuracy of first-principles
+electronic structure approaches and the efficiency needed for
+large-scale atomistic simulations. This approach is frequently
+employed as a low-cost approximation to DFT and is based on
+a second-order expansion of the total DFT energy. The
+repulsive potential and Slater−Koster parameters have a
+significant impact on DFTB accuracy.16−18 The periodic
+table basic parameters (PTBP) are one type of Slater−Koster
+parameter and are presented as a comprehensive set of
+fundamental parameters for all solids in the periodic table.19
+Implementing PTBP for molecular systems requires improve-
+ment to obtain parameters that are adequate and suitable for
+electrolyte systems, as PTBP is based solely on solid systems.
+This study addresses the diffusion processes of sulfur and
+lithium ions in an electrolyte system and analyzes molecular
+stability throughout the simulation using density-functional
+theory-based tight-binding molecular dynamics simulations
+with the divide-and-conquer (DC-DFTB-MD) method. This
+molecular simulation process was conducted by using PTBP
+parameters. We selected three types of electrolyte solvent
+systems, including propylene carbonate (PC), dioxolane
+(DIOX), and a mixture of ethylene carbonate and dimethyl
+carbonate (EC/DMC) with varying concentrations of LiOTf.
+The DC-DFTB method is computationally inexpensive as a
+result of several approximations introduced in the DFTB
+model and scales linearly with the system size through
+fragmentation of the system, allowing for a considerable half-
+cell simulation environment.20,21
+Herein, the dynamic properties of Li+ ions and S8 are
+analyzed to better understand the effects of high-donor-
+number salt anions in Li−S batteries. Ion-pair interactions and
+aggregation dynamics for the CF3 groups of the salt anion are
+observed to explore the mechanisms and transport behaviors
+that occur in the electrolyte. Additionally, we expect to observe
+the stability and behavior of the electrolyte system within
+lithium batteries at varied salt concentrations in various types
+of solvents through molecular simulations utilizing the PTBP
+parameters.
+We intentionally exclude Li2Sx and Sx
+2−because their
+changing chain length, charge state, counterion stoichiometry,
+and redox chemistry introduce a distinct reactive-speciation
+problem. Mixing those species with neutral cyclo-S8 in the
+present concentration series would prevent a controlled
+attribution of transport changes to solvent and LiOTf loading.
+The present results therefore provide a neutral elemental sulfur
+baseline and must not be interpreted as polysulfide solubility,
+diffusion, or shuttle kinetics.
+■METHODOLOGY
+Preparing Electrolyte Solutions
+PC, DIOX, and EC/DMC were selected to contrast carbonate
+and ether coordination environments used in battery-electro-
+lyte research, not because all are asserted to be intrinsically
+good solvents for elemental sulfur. The simulations begin from
+a prescribed, molecularly dispersed cyclo-S8 composition and
+do not calculate dissolution free energies, saturation concen-
+trations, or phase separation. They therefore compare
+transport conditional on the modeled compositions; they do
+not establish macroscopic S8 solubility. All electrolyte systems
+were built in the computational molecular and material design
+environment (CMMDE) using the GENCAN algorithm.22
+Three types of electrolyte solvents were used, namely,
+propylene carbonate (PC), a mixture of ethylene carbonate
+and dimethyl carbonate (EC/DMC), and dioxolane (DIOX).
+These three solvent variations are representative of carbonate
+and ether solvents commonly used in Li−S batteries. The
+LiOTf concentrations varied for each solution, with wt % OTf−
+values of 5, 20, 30, and 40%. The chemical structures of all
+adopted solvents are shown in Figure 1. The solution systems
+were prepared through a series of classical MD simulations that
+began with energy minimization and were followed by
+equilibration under microcanonical (NVE) and canonical
+(NVT) ensembles to initialize the velocities of the solutions
+at the target temperature of 300 K for 500 ps and 1 ns,
+respectively. Finally, the mass densities of the adopted systems
+were obtained from 1 ns of MD simulations under the
+isothermal−isobaric ensemble (NPT) at 300 K by employing
+the Berendsen barostat. Table 1 shows the system details and
+equilibrated densities, where each system contains approx-
+Figure 1. Adopted solvent chemical structures in the present work.
+Table 1. Adopted Electrolyte Solutions with Details of
+LiOTf Mass Percentage, Mass Density, Number of Atoms,
+and Unit Cell Dimensions
+solvent
+%
+LiOTf
+density
+[g/cm3]
+number
+of atoms
+unit cell dimension [Å3]
+PC
+5
+1.261
+2190
+29.274 × 29.274 × 29.274
+20
+1.346
+2283
+30.118 × 30.118 × 30.118
+30
+1.416
+2167
+29.810 × 29.810 × 29.810
+40
+1.460
+2042
+29.635 × 29.635 × 29.635
+EC/DMC
+5
+1.121
+2118
+30.643 × 30.643 × 30.643
+20
+1.377
+2043
+29.052 × 29.052 × 29.052
+30
+1.441
+2094
+29.529 × 29.529 × 29.529
+40
+1.511
+2190
+30.229 × 30.229 × 30.229
+DIOX
+5
+1.380
+2192
+28.403 × 28.403 × 28.403
+20
+1.393
+2142
+28.492 × 28.492 × 28.492
+30
+1.395
+2122
+28.503 × 28.503 × 28.503
+40
+1.441
+2108
+28.817 × 28.817 × 28.817
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.6c03715
+J. Phys. Chem. B 2026, 130, 9605−9623
+9606
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​130/​37/​9605/​68394083/​acs.​jpcb.​6c03715.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 3>>
+imately 2000 atoms. The DMC solvent was mixed with EC
+solvent because it is not well-dissolved.
+Simulation Details and Analyses
+The simulations used the published PTBP Slater−Koster set of
+Cui et al.19 PTBP supplies the electronic and repulsive terms
+for the H/C/O/F/S/Li element pairs needed here. Its
+molecular-geometry transferability was checked against
+ωB97X-D3(BJ)/def2-TZVP structures (Supporting Informa-
+tion). For PC, DMC, EC, and DIOX, the bond-length mean
+absolute errors are 0.014−0.021 Å, the bond-angle mean
+absolute errors are 0.86−1.07°, and the aligned Cartesian
+RMSDs are 0.028−0.150 Å. Additional optimizations of one-
+solvent Li+ complexes retain the DFT Li−O-bound motifs,
+with heavy-atom RMSDs of 0.043−0.141 Å. The PTBP Li−O
+distances are systematically shorter than the DFT values by
+0.060−0.231 Å, revealing a modest overcontraction of this
+contact. For a Li+−S8 cluster, the nearest Li−S distance is
+2.363 Å at the DFT level and 2.411 Å with DFTB2/PTBP, a
+deviation of +0.048 Å. Reproducing the solvent frameworks
+and the local Li−O and Li−S contact distances provides a fit-
+for-purpose validation of the geometries sampled during the
+dynamics and supports qualitative and semiquantitative
+comparisons across the consistently treated electrolyte series.
+Molecular dynamics simulations were performed by employing
+the second-order density-functional tight-binding (DFTB2)
+method.23 The DFTB2 method is an approximation based on a
+second-order expansion of the total density-functional theory
+(DFT) energy. The published PTBP parameter set reported by
+Cui et al.19 was used for every simulation. In general, the
+DFTB method has been widely used for liquid-phase
+simulations in many systems, including proton transfer,24−28
+carbon capture and storage,29,30 and catalytic reactions.31,32
+Our previous work also highlighted the effects of salt
+concentration on the diffusion coefficient in a liquid-phase
+electrolyte33 using the DFTB3 method. More recently, DC-
+DFTB-MD was applied to characterize the graphene oxide−
+ionic liquid electrolyte interface in a sodium-ion battery
+system.34 All molecular dynamics simulations were performed
+using the Dcdftbmd code.21
+After a long preliminary equilibration at the classical
+mechanics level as explained in the previous section, 10 ps
+equilibrations were performed under the NVT ensemble with a
+time step of 1 fs. The equilibrated atomic coordinates and
+velocities were taken for 50 ps production runs under the NVE
+ensemble. The simulations were repeated three times to
+estimate structural and dynamical properties better. The
+trajectories obtained under the NVE ensemble were subjected
+to all analyses performed in this work. The mass densities
+obtained from the preceding 1 ns NPT simulations are
+reported for every system in Table 1. Complete mean-square
+displacement (MSD) curves for Li+, S8, the solvent species, and
+OTf−in all solvent and salt-concentration systems are provided
+in the Supporting Information, enabling inspection of the
+linear diffusion regime used to estimate the transport
+coefficients. The diffusion coefficients were estimated from
+the mean-square displacement (MSD) using the Einstein
+equation (eq 1).
+An MSD curve and its long-time slope were obtained
+separately for each independent production trajectory; the
+three trajectory-level diffusion coefficients were then averaged,
+and their sample standard deviation is reported in Table 2.
+Thus, the MSD curves were not first combined into a single
+ensemble-averaged curve before fitting. This preserves
+between-trajectory variability as the uncertainty estimate
+D
+t
+t
+r
+r
+lim 1
+6
+d
+d
+( )
+(0)
+t
+2
+=
+|
+|
+(1)
+where r(0) and r(t) denote the vector positions of the
+observed species at times 0 and t, respectively. The vector
+positions of Li+, S8, solvents, and OTf−were selected for the
+MSD calculations. For chemical species containing more than
+one atom, their center of mass was first calculated. The
+complete MSD curves show that all analyzed species reach a
+linear diffusive regime within the 50 ps production trajectories,
+supporting the use of their long-time slopes to estimate the
+diffusion coefficients.
+The diffusivity of the electrolyte components is also
+influenced by ion-pair interactions between Li+ and OTf−,
+ion−dipole interactions between Li+ and solvent, and weaker
+induced-polarization interactions involving S8. The solvation
+structure around the solute components therefore influences
+their dynamical properties. In this case, the solutes are Li+ and
+S moieties. Thus, the radial distribution functions (RDFs) of
+the Li−S(salt), Li−S(S8), O(salt)−S(S8), and O(solvent)−
+S(S8) pairs were computed. Alongside conventional RDFs,
+which provide no temporal information on how intermolecular
+interactions may interchange in the liquid phase, connection
+matrices (CMats) were utilized with Trajectory Analyzer and
+Visualizer (TRAVIS)35 throughout the trajectory frames. With
+this approach, the time correlation of each atom pair between
+the electrolyte components can be traced.
+Table 2. Estimated Diffusion Coefficients at the DFTB2 Level; D in Units of ×10−10 m2/sa
+solvent
+% LiOTf
+DS
+DLi+
+Dsolvent
+DOTf−
+PC
+5
+13.01 ± 1.59
+8.16 ± 0.69
+14.20 ± 1.14
+7.79 ± 0.35
+20
+11.35 ± 0.99
+2.62 ± 0.14
+8.05 ± 0.55
+4.57 ± 0.02
+30
+4.67 ± 0.46
+1.67 ± 0.17
+4.66 ± 0.34
+2.87 ± 0.28
+40
+7.64 ± 0.17
+1.61 ± 0.08
+4.57 ± 0.29
+2.23 ± 0.25
+DIOX
+5
+23.84 ± 0.85
+9.95 ± 1.60
+40.44 ± 2.10
+7.48 ± 1.25
+20
+14.59 ± 1.20
+4.03 ± 0.31
+22.11 ± 2.22
+5.34 ± 0.40
+30
+11.09 ± 0.63
+2.84 ± 0.02
+16.15 ± 2.74
+3.96 ± 0.31
+40
+9.44 ± 0.69
+1.87 ± 0.11
+9.88 ± 0.50
+2.88 ± 0.14
+EC/DMC*
+5
+12.36 ± 2.44
+9.09 ± 0.79
+30.52 ± 2.72/33.70 ± 1.88
+18.54 ± 1.18
+20
+9.13 ± 1.13
+6.44 ± 0.82
+15.71 ± 1.99/17.66 ± 1.36
+9.50 ± 0.36
+30
+8.21 ± 0.42
+3.23 ± 0.32
+6.70 ± 0.51/9.22 ± 0.77
+4.93 ± 0.22
+40
+11.82 ± 0.96
+2.00 ± 0.15
+5.84 ± 0.55/6.97 ± 0.44
+3.21 ± 0.32
+aValues are the mean ± sample standard deviation from three independent trajectories.
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.6c03715
+J. Phys. Chem. B 2026, 130, 9605−9623
+9607
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​130/​37/​9605/​68394083/​acs.​jpcb.​6c03715.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 4>>
+To characterize the electrostatic environment of solvated Li+
+ion, a representative first-shell cluster was extracted for each
+solvent and LiOTf concentration from the first NVE trajectory.
+The trajectories were sampled every 0.1 ps, and the
+representative Li+ ion was selected from the longest-lived
+Li−O molecular contact. The cluster at 25 ps contains the Li+
+and all molecules in its first oxygen-coordination shell. The
+ESP itself was ensemble-averaged over the sampled trajectory
+frames: shell-summed Mulliken charges were used to evaluate
+the potential for the instantaneous first-shell environments, and
+the averaged potential was mapped onto the Gaussian
+molecular-density proxy of the representative cluster. Red
+and blue denote negative and positive ESP, respectively. These
+maps are therefore ensemble-averaged, Mulliken-derived ESP
+maps on a density-like surface rather than wavefunction
+electron-density/ESP calculations.
+Direct correlated motion between S8 and solvent molecules
+was evaluated from unwrapped molecular center-of-mass
+trajectories sampled every 0.1 ps. At each time origin, an
+S8−solvent pair was classified as a contact when its center-of-
+mass separation was at most 5.0 Å, namely, noncontact pairs in
+the same trajectory defined the baseline. For a pair set
+, the
+normalized displacement cross-correlation at lag time τ was
+calculated as
+C
+r
+r
+r
+r
+( )
+i
+j
+i
+j
+S
+solv
+S 2
+solv 2
+8
+8
+=
+·
+|
+|
+|
+|
+(2)
+where the displacements span t0 to t0 + τ. The excess
+correlation, ΔC(τ) = Ccontact(τ) −Cbaseline(τ), isolates the
+coherence associated with local contact. Contact persistence
+was measured as S(τ) = ⟨hij(t0)hij(t0 + τ)⟩/⟨hij(t0)⟩, where hij =
+1 inside the 5.0 Å, cutoff and zero otherwise.
+■RESULTS AND DISCUSSION
+Sulfur, Solvent, and Li-Ion Diffusivities
+Estimated diffusion coefficients, D, at the DFTB level are
+shown in Table 2. The estimated diffusion coefficients range
+from 1.61 × 10−10 to 4.04 × 10−9 m2/s. In general, Li+ ion
+exhibits the slowest mobility because its high charge density
+produces a persistent solvation environment containing solvent
+and triflate oxygen atoms. Motion therefore requires rearrange-
+ment of neighboring molecules and ion pairs. Increasing LiOTf
+concentration also raises the mass density (Table 1), reduces
+free volume, and increases competition for oxygen-coordina-
+tion sites. These effects slow structural relaxation and generally
+decrease the self-diffusion coefficients. Direct Li+−S8 inter-
+action is comparatively weak because neutral cyclo-S8 lacks a
+localized negative site, whereas oxygen atoms are strong Lewis
+bases. S8 consequently interacts with oxygen-containing
+environments mainly through dispersion and induced-polar-
+ization contributions rather than stable Li−S coordination.
+In dilute PC, DS and Dsolvent have comparable values, 13.01 ×
+10−10 and 14.2 × 10−10 m2/s, respectively. Comparable self-
+diffusion coefficients describe similar average migration rates
+but do not by themselves demonstrate correlated displace-
+ments or persistent pairing. Accordingly, no sulfur−solvent
+complex is inferred from these values alone. Their decline
+through 30% LiOTf is consistent with increasing density and
+crowding. The rise in DS at 40% is nonmonotonic and is not
+assigned to increased free space without supporting structural
+and displacement-correlation evidence. The RDF, connection
+matrix, NCI, and direct correlated-motion results below are
+therefore considered together when interpreting local associ-
+ation.
+In DIOX, the estimated sulfur diffusion coefficient decreases
+monotonically with LiOTf concentration. At 40% LiOTf, DS
+and Dsolvent are numerically similar. This similarity does not
+establish collective diffusion. It is consistent with both species
+responding to the same increasingly dense and slowly relaxing
+environment, while the structural analyses independently
+identify local DIOX−S8 contacts.
+In EC/DMC, sulfur diffusivity decreases from 5 to 30%
+LiOTf and then increases at 40%. The self-diffusion values are
+not used as evidence for correlated sulfur−solvent motion.
+Although increasing salt concentration generally suppresses
+sulfur mobility, it also suppresses Li+ ion mobility, revealing a
+transport trade-off relevant to electrolyte design.
+The complete trajectory-resolved MSD curves and quanti-
+tative regime diagnostics are shown in the Supporting
+Information. Over 20−50 ps, all 52 species−composition
+curves have logarithmic diffusion exponents close to unity (α =
+0.936−1.062), linear-fit R2 = 0.9974−0.9999, and no more
+than 5.8% variation in the fitted slope when the fitting interval
+is changed among 10−50, 15−50, 20−50, and 25−50 ps. The
+slow ionic components satisfy the criteria independently: α =
+0.981−1.062 for Li+ and 0.981−1.042 for OTf−, with
+maximum fit window sensitivities of 4.0 and 2.6%, respectively.
+These results demonstrate that the reported slopes sample a
+stable finite-time diffusive regime, including for the slowest
+species.
+Direct S8−Solvent Correlated Motion
+The displacement-correlation and contact-survival curves are
+provided in Figure S13. For every solvent and salt
+concentration, initially contacting pairs have positive displace-
+ment correlations, whereas the noncontact baselines are weakly
+negative and close to zero (approximately −0.004 to −0.027
+over the analyzed lag times). In a finite periodic NVE system,
+such small anticorrelations can arise from total-momentum
+constraints, collective backflow, and the inclusion of spatially
+separated pairs in the baseline. The negative baseline is
+therefore physically plausible, but its subtraction slightly
+increases the reported excess correlation. At τ = 2.0 ps, ΔC
+ranges from 0.311 to 0.346 for PC, from 0.193 to 0.329 for
+DIOX, from 0.245 to 0.310 for EC, and from 0.241 to 0.342
+Table 3. Excess S8−Solvent Displacement Correlation, ΔC, and Contact Survival, S, at τ = 2.0 ps
+5 wt %
+20 wt %
+30 wt %
+40 wt %
+species
+ΔC
+S
+ΔC
+S
+ΔC
+S
+ΔC
+S
+PC
+0.336
+0.614
+0.326
+0.603
+0.346
+0.698
+0.311
+0.673
+DIOX
+0.329
+0.501
+0.201
+0.505
+0.253
+0.581
+0.193
+0.513
+EC
+0.310
+0.543
+0.300
+0.635
+0.281
+0.620
+0.245
+0.639
+DMC
+0.317
+0.569
+0.241
+0.666
+0.278
+0.748
+0.342
+0.685
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.6c03715
+J. Phys. Chem. B 2026, 130, 9605−9623
+9608
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​130/​37/​9605/​68394083/​acs.​jpcb.​6c03715.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 5>>
+for DMC (Table 3). The substantially positive contact
+correlations relative to the near-zero baseline support
+preferential same-direction displacement of nearby S8 and
+solvent molecules.
+The contact-survival probability, S(τ), complements the
+displacement correlation by quantifying the persistence of the
+local environment. For example, S = 0.60 at 2.0 ps means that
+60% of the pairs classified as contacts at the time origin are
+again within the 5.0 Å cutoff after 2.0 ps. Because the definition
+correlates the contact state only at the two end points, it is an
+intermittent survival probability and can include a pair that
+briefly separates and reforms. It should therefore not be
+interpreted as a continuous residence probability, a binding
+equilibrium constant, or direct evidence for a permanent
+complex.
+At 2.0 ps, S is 0.60−0.70 for PC, 0.50−0.58 for DIOX,
+0.54−0.64 for EC, and 0.57−0.75 for DMC. Thus,
+approximately one-half to three-quarters of the initially
+neighboring S8−solvent pairs retain or recover their local
+contact over this interval. PC maintains consistently high
+survival across concentration, whereas the lower DIOX values
+indicate more rapid exchange of its S8 contact environment. In
+EC/DMC, DMC reaches the largest survival probability (S =
+0.748) at 30 wt % LiOTf, while EC varies over a narrower
+range. The concentration dependence is nonmonotonic for
+every solvent, indicating that contact persistence is controlled
+by a balance among molecular packing, salt-induced crowding,
+ion coordination, and dispersion-mediated S8−solvent associ-
+ation rather than salt concentration alone.
+The S and ΔC values describe different aspects of the
+dynamics and need not vary in parallel. For example, DMC at
+30 wt % LiOTf has the largest survival probability in the table
+(S = 0.748), but its excess displacement correlation (ΔC =
+0.278) is smaller than the DMC values at 5 and 40 wt %. Thus,
+a pair can remain within the contact shell without exhibiting
+the strongest same-direction displacement. Conversely, a
+positive ΔC describes directional coherence but does not by
+itself establish a long-lived neighborhood. Considered together,
+positive ΔC establishes preferential same-direction motion,
+while finite S establishes persistence of the relevant local
+neighborhood over the correlation interval. Because S remains
+well below unity, the results support transient local cooperative
+motion rather than rigid or permanent S8−solvent complexes.
+Electrostatic Potential in the Li+ Solvation Shell
+The displayed geometry is selected from a persistent local
+motif, whereas the mapped ESP and the Li−O coordination
+statistics are ensemble-averaged over all Li ions and sampled
+frames across the complete ensemble of independent
+production trajectories. Using a 2.6 Å cutoff, the mean number
+of triflate-O atoms around Li increases from 1.17 to 2.38 in
+PC, 1.46 to 2.45 in DIOX, and 0.82 to 2.25 in EC/DMC from
+5 to 40 wt % LiOTf. Over the same range, solvent−O
+coordination decreases from 3.59 to 2.34 in PC, 3.40 to 2.24 in
+DIOX, and 3.99 to 2.42 in EC/DMC (EC and DMC
+Figure 2. Ensemble-averaged Mulliken-derived electrostatic potential (ESP) mapped on a Gaussian molecular-density proxy for representative Li+
+first-shell clusters in PC at (a) 5, (b) 20, (c) 30, and (d) 40 wt % LiOTf. Red and blue indicate negative and positive ESP, respectively.
+Figure 3. Ensemble-averaged Mulliken-derived electrostatic potential (ESP) mapped on a Gaussian molecular-density proxy for representative Li+
+first-shell clusters in DIOX at (a) 5, (b) 20, (c) 30, and (d) 40 wt % LiOTf. Red and blue indicate negative and positive ESP, respectively.
+Figure 4. Ensemble-averaged Mulliken-derived electrostatic potential (ESP) mapped on a Gaussian molecular-density proxy for representative Li+
+first-shell clusters in EC/DMC at (a) 5, (b) 20, (c) 30, and (d) 40 wt % LiOTf. Red and blue indicate negative and positive ESP, respectively.
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.6c03715
+J. Phys. Chem. B 2026, 130, 9605−9623
+9609
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​130/​37/​9605/​68394083/​acs.​jpcb.​6c03715.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 6>>
+summed). The ensemble-averaged ESP and coordination
+results therefore consistently show increasing triflate partic-
+ipation and decreasing solvent participation in the Li first shell.
+The exact molecular arrangement shown in each panel remains
+a representative structural support for the averaged electro-
+static environment.
+The ensemble-averaged Mulliken-derived ESP maps in
+Figures 2−4 visualize the charge distribution around Li+
+solvation environments. In all systems, negative-potential
+regions are concentrated around solvent and triflate oxygen
+atoms and face the embedded positive Li+ center. This spatial
+complementarity explains the preferential Li−O coordination
+found in the RDF and connection-matrix analyses. The maps
+do not support preferential Li−S8 coordination, namely,
+neutral cyclo-S8 lacks the localized negative-potential oxygen
+sites that stabilize Li+.
+The shell composition changes with the salt concentration.
+For PC, the representative shell changes from three PC plus
+two triflate molecules at 5 wt % to one PC plus three triflates at
+30 and 40 wt %. EC/DMC similarly changes from four
+carbonate molecules plus one triflate at 5 and 20 wt % to one
+carbonate plus two triflates at 40 wt %, while the shell size
+decreases from five to three molecules. These changes indicate
+increasing anion participation and contact-ion-pair character at
+high salt loading, which increases the collective rearrangement
+required for Li+ translation and is consistent with a decrease in
+Li+ ion diffusivity. DIOX retains three to four solvent
+molecules and one to two triflates across the concentrations,
+consistent with substantial ether oxygen participation. Because
+each panel represents one longest-lived contact environment,
+the shell compositions are representative local motifs rather
+than ensemble populations, and the color ranges should not be
+compared as absolute ESP magnitudes between the panels.
+Radial Distribution Function
+Besides the dispersion-dominated contacts of neutral S8, the
+electrolyte contains strong electrostatic Li−triflate ion pairing,
+Li−solvent ion−dipole coordination, solvent−solvent dipole
+interactions, steric repulsion, and weaker ion-induced-dipole or
+dipole-induced-dipole contacts involving S8. Their competition
+determines first-shell composition and the rearrangement cost
+for translation. Analysis of the radial distribution function
+(RDF) is employed to investigate intermolecular interactions,
+represented through particle pair distributions among atoms,
+ions, or dipoles as a function of distance. The intermolecular
+interactions for the adopted system are characterized by the
+interactions between Li+ ions and sulfur atoms (OTf−), Li+
+ions and sulfur atoms (S8), oxygen atoms (OTf−) and sulfur
+atoms (S8), and oxygen atoms (solvent) and sulfur atoms (S8).
+The adopted system includes three solvent variations, namely,
+Figure 5. Radial distribution functions of the PC solvent system at various LiOTf percentages: (a) Li+−S(OTf−), (b) Li+−S(S8), (c) O(OTf−)−
+S(S8), and (d) O(PC)−S(S8).
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.6c03715
+J. Phys. Chem. B 2026, 130, 9605−9623
+9610
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​130/​37/​9605/​68394083/​acs.​jpcb.​6c03715.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 7>>
+PC, DIOX, and EC/DMC. Figure 5 illustrates the RDF of the
+system with the PC solvent.
+Figure 5a illustrates the radial distribution function between
+Li+ ions and sulfur atoms from the salt (OTf−). The first
+solvation peak is the highest peak across all concentrations of
+the salt, specifically LiOTf. The height of the first solvation
+peak decreases as the LiOTf percentage increases. The highest
+peak occurs at the lowest salt concentration, specifically 5%
+LiOTf. Increasing the salt percentage from 5 to 20% LiOTf
+results in a significant decrease in the peak. The addition of
+15% Li+ and OTf−ions could result in significant steric
+hindrance within the system, making interactions between the
+sulfur atom and Li+ ion increasingly challenging. Increasing the
+LiOTf percentage from 20 to 30% results in a slight decrease in
+the peak, though the change is not substantial. The rise in
+concentration does not significantly impact the interaction.
+However, it also hinders the interaction between the sulfur
+atom and the Li+ ion. Finally, when the LiOTf percentage is
+increased again from 30 to 40%, the first solvation peak
+remains constant. The height of the first peak at 40% LiOTf is
+almost the same as that at a salt concentration of 30% LiOTf.
+This lack of change may indicate that the system has reached a
+saturated state.
+Figure 5b illustrates the radial distribution function between
+Li+ ions and sulfur atoms (S8). The interaction between these
+two particles does not exhibit a dominant peak. Consequently,
+our attention is directed toward the initial peak occurring at a
+distance of 2−4 Å. A noticeable change occurs when the
+percentage of LiOTf is increased for the first solvation region
+at a distance of 2−4 Å. Overall, the RDF peak intensity
+increases as the LiOTf concentration increases. Upon
+increasing the concentration of LiOTf from 5 to 40%, a
+notable enhancement is observed in the first solvation peak at a
+distance of 2−4 Å. The observed increase can be attributed to
+a greater number of Li+ ions engaging with sulfur atoms from
+the S8 molecule. This phenomenon indicates that the
+interaction between these two particles remains relatively
+unchanged. The rise in the proportion of LiOTf creates
+adequate distance between the Li+ ion and the sulfur atom
+(S8), facilitating enhanced interaction.
+Figure 5c presents the radial distribution function between
+oxygen atoms (OTf−) and sulfur atoms (S8). A change in peak
+height is observed when the OTf−percentage is increased in
+the 2−4 Å region. An increase in the OTf−percentage from 5
+to 20% results in a significant decrease in peak height within
+the 2−4 Å region. This decrease is due to the increasing
+number of oxygen atoms from LiOTf as the percentage is
+increased, which suppresses the interaction between oxygen
+atoms and sulfur atoms from the S8 molecule. In other words,
+there is a steric effect. Upon increasing the salt percentage from
+Figure 6. Radial distribution functions of the DIOX solvent system at various LiOTf percentages: (a) Li+−S(OTf−), (b) Li+−S(S8), (c) O(OTf−)−
+S(S8), and (d) O(DIOX)−S(S8).
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.6c03715
+J. Phys. Chem. B 2026, 130, 9605−9623
+9611
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​130/​37/​9605/​68394083/​acs.​jpcb.​6c03715.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 8>>
+20 to 30%, the peak height in the 2−4 Å region changes. The
+reason for this change may be that the addition of LiOTf
+influences the distance required for oxygen atoms (OTf−) and
+sulfur atoms (S8) to interact. When the salt concentration is
+increased from 30 to 40%, there is a significant increase. Thus,
+it can be said that an increase in the percentage of LiOTf
+increases the number of oxygen atoms in the system, bringing
+the oxygen atoms closer to the sulfur atoms (S8). Finally, this
+increases the interaction between the oxygen atoms from OTf−
+and the sulfur atoms from S8.
+Figure 5d represents the radial distribution function between
+oxygen atoms (PC) and sulfur atoms (S8). The first solvation
+peak occurs at a distance of 2−4 Å. Several distinct phenomena
+were observed. When the concentration was raised from 5 to
+20%, the intensity of the RDF peak decreased. The observed
+decrease can be explained by the increase in LiOTf
+concentration, which leads to a higher number of OTf−ions
+that may hinder the interaction distance between the oxygen
+atoms (PC) and the sulfur atoms (S8). Increasing the
+concentration from 20 to 30% results in an insignificant
+change. Conversely, increasing the concentration from 30 to
+40% results in a corresponding rise in the RDF peak. Among
+the investigated concentrations, the 20% LiOTf concentration
+yields the lowest RDF peak. It can be deduced that the
+probability of interaction between oxygen (PC) and sulfur
+atoms (S8) is very low within a distance of 2−4 Å.
+Figure 6 shows the RDF for the DIOX solvent system at
+various LiOTf concentration percentages. Figure 6a illustrates
+the radial distribution function for the interaction between Li+
+ions and sulfur atoms (OTf−) in the DIOX solvent system.
+The highest peak is observed at a concentration of 5% LiOTf.
+Under these conditions, Li+ ions and sulfur atoms (OTf−)
+engage in a notably strong interaction. Upon increasing the
+concentration to 20%, a notable reduction in the first solvation
+peak is observed. The observed phenomenon could be
+attributed to the rising concentration of Li+ ions and OTf−
+ions within the system, which appears to hinder the interaction
+between Li+ ions and sulfur atoms (OTf−). When the
+concentration rises from 20 to 30%, a minimal reduction is
+observed in the first solvation peak. The limited space
+occupied by Li+ ions and OTf−ions results in a restriction
+on their movement, thereby affecting their ability to interact
+with one another. Upon increasing the concentration to the
+maximum level of 40% LiOTf, a decrease in the peak is
+observed, suggesting an increase in the presence of Li+ and
+OTf−ions, which in turn inhibits the interaction between Li+
+ions and sulfur atoms (OTf−). In summary, an increase in
+concentration leads to a decline in the first solvation peak. The
+Figure 7. Radial distribution functions of the EC/DMC solvent system at various LiOTf percentages: (a) Li+−S(OTf−), (b) Li+−S(S8), (c)
+O(OTf−)−S(S8), and (d) O(EC/DMC)−S(S8).
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.6c03715
+J. Phys. Chem. B 2026, 130, 9605−9623
+9612
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​130/​37/​9605/​68394083/​acs.​jpcb.​6c03715.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 9>>
+detected decline corresponds to that seen in the DIOX solvent
+system.
+Figure 6b illustrates the radial distribution function
+concerning the interaction between Li+ ions and sulfur atoms
+(S8). In Figure 6b, there is no sufficiently distinct solvation
+peak for any concentration in the range of 2−4 Å. There is no
+clear pattern of change as the concentration is increased. At a
+5% concentration, there is no probability of interaction
+between Li+ ions and sulfur atoms (S8) in the 2−4 Å region.
+When the LiOTf concentration is increased from 5 to 20%,
+there is a slight increase in the probability of interaction
+between Li+ ions and sulfur atoms (S8). When the
+concentration is further increased from 20 to 30%, there is a
+significant rise in the peak around 3 Å. This significant peak
+indicates that interactions occur between Li+ ions and sulfur
+atoms (S8) at 3 Å, but these interactions do not last long.
+When the distance exceeds 3 Å, the peak decreases and has an
+intensity above the 20% concentration. A significant peak,
+which was observed at the 30% concentration, is absent.
+However, the intensity at 40% concentration is higher than
+those at all other concentrations at interaction distances
+greater than 3 Å. In summary, it can be concluded that an
+increase in the quantity of Li+ ions from LiOTf correlates with
+a higher probability of interaction between Li+ ions and sulfur
+atoms (S8).
+Figure 6c illustrates the radial distribution function of ion−
+dipole interactions between oxygen atoms (OTf−) and sulfur
+atoms (S8). No significant peak is observed for the first
+solvation peak in the 2−10 Å region. There is a pattern of
+change in peak intensity when the concentration is increased in
+the range of 2−4 Å. As the concentration rises from 5 to 20%,
+a modest decrease in intensity is observed. This decrease
+suggests that a 15% rise in the concentration of OTf−within
+the system diminishes the interaction between oxygen atoms
+(OTf−) and sulfur atoms (S8) in the DIOX solution. Increasing
+the concentration from 20 to 30% results in a minor rise in
+intensity, though this change is not substantial. Upon reaching
+the maximum concentration of 40%, the intensity remains
+unchanged. It can be concluded that when the maximum
+concentration is attained, a saturated state is established
+between oxygen atoms (OTf−) and sulfur atoms (S8) in the
+system during interaction at a distance of 2−4 Å.
+The RDF between two dipoles, namely, oxygen atoms
+(DIOX) and sulfur atoms (S8), is shown in Figure 6d. Two
+distinct solvation peaks are present. The first solvation peak
+occurs within the 2−4 Å region. At this distance, overlapping
+peaks are observed. Concentrations of 5, 20, and 40% exhibit
+overlapping peaks. The overlap could be attributed to the
+saturated condition of the oxygen and sulfur atoms present in
+the DIOX solution. The lowest peak at this distance is noted at
+a concentration of 30% LiOTf. At a 30% LiOTf concentration,
+it can be observed that the interaction between oxygen atoms
+(DIOX) and sulfur atoms (S8) is at its weakest. This minimum
+peak is likely attributable to the presence of Li+ and OTf−ions,
+which initially inhibit interaction at this concentration. A
+second solvation peak is noted at a distance ranging from 4 to
+6 Å. Most peaks exhibit overlap, particularly at concentrations
+of 5, 20, and 30%. The observed overlap suggests that
+increasing the number of Li+ and OTf−ions does not affect the
+interactions between oxygen and sulfur atoms at distances
+ranging from 4 to 6 Å. The most significant RDF peak is noted
+at a concentration of 40% LiOTf. The prominent peak suggests
+that at elevated concentrations, a strong interaction exists
+between oxygen atoms (DIOX) and sulfur atoms (S8) in the
+DIOX solution at distances ranging from 4 to 6 Å.
+Figure 7 presents the radial distribution function for the EC/
+DMC solvent system at various LiOTf concentration
+percentages. Figure 7a illustrates the interaction occurring
+between Li+ ions and sulfur atoms (OTf−). A first solvation
+peak is observed, with its intensity increasing with increasing
+LiOTf concentration. As the concentration of LiOTf rises from
+5 to 20%, there is a significant decrease in the peak. This
+decrease occurs due to an increased number of Li+ ions and
+OTf−ions in the system, which subsequently hinders the
+interaction between Li+ ions and sulfur atoms (OTf−). Upon
+increasing the concentration to 30% LiOTf, an insignificant
+decrease in the peak is observed. Finally, as the concentration
+reaches 40% LiOTf, the peak still experiences an insignificant
+decrease. It can be observed that in the EC/DMC solvent
+system, a rise in LiOTf percentage concentration leads to an
+increased interaction distance between Li+ ions and sulfur
+atoms (OTf−), which consequently affects the interaction
+between the two particles and reduces the first solvation peak.
+Figure 7b illustrates the radial distribution function
+concerning the interaction between Li+ ions and sulfur atoms
+(S8). The interaction between Li+ ions and sulfur atoms (S8) in
+the EC/DMC solution showed no particular pattern, which is
+consistent with the findings from the DIOX solution. There is
+a noticeable peak at a distance of 2−4 Å. It is found that the
+interaction intensity between Li+ ions and sulfur atoms (S8)
+has not yet reached its maximum in the 2−4 Å region for a 5%
+LiOTf concentration. Nevertheless, as this RDF intensity is the
+highest, it can be inferred that the interaction between Li+ and
+sulfur atoms (S8) reached its maximal state at low LiOTf
+concentrations. There is a notable drop in intensity when the
+concentration is raised to 20%. The interaction between Li+
+ions and sulfur atoms (S8) is diminished by the additional
+number of Li+ and OTf−ions. The steric effects of Li+ and
+OTf−ions filling the EC/DMC solution are the cause of this
+decrease in interaction. The RDF peak intensity does not
+significantly change when the concentration is raised from 20
+to 30%. Therefore, it can be said that the interaction between
+Li+ ions and sulfur atoms (S8) is unaffected by increasing the
+amount of LiOTf from 20 to 30% in this system. Additionally,
+a first solvation peak between Li+ ions and sulfur atoms (S8)
+emerges when the concentration reaches its maximum of 40%.
+The interaction distance between Li+ ions and sulfur atoms
+(S8) at this peak is roughly 3 Å. The RDF intensity drops after
+this point. This pattern suggests that the Li+ ions and sulfur
+atoms (S8) are strongly interacting at a distance of 3 Å, at a
+concentration of 40%.
+Figure 7c illustrates the radial distribution function for the
+interaction between oxygen atoms (OTf−) and sulfur atoms
+(S8) for the EC/DMC solvent system. The first solvation peak
+appears to overlap at positions below 4 Å, for concentrations of
+20, 30, and 40% LiOTf. At a concentration of 5% LiOTf, the
+initial solvation peak is detected in the area below 4 Å. The
+peak exhibiting the highest intensity signifies strong
+interactions between oxygen atoms (OTf−) and sulfur atoms
+(S8). Upon increasing the concentration of LiOTf to 20%, a
+substantial decrease in the peak is observed, resulting in a
+minimum value. A 15% increase in LiOTf concentration
+appears to weaken the interaction between oxygen atoms
+(OTf−) and sulfur atoms (S8). This notable drop is likely due
+to steric effects arising from the growing number of Li+ and
+OTf−ions in the system, along with competition among Li+
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.6c03715
+J. Phys. Chem. B 2026, 130, 9605−9623
+9613
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​130/​37/​9605/​68394083/​acs.​jpcb.​6c03715.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 10>>
+ions and sulfur atoms (S8) for interaction with OTf,
+considering that S8 only acts as a dipole. Increasing the
+concentration from 20 to 30% results in a minor increase in the
+peak. However, the peak appears to overlap with the peak
+observed at 20% concentration. A similar phenomenon is
+noted at the peak concentration of 40%. A minor peak
+decreases, but not significantly. It can be concluded that for
+concentrations ranging from 20 to 40%, the EC/DMC solution
+system attains a saturated state, wherein additional increases in
+LiOTf concentration do not continue to influence the
+interactions between oxygen atoms (OTf−) and sulfur atoms
+(S8).
+Figure 7d illustrates the radial distribution function for the
+interaction between oxygen atoms from the EC/DMC solvent
+and sulfur atoms (S8). The first solvation peaks for
+concentrations of 5 and 20% LiOTf almost overlap. Overall,
+when the concentration is increased from 5 to 20%, there is no
+change in the interaction between oxygen atoms (EC/DMC)
+and sulfur atoms (S8). However, when the concentration is
+increased from 20 to 30%, there is a significant decrease in the
+first solvation peak. This decline indicates that with the
+addition of Li+ ions and OTf−ions, there is an increase in the
+steric effect on the interaction between oxygen atoms (EC/
+DMC) and sulfur atoms (S8). In other words, the presence of a
+higher number of Li+ ions and OTf−ions also provides
+competition for interactions with sulfur atoms (S8) and oxygen
+atoms (EC/DMC). This condition reduces the interaction
+between the solvent oxygen and sulfur (S8). When the
+concentration is increased again to 40% LiOTf, there is an
+increase in the solvation peak. This increase indicates that
+increasing the amount of LiOTf as the concentration is raised
+to 40% leads to increased interaction between oxygen and
+sulfur atoms.
+Correlation between Intermolecular Interactions and
+Sulfur Diffusivity
+To unravel possible interactions that are responsible for
+suppressing sulfur diffusion, representative connection matrices
+for the lowest and highest LiOTf concentrations for each
+adopted solvent are shown in Figures 8−10. The connection
+matrices within the PC solvent system at various salt
+concentrations are illustrated in Figure 8. The white color
+and cross-mark indicate the absence of interaction. Overall, it
+can be observed that all sulfur atoms in the S8 molecule do not
+interact with all other sulfur atoms of another S8 molecule.
+Similarly, the Li+ ions exhibit no interaction with each other.
+The sulfur atoms in S8 do not engage in direct interactions
+with the Li+ ions. Li+ ion possesses a small ionic radius and
+high charge density, resulting in a strong electrostatic field that
+preferentially coordinates with the oxygen atom characterized
+by electron density and low polarizability. This interaction
+facilitates the formation of a stable Li−O interaction.
+Conversely, sulfur possesses a larger atomic radius and a
+highly polarizable electron cloud, which renders Li−S
+interaction less favorable. Instead, sulfur interacts more readily
+with oxygen-containing species through weak noncovalent
+interactions. Figure 8a presents the connection matrix for 5%
+LiOTf within the PC solvent system. The system consists of
+four species, namely, S8, OTf−, PC, and Li+. The strong close-
+range interaction occurs between the Li+ ion and all oxygen
+atoms (O1, O2, and O3) of OTf−, highlighted in red. These
+strong interactions are contributed by the ion−ion interaction
+between Li+ ion and OTf−ion. In addition, a similar
+interaction occurs between the Li+ ion and the oxygen atom
+(O3) of PC. These are strong interactions at short distances,
+colored red, that arise from ion−dipole interactions between
+Figure 8. Connection matrices of the PC solvent system at various LiOTf percentages: (a) 5% LiOTf, (b) 20% LiOTf, (c) 30% LiOTf, and (d)
+40% LiOTf.
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.6c03715
+J. Phys. Chem. B 2026, 130, 9605−9623
+9614
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​130/​37/​9605/​68394083/​acs.​jpcb.​6c03715.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 11>>
+Li+ ion and the PC molecule. One of the remaining oxygen
+atoms (O1) in PC also interacts with the Li+ ion, although the
+interaction is long-distance and strong, as indicated by the
+yellow coloring. In accordance with this, a long-range and
+strong interaction also exists between all sulfur atoms in S8
+molecules and all oxygen atoms in OTf−ions. This interaction
+is depicted in yellow. Additionally, there is a strong interaction
+at long distances between one of the oxygen atoms (O3) of PC
+and all sulfur atoms in S8. The yellow color also denotes this
+interaction. These three long-range interactions are caused by
+van der Waals interactions that occur between each
+component and the sulfur atoms of the S8 molecule.
+Figure 8b illustrates the connection matrix for 20% LiOTf in
+a PC solvent. The system comprises four components: S8,
+OTf−, PC, and Li+. As in the 5% LiOTf system, there is an
+absence of interactions between Li+ ions, depicted by the white
+color and cross-mark. Under this condition, the Li+ ion and all
+sulfur atoms in S8 show no interaction. The strong close-range
+interaction exhibited between the Li+ ion and all oxygen atoms
+of OTf−, as an ion−ion interaction is marked in red. A similar
+color also occurs between one oxygen atom (O3) in PC and
+Li+ ion, which indicates a close-range strong interaction. This
+finding reflects the ion−dipole interaction between Li+ ion and
+an oxygen atom in PC as a dipole. There is a strong interaction
+between the Li+ ion and one oxygen atom (O2) in PC, marked
+in dark orange, but this interaction is not as strong as the red
+interaction. This interaction is governed by an ion−dipole
+interaction between O2 in PC and Li+ ion. However, the
+strength of this type of interaction is weaker than the ion−
+dipole interaction between O3 in PC and Li+ ion. So, it can be
+concluded that the dipole magnitude of O3 is higher than that
+of O2 in the PC molecule. In contrast, the opposite behavior is
+observed for the interaction between a Li+ ion and the
+remaining oxygen atom (O1) of the PC molecule, which
+exhibits a yellow color, indicating a strong long-range
+interaction. The type of long-range interaction is van der
+Waals interaction. Consistent with this, there are some strong
+long-distance interactions colored yellow. These occur
+between all sulfur atoms in the S8 molecule and two oxygen
+atoms (O2 and O3) in the PC molecules. Finally, there is a
+weak long-range interaction between oxygen atoms (O1, O2,
+and O3) in OTf−and all sulfur atoms in S8. This interaction is
+pronounced in light yellow. Van der Waals interaction occurs
+between S8 and oxygen atoms in OTf−and PC as well.
+Figure 8c represents the connection matrices for 30% LiOTf
+in a PC solvent. The system has four components, namely, S8,
+OTf−, PC, and Li+. Three types of interactions occur in the
+system, namely, close-range strong interaction, long-range
+strong interaction, and long-range weak interaction. The close-
+range strong interaction is illustrated in red, the long-range
+strong interaction is indicated in yellow, and the long-range
+weak interaction is highlighted in light yellow. Close-range
+interactions take place between Li+ ions and all oxygen atoms
+(O1, O2, and O3) in OTf−, as well as between Li+ ions and all
+oxygen atoms in PC. Two types of interactions take place in
+this close-range interaction. There is an ion−ion interaction
+between the Li+ ion and OTf−and also an ion−dipole
+interaction between the Li+ ion and PC. Another notable
+phenomenon is when the concentration of LiOTf reaches 30%,
+all oxygen atoms in the PC molecule possess a partial negative
+charge, behave as a dipole, and interact with Li+ ion through
+ion−dipole interaction. Conversely, the long-range strong
+interaction takes place between all sulfur atoms in S8 and two
+oxygen atoms (O2 and O3) in the PC molecule. Finally, the
+long-range weak interaction exists between all oxygen atoms
+(OTf−) and all sulfur atoms (S8). In line with the two previous
+concentrations of LiOTf, the sulfur atoms in S8 have van der
+Waals interaction with oxygen atoms in PC and OTf−.
+Figure 9. Connection matrices of the DIOX solvent system at various LiOTf percentages: (a) 5% LiOTf, (b) 20% LiOTf, (c) 30% LiOTf, and (d)
+40% LiOTf.
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.6c03715
+J. Phys. Chem. B 2026, 130, 9605−9623
+9615
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​130/​37/​9605/​68394083/​acs.​jpcb.​6c03715.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 12>>
+Figure 8d illustrates a pattern comparable to that of 30%
+LiOTf, which is associated with the connection matrix for 40%
+LiOTf. A similar pattern to the three previous concentrations,
+which exhibits only two distinct types of interactions, namely,
+close-range strong interactions and long-range strong inter-
+actions. The strong close-range interaction, represented by red,
+takes place between the Li+ ion and all oxygen atoms in OTf−,
+as well as between the Li+ ion and two oxygen atoms (O2 and
+O3) in PC. Consistent with the connection matrices analysis
+for the three previous concentrations of LiOTf, which are
+identified as ion−ion interaction and ion−dipole interactions.
+The long-range strong interaction, marked by yellow, occurs
+between all sulfur atoms in S8 and all oxygen atoms in OTf−, as
+well as between all sulfur atoms in S8 and one oxygen atom in
+PC. The observed interaction pattern with the expected
+interaction occurs between S8 and oxygen atoms in PC and
+OTf−is a van der Waals interaction.
+The connection matrices for the DIOX solvent at various
+concentrations of LiOTf are presented in Figure 9. Figure 9a
+presents the connection matrices in the presence of 5% LiOTf.
+The system comprises four components, namely, S8, OTf−,
+DIOX, and Li+. The same behavior is observed with the
+previous solvent (PC), which shows the white color and cross-
+mark indicating the absence of interaction between S8
+molecules, between Li+ ions, and between sulfur atoms in S8
+and Li+ ions. Following the same trend, there are also two main
+types of interactions present in this system, namely, close-range
+and long-range interactions. The two close-range strong
+interactions, shown in red, belong to the interaction between
+all oxygen atoms in OTf−and Li+ ions, as well as between all
+oxygen atoms in DIOX and Li+ ions, which is associated with
+ion−ion and ion−dipole interactions, respectively. On the
+other hand, a long-range strong interaction exists between all
+sulfur atoms in S8 molecules and all oxygen atoms in the DIOX
+molecule. This interaction is colored yellow. Additionally,
+there is a weak long-distance interaction between all sulfur
+atoms of S8 and all oxygen atoms in OTf−. This weak long-
+distance interaction is presented in light yellow. This long-
+range interaction happens in terms of van der Waals
+interaction. The intensity of the color indicates the magnitude
+of the interaction that takes place. Finally, it can be said that
+dipole-induced dipole interaction between DIOX and S8 is
+stronger than ion-induced dipole interaction between OTf−
+and S8. In agreement with the result obtained for the previous
+concentration, the same pattern of connection matrices is
+illustrated in Figure 9b, which belongs to a 20% LiOTf system.
+There are three main interactions shown, namely, a strong
+interaction at a close distance, a strong interaction at a long
+distance, and a weak interaction at a long distance. These three
+interactions appear as red, yellow, and light yellow,
+respectively. The Li+ ion has a strong interaction at close
+range with all oxygen atoms from OTf−and DIOX. Ion−ion
+interaction takes place between Li+ and OTf−, and ion−dipole
+interaction occurs between Li+ and DIOX. Conversely, the
+long-range strong interaction occurs between all sulfur atoms
+in S8 and all oxygen atoms in DIOX, as an induced dipole−
+dipole interaction. The weak interaction at long distances takes
+place between all sulfur atoms (S8) and all oxygen atoms
+(OTf−), as an induced dipole−ion interaction.
+The various types of interaction depicted in the connection
+matrices for 30% LiOTf can be seen in Figure 9c. Figure 9c
+exhibits a pattern similar to that of Figure 9a,b. This system
+comprises four distinct species, namely, S8, OTf−, DIOX, and
+Li+. Three colors have been identified, namely, red, yellow, and
+Figure 10. Connection matrices of the EC/DMC solvent system at various LiOTf percentages: (a) 5% LiOTf, (b) 20% LiOTf, (c) 30% LiOTf, and
+(d) 40% LiOTf.
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.6c03715
+J. Phys. Chem. B 2026, 130, 9605−9623
+9616
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​130/​37/​9605/​68394083/​acs.​jpcb.​6c03715.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 13>>
+light yellow. The categorization of interaction types according
+to color sequence includes short-range strong interaction, long-
+range strong interaction, and long-range weak interaction. The
+short-range strong interaction occurs between Li+ ions and all
+oxygen atoms in OTf−, as well as between Li+ and all oxygen
+atoms in DIOX. The long-range strong interaction is present
+among all sulfur atoms in S8 and all oxygen atoms in DIOX.
+The long-range weak interaction occurs between all sulfur
+atoms in S8 and all oxygen atoms in OTf−. Conversely, a clear
+pattern can be observed in Figure 9d, which illustrates the
+connection matrices for the 40% LiOTf system. There are two
+distinct types of interactions, namely, short-range strong
+interactions and long-range strong interactions. The short-
+range strong interaction takes place between Li+ ions and all
+oxygen atoms from OTf−and DIOX, as shown in red. The
+long-range strong interaction occurs between all sulfur atoms
+in S8 and all oxygen atoms from OTf−and DIOX, as shown in
+yellow. For this long-range strong interaction, the interaction
+of all sulfur atoms (S8) with the oxygen atoms in DIOX
+exhibits a higher color intensity than its interaction with the
+oxygen atoms in OTf−. This distinct intensity indicates the
+magnitude of interaction between sulfur in S8 with the oxygen
+atoms in DIOX is higher than with those in OTf−. Finally, the
+interaction is formed between Li+ ions and oxygen atoms in
+DIOX, as well as between Li+ and OTf−, specifically involving
+ion−dipole and ion−ion interactions. On the other hand, the
+interactions occur between S8 and oxygen atoms in DIOX and
+OTf−, specifically involving induced ion−dipole and induced
+ion−ion interaction.
+The connection matrices for the EC/DMC solvent at
+various concentrations of LiOTf are presented in Figure 10.
+Figure 10a illustrates the connection matrix for 5% LiOTf in
+the EC/DMC solution. The electrolyte system consists of five
+species, namely, S8, OTf−, EC, DMC, and Li+. The white color
+and cross-mark indicate the absence of interaction. The absent
+interactions are those between Li+ ions, between S8 molecules,
+and between Li+ ions and S8. There are three close-range
+strong interactions, shown in red, that correspond to the
+interaction between the Li+ ion and all oxygen atoms in OTf−.
+The other two interactions correspond to those between the
+Li+ ion and the oxygen atom (O1 and O2) in DMC and EC.
+There is another strong interaction, but not as strong as the
+long-range one, which is marked in dark orange. This
+interaction takes place between the Li+ ion and the oxygen
+atom (O3) in the EC/DMC solvent. Additionally, there is a
+long-distance strong interaction between all sulfur atoms of S8
+and all oxygen atoms in OTf−. The long-distance strong
+interaction occurs between the oxygen atoms (O3) in EC/
+DMC. In line with Figure 10a, a similar pattern of connection
+matrices is illustrated in Figure 10b, which belongs to a 20%
+LiOTf system. There are three main interactions shown,
+namely, a strong interaction at a close distance, a strong
+interaction at a long distance, and a weak interaction at a long
+distance. These three interactions appear as red, yellow, and
+light yellow, respectively. The Li+ ion has a strong interaction
+at close range with all oxygen atoms from OTf−, EC, and
+DMC. Conversely, the long-range strong interaction occurs
+between all sulfur atoms in S8 and one oxygen atom (O3) in
+the EC/DMC molecule. The weak interaction at long
+distances takes place between all oxygen atoms (OTf−) and
+sulfur atoms (S8). The strong short-range interactions originate
+from the close distance between neighboring molecules,
+allowing electrostatic ion−ion interaction between Li+ and
+salt (OTf−) molecule, as well as ion−dipole interactions
+between Li+ ion and polar solvent (EC/DMC) molecules. The
+ion−dipole interaction in 5 and 20% salt only takes place in
+one oxygen atom (O3) in EC and DMC as well. Conversely,
+the long-distance interactions are mainly involved in the ion-
+induced dipole (OTf−−S8) and dipole-induced dipole (EC/
+DMC−S8) interaction. S8 acts as an induced dipole, oxygen
+atoms in OTf−as an ion, and O3 in EC/DMC as a dipole.
+Various types of interaction depicted in the connection
+matrices for 30% LiOTf can be seen in Figure 10c. This system
+also comprises five distinct species: S8, OTf−, EC, DMC, and
+Li+. Two colors have been identified, namely, red and yellow.
+The categorization of interaction types according to the color
+includes short-range strong interaction and long-range strong
+interaction. The short-range strong interaction occurs between
+Li+ ions and all oxygen atoms in OTf−and DMC. The other
+short-distance strong interaction occurs between Li+ ions and
+one oxygen atom (O3) in EC. On the other hand, the long-
+range strong interaction occurs between the Li+ ion and two
+oxygen atoms (O1 and O2) in the EC solvent. In accordance
+with this, the long-range strong interaction is present among all
+sulfur atoms in S8 and all oxygen atoms in OTf−. The other
+long-distance strong interaction also occurs between all sulfur
+atoms in S8 and each oxygen atom (O3) in the EC and DMC
+molecule. In line with the connection matrices for 30% LiOTf,
+the same pattern can be observed in Figure 10d, which
+illustrates the connection matrices for the 40% LiOTf system.
+There are two distinct types of interactions, namely, short-
+range strong interactions and long-range strong interactions.
+The short-range strong interaction, indicated by red, takes
+place between Li+ ions and all oxygen atoms of OTf−and
+DMC, as well as between Li+ ions and one oxygen atom (O3)
+of EC. The long-range strong interaction, indicated by yellow,
+occurs between S8 and each oxygen atom (O3) of EC/DMC.
+The other long-range strong interaction is between all sulfur
+atoms (S8) and all oxygen atoms (OTf−). In general, systems
+containing 30 and 40% salt in EC/DMC solvent exhibit a
+comparable pattern in the connection matrix. Li+ ions have
+ion−ion interaction with OTf−, ion−dipole interaction with all
+oxygen atoms in DMC, and ion−dipole interaction with one
+oxygen atom in EC. Conversely, the Li+ ion has one ion-
+induced dipole interaction with two oxygen atoms in EC. As
+the concentration of ions increases, two oxygen atoms in EC
+become polarized by the surrounding ions in salt. It can be
+concluded that increasing the concentration of salt can alter
+the type of interaction between Li+ ion and the solvent (EC).
+Role of Weak Interactions and Molecular Orbitals in
+Suppressing Sulfur Diffusion
+The extracted NCI clusters differ in molecular composition
+and size because each contains the actual local neighbors of S8
+in its selected configuration. Consequently, integrated RDG
+peak areas or apparent isosurface volumes cannot be compared
+quantitatively across panels: a larger cluster offers more atom
+pairs and therefore more possible weak-contact density. We
+use the plots only to classify the interaction types present
+locally (dispersion-like, attractive, or sterically repulsive) and to
+locate them in real space. Statements below about a
+“dominant” feature refer to the qualitative character within
+an individual cluster, not to a normalized interaction strength
+or a concentration-dependent free energy. Quantitative cross-
+system ranking instead relies on ensemble structural and
+dynamical measures.
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.6c03715
+J. Phys. Chem. B 2026, 130, 9605−9623
+9617
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​130/​37/​9605/​68394083/​acs.​jpcb.​6c03715.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 14>>
+Figure 11. NCI isosurfaces and RDG plots for the PC solvent at various LiOTf concentrations: (a) 5% LiOTf, (b) 20% LiOTf, (c) 30% LiOTf, and
+(d) 40% LiOTf.
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.6c03715
+J. Phys. Chem. B 2026, 130, 9605−9623
+9618
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​130/​37/​9605/​68394083/​acs.​jpcb.​6c03715.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 15>>
+Figure 12. NCI isosurfaces and RDG plots for the DIOX solvent at various LiOTf concentrations: (a) 5% LiOTf, (b) 20% LiOTf, (c) 30% LiOTf,
+and (d) 40% LiOTf.
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.6c03715
+J. Phys. Chem. B 2026, 130, 9605−9623
+9619
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​130/​37/​9605/​68394083/​acs.​jpcb.​6c03715.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 16>>
+Figure 13. NCI isosurfaces and RDG plots for the EC/DMC solvent at various LiOTf concentrations: (a) 5% LiOTf, (b) 20% LiOTf, (c) 30%
+LiOTf, and (d) 40% LiOTf.
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.6c03715
+J. Phys. Chem. B 2026, 130, 9605−9623
+9620
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​130/​37/​9605/​68394083/​acs.​jpcb.​6c03715.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 17>>
+The role of weak noncovalent interactions in the system was
+investigated using noncovalent interaction (NCI) analysis
+based on the reduced density gradient (RDG) combined with
+the sign (λ2)ρ descriptor. This approach allows the
+identification and visualization of weak interactions arising
+from electron-density distributions between interacting
+components in the fragment system. The NCI isosurface and
+RDG plot for all adopted solvent systems are illustrated in
+Figures 11−13. The NCI isosurface and RDG plot for the PC
+solution at various salt concentrations are shown in Figure 11.
+The green surface extends across the interacting components
+depicted in Figure 11. At the lowest concentration of LiOTf
+(5%), as illustrated in Figure 11a, the fragments comprise one
+S8 molecule and four PC molecules. The green surface exists
+between the S8 molecule and PC molecules in the NCI
+isosurface. This green color is confirmed in the RDG plot,
+where a dominant green band indicates that van der Waals
+dispersion interactions dominate the interactions between S8
+and PC. Attractive interactions are present, but they are
+secondary and moderate, as seen from the blue color that
+appears after the green color gradation. The attractive
+interaction occurs in the S8 molecule. The slight red color
+that appears in the RDG plot indicates delocalization of the PC
+ring, which is confirmed by the red surface in the center of the
+PC ring. The NCI isosurface and RDG plot of 20% LiOTf are
+represented in Figure 11b. The fragments of the system consist
+of one S8 molecule, two PC molecules, and one Li+ ion. The
+surface between molecules appears green, with red appearing
+only in the middle of the PC ring structure. In addition, there
+is a blue-green color between the oxygen atom in PC and the
+Li+ ion. The RDG plot confirms the dominance of nonbonding
+interactions between molecules. It shows that van der Waals
+dispersion still dominates, followed by attractive interactions.
+The attractive interaction is obtained between the oxygen atom
+in PC and the Li+ ion, as well as from the sulfur atom in the S8
+molecule. There is a slight repulsive effect, but it is minimal. As
+the concentration increased to 30% LiOTf, the analyzed
+system fragment consisted of one S8 molecule and three PC
+molecules. The NCI isosurface showed a green surface
+distribution. When confirmed by the RDG plot, it can be
+seen that there is no dispersion in the attractive region (blue)
+or in the repulsive region (red). Conversely, the opposite
+occurs for the fragment system at the highest concentration of
+40% (Figure 11d), where the RDG plot shows that the main
+dominant interaction is van der Waals dispersion, and there are
+indications of repulsive forces from the red peak in the positive
+sign (λ2)ρ region. This may be due to the presence of two Li+
+ions in the fragment system. For the 40% LiOTf concentration
+fragment system, there is one S8 molecule, six PC molecules,
+and two Li+ ions. Overall, the molecules surrounding S8
+primarily contribute to van der Waals dispersion effects.
+Repulsive and attractive interactions occur only intramolecu-
+larly. For example, repulsive interactions occur within the PC
+ring, while attractive interactions occur between the sulfur
+atoms within the S8 molecular ring.
+The NCI isosurface and RDG plot for the DIOX solution at
+various salt concentrations are shown in Figure 12. Similar to
+the previous fragment system, the overall isosurface around the
+S8 molecule shows green for all four LiOTf concentrations.
+What distinguishes it is the RDG plot for the DIOX solvent
+system. The fragment system for 5% LiOTf consists of nine
+components, namely, one S8 and eight DIOX molecules
+(Figure 12a). The first dominant interaction is still van der
+Waals dispersion, while the second dominant interaction is
+attraction due to the intramolecular interaction between sulfur
+atoms in the S8 molecule. In addition, there is also a slight
+contribution from repulsive interactions. When the concen-
+tration is increased to 20%, the analyzed fragment system
+consists of four components, namely, one S8 and three DIOX
+molecules, giving a significantly different RDG plot. The
+dominant interaction is van der Waals dispersion. The second
+dominant interaction is attraction (Figure 12b). For a
+concentration of 30% LiOTf, the fragment system consists of
+four components, namely, one S8 molecule, one OTf−ion, and
+two DIOX molecules. The RDG plot in Figure 12c provides
+information about van der Waals dispersion dominating the
+interactions in this fragment, but not very strongly. In addition,
+there is no contribution from attractive or repulsive
+interactions. In contrast, a distinct pattern is shown at a
+concentration of 40% LiOTf, where the RDG plot in Figure
+12d shows that van der Waals dispersion contributes mainly to
+the interactions in this fragment system. There is also an
+attractive contribution visible from the RDG plot. This
+fragment system consists of one S8, one OTf−, and two
+DIOX molecules.
+The NCI isosurface and RDG plot for the EC/DMC solvent
+at various concentrations are shown in Figure 13. Overall, the
+isosurface around the S8 molecule shows green for all four
+LiOTf concentrations, with the difference appearing in the
+RDG plot. The fragment system for 5% LiOTf consists of five
+components, namely, one S8, two EC, and two DMC. The first
+dominant interaction remains van der Waals dispersion, while
+the second is repulsion due to the presence of straight chains
+from DMC. When the concentration is increased to 20%, the
+analyzed fragment system consists of one S8, two EC, one
+DMC, two Li+, and one OTf−, giving an RDG plot that is
+significantly different. The dominant interactions are van der
+Waals dispersion and attractive interactions. These attractive
+interactions are attributed to the presence of OTf−and Li+
+ions. In addition, a repulsive interaction also follows. These
+repulsive interactions are caused by steric hindrance from the
+straight chains of DMC. For a concentration of 30% LiOTf,
+the fragment system consists of one S8, six EC, five DMC,
+three Li+, and three OTf−. The RDG plot in Figure 13c
+provides information about van der Waals dispersion
+dominating the interactions in this fragment system. However,
+an attractive interaction also occurs, and some repulsive
+interaction also appears in the RDG plot. A slightly different
+result is shown at a concentration of 40% LiOTf, where the
+RDG plot in Figure 13d shows a lower intensity of van der
+Waals dispersion and dominant attractive interactions. This
+fragment system consists of one S8, one EC, and three DMC.
+■CONCLUSIONS
+The coordination statistics provide a quantitative microscopic
+link to the transport trend. Across all three solvents, raising
+LiOTf from 5 to 40 wt % increases the mean triflate-O
+coordination of Li by approximately 1.0−1.6, while reducing
+solvent-O coordination by approximately 1.6−1.8. This ligand
+substitution indicates increasing contact-ion-pair participation
+and a more anion-rich first shell. Its common direction
+matches the general decrease in Li, triflate, and solvent
+mobility because ion translation then requires collective
+rearrangement of a denser, more strongly coupled ionic
+environment. The relationship is mechanistic rather than a
+one-variable scaling law: nonmonotonic S8 diffusion and
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.6c03715
+J. Phys. Chem. B 2026, 130, 9605−9623
+9621
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​130/​37/​9605/​68394083/​acs.​jpcb.​6c03715.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 18>>
+solvent-specific deviations show that density, packing, and
+transient S8−solvent contacts also contribute. The intermittent
+S8−solvent survival probabilities of 0.50−0.75 at 2 ps quantify
+rapid shell exchange on the molecular scale and exclude
+permanent complexation. The structural and dynamic proper-
+ties of an ionic liquid-based electrolyte system consisting of
+LiOTf, organic solvent, and S8 at various salt concentrations
+were investigated using molecular dynamics simulations at the
+DFTB level. The results highlight changes in the solvation
+structure within the PC solvent by showing that an increase in
+LiOTf concentration leads to a decrease in the diffusivity of Li+
+ions. The electrolyte system maintains structural stability at all
+concentrations tested despite this reduction in interaction
+strength. Li+ ions mainly interact with triflate (OTf−) anions
+and solvents, while there is an absence of interactions with S8
+molecules according to the connectivity matrix analysis.
+Furthermore, van der Waals dispersion is dominant for the
+interaction between the S8 molecule and other components in
+fragments of the electrolyte system. The repulsion and
+attraction can vary depending on the quantity of solvent and
+the surrounding salt. The LiOTf, organic solvent, and S8
+electrolyte system exhibit notable chemical stability with salt
+concentration. Significant chemical stability is demonstrated by
+the LiOTf, organic solvent, and S8 electrolyte system, and the
+salt concentration plays a critical role in determining ionic
+mobility, local coordination, and the overall structure of the
+system.
+The Mulliken-derived electrostatic-potential maps further
+show that negative-potential oxygen regions orient toward Li+,
+and that triflate participation in representative first solvation
+shells generally increases at high salt loading. Direct displace-
+ment cross-correlations demonstrate that contacting S8−
+solvent pairs move more coherently than noncontact pairs.
+Their finite but incomplete 2 ps contact survival identifies this
+behavior as transient local cooperative motion rather than
+permanent complex formation. Together, the electronic and
+dynamical analyses connect preferential Li−O coordination,
+salt-dependent shell composition, and dispersion-mediated
+S8−solvent association to the observed transport trends.
+■ASSOCIATED CONTENT
+*
+sı Supporting Information
+The Supporting Information is available free of charge at
+https://pubs.acs.org/doi/10.1021/acs.jpcb.6c03715.
+DFTB and DFT-optimized geometry comparisons,
+complete mean-square-displacement curves, and com-
+plete S8−solvent displacement-correlation data for all
+analyzed species, solvents, and LiOTf concentrations
+(PDF)
+■AUTHOR INFORMATION
+Corresponding Author
+Aditya Wibawa Sakti −Department of Chemistry and
+Biochemistry, School of Advanced Science and Engineering,
+Waseda University, Tokyo 169-8555, Japan;
+orcid.org/
+0000-0003-1515-4400; Email: aditya@aoni.waseda.jp
+Authors
+Mirella Fonda Maahury −Department of Chemistry and
+Biochemistry, School of Advanced Science and Engineering,
+Waseda University, Tokyo 169-8555, Japan; Department of
+Chemistry, Faculty of Science and Technology, Pattimura
+University, Ambon, Maluku 97233, Indonesia;
+orcid.org/
+0000-0002-5119-4648
+Abel Natawardaja −Department of Chemistry and
+Biochemistry, School of Advanced Science and Engineering,
+Waseda University, Tokyo 169-8555, Japan
+Cedric Naravisnu Purwanto −Department of Chemistry and
+Biochemistry, School of Advanced Science and Engineering,
+Waseda University, Tokyo 169-8555, Japan
+Hiromi Nakai −Department of Chemistry and Biochemistry,
+School of Advanced Science and Engineering, Waseda
+University, Tokyo 169-8555, Japan;
+orcid.org/0000-
+0001-5646-2931
+Complete contact information is available at:
+https://pubs.acs.org/10.1021/acs.jpcb.6c03715
+Notes
+The authors declare no competing financial interest.
+■ACKNOWLEDGMENTS
+The computations were performed using the Research Center
+for Computational Science, Okazaki, Japan (Projects 25-IMS-
+C155 and 26-IMS-C144). M.F.M. acknowledges the Indonesia
+Endowment Fund for Education/Lembaga Pengelola Dana
+Pendidikan (LPDP) for research funding. This article reports
+part of the outcomes of research performed under a Waseda
+University Grant for Special Research Projects (Project
+Number 2026C-514).
+■REFERENCES
+(1) Zhao, S.; Guo, Z.; Yan, K.; Wan, S.; He, F.; Sun, B.; Wang, G.
+Towards high-energy-density lithium-ion batteries: Strategies for
+developing high-capacity lithium-rich cathode materials. Energy
+Storage Mater. 2021, 34, 716−734.
+(2) Nitta, N.; Wu, F.; Lee, J. T.; Yushin, G. Li-ion battery materials.
+Mater. Today 2015, 18, 252−264.
+(3) Ma, J.; Li, Y.; Grundish, N. S.; Goodenough, J. B.; Chen, Y.;
+Guo, L.; Peng, Z.; Qi, X.; Yang, F.; Qie, L.; Wang, C.-A.; Huang, B.;
+Huang, Z.; Chen, L.; Su, D.; Wang, G.; Peng, X.; Chen, Z.; Yang, J.;
+He, S.; Zhang, X.; Yu, H.; Fu, C.; Jiang, M.; Deng, W.; Sun, C.-F.;
+Pan, Q.; Tang, Y.; Li, X.; Ji, X.; Wan, F.; Niu, Z.; Lian, F.; Wang, C.;
+Wallace, G. G.; Fan, M.; Meng, Q.; Xin, S.; Guo, Y.-G.; Wan, L.-J. The
+2021 battery technology roadmap. J. Phys. D: Appl. Phys. 2021, 54,
+No. 183001.
+(4) Deng, H.; Aifantis, K. E. Rechargeable Ion Batteries; John Wiley &
+Sons, Ltd, 2023; pp 83−103.
+(5) Manthiram, A.; Fu, Y.; Chung, S.-H.; Zu, C.; Su, Y.-S.
+Rechargeable Lithium−Sulfur Batteries. Chem. Rev. 2014, 114,
+11751−11787.
+(6) Choi, N.-S.; Chen, Z.; Freunberger, S. A.; Ji, X.; Sun, Y.-K.;
+Amine, K.; Yushin, G.; Nazar, L. F.; Cho, J.; Bruce, P. G. Challenges
+Facing Lithium Batteries and Electrical Double-Layer Capacitors.
+Angew. Chem., Int. Ed. 2012, 51, 9994−10024.
+(7) Li, W.; Yao, H.; Yan, K.; Zheng, G.; Liang, Z.; Chiang, Y.-M.;
+Cui, Y. The synergetic effect of lithium polysulfide and lithium nitrate
+to prevent lithium dendrite growth. Nat. Commun. 2015, 6, No. 7436.
+(8) Deng, C.; Wang, Z.; Wang, S.; Yu, J. Inhibition of polysulfide
+diffusion in lithium-sulfur batteries: mechanism and improvement
+strategies. J. Mater. Chem. A 2019, 7, 12381−12413.
+(9) Zhao, C.; Xu, G.-L.; Zhao, T.; Amine, K. Beyond the Polysulfide
+Shuttle and Lithium Dendrite Formation: Addressing the Sluggish
+Sulfur Redox Kinetics for Practical High-Energy Li-S Batteries. Angew.
+Chem., Int. Ed. 2020, 59, 17634−17640.
+(10) Drvarič Talian, S.; Jeschke, S.; Vizintin, A.; Pirnat, K.; Arčon, I.;
+Aquilanti, G.; Johansson, P.; Dominko, R. Fluorinated Ether Based
+Electrolyte for High-Energy Lithium−Sulfur Batteries: Li+ Solvation
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.6c03715
+J. Phys. Chem. B 2026, 130, 9605−9623
+9622
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​130/​37/​9605/​68394083/​acs.​jpcb.​6c03715.​pdf by TSINGHUA UNIV user on 24 September 2026
+
+<<PAGE 19>>
+Role Behind Reduced Polysulfide Solubility. Chem. Mater. 2017, 29,
+10037−10044.
+(11) Hu, T.; Wang, Y.; Huo, F.; He, H.; Zhang, S. Understanding
+Structural and Transport Properties of Dissolved Li2S8 in Ionic
+Liquid Electrolytes through Molecular Dynamics Simulations.
+ChemPhysChem 2021, 22, 419−429.
+(12) Zheng, J.; Ji, G.; Fan, X.; Chen, J.; Li, Q.; Wang, H.; Yang, Y.;
+DeMella, K. C.; Raghavan, S. R.; Wang, C. High-Fluorinated
+Electrolytes for Li−S Batteries. Adv. Energy Mater. 2019, 9,
+No. 1803774.
+(13) Hourahine, B.; Aradi, B.; Blum, V.; Bonafé, F.; Buccheri, A.;
+Camacho, C.; Cevallos, C.; Deshaye, M. Y.; Dumitrică, T.;
+Dominguez, A.; Ehlert, S.; Elstner, M.; van der Heide, T.;
+Hermann, J.; Irle, S.; Kranz, J. J.; Köhler, C.; Kowalczyk, T.; Kubař,
+T.; Lee, I. S.; Lutsker, V.; Maurer, R. J.; Min, S. K.; Mitchell, I.; Negre,
+C.; Niehaus, T. A.; Niklasson, A. M. N.; Page, A. J.; Pecchia, A.;
+Penazzi, G.; Persson, M. P.; Řezáč, J.; Sánchez, C. G.; Sternberg, M.;
+Stöhr, M.; Stuckenberg, F.; Tkatchenko, A.; Yu, V. W.-z.; Frauenheim,
+T. DFTB+, a Software Package for Efficient Approximate Density
+Functional Theory Based Atomistic Simulations. J. Chem. Phys. 2020,
+152, No. 124101.
+(14) Lee, K. H.; Schnupf, U.; Sumpter, B. G.; Irle, S. Performance of
+Density-Functional Tight-Binding in Comparison to Ab Initio and
+First-Principles Methods for Isomer Geometries and Energies of
+Glucose Epimers in Vacuo and Solution. ACS Omega 2018, 3,
+16899−16915.
+(15) Cui, Q.; Elstner, M.; Kaxiras, E.; Frauenheim, T.; Karplus, M. A
+QM/MM Implementation of the Self-Consistent Charge Density
+Functional Tight Binding (SCC-DFTB) Method. J. Phys. Chem. B
+2001, 105, 569−585.
+(16) Porezag, D.; Frauenheim, T.; Köhler, T.; Seifert, G.; Kaschner,
+R. Construction of tight-binding-like potentials on the basis of
+density-functional theory: Application to carbon. Phys. Rev. B 1995,
+51, No. 12947.
+(17) Gaus, M.; Chou, C.-P.; Witek, H.; Elstner, M. Automatized
+Parametrization of SCC-DFTB Repulsive Potentials: Application to
+Hydrocarbons. J. Phys. Chem. A 2009, 113, 11866−11881.
+(18) Bodrog, Z.; Aradi, B.; Frauenheim, T. Automated Repulsive
+Parametrization for the DFTB Method. J. Chem. Theory Comput.
+2011, 7, 2654−2664.
+(19) Cui, M.; Reuter, K.; Margraf, J. T. Obtaining Robust Density
+Functional Tight-Binding Parameters for Solids across the Periodic
+Table. J. Chem. Theory Comput. 2024, 20, 5276−5290.
+(20) Nishizawa, H.; Nishimura, Y.; Kobayashi, M.; Irle, S.; Nakai, H.
+Three pillars for achieving quantum mechanical molecular dynamics
+simulations of huge systems: Divide-and-conquer, density-functional
+tight-binding, and massively parallel computation. J. Comput. Chem.
+2016, 37, 1983−1992.
+(21) Nishimura, Y.; Nakai, H. Dcdftbmd: Divide-and-Conquer
+Density Functional Tight-Binding Program for Huge-System
+Quantum Mechanical Molecular Dynamics Simulations. J. Comput.
+Chem. 2019, 40, 1538−1549.
+(22) Birgin, E. G.; Martínez, J. M. Large-scale active-set box-
+constrained optimization method with spectral projected gradients.
+Comput. Optim. Appl. 2002, 23, 101−125.
+(23) Elstner, M.; Porezag, D.; Jungnickel, G.; Elsner, J.; Haugk, M.;
+Frauenheim, T.; Suhai, S.; Seifert, G. Self-consistent-charge density-
+functional tight-binding method for simulations of complex materials
+properties. Phys. Rev. B 1998, 58, No. 7260.
+(24) Otake, K.-I.; Otsubo, K.; Komatsu, T.; Dekura, S.; Taylor, J. M.;
+Ikeda, R.; Sugimoto, K.; Fujiwara, A.; Chou, C.-P.; Sakti, A. W.;
+Nishimura, Y.; Nakai, H.; Kitagawa, H. Confined water-mediated high
+proton conduction in hydrophobic channel of a synthetic nanotube.
+Nat. Commun. 2020, 11, No. 843.
+(25) Sakti, A. W.; Nishimura, Y.; Chou, C.-P.; Nakai, H. Density-
+Functional Tight-Binding Molecular Dynamics Simulations of Excess
+Proton Diffusion in Ice Ih, Ice Ic, Ice III, and Melted Ice VI Phases. J.
+Phys. Chem. A 2018, 122, 33−40.
+(26) Sakti, A. W.; Nishimura, Y.; Nakai, H. Divide-and-Conquer-
+Type Density-Functional Tight-Binding Simulations of Hydroxide Ion
+Diffusion in Bulk Water. J. Phys. Chem. B 2017, 121, 1362−1371.
+(27) Nakai, H.; Sakti, A. W.; Nishimura, Y. Divide-and-Conquer-
+Type Density-Functional Tight-Binding Molecular Dynamics Simu-
+lations of Proton Diffusion in a Bulk Water System. J. Phys. Chem. B
+2016, 120, 217−221.
+(28) Sakti, A. W.; Nishimura, Y.; Nakai, H. Recent advances in
+quantum-mechanical molecular dynamics simulations of proton
+transfer mechanism in various water-based environments. WIREs
+Comput. Mol. Sci. 2020, 10, No. e1419.
+(29) Sakti, A. W.; Nishimura, Y.; Sato, H.; Nakai, H. Divide-and-
+Conquer Density-Functional Tight-Binding Molecular Dynamics
+Study on the Formation of Carbamate Ions during CO2 Chemical
+Absorption in Aqueous Amine Solution. Bull. Chem. Soc. Jpn. 2017,
+90, 1230−1235.
+(30) Sakti, A. W.; Nishimura, Y.; Nakai, H. Rigorous pKa Estimation
+of Amine Species Using Density-Functional Tight-Binding-Based
+Metadynamics Simulations. J. Chem. Theory Comput. 2017, 14 (1),
+351−356.
+(31) Sakti, A. W.; Chou, C.-P.; Nakai, H. Density-Functional Tight-
+Binding Study of Carbonaceous Species Diffusion on the (100)-
+gamma-Al2O3 Surface. ACS Omega 2020, 5, 6862−6871.
+(32) Sakti, A. W.; Chou, C.-P.; Nishimura, Y.; Nakai, H. Is Oxygen
+Diffusion Faster in Bulk CeO2 or on a (111)-CeO2 Surface? A
+Theoretical Study. Chem. Lett. 2021, 50, 568−571.
+(33) Sakti, A. W.; Wahyudi, S. T.; Ahmad, F.; Darmawan, N.;
+Hardhienata, H.; Alatas, H. Effects of Salt Concentration on the
+Water and Ion Self-Diffusion Coefficients of a Model Aqueous
+Sodium-Ion Battery Electrolyte. J. Phys. Chem. B 2022, 126, 2256−
+2264.
+(34) Maahury, M. F.; Sakti, A. W.; Nakai, H. Density-Functional
+Tight-Binding Molecular Dynamics Simulation of Graphene Oxide−
+Ionic Liquid Electrolyte Interface in Sodium-Ion Batteries. J. Phys.
+Chem. C 2026, 130, 4524−4537.
+(35) Brehm, M.; Thomas, M.; Gehrke, S.; Kirchner, B. TRAVISA
+free analyzer for trajectories from molecular simulation. J. Chem. Phys.
+2020, 152, No. 164105.
+The Journal of Physical Chemistry B
+pubs.acs.org/JPCB
+Article
+https://doi.org/10.1021/acs.jpcb.6c03715
+J. Phys. Chem. B 2026, 130, 9605−9623
+9623
+Downloaded from pubs.​acs.​org/​jpcbfk/​article-pdf/​130/​37/​9605/​68394083/​acs.​jpcb.​6c03715.​pdf by TSINGHUA UNIV user on 24 September 2026

@@ -1,0 +1,1365 @@
+
+<<PAGE 1>>
+Vol.:(0123456789)
+MRS Energy & Sustainability 
+doi:10.1557/s43581-026-00160-x
+MRS ENERGY & SUSTAINABILITY  //  VOLUME XX  //  www.mrs.org/energy-sustainability-journal         1
+© The Author(s), 2026
+Data‑driven benchmarking 
+of lithium–sulfur cells: Defining 
+practical energy density limits 
+through multivariate ternary 
+analysis
+ORIGINAL RESEARCH
+ Kaushal Nandagiri, Department of Mechanical Engineering, University 
+of California Riverside, Riverside, CA, USA
+ Ravi Ranjan Pandey, Materials Science and Engineering Program, 
+University of California Riverside, Riverside, CA, USA
+ Abhay Khanna, Department of Electrical and Computer Engineering, 
+University of California Riverside, Riverside, CA, USA
+ Mehmet Aktas, Arthur Lo, and Nathan Bui, Department of Mechanical 
+Engineering, University of California Riverside, Riverside, CA, USA
+ Cengiz S. Ozkan, Department of Mechanical Engineering, University 
+of California Riverside, Riverside, CA, USA; Materials Science 
+and Engineering Program, University of California Riverside, Riverside, CA, USA; 
+Department of Electrical and Computer Engineering, University of California 
+Riverside, Riverside, CA, USA
+ Mihrimah Ozkan, Materials Science and Engineering Program, University 
+of California Riverside, Riverside, CA, USA; Department of Electrical and Computer 
+Engineering, University of California Riverside, Riverside, CA, USA; Department 
+of Chemistry, University of California Riverside, Riverside, CA, USA
+  Address all correspondence to Cengiz S. Ozkan at cozkan@engr.ucr.edu 
+Mihrimah Ozkan at mihri.ozkan@ucr.edu
+ (Received: 11 March 2026; accepted: 8 April 2026)
+ABSTRACT
+We evaluated lithium–sulfur battery performance across realistic conditions and identified critical trade-offs between energy output and 
+durability. The results outline a pathway toward more scalable battery technologies.
+Lithium–sulfur (Li–S) batteries offer high theoretical energy density (1,672 mAh g⁻1) and low material cost, yet their practical deployment 
+remains limited by poor scalability under lean-electrolyte and high sulfur-loading conditions. Many reported electrolyte strategies achieve high 
+capacities in coin cells but rely on excess electrolyte and low areal loading, obscuring constraints critical for pouch-cell operation. Here, we 
+present a data-driven benchmarking framework to evaluate Li–S performance across coin and pouch configurations by jointly analyzing sulfur 
+loading, electrolyte-to-sulfur (E/S) ratio, and delivered capacity. Using literature data from 2022 to 2025, we construct ternary performance 
+landscapes and apply principal component analysis (PCA) to identify governing trade-offs. Two orthogonal axes emerge: a practicality-driven 
+axis linking high sulfur loading, low E/S ratio, and high areal capacity, and a stability-driven axis associated with capacity retention and fade 
+rate. Their weak coupling reveals a persistent gap between energy density optimization and durability. Importantly, this work establishes a 
+statistically grounded, data-centric framework that transforms fragmented literature into actionable design space. A feasible operating win-
+dow— ~ 7–10 mg cm⁻2 sulfur loading and ~ 1.7–2.8 µL mg⁻1 E/S—yields ~ 5.5–7.5 mAh cm⁻2 areal capacity with stable cycling, providing 
+quantitative benchmarks for scalable Li–S systems.
+Keywords  energy storage · Li · electrical properties · electrochemical synthesis · renewable
+Kaushal Nandagiri and Ravi Ranjan Pandey have contributed equally to this work.
+
+<<PAGE 2>>
+2        MRS ENERGY & SUSTAINABILITY  //  VOLUME  XX  //  www.mrs.org/energy-sustainability-journal
+Introduction
+Lithium–sulfur (Li–S) batteries have emerged as one of the 
+most promising next-generation energy storage systems due 
+to their exceptionally high theoretical specific capacity (1,672 
+mAh ­g−1) and the potential to surpass the energy density limits 
+of conventional lithium-ion technologies.1–3 The low cost and 
+earth abundance of sulfur further enhance the appeal of Li–S 
+chemistry for applications ranging from electric vehicles to 
+large-scale grid storage.4–6 In practical operation, however, 
+realizing theoretical performance remains challenging due 
+to intrinsic electrochemical phenomena. Key issues include 
+the polysulfide shuttle effect, which leads to active material 
+loss and rapid capacity fading, and the insulating nature of 
+sulfur and its discharge products, which hinders electronic 
+and ionic transport.7–9 Moreover, substantial volume changes 
+during cycling and the instability of the lithium metal anode 
+exacerbate degradation pathways that impede sustainable 
+performance.10,11
+A central bottleneck in advancing Li–S systems toward com-
+mercialization lies in the interplay between sulfur loading, elec-
+trolyte utilization, and achievable capacity. High sulfur loadings 
+are essential for maximizing energy density at the cell level, yet 
+increasing loading often results in lower active utilization due 
+to sluggish reaction kinetics and electrolyte starvation.12–14 The 
+electrolyte-to-sulfur (E/S) ratio quantitatively captures elec-
+trolyte consumption relative to active material mass and has 
+been recognized as a critical metric for assessing practical rele-
+vance.12,15 Conventional laboratory studies typically employ high 
+E/S ratios and low sulfur loadings to facilitate reaction kinetics 
+and polysulfide solubility; however, such conditions artificially 
+inflate cell performance metrics while masking limitations that 
+become pronounced under lean-electrolyte and high-loading 
+regimes.12,16 As a consequence, although individual materials 
+and electrolyte strategies have demonstrated remarkable gravi-
+metric capacities in coin cells, translating these gains into practi-
+cal pouch-cell formats with lean-electrolyte conditions remains 
+an outstanding challenge.17–19
+This discrepancy between laboratory performance and prac-
+tical scalability has been increasingly emphasized in recent 
+literature.20–22 Reviews have highlighted that electrolyte sol-
+vation structure, additive chemistry, and interfacial engineer-
+ing are critical for stabilizing lithium metal and suppressing 
+polysulfide shuttling under lean-electrolyte conditions. Strate-
+gies such as localized high-concentration electrolytes, ­LiNO3 sta-
+bilization, DOL/DME–LiTFSI systems, and engineered cathode 
+architectures have demonstrated promising results. However, 
+most reported advancements remain evaluated within narrowly 
+defined performance windows, often prioritizing either gravi-
+metric capacity or cycling stability without a holistic assessment 
+of multi-variable trade-offs governing real-world scalability.
+Recent literature (2022–2025) has increasingly focused on 
+rational electrolyte design and performance benchmarking, 
+examining how solvation structures, additives, and solvent sys-
+tems influence polysulfide behavior, interfacial stability, and 
+ultimately cell-level energy metrics.20–22 Reviews highlight the 
+importance of optimizing electrolyte composition to balance 
+polysulfide shuttle suppression and lithium metal stability while 
+reducing electrolyte excess without sacrificing capacity.23–30 
+Despite this progress, a holistic, data-driven assessment of the 
+trade-offs inherent in real-world operation has been lacking, par-
+ticularly in terms of the multi-dimensional relationships among 
+sulfur loading, E/S ratio, and gravimetric capacity across diverse 
+benchmarks.31 Establishing such a framework is essential for 
+identifying electrolyte strategies that genuinely advance Li–S 
+battery performance toward commercial feasibility.
+Importantly, despite significant progress in electrolyte chemis-
+try and electrode engineering, the field lacks a quantitative, data-
+driven framework capable of simultaneously interrogating sulfur 
+loading, E/S ratio, and delivered capacity across diverse cell for-
+mats and operating regimes.31 Existing benchmarking approaches 
+typically compare individual metrics in isolation, limiting the abil-
+ity to distinguish genuinely scalable strategies from electrolyte-rich 
+laboratory constructs. Recent efforts have underscored the impor-
+tance of lean-electrolyte design for practical Li–S batteries, yet a 
+comprehensive multivariate evaluation linking these parameters 
+across coin and pouch cells remains absent.
+To address this gap, we introduce a systematic, data-driven 
+benchmarking framework that integrates sulfur loading, E/S 
+ratio, and capacity into ternary performance landscapes, comple-
+mented by principal component analysis (PCA) to resolve domi-
+nant trade-offs governing Li–S scalability. By compiling literature 
+data spanning 2022–2025, we construct a multi-year performance 
+map encompassing both coin and pouch-cell demonstrations. 
+This approach enables identification of orthogonal practicality 
+and stability axes, reveals decoupling between energy–density 
+DISCUSSION
+•	
+This study introduces a data-driven benchmarking framework combining ternary analysis and PCA to evaluate lithium–sulfur battery per-
+formance across literature datasets, enabling multivariate assessment of scalability constraints.
+•	
+Results reveal two dominant and largely decoupled design axes—practicality and stability—clarifying how lean-electrolyte conditions, sulfur 
+loading, and degradation behavior collectively influence scalable lithium–sulfur battery architectures.
+•	
+Analysis identifies a feasible operating window for scalable lithium–sulfur cells, balancing sulfur loading, electrolyte economy, and areal 
+capacity to approach practical pouch-cell energy densities.
+•	
+The framework provides quantitative guidelines for electrolyte and electrode co-design, offering a transferable methodology for evaluating 
+scalable battery technologies and advancing sustainable, high-energy storage systems.
+
+<<PAGE 3>>
+MRS ENERGY & SUSTAINABILITY  //  VOLUME XX  //  www.mrs.org/energy-sustainability-journal         3
+optimization and cycling durability, and establishes a data-derived 
+feasible operating window for scalable Li–S architectures.
+By moving beyond isolated capacity metrics and instead inter-
+rogating coupled design constraints, this work provides a quan-
+titative basis for evaluating electrolyte and electrode strategies 
+under realistic conditions. The framework not only clarifies cur-
+rent bottlenecks in Li–S development but also establishes action-
+able guidelines for integrated electrode–electrolyte co-design. 
+Ultimately, this multivariate benchmarking methodology offers 
+a transferable blueprint for accelerating the translation of high-
+energy battery chemistries from laboratory feasibility to commer-
+cially viable systems.
+While lithium–sulfur batteries have been extensively studied, 
+the field remains challenged by the absence of a unified, quantita-
+tive framework that simultaneously captures the interplay between 
+sulfur loading, electrolyte-to-sulfur (E/S) ratio, and areal capac-
+ity. Most prior studies report performance improvements along 
+individual axes, often leading to fragmented or non-comparable 
+results.
+In this work, we address this gap through a systematic meta-
+analysis of literature reported between 2022 and 2025, integrat-
+ing key performance variables into a single analytical space. The 
+objective is not to propose a new chemistry or architecture, but to 
+establish a statistically informed design and benchmarking frame-
+work that defines realistic operating boundaries and identifies con-
+vergence trends toward practical conditions. Such a framework is 
+essential for bridging the gap between laboratory-scale demonstra-
+tions and deployable lithium–sulfur systems.
+Results and discussion
+Data processing
+To ensure consistency across the compiled dataset, electro-
+lyte-to-sulfur (E/S) ratios reported in both volumetric (µL mg⁻1) 
+and gravimetric (g g⁻1) units were standardized to a volumetric 
+basis. For studies reporting E/S in gravimetric units, conversion 
+was performed using :
+where ρelectrolyte represents the electrolyte density (g mL⁻1). 
+When explicitly reported, literature values were used; other-
+wise, a representative density of ~ 1.2 g mL⁻1 was assumed for 
+ether-based electrolytes (e.g., DOL/DME–LiTFSI systems). This 
+assumption introduces minimal variation relative to the broader 
+dataset trends and does not affect the overall conclusions of the 
+multivariate analysis.
+In this work, the ternary representation is used as a normal-
+ized visualization framework rather than a compositional dia-
+gram. The three variables—sulfur loading, E/S ratio, and areal 
+capacity—are independently normalized to enable comparative 
+mapping within a bounded simplex, without implying conserva-
+tion or compositional summation.
+Principal component analysis was performed in standardized 
+Cartesian space. The principal component directions shown in 
+the ternary plots represent visual projections of these trends 
+onto the normalized parameter space and are intended as quali-
+tative guides rather than strict regression fits within barycentric 
+coordinates.
+Scope and positioning of the study
+This study is designed as a quantitative meta-analysis rather 
+than an experimental investigation. The dataset is compiled 
+from peer-reviewed lithium–sulfur battery studies published 
+between 2022 and 2025, focusing on reports that provide suf-
+ficient detail on sulfur loading, electrolyte-to-sulfur ratio, and 
+areal capacity.
+The intent of this approach is to enable cross-study compara-
+bility and statistical interpretation of performance trends that 
+are not accessible through individual experimental reports. 
+While no new experimental data are generated, the methodology 
+allows identification of latent correlations, trade-off regimes, 
+and feasible operating boundaries that emerge only when data 
+are analyzed collectively.
+Such data-centric approaches are increasingly recognized as 
+essential tools for guiding experimental design in complex elec-
+trochemical systems, where multiple interdependent parameters 
+govern performance.
+It is important to emphasize that the objective of this analy-
+sis is not to introduce incremental material-level improvements, 
+but to provide a system-level understanding of performance 
+constraints in lithium–sulfur batteries. By aggregating and ana-
+lyzing literature data within a unified framework, the present 
+study reveals emergent structure in the performance landscape, 
+enabling identification of realistic operating regimes that are not 
+apparent from isolated studies. This perspective shifts the focus 
+from reporting peak performance metrics to understanding scal-
+able and practically achievable conditions.
+Performance landscape of 2022 lithium–sulfur electrolytes 
+in coin cells
+To extend the ternary benchmarking framework across 
+operating regimes and cell formats using 2022 literature data, 
+Fig. 1a and b map sulfur loading, electrolyte-to-sulfur (E/S) 
+ratio, and delivered areal capacity for coin cells under progres-
+sively more demanding conditions. In coin cells operated at low 
+rates (0.1–0.5 C, Fig. 1a), electrolyte formulations populate a 
+relatively confined region of the ternary space, with most sys-
+tems aligning along an intermediate PC1 trajectory that reflects 
+the dominant trade-off between moderate sulfur loading and 
+elevated E/S ratios employed to stabilize polysulfide chemistry 
+and maintain sufficient ionic transport. Although several studies 
+report attractive areal capacities in this regime, these results are 
+predominantly achieved under electrolyte-rich conditions, indi-
+cating that much of the 2022 coin-cell optimization at low rates 
+prioritizes electrochemical stability over realistic electrolyte 
+
+<<PAGE 4>>
+4        MRS ENERGY & SUSTAINABILITY  //  VOLUME  XX  //  www.mrs.org/energy-sustainability-journal
+constraints. When the rate is increased to 1–5 C in coin cells 
+(Fig. 1b), the data distribution becomes more dispersed, and 
+the PC1 direction flattens, revealing a stronger compromise 
+between kinetic performance and electrolyte economy. Under 
+these conditions, lean-electrolyte strategies are increasingly 
+penalized, and only a subset of formulations sustains balanced 
+performance without reverting to high E/S ratios. This shift 
+highlights the growing sensitivity of Li–S systems to transport 
+limitations as reaction kinetics accelerate. Taken together, the 
+progression from Fig. 1a and b demonstrates that performance 
+gains reported under benign coin-cell conditions in 2022 do 
+not directly translate to high-rate or pouch-cell operation, and 
+that meaningful advancement requires balanced improvements 
+across all three parameters rather than isolated increases in 
+capacity.
+This ternary plot framework maps reported lithium-sulfur 
+cell designs in terms of sulfur loading, electrolyte-to-sulfur 
+ratio (E/S) ratio, and areal capacity, normalized and projected 
+onto a two-dimensional ternary simplex, with each point cor-
+responding to a distinct literature-reported configuration. For 
+low-rate coin-cell operation (0.1–0.5 C, Fig. 1a), the first prin-
+cipal component (PC1), projected into the ternary plane and 
+expressed in Cartesian coordinates as y = 1.0700x −0.1464 , 
+captures the dominant compositional trend within a relatively 
+unconstrained design space. Here, x and y denote the Carte-
+sian coordinates of the ternary projection, with x primarily 
+weighted by the areal capacity fraction and y scaling directly 
+with sulfur loading. The moderate PC1 slope reflects a bal-
+anced coupling between sulfur loading and areal capacity, con-
+sistent with low-rate conditions where electrolyte limitation is 
+Figure 1.   Electrolyte performance landscape in lithium–sulfur batteries through ternary mapping of sulfur loading, electrolyte-to-sulfur (E/S) ratio, and 
+areal capacity (2022 literature). This figure represents a data-driven synthesis of literature-reported performance, intended to define system-level constraints 
+rather than depict a single experimental dataset. (a) Coin–cell configurations cycled under moderate rates (0.1–0.5 C), (b) coin–cell configurations at 
+higher rates (1–5 C). The corresponding data tables are provided in the Supplementary Information. In this work, “DOL/DME: LiTFSI” refers specifically to 
+conventional binary ether electrolytes composed of 1,3-dioxolane (DOL) and dimethoxyethane (DME) with LiTFSI salt. The broader “Ether” category includes 
+modified ether-based systems that extend beyond this baseline formulation, such as localized high-concentration electrolytes (LHCEs), fluorinated ethers, 
+multi-solvent ether mixtures, and ether electrolytes incorporating additional co-solvents, diluents, or functional additives.
+
+<<PAGE 5>>
+MRS ENERGY & SUSTAINABILITY  //  VOLUME XX  //  www.mrs.org/energy-sustainability-journal         5
+less restrictive and sulfur utilization remains comparatively 
+accessible. As the operating rate increases to 1–5 C in coin 
+cells (Fig. 1a and b), the dominant compositional variance 
+shifts, with PC1 described by y = 0.7054x −0.0253. The 
+reduced slope relative to low-rate operation indicates that 
+gains in areal capacity are accompanied by smaller increases 
+in sulfur loading, reflecting stronger transport and kinetic 
+constraints that increasingly limit sulfur utilization at higher 
+current densities. This trend underscores the growing diffi-
+culty of sustaining sulfur loading without sacrificing electro-
+lyte economy as rate capability becomes a primary constraint. 
+Together, the progression from Fig. 1a and b demonstrates 
+how the dominant performance gradient evolves from a 
+relatively flexible regime to one where sulfur loading, areal 
+capacity, and electrolyte limitation become strongly coupled, 
+highlighting the increasing challenge of achieving balanced 
+performance in practical, high-rate lithium-sulfur cells.
+Performance landscape of 2023 lithium–sulfur electrolytes 
+in coin cells (0.1–0.5 C)
+To systematically evaluate electrolyte progress in lithium–sul-
+fur (Li–S) batteries, we constructed a ternary performance land-
+scape using reported 2023 literature data for coin cells tested at 
+moderate rates (0.1–0.5 C), integrating sulfur loading, electro-
+lyte-to-sulfur (E/S) ratio, and delivered areal capacity (Fig. 2). 
+This multivariate representation enables simultaneous visuali-
+zation of electrolyte economy, sulfur utilization, and capacity 
+scaling within a unified framework.
+The majority of reported studies cluster within the central 
+region of the ternary map, corresponding to moderate-to-high 
+sulfur loading, moderate E/S ratios, and consequently moder-
+ate areal capacity. This concentration indicates that most 2023 
+investigations remained within conventional experimental 
+windows, prioritizing balanced electrochemical stability over 
+aggressive scaling conditions. Only a limited number of studies 
+extend toward extreme operating points.
+Notably, configurations achieving low E/S ratios combined 
+with elevated sulfur loading trend toward higher areal capacity 
+along the PC1 trajectory (y = 0.9217x − 0.0863), reflecting coor-
+dinated optimization between sulfur utilization and electrolyte 
+reduction. Conversely, architectures operating at high E/S ratios 
+with low sulfur loading are associated with reduced areal capac-
+ity, underscoring the limited scalability of electrolyte-rich test-
+ing conditions.
+The positive slope of PC1 highlights the intrinsic coupling 
+between sulfur loading and areal capacity under moderately 
+balanced electrolyte conditions. However, progression toward 
+higher areal capacity requires a carefully managed trade-off 
+between sulfur mass loading and electrolyte availability. Exces-
+sive electrolyte masks transport limitations, while aggressive 
+electrolyte reduction without structural optimization suppresses 
+sulfur utilization.
+Overall, the 2023 ternary map reveals that the most impactful 
+advances in Li–S coin-cell research are those that move beyond 
+conventional electrolyte-rich configurations and approach 
+leaner conditions while maintaining meaningful areal capacity. 
+These studies represent early indicators of progress toward real-
+istic Li–S cell configurations compatible with higher energy–den-
+sity standards and eventual pouch-cell translation.
+Performance landscape of 2024 lithium–sulfur electrolytes 
+in coin cells (0.2–0.5 C)
+To extend the ternary benchmarking framework to 
+2024 literature data, Fig. 3 presents the distribution of sulfur 
+loading, electrolyte-to-sulfur (E/S) ratio, and delivered areal 
+capacity for coin cells evaluated at moderate cycling rates 
+(0.2–0.5 C). In contrast to broader distributions observed in 
+earlier datasets, the 2024 configurations occupy a relatively 
+confined compositional corridor within the ternary simplex, 
+indicating increasing convergence toward structured optimiza-
+tion pathways.
+The majority of data points align along a diagonal trajec-
+tory corresponding to the first principal component (PC1; 
+y = 0.5767x + 0.0119), which captures the dominant scaling 
+direction within the 2024 dataset. This positive slope indicates 
+that increases in areal capacity are accompanied by proportional 
+increases in sulfur loading, reflecting coordinated scaling rather 
+than independent parameter variation. However, the moder-
+ate magnitude of the slope suggests that this coupling remains 
+controlled rather than aggressive, consistent with incremental 
+optimization strategies.
+Notably, the data does not extend toward excessively high 
+E/S ratios, nor does it cluster at extreme sulfur loadings. This 
+confinement indicates that contemporary moderate-rate designs 
+increasingly avoid electrolyte flooding as well as overly aggres-
+sive mass-loading approaches that compromise sulfur utiliza-
+tion. Instead, performance improvements appear to be achieved 
+through balanced adjustment of sulfur loading and capacity 
+while maintaining E/S ratios within a relatively constrained 
+window.
+The small intercept of PC1 further indicates that the data-
+set remains centered within the interior of the simplex rather 
+than gravitating toward any compositional extreme. Collec-
+tively, the 2024 ternary landscape reflects a maturation of 
+electrolyte design strategies, where improvements arise from 
+disciplined co-optimization of loading and capacity under 
+moderate-rate conditions, while electrolyte content remains 
+comparatively stabilized. This behavior suggests that by 2024, 
+coin-cell studies increasingly prioritize balanced scaling over 
+parameter extremization, marking a transition toward more 
+realistic operating regimes aligned with pouch-cell translation 
+objectives.
+Performance landscape of 2025 lithium–sulfur electrolytes 
+in coin cells (0.1–0.5 C)
+To benchmark electrolyte progress in lithium–sulfur (Li–S) 
+batteries, we constructed a ternary performance landscape 
+from reported 2025 literature data for coin cells evaluated at 
+
+<<PAGE 6>>
+6        MRS ENERGY & SUSTAINABILITY  //  VOLUME  XX  //  www.mrs.org/energy-sustainability-journal
+moderate cycling rates (0.1–0.5 C), integrating sulfur loading, 
+electrolyte-to-sulfur (E/S) ratio, and delivered areal capacity 
+(Fig. 4). This multivariate visualization is critical because 
+gravimetric metrics alone do not adequately represent prac-
+tical scalability; meaningful progress toward realistic energy 
+density requires simultaneous operation at elevated sulfur 
+loading, controlled electrolyte content, and proportionally 
+increased areal capacity.
+Within the 2025 coin-cell dataset, the majority of elec-
+trolyte formulations cluster near the interior of the ternary 
+simplex, corresponding to moderate sulfur loadings and 
+intermediate E/S ratios that collectively yield moderate areal 
+capacities. This distribution indicates that most studies remain 
+within conventional laboratory operating windows rather than 
+aggressively pursuing lean-electrolyte or high-mass-loading 
+conditions. The relatively compact clustering suggests incre-
+mental optimization rather than disruptive expansion of the 
+accessible design space.
+The dominant performance trajectory is captured by the first 
+principal component (PC1), expressed as:
+The positive slope of PC1 indicates coordinated scaling 
+between sulfur loading and areal capacity within the projected 
+ternary coordinates, while the E/S ratio remains comparatively 
+constrained. Physically, this moderate slope reflects a balanced 
+y = 0.447x + 0.10
+Figure 2.   Ternary performance 
+landscape of lithium–sulfur (Li–S) 
+coin cells constructed from 2023 
+literature data, integrating sulfur 
+loading, electrolyte-to-sulfur 
+(E/S) ratio, and delivered areal 
+capacity under moderate cycling 
+rates (0.1–0.5 C). Each data point 
+represents an individual reported 
+configuration and is color-coded 
+by electrolyte chemistry. The 
+dashed line corresponds to the 
+first principal component (PC1; 
+y = 0.9217x − 0.0863), capturing 
+the dominant scaling trajectory 
+and trade-off relationship among 
+the three performance-defining 
+parameters. Most studies cluster 
+within the central region of the 
+ternary space, corresponding to 
+mid-range sulfur loading, moder-
+ate E/S ratios, and moderate areal 
+capacity, indicating continued 
+reliance on conventional testing 
+windows rather than aggressive 
+lean-electrolyte or high-loading 
+conditions. The corresponding data 
+tables are provided in the Sup-
+plementary Information.
+
+<<PAGE 7>>
+MRS ENERGY & SUSTAINABILITY  //  VOLUME XX  //  www.mrs.org/energy-sustainability-journal         7
+but limited coupling between loading and delivered capacity: 
+increases in sulfur mass loading are accompanied by correspond-
+ing increases in areal output, yet without substantial migration 
+toward ultra-lean-electrolyte regimes. The small intercept fur-
+ther confirms that the dataset remains centered within the inte-
+rior region of the simplex rather than approaching any extreme 
+compositional vertex.
+Importantly, the orientation and clustering along PC1 
+suggest that 2025 coin-cell optimization remains primarily 
+chemistry-mediated rather than architecture-dominated. Elec-
+trolyte formulation—through solvent systems, salt chemistry, and 
+additive combinations—continues to govern incremental perfor-
+mance improvements, while aggressive structural scaling toward 
+high loading, low-E/S configurations remains limited.
+Overall, the 2025 performance landscape reveals a disciplined 
+but conservative optimization regime in coin cells. While areal 
+capacities improve in tandem with sulfur loading, most configu-
+rations operate within moderate electrolyte conditions that do not 
+Figure 3.   Ternary performance 
+landscape of lithium–sulfur (Li–S) 
+coin cells constructed from 2024 
+literature data, integrating sulfur 
+loading, electrolyte-to-sulfur 
+(E/S) ratio, and delivered areal 
+capacity under moderate cycling 
+rates (0.2–0.5 C). Each data 
+point represents an individual 
+reported configuration categorized 
+by electrolyte chemistry. The 
+dashed line corresponds to the 
+first principal component (PC1; 
+y = 0.5767x + 0.0119), capturing 
+the dominant scaling trajectory 
+within the 2024 dataset. The 
+confined distribution of data along 
+PC1 indicates coordinated scal-
+ing between sulfur loading and 
+areal capacity, while the E/S ratio 
+remains comparatively constrained 
+within a narrow operational 
+window. The corresponding data 
+tables are provided in the Sup-
+plementary Information.
+
+<<PAGE 8>>
+8        MRS ENERGY & SUSTAINABILITY  //  VOLUME  XX  //  www.mrs.org/energy-sustainability-journal
+yet fully emulate scalable, pouch-level constraints. The ternary- 
+PCA framework, therefore, highlights both progress and limita-
+tions: advancement is increasingly coordinated across variables, 
+yet substantial movement toward truly lean-electrolyte, high-
+loading operation remains an open challenge for practical Li–S 
+translation.
+Figure 4.   Ternary performance 
+landscape of lithium–sulfur (Li–S) 
+coin cells constructed from 2025 
+literature data, integrating sulfur 
+loading, electrolyte-to-sulfur (E/S) 
+ratio, and delivered areal capacity 
+under moderate cycling rates (0.1–
+0.5 C). Each data point represents 
+a reported Li–S configuration and 
+is color-coded by electrolyte for-
+mulation. The dashed line denotes 
+the first principal component (PC1; 
+y = 0.447x + 0.107), capturing the 
+dominant performance trajectory 
+within the 2025 dataset. The posi-
+tive slope of PC1 indicates coordi-
+nated scaling between sulfur load-
+ing and areal capacity while the 
+E/S ratio remains comparatively 
+constrained, reflecting incremen-
+tal movement toward balanced, 
+practical design conditions. The 
+clustering of data near the interior 
+of the ternary simplex suggests 
+that most 2025 studies operate 
+within moderate loading and 
+electrolyte windows rather than at 
+extreme lean-electrolyte or high-
+mass-loading regimes. The ternary 
+projection highlights the coupled 
+trade-offs among sulfur loading, 
+electrolyte economy, and delivered 
+areal capacity, emphasizing that 
+meaningful advancement requires 
+simultaneous optimization of all 
+three parameters rather than 
+isolated improvement of a single 
+metric. The corresponding data 
+tables are provided in the Sup-
+plementary Information.
+
+<<PAGE 9>>
+MRS ENERGY & SUSTAINABILITY  //  VOLUME XX  //  www.mrs.org/energy-sustainability-journal         9
+Principal component analysis of Li–S design–performance 
+trade‑offs
+To systematically interrogate the coupled effects of cell design 
+parameters and electrochemical performance metrics, we performed 
+a principal component analysis (PCA) on lithium–sulfur (Li–S) bat-
+tery data reported in the literature between 2022 and 2024 (Fig. 5). 
+The analysis incorporated six standardized variables: electrolyte-
+to-sulfur ratio (E/S), sulfur loading, areal capacity, coulombic effi-
+ciency (CE), capacity retention, and capacity fade rate. Only literature 
+reports that explicitly disclosed all six parameters were included to 
+ensure internal consistency of the multivariate analysis. The dataset 
+was therefore curated to include only studies with internally consist-
+ent and complete reporting of these parameters, ensuring compara-
+bility across data points and preserving the physical interpretability 
+of the multivariate analysis. Capacity retention and fade rate were 
+standardized to account for variations in reported cycle endpoints 
+across the literature. Capacity retention values were extracted at the 
+reported cycle number for each study, while capacity fade rate was 
+calculated as the normalized percentage capacity loss per cycle (or 
+per 100 cycles) based on the initial and final reported capacities over 
+the corresponding cycling interval. This approach preserves data-
+set breadth while enabling consistent comparison of stability trends 
+across studies with differing cycle life definitions. All variables were 
+subsequently standardized prior to PCA to ensure comparability. This 
+approach enables a compact representation of the dominant correla-
+tions within the dataset while preserving the physical interpretabil-
+ity of the underlying electrochemical constraints.32–36 Details of this 
+analysis are provided in Supplemental Information.
+Because PCA eigenvectors are sign-invariant, the loading 
+vectors were oriented such that: ensuring physically meaning-
+ful “Practicality” and “Stability” axes.
+The resulting PCA biplot reveals two orthogonal axes that 
+together explain approximately 66.5% of the total variance 
+in the compiled dataset. The first principal component (PC1, 
+39.6% variance explained) is dominated by positive contri-
+butions from sulfur loading and areal capacity and a negative 
+contribution from E/S ratio, indicating that PC1 captures a 
+practicality-driven design axis. Movement along PC1, there-
+fore, reflects the transition from electrolyte-rich, low-loading 
+laboratory-scale cells toward lean-electrolyte, high-loading con-
+figurations that are more representative of practically viable Li–S 
+architectures. Notably, coulombic efficiency contributes nega-
+tively to PC1 in this dataset, highlighting that high CE values are 
+frequently achieved under electrolyte-excess conditions that are 
+not necessarily aligned with practical cell-level energy density 
+requirements.
+The second principal component (PC2, 26.9% variance 
+explained) is governed primarily by capacity retention (posi-
+tive loading) and capacity fade rate (negative loading), and 
+thus represents a stability-dominated performance axis. High 
+PC2 scores correspond to Li–S cells exhibiting sustained 
+capacity retention and low degradation rates over cycling, 
+whereas low PC2 scores are associated with rapid capacity 
+decay. Importantly, the weak loading of sulfur loading and E/S 
+ratio along PC2 indicates that long-term stability is not solely 
+dictated by geometric or electrolyte-quantity parameters, but 
+instead reflects more subtle electrochemical and interfacial 
+processes, including polysulfide management, lithium anode 
+stability, and electrolyte–electrode compatibility.
+Electrolyte chemistry trends: Practicality‑ and stability‑favored 
+regimes
+In addition to resolving the dominant design–performance 
+axes, the PCA score distribution provides important insight 
+into the electrolyte chemistries and operating conditions most 
+strongly associated with practical versus stable Li–S cell behav-
+ior. Electrolyte systems positioned toward the positive direc-
+tion of PC1—characterized by high sulfur loading, elevated 
+areal capacity, and reduced E/S ratios—correspond to the most 
+practically relevant configurations for commercially viable 
+Li–S architectures. This region is predominantly populated by 
+ether-based electrolytes, most commonly DOL/DME mixtures 
+containing LiTFSI, reflecting their continued central role in 
+enabling lean-electrolyte, high-loading cell designs. These for-
+mulations offer relatively low viscosity and favorable polysulfide 
+solvation kinetics, thereby supporting electrode architectures 
+that approach realistic energy–density targets under electrolyte-
+limited conditions.
+
+<<PAGE 10>>
+10        MRS ENERGY & SUSTAINABILITY  //  VOLUME  XX  //  www.mrs.org/energy-sustainability-journal
+By contrast, electrolyte formulations scoring highly along 
+PC2—associated with improved capacity retention and suppressed 
+fade rates—highlight the chemistries most favorable for long-term 
+cycling stability. These stability-oriented regimes frequently 
+involve more engineered electrolyte environments, including 
+­LiNO3-containing ether electrolytes, additive-stabilized systems, 
+and gel or quasi-solid-state electrolyte platforms. Such formula-
+tions are widely recognized for their ability to promote interfacial 
+passivation of the lithium metal anode, mitigate polysulfide shut-
+tle, and reduce parasitic side reactions, thereby enhancing cycling 
+durability. Notably, many of these stability-favored electrolyte 
+conditions remain clustered closer to moderate or negative 
+PC1 values, indicating that the highest retention performance 
+reported in the literature is still often achieved under compara-
+tively electrolyte-rich or lower-loading conditions rather than 
+under fully practical lean-electrolyte constraints.
+Collectively, the PCA reveals a persistent electrolyte-driven 
+trade-off in contemporary Li–S development: ether-based lean-
+electrolyte formulations are most closely aligned with practical 
+high-loading cell design, whereas additive-rich or structurally 
+Figure 5.   Principal component analysis (PCA) of lithium–sulfur battery design and performance space (2022–2024 literature). Principal component 
+analysis (PCA) biplot illustrating the combined variation in electrolyte-to-sulfur ratio (E/S), sulfur loading, areal capacity, coulombic efficiency (CE), 
+capacity retention, and capacity fade rate for reported lithium–sulfur (Li–S) cells. The analysis incorporates literature data published between 2022 and 
+2024, compiled from independent experimental studies. Only entries for which all six variables were explicitly reported were included to ensure statistical 
+consistency of the multivariate analysis. Individual data points represent distinct Li–S cell configurations (scores), while arrows denote the corresponding 
+variable loadings, indicating the direction and relative magnitude of each variable’s contribution to the principal components. The horizontal axis (PC1, 
+39.6% of total variance) captures a practicality-dominated design axis, increasing with higher sulfur loading and higher areal capacity, and decreasing with 
+higher E/S ratio, thereby distinguishing lean-electrolyte, high-loading cell designs from electrolyte-rich, low-loading configurations. The vertical axis (PC2, 
+26.9% of total variance) represents a stability-dominated performance axis, governed primarily by capacity retention (positive loading) and capacity fade 
+rate (negative loading), separating electrochemically stable cells from rapidly degrading systems. Together, PC1 and PC2 explain approximately 66.5% of the 
+total variance in the compiled dataset, enabling a compact and physically interpretable mapping of the trade-offs between practical cell design constraints 
+and long-term cycling stability across recent Li–S battery literature.
+
+<<PAGE 11>>
+MRS ENERGY & SUSTAINABILITY  //  VOLUME XX  //  www.mrs.org/energy-sustainability-journal         11
+constrained electrolyte systems are more consistently associated 
+with superior cycling stability. Overcoming this decoupling—by 
+designing electrolytes that simultaneously support low E/S oper-
+ation, high sulfur utilization, and durable lithium–polysulfide 
+interfacial chemistry—remains a critical requirement for advanc-
+ing Li–S batteries toward scalable implementation.
+Data‑derived feasible operating window
+To identify practical and scalable operating conditions, we 
+screened the compiled 2022–2024 Li–S literature dataset for 
+configurations simultaneously exhibiting high areal capacity, 
+high sulfur loading, lean-electrolyte usage, and meaningful 
+cycling stability. Using percentile-based filters anchored to the 
+dataset distribution (areal capacity ≥ 75th percentile, reten-
+tion ≥ 60th percentile, sulfur loading ≥ 60th percentile, and 
+E/S ≤ median), we obtained a subset that defines a feasible prac-
+tical–stable regime (Fig. 6). This regime corresponds to E/S ≈ 
+1.7–2.8 µL ­mg−1 and sulfur loading ≈ 6.9–9.9 mgₛ cm⁻2, yielding 
+areal capacities ≈ 5.5–7.5 mAh cm⁻2 with ~ 82–89% retention 
+over ~ 215–394 cycles (fade rates ~ 2.9–7.8% per 100 cycles). 
+These results support a feasible operating window where elec-
+trolyte starvation is avoided while maintaining transport and 
+interfacial stability under practically relevant areal capacities.
+Electrolyte and electrode chemistry characteristics 
+within the feasible window
+The data-driven feasible operating window identified here 
+(E/S ≈ 2–3 µL ­mgS
+−1 and sulfur loading ≈ 7–10 mg ­cm−2) repre-
+sents the region in which scalable Li–S cell designs have most 
+consistently been demonstrated in recent literature. Impor-
+tantly, the reports populating this envelope share common elec-
+trolyte and electrode chemistry features that enable simultane-
+ous electrolyte minimization and high areal sulfur utilization.
+Across the feasible window, the dominant electrolyte class 
+remains ether-based systems, most commonly binary DOL/
+DME mixtures containing LiTFSI salt (typically ~ 1 M). These 
+electrolytes provide favorable polysulfide solvation–transport 
+kinetics and sufficiently low viscosity to sustain sulfur redox 
+reactions under lean-electrolyte constraints. In nearly all 
+practical-loading studies within this regime, ­LiNO3 is also 
+employed as a critical additive to stabilize the lithium metal 
+anode by promoting formation of a passivating solid–electro-
+lyte interphase (SEI) and suppressing parasitic polysulfide 
+shuttle reactions. Thus, the scalable window is largely defined 
+by LiTFSI–DOL/DME–LiNO3 baseline chemistries, reflecting 
+their continued role as the most mature electrolyte platform 
+for high-loading Li–S operation.
+From an electrode architecture perspective, cells achiev-
+ing sulfur loadings above ~ 7 mg ­cm−2 within E/S ≤ 3 typically 
+rely on engineered cathode scaffolds that maximize sulfur 
+utilization while preserving ionic accessibility. These include 
+porous carbon hosts (mesoporous carbons, carbon nanotube 
+networks, graphene-based frameworks), catalytic or polar sur-
+face modifiers (e.g., metal sulfides, nitrides, or oxides), and 
+binder systems optimized for mechanical integrity at high 
+mass loading. Such cathode designs are essential to mitigate 
+transport limitations and maintain electrode-level conductiv-
+ity when electrolyte volume is severely restricted.
+Notably, while gel-polymer and quasi-solid-state electro-
+lytes are frequently associated with improved cycling stability, 
+they appear less represented within the strict lean-electrolyte/
+high-loading feasibility envelope, indicating that most scalable 
+demonstrations still rely on advanced liquid ether electrolytes 
+rather than fully solidified platforms. Overall, the feasible 
+operating window derived from literature trends suggests that 
+near-term scalable Li–S deployment is most strongly enabled 
+by ether-based LiTFSI/LiNO3 electrolytes paired with struc-
+tured, polysulfide-regulating carbon–sulfur cathodes designed 
+explicitly for electrolyte-limited operation.
+In summary, the feasible scalability envelope (E/S ≈ 2–3 
+µL ­mgS
+−1 and sulfur loading ≈ 7–10 mg ­cm−2) is predominantly 
+populated by ether-based DOL/DME electrolytes with LiTFSI 
+salt and ­LiNO3_ additive, coupled with high-loading porous 
+carbon–sulfur cathodes incorporating polysulfide-regulating 
+host architectures.
+Multivariate analysis of pouch‑cell design space
+To quantitatively assess the evolution of lithium–sulfur 
+(Li–S) pouch-cell architectures, we constructed a ternary pro-
+jection integrating sulfur loading, electrolyte-to-sulfur (E/S) 
+ratio, and areal capacity. These three parameters collectively 
+define the practical energy–density envelope of Li–S systems 
+and determine whether laboratory-scale demonstrations can 
+transition toward engineering-relevant pouch configurations. 
+Unlike gravimetric capacity alone, this multivariate represen-
+tation captures the coupled constraints governing scalable 
+design, where sulfur utilization, electrolyte economy, and 
+electrode architecture must be simultaneously optimized.
+Principal component analysis (PCA) was applied to multi-year 
+pouch-cell datasets (2022–2025) to resolve dominant scaling 
+trajectories within this design space. As shown in Fig. 7, three 
+principal components (PC1–PC3) delineate distinct optimiza-
+tion regimes. PC1 (y = 0.6713x − 0.0985), corresponding primar-
+ily to 2022 datasets evaluated at 1–5 C, exhibits a positive slope 
+trending toward higher sulfur loading and higher areal capacity 
+with reduced E/S ratios, reflecting integrated engineering-level 
+optimization. PC2 (y =  − 1.4897x + 0.8533), associated with 
+2025 datasets at similar C-rates, displays a strong negative slope, 
+revealing inverse coupling between sulfur loading and E/S ratio 
+indicative of trade-off-dominated scaling under aggressive elec-
+trolyte reduction. PC3 (y = 0.5774x − 0.1055), representing 2023 
+datasets evaluated at lower rates (0.1–0.5 C), shows moderate 
+positive correlation, capturing electrolyte-driven stabilization 
+strategies that enhance cycling behavior but do not fully translate 
+into high areal capacity under lean conditions.
+The spatial distribution of data points across these compo-
+nents reveals a clear chronological and rate-dependent pro-
+gression in pouch-cell design. Early configurations cluster 
+
+<<PAGE 12>>
+12        MRS ENERGY & SUSTAINABILITY  //  VOLUME  XX  //  www.mrs.org/energy-sustainability-journal
+in electrolyte-rich regions with moderate sulfur loading and 
+limited areal capacity. Intermediate architectures reduce E/S 
+ratios but encounter transport and shuttle-induced constraints 
+that limit proportional gains in areal capacity. More recent 
+designs increasingly align along the PC1 trajectory, demonstrat-
+ing simultaneous increases in sulfur loading and areal capacity 
+under controlled electrolyte reduction—an essential condition 
+for practical energy–density realization.
+This PCA-resolved ternary framework therefore provides a 
+quantitative map of Li–S pouch-cell maturation. By evaluating 
+sulfur loading, electrolyte utilization, and areal capacity as inter-
+dependent variables rather than isolated metrics, the analysis 
+delineates structural design boundaries separating laboratory 
+feasibility from commercially viable architectures. The multi-
+variate approach not only visualizes performance distributions 
+but also identifies the dominant engineering pathways governing 
+scalable Li–S development.
+PC1: Convergence toward practical energy density optimization
+PC1 (y = 0.6713x − 0.0985), corresponding primarily to the 
+2022 datasets evaluated at 1–5 C, exhibits a positive slope trend-
+ing toward simultaneously higher sulfur loading and higher areal 
+capacity under progressively reduced E/S ratios. This trajectory 
+reflects a decisive design shift toward integrated engineering 
+optimization, wherein sulfur loading is increased, areal capacity 
+Figure 6.   Data-derived feasible operating window for scalable lithium–sulfur batteries (2022–2024 literature). Scatter plot of electrolyte-to-sulfur ratio 
+(E/S) versus sulfur loading for lithium–sulfur (Li–S) cells reported in the literature between 2022 and 2024. Blue markers represent all compiled literature 
+data points for which E/S and sulfur loading were reported, while orange markers highlight cell configurations that satisfy simultaneous practicality and 
+stability criteria derived from the dataset. These criteria include high areal capacity (≥ 75th percentile), high sulfur loading (≥ 60th percentile), lean-
+electrolyte usage (E/S ≤ median), and sustained cycling stability (capacity retention ≥ 60th percentile over reported cycle life). The solid rectangular boundary 
+denotes the 10–90% percentile envelope of the feasible subset, defining a data-anchored operating window of E/S ≈ 1.7–2.8 µL mgₛ⁻1 and sulfur loading ≈ 
+6.9–9.9 mgₛ cm⁻2, which corresponds to areal capacities of approximately 5.5–7.5 mAh cm⁻2 and capacity retention of ~ 82–89% over ~ 215–394 cycles. 
+This region represents a balance between lean-electrolyte operation, thick sulfur cathodes, and acceptable long-term stability, and thus delineates a feasible 
+design space for scalable and high-energy Li–S battery architectures. Data points outside this window highlight regimes dominated by electrolyte starvation 
+at very low E/S ratios or transport and utilization limitations at excessively high sulfur loadings.
+
+<<PAGE 13>>
+MRS ENERGY & SUSTAINABILITY  //  VOLUME XX  //  www.mrs.org/energy-sustainability-journal         13
+is enhanced, and excess electrolyte is systematically minimized. 
+Movement along PC1, therefore, represents a transition from 
+materials-centric performance improvements toward architec-
+ture- and system-level co-design strategies.
+Importantly, the PC1 regime aligns closely with practi-
+cal pouch-cell performance targets, including sulfur loadings 
+exceeding ~ 4–6 mg cm⁻2, areal capacities ≥ 4 mAh cm⁻2, and 
+lean-electrolyte conditions approaching E/S ratios ≤ 4–5 µL 
+mg⁻1. The clustering of higher-performing architectures along 
+this axis indicates a maturation of the field from electrolyte-
+rich proof-of-concept demonstrations toward configurations 
+compatible with commercial energy–density requirements. In 
+contrast to earlier studies that emphasized elevated gravimet-
+ric capacity under electrolyte-excess conditions, the PC1 trend 
+reflects coordinated electrode–electrolyte co-optimization that 
+directly enhances cell-level scalability.
+This convergence suggests that current progress is increas-
+ingly constrained not by intrinsic sulfur redox chemistry but by 
+cathode architecture design, sulfur utilization efficiency at high 
+mass loading, ion transport management in thick electrodes, 
+and electrolyte control under lean conditions. PC1 therefore 
+Figure 7.   Ternary projection of 
+lithium–sulfur (Li–S) pouch-cell 
+architectures integrating sulfur 
+loading, electrolyte-to-sulfur (E/S) 
+ratio, and areal capacity from 
+multi-year datasets (2022–2025). 
+Each data point represents a 
+reported pouch-cell configura-
+tion categorized by electrolyte/
+additive chemistry. Principal 
+component analysis (PC1–PC3) 
+with corresponding projected trend 
+direction is overlaid to resolve 
+dominant scaling trajectories. PC1 
+(2022, 1–5 C) exhibits a positive 
+slope trending toward higher 
+sulfur loading and areal capacity 
+with reduced E/S ratios, reflecting 
+integrated engineering-level 
+optimization. PC2 (2025, 1–5 C) 
+displays a strong negative slope, 
+capturing a trade-off-dominated 
+regime characterized by inverse 
+coupling between sulfur loading 
+and electrolyte content under lean 
+conditions. PC3 (2023, 0.1–0.5 
+C) represents electrolyte-driven 
+stabilization strategies, showing 
+moderate correlation between 
+sulfur loading and areal capacity. 
+The distribution of data across 
+principal components illustrates 
+the temporal and rate-dependent 
+evolution of Li–S pouch-cell design 
+from electrolyte-rich feasibility 
+demonstrations toward lean-elec-
+trolyte, high-loading architectures 
+compatible with practical energy–
+density targets. The corresponding 
+data tables are provided in the 
+Supplementary Information.
+
+<<PAGE 14>>
+14        MRS ENERGY & SUSTAINABILITY  //  VOLUME  XX  //  www.mrs.org/energy-sustainability-journal
+delineates the dominant engineering pathway toward practically 
+viable Li–S pouch-cell implementation.
+PC2: Trade‑off‑dominated transitional regime
+PC2 (y =  − 1.4897x + 0.8533), primarily associated with the 
+2025 datasets evaluated at 1–5 C, exhibits a pronounced nega-
+tive slope, revealing a strong inverse correlation between sulfur 
+loading and the E/S ratio. This principal component captures an 
+intermediate stage of pouch-cell development characterized by 
+deliberate attempts to increase sulfur loading while aggressively 
+reducing electrolyte content. However, movement along PC2 
+does not produce proportional gains in areal capacity, indicating 
+that scaling efforts are constrained by underlying electrochemi-
+cal and transport limitations.
+These limitations likely stem from intensified polysulfide 
+shuttle effects, restricted ionic transport within thick, high-
+mass-loading cathodes, and rapid electrolyte depletion under 
+lean conditions. As electrolyte content is reduced to improve 
+practical energy density, insufficient ionic mobility and poor sul-
+fur utilization emerge as dominant bottlenecks. Consequently, 
+PC2 defines a trade-off-dominated regime in which improvement 
+in one design variable directly penalizes another, preventing bal-
+anced performance enhancement.
+Architectures located within this region illustrate the intrin-
+sic challenges of transitioning from electrolyte-rich laboratory 
+constructs to electrolyte-lean pouch configurations without 
+simultaneous advances in cathode microstructure engineer-
+ing, sulfur confinement strategies, and interfacial stabilization. 
+PC2 therefore represents a necessary but incomplete transitional 
+phase in Li–S maturation—highlighting the limitations of param-
+eter reduction strategies in isolation and underscoring the need 
+for integrated electrode–electrolyte co-design to achieve the bal-
+anced scaling observed along PC1.
+In addition, recent studies have shown that under extreme 
+lean-electrolyte conditions, the solubility of lithium polysulfides 
+becomes significantly limited, altering the fundamental reaction 
+pathway of sulfur conversion.37 Rather than proceeding through 
+solution-mediated polysulfide intermediates, the system increas-
+ingly shifts toward solid-state nucleation and growth of Li₂S. 
+This transition introduces heterogeneous deposition behavior, 
+increases interfacial resistance, and leads to incomplete sulfur 
+utilization. As a result, capacity fading under lean-electrolyte 
+conditions is not only governed by transport limitations and 
+shuttle effects, but also by this shift in reaction kinetics, which 
+constrains reversible sulfur redox processes. This kinetic transi-
+tion provides an additional mechanistic basis for the trade-off-
+dominated behavior captured along PC2.
+It is important to note that lithium metal anode thickness 
+and the corresponding negative-to-positive (N/P) capac-
+ity ratio are not consistently reported across the literature 
+datasets analyzed in this study. In many cases, cells are con-
+structed with excess lithium, which can partially compensate 
+for lithium consumption and suppress apparent capacity fad-
+ing. Under lean-electrolyte conditions, this effect becomes 
+particularly significant, as lithium depletion and interfacial 
+instability are major contributors to degradation. Conse-
+quently, variations in lithium excess may influence the stabil-
+ity trends captured along the PC2 axis, potentially masking 
+intrinsic limitations associated with sulfur utilization and elec-
+trolyte transport. These observations underscore the need for 
+standardized reporting of N/P ratios in future studies to enable 
+more comprehensive benchmarking of lithium–sulfur battery 
+performance.
+PC3: Electrolyte‑driven stabilization phase
+PC3 (y = 0.5774x − 0.1055), predominantly corresponding 
+to the 2023 datasets evaluated at moderate rates (0.1–0.5 C), 
+exhibits a moderate positive correlation between sulfur loading 
+and areal capacity under relatively balanced E/S conditions. The 
+clustering of data points along this component indicates that 
+performance improvements in this regime are primarily driven 
+by electrolyte and additive engineering rather than by substantial 
+structural redesign of the cathode architecture.
+This regime likely reflects advances enabled by ­LiNO3-based 
+stabilization, localized high-concentration electrolytes (LCEs), 
+conventional DOL/DME–LiTFSI systems, and various poly-
+sulfide-suppression additives that enhance lithium metal inter-
+facial stability and reduce shuttle-induced degradation. These 
+electrolyte-centric strategies effectively improve coulombic 
+efficiency and cycling retention, particularly under moderate 
+loading and rate conditions.
+However, unlike the integrated scaling trajectory observed 
+along PC1, progress along PC3 does not consistently translate 
+into high areal capacity under lean-electrolyte constraints. 
+While stability metrics improve, sulfur utilization at high 
+mass loading remains limited by transport and structural fac-
+tors. PC3, therefore, represents a chemistry-dominated opti-
+mization stage that enhances interfacial stability and cycling 
+durability but precedes the architectural and systems-level 
+innovations required for practical, high-loading pouch-cell 
+implementation.
+The novelty of this work lies in the ability of the analytical 
+framework to translate qualitative understanding into quanti-
+tative design boundaries. While the limitations associated with 
+sulfur loading, electrolyte volume, and transport phenomena are 
+well recognized, they have not previously been mapped into a 
+statistically defined, multi-parameter operating space.
+The integration of principal component analysis further ena-
+bles identification of dominant scaling directions and hidden 
+correlations, providing insight into how different studies con-
+verge—or fail to converge—toward practically relevant regimes. 
+This represents a shift from descriptive reporting toward pre-
+dictive, data-informed interpretation of lithium–sulfur battery 
+performance.
+Limitation statement
+It is important to note that, while the dataset spans multiple 
+years and studies, the number of data points available for fully 
+consistent multivariate analysis remains limited by incomplete 
+
+<<PAGE 15>>
+MRS ENERGY & SUSTAINABILITY  //  VOLUME XX  //  www.mrs.org/energy-sustainability-journal         15
+reporting across the literature. As a result, the PCA presented 
+here should be interpreted as an exploratory framework for iden-
+tifying dominant trends and trade-offs rather than as a statisti-
+cally predictive model. Nevertheless, the consistency of observed 
+clustering behavior and principal component orientations across 
+independent datasets supports the robustness of the identified 
+design–performance relationships. Future studies with standard-
+ized reporting of key parameters will enable expansion of the 
+dataset and further strengthen statistical generalization.
+It is important to note that the dataset is not intended to be 
+exhaustive. Instead, it represents a quality-controlled subset of 
+the literature selected based on completeness and consistency of 
+reported parameters. While additional high-performance stud-
+ies exist, incomplete reporting of key variables limits their inte-
+gration into a unified multivariate framework. This highlights 
+the need for standardized reporting practices to enable more 
+comprehensive data-driven analyses in future work.
+Temporal evolution of pouch‑cell architectures
+The distribution of data across the principal components 
+reveals a clear chronological and rate-dependent progression in 
+Li–S pouch-cell development. Early-stage architectures, primar-
+ily represented within the PC3 regime (2023, 0.1–0.5 C), cluster 
+in regions characterized by moderate sulfur loading, balanced 
+but relatively generous E/S ratios, and limited areal capacity. 
+These configurations reflect stability-first strategies that empha-
+sized suppression of polysulfide shuttling and lithium metal deg-
+radation under electrolyte-sufficient conditions.
+The intermediate phase, captured by PC2 (2025, 1–5 C), is 
+marked by deliberate reductions in E/S ratios combined with 
+increased sulfur loading under more demanding rate condi-
+tions. However, this transition remains constrained by trade-
+off-dominated scaling, where improvements in sulfur loading 
+or electrolyte minimization do not yield proportional increases 
+in areal capacity due to transport and interfacial limitations. This 
+regime highlights the structural and electrochemical bottlenecks 
+encountered during aggressive electrolyte reduction.
+In contrast, the progression toward PC1 (2022, 1–5 C) reflects 
+the emergence of coordinated scaling strategies in which sul-
+fur loading and areal capacity increase simultaneously under 
+controlled electrolyte reduction. This convergence signals the 
+transition from parameter-driven optimization toward inte-
+grated, engineering-viable pouch-cell architectures capable of 
+approaching practical energy–density targets.
+Collectively, the evolution from PC3 through PC2 to PC1 
+illustrates a maturation pathway from electrolyte-stabilized 
+feasibility demonstrations toward systems-level optimization 
+under realistic constraints. The shift toward PC1 underscores 
+that practical pouch-cell performance cannot be achieved 
+through isolated manipulation of sulfur loading or electrolyte 
+volume alone; rather, it requires coordinated advances in cath-
+ode architecture, electrolyte management, ion transport regu-
+lation, and interfacial stability to achieve balanced and scalable 
+performance.
+Implications for practical energy density scaling
+The ternary-PCA framework provides a critical insight into 
+the true scaling behavior of Li–S pouch cells: high gravimetric 
+capacity alone is insufficient to indicate meaningful progress 
+toward practical energy–density realization. Advancement 
+toward the PC1 domain—representing engineering-viable 
+architectures—occurs only when reductions in E/S ratio and 
+increases in sulfur loading translate into proportional and sus-
+tained gains in areal capacity. In this multivariate context, areal 
+capacity emerges as the decisive validation metric for pouch-
+level scalability.
+Architectures that fail to exceed approximately ~ 4 mAh cm⁻2 
+under lean-electrolyte conditions remain fundamentally con-
+strained, regardless of elevated specific (gravimetric) capacity 
+values achieved under electrolyte-rich testing environments. 
+The PCA results demonstrate that practical energy density is gov-
+erned not by isolated capacity improvements but by balanced co-
+optimization of sulfur utilization and electrolyte economy under 
+realistic constraints.
+Accordingly, commercialization-relevant Li–S pouch cells 
+demand coordinated engineering solutions rather than incre-
+mental chemical modifications alone. These include precise 
+cathode porosity control to maintain ionic accessibility at high 
+mass loading, effective electrolyte confinement strategies to pre-
+vent starvation under lean conditions, interfacial stabilization 
+of lithium metal to suppress shuttle-induced degradation, and 
+mechanical robustness capable of sustaining thick sulfur elec-
+trodes during repeated cycling. Only through such integrated 
+electrode–electrolyte co-design can Li–S systems transition from 
+laboratory-scale demonstrations to scalable, manufacturable 
+energy storage platforms.
+Design direction outlook
+The PCA-resolved trajectories indicate that future advance-
+ments in Li–S pouch-cell performance will depend less on 
+incremental additive refinement and more on fundamentally 
+co-designed electrode–electrolyte architectures capable of sus-
+taining high sulfur utilization under lean-electrolyte constraints. 
+The observable convergence of recent datasets toward the PC1 
+axis suggests that the field is approaching a structural optimiza-
+tion plateau, where conventional electrolyte modifications alone 
+are unlikely to deliver transformative gains in practical energy 
+density. In this regime, electrolyte chemistry remains necessary 
+but no longer sufficient.
+Further progress will require breakthroughs in interfacial ion 
+transport regulation within thick cathodes, robust polysulfide 
+confinement at high areal loadings, and mechanical stabiliza-
+tion strategies that preserve electrode integrity under repeated 
+volume expansion and electrolyte-limited operation. Achieving 
+these objectives demands integrated engineering approaches 
+that simultaneously address mass transport, interfacial chem-
+istry, and structural durability.
+Collectively, the ternary-PCA analysis reveals a system-
+atic evolution of Li–S pouch cells from electrolyte-stabilized 
+
+<<PAGE 16>>
+16        MRS ENERGY & SUSTAINABILITY  //  VOLUME  XX  //  www.mrs.org/energy-sustainability-journal
+laboratory constructs (PC3), through trade-off-constrained scal-
+ing attempts (PC2), toward integrated, high-loading, low-E/S, 
+high-areal-capacity architectures (PC1). This transition marks 
+the maturation of Li–S technology from scientific feasibility 
+toward engineering viability, where scalable design is defined 
+not by isolated performance metrics but by coordinated systems-
+level optimization under realistic constraints.
+The defined feasible operating window provides a quantita-
+tive benchmark for future materials and cell design strategies. 
+Rather than optimizing individual parameters in isolation, 
+future work should focus on approaches that simultaneously 
+satisfy constraints across sulfur loading, electrolyte volume, 
+and areal capacity.
+Strategies such as electrolyte confinement, advanced cathode 
+architectures, and polysulfide management should be evaluated 
+within this multi-dimensional constraint space, ensuring that 
+reported improvements translate into practically scalable per-
+formance rather than isolated laboratory gains.
+Conclusion
+In this work, we established a comprehensive data-driven 
+benchmarking framework to systematically evaluate lithium–sul-
+fur (Li–S) battery scalability across both coin and pouch-cell for-
+mats by integrating sulfur loading, electrolyte-to-sulfur (E/S) 
+ratio, and delivered capacity within a unified ternary–PCA analyti-
+cal approach. By compiling and interrogating multi-year literature 
+data (2022–2025), we identified distinct design trajectories gov-
+erning Li–S performance and quantitatively resolved the trade-offs 
+between practical energy–density scaling and cycling stability.
+Our analysis demonstrates that pouch-cell viability cannot 
+be inferred from gravimetric capacity alone. Instead, scalable 
+performance emerges only when increases in sulfur loading and 
+reductions in electrolyte content translate into proportional 
+gains in areal capacity under lean-electrolyte conditions. Two 
+orthogonal design axes were resolved: a practicality-driven axis 
+coupling high sulfur loading, reduced E/S ratios, and elevated 
+areal capacity, and a stability-driven axis associated with reten-
+tion and degradation behavior. The weak coupling between 
+these axes reveals a persistent decoupling between laboratory-
+optimized energy metrics and long-term operational durability.
+Importantly, we define a data-derived feasible operating 
+window—sulfur loading of approximately 7–10 mg cm⁻2 and E/S 
+ratios of ~ 1.7–2.8 µL mgₛ⁻1—corresponding to areal capacities 
+of ~ 5.5–7.5 mAh cm⁻2 under sustained cycling. Architectures 
+operating outside this envelope either depend on electrolyte-
+rich conditions that artificially inflate performance metrics or 
+encounter transport and stability limitations that restrict mean-
+ingful scaling.
+These findings underscore that commercialization-relevant 
+Li–S pouch cells require integrated electrode–electrolyte co-
+design strategies rather than incremental additive refinement 
+alone. Critical enablers include optimized cathode porosity 
+and sulfur distribution, electrolyte confinement compatible 
+with lean operation, enhanced interfacial ion transport in thick 
+electrodes, and mechanical stabilization capable of sustaining 
+high mass loading without structural degradation.
+By quantitatively defining practical design boundaries instead 
+of isolated performance milestones, this work provides actionable 
+engineering guidance for technology translation. The multivari-
+ate framework introduced here enables objective benchmarking 
+of electrolyte economy and sulfur utilization under realistic con-
+straints, offering a rigorous decision-support tool for advancing 
+Li–S batteries from laboratory validation toward manufacturable 
+pouch-cell platforms suitable for electric mobility, aviation elec-
+trification, and grid-scale energy storage applications.
+Looking forward, the advancement of data-driven bench-
+marking in lithium–sulfur batteries critically depends on the 
+adoption of standardized reporting practices across the research 
+community. Key parameters—including areal capacity, electro-
+lyte-to-sulfur (E/S) ratio, sulfur loading, and negative-to-positive 
+(N/P) capacity ratio—should be consistently reported in future 
+studies, particularly for pouch-cell configurations. The absence 
+of such standardized metrics currently limits cross-study compa-
+rability and can obscure intrinsic performance trade-offs under 
+practical operating conditions. Establishing unified reporting 
+guidelines will enhance the quality, reproducibility, and univer-
+sality of Li–S battery datasets, enabling more rigorous evaluation 
+of scalable designs and accelerating the transition toward com-
+mercially viable energy storage technologies.
+This work establishes a data-driven framework for evaluating 
+lithium–sulfur battery performance, shifting the emphasis from 
+isolated experimental achievements to system-level feasibility. 
+Although no new experimental data are introduced, the study 
+provides a quantitative foundation for benchmarking, compari-
+son, and design optimization across the field. By defining a sta-
+tistically grounded feasible operating window, this work enables 
+more rigorous assessment of emerging materials and architec-
+tures, supporting the transition of lithium–sulfur technology from 
+laboratory-scale demonstrations toward practical deployment.
+Author contributions 
+K. N.: Data curation, formal analysis, visualization, and writ-
+ing—original draft. R. R. P.: Data validation, formal analysis, 
+investigation, writing—review and editing. A. K.: Investigation, 
+comparative analysis, writing—review and editing. M. A.: Data 
+curation and visualization. A. L.: Data compilation and visualiza-
+tion. N.B.: Data compilation and validation. C. S. O.: Conceptual-
+ization, methodology, supervision, writing—review and editing. 
+M. O.: Conceptualization, methodology, project administration, 
+supervision, writing—original draft, writing—review and editing.
+Data availability 
+Data will be made available upon request.
+Declarations 
+Conflict of interest 
+The authors declare no conflicts of interest.
+
+<<PAGE 17>>
+MRS ENERGY & SUSTAINABILITY  //  VOLUME XX  //  www.mrs.org/energy-sustainability-journal         17
+Open Access
+This article is licensed under a Creative Commons Attribution 
+4.0 International License, which permits use, sharing, adapta-
+tion, distribution and reproduction in any medium or format, 
+as long as you give appropriate credit to the original author(s) 
+and the source, provide a link to the Creative Commons licence, 
+and indicate if changes were made. The images or other third 
+party material in this article are included in the article’s Crea-
+tive Commons licence, unless indicated otherwise in a credit line 
+to the material. If material is not included in the article’s Crea-
+tive Commons licence and your intended use is not permitted 
+by statutory regulation or exceeds the permitted use, you will 
+need to obtain permission directly from the copyright holder. To 
+view a copy of this licence, visit http://​creat​iveco​mmons.​org/​
+licen​ses/​by/4.​0/.
+Supplementary Information
+The online version contains supplementary material avail-
+able at https://​doi.​org/​10.​1557/​s43581-​026-​00160-x.
+REFERENCES
+	 1.	 A. Manthiram, Y. Fu, S.-H. Chung, C. Zu, Y.-S. Su, Rechargeable 
+lithium–sulfur batteries. Chem. Rev. 114, 11751–11787 (2014). 
+https://​doi.​org/​10.​1021/​cr500​062v
+	 2.	 P.G. Bruce, S.A. Freunberger, L.J. Hardwick, J.-M. Tarascon, Li–
+O2 and Li–S batteries with high energy storage. Nat. Mater. 11, 
+19–29 (2012). https://​doi.​org/​10.​1038/​nmat3​191
+	 3.	 X. Ji, L.F. Nazar, Advances in Li–S batteries. J. Mater. Chem. 20, 
+9821–9826 (2010). https://​doi.​org/​10.​1039/​c0jm0​1677a
+	 4.	 S. Evers, L.F. Nazar, New approaches for high energy density 
+lithium–sulfur battery cathodes. Acc. Chem. Res. 46, 1135–1143 
+(2013). https://​doi.​org/​10.​1021/​ar300​1348
+	 5.	 C. Barchasz, J.-C. Leprêtre, F. Alloin, S. Patoux, New insights 
+into the limiting parameters of the Li/S rechargeable cell. J. Power 
+Sources 199, 322–330 (2012). https://​doi.​org/​10.​1016/j.​jpows​our.​
+2011.​10.​004
+	 6.	 M. Hagen, P. Fanz, J. Tübke, Cell energy density and electrolyte/
+sulfur ratio in Li–S cells. J. Power Sources 264, 30–34 (2014). 
+https://​doi.​org/​10.​1016/j.​jpows​our.​2014.​04.​017
+	 7.	 Y.V. Mikhaylik, J.R. Akridge, Polysulfide shuttle study in the Li/S 
+battery system. J. Electrochem. Soc. 151, A1969–A1976 (2004). 
+https://​doi.​org/​10.​1149/1.​18063​94
+	 8.	 R. Xu, J. Lu, K. Amine, Progress in mechanistic understanding and 
+characterization techniques of Li–S batteries. Adv. Energy Mater. 
+5, 1500408 (2015). https://​doi.​org/​10.​1002/​aenm.​20150​0408
+	 9.	 Q. Pang, X. Liang, C.Y. Kwok, L.F. Nazar, Advances in lithium–
+sulfur batteries based on multifunctional cathodes and electrolytes. 
+Nat. Energy 1, 1–11 (2016). https://​doi.​org/​10.​1038/​nener​gy.​2016.​
+132
+	10.	 Z.W. Seh, Y. Sun, Q. Zhang, Y. Cui, Designing high-energy 
+lithium–sulfur batteries. Chem. Soc. Rev. 45, 5605–5634 (2016). 
+https://​doi.​org/​10.​1039/​C5CS0​0410A
+	11.	 H.-J. Peng, J.-Q. Huang, Q. Zhang, A review of flexible lithium–
+sulfur and analogous alkali metal–chalcogen rechargeable batter-
+ies. Chem. Soc. Rev. 46, 5237–5288 (2017). https://​doi.​org/​10.​
+1039/​C7CS0​0147A
+	12.	 S.-H. Chung, A. Manthiram, Current status and future prospects 
+of metal–sulfur batteries. Adv. Mater. 31, 1901125 (2019). https://​
+doi.​org/​10.​1002/​adma.​20190​1125
+	13.	 H. Pan, Z. Cheng, Z. Zhou, S. Xie, W. Zhang, N. Han, W. Guo, J. 
+Fransaer, J. Luo, A. Cabot, M. Wübbenhorst, Boosting lean elec-
+trolyte lithium–sulfur battery performance with transition metals: 
+a comprehensive review. Nano-Micro Lett. 15, 165 (2023). https://​
+doi.​org/​10.​1007/​s40820-​023-​01137-y
+	14.	 S. Dörfler, H. Althues, P. Härtel, T. Abendroth, B. Schumm, S. 
+Kaskel, Challenges and key parameters of lithium–sulfur batteries 
+on pouch cell level. Joule 4, 539–554 (2020). https://​doi.​org/​10.​
+1016/j.​ensm.​2019.​08.​013
+	15.	 W. Qian, Y. Guo, W. Zuo, X. Wu, L. Zhang, Toward practical 
+lithium–sulfur batteries. Mater. Chem. Front. 8, 2556–2577 (2024). 
+https://​doi.​org/​10.​1039/​D4QM0​0180J
+	16.	 A. Bhargav, J. He, A. Gupta, A. Manthiram, Lithium–sulfur batter-
+ies: attaining the critical metrics. Joule 4, 285–291 (2020). https://​
+doi.​org/​10.​1016/j.​joule.​2020.​01.​001
+	17.	 J. Lochala, D. Liu, B. Wu, C. Robinson, J. Xiao, Research progress 
+toward the practical applications of lithium–sulfur batteries. ACS 
+Appl. Mater. Interfaces 9, 24407–24421 (2017). https://​doi.​org/​10.​
+1021/​acsami.​7b062​08
+	18.	 Z. Zhang, L.-L. Kong, S. Liu, G.-R. Li, X.-P. Gao, A high-effi-
+ciency sulfur/carbon composite based on 3D graphene nanosheet@
+carbon nanotube matrix as cathode for lithium–sulfur battery. Adv. 
+Energy Mater. 7, 1602543 (2017). https://​doi.​org/​10.​1002/​aenm.​
+20160​2543
+	19.	 G. Zhou, H. Chen, Y. Cui, Formulating energy density for design-
+ing practical lithium–sulfur batteries. Nat. Energy 7, 312–319 
+(2022). https://​doi.​org/​10.​1038/​s41560-​022-​01001-0
+	20.	 R. Xiao, Z. Qu, J. Ren, G. Wang, Z. Sun, F. Li, Current status 
+and future prospects of solid-state lithium–sulfur batteries: a focus 
+on reaction and interface engineering. Adv. Energy Mater. 16, 
+2501926 (2026). https://​doi.​org/​10.​1002/​aenm.​20250​1926
+	21.	 A. Manthiram, S.-H. Chung, C. Zu, Lithium–sulfur batteries: pro-
+gress and prospects. Adv. Mater. 27, 1980–2006 (2015). https://​
+doi.​org/​10.​1002/​adma.​20140​5115
+	22.	 Y. Chen, T. Wang, H. Tian, D. Su, Q. Zhang, G. Wang, Advances 
+in lithium–sulfur batteries: from academic research to commercial 
+viability. Adv. Mater. 33, 2003666 (2021). https://​doi.​org/​10.​1002/​
+adma.​20200​3666
+	23.	 L. Kong, L. Yin, F. Xu, J. Bian, H. Yuan, Z. Lu, Y. Zhao, Electro-
+lyte solvation chemistry for lithium–sulfur batteries with electro-
+lyte-lean conditions. J. Energy Chem. 55, 80–91 (2021). https://​
+doi.​org/​10.​1016/j.​jechem.​2020.​06.​054
+	24.	 P. Wang, Z. Shen, C. Xia, K. Lv, H. Zhang, P. He, H. Zhou, 
+Renewable polysulfide regulation by versatile films toward 
+high-loading lithium-sulfur batteries. ACS Appl. Mater. 
+Interfaces 12, 47590–47598 (2020). https://​doi.​org/​10.​1021/​
+acsami.​0c144​76
+	25.	 M. Zhao, B.-Q. Li, H.-J. Peng, H. Yuan, J.-Y. Wei, J.-Q. Huang, 
+Lithium–sulfur batteries under lean electrolyte conditions: chal-
+lenges and opportunities. Angew. Chem. Int. Ed. 59, 12636–12652 
+(2020). https://​doi.​org/​10.​1002/​anie.​20190​9339
+	26.	 R. Shang, M. Kurban, Y. ma, M. Ozkan, C.S. Ozkan, Rational 
+design of ­SnO2 thin film coated cathode with function of entrap-
+ping polysulfides for performance enhanced Li–S batteries. J. 
+Power Sources 597, 234144 (2024). https://​doi.​org/​10.​1016/j.​jpows​
+our.​2024.​234144
+	27.	 T. Zerrin, M. Kurban, M.M. Dickson, M. Ozkan, C.S. Ozkan, 
+Suppression of the shuttle effect in Li–S batteries via magnetron 
+sputtered ­TiO2 thin film at the electrode-electrolyte interface. ACS 
+Appl. Energy Mater. 3, 1515–1529 (2020). https://​doi.​org/​10.​1021/​
+acsaem.​9b019​60
+	28.	 J. Liu, B. Campbell, R. Ye, J. Bell, Z. Mutlu, C. Li, Y. Yan, M. 
+Ozkan, C. Ozkan, Facile and scalable synthesis of copolymer-sul-
+fur composites as cathodes for high performance lithium-sulfur 
+batteries. MRS Adv. 2, 3271–3276 (2017). https://​doi.​org/​10.​1557/​
+adv.​2017.​444
+
+<<PAGE 18>>
+18        MRS ENERGY & SUSTAINABILITY  //  VOLUME  XX  //  www.mrs.org/energy-sustainability-journal
+	29.	 J. Bell, R. Ye, D. Patino, K. Ahmed, A. Scott, L. Peng, Z. Mutlu, 
+M. Ozkan, C.S. Ozkan, Plateau targeted conditioning: an addi-
+tive-free approach towards robust SEI formation in Li–S batteries 
+for enhanced capacity and cycle life. Nano Energy 49, 498–507 
+(2018). https://​doi.​org/​10.​1016/j.​nanoen.​2018.​04.​064
+	30.	 R. Ye, J. Bell, D. Patino, K. Ahmed, M. Ozkan, C.S. Ozkan, 
+Advanced sulfur-silicon full cell architecture for lithium ion 
+batteries. Sci. Rep. 7, 17264 (2017). https://​doi.​org/​10.​1038/​
+s41598-​017-​17363-5
+	31.	 T. Zerrin, R. Shang, B. Dong, E.C. Aguilar, J. Malvin, 
+M. Ozkan, C.S. Ozkan, An overlooked parameter in Li–S batteries: 
+the impact of electrolyte-to-sulfur ratio on capacity fading. Nano 
+Energy 104, 107913 (2022). https://​doi.​org/​10.​1016/j.​nanoen.​2022.​
+107913
+	32.	 K. Pearson, LIII. On lines and planes of closest fit to systems of 
+points in space. Lond. Edinb. Dublin Philos. Mag J Sci. 2, 559–572 
+(1901). https://​doi.​org/​10.​1080/​14786​44010​94627​20
+	33.	 H. Hotelling, Analysis of a complex of statistical variables into 
+principal components (Warwick & York, US, 1933), pp. 498–520
+	34.	 I.T. Jolliffe, Principal Component Analysis (Springer, 2002)
+	35.	 J. Shlens, A tutorial on principal component analysis, arXiv pre-
+print arXiv:​1404.​1100 (2014) https://​doi.​org/​10.​48550/​arXiv.​1404.​
+1100
+	36.	 I.T. Jolliffe, J. Cadima, Principal component analysis: a review 
+and recent developments. Philos. Trans. R. Soc. A 374, 20150202 
+(2016). https://​doi.​org/​10.​1098/​rsta.​2015.​0202
+	37.	 Z.-X. Chen, J.-J. Zhao, G.-Y. Fang, S. Zhang, J. Ma, M. Zhao, 
+B.-Q. Li, J.-Q. Huang, Accelerating the sulfur redox kinetics in 
+weakly-solvating lithium–sulfur batteries under lean-electrolyte 
+conditions. Energy Storage Mater. 83, 104502 (2025). https://​doi.​
+org/​10.​1016/j.​ensm.​2025.​104502
+Publisher’s Note  Springer Nature remains neutral with regard to 
+jurisdictional claims in published maps and institutional affiliations.

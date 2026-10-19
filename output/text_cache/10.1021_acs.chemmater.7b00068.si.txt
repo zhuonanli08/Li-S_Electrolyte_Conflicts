@@ -1,0 +1,535 @@
+
+<<PAGE 1>>
+ 
+ 
+1
+Supplemental Information 
+Solvation Structure and Dynamics of Lithium Polysulfides  
+Nav Nidhi Rajput1,5*, Vijayakumar Murugesan2,5, Yongwoo Shin 1, Kee Sung Han2,5,  Kah Chun Lau3,4, Junzheng Chen2, Jun 
+Liu2,5, Larry A. Curtiss3,5, Karl T. Mueller2,5, Kristin A. Persson1,5* 
+ 
+1Lawrence Berkeley National Laboratory, Berkeley, CA 94720, USA 
+2Pacific Northwest National Laboratory, Richland, WA 99352, USA 
+3Materials Science Division, Argonne National Laboratory, Argonne, IL 60439 
+4Department of Physics and Astronomy, California State University, Northridge, CA 91330, USA.  
+5Joint Center for Energy Storage Research (JCESR) 
+ 
+Classical Molecular Dynamics Simulation 
+ 
+Classical molecular dynamics (MD) was performed using GROMACS MD simulation package version 
+5.1.2.1 The molecules are initially packed randomly in a cubic box of size 60*60*60 Å3 periodic in XYZ 
+direction using PACKMOL.2 The initial configuration is minimized in two steps first using steepest de-
+scent employing a convergence criterion of 1000 kcal/mol*Å. and then conjugated-gradient energy min-
+imization scheme employing a convergence criterion of 10 kcal/mol*Å. The systems were equilibrated 
+in the isothermal-isobaric ensemble (constant NPT) using the Berendsen barostat to maintain the pres-
+sure of 1 bar with a time constant of 2 ps for 2 ns.3-5 All systems were then melted at 400 K for 2 ns and 
+subsequently annealed from 400 to 298 K in three steps for 3 ns. Finally, the production runs of 20 ns 
+were then obtained in the canonical ensemble (NVT) using an improved velocity-rescaling algorithm 
+proposed by Parrinello et. al. with a time constant of 0.1 ps at 298 K. The simulation time was long 
+enough to sample adequately the Fickian (diffusive) regime (Figure S11) of all systems and the results 
+were averaged over at least two independent realizations of the same system. We obtained 120ns long 
+trajectories for Li2S4 +LiTFSI and Li2S8 + LiTFSI in DOL:DME solution.  Figure S11 shows the com-
+parison of diffusion coefficient obtained from 120 ns long trajectory with the diffusion coefficients ob-
+tained from NMR experiments. There is a slight increase in the diffusion coefficient as compared to the 
+ones obtained from 20 ns long trajectory (Figure 3 in manuscript), however it is still much slower than 
+the experimentally measured ones. As reported in the manuscript this is well known limitations of the 
+non-polarizable force field used in this work. Nernst-Einstein relation was used to measure the diffusion 
+coefficient from the mean squared displacement of atoms. The resulting coefficient is fitted from a least-
+squares minimization for a straight line for a time period in the diffusion regime and then averaged over 
+two independent realizations of the same system. Single particle dynamics obtained from mean square 
+displacement (MSD) can be divided into three regimes (1) ballistic at early times when the ions have not 
+interacted much with their neighbors (MSD α t2) (2) subdiffusive at intermediate times where ions rattle 
+inside a cage formed by their neighbors (MSD α t1/2), and when the ions escape from these cages, they 
+reach the diffusive or Fickian regime at larger times (MSD α t). In this work we only captured the be-
+havior at diffusive regime.6 Figure S11(a) shows the log-log plot of MSD obtained from 20 ns long tra-
+jectory. It can be seen that the MSD is proportional to ‘t’ with slope = 1, suggesting that the diffusion 
+coefficients reported in Figure 3 in the manuscript is obtained from the diffusive regime. The bonded 
+and non-bonded parameters for DOL, DME are taken from General Amber Force Field (GAFF), for 
+TFSI- anions from Kelkar et. al. and lithium from Sano et. al.7 The partial atomic charges for all mole-
+cules were derived by first optimizing the geometry using Becky’s three-parameter exchange function 
+combined with Lee-Yang-Parr correlation functional (B3LYP) at aug-cc-pvdz theory level using the 
+Downloaded from pubs.​acs.​org/​cmatex/​article-supplement/​682490/​pdf/​cm7b00068_si_001/​ by TSINGHUA UNIV user on 11 October 2026
+
+<<PAGE 2>>
+ 
+ 
+2
+Gaussian 098 package and then fitting the electrostatic potential surface using RESP method. Long-
+range electrostatic interactions were handled by the particle-mesh Ewald (PME) method with a grid 
+spacing of 0.1 nm. The cutoff distance of 1.2 nm was used for electrostatic and Lennard−Jones interac-
+tions. Other simulation details are very close to our previous publication. 9 
+ 
+The non-bonded parameters for polysulfides are taken from GAFF, whereas the bonded parameters for 
+polysulfide were developed using DFT calculations (see Table 1). The proper dihedral potential of tetra-
+sulfide has been fitted with the Ryckaert-Bellemans function.  
+ =  	
+ −
+
+
+  
+Each Ryckaert-Bellemans parameters are fitted with the corresponding equilibrium torsion angles on the 
+adiabatic potential energy surfaces (PES) using the nonlinear least-squares Marquardt-Levenberg algo-
+rithm, here the PES are calculated by the second-order truncated Møller−Plesset correlation energy cor-
+rection method (MP2) with the 6-311++G(d,p) basis set. Figure S1(a) shows the fitting of the dihedral 
+parameters for tetra-sulfide.  The structures obtained from MD simulations are in good agreement with 
+previous DFT results10 as well as our AIMD results (Fig S1(b)). The difference in the peak height from 
+AIMD and MD simulations is due to different length of trajectories. A well defined peak at ~ 7 Å (Fig 
+S5 (a)) suggest the formation of cluster size of ~ 14 Å radius with long-raged structure in Li2S4, which is 
+agreement the hydrodynamics radius measured for Li-PS with pulse field gradient NMR (Fig 2(b)) re-
+sults and further validates our force field parameters. The bonded parameters for tetra-sulfide are pro-
+vided in Table 1. Bonded parameters for other polysulfides are same as tetra-sulfide. 
+ 
+Ab Initio Molecular Dynamics  
+ 
+Ab Initio Molecular Dynamics (AIMD) was performed using CPMD simulation package11. For the solv-
+ated Li2S4 in bulk electrolytes simulations, a simulation cell 18*18*18 Å3consisting of 510 atoms was 
+used, which the system is consists of four Li2S4 species solvated by 18 DOL:DME (1:1) solvent mole-
+cules. All the AIMD calculations were carried out using the CPMD program package using periodic 
+boundary conditions, planewave basis sets as the expansion of electronic wavefunctions, and atomic 
+pseudopotentials. In particular, one-electron orbitals were expanded in a planewave basis with a kinetic 
+energy cutoff of 45 Ry restricted to the Gamma point of the Brillouin zone. Medium soft norm-
+conserving Trouiller-Martins pseudo-potentials were selected for all the elements in the generalized 
+gradient approximation. All AIMD simulations utilized the PBE functional12 within the spin-polarized 
+Kohn-Sham formalism with the Grimme dispersion correction for van der Waals interactions.13 
+Throughout the simulation, a molecular dynamics time step of 4 atomic units was used and the electro-
+lyte density was fixed and the system was thermally equilibrated at T = 300 K using the Nose-Hoover 
+thermostat via canonical ensemble (NVT). To obtain for radial distribution function as shown (Fig. 
+S1(b), the AIMD trajectories (~ 500 fs) were obtained after ~ 1 ps of thermal equilibration.  
+ 
+ 
+Pulsed Field Gradient (PFG) NMR 
+ 
+Diffusion coefficients of Li+ cations, anions and solvent molecules for a range of samples were meas-
+ured using 7Li, 19F and 1H pulsed-field gradient (PFG) NMR, respectively, on a 600 MHz NMR spec-
+trometer (Agilent, USA) with a 5 mm z-gradient NMR probe, which has a maximum gradient strength 
+of ~31 T/m. Diffusion coefficients were determined from the 7Li, 19F and 1H echo profiles using the 
+Stejskal-Tanner equation,14 
+Downloaded from pubs.​acs.​org/​cmatex/​article-supplement/​682490/​pdf/​cm7b00068_si_001/​ by TSINGHUA UNIV user on 11 October 2026
+
+<<PAGE 3>>
+ 
+ 
+3
+  = 0 
+                                                         
+where S(g) and S(0) are echo intensities at a gradient strength of g and 0, respectively, D is the diffusion 
+coefficient, γ is the gyromagnetic ratio of 7Li, 19F or 1H,  g is the gradient strength, δ is the gradient pulse 
+length, and ∆ is the diffusion time. The echo profiles were obtained using a stimulated echo sequence 
+with a bipolar gradient (Dbppste, a vendor supplied pulse sequence in Vnmrj) as a function of gradient 
+strength (g) with an appropriate values of gradient length (δ) and diffusion time (∆). The gradient 
+strength was varied in 16 equal steps until the echo signal decays sufficiently at a maximum gradient 
+strength. The effective hydrodynamic radius for Li+ cations and DME solvent molecules: rLi* and rDME* 
+were determined from the measured diffusion coefficients of DLi, DDME and DDOL based on the Stokes-
+Einstein relation of diffusion, 
+ =
+!"#
+$%&'(                               
+where, kB is the Boltzmann constant, T is the absolute temperature, η is the viscosity and rs is the hydro-
+dynamic radius of the diffusing molecules. The details for the determinations of the effective hydrody-
+namic radius (r*) for Li+ cations and DME molecules can be found in our previous publication.15 The 
+Li2Sx solutions were prepared by dissolving stoichiometric amount of elemental sulfur and lithium sul-
+fide (Li2S) in mixed DOL/DME (1:1 by volume) based electrolyte at 60oC overnight in a glove box. 
+ 
+             
+ 
+ 
+FigureS1: (a) Fitting of dihedral parameters for tetra-sulfide (S4
+2- ) (b) comparison of radial distribution 
+function of Li+-DME and Li+-DOL from MD and AIMD simulations  
+ 
+Downloaded from pubs.​acs.​org/​cmatex/​article-supplement/​682490/​pdf/​cm7b00068_si_001/​ by TSINGHUA UNIV user on 11 October 2026
+
+<<PAGE 4>>
+ 
+ 
+4
+ 
+Figure S2. Radial distribution function of (a) Li+-S(terminal), (b) Li+-S(inner), (c) Li+-DME and (d) Li+-
+DOL in Li2Sx (x=2 to 8) in DOL:DME 
+ 
+ 
+  
+ 
+Figure S3. Representative simulation snapshot of (a) Li2S2/DOL:DME, (b) (Li2S2+LiTFSI)/DOL:DME 
+at 298 K. Li+ depicted in pink in space-filling format, S2
+2- in yellow in space-filling format, TFSI- in 
+blue licorice format, DME and DOL in grey  in line format. 
+ 
+0 
+300 
+600 
+1.5 
+2.5 
+3.5 
+4.5 
+S2 
+S3 
+S4 
+S5 
+S6 
+S7 
+S8 
+S2 
+S3 
+S4 
+S5 
+S6 
+S7 
+S8 
+g(r) (a.u) 
+r (Å) 
+0 
+4 
+8 
+12 
+1.5 
+2 
+2.5 
+3 
+S2 
+S3 
+S4 
+S5 
+S6 
+S7 
+S8 
+S2 
+S3 
+S4 
+S5 
+S6 
+S7 
+S8 
+g(r) (a.u) 
+r (Å) 
+0 
+400 
+800 
+1.5 
+2 
+2.5 
+3 
+3.5 
+S2 
+S3 
+S4 
+S5 
+S6 
+S7 
+S8 
+S2 
+S3 
+S4 
+S5 
+S6 
+S7 
+S8 
+g(r) (a.u) 
+r (Å) 
+0 
+2 
+4 
+1 
+2 
+3 
+4 
+5 
+6 
+S2 
+S3 
+S4 
+S5 
+S6 
+S7 
+S8 
+S2 
+S3 
+S4 
+S5 
+S6 
+S7 
+S8 
+g(r) (a.u) 
+r (Å) 
+(a) 
+(b) 
+(c) 
+(d) 
+Downloaded from pubs.​acs.​org/​cmatex/​article-supplement/​682490/​pdf/​cm7b00068_si_001/​ by TSINGHUA UNIV user on 11 October 2026
+
+<<PAGE 5>>
+ 
+ 
+5
+ 
+Figure S4. Radial distribution function of  (a)  Li+-Li+ and  (b)Li+-S2
+2-, (c) coordination number of Li+-
+Li+, Li+-S2
+2-, Li+-DME and Li+-DOL in Li2S2/DOL:DME and (Li2S2+LiTFSI)/DOL:DME 
+ 
+Figure S5.  (a) Radial distribution function of Li+-Li+ in Li2Sx (x= 2 to 8) in DOL:DME (b) Radial dis-
+tribution function of Li+-Li+ and (c) Li+-TFSI- in Li2Sx (x= 2 to 8) + Li(TFSI) in DOL:DME  
+ 
+ 
+ 
+Figure S6. Radial distribution function of Li+-Li+, Li+-DME, Li+-DOL, Li+-Sx
+2- in (a) 0.25 M Li2S4 (b) 
+0.25 0.25 M Li2S6 and (c) 0.25 M Li2S8  in DOL:DME(1:1) at 298 K. 
+ 
+ 
+(a) 
+(b) 
+(c) 
+0 
+200 
+400 
+600 
+800 
+1 
+2 
+3 
+4 
+5 
+6 
+Li2S2_DOL:DME 
+Li2S2+LiTFSI_DOL:DME 
+Li2S2/DOL:DME 
+ Li2S2 + (LiTFSI)/DOL:DME 
+ 
+ 
+g(r) (a.u) 
+r (Å) 
+0 
+1 
+2 
+3 
+4 
+Li-Li 
+Li-S 
+Li-DME 
+Li-DOL 
+Li2S2_DOL:DME 
+Li2S2+LiTFSI_DOL:DME 
+Li2S2/DOL:DME 
+ Li2S2 + (LiTFSI)/DOL:DME 
+ 
+ 
+Coordina on Num ber 
+Downloaded from pubs.​acs.​org/​cmatex/​article-supplement/​682490/​pdf/​cm7b00068_si_001/​ by TSINGHUA UNIV user on 11 October 2026
+
+<<PAGE 6>>
+ 
+ 
+6
+ 
+Figure S7. The effective hydrodynamic radius of Li+ cations and DME molecules determined by pulse 
+field gradient NMR  using diffusion coefficients 
+ 
+ 
+ 
+ 
+ 
+Figure S8 Representative simulation snapshot of (a) 0.25 M Li2S4 (b) 0.25 M Li2S4+LiTFSI/DOL:DME.  
+Li+ depicted in pink in space-filling format, S2
+2- in yellow and TFSI- in blue licorice format. Solvent is 
+removed for the sake of clarity 
+(a) 
+(b) 
+Downloaded from pubs.​acs.​org/​cmatex/​article-supplement/​682490/​pdf/​cm7b00068_si_001/​ by TSINGHUA UNIV user on 11 October 2026
+
+<<PAGE 7>>
+ 
+ 
+7
+ 
+Figure S9 (a) Radial distribution function of Li+-Sx
+2- in Li2Sx + LiTFSI (x= 2 to 8)/DOL:DME solution 
+ 
+Figure S10. Self-diffusion coefficients of Li+, TFSI- and Sx
+2-
+ in Li2Sx (x = 2 to 8) + Li(TFSI) in 
+DOL:DME measured from MD simulations 
+ 
+ 
+Figure S11.  (a) Self-diffusion coefficients of Li+, TFSI-, DOL, DME and PSs in 0.25M Li2Sx (x =4, 8) 
+Extended Li-Sx 
+ordering 
+indicating the 
+cluster formation 
+r (Å)
+D* 10-11 (m2/s)
+0
+0.4
+0.8
+1.3
+1.7
+2.1
+2.5
+S
+S
+S
+S
+S
+S
+S
+Li
+TFSI
+S
+2
+ 
+3
+ 
+4
+ 
+5
+ 
+6
+ 
+7
+ 
+8
+x
+0.01 
+0.1 
+1 
+10 
+1 
+10 
+100 
+1000 
+10000 100000 
+Li 
+TFSI 
+S2 
+Slope = 1 
+Log 10 (t) 
+Log 10 (Δr2(t)) 
+(a) 
+(b) 
+Downloaded from pubs.​acs.​org/​cmatex/​article-supplement/​682490/​pdf/​cm7b00068_si_001/​ by TSINGHUA UNIV user on 11 October 2026
+
+<<PAGE 8>>
+ 
+ 
+8
++ 1M Li(TFSI) in DOL:DME computed from 120 ns long trajectory MD simulations and PFG-NMR (b) 
+Log-log scale plot of mean square displacement of Li+, TFSI- and S2
+2- in Li2S2 + LiTFSI in DOL:DME 
+solution show the slope of 1 at longer time scales indicating diffusive regime within 20ns.  
+ 
+ 
+ 
+Table 1. Non-bonded parameter for tetra-sulfur (S4
+2-).  
+Bond 
+b(nm) 
+Kb(KJ mol-1 nm-2) 
+ 
+ 
+ 
+ 
+s-s 
+0.2133 
+132108.9632 
+ 
+ 
+ 
+ 
+s-s 
+0.2117 
+129168.448 
+ 
+ 
+ 
+ 
+Angle 
+θ 
+Kθ (kJ mol-1 rad-2) 
+ 
+ 
+ 
+ 
+s-s-s 
+112.74 
+615.55 
+ 
+ 
+ 
+ 
+Dihedral C1 
+C2 
+C3 
+C4 
+C5 
+ 
+s-s-s-s 
+-2.902 
+-9.477 
+31.999 
+-17.666 
+-1.952 
+          0 
+ 
+References 
+  
+ 
+1. 
+M. J. Abraham, D. v. d. S., E. Lindahl, B. Hess  and the GROMACS development team, 
+GROMACS User Manual version 5.1.2. 2016, GROMACS User Manual version 5.1.2 
+http://www.gromacs.org. 
+2. 
+Martínez, L.; Andrade, R.; Birgin, E. G.; Martínez, J. M., Packmol: A package for building 
+initial configurations for molecular dynamics simulations. Journal of computational chemistry 2009, 30, 
+2157-2164. 
+3. 
+Berendsen, H. J.; Postma, J. P. M.; van Gunsteren, W. F.; DiNola, A.; Haak, J., Molecular 
+dynamics with coupling to an external bath. J. Chem. Phys. 1984, 81 (8), 3684-3690. 
+4. 
+Bussi, G.; Donadio, D.; Parrinello, M., Canonical sampling through velocity rescaling. The 
+Journal of Chemical Physics 2007, 126, 014101-7. 
+5. 
+Bussi, G.; Zykova-Timan, T.; Parrinello, M., Isothermal-isobaric molecular dynamics using 
+stochastic velocity rescaling. The Journal of Chemical Physics 2009, 130, 074101-9. 
+6. 
+Del Pópolo, M. G.; Voth, G. A., On the structure and dynamics of ionic liquids. J. Phys. Chem. 
+B 2004, 108 (5), 1744-1752. 
+7. 
+Takeuchi, M.; Kameda, Y.; Umebayashi, Y.; Ogawa, S.; Sonoda, T.; Ishiguro, S.-i.; Fujita, M.; 
+Sano, M., Ion–ion interactions of LiPF6 and LiBF4 in propylene carbonate solutions. J. Mol. Liq. 2009, 
+148, 99-108. 
+8. 
+Frisch, M.; Trucks, G.; Schlegel, H.; Scuseria, G.; Robb, M.; Cheeseman, J.; Scalmani, G.; 
+Barone, V.; Mennucci, B.; Petersson, G., gaussian 09, Gaussian. Inc., Wallingford, CT 2009, 4. 
+9. 
+Rajput, N. N.; Qu, X.; Sa, N.; Burrell, A. K.; Persson, K. A., The Coupling between Stability 
+and Ion Pair Formation in Magnesium Electrolytes from First-Principles Quantum Mechanics and 
+Classical Molecular Dynamics. J. Am. Chem. Soc. 2015. 
+10. 
+Vijayakumar, M.; Govind, N.; Walter, E.; Burton, S. D.; Shukla, A.; Devaraj, A.; Xiao, J.; Liu, 
+J.; Wang, C.; Karim, A., Molecular structure and stability of dissolved lithium polysulfide species. Phys. 
+Chem. Chem. Phys. 2014, 16, 10923-10932. 
+11. 
+CPMD, C., opyright IBM Corp. 1990–2006. Copyright MPI für Festkörperforschung Stuttgart 
+1997, 2001. 
+12. 
+Perdew, J.; Burke, K.; Ernzerhof, M., Phys Rev Lett 77: 3865. Errata:(1997) Phys Rev Lett 
+1996, 78, 1396. 
+13. 
+Grimme, S.; Ehrlich, S.; Goerigk, L., Effect of the damping function in dispersion corrected 
+density functional theory. J. Comput. Chem. 2011, 32, 1456-1465. 
+Downloaded from pubs.​acs.​org/​cmatex/​article-supplement/​682490/​pdf/​cm7b00068_si_001/​ by TSINGHUA UNIV user on 11 October 2026
+
+<<PAGE 9>>
+ 
+ 
+9
+14. 
+Stejskal, E. O.; Tanner, J. E., Spin diffusion measurements: spin echoes in the presence of a 
+time‐dependent field gradient. J. Chem. Phys. 1965, 42 (1), 288-292. 
+15. 
+Chen, J.; Han, K. S.; Henderson, W. A.; Lau, K. C.; Vijayakumar, M.; Dzwiniel, T.; Pan, H.; 
+Curtiss, L. A.; Xiao, J.; Mueller, K. T.; Shao, Y.; Liu, J., Restricting the Solubility of Polysulfides in Li‐
+S Batteries Via Electrolyte Salt Selection. Adv. Energy Mater. 2016, 6 (11), 1600160. 
+ 
+ 
+Downloaded from pubs.​acs.​org/​cmatex/​article-supplement/​682490/​pdf/​cm7b00068_si_001/​ by TSINGHUA UNIV user on 11 October 2026

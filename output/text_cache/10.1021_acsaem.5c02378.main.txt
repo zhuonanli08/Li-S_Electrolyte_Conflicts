@@ -1,0 +1,982 @@
+
+<<PAGE 1>>
+Salt Concentration Control of Polysulfide Dissolution, Diffusion, and
+Reactions in Lithium−Sulfur Battery Electrolytes
+N. Tan Luong,* Aginmariya Kottarathil, Władysław Wieczorek, and Patrik Johansson
+Cite This: ACS Appl. Energy Mater. 2025, 8, 15830−15837
+Read Online
+ACCESS
+Metrics & More
+Article Recommendations
+*
+sı
+Supporting Information
+ABSTRACT: Lithium−sulfur (Li−S) batteries suffer from the dissolution of sulfur and polysulfide
+(PS) species in the electrolyte, leading to capacity loss, instability, and a shortened lifespan. While
+highly concentrated electrolytes have been explored to address this issue, the underlying
+mechanisms of S/PS dissolution and subsequent diffusion, particularly concerning the specific
+behavior of long- and short-chain PSs under varying states of charge (SOC), remain poorly
+understood. We here employ operando Raman spectroscopy to semiquantitatively monitor PS
+solubility and migration across a wide range of LiTFSI concentrations in DME:DOL (1:1, v/v). We
+find that both PS dianions (S4−8
+2−) and trisulfur radicals (S3
+•−) decrease at the lithium anode with
+increasing electrolyte salt concentration (0.3−7.0 m), indicating reduced solubility and slower
+transport. Notably, the concentration of S3
+•−decreases more rapidly than that of its parent PS S6
+2−,
+suggesting less favorable radical formation pathways in highly concentrated electrolytes, potentially
+due to Li−TFSI−PS adduct formation. These changes result from shifts in the local solvation
+structure at high salt concentration, thereby controlling the solubility, transport, and chemical pathways of polysulfides in the
+electrolyte. By providing the real-time dynamics of long- and short-chain PSs, this work advances the mechanistic understanding of
+PSs in order to provide valuable insight for further improvement of Li−S battery performance.
+KEYWORDS: Li−S, battery, electrolytes, polysulfides, operando Raman spectroscopy, DFT
+■INTRODUCTION
+Polysulfides (PSs) are crucial intermediates in the operation of
+Li−S batteries, a technology possibly capable of delivering
+twice the specific energy of conventional lithium-ion batteries.1
+These species, with the general formula LixSn (x = 0−2, n = 2−
+8), are generated through complicated and not completely
+identified and understood sulfur redox conversion mecha-
+nisms.2−4 PSs are inherently soluble in liquid electrolytes, with
+the solubility scaling with the S−S chain length,5 allowing
+them to diffuse to and react with the lithium metal anode (PS
+shuttling mechanism) during cycling,6,7 eventually causing a
+loss of capacity and shortened lifespan.4,6,8,9 Extensive research
+on electrolyte formulations8,10−20 has collectively improved
+Li−S battery cycling performance12,13 and specific energy
+density,14 albeit still at the lab-scale level. Persistent challenges
+of the Li−S battery technology stem from an incomprehensive
+understanding of how the electrolyte formulation controls PS
+dissolution, transport, and reactivity.
+The standard Li−S battery electrolyte is 1.0 molar (M)
+lithium bis(trifluoromethanesulfonyl)imide (LiTFSI) in an
+equal volume mixture of 1,2-dimethoxyethane (DME) and 1,3-
+dioxolane (DOL). It dissolves considerable amounts of PSs,
+leading to severe PS shuttling and hence poor stability.5
+Electrolytes with the same salt concentration but better
+solvating solvents dissolve even more PSs.5 They are, however,
+often corrosive to the lithium metal anode15 but do effectively
+utilize sulfur redox conversion by notably stabilizing S3
+•−and
+S6
+2−.15,16,21 Salt concentrations lower than 1.0 M can be
+applied, but then alongside solvents with less solvating power
+toward PSs, such as fluorinated ethers.17 On the other hand,
+increasing the salt concentration effectively decreases the PS
+solubility, and thus, performance is (hopefully/possibly)
+improved.10,12,18−20 The latter is, however, still in doubt due
+to intrinsic drawbacks like higher viscosity and reduced ionic
+conductivity12 that can lead to cell failure from high
+polarization. Lower PS solubility under salt-rich conditions is
+thermodynamically explained by the common ion effect of the
+abundant Li+ concentration10 and by the few free solvent
+molecules available.10,12,18 The higher viscosity also slows PS
+diffusion.
+At the molecular level, strong coordination of the solvent
+with Li+ renders solvent-separated ion pairs (SSIPs) and thus
+amplifies the complete dissolution and dissociation of PSs into
+mono- (Sn
+−) and dianions (Sn
+2−), as well as radical anions
+(Sn
+•−). However, as solvation strength is shared and regulated
+with the presence of salt in the electrolyte, it may facilitate the
+formation of contact ion pairs (CIPs) and/or larger aggregates
+Received:
+July 30, 2025
+Revised:
+September 29, 2025
+Accepted:
+October 21, 2025
+Published: October 31, 2025
+Article
+www.acsaem.org
+© 2025 The Authors. Published by
+American Chemical Society
+15830
+https://doi.org/10.1021/acsaem.5c02378
+ACS Appl. Energy Mater. 2025, 8, 15830−15837
+This article is licensed under CC-BY 4.0
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​8/​21/​15830/​40447852/​ae5c02378.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 2>>
+(AGGs), as for any type of salt in high ionic strength
+media.22,23 Indeed, several studies have argued the existence of
+CIPs and AGGs of PSs due to ionic association.24−29
+Furthermore, solvent molecules can be replaced by salt anions
+to form anion-solvated PSs,30 especially at salt concentrations
+that promote Li+−anion interactions over Li+−solvent
+interactions. These anion-solvated PSs could facilitate different
+sulfur reduction pathways,30 possibly explaining the shifts in PS
+chain-length speciation at high salt concentrations,18 but these
+changes may also result from the complicated chemical
+equilibria. It is, therefore, challenging to assess these dynamics
+at the same time with the coexistence of multiple PS chain
+lengths, whose concentrations continuously change across
+different cell states of charge (SOC). As a result, ex situ
+assessments of the physical properties and local electrolyte
+structure most often fail to accurately capture the dynamic
+solvation, transport, and reactivity of PSs. In situ/operando
+spectroscopy,21,31−35 diffraction,2,3 and imaging,18,36 on the
+other hand, have recently revealed solvent-dependent PS
+dissolution, diffusion, and conversion mechanisms in Li−S
+batteries and may therefore also uncover how these processes
+vary with salt concentration.
+Here, we aim to offer new insights by operando Raman
+spectroscopy assisted by density functional theory (DFT)
+calculations using electrolyte salt concentrations between 0.3
+and 7.0 molal (m) of the common LiTFSI salt dissolved in
+DME:DOL (1:1, v/v) and our previously proven operando
+Raman spectroscopy setup.32 In particular, PSs are selectively,
+by using confocal optics, detected in the separator facing the Li
+anode side, and thus, only diffused PSs are monitored.
+■EXPERIMENTAL SECTION
+Electrolyte Preparation. LiTFSI (99.5%, Solvionic) was dried at
+120 °C under vacuum for 24 h before use. 1,2-Dimethoxyethane, also
+known as monoglyme (DME, anhydrous, 99.5%, Sigma-Aldrich), and
+1,3-dioxolane (DOL, 99.8% with 75 ppm of butylated hydroxytoluene
+as an inhibitor, Sigma-Aldrich) were both dried and stored in
+preheated (200 °C) 3 Å molecular sieves (Thermo Scientific
+Chemicals). LiTFSI was dissolved with an appropriate amount into
+a fixed volume of an equal volume of DME and DOL (1:1, v/v),
+followed by continuous magnetic stirring for 24 h at 25 °C to prepare
+0.3−7.0 m electrolytes (Table S1). All preparation was made in an
+argon-filled glovebox (O2 and H2O levels < 1 ppm). The water
+content in the prepared electrolytes was between 28 and 40 ppm as
+determined by Karl Fischer titration.
+Carbon/Sulfur Composite Cathode Preparation. The C/S
+composite cathode with 60 wt % S loading was prepared as described
+previously.12 Briefly, sulfur (Sigma-Aldrich, 99.998% trace metal
+basis) and carbon black (Vulcan) were first mixed in a mortar before
+sodium carboxymethyl cellulose (Na-CMC, Mw = 700,000, Sigma-
+Aldrich) was added as a binder, with a weight ratio of 60:38.5:1.5,
+respectively. The mixture was then magnetically stirred to obtain a
+homogeneous slurry, which subsequently was cast on a 20 μm Al foil
+(Hohsen) to form a 250 μm thick coating using the doctor blade
+technique. After being coated, the electrode was dried at 60 °C under
+vacuum for 24 h.
+PS Solution Preparation. Solutions with nominal concentrations
+of 0.5 m PS (Li2S4, Li2S6, and Li2S8) were prepared by mixing Li2S
+(Sigma-Aldrich, 99.8%) and S powder in DME:DOL (1:1, v/v) to
+achieve the desired Li:S stoichiometries. The mixtures were stirred
+and heated at 60 °C for 72 h to ensure complete reactions. This
+resulted in clear Li2S6 and Li2S8 solutions but a suspension of Li2S4.
+Operando Raman Spectroscopy Experiments. Operando Cell
+Assembly. The Li−S battery cell was assembled using a
+spectroelectrochemical cell ECC-Opto-Std (EL-cell GmbH) in a
+sandwich configuration similar to a coin cell assembly. The cell
+included a ⌀10 mm C/S composite electrode containing ∼1 mg of S
+(1.3 mgS/cm2), one layer of a ⌀10 mm glass fiber separator
+(Whatman 1821 GF/B, 675 μm) containing 60 μL of electrolyte, and
+⌀15 mm counter and reference electrodes of lithium metal (Toyota
+Tsusho, 200 μm) with a ⌀2 mm hole at the center. Here the
+electrolyte-to-sulfur ratio was 60 μL/mgS, much higher than that in
+practical cells but necessary in order to ensure reliable Raman signal
+acquisition and to minimize solvent evaporation. We do not believe
+the results to be totally and simply transferable or generic, but they do
+provide guidance. The cell used a borosilicate glass window to enable
+the observation of the Raman spectra. The cell assembly was
+performed in an Ar-filled glovebox with O2 and H2O levels < 1 ppm.
+Operando Raman Measurements. All Raman spectra at 25 °C
+were collected on a LabRam HR Evolution (Horiba GmbH)
+spectrometer under confocal mode using a 633 nm He−Ne laser
+(∼3 mW) with an Edge filter, a 200 μm confocal hole, and a Syncerity
+OE detector. The laser was focused by a 10× and 50× lens for survey
+and high-resolution spectra, respectively, on the separator surface near
+the edge of the hole in the lithium metal anode to collect the spectral
+response of diffused PS species.
+We first applied the same moderate spectral resolution (Δν ∼2.6
+cm−1) that was previously proven to be sufficient to track PS
+evolution.31−33 All these survey spectra, covering 200−2400 cm−1,
+were collected in a single run using a 300 grooves/mm grating. Each
+spectrum is the average of 30 accumulations of 20 s of exposure. To
+resolve the details in the local coordination of TFSI, however, and
+correlate these to PS speciation and evolution, higher-resolution
+Raman spectra (Δν ∼0.3 cm−1) were needed and acquired. These
+experiments employed a higher groove density grating,37 1800
+grooves/mm, to acquire 300−600 cm−1 for the PS species and
+700−1000 cm−1 for the TFSI, DME, and DOL signals (and overall
+electrolyte). Each spectrum was acquired by adding 5 accumulations
+of 30 s of exposure, and the interval between measurements was 610 s,
+similar to the survey spectrum. Due to the low signal-to-noise ratio
+within the PS region with this setup, those species are primarily
+analyzed using the survey spectra.
+Electrochemical Measurements. The assembled operando Li−S
+battery cell was directly transferred to the Raman instrument within
+∼5 min to monitor the stability of the open circuit voltage (OCV)
+over a 20 min period. During this time, two Raman spectra were
+collected, each requiring 10 min to acquire at a resolution of 2.6 cm−1,
+in order to probe the possible changes in the electrolyte associated
+with the diffusion of PSs formed due to self-charge. After that, a
+galvanostatic measurement was performed using a constant current of
+167 mA g−1, corresponding to a theoretical C/10 rate (1 C = 1672
+mAh g−1), on a GAMRY Series G 300 instrument at 25 °C between
+1.0 and 3.0 V vs Li+/Li0, and Raman spectra were continuously
+collected as described above.
+Reference Raman Spectra. Both moderate- and high-resolution
+Raman spectra of the electrolytes and PS solutions were recorded on
+the same Raman spectrometer under the same confocal mode, as
+described above. An aliquot of the electrolytes or PS solutions was
+filled inside a 1.0 mm thick quartz cuvette (Hellma) under the argon
+atmosphere of the glovebox (O2 and H2O levels < 1 ppm). Then, the
+cuvette was sealed before it was transferred to the Raman
+spectrometer. The Raman spectra were acquired by focusing the
+laser into the solution with a 50× lens.
+Spectra Analyses. First, the fluorescence background was corrected
+by using a polynomial function on the PS region (400−600 cm−1)
+and the electrolyte region (700−1100 cm−1) with Raman intensities
+initially offset to 0 at 600 and 1100 cm−1, respectively. Then, the
+spectral data were normalized by the standard normal variate method
+to have zero mean and normal standard deviation to account for
+random variances in the intensities. Subsequently, the PS region and
+the TFSI band (∼740−750 cm−1) were fitted with a linear
+combination of Gaussian−Lorentzian (Voigt) components. The
+initial time (t = 0) was set to when the second spectrum during
+OCV was acquired (ca. 20 min after start). These analyses were
+performed with MATLAB (version R2023b, The Mathworks, Inc.).
+ACS Applied Energy Materials
+www.acsaem.org
+Article
+https://doi.org/10.1021/acsaem.5c02378
+ACS Appl. Energy Mater. 2025, 8, 15830−15837
+15831
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​8/​21/​15830/​40447852/​ae5c02378.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 3>>
+Density Functional Theory Calculations. Density functional
+theory (DFT) calculations were performed to predict the stability of
+S6
+2−toward homolytic dissociation into the S3
+•−radical with and
+without being coordinated by Li+ and TFSI. Geometries of Li2S6,
+LiS6
+−, S6
+2−, S3
+•−, and LiS3
+• species as well as Li−TFSI−PS clusters
+were optimized with the B3LYP functional38,39 and 6-311+g(3df)
+basis set.40 To simulate solvation, we applied the implicit solvation
+model SMD41 based on DME parameters (Supporting Information).
+Local energy minima on the potential energy surface were obtained,
+as verified by having no imaginary vibrational frequencies. The
+dissociation of the central S−S bond was evaluated by the Gibbs free
+energy differences (ΔG°). All calculations were performed using the
+Gaussian 16 program package.42
+■RESULTS AND DISCUSSION
+Indeed, a higher electrolyte lithium salt concentration can
+effectively decrease both sulfur and PS solubility (Table S2).12
+Here, to qualify and semiquantify the practical benefits, we
+monitor PS species using operando spectroscopy of Li−S cells,
+first under OCV conditions, and subsequently we resolve how
+the salt concentration controls PS evolution, solubility,
+diffusion, and reactions upon cycling.
+OCV Measurements. The OCV of the cell with the 0.3 m
+electrolyte, directly after assembly, is constant at ∼2.4 V, while
+the 1.0 m electrolyte cell shows the loss of voltage, from ∼2.9
+V to a stable value of 2.4 V within 20 min (Figures 1a and S1).
+The cell with the 2.0 m electrolyte shows a more gradual loss
+of voltage. Further increasing the electrolyte concentration to
+3.0, 5.0, and 7.0 m helps to maintain the OCV at around 3.0−
+3.2 V, of which those of the two latter electrolytes are slightly
+lower (∼1.5%) than that of the 3.0 m electrolyte. We attribute
+the overall increase in the value and stability of OCV in the
+0.3−7.0 m electrolytes to both (i) changes in Li+ solvation
+structure and ion speciation to more CIPs and AGGs12,43 and
+(ii) the reduction of the solubility and diffusion of sulfur at
+higher concentrations.12 The slight invert trend in the 3.0−7.0
+m electrolytes, on the other hand, could be due to the lower
+ionic conductivity and higher viscosity of highly concentrated
+electrolytes,12 of which the latter could affect electrode wetting.
+The lower solubility and diffusion of sulfur should decrease
+the concentration of PSs chemically formed at the anode. To
+detect these PS species, we probe the S−S stretching vibrations
+(300−600 cm−1) (Figure 1b). New bands arise at 400, 450,
+and 534 cm−1 in the 0.3 m electrolyte cell, alongside the
+vibrational signatures of TFSI and solvents (Table S3). The
+400 and 450 cm−1 bands correspond to S−S vibrations from
+various long and short PS Sn
+2−(n = 4−8).32,44,45 The 534 cm−1
+band is due to the S3
+•−radical,32,44,46 whose first overtone
+appears at 1068 cm−1 (Figure S2). S3
+•−is the product of the
+homolytic dissociation of S6
+2−(S6
+2−⇌2S3
+•−), as confirmed by
+methods such as electron paramagnetic resonance47 and UV−
+vis spectroscopy.48 The main band at 369 cm−1 of S8
+2−is, on
+the other hand, difficult to distinguish from the bands of DME
+and TFSI. Still, the stable voltage at 2.4 V and the absence of
+the S4
+2−vibration at 468 cm−1 support the idea that long-chain
+PSs, such as S6−8
+2−, are predominant. To the best of our
+knowledge, these peaks are mainly assigned to free, fully
+solvent-separated dianion (Sn
+2−)/radical (S3
+•−) species,45
+rather than CIP- or AGG-type PSs.
+Using the 1.0 m electrolyte, we could not clearly distinguish
+the bands corresponding to PS dianions, such as 400 and 450
+cm−1, from those of the TFSI anion (Figure 1b and Table S3),
+while the 534 cm−1 band appears with weak intensity. This
+suggests that the PS concentration is below the detection limit,
+which agrees with slower voltage decay. The signal of S3
+•−is,
+on the other hand, enhanced (by 103−105 times) through
+resonance Raman conditions occurring when matching its
+electronic transition (617−627 nm)35,49 with our 633 nm
+excitation laser wavelength, even though low-donor solvents
+like DME and DOL do not stabilize the radical.50 Thus, we can
+still detect S3
+•−despite its low concentration. When the cell
+was left resting at OCV for a more extended 5 h period, the PS
+dianion (369, 400, and 450 cm−1) and S3
+•−(534 cm−1) bands
+continuously grew in intensity (Figure S3). When moving to
+the 2.0−5.0 m electrolytes, we could not detect any PS signals,
+suggesting slower chemical reduction kinetics of sulfur. These
+slower kinetics, in turn, align with less dissolved sulfur due to
+the lower solubility limit (Table S2) and higher viscosity of
+these electrolytes.12 As a consequence, it assists to maintain the
+OCV > 2.8 V (Figure 1a), with some notable changes for the
+2.0 m electrolyte, by decreasing the spontaneous reactions
+between dissolved sulfur and the lithium anode. The self-
+discharge thus slows as the electrolyte salt concentration
+increases.
+Operando PS Evolution. During discharge, the Raman
+spectra of the cells using the 0.3 m (Figures 2a and S4) and 1.0
+m (Figures 2b and S5) electrolytes reveal systematic changes in
+the PS dianion and radical bands during the 2.4 V plateau, in
+agreement with a previous study by some of us.32 The 400 and
+450 cm−1 bands, which contain mixed contributions from S8
+2−,
+S6
+2−, and S4
+2−(c.f. Figure 1b) depending on the cell SOC, are
+dominated by S6
+2−at the end of the 2.4 V plateau,51 as
+confirmed by the concurrent growth of the S3
+•−band at 532
+cm−1. As the discharge proceeds into the 2.1 V plateau (t =
+∼2−6 h), these same bands decrease in intensity, reflecting the
+consumption of S6
+2−and the emergence of shorter PSs (e.g.,
+S4−5
+2−) as the dominant contributor. In parallel, the S3
+•−signal
+weakens but remains detectable, which can be explained by the
+dissociation of unconverted S4
+2−(S4
+2−⇌2S2
+•−) and
+subsequent comproportionation (S4
+2−+ S2
+•−⇌S3
+•−+ S3
+2−)
+as proposed by Steudel et al.52 However, no clear
+spectroscopic evidence for S2
+•−(e.g., a resonance-enhanced
+band at 582 cm−1)53 was obtained under our Raman
+conditions, and the bands of unstable S3
+2−(e.g., 238 and
+Figure 1. (a) OCV of Li−S operando cells using 0.3−7.0 m
+electrolytes. Repeating OCV measurements are shown in Figure S1.
+(b) Comparison of electrolyte Raman spectra (solid color lines) with
+pristine electrolytes (dashed color lines) and Li2Sn (n = 4, 6, 8) in
+DME:DOL solutions (color lines with shading). Symbols: (*) DME
+vibrations, (▼) S8
+2−at 369 and 511 cm−1, (▶) S4
+2−at 450 and 468
+cm−1, and (■) Sn
+2−at 400 and 450 cm−1. A detailed assignment can
+be found in Table S3.
+ACS Applied Energy Materials
+www.acsaem.org
+Article
+https://doi.org/10.1021/acsaem.5c02378
+ACS Appl. Energy Mater. 2025, 8, 15830−15837
+15832
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​8/​21/​15830/​40447852/​ae5c02378.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 4>>
+466 cm−1)54,55 might be at low intensity and hence are
+potentially overlapped with those of S4−5
+2−. We also note here
+that for the cell with the 0.3 m electrolyte, solid α-S8 appears
+after the eighth hour of cycling with strong peaks that overlap
+with the PS signals (Figure S4), possibly due to PS
+decomposing after long laser exposure.
+Using the 2.0 m electrolyte (Figures 2c and S5), the PS
+bands at 400, 450, and 534 cm−1 are weaker. They are even
+almost identical to the TFSI bands when using the 3.0 m
+electrolyte (Figures 2d and S5), thus we can only resolve them
+by difference spectra (Figure 2e). Notably, S8
+2−(369 cm−1) is
+unresolved in Figure 2c−e, perhaps due to its limited
+concentration, and this gives the most substantial evidence
+that bulky PSs diffuse much more slowly in highly viscous
+electrolytes.
+Moving to the 5.0 and 7.0 m electrolytes, we do not detect
+the presence of either PS dianions or the S3
+•−radical (Figure
+S6). Furthermore, the electrochemical behavior differs,
+typically lacking the 2.4 V plateau, and the latter cell completes
+the initial discharge quickly in less than 2 h. We attribute their
+poor electrochemical performance to sluggish sulfur utilization
+kinetics, given also that Figure S7 shows hampered sulfur
+conversion, which contrasts with some earlier reports10,20 but
+aligns with the observations by Shen et al.,19 likely due to
+differences in cathode design. Nonetheless, the stable OCV
+(c.f. Figure 1a) and the absence of detectable PSs suggest that
+both sulfur and PSs remain undissolved and do not migrate to
+the anode.
+Raman Intensity and Voltage Profiles. To further
+correlate the effect of salt concentration on selectively
+controlling PS dissolution, diffusion, and reactivity, we analyze
+both the Raman intensity profiles of PSs and the voltage
+profiles in more detail. First, the distinct two-plateau discharge
+profiles (Figure 3a) show improved sulfur utilization as more
+capacity is delivered as a function of salt concentration, up to
+3.0 m. The charge profiles (Figure 3a), in turn, suggest a
+reduced overcharge for the 3.0 m electrolyte cell as compared
+with the other cells.
+Dissolution and Diffusion of PSs. The length of the 2.4 V
+discharge plateau suggests that more long-chain PSs form as a
+function of increasing salt concentration. However, the
+intensity profiles show quite the opposite: a lower concen-
+tration and slower growth rate (Figure 3b,c). Here, notable
+changes in the Raman intensity reflect only soluble PSs that
+diffuse, while insoluble/nondiffused species remain unde-
+tected. This leads to (i) the absence of bulky S8
+2−(369 and
+511 cm−1, Figure 3b) and (ii) a decrease in shorter PS species
+(n = 4−6) at 400 cm−1 (Figure 3c) and 450 cm−1 (Figure S8).
+The slower formation/migration of PSs is further revealed
+by the delayed maxima of the 400 cm−1 (Figure 3c) and 450
+cm−1 (Figure S8) bands, i.e., not always coinciding with the
+end point of the 2.4 V plateau, proposed to be the complete
+reduction of S/longer PS to S6
+2−.4 The 2.4 V end point shifts
+from ∼0.9 to 1 h (0.3 and 1.0 m) to 1.4 and 1.7 h (2.0 and 3.0
+m, respectively) (Figure 3a), while the 400 cm−1 maximum
+(Figure 3c) occurs at ∼18 min before this point using the least
+concentrated electrolyte but shifts to 18 and 42 min later. We
+attribute these delays to slower PS diffusion in the more
+concentrated electrolytes, though more complete S/PS
+Figure 2. Operando Raman spectra as heat maps coupled with cell voltage profiles for cells with (a) 0.3, (b) 1.0, (c) 2.0, and (d) 3.0 m electrolytes.
+(e) Difference spectra of the data in (d) remove the contribution of electrolyte-related vibrations to better recover PS signals. (Full spectral ranges
+are shown in Figures S4 and S5.) Symbols: (*) vibrations from TFSI and the solvents (c.f. Table S3). Note that the peak of TFSI at 400 cm−1
+remains as the background in (b−d).
+ACS Applied Energy Materials
+www.acsaem.org
+Article
+https://doi.org/10.1021/acsaem.5c02378
+ACS Appl. Energy Mater. 2025, 8, 15830−15837
+15833
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​8/​21/​15830/​40447852/​ae5c02378.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 5>>
+conversion, and thus slower chain-length speciation, may also
+contribute due to the higher capacities extracted.
+The fast decrease observed for both the 400 and 450 cm−1
+bands right after the beginning of the 2.1 V plateau does not,
+however, indicate fast reduction of S6
+2−or S4
+2−. This is rather
+influenced by (i) the inherently weak Raman activity of S4
+2−as
+compared to long-chain PSs44 and (ii) the limited presence of
+S4
+2−due to its extremely low solubility.5
+On charge, the PS profiles show a decline in the total PS
+concentration as a function of electrolyte salt concentration.
+Shorter 2.4 V charge plateaus suggest that the PS maxima
+should follow the opposite trend of the discharge. This is true
+for the 1.0 and 2.0 m electrolyte cells, while for the 3.0 m
+electrolyte cell, the maximum could not be unambiguously
+identified. For the cell with the 0.3 m electrolyte, the PS
+intensity profiles are incomplete due to early deposition of
+solid α-S8, whose Raman signals overlap with other PS bands
+(Figure S4) as mentioned above.
+S3
+•−Radical Formation. While we expect the 534 cm−1
+band of the S3
+•−radical to grow alongside other bands of PSs,
+especially the 400 cm−1 band, this is not always the case across
+all electrolyte salt concentrations (Figure 3d). It shows a quite
+stable intensity for ∼1 and ∼2.5 h after reaching its maximum
+during discharge and charge. The growth seems faster than the
+growth of other PS bands, especially that of S6
+2−(400 cm−1),
+for the cell with the least concentrated electrolyte during both
+processes. For the 1.0 and 2.0 m electrolyte cells, the 534 cm−1
+band growth is more synchronous with that of the S6
+2−band
+and exhibits clear maxima, while it becomes too small to assess
+in the cell with the 3.0 m electrolyte.
+To illustrate further how the salt concentration affects the
+S3
+•−radical increase, we compare the intensity profiles of the
+400 and 534 cm−1 bands (Figure 4). The two corresponding
+species increase simultaneously but at different rates. This is
+evident through the considerable intensity loss of S3
+•−
+compared to that of S6
+2−(Figures 4a,b), and the ratio (Figure
+4c) reveals that S6
+2−is predominant over S3
+•−, especially
+considering the predicted Raman activity of S3
+•−to be ca. 2 to
+3 orders of magnitude larger than that for S6
+2−, strongly
+suggesting that the S3
+•−concentration likely is negligible at
+high electrolyte salt concentrations.
+The comparison between the 400 and 534 cm−1 bands also
+suggests that the S3
+•−radical formation mechanism has been
+altered. Although the canonical S6
+2−→2S3
+•−pathway is
+strongly exergonic (Table 1; also see ref 52) to generate
+abundant S3
+•−, experiments have shown nondetectable to trace
+amounts in many solvents.35,50,56 Previous modeling has
+suggested solvent-dependent dissociation pathways to S6
+2−,
+and subsequently the S3
+•−radical, that are unfavorable in DME
+and DOL.28,56 High salt concentrations could additionally
+Figure 3. (a) Voltage profiles and (b−d) Raman intensity profiles of
+PSs at (b) 369, (c) 400, and (d) 534 cm−1 in Li−S battery cells using
+the 0.3−3.0 m LiTFSI electrolytes.
+Figure 4. (a) Selected Raman spectra for when the 400 cm−1 band achieves maximum intensity. (b) The normalized maxima of S6
+2−(400 cm−1)
+and S3
+•−(534 cm−1) intensities in these cells during discharge and charge. (c) The ratio between the maxima of S6
+2−and S3
+•−intensities during cell
+discharge.
+Table 1. DFT Calculated ΔG° (kJ/mol) from Structures
+(Figure S9) Optimized at the B3LYP/6-311+g(3df) Level of
+Theory and Implicit Solvation (SMD) Using DME
+Parameters
+No.
+Reaction
+ΔG°
+1
+S6
+2−→2S3
+•−
+−71.6
+2
+LiS6
+−→Li[(S3
+•)2]−
+−4.4
+3
+Li2S6 →Li2[(S3
+•)2]
+25.7
+4
+Li3[(TFSI)S6] →Li3[(TFSI)(S3
+•)2]
+37.4
+ACS Applied Energy Materials
+www.acsaem.org
+Article
+https://doi.org/10.1021/acsaem.5c02378
+ACS Appl. Energy Mater. 2025, 8, 15830−15837
+15834
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​8/​21/​15830/​40447852/​ae5c02378.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 6>>
+render strong PS−Li−TFSI interactions30 (Figure S9), and we
+hypothesize that these can potentially be formed in our 3.0 m
+electrolyte, where the DME:Li ratio is low (Table S1), whereas
+DOL is less active43 and hence not capable to fully solvate Li+.
+These interactions could provide an extra hindrance for the
+cleavage of the central S−S bond of S6
+2−, as evidenced by the
+barely favorable ΔG° for LiS6
+−and unfavorable ΔG° for Li2S6
+and Li3[(TFSI)S6] (Table 1). Still, it remains elusive how
+suppressing the S3
+•−radical significantly alters the PS redox
+mechanism(s), especially since several studies suggest that this
+radical accelerates S/PS conversion.46,50,57
+Operando TFSI Local Environment Changes. Probing
+the PS−Li−TFSI interactions in the 3.0 m electrolyte using
+operando high-resolution Raman spectroscopy shows that the
+overall spectra appear almost unchanged on a cursory
+inspection (Figure 5a). However, deconvoluting the TFSI
+band (740−750 cm−1), which is far more responsive to
+solvation variations22 than the PS bands (300−600 cm−1),
+provides some further insight (Figure S10). The deconvolution
+renders a 741 cm−1 component for “free” TFSI (SSIPs) and a
+747 cm−1 component for Li+−TFSI (CIPs), in which the latter
+is more populated than the former as salt concentration
+increases (Figure S10).22 Upon cycling, the SSIP/CIP intensity
+ratio inversely follows the changes in concentrations of PSs at
+different SOC, repeating for five cycles, and simultaneously
+declines steadily, largely from solvent evaporation (similarly to
+the pristine electrolyte) (Figures 5b,c and S11). We ascribe the
+minor shift from SSIPs to CIPs on the 2.4 V plateau to changes
+in the solvation of TFSI due to the addition of Li+ from the
+anode and long-chain PSs. We could also assign the decreased
+SSIP/CIP ratio to the formation of TFSI−Li−PS species,
+adapting the common observation that PS−Li+ interactions are
+inevitable.26,30 PS−Li+ interactions become stronger as short-
+chain PSs (Sn
+2−, 1 < n < 5) are produced on the 2.1 V plateau,
+which will eventually overcome the Li+−TFSI interactions,
+consequently releasing free TFSI anions and thus raising the
+SSIP/CIP ratio. Collectively, these data provide indirect, yet
+compelling, evidence of a dynamic Li+, TFSI, and PS interplay
+(solute−solute interactions) throughout the entire operation
+of the Li−S battery cell (Figure 5d).
+■CONCLUSIONS
+By using operando Raman spectroscopy, we directly illustrate
+that both S and PS dianions (S4−8
+2−) are less soluble and
+diffuse slower to the lithium anode when increasing the
+electrolyte salt concentration from 0.3 to 3.0 m, thereby
+improving the battery performance. In the 5.0 and 7.0 m
+electrolytes, however, S and PSs are in principle insoluble and
+do not migrate to the anode due to their high viscosities,
+causing sluggish S/PS conversion; this also results in poor
+electrochemical performance. The Raman spectra also show
+that the S3
+•−radical is suppressed in the more concentrated
+electrolytes, an effect attributed to Li−TFSI−PS interactions
+that lead to a less favorable/unfavorable S6
+2−disproportiona-
+tion pathway, as supported by the DFT calculation. These
+species and interactions can indirectly be monitored via high-
+resolution Raman signatures of the TFSI anion, which can
+reveal how salt concentration controls the solvation and
+thereby dictates both the chemistry and the macroscopic
+transport properties of PSs. Overall, the here showcased real-
+time tracking of the solubility, mobility, and interconversions
+of PSs provides knowledge highly essential for guiding further
+advances in Li−S batteries.
+■ASSOCIATED CONTENT
+*
+sı Supporting Information
+The Supporting Information is available free of charge at
+https://pubs.acs.org/doi/10.1021/acsaem.5c02378.
+Details of solvent descriptors for DFT calculation, extra
+data of OCV measurements, raw and processed Raman
+spectra of all operando experiments, Raman spectra for
+the operando experiments at the sulfur cathode, and DFT
+optimized geometries (PDF)
+Figure 5. (a) Operando high-resolution Raman spectra as heat maps coupled with cell voltage profiles for the cell using the 3.0 m LiTFSI
+electrolyte. (b) The voltage profile of the first cycle and (c) Raman intensity profiles of SSIPs/CIPs and PS (the 400 cm−1 band). (d) Schematic
+representation of the dynamic speciation and interaction between Li+, TFSI, and PSs in the electrolyte of a Li−S battery cell at different SOC.
+ACS Applied Energy Materials
+www.acsaem.org
+Article
+https://doi.org/10.1021/acsaem.5c02378
+ACS Appl. Energy Mater. 2025, 8, 15830−15837
+15835
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​8/​21/​15830/​40447852/​ae5c02378.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 7>>
+■AUTHOR INFORMATION
+Corresponding Author
+N. Tan Luong −Department of Physics, Chalmers University
+of Technology, 412 96 Gothenburg, Sweden;
+orcid.org/
+0000-0002-0118-8207; Email: tan.luong@chalmers.se
+Authors
+Aginmariya Kottarathil −Department of Physics, Chalmers
+University of Technology, 412 96 Gothenburg, Sweden;
+Faculty of Chemistry, Warsaw University of Technology,
+00664 Warsaw, Poland;
+orcid.org/0000-0002-8670-
+728X
+Władysław Wieczorek −Faculty of Chemistry, Warsaw
+University of Technology, 00664 Warsaw, Poland;
+ALISTOREEuropean Research Institute, CNRS FR 3104,
+Hub de l’Energie, 80039 Amiens, France;
+orcid.org/0000-
+0002-3881-3838
+Patrik Johansson −Department of Physics, Chalmers
+University of Technology, 412 96 Gothenburg, Sweden;
+ALISTOREEuropean Research Institute, CNRS FR 3104,
+Hub de l’Energie, 80039 Amiens, France;
+orcid.org/0000-
+0002-9907-117X
+Complete contact information is available at:
+https://pubs.acs.org/10.1021/acsaem.5c02378
+Author Contributions
+N.T.L.: Writing −review and editing, Writing −original draft,
+Visualization, Methodology, Investigation, Formal analysis,
+Data curation, Conceptualization. A.K.: Formal analysis, Data
+curation, Conceptualization, Writing −review and editing.
+W.W. and P.J.: Writing −review and editing, Supervision,
+Resources, Project administration, Methodology, Funding
+acquisition, Conceptualization.
+Notes
+The authors declare no competing financial interest.
+■ACKNOWLEDGMENTS
+This work was financially supported by the Swedish Research
+Council’s (VR) Distinguished Professor grant “Next Gen-
+eration Batteries” (#2021-00613) to P.J. and the European
+Union’s Horizon 2020 research and innovation program under
+the Marie Skłodowska-Curie Actions COFUND (Grant
+Agreement #945357) to A.K. The authors would like to
+thank Maciej Smoliński (Project ENERGYTECH-1, Warsaw
+University of Technology) for the cathode preparation.
+■REFERENCES
+(1) Robinson, J. B.; Xi, K.; Kumar, R. V.; Ferrari, A. C.; Au, H.;
+Titirici, M.-M.; Parra-Puerto, A.; Kucernak, A.; Fitch, S. D. S.; Garcia-
+Araez, N.; et al. 2021 roadmap on lithium sulfur batteries. Journal of
+Physics: Energy 2021, 3 (3), No. 031501.
+(2) Waluś, S.; Barchasz, C.; Colin, J.-F.; Martin, J.-F.; Elkaïm, E.;
+Leprêtre, J.-C.; Alloin, F. New insight into the working mechanism of
+lithium−sulfur batteries: in situ and operando X-ray diffraction
+characterization. Chem. Commun. 2013, 49 (72), 7899−7901.
+(3) Lowe, M. A.; Gao, J.; Abruña, H. D. Mechanistic insights into
+operational lithium−sulfur batteries by in situ X-ray diffraction and
+absorption spectroscopy. RSC Adv. 2014, 4 (35), 18347−18353.
+(4) Wild, M.; O’Neill, L.; Zhang, T.; Purkayastha, R.; Minton, G.;
+Marinescu, M.; Offer, G. J. Lithium sulfur batteries, a mechanistic
+review. Energy Environ. Sci. 2015, 8 (12), 3477−3494.
+(5) Pan, H.; Wei, X.; Henderson, W. A.; Shao, Y.; Chen, J.;
+Bhattacharya, P.; Xiao, J.; Liu, J. On the Way Toward Understanding
+Solution Chemistry of Lithium Polysulfides for High Energy Li−S
+Redox Flow Batteries. Adv. Energy Mater. 2015, 5 (16), No. 1500113.
+(6) Mikhaylik, Y. V.; Akridge, J. R. Polysulfide Shuttle Study in the
+Li/S Battery System. J. Electrochem. Soc. 2004, 151 (11), A1969.
+(7) Drvarič Talian, S.; Moškon, J.; Dominko, R.; Gaberšček, M.
+Reactivity and Diffusivity of Li Polysulfides: A Fundamental Study
+Using Impedance Spectroscopy. ACS Appl. Mater. Interfaces 2017, 9
+(35), 29760−29770.
+(8) Liu, G.; Sun, Q.; Li, Q.; Zhang, J.; Ming, J. Electrolyte Issues in
+Lithium−Sulfur Batteries: Development, Prospect, and Challenges.
+Energy Fuels 2021, 35 (13), 10405−10427.
+(9) Yamin, H.; Gorenshtein, A.; Penciner, J.; Sternberg, Y.; Peled, E.
+Lithium Sulfur Battery: Oxidation/Reduction Mechanisms of
+Polysulfides in THF Solutions. J. Electrochem. Soc. 1988, 135 (5),
+1045.
+(10) Shin, E. S.; Kim, K.; Oh, S. H.; Cho, W. I. Polysulfide
+dissolution control: the common ion effect. Chem. Commun. 2013, 49
+(20), 2004−2006.
+(11) Barghamadi, M.; Best, A. S.; Bhatt, A. I.; Hollenkamp, A. F.;
+Musameh, M.; Rees, R. J.; Rüther, T. Lithium−sulfur batteriesthe
+solution is in the electrolyte, but is the electrolyte a solution? Energy
+Environ. Sci. 2014, 7 (12), 3902−3920.
+(12) Kottarathil, A.; Slim, Z.; Ahmad Ishfaq, H.; Jeschke, S.;
+Żukowska, G. Z.; Marczewski, M.; Lech, K.; Johansson, P.; Wieczorek,
+W. The Role of the Anion in Concentrated Electrolytes for Lithium-
+Sulfur Batteries. J. Electrochem. Soc. 2024, 171 (7), No. 070506.
+(13) Gao, X.; Yu, Z.; Wang, J.; Zheng, X.; Ye, Y.; Gong, H.; Xiao, X.;
+Yang, Y.; Chen, Y.; Bone, S. E.; et al. Electrolytes with moderate
+lithium polysulfide solubility for high-performance long-calendar-life
+lithium−sulfur batteries. Proc. Natl. Acad. Sci. U. S. A. 2023, 120 (31),
+No. e2301260120.
+(14) Cheng, Q.; Chen, Z.-X.; Li, X.-Y.; Hou, L.-P.; Bi, C.-X.; Zhang,
+X.-Q.; Huang, J.-Q.; Li, B.-Q. Constructing a 700 Wh kg−1-level
+rechargeable lithium-sulfur pouch cell. Journal of Energy Chemistry
+2023, 76, 181−186.
+(15) Gupta, A.; Bhargav, A.; Manthiram, A. Highly Solvating
+Electrolytes for Lithium−Sulfur Batteries. Adv. Energy Mater. 2019, 9
+(6), No. 1803096.
+(16) Baek, M.; Shin, H.; Char, K.; Choi, J. W. New High Donor
+Electrolyte for Lithium−Sulfur Batteries. Adv. Mater. 2020, 32 (52),
+No. 2005022.
+(17) Glaser, R.; Wu, F.; Register, E.; Tolksdorf, M.; Johnson, B.;
+Ready, J.; Sanghadasa, M.; Yushin, G. Tuning Low Concentration
+Electrolytes for High Rate Performance in Lithium-Sulfur Batteries. J.
+Electrochem. Soc. 2020, 167 (10), No. 100512.
+(18) Taiwo, G. S.; Rashti, A.; Mishra, M.; Yao, K. P. C. Polysulfide
+Speciation in Li−S Battery Electrolyte via In-Operando Optical
+Imaging and Ex-Situ UV-vis Spectra Analysis. J. Electrochem. Soc.
+2022, 169 (9), No. 090518.
+(19) Shen, C.; Xie, J.; Zhang, M.; Andrei, P.; Hendrickson, M.;
+Plichta, E. J.; Zheng, J. P. Understanding the role of lithium
+polysulfide solubility in limiting lithium-sulfur cell capacity. Electro-
+chim. Acta 2017, 248, 90−97.
+(20) Suo, L.; Hu, Y.-S.; Li, H.; Armand, M.; Chen, L. A new class of
+Solvent-in-Salt electrolyte for high-energy rechargeable metallic
+lithium batteries. Nat. Commun. 2013, 4 (1), 1481.
+(21) Zou, Q.; Lu, Y.-C. Solvent-Dictated Lithium Sulfur Redox
+Reactions: An Operando UV−vis Spectroscopic Study. J. Phys. Chem.
+Lett. 2016, 7 (8), 1518−1525.
+(22) Seo, D. M.; Boyle, P. D.; Sommer, R. D.; Daubert, J. S.;
+Borodin, O.; Henderson, W. A. Solvate Structures and Spectroscopic
+Characterization of LiTFSI Electrolytes. J. Phys. Chem. B 2014, 118
+(47), 13601−13608.
+(23) Yamada, Y.; Yamada, A. ReviewSuperconcentrated Electro-
+lytes for Lithium Batteries. J. Electrochem. Soc. 2015, 162 (14), A2406.
+(24) Kamphaus, E. P.; Balbuena, P. B. First-Principles Investigation
+of Lithium Polysulfide Structure and Behavior in Solution. J. Phys.
+Chem. C 2017, 121 (39), 21105−21117.
+ACS Applied Energy Materials
+www.acsaem.org
+Article
+https://doi.org/10.1021/acsaem.5c02378
+ACS Appl. Energy Mater. 2025, 8, 15830−15837
+15836
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​8/​21/​15830/​40447852/​ae5c02378.​pdf by TSINGHUA UNIV user on 21 September 2026
+
+<<PAGE 8>>
+(25) Xiao, J.; Zhou, G.; Chen, H.; Feng, X.; Legut, D.; Fan, Y.;
+Wang, T.; Cui, Y.; Zhang, Q. Elaboration of Aggregated Polysulfide
+Phases: From Molecules to Large Clusters and Solid Phases. Nano
+Lett. 2019, 19 (10), 7487−7493.
+(26) Gupta, A.; Bhargav, A.; Jones, J.-P.; Bugga, R. V.; Manthiram, A.
+Influence of Lithium Polysulfide Clustering on the Kinetics of
+Electrochemical Conversion in Lithium−Sulfur Batteries. Chem.
+Mater. 2020, 32 (5), 2070−2077.
+(27) Tsuzuki, S.; Kaneko, T.; Sodeyama, K.; Umebayashi, Y.;
+Shinoda, W.; Seki, S.; Ueno, K.; Dokko, K.; Watanabe, M.
+Thermodynamic aspect of sulfur, polysulfide anion and lithium
+polysulfide: plausible reaction path during discharge of lithium−sulfur
+battery. Phys. Chem. Chem. Phys. 2021, 23 (11), 6832−6840.
+(28) Zhang, B.; Wu, J.; Gu, J.; Li, S.; Yan, T.; Gao, X.-P. The
+Fundamental Understanding of Lithium Polysulfides in Ether-Based
+Electrolyte for Lithium−Sulfur Batteries. ACS Energy Letters 2021, 6
+(2), 537−546.
+(29) Song, Y.-W.; Shen, L.; Yao, N.; Li, X.-Y.; Bi, C.-X.; Li, Z.; Zhou,
+M.-Y.; Zhang, X.-Q.; Chen, X.; Li, B.-Q.; et al. Cationic lithium
+polysulfides in lithium−sulfur batteries. Chem. 2022, 8 (11), 3031−
+3050.
+(30) Song, Y.-W.; Shen, L.; Yao, N.; Feng, S.; Cheng, Q.; Ma, J.;
+Chen, X.; Li, B.-Q.; Zhang, Q. Anion-Involved Solvation Structure of
+Lithium Polysulfides in Lithium−Sulfur Batteries. Angew. Chem., Int.
+Ed. 2024, 63 (19), No. e202400343.
+(31) Dillard, C.; Singh, A.; Kalra, V. Polysulfide Speciation and
+Electrolyte Interactions in Lithium−Sulfur Batteries with in Situ
+Infrared Spectroelectrochemistry. J. Phys. Chem. C 2018, 122 (32),
+18195−18203.
+(32) Bouchal, R.; Boulaoued, A.; Johansson, P. Monitoring
+Polysulfide Solubility and Diffusion in Fluorinated Ether-Based
+Electrolytes by Operando Raman Spectroscopy. Batteries & Supercaps
+2020, 3 (5), 397−401.
+(33) Wang, J.; Liu, H.; Zhang, J.; Xiao, Q.; Wang, C.; Zhang, Y.; Liu,
+M.; Kang, Q.; Jia, L.; Wang, D.; et al. Polysulfide-mediated solvation
+shell reorganization for fast Li+ transfer probed by in-situ sum
+frequency generation spectroscopy. Energy Storage Materials 2024, 67,
+No. 103289.
+(34) Wujcik, K. H.; Wang, D. R.; Pascal, T. A.; Prendergast, D.;
+Balsara, N. P. In Situ X-ray Absorption Spectroscopy Studies of
+Discharge Reactions in a Thick Cathode of a Lithium Sulfur Battery. J.
+Electrochem. Soc. 2017, 164 (2), A18.
+(35) Wujcik, K. H.; Wang, D. R.; Raghunathan, A.; Drake, M.;
+Pascal, T. A.; Prendergast, D.; Balsara, N. P. Lithium Polysulfide
+Radical Anions in Ether-Based Solvents. J. Phys. Chem. C 2016, 120
+(33), 18403−18410.
+(36) Sadd, M.; De Angelis, S.; Colding-Jørgensen, S.; Blanchard, D.;
+Johnsen, R. E.; Sanna, S.; Borisova, E.; Matic, A.; Bowen, J. R.
+Visualization of Dissolution-Precipitation Processes in Lithium−
+Sulfur Batteries. Adv. Energy Mater. 2022, 12 (10), No. 2103126.
+(37) Tuschel, D. Spectral Resolution and Dispersion in Raman
+Spectroscopy. Spectroscopy 2020, 35 (9), 9−15.
+(38) Becke, A. D. Density-functional thermochemistry. III. The role
+of exact exchange. J. Chem. Phys. 1993, 98 (7), 5648−5652.
+(39) Lee, C.; Yang, W.; Parr, R. G. Development of the Colle-
+Salvetti correlation-energy formula into a functional of the electron
+density. Phys. Rev. B 1988, 37 (2), 785−789.
+(40) Fujii, K.; Fujimori, T.; Takamuku, T.; Kanzaki, R.; Umebayashi,
+Y.;
+Ishiguro,
+S.-i.
+Conformational
+Equilibrium
+of
+Bis-
+(trifluoromethanesulfonyl) Imide Anion of a Room-Temperature
+Ionic Liquid: Raman Spectroscopic Study and DFT Calculations. J.
+Phys. Chem. B 2006, 110 (16), 8179−8183.
+(41) Marenich, A. V.; Cramer, C. J.; Truhlar, D. G. Universal
+Solvation Model Based on Solute Electron Density and on a
+Continuum Model of the Solvent Defined by the Bulk Dielectric
+Constant and Atomic Surface Tensions. J. Phys. Chem. B 2009, 113
+(18), 6378−6396.
+(42) Frisch, M. J.; Trucks, G. W.; Schlegel, H. B.; Scuseria, G. E.;
+Robb, M. A.; Cheeseman, J. R.; Scalmani, G.; Barone, V.; Petersson,
+G. A.; Nakatsuji, H.; Li, X.; Caricato, M.; Marenich, A. V.; Bloino, J.;
+Janesko, B. G.; Gomperts, R.; Mennucci, B.; Hratchian, H. P.; Ortiz, J.
+V.; Izmaylov, A. F.; Sonnenberg, J. L.; Williams-Young, D.; Ding, F.;
+Lipparini, F.; Egidi, F.; Goings, J.; Peng, B.; Petrone, A.; Henderson,
+T.; Ranasinghe, D.; Zakrzewski, V. G.; Gao, J.; Rega, N.; Zheng, G.;
+Liang, W.; Hada, M.; Ehara, M.; Toyota, K.; Fukuda, R.; Hasegawa, J.;
+Ishida, M.; Nakajima, T.; Honda, Y.; Kitao, O.; Nakai, H.; Vreven, T.;
+Throssell, K.; Montgomery, J. A., Jr.; Peralta, J. E.; et al. Gaussian 16,
+Revision B.01; Gaussian, Inc., Wallingford, CT, 2016.
+(43) Hockmann, A.; Ackermann, F.; Diddens, D.; Cekic-Laskovic, I.;
+Schönhoff, M. Heterogeneous Li coordination in solvent-in-salt
+electrolytes enables high Li transference numbers. Faraday Discuss.
+2024, 253, 343.
+(44) Hannauer, J.; Scheers, J.; Fullenwarth, J.; Fraisse, B.; Stievano,
+L.; Johansson, P. The Quest for Polysulfides in Lithium−Sulfur
+Battery Electrolytes: An Operando Confocal Raman Spectroscopy
+Study. ChemPhysChem 2015, 16 (13), 2755−2759.
+(45) Hagen, M.; Schiffels, P.; Hammer, M.; Dörfler, S.; Tübke, J.;
+Hoffmann, M. J.; Althues, H.; Kaskel, S. In-Situ Raman Investigation
+of Polysulfide Formation in Li-S Cells. J. Electrochem. Soc. 2013, 160
+(8), A1205.
+(46) Bouchal, R.; Pechberty, C.; Boulaoued, A.; Lindahl, N.;
+Johansson, P. Tri-sulfur radical trapping in lithium−sulfur batteries.
+Journal of Power Sources Advances 2024, 28, No. 100153.
+(47) Wang, Q.; Zheng, J.; Walter, E.; Pan, H.; Lv, D.; Zuo, P.; Chen,
+H.; Deng, Z. D.; Liaw, B. Y.; Yu, X.; et al. Direct Observation of Sulfur
+Radicals as Reaction Media in Lithium Sulfur Batteries. J. Electrochem.
+Soc. 2015, 162 (3), A474.
+(48) Chivers, T.; Drummond, I. Characterization of the trisulfur
+radical anion S3- in blue solutions of alkali polysulfides in
+hexamethylphosphoramide. Inorg. Chem. 1972, 11 (10), 2525−2527.
+(49) Zhang, B.; Wang, Z.; Ji, H.; Zhang, H.; Li, L.; Hu, J.; Li, S.; Wu,
+J. Unveiling light effect on formation of trisulfur radicals in lithium−
+sulfur batteries. Chem. Commun. 2023, 59 (28), 4237−4240.
+(50) Cuisinier, M.; Hart, C.; Balasubramanian, M.; Garsuch, A.;
+Nazar, L. F. Radical or Not Radical: Revisiting Lithium−Sulfur
+Electrochemistry in Nonaqueous Electrolytes. Adv. Energy Mater.
+2015, 5 (16), No. 1401801.
+(51) Cuisinier, M.; Cabelguen, P.-E.; Evers, S.; He, G.; Kolbeck, M.;
+Garsuch, A.; Bolin, T.; Balasubramanian, M.; Nazar, L. F. Sulfur
+Speciation in Li−S Batteries Determined by Operando X-ray
+Absorption Spectroscopy. J. Phys. Chem. Lett. 2013, 4 (19), 3227−
+3232.
+(52) Steudel, R.; Steudel, Y. Polysulfide Chemistry in Sodium−
+Sulfur Batteries and Related Systems A Computational Study by
+G3X(MP2) and PCM Calculations. Chemistry A European Journal
+2013, 19 (9), 3162−3176.
+(53) Farsang, S.; Caracas, R.; Adachi, T.; Schnyder, C.; Zajacz, Z.
+S2
+−and S3
+−radicals and the S4
+2−polysulfide ion in lazurite, haüyne
+and synthetic ultramarine blue revealed by resonance Raman
+spectroscopy. American Mineralogist 2023, 108 (12), 2234−2243,
+DOI: 10.2138/am-2022-8655.
+(54) Janz, G. J.; Downey, J. R.; Roduner, E.; Wasilczyk, G. J.; Coutts,
+J. W.; Eluard, A. Raman studies of sulfur-containing anions in
+inorganic polysulfides. Sodium polysulfides. Inorg. Chem. 1976, 15
+(8), 1759−1763.
+(55) He, Q.; Freiberg, A. T. S.; Patel, M. U. M.; Qian, S.; Gasteiger,
+H. A. Operando Identification of Liquid Intermediates in Lithium−
+Sulfur Batteries via Transmission UV−vis Spectroscopy. J. Electro-
+chem. Soc. 2020, 167 (8), No. 080508.
+(56) Han, X.; Xu, X. Mechanistic insights into trisulfur radical
+generation in lithium−sulfur batteries. J. Matter. Chem. A 2023, 11
+(35), 18922−18932.
+(57) Zhang, J.; Fu, Q.; Li, P.; Linghu, R.; Fan, X.; Lin, H.; Bian, J.;
+Han, S.; Sun, G.; Kong, L. Lithium polysulfide solvation and
+speciation in the aprotic lithium-sulfur batteries. Particuology 2024,
+89, 238−245.
+ACS Applied Energy Materials
+www.acsaem.org
+Article
+https://doi.org/10.1021/acsaem.5c02378
+ACS Appl. Energy Mater. 2025, 8, 15830−15837
+15837
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​8/​21/​15830/​40447852/​ae5c02378.​pdf by TSINGHUA UNIV user on 21 September 2026

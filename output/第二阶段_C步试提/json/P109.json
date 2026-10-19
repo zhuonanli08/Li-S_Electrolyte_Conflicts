@@ -1,0 +1,39 @@
+{
+  "编号": "P109",
+  "电解液": {
+    "E1": {"名称": "1.0 M LiClO4/SL", "配方": "1.0 M LiClO4，环丁砜"},
+    "E2": {"名称": "2.4 M LiClO4/SL", "配方": "2.4 M LiClO4，环丁砜"},
+    "E3": {"名称": "2.8 M LiClO4/SL", "配方": "2.8 M LiClO4，环丁砜"},
+    "E4": {"名称": "系列 0.1–2.8 M LiClO4/SL", "配方": "0.1、0.5、1.0、1.5、2.0、2.4、2.8 M LiClO4，环丁砜"}
+  },
+  "条件": {
+    "C1": {"正极": "S/KB/PEO 70:10:20", "硫载量": "约 1.2 mg cm-2（2 mAh cm-2）", "硫含量": "极片 70 wt%", "E/S": "6.7", "电解液体积": "4 µL / mAh", "面积": "正极 6.38 cm2；负极 5.10 cm2",
+           "锂厚": "120 µm", "N/P": "", "倍率": "0.3 mA cm-2（0.15C，250 mA g-1）", "1C定义": "", "温度": "30 °C", "电池": "Swagelok 型",
+           "原句": "The content of electrolytes into lithium- sulfur cells was 4 ml per 1 mAh, which is equivalent to 6.7 ml per 1 mg of sulfur.",
+           "备注": "原文 PDF 把 µ 识别成 m（4 ml、120 mm），按上下文为 µL、µm"}
+  },
+  "比较": [
+    {"A": "E2", "B": "E1", "条件": "C1", "层": "C", "改变因素": ["盐浓度"],
+     "溶剂化依据": "作者计算：浓度升高，自由环丁砜减少（Table 1，按溶剂化数推算）；黏度升高（实测）",
+     "指标": [
+       {"指标": "首圈容量", "取值点": "第 1 次放电（总容量）", "A": "", "B": "", "单位": "mAh g-1", "方向": "A更差", "来源": "仅图（文字给趋势：1 M 最大）",
+        "原句": "The dependence of the capacity of lithium-sulfur cells on the concentration of lithium perchlorate in sulfolane is bell-shaped with a maximum at a salt concentration of about 1M (Fig. 2)."},
+       {"指标": "其他", "取值点": "第 1 次放电高电压平台容量（Table 1）", "A": "336", "B": "361", "单位": "mAh g-1", "方向": "A更差", "来源": "表", "原句": ""},
+       {"指标": "循环保持率或寿命", "取值点": "循环全程衰减速率", "A": "", "B": "", "单位": "", "方向": "A更好", "来源": "仅图（文字给方向）",
+        "原句": "The cells with the electrolyte containing 2.4М LiClO4 feature the smallest rate of depletion in both the charge and discharge capacities during cycling."},
+       {"指标": "全电池库仑效率", "取值点": "循环过程", "A": "", "B": "", "单位": "%", "方向": "A更好", "来源": "仅图（文字给方向）",
+        "原句": "The largest coulomb efficiency is observed for cells with high-concentration electrolytes containing 2.0e2.8М of the lithium salt."},
+       {"指标": "自放电", "取值点": "第 3 圈穿梭电流密度", "A": "", "B": "", "单位": "mA cm-2", "方向": "A更好", "来源": "仅图（文字给趋势：随黏度升高而下降）",
+        "原句": "The decrease in the self-discharge (shuttle) current density of lithium-sulfur cells with the increase in the viscosity of solutions of lithium perchlorate in sulfolane (Fig. 5b)"}
+     ]},
+    {"A": "E3", "B": "E1", "条件": "C1", "层": "C", "改变因素": ["盐浓度"],
+     "溶剂化依据": "同上",
+     "指标": [
+       {"指标": "首圈容量", "取值点": "第 1 次放电", "A": "", "B": "", "单位": "mAh g-1", "方向": "A更差", "来源": "仅图（文字给方向）",
+        "原句": "The maximum depth of electrochemical reduction of sulfur is reached at the concentration of lithium perchlorate in sulfolane of 1.0M, while the minimum depth is reached at 2.8М."},
+       {"指标": "指定圈数放电容量", "取值点": "约第 40 圈（A 容量逐步上升至最大）", "A": "", "B": "", "单位": "mAh g-1", "方向": "无法判断", "来源": "仅图",
+        "原句": "As lithium-sulfur cells with the high-concentration electrolyte (2.8М LiClO4) are cycled, the charge and discharge capacities in- crease and the maximum capacity values are reached by about the 40th cycle (Fig. 4)."}
+     ]}
+  ],
+  "备注": "7 个浓度的系列；容量、CE、自放电的具体数值只在图上，文字给趋势。2.4 M 相对 1 M：首圈低、衰减慢、CE 高——跨指标权衡。条件报告齐全（薄锂 120 µm、E/S 6.7、30 °C）。"
+}

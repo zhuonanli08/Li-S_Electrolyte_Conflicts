@@ -1,0 +1,1302 @@
+
+<<PAGE 1>>
+Structure and Dynamics of Polysulﬁde Clusters in a Nonaqueous
+Solvent Mixture of 1,3-Dioxolane and 1,2-Dimethoxyethane
+Amity Andersen,*,†
+Nav Nidhi Rajput,‡,∥,⊥
+Kee Sung Han,†,∥
+Huilin Pan,†,∥Niranjan Govind,†
+Kristin A. Persson,‡,§,∥
+Karl T. Mueller,†,∥
+and Vijayakumar Murugesan*,†,∥
+†Paciﬁc Northwest National Laboratory, Richland, Washington 99352, United States
+‡Lawrence Berkeley National Laboratory, Berkeley, California 94720, United States
+§Department of Materials Science and Engineering, University of California, Berkeley, California 94720, United States
+∥Joint Center for Energy Storage Research (JCESR), Lemont, Illinois 60439, United States
+*
+S Supporting Information
+ABSTRACT: Molecular clustering and associated dynamic
+processes of lithium polysulﬁde species were unraveled using
+classical molecular dynamics and ab initio metadynamics
+calculations. The spectroscopic signatures of polysulﬁde clusters
+were analyzed using a multimodal analysis including exper-
+imental and computational nuclear magnetic resonance (NMR)
+and X-ray absorption spectroscopies. Lithium polysulﬁde
+solutes (Li2S4, Li2S6, and Li2S8) and their mixtures in a 1,3-
+dioxolane and 1,2-dimethoxyethane (DOL/DME) solvent
+undergo aggregation driven by intramolecular lithium−sulfur
+(Li−S) interactions, leading to distributions of cluster sizes,
+which could critically inﬂuence the functioning of lithium−
+sulfur batteries. Representative polysulﬁde clusters with system-
+atic increases in molecular size were extracted from the classical molecular dynamics trajectories for subsequent structural and
+spectroscopic property calculations using density functional theory analysis. Structural analysis of these clusters reveals
+progressively decreasing solvent involvement in Li+ coordination varying from Li2S4 to Li2S8, with more pronounced variation
+and changes in DME compared with those in DOL. These observations are reﬂected in the analysis of the experimental and
+theoretical 7Li and 17O NMR chemical shifts and pulsed ﬁeld gradient-NMR diﬀusion measurements. A comparison of
+experimental and theoretical S K-edge X-ray absorption near edge spectra shows that relatively large lithium sulﬁde chain
+clusters are likely to occur in the DOL/DME-solvated lithium sulﬁde systems. Ab initio metadynamics simulations and NMR
+analysis indicate that Li+ solvated by only the solvent can occur through Li+ dissociation from sulﬁde chains. However, the
+occurrence of “sulﬁde-free” Li+ is a minor mechanism compared with the dynamic aggregation and shuttling processes of
+polysulﬁde solvates in DOL/DME-based electrolytes of Li−S batteries. Overall, atomistic insights gained about clustering and
+lithium exchange dynamics will be critical for the predictive understanding of the polysulﬁde shuttling and nucleation process
+that dictates the Li−S battery performance.
+1. INTRODUCTION
+Lithium−sulfur (Li−S) batteries are promising candidates for
+higher gravimetric energy storage due to their favorable
+theoretical speciﬁc energy density (2600 Wh/kg), speciﬁc
+capacity (1675 mAh/g), and low cost compared to other state-
+of-the-art lithium-ion batteries and the natural abundance and
+environmentally benign property of elemental sulfur.1−4 In
+practice, however, Li−S batteries have several issues that need
+to be addressed including the formation of soluble and
+insoluble species during cycling and the electrical insulating
+properties of elemental sulfur and lithium sulﬁde (Li2S). In
+particular, the formation of highly soluble polysulﬁde
+intermediates in the electrolyte during discharging/charging
+causes active material loss and leads to rapidly diminishing
+capacity through a mechanism where the polysulﬁde species
+act as redox “shuttles” between the cathode and anode and can
+participate in parasitic reactions with the Li metal anode
+leading to dendritic growth.3,5−7
+Strategies have been explored to protect the anode using
+conﬁnement or protective layers.1,5 Thus far, these anode-
+centric strategies fail to block polysulﬁde species and restrict
+the volumetric energy density. Another less-explored approach
+is to suppress the dissolution of polysulﬁde species and
+improve electrochemical stability through electrolyte design
+optimization. Due to their low cost and high propensity to
+dissociate and solvate salts because of relatively strong Lewis
+Received:
+September 17, 2018
+Revised:
+February 5, 2019
+Published: February 15, 2019
+Article
+pubs.acs.org/cm
+Cite This: Chem. Mater. 2019, 31, 2308−2319
+© 2019 American Chemical Society
+2308
+DOI: 10.1021/acs.chemmater.8b03944
+Chem. Mater. 2019, 31, 2308−2319
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​31/​7/​2308/​12642175/​cm8b03944.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 2>>
+ba sicit y
+from
+oxygen
+lo ne
+pairs, 8 , 9
+g l y m e s
+[CH3(−OCH2CH2−)nOCH3] are promising solvents in the
+electrolytes for lithium−sulfur batteries. In particular, 1,2-
+dimethoxyethane (DME) together in a binary solvent mixture
+with 1,3-dioxolane (DOL) and with 1 M lithium bis-
+(triﬂuoromethanesulfonyl)imide is one of the most favorable
+and widely used electrolytes for lithium sulﬁde cells.1,6 The
+DOL/DME solvent system, however, suﬀers from the obstacle
+that polysulﬁdes are signiﬁcantly soluble and thus facilitate the
+shuttle process and subsequent parasitic reactions.1 Therefore,
+there is a need to improve the electrolyte design to lower the
+solubility of dissolved polysulﬁdes, increase the chemical
+stability, and enhance the ionic conductivity.
+A number of experimental and theoretical studies have been
+performed to shed light on the dissolution process and
+chemical stability of polysulﬁdes.10−26 For example, recent
+works on polysulﬁde disproportionation reactions leading to
+sulﬁde radicals (mainly S3
+−*) have been carried out in both
+experiment and theory. However, considering the relatively
+low energy barrier of disproportionation reactions, these
+radicals can recombine with parent polysulﬁde species and
+possibly exhibit a dynamic equilibrium within electrolyte
+solution.10,27 Over the longer-time regime of the Li−S
+electrochemical process, polysulﬁde aggregation and lithium
+exchange processes are critical for enhancing the performance
+of Li−S batteries. Hence, the key knowledge gap remains
+regarding the exact molecular structure and transport
+mechanisms of lithium polysulﬁde species. For example, do
+polysulﬁde anions diﬀuse across the battery as anion species or
+as neutral lithiated species?14 Are lithium ions strongly bound
+to the solvated polysulﬁdes, or can the lithium ions detach
+from the polysulﬁdes and diﬀuse into the electrolyte? Do
+multiple polysulﬁde species aggregate in electrolyte solution?
+The aim of this study is to delve into these open questions
+about the structure and dynamics of the soluble polysulﬁde
+species in the DOL/DME electrolyte system and gain deeper
+insight into these complex molecular systems. With a
+fundamental understanding of the nature and processes of
+the solvated polysulﬁde intermediates in the nonaqueous
+electrolyte, further strategies can be devised to improve the
+performance and longevity of lithium−sulfur batteries such as
+tailoring the electrolyte properties through novel formulations
+(e.g., new electrolyte components, mixtures, and additives).
+2. EXPERIMENTAL METHODS
+2.1. Samples’ Preparation. Nominal solutions of 1 M Li2Sn
+dissolved in DOL/DME (n = 4, 6, and 8) were obtained by mixing
+stoichiometric Li2S and S8 in a DOL/DME (1:1, v/v) solvent and
+stirring at 60 °C in an oil bath for 1−10 h in an Ar-ﬁlled glovebox.
+This dissolution- and reaction-based sample preparation may result in
+the distribution of various Li2Sx species. However, based on our
+previous mass spectrometry studies, solution-based synthesis tends to
+provide the targeted polysulﬁde species (such as Li2S4, Li2S6, or Li2S8)
+as a major constituent. Hence, it is assumed that the targeted chemical
+composition represents the prepared solution.
+2.2. Nuclear Magnetic Resonance (NMR) and Pulsed Field
+Gradient (PFG) NMR Measurements. 17O NMR and diﬀusion
+measurements were performed on a 600 MHz NMR spectrometer
+(Agilent) with a 5 mm z-gradient liquid probe (Doty Scientiﬁc),
+which has a maximum gradient strength of ∼31 T/m. 7Li NMR
+spectra were recorded on a 750 MHz NMR spectrometer (Agilent)
+with an HX probe. The 7Li and 17O chemical shifts for 0 ppm of a 1
+M LiCl/H2O solution and dilute water, respectively, were used as
+external references. Diﬀusion coeﬃcients of lithium polysulﬁdes (i.e.,
+Li+ cations) and solvent molecules (DOL and DME) were measured
+using 7Li and 1H pulsed ﬁeld gradient (PFG) NMR, respectively,
+using a vendor-supplied 13-interval bipolar gradient PFG sequence
+(Dbppste, vnmrj 4.0, Agilent) over the temperature range of 20−50
+°C. The echo heights, S(g), recorded as a function of gradient
+strength, g, were ﬁtted with the Stejskal−Tanner equation, S(g) =
+S(0)exp[−D(γgδ)2(Δ−δ/3)], where S(g) and S(0) are the echo
+heights at the gradient strengths of g and 0, respectively; D is the
+diﬀusion coeﬃcient; γ is the gyromagnetic ratio of 7Li or 1H; Δ is the
+time interval between the two pairs of bipolar gradient pulses (also
+called the diﬀusion time); and δ is the time of a pair of applied
+gradient pulses. The gradient strength was varied over 15 equal steps,
+and the maximum gradient strength was chosen accordingly to obtain
+a proper decay of the echo proﬁle in each measurement. The 90°
+pulse and two delays, Δ and δ, were chosen properly for each PFG-
+NMR and ﬁxed in all measured temperatures. We estimated an
+eﬀective hydrodynamic radius (r*) for Li+ cations (rLi*) and DME
+molecules (rDME*) using the Stoke−Einstein equation of diﬀusion
+based on the assumption that if most Li+ cations are dissolved by the
+DME molecules, then the eﬀective hydrodynamic radius of DOL will
+be similar to its molecular size (rDOL* ≈rDOL).6,12,13
+2.3. X-ray Spectroscopy. Sulfur K-edge X-ray absorption near
+edge spectroscopy (XANES) measurements were performed at the
+Canadian Light Source (CLS) beamline port SXRMB. Monochro-
+matic X-rays with an energy resolution of about 0.25 eV and a photon
+ﬂux of 1 × 1011 photons/s were generated using a Si(111) double-
+crystal monochromator. The beam was subsequently focused using a
+set of Toroidal mirrors, with the spot size of 1 × 8 mm2. All spectra
+were recorded under ﬂuorescence mode. Droplets of polysulﬁde
+solutions were packed in Kapton ﬁlms and measured at diﬀerent
+sample volumes and regimes to ensure optimal sample thickness and
+uniformity. In detail, 5−10 μL of polysulﬁde solution was sandwiched
+between ∼2 × 2 cm2 Kapton ﬁlms and subsequently sealed with a
+Kapton tap and mounted onto a sample holder with multiple slits and
+a mechanical sample positioning system. All sample packaging was
+performed inside the nitrogen-ﬁlled glovebox to avoid parasitic
+reactions with oxygen/humidity. The position of the white line of
+elemental sulfur (S8) plotted in derivative mode was used as an energy
+reference point (2470.5 eV) for all of the spectra (see Supporting
+Information (SI)). An energy range of −20 to +50 eV with respect to
+this reference position with a step size of 0.2 eV was used for the
+collection of the XANES data. The ATHENA package was used for
+the background reduction and also for self-absorption correction
+using absorption energy mode with the chemical composition of the
+solution (Figure S7).
+3. THEORETICAL METHODS
+3.1. Classical Molecular Dynamics (MD) Simulations.
+Classical molecular dynamics (MD) simulations were performed
+using the GROMACS MD simulation package version 5.1.2.28 The
+initial conﬁgurations were obtained by randomly packing molecules in
+a periodic cubic box of size 60 × 60 × 60 Å3 using PACKMOL.29 The
+initial conﬁguration was ﬁrst minimized using the steepest descent
+method, employing a convergence criterion of 1000 kcal/(mol Å),
+and then using the conjugate-gradient energy minimization scheme,
+employing a convergence criterion of 10 kcal/(mol Å). The systems
+were equilibrated in an isothermal−isobaric ensemble (constant
+NPT) using a Berendsen barostat to maintain the pressure of 1 bar
+with a time constant of 2 ps for 2 ns.30−32 All systems were then
+melted at 400 K for 2 ns and subsequently annealed from 400 to 298
+K in three steps for 3 ns. Finally, production runs of 20 ns were then
+obtained in the canonical ensemble (NVT) using an improved
+velocity-rescaling algorithm proposed by Bussi et al.31 with a time
+constant of 0.1 ps at 298 K. The simulation time was long enough to
+adequately sample the Fickian (diﬀusive) regime of all systems, and
+the results were averaged over at least two independent realizations of
+the same system. All other simulation details and force ﬁeld
+parameters were the same as those in our previously published
+work.13
+Chemistry of Materials
+Article
+DOI: 10.1021/acs.chemmater.8b03944
+Chem. Mater. 2019, 31, 2308−2319
+2309
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​31/​7/​2308/​12642175/​cm8b03944.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 3>>
+3.2. NMR Chemical Shift Calculations. LixSy-solvated cluster
+systems, ranging in sizes from 152 to 377 atoms, were extracted from
+the snapshot frames of the classical molecular dynamics simulation
+trajectories using the VMD software.33 Magnetic shielding calcu-
+lations for the LixSy-solvated cluster systems were performed using the
+NWChem quantum chemistry software.34 The PBE0 density
+functional35,36 was used for all LixSy-solvated cluster calculations
+along with the 6-31G* Gaussian basis set.37,38 van der Waals
+interactions were treated using the Grimme dispersion correction
+(D2).39 Magnetic response calculations to calculate
+7Li and
+17O
+magnetic shieldings used the gauge-including atomic orbital linear-
+response density functional theory (DFT) implementation in
+NWChem. Prior to magnetic shielding calculations, geometry
+optimization was performed for each of the LixSy-solvated cluster
+structures. To lower the expense of the geometry optimization
+calculations, we used a Stuttgart large-core eﬀective core potential
+(ECP) and basis set for sulfur;40 the sulfur Stuttgart ECP/basis set
+was replaced with the sulfur 6-31G* basis set in subsequent response
+calculations (magnetic shielding and XANES).
+Chemical shifts were calculated from the calculated LixSy-solvated
+cluster magnetic shielding using δcluster = σref −σcluster, where σref is the
+calculated magnetic shielding of a suitable reference compound for
+the nuclei of interest. We used an aqueous solvated Li+ cluster model
+to calculate σref for 7Li and a dimethyl sulfoxide (DMSO) molecule to
+calculate σref for 17O.
+The
+7Li reference Li+−water cluster was constructed by ﬁrst
+randomly solvating a single Li+ cation located at the center of a 15 ×
+15 × 15 Å3 box with 112 water molecules (for a density of 1 g/cm3)
+using the PACKMOL program. The geometry of this system was
+optimized with the CP2K hybrid Gaussian/plane-wave basis set
+quantum chemistry software.41,42 Gaussian double-zeta valence-
+polarized (DZVP) MOLOPT basis sets43 and Goedecker−Teter−
+Hutter norm-conserving pseudopotentials44−46 for core electrons
+were used in the CP2K calculations with an auxiliary plane-wave basis
+set having a 300 Ry energy cutoﬀ. The CP2K calculations utilized the
+nonlocal van der Waals density functional of Vydrov and Van
+Voorhis.47−49 Following the optimization of the water-solvated Li+
+box, an NVT ab initio molecular dynamics (AIMD) simulation was
+run using the optimized structure for 2.5 ps at 298.15 K with the
+canonical sampling through velocity-rescaling method of Bussi et al.31
+A subsequent NPT AIMD simulation was run using the ﬁnal NVT
+structure for 2.5 ps at 298.15 K and 1 atm using the methods of Bussi
+et al.31,32 The auxiliary plane-wave basis set energy cutoﬀwas
+increased to 600 Ry for the NPT AIMD simulation. The time step for
+the NVT and NPT simulations was 0.5 fs.
+A Li+-centered cluster with 55 water molecules surrounding the Li+
+cation (∼7 Å water shell) was extracted from the ﬁnal NPT AIMD
+periodic box snapshot using VMD. Further AIMD simulations using
+NWChem with the same basis sets, density functional, and Grimme
+dispersion correction as those used for the solvated LixSy clusters were
+performed for 750 fs with a time step of 0.25 fs and at 298.15 K using
+the CVSR thermostat of Bussi et al. Solvation eﬀects for the extended
+bulk water system on the Li+−water cluster were included with the
+implicit solvation model of Klamt (i.e., COSMO).50 The 7Li magnetic
+shielding was calculated with NWChem on the ﬁnal AIMD Li+−water
+cluster snapshot.
+The geometry optimization and
+17O magnetic shielding calcu-
+lations of DMSO molecules were performed with the same basis sets
+and density functional used for the solvated LixSy clusters. DMSO is a
+secondary 17O reference, and the resulting chemical shifts from the
+calculated values were adjusted to the primary reference of liquid
+water by adding the neat DMSO’s experimental chemical shift with
+respect to the liquid water reference (+12 ppm51) to the calculated
+chemical shift with respect to that of DMSO.
+3.3. XANES Calculations. X-ray absorption near edge structure
+(XANES) spectra were recorded using the restricted excitation
+window TDDFT (REW-TDDFT)52−56 approach, including multipole
+contributions to the oscillator strengths, as implemented in NWChem
+using the same basis sets and exchange−correlation functional as in
+the NMR calculations described earlier. This approach, which
+involves deﬁning a restricted subspace of single excitations from the
+relevant core orbitals and no restrictions on the target unoccupied
+states, is valid because excitations from the deep core states are well
+separated from pure valence-level excitations. We have successfully
+used this approach in several studies57−62 over the last few years
+including studies on the K-edge spectra of sulfur in dissolved lithium
+polysulﬁde species in Li−S batteries.10
+3.4. Ab Initio Metadynamics Simulations. Similar to the 7Li
+NMR Li+−water reference system construction and simulations
+described in Section 3.2, single monomer Li2S4, Li2S6, and Li2S8
+molecules were placed at the center of 16 × 16 × 16, 16 × 16 × 16,
+and 17.5 × 17.5 × 17.5 Å3 boxes, respectively. For the Li2S4 monomer
+system, a 50−50 mixture of 12 DME and 12 DOL molecules was
+calculated to occupy the remaining volume of the box based on their
+0.8683 g/cm3 (DME) and 1.06 g/cm3 (DOL) liquid densities.
+Likewise, a 50−50 mixture of 12 DME and 12 DOL molecules and a
+50−50 mixture of 15 DME and 15 DOL molecules were selected to
+occupy the remaining volumes in the Li2S6 and Li2S8 monomer
+systems, respectively. Each of the three Li2Sy monomer systems was
+solvated with their respective DOL/DME mixtures using the
+PACKMOL program. The CP2K software was used to perform
+optimizations, NVT simulations, and NPT simulations in the same
+fashion as those performed for the 7Li NMR Li+−water reference
+system speciﬁed in Section 3.2 (i.e., same types of basis sets,
+Figure 1. Final structures from classical MD simulations for (a) Li2S4, (b) Li2S6, (c) Li2S8, and (d) mixture of Li2S4, Li2S6, and Li2S8 in DOL/DME.
+Li atoms are in violet, S atoms are in yellow, DME molecules are in red, and DOL molecules are in cyan. (e) Cluster size distributions averaged
+over Li2Sy (y = 4, 6, and 8) DOL/DME classical MD simulations. Top: Li2S4. Middle: Li2S6. Bottom: Li2S8.
+Chemistry of Materials
+Article
+DOI: 10.1021/acs.chemmater.8b03944
+Chem. Mater. 2019, 31, 2308−2319
+2310
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​31/​7/​2308/​12642175/​cm8b03944.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 4>>
+pseudopotentials, NVT/NPT thermostat, NPT barostat, NVT/NPT
+temperature, and NPT pressure). Unlike that of the 7Li NMR Li+−
+water reference system simulation procedure of Section 3.2, the
+SHAKE algorithm63 was used for hydrogen-bearing bonds (1.1 Å for
+C−H bonds) to extend the time step of the NVT and NPT
+simulations to 1 fs. The simulation time for all of the NVT and NPT
+DOL/DME-solvated Li2Sy system simulations was 5 ps.
+Following the NPT simulations, NVT metadynamics simulations
+were performed on each of the DOL/DME-solvated Li2Sy monomer
+systems using the ﬁnal NPT trajectory frame structures and cell lattice
+parameters. Each of the metadynamics simulations used two collective
+variables to scan (1) the monomer sulfur coordination number and
+(2) the DOL/DME solvent oxygen coordination number of one of
+the two lithium atoms in each of the Li2Sy monomer systems. A
+harmonic wall potential constraint of 1000 kcal/mol was placed on
+the Li−S distance of the other Li atom (with r0 = 2.7 Å) to allow for
+the scanning of the free energy of a single Li migration to and from
+the sulfur chain monomer. Small repulsive Gaussian hills with a height
+of 2 × 10−3 Hartree and a width of 0.2 Hartree were added at a
+frequency of every 50 time steps for both the Li−S and Li−O
+coordination number collective variables.
+4. RESULTS AND DISCUSSION
+4.1. Origin of LixSy Clustering Phenomena. Figure 1a−
+d shows the ﬁnal snapshot structures of MD simulations of the
+DOL/DME-solvated 1 M Li2S4, Li2S6, Li2S8, and Li2S4−Li2S6−
+Li2S8 mixture, respectively. From our MD simulations, Li2Sy
+monomer units readily form dynamic clusters in the DOL/
+DME solvent in pure as well as mixture systems. From the
+Li+−S, Li+−O (of DME), and Li+−O (of DOL) pair
+distribution function (PDF) and number integrated pair
+distribution functions (NIPDF) shown in the Supplemental
+Information (see SI, Figure S1), it is evident that the Li cation
+preferentially interacts with DME than with DOL molecules.
+Unlike those of the cyclic DOL molecule, the ﬂexible
+hydrocarbon chains of the DME molecule can engage in
+bidentate formation, which promotes interaction with Li+. In
+addition, the Li+−S association is stronger than both the Li+−
+O (DME) and Li+−−O (DOL) associations, indicating that
+Li+−S is a more prevalent interaction than the solvent Li+−O
+interactions. When comparing the Li2S4, Li2S6, and Li2S8
+systems, the ﬁrst-shell Li+−S coordination number is greatest
+for the smaller sulﬁde, Li2S4, compared with the larger sulﬁdes,
+Li2S6 and Li2S8, which are close in the ﬁrst-shell Li+−S
+coordination number. On the other hand, the ﬁrst-shell Li+−O
+(DME) coordination number slightly increases with the sulﬁde
+monomer size from Li2S4 to Li2S8.
+Figure 1e shows the distribution of (Li2Sy)z cluster sizes for
+the DOL/DME-solvated Li2S4, Li2S6, and Li2S8 systems
+averaged over the respective classical MD trajectories. The
+distribution represents the most persistent cluster sizes for each
+of the three Li2Sy systems over time. The most prevalent
+cluster size of the Li2S4 system is (Li2S4)3 followed by the
+monomer Li2S4. The Li2S6 and Li2S8 systems have sparser
+distributions of persistent cluster sizes, with cluster sizes
+extending beyond the Li2S4 system’s maximum cluster size.
+The most prevalent cluster size for the Li2S6 system is (Li2S6)2,
+and the frequency of the next most prevalent cluster sizes
+Li2S6, (Li2S6)4, (Li2S6)7(LiS6)−, and (Li2S6)16 is comparable.
+For the Li2S8 system, the most prevalent cluster sizes are
+(Li2S8)2 and (Li2S8)20(LiS8)−, with the latter cluster being
+larger than the maximum cluster size for the Li2S6 system.
+Unlike that of the Li2S4 system, persistent, fully DOL/DME
+solvent-solvated Li+ are observed in the Li2S6 and Li2S8 system
+cluster size distributions, with the frequency of DOL/DME-
+solvated Li+ being higher in the Li2S8 system (see Figure 1e).
+The increased DOL/DME solvation of Li+ with the increasing
+sulﬁde monomer size agrees with the NIPDF trends discussed
+earlier.
+We compared these cluster sizes with the eﬀective
+hydrodynamic radii of Li+ cations (rLi*) and DME molecules
+(rDME*), which tend to increase with the decreasing sulﬁde
+monomer size (Figure 2). They are in reasonable agreement
+with the cluster sizes determined by the MD trajectories if the
+cluster sizes smaller than 60−80 number of atoms are
+considered (Figure 1e). In general, it is hard to observe the
+(liquid) NMR signal from the larger clusters due to the
+colossal line broadening resulting from the diminished
+mobility.12,64 Therefore, the larger clusters like (Li2S6)16,
+(Li2S8)10, and (Li2S8)20(LiS3)−may not aﬀect the diﬀusion
+measurement using PFG-NMR. This also shows that the rDME*
+is smaller (∼3 times) than the rLi* due to the existence of free
+DME molecules, which do not participate in the cluster
+formations. The gradual negative shift of the 17O NMR peak
+from −24 ppm of a free DME molecule with the decreasing
+sulfur chain length (Figure 6) suggests that the interaction of
+DME molecules with Li+ cations becomes stronger with the
+decreasing chain length. The gradual increase of the eﬀective
+hydrodynamic radius of DME (rDME*) also suggests that the
+interaction of DME molecules with Li+ cations becomes
+stronger with the decreasing length of lithium polysulﬁde
+chains.
+Figure 3a−f shows the structures of DFT-optimized clusters
+extracted from the frames of the pure Li2S4 in DOL/DME
+classical MD trajectories (see Figure 1a). These close-up
+structure renderings demonstrate the sharing of lithium cations
+between two or more S4
+2−chains. (Figure 3b−f and Table S1
+list the atom coordination number and types of the Li atoms.)
+In all six (Li2S4)z (z = 1−6) cases, the lithium cation joint
+coordination between the sulfur atoms of the sulfur chains and
+the solvent oxygen atoms occurs. Sulfur-only coordination with
+the lithium cations also occurs in clusters (Li2S4)z (z = 2−4, 6)
+(see Figure 3b−d,f and Table S1). With the large DOL/DME-
+solvated (Li2S4)6 cluster optimized with DFT, we observed a
+few close Li−Li contacts, which are shorter than the Li−Li
+Figure 2. Eﬀective hydrodynamic radius of Li+ cations (rLi*) and
+DME molecules (rDME*) calculated using the Stokes−Einstein
+equation of diﬀusion from the measured diﬀusion coeﬃcients DDOL,
+DDME, and DLi at 30 °C. Figure is adapted with permission from
+Ref.13. Copyright 2017, American Chemical Society
+Chemistry of Materials
+Article
+DOI: 10.1021/acs.chemmater.8b03944
+Chem. Mater. 2019, 31, 2308−2319
+2311
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​31/​7/​2308/​12642175/​cm8b03944.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 5>>
+distances in bcc bulk lithium metal (3.039 Å). At these
+distances, the nearest Li atoms share the same DME O atoms,
+creating 4-fold-coordinated DME O atoms (see Table S1).
+Looking at the next largest cluster, (Li2S4)5, we see instances of
+Li atoms sharing the same DME O atoms but no close Li−Li
+contacts. It is possible that, with greater amounts of aggregate
+sulfur, the Li+ repulsive interactions are more eﬀectively
+screened by the sulfur and solvent oxygen coordinations for the
+(Li2S4)z clusters. The pure Li2S4 MD trajectory shows the
+formation of clusters greater than six Li2S4 monomer units (as
+shown in Figure 1e), but the DFT optimization and
+subsequent response NMR and XANES calculations become
+very expensive for such larger clusters. However, the (Li2S4)z
+(z = 1−6) results allow us to infer the trends in structural,
+NMR, and XANES features as the cluster size increases.
+Figures 4a−d and 5a−c show the DFT-optimized clusters for
+the DOL/DME-solvated Li2S6 and Li2S8 clusters extracted
+from the frames of the pure Li2S6 MD trajectory represented in
+Figure 1b,c, respectively. The (Li2S6)z (z = 1−4) and (Li2S8)z
+(z = 1−3) systems show lithium coordination features similar
+to those of the (Li2S4)z (z = 1−6) system. (Li2S4)z, (Li2S6)z,
+Figure 3. DFT-optimized clusters extracted from the MD trajectory
+represented in Figure 1a. DOL/DME-solvated (a) Li2S4, (b) (Li2S4)2,
+(c) (Li2S4)3, (d) (Li2S4)4, (e) (Li2S4)5, and (f) (Li2S4)6. Li atoms are
+in violet, S atoms are in yellow, C atoms are in gray, H atoms are in
+white, and O atoms are in red.
+Figure 4. DFT-optimized clusters extracted from the MD trajectory
+represented in Figure 1b. DOL/DME-solvated (a) Li2S6, (b) (Li2S6)2,
+(c) (Li2S6)3, and (d) (Li2S6)4. Li atoms are in violet, S atoms are in
+yellow, C atoms are in gray, H atoms are in white, and O atoms are in
+red.
+Figure 5. DFT-optimized clusters extracted from the MD trajectory
+represented in Figure 1c. DOL/DME-solvated (a) Li2S8, (b) (Li2S8)2,
+and (c) (Li2S8)3. Li atoms are in violet, S atoms are in yellow, C atoms
+are in gray, H atoms are in white, and O atoms are in red.
+Chemistry of Materials
+Article
+DOI: 10.1021/acs.chemmater.8b03944
+Chem. Mater. 2019, 31, 2308−2319
+2312
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​31/​7/​2308/​12642175/​cm8b03944.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 6>>
+and (Li2S8)z systems show joint sulfur chain and DOL/DME
+oxygen coordination at sulfur cluster−DOL/DME solvent
+interfaces. For the larger clusters (Li2S6)3, (Li2S8)2, and
+(Li2S8)3, internal cluster sulfur-only lithium coordination is
+also found. However, the sharing of DME O atoms between
+adjacent Li+ is rarer for the (Li2S6)z (z = 1−6) clusters and
+nonexistent for the (Li2S8)z (z = 1−3) clusters (see Tables S2
+and S3, respectively). Close Li−Li contacts are also rarer for
+the (Li2S6)z (z = 1−6) and (Li2S8)z (z = 1−3) clusters (see
+Tables S2 and S3). In addition to greater amounts of aggregate
+sulfur, a higher Li:S ratio for the (Li2S4)z clusters may play a
+role in the greater number of close Li−Li contacts in the large
+(Li2S4)z clusters. As with the pure (Li2S4)z in the DOL/DME
+solvent classical MD trajectory, larger (Li2S6)z>4 clusters are
+observed (as shown in Figure 1e).
+A comparison of the Li−Li PDF and NIPDF plots for
+(Li2S4)z (z = 1−6), (Li2S6)z (z = 1−4), and (Li2S8)z (z = 1−3)
+from the classical MD simulations is shown in Figure S2. The
+PDFs indicate the presence of close-contact ﬁrst-shell Li−Li
+interactions from about 2 to 3.1 Å (location of the ﬁrst peak)
+for the DOL/DME-solvated Li2S4 system, which is in
+agreement with the presence of short Li−Li contacts observed
+in the large (Li2S4)6 DFT-optimized cluster. Figure S2 also
+shows that the likelihood of short Li−Li contacts is much less
+likely for the DOL/DME-solvated (Li2S6)z (z = 1−4), and
+(Li2S8)z (z = 1−3) systems, which is also in line with the
+limited number of lithium sulﬁde clusters we sampled from
+these systems. The trends in the number of close Li−Li
+distances for DOL/DME-solvated (Li2S4)z (z = 1−6), (Li2S6)z
+(z = 1−4), and (Li2S8)z (z = 1−3) can be explained by the
+decreasing Li:S ratio going from (Li2S4)z (z = 1−6) to (Li2S8)z
+(z = 1−3). The decreasing Li:S ratio can also explain the
+decreasing Li−DOL oxygen and Li−DME oxygen
+inter-
+actions from (Li2S8)z (z = 1−3). The likelihood of Li
+accessible to the surface of the cluster decreases with the lower
+overall content of Li in the cluster, reducing the Li−O solvent
+interactions at the interface of the cluster and solvent.
+4.2. Spectroscopic Evidence for LixSy Clustering.
+Experimental NMR 7Li, 17O (DME), and 17O (DOL) isotropic
+chemical shifts for the DOL/DME-solvated Li2S4, Li2S6, and
+Li2S8 systems are shown in Figure 6, and the DFT-calculated
+NMR isotropic chemical shifts based on the optimized clusters
+shown in Figures 3−5 and S3 are listed in Table 1. The
+experimental results shown in Figure 6 indicate that the DOL/
+DME-solvated Li2S4 system has the greatest 7Li chemical shift
+value with respect to Li+ in water, followed by the chemical
+shift for the DOL/DME-solvated Li2S6 system, and, ﬁnally, the
+chemical shift for the Li2S8 system. With respect to 17O in
+water, the greatest upﬁeld (negative) shift for 17O in DME
+occurs for the Li2S6 system, followed by the chemical shifts for
+the Li2S4 system, and, ﬁnally, the chemical shifts for the Li2S8
+system. However, the change in chemical shifts with temper-
+ature for the DOL case is much less dramatic compared to that
+for the DME case. (Figure S4) The chemical shifts for DME
+and DOL alone have been reported to be −23 to −23.9
+ppm65−67 and 33.5 to 34.8 ppm,65,68−70 respectively.
+Our measured chemical shifts for neat DME and DOL are in
+excellent agreement with the literature values (−24.2 and 34.7
+ppm, respectively). A little change in the chemical shifts of
+DME and DOL is observed with a 1:1 volume mixture of DME
+and DOL (−24.8 and 34.7 ppm, respectively).
+Comparing the experimental results with those from theory
+in Table 1, we observe that DFT-calculated
+7Li and
+17O
+chemical shifts are systematically slightly shifted to upﬁeld
+(more negative ppm) and to downﬁeld (more positive ppm),
+respectively, than the experimental shifts overall. The
+calculated 7Li and 17O chemical shifts based on an optimized
+cluster structure assume a temperature of 0 K, which may
+account for these trends compared with experimental chemical
+shifts. The upﬁeld shift of 7Li resonances and downﬁeld shift of
+17O resonances for DME molecules with a decrease of
+temperature were conﬁrmed experimentally from the 7Li and
+17O NMR spectra, respectively, obtained at the temperature
+range of 293−333 K for the DOL/DME-solvated Li2S4, Li2S6,
+and Li2S8 systems (Figure S4). With the increasing cluster size,
+the calculated 7Li chemical shifts of the DOL/DME-solvated
+Li2S4 system show a downﬁeld, increasingly positive trend in
+the chemical shift. For the Li2S6 and Li2S8 systems, we do not
+see a clear increasing or decreasing trend in the calculated 7Li
+chemical shifts with the increasing cluster size. With the
+limited sampling size of the cluster models, clear trends in 7Li
+chemical shifts between the three diﬀerent lithium sulﬁdes
+cannot be readily discerned. The combined experimental and
+theoretical work of Wan et al. suggests that a dilute
+concentration of LiFSI salt fully dissociates into Li+ and FSI−
+in DME.66 Therefore, they claim that Li+ would be totally
+solvated by DME molecules (supported by their MD and DFT
+simulations), and they assigned their dilute Li+ chemical shift
+Figure 6. 7Li (top) and 17O (bottom) NMR spectra obtained from
+the DOL/DME-solvated Li2S4, Li2S6, and Li2S8 systems at 298 K. The
+7Li chemical shifts of solid Li2S and Li2S6 are centered at 2.3 and 1.0
+ppm, respectively, and of Li2Sn (n = 2, 4, and 8) are the linear
+combinations of these two peaks. The Li+ cation totally solvated by 11
+DME molecules: Li+(DME)3(DME)8 appears at −1.7 ppm.
+Chemistry of Materials
+Article
+DOI: 10.1021/acs.chemmater.8b03944
+Chem. Mater. 2019, 31, 2308−2319
+2313
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​31/​7/​2308/​12642175/​cm8b03944.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 7>>
+peak of −1.7 ppm to Li+ surrounded by only DME molecules.
+We considered a number of Li+-solvent conﬁgurations and
+calculated their 7Li chemical shifts. These results are listed in
+Table S4. From the calculated chemical shifts for the
+Li+(DME)2 and Li+(DME)3 complexes in Table S4, we see
+that these values are −0.3 to −0.4 ppm more negative than the
+experimental −1.7 ppm chemical shift reported by Wan et al.
+for fully DME-solvated Li+. This indicates that if we shift our
+calculated 7Li chemical shifts to positive by 0.3 to 0.4 ppm,
+they would be more comparable to our experimental
+7Li
+chemical shifts. This shift in our calculated results suggests that
+large (Li2S4)z clusters may be favored in the DOL/DME-
+solvated Li2S4 system rather than monomer Li2S4 and small
+(Li2S4)z clusters with z ≤6. For the Li2S6 and Li2S8 systems,
+both monomeric and aggregate lithium sulﬁde cluster species
+may co-exist. Li+ fully solvated by only solvent molecules DME
+and/or DOL may not be favorable for any of the three lithium
+sulﬁde−DOL/DME solvent systems due to the experimental
+7Li chemical shifts being above 0 ppm.
+For the calculated 17O chemical shifts in Tables S4, we see
+an underestimation of the pure DME 17O chemical shift by 5.7
+ppm and the pure DOL
+17O chemical shift by 2.2 ppm.
+Improvements in the calculated 17O chemical shifts can be
+realized with a larger 6-311++G(2d,2p) basis set71,72 (−20.3
+and 32.4 ppm for DME and DOL, respectively); however, this
+basis set size results in expensive chemical shift response
+calculations for the large lithium sulﬁde clusters.
+Thus, we used the smaller 6-31G* basis set for all of the
+systems as it represents the best compromise between
+computational eﬃciency and accuracy across the range of
+clusters considered in this study. According to the trend in
+Table S4, the complexation of DME and DOL with a single Li+
+cation results in a calculated upﬁeld −5.4 to −2.8 ppm 17O
+shift from pure DME and a calculated downﬁeld 4.5 to 5.1
+ppm 17O shift from pure DOL. Table 1 shows a considerable
+variation in the 17O shift for the calculated 17O chemical shifts
+of DME for the DOL/DME-solvated lithium sulﬁde cluster
+systems around the calculated 17O pure DME chemical shift.
+For the
+17O DOL chemical shift listed in Table 1, the
+calculated DOL
+17O chemical shifts of the DOL/DME-
+solvated lithium sulﬁde clusters show an overall downﬁeld
+shift; however, these values do not reach the extent of the
+magnitude of 17O shifts shown for the calculated single Li+
+cation completely surrounded by only solvent molecules in
+Table S4. According to the experimental chemical shifts from
+the DOL/DME solvent-only baseline in Figure 6, the degree of
+the downﬁeld shift in 17O NMR for the DOL in the DOL/
+DME-solvated lithium sulﬁde systems is slight, which is more
+indicative of the presence of mixed DOL/lithium sulﬁde
+clusters rather than full solvation of Li+ by only the solvent
+molecules when comparing the Table 1 DOL/DME-solvated
+lithium sulﬁde cluster relative shifts to the larger relative shifts
+of Table S4 for the single Li+ fully solvated by DME and/or
+DOL.
+Finally, the increase in the line widths of both the DME and
+DOL peaks with the decreasing sulﬁde chain from eight to four
+sulfur atoms can be explained by the variability in shared
+solvent/sulﬁde coordination. DME and DOL joint solvation of
+Li+ with sulﬁde has the most variability in coordination
+scenarios for the DOL/DME-solvated Li2S4 system according
+to Table S1, especially for the larger clusters we considered in
+the DFT calculations. The DOL/DME-solvated Li2S6 clusters
+show a little less variety in joint solvent/sulﬁde chain
+coordination of Li+ as compared to the Li2S4 clusters (see
+Table S2), and the DOL/DME-solvated Li2S8 shows the least
+variability in joint solvent/sulﬁde chain Li+ coordination (see
+Table S3). Thus, the spectral broadening Δ for the lithium−
+sulfur clusters follows the trend Δ(Li2S8) < Δ(Li2S6) <
+Δ(Li2S4). The less broadened DOL peak in the lithium sulﬁde
+systems compared to the DME peak in these same systems can
+be explained by the observation that the DFT-optimized
+clusters show less joint complexation of the DOL with Li+
+compared to that of DME (see Tables S1−S3).
+To further conﬁrm the likely presence of lithium sulﬁde
+chain clustering in the DOL/DME solvent, we performed S K-
+edge XAS measurements and, using cluster models shown in
+Figures 3−5, XANES simulations. Figure 7 shows a systematic
+comparison of simulated XANES plots based on model
+Table 1. DFT-Calculated 7Li and 17O Average Isotropic Chemical Shifts for DFT-Optimized DOL/DME-Solvated LixSy
+Clusters Extracted from Figure 1 MD trajectories (Shown in Figures 3−5 and S3)
+LixSy cluster
+Ave. 7Li δiso (ppm)
+Ave. DME 17O δiso (ppm)
+Ave. DOL 17O δiso (ppm)
+(Li2S4)z Species
+Li2S4
+−2.4
+−16.6
+33.3
+(Li2S4)2
+−1.8
+−16.0
+32.5
+(Li2S4)3
+−1.4
+−17.1
+35.0
+(Li2S4)4
+−1.2
+−18.3
+31.8
+(Li2S4)5
+−1.6
+−17.2
+35.7
+(Li2S4)6
+−0.7
+−16.8
+31.2
+(Li2S6)z Species
+Li2S6
+−0.6
+−15.2
+32.4
+(Li2S6)2
+0.0
+−16.8
+32.7
+(Li2S6)3
+−0.2
+−14.9
+33.9
+(Li2S6)4
+0.3
+−15.5
+34.1
+(Li2S8)z Species
+Li2S8
+0.0
+−18.5
+35.4
+(Li2S8)2
+−0.7
+−15.2
+35.2
+(Li2S8)3
+0.2
+−18.1
+36.1
+Mixed Species
+(Li2S6)(Li2S8)
+0.2
+−18.4
+30.8
+(Li2S4)(Li2S6)3
+−0.2
+−16.0
+31.3
+Chemistry of Materials
+Article
+DOI: 10.1021/acs.chemmater.8b03944
+Chem. Mater. 2019, 31, 2308−2319
+2314
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​31/​7/​2308/​12642175/​cm8b03944.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 8>>
+(Li2S4)z clusters (z = 1−6) with experimentally determined
+XANES of the DOL/DME-solvated Li2S4 system. The best
+agreement with the experimental S K-edge XANES spectrum
+for this system is shown by the simulated S K-edge XANES of
+the largest Li2S4 cluster, indicating that lithium sulﬁde chain
+aggregation may be likely for the DOL/DME-solvated Li2S4
+system. The dashed and dash-dotted vertical lines indicate the
+peak centers of the terminal and internal sulfur atoms in the
+sulﬁde chains of the clusters, respectively. Spectral decom-
+position of the largest clusters considered for Li2S4, Li2S6, and
+Li2S8 into the terminal and internal S spectra is shown in
+Figure S5. This decomposition has been demonstrated in the
+work of Prendergast et al.20 The comparison of experimental
+and simulated S K-edge XANES spectra of the DOL/DME-
+solvated Li2S6 system is shown in Figure 8. The simulated
+XANES spectra of the larger (Li2S6)3 and (Li2S6)4 cluster
+models appear to best capture the features of the experimental
+XANES spectra, further supporting the argument for lithium−
+sulfur clustering in these systems.
+Finally, Figure 9 compares the simulated and experimental S
+K-edge XANES spectra of the DOL/DME-solvated Li2S8
+system. Again, as seen with the Li2S4 and Li2S6 systems, the
+best agreement spectrum with respect to the experimental
+XANES spectrum is the XANES spectrum generated from the
+largest DFT-optimized Li2S8 cluster considered in this study,
+(Li2S8)3. Similar S K-edge XANES features are observed in
+DFT-optimized mixed sulﬁde chain clusters (Figure S6).
+These results further support the case for lithium sulﬁde
+aggregation in these electrolytes.
+4.3. Mobility and Exchangeability of Lithium. To
+explore how readily Li+ can dissociate from sulﬁde chains into
+the DOL/DME solvent, ab initio metadynamics simulations
+were performed on DOL/DME-solvated Li2S4, Li2S6, and Li2S8
+monomers, tracking the free energy of a single Li+ moving from
+the sulﬁde chain into the DOL/DME solvent and from the
+solvent back to the sulﬁde chain. A low barrier to sulﬁde chain
+coordination to full DOL/DME oxygen coordination demon-
+strates the facile mobility of Li+ without the sulﬁde chain
+carrier and the likelihood of Li+ exchange between sulﬁde
+chains and clusters.
+As discussed previously, the lithium sulﬁde cluster size
+analysis from the conventional classical MD simulations
+suggests that single Li+ cations, fully dissolved in DOL/
+DME, can be present in small amounts in the DOL/DME-
+solvated Li2S6 and Li2S8 (see Figure 1e) with single fully DOL/
+DME-solvated Li+ cations being more likely in the Li2S8 system
+than in the Li2S6 system. Recent conventional ab initio MD
+simulations of a single Li2S6 chain in the DOL/DME solvent
+by Kamphaus and Balbuena14 suggest that Li+ cations do not
+dissociate from the sulfur chains. However, the durations of
+Kamphaus and Balbuena’s simulations were very short (15 ps),
+which may not have allowed enough time to elapse for rare
+Li+-sulﬁde chain dissociations to occur. With the enhanced
+metadynamics sampling method, we ﬁnd multiple free-energy
+minima (Figure 10) for joint solvent oxygen−sulﬁde single Li+
+Figure 7. Sulfur K-edge XANES TDDFT calculations for the six
+complexes of (Li2S4)z (z = 1−6) cluster shown in Figure 3a−f
+compared with those of the experiment. The simulated spectra have
+been Lorentzian-broadened by 0.5 eV and blue-shifted by 52.5 eV.
+Figure 8. Sulfur K-edge XANES TDDFT calculations for the four
+complexes of (Li2S6)z (z = 1−4) cluster shown in Figure 3a−d
+compared with those of the experiment. The simulated spectra have
+been Lorentzian-broadened by 0.5 eV and blue-shifted by 52.5 eV.
+Figure 9. Sulfur K-edge XANES TDDFT calculations for the three
+complexes of (Li2S8)z (z = 1−3) cluster shown in Figure 4a−c
+compared with those of the experiment. The simulated spectra have
+been Lorentzian-broadened by 0.5 eV and blue-shifted by 52.5 eV.
+Chemistry of Materials
+Article
+DOI: 10.1021/acs.chemmater.8b03944
+Chem. Mater. 2019, 31, 2308−2319
+2315
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​31/​7/​2308/​12642175/​cm8b03944.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 9>>
+coordination for all three lithium sulﬁde systems. For the Li2S4
+system, the dissociation free-energy barrier of a single Li+ into
+the solvent from the minimum at (1.14, 1.27) to the minimum
+at (0.15, 2.40) is 0.28 eV, and the free energy of reaction is
+0.25 eV. For the Li2S6 system, the free-energy barrier to a
+single Li+ dissociation from the minimum at (1.61, 1.53) to the
+minimum at (0.14, 2.43) is 0.56 eV, and the free energy of
+reaction is −0.15 eV. Finally, for the Li2S8 system, the free-
+energy barrier to a single Li+ dissociation from the minimum at
+(0.95, 2.07) to the minimum at (0.26, 3.05) is in closer
+proximity in the Li2S4 system compared to that of the Li2S6
+system. Although the Li+ dissociation barrier and reaction free
+energy are more favorable in the Li2S4 system compared to
+those in the Li2S6 system, the lowest energy minimum in the
+Li2S4 system, 0.15 eV lower than the minimum before Li+
+dissociation, is at (2.72, 0.19), and the Li2S6 system Li+
+dissociation reaction free energy is exothermic, with the full
+Li+ solvation by DOL/DME minimum being the lowest energy
+minimum. Thus, Li+ dissociation in the Li2S6 system may be
+more favorable than that in the Li2S4 system. Li+ dissociation in
+the Li2S8 system may be more favorable than that in both the
+Li2S4 and Li2S6 systems due to the closer proximity of the Li+
+S, O-coordination space minimum for joint sulfur/oxygen
+coordination compared to that of Li2S4 and Li2S6 systems and
+the lower free-energy barrier to Li+ dissociation compared to
+that of the Li2S6 system (despite the minimum for full Li+
+DOL/DME solvation being the lowest minimum for the Li2S6
+system). Similar observations have been reported in a previous
+work.10,13
+We note that the Li+ mobility mechanism explored here, e.g.,
+between sulﬁde chains and clusters of sulﬁde chains to/from
+the DOL/DME solvent, is likely not the only available
+pathway. In addition, interchain/intercluster Li+ exchange can
+occur through the dynamics of sulﬁde chain/sulﬁde chain
+cluster aggregation and dissolution, which are observed to
+occur continuously throughout the classical MD simulations.
+The diﬀusion measurements from PFG-NMR (Figure S8)
+indicate that, with consistently slower diﬀusion relative to that
+of both DME and DOL in all three lithium sulﬁde systems
+considered here [D(Li2S4) < D(Li2S6) < D(Li2S8)], Li+ is likely
+shuttled by heavier sulﬁde chains and clusters of sulﬁde chains.
+Therefore, the major mechanism of Li+ exchange and diﬀusion
+is likely Li+ shuttling by sulﬁde chains/sulﬁde chain clusters,
+and Li+ exchange and diﬀusion through Li+-sulﬁde chain/
+cluster dissociation to the DOL/DME solvent is a minor
+mechanism. This observation is supported by experimental and
+theoretical NMR and classical conventional MD and ab initio
+metadynamics simulations.
+5. CONCLUSIONS
+We have performed NMR and XAS experiments, computa-
+tional NMR and XANES spectroscopy calculations, and
+classical MD and ab initio metadynamics simulations to
+unravel the lithium polysulﬁde clustering and associated
+dynamic processes. In particular, the Li+ mobility and
+intersulﬁde chain/cluster Li+ exchange processes under varying
+polysulﬁde chain lengths (i.e., Li2S4, Li2S6, and Li2S8 systems)
+solvated by a 1:1 DOL/DME solvent mixture were studied.
+From the classical MD simulations of a complex mixture of 1
+M Li2S4, Li2S6, or Li2S8 in a 1:1 DOL/DME solvent, we show
+aggregation of lithium sulﬁde chains for these three sulﬁde
+systems resulting in varying distributions of the cluster size of
+lithium sulﬁde chains. The classical MD simulations and DFT-
+optimized clusters demonstrate joint Li+ coordination by the
+DOL/DME solvent molecules and sulﬁde chains. A detailed
+analysis of the Li+ coordination in each of the cluster models
+uncovers a progressive decrease in the participation of DME
+and DOL oxygen atoms in the joint coordination of Li+ with
+the polysulﬁde sulfur atoms from Li2S4 to Li2S8. Compared to
+the DOL involvement in joint Li+ coordination, the DME
+shows the most variation in modes of Li+ joint coordination
+and the greatest involvement in Li+ joint coordination. The
+analysis of the experimental and calculated 7Li and 17O NMR
+chemical shifts and PFG-NMR diﬀusion measurements
+corroborate the direct structural ﬁndings from our classical
+MD and DFT simulations. From the simulated S K-edge
+XANES spectra of various polysulﬁde clusters, we demonstrate
+that higher-order cluster size in all three DOL/DME-solvated
+Figure 10. Free-energy surface contour plots for Sx cluster sulfur
+coordination number vs solvent oxygen coordination number for one
+lithium atom from metadynamics simulations. Top: Li2S4. Middle:
+Li2S6. Bottom: Li2S8.
+Chemistry of Materials
+Article
+DOI: 10.1021/acs.chemmater.8b03944
+Chem. Mater. 2019, 31, 2308−2319
+2316
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​31/​7/​2308/​12642175/​cm8b03944.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 10>>
+lithium sulﬁde systems shows better agreement with
+experimental spectra.
+This polysulﬁde clustering process has profound implica-
+tions in the electrochemical performance of Li−S batteries. For
+example, during the discharge process, the cleavage of sulfur
+rings by incoming lithium cations would lead to localized high
+concentration of lithium polysulﬁde species at the cathode−
+electrolyte interface. Due to the higher solubility of initial
+polysulﬁde species (mostly long-chain Li2Sn, 4 < n ≤8), it is
+very likely to have polysulﬁde clusters identiﬁed in this work as
+major constituents at the interface regime and subsequently
+the initiating event of shuttling process toward the Li-metal
+anode. In addition, during the charging process, these
+polysulﬁde clusters will engage in a nucleation process
+supported by sulfur ring recombination. This nucleation will
+determine sulfur redistribution and ultimately the cathode
+integrity. The atomistic view of the polysulﬁde clustering
+process will help design the carbon substrate that can help us
+control the morphology and redistribution and ultimately
+achieve maximum utilization of sulfur.
+Finally, we demonstrate from our analyses of classical MD
+and ab initio metadynamics simulations and experimental and
+calculated NMR results that solvent solvation of Li+ (e.g., only
+the DOL/DME solvent molecules) following Li+ dissociation
+from sulﬁde chains/clusters is plausible. The emergence of
+“free” Li+, however, is likely a minor contributor to interchain/
+cluster Li+ exchange. The major contributor to interchain/
+cluster Li+ exchange is likely the dynamic processes of sulﬁde
+chain/cluster aggregation and dissolution that shuttle Li+ from
+one chain/cluster to another. These fundamental details of
+lithium exchange dynamics between the solvent and
+polysulﬁde species can help us in electrolyte design and
+provide greater control of the solvated lithium polysulﬁde
+cluster generation process. Overall, both the polysulﬁde
+clustering process and lithium exchange dynamics will help
+us gain a predictive understanding of the lithium−sulfur
+electrochemical process.
+■ASSOCIATED CONTENT
+*
+S
+Supporting Information
+The Supporting Information is available free of charge on the
+ACS Publications website at DOI: 10.1021/acs.chemma-
+ter.8b03944.
+PDF and NIPDF plots; coordination of each lithium
+atom for each of the (Li2S4)z (z = 1−6), (Li2S6)z (z =
+1−4), and (Li2S8)z (z = 1−3) systems; tables for atom
+coordination numbers in DFT-optimized lithium sulﬁde
+cluster structures; DFT-optimized structure of mixed
+lithium sulﬁde clusters; selected decomposed simulated
+XANES spectra of the (Li2S4)z (z = 1−6), (Li2S6)z (z =
+1−4), and (Li2S8)z (z = 1−3) systems; simulated
+XANES spectra of mixed lithium sulﬁde clusters; DFT-
+calculated 17O and 7Li chemical shifts for small Li+−
+DOL/DME clusters; and temperature-dependent exper-
+imental PFG-NMR diﬀusion plot (PDF)
+■AUTHOR INFORMATION
+Corresponding Authors
+*E-mail: amity.andersen@pnnl.gov (A.A.).
+*E-mail: vijay@pnnl.gov (V.M.).
+ORCID
+Amity Andersen: 0000-0002-6529-0905
+Nav Nidhi Rajput: 0000-0003-4740-8217
+Kee Sung Han: 0000-0002-3535-1818
+Kristin A. Persson: 0000-0003-2495-5509
+Karl T. Mueller: 0000-0001-9609-9516
+Vijayakumar Murugesan: 0000-0001-6149-1702
+Present Address
+⊥Chemical and Biological Engineering, Tufts University,
+Science and Technology Center, 4 Colby Street, Medford,
+Massachusetts 02155, United States. E-mail: navnidhi.rajput@
+tufts.edu (N.N.R.).
+Notes
+The authors declare no competing ﬁnancial interest.
+■ACKNOWLEDGMENTS
+This research was intellectually led by the Joint Center for
+Energy Storage Research (JCESR), an Energy Innovation Hub
+funded by the U.S. Department of Energy (DOE), Oﬃce of
+Science, Basic Energy Sciences (BES), under Contract No.
+DE-AC02-06CH11357. Computational studies and NMR
+experiments were performed at the Environmental Molecular
+Sciences Laboratory (EMSL), a DOE Oﬃce of Science User
+Facility sponsored by the Oﬃce of Biological and Environ-
+mental Research and located at Paciﬁc Northwest National
+Laboratory. Additionally, the research used resources of the
+National Energy Research Scientiﬁc Computing Center, a
+DOE Oﬃce of Science User Facility supported by the Oﬃce of
+Science of the DOE under contract no. DE-AC02-05CH1123.
+The XAS experimental measurements were supported by
+PNNL-chemical imaging initiative LDRD program. The XAS
+spectra were collected at the Canadian Light Source, which is
+supported by the the National Research Council of Canada.
+■REFERENCES
+(1) Zhang, S. S. Liquid electrolyte lithium/sulfur battery:
+Fundamental chemistry, problems, and solutions. J. Power Sources
+2013, 231, 153−162.
+(2) Manthiram, A.; Fu, Y.; Su, Y.-S. Challenges and Prospects of
+Lithium−Sulfur Batteries. Acc. Chem. Res. 2013, 46, 1125−1134.
+(3) Bruce, P. G.; Freunberger, S. A.; Hardwick, L. J.; Tarascon, J.-M.
+Li−O2 and Li−S batteries with high energy storage. Nat. Mater. 2012,
+11, 19.
+(4) Manthiram, A.; Fu, Y.; Chung, S.-H.; Zu, C.; Su, Y.-S.
+Rechargeable Lithium−Sulfur Batteries. Chem. Rev. 2014, 114,
+11751−11787.
+(5) Shin, E. S.; Kim, K.; Oh, S. H.; Cho, W. I. Polysulfide dissolution
+control: the common ion effect. Chem. Commun. 2013, 49, 2004−
+2006.
+(6) Chen, J.; Han, K. S.; Henderson, W. A.; Lau, K. C.; Vijayakumar,
+M.; Dzwiniel, T.; Pan, H.; Curtiss, L. A.; Xiao, J.; Mueller, K. T.; Shao,
+Y.; Liu, J. Restricting the Solubility of Polysulfides in Li-S Batteries
+Via Electrolyte Salt Selection. Adv. Energy Mater. 2016, 6,
+No. 1600160.
+(7) Diao, Y.; Xie, K.; Xiong, S.; Hong, X. Shuttle phenomenon −
+The irreversible oxidation mechanism of sulfur active material in Li−S
+battery. J. Power Sources 2013, 235, 181−186.
+(8) Marmorstein, D.; Yu, T. H.; Striebel, K. A.; McLarnon, F. R.;
+Hou, J.; Cairns, E. J. Electrochemical performance of lithium/sulfur
+cells with three different polymer electrolytes. J. Power Sources 2000,
+89, 219−226.
+(9) Tobishima, S.; Morimoto, H.; Aoki, M.; Saito, Y.; Inose, T.;
+Fukumoto, T.; Kuryu, T. Glyme-based nonaqueous electrolytes for
+rechargeable lithium cells. Electrochim. Acta 2004, 49, 979−987.
+(10) Vijayakumar, M.; Govind, N.; Walter, E.; Burton, S. D.; Shukla,
+A.; Devaraj, A.; Xiao, J.; Liu, J.; Wang, C.; et al. Molecular structure
+Chemistry of Materials
+Article
+DOI: 10.1021/acs.chemmater.8b03944
+Chem. Mater. 2019, 31, 2308−2319
+2317
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​31/​7/​2308/​12642175/​cm8b03944.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 11>>
+and stability of dissolved lithium polysulfide species. Phys. Chem.
+Chem. Phys. 2014, 16, 10923−10932.
+(11) Wang, L.; Zhang, T.; Yang, S.; Cheng, F.; Liang, J.; Chen, J. A
+quantum-chemical study on the discharge reaction mechanism of
+lithium-sulfur batteries. J. Energy Chem. 2013, 22, 72−77.
+(12) Han, K. S.; Chen, J.; Cao, R.; Rajput, N. N.; Murugesan, V.;
+Shi, L.; Pan, H.; Zhang, J.-G.; Liu, J.; Persson, K. A.; Mueller, K. T.
+Effects of Anion Mobility on Electrochemical Behaviors of Lithium−
+Sulfur Batteries. Chem. Mater. 2017, 29, 9023−9029.
+(13) Rajput, N. N.; Murugesan, V.; Shin, Y.; Han, K. S.; Lau, K. C.;
+Chen, J.; Liu, J.; Curtiss, L. A.; Mueller, K. T.; Persson, K. A.
+Elucidating the Solvation Structure and Dynamics of Lithium
+Polysulfides Resulting from Competitive Salt and Solvent Inter-
+actions. Chem. Mater. 2017, 29, 3375−3379.
+(14) Kamphaus, E. P.; Balbuena, P. B. First-Principles Investigation
+of Lithium Polysulfide Structure and Behavior in Solution. J. Phys.
+Chem. C 2017, 121, 21105−21117.
+(15) Saqib, N.; Cody, J. S.; Maupin, C. M.; Jason, M. P. A Novel
+Optical Diagnostic for In Situ Measurements of Lithium Polysulfides
+in Battery Electrolytes. Appl. Spectrosc. 2017, 71, 1593−1599.
+(16) Barchasz, C.; Molton, F.; Duboc, C.; Leprêtre, J.-C.; Patoux, S.;
+Alloin, F. Lithium/Sulfur Cell Discharge Mechanism: An Original
+Approach for Intermediate Species Identification. Anal. Chem. 2012,
+84, 3973−3980.
+(17) Cuisinier, M.; Cabelguen, P.-E.; Evers, S.; He, G.; Kolbeck, M.;
+Garsuch, A.; Bolin, T.; Balasubramanian, M.; Nazar, L. F. Sulfur
+Speciation in Li−S Batteries Determined by Operando X-ray
+Absorption Spectroscopy. J. Phys. Chem. Lett. 2013, 4, 3227−3232.
+(18) Hannauer, J.; Scheers, J.; Fullenwarth, J.; Fraisse, B.; Stievano,
+L.; Johansson, P. The Quest for Polysulfides in Lithium−Sulfur
+Battery Electrolytes: An Operando Confocal Raman Spectroscopy
+Study. ChemPhysChem 2015, 16, 2755−2759.
+(19) Cuisinier, M.; Hart, C.; Balasubramanian, M.; Garsuch, A.;
+Nazar, L. F. Radical or Not Radical: Revisiting Lithium−Sulfur
+Electrochemistry in Nonaqueous Electrolytes. Adv. Energy Mater.
+2015, 5, No. 1401801.
+(20) Pascal, T. A.; Wujcik, K. H.; Velasco-Velez, J.; Wu, C.; Teran,
+A. A.; Kapilashrami, M.; Cabana, J.; Guo, J.; Salmeron, M.; Balsara,
+N.; Prendergast, D. X-ray Absorption Spectra of Dissolved
+Polysulfides in Lithium−Sulfur Batteries from First-Principles. J.
+Phys. Chem. Lett. 2014, 5, 1547−1551.
+(21) Wujcik, K. H.; Velasco-Velez, J.; Wu, C. H.; Pascal, T.; Teran,
+A. A.; Marcus, M. A.; Cabana, J.; Guo, J.; Prendergast, D.; Salmeron,
+M.; Balsara, N. P. Fingerprinting Lithium-Sulfur Battery Reaction
+Products by X-ray Absorption Spectroscopy. J. Electrochem. Soc. 2014,
+161, A1100−A1106.
+(22) Hagen, M.; Schiffels, P.; Hammer, M.; Dörfler, S.; Tübke, J.;
+Hoffmann, M. J.; Althues, H.; Kaskel, S. In-Situ Raman Investigation
+of Polysulfide Formation in Li-S Cells. J. Electrochem. Soc. 2013, 160,
+A1205−A1214.
+(23) Wang, Q.; Zheng, J.; Walter, E.; Pan, H.; Lv, D.; Zuo, P.; Chen,
+H.; Deng, Z. D.; Liaw, B. Y.; Yu, X.; Yang, X.; Zhang, J.-G.; Liu, J.;
+Xiao, J. Direct Observation of Sulfur Radicals as Reaction Media in
+Lithium Sulfur Batteries. J. Electrochem. Soc. 2015, 162, A474−A478.
+(24) Pascal, T. A.; Pemmaraju, C. D.; Prendergast, D. X-ray
+spectroscopy as a probe for lithium polysulfide radicals. Phys. Chem.
+Chem. Phys. 2015, 17, 7743−7753.
+(25) Gorlin, Y.; Siebel, A.; Piana, M.; Huthwelker, T.; Jha, H.;
+Monsch, G.; Kraus, F.; Gasteiger, H. A.; Tromp, M. Operando
+Characterization of Intermediates Produced in a Lithium-Sulfur
+Battery. J. Electrochem. Soc. 2015, 162, A1146−A1155.
+(26) Nandasiri, M. I.; Camacho-Forero, L. E.; Schwarz, A. M.;
+Shutthanandan, V.; Thevuthasan, S.; Balbuena, P. B.; Mueller, K. T.;
+Murugesan, V. In Situ Chemical Imaging of Solid-Electrolyte
+Interphase Layer Evolution in Li−S Batteries. Chem. Mater. 2017,
+29, 4728−4737.
+(27) Xiao, J.; Hu, J. Z.; Chen, H.; Vijayakumar, M.; Zheng, J.; Pan,
+H.; Walter, E. D.; Hu, M.; Deng, X.; Feng, J.; Liaw, B. Y.; Gu, M.;
+Deng, Z. D.; Lu, D.; Xu, S.; Wang, C.; Liu, J. Following the Transient
+Reactions in Lithium−Sulfur Batteries Using an In Situ Nuclear
+Magnetic Resonance Technique. Nano Lett. 2015, 15, 3309−3316.
+(28) Abraham, M. J.; Spoel, D. V. D.; Lindahl, E. GROMACS User
+Manual, version 5.1.2., Hess and the GROMACS development team.
+http://www.gromacs.org., 2016.
+(29) Martínez, L.; Andrade, R.; Birgin, E. G.; Martínez, J. M.
+Packmol: A package for building initial configurations for molecular
+dynamics simulations. J. Comput. Chem. 2009, 30, 2157−2164.
+(30) Berendsen, H. J.; Postma, J. P. M.; van Gunsteren, W. F.;
+DiNola, A.; Haak, J. Molecular dynamics with coupling to an external
+bath. J. Chem. Phys. 1984, 81, 3684−3690.
+(31) Bussi, G.; Donadio, D.; Parrinello, M. Canonical sampling
+through velocity rescaling. J. Chem. Phys. 2007, 126, No. 014101.
+(32) Bussi, G.; Zykova-Timan, T.; Parrinello, M. Isothermal-isobaric
+molecular dynamics using stochastic velocity rescaling. J. Chem. Phys.
+2009, 130, No. 074101.
+(33) Humphrey, W.; Dalke, A.; Schulten, K. VMD: Visual molecular
+dynamics. J. Mol. Graphics 1996, 14, 33−38.
+(34) Valiev, M.; Bylaska, E. J.; Govind, N.; Kowalski, K.; Straatsma,
+T. P.; Van Dam, H. J. J.; Wang, D.; Nieplocha, J.; Apra, E.; Windus, T.
+L.; de Jong, W. A. NWChem: A comprehensive and scalable open-
+source solution for large scale molecular simulations. Comput. Phys.
+Commun. 2010, 181, 1477−1489.
+(35) Perdew, J. P.; Ernzerhof, M.; Burke, K. Rationale for mixing
+exact exchange with density functional approximations. J. Chem. Phys.
+1996, 105, 9982−9985.
+(36) Adamo, C.; Barone, V. Toward reliable density functional
+methods without adjustable parameters: The PBE0 model. J. Chem.
+Phys. 1999, 110, 6158−6170.
+(37) Hariharan, P. C.; Pople, J. A. The influence of polarization
+functions on molecular orbital hydrogenation energies. Theoret. Chim.
+Acta 1973, 28, 213−222.
+(38) Francl, M. M.; Pietro, W. J.; Hehre, W. J.; Binkley, J. S.;
+Gordon, M. S.; DeFrees, D. J.; Pople, J. A. Self-consistent molecular
+orbital methods. XXIII. A polarization-type basis set for second-row
+elements. J. Chem. Phys. 1982, 77, 3654−3665.
+(39) Grimme, S. Semiempirical GGA-type density functional
+constructed with a long-range dispersion correction. J. Comput.
+Chem. 2006, 27, 1787−1799.
+(40) Igel-Mann, G.; Stoll, H.; Preuss, H. Pseudopotentials for main
+group elements (IIIa through VIIa). Mol. Phys. 1988, 65, 1321−1328.
+(41) CP2K, version 4.1, the CP2K developers group, CP2K is freely
+available from: https://www.cp2k.org/, 2016.
+(42) Hutter, J.; Iannuzzi, M.; Schiffmann, F.; VandeVondele, J. cp2k:
+atomistic simulations of condensed matter systems. Wiley Interdiscip.
+Rev.: Comput. Mol. Sci. 2014, 4, 15−25.
+(43) VandeVondele, J.; Hutter, J. Gaussian basis sets for accurate
+calculations on molecular systems in gas and condensed phases. J.
+Chem. Phys. 2007, 127, No. 114105.
+(44) Goedecker, S.; Teter, M.; Hutter, J. Separable dual-space
+Gaussian pseudopotentials. Phys. Rev. B 1996, 54, 1703−1710.
+(45) Hartwigsen, C.; Goedecker, S.; Hutter, J. Relativistic separable
+dual-space Gaussian pseudopotentials from H to Rn. Phys. Rev. B
+1998, 58, 3641−3662.
+(46) Krack, M. Pseudopotentials for H to Kr optimized for gradient-
+corrected exchange-correlation functionals. Theor. Chem. Acc. 2005,
+114, 145−152.
+(47) Vydrov, O. A.; Van Voorhis, T. Nonlocal van der Waals density
+functional: The simpler the better. J. Chem. Phys. 2010, 133,
+No. 244103.
+(48) Román-Pérez, G.; Soler, J. M. Efficient Implementation of a van
+der Waals Density Functional: Application to Double-Wall Carbon
+Nanotubes. Phys. Rev. Lett. 2009, 103, No. 096102.
+(49) Sabatini, R.; Gorni, T.; de Gironcoli, S. Nonlocal van der Waals
+density functional made simple and efficient. Phys. Rev. B 2013, 87,
+No. 041108.
+(50) Klamt, A.; Schuurmann, G. COSMO: a new approach to
+dielectric screening in solvents with explicit expressions for the
+Chemistry of Materials
+Article
+DOI: 10.1021/acs.chemmater.8b03944
+Chem. Mater. 2019, 31, 2308−2319
+2318
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​31/​7/​2308/​12642175/​cm8b03944.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 12>>
+screening energy and its gradient. J. Chem. Soc., Perkin Trans. 2 1993,
+799−805.
+(51) Dyer, J. C.; Harris, D. L.; Evans, J. S. A. Oxygen-17 nuclear
+magnetic resonance spectroscopy of sulfoxides and sulfones. Alkyl
+substituent induced chemical shift effects. J. Org. Chem. 1982, 47,
+3660−3664.
+(52) Stener, M.; Fronzoni, G.; de Simone, M. Time dependent
+density functional theory of core electrons excitations. Chem. Phys.
+Lett. 2003, 373, 115−123.
+(53) Besley, N. A.; Noble, A. Time-Dependent Density Functional
+Theory Study of the X-ray Absorption Spectroscopy of Acetylene,
+Ethylene, and Benzene on Si(100). J. Phys. Chem. C 2007, 111, 3333−
+3340.
+(54) DeBeer George, S.; Petrenko, T.; Neese, F. Time-dependent
+density functional calculations of ligand K-edge X-ray absorption
+spectra. Inorg. Chim. Acta 2008, 361, 965−972.
+(55) Liang, W.; Fischer, S. A.; Frisch, M. J.; Li, X. Energy-Specific
+Linear Response TDHF/TDDFT for Calculating High-Energy
+Excited States. J. Chem. Theory Comput. 2011, 7, 3540−3547.
+(56) Lopata, K.; Van Kuiken, B. E.; Khalil, M.; Govind, N. Linear-
+Response and Real-Time Time-Dependent Density Functional
+Theory Studies of Core-Level Near-Edge X-Ray Absorption. J.
+Chem. Theory Comput. 2012, 8, 3284−3292.
+(57) Van Kuiken, B. E.; Valiev, M.; Daifuku, S. L.; Bannan, C.;
+Strader, M. L.; Cho, H.; Huse, N.; Schoenlein, R. W.; Govind, N.;
+Khalil, M. Simulating Ru L3-Edge X-ray Absorption Spectroscopy
+with Time-Dependent Density Functional Theory: Model Complexes
+and Electron Localization in Mixed-Valence Metal Dimers. J. Phys.
+Chem. A 2013, 117, 4444−4454.
+(58) Zhang, Y.; Biggs, J. D.; Healion, D.; Govind, N.; Mukamel, S.
+Core and valence excitations in resonant X-ray spectroscopy using
+restricted excitation window time-dependent density functional
+theory. J. Chem. Phys. 2012, 137, No. 194306.
+(59) Vjunov, A.; Fulton, J. L.; Huthwelker, T.; Pin, S.; Mei, D.;
+Schenter, G. K.; Govind, N.; Camaioni, D. M.; Hu, J. Z.; Lercher, J. A.
+Quantitatively Probing the Al Distribution in Zeolites. J. Am. Chem.
+Soc. 2014, 136, 8296−8306.
+(60) Fulton, J. L.; Govind, N.; Huthwelker, T.; Bylaska, E. J.;
+Vjunov, A.; Pin, S.; Smurthwaite, T. D. Electronic and Chemical State
+of Aluminum from the Single- (K) and Double-Electron Excitation
+(KLII&III, KLI) X-ray Absorption Near-Edge Spectra of α-Alumina,
+Sodium Aluminate, Aqueous Al3+·(H2O)6, and Aqueous Al(OH)4−.
+J. Phys. Chem. B 2015, 119, 8380−8388.
+(61) Govind, N.; de Jong, W. A. Simulating Cl K-edge X-ray
+absorption spectroscopy in MCl6 2−(M = U, Np, Pu) complexes and
+UOCl5 −using time-dependent density functional theory. Theor.
+Chem. Acc. 2014, 133, 1463.
+(62) Ross, M. R.; Andersen, A.; Fox, Z. W.; Zhang, Y.; Hong, K.;
+Lee, J.-H.; Cordones, A. A.; March, A. M.; Doumy, G.; Southworth, S.
+H.; Marcus, M. A.; Schoenlein, R. W.; Mukamel, S.; Govind, N.;
+Khalil, M. A Comprehensive Experimental and Computational
+Spectroscopic Study of Hexacyanoferrate Complexes in Water: from
+the Infrared to X-ray Wavelengths. J. Phys. Chem. B 2018, 122, 5075−
+5086.
+(63) Ryckaert, J.-P.; Ciccotti, G.; Berendsen, H. J. C. Numerical
+integration of the cartesian equations of motion of a system with
+constraints: molecular dynamics of n-alkanes. J. Comput. Phys. 1977,
+23, 327−341.
+(64) Lee, J. H.; Han, K. S.; Lee, J. S.; Lee, A. S.; Park, S. K.; Hong, S.
+Y.; Lee, J.-C.; Mueller, K. T.; Hong, S. M.; Koo, C. M. Facilitated Ion
+Transport in Smectic Ordered Ionic Liquid Crystals. Adv. Mater.
+2016, 28, 9301−9307.
+(65) Sugawara, T.; Kawada, Y.; Katoh, M.; Iwamura, H. Oxygen-17
+Nuclear Magnetic Resonance. III. Oxygen Atoms with a Coordination
+Number of Two. Bull. Chem. Soc. Jpn. 1979, 52, 3391−3396.
+(66) Wan, C.; Hu, M. Y.; Borodin, O.; Qian, J.; Qin, Z.; Zhang, J.-
+G.; Hu, J. Z. Natural abundance 17O, 6Li NMR and molecular
+modeling studies of the solvation structures of lithium bis-
+(fluorosulfonyl)imide/1,2-dimethoxyethane liquid electrolytes. J.
+Power Sources 2016, 307, 231−243.
+(67) Peng, J.; Carbone, L.; Gobet, M.; Hassoun, J.; Devany, M.;
+Greenbaum, S. Natural Abundance Oxygen-17 NMR Investigation of
+Lithium Ion Solvation in Glyme-based Electrolytes. Electrochim. Acta
+2016, 213, 606−612.
+(68) Pihlaja, K.; Nummelin, H.; Klika Karel, D.; Czombos, J. 1H,
+13C and 17O NMR spectral studies on monocyclic dioxolanes,
+dioxanes, dioxepanes and dioxocanes and cycloalkane-fused (5−8-
+membered) bicyclic 1,3-dioxolanes and 1,3-dioxanes. Magn. Reson.
+Chem. 2001, 39, 657−671.
+(69) Eliel, E. L.; Pietrusiewicz, K. M.; Jewell, L. M. O-17 NMR
+spectra of ring compounds. Correlation of 17O and 13C methyl
+substitution parameters. Tetrahedron Lett. 1979, 20, 3649−3652.
+(70) Kintzinger, J.-P.; Delseth, C.; nguyên, T. T.-t. 17O nuclear
+magnetic resonance:mutual effect between two β oxygen atoms and
+α,β double bond effect on 17O chemical shift. Tetrahedron 1980, 36,
+3431−3435.
+(71) Krishnan, R.; Binkley, J. S.; Seeger, R.; Pople, J. A. Self-
+consistent molecular orbital methods. XX. A basis set for correlated
+wave functions. J. Chem. Phys. 1980, 72, 650−654.
+(72) McLean, A. D.; Chandler, G. S. Contracted Gaussian basis sets
+for molecular calculations. I. Second row atoms, Z = 11−18. J. Chem.
+Phys. 1980, 72, 5639−5648.
+Chemistry of Materials
+Article
+DOI: 10.1021/acs.chemmater.8b03944
+Chem. Mater. 2019, 31, 2308−2319
+2319
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​31/​7/​2308/​12642175/​cm8b03944.​pdf by TSINGHUA UNIV user on 08 October 2026

@@ -1,0 +1,619 @@
+
+<<PAGE 1>>
+Tackling the Capacity Fading Issue of Li−S Battery by a Functional
+AdditiveHexaﬂuorobenzene
+Jiayu Cao,# Quinton Meisner,# Tobias Glossmann, Andreas Hintennach, Yan Wang, Paul Redfern,
+Larry A. Curtiss, and Zhengcheng Zhang*
+Cite This: ACS Appl. Energy Mater. 2020, 3, 3198−3204
+Read Online
+ACCESS
+Metrics & More
+Article Recommendations
+*
+sı
+Supporting Information
+ABSTRACT: Due to the strong electron-withdrawing ﬂuorine groups, the aromatic ring
+of hexaﬂuorobenzene (HFB) becomes more electron-deﬁcient and strongly interacts with
+the lone-pair electrons of the medium. When used as an electrolyte additive for Li−S cell,
+HFB preferably coordinates with low-order lithium sulﬁdes Li2S and Li2S2 and
+subsequently reacts and converts both into active aromatic sulﬁdesbis-
+(pentaﬂuorophenyl) disulﬁdes and bis(pentaﬂuorophenyl) polysulﬁdes in situthus
+facilitating the utilization of the electronically insulating Li2S and Li2S2 and improving the
+cycling stability of the Li−S cell. This research opens a new avenue to tackle the inherent
+issues associated with the Li−S chemistry.
+KEYWORDS: hexaﬂuorobenzene additive, activation of low-order polysulﬁdes, DFT simulations, improved capacity retention,
+lithium sulfur battery
+1. INTRODUCTION
+Li-ion battery (LIB) has been one of the most competitive
+energy storage systems due to its high theoretical energy
+density and long calendar life.1 Nevertheless, the practical
+energy density of most commercial LIBs is around 200−300
+Wh/kg,2 which has already been a limitation when applying
+them in pure electric vehicles. Therefore, to achieve the
+requirement of higher energy density, lithium sulfur (Li−S)
+battery is considered to be a promising chemistry to replace
+the traditional LIB as next-generation energy storage3,4 due to
+its high theoretical capacity (1675 mAh/g), which is an order
+of magnitude higher than that of the traditional insertion-type
+oxide cathodes (e.g., LiCoO2, LiNi0.5Mn0.3Co0.2O2, and LiFe-
+PO4),3 and the fact that sulfur is currently the cheapest solid
+state cathode material.
+However, there are several technical issues associated with
+Li−S chemistry such as low sulfur utilization, redox shuttling
+eﬀect, severe self-discharge, poor cycle life, and low speciﬁc
+energy due to the excess amount of electrolyte. Under normal
+conditions, sulfur atoms form cyclic octatomic crowns with a
+chemical formula S8. During the discharge (lithiation), sulfur
+accepts electrons and is reduced stepwise to a series of high-
+order polysulﬁde intermediates (Li2Sx, 3 < x < 8) and ﬁnal
+reduction product Li2S.5 The former, which are soluble in the
+ether-based electrolyte, diﬀuse to the lithium anode side,
+accept the electron, and get reduced to lower-order
+polysulﬁdes Li2Sx (2 < x < 3) (staying dissolved in the
+electrolyte) and Li2S which nucleates and precipitates from the
+electrolyte. The lower-order polysulﬁdes diﬀuse back to the
+cathode and are reoxidized to high-order ones. This process
+continues and causes a severe shuttling issue6 with a
+consequence of extremely low Coulombic eﬃciency and
+rapid capacity decay.7 In addition, excess electrolyte has to
+be used in order to enable the complete reduction of S8 to
+Li2S, which compromises the energy density of the Li−S cell.
+Tremendous research eﬀorts are focused on constraining the
+dissolution of the high-order polysulﬁdes by new material
+design using mesoporous carbon,8 strong absorption poly-
+mers,9 carbon interlayers,10 and metal oxide hosts.11
+LiNO3 is an indispensable electrolyte component for Li−S
+cells. It could eﬀectively eliminate the shuttling eﬀect via
+passivating the lithium anode and improve the Coulombic
+eﬃciency.12−14 However, the capacity of the Li−S cell still
+fades rapidly despite nearly 100% Coulombic eﬃciency.15,16
+Xiong et al. introduced an additive lithium bis(oxalato)borate
+(LiBOB), suggesting a lithium surface ﬁlm rich in organic
+components rather than the inorganic NOx species17 would be
+Received:
+February 7, 2020
+Accepted:
+March 16, 2020
+Published: March 16, 2020
+Letter
+www.acsaem.org
+© 2020 American Chemical Society
+3198
+https://dx.doi.org/10.1021/acsaem.0c00177
+ACS Appl. Energy Mater. 2020, 3, 3198−3204
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​3/​4/​3198/​4617961/​ae0c00177.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 2>>
+more persistent and eﬃcient. Some beneﬁcial eﬀects on the
+initial discharge capacity and the surface morphology were
+observed, but with increasing cycling, the cells without
+additives showed the same performance as those with LiBOB
+additive. Phosphorus pentasulﬁde, biphenyl-4,4-dithiol, and
+lithium iodide are also reported to improve Li−S battery
+performance by passivating the surface of lithium anode.15,18
+Lithium polysulﬁdes themselves were also used as additives to
+improve the compatibility of the electrolyte with the lithium
+metal anode.19 Recently, a number of works20−24 reported that
+organic disulﬁdes such as dimethyl disulﬁde (DMDS) could
+enhance cell capacity and capacity retention due to the
+electrochemically active nature of the S−S bond. However, the
+capacity of the Li−S cell cannot be accurately determined since
+the S−S bond of the disulﬁdes contributes to the overall cell
+capacity. This leads to an artiﬁcially inﬂated speciﬁc capacity of
+the cell. So far, no additives are reported to tackle the issues
+associated with the crystallization/precipitation of Li2S/Li2S2,
+thus preventing the active material loss which is believed to be
+the key to the stable cyclability of Li−S cells.
+In this work, we report for the ﬁrst time such an additive,
+hexaﬂuorobenzene (HFB) (Figure 1a), to tackle the above
+issue. The designed idea is based on the fact that HFB has an
+electron-deﬁcient (Lewis acidic) core due to the six electron-
+withdrawing ﬂuorine groups which strongly interacts with
+polysulﬁdes Sx
+2−(Lewis basic), especially the stronger Lewis
+base Li2S/Li2S2 forming a new complex which could be
+recharged back to the system, thus enabling the reutilization of
+isolated active materials. Our experimental results support our
+initial hypothesis that HFB could curtail the loss of the active
+material and improve the performance of the Li−S battery.
+Density functional theory (DFT) calculations shed light on the
+energetics of the HFB-Sx
+2−coordination and possible reaction
+pathways.
+2. MATERIALS AND METHODS
+2.1. Materials. 1,3-Dioxolane (DOL), 1,2-dimethoxyethane
+(DME), hexaﬂuorobenzene (HFB, 99%), lithium nitrate (LiNO3,
+99.99%), lithium sulﬁde (Li2S, 99.9%), and lithium bis-
+(triﬂuoromethylsulfonyl)imide (LiTFSI, 99.95%) were purchased
+from Sigma-Aldrich. Elemental sulfur (Alfa Aesar), pentaﬂuorothio-
+phenol (Oakwood Chemical), and anhydrous diethyl ether (HPLC
+grade, Fischer Scientiﬁc, 99.9%) were purchased from their respective
+suppliers, respectively. HFB was distilled under reduced pressure
+before drying. Water content was measured by Karl Fischer titration
+method and controlled <20 ppm for all electrolyte solvents and
+additives. The baseline electrolyte is 1.0 M LiTFSI DOL/DME (1:1
+volume ratio) + 0.1 M LiNO3. A ﬂuorinated ether-based electrolyte,
+−1.0 M LiTFSI DOL/TTE (1:1 volume ratio)containing 1,1,2,2-
+tetraﬂuoroethyl-2,2,3,3-tetraﬂuoropropyl ether (TTE, Synquest Labo-
+ratories) as cosolvent, was used to verify the impact of HFB additive.
+2.2. Li−S Cell Testing. 2032-coin cells were assembled in an
+argon-ﬁlled glovebox with O2 level < 5 ppm. Lithium chips were used
+as the anode (15.6 mm in diameter, MTI), Celgard 2325 (16.0 mm in
+diameter) as separator with various electrolyte to sulfur (E/S) ratios.
+Sulfur loading is 1.4−1.8 mg/cm2. After cell assembly, the cells were
+transferred to a battery cycler (Maccor Test Unit 4100) and cycled at
+a C/10 current (1C = 1675 mA/mg) with a cutoﬀvoltage of 3.0−1.6
+V.
+2.3. Electrochemical Impedance Spectroscopy. Electro-
+chemical impedance spectroscopy (EIS) was measured by Solartron
+Cell Test 1470E with ZView software. A frequency range from 1 MHz
+to 0.1 Hz and an amplitude of 10 mV were applied for performing the
+measurements.
+2.4. Post-test Analysis. Cycled lithium anodes were rinsed twice
+with 2 mL of dry DME and then airtight transferred to the chamber of
+the SEM instrument for surface morphology analysis. FT-IR spectra
+were collected on a Nicolet iS5 FT-IR spectrometer (Thermo Fisher
+Scientiﬁc) using an attenuated total reﬂectance (ATR) attachment
+placed in an argon-ﬁlled glovebox. Cycled electrolyte was recovered
+from cells after disassembly by soaking the cell components in
+anhydrous diethyl ether (1 mL) to both dissolve analytes and desalt
+the electrolyte materials. The resulting supernatant was then passed
+through a 0.2 μm ﬁlter and used for GC-MS analysis without further
+dilution.
+3. RESULTS AND DISCUSSION
+HFB was selected as a neutral molecule receptor which is
+capable of binding lone-pair-bearing molecules including
+anions through multiple pair−π interactions. HFB is
+susceptible to nucleophilic attack, and this type of reaction
+has been widely studied with a variety of nucleophiles. Sulfur-
+containing nucleophiles of the type of Sx
+2−have been
+somewhat neglected. Since a series of polysulﬁdes are
+generated during the discharge and charge process of Li−S
+battery and the low-order ones are known to be easily isolated
+and electrochemically inactive, we were curious about the
+impact of the HFB−Sx
+2−coordination/reaction on the cell
+performance. Figure 1b illustrates the strong pair−π inter-
+actions between HFB and Sx
+2−by a solubility test. Apparently,
+when HFB was added, the suspension of Li2S in DME turned
+to a dark solution from the opaque suspension indicating a
+reaction occurs between HFB and S2−anion; similarly, HFB
+also coordinates and reacts with the high-order polysulﬁdes
+Figure 1. (a) Chemical structure of hexaﬂuorobenzene (HFB), (b) coordination and reactivity of HFB with Li2S and high-order Li2S8, and (c) ﬁrst
+cycle charge and discharge voltage proﬁles for the Li−S cell using 1 M LiTFSI DOL/DME and 1 M LiTFSI DOL/DME + 10% HFB.
+ACS Applied Energy Materials
+www.acsaem.org
+Letter
+https://dx.doi.org/10.1021/acsaem.0c00177
+ACS Appl. Energy Mater. 2020, 3, 3198−3204
+3199
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​3/​4/​3198/​4617961/​ae0c00177.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 3>>
+exempliﬁed by Li2S8 solution in DME which changed from the
+initial dark-red solution to a colorless one when HFB was
+added. This strong pair−π interaction was also observed
+electrochemically; i.e., the addition of HFB to the 1.0 M
+Figure 2. (a) First cycle and (b) 50th cycle charge and discharge voltage proﬁles, (c) capacity retention, and (d) Coulombic eﬃciency with cycling
+number for Li−S cell with baseline electrolyte 1.0 M LiTFSI DOL/DME + 0.1 M LiNO3, baseline + 3% HFB, baseline + 5% HFB, and baseline +
+20% HFB.
+Figure 3. (a) Proposed nucleophilic aromatic attack of Li2S on HFB to produce lithium pentaﬂuorophenyl sulﬁde (1), (b) lithium polysulﬁde Li2S6
+with HFB generating lithium pentaﬂuorophenyl polysulﬁde (2), (c) lithium pentaﬂuorophenyl polysulﬁde reduced to 1 and Li2S, and (d) reversible
+activation of low-order Li2S back to the electrochemically active species 3 and 4.
+ACS Applied Energy Materials
+www.acsaem.org
+Letter
+https://dx.doi.org/10.1021/acsaem.0c00177
+ACS Appl. Energy Mater. 2020, 3, 3198−3204
+3200
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​3/​4/​3198/​4617961/​ae0c00177.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 4>>
+LiTFSI DOL/DME electrolyte signiﬁcantly increases the
+dissolution of the lithium polysulﬁdes, causing the severe
+Li2Sx redox shuttling (ﬂat, long charging plateau) as shown in
+Figure 1c.
+3.1. Cell Performance Improvement. As shown in
+Figure 1c, the HFB cell suﬀers from severe shuttling eﬀects due
+to the strong interaction of HFB with the discharged
+polysulﬁde products. To examine the positive eﬀect of HFB
+on the cell performance, LiNO3 was added to the electrolyte to
+minimize the shuttling mechanism so that the regular cycling
+of HFB cell could be achieved as shown in Figure 2a.
+Surprisingly, during the charging process, an extra small
+“plateau” was shown on the voltage proﬁle for all cells
+containing HFB additive, indicating a new species formed
+likely from the complex of HFB with the lithium polysulﬁdes.
+This plateau remains persistent even after the 50th cycle, as
+shown in Figure 2b.
+Compared with the baseline electrolyte, the delivered
+capacity is more stabilized for the 3% HFB cell and maintains
+high retention after 20 cycles as shown in Figure 2c. It is worth
+noting that all of the sulfur electrodes used in this test were
+made by simplymixing commercial sulfur powder, carbon
+black, and PVDF binder and not optimized or specially
+designed.
+However, further increase in HFB concentration (from 3%
+to 20%) deteriorates the cell performance in both capacity
+retention and the Coulombic eﬃciency, indicating the
+additional HFB participates in the parasitic reaction and
+causes deterioration of the cell performance (Figure 2d).
+Possible reactions of HFB with the polysulﬁde anions were
+proposed in Figure 3. HFB preferably interacts with Li2S, a
+stronger nucleophile compared with polysulﬁde anions Sx
+2−,
+via a nucleophilic aromatic substitution (SNAr) reaction
+generating lithium pentaﬂuorophenyl sulﬁde (1) and LiF
+(route a). Compound 1 can be reversibly oxidized (or
+charged) to bis(pentaﬂuorophenyl) disulﬁde (3) and bis-
+(pentaﬂuorophenyl) polysulﬁde (4) and reduced (or dis-
+charged) back to 1 in the cell following route d. The use of
+dimethyl disulﬁdes (DMDS) and alkyl polysulﬁdes to activate
+the dead lithium sulﬁdes has been previously reported by other
+groups20−23 without clear understanding of the mechanism.
+In an attempt to potentially identify these species,
+compound 1 and compound 3 were synthesized ex situ and
+the synthesis procedures and spectroscopic characterizations
+(Figures S1−S4) were provided in the Supporting Information
+. Synthesized compounds 1 and 3 were then added to the
+baseline electrolyte and tested in the cell. As shown in Figure
+S5, the charge voltage proﬁles of HFB, compound 1, and
+compound 3 cells have exactly the same shoulder shown in the
+voltage range from 2.63 to 2.85 V during the charging process,
+conﬁrming compounds 1 and 3 as the interaction products of
+HFB and Sx
+2−. Further evidence for the formation of the above
+proposed species was provided by the post-test analysis of the
+cycled electrolyte. A trace amount of compound 3 generated
+by the reaction of HFB and Li2Sx during the cycling was
+observed by gas chromatography−mass spectrometry (GC-
+MS) analysis; i.e., the mass spectra (MS) of the ex situ
+synthesized compound (3) (Figure S4) and the cycled
+electrolyte (Figure S6) (peak 3 separated in the gas
+chromatography) are identical.
+However, when additional HFB are present, it interacts with
+high-order polysulﬁdes as shown in route b, generating lithium
+pentaﬂuorophenyl polysulﬁde (2). Compound 2 can be further
+reduced to give 1 and Li2S, resulting in active material loss and
+the capacity fade.
+Figure 4 presents the Nyquist plots of the cells before
+cycling and after one hundred discharge−charge cycles. All
+cells showed similar R1 (Ohmic resistance of the cell) that
+ranges from 2.5 to 4.0 Ω before cycling. After cycling, both R1
+and Rint became smaller for the low HFB content cells
+compared with both baseline and 20% HFB cell, indicating the
+reutilization of the low-order Li2S and Li2S2 in the sulfur
+electrode. The biggest diﬀerence is the charge transfer
+resistance (Rct) shown in Figure 4b caused by the high
+concentration of HFB. Rct for the 20% HFB cell increases
+dramatically after 100 cycles. This result is well correlated to
+the cell data showing that excess amount of HFB leads to the
+deterioration of cell performance and the possible mechanism
+was proposed in Figure 3.
+The strong interaction of HFB−Li2Sx was conﬁrmed by the
+solubility data (Figure 1b) and the electrochemical data
+(Figures 1c and 2a−d). However, due to the increased
+solubility of the sulﬁde species in the electrolyte, LiNO3
+additive is mandatory to be present in the base electrolyte in
+order to evaluate its impact on the cell performance.
+Apparently, side reactions of HFB with LiNO3 thus altering
+the SEI chemical composition and morphology on Li anode
+become problematic. With increasing HFB concentration from
+1% to 20%, the chemical composition and morphologies of the
+Li SEI dramatically changed (FT-IR spectra in Figure S7 and
+SEM/EDS in Figure S8 in the Supporting Information) with
+20% HFB cell resembling that of the SEI formed in the LiNO3-
+free baseline electrolyte (Figure S8h).
+Figure 4. (a) Nyquist plots of the Li−S cells with and without HFB additive (inset: R|C equivalent circuit model), and (b) Nyquist plots of the
+same cells after one hundred cycles. All impedance measurements were performed at fully discharged state.
+ACS Applied Energy Materials
+www.acsaem.org
+Letter
+https://dx.doi.org/10.1021/acsaem.0c00177
+ACS Appl. Energy Mater. 2020, 3, 3198−3204
+3201
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​3/​4/​3198/​4617961/​ae0c00177.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 5>>
+To verify the impact of HFB additive in LiNO3-free
+electrolyte, a ﬂuorinated ether-based electrolyte 1.0 M LiTFSI
+DOL/1,1,2,2-tetraﬂuoroethyl-2,2,3,3-tetraﬂuoropropyl ether
+(TTE) was used as a new baseline electrolyte. TTE as an
+electrolyte cosolvent has been thoroughly studied by our
+group25−27 and other groups,28−30 and signiﬁcant improve-
+ment in Li−S battery performance has been reported due to its
+low lithium polysulﬁde solubility and excellent lithium surface
+passivation capability. Therefore, no LiNO3 additive is
+required for this electrolyte to eliminate the redox shuttling
+eﬀect caused by the reactivation of the low-order lithium
+polysulﬁdes by HFB and the subsequent dissolution of HFB-
+Li2Sx species. Compared with the DOL/DME and DOL/TTE
+electrolyte cell, the DOL/TTE + HFB cells showed much
+improved capacity and capacity retention, especially for the
+low HFB concentration as evidenced in Figure 5a. Counter-
+intuitively, the higher HFB concentration actually slightly
+lowered both the capacity retention and the Coulombic
+eﬃciency. It is speculated that higher HFB content increases
+the solubility of the active sulﬁdes, which detracts from the
+function of TTE cosolvent to suppress the solubility of sulﬁde
+species.
+Density functional theory calculations were then carried out
+to determine the mechanism by which the HFB might
+coordinate with low-order lithium sulﬁdes and subsequently
+reacts and converts Li2S/Li2S2 into active aromatic sulﬁdes,
+thus facilitating the sulfur utilization and the cell performance.
+Calculations of the potential energy surfaces were performed
+with Gaussian 09, Revision E.01, with the B3LYP/6-311+
++G** method. Zero-point energies were scaled by 0.9877. The
+polarizable continuum solvation method was used for implicit
+solvation calculations of solvation energies. The calculation
+results show that the nucleophilic aromatic attack of Li2S with
+HFB was found to have a barrier of 0.52 eV for conversion
+from an encounter complex C6F6···Li2S to a pentaﬂuorophenyl
+sulﬁde−dilithium ﬂuoride structure (C6F6S−Li2F) via a
+transition state. The free energy and the predicted structure
+are illustrated in Figure 6. Compared with Li2S, the reaction of
+HFB with Li2S2 was found to have a slightly high barrier of
+0.75 eV for conversion from an encounter complex C6F6···
+Li2S2 to a pentaﬂuorophenyl disulﬁde−dilithium ﬂuoride
+structure (C6F6S2−Li2F). The same calculations were also
+performed for high-order polysulﬁde anions (Li2Sx
+2−, x = 3, 4,
+6, 8), and the results are summarized in Table 1. The higher
+polysulﬁdes had even larger energy barriers and were much less
+favorable compared with the low-order ones. This result is
+consistent with the mechanism by which HFB acts as an
+additive to preferably coordinate and activate the low-order
+Figure 5. (a) Capacity retention and (b) Coulombic eﬃciency of the Li−S cells with 1.0 M LiTFSI DOL/TTE baseline electrolyte, baseline + 10%,
+baseline + 15%, and baseline + 20% HFB, respectively.
+Figure 6. DFT optimized structures of encounter complex, transition
+state, and product from the reaction of HFB and Li2S showing a small
+barrier for the reaction (energy unit, eV s).
+Table 1. DFT Calculated Free Energies (ΔG) Relative to
+Encounter Complex for Diﬀerent Lithium Polysulﬁdes
+(Li2Sx, x = 1, 2, 3, 4, 6, and 8) with HFB Additive
+polysulﬁde
+structure
+ΔG(298K), eV
+Li2S
+encounter complex with HFB
+0.0
+transition state
+0.52
+product with HFB
+−3.08
+Li2S2
+Encounter complex with HFB
+0.0
+Transition state
+0.75
+Product with HFB
+−2.08
+Li2S3
+encounter complex with HFB
+0.0
+transition state
+0.91
+product with HFB
+−1.61
+Li2S4
+encounter complex with HFB
+0.0
+transition state
+1.12
+product with HFB
+−1.58
+Li2S6
+encounter complex with HFB
+0.0
+transition state
+1.20
+product with HFB
+−1.17
+Li2S8
+encounter complex with HFB
+0.0
+transition state
+1.19
+product with HFB
+−1.13
+ACS Applied Energy Materials
+www.acsaem.org
+Letter
+https://dx.doi.org/10.1021/acsaem.0c00177
+ACS Appl. Energy Mater. 2020, 3, 3198−3204
+3202
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​3/​4/​3198/​4617961/​ae0c00177.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 6>>
+polysulﬁdes, thus enhancing the active material utilization and
+capacity retention of the Li−S cells.
+4. CONCLUSIONS
+A new functional electrolyte additive hexaﬂuorobenzene
+(HFB) was reported for the ﬁrst time for lithium−sulfur
+batteries. The impact of HFB was veriﬁed experimentally both
+in 1.0 M LiTFSI DOL/DME + 0.1 M LiNO3 and 1.0 M
+LiTFSI DOL/TTE electrolyte cells. Although high-concen-
+tration (>20%) additive causes detrimental eﬀect on the
+former cell performance probably due to the interference with
+LiNO3, low concentration improved the capacity retention
+especially at the later stage of the cycling. DFT calculations
+indicate that HFB preferably coordinates with low-order
+polysulﬁdes Li2S and Li2S2 over higher order Li2Sx and further
+reacts forming redox-active species, thus reactivating the
+electronically isolated active materials back to the system and
+reducing the gradual capacity loss during later cycles. The
+reaction mechanism was proposed, and possible species were
+identiﬁed. This research opens a new approach to tackle the
+fundamental issue of the Li−S chemistry.
+■ASSOCIATED CONTENT
+*
+sı Supporting Information
+The Supporting Information is available free of charge at
+https://pubs.acs.org/doi/10.1021/acsaem.0c00177.
+Syntheses of LiC6F5S (1) and C12F10S2 (3); voltage
+proﬁles for cells containing synthesized compounds 1
+and 3; GC-MS analysis of cycled electrolyte; FT-IR
+spectra and SEM images of the cycled Li anodes (PDF)
+■AUTHOR INFORMATION
+Corresponding Author
+Zhengcheng Zhang −Chemical Sciences and Engineering
+Division, Argonne National Laboratory, Lemont, Illinois 60439,
+United States;
+orcid.org/0000-0002-0467-5801;
+Email: zzhang@anl.gov
+Authors
+Jiayu Cao −Chemical Sciences and Engineering Division,
+Argonne National Laboratory, Lemont, Illinois 60439, United
+States; Materials Science and Engineering, Worcester Polytechnic
+Institute, Worcester, Massachusetts 01609, United States
+Quinton Meisner −Chemical Sciences and Engineering
+Division, Argonne National Laboratory, Lemont, Illinois 60439,
+United States
+Tobias Glossmann −Mercedes-Benz Research & Development
+North America, Inc., Redford, Michigan 48239, United States
+Andreas Hintennach −Daimler AG (Mercedes-Benz Cars)
+Group Research, 71034 Boeblingen, Germany
+Yan Wang −Materials Science and Engineering, Worcester
+Polytechnic Institute, Worcester, Massachusetts 01609, United
+States;
+orcid.org/0000-0003-1060-2956
+Paul Redfern −Materials Science Division, Argonne National
+Laboratory, Lemont, Illinois 60439, United States
+Larry A. Curtiss −Materials Science Division, Argonne National
+Laboratory, Lemont, Illinois 60439, United States;
+orcid.org/0000-0001-8855-8006
+Complete contact information is available at:
+https://pubs.acs.org/10.1021/acsaem.0c00177
+Author Contributions
+#J.C. and Q.M. contributed equally to this work.
+Notes
+The authors declare no competing ﬁnancial interest.
+■ACKNOWLEDGMENTS
+This research is partially supported by Daimler AG/Mercedes-
+Benz Research & Development North America, Inc. Argonne
+National Laboratory, a U.S. Department of Energy laboratory,
+is operated by UChicago Argonne, LLC under Contract DE-
+AC02-06CH11357.
+■REFERENCES
+(1) Rosenman, A.; Markevich, E.; Salitra, G.; Aurbach, D.; Garsuch,
+A.; Chesneau, F. F. Review on Li-sulfur battery systems: An integral
+perspective. Adv. Energy Mater. 2015, 5 (16), 1500212.
+(2) Scrosati, B.; Hassoun, J.; Sun, Y.-K. Lithium-ion batteries. A look
+into the future. Energy Environ. Sci. 2011, 4 (9), 3287−3295.
+(3) Manthiram, A.; Fu, Y.; Chung, S. H.; Zu, C.; Su, Y. S.
+Rechargeable lithium-sulfur batteries. Chem. Rev. 2014, 114 (23),
+11751−87.
+(4) Yang, Y.; Zheng, G.; Cui, Y. Nanostructured sulfur cathodes.
+Chem. Soc. Rev. 2013, 42 (7), 3018−32.
+(5) Zhang, S. S. Liquid electrolyte lithium/sulfur battery:
+Fundamental chemistry, problems, and solutions. J. Power Sources
+2013, 231, 153−162.
+(6) Barchasz, C.; Molton, F.; Duboc, C.; Lepretre, J. C.; Patoux, S.;
+Alloin, F. Lithium/sulfur cell discharge mechanism: an original
+approach for intermediate species identification. Anal. Chem. 2012, 84
+(9), 3973−80.
+(7) Zhang, S. S.; Read, J. A. A new direction for the performance
+improvement of rechargeable lithium/sulfur batteries. J. Power Sources
+2012, 200, 77−82.
+(8) Zhang, S.; Zheng, M.; Lin, Z.; Li, N.; Liu, Y.; Zhao, B.; Pang, H.;
+Cao, J.; He, P.; Shi, Y. Activated carbon with ultrahigh specific surface
+area synthesized from natural plant material for lithium-sulfur
+batteries. J. Mater. Chem. A 2014, 2 (38), 15889−15896.
+(9) Zhou, W.; Yu, Y.; Chen, H.; DiSalvo, F. J.; Abruña, H. c. D. Yolk-
+shell structure of polyaniline-coated sulfur for lithium-sulfur batteries.
+J. Am. Chem. Soc. 2013, 135 (44), 16736−16743.
+(10) Li, Z.; Yuan, L.; Yi, Z.; Sun, Y.; Liu, Y.; Jiang, Y.; Shen, Y.; Xin,
+Y.; Zhang, Z.; Huang, Y. Insight into the electrode mechanism in
+lithium-sulfur batteries with ordered microporous carbon confined
+sulfur as the cathode. Adv. Energy Mater. 2014, 4 (7), 1301473.
+(11) Hart, C. J.; Cuisinier, M.; Liang, X.; Kundu, D.; Garsuch, A.;
+Nazar, L. F. Rational design of sulphur host materials for Li-S
+batteries: correlating lithium polysulphide adsorptivity and self-
+discharge capacity loss. Chem. Commun. 2015, 51 (12), 2308−2311.
+(12) Aurbach, D.; Pollak, E.; Elazari, R.; Salitra, G.; Kelley, C. S.;
+Affinito, J. On the surface chemical aspects of very high energy
+density, rechargeable Li-sulfur batteries. J. Electrochem. Soc. 2009, 156
+(8), A694−A702.
+(13) Zhang, S. S. Role of LiNO3 in rechargeable lithium/sulfur
+battery. Electrochim. Acta 2012, 70, 344−348.
+(14) Rosenman, A.; Elazari, R.; Salitra, G.; Markevich, E.; Aurbach,
+D.; Garsuch, A. The effect of interactions and reduction products of
+LiNO3, the anti-shuttle agent, in Li-S battery systems. J. Electrochem.
+Soc. 2015, 162 (3), A470−A473.
+(15) Wu, F.; Lee, J. T.; Nitta, N.; Kim, H.; Borodin, O.; Yushin, G.
+Lithium iodide as a promising electrolyte additive for lithium-sulfur
+batteries: mechanisms of performance enhancement. Adv. Mater.
+2015, 27 (1), 101−108.
+(16) Zheng, J.; Tian, J.; Wu, D.; Gu, M.; Xu, W.; Wang, C.; Gao, F.;
+Engelhard, M. H.; Zhang, J.-G.; Liu, J.; Xiao, J. Lewis acid-base
+interactions between polysulfides and metal organic framework in
+lithium sulfur batteries. Nano Lett. 2014, 14 (5), 2345−2352.
+ACS Applied Energy Materials
+www.acsaem.org
+Letter
+https://dx.doi.org/10.1021/acsaem.0c00177
+ACS Appl. Energy Mater. 2020, 3, 3198−3204
+3203
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​3/​4/​3198/​4617961/​ae0c00177.​pdf by TSINGHUA UNIV user on 08 October 2026
+
+<<PAGE 7>>
+(17) Xiong, S.; Kai, X.; Hong, X.; Diao, Y. Effect of LiBOB as
+additive on electrochemical properties of lithium-sulfur batteries.
+Ionics 2012, 18 (3), 249−254.
+(18) Lin, Z.; Liu, Z.; Fu, W.; Dudney, N. J.; Liang, C. Phosphorous
+pentasulfide as a novel additive for high-performance lithium-sulfur
+batteries. Adv. Funct. Mater. 2013, 23 (8), 1064−1069.
+(19) Shim, J.; Ko, T. J.; Yoo, K. Study for an effect of LiNO3 on
+polysulfide multistep reaction in Li/S battery. J. Ind. Eng. Chem. 2019,
+80, 283−291.
+(20) Worthington, M. J. H.; Kucera, R. L.; Chalker, J. M. Green
+chemistry and polymers made from sulfur. Green Chem. 2017, 19
+(12), 2748−2761.
+(21) Chen, S.; Dai, F.; Gordin, M. L.; Yu, Z.; Gao, Y.; Song, J.;
+Wang, D. Functional organosulfide electrolyte promotes an alternate
+reaction pathway to achieve high performance in lithium-sulfur
+batteries. Angew. Chem., Int. Ed. 2016, 55 (13), 4231−4235.
+(22) Gu, S.; Jin, J.; Zhuo, S.; Qian, R.; Wen, Z. Organic Polysulfides
+Based on- S- S- S- Structure as Additives or Cosolvents for High
+Performance Lithium-Sulfur Batteries. ChemElectroChem 2018, 5
+(13), 1717−1723.
+(23) Wu, M.; Cui, Y.; Bhargav, A.; Losovyj, Y.; Siegel, A.; Agarwal,
+M.; Ma, Y.; Fu, Y. Organotrisulfide: A high capacity cathode material
+for rechargeable lithium batteries. Angew. Chem., Int. Ed. 2016, 55
+(34), 10027−10031.
+(24) Chen, S.; Gao, Y.; Yu, Z.; Gordin, M. L.; Song, J.; Wang, D.
+High capacity of lithium-sulfur batteries at low electrolyte/sulfur ratio
+enabled by an organosulfide containing electrolyte. Nano Energy 2017,
+31, 418−423.
+(25) Zu, C.; Azimi, N.; Zhang, Z.; Manthiram, A. Insight into
+lithium-metal anodes in lithium-sulfur batteries with a fluorinated
+ether electrolyte. J. Mater. Chem. A 2015, 3 (28), 14864−14870.
+(26) Azimi, N.; Xue, Z.; Rago, N. D.; Takoudis, C.; Gordin, M. L.;
+Song, J.; Wang, D.; Zhang, Z. Fluorinated electrolytes for Li-S battery:
+suppressing the self-discharge with an electrolyte containing
+fluoroether solvent. J. Electrochem. Soc. 2015, 162 (1), A64−A68.
+(27) Azimi, N.; Weng, W.; Takoudis, C.; Zhang, Z. Improved
+performance of lithium-sulfur battery with fluorinated electrolyte.
+Electrochem. Commun. 2013, 37, 96−99.
+(28) Weller, C.; Thieme, S.; Härtel, P.; Althues, H.; Kaskel, S.
+Intrinsic Shuttle Suppression in Lithium-Sulfur Batteries for Pouch
+Cell Application. J. Electrochem. Soc. 2017, 164 (14), A3766−A3771.
+(29) Nakanishi, A.; Ueno, K.; Watanabe, D.; Ugata, Y.; Matsumae,
+Y.; Liu, J.; Thomas, M. L.; Dokko, K.; Watanabe, M. Sulfolane-based
+highly concentrated electrolytes of lithium bis (trifluoromethanesul-
+fonyl) amide: ionic transport, Li-Ion coordination, and Li-S battery
+performance. J. Phys. Chem. C 2019, 123 (23), 14229−14238.
+(30) Chen, Y.; Gong, Z.; Yang, Y. Enhanced Electrochemical
+Performance of High-Energy Lithium-Sulfur Batteries Using an
+Electrolyte with 1, 1, 2, 2-Tetrafluoro-3-(1, 1, 2, 2-tetrafluoroethoxy)
+propane. J. Electrochem. Soc. 2018, 165 (9), A1915−A1919.
+ACS Applied Energy Materials
+www.acsaem.org
+Letter
+https://dx.doi.org/10.1021/acsaem.0c00177
+ACS Appl. Energy Mater. 2020, 3, 3198−3204
+3204
+Downloaded from pubs.​acs.​org/​aaemcq/​article-pdf/​3/​4/​3198/​4617961/​ae0c00177.​pdf by TSINGHUA UNIV user on 08 October 2026

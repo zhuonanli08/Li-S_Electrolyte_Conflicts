@@ -1,0 +1,936 @@
+
+<<PAGE 1>>
+Advanced Functional Materials
+www.afm-journal.de
+RESEARCH ARTICLE
+Soft Alkali Metal Nitrate Additive for Lean Electrolyte Li-S
+Batteries
+Ilju Kim1
+Hannah Cho1
+Sejin Kim1
+Jinkwan Jung2
+Hyeokjin Kwon1
+Yewon Shin1
+Dongwoo Kim1
+Hee-Tak Kim1,3
+1Department of Chemical and Biomolecular Engineering, Korea Advanced Institute of Science and Technology, Daejeon, Republic of Korea
+2Battery R&D, LG
+Energy Solution, Daejeon, Republic of Korea
+3LG Energy Solution-KAIST Frontier Research Lab, KAIST, Daejeon, Republic of Korea
+Correspondence: Hee-Tak Kim (heetak.kim@kaist.ac.kr)
+Received: 10 November 2025
+Revised: 4 January 2026
+Accepted: 14 January 2026
+Keywords: electrolyte depletion | lean electrolytes | Li-S batteries | nitrate additives | solid electrolyte interphases
+ABSTRACT
+To develop high-energy-dense lithium–sulfur batteries (LSBs), improving cycle performance by suppressing electrolyte depletion
+and stabilizing the anode–electrolyte interphase under lean-electrolyte conditions is essential. Lithium nitrate (LiNO3) is regarded
+as an effective additive that reduces electrolyte decomposition and stabilizes the interphases of the cathode and anode in LSBs,
+however, it also increases cell overvoltage, limiting rate performance. Herein, by exploring various metal nitrates, we found that
+cesium nitrate (CsNO3) improves both rate and cycle performance in lean electrolyte LSBs. Cs+, a soft acid, stabilizes polysulfides
+(a soft base) in the form of solid precipitate, while NO3
+−suppress electrolyte decomposition by forming a sulfate-based solid
+electrolyte interphase. As a result, the CsNO3 additive enables stable LSB operation over 300 cycles at an electrolyte/sulfur (E/S)
+ratio of 5 µL mgs
+−1 and a current rate of 0.3C due to the suppressed electrolyte depletion. A pouch-type LSB with CsNO3 delivered an
+energy density of 408 Wh kg−1 at a challenging E/S ratio of 2.0 µL mgs
+−1. Our work inspires the development of additives with dual
+functionalities—polysulfide stabilization and interphase stabilization to enable high-energy-density LSBs with extended lifespans.
+1
+Introduction
+Lithium–sulfur batteries (LSBs) are considered among the most
+promising next-generation energy storage systems due to their
+high theoretical gravimetric energy density exceeding 2600 Wh
+kg−1 and the natural abundance of sulfur [1–4]. These features
+make LSBs particularly attractive for urban air mobility (UAM)
+applications, where lightweight energy storage is required. To
+achieve practically viable energy densities, it is essential to
+develop LSBs with a low electrolyte-to-sulfur (E/S) ratio (<5 µL
+mgs
+−1) [5, 6]. However, under such lean electrolyte conditions,
+concentrated lithium polysulfides (LiPSs) inevitably form [7,
+8], leading to challenges such as electrolyte gelation, which
+hinders redox reactions at the cathode [9], lithium metal anode
+corrosion, and non-uniform lithium-ion (Li+) flux that promotes
+“dead lithium” growth and accelerates electrolyte decomposition
+[10, 11]. Furthermore, the power performance of LSBs remains
+insufficient for UAM applications due to the sluggish kinetics of
+sulfur redox reaction (SRR) [12].
+To facilitate SRR, significant efforts have been made to improve
+both the sulfur cathode and the electrolyte. The use of catalysts
+as electrode additives (e.g., metal oxides [13], nitrides [14], phos-
+phides [15]) or of electrolyte additives that form in situ catalysts
+(e.g., carbon/Ni compounds [16], calcium triflates [17]) acceler-
+ates SRR by promoting the adsorption of polysulfide (PS) and
+modulating their electronic structure. To address the issue of slow
+SRR caused by the increased viscosity of the electrolyte medium
+due to PS dissolution, low-salt-concentration electrolytes with
+lower viscosity have been proposed [18]. Although these strategies
+© 2026 Wiley-VCH GmbH
+Advanced Functional Materials, 2026; 36:e30254
+https://doi.org/10.1002/adfm.202530254
+1 of 11
+
+<<PAGE 2>>
+can mitigate LiPS dissolution and enhance the kinetics of SRR,
+this effectiveness becomes less apparent over cycling because of
+electrolyte decomposition at the lithium metal anode [19].
+Recent studies have shown that electrolyte depletion—resulting
+from continuous reactions between lithium metal and the
+electrolyte—is the primary cause of LSB cell failure [20]. This
+is supported by the finding that adding fresh electrolytes to a
+degraded cell can restore stable cycling [21]. Consequently, form-
+ing a stable solid electrolyte interphase (SEI) at the lithium metal
+anode is crucial for preventing electrolyte loss. In lithium metal
+batteries, electrolytes with lower solvating power or higher salt
+concentrations can improve Li metal stability, which is attributed
+to an increase of anion coordination in the Li+ solvation shell and
+consequent formation of an inorganic-rich SEI. In LSBs, weakly
+solvating or high-concentration electrolytes reduce the solubility
+of LiPSs, thereby suppressing the PS shuttle but leading to a
+large overvoltage for SRR due to reduced Li+ conductivity arising
+from the decreased solvating power [22]. Therefore, there is an
+urgent need to develop advanced electrochemical frameworks
+that enhance SRR while mitigating the electrolyte decomposition
+at the lithium metal anode.
+LiNO3 has been recognized as an indispensable electrolyte addi-
+tive for stabilizing the lithium metal anode and suppressing
+electrolyte decomposition, which is attributed to the formation
+of an inorganic-rich SEI through its reductive decomposition or
+its redox reaction with PSs [23]. Because of its higher electron
+donicity compared to DME and FSI−, NO3
+−preferentially coor-
+dinates with Li+, thereby increasing the proportion of DME and
+FSI−existing in a free state that is less prone to reduction [24,
+25]. Moreover, it facilitates the formation of SEI components
+with lower solubility such as Li2SO4, LiNxOy, Li2O at the Li
+metal anode [26]. Since it is inevitably consumed during cycling,
+increasing the concentration of LiNO3 can prolong cell lifespan
+[27]. However, this also induces significant overpotentials that
+compromise rate performance. To address the long-lasting trade-
+off, we explored various alkali metal nitrates (KNO3, RbNO3, and
+CsNO3) as NO3
+−suppliers and introduced them to the cathode
+instead of the electrolyte for high doses of NO3
+−
+. Including
+additives directly in the cathode can be beneficial, as it allows
+incorporation of amounts exceeding their solubility limits in the
+electrolyte. We found that the Rb+ and Cs+ cations, owing to
+their larger ionic radius and greater softness, stabilize soft-base
+PS anions, promoting PS precipitate formation. This reduces the
+concentration of dissolved PS in the electrolyte, thereby improv-
+ing SRR kinetics and rate capability. Furthermore, the high
+dose of NO3
+−effectively suppresses electrolyte decomposition
+and stabilizes the lithium metal electrode for extended cycling.
+Using CsNO3, 0.8C operation (3.48 mA cm−2) was achievable
+at an E/S ratio of 5 µL mgs
+−1, which is a two-fold increase
+over the control system. For CsNO3 additive, which shows the
+most promising performance among the nitrates tested, cycling
+stability is improved by two-fold at a lean electrolyte condition
+(E/S = 5 µL mgs
+−1) and at 0.3C due to the increased supply of
+NO3
+−. At higher NO3
+−concentrations, electrolyte decomposition
+was suppressed due to the modified solvation structure and the
+formation of a stable SEI layer, such as Li2SO4, induced by
+reactions between NO3
+−and PS anions. A pouch-cell prototype
+with CsNO3 additive demonstrated an energy density about
+408 Wh kg−1. Our findings highlight the strong potential of
+alkali metal nitrates—particularly CsNO3—for addressing the
+dual challenges of sluggish SRR and poor cycling stability in lean
+electrolyte LSBs.
+2
+Results
+2.1
+LiNO3 Additives as the Double-Edged Sword
+Between Cycle and Rate Performance
+To clarify that electrolyte depletion is the primary failure mecha-
+nism of LSBs under lean electrolyte conditions, we tracked the
+consumption of various constituents during cycling at E/S =
+5 µL mgs
+−1 using an electrolyte containing 1 m LiFSI and 0.3 m
+LiNO3 (DME (1,2-dimethoxyethane):2MF (2-methyl furan): BTFE
+(Bis(2,2,2-trifluoroethyl) ether) = 7:2:1 v/v/v), which has moder-
+ate Li+ solvating power adequate for LSB operation (Figure 1a,b).
+Cycling tests were performed at 0.3C after three pre-cycles at
+0.05C, 0.1C, 0.15C, and 0.2C for each current rate (see experi-
+mental section). The coulombic efficiency was calculated as the
+discharge capacity of the (n + 1)th cycle divided by the charge
+capacity of the nth cycle. Consequently, the initial coulombic
+efficiency may appear unstable due to changes in C-rate during
+the pre-cycling process. The amount of DME was measured by
+1H QNMR, FSI by 19F QNMR [21], and NO3
+−by ion chromatog-
+raphy (see experimental, Figures S1–S3). Approximately 60% of
+NO3
+−was consumed during the first 25 cycles, and noticeable
+decomposition of FSI−was observed after 50 cycles. Despite
+the relatively stable discharge capacity, the coulombic efficiency
+gradually decreased beyond 50 cycles due to the reduced Li salt
+concentration in the electrolyte. In contrary, the main solvent,
+DME, did not show significant decomposition. Notably, NO3
+−—
+the key anion for the durability of LSB—exhibited the most severe
+depletion. After 100 cycles, NO3
+−fell below the detection limit
+(<0.015 m).
+We confirmed that this anion depletion leads to cell degradation
+by cycling the cells until failure (∼150 cycles) and subsequently
+replenishing them with either fresh electrolyte or a lithium
+salt-free solvent mixture. The cell refilled with the lithium-salt-
+containing electrolyte maintained stable operation for more than
+70 additional cycles, whereas that refilled with the solvent-only
+mixture experienced immediate overcharging from the second
+cycle (Figure S4). Furthermore, cycling stability tests with vary-
+ing LiNO3 concentrations showed a strong positive correlation
+between LiNO3 content and cycling stability: 31, 90, and 155
+cycles at 0.0, 0.1, and 0.3 m LiNO3, respectively (Figure 1c). These
+findings corroborate previous reports highlighting the pivotal role
+of NO3
+−in extending the lifespan of LSB by stabilizing both the
+cathode and anode interphase [28, 29].
+Despite its interphase-stabilizing capabilities, NO3
+−compromises
+rate performance (Figure 1d,e). At E/S = 5 µL mgs
+−1, we tested
+the rate performance using the electrolytes with different LiNO3
+concentrations and found that the threshold current density,
+at which the lower voltage plateau was sustained, decreased
+with LiNO3 concentration: 0.7C (3.05 mA cm−2), 0.6C (2.62 mA
+cm−2), 0.4C (1.74 mA cm−2), and 0.2C (0.87 mA cm−2) for 0.0,
+0.1, 0.3, and 0.6 m LiNO3, respectively (Figure 1d; Figure S5).
+A comparison of voltage profiles at the 14th cycle under 0.3C
+operation further revealed that higher LiNO3 concentrations
+2 of 11
+Advanced Functional Materials, 2026
+ 16163028, 2026, 35, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202530254 by Tsinghua University Library, Wiley Online Library on [01/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 3>>
+FIGURE 1
+Effect of LiNO3 concentration in Li-S batteries operation. (a) Cycle performance at 0.3C discharge/charge with 0.3 m LiNO3 and (b)
+relative amounts of the remaining electrolyte components during cycles. (c) Cycle performance, (d) rate performance, and (e) voltage profiles at 0.3C-rate
+with various LiNO3 concentrations. Schematic diagrams of (f) limitations of current Li-S batteries and (g) design principles of the metal nitrate additives
+to enhance both rate and cycle performance of Li-S batteries.
+increased both discharge and charge overpotentials (Figure 1e).
+Galvanostatic intermittent titration technique (GITT) analysis
+also revealed that the overpotential increased markedly with
+LiNO3 concentration during cycling (Figure S6). By combining
+electrochemical impedance spectroscopy (EIS) with GITT, the
+contributions of ohmic, activation, and concentration polariza-
+tion were decoupled (Figure S7) [22]. Regardless of depth of
+discharge (DOD), the three polarization components increased
+as the LiNO3 concentration rose, and at 0.6 m LiNO3, there was
+a significant increase in these polarizations. The polarizations
+were particularly pronounced at a DOD of 0.25, at which the LiPS
+concentration in the electrolyte reaches its maximum, indicating
+that the increased polarization with LiNO3 arises from increased
+LiPS solubility.
+To quantify the LiPS solubility, we constructed a calibration
+curve of the UV absorbance at 400 nm versus LiPS concentration
+using 1 and 2.5 mm Li2S4-containing DME solutions (Figure
+S8a) [30]. This calibration was then applied to determine the
+LiPS concentration in the supernatant of 0.5 m Li2S4-containing
+DME solutions with varying LiNO3 contents. As shown in
+Figure S8b,c, the PS solubility increased with LiNO3 concen-
+tration. As previously demonstrated, NO3
+−prevents clustering
+of LiPSs by preferentially coordinating with Li+ due to its high
+donor number, increasing the LiPS solubility [26, 31]. Although
+LiNO3 is essential to increase cycle performance, it impedes
+Li+ transport and reaction kinetics at higher concentrations
+due to increased LiPS solubility, acting as a double-edged
+sword.
+Advanced Functional Materials, 2026
+3 of 11
+ 16163028, 2026, 35, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202530254 by Tsinghua University Library, Wiley Online Library on [01/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 4>>
+Given this trade-off, we explored various alkali metal nitrate
+additives (MNO3, where M = K+, Rb+, Cs+) to find a nitrate salt
+that is capable of improving the cycling stability and the rate
+capability. We hypothesize that metal cations with strong binding
+with PSs can mitigate the viscosity increase of the electrolyte
+medium caused by solvated PS anions, while maintaining the
+positive effect of NO3
+−. This approach could present the dual
+functionality of facilitating Li+ mobility and suppress electrolyte
+decomposition (Figure 1f,g).
+2.2
+PS-Capturing Effect of Metal Cations With
+Different Hardness
+To probe the PS capturing ability of different metal cations,
+we examined the PS solubility in electrolyte as a function of
+the cation species. A 0.5 m Li2S4-electrolyte was prepared by
+dissolving stoichiometric amounts of S8 and Li2S in the control
+electrolyte, followed by the addition of 0.3 m MNO3 (M = Li+, K+,
+Rb+, Cs+). After filtering out the precipitates, the PS concentra-
+tion in the supernatant was quantified using UV–vis spectroscopy
+(Figure 2a; Figure S9). Compared to the control (0.3 m LiNO3),
+0.6 m LiNO3-containing electrolyte resulted in a slight increase
+in LiPS solubility. However, the 0.3 m KNO3, RbNO3, and CsNO3-
+containing electrolytes exhibited a diminished PS solubility, and
+it decreases in the order of LiNO3> control > KNO3> RbNO3>
+CsNO3. This suggests that the alkali metal cations softer than Li+
+can capture solvated PS anions, reducing PS solubility.
+The observation highlights the role of the hardness of the cation.
+The hardness of metal cations decreases as the ionic radius
+increases due to charge density decrease. To validate it, we
+estimated Pearson’s absolute hardness values for the cations
+(Li+, K+, Rb+, and Cs+) and anions (PS species, FSI−, NO3
+−) by
+using density functional theory (DFT) calculations (Figure 2b;
+Figure S10) [32]. As expected, cation hardness decreases with
+increasing ionic radius. On the other hand, PS anions (S8
+2−,
+S6
+2−, S4
+2−) exhibit lower hardness than FSI−and NO3
+−, despite
+being dianions. According to the Hard–Soft Acid–Base (HSAB)
+principle, soft cations (Rb+, Cs+) can strongly associate with soft-
+base PS anions, forming M–PS complexes and thereby lowering
+the PS concentration [33, 34]. In contrast, the harder Li+ is less
+effective in combining with PS anions than Rb+ or Cs+, resulting
+in higher PS concentration. The correlation between the hardness
+of the cation and PS solubility showed to be strong (Figure 2c).
+Next, we examined the influence of M–PS complex formation
+on Li+ transport by measuring the ionic conductivity of the
+supernatants from 0.5 m Li2S4 electrolytes containing MNO3 with
+different cation hardness (Figure 2d). As the cation hardness
+decreased, the ionic conductivity of the supernatants increased.
+In general, the ionic conductivity of LiPS-containing electrolyte
+decreases with increasing LiPS solubility due to higher viscosity
+[19]. The observed trends, consistent with the change in LiPS
+solubility change, indicate that pairing NO3
+−with a soft cation
+suppresses LiPS dissolution and lowers viscosity, thereby enhanc-
+ing the ionic conductivity of the electrolyte medium during Li–S
+cell operation.
+Increasing Li+ transport by reducing PS solubility can also
+enhance the PS redox kinetics. To investigate the effect of metal
+nitrates on PS redox kinetics, we assembled Li2S4 symmetric
+cells using carbon paper electrodes loaded with MNO3 (M =
+Li+, K+, Rb+, Cs+; 0.004 mmol cm−2) and 0.5 m Li2S4 electrolyte
+[35]. The activation energy for the charge-transfer reaction was
+determined from impedance measurements at different temper-
+atures (Figure 2e; Figure S11). The activation energy decreased
+in the order LiNO3 (0.76 kJ mol−1) > control (0.61 kJ mol−1) >
+KNO3 (0.69 kJ mol−1) > RbNO3 (0.58 kJ mol−1) > CsNO3 (0.43 kJ
+mol−1), indicating that soft acid cations accelerate charge-transfer
+kinetics by suppressing PS solubility. Moreover, cations can also
+affect the thermodynamic driving force for LiPS reduction. To
+understand the effect of soft acid cations on PS reduction, we
+calculated ΔG for the Li2S4 →Li2S2 conversion (Equation (1)),
+which is considered the rate-limiting step in SRR, with different
+metal cations using DFT calculations.
+Li2S4(sol) + 2M+ + 2e−→Li2S2(s) + M2S2(s) (M = Li, K, Rb, and Cs) (1)
+The value for ΔG shifted to a more negative value with decreasing
+the hardness (ΔG = +2.803, −0.502, −0.561, and −1.153 kcal
+mol−1 for K+, Rb+, and Cs+, respectively), showing that SRR is
+thermodynamically more favored with softer cations (Figure 2f).
+Despite the advantages of RbNO3 and CsNO3, their low solubility
+in electrolyte (∼0.1 m) limits the applicable dose in LSBs (Figure
+S12). To overcome this limitation, we incorporated these additives
+into the sulfur cathode during fabrication using water as a solvent.
+As exemplified by CsNO3, the addition of MNO3 to the cathode
+slurry did not significantly alter the electrode morphology (Figure
+S13). This strategy enables the gradual dissolution of the additives
+into the electrolyte during cycling, within their solubility limit.
+The molar ratio of incorporated MNO3 to sulfur was adjusted to
+1.0:2.8, allowing the electrode to supply an additional 0.3 m NO3
+−
+under an E/S ratio of 5 µL mgs
+−1. Assuming complete dissolution
+of MNO3 during operation, the total NO3
+−concentration in the
+MNO3-containing cell would reach 0.6 m (0.3 m LiNO3 in the
+electrolyte and 0.3 m MNO3 from the electrode).
+To evaluate the impact of this strategy, we measured cell polar-
+ization using GITT for pristine and MNO3-containing sulfur
+cathodes. Similar to the case of MNO3-containing electrolytes,
+both ohmic and activation polarizations decreased in the order:
+LiNO3> KNO3> Control > RbNO3> CsNO3 (Figures S14 and
+S15), reflecting enhanced PS-capturing ability of softer cations.
+Especially, Li2S nucleation overpotential around DOD of 0.25
+was decreased as the cation hardness decreased (Figure 2g).
+These reduced polarizations translated into improved rate per-
+formance, as evidenced by the maximum discharge current
+density sustaining a stable lower-voltage plateau: LiNO3 (0.2C,
+0.87 mA cm−2) < KNO3 (0.3C, 1.31 mA cm−2) < Control (0.4C,
+1.74 mA cm−2) < RbNO3 (0.6C, 2.62 mA cm−2) < CsNO3 (0.8C,
+3.48 mA cm−2) (Figure 2h; Figure S16). Among these, CsNO3
+exhibited the best performance and was selected for further
+studies.
+2.3
+Mechanistic Changes in Li-S Cells Induced
+by CsNO3 Addition
+Operando XRD analysis of the sulfur cathode containing CsNO3
+revealed a distinct CsNO3 peak near 20◦immediately after cell
+4 of 11
+Advanced Functional Materials, 2026
+ 16163028, 2026, 35, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202530254 by Tsinghua University Library, Wiley Online Library on [01/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 5>>
+FIGURE 2
+Interactions between PS and various metal nitrates. (a) Amounts of PS anions dissolved in electrolytes after introducing various metal
+nitrates into electrolytes containing 0.5 m Li2S4, and the optic images of solutions before filtration and diluted solutions of supernatants (the inset figure).
+(b) Pearson absolute hardness of various cation and anion species. (c–h) Relationship plot of the MNO3-LSB properties, showing the Pearson absolute
+hardness of cations and (c) the S42−concentration in the electrolyte, (d) ionic conductivity of the supernatants, (e) the activation energy of charge transfer
+of the PS symmetric cell, (f) the formation free energy of Li2S2 with metal cations, (g) cathodic polarization before Li2S nucleation, and (h) the maximum
+discharge current (C-rate) that indicates stable operation (with a lower plateau).
+assembly and during the first discharge (Figure 3a; Figure S17).
+This peak disappeared after the first discharge and did not
+reappear in subsequent cycles, indicating that CsNO3 eventually
+dissolved into the electrolyte despite its low solubility in the
+electrolyte. The continuous dissolution can be attributed to its
+reaction with PS anions, which produces Cs-PS complexes such
+as Cs2S4 that precipitate out of the electrolyte. This precipitation
+effectively lowers the concentration of free Cs+ in the electrolyte,
+allowing additional CsNO3 to dissolve until the reservoir in the
+cathode is depleted.
+To verify the preferential formation of Cs-PS complexes, 0.5 m
+Li2S4 and 0.3 m CsNO3 were mixed in DME solvent. Upon
+introducing CsNO3 into the Li2S4 solution, orange-colored pre-
+cipitates formed (Figure S18). XPS analysis was conducted for
+the isolated precipitates and compared with CsNO3 powder
+(Figure 3b). The N/Cs atomic ratio in the precipitates, collected
+by centrifugation, was 0.27, markedly lower than that of CsNO3
+powder (1.0), indicating extensive replacement of NO3
+−by
+S4
+2−. Powder XRD analysis of the CsNO3-Li2S4 further demon-
+strated the formation of crystalline Cs-PS (Figure S19). Distinct
+Advanced Functional Materials, 2026
+5 of 11
+ 16163028, 2026, 35, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202530254 by Tsinghua University Library, Wiley Online Library on [01/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 6>>
+FIGURE 3
+Effect of CsNO3 additive in Li-S batteries. (a) Contour plot of operando XRD patterns at different DOD/SOC levels during the first
+discharge and subsequent charge. (b) N/Cs ratio from XPS analysis of the solid precipitate after the reaction between Li2S4 and CsNO3. Operando XRD
+contour plot for (c) the control cathode and (d) the CsNO3-containing cathode during the second discharge.
+Cs-PS phases such as Cs2S6 and Cs2S3 were observed in the
+precipitate obtained from the CsNO3-Li2S4 mixture. Moreover,
+both the solid precipitate and the supernatant from the CsNO3-
+Li2S4 mixture were subjected to mass spectrometry analyses
+(ESI-MS and ICP-MS) to elucidate the inclusion of Cs in the
+precipitate (Figures S20 and S21). The ESI-MS data from the
+supernatant revealed larger signals for Li3S5
+−(m/z = 180) and
+Li3S7
+−(m/z = 249) [35], whereas those from the precipitate Cs2S5
+−
+(m/z = 421.23). According to our ICP-MS analysis, the Li/Cs
+ratio in the supernatant was 13.4, and that in the precipitate
+was only 0.08. These results show that Cs-PS complexes can
+be formed, which have lower solubility than Li-PS complexes
+from the reaction between CsNO3 and LiPS. This result can be
+supported by UV–vis spectroscopy, which showed a decrease
+in dissolved S4
+2−concentration upon the CsNO3 addition
+(Figure 2a,c).
+Operando XRD results for the second discharge/charge cycle sup-
+port the role of CsNO3 in accelerating SRR kinetics (Figure 3c,d;
+Figure S22). In the control electrode (without CsNO3), S8 diffrac-
+tion peaks near 25.8◦(026 plane) and 27.7◦(206 plane) remained
+visible until a DOD of 0.6. In contrast, in the CsNO3-containing
+electrode, these peaks disappeared earlier, at DOD of around 0.4,
+while a Li2S peak near 26.9◦emerged at a lower DOD, indicating
+enhanced PS conversion kinetics. Notably, in the presence of
+CsNO3, a peak near 28.2◦remained throughout discharge. This
+peak can be assigned either to the (121) plane of Cs2S2 or the
+(313) plane of S8. However, given that other S8 peaks (e.g., 27.7◦)
+had already vanished at an earlier stage, the sustained presence
+of the 28.2◦peak points toward the formation of Cs2S2 during
+the discharge process. This observation is consistent with our
+hypothesis that Cs+ enhances PS redox reactions by stabilizing
+intermediate species. In contrast, the modification of the sulfur
+redox mechanism induced by CsNO3 was not clearly observed
+during the first cycle. This behavior can be attributed to the low
+solubility of CsNO3 in the electrolyte, which limits its complete
+dissolution during the initial stage. Consequently, a sufficient
+supply of Cs+ ions and the formation of CsPS species occur only
+after reactions between CsNO3 and dissolved LiPS during the first
+cycle.
+Further electrochemical analyses also support those mechanis-
+tic changes in polysulfide redox reactions induced by CsNO3
+introduction enhance SRR kinetics. Temperature-dependent EIS
+results show that the CsNO3-incorporated electrode exhibits con-
+sistently lower resistance components than the control electrode
+over the entire temperature range investigated (Figure S23).
+Moreover, Arrhenius analysis of the EIS data reveals that the
+activation energy for the LiPS-to-Li2S conversion decreases from
+22.0 kJ mol−1 for the control electrode to 20.4 kJ mol−1 for the
+CsNO3-incorporated electrode, indicating a reduced activation
+barrier for Li2S formation. Chronoamperometry (CA) analysis
+further demonstrates promoted Li2S nucleation and deposi-
+tion kinetics (Figure S24). Specifically, the CsNO3-incorporated
+6 of 11
+Advanced Functional Materials, 2026
+ 16163028, 2026, 35, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202530254 by Tsinghua University Library, Wiley Online Library on [01/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 7>>
+electrode exhibits an earlier onset and higher peak current,
+indicating facilitated Li2S deposition. Consistently, the amount of
+Li2S deposited during potentiostatic holding at 2.05 V for 3 h is
+higher for the CsNO3-incorporated electrode (542 mAh gs
+−1) than
+for the control electrode (355 mAh gs
+−1).
+2.4
+Enhanced Cycling Stability and Li Metal
+Electrode Reversibility With the
+CsNO3-Incorporated Sulfur Cathode
+The cycling stability of Li-S cells with the CsNO3-incorporated
+electrode was evaluated at an E/S ratio of 5 µL mgs
+−1 using a
+sulfur loading of 2.5mgs cm−2. (Figure 4a). In the control cell
+without CsNO3, the initial discharge capacity at 0.3C was 713
+mAh gs
+−1, and the discharge capacity remained above 570 mAh
+gs
+−1 (80% of the initial capacity) after 159 cycles. In contrast, the
+CsNO3-containing cell maintained a discharge capacity above 570
+mAh gs
+−1 for 332 cycles, nearly doubling the cycling stability. The
+apparent decrease in discharge capacity during the first ∼10 cycles
+originates from the formation cycles conducted sequentially at
+0.05 C, 0.1 C, and 0.2 C for three cycles each prior to cycling
+at 0.3 C. Meanwhile, the discharge capacity of the control
+electrode was slightly higher than that of the CsNO3-containing
+electrode. This behavior can be attributed to differences in
+LiPS solubility and the resulting electrode passivation behavior
+under lean-electrolyte conditions [21, 24]. When LiPS solubility
+is relatively high, LiPSs can dissolve out of the porous carbon
+framework, allowing the active materials to redistribute over
+a larger electrode surface area. This widespread redistribution
+delays the passivation of conductive surfaces by insulating Li2S
+deposits, leading to an apparent increase in discharge capacity.
+In contrast, when LiPS solubility is suppressed by CsNO3, LiPS
+redox reactions are largely confined to the immediate vicinity
+of the porous carbon host. This spatial confinement leads to
+more rapid surface passivation due to localized Li2S precipitation,
+resulting in a reduced effective reaction area and consequently
+a slightly lower discharge capacity under these specific coin-cell
+conditions.
+Consistent with this interpretation, the control electrode exhibits
+a gradual increase in discharge capacity during cycling, accom-
+panied by accelerated degradation due to intensified Li metal
+corrosion caused by dissolved LiPSs. In contrast, such behavior is
+much less pronounced in the CsNO3-containing cell. As a result,
+despite the slightly lower discharge capacity, the introduction of
+CsNO3 significantly enhances long-term cycling stability under
+lean-electrolyte conditions. Furthermore, the cycle performance
+achieved by introducing CsNO3 is superior to or comparable
+with other Li–S systems tested under lean electrolyte conditions
+(E/S < 5 µL mgs
+−1) (Figure 4b) [5, 21, 22, 24, 25, 36–46]. The
+beneficial effect of CsNO3 was also evident in a widely used
+baseline electrolyte (1 m LiTFSI, 0.2 m LiNO3, DME/DOL 1:1 v/v)
+(Figure S25).
+To investigate the effect of CsNO3 on electrolyte stability, we ana-
+lyzed the residual NO3
+−in the electrolyte after 60 and 100 cycles
+using the ion chromatography technique (Figure 4c; Figures S3
+and S26). In the control cell, 68% of NO3
+−was consumed within
+60 cycles, and after 100 cycles, the NO3
+−concentration fell below
+the detection limit (< 0.015 m). This depletion correlated with the
+abrupt capacity fade and the coulombic efficiency decay observed
+at around 100 cycles. Conversely, in the CsNO3-containing cell,
+the NO3−concentration remained at ∼0.32 m after 60 cycles and
+at 0.26 m after 100 cycles. These results clearly demonstrate that
+CsNO3 incorporated into the sulfur cathode serves as a reservoir
+of NO3
+−, sustaining a high NO3
+−concentration in the electrolyte
+phase. To measure the remaining amount of FSI−and DME
+during operation, Q-NMR analysis was conducted (Figure 4d,e;
+Figure S27). [21] In the control cell, 35% of FSI−decomposed
+within 60 cycles, whereas in the CsNO3-containing cell, the
+decomposition was reduced to less than 10%. DME depletion
+also diminished in the presence of CsNO3. The Q-NMR analysis
+highlights that the supply of CsNO3 mitigates the degradation of
+electrolyte components.
+DFT and Molecular Dynamics (MD) simulations suggest that
+the reduced electrolyte decomposition is attributed to changes
+in Li+ solvation. Among the electrolyte components, NO3
+−has
+the largest binding energy to Li+ (Figure S28). Therefore, NO3
+−
+preferentially coordinates with Li+, increasing the fraction of
+free DME and FSI−(Figure S29). Since the LUMO levels of
+the uncoordinated species are higher than those of the Li+-
+coordinated states (Figure S30), introducing additional NO3
+−
+via CsNO3 effectively suppresses the reductive decomposition
+of DME and FSI−. Previous studies have also reported that
+the incorporation of NO3
+−modifies the Li+ solvation sheath,
+thereby mitigating the decomposition of other electrolyte com-
+ponents and improving cycle life [24]. This is consistent with the
+experimental observation that increasing the LiNO3 concentra-
+tion in the electrolyte delays degradation caused by electrolyte
+decomposition (Figure 1c).
+The reversibility of Li metal anode was evaluated using Li–
+SUS cells with the cycled Li metal electrodes. After 60 cycles,
+the stripping capacity was 6.40 mAh cm−2 for the con-
+trol and 7.22 mAh cm−2 for the CsNO3 cell; at 100 cycles,
+these values decreased to 3.70 and 5.85 mAh cm−2, respec-
+tively (Figure 4f; Figure S31). FIB–SEM cross-sectional images
+revealed a porous Li metal electrode morphology in the control
+(Figure 4g) and a dense, uniform morphology in the CsNO3-
+containing cell (Figure 4h). It was confirmed that control-
+ling the solvation shell suppresses electrolyte decomposition
+and enhances the retention of electrolyte components, lead-
+ing to a denser Li metal morphology and improved Li metal
+reversibility.
+The chemical structure of SEI affected by the Li+ solvation shell,
+strongly influences the reversibility of Li metal electrode. To
+investigate SEI components, XPS analysis was conducted after
+100 cycles (Figure S32). In the CsNO3-containing cell, the carbon
+content, indicative of organic SEI from DME, was lower than in
+the control, while the fluorine content from FSI−decomposition,
+was slightly reduced. By contrast, the oxygen signal associ-
+ated with NO3
+−decomposition was higher, indicating greater
+involvement of NO3
+−in SEI formation. These observations are
+in good agreement with the Q-NMR (Figure 4d,e) and ion
+chromatography analysis (Figure 4c).
+The S 2p spectra for the Li metal anodes operated for 60 cycles
+at 0.3C revealed distinct differences between the control and
+CsNO3-cells (Figure 4i,j) [24]. The overall sulfur content was
+Advanced Functional Materials, 2026
+7 of 11
+ 16163028, 2026, 35, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202530254 by Tsinghua University Library, Wiley Online Library on [01/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 8>>
+FIGURE 4
+Electrochemical performance of the control and CsNO3-containing electrodes, along with the measured amounts of electrolyte
+components, SEI composition, and Li-metal reversibility during operation. (a) Cycling performance of Li–S cells with the respective electrodes. (b)
+Comparison of cycling performance and E/S ratios in this study with those reported previously [5, 21, 22, 24, 25, 36–46]. Residual amounts of electrolyte
+components during operation: (c) NO3−, (d) FSI−, and (e) DME. (f) Comparison of the residual reversible amount of Li metal as a function of electrode
+type and cycle number. Cross-sectional images of Li metal after 60 cycles with (g) control electrode and (h) CsNO3-containing electrode. Comparison of
+S 2p XPS spectra of the SEIs after 60 cycles with (i) control electrode and (j) CsNO3-containing electrode.
+lower in the CsNO3-cell due to reduced PS solubility. Both
+cells exhibited sulfates (SO4
+2−, SO3
+2−) signals arising from PS
+oxidation by NO3
+−. Notably, an S2−signal was detected only in
+the CsNO3 cell, alongside a Cs signal, indicating formation of
+a Cs2S-enriched SEI. Analogous to Rb2S derived from RbNO3,
+which stabilized the SEI [50], Cs2S is anticipated to confer
+similar benefits to Li metal reversibility. To isolate the role
+of Cs+ from the concurrent increase in NO3
+−associated with
+CsNO3, CsBr and CsCl were each introduced at an equivalent Cs+
+amount in replacement with CsNO3 (Figure S33). The CsBr cell
+8 of 11
+Advanced Functional Materials, 2026
+ 16163028, 2026, 35, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202530254 by Tsinghua University Library, Wiley Online Library on [01/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 9>>
+FIGURE 5
+Performance of pouch-type Li-S cells containing the control and CsNO3 electrodes. (a) Weight fractions of cell components in the pouch
+cell. (b) Cycling stability of the pouch cells.
+exhibited better cycling stability than the control but inferior to
+the CsNO3 cell, indicating that both Cs+ and NO3
+−independently
+contribute to improved long-term performance. In contrast, the
+CsCl-containing electrode showed poorer cyclability than the
+control, highlighting the critical role of interphase stabilization
+by NO3
+−in CsNO3 additives. Notably, the CsNO3 cell formed
+an SEI layer composed of low-solubility species such as Li2SO4,
+Li2SO3, Li2S, and Cs2S, rather than soluble PSs [23, 51, 52]. The
+NO3
+−likely oxidizes PSs to sulfates, whereas Cs+ promotes their
+reduction to Cs2S. Therefore, CsNO3 additives enhance cyclability
+by simultaneously stabilizing the Li metal anode and suppressing
+electrolyte decomposition.
+2.5
+Pouch-Cell Validation
+To assess the practical applicability of the additive, we assembled
+0.45 Ah-class pouch-type Li–S cells (12 single-cell stack, E/S
+= 2.0 µL mgs
+−1) and cycled them at a 0.05C discharge/charge
+rate. At the early stage of operation, the control cells delivered
+∼402 Wh kg−1, while the cell with the CsNO3-sulfur cathode
+delivered ∼408 Wh kg−1 (based on the total weight of cell
+components excluding housing). Although the total cell mass of
+the CsNO3-containing cell was slightly higher (∼6%), stable oper-
+ation achieved higher energy density, accompanied by a slight
+increase in capacity and a reduction in discharge overpotential
+(Figure 5a; Figure S34, Table S3). Notably, the discharge capacity
+reduction observed for the CsNO3-incorporated electrode in coin-
+cell configurations was not observed in the pouch cells. This
+difference can be attributed to the much more stringent lean-
+electrolyte condition (E/S = 2 µL mgs
+−1), under which the limited
+electrolyte volume suppresses LiPS dissolution and minimizes
+redox reactions occurring on the out of the porous carbon
+framework. Under such conditions, the kinetic enhancement of
+Li2S formation induced by CsNO3 becomes the dominant factor
+governing cell performance, outweighing any capacity variations
+associated with changes in reaction surface area. Moreover, the
+CsNO3-containing pouch cell exhibited significantly improved
+cycling stability compared to the control (Figure 5b), clearly
+demonstrating the efficacy of the CsNO3 additive at the full-cell
+level.
+3
+Conclusion
+In this study, we reexamined Li–S battery degradation under lean
+electrolyte conditions and confirmed that electrolyte depletion is
+the primary failure cause. While LiNO3 is crucial for prolonging
+cycle life, its excessive use increases overpotential and reduces
+rate capability—a classic double-edged sword. To address this
+trade-off, we suggest a family of metal nitrate additives in the
+electrode. Among them, CsNO3 is highly effective because Cs+
+(soft cation) stabilizes PS anions (soft base), reducing PS solubil-
+ity, increasing Li+ conductivity and boosting redox kinetics. The
+beneficial effects of CsNO3 are consistently observed when it is
+incorporated into the sulfur cathode, resulting in significantly
+reduced polarization and approximately twofold improvement
+in cycling stability compared to the additive-free control (over
+330 cycles at E/S = 5 µL mgs
+−1 and 0.3 C). In contrast to pre-
+vious approaches that improve cycling stability by lowering the
+solvating power of electrolytes-often at the expense of Li+ ionic
+conductivity and rate performance-the present strategy achieves
+PS immobilization without altering the intrinsic solvating power
+of the electrolyte. This dual-functional approach, which com-
+bines effective PS capture by Cs+ with suppression of electrolyte
+decomposition by NO3
+−, enables simultaneous enhancement
+of rate capability and cycling stability through improved ionic
+conductivity and interphasial kinetics. We anticipate that further
+integration of such electrode-level additives with electrolytes
+that possess both high solvating power and strong Li metal
+stabilization will open new pathways toward Li–S batteries with
+substantially higher energy and power densities.
+Acknowledgements
+This study was supported by LG Energy Solution-KAIST Frontier
+Research Laboratory (2022) and the National Research Foundation of
+Korea (NRF) funded by the Ministry of Science, ICT (MSIT) (RS-2024-
+00455177 and RS-2025-25441256).
+Conflicts of Interest
+The authors declare no conflicts of interest.
+Advanced Functional Materials, 2026
+9 of 11
+ 16163028, 2026, 35, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202530254 by Tsinghua University Library, Wiley Online Library on [01/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 10>>
+Data Availability Statement
+The data that support the findings of this study are available from the
+corresponding author upon reasonable request.
+References
+1. Y.-W. Song, L. Shen, X.-Y. Li, et al., “Phase Equilibrium Thermodynam-
+ics of Lithium–Sulfur Batteries,” Nature Chemical Engineering 1, no. 9
+(2024): 588–596, https://doi.org/10.1038/s44286-024-00115-4.
+2. J.-L. Yang, H. Xu, T. Xiao, et al., “High-Dimensional Strain Unlocks
+Fast Polysulfide Redox Kinetics for Lithium-Sulfur Batteries,” Nature
+Communications 16, no. 1 (2025): 8910, https://doi.org/10.1038/s41467-025-
+63969-z.
+3. W. Jiang, X. Jin, B. Li, et al., “Wide Temperature Range Adaptable
+Electric Field Driven Binder for Advanced Lithium-sulfur Batteries,”
+Nature Communications 16, no. 1 (2025): 7860, https://doi.org/10.1038/
+s41467-025-62909-1.
+4. C. Sun, T. Tang, M. Zheng, C. Lai, and J. Lu, “Synergistic Compound
+Additives for High-Performance Lithium–Sulfur Batteries,” Advanced
+Materials 37, no. 39 (2025): 2507006, https://doi.org/10.1002/adma.
+202507006.
+5. Y. Fei, M. Li, Z. Li, et al., “Revisiting the Impact of Anion Selection on
+Sulfur Redox Reaction Kinetics for High Sulfur Loading Lithium–Sulfur
+Batteries,” Advanced Materials 37, no. 39 (2025): 2507459, https://doi.org/
+10.1002/adma.202507459.
+6. J. Heo, J.-W. Hong, H. W. Gu, et al., “A Promising Approach to Ultra-
+Flexible 1 Ah Lithium–Sulfur Batteries Using Oxygen-Functionalized
+Single-Walled Carbon Nanotubes,” Advanced Science 12, no. 4 (2025):
+2406536, https://doi.org/10.1002/advs.202406536.
+7. H. Kwon, J. Baek, and H.-T. Kim, “Building Lithium Metal Batteries
+Under Lean Electrolyte Conditions: Challenges and Progress,” Energy
+Storage Materials 55 (2023): 708–726, https://doi.org/10.1016/j.ensm.2022.
+12.016.
+8. J. Chen, Y. Fu, and J. Guo, “Development of Electrolytes Under Lean
+Condition in Lithium–Sulfur Batteries,” Advanced Materials 36, no. 29
+(2024): 2401263, https://doi.org/10.1002/adma.202401263.
+9. Z.-X. Chen, Y.-T. Zhang, C.-X. Bi, et al., “Premature Deposition of
+Lithium Polysulfide in Lithium-Sulfur Batteries,” Journal of Energy
+Chemistry 82 (2023): 507–512, https://doi.org/10.1016/j.jechem.2023.03.
+015.
+10. S. Nanda, A. Bhargav, and A. Manthiram, “Anode-Free, Lean-
+Electrolyte Lithium-Sulfur Batteries Enabled by Tellurium-Stabilized
+Lithium Deposition,” Joule 4, no. 5 (2020): 1121–1135, https://doi.org/10.
+1016/j.joule.2020.03.020.
+11. A. Raulo, S. Lateef, H. McRay, K. R. Ilancheran, F. Albano, and
+G. Jalilvand, “Fluorinated Electrolytes for Lithium–Sulfur and Beyond-
+Lithium Metal–Sulfur Batteries,” Energy Storage Materials 82 (2025):
+104600, https://doi.org/10.1016/j.ensm.2025.104600.
+12. R. Liu, Z. Wei, L. Peng, et al., “Establishing Reaction Networks in the
+16-Electron Sulfur Reduction Reaction,” Nature 626, no. 7997 (2024): 98–
+104, https://doi.org/10.1038/s41586-023-06918-4.
+13. X. Liu, J.-Q. Huang, Q. Zhang, and L. Mai, “Nanostructured Metal
+Oxides and Sulfides for Lithium–Sulfur Batteries,” Advanced Materials 29,
+no. 20 (2017): 1601759, https://doi.org/10.1002/adma.201601759.
+14. N. Song, Y. Liang, S. Xiong, et al., “Origin of Synergy in Bicomponent
+Metal Nitride–Metal Single Atom Catalysts for Advanced Lithium–Sulfur
+Batteries,” Advanced Materials 37 (2025): 08903, https://doi.org/10.1002/
+adma.202508903.
+15. L. Liu, X. Yin, W. Li, et al., “Transition Metal Phosphides: The Rising
+Star of Lithium–Sulfur Battery Cathode Host,” Small 20, no. 17 (2024):
+2308564, https://doi.org/10.1002/smll.202308564.
+16. C. Yang, F. Wang, D. You, et al., “In Situ Chemical state Transition of
+Ni Nano-metal Catalytic Site Promotes the Reaction Kinetics of Lithium-
+sulfur Battery,” Chemical Engineering Journal 496 (2024): 153812, https://
+doi.org/10.1016/j.cej.2024.153812.
+17. H. Cho, J. Jung, I. Kim, et al., “Interconvertible and Rejuvenated Lewis
+Acidic Electrolyte Additive for Lean Electrolyte Lithium Sulfur Batteries,”
+Nature Communications 16, no. 1 (2025): 6805, https://doi.org/10.1038/
+s41467-025-62169-z.
+18. F. Chu, M. Wang, J. Liu, et al., “Low Concentration Electrolyte
+Enabling Cryogenic Lithium–Sulfur Batteries,” Advanced Functional
+Materials 32, no. 44 (2022): 2205393, https://doi.org/10.1002/adfm.
+202205393.
+19. Y. Liu, Y. Elias, J. Meng, et al., “Electrolyte Solutions Design for
+Lithium-Sulfur Batteries,” Joule 5, no. 9 (2021): 2323–2364, https://doi.org/
+10.1016/j.joule.2021.06.009.
+20. L. Shi, C. S. Anderson, L. Mishra, et al., “Early Failure of Lithium–
+Sulfur Batteries at Practical Conditions: Crosstalk Between Sulfur Cath-
+ode and Lithium Anode,” Advanced Science 9, no. 21 (2022): 2201640,
+https://doi.org/10.1002/advs.202201640.
+21. I. Kim, S. Kim, H. Cho, et al., “Moderately Solvating Electrolyte with
+Fluorinated Cosolvents for Lean-Electrolyte Li–S Batteries,” Advanced
+Energy Materials 15, no. 14 (2025): 2403828.
+22. X.-Y. Li, S. Feng, Y.-W. Song, et al., “Kinetic Evaluation on Lithium
+Polysulfide in Weakly Solvating Electrolyte Toward Practical Lithium–
+Sulfur Batteries,” Journal of the American Chemical Society 146, no. 21
+(2024): 14754–14764, https://doi.org/10.1021/jacs.4c02603.
+23. M. M. Rahman, A. Ronne, N. Wang, Y. Du, and E. Hu, “Spatial
+Progression of Polysulfide Reactivity With Lithium Nitrate in Li–Sulfur
+Batteries,” ACS Energy Letters 9, no. 5 (2024): 2024–2030, https://doi.org/
+10.1021/acsenergylett.4c00453.
+24. H. Chu, J. Jung, H. Noh, et al., “Unraveling the Dual Functionality
+of High-Donor-Number Anion in Lean-Electrolyte Lithium-Sulfur Bat-
+teries,” Advanced Energy Materials 10, no. 21 (2020): 2000493, https://doi.
+org/10.1002/aenm.202000493.
+25. J. Jung, H. Chu, I. Kim, et al., “Confronting Sulfur Electrode Passi-
+vation and Li Metal Electrode Degradation in Lithium-Sulfur Batteries
+Using Thiocyanate Anion,” Advanced Science 10, no. 15 (2023): 2301006,
+https://doi.org/10.1002/advs.202301006.
+26. S. Kim, J. Jung, I. Kim, H. Kwon, H. Cho, and H.-T. Kim, “Tuning
+of Electrolyte Solvation Structure for Low-Temperature Operation of
+Lithium–Sulfur Batteries,” Energy Storage Materials 59 (2023): 102763,
+https://doi.org/10.1016/j.ensm.2023.04.002.
+27. Y. Ye, M.-K. Song, Y. Xu, et al., “Lithium Nitrate: A Double-Edged
+Sword in the Rechargeable Lithium-Sulfur Cell,” Energy Storage Materials
+16 (2019): 498–504, https://doi.org/10.1016/j.ensm.2018.09.022.
+28. M.-T. Lee, H. Liu, and D. Brandell, “The Surface Chemistry of Thin
+Lithium Metal Electrodes in Lithium-Sulfur Cells,” Batteries & Supercaps
+3, no. 12 (2020): 1370–1376, https://doi.org/10.1002/batt.202000145.
+29. C.-X. Bi, N. Yao, X.-Y. Li, et al., “Unveiling the Reaction Mystery
+Between Lithium Polysulfides and Lithium Metal Anode in Lithium–
+Sulfur Batteries,” Advanced Materials 36, no. 41 (2024): 2411197, https://
+doi.org/10.1002/adma.202411197.
+30. S. C. Kim, X. Gao, S.-L. Liao, et al., “Solvation-Property Relationship
+of Lithium-Sulphur Battery Electrolytes,” Nature Communications 15, no.
+1 (2024): 1268, https://doi.org/10.1038/s41467-023-44527-x.
+31. A. Gupta, A. Bhargav, J.-P. Jones, R. V. Bugga, and A. Manthiram,
+“Influence of Lithium Polysulfide Clustering on the Kinetics of Electro-
+chemical Conversion in Lithium–Sulfur Batteries,” Chemistry of Mate-
+rials 32, no. 5 (2020): 2070–2077, https://doi.org/10.1021/acs.chemmater.
+9b05164.
+32. R. Parr and R. P. A. Hardness, “Absolute Hardness: Companion
+Parameter to Absolute Electronegativity,” Journal of the American Chem-
+ical Society 105 (1983): 7512–7516, https://doi.org/10.1021/ja00364a005.
+33. H. Moon, M.-H. Ryou, A. Park, et al., “Promoting Granular Lithium
+Sulfide Growth by Soft Acidic–Hard Basic Ionomer Binder for Lithium–
+10 of 11
+Advanced Functional Materials, 2026
+ 16163028, 2026, 35, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202530254 by Tsinghua University Library, Wiley Online Library on [01/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 11>>
+Sulfur Batteries,” ACS Energy Letters 10, no. 4 (2025): 1654–1663, https://
+doi.org/10.1021/acsenergylett.4c03522.
+34. Q. Zou, Z. Liang, G.-Y. Du, C.-Y. Liu, E. Y. Li, and Y.-C. Lu,
+“Cation-Directed Selective Polysulfide Stabilization in Alkali Metal–
+Sulfur Batteries,” Journal of the American Chemical Society 140, no. 34
+(2018): 10740–10748, https://doi.org/10.1021/jacs.8b04536.
+35. Y.-W. Song, L. Shen, N. Yao, et al., “Cationic Lithium Polysulfides in
+Lithium-sulfur Batteries,” Chem 8, no. 11 (2022): 3031–3050.
+36. L.-P. Hou, X.-Q. Zhang, N. Yao, et al., “An Encapsulating Lithium-
+Polysulfide Electrolyte for Practical Lithium–Sulfur Batteries,” Chemistry
+8, no. 4 (2022): 1083–1098, https://doi.org/10.1016/j.chempr.2021.12.023.
+37. X. Gao, Z. Yu, J. Wang, et al., “Electrolytes With Moderate
+Lithium Polysulfide Solubility for High-Performance Long-Calendar-
+Life Lithium–Sulfur Batteries,” Proceedings of the National Academy
+of Sciences 120, no. 31 (2023): 2301260120, https://doi.org/10.1073/pnas.
+2301260120.
+38. S. Zhu and J. Chen, “Dual Strategy With Li-Ion Solvation and Solid
+Electrolyte Interphase for High Coulombic Efficiency of Lithium Metal
+Anode,” Energy Storage Mater 44 (2022): 48–56.
+39. W. Guo, W. Zhang, Y. Si, D. Wang, Y. Fu, and A. Manthiram,
+“Artificial Dual Solid-Electrolyte Interfaces Based on In Situ Organothiol
+Transformation in Lithium Sulfur Battery,” Nature Communications 12,
+no. 1 (2021): 3031, https://doi.org/10.1038/s41467-021-23155-3.
+40. S. Yang, D. Jiang, Q. Su, et al., “In Situ Constructing a TiO2/TiN
+Heterostructure Modified Carbon Interlayer for Balancing the Surface
+Adsorption and Conversion of Polysulfides in Li–S Batteries,” Advanced
+Energy Materials 14, no. 24 (2024): 2400648.
+41. S. Feng, R. K. Singh, Y. Fu, et al., “Low-tortuous and Dense Single-
+Particle-Layer Electrode for High-Energy Lithium-Sulfur Batteries,”
+Energy & Environmental Science 15, no. 9 (2022): 3842–3853, https://doi.
+org/10.1039/D2EE01442D.
+42. M. He, L. Zhu, Y. Liu, et al., “Highly Solvating Electrolytes With Core–
+Shell Solvation Structure for Lean-Electrolyte Lithium-Sulfur Batteries,”
+Angewandte Chemie International Edition 64, no. 3 (2025): 202415053.
+43. L. Peng, Y. Liu, P. Xue, et al., “Practical Lithium–Sulfur Batteries
+Enabled by a Six-Membered Cyclic Urea Solvent,” ACS Energy Letters 10,
+no. 8 (2025): 4004–4012, https://doi.org/10.1021/acsenergylett.5c00974.
+44. H. Moon, J.-H. Kim, N. Yao, et al., “Expanded Nanofibrous Cellulose
+Electrode Binder: Declustering Lithium Polysulfides for Lean-Electrolyte
+Li‒S Batteries,” Advanced Materials 37, no. 22 (2025): 2414335.
+45. X.-Y. Li, B.-Q. Li, S. Feng, et al., “Two-Stage Solvation of Lithium Poly-
+sulfides in Working Lithium–Sulfur Batteries,” Journal of the American
+Chemical Society 147, no. 18 (2025): 15435–15447, https://doi.org/10.1021/
+jacs.5c01588.
+46. P. Li, Z. Luo, Z. Chen, et al., “Hyaluronic Acid With Double Helix Ion
+Channels for Efficient Electrolyte Retention and Polysulfide Regulation
+in Lean-Electrolyte Lithium–Sulfur Batteries,” Advanced Materials 37
+(2025): 11272, https://doi.org/10.1002/adma.202511272.
+47. Z. Hu, C. Geng, J. Shi, et al., “Breaking Li+ Diffusion Limits in Prac-
+tical Li–S Batteries via Electrolyte-Dispersible Li+ -Reservoir Catalysts,”
+Journal of the American Chemical Society 147, no. 45 (2025): 41924–41933,
+https://doi.org/10.1021/jacs.5c14801.
+48. J. Huang, Z. Song, J. Wu, et al., “In Situ Polymerized Quasi-Solid Poly-
+mer Electrolytes Enabling Void-Free Interfaces for Room-Temperature
+Sodium–Sulfur Batteries,” Energy Materials and Devices 2, no. 4 (2024):
+9370051, https://doi.org/10.26599/EMD.2024.9370051.
+49. S. Li, X. Zhan, G.-L. Wang, H.-Q. Wang, W.-M. Xiong, and L.
+Zhang, “Ultraviolet-Initiated In-situ Cross-linking of Multifunctional
+Binder Backbones Enables Robust Lithium-Sulfur Batteries,” Journal of
+Electrochemistry 29, no. 4 (2023): 4.
+50. J. Jung, H. Cho, I. Kim, S. Kim, W. Jo, and H.-T. Kim, “Dual Function-
+alities of Rb Cation in Lean Electrolyte Lithium Sulfur Batteries,” Energy
+Storage Materials 63 (2023): 103040, https://doi.org/10.1016/j.ensm.2023.
+103040.
+51. L.-P. Hou, N. Yao, J. Xie, et al., “Modification of Nitrate Ion Enables Sta-
+ble Solid Electrolyte Interphase in Lithium Metal Batteries,” Angewandte
+Chemie International Edition 61, no. 20 (2022): 202201406.
+52. Y.-J. Lee, Y. Lee, S. H. Kim, et al., “Comprehensive Elucidation of
+the Multifunctional Role of Lithium Nitrate in Lithium–Sulfur Batteries:
+Expanding Beyond Shuttle Suppression,” InfoMat 7 (2025): 70071.
+Supporting Information
+Additional supporting information can be found online in the Supporting
+Information section.
+SupportingFile: adfm74116-sup-0001-SuppMat.docx.
+Advanced Functional Materials, 2026
+11 of 11
+ 16163028, 2026, 35, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202530254 by Tsinghua University Library, Wiley Online Library on [01/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

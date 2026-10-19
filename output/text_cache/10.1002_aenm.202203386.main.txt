@@ -1,0 +1,734 @@
+
+<<PAGE 1>>
+www.advenergymat.de
+2203386  (1 of 8)
+© 2023 Battelle Memorial Institute. Advanced Energy Materials published by Wiley-VCH GmbH
+Understanding of Low-Porosity Sulfur Electrode  
+for High-Energy Lithium–Sulfur Batteries
+Yucheng Fu,* Rajesh K Singh, Shuo Feng, Jun Liu, Jie Xiao, Jie Bao, Zhijie Xu,  
+and Dongping Lu*
+DOI: 10.1002/aenm.202203386
+market.[1–3] On the pathway toward com-
+mercialization of the technology, the 
+challenges of the polysulfide shuttling 
+effect, low reaction kinetics, electrolyte 
+consumption, and electrode degradation, 
+are among the key barriers that need to 
+be addressed.[4–9] Regarding electrode 
+structures, most reported sulfur cathodes 
+have a large porosity of over 70%,[10] 
+which is much higher than the porosi-
+ties of current commercial batteries such 
+as lithium-ion batteries (25–40%).[11,12] By 
+lowering cathode porosity, both cell-level 
+volumetric energy (Wh  L−1) and gravi-
+metric energy (Wh kg−1) can be improved 
+by decreasing the electrode thickness at a 
+given mass loading and reducing the elec-
+trolyte amount required for pore filling. 
+This makes controlling porosity a poten-
+tial pathway to improving cell cycle life 
+under lean electrolyte conditions.[13] In 
+practice, synthesizing low-porosity elec-
+trodes remains a challenging task.[14] Pore 
+channel size within the electrode matrix 
+will decrease and pore geometry will change as porosity is 
+reduced, which limits electrolyte access and redistribution and, 
+thus, polysulfide dissolution and conversion. A recent study 
+reported a novel approach for preparing a low-porosity electrode 
+(45%) using single-layer, large-size secondary sulfur/carbon 
+particles, which delivers >1000 mAh g−1 discharge capacity even 
+under lean electrolyte conditions.[13] To fully understand the 
+mechanisms and accelerate low-porosity electrode design itera-
+tions, the development of a reliable modeling framework for 
+Li–S batteries with low-porosity electrodes thus becomes vitally 
+important.
+Most of the existing numerical models simplify the Li–S bat-
+tery as a zero- (0-D) or one-dimensional (1-D) model assuming 
+the properties and reaction kinetics are cross-sectionally homo-
+geneous. The 1D mathematical model developed by Kumaresan 
+et al. [15] included the five stages of sulfur reduction reactions, 
+species transport, and precipitations. Based on the 1-D model, 
+Zhang et  al. [16] studied cell performance when reaction spe-
+cies diffusion becomes the limiting factor during the discharge 
+stage. Ghaznavi and Chen [17–19] carried out a series of sensitivity 
+analyses to understand the influence of involved parameters in 
+the 1-D model. Kamyab et  al.[20] proposed a 1-D mathematical 
+model to provide insights into the Li–S battery capacity loss 
+over multiple cycles by incorporating the polysulfides shuttling 
+The lithium–sulfur (Li–S) battery is a promising technology for large-scale 
+energy storage and vehicle electrification due to its high theoretical energy 
+density and low cost. Reducing the sulfur cathode porosity has been iden-
+tified recently as a viable strategy for improving the cell practical energy 
+density and minimizing pore-filling electrolytes to extend cell life at lean elec-
+trolyte conditions. Direct use of a low-porosity cathode for Li–S battery results 
+in poor electrode wetting, nonuniform electrode reactions, and thus early cell 
+failure. To understand and mitigate the barriers associated with the use of 
+low-porosity electrodes, multiscale modeling is performed to predict electrode 
+wetting, electrolyte diffusion, and their impacts on sulfur reactions in Li–S 
+cells by explicitly considering the electrode wettability impacts and electrode 
+morphologies. The study elucidates the critical impact of low tortuosity and 
+large channel pore design for promoting electrode wetting and species diffu-
+sion. It is suggested that the secondary particle size should be comparable 
+with the electrode thickness to effectively promote electrolyte wettability and 
+sulfur reactivity. This study provides new insights into the low-porosity elec-
+trode material and designs and is expected to accelerate the development of 
+practical high-energy Li–S batteries.
+Research Article
+Y. Fu, Z. Xu
+Physical and Computational Science Directorate
+Pacific Northwest National Laboratory
+Richland, WA 99352, USA
+E-mail: Yucheng.fu@pnnl.gov
+R. K. Singh, S. Feng, J. Liu, J. Xiao, J. Bao, D. Lu
+Energy and Environmental Directorate
+Pacific Northwest National Laboratory
+Richland, WA 99352, USA
+E-mail: Dongping.lu@pnnl.gov
+The ORCID identification number(s) for the author(s) of this article 
+can be found under https://doi.org/10.1002/aenm.202203386.
+1. Introduction
+The lithium–sulfur (Li–S) battery is a promising next-gener­
+ation, energy-storage technology for grid energy storage and 
+further penetration of electric vehicles into the commercial 
+© 2023 Battelle Memorial Institute. Advanced Energy Materials pub-
+lished by Wiley-VCH GmbH. This is an open access article under the 
+terms of the ­Creative Commons Attribution-NonCommercial License, 
+which permits use, distribution and reproduction in any medium, pro-
+vided the original work is properly cited and is not used for commercial 
+purposes.
+Adv. Energy Mater. 2023, 13, 2203386
+
+<<PAGE 2>>
+www.advenergymat.de
+www.advancedsciencenews.com
+© 2023 Battelle Memorial Institute. Advanced Energy Materials published by Wiley-VCH GmbH
+2203386  (2 of 8)
+mechanism. For 0-D models, Marinescu et  al.[21] simplified 
+the sulfur reductions into a two-step chain, as suggested by 
+Mikhaylik and Akridge,[4] to predict the discharge-charge curves. 
+Along with 0-D models, the equivalent circuit model[22,23] and 
+Tank-in-series model[24] are also computationally effective meth-
+odologies to provide fast prediction capabilities for practical 
+applications.
+Despite the recent development of numerical models, the 
+understanding and prediction of Li–S cell performance under 
+low-porosity cathode conditions remain a challenge. For prac-
+tical high-mass-loading electrodes, the nonuniform distribution 
+of electrolytes is one of the most challenging issues, particu-
+larly for low-porosity electrodes.[25,26] The absence of electrolytes 
+in local regions (i.e., electrode wetting issue) can potentially 
+reduce sulfur reaction kinetics and utilization rate. The afore-
+mentioned numerical models focus on the ideal condition of 
+high porosity (>70%) or do not consider electrolyte wetting of 
+a thick electrode. Under those conditions, the electrode is “ide-
+ally” assumed to be fully wetted with constant sulfur loading 
+and mass transport properties along the thickness direction 
+before cell discharge. However, this condition is not true in the 
+realistic conditions of high sulfur loading and low-porosity elec-
+trodes. For a low-porosity electrode (≈45%), electrolyte wetting 
+becomes a limiting factor; thus, those existing models may not 
+explicitly provide an accurate prediction of the cell performance.
+To bridge the gap between practical needs and models, a new 
+multiscale modeling approach (Figure 1) has been proposed 
+for a Li–S battery with low-porosity electrodes. Multiscale mod-
+eling has been proved to be an important tool for analyzing 
+Li–S batteries, which also involve multiple scales and complex 
+physics.[27–29] In our proposed framework, three-dimensional 
+(3-D) pore-scale model has been integrated with the 1-D device-
+scale electrochemical model to investigate the effects of cathode 
+structure on the battery performance. The 3-D pore-scale model 
+simulates the electrolyte infiltration process with multiphase 
+Computational Fluid Dynamics (CFD)[30] to inform the 1-D 
+electrochemical model of the electrode wetting and electrolyte-
+distribution conditions. With that information, the effective 
+species-diffusion coefficient, electrode specific area, and other 
+related parameters become a function of the electrolyte wet-
+ting conditions along the cell thickness direction. Informed by 
+the 3-D electrode model, the 1D device-scale model then calcu-
+lates the electrochemical reactions of sulfur species inside the 
+partially wetted electrode at different locations. The multiscale 
+model explicitly considers the electrode wettability impact on 
+electrochemical reactions and electrode morphology change to 
+predict the Li–S battery performance. With this integration, the 
+developed multiscale Li–S model also can help us understand 
+the advantages and trade-offs of low-porosity electrodes and 
+help optimize the electrode design of the Li–S cell. A summary 
+of the calculated low-porosity electrode (45%) performance is 
+provided in the Table S1 (Supporting Information). As shown 
+in the table, the low-porosity electrode can reduce the cathode 
+thickness by half and double the volumetric capacity when 
+using the 90 µm secondary particles for electrode at the same 
+sulfur loading. However, the wetting of the low porosity elec-
+trode becomes a more limiting factor, which can reduce the 
+battery specific capacity and affect the battery long-term cycling 
+performance. The details of low-porosity electrode performance 
+and optimization strategies will be discussed.
+2. Results and Discussion
+2.1. Electrode Wetting Profile and Tortuosity
+The electrolyte infiltration inside the cathodes is modeled 
+using the 3-D pore-scale electrode model as described in 
+Figure S2a–c. The secondary particle distribution in the cathode 
+is modeled with the discrete element method (DEM)[31,32] and 
+the electrolyte flow was simulated using the volume of fluid 
+(VOF) method.[33] During the initial wetting stage, the air within 
+Figure 1.  Strategy for multiscale model development for a Li–S battery.
+Adv. Energy Mater. 2023, 13, 2203386
+ 16146840, 2023, 13, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.202203386 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 3>>
+www.advenergymat.de
+www.advancedsciencenews.com
+© 2023 Battelle Memorial Institute. Advanced Energy Materials published by Wiley-VCH GmbH
+2203386  (3 of 8)
+the electrode is pushed to the surface, and pores inside the elec-
+trode are occupied gradually by inflowing electrolyte. When a 
+steady state is reached, a portion of air could be trapped inside 
+pore channels due to nonuniform electrolyte flow and surface 
+tension. As shown in Figure 2a,b, two typical low-porosity elec-
+trodes were prepared using secondary particles with a size of 
+90 and 20  µm, to represent the large particle cathode (LPC) 
+and small particle cathode (SPC), respectively. Those snapshots 
+show the electrolyte and air distribution from the side view of 
+the cathodes. Both LPC and SPC have a porosity of 45%. The 
+experimental details of the cathode preparation can be found 
+in the supporting information (Section S2, Supporting Infor-
+mation). In the figures, the blue region represents the elec-
+trolyte, and the gray particles represent the LPC or SPC. The 
+remaining space is air trapped after electrode wetting reaches a 
+steady-state condition. The figure shows that the LPC has better 
+wetting performance with a small portion of the air trapped 
+in the bottom corners. For SPC, the pores are narrower, and 
+it becomes harder for the air to escape through the channels 
+to the top surface. A much larger region of the electrode space 
+is still filled with air. With the unwetted electrode surface, the 
+loaded S8(s) in those regions cannot participate in the electro-
+chemical reactions, which results in a low specific capacity.
+To quantify those nonuniform wetting effects and provide 
+input for the 1-D electrochemical model, the electrolyte and 
+air distribution profiles are extracted from the 3-D pore-scale 
+electrode simulations as shown in Figure  2c,d. The electrode 
+solid volume, εd, is set to be a constant of 0.55, which consists 
+of the loaded S8(s) and the carbon material volume, εc. The 
+volume fractions of the electrolyte and air are calculated accord-
+ingly along the height direction of the 3-D pore-scale model 
+(0–60 µm). This corresponds to the 60 µm thick cathode with a 
+coordinate range of x = 25–85 µm in the 1-D model (Figure S2d, 
+Supporting Information). The separator/cathode (S–C) inter-
+face and cathode-current collector (C-CC) locations are marked 
+in the plots, respectively. For the LPC, at the S–C interface 
+region, the electrode is fully wetted, and no air is observed. At 
+25 µm from the S–C interface, the air volume starts to increase 
+slowly and reaches the maximum at C–CC interface with a 
+volume fraction of 8.2%. The average air fraction inside the 
+LPC is 5.3%. This indicates that the electrolyte has filled most 
+pores inside the LPC. The SPC shows a worse wetting perfor-
+mance compared to the LPC as indicated in Figure  2c,d. Air 
+was observed at the S–C interface region with a volume fraction 
+of 13.8%. The trapped air increases along the electrode thick-
+ness direction and reaches a plateau of around 23.8%. This 
+accounts for nearly half of the pore volumes and the absence 
+of the electrolyte would limit the access of solid S8 (S) for the 
+chemical reactions as suggested by Equations (S28) and (S30). 
+The averaged electrolyte volume fraction in the LPC and SPC 
+are 41.5% and 23.7%, corresponding to wetting percentages of 
+92% and 53%, respectively.
+The difference in the secondary particle size of the low-porosity 
+cathode design also affects the tortuosity of the electrodes 
+Figure 2.  Side views of a) LPC and b) SPC wetting conditions after the electrolyte is filled into the electrode. c) The electrolyte and air distribution along 
+the electrode thickness x (1-D model coordinate) for LPC. d) The electrolyte and air distribution along the electrode thickness x (1-D model coordinate) 
+for SPC. S-C stands for separator–cathode interface and C–CC stands for cathode–current collector interface. e) LPC tortuosity distribution inside the 
+pores. f) SPC tortuosity distribution inside the pores.
+Adv. Energy Mater. 2023, 13, 2203386
+ 16146840, 2023, 13, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.202203386 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 4>>
+www.advenergymat.de
+www.advancedsciencenews.com
+© 2023 Battelle Memorial Institute. Advanced Energy Materials published by Wiley-VCH GmbH
+2203386  (4 of 8)
+(Figure  2e,f). The tortuosity τ is calculated as the ratio of 
+streamline length to the electrode thickness. For both LPC 
+and SPC, the tortuosity is calculated at different pore locations 
+across the computational domain, which results in a distribu-
+tion plot for each cathode. For the SPC, 16% of the pores are 
+randomly blocked during the simulations to mimic the higher 
+channel blockage possibility due to the narrowed channels. 
+As can be seen in the histograms, the LCP has a small mean 
+tortuosity of τ = 1.35 with a narrow distribution range. With 1–2 
+particle layer and larger particle size, the electrolyte can directly 
+penetrate the cathode and provide better access to the loaded 
+sulfur. The narrow tortuosity range also suggests that the LPC 
+has a more uniform structure to provide a homogeneous reac-
+tion across the cathode. On the other hand, the SPC has a large 
+mean tortuosity of τ  =  1.76. The electrolyte infiltration will 
+become more difficult, and the sulfur access would be much 
+more limited with blocked channels. The more scatter tortu-
+osity value indicates the pore morphologies at different loca-
+tions can vary more drastically compared to the LPC. This can 
+result in a more heterogeneous reaction throughout the SPC.
+2.2. Discharging Profile of the Low-Porosity Electrode
+A comparison of the experimentally measured discharge curves 
+with multiscale model predictions is shown in Figure 3a. As 
+shown by experimental curves, cells with LPC and SPC achieve 
+a specific capacity of 1001 and 451  mAh  g−1, respectively, at a 
+discharge rate of 0.1 C. The model-predicted discharge curves 
+match the experimental curves with a discharge capacity differ-
+ence under 9%. The two typical discharge plateaus are observed 
+in both experimental and simulation curves in the LPC. With a 
+low-porosity electrode, the lower plateau in the discharge curve 
+has an inclined slope, and the voltage drops from 2.1  V at a 
+capacity of 250 mAh g−1 to 1.93 V at a capacity of 900 mAh g−1 
+before a sharply decreasing tail appears at the end of discharge. 
+The multiscale model can capture these decreasing trends by 
+considering the electrode morphology and electrolyte distri-
+bution factors. Figure  3b shows the polysulfides concentra-
+tion profiles during the whole discharge process. In the LPC, 
+the S8(l), 
+−
+S8
+2 and 
+−
+S6
+2 concentrations show a drastic decrease at 
+around 200  mAh  g−1, which corresponds to the higher pla-
+teau transition to the lower plateau in the discharge curve. At 
+this stage, all the accessible sulfur is dissolved and converted 
+to polysulfides. After 250 mAh g−1, the 
+−
+S4
+2 becomes one of the 
+important species that dictate the lower plateau voltage trends. 
+The 
+−
+S2
+2 remains a relatively constant concentration during the 
+lower plateau regions at the discharge process. At the end of 
+discharge, the data from the multiscale model predicted that 
+the voltage decreases to 1.8  V earlier than the experimental 
+data. The multiscale model calculates the species diffusion 
+properties following Bruggeman’s correlation, which assumes 
+the electrode particles are nearly spherical. With the deposi-
+tion of Li2S inside the low-porosity electrode, the electrode 
+structure can change noticeably, making it possible to deviate 
+from Bruggeman’s correlation. The Li2S precipitation micro-
+structures can vary at different operation conditions,[34,35] which 
+results in a change of the discharge curve tails. For the SPC 
+with 20 µm secondary particles, the battery specific capacity is 
+more significantly decreased. The two plateaus become much 
+narrower than seen from the LPC. Specifically, the high pla-
+teau region from the multiscale model matches well with the 
+experimental discharge profile. For the lower plateau region, 
+blockage of the pores becomes more severe when the Li2S solid 
+deposition starts to occur inside the narrow pore channels, thus 
+leading to early termination of the discharging process. Those 
+voltage curve trends are also reflected in the SPC polysulfides 
+concentration profiles as shown in Figure  3b. Because of the 
+entangled evolutions of electrolyte distribution, electrode passi-
+vation, and pore blockage, it has been very challenging to effec-
+tively predict the second discharge plateau in a Li–S battery.[16] 
+Through our multiscale model, the prediction of the second 
+discharge plateau was successfully achieved with decent accu-
+racy, further indicating the necessity of incorporating the input 
+of the 3-D electrode for an electrochemical simulation.
+To further explore the electrode architecture impact on the 
+battery discharge, additional two 45% low-porosity electrodes 
+were investigated using the 40 and 60 µm size secondary par-
+ticles. With the same cathode thickness, the 40 and 60  µm 
+particle electrodes show a comparable wetting behavior when 
+Figure 3.  a) Comparison of the Li–S discharge curves between experimental data and the multiscale model for the 20 and 90 µm electrodes at 0.1 C. 
+b) The polysulfides concentration profiles during the discharge of both LPC (up) and SPC (down).
+Adv. Energy Mater. 2023, 13, 2203386
+ 16146840, 2023, 13, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.202203386 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 5>>
+www.advenergymat.de
+www.advancedsciencenews.com
+© 2023 Battelle Memorial Institute. Advanced Energy Materials published by Wiley-VCH GmbH
+2203386  (5 of 8)
+compared to LPC (90  µm particle) electrode as shown in 
+Figure S3a,b (Supporting Information). The 40  µm particle 
+electrode has an averaged electrolyte volume fraction of 36.1%, 
+which is equivalent to 80% wetting. The 60 µm particle electrode 
+has an averaged electrolyte volume fraction of 38.8%, which 
+is equivalent to 86% wetting. At lean electrolyte conditions 
+(E/S = 4 µL mgs−1), the 40 and 60 µm particle electrodes can 
+deliver a discharge capacity of 787 and 855 mAh g−1 (Figure S3c, 
+Supporting Information) at 0.1 C, respectively. Increase the dis-
+charge rate from 0.1 to 0.5  C, the battery shows a significant 
+capacity decrease by around 35% regardless of electrode par-
+ticle size (Figure S4, Supporting Information). At the 0.5 to 1 C 
+range, the capacity decrease trend becomes flatter compared 
+to the 0.1 to 0.5 C range. Those observations suggest that the 
+low-porosity electrode should be prepared with a secondary par-
+ticle size comparable to the cathode thickness to maximize the 
+electrolyte wetting and specific capacity. The cell performance 
+can experience a significant degradation by using secondary 
+particles with a few times smaller size compared to the cathode 
+thickness, which is confirmed by the SPC electrode test.
+2.3. Transport of Li Polysulfides and Redistribution of Electrolyte
+The temporal and spatial distribution of related ionic species 
+and precipitations are analyzed to understand how electrolyte 
+wetting affects the discharge process and battery capacity. The 
+evolution of the dissolved S8(s) volume fraction and the depos-
+ited Li2S during the discharge process is plotted in Figure 4a. 
+The related values are calculated by averaging the volume 
+fractions of the species-of-interest over the electrode domain 
+(25 µm < x < 80 µm) at different stages. The solid lines stand for 
+the accessible S8(s) volume fraction and the dashed lines stand 
+for the Li2S volume fraction that appeared at the later stage of 
+discharge. This volume fraction is calculated by incorporating 
+the electrolyte wetting predicted by the 3-D pore-scale model. 
+For the LPC, accessible S8(s) volume fraction 
+sε starts from 0.18 
+and drops to 0 at the discharge capacity of 180 mAh g−1. Pre-
+cipitation of Li2S starts to appear after the discharge capacity 
+reaches around 250  mAh  g−1. The volume fraction of Li2S 
+increases after that and reaches 0.26 at the end of discharge. 
+Theoretically, the Li2S will take the volume fraction of 0.28 if the 
+dissolved S8(s) in the LPC is fully converted to Li2S. Currently, 
+with a final Li2S volume fraction of 0.26, it indicates that 93% 
+of the dissolved S8(s) in the LPC participated in the full reaction 
+pathway as defined in Equations (S9)–(S13) (Supporting Infor-
+mation). Compared to the LPC, the SPC has an accessible S8(s) 
+volume fraction of 0.11 at the beginning, which is much smaller 
+due to the worse electrode wetting condition. The Li2S volume 
+fraction at the end of discharge was recorded at 0.13. This indi-
+cates that only 76% of the dissolved sulfur species were con-
+verted into Li2S, resulting in a more limited discharge capacity. 
+Figure 4b shows the averaged electrolyte volume change in the 
+electrode and its influence on the species diffusivity throughout 
+the discharge. The left y-axis is the averaged volume fraction of 
+the electrolyte εl for the LPC (black dashed line) and the SPC 
+(black solid line). The electrolyte volume increases for both elec-
+trodes after the start of the discharge due to the dissolution of 
+Figure 4.  Temporal evolution of a) S8(s) and Li2S, b) electrolyte volume fraction and Li+ effective diffusivity in the discharge process. Spatial distribution 
+of c) 
+−
+S42 diffusivity and d) Li2S volume fraction at different state of discharge.
+Adv. Energy Mater. 2023, 13, 2203386
+ 16146840, 2023, 13, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.202203386 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 6>>
+www.advenergymat.de
+www.advancedsciencenews.com
+© 2023 Battelle Memorial Institute. Advanced Energy Materials published by Wiley-VCH GmbH
+2203386  (6 of 8)
+the solid S8(s). After the onset of Li2S precipitation, the electro-
+lyte was pushed out from the pores, and the volume decreased 
+till the end of discharge. The right y-axis shows the trend of 
+Li-ion effective diffusivity, which has a strong correlation with 
+the electrolyte volume fraction. The bulk Li-ion diffusivity is 
+given at 0.88 × 10−12 m2 s−1 (see Table S4, Supporting Informa-
+tion). The effective diffusivity in the LPC is much smaller com-
+pared to the bulk diffusivity due to the low electrode porosity. 
+The SPC effective diffusivity is two times smaller than the LPC 
+due to the nonuniform wetting behavior of the electrode inside 
+the narrowed pore channels. The effective diffusivities of sulfur 
+species and anion also would follow similar trends as the Li+ 
+according to Equation (S29) (Supporting Information). The 
+overall scale of the effective diffusivities would be a few times 
+smaller than the bulk diffusion coefficient due to the nonuni-
+form wetting and low electrode porosity.
+The spatial distribution of 
+−
+S4
+2 species and Li2S volume 
+fractions at different discharge states are plotted in Figure 4c,d. 
+The separator porosity remains nearly constant throughout dis-
+charge with minimum Li2S precipitation. This makes the 
+−
+S4
+2 
+effective diffusivity remains the same for both LPC and SPC 
+at the separator regions. At the cathode region, the LPC has an 
+overall larger inter-particle diffusivity compared to the SPC. At 
+the beginning of discharge, the 
+−
+S2
+2 has the best diffusion speed 
+in the separator/cathode interface region (x = 25 µm), and the 
+effective diffusivity shows a decreasing trend when moved to 
+the right surface of the cathode (x  =  85  µm). The diffusivity 
+pattern is dictated by the initial electrode wetting profile given 
+by the 3-D pore-scale simulations (Figure  2). With a larger 
+volume of electrolyte, the effective diffusivity will be larger as 
+suggested by Equation (S29) (Supporting Information). At the 
+end of discharge, the diffusivity at the separator/cathode inter-
+face has a sharp decrease and becomes smaller compared to 
+the right surface of the cathode. This can be explained by the 
+increased deposition of Li2S at the near separator/cathode inter-
+face region, which significantly reduced the electrolyte volume 
+and thus the species transport capability. With smaller species 
+diffusivity in the SPC, a much larger Li+ concentration gradient 
+will be required in the separator region to maintain the flux 
+into the cathode for the same discharge rate. This results in a 
+more dominant polysulfide shuttling into the separator region 
+to maintain electrical neutrality. This explains the lower sulfur 
+utilization rate in SPC as suggested by Figure 4a.
+2.4. Effect of Electrode Wetting on Rate Capability
+Depending on the electrolyte properties and infiltration proce-
+dures, the wetting pattern can be different even with the same 
+averaged wetting percentage across the electrode domain. The 
+wetting percentage, β (x), is defined as the ratio of electrolyte 
+volume fraction to the pore volume fraction as:
+x
+x
+x
+β
+ε
+ε
+( )
+( )
+( )
+=
+l
+p
+	
+(1)
+The average wetting percentage β is calculated as the mean 
+of β (x) over the cathode domain. Figure 5a,b investigates the 
+Figure 5.  a) Wetting percentage distribution along the thickness direction x. b) Li–S battery capacity at different wetting ratios βL/βR. c) Surface contour 
+plot indicating the discharge C-rate and electrode wetting percentage influence on the battery total discharge capacity.
+Adv. Energy Mater. 2023, 13, 2203386
+ 16146840, 2023, 13, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.202203386 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 7>>
+www.advenergymat.de
+www.advancedsciencenews.com
+© 2023 Battelle Memorial Institute. Advanced Energy Materials published by Wiley-VCH GmbH
+2203386  (7 of 8)
+influence of the wetting profile on battery discharge capacity. To 
+simplify the problem, the wetting profile is assumed to change 
+linearly in the cathode domain with a constant averaged wetting 
+percentage β = 60%. The βL/βR ratio is used to characterize the 
+wetting pattern inside the cathode. The βL = (εl/εp)x = 25 µm stands 
+for the wetting percentage at the separator/cathode interface, 
+and βR  = (εl/εp)x = 85 µm stands for the electrolyte volume frac-
+tion ratio at the right surface of the cathode (contacting with the 
+current collector of the electrode). With βL/ βR =  1, the wetting 
+percentage is uniform across the electrode.
+At βL/βR > 1, more electrolyte is distributed at the separator/
+cathode interface region, while at βL/βR  < 1, the electrolyte is 
+concentrated at the right cathode/current collector region. 
+Figure  5b shows the discharge capacity at different wetting 
+ratios. At the same discharge rate of C  =  0.1, better electrode 
+wetting at the separator/cathode region (βL/βR > 1) would be the 
+most helpful practice to increase the discharge capacity. In the 
+reversed scenarios with small wetting ratios (βL/βR < 1), species 
+transport to the cathode will be obscured with low diffusivity at 
+the separator/cathode interface. The electrolyte at the right por-
+tion of the electrode would thus not be fully used, resulting in a 
+drop in discharge capacity.
+The effect of averaged wetting percentage and discharge C-
+rate relationship to Li–S battery capacity is further analyzed 
+with a two-dimensional surface plot in Figure  5c. The C-rate 
+ranges from 0.05 to 1, and the average wetting percentage 
+ranges from 0.4 to 0.9. The other parameters are kept the same 
+as for the LPC case. The βL/βR ratio is kept at a constant of 1.25. 
+Overall, the small C-rate and better electrode wetting provide a 
+larger discharge capacity. With electrode wetting smaller than 
+50%, the discharge capacity can be affected significantly. This 
+again emphasizes the importance of initial electrode wetting 
+for the low-porosity electrode in the Li–S battery design.
+The sulfur mass loading is another factor that can potentially 
+affect the low-porosity electrode wetting pattern and thus the 
+battery performance. At given porosity (45%), with the increase 
+of mass loading, the cathode thickness would increase propor-
+tionally. This increases the difficulty of the electrolyte infiltra-
+tion with extended travel distance inside the pores and the air 
+can be trapped more easily with a thicker cathode and nar-
+rower pore channels. The proposed multiscale model quanti-
+fies the average wetting percentage of the electrode at three dif-
+ferent sulfur mass loading conditions as shown in Figure S5a  
+(Supporting Information). Increasing the sulfur mass loading 
+from 3 to 6  mg  cm−2, the electrode thickness increase from 
+45 to 90  µm. All the low-porosity electrodes (45%) show a 
+consistently decreased wetting percentage trend regardless of 
+the secondary particle size. The wetting percentage change is 
+reflected in the calculated battery specific capacity (Figure S5b, 
+Supporting Information). Therefore, the sulfur mass loading 
+should be carefully selected depending on the low-porosity elec-
+trode particle size to achieve optimal battery performance.
+With the gained understanding of the low-porosity electrode, 
+different strategies can be proposed to promote low-porosity 
+electrode wetting and its performance. One possible direction 
+is to develop new electrolytes with better wettability cathode 
+materials. With the reduced surface tension, the electrolyte can 
+enter the narrow pore channels more easily inside the 
+carbon matrix. On the other hand, the low-porosity electrode 
+morphology can be modified accordingly to the multiscale 
+model observations. A gradient-porosity electrode with linearly 
+decreased porosity toward the current collector can be a poten-
+tial candidate for low-porosity electrodes. With larger porosity at 
+the separator/cathode interface, the open pore channels at the 
+interface will be less likely to be blocked, thus enhancing sulfur 
+utilization and electrolyte backflow. Generating straight pores 
+or laser-perforated holes[36] along the thickness direction also 
+can be a potential improvement to increase the mass transfer 
+rate, which is especially important in diffusion-limited low-
+porosity electrodes. Our proposed multiscale Li–S model can 
+accommodate those potential modifications to the low-porosity 
+electrode for further performance optimization. Several new 
+electrode designs realized by the multiscale model are shown 
+in Figure S6 (Supporting Information) as examples. Addition-
+ally, the prediction of the charge curves and cycling stability are 
+also important topics for assessing the low-porosity electrode 
+performance. This requires two-way coupling of the 3-D pore-
+scale model with the 1-D electrochemical model to account for 
+the electrode morphology changes upon cycling, although it is 
+still cost-prohibitive with current computational resources. The 
+development of surrogate models can be one possible solution 
+to address this challenge.
+3. Conclusion
+This work developed a multiscale model for predicting the 
+Li–S battery discharge profiles with practical low-porosity 
+electrodes. The 3-D pore-scale model applied the discrete ele-
+ment method to reconstruct the low-porosity cathodes with 
+different secondary particle sizes. Combined with multiphase 
+flow simulations, the electrolyte infiltration and electrode wet-
+ting information can be acquired for different low-porosity 
+cathode designs. Simulations suggest that the LPC holds 74% 
+more electrolyte inside its pores compared to the SPC, which 
+provides a larger surface area and more accessible sulfur. The 
+cathode wetting information was dynamically incorporated 
+in the 1-D device-scale model for analyzing electrochemical 
+reactions and predicting discharge curves. The multiscale 
+model was able to predict the discharge profile and capacity 
+difference using different low-porosity cathode designs. The 
+predicted Li–S battery capacity using LPCs and SPCs match 
+well with the experimentally measured capacity with an error 
+smaller than 9%. Compared to the traditional 1-D model, the 
+new proposed multiscale model considered both cathode mor-
+phology and initial electrolyte infiltration for battery perfor-
+mance predictions, which is not directly viable with traditional 
+models.
+The multiscale model suggests that for the low-porosity elec-
+trode, increasing secondary particle size in the electrode would 
+be critical to promote the electrode wettability and thus battery 
+performance. The nonuniform electrolyte distribution can also 
+result in an uneven Li2S precipitation. This leads to increased 
+pore channel blockage and potentially decreased discharge 
+capacity. Under the same averaged wetting percentage con-
+ditions, the electrolyte distribution profile also can affect bat-
+tery performance. The sulfur would be more efficiently used if 
+most of the electrolytes were located near the separator/cathode 
+Adv. Energy Mater. 2023, 13, 2203386
+ 16146840, 2023, 13, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.202203386 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 8>>
+www.advenergymat.de
+www.advancedsciencenews.com
+© 2023 Battelle Memorial Institute. Advanced Energy Materials published by Wiley-VCH GmbH
+2203386  (8 of 8)
+interface region. With this developed multiscale model frame-
+work, designs of the low-porosity electrode can be analyzed and 
+accelerated to push the Li–S practical energy density to its limit.
+Supporting Information
+Supporting Information is available from the Wiley Online Library or 
+from the author.
+Acknowledgements
+This research was supported by the Assistant Secretary for Energy 
+Efficiency and Renewable Energy, Office of Vehicle Technologies of 
+the U.S. Department of Energy (DOE) through the Advanced Battery 
+Materials Research Program and Battery500 Consortium under Contract 
+Nos. DEAC02-05CH11231 and DEAC02-98CH10886 and the Energy 
+Storage Materials Initiative, which is a Laboratory Directed Research 
+and Development Program at Pacific Northwest National Laboratory 
+(PNNL). Computational work was performed using the Institutional 
+Computing capability at PNNL. PNNL is operated by Battelle under 
+Contract No. DE-AC05-76RL01830 for the U.S. Department of Energy. 
+Disclaimer: This manuscript was prepared as an account of work 
+sponsored by an agency of the United States Government. Neither 
+the United States Government nor any agency thereof, nor any of their 
+employees, makes any warranty, express or implied, or assumes any legal 
+liability or responsibility for the accuracy, completeness, or usefulness of 
+any information, apparatus, product, or process disclosed, or represents 
+that its use would not infringe privately owned rights. Reference herein 
+to any specific commercial product, process, or service by trade name, 
+trademark, manufacturer, or otherwise does not necessarily constitute 
+or imply its endorsement, recommendation, or favoring by the United 
+States Government or any agency thereof. The views and opinions of 
+authors expressed herein do not necessarily state or reflect those of the 
+United States Government or any agency thereof.
+Conflict of Interest
+The authors declare no conflict of interest.
+Data Availability Statement
+The data that support the findings of this study are available from the 
+corresponding author upon reasonable request.
+Keywords
+computational fluid dynamics, electrode wetting, lithium–sulfur 
+batteries, low-porosity electrode, multiscale modeling
+Received: October 7, 2022
+Revised: January 15, 2023
+Published online: February 20, 2023
+[1]	 J. Xiao, Adv. Energy Mater. 2015, 5, 2014.
+[2]	 M. Zhao, B. Q. Li, X. Q. Zhang, J. Q. Huang, Q. Zhang, ACS Cent. 
+Sci. 2020, 6, 1095.
+[3]	 A. Manthiram, S. H. Chung, C. Zu, Adv. Mater. 2015, 27, 1980.
+[4]	 Y. V. Mikhaylik, J. R. Akridge, J. Electrochem. Soc. 2004, 151, A1969.
+[5]	 H. J. Peng, J. Q. Huang, X. B. Cheng, Q. Zhang, Adv. Energy Mater. 
+2017, 7, 1700260.
+[6]	 M. Zhao, X. Chen, X. Y. Li, B. Q. Li, J. Q. Huang, Adv. Mater. 2021, 
+33, 2007298.
+[7]	 F. Liu, G. Sun, H. bin Wu, G. Chen, D. Xu, R. Mo, L. Shen, X. Li, 
+S. Ma, R. Tao, X. Li, X. Tan, B. Xu, G. Wang, B. S. Dunn, P. Sautet, 
+Y. Lu, Nat. Commun. 2020, 11, 5215.
+[8]	 X. Feng, M. K. Song, W. C. Stolte, D. Gardenghi, D. Zhang, X. Sun, 
+J.  Zhu, E. J.  Cairns, J.  Guo, Phys. Chem. Chem. Phys. 2014, 16, 
+16931.
+[9]	 F.  Hao, Z.  Liu, P. B.  Balbuena, P. P.  Mukherjee, ACS Appl. Mater. 
+Interfaces 2019, 11, 13326.
+[10]	 W. Xue, L. Miao, L. Qie, C. Wang, S. Li, J. Wang, J. Li, Curr. Opin. 
+Electrochem. 2017, 6, 92.
+[11]	 V. Srinivasan, J. Newman, J. Electrochem. Soc. 2004, 151, A1530.
+[12]	 J. Song, J. Kim, T. Kang, D. Kim, Sci. Rep. 2017, 7, 42521.
+[13]	 S.  Feng, R. K.  Singh, Y.  Fu, Z.  Li, Y.  Wang, J.  Bao, Z.  Xu, G.  Li, 
+C. Anderson, L. Shi, Y. Lin, P. G. Khalifah, W. Wang, J. Liu, J. Xiao, 
+D. Lu, Energy Environ. Sci. 2022, 15, 3842.
+[14]	 N. Kang, Y. Lin, L. Yang, D. Lu, J. Xiao, Y. Qi, M. Cai, Nat. Commun. 
+2019, 10, 4597.
+[15]	 K. Kumaresan, Y. Mikhaylik, R. E. White, J. Electrochem. Soc. 2008, 
+155, A576.
+[16]	 T.  Zhang, M.  Marinescu, S.  Walus, G. J.  Offer, Electrochim. Acta 
+2016, 219, 502.
+[17]	 M. Ghaznavi, P. Chen, J. Power Sources 2014, 257, 402.
+[18]	 M. Ghaznavi, P. Chen, J. Power Sources 2014, 257, 394.
+[19]	 M. Ghaznavi, P. Chen, Electrochim. Acta 2014, 137, 575.
+[20]	 N.  Kamyab, P. T.  Coman, S. K.  Madi Reddy, S.  Santhanagopalan, 
+R. E. White, J. Electrochem. Soc. 2020, 167, 130532.
+[21]	 M. Marinescu, T. Zhang, G. J. Offer, Phys. Chem. Chem. Phys. 2016, 
+18, 584.
+[22]	 C.  Xu, M.  Doosthosseini, H. K.  Fathy, in IFAC-Papers OnLine, 
+Elsevier B.V., Austin, Texas 2021, pp. 399–405.
+[23]	 J. Jiang, Y. Liang, Q. Ju, L. Zhang, W. Zhang, C. Zhang, in Energy 
+Procedia, Elsevier Ltd, Beijing, China 2017, pp. 3533–3538.
+[24]	 C. D.  Parke, A.  Subramaniam, S.  Kolluri, D. T.  Schwartz, 
+V. R. Subramanian, J. Electrochem. Soc. 2020, 167, 163503.
+[25]	 D.  Lv, J.  Zheng, Q.  Li, X.  Xie, S.  Ferrara, Z.  Nie, L. B.  Mehdi, 
+N. D. Browning, J. G. Zhang, G. L. Graff, J. Liu, J. Xiao, Adv. Energy 
+Mater. 2015, 5, 1402290.
+[26]	 L. Shi, S. M. Bak, Z. Shadike, C. Wang, C. Niu, P. Northrup, H. Lee, 
+A. Y. Baranovskiy, C. S. Anderson, J. Qin, S. Feng, X. Ren, D. Liu, 
+X. Q. Yang, F. Gao, D. Lu, J. Xiao, J. Liu, Energy Environ. Sci. 2020, 
+13, 3620.
+[27]	 C. D. Parke, L. Teo, D. T. Schwartz, V. R. Subramanian, Sustainable 
+Energy Fuels 2021, 5, 5946.
+[28]	 A. D. Dysart, J. C. Burgos, A. Mistry, C.-F. Chen, Z. Liu, C. N. Hong, 
+P. B. Balbuena, P. P. Mukherjee, V. G. Pol, J. Electrochem. Soc. 2016, 
+163, A730.
+[29]	 P. P. Mukherjee, Z. Liu, F. Hao, B. S. Vishnugopi, in Lithium-Sulfur 
+Batteries, Elsevier, 2022, pp. 123–158.
+[30]	 J. D. Anderson, J. Wendt, Computational Fluid Dynamics, McGraw-
+Hill, New York 1995.
+[31]	 T. Eppinger, K. Seidler, M. Kraume, Chem. Eng. J. 2011, 166, 324.
+[32]	 A. A. Munjiza, The Combined Finite-Discrete Element Method, John 
+Wiley & Sons, Hoboken 2004.
+[33]	 C. W. Hirt, B. D. Nichols, J. Comput. Phys. 1981, 39, 201.
+[34]	 Z.  Liu, S.  Bertolini, P. B.  Balbuena, P. P.  Mukherjee, ACS Appl. 
+Mater. Interfaces 2016, 8, 4700.
+[35]	 A. Mistry, P. P. Mukherjee, J. Phys. Chem. C 2017, 121, 26256.
+[36]	 I.  Mayrhuber, C. R.  Dennison, V.  Kalra, E. C.  Kumbur, J. Power 
+Sources 2014, 260, 251.
+Adv. Energy Mater. 2023, 13, 2203386
+ 16146840, 2023, 13, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.202203386 by Tsinghua University Library, Wiley Online Library on [08/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

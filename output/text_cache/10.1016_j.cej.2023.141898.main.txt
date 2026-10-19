@@ -1,0 +1,714 @@
+
+<<PAGE 1>>
+Chemical Engineering Journal 461 (2023) 141898
+Available online 15 February 2023
+1385-8947/© 2023 Elsevier B.V. All rights reserved.
+Dual-Mediation pathways promote redox kinetics for High-Loading 
+Lithium–Sulfur batteries under lean electrolyte 
+Kaifeng Li, Lufei Wang, Qihang Yang, Sheng-Qi Guo, Mengmeng Zhen * 
+Tianjin Key Laboratory of Clean Energy and Pollution Control, School of Energy and Environmental Engineering, Hebei University of Technology, Tianjin 300071, PR 
+China   
+A R T I C L E I N F O  
+Keywords: 
+Dual-mediators 
+Shuttle effect 
+Conversion kinetics 
+Lean electrolyte 
+High sulfur loading 
+A B S T R A C T  
+The high energy density (2500 Wh kg−1) makes that lithium–sulfur batteries (LSBs) have a great potential in 
+energy storages. However, the practical application of LSBs is severely hampered by several inherent problems, 
+including the sluggish sulfur redox kinetics, the shuttling of lithium polysulfides (LiPSs) and poor electronic 
+conductivity. Although heterogeneous or homogeneous mediators could improve the cycling performance of 
+LSBs to a certain extent, single mediators could not completely promote sulfur conversions, especially under high 
+sulfur loading and lean electrolyte. Herein, dual-mediator systems consist of heterogeneous and homogeneous 
+mediators that are introduced to address the above issues. Density functional theory (DFT) calculations and 
+electrochemical analysis indicate that CoSe nanoparticles embedded in urchin-like nitrogen-doped porous carbon 
+with in-situ growth of CNTs (CoSe@CNTs) as heterogeneous mediators and soluble CoCp2 as homogeneous 
+mediators could effectively accelerate the bidirectional conversion kinetics of liquid LiPSs ↔ solid Li2S through 
+the synergistic effect. As a consequence, the cell with dual-mediators delivers a high initial specific capacity of 
+1005 mAh/g with a low attenuation rate of 0.045 % per cycle at a current density of 1.0C under sulfur loading of 
+2.8 mg cm−2 after 800cycles. Importantly, it still maintains a high areal capacity of 6.53 mAh cm−2 under lower 
+electrolyte/sulfur ratio (E/S, 4.2 µL mg−1) and higher sulfur loading of 7.3 mg cm−2 over 100cycles at 0.1C.   
+1. Introduction 
+The current energy systems are still dependent on fossil fuels, leading 
+to serious energy crisis and environmental pollution. Advanced energy 
+storage systems urgently need to make full use of renewable energy 
+sources. Although lithium-ion batteries (LIBs) have been commercial­
+ized on a large scale, their low practical energy density (<300 Wh kg−1) 
+has gradually reached the limitation, which cannot meet the long 
+duration requirements of next-generation power devices [1–3]. Lith­
+ium–sulfur batteries (LSBs) are good candidates to replace LIBs, due to 
+their high theoretical energy density (2600 Wh kg−1) and superiorities 
+of sulfur cathode with low cost, abundant reserves and environmentally 
+friendly [4,5]. Based on multi-electron redox reactions (S8 + 16Li ↔ 
+8Li2S) and multi-phase conversion (solid (S8) → liquid (lithium poly­
+sulfides (LiPSs)) → solid (Li2S2/Li2S)), LSBs have many problems to be 
+solved, such as poor conductivity of S/Li2S, the shuttling of soluble LiPSs 
+and sluggish sulfur conversion kinetics [6,7]. These inherent problems 
+could lower sulfur utilization, reduce cycling lifespan and limit rate 
+capability, thus hampering the commercialization of LSBs [8,9]. 
+Notably, the sluggish sulfur conversion kinetics would get worse under 
+high sulfur loading and lean electrolyte because of slower Li+/e- trans­
+port and uncontrolled deposition solid Li2S [10,11]. Therefore, how to 
+regulate the shuttle effect of LiPSs and accelerate sulfur redox reaction is 
+crucial to improve practical performances of LSBs under extreme 
+conditions. 
+Transition metal selenides (TMSes) have been considered as effective 
+heterogeneous mediators for trapping soluble LiPSs and promoting their 
+conversion process in LSBs [12,13]. Among TMSes, CoSe could effi­
+ciently capture LiPSs though the strong chemical bonds (Co-S/Li-Se) and 
+reduce the nucleation barrier of solid Li2S via its metallic character and 
+high electrocatalytic activity [14,15]. However, the limited specific 
+surface area of CoSe cannot realize its full potential [16]. Combining 
+CoSe electrocatalyst with porous carbon framework is a favorable 
+strategy to maximize the advantages of each component [17]. For 
+example, He et al. [18] constructed three-dimensional (3D) carbon 
+decorated with CoSe nanoparticles, which could not only promote the 
+conversion kinetics of LiPSs, but also effectively inhibit the growth of Li 
+dendrite. Nevertheless, the slow diffusion of high concentration LiPSs 
+* Corresponding author. 
+E-mail address: zhenmengmeng@hebut.edu.cn (M. Zhen).  
+Contents lists available at ScienceDirect 
+Chemical Engineering Journal 
+journal homepage: www.elsevier.com/locate/cej 
+https://doi.org/10.1016/j.cej.2023.141898 
+Received 12 December 2022; Received in revised form 18 January 2023; Accepted 12 February 2023   
+
+<<PAGE 2>>
+Chemical Engineering Journal 461 (2023) 141898
+2
+and the dense deposition layer of Li2S under high sulfur loading and lean 
+electrolyte still hamper the effective exposure of catalytic active sites for 
+heterogeneous mediators and even worsen the interfacial polarization 
+[19]. 
+Compared with heterogeneous mediators, homogeneous mediators 
+are dissolved in ether electrolyte as redox mediators, which could 
+chemically catalyze the oxidation and reduction reactions of solid Li2S2/ 
+Li2S through surface electroredox and diffuse [20,21]. Moreover, such 
+soluble mediators improve electron transfer through a solution route 
+rather than a direct surface pathway [22]. Cobaltocene (CoCp2) is a 
+representative homogeneous mediator in LSBs, playing a significant role 
+in accelerating the deposition/decomposition of Li2S [23]. It could 
+change the deposition mode of Li2S from 2D to 3D growth, thus maxi­
+mizing the deposition Li2S on the electrode surface. Whereas, the 
+incorporation of soluble CoCp2 mediators in electrolyte is easy to induce 
+serious shuttling and strong corrosion of Li anode, owing to the inevi­
+table redox shuttle couple [24]. In this consideration, single heteroge­
+neous or homogeneous mediators are difficult to achieve the rapid 
+multiphase conversions during discharge and charge process under high 
+sulfur loading and lean electrolyte [25]. Therefore, ideal mediator sys­
+tems consisting of heterogeneous and homogeneous mediators, are 
+promising to achieve high areal capacity LSBs through synergistically 
+catalyzing whole sulfur redox reactions [26–29]. Despite mediators have 
+been verified to boost cycling performances of LSBs, using solid 
+CoSe—soluble CoCp2 dual-mediators to accelerate sulfur conversion 
+kinetics under extreme conditions has not been reported, and the cor­
+responding catalytic mechanisms are still unclear. 
+Herein, we design dual-mediation pathways to catalyze the electro­
+chemical behaviors of LiPSs and Li2S through synergistic effects, thus 
+promoting complete sulfur conversion kinetics. CoSe nanoparticles 
+embedded in urchin-like nitrogen-doped porous carbon with in-situ 
+growth of CNTs (CoSe@CNTs) as heterogeneous mediators are con­
+structed by the two-step carbonization–selenization strategy based on 
+the three-dimensional (3D) structure of ZIF-8@ZIF-67. The dual- 
+mediator systems could give full play to the advantages of 
+CoSe@CNTs and CoCp2, which not only effectively capture and boost 
+the conversion of soluble LiPSs through CoSe@CNTs mediators with 
+abundant active sites, but also induce uniform deposition of soluble Li2S 
+Fig. 1. (a) Construction process of CoSe@CNTs heterogeneous mediators. (b ~ f) TEM. (g) HRTEM and (h) element mapping images of CoSe@CNTs.  
+K. Li et al.                                                                                                                                                                                                                                        
+
+<<PAGE 3>>
+Chemical Engineering Journal 461 (2023) 141898
+3
+and accelerate subsequent oxidation process of Li2S via CoCp2 media­
+tors. Meanwhile, CoCp2 mediators could be immobilized on the surface 
+of CoSe@CNTs by strong chemical interaction, thereby lowering the 
+risks of the corrosion of Li anode and the shutting of CoCp2. As a result, 
+the cell with dual-mediators achieves superior cycling performances 
+with a high initial specific capacity of 1005 mAh/g with a low attenu­
+ation rate of 0.045 % per cycle after 800cycles at 1.0C under sulfur 
+loading of 2.8 mg cm−2. Especially, it still maintains a high areal ca­
+pacity of 6.23 mAh cm−2 at lower E/S of 4.2 µL mg−1 and higher sulfur 
+loading of 7.3 mg cm−2 over 100cycles at 0.1C. 
+2. Experimental section 
+Materials and chemicals 
+All chemical reagents were purchased from Sinopharm Chemical 
+Reagent Co. Ltd and were used as received without further purification. 
+Distilled water was obtained from a MilliQ purified system. 
+Preparation of ZIF-8 
+3 mM Zn(NO3)2⋅6H2O was dissolved in 50 mL methanol and 12 mM 
+2-methylimidazole was dissolved in 50 mL methanol, respectively. 
+Then, the as-formed two solutions were rapidly mixed and magnetic 
+stirred for 24 h at 35 ◦C. The precipitate was washed by ethanol for 
+several times and dried at 60 ◦C for 4 h to obtain ZIF-8. 
+Preparation of ZIF-8@ZIF-67 
+200 mg ZIF −8 was dissolved in 100 mL methanol. 4 mM Co 
+(NO3)2⋅6H2O was dissolved in 100 mL methanol and 16 mM 2-methyl­
+imidazole was dissolved in 100 mL methanol. Then, the as-formed 
+three solutions were rapidly mixed and magnetic stirred for 24 h at 
+35 ◦C. The precipitate was washed by ethanol for several times and dried 
+at 60 ◦C for 4 h to obtain ZIF-8@ZIF-67. 
+Preparation of ZIF-67 
+3 mM Co(NO3)2⋅6H2O was dissolved in 50 mL methanol and 12 mM 
+2-methylimidazole was dissolved in 50 mL methanol, respectively. 
+Then, the as-formed two solutions were rapidly mixed and magnetic 
+stirred for 24 h at 35 ◦C. The precipitate was washed by ethanol for 
+several times and dried at 60 ◦C for 4 h to obtain ZIF-67. 
+Preparation of CoSe@CNTs 
+Through directly annealing ZIF-8@ZIF-67 under Ar atmosphere flow 
+for 6 h at 800 ◦C with a ramp rate of 5 ◦C min−1 to form Co-precursors. 
+The as-obtained Co-precursors and selenium powder with a mass ratio of 
+1:5 were placed in two combustion boats respectively and the selenium 
+powder was placed near the air intake port. Then, the two combustion 
+boats were heated to 800 ◦C with a heating rate of 5 ◦C min−1 and kept at 
+this temperature for 3 h under Ar atmosphere to obtain CoSe@CNTs. 
+Preparation of CoSeNC 
+The preparation of the CoSeNC is similar to that of the CoSe@CNTs, 
+except that ZIF-8@ZIF-67 is replaced by ZIF-67. 
+Fig. 2. (a) XRD patterns. (b) Raman spectra. (c) Se 3d. (d) Co 2p and (e) N 1 s XPS spectrum. (f) N2 adsorption–desorption isotherms and (g) pore size distributions of 
+CoSe@CNTs and CoSeNC. (h) Optimized adsorption configuration and binding energies of Li2S6 and CoCp2 on CoSe surface. The yellow, fluorescent green, blue, 
+brown, wathet blue and green balls represent S, Se, Co, C, N and Li atoms, respectively. (For interpretation of the references to color in this figure legend, the reader is 
+referred to the web version of this article.) 
+K. Li et al.                                                                                                                                                                                                                                        
+
+<<PAGE 4>>
+Chemical Engineering Journal 461 (2023) 141898
+4
+2.1. Preparation of the CoCp2 homogeneous mediators containing 
+electrolyte 
+The CoCp2 materials were directly added into the blank LSBs elec­
+trolyte (1 M bis(trifluoromethanesulfonyl)imide (LiTFSI) with 1 wt% 
+LiNO3 in DME and DOL mixture (1:1 vol)) after stirring for 12 h to obtain 
+the CoCp2 homogeneous mediators containing electrolyte. 
+3. Result and discussion 
+The CoSe@CNTs heterogeneous mediators were prepared through a 
+two-step approach, as illustrated in Fig. 1a. Initially, ZIF-8@ZIF-67 
+polyhedrons were prepared through a sample solution method. Scan­
+ning electron microscopy (SEM) images show that the morphology of 
+the polyhedrons is uniform with a diameter of 200 ~ 400 nm (Fig. S1). 
+Then, the ZIF-8@ZIF-67 polyhedrons were annealed at 800 ◦C under Ar 
+atmosphere to form Co-precursors. As seen in Fig. S2, the Co-precursors 
+possess 3D structures in-situ growth of CNTs. Finally, the CoSe@CNTs 
+were obtained by in-situ chemically conversion of Co-precursors after 
+selenization. It can be observed from SEM (Fig. S3) and transmission 
+electron microscopy (TEM) images that the CoSe@CNTs maintain 
+original 3D structures of Co-precursors (Fig. 1b ~ d). Interestingly, CNTs 
+with a diameter of ~10 nm grow in-situ on the 3D frame like tentacles 
+(Fig. 1e and f). The lattice fringes of ~0.25 nm and ~0.31 nm are shown 
+in the high-resolution TEM (HRTEM) image (Fig. 1g) [30], referring to 
+the (1 1 0) facet of CoSe and (0 0 1) facet of carbon, respectively. High- 
+angle annular dark field-scanning transmission electron microscopy 
+(HAADF-STEM) elemental mapping images (Fig. 1h) of CoSe@CNTs 
+reveal the uniform distributions of Co, Se, N and C elements on their 
+surface. For comparison, CoSe nanoparticles distributed in porous 3D 
+carbon (CoSeNC, Fig. S4) were constructed through a similar approach. 
+The X-ray diffraction (XRD) patterns were used to characterize the 
+crystal phases of as-prepared CoSe@CNTs and CoSeNC. As presented in 
+Fig. 2a, the characteristic peaks at ~34.19◦, 44.81◦, and 51.37◦are 
+presented in XRD patterns of CoSe@CNTs and CoSeNC [31], corre­
+sponding to the (1 0 1), (1 0 2), and (1 1 0) planes of CoSe (JCPDS:No.89- 
+2004) [32], respectively. The Raman spectra (Fig. 2b) of the two ma­
+terials confirm their graphitization degree. The obvious two peaks at 
+1320 cm−1 and 1610 cm−1 correspond well to the D-band (defect state) 
+and G-band (graphitization state) of carbon, respectively. Compared 
+with CoSeNC (1.02), CoSe@CNTs show larger ID/IG value of 1.05, 
+indicative of the high graphitization degree and enhanced electronic 
+conductivity [33]. The surface chemical states of CoSe@CNTs and 
+CoSeNC were investigated by X-ray photoelectron spectroscopy (XPS). 
+Form Fig. S5, the XPS spectra clearly confirm the presence of Co, Se, N 
+and C elements in CoSe@CNTs and CoSeNC. In Se 3d XPS spectra 
+Fig. 3. (a) CV profiles of the symmetric cells with different mediators at a scanning rate of 0.5 mV s−1. (b) CV curves of different cells at a scanning rate of 0.1 mV s−1. 
+(c) CV curves of CoSe@CNTs/CoCp2 cells at various scanning rates from 0.1 mV s−1 to 0.5 mV s−1. Plots of (d) peak-A, (e) peak-B, (f) peak-C and (g) peak-D in CV 
+curves versus the square root of scan rates. (h) Tafel plots calculated from the CV curves of peak-B. (i) LSV profiles and corresponding Tafel plots of 
+different mediators. 
+K. Li et al.                                                                                                                                                                                                                                        
+
+<<PAGE 5>>
+Chemical Engineering Journal 461 (2023) 141898
+5
+(Fig. 2c) of CoSe@CNTs and CoSeNC, two peaks at 54.1 eV and 55.8 eV 
+are ascribed to Se 3d5/2 and Se 3d3/2, respectively. A peak at 58.5 eV 
+should be the Se-O bond [34]. The peaks appear at 59.6 eV and 60.8 eV 
+are assigned to Se-Co and Co-O bonds of Co 2p3/2 and Co 2p1/2, 
+respectively [35], as depicted in Co 2p XPS spectra (Fig. 2d). The N 1 s 
+XPS spectra (Fig. 2e) of CoSe@CNTs and CoSeNC are divided into three 
+peaks at 401.3, 399.25 and 398.78 eV, corresponding to graphitic-N, 
+pyrrolic-N, and pyridinic-N, respectively [36]. Doping with electron- 
+rich N atoms could enhance adsorption ability for LiPSs via strong Li- 
+N bonds and accelerate charge transfer by providing extra electrons to 
+carbon materials [37,38]. Furthermore, the N2 adsorption–desorption 
+results reveal that the CoSe@CNTs possess a much higher specific sur­
+face area of 181.15 m2/g as comparison to the CoSeNC (116.89 m2/g) 
+because of the in-situ growth of CNTs (Fig. 2f). The CoSe@CNTs and 
+CoSeNC present a similar pore size distribution from 2 to 10 nm, as 
+displayed in Fig. 2g. The large surface specific area and abundant 
+mesoporous of CoSe@CNTs are beneficial for capturing soluble CoCp2 
+mediators and LiPSs during discharge/charge process. 
+To visually observe the adsorption capacity of different materials 
+towards LiPSs, the Li2S6 adsorption experiments were tested through 
+adding same amount materials into 10 mM Li2S6 solutions. From 
+Fig. S6a, it could be seen that the Li2S6 solution treated with 
+CoSe@CNTs becomes almost colorless after 4 h, while the color of so­
+lutions treated with CoSeNC and blank still are yellow. As expected, the 
+UV–vis absorption spectra of the Li2S6 solution treated with CoSe@CNTs 
+shows much lower intensity than the other materials, indicating better 
+adsorption ability of CoSe@CNTs for LiPSs [7,39]. Moreover, its 
+immobilization effect towards soluble CoCp2 mediators was also 
+assessed via a similar approach. In this respect, the brown solution after 
+the addition of CoSe@CNTs turns into obviously lighter color solution 
+and its UV–vis absorption spectra presents the lowest intensity. As seen 
+in Fig. S6b, CoSe@CNTs display a stronger binding ability to soluble 
+CoCp2 mediators compared with CoSeNC. Density functional theory 
+(DFT) calculations were further carried out to reveal the interfacial in­
+teractions between CoSe@CNTs and LiPSs or CoCp2 at the atomic level. 
+From Fig. 2h, the surface of CoSe possesses much higher binding en­
+ergies for Li2S6 (−2.53 eV) and CoCp2 (−2.25 eV) in comparisons to that 
+of pyridinic-N surface (−1.45 eV and −1.03 eV). These results disclose 
+that the CoSe@CNTs effectively trap soluble LiPSs and CoCp2 through 
+chemical interaction, thereby restraining their shuttling and the conse­
+quent corrosion of Li anode. 
+The symmetric cells with the presence of Li2S6 and CoCp2 electrolyte 
+were assembled to gain insight into the catalytic effect of dual-mediators 
+for the electrochemical behaviors of LiPSs. Fig. 3a exhibits the cyclic 
+voltammetry (CV) profiles of the symmetric cells at a scanning rate of 
+0.5 mV s−1 in a voltage window of −1 to 1 V. The obvious redox peaks 
+for these symmetrical cells are observed, attributing to the oxidation and 
+reduction reactions of LiPSs [40]. The CV profiles of the two 
+CoSe@CNTs electrodes present smaller potential hysteresis and higher 
+peak currents, and no distinct peaks are shown in CoSeNC electrodes. 
+Besides, the CoSe@CNTs electrode with soluble CoCp2 mediators de­
+livers the highest peak current and the largest peak area, implying the 
+promotion of LiPSs conversion kinetics and high sulfur utilization by the 
+synergistic effect of CoSe@CNTs and CoCp2 mediators. Note that the 
+Fig. 4. (a) Precipitation profiles and (b) dissolution profiles of Li2S for cells with different mediators. (c) The optimized adsorption structures of the intermediates 
+and free energy profiles for the conversion process from Li2S4 to Li2S on CoSe and CoSe-CoCp2 mediators. (d) The optimized adsorption structures in different states 
+and energy profiles of Li2S dissociation on (e) CoSe-CoCp2 and (f) CoSe mediators. 
+K. Li et al.                                                                                                                                                                                                                                        
+
+<<PAGE 6>>
+Chemical Engineering Journal 461 (2023) 141898
+6
+CoSe@CNTs electrode with soluble CoCp2 mediators still shows signif­
+icant redox peaks and almost overlapped CV profiles even at a large 
+scanning rate of 20 mV s−1 (Fig. S7), suggestive of superior reversibility 
+and stability of the dual-mediators. 
+To further evaluate the catalytic performances of dual-mediators, 
+CR2032 coin cells were carried out using CoSe@CNTs mediators as in­
+terlayers between cathode and separator in normal electrolyte dissolved 
+with CoCp2 mediators (denoted as CoSe@CNTs/CoCp2 cell). As com­
+parison, the cells using CoSe@CNTs, CoSeNC, CoCp2 or blank mediators 
+as interlayers in normal electrolyte without the addition of CoCp2 me­
+diators were denoted as CoSe@CNTs, CoSeNC, CoCp2 or Blank cell, 
+respectively. The CV curves of these cells at a scanning rate of 0.1 mV s−1 
+under a voltage window of 1.7 to 2.8 V were recorded in Fig. 3b. Two 
+cathodic peaks for the CV curves located at about ~2.31 V (peak-A) and 
+~2.0 V (peak-B) that are attributed to the conversion reactions from S8 
+to LiPSs and the subsequent reduction of LiPSs to solid Li2S2/Li2S. Two 
+anodic peaks are also observed at ~2.33 V (peak-C) and ~2.45 V (peak- 
+D), representing the oxidation of Li2S/Li2S2 to LiPSs and then LiPSs to S8. 
+Compared with other cells, the CoSe@CNTs/CoCp2 cell possesses a 
+stronger peak intensity and larger peak area. Notably, the peak-A and 
+peak-B of CoSe@CNTs/CoCp2 cell present an obvious positive shift, 
+while its peak-C and peak-D shift a negative potential as compared with 
+CoSe@CNTs, CoSeNC, CoCp2 and Blank cells. This phenomenon reveals 
+the enhanced LiPSs conversion kinetics in the presence of CoSe@CNTs 
+and CoCp2 dual-mediators. 
+The Li diffusion property has a great influence on the reaction ki­
+netics of LiPSs, especially under high sulfur loading and lean electrolyte. 
+CV curves of these cells were tested at various scanning rates to further 
+probe Li diffusion rate, as exhibited in Fig. 3c and Fig. S9. According to 
+the classical Randles–Sevcik equation, all peak currents of these cells are 
+linear with the square root of scanning rates, implying that the diffusion 
+process dominates the electrochemical process. As illustrated in Fig. 3d 
+~ g, the CoSe@CNTs/CoCp2 cell shows the highest slopes among these 
+cells in each-step redox reaction, indicative of a faster Li diffusion rate 
+and accelerated LiPSs conversion kinetics under CoSe@CNTs and CoCp2 
+dual-mediators. Additionally, the corresponding Tafel slopes (Fig. 3h) 
+based on the peak-B of the CV curves were calculated to further 
+corroborate the improvement of LiPSs redox kinetics (Li2S4 to Li2S). This 
+cell with dual-mediators presents a lower Tafel slopes (21 mV dec−1) as 
+comparison to CoSe@CNTs (31 mV dec−1), CoSeNC (38 mV dec−1), 
+CoCp2 (45 mV dec−1) and Blank (56 mV dec−1) cells, reflecting the su­
+perior catalytic effect for the conversion from liquid to solid by 
+CoSe@CNTs and CoCp2. As depicted in the electrochemical impedance 
+spectroscopy (EIS) spectra (Fig. S10), the CoSe@CNTs/CoCp2 cell has a 
+smaller charge transfer resistance with respect to other cells in the high- 
+frequency region, demonstrating that the dual-mediators facilitate the 
+transfer of electrons in the battery operation [40–42]. Linear scanning 
+voltammetry (LSV) measurements were performed in a three-electrode 
+cell at a scanning rate of 5 mV s−1 to specifically investigate the Li2S 
+oxidation behaviors in the presence of dual-mediators. As seen in Fig. 3i, 
+the CoSe@CNTs/CoCp2 electrode has the lowest onset potential of 
+−0.58 V (vs −0.49, −0.42 and −0.36 V for CoSe@CNTs, CoSeNC, CoCp2, 
+respectively) and the highest current response. As expected, the signif­
+icant boost of the Li2S oxidation kinetics is also realized by the smallest 
+Fig. 5. (a) Galvanostatic discharge–charge profiles, (b and c) corresponding enlarged part of these curves, (d) cycling performances of different cells at a current 
+density of 0.1C. (e) Rate capabilities of different cells at various current rates. (f) Discharge–charge profiles of CoSe@CNTs/CoCp2 cell at various current rates. (g) 
+Long-term cycling performances of different cells at 1.0C. 
+K. Li et al.                                                                                                                                                                                                                                        
+
+<<PAGE 7>>
+Chemical Engineering Journal 461 (2023) 141898
+7
+Tafel slope of 76 mV dec−1 under the dual-mediators (insert in Fig. 3i). 
+The conversion reaction from liquid Li2S4 to solid Li2S is essential for 
+the overall battery performance that contributes to 75 % of the theo­
+retical specific capacity during the discharge process of LSBs. The 
+deposition of solid Li2S on different catalytic matrix were investigated 
+via a potentiostatic discharge measurements (Fig. 4a) at 2.05 V. Notably, 
+a remarkably higher current intensity and larger nucleation capacity of 
+Li2S (215.1 mAh g−1) are obtained with CoSe@CNTs/CoCp2 than 
+CoSe@CNTs (178.2 mAh g−1), CoCp2 (143.8 mAh g−1) and CoSeNC 
+(121.2 mAh g−1). The dissolution rate of solid Li2S is another important 
+kinetic indicator for subsequent oxidation reaction of Li2S. It can be 
+observed that CoSe@CNTs/CoCp2 is easier to facilitate Li2S dissociation 
+with higher current densities and dissolution capacity of 249.1 mAh g−1 
+compared with CoSe@CNTs (208.7 mAh g−1), CoCp2 (190.2mAh g−1) 
+and CoSeNC (160.4 mAh g−1) during the potentiostatic charge mea­
+surement (Fig. 4b). These observations clearly testify that CoSe@CNTs/ 
+CoCp2 dual-mediators effectively promote the deposition and dissocia­
+tion of solid Li2S. 
+To deeply understand the electrocatalytic effect of dual-mediators at 
+the atomic level, DFT calculations were carried out to simulate the Gibbs 
+free energies of the conversion reaction from Li2S4 to Li2S by catalytic 
+effects of different mediators. Optimized models of sulfur species and the 
+corresponding free energies by catalytic effects of CoSe and CoSe-CoCp2 
+mediators are shown in Fig. 4c. The free energy for the reduction of Li2S4 
+to Li2S2 by catalytic effects of CoSe-CoCp2 mediators is only 0.23 eV, 
+much lower than that by catalytic effects of CoSe mediator (0.28 eV). For 
+the conversion reaction from solid Li2S2 to solid Li2S, that is regarded as 
+rate-limiting step during the discharging process. The lower free energy 
+(0.63 eV) by catalytic effects of CoSe/CoCp2 for this conversion 
+demonstrate that nucleation of solid Li2S is thermodynamically favor­
+able under dual-mediators. The decomposition energy barriers of solid 
+Li2S also were calculated by DFT calculations during reverse charging. 
+Optimized configurations and the corresponding dissociation pathway 
+of Li2S2 are shown in Fig. 4d. The reverse oxidation reaction of solid Li2S 
+also is one crucial step during overall sulfur redox process. The activa­
+tion barrier required for the Li2S decomposition (Li2S → LiS + Li+ + e−) 
+by catalytic effects of CoSe is much high than that by catalytic effects of 
+CoSe-CoCp2 dual-mediators. Moreover, the dissociation reaction energy 
+(0.986 eV) from Li2S to LiS and single Li ions by catalytic effects of CoSe- 
+CoCp2 dual-mediators is markedly lower than that under CoSe (1.16 eV) 
+(Fig. 4e and f). These DFT results reveal that the liquid–solid conversion 
+process and the subsequent oxidation of Li2S are more thermodynami­
+cally favorable by catalytic effects of CoSe/CoCp2, due to the reduced 
+Li2S nucleation barrier and dissociation barrier by the synergistic effect 
+of dual-mediators. 
+Cycling performances of these cells based on different mediators 
+were evaluated to further verify the superiority of dual-mediators. As 
+observed in Fig. 5a, the galvanostatic discharge–charge profiles of 
+CoSe@CNTs/CoCp2 cell with sulfur loading of 2.8 mg cm−2 show a 
+higher initial specific discharge/charge capacities of 1610 mAh g−1 (1C 
+= 1675 mA g−1) and a lower polarization potential (ΔE) of 0.168 V 
+compared with CoSe@CNTs (1500 mAh g−1, 0.173 V), CoSeNC (1380 
+mAh g−1, 0.185 V), CoCp2 (1200 mAh g−1, 0.203 V) and Blank (880 
+mAh g−1, 0.221 V) cells at a current density of 0.1C. In particular, it 
+possesses the smallest interfacial energy barrier (5 mV) and charge po­
+tential barrier (8 mV) among these cells (Fig. 5b and c) [44]. The 
+Fig. 6. (a) Rate performances and (b) galvanostatic discharge/charge profiles of the CoSe@CNTs/CoCp2 cell under high sulfur loading of 7.1 mg cm−2 and E/S ratio 
+of 4.5 µL mg−1 at various current rates. (c) Cycling performances of the cell at 0.1C under high sulfur loading of 7.3 mg cm−2 and E/S ratio of 4.2 µL mg−1. (d) Battery 
+performances based on different mediators. 
+K. Li et al.                                                                                                                                                                                                                                        
+
+<<PAGE 8>>
+Chemical Engineering Journal 461 (2023) 141898
+8
+phenomenon reveals the enhancement the Li2S nucleation and deposi­
+tion kinetics with the CoSe@CNTs/CoCp2 assistance. After 50cycles at 
+0.1C, the CoSe@CNTs/CoCp2 cell still maintains a higher specific ca­
+pacity of 1409 mAh g−1 than CoSeNC (1229 mAh g−1), CoSe@CNTs 
+(1046 mAh g−1), CoCp2 (950 mAh g−1) and Blank (744 mAh g−1) cells 
+(Fig. 5d). As presented in Fig. 5e, rate capabilities with higher specific 
+capacities of 1563, 1303, 1157, 1076, 886, and 655 mAh g−1 at 0.1, 0.2, 
+0.5, 1.0, 2.0, and 3.0C are achieved by the CoSe@CNTs/CoCp2 cell. It 
+also delivers a high specific capacity of 1323 mAh g−1, when the current 
+density is recovered to 0.1C. By contrast, other cells show poor rate 
+performances, especially at 2.0C and 3.0C. Form the discharge–charge 
+profiles of these cells at various current rates (Fig. 5f and Fig. S11), it is 
+evident that the CoSe@CNTs/CoCp2 cell displays the most conspicuous 
+discharge plateaus and the smallest ΔE (Fig. S12) even at 2.0C and 3.0C. 
+The superior rate performances indicate the high reversibility and fast 
+conversion kinetics of LiPSs by the catalytic effects of CoSe@CNTs/ 
+CoCp2 dual-mediators [45]. Long-term cycling performances are very 
+significant for the assessment of LSBs. Benefiting from the synergistic 
+effect of dual-mediators, the CoSe@CNTs/CoCp2 cell maintains a high 
+initial specific capacity of 1005 mAh g−1 with a low degradation rate of 
+0.045 % per cycle a stable Coulombic efficiency of ~100 % at a high 
+current density of 1.0C over 800cycles (Fig. 5g). 
+Considering the cycling performances of LSBs would worsen with the 
+increased of sulfur loading and reduced of electrolyte. To test battery 
+performances under high sulfur loading and lean electrolyte is very 
+critical toward the practical development of LSBs. Based on this, the 
+performances of CoSe@CNTs/CoCp2 cell with different sulfur loading 
+and E/S ratio were used to evaluate the catalytic activity of dual- 
+mediators. Fig. 6a exhibits that the cell still keeps high specific capac­
+ities of 1116, 897, and 704 mAh g−1 at 0.1, 0.2 and 0.5C, when the sulfur 
+loading increased to 7.1 mg cm−2 and E/S ratio reduce to 4.5 µL mg−1. 
+Obvious discharge plateaus and small ΔE also are retained for the 
+CoSe@CNTs/CoCp2 cell, as presented in the discharge–charge profiles at 
+various rates (Fig. 6b). Additionally, a high initial areal capacity of 6.53 
+mAh cm−2 with the capacity retention of 88.2 % and high Coulombic 
+efficiency of ~ 100 % (Fig. S13) over 100 cycles at 0.1C could be ob­
+tained in CoSe@CNTs/CoCp2 cell under high sulfur loading of 7.3 mg 
+cm−2 and low E/S ratio of 4.2 µL mg−1 (Fig. 6c). The battery perfor­
+mances based on dual-mediators are better than other reported similar 
+mediators (Fig. 6d and Table S1) [46–53]. These results adequately 
+demonstrate that dual-mediation pathways could efficiently promote 
+sulfur redox conversion kinetics even under high sulfur loading and lean 
+electrolyte conditions, thus boosting the battery performances. 
+4. Conclusions 
+In summary, we proposed dual-mediation pathways based on 
+coupling CoSe@CNTs heterogeneous and CoCp2 homogeneous media­
+tors in LSBs. The combinations of dual-mediators effectively accelerate 
+conversion kinetics of LiPSs through CoSe@CNTs mediators with 
+abundant active sites and promote the deposition and subsequent 
+dissociation behaviors of solid Li2S via CoCp2 mediators. Moreover, 
+CoSe@CNTs with abundant pores and large active surface improve the 
+spatial restriction and chemisorption towards both LiPSs and soluble 
+CoCp2 thus lowering the risks of the corrosion of Li anode and the 
+shutting of CoCp2. As a result, the cell with the dual-mediators exhibits 
+high initial specific capacities of 1610 mAh g−1 with a low attenuation 
+rate of 0.045 % per cycle at a current density of 1.0C under sulfur 
+loading of 2.8 mg cm−2 after 800cycles. Impressively, a high areal ca­
+pacity of 6.53 mAh cm−2 is achieved by the dual-mediators at a lower E/ 
+S ratio of 4.2 µL mg−1 and higher sulfur loading of 7.3 mg cm−2 over 
+100cycles. This work reveals a novel effective strategy through dual- 
+mediation pathways to promote sulfur redox kinetics for LSBs under 
+high sulfur loading and lean electrolyte. 
+Declaration of Competing Interest 
+The authors declare that they have no known competing financial 
+interests or personal relationships that could have appeared to influence 
+the work reported in this paper. 
+Data availability 
+No data was used for the research described in the article. 
+Acknowledgements 
+This work was supported by National Natural Science Foundation of 
+China (51702236) and Natural Science Foundation of Hebei Province 
+(B2021202052). 
+Author contributions 
+Kaifeng Li contributed the material preparation and electrochemical 
+analysis. Lufei Wang and Xinyan Meng carried out material character­
+ization and theoretical calculation. Mengmeng Zhen conceived the idea 
+and wrote the article. 
+Appendix A. Supplementary data 
+Supplementary data to this article can be found online at https://doi. 
+org/10.1016/j.cej.2023.141898. 
+References 
+[1] H.F. Shi, W. Lv, C. Zhang, D.W. Wang, G.W. Ling, Y.B. He, F.Y. Kang, Q.H. Yang, 
+Functional carbons remedy the shuttling of polysulfides in lithium-sulfur batteries: 
+confining, trapping, blocking, and breaking up, Adv. Funct. Mater. 28 (38) (2018) 
+1800508, https://doi.org/10.1002/adfm.201800508. 
+[2] M. Zhao, B.Q. Li, H.J. Peng, H. Yuan, J.Y. Wei, J.Q. Huang, Lithium-sulfur batteries 
+under lean electrolyte conditions: challenges and opportunities, Angew. Chem. Int. 
+Ed. 59 (31) (2020) 12636–12652, https://doi.org/10.1002/anie.201909339. 
+[3] M.C. Li, Z. Liu, L. Tan, Q.Y. Zhou, J.J. Zhang, P.P. Hou, X.J. Jin, T.B. Lv, Z.Q. Zhao, 
+Z. Zeng, S. Deng, G.P. Dai, Fabrication of cubic and porous carbon cages with in- 
+situ-grown carbon nanotube networks and cobalt phosphide for high-capacity and 
+stable lithium-sulfur batteries, ACS Sustain. Chem. Eng. 10 (2022) 10223–10233, 
+https://doi.org/10.1021/acssuschemeng.2c01932. 
+[4] R.Q. Liu, W.H. Liu, Y.L. Bu, W.W. Yang, C. Wang, C. Priest, Z.W. Liu, Y.Z. Wang, J. 
+Y. Chen, Y.H. Wang, J. Cheng, X.J. Lin, X.M. Feng, G. Wu, Y.W. Ma, W. Huang, 
+Conductive porous laminated vanadium nitride as carbon-free hosts for high- 
+loading sulfur cathodes in lithium-sulfur batteries, ACS Nano 14 (12) (2020) 
+17308–17320, https://doi.org/10.1021/acsnano.0c07415. 
+[5] S. Xia, Q. Zhou, B. Peng, X. Zhang, L. Liu, F. Guo, L. Fu, T. Wang, Y. Liu, Y. Wu, 
+Co3O4@MWCNT modified separators for Li–S batteries with improved cycling 
+performance, Mater. Today Energy 30 (2022), 101163, https://doi.org/10.1016/j. 
+mtener.2022.101163. 
+[6] Y.X. Yin, S. Xin, Y.G. Guo, L.J. Wan, Lithium-sulfur batteries: electrochemistry, 
+materials, and prospects, Angew. Chem. Int. Ed. 52 (2013) 13186–13200, https:// 
+doi.org/10.1002/anie.201304762. 
+[7] A. Bhargav, J.R. He, A. Gupta, A. Manthiram, Lithium-sulfur batteries: attaining 
+the critical metrics, Joule 4 (2) (2020) 285–291, https://doi.org/10.1016/j. 
+joule.2020.01.001. 
+[8] Y. Ouyang, W. Zong, X.B. Zhu, L.L. Mo, G.J. Chao, W. Fan, F.L. Lai, Y.E. Miao, T. 
+X. Liu, Y. Yu, A universal spinning-coordinating strategy to construct continuous 
+metal-nitrogen-carbon heterointerface with boosted lithium polysulfides 
+immobilization for 3D-Printed Li-S batteries, Adv. Sci. 9 (26) (2022) 2203181, 
+https://doi.org/10.1002/advs.202203181. 
+[9] Z.X. Shi, Y.F. Ding, Q. Zhang, J.Y. Sun, Electrocatalyst modulation toward 
+bidirectional sulfur redox in Li-S batteries: from strategic probing to mechanistic 
+understanding, Adv. Energy Mater. 12 (29) (2022) 2201056, https://doi.org/ 
+10.1002/aenm.202201056. 
+[10] L. Wang, W.X. Hua, X. Wan, Z. Feng, Z.H. Hu, H. Li, J.T. Niu, L.X. Wang, A. 
+S. Wang, J.Y. Liu, X.Y. Lang, G. Wang, W.F. Li, Q.H. Yang, W.C. Wang, Design rules 
+of a sulfur redox electrocatalyst for lithium-sulfur batteries, Adv. Mater. 34 (14) 
+(2022) 2110279, https://doi.org/10.1002/adma.202110279. 
+[11] D.W. Yang, M.Y. Li, X.J. Zheng, X. Han, C.Q. Zhang, J.J. Biendicho, J. Llorca, J. 
+A. Wang, H.C. Hao, J.S. Li, G. Henkelman, J. Arbiol, J.R. Morante, D. Mitlin, S. 
+L. Chou, A. Cabot, Phase engineering of defective copper selenide toward robust 
+lithium-sulfur batteries, ACS Nano 16 (7) (2022) 11102–11114, https://doi.org/ 
+10.1021/acsnano.2c03788. 
+K. Li et al.                                                                                                                                                                                                                                        
+
+<<PAGE 9>>
+Chemical Engineering Journal 461 (2023) 141898
+9
+[12] Y.C. Ho, S.H. Chung, A design of the cathode substrate for high-loading polysulfide 
+cathodes in lean-electrolyte lithium-sulfur cells, Chem. Eng. J. 422 (2021), 130363, 
+https://doi.org/10.1016/j.cej.2021.130363. 
+[13] H.J. Peng, G. Zhang, X. Chen, Z.W. Zhang, W.T. Xu, J.Q. Huang, Q. Zhang, 
+Enhanced electrochemical kinetics on conductive polar mediators for lithium- 
+sulfur batteries, Angew. Chem. Int. Ed. 55 (42) (2016) 12990–12995, https://doi. 
+org/10.1002/anie.201605676. 
+[14] S.Y. Hu, Y.Y. Hu, X.L. Liu, J.H. Zhang, Simultaneously enhancing redox kinetics 
+and inhibiting the polysulfide shuttle effect using MOF-derived CoSe hollow sphere 
+structures for advanced Li-S batteriest, Nanoscale 13 (24) (2021) 10849–10861, 
+https://doi.org/10.1039/D1NR02044G. 
+[15] M. Zhao, H.J. Peng, J.Y. Wei, J.Q. Huang, B.Q. Li, H. Yuan, Q. Zhang, Dictating 
+high-capacity lithium-sulfur batteries through redox-mediated lithium sulfide 
+growth, Small Methods 4 (6) (2020) 1900344, https://doi.org/10.1002/ 
+smtd.201900344. 
+[16] Y. Jeoun, M.-S. Kim, S.-H. Lee, J. Hyun Um, Y.E. Sung, S.H. Yu, Lean-electrolyte 
+lithium-sulfur batteries: recent advances in the design of cell components, Chem. 
+Eng. J. 450 (2022), 138209, https://doi.org/10.1016/j.cej.2022.138209. 
+[17] L. He, D. Yang, H.N. Zhao, L.Y. Wei, D.S. Wang, Y.Z. Wang, G. Chen, Y.J. Wei, 
+Bipolar CoSe2 nanocrystals embedded in porous carbon nanocages as an efficient 
+electrocatalyst for Li-S batteries, Chem. Eng. J. 440 (2022), 135820, https://doi. 
+org/10.1016/j.cej.2022.135820. 
+[18] D. Yang, Z. Liang, P. Tang, C. Zhang, M. Tang, Q. Li, J.J. Biendicho, J. Li, 
+M. Heggen, R.E. Dunin-Borkowski, M. Xu, J. Llorca, J. Arbiol, J.R. Morante, S.- 
+L. Chou, A. Cabot, A high conductivity 1D π–d conjugated metal-organic 
+framework with efficient polysulfide trapping-diffusion catalysis in lithium-sulfur 
+batteries, Adv. Mater. 34 (10) (2022) 2108835, https://doi.org/10.1002/ 
+adma.202108835. 
+[19] C.S. Cheng, S.H. Chung, Nickel-plated sulfur nanocomposites for electrochemically 
+stable high-loading sulfur cathodes in a lean-electrolyte lithium-sulfur cell, Chem. 
+Eng. J. 429 (2022) 132257, https://doi.org/10.1016/j.cej.2021.132257. 
+[20] L. Jiao, H. Jiang, Y.C. Lei, S.L. Wu, Q.L. Gao, S.Y. Bu, X. Kong, S. Yang, D.K. Shu, C. 
+Y. Li, H. Li, B.W. Cheng, C.S. Lee, W.J. Zhang, “Dual mediator system” enables 
+efficient and persistent regulation toward sulfur redox conversion in lithium-sulfur 
+batteries, ACS Nano 16 (2022) 14262–14273, https://doi.org/10.1021/ 
+acsnano.2c04402. 
+[21] M. Zhao, B.Q. Li, X. Chen, J. Xie, H. Yuan, J.Q. Huang, Redox comediation with 
+organopolysulfides in working lithium-sulfur batteries, Chem 6 (2020) 3297–3311, 
+https://doi.org/10.1016/j.chempr.2020.09.015. 
+[22] Y.Z. Song, W.L. Cai, L. Kong, J.S. Cai, Q. Zhang, J.Y. Sun, Rationalizing 
+electrocatalysis of Li-S chemistry by mediator design: progress and prospects, Adv. 
+Energy Mater. 10 (2020) 1901075, https://doi.org/10.1002/aenm.201901075. 
+[23] Z.W. Zhang, H.J. Peng, M. Zhao, J.Q. Huang, Heterogeneous/homogeneous 
+mediators for high-energy-density lithium-sulfur batteries: progress and prospects, 
+Adv. Funct. Mater. 28 (38) (2018) 1707536, https://doi.org/10.1002/ 
+adfm.201707536. 
+[24] C. Luo, X. Liang, Y.F. Sun, W. Lv, Y.W. Sun, Z.Y. Lu, W.X. Hua, H.T. Yang, R. 
+C. Wang, C.L. Yan, J. Li, Y. Wan, Q.H. Yang, An organic nickel salt-based 
+electrolyte additive boosts homogeneous catalysis for lithium-sulfur batteries, 
+Energy Storage Mater. 33 (2020) 290–297, https://doi.org/10.1016/j. 
+ensm.2020.08.033. 
+[25] N. Shen, H. Sun, B. Li, B. Xi, X. An, J. Li, S. Xiong, Dual-functional hosts for 
+polysulfides conversion and lithium plating/stripping towards lithium-sulfur full 
+cells, Chem. Eur. J. (2022) e202203031. 
+[26] P. Wang, B. Xi, M. Huang, W. Chen, J. Feng, S. Xiong, Emerging catalysts to 
+promote kinetics of lithium-sulfur batteries, Adv. Energy Mater. 11 (2021) 
+2002893, https://doi.org/10.1002/aenm.202002893. 
+[27] J. Li, X. Niu, P. Zeng, M. Chen, Y. Pei, L. Li, Z. Luo, X. Wang, Double bond effects 
+induced by iron selenide as immobilized homogenous catalyst for efficient 
+polysulfides capture, Chem. Eng. J. 421 (2021) 129770, http://doi.org.https. 
+hebutlib.proxy.hebut.edu.cn/10.1016/j.cej.2021.129770. 
+[28] J. Liu, S. Xiao, X. Liu, R. Wu, X. Niu, Y. Xiang, J.S. Chen, C. Yang, Encapsulating 
+Co9S8 nanocrystals into CNT-reinforced N-doped carbon nanofibers as a 
+chainmaillike electrocatalyst for advanced Li-S batteries with high sulfur loading, 
+Chem. Eng. J. 423 (2021) 130246, http://doi.org.https.hebutlib.proxy.hebut.edu. 
+cn/10.1016/j.cej.2021.130246. 
+[29] P. Wang, T. Xu, B. Xi, J. Yuan, N. Song, D. Sun, S. Xiong, A Zn8 double-cavity 
+Metallacalix[8]arene as molecular sieve to realize self-cleaning intramolecular 
+tandem transformation of Li-S chemistry, Adv. Mater. 34 (2022) 2207689, https:// 
+doi.org/10.1002/adma.202207689. 
+[30] P. Wang, B. Xi, Z. Zhang, M. Huang, J. Feng, S. Xiong, Atomic tungsten on 
+graphene with unique coordination enabling kinetically boosted lithium-sulfur 
+batteries, Angew. Chem. Int. Ed. 60 (2021) 15563–15571, https://doi.org/ 
+10.1002/anie.202104053. 
+[31] W.Q. Yan, J.L. Yang, X.S. Xiong, L.J. Fu, Y.H. Chen, Z.G. Wang, Y.S. Zhu, J. 
+W. Zhao, T. Wang, Y.P. Wu, Versatile asymmetric separator with dendrite-free 
+alloy anode enables high-performance Li–S batteries, Adv. Sci. 9 (2022) 2202204, 
+https://doi.org/10.1002/advs.202202204. 
+[32] X. Jiang, S. Zhang, B. Zou, G. Li, S. Yang, Y. Zhao, J. Lian, H. Li, H. Ji, Electrospun 
+CoSe@NC nanofiber membrane as an effective polysulfides adsorption-catalysis 
+interlayer for Li-S batteries, Chem. Eng. J. 430 (2022), 131911, https://doi.org/ 
+10.1016/j.cej.2021.131911. 
+[33] W.C. Ren, S.F. Zhang, B.T. Tang, Nitrogen-doped carbon fiber foam enabled sulfur 
+vapor deposited cathode, Chem. Eng. J. 341 (2018) 441–449, https://doi.org/ 
+10.1016/j.cej.2018.02.057. 
+[34] Y. Zhang, Y. Sun, L. Peng, J. Yang, H. Jia, Z. Zhang, B. Shan, J. Xie, Se as eutectic 
+accelerator in sulfurized polyacrylonitrile for high performance all-solid-state 
+lithium-sulfur battery, Energy Storage Mater. 21 (2019) 287–296, https://doi.org/ 
+10.1016/j.ensm.2018.12.010. 
+[35] D. Cai, Y. Zhuang, B. Fei, C. Zhang, Y. Wang, Q. Chen, H. Zhan, Self-supported VN 
+arrays coupled with N-doped carbon nanotubes embedded with Co nanoparticles 
+as a multifunctional sulfur host for lithium-sulfur batteries, Chem. Eng. J. 430 
+(2022), 132931, https://doi.org/10.1016/j.cej.2021.132931. 
+[36] Z. Gu, C. Cheng, T. Yan, G. Liu, J. Jiang, J. Mao, K. Dai, J. Li, J. Wu, L. Zhang, 
+Synergistic effect of Co3Fe7 alloy and N-doped hollow carbon spheres with high 
+activity and stability for high-performance lithium-sulfur batteries, Nano Energy 
+86 (2021) 106111, https://doi.org/10.1016/j.nanoen.2021.106111. 
+[37] J. Wang, C. Liu, J.Y. Feng, D. Cheng, C.Q. Zhang, Y.N. Yao, Z.Y. Gu, W.L. Hu, J. 
+J. Wan, C.Z. Yu, MOFs derived Co/Cu bimetallic nanoparticles embedded in 
+graphitized carbon nanocubes as efficient Fenton catalysts, J. Hazard. Mater. 394 
+(2020), 122567, https://doi.org/10.1016/j.jhazmat.2020.122567. 
+[38] B. Yuan, D. Hua, X. Gu, Y. Shen, L.-C. Xu, X. Li, B. Zheng, J. Wu, W. Zhang, S. Li, 
+F. Huo, Polar, catalytic, and conductive CoSe2/C frameworks for performance 
+enhanced S cathode in Li-S batteries, J. Energy Chem. 48 (2020) 128–135, https:// 
+doi.org/10.1016/j.jechem.2019.12.020. 
+[39] J. Castillo, L. Qiao, A. Santiago, X. Judez, G. Jimenez, M. Armand, H. Zhang, C. Li, 
+Perspective of polymer-based solid-state Li-S batteries, Energy Mater. 2 (2022) 
+200003, https://doi.org/10.20517/energymater.2021.25. 
+[40] H. Ma, Z. Wan, J. Li, R. Wu, Z. Zhang, B. Li, B. Zhao, Q. Qian, Y. Liu, Q. Xia, G. Guo, 
+X. Duan, X. Duan, Phase-tunable synthesis of ultrathin layered tetragonal CoSe and 
+nonlayered hexagonal CoSe nanoplates, Adv. Mater. 31 (25) (2019) 1900901, 
+https://doi.org/10.1002/adma.201900901. 
+[41] T. Wang, J. He, X.-B. Cheng, J. Zhu, B. Lu, Y. Wu, Strategies toward high-loading 
+lithium-sulfur batteries, ACS Energy Lett. 8 (1) (2022) 116–150, https://doi.org/ 
+10.1021/acsenergylett.2c02179. 
+[42] C. Hu, C. Kirk, Q. Cai, C. Cuadrado-Collados, J. Silvestre-Albero, 
+F. RodríguezReinoso, M.J. Biggs, A high-volumetric-capacity cathode based on 
+interconnected close-packed N-doped porous carbon nanospheres for long-life 
+lithium-sulfur batteries, Adv. Energy Mater. 7 (22) (2017) 1701082, https://doi. 
+org/10.1002/aenm.201701082. 
+[44] C.Q. Zhang, J.J. Biendicho, T. Zhang, R.F. Du, J.S. Li, X.H. Yang, J. Arbiol, Y. 
+T. Zhou, J.R. Morante, A. Cabot, Combined high catalytic activity and efficient 
+polar tubular nanostructure in urchin-like metallic NiCo2Se4 for high-performance 
+lithium-sulfur batteries, Adv. Funct. Mater. 29 (34) (2019) 1903842, https://doi. 
+org/10.1002/adfm.201903842. 
+[45] P. Wang, F. Sun, S. Xiong, Z. Zhang, B. Duan, C. Zhang, J. Feng, B. Xi, WSe2 
+flakelets on N-doped graphene for accelerating polysulfide redox and regulating Li 
+plating, Angew. Chem. Int. Ed. 61 (7) (2022) e202116048. 
+[46] C. Li, Y. Zhao, Y. Zhang, D. Luo, J. Liu, T. Wang, W. Gao, H. Li, X. Wang, A new 
+defect-rich and ultrathin ZnCo layered double hydroxide/carbon nanotubes 
+architecture to facilitate catalytic conversion of polysulfides for high-performance 
+Li-S batteries, Chem. Eng. J. 417 (2021), 129248, https://doi.org/10.1016/j. 
+cej.2021.129248. 
+[47] D. Wang, D. Luo, Y. Zhang, Y. Zhao, G. Zhou, L. Shui, Z. Chen, X. Wang, 
+Deciphering interpenetrated interface of transition metal oxides/phosphates from 
+atomic level for reliable Li/S electrocatalytic behavior, Nano Energy 81 (2021), 
+105602, https://doi.org/10.1016/j.nanoen.2020.105602. 
+[48] J. Xu, L. Xu, Z. Zhang, B. Sun, Y. Jin, Q. Jin, H. Liu, G. Wang, Heterostructure ZnSe- 
+CoSe2 embedded with yolk-shell conductive dodecahedral as Two-in-one hosts for 
+cathode and anode protection of Lithium-Sulfur full batteries, Energy Storage 
+Mater. 47 (2022) 223–234, https://doi.org/10.1016/j.ensm.22.02.010. 
+[49] P. Wang, Z. Zhang, N. Song, X. An, J. Liu, J. Feng, B. Xi, S. Xiong, WP Nanocrystals 
+on N,P dual-doped carbon nanosheets with deeply analyzed catalytic mechanisms 
+for lithium-sulfur batteries, CCS Chem. 14 (2022) 1–15. https://doi.org/10.31 
+635/ccschem.022.202202163. 
+[50] Y. Yao, H.Y. Wang, H. Yang, S.F. Zeng, R. Xu, F.F. Liu, A dual-functional conductive 
+framework embedded with TiN-VN heterostructures for highly eifficient 
+polysulfide and lithium regulation toward stable Li-S full batteries, Adv. Mater. 32 
+(6) (2020) 1905658, https://doi.org/10.1002/adma.201905658. 
+[51] Z. Shi, Z. Sun, J. Cai, Z. Fan, J. Jin, M. Wang, J. Sun, Boosting dual-directional 
+polysulfide electrocatalysis via bimetallic alloying for printable Li–S batteries, Adv. 
+Funct. Mater. 31 (4) (2021) 2006798, https://doi.org/10.1002/adfm.202006798. 
+[52] J. He, A. Manthiram, 3D CoSe@C aerogel as a host for dendrite-free lithium-metal 
+anode and efficient sulfur cathode in Li–S full cells, Adv. Energy Mater. 10 (41) 
+(2020) 2002654, https://doi.org/10.1002/aenm.202002654. 
+[53] Z. Ye, Y. Jiang, L. Li, F. Wu, R. Chen, A High-efficiency CoSe electrocatalyst with 
+hierarchical porous polyhedron nanoarchitecture for accelerating polysulfides 
+conversion in Li-S batteries, Adv. Mater. 32 (32) (2020) 2002168, https://doi.org/ 
+10.1002/adma.202002168. 
+Further reading 
+[43] B. Li, P. Wang, B.J. Xi, N. Song, X.G. An, W.H. Chen, J.K. Feng, S.L. Xiong, In-Situ 
+embedding CoTe catalyst into 1D–2D nitrogen-doped carbon to didirectionally 
+regulate lithium−sulfur batteries, Nano Res. 15 (10) (2022) 8972–8982, https:// 
+doi.org/10.1007/s12274-022-4537-6. 
+K. Li et al.                                                                                                                                                                                                                                        

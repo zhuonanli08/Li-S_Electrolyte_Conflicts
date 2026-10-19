@@ -1,0 +1,545 @@
+
+<<PAGE 1>>
+Supplementary Material
+Diffusional and thermodynamics properties of lithium polysulfides in different solvents: 
+a Molecular Dynamics approach
+Javier Luque Di Salvo1*, Santiago Agustín Maldonado-Ochoa2,3, Guillermina L. Luque1, Andrea Calderón2, 
+Victoria Bracamonte2, Fabián Vaca Chávez2,3, Daniel E. Barraco2,3, Alen Vizintin4, Robert Dominko4,5, Ezequiel 
+P. M. Leiva1*, Giorgio De Luca6
+1 Departamento de Química Teórica y Computacional, INFIQC, Av Medina Allende y Haya de la Torre, Ciudad Universitaria, CP 
+X5000HUA Córdoba, Argentina.
+2 CONICET, Instituto de Física Enrique Gaviola (IFEG), Córdoba, Argentina.  
+3Universidad Nacional de Córdoba, Facultad de Matemática, Astronomía, Física y Computación, Córdoba, Argentina
+4 National Institute of Chemistry, Hajdrihova 19, SI-1000, Ljubljana, Slovenia
+5 ALISTORE-European Research Institute, CNRS FR 3104, Hub de l’Energie, Rue Baudelocque, 80039, Amiens Cedex, France
+6 Institute on Membrane Technology, ITM-CNR, Via P. Bucci 17/C, 87036, Rende (CS), Italy
+* Corresponding Authors: javier.luquedisalvo@unc.edu.ar; ezequiel.leiva@unc.edu.ar
+Table S1. Solvent properties considered in the study.
+Solvent
+Chemical 
+Formula
+Donor 
+Number 
+(DN)
+Static 
+dielectric 
+constant (ε0)
+Viscosity 
+(η)1
+Refractive 
+Index
+DMSO (dimethyl 
+sulfoxide)
+29.8
+46.7
+2
+1.4793
+DME (1,2-
+dimethoxyethane)
+20
+7.2
+0.43
+1.3781
+ACN (acetonitrile)
+14.1
+37.5
+0.38
+1.3441
+DMF (N,N-
+dimethylformamide)
+26.6
+36.7
+0.79
+1.4305
+DOL (1,3-dioxolane)
+18
+7.1
+0.53
+1.3992
+TMS (sulfolane)
+14.8
+44
+10.3
+1.43025
+DMA (N,N-
+dimethylacetamide)
+27.8
+37.8
+0.945
+1.4375
+TEGDME 
+(tetraethylene
+glycol dimethyl ether)
+16.6
+7.62
+3.294
+1.4841
+DIOX (1,4-dioxane)
+14.8
+2.25
+1.2
+1.4224
+1 Viscosity units are centiPoise (cP)
+Supplementary Information (SI) for Physical Chemistry Chemical Physics.
+This journal is © the Owner Societies 2024
+
+<<PAGE 2>>
+The donor number of solvent mixtures is expected to be more similar to that of the pure solvent 
+showing the highest DN1. However, since the exact form of the donor number for the mixtures 
+considered in this study was not available, an arithmetic mean was used. In the case of DOL:DME 
+mixture we used DN = 19 (expected to be closer to 20); in the case of DIOX:DME we adopted DN 
+= 17.4 (expected to be closer to 20).
+For the static dielectric constant, ε0, of mixtures we employed the following expression2:
+(Eq. S1)
+𝜀0 = 𝜑𝐴𝜀∗
+0,𝐴+ 𝜑𝐵𝜀∗
+0,𝐵
+Here 
+ is the volume fraction of component A (similarly for component B), calculated as 
+𝜑𝐴
+, 
+and 
+ being the molar fractions of A and B, 
+ and 
+ the partial 
+𝜑𝐴= 𝑥𝐴𝑉∗
+𝐴(𝑥𝐴𝑉∗
+𝐴+ 𝑥𝐵𝑉∗
+𝐵) 𝑥𝐴
+𝑥𝐵
+𝑉∗
+𝐴
+𝑉∗
+𝐵
+molar volumes calculated as 
+ with 
+ the molecular weight of A and 
+ the mass 
+𝑉∗
+𝐴= 𝑚𝐴𝜌0
+𝐴
+𝑚𝐴
+𝜌0
+𝐴
+density of the pure liquid A. We note there is another option of interpolating between molecular 
+polarizabilities which are better additives than partial molar volumes, but this choice has 
+negligible effect on the resulting ionic partial charge.
+For the viscosity, , of solvent mixtures we employ the following expression3,4:
+𝜂
+(Eq. S2)
+𝜂= 𝜂∗
+𝐴
+𝜑𝐴 𝜂∗
+𝐵
+𝜑𝐵
+The refractive index, , was used to calculate the relative permittivity at high frequencies, 
+, 
+𝑛
+𝜀∞
+which was used to scale the ion partial charges (electrostatic term of the force field) according to 
+ as described in the main manuscript. For the mixtures, the following expression was 
+𝑞𝑒𝑓𝑓= 𝑞
+𝜀∞
+employed2:
+(Eq. S3)
+𝑛=
+𝜑𝐴(𝑛∗
+𝐴)2 + 𝜑𝐵(𝑛∗
+𝐵)2
+Table S2. Partial charges of terminal S (St), internal S (Si), and the resulting charge of S62- (q_S6) 
+and Li+ (q_Li).
+Solvent
+St
+Si
+q_S6
+q_Li
+DOL:DME5
+-0.4707
+-0.1247
+-1.4402
+0.7201
+ACN
+-0.4863
+-0.1288
+-1.4880
+0.7440
+DIOX:DME
+-0.4596
+-0.1217
+-1.4061
+0.7030
+DMA
+-0.4547
+-0.1204
+-1.3913
+0.6957
+DME
+-0.4743
+-0.1256
+-1.4513
+0.7256
+DMF
+-0.4570
+-0.1210
+-1.3981
+0.6991
+DMSO
+-0.4419
+-0.1170
+-1.3520
+0.6760
+TEGDME
+-0.4405
+-0.1166
+-1.3476
+0.6738
+TMS
+-0.4571
+-0.1210
+-1.3984
+0.6992
+
+<<PAGE 3>>
+Table S3. Composition of the simulation boxes used for the MSD computation, roughly yielding a 
+concentration 0.05 M Li2S6.
+Solvent
+Number of Solvent 
+Molecules
+Number of Li+ 
+ions
+Number of S62- 
+ions
+ACN
+7860
+40
+20
+DME
+3907
+40
+20
+DIOX:DME
+4321
+40
+20
+DMSO
+6218
+40
+20
+DOL:DME
+4677
+40
+20
+DMA
+4369
+40
+20
+TEGDME
+1898
+40
+20
+TMS
+4166
+40
+20
+DMF
+4809
+40
+20
+Table S4. Composition of the simulation boxes used for the 
+ computation, roughly yielding a 
+Δ𝐺𝑃,𝑇
+concentration 0.05 M Li2S6.
+Solvent
+Number of Solvent 
+Molecules
+Number of Li+ 
+ions
+Number of S62- 
+ions
+ACN
+393
+2
+1
+DME
+195
+2
+1
+DIOX:DME
+216
+2
+1
+DMSO
+311
+2
+1
+DOL:DME
+234
+2
+1
+DMA
+218
+2
+1
+TEGDME
+95
+2
+1
+TMS
+208
+2
+1
+DMF
+240
+2
+1
+The larger systems (Table S2) run 100 ns. The MSD curves were obtained by a time-ensemble 
+average over 20 trajectories in the case of S62- and 40 trajectories in the case of Li+, the MSD curves 
+are fitted in the range from 10 to 90 ns and the error reported in the self-diffusion coefficients is 
+the “difference of the diffusion coefficients obtained from fits over the two halves of the fit 
+interval” as default in the software6, which works well for Brownian diffusion (
+ in Eq. 4). 
+𝛽≈1
+For the smaller systems used to compute free energies (Table S3), we start with 2 Li+ and 1 S62-
+using a closed conformer structure7 in the centre of the simulation box, then randomly inserting 
+the corresponding number of solvent molecules. This procedure was repeated three times per 
+solvent. Each of these systems was subjected to energy minimization by steepest descent, 
+followed by 10 ns NPT which was checked as sufficient to obtain a well-equilibrated system. The 
+last frame resulted from this simulation was used as a starting configuration to apply the λ-
+coupling (40 λ points). The standard deviation of the free energy values obtained in the three 
+systems is the reported error in 
+ as well as in 
+.
+∆𝐺𝑠𝑜𝑙𝑣
+𝑝𝑜𝑙𝑦
+∆𝐻𝑠𝑜𝑙𝑣
+𝑝𝑜𝑙𝑦
+
+<<PAGE 4>>
+
+<<PAGE 5>>
+
+<<PAGE 6>>
+Figure S1. Radial distribution functions of Li-S, and the corresponding cumulative numbers (C.N.), 
+for Li2S6 0.05M in different solvents.
+Figure S2. Probability distribution of hexasulfide conformation in Li2S6 0.05 M in different 
+solvents, the St-St (terminal S atoms) intramolecular distance is used as descriptor. We have 
+performed the same analysis as described in reference.7
+
+<<PAGE 7>>
+Figure S3. Correlation between 
+  and 
+ for solutions of electrolytes containing different 
+𝐷
+𝑆2 ‒
+6 
+𝐷
+𝐿𝑖+
+solvents. (a) 0.05 M Li2S6 + 1M LiTFSI, the linear fit yields a slope of 
+. (b) 0.05 M Li2S6 
+1.04 ± 0.07
++ 1M LiTFSI + 0.25 M LiNO3, the linear fit yields a slope of 1.11 ± 0.08.
+
+<<PAGE 8>>
+Figure S4. Comparison between computed (ηMD) and experimental viscosities (ηexp) in 
+logarithmic scale. The straight line shows 1:1 correlation.
+Figure S5. Computed self-diffusion coefficients of Li+ and S62- against the computed viscosity 
+(cP). 
+Viscosities were calculated by the transverse current autocorrelation functions following the 
+procedure reported elsewhere8. In detail, we run 100 ps from the last frame obtained from the 
+100 ns simulations, saving velocities every 0.01 ps and running the gmx tcaf program to obtain 
+the viscosity as a function of k vectors, and fitting to 
+, were 
+ is the 
+𝜂(𝑘) = 𝜂(0)(1 ‒ 𝑎𝑘2)
+𝜂(0)
+kinematic viscosity extrapolating to k=0. Ninety-time samples of 10 ps length each were used 
+to obtain ninety values of 
+, these were averaged and the error bars were obtained from 
+𝜂(0)
+their standard deviations.
+
+<<PAGE 9>>
+Figure S6. Arrhenius plots used to calculate the activation energy (Ea) for Li+ diffusion.
+
+<<PAGE 10>>
+Figure S7. Radial distribution function (RDF) of the Li-O pair for the solvents DMA, DME and 
+TEGDME (Li-N pair in the case of ACN). The inset shows a magnification of the first peak. Note 
+the logarithmic scale in g(r).
+Table S5. Position of the RDF first peak and coordination number (CN), obtained as the numerical 
+integration of g(r) up to 0.25 nm, representing the C.N. of Li-O for DME, DMA and TEGDME, and 
+C.N. of Li-N for ACN.
+Solvent
+rpeak (nm)
+C.N.
+ACN
+0.196
+3.982
+DMA
+0.192
+2.969 *
+DME
+0.182
+4.059
+TEGDME
+0.186
+4.563
+* The fourth coordination site of Li+ is compensated by the nitrogen atom of one DMA molecule, 
+with g(r) of Li-N showing rpeak = 0.192 nm and C.N.= 0.943.
+
+<<PAGE 11>>
+Figure S8. Plot of log (D) vs. log (η), the line has a slope 
+ to highlight the linear relationship 
+=‒ 1
+1/D vs. η.
+They were calculated by running 100 ps from the last frame obtained from the 100 ns 
+simulations, saving velocities every 0.01 ps and running the gmx tcaf program to obtain the 
+viscosity as a function of k vectors, and fitting to eta(k)=eta(0)[1-ak^2], were eta(0) is the 
+kinematic viscosity extrapolating to k=0. Ninety time samples of 10 ps of length were used to 
+obtain ninety values of eta(0), these were averaged and the error bars were obtained from their 
+standard deviation.
+
+<<PAGE 12>>
+MD Force Field validation 
+Validation studies by developers of the force-field
+The force field parameterization has been reported in two publications, the first devoted to the 
+electrolyte itself without polysulfides3, whereas the second paper extends to polysulfides 
+species Li2S8, Li2S6, Li2S4, Li2S25. In particular, the first article3 focuses on testing available 
+force fields, computing the dielectric constant and viscosity of pure DOL, pure DME and 
+DOL:DME mixtures, as well as adding LiTFSI supporting salt at various concentrations. The 
+best match of force-field parameters was with those of Li+ by Dang9, and those of OPLS for 
+DOL and DME solvent molecules. In particular, for the DME molecule the Anderson dihedral 
+parameters10 were adopted by Park et al.; however, in this study, we choose to adopt the original 
+OPLS parameters for DME to be consistent with the other solvents studied herein. 
+The second article5 focuses on the effect of different lithium polysulfides at various LiPS 
+concentrations, the computation of ionic conductivity as well as clustering analysis, since it is 
+well known that lower chain PS is less soluble and can be aggregated in clusters. The 
+polysulfide parameters were taken from Rajput et al.11, where sulfur atoms are modelled with 
+DREIDING Lennard-Jones parameters and the S-S-S-S dihedral term is fitted to ab initio 
+calculations. In particular, for the mixed sigma Li-S parameter, different Lennard-Jones 
+parameters were tested by Park et al. coming from DREIDING, OPLS and CHARMM: a value 
+of 0.275 nm was scaled from conductivity values calculated at various Li2S4 concentrations 
+(see Figure S2 of reference5).
+Comparison with DFT results from the literature 
+The enthalpies of solvation (with many solvent molecules) calculated according to the 
+methodology described in the main article were compared with first-principles calculations 
+from the literature12, where only one solvent molecule is considered in interaction with a 
+lithium polysulfide. This correlation is shown in Figure S9 below. Although the approaches 
+are very different, we can see that they are roughly linearly correlated.
+
+<<PAGE 13>>
+Figure S9. Plot of the computed ΔH trough MD simulations versus the Binding Energy of 
+Li2S8 with one solvent molecule calculated by Density Functional Theory (DFT)12 (see also 
+https://rashatwi.github.io/combat/plots/be.html). The DFT calculations were performed in 
+Gaussian using B3LYP exchange correlation functional with basis set 6-31+G* with D3 
+version of Grimme to account for dispersion terms.
+In addition, we have computed the Li2S6 binding energy using the MD force field parameters 
+with one solvent molecule:
+𝐸𝑏,𝑀𝐷= 𝐸𝐿𝑖2𝑆6 ‒ 𝑠𝑜𝑙𝑣𝑒𝑛𝑡‒ (𝐸𝐿𝑖2𝑆6 + 𝐸𝑠𝑜𝑙𝑣𝑒𝑛𝑡)
+In the right-hand side (RHS) of the equation, the first term is the energy of Li2S6 interacting 
+with one solvent molecule inside a 3D pbc cubic box 10nm length, NVT 10 ps 200K, taking 
+the lowest energy frame, and then subjected to energy minimization by conjugated gradients, 
+convergence 1 kJ/mol. The second term of the RHS between parenthesis is the minimized 
+energy by conjugated gradients of the Li2S6 centre of mass (c.o.m.) placed at (5, 5, 5), and the 
+solvent molecule c.o.m. placed at (0, 0, 0) inside a 3D pbc cubic box 10nm length (non-
+interacting system). The computed values are matched against the binding energies computed 
+through ab initio calculations reported in literature. The linear fit forced to pass through (0, 0) 
+yields a good linear correlation as shown in Figure S10. 
+Figure S10. Comparison between Binding Energy (BE, absolute values) of Li2S6 computed 
+with the MD force field of refs.3,5 and the DFT values of ref.12 referred to Li2S8.
+Table S6. Solvation free energies of Li+ computed using the procedure detailed in the 
+manuscript, compared with experimental values for some of the solvents. The fourth column 
+is the percentile difference between computed and experimental values. Composition of the 
+systems were 1 Li+ and the same number of solvent molecules as reported in Table S4.
+ΔG (kJ/mol)
+Solvent
+Computed
+Experimental(1)
+C/E %diff.
+
+<<PAGE 14>>
+ACN
+-540.2
+-460.7
+17.3
+DIOX-DME
+-490.9
+DME
+-525.3
+-429.3
+22.4
+DMF
+-486.9
+-511.3
+-4.8
+DMSO
+-561.3
+-506.3
+10.9
+DOL-DME
+-439.4
+TEGDME
+-546.3
+TMS
+-541.6
+-482.8
+12.2
+DMA
+-496.6
+-510.9
+-2.8
+(1) Reference13
+References
+(1) Gutmann, V. The Extension of the Donor-Acceptor Concept. Pure and Applied Chemistry 
+1979, 51 (11), 2197–2210. https://doi.org/10.1351/pac197951112197.
+(2) Reis, J. C. R.; Lampreia, I. M. S.; Santos, Â. F. S.; Moita, M. L. C. J.; Douhéret, G. Refractive Index 
+of Liquid Mixtures: Theory and Experiment. ChemPhysChem 2010, 11 (17), 3722–3733. 
+https://doi.org/10.1002/cphc.201000566.
+(3) Park, C.; Kanduč, M.; Chudoba, R.; Ronneburg, A.; Risse, S.; Ballauff, M.; Dzubiella, J. 
+Molecular Simulations of Electrolyte Structure and Dynamics in Lithium–Sulfur Battery 
+Solvents. Journal of Power Sources 2018, 373, 70–78. 
+https://doi.org/10.1016/j.jpowsour.2017.10.081.
+(4) Fort, R. J.; Moore, W. R. Viscosities of Binary Liquid Mixtures. Trans. Faraday Soc. 1966, 62, 
+1112. https://doi.org/10.1039/tf9666201112.
+(5) Park, C.; Ronneburg, A.; Risse, S.; Ballauff, M.; Kanduč, M.; Dzubiella, J. Structural and 
+Transport Properties of Li/S Battery Electrolytes: Role of the Polysulfide Species. J. Phys. 
+Chem. C 2019, 123 (16), 10167–10177. https://doi.org/10.1021/acs.jpcc.8b10175.
+(6) Abraham, M. J.; Murtola, T.; Schulz, R.; Páll, S.; Smith, J. C.; Hess, B.; Lindahl, E. GROMACS: 
+High Performance Molecular Simulations through Multi-Level Parallelism from Laptops to 
+Supercomputers. SoftwareX 2015, 1–2, 19–25. 
+https://doi.org/10.1016/j.softx.2015.06.001.
+(7) Luque Di Salvo, J.; Luque, G. L.; De Luca, G. Lithium Polysulfide Conformer Analysis in Ether-
+Based Solvents for Li–S Batteries. Mol. Syst. Des. Eng. 2022, 7 (4), 364–373. 
+https://doi.org/10.1039/D1ME00185J.
+(8) Hess, B. Determining the Shear Viscosity of Model Liquids from Molecular Dynamics 
+Simulations. Journal of Chemical Physics 2002, 116, 209–217. 
+https://doi.org/10.1063/1.1421362.
+
+<<PAGE 15>>
+(9) Dang, L. X. Development of Nonadditive Intermolecular Potentials Using Molecular 
+Dynamics: Solvation of Li+ and F− Ions in Polarizable Water. The Journal of Chemical 
+Physics 1992, 96 (9), 6970–6977. https://doi.org/10.1063/1.462555.
+(10)
+Anderson, P. M.; Wilson *, M. R. Developing a Force Field for Simulation of Poly(Ethylene 
+Oxide) Based upon Ab Initio Calculations of 1,2-Dimethoxyethane. Molecular Physics 2005, 
+103 (1), 89–97. https://doi.org/10.1080/00268970412331293811.
+(11)
+Rajput, N. N.; Murugesan, V.; Shin, Y.; Han, K. S.; Lau, K. C.; Chen, J.; Liu, J.; Curtiss, L. A.; 
+Mueller, K. T.; Persson, K. A. Elucidating the Solvation Structure and Dynamics of Lithium 
+Polysulfides Resulting from Competitive Salt and Solvent Interactions. Chem. Mater. 2017, 
+29 (8), 3375–3379. https://doi.org/10.1021/acs.chemmater.7b00068.
+(12)
+Atwi, R.; Rajput, N. N. Guiding Maps of Solvents for Lithium-Sulfur Batteries via a 
+Computational Data-Driven Approach. Patterns 2023, 4 (9), 100799. 
+https://doi.org/10.1016/j.patter.2023.100799.
+(13)
+Itkis, D. Ambiguities in Solvation Free Energies from Cluster-Continuum Quasichemical 
+Theory: Lithium Cation in Protic and Aprotic Solvents. Phys. Chem. Chem. Phys. 2021, 23, 
+16077. https://doi.org/10.1039/d1cp01454d.
+(14)
+Sinnaeve, D. The Stejskal–Tanner Equation Generalized for Any Gradient Shape—an 
+Overview of Most Pulse Sequences Measuring Free Diffusion. Concepts Magnetic Resonance 
+2012, 40A (2), 39–65. https://doi.org/10.1002/cmr.a.21223.
+(15)
+Zou, Q.; Lu, Y.-C. Solvent-Dictated Lithium Sulfur Redox Reactions: An Operando UV–Vis 
+Spectroscopic Study. J. Phys. Chem. Lett. 2016, 7 (8), 1518–1525. 
+https://doi.org/10.1021/acs.jpclett.6b00228.

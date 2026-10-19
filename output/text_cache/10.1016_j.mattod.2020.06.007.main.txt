@@ -1,0 +1,999 @@
+
+<<PAGE 1>>
+Woochul Shin 1, Liangdong Zhu 1, Heng Jiang 1, William F. Stickle 2, Chong Fang 1,
+Cong Liu 2, Jun Lu 3,⇑, Xiulei Ji 1,⇑
+1 Department of Chemistry, Oregon State University, Corvallis, OR, United States
+2 Hewlett-Packard Co., 1000 NE Circle Blvd., Corvallis, OR, United States
+3 Chemical Sciences and Engineering Division, Argonne National Laboratory, Lemont, IL, United States
+Practical lithium-sulfur batteries stipulate the use of a lean-electrolyte and a high Coulombic efﬁciency
+of the lithium metal anode. Herein, we employ 1,1,2,2-tetraﬂuoroethyl 2,2,2-triﬂuoroethyl ether as a
+co-solvent in the electrolyte of Li-S batteries to meet the demands. The co-solvent fosters the formation
+of a LiF-rich solid electrolyte interphase on lithium metal anode, as revealed by Ab initio molecular
+dynamics and Femtosecond Stimulated Raman spectroscopy. The co-solvent results in an average
+Coulombic efﬁciency of 99.4% for lithium plating/stripping cycles. Full cells with a capacity ratio of 2
+between lithium anode and the S@PAN cathode (3 mgs cm2) exhibited a stable cycle life over 100
+cycles at an electrolyte/sulfur ratio of 2 mL mg1, validating the high Coulombic efﬁciency of the
+lithium anode and demonstrating the compatibility of the electrolyte with both electrodes. To enhance
+the energy density, we prepared a hybrid cathode composed of 45 wt.% VS2 mixed with ZnS-coated
+Li2S@graphene as the cathode. Based on the mass of both electrodes and the electrolyte, the full cell
+delivers an energy density of 483 Wh kg1, which demonstrates viable Li-S batteries with the lean-
+electrolyte.
+Introduction
+Lithium-sulfur
+(Li-S)
+batteries
+represent
+a
+promising
+next-
+generation high-energy battery technology [1]. Recently, a
+plethora of examples of high-performing Li-S cells have been
+demonstrated [2–4]. However, commercialization of Li-S batter-
+ies still confronts several major technical challenges, including
+the shuttling of polysulﬁde species [5], rapid capacity fading of
+the sulfur cathode under lean-electrolyte conditions [6], and
+the low Coulombic efﬁciency (CE) of plating/stripping of the
+lithium metal anode (LMA) [7], where the latter two issues can
+be the real showstoppers but have received meager effort, to date
+[8–13].
+Remarkable advances have been made in polysulﬁde immobi-
+lization by, for example, intricate carbon/sulfur nano-composites
+[14,15], coated separators [16,17], and highly concentrated elec-
+trolytes [18,19]. These strategies are efﬁcacious in electrolyte-
+ﬂooded Li-S systems; however, the superlative results often fail
+to be translated under the lean-electrolyte conditions, where
+the sulfur cathode accentuates much lower capacity and fast fad-
+ing [20]. Note that the inconveniently necessary but extravagant
+usage of electrolyte tanks the speciﬁc energy of the Li-S cells and
+raises the manufacturing cost [21,22]. Besides the challenge to
+secure the high performance of cathode, the lean electrolyte
+needs to facilitate the impeccably reversible plating and stripping
+cycles of LMA. Unfortunately, conventional electrolytes used by
+the LIB industry is unstable with LMA, both thermodynamically
+and kinetically, resulting in continuous corrosion of LMA and
+the formation of lithium dendrites [7]. Therefore, it is pivotal
+Fluorinated co-solvent promises Li-S
+batteries under lean-electrolyte
+conditions
+⇑Corresponding authors.
+E-mail addresses: Lu, J. (junlu@anl.gov), Ji, X. (david.ji@oregonstate.edu).
+Materials Today d Volume 40 d November 2020
+RESEARCH
+RESEARCH: Original Research
+1369-7021/ 2020 Elsevier Ltd. All rights reserved. https://doi.org/10.1016/j.mattod.2020.06.007
+63
+
+<<PAGE 2>>
+to identify electrolytes that are kinetically stable with LMA via
+passivation with solid electrolyte interphase (SEI) under lean
+conditions [23,24].
+Most recently, strides of progress have been made to enhance
+the performance of sulfur electrodes under lean-electrolyte con-
+ditions, i.e., at an electrolyte/sulfur (E/S) ratio of 5 (mL mg1) or
+below [25–28]. Hollow current collectors [29], swellable sulfur
+cathode [30], and ZnS-coating [31] were employed for the
+enhanced electrolyte uptake. Modiﬁcations of electrolytes have
+also been made. For instance, dimethyl disulﬁde is used as a
+co-solvent for a higher discharge capacity [32]; catholyte com-
+prising Li2S6 facilitated electrolyte permeation into thick sulfur
+electrodes [33]; a salt of NH4TFSI served as a redox enhancer to
+alleviate Li2S passivation, thus promoting the S/Li2S utilization
+[20]. Electrocatalysts such as vacancy-rich Ni3FeN were utilized
+to improve surface reactions of sulﬁde species [34].
+Electrolyte represents the centrality to improve the CE of
+LMA. Recently, multiple localized high concentration elec-
+trolytes (LHCE) were introduced [35–39]. These low-viscosity
+electrolytes are usually ﬂuorine rich, which facilitates the forma-
+tion of SEI passivation layers on LMA. For instance, Nazar and
+coworkers
+developed
+a
+LHCE
+that
+contained
+1,1,2,2-
+tetraﬂuoroethyl 2,2,3,3-tetraﬂuoropropyl ether (HFE) in diglyme
+(G2), which delivered a CE of 96.2% for LMA, and in this elec-
+trolyte the S/CMK-3 cathode exhibited 100 cycles at an E/S ratio
+of 5 at 55 C [35]. Liang and coworkers used a mixture electrolyte
+comprising hexa-ﬂuoroisopropyl methyl ether (HFME), ethylene
+carbonate (EC), and diethyl carbonate (DEC), which achieved a
+CE of 99.5% for LMA and 50 cycles for the S/Ketjen black cath-
+ode at an E/S ratio of 1.5 [36]. In a similar fashion, Wang and
+coworkers employed a mixture of 1H,1H,5H-octaﬂuoropentyl-1
+,1,2,2-tetraﬂuoroethyl ether (OFE) and 1,2-dimethoxyethane
+(DME) with the volume ratio of 95:5 and an E/S ratio of around
+4.8, where the CE of LMA reached 99.3%, and the sulfur cathode
+retained a discharge capacity of 775 mAh g1 at the 150th cycle
+with the active mass loading of 1–2 mgs cm2 [37]. To date, lean
+electrolytes have been reported in half cells either for the sulfur
+electrode or for the LMA separately. However, it is rarely reported
+that under lean-electrolyte conditions, an electrolyte can facili-
+tate both high CE of LMA and stable cycling of the Li-S batteries
+at the full-cell level.
+Herein, we report a new electrolyte formula for Li-S batteries
+under lean conditions, where 1,1,2,2-tetraﬂuoroethyl 2,2,2-
+triﬂuoroethyl ether (TFTFE, Scheme 1) is employed as a co-
+solvent added to the electrolyte of 6 M lithium bis(ﬂuorosul-
+fonyl)imide (LiFSI) in DME. TFTFE outperforms other recently
+reported ﬂuorinated ethers in safety, and its cost and purity are
+competitive (Table S1). TFTFE was used as an electrolyte for Li-
+S batteries by Liu and co-workers owing to the its unique inert-
+ness against polysulﬁdes [40]. TFTFE was later reported as a co-
+solvent mixed with the electrolytes of ﬂuorinated carbonates in
+a lithium metal battery with a NMC811 cathode [41]. In this
+study, we demonstrate that the TFTFE/DME/LiFSI electrolyte is
+highly compatible with LMA, where the average plating/strip-
+ping CE reaches 99.4% over 350 cycles, and the sulfur cathode
+delivers stable cycling performance under the lean-electrolyte
+conditions with E/S ratios of as low as 2. Furthermore, femtosec-
+ond stimulated Raman spectroscopy (FSRS) and Ab initio molecu-
+lar dynamics (AIMD) simulations reveal that the TFTFE addition
+does not alter the solvation structure of the electrolyte salt but
+profoundly affects the electrochemical performance of both elec-
+trodes. When a S@PAN cathode and a limited mass of LMA with
+the anode/cathode capacity (N/P) ratio of 2 are assembled in full
+cells with the lean electrolyte at an E/S ratio of 2, the full cell with
+the S@PAN cathode delivered 100 cycles without a glitch. In
+addition, pairing the electrolyte with a hybrid sulfur cathode that
+has 45 wt.% vanadium disulﬁde (VS2) added into a cathode of
+ZnS-coated Li2S@graphene, the same full cell conﬁguration
+demonstrated
+one
+of
+the
+highest
+energy
+densities
+of
+483 Wh kg1 based on the mass of both and electrolyte. Lastly,
+this electrolyte exhibits low viscosity for excellent electrode wet-
+ting and anti-ﬂammable properties for enhanced battery safety.
+Materials and methods
+Electrolyte and cathode preparation
+The baseline electrolyte (BE) is 6 M LiFSI (99%, Oakwood Chem-
+icals) in DME (99.5%, anhydrous, Sigma Aldrich). The salt was
+dried at 95 C under Ar to remove trace water before use. The
+mixture of salt and solvent was stirred for 3 h. The diluent, TFTFE
+(99%, SynQuest Labs), was added to the as-prepared BE (BE/
+TFTFE, v/v 1:2 or 1:5) to prepare hybrid electrolytes, HE-2 and
+HE-5, respectively.
+S@PAN cathode was synthesized as previously reported [42].
+Brieﬂy, acrylonitrile (99%, Sigma Aldrich) and sublimed sulfur
+(99.98%, Sigma Aldrich) were mixed in a mass ratio of 1:4 and
+ball milled for an hour. Homogeneously mixed powder was
+annealed at 450 C for 3 h under N2 at a ramping rate of
+5 C min1.
+A hybrid cathode powder was synthesized in three steps and
+all moisture/oxygen sensitive syntheses were conducted in a
+tube-furnace housed in a glovebox under Ar: (1) Li2S@graphene
+nanocapsules were synthesized as reported [43]. Brieﬂy, lithium
+foil (0.38 mm in thickness, Alfa Aesar) was placed in the tube fur-
+nace, and CS2 liquid in a ﬂask was bubbled by Ar to form a mix-
+ture gas containing CS2 vapor. This gas passed through the
+quartz tube as ramping up the temperature to 650 C, and this
+temperature was held for ﬁve hours, followed by naturally cool-
+ing down to room temperature. (2) The obtained Li2S@graphene
+was ﬁnely ground using mortar/pestle, then it was gently pressed
+to form a pellet. The Zn precursor suspension, a mixture of 50 mg
+zinc acetylacetonate and 5 mL of dimethylformamide (DMF),
+was dropped on the pellet, which was dried under vacuum for
+5 h to remove solvent before it was transferred to a tube furnace.
+SCHEME 1
+Molecular structure of 1,1,2,2-tetrafluoroethyl 2,2,2-trifluoroethyl ether
+(TFTFE).
+RESEARCH: Original Research
+RESEARCH
+Materials Today d Volume 40 d November 2020
+64
+
+<<PAGE 3>>
+Annealing was conducted at 650 C for 3 h under the ﬂow of Ar/
+CS2 mixture gas to obtain ZnS-coated Li2S@graphene. The pow-
+der was collected after the pellet was naturally cooled down. (3)
+VS2 was prepared by the method as reported [44]. Brieﬂy, 1.2 g
+Na3VO412H2O and thioacetamide were mixed in de-ionized
+water, followed by heating up to 160 C for 24 h in a Teﬂon auto-
+clave. Once it was naturally cooled down, it was centrifuged and
+rinsed with de-ionized water and ethanol several times before
+use.
+Electrode preparation
+For the S@PAN electrode, slurry was made by mixing the active
+material, conductive carbon (C-45), and polyvinylidene ﬂuoride
+(PVdF) binder at a mass ratio of 80:10:10. A hybrid cathode slurry
+was prepared by mixing the VS2, ZnS-coated Li2S@graphene, C-
+45, and PVdF at a mass ratio of 45:45:5:5 with N-Methyl-2-
+Pyrrolidone (NMP) as a solvent. Slurry was casted on the
+carbon-coated Al foil (15 mm thickness, MTI) and dried at 65 C
+overnight. The dried electrode ﬁlm was punched into circular
+disks with an area of 0.76 cm2.
+Cell fabrication
+The 2032-type coin cells were used for Li||Cu cell and Li||Li cells.
+In a Li||Cu cell, Li metal foil was used as the counter and refer-
+ence electrode, and Cu foil (MTI) was used as working electrode.
+In both cells, regular polypropylene separators (25 mm, Celgard
+2400) were employed for HE-2, whereas hydrophilic polypropy-
+lene separators (25 mm, Celgard 3501) were applied for BE to
+enhance wettability. All cell fabrication was conducted inside
+Ar-ﬁlled glovebox, where O2 and H2O concentrations are below
+10 ppm.
+Materials characterization
+A
+home-built
+wavelength-tunable
+femtosecond
+stimulated
+Raman spectroscopy (FSRS) setup [45,46] was used to collect
+the experimental Raman spectra on the basis of a femtosecond
+(fs) Ti:sapphire laser ampliﬁer system (Mantis-5 and Legend
+Elite-USP-1 K-HE,
+Coherent,
+Inc.).
+Fundamental
+output
+of
+800 nm center wavelength, 35 fs pulse duration, 4 mJ pulse
+energy, and 1 kHz repetition rate were applied. SEM images of
+the deposited/cycled Li electrodes were obtained with Quanta
+600 FEG SEM with an accelerating voltage of 5 kV.
+Electrochemical tests
+A Maccor battery tester (Maccor) was used to perform all electro-
+chemical coin-cell tests including plating/stripping of Li for the
+Li||Cu systems and galvanostatic charge/discharge (GCD) for
+half-cell and full cell tests in coin cells. For plating, a current den-
+sity of 0.5 mA cm2 was applied for 2 h before stripping at a same
+current density until the potential reached 1.0 V. In a Li||Li sym-
+metric cell test, current densities of 0.5 mA cm2, 1.0 mA cm2,
+and 2.0 mA cm2 were applied for 20 cycles with a capacity of
+1.0 mAh cm2. Then it was switched back to 0.5 mA cm2 for
+another 20 cycles.
+Theoretical calculations
+AIMD calculations were carried out using the Vienna ab initio
+simulation Package (VASP) [47,48]. Generalized gradient approx-
+imation
+(GGA)
+with
+Perdew-Burke-Ernzerhof
+(PBE)
+[49]
+exchange–correlation functional was used, in conjunction with
+the projector augmented wave (PAW) pseudopotentials. Initial
+geometries of solutions were generated by randomly mixing salt
+and solvent molecules using the Packmol software [50]. Number
+of atoms, volume of a virtual cell, and temperature at 363 K
+(NVT) were maintained during the calculation. An energy cutoff
+of 500 eV with a Monhrost-Pack [51] reciprocal space grid of
+1  1  1 k-points scheme was used. The time step was 1 fs, and
+the snapshot at 13 ps was used to study Li-solvation structure
+analysis. The radial distribution function (RDF) was generated
+using VMD [52].
+Results and discussion
+We set 6 M LiFSI in DME as the baseline electrolyte (BE) and
+mixed it with TFTFE in two volume ratios, v/v 1:2 and 1:5, result-
+ing in two hybrid electrolytes, referred to as HE-2 and HE-5.
+When adding a co-solvent, the ﬁrst question is whether it partic-
+ipates in the solvation structures of electrolyte ions. To learn the
+interactions between the electrolyte species, we conducted FSRS
+measurements (Figure 1a). Pure DME exhibits integrated vibra-
+tion modes at 820 and 850 cm1 that are ascribed to the free
+ethylene oxide [53], and pure TFTFE shows vibrations at
+FIGURE 1
+Coordination structures of electrolytes. (a) Raman spectra display that the
+coordination environment of electrolyte constituents is not altered by TFTFE
+dilution. (b) AIMD of BE and HE-2 electrolytes, showing that Li+ binds more
+strongly with FSI at a high concentration and retains its preference despite
+the presence of TFTFE.
+RESEARCH: Original Research
+Materials Today d Volume 40 d November 2020
+RESEARCH
+65
+
+<<PAGE 4>>
+648 cm1 and 850 cm1 attributed to -CF2 wagging and asym-
+metric C-O stretching, respectively [54,55]. For a controlled elec-
+trolyte of 2 M LiFSI solvated in DME, the peak at 717 cm1
+indicates the S-N-S stretching vibration mode of FSI [56], which
+shifts to 735 cm1 when the concentration of LiFSI increases to
+6 M in BE due to more proliﬁc pairing between FSI and Li+
+[57]. At the same
+time, the DME peak also
+shifts from
+827 cm1 to 867 cm1 due to the enhanced interaction of DME
+with Li+ while the stretch of free DME molecules vanishes. A
+peak separation was observed between 825 cm1 and 875 cm1
+for 2 M LiFSI in DME, which is due to the mixed contributions
+from different C-O-C vibration modes. In contrast, in BE the C-
+O-C vibration mode is more homogenized due to the high con-
+centration of Li-ions. When TFTFE is introduced to BE in differ-
+ent volume ratios, the peak of FSI stays at 735 cm1 regardless
+of the different ratios, indicating the consistent chemical envi-
+ronment of FSI ions irrespective of the volumes of TFTFE added.
+Therefore, adding TFTFE into BE does not interrupt its coordina-
+tion structures. Likewise, the characteristic peaks of TFTFE at
+648 cm1 and 850 cm1 remain non-shifted in HE-2 and HE-5
+compared to its pure liquid, suggesting that TFTFE, indeed, serves
+as a diluent, not playing any solvation role with ions in the
+electrolytes.
+AIMD was conducted to further understand the coordination
+structures for the electrolytes of BE and HE-2. Solvent molecules,
+Li+, and FSI ions were randomly placed in the unit cell with
+their concentrations consistent with experiments. Then, the unit
+cell was relaxed for 13 ps, in which the time between 10 ps and
+15 ps is deemed sufﬁcient to use for analysis (Figure S1). Besides,
+we applied a higher energy cutoff of 600 eV for a good descrip-
+tion of electron wavefunction [58,59]. Figure 1b illustrates the
+two distinctive ﬁrst-coordination shells of Li+ sorted out of the
+entire simulation cell. Li+ in both electrolytes is bound with three
+to four oxygens from DME and FSI, where the ﬁrst coordination
+shells are analogous to the previously reported solvation struc-
+tures with inert co-solvents [58,60]. To be speciﬁc, a high con-
+centration of LiFSI renders Li+ more likely to bind with FSI
+rather than DME, and the oxygen atoms of TFTFE in HE-2 does
+not participate in the Li+ solvation. The ions and DME already
+form the stable solvation structures before TFTFE is added, where
+less dielectric TFTFE barely perturbs the Li-O (FSI) coordination.
+Furthermore, the radial distribution function (RDF) and the
+quantitative analysis of Li-O bonds also suggest that TFTFE func-
+tions as a diluent without involving in the coordination chem-
+istry (Figure S2 and Table S2). The AIMD results thereby
+corroborate the above Raman spectroscopy interpretation of
+unchanged solvation upon TFTFE addition.
+The new electrolyte is designed to improve the reversibility of
+LMA. We measured CE for each plating/stripping cycle by calcu-
+lating the ratio of the stripped lithium over a ﬁxed amount of
+plated lithium, i.e., 1.0 mAh cm2, where the current density is
+0.5 mA cm2
+.
+Cu foil was used as a working electrode and 10 cycles
+of electrochemical sweeping treatment from 0.01 V to 1.0 V (vs.
+Li+/Li, hereafter) at 0.05 mA cm2 was applied before lithium is
+initially plated (Figure S3). For HE-2, the ﬁrst plating and stripping
+overpotentials were respectively 35 mV and 27 mV (Figure 2a),
+where the CE of the initial cycle reached 96.3%. It gradually rose
+to 99.6% by the 30th cycle with a reduced overpotential of
+25 mV and 25 mV upon plating and stripping, respectively. In
+contrast, BE exhibited an erratic behavior of plating/stripping, as
+shown in Figure 2b. Initial plating/stripping overpotentials of BE
+were 54 mV and 45 mV, respectively, and the ﬁrst CE was
+93.7%, which gently increased to 97.7% by the 10th cycle, but it
+started to ﬂuctuate during the following cycling. Especially at
+the 26th cycle, a severe overcharge was observed with the attained
+capacity of 1.4 mAh cm2, 40% more than the plated amount in
+the same cycle. We postulate that the extra capacity of 0.4 mAh
+cm2 came from the stranded Li mass over the previous cycles,
+which somewhat got re-wired back to the current collector in this
+cycle. Figure S4 shows the GCD proﬁles of the six cycles, where the
+CE exceeds 100%. Short circuit is typically associated with abrupt
+potential drops, which was not observed in these plating/stripping
+proﬁles; therefore, the high CE here is unlikely due to short circuit.
+Furthermore, we tested CE of LMA in HE-2 at 2.0 mA cm2, a
+quadrupled current density, where dendrites may more likely
+form (Figure 2c). LMA exhibited an increased extent of polariza-
+tion with an initial overpotential of 190 mV that stabilized to
+130 mV after 30 cycles, which is a marginally lower overpotential
+than the heavily ﬂuorinated electrolytes (FEC/FEMC/HFE) and
+the engineered Li2S8/LiNO3 electrolyte, but slightly higher than
+that of using 10 M LiFSI in EC/DMC and the ternary-salt of
+LiFSI-LiTFSI-LiNO3 [41,61–63]. The cell showed stable potential
+proﬁles with the CE increased to 98.7% at the 30th cycle. We
+tested CE over 350 cycles, and the arithmetic mean CE values
+are 99.4% and 99.3%, at 0.5 mA cm2 and 2.0 mA cm2, respec-
+tively, in HE-2 (Figure 2d).
+The cycling stability of LMA in BE and HE-2 was also investi-
+gated in Li||Li symmetric cells at various current densities. As
+observed, BE displays a greater overpotential upon plating and
+stripping, i.e., 31 mV, than that of HE-2, 15 mV, at 0.5 mA cm2.
+The stability advantage of HE-2 is more evident at higher current
+densities of 1.0 mA cm2 and 2.0 mA cm2. The results suggest
+the utility of TFTFE in protecting the surface of lithium metal
+(Figure 2e and f).
+In order to understand how TFTFE as an electrolyte diluent
+enhances Li cycling, we investigated the surface morphology of
+the cycled LMA and the SEI compositions. After 20 cycles of plat-
+ing/stripping at 0.5 mA cm2 with a capacity of 1.0 mAh cm2 in
+Li||Li symmetric cells, LMA in HE-2 displays smooth surface with
+tightly bound Li grains, whereas BE shows relatively smaller Li
+islands with conspicuous cracks, where neither of the two elec-
+trolytes grows dendrites on LMA’s surface, as shown in Figure 3a
+and b. The ratios of Li-OFSI-, Li-ODME, and Li-OTFTFE suggested by
+RDF analysis (Table S2) show that Li+ prefers to bind FSI over
+DME in both BE and in HE-2, which suggests that FSI may be
+preferably reduced on the LMA surface than DME.
+We studied the SEI compositions by depth-proﬁling X-ray
+photoelectron spectroscopy (XPS) on the cycled LMA with Ar+
+sputtering that removes the top layer up to 10 nm thick beneath
+the surface (Figure 3c). The N 1s spectra reveal the degree of FSI
+reduction on the surface of LMA in electrolytes. The peaks at
+396.8 eV and 399.1 eV can be attributed to Li-N and N-SOx,
+respectively, and these signals could still be found at 10 nm deep
+in LMA for HE-2. However, those peaks were not detectable for
+BE when the top SEI layer was removed by 5 nm thick, which
+indicates the preferential FSI reduction on LMA in HE-2.
+RESEARCH: Original Research
+RESEARCH
+Materials Today d Volume 40 d November 2020
+66
+
+<<PAGE 5>>
+Besides, the F 1 s spectra demonstrate a stronger LiF peak at
+685.5 eV when HE-2 is used. Clearly, TFTFE resulted in those dis-
+parities in two folds: (1) ﬂuorinated ethers generally exhibit
+lower LUMO levels compared to methyl or partially ﬂuorinated
+ethers [64]; therefore, preferred deﬂuorination of TFTFE is par-
+tially responsible for a stronger LiF peak on the LMA albeit it does
+not participate in the Li+ solvation; (2) Rapid TFTFE decomposi-
+tion coupled with the formation of anion radicals at the Li sur-
+face triggers electron transfer to reduce FSI anions as the SEI
+ﬁlm grows, which was recently reported by Balbuena and co-
+workers [65].
+We cycled S@PAN||LMA half cells at the E/S ratio of 5 with
+excessive LMA and a sulfur loading of 2 mg cm2, where the
+current rate is 0.1 C (1 C = 1671 mA g1) during ﬁrst seven
+cycles before the current rate was switched to 0.2 C for the rest
+of cycling. The sulfur content of the composite was determined
+as 45 wt.%
+by energy-dispersive
+X-ray spectroscopy
+(EDX)
+(Table
+S3).
+Figure
+4a
+illustrates
+the
+galvanostatic
+charge–
+discharge (GCD) potential proﬁles of S@PAN in HE-2. The sulfur
+mass in the S@PAN composite delivered an initial discharge
+capacity of 1498 mAh gs
+1. The irreversible capacity in the ﬁrst
+discharge may relate to the formation of cathode electrolyte
+interphase (CEI) [66] and the initial cleavage of S-S bonds,
+where such a reaction also induces a potential downshift
+[42,67]. After conditioning at 0.1 C for 7 cycles, the HE-2 cell
+exhibited
+the
+discharge
+capacity
+of
+603 mAh gs
+1
+and
+598 mAh gs
+1 at the 10th and 50th cycle, respectively, which
+demonstrates the stable cycling of this S@PAN composite
+cathode at the E/S ratio of 5.
+In sharp contrast, BE exhibited an initial discharge capacity of
+952 mAh gs
+1 with a lower Li-insertion potential (Figure 4b)
+compared to HE-2, probably due to the poor electrode wetting
+(Figure S5). The discharge capacity with BE was consistently
+lower than HE-2 by 200 mAh g1
+s , over cycling, where it
+delivered 407 mAh gs
+1 at the 10th cycle and 386 mAh gs
+1 at
+the 50th cycle, as shown in Figure 4c. Interestingly, we observed
+that more dilution by TFTFE in HE-5 does not beneﬁt the cycling
+of the sulfur cathode, as shown in Figure S6. We postulate that
+this
+is
+due
+to
+the
+over-diluted
+contacting
+between
+the
+electrolyte-born Li+ ions and sulfur in the presence of more
+diluent molecules.
+Encouraged by the cathode compatibility of HE-2 at the E/S
+ratio of 5, we assembled a full-cell Li-S battery comprising limited
+LMA with a N/P ratio of 2, where Li was electrochemically pre-
+plated onto a Cu current collector (Figure 4d and e). The sulfur
+loading in the cathode was 3 mg cm2; the E/S ratios we tested
+were 3 and 2; cells were cycled at 0.05 C. At the E/S ratio of 3,
+the ﬁrst discharge capacity reached 1365 mAh gs
+1, followed by
+696 mAh gs
+1 at the 10th cycle and 509 mAh gs
+1 at the 50th
+cycle. At the E/S ratio of 2, the cell delivered an initial discharge
+capacity of 1226 mAh gs
+1, followed by a charge capacity of
+621 mAh gs
+1 with a CE of 50.7%. In the subsequent cycles, the
+discharge capacity decreased to 597 mAh gs
+1 and 439 mAh gs
+1
+at the 10th and the 50th cycle, respectively. As demonstrated
+FIGURE 2
+Potential profiles of galvanostatic plating/stripping of LMA in electrolytes of HE-2 and BE, where a capacity of 1.0 mAh cm2 is plated and subsequently
+exhaustively stripped from the Cu foil current collector in every cycle (Li||Cu asymmetric cells) with (a) HE-2 at 0.5 mA cm2, (b) BE at 0.5 mA cm2, and (c) HE-
+2 at the elevated current density of 2.0 mA cm2. (d) Comparison of CE over 350 cycles. (e) Li||Li symmetric cell tests at various current densities with HE-2
+(red) and BE (black). (f) An expanded image of the dashed blue box in (e).
+RESEARCH: Original Research
+Materials Today d Volume 40 d November 2020
+RESEARCH
+67
+
+<<PAGE 6>>
+in Figure 4e, the discharge capacity of both E/S ratio of 3 and 2
+cells faded as cycling proceeded further, which is very typical
+for Li-S full cells with high sulfur active mass loading under
+lean-electrolyte conditions.
+The S@PAN||Li full cells can cycle for 100 cycles under the
+lean-electrolyte conditions; however, the energy density of this
+full cell was only 250 Wh kg1 based on the mass of both elec-
+trodes and the electrolyte, which does not deliver the promise
+of high energy density of Li-S batteries. The energy density of
+the S@PAN||Li full cell is limited by the low average discharge
+voltage due to the solid–solid (S8 to Li2S) monophasic conversion
+reaction and the low percentage of sulfur active mass in S@PAN
+cathode (36 wt.%).
+To investigate the applicability of HE-2 to sulfur/carbon com-
+posites, we tested the CMK-3/S cathode at the E/S ratio of 5. An
+immense initial discharge capacity of 1519 mAh gs
+1 and a good
+CE of 86% were demonstrated. Although the capacity retained
+907 mAh gs
+1 at the 10th cycle, the capacity fading rate (4% per
+cycle) was high (Figure S7). Plus, building a thick electrode
+(>5.0 mgs cm2) of this composite electrode was problematic
+via the conventional doctor-blade method. Thus, we selected a
+hybrid cathode comprising 45 wt.% VS2 mixed with ZnS-coated
+Li2S@graphene, a compact composite cathode for further studies.
+VS2 lowers the potential of the charge process and helps immo-
+bilize polysulﬁdes in the electrode [68,69]. Here, we hope to cul-
+tivate the solid–liquid–solid reaction as it raises the discharge
+potential [31], and polysulﬁdes can be formed because BE is
+not saturated with LiFSI until 12 M [19], where free DME mole-
+cules can solvate polysulﬁde ions, which is conﬁrmed by the dis-
+played yellow color of BE upon the addition of S and Li2S
+(stoichiometric 5:1 molar ratio, Figure S8). The mass of VS2 was
+also considered as ‘active mass’ (AM) because it is capable of host-
+FIGURE 3
+Cycled Li morphology study by SEM using (a) HE-2, and (b) BE. Current density of is 0.5 mA cm2 and the capacity is 1.0 mAh cm2. (c) X-ray photoelectron
+spectra on the cycled LMA.
+RESEARCH: Original Research
+RESEARCH
+Materials Today d Volume 40 d November 2020
+68
+
+<<PAGE 7>>
+ing Li+ [70], and the discharge capacity of pure VS2 was evaluated
+separately (Figure S9). The entire cathode active mass loading was
+7.8 mgAM cm2, and we adopted an E/S ratio of 2 by considering
+the ‘S’ mass in Li2S only, where the E/S ratio of 2 here is equiva-
+lent to the E/AM ratio of 0.96 mL mg1.
+As shown in Figure 5a, the hybrid cathode was charged
+(delithiated) ﬁrst to transform Li2S to elemental sulfur, which
+exhibited a charge capacity of 421 mAh gAM
+1 from Li2S. Upon
+the ﬁrst discharge, nearly 20% of capacity (100 mAh gAM
+1 ) was
+delivered at the potential of 2.3 V and above, which is mostly
+due to the lithiation in VS2. The short discharge plateaus at
+2.2 V and 2.0 V represent the limited formation of high-order
+polysulﬁdes and their continuous reduction. Note that the
+monotonous slope under 2.0 V throughout discharge is the hall-
+mark of a solid–solid monophasic conversion [71]. Overall, the
+hybrid full cell exhibited an initial discharge capacity of
+528 mAh gAM
+1 ,
+which
+corresponds
+to
+an
+areal
+capacity
+of
+4.12 mAh cm2. Based on the mass of both electrodes and elec-
+trolyte used, it corresponds to 483 Wh kg1 (equivalent to the
+volumetric energy density of 721 Wh L1 based on the thickness
+FIGURE 4
+Electrochemical performance of S@PAN with different electrolytes under lean conditions. GCD potential profiles of half cells at E/S 5 with (a) HE-2 and (b) BE.
+(c) Cycling performance comparison between two electrolytes. GCD potential profiles of full cells with the N/P ratio of 2 and HE-2 electrolyte. (d) E/S ratio of 3,
+and (e) E/S ratio of 2. (f) Cycling performance at different E/S ratios. For full cell cycling, 3 mg cm2 of sulfur was loaded on cathode, and a current rate of
+0.05 C was employed.
+FIGURE 5
+Electrochemical performance of a full cell composed of a hybrid cathode of 45 wt.% VS2 mixed with ZnS-coated Li2S@graphene and limited LMA (N/P ratio of
+2) at an E/S ratio of 2. (a) GCD potential profiles at certain cycles. (b) Cycling performance of the hybrid cell up to 14 cycles.
+RESEARCH: Original Research
+Materials Today d Volume 40 d November 2020
+RESEARCH
+69
+
+<<PAGE 8>>
+of electrode), which outperforms most recently reported lean-
+electrolyte Li-S batteries (Table S4). The hybrid full cell can be
+cycled without serious capacity fading, which maintained 82%
+of its initial discharge capacity for 14 cycles under the extremely
+lean-electrolyte conditions (Figure 5b); however, the hybrid full
+cell displayed noisy and extended charging proﬁle after the
+14th charge (Figure S10). This is presumably due to the concen-
+trated polysulﬁdes in the parsimonious electrolyte drive a shuttle
+and electrolyte depletion [35,72,73], conﬁrmed by a dried
+yellow-colored separator collected right after the cell failed (Fig-
+ure S11), which suggests the VS2 absorption approach is still
+limited.
+The advantage of using TFTFE as a co-solvent also lies on its
+unique physical properties (Table S5), particularly the ﬂammabil-
+ity resistance, owing to its high ﬂash point. Flammability tests
+were conducted by placing a ﬁre source to the electrolyte-
+soaked glass ﬁber separators. A separator soaked in HE-2
+remained without ﬁre after burning it for ﬁve consecutive sec-
+onds, and when the lighter was taken away, it showed car-
+bonized trace on the surface (Figure S12a). This indicates that
+the TFTFE addition enhances battery safety. In contrast, the BE-
+soaked separator was ignited right after the lighter approached
+and maintained its red-yellow ﬂame until the electrolyte was
+burned out (Figure S12b). Owing to the highly combustible char-
+acteristics of DME, high salt concentration alone could not elim-
+inate the ﬂammability of the BE electrolyte (Video S1 and Video
+S2). In a similar fashion, TFTFE also acted as a diluent, where the
+viscosity was drastically lowered from 107.72 mPas for BE to
+11.34 mPas for HE-2. Likewise, ionic conductivity decreases
+from 11.53 mS cm1 for BE to 4.59 mS cm1 for HE-2 because
+TFTFE does not solvate Li-ions [74] (Table S6). The conductivity
+results suggest that both the diffusivity of diffusion and the
+mobility under the electric ﬁeld of polysulﬁdes in HE-2 and
+HE-5 should be smaller than in BE. This is due to the diluent
+characteristics of TFTFE—a weak solvent with low permittivity,
+and TFTFE does not perturb the original Li+ solvation structure.
+Thus, the presence of TFTFE sterically narrows the effective path-
+ways of ions, thus lowering their movability in the electrolyte,
+including both Li+ and polysulﬁdes. Thus, the diluent may help
+curtail the polysulﬁde shuttle effect.
+Conclusion
+In summary, we developed an electrolyte formula for the Li-S
+battery under lean-electrolyte conditions. The addition of TFTFE
+as a co-solvent to LiFSI/DME promotes the formation of LiF-
+abundant SEI, where the LMA exhibits a high CE of 99.4%.
+The TFTFE addition also alters the physical properties of the elec-
+trolyte, where the electrolyte wets the carbon/sulfur composite
+cathode better, which promotes the electrolyte uptake under
+the lean-electrolyte conditions. When the new electrolyte, i.e.,
+HE-2, is paired with S@PAN cathode at a low E/S ratio of 2 and
+a N/P ratio of 2, the full cell can be cycled for 100 cycles. This
+is a pioneering example of a full cell design, where an electrolyte
+facilitates excellent performance and reversibility of both elec-
+trodes under lean-electrolyte conditions. To increase the energy
+density, we tested this electrolyte with a hybrid cathode, where
+45 wt.%
+VS2
+is
+mixed
+with
+the
+composite
+of
+ZnS-
+Li2S@graphene, which yielded an energy density of 483 Wh kg1
+based on the mass of both electrodes and electrolyte. The results
+here represent a new milestone achieved for the safe and high-
+energy density Li-S battery with a lean-electrolyte.
+CRediT authorship contribution statement
+Woochul Shin: Conceptualization, Methodology, Simulation,
+Data Curation, Writing - original draft, Writing - review & edit-
+ing. Liangdong Zhu: Methodology. Heng Jiang: Methodol-
+ogy.
+William F.
+Stickle: Methodology.
+Chong Fang:
+Methodology, Validation. Cong Liu: Methodology, Validation.
+Jun Lu: Supervision, Funding acquisition, Writing - review &
+editing. Xiulei Ji: Conceptualization, Supervision, Funding
+acquisition, Writing - review & editing.
+Acknowledgements
+X.J. and J.L. are grateful to the US Department of Energy
+(DOE) through Battery500 consortium under contract number
+DE-FOA-0001629. The work at Argonne National Laboratory
+was supported from the DOE, Ofﬁce of Energy Efﬁciency and
+Renewable
+Energy,
+Vehicle
+Technologies
+Ofﬁce.
+Argonne
+National Laboratory is operated for DOE Ofﬁce of Science by
+UChicago Argonne, LLC, under contract number DE-AC02-
+06CH11357. The authors would like to thank P.A. Greaney for
+providing high-performance computing facility access at Univer-
+sity of California, Riverside.
+Appendix A. Supplementary data
+Supplementary data to this article can be found online at
+https://doi.org/10.1016/j.mattod.2020.06.007.
+References
+[1] X. Ji, L.F. Nazar, J. Mater. Chem. 20 (2010) 9821–9826, https://doi.org/10.1039/
+B925751A.
+[2] X. Ji, K.T. Lee, L.F. Nazar, Nat Mater 8 (2009) 500–506, https://doi.org/10.1038/
+nmat2460.
+[3] Z.W.
+Seh
+et
+al.,
+Nat.
+Commun.
+4
+(2013)
+1–6,
+https://doi.org/10.1038/
+ncomms2327.
+[4] Y.-S. Su, A. Manthiram, Nat. Commun. 3 (2012) 1166, https://doi.org/10.1038/
+ncomms2163.
+[5] A. Rosenman et al., Adv. Energy Mater. 5 (2015) 1500212, https://doi.org/
+10.1002/aenm.201500212.
+[6] F.Y. Fan, Y.-M. Chiang, J. Electrochem. Soc. 164 (2017) A917–A922, https://doi.
+org/10.1149/2.0051706jes.
+[7] D.
+Lin
+et
+al.,
+Nat.
+Nano
+12
+(2017)
+194–206,
+https://doi.org/10.1038/
+nnano.2017.16.
+[8] S. Jin et al., J. Am. Chem. Soc. (2020), https://doi.org/10.1021/jacs.0c01811.
+[9] X.-B. Cheng et al., Chem. Rev. 117 (2017) 10403–10473, https://doi.org/
+10.1021/acs.chemrev.7b00115.
+[10] X. Yang et al., Electrochem. Energ. Rev. 1 (2018) 239–293, https://doi.org/
+10.1007/s41918-018-0010-3.
+[11] S. Gu et al., Electrochem. Energ. Rev. 1 (2018) 599–624, https://doi.org/10.1007/
+s41918-018-0021-0.
+[12] Y.-S. Hong et al., Batteries Supercaps 2 (2019) 638–658, https://doi.org/
+10.1002/batt.201900031.
+[13] W. Shin et al., Chem. Commun. 55 (2019) 3387–3389, https://doi.org/10.1039/
+C9CC00046A.
+[14] N. Jayaprakash et al., Angew. Chem. Int. Ed. 50 (2011) 5904–5908, https://doi.
+org/10.1002/anie.201100637.
+[15] J. Song et al., Angew. Chem. (International Edition) 54 (2015), https://doi.org/
+10.1002/anie.201411109.
+[16] S.-H. Chung, A. Manthiram, J. Phys. Chem. Lett. 5 (2014) 1978–1983, https://
+doi.org/10.1021/jz5006913.
+[17] S. Bai et al., Nat Energy 1 (2016) 1–6, https://doi.org/10.1038/nenergy.2016.94.
+RESEARCH: Original Research
+RESEARCH
+Materials Today d Volume 40 d November 2020
+70
+
+<<PAGE 9>>
+[18] L.
+Suo
+et
+al.,
+Nat.
+Commun.
+4
+(2013)
+1481,
+https://doi.org/10.1038/
+ncomms2513.
+[19] J. Zheng et al., Nano Energy 50 (2018) 431–440, https://doi.org/10.1016/
+j.nanoen.2018.05.065.
+[20] H. Pan et al., Adv. Funct. Mater. 28 (2018) 1707234, https://doi.org/10.1002/
+adfm.201707234.
+[21] J. Lochala et al., ACS Appl. Mater. Interfaces 9 (2017) 24407–24421, https://doi.
+org/10.1021/acsami.7b06208.
+[22] D. Eroglu, K.R. Zavadil, K.G. Gallagher, J. Electrochem. Soc. 162 (2015) A982–
+A990, https://doi.org/10.1149/2.0611506jes.
+[23] W.-P. Wang et al., Adv. Mater. 32 (23) (2020) 2000302, https://doi.org/10.1002/
+adma.202000302.
+[24] X.-X.
+Zeng
+et
+al.,
+Chem
+4
+(2018)
+298–307,
+https://doi.org/10.1016/j.
+chempr.2017.12.003.
+[25] T. Cleaver et al., J. Electrochem. Soc. 165 (2018) A6029–A6033, https://doi.org/
+10.1149/2.0071801jes.
+[26] M.
+Zhao,
+et
+al.
+Angew.
+Chem.
+n/a
+(n.d.).
+https://doi.org/10.1002/
+ange.201909339.
+[27] Y. Cao et al., Nat. Nanotechnol. 14 (2019) 200–207, https://doi.org/10.1038/
+s41565-019-0371-8.
+[28] W. Xue et al., Nat. Energy 4 (2019) 374, https://doi.org/10.1038/s41560-019-
+0351-0.
+[29] M.
+Li
+et
+al.,
+Adv.
+Mater.
+30
+(2018)
+1804271,
+https://doi.org/10.1002/
+adma.201804271.
+[30] J. Chen et al., Nano Lett 17 (2017) 3061–3067, https://doi.org/10.1021/
+acs.nanolett.7b00417.
+[31] W. Shin, J. Lu, X. Ji, Carbon Energy 1 (2019) 165–172, https://doi.org/10.1002/
+cey2.10.
+[32] S. Chen et al., Nano Energy 31 (2017) 418–423, https://doi.org/10.1016/
+j.nanoen.2016.11.057.
+[33] D. Lu et al., ACS Appl. Mater. Interfaces 10 (2018) 23094–23102, https://doi.org/
+10.1021/acsami.8b05166.
+[34] Y. Yang et al., Angew. Chem. Int. Ed. 57 (2018) 15549–15552, https://doi.org/
+10.1002/anie.201808311.
+[35] Q. Pang et al., Nat. Energy 3 (2018) 783, https://doi.org/10.1038/s41560-018-
+0214-0.
+[36] F. Huang et al., J. Mater. Chem. A (2019), https://doi.org/10.1039/C9TA02877C.
+[37] J. Zheng et al., Adv. Energy Mater. 9 (2019) 1803774, https://doi.org/10.1002/
+aenm.201803774.
+[38] X.
+Ren
+et
+al.,
+Joule
+3
+(2019)
+1662–1676,
+https://doi.org/10.1016/j.
+joule.2019.05.006.
+[39] W.
+Zhao
+et
+al.,
+Batteries
+Supercaps
+2
+(2019)
+803–819,
+https://doi.org/
+10.1002/batt.201900045.
+[40] H. Lu et al., J. Electrochem. Soc. 162 (2015) A1460–A1465, https://doi.org/
+10.1149/2.0281508jes.
+[41] X. Fan et al., Nat. Nanotechnol. 13 (2018) 715–722, https://doi.org/10.1038/
+s41565-018-0183-2.
+[42] S. Wei et al., J. Am. Chem. Soc. 137 (2015) 12143–12152, https://doi.org/
+10.1021/jacs.5b08113.
+[43] G.
+Tan
+et
+al.,
+Nat.
+Energy
+2
+(2017)
+17090,
+https://doi.org/10.1038/
+nenergy.2017.90.
+[44] D. Yu et al., Energy Storage Mater. 11 (2018) 1–7, https://doi.org/10.1016/j.
+ensm.2017.09.002.
+[45] C. Fang et al., J. Phys. Chem. Lett. 9 (2018) 3253–3263, https://doi.org/10.1021/
+acs.jpclett.8b00373.
+[46] L. Zhu, W. Liu, C. Fang, Appl. Phys. Lett. 105 (2014), https://doi.org/10.1063/
+1.4891766 041106.
+[47] G. Kresse, J. Hafner, Phys. Rev. B 49 (1994) 14251–14269, https://doi.org/
+10.1103/PhysRevB.49.14251.
+[48] G. Kresse, J. Hafner, Phys. Rev. B 47 (1993) 558–561, https://doi.org/10.1103/
+PhysRevB.47.558.
+[49] J.P. Perdew, K. Burke, M. Ernzerhof, Phys. Rev. Lett. 77 (1996) 3865–3868,
+https://doi.org/10.1103/PhysRevLett.77.3865.
+[50] L. Martínez et al., J. Comput. Chem. 30 (2009) 2157–2164, https://doi.org/
+10.1002/jcc.21224.
+[51] H.J. Monkhorst, J.D. Pack, Phys. Rev. B 13 (1976) 5188–5192, https://doi.org/
+10.1103/PhysRevB.13.5188.
+[52] W. Humphrey, A. Dalke, K. Schulten, J. Mol. Graph. 14 (1996) 33–38, https://
+doi.org/10.1016/0263-7855(96)00018-5.
+[53] M. Shimizu, H. Usui, H. Sakaguchi, Phys. Chem. Chem. Phys. 18 (2016) 5139–
+5147, https://doi.org/10.1039/C5CP05008A.
+[54] P.K. Muhuri, B. Das, D.K. Hazra, J. Phys. Chem. B 101 (1997) 3329–3332,
+https://doi.org/10.1021/jp963747d.
+[55] M.E. Boukari, J.-L. Bribes, J. Maillols, J. Raman Spectrosc. 21 (1990) 755–759,
+https://doi.org/10.1002/jrs.1250211109.
+[56] K. Kimura, J. Motomatsu, Y. Tominaga, J. Phys. Chem. C 120 (2016) 12385–
+12391, https://doi.org/10.1021/acs.jpcc.6b03277.
+[57] S.-D. Han et al., J. Electrochem. Soc 161 (2014) A2042–A2053, https://doi.org/
+10.1149/2.0101414jes.
+[58] X.
+Ren
+et
+al.,
+Chem
+4
+(2018)
+1877–1892,
+https://doi.org/10.1016/j.
+chempr.2018.05.002.
+[59] X.
+Zheng
+et
+al.,
+Energy
+Environ.
+Sci.
+(2020),
+https://doi.org/10.1039/
+D0EE00694G.
+[60] X.
+Chen
+et
+al.,
+Batteries
+Supercaps
+2
+(2019)
+128–131,
+https://doi.org/
+10.1002/batt.201800118.
+[61] W.
+Li
+et
+al.,
+Nat.
+Commun.
+6
+(2015)
+7436,
+https://doi.org/10.1038/
+ncomms8436.
+[62] X.
+Fan
+et
+al.,
+Chem
+4
+(2018)
+174–185,
+https://doi.org/10.1016/j.
+chempr.2017.10.017.
+[63] F. Qiu et al., Adv. Energy Mater. 9 (2019) 1803372, https://doi.org/10.1002/
+aenm.201803372.
+[64] R.T. Jow, K. Xu, O. Borodin, M. Ue, eds., Electrolytes for Lithium and Lithium-
+Ion Batteries, Springer-Verlag, New York, 2014. //www.springer.com/us/book/
+9781493903016 (accessed June 11, 2018).
+[65] Y. Zheng et al., J. Mater. Chem. A 7 (2019) 25047–25055, https://doi.org/
+10.1039/C9TA08935G.
+[66] X. Xing et al., Energy Storage Mater. 21 (2019) 474–480, https://doi.org/
+10.1016/j.ensm.2019.06.022.
+[67] J. Fanous et al., Chem. Mater. 23 (2011) 5024–5028, https://doi.org/10.1021/
+cm202467u.
+[68] G.
+Zhou
+et
+al.,
+PNAS
+114
+(2017)
+840–845,
+https://doi.org/10.1073/
+pnas.1615837114.
+[69] X. Zhang et al., Batteries Supercaps 2 (2019) 498–508, https://doi.org/
+10.1002/batt.201900010.
+[70] Y. Jing et al., J. Phys. Chem. C 117 (2013) 25409–25413, https://doi.org/
+10.1021/jp410969u.
+[71] M. Helen et al., Sci. Rep. 5 (2015) 1–12, https://doi.org/10.1038/srep12146.
+[72] Y.V. Mikhaylik et al., ECS Trans 25 (2010) 23–34, https://doi.org/10.1149/
+1.3414001.
+[73] Y.
+Cui
+et
+al.,
+Batteries
+Supercaps
+2
+(2019)
+784–791,
+https://doi.org/
+10.1002/batt.201900050.
+[74] C.-C. Su et al., Angew. Chem. Int. Ed. 58 (2019) 10591–10595, https://doi.org/
+10.1002/anie.201904240.
+RESEARCH: Original Research
+Materials Today d Volume 40 d November 2020
+RESEARCH
+71

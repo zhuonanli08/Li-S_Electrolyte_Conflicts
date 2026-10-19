@@ -1,0 +1,937 @@
+
+<<PAGE 1>>
+RESEARCH ARTICLE
+www.afm-journal.de
+Methylation Design on Weakly Solvating Ethers for
+Wide-Temperature Li–SPAN Battery
+Chaoqiang Tan, Zeyu Shen, Shichao Zhang, Zhijun Wu,* Shengnan He, Hongge Pan,
+Hao Cheng,* and Yingying Lu*
+Sulfurized polyacrylonitrile (SPAN) recently emerges as a prospective cathode
+for lithium–sulfur (Li–S) batteries owing to its high S utilization, remarkable
+cycling stability, and liberty from shuttle eﬀect. Despite weakly solvating ether
+electrolytes exhibiting simultaneously compatibility for SPAN cathode and
+lithium (Li) anode, they universally suﬀer from low ionic conductivity and
+narrow liquid-phase temperature range. However, conventional ether-based
+electrolytes with excellent ionic conductivity cannot realize reversible
+solid–solid conversion of SPAN cathode due to Li polysulﬁde intermediates
+(LiPSs) dissolving and shuttling. Here, a series of weakly solvating ethers are
+evaluated by selectively methylating dimethoxymethane (DMM) to ﬁne-tune
+their solvation capability and liquid-phase temperature range. Enlightened
+from weakly solvating ether electrolytes, the contact ion pair (CIP)-dominated
+electrolyte is designed for satisfactory ionic conductivity of electrolyte and
+reversible solid–solid conversion of SPAN cathode over wide temperature
+range. The reinforcement mechanisms of the CIP-dominated electrolyte for
+the Li anode and SPAN cathode are comprehensively elucidated through
+experimental characterizations and molecular dynamics simulations. Based
+on the optimized electrolyte, Li||SPAN full cells can steadily operate over wide
+temperature range from −20 to 60 °C. Furthermore, the 120 mAh Li||SPAN
+pouch cell can exhibit 85.5% capacity retention after 45 cycles at 0.2 C.
+C. Tan, Z. Shen, S. Zhang, H. Cheng, Y. Lu
+State Key Laboratory of Chemical Engineering
+Institute of Pharmaceutical Engineering
+College of Chemical and Biological Engineering
+Zhejiang University
+Hangzhou 310027, China
+E-mail: bob_hao@zju.edu.cn;yingyinglu@zju.edu.cn
+C.Tan, Z.Shen,H.Cheng,Y.Lu
+Zhejiang Key Laboratory of Intelligent Manufacturing forFunctional
+Chemicals
+ZJU-Hangzhou Global ScientiﬁcandTechnological Innovation Center
+Zhejiang University
+Hangzhou 311215, China
+Z.Wu, S.He, H.Pan, Y.Lu
+Instituteof ScienceandTechnology forNew Energy
+Xi’an Technological University
+Xi’an 710021,China
+E-mail: wuzhijun@xatu.edu.cn
+The ORCID identiﬁcation number(s) for the author(s) of this article
+can be found under https://doi.org/10.1002/adfm.202509658
+DOI: 10.1002/adfm.202509658
+1. Introduction
+Commercial rechargeable lithium-ion bat-
+teries (LIBs) have enabled the widespread
+use of mobile electronic devices, electric ve-
+hicles, and renewable energy storage.[1]
+However,
+the
+capacity
+limitations
+of
+graphite/silicon–carbon
+anodes
+and
+lithium–iron phosphate/ternary compound
+cathodes hinder the further development
+of long-range electric tools.[2] To increase
+the
+energy
+density
+of
+electrochemical
+batteries, lithium–sulfur (Li–S) batteries
+have emerged as a promising candidate
+for
+next-generation
+mobile
+solutions.[3]
+In Li–S batteries, Li-metal anodes oﬀer
+more than ten times the theoretical speciﬁc
+capacity of graphite anodes (3860 vs 372
+mAh g−1), while S cathodes provide a
+high speciﬁc capacity of up to 1675 mAh
+g−1 and are cost-eﬀective.[4] However, the
+electrochemical performance of Li–S bat-
+teries is severely impacted by signiﬁcant
+volume expansion of both the S cathodes
+and Li-metal anodes, the shuttle eﬀect of Li
+polysulﬁde intermediates (LiPSs), and the
+rapid, irreversible consumption of active
+materials and electrolytes, leading to issues
+like capacity decay and short-circuit risks.[5]
+By adjusting the electrolyte formulation, it is possible to simul-
+taneously regulate the Coulombic eﬃciency (CE) of Li deposi-
+tion/stripping, the physicochemical stability of the Li/electrolyte
+interface, and the redox reaction pathways of the S cathode.[6] Re-
+garding solvent selection, it is important to note that LiPSs and Li
+metal tend to react with carbonate solvents, whereas ether-based
+solvents with excellent reduction stability are compatible with Li-
+metal anodes.[7] However, the focus of electrolyte adjustment for
+the Li-metal anode and S cathode is not aligned, limiting the
+comprehensive electrochemical performance of Li–S batteries.[8]
+On the one hand, high-concentration electrolytes (HCE), locally
+HCE (LHCE), and weakly solvating electrolytes (WSE) have been
+proposed to construct anion-derived solid electrolyte interphases
+(SEI) on Li-metal anodes by adjusting the solvation environment
+of Li+, rather than the solvent-derived SEI formed in conven-
+tional electrolytes.[9] On the other hand, the focus is on analyz-
+ing and regulating the reaction pathways and solvation environ-
+ment of LiPSs, which directly determine the S utilization and ca-
+pacity retention of the widely used S/carbon composite cathodes
+in Li–S batteries.[10] Although ether-based electrolyte regulation
+Adv. Funct. Mater. 2025, 35, 2509658
+© 2025 Wiley-VCH GmbH
+2509658 (1 of 11)
+
+<<PAGE 2>>
+www.advancedsciencenews.com
+www.afm-journal.de
+strategies like HCE, LHCE, and WSE can eﬀectively improve the
+CE of Li deposition/stripping, these strategies struggle to simul-
+taneously enhance S utilization and suppress the shuttle eﬀect,
+as both are related to the solubility of LiPSs in the electrolyte but
+exhibit opposing trends.[6,11] Therefore, there is an urgent need
+to avoid LiPSs’ shuttling and improve S utilization by regulating
+the reaction pathways.
+In this impasse, sulfurized polyacrylonitrile (SPAN) has gar-
+nered attention in recent years, where the short sulfur chains are
+covalently bonded to the conjugated pyridine backbone.[12] In car-
+bonate electrolytes, the nonsoluble solid–solid conversion mech-
+anism of the SPAN cathode enables good cycling stability while
+achieving both high CE and high S utilization.[13] Therefore, after
+mitigating the adverse eﬀects of the cathode, Li inventory con-
+sumption and dendrite growth become the key limiting factors
+for the long-cycle performance of Li–SPAN batteries.[14] Com-
+pared to carbonate electrolytes, ether-based electrolytes, which
+are more chemically compatible with Li metal, can provide
+a smooth Li morphology and high reversibility of Li deposi-
+tion/stripping. However, SPAN faces severe capacity degradation
+in conventional ether-based electrolytes due to the formation of
+soluble LiPSs and the shuttle eﬀect.[15] Fortunately, there are re-
+ports that ether-based HCE, LHCE, and WSE, by adjusting the
+Li+ solvation structure, can be simultaneously compatible with
+both Li anodes and SPAN cathodes.[16] For ether-based HCE, re-
+placing 1,2-dimethoxyethane (DME) with dibutyl ether (DBE) as
+the sole solvent helps to improve the cycling stability of Li–SPAN
+batteries by inhibiting LiPSs’ dissolution in DBE.[17] However,
+HCE is not only costly but also has high viscosity and low ionic
+conductivity. To reduce viscosity, diluents are introduced into
+HCE to formulate LHCE, maintaining anion-rich solvation envi-
+ronment for Li+. Furthermore, advanced LHCE was prepared by
+formulating 1.8 m (mol L−1) Li bis(ﬂuorosulfonyl)imide (LiFSI)
+in a mixture of diethyl ether (DEE) and bis(2,2,2-triﬂuoroethyl)
+ether (BTFE), and the constructed Li–SPAN battery delivered a
+speciﬁc capacity of 579 mAh g−1 with no capacity decay over 1200
+cycles.[18] Although the introduction of diluents reduces the Li-
+salt content in LHCE, the diluents are mainly hydroﬂuoroethers
+(HFEs), which are complex to process and have high density. To
+overcome the limitations of LHCE, a more promising alterna-
+tive has emerged, WSE. Ether-based WSEs are formulated with
+moderate concentrations of Li salts in a single weakly solvating
+ether, eﬀectively addressing challenges related to viscosity, den-
+sity, and cost.[19] However, the traditional ether-based WSE, dom-
+inated by aggregated anion group (AAG)-based solvation struc-
+tures, mostly sacriﬁces Li salt dissociation. With the guarantee
+of ether-based WSE compatible for SPAN cathode, it is worth-
+while to optimize ion transport in the ether-based WSE through
+exploring appropriate solvation structure with better ion trans-
+port ability. Therefore, it is essential to simultaneously enhance
+ionic conductivity of ether-based WSE and the wide temperature
+performance of Li–SPAN batteries through solvent molecular en-
+gineering and solvation structure regulation, paving the way for
+their practical application.
+Here, we evaluate a series of weakly solvating ethers by se-
+lectively methylating dimethoxymethane (DMM) to ﬁne-tune
+their solvation capability and liquid-phase temperature range.
+Among them, 1,1-diethoxyethane exhibits the broadest liquid-
+phase temperature range, maintaining intact SPAN during
+electrochemical cycling rather than the collapse of SPAN ob-
+served in traditional ether-based electrolytes. However, the WSE
+formulated with 1,1-diethoxyethane exhibits low ionic conductiv-
+ity due to the steric eﬀects enhanced by methylation. Under the
+same conditions of 2 m LiFSI, we propose a binary mixed ether
+electrolyte with higher ionic conductivity than the WSE formu-
+lated with 1,1-diethoxyethane, which can also prevent the LiPSs’
+shuttling during the electrochemical reaction of SPAN. Experi-
+mental characterizations and molecular dynamics (MD) simula-
+tions reveal that compared to the AAG-dominated solvation struc-
+ture, the contact ion pair (CIP)-dominated solvation structure can
+promote stable electrochemical reactions of SPAN and improve
+ionic conductivity of the electrolyte. Consequently, the optimized
+electrolyte enables the Li||Cu half cells to achieve an average CE
+of 98.7% after 370 cycles at 1 mA cm−2 and 1 mAh cm−2 at 30 °C,
+an average CE of 98.6% after 300 cycles at 60 °C, and no freezing
+at −20 °C with an ionic conductivity of 1.61 mS cm−1. Beneﬁt-
+ing from the high reversibility of the Li anode in the electrolyte,
+the Li||SPAN full cell composed of a 45 μm Li anode and a SPAN
+cathode (2 mAh cm−2) retain 80% of its capacity after 200 cycles
+at a current density of 0.5 C. Designing new solvents with weak
+solvation capabilities and wide liquid-phase temperature range
+through selective methylation is an eﬀective and feasible strat-
+egy. Inspired by the electrolyte regulation of SPAN, we develop a
+promising paradigm to balance ion transport and the anion-rich
+Li+ solvation structure in the electrolyte, and contributing to the
+wide temperature performance of Li–SPAN batteries.
+2. Results and Discussion
+2.1. Electrolyte Design and Characterizations
+Molecular design of electrolyte solvents presents a promising
+strategy to regulate the solvation structure and physicochemical
+properties of electrolytes. Unlike simply increasing the molar ra-
+tio of Li salt to solvent in HCE, the distribution of three Li+ sol-
+vation states (solvent-separated ion pairs (SSIP), CIP, and AGG)
+can be ﬁnely tuned by altering the interactions between solvents
+and ions. In brief, SSIP, CIP, and AGG correspond to Li+ sol-
+vation structures involving 0, 1, and 2 or more anions, respec-
+tively. By shortening the central alkyl chain of DME, WSE formu-
+lated with DMM enables the Li–SPAN battery to cycle steadily at
+−40 °C, owing to its low desolvation energy and anion-rich Li+
+solvation structure.[20] Notably, methylation of solvent molecules
+not only further reduces their solvation ability due to steric hin-
+drance but also provides an opportunity to broaden their liquid-
+phase temperature range by enhancing van der Waals forces.[21]
+Based on this methylation strategy, diethoxymethane (DEM),
+and 1,1-dimethoxyethane are produced by methylating the ter-
+minal and central carbons of DMM, respectively, while 1,1-
+diethoxyethane results from simultaneous methylation of both
+terminal and central carbons of DMM (Figure 1). These solvents,
+DMM, DEM, 1,1-dimethoxyethane, and 1,1-diethoxyethane, are
+labeled as solvents A, B, C, and D, respectively. Referring to the
+WSE previously reported for SPAN, four binary mixed ether elec-
+trolytes formulated from DME and either of these four ethers all
+enable SPAN to undergo a solid–solid conversion reaction with-
+out LiPSs’ shuttle eﬀect (Figure S1, Supporting Information).
+Furthermore, we measured the ionic conductivity of four binary
+Adv. Funct. Mater. 2025, 35, 2509658
+© 2025 Wiley-VCH GmbH
+2509658 (2 of 11)
+ 16163028, 2025, 44, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202509658 by Tsinghua University Library, Wiley Online Library on [21/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 3>>
+www.advancedsciencenews.com
+www.afm-journal.de
+Figure 1. Molecule design for electrolyte solvent with weak solvation ability and wide temperature range.
+mixed ether electrolytes at room temperature. The ionic conduc-
+tivities of these electrolytes were found to be similar (Figure S2,
+Supporting Information). Considering the liquid-phase temper-
+ature range (Figure 2a), solvent D is preferentially selected as
+a weakly solvating ether with a higher boiling point and lower
+melting point than DME, aligning with the objectives of molec-
+ular design. Since the steric hindrance eﬀect is enhanced by the
+methylation of solvent A, solvent D exhibits weaker solvation abil-
+ity than solvent A (Figure S3, Supporting Information), which fa-
+vors the formation of anion-rich solvation structures.
+When solvent D gradually replaces DME in a 2 m LiFSI/DME
+electrolyte, it serves as a modulator of the Li+ solvation struc-
+ture, balancing the trade-oﬀbetween ionic conductivity and in-
+terfacial compatibility. For clarity, these mixed ether electrolytes
+are denoted by their solvent D/DME volumetric ratios (i.e., 0:10,
+3:7, 5:5, 7:3, and 10:0) in the following discussion. Nuclear mag-
+netic resonance (NMR) and Raman spectroscopy were used to in-
+vestigate the evolution of solvation structures within these elec-
+trolytes. Raman analysis reveals that the S─N─S stretching vi-
+bration of FSI−appears in the 700–780 cm−1 range,[22] while the
+ether oxygen of DME coordinated with Li+ corresponds to the
+860–880 cm−1 range.[23] As solvent D gradually replaces DME,
+the S─N─S stretching vibration peak of FSI−exhibits a blueshift,
+indicating an enhanced Li+─FSI−interaction, which is associ-
+ated with an increase in CIP and AGG states (Figure 2b). Con-
+currently, the redshift of the Li─ODME peak suggests a weakened
+Li+─DME interaction, which disappears entirely when DME is
+fully replaced by solvent D (Figure 2c).
+Further insights are obtained using NMR spectroscopy, which
+is sensitive to the solvation environment in electrolytes. As
+shown in Figure 2d, the 17O peak within a chemical shift range
+of 160–180 corresponds to the sulfonyl 17O of the FSI−anion,
+and its upﬁeld shift represents a stronger shielding eﬀect on the
+17O due to closer coordination between Li+ and FSI−.[24] With the
+increasing proportion of solvent D, the 17O peak of FSI−shifts
+progressively upﬁeld, indicating stronger Li+─FSI−interaction
+(Figure 2e). Additionally, the 7Li chemical shift, which reﬂects the
+shielding eﬀect caused by the lone pair electrons of DME around
+Li+ in the 2 m LiFSI/DME electrolyte,[25] shifts downﬁeld as the
+proportion of DME decreases, demonstrating reduced electron
+density around Li+ and a transition toward more FSI−coordina-
+tion (Figure 2f).
+Based on these experimental results, the solvation structure
+evolves monotonically and continuously from a solvent-rich to
+an anion-rich Li+ solvation structure as solvent D substitutes
+DME in varying proportions. Although the anion-rich Li+ solva-
+tion structure is conﬁrmed in the 2 m LiFSI/D electrolyte, its ionic
+conductivity is signiﬁcantly lower than that of the 2 m LiFSI/DME
+electrolyte. Given the poor ion transport in WSE, it is crucial to
+identify a mixed ether electrolyte that combines favorable ionic
+conductivity with an anion-rich Li+ solvation structure, thereby
+improving the CE, cycling lifespan, maximum applied current
+density, and tolerable areal capacity of Li plating/stripping. As
+shown in Figure 2g, the ionic conductivities of the 3:7, 5:5, and
+7:3 electrolytes are markedly superior to that of the 2 m LiFSI/D
+electrolyte, due to the introduction of DME as a cosolvent. How-
+ever, the ionic conductivity of the 2 m LiFSI/DME electrolyte de-
+creases signiﬁcantly due to its freezing at −20 °C (Figure S4, Sup-
+porting Information). The plunge in conductivity occurs because
+electrolyte freezing leads to an insuﬃcient amount of free sol-
+vent to dissociate the Li salts and facilitate the transport of Li+
+through the solvated solvent. As a result, Li+ transport may pri-
+marily occur through the solid phase in the frozen electrolyte.[26]
+Beyond ionic conductivity, evaluating the impact of these mixed
+ether electrolytes on the SPAN electrochemical reaction is an-
+other critical screening criterion. Among the formulations tested,
+SPAN exhibited LiPSs’ shuttle eﬀects in the 3:7 electrolyte due
+to the excessive DME, while the 5:5 electrolyte eﬀectively sup-
+pressed LiPSs’ shuttle eﬀect during SPAN electrochemical reac-
+tions (Figure S5, Supporting Information). Furthermore, the av-
+erage CE and cycling lifespan of Li||Cu half cells (tested at 1 mA
+cm−2 and 1 mAh cm−2) improve progressively as the electrolyte
+composition shifted from 10:0 to 5:5 (Figure 2h). The 5:5 elec-
+trolyte enables the Li||Cu half cells to achieve an average CE of
+Adv. Funct. Mater. 2025, 35, 2509658
+© 2025 Wiley-VCH GmbH
+2509658 (3 of 11)
+ 16163028, 2025, 44, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202509658 by Tsinghua University Library, Wiley Online Library on [21/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 4>>
+www.advancedsciencenews.com
+www.afm-journal.de
+Figure 2. a) Liquid-phase temperature range of A) DMM, B) DEM, C) 1,1-dimethoxyethane, and D) 1,1-diethoxyethane (DME). b,c) Raman spectra of
+mixed ether electrolytes. d,e) 17O NMR spectra of mixed ether electrolytes. f) 7Li NMR spectra of mixed ether electrolytes. g) Ionic conductivity of mixed
+ether electrolytes from −20 to 60 °C. h) Cycling performance of Li||Cu cells (at 1 mA cm−2 and 1 mAh cm−2) using mixed ether electrolytes under 30 °C.
+98.7% over 370 cycles at 30 °C. Consequently, the 5:5 electrolyte
+is identiﬁed as the optimal formulation for Li–SPAN batteries.
+To clarify the modulating eﬀect of solvent D, the solvation
+structures of the 0:10 (2 m LiFSI/DME), 3:7, 5:5, 7:3, and 10:0
+(2 m LiFSI/D) electrolytes are further visualized using MD
+simulations. The snapshots from the MD simulations for the
+2 m LiFSI/DME electrolyte (Figure 3b) and the 5:5 electrolyte
+(Figure 3f) reveal key diﬀerences. According to the radial dis-
+tribution function (RDF) and coordination number (CN) analy-
+ses, the primary Li+ solvation structure in the 2 m LiFSI/DME
+electrolyte shows that Li+ is coordinated with an average of 0.45
+FSI−and 2.56 DME molecules (Figure 3a). In contrast, in the
+5:5 electrolyte, Li+ is coordinated with an average of 0.96 FSI−,
+1.51 DME, and 0.61 solvent D molecules (Figure 3e). For the 2 m
+LiFSI/D electrolyte, the average CN of FSI−and solvent D are
+1.79 and 1.57, respectively, in the primary Li+ solvation structure
+(Figure S6, Supporting Information). Combined with MD sim-
+ulations for the 3:7 and 7:3 electrolytes (Figures S7 and S8, Sup-
+porting Information), it is revealed that the increasing proportion
+of solvent D can induce Li+ to coordinate with more FSI−due to
+a weaker Li+–solvent interaction, as demonstrated by the NMR
+and Raman results. Moreover, the distribution of Li+ solvation
+states, including SSIP, CIP, and AGG, is statistically analyzed.
+The solvation structure in the 2 m LiFSI/DME electrolyte con-
+sists of 61% SSIP, 31% CIP, and 1% AGG (Figure 3d), whereas
+in the 5:5 electrolyte, it comprises 29.5% SSIP, 62.5% CIP, and
+8% AGG (Figure 3h). Compared to the SSIP-dominated solva-
+tion structure in the 2 m LiFSI/DME electrolyte (Figure 3c), the
+5:5 electrolyte exhibits a CIP-dominated Li+ solvation structure
+(Figure 3g).
+Adv. Funct. Mater. 2025, 35, 2509658
+© 2025 Wiley-VCH GmbH
+2509658 (4 of 11)
+ 16163028, 2025, 44, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202509658 by Tsinghua University Library, Wiley Online Library on [21/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 5>>
+www.advancedsciencenews.com
+www.afm-journal.de
+Figure 3. Radical distribution function and coordination number of a) 2 m LiFSI/DME and e) 5:5 electrolytes. MD simulation snapshots of b) 2 m
+LiFSI/DME and f) 5:5 electrolytes. Dominant solvation structure in c) 2 m LiFSI/DME and g) 5:5 electrolytes. The distribution of Li+ solvation states in
+d) 2 m LiFSI/DME and h) 5:5 electrolytes. Arrhenius behaviors and activation energies of i) Li+ through SEI and j) Li+ desolvation. k) Cycling performance
+of Li||Cu cells (at 1 mA cm−2 and 4 mAh cm−2) in 2 m LiFSI/DME and 5:5 electrolytes under 30 °C.
+To further understand the unique advantages of the CIP-
+dominated Li+ solvation structure, we explored the synergistic
+reinforcement of Li plating/stripping and SPAN electrochemi-
+cal cycling through electrochemical tests and advanced charac-
+terization methods. The compatibility of the Li anode in diﬀer-
+ent electrolytes is primarily evaluated through electrochemical
+measurements. Given the CIP-dominated Li+ solvation struc-
+ture, the 5:5 electrolyte is expected to lower the Li+ desolvation
+energy and form an inorganic-rich SEI layer during Li deposi-
+tion. Although the 5:5 electrolyte remains liquid at −20 °C, its
+freezing at −40 °C results in a signiﬁcant decrease in ionic con-
+ductivity at this temperature (Figure S9, Supporting Informa-
+tion). Consequently, Li||Li symmetrical cells are evaluated over
+a temperature range from −20 to 60 °C using electrochemical
+impedance spectroscopy (EIS) to investigate the impact of sol-
+vation structure on Li+ transport at the anode interface (Figure
+S10, Supporting Information). The EIS results are then ﬁtted
+to obtain the activation energy for Li+ transport across the SEI
+(Ea1) and the activation energy for Li+ desolvation (Ea2) based on
+the Arrhenius equation. As shown in Figure 3i, the 2 m LiFSI/D
+and 5:5 electrolytes both exhibit lower Ea1 compared to the 2 m
+LiFSI/DME electrolyte, indicating that their anion-rich solvation
+structure leads to the formation of an SEI with high ionic con-
+ductivity. Meanwhile, the Ea2 value for the 5:5 electrolyte is signif-
+icantly lower than that of the 2 m LiFSI/DME electrolyte (48.70 vs
+63.64 kJ mol−1), suggesting that solvent D facilitates the Li+ de-
+solvation process due to its weak solvation ability (Figure 3j). Al-
+though the 2 m LiFSI/D electrolyte oﬀers the lowest Ea2 (43.54 kJ
+mol−1) among the three electrolytes, it suﬀers from extremely
+low ionic conductivity (Figure 2g). Subsequently, the rate perfor-
+mance of Li||Li symmetrical cells in 2 m LiFSI/DME, 2 m LiFSI/D,
+and 5:5 electrolytes is evaluated at 30 and −20 °C, investigating
+the impact of their ionic conductivity on the rate performance
+and low-temperature performance of Li plating/stripping. Since
+mixed ether electrolytes exhibit higher ionic conductivity than
+the 2 m LiFSI/D electrolyte by introducing DME as a cosolvent
+(Figure 2g), the 5:5 electrolyte signiﬁcantly reduces the polariza-
+tion voltage during Li plating/stripping, compared to the 2 m
+Adv. Funct. Mater. 2025, 35, 2509658
+© 2025 Wiley-VCH GmbH
+2509658 (5 of 11)
+ 16163028, 2025, 44, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202509658 by Tsinghua University Library, Wiley Online Library on [21/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 6>>
+www.advancedsciencenews.com
+www.afm-journal.de
+Figure 4. a) Morphology characterization of 1 and 4 mAh cm−2 Li deposition and 1 mAh cm−2 Li redeposition. b) X-ray photoelectron spectroscopy (XPS)
+characterization of Li deposition in three electrolytes of 2 m LiFSI/DME, 5:5, and 2 m LiFSI/DME. Cryo-electron microscopy (cryo-EM) characterization
+and fast Fourier transform (FFT) images of Li anodes in c) the 5:5 electrolyte and d) 2 m LiFSI/DME electrolyte.
+LiFSI/D electrolyte, at current densities ranging from 1 to 10 mA
+cm−2 with an areal capacity of 1.0 mAh cm−2 at 30 °C (Figure
+S11a, Supporting Information). In contrast to the 2 m LiFSI/DME
+electrolyte, the 5:5 electrolyte remains liquid at −20 °C without
+freezing due to the addition of solvent D as a cosolvent (Figure
+S4, Supporting Information), allowing Li||Li symmetric cells to
+operate at current densities ranging from 0.5 to 5 mA cm−2 with
+an areal capacity of 0.5 mAh cm−2 at −20 °C (Figure S11b, Sup-
+porting Information). In contrast, Li||Li symmetric cells with the
+2 m LiFSI/D electrolyte exhibits short circuit at a current density
+of 3 mA cm−2 at −20 °C due to limited ionic conductivity (Figure
+S11c, Supporting Information). In summary, the 5:5 electrolyte
+demonstrates optimal rate performance for Li plating/stripping
+at −20 °C, while maintaining comparable performance to the 2 m
+LiFSI/DME electrolyte at 30 °C.
+Beneﬁting from its low desolvation energy and interfacial
+impedance, the 5:5 electrolyte achieves high reversibility of Li
+plating/stripping under a high areal capacity of 4 mAh cm−2 in
+Li||Cu half cells (Figure 3k). In contrast to the limited lifespan
+observed in the 2 m LiFSI/DME electrolyte, the Li||Cu half cells
+in the 5:5 electrolyte can deliver an average CE of 98.7% over 90
+cycles, which supports the feasibility of using high-loading SPAN
+cathodes. Furthermore, the 5:5 electrolyte signiﬁcantly improves
+the reversibility of Li plating/stripping under harsh temperature
+conditions. At 60 °C, the Li||Cu half cells (at 1 mA cm−2 and 1
+mAh cm−2) can deliver an average CE of 98.6% over 300 cycles
+in the 5:5 electrolyte, whereas the eﬃciency of the Li||Cu half
+cells begin to ﬂuctuate dramatically after 200 cycles in the 2 m
+LiFSI/DME electrolyte (Figure S12, Supporting Information). At
+−20 °C, the Li||Cu half cells are unable to achieve regular Li depo-
+sition in the 2 m LiFSI/DME electrolyte, while the 5:5 electrolyte
+can enable Li deposition of 0.5 mAh cm−2 (Figure S13, Sup-
+porting Information). Therefore, the 5:5 electrolyte demonstrates
+its compatibility with the Li anode under harsh temperatures,
+contributing to the wide-temperature performance of Li–SPAN
+batteries.
+2.2. Compatibility Mechanisms for Electrolyte and Li Anode
+The morphology of Li deposition is characterized using a scan-
+ning electron microscopy (SEM). In the 5:5 electrolyte, Li de-
+posits on Cu foil at 1 and 4 mAh cm−2 are uniform and dense,
+with cross-sectional thicknesses of 6.6 and 26.5 μm, respectively
+(Figure 4a). Even after Li plating/stripping at 1 mAh cm−2, the
+Li deposition can remain conformal, with the cross-sectional
+thickness increasing slightly to 7.2 μm. Despite some inevitable
+porosity, the thicknesses per 1 mAh cm−2 of Li deposition are
+Adv. Funct. Mater. 2025, 35, 2509658
+© 2025 Wiley-VCH GmbH
+2509658 (6 of 11)
+ 16163028, 2025, 44, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202509658 by Tsinghua University Library, Wiley Online Library on [21/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 7>>
+www.advancedsciencenews.com
+www.afm-journal.de
+close to the theoretical value of 4.85 μm. As the deposition in-
+creases from 1 to 4 mAh cm−2, larger, densely packed Li parti-
+cles formed (Figure S14, Supporting Information). Although Li
+plating/stripping is inﬂuenced by temperature, the 5:5 electrolyte
+still enables dense Li deposition at both 60 and −20 °C (Figure
+S15, Supporting Information). In contrast, the Li deposition in
+the 2 m LiFSI/DME electrolyte is sparse and porous at 60 °C, and
+at −20 °C, Li could not be deposited on the electrode due to elec-
+trolyte freezing (Figure S4, Supporting Information).
+Microscopic analysis reveals that the behavior of Li deposition
+under diﬀerent conditions in the 5:5 electrolyte is closely asso-
+ciated with the composition and morphology of the SEI, which
+is derived from electrolyte decomposition. A robust and thin SEI
+can mitigate side reactions between the electrolyte and the Li an-
+ode, thereby improving the reversibility of Li plating/stripping.
+Since the thickness of SEI ﬁlms is typically less than 25 nm, X-
+ray photoelectron spectroscopy (XPS) with argon sputtering is
+employed to characterize the chemical composition of the SEI
+ﬁlm. Overall, XPS results indicate that the SEI ﬁlms formed in
+the three electrolytes (2 m LiFSI/DME, 5:5, and 2 m LiFSI/D)
+have similar compositions. As shown in Figure 4b and Figure
+S16 (Supporting Information), the signals for S and F elements,
+which are derived from FSI−decomposition, increase as sol-
+vent D gradually replaced DME in the electrolytes, validating
+the hypothesis that an anion-rich solvation structure can induce
+more FSI−decomposition. However, excessive FSI−decompo-
+sition in the 2 m LiFSI/D electrolyte is detrimental to Li plat-
+ing/stripping, as conﬁrmed by electrochemical data (Figure 2h).
+Thus, the CIP-dominated Li+ solvation structure in the 5:5 elec-
+trolyte demonstrates its advantage in constructing an inorganic-
+rich SEI through moderate FSI−decomposition.
+For the SEI formed in the 5:5 electrolyte, the XPS signal for
+Li ﬂuoride (LiF) slightly increases, and the weak signal for C–Fx
+completely disappears after the ﬁrst etching, indicating a mosaic
+SEI structure with an organic-rich outer layer and an inorganic-
+rich inner layer.[27] Furthermore, the SEI formed in the 5:5 elec-
+trolyte is characterized by cryo-electron microscopy (cryo-EM). As
+shown in Figure 4c, the SEI exhibit a mosaic structure, with a uni-
+form amorphous organic layer encapsulating internal inorganic
+nanoparticles, identiﬁed as LiF by lattice fringe patterns (Figure
+S17, Supporting Information). According to the literature, the
+high Young’s modulus (70 GPa) and wide bandgap (10.9 eV) of
+LiF contribute to an SEI with high mechanical strength and excel-
+lent electronic insulation, which inhibits Li dendrite growth and
+prevents electrolyte decomposition.[28] Additionally, the transport
+of Li+ in the SEI is facilitated by surface diﬀusion of LiF nanopar-
+ticles with low energy barrier, consistent with the low Ea1 of the
+5:5 electrolyte observed in EIS results.[29]
+In comparison, the SEI formed in the 2 m LiFSI/DME elec-
+trolyte displays an inhomogeneous morphology, with Li carbon-
+ate (Li2CO3) nanoparticles irregularly embedded in the amor-
+phous organic layer of the SEI (Figure 4d; Figure S18, Supporting
+Information). Although some inorganic species are present, the
+uneven morphology of the SEI in the 2 m LiFSI/DME electrolyte
+could not eﬀectively prevent side reactions caused by direct con-
+tact between the electrolyte and Li metal, and loose distribution
+of Li2CO3 nanoparticles in the SEI with poor electronic insula-
+tion cannot eﬀectively block the electronic tunneling to suppress
+the electrolyte decomposition.[30] The morphology and chemical
+composition of the SEI formed in the 5:5 electrolyte underscore
+its unique advantages, revealing the structure–eﬀectiveness rela-
+tionship between SEI and solvation structure.
+2.3. Compatibility Mechanisms for Electrolyte and SPAN Cathode
+The chemical composition of our fabricated SPAN is shown
+in Table S1 (Supporting Information), and Raman and Fourier
+transform infrared spectroscopy (FTIR) results of SPAN powder
+are consistent with the previous studies in Figure S19 (Support-
+ing Information).[31] SPAN cathode is prepared as described in
+the “Experimental Section,” and the morphologies of SPAN parti-
+cles and cathode are observed by utilizing SEM (Figure S20, Sup-
+porting Information). Although stable electrochemical cycling
+of SPAN is achieved in the 5:5 electrolyte, the reaction mecha-
+nism of SPAN in this electrolyte remains unclear. To address this,
+high-resolution transmission electron microscopy (HRTEM) is
+used to observe the morphologies of SPAN after cycling in var-
+ious electrolytes. Pristine SPAN particles exhibit an amorphous
+structure without lattice fringe patterns, as conﬁrmed by X-ray
+diﬀraction (XRD) results (Figure S21, Supporting Information).
+However, after cycling in 2 m LiFSI/DME electrolyte, the SPAN
+morphology appears to collapse, with Li sulﬁde (Li2S) nanoparti-
+cles forming within the degraded SPAN (Figure 5a,b). This col-
+lapse is attributed to the dissolution and shuttling of LiPSs in
+the 2 m LiFSI/DME electrolyte, leading to irreversible by-products
+such as Li2S, as veriﬁed by energy-dispersive X-ray spectroscopy
+(EDS) elemental mapping (Figure S22, Supporting Information).
+Speciﬁcally, the structural nitrogen in the collapsed SPAN shows
+signiﬁcant loss compared to the pristine SPAN (Figure S23, Sup-
+porting Information).
+In contrast, SPAN cycled in the 5:5 electrolyte maintains its
+intact morphology without interfacial by-products, and no dis-
+cernible loss of structural nitrogen is detected in the EDS results
+(Figure 5c,d; Figure S24, Supporting Information). Due to the
+amorphous nature of SPAN particles, the interface between the
+cathode electrolyte interphase (CEI) and SPAN is challenging to
+distinguish in HRTEM images. To further investigate the inter-
+facial chemical composition of SPAN after cycling in diﬀerent
+electrolytes, XPS is employed. In the S 2p spectra, the presence
+of LiPSs is detected on the surface of SPAN cycled in the 2 m
+LiFSI/DME electrolyte, indicating LiPSs’ dissolution from SPAN
+(Figure 5e). In contrast, no LiPSs are observed on the surface of
+SPAN in the 2 m LiFSI/D and 5:5 electrolytes, suggesting that the
+solvation structure modulated by solvent D eﬀectively suppresses
+LiPSs’ dissolution from SPAN. However, inorganic species such
+as LiF and Li2CO3 are detected on the surface of SPAN cycled in
+all the electrolytes, indicating that these inorganic species alone
+are insuﬃcient to prevent SPAN morphology from degrading.
+This suggests that the electrochemical reaction of SPAN is closely
+related to the solvation structure of the electrolytes.
+The ﬁrst discharge/charge voltage proﬁle of the Li–SPAN bat-
+tery in the 2 m LiFSI/DME electrolyte is presented (Figure 5f),
+with eight states of charge (SOC) and corresponding EIS plots
+tagged with identical colors. In comparison, the Li–SPAN battery
+in the 5:5 electrolyte exhibits generally lower overall polarization
+resistance at diﬀerent SOC (Figure 5i). Furthermore, distribu-
+tion of relaxation times (DRT) analysis is used to investigate the
+Adv. Funct. Mater. 2025, 35, 2509658
+© 2025 Wiley-VCH GmbH
+2509658 (7 of 11)
+ 16163028, 2025, 44, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202509658 by Tsinghua University Library, Wiley Online Library on [21/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 8>>
+www.advancedsciencenews.com
+www.afm-journal.de
+Figure 5. High-resolution transmission electron microscopy (HRTEM) characterization of SPAN cathodes cycled in a,b) 2 m LiFSI/DME and c,d) 5:5
+electrolytes. e) XPS characterization of SPAN cathodes cycled in three electrolytes of 2 m LiFSI/DME, 5:5, and 2 m LiFSI/DME. First discharge/charge
+voltage proﬁles and in situ EIS plots of Li–SPAN batteries in f) 2 m LiFSI/DME and i) 5:5 electrolytes. Distribution of relaxation times (DRT) proﬁles of
+Li–SPAN batteries in g,h) 2 m LiFSI/DME and j,k) 5:5 electrolytes.
+interfacial electrochemical processes that evolve with diﬀerent
+SOC, with distinct curves in the DRT proﬁles corresponding to
+SOC of the same color. In the 2 m LiFSI/DME electrolyte, the
+apparent polarization resistance (RP) located between 0.1 and
+1 s is associated with the diﬀusion of LiPSs,[32] demonstrating
+LiPSs’ dissolution from SPAN (Figure 5g). Meanwhile, multiple
+peaks located between 10−5 and 10−3 s correspond to the polariza-
+tion resistance of the electrode/electrolyte interphases, and the
+ﬂuctuating signal indicates unstable electrode/electrolyte inter-
+phases due to soluble LiPSs’ shuttling during the electrochemical
+reaction.[33]
+Although the LiPS-related signals fade when soluble LiPSs are
+electrochemically converted to solid-phase products such as S,
+Li2S2, and Li2S (Figure 5h), these processes are shown to be ir-
+reversible, as indicated by the incomplete disappearance of the
+LiPS-related signals and the overcharge of the Li–SPAN battery
+during the 15th cycle (Figure S25a–d, Supporting Information).
+In the 5:5 electrolyte, the Li–SPAN battery exhibits stable polar-
+ization resistance of the electrode/electrolyte interphases without
+signiﬁcant signals associated with the LiPSs’ diﬀusion process
+during the initial and 15th cycles, illustrating that solvent D can
+eﬀectively block LiPSs’ dissolution from SPAN (Figure 5j; Figure
+S25e–g, Supporting Information). Additionally, a weak signal lo-
+cated around 1s is observed in the DRT proﬁles of the Li–SPAN
+battery in the 5:5 electrolyte (Figure 5k; Figure S25h, Support-
+ing Information). Since the intensity and position of this weak
+signal remain largely unchanged during the initial and 15th elec-
+trochemical reactions, its corresponding relaxation process is not
+investigated further. Moreover, the strategy of introducing sol-
+vent D with weak solvation ability into a DME-based electrolyte
+Adv. Funct. Mater. 2025, 35, 2509658
+© 2025 Wiley-VCH GmbH
+2509658 (8 of 11)
+ 16163028, 2025, 44, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202509658 by Tsinghua University Library, Wiley Online Library on [21/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 9>>
+www.advancedsciencenews.com
+www.afm-journal.de
+Figure 6. a) Schematic diagram illustrating Li||SPAN full cells in 2 m LiFSI/DME and 5:5 electrolytes. Cycling performance of Li||SPAN full cells in 2 m
+LiFSI/DME and 5:5 electrolytes under b) −20 °C, c) 30 °C, and d) 60 °C. e) Cycling performance of Li||SPAN full cell composed of 45 μm Li anode, 2
+mAh cm−2 SPAN cathode, and 25 μL 5:5 electrolyte under 30 °C. f) Cycling performance of pouch-type Li||SPAN full cell composed of 45 μm Li anode,
+3 mAh cm−2 SPAN cathode, and 5 g Ah−1 5:5 electrolyte under 30 °C.
+eﬀectively can suppress LiPSs’ dissolution from SPAN and is
+also applicable to other weakly solvating ethers, including DMM,
+DEM, and 1,1-dimethoxyethane (Figure S26, Supporting Infor-
+mation). In order to study the interactions of LiPSs with diﬀerent
+solvents, we employed density functional theory (DFT) calcula-
+tions to acquire the binding energies of LiPSs with various sol-
+vents. Regardless of polysulﬁde species (Li2S4, Li2S6, and Li2S8),
+the binding energies of DME–polysulﬁde complexes are higher
+than the ones of the corresponding polysulﬁde species and other
+solvents (Figure S27, Supporting Information), indicating that
+DME exhibits a stronger aﬃnity toward LiPSs. Since solvent D
+is the most heavily methylated derivative of solvent A, it exhibits
+the strongest aﬃnity toward LiPSs among the four weakly solvat-
+ing ethers, which may be advantageous for sulfur utilization and
+the reaction kinetics of the SPAN cathode.
+2.4. Electrochemical Performance of Li||SPAN Full Cell
+Through rigorous and comprehensive investigation, the rein-
+forcement mechanisms of the CIP-dominated Li+ solvation
+structure for both the Li anode and SPAN cathode are visually
+depicted in Figure 6a. On the one hand, the uneven and brit-
+tle solvent-derived SEI formed in the SSIP-dominated electrolyte
+is ineﬀective at suppressing Li dendrite growth, while the uni-
+form and robust anion-derived SEI formed in the CIP-dominated
+electrolyte enables conformal Li deposition. On the other hand,
+in the SSIP-dominated electrolyte, the SPAN structure collapses
+due to the dissolution of LiPSs, whereas in the CIP-dominated
+electrolyte, solvent D eﬀectively blocks LiPSs’ dissolution, pre-
+serving the initial state of SPAN. As a result, the Li||SPAN full
+cell, composed of a 500 μm Li anode and a high-loading SPAN
+cathode (2 mAh cm−2), exhibits superior cycling stability in the
+5:5 electrolyte, delivering a speciﬁc capacity of 1025 mAh g−1
+with 81.8% capacity retention after 450 cycles (Figure 6c; Figure
+S28b, Supporting Information). In contrast, the performance of
+the Li||SPAN full cell severely degrades in the 2 m LiFSI/DME
+electrolyte within just 30 cycles. Due to the severe capacity degra-
+dation of the SPAN cathode in the 2 m LiFSI/DME electrolyte,
+we are only able to compare the rate performance of Li||SPAN
+full cells in the 2 m LiFSI/D and 5:5 electrolytes. Compared to
+the 2 m LiFSI/D electrolyte, the 5:5 electrolyte enables Li||SPAN
+full cells to achieve higher capacity at the same rate. Owing to
+the higher ionic conductivity of the 5:5 electrolyte, Li||SPAN full
+Adv. Funct. Mater. 2025, 35, 2509658
+© 2025 Wiley-VCH GmbH
+2509658 (9 of 11)
+ 16163028, 2025, 44, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202509658 by Tsinghua University Library, Wiley Online Library on [21/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 10>>
+www.advancedsciencenews.com
+www.afm-journal.de
+cells exhibit a speciﬁc capacity of 1045.8 mAh g−1 under the rate
+of 5 C at 30 °C, whereas cells in the 2 m LiFSI/D electrolyte only
+deliver 731.9 mAh g−1 under the same conditions (Figure S29,
+Supporting Information). The wide-temperature tolerance of the
+CIP-dominated electrolyte also enables Li||SPAN full cells using
+the 5:5 electrolyte to operate under extreme temperatures. At −20
+°C, a Li||SPAN full cell with a low-loading SPAN cathode (0.34
+mAh cm−2) delivers a speciﬁc capacity of 996 mAh g−1 with 80.4%
+capacity retention in the 5:5 electrolyte, while the cell in the 2 m
+LiFSI/DME electrolyte barely oﬀers any speciﬁc capacity due to
+electrolyte freezing (Figure 6b; Figure S28a, Supporting Informa-
+tion). At 60 °C, the 5:5 electrolyte still facilitates a solid–solid con-
+version reaction in SPAN, evidenced by a single electrochemical
+plateau in the discharge/charge curves (Figure S28c, Supporting
+Information). Interestingly, the elevated temperature reduces the
+rate of capacity degradation in the Li||SPAN full cell using the 2 m
+LiFSI/DME electrolyte, though it suﬀers from a limited cycling
+lifespan due to LiPSs’ shuttling (Figure 6d).
+Furthermore, a Li||SPAN full cell is fabricated using a thin Li
+anode (45 μm), a high-loading SPAN cathode (2 mAh cm−2), and
+the 5:5 electrolyte (25 μL) to verify practicality. This cell demon-
+strates a single electrochemical plateau in the discharge/charge
+curves (Figure S30, Supporting Information), with 80% capacity
+retention after 200 cycles at a current density of 0.5 C (Figure 6e).
+However, after 200 cycles, the cell experiences signiﬁcant capac-
+ity decay, likely due to Li exhaustion. To further validate the fea-
+sibility of the 5:5 electrolyte in practical Li–SPAN batteries, a
+single-layer pouch-type Li||SPAN full cell is assembled using a
+45 μm Li anode and a 3 mAh cm−2 SPAN cathode, with an elec-
+trolyte/cathode (E/C) ratio of 5 g Ah−1. As shown in Figure 6f,
+the 120 mAh Li||SPAN pouch cell delivers a capacity of 119.68
+mAh after 10 cycles at 0.1 C, and maintains 85.5% capacity re-
+tention after 45 cycles at 0.2 C. These results indicate that while
+the 5:5 electrolyte eﬀectively addresses capacity degradation and
+the subpar wide-temperature performance of Li||SPAN full cells
+in DME-based electrolytes, the cycling lifespan of Li||SPAN full
+cells with limited Li inventory remains constrained by persistent
+Li depletion.
+3. Conclusion
+We evaluate a series of weakly solvating ethers by selectively
+methylating DMM to ﬁne-tune their solvation ability and liquid-
+phase temperature range. In terms of electrolyte design, we de-
+velop a promising approach to balance ion transport with an
+anion-rich Li+ solvation structure. Based on the liquid-phase tem-
+perature range, 1,1-diethoxyethane is selected to modulate the Li+
+solvation structure, ensuring stable electrochemical reactions for
+SPAN and enhancing the ionic conductivity of the electrolytes
+over a wide temperature range from −20 to 60 °C. Ultimately,
+the 5:5 electrolyte with a CIP-dominated Li+ solvation structure
+is chosen and tested in Li–SPAN batteries. Through comprehen-
+sive evaluation, the 5:5 electrolyte eﬀectively enhances the reac-
+tion kinetics of both Li anode and SPAN cathode, demonstrating
+its superiority for future high-power applications. The reinforce-
+ment mechanisms of the CIP-dominated electrolyte for the Li an-
+ode and SPAN cathode are comprehensively elucidated through
+experimental characterizations and molecular dynamics simula-
+tions. Moreover, our work presents a universal strategy to sup-
+press LiPSs’ dissolution from SPAN by modulating the Li+ sol-
+vation structure in mixed ether electrolytes, and the collabora-
+tive design of solvent molecules and solvation structures shows
+promise for advancing practical Li–SPAN batteries.
+4. Experimental Section
+Electrolyte Preparation:
+The solvents DMM, diethoxymethane (DEM),
+1,1-dimethoxyethane, and 1,1-diethoxyethane were purchased from Al-
+addin. Battery-grade DME and LiFSI were purchased from Dodochem.
+Electrolytes were prepared by dissolving 2 m LiFSI in a single solvent or
+mixed solvents in an argon-ﬁlled glovebox (H2O < 0.01 ppm and O2 <
+0.01 ppm).
+SPAN Cathode Preparation:
+SPAN was synthesized as follows: poly-
+acrylonitrile (Sigma–Aldrich, Mw = 150 000) and elemental sulfur (Sigma–
+Aldrich) were ball-milled for 2 h at a mass ratio of 1:3, and the mixed pow-
+ders were annealed in an argon atmosphere at 350 °C for 6 h with a heat-
+ing rate of 5 °C min−1. SPAN cathode was prepared as follows: SPAN,
+carbon nanotube (CNT), and polyvinylidene ﬂuoride (PVDF) were mixed
+in a mass ratio of 8:1:1 in N-methyl-2-pyrrolidone (NMP) through a high-
+speed homogenizer. The resulting slurry was coated onto aluminum foil
+and vacuum-dried at 60 °C for 12 h. By modulating the coating thickness,
+the SPAN cathode with diﬀerent loading could be obtained.
+Material Characterization:
+The cycled electrodes were rinsed with
+DME prior to subsequent characterization. NMR spectra were obtained by
+a 600 MHz NMR instrument (Agilent DD2-600). Raman spectra (Raman)
+were obtained by Horiba Jobin Yvon LabRAM HR Evolution. XPS was ob-
+tained by Escalab 250Xi. SEM images were obtained by ﬁeld emission SEM
+(Hitachi SU-8010) at the accelerating voltage of 5 kV. Cryo-EM characteri-
+zation was carried out by depositing 0.5 mAh cm−2 of Li metal on the Cu
+mesh at a current density of 1 mA cm−2. Cryo-EM images were then ob-
+tained by FEI Talos F200C in low-dose mode at an accelerating voltage of
+200 kV.
+Electrochemical Measurement:
+The Li||Cu half cell was ﬁrst cycled ﬁve
+times at 0.01–2 V to form an SEI ﬁlm. Subsequently, a galvanostatic de-
+position of Li on the Cu collector was performed, followed by stripping
+to a cutoﬀvoltage of 1 V. The Li||SPAN full cell consisted of a Li anode
+with a thickness of 500 or 45 μm and a SPAN cathode with an areal capac-
+ity of 2.0 mAh cm−2. The single-layer Li||SPAN pouch cell was assembled
+by 45 μm Li anode with an area of 52 mm × 82 mm and 3.0 mAh cm−2
+SPAN cathode with an area of 50 mm × 80 mm. The voltage range of the
+Li||SPAN full cell was set between 1 and 3 V. Cyclic voltammetry (CV) was
+conducted at a sweep rate of 0.1 mV s−1 over a voltage range of 1–3 V in
+the Li||SPAN full cell. EIS measurements were performed over a frequency
+range of 100 kHz to 0.01 Hz with a voltage amplitude of 10 mV. 200 μL
+electrolyte was added in steel sheet (SS)||SS coin cells, in which the ionic
+conductivities (𝜎) of the electrolytes were evaluated through EIS measure-
+ments. In the (SS)||SS coin cells, glass ﬁber membranes (GF/A, Whatman)
+were employed as separators, positioned within the hole of polytetraﬂuo-
+roethylene (PTFE) O-rings with a thickness of 450 μm (the hole diameter
+was 11 mm). And the calculation formula is
+𝜎= L∕(R × S)
+(1)
+where 𝐿is the thickness of PTFE O-ring, 𝑅is obtained by Nyquist plots,
+and 𝑆is the area of the hole in PTFE O-ring.
+Computational Methods:
+MD simulations were performed with GRO-
+MACS 2020.06 using the optimized potentials for liquid simulations all-
+atom (OPLS-AA) force ﬁeld. The 2 m DME system contained 200 Li+, 200
+FSI−, and 962 DME. The 3:7 system contained 200 Li+, 200 FSI−, 211 D,
+and 673 DME. The 5:5 system contained 200 Li+, 200 FSI−, 352 D, and 481
+DME. The 3:7 system contained 200 Li+, 200 FSI−, 492 D, and 289 DME.
+The 2 m D system contained 200 Li+, 200 FSI−, and 703 D. The initial
+periodic structure was built by using PACKMOL. Lennard–Jones potential
+parameters such as bonds, angles, and dihedral angles for the topology
+ﬁles were generated from the LigParGen website. The 1.2*CM5 atomic
+Adv. Funct. Mater. 2025, 35, 2509658
+© 2025 Wiley-VCH GmbH
+2509658 (10 of 11)
+ 16163028, 2025, 44, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202509658 by Tsinghua University Library, Wiley Online Library on [21/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 11>>
+www.advancedsciencenews.com
+www.afm-journal.de
+charges from the Multiwfn 3.8 program were used. The molecules in each
+of three systems were randomly distributed in square boxes with 8 nm
+sides for NPT simulations at 298.15 K over a 10 ns timeframe. Only the
+ﬁnal 5 ns of simulation data was used for radial distribution function and
+solvent–solute interaction analysis.
+Supporting Information
+Supporting Information is available from the Wiley Online Library or from
+the author.
+Acknowledgements
+C.T. and Z.S. contributed equally to this work. This work was supported by
+the National Natural Science Foundation of China (Grant No. 22408324),
+the Zhejiang Provincial Natural Science Foundation of China (Grant No.
+LQ24B030002), and the China Postdoctoral Science Foundation (Grant
+Nos. 2022M722729 and 2023T160571).
+Conﬂict of Interest
+The authors declare no conﬂict of interest.
+Data Availability Statement
+The data that support the ﬁndings of this study are available from the cor-
+responding author upon reasonable request.
+Keywords
+Li anode, solvation structure, SPAN cathode, weakly solvating ethers,
+wide-temperature performance
+Received: April 16, 2025
+Revised: May 2, 2025
+Published online: May 22, 2025
+[1] a) J. Xie, Y.-C. Lu, Adv. Mater. 2025, 37, 2312451; b) W. Wu, W. Luo, Y.
+Huang, Chem. Soc. Rev. 2023, 52, 2553.
+[2] a) J. Xiang, Y.-C. Lu, ACS Nano 2024, 18, 10726; b) J. Xiao, F. Shi, T.
+Glossmann, C. Burnett, Z. Liu, Nat. Energy 2023, 8, 329.
+[3] a) H. Pan, Z. Cheng, Z. Zhou, S. Xie, W. Zhang, N. Han, W. Guo, J.
+Fransaer, J. Luo, A. Cabot, M. Wübbenhorst, Nano-Micro Lett. 2023,
+15, 165; b) A. Bhargav, A. Manthiram, Next Energy 2023, 1, 100012.
+[4] H. Cheng, S. Zhang, B. Zhang, Y. Lu, Small 2023, 19, 2206375.
+[5] H. Raza, S. Bai, J. Cheng, S. Majumder, H. Zhu, Q. Liu, G. Zheng, X.
+Li, G. Chen, Electrochem. Energy Rev. 2023, 6, 29.
+[6] Y. Liu, Y. Elias, J. Meng, D. Aurbach, R. Zou, D. Xia, Q. Pang, Joule
+2021, 5, 2323.
+[7] a) A. Raﬁe, J. W. Kim, K. K. Sarode, V. Kalra, Energy Storage Mater.
+2022, 50, 197; b) S. C. Kim, X. Gao, S.-L. Liao, H. Su, Y. Chen, W.
+Zhang, L. C. Greenburg, J.-A. Pan, X. Zheng, Y. Ye, M. S. Kim, P.
+Sayavong, A. Brest, J. Qin, Z. Bao, Y. Cui, Nat. Commun. 2024, 15,
+1268.
+[8] Y. Fei, G. Li, Adv. Funct. Mater. 2024, 34, 2312550.
+[9] Y. Huang, B. Wen, Z. Jiang, F. Li, Nano Res. 2023, 16, 8072.
+[10] a) Z. Shi, Z. Tian, D. Guo, Y. Wang, Z. Bayhan, A. S. Alzahrani, H. N.
+Alshareef, ACS Energy Lett. 2023, 8, 3054; b) Z. Wang, Y. Li, H. Ji, J.
+Zhou, T. Qian, C. Yan, Adv. Mater. 2022, 34, 2203699.
+[11] a) H. Shi, W. Sun, J. Cao, S. Han, G. Lu, Z. A. Ghazi, X. Zhu, H. Lan,
+W. Lv, Adv. Funct. Mater. 2023, 33, 2306933; b) H. Ye, Y. Li, Nano Res.
+Energy 2022, 1, 9120012.
+[12] a) X. Zhang, H. Ma, J. Liu, J. Chen, H. Lu, Y. Huang, J. Wang, Nano
+Res. 2023, 16, 8159; b) J. Wang, J. Yang, J. Xie, N. Xu, Adv. Mater. 2002,
+14, 963; c) J. Wang, J. Yang, C. Wan, K. Du, J. Xie, N. Xu, Adv. Funct.
+Mater. 2003, 13, 487.
+[13] a) Z. Shen, W. Zhang, S. Mao, S. Li, X. Wang, Y. Lu, ACS Energy Lett.
+2021, 6, 2673; b) L. Yin, J. Wang, F. Lin, J. Yang, Y. Nuli, Energy Environ.
+Sci. 2012, 5, 6966.
+[14] a) A. L. Phan, P. M. L. Le, C. Wang, Joule 2024, 8, 1601; b) H. Yang, A.
+Naveed, Q. Li, C. Guo, J. Chen, J. Lei, J. Yang, Y. Nuli, J. Wang, Energy
+Storage Mater. 2018, 15, 299.
+[15] H. Lu, Q. Wang, J. Chen, H. Zhang, J. Ding, Y. Nuli, J. Yang, J. Wang,
+Energy Storage Mater. 2023, 63, 102994.
+[16] Q. Miao, N. Solan, G. Hyun, J. Holoubek, P. Liu, ACS Energy Lett.
+2023, 8, 4818.
+[17] J. Zhou, Y. Guo, C. Liang, L. Cao, H. Pan, J. Yang, J. Wang, Chem.
+Commun. 2018, 54, 5478.
+[18] H. Liu, J. Holoubek, H. Zhou, A. Chen, N. Chang, Z. Wu, S. Yu, Q.
+Yan, X. Xing, Y. Li, T. A. Pascal, P. Liu, Mater. Today 2021, 42, 17.
+[19] T. Ma, Y. Ni, D. Li, Z. Zha, S. Jin, W. Zhang, L. Jia, Q.
+Sun, W. Xie, Z. Tao, J. Chen, Angew. Chem., Int. Ed. 2023, 62,
+202310761.
+[20] T. Ma, Y. Ni, Q. Wang, W. Zhang, S. Jin, S. Zheng, X. Yang, Y. Hou, Z.
+Tao, J. Chen, Angew. Chem., Int. Ed. 2022, 61, 202207927.
+[21] A.-M. Li, O. Borodin, T. P. Pollard, W. Zhang, N. Zhang, S. Tan, F.
+Chen, C. Jayawardana, B. L. Lucht, E. Hu, X.-Q. Yang, C. Wang, Nat.
+Chem. 2024, 16, 922.
+[22] K. Lee, S.-H. Kwon, J. Kim, E. Park, I. Kim, H. C. Ahn, A. Coskun, J. W.
+Choi, ACS Energy Lett. 2024, 9, 2201.
+[23] S. Mao, J. Zhang, J. Mao, Z. Shen, Z. Long, S. Zhang, Q. Wu, H.
+Cheng, Y. Lu, Adv. Energy Mater. 2024, 14, 2401979.
+[24] a) Y.-X. Yao, X. Chen, C. Yan, X.-Q. Zhang, W.-L. Cai, J.-Q. Huang,
+Q. Zhang, Angew. Chem., Int. Ed. 2021, 60, 4090; b) C. Sun, R.
+Li, S. Weng, C. Zhu, L. Chen, S. Jiang, L. Li, X. Xiao, C. Liu, L.
+Chen, T. Deng, X. Wang, X. Fan, Angew. Chem., Int. Ed. 2024, 63,
+202400761.
+[25] H. Li, Y. Kang, W. Wei, C. Yan, X. Ma, H. Chen, Y. Sang, H. Liu, S.
+Wang, Nano-Micro Lett. 2024, 16, 197.
+[26] a) J. Xu, J. Zhang, T. P. Pollard, Q. Li, S. Tan, S. Hou, H. Wan, F. Chen,
+H. He, E. Hu, K. Xu, X.-Q. Yang, O. Borodin, C. Wang, Nature 2023,
+614, 694; b) Z. Li, Y.-X. Yao, S. Sun, C.-B. Jin, N. Yao, C. Yan, Q. Zhang,
+Angew. Chem., Int. Ed. 2023, 62, 202303888.
+[27] B. Jagger, M. Pasta, Joule 2023, 7, 2228.
+[28] Z. Li, L. Wang, X. Huang, X. He, Small 2024, 20, 2305429.
+[29] a) J. Tan, J. Matz, P. Dong, J. Shen, M. Ye, Adv. Energy Mater. 2021,
+11, 2100046; b) J. Zheng, Z. Ju, B. Zhang, J. Nai, T. Liu, Y. Liu, Q.
+Xie, W. Zhang, Y. Wang, X. Tao, J. Mater. Chem. A 2021, 9, 10251;
+c) J. Tan, L. Ma, Z. Li, Y. Wang, M. Ye, J. Shen, Mater. Today 2023,
+69, 287; d) S.-Y. Sun, X.-Q. Zhang, Y.-N. Wang, J.-L. Li, Z. Zheng,
+J.-Q. Huang, Mater. Today 2024, 77, 39; e) Y. Liu, X. Tao, Y. Wang,
+C. Jiang, C. Ma, O. Sheng, G. Lu, X. W. D. Lou, Science 2022, 375,
+739.
+[30] a) B. Han, Z. Zhang, Y. Zou, K. Xu, G. Xu, H. Wang, H. Meng, Y.
+Deng, J. Li, M. Gu, Adv. Mater. 2021, 33, 2100404; b) Z. Shen, W.
+Zhang, S. Li, S. Mao, X. Wang, F. Chen, Y. Lu, Nano Lett. 2020, 20,
+6606.
+[31] a) X. Wang, Y. Qian, L. Wang, H. Yang, H. Li, Y. Zhao, T. Liu, Adv. Funct.
+Mater. 2019, 29, 1902929; b) M. A. Weret, C.-F. J. Kuo, T. S. Zeleke, T.
+T. Beyene, M.-C. Tsai, C.-J. Huang, G. B. Berhe, W.-N. Su, B.-J. Hwang,
+Energy Storage Mater. 2020, 26, 483.
+[32] R. Soni, J. B. Robinson, P. R. Shearing, D. J. L. Brett, A. J. E. Rettie, T.
+S. Miller, Energy Storage Mater. 2022, 51, 97.
+[33] Y. Lu, C.-Z. Zhao, J.-Q. Huang, Q. Zhang, Joule 2022, 6, 1172.
+Adv. Funct. Mater. 2025, 35, 2509658
+© 2025 Wiley-VCH GmbH
+2509658 (11 of 11)
+ 16163028, 2025, 44, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202509658 by Tsinghua University Library, Wiley Online Library on [21/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

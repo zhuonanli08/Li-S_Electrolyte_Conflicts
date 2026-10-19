@@ -1,0 +1,1261 @@
+
+<<PAGE 1>>
+MSDE
+PAPER
+Cite this: Mol. Syst. Des. Eng., 2022,
+7, 364
+Received 12th December 2021,
+Accepted 11th January 2022
+DOI: 10.1039/d1me00185j
+rsc.li/molecular-engineering
+Lithium polysulfide conformer analysis in ether-
+based solvents for Li–S batteries†
+Javier Luque Di Salvo,
+*a Guillermina L. Luque*a and Giorgio De Lucab
+A fundamental understanding of polysulfide conformers in common (ether-based) solvents used in
+prototype lithium–sulfur batteries is mandatory to push the technology towards practical applications. In
+this work, molecular dynamics simulations were used to perform a detailed conformational analysis and
+dynamics ascertainment of lithium hexasulfide Li2S6 as a representative of soluble long-chain lithium
+polysulfides. This novel conformational dynamics study based on 106 structures per studied system
+provides important insights into open questions such as how many Li+ coordinate polysulfides are
+correlated to lithium transport and polysulfide clustering. The simulations predict that monoanionic LiS6
+−in
+its closed conformation is the predominant structure in 1,2-dioxolane and dimethoxyethane equimolar
+mixtures. If a second Li+ approaches, that leads to the opening of the polysulfide chain and the formation
+of neutral Li2S6 (open conformer). By changing the electrolyte composition, the relative distribution of
+closed and open conformers varies, although closed LiS6
+−remains the most abundant conformer
+compared to the open one. There are three major findings from this work: the first is that there is a greater
+abundance of the closed conformer, in which the closed/open aspect ratio depends on electrolyte
+composition; the second is that the polysulfide charge distribution resulting from the nearby coordinating
+lithium cations was determined; and the third is that the number and type of solvent molecules
+coordinating the lithium polysulfide were determined. These findings, which have been missing up to now
+to the best of our knowledge, provide crucial information for the design of strategies to suppress the
+unwanted polysulfide shuttle effect, such as engineered separators and cathode protective layers.
+1 Introduction
+Lithium–sulfur electrochemistry1 is an appealing alternative
+for powering portable and automotive devices, with the great
+advantage of the availability of an abundant raw material
+such as sulfur that can be used as an active material. It has
+been stressed that the reduction of elemental sulfur (S8) to
+Li2S can theoretically deliver2 2600 W h kg−1, which is three
+to five times higher than that of commercial Li-ion batteries,
+and
+thus
+meets
+the
+requirements
+for
+electric
+vehicle
+applications.3 Nevertheless, there are different problems
+associated with these batteries that need to be solved in order
+to achieve their theoretical capacity and practical use.
+To begin with, both the initial reactant (S8) and the end
+product (Li2S) are electrical insulators, and therefore, the
+cathodes
+must
+be
+prepared
+by
+mixing
+sulfur
+with
+a
+conductive material such as carbon. Although S8 and Li2S are
+insoluble in the organic solvents commonly used in the
+364 | Mol. Syst. Des. Eng., 2022, 7, 364–373
+This journal is © The Royal Society of Chemistry and IChemE 2022
+a INFIQC, Universidad Nacional de Córdoba, Facultad de Ciencias Químicas,
+Departamento de Química Teórica y Computacional, CONICET, Ciudad
+Universitaria, X5000HUA Córdoba, Argentina.
+E-mail: javier.luquedisalvo@mi.unc.edu.ar
+b Institute of Membrane Technology, ITM-CNR, Via P. Bucci 17/C, 87036, Rende
+(CS), Italy
+† Electronic supplementary information (ESI) available: Fig. S1–S11, Tables S1–
+S3, MD trajectory video. See DOI: 10.1039/d1me00185j
+Design, System, Application
+Batteries are at the heart of every cutting-edge technology aimed at attaining environmental sustainability with reliable energy storage devices that possess
+greater sophistication than portable electronic devices, and can be used, for instance, with smart cities projection and massive electric transportation
+systems. Among the various candidates for next-generation batteries, those based on lithium–sulfur undergo uncontrolled cathode dissolution, which leads
+to a parasitic polysulfide shuttle reaction that severely hinders battery performance. In the present study, the objective was to unravel the structural features
+of these shuttling species at the molecular scale, to investigate their correlated conformational dynamics at nanosecond time-scales, and to assess the effect
+of solvent composition on their distribution. The insights gained in this work are directed towards the rational design of ad hoc components, such as
+protective cathode additives that retain these soluble species or engineered separators that block their shuttle, with the premise of ascertaining the
+structural details of the polysulfide species that need to be controlled in order to better tune their fate inside the battery.
+Published on 11 January 2022
+Licence and permissions
+
+<<PAGE 2>>
+Mol. Syst. Des. Eng., 2022, 7, 364–373 | 365
+This journal is © The Royal Society of Chemistry and IChemE 2022
+electrolyte, the complete reduction of sulfur involves various
+lithium polysulfide (PS) species as Li2Sn (4 ≤n ≤8)
+intermediates, where the longer chain species are soluble
+and are shuttled from the cathode to the anode, leading to a
+decrease in the capacity, and causing irreversible loss of
+cathode material and/or passivation of metallic lithium
+anode, and low coulombic efficiency.2 As a result of the
+complex
+equilibria
+among
+different
+Li2Sn
+(polysulfide
+speciation4,5) and their different solubilities, the volume and
+viscosity of the electrolyte change during battery cycling.
+During the initial steps of lithium–sulfur battery discharge,
+the solute concentration in the electrolyte gradually increases
+due to dissolution of PSs, producing an increase in the ion
+pairs and of higher order ion aggregates, while the fraction
+of free ions decreases to nearly zero.4
+Despite the many efforts devoted to understand and
+suppress
+the
+PS
+shuttle6–13
+from
+a
+theoretical
+and
+experimental point of view, important fundamental aspects
+should still be clarified. Various studies have been performed
+to modify the cathode and prevent PS dissolution in the Li–S
+battery.14–18 Studies related to the electrolyte have also been
+performed in order to understand the dissolution and
+reaction of the PSs. At a fundamental level, some works
+adopted quantum-based methods to identify lithium PS-
+structured
+geometries
+and
+to
+calculate
+the
+energetic
+differences
+among
+various
+proposed
+reaction
+mechanisms.19–22
+The lithium PS structures and their intertwined redox
+kinetics22,23 as well as thermodynamics24 strongly depend on
+the solvent. Guan-Ying Du et al. reported molecular orbital
+theory analysis (HOMO–LUMO) of PS dianions and lithium
+PS reduction reactions where the dielectric constant of the
+media was varied,20 and they concluded that the “tendency to
+form ion pairs” between Li+ and PS is fundamental for the
+sulfur
+reduction
+mechanism.
+Understanding
+such
+fundamental Li–S interactions in a liquid electrolyte is also
+important considering PS dissolution and shuttling, and its
+effect on lithium diffusion.
+Using
+molecular
+dynamics
+(MD)
+simulations,
+Rajput
+et al.25 showed that Li+ cation can act as a bridge between
+adjacent PSs and form aggregates (PS clustering). They
+validated these findings by complementing NMR and XANES
+spectra
+measurements
+with
+molecular
+models.26
+PS
+clustering is affected by the PS concentration and its chain-
+length: the solubility of short-chain PSs is lower compared to
+that of longer-chain PSs,2 and thus, they undergo facile
+aggregation.27,28 Gupta et al.23,29 showed that PS clustering is
+more important at low temperatures, and that competing
+anions23 as well as cations29 can disrupt the PS cluster
+network;
+they
+validated
+these
+findings
+with
+7Li
+NMR
+measurements.
+Although several aspects have been analyzed in these
+works, an accurate conformational analysis of representative
+PSs is absent. Additionally, the number of lithium cations
+that coordinate the negatively charged PSs when dissolved in
+the electrolyte is not yet clear.19,21,22,24,30 This analysis, in
+addition to the aforementioned characterizations, is useful
+for preventing the shuttle effect, as well as to enable a more
+optimal design for the lithium PS interactions within the
+cathode. For instance, a higher counter-ion coordination
+number could neutralize or even revert the effective charge of
+the PS complex, which might decrease the ion selectivity of
+negatively charged materials aimed at blocking PSs by
+electrostatic repulsion.6,11,31 Furthermore, the shape and size
+of lithium PS complexes, as well as their first solvation shell
+on commonly used (ether) solvents, should be taken into
+account in the design of separators and/or cathodes. Thus,
+the conformational analysis of PSs in the electrolyte is critical
+for studying strategies based on materials trapping PSs inside
+the cathode,7,10,11,31,32 engineered separators for blocking
+their shuttle,6,8,33 and for tailoring the electrolytes with the
+most
+optimal
+performance
+in
+order
+to
+avoid
+the
+shuttle.23,29,34–36
+In
+this
+sense,
+computational
+chemistry
+models
+can
+provide
+important
+insights
+because
+they
+are
+able
+to
+investigate aspects at the molecular scale that are very
+difficult to study experimentally, especially when multiple
+(electro)chemical equilibria are simultaneously occurring.
+Classic MD is used for this purpose to map the Li2S6
+conformational space in electrolytes commonly used in Li–S
+batteries composed of different compositional mixtures of
+1,2-dioxolane (DOL) and dimethoxyethane (DME), along with
+bis(trifluoromethane)sulfonimide lithium salt (LiTFSI).
+We chose the force field recently calibrated by Park and
+collaborators
+that
+reproduces
+various
+key
+electrolyte
+properties quite well.27,37 Specifics on the computational
+procedure used and its validation are reported in the
+Computational details section and the ESI† material. We
+focused on lithium hexasulfide because it is representative of
+soluble long-chain PSs, and it is produced in the electrolye at
+potentials below 2.4 V vs. Li/Li+ and at higher relative
+concentration among others Sn
+2−(4 < n < 8).4,22 Moreover,
+the mobility of Li2S6 is higher38 than that of Li2S4, with a
+lower
+tendency
+to
+agreggate
+into
+clusters,26,27,39
+thus
+highlighting its protagonist role in the PS shuttle effect.
+This article is organized as follows: first, the distribution
+of
+hexasulfide
+conformers
+in
+different
+electrolyte
+compositions is presented, which is based on the terminal
+S–S
+intramolecular
+distance
+as
+the
+single
+molecular
+descriptor
+and
+allows
+for
+a
+detailed
+conformational
+sampling. Second, a thorough analysis is provided of the
+lithium coordination number associated with the different PS
+conformers. Finally, the most probable number and type of
+solvent molecules around the hexasulfide is determined.
+2 Results and discussion
+2.1 PS conformer distribution
+To perform a reliable conformational analysis of the PS
+conformers, the S–S intramolecular distance between the
+terminal atoms of S6
+2−was chosen as a molecular descriptor.
+Fig. 1a shows the hexasulfide conformer distribution as a
+MSDE
+Paper
+
+<<PAGE 3>>
+366 | Mol. Syst. Des. Eng., 2022, 7, 364–373
+This journal is © The Royal Society of Chemistry and IChemE 2022
+function of this descriptor. Each black curve in Fig. 1a
+corresponds
+to
+the
+terminal
+S–S
+distance
+probability
+distribution
+for
+a
+single
+S6
+2−
+anion
+in
+the
+DOL:DME
+equimolar electrolyte simulation box, which is obtained by
+analysing the terminal S–S distance at every trajectory frame
+(i.e., every 0.002 ns for a simulation time of 80 ns, Fig. S1†).
+The red curve in Fig. 1a (also reported in Fig. 1b) is the
+arithmetic mean of the black curves, yielding an average
+distribution curve. It is worth noting that each average
+distribution curve is obtained by analysing more than 106
+structures (1.28, 2.56, and 5.12 × 106 for the systems 0.25,
+0.5, and 1 M Li2S6, respectively), and thus, represents
+statistically reliable ensembles.
+The first major peak, corresponding to a shorter terminal
+S–S intramolecular distance, is associated with a distorted
+horseshoe structure (closed conformer), whereas the second
+and third minor peaks correspond to larger terminal S–S
+distances
+that
+are
+associated
+with
+a
+linearly
+extended
+structure (open conformer). From the dominant first peak at
+4.40 Å, it is clear that for each S6
+2−anion considered in the
+box,
+the
+closed
+conformer
+is
+by
+far
+the
+predominant
+structure, in agreement with hexasulfide structures optimized
+at different quantum levels,19–22,24,30,40,41 although some
+small differences are present.
+As far as this aspect is concerned, a validation of the
+results obtained in this work by means of ad hoc quantum
+mechanics calculations is in progress. The two minor peaks
+at larger S–S distances, corresponding to open conformers,
+fall at approximately 7.18 Å and 8.14 Å. It is interesting to
+note that the S–S distance distributions indicate a very low
+probability of finding conformers with intermedia distances
+at
+approximately
+6
+Å.
+This
+suggests
+that
+an
+open
+conformation quickly switches back to a closed one, without
+traceable intermediaries, and this is probably due to the
+greater stability of the closed conformer.
+The effect of different electrolyte compositions on the
+average distribution curves is shown in Fig. 1b. The main
+factor that affects the conformer distribution is the solvent,
+as can be seen by comparing the pure DME and pure DOL
+curves. In the case of using only DME as the solvent, there is
+an overwhelming predominance of the closed conformer. In
+contrast, using only DOL facilitates the opening of the
+hexasulfide chain, as indicated by a decrease in the first peak
+height and a corresponding increase in the second and third
+peaks, and one extra minor peak at 5.7 Å. Using an
+equimolar
+mixture
+of
+solvents
+results
+in
+intermediate
+behaviour between the pure solvent cases. Additional factors
+that facilitated the opening of the closed conformer, which
+was apparent due to the decrease in the first peak height
+compared to the pure DME curve, are the presence of lithium
+bis(trifluoromethanesulfonyl)imide (LiTFSI) salt, 1 M, and an
+increase in the PS concentration from 0.25 to 1 M. A change
+in
+the
+solvent
+composition
+has
+an
+effect
+on
+the
+S–S
+distribution curve. Three peaks are still present, with the first
+being dominant compared to the others, which demonstrates
+that the distorted horseshoe structure is the predominant
+conformation regardless of the electrolyte composition.
+We suspect that there is a correlation between ion
+solvation and the opening of the closed conformer initiated
+by a change in solvent composition. In particular, a single
+DME molecule with its open linear structure can easily bend
+to
+accommodate
+oxygen
+atoms
+and
+bi-coordinate
+Li+,
+whereas a single DOL molecule is constrained due to its
+cyclic structure. By analysing the radial distribution functions
+of Li+–oxygen atoms of ether solvent molecules, it was
+determined that the number of oxygen atoms in the Li+ first
+solvation shell is the same for both pure DME and pure DOL
+Fig. 1
+(a) Distribution of the terminal S–S intramolecular distance for
+each S6
+2−anion present in the simulation box (black curves), and
+arithmetic mean of the black curves yielding the average distribution
+curve (red curve) for the system of 0.5 M Li2S6 in equimolar DOL:DME;
+the insets show representative S6
+2−conformers corresponding to the
+three main peaks. (b) Average distributions of the terminal S–S
+intramolecular distance at 0.5 M Li2S6 in pure DME (blue line) and 0.5
+M Li2S6 in pure DOL (violet line), at different Li2S6 concentrations (0.25
+(grey line), 0.5 (red line), and 1 M (green line) in equimolar DOL:DME),
+and 0.5 M Li2S6 in equimolar DOL:DME with 1 M LiTFSI (orange line).
+All curves are normalized to 100%.
+MSDE
+Paper
+
+<<PAGE 4>>
+Mol. Syst. Des. Eng., 2022, 7, 364–373 | 367
+This journal is © The Royal Society of Chemistry and IChemE 2022
+systems
+(Fig.
+S2†).
+This
+indicates
+that
+Li+
+forces
+a
+coordination with the same amount of ether oxygen atoms,
+regardless of the molecular geometry of the solvent. In
+addition, Li+ strongly interacts with PS (as described in the
+upcoming section 2.2). Thus, it is reasonable that PS anions
+will
+open
+more
+frequently
+in
+pure
+DOL
+in
+order
+to
+compensate for the bending restraints of the cyclic DOL
+solvent molecules. In the case of equimolar DOL:DME, Li+ is
+preferentially coordinated by DME (Fig. S2c†), which is
+correlated with the similitude of the DOL:DME distribution
+curves with the pure DME curve, instead of the pure DOL
+curve.
+Competing forces such as those related to internal sulfur
+torsional dynamics and repulsive terminal S–S interactions,
+as well as PS ions and solvent interactions control the
+conformer distribution. Accordingly, the choice of other force
+field parameters25–27,37,39 might lead to different relative
+heights of the distribution peaks. However, considering the
+marked difference found between the first peak and the
+second and third ones, we do not expect an inversion of
+peaks by the use of different parameters. We produced an
+additional simulation that adopted other referenced force
+field parameters,25 and it yielded a similar distribution curve
+with the closed conformer as the most abundant structure
+(see Fig. S3†).
+Due to the experimental complex distribution of PSs with
+different chain lengths, it is difficult to validate this finding
+versus experimental data, and thus, the results must be
+compared with available theoretical works. Various first
+principles studies show the cyclic long-chain PS structure as
+a stable one,19–22,24,30,40,41 as evidenced by DFT geometry
+opimizations or ab initio MD simulations with few molecules
+and constrained by calculation time requirements. However,
+in the present work, a similar structure was obtained from a
+statistical
+point
+of
+view
+using
+a
+large
+conformational
+ensemble. Therefore, the distribution curves confirm some
+previous findings from a statistical point of view and allow
+elucidation of PS conformers in commonly used (ether-based)
+solvents by emphasizing the clear prevalence of the closed
+conformer. Most importantly, the obtained curves show that
+by
+changing
+the
+electrolyte
+composition,
+the
+relative
+distribution of closed and open conformers can be modified,
+which should be useful in the pursuit of suitable electrolytes
+for use in Li–S batteries.23,29,34–36
+2.2 Lithium coordination number
+A further analysis was carried out by selecting the conformer
+structures falling inside the main three peaks, where the
+peak positions were obtained by fitting them with Gaussian
+curves (Fig. S2†). For each conformer, all the species in the
+first coordination shell were determined using a cutoff of 6.2
+Å from the centre of mass of the hexasulfide dianion (see Fig.
+S3†). All Li+ cations within this cutoff were counted as part of
+the atomic cluster. Likewise, if an atom from a solvent
+molecule
+fell
+within
+the
+considered
+cutoff,
+the
+entire
+molecule was considered as part of the atomic cluster. The
+extracted atomic clusters were hence analysed in order to
+obtain the number of Li+ cations and solvent molecules
+involved in the first coordination shell.
+The
+number
+of
+lithium
+cations
+coordinating
+the
+hexasulfide
+dianion
+at
+different
+Li2S6
+concentrations
+is
+reported on the histograms in Fig. 2. The vast majority of
+closed conformers are coordinated by one Li+ (approximately
+20k conformers), followed by conformers coordinated by two
+Li+
+(approximately 10k), as shown in Fig. 2a. This is
+completely reverted for the open conformer (Fig. 2b), where
+there
+are
+more
+conformers
+coordinated
+by
+two
+Li+
+(approximately 5k) as compared to those with only one cation
+(approximately 2k). This situation was also observed in the
+other
+systems
+studied
+herein:
+a
+closed
+conformer
+is
+preferentially coordinated by 1 Li+, and an open conformer is
+mainly coordinated by 2 Li+ (see the histograms in Fig. S4†).
+In the open conformer, the terminal S atoms have a
+higher share of delocalized electron density,27 which enables
+them to interact with more Li+ cations. In particular, when
+the concentration of lithium inside the simulation box
+increases, the number of closed conformers with only 1 Li+
+decreases (Fig. 2a) and the open conformer with 2 Li+
+increases accordingly (Fig. 2b). It should be noted that a high
+Li+ concentration is obtained when the concentration of Li2S6
+increases, or when there are extra ions from the LiTFSI salt.
+In both cases, the PS encounters readily available Li+ cations
+with greater frequency, which is in alignment with a higher
+degree of ion association in concentrated solutions.
+The de-lithiated dianion S6
+2−was reported as the most
+stable in dimethyl sulfoxide (DMSO) by spectroscopic and
+computational studies.22 Some theoretical works concluded
+that the neutral Li2S6 prevails in pure DME19,21 and also in
+DOL:DME mixtures,19,24 whereas Pascal et al.30 concluded
+that monoanionic LiS6
+−prevails in DOL:DME, with a second
+Li+ loosely bound to the long-chain PS. Our results agree with
+the latter description.30 It is interesting to note that there is
+zero Li+ within the chosen cutoff in some of the open
+conformers (Fig. 2b); albeit these have no statistical weight,
+this singularity does not occur for the closed conformer. This
+would suggest that the closed conformer exists because of a
+strong interaction with one Li+ that subsequently forms a
+highly stable LiS6
+−monoanionic complex (the PS “tightly
+wraps around the lithium cation”27). The prevalence of this
+conformer
+is
+in
+agreement
+with
+the
+positive
+effect
+of
+incorporating negatively charged separators in blocking the
+PS shuttle.6,8,31
+A deeper insight into the LiS6
+−structures is given in
+Fig. 3. In the most predominant closed configuration of LiS6
+−
+(Fig. 3a), the lithium cation lies in the centre of the
+hexasulfide dianion (very near to the PS centre of mass; see
+the S6–Li radial distribution function in Fig. S3†) with Li–S
+distances of 2.3–2.8 Å, which are comparable with the X-ray
+crystallographic data of 2.49 Å in Li(TMEDA)2S6 crystals1,42
+and
+N,N,N′,N′-tetramethylethylenediamine
+(TMEDA).
+By
+tracing the minimum Li–S distance for each conformer (2.32
+MSDE
+Paper
+
+<<PAGE 5>>
+368 | Mol. Syst. Des. Eng., 2022, 7, 364–373
+This journal is © The Royal Society of Chemistry and IChemE 2022
+Fig. 2
+Histograms showing the Li+ coordination number for (a) S62−closed conformer (first peak of Fig. 1) and (b) S6
+2−open conformer (second
+and third peaks of Fig. 1). The number of conformers is normalized to the simulation box of 0.5 M Li2S6 (i.e., doubled for 0.25 M, as is for 0.5 M,
+and halved for 1 M) so they can be directly compared among each other on the histograms.
+Fig. 3
+On the left, the distribution curves indicate the distribution of the minimum distance between Li+ and any of the S atoms for (a) closed
+conformers LiS6
+−and (b) open conformers Li2S6 for the 0.5 M Li2S6 system. On the right, the histograms identify which S atoms (terminal, inner)
+are closer to Li+ cations, indicated by the filled black circles of the S6 chain on the histogram bars.
+MSDE
+Paper
+
+<<PAGE 6>>
+Mol. Syst. Des. Eng., 2022, 7, 364–373 | 369
+This journal is © The Royal Society of Chemistry and IChemE 2022
+Å, see the distribution curve in Fig. 3a) and by identifying the
+S atoms that establish such Li–S minima distances (indicated
+as a black-filled circle in the histogram of Fig. 3a), it is
+observed that the innermost S atoms are the preferred site
+for a closer Li–S interaction. Therefore, Li+ cation bounces
+inside the ‘distorted horseshoe’ hexasulfide, keeping it
+closed. Although the terminal S atoms have a higher partial
+charge,27 Li+ prefers an inner position to maintain a close
+contact with all S atoms.
+This suggests that the Li–S interaction is partly ionic and
+partly covalent due to the small size and high electric field of
+Li+.1
+However,
+these
+assertions
+must
+be
+verified
+by
+a
+methodology more appropriate for this type of analysis that
+takes into consideration the charge transfer among S atoms
+and Li+. The MD method adopted herein uses fixed charges
+on
+atoms,
+and
+implicitly
+accounts
+for
+the
+electron
+polarizability induced by the dielectric media of the solvent
+in the partial charge of ions, but does not allow for charge
+transfer
+between
+Li+
+and
+S
+atoms.
+However,
+the
+Li–S
+interactions are fairly computed through these validated
+force field parameters,27,37 allowing description of the PS
+conformer distribution with statistical reliability due to the
+analysis being performed over large ensembles and running
+for long simulation times. Thus, this work will provide
+adequate information on the PS conformers, and provide
+sufficient
+data
+for
+subsequent
+work
+that
+will
+produce
+additional detailed information on the obtained clusters.
+Overall, it is interesting that the analysis of the entire MD
+trajectory (see the video provided in the ESI† material) shows
+the following mechanism: when a second Li+ approaches the
+closed conformer, it interacts with a terminal S atom (Fig.
+S5†); eventually, the first Li+ is pushed out to the opposite S
+terminal atom and the hexasulfide chain opens, leading to
+the open conformer as shown in Fig. 3b. Although similar
+Li–S minimum distances were found for both conformers
+(see the distribution curves of Fig. 3a and b), in the open
+conformer, a single Li+ cation interacts with only 1 or 3 sulfur
+atoms, whereas the Li+ cation inside the closed horseshoe
+conformer interacts with all 6 sulfur atoms.
+The proposed mechanism of a second Li+-driven opening
+of closed monoanionic LiS6
+−to open neutral Li2S6 appears in
+Scheme 1. The number of closed conformers with 2 Li+
+(approximately 10k) is twice as high as compared to open
+conformers with 2 Li+ (approximately 5k), (Fig. 2), which
+indicates that the second lithium rattles around the closed
+LiS6
+−, preferentially very near to a terminal S atom (see the
+distribution curve in Fig. 3b). However, the number of times
+that the proximity of the second Li+ effectively leads to the
+opening of the hexasulfide is lower than the times it rattles
+around it; or seemingly, the open conformer closes rather
+fast (see Fig. S1a†), leading to a closed conformer with a
+neighbouring second Li+. As a result, we find a twofold ratio
+between closed/open conformers with 2 Li+, and thus, it is
+likely that the PS opening would demand breaking the
+(inner)Li–S interaction favoured by the closed conformation.
+Verification of this statement should be performed using
+more appropriate methods that go beyond the scope of the
+present work.
+2.3 PS solvation
+The closed and open conformers were further analyzed by
+counting and identifying the number of solvent molecules
+within the first coordination shell. In the case of pure
+solvents, 3–4 and 5 DME molecules solvated the closed and
+open conformers, respectively; whereas 6 and 7–8 DOL
+molecules coordinately closed and opened structures (Fig.
+S6†), respectively. Regarding this aspect, Qi Liu et al.40
+performed DFT geometry optimizations starting from what
+they called ‘sawtooth’ PSs (open conformers of long-chain
+PSs) with two Li+ cations. In their calculations, they used six
+DOL molecules for one calculation, and four DME molecules
+for another, and both cases led to a cyclic structure (closed
+conformer), which is in agreement with our findings of
+closed conformer stability. It is important to note that in a
+previous study,40 geometry optimizations did not provide
+intermediate
+structures.
+However,
+the
+MD
+simulations
+performed herein allowed us to describe, albeit from a
+qualitative point of view, the transition between closed and
+open
+conformers
+(see
+the
+video
+provided
+in
+the
+ESI†
+material), which is supported by the conformation analysis
+carried out on a reliable set of structures.
+Fig. 4 shows the most probable combination of DOL and
+DME molecules coordinating the closed conformer (with 1
+Li+, Fig. 4a) and the open conformer (with 2 Li+, Fig. 4b) for
+the 0.5 M Li2S6 system in an equimolar mixture of DOL:DME.
+Heatmaps corresponding to other electrolyte compositions
+are reported in Fig. S7.† According to Fig. 4, the most
+frequent hexasulfide solvation includes 2 DOL and 2 DME
+Scheme 1
+Proposed mechanism of the transition from monoanionic
+LiS6
+−closed conformer to neutral Li2S6 open conformer, driven by the
+approach of a second Li+ cation. The hexasulfide chain is represented
+by six yellow circles linked by a line and the lithium cations by pink
+circles; the black-filled circles indicate the S atom where the Li–S
+distance is the smallest. The curved arrow in the above conformer
+indicates that Li+, trapped inside the hexasulfide chain, bounces
+around all S atoms.
+MSDE
+Paper
+
+<<PAGE 7>>
+370 | Mol. Syst. Des. Eng., 2022, 7, 364–373
+This journal is © The Royal Society of Chemistry and IChemE 2022
+Fig. 4
+Heatmaps showing the amount of DOL and DME molecules within the first coordination shell of (a) closed conformer LiS6
+−and (b) open
+conformer Li2S6.
+Fig. 5
+Representative atom clusters for the closed conformer with 1 Li+ and LiS6
+−surrounded by 2 DME and 2 DOL molecules, showing the Li–O
+distances formed (a) with a DME molecule, and (b) a DOL molecule. (c) Open conformer with 2 Li+ and Li2S6 surrounded by 3 DME and 3 DOL
+molecules and showing the Li–O distances formed with DME molecules. (d) 3D pbc MD equilibrated simulation cubic box (length 6.07 nm). Atom
+colors are: hydrogen (white), lithium (pink), carbon (grey), oxygen (red), and sulfur (yellow). All distances are in Angstroms.
+MSDE
+Paper
+
+<<PAGE 8>>
+Mol. Syst. Des. Eng., 2022, 7, 364–373 | 371
+This journal is © The Royal Society of Chemistry and IChemE 2022
+molecules coordinating the closed conformer LiS6
+−, whereas
+3 DOL and 3 DME molecules are coordinating the open
+conformer Li2S6. Some representative atomic clusters are
+depicted in Fig. 5, where it can be seen that closed and open
+conformers exhibit strong Li–O interactions with distances
+below 2 Å.
+The solvent plays a crucial role in stabilizing the Li+ cation
+via electron-rich oxygen donors from ether molecules. Some
+studies showed that long-chain lithium PSs crystallize with
+Li+ coordinated by strong linking of solvent molecules, so
+that the X-ray data does not reflect pure Li–S compounds.1,42
+For the closed conformer, the solvent molecules (DME
+(Fig. 5a) or DOL (Fig. 5b)) lie on the top or the bottom of the
+closed conformer, i.e., parallel to the distorted horseshoe
+plane containing the S atoms. For the open conformer
+(Fig. 5c), both Li+ are strongly coordinated by oxygen atoms
+of solvent molecules.
+Andersen et al.26 described a “joint Li+ coordination by the
+DOL/DME
+solvent
+molecules
+and
+(poly)sulfide
+chains”,
+characterized by a strong Li–S interaction19,26,27 (Fig. S3†)
+along with coordination by DOL/DME oxygen atoms, which is
+what we observed in the extracted clusters (see Fig. 5). In
+particular, DME is more capable of coordinate Li+ due to its
+flexible
+structure
+allowing
+bi-coordination
+of
+lithium
+compared to the cyclic DOL molecule.26,37 Lithium transport
+is substantially affected by the Li+ coordination in these
+systems. The authors26 concluded that ‘free’ Li+ ion transport
+is a minor contribution compared to the Li+ diffusion
+mediated by PS chains and solvent molecules, based on the
+strong Li–S interaction.19,26,27
+In addition to these effects, the insights gained in our
+work provide a possible explanation obtained from an
+accurate conformational dynamics distribution analysis: the
+trapped lithium in the predominant LiS6
+−conformer can be
+released by an incoming second Li+ that opens the conformer
+(see the video provided in the ESI† material). It should be
+noted, however, that the real scenario is more complex due
+to PS speciation, possible presence of radicals5,43 such as
+S3
+−˙, and disproportionation and recombination reactions.
+Nevertheless, it is likely that the obtained results are valid
+from the lithium coordination point of view regardless of the
+transient length of the (soluble long-chain) PS.
+Another aspect to take into consideration is the PS
+clustering or the formation of aggregates.23,25–29 Although it
+is expected to be more characteristic for short-chain PS28
+given their lower solubility, soluble long-chain PS can also, at
+least partially, form clusters in DOL:DME.26,27 In this work,
+we evaluated the proximity among PSs by calculating the
+fraction of PS–PS pairs and comparing it with the fraction of
+free PS anions, and also extracting clusters centered on the
+S6
+2−center of mass at various cutoffs (Fig. S8†). For example,
+when using 9 Å as a cutoff, 41% and 65% of the PS see
+another PS when the reference anion is the closed conformer
+or open conformer, respectively. This would suggest that the
+open conformer is more prone to aggregate, because the
+fraction of PS–PS pairs is higher compared to the closed one,
+regardless of the cutoff (see Fig. S8†). Consequently, those
+systems where higher second and third peaks (such as Li2S6
+in a pure DOL system, Fig. 1b) appear on the distribution
+curve would be more susceptible to aggregation.
+Concerning this aspect, Osella et al.39 studied the effect of
+ether-based solvents on the structure and diffusion of Li2S4
+by means of MD simulations. They observed the formation of
+a large aggregate in DOL and a more dispersed solution in
+tetraethylene glycol dimethyl ether (TEGDME). Although the
+systems studied herein are different from those used in the
+study by Osella et al.,39 the distribution curve of Li2S6 in pure
+DME presents the highest first peak corresponding to the
+closed conformer (DME is a monoglyme, whereas TEGDME39
+is a tetraglyme). Additionally, in pure DOL, there is an
+important fraction of open conformers in comparison to
+other systems. This is also supported by the Li+ histograms
+in
+the pure
+DOL system, where
+the number of
+open
+conformers coordinated by 2 Li+ (or even 3 Li+) is the highest
+compared to the other studied systems (see Fig. S4†), which
+is in agreement with the lithium PS clustering in the case of
+multiple Li–S bridges.25
+Lastly, it should be noted that the selection of a starting
+configuration, formed by a combination of PS dianion,
+lithium cations, and solvent molecules, with defined relative
+orientations, is not a trivial task. See, for example, the
+thermodynamic diagrams from the ab initio MD simulations
+of Kamphaus and Balbuena,19 where 14 solvated structures
+of Li2S6 with only 1 to 4 DME molecules were characterized
+(shown in Fig. 4 of a previous study19). In this sense, the
+conformational sampling performed in this work should
+assist in obtaining reliable solvated lithium PS structures. As
+a result, the structures extracted herein are meaningful, and
+their
+structural
+details
+should
+ultimately
+allow
+us
+to
+understand their transport inside a battery.
+3 Conclusions
+In this work, classic MD simulations were used to map the
+conformational
+space
+of
+Li2S6,
+solvated
+at
+different
+concentrations in an equimolar mixture of 1,2-dioxolane and
+dimethoxyethane,
+which
+are
+commonly
+used
+in
+Li–S
+batteries, and in the presence of LiTFSI salt. Long simulation
+times and 6 nm-large simulation boxes allowed the analysis
+of more than 106 conformers, ensuring an adequate mapping
+of the conformational space. The distribution curves of the
+terminal
+S–S
+intramolecular distance
+unravelled the
+PS
+conformers and their correlated dynamics, and indicated the
+clear prevalence of the closed conformer over the open
+conformer,
+an
+aspect
+insufficiently
+emphasized
+in
+the
+literature.
+The illustrated analysis shows that the closed conformer
+is by far the predominant configuration, with one Li+ that
+bounces around inside the distorted horseshoe hexasulfide
+chain, keeping it closed due to strong Li–S coordination. The
+closed
+monoanionic
+LiS6
+−
+opens
+when
+a
+second
+Li+
+approaches, leading to neutral open conformer Li2S6, which
+MSDE
+Paper
+
+<<PAGE 9>>
+372 | Mol. Syst. Des. Eng., 2022, 7, 364–373
+This journal is © The Royal Society of Chemistry and IChemE 2022
+might eventually lead to the exchange of the first Li+ by the
+incoming second one. Interestingly, the peak heights in the
+distribution
+curve
+slightly
+vary
+when
+the
+electrolyte
+composition is changed. In particular, a decrease in closed
+conformers and a corresponding increase in the open ones
+was observed in the presence of 1 M LiTFSI and with
+increasing lithium hexasulfide concentration, whereas using
+pure DME as the solvent produced the opposite effect. On
+the contrary, using pure DOL as the solvent yielded minor
+closed conformer peak height among all the studied systems,
+although the closed conformer was always predominant. This
+result suggests that an appropriate electrolyte composition
+can be used to tune the relative distribution of open and
+closed conformers, enabling different Li+ coordination and
+aggregation tendencies, which are key factors that impact
+lithium transport and PS shuttling between electrodes.
+Overall, the conformational sampling highlights three
+important aspects
+that
+are crucial for
+the
+design and
+development of host–guest cathode materials and engineered
+separators, and are aimed at suppressing the shuttling effect.
+The first aspect is the predominance of the closed conformer
+compared to the open one, and the slight variation of closed/
+open aspect ratios (distribution curve peak heights) with
+changing electrolyte composition. The second aspect is the
+charge distribution of the PS, which is influenced by the
+nearby Li+ cations and is relevant for strategies adopting
+negatively
+charged
+separators
+or
+cathode-protective
+electrostatic layers. The third aspect is the most probable PS
+solvent coordination number and type in binary mixtures,
+such as the commonly used DOL:DME. The generated
+structures, which are statistically more abundant than other
+possible configurations, are satisfactory starting points for
+thermodynamic calculations, as well as for studying transport
+mechanisms through membrane-based separators inside Li–S
+batteries.
+4 Computational details
+The
+MD
+simulations
+were
+performed
+in
+GROMACS44
+following the setup of Park et al.27,37 in the NVT and NPT
+ensemble (p = 1 bar) using the Berendsen thermostat and
+barostat, bond constraints with LINCS, 2 fs timestep, and
+Verlet integrator. Before simulating the electrolyte systems
+considered herein, various DOL:DME mixtures were tested,
+and the density of benchmark systems was confirmed (Fig.
+S9†). The electrolyte systems were composed of 1500 solvent
+molecules and the corresponding amount of Li2S6 and
+LiTFSI,
+as
+shown
+in
+Table
+S1.†
+In
+order
+to
+achieve
+equilibration, the simulation box underwent (i) gradual
+heating (linear temperature increase from 0–450 K during
+500 ps in NVT), (ii) 2 ns at constant T = 450 K in NVT, (iii)
+gradual cooling (linear decrease of temperature from 450–300
+K during 500 ps in NVT), and finally, (iv) 5 ns at constant T =
+300 K in NPT. All systems rapidly achieved a stable response
+of density and potential energy.
+Once equilibrated, 100 ns production runs in NPT at 300
+K were applied, and trajectory coordinates were saved every 2
+ps. The analysis was performed over the range of 10–90 ns,
+first by using the gmx mindist program44 with proper index
+groups to obtain the S–S terminal distance through time, and
+then
+using
+the
+gmx
+analyze
+program44
+to
+obtain
+the
+corresponding distribution curve (Fig. S1†). Finally, various
+bespoke bash scripts were used to extract atomic clusters
+centered on the PS centre of mass from the MD trajectories
+and carry out the analysis. The generated cluster structures
+(in xyz format) are available upon reasonable request.
+Conflicts of interest
+There are no conflicts to declare.
+Acknowledgements
+This work used computational resources from CCAD
+–
+Universidad Nacional de Córdoba (https://ccad.unc.edu.ar/),
+which are part of SNCAD – MinCyT, República Argentina. This
+work is supported by the Joint Bilateral Agreement CNR/
+CONICET
+Biennial
+Programme
+2021–2022
+(multiscale
+modelling of nanostructured membrane-based separators for
+next generation lithium batteries).
+References
+1 R. Steudel and T. Chivers, Chem. Soc. Rev., 2019, 48,
+3279–3319.
+2 S. S. Zhang, J. Power Sources, 2013, 231, 153–162.
+3 J. A. Sanguesa, V. Torres-Sanz, P. Garrido, F. J. Martinez and
+J. M. Marquez-Barja, Smart Cities, 2021, 4, 372–404.
+4 C. Dillard, A. Singh and V. Kalra, J. Phys. Chem. C, 2018, 122,
+18195–18203.
+5 H. L. Wu, L. A. Huff and A. A. Gewirth, ACS Appl. Mater.
+Interfaces, 2015, 7, 1709–1719.
+6 I. Bauer, S. Thieme, J. Brückner, H. Althues and S. Kaskel,
+J. Power Sources, 2014, 251, 417–422.
+7 S. J. Oh, J. K. Lee and W. Y. Yoon, ChemSusChem, 2014, 7,
+2562–2566.
+8 Z. Li, Y. Han, J. Wei, W. Wang, T. Cao, S. Xu and Z. Xu, ACS
+Appl. Mater. Interfaces, 2017, 9, 44776–44781.
+9 F. J. García-Soriano, M. L. Para, G. L. Luque, D. Barraco,
+E. P. M. Leiva and G. Lener, J. Solid State Electrochem.,
+2020, 24, 2341–2351.
+10 C.
+J.
+Hart,
+M.
+Cuisinier,
+X.
+Liang,
+D.
+Kundu,
+A.
+Garsuch
+and
+L.
+F.
+Nazar,
+Chem.
+Commun.,
+2015,
+51,
+2308–2311.
+11 C. B. Bucur, J. Muldoon and A. Lita, Energy Environ. Sci.,
+2016, 9, 992–998.
+12 A. N. Mistry and P. P. Mukherjee, J. Phys. Chem. C, 2018, 122,
+23845–23851.
+13 P. Bonnick and J. Muldoon, Energy Environ. Sci., 2020, 13,
+4808–4833.
+14 X. Liang, C. Hart, Q. Pang, A. Garsuch, T. Weiss and L. F.
+Nazar, Nat. Commun., 2015, 6, 1–8.
+MSDE
+Paper
+
+<<PAGE 10>>
+Mol. Syst. Des. Eng., 2022, 7, 364–373 | 373
+This journal is © The Royal Society of Chemistry and IChemE 2022
+15 S. J. Kim, K. Kim, J. Park and Y. E. Sung, ChemCatChem,
+2019, 11, 2373–2387.
+16 H. Ye and J. Y. Lee, Small Methods, 2020, 4, 1–10.
+17 S.
+Choudhury,
+M.
+Zeiger,
+P.
+Massuti-Ballester,
+S.
+Fleischmann, P. Formanek, L. Borchardt and V. Presser,
+Sustainable Energy Fuels, 2017, 1, 84–94.
+18 J. Tan, D. Li, Y. Liu, P. Zhang, Z. Qu, Y. Yan, H. Hu, H.
+Cheng, J. Zhang, M. Dong, C. Wang, J. Fan, Z. Li, Z. Guo and
+M. Liu, J. Mater. Chem. A, 2020, 8, 7980–7990.
+19 E. P. Kamphaus and P. B. Balbuena, J. Phys. Chem. C,
+2017, 121, 21105–21117.
+20 G. Du and C. Liu, Catalysts, 2020, 10, 34–36.
+21 B. Zhang, J. Wu, J. Gu, S. Li, T. Yan and X. P. Gao, ACS
+Energy Lett., 2021, 6, 537–546.
+22 M. Vijayakumar, N. Govind, E. Walter, S. D. Burton, A.
+Shukla, A. Devaraj, J. Xiao, J. Liu, C. Wang, A. Karim and S.
+Thevuthasan,
+Phys.
+Chem.
+Chem.
+Phys.,
+2014,
+16,
+10923–10932.
+23 A. Gupta, A. Bhargav, J. P. Jones, R. V. Bugga and A.
+Manthiram, Chem. Mater., 2020, 32, 2070–2077.
+24 F. Y. Fan, M. S. Pan, K. C. Lau, R. S. Assary, W. H. Woodford,
+L. A. Curtiss, W. C. Carter and Y.-M. Chiang, J. Electrochem.
+Soc., 2016, 163, A3111–A3116.
+25 N. N. Rajput, V. Murugesan, Y. Shin, K. S. Han, K. C. Lau, J.
+Chen, J. Liu, L. A. Curtiss, K. T. Mueller and K. A. Persson,
+Chem. Mater., 2017, 29, 3375–3379.
+26 A. Andersen, N. N. Rajput, K. S. Han, H. Pan, N. Govind,
+K. A. Persson, K. T. Mueller and V. Murugesan, Chem. Mater.,
+2019, 31, 2308–2319.
+27 C.
+Park,
+A.
+Ronneburg,
+S.
+Risse,
+M.
+Ballauff,
+M.
+Kanduč and J. Dzubiella, J. Phys. Chem. C, 2019, 123,
+10167–10177.
+28 A. Gupta and A. Manthiram, J. Mater. Chem. A, 2021, 9,
+13242–13251.
+29 A. Gupta, A. Bhargav and A. Manthiram, Chem. Mater.,
+2021, 33, 3457–3466.
+30 T. A. Pascal, K. H. Wujcik, D. R. Wang, N. P. Balsara and D.
+Prendergast, Phys. Chem. Chem. Phys., 2017, 19, 1441–1448.
+31 Z. Sun, M. Xiao, S. Wang, D. Han, S. Song, G. Chen and Y.
+Meng, J. Mater. Chem. A, 2014, 2, 15938–15944.
+32 K. Zhang, K. Xie, K. Yuan, Q. Lu, S. Hu, W. Wei, M. Bai and
+C. Shen, J. Mater. Chem. A, 2017, 5, 7309–7315.
+33 A. Gupta and S. Sivaram, Energy Technol., 2019, 7, 1–22.
+34 R. Chen, T. Zhao and F. Wu, Chem. Commun., 2015, 51,
+18–33.
+35 J. Chen, K. S. Han, W. A. Henderson, K. C. Lau, M.
+Vijayakumar, T. Dzwiniel, H. Pan, L. A. Curtiss, J. Xiao, K. T.
+Mueller, Y. Shao and J. Liu, Adv. Energy Mater., 2016, 6, 1–6.
+36 S. Jeschke and P. Johansson, Chem. – Eur. J., 2017, 23,
+9130–9136.
+37 C. Park, M. Kanduč, R. Chudoba, A. Ronneburg, S. Risse, M.
+Ballauff and J. Dzubiella, J. Power Sources, 2018, 373, 70–78.
+38 M. Safari, C. Y. Kwok and L. F. Nazar, ACS Cent. Sci., 2016, 2,
+560–568.
+39 S. Osella, A. Minoia, C. Quarti, J. Cornil, R. Lazzaroni, A. L.
+Goffin, M. Guillaume and D. Beljonne, Batteries Supercaps,
+2019, 2, 473–481.
+40 Q. Liu, D. Mu, B. Wu, L. Wang, L. Gai and F. Wu, RSC Adv.,
+2017, 7, 33373–33377.
+41 P. Vélez, M. L. Para, G. L. Luque, D. Barraco and E. P. M.
+Leiva, Electrochim. Acta, 2019, 309, 402–414.
+42 K.
+Tatsumi,
+Y.
+Inoue,
+A.
+Nakamura,
+R.
+Cramer,
+W.
+VanDoorne and J. W. Gilje, Angew. Chem., Int. Ed. Engl.,
+1990, 29, 422–424.
+43 J. D. McBrayer, T. E. Beechem, B. R. Perdue, C. A. Apblett
+and F. H. Garzon, J. Electrochem. Soc., 2018, 165, A876–A881.
+44 M. J. Abraham, T. Murtola, R. Schulz, J. C. Smith, B. Hess
+and E. Lindahl, SoftwareX, 2015, 2, 19–25.
+MSDE
+Paper

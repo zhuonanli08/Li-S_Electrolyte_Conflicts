@@ -1,0 +1,36 @@
+{
+  "编号": "P548",
+  "电解液": {
+    "E1": {"名称": "DME/DOL", "配方": "LiTFSI + LiNO3，DME/DOL（浓度摘录中未见）"},
+    "E2": {"名称": "2FPy", "配方": "1 M LiTFSI，2-氟吡啶，LiNO3 饱和"},
+    "E3": {"名称": "3FPy", "配方": "1 M LiTFSI + 0.2 M LiNO3，3-氟吡啶"}
+  },
+  "条件": {
+    "C1": {"正极": "S/C", "硫载量": "约 1.6 mg cm-2", "硫含量": "", "E/S": "约 5", "电解液体积": "8 µL", "面积": "",
+           "锂厚": "", "N/P": "", "倍率": "0.05C", "1C定义": "", "温度": "室温", "电池": "扣式",
+           "原句": "Each battery used 8 µL (E/S ratio around 5) of different electrolytes, with a Celgard 3401 membrane as the separator and lithium chip as the anodes."},
+    "C2": {"正极": "同 C1", "硫载量": "约 1.6 mg cm-2", "硫含量": "", "E/S": "约 5", "电解液体积": "8 µL", "面积": "",
+           "锂厚": "", "N/P": "", "倍率": "", "1C定义": "", "温度": "0 °C", "电池": "扣式", "原句": ""}
+  },
+  "比较": [
+    {"A": "E2", "B": "E3", "条件": "C1", "层": "C", "改变因素": ["溶剂种类", "LiNO3"],
+     "溶剂化依据": "HPLC：1 M Li2S6 在 3FPy 中溶解度远高于 2FPy（总峰面积 4.8e7 vs 4.6e6，同篇实测）；CID 质谱：Li+ 与 2FPy 结合更强",
+     "指标": [
+       {"指标": "循环保持率或寿命", "取值点": "0.05C，50 圈", "A": "50–60%", "B": "50–60%", "单位": "%", "方向": "差异小", "来源": "正文",
+        "原句": "Cycling stability tests indicate that both electrolytes exhibit a comparable capacity retention, with only 50-60% of the original capacity retained after 50 cycles at 0.05C."}
+     ]},
+    {"A": "E3", "B": "E1", "条件": "C2", "层": "C", "改变因素": ["溶剂种类"],
+     "溶剂化依据": "HPLC：3FPy 多硫化物溶解度高于 DME/DOL（同篇实测）",
+     "指标": [
+       {"指标": "指定圈数放电容量", "取值点": "0 °C 第 25 圈", "A": "300", "B": ">750", "单位": "mAh g-1", "方向": "A更差", "来源": "正文",
+        "原句": "Comparative low-temper- ature performance results (Figure S-19) show that Li-S batteries with fluoropyridine electrolytes perform poorly at 0 °C, achieving specific discharge capacities of only 300 mAh g-1 (3FPy electrolyte) and 550 mAh g-1 (2FPy electrolyte) after 25 cycles."}
+     ]},
+    {"A": "E2", "B": "E1", "条件": "C2", "层": "C", "改变因素": ["溶剂种类"],
+     "溶剂化依据": "HPLC：2FPy 与 DME/DOL 多硫化物溶解度都较低（同篇实测）",
+     "指标": [
+       {"指标": "指定圈数放电容量", "取值点": "0 °C 第 25 圈", "A": "550", "B": ">750", "单位": "mAh g-1", "方向": "A更差", "来源": "正文",
+        "原句": "In contrast, the Li-S battery with the DME/DOL electrolyte maintained a significantly higher discharge capacity of over 750 mAh g-1 under the same conditions, highlighting its superior low-temperature performance relative to fluoropyr- idine electrolytes."}
+     ]}
+  ],
+  "备注": "宽温研究：作者称高温下需 LiNO3 抑制穿梭，低温下氟吡啶不如 DME/DOL。室温下与 DME/DOL 的直接比较数值未在文字中给出。多硫化物溶解度有同篇 HPLC 实测（可作公共刻度候选，但为纯溶剂、间接映射）。锂厚、DME/DOL 配方浓度未见。"
+}

@@ -1,0 +1,1726 @@
+
+<<PAGE 1>>
+Integrating scalable, cost-eﬀective carbon hosts
+and electrolyte solvation chemistry for durable
+lithium–sulfur batteries
+Asier Soria-Fern´andez,
+ab Sergi Gadea,ab Alexander Santiago,
+a Alberto Castro-
+Muñiz,
+c Fabian Suarez-Garcia,c Aitor Villaverde,a Daniel Carriazo,
+*ad
+Julen Castillo
+*a and Marta Cabello
+a
+Lithium–sulfur batteries oﬀer a promising route toward high-energy, resource-resilient energy storage, yet their
+practical deployment is hindered by coupled instabilities arising from polysulﬁde dissolution and lithium metal
+degradation. Here, a system-level strategy is presented in which scalable carbon host synthesis, electrolyte
+solvation chemistry, and electrochemical protocol are co-optimized to stabilize Li–S operation under
+practical conditions. A CO2 physical activation route is introduced to replace conventional chemical
+activation, enabling the production of porous carbon hosts with more precise control over the textural
+properties while reducing processing complexity and chemical consumption. By tuning activation time, an
+optimal
+balance
+between
+microporosity
+and
+mesoporosity
+is
+achieved,
+delivering
+electrochemical
+performance comparable to chemically activated carbons. Building on this platform, sparingly solvating
+electrolytes (SSEs) are employed to regulate polysulﬁde solubility and lithium interfacial chemistry. While SSE
+formulations reduce polysulﬁde dissolution and stabilize transport properties, the incorporation of LiFSI as an
+additive further enhances lithium reversibility by promoting the formation of a robust and homogeneous
+interphase. Beyond materials design, an asymmetric cycling protocol is introduced to regulate lithium
+deposition
+dynamics.
+By
+decoupling
+plating
+and
+stripping
+kinetics,
+this
+approach
+suppresses
+the
+accumulation of high-surface-area lithium, signiﬁcantly extending cycle life. Combining the optimized
+electrolyte and carbon host, stable cycling over ∼180 cycles is achieved at practical sulfur loading (∼3.5 mg
+cm−2), more than doubling the lifetime obtained under conventional conditions. These results demonstrate
+that durable Li–S performance emerges from the coordinated design of the electrode structure, solvation
+environment, and operating protocol, providing a pathway toward practical implementation.
+Introduction
+The rapid expansion of electrochemical energy storage has
+revealed a structural tension between performance ambition
+and materials vulnerability. Conventional lithium-ion technol-
+ogies rely on transition-metal-rich cathodes, graphite-based
+anodes, and globally concentrated supply chains, rendering
+battery economics increasingly sensitive to geopolitical insta-
+bility, export restrictions, and mineral price volatility.1,2 In this
+context, lithium–sulfur batteries (LSBs) oﬀer a fundamentally
+diﬀerent resource and performance prole, where sulfur is
+abundant, geographically widespread, and largely available as
+an industrial by-product.3,4 Additionally, coupling sulfur with
+a lithium metal anode (LMA) enables theoretical energy densi-
+ties far exceeding those of conventional intercalation-based
+systems. However, despite these advantages, translating Li–S
+chemistry into stable,
+high-eﬃciency commercial
+devices
+remains challenging due to coupled degradation processes at
+both electrodes and within the electrolyte. Consequently, the
+central challenge of Li–S technology is not a single component
+limitation but rather a system-level coordination problem.5
+On the cathode side, the sulfur redox reactions proceed
+through the formation of soluble intermediates, called lithium
+polysuldes (LiPSs), which can migrate between electrodes and
+trigger the well-known shuttle eﬀect, leading to low coulombic
+eﬃciency (CE), self-discharge, and rapid capacity fade. Simulta-
+neously, the LMA undergoes parasitic reactions and morpho-
+logical instability that consume electrolyte and active lithium,
+increasing cell polarization and accelerating cell failure. These
+degradation pathways become particularly severe under practical
+conditions (high sulfur loading, lean electrolyte, and limited
+aCentre for Cooperative Research on Alternative Energies (CIC energiGUNE), Basque
+Research and Technology Alliance (BRTA), Alava Technology Park, Albert Einstein
+48, 01510 Vitoria-Gasteiz, Spain. E-mail: jcastillo@cicenergigune.com; dcarriazo@
+cicenergigune.com
+bDepartment of Applied Chemistry, University of the Basque Country (UPV/EHU), Avda.
+Manuel de Lardizabal, 3, 20018 Donostia-San Sebasti´an, Spain
+cInstituto de Ciencia y Tecnolog´ıa del Carbono, INCAR-CSIC, C/Francisco Pintado Fe
+26, 33011, Oviedo, Spain
+dIkerbasque, Basque Foundation for Science, Plaza Euskadi 5, 48009, Bilbao, Spain
+Cite this: J. Mater. Chem. A, 2026, 14,
+38990
+Received 5th May 2026
+Accepted 5th August 2026
+DOI: 10.1039/d6ta03770d
+rsc.li/materials-a
+38990 | J. Mater. Chem. A, 2026, 14, 38990–39005
+This journal is © The Royal Society of Chemistry 2026
+Journal of
+Materials Chemistry A
+PAPER
+Published on 10 August 2026
+Licence and permissions
+
+<<PAGE 2>>
+lithium excess), where cathode architecture, electrolyte chem-
+istry, and LMA behaviour become strongly interdependent.6,7
+Within this framework, rational engineering of the sulfur
+host remains a central strategy for improving sulfur utilization
+and mitigating LiPS dissolution. Porous carbon matrices
+provide electronic conductivity, buﬀer the large volume changes
+between sulfur and the discharge product (Li2S), and physically
+conne soluble LiPS.8,9 However, maximizing surface area and
+porosity alone does not guarantee improved performance. The
+electrochemical behaviour of Li–S cathodes emerges from
+a balance between microporosity, which enhances adsorption
+and connement, and mesoporosity, which facilitates electro-
+lyte accessibility and mass transport. Excessive connement
+can impede redox kinetics, whereas insuﬃcient connement
+promotes shuttle-driven
+losses.
+Therefore,
+optimal
+sulfur
+cathode performance requires synchronizing pore architecture
+with electrolyte chemistry and operating conditions rather than
+optimizing any single structural parameter.10
+Since pore architecture is largely determined during the
+activation step, the choice of activation route becomes a critical
+carbon
+host
+design
+parameter.
+Chemical
+activation
+is
+commonly employed to produce high-surface-area carbons with
+tunable pore size distributions. In our previous work, a chemi-
+cally activated graphene-based carbon delivered a favourable
+combination of conductivity and porosity for Li–S cathodes.11
+Nevertheless, such activation methods typically require corro-
+sive activating agents and extensive post-treatment steps,
+including washing, neutralization, and drying, that increase
+cost, processing complexity, and waste generation.12–14 These
+factors introduce economic and environmental penalties that
+counterbalance the intrinsic material advantages of low-cost
+sulfur chemistry. From a practical perspective, simplifying the
+synthesis route while maintaining precise control over pore
+architecture is therefore highly desirable.15,16
+Physical activation using CO2 oﬀers a promising and scalable
+alternative. Controlled gas–solid reactions enable gradual pore
+development regulated by temperature and activation time
+without introducing activating agents. This approach reduces
+process complexity and oﬀers a tunable pathway toward the
+pore-architecture “sweet spot” required for Li–S cathodes.17,18
+However, it remains unclear and underexplored whether CO2
+activation can reproduce the functional pore characteristics
+achieved through chemical routes and sustain comparable
+electrochemical performance under practical Li–S conditions.
+While some studies suggest that gas activation can generate
+pore networks compatible with Li–S cycling, systematic evalu-
+ations linking activation parameters, pore topology, and inter-
+facial behaviour remain limited.19
+While tailoring the pore architecture of the sulfur host is
+essential to regulate LiPS connement and transport, it alone is
+insuﬃcient to ensure stable operation under practical condi-
+tions. Electrolyte engineering constitutes a second critical design
+axis, governing both LiPS solubility and LMA interfacial stability.
+Conventional ether-based systems, typically combining 1,3-di-
+oxolane (DOL) and 1,2-dimethoxyethane (DME), provide favour-
+able sulfur redox kinetics but enable high polysulde solubility
+and unstable lithium interfaces.20,21 Recent advances in solvation
+engineering, including high- and localized high-concentration
+electrolytes, oen described as sparingly solvating electrolytes
+(SSEs), demonstrate that compositional adjustments can signif-
+icantly modify solvation structures and interphase chemistry,
+suppress parasitic reactions, and improve cycling stability.22–24 In
+particular, the selection of lithium salts and electrolyte additives
+plays a crucial role in determining interfacial composition,
+plating/stripping reversibility, and ultimately the cycling stability
+of Li–S batteries. Careful tuning of these components can
+signicantly enhance Li interphase stability and improve long-
+term cell durability.25
+Beyond
+materials
+and
+chemistry,
+the
+electrochemical
+protocol itself represents an additional and oen underutilized
+design parameter. In most Li–S studies, mild symmetric
+charge–discharge rates are adopted as default testing condi-
+tions, implicitly attributing degradation to materials limita-
+tions. However, recent insights from lithium metal battery
+research
+indicate
+that
+asymmetric
+cycling
+can
+decouple
+damaging processes: slower deposition combined with faster
+stripping can reduce cumulative interfacial stress and promote
+more uniform lithium morphology.26,27 Given that Li–S cells
+share many of the same lithium metal interfacial sensitivities,
+adapting the cycling protocol represents a rational strategy to
+mitigate degradation mechanisms that cannot be resolved
+through materials optimization alone.
+Here, we demonstrate that durable Li–S performance emerges
+from the coordinated integration of scalable carbon host
+synthesis, electrolyte solvation engineering, and operational
+strategy. Specically, we replace chemical activation with a CO2
+physical activation route and systematically tune activation time
+to achieve a pore architecture optimized for sulfur redox under
+lean electrolyte conditions. The optimized host is then combined
+with tailored SSE formulations derived from a DOL-uorinated
+ether
+co-solvent
+(1H,1H,5H-octauoropentyl-1,1,2,2-
+tetrauoroethyl ether, OCTO) reference electrolyte containing
+1.5 M LiTFSI (lithium bis(triuoromethanesulfonyl)imide), with
+controlled additions of LiFSI (lithium bis(uorosulfonyl)imide)
+or LiNO3 to modulate interfacial chemistry. LMA compatibility is
+rst evaluated in Li‖Cu and Li‖Li congurations and correlated
+with Li deposition morphology before assessing Li–S cycling
+performance. Finally, symmetric and asymmetric protocols are
+compared to elucidate the inuence of the cycling conditions on
+the long-term stability. Collectively, this work shows that
+resolving the apparent trade-oﬀbetween cost reduction and
+cycling durability in Li–S batteries requires coordinated system-
+level design rather than incremental component improve-
+ments. By aligning scalable carbon synthesis, electrolyte engi-
+neering, and cycling protocol optimization, we establish an
+integrated pathway toward high-energy, resource-resilient LSBs
+capable of sustained operation under practical conditions.
+Materials and methods
+Materials synthesis, electrode processing, and electrolyte
+preparation
+Activated
+carbon
+preparation.
+Graphene-based
+carbon
+materials investigated in this work were synthesised from the
+This journal is © The Royal Society of Chemistry 2026
+J. Mater. Chem. A, 2026, 14, 38990–39005 | 38991
+Paper
+Journal of Materials Chemistry A
+
+<<PAGE 3>>
+resin precursor reported previously.28 For the CO2-physically
+activated samples, the precursor was rst pyrolysed under an Ar
+atmosphere up to 800 °C and subsequently subjected to phys-
+ical activation under owing CO2 at 800 °C for 5, 12, and 20 h,
+yielding the samples ResFA-CO2-5 h, 12 h, and 20 h, respec-
+tively. Aer activation, the samples were cooled to room
+temperature under an Ar atmosphere and collected without
+additional treatment.
+For comparison, a chemically activated reference carbon,
+denoted as ResFA-KOH, was prepared following the procedure
+reported in previous work.29 Briey, the pyrolysed carbon was
+mixed with KOH in a 1 : 6 mass ratio and heat-treated at 800 °C
+for 1 h under an Ar atmosphere. The resulting material was
+subsequently neutralized with HCl, thoroughly washed with
+distilled water, and dried before use.
+Electrode
+processing.
+Sulfur
+cathodes
+were
+prepared
+following the procedure from previous studies.28,30 The cathode
+composition comprises 64 wt% sulfur, 26 wt% carbon mate-
+rials, and 10 wt% polymeric binder. The binder was composed
+of 5 wt% sodium carboxymethyl cellulose (CMC) and 5 wt%
+styrene-butadiene rubber (SBR) dispersed in water. This carbon
+ratio was selected according to a previous formulation study,
+where 10 wt% graphene-based activated carbon combined with
+16 wt% KJ600 provided the best compromise between electro-
+chemical performance, electrode processability and cost.28 The
+carbon fraction included 16 wt% Ketjen black (EC-600JD) and
+10 wt% of each of the synthesised carbons (ResFA-KOH or CO2-
+activated samples). Sulfur/carbon composites were prepared by
+melt diﬀusion at 155 °C for 12 hours under an argon atmo-
+sphere to ensure homogeneous sulfur inltration.
+Electrolyte preparation. Four diﬀerent electrolytes were
+prepared for this study: the standard electrolyte used in Li–S
+cells and three SSEs, including a reference electrolyte and two
+modied formulations. All electrolytes were prepared in a glo-
+vebox under an Ar atmosphere.
+The standard electrolyte consisted of a 1 : 1 volume ratio of
+DME and DOL with 0.5 M LiTFSI and 0.5 M LiNO3. This baseline
+electrolyte was employed to validate the fabricated cathodes.
+For the SSEs, the electrolyte compositions were based on a 1.5 M
+LiTFSI in a mixture of DOL and OCTO in a 1 : 1 volume ratio,
+denoted as DO-15TFSI, a formulation presented in a previous
+study.31 The rst modication, referred to as DO-15TFSI-01LN,
+involved adding 0.1 M LiNO3 to the base electrolyte. The
+second modication, referred to as DO-15TFSI-02FSI, involved
+adding 0.2 M LiFSI to the base electrolyte.
+Physicochemical characterisation
+The textural properties of the samples were determined by
+physical adsorption of N2 at 77 K in the relative pressure range
+from 1 × 10−6 to 1 using a Micromeritics ASAP 2020 volumetric
+analyzer. Prior to measurements, the samples were degassed at
+150 °C for 18 h under vacuum.
+From these isotherms, the surface area (SBET) was obtained
+by applying the BET equation in the P/P0 0.01–0.1 range; the
+total pore volume (VT) was calculated at a relative pressure of
+0.97, assuming adsorption in liquid form (Gurvich rule). The
+pore size distribution was calculated using the DFT method
+with the HS-2D-NLDFT kernel (Micromeritics). From these
+distributions,
+the
+micropore,
+Vmicrop,DFT,
+and
+mesopore,
+Vmesop,DFT, volumes were obtained. To evaluate the LiPS reten-
+tion capacity of the diﬀerent carbon samples, 9.5 × 10−3 cm3 of
+each carbon was added to 2 mL of a 5 mM Li2S6 solution in DME
+and allowed to rest for 24 h. The resulting solutions were rst
+evaluated visually to monitor colour changes and then analysed
+by UV-vis spectroscopy.
+The morphology of carbon powders, sulfur cathodes, lithium
+deposits on Cu, and lithium metal anodes recovered aer
+cycling was characterised via scanning electron microscopy
+(SEM) using a Thermo Scientic Apreo 2S HiVac microscope,
+which is equipped with an energy-dispersive X-ray spectroscopy
+(EDX) detector used to determine the surface elemental
+composition. Lithium samples were transferred and handled
+under an inert atmosphere.
+To evaluate the LiPS dissolution ability of the electrolytes,
+stoichiometric quantities of solid S8 and Li2S were mixed in
+each electrolyte to prepare 0.5 M and 6 M Li2S6 saturated
+solutions for the SSEs and the DME/DOL electrolytes, respec-
+tively. The resulting solutions were ltered through 0.45 mm
+PTFE syringe lters. The ltered samples were rst evaluated
+visually using optical imaging to observe the colour evolution of
+the samples due to the LiPS solubility. In addition to visual
+inspection, UV-vis spectroscopic measurements were per-
+formed to further assess the dissolution process.
+For UV-vis measurements, the solutions were diluted 10
+times and characterised using a UV-vis spectrophotometer (Cary
+5000, Agilent) in sealed cuvettes over the wavelength range of
+200–800 nm.
+Contact angle measurements were performed to evaluate the
+wettability of the diﬀerent electrolytes on the cathode. A 3 mL
+electrolyte droplet was placed on the cathode surface using an
+LSA100 surface analyser (Lauda Scientic).
+Electrochemical characterisation
+The ionic conductivity of both pristine and Li2S6-saturated
+electrolytes was measured using a two-point platinum electrode
+immersed in 1 mL of electrolyte by electrochemical impedance
+spectroscopy (EIS).
+The lithium-ion transference number (tLi+) was determined
+in symmetric Li‖Li cells using chronoamperometry combined
+with EIS according to the Bruce–Vincent–Evans method.32 A
+small DC polarization (DV) of 10 mV was applied to the cell, and
+the initial current (I0) and steady-state current (ISS) were recor-
+ded. Impedance spectra were acquired before and aer polari-
+zation to determine the interfacial resistances R0 and RSS,
+respectively. Thus, tLi+ was calculated using
+tLiþ ¼
+ISSðDV  I0R0Þ
+I0ðDV  ISSRSSÞ
+Electrochemical tests were performed in CR2032 coin-type
+cells assembled in an Ar-lled glovebox. Li°‖Li° symmetric
+and Li°‖Cu half cells were prepared to test the stability of the
+38992 | J. Mater. Chem. A, 2026, 14, 38990–39005
+This journal is © The Royal Society of Chemistry 2026
+Journal of Materials Chemistry A
+Paper
+
+<<PAGE 4>>
+electrolyte against lithium using 14 mm diameter lithium disks,
+16 mm diameter copper disks, and a 16 mm diameter separator
+(Celgard 2500), lled with 60 mL of electrolyte.
+Li deposition on Cu was performed at 0.4 mA cm−2 for 10 h.
+The calculation of the deposition/dissolution of lithium vs.
+copper was performed following the Aurbach method with 20
+and 50 cycles of plating/stripping. The protocol started with Li
+deposition at 0.4 mA cm−2 for 10 h, followed by stripping/
+plating cycles at 0.4 mA cm−2 for 3 h each. A nal stripping
+step to 1 V was applied to ensure the complete removal of the
+plated Li.33
+Li‖Li symmetric cells were tested at increasing current
+densities with ve plating/stripping cycles of 2 h each at 0.1, 0.2,
+0.5, 1, and 2 mA cm−2.
+For Li–S cell performance, 13 mm diameter sulfur cathodes
+were used, with sulfur loadings of 3.5 mgs cm−2 for long cycling
+tests and 2.5 mgs cm−2 for C-rate tests. A xed electrolyte-to-
+sulfur ratio (E/S) of 7 mL mg−1 was maintained. Three long-
+cycling protocols were tested: (1) long cycling at C/10 aer 5
+preconditioning cycles at C/20, (2) symmetric long cycling at C/5
+aer 5 preconditioning cycles at C/20, and (3) asymmetric long
+cycling at C/5 and D/2 aer 2 preconditioning cycles at C/20. The
+C-rate test was performed with 2 formation cycles at C/20, then 5
+cycles at C/5, C/2, 1C, and back to C/5. The voltage window was
+3.0–1.2 V for SSE formulations and 2.6–1.7 V for the conven-
+tional DME/DOL electrolyte.
+Bilayer pouch cells were assembled using two single-sided
+sulfur cathodes and a 150 mm thick lithium metal foil as the
+anode. The same pouch-cell conguration was used for both the
+DO-15TFSI-02FSI and conventional DME/DOL electrolytes. The
+pouch cells were assembled with a sulfur loading of 3.5 mgS
+cm−2, a negative-to-positive capacity ratio (N/P) of 2.5, and
+a lean electrolyte-to-sulfur ratio of 4.5 mL mgS
+−1. Pouch-cell
+cycling was performed using the same asymmetric protocol
+applied to the coin cells, consisting of C/5 charge and D/2
+discharge aer two preconditioning cycles at C/20. The
+voltage window was 2.75–1.2 V for the DO-15TFSI-02FSI elec-
+trolyte and 2.6–1.7 V for the conventional DME/DOL electrolyte.
+Post-mortem analysis of the electrolyte was performed using
+liquid-state uorine nuclear magnetic resonance (19F NMR)
+spectroscopy.
+These
+measurements
+were
+conducted
+with
+deuterated dimethyl sulfoxide (CD3)2SO (99.8%) as solvent,
+utilizing a Bruker 300 Ultrashield NMR instrument operating at
+300 MHz.
+The pristine electrolyte was analysed directly, without any
+prior extraction or modication. For the analysis of the elec-
+trolyte aer cycling, the separator was removed from the cell
+and immersed in 2 mL of dimethyl sulfoxide (DMSO) for 30 min
+to extract the electrolyte and its soluble components. The
+resulting extract was subsequently analysed by
+19F NMR
+spectroscopy.
+The relative amounts of LiTFSI and LiFSI were determined by
+integrating their corresponding characteristic 19F NMR reso-
+nances. The integrated signals were normalized according to
+the number of uorine atoms in each anion, namely six for
+TFSI−and two for FSI−, and compared with the corresponding
+signals obtained from the pristine electrolyte.
+Results and discussion
+As outlined in the Introduction section, the rst objective of this
+work was to nd a scalable and cost-competitive simplied
+synthesis approach for porous carbon hosts for sulfur cathodes
+without compromising the pore architecture required for eﬃ-
+cient Li–S operation. For this purpose, the conventional KOH-
+based chemical activation route was replaced by a CO2 phys-
+ical activation process. A schematic comparison of both path-
+ways (Fig. 1) highlights the reduction in the process complexity
+achieved through gas-phase activation. In contrast to KOH
+activation, which requires a high activating-agent-to-carbon
+ratio followed by acid neutralization and extensive washing,
+CO2 activation proceeds just through controlled gas–solid
+reactions without additional chemical reagents, leading to
+a clear reduction in waste and thereby improving the scalability
+and cost-eﬀectiveness of the porous carbon production.
+To evaluate the viability of the CO2 approach and identify
+optimal
+processing
+conditions,
+the
+activation
+time
+was
+systematically varied (5, 12, and 20 h). The resulting carbons,
+denoted as ResFA-CO2-5h, ResFA-CO2-12h, and ResFA-CO2-20h,
+were compared with the chemically activated reference material
+(ResFA-KOH). This comparison enables assessment of whether
+CO2 activation can reproduce the structural characteristics
+required for eﬃcient Li–S cathode operation without relying on
+conventional chemical routes.
+The morphology of the synthesized carbons was rst examined
+by SEM. The images, shown in Fig. 2a, reveal no signicant
+morphological diﬀerences between the chemically activated
+reference sample and the CO2-activated carbons. All samples
+preserve the laminar, interconnected graphene-based structure of
+the precursor, indicating that the activation process primarily
+modies internal porosity rather than altering the macroscopic
+morphology of the carbon framework. This behaviour is consis-
+tent with previous studies, where CO2 physical activation, being
+a milder and less aggressive process than chemical activation,
+tends to better preserve the original microstructure of the
+precursor while progressively developing porosity.34 Beyond
+morphology, and as outlined in the Introduction section, the
+porosity of the obtained materials is a critical parameter govern-
+ing the performance of the carbon host in Li–S technology. To
+investigate the evolution of the pore structure, the textural prop-
+erties were analysed using N2 adsorption–desorption measure-
+ments. As shown in Fig. 2b and c, all samples exhibit Type I
+isotherms, conrming the presence of signicant micropo-
+rosity.35,36 Despite these similarities, it was observed that
+increasing the CO2 activation time progressively enhances large
+micropore development, leading to a surface area sequence of
+ResFA-CO2-20h (2423 m2 g−1) > ResFA-CO2-12h (1866 m2 g−1) z
+ResFA-KOH (1850 m2 g−1) > ResFA-CO2-5h (1525 m2 g−1). Notably,
+the carbon activated for 12 h reaches a surface area comparable to
+that of the chemically activated reference, demonstrating that CO2
+activation can reproduce the level of textural development typi-
+cally obtained through chemical activation.
+However, extending the activation time to 20 h signicantly
+alters the pore architecture, as evidenced by the isotherm
+This journal is © The Royal Society of Chemistry 2026
+J. Mater. Chem. A, 2026, 14, 38990–39005 | 38993
+Paper
+Journal of Materials Chemistry A
+
+<<PAGE 5>>
+registered for this sample, which evolves from type Ia toward
+type Ib.36 Although the total surface area increases, this is
+associated with a higher contribution of large micropores and
+small mesopores, indicating progressive pore widening during
+prolonged CO2 activation rather than a loss of microporosity.37
+In contrast, both ResFA-KOH and ResFA-CO2-12h maintain
+a substantial micropore contribution, whereas the 5 h sample
+exhibits limited pore development and only a modest contri-
+bution from micropores. A complete summary of specic
+surface areas and pore parameters is provided in Table S1.
+In addition to these structural diﬀerences, variations in
+surface chemistry are observed depending on the activation
+route. Surface elemental composition determined by EDX (Fig.
+S1) shows variations in oxygen and phosphorus content across
+activation routes. The negligible phosphorus content detected
+in the KOH-activated sample is attributed to the combined
+eﬀects of alkaline activation and subsequent acid washing,
+which likely removes residual phosphorus-containing species
+from the carbon structure.38 In contrast, CO2 activation does not
+involve chemical leaching, allowing phosphorus-containing
+functionalities to remain within the carbon matrix. Diﬀer-
+ences in oxygen content further reect the distinct chemical
+environments of the activation processes. The ResFA-KOH
+sample exhibits a higher oxygen content, which can be attrib-
+uted to the decomposition and reaction of KOH during activa-
+tion, leading to the formation of oxygen-containing functional
+groups such as carboxyl, hydroxyl, and phenolic species.39 In
+contrast, CO2 activation involves competing processes of
+surface oxidation and thermal decomposition of unstable
+oxygen functionalities at elevated temperatures, resulting in
+a diﬀerent distribution of surface oxygen groups.40
+To evaluate the functional implications of these structural
+and chemical diﬀerences, LiPS adsorption tests were per-
+formed. The inset in Fig. 2d presents the visual comparison of
+Li2S6 solutions aer exposure to the diﬀerent developed
+carbons. The ResFA-CO2-20h sample exhibits the lowest LiPS
+retention capability, consistent with its higher mesopore frac-
+tion and reduced micropore connement. In contrast, the
+chemically activated carbon and the CO2-activated samples
+obtained aer 5 h and 12 h show stronger LiPS retention, sug-
+gesting a more favourable balance between adsorption strength
+and pore accessibility. These observations were further quan-
+tied by UV-vis spectroscopy (Fig. 2d), conrming that the
+remaining LiPS concentration in solution correlates with the
+degree of microporosity. Although the LiPS retention behaviour
+of the present CO2-activated carbon series is mainly ascribed to
+diﬀerences in the textural properties, surface chemistry can also
+inuence polysulde adsorption. However, in this particular
+case, similar functional groups are present aer the CO2-acti-
+vation treatment, indicating that the observed diﬀerences in
+LiPS
+retention
+are
+primarily
+governed
+by
+pore-structure
+evolution.41,42
+To further evaluate the practical implications of the activa-
+tion route, the carbon yield aer activation was quantied for
+each CO2 activation time and compared with that of the
+chemically activated reference, as shown in Table S2. As ex-
+pected,
+increasing
+the
+CO2
+activation
+time
+progressively
+increased the burn-oﬀ, from 28.99 wt% for ResFA-CO2-5h to
+Fig. 1
+Schematic illustration of chemical activation using KOH and physical activation using CO2, highlighting diﬀerences in processing steps,
+chemical usage, and post-treatment requirements.
+38994 | J. Mater. Chem. A, 2026, 14, 38990–39005
+This journal is © The Royal Society of Chemistry 2026
+Journal of Materials Chemistry A
+Paper
+
+<<PAGE 6>>
+46.48 wt% for ResFA-CO2-12h and 71.37 wt% for ResFA-CO2-
+20h. Therefore, the 20 h activation condition involves excessive
+carbon loss and is not favourable from a process-yield
+perspective, in agreement with its overdeveloped pore struc-
+ture and poorer LiPS retention behaviour. In contrast, the
+intermediate ResFA-CO2-12h sample retains a nal yield of
+53.52 wt%, comparable to the nal carbon recovery, 50.71 wt%,
+of the KOH-activated reference aer washing and drying. These
+results clarify that the main advantage of physical activation
+over chemical activation is not a systematically higher carbon
+yield, but rather the simpler preparation process. Specically,
+CO2 activation enables the development of an electrochemically
+relevant pore architecture through a gas–solid reaction while
+avoiding KOH addition, acid neutralization, extensive washing,
+and additional post-treatment steps. Thus, at this stage, ResFA-
+CO2-12h emerges as the most balanced CO2-activated sample in
+terms of carbon yield, pore development, LiPS retention, and
+process simplicity.
+These results highlight a key structural trade-oﬀ: while
+increasing CO2 activation time enlarges the total surface area,
+excessive pore widening weakens the connement strength
+required to retain soluble LiPSs, which is critical for suppress-
+ing the shuttle eﬀect of LSBs. Achieving an optimal pore
+architecture requires balancing transport pathways with suﬃ-
+cient micropore connement.
+Fig. 2
+(a) SEM images of the carbon samples: ResFA-KOH, ResFA-CO2-5h, ResFA-CO2-12h, and ResFA-CO2-20h. (b) N2 adsorption–desorption
+isotherms measured at −196 °C. (c) Corresponding pore size distribution. (d) UV-vis spectra of the LiPS adsorption test, including a visual
+comparison.
+This journal is © The Royal Society of Chemistry 2026
+J. Mater. Chem. A, 2026, 14, 38990–39005 | 38995
+Paper
+Journal of Materials Chemistry A
+
+<<PAGE 7>>
+To determine whether the observed diﬀerences in textural
+properties and chemical compositions have an impact on the
+electrochemical performance of the Li–S batteries, sulfur cath-
+odes, including the diﬀerent carbon matrices, were processed.
+The cathode formulation used herein was selected based on our
+previous optimisation study, in which KJ600-only cathodes were
+compared with formulations containing 5 and 10 wt% chemi-
+cally activated graphene-based carbon additives. That study
+showed that 10 wt% graphene-based carbon provides the best
+compromise between sulfur utilisation, LiPS retention, redox
+kinetics, electrode processability and material cost. Accord-
+ingly, in the present work, 16 wt% KJ600 was maintained as
+a common conductive framework, while 10 wt% synthesised
+carbon was used as the functional porous host. Since the KJ600
+content is kept constant across all cathodes, the performance
+diﬀerences discussed below can be mainly associated with the
+activation route and resulting pore architecture of the syn-
+thesised carbon fraction.
+SEM images of the resulting composite cathodes (Fig. 3a)
+reveal no observable morphological diﬀerences, indicating that
+sulfur inltration and electrode processing produce compa-
+rable electrode structures across all samples. This observation
+conrms that the variations induced by the activation process
+are primarily microscopic in nature, rather than structural at
+the electrode scale. In addition, contact angle measurements
+using the conventional DME/DOL electrolyte (Fig. S2) show no
+signicant diﬀerences among the cathodes, indicating that
+cathode wettability is comparable across all samples.
+The electrochemical performance of these electrodes was
+subsequently evaluated in Li–S cells using a conventional DME/
+DOL electrolyte at C/10. The cell performance reveals a clear
+correlation between pore architecture and cycling stability. The
+ResFA-CO2-12h cathode delivers cycling performance compa-
+rable to that of the chemically activated ResFA-KOH reference,
+supporting that CO2 activation can reproduce the electro-
+chemically relevant pore structure when appropriately tuned. In
+contrast, the ResFA-CO2-20h cathode exhibits faster capacity
+decay, in agreement with its lower LiPS retention ability. The
+ResFA-CO2-5h cathode, limited by insuﬃcient pore develop-
+ment and restricted electrolyte accessibility due to its dominant
+microporosity, also shows inferior electrochemical perfor-
+mance. This behaviour may be associated with hindered mass
+transport and possible pore blockage during cycling, which
+limits eﬀective sulfur utilization.
+To further assess whether discharge product accumulation
+induces surface pore blockage, cross-sectional SEM analysis was
+performed on the diﬀerent cathodes in the pristine state and
+aer one complete discharge at C/20 with conventional DME/
+DOL electrolyte, as seen in Fig. S3. This analysis is consistent
+with previous reports suggesting that preferential solid depo-
+sition near the working cathode surface may hinder mass-
+transfer pathways and inuence discharge behaviour in Li–S
+cathodes.43 The pristine electrodes show comparable cross-
+Fig. 3
+(a) SEM images of sulfur cathodes prepared with diﬀerent carbon hosts. (b) Long-term galvanostatic cycling of Li–S cells at C/10 using
+DME/DOL electrolyte.
+38996 | J. Mater. Chem. A, 2026, 14, 38990–39005
+This journal is © The Royal Society of Chemistry 2026
+Journal of Materials Chemistry A
+Paper
+
+<<PAGE 8>>
+sectional morphologies, conrming that electrode processing
+does not introduce major macroscopic diﬀerences among the
+samples. Aer complete discharge, all cathodes preserve
+a porous composite structure; however, the ResFA-KOH cathode
+exhibits a more pronounced supercial densication/collapse,
+whereas the CO2-activated cathodes retain a more open cross-
+sectional morphology. This suggests that the CO2-derived pore
+architecture mitigates severe rst-discharge surface passiv-
+ation, possibly assisted by the retention of phosphorus-con-
+taining
+surface
+species
+that
+can
+interact
+with
+LiPSs.
+Nevertheless, the rst-discharge cross-section alone does not
+fully explain the long-term cycling trend, since the electro-
+chemical behaviour remains governed by the coupled eﬀects of
+pore architecture, LiPS retention, electrolyte evolution, and
+lithium–metal interfacial stability.
+All these results demonstrate that the electrochemical
+behaviour of the sulfur cathodes is governed not by the absolute
+surface area of the carbon host, but rather by the balance
+between micropore connement and mesopore accessibility.
+The intermediate CO2 activation time (12 h) provides the
+optimal pore architecture, enabling a simplied synthesis route
+that delivers electrochemical performance comparable to that
+of chemically activated carbons.
+The identication of ResFA-CO2-12h as the optimal carbon
+host demonstrates that scalable CO2 activation can reproduce
+the pore architecture required for Li–S cathodes while signi-
+cantly simplifying synthesis. However, the electrochemical
+results obtained with the conventional DOL/DME electrolyte
+also reveal a fundamental limitation: structural optimization of
+the cathode alone is insuﬃcient to stabilize Li–S cells over
+extended cycling. Even with an optimized pore architecture, the
+electrolyte remains a determinant of cell behaviour, governing
+the solvation, transport, and reactivity of sulfur intermediates
+as well as their interaction with the LMA. Stabilizing Li–S
+chemistry requires coordinated control of both pore architec-
+ture and solvation chemistry, rather than optimizing either
+component in isolation.
+Guided by this perspective, the second stage of this study
+focuses on electrolyte engineering. Conventional ether-based
+electrolytes oﬀer favourable sulfur redox kinetics but sustain
+high LiPS solubility and unstable lithium interfaces, which
+together limit cycling durability. To address these limitations,
+we explored SSE formulations designed to regulate solvation
+structure and interphase formation. The reference SSE formu-
+lation used in this study, DO-15TFSI, was developed in our
+previous work31 and consists of 1.5M of LiTFSI dissolved in
+a mixture of DOL and a uorinated ether co-solvent (OCTO).
+Building on prior insights regarding salt additive eﬀects in SSE
+systems, two modied formulations were evaluated: DO-15TFSI-
+02FSI, incorporating 0.2 M LiFSI, and DO-15TFSI-01LN, con-
+taining 0.1 M LiNO3. The diﬀerence in additive concentration
+arises from the limited solubility of LiNO3 in the SSE environ-
+ment. Although higher LiNO3 concentrations (0.2 M) could be
+initially dissolved, precipitation occurs over time (Fig. S4),
+compromising
+electrolyte
+homogeneity
+and
+potentially
+aﬀecting long-term cell stability. As a result, the LiNO3 content
+was limited to 0.1 M to ensure a stable electrolyte formulation.
+To evaluate how these electrolyte formulations inuence
+transport properties, ionic conductivity was rst measured at
+room temperature (Fig. 4a). The conventional DME/DOL elec-
+trolyte exhibits the highest ionic conductivity (6.4 mS cm−1),
+reecting the relatively weak ion pairing characteristic of dilute
+ether systems. In contrast, the SSE-based formulations display
+lower conductivities, in agreement with their localized solvation
+structure and increased ion pairing, which partially restricts Li+
+mobility. Among the SSEs, the LiFSI-containing formulation
+Fig. 4
+(a) Ionic conductivity of the electrolytes at room temperature before and after Li2S6 saturation. (b) UV-vis absorption spectra of Li2S6-
+saturated electrolytes after ﬁltration. The inset photograph shows the corresponding solutions. (c) Li plating/stripping reversibility of the elec-
+trolytes in Li‖Cu cells. (d) SEM images of lithium deposits on Cu after 4 mA h cm−2 deposition and 30 plating/stripping cycles.
+This journal is © The Royal Society of Chemistry 2026
+J. Mater. Chem. A, 2026, 14, 38990–39005 | 38997
+Paper
+Journal of Materials Chemistry A
+
+<<PAGE 9>>
+(DO-15TFSI-02FSI) shows the highest conductivity, likely due to
+the smaller ionic radius and higher dissociation tendency of the
+FSI−anion compared with TFSI−.44
+However, these conductivity values are obtained under ideal
+conditions and do not fully represent the electrolyte behaviour
+under practical Li–S operating environments. In Li–S systems,
+the progressive dissolution of LiPS signicantly alters the elec-
+trolyte composition and transport properties. To account for
+this eﬀect, the ionic conductivity was subsequently evaluated
+aer saturation with Li2S6. Under these conditions, the
+conductivity
+of
+the
+conventional
+DME/DOL
+electrolyte
+decreases considerably. This pronounced drop reects the high
+LiPS solubility of the solvent system, which perturbs ionic
+transport by forming additional ionic species and increasing
+solution viscosity. In contrast, the SSE formulations exhibit only
+a negligible reduction in ionic conductivity, indicating that
+their solvation environment eﬀectively limits LiPS dissolution.
+As a result, once saturated with Li2S6, the conductivity values of
+all electrolytes converge within a narrower range of approxi-
+mately 1–1.5 mS cm−1.
+These results highlight a key distinction between the two
+types of electrolytes. Whereas conventional ether electrolytes
+rely on high intrinsic ionic conductivity, SSE systems maintain
+more stable transport properties under polysulde conditions
+by restricting LiPS solubility. Such behaviour is advantageous
+for Li–S operation, as it mitigates the dynamic changes in
+electrolyte
+composition
+that
+typically
+accelerate
+shuttle
+processes and interfacial degradation.
+In addition to ionic conductivity, the lithium-ion trans-
+ference number (tLi+) was also estimated using the Bruce–Vin-
+cent method (Fig. S5). It is important to note that this method
+was originally developed for dilute binary electrolytes and
+assumes idealized ion transport behaviour. Therefore, in the
+case of the SSE formulations investigated here, where ion
+pairing, ionic aggregation, and correlated ion motion may
+occur, the calculated values should not be interpreted as abso-
+lute tLi+. Instead, they should be regarded as apparent values
+obtained from conventional chronoamperometry/EIS measure-
+ments and used only for comparative evaluation among elec-
+trolytes
+tested
+under
+identical
+conditions.
+Within
+this
+framework, all SSE-based electrolytes exhibit similar apparent
+tLi+ values, which are higher than that of the conventional DME/
+DOL electrolyte. This trend suggests a higher apparent contri-
+bution of Li+ to the overall polarization response in the SSE
+systems. This behaviour originates from diﬀerences in the
+underlying ion transport mechanisms. In conventional dilute
+electrolytes, Li+ transport is dominated by a vehicular mecha-
+nism, where the solvated lithium cation moves together with its
+solvent shell, while the less strongly coordinated anions remain
+comparatively more mobile. In contrast, SSE systems promote
+a shitoward a structural transport mechanism, in which Li+
+ions migrate through transient coordination environments or
+ionic aggregates, and anion mobility is partially constrained
+within these structures. Although the Bruce–Vincent approach
+may overestimate the true tLi+ in these concentrated systems, the
+comparative increase in apparent tLi+ supports the conclusion
+that SSE formulations can mitigate concentration polarization
+during operation and contribute to more stable lithium metal
+deposition at the interface.45–47
+To further assess the ability of the electrolytes to suppress
+polysulde dissolution, UV-vis spectroscopy was performed on
+Li2S6-saturated
+electrolytes
+aer
+ltration
+(Fig.
+4b).
+The
+conventional
+DME/DOL
+electrolyte
+exhibits
+the
+strongest
+absorption intensity across the characteristic polysulde bands,
+conrming its high LiPS solubility. In contrast, the SSE-based
+electrolytes display signicantly lower absorbance, indicating
+a reduced concentration of dissolved polysulde species. The
+corresponding photographs of the ltered solutions (Fig. 4b,
+inset) visually corroborate this behaviour, with the conventional
+electrolyte retaining a darker coloration compared with the
+much lighter SSE solutions. These results conrm that both Li
+salt solvent concentration and the uorinated solvent environ-
+ment eﬀectively reduce LiPS dissolution, minimizing shuttle-
+driven losses during cycling.
+Even though controlling polysulde solubility is critical for
+stabilizing the electrolyte, eﬀective cell operation also requires
+adequate wetting of the porous sulfur cathode. To evaluate this
+aspect, contact angle measurements were performed on the
+ResFA-CO2-12h cathode using the SSE formulations and
+compared with the benchmark DME/DOL electrolyte (Fig. S6).
+As expected, the SSEs exhibit higher contact angles than the
+DME/DOL system, consistent with their increased viscosity
+arising from higher salt concentrations. Nevertheless, the
+measured contact angles remain relatively low, indicating good
+electrolyte spreading on the cathode surface. These results
+suggest that, despite their higher viscosity, SSE formulations
+maintain suﬃcient wettability to ensure eﬀective electrode–
+electrolyte contact.
+Once it was established that the SSE formulations eﬀectively
+limit polysulde dissolution while maintaining suﬃcient elec-
+trode wetting, their compatibility with LMA was subsequently
+evaluated
+through
+Li‖Cu
+and
+Li‖Li
+plating/stripping
+experiments.
+Lithium reversibility was rst assessed over 20 Li‖Cu plating/
+stripping cycles (Fig. 4c). The baseline SSE (DO-15TFSI) exhibits
+limited lithium reversibility and interfacial stability, as evi-
+denced by the increased overpotential observed during cycling
+and the relatively low CE (86.4%). In contrast, the incorporation
+of LiNO3 and LiFSI additives leads to a marked improvement in
+electrochemical performance, with CEs reaching 99.6% and
+98.7%, respectively. These results indicate that both additives
+eﬀectively stabilize the lithium interface and suppress parasitic
+reactions during repeated lithium plating and stripping.
+Notably, the LiFSI-containing electrolyte displays the lowest
+polarization during both plating and stripping, indicating
+enhanced interfacial kinetics and more stable lithium deposi-
+tion. This behaviour is consistent with the formation of
+a uniform, ionically conductive, and chemically robust SEI,
+which facilitates eﬃcient Li+ transport.
+The long-term evolution of the Li‖Cu cells intensies these
+diﬀerences (Fig. S7). Under extended cycling (50 cycles), the
+baseline DO-15TFSI electrolyte shows a rapid increase in over-
+potential aer z50 h, ultimately leading to short-circuit failure
+(z80 h), indicative of
+unstable
+lithium deposition
+and
+38998 | J. Mater. Chem. A, 2026, 14, 38990–39005
+This journal is © The Royal Society of Chemistry 2026
+Journal of Materials Chemistry A
+Paper
+
+<<PAGE 10>>
+progressive interfacial degradation. In contrast, both additive-
+containing electrolytes maintain stable voltage proles and
+complete the full cycling protocol. A direct comparison reveals
+that the LiFSI-containing electrolyte delivers both lower polar-
+ization and higher CE than the LiNO3-based system, conrming
+superior long-term reversibility.
+To get insight into the origin of these diﬀerences, lithium
+deposition behaviour was analysed through voltage–capacity
+proles
+and
+post-mortem
+morphological
+characterization.
+During initial plating (4 mA h cm−2 at 0.4 mA cm−2, Fig. S8a),
+the LiFSI-containing electrolyte exhibits the least negative
+stabilization potential (−0.017 V), indicating reduced polariza-
+tion and more favourable lithium plating kinetics. Both the
+LiNO3-containing and baseline DO-15TFSI electrolytes stabilize
+at more negative potentials (−0.028 V), consistent with a higher
+interfacial resistance during lithium growth. A closer exami-
+nation of the nucleation stage (Fig. S8b) shows that the additive-
+containing electrolytes reduce the nucleation overpotential
+compared to the baseline system. Thus, the DO-15TFSI-01LN
+electrolyte
+presents
+the
+lowest
+nucleation
+overpotential
+(−0.074 V), followed by DO-15TFSI-02FSI (−0.086 V), whereas
+the LiTFSI-based electrolyte shows the highest value (−0.105 V).
+These results indicate that LiNO3 facilitates the initial nucle-
+ation of lithium, while LiFSI provides the most favourable
+conditions for sustained lithium growth aer nucleation. These
+electrochemical signatures are consistent with the observed
+lithium morphologies (Fig. 4d). Both LiNO3- and LiFSI-
+containing electrolytes promote the formation of uniform and
+compact lithium deposits with a globular morphology, indica-
+tive of controlled nucleation and growth. In contrast, the DO-
+15TFSI electrolyte produces heterogeneous deposits composed
+of mixed globular and needle-like structures, consistent with
+unstable interphase formation and uneven lithium growth.
+The evolution of lithium morphology for longer cycling (30
+cycles, see the voltage prole in Fig. S9) further diﬀerentiates
+the formulations (Fig. 4d). The baseline DO-15TFSI electrolyte
+shows pronounced morphological degradation, with increas-
+ingly heterogeneous and porous lithium deposits, indicative of
+unstable interfacial conditions. In contrast, the DO-15TFSI-
+02FSI electrolyte largely preserves a compact morphology
+across the surface, indicating a robust and stable interphase
+capable of sustaining homogeneous lithium deposition. The
+DO-15TFSI-01LN electrolyte exhibits intermediate behaviour:
+although initially promoting uniform deposition, morpholog-
+ical degradation emerges over time, with the appearance of
+mixed globular and needle-like regions. This deterioration is
+attributed to the progressive consumption of LiNO3 during
+cycling, which limits its ability to sustain long-term interphase
+stabilization.
+To further probe lithium interfacial stability under more
+demanding conditions, symmetric Li‖Li cells were cycled at
+progressively increasing current densities (Fig. S10). The base-
+line DO-15TFSI electrolyte exhibits signicantly higher over-
+potentials and pronounced voltage uctuations, particularly at
+high current densities, reecting unstable lithium deposition
+and increased interfacial resistance. In contrast, the DO-15TFSI-
+02FSI electrolyte exhibits the lowest polarization and stable
+voltage proles across the entire current range, including at 2
+mA cm−2, reecting the formation of a robust, conductive SEI.
+The LiNO3-containing electrolyte again displays intermediate
+behaviour, with stable proles at low current densities but
+progressively increasing polarization at higher current densi-
+ties, consistent with gradual interphase degradation.
+Collectively,
+these
+results
+demonstrate
+that
+electrolyte
+composition plays a key role in regulating lithium interfacial
+behaviour. While both additives, LiFSI and LiNO3, improve
+lithium plating/stripping reversibility compared with the base-
+line SSE, the LiFSI-containing electrolyte provides sustained
+interfacial
+stabilization
+and
+the
+most
+uniform
+lithium
+morphology over extended cycling, highlighting its superior
+potential to enhance the durability of Li–S cells.
+Having established that LiFSI-containing SSEs provide the
+most stable lithium metal interface, the electrochemical
+behaviour in Li–S technology was subsequently evaluated using
+the high-loading cathodes containing the optimized ResFA-
+CO2-12h as the sulfur host. This conguration enables assess-
+ment of the synergistic eﬀect between pore-optimized carbon
+architecture and tailored electrolyte chemistry. The diﬀerent
+SSE formulations were rst tested and compared with the
+conventional
+DME/DOL
+electrolyte
+under
+a
+conventional
+symmetric cycling protocol at C/5 (Fig. 5a).
+As shown in Fig. 5a, the cycling stability strongly depends on
+electrolyte composition. While all SSE-based cells deliver
+similar initial high discharge capacities close to 1400 mA h g−1,
+the conventional DME/DOL exhibits noticeably lower initial
+capacities, which persist throughout cycling. The lower sulfur
+utilization can be attributed to the high LiPS solubility in the
+DME/DOL system, which disrupts electrolyte transport and
+reduces ionic conductivity upon polysulde dissolution, as
+previously shown in Fig. 4a. Additionally, the conventional
+electrolyte also exhibits signicantly poorer cycling stability,
+undergoing
+rapid
+capacity
+decay
+and
+dropping
+below
+400 mA h g−1 within approximately 50 cycles. In contrast, the
+SSE-based electrolytes maintain substantially higher capacities
+over extended cycling, demonstrating the eﬀectiveness of SSEs
+in mitigating polysulde shuttle and stabilizing the electro-
+chemical environment of Li–S cells.
+Among all the SSE formulations, DO-15TFSI-02FSI shows the
+best overall performance, combining improved capacity reten-
+tion with extended cycle life. In this case, the cell maintains
+discharge capacities above z800 mA h g−1 for up to z80 cycles,
+indicating a more stable electrochemical environment and
+improved interfacial compatibility with the LMA. These obser-
+vations are consistent with the Li‖Cu cell results discussed
+previously, where the LiFSI additive promoted more uniform
+lithium deposition and reduced polarization. In contrast, the
+DO-15TFSI-01LN
+electrolyte,
+despite
+exhibiting
+improved
+lithium metal stability in Li‖Cu cells, shows comparatively
+poorer long-term stability in Li–S cells. This behaviour is likely
+associated with the progressive consumption of LiNO3 during
+cycling, as reected in Fig. S7, especially pronounced in the
+presence of dissolved LiPS. As a result, the ability to sustain
+interphase
+stabilization
+gradually
+diminishes,
+leading
+to
+accelerated capacity decay compared with the LiFSI-containing
+This journal is © The Royal Society of Chemistry 2026
+J. Mater. Chem. A, 2026, 14, 38990–39005 | 38999
+Paper
+Journal of Materials Chemistry A
+
+<<PAGE 11>>
+system. However, despite the improvements achieved by elec-
+trolyte engineering, the gradual capacity decay observed under
+symmetric cycling suggests that electrolyte composition alone
+does not fully suppress the degradation mechanisms governing
+Li–S cells. Building on these observations, the electrochemical
+cycling protocol was further examined as a complementary
+parameter to probe and potentially mitigate degradation
+processes in Li–S cells. In conventional laboratory testing,
+symmetric charge–discharge rates are typically employed for
+simplicity and benchmarking consistency. However, such
+conditions may not fully capture the dynamic interplay between
+lithium deposition and stripping processes, particularly in
+systems where interfacial stability is highly sensitive to local
+current density and mass transport. In this context, introducing
+controlled asymmetry into the cycling protocol, particularly
+slower lithium deposition combined with faster stripping,
+provides a useful framework for modulating lithium growth
+dynamics and assessing the robustness of the electrolyte–elec-
+trode system. Prior to implementing this protocol, the ability of
+the diﬀerent electrolytes to sustain sulfur utilization under
+increased kinetic demand was evaluated through rate capability
+tests. As shown in Fig. S11, all SSE formulations maintain
+relatively high discharge capacities with increasing rate, deliv-
+ering values close to 700 mA h g−1 even at 1C. This behaviour
+indicates strong compatibility between the physically activated
+sulfur cathode carbon and the developed electrolytes, enabling
+eﬃcient sulfur redox under accelerated discharge conditions.
+Nevertheless, the DO-15TFSI-01LN electrolyte shows signs of
+instability during the transition to C/2, mainly associated with
+lithium deposition irregularities or the appearance of so
+dendrites during the charging process. Despite this transient
+behaviour,
+the
+system
+partially
+recovers
+and
+maintains
+comparatively high capacities at 1C, suggesting that the
+observed limitations originate from interfacial instabilities
+rather than bulk transport constraints.
+Motivated by these results, an asymmetric cycling C/5
+charge, D/2 discharge protocol was evaluated, as seen in
+Fig. 5b. Under these conditions, the conventional DME/DOL
+electrolyte exhibits even poorer cycling stability than under
+symmetric operation, with a more rapid capacity decay. This
+behaviour is likely driven by transport limitations associated
+with the high LiPS solubility of this electrolyte, which intensies
+concentration polarization and exacerbates interfacial insta-
+bility under higher discharge rates. The baseline DO-15TFSI
+shows a clear improvement compared with the conventional
+electrolyte, exhibiting slower capacity decay and longer cycle life
+under asymmetric operation. This indicates that limiting poly-
+sulde solubility already contributes to stabilizing cycling
+under asymmetric conditions. However, its overall performance
+remains limited, suggesting that controlling just the solvation is
+not enough to fully regulate lithium deposition dynamics. In
+contrast, the additive-containing SSE formulations exhibit
+a pronounced enhancement in cycling stability under the
+asymmetric
+protocol.
+Among
+them,
+the
+DO-15TFSI-02FSI
+Fig. 5
+Li–S galvanostatic cycling with ResFA-CO2-12h cathodes with the diﬀerent electrolytes studied. (a) Cycling under a symmetric C/5
+protocol. (b) Cycling performance under the C/5–D/2 asymmetric protocol. (c) SEM micrographs of the lithium metal anodes after 10 and 50
+cycles under symmetric cycling using the DO-15TFSI-02FSI electrolyte. (d) SEM micrographs of the lithium metal anodes after 10 and 50 cycles
+under asymmetric cycling using the DO-15TFSI-02FSI electrolyte.
+39000 | J. Mater. Chem. A, 2026, 14, 38990–39005
+This journal is © The Royal Society of Chemistry 2026
+Journal of Materials Chemistry A
+Paper
+
+<<PAGE 12>>
+electrolyte, consistent with its superior behaviour in Li‖Cu,
+Li‖Li, and Li–S congurations with a symmetric cycling
+protocol, delivers the most relevant improvement. Under prac-
+tical sulfur loading conditions (z3.5 mg cm−2), the cell
+sustains stable cycling for up to z180 cycles, more than
+doubling the cycle life achieved under symmetric operation.
+These results prove that the combination of SSE chemistry and
+controlled plating-stripping kinetics eﬀectively suppresses the
+accumulation of inactive lithium and interfacial degradation,
+thereby signicantly extending the lifetime of Li–S cells. The
+DO-15TFSI-01LN
+electrolyte
+exhibits
+a
+more
+moderate
+improvement.
+Although the asymmetric protocol
+initially
+stabilizes the cycling behaviour, capacity fading eventually
+accelerates, and overcharging phenomena appear. This behav-
+iour is consistent with the progressive depletion of LiNO3
+during prolonged cycling, which limits its ability to sustain
+interphase stabilization over extended operation.
+The CE trends further support these observations. Under
+asymmetric cycling, the SSE-based electrolytes maintain higher
+and more stable eﬃciencies compared with symmetric opera-
+tion, indicating reduced parasitic reactions and improved
+reversibility of sulfur conversion processes. These results
+suggest that accelerating lithium stripping helps to mitigate the
+formation of high-surface-area lithium structures that would
+otherwise accumulate during prolonged cycling. Importantly,
+the benecial impact of the asymmetric protocol is most
+pronounced for the LiFSI-containing electrolyte, highlighting
+a strong synergy between solvation chemistry and electro-
+chemical protocol. While SSE formulations limit polysulde
+solubility and stabilize lithium interphases, the modied
+cycling conditions further regulate lithium growth dynamics,
+collectively reducing the degradation pathways that typically
+limit Li–S cell lifetime.
+This behaviour is consistent with recent reports showing
+that charge/discharge rate asymmetry can strongly inuence Li
+deposition pathways and interphase accumulation in lithium
+metal batteries.26 In this framework, the slower C/5 charge step
+used here provides milder Li plating conditions, while the faster
+D/2 discharge step promotes Li stripping and may help remove
+high-surface-area Li before it becomes electronically isolated.
+Thus, the improved cycling stability under asymmetric opera-
+tion can be interpreted as a kinetic regulation of the lithium
+metal
+interface,
+complementing
+the
+interphase-stabilising
+eﬀect of the LiFSI-containing SSE. Nevertheless, this mecha-
+nism is inferred from electrochemical trends and post-mortem
+morphology rather than direct operando observation.
+To gain deeper insight into the origin of this improvement,
+the evolution of the lithium metal surface was examined aer
+cycling under both protocols. Representative results for the DO-
+15TFSI-02FSI electrolyte are shown in Fig. 5c and d, with addi-
+tional
+comparisons
+for
+DO-15TFSI
+and
+DO-15TFSI-01LN
+provided in Fig. S12. Consistent with the electrochemical
+trends, all three electrolytes exhibit a clear improvement in
+lithium deposition morphology under asymmetric cycling,
+forming a more compact and homogeneous structure aer both
+10 and 50 cycles. These observations suggest that the asym-
+metric protocol mitigates the accumulation of porous, high-
+surface-area lithium deposits, thereby reducing the exposed
+reactive surface area and limiting continuous electrolyte
+decomposition.
+To this end, the scalability of the developed materials was
+evaluated in a bilayer pouch cell assembled under representa-
+tive operating conditions, including a sulfur loading of 3.5 mg
+cm−2, a low negative-to-positive capacity ratio of 2.5, and a lean
+electrolyte content of 4.5 mL mg−1 (Fig. 6a and b). Under these
+demanding conditions, the DO-15TFSI-02FSI cell delivers high
+discharge capacities of 1200 mA h g−1 at C/20 and 900 mA h g−1
+at C/2 discharge rates, as demonstrated in Fig. 6c. These results
+reect eﬃcient sulfur utilization even at the higher D/2
+discharge rate, enabled by the strong compatibility between
+the optimized carbon host and SSE formulation.
+Although the DO-15TFSI-02FSI electrolyte improves pouch-
+cell stability compared with the conventional DME/DOL elec-
+trolyte, SSEs can impose additional kinetic constraints on sulfur
+conversion. Their reduced LiPS solubility and stronger ion
+association suppress shuttle reactions but can also make sulfur
+utilization more dependent on interfacial charge transfer, LiPS
+adsorption/conversion,
+and
+Li2S
+deposition/dissolution
+kinetics. Recent studies have therefore highlighted cathode
+kinetic regulation strategies, including catalytically active sites,
+controlled
+Li2S
+nucleation/growth,
+redox
+mediation,
+and
+competitive
+anion-coordination
+approaches,
+to
+overcome
+charge-transfer barriers and improve sulfur utilization in SSE
+systems. Importantly, despite not incorporating additional
+catalytic promoters, the DO-15TFSI-02FSI pouch cell delivers
+initial capacities comparable to the benchmark DME/DOL
+electrolyte and, aer transition to the C/5-D/2 protocol, main-
+tains higher discharge capacity from the second C/5-D/2 cycle
+onward. This demonstrates the strong compatibility between
+the ResFA-CO2-12h cathode and the developed SSE, enabling
+remarkable sulfur utilization under practical pouch-cell condi-
+tions of 3.5 mgS cm−2, E/S = 4.5 mL mgS
+−1 and N/P = 2.5.
+Nevertheless, integrating cathode-level kinetic promoters with
+the
+present
+carbon–host/SSE/asymmetric-cycling
+strategy
+represents a promising route to further increase pouch-cell
+discharge capacity and energy output.48–50
+To isolate the contribution of the electrolyte formulation at
+the pouch-cell level, a control bilayer pouch cell was also
+assembled
+using
+the
+same
+ResFA-CO2-12h
+cathode,
+cell
+conguration, sulfur loading, N/P ratio, lean electrolyte condi-
+tion, and asymmetric cycling protocol, but replacing DO-
+15TFSI-02FSI with the conventional DME/DOL electrolyte. As
+shown in Fig. 6c, the DME/DOL pouch cell exhibits substantially
+faster capacity decay, with the discharge capacity decreasing to
+approximately 400 mA h g−1 aer around 30 cycles. The corre-
+sponding voltage proles in Fig. S13 show accelerated short-
+ening of the discharge plateaus and increased polarization,
+indicating progressive loss of sulfur utilization under practical
+pouch-cell conditions. In contrast, the DO-15TFSI-02FSI pouch
+cell maintains higher discharge capacity and more stable
+voltage proles over 50 cycles, sustaining stable cycling with
+a capacity retention of approximately 65%. This comparison
+conrms the better integration of the SSE formulation with the
+ResFA-CO2-12h
+cathode
+under
+accelerated
+discharge
+This journal is © The Royal Society of Chemistry 2026
+J. Mater. Chem. A, 2026, 14, 38990–39005 | 39001
+Paper
+Journal of Materials Chemistry A
+
+<<PAGE 13>>
+conditions. Although DME/DOL provides favourable initial
+sulfur-redox kinetics, its high LiPS solubility promotes rapid
+changes in electrolyte composition, transport polarization, and
+shuttle-driven losses during pouch-cell operation. By limiting
+LiPS dissolution and maintaining a more stable electro-
+chemical environment within the porous cathode, the SSE
+formulation preserves sulfur utilization more eﬀectively at the
+higher D/2 discharge rate.
+Although the combination of the ResFA-CO2-12h graphene-
+based cathode and the DO-15TFSI-02FSI electrolyte enables
+promising bilayer pouch-cell performance under demanding
+practical conditions, including lean electrolyte content, low N/P
+ratio and asymmetric C/5–D/2 cycling, the cell still exhibits
+progressive capacity decay aer more than 50 cycles, with
+a capacity retention of approximately 65–70%. While this
+represents a meaningful result for a scaled Li–S pouch cong-
+uration, the achieved cycle life still falls short of the require-
+ments for practical applications. Therefore, identifying the
+origin of the gradual fading is essential to guide further opti-
+mization of the system.
+To clarify the origin of the progressive capacity decay
+observed in the bilayer pouch cell, cycled pouch cells were
+analysed by post-mortem diagnostics. Visual inspection aer
+cell opening (Fig. S14) reveals a clear diﬀerence between the
+conventional DME/DOL and DO-15TFSI-02FSI electrolytes. The
+DME/DOL pouch cell shows pronounced yellow/brown colora-
+tion of the separator and Li-facing components aer only 30
+cycles,
+consistent
+with
+extensive
+polysulde
+dissolution,
+migration and electrolyte contamination. In contrast, the DO-
+15TFSI-02FSI pouch cell shows a much cleaner separator even
+aer 50 cycles, conrming the ability of the SSE formulation to
+suppress polysulde shuttle. Moreover, the DO-15TFSI-02FSI
+cell remained visibly wetted aer cycling, as shown by the
+image collected immediately aer opening the cell (Fig. S15),
+indicating that complete electrolyte dry-out is unlikely to be the
+primary cause of the capacity fade.
+Fig. 6
+(a) Photograph of the assembled DO-15TFSI-02FSI bilayer pouch cell. (b) Schematic of the cell design. (c) Galvanostatic cycling of the
+bilayer pouch cell with ResFA-CO2-12h as the cathode and DO-15TFSI-02FSI and DME/DOL electrolytes under the C/5 D/2 asymmetric
+protocol.
+39002 | J. Mater. Chem. A, 2026, 14, 38990–39005
+This journal is © The Royal Society of Chemistry 2026
+Journal of Materials Chemistry A
+Paper
+
+<<PAGE 14>>
+SEM analysis of the recovered electrodes (Fig. S16) further
+supports this interpretation. The DME/DOL pouch cell exhibits
+a more heterogeneous lithium-metal surface and stronger
+cathode surface densication/deposit accumulation, in agree-
+ment with coupled polysulde shuttle, electrolyte contamina-
+tion, and interfacial degradation. In contrast, the DO-15TFSI-
+02FSI pouch cell better preserves both the lithium-metal
+surface and the cathode morphology, with no evidence of
+catastrophic carbon–host collapse. To further assess the
+cathode contribution, recovered sulfur cathodes were reas-
+sembled into coin cells using fresh electrolyte and fresh lithium
+metal. These reconstructed cells recovered the practical cathode
+capacity (Fig. S17), demonstrating that the sulfur/carbon
+cathode remains electrochemically active aer pouch-cell
+cycling and that severe irreversible active-material loss is not
+the dominant degradation pathway.
+Liquid 19F NMR analysis of electrolyte species extracted from
+the recovered separator was performed to evaluate the residual
+electrolyte composition and compare it with that of the pristine
+electrolyte. As shown in Fig. S18, the TFSI−signal remains
+detectable aer cycling at −78 ppm. Together with the visual
+evidence of retained wetting discussed above, this indicates that
+neither complete electrolyte dry-out nor full consumption of the
+main LiTFSI salt is the primary cause of the observed capacity
+decay. In contrast, the FSI−signal at 53 ppm decreases mark-
+edly, consistent with preferential FSI−participation in the
+formation and maintenance of an anion-derived SEI on lithium
+metal. This does not contradict the benecial role of LiFSI;
+rather, it supports its function as an active interphase-
+regulating additive. Since high LiFSI contents may promote
+undesired side reactions in S8-based Li–S cells using sparingly
+solvating electrolytes, LiFSI is used here as a nite additive
+while LiTFSI remains the main supporting salt. Under lean-
+electrolyte pouch-cell conditions, progressive consumption of
+this nite LiFSI reservoir can reduce the ability of the electrolyte
+to maintain the most favourable SEI chemistry, leading to SEI
+thickening, increased lithium interfacial polarization and
+gradual capacity decay.
+Overall, these post-mortem results indicate that the capacity
+fading of the bilayer pouch cell is mainly associated with
+progressive
+exhaustion
+of
+the
+LiFSI-enabled
+interphase-
+regulation capability at the lithium metal electrode. Complete
+electrolyte dry-out, full LiTFSI consumption, catastrophic
+carbon–host collapse, and severe irreversible sulfur loss can be
+largely excluded as primary failure mechanisms.
+The combined experimental ndings are schematically
+summarized in Fig. 7, illustrating how electrolyte solvation
+chemistry and electrochemical protocol jointly regulate lithium
+deposition dynamics in Li–S cells. In conventional ether-based
+electrolytes, the combination of an unfavourable solvation
+structure and high LiPS solubility leads to unstable interfacial
+conditions at the LMA, promoting dendritic lithium growth,
+dead lithium formation, and rapid capacity decay. Trans-
+itioning to SSEs fundamentally alters this behaviour by
+restricting polysulde solubility and modifying the Li+ solvation
+environment, thereby stabilizing the interphase and suppress-
+ing uncontrolled lithium growth. The incorporation of LiFSI
+further reinforces this eﬀect by promoting the formation of
+a more robust SEI, enabling smoother and more homogeneous
+lithium deposition. However, electrolyte chemistry alone does
+not fully eliminate degradation pathways associated with
+repeated lithium plating and stripping. Introducing an asym-
+metric cycling protocol provides an additional kinetic control
+over lithium morphology evolution, whereby high-surface-area
+lithium structures formed during plating are preferentially
+removed during stripping. As a result, this combined strategy,
+integrating pore-optimized carbon hosts, tailored solvation
+chemistry, and controlled cycling conditions, results in the
+most uniform lithium deposition and the longest cycling
+stability achieved in this work.
+Fig. 7
+Conceptual representation of lithium metal deposition behaviour under varying electrolyte chemistries and cycling protocols: (top left)
+conventional DME/DOL electrolyte; (top right) SSE under symmetric cycling; (bottom left) SSE with the LiFSI additive under symmetric cycling;
+(bottom right) SSE with the LiFSI additive under asymmetric cycling.
+This journal is © The Royal Society of Chemistry 2026
+J. Mater. Chem. A, 2026, 14, 38990–39005 | 39003
+Paper
+Journal of Materials Chemistry A
+
+<<PAGE 15>>
+Conclusions
+Advancing LSBs towards practical implementation requires
+a
+coordinated,
+system-level
+design
+that
+simultaneously
+addresses electrode architecture, electrolyte chemistry, and
+operational conditions. This work demonstrates that inte-
+grating these dimensions is essential to overcoming the trade-
+oﬀs between cost, stability, and electrochemical performance
+that have historically limited Li–S technology.
+CO2 physical activation is demonstrated as a versatile, scal-
+able, and cost-eﬀective alternative to conventional chemical
+activation for the synthesis of porous carbon hosts. By tuning
+the activation conditions, an optimal pore architecture is ach-
+ieved in which a balanced contribution of microporosity and
+mesoporosity governs sulfur utilization and polysulde reten-
+tion. The ResFA-CO2-12h material reproduces the electro-
+chemically relevant structure of chemically activated carbons
+while signicantly simplifying synthesis. These results high-
+light that carbon host performance is dictated not by surface
+area alone, but by the interplay between connement and
+transport within the pore network.
+Electrolyte solvation chemistry further emerges as a critical
+factor in stabilizing Li–S operation. SSEs suppress polysulde
+dissolution and maintain stable transport properties under
+realistic conditions. The incorporation of LiFSI promotes the
+formation of a robust and homogeneous interphase, enabling
+uniform lithium deposition and sustained cycling stability,
+whereas LiNO3 provides only transient benets due to its
+progressive consumption.
+Finally, the electrochemical cycling protocol is identied as
+a complementary design parameter. The introduction of an
+asymmetric cycling strategy enhances cycle life by mitigating
+the accumulation of high-surface-area lithium and reducing
+interfacial degradation. When combined with optimized SSE
+formulations, stable cycling over z180 cycles is achieved under
+practical sulfur loading, more than doubling the lifetime
+observed under conventional conditions.
+Collectively, these ndings demonstrate that durable Li–S
+performance emerges from the synergistic optimization of pore
+architecture, solvation chemistry, and lithium deposition
+kinetics, providing a practical pathway toward high-energy,
+resource-eﬃcient battery systems.
+Author contributions
+Asier Soria Fern´andez: writing – original dra, methodology,
+investigation, formal analysis, writing – review and editing.
+Sergi Gadea: methodology, investigation, and formal analysis.
+Alexander Santiago: writing – review and editing and concep-
+tualization. Alberto Castro and Fabian Suarez: methodology and
+investigation. Aitor Villaverde: conceptualization and writing –
+review and editing. Daniel Carriazo: conceptualization and
+writing – review and editing. Julen Castillo: writing – original
+dra, conceptualization, writing – review and editing, and
+supervision. Marta Cabello: writing – review and editing and
+project administration.
+Conﬂicts of interest
+The authors declare no conicts of interest.
+Data availability
+The data supporting this article have been included as part of
+the supplementary information (SI). The datasets generated and
+analysed during the current study have been deposited in the
+Zenodo repository at 10.5281/zenodo.20022336. In compliance
+with national funding requirements, these data will be made
+publicly available aer publication to support the transparency
+and reproducibility of the research conducted under the
+PID2024-162597OB-I00 framework.
+Supplementary information is available. See DOI: https://
+doi.org/10.1039/d6ta03770d.
+Acknowledgements
+This work is part of the R&D&I project PID2024-162597OB-I00,
+funded by MICIU/AEI/10.13039/501100011033
+and by the
+European Regional Development Fund (ERDF, EU). The authors
+also acknowledge funding from the Basque Government
+through the Elkartek 2025 program (KK2025-00054). The
+authors gratefully acknowledge NIPPON SHOKUBAI CO., LTD,
+for supplying the LiFSI salt and Graphenea for providing the
+graphene oxide.
+Notes and references
+1 IEA, Global Critical Minerals Outlook 2025, 2025, https://
+www.iea.org/reports/global-critical-minerals-outlook-2025,
+accessed 7 April 2026.
+2 C. Xu, Q. Dai, L. Gaines, M. Hu, A. Tukker and B. Steubing,
+Commun. Mater., 2020, 1, 99.
+3 A. Manthiram, S. Chung and C. Zu, Adv. Mater., 2015, 27,
+1980–2006.
+4 M. Zhao, B.-Q. Li, X.-Q. Zhang, J.-Q. Huang and Q. Zhang,
+ACS Cent. Sci., 2020, 6, 1095–1104.
+5 P.
+G. Bruce, S. A. Freunberger, L. J. Hardwick and
+J. M. Tarascon, Nat. Mater., 2011, 11, 19–29.
+6 Y. Chen, T. Wang, H. Tian, D. Su, Q. Zhang, G. Wang,
+Y. Chen, T. Wang, H. Tian, D. Su, G. Wang and Q. Zhang,
+Adv. Mater., 2021, 33, 2003666.
+7 T. Li, X. Bai, U. Gulzar, Y. J. Bai, C. Capiglia, W. Deng,
+X. Zhou, Z. Liu, Z. Feng and R. Proietti Zaccaria, Adv.
+Funct. Mater., 2019, 29, 1901730.
+8 Y. Xiang, L. Lu, A. G. P. Kottapalli and Y. Pei, Carbon Energy,
+2022, 4, 346–398.
+9 A.
+Robles-Fern´andez,
+A.
+Soria-Fern´andez,
+J.
+Castillo,
+S. Gadea, A. Santiago and D. Carriazo, 2D Mater., 2025, 12,
+033002.
+10 Y. Fu, R. K. Singh, S. Feng, J. Liu, J. Xiao, J. Bao, Z. Xu, D. Lu,
+Y. Fu, Z. Xu, R. K. Singh, S. Feng, J. Liu, J. Xiao, J. Bao and
+D. Lu, Adv. Energy Mater., 2023, 13, 2203386.
+11 G. Jim´enez-Mart´ın, J. Castillo, X. Judez, J. L. G´omez-Urbano,
+G. Moreno-Fern´andez, A. Santiago, A. Saenz de Buruaga,
+39004 | J. Mater. Chem. A, 2026, 14, 38990–39005
+This journal is © The Royal Society of Chemistry 2026
+Journal of Materials Chemistry A
+Paper
+
+<<PAGE 16>>
+I. Garbayo, J. A. Coca-Clemente, A. Villaverde, M. Armand,
+C.
+Li
+and
+D.
+Carriazo,
+Batteries
+Supercaps,
+2022,
+5,
+e202200167.
+12 M. Fan, Y. Shao, Y. Wang, J. Sun, H. He, Y. Jiang, S. Zhang,
+Y. Wang and X. Hu, Chem. Eng. J., 2024, 500, 157278.
+13 Y. Gao, Q. Yue, B. Gao and A. Li, Sci. Total Environ., 2020, 746,
+141094.
+14 V. Montes and J. M. Hill, Mater. Lett., 2018, 220, 238–240.
+15 B. Wang, C. Zhu, Z. Zhang, W. Zhang, X. Chen, N. Sun,
+W. Wei, Y. Sun and H. Ji, Fuel, 2016, 179, 274–280.
+16 L. Pereira, M. Calero, G. Bl´azquez, S. Gonz´alez-Egido,
+M. Gonz´alez-Lucas, M. ´A. Mart´ın-Lara and R. R. Sol´ıs,
+Chem. Eng. Sci., 2025, 313, 121749.
+17 M. Le´on, J. Silva, S. Carrasco and N. Barrientos, Processes,
+2020, 8, 945.
+18 S.
+K.
+Shahcheragh,
+M.
+M.
+Bagheri
+Mohagheghi
+and
+A. Shirpay, SN Appl. Sci., 2023, 5, 313.
+19 A. Ben´ıtez, A. Caballero, J. Morales, J. Hassoun, E. Rodr´ıguez-
+Castell´on and J. Canales-V´azquez, Nano Res., 2019, 12, 759–
+766.
+20 S. S. Zhang, J. Power Sources, 2013, 231, 153–162.
+21 Y. Liu, Y. Elias, J. Meng, D. Aurbach, R. Zou, D. Xia and
+Q. Pang, Joule, 2021, 5, 2323–2364.
+22 S. Gadea, A. Soria-Fern´andez, A. Santiago, D. Carriazo and
+J. Castillo, Commun. Mater., 2025, 7, 9.
+23 F. Hai, Y. Yi, Z. Xiao, J. Guo, X. Gao, W. Chen, W. Xue,
+W. Hua, W. Tang and M. Li, Adv. Energy Mater., 2024, 14,
+2304253.
+24 L. Cheng, L. A. Curtiss, K. R. Zavadil, A. A. Gewirth, Y. Shao
+and K. G. Gallagher, Am. Chem. Soc., 2016, 1, 503–509.
+25 A. Soria-Fern´andez, J. Castillo, R. Cid, Z. Song, H. Wu,
+D. Carriazo, M. Armand, H. Zhang and A. Santiago, Small
+Methods, 2026, 10, e02084.
+26 Y. Zhang, W. Bao, E. Jeﬀs, B. Liu, B. Han, W. Mai, X. Li, W. Li,
+Y. Xu, B. Bhamwala, A. Liu, L. Ah, K. Ryu, Y. S. Meng and
+H. Gan, ACS Energy Lett., 2025, 10, 872–880.
+27 M. Kim, J. Kim, M. Baek, J. Oh, J. Lee, A. Coskun and
+J. W. Choi, Nat. Commun., 2026, 17, 3183.
+28 J. Castillo, A. Santiago, X. Judez, J. A. Coca-Clemente,
+A. Saenz de Buruaga, J. L. G´omez-Urbano, J. A. Gonz´alez-
+Marcos, M. Armand, C. Li and D. Carriazo, ACS Appl.
+Energy Mater., 2023, 6, 3579–3589.
+29 G. Moreno-Fern´andez, J. L. G´omez-Urbano, M. Enterr´ıa,
+T. Rojo and D. Carriazo, J. Mater. Chem. A, 2019, 7, 14646–
+14655.
+30 J. Castillo, A. Soria-Fern´andez, S. Rodriguez-Peña, J. Rikarte,
+A. Robles-Fern´andez, I. Aldalur, R. Cid, J. A. Gonz´alez-
+Marcos,
+J.
+Carrasco,
+M.
+Armand,
+A.
+Santiago
+and
+D. Carriazo, Adv. Energy Mater., 2024, 14, 2302378.
+31 A.
+Robles-Fern´andez,
+G.
+Moreno-Fern´andez,
+A.
+Soria-
+Fern´andez, J. Castillo, A. Santiago and D. Carriazo, Carbon,
+2024, 229, 119442.
+32 P. G. Bruce, J. Evans and C. A. Vincent, Solid State Ionics,
+1988, 28–30, 918–922.
+33 B. D. Adams, J. Zheng, X. Ren, W. Xu and J. Zhang, Adv.
+Energy Mater., 2018, 8, 1702097.
+34 I. Yang, M. Jung, M.-S. Kim, D. Choi and J. C. Jung, J. Mater.
+Chem. A, 2021, 9, 9815–9825.
+35 K. S. W. Sing, D. H. Everett, R. A. W. Haul, L. Moscou,
+R. A. Pierotti, J. Rouquerol and T. Siemieniewska, Pure
+Appl. Chem., 1985, 57, 603–619.
+36 M. Thommes, K. Kaneko, A. V. Neimark, J. P. Olivier,
+F. Rodriguez-Reinoso, J. Rouquerol and K. S. W. Sing, Pure
+Appl. Chem., 2015, 87, 1051–1069.
+37 S. Rom´an, J. F. Gonz´alez, C. M. Gonz´alez-Garc´ıa and
+F. Zamora, Fuel Process. Technol., 2008, 89, 715–720.
+38 G. Moreno-Fern´andez, M. Granados-Moreno, J. L. G´omez-
+Urbano and D. Carriazo, Batteries Supercaps, 2021, 4, 469–
+478.
+39 K. L´aszl´o, E. Tomb´acz and K. Josepovits, Carbon, 2001, 39,
+1217–1228.
+40 G. S. Szyma´nski, Z. Karpi´nski, S. Biniak and A. ´Swiatkowski,
+Carbon, 2002, 40, 2627–2639.
+41 F.
+Hippauf,
+W.
+Nickel,
+G.-P.
+Hao,
+K.
+Schwedtmann,
+L.
+Giebeler,
+S.
+Oswald,
+L.
+Borchardt,
+S.
+Doerer,
+J. J. Weigand and S. Kaskel, Adv. Mater. Interfaces, 2016, 3,
+1600508.
+42 R. Demir-Cakan, M. Morcrette, F. Nouar, C. Davoisne,
+T. Devic, D. Gonbeau, R. Dominko, C. Serre, G. F´erey and
+J. M. Tarascon, J. Am. Chem. Soc., 2011, 133(40), 16154–
+16160.
+43 Y. W. Song, J. Zhou, Z. X. Chen, J. D. Zhang, L. Shen, F. Sun,
+M. Zhao and B. Q. Li, J. Energy Chem., 2025, 106, 993–1001.
+44 L. Wang, Z. Luo, H. Xu, N. Piao, Z. Chen, G. Tian and X. He,
+RSC Adv., 2019, 9, 41837–41846.
+45 L. Suo, Y.-S. Hu, H. Li, M. Armand and L. Chen, Nat.
+Commun., 2013, 4, 1481.
+46 G. A. Giﬃn, Nat. Commun., 2022, 13(1), 5250.
+47 L. Su, F. Lu, X. Liu, C. Wang, Y. Gao, S. Passerini, L. Zheng
+and G. Xinpei, J. Power Sources, 2023, 557, 232545.
+48 T. Jin, X. Y. Li, M. Zhao, S. Feng, Z. Li, Z. X. Chen, H. J. Peng,
+B. Q. Li and J. Q. Huang, Angew. Chem., 2025, 137,
+e202504898.
+49 Z. X. Chen, J. J. Zhao, G. Y. Fang, S. Zhang, J. Ma, M. Zhao,
+B. Q. Li and J. Q. Huang, Energy Storage Mater., 2025, 83,
+104502.
+50 X. Y. Li, B. Q. Li, T. Jin, S. Feng, Y. C. Gao, M. Zhao, X. Chen,
+J. Q. Huang and Q. Zhang, Joule, 2026, 10(2), 102259.
+This journal is © The Royal Society of Chemistry 2026
+J. Mater. Chem. A, 2026, 14, 38990–39005 | 39005
+Paper
+Journal of Materials Chemistry A

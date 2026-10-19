@@ -1,0 +1,552 @@
+
+<<PAGE 1>>
+Elucidating the Solvation Structure and Dynamics of Lithium
+Polysulﬁdes Resulting from Competitive Salt and Solvent
+Interactions
+Nav Nidhi Rajput,*,†,⊥
+Vijayakumar Murugesan,‡,⊥
+Yongwoo Shin,† Kee Sung Han,‡,⊥
+Kah Chun Lau,§,∥Junzheng Chen,‡ Jun Liu,‡,⊥Larry A. Curtiss,§,⊥
+Karl T. Mueller,‡,⊥
+and Kristin A. Persson*,†,⊥
+†Lawrence Berkeley National Laboratory, Berkeley, California 94720, United States
+‡Paciﬁc Northwest National Laboratory, Richland, Washington 99352, United States
+§Materials Science Division, Argonne National Laboratory, Argonne, Illinois 60439, United States
+∥Department of Physics and Astronomy, California State University, Northridge, California 91330, United States
+⊥Joint Center for Energy Storage Research (JCESR), Lemont, Illinois 60439, United States
+*
+S Supporting Information
+D
+esigning optimal electrolytes is key to enhancing the
+performance of energy storage devices,especially relating
+to cycle life, eﬃciency, and stability.1 Speciﬁcally, for future
+beyond-Li ion energy storage, there is still ample room for
+electrolyte improvements. Among the candidates for higher
+gravimetric energy storage, the Li−S battery is considered quite
+promising, owing to its theoretical speciﬁc energy density
+(2600 Wh/kg) and speciﬁc capacity (1675 mAh/g) and
+signiﬁcantly lower cost as compared to state-of-art lithium-ion
+batteries.2−4 However, despite these attractive attributes,
+successful commercialization of Li−S batteries is currently
+hindered by poor cycling performance and capacity retention
+that is primarily caused by the parasitic reactions between the
+Li metal anode and dissolved polysulﬁde (PS) species from the
+cathode during the cycling process.3,5 Most of the eﬀorts to
+overcome this degradation mechanism has focused on
+suppressing the dissolution of PS species and/or protecting
+the negative electrode using conﬁnement strategies or
+protective layers. However, these additional components not
+only fail to block completely the PS species but also restrict the
+volumetric energy density.2,6 In contrast, less attention has been
+given to designing optimal electrolytes with reduced PS
+solubility and improved electrochemical stability. Traditional
+Li salts used in Li-ion batteries (eg., LiPF6, LiBF4, LiBOB,
+LiBF2C2O4) and solvents (eg., ester, carbonates, phosphates)
+are unsuitable for Li−S battery applications due to their
+parasitic reactions with PSs.2 Hence, rational selection or design
+of the electrolyte is critical in controlling the deleterious shuttle
+reactions and protecting the electrode surface. So far, 1 M
+lithium bis(triﬂuoromethanesulfonyl)imide (Li-TFSI) in a
+binary solvent mixture of 1,3-dioxolane and 1,2-dimethoxy-
+ethane (DOL:DME) is considered as one of the most suitable
+electrolytes for Li−S cells.2,5 However, despite its wide usage,
+the DOL:DME solvent system provides signiﬁcant PS
+solubility, which enables the shuttle process and subsequent
+parasitic reactions.2 Therefore, to develop electrolytes with low
+solubility, high chemical stability, and low viscosity, it is
+important to improve our understanding of the solvation
+structure and dynamics of the intermediate PS species formed
+during discharge. Ion solvation in electrolytes is composed of
+highly correlated ion−ion and ion−solvent interactions
+spanning wide spatial and temporal ranges. Currently, there is
+limited understanding of the solvation structure of various types
+of PS species (Li2Sx; x = 1 to 8) formed during the discharge
+process. Experimental eﬀorts based on spectroscopic techni-
+ques have mostly focused on speciﬁc constituents of the
+electrolyte and do not comprehensively report the solvation
+structure of PS species.7,8 Ab initio based computational
+methods have provided valuable insights about the dispropor-
+tionation and intermolecular association of PSs in Li−S
+electrolyte systems.9−12 Nevertheless, comprehensive under-
+standing regarding the evolution of solvation phenomena with
+respect to the PS chain length and solvent system remains
+elusive. Classical molecular dynamics (MD) simulations are
+well suited to obtain the needed molecular level understanding
+of nonreactive interactions and dynamics of multicomponent
+systems covering larger temporal and lateral scales. As per our
+knowledge, there is no previous work on understanding bulk
+structural and dynamical properties of PSs using classical
+molecular dynamics (MD) simulations mainly due to lack of
+eﬀective force ﬁeld parameters.
+Various reaction mechanisms have been proposed during the
+discharge cycle using DFT calculations,7,13 and spectroelec-
+trochemical techniques,7,14 reporting a variety of possible PS
+reaction intermediates (S8
+2−, S7
+2−, S6
+2−, S5
+2−, S4
+2−, S3
+2−, S2
+2−).
+Although these diﬀerent PS species are postulated to coexist in
+the solution through chemical equilibrium,2 it is nevertheless
+likely that their interactions with the salt and solvent are to a
+ﬁrst-order approximation independent of each other. Hence, in
+this work we focus on understanding the properties of
+individual PS species Sx; x = 2 to 8, cognizant of the fact
+that they may all be present in the solution at some state-of-
+charge (SOC). As the ﬁrst step in this direction, we study the
+solvation structure and diﬀusion coeﬃcient of 0.25 M Li2Sx (x
+Received:
+January 6, 2017
+Revised:
+March 29, 2017
+Published: March 31, 2017
+Communication
+pubs.acs.org/cm
+© 2017 American Chemical Society
+3375
+DOI: 10.1021/acs.chemmater.7b00068
+Chem. Mater. 2017, 29, 3375−3379
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​29/​8/​3375/​6763233/​cm7b00068.​pdf by TSINGHUA UNIV user on 11 October 2026
+
+<<PAGE 2>>
+= 2 to 8) in DOL:DME (1:1) and 0.25 M Li2Sx (x = 2 to 8)
+with 1 M Li(TFSI) dissolved in a DOL:DME solvent mixture
+using newly developed and well-benchmarked force ﬁeld
+parameters. Details of the simulation procedure, force ﬁeld,
+and experimental procedure are provided in the Supporting
+Information (SI). Note that although previous studies have
+reported the formation of sulfur radical anions during discharge,
+in this work, we focus on the dianions.7
+The present work focuses on three key scientiﬁc studies
+pertaining to Li−S electrolytes: (1) how Li-PS intermediates
+interact with the solvent molecules and the Li-salt; (2) the
+eﬀect of salt addition on solvation structure and dynamics; and
+(3) the eﬀect of PS chain length on the structure and dynamics.
+We begin our analysis by elucidating the local environment of
+Li2Sx in DOL:DME and Li2Sx in Li(TFSI)/DOL:DME using
+radial distribution functions (RDF) and coordination numbers
+(CN) of Li+−Li+, Li+−Sx
+2−, Li+−TFSI−, Li+−DOL, and Li+−
+DME. Previous studies have reported that the terminal S atom
+plays an important role in the PS interactions with Li+.7,15
+Hence, the terminal and inner S atom interactions within the
+Li+−Sx
+2−RDF for all PSs (except for Li2S2) are clearly
+distinguished (Figure S2). Figure 1a shows the RDF of Li2S2 in
+an equimolar solvent mixture of DOL:DME. We observed very
+strong Li+−S2
+2−interactions as indicated by a Li+−S2
+2−RDF
+ﬁrst peak at 2.1 Å followed by a shoulder at 4.2 Å. In contrast,
+the Li−solvent interaction is quite weak due to (1) the low
+dielectric constants of both DOL (ε = 7.0) and DME (ε = 7.2)
+and (2) the strong interaction between Li+ and S2
+2−. The RDF
+signifying the Li+−Li+ correlation exhibits two sharp peaks
+followed by a shoulder at ∼5.4 Å illustrating highly ordered
+long-range (>5 Å) structures where the PSs acts as a bridge
+between the Li+ ions through Li+···S···Li+ ionic chains. The
+snapshot in Figure S3a shows that Li2S2 is not well solvated and
+preferentially forms aggregates in the solution. Such agglom-
+eration of Li2S2 is likely to result in an extremely low solubility
+of Li2S2 in DOL:DME. Previous experimental studies16 have
+also reported weak Li−solvent interaction even in high donor
+number solvents such as DMSO (ε = 46.7) resulting in
+generally low solubility of Li2S2.16 Hence, strong Li+−S2
+2−
+bonding is presumed the primary cause for low solubility of
+Li2S2. Furthermore, it is likely that Li salts play an important
+role in controlling the solubility of PS intermediates.16 Hence,
+to understand how the interaction strength between the Li+ and
+Sx
+2−changes with the addition of Li salt, we computed the RDF
+of Li2S2 in a solution with Li(TFSI) in DOL:DME solvent
+(Figure 1b). In this solution, although strong Li+−S2
+2−
+interactions are still observed, a signiﬁcant change is observed
+in the solvation structure around Li+. Instead of two sharp
+peaks in the Li+−Li+ RDF, we observe a much smaller peak at
+2.9 Å followed by a sharp peak at 3.6 Å and a broader shoulder
+at 5.4 Å. Similarly, for the Li+−S2
+2−RDF the electrolyte exhibits
+a single peak at 2.1 Å with low intensity and a much broader
+shoulder at larger distances. The Li+−TFSI−RDF shows two
+peaks centered at 3.6 and 4.2 Å indicating a cis-conformation
+with bidentate and a trans-conformation with monodentate
+arrangements of the Li+−TFSI−interactions, respectively.17
+The changes in the RDF of Li+−Li+ and Li+−S2
+2−strongly
+indicates that TFSI−anions are competing for interaction with
+Li+ and thereby weaken the Li+−S2
+2−interactions leading to a
+disruption of the Li+−S2
+2−cluster network. Decrease in the
+Li+−Li+ and Li+−S2
+2−coordination numbers and an increase in
+Li+−DME coordination number reveals the changes in the local
+environment around Li+ with the addition of Li(TFSI) salt in
+Li2S2 (Figure S4). As the weakening of the Li+−S2
+2−bond by
+TFSI−interactions allows more solvent molecules to coordinate
+with Li+ we expect the solubility of Li2S2 to increase. We note
+that this eﬀect is in contrast to common ion eﬀect theory,6
+which predicts the solubility to decrease with the addition of
+salt. Furthermore, a closer look at the Li−solvent interactions
+reveals that the linearly structured ether DME has stronger
+interaction as compared to the cyclic ether DOL owing to
+higher oxygen donor denticity and structural ﬂexibility.18 Such
+preferential solvation of DME over DOL for Li+ has also been
+reported by NMR experimental techniques. Despite the
+weakened Li+−S2
+2−interaction and increased Li+−solvent
+interactions due to the presence of TFSI−, the enduring Li2S2
+clustering network is likely to limit the solubility of the PS
+(Figure S3b).
+Another, key parameter which aﬀects the solubility is the PS
+chain length; hence we endeavor to understand how the
+coordination environment of Li+ and Sx
+2−changes as a function
+of PS chain length. Figure 2a and S5a presents the coordination
+between Li+−Li+ as a function of PS chain length in a neat
+solvent system (i.e., without Li(TFSI) salt). Well-deﬁned sharp
+peaks at shorter distances (<5 Å) and broader peaks at longer
+distances (>5 Å) indicate an ordered polymeric structure
+present for lower polysulﬁde chains (i.e., Sx with x ≤4). In fact,
+a well-deﬁned peak at ∼7 Å (Figure S6a) suggests the
+formation of a long-range structured Li2S4 cluster with a size of
+∼14 Å radius. This ﬁnding is in good agreement with the
+eﬀective hydrodynamics radius determined by pulse ﬁeld
+gradient NMR (see Figure S7).5
+Recent DFT and AIMD results by Partovi-Azar et al.8 also
+suggest the preferential tendency of Li2S4 toward forming large
+ionic clusters by analyzing cluster size up to (Li2S4)8 due to
+computational limitation. As MD simulations are capable of
+studying larger length and time scales, we found the largest
+cluster formed is (Li2S4)15 even at 0.25 M concentration (see
+Figure S8a). For higher order PSs (Sx
+2−with x > 4), the Li+−
+Li+ RDF peaks shifts toward larger distances and for Li2S8 only
+a single main peak is observed at 4.1 Å, indicating the absence
+of long-ranged clustering (see Figure 2a). By analyzing the
+evolution in bonding of Li+−Sx
+2−, Li+−DOL, and Li+−DME for
+various PS species, it is clear that the Li+−Sx
+2−interaction
+weakens with an increase in PS chain length (see Figure S5). In
+particular, the Li+ interaction with the inner S atoms changes
+and shifts toward larger distances (see Figure S2) showcasing
+the ﬂexibility of higher order PSs in accommodating Li+ in their
+ﬁrst solvation shell. Nevertheless, the Li+−solvent interaction
+(with preferential interaction with DME over DOL) is also
+increased at the cost of the Li+−Sx
+2−interaction strength. Such
+pronounced Li+−solvent interaction correlates with the
+Figure 1. (a) Radial distribution function of Li+−Li+, Li+−S2
+2−, Li+−
+DME, Li+−DOL in Li2S2/DOL:DME. (b) Radial distribution function
+of Li+−Li+, Li+−S2
+2−, Li+−DME, Li+−DOL and Li+−TFSI−in
+(Li2S2+LiTFSI)/DOL:DME.
+Chemistry of Materials
+Communication
+DOI: 10.1021/acs.chemmater.7b00068
+Chem. Mater. 2017, 29, 3375−3379
+3376
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​29/​8/​3375/​6763233/​cm7b00068.​pdf by TSINGHUA UNIV user on 11 October 2026
+
+<<PAGE 3>>
+observed higher solubility of longer PS chains in a DOL:DME
+mixture.16 Conversely, the extended (∼few nm) polymeric
+structure formation can possibly lower the solubility of the
+shorter PS chains. This ﬁnding is in good agreement with our
+previous results that clustering (through polymerization) of
+lower order PSs lower their solubility.11
+The eﬀect of PS chain length on the local environment
+around Li+ is observed for the case when a Li salt is added to
+the solution. Figures 2b and S5b show the RDF analyses of
+Li+−Li+ and Li+−TFSI−for Li2Sx (x = 2 to 8) in DOL:DME in
+the presence of the Li(TFSI) salt. The solvation structure of Li+
+as a function of PS species shows a similar trend as that
+observed in the neat solvent system discussed earlier. Multiple
+sharp peaks in Li+−Li+ RDF at shorter distances are observed
+for shorter PSs (Sx with x ≤4), indicating clustering with
+extended-range PS structure. On the other hand, the absence of
+features at larger distances (>5 Å) in longer PSs represents the
+decrease in long-range structures such as aggregates and Li-rich
+domains. Hence, we can expect the solubility to increase with
+an increase in PS length even in the presence of the salt. The
+eﬀect of the addition of Li salt is found to be minimal in smaller
+PSs; hence large clusters are still observed for (Li2S4 +
+LiTFSI)/DOL:DME solution (Figures S8b and S9). As one of
+the dominant PS species during the discharge process,7,13 the
+large cluster observed for Li2S4 is likely to increase the
+electrolyte viscosity. This increase in viscosity, in turn, may
+contribute to the sharp voltage decline observed in the second
+region of the discharge proﬁle, where liquid−liquid single phase
+reduction from dissolved Li2S8 to low order PSs is observed. As
+discussed earlier, the two peaks around 3.5 and 4.2 Å observed
+in the RDF of Li+−TFSI−are assigned to bidentate and
+monodentate conformational arrangements, respectively (Fig-
+ure 2c). With the increase in PS chain length, the probability of
+the bidentate conformation increases at the cost of the
+monodentate conformation. The bidentate conformation may
+weaken the Li+−Sx
+2−interaction in longer PS chains by two
+mechanisms (1) delithiation of PS anions that will enhance the
+solvent interaction with the Li+ ions, and (2) increased oxygen
+coordination and steric hindrance from the TFSI−anions.
+Figure 2d shows the coordination number of Li+−Li+, Li+−
+TFSI−, Li+−Sx
+2−, Li+−DOL, Li+−DME interactions for the
+Li2Sx (x = 2 to 8) + Li(TFSI) in DOL:DME solution. The
+terminal S atom is used to compute the coordination numbers
+of Li+−Sx
+2−and the RDF minima at ∼5 Å, which deﬁnes the
+ﬁrst coordination shell of the anion including both mono-
+dentate and bidentate orientations for Li+−TFSI−. The
+coordination number of Li+−Li+ in Li2S2 indicates that each
+Li+ has 1.8 (∼2) other Li+ located within a radius of 4.4 Å,
+whereas Li2S8 has 0.76 (∼1) other Li+ ions located within 4.6 Å.
+It is observed that Li+−Li+ and Li+−Sx
+2−coordination numbers
+decrease with an increase in PS chain length indicating a
+signiﬁcant change in Li+ environment. Higher orders PSs are
+suﬃcient to provide the desired charge to Li+ ions and the
+steric hindrance of PSs result in a lower coordination numbers
+for Li+−Sx
+2−and higher coordination numbers between Li+ and
+the solvent. This in turn is expected to increase the solubility of
+larger PSs. In particular, the increase in coordination of Li+ with
+DME is more signiﬁcant as compared to Li+ with DOL as a
+function of PS chain length due to the preferential coordination
+of DME with Li+ over DOL as discussed earlier. We ﬁnd that
+higher order PSs exist as monomers and show increased
+interaction with solvent molecules, which may result in faster
+reaction kinetics. In contrast, smaller PSs exist as dimers or
+clusters resulting in less interaction with the solvent molecules,
+which is likely to slow down the reaction kinetics. As a primary
+function of Li−S electrolytes is the eﬃcient transport of ions
+between anode and cathode, while suppressing the dissolution
+of PS species, it is essential to understand the eﬀect of solvation
+structure on the diﬀusion coeﬃcient of ionic species, which in
+turns aﬀects the conductivity. The translational dynamics is
+studied by extracting the self-diﬀusion coeﬃcient of all ionic
+species using MD simulations as well as pulsed-ﬁeld gradient
+(PFG) NMR (Figure 3).
+Figure S10 shows the self-diﬀusion coeﬃcients of Li+, TFSI−
+and Sx
+2−computed from MD simulations. It is observed that
+the diﬀusion coeﬃcients of Li+, TFSI−and Sx
+2−decrease with
+increased PS chain length, which indicates sluggish dynamics of
+ionic species and possibly higher viscosity for solutions
+containing the larger PSs. Figure 3 shows a comparison
+between the self-diﬀusion coeﬃcients obtained from MD
+simulations and PFG-NMR. The trends in self-diﬀusion
+coeﬃcient are in good agreement; however, the simulation
+diﬀusion coeﬃcients are consistently lower than the exper-
+imental counterparts owing to the well-known limitation of
+nonpolarizable force ﬁelds.19 A signiﬁcant decrease in diﬀusion
+coeﬃcients for Li+, TFSI−, DOL as well as DME in Li(TFSI)/
+DOL:DME is observed as the concentration of Li(TFSI)
+increases for 0.25 to 3 M indicating that high viscosity and low
+ionic conductivity can be expected in highly concentrated
+electrolytes. For both Li2Sx/DOL:DME and [Li2Sx+Li(TFSI)]/
+DOL:DME the self-diﬀusion coeﬃcient of the solutes as well as
+solvents decrease with an increase in PS chain length (Figure 3)
+again pointing to the high viscosity and low ionic conductivity
+of higher order PS solutions. As TFSI−is weakly coordinated to
+Figure 2. (a) Radial distribution function of Li+−Li+ in Li2Sx (x = 2 to
+8) in DOL:DME. (b) Radial distribution function of Li+−Li+ and (c)
+Li+−TFSI−in Li2Sx (x = 2 to 8) + Li(TFSI) in DOL:DME. (d)
+Coordination number of Li+−Li+, Li+−TFSI−, Li+−Sx
+2−(terminal),
+Li+−DME, Li+−DOL in Li2Sx (x = 2 to 8) + Li(TFSI) in DOL:DME.
+Chemistry of Materials
+Communication
+DOI: 10.1021/acs.chemmater.7b00068
+Chem. Mater. 2017, 29, 3375−3379
+3377
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​29/​8/​3375/​6763233/​cm7b00068.​pdf by TSINGHUA UNIV user on 11 October 2026
+
+<<PAGE 4>>
+Li+ compared to Sx
+2−, its diﬀusion coeﬃcient is higher than the
+diﬀusion coeﬃcient of Li+ and Sx
+2−irrespective of the PS chain
+length. We note that in all systems considered in this work the
+self-diﬀusion coeﬃcients follow the order Sx
+2−< Li+ < TFSI−.
+Furthermore, both NMR and simulation results indicate that
+the self-diﬀusion coeﬃcients of Li+, PS anions and solvents are
+decreased by the addition of salt as well as an increase in PS
+chain length. Although enhanced ionic transport while
+maintaining low PS solubility is desirable for high performance
+Li−S battery operations, one of the most suitable electrolyte
+systems (Li(TFSI) in DOL:DME) exhibits both higher
+solubility of larger PS and slower dynamics for larger PS
+species. Thus, the recently proposed high concentration (lean)
+electrolytes20 may in the case of Li(TFSI): DOL/DME
+consequently suﬀer from higher PS solubility and slower
+ionic diﬀusion of larger PSs. However, we also note that a more
+detailed understanding of the diﬀusion mechanism is required
+to understand if an increase in viscosity is fundamentally
+problematic in all Li−S electrolytes or if high transference
+numbers can balance out these eﬀects.
+Optimizing the lithium solvation environment in electrolyte
+solutions is key to controlling dissolution of polysulﬁde species.
+This work provides insights into the interactions between
+solute and solvent molecules in Li−S electrolytes and their
+dynamical properties as a function of polysulﬁde species and
+lithium salt present in the solution. Our results indicate large
+cluster formation in lower order polysulﬁdes, whereas higher
+solubility is observed with an increase in polysulﬁde chain
+length. Stronger Li+−Sx
+2−bonding is found to be the primary
+cause for the low solubility of lower order polysulﬁdes.
+Furthermore, longer polysulﬁde chain lengths correlate with
+an increase in Li polysulﬁde−solvent interactions that allows for
+higher solubility, which may result in faster reaction kinetics.
+The addition of salt (Li−TFSI) weakens the strong Li+−Sx
+2−
+networks due to competing interactions between TFSI−and
+polysulﬁde dianions with Li+. This competition results in higher
+Li+−solvent interactions and increased solubility, which is
+contrary to common ion eﬀect theory. However, highly
+concentrated electrolytes might decrease the solubility of
+polysulﬁdes. A high salt concentration also reduces the mobility
+of ionic species, which may negatively impact the ionic
+conductivity of the electrolyte. Overall, an improved under-
+standing of the intramolecular interactions in the electrolyte
+will aid in designing solutions with limited solubility of
+detrimental species, without limiting functional properties
+such as ionic conductivity.
+■ASSOCIATED CONTENT
+*
+S
+Supporting Information
+The Supporting Information is available free of charge on the
+ACS Publications website at DOI: 10.1021/acs.chemma-
+ter.7b00068.
+Details of computational and experimental methodology
+together with additional ﬁgures and tables (PDF)
+■AUTHOR INFORMATION
+Corresponding Authors
+*(N.N.R.) E-mail: nnrajput@lbl.gov. Tel.: +1-510-486-5389.
+*(K.A.P.) E-mail: kapersson@lbl.gov. Tel.: +1-510-486-7218.
+ORCID
+Nav Nidhi Rajput: 0000-0003-4740-8217
+Vijayakumar Murugesan: 0000-0001-6149-1702
+Larry A. Curtiss: 0000-0001-8855-8006
+Karl T. Mueller: 0000-0001-9609-9516
+Notes
+The authors declare no competing ﬁnancial interest.
+■ACKNOWLEDGMENTS
+This research was intellectually led by the Joint Center for
+Energy Storage Research (JCESR), an Energy Innovation Hub
+funded by the U.S. Department of Energy (DOE), Oﬃce of
+Science, Basic Energy Sciences (BES), under Contract No.
+DEAC02-06CH11357. The calculations were performed using
+the computational resources of the National Energy Research
+Scientiﬁc Computing Center (NERSC), which is supported by
+the Oﬃce of Science of the U.S. Department of Energy under
+Contract No. DE-AC02-05CH11231. The NMR measure-
+ments were performed at the Environmental Molecular
+Sciences Laboratory (EMSL), a national scientiﬁc user facility
+sponsored by the DOE’s Oﬃce of Biological and Environ-
+mental Research and located at Paciﬁc Northwest National
+Laboratory (PNNL). K. C. Lau acknowledges the grants of
+computer time through the LCRC Blues Cluster and ALCF
+Vesta Cluster at Argonne National Laboratory.
+■REFERENCES
+(1) Scheers, J.; Fantini, S.; Johansson, P. A review of electrolytes for
+lithium−sulphur batteries. J. Power Sources 2014, 255, 204−218.
+(2) Zhang, S. S. Liquid electrolyte lithium/sulfur battery:
+fundamental chemistry, problems, and solutions. J. Power Sources
+2013, 231, 153−162.
+(3) Bruce, P. G.; Freunberger, S. A.; Hardwick, L. J.; Tarascon, J.-M.
+Li-O2 and Li-S batteries with high energy storage. Nat. Mater. 2012,
+11, 19−29.
+(4) Manthiram, A.; Fu, Y.; Su, Y.-S. Challenges and prospects of
+lithium−sulfur batteries. Acc. Chem. Res. 2012, 46, 1125−1134.
+(5) Chen, J.; Han, K. S.; Henderson, W. A.; Lau, K. C.; Vijayakumar,
+M.; Dzwiniel, T.; Pan, H.; Curtiss, L. A.; Xiao, J.; Mueller, K. T.; Shao,
+Y.; Liu, J. Restricting the Solubility of Polysulfides in Li-S Batteries Via
+Electrolyte Salt Selection. Adv. Energy Mater. 2016, 6, 1600160.
+(6) Shin, E. S.; Kim, K.; Oh, S. H.; Cho, W. I. Polysulfide dissolution
+control: the common ion effect. Chem. Commun. 2013, 49, 2004−
+2006.
+Figure 3. Self-diﬀusion coeﬃcients of Li+, TFSI−, DOL, DME and PSs
+in 0.25 M, 1 and 3 M Li(TFSI), 0.25 M Li2Sx (x = 4, 6, 8) in
+DOL:DME and 0.25 M Li2Sx (x = 4, 6, 8) + 1 M Li(TFSI) in
+DOL:DME computed from MD simulations and PFG-NMR.
+Chemistry of Materials
+Communication
+DOI: 10.1021/acs.chemmater.7b00068
+Chem. Mater. 2017, 29, 3375−3379
+3378
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​29/​8/​3375/​6763233/​cm7b00068.​pdf by TSINGHUA UNIV user on 11 October 2026
+
+<<PAGE 5>>
+(7) Wujcik, K. H.; Pascal, T. A.; Pemmaraju, C.; Devaux, D.; Stolte,
+W. C.; Balsara, N. P.; Prendergast, D. Characterization of Polysulfide
+Radicals Present in an Ether-Based Electrolyte of a Lithium−Sulfur
+Battery During Initial Discharge Using In Situ X-Ray Absorption
+Spectroscopy Experiments and First-Principles Calculations. Adv.
+Energy Mater. 2015, 5, 1500285.
+(8) Partovi-Azar, P.; Kühne, T. D.; Kaghazchi, P. Evidence for the
+existence of Li 2 S 2 clusters in lithium−sulfur batteries: ab initio
+Raman spectroscopy simulation. Phys. Chem. Chem. Phys. 2015, 17,
+22009−22014.
+(9) Kamphaus, E. P.; Balbuena, P. B. Long-Chain Polysulfide
+Retention at the Cathode of Li−S Batteries. J. Phys. Chem. C 2016,
+120, 4296−4305.
+(10) Assary, R. S.; Curtiss, L. A.; Moore, J. S. Toward a molecular
+understanding of energetics in Li−S batteries using nonaqueous
+electrolytes: a high-level quantum chemical study. J. Phys. Chem. C
+2014, 118, 11545−11558.
+(11) Vijayakumar, M.; Govind, N.; Walter, E.; Burton, S. D.; Shukla,
+A.; Devaraj, A.; Xiao, J.; Liu, J.; Wang, C.; Karim, A.; Thevuthasan, S.
+Molecular structure and stability of dissolved lithium polysulfide
+species. Phys. Chem. Chem. Phys. 2014, 16, 10923−10932.
+(12) Pascal, T. A.; Pemmaraju, C.; Prendergast, D. X-ray spectros-
+copy as a probe for lithium polysulfide radicals. Phys. Chem. Chem.
+Phys. 2015, 17, 7743−7753.
+(13) Wang, L.; Zhang, T.; Yang, S.; Cheng, F.; Liang, J.; Chen, J. A
+quantum-chemical study on the discharge reaction mechanism of
+lithium-sulfur batteries. J. Energy Chem. 2013, 22, 72−77.
+(14) Hagen, M.; Schiffels, P.; Hammer, M.; Dörfler, S.; Tübke, J.;
+Hoffmann, M.; Althues, H.; Kaskel, S. In-situ Raman investigation of
+polysulfide formation in Li-S cells. J. Electrochem. Soc. 2013, 160,
+A1205−A1214.
+(15) Pascal, T. A.; Wujcik, K. H.; Velasco-Velez, J.; Wu, C.; Teran, A.
+A.; Kapilashrami, M.; Cabana, J.; Guo, J.; Salmeron, M.; Balsara, N.;
+Prendergast, D. X-ray absorption spectra of dissolved polysulfides in
+lithium−sulfur batteries from first-principles. J. Phys. Chem. Lett. 2014,
+5, 1547−1551.
+(16) Pan, H.; Wei, X.; Henderson, W. A.; Shao, Y.; Chen, J.;
+Bhattacharya, P.; Xiao, J.; Liu, J. On the Way Toward Understanding
+Solution Chemistry of Lithium Polysulfides for High Energy Li−S
+Redox Flow Batteries. Adv. Energy Mater. 2015, 5, 1500113.
+(17) Li, Z.; Borodin, O.; Smith, G. D.; Bedrov, D. Effect of Organic
+Solvents on Li+ Ion Solvation and Transport in Ionic Liquid
+Electrolytes: A Molecular Dynamics Simulation Study. J. Phys. Chem.
+B 2015, 119, 3085−3096.
+(18) Shao, Y.; Rajput, N. N.; Hu, J.; Hu, M.; Liu, T.; Wei, Z.; Gu, M.;
+Deng, X.; Xu, S.; Han, K. S. Nanocomposite polymer electrolyte for
+rechargeable magnesium batteries. Nano Energy 2014, 12, 750−759.
+(19) Han, K. S.; Rajput, N. N.; Wei, X.; Wang, W.; Hu, J. Z.; Persson,
+K. A.; Mueller, K. T. Diffusional motion of redox centers in carbonate
+electrolytes. J. Chem. Phys. 2014, 141, 104509.
+(20) Cheng, L.; Curtiss, L. A.; Zavadil, K. R.; Gewirth, A. A.; Shao, Y.;
+Gallagher, K. G. Sparingly Solvating Electrolytes for High Energy
+Density Lithium−Sulfur Batteries. ACS Energy Lett. 2016, 1, 503−509.
+Chemistry of Materials
+Communication
+DOI: 10.1021/acs.chemmater.7b00068
+Chem. Mater. 2017, 29, 3375−3379
+3379
+Downloaded from pubs.​acs.​org/​cmatex/​article-pdf/​29/​8/​3375/​6763233/​cm7b00068.​pdf by TSINGHUA UNIV user on 11 October 2026

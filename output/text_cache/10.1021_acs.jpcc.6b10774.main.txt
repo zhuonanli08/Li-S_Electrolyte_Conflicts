@@ -1,0 +1,1305 @@
+
+<<PAGE 1>>
+Eﬀects of High and Low Salt Concentration in Electrolytes at
+Lithium−Metal Anode Surfaces
+Luis E. Camacho-Forero,†,‡ Taylor W. Smith,†,§,‡ and Perla B. Balbuena*,†,§,∥
+†Department of Chemical Engineering, §Department of Materials Science and Engineering, and ∥Department of Chemistry, Texas
+A&M University, College Station, Texas 77843, United States
+*
+S Supporting Information
+ABSTRACT: The use of high-concentration salts in electrolyte solutions of lithium−sulfur (Li−S)
+batteries has been shown to be beneﬁcial for mitigating some eﬀects such as polysulﬁde shuttle and
+dendrite growth at the Li metal anode. Such complex solutions have structural-, dynamical-, and
+reactivity-associated issues that need to be analyzed for a better understanding of the reasons behind
+such beneﬁcial eﬀects. A passivation interfacial layer known as solid−electrolyte interphase (SEI) is
+generated during battery cycling as a result of electron transfer from the metal anode causing
+electrolyte decomposition. Here, using density functional theory and ab initio molecular dynamics
+simulations, we investigate the salt decomposition, solvation eﬀects, interactions among intermediate
+products and other species, and potential components of the SEI layer as a function of chemical nature
+and concentration of the salt for lithium bis(triﬂuoromethanesulfonyl)imide (LiTFSI) and lithium
+bis(ﬂuorosulfonyl)imide (LiFSI) at 1 and 4 M concentrations in dimethoxyethane. It is found that
+LiTFSI undergoes a less complete reduction and facilitates charge transfer from the anode, whereas
+LiFSI shows a more complete decomposition forming LiF as one of the main SEI products. In
+addition, the speciﬁc decomposition mechanisms of each salt clearly point to the initial SEI
+components and the potential main products derived from them. Very complex networks are found among the salt and solvent
+molecules in their attempt to maximize Li ion solvation that is quantiﬁed through the determination of coordination numbers.
+1. INTRODUCTION
+With the increasing popularity of electric vehicles in the
+marketplace, the need for improvements in conventional
+lithium-ion technology is acutely felt.1 Of the alternative
+chemistries currently being tested, Li−S batteries may be the
+most promising due to their high energy density, and because
+of this they have been extensively studied.2,3 However, a variety
+of issues have prevented Li−S technology from becoming
+commercially viable. Among these is the need for an electrolyte
+which will allow for rapid cycling of lithium, exhibit stability
+even near the lithium anode, and, when decomposition does
+occur, decompose to products which will yield a solid−
+electrolyte interphase (SEI) with neutral or beneﬁcial proper-
+ties for the cell.4−7 Similar issues and desired properties for the
+electrolyte are found in conventional Li-ion batteries.
+Solvents such as dimethoxyethane (DME) and dioxalane
+(DOL) have been shown to exhibit acceptable stability at the
+anode and are widely used in Li−S cells.8,9 Common Li−S salts
+such as lithium bis(triﬂuoromethanesulfonyl)imide (LiTFSI)
+and LiPF6, meanwhile, have higher reduction potentials than
+the aforementioned solvents, and both components of the
+electrolyte are prone to decomposition.10,11 More importantly,
+this SEI also seems to hamper the cell’s performance, as these
+salts and others can yield ineﬃcient lithium cycling, passivate
+the electrode, and fail to adequately ameliorate dendrite
+formation.12,13
+Theoretical methods have been shown to yield insights into
+the makeup of the SEI formed and the mechanism by which it
+occurs, providing guidance for formulation of new chemistries
+or alternative conditions (concentration, temperature of the
+cell, etc.). To this end, Qian et al.14 discussed the use of the salt
+lithium bis(ﬂuorosulfonyl)imide (LiFSI) to help mitigate the
+problems seen at the lithium anode, speciﬁcally at high
+concentrations (up to 4M) in DME. For these conditions, a
+Coulombic eﬃciency (CE) of over 99% was achieved while also
+eliminating dendrite growth, and a vast diﬀerence was seen in
+the performance of the LiTFSI and LiFSI salts, which the
+authors attributed to an increase in the coordination of the
+solvent and Li+ availability. LiFSI also has a higher conductivity
+than other common Li−S salts such as LiPF6, LiClO4, and
+LiTFSI.15 Kim et al.,16 on the other hand, showed that LiFSI-
+based electrolytes at high concentration (5 M) yield similar CE
+and good cycle stability attributed to protective layers formed at
+both electrodes resulting from LiFSI reduction. The use of
+high-molarity salts, especially LiTFSI, has been previously
+shown to dramatically reduce polysulﬁde dissolution, yielding
+similar results to those seen by Qian and leading to signiﬁcant
+reduction in overcharge.17 Suo et al.18 demonstrated excep-
+tional results when using ultrahigh LiTFSI concentration (7 M)
+in a solvent-in-salt electrolyte, where the salt comprised most of
+the electrolyte volume and weight. This resulted in inhibited
+dendrite growth and polysulﬁde shuttle as well as outstanding
+Received:
+October 25, 2016
+Revised:
+December 6, 2016
+Published: December 16, 2016
+Article
+pubs.acs.org/JPCC
+© 2016 American Chemical Society
+182
+DOI: 10.1021/acs.jpcc.6b10774
+J. Phys. Chem. C 2017, 121, 182−194
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​121/​1/​182/​6948980/​jp6b10774.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 2>>
+CE and rate capability. Furthermore, Yushin et al.19 also
+reported enhanced cycle stability of Li2S-based cathodes using
+high electrolyte molarity (up to 7 M LiTFSI) without any
+electrolyte additives, where the superior performance was
+attributed to reduced polysulﬁde dissolution and favorable SEI
+formation on the Li surface.
+The drawback to these otherwise remarkable results is rather
+mundanecost. LiTFSI is, compared to the other materials in
+the typical Li−S cell, extremely expensive, and this is only
+exacerbated at higher molarities.20 However, perhaps through
+the use of alternative salts at these conditions (such as LiFSI), a
+more aﬀordable electrolyte still possessing excellent electro-
+chemical properties can be attained. In Li/S batteries other
+components are present in the electrolyte; as shown in our
+previous work,21 long-chain polysulﬁdes (PS) can easily
+decompose on the anode surface. Therefore, the optimization
+of the electrolyte toward the Li anode should also include the
+interconnected chemistry with the carbon/S cathode.22,23
+However, in this paper we attempt to provide a theoretical
+basis for the structural, dynamical, and reactive behavior of
+high-molarity salt solutions by examining the diﬀerences
+between LiFSI and LiTFSI and comparing the behavior of
+both species at both high (4 M) and low (1 M) concentrations
+at the anode, without including the presence of the PS species,
+which will be examined in future work. The reaction pathways,
+structure and composition of the decomposed fragments,
+extent of decomposition, distribution of charge, and composi-
+tion of the SEI are all examined in detail in order to identify and
+explain the exceptional salt performance mentioned above,
+especially in the 4 M LiFSI case. It is our hope that with a
+better understanding of these complex solutions and their
+reactivity, a basis for improved and economical Li−S battery
+performance predicted upon alternative salt chemistries can be
+identiﬁed and exploited in future works.
+2. COMPUTATIONAL AND SYSTEM DETAILS
+2.1. Model of Lithium−Metal Surface and Electrolyte
+Components. In order to model the lithium−metal anode, a
+BCC Li cell was optimized using DFT. Subsequently, the (100)
+Li crystallographic plane was cleaved from the optimized bulk
+structure. A 9-layer (3 × 3) supercell model was employed to
+represent the anode surface in this case as shown in Figure 1a.
+All calculations were performed using the Vienna ab Initio
+Simulation Package (VASP).24−26 The projector augmented
+wave (PAW) pseudopotentials27,28 as provided in the VASP
+databases were used to describe electron−ion interactions. The
+Perdew−Burke−Ernzerhof generalized gradient approximation
+(GGA-PBE)29 was chosen as the exchange-correlation func-
+tional. The energy cutoﬀof the plane-wave basis expansion was
+set to 400 eV, which corresponds to the optimum cutoﬀfound
+for bulk Li with energy convergence within 1 meV. A
+conjugate-gradient algorithm was employed to relax the ions
+into their instantaneous ground state. The convergence criteria
+for electronic self-consistent iteration and ionic relaxation were
+set to 10−4 and 10−3 eV, respectively. A Gaussian smearing with
+a width of 0.05 eV was utilized to set the partial occupancies to
+each wave function. For the surface Brillouin zone integration, a
+4 × 4 × 1 Monkhorst−Pack30 k-point grid was used.
+Optimized structures for DME and LiTFSI were taken from
+a previous work.31 The LiFSI salt molecule was optimized using
+Figure 1. Model of the lithium−metal anode surface and initial electrolyte mixtures (salt/DME) used in the AIMD simulations. (a) Li-(100) surface.
+Orange rectangle indicates ﬁxed Li layers. (b) 1 M LiFSI, (c) 1 M LiTFSI, (d) 4 M LiFSI, and (e) 4 M LiTFSI. Salt molecules (right) are identiﬁed
+according to colored shapes and numbered circles. Color code: lithium from the slab and salts in 1 M (4M) solutions, purple (green); oxygen, red;
+carbon, gray; ﬂuorine, light blue; sulfur, yellow, nitrogen, blue; hydrogen, white.
+The Journal of Physical Chemistry C
+Article
+DOI: 10.1021/acs.jpcc.6b10774
+J. Phys. Chem. C 2017, 121, 182−194
+183
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​121/​1/​182/​6948980/​jp6b10774.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 3>>
+the Gaussian 09 (G09) package32 with a hybrid functional
+B3PW91 and the 6-311++G(p,d) basis set.33,34 FSI−has been
+reported to be stable in two diﬀerent conﬁgurations similar to
+LiTFSI: C1 (cis) and C2 (trans).35−37 In this work, the anion
+was optimized to the C2 symmetry. Both bond lengths and
+angles for the optimized FSI−were found in good agreement
+with previous theoretical studies.35,36 Next, the cation Li+ was
+located in the bridge position between two oxygen atoms. This
+site has been found preferentially rather than close to the
+nitrogen atom.38 Comparative optimized geometries for both
+salts, LiFSI and LiTFSI, are shown in Figure S1 (Supporting
+Information).
+2.2. Eﬀects of Salt Concentration on Reactivity at the
+Li−Metal Surface. The salt reactivity, stability, and concen-
+tration eﬀect near the lithium−metal anode surface was studied
+using AIMD simulations carried out on the optimized anode
+surface in contact with a liquid-phase mixture containing DME
+as solvent and salt (LiTFSI or LiFSI). For this purpose, a NVT
+ensemble at 330 K was used. Tritium masses were replaced for
+protons to allow a time step of 1 fs. The Nose thermostat was
+used to control the temperature oscillations during the
+simulation with a Nose mass parameter of 0.5. In this case, a
+2 × 2 × 1 k-point mesh was used. Both low (1 M) and high (4
+M) salt concentration were investigated. Due to the volume of
+the simulation cell, one and four salt molecules were required
+to achieve the 1 and 4 M concentration, respectively. The
+number of solvent molecules placed randomly in contact with
+the model anode surface was estimated by using the density of
+the liquid-phase DME (density = 0.87 g/cm3). Afterward, the
+solvent molecules in the liquid phase were allowed to relax
+using a classical molecular mechanics energy optimization. For
+this minimization, the consistent valence force ﬁeld (CVFF)
+with a conjugate gradient algorithm as implemented in the
+Materials Studio software was used.39 The maximum force
+among all atoms in the system required for convergence was set
+to 0.005 kcal mol−1 Å−1. The resulting electrolyte systems are
+shown in Figure 1b and 1c and Figure 1d and 1e for 1 and 4 M
+concentrations of each salt, respectively. Subsequently, the
+minimized systems were allowed to run for 16 ps of AIMD
+simulation. Charge transfer was studied by using the Bader
+charge analysis.40−42 In this method, the total electronic charge
+of an atom is approximated by the charge enclosed in the Bader
+volume deﬁned by zero ﬂux surfaces. It is noteworthy that
+electronic charges are not observables, and the results
+indicating fractional charges are an artifact of the method.
+Finally, in order to test the consistency of AIMD results
+regarding the salt decomposition, bond dissociation energies for
+the LiFSI molecule and resulting fragments from the
+decomposition were calculated in solvent (DME) and under
+Li0 radical attack. The solvation eﬀects were implicitly
+represented by the polarizable continuum model (PCM)43 as
+implemented in the G09 software package. Bond energies were
+calculated using G09 at the same level of theory above-
+mentioned.
+2.3. Structure and Dynamics of Salt Solutions in Bulk
+Electrolyte. In order to gain more insights about the behavior
+of the electrolyte under diﬀerent salt concentrations, several
+electrolyte mixtures were investigated by using AIMD
+simulations at 330 K during 20 ps with the same simulation
+parameters used in the previous section. In this case, the
+electrolyte system was modeled using a periodic 15 Å × 10 Å ×
+10 Å cell. These dimensions are similar to those of the liquid
+phase (not including the slab) in the previous section; however,
+here the model lithium anode was removed in order to study
+how the nature of the salt, its concentration, and the Li+
+concentration aﬀect the structure of the electrolyte and
+Figure 2. LiFSI reduction mechanism in a 1 M solution. Average charge of Li (form LiFSI) is 0.87 (±0.01) |e| over the simulation time. Color code
+as in Figure 1.
+The Journal of Physical Chemistry C
+Article
+DOI: 10.1021/acs.jpcc.6b10774
+J. Phys. Chem. C 2017, 121, 182−194
+184
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​121/​1/​182/​6948980/​jp6b10774.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 4>>
+solvation of Li ions in the bulk electrolyte (far from the
+electrodes). A total of 12 diﬀerent mixtures were studied,
+divided into three main groups: 0M, 1M, and 4M,
+corresponding to the salt concentration. The ﬁrst group
+(0M) was built with a pure solvent model electrolyte containing
+1 and 3 Li+. The second group (1M) was formed by mixtures of
+salt (either LiTFSI or LiFSI) and DME, where three systems
+per each salt were considered corresponding to the addition of
+0, 1, and 3 Li ions to the 1M-salt electrolyte mixtures. In the
+last group (4M), 0 and 1 Li+ were added to the each 4M-salt
+solution. The locations of the added Li ions were assigned
+randomly and relatively far away from each other. The radial
+distribution functions (RDF) g(r) were obtained using the
+Visual Molecular Dynamics (VMD)44 program with a delta −r
+of 0.05 Å.
+3. RESULTS
+3.1. Salt Reactivity and Eﬀect of Salt Concentration at
+the Li−Metal Surface. 1 M Solutions. LiFSI has shown
+promising performance in Li−S systems as an alternative to the
+LiTFSI salt. Thus, to better understand its role and impact in
+Li−S batteries, the reactivity of 1 M of LiFSI solution in DME
+is compared to the 1 M LiTFSI counterpart. The salts are
+initially located slightly far away from the surface (∼5 Å) as
+shown in Figure 1a and Figure 1b for LiFSI and LiTFSI,
+respectively. The LiFSI reduction mechanism and instanta-
+neous fragment charges are depicted in Figure 2. The fractional
+charges shown are an artifact of the model but provide an idea
+of the extent of charge transfer. It is found that the LiFSI salt
+molecule does not survive the duration of the simulation. At 2.8
+ps, it partially dissociates, i.e., one of the two O−Li+ ionic
+bonds (Figure S1) in the molecule dissociates. The resulting
+conﬁguration begins to deﬂuorinate at 3.7 ps, where the F−
+remains in the liquid phase until a SO2 group breaks and
+recombines with the F−forming FSO2
+−at around 4 ps. The
+new anion retains the Li+ and is stable for the next 7 ps, when it
+breaks again, producing LiSO2 (being the only remaining stable
+fragment in the liquid phase by the end of the simulation) and
+F−that migrates toward the surface where LiF is formed.
+Regarding the FNSO2
+2−fragment formed when SO2 breaks, it
+deﬂuorinates almost at the same time as it is formed and the
+NSO2
+−anion moves then to the surface where it initially gains
+two additional electrons and is reduced into its elemental
+constituents by the lithium anode. A similar reduction
+mechanism has been reported for FSI−anion decomposition
+in ionic liquids in contact with a lithium metal anode or
+lithiated silicon anodes.45−47
+On the other hand, Figure S2 illustrates the reduction
+mechanism of LiTFSI. Here, the salt decomposes by the
+breaking of an S−C bond at 5.1 ps, but both fragments
+(Li+)CF3SO2N2−(adsorbed on the surface via O−Li) and CF3
+−
+(in liquid phase) survive until the end of the simulation (no
+further reduction). Also, the LiTFSI salt is not observed to
+dissociate into anion and cation species, as was the case, at least
+partially, with the LiFSI system. These results suggest that there
+is a signiﬁcant diﬀerence in the reactivity and reduction
+pathways between these two salt molecules. For this reason,
+both salts were tested in separate AIMD explicit solvent
+simulations in order to determine their stability in DME
+(without the anode). Over 16 ps, however, the LiFSI did not
+decompose and neither did the LiTFSI. This indicates that the
+presence of the lithium anode is a major factor driving the salt
+reduction. A charge analysis of Li-anode surfaces in both cases
+reveals that electron transfer from the anode toward the
+electrolyte drives the reactions to happen, as shown in Figure
+S3. For LiFSI, an increasing charge transfer starts at around 3 ps
+of simulation time, which coincides with the diﬀerent
+Figure 3. 1-LiFSI reduction mechanism in a 4M-LiFSI/DME solution. Average charge of Li (form LiFSI) is 0.85 (±0.02) |e| over the simulation
+time. Color code as in Figure 1.
+The Journal of Physical Chemistry C
+Article
+DOI: 10.1021/acs.jpcc.6b10774
+J. Phys. Chem. C 2017, 121, 182−194
+185
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​121/​1/​182/​6948980/​jp6b10774.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 5>>
+decomposition events seen during the simulation. Conversely, a
+gain of 2 electrons is detected at 5 ps in the case of LiTFSI,
+which is when the S−C bond cleavage takes place. By the end
+of the simulations, the Li slab exhibits a charge of +11 |e| and
++3 |e| for the 1M-LiFSI and LiTFSI, respectively, where only
+about +1 |e| is associated with the interaction with the solvent.
+Although in this scenario (salt relatively far from anode) the
+LiTFSI molecule did not decompose to a great extent, it has
+been reported that when LiTFSI is initially located near the
+anode it may decompose close to its elemental constituents and
+LiSO2; in that case the charge transferred to the salt is
+considerably higher (∼17 |e|).31 Thus, both salts may
+decompose to the point where their elemental constituents
+interact with the lithium anode to form SEI layer components.
+On the basis of the number of F atoms one may speculate that
+the SEI layer formed from LiFSI may contain less LiF than in
+the case of LiTFSI, and in the latter, C-containing SEI
+components are expected to form. In addition, shorter
+remaining fragments from the salt decomposition may be
+produced from LiFSI in comparison with those from LiTFSI
+decomposition leading to relatively stable large fragments31
+such as CF3SO2N2−. Thus, it is possible that the amount of LiF
+could be larger for LiFSI in spite of the lower number of F
+atoms, while ﬂuorinated polymers derived from fragments such
+as CF3SO2N2−may be expected in LiTFSI electrolytes.
+4 M Solutions. To further explore salt behavior at the anode,
+high-molarity (4M) salt simulations were carried out with both
+salts. To begin, we examine the 4 M LiFSI solution by isolating
+the reaction mechanism of each molecule resulting from the
+AIMD simulations (there are 4 molecules in the simulation cell
+tagged according to Figure 1d). Figure 3 illustrates the reaction
+pathway followed by the molecule 1 (1-LiFSI). The 1-LiFSI
+molecule loses a ﬂuorine atom within 120 fs, which is adsorbed
+on the lithium surface. The F(SO2)2N2−fragment dissociates
+into FSO2N2−and SO2 within the next 200 fs. Three hundred
+femtoseconds later, the FSO2N2−group breaks and forms NSO
+and other elemental constituents that are adhered to the surface
+for the rest of the simulation time. On the other hand, SO2
+remains stable for more than 5 ps, when it is ﬁnally
+decomposed into S2−and O2−.
+The reduction mechanisms of the 2-LiFSI and 3-LiFSI
+molecules are shown in Figures S4 and S5, respectively. In
+these cases, the sets of reactions start later (1 and 4 ps for 2-
+and 3-LiFSI, respectively) than in the 1-LiFSI molecule, yet a
+similar mechanism to the one observed for 1-LiFSI was
+identiﬁed in both cases. The main observable diﬀerence is the
+extent of decomposition. Here, the FSI−anion loses one
+ﬂuorine atom. Interestingly, in the case of 3-LiFSI, the F−forms
+a LiF neutral species with the cation of the salt. This is followed
+by cleavage of an N−S bond which leads to the formation of
+the FSO2N2−and SO2 fragments. The ﬁrst fragment only
+deﬂuorinates, and the NSO2
+3−formed remains attached to the
+surface for the rest of the simulation. Regarding the SO2, for 2-
+LiFSI, it is reduced to its elemental constituents as in the ﬁrst
+case. However, for 3-LiFSI, only one of the S−O bonds breaks,
+leaving a SO2−fragment adsorbed on the lithium anode. In
+order to corroborate the degree of decomposition for these
+three salt molecules, the simulation was run for 8 ps more,
+giving a total simulation time equal to 24 ps. No further
+reactions were observed.
+Although molecules 1−3 showed a similar reduction
+mechanism, this was not the case for the fourth molecule: 4-
+LiFSI. Interestingly, the 4-LiFSI molecule starts to decompose
+similarly to the other LiFSI molecules by one S−F bond
+breaking. However, in this case, the second S−F bond is
+cleaved almost simultaneously with the ﬁrst. The ﬁrst F−forms
+a LiF neutral species resembling the one observed for 3-LiFSI,
+while the second ﬂuorine atom is adsorbed on the surface. The
+remaining (SO2)2N3−fragment stays attached to the surface for
+the duration of the simulation (Figure 4).
+The 4M-LiTFSI solution is also found to be very reactive and
+to begin decomposition almost immediately. We begin by
+considering the reduction of the 1-LiTFSI molecule shown in
+Figure S6. The 1-LiTFSI molecule begins its decomposition by
+the breaking of the S−N bond at 1 ps resulting in CF3SO2N2−
+and CF3SO2
+−. The CF3SO2N2−fragment is stable for the
+remainder of the simulation time. However, CF3SO2
+−
+decomposes sequentially into CSO, F, and O within the next
+2 ps. The 2-LiTFSI molecule starts to decompose at 8 ps, as
+seen in Figure S7. A C−S bond is initially broken, followed by
+the reduction of the CF3
+−group into its C and F elements
+within the next 5 ps. The CF3SO2NSO2
+2−fragment did not
+undergo further reaction. Figure S8 illustrates the fast reduction
+of the 3-LiTFSI molecule (at a time < 2 ps). In fact, this
+reaction pathway is similar to the one seen in the 1-LiTFSI
+molecule. Once the CF3SO2N2−and CF3SO2
+−fragments are
+formed due to the cleavage of one S−N bond, the CF3SO2
+−
+reacts immediately. The SO2
+2−group in contact with the anode
+is reduced into its elemental constituents, followed by the CF3
+−
+deﬂuorination. Both S−N and C−S bonds breaking have been
+found in previous theoretical studies of TFSI−decomposi-
+tion.31,45,48 In contrast, the decomposition of 4-LiTFSI follows
+Figure 4. 4-LiFSI reduction mechanism in a 4M-LiFSI/DME solution. Average charge of Li (form LiFSI) 0.87 (±0.01) |e| over the simulation time.
+Color code as in Figure 1.
+The Journal of Physical Chemistry C
+Article
+DOI: 10.1021/acs.jpcc.6b10774
+J. Phys. Chem. C 2017, 121, 182−194
+186
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​121/​1/​182/​6948980/​jp6b10774.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 6>>
+an entirely diﬀerent pathway (Figure S9) and does not begin
+until 10 ps of simulation time have elapsed, being the last of the
+four salt molecules to react. The ﬁrst bond to break is an S−O;
+200 fs later a CF3
+−group is released, and by 14.6 ps of
+simulation it has been reduced to its elemental constituents.
+The CF3SO2NSO group then begins to deﬂuorinate within the
+next picosecond, leaving a CSO2NSO fragment with a charge of
+∼−5 |e|. After S−O and S−N bonds are broken in the next 500
+fs, a CSO2N fragment remains. The elemental C from the CF3
+−
+group decomposition then reacts with the CSO2N group,
+removing the C to form a C−C group. Its charge (∼−2 |e|) and
+the fact that it is surrounded by Li atoms from the anode
+suggest the formation of a molecule of lithium carbide (Li2C2).
+The remaining SO2N3−group loses its two oxygen atoms by
+the end of the simulation, leaving only a SN3−group adhered to
+the lithium anode. To brieﬂy summarize the 4 M LiTFSI
+results, this high-molarity salt electrolyte is very prone to salt
+decomposition, the fragments remain relatively large, and many
+fragments survive the duration of the simulation.
+Bader Charge Analyses. In order to gain additional insights
+into the behavior of the high-molarity salt electrolytes, Bader
+charge analysis was conducted on each salt molecule for both 4
+M solutions. Figure 5 shows the net charge transferred to each
+salt molecule over the simulation time. First, let us consider the
+4M-LiFSI case shown in Figure 5a. The 1-LiFSI molecule (in
+green) showed a great increase of charge within the ﬁrst
+picosecond of simulation (∼7 |e|), followed by a 3 |e| gain at
+about 6 ps corresponding to the reduction of the salt (into SO2,
+NSO, F, and O) and decomposition of SO2, respectively.
+Similarly, the 2-LiFSI molecule (in orange) exhibits a rapid
+increase of charge (∼7 |e|) which is attributed to the fast
+decomposition of this salt as revealed in Figure S4.
+Interestingly, the 3-LiFSI molecule (in blue) presented the
+slowest charge transfer mechanism, which can be related to its
+relatively larger distance from the surface compared to the
+other salt molecules. Here, a +∼2 |e| step mechanism is
+observed at about 3.5, 7.2, 8.8, and 15.4 ps and corresponding
+to S−F, S−N, S−F, and S−O bond cleavages. Finally, the 4-
+LiFSI molecule (in purple) shows a sharp ∼4 |e| charge increase
+attributable to the two +2 |e| S−F bond breaking mechanisms
+observed in Figure 4.
+For the 4M-LiTFSI solution, the charges of the 1-LiTFSI and
+3-LiTFSI molecules increase rapidly (about 8 and 12 |e|,
+respectively) due to their relatively fast decomposition (Figure
+5b). The two reaction mechanisms are similar; however, in the
+1-LiTFSI case a CSO fragment is not reduced, resulting in less
+charge transfer to this molecule compared to 3-LiTFSI. 2-
+LiTFSI and 4-LiTFSI molecules exhibit much slower charge
+transfer mechanisms. In fact, the net charge of the 4-LiTFSI
+molecule oscillates signiﬁcantly within the ﬁrst 8 ps, after which
+its charge is stabilized when the 2-LiTFSI molecule gains ∼2 |e|.
+After 1.6 ps later the 4-LiTFSI molecule starts to decompose
+following the above-mentioned unusual S−O bond breaking.
+This reduction is carried out over the following 6 ps, requiring a
+progressive increase of charge up to about 17 |e| to take place.
+By the end of the simulation, only a SN fragment survives. To
+clarify the possible reason for this new S−O bond cleavage
+mechanism, a 1M-LiTFSI solution using the same salt location
+was simulated using AIMD for 16 ps, and surprisingly, the salt
+decomposes following the C−S bond cleavage mechanism.
+This suggests a concentration eﬀect led to the S−O bond
+breaking ﬁrst. The fact that the charge of the 4-LiTFSI
+molecule is stabilized once the 2-LiTFSI molecule is reduced
+also seems to indicate that there may be competitive charge
+transfer processes between the 2-LiTFSI and 4-LiTFSI
+molecules and the surface which leads to this new
+decomposition mechanism.
+Further examination of the charge analysis reveals the net
+charge transferred from the Li slab in both scenarios. According
+to Figure S10a, both Li anodes for the high-salt concentration
+systems started with a charge of +2 |e| (initial solvation/
+interaction between surface lithium atoms and the electrolyte,
+see details in Figure S10b). By the end of the simulation, the Li
+slab in the 4M-LiFSI system had transferred over 30 electrons
+to the electrolyte, most of which were accepted by the salt
+molecules. In the 4M-LiTFSI system, the Li slab had a net
+charge transfer of +44 |e|. Although the decomposition of
+LiTFSI is less extensive than that of LiFSI, the charge analysis
+reveals a higher electron transfer (14 electrons) for the LiTFSI
+case. Therefore, in order to investigate the origin of this
+signiﬁcant diﬀerence, the net charge of the atoms making up
+the salt molecules was calculated and is reported in Figure 6. It
+can be observed that while there is some change in the net
+charges of N, O, and F, this is minimal compared to those of S
+and C. The S atoms in the salt molecules accept around 23 and
+17 electrons for 4M-LiFSI and 4M-LiTFSI, respectively. Hence,
+it is clear that the S atoms in the LiFSI system gain more charge
+from the lithium anode than in LiTFSI, which might be partly
+responsible for the lower extent of decomposition of LiTFSI.
+However, the main diﬀerence between the two salts is that the
+carbon atoms in the LiTFSI are able to accept additional
+electrons (−19 |e|), whereas carbon is not present in the LiFSI
+Figure 5. Charge transfer per molecule: (a) LiFSI and (b) LiTFSI.
+Charges were calculated based on the elements forming the molecule
+before reduction.
+The Journal of Physical Chemistry C
+Article
+DOI: 10.1021/acs.jpcc.6b10774
+J. Phys. Chem. C 2017, 121, 182−194
+187
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​121/​1/​182/​6948980/​jp6b10774.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 7>>
+salt. This is also the primary reason the Li anode exhibits a
+greater net charge transferred in the high-molarity LiTFSI
+system than in the LiFSI. The DME molecules are relatively
+stable, and no reactions have been observed during the time
+scale of these simulations. Moreover, Figure S11 illustrates the
+average charge per atomic species (complementing the data in
+Figure 6) and the DME. DME molecules gain only −0.07 and
+−0.01 |e| per molecule by the end of the simulated time with
+LiFSI and LiTFSI, respectively.
+SEI Components Characterization (4 M Solutions). Figure
+7 shows the two exposed surfaces (since our model is a
+symmetric slab) for each system at the end of the simulation.
+This ﬁgure allows us to identify the initial components of the
+likely SEI layer formed due to salt decomposition at the anode
+in high-molarity salt electrolytes. In both high-concentration
+electrolyte systems, 2−3 layers of Li from each exposed side of
+the slab (top and bottom) were involved in the reduction of the
+salts. Almost complete decomposition of the salt can be
+observed in three out of the four salt molecules in the 4M-LiFSI
+system, with the largest fragments being NSO2 (bottom) and
+N(SO2)2 (top) (Figure 7a). Conversely, the 4M-LiTFSI case
+shown in Figure 7b illustrates a rougher surface due to the
+larger fragments that appears comparatively more stable at least
+in the ﬁrst instants of interactions with the metal surface. Here
+we can identify that one of the four LiTFSI molecules almost
+completely decomposes. The remaining three molecules also
+decompose; however, large fragments are still present by the
+end of the simulation (CF3SO2N and CF3SO2NSO2). In
+addition, the presence of reactive molecules containing carbon,
+such as LiTFSI, generates a distinct pathway in the formation
+and properties of the SEI layer. Another key diﬀerence between
+these two salts is with respect to the possible formation of LiF.
+For the LiFSI salt, no F atom stays adhered to any remaining
+fragment after 16 ps, while for the LiTFSI, several whole CF3
+groups remain attached. Thus, these results suggest that the
+LiFSI-based electrolyte may form a LiF SEI layer more
+eﬃciently than LiTFSI, resulting in a protective mechanism
+for the Li−metal anode.
+Thermodynamics of Reactions. According to the previously
+discussed reaction mechanisms, it appears that the orientation
+of the salt with respect to the anode surface may be causing
+some of the diﬀerences in the decomposition pathways. In
+order to establish a better understanding of these reactions,
+DFT calculations were performed separately to establish
+reaction energies and thermodynamic favorability based on
+the direction of lithium attack on the salt molecule. Here, a Lix
+(x = 0, +1) was located near a neutral LiFSI (LiTFSI) salt in
+diﬀerent positions: near an oxygen (Lix---O), a nitrogen (Lix---
+N), a ﬂuorine (Lix---F) atom, or a Li+ (Lix---Li+) as described in
+Figure S12 in order to calculate the aﬃnity toward charged or
+neutral Li. Furthermore, two more Li salts commonly used in
+lithium batteries systems5,49 (LiPF6 and LiBF4) were tested to
+compare their behavior with these two salts.
+The interaction energy resulting from these orientations are
+displayed in Table 1. Regarding LiFSI, the data suggests that
+the Li0 attack from the position near the ﬂuorine atom is the
+most favorable, followed closely by attack on the N atom, O
+atom, and Li+ (from salt). Interestingly, in the three ﬁrst cases a
+reaction has actually taken placethe same reaction detected
+Figure 6. Net charge transferred to the elemental species within the
+salts (S, C, O, F, and N): (a) LiTFSI and (b) LiFSI. Charge
+corresponds to the summation of all charges of each atomic species
+within the salts.
+Figure 7. SEI-layer components resulting after 16 ps of simulation
+time for 4 M solutions. Fragments and atomic species and products of
+the salt decomposition remain adsorbed or form the SEI on the Li−
+metal slab. No reduction products were observed in the liquid phase in
+any case: (a) LiFSI and (b) LiTFSI. Color code as in Figure 1.
+The Journal of Physical Chemistry C
+Article
+DOI: 10.1021/acs.jpcc.6b10774
+J. Phys. Chem. C 2017, 121, 182−194
+188
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​121/​1/​182/​6948980/​jp6b10774.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 8>>
+in the AIMD simulations. The attacking lithium atom has
+induced the removal of a ﬂuorine atom in all three scenarios. In
+fact, in the most favorable case Li removes the F and LiF is
+formed. This reaction is extremely favorable (ΔEr = −3.16 eV),
+as might be expected from the AIMD simulations in which
+LiFSI reacts rapidly in contact with Li metal and forms LiF.
+This data supports the results of the previous AIMD
+simulation: Li attack on the F atoms is highly thermodynami-
+cally favorable, while the Li0 being near the Li+ (from the salt)
+is much less so. This provides us a good theoretical explanation
+for the diﬀerence in stability of molecules 1-LiFSI and 2-LiFSI
+in the 4 M LiFSI simulation; molecule 1 (F atom oriented
+toward the Li metal) reacts rapidly with the lithium surface
+(within 120 fs) and decomposes almost completely, while
+molecule 2 survives nearly 10 times as long (1200 fs) and has a
+less complete decomposition. The LiTFSI seems to be more
+stable than the LiFSI, as only one C−S bond was aﬀected when
+the Li0 was initially placed near the ﬂuorine atoms (3-fold
+coordinate, 3c). However, in this case the energy was reduced
+almost by one-half compared to the Li0---F previously
+discussed. With a reaction energy slightly lower than the
+LiTFSI salt, LiF is formed (as in LiFSI) due to a ﬂuorine atom
+being removed by the Li0 attack when the neutral lithium is
+located near two F atoms (2-fold coordinate, 2c) in LiPF6 in
+agreement with earlier studies on lithiated silicon anodes,50
+where PF6
+−decomposes in contact with Li active surface sites.
+Finally, for LiBF4 no spontaneous reaction was observed
+regardless of the orientation of Li0 or Li+. In general, whenever
+the reaction is thermodynamically spontaneous (ΔGr < 0,
+highlighted in red and bold font in Table 1), the attack by
+neutral lithium is much more favorable than charged, i.e., higher
+interaction energy, even when near nucleophilic sites, such as in
+the conﬁguration near the N or O which explains the high
+reactivity only at the surface for all the salts tested. In addition,
+the Li0---Li+ energy of interaction is very consistent within all
+the salts tested: ΔEr = −0.32 to −0.35 eV and ΔGr = −0.13 to
+−0.16 eV.
+It has been observed that in diﬀerent scenarios for 1 and 4 M
+LiFSI systems the Li+ in the salt may play a role in the salt
+decomposition process. For instance, in the 1 M case, partial
+dissociation was observed prior to decomposition. In the 4 M
+solution, the decomposition of salts 3 and 4 show Li+ forming a
+LiF with a ﬂuorine atom that is released from its salt. Therefore,
+the ionic dissociation energy was calculated for LiFSI in the gas
+phase and in DME (implicit solvent) using G09 and comparing
+these results to those reported for LiTFSI.31 The results (see
+Table S1) show that for the gas phase, the dissociation is
+unlikely in any case (ΔEr ≈6 eV). In DME, there is a
+substantial reduction in the energy of reaction compared to the
+gas phase, as might be expected. However, the dissociation
+energies (free energies) of LiFSI and LiTFSI are 0.62 (0.31)
+and 0.75 (0.43) eV, with the LiFSI being more prone to
+dissociate, yet neither being favorable. This suggests that the
+impressive properties observed by Qian et al.14 may arise from
+properties other than LiFSI’s tendency to dissociate and
+supports the idea that the LiFSI is, in fact, stable far away from
+the anode surface, as is LiTFSI, and as found in the explicit
+solvent results with DME. Additionally, energy calculations
+were made using an explicit solvent model within a periodic cell
+by using VASP (not shown). The ﬁnal results in reaction
+energy between the implicit and the explicit solvent calculations
+diﬀered by only 5%, leading us to conﬁrm the previous results.
+In order to evaluate the energetics of the decomposition of
+LiFSI and some of the fragments observed during the AIMD
+simulations, bond dissociation energies were calculated. If the
+LiFSI decomposition is carried out in solvent and without the
+presence of additional lithium atoms (Table 2), none of the
+proposed reactions is thermodynamically favorable. The one
+that requires the lowest energy (3.09 eV) is the N−S breaking
+bond. Similar results were observed when a FSI−anion is used
+Table 1. Calculated Interaction Energies for Diﬀerent Salts with Various Lix (x = 0, +1) Orientations from B3PW91/6-311+
++G(p,d) Calculationsa
+aAll energies are given in eV and were calculated using an implicit model to represent the DME. Final conﬁgurations for reacting systems are shown
+in Figure S13. 1c, 2c, and 3c are the 1-, 2-, and 3-fold LiF coordinations shown in Figure S12.
+Table 2. B3PW91/6-311++G(p,d)-Calculated Bond
+Dissociation Energies (eV) for LiFSI and Fragments in
+Solution (DME)
+reactions
+ΔE (0 K)
+ΔG (298 K)
+LiFSI →F + LiNS2O4F
+3.77
+3.39
+LiFSI →F−+ LiNS2O4F+
+3.40
+3.02
+LiFSI →LiNSO2F + SO2F
+3.09
+2.49
+LiFSI →NSO2F + LiSO2F
+3.61
+3.01
+NS2O4F−→NSO2
+−+ SO2F
+1.96
+1.43
+NS2O4F−→NSO2 + SO2F−
+1.45
+0.92
+NS2O4F →NSO2 + SO2F
+2.17
+1.61
+SO2F−→F−+ SO2
+1.09
+0.77
+SO2F−→F + SO2
+−
+3.89
+3.53
+SO2F →F + SO2
+1.43
+1.10
+The Journal of Physical Chemistry C
+Article
+DOI: 10.1021/acs.jpcc.6b10774
+J. Phys. Chem. C 2017, 121, 182−194
+189
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​121/​1/​182/​6948980/​jp6b10774.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 9>>
+instead (Table S2). Thus, these results coupled with the ionic
+dissociation data shown before allow us to infer that the real
+driving force in salt decomposition is the presence of the
+lithium anode. In addition, the further decomposition of the
+fragments tested in this case (NS2O4F and SO2F with varying
+charge allocation) is still not thermodynamically favorable even
+though the energy required in some of these cases is much
+lower than what is needed to break the salt molecule itself.
+To emulate the decomposition of LiFSI induced by the
+anode, one lithium radical was added to the system. Results are
+shown in Table 3. In contrast to the in-solvent-only scenario,
+the presence of Li induces a very thermodynamically favorable
+reaction. Both S−F and N−S bonds are very likely to break,
+with cleavage of the S−F bond being the most favorable (−2.93
+eV). These results are consistent with our AIMD simulations in
+which S−F was in every case observed as the initial bond
+cleavage in the decomposition process at both 1 and 4 M
+concentrations. Decomposition by the N−S bond is also likely
+and agrees well with our molecular dynamics observation of this
+behavior after S−F cleavage. Additionally, NSO2 and SO2F
+fragments were also identiﬁed as common products in the
+AIMD results; these species were often further reduced, even to
+their elemental constituents in some cases. Accordingly, we
+calculated the reaction energies corresponding to deoxygena-
+tion and deﬂuorination of NSO2 and SO2F at diﬀerent charges.
+These results indicate that the formation of LiO is highly
+favorable. The formation of LiO−, however, is more
+complicated. When produced from NSO2
+−and neutral lithium,
+LiO−is thermodynamically unfavorable (1.32 eV). However, in
+the case of NSO2
+−2, the creation of both NSO−and LiO−
+anions is very favorable. Likewise, the deﬂuorination of SO2F to
+form LiF and either SO2 neutral or charged shows a
+tremendous driving force (−5.38 and −2.95 eV, respectively).
+This provides another example of the large propensity of LiFSI
+to form LiF when in contact with Li metal, which was also
+discussed in relation to the AIMD simulations for this salt.
+3.2. Structure and Dynamics of Salt Solutions in Bulk
+Electrolyte. In the previous section, our discussion was limited
+to events occurring at or near the lithium−metal anode and its
+electrical double layer. We now turn our analysis toward the
+bulk electrolyte in order to study how the salts, their
+concentration, and the Li+ concentration aﬀect the structure
+of the electrolyte and the solvation of Li ions. The addition of
+Li+ ions to the solution represents the ﬂux of Li ions through
+the bulk. Thus, the excess of 0, 1, or 3 Li+ ions in the solution is
+equivalent to have inﬁnite dilution, 0.008, or 0.023 g/cm3 of
+Li+, respectively. From these calculations, we observe that Li+
+ions may be solvated diﬀerently after 20 ps depending on the
+salt concentration. We ﬁrst consider the case of 1 M salt
+concentration, illustrated in Figure 8. Neither salt completely
+dissociates after 20 ps (i.e., only one of the two O−Li+ bonds is
+broken), which agrees well with our prediction in the previous
+section regarding the dissociation energy of each salt.
+Interestingly, even when there is an excess of Li+, the salts
+still partially dissociate, with the lone exception being when 3
+Li+ are added to a solution containing LiTFSI. In this case the
+original cation keeps its two bonds to the O atoms from the
+salt. For both salts at 1 M concentration with no Li ion excess,
+the cation is solvated by two DME species, coordinating with
+one and two oxygen atoms in each case. The addition of one
+Table 3. Calculated Bond Dissociation Energies (eV) for
+LiFSI and Fragments in Solution (DME) and under Li
+Radical attack from B3PW91/6-311++G(p,d)
+reactions
+ΔE (0 K)
+ΔG (298 K)
+LiFSI + Li →LiF + LiNS2O4F
+−2.93
+−3.08
+LiFSI + Li →Li2NSO2F + SO2F
+−1.23
+−1.52
+LiFSI + Li →LiNSO2F + LiSO2F
+−2.64
+−2.95
+Li + NSO2 →NSO + LiO
+−1.75
+−1.89
+Li + NSO2
+−→NSO−+ LiO
+−1.22
+−1.36
+Li + NSO2
+−→NSO + LiO−
+1.32
+1.18
+Li + NSO2
+−2 →NSO−+ LiO−
+−2.00
+−2.09
+SO2F−+ Li →LiF + SO2
+−
+−2.82
+−2.95
+SO2F + Li →LiF + SO2
+−5.28
+−5.38
+Figure 8. 1M-salt electrolyte solutions after 20 ps of simulation time at 330 K with diﬀerent concentrations of Li ions (see text): (a) LiFSI and (b)
+LiTFSI. Color code: lithium from salts (excess), purple (green); oxygen, red; carbon, gray; ﬂuorine, light blue; sulfur, yellow, nitrogen, blue;
+hydrogen, white. Hydrogen atoms are not shown for clarity.
+The Journal of Physical Chemistry C
+Article
+DOI: 10.1021/acs.jpcc.6b10774
+J. Phys. Chem. C 2017, 121, 182−194
+190
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​121/​1/​182/​6948980/​jp6b10774.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 10>>
+Li+ to the solution does not aﬀect the way the cation from the
+salt is solvated, and two clusters are formed: one containing the
+salt and the other the added Li ion 4-fold coordinated by 3 and
+2 DME molecules for LiFSI and LiTFSI mixtures, respectively.
+Further addition of lithium ions (+3Li+) to the mixtures
+induces the creation of a more complex coordinated network
+near the salts. In the 1M-LiFSI solution, the salt shares two
+cations (its own and an attracted one) with the solvent
+molecules and the remaining two added Li+ form one cluster
+each coordinated by four oxygen atoms from two and three
+DME molecules. In contrast, for 1M-LiTFSI, a more complex
+cluster is formed surrounding the salt, but this salt also traps
+one of the added Li+. The cation from the salt (in purple) is
+solvated by two oxygen atoms from two DME species; one of
+these two molecules solvates also one of the added Li+. This
+lithium ion is solvated by two additional DME molecules. One
+of the DME molecules solvates, simultaneously, one Li+ which
+is attracted by the salt atoms, closing the complex structure.
+Figure S14 shows the system conﬁguration after 20 ps of
+simulation time for a high molar concentration of LiFSI and
+LiTFSI with and without excess Li+. For the stoichiometric
+amount of Li+, both salts form a unique and more complex
+network than what is observed in the previous case (1 M
+concentration). This network contains all cations in the
+solution. Here all Li+ ions are shared between the salt and
+the solvent molecules. Interestingly, in the case of the 4M-
+LiFSI/DME mixture, the FSI−anions are all interconnected by
+their counterions. On the other hand, 4M-LiTFSI solution also
+forms a similar network, but in this case, one of the TFSI−
+anions is connected to the rest of the network by a DME
+species which solvates two Li ions (from two diﬀerent salts). A
+remarkable diﬀerence between the 1 M concentration and high-
+molarity case is that no signiﬁcant rotation was observed within
+the salts, i.e., the trans structures remain unchanged, after the
+20 ps simulation time in the 1 M case. In the 4 M case, the
+barriers associated with the change of chirality are overcome
+and some of the salts in both systems exhibit a more cis-like
+structure than trans. Umebayashi et al.51 and Yoon et al.52
+found a similar conformational change for the LiTFSI and
+LiFSI salts, respectively; however, in their analysis the amount
+of the cis conformer increases with increasing concentration of
+the lithium ion instead of salt molarity. Regarding the scenario
+where an excess of Li ions is present (1 Li+), comparable
+networks are formed. FSI−species are connected by Li+ ions,
+and the added cation adheres to the network through solvent
+molecules that, at the same time, are sharing the Li+ ions with
+the anions. The 4M-LiTFSI solution arranges to form a similar
+network to that found in the nonexcess case, and again, one of
+the LiTFSI salts is found connected to the main network
+through DME solvating the cations. Finally, a pure solvent
+electrolyte was tested by adding Li ions (see Figure S15). Here
+it can be observed that each ion is solvated by four oxygen
+atoms from three DME molecules when one Li+ is added or
+two DME’s when 3 Li+ are present. This behavior is also
+observed when the salt is present at low concentration and does
+not directly interact with the cations or their solvation of DME
+molecules. This suggests that these two structures may be the
+most probable solvation forms between DME and Li+.
+Li+(DME)2 structures have been suggested previously.53,54 By
+using DFT calculations, Liu et al.53 showed that when one Li+ is
+solvated by less than three DME molecules (both oxygen atoms
+interacting), stable complexes are formed. Although our results
+showed three DME molecules solvating one Li+ on several
+occasions, our conclusion remains valid since the ﬁnal
+coordination for Li−O is four (since two DME molecules are
+sharing only one oxygen atom each).
+To gain a more quantitative understanding of the structure of
+the electrolyte at high and low salt concentration, RDFs for Li−
+X distances were evaluated over a 20 ps trajectory. Figure 9
+shows the RDF for DME and salt oxygen and ﬂuorine atoms
+for the case with no Li ions excess. The ﬁrst solvation shell is
+well deﬁned by oxygen atoms from both salt and solvent
+molecules at 1.9−2.0 Å. It is quite remarkable that the
+concentration and the type of salt do not play a signiﬁcantly
+role here. In addition, a second peak coming from the salt
+oxygen atoms can be identiﬁed at 4.1−4.3 Å, and this time the
+oxygen atoms correspond to the ones facing opposite the cation
+of the salt (O1 and O3, see Figure S1). In this case a sharpened
+peak arises when the concentration of each salt increases
+(Figure 9b and 9d for LiFSI and LiTFSI, respectively). With
+respect to the Li−F pairs, no clear peak is observable for
+LiTFSI at low or high molarity. However, the LiFSI case shows
+a very broad peak with a maximum at around 4.1 Å. This peak
+is present for both concentrations and can be identiﬁed as
+ﬂuorine atoms from the cation of the same salt. Contrary to
+what is seen in LiTFSI, a peak at 2.0 Å develops when the salt
+concentration in the LiFSI/DME electrolyte mixture is
+increased, suggesting that Li is being coordinated by ﬂuorine
+atoms in addition to the oxygen. Concerning the cases where
+there are additional Li+ ions, similar behavior is observed in all
+mixtures studied (see Figures S16 and S17, Supporting
+Information). However, the Li−F coordination is lost for
+high-molarity LiFSI (peak around 2.0 Å disappears). In
+addition, the second peak for Li−O becomes narrower,
+suggesting a more interconnected network due to the presence
+of additional ions. If salt is not present in the electrolyte (pure
+DME, Figure S18), the solvation shell for Li−O remains, albeit
+with the peak maximum slightly shifted to the left
+(corresponding to a shorter distance) when the concentration
+of ions increases. This might be due to the adoption of an
+Figure 9. Radial distribution function for Li+--X (X = O and F atoms)
+pairs for solutions with no additional ions: (a) 1M-LiFSI, (b) 4M-
+LiFSI, (c) 1M-LiTFSI, and (d) 4M-LiTFSI.
+The Journal of Physical Chemistry C
+Article
+DOI: 10.1021/acs.jpcc.6b10774
+J. Phys. Chem. C 2017, 121, 182−194
+191
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​121/​1/​182/​6948980/​jp6b10774.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 11>>
+Li+(DME)2 conﬁguration (Figure S15) which makes the
+network more compact.
+To complete our analysis of the electrolyte structures,
+averaged coordination numbers were calculated as a function of
+time (Figure S19). It is observed that for 4 M solutions, the Li−
+O coordination numbers take longer to reach an approximate
+equilibrium value (at least 2 ps). Accordingly, averaged
+coordination numbers (CNs) were computed over the total
+simulation length (from 2 to 20 ps) for Li−O and Li−F pairs
+(with the cutoﬀdistance set to 2.3 Å). The complete results are
+shown in Table S1 and summarized in Figure 10 for Li−O only.
+Negligible Li−F coordination is found in the cases where LiFSI
+concentration is 1 M. Likewise, no Li−F binding is noted when
+LiTFSI is used in low concentration; unless the excess of
+lithium ions is high (3 Li+) the CN is equal to 0.04. Although
+this number is very small, it reveals that at least some Li−F
+coordination is being formed due to the increase of ion
+concentration. On the contrary, a higher coordination number
+is found for Li−F in 4M-LiFSI solutions and no extra ions
+added (CN = 0.21). This result explains the peak observed in
+Figure 9. When one cation is added to the 4 M solutions a small
+fraction of Li+ is coordinated to ﬂuorine atoms over this span,
+with CNs = 0.03 and 0.08 for LiFSI and LiTFSI, respectively.
+These results agree well with the lack of favorability shown in
+our previous DFT calculations of aﬃnity between lithium ions
+and ﬂuorine atoms from these two salts (Table 1), although
+small interactions may still be possible if the concentration of
+either salt or ions is high enough as seen here.
+Li−O contributes to at least 93% of the CNs, making it
+primarily responsible for the solvation of Li ions. From Figure
+10, we note that for the same number of Li ions in each
+electrolyte system the Li−O CNs decrease by 0.2−0.3 when
+the concentration is increased. For LiTFSI at a ﬁxed
+concentration, the CNs decrease as the number of cations
+increases, whereas for LiFSI no clear trends are observed.
+Furthermore, comparing the two salts, when an excess of Li
+ions is present, LiFSI exhibits a slightly higher Li−O
+coordination than LiTFSI at the same concentration. However,
+LiTFSI salt electrolytes show relatively higher CNs toward
+oxygen atoms than LiFSI when no extra cations are in solution.
+In general, Li is mainly solvated by oxygen atoms from the
+DME and salts. The CNs for Li+ are close to four, which is in
+agreement with previous studies where one Li+ typically
+coordinates with four oxygen atoms to form the stable Li+
+O clusters.53 It is noteworthy that no decomposition of either
+the salt or DME is observed during the simulation and even in
+the presence of excess Li+, which suggests the good stability of
+the two salts at diﬀerent concentrations in the bulk electrolyte.
+None of the mixtures studied showed complete anion/cation
+dissociation; however, this has been observed experimentally,55
+leading us to conclude that additional studies using classical
+MD simulations would be valuable to achieve longer time
+scales.
+4. CONCLUSIONS
+In this paper, two salts used in Li−S systems, LiTFSI and LiFSI
+at both low and high concentrations, have been targeted for
+analysis, and the diﬀerences in reactivity, SEI products, and
+solvation structures have been explored in detail. The
+decomposition pathway for these two salts when located near
+the anode diﬀers substantially and is also a function of their
+concentration. While LiTFSI undergoes less complete reduc-
+tion, it also facilitates more charge transfer from the Li slab, and
+the carbon atoms in this salt are instrumental in accommodat-
+ing this charge. LiFSI, on the other hand, shows a more
+complete decomposition and is found to be extremely eﬃcient
+in LiF formation. In contrast, larger fragments are the initial SEI
+components derived from LiTFSI and some of them contain C
+atoms, which are absent from the LiFSI salt. DFT calculations
+for LiFSI showed the existence of highly thermodynamically
+favorable reaction pathways forming LiF. For both salts, neutral
+lithium attack is the primary cause of the salt fragmentation.
+Finally, coordination eﬀects between the salt and the solvent
+molecules in the bulk electrolyte were examined thoroughly. It
+was found that even in the presence of an excess of Li ions, the
+high-concentration salts still partially dissociate. However, the
+excess of Li ions induces the formation of highly complex
+coordinated networks even in the 1 M solution. A remarkable
+diﬀerence between the low- and the high-molarity eﬀects is that
+the trans structures dominate the 1 M solutions, whereas cis
+structures are observed in the 4 M concentration. This
+structural change may also aﬀect the structure of the complex
+solvation networks. The ﬁrst solvation shell of Li ions that
+peaks at 1.9−2 Å is always well deﬁned by the interactions with
+O atoms from DME or the salts, regardless of the type of salt or
+concentration. The coordination number of O atoms around Li
+ions is 4 in most cases, with the exception of the 1 M solution
+of LiTFSI in the presence of an excess of Li ions, where it
+decreases to 3. F atoms deﬁne a clear second shell around Li
+ions in LiFSI solutions independent of concentration, and even
+a small peak is observed in the ﬁrst shell at 4 M concentration,
+whereas only a broader second shell of F atoms is observed for
+LiTFSI
+■ASSOCIATED CONTENT
+*
+S
+Supporting Information
+The Supporting Information is available free of charge on the
+ACS Publications website at DOI: 10.1021/acs.jpcc.6b10774.
+Optimized geometries for salt molecules; detailed
+reduction mechanism for 1 and 4 M LiTFSI mixtures;
+reduction mechanism of LiFSI species in a 4 M solution;
+time evolution of the anode charge in contact with the
+salt/solvent for 1 and 4 M salt concentrations; average
+charge per atomic species within salts and DME
+molecules for 4M-salt solutions; initial and optimized
+conﬁgurations for reactions reported in Table 1; ﬁnal
+conﬁgurations of AIMD simulations of 0 and 4 M salt
+Figure 10. Li+--O (total) coordination numbers averaged over 18 ps
+(2−20 ps) with and without additional ions in the simulation cell.
+The Journal of Physical Chemistry C
+Article
+DOI: 10.1021/acs.jpcc.6b10774
+J. Phys. Chem. C 2017, 121, 182−194
+192
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​121/​1/​182/​6948980/​jp6b10774.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 12>>
+mixtures with DME at diﬀerent concentration of Li ions;
+radial distribution function for Li+--X (X = O and F
+atoms) pairs for solutions at diﬀerent concentrations of
+Li ions; time evolution of CNs for 0, 1, and 4 M
+Li(T)FSI solutions under an excess of 0, 1, 3 Li ions;
+calculated bond dissociation energies for LiFSI; average
+CNs for the diﬀerent solutions over the simulated time
+(2−20 ps) and peak positions from RDF for O−Li and
+F−Li pairs (PDF)
+■AUTHOR INFORMATION
+Corresponding Author
+*E-mail: balbuena@tamu.edu.
+ORCID
+Perla B. Balbuena: 0000-0002-2358-3910
+Author Contributions
+‡L.E.C.-F. and T.W.S.: These authors contributed equally to the
+work.
+Notes
+The authors declare no competing ﬁnancial interest.
+■ACKNOWLEDGMENTS
+This work was supported by the Assistant Secretary for Energy
+Eﬃciency and Renewable Energy, Oﬃce of Vehicle Tech-
+nologies of the U.S. Department of Energy under Contract No.
+DE-EE0006832 under the Advanced Battery Materials
+Research (BMR) Program. Supercomputer resources from
+the Texas A&M University High Performance Computer
+Center and Texas Advanced Computing Center (TACC) are
+gratefully acknowledged.
+■REFERENCES
+(1) Thackeray, M. M.; Wolverton, C.; Isaacs, E. D. Electrical energy
+storage for transportation-approaching the limits of, and going beyond,
+lithium-ion batteries. Energy Environ. Sci. 2012, 5 (7), 7854−7863.
+(2) Zu, C.-X.; Li, H. Thermodynamic analysis on energy densities of
+batteries. Energy Environ. Sci. 2011, 4 (8), 2614−2624.
+(3) Scheers, J.; Fantini, S.; Johansson, P. A review of electrolytes for
+lithium-sulphur batteries. J. Power Sources 2014, 255, 204−218.
+(4) Aurbach, D.; Zinigrad, E.; Cohen, Y.; Teller, H. A short review of
+failure mechanisms of lithium metal and lithiated graphite anodes in
+liquid electrolyte solutions. Solid State Ionics 2002, 148 (3−4), 405−
+416.
+(5) Park, M. S.; Ma, S. B.; Lee, D. J.; Im, D.; Doo, S.-G.; Yamamoto,
+O., A Highly Reversible Lithium Metal Anode. Sci. Rep. 2014,
+4.10.1038/srep03815
+(6) Huang, C.; Xiao, J.; Shao, Y.; Zheng, J.; Bennett, W. D.; Lu, D.;
+Saraf, L. V.; Engelhard, M.; Ji, L.; Zhang, J.; et al. Manipulating surface
+reactions in lithium-sulphur batteries using hybrid anode structures.
+Nat. Commun. 2014, 5, 3015.
+(7) Peled, E. The Electrochemical Behavior of Alkali and Alkaline
+Earth Metals in Nonaqueous Battery SystemsThe Solid Electrolyte
+Interphase Model. J. Electrochem. Soc. 1979, 126 (12), 2047.
+(8) Mikhaylik, Y. V.; Akridge, J. R. Low temperature performance of
+Li/S batteries. J. Electrochem. Soc. 2003, 150 (3), A306−A311.
+(9) Agostini, M.; Scrosati, B.; Hassoun, J. An Advanced Lithium-Ion
+Sulfur Battery for High Energy Storage. Adv. Energy Mater. 2015, 5
+(16), 1500481.
+(10) Delp, S. A.; Borodin, O.; Olguin, M.; Eisner, C. G.; Allen, J. L.;
+Jow, T. R. Importance of Reduction and Oxidation Stability of High
+Voltage Electrolytes and Additives. Electrochim. Acta 2016, 209, 498−
+510.
+(11) Nasybulin, E.; Xu, W.; Engelhard, M. H.; Nie, Z. M.; Burton, S.
+D.; Cosimbescu, L.; Gross, M. E.; Zhang, J. G. Effects of Electrolyte
+Salts on the Performance of Li-O-2 Batteries. J. Phys. Chem. C 2013,
+117 (6), 2635−2645.
+(12) Ding, F.; Xu, W.; Chen, X.; Zhang, J.; Engelhard, M. H.; Zhang,
+Y.; Johnson, B. R.; Crum, J. V.; Blake, T. A.; Liu, X.; et al. Effects of
+Carbonate Solvents and Lithium Salts on Morphology and Coulombic
+Efficiency of Lithium Electrode. J. Electrochem. Soc. 2013, 160 (10),
+A1894−A1901.
+(13) Markus, I. M.; Jones, G.; Garcia, J. M. Investigation of
+Electrolyte Concentration Effects on the Performance of Lithium-
+Oxygen Batteries. J. Phys. Chem. C 2016, 120 (11), 5949−5957.
+(14) Qian, J. F.; Henderson, W. A.; Xu, W.; Bhattacharya, P.;
+Engelhard, M.; Borodin, O.; Zhang, J. G. High rate and stable cycling
+of lithium metal anode. Nat. Commun. 2015, 6, 6362.
+(15) Han, H. B.; Zhou, S. S.; Zhang, D. J.; Feng, S. W.; Li, L. F.; Liu,
+K.; Feng, W. F.; Nie, J.; Li, H.; Huang, X. J.; et al. Lithium
+bis(fluorosulfonyl)imide (LiFSI) as conducting salt for nonaqueous
+liquid electrolytes for lithium-ion batteries: Physicochemical and
+electrochemical properties. J. Power Sources 2011, 196 (7), 3623−
+3632.
+(16) Kim, H.; Wu, F.; Lee, J. T.; Nitta, N.; Lin, H.-T.; Oschatz, M.;
+Cho, W. I.; Kaskel, S.; Borodin, O.; Yushin, G. In Situ Formation of
+Protective Coatings on Sulfur Cathodes in Lithium Batteries with
+LiFSI-Based Organic Electrolytes. Adv. Energy Mater. 2015, 5 (6),
+1401792.
+(17) Shin, E. S.; Kim, K.; Oh, S. H.; Cho, W. I. Polysulfide
+dissolution control: the common ion effect. Chem. Commun. 2013, 49
+(20), 2004−2006.
+(18) Suo, L.; Hu, Y.-S.; Li, H.; Armand, M.; Chen, L. A new class of
+Solvent-in-Salt electrolyte for high-energy rechargeable metallic
+lithium batteries. Nat. Commun. 2013, 4, 1481.
+(19) Wu, F.; Lee, J. T.; Magasinski, A.; Kim, H.; Yushin, G. Solution-
+Based Processing of Graphene−Li2S Composite Cathodes for
+Lithium-Ion and Lithium−Sulfur Batteries. Part. Part. Syst. Char.
+2014, 31 (6), 639−644.
+(20) Hagen, M.; Doerfler, S.; Fanz, P.; Berger, T.; Speck, R.; Tuebke,
+J.; Althues, H.; Hoffmann, M. J.; Scherr, C.; Kaskel, S. Development
+and costs calculation of lithium-sulfur cells with high sulfur load and
+binder free electrodes. J. Power Sources 2013, 224, 260−268.
+(21) Liu, Z.; Bertolini, S.; Mukherjee, P. P.; Balbuena, P. B. Li2S Film
+Formation on Lithium Anode Surface of Li-S batteries. ACS Appl.
+Mater. Interfaces 2016, 8 (7), 4700−4708.
+(22) Thangavel, V.; Xue, K.-H.; Mammeri, Y.; Quiroga, M.; Mastouri,
+A.; Guéry, C.; Johansson, P.; Morcrette, M.; Franco, A. A. A
+Microstructurally Resolved Model for Li-S Batteries Assessing the
+Impact of the Cathode Design on the Discharge Performance. J.
+Electrochem. Soc. 2016, 163 (13), A2817−A2829.
+(23) Zhang, T.; Marinescu, M.; Walus, S.; Offer, G. J. Modelling
+transport-limited discharge capacity of lithium-sulfur cells. Electrochim.
+Acta 2016, 219, 502−508.
+(24) Kresse, G.; Furthmuller, J. Efficiency of ab-initio total energy
+calculations for metals and semiconductors using a plane-wave basis
+set. Comput. Mater. Sci. 1996, 6 (1), 15−50.
+(25) Kresse, G.; Hafner, J. Ab initio molecular dynamics for liquid
+metals. Phys. Rev. B: Condens. Matter Mater. Phys. 1993, 47 (1), 558−
+561.
+(26) Kresse, G.; Hafner, J. Ab initio molecular-dynamics simulation
+of the liquid-metalamorphous-semiconductor transition in germanium.
+Phys. Rev. B: Condens. Matter Mater. Phys. 1994, 49 (20), 14251−
+14269.
+(27) Blöchl, P. E. Projector augmented-wave method. Phys. Rev. B:
+Condens. Matter Mater. Phys. 1994, 50 (24), 17953−17979.
+(28) Kresse, G.; Joubert, D. From ultrasoft pseudopotentials to the
+projector augmented-wave method. Phys. Rev. B: Condens. Matter
+Mater. Phys. 1999, 59 (3), 1758−1775.
+(29) Perdew, J. P.; Burke, K.; Ernzerhof, M. Generalized Gradient
+Approximation Made Simple. Phys. Rev. Lett. 1996, 77 (18), 3865−
+3868.
+(30) Monkhorst, H. J.; Pack, J. D. Special points for Brillouin-zone
+integrations. Phys. Rev. B 1976, 13 (12), 5188−5192.
+The Journal of Physical Chemistry C
+Article
+DOI: 10.1021/acs.jpcc.6b10774
+J. Phys. Chem. C 2017, 121, 182−194
+193
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​121/​1/​182/​6948980/​jp6b10774.​pdf by TSINGHUA UNIV user on 10 October 2026
+
+<<PAGE 13>>
+(31) Camacho-Forero, L. E.; Smith, T. W.; Bertolini, S.; Balbuena, P.
+B. Reactivity at the Lithium−Metal Anode Surface of Lithium−Sulfur
+Batteries. J. Phys. Chem. C 2015, 119 (48), 26828−26839.
+(32) Frisch, M. J.; Trucks, G. W.; Schlegel, H. B.; Scuseria, G. E.;
+Robb, M. A.; Cheeseman, J. R.; Scalmani, G.; Barone, V.; Mennucci,
+B.; Petersson, G. A., et al. Gaussian 09; Gaussian, Inc.: Wallingford,
+CT, USA, 2009.
+(33) Becke, A. D. Density-functional thermochemistry. III. The role
+of exact exchange. J. Chem. Phys. 1993, 98 (7), 5648−5652.
+(34) Perdew, J. P.; Chevary, J. A.; Vosko, S. H.; Jackson, K. A.;
+Pederson, M. R.; Singh, D. J.; Fiolhais, C. Atoms, molecules, solids,
+and surfaces: Applications of the generalized gradient approximation
+for exchange and correlation. Phys. Rev. B: Condens. Matter Mater. Phys.
+1992, 46 (11), 6671−6687.
+(35) Fujii, K.; Seki, S.; Fukuda, S.; Kanzaki, R.; Takamuku, T.;
+Umebayashi, Y.; Ishiguro, S.-i. Anion Conformation of Low-Viscosity
+Room-Temperature Ionic Liquid 1-Ethyl-3-methylimidazolium Bis-
+(fluorosulfonyl) Imide. J. Phys. Chem. B 2007, 111 (44), 12829−
+12833.
+(36) Canongia Lopes, J. N.; Shimizu, K.; Pádua, A. A.; Umebayashi,
+Y.; Fukuda, S.; Fujii, K.; Ishiguro, S.-i. Potential energy landscape of bis
+(fluorosulfonyl) amide. J. Phys. Chem. B 2008, 112 (31), 9449−9455.
+(37) Yoshida, K.; Nakamura, M.; Kazue, Y.; Tachikawa, N.; Tsuzuki,
+S.; Seki, S.; Dokko, K.; Watanabe, M. Oxidative-Stability Enhancement
+and Charge Transport Mechanism in Glyme−Lithium Salt Equimolar
+Complexes. J. Am. Chem. Soc. 2011, 133 (33), 13121−13129.
+(38) Han, S.-D.; Borodin, O.; Seo, D. M.; Zhou, Z.-B.; Henderson,
+W. A. Electrolyte solvation and ionic association V. Acetonitrile-
+lithium bis (fluorosulfonyl) imide (LiFSI) mixtures. J. Electrochem. Soc.
+2014, 161 (14), A2042−A2053.
+(39) Materials Studio; Accelrys Sofware Inc., 2011.
+(40) Tang, W.; Sanville, E.; Henkelman, G. A grid-based Bader
+analysis algorithm without lattice bias. J. Phys.: Condens. Matter 2009,
+21 (8), 084204.
+(41) Sanville, E.; Kenny, S. D.; Smith, R.; Henkelman, G. Improved
+grid-based algorithm for Bader charge allocation. J. Comput. Chem.
+2007, 28 (5), 899−908.
+(42) Henkelman, G.; Arnaldsson, A.; Jónsson, H. A fast and robust
+algorithm for Bader decomposition of charge density. Comput. Mater.
+Sci. 2006, 36 (3), 354−360.
+(43) Tomasi, J.; Mennucci, B.; Cammi, R. Quantum Mechanical
+Continuum Solvation Models. Chem. Rev. 2005, 105 (8), 2999−3094.
+(44) Humphrey, W.; Dalke, A.; Schulten, K. VMD: visual molecular
+dynamics. J. Mol. Graphics 1996, 14 (1), 33−38.
+(45) Budi, A.; Basile, A.; Opletal, G.; Hollenkamp, A. F.; Best, A. S.;
+Rees, R. J.; Bhatt, A. I.; O’Mullane, A. P.; Russo, S. P. Study of the
+Initial Stage of Solid Electrolyte Interphase Formation upon Chemical
+Reaction of Lithium Metal and N-Methyl-N-Propyl-Pyrrolidinium-
+Bis(Fluorosulfonyl)Imide. J. Phys. Chem. C 2012, 116 (37), 19789−
+19797.
+(46) Piper, D. M.; Evans, T.; Leung, K.; Watkins, T.; Olson, J.; Kim,
+S. C.; Han, S. S.; Bhat, V.; Oh, K. H.; Buttry, D. A. Stable silicon-ionic
+liquid interface for next-generation lithium-ion batteries. Nat. Commun.
+2015, 6, 6230.
+(47) Shkrob, I. A.; Marin, T. W.; Zhu, Y.; Abraham, D. P. Why
+Bis(fluorosulfonyl)imide Is a “Magic Anion” for Electrochemistry. J.
+Phys. Chem. C 2014, 118 (34), 19661−19671.
+(48) Sodeyama, K.; Yamada, Y.; Aikawa, K.; Yamada, A.; Tateyama,
+Y. Sacrificial Anion Reduction Mechanism for Electrochemical Stability
+Improvement in Highly Concentrated Li-Salt Electrolyte. J. Phys.
+Chem. C 2014, 118 (26), 14091−14097.
+(49) Younesi, R.; Veith, G. M.; Johansson, P.; Edstrom, K.; Vegge, T.
+Lithium salts for advanced lithium batteries: Li-metal, Li-O2, and Li-S.
+Energy Environ. Sci. 2015, 8 (7), 1905−1922.
+(50) Martinez de la Hoz, J. M.; Soto, F. A.; Balbuena, P. B. Effect of
+the Electrolyte Composition on SEI Reactions at Si Anodes of Li-Ion
+Batteries. J. Phys. Chem. C 2015, 119 (13), 7060−7068.
+(51) Umebayashi, Y.; Mitsugi, T.; Fukuda, S.; Fujimori, T.; Fujii, K.;
+Kanzaki, R.; Takeuchi, M.; Ishiguro, S.-I. Lithium Ion Solvation in
+R o o m - T e m p e r a t u r e
+I o n ic
+L i q u i d s
+I nv o l v i n g
+B i s -
+(trifluoromethanesulfonyl) Imide Anion Studied by Raman Spectros-
+copy and DFT Calculations. J. Phys. Chem. B 2007, 111 (45), 13028−
+13032.
+(52) Yoon, H.; Best, A. S.; Forsyth, M.; MacFarlane, D. R.; Howlett,
+P. C. Physical properties of high Li-ion content N-propyl-N-
+methylpyrrolidinium bis(fluorosulfonyl)imide based ionic liquid
+electrolytes. Phys. Chem. Chem. Phys. 2015, 17 (6), 4656−4663.
+(53) Liu, B.; Xu, W.; Yan, P.; Sun, X.; Bowden, M. E.; Read, J.; Qian,
+J.; Mei, D.; Wang, C.-M.; Zhang, J.-G. Enhanced Cycling Stability of
+Rechargeable Li−O2 Batteries Using High-Concentration Electrolytes.
+Adv. Funct. Mater. 2016, 26 (4), 605−613.
+(54) Hayamizu, K.; Aihara, Y.; Arai, S.; Martinez, C. G. Pulse-
+Gradient Spin-Echo 1H, 7Li, and 19F NMR Diffusion and Ionic
+Conductivity Measurements of 14 Organic Electrolytes Containing
+LiN(SO2CF3)2. J. Phys. Chem. B 1999, 103 (3), 519−524.
+(55) Hayamizu, K.; Aihara, Y. Ion and solvent diffusion and ion
+conduction of PC-DEC and PC-DME binary solvent electrolytes of
+LiN(SO2CF3)2. Electrochim. Acta 2004, 49 (20), 3397−3402.
+The Journal of Physical Chemistry C
+Article
+DOI: 10.1021/acs.jpcc.6b10774
+J. Phys. Chem. C 2017, 121, 182−194
+194
+Downloaded from pubs.​acs.​org/​jpccck/​article-pdf/​121/​1/​182/​6948980/​jp6b10774.​pdf by TSINGHUA UNIV user on 10 October 2026

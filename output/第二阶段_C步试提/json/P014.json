@@ -1,0 +1,35 @@
+{
+  "编号": "P014",
+  "电解液": {
+    "E1": {"名称": "1 M LiTFSI DOL/TEGDME", "配方": "1 M LiTFSI，DOL/TEGDME（比例未写）"},
+    "E2": {"名称": "(MeCN)2-LiTFSI", "配方": "LiTFSI:MeCN 摩尔比 1:2，3.98 M"},
+    "E3": {"名称": "(MeCN)2-LiTFSI:TTE 1:1", "配方": "E2 与 TTE 体积比 1:1"},
+    "E4": {"名称": "(MeCN)2.5-LiTFSI:TTE 1:1", "配方": "3.70 M LiTFSI/MeCN 与 TTE 体积比 1:1"}
+  },
+  "条件": {
+    "C1": {"正极": "S@CMK-3（50% S；极片 80:10:10）", "硫载量": "0.28–0.4 mg cm-2", "硫含量": "复合物 50 wt%", "E/S": "S/E 约 13 g L-1", "电解液体积": "约 30 µL", "面积": "Swagelok 内径 0.5 in",
+           "锂厚": "", "N/P": "", "倍率": "CV 0.1 mV s-1", "1C定义": "", "温度": "室温", "电池": "Swagelok",
+           "原句": "Electrolyte volume in all cells was controlled at about 0.03 mL.33 The ratio of S8 to electrolyte volume is ∼13 g/L."}
+  },
+  "比较": [
+    {"A": "E2", "B": "E1", "条件": "C1", "层": "C", "改变因素": ["溶剂种类", "盐浓度"],
+     "溶剂化依据": "作者：MeCN 配位 Li+、多硫化物溶解度低（引用前人，作者解释）",
+     "指标": [
+       {"指标": "过电位或动力学", "取值点": "CV 第 1 圈还原峰电位", "A": "2.15 / 1.7", "B": "2.4 / 2.05", "单位": "V", "方向": "A更差", "来源": "正文",
+        "原句": "The potential of the reduction peaks in the MeCN electrolytes is shifted to ∼2.15 and ∼1.7 V, while the two reduction peaks found in DOL/TEGDME electrolyte are at 2.4 and 2.05 V.10,42"}
+     ]},
+    {"A": "E3", "B": "E2", "条件": "C1", "层": "C", "改变因素": ["稀释剂"],
+     "溶剂化依据": "Raman / 7Li NMR / AIMD：加 TTE 后 Li-N 配位数 1.85 → 1.33，自由 MeCN 增多（实验 + 模拟，同篇）",
+     "指标": [
+       {"指标": "过电位或动力学", "取值点": "CV 第 1 圈还原峰电位", "A": "2.05 / 1.85", "B": "2.15 / 1.7", "单位": "V", "方向": "无法判断", "来源": "正文",
+        "原句": "The potentials of the reduction peaks are at ∼2.05 and ∼1.85 V in both cases.", "备注": "第一峰更负、第二峰更正，方向相反"}
+     ]},
+    {"A": "E4", "B": "E3", "条件": "C1", "层": "C", "改变因素": ["盐浓度"],
+     "溶剂化依据": "Raman：E4 自由 MeCN 更多（同篇实验）",
+     "指标": [
+       {"指标": "过电位或动力学", "取值点": "原位 Raman：S3•- 出现速度", "A": "", "B": "", "单位": "", "方向": "A更好", "来源": "仅图（文字给方向）",
+        "原句": "Interestingly, however, the appearance of the S3 •--related bands occurs as quickly as it does in DOL/TEGDME, which suggests that polysulfide formation kinetics are facilitated in this electrolyte relative to the (MeCN)2-LiTFSI:TTE electrolyte."}
+     ]}
+  ],
+  "备注": "全文没有恒流循环、容量、库仑效率数据，只有 CV 与原位 Raman；B 步判 Ⅰ 合格偏宽（性能只有动力学一类），Q1 无法判断。锂厚未写。"
+}

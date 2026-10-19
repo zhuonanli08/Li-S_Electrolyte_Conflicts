@@ -1,0 +1,30 @@
+{
+  "编号": "P413",
+  "电解液": {
+    "E1": {"名称": "DOL:DME", "配方": "1 M LiTFSI + 0.1 M LiNO3，DOL/DME 1:1 v/v"},
+    "E2": {"名称": "25 vol% PP14-TFSI", "配方": "E1 : [PP14][TFSI] = 75:25 v/v"},
+    "E3": {"名称": "25 vol% [BMIM][CF3SO3] / [BMIM][MeSO4]", "配方": "E1 : 离子液体 = 75:25 v/v（高多硫化物溶解度一组）"}
+  },
+  "条件": {
+    "C1": {"正极": "S/C（铝箔）", "硫载量": "约 2 mg cm-2", "硫含量": "", "E/S": "13", "电解液体积": "", "面积": "2.01 cm2",
+           "锂厚": "", "N/P": "", "倍率": "0.1C", "1C定义": "", "温度": "", "电池": "扣式",
+           "原句": "An E/S ratio of 13 mL/g was used in all cells."}
+  },
+  "比较": [
+    {"A": "E2", "B": "E1", "条件": "C1", "层": "C", "改变因素": ["溶剂种类"],
+     "溶剂化依据": "COSMO-RS 预测纯离子液体中多硫化物溶解度 0.20 mol/mol（计算，间接映射）",
+     "指标": [
+       {"指标": "指定圈数放电容量", "取值点": "循环初期", "A": "", "B": "", "单位": "mAh g-1", "方向": "A更好", "来源": "仅图（文字给方向）",
+        "原句": "We observe higher performance for Li-S cells with electrolytes having 25 vol % PP14-TFSI compared to the ones with pure DOL:DME electrolytes at the beginning of cycling, but they end up with similar capacities towards the end."},
+       {"指标": "指定圈数放电容量", "取值点": "循环末期（50 / 100 圈）", "A": "", "B": "", "单位": "mAh g-1", "方向": "差异小", "来源": "仅图（文字给方向）",
+        "原句": "We observe higher performance for Li-S cells with electrolytes having 25 vol % PP14-TFSI compared to the ones with pure DOL:DME electrolytes at the beginning of cycling, but they end up with similar capacities towards the end."}
+     ]},
+    {"A": "E2", "B": "E3", "条件": "C1", "层": "C", "改变因素": ["溶剂种类"],
+     "溶剂化依据": "COSMO-RS：E3 用的离子液体多硫化物溶解度极高（847 与 182,635 mol/mol，计算）",
+     "指标": [
+       {"指标": "指定圈数放电容量", "取值点": "第 50 圈", "A": "", "B": "", "单位": "mAh g-1", "方向": "A更好", "来源": "仅图（文字给方向）",
+        "原句": "In this respect, the ILs of [PP14]-[TFSI] and [DEME]-[TFSI] with both low solubility and viscosity show the best cycling performance Fig. 2."}
+     ]}
+  ],
+  "备注": "计算筛选为主的论文；实验数值只在图上。E2 vs E1：初期 A 好、末期差异小（一侧进入差异小区间）。另有 IL 比例（0/25/50 vol%）与 E/S（13 vs 8）的 SI 实验未提取。锂厚未写。"
+}

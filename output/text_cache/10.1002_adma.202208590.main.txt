@@ -1,0 +1,515 @@
+
+<<PAGE 1>>
+2208590  (1 of 7)
+© 2023 Wiley-VCH GmbH
+www.advmat.de
+Weakening Li+ De-solvation Barrier for Cryogenic Li–S 
+Pouch Cells
+Haoqing Ji, Zhenkang Wang, Yawen Sun, Yang Zhou, Sijie Li, Jinqiu Zhou, Tao Qian,* 
+and Chenglin Yan*
+H. Ji, Z. Wang, Y. Sun, Y. Zhou, S. Li, C. Yan
+Key Laboratory of Core Technology of High Specific Energy Battery and 
+Key Materials for Petroleum and Chemical Industry
+College of Energy
+Soochow University
+No. 1, Shizi Street, Suzhou, Jiangsu 215006, P. R. China
+E-mail: c.yan@suda.edu.cn
+J. Zhou, T. Qian
+College of Chemistry and Chemical Engineering
+Nantong University
+No. 9, Seyuan Road, Nantong, Jiangsu 226019, P. R. China
+E-mail: qiantao@ntu.edu.cn
+T. Qian, C. Yan
+Light Industry Institute of Electrochemical Power Sources
+Suzhou, Jiangsu 215600, P. R. China
+The ORCID identification number(s) for the author(s) of this article 
+can be found under https://doi.org/10.1002/adma.202208590.
+DOI: 10.1002/adma.202208590
+frigid conditions.[3,4] Existing mainstream 
+lithium-ion batteries (LIBs) based on Li+ 
+intercalation chemistry, however, exhibit 
+inferior performance in gelid operating 
+conditions. Because the viscosity of car-
+bonate-based electrolytes increases rap-
+idly and even freezes at LTs, the blocked 
+Li+ mass transfer kinetics in the bulk 
+of electrolyte and increased impedance 
+between 
+electrode/electrolyte 
+interface 
+constrain the operating voltage and the 
+capacity retention of conventional LIBs 
+below −20  °C and limit LIBs’ application 
+scenarios.[5] Ether-based electrolytes gen-
+erally have ultra-low freezing points and 
+viscosity, which are considered to improve 
+the performance of batteries at LTs.[6] 
+Although their relatively narrow electro-
+chemical window is quite challenging 
+when deployed in LIBs with high voltage, 
+they are well-matched to the operating-
+voltage range of Li–S batteries (1.5–2.8 V). 
+Furthermore, Li–S batteries have been 
+generally considered a promi­sing substi-
+tute for next-generation energy storage systems due to their 
+extremely high theoretical capacities (1675 mAh g−1) and energy 
+densities.[7] The ultra-low freezing point (FR) of traditional 
+ether electrolytes applied in Li–S batteries, 1 m lithium bisimide 
+(LiTFSI) dissolved in the mixture of 1,2-dimethoxyethane 
+(DME, FR: −69  °C) and 1,3-dioxolane (DOL, FR: −95  °C) at 
+LTs unlock the prerequisite of cryogenic Li–S batteries and are 
+expected to enable excellent capacity release of Li–S batteries in 
+LT conditions.
+Unfortunately, Li–S batteries also experienced significant 
+capacity attenuation at LTs, presenting a considerable barrier to 
+implementing them in a broader range of environments, par-
+ticularly in special working conditions like polar/space explo-
+ration and deepwater operations.[8,9] A universally agreed-on 
+explanation for the capacity loss of Li–S batteries in LT envi-
+ronment is the inherent sluggish redox kinetics caused by 
+the aggregation of intermediates, lithium polysulfides (LPSs), 
+and the deposition of insoluble LPS, which insulated the elec-
+trode surface and further obstructed the mass transfer of the 
+charge carrier.[10] For this reason, several strategies have been 
+devised. For example, materials with catalytic activity were 
+introduced into the sulfur cathode to promote the LPS con-
+version kinetics;[11–13] some electrolyte additives were used to 
+inhibit the formation of LPS clusters[14,15] or change the cathode 
+reduction way.[16] However, the de-solvation process of Li+ in 
+Li–S batteries hold promise for pushing cell-level energy densities beyond 
+300 Wh kg-1 while operating at low temperatures (LTs, below 0 °C). However, 
+the capacity release of existing Li–S batteries at LTs is still barely satisfactory, 
+and there is almost no verification of the practicability of Li–S batteries at 
+LTs in the Ah-level pouch cell. Here, antecedent molecular dynamics (MDs) 
+combined with density functional theory analysis are used to systematically 
+investigate Li+ solvation structure in conventional Li–S batteries at LTs, which 
+unprecedentedly reveals the positive correlation between lithium salt concen-
+tration and Li+ de-solvation barrier, indicating dilute electrolytes can enhance 
+the Li+ de-solvation kinetics and thus improve the capacity performance of 
+cryogenic Li–S batteries. These insights derived from theoretical simulations 
+invested Li–S batteries with a 67.34% capacity retention at −40 °C compared 
+to their room temperature performance. In particular, an Ah-level Li–S pouch 
+cell using dilute electrolytes with a high sulfur loading (5.6 mg cm-2) and 
+lean electrolyte condition is fabricated, which delivers a discharge capacity 
+of about 1000 mAh g-1 and ultra-high energy density of 350 Wh kg-1 at 0 °C, 
+offering a promising route toward a practical high-energy cryogenic Li–S 
+battery.
+Research Article
+﻿
+1. Introduction
+Lithium-based batteries power virtually all modern portable 
+devices and electric vehicles, and their ubiquity continues 
+to grow.[1,2] Recently, great attention has been paid to the per-
+formance of batteries at low temperatures (LTs), as emerging 
+applications in energy storage require increasing tolerance to 
+Adv. Mater. 2023, 35, 2208590
+
+<<PAGE 2>>
+© 2023 Wiley-VCH GmbH
+2208590  (2 of 7)
+www.advmat.de
+www.advancedsciencenews.com
+the electrolyte, as another pivotal factor affecting the kinetics 
+performance,[17] is rarely paid attention to in cryogenic Li–S 
+batteries. Theoretically, the sluggish Li+ de-solvation process at 
+the electrode/electrolyte interface leads to increased Li+ mass 
+transfer impendence from the bulk electrolyte to the active 
+materials (LPSs), significantly affecting the overall extent of 
+sulfur cathode reaction.[18–20]
+Herein, the antecedent molecular dynamics (MDs) com-
+bined with density functional theory (DFT) analysis provide 
+theoretical guidance that Li+ de-solvation energy barrier is 
+positively correlated with LiTFSI concentration, which indi-
+cates that the reduction of salt concentration can enhance the 
+Li+ de-solvation kinetics and thus improve the capacity perfor-
+mance of cryogenic Li–S batteries. Guided by the theoretical 
+simulation results, we prepared Li–S battery electrolytes using 
+conventional solvents (DOL/DME, 1:1) and various concentra-
+tions of LiTFSI and studied their LT performance. As expected, 
+reducing LiTFSI content in electrolytes promotes the discharge 
+capacity of Li–S batteries at LTs effectively. And Li–S batteries 
+with 0.5  m electrolyte retain 67.34% capacity at −40  °C when 
+compared with that at 25 °C. In particular, a 2.5 Ah Li–S pouch 
+cell using 0.5 m with a high sulfur loading (5.6 mg cm−2) and 
+lean electrolyte condition (the mass ratio of electrolyte to sulfur, 
+E/S, is only 4 mL g−1) was fabricated, which demonstrated ultra-
+high energy density (350 Wh kg−1) at 0 °C and verified the prac-
+tical application of this dilute electrolyte.
+2. Results and Discussion
+Recently, the magic of electrolyte concentration has aroused 
+widespread interest. The low-concentration electrolytes (<1 m), 
+which not only reduce the cost but demonstrate some unique 
+characteristics, have illustrated certain advantages in some 
+battery types such as LIBs and sodium-ion batteries, but the 
+mechanism of diluted electrolytes on LT performance of the 
+battery is not clear. Previous studies have indicated that the de-
+solvation behavior is a direct result of the inherent solvation 
+structure of the electrolytes, which is pivotal in describing the 
+LT performance discrepancy.[17,21,22] Therefore, MD simulations 
+combined with DFT analysis were first applied to investigate 
+the Li+ solvation structure in conventional Li–S electrolytes with 
+various LiTFSI concentrations (0.1, 0.5, and 1.0 m) and explore 
+the potential relationship between salt concentration and Li–S 
+battery’s LT performance. The snapshots obtained from MD 
+simulations of three electrolytes were displayed in Figure 1a–c.
+In the electrolyte, the solvent-shell structure around Li+ is 
+dynamic and diverse. Therefore, we first examined each Li+ in 
+the simulation systems and determined their solvated structure 
+with a radius of 0.3 nm as the solvation shell boundary by ana-
+lyzing the MD trajectories. To simulate the actual state of the 
+electrolyte working in Li–S batteries, we introduced a certain 
+amount of electrolyte additive (LiNO3) and LPS into the simu-
+lation box. All the results were summarized in Table S1, Sup-
+porting Information, which realized a balance between cation/
+solvent and cation/anion. Specifically, the Li+/anion binding 
+has generally been neglected in the de-solvation energy calcu-
+lations of previous studies due to the repulsion from the sig-
+nificant negative polarization of the electrode (Figure 1d).[17,23] 
+Therefore, Li+ de-solvation process can be further simplified. 
+Figure 1f lists the proportion of various Li+ solvated structures 
+in electrolytes with different LiTFSI concentrations. It can be 
+found that the coordination structure of DME12 (meanings one 
+Li+ coordinate to the two oxygens in DME) appeared most fre-
+quently in both three electrolytes, indicating that lithium ions 
+in the electrolyte are inclined to be solvated by DME. The de-sol-
+vation free energy of each solvation structure is determined sys-
+tematically by DFT calculations. Figure 1e lists the free energy 
+of the seven primary solvation structures in the electrolyte at 
+298.15 K. All de-solvation free energy values for every solvation 
+structure can be found in Tables S2–S4, Supporting Informa-
+tion. Based on the statistical results in Figure  1f, the average 
+de-solvation energy in each electrolyte with various LiTFSI con-
+centrations can be calculated using weighted average methods 
+(Figure  1g), demonstrating a positive correlation between Li+ 
+de-solvation energy barrier and lithium salt concentration in 
+the electrolyte, and this positive correlation remains same 
+both at 298.15 and 233.15 K. The above results indicate that the 
+decrease of LiTFSI concentration could reduce the energy bar-
+rier of the Li+ de-solvation process, promoting the kinetics of 
+electrode reaction. Therefore, this faster de-solvation process 
+brought by low LiTFSI concentration would promote the cryo-
+genic performance of Li–S batteries.
+To investigate the Li+ solvation structure of conventional 
+Li–S electrolytes with different LiTFSI concentrations in the 
+experiment, we measured spectral analysis on the electrolytes 
+with a systematic variation of LiTFSI concentrations. Figure 2a 
+displays Raman spectra results, where the S–N–S bending peak 
+of the TFSI− at 747 cm−1 undergoes redshift when dissolved in 
+DOL/DME solvents.[17,24] There was no corresponding signal in 
+0.1  m electrolyte due to the ultra-low concentration of TFSI−. 
+However, compared with 0.5 m electrolyte, the S–N–S bending 
+peak in 1 m electrolyte undergoes a smaller shift, from 747 cm−1 
+in the pure salt to 731 cm−1, indicative of much stronger cation-
+anion interaction in the electrolyte with higher salt concentra-
+tion.[25] In the 7Li NMR spectra results (Figure 2b), the 7Li peak 
+in electrolyte shifts upfield upon increasing LiTFSI concentra-
+tion from 0.1 to 1 m, which is indicative of increased Li+−TFSI− 
+ion coordination at a higher salt concentration.[26] The above 
+spectra result is consistent with the tendency obtained by MD 
+simulation in which the coordination number of TFSI− around 
+Li+ increases with higher salt concentration (Figure S1, Sup-
+porting Information). Small-angle X-ray scattering (SAXS) of 
+six electrolytes with a systematic variation of LiTFSI concen-
+trations (from 0 to 1 m) were further conducted to determine 
+the solvation environment at different temperatures (25, 0, 
+and −20  °C). Figure S2a, Supporting Information, summa-
+rized the 2D scattering patterns of these six electrolytes meas-
+ured at 25 °C, and their SAXS profiles were demonstrated in 
+Figure S2b, Supporting Information. As the LiTFSI concentra-
+tion increases in the electrolyte, the intensity of characteristic 
+peaks around 15  nm−1 gradually decreases. In contrast, the 
+intensity in the low Q region increased, making the overall peak 
+wider. To reflect the influence of LiTFSI concentration increase 
+on SAXS spectrum and obtain a more accurate peak signal, a 
+peak deconvolution procedure is used to fit multiple Gaussian 
+peaks to the scattering data and a term for the B-spline base-
+line.[27] And the fitting results are summarized in Figure 2c. As 
+Adv. Mater. 2023, 35, 2208590
+ 15214095, 2023, 9, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adma.202208590 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 3>>
+© 2023 Wiley-VCH GmbH
+2208590  (3 of 7)
+www.advmat.de
+www.advancedsciencenews.com
+for molecular liquids, the neat solvent’s static structure factor, 
+S(Q), appeared at a broad peak located around 15  nm−1. This 
+feature is typical of molecular liquids and corresponds to intra- 
+and inter-molecular distances.[28,29] In Figure  2c, the peaks 
+located about 14 and 11 nm−1 can be ascribed to DME and DOL. 
+The SAXS spectrum does not change significantly before the 
+LiTFSI concentration is increased to 0.5 m. However when the 
+LiTFSI concentration reaches 0.75 m, a new signal peak appears 
+at lower Q values (around 6  nm−1), standing for the develop-
+ment of more long-range correlations, and this can be ascribed 
+to the formation of cation-anion aggregates clusters in electro-
+lytes.[28,30] Similar results also can be obtained at 0 and −20 °C 
+(Figures S3 and S4, Supporting Information). The above results 
+indicate that the solvated structure changes obviously in the 
+electrolyte when reducing LiTFSI concentration in the electro-
+lyte, and the molarity around 0.50 m is a critical turning point. 
+The de-solvation barrier of Li+ in the experiment was evaluated 
+by fitting electrochemical impedance spectroscopy of fresh 
+Li||Li symmetric cells at varied temperatures (Figure 2d–g).[31,32] 
+It can be found that the de-solvation barrier gradually weakened 
+as LiTFSI concentration dropped, and this tendency also cor-
+responds with simulation results (Figure 2h).
+The decrease of Li+ de-solvation energy will improve the 
+overall electrode reaction kinetics and promote the cryogenic 
+performance of the batteries. According to the guidance of 
+the above theoretical simulation and experimental results, 
+the impact of LiTFSI molarity in the electrolyte on LT perfor-
+mance of Li–S batteries was first studied using coin cells with 
+LiTFSI salt concentrations ranging from 0.1 m to regular 1 m 
+in DOL/DME with 1 wt% LiNO3. Figure 3a–d are the charge–
+discharge profiles of the four different concentration electro-
+lytes in the first cycle at 25 and −40 °C, in which the current 
+density is 0.05 C (1 C = 1675 mA g−1), and E/S is 25 µL mg−1. 
+Four electrolytes with different LiTFSI concentrations show 
+similar discharge curves at room temperature, in which all of 
+them exhibited the two typical discharge platforms of Li–S bat-
+teries around 2.3 and 2.1 V. However, the second platform for 
+the battery with 1 m electrolyte almost disappears and delivers 
+a poor capacity of 382.9 mAh g−1 when the temperature drops 
+to −40 °C. This phenomenon is mainly caused by the sluggish 
+Adv. Mater. 2023, 35, 2208590
+Figure 1.  a–c) Snapshots obtained from MD simulations of electrolytes with different LiTFSI concentrations (0.1, 0.5, and 1.0 m). d) Scheme of the 
+de-solvation process. e) The main Li+ solvation structures in three electrolytes; DME12 means one Li+ coordinate with two oxygens in a DME molecule. 
+f) The proportion of various Li+ solvated structures in electrolytes with different LiTFSI concentrations. g) Average Li+ de-solvation energy in different 
+electrolytes at 298.15 and 233.15 K.
+ 15214095, 2023, 9, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adma.202208590 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 4>>
+© 2023 Wiley-VCH GmbH
+2208590  (4 of 7)
+www.advmat.de
+www.advancedsciencenews.com
+reaction kinetics of the sulfur reduction reaction. In contrast, 
+with the concentration decrease of LiTFSI in the electrolyte, the 
+second platforms emerged both in 0.75, 0.5, and 0.10 m electro-
+lytes. And they released specific capacities of 548.6, 647.1, and 
+549.3 mAh g−1, respectively, which are all higher than tradi-
+tional 1 m electrolyte at −40 °C. Figure 3e summarizes four elec-
+trolytes’ discharge capacity retention rates with different LiTFSI 
+concentrations. Compared with room temperature, the capacity 
+Adv. Mater. 2023, 35, 2208590
+Figure 3.  a–d) Variation in the Li–S discharge behaviors at 25 and −40 °C 40 charge behaviors at 25 imLiTFSI concentration electrolytes. e) The capacity 
+retention rate of Li–S batteries with different electrolytes at −40 °C.
+Figure 2.  a) Raman spectra of the electrolytes showing S–N–S bending in TFSI− in DME and DOL. b) 7Li NMR of each electrolyte. The chemical shifts 
+are referenced to 1 m LiCl in D2O at 0 ppm. c) Gaussian deconvolution of the experimental SAXS data for the electrolytes with different LiTFSI concen-
+trations. d–g) EIS of different electrolytes at various temperatures. h) Arrhenius behavior of Li+ de-solvation in different electrolytes.
+ 15214095, 2023, 9, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adma.202208590 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 5>>
+© 2023 Wiley-VCH GmbH
+2208590  (5 of 7)
+www.advmat.de
+www.advancedsciencenews.com
+retention rate of 1  m electrolyte is only 39.63%, while 0.75, 
+0.50, and 0.10 m are 57.99%, 67.34%, and 56.74%, respectively. 
+The cycle performance is displayed in Figure S5, Supporting 
+Information, in which 0.5  m shows the best specific capacity 
+performance at 0.1 C. And the rate performance of 0.5  m 
+electrolyte at −40  °C can be found in Figure S6, Supporting 
+Information.
+Electrolytes with low lithium salt concentration exhibit better 
+performance at low temperatures, contrary to the subjective 
+impression because a decrease in salt concentration accompa-
+nies a decrease in ionic conductivity. In Figure S7, Supporting 
+Information, the electrolyte containing 1  m LiTFSI exhibited 
+the highest Li+ conductivity from −40 to 25  °C. Besides, the 
+ultra-low viscosity has always been an inherent advantage in 
+DME/DOL-based electrolytes, especially under dilute salt con-
+centration conditions (<1 m).[33,34] When LiTFSI concentration 
+increases from 0.1 to 1  m, the electrolyte’s overall viscosity 
+increases slightly from 0.00116 to 0.00237 Pa s−1 (Figure S8, Sup-
+porting Information). The above results indicate that the vis-
+cosity of electrolyte is not the critical issue affecting the kinetics 
+of Li–S battery when salt concentrations are below 1 m, and the 
+decrease of Li+ de-solvation energy barrier in dilute electrolytes 
+is the primary reason for the performance enhancement of 
+cryogenic Li–S batteries, which is consistent with the previous 
+MD simulation results. It should be noted that LiTFSI con-
+centration should not fall too low in cryogenic Li–S batteries 
+due to other factors (such as ionic conductivity) that will begin 
+to dominate and influence battery performance. For example, 
+the Li+ conductivity of 0.1 m electrolyte is only about a quarter 
+of that of 0.5 m at −40 °C, which may explain why the perfor-
+mance of 0.1 m electrolyte is slightly weaker than that of 0.5 m 
+electrolyte at LT. To better evaluate the reaction dynamics of the 
+second discharge plateau in Li–S batteries with various LiTFSI 
+concentrations at LTs, a series of cyclic voltammetry (CV) 
+curves at various scan rates ranging from 0.1 to 0.6 mV s−1 at 
+0  °C are summarized in Figure S9, Supporting Information. 
+The peaks around 1.8–2.0  V are selected as a measure indi-
+cator to estimate the enhancement of the reduction kinetics 
+of sulfur cathode. The peak current of all electrolytes demon-
+strates fine linear relationships with the square root of the scan 
+rate, and 0.5 m shows the steepest slope, which means faster 
+kinetics for the batteries with 0.5 m electrolyte.[35,36] We further 
+studied the nucleation of Li2S in different LiTFSI concentra-
+tion electrolytes using a potentiostaic technique at −20 °C. As 
+shown in Figure S10, Supporting Information, 0.5  m demon-
+strates the highest nucleation current and sharpest peak shape 
+Adv. Mater. 2023, 35, 2208590
+Figure 4.  a) The digital photo of 400 Wh kg−1 Li–S pouch cell inset the overall cell weight for clarity. b) A digital photo of the Li–S pouch cell powdering 
+a small–scale electric vehicle and the details can be found in Video S1, Supporting Information. d) The cycling performance of Li–S batteries with 0.5 m 
+electrolyte under practical conditions and a low-temperature environment (0 °C); the charge/discharge curves are displayed in (c).
+ 15214095, 2023, 9, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adma.202208590 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 6>>
+© 2023 Wiley-VCH GmbH
+2208590  (6 of 7)
+www.advmat.de
+www.advancedsciencenews.com
+Adv. Mater. 2023, 35, 2208590
+(Figure S10, Supporting Information), implying rapid kinetics 
+of LPS conversion in 0.5 m electrolyte.[37,38]
+To further demonstrate the potential of employing dilute 
+electrolytes under harsh conditions and validate the practicality 
+in cryogenic Li–S batteries, an Ah-level Li–S pouch cell with 
+0.5 m electrolyte was fabricated (Figure 4a). The sulfur loading 
+of the cathode is up to 5.6 mg cm−2, and E/S is only 4 mL g−1. 
+The overall weight of the pouch cell is only 15.52 g. Figure 4c 
+was the charge/discharge profiles of the Li–S pouch cell cycled 
+at 0 °C, which exhibits a typical double discharge platform in 
+Li–S batteries, and delivers a high specific capacity of about 
+1000 mAh g−1. The pouch cell maintained stable cycling for 
+30 cycles with a capacity of about 2.5 Ah. Based on the mass 
+of the entire pouch cell, including electrode tabs, current col-
+lectors, and package, the corresponding energy density of Li–S 
+pouch cell at 0  °C as up to 350  Wh kg−1 revealed the great 
+potential for practical application (Figure 4d). We also further 
+conducted a demonstration experiment to verify the scale-up 
+application of dilute electrolytes. The Li–S pouch cell can power 
+a small-scale electric vehicle, demonstrating the excellent reli-
+ability and strong power of dilute electrolytes. (Figure 4b and 
+Video S1, Supporting Information)
+3. Conclusions
+In summary, the conventional Li–S electrolytes with different 
+LiTFSI concentrations were systematically investigated by MD 
+simulations combined with DFT analysis, which surprisingly 
+revealed a positive correlation between Li+ de-solvation energy 
+barrier and LiTFSI concentration in the electrolyte. The Li+ de-
+solvation process in a dilute electrolyte environment exhibits 
+faster kinetics and promotes the discharge capacity of Li–S 
+batteries at low temperatures. In the environment of exces-
+sive electrolyte, Li–S battery with 0.5 m electrolyte delivered a 
+high specific capacity of 674.1 mAh g−1 at −40 °C, which is up 
+to 67.34% of the capacity at room temperature. In particular, the 
+Ah-level Li–S pouch cell with 0.5 m electrolyte under practical 
+working conditions realized a high specific capacity of about 
+1000 mAh g−1 and a high energy density of 350 Wh kg−1 at 0 °C, 
+offering a promising route toward practical high-energy cryo-
+genic Li–S battery.
+Supporting Information
+Supporting Information is available from the Wiley Online Library or 
+from the author.
+Acknowledgements
+H.J. and Z.W. contributed equally to this work. The authors acknowledge 
+support from the National Natural Science Foundations of China (Grant 
+No. 52071226, 51872193, and U21A20332), Natural Science Foundations 
+of Jiangsu Province (Grant No. BK20181168 and BK20201171), Key R&D 
+Project funded by Department of Science and Technology of Jiangsu 
+Province (Grant No. BE2020003-3), the Natural Science Foundation 
+of the Jiangsu Higher Education Institutions of China (Grant No. 
+19KJA210004), and the Priority Academic Program Development of 
+Jiangsu Higher Education Institutions (PAPD).
+Conflict of Interest
+The authors declare no conflict of interest.
+Data Availability Statement
+The data that support the findings of this study are available from the 
+corresponding author upon reasonable request.
+Keywords
+de-solvation 
+barrier, 
+Li–S 
+batteries, 
+low-temperature, 
+molecular 
+dynamics, solvation structure
+Received: September 19, 2022
+Revised: November 26, 2022
+Published online: January 11, 2023
+[1]	 J. Ming, Z. Cao, Y. Wu, W. Wahyudi, W. Wang, X. Guo, L. Cavallo, 
+J. Y. Hwang, A. Shamim, L. J. Li, Y. K. Sun, H. N. Alshareef, ACS 
+Energy Lett. 2019, 4, 2613.
+[2]	 A. Manthiram, ACS Cent. Sci. 2017, 3, 1063.
+[3]	 D. Hubble, D. E. Brown, Y. Zhao, C. Fang, J. Lau, B. D. McCloskey, 
+G. Liu, Energy Environ. Sci. 2022, 15, 550.
+[4]	 Y. Zheng, T. Qian, H. Ji, X. Xia, J. Liu, Y. Zhu, C. Yan, Adv. Mater. 
+2021, 33, 2102634.
+[5]	 G. Zhu, K. Wen, W. Lv, X. Zhou, Y. Liang, F. Yang, Z. Chen, M. Zou, 
+J. Li, Y. Zhang, W. He, J. Power Sources 2015, 300, 29.
+[6]	 K. Xu, Chem. Rev. 2004, 104, 4303.
+[7]	 L. Chen, L. L. Shaw, J. Power Sources 2014, 267, 770.
+[8]	 H. S. Ryu, H. J. Ahn, K. W. Kim, J. H. Ahn, K. K. Cho, T. H. Nam, 
+J. U. Kim, G. B. Cho, J. Power Sources 2006, 163, 201.
+[9]	 S.  Zhu, Y.  Wang, J.  Jiang, X.  Yan, D.  Sun, Y.  Jin, C.  Nan, 
+H.  Munakata, K.  Kanamura, ACS Appl. Mater. Interfaces 2016, 8, 
+17253.
+[10]	 J. Lei, T. Liu, J. Chen, M. Zheng, Q. Zhang, B. Mao, Q. Dong, Chem 
+2020, 6, 2533.
+[11]	 X. Wu, N. Liu, B. Guan, Y. Qiu, M. Wang, J. Cheng, D. Tian, L. Fan, 
+N. Zhang, K. Sun, Adv. Sci. 2019, 6, 1900958.
+[12]	 C. Y.  Chen, H. J.  Peng, T. Z.  Hou, P. Y.  Zhai, B. Q.  Li, C.  Tang, 
+W. Zhu, J. Q. Huang, Q. Zhang, Adv. Mater. 2017, 29, 1606802.
+[13]	 X. Wu, N. Liu, M. Wang, Y. Qiu, B. Guan, D. Tian, Z. Guo, L. Fan, 
+N. Zhang, ACS Nano 2019, 13, 13109.
+[14]	 A. Gupta, A. Bhargav, J. P. Jones, R. V. Bugga, A. Manthiram, Chem. 
+Mater. 2020, 32, 2070.
+[15]	 A. Gupta, A. Bhargav, A. Manthiram, ACS Energy Lett. 2021, 6, 224.
+[16]	 Z. Wang, H. Ji, L. Zhou, X. Shen, L. Gao, J. Liu, T. Yang, T. Qian, 
+C. Yan, ACS Nano 2021, 15, 13847.
+[17]	 J. Holoubek, H. Liu, Z. Wu, Y. Yin, X. Xing, G. Cai, S. Yu, H. Zhou, 
+T. A. Pascal, Z. Chen, P. Liu, Nat. Energy 2021, 6, 303.
+[18]	 K. Xu, A. Von Cresce, U. Lee, Langmuir 2010, 26, 11538.
+[19]	 J. Holoubek, Y. Yin, M. Li, M. Yu, Y. S. Meng, P. Liu, Z. Chen, Angew. 
+Chem. 2019, 131, 19068.
+[20]	 Q.  Li, D.  Lu, J.  Zheng, S.  Jiao, L.  Luo, C. M.  Wang, K.  Xu, 
+J. G. Zhang, W. Xu, ACS Appl. Mater. Interfaces 2017, 9, 42761.
+[21]	 J. Li, Y. Hu, H. Xie, J. Peng, L. Fan, J. Zhou, B. Lu, Angew. Chem., Int. 
+Ed. 2022, 134, e202208291.
+[22]	 A. Y. Yang, Z. Fang, Y. Yin, Y. Cao, Y. G. Wang, X. L. Dong, Y. Y. Xia, 
+Angew. Chem., Int. Ed. 2022, 134, e202208345.
+[23]	 P. Bai, J. Li, F. R. Brushett, M. Z. Bazant, Energy Environ. Sci. 2016, 
+9, 3221.
+ 15214095, 2023, 9, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adma.202208590 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+<<PAGE 7>>
+© 2023 Wiley-VCH GmbH
+2208590  (7 of 7)
+www.advmat.de
+www.advancedsciencenews.com
+Adv. Mater. 2023, 35, 2208590
+[24]	 W.  Wahyudi, V.  Ladelta, L.  Tsetseris, M. M.  Alsabban, X.  Guo, 
+E.  Yengel, H.  Faber, B.  Adilbekova, A.  Seitkhan, A. H.  Emwas, 
+M. N. Hedhili, L. J. Li, V. Tung, N. Hadjichristidis, T. D. Anthopoulos, 
+J. Ming, Adv. Funct. Mater. 2021, 31, 2101593.
+[25]	 L.  Suo, D.  Oh, Y.  Lin, Z.  Zhuo, O.  Borodin, T.  Gao, F.  Wang, 
+A. Kushima, Z. Wang, H. C. Kim, Y. Qi, W. Yang, F. Pan, J. Li, K. Xu, 
+C. Wang, J. Am. Chem. Soc. 2017, 139, 18670.
+[26]	 Y. Chen, Z. Yu, P. Rudnicki, H. Gong, Z. Huang, S. C. Kim, J. C. Lai, 
+X. Kong, J. Qin, Y. Cui, Z. Bao, J. Am. Chem. Soc. 2021, 143, 18703.
+[27]	 T. Phan-Xuan, E. Bogdanova, A. M. Fureby, J. Fransson, A. E. Terry, 
+V. Kocherbitov, Mol. Pharmaceutics 2020, 17, 3246.
+[28]	 L. Aguilera, S. Xiong, J. Scheers, A. Matic, J. Mol. Liq. 2015, 210, 238.
+[29]	 K. Qian, R. E. Winans, T. Li, Adv. Energy Mater. 2021, 11, 2002821.
+[30]	 X. Liu, S. C. Lee, S. Seifer, R. E. Winans, L. Cheng, Y. Z. , T. Li, Energy 
+Storage Mater. 2022, 45, 696.
+[31]	 C.  Jin, N.  Yao, Y.  Xiao, J.  Xie, Z.  Li, X.  Chen, B.  Li, X.  Zhang, 
+J.  Huang, Q.  Zhang, Adv. Mater., https://doi.org/10.1002/
+adma.202208340.
+[32]	 C.  Yan, H. R.  Li, X.  Chen, X. Q.  Zhang, X. B.  Cheng, R.  Xu, 
+J. Q. Huang, Q. Zhang, J. Am. Chem. Soc. 2019, 141, 9422.
+[33]	 Y. Yamada, M. Yaegashi, T. Abe, A. Yamada, Chem. Commun. 2013, 
+49, 11194.
+[34]	 F. Wu, F. Chu, G. A. Ferrero, M. Sevilla, A. B. Fuertes, O. Borodin, 
+Y. Yu, G. Yushin, Nano Lett. 2020, 20, 5391.
+[35]	 X. Huang, Z. Wang, R. Knibbe, B. Luo, S. A. Ahad, D. Sun, L. Wang, 
+Energy Technol. 2019, 7,1801001.
+[36]	 F. Chu, M. Wang, J. Liu, Z. Guan, H. Yu, B. Liu, F. Wu, Adv. Funct. 
+Mater. 2022, 32, 2205393.
+[37]	 Z. Li, Y. Zhou, Y. Wang, Y. C. Lu, Adv. Energy Mater. 2019, 9, 1802207.
+[38]	 A. Gupta, A. Manthiram, J. Mater. Chem. A 2021, 9, 13242.
+ 15214095, 2023, 9, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adma.202208590 by Tsinghua University Library, Wiley Online Library on [03/10/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
