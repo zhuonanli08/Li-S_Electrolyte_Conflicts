@@ -1,53 +1,221 @@
 {
-  "编号": "P564",
-  "电解液": {
-    "E1": {"名称": "1.0 M LiTFSI", "配方": "1.0 M LiTFSI + 0.3 M LiNO3，DOL/DME 1:1 v/v"},
-    "E2": {"名称": "0.8 M LiTFSI", "配方": "0.8 M LiTFSI + 0.3 M LiNO3，DOL/DME 1:1 v/v"},
-    "E3": {"名称": "0.8 M LiTFSI / 0.2 M LiBr", "配方": "0.8 M LiTFSI + 0.2 M LiBr + 0.3 M LiNO3，DOL/DME 1:1 v/v"}
+ "编号": "P564",
+ "电解液": {
+  "E1": {
+   "名称": "1.0 M LiTFSI",
+   "配方": "1.0 M LiTFSI + 0.3 M LiNO3，DOL/DME 1:1 v/v"
   },
-  "条件": {
-    "C1": {"正极": "SC/S（S-PC 80%、碳纤维 10%、PVDF 10%），直径 12 mm", "硫载量": "5.0 mg cm-2", "硫含量": "", "E/S": "10", "电解液体积": "", "面积": "直径 12 mm",
-           "锂厚": "450 µm", "N/P": "", "倍率": "倍率阶梯 0.05–0.5C", "1C定义": "", "温度": "", "电池": "CR2032",
-           "原句": "The cathode diameter is 12 mm, Li metal diameter is 16 mm, lithium metal thickness is 450 µm."},
-    "C2": {"正极": "同上", "硫载量": "2.18 mg cm-2", "硫含量": "", "E/S": "10", "电解液体积": "", "面积": "直径 12 mm",
-           "锂厚": "450 µm", "N/P": "", "倍率": "0.5C", "1C定义": "", "温度": "", "电池": "CR2032", "原句": ""},
-    "C3": {"正极": "同上", "硫载量": "4.25 mg cm-2", "硫含量": "", "E/S": "5", "电解液体积": "", "面积": "直径 12 mm",
-           "锂厚": "450 µm", "N/P": "", "倍率": "0.05C 活化 1 圈后 0.2C", "1C定义": "", "温度": "", "电池": "CR2032",
-           "原句": "To evaluate its application under high S loading and low E/S ratio, we further measured the cycling performance (a current density of 0.2C) at an S loading of 4.25 mg cm-2 and an E/S ratio of 5 µL mgs -1 (Figure 5c)."},
-    "C4": {"正极": "同上", "硫载量": "6.2 mg cm-2", "硫含量": "", "E/S": "3", "电解液体积": "", "面积": "直径 12 mm",
-           "锂厚": "450 µm", "N/P": "", "倍率": "0.1C", "1C定义": "", "温度": "", "电池": "CR2032", "原句": ""}
+  "E2": {
+   "名称": "0.8 M LiTFSI",
+   "配方": "0.8 M LiTFSI + 0.3 M LiNO3，DOL/DME 1:1 v/v"
   },
-  "比较": [
-    {"A": "E3", "B": "E1", "条件": "C1", "层": "C", "改变因素": ["盐阴离子", "盐浓度"],
-     "溶剂化依据": "S8 溶解度随 LiTFSI 浓度非线性变化（同篇实测）；UV-vis：加 LiBr 后 S4 2- 生成更多（同篇实测）",
-     "指标": [
-       {"指标": "倍率容量", "取值点": "0.05 / 0.1 / 0.2 / 0.5C", "A": "1328.8 / 1030.4 / 955.5 / 607.9", "B": "", "单位": "mAh g-1", "方向": "A更好", "来源": "正文（B 值只在图）",
-        "原句": "All these values are much higher than those obtained with 1 M LiTFSI."}
-     ]},
-    {"A": "E3", "B": "E1", "条件": "C2", "层": "C", "改变因素": ["盐阴离子", "盐浓度"], "溶剂化依据": "同上",
-     "指标": [
-       {"指标": "循环保持率或寿命", "取值点": "0.5C 循环寿命", "A": "B 的约 2.3 倍", "B": "", "单位": "", "方向": "A更好", "来源": "SI 图（文字给方向）",
-        "原句": "The capacity of the battery with 0.8 M LiTFSI and 0.2 M LiBr is significantly higher than that of the 1 M LiTFSI battery, and the cycle time is about 2.3 times that of the 1 M LiTFSI battery (Figure S28)."}
-     ]},
-    {"A": "E3", "B": "E1", "条件": "C3", "层": "C", "改变因素": ["盐阴离子", "盐浓度"], "溶剂化依据": "同上",
-     "指标": [
-       {"指标": "首圈容量", "取值点": "0.05C 活化圈", "A": "1456", "B": "1251", "单位": "mAh g-1", "方向": "A更好", "来源": "正文",
-        "原句": "The initial discharge capacity of the battery with 0.8 M LiTFSI and 0.2 M LiBr at 0.05C (first-circle activation) is up to 1456 mAh g-1, which is much higher than that with 1 M LiTFSI (1251 mAh g-1)."},
-       {"指标": "指定圈数放电容量", "取值点": "0.2C 首圈", "A": "1104", "B": "219", "单位": "mAh g-1", "方向": "A更好", "来源": "正文",
-        "原句": "At a current density of 0.2C, the discharge capacity of the battery with 0.8 M LiTFSI and 0.2 M LiBr is 1104 mAh g-1, while that with 1.0 M LiTFSI is 219 mAh g-1, and the second platform of the battery with 1 M LiTFSI disappears (Figure S30)."}
-     ]},
-    {"A": "E3", "B": "E1", "条件": "C4", "层": "C", "改变因素": ["盐阴离子", "盐浓度"], "溶剂化依据": "同上",
-     "指标": [
-       {"指标": "首圈容量", "取值点": "A 0.1C / B 0.05C（倍率不同）", "A": "1129", "B": "171.6", "单位": "mAh g-1", "方向": "A更好", "来源": "正文",
-        "原句": "In contrast, the second platform at 0.05 and 0.1C cannot be observed for the battery with 1 M LiTFSI, and a capacity of 171.6 mAh g-1 is achieved at a low current of 0.05C (Figure S32)."}
-     ]},
-    {"A": "E2", "B": "E1", "条件": "C3", "层": "C", "改变因素": ["盐浓度"], "溶剂化依据": "S8 溶解度：0.8 M 下更高（同篇实测）",
-     "指标": [
-       {"指标": "过电位或动力学", "取值点": "CV 第一对氧化还原峰间距 ΔE1（E/S 5）", "A": "154", "B": "230", "单位": "mV", "方向": "A更好", "来源": "正文",
-        "原句": "With 0.8 M LiTFSI, ΔE1 (EPa1 -EPc1) is 154 mV, which is much lower than that with 1 M LiTFSI (230 mV)."},
-       {"指标": "首圈容量", "取值点": "（图 3 条件，待核）", "A": "928", "B": "746", "单位": "mAh g-1", "方向": "A更好", "来源": "正文",
-        "原句": "Compared to the discharge capacity of the battery with 1.0 M LiTFSI (746 mAh g-1), the higher value with 0.8 M LiTFSI (928 mAh g-1) also indicates a faster reaction rate (Figure 3b,d)."}
-     ]}
-  ],
-  "备注": "A 全面占优，且差距随贫液加剧而放大（E/S 5 时 B 第二平台消失）——跨条件变化（差距放大，非翻转）。C4 两者倍率不同，取值点不可比。条件报告齐全（450 µm 锂、载量与 E/S 一一对应）。"
+  "E3": {
+   "名称": "0.8 M LiTFSI / 0.2 M LiBr",
+   "配方": "0.8 M LiTFSI + 0.2 M LiBr + 0.3 M LiNO3，DOL/DME 1:1 v/v"
+  }
+ },
+ "条件": {
+  "C1": {
+   "正极": "SC/S（S-PC 80%、碳纤维 10%、PVDF 10%），直径 12 mm",
+   "硫载量": "5.0 mg cm-2",
+   "硫含量": "",
+   "E/S": "10",
+   "电解液体积": "",
+   "面积": "直径 12 mm",
+   "锂厚": "450 µm",
+   "N/P": "",
+   "倍率": "倍率阶梯 0.05–0.5C",
+   "1C定义": "",
+   "温度": "",
+   "电池": "CR2032",
+   "原句": "The cathode diameter is 12 mm, Li metal diameter is 16 mm, lithium metal thickness is 450 µm."
+  },
+  "C2": {
+   "正极": "同上",
+   "硫载量": "2.18 mg cm-2",
+   "硫含量": "",
+   "E/S": "10",
+   "电解液体积": "",
+   "面积": "直径 12 mm",
+   "锂厚": "450 µm",
+   "N/P": "",
+   "倍率": "0.5C",
+   "1C定义": "",
+   "温度": "",
+   "电池": "CR2032",
+   "原句": ""
+  },
+  "C3": {
+   "正极": "同上",
+   "硫载量": "4.25 mg cm-2",
+   "硫含量": "",
+   "E/S": "5",
+   "电解液体积": "",
+   "面积": "直径 12 mm",
+   "锂厚": "450 µm",
+   "N/P": "",
+   "倍率": "0.05C 活化 1 圈后 0.2C",
+   "1C定义": "",
+   "温度": "",
+   "电池": "CR2032",
+   "原句": "To evaluate its application under high S loading and low E/S ratio, we further measured the cycling performance (a current density of 0.2C) at an S loading of 4.25 mg cm-2 and an E/S ratio of 5 µL mgs -1 (Figure 5c)."
+  },
+  "C4": {
+   "正极": "同上",
+   "硫载量": "6.2 mg cm-2",
+   "硫含量": "",
+   "E/S": "3",
+   "电解液体积": "",
+   "面积": "直径 12 mm",
+   "锂厚": "450 µm",
+   "N/P": "",
+   "倍率": "0.1C",
+   "1C定义": "",
+   "温度": "",
+   "电池": "CR2032",
+   "原句": ""
+  }
+ },
+ "比较": [
+  {
+   "A": "E3",
+   "B": "E1",
+   "条件": "C1",
+   "层": "C",
+   "改变因素": [
+    "盐阴离子",
+    "盐浓度"
+   ],
+   "溶剂化依据": "S8 溶解度随 LiTFSI 浓度非线性变化（同篇实测）；UV-vis：加 LiBr 后 S4 2- 生成更多（同篇实测）",
+   "指标": [
+    {
+     "指标": "倍率容量",
+     "取值点": "0.05 / 0.1 / 0.2 / 0.5C",
+     "A": "1328.8 / 1030.4 / 955.5 / 607.9",
+     "B": "",
+     "单位": "mAh g-1",
+     "方向": "A更好",
+     "来源": "正文（B 值只在图）",
+     "原句": "All these values are much higher than those obtained with 1 M LiTFSI."
+    }
+   ],
+   "B角色": "系列参照"
+  },
+  {
+   "A": "E3",
+   "B": "E1",
+   "条件": "C2",
+   "层": "C",
+   "改变因素": [
+    "盐阴离子",
+    "盐浓度"
+   ],
+   "溶剂化依据": "同上",
+   "指标": [
+    {
+     "指标": "循环保持率或寿命",
+     "取值点": "0.5C 循环寿命",
+     "A": "B 的约 2.3 倍",
+     "B": "",
+     "单位": "",
+     "方向": "A更好",
+     "来源": "SI 图（文字给方向）",
+     "原句": "The capacity of the battery with 0.8 M LiTFSI and 0.2 M LiBr is significantly higher than that of the 1 M LiTFSI battery, and the cycle time is about 2.3 times that of the 1 M LiTFSI battery (Figure S28)."
+    }
+   ],
+   "B角色": "系列参照"
+  },
+  {
+   "A": "E3",
+   "B": "E1",
+   "条件": "C3",
+   "层": "C",
+   "改变因素": [
+    "盐阴离子",
+    "盐浓度"
+   ],
+   "溶剂化依据": "同上",
+   "指标": [
+    {
+     "指标": "首圈容量",
+     "取值点": "0.05C 活化圈",
+     "A": "1456",
+     "B": "1251",
+     "单位": "mAh g-1",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "The initial discharge capacity of the battery with 0.8 M LiTFSI and 0.2 M LiBr at 0.05C (first-circle activation) is up to 1456 mAh g-1, which is much higher than that with 1 M LiTFSI (1251 mAh g-1)."
+    },
+    {
+     "指标": "指定圈数放电容量",
+     "取值点": "0.2C 首圈",
+     "A": "1104",
+     "B": "219",
+     "单位": "mAh g-1",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "At a current density of 0.2C, the discharge capacity of the battery with 0.8 M LiTFSI and 0.2 M LiBr is 1104 mAh g-1, while that with 1.0 M LiTFSI is 219 mAh g-1, and the second platform of the battery with 1 M LiTFSI disappears (Figure S30)."
+    }
+   ],
+   "B角色": "系列参照"
+  },
+  {
+   "A": "E3",
+   "B": "E1",
+   "条件": "C4",
+   "层": "C",
+   "改变因素": [
+    "盐阴离子",
+    "盐浓度"
+   ],
+   "溶剂化依据": "同上",
+   "指标": [
+    {
+     "指标": "首圈容量",
+     "取值点": "A 0.1C / B 0.05C（倍率不同）",
+     "A": "1129",
+     "B": "171.6",
+     "单位": "mAh g-1",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "In contrast, the second platform at 0.05 and 0.1C cannot be observed for the battery with 1 M LiTFSI, and a capacity of 171.6 mAh g-1 is achieved at a low current of 0.05C (Figure S32)."
+    }
+   ],
+   "B角色": "系列参照"
+  },
+  {
+   "A": "E2",
+   "B": "E1",
+   "条件": "C3",
+   "层": "C",
+   "改变因素": [
+    "盐浓度"
+   ],
+   "溶剂化依据": "S8 溶解度：0.8 M 下更高（同篇实测）",
+   "指标": [
+    {
+     "指标": "过电位或动力学",
+     "取值点": "CV 第一对氧化还原峰间距 ΔE1（E/S 5）",
+     "A": "154",
+     "B": "230",
+     "单位": "mV",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "With 0.8 M LiTFSI, ΔE1 (EPa1 -EPc1) is 154 mV, which is much lower than that with 1 M LiTFSI (230 mV)."
+    },
+    {
+     "指标": "首圈容量",
+     "取值点": "（图 3 条件，待核）",
+     "A": "928",
+     "B": "746",
+     "单位": "mAh g-1",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "Compared to the discharge capacity of the battery with 1.0 M LiTFSI (746 mAh g-1), the higher value with 0.8 M LiTFSI (928 mAh g-1) also indicates a faster reaction rate (Figure 3b,d)."
+    }
+   ],
+   "B角色": "系列参照"
+  }
+ ],
+ "备注": "A 全面占优，且差距随贫液加剧而放大（E/S 5 时 B 第二平台消失）——跨条件变化（差距放大，非翻转）。C4 两者倍率不同，取值点不可比。条件报告齐全（450 µm 锂、载量与 E/S 一一对应）。"
 }

@@ -1,54 +1,221 @@
 {
-  "编号": "P211",
-  "电解液": {
-    "E1": {"名称": "对照（室温）", "配方": "1.0 M LiTFSI + 0.2 M LiNO3，DOL/DME 1:1 v/v"},
-    "E2": {"名称": "NH4TFA（室温）", "配方": "0.8 M LiTFSI + 0.2 M NH4TFA + 0.2 M LiNO3，DOL/DME 1:1 v/v"},
-    "E3": {"名称": "对照（变温）", "配方": "0.8 M LiTFSI + 0.2 M LiNO3，DOL/DME 85:15 v/v"},
-    "E4": {"名称": "LiTFA（变温）", "配方": "0.5 M LiTFSI + 0.3 M LiTFA + 0.2 M LiNO3，DOL/DME 85:15 v/v"},
-    "E5": {"名称": "NH4TFA（变温）", "配方": "0.5 M LiTFSI + 0.3 M NH4TFA + 0.2 M LiNO3，DOL/DME 85:15 v/v"}
+ "编号": "P211",
+ "电解液": {
+  "E1": {
+   "名称": "对照（室温）",
+   "配方": "1.0 M LiTFSI + 0.2 M LiNO3，DOL/DME 1:1 v/v"
   },
-  "条件": {
-    "C1": {"正极": "S/C/PEO-PVP 63:28:9", "硫载量": "3.4 mg cm-2", "硫含量": "极片 63 wt%", "E/S": "12", "电解液体积": "", "面积": "",
-           "锂厚": "", "N/P": "", "倍率": "C/20 两圈后 C/10", "1C定义": "1672 mA g-1", "温度": "室温", "电池": "CR2032",
-           "原句": "For room- temperature cycling, the sulfur cathodes possessed an active material loading of 3.4 mg cm-2, while the cells contained an E/S = 12 µL mg-1."},
-    "C2": {"正极": "同上，约 24 cm2 软包", "硫载量": "A 4.8 / B 3.5 mg cm-2（不同）", "硫含量": "极片 63 wt%", "E/S": "4.5", "电解液体积": "", "面积": "约 24 cm2",
-           "锂厚": "", "N/P": "", "倍率": "C/20 单圈", "1C定义": "1672 mA g-1", "温度": "室温", "电池": "软包",
-           "原句": "The cell with the NH4TFA-containing electrolyte had an areal sulfur loading of 4.8 mg cm-2, while the cell with the control electrolyte contained a sulfur loading of 3.5 mg cm-2."},
-    "C3": {"正极": "同上", "硫载量": "3.1 mg cm-2", "硫含量": "极片 63 wt%", "E/S": "13", "电解液体积": "", "面积": "",
-           "锂厚": "", "N/P": "", "倍率": "C/20", "1C定义": "1672 mA g-1", "温度": "25 °C", "电池": "CR2032",
-           "原句": "For variable temperature cycling, the sulfur cathodes contained an active material loading of 3.1 mg cm-2, while the cells had an E/S = 13 µL mg-1."},
-    "C4": {"正极": "同 C3", "硫载量": "3.1 mg cm-2", "硫含量": "", "E/S": "13", "电解液体积": "", "面积": "",
-           "锂厚": "", "N/P": "", "倍率": "C/20", "1C定义": "1672 mA g-1", "温度": "0 °C", "电池": "CR2032", "原句": ""}
+  "E2": {
+   "名称": "NH4TFA（室温）",
+   "配方": "0.8 M LiTFSI + 0.2 M NH4TFA + 0.2 M LiNO3，DOL/DME 1:1 v/v"
   },
-  "比较": [
-    {"A": "E2", "B": "E1", "条件": "C1", "层": "A", "改变因素": ["其他添加剂", "盐浓度"],
-     "溶剂化依据": "7Li NMR：加 NH4TFA 后 Li2S4 的 7Li 峰向低场移，作者解释为 Li+ 与 Sx2- 配位减弱（0.2 M Li2S4 / d-THF-DME 体系，间接映射）",
-     "指标": [
-       {"指标": "循环保持率或寿命", "取值点": "100 圈", "A": "800–900", "B": "800–900", "单位": "mAh g-1", "方向": "差异小", "来源": "正文",
-        "原句": "As seen in Figure 3a, the galvanostatic cycling behavior of coin cells (E/S = 12 µL mg-1) with and without NH4TFA is quite similar, generally maintaining between 800 and 900 mA h g-1 over the course of 100 cycles."},
-       {"指标": "过电位或动力学", "取值点": "第 50 圈放电极化", "A": "低约 40 mV", "B": "", "单位": "mV", "方向": "A更好", "来源": "正文",
-        "原句": "Most notably, the cell containing NH4TFA does exhibit slightly superior kinetic behavior, with a lower overpotential on the order of 40 mV seen during discharge."}
-     ]},
-    {"A": "E2", "B": "E1", "条件": "C2", "层": "A", "改变因素": ["其他添加剂", "盐浓度"], "溶剂化依据": "同上",
-     "指标": [
-       {"指标": "首圈容量", "取值点": "C/20 单圈", "A": "930", "B": "250", "单位": "mAh g-1", "方向": "A更好", "来源": "正文",
-        "原句": "From a capacity standpoint, the NH4TFA additive enables a capacity of 930 mA h g-1 compared to 250 mA h g-1 for the control cell, a sizeable 370% improvement."}
-     ]},
-    {"A": "E5", "B": "E3", "条件": "C3", "层": "A", "改变因素": ["其他添加剂", "盐阴离子", "盐浓度"], "溶剂化依据": "同上",
-     "指标": [
-       {"指标": "首圈容量", "取值点": "25 °C 单圈", "A": "高 13%", "B": "", "单位": "", "方向": "A更好", "来源": "正文",
-        "原句": "As seen in the voltage profile in Figure 7a, the NH4TFA- optimized electrolyte formulation slightly outperforms the other formulations at 25 °C, achieving capacities that are 13 and 9% higher than, respectively, the control and LiTFA- containing electrolytes."}
-     ]},
-    {"A": "E5", "B": "E4", "条件": "C3", "层": "A", "改变因素": ["其他添加剂"], "溶剂化依据": "同上",
-     "指标": [
-       {"指标": "首圈容量", "取值点": "25 °C 单圈", "A": "高 9%", "B": "", "单位": "", "方向": "A更好", "来源": "正文",
-        "原句": "achieving capacities that are 13 and 9% higher than, respectively, the control and LiTFA- containing electrolytes."}
-     ]},
-    {"A": "E5", "B": "E3", "条件": "C4", "层": "A", "改变因素": ["其他添加剂", "盐阴离子", "盐浓度"], "溶剂化依据": "同上",
-     "指标": [
-       {"指标": "首圈容量", "取值点": "0 °C 单圈", "A": "高 26%", "B": "", "单位": "", "方向": "A更好", "来源": "正文",
-        "原句": "This trend becomes slightly stronger at 0 °C (shown in Figure 7b), with the NH4TFA-optimized electrolyte achieving capacities that are 26 and 15% higher than, respectively, the control and LiTFA-containing electro- lytes."}
-     ]}
-  ],
-  "备注": "C2 软包 A、B 硫载量不同（4.8 vs 3.5 mg cm-2），条件不匹配。变温只做单圈。层别是添加剂 / 盐，不是溶剂化强弱；全文没有'首圈好 vs 寿命好'的权衡。锂厚未写。"
+  "E3": {
+   "名称": "对照（变温）",
+   "配方": "0.8 M LiTFSI + 0.2 M LiNO3，DOL/DME 85:15 v/v"
+  },
+  "E4": {
+   "名称": "LiTFA（变温）",
+   "配方": "0.5 M LiTFSI + 0.3 M LiTFA + 0.2 M LiNO3，DOL/DME 85:15 v/v"
+  },
+  "E5": {
+   "名称": "NH4TFA（变温）",
+   "配方": "0.5 M LiTFSI + 0.3 M NH4TFA + 0.2 M LiNO3，DOL/DME 85:15 v/v"
+  }
+ },
+ "条件": {
+  "C1": {
+   "正极": "S/C/PEO-PVP 63:28:9",
+   "硫载量": "3.4 mg cm-2",
+   "硫含量": "极片 63 wt%",
+   "E/S": "12",
+   "电解液体积": "",
+   "面积": "",
+   "锂厚": "",
+   "N/P": "",
+   "倍率": "C/20 两圈后 C/10",
+   "1C定义": "1672 mA g-1",
+   "温度": "室温",
+   "电池": "CR2032",
+   "原句": "For room- temperature cycling, the sulfur cathodes possessed an active material loading of 3.4 mg cm-2, while the cells contained an E/S = 12 µL mg-1."
+  },
+  "C2": {
+   "正极": "同上，约 24 cm2 软包",
+   "硫载量": "A 4.8 / B 3.5 mg cm-2（不同）",
+   "硫含量": "极片 63 wt%",
+   "E/S": "4.5",
+   "电解液体积": "",
+   "面积": "约 24 cm2",
+   "锂厚": "",
+   "N/P": "",
+   "倍率": "C/20 单圈",
+   "1C定义": "1672 mA g-1",
+   "温度": "室温",
+   "电池": "软包",
+   "原句": "The cell with the NH4TFA-containing electrolyte had an areal sulfur loading of 4.8 mg cm-2, while the cell with the control electrolyte contained a sulfur loading of 3.5 mg cm-2."
+  },
+  "C3": {
+   "正极": "同上",
+   "硫载量": "3.1 mg cm-2",
+   "硫含量": "极片 63 wt%",
+   "E/S": "13",
+   "电解液体积": "",
+   "面积": "",
+   "锂厚": "",
+   "N/P": "",
+   "倍率": "C/20",
+   "1C定义": "1672 mA g-1",
+   "温度": "25 °C",
+   "电池": "CR2032",
+   "原句": "For variable temperature cycling, the sulfur cathodes contained an active material loading of 3.1 mg cm-2, while the cells had an E/S = 13 µL mg-1."
+  },
+  "C4": {
+   "正极": "同 C3",
+   "硫载量": "3.1 mg cm-2",
+   "硫含量": "",
+   "E/S": "13",
+   "电解液体积": "",
+   "面积": "",
+   "锂厚": "",
+   "N/P": "",
+   "倍率": "C/20",
+   "1C定义": "1672 mA g-1",
+   "温度": "0 °C",
+   "电池": "CR2032",
+   "原句": ""
+  }
+ },
+ "比较": [
+  {
+   "A": "E2",
+   "B": "E1",
+   "条件": "C1",
+   "层": "A",
+   "改变因素": [
+    "其他添加剂",
+    "盐浓度"
+   ],
+   "溶剂化依据": "7Li NMR：加 NH4TFA 后 Li2S4 的 7Li 峰向低场移，作者解释为 Li+ 与 Sx2- 配位减弱（0.2 M Li2S4 / d-THF-DME 体系，间接映射）",
+   "指标": [
+    {
+     "指标": "循环保持率或寿命",
+     "取值点": "100 圈",
+     "A": "800–900",
+     "B": "800–900",
+     "单位": "mAh g-1",
+     "方向": "差异小",
+     "来源": "正文",
+     "原句": "As seen in Figure 3a, the galvanostatic cycling behavior of coin cells (E/S = 12 µL mg-1) with and without NH4TFA is quite similar, generally maintaining between 800 and 900 mA h g-1 over the course of 100 cycles."
+    },
+    {
+     "指标": "过电位或动力学",
+     "取值点": "第 50 圈放电极化",
+     "A": "低约 40 mV",
+     "B": "",
+     "单位": "mV",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "Most notably, the cell containing NH4TFA does exhibit slightly superior kinetic behavior, with a lower overpotential on the order of 40 mV seen during discharge."
+    }
+   ],
+   "B角色": "作者对照"
+  },
+  {
+   "A": "E2",
+   "B": "E1",
+   "条件": "C2",
+   "层": "A",
+   "改变因素": [
+    "其他添加剂",
+    "盐浓度"
+   ],
+   "溶剂化依据": "同上",
+   "指标": [
+    {
+     "指标": "首圈容量",
+     "取值点": "C/20 单圈",
+     "A": "930",
+     "B": "250",
+     "单位": "mAh g-1",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "From a capacity standpoint, the NH4TFA additive enables a capacity of 930 mA h g-1 compared to 250 mA h g-1 for the control cell, a sizeable 370% improvement."
+    }
+   ],
+   "B角色": "作者对照"
+  },
+  {
+   "A": "E5",
+   "B": "E3",
+   "条件": "C3",
+   "层": "A",
+   "改变因素": [
+    "其他添加剂",
+    "盐阴离子",
+    "盐浓度"
+   ],
+   "溶剂化依据": "同上",
+   "指标": [
+    {
+     "指标": "首圈容量",
+     "取值点": "25 °C 单圈",
+     "A": "高 13%",
+     "B": "",
+     "单位": "",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "As seen in the voltage profile in Figure 7a, the NH4TFA- optimized electrolyte formulation slightly outperforms the other formulations at 25 °C, achieving capacities that are 13 and 9% higher than, respectively, the control and LiTFA- containing electrolytes."
+    }
+   ],
+   "B角色": "作者对照"
+  },
+  {
+   "A": "E5",
+   "B": "E4",
+   "条件": "C3",
+   "层": "A",
+   "改变因素": [
+    "其他添加剂"
+   ],
+   "溶剂化依据": "同上",
+   "指标": [
+    {
+     "指标": "首圈容量",
+     "取值点": "25 °C 单圈",
+     "A": "高 9%",
+     "B": "",
+     "单位": "",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "achieving capacities that are 13 and 9% higher than, respectively, the control and LiTFA- containing electrolytes."
+    }
+   ],
+   "B角色": "非对照（作者直接比较）"
+  },
+  {
+   "A": "E5",
+   "B": "E3",
+   "条件": "C4",
+   "层": "A",
+   "改变因素": [
+    "其他添加剂",
+    "盐阴离子",
+    "盐浓度"
+   ],
+   "溶剂化依据": "同上",
+   "指标": [
+    {
+     "指标": "首圈容量",
+     "取值点": "0 °C 单圈",
+     "A": "高 26%",
+     "B": "",
+     "单位": "",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "This trend becomes slightly stronger at 0 °C (shown in Figure 7b), with the NH4TFA-optimized electrolyte achieving capacities that are 26 and 15% higher than, respectively, the control and LiTFA-containing electro- lytes."
+    }
+   ],
+   "B角色": "作者对照"
+  }
+ ],
+ "备注": "C2 软包 A、B 硫载量不同（4.8 vs 3.5 mg cm-2），条件不匹配。变温只做单圈。层别是添加剂 / 盐，不是溶剂化强弱；全文没有'首圈好 vs 寿命好'的权衡。锂厚未写。"
 }

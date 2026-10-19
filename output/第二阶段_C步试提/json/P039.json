@@ -1,47 +1,168 @@
 {
-  "编号": "P039",
-  "电解液": {
-    "E1": {"名称": "[0.5 M LiTFSI + 3 M LiNO3]/G2", "配方": "0.5 M LiTFSI + 3 M LiNO3，二甘醇二甲醚"},
-    "E2": {"名称": "1 M LiTFSI + 0.3 M LiNO3 DOL:DME", "配方": "1 M LiTFSI + 0.3 M LiNO3，DOL/DME"},
-    "E3": {"名称": "1 M LiTFSI/G2", "配方": "1 M LiTFSI，G2，无 LiNO3"},
-    "E4": {"名称": "1 M LiTFSI DOL:DME", "配方": "1 M LiTFSI，DOL/DME，无 LiNO3"}
+ "编号": "P039",
+ "电解液": {
+  "E1": {
+   "名称": "[0.5 M LiTFSI + 3 M LiNO3]/G2",
+   "配方": "0.5 M LiTFSI + 3 M LiNO3，二甘醇二甲醚"
   },
-  "条件": {
-    "C1": {"正极": "无（Cu‖Li）", "硫载量": "", "硫含量": "", "E/S": "", "电解液体积": "75 µL", "面积": "Cu 2.11 cm2",
-           "锂厚": "250 µm", "N/P": "", "倍率": "0.4 mA cm-2，1 mAh cm-2", "1C定义": "", "温度": "30 °C", "电池": "CR2032",
-           "原句": "Li was deposited onto Cu at 0.4 mA/cm2 to a 1 mAh/cm2 deposition capacity, then stripped at 0.4 mA/cm2 to a voltage cut-oﬀof 1 V."},
-    "C2": {"正极": "无（Li‖Li）", "硫载量": "", "硫含量": "", "E/S": "", "电解液体积": "", "面积": "",
-           "锂厚": "", "N/P": "", "倍率": "0.5 mA cm-2，5 mAh cm-2", "1C定义": "", "温度": "30 °C", "电池": "CR2032",
-           "原句": "S4, Li//Li cells were cycled at 0.5 mA/cm2 to a capacity of 5 mAh/cm2 (C/10 rate)."},
-    "C3": {"正极": "MWCNT/PTFE 碳电极 + 溶液正极（Li2S8 2 M[S]）", "硫载量": "3.2 mg（1.6 cm2，约 2.0 mg cm-2）", "硫含量": "", "E/S": "50 µL / 3.2 mg ≈ 15.6", "电解液体积": "50 µL", "面积": "1.6 cm2",
-           "锂厚": "400 µm", "N/P": "", "倍率": "0.4 mA cm-2（约 C/7）", "1C定义": "1675 mA g-1", "温度": "30 °C", "电池": "CR2032",
-           "原句": "The Li-S cell was cycled at 0.4 mA/ cm2 (200 mA/g) between 1.9 and 2.7 V which is approximately C/7 rate."}
+  "E2": {
+   "名称": "1 M LiTFSI + 0.3 M LiNO3 DOL:DME",
+   "配方": "1 M LiTFSI + 0.3 M LiNO3，DOL/DME"
   },
-  "比较": [
-    {"A": "E1", "B": "E2", "条件": "C1", "层": "C", "改变因素": ["溶剂种类", "盐浓度", "LiNO3"],
-     "溶剂化依据": "",
-     "指标": [
-       {"指标": "Li‖Cu 库仑效率", "取值点": "CE >99% 维持的圈数", "A": ">200", "B": "<35", "单位": "圈", "方向": "A更好", "来源": "正文",
-        "原句": "By increasing the con- centration of LiNO3 by tenfold in the new electrolyte, Li can be cycled for > 200 cycles at > 99% CE."}
-     ]},
-    {"A": "E1", "B": "E3", "条件": "C1", "层": "N", "改变因素": ["LiNO3", "盐浓度"],
-     "溶剂化依据": "",
-     "指标": [
-       {"指标": "Li‖Cu 库仑效率", "取值点": "每圈", "A": ">99", "B": "约 20", "单位": "%", "方向": "A更好", "来源": "正文",
-        "原句": "Only about 20% of the deposited Li is suc- cessfully stripped in the 1 M LiTFSI/G2 during each cycle and the re- mainder is built up as dead Li."}
-     ]},
-    {"A": "E1", "B": "E2", "条件": "C2", "层": "C", "改变因素": ["溶剂种类", "盐浓度", "LiNO3"],
-     "溶剂化依据": "",
-     "指标": [
-       {"指标": "锂对称电池寿命", "取值点": "极化开始上升", "A": ">3000（2800 h 起轻微上升）", "B": "约 1400", "单位": "h", "方向": "A更好", "来源": "正文",
-        "原句": "Astonishingly, however, the G2-based electrolyte containing a high concentration of LiNO3 (3 M) cycled for over 3000 h and only began to show a very slight increase in the polarization after 2800 h."}
-     ]},
-    {"A": "E2", "B": "E4", "条件": "C2", "层": "N", "改变因素": ["LiNO3"],
-     "溶剂化依据": "",
-     "指标": [
-       {"指标": "锂对称电池寿命", "取值点": "电池失效", "A": "约 1400", "B": "约 500", "单位": "h", "方向": "A更好", "来源": "正文",
-        "原句": "When LiNO3 is used as an additive in small quantities (0.3 M), the cycle life is extended substantially from ~ 500 to ~ 1400 h."}
-     ]}
-  ],
-  "备注": "Li–S 电池（C3，溶液正极）只测了 E1 一种电解液：第 2 圈 1349 → 第 100 圈 1215 mAh g-1；全电池层面没有配方比较，配方比较都在 Cu‖Li、Li‖Li。B 步判 Ⅰ 合格偏宽；且实际是溶液正极，主层归属待核。"
+  "E3": {
+   "名称": "1 M LiTFSI/G2",
+   "配方": "1 M LiTFSI，G2，无 LiNO3"
+  },
+  "E4": {
+   "名称": "1 M LiTFSI DOL:DME",
+   "配方": "1 M LiTFSI，DOL/DME，无 LiNO3"
+  }
+ },
+ "条件": {
+  "C1": {
+   "正极": "无（Cu‖Li）",
+   "硫载量": "",
+   "硫含量": "",
+   "E/S": "",
+   "电解液体积": "75 µL",
+   "面积": "Cu 2.11 cm2",
+   "锂厚": "250 µm",
+   "N/P": "",
+   "倍率": "0.4 mA cm-2，1 mAh cm-2",
+   "1C定义": "",
+   "温度": "30 °C",
+   "电池": "CR2032",
+   "原句": "Li was deposited onto Cu at 0.4 mA/cm2 to a 1 mAh/cm2 deposition capacity, then stripped at 0.4 mA/cm2 to a voltage cut-oﬀof 1 V."
+  },
+  "C2": {
+   "正极": "无（Li‖Li）",
+   "硫载量": "",
+   "硫含量": "",
+   "E/S": "",
+   "电解液体积": "",
+   "面积": "",
+   "锂厚": "",
+   "N/P": "",
+   "倍率": "0.5 mA cm-2，5 mAh cm-2",
+   "1C定义": "",
+   "温度": "30 °C",
+   "电池": "CR2032",
+   "原句": "S4, Li//Li cells were cycled at 0.5 mA/cm2 to a capacity of 5 mAh/cm2 (C/10 rate)."
+  },
+  "C3": {
+   "正极": "MWCNT/PTFE 碳电极 + 溶液正极（Li2S8 2 M[S]）",
+   "硫载量": "3.2 mg（1.6 cm2，约 2.0 mg cm-2）",
+   "硫含量": "",
+   "E/S": "50 µL / 3.2 mg ≈ 15.6",
+   "电解液体积": "50 µL",
+   "面积": "1.6 cm2",
+   "锂厚": "400 µm",
+   "N/P": "",
+   "倍率": "0.4 mA cm-2（约 C/7）",
+   "1C定义": "1675 mA g-1",
+   "温度": "30 °C",
+   "电池": "CR2032",
+   "原句": "The Li-S cell was cycled at 0.4 mA/ cm2 (200 mA/g) between 1.9 and 2.7 V which is approximately C/7 rate."
+  }
+ },
+ "比较": [
+  {
+   "A": "E1",
+   "B": "E2",
+   "条件": "C1",
+   "层": "C",
+   "改变因素": [
+    "溶剂种类",
+    "盐浓度",
+    "LiNO3"
+   ],
+   "溶剂化依据": "",
+   "指标": [
+    {
+     "指标": "Li‖Cu 库仑效率",
+     "取值点": "CE >99% 维持的圈数",
+     "A": ">200",
+     "B": "<35",
+     "单位": "圈",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "By increasing the con- centration of LiNO3 by tenfold in the new electrolyte, Li can be cycled for > 200 cycles at > 99% CE."
+    }
+   ],
+   "B角色": "作者对照"
+  },
+  {
+   "A": "E1",
+   "B": "E3",
+   "条件": "C1",
+   "层": "N",
+   "改变因素": [
+    "LiNO3",
+    "盐浓度"
+   ],
+   "溶剂化依据": "",
+   "指标": [
+    {
+     "指标": "Li‖Cu 库仑效率",
+     "取值点": "每圈",
+     "A": ">99",
+     "B": "约 20",
+     "单位": "%",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "Only about 20% of the deposited Li is suc- cessfully stripped in the 1 M LiTFSI/G2 during each cycle and the re- mainder is built up as dead Li."
+    }
+   ],
+   "B角色": "作者对照"
+  },
+  {
+   "A": "E1",
+   "B": "E2",
+   "条件": "C2",
+   "层": "C",
+   "改变因素": [
+    "溶剂种类",
+    "盐浓度",
+    "LiNO3"
+   ],
+   "溶剂化依据": "",
+   "指标": [
+    {
+     "指标": "锂对称电池寿命",
+     "取值点": "极化开始上升",
+     "A": ">3000（2800 h 起轻微上升）",
+     "B": "约 1400",
+     "单位": "h",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "Astonishingly, however, the G2-based electrolyte containing a high concentration of LiNO3 (3 M) cycled for over 3000 h and only began to show a very slight increase in the polarization after 2800 h."
+    }
+   ],
+   "B角色": "作者对照"
+  },
+  {
+   "A": "E2",
+   "B": "E4",
+   "条件": "C2",
+   "层": "N",
+   "改变因素": [
+    "LiNO3"
+   ],
+   "溶剂化依据": "",
+   "指标": [
+    {
+     "指标": "锂对称电池寿命",
+     "取值点": "电池失效",
+     "A": "约 1400",
+     "B": "约 500",
+     "单位": "h",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "When LiNO3 is used as an additive in small quantities (0.3 M), the cycle life is extended substantially from ~ 500 to ~ 1400 h."
+    }
+   ],
+   "B角色": "系列参照"
+  }
+ ],
+ "备注": "Li–S 电池（C3，溶液正极）只测了 E1 一种电解液：第 2 圈 1349 → 第 100 圈 1215 mAh g-1；全电池层面没有配方比较，配方比较都在 Cu‖Li、Li‖Li。B 步判 Ⅰ 合格偏宽；且实际是溶液正极，主层归属待核。"
 }

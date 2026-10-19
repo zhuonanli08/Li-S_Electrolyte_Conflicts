@@ -4,6 +4,7 @@
   1. 原句核验：去空白、小写后做子串匹配，✅ 找到 / ❌ 找不到 / — 无原句
   2. 每篇的条件字段可得率（硫载量、E/S 直接或可算、锂厚或 N/P、倍率、温度）
   3. 每组 Li–S 配方比较：指标数、同一指标的取值点数、能否判定权衡、是否出现权衡 / 随运行时间变化
+  4. 每组比较的 B 角色（作者对照｜系列参照｜非对照（作者直接比较）｜任意；规则见方案 §5.4）
 输出：output/第二阶段_C步试提/C步试提_汇总.xlsx（指标明细、论文汇总、可得率汇总三页）
 用法：D:\\anaconda\\envs\\papertrail\\python.exe -X utf8 -I step5b_trial_summary.py
 """
@@ -64,7 +65,7 @@ def main():
                 q = m.get("原句", "")
                 mark = "—" if not q.strip() else ("✅" if squash(q)[:220] in text else "❌")
                 src[m.get("来源", "").split("（")[0]] += 1
-                rows.append({"论文": pid, "比较": f"{pid}-K{i + 1}", "A": c.get("A"), "B": c.get("B"), "条件": c.get("条件"),
+                rows.append({"论文": pid, "比较": f"{pid}-K{i + 1}", "A": c.get("A"), "B": c.get("B"), "B 角色": c.get("B角色", ""), "条件": c.get("条件"),
                              "Li–S 电池": "是" if is_li else "否", "层": c.get("层"), "改变因素": "、".join(c.get("改变因素", [])),
                              "指标": m.get("指标"), "取值点": m.get("取值点"), "A 值": m.get("A"), "B 值": m.get("B"), "单位": m.get("单位"),
                              "方向": m.get("方向"), "值来源": m.get("来源"), "原句核验": mark, "原句": q, "备注": m.get("备注", ""),
@@ -111,6 +112,12 @@ def main():
     vs = Counter(r["值来源"].split("（")[0] for r in rows)
     for k, v in vs.most_common():
         summ.append((f"指标值来源：{k}", v, f"{v / len(rows):.0%}"))
+    roles = Counter()
+    for f in sorted(glob.glob(os.path.join(OUT, "json", "P*.json"))):
+        for c in json.load(open(f, encoding="utf-8")).get("比较", []):
+            roles[c.get("B角色", "未标")] += 1
+    for k, v in roles.most_common():
+        summ.append((f"比较组 B 角色：{k}", v, ""))
     ok = Counter(r["原句核验"] for r in rows)
     for k in ("✅", "❌", "—"):
         summ.append((f"原句核验 {k}", ok.get(k, 0), ""))

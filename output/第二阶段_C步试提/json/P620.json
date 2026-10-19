@@ -1,24 +1,76 @@
 {
-  "编号": "P620",
-  "电解液": {
-    "E1": {"名称": "ELDD", "配方": "1.0 M LiTFSI，DME/DOL 1:1 v/v，无 LiNO3"},
-    "E2": {"名称": "ELC14", "配方": "1.0 M LiTFSI，C14（1,1,1-三氟-2-(2-甲氧基乙氧基)乙烷），无 LiNO3"}
+ "编号": "P620",
+ "电解液": {
+  "E1": {
+   "名称": "ELDD",
+   "配方": "1.0 M LiTFSI，DME/DOL 1:1 v/v，无 LiNO3"
   },
-  "条件": {
-    "C1": {"正极": "C-S 复合正极", "硫载量": "", "硫含量": "", "E/S": "", "电解液体积": "", "面积": "",
-           "锂厚": "", "N/P": "", "倍率": "", "1C定义": "1672 mA g-1", "温度": "", "电池": "扣式", "原句": ""}
-  },
-  "比较": [
-    {"A": "E2", "B": "E1", "条件": "C1", "层": "C", "改变因素": ["溶剂种类"],
-     "溶剂化依据": "IR / Raman：C14 较难形成 cis 构象、与 Li+ 配位弱于 DME；COSMO-RS：C14 表面电荷离域，对 Li2Sx 溶剂化弱（同篇实验 + 计算）",
-     "指标": [
-       {"指标": "首圈容量", "取值点": "第 1 次放电", "A": "约 1000", "B": "约 1200", "单位": "mAh g-1", "方向": "A更差", "来源": "正文",
-        "原句": "It implies that the electrochemical reaction proceeds more readily at the particle surface than in the bulk, which explains why the practical specific capacities of Li-SELDD (1200 mAh g⁻¹) and Li-SELC14 (1000 mAh g⁻¹) are lower than the theoretical maximum (1672 mAh g⁻¹)."},
-       {"指标": "循环保持率或寿命", "取值点": "首次充电能否完成 / 50 圈", "A": "可连续循环（50 圈渐衰）", "B": "无法完成充电（穿梭）", "单位": "", "方向": "A更好", "来源": "正文",
-        "原句": "In contrast, the ELC14 cell successfully completes the charging process and enables continuous cycling, demonstrating that the intrinsic weakly solvating nature of C14 effectively suppresses polysulfide dissolution."},
-       {"指标": "全电池库仑效率", "取值点": "50 圈稳定值", "A": "约 106", "B": "", "单位": "%", "方向": "无法判断", "来源": "正文",
-        "原句": "Over 50 cycles, a gradual capacity fade is observed, and the Coulombic effi ciency stabilizes at approximately 106%."}
-     ]}
-  ],
-  "备注": "典型权衡：弱溶剂化 C14 首圈低于 DME/DOL，但 DME/DOL（无 LiNO3）无法完成充电。注意两者都不含 LiNO3——对照偏弱的情形（M08 类）。电导率 0.111 vs 1.277 S m-1。硫载量、E/S、锂厚在摘录中缺失（可能在 SI）。"
+  "E2": {
+   "名称": "ELC14",
+   "配方": "1.0 M LiTFSI，C14（1,1,1-三氟-2-(2-甲氧基乙氧基)乙烷），无 LiNO3"
+  }
+ },
+ "条件": {
+  "C1": {
+   "正极": "C-S 复合正极",
+   "硫载量": "",
+   "硫含量": "",
+   "E/S": "",
+   "电解液体积": "",
+   "面积": "",
+   "锂厚": "",
+   "N/P": "",
+   "倍率": "",
+   "1C定义": "1672 mA g-1",
+   "温度": "",
+   "电池": "扣式",
+   "原句": ""
+  }
+ },
+ "比较": [
+  {
+   "A": "E2",
+   "B": "E1",
+   "条件": "C1",
+   "层": "C",
+   "改变因素": [
+    "溶剂种类"
+   ],
+   "溶剂化依据": "IR / Raman：C14 较难形成 cis 构象、与 Li+ 配位弱于 DME；COSMO-RS：C14 表面电荷离域，对 Li2Sx 溶剂化弱（同篇实验 + 计算）",
+   "指标": [
+    {
+     "指标": "首圈容量",
+     "取值点": "第 1 次放电",
+     "A": "约 1000",
+     "B": "约 1200",
+     "单位": "mAh g-1",
+     "方向": "A更差",
+     "来源": "正文",
+     "原句": "It implies that the electrochemical reaction proceeds more readily at the particle surface than in the bulk, which explains why the practical specific capacities of Li-SELDD (1200 mAh g⁻¹) and Li-SELC14 (1000 mAh g⁻¹) are lower than the theoretical maximum (1672 mAh g⁻¹)."
+    },
+    {
+     "指标": "循环保持率或寿命",
+     "取值点": "首次充电能否完成 / 50 圈",
+     "A": "可连续循环（50 圈渐衰）",
+     "B": "无法完成充电（穿梭）",
+     "单位": "",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "In contrast, the ELC14 cell successfully completes the charging process and enables continuous cycling, demonstrating that the intrinsic weakly solvating nature of C14 effectively suppresses polysulfide dissolution."
+    },
+    {
+     "指标": "全电池库仑效率",
+     "取值点": "50 圈稳定值",
+     "A": "约 106",
+     "B": "",
+     "单位": "%",
+     "方向": "无法判断",
+     "来源": "正文",
+     "原句": "Over 50 cycles, a gradual capacity fade is observed, and the Coulombic effi ciency stabilizes at approximately 106%."
+    }
+   ],
+   "B角色": "作者对照"
+  }
+ ],
+ "备注": "典型权衡：弱溶剂化 C14 首圈低于 DME/DOL，但 DME/DOL（无 LiNO3）无法完成充电。注意两者都不含 LiNO3——对照偏弱的情形（M08 类）。电导率 0.111 vs 1.277 S m-1。硫载量、E/S、锂厚在摘录中缺失（可能在 SI）。"
 }

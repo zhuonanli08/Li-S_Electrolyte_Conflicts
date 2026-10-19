@@ -1,48 +1,190 @@
 {
-  "编号": "P163",
-  "电解液": {
-    "E1": {"名称": "BE", "配方": "6 M LiFSI，DME"},
-    "E2": {"名称": "HE-2", "配方": "BE : TFTFE = 1:2 v/v"},
-    "E3": {"名称": "HE-5", "配方": "BE : TFTFE = 1:5 v/v"}
+ "编号": "P163",
+ "电解液": {
+  "E1": {
+   "名称": "BE",
+   "配方": "6 M LiFSI，DME"
   },
-  "条件": {
-    "C1": {"正极": "S@PAN（硫 45 wt%，极片 80:10:10）", "硫载量": "2 mg cm-2", "硫含量": "复合物 45 wt%", "E/S": "5", "电解液体积": "", "面积": "0.76 cm2",
-           "锂厚": "过量锂", "N/P": "", "倍率": "0.1C 7 圈后 0.2C", "1C定义": "1671 mA g-1", "温度": "", "电池": "2032",
-           "原句": "We cycled S@PAN||LMA half cells at the E/S ratio of 5 with excessive LMA and a sulfur loading of 2 mg cm2, where the current rate is 0.1 C (1 C = 1671 mA g1) during first seven cycles before the current rate was switched to 0.2 C for the rest of cycling.",
-           "备注": "隔膜不同：HE-2 用 Celgard 2400，BE 用 Celgard 3501（为润湿性）"},
-    "C2": {"正极": "无（Li‖Cu）", "硫载量": "", "硫含量": "", "E/S": "", "电解液体积": "", "面积": "",
-           "锂厚": "", "N/P": "", "倍率": "0.5 mA cm-2，1.0 mAh cm-2", "1C定义": "", "温度": "", "电池": "2032", "原句": ""},
-    "C3": {"正极": "无（Li‖Li）", "硫载量": "", "硫含量": "", "E/S": "", "电解液体积": "", "面积": "",
-           "锂厚": "", "N/P": "", "倍率": "0.5 mA cm-2，1.0 mAh cm-2", "1C定义": "", "温度": "", "电池": "2032", "原句": ""}
+  "E2": {
+   "名称": "HE-2",
+   "配方": "BE : TFTFE = 1:2 v/v"
   },
-  "比较": [
-    {"A": "E2", "B": "E1", "条件": "C1", "层": "C", "改变因素": ["稀释剂"],
-     "溶剂化依据": "FSRS Raman + AIMD：TFTFE 不参与 Li+ 溶剂化，FSI- 环境不变（同篇实验 + 模拟）",
-     "指标": [
-       {"指标": "首圈容量", "取值点": "0.1C 第 1 圈", "A": "1498", "B": "952", "单位": "mAh g-1(S)", "方向": "A更好", "来源": "正文",
-        "原句": "In sharp contrast, BE exhibited an initial discharge capacity of 952 mAh gs 1 with a lower Li-insertion potential (Figure 4b) compared to HE-2, probably due to the poor electrode wetting (Figure S5)."},
-       {"指标": "指定圈数放电容量", "取值点": "第 10 圈", "A": "603", "B": "407", "单位": "mAh g-1(S)", "方向": "A更好", "来源": "正文",
-        "原句": "The discharge capacity with BE was consistently lower than HE-2 by 200 mAh g1 s , over cycling, where it delivered 407 mAh gs 1 at the 10th cycle and 386 mAh gs 1 at the 50th cycle, as shown in Figure 4c."},
-       {"指标": "指定圈数放电容量", "取值点": "第 50 圈", "A": "598", "B": "386", "单位": "mAh g-1(S)", "方向": "A更好", "来源": "正文",
-        "原句": "After conditioning at 0.1 C for 7 cycles, the HE-2 cell exhibited the discharge capacity of 603 mAh gs 1 and 598 mAh gs 1 at the 10th and 50th cycle, respectively"}
-     ]},
-    {"A": "E3", "B": "E2", "条件": "C1", "层": "C", "改变因素": ["稀释剂"], "溶剂化依据": "同上",
-     "指标": [
-       {"指标": "首圈容量", "取值点": "第 1 圈及后续", "A": "", "B": "", "单位": "", "方向": "A更差", "来源": "SI 图（文字给方向）",
-        "原句": "The initial and following discharge capacity values were significantly lower than both BE and HE-2, presumably due to the limited contact of Li+ and sulfur by over-dilution."}
-     ]},
-    {"A": "E2", "B": "E1", "条件": "C2", "层": "C", "改变因素": ["稀释剂"], "溶剂化依据": "同上",
-     "指标": [
-       {"指标": "Li‖Cu 库仑效率", "取值点": "第 1 圈", "A": "96.3", "B": "93.7", "单位": "%", "方向": "A更好", "来源": "正文",
-        "原句": "Initial plating/stripping overpotentials of BE were 54 mV and 45 mV, respectively, and the first CE was 93.7%, which gently increased to 97.7% by the 10th cycle, but it started to fluctuate during the following cycling."},
-       {"指标": "Li‖Cu 库仑效率", "取值点": "第 30 圈（A）/ 第 10 圈后波动（B）", "A": "99.6", "B": "97.7 后波动", "单位": "%", "方向": "A更好", "来源": "正文",
-        "原句": "It gradually rose to 99.6% by the 30th cycle with a reduced overpotential of 25 mV and 25 mV upon plating and stripping, respectively."}
-     ]},
-    {"A": "E2", "B": "E1", "条件": "C3", "层": "C", "改变因素": ["稀释剂"], "溶剂化依据": "同上",
-     "指标": [
-       {"指标": "过电位或动力学", "取值点": "Li‖Li 0.5 mA cm-2 极化", "A": "15", "B": "31", "单位": "mV", "方向": "A更好", "来源": "正文",
-        "原句": "As observed, BE displays a greater overpotential upon plating and stripping, i.e., 31 mV, than that of HE-2, 15 mV, at 0.5 mA cm2."}
-     ]}
-  ],
-  "备注": "电解液比较用的是 S@PAN 正极 → 正极层应为 SPAN（非主层），B 步记为主层有误。CMK-3/S 硫碳正极和混合正极只测了 HE-2。A 全面占优（无权衡）；但 A、B 隔膜不同（混杂）。全电池（N/P 2、E/S 2–3）只测 HE-2。"
+  "E3": {
+   "名称": "HE-5",
+   "配方": "BE : TFTFE = 1:5 v/v"
+  }
+ },
+ "条件": {
+  "C1": {
+   "正极": "S@PAN（硫 45 wt%，极片 80:10:10）",
+   "硫载量": "2 mg cm-2",
+   "硫含量": "复合物 45 wt%",
+   "E/S": "5",
+   "电解液体积": "",
+   "面积": "0.76 cm2",
+   "锂厚": "过量锂",
+   "N/P": "",
+   "倍率": "0.1C 7 圈后 0.2C",
+   "1C定义": "1671 mA g-1",
+   "温度": "",
+   "电池": "2032",
+   "原句": "We cycled S@PAN||LMA half cells at the E/S ratio of 5 with excessive LMA and a sulfur loading of 2 mg cm2, where the current rate is 0.1 C (1 C = 1671 mA g1) during first seven cycles before the current rate was switched to 0.2 C for the rest of cycling.",
+   "备注": "隔膜不同：HE-2 用 Celgard 2400，BE 用 Celgard 3501（为润湿性）"
+  },
+  "C2": {
+   "正极": "无（Li‖Cu）",
+   "硫载量": "",
+   "硫含量": "",
+   "E/S": "",
+   "电解液体积": "",
+   "面积": "",
+   "锂厚": "",
+   "N/P": "",
+   "倍率": "0.5 mA cm-2，1.0 mAh cm-2",
+   "1C定义": "",
+   "温度": "",
+   "电池": "2032",
+   "原句": ""
+  },
+  "C3": {
+   "正极": "无（Li‖Li）",
+   "硫载量": "",
+   "硫含量": "",
+   "E/S": "",
+   "电解液体积": "",
+   "面积": "",
+   "锂厚": "",
+   "N/P": "",
+   "倍率": "0.5 mA cm-2，1.0 mAh cm-2",
+   "1C定义": "",
+   "温度": "",
+   "电池": "2032",
+   "原句": ""
+  }
+ },
+ "比较": [
+  {
+   "A": "E2",
+   "B": "E1",
+   "条件": "C1",
+   "层": "C",
+   "改变因素": [
+    "稀释剂"
+   ],
+   "溶剂化依据": "FSRS Raman + AIMD：TFTFE 不参与 Li+ 溶剂化，FSI- 环境不变（同篇实验 + 模拟）",
+   "指标": [
+    {
+     "指标": "首圈容量",
+     "取值点": "0.1C 第 1 圈",
+     "A": "1498",
+     "B": "952",
+     "单位": "mAh g-1(S)",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "In sharp contrast, BE exhibited an initial discharge capacity of 952 mAh gs 1 with a lower Li-insertion potential (Figure 4b) compared to HE-2, probably due to the poor electrode wetting (Figure S5)."
+    },
+    {
+     "指标": "指定圈数放电容量",
+     "取值点": "第 10 圈",
+     "A": "603",
+     "B": "407",
+     "单位": "mAh g-1(S)",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "The discharge capacity with BE was consistently lower than HE-2 by 200 mAh g1 s , over cycling, where it delivered 407 mAh gs 1 at the 10th cycle and 386 mAh gs 1 at the 50th cycle, as shown in Figure 4c."
+    },
+    {
+     "指标": "指定圈数放电容量",
+     "取值点": "第 50 圈",
+     "A": "598",
+     "B": "386",
+     "单位": "mAh g-1(S)",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "After conditioning at 0.1 C for 7 cycles, the HE-2 cell exhibited the discharge capacity of 603 mAh gs 1 and 598 mAh gs 1 at the 10th and 50th cycle, respectively"
+    }
+   ],
+   "B角色": "作者对照"
+  },
+  {
+   "A": "E3",
+   "B": "E1",
+   "条件": "C1",
+   "层": "C",
+   "改变因素": [
+    "稀释剂"
+   ],
+   "溶剂化依据": "同上",
+   "指标": [
+    {
+     "指标": "首圈容量",
+     "取值点": "第 1 圈及后续",
+     "A": "",
+     "B": "",
+     "单位": "",
+     "方向": "A更差",
+     "来源": "SI 图（文字给方向）",
+     "原句": "The initial and following discharge capacity values were significantly lower than both BE and HE-2, presumably due to the limited contact of Li+ and sulfur by over-dilution."
+    }
+   ],
+   "B角色": "作者对照"
+  },
+  {
+   "A": "E2",
+   "B": "E1",
+   "条件": "C2",
+   "层": "C",
+   "改变因素": [
+    "稀释剂"
+   ],
+   "溶剂化依据": "同上",
+   "指标": [
+    {
+     "指标": "Li‖Cu 库仑效率",
+     "取值点": "第 1 圈",
+     "A": "96.3",
+     "B": "93.7",
+     "单位": "%",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "Initial plating/stripping overpotentials of BE were 54 mV and 45 mV, respectively, and the first CE was 93.7%, which gently increased to 97.7% by the 10th cycle, but it started to fluctuate during the following cycling."
+    },
+    {
+     "指标": "Li‖Cu 库仑效率",
+     "取值点": "第 30 圈（A）/ 第 10 圈后波动（B）",
+     "A": "99.6",
+     "B": "97.7 后波动",
+     "单位": "%",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "It gradually rose to 99.6% by the 30th cycle with a reduced overpotential of 25 mV and 25 mV upon plating and stripping, respectively."
+    }
+   ],
+   "B角色": "作者对照"
+  },
+  {
+   "A": "E2",
+   "B": "E1",
+   "条件": "C3",
+   "层": "C",
+   "改变因素": [
+    "稀释剂"
+   ],
+   "溶剂化依据": "同上",
+   "指标": [
+    {
+     "指标": "过电位或动力学",
+     "取值点": "Li‖Li 0.5 mA cm-2 极化",
+     "A": "15",
+     "B": "31",
+     "单位": "mV",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "As observed, BE displays a greater overpotential upon plating and stripping, i.e., 31 mV, than that of HE-2, 15 mV, at 0.5 mA cm2."
+    }
+   ],
+   "B角色": "作者对照"
+  }
+ ],
+ "备注": "电解液比较用的是 S@PAN 正极 → 正极层应为 SPAN（非主层），B 步记为主层有误。CMK-3/S 硫碳正极和混合正极只测了 HE-2。A 全面占优（无权衡）；但 A、B 隔膜不同（混杂）。全电池（N/P 2、E/S 2–3）只测 HE-2。｜10-19 按 A/B 规则（§5.4）重排：HE-5 改为对 BE（原对 HE-2）；SI Fig. S6 原句同时说低于 BE 和 HE-2。"
 }

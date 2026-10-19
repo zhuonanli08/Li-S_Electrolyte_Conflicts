@@ -1,43 +1,209 @@
 {
-  "编号": "P352",
-  "电解液": {
-    "E1": {"名称": "TE-5%", "配方": "TEGDME，LiTFSI 与 LiNO3 各 1 mol kg-1，+ 5 wt% DOL"},
-    "E2": {"名称": "TE-10%", "配方": "同上 + 10 wt% DOL"},
-    "E3": {"名称": "TE-15%", "配方": "同上 + 15 wt% DOL"},
-    "E4": {"名称": "DOL:DME-control", "配方": "DOL:DME 1:1 w/w，LiTFSI 与 LiNO3 各 1 mol kg-1（只在另一套条件下测）"}
+ "编号": "P352",
+ "电解液": {
+  "E1": {
+   "名称": "TE-5%",
+   "配方": "TEGDME，LiTFSI 与 LiNO3 各 1 mol kg-1，+ 5 wt% DOL"
   },
-  "条件": {
-    "C1": {"正极": "S:MWCNT 90:10（极片 80% 复合物，MWCNT 涂层集流体）", "硫载量": "1.7–2.1 mg cm-2", "硫含量": "复合物 90 wt%", "E/S": "15", "电解液体积": "", "面积": "1.54 cm2",
-           "锂厚": "", "N/P": "", "倍率": "C/5", "1C定义": "1675 mA g-1", "温度": "", "电池": "CR2032",
-           "原句": "The S:MWCNTs 90:10 w/w cathode was subsequently tested in a Li cell using the TE- ACS Applied Energy Materials www.acsaem.org Article"},
-    "C2": {"正极": "同 C1", "硫载量": "约 2.0 mg cm-2", "硫含量": "", "E/S": "15", "电解液体积": "", "面积": "1.54 cm2",
-           "锂厚": "", "N/P": "", "倍率": "倍率阶梯 C/20–C/2", "1C定义": "1675 mA g-1", "温度": "", "电池": "CR2032", "原句": ""}
+  "E2": {
+   "名称": "TE-10%",
+   "配方": "同上 + 10 wt% DOL"
   },
-  "比较": [
-    {"A": "E3", "B": "E1", "条件": "C1", "层": "C", "改变因素": ["溶剂比例"],
-     "溶剂化依据": "加权介电常数 εw 7.77 → 7.71（配方计算）；Li+ 迁移数 0.55 → 0.50（实测）；未给溶剂化强弱结论",
-     "指标": [
-       {"指标": "首圈容量", "取值点": "C/5 活化初期", "A": "270", "B": "140", "单位": "mAh g-1", "方向": "A更好", "来源": "正文",
-        "原句": "The figure displays an increase of the delivered cell capacity during the initial stage from 140 to 360 mA h g-1 for TE-5%, from 220 to 530 mA h g-1 for TE-10%, and from 270 to 570 mA h for TE-15%."},
-       {"指标": "其他", "取值点": "活化速度（容量上升速率）", "A": "", "B": "", "单位": "", "方向": "A更差", "来源": "仅图（文字给方向）",
-        "原句": "Interestingly, the capacity growth speed decreases from TE-5% to TE-15%, thus suggesting a faster cell activation for lower DOL concentration."},
-       {"指标": "循环保持率或寿命", "取值点": "末期（A 100 圈后渐衰至 250；B 117 圈后突然失活 <100）", "A": "250", "B": "<100", "单位": "mAh g-1", "方向": "A更好", "来源": "正文",
-        "原句": "On the other hand, TE-15% allows in the cell a stable, steady-state capacity between 500 and 550 mA h g-1, although a gradual deactivation occurs after 100 cycles to a final capacity of 250 mA h g-1 (Figure 5d)."}
-     ]},
-    {"A": "E2", "B": "E3", "条件": "C1", "层": "C", "改变因素": ["溶剂比例"], "溶剂化依据": "同上",
-     "指标": [
-       {"指标": "指定圈数放电容量", "取值点": "稳态", "A": "400–580（波动）", "B": "500–550", "单位": "mAh g-1", "方向": "无法判断", "来源": "正文",
-        "原句": "The cell using TE-10% reveals a fluctuation of the capacity between 400 and 580 mA h g-1 and a decrease limited to 406 mA h g-1 after 130 cycles (Figure 5d)."},
-       {"指标": "循环保持率或寿命", "取值点": "寿命", "A": "130 圈后 406", "B": "100 圈后渐衰至 250", "单位": "", "方向": "A更好", "来源": "正文",
-        "原句": "The TE-10% appears to be the most promising compromise since the corresponding Li-S cell shows the longer cycle life likely ascribed to the optimal proportion between TEGDME and DOL, despite the fluctuation of the capacity during cycling, which may be assessed by improving the cathode configuration."}
-     ]},
-    {"A": "E3", "B": "E1", "条件": "C2", "层": "C", "改变因素": ["溶剂比例"], "溶剂化依据": "同上",
-     "指标": [
-       {"指标": "倍率容量", "取值点": "C/5 稳态", "A": "640", "B": "150", "单位": "mAh g-1", "方向": "A更好", "来源": "正文",
-        "原句": "On the other hand, only TE-15% and TE-10% exhibit an acceptable response at C/5 showing capacities of 640 and around 500 mA h g-1, respectively, while the capacity delivered by TE-5% is limited to 150 mA h g-1."},
-       {"指标": "倍率容量", "取值点": "C/20 稳态", "A": "920", "B": "900", "单位": "mAh g-1", "方向": "差异小", "来源": "正文",
-        "原句": "trend (Figure S6d) reveal full development of the Li-S conversion process at C/20, C/10, and C/8 for all the solutions with steady-state capacities of 920, 810, and 725 mA h g-1 for TE-15%, 880, 735, and 610 mA h g-1 for TE-10%, and 900, 760, and 670 mA h g-1 for TE-5%, respectively."}
-     ]}
-  ],
-  "备注": "TE 系列内部：TE-15% 容量高、寿命较短，TE-10% 寿命最长——作者称'折中'，属跨指标权衡。DOL:DME 对照只在 E/S 10、2.2 mg cm-2 下测，与 TE 系列条件不同，不能直接配对。锂厚未写。"
+  "E3": {
+   "名称": "TE-15%",
+   "配方": "同上 + 15 wt% DOL"
+  },
+  "E4": {
+   "名称": "DOL:DME-control",
+   "配方": "DOL:DME 1:1 w/w，LiTFSI 与 LiNO3 各 1 mol kg-1（只在另一套条件下测）"
+  }
+ },
+ "条件": {
+  "C1": {
+   "正极": "S:MWCNT 90:10（极片 80% 复合物，MWCNT 涂层集流体）",
+   "硫载量": "1.7–2.1 mg cm-2",
+   "硫含量": "复合物 90 wt%",
+   "E/S": "15",
+   "电解液体积": "",
+   "面积": "1.54 cm2",
+   "锂厚": "",
+   "N/P": "",
+   "倍率": "C/5",
+   "1C定义": "1675 mA g-1",
+   "温度": "",
+   "电池": "CR2032",
+   "原句": "The S:MWCNTs 90:10 w/w cathode was subsequently tested in a Li cell using the TE- ACS Applied Energy Materials www.acsaem.org Article"
+  },
+  "C2": {
+   "正极": "同 C1",
+   "硫载量": "约 2.0 mg cm-2",
+   "硫含量": "",
+   "E/S": "15",
+   "电解液体积": "",
+   "面积": "1.54 cm2",
+   "锂厚": "",
+   "N/P": "",
+   "倍率": "倍率阶梯 C/20–C/2",
+   "1C定义": "1675 mA g-1",
+   "温度": "",
+   "电池": "CR2032",
+   "原句": ""
+  }
+ },
+ "比较": [
+  {
+   "A": "E3",
+   "B": "E1",
+   "条件": "C1",
+   "层": "C",
+   "改变因素": [
+    "溶剂比例"
+   ],
+   "溶剂化依据": "加权介电常数 εw 7.77 → 7.71（配方计算）；Li+ 迁移数 0.55 → 0.50（实测）；未给溶剂化强弱结论",
+   "指标": [
+    {
+     "指标": "首圈容量",
+     "取值点": "C/5 活化初期",
+     "A": "270",
+     "B": "140",
+     "单位": "mAh g-1",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "The figure displays an increase of the delivered cell capacity during the initial stage from 140 to 360 mA h g-1 for TE-5%, from 220 to 530 mA h g-1 for TE-10%, and from 270 to 570 mA h for TE-15%."
+    },
+    {
+     "指标": "其他",
+     "取值点": "活化速度（容量上升速率）",
+     "A": "",
+     "B": "",
+     "单位": "",
+     "方向": "A更差",
+     "来源": "仅图（文字给方向）",
+     "原句": "Interestingly, the capacity growth speed decreases from TE-5% to TE-15%, thus suggesting a faster cell activation for lower DOL concentration."
+    },
+    {
+     "指标": "循环保持率或寿命",
+     "取值点": "末期（A 100 圈后渐衰至 250；B 117 圈后突然失活 <100）",
+     "A": "250",
+     "B": "<100",
+     "单位": "mAh g-1",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "On the other hand, TE-15% allows in the cell a stable, steady-state capacity between 500 and 550 mA h g-1, although a gradual deactivation occurs after 100 cycles to a final capacity of 250 mA h g-1 (Figure 5d)."
+    }
+   ],
+   "B角色": "系列参照"
+  },
+  {
+   "A": "E2",
+   "B": "E1",
+   "条件": "C1",
+   "层": "C",
+   "改变因素": [
+    "溶剂比例"
+   ],
+   "B角色": "系列参照",
+   "溶剂化依据": "同上",
+   "指标": [
+    {
+     "指标": "首圈容量",
+     "取值点": "C/5 活化初期",
+     "A": "220",
+     "B": "140",
+     "单位": "mAh g-1",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "The figure displays an increase of the delivered cell capacity during the initial stage from 140 to 360 mA h g-1 for TE-5%, from 220 to 530 mA h g-1 for TE-10%, and from 270 to 570 mA h for TE-15%."
+    },
+    {
+     "指标": "其他",
+     "取值点": "活化速度（容量上升速率）",
+     "A": "",
+     "B": "",
+     "单位": "",
+     "方向": "A更差",
+     "来源": "仅图（文字给方向）",
+     "原句": "Interestingly, the capacity growth speed decreases from TE-5% to TE-15%, thus suggesting a faster cell activation for lower DOL concentration."
+    },
+    {
+     "指标": "循环保持率或寿命",
+     "取值点": "寿命终点（A 130 圈后 406；B 117 圈后突然失活 <100）",
+     "A": "130 圈后 406",
+     "B": "117 圈失活",
+     "单位": "",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "However, the low concentration of the cosolvent in TE-5% limits the discharge capacity of the cell to a maximum of 420 mA h g-1 and promotes the discharge/charge overvoltage, leading to a sudden deactivation of the electrochemical process after 117 cycles with capacity below 100 mA h g-1 (Figure 5d).",
+     "备注": "A 值原句：The cell using TE-10% reveals a fluctuation of the capacity between 400 and 580 mA h g-1 and a decrease limited to 406 mA h g-1 after 130 cycles (Figure 5d)."
+    }
+   ]
+  },
+  {
+   "A": "E3",
+   "B": "E1",
+   "条件": "C2",
+   "层": "C",
+   "改变因素": [
+    "溶剂比例"
+   ],
+   "溶剂化依据": "同上",
+   "指标": [
+    {
+     "指标": "倍率容量",
+     "取值点": "C/5 稳态",
+     "A": "640",
+     "B": "150",
+     "单位": "mAh g-1",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "On the other hand, only TE-15% and TE-10% exhibit an acceptable response at C/5 showing capacities of 640 and around 500 mA h g-1, respectively, while the capacity delivered by TE-5% is limited to 150 mA h g-1."
+    },
+    {
+     "指标": "倍率容量",
+     "取值点": "C/20 稳态",
+     "A": "920",
+     "B": "900",
+     "单位": "mAh g-1",
+     "方向": "差异小",
+     "来源": "正文",
+     "原句": "trend (Figure S6d) reveal full development of the Li-S conversion process at C/20, C/10, and C/8 for all the solutions with steady-state capacities of 920, 810, and 725 mA h g-1 for TE-15%, 880, 735, and 610 mA h g-1 for TE-10%, and 900, 760, and 670 mA h g-1 for TE-5%, respectively."
+    }
+   ],
+   "B角色": "系列参照"
+  },
+  {
+   "A": "E2",
+   "B": "E1",
+   "条件": "C2",
+   "层": "C",
+   "改变因素": [
+    "溶剂比例"
+   ],
+   "B角色": "系列参照",
+   "溶剂化依据": "同上",
+   "指标": [
+    {
+     "指标": "倍率容量",
+     "取值点": "C/5 稳态",
+     "A": "约 500",
+     "B": "150",
+     "单位": "mAh g-1",
+     "方向": "A更好",
+     "来源": "正文",
+     "原句": "On the other hand, only TE-15% and TE-10% exhibit an acceptable response at C/5 showing capacities of 640 and around 500 mA h g-1, respectively, while the capacity delivered by TE-5% is limited to 150 mA h g-1."
+    },
+    {
+     "指标": "倍率容量",
+     "取值点": "C/20 稳态",
+     "A": "880",
+     "B": "900",
+     "单位": "mAh g-1",
+     "方向": "差异小",
+     "来源": "正文",
+     "原句": "trend (Figure S6d) reveal full development of the Li-S conversion process at C/20, C/10, and C/8 for all the solutions with steady-state capacities of 920, 810, and 725 mA h g-1 for TE-15%, 880, 735, and 610 mA h g-1 for TE-10%, and 900, 760, and 670 mA h g-1 for TE-5%, respectively."
+    }
+   ]
+  }
+ ],
+ "备注": "TE 系列内部：TE-15% 容量高、寿命较短，TE-10% 寿命最长——作者称'折中'，属跨指标权衡。DOL:DME 对照只在 E/S 10、2.2 mg cm-2 下测，与 TE 系列条件不同，不能直接配对。锂厚未写。｜10-19 按 A/B 规则（§5.4）重排：原 TE-10% vs TE-15% 改为各配方对 TE-5%（DOL 最低档；DOL:DME 对照条件不同，不能作 B）。"
 }
