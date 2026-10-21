@@ -1,0 +1,237 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "锂硫电解液统一文本提取数据库——审阅草案",
+  "description": "方法定义见唯一现行方案§5.6。本文件定义记录格式，不代表已实施提取或迁移。跨记录ID、同论文归属、输入单位和样品一致性须另行校验。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "scope_note", "papers", "formulations", "samples", "tests", "observations", "comparisons", "claims", "evidence"],
+  "properties": {
+    "schema_version": {"const": "unified-draft-2026-10-21"},
+    "status": {"const": "design_example_not_gold"},
+    "scope_note": {"type": "string"},
+    "papers": {"type": "array", "items": {"$ref": "#/$defs/paper"}},
+    "formulations": {"type": "array", "items": {"$ref": "#/$defs/formulation"}},
+    "samples": {"type": "array", "items": {"$ref": "#/$defs/sample"}},
+    "tests": {"type": "array", "items": {"$ref": "#/$defs/test"}},
+    "observations": {"type": "array", "items": {"$ref": "#/$defs/observation"}},
+    "comparisons": {"type": "array", "items": {"$ref": "#/$defs/comparison"}},
+    "claims": {"type": "array", "items": {"$ref": "#/$defs/claim"}},
+    "evidence": {"type": "array", "items": {"$ref": "#/$defs/evidence"}}
+  },
+  "$defs": {
+    "id": {"type": "string", "minLength": 1},
+    "ids": {"type": "array", "items": {"$ref": "#/$defs/id"}, "uniqueItems": true},
+    "nullable_id": {"type": ["string", "null"]},
+    "review": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "note"],
+      "properties": {
+        "status": {"enum": ["ai_extracted", "ai_checked", "human_confirmed", "disputed"]},
+        "note": {"type": "string"},
+        "reviewer": {"type": ["string", "null"]},
+        "reviewed_at": {"type": ["string", "null"]}
+      }
+    },
+    "value": {
+      "type": "object", "additionalProperties": false,
+      "required": ["kind", "raw", "number", "unit", "basis", "missing_reason"],
+      "properties": {
+        "kind": {"enum": ["numeric", "qualitative", "interval", "missing"]},
+        "raw": {"type": ["string", "null"]},
+        "number": {"type": ["number", "null"]},
+        "unit": {"type": ["string", "null"]},
+        "basis": {"type": ["string", "null"]},
+        "missing_reason": {"enum": [null, "not_extracted", "not_reported_after_check", "figure_only", "qualitative_only", "ambiguous", "not_applicable", "below_detection", "inputs_missing", "unreliable_model"]},
+        "lower": {"type": ["number", "null"]},
+        "upper": {"type": ["number", "null"]},
+        "operator": {"enum": [null, "=", "~", "<", "<=", ">", ">="]},
+        "censoring": {"enum": [null, "none", "left", "right", "interval"]},
+        "normalized_number": {"type": ["number", "null"]},
+        "normalized_unit": {"type": ["string", "null"]},
+        "normalization_note": {"type": ["string", "null"]},
+        "uncertainty": {
+          "type": ["object", "null"], "additionalProperties": false,
+          "properties": {
+            "type": {"enum": ["SD", "SE", "CI", "range", "unspecified"]},
+            "value": {"type": ["number", "null"]},
+            "lower": {"type": ["number", "null"]},
+            "upper": {"type": ["number", "null"]},
+            "confidence_level": {"type": ["number", "null"]},
+            "n": {"type": ["integer", "null"], "minimum": 1},
+            "unit": {"type": ["string", "null"]}
+          }
+        }
+      },
+      "allOf": [
+        {"if": {"properties": {"kind": {"const": "numeric"}}}, "then": {"properties": {"number": {"type": "number"}, "missing_reason": {"type": "null"}}}},
+        {"if": {"properties": {"kind": {"const": "qualitative"}}}, "then": {"properties": {"raw": {"type": "string"}, "number": {"type": "null"}, "missing_reason": {"type": "null"}}}},
+        {"if": {"properties": {"kind": {"const": "missing"}}}, "then": {"properties": {"number": {"type": "null"}, "normalized_number": {"type": "null"}, "missing_reason": {"type": "string"}}}},
+        {"if": {"properties": {"kind": {"const": "interval"}}}, "then": {"required": ["lower", "upper"], "properties": {"number": {"type": "null"}, "lower": {"type": "number"}, "upper": {"type": "number"}, "missing_reason": {"type": "null"}}}}
+      ]
+    },
+    "paper": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "doi", "legacy_ids", "collection_origin", "dataset_role", "eligibility", "processing_status"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "doi": {"type": ["string", "null"]},
+        "legacy_ids": {"$ref": "#/$defs/ids"},
+        "collection_origin": {"type": "array", "items": {"type": "string"}},
+        "dataset_role": {"enum": ["development", "independent_test", "mechanism_holdout", "unassigned"]},
+        "eligibility": {"type": "string"},
+        "processing_status": {"type": "string"}
+      }
+    },
+    "component": {
+      "type": "object", "additionalProperties": false,
+      "required": ["identity", "role", "presence", "amount", "evidence_ids"],
+      "properties": {
+        "identity": {"type": "string"},
+        "role": {"enum": ["solvent", "cosolvent", "diluent", "salt", "additive", "polysulfide", "other", "uncertain"]},
+        "presence": {"enum": ["reported_present", "explicitly_absent", "not_listed_in_recipe", "unknown"]},
+        "amount": {"$ref": "#/$defs/value"},
+        "evidence_ids": {"$ref": "#/$defs/ids"},
+        "structure": {
+          "type": ["object", "null"], "additionalProperties": false,
+          "properties": {
+            "smiles": {"type": ["string", "null"]},
+            "source": {"type": "string"},
+            "verification": {"type": "string"}
+          }
+        }
+      }
+    },
+    "formulation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "paper_id", "name", "components", "preparation_note", "completeness", "evidence_ids", "legacy_refs", "review"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"}, "paper_id": {"$ref": "#/$defs/id"},
+        "name": {"type": "string"},
+        "components": {"type": "array", "items": {"$ref": "#/$defs/component"}},
+        "preparation_note": {"type": "string"},
+        "completeness": {"enum": ["reported_recipe", "partial", "ambiguous"]},
+        "evidence_ids": {"$ref": "#/$defs/ids"},
+        "legacy_refs": {"$ref": "#/$defs/ids"}, "review": {"$ref": "#/$defs/review"}
+      }
+    },
+    "mapping": {
+      "type": "object", "additionalProperties": false,
+      "required": ["target_sample_id", "relation", "differences", "basis_evidence_ids"],
+      "properties": {
+        "target_sample_id": {"$ref": "#/$defs/id"},
+        "relation": {"enum": ["exact_composition", "simplified_system", "uncertain", "not_applicable"]},
+        "differences": {"type": "array", "items": {"type": "string"}},
+        "basis_evidence_ids": {"$ref": "#/$defs/ids"}
+      }
+    },
+    "sample": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "paper_id", "formulation_id", "purpose", "state", "mappings", "evidence_ids", "review"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"}, "paper_id": {"$ref": "#/$defs/id"},
+        "formulation_id": {"$ref": "#/$defs/id"}, "purpose": {"type": "string"},
+        "state": {"type": "string"},
+        "mappings": {"type": "array", "items": {"$ref": "#/$defs/mapping"}},
+        "evidence_ids": {"$ref": "#/$defs/ids"}, "review": {"$ref": "#/$defs/review"}
+      }
+    },
+    "test": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "paper_id", "sample_id", "test_type", "conditions", "protocol", "simulation", "evidence_ids", "legacy_refs", "review"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"}, "paper_id": {"$ref": "#/$defs/id"},
+        "sample_id": {"$ref": "#/$defs/id"}, "test_type": {"type": "string"},
+        "conditions": {"type": "object", "additionalProperties": {"$ref": "#/$defs/value"}},
+        "protocol": {"type": "string"},
+        "simulation": {
+          "type": ["object", "null"], "additionalProperties": false,
+          "properties": {
+            "composition_counts": {"type": "object"},
+            "force_field_or_electronic_method": {"type": "string"},
+            "charge_model": {"type": "string"},
+            "ensemble_and_box": {"type": "string"},
+            "equilibration_and_production": {"type": "string"},
+            "replicates": {"type": ["integer", "null"]},
+            "analysis_definition": {"type": "string"},
+            "convergence_and_validation": {"type": "string"}
+          }
+        },
+        "evidence_ids": {"$ref": "#/$defs/ids"}, "legacy_refs": {"$ref": "#/$defs/ids"},
+        "review": {"$ref": "#/$defs/review"}
+      }
+    },
+    "lineage": {
+      "type": ["object", "null"], "additionalProperties": false,
+      "required": ["formula_id", "expression", "input_observation_ids", "assumptions"],
+      "properties": {
+        "formula_id": {"type": "string"}, "expression": {"type": "string"},
+        "input_observation_ids": {"$ref": "#/$defs/ids"},
+        "assumptions": {"type": "array", "items": {"type": "string"}},
+        "inherited_limitations": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "observation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "paper_id", "sample_id", "test_id", "property_code", "object", "causal_role", "value", "point", "method", "origin", "evidence_ids", "lineage", "legacy_refs", "review"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"}, "paper_id": {"$ref": "#/$defs/id"},
+        "sample_id": {"$ref": "#/$defs/id"}, "test_id": {"$ref": "#/$defs/nullable_id"},
+        "property_code": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+        "object": {"type": "string"},
+        "causal_role": {"enum": ["design", "test_condition", "baseline_descriptor", "process", "diagnostic", "outcome", "unknown"]},
+        "value": {"$ref": "#/$defs/value"},
+        "point": {"type": "object", "additionalProperties": {"$ref": "#/$defs/value"}},
+        "method": {"type": "string"},
+        "origin": {"enum": ["reported_experiment", "reported_recipe", "reported_MD", "reported_DFT", "external_reference", "our_formula", "our_MD", "our_DFT", "assumption", "not_available"]},
+        "evidence_ids": {"$ref": "#/$defs/ids"}, "lineage": {"$ref": "#/$defs/lineage"},
+        "legacy_refs": {"$ref": "#/$defs/ids"}, "review": {"$ref": "#/$defs/review"}
+      },
+      "allOf": [
+        {"if": {"properties": {"origin": {"const": "our_formula"}}}, "then": {"properties": {"lineage": {"type": "object", "properties": {"input_observation_ids": {"minItems": 1}}}}}},
+        {"if": {"properties": {"origin": {"enum": ["reported_experiment", "reported_recipe", "reported_MD", "reported_DFT", "external_reference"]}}}, "then": {"properties": {"evidence_ids": {"minItems": 1}}}}
+      ]
+    },
+    "comparison": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "paper_id", "a_test_id", "b_test_id", "a_observation_id", "b_observation_id", "b_role", "changed_factors", "comparability", "condition_differences", "numeric_direction", "author_direction", "effect_observation_id", "evidence_ids", "legacy_refs", "review"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"}, "paper_id": {"$ref": "#/$defs/id"},
+        "a_test_id": {"$ref": "#/$defs/id"}, "b_test_id": {"$ref": "#/$defs/id"},
+        "a_observation_id": {"$ref": "#/$defs/id"}, "b_observation_id": {"$ref": "#/$defs/id"},
+        "b_role": {"enum": ["author_control", "series_reference", "author_direct_noncontrol", "arbitrary"]},
+        "changed_factors": {"type": "array", "items": {"type": "string"}},
+        "comparability": {"enum": ["matched_reported_protocol", "partially_matched", "unmatched", "uncertain"]},
+        "condition_differences": {"type": "array", "items": {"type": "string"}},
+        "numeric_direction": {"enum": ["A_higher", "A_lower", "small_difference", "unknown"]},
+        "author_direction": {"type": ["string", "null"]},
+        "effect_observation_id": {"$ref": "#/$defs/nullable_id"},
+        "evidence_ids": {"$ref": "#/$defs/ids"}, "legacy_refs": {"$ref": "#/$defs/ids"},
+        "review": {"$ref": "#/$defs/review"}
+      }
+    },
+    "claim": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "paper_id", "speaker", "statement", "scope", "supporting_observation_ids", "opposing_observation_ids", "missing_diagnostics", "evidence_ids", "review"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"}, "paper_id": {"$ref": "#/$defs/id"},
+        "speaker": {"enum": ["paper_author", "researcher_hypothesis"]},
+        "statement": {"type": "string"}, "scope": {"type": "string"},
+        "supporting_observation_ids": {"$ref": "#/$defs/ids"},
+        "opposing_observation_ids": {"$ref": "#/$defs/ids"},
+        "missing_diagnostics": {"type": "array", "items": {"type": "string"}},
+        "evidence_ids": {"$ref": "#/$defs/ids"}, "review": {"$ref": "#/$defs/review"}
+      }
+    },
+    "evidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "paper_id", "document_part", "location", "quote", "local_path", "verification"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"}, "paper_id": {"$ref": "#/$defs/id"},
+        "document_part": {"enum": ["main", "SI", "external"]},
+        "location": {"type": "string"}, "quote": {"type": "string"},
+        "local_path": {"type": ["string", "null"]},
+        "verification": {"enum": ["not_checked", "text_matched", "ai_context_checked", "human_confirmed"]}
+      }
+    }
+  }
+}

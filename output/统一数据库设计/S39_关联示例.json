@@ -1,0 +1,1368 @@
+{
+  "schema_version": "unified-draft-2026-10-21",
+  "status": "design_example_not_gold",
+  "scope_note": "仅展示S39的实际体系映射、分段容量比较、公式来源和缺失记录；不是全文完整提取，不计入正式结果。原证据表未修改。",
+  "papers": [
+    {
+      "id": "S39",
+      "doi": "10.1021/acsenergylett.5c02200",
+      "legacy_ids": [
+        "S39"
+      ],
+      "collection_origin": [
+        "deep_read_23"
+      ],
+      "dataset_role": "development",
+      "eligibility": "沿用已筛选主层状态；本示例不是重新资格筛选",
+      "processing_status": "partial_design_example"
+    }
+  ],
+  "formulations": [
+    {
+      "id": "F4-full",
+      "paper_id": "S39",
+      "name": "F4DEE体系：Li||S电池",
+      "components": [
+        {
+          "identity": "DOL",
+          "role": "solvent",
+          "presence": "reported_present",
+          "amount": {
+            "kind": "numeric",
+            "raw": "4",
+            "number": 4,
+            "unit": "volume_parts",
+            "basis": "预混溶剂体积比",
+            "missing_reason": null
+          },
+          "evidence_ids": [
+            "Eprep"
+          ]
+        },
+        {
+          "identity": "F4DEE",
+          "role": "cosolvent",
+          "presence": "reported_present",
+          "amount": {
+            "kind": "numeric",
+            "raw": "1",
+            "number": 1,
+            "unit": "volume_parts",
+            "basis": "预混溶剂体积比",
+            "missing_reason": null
+          },
+          "evidence_ids": [
+            "Eprep"
+          ]
+        },
+        {
+          "identity": "LiTFSI",
+          "role": "salt",
+          "presence": "reported_present",
+          "amount": {
+            "kind": "numeric",
+            "raw": "1.0",
+            "number": 1.0,
+            "unit": "mol/L",
+            "basis": "作者溶液制备标称浓度",
+            "missing_reason": null
+          },
+          "evidence_ids": [
+            "Eprep"
+          ]
+        },
+        {
+          "identity": "LiNO3",
+          "role": "additive",
+          "presence": "reported_present",
+          "amount": {
+            "kind": "numeric",
+            "raw": "0.2",
+            "number": 0.2,
+            "unit": "mol/L",
+            "basis": "作者溶液制备标称浓度",
+            "missing_reason": null
+          },
+          "evidence_ids": [
+            "Eprep"
+          ]
+        }
+      ],
+      "preparation_note": "DOL/F4DEE=4:1 v/v；DOL/DME=1:1 v/v。各用途分别制备；未列组分不补为0。",
+      "completeness": "reported_recipe",
+      "evidence_ids": [
+        "Eprep"
+      ],
+      "legacy_refs": [
+        "S39/electrolytes/F4"
+      ],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    },
+    {
+      "id": "F4-nmr",
+      "paper_id": "S39",
+      "name": "F4DEE体系：Li+表征",
+      "components": [
+        {
+          "identity": "DOL",
+          "role": "solvent",
+          "presence": "reported_present",
+          "amount": {
+            "kind": "numeric",
+            "raw": "4",
+            "number": 4,
+            "unit": "volume_parts",
+            "basis": "预混溶剂体积比",
+            "missing_reason": null
+          },
+          "evidence_ids": [
+            "Eprep"
+          ]
+        },
+        {
+          "identity": "F4DEE",
+          "role": "cosolvent",
+          "presence": "reported_present",
+          "amount": {
+            "kind": "numeric",
+            "raw": "1",
+            "number": 1,
+            "unit": "volume_parts",
+            "basis": "预混溶剂体积比",
+            "missing_reason": null
+          },
+          "evidence_ids": [
+            "Eprep"
+          ]
+        },
+        {
+          "identity": "LiTFSI",
+          "role": "salt",
+          "presence": "reported_present",
+          "amount": {
+            "kind": "numeric",
+            "raw": "1.0",
+            "number": 1.0,
+            "unit": "mol/L",
+            "basis": "作者溶液制备标称浓度",
+            "missing_reason": null
+          },
+          "evidence_ids": [
+            "Eprep"
+          ]
+        },
+        {
+          "identity": "LiNO3",
+          "role": "additive",
+          "presence": "not_listed_in_recipe",
+          "amount": {
+            "kind": "missing",
+            "raw": null,
+            "number": null,
+            "unit": null,
+            "basis": "该制备未列入；不将未列出转换成数值0",
+            "missing_reason": "ambiguous"
+          },
+          "evidence_ids": [
+            "Eprep"
+          ]
+        }
+      ],
+      "preparation_note": "DOL/F4DEE=4:1 v/v；DOL/DME=1:1 v/v。各用途分别制备；未列组分不补为0。",
+      "completeness": "reported_recipe",
+      "evidence_ids": [
+        "Eprep"
+      ],
+      "legacy_refs": [
+        "S39/descriptors/D2；旧直接映射待更正"
+      ],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    },
+    {
+      "id": "F4-sol",
+      "paper_id": "S39",
+      "name": "F4DEE混合溶剂：Li2S6溶解试验",
+      "components": [
+        {
+          "identity": "DOL",
+          "role": "solvent",
+          "presence": "reported_present",
+          "amount": {
+            "kind": "numeric",
+            "raw": "4",
+            "number": 4,
+            "unit": "volume_parts",
+            "basis": "预混溶剂体积比",
+            "missing_reason": null
+          },
+          "evidence_ids": [
+            "Eprep"
+          ]
+        },
+        {
+          "identity": "F4DEE",
+          "role": "cosolvent",
+          "presence": "reported_present",
+          "amount": {
+            "kind": "numeric",
+            "raw": "1",
+            "number": 1,
+            "unit": "volume_parts",
+            "basis": "预混溶剂体积比",
+            "missing_reason": null
+          },
+          "evidence_ids": [
+            "Eprep"
+          ]
+        },
+        {
+          "identity": "LiTFSI",
+          "role": "salt",
+          "presence": "not_listed_in_recipe",
+          "amount": {
+            "kind": "missing",
+            "raw": null,
+            "number": null,
+            "unit": null,
+            "basis": null,
+            "missing_reason": "not_applicable"
+          },
+          "evidence_ids": [
+            "Eprep"
+          ]
+        },
+        {
+          "identity": "LiNO3",
+          "role": "additive",
+          "presence": "not_listed_in_recipe",
+          "amount": {
+            "kind": "missing",
+            "raw": null,
+            "number": null,
+            "unit": null,
+            "basis": "该制备未列入；不将未列出转换成数值0",
+            "missing_reason": "ambiguous"
+          },
+          "evidence_ids": [
+            "Eprep"
+          ]
+        },
+        {
+          "identity": "Li2S6",
+          "role": "polysulfide",
+          "presence": "reported_present",
+          "amount": {
+            "kind": "qualitative",
+            "raw": "饱和溶解试验；投料量本示例未提取",
+            "number": null,
+            "unit": null,
+            "basis": null,
+            "missing_reason": null
+          },
+          "evidence_ids": [
+            "Esol"
+          ]
+        }
+      ],
+      "preparation_note": "DOL/F4DEE=4:1 v/v；DOL/DME=1:1 v/v。各用途分别制备；未列组分不补为0。",
+      "completeness": "reported_recipe",
+      "evidence_ids": [
+        "Eprep",
+        "Esol"
+      ],
+      "legacy_refs": [
+        "S39/descriptors/D1"
+      ],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    },
+    {
+      "id": "F4-gitt",
+      "paper_id": "S39",
+      "name": "F4DEE体系：Li||CP GITT",
+      "components": [
+        {
+          "identity": "DOL",
+          "role": "solvent",
+          "presence": "reported_present",
+          "amount": {
+            "kind": "numeric",
+            "raw": "4",
+            "number": 4,
+            "unit": "volume_parts",
+            "basis": "预混溶剂体积比",
+            "missing_reason": null
+          },
+          "evidence_ids": [
+            "Eprep"
+          ]
+        },
+        {
+          "identity": "F4DEE",
+          "role": "cosolvent",
+          "presence": "reported_present",
+          "amount": {
+            "kind": "numeric",
+            "raw": "1",
+            "number": 1,
+            "unit": "volume_parts",
+            "basis": "预混溶剂体积比",
+            "missing_reason": null
+          },
+          "evidence_ids": [
+            "Eprep"
+          ]
+        },
+        {
+          "identity": "LiTFSI",
+          "role": "salt",
+          "presence": "reported_present",
+          "amount": {
+            "kind": "numeric",
+            "raw": "1.0",
+            "number": 1.0,
+            "unit": "mol/L",
+            "basis": "作者溶液制备标称浓度",
+            "missing_reason": null
+          },
+          "evidence_ids": [
+            "Eprep"
+          ]
+        },
+        {
+          "identity": "LiNO3",
+          "role": "additive",
+          "presence": "reported_present",
+          "amount": {
+            "kind": "numeric",
+            "raw": "0.1",
+            "number": 0.1,
+            "unit": "mol/L",
+            "basis": "作者溶液制备标称浓度",
+            "missing_reason": null
+          },
+          "evidence_ids": [
+            "Eprep"
+          ]
+        },
+        {
+          "identity": "Li2S6",
+          "role": "polysulfide",
+          "presence": "reported_present",
+          "amount": {
+            "kind": "numeric",
+            "raw": "0.1",
+            "number": 0.1,
+            "unit": "mol/L",
+            "basis": "名义Li2S6浓度；不代表仅存在单一链长物种",
+            "missing_reason": null
+          },
+          "evidence_ids": [
+            "Eprep"
+          ]
+        }
+      ],
+      "preparation_note": "DOL/F4DEE=4:1 v/v；DOL/DME=1:1 v/v。各用途分别制备；未列组分不补为0。",
+      "completeness": "reported_recipe",
+      "evidence_ids": [
+        "Eprep"
+      ],
+      "legacy_refs": [
+        "S39/electrolytes/F4c"
+      ],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    },
+    {
+      "id": "DD-gitt",
+      "paper_id": "S39",
+      "name": "DOL/DME体系：Li||CP GITT",
+      "components": [
+        {
+          "identity": "DOL",
+          "role": "solvent",
+          "presence": "reported_present",
+          "amount": {
+            "kind": "numeric",
+            "raw": "1",
+            "number": 1,
+            "unit": "volume_parts",
+            "basis": "预混溶剂体积比",
+            "missing_reason": null
+          },
+          "evidence_ids": [
+            "Eprep"
+          ]
+        },
+        {
+          "identity": "DME",
+          "role": "cosolvent",
+          "presence": "reported_present",
+          "amount": {
+            "kind": "numeric",
+            "raw": "1",
+            "number": 1,
+            "unit": "volume_parts",
+            "basis": "预混溶剂体积比",
+            "missing_reason": null
+          },
+          "evidence_ids": [
+            "Eprep"
+          ]
+        },
+        {
+          "identity": "LiTFSI",
+          "role": "salt",
+          "presence": "reported_present",
+          "amount": {
+            "kind": "numeric",
+            "raw": "1.0",
+            "number": 1.0,
+            "unit": "mol/L",
+            "basis": "作者溶液制备标称浓度",
+            "missing_reason": null
+          },
+          "evidence_ids": [
+            "Eprep"
+          ]
+        },
+        {
+          "identity": "LiNO3",
+          "role": "additive",
+          "presence": "reported_present",
+          "amount": {
+            "kind": "numeric",
+            "raw": "0.1",
+            "number": 0.1,
+            "unit": "mol/L",
+            "basis": "作者溶液制备标称浓度",
+            "missing_reason": null
+          },
+          "evidence_ids": [
+            "Eprep"
+          ]
+        },
+        {
+          "identity": "Li2S6",
+          "role": "polysulfide",
+          "presence": "reported_present",
+          "amount": {
+            "kind": "numeric",
+            "raw": "0.1",
+            "number": 0.1,
+            "unit": "mol/L",
+            "basis": "名义Li2S6浓度；不代表仅存在单一链长物种",
+            "missing_reason": null
+          },
+          "evidence_ids": [
+            "Eprep"
+          ]
+        }
+      ],
+      "preparation_note": "DOL/F4DEE=4:1 v/v；DOL/DME=1:1 v/v。各用途分别制备；未列组分不补为0。",
+      "completeness": "reported_recipe",
+      "evidence_ids": [
+        "Eprep"
+      ],
+      "legacy_refs": [
+        "S39/electrolytes/DDc"
+      ],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    }
+  ],
+  "samples": [
+    {
+      "id": "S-F4-full",
+      "paper_id": "S39",
+      "formulation_id": "F4-full",
+      "purpose": "F4DEE体系：Li||S电池",
+      "state": "按对应用途制备；观测节点另记",
+      "mappings": [],
+      "evidence_ids": [
+        "Eprep"
+      ],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    },
+    {
+      "id": "S-F4-nmr",
+      "paper_id": "S39",
+      "formulation_id": "F4-nmr",
+      "purpose": "F4DEE体系：Li+表征",
+      "state": "按对应用途制备；观测节点另记",
+      "mappings": [
+        {
+          "target_sample_id": "S-F4-full",
+          "relation": "simplified_system",
+          "differences": [
+            "Li+表征制备未列入LiNO3；目标电池有0.2 M LiNO3"
+          ],
+          "basis_evidence_ids": [
+            "Eprep"
+          ]
+        }
+      ],
+      "evidence_ids": [
+        "Eprep"
+      ],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    },
+    {
+      "id": "S-F4-sol",
+      "paper_id": "S39",
+      "formulation_id": "F4-sol",
+      "purpose": "F4DEE混合溶剂：Li2S6溶解试验",
+      "state": "按对应用途制备；观测节点另记",
+      "mappings": [
+        {
+          "target_sample_id": "S-F4-full",
+          "relation": "simplified_system",
+          "differences": [
+            "混合溶剂溶解试验未列支持盐/添加剂；目标电池有1 M LiTFSI与0.2 M LiNO3",
+            "测量对象为饱和溶解体系，不能当作电池内运行浓度"
+          ],
+          "basis_evidence_ids": [
+            "Eprep"
+          ]
+        }
+      ],
+      "evidence_ids": [
+        "Eprep",
+        "Esol"
+      ],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    },
+    {
+      "id": "S-F4-gitt",
+      "paper_id": "S39",
+      "formulation_id": "F4-gitt",
+      "purpose": "F4DEE体系：Li||CP GITT",
+      "state": "按对应用途制备；观测节点另记",
+      "mappings": [
+        {
+          "target_sample_id": "S-F4-full",
+          "relation": "simplified_system",
+          "differences": [
+            "LiNO3为0.1 M，目标为0.2 M",
+            "预含0.1 M名义Li2S6；目标Li||S初始配方不含该项",
+            "碳纸溶液正极与固态硫碳正极测试不同"
+          ],
+          "basis_evidence_ids": [
+            "Eprep"
+          ]
+        }
+      ],
+      "evidence_ids": [
+        "Eprep"
+      ],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    },
+    {
+      "id": "S-DD-gitt",
+      "paper_id": "S39",
+      "formulation_id": "DD-gitt",
+      "purpose": "DOL/DME体系：Li||CP GITT",
+      "state": "按对应用途制备；观测节点另记",
+      "mappings": [],
+      "evidence_ids": [
+        "Eprep"
+      ],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    }
+  ],
+  "tests": [
+    {
+      "id": "T-sol",
+      "paper_id": "S39",
+      "sample_id": "S-F4-sol",
+      "test_type": "Li2S6溶解试验",
+      "conditions": {
+        "temperature": {
+          "kind": "missing",
+          "raw": null,
+          "number": null,
+          "unit": "degC",
+          "basis": null,
+          "missing_reason": "not_extracted"
+        }
+      },
+      "protocol": "本例仅记录正文给定溶解度；饱和判据、平衡时间与温度需回全文/SI补核。",
+      "simulation": null,
+      "evidence_ids": [
+        "Esol"
+      ],
+      "legacy_refs": [
+        "S39/descriptors/D1"
+      ],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    },
+    {
+      "id": "T-nmr",
+      "paper_id": "S39",
+      "sample_id": "S-F4-nmr",
+      "test_type": "Li+溶剂化表征",
+      "conditions": {
+        "temperature": {
+          "kind": "missing",
+          "raw": null,
+          "number": null,
+          "unit": "degC",
+          "basis": null,
+          "missing_reason": "not_extracted"
+        }
+      },
+      "protocol": "19F NMR；不把旧人为强弱序号写入实测值。",
+      "simulation": null,
+      "evidence_ids": [
+        "Eprep"
+      ],
+      "legacy_refs": [
+        "S39/descriptors/D2"
+      ],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    },
+    {
+      "id": "T-full",
+      "paper_id": "S39",
+      "sample_id": "S-F4-full",
+      "test_type": "Li||S长期循环",
+      "conditions": {
+        "temperature": {
+          "kind": "missing",
+          "raw": null,
+          "number": null,
+          "unit": "degC",
+          "basis": null,
+          "missing_reason": "not_extracted"
+        },
+        "rate_author": {
+          "kind": "numeric",
+          "raw": "0.1",
+          "number": 0.1,
+          "unit": "C",
+          "basis": "作者定义",
+          "missing_reason": null
+        },
+        "one_C_current": {
+          "kind": "numeric",
+          "raw": "1200",
+          "number": 1200,
+          "unit": "mA/g_S",
+          "basis": "SI明确电流定义",
+          "missing_reason": null
+        },
+        "voltage_window": {
+          "kind": "qualitative",
+          "raw": "1.6–2.6 V",
+          "number": null,
+          "unit": null,
+          "basis": null,
+          "missing_reason": null
+        },
+        "sulfur_loading": {
+          "kind": "numeric",
+          "raw": "3.5",
+          "number": 3.5,
+          "unit": "mg_S/cm2",
+          "basis": "图内报告值",
+          "missing_reason": null
+        }
+      },
+      "protocol": "两圈0.05C化成，随后0.1C；本示例不读取曲线容量。",
+      "simulation": null,
+      "evidence_ids": [
+        "Ecycle",
+        "Ees"
+      ],
+      "legacy_refs": [
+        "S39/conditions/C3"
+      ],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    },
+    {
+      "id": "T-F4-gitt",
+      "paper_id": "S39",
+      "sample_id": "S-F4-gitt",
+      "test_type": "Li||CP GITT",
+      "conditions": {
+        "temperature": {
+          "kind": "missing",
+          "raw": null,
+          "number": null,
+          "unit": "degC",
+          "basis": null,
+          "missing_reason": "not_extracted"
+        },
+        "electrolyte_volume": {
+          "kind": "numeric",
+          "raw": "50",
+          "number": 50,
+          "unit": "uL",
+          "basis": "单电池",
+          "missing_reason": null
+        },
+        "current_density": {
+          "kind": "numeric",
+          "raw": "0.12",
+          "number": 0.12,
+          "unit": "mA/cm2",
+          "basis": "电极面积",
+          "missing_reason": null
+        },
+        "cathode": {
+          "kind": "qualitative",
+          "raw": "carbon paper GDL340, diameter 14 mm",
+          "number": null,
+          "unit": null,
+          "basis": null,
+          "missing_reason": null
+        },
+        "separator": {
+          "kind": "qualitative",
+          "raw": "W-scope",
+          "number": null,
+          "unit": null,
+          "basis": null,
+          "missing_reason": null
+        }
+      },
+      "protocol": "6 min恒流/30 min静置；首次放电至1.6 V，充电至2.6 V；本例取首次放电第II段。",
+      "simulation": null,
+      "evidence_ids": [
+        "Egitt"
+      ],
+      "legacy_refs": [
+        "S39/conditions/C2"
+      ],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    },
+    {
+      "id": "T-DD-gitt",
+      "paper_id": "S39",
+      "sample_id": "S-DD-gitt",
+      "test_type": "Li||CP GITT",
+      "conditions": {
+        "temperature": {
+          "kind": "missing",
+          "raw": null,
+          "number": null,
+          "unit": "degC",
+          "basis": null,
+          "missing_reason": "not_extracted"
+        },
+        "electrolyte_volume": {
+          "kind": "numeric",
+          "raw": "50",
+          "number": 50,
+          "unit": "uL",
+          "basis": "单电池",
+          "missing_reason": null
+        },
+        "current_density": {
+          "kind": "numeric",
+          "raw": "0.12",
+          "number": 0.12,
+          "unit": "mA/cm2",
+          "basis": "电极面积",
+          "missing_reason": null
+        },
+        "cathode": {
+          "kind": "qualitative",
+          "raw": "carbon paper GDL340, diameter 14 mm",
+          "number": null,
+          "unit": null,
+          "basis": null,
+          "missing_reason": null
+        },
+        "separator": {
+          "kind": "qualitative",
+          "raw": "W-scope",
+          "number": null,
+          "unit": null,
+          "basis": null,
+          "missing_reason": null
+        }
+      },
+      "protocol": "6 min恒流/30 min静置；首次放电至1.6 V，充电至2.6 V；本例取首次放电第II段。",
+      "simulation": null,
+      "evidence_ids": [
+        "Egitt"
+      ],
+      "legacy_refs": [
+        "S39/conditions/C2"
+      ],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "id": "O-sol",
+      "paper_id": "S39",
+      "sample_id": "S-F4-sol",
+      "test_id": "T-sol",
+      "property_code": "polysulfide_solubility",
+      "object": "名义Li2S6；DOL/F4DEE混合溶剂",
+      "causal_role": "baseline_descriptor",
+      "value": {
+        "kind": "numeric",
+        "raw": "0.38",
+        "number": 0.38,
+        "unit": "mol/L",
+        "basis": "Li2S6名义物种摩尔浓度",
+        "missing_reason": null
+      },
+      "point": {},
+      "method": "溶解试验；Fig.1d/S8",
+      "origin": "reported_experiment",
+      "evidence_ids": [
+        "Esol"
+      ],
+      "lineage": null,
+      "legacy_refs": [
+        "S39/descriptors/D1/values/F4"
+      ],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    },
+    {
+      "id": "O-nitrate",
+      "paper_id": "S39",
+      "sample_id": "S-F4-full",
+      "test_id": "T-full",
+      "property_code": "lino3_concentration",
+      "object": "LiNO3",
+      "causal_role": "design",
+      "value": {
+        "kind": "numeric",
+        "raw": "0.2",
+        "number": 0.2,
+        "unit": "mol/L",
+        "basis": "Li||S制备标称溶液浓度",
+        "missing_reason": null
+      },
+      "point": {},
+      "method": "配方制备",
+      "origin": "reported_recipe",
+      "evidence_ids": [
+        "Eprep"
+      ],
+      "lineage": null,
+      "legacy_refs": [],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    },
+    {
+      "id": "O-es",
+      "paper_id": "S39",
+      "sample_id": "S-F4-full",
+      "test_id": "T-full",
+      "property_code": "electrolyte_sulfur_ratio_volume",
+      "object": "Li||S电解液/硫",
+      "causal_role": "test_condition",
+      "value": {
+        "kind": "numeric",
+        "raw": "10",
+        "number": 10,
+        "unit": "uL/mg_S",
+        "basis": "硫质量",
+        "missing_reason": null
+      },
+      "point": {},
+      "method": "SI Fig.S32印字",
+      "origin": "reported_experiment",
+      "evidence_ids": [
+        "Ees"
+      ],
+      "lineage": null,
+      "legacy_refs": [],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    },
+    {
+      "id": "O-nitrate-per-s",
+      "paper_id": "S39",
+      "sample_id": "S-F4-full",
+      "test_id": "T-full",
+      "property_code": "lino3_inventory_per_sulfur_mass",
+      "object": "初始名义LiNO3投料/硫质量",
+      "causal_role": "design",
+      "value": {
+        "kind": "numeric",
+        "raw": "2.0",
+        "number": 2.0,
+        "unit": "umol/mg_S",
+        "basis": "初始投料；不是循环后余量",
+        "missing_reason": null
+      },
+      "point": {},
+      "method": "由浓度与E/S计算",
+      "origin": "our_formula",
+      "evidence_ids": [],
+      "lineage": {
+        "formula_id": "nitrate_per_sulfur_v1",
+        "expression": "n_LiNO3/mS [umol/mg] = c [mol/L] * E_S [uL/mg]",
+        "input_observation_ids": [
+          "O-nitrate",
+          "O-es"
+        ],
+        "assumptions": [
+          "两项属于同一电池配方与循环系列；使用作者溶液标称浓度"
+        ],
+        "inherited_limitations": [
+          "不表示LiNO3溶解态浓度已独立测定，也不表示循环后库存"
+        ]
+      },
+      "legacy_refs": [],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    },
+    {
+      "id": "O-volume",
+      "paper_id": "S39",
+      "sample_id": "S-F4-full",
+      "test_id": "T-full",
+      "property_code": "electrolyte_volume",
+      "object": "Li||S单电池",
+      "causal_role": "test_condition",
+      "value": {
+        "kind": "missing",
+        "raw": null,
+        "number": null,
+        "unit": "uL",
+        "basis": null,
+        "missing_reason": "not_extracted"
+      },
+      "point": {},
+      "method": "需核对该循环系列总硫质量或电极几何；本示例不沿用GITT的50 uL",
+      "origin": "not_available",
+      "evidence_ids": [],
+      "lineage": null,
+      "legacy_refs": [],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    },
+    {
+      "id": "O-kappa",
+      "paper_id": "S39",
+      "sample_id": "S-F4-full",
+      "test_id": "T-full",
+      "property_code": "ionic_conductivity",
+      "object": "完整Li||S电解液",
+      "causal_role": "baseline_descriptor",
+      "value": {
+        "kind": "missing",
+        "raw": null,
+        "number": null,
+        "unit": "mS/cm",
+        "basis": null,
+        "missing_reason": "not_extracted"
+      },
+      "point": {},
+      "method": "尚未核对完整配方是否有对应实测；不能复制1 M LiTFSI简化体系物性",
+      "origin": "not_available",
+      "evidence_ids": [],
+      "lineage": null,
+      "legacy_refs": [],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    },
+    {
+      "id": "O-rate",
+      "paper_id": "S39",
+      "sample_id": "S-F4-full",
+      "test_id": "T-full",
+      "property_code": "rate_author",
+      "object": "Li||S循环倍率",
+      "causal_role": "test_condition",
+      "value": {
+        "kind": "numeric",
+        "raw": "0.1",
+        "number": 0.1,
+        "unit": "C",
+        "basis": "作者定义",
+        "missing_reason": null
+      },
+      "point": {},
+      "method": "SI §4循环协议",
+      "origin": "reported_experiment",
+      "evidence_ids": [
+        "Ecycle"
+      ],
+      "lineage": null,
+      "legacy_refs": [],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    },
+    {
+      "id": "O-onec",
+      "paper_id": "S39",
+      "sample_id": "S-F4-full",
+      "test_id": "T-full",
+      "property_code": "one_c_specific_current",
+      "object": "作者1C定义",
+      "causal_role": "test_condition",
+      "value": {
+        "kind": "numeric",
+        "raw": "1200",
+        "number": 1200,
+        "unit": "mA/g_S",
+        "basis": "按硫质量；采用SI明确电流单位",
+        "missing_reason": null
+      },
+      "point": {},
+      "method": "SI §4",
+      "origin": "reported_experiment",
+      "evidence_ids": [
+        "Ecycle"
+      ],
+      "lineage": null,
+      "legacy_refs": [],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    },
+    {
+      "id": "O-rate-std",
+      "paper_id": "S39",
+      "sample_id": "S-F4-full",
+      "test_id": "T-full",
+      "property_code": "rate_standardized",
+      "object": "Li||S循环倍率",
+      "causal_role": "test_condition",
+      "value": {
+        "kind": "numeric",
+        "raw": "0.07164179104477612",
+        "number": 0.07164179104477612,
+        "unit": "C",
+        "basis": "1C=1675 mA/g_S；保留未舍入值",
+        "missing_reason": null
+      },
+      "point": {},
+      "method": "统一倍率",
+      "origin": "our_formula",
+      "evidence_ids": [],
+      "lineage": {
+        "formula_id": "c_rate_sulfur_v1",
+        "expression": "C_std = C_author * one_C_author_mA_gS / 1675",
+        "input_observation_ids": [
+          "O-rate",
+          "O-onec"
+        ],
+        "assumptions": [
+          "同一循环阶段，不含前两圈化成"
+        ],
+        "inherited_limitations": []
+      },
+      "legacy_refs": [],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    },
+    {
+      "id": "O-F4-stage",
+      "paper_id": "S39",
+      "sample_id": "S-F4-gitt",
+      "test_id": "T-F4-gitt",
+      "property_code": "stage_ii_specific_capacity",
+      "object": "Li||CP第II段容量",
+      "causal_role": "process",
+      "value": {
+        "kind": "numeric",
+        "raw": "500",
+        "number": 500,
+        "unit": "mAh/g",
+        "basis": "正文给出的比容量；质量分母仍需核对，未擅自规范到g_S",
+        "missing_reason": null
+      },
+      "point": {
+        "stage": {
+          "kind": "qualitative",
+          "raw": "首次GITT放电第II段",
+          "number": null,
+          "unit": null,
+          "basis": null,
+          "missing_reason": null
+        },
+        "cycle": {
+          "kind": "qualitative",
+          "raw": "首次放电",
+          "number": null,
+          "unit": null,
+          "basis": null,
+          "missing_reason": null
+        }
+      },
+      "method": "GITT",
+      "origin": "reported_experiment",
+      "evidence_ids": [
+        "Estage"
+      ],
+      "lineage": null,
+      "legacy_refs": [
+        "S39/comparisons[1]/val_A"
+      ],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    },
+    {
+      "id": "O-DD-stage",
+      "paper_id": "S39",
+      "sample_id": "S-DD-gitt",
+      "test_id": "T-DD-gitt",
+      "property_code": "stage_ii_specific_capacity",
+      "object": "Li||CP第II段容量",
+      "causal_role": "process",
+      "value": {
+        "kind": "numeric",
+        "raw": "900",
+        "number": 900,
+        "unit": "mAh/g",
+        "basis": "正文给出的比容量；质量分母仍需核对，未擅自规范到g_S",
+        "missing_reason": null
+      },
+      "point": {
+        "stage": {
+          "kind": "qualitative",
+          "raw": "首次GITT放电第II段",
+          "number": null,
+          "unit": null,
+          "basis": null,
+          "missing_reason": null
+        },
+        "cycle": {
+          "kind": "qualitative",
+          "raw": "首次放电",
+          "number": null,
+          "unit": null,
+          "basis": null,
+          "missing_reason": null
+        }
+      },
+      "method": "GITT",
+      "origin": "reported_experiment",
+      "evidence_ids": [
+        "Estage"
+      ],
+      "lineage": null,
+      "legacy_refs": [
+        "S39/comparisons[1]/val_B"
+      ],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    },
+    {
+      "id": "O-retention-ref",
+      "paper_id": "S39",
+      "sample_id": "S-F4-full",
+      "test_id": "T-full",
+      "property_code": "retention_reference",
+      "object": "Fig.5d保持率基准",
+      "causal_role": "test_condition",
+      "value": {
+        "kind": "qualitative",
+        "raw": "maximum_capacity",
+        "number": null,
+        "unit": null,
+        "basis": "该曲线最大比放电容量，非自动等同首圈",
+        "missing_reason": null
+      },
+      "point": {},
+      "method": "Fig.5图注",
+      "origin": "reported_experiment",
+      "evidence_ids": [
+        "Ebase"
+      ],
+      "lineage": null,
+      "legacy_refs": [],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "C-stage",
+      "paper_id": "S39",
+      "a_test_id": "T-F4-gitt",
+      "b_test_id": "T-DD-gitt",
+      "a_observation_id": "O-F4-stage",
+      "b_observation_id": "O-DD-stage",
+      "b_role": "series_reference",
+      "changed_factors": [
+        "共溶剂种类",
+        "溶剂比例"
+      ],
+      "comparability": "partially_matched",
+      "condition_differences": [
+        "正文同一GITT系列；温度和质量分母尚未完成核对",
+        "不与Li||S全电池容量合并"
+      ],
+      "numeric_direction": "A_lower",
+      "author_direction": "第II段DOL/F4DEE容量低于DOL/DME；这只描述特定反应阶段",
+      "effect_observation_id": null,
+      "evidence_ids": [
+        "Estage",
+        "Egitt"
+      ],
+      "legacy_refs": [
+        "S39/comparisons[1]"
+      ],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "H-map",
+      "paper_id": "S39",
+      "speaker": "researcher_hypothesis",
+      "statement": "同溶剂背景的溶解行为与Li+表征可提供候选解释，但需评估完整含LiNO3体系的差异。",
+      "scope": "仅为新结构演示；不据本例确认失效机制或普适强弱规律",
+      "supporting_observation_ids": [
+        "O-sol"
+      ],
+      "opposing_observation_ids": [],
+      "missing_diagnostics": [
+        "完整Li||S电解液中的对应溶解/配位测量",
+        "相应节点的库存或转化诊断"
+      ],
+      "evidence_ids": [
+        "Eprep"
+      ],
+      "review": {
+        "status": "ai_checked",
+        "note": "AI辅助核对，用户尚未逐项人工确认"
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "Eprep",
+      "paper_id": "S39",
+      "document_part": "SI",
+      "location": "SI §2 Electrolyte preparation；缓存文本第30–39行",
+      "quote": "The solvent mixtures of DOL/DME (1:1 v/v), DOL/F4DEE (4:1 v/v) and DOL/TTE (4:1 v/v) \nwere prepared in advance. Four kinds of electrolyte solutions were then prepared: (1) For Li+ \nsolvation study, 1.0 M LiTFSI was dissolved in each single/mixed solvent; (2) For LiPS \nsolvation study, Li2S and S8 were mixed with a molar ratio 8:5 and then dissolved in varied \nsolvents to reach Li2S6 nominal concentration of 0.1 M; (3) For Li||Carbon paper cell \nconstruction, 1.0 M LiTFSI and 0.1 M LiNO3 were dissolved in the solutions prepared in (2); \n(4) For Li||S cell construction, 1.0 M LiTFSI and 0.2 M LiNO3 were dissolved in varied \nsolvents. All electrolyte preparation processes were performed in an argon-filled glove-box \nwith controlled moisture and oxygen level below 1 ppm.\n3. Characterization",
+      "local_path": "D:\\Desktop\\课题二锂硫电解液矛盾归因\\output\\text_cache\\10.1021_acsenergylett.5c02200.si.txt",
+      "verification": "ai_context_checked"
+    },
+    {
+      "id": "Esol",
+      "paper_id": "S39",
+      "document_part": "main",
+      "location": "正文Fig.1d讨论；缓存文本第212–215行",
+      "quote": "the DOL/F4DEE mixed solvent shows a moderate Li2S6\nsolubility of 0.38 M, in sharp contrast to 1.0 M in DOL/\nDME and 0.22 M in DOL/TTE. This is the desirable LiPS\nsolubility that remarkably impacts Li−S electrochemical",
+      "local_path": "D:\\Desktop\\课题二锂硫电解液矛盾归因\\output\\text_cache\\10.1021_acsenergylett.5c02200.main.txt",
+      "verification": "ai_context_checked"
+    },
+    {
+      "id": "Egitt",
+      "paper_id": "S39",
+      "document_part": "SI",
+      "location": "SI §4 Li||CP GITT；缓存文本第90–101行",
+      "quote": "The galvanostatic intermittent titration technique (GITT) experiments were conducted on \nNeware cycler. For Li||Carbon paper (CP) GITT, 2032-coin cells were constructed with Li \nmetal as anode, carbon paper (GDL340, punched into disks of 14 mm in diameter) as cathode \nand W-scope as separator. Electrolyte used in Li||CP GITT test contained 1.0 M LiTFSI, 0.1 \nM LiNO3 and 0.1 M Li2S6 with varied solvents. 50 μL electrolyte was added in each cell. The \nGITT step includes a 6-minute galvanostatic discharging (or charging) at 0.12 mA cm-2, \nfollowed by a 30-minute rest. The cells were cycled first with GITT discharging steps until \n1.6 V, then with GITT charging steps until 2.6 V, finally with GITT discharging steps again \nuntil 1.6 V. For Li||C/S GITT, S cathodes with diameter of 14 mm were used as the working \nelectrode. 2032-coin cells were assembled with W-scope separator, and certain amount of \nelectrolyte (without LiPS) was added to control E/S = 10 µL mg-1. The GITT testing protocol \nDownloaded from pubs.​acs.​org/​aelccp/​article-supplement/​3757754/​pdf/​nz5c02200_si_001/​ by TSINGHUA UNIV user on 24 September 2026",
+      "local_path": "D:\\Desktop\\课题二锂硫电解液矛盾归因\\output\\text_cache\\10.1021_acsenergylett.5c02200.si.txt",
+      "verification": "ai_context_checked"
+    },
+    {
+      "id": "Ecycle",
+      "paper_id": "S39",
+      "document_part": "SI",
+      "location": "SI §4 Li||S长期循环；缓存文本第107–109行",
+      "quote": "For Li||S coin cells long-term cycling tests, the galvanostatic cycles include two 0.05 C \nformation cycles (1 C = 1200 mA gS-1), followed by long-term cycling at 0.1 C with 1.6-2.6 \nV voltage range. The electrochemical impedance spectroscopy (EIS) was obtained after the ",
+      "local_path": "D:\\Desktop\\课题二锂硫电解液矛盾归因\\output\\text_cache\\10.1021_acsenergylett.5c02200.si.txt",
+      "verification": "ai_context_checked"
+    },
+    {
+      "id": "Ees",
+      "paper_id": "S39",
+      "document_part": "SI",
+      "location": "SI Fig.S32图内印字；缓存文本第693–696行；未读取曲线数值",
+      "quote": "0.1 C cycling\nS loading: 3.5 mg cm-2\nE/S ratio: 10 L mg-1\n1.6-2.6 V",
+      "local_path": "D:\\Desktop\\课题二锂硫电解液矛盾归因\\output\\text_cache\\10.1021_acsenergylett.5c02200.si.txt",
+      "verification": "ai_context_checked"
+    },
+    {
+      "id": "Ebase",
+      "paper_id": "S39",
+      "document_part": "main",
+      "location": "正文Fig.5图注；缓存文本第537–539行",
+      "quote": "distinct stages in different colors. (b) Voltage profiles of Li−S cells at 0.05 C (solid line) and 0.1 C (dashed line) for various electrolytes. (c)\nEIS-derived resistances after 100 cycles: Rbulk (bulk electrolyte), RSEI (SEI), and Rct (charge transfer). (d) Long-term cycling performance at\n0.1 C, with capacity retention calculated as the specific discharge capacity normalized to its maximum value.",
+      "local_path": "D:\\Desktop\\课题二锂硫电解液矛盾归因\\output\\text_cache\\10.1021_acsenergylett.5c02200.main.txt",
+      "verification": "ai_context_checked"
+    },
+    {
+      "id": "Estage",
+      "paper_id": "S39",
+      "document_part": "main",
+      "location": "正文Fig.3a讨论；GITT第II段容量",
+      "quote": "stage (Figure 3a). The DOL/DME cell delivers 900 mAh g−1\non stage II, in sharp contrast to 500 and 400 mAh g−1 in the\nDOL/F4DEE and DOL/TTE cells. Nevertheless, all three cells\nsimilarly deliver 650 mAh g−1 on stage III. These results",
+      "local_path": "D:\\Desktop\\课题二锂硫电解液矛盾归因\\output\\text_cache\\10.1021_acsenergylett.5c02200.main.txt",
+      "verification": "ai_context_checked"
+    }
+  ]
+}
