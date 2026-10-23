@@ -347,6 +347,10 @@ def word(name, d):
     return n.get(d, d)
 
 
+SRC = list(VOC["原句来源"])          # 本文结论 > 与他文一致 > 本文推测 > 转述他文或通用说法
+CITED = SRC[-1]
+
+
 def validate(pid, ch):
     ids = {x["id"] for x in ch["节点"]}
     for x in ch["节点"]:
@@ -357,6 +361,103 @@ def validate(pid, ch):
     for u, v in ch["边"]:
         if u not in ids or v not in ids:
             raise KeyError(f"{pid}-{ch['编号']}：边引用了不存在的节点 {u}→{v}")
+    edges = [tuple(e) for e in ch["边"]]
+    for q in ch["原句"]:
+        if q["来源"] not in SRC:
+            raise KeyError(f"{pid}-{ch['编号']}-{q['id']}：来源不在词表里：{q['来源']}")
+        for e in q["支撑"]:
+            if tuple(e) not in edges:
+                raise KeyError(f"{pid}-{ch['编号']}-{q['id']}：支撑了不存在的环节 {e}")
+    for e in edges:
+        if not any(list(e) in q["支撑"] for q in ch["原句"]):
+            raise KeyError(f"{pid}-{ch['编号']}：环节 {e[0]}→{e[1]} 没有原句支撑")
+
+
+def edge_src(ch, u, v):
+    """环节的来源 = 支撑句里最好的一种；返回 (来源, 原句编号列表)。"""
+    qs = [q for q in ch["原句"] if [u, v] in q["支撑"]]
+    return min((q["来源"] for q in qs), key=SRC.index), [q["id"] for q in qs]
+
+
+# 原句放回原文：查引文编号、转述说法、推测词（只作提示，最终由人判）
+CITE_RE = [r"\[\d{1,3}[a-z]?(?:\s*[,–−-]\s*\d{1,3}[a-z]?)*\]",
+           r"(?:(?<=[a-z\)])|(?<=[a-z\)][\.,]))\d{1,3}(?:\s*[,−–]\s*\d{1,3})*(?=[\s\.,;:)]|$)"]  # 上标引文；排除 0.2、2.072 这类小数
+PHRASE_RE = r"\b(it is reported|has been reported|have been reported|were reported|was reported|as reported|previous(?:ly)? (?:stud|report|work)|reported previously|according to|in accordance with|aligns? well with|agrees? (?:well )?with|recent studies)"
+HEDGE_RE = r"\b(may|might|likely|possibly|presumably|probably|can be attributed)\b"
+_located = {}
+
+
+def _mapped(stem, part, join_hyphen):
+    """join_hyphen=True：行末连字符拼回（di-\\nrectly → directly）；False：保留（full-\\ncell → full-cell）。"""
+    key = (stem, part, join_hyphen)
+    if key not in _located:
+        p = CACHE / f"{stem}.{part}.txt"
+        raw = p.read_text(encoding="utf-8", errors="ignore") if p.exists() else ""
+        if join_hyphen:
+            raw = re.sub(r"-[ \t]*\n", "", raw)
+        chars, pos = [], []
+        for i, c in enumerate(raw):
+            for n in unicodedata.normalize("NFKC", c):
+                if not n.isspace() and ord(n) >= 32:
+                    chars.append(n)
+                    pos.append(i)
+        _located[key] = (raw, "".join(chars), pos)
+    return _located[key]
+
+
+def source_flags(stem, part, quote):
+    """返回 (程序查到的痕迹, 前后文)。痕迹查原句所在整句及其后 40 个字符（句末上标引文）和下一句。"""
+    frags = [f for f in quote.split("‖") if f.strip()]
+    hits = []
+    for join_hyphen in (True, False):
+        raw, nt, pos = _mapped(stem, part, join_hyphen)
+        spans = []
+        for f in frags:
+            nf = "".join(ch for ch in unicodedata.normalize("NFKC", f) if not ch.isspace() and ord(ch) >= 32)
+            k = nt.find(nf)
+            if k < 0:
+                break
+            spans.append((pos[k], pos[k + len(nf) - 1] + 1))
+        if len(spans) == len(frags):
+            break
+    else:
+        return "原文中找不到", ""
+    a, b = spans[0][0], spans[-1][1]
+    tail = raw[b:b + 40]
+    nxt_end = raw.find(". ", b + 2)
+    nxt = raw[b:nxt_end + 1] if nxt_end > 0 else tail
+    sent = " ".join(f for f in frags) + tail.split(". ")[0]      # 直接接上句末，才认得出 kinetics.4,18 这类上标
+    for name, txt in (("本句", sent), ("下一句", nxt)):
+        cites = [m.group(0) for r_ in CITE_RE for m in re.finditer(r_, txt)]
+        cites = [c for c in cites if not re.search(r"S\d|Li\d", c)]
+        if cites:
+            hits.append(f"{name}有引文编号 {' '.join(cites)}")
+        ph = re.findall(PHRASE_RE, txt, flags=re.I)
+        if ph:
+            hits.append(f"{name}有转述说法 “{'、'.join(ph)}”")
+        if name == "本句":
+            hd = re.findall(HEDGE_RE, txt, flags=re.I)
+            if hd:
+                hits.append(f"本句有推测词 “{'、'.join(hd)}”")
+    ctx = re.sub(r"\s+", " ", re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f]", " ", raw[max(0, a - 300):min(len(raw), b + 300)]))
+    return "；".join(hits) or "无", ctx
+
+
+def source_check(src, flags):
+    """AI 判的来源与程序痕迹是否对得上；对不上标 🔶。"""
+    own_cite = "本句有引文编号" in flags or "本句有转述说法" in flags
+    nxt_cite = "下一句有引文编号" in flags or "下一句有转述说法" in flags
+    if flags == "原文中找不到":
+        return "❌ 原文中找不到"
+    if src == SRC[0] and own_cite:
+        return "🔶 判为本文结论，但本句有引用痕迹"
+    if src == SRC[0] and "推测词" in flags:
+        return "🔶 判为本文结论，但本句有推测词"
+    if src == SRC[1] and not (own_cite or nxt_cite):
+        return "🔶 判为与他文一致，但本句和下一句都没查到引用"
+    if src == CITED and not own_cite:
+        return "🔶 判为转述，但本句没查到引用痕迹（可能是通用说法）"
+    return "✅"
 
 
 def edge_level(nu, nv):
@@ -529,7 +630,7 @@ solvents = json.loads((JSON_DIR / "溶剂表.json").read_text(encoding="utf-8"))
 
 sentence_rows, gradient_rows, formula_rows, cond_rows = [], [], [], []
 detail_rows, prop_rows, mech_rows, review_rows = [], [], [], []
-chain_rows, edge_recs, side_rows = [], [], []
+chain_rows, edge_recs, cited_recs, side_rows, src_rows = [], [], [], [], []
 
 
 def review(pid, stem, item, what):
@@ -564,29 +665,40 @@ for P in papers:
     for ch in P["机制链"]:
         validate(pid, ch)
         nodes = {x["id"]: x for x in ch["节点"]}
-        e_lv = [(nodes[u], nodes[v], edge_level(nodes[u], nodes[v])) for u, v in ch["边"]]
-        worst = max((lv for _, _, lv in e_lv), key=LEVELS.index)
+        e_lv = [(nodes[u], nodes[v], edge_level(nodes[u], nodes[v]), *edge_src(ch, u, v)) for u, v in ch["边"]]
+        own = [e for e in e_lv if e[3] != CITED]
+        worst = max((e[2] for e in own), key=LEVELS.index) if own else "仅转述他文"
         checks = [(x, *check_perf(P, x, ch["A"], ch["B"])) for x in ch["节点"] if NODE[x["节点"]]["层"] == "表现"]
         mark = "；".join(f"{x['节点']}：{m}" for x, m, _ in checks) or "（不落到电池表现）"
         for q in ch["原句"]:
-            review(pid, stem, q, f"机制链 {ch['编号']}")
+            review(pid, stem, q, f"机制链 {ch['编号']} {q['id']}")
+            flags, ctx = source_flags(stem, q.get("部分", "main"), q["原句"])
+            src_rows.append([pid, ch["编号"], q["id"], q["原句"].replace("‖", " … "), q.get("位置", ""),
+                             "\n".join(f"{nodes[u]['节点']} → {nodes[v]['节点']}" for u, v in q["支撑"]) or "（只支撑节点观察）",
+                             q["来源"], q.get("来源说明", ""), flags, source_check(q["来源"], flags), ctx, ""])
         qmarks = "".join(check(stem, q.get("部分", "main"), q["原句"]) for q in ch["原句"])
-        info = {"ch": ch, "text": render(ch), "level": worst, "mark": mark}
+        cnt = {}
+        for e in e_lv:
+            cnt[e[3]] = cnt.get(e[3], 0) + 1
+        srcsum = "、".join(f"{s} {cnt[s]}" for s in SRC if s in cnt)
+        info = {"ch": ch, "text": render(ch), "level": worst, "mark": mark, "src": srcsum}
         chains.append(info)
         chain_rows.append([pid, ch["编号"], f"{ch['A']} vs {ch['B']}", ch["对象"], info["text"],
-                           "\n".join(f"{x['节点']} ← “{x['作者原词']}”" for x in ch["节点"] if x.get("作者原词")),
+                           "\n".join(f"{u['节点']} → {v['节点']}｜证据 {lv}｜{src}（{'、'.join(qid)}）"
+                                     for u, v, lv, src, qid in e_lv),
                            "\n".join(f"{x['节点']}：{x['测量']}" + (f"｜{x['依据']}" if x.get("依据") else "")
                                      for x in ch["节点"] if NODE[x["节点"]]["层"] != "表现"),
-                           "\n".join(f"{u['节点']} → {v['节点']}：{lv}" for u, v, lv in e_lv), worst,
-                           "\n".join(f"{x['节点']}：{m}｜{d}" for x, m, d in checks) or "（不落到电池表现）",
-                           "\n".join(q["原句"] for q in ch["原句"]), qmarks, ch.get("备注", ""), ""])
-        for u, v, lv in e_lv:
+                           worst, "\n".join(f"{x['节点']}：{m}｜{d}" for x, m, d in checks) or "（不落到电池表现）",
+                           "\n".join(f"{q['id']}｜{q['来源']}｜{q['原句'].replace('‖', ' … ')}" for q in ch["原句"]),
+                           qmarks, ch.get("备注", ""), ""])
+        for u, v, lv, src, qid in e_lv:
             xn, xd, xm = merged(u["节点"], u["方向"])
             yn, yd, ym = merged(v["节点"], v["方向"])
-            edge_recs.append({"P": P, "pid": pid, "ch": ch, "x": xn, "y": yn, "rel": relation(xd, yd),
-                              "level": lv, "u": u, "v": v,
-                              "merge": "；".join(f"{n['节点']} 归并为 {NODE[n['节点']]['并入']['节点']}"
-                                                for n, m in ((u, xm), (v, ym)) if m)})
+            rec = {"P": P, "pid": pid, "ch": ch, "x": xn, "y": yn, "rel": relation(xd, yd),
+                   "level": lv, "src": src, "u": u, "v": v,
+                   "merge": "；".join(f"{n['节点']} 归并为 {NODE[n['节点']]['并入']['节点']}"
+                                     for n, m in ((u, xm), (v, ym)) if m)}
+            (cited_recs if src == CITED else edge_recs).append(rec)
 
     # 两侧拼接：每条链算作强溶剂化一侧还是弱溶剂化一侧的短板
     sides = {"强": [], "弱": [], "其他": []}
@@ -691,7 +803,7 @@ for P in papers:
             for i in mine:
                 i["used"] = True
                 lines.append(f"    {i['ch']['编号']}（{i['ch']['A']} 相对 {i['ch']['B']}）{i['text']}"
-                             f"｜证据：{i['level']}｜篇内数据：{i['mark']}")
+                             f"｜证据：{i['level']}｜原句来源：{i['src']}｜篇内数据：{i['mark']}")
         sentence_rows.append([pid, f"{a} vs {b}", "\n".join(lines), ""])
 
     # 梯度排序：梯度上 ≥3 档有数值，或有作者给的最优/排序
@@ -732,14 +844,14 @@ for P in papers:
             for i in rest:
                 i["used"] = True
                 head.append(f"    {i['ch']['编号']}（{i['ch']['A']} 相对 {i['ch']['B']}）{i['text']}"
-                            f"｜证据：{i['level']}｜篇内数据：{i['mark']}")
+                            f"｜证据：{i['level']}｜原句来源：{i['src']}｜篇内数据：{i['mark']}")
         for c in (P.get("设计主张", []) if g is P["梯度"][0] else []):
             head.append(f"设计主张（{c['类型']}）：最优 {c['最优']}，依据 {'、'.join(c['两侧依据'])}｜“{c['原句']['原句']}”")
         sentence_rows.append([pid, "梯度排序", "\n".join(head), ""])
     rest = [i for i in P["_chains"] if not i.get("used")]
     if rest:
         sentence_rows.append([pid, "其他机制", "\n".join(
-            f"{i['ch']['编号']}（{i['ch']['A']} 相对 {i['ch']['B']}）{i['text']}｜证据：{i['level']}｜篇内数据：{i['mark']}"
+            f"{i['ch']['编号']}（{i['ch']['A']} 相对 {i['ch']['B']}）{i['text']}｜证据：{i['level']}｜原句来源：{i['src']}｜篇内数据：{i['mark']}"
             for i in rest), ""])
 
 # ---------- 8b. 跨文献：篇间比机制（不比性能数值） ----------
@@ -768,7 +880,8 @@ for (x, y), by_rel in sorted(groups.items(), key=lambda kv: (LAYER_ORDER[NODE[kv
         link_rows.append([f"{NODE[x]['层']} → {NODE[y]['层']}", canon(x, y, rel), len(best),
                           sum(1 for v in best.values() if v == "直接"), sum(1 for v in best.values() if v == "间接"),
                           sum(1 for v in best.values() if v == "只是说法"),
-                          "；".join(f"{r['pid']}-{r['ch']['编号']}（{r['ch']['A']} vs {r['ch']['B']}，{r['level']}）" + (" ★" if r["merge"] else "")
+                          "；".join(f"{r['pid']}-{r['ch']['编号']}（{r['ch']['A']} vs {r['ch']['B']}，{r['level']}"
+                                   + (f"，{r['src']}" if r["src"] != SRC[0] else "") + "）" + (" ★" if r["merge"] else "")
                                    for r in recs),
                           "；".join(others) or "—", "；".join(sorted({r["merge"] for r in recs if r["merge"]})), ""])
     if len(rels_for_conflict) >= 2:
@@ -782,8 +895,18 @@ for (x, y), by_rel in sorted(groups.items(), key=lambda kv: (LAYER_ORDER[NODE[kv
                 conflict_rows.append([canon(x, y, rel), f"{r['pid']}-{ch['编号']}", f"{ch['A']} vs {ch['B']}", pos_txt,
                                       f"{r['u']['节点']}：{r['u']['测量']}｜{r['u'].get('依据', '')}",
                                       f"{r['v']['节点']}：{r['v']['测量']}｜{r['v'].get('依据', '')}",
-                                      r["level"], solubility(P, ch["A"], ch["B"]), lino3(P, ch),
-                                      (r["merge"] + "\n" if r["merge"] else "") + ch["原句"][0]["原句"], ""])
+                                      f"{r['level']}｜{r['src']}", solubility(P, ch["A"], ch["B"]), lino3(P, ch),
+                                      (r["merge"] + "\n" if r["merge"] else "") + "\n".join(
+                                          f"{q['id']}（{q['来源']}）{q['原句'].replace('‖', ' … ')}" for q in ch["原句"]
+                                          if [r["u"]["id"], r["v"]["id"]] in q["支撑"]), ""])
+link_rows.append(["", "", "", "", "", "", "", "", "", ""])
+link_rows.append(["以下环节在该篇只有“转述他文或通用说法”的原句支撑，不算该篇的机制结论，不计入上面的统计",
+                  "", "", "", "", "", "", "", "", ""])
+for r in cited_recs:
+    link_rows.append(["（不计）", canon(r["x"], r["y"], r["rel"]), "", "", "", "",
+                      f"{r['pid']}-{r['ch']['编号']}（{r['ch']['A']} vs {r['ch']['B']}）", "", r["merge"], ""])
+if not cited_recs:
+    link_rows.append(["（无）", "四篇里转述句都有本文结论句一起支撑同一环节，没有只靠转述的环节", "", "", "", "", "", "", "", ""])
 
 # 两侧拼接的汇总行：每个过程大类按论文计，取每篇最强的证据
 side_rows.append(["", "", "", "", "", "", "", "", ""])
@@ -813,7 +936,8 @@ guide = [
     ["这是什么", "论断式提取表样 v3（10-23）：在 v2 上加“机制链”和三页跨文献比较。S11、S21、S33、S39 四篇已精读论文。AI 辅助提取与核对，用户尚未逐项人工确认。v2 表样不动，本表只展示加了机制链后的样子。"],
     ["思路", "篇内定方向、篇间比机制：不同实验室的性能数值不可比，所以“A 比 B 好还是差”只在同一篇同一测试里判；跨文献比较的对象是作者的机制结论（哪个性质改变了哪个过程，导致哪项表现变化），不比性能数值。"],
     ["主存储", "json/ 里每篇一个 JSON；本 Excel 由 scripts/step6g_mechanism_chain_v3.py 生成，只供查看复核。改数据改 JSON 再重新生成。"],
-    ["机制链", "原来的“作者归因”升级而来：作者的一段解释拆成节点（性质 → 过程 → 表现）和箭头。节点名必须用 json/机制词表.json 里的统一名称，作者原词另存，这样不同论文的同一说法才能合并。每个节点记测量类别（直接测/相关量/简化体系/由表现反推/引用他文值/未测）。"],
+    ["机制链", "原来的“作者归因”升级而来：作者的一段解释拆成节点（性质 → 过程 → 表现）和箭头。节点名必须用 json/机制词表.json 里的统一名称，这样不同论文的同一说法才能合并。每个节点记测量类别（直接测/相关量/另一组电池/简化体系/由表现反推/引用他文值/未测）。"],
+    ["原句与来源", "每个箭头（环节）至少挂一句整句原文，不用截出来的词——同一个词常出现在引言转述别人工作的句子里。每句标来源：本文结论 / 本文结论（与他文一致）/ 本文推测 / 转述他文或通用说法。只靠转述句支撑的环节不算该篇的机制结论，不进跨文献统计。程序把原句放回原文，查同句和下一句的引文编号、It is reported/previous studies 等说法、may/likely 等推测词，和 AI 判的来源对不上的标 🔶（“原句来源”页）。"],
     ["环节证据", "一个箭头两端都是直接测 → 直接；有一端未测 → 只是说法；其余 → 间接。整条链取最弱的环节。表现节点按它所在测试的电池结果算直接测。"],
     ["篇内数据核对", "作者说的“变好/变坏”由程序到本篇同一测试的结果里核对：✅ 一致 / ⚠️ 部分不一致 / ❌ 不一致 / 无对应数据。"],
     ["跨文献①环节汇总", "所有论文的箭头按“统一写法”合并：起点一律写成变弱/降低的一侧。每行一个说法，数说的篇数、其中有直接证据的篇数；“同一环节的其他说法”一列列出方向相反或说“无关”的论文。★ = 经词表归并（如 S21 的团簇化按“多硫化物溶剂化变弱”归并，属 AI 判断）。"],
@@ -838,7 +962,9 @@ WIDE = {"一句话结论": 140, "说明": 110, "原句": 70, "组分（名称｜
         "统一写法": 52, "文献与证据": 60, "同一环节的其他说法": 50, "归并说明": 30, "说法": 45, "梯度位置": 30,
         "起点怎么测": 45, "终点怎么测": 45, "多硫化物溶解度": 22, "表现所在测试的 LiNO₃": 30,
         "梯度（溶剂化由强到弱）": 30, "作者的设计主张": 55, "强溶剂化一侧的短板": 40, "弱溶剂化一侧的短板": 40,
-        "其他因素": 40, "Li⁺ 溶剂化与溶解度是否一起变": 32, "短板链所在测试的 LiNO₃": 40, "名称": 22}
+        "其他因素": 40, "Li⁺ 溶剂化与溶解度是否一起变": 32, "短板链所在测试的 LiNO₃": 40, "名称": 22,
+        "环节（证据｜原句来源｜原句编号）": 55, "原句（编号｜来源｜整句）": 90, "整句": 70, "支撑的环节": 32,
+        "来源（AI 判）": 16, "来源说明": 40, "程序查到的引用痕迹": 36, "对照": 30, "前后文（程序截取）": 90}
 
 
 def add_sheet(wb, title, head, rows):
@@ -871,8 +997,11 @@ add_sheet(wb, "测试条件", ["文献", "测试", "测试名", "电池", "硫�
 add_sheet(wb, "结果明细", ["文献", "测试", "A", "B", "指标", "取值点", "A 值", "B 值", "方向", "好坏", "来源", "备注"], detail_rows)
 add_sheet(wb, "性质", ["文献", "性质", "对象", "数值/排序/方向", "单位", "排序含义", "依据", "测量体系"], prop_rows)
 add_sheet(wb, "机理测量", ["文献", "名称", "数值", "单位", "说明"], mech_rows)
-add_sheet(wb, "机制链", ["文献", "编号", "A vs B", "作者在解释什么", "机制链（统一词）", "作者原词", "节点测量",
-                       "环节证据", "整条证据", "篇内数据核对", "原句", "原句核验", "备注", "复核 ✍"], chain_rows)
+add_sheet(wb, "机制链", ["文献", "编号", "A vs B", "作者在解释什么", "机制链（统一词）",
+                       "环节（证据｜原句来源｜原句编号）", "节点测量", "整条证据", "篇内数据核对",
+                       "原句（编号｜来源｜整句）", "原句核验", "备注", "复核 ✍"], chain_rows)
+add_sheet(wb, "原句来源", ["文献", "链", "编号", "整句", "位置", "支撑的环节", "来源（AI 判）", "来源说明",
+                         "程序查到的引用痕迹", "对照", "前后文（程序截取）", "复核 ✍"], src_rows)
 add_sheet(wb, "跨文献①环节汇总", ["层级", "统一写法", "篇数", "直接", "间接", "只是说法", "文献与证据",
                              "同一环节的其他说法", "归并说明", "复核 ✍"], link_rows)
 add_sheet(wb, "跨文献②机制矛盾", ["说法", "文献-链", "A vs B", "梯度位置", "起点怎么测", "终点怎么测", "环节证据",
@@ -894,10 +1023,17 @@ print("写出：", OUT_FILE.relative_to(ROOT))
 print("读图项：", marks.count("🖼 读图"))
 print("一句话结论格数：", len(sentence_rows), " 梯度排序行：", len(gradient_rows), " 结果明细：", len(detail_rows))
 print("原句数：", len(review_rows) - marks.count("🖼 读图"), " ✅", marks.count("✅"), " ❌", marks.count("❌"))
-print("机制链：", len(chain_rows), " 环节说法：", len(link_rows), " 矛盾环节：", sum(1 for r in conflict_rows if r[0].startswith("【")))
+print("机制链：", len(chain_rows), " 矛盾环节：", sum(1 for r in conflict_rows if r[0].startswith("【")))
+print("原句：", len(src_rows), " 来源：", {s: sum(1 for r in src_rows if r[6] == s) for s in SRC},
+      " 对照：", {k: sum(1 for r in src_rows if r[9].startswith(k)) for k in ("✅", "🔶", "❌")})
+for r in src_rows:
+    if not r[9].startswith("✅"):
+        print("  ", r[0], r[1], r[2], r[6], "|", r[8], "|", r[9])
 for r in chain_rows:
-    if not r[9].startswith("（") and "✅" not in r[9]:
-        print("  篇内核对未通过：", r[0], r[1], r[9][:120])
+    if not r[8].startswith("（") and "✅" not in r[8]:
+        print("  篇内核对未通过：", r[0], r[1], r[8][:120])
+    if "❌" in r[10]:
+        print("  原句找不到：", r[0], r[1], r[10])
 for r in review_rows:
     if r[4] == "❌":
         print("  找不到：", r[0], r[1], r[2][:90])
