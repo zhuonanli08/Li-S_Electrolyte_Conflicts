@@ -25,15 +25,15 @@ ROOT = Path(__file__).resolve().parents[1]
 CACHE = ROOT / "output" / "text_cache"
 OUT_DIR = ROOT / "output" / "论断式提取表样_v2_2026-10-23"
 JSON_DIR = OUT_DIR / "json"
-OUT_FILE = OUT_DIR / "论断式提取表样_v2_S11_S21_S33_S39.xlsx"
+OUT_FILE = OUT_DIR / "论断式提取表样_v2_S11_S21_S33_S39_含读图.xlsx"
 
 # ---------- 1. 指标：哪个方向算“变好” ----------
 BETTER = {
-    "首圈容量": "↑", "倍率容量": "↑", "寿命": "↑", "容量保持率": "↑", "指定圈数容量": "↑",
+    "首圈容量": "↑", "首圈能量密度": "↑", "初期容量": "↑", "倍率容量": "↑", "寿命": "↑", "容量保持率": "↑", "指定圈数容量": "↑",
     "库仑效率": "↑", "过电位": "↓", "阻抗": "↓", "自放电": "↓", "衰减率": "↓", "穿梭电流": "↓",
 }
 LIFE = {"寿命", "容量保持率", "衰减率", "指定圈数容量"}
-CORE = [("首圈容量", {"首圈容量"}), ("寿命或保持率", LIFE), ("库仑效率", {"库仑效率"}), ("过电位", {"过电位"})]
+CORE = [("首圈容量", {"首圈容量", "首圈能量密度", "初期容量"}), ("寿命或保持率", LIFE), ("库仑效率", {"库仑效率"}), ("过电位", {"过电位"})]
 CE_METRICS = {"库仑效率"}          # §7.11：库仑效率不设自动“差异小”阈值
 SMALL = 0.05                       # §7.11：|A−B| ÷ max(A, B) < 5% 记差异小
 
@@ -315,9 +315,11 @@ def pair_result(res, a, b):
     if a in vals and b in vals:
         d = compare(vals[a], vals[b], is_ce)
         detail = f"{vals[a]} vs {vals[b]} {unit}".strip()
+        if res.get("来源") == "读图":
+            detail += f"（读图，{res.get('图', '')}）"
         if is_ce and parse(vals[a]) and parse(vals[b]) and unit == "%":
             detail += f"，差 {parse(vals[a])[0] - parse(vals[b])[0]:+.2f} 个百分点"
-        return d, good_bad(d, better), "数值", detail
+        return d, good_bad(d, better), res.get("来源", "数值"), detail
     for q in res.get("作者定性", []):
         if q["A"] == a and q["B"] == b:
             d = q["方向"]
@@ -376,7 +378,11 @@ for P in papers:
         for c in t.get("条件原句", []):
             review(pid, stem, c, f"条件：{t['编号']}")
         for r in t["结果"]:
-            review(pid, stem, r, f"结果：{t['编号']} {r['指标']}")
+            if r.get("来源") == "读图":
+                review_rows.append([pid, f"结果：{t['编号']} {r['指标']}（{r['取值点']}）",
+                                    json.dumps(r["数值"], ensure_ascii=False), r.get("图", ""), "🖼 读图", ""])
+            else:
+                review(pid, stem, r, f"结果：{t['编号']} {r['指标']}")
 
     # 比较对：默认每个配方对对照；测试另给“比较对”时用它
     pairs = []
@@ -479,6 +485,7 @@ guide = [
     ["方向怎么判", "有数值：|A−B| ÷ max(A,B) < 5% 记差异小（§7.11）；库仑效率不设阈值，写百分点差。只有作者文字：标“作者定性”，不和数值方向混。≈、>、< 的值按区间比，区间重叠记无法判断。"],
     ["N/P", "§7.4：锂面容量 = 锂厚 × 0.2。设计 N/P 用硫理论容量（硫载量 × 1.675）；实测 N/P 用同一测试里对照 B 的实测首圈容量，原文没给数值就记缺失。"],
     ["成分换算 🧮", "只做不需要额外假设的换算：摩尔比 → 溶剂摩尔分数、盐与溶剂化溶剂摩尔比；体积份/vol% → 溶剂体积分数。mol/L 换摩尔比需溶液密度，不算。"],
+    ["读图", "只读两类图：Li‖S 循环类测试里文字缺的同一测试容量侧（长循环图），以及梯度上只在图里有数的档。值标“读图”和图号，只用于判方向、不进效应量；被遮挡、标记重叠的标 🔶。复核表里读图项核验列为 🖼，需人工对照原图。"],
     ["证据等级", "直接：在电池里直接测到作者说的那个东西；间接：测了相关的东西，或在简化体系里测；只是说法：没有对应测量。"],
     ["复核", "带 ✍ 的列由用户填写，AI 不改。🔶 = 需人工确认；⚠️ = 原文自身有矛盾或单位问题。"],
 ]
@@ -527,8 +534,9 @@ wb.save(OUT_FILE)
 
 marks = [r[4] for r in review_rows]
 print("写出：", OUT_FILE.relative_to(ROOT))
+print("读图项：", marks.count("🖼 读图"))
 print("一句话结论格数：", len(sentence_rows), " 梯度排序行：", len(gradient_rows), " 结果明细：", len(detail_rows))
-print("原句数：", len(review_rows), " ✅", marks.count("✅"), " ❌", marks.count("❌"))
+print("原句数：", len(review_rows) - marks.count("🖼 读图"), " ✅", marks.count("✅"), " ❌", marks.count("❌"))
 for r in review_rows:
     if r[4] == "❌":
         print("  找不到：", r[0], r[1], r[2][:90])
