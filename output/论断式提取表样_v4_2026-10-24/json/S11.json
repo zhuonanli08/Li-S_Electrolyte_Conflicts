@@ -581,176 +581,6 @@
   "备注": [
     "T1 中 E0 的 0.1 C 容量 1040 与 T2 中 E0 首圈 1013 来自不同测试，分开记"
   ],
-  "机制链": [
-    {
-      "编号": "M1",
-      "A": "E0",
-      "B": "E20",
-      "对象": "最强一端 E0 寿命短",
-      "节点": [
-        {
-          "id": "a",
-          "节点": "多硫化物溶剂化",
-          "方向": "↑",
-          "测量": "直接测（电解液本体）",
-          "依据": "Li₂S₈ 溶解度 4.3 vs 2.6 M[S]（🔶 测量液是否含 LiNO₃ 未写）；另有 DFT 结合能、MD"
-        },
-        {
-          "id": "b",
-          "节点": "穿梭与多硫化物–锂寄生反应",
-          "方向": "↑",
-          "测量": "简化体系",
-          "依据": "T3/T4 去掉 LiNO₃ 的电池：穿梭电流、首圈 CE；XPS 测 SEI 中 S 含量 4.18% vs 1.74%"
-        },
-        {
-          "id": "c",
-          "节点": "寿命/容量保持",
-          "方向": "变坏",
-          "测量": "直接测（电池内）",
-          "测试": "T2"
-        }
-      ],
-      "边": [
-        [
-          "a",
-          "b"
-        ],
-        [
-          "b",
-          "c"
-        ]
-      ],
-      "原句": [
-        {
-          "id": "s1",
-          "原句": "The solvation structure derived from strong solvating power electrolyte induces fast anode kinetics and rapid anode failure, while that derived from weak solvating power electrolyte causes sluggish cathode kinetics and rapid capacity loss.",
-          "位置": "摘要",
-          "部分": "main",
-          "来源": "本文结论",
-          "来源说明": "摘要概括本文结果，无引文",
-          "支撑": [
-            [
-              "a",
-              "b"
-            ]
-          ]
-        },
-        {
-          "id": "s2",
-          "原句": "The low capacity retention originates from the serious parasitic reactions between Li metal and LiPSs owning to the fast anode kinetics.",
-          "位置": "正文 Fig. 5C 讨论",
-          "部分": "main",
-          "来源": "本文结论",
-          "来源说明": "解释本文 T2 电池结果，无引文",
-          "支撑": [
-            [
-              "b",
-              "c"
-            ]
-          ]
-        }
-      ],
-      "备注": "寿命测试 T2 含 2 wt% LiNO₃，穿梭证据来自去掉 LiNO₃ 的 T3/T4"
-    },
-    {
-      "编号": "M2",
-      "A": "E30",
-      "B": "E20",
-      "对象": "最弱一端 E30 容量低、后期骤降",
-      "节点": [
-        {
-          "id": "a",
-          "节点": "多硫化物溶剂化",
-          "方向": "↓",
-          "测量": "直接测（电解液本体）",
-          "依据": "Li₂S₈ 溶解度 1.8 vs 2.6 M[S]；DFT、MD"
-        },
-        {
-          "id": "b",
-          "节点": "正极转化动力学",
-          "方向": "↓",
-          "测量": "简化体系",
-          "依据": "Li|Li₂S₈ 溶液正极电池 2.05 V 恒电位：Li₂S 沉积容量 71 vs 89 mAh/g；CV"
-        },
-        {
-          "id": "c",
-          "节点": "首圈/初期容量",
-          "方向": "变坏",
-          "测量": "直接测（电池内）",
-          "测试": "T2"
-        },
-        {
-          "id": "d",
-          "节点": "寿命/容量保持",
-          "方向": "变坏",
-          "测量": "直接测（电池内）",
-          "测试": "T2"
-        }
-      ],
-      "边": [
-        [
-          "a",
-          "b"
-        ],
-        [
-          "b",
-          "c"
-        ],
-        [
-          "b",
-          "d"
-        ]
-      ],
-      "原句": [
-        {
-          "id": "s3",
-          "原句": "The solvation structures from strong to weak afford decreased Li2S deposition capacities of 161, 98, 89, and 71 mAhg 1, respectively, indicating inhibited Li2S deposition with the weak solvation structure.",
-          "位置": "正文 Fig. 3D 讨论",
-          "部分": "main",
-          "来源": "本文结论",
-          "来源说明": "本文恒电位沉积数据",
-          "支撑": [
-            [
-              "a",
-              "b"
-            ]
-          ]
-        },
-        {
-          "id": "s4",
-          "原句": "Therefore, the cathode kinetics becomes more sluggish regarding the liquid–liquid and liquid–solid conversion processes as the solvating power reduces.",
-          "位置": "正文 Fig. 3D 讨论",
-          "部分": "main",
-          "来源": "本文结论",
-          "来源说明": "由上句本文数据推出",
-          "支撑": [
-            [
-              "a",
-              "b"
-            ]
-          ]
-        },
-        {
-          "id": "s5",
-          "原句": "Additionally, the Li S coin cell with the weak solvation structure exhibits a cliff-like capacity drop after 30 cycles with the lowest initial specific capacity of 778 mAhg 1 due to the sluggish cathode kinetics.",
-          "位置": "正文 Fig. 5C 讨论",
-          "部分": "main",
-          "来源": "本文结论",
-          "来源说明": "解释本文 T2 电池结果，无引文",
-          "支撑": [
-            [
-              "b",
-              "c"
-            ],
-            [
-              "b",
-              "d"
-            ]
-          ]
-        }
-      ]
-    }
-  ],
   "设计主张": [
     {
       "类型": "折中",
@@ -762,8 +592,180 @@
       "原句": {
         "原句": "Moreover, the Li S coin cell with the mid-weak solvation structure delivers an ultra-long cycling lifespan of 146 cycles with an initial specific capacity of 887 mAhg 1 and a capacity retention of 78.5% due to the balanced cathode and anode kinetics.",
         "位置": "正文 Fig. 5C 讨论",
-        "部分": "main"
+        "部分": "main",
+        "提到": [
+          "正极反应",
+          "负极锂"
+        ]
       }
     }
-  ]
+  ],
+  "机制": [
+    {
+      "编号": "M1",
+      "A": "E0",
+      "B": "E20",
+      "性质": [
+        {
+          "名称": "多硫化物溶剂化",
+          "方向": "更强"
+        }
+      ],
+      "过程": [
+        {
+          "大类": "负极锂",
+          "方向": "劣化"
+        }
+      ],
+      "落到": [
+        {
+          "测试": "T2",
+          "表现": "寿命/容量保持",
+          "方向": "变坏"
+        }
+      ],
+      "概括": "多硫化物溶剂化强时负极动力学快，多硫化物与锂副反应重，负极失效快、寿命短",
+      "原句": [
+        {
+          "id": "s1",
+          "原句": "The solvation structure derived from strong solvating power electrolyte induces fast anode kinetics and rapid anode failure, while that derived from weak solvating power electrolyte causes sluggish cathode kinetics and rapid capacity loss.",
+          "位置": "摘要",
+          "部分": "main",
+          "来源": "本文结论",
+          "提到": [
+            "负极锂",
+            "正极反应"
+          ]
+        },
+        {
+          "id": "s2",
+          "原句": "The low capacity retention originates from the serious parasitic reactions between Li metal and LiPSs owning to the fast anode kinetics.",
+          "位置": "正文 Fig. 5C 讨论",
+          "部分": "main",
+          "来源": "本文结论",
+          "提到": [
+            "负极锂"
+          ]
+        }
+      ]
+    },
+    {
+      "编号": "M2",
+      "A": "E30",
+      "B": "E20",
+      "梯度段": "全梯度",
+      "性质": [
+        {
+          "名称": "多硫化物溶剂化",
+          "方向": "更弱"
+        }
+      ],
+      "过程": [
+        {
+          "大类": "正极反应",
+          "方向": "变差"
+        }
+      ],
+      "落到": [
+        {
+          "测试": "T2",
+          "表现": "首圈/初期容量",
+          "方向": "变坏"
+        },
+        {
+          "测试": "T2",
+          "表现": "寿命/容量保持",
+          "方向": "变坏"
+        }
+      ],
+      "概括": "多硫化物溶剂化越弱，正极液–液、液–固转化越慢；最弱端首圈容量最低、30 圈后骤降",
+      "原句": [
+        {
+          "id": "s1",
+          "原句": "The solvation structure derived from strong solvating power electrolyte induces fast anode kinetics and rapid anode failure, while that derived from weak solvating power electrolyte causes sluggish cathode kinetics and rapid capacity loss.",
+          "位置": "摘要",
+          "部分": "main",
+          "来源": "本文结论",
+          "提到": [
+            "负极锂",
+            "正极反应"
+          ]
+        },
+        {
+          "id": "s3",
+          "原句": "The solvation structures from strong to weak afford decreased Li2S deposition capacities of 161, 98, 89, and 71 mAhg 1, respectively, indicating inhibited Li2S deposition with the weak solvation structure.",
+          "位置": "正文 Fig. 3D 讨论",
+          "部分": "main",
+          "来源": "本文结论",
+          "提到": [
+            "正极反应"
+          ]
+        },
+        {
+          "id": "s4",
+          "原句": "Therefore, the cathode kinetics becomes more sluggish regarding the liquid–liquid and liquid–solid conversion processes as the solvating power reduces.",
+          "位置": "正文 Fig. 3D 讨论",
+          "部分": "main",
+          "来源": "本文结论",
+          "提到": [
+            "正极反应"
+          ]
+        },
+        {
+          "id": "s5",
+          "原句": "Additionally, the Li S coin cell with the weak solvation structure exhibits a cliff-like capacity drop after 30 cycles with the lowest initial specific capacity of 778 mAhg 1 due to the sluggish cathode kinetics.",
+          "位置": "正文 Fig. 5C 讨论",
+          "部分": "main",
+          "来源": "本文结论",
+          "提到": [
+            "正极反应"
+          ]
+        }
+      ]
+    },
+    {
+      "编号": "M3",
+      "A": "E30",
+      "B": "E0",
+      "梯度段": "全梯度",
+      "性质": [
+        {
+          "名称": "多硫化物溶剂化",
+          "方向": "更弱"
+        }
+      ],
+      "过程": [
+        {
+          "大类": "多硫化物穿梭",
+          "方向": "减轻"
+        },
+        {
+          "大类": "负极锂",
+          "方向": "改善"
+        }
+      ],
+      "落到": [
+        {
+          "测试": "T4",
+          "表现": "穿梭电流",
+          "方向": "变好"
+        }
+      ],
+      "概括": "溶剂化越弱，穿梭电流逐级降低，多硫化物与锂的副反应减少",
+      "原句": [
+        {
+          "id": "s6",
+          "原句": "Successive decline in shuttle current is observed with reduced solvating power of the electrolyte in the voltage range from 2.34 to 2.40 V, indicating suppressed parasitic reactions between LiPSs and Li metal and reduced LiPS anode kinetics with weak solvation structure (Figure 2A).",
+          "位置": "正文 Fig. 2A 讨论",
+          "部分": "main",
+          "来源": "本文结论",
+          "提到": [
+            "多硫化物穿梭",
+            "负极锂"
+          ]
+        }
+      ]
+    }
+  ],
+  "对照类型": "常规醚基准"
 }
