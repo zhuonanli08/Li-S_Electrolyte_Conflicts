@@ -9,6 +9,8 @@ are sent back for at most 2 repair rounds; the first passing JSON is frozen.
   run ID [ID ...]     extract, check, freeze the given papers (skip frozen ones)
   run all [--workers N]
   validate            run step8f.validate() on all frozen predictions
+  trial ID --label L --model M [--thinking]
+                      setting comparison: same prompt, writes only to 设置对比/{L}/ (not the main freeze)
 """
 import argparse
 import datetime
@@ -103,16 +105,16 @@ def client():
     from openai import OpenAI
     return OpenAI(base_url=BASE_URL, api_key='proxy-injected', timeout=1800, max_retries=0)
 
-def call(cli, messages):
-    """Streamed chat call; returns (text, finish_reason, usage, seconds)."""
+def call(cli, messages, model=MODEL, thinking=False):
+    """Streamed chat call; returns (text, finish_reason, usage, seconds, reasoning_chars)."""
     t0 = time.time()
     for attempt in range(4):
         try:
             stream = cli.chat.completions.create(
-                model=MODEL, messages=messages, temperature=0, max_tokens=MAX_TOKENS,
+                model=model, messages=messages, temperature=0, max_tokens=MAX_TOKENS,
                 stream=True, stream_options={'include_usage': True},
-                extra_body={'enable_thinking': False})
-            parts, finish, usage = [], None, None
+                extra_body={'enable_thinking': thinking})
+            parts, finish, usage, reasoning = [], None, None, 0
             for ch in stream:
                 if ch.usage:
                     usage = ch.usage.model_dump()
@@ -120,9 +122,11 @@ def call(cli, messages):
                     c = ch.choices[0]
                     if c.delta and c.delta.content:
                         parts.append(c.delta.content)
+                    if c.delta and getattr(c.delta, 'reasoning_content', None):
+                        reasoning += len(c.delta.reasoning_content)
                     if c.finish_reason:
                         finish = c.finish_reason
-            return ''.join(parts), finish, usage, round(time.time() - t0, 1)
+            return ''.join(parts), finish, usage, round(time.time() - t0, 1), reasoning
         except Exception as e:  # network / rate limit: back off and retry the same request
             if attempt == 3:
                 raise
@@ -137,30 +141,33 @@ def strip_json(text):
             t = t.rstrip()[:-3]
     return t.strip()
 
-def extract(pid, cli):
-    if (OUT / 'independent_predictions' / f'{pid}.json').exists():
+def extract(pid, cli, dest=OUT, model=MODEL, thinking=False):
+    if (dest / 'independent_predictions' / f'{pid}.json').exists():
         return {'paper_id': pid, 'status': '已冻结，跳过'}
     system = (OUT / 'prompt_system.md').read_text(encoding='utf-8')
     paper = (OUT / 'sources_txt' / f'{pid}.txt').read_text(encoding='utf-8')
     messages = [{'role': 'system', 'content': system}, {'role': 'user', 'content': paper}]
-    log = {'paper_id': pid, 'model': MODEL, 'rounds': []}
+    log = {'paper_id': pid, 'model': model, 'enable_thinking': thinking, 'rounds': []}
+    for sub in ['raw', 'drafts', 'independent_predictions', 'freeze', 'logs']:
+        (dest / sub).mkdir(parents=True, exist_ok=True)
     for rnd in range(REPAIR_ROUNDS + 1):
-        text, finish, usage, secs = call(cli, messages)
-        (OUT / 'raw' / f'{pid}_r{rnd}.txt').write_text(text, encoding='utf-8')
-        draft = OUT / 'drafts' / f'{pid}_r{rnd}.json'
+        text, finish, usage, secs, reasoning = call(cli, messages, model, thinking)
+        (dest / 'raw' / f'{pid}_r{rnd}.txt').write_text(text, encoding='utf-8')
+        draft = dest / 'drafts' / f'{pid}_r{rnd}.json'
         draft.write_text(strip_json(text), encoding='utf-8')
         d, errs = s9.check(draft)
         if finish == 'length':
             errs = [f'输出被截断（达到 max_tokens={MAX_TOKENS}）'] + errs
         log['rounds'].append({'round': rnd, 'finish_reason': finish, 'usage': usage,
-                              'seconds': secs, 'chars': len(text), 'format_errors': errs[:80],
+                              'seconds': secs, 'chars': len(text), 'reasoning_chars': reasoning,
+                              'format_errors': errs[:80],
                               'n_format_errors': len(errs)})
         if not errs:
             raw = json.dumps(d, ensure_ascii=False, indent=2).encode('utf-8')
-            dst = OUT / 'independent_predictions' / f'{pid}.json'
+            dst = dest / 'independent_predictions' / f'{pid}.json'
             with open(dst, 'xb') as f:  # first frozen version can never be overwritten
                 f.write(raw)
-            save(OUT / 'freeze' / f'{pid}.json',
+            save(dest / 'freeze' / f'{pid}.json',
                  {'paper_id': pid, 'sha256': sha(raw), 'path': f'independent_predictions/{pid}.json',
                   'round': rnd, 'frozen_at': datetime.datetime.now().isoformat(timespec='seconds')})
             log['status'] = f'冻结（第 {rnd} 轮通过）'
@@ -172,9 +179,9 @@ def extract(pid, cli):
                      {'role': 'user', 'content': f'格式检查未通过（{len(errs)} 处）：\n' +
                       '\n'.join(f'- {e}' for e in errs[:80]) +
                       '\n请只改正这些格式问题，输出改正后的完整 JSON 对象，不要其他文字。'}]
-    save(OUT / 'logs' / f'{pid}.json', log)
+    save(dest / 'logs' / f'{pid}.json', log)
     if not log['status'].startswith('冻结'):
-        save(OUT / 'failed' / f'{pid}.json', log)
+        save(dest / 'failed' / f'{pid}.json', log)
     tok = [r['usage'] or {} for r in log['rounds']]
     with LOCK:
         print(f"{pid}: {log['status']}；轮数 {len(log['rounds'])}；输入 {sum(u.get('prompt_tokens', 0) for u in tok)} "
@@ -201,13 +208,20 @@ def run(ids, workers):
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()
-    ap.add_argument('cmd', choices=['setup', 'run', 'validate'])
+    ap.add_argument('cmd', choices=['setup', 'run', 'validate', 'trial'])
     ap.add_argument('ids', nargs='*')
     ap.add_argument('--workers', type=int, default=1)
+    ap.add_argument('--label')
+    ap.add_argument('--model', default=MODEL)
+    ap.add_argument('--thinking', action='store_true')
     a = ap.parse_args()
     if a.cmd == 'setup':
         setup()
     elif a.cmd == 'run':
         run(a.ids, a.workers)
+    elif a.cmd == 'trial':
+        cli = client()
+        for pid in a.ids:
+            extract(pid, cli, OUT / '设置对比' / a.label, a.model, a.thinking)
     else:
         s9.cmd_validate()
