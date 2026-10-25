@@ -1,0 +1,1232 @@
+{
+  "paper_id": "S05",
+  "doi": "10.1002/adma.202205284",
+  "formulations": [
+    {
+      "id": "DOL/DME",
+      "name": "DOL/DME（control electrolyte）",
+      "components": [
+        {
+          "name": "LiTFSI",
+          "role": "盐",
+          "amount": 1.0,
+          "unit": "M"
+        },
+        {
+          "name": "DOL",
+          "role": "溶剂化溶剂",
+          "amount": 1,
+          "unit": "by vol.（体积份，DOL:DME = 1:1）"
+        },
+        {
+          "name": "DME",
+          "role": "溶剂化溶剂",
+          "amount": 1,
+          "unit": "by vol.（体积份，DOL:DME = 1:1）"
+        }
+      ],
+      "raw_formula": "1.0 M LiTFSI in DOL/DME (1:1, by vol.)（SI；正文写作 1.0 m LiTFSI）；苛刻条件扣电与 Li‖Cu/Li‖Li 另加 2.0 wt.% LiNO3，温和条件扣电不加 LiNO3",
+      "evidence_ids": [
+        "M0032",
+        "S0011",
+        "S0013",
+        "S0020"
+      ]
+    },
+    {
+      "id": "HFE-EPSE",
+      "name": "HFE-EPSE（encapsulating-polysulfide electrolyte with HFE）",
+      "components": [
+        {
+          "name": "LiTFSI",
+          "role": "盐",
+          "amount": 1.0,
+          "unit": "M"
+        },
+        {
+          "name": "DOL",
+          "role": "溶剂化溶剂",
+          "amount": 2,
+          "unit": "by vol.（体积份，DOL:DME:HFE = 2:2:1）"
+        },
+        {
+          "name": "DME",
+          "role": "溶剂化溶剂",
+          "amount": 2,
+          "unit": "by vol.（体积份，DOL:DME:HFE = 2:2:1）"
+        },
+        {
+          "name": "HFE（1,1,2,2-tetrafluoroethyl-2,2,3,3-tetrafluoropropyl ether）",
+          "role": "弱或非溶剂化溶剂",
+          "amount": 1,
+          "unit": "by vol.（体积份，DOL:DME:HFE = 2:2:1）"
+        }
+      ],
+      "raw_formula": "1.0 M LiTFSI in DOL/DME/HFE (2:2:1, by vol.)（SI；正文写作 DOL/DME/HFE (2:2:1, by vol.) + 1.0 m LiTFSI）；苛刻条件扣电与 Li‖Cu/Li‖Li 另加 2.0 wt.% LiNO3，温和条件扣电不加 LiNO3",
+      "evidence_ids": [
+        "M0031",
+        "M0032",
+        "S0012",
+        "S0013",
+        "S0020"
+      ]
+    }
+  ],
+  "control_id": "DOL/DME",
+  "control_type": "常规醚基准（DOL/DME + LiTFSI + LiNO₃）：苛刻条件扣电（T3–T5）及 Li‖Cu/Li‖Li（T6、T7）两组均含 2.0 wt% LiNO₃；温和条件扣电（T1、T2）两组均不含 LiNO₃（该部分相当于不含 LiNO₃ 的自配对照）",
+  "gradients": [],
+  "properties": [
+    {
+      "name": "多硫化物溶剂化（MD 溶剂分布）",
+      "values": {
+        "DOL/DME": "内层（shell 1）为 DME，距 S8²⁻ 中心 4.4 Å；外层（shell 2）为 DOL，6.6 Å",
+        "HFE-EPSE": "内层仍为 DME（4.4 Å），与 DOL/DME 相似；HFE 出现在 6.4 Å，进入第二（外）溶剂层"
+      },
+      "direction": "多硫化物内层溶剂壳基本不变，外层加入 HFE（作者：HFE 只影响外层并包裹 S8²⁻ 与内层）",
+      "method": "分子动力学（LAMMPS，OPLS-AA）径向分布函数、配位数、空间分布函数",
+      "system": "1.0 m [S] Li2S8 溶于两种电解液的模拟体系（无 HFE 模型 572 DOL/385 DME/80 LiTFSI/10 Li2S8；含 HFE 模型 458 DOL/308 DME/80 LiTFSI/10 Li2S8/105 HFE）；含多硫化物，不含 LiNO3",
+      "evidence_ids": [
+        "M0033",
+        "M0034",
+        "M0036",
+        "M0037",
+        "M0038",
+        "S0041"
+      ]
+    },
+    {
+      "name": "多硫化物溶剂化（拉曼）",
+      "values": {
+        "DOL/DME": "多硫化物（392、448、510 cm−1）、DME（845 cm−1）、DOL（945 cm−1）信号",
+        "HFE-EPSE": "上述信号与 DOL/DME 几乎重叠"
+      },
+      "direction": "内层溶剂壳不变（作者解读）",
+      "method": "Raman 光谱",
+      "system": "1.0 m [S] Li2S8 溶于 DOL/DME 或 HFE-EPSE；1.0 m [S] Li2S6 结论相似（Figures S2、S3）；不含 LiNO3，非电池中实际多硫化物浓度",
+      "evidence_ids": [
+        "M0044",
+        "M0045"
+      ]
+    },
+    {
+      "name": "Li⁺ 溶剂化（含多硫化物溶液的 7Li NMR）",
+      "values": {
+        "DOL/DME": "7Li 化学位移 3.20 ppm",
+        "HFE-EPSE": "7Li 化学位移 3.20 ppm"
+      },
+      "direction": "不变（作者：HFE 几乎不与 Li⁺ 作用，不改变多硫化物内层溶剂壳）",
+      "method": "7Li NMR（233.2 MHz，室温）",
+      "system": "1.0 m [S] Li2S8 溶于 DOL/DME 或 HFE-EPSE（含 LiTFSI 与多硫化物，模仿 MD 体系），不是不含多硫化物的电池电解液；Li2S6 体系结论相似",
+      "evidence_ids": [
+        "M0040",
+        "M0041",
+        "M0045",
+        "S0025"
+      ]
+    },
+    {
+      "name": "多硫化物溶解度",
+      "values": {
+        "DOL/DME": "未报告",
+        "HFE-EPSE": "未报告"
+      },
+      "direction": "未测；作者称 HFE-EPSE 中仍有大量强溶剂化自由溶剂、多硫化物溶解度可保持（原句带引文 [27]）",
+      "method": "未报告",
+      "system": "未报告",
+      "evidence_ids": [
+        "M0051"
+      ]
+    },
+    {
+      "name": "溶剂还原稳定性（CV）",
+      "values": {
+        "DOL/DME": "所含溶剂单测：DME 还原电流起始 1.2 V、峰电流 0.054 mA cm−2；DOL 起始 0.9 V、峰电流 0.024 mA cm−2",
+        "HFE-EPSE": "在 DOL、DME 之外另含 HFE：HFE 还原电流仅 0.010 mA cm−2"
+      },
+      "direction": "还原电流 DME > DOL > HFE",
+      "method": "循环伏安（Figure 2a）",
+      "system": "DOL、DME、HFE 分别单测（是否含盐原文未写），不是两种电解液本身",
+      "evidence_ids": [
+        "M0053",
+        "M0054",
+        "M0055"
+      ]
+    },
+    {
+      "name": "离子电导率",
+      "values": {
+        "DOL/DME": "未报告",
+        "HFE-EPSE": "未报告"
+      },
+      "direction": "未报告",
+      "method": "未报告",
+      "system": "未报告",
+      "evidence_ids": []
+    },
+    {
+      "name": "黏度",
+      "values": {
+        "DOL/DME": "未报告",
+        "HFE-EPSE": "未报告"
+      },
+      "direction": "未报告",
+      "method": "未报告",
+      "system": "未报告",
+      "evidence_ids": []
+    },
+    {
+      "name": "离子迁移数",
+      "values": {
+        "DOL/DME": "未报告",
+        "HFE-EPSE": "未报告"
+      },
+      "direction": "未报告",
+      "method": "未报告",
+      "system": "未报告",
+      "evidence_ids": []
+    }
+  ],
+  "tests": [
+    {
+      "id": "S05-T1",
+      "name": "Li‖S 扣式 温和条件 无 LiNO₃ 循环",
+      "cell": "Li‖S 扣式（2032，Celgard 2400）",
+      "conditions": {
+        "sulfur_loading": "1.3 mg cm−2",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "600 μm",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "不含",
+        "one_C": "1672 mA g−1",
+        "electrolyte_volume": "25 μL",
+        "voltage_window": "1.7–2.6 V"
+      },
+      "formulations": [
+        "HFE-EPSE",
+        "DOL/DME"
+      ],
+      "evidence_ids": [
+        "S0018",
+        "S0019",
+        "S0021",
+        "M0056"
+      ],
+      "results": [
+        {
+          "id": "S05-T1-R1",
+          "metric": "首圈容量",
+          "A": "HFE-EPSE",
+          "B": "DOL/DME",
+          "value_A": 1001,
+          "value_B": 969,
+          "unit": "mAh g−1",
+          "point": "首圈放电（initial discharge；倍率原文未写）",
+          "basis": "numeric",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0064"
+          ],
+          "reason": "|1001−969|÷1001 = 3.2% < 5%；作者也说 similar"
+        },
+        {
+          "id": "S05-T1-R2",
+          "metric": "保持率",
+          "A": "HFE-EPSE",
+          "B": "DOL/DME",
+          "value_A": 66,
+          "value_B": 62,
+          "unit": "%",
+          "point": "15 圈后容量保持率",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0066"
+          ],
+          "reason": "(66−62)÷66 = 6.1% ≥ 5%，保持率越高越好"
+        },
+        {
+          "id": "S05-T1-R3",
+          "metric": "库仑效率",
+          "A": "HFE-EPSE",
+          "B": "DOL/DME",
+          "value_A": 70.4,
+          "value_B": 56.2,
+          "unit": "%",
+          "point": "第 2 圈",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0067",
+            "M0068"
+          ],
+          "reason": "高 14.2 个百分点；作者称 CE increased"
+        },
+        {
+          "id": "S05-T1-R4",
+          "metric": "过电位",
+          "A": "HFE-EPSE",
+          "B": "DOL/DME",
+          "value_A": null,
+          "value_B": null,
+          "unit": "未报告",
+          "point": "恒流充放电曲线（Figure 2c；圈数原文未写）",
+          "basis": "qualitative",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0065"
+          ],
+          "reason": "作者定性：两种电解液的充放电曲线 nearly overlap"
+        }
+      ]
+    },
+    {
+      "id": "S05-T2",
+      "name": "Li‖S 扣式 温和条件 无 LiNO₃ 穿梭电流测试（恒电位）",
+      "cell": "Li‖S 扣式（2032）",
+      "conditions": {
+        "sulfur_loading": "1.3 mg cm−2",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "600 μm",
+        "rate": "恒流充电至 2.9 V 后逐级恒电位放电：2.90、2.60、2.45、2.43、2.40、2.39、2.38、2.37、2.36、2.35、2.34、2.25、2.20 V；取各电位稳态电流",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "不含",
+        "one_C": "1672 mA g−1",
+        "electrolyte_volume": "25 μL"
+      },
+      "formulations": [
+        "HFE-EPSE",
+        "DOL/DME"
+      ],
+      "evidence_ids": [
+        "S0019",
+        "S0021",
+        "S0022",
+        "S0023"
+      ],
+      "results": [
+        {
+          "id": "S05-T2-R1",
+          "metric": "穿梭电流",
+          "A": "HFE-EPSE",
+          "B": "DOL/DME",
+          "value_A": null,
+          "value_B": null,
+          "unit": "未报告",
+          "point": "2.2–2.6 V 各恒电位台阶的稳态电流（Figure 2d）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0070"
+          ],
+          "reason": "作者定性：decreased shuttle current；原句写 'by about 60 mV'，单位与电流不符，只取'降低'的方向，不记数值"
+        }
+      ]
+    },
+    {
+      "id": "S05-T3",
+      "name": "Li‖S 扣式 苛刻条件 4.4 mg cm−2 0.1 C 长循环（含 40 圈后拆解分析）",
+      "cell": "Li‖S 扣式（2032，Celgard 2400）",
+      "conditions": {
+        "sulfur_loading": "4.4 mg cm−2",
+        "ES": "6.0",
+        "ES_unit": "μL mgS−1（体积基）",
+        "Li_thickness": "50 μm",
+        "rate": "0.1 C",
+        "formation": "0.05 C 活化 2 圈",
+        "temperature": "未报告",
+        "LiNO3": "含 2.0 wt%",
+        "one_C": "1672 mA g−1",
+        "electrolyte_volume": "35 μL",
+        "NP_ratio": "2.6（作者给的 practical N/P）",
+        "voltage_window": "1.7–2.6 V"
+      },
+      "formulations": [
+        "HFE-EPSE",
+        "DOL/DME"
+      ],
+      "evidence_ids": [
+        "M0079",
+        "M0080",
+        "M0099",
+        "S0020",
+        "S0021"
+      ],
+      "results": [
+        {
+          "id": "S05-T3-R1",
+          "metric": "首圈容量",
+          "A": "HFE-EPSE",
+          "B": "DOL/DME",
+          "value_A": 914,
+          "value_B": 957,
+          "unit": "mAh g−1",
+          "point": "化成后 0.1 C 首圈（DOL/DME 为正文 initial specific capacity；HFE-EPSE 取自 SI 表 S1 'Capacity' 列，口径未写明是否首圈）",
+          "basis": "numeric",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0081",
+            "S0068"
+          ],
+          "reason": "|957−914|÷957 = 4.5% < 5%；HFE-EPSE 的 914 只在 SI 表 S1（This work 行：50 μm、6 μL mgS−1、4.4 mg cm−2、135 圈、70%），'Capacity' 口径原文未写；已登记读图 Fig. 3a 核对"
+        },
+        {
+          "id": "S05-T3-R2",
+          "metric": "指定圈容量",
+          "A": "HFE-EPSE",
+          "B": "DOL/DME",
+          "value_A": null,
+          "value_B": null,
+          "unit": "mAh g−1",
+          "point": "第 2 圈放电容量（Figure 3c；是否含活化圈原文未写）",
+          "basis": "qualitative",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0089"
+          ],
+          "reason": "作者定性：第 2 圈曲线几乎重叠，仅放电容量 slight difference，未说谁高"
+        },
+        {
+          "id": "S05-T3-R3",
+          "metric": "寿命（循环圈数）",
+          "A": "HFE-EPSE",
+          "B": "DOL/DME",
+          "value_A": 135,
+          "value_B": 54,
+          "unit": "圈",
+          "point": "容量保持率降至 70% 的圈数",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0083",
+            "M0084"
+          ],
+          "reason": "135 vs 54 圈；作者称提高 1.5 倍（(135−54)÷54 = 1.5）"
+        },
+        {
+          "id": "S05-T3-R4",
+          "metric": "放电中值电压",
+          "A": "HFE-EPSE",
+          "B": "DOL/DME",
+          "value_A": ">2.06",
+          "value_B": 2.0,
+          "unit": "V",
+          "point": "第 40 圈（HFE-EPSE 原文为 135 圈内始终 >2.06 V；DOL/DME 第 40 圈 2.00 V）",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0087"
+          ],
+          "reason": "A 为区间 >2.06，与 B 的相对差下限 (2.06−2.00)÷2.06 = 2.9% < 5%、上限未知，按区间规则不判；作者定性为 HFE-EPSE 中值电压更高更稳（M0088）"
+        },
+        {
+          "id": "S05-T3-R5",
+          "metric": "过电位",
+          "A": "HFE-EPSE",
+          "B": "DOL/DME",
+          "value_A": null,
+          "value_B": null,
+          "unit": "未报告",
+          "point": "第 2 圈充放电曲线（Figure 3c）",
+          "basis": "qualitative",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0089"
+          ],
+          "reason": "作者定性：第 2 圈充放电曲线 nearly overlap"
+        },
+        {
+          "id": "S05-T3-R6",
+          "metric": "过电位",
+          "A": "HFE-EPSE",
+          "B": "DOL/DME",
+          "value_A": null,
+          "value_B": null,
+          "unit": "未报告",
+          "point": "第 40 圈放电曲线（Figure 3c）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0090",
+            "M0091"
+          ],
+          "reason": "作者定性：HFE-EPSE 第 40 圈放电曲线稳定，DOL/DME 第二平台明显倾斜、极化增大"
+        },
+        {
+          "id": "S05-T3-R7",
+          "metric": "残余活性锂",
+          "A": "HFE-EPSE",
+          "B": "DOL/DME",
+          "value_A": 7.3,
+          "value_B": 6.1,
+          "unit": "mAh cm−2",
+          "point": "循环 40 圈后 Li|Ni 剥离测试",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0107",
+            "M0108",
+            "M0109"
+          ],
+          "reason": "(7.3−6.1)÷7.3 = 16%；HFE-EPSE 为原始活性锂的 73%。电池归属推定：原文只写 40 圈后的 Li–S 电池，按 T3 同组电池推定（T4 的 DOL/DME 只报到 19 圈）"
+        },
+        {
+          "id": "S05-T3-R8",
+          "metric": "阻抗",
+          "A": "HFE-EPSE",
+          "B": "DOL/DME",
+          "value_A": 15.3,
+          "value_B": 20.2,
+          "unit": "Ω",
+          "point": "循环 40 圈后 EIS（Figure 4c）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0113",
+            "M0118"
+          ],
+          "reason": "(20.2−15.3)÷20.2 = 24%，阻抗越低越好；电池归属按 T3 同组电池推定"
+        }
+      ]
+    },
+    {
+      "id": "S05-T4",
+      "name": "Li‖S 扣式 苛刻条件 6.6 mg cm−2 0.1 C 循环",
+      "cell": "Li‖S 扣式（2032，Celgard 2400）",
+      "conditions": {
+        "sulfur_loading": "6.6 mg cm−2",
+        "ES": "6.9",
+        "ES_unit": "μL mgS−1（体积基）",
+        "Li_thickness": "50 μm",
+        "rate": "0.1 C",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 2.0 wt%",
+        "one_C": "1672 mA g−1",
+        "electrolyte_volume": "60 μL",
+        "NP_ratio": "1.4（作者给的 practical N/P）",
+        "voltage_window": "1.7–2.6 V"
+      },
+      "formulations": [
+        "HFE-EPSE",
+        "DOL/DME"
+      ],
+      "evidence_ids": [
+        "M0093",
+        "M0098",
+        "M0099",
+        "M0101",
+        "S0020",
+        "S0021"
+      ],
+      "results": [
+        {
+          "id": "S05-T4-R1",
+          "metric": "首圈容量",
+          "A": "HFE-EPSE",
+          "B": "DOL/DME",
+          "value_A": 1100,
+          "value_B": 1123,
+          "unit": "mAh g−1",
+          "point": "0.1 C initial specific capacity",
+          "basis": "numeric",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0101",
+            "M0102"
+          ],
+          "reason": "|1123−1100|÷1123 = 2.0% < 5%（HFE-EPSE 略低）"
+        },
+        {
+          "id": "S05-T4-R2",
+          "metric": "保持率",
+          "A": "HFE-EPSE",
+          "B": "DOL/DME",
+          "value_A": 74,
+          "value_B": 52,
+          "unit": "%",
+          "point": "A：40 圈后；B：19 圈后（取值圈不同）",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0101",
+            "M0102"
+          ],
+          "reason": "A、B 取值圈不同（40 vs 19 圈），不是同一取值点，不判；已登记读图 Fig. 3d 取同圈值"
+        },
+        {
+          "id": "S05-T4-R3",
+          "metric": "寿命（循环圈数）",
+          "A": "HFE-EPSE",
+          "B": "DOL/DME",
+          "value_A": null,
+          "value_B": null,
+          "unit": "圈",
+          "point": "苛刻条件下循环寿命（作者概括句，同时概括 T3、T4）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0104"
+          ],
+          "reason": "作者定性：HFE-EPSE effectively prolongs the cycle lifespan under demanding conditions"
+        },
+        {
+          "id": "S05-T4-R4",
+          "metric": "过电位",
+          "A": "HFE-EPSE",
+          "B": "DOL/DME",
+          "value_A": null,
+          "value_B": null,
+          "unit": "未报告",
+          "point": "循环过程中放电极化（Figure S8）",
+          "basis": "qualitative",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0103",
+            "S0058"
+          ],
+          "reason": "原句只说 HFE-EPSE also exhibits a low discharge voltage polarization，未明确与 DOL/DME 比较；Figure S8 图注只列 HFE-EPSE"
+        }
+      ]
+    },
+    {
+      "id": "S05-T5",
+      "name": "Li‖S 扣式 倍率测试（仅 HFE-EPSE）",
+      "cell": "Li‖S 扣式（2032）",
+      "conditions": {
+        "sulfur_loading": "4.1 mg cm−2",
+        "ES": "6.4",
+        "ES_unit": "μL mgS−1（体积基）",
+        "Li_thickness": "50 μm",
+        "rate": "0.1、0.2、0.3、0.4、0.5 C 逐级",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含（推定 2.0 wt%：原文称高载量正极 + 超薄锂扣电电解液加 LiNO3，用量按 S0020）",
+        "one_C": "1672 mA g−1"
+      },
+      "formulations": [
+        "HFE-EPSE"
+      ],
+      "evidence_ids": [
+        "S0057",
+        "M0097",
+        "S0013",
+        "S0020",
+        "S0021"
+      ],
+      "results": []
+    },
+    {
+      "id": "S05-T6",
+      "name": "Li‖Cu 库仑效率",
+      "cell": "Li‖Cu 扣式",
+      "conditions": {
+        "sulfur_loading": "不适用（Li‖Cu）",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "600 μm",
+        "rate": "1.0 mA cm−2，1.0 mAh cm−2",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 2 wt%",
+        "one_C": "不适用",
+        "cycles": "60 圈"
+      },
+      "formulations": [
+        "HFE-EPSE",
+        "DOL/DME"
+      ],
+      "evidence_ids": [
+        "S0063",
+        "S0064",
+        "S0065",
+        "M0124"
+      ],
+      "results": [
+        {
+          "id": "S05-T6-R1",
+          "metric": "库仑效率",
+          "A": "HFE-EPSE",
+          "B": "DOL/DME",
+          "value_A": 94.2,
+          "value_B": 87.4,
+          "unit": "%",
+          "point": "60 圈平均库仑效率",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0124"
+          ],
+          "reason": "高 6.8 个百分点；作者称 higher"
+        }
+      ]
+    },
+    {
+      "id": "S05-T7",
+      "name": "Li‖Li 对称电池",
+      "cell": "Li‖Li 扣式",
+      "conditions": {
+        "sulfur_loading": "不适用（Li‖Li）",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "50 μm",
+        "rate": "1.0 mA cm−2，1.0 mAh cm−2",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 2 wt%",
+        "one_C": "不适用"
+      },
+      "formulations": [
+        "HFE-EPSE",
+        "DOL/DME"
+      ],
+      "evidence_ids": [
+        "S0063",
+        "S0064",
+        "S0065",
+        "M0125"
+      ],
+      "results": [
+        {
+          "id": "S05-T7-R1",
+          "metric": "过电位",
+          "A": "HFE-EPSE",
+          "B": "DOL/DME",
+          "value_A": 13,
+          "value_B": 61,
+          "unit": "mV",
+          "point": "第 120 h 电压极化",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0125"
+          ],
+          "reason": "13 vs 61 mV，极化越低越好"
+        }
+      ]
+    },
+    {
+      "id": "S05-T8",
+      "name": "Li‖S 软包 2.4 Ah 级（仅 HFE-EPSE）",
+      "cell": "Li‖S 软包（2.4 Ah 级，双面电极，7 × 4 cm2）",
+      "conditions": {
+        "sulfur_loading": "7.2 mg cm−2（每面）",
+        "ES": "3.5",
+        "ES_unit": "g gS−1（质量基）",
+        "Li_thickness": "75 μm（每面）",
+        "rate": "0.05 C",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "未报告",
+        "one_C": "1000 mA g−1",
+        "voltage_window": "1.8–2.5 V"
+      },
+      "formulations": [
+        "HFE-EPSE"
+      ],
+      "evidence_ids": [
+        "M0128",
+        "M0129",
+        "M0130",
+        "S0029",
+        "S0030",
+        "S0031",
+        "S0032",
+        "S0033"
+      ],
+      "results": []
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "S05-M1",
+      "summary": "（转述）实用条件下多硫化物在锂负极上持续的寄生反应导致锂负极快速衰减、寿命受限；降低多硫化物浓度是直接的抑制途径，少溶剂化电解液可大幅降低多硫化物溶解度（A、B 填全梯度仅为格式要求：原句泛指少溶剂化电解液，非本篇两配方比较）",
+      "A": "全梯度",
+      "B": "全梯度",
+      "property": "多硫化物溶解度降低（少溶剂化电解液，转述）",
+      "categories": [
+        "负极锂"
+      ],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": [
+        "M0005"
+      ],
+      "test_ids": [],
+      "side": "强侧"
+    },
+    {
+      "id": "S05-M2",
+      "summary": "（转述）少溶剂化电解液中多硫化物供应不足 → 硫氧化还原反应迟缓 → 失去高能量密度优势（A、B 填全梯度仅为格式要求：原句泛指少溶剂化电解液，非本篇两配方比较）",
+      "A": "全梯度",
+      "B": "全梯度",
+      "property": "多硫化物溶解度降低（少溶剂化电解液）",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": [
+        "M0006"
+      ],
+      "test_ids": [],
+      "side": "弱侧"
+    },
+    {
+      "id": "S05-M3",
+      "summary": "（转述本组前作 EPSE 概念）多硫化物内层由强溶剂化溶剂组成，用于溶解多硫化物并促进硫氧化还原反应（A、B 填全梯度仅为格式要求：原句讲 EPSE 概念，非本篇两配方比较）",
+      "A": "全梯度",
+      "B": "全梯度",
+      "property": "多硫化物内层溶剂化强",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": [
+        "M0006",
+        "M0017"
+      ],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "S05-M4",
+      "summary": "（转述本组前作）同一多硫化物浓度下，EPSE 中多硫化物与锂负极的反应动力学比常规醚电解液低——即不靠降低溶解度（A、B 填全梯度仅为格式要求：原句比较前作 EPSE 与常规醚电解液）",
+      "A": "全梯度",
+      "B": "全梯度",
+      "property": "多硫化物外层溶剂化变弱（EPSE），多硫化物浓度相同",
+      "categories": [
+        "负极锂"
+      ],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": [
+        "M0019"
+      ],
+      "test_ids": [],
+      "side": "强侧"
+    },
+    {
+      "id": "S05-M5",
+      "summary": "HFE-EPSE 中仍有大量强溶剂化自由溶剂 → 多硫化物溶解度和正极正常转化可保持（原句带引文，本文未测溶解度）",
+      "A": "HFE-EPSE",
+      "B": "DOL/DME",
+      "property": "多硫化物内层溶剂化保持（仍有强溶剂化自由溶剂）",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": [
+        "M0051"
+      ],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "S05-M6",
+      "summary": "HFE 只分布在多硫化物外层溶剂壳 → 预期减少多硫化物与锂负极的接触",
+      "A": "HFE-EPSE",
+      "B": "DOL/DME",
+      "property": "多硫化物外层溶剂化：HFE 进入外层",
+      "categories": [
+        "负极锂"
+      ],
+      "source_type": "本文推测",
+      "evidence_ids": [
+        "M0051"
+      ],
+      "test_ids": [],
+      "side": "强侧"
+    },
+    {
+      "id": "S05-M7",
+      "summary": "两种电解液充放电曲线几乎重叠 → 加 HFE 后正极多硫化物转化动力学仍令人满意（弱溶剂化一侧未见正极短板）",
+      "A": "HFE-EPSE",
+      "B": "DOL/DME",
+      "property": "多硫化物外层加入 HFE、内层不变",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0065"
+      ],
+      "test_ids": [
+        "S05-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "S05-M8",
+      "summary": "HFE-EPSE 库仑效率升高 → 多硫化物穿梭显著减少",
+      "A": "HFE-EPSE",
+      "B": "DOL/DME",
+      "property": "多硫化物外层溶剂化变弱（HFE 包裹多硫化物）",
+      "categories": [
+        "多硫化物穿梭"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0069"
+      ],
+      "test_ids": [
+        "S05-T1"
+      ],
+      "side": "强侧"
+    },
+    {
+      "id": "S05-M9",
+      "summary": "常规电解液中 DOL、DME 不能包裹中心多硫化物 → 多硫化物在锂负极上发生严重副反应",
+      "A": "HFE-EPSE",
+      "B": "DOL/DME",
+      "property": "多硫化物外层为强溶剂化溶剂（DOL），未被包裹",
+      "categories": [
+        "负极锂"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0071"
+      ],
+      "test_ids": [
+        "S05-T1",
+        "S05-T2"
+      ],
+      "side": "强侧"
+    },
+    {
+      "id": "S05-M10",
+      "summary": "HFE-EPSE 能有效包裹中心多硫化物 → 减少多硫化物的寄生反应",
+      "A": "HFE-EPSE",
+      "B": "DOL/DME",
+      "property": "多硫化物外层溶剂化变弱（HFE 包裹多硫化物）",
+      "categories": [
+        "负极锂"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0072",
+        "M0076"
+      ],
+      "test_ids": [
+        "S05-T1",
+        "S05-T2"
+      ],
+      "side": "强侧"
+    },
+    {
+      "id": "S05-M11",
+      "summary": "HFE-EPSE 放电中值电压更高更稳 → 电池内阻降低、死锂累积减轻",
+      "A": "HFE-EPSE",
+      "B": "DOL/DME",
+      "property": "多硫化物外层溶剂化变弱（HFE-EPSE）",
+      "categories": [
+        "负极锂"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0088"
+      ],
+      "test_ids": [
+        "S05-T3"
+      ],
+      "side": "强侧"
+    },
+    {
+      "id": "S05-M12",
+      "summary": "DOL/DME 极化增大 → 活性锂库存不足 → 寿命短且能量密度降低",
+      "A": "HFE-EPSE",
+      "B": "DOL/DME",
+      "property": "多硫化物外层为强溶剂化溶剂（DOL/DME）",
+      "categories": [
+        "负极锂"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0091",
+        "M0095"
+      ],
+      "test_ids": [
+        "S05-T3"
+      ],
+      "side": "强侧"
+    },
+    {
+      "id": "S05-M13",
+      "summary": "循环 40 圈后 HFE-EPSE 中锂负极表面 S 含量在各溅射深度均低于 DOL/DME → 多硫化物寄生反应被抑制",
+      "A": "HFE-EPSE",
+      "B": "DOL/DME",
+      "property": "多硫化物外层溶剂化变弱（HFE 包裹多硫化物）",
+      "categories": [
+        "负极锂"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0111",
+        "M0116"
+      ],
+      "test_ids": [
+        "S05-T3"
+      ],
+      "side": "强侧"
+    },
+    {
+      "id": "S05-M14",
+      "summary": "两种电解液中 SEI 的含 F（LiF、CF）和含 N（LiNxOy）物种相近（作者未进一步解释）",
+      "A": "HFE-EPSE",
+      "B": "DOL/DME",
+      "property": "加入 HFE（SEI 成分未见差别）",
+      "categories": [
+        "负极锂"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0117"
+      ],
+      "test_ids": [
+        "S05-T3"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "S05-M15",
+      "summary": "HFE-EPSE 循环后阻抗更低 → 死锂累积减轻（原句附引文支持阻抗与死锂的关联）",
+      "A": "HFE-EPSE",
+      "B": "DOL/DME",
+      "property": "多硫化物外层溶剂化变弱（HFE-EPSE）",
+      "categories": [
+        "负极锂"
+      ],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": [
+        "M0119"
+      ],
+      "test_ids": [
+        "S05-T3"
+      ],
+      "side": "强侧"
+    },
+    {
+      "id": "S05-M16",
+      "summary": "DOL/DME 中锂沉积不均匀、有裂纹和枝晶 → 多硫化物与工作中的锂负极副反应严重",
+      "A": "HFE-EPSE",
+      "B": "DOL/DME",
+      "property": "多硫化物外层为强溶剂化溶剂（DOL/DME）",
+      "categories": [
+        "负极锂"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0120"
+      ],
+      "test_ids": [
+        "S05-T3"
+      ],
+      "side": "强侧"
+    },
+    {
+      "id": "S05-M17",
+      "summary": "工作电池中 HFE-EPSE 抑制了多硫化物与锂负极的副反应（拆解分析的总结句）",
+      "A": "HFE-EPSE",
+      "B": "DOL/DME",
+      "property": "多硫化物外层溶剂化变弱（HFE 包裹多硫化物）",
+      "categories": [
+        "负极锂"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0122"
+      ],
+      "test_ids": [
+        "S05-T3"
+      ],
+      "side": "强侧"
+    },
+    {
+      "id": "S05-M18",
+      "summary": "Li‖Cu、Li‖Li 中 HFE-EPSE 锂剥离/沉积均匀性提高（这两种电池不含多硫化物，作者未说明改善来源）",
+      "A": "HFE-EPSE",
+      "B": "DOL/DME",
+      "property": "加入 HFE（起点未写，非多硫化物溶剂化）",
+      "categories": [
+        "负极锂"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0126"
+      ],
+      "test_ids": [
+        "S05-T6",
+        "S05-T7"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "S05-M19",
+      "summary": "软包在 HFE-EPSE 中循环保持两个放电平台 → 固-液-固硫氧化还原反应得以保持（仅 HFE-EPSE，无对照）（A、B 填全梯度仅为格式要求：软包只有 HFE-EPSE，无对照）",
+      "A": "全梯度",
+      "B": "全梯度",
+      "property": "多硫化物内层溶剂化保持（HFE-EPSE）",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0133",
+        "M0138"
+      ],
+      "test_ids": [
+        "S05-T8"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "S05-M20",
+      "summary": "HFE 还原稳定性高 → 包裹结构在反复循环中稳定保持",
+      "A": "HFE-EPSE",
+      "B": "DOL/DME",
+      "property": "HFE 还原稳定（起点为溶剂还原稳定性，非溶剂化）",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0144"
+      ],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "S05-M21",
+      "summary": "温和条件（低载量、厚锂，每圈只用 <4% 锂）掩盖锂负极问题、夸大负极保护策略的效果（A、B 填全梯度仅为格式要求：原句讲测试条件，非配方比较）",
+      "A": "全梯度",
+      "B": "全梯度",
+      "property": "测试条件（非溶剂化）",
+      "categories": [
+        "负极锂"
+      ],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": [
+        "M0078"
+      ],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "S05-M22",
+      "summary": "更低的 N/P（6.6 mg cm−2 vs 4.4 mg cm−2 正极）对应更高的锂利用率 → 寄生反应更严重，可用来检验 HFE-EPSE 的效果（A、B 填全梯度仅为格式要求：原句比较两种测试条件，非配方比较）",
+      "A": "全梯度",
+      "B": "全梯度",
+      "property": "测试条件 N/P（非溶剂化）",
+      "categories": [
+        "负极锂"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0100"
+      ],
+      "test_ids": [
+        "S05-T3",
+        "S05-T4"
+      ],
+      "side": "其他"
+    }
+  ],
+  "design_claims": [
+    {
+      "summary": "解耦（作者称 EPSE，多硫化物内外层分工）：内层保留强溶剂化溶剂（DME）以溶解多硫化物、维持硫转化，外层加入弱溶剂化 HFE 包裹多硫化物、抑制其与锂负极的副反应；Li⁺/多硫化物内层不变，并非'降低 Li⁺ 侧溶剂化'的解耦。最优（唯一）配方 HFE-EPSE：1.0 M LiTFSI in DOL/DME/HFE (2:2:1, by vol.)",
+      "evidence_ids": [
+        "M0006",
+        "M0017",
+        "M0051",
+        "M0141"
+      ]
+    },
+    {
+      "summary": "外层溶剂的溶剂化能力越弱越好：HFE 因大位阻氟代烃链和吸电子 CF2 而溶剂化能力弱于前作的 DIPS、DIPE，作者称其为更优的外层溶剂（前作差异是推测出发点）",
+      "evidence_ids": [
+        "M0020",
+        "M0042",
+        "M0142",
+        "M0147"
+      ]
+    },
+    {
+      "summary": "作者推测：HFE-EPSE 可与正极电催化等氧化还原促进剂兼容，以进一步提升转化动力学",
+      "evidence_ids": [
+        "M0139"
+      ]
+    }
+  ],
+  "figure_requests": [
+    {
+      "test_id": "S05-T3",
+      "figure": "Fig. 3a",
+      "part": "main",
+      "metric": "首圈容量",
+      "A": "HFE-EPSE",
+      "B": "DOL/DME",
+      "target_point": "化成后 0.1 C 第 1 圈",
+      "anchor_quote_ids": [
+        "M0081",
+        "M0083",
+        "M0084"
+      ],
+      "reason": "Li‖S 循环类测试缺同一测试容量侧：HFE-EPSE 首圈容量正文未写，只有 SI 表 S1 'Capacity' 914（口径未写）；锚点为 DOL/DME 首圈 957 mAh g−1 及 70% 保持率寿命 54/135 圈"
+    },
+    {
+      "test_id": "S05-T4",
+      "figure": "Fig. 3d",
+      "part": "main",
+      "metric": "指定圈容量",
+      "A": "HFE-EPSE",
+      "B": "DOL/DME",
+      "target_point": "0.1 C 第 19 圈（DOL/DME 保持率 52% 的取值圈）",
+      "anchor_quote_ids": [
+        "M0101",
+        "M0102"
+      ],
+      "reason": "Li‖S 循环类测试保持率 A、B 取值圈不同（40 vs 19 圈），需同圈指定圈值；锚点：首圈 1100/1123 mAh g−1、DOL/DME 19 圈 52%、HFE-EPSE 40 圈 74%"
+    }
+  ],
+  "gaps": [
+    "无梯度：只有 DOL/DME 与 HFE-EPSE 两个配方",
+    "LiTFSI 浓度正文写 1.0 m，SI 写 1.0 M，按 SI 记 M",
+    "7Li NMR、拉曼、MD 的测量体系为 1.0 m [S] Li2S8（SI 图注 Li2S6 写 1.0 M [S]），含多硫化物、不含 LiNO3",
+    "多硫化物溶解度、离子电导率、黏度、离子迁移数均未测",
+    "全文未报告电池测试温度",
+    "S05-T1/T2 未写倍率、化成、E/S 比值（只写 25 μL 电解液）；按 Φ13.0 mm、1.3 mg cm−2 推算 E/S ≈ 25 ÷ (1.3 × π × 0.65²) ≈ 14.5 μL mg−1，未填入条件",
+    "S05-T1 未报告寿命（只有 15 圈保持率）",
+    "S05-T2 穿梭电流只有定性，原句写 'by about 60 mV' 单位异常",
+    "S05-T3 HFE-EPSE 首圈容量正文未写，仅 SI 表 S1 914（口径未写），已登记读图",
+    "S05-T3、S05-T4 未报告库仑效率",
+    "S05-T3 的残余活性锂、阻抗、XPS、SEM 为 40 圈后拆解，原文未写明来自 4.4 还是 6.6 mg cm−2 电池，按 T3 推定",
+    "S05-T4 保持率取值圈不同（HFE-EPSE 40 圈、DOL/DME 19 圈），未判；未报告 70% 寿命圈数；化成未写",
+    "S05-T5 倍率测试与 S05-T8 软包只有 HFE-EPSE，无对照，不能判方向（倍率 957/885/837/778/738 mAh g−1；软包首圈能量密度 334 Wh kg−1、25 圈保持率 60%）",
+    "S05-T5 的 LiNO3 用量与 S05-T8 软包是否含 LiNO3 原文未写",
+    "S05-T6、S05-T7 电解液用量未写",
+    "SI 表 S1 'This work' 行另有 100 / 82%，含义原文未写"
+  ],
+  "source_review": {
+    "main": true,
+    "si": true,
+    "notes": "通读正文（M0001–M0217，参考文献略读）与 SI（S0001–S0091）；未读任何既有提取结果。过程大类按原句字面标注：'LiPS 与锂负极的副反应/寄生反应'标负极锂，原句出现 shuttle 才标多硫化物穿梭；M0072 与 M0076 为同一句被页眉图注切断。软包与倍率测试无对照，未记结果。"
+  }
+}

@@ -1,0 +1,563 @@
+{
+  "paper_id": "P620",
+  "doi": "10.1016/j.electacta.2026.149154",
+  "formulations": [
+    {
+      "id": "ELDD",
+      "name": "ELDD（baseline electrolyte）",
+      "components": [
+        {"name": "LiTFSI", "role": "盐", "amount": 1.0, "unit": "M"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": "1:1", "unit": "v/v"},
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": "1:1", "unit": "v/v"}
+      ],
+      "raw_formula": "The baseline electrolyte (denoted as ELDD) consisted of 1.0 M lithium bis(trifluoromethanesulfonyl)imide (LiTFSI) dissolved in a binary solvent mixture of 1,2-dimethoxyethane (DME) and 1,3-dioxolane (DOL) (1:1 v/v).（注：Fig. 2 图注写作 1.0 mol L−1 LiTFSI dissolved in DME，正文多处称 DME-based，与方法部分不一致；按方法部分记）",
+      "evidence_ids": ["M0059"]
+    },
+    {
+      "id": "ELC14",
+      "name": "ELC14（novel electrolyte）",
+      "components": [
+        {"name": "LiTFSI", "role": "盐", "amount": 1.0, "unit": "M"},
+        {"name": "C14（1,1,1-trifluoro-2-(2-methoxyethoxy)ethane）", "role": "弱或非溶剂化溶剂", "amount": "单一溶剂", "unit": "未报告"}
+      ],
+      "raw_formula": "The novel electrolyte (denoted as ELC14) consisted of 1.0 M LiTFSI dissolved in 1,1,1-trifluoro-2-(2-methoxyethoxy)ethane (C14).（作者称 C14 为 weakly solvating 溶剂；IR 显示其 C–O–C 仍与 Li+ 配位）",
+      "evidence_ids": ["M0060", "M0114", "M0163"]
+    }
+  ],
+  "control_id": "ELDD",
+  "control_type": "不含 LiNO₃ 的自配对照：1.0 M LiTFSI 溶于 DME/DOL（1:1 v/v），配方原文未加 LiNO₃",
+  "gradients": [
+    {
+      "name": "溶剂种类（种类梯度，仅两档：DME/DOL → C14）",
+      "order": ["ELDD", "ELC14"],
+      "values": ["DME/DOL（1:1 v/v）", "C14"],
+      "solvation_axis": "按 Li⁺ 溶剂化由强到弱；依据：作者 FT-IR 与 Raman（Rc 指数 DME 在各浓度均大于 C14，判 C14 较难与 Li+ 配位）；测于 LiTFSI/DME 与 LiTFSI/C14 溶液，DOL 未测。多硫化物溶剂化同向（Li2Sx/DME 与 Li2Sx/C14 的 IR）",
+      "evidence_ids": ["M0059", "M0060", "M0131", "M0133", "M0185"]
+    }
+  ],
+  "properties": [
+    {
+      "name": "Li⁺ 溶剂化",
+      "values": {"ELDD": "较强（DME 配位 Li+ 后 IR 出现 1080、1140 cm−1 配位峰并发生构象变化；Rc 各浓度均大于 C14）", "ELC14": "较弱（C14 配位时构象几乎不变、较难转为 cis 构象，作者判较难与 Li+ 配位）"},
+      "direction": "ELDD > ELC14",
+      "method": "FT-IR（1100 cm−1 C–O–C、850–870 cm−1 构象区）与 Raman（870 cm−1 cis 构象峰，作者定义 Rc 指数）；另有 COSMO-RS σ-profile 计算（C14 高电荷密度表面积较小，不收数值）",
+      "system": "LiTFSI/DME 与 LiTFSI/C14 溶液（0、0.5、1.0 mol l−1）；对照侧只测纯 DME 溶液，电池用 ELDD 为 DME/DOL 1:1，DOL 未测",
+      "evidence_ids": ["M0103", "M0105", "M0106", "M0116", "M0131", "M0133", "M0196"]
+    },
+    {
+      "name": "多硫化物溶剂化",
+      "values": {"ELDD": "较强（Li2Sx/DME 的 IR 中配位 DME 的 ~1080 cm−1 肩峰随 Li2Sx 浓度增强，作者判 DME 醚氧与多硫化物中 Li+ 配位）", "ELC14": "较弱（Li2Sx/C14 的 IR 谱几乎不随 Li2Sx 浓度变化）"},
+      "direction": "ELDD > ELC14",
+      "method": "FT-IR",
+      "system": "Li2S 与 S 按 1:7 摩尔比在 30 mL 纯 DME 或纯 C14 中搅拌 24 h；Li2Sx 0.1、0.2 mol L−1；不含 LiTFSI、不含 DOL，与电池电解液不同",
+      "evidence_ids": ["M0082", "M0181", "M0182", "M0183", "M0184", "M0185", "M0219"]
+    },
+    {
+      "name": "多硫化物离子化（S K-edge XANES 2470.3 eV 前边峰，作者归为 Li 缺陷）",
+      "values": {"ELDD": "50% 与 100% DOD 出现，100% DOD 强于 50% DOD", "ELC14": "充放电全程未出现"},
+      "direction": "ELDD 有、ELC14 无",
+      "method": "S K-edge XANES（TEY 与 PFY 模式）",
+      "system": "电池中取出的 C-S 正极（首圈各 DOD/SOC 点，T2 取样电池），测的是未溶解的固相正极",
+      "evidence_ids": ["M0253", "M0254", "M0259", "M0266"]
+    },
+    {
+      "name": "多硫化物溶解度",
+      "values": {"ELDD": "高（Li2Sx/DME 为透明红棕色溶液）", "ELC14": "低（Li2Sx/C14 为黄色悬浊液，sparingly soluble）"},
+      "direction": "ELDD > ELC14",
+      "method": "目视（照片）",
+      "system": "0.2 mol L−1 Li2Sx 分别加入纯 DME 与纯 C14（不含 LiTFSI、不含 DOL），与电池电解液不同",
+      "evidence_ids": ["M0177", "M0178", "M0179", "M0218"]
+    },
+    {
+      "name": "离子电导率",
+      "values": {"ELDD": "1.277 S m−1", "ELC14": "0.111 S m−1"},
+      "direction": "ELC14 比 ELDD 低一个数量级以上",
+      "method": "原文未写测法（数值汇总于 Table S1，SI 文本未含此表）",
+      "system": "室温；原文称对照为 conventional DME-based electrolyte",
+      "evidence_ids": ["M0061", "M0164"]
+    },
+    {
+      "name": "黏度",
+      "values": {"ELDD": "较低", "ELC14": "较高"},
+      "direction": "ELC14 高于 ELDD",
+      "method": "原文未写测法（Table S1 数值未在文本中）",
+      "system": "室温，电池电解液本身",
+      "evidence_ids": ["M0061", "M0164"]
+    },
+    {
+      "name": "离子迁移数（tLi+）",
+      "values": {"ELDD": "未报告（Table S1 未在文本中；原文另引 DME 体系一般为 0.2 to 0.4，属引文转述，非本文实测）", "ELC14": "0.599"},
+      "direction": "未报告（只有 ELC14 实测值）",
+      "method": "PFG-NMR 测 Li+ 与 TFSI− 自扩散系数，tLi+ = DLi+ / (DLi+ + DTFSI−)",
+      "system": "电池电解液本身，室温",
+      "evidence_ids": ["M0062", "M0064", "M0167", "M0168"]
+    },
+    {
+      "name": "电解液密度",
+      "values": {"ELDD": "较低", "ELC14": "较高（低于碳酸酯类与高浓电解液；C14 溶剂密度 1.16 g cm−3）"},
+      "direction": "ELC14 高于 ELDD",
+      "method": "原文未写测法（Table S1 数值未在文本中）",
+      "system": "室温，电池电解液本身",
+      "evidence_ids": ["M0040", "M0150", "M0151"]
+    }
+  ],
+  "tests": [
+    {
+      "id": "P620-T1",
+      "name": "Li‖S 两电极半电池 0.1 C 恒流充放电循环（Fig. 2、Figure S3(a)）",
+      "cell": "Li‖S 两电极半电池（锂箔对电极，聚烯烃微孔隔膜；电池形式原文未写）",
+      "conditions": {
+        "sulfur_loading": "1.15 mg cm-2",
+        "ES": "未报告（原文只写 flooded conditions with an excess amount of electrolyte）",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告（lithium foil）",
+        "rate": "0.1 C",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "不含（ELDD、ELC14 配方原文只列 LiTFSI 与溶剂）",
+        "one_C": "1672 mA g-1",
+        "voltage_range": "1.0–3.0 V",
+        "electrode_area": "1.13 cm2",
+        "cathode": "C-S 复合（S:C = 65:35 质量比，介孔碳平均孔径 5 nm）：AB：CMC：SBR = 90:5:3:2"
+      },
+      "formulations": ["ELDD", "ELC14"],
+      "evidence_ids": ["M0050", "M0065", "M0072", "M0073", "M0074", "M0077", "M0139", "M0161", "M0162"],
+      "results": [
+        {
+          "id": "P620-T1-R1",
+          "metric": "寿命（循环圈数）",
+          "A": "ELC14", "B": "ELDD",
+          "value_A": null, "value_B": null,
+          "unit": "圈",
+          "point": "0.1 C 循环：ELDD 首圈充电出现约 2.3 V 不终止的平台、无法正常可逆循环；ELC14 完成充电并可连续循环（Fig. 2b 显示至第 50 圈，50 圈内容量逐渐衰减）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0141", "M0162", "M0163", "M0171"],
+          "reason": "作者定性：ELDD 在同一测试条件下因持续穿梭难以正常循环，ELC14 可连续循环；无可比的圈数或保持率数值"
+        },
+        {
+          "id": "P620-T1-R2",
+          "metric": "库仑效率",
+          "A": "ELC14", "B": "ELDD",
+          "value_A": null, "value_B": null,
+          "unit": "%",
+          "point": "0.1 C：ELC14 库仑效率（充电容量/放电容量）稳定在约 106%；ELDD 首圈充电不终止（无限充电平台）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0141", "M0143", "M0161", "M0171"],
+          "reason": "ELDD 无库仑效率数值（充电不终止）；作者定性 ELDD 为穿梭导致的无限充电、ELC14 可逆充放电；ELC14 约 106% 见 M0171，作者另称 >100% 表明仍有少量副反应"
+        }
+      ]
+    },
+    {
+      "id": "P620-T2",
+      "name": "Li‖S 首圈充放电 ex-situ 取样电池（Fig. 5–8：FE-SEM/EDX、XPS、S K-edge XANES）",
+      "cell": "Li‖S 两电极半电池（形式原文未写）",
+      "conditions": {
+        "sulfur_loading": "1.15 mg cm-2",
+        "ES": "未报告（原文只写 flooded conditions with an excess amount of electrolyte）",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告（lithium foil）",
+        "rate": "未报告",
+        "formation": "未报告（取样为首圈）",
+        "temperature": "未报告",
+        "LiNO3": "不含（ELDD、ELC14 配方原文只列 LiTFSI 与溶剂）",
+        "one_C": "1672 mA g-1",
+        "charge_cutoff": "ELDD 充电至 2000 mAh g−1（点 ■6）；ELC14 原文未写",
+        "electrode_area": "1.13 cm2"
+      },
+      "formulations": ["ELDD", "ELC14"],
+      "evidence_ids": ["M0072", "M0073", "M0074", "M0200", "M0229", "M0234", "M0235", "M0273"],
+      "results": [
+        {
+          "id": "P620-T2-R1",
+          "metric": "首圈容量",
+          "A": "ELC14", "B": "ELDD",
+          "value_A": 1000, "value_B": 1200,
+          "unit": "mAh g-1",
+          "point": "首圈放电（原文 practical specific capacities，Fig. 5–8 首圈取样电池）",
+          "basis": "numeric",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0272", "M0228"],
+          "reason": "|1000−1200|÷1200 = 16.7% > 5%，ELC14 低于 ELDD；两数在同一句原文；倍率原文未写"
+        },
+        {
+          "id": "P620-T2-R2",
+          "metric": "负极表面硫沉积（XPS GCIB 深度剖析）",
+          "A": "ELC14", "B": "ELDD",
+          "value_A": null, "value_B": null,
+          "unit": "硫原子浓度（相对）",
+          "point": "100% DOD 与 100% SOC 取出的锂负极，S 2p 与硫浓度深度剖析",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0235", "M0240", "M0247"],
+          "reason": "作者定性：ELDD 锂负极硫浓度显著高且深入体相；ELC14 全深度极低（穿梭诊断量，越低越好）"
+        },
+        {
+          "id": "P620-T2-R3",
+          "metric": "正极硫保留（EDX S/C 峰强比）",
+          "A": "ELC14", "B": "ELDD",
+          "value_A": null, "value_B": null,
+          "unit": "S/C 峰强比（半定量）",
+          "point": "首圈充电至 100% SOC 的正极",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0214", "M0215", "M0216"],
+          "reason": "作者定性：ELC14 正极 S/C 比显著高于 ELDD，即硫保留更多"
+        },
+        {
+          "id": "P620-T2-R4",
+          "metric": "充电末正极硫物种（XPS S 2p、S K-edge XANES）",
+          "A": "ELC14", "B": "ELDD",
+          "value_A": null, "value_B": null,
+          "unit": "定性",
+          "point": "首圈充电末（100% SOC）：ELDD 充电至 2000 mAh g−1 后仍残留 Li2S、Li2Sx；ELC14 谱形接近 15% DOD 状态",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0229", "M0232", "M0261", "M0265"],
+          "reason": "作者定性：ELC14 充电可逆性高，ELDD 充电不完全；ELDD 充电以 2000 mAh g−1 截止、ELC14 截止条件原文未写"
+        }
+      ]
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "P620-M1",
+      "summary": "ELDD 首圈充电约 2.3 V 平台不终止，作者归因于充电生成的 Li2Sx 迁移到负极表面的穿梭效应 → T1 无法正常循环、库仑效率差",
+      "A": "ELC14", "B": "ELDD",
+      "property": "ELDD 中多硫化物溶出迁移（本句未直接写溶剂化）",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0142"],
+      "test_ids": ["P620-T1"],
+      "side": "强侧"
+    },
+    {
+      "id": "P620-M2",
+      "summary": "ELC14 充放电高度可逆 → 作者推断 Li2Sx 溶出被有效抑制",
+      "A": "ELC14", "B": "ELDD",
+      "property": "多硫化物溶解度降低（ELC14）",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0144"],
+      "test_ids": ["P620-T1"],
+      "side": "强侧"
+    },
+    {
+      "id": "P620-M3",
+      "summary": "已有报道：溶剂分子与 Li2Sx 中 Li+ 配位引起离子化并溶出到电解液（引文转述）",
+      "A": "ELC14", "B": "ELDD",
+      "property": "多硫化物溶剂化（溶剂与 Li2Sx 中 Li+ 配位）",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0145"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P620-M4",
+      "summary": "DME 以 tgt、tgg、tgg' 构象与 Li+ 配位，促进 Li2Sx 解离（接续上句引文的机理说明，本文未测这些构象）",
+      "A": "ELC14", "B": "ELDD",
+      "property": "多硫化物溶剂化：DME 螯合 Li+ 较强",
+      "categories": [],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0146"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P620-M5",
+      "summary": "C14 与 Li+ 配位倾向低 → 推断 C14 受位阻或电子效应难与 Li2Sx 配位 → 阻止多硫化物溶出（解释 T1 中 ELC14 可逆、ELDD 穿梭）",
+      "A": "ELC14", "B": "ELDD",
+      "property": "多硫化物溶剂化减弱（C14 难与 Li2Sx 配位）",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0148"],
+      "test_ids": ["P620-T1"],
+      "side": "强侧"
+    },
+    {
+      "id": "P620-M6",
+      "summary": "ELDD dQ/dV 还原峰宽且起伏 → 多硫化物溶出使电极附近多种中间态共存、电化学反应复杂重叠",
+      "A": "ELC14", "B": "ELDD",
+      "property": "多硫化物溶解度较高（ELDD）",
+      "categories": ["正极反应", "多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0158"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P620-M7",
+      "summary": "ELC14 dQ/dV 峰更尖 → 弱溶剂化 C14 抑制多硫化物溶出，使反应以较均一的单一反应在特定电位进行",
+      "A": "ELC14", "B": "ELDD",
+      "property": "多硫化物溶解度降低（ELC14）",
+      "categories": ["正极反应", "多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0160"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P620-M8",
+      "summary": "ELC14 离子电导率低一个数量级、黏度高，但倍率性能仍较好，作者归因于高 Li+ 迁移数 0.599（倍率测试只有 ELC14，无对照）",
+      "A": "ELC14", "B": "ELDD",
+      "property": "离子电导率降低、Li+ 迁移数高（非溶剂化性质起点）",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0167"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P620-M9",
+      "summary": "弱溶剂化 C14 体系的高 tLi+ 补偿了低离子电导率，使氧化还原反应均匀、在较大电流下保持电化学活性",
+      "A": "ELC14", "B": "ELDD",
+      "property": "Li+ 迁移数高、离子电导率低",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0170"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P620-M10",
+      "summary": "作者自写的例外：ELC14 库仑效率约 106%（>100%），表明充电时仍有少量副反应，如残余穿梭或电解液氧化分解",
+      "A": "ELC14", "B": "ELDD",
+      "property": "未写性质变化（ELC14 自身的残余副反应）",
+      "categories": ["多硫化物穿梭", "电解液消耗"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0172"],
+      "test_ids": ["P620-T1"],
+      "side": "其他"
+    },
+    {
+      "id": "P620-M11",
+      "summary": "C14 对多硫化物的强热力学限域迫使氧化还原走缓慢的未溶解固相转化（弱溶剂化一侧的动力学短板）",
+      "A": "ELC14", "B": "ELDD",
+      "property": "多硫化物溶解度降低（被限域于固相）",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0173"],
+      "test_ids": ["P620-T1"],
+      "side": "弱侧"
+    },
+    {
+      "id": "P620-M12",
+      "summary": "ELC14 50 圈内的容量衰减可能来自未溶解中间体的动力学限制加持续少量副反应",
+      "A": "ELC14", "B": "ELDD",
+      "property": "多硫化物溶解度降低（未溶解中间体）",
+      "categories": ["正极反应"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0174"],
+      "test_ids": ["P620-T1"],
+      "side": "弱侧"
+    },
+    {
+      "id": "P620-M13",
+      "summary": "Li2Sx/DME 的 IR 变化表明 DME 醚氧与多硫化物中 Li+ 配位，促进其溶解",
+      "A": "ELC14", "B": "ELDD",
+      "property": "多硫化物溶剂化较强（DME）",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0183"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P620-M14",
+      "summary": "C14 缺乏与 Li2Sx 的配位，阻止多硫化物溶剂化及随后的溶解，与悬浊液目视结果一致",
+      "A": "ELC14", "B": "ELDD",
+      "property": "多硫化物溶剂化减弱、溶解度降低（C14）",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0186"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P620-M15",
+      "summary": "C14 对 Li2Sx 溶剂化能力低于 DME 的两个原因：-CF3 位阻使其难以采取 cis 构象；-CF3 吸电子使分子表面电荷离域",
+      "A": "ELC14", "B": "ELDD",
+      "property": "多硫化物溶剂化减弱（分子结构原因）",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0198"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P620-M16",
+      "summary": "ELDD 正极在 50% DOD 出现约 50 nm 颗粒，EDX 富 S、O，作者认为是 LiTFSI 盐分解产物",
+      "A": "ELC14", "B": "ELDD",
+      "property": "未写性质变化（ELDD 正极界面盐分解）",
+      "categories": ["电解液消耗"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0206"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P620-M17",
+      "summary": "ELC14 正极在 50% DOD 保持近原始形貌，表明其界面对电解液分解更稳定",
+      "A": "ELC14", "B": "ELDD",
+      "property": "未写性质变化（ELC14 正极界面稳定）",
+      "categories": ["电解液消耗"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0207"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P620-M18",
+      "summary": "ELC14 正极充电末硫保留更多 → C14 抑制了充电后期长链 Li2Sx 的溶出",
+      "A": "ELC14", "B": "ELDD",
+      "property": "多硫化物溶解度降低（ELC14）",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0216"],
+      "test_ids": ["P620-T2"],
+      "side": "强侧"
+    },
+    {
+      "id": "P620-M19",
+      "summary": "ELDD 100% DOD 仍有未反应中间体，这种不完全转化可能是其容量（~1200 mAh g−1）低于理论值的原因（与理论值比，不与 ELC14 比）",
+      "A": "ELC14", "B": "ELDD",
+      "property": "未写性质变化（ELDD 放电不完全转化）",
+      "categories": ["正极反应"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0228"],
+      "test_ids": ["P620-T2"],
+      "side": "其他"
+    },
+    {
+      "id": "P620-M20",
+      "summary": "ELDD 充电至 2000 mAh g−1 后仍残留 Li2S/Li2Sx，作者归因于多硫化物持续迁移的穿梭效应阻止充电反应完成",
+      "A": "ELC14", "B": "ELDD",
+      "property": "ELDD 多硫化物溶出迁移（本句未直接写溶剂化）",
+      "categories": ["多硫化物穿梭", "正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0230"],
+      "test_ids": ["P620-T2"],
+      "side": "强侧"
+    },
+    {
+      "id": "P620-M21",
+      "summary": "ELC14 中穿梭被有效抑制，充电时活性硫高效回收（充电末谱接近 15% DOD）",
+      "A": "ELC14", "B": "ELDD",
+      "property": "多硫化物穿梭减弱（ELC14）",
+      "categories": ["多硫化物穿梭", "正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0233"],
+      "test_ids": ["P620-T2"],
+      "side": "强侧"
+    },
+    {
+      "id": "P620-M22",
+      "summary": "ELDD 锂负极表面累积并向体相渗入大量来自多硫化物的硫，作者称是严重穿梭的直接证据",
+      "A": "ELC14", "B": "ELDD",
+      "property": "ELDD 多硫化物穿梭至负极（本句未直接写溶剂化）",
+      "categories": ["多硫化物穿梭", "负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0240", "M0241"],
+      "test_ids": ["P620-T2"],
+      "side": "强侧"
+    },
+    {
+      "id": "P620-M23",
+      "summary": "负极界面差异证明弱溶剂化 C14 将多硫化物限制在正极区，阻止其穿越并沉积到锂金属表面",
+      "A": "ELC14", "B": "ELDD",
+      "property": "Li⁺/多硫化物溶剂化较弱（C14 weakly solvating）",
+      "categories": ["多硫化物穿梭", "负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0248"],
+      "test_ids": ["P620-T2"],
+      "side": "强侧"
+    },
+    {
+      "id": "P620-M24",
+      "summary": "ELDD 中强配位的 DME 强烈溶剂化 Li+，被认为从正极固态 Li2S4 中抽出 Li+、形成 Li 空位（XANES 前边峰来源）",
+      "A": "ELC14", "B": "ELDD",
+      "property": "多硫化物溶剂化较强（DME 抽取固相 Li2S4 中 Li+）",
+      "categories": ["正极反应"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0256"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P620-M25",
+      "summary": "C14 不能抽出 Li+ 形成空位，使多硫化物保持未溶解的固态（XANES 无前边峰）",
+      "A": "ELC14", "B": "ELDD",
+      "property": "多硫化物溶剂化较弱（C14 不离子化 Li2Sx）",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0268"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P620-M26",
+      "summary": "PFY 中 Li2Sx/S8 峰比低于 TEY → C-S 颗粒体相仍有未反应硫，反应在表面更易进行，解释两者实际容量（ELDD 1200、ELC14 1000 mAh g−1）均低于理论值；作者未解释 ELC14 低于 ELDD 的原因",
+      "A": "ELC14", "B": "ELDD",
+      "property": "未写性质变化（正极颗粒体相反应不完全，两体系共有）",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0272"],
+      "test_ids": ["P620-T2"],
+      "side": "其他"
+    },
+    {
+      "id": "P620-M27",
+      "summary": "结论：C14 因表面电荷离域与位阻抑制 Li2Sx 离子化和溶解，从而使 Li-S 电池稳定可逆运行",
+      "A": "ELC14", "B": "ELDD",
+      "property": "多硫化物溶剂化减弱 → 离子化与溶解降低",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0287"],
+      "test_ids": ["P620-T1"],
+      "side": "强侧"
+    },
+    {
+      "id": "P620-M28",
+      "summary": "作者称抑制多硫化物溶出即消除持续电解液消耗的主因（本文在富液条件下测试，未测电解液消耗）",
+      "A": "ELC14", "B": "ELDD",
+      "property": "多硫化物溶解度降低（ELC14）",
+      "categories": ["多硫化物穿梭", "电解液消耗"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0152"],
+      "test_ids": [],
+      "side": "其他"
+    }
+  ],
+  "design_claims": [
+    {"summary": "折中（作者称单分子内平衡）：在 DME 骨架末端只引入一个 -CF3 得到 C14，同时满足能溶解 1.0 M LiTFSI 的溶剂化能力、表面电荷离域以抑制多硫化物离子化、104 °C 沸点可真空注液；最优配方 ELC14", "evidence_ids": ["M0047"]},
+    {"summary": "不依赖高盐浓度、以较低密度的弱溶剂化电解液抑制多硫化物溶出，作为走向高能量密度 Li-S 电池的概念性途径（未在贫液下验证）", "evidence_ids": ["M0154"]},
+    {"summary": "推广主张：以电荷离域为目标设计氟化醚、抑制溶剂诱导的多硫化物离子化是通用的电解液设计策略", "evidence_ids": ["M0007", "M0288"]}
+  ],
+  "figure_requests": [],
+  "gaps": [
+    "E/S 无数值（原文只写 flooded、excess amount of electrolyte）；锂厚、温度、化成协议未报告；电池形式（扣式或其他）未写",
+    "ELDD 配方说法前后不一：方法部分为 DME/DOL 1:1 v/v，Fig. 2 图注写 LiTFSI dissolved in DME，正文多处称 DME-based；按方法部分记",
+    "SI 文本只含 C-S 复合材料形貌 9 句；Table S1（黏度、电导率、tLi+、密度数值）、Figure S3（dQ/dV、ELC14 循环与倍率）、Figure S4–S6 未在文本中",
+    "P620-T1 首圈容量与过电位文字未给（Fig. 2 为充放电电压曲线，按规则不读）；原文称两者放电平台电位有偏移但未写方向",
+    "P620-T1 保持率无法比较：ELDD 因持续穿梭无法正常循环，只有 ELC14 50 圈逐渐衰减",
+    "倍率性能只测 ELC14（Figure S3），无对照，不成比较；离子迁移数只有 ELC14 实测值",
+    "P620-T2 倍率未写，可能与 T1 同为 0.1 C，原文未说明；ELDD 充电以 2000 mAh g−1 截止，ELC14 截止条件未写",
+    "作者未解释 ELC14 首圈容量（1000 mAh g−1）低于 ELDD（1200 mAh g−1）的原因，只解释两者均低于理论值；与弱侧动力学短板相关的说法只落在 ELC14 自身的容量衰减（M0173、M0174）",
+    "Li⁺ 与多硫化物溶剂化只在纯 DME 与纯 C14 中测（不含 DOL；多硫化物测量不含 LiTFSI）",
+    "未在贫液、薄锂或软包条件下测试；未测电解液消耗",
+    "本篇无读图登记：Fig. 2 为电压曲线；Figure S3(a) 循环只含 ELC14、无同测试对照"
+  ],
+  "source_review": {
+    "main": true,
+    "si": true,
+    "notes": "通读正文（M0001–M0391，参考文献略读）与 SI 文本（S0001–S0009）；未读任何既有提取结果。SI 文本只有 C-S 复合材料形貌文字，表 S1 与图 S1、S3–S6 未被提取为文本。本篇只有两个配方（ELDD 对照、ELC14），无 LiNO₃，富液。"
+  }
+}

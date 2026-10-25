@@ -1,0 +1,402 @@
+{
+  "paper_id": "P271",
+  "doi": "10.1021/acs.jpcc.1c10197",
+  "formulations": [
+    {
+      "id": "standard",
+      "name": "standard electrolyte",
+      "components": [
+        {"name": "LiTFSI", "role": "盐", "amount": 1, "unit": "m"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 0.25, "unit": "m"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": 1, "unit": "v:v（DME/DOL 1:1）"},
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": 1, "unit": "v:v（DME/DOL 1:1）"}
+      ],
+      "raw_formula": "1 m LiTFSI, 0.25 m LiNO3 in DME/DOL (1:1, v:v)",
+      "evidence_ids": ["M0056"]
+    },
+    {
+      "id": "TFSI/Br",
+      "name": "TFSI/Br",
+      "components": [
+        {"name": "LiTFSI", "role": "盐", "amount": 0.5, "unit": "m"},
+        {"name": "LiBr", "role": "盐", "amount": 0.5, "unit": "m"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 0.25, "unit": "m"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": 1, "unit": "v:v（DME/DOL 1:1）"},
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": 1, "unit": "v:v（DME/DOL 1:1）"}
+      ],
+      "raw_formula": "0.5 m LiTFSI, 0.5 m LiBr, 0.25 m LiNO3 in DME/DOL (1:1, v:v)（作者称 50% LiTFSI 被 LiBr 替代，LiBr 为 cosalt）",
+      "evidence_ids": ["M0056", "M0029"]
+    }
+  ],
+  "control_id": "standard",
+  "control_type": "常规醚基准（DOL/DME + LiTFSI + LiNO₃）：1 m LiTFSI + 0.25 m LiNO₃ in DME/DOL 1:1 v:v（小写 m）",
+  "gradients": [
+    {
+      "name": "LiBr 替代 LiTFSI 的比例（用量梯度，仅两档，总锂盐 1 m 不变）",
+      "order": ["TFSI/Br", "standard"],
+      "values": ["0.5 m LiBr + 0.5 m LiTFSI（50% 替代）", "1 m LiTFSI（0%）"],
+      "solvation_axis": "按电解液给体性（donicity）由高到低排，视为 Li⁺/多硫化物溶剂化由强到弱；依据：作者把 LiBr 作为高给体数阴离子盐（3.4 节标题 M0167、M0191），引言转述高给体性电解液中 Li⁺ 被溶剂或阴离子更强络合（M0019，转述他文）；本文未直接测 Li⁺ 或多硫化物溶剂化",
+      "evidence_ids": ["M0056", "M0167", "M0191", "M0019"]
+    }
+  ],
+  "properties": [
+    {
+      "name": "Li₂S 析出速率（operando XRD；Li₂S 111 峰强度对下平台放电电量之比 I/qd,l 及 dI/dq）",
+      "values": {"TFSI/Br": "I/qd,l 6.7 mAh⁻¹；下平台后半段 dI/dq 明显更高且持续上升", "standard": "I/qd,l 4.6 mAh⁻¹"},
+      "direction": "TFSI/Br 高于 standard",
+      "method": "operando XRD（Li₂S 111 反射积分强度，以聚酰亚胺 002 峰归一化）对通过电量求导",
+      "system": "在 Li‖S operando 改装扣电内测（S-L 3.3 mgS cm⁻²、E/S 6 µL mgS⁻¹、C/10 第 2 圈），是电池内过程量，不是电解液本体性质",
+      "evidence_ids": ["M0112", "M0177", "M0029"]
+    },
+    {
+      "name": "Li₂S 晶粒尺寸（XRD 111 峰半高宽 FWHM，放电时倒数第二次测量）",
+      "values": {"TFSI/Br": "FWHM 1.31(2)°（晶粒较小）", "standard": "FWHM 1.22(1)°"},
+      "direction": "TFSI/Br 晶粒较小（FWHM 较大）",
+      "method": "operando XRD 单高斯峰拟合（Topas）",
+      "system": "Li‖S operando 改装扣电内（S-L 3.3、E/S 6、C/10 第 2 圈）",
+      "evidence_ids": ["M0112", "M0180"]
+    },
+    {
+      "name": "Li₂S 衍射积分强度 I（放电末，归一化）",
+      "values": {"TFSI/Br": "15.4(3) a.u.", "standard": "14.8(3) a.u."},
+      "direction": "TFSI/Br 略高",
+      "method": "operando XRD，Li₂S 111 反射积分强度，以聚酰亚胺 002 峰归一化",
+      "system": "Li‖S operando 改装扣电内（S-L 3.3、E/S 6、C/10 第 2 圈）",
+      "evidence_ids": ["M0112"]
+    },
+    {
+      "name": "多硫化物溶剂化（物种分布，作者推断）",
+      "values": {"TFSI/Br": "作者推断 S₆²⁻、S₈²⁻ 更被稳定、多硫化物氧化态分布更均匀", "standard": "对照"},
+      "direction": "TFSI/Br 推断较强（间接）",
+      "method": "未直接测；作者由上放电平台更长、充电末 R/k 上升消失、下平台 dI/dq 持续上升推断，并称与文献 30 一致",
+      "system": "Li‖S operando 改装扣电内（S-L 3.3、E/S 6、C/10 第 2 圈）",
+      "evidence_ids": ["M0178", "M0191"]
+    }
+  ],
+  "tests": [
+    {
+      "id": "P271-T1",
+      "name": "Li‖S operando XRD 改装扣式 C/10（第 2 圈）",
+      "cell": "Li‖S 改装扣式（CR2025 壳开 ⌀7 mm 孔，镀铝聚酰亚胺 X 射线窗；⌀13 mm S/C 正极、⌀17 mm Celgard 2400、⌀15 mm Li；operando XRD + ICI 电阻测量）",
+      "conditions": {
+        "sulfur_loading": "3.3 mgS cm−2",
+        "ES": "6",
+        "ES_unit": "µL mgS⁻¹（体积基）",
+        "Li_thickness": "125 μm",
+        "rate": "C/10",
+        "formation": "组装后静置 6 h；第 1 圈 C/50 放电至 1.9 V、C/25 充电至 2.6 V",
+        "temperature": "未报告",
+        "LiNO3": "含 0.25 m",
+        "one_C": "1672 mAh gS−1（原文写法）",
+        "voltage_window": "1.8–2.6 V",
+        "compared_cycle": "第 2 圈（化成后 C/10 第 1 圈）",
+        "cathode": "S/C 涂布电极：65% S、21% KB、3.5% C65、3.5% CNF、5.6% PEO、1.6% PVP（质量）"
+      },
+      "formulations": ["standard", "TFSI/Br"],
+      "evidence_ids": ["M0034", "M0039", "M0047", "M0053", "M0056", "M0063", "M0064", "M0065", "M0069", "M0175", "M0201"],
+      "results": [
+        {
+          "id": "P271-T1-R1",
+          "metric": "下平台放电比容量",
+          "A": "TFSI/Br", "B": "standard",
+          "value_A": 515, "value_B": 724,
+          "unit": "mAh gS−1",
+          "point": "C/10 第 2 圈（化成后 C/10 第 1 圈），仅下放电平台比容量 Qd,l（不是总放电容量）",
+          "basis": "numeric",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0112", "M0175"],
+          "reason": "表 1：S-L = 3.3 E/S = 6（C/10，第 2 圈）724 vs S-L = 3.3 E/S = 6 TFSI/Br（C/10，第 2 圈）515；|515−724|/724 ≈ 29%。条件名义相同，但 TFSI/Br 电池为产气胀破后重装的第二颗、加强密封，作者预期其电解液损失更多（M0172），故作者只取第 2 圈比较；各配方只有一颗 operando 电池"
+        },
+        {
+          "id": "P271-T1-R2",
+          "metric": "过电位",
+          "A": "TFSI/Br", "B": "standard",
+          "value_A": null, "value_B": null,
+          "unit": "未报告",
+          "point": "放电过程（结论句未写圈数；本测试比较的是 C/10 第 2 圈）",
+          "basis": "qualitative",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0198"],
+          "reason": "作者定性：adding LiBr causes a surge in the overpotential"
+        },
+        {
+          "id": "P271-T1-R3",
+          "metric": "内阻（ICI 法 R）",
+          "A": "TFSI/Br", "B": "standard",
+          "value_A": null, "value_B": null,
+          "unit": "Ω cm2",
+          "point": "C/10 第 2 圈，下放电平台起始",
+          "basis": "qualitative",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0179"],
+          "reason": "作者定性：the increase in R and k at the beginning of the lower discharge plateau（LiBr 使碳基体内外离子电阻增大）；数值只在 Fig. 6，电阻曲线不属可读图类"
+        },
+        {
+          "id": "P271-T1-R4",
+          "metric": "扩散阻力系数（ICI 法 k）",
+          "A": "TFSI/Br", "B": "standard",
+          "value_A": null, "value_B": null,
+          "unit": "未报告",
+          "point": "C/10 第 2 圈，下放电平台起始",
+          "basis": "qualitative",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0179"],
+          "reason": "作者定性：increase in R and k at the beginning of the lower discharge plateau；k 越大传输越差"
+        },
+        {
+          "id": "P271-T1-R5",
+          "metric": "充电末内阻 R 与扩散阻力系数 k 的上升",
+          "A": "TFSI/Br", "B": "standard",
+          "value_A": null, "value_B": null,
+          "unit": "未报告",
+          "point": "C/10 第 2 圈，充电末",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0183"],
+          "reason": "作者定性：纯 LiTFSI 电池充电末出现的 R、k 上升在 50% LiBr 电池中消失；按电阻低为好记变好（作者未直接说好坏）"
+        }
+      ]
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "P271-M1",
+      "summary": "50% LiTFSI 换成 LiBr 显著改变 Li₂S 的形成，进而改变电阻曲线（未写方向）",
+      "A": "TFSI/Br", "B": "standard",
+      "property": "电解液给体性升高（加入高给体数阴离子 Br⁻）",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0168"],
+      "test_ids": ["P271-T1"],
+      "side": "其他"
+    },
+    {
+      "id": "P271-M2",
+      "summary": "LiBr 电池在下放电平台后半段 Li₂S 析出速率明显更高（观察）",
+      "A": "TFSI/Br", "B": "standard",
+      "property": "电解液给体性升高 → Li₂S 析出速率升高",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0177"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P271-M3",
+      "summary": "LiBr 电池 dI/dq 持续上升（类似 C/20），提示多硫化物氧化态分布更均匀",
+      "A": "TFSI/Br", "B": "standard",
+      "property": "多硫化物溶剂化/物种分布改变：氧化态分布更均匀（推断）",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0178"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P271-M4",
+      "summary": "（M0179 前半句）多硫化物分布更均匀可能源于主导多硫化物物种不同（引文 18、30）",
+      "A": "TFSI/Br", "B": "standard",
+      "property": "多硫化物溶剂化改变 → 主导多硫化物物种不同",
+      "categories": ["正极反应"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0179"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P271-M5",
+      "summary": "（M0179 后半句）LiBr 带来的多硫化物物种改变同时增大碳基体内外的离子电阻 → 下放电平台起始 R、k 升高",
+      "A": "TFSI/Br", "B": "standard",
+      "property": "多硫化物物种改变（高给体性一侧）",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0179"],
+      "test_ids": ["P271-T1"],
+      "side": "强侧"
+    },
+    {
+      "id": "P271-M6",
+      "summary": "50% LiBr 电池中 Li₂S 晶粒更小（FWHM 更大）",
+      "A": "TFSI/Br", "B": "standard",
+      "property": "电解液给体性升高 → Li₂S 晶粒变小",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0180"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P271-M7",
+      "summary": "作者自写例外：晶粒变小的趋势与非包覆碳基体（孔隙率、比表面积低得多）上的既有报道相反；本文用的是包覆型 KB 碳",
+      "A": "TFSI/Br", "B": "standard",
+      "property": "电解液给体性升高对 Li₂S 晶粒的影响随正极碳孔结构而反转",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0181"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P271-M8",
+      "summary": "正极孔结构会影响 Li₂S 析出过程（解释与文献结论相反的原因）",
+      "A": "TFSI/Br", "B": "standard",
+      "property": "正极孔结构（非电解液性质）调制给体性对析出的影响",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0182"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P271-M9",
+      "summary": "纯 LiTFSI 电池充电末出现的 R、k 上升在 50% LiBr 电池中消失",
+      "A": "TFSI/Br", "B": "standard",
+      "property": "电解液给体性升高",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0183"],
+      "test_ids": ["P271-T1"],
+      "side": "弱侧"
+    },
+    {
+      "id": "P271-M10",
+      "summary": "充电末 R 不升与上放电平台更长，与文献中高给体性电解液稳定 S₆²⁻、S₈²⁻ 一致；LiBr 的效果整体符合多硫化物物种随给体数变化的规律",
+      "A": "TFSI/Br", "B": "standard",
+      "property": "多硫化物溶剂化增强：S₆²⁻、S₈²⁻ 被稳定（高给体性一侧）",
+      "categories": ["正极反应"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0191"],
+      "test_ids": ["P271-T1"],
+      "side": "弱侧"
+    },
+    {
+      "id": "P271-M11",
+      "summary": "高给体数促进溶液介导的 Li₂S 生成这一优势（非包覆正极上已证实），在包覆型 S/C 电极中可能被抵消：短链多硫化物浓度高、Li₂S 析出快 → 孔内离子电阻增大、传输变差",
+      "A": "TFSI/Br", "B": "standard",
+      "property": "电解液给体性升高 → 短链多硫化物浓度高、Li₂S 析出速率高",
+      "categories": ["正极反应"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0192"],
+      "test_ids": ["P271-T1"],
+      "side": "强侧"
+    },
+    {
+      "id": "P271-M12",
+      "summary": "加入 LiBr 提高 Li₂S 析出速率 → 过电位剧增（同句对比：提高 E/S 降低析出速率 → 比容量降低）",
+      "A": "TFSI/Br", "B": "standard",
+      "property": "电解液给体性升高 → Li₂S 析出速率升高",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0198"],
+      "test_ids": ["P271-T1"],
+      "side": "强侧"
+    },
+    {
+      "id": "P271-M13",
+      "summary": "LiBr 带来的高析出速率在包覆型碳基体中没有转化为高硫利用率",
+      "A": "TFSI/Br", "B": "standard",
+      "property": "电解液给体性升高 → Li₂S 析出速率升高",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0030"],
+      "test_ids": ["P271-T1"],
+      "side": "强侧"
+    },
+    {
+      "id": "P271-M14",
+      "summary": "使用 LiBr 时电池产气更多（镀铝聚酰亚胺窗外鼓），推测产气发生在电解液/金属锂界面",
+      "A": "TFSI/Br", "B": "standard",
+      "property": "LiBr 盐与金属锂界面反应（非溶剂化起点）",
+      "categories": ["负极锂"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0169"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P271-M15",
+      "summary": "产气使内压升高，预计 LiBr 电池经聚酰亚胺窗损失更多电解液",
+      "A": "TFSI/Br", "B": "standard",
+      "property": "产气 → 内压升高（非溶剂化起点）",
+      "categories": ["电解液消耗"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0172"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P271-M16",
+      "summary": "产气还可能使接触电阻随循环变差；电解液损失与接触电阻两者可能影响了 LiBr 电池第 3 圈以后的倍率性能（因此只用第 2 圈比较）",
+      "A": "TFSI/Br", "B": "standard",
+      "property": "产气 → 接触电阻变差（非溶剂化起点）",
+      "categories": [],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0173", "M0174"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P271-M17",
+      "summary": "（引言转述）高给体性下 Li⁺ 团簇变软，稳定不同的多硫化物物种，从而影响 Li₂S 析出",
+      "A": "TFSI/Br", "B": "standard",
+      "property": "Li⁺ 溶剂化增强（被溶剂或阴离子更强络合）→ 多硫化物物种稳定化",
+      "categories": ["正极反应"],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0020"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P271-M18",
+      "summary": "（引言转述）在开放/非包覆碳基体上，高给体数溶剂或阴离子使 Li₂S 颗粒更大、硫利用率更高——与本文包覆型碳的结果相反",
+      "A": "TFSI/Br", "B": "standard",
+      "property": "电解液给体数升高",
+      "categories": ["正极反应"],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0021"],
+      "test_ids": [],
+      "side": "弱侧"
+    }
+  ],
+  "design_claims": [
+    {
+      "summary": "折中：Li₂S 析出速率需取平衡——提高 E/S 使析出变慢会降低比容量，加 LiBr 使析出变快会使过电位剧增；须按目标（面容量或功率能力）取平衡，未给出最优配方",
+      "evidence_ids": ["M0198", "M0199"]
+    }
+  ],
+  "figure_requests": [
+    {
+      "test_id": "P271-T1",
+      "figure": "Figure S4",
+      "part": "si",
+      "metric": "首圈容量",
+      "A": "TFSI/Br", "B": "standard",
+      "target_point": "C/10 第 2 圈（化成后 C/10 第 1 圈）总放电比容量 Qd",
+      "anchor_quote_ids": [],
+      "reason": "Li‖S 循环类测试缺同一测试的总放电容量（文字只有下平台容量 Qd,l）；无锚点（表 1 只给下平台容量，口径不同），按规则可能整图不用；图中是否含 TFSI/Br 的 operando 电池原文未写明"
+    }
+  ],
+  "gaps": [
+    "P271-T1 未报告总放电容量（文字只有下平台放电比容量 Qd,l）",
+    "P271-T1 未报告库仑效率（只在 Figure S4 图中）",
+    "P271-T1 未报告寿命或保持率（operando 电池只循环十余圈）",
+    "P271-T1 温度未报告",
+    "未测 Li⁺ 溶剂化、多硫化物溶解度、离子电导率、黏度、离子迁移数；给体性排序只依据作者对 LiBr 的定性描述，多硫化物物种为作者推断",
+    "TFSI/Br 电池首次组装因产气胀破，第二颗加强密封；作者预期其电解液损失更多、接触电阻变差，只用第 2 圈比较（M0169–M0175）；每个配方只有一颗 operando 电池",
+    "TFSI/Br 在 C/20（第 11 圈）、C/13（第 13 圈）的下平台容量无同条件 standard 对照（standard 的 S-L 3.3 E/S 6 电池只测 C/10），不判",
+    "E/S（6 vs 10 µL mgS⁻¹）、硫载量（2.5 vs 3.3/3.4 mgS cm⁻²）、倍率（C/10、C/5、C/2、C/3、C/20）三组对比只用 standard 电解液，是条件变化而非配方比较，未建测试；相关作者说法（E/S 高 → 多硫化物浓度低、Li₂S 析出慢 → 电阻低但比容量低，M0107、M0110、M0198）未记入机制",
+    "常规扣电（CC）对照电池（Figures S2–S4）条件只写 close cell parameters，未建测试",
+    "电解液浓度用小写 m（mol/kg 还是 mol/L 不明），按规则不换算",
+    "原文 M0055 对 S-L、E/S 中 X、Y 的说明与 M0053 颠倒，按 M0053 和电池名理解"
+  ],
+  "source_review": {
+    "main": true,
+    "si": true,
+    "notes": "通读正文（M0001–M0353，参考文献略读）与 SI（S0001–S0038，SI 只有图注：实验装置照片、operando 与常规扣电对比、dI/dq 原始值、XRD 图谱）；未读任何既有提取结果。本文是 operando XRD 机理研究，配方比较只有 standard vs TFSI/Br 一组，且只在 S-L 3.3、E/S 6、C/10 第 2 圈；1C 原文写作 C = 1672 mAh gS−1。"
+  }
+}

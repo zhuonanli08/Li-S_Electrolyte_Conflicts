@@ -1,0 +1,963 @@
+{
+  "paper_id": "P149",
+  "doi": "10.1002/smll.201905737",
+  "formulations": [
+    {
+      "id": "LS002",
+      "name": "LS002（1.0 m LiTFSI in DOL: DME = 1:1 vol% with 1.0% LiNO3，商购 DoDoChem）",
+      "components": [
+        {"name": "LiTFSI", "role": "盐", "amount": 1.0, "unit": "m"},
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": "1:1", "unit": "vol%（DOL:DME）"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": "1:1", "unit": "vol%（DOL:DME）"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 1, "unit": "wt%（M0169 写作 1.0%）"}
+      ],
+      "raw_formula": "conventional electrolyte (1 m LiTFSI DOL/DME with 1 wt% LiNO3, denoted as LS002)；1.0 m LiTFSI in DOL: DME = 1:1 vol% with 1.0% LiNO3 (LS002) was purchased from DoDoChem",
+      "evidence_ids": ["M0044", "M0169"]
+    },
+    {
+      "id": "2m-DME",
+      "name": "2 m LiTFSI/DME（含 0.1 m LiNO3）",
+      "components": [
+        {"name": "LiTFSI", "role": "盐", "amount": 2, "unit": "m"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": "单一溶剂", "unit": "原文未给比例"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 0.1, "unit": "m"}
+      ],
+      "raw_formula": "2 m LiTFSI/ DME (with 0.1 m LiNO3, all of the following mentioned contain the same amount)",
+      "evidence_ids": ["M0041"]
+    },
+    {
+      "id": "TDE",
+      "name": "TDE（TTE 与 2 m LiTFSI/DME（含 0.1 m LiNO3）按体积 4:1 混合）",
+      "components": [
+        {"name": "LiTFSI", "role": "盐", "amount": "2（母液 2 m LiTFSI/DME）；混合后平均约 0.4", "unit": "m"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": "1（以 2 m LiTFSI/DME 母液计）", "unit": "体积份（TTE : 2 m LiTFSI/DME = 4:1）"},
+        {"name": "TTE", "role": "弱或非溶剂化溶剂", "amount": 4, "unit": "体积份（TTE : 2 m LiTFSI/DME = 4:1）"},
+        {"name": "LiNO3", "role": "添加剂", "amount": "0.1（母液中）；TDE 中约 0.025", "unit": "m"}
+      ],
+      "raw_formula": "TDE electrolyte was obtained by simply mixing the TTE and 2 m LiTFSI/DME (with 0.1 m LiNO3) electrolyte in 4:1 by volume；the average LiTFSI concentration is about 0.4 m；the concentration of LiNO3 in the TDE electrolyte is around 0.025 m",
+      "evidence_ids": ["M0037", "M0041", "M0043", "M0170"]
+    },
+    {
+      "id": "TDE-noLiNO3",
+      "name": "TDE electrolyte without LiNO3 additive（LiNO3-free electrolyte）",
+      "components": [
+        {"name": "LiTFSI", "role": "盐", "amount": "未报告（推定同 TDE）", "unit": "未报告"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": "未报告（推定同 TDE）", "unit": "未报告"},
+        {"name": "TTE", "role": "弱或非溶剂化溶剂", "amount": "未报告（推定同 TDE）", "unit": "未报告"}
+      ],
+      "raw_formula": "Li/Li symmetric cells using TDE electrolyte without LiNO3 additive；the Li/Li cells using LiNO3-free electrolyte",
+      "evidence_ids": ["S0047", "S0049"]
+    }
+  ],
+  "control_id": "LS002",
+  "control_type": "常规醚基准（DOL/DME + LiTFSI + LiNO₃）：商购 LS002（1.0 m LiTFSI DOL:DME = 1:1 + 1 wt% LiNO₃）；TDE 的 LiNO₃ 仅约 0.025 m，两者 LiNO₃ 用量不同；电池测试多数同时配 CS 碳涂层隔膜",
+  "gradients": [
+    {
+      "name": "TTE 体积分数（用量梯度：向 2 m LiTFSI/DME 母液中加 TTE）",
+      "order": ["2m-DME", "TDE"],
+      "values": ["0%", "80%（TTE : 2 m LiTFSI/DME = 4:1）"],
+      "solvation_axis": "按 TTE 稀释由少到多排（推定 Li⁺ 溶剂化由强到弱）；依据：作者 Raman——TTE 的 COC 峰几乎不变、几乎不与 Li⁺ 配位，加 TTE 后 TFSI⁻ 峰移至 1244.8 cm⁻¹、接近 5 m LiTFSI/DME，形成接触离子对；作者本人的说法是 DME、Li⁺、TFSI⁻ 相互作用增强（M0051），未直接说溶剂化变弱。中间各档（Figure S1 阻燃、电导率、迁移数）只在图中，原文未写档位",
+      "evidence_ids": ["M0041", "M0043", "M0047", "M0050", "M0051", "S0028"]
+    }
+  ],
+  "properties": [
+    {
+      "name": "多硫化物溶解度",
+      "values": {"LS002": "高（透明电池颜色随时间加深；UV–vis Li₂S₆ 峰强）", "TDE": "低（仅由透明变为极浅黄；Li₂S₆ 峰弱得多）", "2m-DME": "未报告"},
+      "direction": "TDE 低于 LS002",
+      "method": "透明电池 0.1 C 由开路电压放电至 1.8 V，不同放电态拍照 + 电解液 UV–vis",
+      "system": "工作中的透明电池里的电解液（电池中溶出的多硫化物量，非饱和溶解度测定）；2 m LiTFSI/DME 未测",
+      "evidence_ids": ["M0009", "M0055", "M0063", "M0064", "M0065", "M0066"]
+    },
+    {
+      "name": "多硫化物溶剂化",
+      "values": {"LS002": "较强（作者说法）", "TDE": "较弱（作者说法）", "2m-DME": "未报告"},
+      "direction": "TDE 弱于 LS002（作者说法，无独立测量）",
+      "method": "无独立测量；作者据透明电池 UV–vis 溶出结果的说法",
+      "system": "未报告",
+      "evidence_ids": ["M0111", "M0124"]
+    },
+    {
+      "name": "Li⁺ 溶剂化",
+      "values": {"2m-DME": "TFSI⁻ S=O 峰 1243.1 cm⁻¹（与 1 m LiTFSI/DME 相同，作者称溶剂化结构相同）", "TDE": "TFSI⁻ 峰 1244.8 cm⁻¹，接近 5 m LiTFSI/DME，形成接触离子对；TTE 几乎不与 Li⁺ 配位", "LS002": "未报告"},
+      "direction": "加 TTE 后 TFSI⁻ 进入 Li⁺ 溶剂化层（接触离子对）；作者称 DME、Li⁺、TFSI⁻ 之间相互作用增强",
+      "method": "Raman（COC 峰 820–880 cm⁻¹；TFSI⁻ S=O 峰 1235–1265 cm⁻¹）",
+      "system": "电解液本体，室温石英管密封；另以 0.5–6 m LiTFSI/DME 作参照",
+      "evidence_ids": ["M0045", "M0046", "M0047", "M0048", "M0049", "M0050", "M0051"]
+    },
+    {
+      "name": "离子电导率",
+      "values": {"TDE": "0.990 mS cm-1", "LS002": "高于 TDE（数值仅图 2a）", "2m-DME": "高于 TDE（数值仅图 2a）"},
+      "direction": "TDE 略低于 LS002 与 2 m LiTFSI/DME（作者归因于盐浓度较低）；随 TTE 体积比增加而降低（各档数值仅 Figure S1）",
+      "method": "SS/SS 扣式电池 EIS，σ = l/SR，室温",
+      "system": "电解液本体",
+      "evidence_ids": ["M0052", "M0043", "M0191"]
+    },
+    {
+      "name": "黏度",
+      "values": {"TDE": "1.091 mPa s", "LS002": "高于 TDE（数值仅图 1b）", "2m-DME": "高于 TDE（数值仅图 1b）"},
+      "direction": "TDE 低于 LS002 与 2 m LiTFSI/DME",
+      "method": "25 °C 黏度测定（仪器原文未写）",
+      "system": "电解液本体",
+      "evidence_ids": ["M0044", "M0059"]
+    },
+    {
+      "name": "离子迁移数",
+      "values": {"TDE": "0.4842", "LS002": "未报告", "2m-DME": "未报告"},
+      "direction": "只测 TDE（各 TTE 比例的迁移数仅 Figure S1）",
+      "method": "Li/电解液/Li CR-2032，Bruce–Vincent–Evans，计时电流 10 mV",
+      "system": "电解液本体",
+      "evidence_ids": ["M0054", "M0192", "M0193"]
+    },
+    {
+      "name": "电化学稳定窗口",
+      "values": {"TDE": "分解起始 4.7 V vs Li/Li+", "LS002": "仅图 2b", "2m-DME": "仅图 2b"},
+      "direction": "只给 TDE 数值",
+      "method": "Li/电解液/不锈钢 CR-2032 线性扫描，0.1 mV s-1",
+      "system": "电解液本体",
+      "evidence_ids": ["M0053", "M0190"]
+    },
+    {
+      "name": "阻燃性",
+      "values": {"LS002": "剧烈燃烧", "TDE": "难点燃（不燃）"},
+      "direction": "TDE 不燃，LS002 易燃；TTE 体积比 ≥80% 时喷雾可扑灭燃烧纸卷",
+      "method": "点燃测试（约 300 µL 滴于直径 16 mm 玻纤隔膜后点火）；喷雾灭火测试",
+      "system": "电解液本体",
+      "evidence_ids": ["M0043", "S0063", "S0064", "S0065"]
+    }
+  ],
+  "tests": [
+    {
+      "id": "P149-T1",
+      "name": "Li‖S 0.5 C 长循环（不配 CS 隔膜）",
+      "cell": "Li‖S（裸硫正极；电池形式原文未写）",
+      "conditions": {
+        "sulfur_loading": "≈1.2 mg cm-2（约 2 mAh cm-2）",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.5 C（≈1 mA cm-2）",
+        "formation": "未报告",
+        "temperature": "ambient temperature（原文未给数值）",
+        "LiNO3": "均含：LS002 1 wt%；TDE 约 0.025 m",
+        "one_C": "未报告（按 M0143 反算约 1.675 A g-1：6.7 mA cm-2 ÷ 4 ÷ 1 mg cm-2）",
+        "separator": "未用 CS 碳涂层（TDE 为 TDE electrolyte alone；LS002 这组是否用 CS 原文未写，推定未用）；基底隔膜种类原文未写",
+        "voltage_window": "1.8–2.8 V",
+        "cathode": "裸硫正极 S : Super P : PVDF = 6:3:1，铝箔"
+      },
+      "formulations": ["TDE", "LS002"],
+      "evidence_ids": ["M0109", "M0111", "M0112", "M0134", "S0036", "M0172", "M0174"],
+      "results": [
+        {
+          "id": "P149-T1-R1",
+          "metric": "指定圈容量",
+          "A": "TDE", "B": "LS002",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1",
+          "point": "0.5 C 循环（圈数原文未写；TDE ≈200 mAh g-1）",
+          "basis": "qualitative",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0111"],
+          "reason": "作者：TDE shows relatively lower discharge capacity (≈200 mAh g−1 at 0.5 C) than LS002；LS002 无数；LS002 这组是否配 CS 原文未写"
+        },
+        {
+          "id": "P149-T1-R2",
+          "metric": "保持率",
+          "A": "TDE", "B": "LS002",
+          "value_A": null, "value_B": null,
+          "unit": "%",
+          "point": "0.5 C，900 圈内（口径：作者定性“容量几乎不变”）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0112"],
+          "reason": "作者：the cycling stability of TDE electrolyte–based Li/S batteries is improved, the discharge capacity keeps almost unchanged over 900 cycles；LS002 无数"
+        },
+        {
+          "id": "P149-T1-R3",
+          "metric": "首圈容量",
+          "A": "TDE", "B": "LS002",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1",
+          "point": "0.5 C 第 1 圈（化成协议未报告）",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [],
+          "reason": "首圈值只在 Fig. 6a；已登记读图"
+        }
+      ]
+    },
+    {
+      "id": "P149-T2",
+      "name": "Li‖S 0.5 C 长循环（配 CS 碳涂层隔膜）",
+      "cell": "Li‖S（裸硫正极；电池形式原文未写）",
+      "conditions": {
+        "sulfur_loading": "≈1.2 mg cm-2（约 2 mAh cm-2）",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.5 C（≈1 mA cm-2）",
+        "formation": "未报告",
+        "temperature": "ambient temperature（原文未给数值）",
+        "LiNO3": "均含：LS002 1 wt%；TDE 约 0.025 m",
+        "one_C": "未报告（按 M0143 反算约 1.675 A g-1：6.7 mA cm-2 ÷ 4 ÷ 1 mg cm-2）",
+        "separator": "CS（Super P/PVDF 1:1 涂覆纤维素无纺布，涂层厚 10 µm）",
+        "voltage_window": "1.8–2.8 V",
+        "cathode": "裸硫正极 S : Super P : PVDF = 6:3:1，铝箔"
+      },
+      "formulations": ["TDE", "LS002"],
+      "evidence_ids": ["M0109", "M0114", "M0115", "M0118", "M0134", "M0171", "M0172", "M0174"],
+      "results": [
+        {
+          "id": "P149-T2-R1",
+          "metric": "指定圈容量",
+          "A": "TDE", "B": "LS002",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1",
+          "point": "0.5 C 前 200 圈（作者定性）",
+          "basis": "qualitative",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0118"],
+          "reason": "作者：When coupled with CS separator, batteries using LS002 electrolyte showed slightly higher discharge capacity than batteries using TDE electrolyte during the first 200 cycles"
+        },
+        {
+          "id": "P149-T2-R2",
+          "metric": "首圈容量",
+          "A": "TDE", "B": "LS002",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1",
+          "point": "0.5 C 第 1 圈（化成协议未报告）",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [],
+          "reason": "TDE+CS 首圈 903 mAh g-1（M0115）有数，LS002+CS 首圈只在 Fig. 6a；已登记读图"
+        },
+        {
+          "id": "P149-T2-R3",
+          "metric": "指定圈容量",
+          "A": "TDE", "B": "LS002",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1",
+          "point": "0.5 C 约第 200 圈之后（作者定性）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0120", "M0121"],
+          "reason": "作者：after around 200 cycling, the leading edge of the LS002 electrolyte disappeared；in the subsequent cycles, TDE shows higher discharge capacity；两线约第 200 圈交叉"
+        },
+        {
+          "id": "P149-T2-R4",
+          "metric": "保持率",
+          "A": "TDE", "B": "LS002",
+          "value_A": 49.4, "value_B": 23.7,
+          "unit": "%",
+          "point": "0.5 C 第 1000 圈，相对初始容量",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0122"],
+          "reason": "49.4% vs 23.7%；另 TDE+CS 200 圈保持率 83.6%（M0160）无 LS002 对应数"
+        }
+      ]
+    },
+    {
+      "id": "P149-T3",
+      "name": "Li‖S 循环伏安",
+      "cell": "Li‖S CR-2032 扣式",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "扫速 0.1 mV s-1",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "均含：LS002 1 wt%；TDE 约 0.025 m",
+        "one_C": "不适用（CV）",
+        "separator": "TDE 配 CS；LS002 是否配 CS 原文未写",
+        "voltage_window": "1.8–2.8 V"
+      },
+      "formulations": ["TDE", "LS002"],
+      "evidence_ids": ["M0131", "M0188", "M0189"],
+      "results": [
+        {
+          "id": "P149-T3-R1",
+          "metric": "过电位",
+          "A": "TDE", "B": "LS002",
+          "value_A": null, "value_B": null,
+          "unit": "V",
+          "point": "CV 氧化峰与还原峰电位差（TDE+CS 0.239 V）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0131"],
+          "reason": "作者：TDE/CS 峰电位差 0.239 V，much smaller compared to LS002；LS002 无数，隔膜原文未写"
+        }
+      ]
+    },
+    {
+      "id": "P149-T4",
+      "name": "Li‖S 倍率（仅 TDE+CS）",
+      "cell": "Li‖S（裸硫正极；电池形式原文未写）",
+      "conditions": {
+        "sulfur_loading": "1 mg cm-2",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "倍率阶梯至 4 C（6.7 mA cm-2），后回 0.5 C",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含约 0.025 m（TDE）",
+        "one_C": "未报告（按本句反算约 1.675 A g-1：6.7 mA cm-2 ÷ 4 ÷ 1 mg cm-2）",
+        "separator": "CS"
+      },
+      "formulations": ["TDE"],
+      "evidence_ids": ["M0143", "M0144"],
+      "results": []
+    },
+    {
+      "id": "P149-T5",
+      "name": "Li‖S 60 °C 0.1 C 循环（配 CS）",
+      "cell": "Li‖S（裸硫正极；电池形式原文未写）",
+      "conditions": {
+        "sulfur_loading": "≈1.2 mg cm-2",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.1 C",
+        "formation": "未报告",
+        "temperature": "60 °C",
+        "LiNO3": "均含：LS002 1 wt%；TDE 约 0.025 m",
+        "one_C": "未报告（按 M0143 反算约 1.675 A g-1）",
+        "separator": "CS（两者均配）",
+        "voltage_window": "1.8–2.8 V"
+      },
+      "formulations": ["TDE", "LS002"],
+      "evidence_ids": ["M0134", "M0145", "M0146", "M0147", "M0174"],
+      "results": [
+        {
+          "id": "P149-T5-R1",
+          "metric": "首圈容量",
+          "A": "TDE", "B": "LS002",
+          "value_A": 1557, "value_B": 1671.5,
+          "unit": "mAh g-1",
+          "point": "60 °C 0.1 C 初始放电容量（化成协议未报告）",
+          "basis": "numeric",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0146", "M0147"],
+          "reason": "(1671.5−1557)/1671.5 ≈ 6.9% > 5%"
+        },
+        {
+          "id": "P149-T5-R2",
+          "metric": "指定圈容量",
+          "A": "TDE", "B": "LS002",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1",
+          "point": "60 °C 0.1 C 第 100 圈（TDE 870 mAh g-1；LS002 作者定性 sharply declined）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0146", "M0147"],
+          "reason": "TDE 100 圈后 870 mAh g-1；LS002 then the capacity is sharply declined，无数；已登记读图"
+        }
+      ]
+    },
+    {
+      "id": "P149-T6",
+      "name": "Li‖S 高载硫 0.02 C 循环（配 CS）",
+      "cell": "Li‖S（裸硫正极；电池形式原文未写）",
+      "conditions": {
+        "sulfur_loading": "over 4 mg cm-2（图注）；实验部分 ≈4 mg cm-2",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.02 C",
+        "formation": "未报告",
+        "temperature": "25 °C",
+        "LiNO3": "均含：LS002 1 wt%；TDE 约 0.025 m",
+        "one_C": "未报告（按 M0143 反算约 1.675 A g-1）",
+        "separator": "CS（两者均配）",
+        "voltage_window": "1.8–2.8 V"
+      },
+      "formulations": ["TDE", "LS002"],
+      "evidence_ids": ["M0135", "M0154", "M0155", "M0156", "M0173", "M0174"],
+      "results": [
+        {
+          "id": "P149-T6-R1",
+          "metric": "首圈容量",
+          "A": "TDE", "B": "LS002",
+          "value_A": 1187, "value_B": 1223.9,
+          "unit": "mAh g-1",
+          "point": "0.02 C 首次放电（化成协议未报告）",
+          "basis": "numeric",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["M0155", "M0156"],
+          "reason": "(1223.9−1187)/1223.9 ≈ 3.0% < 5%"
+        },
+        {
+          "id": "P149-T6-R2",
+          "metric": "指定圈容量",
+          "A": "TDE", "B": "LS002",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1",
+          "point": "0.02 C 第 56 圈（TDE 806 mAh g-1；LS002 作者定性 rapid capacity decline）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0155", "M0156"],
+          "reason": "LS002 无第 56 圈数值；已登记读图。SI Table S1 写 820 mAh/g after 42 cycles，与正文 806 after 56 cycles 不一致"
+        },
+        {
+          "id": "P149-T6-R3",
+          "metric": "库仑效率",
+          "A": "TDE", "B": "LS002",
+          "value_A": ">97", "value_B": "≈80.6–≈93.8",
+          "unit": "%",
+          "point": "0.02 C 循环全程（TDE 高于 97%；LS002 最低约 80.6%、最高约 93.8%）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0155", "M0156"],
+          "reason": "作者称 LS002 low CE value；区间不重叠"
+        }
+      ]
+    },
+    {
+      "id": "P149-T7",
+      "name": "Li‖S 自放电（充至 2.8 V 后静置 72 h，配 CS）",
+      "cell": "Li‖S（裸硫正极；电池形式原文未写）",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "均含：LS002 1 wt%；TDE 约 0.025 m",
+        "one_C": "未报告",
+        "separator": "CS（两者均配）",
+        "rest": "充电至 2.8 V 后静置 72 h"
+      },
+      "formulations": ["TDE", "LS002"],
+      "evidence_ids": ["M0140", "M0141", "S0014", "S0034"],
+      "results": [
+        {
+          "id": "P149-T7-R1",
+          "metric": "自放电率",
+          "A": "TDE", "B": "LS002",
+          "value_A": null, "value_B": null,
+          "unit": "V（静置开路电压变化）",
+          "point": "静置 72 h 开路电压：LS002 2.35 → 2.15 V；TDE 约 2.3 V 无明显衰减",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0140", "M0141"],
+          "reason": "作者：the utilization of TDE electrolyte improves the resistance of self-discharge；TDE 无下降数值，只说 without obvious decay"
+        }
+      ]
+    },
+    {
+      "id": "P149-T8",
+      "name": "Li‖Li 2.5 mA cm-2 / 5 mAh cm-2",
+      "cell": "Li‖Li 对称电池（形式原文未写）",
+      "conditions": {
+        "sulfur_loading": "不适用（Li‖Li）",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "2.5 mA cm-2，5 mAh cm-2",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "均含：LS002 1 wt%；TDE 约 0.025 m",
+        "one_C": "不适用"
+      },
+      "formulations": ["TDE", "LS002"],
+      "evidence_ids": ["M0068", "M0086"],
+      "results": [
+        {
+          "id": "P149-T8-R1",
+          "metric": "过电位",
+          "A": "TDE", "B": "LS002",
+          "value_A": 30, "value_B": ">50",
+          "unit": "mV",
+          "point": "Fig. 3b、3c 局部放大段",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": ["M0068"],
+          "reason": "原句把 >50 mV 与 30 mV 都写成 LS002（as reference, Li/Li cells using LS002 electrolyte shows ... 30 mV），30 mV 是否属 TDE 原文未写清（疑为笔误），按“作者说法前后不一”不判"
+        }
+      ]
+    },
+    {
+      "id": "P149-T9",
+      "name": "Li‖Li 1.0 mA cm-2 / 1.0 mAh cm-2 长循环",
+      "cell": "Li‖Li 对称电池（形式原文未写）",
+      "conditions": {
+        "sulfur_loading": "不适用（Li‖Li）",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "1.0 mA cm-2，1.0 mAh cm-2",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "均含：LS002 1 wt%；TDE 约 0.025 m",
+        "one_C": "不适用"
+      },
+      "formulations": ["TDE", "LS002"],
+      "evidence_ids": ["M0069", "M0086", "M0010"],
+      "results": [
+        {
+          "id": "P149-T9-R1",
+          "metric": "寿命（循环小时数）",
+          "A": "TDE", "B": "LS002",
+          "value_A": ">2500", "value_B": ">2500",
+          "unit": "h",
+          "point": "稳定循环时长",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": ["M0069"],
+          "reason": "Both TDE and LS002 electrolyte steadily cycled over 2500 h；两者均 >2500 h，区间重叠，按规则不判"
+        },
+        {
+          "id": "P149-T9-R2",
+          "metric": "过电位",
+          "A": "TDE", "B": "LS002",
+          "value_A": null, "value_B": null,
+          "unit": "mV",
+          "point": "全程（TDE <10 mV）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0069", "M0010"],
+          "reason": "作者：the overpotential of TDE ... is always less than the LS002；TDE less than 10 mV（M0010），LS002 无数"
+        }
+      ]
+    },
+    {
+      "id": "P149-T10",
+      "name": "Li‖Cu 0.1 mA cm-2 / 0.1 mAh cm-2",
+      "cell": "Li‖Cu（形式原文未写）",
+      "conditions": {
+        "sulfur_loading": "不适用（Li‖Cu）",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.1 mA cm-2，0.1 mAh cm-2",
+        "formation": "未报告（作者称前几圈为活化与 SEI 形成）",
+        "temperature": "未报告",
+        "LiNO3": "均含：LS002 1 wt%；TDE 约 0.025 m",
+        "one_C": "不适用"
+      },
+      "formulations": ["TDE", "LS002"],
+      "evidence_ids": ["M0070", "M0071", "S0010", "S0030"],
+      "results": [
+        {
+          "id": "P149-T10-R1",
+          "metric": "库仑效率",
+          "A": "TDE", "B": "LS002",
+          "value_A": null, "value_B": null,
+          "unit": "%",
+          "point": "第 10–45 圈（TDE 平均 95.1%）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0075", "M0076"],
+          "reason": "TDE 第 10–45 圈平均 CE 95.1%；LS002 CE 波动并急剧下降，无数，作者称 poor performance"
+        }
+      ]
+    },
+    {
+      "id": "P149-T11",
+      "name": "Li‖Li TDE 含/不含 LiNO3（Figure S11）",
+      "cell": "Li‖Li 对称电池（形式原文未写）",
+      "conditions": {
+        "sulfur_loading": "不适用（Li‖Li）",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "TDE 含约 0.025 m；TDE-noLiNO3 不含",
+        "one_C": "不适用"
+      },
+      "formulations": ["TDE", "TDE-noLiNO3"],
+      "evidence_ids": ["S0047", "S0048", "S0049", "S0050"],
+      "results": [
+        {
+          "id": "P149-T11-R1",
+          "metric": "过电位",
+          "A": "TDE", "B": "TDE-noLiNO3",
+          "value_A": null, "value_B": null,
+          "unit": "mV",
+          "point": "循环初期过电位变化（TDE 逐渐降低并稳定在约 8 mV；无 LiNO3 者电压曲线稳定、无明显变化）",
+          "basis": "qualitative",
+          "direction_text": "不判",
+          "same_conditions": false,
+          "evidence_ids": ["S0049", "S0050", "S0051", "S0052"],
+          "reason": "作者只描述两者过电位随圈数的变化形态，未比高低；两者来自 Figure S11 不同子图，条件原文未写、未说同批"
+        }
+      ]
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "P149-M1",
+      "summary": "TDE 对多硫化物溶出少（UV–vis Li₂S₆ 峰弱）→ 多硫化物穿梭少；未落到电池表现",
+      "A": "TDE", "B": "LS002",
+      "property": "多硫化物溶解度降低",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0066"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P149-M2",
+      "summary": "TDE 对多硫化物溶剂化能力较低 → 硫利用率降低 → 不配 CS 时放电容量低于 LS002（≈200 mAh g-1）",
+      "A": "TDE", "B": "LS002",
+      "property": "多硫化物溶剂化减弱",
+      "categories": ["正极反应"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0111"],
+      "test_ids": ["P149-T1"],
+      "side": "弱侧"
+    },
+    {
+      "id": "P149-M3",
+      "summary": "多硫化物溶剂化较低同时带来好处：TDE 电池循环稳定性提高，900 圈容量几乎不变",
+      "A": "TDE", "B": "LS002",
+      "property": "多硫化物溶剂化减弱",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0112"],
+      "test_ids": ["P149-T1"],
+      "side": "强侧"
+    },
+    {
+      "id": "P149-M4",
+      "summary": "TDE 配 CS 后容量明显高于单用 TDE，归因于 CS 隔膜加快多硫化物反应动力学（隔膜变量，非电解液）",
+      "A": "TDE", "B": "TDE",
+      "property": "无溶剂化变化（同一 TDE，配 CS 隔膜 vs 不配）",
+      "categories": ["正极反应"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0116"],
+      "test_ids": ["P149-T1", "P149-T2"],
+      "side": "其他"
+    },
+    {
+      "id": "P149-M5",
+      "summary": "TDE 对多硫化物溶剂化能力有限、易饱和；CS 加速高阶→低阶多硫化物转化，避免 TDE 饱和，使其能持续溶剂化多硫化物，提高硫利用率（弱溶剂化一侧的容量短板可由隔膜补回）",
+      "A": "TDE", "B": "TDE",
+      "property": "多硫化物溶剂化能力有限（TDE 易饱和）",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0117"],
+      "test_ids": ["P149-T1", "P149-T2"],
+      "side": "弱侧"
+    },
+    {
+      "id": "P149-M6",
+      "summary": "LS002 溶出更多多硫化物、被 CS 碳层捕获 → 短期硫利用率显著提高 → 前 200 圈 LS002 容量略高于 TDE",
+      "A": "TDE", "B": "LS002",
+      "property": "多硫化物溶解度：LS002 高于 TDE",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0119"],
+      "test_ids": ["P149-T2"],
+      "side": "弱侧"
+    },
+    {
+      "id": "P149-M7",
+      "summary": "LS002 中大量多硫化物溶出，过量部分穿过碳涂层到达锂负极 → 容量快速衰减",
+      "A": "TDE", "B": "LS002",
+      "property": "多硫化物溶解度：LS002 高",
+      "categories": ["多硫化物穿梭", "负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0123"],
+      "test_ids": ["P149-T2"],
+      "side": "强侧"
+    },
+    {
+      "id": "P149-M8",
+      "summary": "TDE 溶解多硫化物能力较弱，加上隔膜正极侧碳涂层，穿梭被进一步抑制",
+      "A": "TDE", "B": "LS002",
+      "property": "多硫化物溶解度降低",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0124"],
+      "test_ids": ["P149-T2"],
+      "side": "强侧"
+    },
+    {
+      "id": "P149-M9",
+      "summary": "TDE 使锂负极形成无枝晶界面 → TDE 电池比 LS002 更稳定",
+      "A": "TDE", "B": "LS002",
+      "property": "锂负极界面（起点不是溶剂化）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0125"],
+      "test_ids": ["P149-T2"],
+      "side": "其他"
+    },
+    {
+      "id": "P149-M10",
+      "summary": "LS002 对多硫化物溶解度高 → 静置时溶出的多硫化物与锂负极自发反应、穿梭严重 → 自放电严重（开路电压 2.35 → 2.15 V）",
+      "A": "TDE", "B": "LS002",
+      "property": "多硫化物溶解度：LS002 高",
+      "categories": ["多硫化物穿梭", "负极锂"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0140"],
+      "test_ids": ["P149-T7"],
+      "side": "强侧"
+    },
+    {
+      "id": "P149-M11",
+      "summary": "TDE 多硫化物溶解度降低 → 自放电减轻",
+      "A": "TDE", "B": "LS002",
+      "property": "多硫化物溶解度降低",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0142"],
+      "test_ids": ["P149-T7"],
+      "side": "强侧"
+    },
+    {
+      "id": "P149-M12",
+      "summary": "高温下常规电解液（LS002）与锂负极反应更强，电解液持续消耗、多硫化物穿梭严重 → 60 °C 容量骤降",
+      "A": "TDE", "B": "LS002",
+      "property": "常规电解液对锂反应性高 + 多硫化物穿梭（未明说溶剂化）",
+      "categories": ["负极锂", "电解液消耗", "多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0150"],
+      "test_ids": ["P149-T5"],
+      "side": "强侧"
+    },
+    {
+      "id": "P149-M13",
+      "summary": "TDE+CS 在 60 °C 稳定、容量高，归因于电极–电解液界面优化",
+      "A": "TDE", "B": "LS002",
+      "property": "电极/电解液界面（起点不是溶剂化）",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0151"],
+      "test_ids": ["P149-T5"],
+      "side": "其他"
+    },
+    {
+      "id": "P149-M14",
+      "summary": "TDE 与 CS 协同减少多硫化物穿梭，也是 60 °C 性能好的重要原因",
+      "A": "TDE", "B": "LS002",
+      "property": "多硫化物穿梭减少（电解液 + 隔膜协同）",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0152"],
+      "test_ids": ["P149-T5"],
+      "side": "强侧"
+    },
+    {
+      "id": "P149-M15",
+      "summary": "高载硫电池中 LS002 的负极/电解液界面恶化 → 库仑效率低、容量快速衰减",
+      "A": "TDE", "B": "LS002",
+      "property": "负极/电解液界面（起点不是溶剂化）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0156"],
+      "test_ids": ["P149-T6"],
+      "side": "其他"
+    },
+    {
+      "id": "P149-M16",
+      "summary": "TDE 对多硫化物溶解度较低 → 阻碍多硫化物扩散与穿梭 → 容量保持率更高（0.5 C 200 圈 83.6%）",
+      "A": "TDE", "B": "LS002",
+      "property": "多硫化物溶解度降低",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0160"],
+      "test_ids": ["P149-T2"],
+      "side": "强侧"
+    },
+    {
+      "id": "P149-M17",
+      "summary": "TDE 形成刚柔兼具的 SEI 和无枝晶锂负极界面 → Li‖Li、Li‖Cu 循环稳定，60 °C 下界面仍稳定",
+      "A": "TDE", "B": "LS002",
+      "property": "SEI/锂负极界面（起点不是溶剂化）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0161"],
+      "test_ids": ["P149-T9", "P149-T10", "P149-T5"],
+      "side": "其他"
+    },
+    {
+      "id": "P149-M18",
+      "summary": "TDE 的 Li‖Li 过电位始终低于 LS002 → TDE 电解液/电极界面阻抗较低",
+      "A": "TDE", "B": "LS002",
+      "property": "界面阻抗降低（起点不是溶剂化）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0069"],
+      "test_ids": ["P149-T9"],
+      "side": "其他"
+    },
+    {
+      "id": "P149-M19",
+      "summary": "LS002 的 Li‖Cu 库仑效率波动并急剧下降 → LS002 对锂金属的还原稳定性差",
+      "A": "TDE", "B": "LS002",
+      "property": "电解液对锂的还原稳定性（起点不是溶剂化）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0076"],
+      "test_ids": ["P149-T10"],
+      "side": "其他"
+    },
+    {
+      "id": "P149-M20",
+      "summary": "LS002 中锂表面多孔破碎、比表面增大 → 界面反应增多、SEI 不稳定、电解液持续消耗",
+      "A": "TDE", "B": "LS002",
+      "property": "锂沉积形貌（起点不是溶剂化）",
+      "categories": ["负极锂", "电解液消耗"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0079"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P149-M21",
+      "summary": "LS002 中粗糙易剥落的锂表面易失去电接触 → 形成死锂 → 最终电池失效",
+      "A": "TDE", "B": "LS002",
+      "property": "锂沉积形貌（起点不是溶剂化）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0080"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P149-M22",
+      "summary": "TDE 分解生成富 LiF、含有机 O–C–O 的软硬兼具 SEI → 抑制锂形貌不稳定（与 SEM 一致）",
+      "A": "TDE", "B": "LS002",
+      "property": "SEI 组成（电解液分解产物，起点不是溶剂化）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0092"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P149-M23",
+      "summary": "TDE 无枝晶、致密沉积 → 减少死锂 → 锂负极长循环稳定性大幅提高",
+      "A": "TDE", "B": "LS002",
+      "property": "锂沉积形貌（起点不是溶剂化）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0098"],
+      "test_ids": ["P149-T9"],
+      "side": "其他"
+    },
+    {
+      "id": "P149-M24",
+      "summary": "HOMO/LUMO 计算与锂浸泡 TTE 的 XPS 表明 TTE 参与 SEI 形成",
+      "A": "TDE", "B": "LS002",
+      "property": "TTE 参与 SEI 形成（起点不是溶剂化）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["S0046"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P149-M25",
+      "summary": "TDE 中少量 LiNO3 在初期分解（还原为 LiNxOy、Li2O，可能生成 Li3N）→ 界面阻抗降低 → 初期过电位下降",
+      "A": "TDE", "B": "TDE-noLiNO3",
+      "property": "LiNO3 有无（添加剂，非溶剂化）",
+      "categories": ["电解液消耗"],
+      "source_type": "本文推测",
+      "evidence_ids": ["S0053", "S0054"],
+      "test_ids": ["P149-T11"],
+      "side": "其他"
+    }
+  ],
+  "design_claims": [
+    {
+      "summary": "其他（作者未用折中/解耦说法；电解液 + 功能隔膜组合）：用 TTE 稀释的 TDE 降低多硫化物溶解、抑制穿梭并稳定锂负极，再用碳涂层 CS 隔膜加速多硫化物转化、补回硫利用率；最优：TDE（TTE : 2 m LiTFSI/DME = 4:1）+ CS 隔膜",
+      "evidence_ids": ["M0036", "M0117"]
+    },
+    {
+      "summary": "折中（阻燃 vs 离子电导率，非溶剂化折中）：TTE 体积比 ≥80% 才能阻燃，但 TTE 越多电导率越低，故选 TTE : 2 m LiTFSI/DME = 4:1",
+      "evidence_ids": ["M0043"]
+    }
+  ],
+  "figure_requests": [
+    {
+      "test_id": "P149-T1",
+      "figure": "Fig. 6a",
+      "part": "main",
+      "metric": "首圈容量",
+      "A": "TDE", "B": "LS002",
+      "target_point": "0.5 C 第 1 圈（不配 CS）",
+      "anchor_quote_ids": ["M0111"],
+      "reason": "Li‖S 循环类测试缺同一测试容量侧；锚点只有 TDE ≈200 mAh g-1（未指明圈数），较弱；图中是否有 LS002 不配 CS 的曲线原文未写清"
+    },
+    {
+      "test_id": "P149-T2",
+      "figure": "Fig. 6a",
+      "part": "main",
+      "metric": "首圈容量",
+      "A": "TDE", "B": "LS002",
+      "target_point": "0.5 C 第 1 圈（均配 CS）",
+      "anchor_quote_ids": ["M0115", "M0122"],
+      "reason": "Li‖S 循环类测试缺同一测试容量侧（LS002+CS 首圈无数）；锚点 TDE+CS 首圈 903 mAh g-1、第 1000 圈保持率 49.4% vs 23.7%"
+    },
+    {
+      "test_id": "P149-T5",
+      "figure": "Fig. 6e",
+      "part": "main",
+      "metric": "指定圈容量",
+      "A": "TDE", "B": "LS002",
+      "target_point": "60 °C 0.1 C 第 100 圈",
+      "anchor_quote_ids": ["M0146", "M0147"],
+      "reason": "Li‖S 循环类测试缺 LS002 第 100 圈（寿命终点）数值；锚点 TDE 首圈 1557、第 100 圈 870，LS002 首圈 1671.5 mAh g-1"
+    },
+    {
+      "test_id": "P149-T6",
+      "figure": "Fig. 6h",
+      "part": "main",
+      "metric": "指定圈容量",
+      "A": "TDE", "B": "LS002",
+      "target_point": "0.02 C 第 56 圈",
+      "anchor_quote_ids": ["M0155", "M0156"],
+      "reason": "Li‖S 循环类测试缺 LS002 第 56 圈（寿命终点）数值；锚点 TDE 首圈 1187、第 56 圈 806，LS002 首圈 1223.9 mAh g-1"
+    }
+  ],
+  "gaps": [
+    "全文未报告 E/S（电解液用量）、锂箔厚度、化成协议；1C 未明写，只能由 M0143（4 C = 6.7 mA cm-2，硫载量 1 mg cm-2）反算",
+    "Li‖S 循环测试的电池形式未明写（只有 CV、LSV、迁移数写 CR-2032）；未涂层隔膜的种类未写",
+    "T1 中 LS002 是否配 CS 隔膜原文未写（推定未配）；LS002 不配 CS 的容量无数",
+    "T2 LS002+CS 首圈容量无数；83.6%（200 圈）只给 TDE+CS",
+    "T1、T2、T5 未报告库仑效率；T5 LS002 第 100 圈容量无数",
+    "T3 CV 中 LS002 是否配 CS 原文未写，LS002 峰电位差无数",
+    "T4 倍率只测 TDE+CS，无对照，不能判方向",
+    "T6 硫载量写法不一（图注 over 4 mg cm-2，实验部分 ≈4 mg cm-2）；SI Table S1 写 820 mAh/g after 42 cycles，与正文 806 mAh g-1 after 56 cycles 不一致",
+    "T8 原句把 >50 mV 与 30 mV 都写成 LS002（疑笔误），不判",
+    "SI Table S1 把 TDE 写成 0.4 M LiTFSI DME/TTE (4:1, v/v)，与正文 TTE : 2 m LiTFSI/DME = 4:1 方向相反",
+    "TTE 体积比梯度中间各档只在 Figure S1（阻燃、电导率、迁移数），正文只写趋势；属性图，未登记读图",
+    "LS002（1 wt% LiNO3）与 TDE（约 0.025 m LiNO3）LiNO3 用量不同",
+    "浓度单位：正文小写 m，SI 写 M，含义不明，不换算",
+    "Li‖Li 60 °C（Figure S12）两电解液的比较正文未给说法；Li‖Li 2.5 mA cm-2 寿命只在图",
+    "M0037 写 areal capacity of 6.7 mAh g−1，单位疑为笔误"
+  ],
+  "source_review": {
+    "main": true,
+    "si": true,
+    "notes": "通读正文与 SI（SI 主要是图注、HOMO/LUMO 与 TTE 浸泡 XPS、LiNO3 说明、60 °C Li‖Li 说明、点燃测试与 Table S1）；参考文献列表略读；未读任何既有提取结果。"
+  }
+}

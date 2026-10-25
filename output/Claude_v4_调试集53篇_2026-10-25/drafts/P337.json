@@ -1,0 +1,894 @@
+{
+  "paper_id": "P337",
+  "doi": "10.1016/j.jechem.2023.05.020",
+  "formulations": [
+    {
+      "id": "R-SEI",
+      "name": "R-SEI（standard electrolyte，无 LNO-SRF、无 TFTFE）",
+      "components": [
+        {"name": "LiTFSI", "role": "盐", "amount": 1, "unit": "M"},
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": 1, "unit": "v/v 体积份（DOL:DME = 1:1）"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": 1, "unit": "v/v 体积份（DOL:DME = 1:1）"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 2, "unit": "wt%"}
+      ],
+      "raw_formula": "1 M LiTFSI in DOL/DME with a volume ratio of 1:1, and 2 wt% LiNO3（with neither LNO-SRF nor TFTFE）",
+      "evidence_ids": ["S0001", "S0003", "M0093"]
+    },
+    {
+      "id": "F-SEI",
+      "name": "F-SEI（fluorinated electrolyte，含 TFTFE、无 LNO-SRF）",
+      "components": [
+        {"name": "LiTFSI", "role": "盐", "amount": 1, "unit": "M"},
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": 4.5, "unit": "v/v 体积份（DOL:DME:TFTFE = 4.5:4.5:1）"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": 4.5, "unit": "v/v 体积份（DOL:DME:TFTFE = 4.5:4.5:1）"},
+        {"name": "TFTFE", "role": "弱或非溶剂化溶剂", "amount": 1, "unit": "v/v 体积份（DOL:DME:TFTFE = 4.5:4.5:1）"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 2, "unit": "wt%"}
+      ],
+      "raw_formula": "1 M LiTFSI in DOL/DME/TFTFE with a volume ratio of 4.5:4.5:1, and 2 wt% LiNO3（without LNO-SRF but with TFTFE）；正文写作 10 vt% TFTFE co-solvent",
+      "evidence_ids": ["S0002", "S0003", "M0047", "M0063"]
+    },
+    {
+      "id": "N-SEI",
+      "name": "N-SEI（standard electrolyte + LNO-SRF，无 TFTFE）",
+      "components": [
+        {"name": "LiTFSI", "role": "盐", "amount": 1, "unit": "M"},
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": 1, "unit": "v/v 体积份（DOL:DME = 1:1）"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": 1, "unit": "v/v 体积份（DOL:DME = 1:1）"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 2, "unit": "wt%"},
+        {"name": "LNO-SRF（Li-Nafion 包覆 LiNO3 的缓释膜，置于隔膜与 Li/Cu 电极之间）", "role": "添加剂", "amount": "约 1.2", "unit": "mg cm-2（LiNO3 载量；膜质量约 3 mg cm-2）"}
+      ],
+      "raw_formula": "standard electrolyte（1 M LiTFSI DOL/DME 1:1 v/v + 2 wt% LiNO3）with LNO-SRF but not TFTFE；LNO-SRF 质量约 3 mg cm-2，LiNO3 载量约 1.2 mg cm-2",
+      "evidence_ids": ["S0001", "S0003", "M0054", "M0055"]
+    },
+    {
+      "id": "FN-SEI",
+      "name": "FN-SEI（fluorinated electrolyte + LNO-SRF）",
+      "components": [
+        {"name": "LiTFSI", "role": "盐", "amount": 1, "unit": "M"},
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": 4.5, "unit": "v/v 体积份（DOL:DME:TFTFE = 4.5:4.5:1）"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": 4.5, "unit": "v/v 体积份（DOL:DME:TFTFE = 4.5:4.5:1）"},
+        {"name": "TFTFE", "role": "弱或非溶剂化溶剂", "amount": 1, "unit": "v/v 体积份（DOL:DME:TFTFE = 4.5:4.5:1）"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 2, "unit": "wt%"},
+        {"name": "LNO-SRF（Li-Nafion 包覆 LiNO3 的缓释膜，置于隔膜与 Li/Cu 电极之间）", "role": "添加剂", "amount": "约 1.2", "unit": "mg cm-2（LiNO3 载量；膜质量约 3 mg cm-2）"}
+      ],
+      "raw_formula": "fluorinated electrolyte（1 M LiTFSI DOL/DME/TFTFE 4.5:4.5:1 v/v + 2 wt% LiNO3）with both LNO-SRF and TFTFE",
+      "evidence_ids": ["S0002", "S0003", "M0054", "M0063"]
+    }
+  ],
+  "control_id": "R-SEI",
+  "control_type": "常规醚基准（DOL/DME + LiTFSI + LiNO₃）：标准电解液 1 M LiTFSI DOL/DME 1:1 + 2 wt% LiNO3，无缓释膜",
+  "gradients": [
+    {
+      "name": "TFTFE 共溶剂体积分数（用量梯度，无 LNO-SRF）",
+      "order": ["R-SEI", "F-SEI"],
+      "values": ["0 vol%", "10 vol%（DOL/DME/TFTFE 4.5:4.5:1）"],
+      "solvation_axis": "作者未在四种配置间测 Li⁺ 溶剂化或多硫化物溶剂化；按作者描述 TFTFE 是对锂盐溶解度极低的氟化醚共溶剂（角色：弱或非溶剂化），加 TFTFE 的一档排在后（排序为推定）",
+      "evidence_ids": ["M0047", "M0063", "S0001", "S0002"]
+    },
+    {
+      "name": "TFTFE 共溶剂体积分数（用量梯度，含 LNO-SRF）",
+      "order": ["N-SEI", "FN-SEI"],
+      "values": ["0 vol%", "10 vol%（DOL/DME/TFTFE 4.5:4.5:1）"],
+      "solvation_axis": "同上：作者未测溶剂化；按 TFTFE 为对锂盐溶解度极低的氟化醚共溶剂，加 TFTFE 的一档排在后（排序为推定）",
+      "evidence_ids": ["M0047", "M0063", "S0001", "S0002"]
+    }
+  ],
+  "properties": [
+    {
+      "name": "LiNO3 从 LNO-SRF 的释放（浸泡后电解液 Li 元素含量）",
+      "values": {
+        "N-SEI": "浸泡 12、24、36、48、168 h 后 7.14、7.56、8.22、8.82、10.05 g L-1",
+        "FN-SEI": "同时间点 7.14、7.38、7.56、8.28、9.90 g L-1"
+      },
+      "direction": "含 TFTFE 的电解液中各时间点 Li 含量较低或相同（释放较慢）",
+      "method": "ICP-OES",
+      "system": "LNO-SRF 浸泡于 1 M LiTFSI-DOL/DME 或 1 M LiTFSI-DOL/DME/TFTFE（原文未写浸泡液是否含 2 wt% LiNO3）；离体浸泡，非电池内",
+      "evidence_ids": ["M0073", "M0075", "M0076"]
+    },
+    {
+      "name": "NO3⁻ 释放（UV-vis）",
+      "values": {
+        "FN-SEI": "205 nm 附近 NO3⁻ 吸光度随浸泡时间增加"
+      },
+      "direction": "随浸泡时间升高",
+      "method": "UV-vis 吸收（NO3⁻ 约 205 nm 吸收峰）",
+      "system": "LNO-SRF 浸泡于 1 M LiTFSI-DOL/DME/TFTFE；离体浸泡",
+      "evidence_ids": ["M0079", "M0080"]
+    },
+    {
+      "name": "LiNO3 在 TFTFE 中的溶解度",
+      "values": {
+        "F-SEI": "未在电解液中测；纯 TFTFE 溶剂中仅加 0.01 M LiNO3 即出现明显沉淀（低）",
+        "FN-SEI": "未在电解液中测；纯 TFTFE 溶剂中仅加 0.01 M LiNO3 即出现明显沉淀（低）"
+      },
+      "direction": "TFTFE 对 LiNO3 溶解度低",
+      "method": "目视沉淀（溶解度试验）",
+      "system": "纯 TFTFE 溶剂，非整体电解液",
+      "evidence_ids": ["M0071"]
+    },
+    {
+      "name": "Li⁺ 溶剂化（7Li NMR，LiNO3 浓度系列）",
+      "values": {
+        "R-SEI": "四种配置间未测；在 1 M LiTFSI-DOL/DME 中 LiNO3 含量越高，7Li 化学位移越低（NO3⁻ 进入 Li⁺ 溶剂化鞘、屏蔽增强）"
+      },
+      "direction": "LiNO3 增多 → 7Li 化学位移降低（NO3⁻ 与 Li⁺ 相互作用更强）",
+      "method": "7Li NMR",
+      "system": "1 M LiTFSI-DOL/DME 含不同浓度 LiNO3（具体浓度原文未写）；未比较 TFTFE 有无",
+      "evidence_ids": ["M0088", "M0089"]
+    },
+    {
+      "name": "交换电流密度 i0（界面性质）",
+      "values": {
+        "R-SEI": "0.22 mA cm-2",
+        "F-SEI": "0.56 mA cm-2",
+        "N-SEI": "0.91 mA cm-2",
+        "FN-SEI": "1.58 mA cm-2"
+      },
+      "direction": "R-SEI < F-SEI < N-SEI < FN-SEI",
+      "method": "正文写 Tafel 拟合；SI 写由 Li‖Li CV（-0.2–0.2 V，0.1 mV s-1）数据得到",
+      "system": "Li‖Li 对称电池（SEI 界面性质，非电解液体相性质）",
+      "evidence_ids": ["M0130", "M0131", "S0009", "S0010"]
+    },
+    {
+      "name": "Li⁺ 穿过 SEI 的活化能（界面性质）",
+      "values": {
+        "R-SEI": "9.06 kJ mol-1",
+        "F-SEI": "7.17 kJ mol-1",
+        "N-SEI": "6.02 kJ mol-1",
+        "FN-SEI": "4.46 kJ mol-1"
+      },
+      "direction": "R-SEI > F-SEI > N-SEI > FN-SEI",
+      "method": "变温 EIS + Arrhenius",
+      "system": "Li‖Li 对称电池（SEI 界面性质）",
+      "evidence_ids": ["M0139", "S0012"]
+    },
+    {
+      "name": "SEI 表面 C 原子比（有机成分指标，XPS）",
+      "values": {
+        "R-SEI": "24.45%",
+        "F-SEI": "16.91%",
+        "N-SEI": "12.28%",
+        "FN-SEI": "10.73%"
+      },
+      "direction": "R-SEI > F-SEI > N-SEI > FN-SEI",
+      "method": "XPS 深度刻蚀",
+      "system": "Li‖Li 电池中形成的 SEI",
+      "evidence_ids": ["M0092", "M0095"]
+    }
+  ],
+  "tests": [
+    {
+      "id": "P337-T1",
+      "name": "Li‖S 扣式 0.5 C 100 圈（两电池 LiNO3 总质量相等）",
+      "cell": "Li‖S 扣式（CR2032，CNT/S 正极）",
+      "conditions": {
+        "sulfur_loading": "5.0 mg cm-2",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "50 µm",
+        "rate": "0.5 C",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "两种电池 LiNO3 总质量相等（通过调整 LNO-SRF 中 LiNO3 载量）；R-SEI 电池电解液中 LiNO3 具体用量原文未写",
+        "one_C": "未报告",
+        "voltage_window": "1.7–2.6 V"
+      },
+      "formulations": ["R-SEI", "FN-SEI"],
+      "evidence_ids": ["M0159", "M0160", "M0161", "M0165", "S0015", "S0017", "S0018"],
+      "results": [
+        {
+          "id": "P337-T1-R1",
+          "metric": "保持率",
+          "A": "FN-SEI", "B": "R-SEI",
+          "value_A": 80.6, "value_B": 61.3,
+          "unit": "%",
+          "point": "0.5 C 循环 100 圈后容量保持率",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0161", "M0165"],
+          "reason": "|80.6−61.3|÷80.6≈24%；作者称两电池 LiNO3 总质量相等"
+        },
+        {
+          "id": "P337-T1-R2",
+          "metric": "首圈容量",
+          "A": "FN-SEI", "B": "R-SEI",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1",
+          "point": "0.5 C 第 1 圈",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [],
+          "reason": "正文只给保持率，容量只在 Fig. S13b；已登记读图"
+        }
+      ]
+    },
+    {
+      "id": "P337-T2",
+      "name": "Li‖S 扣式 0.1 C 长循环（S 5 mg cm-2、E/S 5、Li 50 µm）及穿梭电流",
+      "cell": "Li‖S 扣式（CR2032，CNT/S 正极）",
+      "conditions": {
+        "sulfur_loading": "5 mg cm-2（8.36 mAh cm-2）",
+        "ES": "5",
+        "ES_unit": "µL mgS⁻¹（体积基）",
+        "Li_thickness": "50 µm（10 mAh cm-2）",
+        "rate": "0.1 C",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "电解液含 2 wt%（两配方相同）；FN-SEI 另有 LNO-SRF 缓释（配方变量）",
+        "one_C": "未报告",
+        "N_P": "约 1.2",
+        "voltage_window": "1.7–2.6 V",
+        "shuttle_current_protocol": "0.1 C 循环指定圈数后充至 2.9 V，再放电至各电压平台转恒压，取稳态电流"
+      },
+      "formulations": ["R-SEI", "FN-SEI"],
+      "evidence_ids": ["M0167", "M0169", "M0170", "M0219", "S0001", "S0002", "S0015", "S0017", "S0018", "S0020", "S0021"],
+      "results": [
+        {
+          "id": "P337-T2-R1",
+          "metric": "首圈容量",
+          "A": "FN-SEI", "B": "R-SEI",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1",
+          "point": "初始放电容量（0.1 C）",
+          "basis": "qualitative",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["M0173"],
+          "reason": "作者写两者 nearly identical，约 1250 mA h g-1（两配方共用一个数）"
+        },
+        {
+          "id": "P337-T2-R2",
+          "metric": "寿命（循环圈数）",
+          "A": "FN-SEI", "B": "R-SEI",
+          "value_A": 250, "value_B": "≈25",
+          "unit": "圈",
+          "point": "FN-SEI 稳定循环圈数；R-SEI 容量开始迅速下降的圈数",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0174", "M0175", "M0219"],
+          "reason": "R-SEI 约 25 圈后容量迅速下降（M0174）；FN-SEI 稳定循环 250 圈；M0219 称 250 圈为无缓释体系的 10 倍（250÷10=25）"
+        },
+        {
+          "id": "P337-T2-R3",
+          "metric": "库仑效率",
+          "A": "FN-SEI", "B": "R-SEI",
+          "value_A": null, "value_B": null,
+          "unit": "%",
+          "point": "约 25 圈之后",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0174", "M0175"],
+          "reason": "作者写 R-SEI 约 25 圈后 CE 剧烈波动，FN-SEI 稳定循环 250 圈；无数值"
+        },
+        {
+          "id": "P337-T2-R4",
+          "metric": "过电位",
+          "A": "FN-SEI", "B": "R-SEI",
+          "value_A": 220, "value_B": 360,
+          "unit": "mV",
+          "point": "循环后极化电压（圈数原文未写，图号在原文中截断；SI 有 25 圈后充放电曲线图）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0177"],
+          "reason": "|360−220|÷360≈39%，过电位低为好"
+        },
+        {
+          "id": "P337-T2-R5",
+          "metric": "穿梭电流",
+          "A": "FN-SEI", "B": "R-SEI",
+          "value_A": null, "value_B": null,
+          "unit": "未报告",
+          "point": "第 1 圈后",
+          "basis": "qualitative",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["M0171"],
+          "reason": "作者写初始圈两者无明显差别、均接近 0"
+        },
+        {
+          "id": "P337-T2-R6",
+          "metric": "穿梭电流",
+          "A": "FN-SEI", "B": "R-SEI",
+          "value_A": null, "value_B": null,
+          "unit": "未报告",
+          "point": "25 圈后",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0172"],
+          "reason": "作者写 25 圈后 FN-SEI 穿梭电流约为 R-SEI 的五分之一（approximately five times lower），无绝对值"
+        },
+        {
+          "id": "P337-T2-R7",
+          "metric": "负极活性锂含量",
+          "A": "FN-SEI", "B": "R-SEI",
+          "value_A": 91.2, "value_B": 14.5,
+          "unit": "%",
+          "point": "25 圈后循环锂负极活性锂含量（TGC）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0187", "M0196"],
+          "reason": "|91.2−14.5|÷91.2≈84%；原句在 M0187/M0196 间被图注切断"
+        }
+      ]
+    },
+    {
+      "id": "P337-T3",
+      "name": "Li‖Cu 平均库仑效率（Zhang 法，1 mA cm-2，1 mAh cm-2）",
+      "cell": "Li‖Cu 扣式（CR2032）",
+      "conditions": {
+        "sulfur_loading": "不适用（Li‖Cu）",
+        "ES": "不适用",
+        "ES_unit": "不适用",
+        "Li_thickness": "未报告（Li 箔对电极）",
+        "rate": "1 mA cm-2，1 mAh cm-2",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "电解液含 2 wt%；N-SEI、FN-SEI 另有 LNO-SRF（配方变量）",
+        "one_C": "不适用",
+        "electrolyte_volume": "40 µL"
+      },
+      "formulations": ["R-SEI", "F-SEI", "N-SEI", "FN-SEI"],
+      "evidence_ids": ["M0124", "M0125", "M0126", "M0163", "S0006", "S0007", "S0014"],
+      "results": [
+        {
+          "id": "P337-T3-R1",
+          "metric": "库仑效率",
+          "A": "FN-SEI", "B": "R-SEI",
+          "value_A": 99.63, "value_B": 98.46,
+          "unit": "%",
+          "point": "平均 CE（Zhang 法）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0129"],
+          "reason": "作者写 FN-SEI 最高、超过 R-SEI；高 1.17 个百分点"
+        },
+        {
+          "id": "P337-T3-R2",
+          "metric": "库仑效率",
+          "A": "F-SEI", "B": "R-SEI",
+          "value_A": 99.02, "value_B": 98.46,
+          "unit": "%",
+          "point": "平均 CE（Zhang 法）",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": ["M0129"],
+          "reason": "作者只说 FN-SEI 最高，未直接比较 F-SEI 与 R-SEI；按库仑效率规则不判（数值上高 0.56 个百分点）"
+        },
+        {
+          "id": "P337-T3-R3",
+          "metric": "库仑效率",
+          "A": "N-SEI", "B": "R-SEI",
+          "value_A": 99.17, "value_B": 98.46,
+          "unit": "%",
+          "point": "平均 CE（Zhang 法）",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": ["M0129"],
+          "reason": "作者未直接比较 N-SEI 与 R-SEI；按库仑效率规则不判（数值上高 0.71 个百分点）"
+        },
+        {
+          "id": "P337-T3-R4",
+          "metric": "过电位",
+          "A": "FN-SEI", "B": "R-SEI",
+          "value_A": null, "value_B": null,
+          "unit": "mV",
+          "point": "Li 成核过电位与沉积过电位",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0127"],
+          "reason": "作者写 FN-SEI 成核过电位 46 mV、沉积过电位 24 mV 为四者最低；R-SEI 无数值"
+        }
+      ]
+    },
+    {
+      "id": "P337-T4",
+      "name": "Li‖Cu 长循环（1 mA cm-2，1 mAh cm-2）",
+      "cell": "Li‖Cu 扣式（CR2032）",
+      "conditions": {
+        "sulfur_loading": "不适用（Li‖Cu）",
+        "ES": "不适用",
+        "ES_unit": "不适用",
+        "Li_thickness": "未报告（Li 箔对电极）",
+        "rate": "1 mA cm-2，1 mAh cm-2",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "电解液含 2 wt%；N-SEI、FN-SEI 另有 LNO-SRF（配方变量）",
+        "one_C": "不适用",
+        "electrolyte_volume": "40 µL"
+      },
+      "formulations": ["R-SEI", "F-SEI", "N-SEI", "FN-SEI"],
+      "evidence_ids": ["M0141", "M0145", "M0191", "S0006", "S0007", "S0014"],
+      "results": [
+        {
+          "id": "P337-T4-R1",
+          "metric": "寿命（循环圈数）",
+          "A": "F-SEI", "B": "R-SEI",
+          "value_A": 98, "value_B": 25,
+          "unit": "圈",
+          "point": "CE 迅速衰减前的循环圈数",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0145"],
+          "reason": "|98−25|÷98≈74%"
+        },
+        {
+          "id": "P337-T4-R2",
+          "metric": "寿命（循环圈数）",
+          "A": "N-SEI", "B": "R-SEI",
+          "value_A": 135, "value_B": 25,
+          "unit": "圈",
+          "point": "CE 迅速衰减前的循环圈数",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0145"],
+          "reason": "|135−25|÷135≈81%"
+        },
+        {
+          "id": "P337-T4-R3",
+          "metric": "寿命（循环圈数）",
+          "A": "FN-SEI", "B": "R-SEI",
+          "value_A": ">400", "value_B": 25,
+          "unit": "圈",
+          "point": "CE 稳定圈数（FN-SEI 超过 400 圈仍稳定）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0145"],
+          "reason": "FN-SEI over 400 cycles 未衰减，R-SEI 25 圈内衰减"
+        }
+      ]
+    },
+    {
+      "id": "P337-T5",
+      "name": "Li‖Li 对称电池（1.0 mA cm-2，1.0 mAh cm-2）",
+      "cell": "Li‖Li 对称扣式（CR2032）",
+      "conditions": {
+        "sulfur_loading": "不适用（Li‖Li）",
+        "ES": "不适用",
+        "ES_unit": "不适用",
+        "Li_thickness": "原文前后不一：SI 写 50 µm，正文写 100 µm",
+        "rate": "1.0 mA cm-2，1.0 mAh cm-2",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "电解液含 2 wt%；N-SEI、FN-SEI 另有 LNO-SRF（配方变量）",
+        "one_C": "不适用",
+        "electrolyte_volume": "40 µL"
+      },
+      "formulations": ["R-SEI", "F-SEI", "N-SEI", "FN-SEI"],
+      "evidence_ids": ["M0142", "M0143", "M0190", "S0004", "S0005", "S0008"],
+      "results": [
+        {
+          "id": "P337-T5-R1",
+          "metric": "寿命（循环小时数）",
+          "A": "F-SEI", "B": "R-SEI",
+          "value_A": 1054, "value_B": 560,
+          "unit": "h",
+          "point": "短路/失效前循环时间",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0143"],
+          "reason": "|1054−560|÷1054≈47%"
+        },
+        {
+          "id": "P337-T5-R2",
+          "metric": "寿命（循环小时数）",
+          "A": "N-SEI", "B": "R-SEI",
+          "value_A": 1400, "value_B": 560,
+          "unit": "h",
+          "point": "短路/失效前循环时间",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0143"],
+          "reason": "|1400−560|÷1400=60%"
+        },
+        {
+          "id": "P337-T5-R3",
+          "metric": "寿命（循环小时数）",
+          "A": "FN-SEI", "B": "R-SEI",
+          "value_A": 2000, "value_B": 560,
+          "unit": "h",
+          "point": "FN-SEI 至 2000 h 未短路（测试截止值）；R-SEI 失效时间",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0142", "M0143"],
+          "reason": "|2000−560|÷2000=72%；原句在 M0142/M0143 间被切断"
+        },
+        {
+          "id": "P337-T5-R4",
+          "metric": "过电位",
+          "A": "FN-SEI", "B": "R-SEI",
+          "value_A": null, "value_B": null,
+          "unit": "mV",
+          "point": "Li 沉积/剥离过电位",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0209", "M0217"],
+          "reason": "结论处作者定性 reduced overpotential，未写比较对象，按对照 R-SEI 记"
+        }
+      ]
+    },
+    {
+      "id": "P337-T6",
+      "name": "Li‖S 软包（仅 FN-SEI，无对照）",
+      "cell": "Li‖S 软包（3 × 8 cm，11.65 g）",
+      "conditions": {
+        "sulfur_loading": "6 mg cm-2（硫含量 64 wt%）",
+        "ES": "3",
+        "ES_unit": "µL mgS⁻¹（体积基）",
+        "Li_thickness": "50 µm（10.3 mAh cm-2）",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 2 wt%（Table S1）",
+        "one_C": "未报告",
+        "electrolyte_in_table": "Table S1 写 DOL/DME 1 M LiTFSI 2 wt% LiNO3（未列 TFTFE）"
+      },
+      "formulations": ["FN-SEI"],
+      "evidence_ids": ["M0197", "M0198", "M0200", "M0201", "M0203", "S0022", "S0074"],
+      "results": []
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "P337-M1",
+      "summary": "LiNO3 在 SEI 反复破裂重建中逐渐耗尽；NO3⁻ 耗尽后 CE 和放电容量迅速恶化（引言背景，用于说明缓释的必要）",
+      "A": "FN-SEI", "B": "R-SEI",
+      "property": "LiNO3 消耗（非溶剂化性质）",
+      "categories": ["电解液消耗", "负极锂"],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0031", "M0032"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M2",
+      "summary": "直接提高 LiNO3 浓度（>0.5 M）会把正极活性硫转成无活性硫酸盐，并增加成本和黏度（引言背景）",
+      "A": "FN-SEI", "B": "R-SEI",
+      "property": "LiNO3 浓度（非溶剂化性质）",
+      "categories": ["正极反应"],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0037"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M3",
+      "summary": "加 TFTFE 后浸泡液中 Li 含量各时间点较低 → TFTFE 进一步减慢 LNO-SRF 的 LiNO3 释放",
+      "A": "FN-SEI", "B": "N-SEI",
+      "property": "LiNO3 释放速度变慢（TFTFE 对 LiNO3 溶解度低）",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0076"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M4",
+      "summary": "LNO-SRF + TFTFE 组合使锂负极附近保持可观 NO3⁻ 浓度，LiNO3 可在长循环中持续作为牺牲添加剂",
+      "A": "FN-SEI", "B": "R-SEI",
+      "property": "负极附近 NO3⁻ 浓度持续维持",
+      "categories": ["负极锂", "电解液消耗"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0081"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M5",
+      "summary": "DFT：TFTFE 的 LUMO 低于 DME、DOL、TFSI⁻ → 形成的 SEI 应富 F",
+      "A": "F-SEI", "B": "R-SEI",
+      "property": "TFTFE 优先还原（LUMO 较低）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0084"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M6",
+      "summary": "7Li NMR：LiNO3 越多 7Li 位移越低，因额外 NO3⁻ 与 Li⁺ 相互作用更强、进入溶剂化鞘（LiNO3 浓度系列，非四配置比较）",
+      "A": "N-SEI", "B": "R-SEI",
+      "property": "Li⁺ 溶剂化：NO3⁻ 进入 Li⁺ 溶剂化鞘",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0088", "M0089"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M7",
+      "summary": "NO3⁻ 随 Li⁺ 去溶剂化在锂负极表面优先分解，负极表面 NO3⁻ 浓度决定 SEI 中 Li3N、LiNxOy 含量",
+      "A": "N-SEI", "B": "R-SEI",
+      "property": "Li⁺ 溶剂化中的 NO3⁻ → SEI 无机含 N 成分",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0090", "M0091"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M8",
+      "summary": "SEI 无机成分越高越致密，机械性能、离子电导和绝缘性提高，可抑制穿梭并提高锂循环 CE（带引文的一般说法，本文 XPS 显示 FN-SEI 有机 C 最低）",
+      "A": "FN-SEI", "B": "R-SEI",
+      "property": "SEI 无机成分增加（非溶剂化性质）",
+      "categories": ["多硫化物穿梭", "负极锂"],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0096"],
+      "test_ids": ["P337-T2", "P337-T3"],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M9",
+      "summary": "XPS：F-SEI、FN-SEI 中 F 原子浓度更高 → TFTFE 诱导形成富 F 的 SEI",
+      "A": "F-SEI", "B": "R-SEI",
+      "property": "TFTFE 使 SEI 富 F（LiF）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0100"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M10",
+      "summary": "LiF 机械强度高、与金属锂界面能高，因而能提高锂循环 CE（带引文）",
+      "A": "F-SEI", "B": "R-SEI",
+      "property": "SEI 中 LiF 增加",
+      "categories": ["负极锂"],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0101", "M0109"],
+      "test_ids": ["P337-T3"],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M11",
+      "summary": "XPS：N-SEI、FN-SEI 中 N 含量更高 → LNO-SRF 帮助形成富 N 的 SEI",
+      "A": "N-SEI", "B": "R-SEI",
+      "property": "LNO-SRF 使 SEI 富 N（Li3N、LiNxOy）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0111", "M0112"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M12",
+      "summary": "SEI 中 LiF（F-SEI）或 Li3N/LiNxOy（N-SEI）增加后锂沉积更均匀，枝晶和死锂部分受抑（N-SEI 同理）",
+      "A": "F-SEI", "B": "R-SEI",
+      "property": "SEI 中 LiF 或含 N 无机成分增加",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0118"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M13",
+      "summary": "FN-SEI 下锂表面致密光滑、无明显枝晶和死锂 → 富 F、N 的 SEI 能调控 Li⁺ 沉积、抑制枝晶",
+      "A": "FN-SEI", "B": "R-SEI",
+      "property": "SEI 同时富 F、N",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0119"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M14",
+      "summary": "FN-SEI 的 Li‖Cu 成核与沉积过电位最低 → FN-SEI 的 Li⁺ 传导最高，与 EIS 一致",
+      "A": "FN-SEI", "B": "R-SEI",
+      "property": "SEI 的 Li⁺ 传导提高",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0127", "M0128"],
+      "test_ids": ["P337-T3"],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M15",
+      "summary": "作者自写例外：单独使用 Li-Nafion 膜（不含 LiNO3 缓释作用）也能在一定程度上降低锂沉积/剥离极化",
+      "A": "N-SEI", "B": "R-SEI",
+      "property": "Li-Nafion 膜本身的作用（非电解液性质）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0144"],
+      "test_ids": ["P337-T5"],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M16",
+      "summary": "R-SEI、F-SEI、N-SEI 不能有效抑制大比表面积锂枝晶，副反应和每圈死锂导致 Li‖Cu CE 快速衰减",
+      "A": "FN-SEI", "B": "R-SEI",
+      "property": "SEI 抑制枝晶能力",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0146"],
+      "test_ids": ["P337-T4"],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M17",
+      "summary": "FN-SEI 中 LiF、Li3N、LiNxOy 含量更高，利于均匀锂沉积",
+      "A": "FN-SEI", "B": "R-SEI",
+      "property": "SEI 无机成分（LiF、Li3N、LiNxOy）增加",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0147"],
+      "test_ids": ["P337-T4"],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M18",
+      "summary": "LNO-SRF 能补充循环中电解液里消耗掉的 LiNO3",
+      "A": "FN-SEI", "B": "R-SEI",
+      "property": "LiNO3 持续补充",
+      "categories": ["电解液消耗"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0148"],
+      "test_ids": ["P337-T4"],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M19",
+      "summary": "Li‖S 的 CV 氧化还原峰几乎相同 → FN-SEI 不影响正极氧化还原动力学",
+      "A": "FN-SEI", "B": "R-SEI",
+      "property": "无（正极反应不受影响）",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0157", "M0158"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M20",
+      "summary": "等 LiNO3 质量下缓释体系 100 圈保持率更高 → 缓释 LiNO3 比直接提高电解液 LiNO3 浓度更有效",
+      "A": "FN-SEI", "B": "R-SEI",
+      "property": "LiNO3 供给方式（缓释 vs 直接溶于电解液）",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0166"],
+      "test_ids": ["P337-T1"],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M21",
+      "summary": "25 圈后 FN-SEI 穿梭电流约为 R-SEI 的五分之一 → FN-SEI 循环中保持致密，持续抑制穿梭",
+      "A": "FN-SEI", "B": "R-SEI",
+      "property": "SEI 循环中保持致密",
+      "categories": ["多硫化物穿梭", "负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0172"],
+      "test_ids": ["P337-T2"],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M22",
+      "summary": "R-SEI 约 25 圈后容量迅速下降并伴随 CE 剧烈波动，原因是严重枝晶生长和 LiNO3 耗尽",
+      "A": "FN-SEI", "B": "R-SEI",
+      "property": "LiNO3 耗尽 + 枝晶（非溶剂化性质）",
+      "categories": ["负极锂", "电解液消耗"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0174"],
+      "test_ids": ["P337-T2"],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M23",
+      "summary": "R-SEI 极化升至 360 mV（FN-SEI 220 mV），归因于 R-SEI 严重钝化",
+      "A": "FN-SEI", "B": "R-SEI",
+      "property": "SEI 钝化程度",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0178"],
+      "test_ids": ["P337-T2"],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M24",
+      "summary": "作者自写例外：Li-Nafion 膜本身也能在一定程度上延长 Li‖S 寿命（屏蔽多硫化物、PP 骨架调控 Li⁺ 通量），即 FN-SEI 的改善有一部分来自膜而非 LiNO3 缓释",
+      "A": "FN-SEI", "B": "R-SEI",
+      "property": "Li-Nafion 膜屏蔽多硫化物、调控 Li⁺ 通量（非电解液性质）",
+      "categories": ["多硫化物穿梭", "负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0179"],
+      "test_ids": ["P337-T2"],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M25",
+      "summary": "XPS：FN-SEI 锂负极上 Li2S、Li2SOx 峰弱得多 → 锂负极与多硫化物副反应更少",
+      "A": "FN-SEI", "B": "R-SEI",
+      "property": "负极表面含 S 副产物减少",
+      "categories": ["多硫化物穿梭", "负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0181", "M0182"],
+      "test_ids": ["P337-T2"],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M26",
+      "summary": "25 圈后 R-SEI 锂负极活性锂仅 14.5%（严重副反应），FN-SEI 保留 91.2%",
+      "A": "FN-SEI", "B": "R-SEI",
+      "property": "活性锂损失",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0187", "M0196"],
+      "test_ids": ["P337-T2"],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M27",
+      "summary": "FN-SEI 屏蔽多硫化物、加速 Li⁺ 传输、抑制电子隧穿 → 提高锂负极 CE、抑制穿梭 → Li‖S 性能优异",
+      "A": "FN-SEI", "B": "R-SEI",
+      "property": "SEI 屏蔽多硫化物、Li⁺ 传输快、电子绝缘",
+      "categories": ["多硫化物穿梭", "负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0204"],
+      "test_ids": ["P337-T2", "P337-T3"],
+      "side": "其他"
+    },
+    {
+      "id": "P337-M28",
+      "summary": "LNO-SRF 持续释放 LiNO3、TFTFE 减慢释放速度 → 形成致密持久的富 F、N SEI",
+      "A": "FN-SEI", "B": "R-SEI",
+      "property": "LiNO3 缓释 + TFTFE 减慢释放",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0206"],
+      "test_ids": [],
+      "side": "其他"
+    }
+  ],
+  "design_claims": [
+    {"summary": "其他（非折中/解耦）：Li-Nafion 包覆 LiNO3 的缓释膜（LNO-SRF）+ 10 vol% 低 LiNO3 溶解度的氟化醚共溶剂 TFTFE 减慢释放，构建持久富 F、N SEI；最优 FN-SEI", "evidence_ids": ["M0063", "M0206"]},
+    {"summary": "等 LiNO3 质量下，缓释 LiNO3 优于直接提高电解液中 LiNO3 浓度", "evidence_ids": ["M0160", "M0166"]}
+  ],
+  "figure_requests": [
+    {
+      "test_id": "P337-T1",
+      "figure": "Figure S13b",
+      "part": "si",
+      "metric": "首圈容量",
+      "A": "FN-SEI", "B": "R-SEI",
+      "target_point": "0.5 C 第 1 圈",
+      "anchor_quote_ids": ["M0161", "M0165"],
+      "reason": "Li‖S 循环类测试缺同一测试容量侧；锚点为同一测试 100 圈保持率 80.6% vs 61.3%"
+    }
+  ],
+  "gaps": [
+    "所有测试未报告化成协议、温度、1C 定义",
+    "P337-T1 未报告 E/S；R-SEI 电池电解液中 LiNO3 具体用量未写（作者称两电池 LiNO3 总质量相等，并称对比的是“直接提高电解液 LiNO3 浓度”，R-SEI 配方可能不是标准 2 wt%）",
+    "P337-T1 只有保持率，首圈容量只在 Fig. S13b",
+    "P337-T2 首圈容量只有作者定性（nearly identical，约 1250 mA h g-1）；库仑效率、穿梭电流无数值",
+    "P337-T2 极化电压 360/220 mV 的取值圈数未写（图号在原文中截断）",
+    "P337-T5 Li‖Li 锂厚原文前后不一：SI 写 50 µm，正文写 100 µm",
+    "P337-T3/T4 Li‖Cu 的锂箔厚度未报告",
+    "P337-T6 软包只测 FN-SEI，无对照；Table S1 电解液写 DOL/DME 1 M LiTFSI 2 wt% LiNO3，未列 TFTFE 和 LNO-SRF，与正文称 FN-SEI 不一致；倍率未报告",
+    "未在四种配置间测 Li⁺ 溶剂化、多硫化物溶剂化、多硫化物溶解度、离子电导率、黏度、迁移数",
+    "交换电流密度测法正文写 Tafel 拟合，SI 写由 CV 数据得到",
+    "Li‖S CV 测试（M0157–M0158）条件未报告，未单列测试",
+    "Li-Nafion 膜单独作用的对照（Fig. S10 Li‖Li、Fig. S16 Li‖S）未作为配方提取，正文无数值；作者承认膜本身也有改善作用（混杂因素）",
+    "本篇主变量是 LiNO3 缓释膜（隔膜侧固体添加），TFTFE 只有 0/10 vol% 两档且作者未测溶剂化，与强/弱溶剂化主线关联弱"
+  ],
+  "source_review": {
+    "main": true,
+    "si": true,
+    "notes": "通读正文与 SI（SI 文本仅含实验部分、图注和 Table S1）；未读任何既有提取结果；未看图片。部分句子被图注切断（M0142/M0143、M0187/M0196、M0209/M0217），已按连续句挂证据。"
+  }
+}

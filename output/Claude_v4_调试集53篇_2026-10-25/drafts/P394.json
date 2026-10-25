@@ -1,0 +1,522 @@
+{
+  "paper_id": "P394",
+  "doi": "10.1002/batt.202300433",
+  "formulations": [
+    {
+      "id": "Base",
+      "name": "base electrolyte",
+      "components": [
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": "1:1", "unit": "v/v"},
+        {"name": "TEGDME", "role": "溶剂化溶剂", "amount": "1:1", "unit": "v/v"},
+        {"name": "LiTFSI", "role": "盐", "amount": 1, "unit": "M"}
+      ],
+      "raw_formula": "The base electrolyte was prepared by mixing 1,3-dioxolane (DOL) and tetraethylene glycol dimethyl ether (TEGDME) 1:1 (v/v) with 1 M of LiTFSI（配方原句未列 LiNO₃）",
+      "evidence_ids": ["M0164"]
+    },
+    {
+      "id": "Hybrid",
+      "name": "hybrid electrolyte with IL（[S222][TFSI] IL containing electrolyte）",
+      "components": [
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": "1:1", "unit": "v/v（DOL:TEGDME，基础电解液内）"},
+        {"name": "TEGDME", "role": "溶剂化溶剂", "amount": "1:1", "unit": "v/v（DOL:TEGDME，基础电解液内）"},
+        {"name": "LiTFSI", "role": "盐", "amount": 1, "unit": "M（基础电解液内）"},
+        {"name": "[S222][TFSI]（triethylsulfonium bis(trifluoromethane sulfonyl)imide，离子液体）", "role": "添加剂", "amount": "1:3", "unit": "v/v（[S222][TFSI] : 基础电解液）"}
+      ],
+      "raw_formula": "The hybrid electrolyte with IL was prepared by mixing [S222][TFSI] with the base electrolyte in a 1:3 (v/v) ratio",
+      "evidence_ids": ["M0164", "M0165", "M0009"]
+    }
+  ],
+  "control_id": "Base",
+  "control_type": "不含 LiNO₃ 的自配对照：DOL/TEGDME 1:1 (v/v) + 1 M LiTFSI，配方原句未列 LiNO₃；主溶剂为 TEGDME 而非 DME",
+  "gradients": [],
+  "properties": [
+    {
+      "name": "离子电导率",
+      "values": {"Base": "0.7 to 1 mS cm-1（10–70 °C）", "Hybrid": "1.1 to 2.45 mS cm-1（10–70 °C）"},
+      "direction": "加 IL 后升高",
+      "method": "EIS：Celgard 2320 浸电解液夹在不锈钢电极间（扣式），10–70 °C Arrhenius 图",
+      "system": "电池用电解液本身（不含多硫化物）",
+      "evidence_ids": ["M0038", "M0039", "M0040"]
+    },
+    {
+      "name": "Li⁺ 溶剂化",
+      "values": {"Base": "未报告", "Hybrid": "未报告"},
+      "direction": "未报告",
+      "method": "未报告",
+      "system": "未报告",
+      "evidence_ids": []
+    },
+    {
+      "name": "多硫化物溶剂化",
+      "values": {"Base": "未报告", "Hybrid": "未报告"},
+      "direction": "未报告（只有 DFT 计算单个 [S222][TFSI] 分子与 Li2Sx 的结合能，非配方间比较；自算结合能按规则不收）",
+      "method": "未报告",
+      "system": "未报告",
+      "evidence_ids": []
+    },
+    {
+      "name": "多硫化物溶解度",
+      "values": {"Base": "较高（作者推断）", "Hybrid": "较低（作者推断）"},
+      "direction": "加 IL 后降低（作者推断，未直接测）",
+      "method": "未直接测量；作者由 Li‖S 首圈放电中原位 EIS 的 Rct 是否上升推断（M0093–M0095）",
+      "system": "Li‖S 电池内原位 EIS 间接推断，非溶液溶解度测量",
+      "evidence_ids": ["M0093", "M0095"]
+    }
+  ],
+  "tests": [
+    {
+      "id": "P394-T1",
+      "name": "Li‖S CR2032 扣式室温静置 18 天（OCV 与体相电阻 Rbulk 随时间）",
+      "cell": "Li‖S CR2032 扣式",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "不适用（静置，无电流）",
+        "formation": "未报告",
+        "temperature": "室温（原文 room temperature，未给数值）",
+        "LiNO3": "不含（电解液配方原句未列 LiNO₃）",
+        "one_C": "未报告",
+        "storage_time": "18 天",
+        "cathode": "S/MWCNT 复合物（含硫 64 wt%）80 wt% + Super P 10 wt% + PVdF 10 wt%，涂于铝箔",
+        "electrolyte_volume": "未报告"
+      },
+      "formulations": ["Base", "Hybrid"],
+      "evidence_ids": ["M0041", "M0042", "M0160", "M0161", "M0162", "M0164", "M0165"],
+      "results": [
+        {
+          "id": "P394-T1-R1",
+          "metric": "自放电率",
+          "A": "Hybrid", "B": "Base",
+          "value_A": null, "value_B": null,
+          "unit": "无（作者定性，依据 OCV 变化）",
+          "point": "室温静置 18 天内 OCV 演变",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0042", "M0043", "M0044"],
+          "reason": "作者：Base 的 OCV 在 18 天内由 2.54 V 持续降到 2.43 V；Hybrid 自第 7 天起保持 2.58 V，称自放电降低（M0043、M0044）；两组数不是同一口径的一对数，按作者定性记"
+        },
+        {
+          "id": "P394-T1-R2",
+          "metric": "阻抗",
+          "A": "Hybrid", "B": "Base",
+          "value_A": null, "value_B": null,
+          "unit": "Ω",
+          "point": "静置期间 Li‖S 电池体相电阻 Rbulk",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0052", "M0053"],
+          "reason": "作者：加 IL 后 Rbulk 小于 Base（M0052），Hybrid 第 12 天后恒定在 4.2 Ω（M0053）；Base 的数值正文未写，只在 Fig. 4b（非规则允许读的图）"
+        }
+      ]
+    },
+    {
+      "id": "P394-T2",
+      "name": "Li‖S 扣式 CV（扫速 0.1 mV s-1，第 1–2 圈）",
+      "cell": "Li‖S 扣式（CV）",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "CV 扫速 0.1 mV s-1",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "不含（电解液配方原句未列 LiNO₃）",
+        "one_C": "不适用（CV）",
+        "voltage_window": "正文 1.5–3 V（M0055）；实验部分 1.0–3.0 V（M0174），前后不一",
+        "cathode": "S/MWCNT 复合物（含硫 64 wt%）80 wt% + Super P 10 wt% + PVdF 10 wt%，涂于铝箔",
+        "electrolyte_volume": "未报告"
+      },
+      "formulations": ["Base", "Hybrid"],
+      "evidence_ids": ["M0055", "M0059", "M0174", "M0160", "M0161", "M0162", "M0164", "M0165"],
+      "results": [
+        {
+          "id": "P394-T2-R1",
+          "metric": "过电位",
+          "A": "Hybrid", "B": "Base",
+          "value_A": 0.08, "value_B": 0.24,
+          "unit": "V",
+          "point": "CV（扫速 0.1 mV s-1）阳极与阴极峰电位差 ΔEp（作者用作极化指标）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0061", "M0059"],
+          "reason": "ΔEp 越小极化越小（作者 M0061）；0.08 V（含 IL）vs 0.24 V（Base）"
+        }
+      ]
+    },
+    {
+      "id": "P394-T3",
+      "name": "Li‖S CR2032 扣式 0.1 C 首圈恒流充放电（Fig. 6）",
+      "cell": "Li‖S CR2032 扣式",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.1 C",
+        "formation": "未报告",
+        "temperature": "室温（原文 room temperature，未给数值）",
+        "LiNO3": "不含（电解液配方原句未列 LiNO₃）",
+        "one_C": "未报告",
+        "voltage_window": "1.5–3.0 V",
+        "cathode": "S/MWCNT 复合物（含硫 64 wt%）80 wt% + Super P 10 wt% + PVdF 10 wt%，涂于铝箔",
+        "electrolyte_volume": "未报告"
+      },
+      "formulations": ["Base", "Hybrid"],
+      "evidence_ids": ["M0062", "M0173", "M0160", "M0161", "M0162", "M0164", "M0165"],
+      "results": [
+        {
+          "id": "P394-T3-R1",
+          "metric": "首圈容量",
+          "A": "Hybrid", "B": "Base",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1",
+          "point": "0.1 C 第 1 圈",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": ["M0062", "M0063"],
+          "reason": "Hybrid 正文写 1200 mAh g-1（M0063）；Base 首圈容量正文未写，只在 Fig. 6 充放电电压曲线上；电压曲线不属规则允许读的两类图，不登记读图，不判"
+        },
+        {
+          "id": "P394-T3-R2",
+          "metric": "过电位",
+          "A": "Hybrid", "B": "Base",
+          "value_A": null, "value_B": null,
+          "unit": "V",
+          "point": "0.1 C 首圈充、放电曲线之间的电压差 ΔE",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0064"],
+          "reason": "作者：Hybrid 充放电曲线间 ΔE 小，反应动力学快于 Base（M0064，句子在 M0070 续完）；无数值"
+        }
+      ]
+    },
+    {
+      "id": "P394-T4",
+      "name": "Li‖S 扣式 0.1 C 首圈放电与充电过程中原位 EIS（Fig. 8、9）",
+      "cell": "Li‖S 扣式",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.1 C",
+        "formation": "未报告",
+        "temperature": "室温（按实验部分 M0173 恒流循环通用条件，推定）",
+        "LiNO3": "不含（电解液配方原句未列 LiNO₃）",
+        "one_C": "未报告",
+        "EIS_frequency": "200 kHz to 100 mHz",
+        "cathode": "S/MWCNT 复合物（含硫 64 wt%）80 wt% + Super P 10 wt% + PVdF 10 wt%，涂于铝箔",
+        "electrolyte_volume": "未报告"
+      },
+      "formulations": ["Base", "Hybrid"],
+      "evidence_ids": ["M0086", "M0172", "M0173", "M0160", "M0161", "M0162", "M0164", "M0165"],
+      "results": [
+        {
+          "id": "P394-T4-R1",
+          "metric": "阻抗",
+          "A": "Hybrid", "B": "Base",
+          "value_A": null, "value_B": null,
+          "unit": "Ω",
+          "point": "首圈放电过程中电荷转移电阻 Rct 随电池电位的变化",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0092", "M0093"],
+          "reason": "作者：Hybrid 的 Rct 在首圈放电和充电全程基本不变（M0092）；Base 放电中 Rct 显著上升（M0093）；无数值"
+        }
+      ]
+    },
+    {
+      "id": "P394-T5",
+      "name": "Li‖Li 对称扣式室温静置 EIS（界面电阻 RSEI 随天数）",
+      "cell": "Li‖Li 对称扣式",
+      "conditions": {
+        "sulfur_loading": "不适用（Li‖Li）",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "不适用（静置，无电流）",
+        "formation": "未报告",
+        "temperature": "室温（原文 room temperature，未给数值）",
+        "LiNO3": "不含（电解液配方原句未列 LiNO₃）",
+        "one_C": "不适用（Li‖Li）",
+        "storage_time": "未报告",
+        "EIS_frequency": "200 kHz to 100 mHz"
+      },
+      "formulations": ["Base", "Hybrid"],
+      "evidence_ids": ["M0076", "M0077", "M0172", "M0164", "M0165"],
+      "results": [
+        {
+          "id": "P394-T5-R1",
+          "metric": "阻抗",
+          "A": "Hybrid", "B": "Base",
+          "value_A": null, "value_B": null,
+          "unit": "Ω",
+          "point": "静置期间界面电阻 RSEI（第三天后）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0079"],
+          "reason": "作者：Base 界面电阻持续变化（SEI 不稳定）；Hybrid 第三天后界面电阻较低且基本恒定（M0079）；无数值"
+        }
+      ]
+    },
+    {
+      "id": "P394-T6",
+      "name": "Li‖Li 对称扣式 0.1 mA cm-2、充放各 60 min 剥离/沉积",
+      "cell": "Li‖Li 对称扣式",
+      "conditions": {
+        "sulfur_loading": "不适用（Li‖Li）",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.1 mA cm-2，充/放各 60 min",
+        "formation": "未报告",
+        "temperature": "室温（原文 room temperature，未给数值）",
+        "LiNO3": "不含（电解液配方原句未列 LiNO₃）",
+        "one_C": "不适用（Li‖Li）",
+        "areal_capacity": "未报告"
+      },
+      "formulations": ["Base", "Hybrid"],
+      "evidence_ids": ["M0082", "M0164", "M0165"],
+      "results": [
+        {
+          "id": "P394-T6-R1",
+          "metric": "过电位",
+          "A": "Hybrid", "B": "Base",
+          "value_A": 0.006, "value_B": 0.013,
+          "unit": "V",
+          "point": "0.1 mA cm-2 剥离/沉积过电位（取值时刻原文未写）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0083", "M0082"],
+          "reason": "Base 0.013 V，加 IL 后降至 0.006 V（M0083）"
+        }
+      ]
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "P394-M1",
+      "summary": "加 IL 后 Li‖S 电池自第 7 天起 OCV 保持 2.58 V → 作者称正极形成稳定 CEI → 自放电降低",
+      "A": "Hybrid", "B": "Base",
+      "property": "未涉及溶剂化：作者称加 IL 后正极形成稳定 CEI（由 OCV 推断）",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0043"],
+      "test_ids": ["P394-T1"],
+      "side": "其他"
+    },
+    {
+      "id": "P394-M2",
+      "summary": "含 IL 的电解液比基础电解液（及文献中的 AMImTFSI）更能控制多硫化物溶解和自放电 → 静置自放电降低；句中引文是被比较的他文体系",
+      "A": "Hybrid", "B": "Base",
+      "property": "多硫化物溶解：加 IL 后受控（作者定性，未直接测溶解度）",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0044"],
+      "test_ids": ["P394-T1"],
+      "side": "强侧"
+    },
+    {
+      "id": "P394-M3",
+      "summary": "含 IL 电池静置第 12 天后 Rbulk 恒定 4.2 Ω → 作者称 CEI 有效控制了多硫化物溶解",
+      "A": "Hybrid", "B": "Base",
+      "property": "起点为 CEI（非溶剂化）：CEI 控制多硫化物溶解（由 Rbulk 恒定推断）",
+      "categories": ["多硫化物穿梭", "正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0053"],
+      "test_ids": ["P394-T1"],
+      "side": "其他"
+    },
+    {
+      "id": "P394-M4",
+      "summary": "含 IL 电池 CV 第 1、2 圈氧化还原峰重叠、ΔEp 0.08 V vs Base 0.24 V → 极化减小、可逆性高",
+      "A": "Hybrid", "B": "Base",
+      "property": "未涉及溶剂化：CV 极化减小",
+      "categories": ["正极反应"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0061"],
+      "test_ids": ["P394-T2"],
+      "side": "其他"
+    },
+    {
+      "id": "P394-M5",
+      "summary": "含 IL 电池 CV 峰尖锐 → 作者称电池内反应动力学快",
+      "A": "Hybrid", "B": "Base",
+      "property": "未涉及溶剂化：CV 峰形尖锐",
+      "categories": ["正极反应"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0062"],
+      "test_ids": ["P394-T2"],
+      "side": "其他"
+    },
+    {
+      "id": "P394-M6",
+      "summary": "含 IL 电池首圈充放电曲线间 ΔE 小 → 反应动力学快于 Base 及哌啶、咪唑类离子液体体系（后者为他文对比对象）",
+      "A": "Hybrid", "B": "Base",
+      "property": "未涉及溶剂化：充放电曲线电压差小",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0064", "M0070"],
+      "test_ids": ["P394-T3"],
+      "side": "其他"
+    },
+    {
+      "id": "P394-M7",
+      "summary": "作者在同篇写的例外：含 IL 电池首圈高电压平台较短，作者推测可能由强多硫化物穿梭引起、使电池不能充满（与其'抑制穿梭'的主结论相反）",
+      "A": "Hybrid", "B": "Base",
+      "property": "未涉及溶剂化：作者推测含 IL 电池存在强穿梭",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0070"],
+      "test_ids": ["P394-T3"],
+      "side": "其他"
+    },
+    {
+      "id": "P394-M8",
+      "summary": "IL 的 TFSI⁻ 与 Li2S 强结合使 Li–S 键伸长 → 降低 Li2S 活化能 → 含 IL 电池充电过电位低于其放电过电位（DFT 证实强相互作用）；比较的是 Hybrid 自身充放电过电位，不是与 Base 比",
+      "A": "Hybrid", "B": "Base",
+      "property": "IL（TFSI⁻）与 Li2S 强结合（DFT），属短链多硫化物溶剂化方向的说法",
+      "categories": ["正极反应"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0072", "M0073"],
+      "test_ids": ["P394-T3"],
+      "side": "其他"
+    },
+    {
+      "id": "P394-M9",
+      "summary": "Li‖Li 静置中 Base 界面电阻持续变化 → SEI 不稳定；含 IL 的第三天后界面电阻低且基本恒定",
+      "A": "Hybrid", "B": "Base",
+      "property": "未涉及溶剂化：锂负极 SEI 稳定性（界面电阻）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0079"],
+      "test_ids": ["P394-T5"],
+      "side": "其他"
+    },
+    {
+      "id": "P394-M10",
+      "summary": "Li‖Li 剥离/沉积 200 h 后过电位仍恒定 → 剥离沉积速率稳定，归因于界面形成稳定 SEI（推定指含 IL 一组）",
+      "A": "Hybrid", "B": "Base",
+      "property": "未涉及溶剂化：锂负极 SEI 稳定",
+      "categories": ["负极锂"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0084"],
+      "test_ids": ["P394-T6"],
+      "side": "其他"
+    },
+    {
+      "id": "P394-M11",
+      "summary": "Base 电池首圈放电中 Rct 上升，作者认为可能源于不溶多硫化物沉积在锂表面 → Base 一侧阻抗变差",
+      "A": "Hybrid", "B": "Base",
+      "property": "多硫化物溶解度：Base 较高（作者在下一句 M0095 推断），不溶多硫化物沉积于锂表面",
+      "categories": ["多硫化物穿梭", "负极锂"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0094"],
+      "test_ids": ["P394-T4"],
+      "side": "强侧"
+    },
+    {
+      "id": "P394-M12",
+      "summary": "由 Base 的 Rct 上升推断：Base 中多硫化物溶解速率高于含 IL 电解液 → Base 首圈阻抗上升（此推断建立在 M0094 的推测上）",
+      "A": "Hybrid", "B": "Base",
+      "property": "多硫化物溶解度：Base 高于 Hybrid（作者由 EIS 推断，未直接测）",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0095"],
+      "test_ids": ["P394-T4"],
+      "side": "强侧"
+    },
+    {
+      "id": "P394-M13",
+      "summary": "首圈后锂负极 FTIR 中 TFSI 相关峰增强、出现新 C–N、S–N 峰 → 支持 [S222][TFSI] 参与 SEI 形成",
+      "A": "Hybrid", "B": "Base",
+      "property": "未涉及溶剂化：IL 参与锂负极 SEI 形成（FTIR）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0103"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P394-M14",
+      "summary": "含 IL 时锂负极 FTIR 中 Li2S 峰基本消失 → 作者认为形成稳定 SEI 并有效控制多硫化物穿梭",
+      "A": "Hybrid", "B": "Base",
+      "property": "未涉及溶剂化：锂负极 SEI 稳定、负极上 Li2S 信号减弱（FTIR）",
+      "categories": ["负极锂", "多硫化物穿梭"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0104"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P394-M15",
+      "summary": "DFT：长链 LiPS 通过 Li 键和超共轭效应与 [S222][TFSI] 分子相互作用（未落到电池表现）",
+      "A": "Hybrid", "B": "Base",
+      "property": "多硫化物溶剂化：长链 LiPS 与 IL 分子的相互作用方式（DFT）",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0155"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P394-M16",
+      "summary": "据 DFT 结合能：[S222][TFSI] 能溶解正极表面 Li2S、Li2S2 沉淀 → 可提高活性硫利用率、减少容量衰减；本篇无长循环测试支持",
+      "A": "Hybrid", "B": "Base",
+      "property": "短链多硫化物（Li2S/Li2S2）溶剂化：IL 与短链产物结合强、可溶解其沉淀（DFT 推断）",
+      "categories": ["正极反应"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0156"],
+      "test_ids": [],
+      "side": "弱侧"
+    },
+    {
+      "id": "P394-M17",
+      "summary": "首圈充放电原位 EIS 中含 IL 电池 Rct、Rbulk 稳定 → 作者称界面性质增强、多硫化物穿梭受抑制",
+      "A": "Hybrid", "B": "Base",
+      "property": "未涉及溶剂化：首圈 Rct、Rbulk 稳定",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0153"],
+      "test_ids": ["P394-T4"],
+      "side": "其他"
+    }
+  ],
+  "design_claims": [
+    {
+      "summary": "未写明折中或解耦：作者主张需要一种既增强界面、又降低长链多硫化物溶解度的电解液添加剂（M0021），选 [S222][TFSI]；另据 DFT 称其可溶解正极表面 Li2S/Li2S2（M0156）；最优配方 Hybrid（IL : 基础电解液 1:3 v/v，仅一档，无用量梯度）",
+      "evidence_ids": ["M0021", "M0165", "M0156"]
+    }
+  ],
+  "figure_requests": [],
+  "gaps": [
+    "无长循环、倍率测试：寿命/保持率、库仑效率、倍率容量均未报告",
+    "所有 Li‖S 测试的硫载量（mg cm-2）、E/S、电解液用量、锂厚、1C 定义、化成协议均未报告；温度只写室温",
+    "P394-T3 Base 首圈容量正文未写，只在 Fig. 6 充放电电压曲线上；电压曲线按规则不读，首圈容量不判",
+    "P394-T2 CV 电压窗口正文写 1.5–3 V（M0055），实验部分写 1.0–3.0 V（M0174），前后不一；CV 温度未报告",
+    "P394-T4 原位 EIS 是否与 P394-T3 同一批电池原文未写；温度按实验部分推定为室温",
+    "P394-T6 200 h 恒定过电位只描述了一组（推定为 Hybrid），Base 的循环时长未写；剥离/沉积过电位取值时刻未写",
+    "P394-T1、P394-T5 静置测试中 Base 的 Rbulk、两组 RSEI 数值正文未写（只在 Fig. 4b、Fig. 7a，非规则允许读的图）",
+    "Li⁺ 溶剂化、多硫化物溶剂化、多硫化物溶解度均未直接测；多硫化物溶解度方向仅为作者由 EIS 推断；黏度、离子迁移数未报告",
+    "只有一个添加剂用量（IL : 基础电解液 1:3 v/v），无梯度",
+    "LiNO₃：配方原句未列，按不含记",
+    "Li‖S 电池隔膜未报告（Celgard 只在电导率测量中写明）",
+    "SI 只有 5 个图注（FTIR、LiPS 优化结构、MEP、HOMO/LUMO、[S222][TFSI] 结构），无测试条件"
+  ],
+  "source_review": {
+    "main": true,
+    "si": true,
+    "notes": "通读正文与 SI（SI 仅 11 句图注，无条件信息）；参考文献列表略读；未读任何既有提取结果；未看图片、未目测估数。本篇无规则允许读的两类图（无长循环图、无梯度），figure_requests 为空。"
+  }
+}
