@@ -99,6 +99,27 @@ def main():
         s['挂的句子里应记的比例'] = round(s['应记句命中'] / counted, 3) if counted else None
     nobody = [e for e in need if not any(e in hung[k] for k in EXTRACTORS)]
 
+    # claim level (10-25 user rule, scheme §5.7): a claim counts as found when any mechanism entry
+    # cites one of its sentences; an entry is right when it cites at least one claim sentence
+    claims = json.loads((DEST / '说法_AI辅助.json').read_text(encoding='utf-8'))
+    where = {}
+    for c in claims:
+        for e in c['sentences']:
+            where.setdefault(e, []).append(c['id'])
+    found = {}
+    for k in EXTRACTORS:
+        ms = preds[k]['mechanisms']
+        got = {cid for m in ms for e in m['evidence_ids'] for cid in where.get(e, [])}
+        right = [m for m in ms if any(e in where for e in m['evidence_ids'])]
+        found[k] = got
+        s = stats[k]
+        s['说法命中'] = len(got)
+        s['说法总数'] = len(claims)
+        s['说法召回'] = round(len(got) / len(claims), 3)
+        s['机制条目对的'] = len(right)
+        s['说法精确率'] = round(len(right) / len(ms), 3) if ms else None
+        s['错的条目'] = [m['id'] for m in ms if m not in right]
+
     wb = Workbook()
     wrap = Alignment(wrap_text=True, vertical='top')
     bold = Font(bold=True)
@@ -144,6 +165,13 @@ def main():
     sheet('汇总', ['指标'] + names, [[k] + [stats[n][k] for n in names] for k in keys] +
           [['说明'] + [EXTRACTORS[n][1] for n in names]], [26] + [18] * len(names))
 
+    sheet('按说法', ['说法编号', '作者的说法（AI 概括）', '归入的原句'] + names,
+          [[c['id'], c['claim'], '、'.join(c['sentences'])] + ['✅' if c['id'] in found[n] else '❌漏' for n in names]
+           for c in claims] +
+          [['合计', '说法召回', ''] + [f"{stats[n]['说法召回']:.0%}（{stats[n]['说法命中']}/{len(claims)}）" for n in names],
+           ['', '说法精确率（机制条目里对的）', ''] + [f"{stats[n]['说法精确率']:.0%}（{stats[n]['机制条目对的']}/{stats[n]['机制条数']}）" for n in names],
+           ['', '错的条目（只挂了引言背景、数据、方法或性质句）', ''] + ['、'.join(stats[n]['错的条目']) or '无' for n in names]],
+          [8, 60, 30] + [14] * len(names))
     # gradients (5 in the paper) and tests (10 groups), judged by reading S39 (AI-assisted)
     struct = {'Claude': (5, 10), 'GPT': (3, 10), '千问Max关思考': (2, 7), '千问27B开思考': (1, 7),
               '千问27B关思考': (1, 4), '智谱GLM-5.3关思考': (1, 6)}
@@ -151,11 +179,13 @@ def main():
     for n in names:
         s = stats[n]
         g, t = struct[n]
-        pr.append([n, f"{s['应记句召回']:.0%}（{s['应记句命中']}/{s['应记句总数']}）",
+        pr.append([n, f"{s['说法召回']:.0%}（{s['说法命中']}/{s['说法总数']}）", f"{s['说法精确率']:.0%}",
+                   f"{s['应记句召回']:.0%}（{s['应记句命中']}/{s['应记句总数']}）",
                    f"{s['挂的句子里应记的比例']:.0%}", f'{g / 5:.0%}（{g}/5）', '100%',
                    f'{t / 10:.0%}（{t}/10）', '100%', s['配方'], s['结果'], EXTRACTORS[n][1]])
-    sheet('召回率与精确率', ['模型', '机制句召回', '机制句精确率', '梯度召回', '梯度精确率', '测试召回', '测试精确率',
-                        '配方数', '结果条数（对错未判）', '说明'], pr, [18, 16, 12, 12, 10, 12, 10, 8, 12, 40])
+    sheet('召回率与精确率', ['模型', '机制说法召回', '机制说法精确率', '（参考）机制句召回', '（参考）机制句精确率',
+                        '梯度召回', '梯度精确率', '测试召回', '测试精确率', '配方数', '结果条数（对错未判）', '说明'],
+          pr, [18, 14, 12, 14, 12, 12, 10, 12, 10, 8, 12, 40])
     data = []
     for e in rows:
         s = src[e]

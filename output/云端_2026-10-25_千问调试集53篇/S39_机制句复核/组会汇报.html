@@ -64,17 +64,19 @@ code { font-family: var(--f-mono); font-size: 13px; }
 </header>
 
 <div class="verdict">
-  <p><strong>初步结论：</strong>Claude 最全（梯度、配方、结果、机制召回都最高）；GPT 挂的机制句最准，但漏得最多；千问在机制召回上介于两者之间，但梯度和配方漏得多，格式也不稳。</p>
+  <p><strong>初步结论：</strong>按说法算，各家的机制都提得不错（召回 58%–100%，精确率都在 90% 以上），差距主要在梯度和配方：Claude 梯度 5/5、配方 15 个；千问、智谱梯度只有 1–2 条、配方 6 个。Claude 整体最全。</p>
   <p class="note">只有 S39 一篇三家都提过，样本太少；复核是 AI 辅助完成的，用户尚未逐项人工确认。</p>
 </div>
 
 <section>
   <h2>召回率与精确率（S39）</h2>
-  <p>召回率 = 应该提的提到了多少；精确率 = 提出来的有多少是对的。目前只有机制句、梯度、测试三项逐条对过原文，结果数值还没算。</p>
+  <p>召回率 = 应该提的提到了多少；精确率 = 提出来的有多少是对的。机制按“说法”计分（10-25 定）：作者的一个因果判断算一条，写在摘要还是正文、挂几句原文都算提到。目前机制、梯度、测试三项对过原文，结果数值还没算。</p>
   <div class="tbl"><table>
     <thead><tr><th>字段</th><th>指标</th><th>Claude</th><th>GPT</th><th>千问 Max<span class="sub">关思考</span></th><th>千问 27B<span class="sub">开思考</span></th><th>千问 27B<span class="sub">关思考</span></th><th>智谱 GLM-5.3<span class="sub">关思考</span></th></tr></thead>
     <tbody>
-      <tr><th rowspan="2">机制句<span class="sub">应记 56 句，逐句判</span></th><td>召回率</td><td class="n best">77%<span class="sub">43/56</span></td><td class="n">29%<span class="sub">16/56</span></td><td class="n">41%<span class="sub">23/56</span></td><td class="n">48%<span class="sub">27/56</span></td><td class="n worst">20%<span class="sub">11/56</span></td><td class="n">39%<span class="sub">22/56</span></td></tr>
+      <tr><th rowspan="2">机制说法<span class="sub">作者的 12 条说法，同一说法写几处只算一条</span></th><td>召回率</td><td class="n best">100%<span class="sub">12/12</span></td><td class="n">83%<span class="sub">10/12</span></td><td class="n">75%<span class="sub">9/12</span></td><td class="n">75%<span class="sub">9/12</span></td><td class="n worst">58%<span class="sub">7/12</span></td><td class="n">83%<span class="sub">10/12</span></td></tr>
+      <tr><td>精确率</td><td class="n">92%<span class="sub">43/47</span></td><td class="n best">100%<span class="sub">16/16</span></td><td class="n">95%<span class="sub">19/20</span></td><td class="n">91%<span class="sub">10/11</span></td><td class="n best">100%<span class="sub">4/4</span></td><td class="n">93%<span class="sub">14/15</span></td></tr>
+      <tr><th rowspan="2">（参考）机制句<span class="sub">应记 56 句，逐句判；已改为按说法计分</span></th><td>召回率</td><td class="n best">77%<span class="sub">43/56</span></td><td class="n">29%<span class="sub">16/56</span></td><td class="n">41%<span class="sub">23/56</span></td><td class="n">48%<span class="sub">27/56</span></td><td class="n worst">20%<span class="sub">11/56</span></td><td class="n">39%<span class="sub">22/56</span></td></tr>
       <tr><td>精确率</td><td class="n">80%<span class="sub">43/54</span></td><td class="n best">100%<span class="sub">16/16</span></td><td class="n">68%<span class="sub">23/34</span></td><td class="n worst">59%<span class="sub">27/46</span></td><td class="n">69%<span class="sub">11/16</span></td><td class="n">79%<span class="sub">22/28</span></td></tr>
       <tr><th rowspan="2">梯度<span class="sub">原文 5 条</span></th><td>召回率</td><td class="n best">100%<span class="sub">5/5</span></td><td class="n">60%<span class="sub">3/5</span></td><td class="n">40%<span class="sub">2/5</span></td><td class="n worst">20%<span class="sub">1/5</span></td><td class="n worst">20%<span class="sub">1/5</span></td><td class="n worst">20%<span class="sub">1/5</span></td></tr>
       <tr><td>精确率</td><td class="n">100%</td><td class="n">100%</td><td class="n">100%</td><td class="n">100%</td><td class="n">100%</td><td class="n">100%</td></tr>
@@ -83,7 +85,7 @@ code { font-family: var(--f-mono); font-size: 13px; }
       <tr><th>结果数值</th><td>召回 / 精确</td><td colspan="6">未算：需要逐条核对 128 条结果的数值和方向</td></tr>
     </tbody>
   </table></div>
-  <p class="note">机制句精确率的分母不含被 PDF 切断的半句。测试：原文 10 组是 Li‖Cu 两组、Li‖碳纸 GITT 两组、Li‖C/S GITT、Li‖S 0.1 C 长循环、高载量、低 E/S、软包、LiNO₃ 用量筛选。同一批电池被拆成两个测试（如 EIS、第二次 GITT）的，不算错，只按一组计；千问三种设置漏的都是高载量、低 E/S、LiNO₃ 筛选这类只有一个配方的测试。千问 Max 的数字来自删掉多余括号后的那份。智谱 GLM-5.3 是后来测的，用的是含新口径的新版提示词（其他各家用旧版），关思考，一次通过格式检查，单篇约 4 分钟、约 ¥1；开思考时 6.5 万 token 全用在思考上，没输出结果。</p>
+  <p class="note">说法级的判法：某家只要有一条机制挂了属于这条说法的原句就算提到（偏宽，没逐条核对概括的方向）；机制条目只挂了引言背景、数据、方法或性质句的算错。逐句那两行留作参考，分母不含被 PDF 切断的半句。测试：原文 10 组是 Li‖Cu 两组、Li‖碳纸 GITT 两组、Li‖C/S GITT、Li‖S 0.1 C 长循环、高载量、低 E/S、软包、LiNO₃ 用量筛选。同一批电池被拆成两个测试（如 EIS、第二次 GITT）的，不算错，只按一组计；千问三种设置漏的都是高载量、低 E/S、LiNO₃ 筛选这类只有一个配方的测试。千问 Max 的数字来自删掉多余括号后的那份。智谱 GLM-5.3 是后来测的，用的是含新口径的新版提示词（其他各家用旧版），关思考，一次通过格式检查，单篇约 4 分钟、约 ¥1；开思考时 6.5 万 token 全用在思考上，没输出结果。</p>
 </section>
 
 <section>
