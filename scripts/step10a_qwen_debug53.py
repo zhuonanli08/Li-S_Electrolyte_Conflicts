@@ -146,7 +146,8 @@ def call(cli, messages, model=MODEL, thinking=False):
             stream = cli.chat.completions.create(
                 model=model, messages=messages, temperature=0, max_tokens=MAX_TOKENS,
                 stream=True, stream_options={'include_usage': True},
-                extra_body={'enable_thinking': thinking})
+                extra_body=({'thinking': {'type': 'enabled' if thinking else 'disabled'}}  # 智谱写法
+                            if model.startswith('GLM') else {'enable_thinking': thinking}))
             parts, finish, usage, reasoning = [], None, None, 0
             for ch in stream:
                 if ch.usage:
