@@ -69,6 +69,24 @@ code { font-family: var(--f-mono); font-size: 13px; }
 </div>
 
 <section>
+  <h2>召回率与精确率（S39）</h2>
+  <p>召回率 = 应该提的提到了多少；精确率 = 提出来的有多少是对的。目前只有机制句、梯度、测试三项逐条对过原文，结果数值还没算。</p>
+  <div class="tbl"><table>
+    <thead><tr><th>字段</th><th>指标</th><th>Claude</th><th>GPT</th><th>千问 Max<span class="sub">关思考</span></th><th>千问 27B<span class="sub">开思考</span></th><th>千问 27B<span class="sub">关思考</span></th></tr></thead>
+    <tbody>
+      <tr><th rowspan="2">机制句<span class="sub">应记 56 句，逐句判</span></th><td>召回率</td><td class="n best">77%<span class="sub">43/56</span></td><td class="n">29%<span class="sub">16/56</span></td><td class="n">41%<span class="sub">23/56</span></td><td class="n">48%<span class="sub">27/56</span></td><td class="n worst">20%<span class="sub">11/56</span></td></tr>
+      <tr><td>精确率</td><td class="n">80%<span class="sub">43/54</span></td><td class="n best">100%<span class="sub">16/16</span></td><td class="n">68%<span class="sub">23/34</span></td><td class="n worst">59%<span class="sub">27/46</span></td><td class="n">69%<span class="sub">11/16</span></td></tr>
+      <tr><th rowspan="2">梯度<span class="sub">原文 5 条</span></th><td>召回率</td><td class="n best">100%<span class="sub">5/5</span></td><td class="n">60%<span class="sub">3/5</span></td><td class="n">40%<span class="sub">2/5</span></td><td class="n worst">20%<span class="sub">1/5</span></td><td class="n worst">20%<span class="sub">1/5</span></td></tr>
+      <tr><td>精确率</td><td class="n">100%</td><td class="n">100%</td><td class="n">100%</td><td class="n">100%</td><td class="n">100%</td></tr>
+      <tr><th rowspan="2">测试<span class="sub">原文 10 组</span></th><td>召回率</td><td class="n best">100%<span class="sub">10/10</span></td><td class="n best">100%<span class="sub">10/10</span></td><td class="n">70%<span class="sub">7/10</span></td><td class="n">70%<span class="sub">7/10</span></td><td class="n worst">40%<span class="sub">4/10</span></td></tr>
+      <tr><td>精确率</td><td class="n">100%</td><td class="n">100%</td><td class="n">100%</td><td class="n">100%</td><td class="n">100%</td></tr>
+      <tr><th>结果数值</th><td>召回 / 精确</td><td colspan="5">未算：需要逐条核对 128 条结果的数值和方向</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">机制句精确率的分母不含被 PDF 切断的半句。测试：原文 10 组是 Li‖Cu 两组、Li‖碳纸 GITT 两组、Li‖C/S GITT、Li‖S 0.1 C 长循环、高载量、低 E/S、软包、LiNO₃ 用量筛选。同一批电池被拆成两个测试（如 EIS、第二次 GITT）的，不算错，只按一组计；千问三种设置漏的都是高载量、低 E/S、LiNO₃ 筛选这类只有一个配方的测试。千问 Max 的数字来自删掉多余括号后的那份。</p>
+</section>
+
+<section>
   <h2>怎么比的</h2>
   <ol class="flow">
     <li>三家用同一份提取规程，各自读 S39 全文（正文 + SI，共 704 句），各出一份 JSON：配方、梯度、测试条件、结果、机制（作者的说法，一句原文一条）。</li>
