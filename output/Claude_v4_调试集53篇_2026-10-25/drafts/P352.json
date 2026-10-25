@@ -1,0 +1,1123 @@
+{
+  "paper_id": "P352",
+  "doi": "10.1021/acsaem.3c01966",
+  "formulations": [
+    {
+      "id": "DOL:DME-control",
+      "name": "DOL:DME-control electrolyte",
+      "components": [
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": "1:1", "unit": "w/w（DOL:DME）"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": "1:1", "unit": "w/w（DOL:DME）"},
+        {"name": "LiTFSI", "role": "盐", "amount": 1, "unit": "mol kg-1（mol kgsolvent−1，按溶剂质量）"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 1, "unit": "mol kg-1（mol kgsolvent−1，按溶剂质量）"}
+      ],
+      "raw_formula": "mixing DOL and 1,2-dimethoxyethane (DME) solvents in the 1:1 w/w ratio and dissolving LiTFSI and LiNO3 both in a concentration of 1 mol kgsolvent−1",
+      "evidence_ids": ["M0073"]
+    },
+    {
+      "id": "TE-5%",
+      "name": "TE-5%",
+      "components": [
+        {"name": "TEGDME", "role": "溶剂化溶剂", "amount": "溶剂主体（盐浓度按其质量计）", "unit": "—"},
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": 5, "unit": "wt%（相对前驱电解液质量）"},
+        {"name": "LiTFSI", "role": "盐", "amount": 1, "unit": "mol kg-1（mol kgsolvent−1，按 TEGDME 质量）"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 1, "unit": "mol kg-1（mol kgsolvent−1，按 TEGDME 质量）"}
+      ],
+      "raw_formula": "TEGDME, 1 mol kg−1 LiTFSI, 1 mol kg−1 LiNO3 + 5% DOL（DOL 为相对前驱电解液质量的 5 wt %）",
+      "evidence_ids": ["M0029", "M0030", "M0037"]
+    },
+    {
+      "id": "TE-10%",
+      "name": "TE-10%",
+      "components": [
+        {"name": "TEGDME", "role": "溶剂化溶剂", "amount": "溶剂主体（盐浓度按其质量计）", "unit": "—"},
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": 10, "unit": "wt%（相对前驱电解液质量）"},
+        {"name": "LiTFSI", "role": "盐", "amount": 1, "unit": "mol kg-1（mol kgsolvent−1，按 TEGDME 质量）"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 1, "unit": "mol kg-1（mol kgsolvent−1，按 TEGDME 质量）"}
+      ],
+      "raw_formula": "TEGDME, 1 mol kg−1 LiTFSI, 1 mol kg−1 LiNO3 + 10% DOL（DOL 为相对前驱电解液质量的 10 wt %）",
+      "evidence_ids": ["M0029", "M0030", "M0037"]
+    },
+    {
+      "id": "TE-15%",
+      "name": "TE-15%",
+      "components": [
+        {"name": "TEGDME", "role": "溶剂化溶剂", "amount": "溶剂主体（盐浓度按其质量计）", "unit": "—"},
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": 15, "unit": "wt%（相对前驱电解液质量）"},
+        {"name": "LiTFSI", "role": "盐", "amount": 1, "unit": "mol kg-1（mol kgsolvent−1，按 TEGDME 质量）"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 1, "unit": "mol kg-1（mol kgsolvent−1，按 TEGDME 质量）"}
+      ],
+      "raw_formula": "TEGDME, 1 mol kg−1 LiTFSI, 1 mol kg−1 LiNO3 + 15% DOL（DOL 为相对前驱电解液质量的 15 wt %）",
+      "evidence_ids": ["M0029", "M0030", "M0037"]
+    }
+  ],
+  "control_id": "DOL:DME-control",
+  "control_type": "其他：作者的 DOL:DME-control 属常规醚基准（DOL/DME 1:1 w/w + LiTFSI + LiNO3 各 1 mol kg⁻¹），但只在另一组条件（E/S 10 或 6 µL mg⁻¹、硫载量 2.2–2.3 或 5.2 mg cm⁻²）下单独测正极，未与 TE 系列同测；篇内比较只在 TE 梯度内进行（B = TE-5%）",
+  "gradients": [
+    {
+      "name": "DOL 质量分数（用量梯度）",
+      "order": ["TE-5%", "TE-10%", "TE-15%"],
+      "values": ["5 wt%", "10 wt%", "15 wt%"],
+      "solvation_axis": "按 Li⁺ 溶剂化由强到弱（推定）；依据：作者 FT-IR 称 DOL 增多使 LiTFSI 离子对缔合程度升高（M0107，'may suggest'），并称 TEGDME 链对 Li⁺ 配位、促进离子对解离（M0102）；多硫化物溶剂化未测",
+      "evidence_ids": ["M0030", "M0037", "M0107", "M0102"]
+    }
+  ],
+  "properties": [
+    {
+      "name": "Li⁺ 溶剂化（离子对缔合程度）",
+      "values": {"TE-5%": "离子对缔合较低", "TE-10%": "离子对缔合较高", "TE-15%": "离子对缔合较高"},
+      "direction": "沿梯度（DOL 增多）离子对缔合升高（作者 'may suggest'）",
+      "method": "FT-IR（~1650 cm⁻¹ LiTFSI 信号相对强度）",
+      "system": "TE 电解液本身（无多硫化物）",
+      "evidence_ids": ["M0107"]
+    },
+    {
+      "name": "多硫化物溶剂化",
+      "values": {"TE-5%": "未报告", "TE-10%": "未报告", "TE-15%": "未报告"},
+      "direction": "未报告",
+      "method": "未报告",
+      "system": "未报告",
+      "evidence_ids": []
+    },
+    {
+      "name": "多硫化物溶解度",
+      "values": {"TE-5%": "未报告", "TE-10%": "未报告", "TE-15%": "未报告"},
+      "direction": "未报告",
+      "method": "未报告",
+      "system": "未报告",
+      "evidence_ids": []
+    },
+    {
+      "name": "离子电导率（~25 °C）",
+      "values": {"TE-5%": "≈1.5 × 10−3 S cm−1", "TE-10%": "≈1.5 × 10−3 S cm−1", "TE-15%": "≈1.5 × 10−3 S cm−1"},
+      "direction": "各档相近",
+      "method": "EIS（SS|电解液|SS，变温）",
+      "system": "TE 电解液本身",
+      "evidence_ids": ["M0097"]
+    },
+    {
+      "name": "离子电导率（~50 °C）",
+      "values": {"TE-5%": "2 × 10−3 S cm−1", "TE-10%": "2 × 10−3 S cm−1", "TE-15%": "接近 3 × 10−3 S cm−1"},
+      "direction": "TE-15% 最高，TE-5% 与 TE-10% 相近",
+      "method": "EIS（SS|电解液|SS，变温）",
+      "system": "TE 电解液本身",
+      "evidence_ids": ["M0097"]
+    },
+    {
+      "name": "离子电导率（−3 °C）",
+      "values": {"TE-5%": "8 × 10−4 S cm−1", "TE-10%": "6 × 10−4 S cm−1", "TE-15%": "7 × 10−4 S cm−1"},
+      "direction": "有起伏（TE-5% 最高）",
+      "method": "EIS（SS|电解液|SS，变温）",
+      "system": "TE 电解液本身",
+      "evidence_ids": ["M0098"]
+    },
+    {
+      "name": "Li⁺ 迁移活化能 Ea",
+      "values": {"TE-5%": "5.1 × 10−2 eV", "TE-10%": "7.6 × 10−2 eV", "TE-15%": "8.5 × 10−2 eV"},
+      "direction": "沿梯度升高",
+      "method": "电导率 Arrhenius 拟合（−3 至 50 °C）",
+      "system": "TE 电解液本身",
+      "evidence_ids": ["M0100"]
+    },
+    {
+      "name": "Li⁺ 迁移数 t+",
+      "values": {"TE-5%": "0.55", "TE-10%": "0.53", "TE-15%": "0.50"},
+      "direction": "沿梯度降低",
+      "method": "Bruce−Vincent−Evans（计时电流 + EIS，ΔV 30 mV）",
+      "system": "Li|Li 对称电池",
+      "evidence_ids": ["M0116"]
+    },
+    {
+      "name": "黏度",
+      "values": {"TE-5%": "未实测", "TE-10%": "未实测", "TE-15%": "未实测"},
+      "direction": "未实测；作者按纯溶剂文献黏度（TEGDME 3.3−3.7 mPa s，DOL 0.6 mPa s）推定随 DOL 增多降低",
+      "method": "未测（引用纯溶剂文献值）",
+      "system": "纯溶剂文献值，非本文电解液",
+      "evidence_ids": ["M0016"]
+    },
+    {
+      "name": "阳极稳定上限",
+      "values": {"TE-5%": "4.41 V vs Li+/Li", "TE-10%": "4.38 V vs Li+/Li", "TE-15%": "4.37 V vs Li+/Li"},
+      "direction": "沿梯度降低",
+      "method": "LSV（Li|SPC-Al，0.1 mV s−1，以 30 μA 为判据）",
+      "system": "TE 电解液本身",
+      "evidence_ids": ["M0120", "M0114"]
+    },
+    {
+      "name": "TEGDME 失重峰温度（TGA/DTG）",
+      "values": {"TE-5%": "197 °C", "TE-10%": "210 °C", "TE-15%": "263 °C"},
+      "direction": "沿梯度升高",
+      "method": "TGA/DTG（N2，5 °C min−1）",
+      "system": "TE 电解液本身",
+      "evidence_ids": ["M0089"]
+    }
+  ],
+  "tests": [
+    {
+      "id": "P352-T1",
+      "name": "Li‖S 扣式 倍率（仅 DOL:DME-control，E/S 10）",
+      "cell": "Li‖S 扣式（CR2032，Celgard 2400）",
+      "conditions": {
+        "sulfur_loading": "2.2 mg cm−2",
+        "ES": "10",
+        "ES_unit": "µL mg⁻¹（体积基）",
+        "Li_thickness": "未报告",
+        "rate": "C/10→C/8→C/5→C/3→C/2 每 5 圈递增，25 圈后回到 C/10",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 1 mol kg⁻¹（按溶剂质量）",
+        "one_C": "1675 mA g−1",
+        "voltage_window": "1.8–2.8 V（C/10–C/3），1.7–2.8 V（C/2）"
+      },
+      "formulations": ["DOL:DME-control"],
+      "evidence_ids": ["M0072", "M0073", "M0076", "M0077", "M0078"],
+      "results": []
+    },
+    {
+      "id": "P352-T2",
+      "name": "Li‖S 扣式 C/5 长循环（仅 DOL:DME-control，E/S 10）",
+      "cell": "Li‖S 扣式（CR2032，Celgard 2400）",
+      "conditions": {
+        "sulfur_loading": "2.2−2.3 mg cm−2",
+        "ES": "10",
+        "ES_unit": "µL mg⁻¹（体积基）",
+        "Li_thickness": "未报告",
+        "rate": "C/5",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 1 mol kg⁻¹（按溶剂质量）",
+        "one_C": "1675 mA g−1",
+        "voltage_window": "1.7–2.8 V"
+      },
+      "formulations": ["DOL:DME-control"],
+      "evidence_ids": ["M0072", "M0073", "M0076"],
+      "results": []
+    },
+    {
+      "id": "P352-T3",
+      "name": "Li‖S 扣式 C/3 长循环（仅 DOL:DME-control，E/S 10）",
+      "cell": "Li‖S 扣式（CR2032，Celgard 2400）",
+      "conditions": {
+        "sulfur_loading": "2.2−2.3 mg cm−2",
+        "ES": "10",
+        "ES_unit": "µL mg⁻¹（体积基）",
+        "Li_thickness": "未报告",
+        "rate": "C/3",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 1 mol kg⁻¹（按溶剂质量）",
+        "one_C": "1675 mA g−1",
+        "voltage_window": "1.7–2.8 V"
+      },
+      "formulations": ["DOL:DME-control"],
+      "evidence_ids": ["M0072", "M0073", "M0076"],
+      "results": []
+    },
+    {
+      "id": "P352-T4",
+      "name": "Li‖S 扣式 C/10 高载量（仅 DOL:DME-control，E/S 6）",
+      "cell": "Li‖S 扣式（CR2032，Celgard 2400）",
+      "conditions": {
+        "sulfur_loading": "5.2 mg cm−2",
+        "ES": "6",
+        "ES_unit": "µL mg⁻¹（体积基）",
+        "Li_thickness": "未报告",
+        "rate": "C/10",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 1 mol kg⁻¹（按溶剂质量）",
+        "one_C": "1675 mA g−1",
+        "voltage_window": "1.7–2.8 V"
+      },
+      "formulations": ["DOL:DME-control"],
+      "evidence_ids": ["M0072", "M0073", "M0076"],
+      "results": []
+    },
+    {
+      "id": "P352-T5",
+      "name": "Li‖S 扣式 C/5 长循环（TE 梯度，E/S 15）",
+      "cell": "Li‖S 扣式（CR2032，Celgard 2400）",
+      "conditions": {
+        "sulfur_loading": "1.7−2.1 mg cm−2",
+        "ES": "15",
+        "ES_unit": "µL mg⁻¹（体积基）",
+        "Li_thickness": "未报告",
+        "rate": "C/5",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 1 mol kg⁻¹（按 TEGDME 质量）",
+        "one_C": "1675 mA g−1",
+        "voltage_window": "1.7–2.8 V"
+      },
+      "formulations": ["TE-5%", "TE-10%", "TE-15%"],
+      "evidence_ids": ["M0072", "M0076", "M0082", "M0162", "M0029"],
+      "results": [
+        {
+          "id": "P352-T5-R1",
+          "metric": "首圈容量",
+          "A": "TE-10%", "B": "TE-5%",
+          "value_A": 220, "value_B": 140,
+          "unit": "mAh g-1",
+          "point": "C/5 第 1 圈（作者写初始活化阶段起点 'from'；未报告化成）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0175"],
+          "reason": "初始活化阶段起点容量"
+        },
+        {
+          "id": "P352-T5-R2",
+          "metric": "首圈容量",
+          "A": "TE-15%", "B": "TE-5%",
+          "value_A": 270, "value_B": 140,
+          "unit": "mAh g-1",
+          "point": "C/5 第 1 圈（作者写初始活化阶段起点 'from'；未报告化成）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0175"],
+          "reason": "初始活化阶段起点容量"
+        },
+        {
+          "id": "P352-T5-R3",
+          "metric": "指定圈容量",
+          "A": "TE-10%", "B": "TE-5%",
+          "value_A": 530, "value_B": 360,
+          "unit": "mAh g-1",
+          "point": "初始活化阶段结束时（圈数原文未写）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0175"],
+          "reason": "作者 'increase ... during the initial stage from X to Y' 的 Y 值"
+        },
+        {
+          "id": "P352-T5-R4",
+          "metric": "指定圈容量",
+          "A": "TE-15%", "B": "TE-5%",
+          "value_A": 570, "value_B": 360,
+          "unit": "mAh g-1",
+          "point": "初始活化阶段结束时（圈数原文未写）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0175"],
+          "reason": "原文 TE-15% 写作 '570 mA h'（漏 g−1），按同句其余单位理解为 mAh g−1"
+        },
+        {
+          "id": "P352-T5-R5",
+          "metric": "稳态容量",
+          "A": "TE-10%", "B": "TE-5%",
+          "value_A": "400–580", "value_B": "≤420",
+          "unit": "mAh g-1",
+          "point": "长循环稳定段（TE-5% 为最大值 420；TE-10% 为波动区间）",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": ["M0181", "M0183"],
+          "reason": "区间重叠（400–420），按规则不判；两者口径（最大值 vs 波动区间）也不同"
+        },
+        {
+          "id": "P352-T5-R6",
+          "metric": "稳态容量",
+          "A": "TE-15%", "B": "TE-5%",
+          "value_A": "500–550", "value_B": "≤420",
+          "unit": "mAh g-1",
+          "point": "长循环稳定段（TE-5% 为最大值 420；TE-15% 为稳态区间）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0181", "M0182"],
+          "reason": "TE-15% 稳态区间下限 500 高于 TE-5% 最大值 420，区间不重叠"
+        },
+        {
+          "id": "P352-T5-R7",
+          "metric": "寿命（循环圈数）",
+          "A": "TE-10%", "B": "TE-5%",
+          "value_A": 130, "value_B": 117,
+          "unit": "圈",
+          "point": "TE-5% 第 117 圈后突然失活（容量 <100 mAh g⁻¹、CE 降至 82%）；TE-10% 作者称 life of 130 cycles（第 130 圈容量 406 mAh g⁻¹）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0181", "M0183", "M0218"],
+          "reason": "口径不完全相同：TE-5% 为失效圈数，TE-10% 为测试/作者所称寿命终点且未失效；作者另定性称 TE-10% 寿命最长（M0194）"
+        },
+        {
+          "id": "P352-T5-R8",
+          "metric": "寿命（循环圈数）",
+          "A": "TE-15%", "B": "TE-5%",
+          "value_A": "100（M0182）/110（M0192）", "value_B": 117,
+          "unit": "圈",
+          "point": "TE-15% 渐进失活起点 vs TE-5% 突然失活圈数",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": ["M0182", "M0192", "M0181"],
+          "reason": "作者说法前后不一：TE-15% 失活起点 M0182/M0217 写 100 圈、M0192 写 110 圈；且 TE-5% 为突然失效（<100 mAh g⁻¹）、TE-15% 为渐进衰减至终点 250 mAh g⁻¹，口径不同；已登记读图"
+        },
+        {
+          "id": "P352-T5-R9",
+          "metric": "寿命（循环圈数）",
+          "A": "TE-15%", "B": "TE-10%",
+          "value_A": null, "value_B": null,
+          "unit": "圈",
+          "point": "长循环寿命（作者定性）",
+          "basis": "qualitative",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0186", "M0194"],
+          "reason": "作者定性：TE-10% 寿命最长（most improved cycle life / the longer cycle life）；TE-15% 圈数前后不一，数值不用"
+        },
+        {
+          "id": "P352-T5-R10",
+          "metric": "库仑效率",
+          "A": "TE-10%", "B": "TE-5%",
+          "value_A": ">96", "value_B": "82（失活时降至）",
+          "unit": "%",
+          "point": "全程（TE-5% 在约第 117 圈失活时降至 82%）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0184"],
+          "reason": "作者说法：除 TE-5% 失活时降至 82% 外，其余全程 >96%"
+        },
+        {
+          "id": "P352-T5-R11",
+          "metric": "库仑效率",
+          "A": "TE-15%", "B": "TE-5%",
+          "value_A": ">96", "value_B": "82（失活时降至）",
+          "unit": "%",
+          "point": "全程（TE-5% 在约第 117 圈失活时降至 82%）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0184"],
+          "reason": "作者说法：除 TE-5% 失活时降至 82% 外，其余全程 >96%"
+        },
+        {
+          "id": "P352-T5-R12",
+          "metric": "过电位",
+          "A": "TE-10%", "B": "TE-5%",
+          "value_A": null, "value_B": null,
+          "unit": "—",
+          "point": "长循环充放电过电位（作者定性）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0181", "M0193"],
+          "reason": "作者称 TE-5% 低 DOL 含量 'promotes the discharge/charge overvoltage'、'excessive polarization raise'；与较高 DOL 档隐含对比"
+        },
+        {
+          "id": "P352-T5-R13",
+          "metric": "过电位",
+          "A": "TE-15%", "B": "TE-5%",
+          "value_A": null, "value_B": null,
+          "unit": "—",
+          "point": "长循环充放电过电位（作者定性）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0181", "M0193"],
+          "reason": "作者称 TE-5% 低 DOL 含量 'promotes the discharge/charge overvoltage'、'excessive polarization raise'；与较高 DOL 档隐含对比"
+        },
+        {
+          "id": "P352-T5-R14",
+          "metric": "活化速度（初期容量增长速度）",
+          "A": "TE-10%", "B": "TE-5%",
+          "value_A": null, "value_B": null,
+          "unit": "—",
+          "point": "初始活化阶段",
+          "basis": "qualitative",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0176"],
+          "reason": "作者定性：容量增长速度从 TE-5% 到 TE-15% 降低，DOL 越少活化越快"
+        },
+        {
+          "id": "P352-T5-R15",
+          "metric": "活化速度（初期容量增长速度）",
+          "A": "TE-15%", "B": "TE-5%",
+          "value_A": null, "value_B": null,
+          "unit": "—",
+          "point": "初始活化阶段",
+          "basis": "qualitative",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0176"],
+          "reason": "作者定性：容量增长速度从 TE-5% 到 TE-15% 降低，DOL 越少活化越快"
+        },
+        {
+          "id": "P352-T5-R16",
+          "metric": "首圈低电压放电平台（液–固转化）",
+          "A": "TE-10%", "B": "TE-5%",
+          "value_A": null, "value_B": null,
+          "unit": "—",
+          "point": "第 1 圈放电曲线",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0173"],
+          "reason": "作者定性：TE-5% 无低压平台、TE-10% 部分出现、TE-15% 出现"
+        },
+        {
+          "id": "P352-T5-R17",
+          "metric": "首圈低电压放电平台（液–固转化）",
+          "A": "TE-15%", "B": "TE-5%",
+          "value_A": null, "value_B": null,
+          "unit": "—",
+          "point": "第 1 圈放电曲线",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0173"],
+          "reason": "作者定性：TE-5% 无低压平台、TE-10% 部分出现、TE-15% 出现"
+        }
+      ]
+    },
+    {
+      "id": "P352-T6",
+      "name": "Li‖S 扣式 倍率（TE 梯度，E/S 15）",
+      "cell": "Li‖S 扣式（CR2032，Celgard 2400）",
+      "conditions": {
+        "sulfur_loading": "∼2.0 mg cm−2",
+        "ES": "15",
+        "ES_unit": "µL mg⁻¹（体积基）",
+        "Li_thickness": "未报告",
+        "rate": "C/20→C/10→C/8→C/5→C/3→C/2 每 5 圈递增，30 圈后回到 C/20",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 1 mol kg⁻¹（按 TEGDME 质量）",
+        "one_C": "1675 mA g−1",
+        "voltage_window": "1.8–2.8 V（C/20–C/8），1.7–2.8 V（C/5–C/2）"
+      },
+      "formulations": ["TE-5%", "TE-10%", "TE-15%"],
+      "evidence_ids": ["M0072", "M0076", "M0083", "M0084", "S0088", "S0089", "S0090", "S0091", "M0029"],
+      "results": [
+        {
+          "id": "P352-T6-R1",
+          "metric": "倍率容量",
+          "A": "TE-10%", "B": "TE-5%",
+          "value_A": 880, "value_B": 900,
+          "unit": "mAh g-1",
+          "point": "C/20 段稳态容量",
+          "basis": "numeric",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["M0199"],
+          "reason": "|880−900|/900 = 2.2%"
+        },
+        {
+          "id": "P352-T6-R2",
+          "metric": "倍率容量",
+          "A": "TE-15%", "B": "TE-5%",
+          "value_A": 920, "value_B": 900,
+          "unit": "mAh g-1",
+          "point": "C/20 段稳态容量",
+          "basis": "numeric",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["M0199"],
+          "reason": "|920−900|/920 = 2.2%"
+        },
+        {
+          "id": "P352-T6-R3",
+          "metric": "倍率容量",
+          "A": "TE-10%", "B": "TE-5%",
+          "value_A": 735, "value_B": 760,
+          "unit": "mAh g-1",
+          "point": "C/10 段稳态容量",
+          "basis": "numeric",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["M0199"],
+          "reason": "|735−760|/760 = 3.3%"
+        },
+        {
+          "id": "P352-T6-R4",
+          "metric": "倍率容量",
+          "A": "TE-15%", "B": "TE-5%",
+          "value_A": 810, "value_B": 760,
+          "unit": "mAh g-1",
+          "point": "C/10 段稳态容量",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0199"],
+          "reason": "|810−760|/810 = 6.2%"
+        },
+        {
+          "id": "P352-T6-R5",
+          "metric": "倍率容量",
+          "A": "TE-10%", "B": "TE-5%",
+          "value_A": 610, "value_B": 670,
+          "unit": "mAh g-1",
+          "point": "C/8 段稳态容量",
+          "basis": "numeric",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0199"],
+          "reason": "|610−670|/670 = 9.0%；与作者'DOL 增加改善转化动力学'的总体说法在此档不符"
+        },
+        {
+          "id": "P352-T6-R6",
+          "metric": "倍率容量",
+          "A": "TE-15%", "B": "TE-5%",
+          "value_A": 725, "value_B": 670,
+          "unit": "mAh g-1",
+          "point": "C/8 段稳态容量",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0199"],
+          "reason": "|725−670|/725 = 7.6%"
+        },
+        {
+          "id": "P352-T6-R7",
+          "metric": "倍率容量",
+          "A": "TE-10%", "B": "TE-5%",
+          "value_A": "≈500", "value_B": 150,
+          "unit": "mAh g-1",
+          "point": "C/5 段",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0200"],
+          "reason": "原文 TE-10% 'around 500'，TE-5% 'limited to 150'"
+        },
+        {
+          "id": "P352-T6-R8",
+          "metric": "倍率容量",
+          "A": "TE-15%", "B": "TE-5%",
+          "value_A": 640, "value_B": 150,
+          "unit": "mAh g-1",
+          "point": "C/5 段",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0200"],
+          "reason": "原文 TE-15% 640，TE-5% 'limited to 150'"
+        },
+        {
+          "id": "P352-T6-R9",
+          "metric": "倍率容量",
+          "A": "TE-10%", "B": "TE-5%",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1",
+          "point": "C/3 段",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [],
+          "reason": "正文只写三者 C/3 均差、最高为 TE-15% 130 mAh g⁻¹；TE-5%、TE-10% 只在 Figure S6d，已登记读图"
+        },
+        {
+          "id": "P352-T6-R10",
+          "metric": "倍率容量",
+          "A": "TE-15%", "B": "TE-5%",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1",
+          "point": "C/3 段",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [],
+          "reason": "TE-15% 正文有 130 mAh g⁻¹（M0201，可作锚点），TE-5% 只在 Figure S6d，已登记读图"
+        },
+        {
+          "id": "P352-T6-R11",
+          "metric": "倍率容量",
+          "A": "TE-10%", "B": "TE-5%",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1",
+          "point": "C/2 段",
+          "basis": "qualitative",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["M0201"],
+          "reason": "作者定性：三种电解液在 C/2 均失活"
+        },
+        {
+          "id": "P352-T6-R12",
+          "metric": "倍率容量",
+          "A": "TE-15%", "B": "TE-5%",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1",
+          "point": "C/2 段",
+          "basis": "qualitative",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["M0201"],
+          "reason": "作者定性：三种电解液在 C/2 均失活"
+        }
+      ]
+    },
+    {
+      "id": "P352-T7",
+      "name": "Li‖Li 对称 静置老化 EIS（18 天）",
+      "cell": "Li‖Li 对称（电池形式原文未写；Whatman GF/A 16 mm 隔膜）",
+      "conditions": {
+        "sulfur_loading": "不适用（Li‖Li）",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "静置无电流；EIS 500 kHz–100 mHz、10 mV，前 14 h 每 2 h 一次，之后每天一次至 18 天",
+        "formation": "不适用",
+        "temperature": "未报告",
+        "LiNO3": "含 1 mol kg⁻¹（按 TEGDME 质量）",
+        "one_C": "不适用"
+      },
+      "formulations": ["TE-5%", "TE-10%", "TE-15%"],
+      "evidence_ids": ["M0047", "M0029"],
+      "results": [
+        {
+          "id": "P352-T7-R1",
+          "metric": "阻抗",
+          "A": "TE-10%", "B": "TE-5%",
+          "value_A": 84, "value_B": 85,
+          "unit": "Ω（界面阻抗 Ri）",
+          "point": "组装后初始",
+          "basis": "numeric",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["M0110"],
+          "reason": "|84−85|/85 = 1.2%"
+        },
+        {
+          "id": "P352-T7-R2",
+          "metric": "阻抗",
+          "A": "TE-15%", "B": "TE-5%",
+          "value_A": 50, "value_B": 85,
+          "unit": "Ω（界面阻抗 Ri）",
+          "point": "组装后初始",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0110"],
+          "reason": "阻抗越低记变好；|50−85|/85 = 41%"
+        },
+        {
+          "id": "P352-T7-R3",
+          "metric": "阻抗",
+          "A": "TE-10%", "B": "TE-5%",
+          "value_A": 129, "value_B": 154,
+          "unit": "Ω（界面阻抗 Ri）",
+          "point": "静置 18 天后",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0110"],
+          "reason": "阻抗越低记变好；|129−154|/154 = 16%"
+        },
+        {
+          "id": "P352-T7-R4",
+          "metric": "阻抗",
+          "A": "TE-15%", "B": "TE-5%",
+          "value_A": 86, "value_B": 154,
+          "unit": "Ω（界面阻抗 Ri）",
+          "point": "静置 18 天后",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0110"],
+          "reason": "阻抗越低记变好；|86−154|/154 = 44%"
+        }
+      ]
+    },
+    {
+      "id": "P352-T8",
+      "name": "Li‖Li 对称 沉积/剥离 0.1 mA cm−2",
+      "cell": "Li‖Li 对称（T 型 Swagelok，Whatman GF/B 10 mm 隔膜）",
+      "conditions": {
+        "sulfur_loading": "不适用（Li‖Li）",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.1 mA cm−2 恒流沉积/剥离（单次时长原文未写）",
+        "formation": "不适用",
+        "temperature": "未报告",
+        "LiNO3": "含 1 mol kg⁻¹（按 TEGDME 质量）",
+        "one_C": "不适用"
+      },
+      "formulations": ["TE-5%", "TE-10%", "TE-15%"],
+      "evidence_ids": ["M0046", "M0029"],
+      "results": [
+        {
+          "id": "P352-T8-R1",
+          "metric": "过电位",
+          "A": "TE-10%", "B": "TE-5%",
+          "value_A": null, "value_B": null,
+          "unit": "mV",
+          "point": "初始几圈（第 1 天）",
+          "basis": "qualitative",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["M0122"],
+          "reason": "作者定性：各电解液初期过电位均接近 40 mV，只点出 TE-15% 略高"
+        },
+        {
+          "id": "P352-T8-R2",
+          "metric": "过电位",
+          "A": "TE-15%", "B": "TE-5%",
+          "value_A": null, "value_B": null,
+          "unit": "mV",
+          "point": "初始几圈（第 1 天）",
+          "basis": "qualitative",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0122"],
+          "reason": "作者定性：TE-15% 初期极化略高（slightly higher polarization）"
+        },
+        {
+          "id": "P352-T8-R3",
+          "metric": "过电位",
+          "A": "TE-10%", "B": "TE-5%",
+          "value_A": 23, "value_B": 27,
+          "unit": "mV",
+          "point": "第 8 天开始时",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0124"],
+          "reason": "过电位越低记变好；|23−27|/27 = 14.8%"
+        },
+        {
+          "id": "P352-T8-R4",
+          "metric": "过电位",
+          "A": "TE-15%", "B": "TE-5%",
+          "value_A": 20, "value_B": 27,
+          "unit": "mV",
+          "point": "第 8 天开始时",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0124"],
+          "reason": "过电位越低记变好；|20−27|/27 = 25.9%"
+        },
+        {
+          "id": "P352-T8-R5",
+          "metric": "过电位",
+          "A": "TE-10%", "B": "TE-5%",
+          "value_A": "∼30", "value_B": "∼30",
+          "unit": "mV",
+          "point": "测试后半段",
+          "basis": "numeric",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["M0126"],
+          "reason": "作者称后半段所有电解液过电位稳定在 ∼30 mV"
+        },
+        {
+          "id": "P352-T8-R6",
+          "metric": "过电位",
+          "A": "TE-15%", "B": "TE-5%",
+          "value_A": "∼30", "value_B": "∼30",
+          "unit": "mV",
+          "point": "测试后半段",
+          "basis": "numeric",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["M0126"],
+          "reason": "作者称后半段所有电解液过电位稳定在 ∼30 mV"
+        }
+      ]
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "P352-M1",
+      "summary": "DOL 增多使电解液黏度降低（未实测）→ 可溶长链多硫化物向短链的液–固转化增强 → 首圈低电压放电平台从 TE-5% 缺失、TE-10% 部分出现到 TE-15% 出现",
+      "A": "全梯度", "B": "全梯度",
+      "property": "黏度随 DOL 增多降低（作者推定，未实测；非溶剂化性质）",
+      "categories": ["正极反应"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0173"],
+      "test_ids": ["P352-T5"],
+      "side": "其他"
+    },
+    {
+      "id": "P352-M2",
+      "summary": "黏度降低原则上可加快硫电极润湿、促进电化学过程，但初始活化主要受 Ea 与 εw 控制",
+      "A": "全梯度", "B": "全梯度",
+      "property": "黏度降低 vs Li⁺ 迁移活化能 Ea 升高、加权介电常数 εw 降低",
+      "categories": ["正极反应"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0177"],
+      "test_ids": ["P352-T5"],
+      "side": "其他"
+    },
+    {
+      "id": "P352-M3",
+      "summary": "活化速度可能与溶液的 Li⁺ 输运性质（受 Ea、εw 影响）密切相关",
+      "A": "全梯度", "B": "全梯度",
+      "property": "Li⁺ 输运（Ea、εw）",
+      "categories": [],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0179"],
+      "test_ids": ["P352-T5"],
+      "side": "其他"
+    },
+    {
+      "id": "P352-M4",
+      "summary": "TE-5% 到 TE-15% 活化逐渐变慢，作者用 Ea、εw 的变化解释（原句写 'decreases in Ea'，与 Fig. 1d 中 Ea 随 DOL 升高的数值方向相反，意为 TE-5% 的 Ea 更低）",
+      "A": "全梯度", "B": "全梯度",
+      "property": "Li⁺ 输运：Ea 沿梯度升高、εw 沿梯度降低",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0180"],
+      "test_ids": ["P352-T5"],
+      "side": "其他"
+    },
+    {
+      "id": "P352-M5",
+      "summary": "TE-5% 共溶剂（DOL）含量低 → 放电容量最高只有 420 mAh g⁻¹、充放电过电位增大 → 第 117 圈后电化学过程突然失活（容量 <100 mAh g⁻¹）",
+      "A": "TE-5%", "B": "TE-15%",
+      "property": "DOL 含量低（同篇 M0193 归因于黏度高）",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0181"],
+      "test_ids": ["P352-T5"],
+      "side": "其他"
+    },
+    {
+      "id": "P352-M6",
+      "summary": "长循环容量波动可能来自 TEGDME、DOL、生成的共溶剂与 Li2Sx 中间体之间随 TEGDME:DOL 比例变化的复杂相互作用",
+      "A": "全梯度", "B": "全梯度",
+      "property": "溶剂–多硫化物相互作用（未测）",
+      "categories": [],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0185"],
+      "test_ids": ["P352-T5"],
+      "side": "其他"
+    },
+    {
+      "id": "P352-M7",
+      "summary": "TE-10% 容量波动最大而寿命最长，作者据此推测 10 wt% DOL 主要作用于多硫化物的溶剂化和形态（相对 TE-5% 与 TE-15%）",
+      "A": "TE-10%", "B": "TE-5%",
+      "property": "多硫化物溶剂化（作者推测 10 wt% DOL 起作用，方向未说，未测）",
+      "categories": [],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0186"],
+      "test_ids": ["P352-T5"],
+      "side": "其他"
+    },
+    {
+      "id": "P352-M8",
+      "summary": "TE-5% 和 TE-15% 主要影响反应动力学与成膜，尤其在循环后期（同篇 M0189 的成膜指 SEI）",
+      "A": "全梯度", "B": "全梯度",
+      "property": "两端 DOL 含量（未说具体性质）",
+      "categories": [],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0187"],
+      "test_ids": ["P352-T5"],
+      "side": "其他"
+    },
+    {
+      "id": "P352-M9",
+      "summary": "TE-5% 中甘醇二甲醚保证有效的 Li⁺ 交换、放电容量稳定，但溶液黏度过高 → 容量值和循环寿命都受限",
+      "A": "TE-5%", "B": "TE-10%",
+      "property": "黏度高（TEGDME 多，未实测）",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0188"],
+      "test_ids": ["P352-T5"],
+      "side": "其他"
+    },
+    {
+      "id": "P352-M10",
+      "summary": "TE-15% 黏度低 → 容量较高；但 DOL 持续消耗可能造成不规则、过度的 SEI → 循环寿命缩短",
+      "A": "TE-15%", "B": "TE-10%",
+      "property": "DOL 含量高（黏度低；DOL 持续消耗）",
+      "categories": ["电解液消耗", "负极锂"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0189"],
+      "test_ids": ["P352-T5"],
+      "side": "其他"
+    },
+    {
+      "id": "P352-M11",
+      "summary": "TE-15% 中较多 DOL 降低黏度，但减慢 Li–S 活化速度",
+      "A": "TE-15%", "B": "TE-5%",
+      "property": "DOL 含量高、黏度低",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0191"],
+      "test_ids": ["P352-T5"],
+      "side": "其他"
+    },
+    {
+      "id": "P352-M12",
+      "summary": "DOL 使 TE-15% 稳态容量较高，但 SEI 过度生长影响寿命，表现为约 110 圈后容量失活（同篇 M0182/M0217 写 100 圈）",
+      "A": "TE-15%", "B": "TE-10%",
+      "property": "DOL 含量高（成膜/SEI 生长）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0192"],
+      "test_ids": ["P352-T5"],
+      "side": "其他"
+    },
+    {
+      "id": "P352-M13",
+      "summary": "TE-5% DOL 少 → 可能因 Ea、εw 带来更好的 Li⁺ 交换而活化快（原句写 'lower Ea and εw'，但 TE-5% 的 εw 为三者最高）；但黏度高 → 极化上升 → 容量受限、第 117 圈失效",
+      "A": "TE-5%", "B": "TE-15%",
+      "property": "DOL 含量低：Ea 低、黏度高（未实测）",
+      "categories": [],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0193"],
+      "test_ids": ["P352-T5"],
+      "side": "其他"
+    },
+    {
+      "id": "P352-M14",
+      "summary": "倍率测试表明 DOL 增多改善转化动力学；高倍率性能差，主要受电解液黏度影响",
+      "A": "全梯度", "B": "全梯度",
+      "property": "DOL 增多、黏度降低（未实测）",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0202"],
+      "test_ids": ["P352-T6"],
+      "side": "其他"
+    },
+    {
+      "id": "P352-M15",
+      "summary": "Li|Li 静置中 TE-5% 界面阻抗更高且更不稳定，其次 TE-10%、TE-15% → DOL 可能在静置时形成更有利的 SEI",
+      "A": "全梯度", "B": "全梯度",
+      "property": "DOL 成膜能力（SEI）",
+      "categories": ["负极锂"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0111"],
+      "test_ids": ["P352-T7"],
+      "side": "其他"
+    },
+    {
+      "id": "P352-M16",
+      "summary": "TE-15% 初期沉积/剥离过电位略高，可能因 DOL 环醚在锂表面反应成 SEI（DOL 含量最高）",
+      "A": "TE-15%", "B": "TE-5%",
+      "property": "DOL 含量高（环醚与锂反应成膜）",
+      "categories": ["负极锂"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0123"],
+      "test_ids": ["P352-T8"],
+      "side": "其他"
+    },
+    {
+      "id": "P352-M17",
+      "summary": "TE-15% 过电位下降更明显，可能因黏度较低促进 SEI 溶解",
+      "A": "TE-15%", "B": "TE-5%",
+      "property": "黏度低（未实测）",
+      "categories": ["负极锂"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0125"],
+      "test_ids": ["P352-T8"],
+      "side": "其他"
+    },
+    {
+      "id": "P352-M18",
+      "summary": "DOL 增多因 DOL 开环在锂表面促进 SEI 形成而降低阳极稳定性，同时可能因黏度降低而降低 Li|Li 极化",
+      "A": "全梯度", "B": "全梯度",
+      "property": "DOL 含量增多（开环成膜、黏度降低）",
+      "categories": ["负极锂"],
+      "source_type": "本文推测",
+      "evidence_ids": ["S0046", "S0047"],
+      "test_ids": ["P352-T8"],
+      "side": "其他"
+    },
+    {
+      "id": "P352-M19",
+      "summary": "TGA 中 TEGDME 失重温度随 DOL 变化，归因于 DOL 增多改变溶剂化环境、可能形成共溶剂（未落到电池表现）",
+      "A": "全梯度", "B": "全梯度",
+      "property": "Li⁺–溶剂络合的溶剂化环境随 DOL 改变",
+      "categories": [],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0090"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P352-M20",
+      "summary": "Ea 随 DOL 增多升高，可能因 DOL 介电常数低于 TEGDME；TEGDME 链上氧多、能配位 Li⁺ 并促进离子对解离（未落到电池表现）",
+      "A": "全梯度", "B": "全梯度",
+      "property": "Li⁺ 溶剂化/离子对解离：DOL 增多 εw 降低",
+      "categories": [],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0102"],
+      "test_ids": [],
+      "side": "其他"
+    }
+  ],
+  "design_claims": [
+    {"summary": "折中：以 TEGDME 为主加少量 DOL（5/10/15 wt%），用 DOL 低黏度补 TEGDME 高黏度，用 TEGDME 补 DOL 易燃及对 Li2Sx 不稳定", "evidence_ids": ["M0019"]},
+    {"summary": "折中：最优 TE-10%（TEGDME 与 DOL 最佳比例，寿命最长约 130 圈，容量在 400–580 mAh g⁻¹ 间波动）", "evidence_ids": ["M0194", "M0218"]},
+    {"summary": "折中：调节 DOL 共溶剂用量以平衡低可燃性、低毒性与性能", "evidence_ids": ["M0204"]}
+  ],
+  "figure_requests": [
+    {
+      "test_id": "P352-T5",
+      "figure": "Fig. 5d",
+      "part": "main",
+      "metric": "寿命（循环圈数）",
+      "A": "TE-15%", "B": "TE-5%",
+      "target_point": "TE-15% 容量失活起点/寿命终点圈数（与 TE-5% 第 117 圈失效比）",
+      "anchor_quote_ids": ["M0175", "M0181", "M0183"],
+      "reason": "Li‖S 循环类测试；作者说法前后不一（TE-15% 失活起点 100 vs 110 圈），按规则改用有锚点的图；锚点：首圈 140/220/270、TE-5% 117 圈、TE-10% 第 130 圈 406 mAh g⁻¹"
+    },
+    {
+      "test_id": "P352-T5",
+      "figure": "Fig. 5d",
+      "part": "main",
+      "metric": "指定圈容量",
+      "A": "TE-10%", "B": "TE-5%",
+      "target_point": "第 100 圈放电容量",
+      "anchor_quote_ids": ["M0175", "M0181", "M0183"],
+      "reason": "Li‖S 循环类测试缺同一圈容量：正文稳态容量只有区间/最大值，口径不一"
+    },
+    {
+      "test_id": "P352-T5",
+      "figure": "Fig. 5d",
+      "part": "main",
+      "metric": "指定圈容量",
+      "A": "TE-15%", "B": "TE-10%",
+      "target_point": "第 130 圈放电容量及两线交叉圈数",
+      "anchor_quote_ids": ["M0175", "M0183"],
+      "reason": "Li‖S 循环类测试缺同一圈容量：TE-15% 终点 250 mAh g⁻¹ 的圈数原文未写；TE-15% 早期容量高、后期低于 TE-10%，读交叉圈数"
+    },
+    {
+      "test_id": "P352-T6",
+      "figure": "Figure S6d",
+      "part": "si",
+      "metric": "倍率容量",
+      "A": "TE-10%", "B": "TE-5%",
+      "target_point": "C/3 段",
+      "anchor_quote_ids": ["M0199", "M0200", "M0201"],
+      "reason": "梯度上只在图里有数的档：C/3 段 TE-5%、TE-10% 正文无数；锚点为 C/20–C/5 各档正文数值及 TE-15% C/3 130 mAh g⁻¹"
+    },
+    {
+      "test_id": "P352-T6",
+      "figure": "Figure S6d",
+      "part": "si",
+      "metric": "倍率容量",
+      "A": "TE-15%", "B": "TE-5%",
+      "target_point": "C/3 段",
+      "anchor_quote_ids": ["M0199", "M0200", "M0201"],
+      "reason": "梯度上只在图里有数的档：C/3 段 TE-5% 正文无数；TE-15% 130 mAh g⁻¹ 可作锚点"
+    }
+  ],
+  "gaps": [
+    "对照 DOL:DME-control 只在 E/S 10/6 µL mg⁻¹、硫载量 2.2–2.3/5.2 mg cm⁻² 下单独测正极，与 TE 系列（E/S 15、1.7–2.1 mg cm⁻²）条件不同，未同测，不判；Table S5 中 TE-10% 与文献 DOL:DME 的对比为跨论文，不用",
+    "多硫化物溶解度、多硫化物溶剂化均未测",
+    "黏度未实测，作者只引纯溶剂文献值推定",
+    "加权平均介电常数 εw 为按纯溶剂值计算的数，按规程不收",
+    "所有 Li‖S 测试锂厚、温度、化成均未报告",
+    "P352-T5 TE-15% 失活起点作者前后不一（100 vs 110 圈），寿命按规则不判，已登记读图",
+    "M0180、M0193 中作者对 Ea、εw 方向的措辞与 Fig. 1d/1e 数值不符（TE-5% Ea 最低但 εw 最高）",
+    "原文称 LiTFSI 与 LiNO3 均为 1 mol kg⁻¹ 'each salt'；LiNO3 按其常规作用记为添加剂，主盐按 LiTFSI",
+    "Figure S3d 柱状图上的过电位数字（31.1/21.7/28.4/17.5/37.1/16.5）与配方对应不明，未用；改用正文第 8 天数值",
+    "Li‖Li 沉积/剥离单次时长、总时长未写",
+    "P352-T6 C/3 段 TE-5%、TE-10% 只在图上；回到 C/20 的恢复容量正文未写"
+  ],
+  "source_review": {
+    "main": true,
+    "si": true,
+    "notes": "通读正文（含 Table 1/2、实验部分）与 SI（Figure S1–S6、Table S1–S5）；参考文献列表略读；未读任何既有提取结果。电解液比较只在 TE 梯度内（B 取 TE-5%）；作者的机制解释以黏度、Ea/εw 和 DOL 成膜/消耗为起点，不是以溶剂化强弱为起点，故 side 均记“其他”。"
+  }
+}

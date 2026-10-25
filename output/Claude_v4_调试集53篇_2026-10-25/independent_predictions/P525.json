@@ -1,0 +1,974 @@
+{
+  "paper_id": "P525",
+  "doi": "10.1016/j.cej.2025.159330",
+  "formulations": [
+    {
+      "id": "CE",
+      "name": "Conventional electrolyte (CE)",
+      "components": [
+        {"name": "LiTFSI", "role": "盐", "amount": 1.0, "unit": "M"},
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": 1, "unit": "v/v（DOL/DME 1: 1, by vol.）"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": 1, "unit": "v/v（DOL/DME 1: 1, by vol.）"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 2, "unit": "wt%"}
+      ],
+      "raw_formula": "Conventional electrolyte (CE), i.e., 1.0 M LiTFSI in 1,3-dioxolane (DOL)/ dimethoxyethane (DME) (1: 1, by vol.) ... and 2 wt% LiNO3 was employed.",
+      "evidence_ids": ["M0036"]
+    },
+    {
+      "id": "STE",
+      "name": "steric tuning electrolyte (STE)",
+      "components": [
+        {"name": "LiTFSI", "role": "盐", "amount": 1.0, "unit": "M"},
+        {"name": "MPE（methyl propyl ether）", "role": "弱或非溶剂化溶剂", "amount": 4, "unit": "v/v（MPE/DOL/DME 4: 3: 3, by vol.）"},
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": 3, "unit": "v/v（MPE/DOL/DME 4: 3: 3, by vol.）"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": 3, "unit": "v/v（MPE/DOL/DME 4: 3: 3, by vol.）"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 2, "unit": "wt%"}
+      ],
+      "raw_formula": "STE, i.e., 1.0 M LiTFSI in MPE/DOL/DME (4: 3: 3, by vol.), and 2 wt% LiNO3 was employed.",
+      "evidence_ids": ["M0036", "M0053", "M0088"]
+    }
+  ],
+  "control_id": "CE",
+  "control_type": "常规醚基准（DOL/DME + LiTFSI + LiNO₃）",
+  "gradients": [
+    {
+      "name": "MPE 体积分数（用量梯度；盐浓度不变，MPE 顶替部分 DOL/DME，DOL:DME 保持 1:1）",
+      "order": ["CE", "STE"],
+      "values": ["不含 MPE", "40 vol%"],
+      "solvation_axis": "按 Li⁺ 溶剂化由强到弱；依据：作者 MD rdf（溶剂化能力 DME > DOL > MPE，加 MPE 后 Li⁺–TFSI⁻ g(r) 升高）、拉曼与 7Li NMR",
+      "evidence_ids": ["M0036", "M0053", "M0071", "M0073"]
+    }
+  ],
+  "properties": [
+    {
+      "name": "Li⁺ 溶剂化",
+      "values": {"CE": "较强", "STE": "较弱（MPE 的 Li⁺–溶剂 g(r) 峰最小；加 MPE 后 Li⁺–TFSI⁻ g(r) 升高）"},
+      "direction": "STE 弱于 CE",
+      "method": "MD 径向分布函数（Fig. 2b、2c；GROMACS）",
+      "system": "MD 模拟体系（CE、STE）；作者另写模拟盒中加入了一定量多硫化物（M0098，用于溶剂化结构统计）",
+      "evidence_ids": ["M0070", "M0071", "M0073"]
+    },
+    {
+      "name": "Li⁺ 溶剂化",
+      "values": {"CE": "简化体系 0.2 M LiTFSI in DME：自由 DME 峰（约 820、850 cm−1）较强", "STE": "简化体系 0.2 M LiTFSI in DME/MPE (1 : 1)：自由 DME 峰减弱，TFSI− 740 cm−1 峰蓝移"},
+      "direction": "作者判加入 MPE 后 DME 溶剂活性显著降低、Li⁺–TFSI− 相互作用增强",
+      "method": "拉曼（Fig. 2e、Fig. S7）",
+      "system": "简化溶液：DME/MPE (1 : 1, by vol.)、0.2 M LiTFSI in DME、0.2 M LiTFSI in DME/MPE (1 : 1, by vol.)；不含 DOL、盐浓度 0.2 M、MPE 比例与 STE 不同",
+      "evidence_ids": ["M0087", "M0088", "M0089", "M0090", "S0018"]
+    },
+    {
+      "name": "Li⁺ 溶剂化",
+      "values": {"CE": "7Li 峰 −0.060 ppm（按位移方向推定对应 CE）", "STE": "7Li 峰 −0.035 ppm（按位移方向推定对应 STE）"},
+      "direction": "加入 MPE 后 7Li 峰向低场移动（去屏蔽），作者归因于 Li⁺ 与溶剂整体结合能降低",
+      "method": "7Li NMR（Fig. S8）",
+      "system": "含 0.2 M Li2S8 的电解液；SI 写加入 CE 和 STE，正文写加入 MPE/DME 纯溶剂混合物，两处说法不一",
+      "evidence_ids": ["M0091", "M0092", "M0093", "S0019"]
+    },
+    {
+      "name": "Li⁺ 去溶剂化能（实验）",
+      "values": {"CE": "较高", "STE": "较低"},
+      "direction": "STE 低于 CE",
+      "method": "变温 EIS 拟合 Arrhenius 活化能（Fig. S11）；DFT 加权平均去溶剂化能另有计算值（自算能量，按规程不收）",
+      "system": "对称电池（S0072 写 R 为对称电池电阻），电池具体组成未写",
+      "evidence_ids": ["M0117", "S0071", "S0072"]
+    },
+    {
+      "name": "多硫化物溶剂化",
+      "values": {"CE": "未报告", "STE": "S6 2− 周围内层以 DOL、DME 为主，MPE 主要处于第二溶剂化层（封装型结构）"},
+      "direction": "STE 形成封装型多硫化物溶剂化结构；CE 无对应比较数据",
+      "method": "MD 径向分布函数（Fig. 2d）",
+      "system": "MD 模拟体系（STE + S6 2−）",
+      "evidence_ids": ["M0083", "M0094"]
+    },
+    {
+      "name": "多硫化物溶解度",
+      "values": {"CE": "较高", "STE": "较低（加入 MPE 后 Li2S8、Li2S4 的 UV–vis 峰强度显著降低）"},
+      "direction": "STE 低于 CE",
+      "method": "UV–vis（Fig. S5）",
+      "system": "Li2S8、Li2S4 溶液加或不加 MPE；多硫化物浓度和溶剂组成未写",
+      "evidence_ids": ["M0085", "S0063"]
+    },
+    {
+      "name": "黏度",
+      "values": {"CE": "较高", "STE": "较低（作者称 ultra-low viscosity）"},
+      "direction": "STE 低于 CE",
+      "method": "GROMACS 黏度模拟 + 旋转流变仪实测（25 °C，Fig. S2）；数值只在图中",
+      "system": "CE 与含 MPE 电解液",
+      "evidence_ids": ["M0051", "M0052", "M0054", "S0020"]
+    },
+    {
+      "name": "电极接触角（润湿性）",
+      "values": {"CE": "较大", "STE": "较小"},
+      "direction": "STE 小于 CE",
+      "method": "接触角测试（Fig. S3）",
+      "system": "电解液在电极上",
+      "evidence_ids": ["M0056", "S0061"]
+    },
+    {
+      "name": "还原稳定性（副反应电流）",
+      "values": {"CE": "副反应电流较大", "STE": "副反应电流较小"},
+      "direction": "含 MPE 的无盐电解液副反应电流低于对照",
+      "method": "还原稳定性测试（Fig. 1d）",
+      "system": "无盐电解液（不含 LiTFSI），与电池电解液不同",
+      "evidence_ids": ["M0066", "M0046"]
+    },
+    {
+      "name": "Li⁺ 扩散系数",
+      "values": {"CE": "较低", "STE": "较高（主还原峰和主氧化峰处）"},
+      "direction": "STE 高于 CE",
+      "method": "CV 不同扫速 + Randles–Sevcik 方程（Fig. 5a、Fig. S19）",
+      "system": "HCG/S‖Li 扣式电池（整电池）",
+      "evidence_ids": ["M0154", "M0155", "M0156"]
+    }
+  ],
+  "tests": [
+    {
+      "id": "P525-T1",
+      "name": "Li‖Cu 扣式循环（300 圈）",
+      "cell": "Li‖Cu 扣式",
+      "conditions": {
+        "sulfur_loading": "不适用",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "未报告（电流密度、沉积容量未写）",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 2 wt%",
+        "one_C": "不适用",
+        "cycles": "300 cycles"
+      },
+      "formulations": ["CE", "STE"],
+      "evidence_ids": ["M0036", "M0119", "M0121"],
+      "results": [
+        {
+          "id": "P525-T1-R1",
+          "metric": "库仑效率",
+          "A": "STE", "B": "CE",
+          "value_A": null, "value_B": null,
+          "unit": "%",
+          "point": "300 圈内",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0121"],
+          "reason": "原文写 STE 300 圈库仑效率稳定在 98.5 %、循环稳定性更好；CE 的库仑效率数值未写，按作者说法记变好"
+        },
+        {
+          "id": "P525-T1-R2",
+          "metric": "过电位",
+          "A": "STE", "B": "CE",
+          "value_A": null, "value_B": null,
+          "unit": "未报告",
+          "point": "循环过程（作者定性）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0121"],
+          "reason": "作者写 smaller overpotential"
+        }
+      ]
+    },
+    {
+      "id": "P525-T2",
+      "name": "Li‖Li 对称 0.32 mA cm-2 / 0.32 mAh cm-2",
+      "cell": "Li‖Li 对称",
+      "conditions": {
+        "sulfur_loading": "不适用",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.32 mA cm-2，0.32 mAh cm-2",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 2 wt%",
+        "one_C": "不适用"
+      },
+      "formulations": ["CE", "STE"],
+      "evidence_ids": ["M0036", "S0077"],
+      "results": [
+        {
+          "id": "P525-T2-R1",
+          "metric": "过电位",
+          "A": "STE", "B": "CE",
+          "value_A": null, "value_B": null,
+          "unit": "未报告",
+          "point": "循环过程（作者定性）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0126", "M0127"],
+          "reason": "作者写无论低或高电流密度 STE 过电位更小、CE 电位不稳定（Fig. S16a, b, d）；S16a 对应本测试"
+        }
+      ]
+    },
+    {
+      "id": "P525-T3",
+      "name": "Li‖Li 对称 1 mA cm-2 / 1 mAh cm-2",
+      "cell": "Li‖Li 对称",
+      "conditions": {
+        "sulfur_loading": "不适用",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "1 mA cm-2，1 mAh cm-2",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 2 wt%",
+        "one_C": "不适用"
+      },
+      "formulations": ["CE", "STE"],
+      "evidence_ids": ["M0036", "S0077", "S0078"],
+      "results": [
+        {
+          "id": "P525-T3-R1",
+          "metric": "过电位",
+          "A": "STE", "B": "CE",
+          "value_A": null, "value_B": null,
+          "unit": "未报告",
+          "point": "循环过程（作者定性）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0126", "M0127", "M0129"],
+          "reason": "作者写 STE 过电位更小（Fig. S16b），加 MPE 后过电位显著下降（Fig. S16c 为 1 mA cm-2 极化电压曲线）"
+        }
+      ]
+    },
+    {
+      "id": "P525-T4",
+      "name": "Li‖Li 对称倍率（不同电流密度）",
+      "cell": "Li‖Li 对称",
+      "conditions": {
+        "sulfur_loading": "不适用",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "不同电流密度，最高写到 3 mA cm−2",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 2 wt%",
+        "one_C": "不适用"
+      },
+      "formulations": ["CE", "STE"],
+      "evidence_ids": ["M0036", "S0079", "M0128"],
+      "results": [
+        {
+          "id": "P525-T4-R1",
+          "metric": "过电位",
+          "A": "STE", "B": "CE",
+          "value_A": null, "value_B": null,
+          "unit": "未报告",
+          "point": "各电流密度（作者定性）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0126", "M0127"],
+          "reason": "Fig. S16d 为对称电池倍率；作者写 STE 过电位更小"
+        },
+        {
+          "id": "P525-T4-R2",
+          "metric": "短路（3 mA cm−2 时）",
+          "A": "STE", "B": "CE",
+          "value_A": null, "value_B": null,
+          "unit": "不适用",
+          "point": "电流密度升至 3 mA cm−2",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0128"],
+          "reason": "CE 明显短路，STE 仍正常工作"
+        }
+      ]
+    },
+    {
+      "id": "P525-T5",
+      "name": "Li‖S 扣式倍率 0.2–5C",
+      "cell": "HCG/S‖Li 扣式（CR-2025）",
+      "conditions": {
+        "sulfur_loading": "~ 1.1 mg cm−2",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.2–5C",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 2 wt%",
+        "one_C": "未报告"
+      },
+      "formulations": ["CE", "STE"],
+      "evidence_ids": ["M0035", "M0036", "S0004", "M0164"],
+      "results": [
+        {
+          "id": "P525-T5-R1",
+          "metric": "倍率容量",
+          "A": "STE", "B": "CE",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g−1",
+          "point": "0.2–5C 各段，尤其高倍率（作者定性）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0160"],
+          "reason": "作者写 STE 的快速 Li⁺ 扩散、沉积和 SRR 动力学有利于倍率性能，尤其高倍率（Fig. 5b）；CE 的数值文字未给。Table S4 只给 STE 1067 (0.5 C)、944 (5 C)，未给 CE"
+        }
+      ]
+    },
+    {
+      "id": "P525-T6",
+      "name": "Li‖S 扣式 0.5 C 长循环",
+      "cell": "HCG/S‖Li 扣式（CR-2025）",
+      "conditions": {
+        "sulfur_loading": "~ 1.1 mg cm−2",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.5C",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 2 wt%",
+        "one_C": "未报告"
+      },
+      "formulations": ["CE", "STE"],
+      "evidence_ids": ["M0035", "M0036", "S0004", "M0162", "S0085"],
+      "results": [
+        {
+          "id": "P525-T6-R1",
+          "metric": "保持率",
+          "A": "STE", "B": "CE",
+          "value_A": null, "value_B": null,
+          "unit": "%",
+          "point": "长循环（圈数未写，作者定性）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0162", "M0169"],
+          "reason": "作者写 0.5C 长循环性能提升、容量保持率更高（图在 SI，按 SI 图序为 Figure S21）"
+        },
+        {
+          "id": "P525-T6-R2",
+          "metric": "过电位",
+          "A": "STE", "B": "CE",
+          "value_A": null, "value_B": null,
+          "unit": "未报告",
+          "point": "0.5C 循环（作者定性）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0162", "M0169"],
+          "reason": "作者写 smaller polarization potential"
+        },
+        {
+          "id": "P525-T6-R3",
+          "metric": "首圈容量",
+          "A": "STE", "B": "CE",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g−1",
+          "point": "0.5C 第 1 圈（化成协议未报告）",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [],
+          "reason": "容量只在图上（Figure S21），已登记读图"
+        }
+      ]
+    },
+    {
+      "id": "P525-T7",
+      "name": "Li‖S 扣式 5C 长循环（E/S 15）",
+      "cell": "HCG/S‖Li 扣式（CR-2025）",
+      "conditions": {
+        "sulfur_loading": "1.1 mg cm−2",
+        "ES": "15",
+        "ES_unit": "μL mg−1（体积基）",
+        "Li_thickness": "未报告",
+        "rate": "5C",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 2 wt%",
+        "one_C": "未报告"
+      },
+      "formulations": ["CE", "STE"],
+      "evidence_ids": ["M0036", "S0004", "M0165"],
+      "results": [
+        {
+          "id": "P525-T7-R1",
+          "metric": "保持率",
+          "A": "STE", "B": "CE",
+          "value_A": null, "value_B": null,
+          "unit": "%",
+          "point": "5C 长循环（作者定性）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0170"],
+          "reason": "作者写 STE 保持率仍处于较好水平，CE 容量衰减很快；Table S4 只给 STE 500 (5C)/0.095（衰减率 %/圈），CE 未给"
+        },
+        {
+          "id": "P525-T7-R2",
+          "metric": "首圈容量",
+          "A": "STE", "B": "CE",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g−1",
+          "point": "5C 第 1 圈（化成协议未报告）",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [],
+          "reason": "容量只在图上（Fig. 5c），已登记读图"
+        }
+      ]
+    },
+    {
+      "id": "P525-T8",
+      "name": "Li‖S 软包（仅 STE）",
+      "cell": "HCG/S‖Li 柔性软包",
+      "conditions": {
+        "sulfur_loading": "5.2 mg cm−2",
+        "ES": "5.0",
+        "ES_unit": "μL mg−1（体积基）",
+        "Li_thickness": "50 μm",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 2 wt%",
+        "one_C": "未报告"
+      },
+      "formulations": ["STE"],
+      "evidence_ids": ["M0036", "M0166", "M0173", "S0051", "S0053"],
+      "results": []
+    },
+    {
+      "id": "P525-T9",
+      "name": "Li‖S 扣式 −30 °C 0.5C 循环（E/S 25）",
+      "cell": "HCG/S‖Li 扣式（CR-2025）",
+      "conditions": {
+        "sulfur_loading": "1.1 mg cm−2",
+        "ES": "25",
+        "ES_unit": "μL mg−1（体积基）",
+        "Li_thickness": "未报告",
+        "rate": "0.5C",
+        "formation": "未报告",
+        "temperature": "−30 ◦C",
+        "LiNO3": "含 2 wt%",
+        "one_C": "未报告"
+      },
+      "formulations": ["CE", "STE"],
+      "evidence_ids": ["M0036", "S0004", "M0167", "M0184"],
+      "results": [
+        {
+          "id": "P525-T9-R1",
+          "metric": "指定圈容量",
+          "A": "STE", "B": "CE",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g−1",
+          "point": "−30 °C 0.5C 循环过程（作者定性，未指明圈数）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0184"],
+          "reason": "作者写 STE 在 −30 °C 0.5C 稳定运行 100 圈，CE 容量明显降低（significantly degraded capacity attainment）"
+        },
+        {
+          "id": "P525-T9-R2",
+          "metric": "首圈容量",
+          "A": "STE", "B": "CE",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g−1",
+          "point": "−30 °C 0.5C 第 1 圈",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [],
+          "reason": "数值只在图上（Fig. 5e），已登记读图"
+        },
+        {
+          "id": "P525-T9-R3",
+          "metric": "指定圈容量",
+          "A": "STE", "B": "CE",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g−1",
+          "point": "−30 °C 0.5C 第 100 圈",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [],
+          "reason": "数值只在图上（Fig. 5e），已登记读图；CE 的保持率文字未给"
+        }
+      ]
+    },
+    {
+      "id": "P525-T10",
+      "name": "Li‖S 扣式 −30 °C 倍率",
+      "cell": "HCG/S‖Li 扣式（CR-2025）",
+      "conditions": {
+        "sulfur_loading": "~ 1.1 mg cm−2",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "不同电流密度，写到 1C、3C",
+        "formation": "未报告",
+        "temperature": "−30 ◦C",
+        "LiNO3": "含 2 wt%",
+        "one_C": "未报告"
+      },
+      "formulations": ["CE", "STE"],
+      "evidence_ids": ["M0035", "M0036", "M0179", "S0093", "S0094"],
+      "results": [
+        {
+          "id": "P525-T10-R1",
+          "metric": "倍率容量",
+          "A": "STE", "B": "CE",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g−1",
+          "point": "−30 °C，1C 及以上（作者定性）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0179"],
+          "reason": "作者写 STE 在 −30 °C 3C 仍能工作，CE 在 1C 几乎停滞"
+        }
+      ]
+    },
+    {
+      "id": "P525-T11",
+      "name": "Li‖S 扣式原位 EIS（不同放电深度）",
+      "cell": "HCG/S‖Li 扣式（CR-2025）",
+      "conditions": {
+        "sulfur_loading": "~ 1.1 mg cm−2",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 2 wt%",
+        "one_C": "未报告",
+        "EIS": "100 kHz-0.01 Hz，5 mV 振幅"
+      },
+      "formulations": ["CE", "STE"],
+      "evidence_ids": ["M0035", "M0036", "S0008", "S0009", "M0144"],
+      "results": [
+        {
+          "id": "P525-T11-R1",
+          "metric": "阻抗",
+          "A": "STE", "B": "CE",
+          "value_A": null, "value_B": null,
+          "unit": "Ω",
+          "point": "不同放电深度的电荷转移电阻；60 % 放电深度时 CE 急剧升高（作者定性）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0141", "M0142", "M0146"],
+          "reason": "作者写 STE 电荷转移电阻低于 CE"
+        }
+      ]
+    },
+    {
+      "id": "P525-T12",
+      "name": "Li‖S 扣式 CV（0.1-0.5 mV s-1）",
+      "cell": "HCG/S‖Li 扣式（CR-2025）",
+      "conditions": {
+        "sulfur_loading": "~ 1.1 mg cm−2",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "扫速 0.1-0.5 mV s-1，电压窗口 1.7-2.8 V",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 2 wt%",
+        "one_C": "不适用"
+      },
+      "formulations": ["CE", "STE"],
+      "evidence_ids": ["M0035", "M0036", "S0006", "M0149"],
+      "results": [
+        {
+          "id": "P525-T12-R1",
+          "metric": "过电位",
+          "A": "STE", "B": "CE",
+          "value_A": null, "value_B": null,
+          "unit": "V",
+          "point": "CV 峰电位差（作者定性）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0150"],
+          "reason": "作者写 STE 同时抬高还原峰电位、降低氧化峰电位，极化减小"
+        }
+      ]
+    },
+    {
+      "id": "P525-T13",
+      "name": "Li2S 沉积实验（碳纸‖Li）",
+      "cell": "碳纸‖Li 扣式（Li2S 沉积）",
+      "conditions": {
+        "sulfur_loading": "不适用（碳纸侧加 20 μL 含 0.2 M Li2S6 的电解液）",
+        "ES": "不适用",
+        "ES_unit": "不适用",
+        "Li_thickness": "未报告",
+        "rate": "恒流放电至 2.06 V 后 2.05 V 恒压至电流低于 10−5 A",
+        "formation": "不适用",
+        "temperature": "未报告",
+        "LiNO3": "含 2 wt%",
+        "one_C": "不适用",
+        "electrolyte_volume": "碳纸侧 20 μL（含 0.2 M Li2S6）+ 锂侧 20 μL CE/STE"
+      },
+      "formulations": ["CE", "STE"],
+      "evidence_ids": ["M0036", "S0010", "S0011", "S0012"],
+      "results": [
+        {
+          "id": "P525-T13-R1",
+          "metric": "Li2S 沉积速率",
+          "A": "STE", "B": "CE",
+          "value_A": null, "value_B": null,
+          "unit": "未报告",
+          "point": "恒压沉积过程（作者定性）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0157", "M0158", "M0159"],
+          "reason": "作者写 STE 沉积更快、呈三维生长；CE 较慢、二维生长；作者称更好的 Li2S 沉积表现"
+        }
+      ]
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "P525-M1",
+      "summary": "立体化学调控使电解液 Li⁺ 溶剂化减弱 → 反应动力学加快；同时形成封装型多硫化物溶剂化结构 → 抑制多硫化物在负极的寄生反应（摘要总述，未落到具体测试）",
+      "A": "STE", "B": "CE",
+      "property": "Li⁺ 溶剂化减弱；多硫化物溶剂化变为封装型",
+      "categories": ["正极反应", "负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0003"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P525-M2",
+      "summary": "MPE 分子体积小、位阻效应小 → 加快 Li⁺ 去溶剂化 → 提高反应动力学（设计依据，带引文）",
+      "A": "STE", "B": "CE",
+      "property": "溶剂分子位阻降低（非溶剂化强弱）",
+      "categories": ["正极反应"],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0042"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P525-M3",
+      "summary": "含 MPE 电解液黏度极低 → 电解液内离子传质加快 → 电池电化学过程整体效率提高",
+      "A": "STE", "B": "CE",
+      "property": "黏度降低",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0054", "M0055"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P525-M4",
+      "summary": "润湿性更好 → 界面动力学改善、维持同样动力学所需电解液更少 → 利于贫液条件（理论推论，带引文）",
+      "A": "STE", "B": "CE",
+      "property": "接触角减小（润湿性提高）",
+      "categories": [],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0057"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P525-M5",
+      "summary": "MPE 的 LUMO 能级升高 → 暗示还原稳定性提高、与多硫化物和锂负极相容性更好",
+      "A": "STE", "B": "CE",
+      "property": "溶剂还原稳定性（LUMO 计算）",
+      "categories": ["负极锂"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0064", "M0065"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P525-M6",
+      "summary": "还原稳定性测试：含 MPE 的无盐电解液副反应电流降低，印证 MPE 还原稳定性更好",
+      "A": "STE", "B": "CE",
+      "property": "还原副反应电流降低",
+      "categories": ["电解液消耗"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0066"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P525-M7",
+      "summary": "加入弱溶剂化 MPE 后 DME 溶剂活性显著降低（Li⁺ 溶剂化减弱）→ LiNO3 和 LiTFSI 优先在锂表面还原",
+      "A": "STE", "B": "CE",
+      "property": "Li⁺ 溶剂化减弱（DME 溶剂活性降低）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0090"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P525-M8",
+      "summary": "MPE 分布在多硫化物外层溶剂壳、内层为 DOL/DME → 多硫化物被抗还原溶剂壳封装 → 对锂负极反应活性降低",
+      "A": "STE", "B": "CE",
+      "property": "多硫化物溶剂化变为封装型（MPE 在外层）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0094"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P525-M9",
+      "summary": "MPE 构成外层溶剂壳 → 多硫化物与锂的寄生反应在动力学上受阻 → 电极反应动力学提升、新鲜锂暴露减少",
+      "A": "STE", "B": "CE",
+      "property": "多硫化物溶剂化变为封装型（抗还原外壳）",
+      "categories": ["正极反应", "负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0118"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P525-M10",
+      "summary": "加入 MPE 后 Li‖Cu 循环更稳定、过电位更小、300 圈库仑效率 98.5 % → 可逆性增强、电解液与锂的副反应被抑制",
+      "A": "STE", "B": "CE",
+      "property": "加入弱溶剂化 MPE（Li⁺ 溶剂化减弱）",
+      "categories": ["负极锂", "电解液消耗"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0121"],
+      "test_ids": ["P525-T1"],
+      "side": "强侧"
+    },
+    {
+      "id": "P525-M11",
+      "summary": "碳链缩短 → Li⁺ 接近多硫化物单体的位阻降低 → 硫转化加快（AIMD 自由能面）",
+      "A": "STE", "B": "CE",
+      "property": "溶剂位阻降低（非溶剂化强弱）",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0139"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P525-M12",
+      "summary": "CE 在 60 % 放电深度阻抗急剧升高 → 动力学慢导致多硫化物累积、溶液黏度升高 → 界面动力学恶化",
+      "A": "STE", "B": "CE",
+      "property": "CE 中多硫化物累积使溶液黏度升高",
+      "categories": ["正极反应"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0142", "M0146"],
+      "test_ids": ["P525-T11"],
+      "side": "其他"
+    },
+    {
+      "id": "P525-M13",
+      "summary": "尽管加入 MPE 改变了溶剂化结构，CV 仍是典型的固–液–固锂化/脱锂过程，不同于传统少溶剂化电解液的固相转化（作者自写的与弱溶剂化体系的区别）",
+      "A": "STE", "B": "CE",
+      "property": "Li⁺ 溶剂化结构改变",
+      "categories": ["正极反应"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0151"],
+      "test_ids": ["P525-T12"],
+      "side": "其他"
+    },
+    {
+      "id": "P525-M14",
+      "summary": "去溶剂化更快 → Li⁺ 扩散加快 → Li2S 沉积表现更好",
+      "A": "STE", "B": "CE",
+      "property": "Li⁺ 去溶剂化加快",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0157"],
+      "test_ids": ["P525-T13"],
+      "side": "强侧"
+    },
+    {
+      "id": "P525-M15",
+      "summary": "Li⁺ 扩散快、Li2S 沉积快和 SRR 动力学快 → 倍率性能好，尤其高倍率",
+      "A": "STE", "B": "CE",
+      "property": "Li⁺ 扩散系数升高（原句未提溶剂化）",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0160"],
+      "test_ids": ["P525-T5"],
+      "side": "其他"
+    },
+    {
+      "id": "P525-M16",
+      "summary": "−30 °C 下 CE 第二放电平台倾斜变短 → 可能表明 Li⁺ 扩散和 SRR 慢使固–液–固转化受阻",
+      "A": "STE", "B": "CE",
+      "property": "Li⁺ 扩散慢（原句未提溶剂化）",
+      "categories": ["正极反应"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0180", "M0181"],
+      "test_ids": ["P525-T10"],
+      "side": "其他"
+    },
+    {
+      "id": "P525-M17",
+      "summary": "STE 中多硫化物溶解虽被抑制，但位阻降低为 Li⁺ 构建通向多硫化物的扩散通道，动力学仍优于 CE（作者自写的'溶解度低却动力学快'的解释）",
+      "A": "STE", "B": "CE",
+      "property": "多硫化物溶解度降低；溶剂位阻降低",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0189"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P525-M18",
+      "summary": "CE 循环后正极粗大团聚，主要归因于电解液分解、副产物大量沉积",
+      "A": "STE", "B": "CE",
+      "property": "电解液分解（原句未提溶剂化）",
+      "categories": ["电解液消耗"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0192"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P525-M19",
+      "summary": "STE 副反应较少 → 电解液分解和沉积物形成最少，电池运行环境更稳定",
+      "A": "STE", "B": "CE",
+      "property": "副反应减少（原句未提溶剂化）",
+      "categories": ["电解液消耗"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0201"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P525-M20",
+      "summary": "LiF 富集 → 锂表面钝化、减轻多硫化物与锂负极的寄生反应、抑制死锂（LiF 作用为通用说法，带引文）",
+      "A": "STE", "B": "CE",
+      "property": "SEI 中 LiF 增多",
+      "categories": ["负极锂"],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0205"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P525-M21",
+      "summary": "Li3N 与 LiF 共存 → 形成致密光滑 SEI → 抑制锂负极腐蚀和消耗，与 Li‖Li、Li‖Cu 结果一致",
+      "A": "STE", "B": "CE",
+      "property": "SEI 中 Li3N、LiF 增多",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0207"],
+      "test_ids": ["P525-T1", "P525-T2", "P525-T3"],
+      "side": "其他"
+    },
+    {
+      "id": "P525-M22",
+      "summary": "不含 MPE 时循环后锂表面多硫化物桥硫、端硫信号强 → 穿梭效应造成锂负极严重腐蚀和污染",
+      "A": "STE", "B": "CE",
+      "property": "未写性质变化（不含 MPE）",
+      "categories": ["多硫化物穿梭", "负极锂"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0210"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P525-M23",
+      "summary": "STE 电池锂表面几乎无桥硫、端硫信号 → 穿梭和多硫化物–锂副反应被有效抑制",
+      "A": "STE", "B": "CE",
+      "property": "未写性质变化",
+      "categories": ["多硫化物穿梭", "负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0211"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P525-M24",
+      "summary": "结论：MPE 溶剂化弱、位阻低 → 多硫化物与锂负极的寄生反应显著减轻、SRR 动力学提升",
+      "A": "STE", "B": "CE",
+      "property": "Li⁺ 溶剂化减弱 + 溶剂位阻降低",
+      "categories": ["负极锂", "正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0213"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P525-M25",
+      "summary": "去溶剂化动力学更好 → STE 电池在低温（−30 °C）下表现更好",
+      "A": "STE", "B": "CE",
+      "property": "Li⁺ 去溶剂化加快",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0215"],
+      "test_ids": ["P525-T9", "P525-T10"],
+      "side": "强侧"
+    }
+  ],
+  "design_claims": [
+    {"summary": "作者未用折中或解耦表述：以弱溶剂化、低位阻的 MPE 部分取代 DOL/DME（STE），同时加快正极硫反应动力学并保持锂兼容性和 SEI 稳定，面向贫液；最优配方 STE（MPE 40 vol%）", "evidence_ids": ["M0027", "M0028"]},
+    {"summary": "MPE 加入量 40 vol% 按最佳动力学表现（Fig. S1，EIS）筛选；其他用量档未写", "evidence_ids": ["M0053"]}
+  ],
+  "figure_requests": [
+    {
+      "test_id": "P525-T6",
+      "figure": "Figure S21",
+      "part": "si",
+      "metric": "首圈容量",
+      "A": "STE", "B": "CE",
+      "target_point": "0.5C 第 1 圈（化成协议未报告）",
+      "anchor_quote_ids": [],
+      "reason": "Li‖S 循环类测试缺同一测试容量侧；图号按 SI 图注顺序推定为 Figure S21；无锚点（Table S4 STE 1067 (0.5 C) 不能确定属于此测试）"
+    },
+    {
+      "test_id": "P525-T7",
+      "figure": "Fig. 5c",
+      "part": "main",
+      "metric": "首圈容量",
+      "A": "STE", "B": "CE",
+      "target_point": "5C 第 1 圈（化成协议未报告）",
+      "anchor_quote_ids": ["S0108"],
+      "reason": "Li‖S 循环类测试缺同一测试容量侧；可用锚点只有 Table S4 STE 500 (5C)/0.095（衰减率 %/圈，反算 500 圈保持率 = 1 − 500 × 0.095% = 52.5%）；Table S4 的 944 (5 C) 可能来自倍率测试，不作锚点"
+    },
+    {
+      "test_id": "P525-T9",
+      "figure": "Fig. 5e",
+      "part": "main",
+      "metric": "首圈容量",
+      "A": "STE", "B": "CE",
+      "target_point": "−30 °C 0.5C 第 1 圈",
+      "anchor_quote_ids": ["M0184"],
+      "reason": "Li‖S 循环类测试，作者只定性；锚点只有 STE 运行 100 圈（圈数），无容量锚点"
+    },
+    {
+      "test_id": "P525-T9",
+      "figure": "Fig. 5e",
+      "part": "main",
+      "metric": "指定圈容量",
+      "A": "STE", "B": "CE",
+      "target_point": "−30 °C 0.5C 第 100 圈",
+      "anchor_quote_ids": ["M0184"],
+      "reason": "Li‖S 循环类测试寿命终点；锚点只有 STE 运行 100 圈（圈数），无容量锚点"
+    }
+  ],
+  "gaps": [
+    "全篇无 CE 的任何电池数值，Li‖S 结果全部是作者定性",
+    "离子电导率、离子迁移数未报告",
+    "MPE 用量筛选只在 Fig. S1（EIS），其他用量档的具体取值未写",
+    "扣式电池锂厚、化成协议、温度（除 −30 °C 测试）、1C 定义未报告；E/S 只在 Fig. 5c（15）、5e（25）图注给出",
+    "P525-T6 0.5C 长循环圈数和数值未在文字给出；P525-T1~T6 库仑效率除 Li‖Cu 外未报告",
+    "P525-T8 软包只测 STE，无 CE 对照，不判方向（STE 首圈 1070 mAh g−1、80 圈后 770 mAh g−1、318.8 Wh kg−1）",
+    "Table S1 中 MPE 的全称写成 methyl butyl ether（与正文 methyl propyl ether 不一致）",
+    "7Li NMR 测量体系正文（MPE/DME 纯溶剂 + Li2S8）与 SI（CE、STE + 0.2 M Li2S8）说法不一",
+    "Li‖Cu、Li‖Li 测试的锂厚、电解液量未报告；Li‖Cu 电流密度未写"
+  ],
+  "source_review": {
+    "main": true,
+    "si": true,
+    "notes": "通读正文与 SI 文本（SI 为实验方法、图注和 Table S1–S4 文字）；未读任何既有提取结果。未看图，图内数据只登记读图。"
+  }
+}

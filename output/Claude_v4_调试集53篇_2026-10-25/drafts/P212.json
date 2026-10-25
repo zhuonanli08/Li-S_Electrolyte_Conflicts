@@ -1,0 +1,595 @@
+{
+  "paper_id": "P212",
+  "doi": "10.1021/acs.energyfuels.1c00927",
+  "formulations": [
+    {
+      "id": "DEGDME_HCE",
+      "name": "DEGDME_HCE",
+      "components": [
+        {"name": "DEGDME", "role": "溶剂化溶剂", "amount": "未报告", "unit": "未报告"},
+        {"name": "LiTFSI", "role": "盐", "amount": 1.5, "unit": "mol kg_solvent-1"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 1.5, "unit": "mol kg_solvent-1"}
+      ],
+      "raw_formula": "LiTFSI and LiNO3 salts dissolved in DEGDME; the final concentration of each salt was 1.5 mol kgsolvent−1 in DEGDME（作者在实验部分称 LiTFSI、LiNO3 均为 salts，结论 M0089 称 LiNO3 additive；此处 LiNO3 角色记添加剂）",
+      "evidence_ids": ["M0011", "M0012", "M0014"]
+    },
+    {
+      "id": "TREGDME_HCE",
+      "name": "TREGDME_HCE",
+      "components": [
+        {"name": "TREGDME", "role": "溶剂化溶剂", "amount": "未报告", "unit": "未报告"},
+        {"name": "LiTFSI", "role": "盐", "amount": 2, "unit": "mol kg_solvent-1"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 2, "unit": "mol kg_solvent-1"}
+      ],
+      "raw_formula": "LiTFSI and LiNO3 salts dissolved in TREGDME; the final concentration of each salt was 2 mol kgsolvent−1 in TREGDME（作者在实验部分称 LiTFSI、LiNO3 均为 salts，结论 M0089 称 LiNO3 additive；此处 LiNO3 角色记添加剂）",
+      "evidence_ids": ["M0011", "M0012", "M0014"]
+    }
+  ],
+  "control_id": null,
+  "control_type": "其他：两种接近饱和的高浓度甘醇二甲醚电解液并列（DEGDME_HCE vs TREGDME_HCE），无常规醚基准，也无不含 LiNO₃ 的对照",
+  "gradients": [
+    {
+      "name": "溶剂种类与盐浓度（种类梯度；溶剂链长和 LiTFSI/LiNO3 浓度同时变）",
+      "order": ["DEGDME_HCE", "TREGDME_HCE"],
+      "values": ["DEGDME，LiTFSI 与 LiNO3 各 1.5 mol kg_solvent-1", "TREGDME，LiTFSI 与 LiNO3 各 2 mol kg_solvent-1"],
+      "solvation_axis": "原文未测 Li⁺ 溶剂化、多硫化物溶剂化，排序无作者依据；暂按每 kg 溶剂中的盐量由少到多（1.5 → 2 mol kg_solvent⁻¹）排，DEGDME_HCE 在前；TREGDME 链更长、每分子醚氧更多，此排序仅供参考",
+      "evidence_ids": ["M0012"]
+    }
+  ],
+  "properties": [
+    {
+      "name": "Li⁺ 溶剂化",
+      "values": {"DEGDME_HCE": "未报告", "TREGDME_HCE": "未报告"},
+      "direction": "未报告",
+      "method": "未报告",
+      "system": "未报告",
+      "evidence_ids": []
+    },
+    {
+      "name": "多硫化物溶剂化",
+      "values": {"DEGDME_HCE": "未报告", "TREGDME_HCE": "未报告"},
+      "direction": "未报告",
+      "method": "未报告",
+      "system": "未报告",
+      "evidence_ids": []
+    },
+    {
+      "name": "多硫化物溶解度",
+      "values": {"DEGDME_HCE": "未报告", "TREGDME_HCE": "未报告"},
+      "direction": "未报告",
+      "method": "未报告",
+      "system": "未报告",
+      "evidence_ids": []
+    },
+    {
+      "name": "离子电导率",
+      "values": {"DEGDME_HCE": "3.3 × 10−3 S cm−1", "TREGDME_HCE": "8.9 × 10−4 S cm−1"},
+      "direction": "TREGDME_HCE 低于 DEGDME_HCE",
+      "method": "引自本组前文（ref 20），本文未重测，测法本文未写",
+      "system": "室温下的电解液本身（引用值）",
+      "evidence_ids": ["M0041"]
+    },
+    {
+      "name": "黏度",
+      "values": {"DEGDME_HCE": "0.94 g mL−1（原文写作 solvent viscosity，单位为 g mL−1）", "TREGDME_HCE": "0.98 g mL−1（同左）；M0043 另说 TREGDME_HCE 黏度更高"},
+      "direction": "TREGDME_HCE 高于 DEGDME_HCE",
+      "method": "引自文献 ref 31 与本组前文 ref 20；本文未重测",
+      "system": "原文写 solvent viscosity，数值单位 g mL−1 且引自溶剂密度文献（ref 31），疑为纯溶剂密度而非电解液黏度；M0043 定性说 TREGDME_HCE 因链长和盐浓度更高而黏度更高",
+      "evidence_ids": ["M0041", "M0043"]
+    },
+    {
+      "name": "电化学稳定窗口",
+      "values": {"DEGDME_HCE": "0−4.3 V", "TREGDME_HCE": "0−4.4 V"},
+      "direction": "TREGDME_HCE 略宽",
+      "method": "引自本组前文（ref 20），本文未重测",
+      "system": "电解液本身（引用值）",
+      "evidence_ids": ["M0064"]
+    }
+  ],
+  "tests": [
+    {
+      "id": "P212-T1",
+      "name": "Li‖S:Sn 扣式 CV + EIS（0.1 mV s−1，1.8−2.8 V）",
+      "cell": "Li‖S:Sn 80:20 扣式（CR2032，Celgard 2400）",
+      "conditions": {
+        "sulfur_loading": "约 1.3 mg cm-2（S:Sn 80:20 复合物载量，电极面积 1.54 cm2；硫载量未直接给出）",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告（14 mm 直径锂片）",
+        "rate": "CV 扫速 0.1 mV s−1，1.8−2.8 V",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含：DEGDME_HCE 1.5 mol kg_solvent−1，TREGDME_HCE 2 mol kg_solvent−1（为配方组分，随配方变）",
+        "one_C": "未报告（CV 测试）",
+        "EIS": "OCV 及 1、5、10 圈 CV 后，500 kHz−100 mHz，10 mV"
+      },
+      "formulations": ["DEGDME_HCE", "TREGDME_HCE"],
+      "evidence_ids": ["M0016", "M0017", "M0018", "M0019", "M0020", "M0023", "M0024"],
+      "results": [
+        {
+          "id": "P212-T1-R1",
+          "metric": "阻抗",
+          "A": "TREGDME_HCE", "B": "DEGDME_HCE",
+          "value_A": 12.2, "value_B": 11.3,
+          "unit": "Ω",
+          "point": "10 圈 CV 后 R1 + R2（Table 1 NLLS 拟合）",
+          "basis": "numeric",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0035", "M0040"],
+          "reason": "Table 1：TREGDME_HCE 12.2 ± 0.3 Ω，DEGDME_HCE 11.3 ± 0.7 Ω；作者 M0040 说 DEGDME_HCE 稳态阻抗略低。M0039 另写约 10 Ω vs 20 Ω，与表值不一致，取表值"
+        },
+        {
+          "id": "P212-T1-R2",
+          "metric": "过电位",
+          "A": "TREGDME_HCE", "B": "DEGDME_HCE",
+          "value_A": null, "value_B": null,
+          "unit": "未报告",
+          "point": "CV 峰（稳定圈）",
+          "basis": "qualitative",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0040"],
+          "reason": "作者定性：DEGDME_HCE 的 CV 峰更平滑、极化更小"
+        }
+      ]
+    },
+    {
+      "id": "P212-T2",
+      "name": "Li‖S:Sn 扣式 C/5 25 °C 循环 50 圈",
+      "cell": "Li‖S:Sn 80:20 扣式（CR2032，Celgard 2400）",
+      "conditions": {
+        "sulfur_loading": "约 1.3 mg cm-2（S:Sn 80:20 复合物载量，电极面积 1.54 cm2；硫载量未直接给出）",
+        "ES": "未报告（电解液 60 μL；若按硫 = 1.3 × 1.54 × 0.8 ≈ 1.60 mg 推算，E/S ≈ 60 ÷ 1.60 ≈ 37.5 μL mg⁻¹，推算）",
+        "ES_unit": "μL mg⁻¹（体积基，推算）",
+        "Li_thickness": "未报告（14 mm 直径锂片）",
+        "rate": "C/5，1.9−2.8 V",
+        "formation": "未报告",
+        "temperature": "25 °C",
+        "LiNO3": "含：DEGDME_HCE 1.5 mol kg_solvent−1，TREGDME_HCE 2 mol kg_solvent−1（为配方组分，随配方变）",
+        "one_C": "1675 mA gS−1",
+        "electrolyte_volume": "60 μL"
+      },
+      "formulations": ["DEGDME_HCE", "TREGDME_HCE"],
+      "evidence_ids": ["M0016", "M0017", "M0018", "M0019", "M0028", "M0029", "M0036", "M0037"],
+      "results": [
+        {
+          "id": "P212-T2-R1",
+          "metric": "指定圈容量",
+          "A": "TREGDME_HCE", "B": "DEGDME_HCE",
+          "value_A": "≈340", "value_B": "≈800",
+          "unit": "mAh gS−1",
+          "point": "25 °C 稳态比容量（原文 steady-state，未写圈数）",
+          "basis": "numeric",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0042", "M0081"],
+          "reason": "M0042：steady-state specific capacities of about 800 and 340 mAh gS−1"
+        },
+        {
+          "id": "P212-T2-R2",
+          "metric": "保持率",
+          "A": "TREGDME_HCE", "B": "DEGDME_HCE",
+          "value_A": 88, "value_B": 92,
+          "unit": "%",
+          "point": "50 圈，相对最大容量",
+          "basis": "numeric",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["M0050"],
+          "reason": "|88−92|÷92 ≈ 4.3% < 5%"
+        },
+        {
+          "id": "P212-T2-R3",
+          "metric": "过电位",
+          "A": "TREGDME_HCE", "B": "DEGDME_HCE",
+          "value_A": null, "value_B": null,
+          "unit": "未报告",
+          "point": "稳态电压曲线",
+          "basis": "qualitative",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0042"],
+          "reason": "作者定性：25 °C 下两者极化都较高，in particular for the latter（TREGDME_HCE）"
+        }
+      ]
+    },
+    {
+      "id": "P212-T3",
+      "name": "Li‖S:Sn 扣式 C/5 35 °C 循环 50 圈",
+      "cell": "Li‖S:Sn 80:20 扣式（CR2032，Celgard 2400）",
+      "conditions": {
+        "sulfur_loading": "约 1.3 mg cm-2（S:Sn 80:20 复合物载量，电极面积 1.54 cm2；硫载量未直接给出）",
+        "ES": "未报告（电解液 60 μL；若按硫 = 1.3 × 1.54 × 0.8 ≈ 1.60 mg 推算，E/S ≈ 60 ÷ 1.60 ≈ 37.5 μL mg⁻¹，推算）",
+        "ES_unit": "μL mg⁻¹（体积基，推算）",
+        "Li_thickness": "未报告（14 mm 直径锂片）",
+        "rate": "C/5，1.9−2.8 V",
+        "formation": "未报告",
+        "temperature": "35 °C",
+        "LiNO3": "含：DEGDME_HCE 1.5 mol kg_solvent−1，TREGDME_HCE 2 mol kg_solvent−1（为配方组分，随配方变）",
+        "one_C": "1675 mA gS−1",
+        "electrolyte_volume": "60 μL"
+      },
+      "formulations": ["DEGDME_HCE", "TREGDME_HCE"],
+      "evidence_ids": ["M0016", "M0017", "M0018", "M0019", "M0028", "M0029", "M0036", "M0037", "M0043"],
+      "results": [
+        {
+          "id": "P212-T3-R1",
+          "metric": "指定圈容量",
+          "A": "TREGDME_HCE", "B": "DEGDME_HCE",
+          "value_A": "≈890", "value_B": "≈1320",
+          "unit": "mAh gS−1",
+          "point": "35 °C 最大比容量（原文 maximum specific capacity，未写圈数）",
+          "basis": "numeric",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0044", "M0049"],
+          "reason": "M0044：DEGDME_HCE about 1320 mAh gS−1；M0049：TREGDME_HCE approaching 890 mAh gS−1（结论 M0081 写约 1300 vs 890）"
+        },
+        {
+          "id": "P212-T3-R2",
+          "metric": "保持率",
+          "A": "TREGDME_HCE", "B": "DEGDME_HCE",
+          "value_A": 77, "value_B": 90,
+          "unit": "%",
+          "point": "50 圈，相对最大容量",
+          "basis": "numeric",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0050"],
+          "reason": "|77−90|÷90 ≈ 14%"
+        }
+      ]
+    },
+    {
+      "id": "P212-T4",
+      "name": "Li‖S:Sn 扣式 1C 35 °C E/S 20 长循环 140 圈（仅 DEGDME_HCE）",
+      "cell": "Li‖S:Sn 80:20 扣式（CR2032，Celgard 2400）",
+      "conditions": {
+        "sulfur_loading": "约 1.3 mg cm-2（S:Sn 80:20 复合物载量，电极面积 1.54 cm2；硫载量未直接给出）",
+        "ES": "20",
+        "ES_unit": "μL mg⁻¹（原文 electrolyte/sulfur ratio，按硫质量）",
+        "Li_thickness": "未报告（14 mm 直径锂片）",
+        "rate": "1C，1.6−2.8 V",
+        "formation": "未报告（原文写 initial capacity upon activation）",
+        "temperature": "35 °C",
+        "LiNO3": "含 1.5 mol kg_solvent−1（DEGDME_HCE 组分）",
+        "one_C": "1675 mA gS−1"
+      },
+      "formulations": ["DEGDME_HCE"],
+      "evidence_ids": ["M0028", "M0029", "M0076", "M0077", "M0078", "M0084", "M0085"],
+      "results": []
+    },
+    {
+      "id": "P212-T5",
+      "name": "Li‖LFP 扣式 CV + EIS（0.1 mV s−1，2.7−3.9 V）",
+      "cell": "Li‖LFP 扣式（CR2032，两层 GF/A）",
+      "conditions": {
+        "sulfur_loading": "不适用（LFP 正极，LFP 载量约 4.5 mg cm-2）",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告（14 mm 直径锂片）",
+        "rate": "CV 扫速 0.1 mV s−1，2.7−3.9 V",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含：DEGDME_HCE 1.5 mol kg_solvent−1，TREGDME_HCE 2 mol kg_solvent−1（为配方组分，随配方变）",
+        "one_C": "未报告（CV 测试）",
+        "EIS": "OCV 及 1、5、10 圈 CV 后，500 kHz−100 mHz，10 mV"
+      },
+      "formulations": ["DEGDME_HCE", "TREGDME_HCE"],
+      "evidence_ids": ["M0016", "M0017", "M0018", "M0019", "M0020", "M0046", "M0047"],
+      "results": [
+        {
+          "id": "P212-T5-R1",
+          "metric": "过电位",
+          "A": "TREGDME_HCE", "B": "DEGDME_HCE",
+          "value_A": "≈0.4", "value_B": "≈0.3",
+          "unit": "V",
+          "point": "第 1 圈 CV 充放电极化",
+          "basis": "numeric",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0052"],
+          "reason": "about 0.4 V vs about 0.3 V"
+        },
+        {
+          "id": "P212-T5-R2",
+          "metric": "阻抗",
+          "A": "TREGDME_HCE", "B": "DEGDME_HCE",
+          "value_A": 79, "value_B": 88,
+          "unit": "Ω",
+          "point": "10 圈 CV 后 R1 + R2（Table 2 NLLS 拟合）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0056", "M0054"],
+          "reason": "Table 2：TREGDME_HCE 79 ± 1 Ω，DEGDME_HCE 88 ± 5 Ω；|79−88|÷88 ≈ 10%"
+        }
+      ]
+    },
+    {
+      "id": "P212-T6",
+      "name": "Li‖LFP 扣式 C/5 25 °C 循环 50 圈（2.7−3.9 V，无低压还原步）",
+      "cell": "Li‖LFP 扣式（CR2032，两层 GF/A）",
+      "conditions": {
+        "sulfur_loading": "不适用（LFP 正极，LFP 载量约 4.5 mg cm-2）",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告（14 mm 直径锂片）",
+        "rate": "C/5，2.7−3.9 V",
+        "formation": "无（全程 2.7−3.9 V）",
+        "temperature": "25 °C",
+        "LiNO3": "含：DEGDME_HCE 1.5 mol kg_solvent−1，TREGDME_HCE 2 mol kg_solvent−1（为配方组分，随配方变）",
+        "one_C": "170 mA g−1"
+      },
+      "formulations": ["DEGDME_HCE", "TREGDME_HCE"],
+      "evidence_ids": ["M0016", "M0018", "M0019", "M0030", "M0057", "M0058", "M0060"],
+      "results": [
+        {
+          "id": "P212-T6-R1",
+          "metric": "首圈容量",
+          "A": "TREGDME_HCE", "B": "DEGDME_HCE",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g−1",
+          "point": "C/5 第 1 圈",
+          "basis": "qualitative",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["M0061"],
+          "reason": "作者对两者合写：capacity values approaching 160 mAh g−1，未分别给值"
+        },
+        {
+          "id": "P212-T6-R2",
+          "metric": "保持率",
+          "A": "TREGDME_HCE", "B": "DEGDME_HCE",
+          "value_A": 94, "value_B": 63,
+          "unit": "%",
+          "point": "50 圈，相对初始容量",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0063"],
+          "reason": "|94−63|÷94 ≈ 33%"
+        },
+        {
+          "id": "P212-T6-R3",
+          "metric": "库仑效率",
+          "A": "TREGDME_HCE", "B": "DEGDME_HCE",
+          "value_A": null, "value_B": null,
+          "unit": "%",
+          "point": "50 圈内",
+          "basis": "qualitative",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["M0062"],
+          "reason": "作者：两个测试的库仑效率都接近 100%"
+        },
+        {
+          "id": "P212-T6-R4",
+          "metric": "过电位",
+          "A": "TREGDME_HCE", "B": "DEGDME_HCE",
+          "value_A": null, "value_B": null,
+          "unit": "未报告",
+          "point": "10 圈后至 50 圈的极化增长",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0062"],
+          "reason": "作者定性：10 圈后极化逐渐增大并导致容量衰减，DEGDME_HCE（the former）更明显"
+        }
+      ]
+    },
+    {
+      "id": "P212-T7",
+      "name": "Li‖LFP 扣式 C/5 25 °C 循环 50 圈（首圈 1.2−3.9 V 低压还原步）",
+      "cell": "Li‖LFP 扣式（CR2032，两层 GF/A）",
+      "conditions": {
+        "sulfur_loading": "不适用（LFP 正极，LFP 载量约 4.5 mg cm-2）",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告（14 mm 直径锂片）",
+        "rate": "C/5，第 2 圈起 2.7−3.9 V",
+        "formation": "第 1 圈 1.2−3.9 V（低压还原 LiNO3 步骤）",
+        "temperature": "25 °C",
+        "LiNO3": "含：DEGDME_HCE 1.5 mol kg_solvent−1，TREGDME_HCE 2 mol kg_solvent−1（为配方组分，随配方变）",
+        "one_C": "170 mA g−1"
+      },
+      "formulations": ["DEGDME_HCE", "TREGDME_HCE"],
+      "evidence_ids": ["M0016", "M0018", "M0019", "M0031", "M0065", "M0067"],
+      "results": [
+        {
+          "id": "P212-T7-R1",
+          "metric": "首圈容量",
+          "A": "TREGDME_HCE", "B": "DEGDME_HCE",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g−1",
+          "point": "初始圈",
+          "basis": "qualitative",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["M0070"],
+          "reason": "作者对两者合写：initial capacity values approaching 160 mAh g−1，未分别给值"
+        },
+        {
+          "id": "P212-T7-R2",
+          "metric": "保持率",
+          "A": "TREGDME_HCE", "B": "DEGDME_HCE",
+          "value_A": 97, "value_B": 71,
+          "unit": "%",
+          "point": "50 圈",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0090", "M0071", "M0073"],
+          "reason": "|97−71|÷97 ≈ 27%"
+        },
+        {
+          "id": "P212-T7-R3",
+          "metric": "库仑效率",
+          "A": "TREGDME_HCE", "B": "DEGDME_HCE",
+          "value_A": null, "value_B": null,
+          "unit": "%",
+          "point": "前几圈",
+          "basis": "qualitative",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["M0070"],
+          "reason": "作者：两者前几圈库仑效率都约 100%"
+        }
+      ]
+    },
+    {
+      "id": "P212-T8",
+      "name": "Li‖LFP 扣式 C/3 25 °C 循环 100 圈（首圈 1.2 V 还原步，仅 TREGDME_HCE）",
+      "cell": "Li‖LFP 扣式（CR2032，两层 GF/A）",
+      "conditions": {
+        "sulfur_loading": "不适用（LFP 正极，LFP 载量约 4.5 mg cm-2）",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告（14 mm 直径锂片）",
+        "rate": "C/3，第 2 圈起 2.7−3.9 V",
+        "formation": "第 1 圈 1.2−3.9 V（低压还原步骤）",
+        "temperature": "25 °C",
+        "LiNO3": "含 2 mol kg_solvent−1（TREGDME_HCE 组分）",
+        "one_C": "170 mA g−1"
+      },
+      "formulations": ["TREGDME_HCE"],
+      "evidence_ids": ["M0031", "M0076", "M0084", "M0086"],
+      "results": []
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "P212-M1",
+      "summary": "DEGDME_HCE 黏度较低、电导率较高 → 有利于 Li/S 电化学过程 → CV 峰极化更小、稳态阻抗略低",
+      "A": "TREGDME_HCE", "B": "DEGDME_HCE",
+      "property": "黏度升高、离子电导率降低（非溶剂化性质；引用前文数值）",
+      "categories": ["正极反应"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0041"],
+      "test_ids": ["P212-T1"],
+      "side": "其他"
+    },
+    {
+      "id": "P212-M2",
+      "summary": "高浓度电解液黏度高阻碍绝缘硫的反应动力学 → 25 °C 容量低、极化大；TREGDME_HCE 链更长、盐浓度更高、黏度更高，影响更重",
+      "A": "TREGDME_HCE", "B": "DEGDME_HCE",
+      "property": "黏度升高（链长与盐浓度共同导致；非溶剂化性质）",
+      "categories": ["正极反应"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0043"],
+      "test_ids": ["P212-T2"],
+      "side": "其他"
+    },
+    {
+      "id": "P212-M3",
+      "summary": "升温到 35 °C 降低电解液黏度、提高 Li⁺ 电导率 → 两种电解液容量都升高、极化都降低（温度比较，非配方比较）",
+      "A": "全梯度", "B": "全梯度",
+      "property": "温度升高使黏度降低、Li⁺ 电导率升高（非溶剂化性质）",
+      "categories": [],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0044"],
+      "test_ids": ["P212-T2", "P212-T3"],
+      "side": "其他"
+    },
+    {
+      "id": "P212-M4",
+      "summary": "DEGDME_HCE 中电荷转移动力学更快 → Li/S 电池容量与保持率优于 TREGDME_HCE",
+      "A": "TREGDME_HCE", "B": "DEGDME_HCE",
+      "property": "电荷转移动力学变慢（未落到溶剂化）",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0082"],
+      "test_ids": ["P212-T2", "P212-T3"],
+      "side": "其他"
+    },
+    {
+      "id": "P212-M5",
+      "summary": "TREGDME_HCE 锂盐浓度更高 → 可能形成更合适的 SEI → Li‖LFP 50 圈保持率更高（作者引用自己 Li/O2 工作的类似结果）",
+      "A": "TREGDME_HCE", "B": "DEGDME_HCE",
+      "property": "锂盐浓度升高（未写溶剂化）",
+      "categories": ["负极锂"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0064"],
+      "test_ids": ["P212-T6"],
+      "side": "其他"
+    },
+    {
+      "id": "P212-M6",
+      "summary": "DEGDME_HCE 电化学稳定窗口较窄（0−4.3 V vs 0−4.4 V）可能是 Li‖LFP 表现较差的另一原因",
+      "A": "TREGDME_HCE", "B": "DEGDME_HCE",
+      "property": "电化学稳定窗口变宽（非溶剂化性质）",
+      "categories": [],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0064"],
+      "test_ids": ["P212-T6"],
+      "side": "其他"
+    },
+    {
+      "id": "P212-M7",
+      "summary": "文献报道甘醇二甲醚中高浓度锂盐会使 SEI 成分不均、厚度小，可能稳定性一般（作者用来解释两种电解液 50 圈后极化都增大）",
+      "A": "全梯度", "B": "全梯度",
+      "property": "高锂盐浓度（未写溶剂化）",
+      "categories": ["负极锂"],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0065"],
+      "test_ids": ["P212-T6"],
+      "side": "其他"
+    },
+    {
+      "id": "P212-M8",
+      "summary": "DEGDME_HCE 在 Li‖LFP 中容量衰减和充放电末端斜坡可能来自 SEI 过度生长，也可能来自正极晶粒尺寸分布和表面能的变化",
+      "A": "TREGDME_HCE", "B": "DEGDME_HCE",
+      "property": "未写溶剂化；SEI 过度生长（DEGDME_HCE）",
+      "categories": ["负极锂", "正极反应"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0073"],
+      "test_ids": ["P212-T7"],
+      "side": "其他"
+    },
+    {
+      "id": "P212-M9",
+      "summary": "首次放电延伸到 1.2 V 促进 LiNO3 进一步还原、巩固合适的 SEI → 缓解 Li‖LFP 的极化增长问题，TREGDME_HCE 尤其明显",
+      "A": "TREGDME_HCE", "B": "DEGDME_HCE",
+      "property": "LiNO3 还原形成 SEI（工况变化，未写溶剂化）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0089"],
+      "test_ids": ["P212-T7"],
+      "side": "其他"
+    },
+    {
+      "id": "P212-M10",
+      "summary": "本组前文 Li/O2 工作中三甘醇二甲醚电解液优于二甘醇二甲醚电解液，主要归因于锂金属上形成稳定 SEI（引言转述）",
+      "A": "TREGDME_HCE", "B": "DEGDME_HCE",
+      "property": "未写溶剂化；界面稳定性提高",
+      "categories": ["负极锂"],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0008"],
+      "test_ids": [],
+      "side": "其他"
+    }
+  ],
+  "design_claims": [
+    {"summary": "其他（非折中/解耦）：按电池化学选电解液与工况——Li‖S 用 DEGDME_HCE 并升温到 35 °C 改善动力学；Li‖LFP 用 TREGDME_HCE 并在首圈加 1.2 V 低压还原步", "evidence_ids": ["M0043", "M0074", "M0075", "M0076", "M0091"]},
+    {"summary": "通过调节醚链长度、盐种类与浓度、正极化学和工况（温度、电压限）实现高效锂金属电池", "evidence_ids": ["M0093"]}
+  ],
+  "figure_requests": [],
+  "gaps": [
+    "无 SI（原文包 SI 句数 0）",
+    "未报告 Li⁺ 溶剂化、多硫化物溶剂化、多硫化物溶解度；电导率、黏度、稳定窗口均引自前文 ref 20/31，本文未重测",
+    "黏度数值单位为 g mL−1，引自溶剂密度文献，疑为溶剂密度而非电解液黏度",
+    "两种配方的溶剂链长与 LiTFSI/LiNO3 浓度同时变化，无法分离溶剂与浓度的作用；无常规醚基准",
+    "所有测试锂片厚度未报告；硫载量只给 S:Sn 复合物载量 1.3 mg cm-2",
+    "P212-T2、T3 只给电解液 60 μL，E/S 未直接给出（推算约 37.5 μL mg⁻¹）",
+    "P212-T2、T3 未报告首圈容量与库仑效率（只给稳态/最大容量和 50 圈保持率）；T3 未报告 A、B 间过电位比较",
+    "P212-T4（Li‖S 1C、E/S 20）只测 DEGDME_HCE，P212-T8（Li‖LFP C/3）只测 TREGDME_HCE，无同测试对比",
+    "CV/EIS 测试的温度与电解液量未报告",
+    "Li‖LFP 测试（T5–T8）不是 Li‖S，但同样比较两种电解液，照记"
+  ],
+  "source_review": {
+    "main": true,
+    "si": false,
+    "notes": "通读正文（含 Table 1、2 与图注；参考文献略读）；原文包无 SI。未读任何既有提取结果。本文性质数据均引自本组前文，Li‖S 与 Li‖LFP 两类电池结论方向相反（Li‖S 中 DEGDME_HCE 好，Li‖LFP 中 TREGDME_HCE 保持率好）。"
+  }
+}

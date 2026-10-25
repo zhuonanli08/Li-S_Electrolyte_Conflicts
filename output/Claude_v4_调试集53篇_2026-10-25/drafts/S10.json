@@ -1,0 +1,951 @@
+{
+  "paper_id": "S10",
+  "doi": "10.1002/advs.202301006",
+  "formulations": [
+    {
+      "id": "LiSCN",
+      "name": "LiSCN electrolyte",
+      "components": [
+        {"name": "LiSCN", "role": "盐", "amount": 0.8, "unit": "m"},
+        {"name": "LiTFSI（基础电解液）", "role": "盐", "amount": 0.2, "unit": "m"},
+        {"name": "LiNO3（基础电解液）", "role": "添加剂", "amount": 0.2, "unit": "m"},
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": "1:1", "unit": "混合比（原文未写体积或质量基）"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": "1:1", "unit": "混合比（原文未写体积或质量基）"}
+      ],
+      "raw_formula": "base electrolyte: 0.2 m LiNO3 and 0.2 m LiTFSI (LiTFSI, 3 m) in a 1:1 mixture of DOL and DME; then 0.8 m LiSCN in the base electrolyte, denoted as LiSCN electrolyte（原文“LiTFSI, 3 m”疑为供应商 3M）",
+      "evidence_ids": ["M0196", "M0197"]
+    },
+    {
+      "id": "LiBr",
+      "name": "LiBr electrolyte",
+      "components": [
+        {"name": "LiBr", "role": "盐", "amount": 0.8, "unit": "m"},
+        {"name": "LiTFSI（基础电解液）", "role": "盐", "amount": 0.2, "unit": "m"},
+        {"name": "LiNO3（基础电解液）", "role": "添加剂", "amount": 0.2, "unit": "m"},
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": "1:1", "unit": "混合比（原文未写体积或质量基）"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": "1:1", "unit": "混合比（原文未写体积或质量基）"}
+      ],
+      "raw_formula": "0.8 m lithium bromide (LiBr) in the base electrolyte (0.2 m LiNO3 + 0.2 m LiTFSI in DOL/DME 1:1), denoted as LiBr electrolyte",
+      "evidence_ids": ["M0196", "M0197"]
+    },
+    {
+      "id": "LiTFSI",
+      "name": "LiTFSI electrolyte",
+      "components": [
+        {"name": "LiTFSI（加入）", "role": "盐", "amount": 0.8, "unit": "m"},
+        {"name": "LiTFSI（基础电解液）", "role": "盐", "amount": 0.2, "unit": "m"},
+        {"name": "LiNO3（基础电解液）", "role": "添加剂", "amount": 0.2, "unit": "m"},
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": "1:1", "unit": "混合比（原文未写体积或质量基）"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": "1:1", "unit": "混合比（原文未写体积或质量基）"}
+      ],
+      "raw_formula": "0.8 m LiTFSI in the base electrolyte (0.2 m LiNO3 + 0.2 m LiTFSI in DOL/DME 1:1), denoted as LiTFSI electrolyte; 作者称 conventional LiTFSI electrolyte",
+      "evidence_ids": ["M0196", "M0197", "M0059"]
+    }
+  ],
+  "control_id": "LiTFSI",
+  "control_type": "常规醚基准（DOL/DME + LiTFSI + LiNO₃）：基础液 0.2 m LiTFSI + 0.2 m LiNO₃ 再加 0.8 m LiTFSI；单位为小写 m",
+  "gradients": [
+    {
+      "name": "盐阴离子种类（种类梯度：基础液中各加 0.8 m LiX）",
+      "order": ["LiSCN", "LiBr", "LiTFSI"],
+      "values": ["SCN⁻", "Br⁻", "TFSI⁻"],
+      "solvation_axis": "按多硫化物溶剂化/溶解度由强到弱（依据：UV-vis 吸光度 LiSCN 全范围最高、Li2S 溶解度 10/8/4 mM）；注意 Li⁺ 侧按 MD 的 DME 配位数顺序正好相反（LiTFSI 1.73 > LiBr 0.35 > LiSCN 0.21，即 LiTFSI 的 Li⁺–溶剂配位最强）；按阴离子 DN（文献值）为 Br⁻ 33.7 > SCN⁻ 25.6 > TFSI⁻",
+      "evidence_ids": ["M0056", "M0096", "M0038", "M0036", "M0197"]
+    }
+  ],
+  "properties": [
+    {
+      "name": "Li⁺ 溶剂化：DME 配位数（MD）",
+      "values": {"LiTFSI": "1.73", "LiBr": "0.35", "LiSCN": "0.21"},
+      "direction": "LiTFSI 最高、LiBr 次之、LiSCN 最低（沿梯度 LiSCN→LiBr→LiTFSI 升高）",
+      "method": "MD 模拟（Forcite，COMPASS III 力场）径向分布函数积分得第一溶剂化层配位数",
+      "system": "模拟盒 241 DME、357 DOL、60 Li⁺、40 X⁻、10 TFSI⁻、10 NO3⁻（模拟 0.8 m LiX 加入基础液）；不含多硫化物",
+      "evidence_ids": ["M0038", "M0228"]
+    },
+    {
+      "name": "Li⁺ 溶剂化：阴离子配位数（MD）",
+      "values": {"LiTFSI": "TFSI⁻ 0.59", "LiBr": "Br⁻ 1.88", "LiSCN": "SCN⁻ 1.75"},
+      "direction": "LiBr、LiSCN 远高于 LiTFSI",
+      "method": "MD 模拟径向分布函数积分配位数",
+      "system": "同上 MD 模拟盒；不含多硫化物",
+      "evidence_ids": ["M0039", "M0228"]
+    },
+    {
+      "name": "多硫化物溶解度（UV-vis）",
+      "values": {"LiSCN": "最高（400–800 nm 全范围吸光度最高）", "LiBr": "S8²⁻、S6²⁻、S3•⁻ 吸光度高（与 LiSCN 同为高 DN 特征）", "LiTFSI": "以 S4²⁻ 为主，S3•⁻ 不是主要物种"},
+      "direction": "LiSCN 最高；LiBr、LiSCN 的 S8²⁻、S6²⁻、S3•⁻ 吸光度高于 LiTFSI",
+      "method": "UV-vis：各电解液加 1.6 m Li2S4 制饱和液，取上清液稀释后测（正文写稀释 1000 倍，实验部分写 500 倍）",
+      "system": "电解液 + Li2S4 饱和液（非电池内）",
+      "evidence_ids": ["M0049", "M0052", "M0053", "M0056", "M0200"]
+    },
+    {
+      "name": "多硫化物溶解度（Raman）",
+      "values": {"LiSCN": "弱碱性（S8²⁻、S7²⁻、S3•⁻）与强碱性（S4²⁻、S3²⁻）多硫化物峰均更强", "LiBr": "弱于 LiSCN", "LiTFSI": "弱于 LiSCN"},
+      "direction": "LiSCN 最高",
+      "method": "Raman（514 nm 激光）",
+      "system": "含 1.6 m Li2S4 的三种电解液",
+      "evidence_ids": ["M0105", "S0028"]
+    },
+    {
+      "name": "Li2S 溶解度",
+      "values": {"LiTFSI": "4 mM", "LiBr": "8 mM", "LiSCN": "10 mM"},
+      "direction": "沿梯度（LiSCN→LiBr→LiTFSI）降低",
+      "method": "Li2S 溶解度测试（Figure S7，具体测法未写）",
+      "system": "三种电解液 + Li2S",
+      "evidence_ids": ["M0096", "S0027"]
+    },
+    {
+      "name": "多硫化物溶剂化：SCN⁻ 与多硫化物阴离子直接作用",
+      "values": {"LiSCN": "13C NMR 加 Li2S4 后 SCN⁻ 碳峰向低场移动；Raman CN 反对称伸缩 2071 → 2067 cm⁻¹", "LiBr": "未报告", "LiTFSI": "未报告"},
+      "direction": "只测 LiSCN：加多硫化物后 SCN⁻ 环境改变",
+      "method": "13C NMR、Raman",
+      "system": "LiSCN 电解液加或不加 1.6 m Li2S4",
+      "evidence_ids": ["M0043", "M0047"]
+    },
+    {
+      "name": "多硫化物物种分布：S4²⁻/S3•⁻ 吸光度比（UV-vis）",
+      "values": {"LiBr": "8.0", "LiSCN": "8.5", "LiTFSI": "未报告"},
+      "direction": "LiSCN 略高于 LiBr",
+      "method": "UV-vis 吸光度比",
+      "system": "同 UV-vis 稀释饱和液",
+      "evidence_ids": ["M0055"]
+    },
+    {
+      "name": "Li2S 沉积 tmax（计时电流法，钝化快慢）",
+      "values": {"LiSCN": "735 s", "LiBr": "645 s", "LiTFSI": "228 s"},
+      "direction": "LiSCN 最长、LiBr 次之、LiTFSI 最短",
+      "method": "恒电位计时电流（CA）：2.2 V 预处理后阶跃到 2.0 V（实验部分写 2.05 V）",
+      "system": "CNF 正极 + 0.2 m Li2S8 catholyte、Li 箔 450 μm 的扣式电池",
+      "evidence_ids": ["M0088", "M0085", "M0222", "M0223", "S0019", "S0020"]
+    },
+    {
+      "name": "Li2S 核横向生长速率 N0kg²（CA 拟合）",
+      "values": {"LiSCN": "3.81×10−11 s−2", "LiBr": "5.06×10−11 s−2", "LiTFSI": "1.44×10−10 s−2"},
+      "direction": "LiSCN 最低、LiBr 次之、LiTFSI 最高",
+      "method": "CA 数据拟合 SH 方程",
+      "system": "同 CA 电池",
+      "evidence_ids": ["M0091"]
+    }
+  ],
+  "tests": [
+    {
+      "id": "S10-T1",
+      "name": "Li‖S 扣式 0.05 C 首次放电（CNF/Li2S8 正极）",
+      "cell": "Li‖S 扣式（2032；CNF 正极浸渍 0.2 m Li2S8）",
+      "conditions": {
+        "sulfur_loading": "2 mgs cm−2",
+        "ES": "20",
+        "ES_unit": "原文未写单位（同篇其他测试为 μl mg−1）",
+        "Li_thickness": "未报告",
+        "rate": "0.05 C",
+        "formation": "未报告（本测试即 0.05 C 首次放电；M0224 写恒流循环前 0.05 C 预循环 2 圈）",
+        "temperature": "未报告",
+        "LiNO3": "含 0.2 m",
+        "one_C": "未报告"
+      },
+      "formulations": ["LiSCN", "LiBr", "LiTFSI"],
+      "evidence_ids": ["M0057", "M0058", "M0196", "M0211", "M0212", "M0216", "M0224"],
+      "results": [
+        {
+          "id": "S10-T1-R1",
+          "metric": "首圈容量",
+          "A": "LiSCN", "B": "LiTFSI",
+          "value_A": 1636, "value_B": 1290,
+          "unit": "mAh g-1",
+          "point": "0.05 C 首次放电",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0058", "M0059"],
+          "reason": "LiSCN 硫利用率 97.7%"
+        },
+        {
+          "id": "S10-T1-R2",
+          "metric": "首圈容量",
+          "A": "LiBr", "B": "LiTFSI",
+          "value_A": 1522, "value_B": 1290,
+          "unit": "mAh g-1",
+          "point": "0.05 C 首次放电",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0059"],
+          "reason": ""
+        },
+        {
+          "id": "S10-T1-R3",
+          "metric": "首圈容量",
+          "A": "LiSCN", "B": "LiBr",
+          "value_A": 1636, "value_B": 1522,
+          "unit": "mAh g-1",
+          "point": "0.05 C 首次放电",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0058", "M0059"],
+          "reason": "梯度相邻两档比较"
+        }
+      ]
+    },
+    {
+      "id": "S10-T2",
+      "name": "Li‖S 扣式 0.4 C 放电（CNF/Li2S8 正极）",
+      "cell": "Li‖S 扣式（2032；CNF 正极浸渍 0.2 m Li2S8）",
+      "conditions": {
+        "sulfur_loading": "2 mgs cm−2（推定，按 Fig. 2a 同组条件）",
+        "ES": "20（推定，按 Fig. 2a 同组条件）",
+        "ES_unit": "原文未写单位",
+        "Li_thickness": "未报告",
+        "rate": "0.4 C",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 0.2 m",
+        "one_C": "未报告"
+      },
+      "formulations": ["LiSCN", "LiBr", "LiTFSI"],
+      "evidence_ids": ["M0060", "M0058", "M0070", "M0196"],
+      "results": [
+        {
+          "id": "S10-T2-R1",
+          "metric": "首圈容量",
+          "A": "LiSCN", "B": "LiTFSI",
+          "value_A": 1349, "value_B": 895,
+          "unit": "mAh g-1",
+          "point": "0.4 C 放电曲线（Fig. 2b；圈次原文未写）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0060"],
+          "reason": "圈次原文未写，按 Fig. 2 放电曲线记"
+        },
+        {
+          "id": "S10-T2-R2",
+          "metric": "首圈容量",
+          "A": "LiBr", "B": "LiTFSI",
+          "value_A": 977, "value_B": 895,
+          "unit": "mAh g-1",
+          "point": "0.4 C 放电曲线（Fig. 2b；圈次原文未写）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0060"],
+          "reason": ""
+        },
+        {
+          "id": "S10-T2-R3",
+          "metric": "首圈容量",
+          "A": "LiSCN", "B": "LiBr",
+          "value_A": 1349, "value_B": 977,
+          "unit": "mAh g-1",
+          "point": "0.4 C 放电曲线（Fig. 2b；圈次原文未写）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0060"],
+          "reason": "梯度相邻两档比较"
+        }
+      ]
+    },
+    {
+      "id": "S10-T3",
+      "name": "Li‖Li 对称电池 1 mA cm−2 / 1 mAh cm−2",
+      "cell": "Li‖Li 扣式（2032）",
+      "conditions": {
+        "sulfur_loading": "不适用（Li‖Li）",
+        "ES": "不适用（电解液 20 μl）",
+        "ES_unit": "不适用",
+        "Li_thickness": "40 μm（M0108、M0219；M0218 另写 Li 箔 150 μm，原文前后不一）",
+        "rate": "1 mA cm−2 / 1 mAh cm−2",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 0.2 m",
+        "one_C": "不适用",
+        "electrolyte_volume": "20 μl"
+      },
+      "formulations": ["LiSCN", "LiBr", "LiTFSI"],
+      "evidence_ids": ["M0108", "M0118", "M0218", "M0219", "M0220", "M0221", "M0196"],
+      "results": [
+        {
+          "id": "S10-T3-R1",
+          "metric": "寿命（累计循环容量）",
+          "A": "LiBr", "B": "LiTFSI",
+          "value_A": 40, "value_B": ">110",
+          "unit": "mAh cm-2（累计）",
+          "point": "LiBr 极化突增点 vs LiTFSI 稳定循环长度",
+          "basis": "numeric",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0109"],
+          "reason": "原文以累计容量表示；1 mA cm−2 下数值等于小时数，未换算"
+        },
+        {
+          "id": "S10-T3-R2",
+          "metric": "寿命（累计循环容量）",
+          "A": "LiSCN", "B": "LiTFSI",
+          "value_A": null, "value_B": null,
+          "unit": "mAh cm-2（累计）",
+          "point": "Fig. 3a 全程（225 mAh cm−2，112 圈）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0111"],
+          "reason": "作者定性：much higher cycling stability compared to the LiBr and LiTFSI"
+        },
+        {
+          "id": "S10-T3-R3",
+          "metric": "寿命（累计循环容量）",
+          "A": "LiSCN", "B": "LiBr",
+          "value_A": null, "value_B": null,
+          "unit": "mAh cm-2（累计）",
+          "point": "Fig. 3a 全程",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0111"],
+          "reason": "作者定性；梯度相邻两档比较"
+        },
+        {
+          "id": "S10-T3-R4",
+          "metric": "阻抗",
+          "A": "LiBr", "B": "LiTFSI",
+          "value_A": null, "value_B": null,
+          "unit": "Ω",
+          "point": "10、30、60 圈后 Rint 与 Rohm",
+          "basis": "qualitative",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0125", "M0127"],
+          "reason": "作者定性：LiBr 的 Rint、Rohm 随循环明显增大；LiTFSI 初期小且稳定"
+        },
+        {
+          "id": "S10-T3-R5",
+          "metric": "阻抗",
+          "A": "LiSCN", "B": "LiTFSI",
+          "value_A": null, "value_B": null,
+          "unit": "Ω",
+          "point": "120 圈后 Rint 与 Rohm",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0126", "M0128"],
+          "reason": "作者定性：LiSCN 全程稳定；LiTFSI 在 120 圈时两种电阻增大"
+        }
+      ]
+    },
+    {
+      "id": "S10-T4",
+      "name": "Li‖S 扣式 E/S 5、3 mgs cm−2、0.2 C/0.1 C 长循环",
+      "cell": "Li‖S 扣式（2032）",
+      "conditions": {
+        "sulfur_loading": "3 mgs cm−2",
+        "ES": "5",
+        "ES_unit": "μl mg−1（体积基）",
+        "Li_thickness": "未报告",
+        "rate": "0.2 C / 0.1 C（放/充）",
+        "formation": "0.05 C 2 圈",
+        "temperature": "未报告",
+        "LiNO3": "含 0.2 m",
+        "one_C": "未报告",
+        "current_density": "1.0 / 0.5 mA cm−2（放/充）"
+      },
+      "formulations": ["LiSCN", "LiBr", "LiTFSI"],
+      "evidence_ids": ["M0151", "M0169", "M0224", "S0034", "M0196"],
+      "results": [
+        {
+          "id": "S10-T4-R1",
+          "metric": "首圈容量",
+          "A": "LiSCN", "B": "LiTFSI",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1",
+          "point": "循环初始放电容量（圈次原文未写）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0152", "M0153"],
+          "reason": "LiSCN 1365.8 mAh g−1，LiTFSI 只给硫利用率 53%，单位不同，按作者定性（sharp contrast）记"
+        },
+        {
+          "id": "S10-T4-R2",
+          "metric": "首圈容量",
+          "A": "LiBr", "B": "LiTFSI",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1",
+          "point": "循环初始放电容量（圈次原文未写）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0152", "M0153", "M0155"],
+          "reason": "LiBr 1264.5 mAh g−1、初期容量大；LiTFSI 只给硫利用率 53%（低利用率，sharp contrast）"
+        },
+        {
+          "id": "S10-T4-R3",
+          "metric": "首圈容量",
+          "A": "LiSCN", "B": "LiBr",
+          "value_A": 1365.8, "value_B": 1264.5,
+          "unit": "mAh g-1",
+          "point": "循环初始放电容量（圈次原文未写）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0152"],
+          "reason": "梯度相邻两档比较"
+        },
+        {
+          "id": "S10-T4-R4",
+          "metric": "寿命（循环圈数）",
+          "A": "LiBr", "B": "LiTFSI",
+          "value_A": 21, "value_B": "≥50",
+          "unit": "圈",
+          "point": "LiBr 第 21 圈短路停止；LiTFSI 自第 50 圈起容量逐渐下降（未短路）",
+          "basis": "numeric",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0155", "M0156"],
+          "reason": "LiTFSI 的“≥50”由 M0156“from 50 cycles”推出（至少运行到第 50 圈），非原文直接写的寿命"
+        },
+        {
+          "id": "S10-T4-R5",
+          "metric": "保持率",
+          "A": "LiSCN", "B": "LiTFSI",
+          "value_A": null, "value_B": null,
+          "unit": "未报告",
+          "point": "Fig. 4a 循环稳定性（作者定性，口径未写）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0158"],
+          "reason": "作者定性：much higher cycling stability than the other electrolytes"
+        },
+        {
+          "id": "S10-T4-R6",
+          "metric": "保持率",
+          "A": "LiSCN", "B": "LiBr",
+          "value_A": null, "value_B": null,
+          "unit": "未报告",
+          "point": "Fig. 4a 循环稳定性（作者定性，口径未写）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0158"],
+          "reason": "作者定性；梯度相邻两档比较"
+        }
+      ]
+    },
+    {
+      "id": "S10-T5",
+      "name": "Li‖S 扣式 E/S 8、3 mgs cm−2、0.3 C/0.2 C 长循环",
+      "cell": "Li‖S 扣式（2032）",
+      "conditions": {
+        "sulfur_loading": "3 mgs cm−2",
+        "ES": "8",
+        "ES_unit": "μl mg−1（体积基）",
+        "Li_thickness": "未报告",
+        "rate": "0.3 C / 0.2 C（放/充）",
+        "formation": "0.05 C 2 圈",
+        "temperature": "未报告",
+        "LiNO3": "含 0.2 m",
+        "one_C": "未报告"
+      },
+      "formulations": ["LiSCN", "LiBr", "LiTFSI"],
+      "evidence_ids": ["M0160", "M0169", "M0224", "M0196"],
+      "results": [
+        {
+          "id": "S10-T5-R1",
+          "metric": "首圈容量",
+          "A": "LiSCN", "B": "LiBr",
+          "value_A": "≈1093", "value_B": "≈860",
+          "unit": "mAh g-1",
+          "point": "初始放电容量（反算；原文只给相对 T4 的比例，圈次未写）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0164", "M0162", "M0152"],
+          "reason": "反算：LiSCN ≈ 0.80 × 1365.8 ≈ 1093；LiBr ≈ (1 − 0.32) × 1264.5 ≈ 860（T4 数值取自 M0152）"
+        },
+        {
+          "id": "S10-T5-R2",
+          "metric": "首圈容量",
+          "A": "LiSCN", "B": "LiTFSI",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1",
+          "point": "化成后 0.3 C 第 1 圈",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [],
+          "reason": "LiTFSI 只给“为 T4 的 65%”，T4 本身只有利用率 53%，文字缺数，登记读图 Fig. 4d"
+        },
+        {
+          "id": "S10-T5-R3",
+          "metric": "首圈容量",
+          "A": "LiBr", "B": "LiTFSI",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1",
+          "point": "化成后 0.3 C 第 1 圈",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [],
+          "reason": "文字缺数，登记读图 Fig. 4d"
+        },
+        {
+          "id": "S10-T5-R4",
+          "metric": "寿命（循环圈数）",
+          "A": "LiSCN", "B": "LiTFSI",
+          "value_A": null, "value_B": null,
+          "unit": "圈",
+          "point": "Fig. 4d 循环稳定性（作者定性）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0170"],
+          "reason": "作者定性：The longest cycling stability for the LiSCN electrolyte at the condition"
+        },
+        {
+          "id": "S10-T5-R5",
+          "metric": "寿命（循环圈数）",
+          "A": "LiSCN", "B": "LiBr",
+          "value_A": null, "value_B": null,
+          "unit": "圈",
+          "point": "Fig. 4d 循环稳定性（作者定性）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0170"],
+          "reason": "作者定性；梯度相邻两档比较"
+        },
+        {
+          "id": "S10-T5-R6",
+          "metric": "寿命（循环圈数）",
+          "A": "LiBr", "B": "LiTFSI",
+          "value_A": null, "value_B": null,
+          "unit": "圈",
+          "point": "寿命终点（Fig. 4d）",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [],
+          "reason": "原文只说 LiBr 寿命比 T4 提高三倍（跨测试），未写 LiTFSI；登记读图"
+        }
+      ]
+    },
+    {
+      "id": "S10-T6",
+      "name": "Li‖S 扣式 E/S 10、3.8 mgs cm−2、0.4 C/0.2 C 长循环",
+      "cell": "Li‖S 扣式（2032；LG Energy Solution 高载量硫电极）",
+      "conditions": {
+        "sulfur_loading": "3.8 mgs cm−2",
+        "ES": "10",
+        "ES_unit": "μl mg−1（体积基）",
+        "Li_thickness": "未报告",
+        "rate": "0.4 C / 0.2 C（放/充）",
+        "formation": "0.05 C 2 圈",
+        "temperature": "未报告",
+        "LiNO3": "含 0.2 m",
+        "one_C": "未报告",
+        "current_density": "放电 2.54 mA cm−2"
+      },
+      "formulations": ["LiSCN", "LiBr", "LiTFSI"],
+      "evidence_ids": ["M0169", "M0171", "M0175", "M0214", "M0224", "S0035", "M0196"],
+      "results": [
+        {
+          "id": "S10-T6-R1",
+          "metric": "寿命（循环圈数）",
+          "A": "LiSCN", "B": "LiBr",
+          "value_A": 100, "value_B": 67,
+          "unit": "圈",
+          "point": "失效（短路）圈数",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0177"],
+          "reason": "梯度相邻两档比较"
+        },
+        {
+          "id": "S10-T6-R2",
+          "metric": "首圈容量",
+          "A": "LiSCN", "B": "LiBr",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1",
+          "point": "Fig. 4e 放电容量（作者定性）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0174"],
+          "reason": "作者定性：outstanding performance in terms of discharge capacity；摘要 M0007 给 LiSCN 1133 mAh g−1（2.54 mA cm−2），LiBr 未给数"
+        },
+        {
+          "id": "S10-T6-R3",
+          "metric": "首圈容量",
+          "A": "LiSCN", "B": "LiTFSI",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1",
+          "point": "Fig. 4e 放电容量（作者定性）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0174"],
+          "reason": "作者定性"
+        },
+        {
+          "id": "S10-T6-R4",
+          "metric": "保持率",
+          "A": "LiSCN", "B": "LiTFSI",
+          "value_A": null, "value_B": null,
+          "unit": "未报告",
+          "point": "Fig. 4e 循环稳定性（作者定性，口径未写）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0174"],
+          "reason": "作者定性：outstanding performance in terms of ... cycling stability"
+        },
+        {
+          "id": "S10-T6-R5",
+          "metric": "首圈容量",
+          "A": "LiBr", "B": "LiTFSI",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1",
+          "point": "化成后 0.4 C 第 1 圈",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [],
+          "reason": "文字缺数，登记读图 Fig. 4e"
+        },
+        {
+          "id": "S10-T6-R6",
+          "metric": "寿命（循环圈数）",
+          "A": "LiBr", "B": "LiTFSI",
+          "value_A": null, "value_B": null,
+          "unit": "圈",
+          "point": "寿命终点（Fig. 4e）",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [],
+          "reason": "LiBr 67 圈短路，LiTFSI 寿命未写；登记读图"
+        },
+        {
+          "id": "S10-T6-R7",
+          "metric": "下平台/上平台容量比",
+          "A": "LiSCN", "B": "LiBr",
+          "value_A": 2.40, "value_B": 2.11,
+          "unit": "无量纲",
+          "point": "第 2 圈电压曲线（Figure S12）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0176"],
+          "reason": "作者把下平台出现归于溶液介导 3D Li2S 沉积（软包 M0183 也以此比值表示钝化被抑制），比值高按变好记；LiTFSI 无下平台"
+        }
+      ]
+    },
+    {
+      "id": "S10-T7",
+      "name": "Li‖S 6 层叠片软包 E/S 4、0.09 C（仅 LiSCN）",
+      "cell": "Li‖S 软包（6-cell stack）",
+      "conditions": {
+        "sulfur_loading": "3.17 mgs cm−2（图注；SI 写 3.2 mgs cm−2）",
+        "ES": "4",
+        "ES_unit": "μl mg−1（体积基）",
+        "Li_thickness": "40 μm",
+        "rate": "0.09 C / 0.09 C",
+        "formation": "0.05 C 2 圈",
+        "temperature": "未报告",
+        "LiNO3": "含 0.2 m",
+        "one_C": "未报告",
+        "NP_ratio": "2.35"
+      },
+      "formulations": ["LiSCN"],
+      "evidence_ids": ["M0169", "M0178", "M0179", "S0037", "M0224"],
+      "results": []
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "S10-M1",
+      "summary": "SCN⁻ 强配位 Li⁺ 且与多硫化物直接作用 → 多硫化物溶解度升高 → 溶液介导的 3D Li2S 沉积增强（抑制正极钝化）→ 放电容量高于 LiTFSI",
+      "A": "LiSCN", "B": "LiTFSI",
+      "property": "多硫化物溶解度升高（多硫化物溶剂化增强）；Li⁺ 由 SCN⁻ 强配位",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0187"],
+      "test_ids": ["S10-T1", "S10-T2", "S10-T4", "S10-T6"],
+      "side": "弱侧"
+    },
+    {
+      "id": "S10-M2",
+      "summary": "SCN⁻ 的 DN 低于 Br⁻，却更能延缓钝化 → 作者归于 SCN⁻ 的电子受体性促成 3D Li2S 形貌 → LiSCN 容量高于 LiBr",
+      "A": "LiSCN", "B": "LiBr",
+      "property": "SCN⁻ 电子受体性（与多硫化物阴离子直接作用，多硫化物溶剂化增强）；DN 低于 Br⁻",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0082", "M0083"],
+      "test_ids": ["S10-T1", "S10-T2"],
+      "side": "弱侧"
+    },
+    {
+      "id": "S10-M3",
+      "summary": "LiSCN 中软、硬碱性多硫化物溶解度升高 → 溶液相硫还原增强 → 正极钝化大幅延缓",
+      "A": "LiSCN", "B": "LiTFSI",
+      "property": "多硫化物（软碱、硬碱）溶解度升高",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0098"],
+      "test_ids": ["S10-T1", "S10-T2"],
+      "side": "弱侧"
+    },
+    {
+      "id": "S10-M4",
+      "summary": "SCN⁻ 稳定 S3²⁻ 等短链多硫化物 → 溶液中生成 S²⁻、提供溶液介导 Li2S 沉积的额外化学路径 → 3D Li2S 形貌增强（上平台容量超理论值的推测解释）",
+      "A": "LiSCN", "B": "LiTFSI",
+      "property": "短链多硫化物被 SCN⁻ 稳定（多硫化物溶剂化增强）",
+      "categories": ["正极反应"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0104"],
+      "test_ids": ["S10-T1"],
+      "side": "弱侧"
+    },
+    {
+      "id": "S10-M5",
+      "summary": "LiTFSI 在 E/S 5、3 mgs cm−2 下硫利用率仅 53%，作者归于硫正极钝化",
+      "A": "LiSCN", "B": "LiTFSI",
+      "property": "句中未提溶剂化；LiTFSI 为本篇多硫化物/Li2S 溶解度最低的配方（M0096）",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0153"],
+      "test_ids": ["S10-T4"],
+      "side": "弱侧"
+    },
+    {
+      "id": "S10-M6",
+      "summary": "LiTFSI 自第 50 圈起下平台缩短、容量下降 → 作者判为正极钝化随循环加重（LiTFSI 的长循环衰减归于正极侧）",
+      "A": "LiSCN", "B": "LiTFSI",
+      "property": "句中未提溶剂化；LiTFSI 为本篇多硫化物溶解度最低的配方",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0157"],
+      "test_ids": ["S10-T4"],
+      "side": "弱侧"
+    },
+    {
+      "id": "S10-M7",
+      "summary": "高放电电流（2.54 mA cm−2）下 LiTFSI 无下平台，作者归于严重正极钝化",
+      "A": "LiSCN", "B": "LiTFSI",
+      "property": "句中未提溶剂化；LiTFSI 为本篇多硫化物溶解度最低的配方",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0175"],
+      "test_ids": ["S10-T6"],
+      "side": "弱侧"
+    },
+    {
+      "id": "S10-M8",
+      "summary": "倍率从 0.2 C/0.1 C 提到 0.3 C/0.2 C 时 LiSCN 容量降幅最小 → 作者认为印证 LiSCN 解决正极钝化",
+      "A": "LiSCN", "B": "LiTFSI",
+      "property": "句中未提溶剂化（跨 T4/T5 的容量降幅比较）",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0165", "M0169"],
+      "test_ids": ["S10-T4", "S10-T5"],
+      "side": "弱侧"
+    },
+    {
+      "id": "S10-M9",
+      "summary": "（引言转述）高 DN 的 Br⁻ 最能抑制正极钝化，但与锂金属的相容性不如低 DN 阴离子",
+      "A": "LiBr", "B": "LiTFSI",
+      "property": "阴离子 DN 高（Br⁻）",
+      "categories": ["正极反应", "负极锂"],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0019"],
+      "test_ids": [],
+      "side": "强侧"
+    },
+    {
+      "id": "S10-M10",
+      "summary": "参与 Li⁺ 溶剂化层的分子在沉积时更易富集于锂表面、被还原分解的概率随之增大（三种电解液 SEI 差异的共同解释）",
+      "A": "全梯度", "B": "全梯度",
+      "property": "Li⁺ 溶剂化层组成（DME 或阴离子）",
+      "categories": ["负极锂"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0142"],
+      "test_ids": ["S10-T3"],
+      "side": "其他"
+    },
+    {
+      "id": "S10-M11",
+      "summary": "LiTFSI 中 Li⁺ 主要由 DME 配位 → DME 还原分解更显著（XPS 有机组分峰最大）",
+      "A": "LiSCN", "B": "LiTFSI",
+      "property": "Li⁺ 溶剂化：LiTFSI 的 Li⁺–DME 配位最强（DME 配位数 1.73 vs LiSCN 0.21）；此处按 Li⁺ 侧，与梯度排序轴方向相反",
+      "categories": ["电解液消耗"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0144"],
+      "test_ids": ["S10-T3"],
+      "side": "强侧"
+    },
+    {
+      "id": "S10-M12",
+      "summary": "Br⁻ 同样因进入溶剂化层而富集于锂界面，但不形成稳定、导离子的 SEI",
+      "A": "LiBr", "B": "LiSCN",
+      "property": "Li⁺ 溶剂化层含 Br⁻（阴离子配位数 1.88）；差别在阴离子种类而非溶剂化强弱",
+      "categories": ["负极锂"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0146", "M0147"],
+      "test_ids": ["S10-T3"],
+      "side": "其他"
+    },
+    {
+      "id": "S10-M13",
+      "summary": "SCN⁻ 配位的 Li⁺ 溶剂化结构促成富 Li3N 的 SEI → 锂金属可逆性提高 → 对称电池与全电池循环更稳",
+      "A": "LiSCN", "B": "LiTFSI",
+      "property": "Li⁺ 溶剂化：LiSCN 中 SCN⁻ 进入第一溶剂化层、DME 配位数最低（0.21 vs LiTFSI 1.73）；此处按 Li⁺ 侧，LiTFSI 的 Li⁺–溶剂配位较强",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0188"],
+      "test_ids": ["S10-T3", "S10-T4", "S10-T5", "S10-T6"],
+      "side": "强侧"
+    },
+    {
+      "id": "S10-M14",
+      "summary": "XPS 见 SCN⁻ 参与 SEI、Li3N 峰更强 → 作者提出高导离子的富 Li3N SEI 是 LiSCN 循环稳定性提高原因的一种设想",
+      "A": "LiSCN", "B": "LiTFSI",
+      "property": "句中未提溶剂化（SEI 组成）",
+      "categories": ["负极锂"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0135"],
+      "test_ids": ["S10-T3"],
+      "side": "其他"
+    },
+    {
+      "id": "S10-M15",
+      "summary": "阻抗、SEM、XPS 共同表明 SCN⁻ 参与 SEI 形成 → 锂沉积均匀 → 溶剂分解减少",
+      "A": "LiSCN", "B": "LiTFSI",
+      "property": "句中未提溶剂化（SCN⁻ 参与 SEI）",
+      "categories": ["负极锂", "电解液消耗"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0140"],
+      "test_ids": ["S10-T3"],
+      "side": "其他"
+    },
+    {
+      "id": "S10-M16",
+      "summary": "LiBr 的 Rint、Rohm 随循环明显增大 → 电解液大量分解、分解产物在锂表面堆积",
+      "A": "LiBr", "B": "LiTFSI",
+      "property": "句中未提溶剂化（阻抗解读）",
+      "categories": ["电解液消耗", "负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0125"],
+      "test_ids": ["S10-T3"],
+      "side": "其他"
+    },
+    {
+      "id": "S10-M17",
+      "summary": "LiBr 的多孔锂沉积使电解液分解随循环加剧 → 形成高阻多孔层 → 极化骤增",
+      "A": "LiBr", "B": "LiTFSI",
+      "property": "句中未提溶剂化（起点为多孔锂沉积形貌）",
+      "categories": ["电解液消耗", "负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0132"],
+      "test_ids": ["S10-T3"],
+      "side": "其他"
+    },
+    {
+      "id": "S10-M18",
+      "summary": "LiBr 全电池第 21 圈短路，作者推测为枝晶锂生长与锂表面电解液过度分解所致",
+      "A": "LiBr", "B": "LiTFSI",
+      "property": "句中未提溶剂化",
+      "categories": ["负极锂", "电解液消耗"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0156"],
+      "test_ids": ["S10-T4"],
+      "side": "其他"
+    },
+    {
+      "id": "S10-M19",
+      "summary": "E/S 从 5 提到 8 时 LiBr 循环稳定性提高三倍，作者归于锂可逆性差带来的问题被缓解（同一配方跨测试比较）",
+      "A": "LiBr", "B": "LiBr",
+      "property": "非溶剂化差别：同一 LiBr 配方在 E/S 5（T4）与 E/S 8（T5）间比较",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0161"],
+      "test_ids": ["S10-T4", "S10-T5"],
+      "side": "其他"
+    }
+  ],
+  "design_claims": [
+    {
+      "summary": "单一盐阴离子同时作用两极：SCN⁻ 的 Janus 特性（N、S 给电子配位 Li⁺，C 受电子与多硫化物作用）既抑制正极钝化又形成富 Li3N SEI 稳定锂负极；最优 LiSCN（0.8 m LiSCN 加入 0.2 m LiTFSI + 0.2 m LiNO₃ 的 DOL/DME 1:1 基础液）；作者未用折中/解耦字样",
+      "evidence_ids": ["M0008", "M0113"]
+    }
+  ],
+  "figure_requests": [
+    {
+      "test_id": "S10-T5",
+      "figure": "Fig. 4d",
+      "part": "main",
+      "metric": "首圈容量",
+      "A": "LiSCN", "B": "LiTFSI",
+      "target_point": "化成后 0.3 C 第 1 圈",
+      "anchor_quote_ids": ["M0162", "M0163", "M0164"],
+      "reason": "Li‖S 循环类测试缺同一测试容量侧；正文只给各配方相对 0.2 C/0.1 C 的容量比例（LiBr 降 32%、LiTFSI 65%、LiSCN ≈80%），需结合 T4 数值反算作弱锚点，无直接锚点"
+    },
+    {
+      "test_id": "S10-T5",
+      "figure": "Fig. 4d",
+      "part": "main",
+      "metric": "首圈容量",
+      "A": "LiBr", "B": "LiTFSI",
+      "target_point": "化成后 0.3 C 第 1 圈",
+      "anchor_quote_ids": ["M0162", "M0163", "M0164"],
+      "reason": "Li‖S 循环类测试缺同一测试容量侧；同上，无直接锚点"
+    },
+    {
+      "test_id": "S10-T5",
+      "figure": "Fig. 4d",
+      "part": "main",
+      "metric": "寿命（循环圈数）",
+      "A": "LiBr", "B": "LiTFSI",
+      "target_point": "寿命终点（容量骤降或短路圈数）",
+      "anchor_quote_ids": [],
+      "reason": "Li‖S 循环类测试缺寿命终点；正文无本测试圈数，无锚点"
+    },
+    {
+      "test_id": "S10-T6",
+      "figure": "Fig. 4e",
+      "part": "main",
+      "metric": "首圈容量",
+      "A": "LiBr", "B": "LiTFSI",
+      "target_point": "化成后 0.4 C 第 1 圈",
+      "anchor_quote_ids": ["M0007", "M0177"],
+      "reason": "Li‖S 循环类测试缺同一测试容量侧；锚点：LiSCN 1133 mAh g−1（摘要，2.54 mA cm−2）、LiBr 67 圈与 LiSCN 100 圈失效"
+    },
+    {
+      "test_id": "S10-T6",
+      "figure": "Fig. 4e",
+      "part": "main",
+      "metric": "寿命（循环圈数）",
+      "A": "LiBr", "B": "LiTFSI",
+      "target_point": "寿命终点（LiTFSI 曲线末点或骤降圈数）",
+      "anchor_quote_ids": ["M0177"],
+      "reason": "Li‖S 循环类测试缺 LiTFSI 寿命终点；锚点：LiBr 67 圈、LiSCN 100 圈"
+    }
+  ],
+  "gaps": [
+    "离子电导率、黏度、离子迁移数未报告",
+    "全部测试温度未报告；Li‖S 扣式电池锂厚未报告；1C 定义未报告（可由 0.2 C = 1.0 mA cm−2、3 mgs cm−2 反算约 1.67 A g−1，未填入条件）",
+    "S10-T1 的 E/S 20 原文未写单位；S10-T2 硫载量与 E/S 为按 Fig. 2a 推定",
+    "S10-T3 锂厚前后不一（M0108、M0219 写 40 μm，M0218 写 150 μm）",
+    "UV-vis 稀释倍数前后不一（正文 1000 倍，实验部分 500 倍）；CA 电位前后不一（2.0 V vs 2.05 V）；TFSI⁻ DN 前后不一（引言 5.4，正文 11.2 kcal mol−1）",
+    "单位为小写 m（mol/kg 或 mol/L 不明），尺子不换算",
+    "S10-T4/T5 的硫正极来源未写清（实验部分只说长循环用 LG 3.8 mgs cm−2 电极）",
+    "S10-T4、T5、T6 未报告 LiTFSI 的容量数值与寿命圈数；S10-T5 容量只给相对 T4 的比例；全部 Li‖S 测试未报告库仑效率与过电位",
+    "S10-T7 软包仅 LiSCN，无对照",
+    "Fig. 4c 为与他文性能对比，未提取"
+  ],
+  "source_review": {
+    "main": true,
+    "si": true,
+    "notes": "通读正文与 SI（SI 仅图注与 CA 拟合公式，无额外实验条件）；未读任何既有提取结果。梯度按多硫化物溶剂化排序，Li⁺ 侧（DME 配位数）顺序相反，机制 side 按各句所讲的那种溶剂化判定并在 property 写明。"
+  }
+}

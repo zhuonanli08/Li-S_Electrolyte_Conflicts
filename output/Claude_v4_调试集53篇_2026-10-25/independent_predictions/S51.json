@@ -1,0 +1,825 @@
+{
+  "paper_id": "S51",
+  "doi": "10.1149/1945-7111/ac6bc6",
+  "formulations": [
+    {
+      "id": "AMImTFSI",
+      "name": "pure AMImTFSI",
+      "components": [
+        {"name": "AMImTFSI", "role": "溶剂化溶剂", "amount": "未报告", "unit": "未报告"}
+      ],
+      "raw_formula": "pure AMImTFSI（纯离子液体，只测黏度，未用于电池）",
+      "evidence_ids": ["M0073"]
+    },
+    {
+      "id": "1M",
+      "name": "1 M LiTFSI in AMImTFSI",
+      "components": [
+        {"name": "AMImTFSI", "role": "溶剂化溶剂", "amount": "未报告", "unit": "未报告"},
+        {"name": "LiTFSI", "role": "盐", "amount": 1, "unit": "M"}
+      ],
+      "raw_formula": "1 M LiTFSI in AMImTFSI（作者称 AMImTFSI 为 solvent；引言说离子液体与多硫化物相互作用弱，M0027）；不含添加剂",
+      "evidence_ids": ["M0037", "M0042", "M0103"]
+    },
+    {
+      "id": "2M",
+      "name": "2 M LiTFSI in AMImTFSI",
+      "components": [
+        {"name": "AMImTFSI", "role": "溶剂化溶剂", "amount": "未报告", "unit": "未报告"},
+        {"name": "LiTFSI", "role": "盐", "amount": 2, "unit": "M"}
+      ],
+      "raw_formula": "2 M LiTFSI in AMImTFSI；不含添加剂",
+      "evidence_ids": ["M0042", "M0103"]
+    },
+    {
+      "id": "3M",
+      "name": "3 M LiTFSI in AMImTFSI",
+      "components": [
+        {"name": "AMImTFSI", "role": "溶剂化溶剂", "amount": "未报告", "unit": "未报告"},
+        {"name": "LiTFSI", "role": "盐", "amount": 3, "unit": "M"}
+      ],
+      "raw_formula": "3 M LiTFSI in AMImTFSI；不含添加剂",
+      "evidence_ids": ["M0037", "M0042", "M0103"]
+    },
+    {
+      "id": "DOL/DME",
+      "name": "1 M LiTFSI in DOL:DME with 1% LiNO3（traditional electrolyte）",
+      "components": [
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": "未报告", "unit": "未报告"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": "未报告", "unit": "未报告"},
+        {"name": "LiTFSI", "role": "盐", "amount": 1, "unit": "M"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 1, "unit": "%"}
+      ],
+      "raw_formula": "1 M LiTFSI in DOL:DME with 1% LiNO3（DOL:DME 比例与 1% 的基准原文未写；只用于循环后锂片空气暴露照片对比）",
+      "evidence_ids": ["M0180", "S0008"]
+    }
+  ],
+  "control_id": "1M",
+  "control_type": "其他：离子液体 AMImTFSI 中 LiTFSI 浓度梯度（1/2/3 M，均不含 LiNO₃ 与添加剂），以最低浓度 1 M 为对照；常规醚电解液（DOL:DME + 1 M LiTFSI + 1% LiNO₃）只出现在循环后锂片空气暴露照片中，无电池表现数据",
+  "gradients": [
+    {
+      "name": "LiTFSI 浓度（用量梯度）",
+      "order": ["1M", "2M", "3M"],
+      "values": ["1 M", "2 M", "3 M"],
+      "solvation_axis": "按多硫化物溶解度由高到低（Li2S4 溶解实验：1 M、2 M 明显红色，3 M 几乎不变色、UV-vis 无多硫化物峰；1 M 与 2 M 之间未区分）；作者未测 Li⁺ 溶剂化，只在 DFT 部分推测高浓度下溶剂分子高配位",
+      "evidence_ids": ["M0042", "M0092", "M0093", "M0096", "M0097"]
+    }
+  ],
+  "properties": [
+    {
+      "name": "Li⁺ 溶剂化",
+      "values": {"1M": "未报告", "2M": "未报告", "3M": "未报告"},
+      "direction": "未报告",
+      "method": "未报告（只有 DFT HOMO/LUMO 计算，未测溶剂化结构）",
+      "system": "未报告",
+      "evidence_ids": []
+    },
+    {
+      "name": "多硫化物溶剂化",
+      "values": {"1M": "未报告", "2M": "未报告", "3M": "未报告"},
+      "direction": "未报告",
+      "method": "未报告",
+      "system": "未报告",
+      "evidence_ids": []
+    },
+    {
+      "name": "多硫化物溶解度",
+      "values": {"1M": "明显红色，大量多硫化物生成", "2M": "明显红色，大量多硫化物生成", "3M": "颜色变化很小，UV-vis 无多硫化物峰"},
+      "direction": "3 M 明显降低；1 M 与 2 M 均高，未区分",
+      "method": "Li2S 与 S 按摩尔比 8:3 加入 1 ml 电解液（目标 0.4 M Li2S4），80 °C 搅拌 50 h 后 30 °C 48 h；目测颜色 + UV-vis",
+      "system": "与电池所用电解液相同（不含添加剂）",
+      "evidence_ids": ["M0047", "M0048", "M0092", "M0093", "M0096", "M0097"]
+    },
+    {
+      "name": "黏度",
+      "values": {"AMImTFSI": "30.1 mPa·s", "1M": "76.0 mPa·s", "2M": "236.4 mPa·s", "3M": "664.0 mPa·s"},
+      "direction": "沿盐浓度升高",
+      "method": "黏度计（TV-35，带恒温），298 K 值",
+      "system": "电解液本身",
+      "evidence_ids": ["M0050", "M0072", "M0073"]
+    },
+    {
+      "name": "离子电导率",
+      "values": {"1M": "最高（三者都在 10−3 S cm−1 量级）", "2M": "低于 1 M，与 3 M 很接近", "3M": "低于 1 M，与 2 M 很接近"},
+      "direction": "1 M 最高，2 M 与 3 M 接近且较低",
+      "method": "EIS（1 MHz−10 mHz，10 mV），30−60 °C",
+      "system": "电解液本身",
+      "evidence_ids": ["M0051", "M0083", "M0084"]
+    },
+    {
+      "name": "VFT 拟合参数 A（载流子数相关）与 B（离子传输活化能相关）",
+      "values": {"1M": "A = 146E-3 S cm-1 K-0.5，B = 1082 K，T0 = 150 K", "2M": "A = 12.1E-3 S cm-1 K-0.5，B = 714.2 K，T0 = 152 K", "3M": "A = 2.5E-3 S cm-1 K-0.5，B = 229 K，T0 = 234 K"},
+      "direction": "A、B 均沿盐浓度降低",
+      "method": "离子电导率温度依赖按 VFT 方程拟合（Table S1）",
+      "system": "电解液本身",
+      "evidence_ids": ["S0014", "M0088"]
+    }
+  ],
+  "tests": [
+    {
+      "id": "S51-T1",
+      "name": "Li‖S 扣式组装后静置 30 天 OCV 监测（自放电）",
+      "cell": "Li‖S/KB 扣式（CR2025）",
+      "conditions": {
+        "sulfur_loading": "∼1 mg cm−2",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告（15 mm 直径锂片）",
+        "rate": "不施加电流（静置 30 d）",
+        "formation": "无（组装后直接静置）",
+        "temperature": "未报告",
+        "LiNO3": "不含",
+        "one_C": "1 C = 1.672 mA g−1（原文写法，疑为 1672 mA g−1；本测试为静置）"
+      },
+      "formulations": ["1M", "2M", "3M"],
+      "evidence_ids": ["M0062", "M0064", "M0065", "M0103", "M0105", "S0013"],
+      "results": [
+        {
+          "id": "S51-T1-R1",
+          "metric": "开路电压保持率",
+          "A": "2M", "B": "1M",
+          "value_A": 96.4, "value_B": 92.7,
+          "unit": "%",
+          "point": "静置 30 天后 OCV ÷ 初始 OCV",
+          "basis": "numeric",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["S0014"],
+          "reason": "Table S2；|96.4−92.7|÷96.4 ≈ 3.8% < 5%（作者称增大盐浓度抑制自放电）"
+        },
+        {
+          "id": "S51-T1-R2",
+          "metric": "开路电压保持率",
+          "A": "3M", "B": "1M",
+          "value_A": 96.8, "value_B": 92.7,
+          "unit": "%",
+          "point": "静置 30 天后 OCV ÷ 初始 OCV",
+          "basis": "numeric",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["M0106", "M0107", "S0014"],
+          "reason": "|96.8−92.7|÷96.8 ≈ 4.2% < 5%（作者称 3 M 保持率更高、自放电被抑制）"
+        },
+        {
+          "id": "S51-T1-R3",
+          "metric": "开路电压保持率",
+          "A": "3M", "B": "2M",
+          "value_A": 96.8, "value_B": 96.4,
+          "unit": "%",
+          "point": "静置 30 天后 OCV ÷ 初始 OCV",
+          "basis": "numeric",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["S0014"],
+          "reason": "|96.8−96.4|÷96.8 ≈ 0.4%"
+        },
+        {
+          "id": "S51-T1-R4",
+          "metric": "开路电压下降",
+          "A": "2M", "B": "1M",
+          "value_A": 0.10, "value_B": 0.21,
+          "unit": "V",
+          "point": "静置 30 天，初始 OCV − 30 天后 OCV",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["S0014", "M0108"],
+          "reason": "反算：2M 2.80 − 2.70 = 0.10 V；1M 2.88 − 2.67 = 0.21 V（Table S2）；下降越小越好；作者 M0108 说 OCV 变化随浓度升高明显减小"
+        },
+        {
+          "id": "S51-T1-R5",
+          "metric": "开路电压下降",
+          "A": "3M", "B": "1M",
+          "value_A": 0.09, "value_B": 0.21,
+          "unit": "V",
+          "point": "静置 30 天，初始 OCV − 30 天后 OCV",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["S0014", "M0108"],
+          "reason": "反算：3M 2.88 − 2.79 = 0.09 V；1M 2.88 − 2.67 = 0.21 V（Table S2）"
+        },
+        {
+          "id": "S51-T1-R6",
+          "metric": "开路电压下降",
+          "A": "3M", "B": "2M",
+          "value_A": 0.09, "value_B": 0.10,
+          "unit": "V",
+          "point": "静置 30 天，初始 OCV − 30 天后 OCV",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["S0014", "M0108"],
+          "reason": "反算：3M 2.88 − 2.79 = 0.09 V；2M 2.80 − 2.70 = 0.10 V；|0.09−0.10|÷0.10 = 10%"
+        }
+      ]
+    },
+    {
+      "id": "S51-T2",
+      "name": "Li‖S 扣式 0.05 C 循环 50 圈",
+      "cell": "Li‖S/KB 扣式（CR2025）",
+      "conditions": {
+        "sulfur_loading": "∼1 mg cm−2",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告（15 mm 直径锂片）",
+        "rate": "0.05 C，1.6−2.8 V",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "不含",
+        "one_C": "1 C = 1.672 mA g−1（原文写法，疑为 1672 mA g−1）"
+      },
+      "formulations": ["1M", "2M", "3M"],
+      "evidence_ids": ["M0059", "M0062", "M0064", "M0065", "M0067", "M0103", "M0109"],
+      "results": [
+        {
+          "id": "S51-T2-R1",
+          "metric": "首圈容量",
+          "A": "2M", "B": "1M",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g−1",
+          "point": "0.05 C 第 1 圈",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0110", "M0112"],
+          "reason": "作者定性：1 M 容量最低，2 M 首圈容量最高；数值只在 Fig. 2b，已登记读图"
+        },
+        {
+          "id": "S51-T2-R2",
+          "metric": "首圈容量",
+          "A": "3M", "B": "1M",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g−1",
+          "point": "0.05 C 第 1 圈",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0110", "M0113"],
+          "reason": "作者定性：1 M 容量最低；3 M 首圈 1071 mAh g−1（moderate），1 M 数值只在 Fig. 2b，已登记读图"
+        },
+        {
+          "id": "S51-T2-R3",
+          "metric": "首圈容量",
+          "A": "3M", "B": "2M",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g−1",
+          "point": "0.05 C 第 1 圈",
+          "basis": "qualitative",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0112", "M0113"],
+          "reason": "作者定性：2 M 首圈最高，3 M 首圈 1071 mAh g−1 为 moderate；2 M 数值只在 Fig. 2b，已登记读图"
+        },
+        {
+          "id": "S51-T2-R4",
+          "metric": "保持率",
+          "A": "2M", "B": "1M",
+          "value_A": null, "value_B": null,
+          "unit": "%",
+          "point": "50 圈",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0110", "M0111", "M0112"],
+          "reason": "作者定性：增大盐浓度循环稳定性改善；但 2 M 仍快速衰减"
+        },
+        {
+          "id": "S51-T2-R5",
+          "metric": "保持率",
+          "A": "3M", "B": "1M",
+          "value_A": null, "value_B": null,
+          "unit": "%",
+          "point": "50 圈",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0110", "M0113"],
+          "reason": "作者定性：1 M 快速衰减；3 M 50 圈内稳定在 ∼950 mAh g−1"
+        },
+        {
+          "id": "S51-T2-R6",
+          "metric": "保持率",
+          "A": "3M", "B": "2M",
+          "value_A": null, "value_B": null,
+          "unit": "%",
+          "point": "50 圈",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0112", "M0113"],
+          "reason": "作者定性：2 M 仍快速衰减；3 M 循环性好"
+        },
+        {
+          "id": "S51-T2-R7",
+          "metric": "库仑效率",
+          "A": "3M", "B": "1M",
+          "value_A": null, "value_B": null,
+          "unit": "%",
+          "point": "50 圈内",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0110", "M0196"],
+          "reason": "作者定性：1 M 库仑效率波动；3 M 库仑效率改善"
+        },
+        {
+          "id": "S51-T2-R8",
+          "metric": "库仑效率",
+          "A": "2M", "B": "1M",
+          "value_A": null, "value_B": null,
+          "unit": "%",
+          "point": "50 圈内",
+          "basis": "qualitative",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": ["M0122"],
+          "reason": "作者只有全梯度说法（增大盐浓度改善库仑效率），未单独描述 2 M"
+        },
+        {
+          "id": "S51-T2-R9",
+          "metric": "过电位",
+          "A": "3M", "B": "1M",
+          "value_A": null, "value_B": null,
+          "unit": "V",
+          "point": "第 2 圈电压滞后",
+          "basis": "qualitative",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0119", "M0129"],
+          "reason": "作者：3 M 电压滞后最大（0.51 V）；1 M 的值只在图 2d 插图"
+        },
+        {
+          "id": "S51-T2-R10",
+          "metric": "过电位",
+          "A": "3M", "B": "2M",
+          "value_A": null, "value_B": null,
+          "unit": "V",
+          "point": "第 2 圈电压滞后",
+          "basis": "qualitative",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0119", "M0129"],
+          "reason": "作者：3 M 电压滞后最大（0.51 V）；2 M 的值只在图 2e 插图"
+        }
+      ]
+    },
+    {
+      "id": "S51-T3",
+      "name": "Li‖S 扣式 0.1 C 循环 100 圈（仅 3 M）",
+      "cell": "Li‖S/KB 扣式（CR2025）",
+      "conditions": {
+        "sulfur_loading": "∼1 mg cm−2",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告（15 mm 直径锂片）",
+        "rate": "0.1 C",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "不含",
+        "one_C": "1 C = 1.672 mA g−1（原文写法，疑为 1672 mA g−1）"
+      },
+      "formulations": ["3M"],
+      "evidence_ids": ["M0062", "M0064", "M0065", "M0067", "M0103", "M0114", "M0115"],
+      "results": []
+    },
+    {
+      "id": "S51-T4",
+      "name": "Li‖Li 对称电池静置 30 天阻抗监测",
+      "cell": "Li‖Li 对称（扣式）",
+      "conditions": {
+        "sulfur_loading": "不适用（Li‖Li）",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "静置 30 d 期间测 EIS",
+        "formation": "0.1 mA cm−2、1 mAh cm−2 沉积/溶出 1 圈形成 SEI",
+        "temperature": "未报告",
+        "LiNO3": "不含",
+        "one_C": "不适用（Li‖Li）"
+      },
+      "formulations": ["1M", "2M", "3M"],
+      "evidence_ids": ["M0182", "M0183", "M0103", "S0009"],
+      "results": [
+        {
+          "id": "S51-T4-R1",
+          "metric": "阻抗",
+          "A": "2M", "B": "1M",
+          "value_A": null, "value_B": null,
+          "unit": "Ω",
+          "point": "静置 30 天期间界面电阻的稳定性",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0185", "M0186"],
+          "reason": "作者定性：1 M 电阻在 30 天内波动；盐浓度升高电阻值更稳定"
+        },
+        {
+          "id": "S51-T4-R2",
+          "metric": "阻抗",
+          "A": "3M", "B": "1M",
+          "value_A": null, "value_B": null,
+          "unit": "Ω",
+          "point": "静置 30 天期间界面电阻的稳定性",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0185", "M0186"],
+          "reason": "作者定性：1 M 电阻在 30 天内波动；盐浓度升高电阻值更稳定"
+        }
+      ]
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "S51-M1",
+      "summary": "按 Stokes-Einstein 关系，盐浓度升高使黏度升高 → 多硫化物扩散受抑制（理论预期）",
+      "A": "全梯度", "B": "全梯度",
+      "property": "黏度沿盐浓度升高（非溶剂化性质）",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0077"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "S51-M2",
+      "summary": "按同离子效应，盐浓度升高降低多硫化物溶解度",
+      "A": "全梯度", "B": "全梯度",
+      "property": "多硫化物溶解度降低（同离子效应）",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0078"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "S51-M3",
+      "summary": "多硫化物溶解度和扩散预期都降低 → 增大离子液体中盐浓度似乎对锂硫电池有利（结果前的预期）",
+      "A": "全梯度", "B": "全梯度",
+      "property": "多硫化物溶解度与扩散降低",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0079"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "S51-M4",
+      "summary": "VFT 参数 A、B 随盐浓度降低 → 载流子数减少 → 高浓度电解液离子电导率较低",
+      "A": "全梯度", "B": "全梯度",
+      "property": "离子电导率降低（载流子数减少；非溶剂化性质）",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0088"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "S51-M5",
+      "summary": "增大盐浓度因黏度升高、扩散降低和同离子效应有效抑制多硫化物溶解与扩散",
+      "A": "全梯度", "B": "全梯度",
+      "property": "多硫化物溶解度降低、黏度升高",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0099"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "S51-M6",
+      "summary": "多硫化物溶解受抑制 → 预期活性物质损失减少、循环稳定性提高",
+      "A": "全梯度", "B": "全梯度",
+      "property": "多硫化物溶解受抑制（承接 M0099）",
+      "categories": [],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0100"],
+      "test_ids": ["S51-T2"],
+      "side": "强侧"
+    },
+    {
+      "id": "S51-M7",
+      "summary": "盐浓度升高使载流子迁移率和数量下降、离子电导率降低，可能影响离子传输",
+      "A": "全梯度", "B": "全梯度",
+      "property": "离子电导率降低（非溶剂化性质）",
+      "categories": [],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0101"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "S51-M8",
+      "summary": "据 OCV、黏度和多硫化物溶解实验，3 M 循环稳定性提高归因于多硫化物被有效抑制",
+      "A": "3M", "B": "1M",
+      "property": "多硫化物溶解度降低",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0116"],
+      "test_ids": ["S51-T2"],
+      "side": "强侧"
+    },
+    {
+      "id": "S51-M9",
+      "summary": "3 M 首圈容量只是中等，可能因黏度升高、离子电导率降低使反应动力学变慢",
+      "A": "3M", "B": "2M",
+      "property": "黏度升高、离子电导率降低（非溶剂化性质）",
+      "categories": ["正极反应"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0117"],
+      "test_ids": ["S51-T2"],
+      "side": "其他"
+    },
+    {
+      "id": "S51-M10",
+      "summary": "3 M 电压滞后最大（0.51 V）→ 极化大、氧化还原动力学降低（支持 M9 的推测）",
+      "A": "3M", "B": "2M",
+      "property": "盐浓度最高档（未写具体性质）",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0119"],
+      "test_ids": ["S51-T2"],
+      "side": "弱侧"
+    },
+    {
+      "id": "S51-M11",
+      "summary": "增大盐浓度一方面因多硫化物溶解被抑制 → 自放电降低、循环稳定性和库仑效率提高（双刃剑的一面）",
+      "A": "全梯度", "B": "全梯度",
+      "property": "多硫化物溶解受抑制",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0122"],
+      "test_ids": ["S51-T1", "S51-T2"],
+      "side": "强侧"
+    },
+    {
+      "id": "S51-M12",
+      "summary": "增大盐浓度另一方面因极化增大 → 首圈容量下降（双刃剑的另一面；与 2 M 首圈最高、1 M 最低的描述只在 2 M → 3 M 段一致）",
+      "A": "全梯度", "B": "全梯度",
+      "property": "盐浓度升高（极化增大，未写具体性质）",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0123"],
+      "test_ids": ["S51-T2"],
+      "side": "弱侧"
+    },
+    {
+      "id": "S51-M13",
+      "summary": "DFT：盐浓度升高 HOMO 上移 → 正极上更易氧化、形成保护膜",
+      "A": "全梯度", "B": "全梯度",
+      "property": "HOMO 能级上移（DFT）",
+      "categories": ["正极反应"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0133"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "S51-M14",
+      "summary": "DFT：盐浓度升高 LUMO 上移 → 负极上更难被还原",
+      "A": "全梯度", "B": "全梯度",
+      "property": "LUMO 能级上移（DFT）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0134"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "S51-M15",
+      "summary": "高浓度下溶剂分子高度配位 → 锂表面副反应减少 → 形成更稳定的 SEI（作者假设，引文支撑，随后用表征验证）",
+      "A": "全梯度", "B": "全梯度",
+      "property": "Li⁺ 溶剂化：高浓度下溶剂分子高配位（未测，推测）",
+      "categories": ["负极锂"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0135"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "S51-M16",
+      "summary": "正极表面膜（前人也报道过）被认为是保护层，阻挡硫物种从正极扩散，减少活性物质损失和穿梭",
+      "A": "全梯度", "B": "全梯度",
+      "property": "正极表面膜随盐浓度增厚变密",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0143", "M0146"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "S51-M17",
+      "summary": "正极表面膜是盐浓度升高时 OCV 保持率更高、循环性能更好的另一原因",
+      "A": "全梯度", "B": "全梯度",
+      "property": "正极表面膜随盐浓度增厚变密",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0147"],
+      "test_ids": ["S51-T1", "S51-T2"],
+      "side": "强侧"
+    },
+    {
+      "id": "S51-M18",
+      "summary": "XPS：盐浓度升高 TFSI 阴离子更易分解，与 DFT 的 HOMO 升高一致",
+      "A": "全梯度", "B": "全梯度",
+      "property": "TFSI 阴离子分解增多（未写溶剂化）",
+      "categories": ["电解液消耗"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0155"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "S51-M19",
+      "summary": "高浓度下 TFSI 阴离子分解和 AMIm 阳离子聚合在硫正极上形成表面膜 → 抑制多硫化物向电解液扩散（两个效应之一）",
+      "A": "全梯度", "B": "全梯度",
+      "property": "正极表面膜形成（阴离子分解、阳离子聚合）",
+      "categories": ["正极反应", "多硫化物穿梭", "电解液消耗"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0161", "M0162"],
+      "test_ids": ["S51-T2"],
+      "side": "强侧"
+    },
+    {
+      "id": "S51-M20",
+      "summary": "高浓度下黏度升高和离子效应使多硫化物难以溶解、扩散（两个效应之二）→ 循环稳定性提高",
+      "A": "全梯度", "B": "全梯度",
+      "property": "黏度升高、同离子效应降低多硫化物溶解度",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0163", "M0164"],
+      "test_ids": ["S51-T2"],
+      "side": "其他"
+    },
+    {
+      "id": "S51-M21",
+      "summary": "1 M 中锂负极表面粗糙、出现苔藓锂，可能因锂沉积/溶出不均匀",
+      "A": "3M", "B": "1M",
+      "property": "未写溶剂化",
+      "categories": ["负极锂"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0167"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "S51-M22",
+      "summary": "盐浓度升高锂负极表面更平整致密 → 形成均匀 SEI",
+      "A": "全梯度", "B": "全梯度",
+      "property": "未写溶剂化",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0168", "M0171"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "S51-M23",
+      "summary": "锂负极 XPS 只在 1 M 中检出多硫化物 → 增大盐浓度有效抑制多硫化物穿梭",
+      "A": "全梯度", "B": "全梯度",
+      "property": "多硫化物到达负极减少",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0173", "M0174"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "S51-M24",
+      "summary": "富 LiF 的 SEI 改善锂负极均匀性与稳定性（文献已证）→ 解释 3 M 中锂表面均匀致密",
+      "A": "3M", "B": "1M",
+      "property": "SEI 中 LiF 含量随盐浓度升高",
+      "categories": ["负极锂"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0178"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "S51-M25",
+      "summary": "Li‖Li 静置阻抗：盐浓度越高锂表面形成的 SEI 越稳定",
+      "A": "全梯度", "B": "全梯度",
+      "property": "SEI 稳定性随盐浓度提高",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0187"],
+      "test_ids": ["S51-T4"],
+      "side": "强侧"
+    },
+    {
+      "id": "S51-M26",
+      "summary": "结论：硫正极一侧，黏度升高和正极保护膜形成使多硫化物溶解被有效抑制",
+      "A": "全梯度", "B": "全梯度",
+      "property": "黏度升高、正极表面膜形成",
+      "categories": ["多硫化物穿梭", "正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0194"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "S51-M27",
+      "summary": "结论：锂负极一侧形成更均匀、致密、耐久的 SEI，锂负极稳定",
+      "A": "全梯度", "B": "全梯度",
+      "property": "SEI 更均匀致密耐久",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0195"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "S51-M28",
+      "summary": "OCV 变化随盐浓度升高减小 → 增大盐浓度抑制自放电，与黏度和多硫化物溶解实验一致",
+      "A": "全梯度", "B": "全梯度",
+      "property": "多硫化物溶解度降低、黏度升高",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0108"],
+      "test_ids": ["S51-T1"],
+      "side": "强侧"
+    }
+  ],
+  "design_claims": [
+    {"summary": "折中：增大盐浓度是双刃剑，需在循环性与容量之间平衡；作者主推 3 M LiTFSI in AMImTFSI（自放电低、循环性与库仑效率好）", "evidence_ids": ["M0121", "M0124", "M0196"]},
+    {"summary": "用离子液体作溶剂的高浓度电解液，兼顾抑制多硫化物溶解与保护锂负极", "evidence_ids": ["M0197"]}
+  ],
+  "figure_requests": [
+    {
+      "test_id": "S51-T2",
+      "figure": "Fig. 2b",
+      "part": "main",
+      "metric": "首圈容量",
+      "A": "2M", "B": "1M",
+      "target_point": "0.05 C 第 1 圈",
+      "anchor_quote_ids": ["M0113"],
+      "reason": "梯度上只在图里有数的档（1 M、2 M 首圈容量正文无数值）；锚点：同图 3 M 首圈 1071 mAh g−1、50 圈内 ∼950 mAh g−1"
+    },
+    {
+      "test_id": "S51-T2",
+      "figure": "Fig. 2b",
+      "part": "main",
+      "metric": "首圈容量",
+      "A": "3M", "B": "1M",
+      "target_point": "0.05 C 第 1 圈",
+      "anchor_quote_ids": ["M0113"],
+      "reason": "梯度上只在图里有数的档（1 M 首圈容量正文无数值）；锚点：3 M 首圈 1071 mAh g−1"
+    },
+    {
+      "test_id": "S51-T2",
+      "figure": "Fig. 2b",
+      "part": "main",
+      "metric": "首圈容量",
+      "A": "3M", "B": "2M",
+      "target_point": "0.05 C 第 1 圈",
+      "anchor_quote_ids": ["M0113"],
+      "reason": "梯度上只在图里有数的档（2 M 首圈容量正文无数值）；锚点：3 M 首圈 1071 mAh g−1"
+    },
+    {
+      "test_id": "S51-T2",
+      "figure": "Fig. 2b",
+      "part": "main",
+      "metric": "指定圈容量",
+      "A": "2M", "B": "1M",
+      "target_point": "0.05 C 第 50 圈",
+      "anchor_quote_ids": ["M0113"],
+      "reason": "梯度上只在图里有数的档（1 M、2 M 50 圈容量正文无数值，只有定性衰减）；锚点：3 M 50 圈内稳定在 ∼950 mAh g−1"
+    },
+    {
+      "test_id": "S51-T2",
+      "figure": "Fig. 2b",
+      "part": "main",
+      "metric": "指定圈容量",
+      "A": "3M", "B": "1M",
+      "target_point": "0.05 C 第 50 圈",
+      "anchor_quote_ids": ["M0113"],
+      "reason": "梯度上只在图里有数的档（1 M 50 圈容量正文无数值）；锚点：3 M ∼950 mAh g−1"
+    },
+    {
+      "test_id": "S51-T2",
+      "figure": "Fig. 2b",
+      "part": "main",
+      "metric": "指定圈容量",
+      "A": "3M", "B": "2M",
+      "target_point": "0.05 C 第 50 圈",
+      "anchor_quote_ids": ["M0113"],
+      "reason": "梯度上只在图里有数的档（2 M 50 圈容量正文无数值）；锚点：3 M ∼950 mAh g−1"
+    }
+  ],
+  "gaps": [
+    "所有电池测试未报告电解液用量/E/S、锂片厚度、测试温度",
+    "1 C 定义原文写 1.672 mA g−1，疑为 1672 mA g−1 笔误，照录",
+    "S51-T2 中 1 M、2 M 的首圈容量与 50 圈容量正文无数值，只在 Fig. 2b（已登记读图）；库仑效率无数值",
+    "S51-T2 中 2 M 相对 1 M 的过电位只在图 2d–f 插图（电压曲线类，不读）",
+    "S51-T3（0.1 C 100 圈，保持率 92%）只测 3 M，无同测试对比",
+    "未测 Li⁺ 溶剂化与多硫化物溶剂化；多硫化物溶解度只有目测颜色与 UV-vis 定性，1 M 与 2 M 未区分",
+    "常规醚电解液（1 M LiTFSI in DOL:DME with 1% LiNO3）只用于循环后锂片空气暴露照片，DOL:DME 比例与 1% 的基准未写，无电池表现",
+    "作者结论 M0123“首圈容量随盐浓度下降”只在 2 M → 3 M 段成立，与 1 M 容量最低的描述不一致",
+    "OCV 保持率差异按 5% 阈值都属差异小；按 OCV 下降值（反算）则随浓度减小"
+  ],
+  "source_review": {
+    "main": true,
+    "si": true,
+    "notes": "通读正文与 SI（SI 只有图注与 Table S1 VFT 参数、Table S2 OCV 值）；参考文献略读。未读任何既有提取结果。所有电池均不含 LiNO3 与添加剂。"
+  }
+}

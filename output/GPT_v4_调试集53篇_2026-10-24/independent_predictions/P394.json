@@ -1,0 +1,639 @@
+{
+  "paper_id": "P394",
+  "doi": "10.1002/batt.202300433",
+  "formulations": [
+    {
+      "id": "base",
+      "name": "base",
+      "components": [
+        {
+          "name": "LiTFSI",
+          "role": "盐",
+          "amount": "1",
+          "unit": "M"
+        },
+        {
+          "name": "DOL",
+          "role": "溶剂化溶剂",
+          "amount": "1",
+          "unit": "体积份"
+        },
+        {
+          "name": "TEGDME",
+          "role": "溶剂化溶剂",
+          "amount": "1",
+          "unit": "体积份"
+        }
+      ],
+      "raw_formula": "1 M LiTFSI in DOL/TEGDME 1:1 v/v",
+      "evidence_ids": [
+        "M0164"
+      ]
+    },
+    {
+      "id": "hybrid",
+      "name": "hybrid",
+      "components": [
+        {
+          "name": "[S222][TFSI]",
+          "role": "添加剂（离子液体）",
+          "amount": "1",
+          "unit": "体积份"
+        },
+        {
+          "name": "base",
+          "role": "基液",
+          "amount": "3",
+          "unit": "体积份"
+        }
+      ],
+      "raw_formula": "[S222][TFSI]:base=1:3 v/v；主盐随加入IL稀释，原文未给最终浓度",
+      "evidence_ids": [
+        "M0165"
+      ]
+    }
+  ],
+  "control_id": "base",
+  "control_type": "不含LiNO3的自配对照：DOL/TEGDME+LiTFSI",
+  "gradients": [
+    {
+      "name": "加入离子液体",
+      "order": [
+        "base",
+        "hybrid"
+      ],
+      "values": [
+        "0",
+        "IL:base=1:3 v/v"
+      ],
+      "solvation_axis": "非Li+溶剂化强弱梯度；作用主要为LiPS结合/界面",
+      "evidence_ids": [
+        "M0164",
+        "M0165"
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "name": "离子电导率",
+      "values": {
+        "base": "0.7至1 mS cm−1",
+        "hybrid": "1.1至2.45 mS cm−1"
+      },
+      "direction": "hybrid较高，随10至70 °C增加",
+      "method": "EIS",
+      "system": "浸电解液Celgard2320夹于钢电极",
+      "evidence_ids": [
+        "M0038",
+        "M0039",
+        "M0040"
+      ]
+    },
+    {
+      "name": "多硫化物相互作用",
+      "values": {
+        "hybrid": "短链Li2S/Li2S2比长链结合更强；Li2S6/Li2S8有局部结合回升"
+      },
+      "direction": "不收不同方法的DFT能量数值",
+      "method": "DFT B3LYP",
+      "system": "孤立IL分子与LiPS复合物，不是实测溶解度",
+      "evidence_ids": [
+        "M0113",
+        "M0115",
+        "M0119"
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "id": "T1",
+      "name": "储存自放电",
+      "cell": "S/MWCNT||Li CR2032",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "室温",
+        "LiNO3": "未添加",
+        "one_C": "未报告"
+      },
+      "formulations": [
+        "base",
+        "hybrid"
+      ],
+      "evidence_ids": [
+        "M0041",
+        "M0042",
+        "M0043",
+        "M0162"
+      ],
+      "results": [
+        {
+          "id": "T1R1",
+          "metric": "OCV",
+          "A": "base",
+          "B": null,
+          "value_A": "2.54→2.43",
+          "value_B": null,
+          "unit": "V",
+          "point": "18天储存",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0042"
+          ],
+          "reason": ""
+        },
+        {
+          "id": "T1R2",
+          "metric": "OCV",
+          "A": "hybrid",
+          "B": null,
+          "value_A": "2.58",
+          "value_B": null,
+          "unit": "V",
+          "point": "第7天起维持",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0043"
+          ],
+          "reason": ""
+        },
+        {
+          "id": "T1R3",
+          "metric": "自放电",
+          "A": "hybrid",
+          "B": "base",
+          "value_A": "较低",
+          "value_B": "较高",
+          "unit": null,
+          "point": "储存",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0043",
+            "M0044"
+          ],
+          "reason": ""
+        },
+        {
+          "id": "T1R4",
+          "metric": "bulk电阻",
+          "A": "hybrid",
+          "B": null,
+          "value_A": "~4.2",
+          "value_B": null,
+          "unit": "Ω",
+          "point": "第12天后",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0053"
+          ],
+          "reason": "原文近似符号编码异常"
+        }
+      ]
+    },
+    {
+      "id": "T2",
+      "name": "CV",
+      "cell": "S/MWCNT||Li CR2032",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.1 mV s−1",
+        "formation": "未报告",
+        "temperature": "室温",
+        "LiNO3": "未添加",
+        "one_C": "未报告",
+        "voltage": "结果段1.5–3.0 V，方法1.0–3.0 V"
+      },
+      "formulations": [
+        "base",
+        "hybrid"
+      ],
+      "evidence_ids": [
+        "M0055",
+        "M0059",
+        "M0174"
+      ],
+      "results": [
+        {
+          "id": "T2R1",
+          "metric": "氧化还原峰差ΔEp",
+          "A": "hybrid",
+          "B": "base",
+          "value_A": "0.08",
+          "value_B": "0.24",
+          "unit": "V",
+          "point": "前两圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0061"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "T3",
+      "name": "首圈恒流",
+      "cell": "S/MWCNT||Li CR2032",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.1 C",
+        "formation": "未报告",
+        "temperature": "室温",
+        "LiNO3": "未添加",
+        "one_C": "未报告",
+        "voltage": "1.5–3.0 V"
+      },
+      "formulations": [
+        "base",
+        "hybrid"
+      ],
+      "evidence_ids": [
+        "M0062",
+        "M0173"
+      ],
+      "results": [
+        {
+          "id": "T3R1",
+          "metric": "首圈比容量",
+          "A": "hybrid",
+          "B": null,
+          "value_A": "1200",
+          "value_B": null,
+          "unit": "mAh g−1",
+          "point": "首圈（未明确充/放）",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0063"
+          ],
+          "reason": ""
+        },
+        {
+          "id": "T3R2",
+          "metric": "充放电极化",
+          "A": "hybrid",
+          "B": "base",
+          "value_A": "较小",
+          "value_B": "较大",
+          "unit": null,
+          "point": "首圈",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0064",
+            "M0070"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "T4",
+      "name": "Li界面储存阻抗",
+      "cell": "Li||Li",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "室温",
+        "LiNO3": "未添加",
+        "one_C": "未报告"
+      },
+      "formulations": [
+        "base",
+        "hybrid"
+      ],
+      "evidence_ids": [
+        "M0076",
+        "M0077",
+        "M0079"
+      ],
+      "results": [
+        {
+          "id": "T4R1",
+          "metric": "界面电阻稳定性",
+          "A": "hybrid",
+          "B": "base",
+          "value_A": "第3天后较低且近乎恒定",
+          "value_B": "持续变化",
+          "unit": null,
+          "point": "储存",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0079"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "T5",
+      "name": "Li沉积剥离",
+      "cell": "Li||Li",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.1 mA cm−2，充放各60 min",
+        "formation": "未报告",
+        "temperature": "室温",
+        "LiNO3": "未添加",
+        "one_C": "未报告"
+      },
+      "formulations": [
+        "base",
+        "hybrid"
+      ],
+      "evidence_ids": [
+        "M0081",
+        "M0082"
+      ],
+      "results": [
+        {
+          "id": "T5R1",
+          "metric": "过电位",
+          "A": "hybrid",
+          "B": "base",
+          "value_A": "~0.006",
+          "value_B": "~0.013",
+          "unit": "V",
+          "point": "恒流剥离沉积",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0083"
+          ],
+          "reason": "原文近似符号编码异常"
+        },
+        {
+          "id": "T5R2",
+          "metric": "稳定持续时间",
+          "A": "hybrid",
+          "B": null,
+          "value_A": "200",
+          "value_B": null,
+          "unit": "h",
+          "point": "仍恒定过电位",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0084"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "T6",
+      "name": "首圈原位EIS",
+      "cell": "S/MWCNT||Li CR2032",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.1 C；EIS 200 kHz–100 mHz",
+        "formation": "未报告",
+        "temperature": "室温",
+        "LiNO3": "未添加",
+        "one_C": "未报告"
+      },
+      "formulations": [
+        "base",
+        "hybrid"
+      ],
+      "evidence_ids": [
+        "M0086",
+        "M0091",
+        "M0172"
+      ],
+      "results": [
+        {
+          "id": "T6R1",
+          "metric": "电荷转移电阻",
+          "A": "hybrid",
+          "B": "base",
+          "value_A": "首圈充放近恒定",
+          "value_B": "放电显著增加",
+          "unit": null,
+          "point": "首圈不同电位",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0092",
+            "M0093"
+          ],
+          "reason": ""
+        }
+      ]
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "M1",
+      "summary": "IL稳定CEI降低自放电",
+      "A": "hybrid",
+      "B": "base",
+      "property": "界面稳定",
+      "categories": [
+        "正极反应",
+        "多硫化物穿梭"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0043"
+      ],
+      "test_ids": [
+        "T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "M2",
+      "summary": "IL抑制多硫化物溶解和自放电",
+      "A": "hybrid",
+      "B": "base",
+      "property": "LiPS溶解",
+      "categories": [
+        "多硫化物穿梭"
+      ],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": [
+        "M0044"
+      ],
+      "test_ids": [
+        "T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "M3",
+      "summary": "TFSI与Li2S结合延长Li-S键、降低活化能，因此减小充电过电位",
+      "A": "hybrid",
+      "B": "base",
+      "property": "LiPS结合",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": [
+        "M0071",
+        "M0072",
+        "M0073"
+      ],
+      "test_ids": [
+        "T3"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "M4",
+      "summary": "稳定SEI使Li沉积剥离200小时保持恒定过电位",
+      "A": "hybrid",
+      "B": "base",
+      "property": "SEI稳定",
+      "categories": [
+        "负极锂"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0084"
+      ],
+      "test_ids": [
+        "T5"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "M5",
+      "summary": "对照Rct增加可能来自不溶多硫化物在Li表面沉积",
+      "A": "hybrid",
+      "B": "base",
+      "property": "LiPS溶解/沉积",
+      "categories": [
+        "负极锂",
+        "多硫化物穿梭"
+      ],
+      "source_type": "本文推测",
+      "evidence_ids": [
+        "M0094",
+        "M0095"
+      ],
+      "test_ids": [
+        "T6"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "M6",
+      "summary": "Li2S相关FTIR信号减弱提示稳定SEI和穿梭受控",
+      "A": "hybrid",
+      "B": "base",
+      "property": "SEI稳定",
+      "categories": [
+        "负极锂",
+        "多硫化物穿梭"
+      ],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": [
+        "M0103",
+        "M0104"
+      ],
+      "test_ids": [
+        "T6"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "M7",
+      "summary": "IL溶解正极Li2S/Li2S2钝化沉积，可能提高活性硫利用率并减少衰减",
+      "A": "hybrid",
+      "B": "base",
+      "property": "短链LiPS结合",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文推测",
+      "evidence_ids": [
+        "M0156"
+      ],
+      "test_ids": [
+        "T3"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "M8",
+      "summary": "较短高电位平台又被作者推测与较强穿梭有关，和全文抑穿梭说法存在张力",
+      "A": "hybrid",
+      "B": "base",
+      "property": "穿梭",
+      "categories": [
+        "多硫化物穿梭"
+      ],
+      "source_type": "本文推测",
+      "evidence_ids": [
+        "M0070"
+      ],
+      "test_ids": [
+        "T3"
+      ],
+      "side": "其他"
+    }
+  ],
+  "design_claims": [
+    {
+      "summary": "IL添加剂同时改善界面并与LiPS作用；本文只测试Li-S首圈，寿命提升未实际长循环验证",
+      "evidence_ids": [
+        "M0151",
+        "M0152",
+        "M0153",
+        "M0156",
+        "M0086"
+      ]
+    }
+  ],
+  "figure_requests": [],
+  "gaps": [
+    "未报告硫载量/E/S/锂厚/1C定义/化成",
+    "无Li-S长循环保持率和Li||Cu CE；Figure6电压曲线不属于允许读图两类，容量对照仅图未读",
+    "未测Li+溶剂化、迁移数、黏度或LiPS定量溶解度；不能将DFT结合强当实测溶解度",
+    "CV电压范围方法与结果冲突；原文M0070强穿梭说法与主要结论不一致"
+  ],
+  "source_review": {
+    "main": true,
+    "si": true,
+    "notes": "完整通读正文及可用SI索引；未读旧提取或参考答案。"
+  }
+}

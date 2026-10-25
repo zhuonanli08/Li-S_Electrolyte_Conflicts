@@ -1,0 +1,1053 @@
+{
+  "paper_id": "P527",
+  "doi": "10.1016/j.cej.2025.162922",
+  "formulations": [
+    {
+      "id": "DOL/DME",
+      "name": "DOL/DME",
+      "components": [
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": "1:1", "unit": "v/v（DOL:DME）"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": "1:1", "unit": "v/v（DOL:DME）"},
+        {"name": "LiTFSI", "role": "盐", "amount": 1, "unit": "M"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 2, "unit": "wt%"}
+      ],
+      "raw_formula": "The control electrolyte was prepared by dissolving LiTFSI (1 M) in a 1:1 v/v mixture of DOL and DME containing LiNO3 (2 wt%) and denoted as DOL/DME.（SI：LiTFSI 2.8709 g, 10 mmol + LiNO3 0.2622 g, 2 wt% in DOL 5 mL + DME 5 mL）",
+      "evidence_ids": ["M0063", "S0018"]
+    },
+    {
+      "id": "DOL/HMPA-4",
+      "name": "DOL/HMPA-4",
+      "components": [
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": "余量", "unit": "vol%（DOL 与 HMPA 合计 10 mL）"},
+        {"name": "HMPA", "role": "溶剂化溶剂", "amount": 4, "unit": "vol%"},
+        {"name": "LiTFSI", "role": "盐", "amount": 1, "unit": "M"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 2, "unit": "wt%"}
+      ],
+      "raw_formula": "LiTFSI (1 M) in mixtures of DOL and HMPA that contained a LiNO3 additive (2 wt%) and different HMPA loadings (4 vol% of the total volume)，记为 DOL/HMPA-4",
+      "evidence_ids": ["M0061", "M0062", "S0019", "S0020"]
+    },
+    {
+      "id": "DOL/HMPA-6",
+      "name": "DOL/HMPA-6（SI 表写作 1 M LiTFSI in HMPA/DOL (6:94, v/v), 2 wt% LiNO3）",
+      "components": [
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": 94, "unit": "vol%（HMPA/DOL 6:94 v/v）"},
+        {"name": "HMPA", "role": "溶剂化溶剂", "amount": 6, "unit": "vol%"},
+        {"name": "LiTFSI", "role": "盐", "amount": 1, "unit": "M"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 2, "unit": "wt%"}
+      ],
+      "raw_formula": "1 M LiTFSI in HMPA/DOL (6:94, v/v), 2 wt% LiNO3；正文：LiTFSI (1 M) in mixtures of DOL and HMPA with LiNO3 (2 wt%), HMPA 6 vol% of the total volume，记为 DOL/HMPA-6",
+      "evidence_ids": ["M0061", "M0062", "S0019", "S0020", "S0120"]
+    },
+    {
+      "id": "DOL/HMPA-8",
+      "name": "DOL/HMPA-8",
+      "components": [
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": "余量", "unit": "vol%（DOL 与 HMPA 合计 10 mL）"},
+        {"name": "HMPA", "role": "溶剂化溶剂", "amount": 8, "unit": "vol%"},
+        {"name": "LiTFSI", "role": "盐", "amount": 1, "unit": "M"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 2, "unit": "wt%"}
+      ],
+      "raw_formula": "LiTFSI (1 M) in mixtures of DOL and HMPA that contained a LiNO3 additive (2 wt%) and different HMPA loadings (8 vol% of the total volume)，记为 DOL/HMPA-8",
+      "evidence_ids": ["M0061", "M0062", "S0019", "S0020"]
+    },
+    {
+      "id": "DOL/HMPA-10",
+      "name": "DOL/HMPA-10",
+      "components": [
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": "余量", "unit": "vol%（DOL 与 HMPA 合计 10 mL）"},
+        {"name": "HMPA", "role": "溶剂化溶剂", "amount": 10, "unit": "vol%"},
+        {"name": "LiTFSI", "role": "盐", "amount": 1, "unit": "M"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 2, "unit": "wt%"}
+      ],
+      "raw_formula": "LiTFSI (1 M) in mixtures of DOL and HMPA that contained a LiNO3 additive (2 wt%) and different HMPA loadings (10 vol% of the total volume)，记为 DOL/HMPA-10",
+      "evidence_ids": ["M0061", "M0062", "S0019", "S0020"]
+    }
+  ],
+  "control_id": "DOL/DME",
+  "control_type": "常规醚基准（DOL/DME + LiTFSI + LiNO₃）",
+  "gradients": [
+    {
+      "name": "HMPA 体积分数（用量梯度；DOL 为余量）",
+      "order": ["DOL/HMPA-10", "DOL/HMPA-8", "DOL/HMPA-6", "DOL/HMPA-4"],
+      "values": ["10 vol%", "8 vol%", "6 vol%", "4 vol%"],
+      "solvation_axis": "按 Li⁺ 溶剂化由强到弱（推定）：作者称 HMPA 对 Li⁺ 亲和力高、居于溶剂化内层，HMPA 越多推定 Li⁺ 溶剂化越强；作者未沿梯度测溶剂化；对照 DOL/DME 不在本梯度内",
+      "evidence_ids": ["M0061", "M0062", "S0020"]
+    }
+  ],
+  "properties": [
+    {
+      "name": "离子电导率",
+      "values": {
+        "DOL/HMPA-10": "低于 DOL/HMPA-6（数值仅图 2c）",
+        "DOL/HMPA-8": "低于 DOL/HMPA-6（数值仅图 2c）",
+        "DOL/HMPA-6": "4.51 mS cm−1（梯度内最高）",
+        "DOL/HMPA-4": "低于 DOL/HMPA-6（数值仅图 2c）",
+        "DOL/DME": "低于 DOL/HMPA-6（作者定性）"
+      },
+      "direction": "沿 HMPA 用量先升后降，6 vol% 最高；DOL/HMPA-6 高于 DOL/DME（作者定性）",
+      "method": "不锈钢‖不锈钢对称电池 EIS",
+      "system": "实际电解液（含 2 wt% LiNO3），PI 垫圈隔开，电解液 20 μL",
+      "evidence_ids": ["M0067", "M0071", "M0098", "S0034", "S0035"]
+    },
+    {
+      "name": "Li⁺ 迁移数",
+      "values": {
+        "DOL/HMPA-10": "低于 DOL/HMPA-6（数值仅图 2d）",
+        "DOL/HMPA-8": "低于 DOL/HMPA-6（数值仅图 2d）",
+        "DOL/HMPA-6": "0.88（梯度内最高）",
+        "DOL/HMPA-4": "低于 DOL/HMPA-6（数值仅图 2d）",
+        "DOL/DME": "低于 DOL/HMPA-6（作者定性）"
+      },
+      "direction": "沿 HMPA 用量先升后降，6 vol% 最高；DOL/HMPA-6 高于 DOL/DME（作者定性）",
+      "method": "Li‖Li 对称电池计时电流法（10 mV）",
+      "system": "实际电解液",
+      "evidence_ids": ["M0067", "M0071", "M0098", "S0047", "S0049"]
+    },
+    {
+      "name": "Li⁺ 传输活化能",
+      "values": {"DOL/HMPA-6": "14.1 kJ mol−1", "DOL/DME": "19.3 kJ mol−1"},
+      "direction": "DOL/HMPA-6 低于 DOL/DME",
+      "method": "离子电导率 Arrhenius 拟合",
+      "system": "实际电解液",
+      "evidence_ids": ["M0068", "S0039"]
+    },
+    {
+      "name": "Li⁺ 溶剂化（MD 中 Li⁺–O 平均距离）",
+      "values": {"DOL/HMPA-6": "1.87 Å（Li⁺–O_HMPA）", "DOL/DME": "1.97 Å（Li⁺–O_DME）"},
+      "direction": "DOL/HMPA-6 中 Li⁺–HMPA 距离更短、密度更高，作者称 Li⁺–HMPA 溶剂化结构更稳固",
+      "method": "MD 模拟（径向相对密度）",
+      "system": "按实验比例建模的 Li⁺ 与溶剂体系",
+      "evidence_ids": ["M0075", "M0077", "S0066"]
+    },
+    {
+      "name": "Li⁺ 溶剂化（自由溶剂分子）",
+      "values": {"DOL/HMPA-6": "参与溶剂化的 HMPA 比例更高，自由 HMPA 较少", "DOL/DME": "自由 DME 较多"},
+      "direction": "DOL/HMPA-6 自由强配位溶剂少于 DOL/DME",
+      "method": "MD 模拟（参与溶剂化的分子比例、配位数随距离变化）",
+      "system": "按实验比例建模的 Li⁺ 与溶剂体系",
+      "evidence_ids": ["M0079", "M0080", "M0083"]
+    },
+    {
+      "name": "Li⁺ 溶剂化结构（CIP + AGG 比例）",
+      "values": {"DOL/HMPA-6": "83.7%", "DOL/DME": "78.5%"},
+      "direction": "DOL/HMPA-6 中 CIP + AGG 比例高于 DOL/DME",
+      "method": "Raman（TFSI⁻ 峰分峰拟合）",
+      "system": "实际电解液",
+      "evidence_ids": ["M0089"]
+    },
+    {
+      "name": "Li⁺–HMPA 配位（Raman）",
+      "values": {"DOL/HMPA-6": "HMPA N−P−N 峰由 624.1 cm−1（无盐 HMPA 6 vol%/DOL）移至 644.3 cm−1（加 1 M LiTFSI）"},
+      "direction": "加盐后峰位移，作者归因于 Li⁺ 与 HMPA 配位",
+      "method": "Raman",
+      "system": "HMPA (6 vol%)/DOL 混合溶剂对比 DOL/HMPA-6 电解液",
+      "evidence_ids": ["M0085", "M0086"]
+    },
+    {
+      "name": "多硫化物溶解度",
+      "values": {"DOL/HMPA-6": "较低（可视电池放电中仅轻微变色，且只在放电初期）", "DOL/DME": "较高（由无色变为黄绿色）"},
+      "direction": "DOL/HMPA-6 低于 DOL/DME（定性）",
+      "method": "可视电池放电中观察电解液颜色（定性；未测溶解度数值）",
+      "system": "可视电池（S@RGO 正极，电解液 10 mL），与扣式电池电解液用量不同",
+      "evidence_ids": ["M0175", "M0176", "S0058"]
+    },
+    {
+      "name": "多硫化物溶剂化",
+      "values": {"DOL/HMPA-6": "未报告", "DOL/DME": "未报告"},
+      "direction": "未报告",
+      "method": "未报告",
+      "system": "未报告",
+      "evidence_ids": []
+    },
+    {
+      "name": "LiTFSI 在纯溶剂中的溶解度",
+      "values": {"DOL/HMPA-6": "其中 HMPA 纯溶剂：ca. 0.6 M", "DOL/DME": "其中 DME 纯溶剂：ca. 5.8 M"},
+      "direction": "HMPA 中约为 DME 中的十分之一",
+      "method": "未写明",
+      "system": "纯 HMPA、纯 DME（不是电池电解液）",
+      "evidence_ids": ["M0043"]
+    },
+    {
+      "name": "黏度",
+      "values": {"DOL/HMPA-10": "高于 DOL/HMPA-6（作者说法）", "DOL/HMPA-8": "高于 DOL/HMPA-6（作者说法）", "DOL/HMPA-6": "未报告数值"},
+      "direction": "作者称过量 HMPA 使黏度升高（未给测量数据）",
+      "method": "未报告",
+      "system": "未报告",
+      "evidence_ids": ["M0071"]
+    },
+    {
+      "name": "Li⁺ 扩散系数",
+      "values": {
+        "DOL/HMPA-6": "峰 C 2.66 × 10−8 cm2 s−1；峰 D 8.36 × 10−8 cm2 s−1",
+        "DOL/DME": "峰 C 9.60 × 10−9 cm2 s−1；峰 D 3.78 × 10−8 cm2 s−1"
+      },
+      "direction": "DOL/HMPA-6 高于 DOL/DME（两个峰）",
+      "method": "变扫速 CV（0.1–0.5 mV s−1），Randles−Sevcik 方程",
+      "system": "Li‖S 扣式电池（S@RGO 正极）",
+      "evidence_ids": ["M0201", "M0203", "S0057"]
+    }
+  ],
+  "tests": [
+    {
+      "id": "P527-T1",
+      "name": "Li‖S 扣式 0.1 C 恒流充放电",
+      "cell": "Li‖S 扣式（S@RGO 正极，Li 箔，PP 隔膜）",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.1 C",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 2 wt%",
+        "one_C": "1675 mA g−1",
+        "electrolyte_volume": "40 μL"
+      },
+      "formulations": ["DOL/HMPA-6", "DOL/DME"],
+      "evidence_ids": ["M0157", "M0192", "M0205", "S0052", "M0063"],
+      "results": [
+        {
+          "id": "P527-T1-R1",
+          "metric": "比容量",
+          "A": "DOL/HMPA-6", "B": "DOL/DME",
+          "value_A": 1374.9, "value_B": 1043.9,
+          "unit": "mAh g−1",
+          "point": "0.1 C 充放电曲线（圈数原文未写）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0207"],
+          "reason": "正文直接给出两数"
+        },
+        {
+          "id": "P527-T1-R2",
+          "metric": "过电位",
+          "A": "DOL/HMPA-6", "B": "DOL/DME",
+          "value_A": 21, "value_B": 34,
+          "unit": "mV",
+          "point": "放电 Li2S 成核过电位",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0211"],
+          "reason": "过电位低为好"
+        },
+        {
+          "id": "P527-T1-R3",
+          "metric": "过电位",
+          "A": "DOL/HMPA-6", "B": "DOL/DME",
+          "value_A": 60, "value_B": 91,
+          "unit": "mV",
+          "point": "充电 Li2S 分解过电位",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0212"],
+          "reason": "过电位低为好"
+        },
+        {
+          "id": "P527-T1-R4",
+          "metric": "低/高放电平台容量比（2.12 V 与 2.29 V）",
+          "A": "DOL/HMPA-6", "B": "DOL/DME",
+          "value_A": 2.21, "value_B": 2.06,
+          "unit": "无量纲",
+          "point": "0.1 C 放电曲线",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0208"],
+          "reason": "作者称越接近理论值 3 越好，DOL/HMPA-6 更接近"
+        }
+      ]
+    },
+    {
+      "id": "P527-T2",
+      "name": "Li‖S 扣式 倍率（0.1→2 C，再回 0.1 C）",
+      "cell": "Li‖S 扣式（S@RGO 正极，Li 箔，PP 隔膜）",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.1 C 至 2 C 逐级，再回 0.1 C",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 2 wt%",
+        "one_C": "1675 mA g−1",
+        "electrolyte_volume": "40 μL"
+      },
+      "formulations": ["DOL/HMPA-6", "DOL/DME"],
+      "evidence_ids": ["M0194", "M0214", "M0205", "S0052", "M0063"],
+      "results": [
+        {
+          "id": "P527-T2-R1",
+          "metric": "倍率容量",
+          "A": "DOL/HMPA-6", "B": "DOL/DME",
+          "value_A": 606.4, "value_B": 181.5,
+          "unit": "mAh g−1",
+          "point": "2 C",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0216"],
+          "reason": "正文直接给出两数（作者称 3.34 倍）"
+        },
+        {
+          "id": "P527-T2-R2",
+          "metric": "倍率容量",
+          "A": "DOL/HMPA-6", "B": "DOL/DME",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g−1",
+          "point": "0.1–2 C 各倍率",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0215"],
+          "reason": "作者称每个倍率下 DOL/HMPA-6 容量更高；除 2 C 外两侧数值未在文字中成对给出"
+        }
+      ]
+    },
+    {
+      "id": "P527-T3",
+      "name": "Li‖S 扣式 0.2 C 长循环（0.1 C 活化 3 圈）",
+      "cell": "Li‖S 扣式（S@RGO 正极，Li 箔，PP 隔膜）",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.2 C",
+        "formation": "0.1 C 3 圈",
+        "temperature": "未报告",
+        "LiNO3": "含 2 wt%",
+        "one_C": "1675 mA g−1",
+        "electrolyte_volume": "40 μL"
+      },
+      "formulations": ["DOL/HMPA-6", "DOL/DME"],
+      "evidence_ids": ["M0195", "M0218", "M0205", "S0052", "M0063"],
+      "results": [
+        {
+          "id": "P527-T3-R1",
+          "metric": "首圈容量",
+          "A": "DOL/HMPA-6", "B": "DOL/DME",
+          "value_A": 1101.0, "value_B": 882.4,
+          "unit": "mAh g−1",
+          "point": "0.1 C 活化 3 圈后 0.2 C 初始",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0219"],
+          "reason": "正文直接给出两数"
+        },
+        {
+          "id": "P527-T3-R2",
+          "metric": "指定圈容量",
+          "A": "DOL/HMPA-6", "B": "DOL/DME",
+          "value_A": 619.6, "value_B": 295.6,
+          "unit": "mAh g−1",
+          "point": "0.2 C 第 300 圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": ["M0220", "M0038", "M0227"],
+          "reason": "作者说法前后不一：结果段 M0220 写 DOL/DME 295.6，摘要后引言 M0038 与结论 M0227 写 295.2；按固定规则不判，登记读图（两值方向相同，差 0.4 mAh g−1）"
+        },
+        {
+          "id": "P527-T3-R3",
+          "metric": "保持率",
+          "A": "DOL/HMPA-6", "B": "DOL/DME",
+          "value_A": null, "value_B": null,
+          "unit": "%",
+          "point": "0.2 C 第 300 圈相对初始容量",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0220"],
+          "reason": "作者称 DOL/HMPA-6 保留的初始容量显著更多；推算 619.6/1101.0≈56.3% vs 295.6/882.4≈33.5%（B 用 295.2 亦为 33.5%），方向不受前后不一影响"
+        }
+      ]
+    },
+    {
+      "id": "P527-T4",
+      "name": "Li‖S 扣式 漏电流（恒电位 2.35 V）",
+      "cell": "Li‖S 扣式（S@RGO 正极，Li 箔，PP 隔膜）",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "先在 1.7–2.7 V 充放电 1 圈（倍率未报告），放电至 1.7 V 后在 2.35 V 恒电位充电 20 h",
+        "formation": "1.7–2.7 V 充放电 1 圈",
+        "temperature": "未报告",
+        "LiNO3": "含 2 wt%",
+        "one_C": "1675 mA g−1",
+        "electrolyte_volume": "40 μL"
+      },
+      "formulations": ["DOL/HMPA-6", "DOL/DME"],
+      "evidence_ids": ["S0055", "S0056", "M0184", "S0052", "M0063", "M0205"],
+      "results": [
+        {
+          "id": "P527-T4-R1",
+          "metric": "穿梭电流",
+          "A": "DOL/HMPA-6", "B": "DOL/DME",
+          "value_A": 0.57, "value_B": 1.4,
+          "unit": "mA g−1",
+          "point": "2.35 V 恒电位 20 h 后稳定电流",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0184"],
+          "reason": "漏电流低为好；其他电位（2.2、2.4、2.5、2.6 V）数值只在图 S9，不读"
+        }
+      ]
+    },
+    {
+      "id": "P527-T5",
+      "name": "Li‖S 扣式 EIS（循环前 / 0.1 C 循环 10 圈后）",
+      "cell": "Li‖S 扣式（S@RGO 正极，Li 箔，PP 隔膜）",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "循环前；0.1 C 循环 10 圈后",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 2 wt%",
+        "one_C": "1675 mA g−1",
+        "electrolyte_volume": "40 μL"
+      },
+      "formulations": ["DOL/HMPA-6", "DOL/DME"],
+      "evidence_ids": ["M0164", "M0166", "M0180", "S0052", "M0063", "M0205"],
+      "results": [
+        {
+          "id": "P527-T5-R1",
+          "metric": "阻抗",
+          "A": "DOL/HMPA-6", "B": "DOL/DME",
+          "value_A": 29.0, "value_B": 55.5,
+          "unit": "Ω",
+          "point": "循环前 Rct",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0164"],
+          "reason": "阻抗低为好"
+        },
+        {
+          "id": "P527-T5-R2",
+          "metric": "阻抗",
+          "A": "DOL/HMPA-6", "B": "DOL/DME",
+          "value_A": 15.2, "value_B": 34.7,
+          "unit": "Ω",
+          "point": "0.1 C 10 圈后第一个半圆（电解液/电极表面界面）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0170", "M0168"],
+          "reason": "按 M0168 两个半圆的顺序对应 M0170 两个数"
+        },
+        {
+          "id": "P527-T5-R3",
+          "metric": "阻抗",
+          "A": "DOL/HMPA-6", "B": "DOL/DME",
+          "value_A": 16.5, "value_B": 22.2,
+          "unit": "Ω",
+          "point": "0.1 C 10 圈后第二个半圆（SEI/锂负极界面）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0170", "M0168"],
+          "reason": "按 M0168 两个半圆的顺序对应 M0170 两个数"
+        }
+      ]
+    },
+    {
+      "id": "P527-T6",
+      "name": "Li‖S 可视电池放电",
+      "cell": "Li‖S 可视电池（S@RGO 正极，Li 箔，PP 隔膜）",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 2 wt%",
+        "one_C": "1675 mA g−1",
+        "electrolyte_volume": "10 mL"
+      },
+      "formulations": ["DOL/HMPA-6", "DOL/DME"],
+      "evidence_ids": ["S0058", "M0173", "M0063", "M0205"],
+      "results": [
+        {
+          "id": "P527-T6-R1",
+          "metric": "比容量",
+          "A": "DOL/HMPA-6", "B": "DOL/DME",
+          "value_A": 966.6, "value_B": 420.0,
+          "unit": "mAh g−1",
+          "point": "可视电池放电（圈数原文未写）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0174"],
+          "reason": "正文直接给出两数"
+        }
+      ]
+    },
+    {
+      "id": "P527-T7",
+      "name": "Li‖S 扣式 CV（0.1 mV s−1）",
+      "cell": "Li‖S 扣式（S@RGO 正极，Li 箔，PP 隔膜）",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "CV 扫速 0.1 mV s−1",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 2 wt%",
+        "one_C": "不适用",
+        "electrolyte_volume": "40 μL"
+      },
+      "formulations": ["DOL/HMPA-6", "DOL/DME"],
+      "evidence_ids": ["M0191", "S0052", "M0063"],
+      "results": [
+        {
+          "id": "P527-T7-R1",
+          "metric": "氧化还原峰强度",
+          "A": "DOL/HMPA-6", "B": "DOL/DME",
+          "value_A": null, "value_B": null,
+          "unit": "未报告",
+          "point": "CV 氧化还原峰",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0199", "M0200"],
+          "reason": "作者称 DOL/HMPA-6 峰更强、意味着硫利用更好"
+        }
+      ]
+    },
+    {
+      "id": "P527-T8",
+      "name": "Li‖Li 对称电池 倍率（0.5/1/2/5 mA cm−2，1 mAh cm−2）",
+      "cell": "Li‖Li 对称电池（Li 箔，PP 隔膜）",
+      "conditions": {
+        "sulfur_loading": "不适用",
+        "ES": "不适用",
+        "ES_unit": "不适用",
+        "Li_thickness": "未报告",
+        "rate": "0.5、1、2、5 mA cm−2，1 mAh cm−2",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 2 wt%",
+        "one_C": "不适用",
+        "electrolyte_volume": "40 μL"
+      },
+      "formulations": ["DOL/HMPA-6", "DOL/DME"],
+      "evidence_ids": ["M0095", "S0040", "S0042", "M0063"],
+      "results": [
+        {
+          "id": "P527-T8-R1",
+          "metric": "过电位",
+          "A": "DOL/HMPA-6", "B": "DOL/DME",
+          "value_A": null, "value_B": null,
+          "unit": "V",
+          "point": "各电流密度下极化电压",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0096"],
+          "reason": "作者称每个电流密度下 DOL/HMPA-6 极化电压更小"
+        }
+      ]
+    },
+    {
+      "id": "P527-T9",
+      "name": "Li‖Li 对称电池 1 mA cm−2、1 mAh cm−2 循环",
+      "cell": "Li‖Li 对称电池（Li 箔，PP 隔膜）",
+      "conditions": {
+        "sulfur_loading": "不适用",
+        "ES": "不适用",
+        "ES_unit": "不适用",
+        "Li_thickness": "未报告",
+        "rate": "1 mA cm−2，1 mAh cm−2",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 2 wt%",
+        "one_C": "不适用",
+        "electrolyte_volume": "40 μL"
+      },
+      "formulations": ["DOL/HMPA-6", "DOL/DME"],
+      "evidence_ids": ["M0099", "S0040", "S0043", "M0063"],
+      "results": [
+        {
+          "id": "P527-T9-R1",
+          "metric": "过电位",
+          "A": "DOL/HMPA-6", "B": "DOL/DME",
+          "value_A": null, "value_B": null,
+          "unit": "V",
+          "point": "循环中极化电压（A：初期约 0.14 V 后降至约 0.05 V 并稳定至 600 h；B：明显波动，最大 0.11 V）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0100", "M0101", "M0103", "M0108"],
+          "reason": "两侧数值取值点不同（A 稳定值、B 最大值），按作者定性记：DOL/HMPA-6 极化降低并稳定"
+        }
+      ]
+    },
+    {
+      "id": "P527-T10",
+      "name": "Li‖Li 对称电池 5 mA cm−2、1 mAh cm−2 循环",
+      "cell": "Li‖Li 对称电池（Li 箔，PP 隔膜）",
+      "conditions": {
+        "sulfur_loading": "不适用",
+        "ES": "不适用",
+        "ES_unit": "不适用",
+        "Li_thickness": "未报告",
+        "rate": "5 mA cm−2，1 mAh cm−2",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 2 wt%",
+        "one_C": "不适用",
+        "electrolyte_volume": "40 μL"
+      },
+      "formulations": ["DOL/HMPA-6", "DOL/DME"],
+      "evidence_ids": ["M0102", "S0040", "S0043", "M0063"],
+      "results": [
+        {
+          "id": "P527-T10-R1",
+          "metric": "过电位",
+          "A": "DOL/HMPA-6", "B": "DOL/DME",
+          "value_A": "~0.06", "value_B": "~0.25",
+          "unit": "V",
+          "point": "循环中极化电压（A 为保持值，B 为观察到的最大值）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0102"],
+          "reason": "作者直接以这两个数对比（约四分之一）；A、B 口径为稳定值对最大值"
+        }
+      ]
+    },
+    {
+      "id": "P527-T11",
+      "name": "Li‖Li 对称电池 Tafel（LSV 0.1 mV s−1）",
+      "cell": "Li‖Li 对称电池（Li 箔，PP 隔膜）",
+      "conditions": {
+        "sulfur_loading": "不适用",
+        "ES": "不适用",
+        "ES_unit": "不适用",
+        "Li_thickness": "未报告",
+        "rate": "LSV 0.1 mV s−1，0.2 V 至 −0.2 V",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 2 wt%",
+        "one_C": "不适用",
+        "electrolyte_volume": "40 μL"
+      },
+      "formulations": ["DOL/HMPA-6", "DOL/DME"],
+      "evidence_ids": ["S0044", "S0040", "M0063"],
+      "results": [
+        {
+          "id": "P527-T11-R1",
+          "metric": "交换电流密度",
+          "A": "DOL/HMPA-6", "B": "DOL/DME",
+          "value_A": 0.22, "value_B": 0.12,
+          "unit": "mA cm−2",
+          "point": "Tafel 拟合",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0097"],
+          "reason": "交换电流密度高为好（作者说法）"
+        }
+      ]
+    },
+    {
+      "id": "P527-T12",
+      "name": "Li‖Li 对称电池 EIS（循环前 / 10 次沉积剥离后）",
+      "cell": "Li‖Li 对称电池（Li 箔，PP 隔膜）",
+      "conditions": {
+        "sulfur_loading": "不适用",
+        "ES": "不适用",
+        "ES_unit": "不适用",
+        "Li_thickness": "未报告",
+        "rate": "循环前；10 次沉积/剥离后（电流密度未报告）",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 2 wt%",
+        "one_C": "不适用",
+        "electrolyte_volume": "40 μL"
+      },
+      "formulations": ["DOL/HMPA-6", "DOL/DME"],
+      "evidence_ids": ["M0149", "S0040", "M0063"],
+      "results": [
+        {
+          "id": "P527-T12-R1",
+          "metric": "阻抗",
+          "A": "DOL/HMPA-6", "B": "DOL/DME",
+          "value_A": 3.9, "value_B": 4.0,
+          "unit": "Ω",
+          "point": "循环前 Rs",
+          "basis": "numeric",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["M0141"],
+          "reason": "|3.9−4.0|÷4.0=2.5% < 5%"
+        },
+        {
+          "id": "P527-T12-R2",
+          "metric": "阻抗",
+          "A": "DOL/HMPA-6", "B": "DOL/DME",
+          "value_A": 93.6, "value_B": 138.0,
+          "unit": "Ω",
+          "point": "循环前 Rct",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0141"],
+          "reason": "阻抗低为好"
+        },
+        {
+          "id": "P527-T12-R3",
+          "metric": "阻抗",
+          "A": "DOL/HMPA-6", "B": "DOL/DME",
+          "value_A": 11.0, "value_B": 17.4,
+          "unit": "Ω",
+          "point": "10 次沉积/剥离后 RE-SEI",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0154"],
+          "reason": "阻抗低为好"
+        },
+        {
+          "id": "P527-T12-R4",
+          "metric": "阻抗",
+          "A": "DOL/HMPA-6", "B": "DOL/DME",
+          "value_A": 16.1, "value_B": 23.9,
+          "unit": "Ω",
+          "point": "10 次沉积/剥离后 RSEI-Li",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0154"],
+          "reason": "阻抗低为好"
+        }
+      ]
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "P527-M1",
+      "summary": "HMPA 形成的 Li⁺ 溶剂化结构使多硫化物溶解度降低、生成富 LiF 的 SEI，分别抑制穿梭和消除锂枝晶",
+      "A": "DOL/HMPA-6", "B": "DOL/DME",
+      "property": "Li⁺ 溶剂化增强（HMPA 居内层）→ 多硫化物溶解度降低；SEI 富 LiF",
+      "categories": ["多硫化物穿梭", "负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0005"],
+      "test_ids": ["P527-T3", "P527-T4", "P527-T9", "P527-T10"],
+      "side": "弱侧"
+    },
+    {
+      "id": "P527-M2",
+      "summary": "LiTFSI 在 HMPA 中溶解度低（约为 DME 中的十分之一），按同离子效应推测 HMPA 基电解液中多硫化物溶解度降低",
+      "A": "DOL/HMPA-6", "B": "DOL/DME",
+      "property": "多硫化物溶解度降低（同离子效应，推测）",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0044"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P527-M3",
+      "summary": "HMPA 对 Li⁺ 亲和力高、居于溶剂化内层，自由 HMPA 减少，预期既抑制其溶解多硫化物的能力，又促进富 LiF SEI 和均匀锂沉积",
+      "A": "DOL/HMPA-6", "B": "DOL/DME",
+      "property": "Li⁺ 溶剂化增强、自由溶剂减少 → 多硫化物溶解能力降低、SEI 富 LiF",
+      "categories": ["多硫化物穿梭", "负极锂"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0050", "M0051"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P527-M4",
+      "summary": "醚类对 Li⁺ 亲和力较 HMPA 低，溶剂难以定域在溶剂化层中，因而促进多硫化物溶解",
+      "A": "DOL/HMPA-6", "B": "DOL/DME",
+      "property": "DOL/DME 中 Li⁺ 溶剂化较弱、自由醚溶剂多 → 多硫化物溶解增多",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0055", "M0056"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P527-M5",
+      "summary": "DOL/HMPA 电解液更优的 Li⁺ 传输性质（σ、tLi⁺）归因于 HMPA 形成的 Li⁺ 溶剂化结构",
+      "A": "DOL/HMPA-6", "B": "DOL/DME",
+      "property": "Li⁺ 溶剂化结构 → 离子电导率、Li⁺ 迁移数升高",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0070"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P527-M6",
+      "summary": "HMPA 用量超过 6 vol% 后过量 HMPA 使黏度升高，σ 和 tLi⁺ 下降，故 6 vol% 为最优",
+      "A": "DOL/HMPA-10", "B": "DOL/HMPA-6",
+      "property": "黏度升高（HMPA 8、10 vol%）→ 离子电导率、Li⁺ 迁移数下降",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0071"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P527-M7",
+      "summary": "HMPA 电解液中溶剂化半径更小，推测 Li⁺ 传输更快、电导率更高",
+      "A": "DOL/HMPA-6", "B": "DOL/DME",
+      "property": "Li⁺ 溶剂化半径减小（MD）→ 离子电导率升高",
+      "categories": [],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0078"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P527-M8",
+      "summary": "DOL/HMPA-6 自由 HMPA 少、CIP 和 AGG 多，预期既抑制多硫化物穿梭又改善锂负极界面",
+      "A": "DOL/HMPA-6", "B": "DOL/DME",
+      "property": "Li⁺ 溶剂化结构：自由溶剂少、CIP + AGG 多",
+      "categories": ["多硫化物穿梭", "负极锂"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0091", "M0092"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P527-M9",
+      "summary": "Li‖Li 电池中更小的极化和更大的交换电流密度归因于 DOL/HMPA-6 更高的 σ 和 tLi⁺",
+      "A": "DOL/HMPA-6", "B": "DOL/DME",
+      "property": "离子电导率、Li⁺ 迁移数升高",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0098"],
+      "test_ids": ["P527-T8", "P527-T11"],
+      "side": "其他"
+    },
+    {
+      "id": "P527-M10",
+      "summary": "DOL/HMPA-6 中 Li‖Li 极化电压降低并稳定，归因于锂表面形成稳定 SEI",
+      "A": "DOL/HMPA-6", "B": "DOL/DME",
+      "property": "Li⁺ 溶剂化增强（作者框架）→ 稳定 SEI",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0103", "M0108"],
+      "test_ids": ["P527-T9", "P527-T10"],
+      "side": "弱侧"
+    },
+    {
+      "id": "P527-M11",
+      "summary": "理论计算显示处于 CIP 和 AGG 中的 TFSI⁻ 易被还原为氟化物，促进 LiF 形成，而 DOL/HMPA-6 中 CIP、AGG 更多",
+      "A": "DOL/HMPA-6", "B": "DOL/DME",
+      "property": "Li⁺ 溶剂化结构中 CIP + AGG 增多 → TFSI⁻ 还原生成 LiF",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0122"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P527-M12",
+      "summary": "DOL/HMPA-6 中锂表面平整致密，可能因富 LiF SEI 促进 Li⁺ 快速传输、锂均匀沉积",
+      "A": "DOL/HMPA-6", "B": "DOL/DME",
+      "property": "富 LiF SEI → 锂均匀沉积",
+      "categories": ["负极锂"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0125"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P527-M13",
+      "summary": "致密均匀的富 LiF SEI 阻止锂与电解液的副反应及电解液消耗",
+      "A": "DOL/HMPA-6", "B": "DOL/DME",
+      "property": "富 LiF SEI → 副反应和电解液消耗减少",
+      "categories": ["负极锂", "电解液消耗"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0126"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P527-M14",
+      "summary": "DOL/DME 中疏松面条状锂形貌会引发新鲜锂表面与电解液的副反应、持续消耗电解液",
+      "A": "DOL/HMPA-6", "B": "DOL/DME",
+      "property": "DOL/DME 中锂沉积疏松 → 副反应、电解液持续消耗",
+      "categories": ["负极锂", "电解液消耗"],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0128", "M0137"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P527-M15",
+      "summary": "DOL/HMPA-6 中形成的富 LiF SEI 使电解液/锂界面 Li⁺ 传输快、沉积剥离均匀、电极动力学快（据 Li‖Li 循环后阻抗更低）",
+      "A": "DOL/HMPA-6", "B": "DOL/DME",
+      "property": "富 LiF SEI → 界面阻抗降低",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0155"],
+      "test_ids": ["P527-T12"],
+      "side": "弱侧"
+    },
+    {
+      "id": "P527-M16",
+      "summary": "高 DN 的 HMPA 预期促进 Li2S 溶解、使 Li2S 均匀沉积，保持硫正极多孔形貌",
+      "A": "DOL/HMPA-6", "B": "DOL/DME",
+      "property": "HMPA 高 DN（强溶剂化）→ Li2S 溶解、均匀沉积",
+      "categories": ["正极反应"],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0159"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P527-M17",
+      "summary": "DOL/DME 中硫正极表面致密开裂，归因于二维 Li2S 沉积阻断导电骨架",
+      "A": "DOL/HMPA-6", "B": "DOL/DME",
+      "property": "DOL/DME 中 Li2S 二维沉积（正极钝化）",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0161"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P527-M18",
+      "summary": "Li‖S 电池循环后阻抗更低，可能来自硫正极多孔形貌和锂负极富 LiF SEI",
+      "A": "DOL/HMPA-6", "B": "DOL/DME",
+      "property": "正极多孔形貌保持、负极富 LiF SEI → 阻抗降低",
+      "categories": ["正极反应", "负极锂"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0171"],
+      "test_ids": ["P527-T5"],
+      "side": "弱侧"
+    },
+    {
+      "id": "P527-M19",
+      "summary": "可视电池中 DOL/HMPA-6 几乎不变色，多硫化物穿梭显著被抑制，体现为器件性能明显提高",
+      "A": "DOL/HMPA-6", "B": "DOL/DME",
+      "property": "多硫化物溶解减少（可视电池颜色）",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0177"],
+      "test_ids": ["P527-T6"],
+      "side": "弱侧"
+    },
+    {
+      "id": "P527-M20",
+      "summary": "CV 峰更强说明 DOL/HMPA-6 中硫利用更好，归因于硫正极多孔形貌",
+      "A": "DOL/HMPA-6", "B": "DOL/DME",
+      "property": "正极多孔形貌保持 → 硫利用率提高",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0200"],
+      "test_ids": ["P527-T7"],
+      "side": "弱侧"
+    },
+    {
+      "id": "P527-M21",
+      "summary": "DOL/HMPA-6 低/高平台容量比更接近 3，说明促进多硫化物向 Li2S 转化，带来更高比容量",
+      "A": "DOL/HMPA-6", "B": "DOL/DME",
+      "property": "原句未写性质",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0209"],
+      "test_ids": ["P527-T1"],
+      "side": "弱侧"
+    },
+    {
+      "id": "P527-M22",
+      "summary": "Li2S 成核、分解过电位更低可能源于 DOL/HMPA-6 的 Li⁺ 溶剂化结构促进多硫化物与 Li2S 之间的转化",
+      "A": "DOL/HMPA-6", "B": "DOL/DME",
+      "property": "Li⁺ 溶剂化结构（HMPA）→ 多硫化物/Li2S 转化加快",
+      "categories": ["正极反应"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0213"],
+      "test_ids": ["P527-T1"],
+      "side": "弱侧"
+    },
+    {
+      "id": "P527-M23",
+      "summary": "0.2 C 循环稳定性显著提高归因于 HMPA 抑制多硫化物穿梭",
+      "A": "DOL/HMPA-6", "B": "DOL/DME",
+      "property": "原句未写性质（HMPA 抑制穿梭）",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0222"],
+      "test_ids": ["P527-T3"],
+      "side": "弱侧"
+    },
+    {
+      "id": "P527-M24",
+      "summary": "HMPA 优先居于 Li⁺ 溶剂化内层，自由 HMPA 减少，有效抑制多硫化物穿梭（结论）",
+      "A": "DOL/HMPA-6", "B": "DOL/DME",
+      "property": "Li⁺ 溶剂化增强（HMPA 居内层）、自由溶剂减少",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0224"],
+      "test_ids": ["P527-T3", "P527-T4"],
+      "side": "弱侧"
+    },
+    {
+      "id": "P527-M25",
+      "summary": "HMPA 促成 CIP 和 AGG，生成富 LiF SEI，阻止锂枝晶生长（结论）",
+      "A": "DOL/HMPA-6", "B": "DOL/DME",
+      "property": "Li⁺ 溶剂化结构中 CIP + AGG 增多 → 富 LiF SEI",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0225"],
+      "test_ids": ["P527-T9", "P527-T10"],
+      "side": "弱侧"
+    }
+  ],
+  "design_claims": [
+    {
+      "summary": "解耦：增强电解液对 Li⁺ 的溶剂化能力（高 DN 的 HMPA 作共溶剂）同时抑制多硫化物溶解；最优配方 DOL/HMPA-6（HMPA 6 vol%，按 σ、tLi⁺ 最高选定）",
+      "evidence_ids": ["M0032", "M0033", "M0035", "M0072"]
+    }
+  ],
+  "figure_requests": [
+    {
+      "test_id": "P527-T3",
+      "figure": "Fig. 6f",
+      "part": "main",
+      "metric": "指定圈容量",
+      "A": "DOL/HMPA-6", "B": "DOL/DME",
+      "target_point": "0.2 C 第 300 圈",
+      "anchor_quote_ids": ["M0219", "M0220"],
+      "reason": "Li‖S 循环类测试：DOL/DME 第 300 圈容量作者前后不一（295.6 vs 295.2），按规则改用读图；锚点为 M0219 两侧初始容量 1101.0/882.4 与 M0220 中 DOL/HMPA-6 第 300 圈 619.6"
+    }
+  ],
+  "gaps": [
+    "HMPA 梯度（4/6/8/10 vol%）只测了离子电导率和 Li⁺ 迁移数（4、8、10 vol% 数值仅图 2c、2d，性质图未登记读图），梯度各档没有电池测试",
+    "所有 Li‖S 测试未报告硫载量、E/S、锂厚、温度；扣式电池电解液 40 μL，无法换算 E/S",
+    "P527-T1 0.1 C 充放电曲线未写圈数",
+    "P527-T2 DOL/DME 在 0.1 C 的初始与恢复容量未报告（只给 DOL/HMPA-6 的 1110.4 与 939.2）",
+    "P527-T3 未报告库仑效率；DOL/DME 第 300 圈容量前后不一（M0220 295.6，M0038/M0227 295.2）",
+    "P527-T9、P527-T10 DOL/DME 的 Li‖Li 循环寿命未报告（DOL/HMPA-6 为 600 h）",
+    "多硫化物溶解度无数值，仅可视电池颜色定性；多硫化物溶剂化未报告",
+    "强/弱侧按作者的 Li⁺ 溶剂化（亲和力）轴判：DOL/HMPA-6 较强、DOL/DME 较弱；若改按多硫化物溶解度或 CIP/AGG 比例判，侧别相反"
+  ],
+  "source_review": {
+    "main": true,
+    "si": true,
+    "notes": "通读正文与 SI（实验部分、图注、表 S1/S2）；参考文献略读；未读任何既有提取结果。Li‖S 测试全部共用 S@RGO 正极、40 μL 电解液，硫载量与 E/S 原文未写。Li 对称电池倍率实验 SI 写作 mA cm−1（正文为 mA cm−2）。"
+  }
+}

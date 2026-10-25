@@ -1,0 +1,593 @@
+{
+  "文献编号": "P389",
+  "DOI": "10.1002/anie.202318785",
+  "文献": "Improving Rate Performance of Encapsulating Lithium-Polysulfide Electrolytes for Practical Lithium-Sulfur Batteries",
+  "全文缓存": "10.1002_anie.202318785",
+  "格式": "v4迁移与补提",
+  "提取来源": "既有 Claude 开发材料迁移；GPT 原文核对和补提；非独立提取",
+  "对照": null,
+  "对照类型": "待确认",
+  "配方": [
+    {
+      "代号": "E1",
+      "作者原名": "DOL/DME",
+      "组分": [
+        {
+          "名称": "LiTFSI",
+          "角色": "盐",
+          "用量": "1.0",
+          "单位": "M",
+          "备注": "其余用量和比例见配方原文；未自动分配混合比例"
+        },
+        {
+          "名称": "DOL",
+          "角色": "角色待原文确认",
+          "用量": null,
+          "单位": "",
+          "备注": "其余用量和比例见配方原文；未自动分配混合比例"
+        },
+        {
+          "名称": "DME",
+          "角色": "角色待原文确认",
+          "用量": null,
+          "单位": "",
+          "备注": "其余用量和比例见配方原文；未自动分配混合比例"
+        },
+        {
+          "名称": "LiNO3",
+          "角色": "添加剂",
+          "用量": "2.0",
+          "单位": "wt%",
+          "备注": "其余用量和比例见配方原文；未自动分配混合比例"
+        }
+      ],
+      "配方原文记载": "1.0 M LiTFSI，DOL/DME 1:1 v/v，2.0 wt% LiNO3",
+      "原句": "",
+      "证据核对": {
+        "状态": "缺原句",
+        "原句": "",
+        "定位": []
+      },
+      "状态": "沿用已有配方；组分角色及比例未完整核实"
+    },
+    {
+      "代号": "E2",
+      "作者原名": "HME-EPSE",
+      "组分": [
+        {
+          "名称": "LiTFSI",
+          "角色": "盐",
+          "用量": "1.0",
+          "单位": "M",
+          "备注": "其余用量和比例见配方原文；未自动分配混合比例"
+        },
+        {
+          "名称": "DOL",
+          "角色": "角色待原文确认",
+          "用量": null,
+          "单位": "",
+          "备注": "其余用量和比例见配方原文；未自动分配混合比例"
+        },
+        {
+          "名称": "DME",
+          "角色": "角色待原文确认",
+          "用量": null,
+          "单位": "",
+          "备注": "其余用量和比例见配方原文；未自动分配混合比例"
+        },
+        {
+          "名称": "LiNO3",
+          "角色": "添加剂",
+          "用量": "2.0",
+          "单位": "wt%",
+          "备注": "其余用量和比例见配方原文；未自动分配混合比例"
+        }
+      ],
+      "配方原文记载": "1.0 M LiTFSI，DOL/DME/HME 37.5/37.5/25 v/v，2.0 wt% LiNO3",
+      "原句": "",
+      "证据核对": {
+        "状态": "缺原句",
+        "原句": "",
+        "定位": []
+      },
+      "状态": "沿用已有配方；组分角色及比例未完整核实"
+    }
+  ],
+  "梯度": [],
+  "性质": [
+    {
+      "性质": "旧记录溶剂化依据",
+      "比较": "E2 vs E1",
+      "原记载": "MD：HME 位于 S8 2- 外层溶剂壳（7.8 Å），内层仍为 DME/DOL（模拟，0.25 M Li2S8）；作者称 HME 溶剂化能力弱",
+      "状态": "未分开 Li+ 溶剂化/多硫化物溶剂化/溶解度，待补提"
+    },
+    {
+      "性质": "旧记录溶剂化依据",
+      "比较": "E2 vs E1",
+      "原记载": "同上",
+      "状态": "未分开 Li+ 溶剂化/多硫化物溶剂化/溶解度，待补提"
+    },
+    {
+      "性质": "旧记录溶剂化依据",
+      "比较": "E2 vs E1",
+      "原记载": "同上",
+      "状态": "未分开 Li+ 溶剂化/多硫化物溶剂化/溶解度，待补提"
+    }
+  ],
+  "测试": [
+    {
+      "编号": "C1",
+      "名称": "C1",
+      "电池": "扣式",
+      "硫载量": "4.4 mg cm-2",
+      "E/S": "6.6",
+      "E/S单位": "原文单位",
+      "锂厚": "50 µm",
+      "倍率": "0.1C（0.05C 活化 2 圈）",
+      "倍率备注": "",
+      "1C定义": "1672 mA g-1",
+      "化成": "未独立核对",
+      "温度": "25 °C",
+      "LiNO₃": "见各配方，测试覆盖关系待核",
+      "条件原句": "An ultrathin Li metal anode (50 µm), a high-loading S cathode of 4.4 mgScm  2, and an E/S ratio of 6.6 µLmgS   1 were selected for practical considerations.",
+      "配方": [
+        "E2",
+        "E1"
+      ],
+      "结果": [
+        {
+          "编号": "R001",
+          "指标": "首圈容量",
+          "取值点": "0.1C",
+          "比较A": "E2",
+          "比较B": "E1",
+          "数值": {
+            "E2": "1040",
+            "E1": "1049"
+          },
+          "单位": "mAh g-1",
+          "原句": "At 0.1 C, Li  S batteries with DOL/DME electrolyte or HME-EPSE deliver similar specific capacities, 1049 and 1040 mAhg  1, respectively (Figure 2a, 2c).",
+          "证据核对": {
+            "状态": "原句定位通过",
+            "原句": "At 0.1 C, Li  S batteries with DOL/DME electrolyte or HME-EPSE deliver similar specific capacities, 1049 and 1040 mAhg  1, respectively (Figure 2a, 2c).",
+            "定位": [
+              {
+                "证据编号": "M0056",
+                "部分": "main",
+                "页": 3,
+                "完整句": "At 0.1 C, Li\u0000 S batteries with DOL/DME electrolyte or HME-EPSE deliver similar specific capacities, 1049 and 1040 mAhg\u0000 1, respectively (Figure 2a, 2c)."
+              }
+            ]
+          },
+          "方向": "差异小",
+          "判定依据": "程序按 <5%",
+          "旧方向": "差异小",
+          "位置": "正文",
+          "备注": "",
+          "记录来源": "沿用既有提取，非本轮盲提"
+        },
+        {
+          "编号": "R002",
+          "指标": "倍率容量",
+          "取值点": "0.2C",
+          "比较A": "E2",
+          "比较B": "E1",
+          "数值": {
+            "E2": "919",
+            "E1": "942"
+          },
+          "单位": "mAh g-1",
+          "原句": "the battery using HME-EPSE can cycle stably (Figure S4) and delivers a specific capacity of 919 and 869 mAhg  1, respectively, which is only 2% and 5% lower than that with DOL/DME electrolyte of 942 and 915 mAhg  1 (Figure 2a and 2e).",
+          "证据核对": {
+            "状态": "原句定位通过",
+            "原句": "the battery using HME-EPSE can cycle stably (Figure S4) and delivers a specific capacity of 919 and 869 mAhg  1, respectively, which is only 2% and 5% lower than that with DOL/DME electrolyte of 942 and 915 mAhg  1 (Figure 2a and 2e).",
+            "定位": [
+              {
+                "证据编号": "M0067",
+                "部分": "main",
+                "页": 4,
+                "完整句": "and 0.3 C, the battery using HME-EPSE can cycle stably (Figure S4) and delivers a specific capacity of 919 and 869 mAhg\u0000 1, respectively, which is only 2% and 5% lower than that with DOL/DME electrolyte of 942 and 915 mAhg\u0000 1 (Figure 2a and 2e)."
+              }
+            ]
+          },
+          "方向": "差异小",
+          "判定依据": "程序按 <5%",
+          "旧方向": "差异小",
+          "位置": "正文",
+          "备注": "",
+          "记录来源": "沿用既有提取，非本轮盲提"
+        },
+        {
+          "编号": "R003",
+          "指标": "倍率容量",
+          "取值点": "0.3C",
+          "比较A": "E2",
+          "比较B": "E1",
+          "数值": {
+            "E2": "869",
+            "E1": "915"
+          },
+          "单位": "mAh g-1",
+          "原句": "the battery using HME-EPSE can cycle stably (Figure S4) and delivers a specific capacity of 919 and 869 mAhg  1, respectively, which is only 2% and 5% lower than that with DOL/DME electrolyte of 942 and 915 mAhg  1 (Figure 2a and 2e).",
+          "证据核对": {
+            "状态": "原句定位通过",
+            "原句": "the battery using HME-EPSE can cycle stably (Figure S4) and delivers a specific capacity of 919 and 869 mAhg  1, respectively, which is only 2% and 5% lower than that with DOL/DME electrolyte of 942 and 915 mAhg  1 (Figure 2a and 2e).",
+            "定位": [
+              {
+                "证据编号": "M0067",
+                "部分": "main",
+                "页": 4,
+                "完整句": "and 0.3 C, the battery using HME-EPSE can cycle stably (Figure S4) and delivers a specific capacity of 919 and 869 mAhg\u0000 1, respectively, which is only 2% and 5% lower than that with DOL/DME electrolyte of 942 and 915 mAhg\u0000 1 (Figure 2a and 2e)."
+              }
+            ]
+          },
+          "方向": "变坏",
+          "判定依据": "程序比较同项数值",
+          "旧方向": "A更差",
+          "位置": "正文",
+          "备注": "",
+          "记录来源": "沿用既有提取，非本轮盲提"
+        },
+        {
+          "编号": "R004",
+          "指标": "寿命",
+          "取值点": "0.1C 循环寿命（B 第 65 圈过充）",
+          "比较A": "E2",
+          "比较B": "E1",
+          "数值": {
+            "E2": "113",
+            "E1": "65"
+          },
+          "单位": "圈",
+          "原句": "The cycle life of Li  S battery using HME-EPSE increases to 113 cycles, which is nearly twice that of 65 cycles with DOL/DME electrolyte.",
+          "证据核对": {
+            "状态": "原句定位通过",
+            "原句": "The cycle life of Li  S battery using HME-EPSE increases to 113 cycles, which is nearly twice that of 65 cycles with DOL/DME electrolyte.",
+            "定位": [
+              {
+                "证据编号": "M0103",
+                "部分": "main",
+                "页": 5,
+                "完整句": "The cycle life of Li\u0000 S battery using HME-EPSE increases to 113 cycles, which is nearly twice that of 65 cycles with DOL/DME electrolyte."
+              }
+            ]
+          },
+          "方向": "变好",
+          "判定依据": "程序比较同项数值",
+          "旧方向": "A更好",
+          "位置": "正文",
+          "备注": "",
+          "记录来源": "沿用既有提取，非本轮盲提"
+        },
+        {
+          "编号": "R005",
+          "指标": "指定圈数容量",
+          "取值点": "第 69 圈",
+          "比较A": "E2",
+          "比较B": "E1",
+          "数值": {
+            "E2": "860",
+            "E1": "652"
+          },
+          "单位": "mAh g-1",
+          "原句": "In contrast, at the 69th cycle, the Li  S battery with HME-EPSE maintains a specific capacity of 860 mAhg  1 with 85% capacity retention and a Coulombic efficiency of 95% (Figure S13).",
+          "证据核对": {
+            "状态": "原句定位通过",
+            "原句": "In contrast, at the 69th cycle, the Li  S battery with HME-EPSE maintains a specific capacity of 860 mAhg  1 with 85% capacity retention and a Coulombic efficiency of 95% (Figure S13).",
+            "定位": [
+              {
+                "证据编号": "M0107",
+                "部分": "main",
+                "页": 5,
+                "完整句": "In contrast, at the 69th cycle, the Li\u0000 S battery with HME-EPSE maintains a specific capacity of 860 mAhg\u0000 1 with 85% capacity retention and a Coulombic efficiency of 95% (Figure S13)."
+              }
+            ]
+          },
+          "方向": "变好",
+          "判定依据": "程序比较同项数值",
+          "旧方向": "A更好",
+          "位置": "正文",
+          "备注": "",
+          "记录来源": "沿用既有提取，非本轮盲提"
+        },
+        {
+          "编号": "R006",
+          "指标": "多硫化物溶解或穿梭",
+          "取值点": "穿梭电流峰值（无 LiNO3）",
+          "比较A": "E2",
+          "比较B": "E1",
+          "数值": {
+            "E2": "0.055",
+            "E1": "0.122"
+          },
+          "单位": "mA cm-2",
+          "原句": "HME-EPSE decreases the shuttle current to 0.055 mAcm  2 when it reaches its peak at 2.35 V, which is reduced by 55% compared with the battery with DOL/DME electrolyte with a peak current of 0.122 mAcm  2 (Figure 3a)",
+          "证据核对": {
+            "状态": "原句定位通过",
+            "原句": "HME-EPSE decreases the shuttle current to 0.055 mAcm  2 when it reaches its peak at 2.35 V, which is reduced by 55% compared with the battery with DOL/DME electrolyte with a peak current of 0.122 mAcm  2 (Figure 3a)",
+            "定位": [
+              {
+                "证据编号": "M0084",
+                "部分": "main",
+                "页": 4,
+                "完整句": "Shuttle current tests were conducted to measure the shuttle effect of LiPSs in DOL/DME electrolyte and HME-EPSE without LiNO3 in electrolytes.[22] HME-EPSE decreases the shuttle current to 0.055 mAcm\u0000 2 when it reaches its peak at 2.35 V, which is reduced by 55% compared with the battery with DOL/DME electrolyte with a peak current of 0.122 mAcm\u0000 2 (Figure 3a), illustrating that the shuttle effect of LiPSs is well mitigated in HME-EPSE."
+              }
+            ]
+          },
+          "方向": "不判",
+          "判定依据": "旧指标混合含义，须拆分后判断",
+          "旧方向": "A更好",
+          "位置": "正文",
+          "备注": "",
+          "记录来源": "沿用既有提取，非本轮盲提"
+        }
+      ],
+      "状态": "旧条件组；按 v4 测试定义拆分尚待复核",
+      "证据核对": {
+        "状态": "原句定位通过",
+        "原句": "An ultrathin Li metal anode (50 µm), a high-loading S cathode of 4.4 mgScm  2, and an E/S ratio of 6.6 µLmgS   1 were selected for practical considerations.",
+        "定位": [
+          {
+            "证据编号": "M0055",
+            "部分": "main",
+            "页": 3,
+            "完整句": "An ultrathin Li metal anode (50 μm), a high-loading S cathode of 4.4 mgScm\u0000 2, and an E/S ratio of 6.6 μLmgS \u0000 1 were selected for practical considerations.[4b,20] Li\u0000 S batteries were cycled at various rates of 0.1, 0.2, and 0.3 C (1 C=1672 mAg\u0000 1)."
+          }
+        ]
+      }
+    },
+    {
+      "编号": "C2",
+      "名称": "C2",
+      "电池": "扣式",
+      "硫载量": "1.1 mg cm-2",
+      "E/S": ">15（25 µL）",
+      "E/S单位": "原文单位",
+      "锂厚": "600 µm",
+      "倍率": "0.5C（0.1C 活化 2 圈）",
+      "倍率备注": "",
+      "1C定义": "1672 mA g-1",
+      "化成": "未独立核对",
+      "温度": "25 °C",
+      "LiNO₃": "见各配方，测试覆盖关系待核",
+      "条件原句": "Under mild conditions, Li-S batteries were assembled with Li metal anodes (600 µm), regular-loading S cathodes (1.1 mgS cm-2), and 25 µL electrolyte.",
+      "配方": [
+        "E2",
+        "E1"
+      ],
+      "结果": [
+        {
+          "编号": "R007",
+          "指标": "首圈容量",
+          "取值点": "0.5C 第 1 圈",
+          "比较A": "E2",
+          "比较B": "E1",
+          "数值": {
+            "E2": "856",
+            "E1": "相当"
+          },
+          "单位": "mAh g-1",
+          "原句": "Meanwhile, the Li  S battery using HME-EPSE delivers an initial specific capacity of 856 mAhg  1, which is comparable to that in DOL/DME electrolyte.",
+          "证据核对": {
+            "状态": "原句定位通过",
+            "原句": "Meanwhile, the Li  S battery using HME-EPSE delivers an initial specific capacity of 856 mAhg  1, which is comparable to that in DOL/DME electrolyte.",
+            "定位": [
+              {
+                "证据编号": "M0100",
+                "部分": "main",
+                "页": 5,
+                "完整句": "Meanwhile, the Li\u0000 S battery using HME-EPSE delivers an initial specific capacity of 856 mAhg\u0000 1, which is comparable to that in DOL/DME electrolyte."
+              }
+            ]
+          },
+          "方向": "差异小",
+          "判定依据": "沿用旧定性判断，语义待核",
+          "旧方向": "差异小",
+          "位置": "正文",
+          "备注": "",
+          "记录来源": "沿用既有提取，非本轮盲提"
+        },
+        {
+          "编号": "R008",
+          "指标": "寿命",
+          "取值点": "容量降至初始 60% 的圈数",
+          "比较A": "E2",
+          "比较B": "E1",
+          "数值": {
+            "E2": "280",
+            "E1": "<140（A 的一半以下）"
+          },
+          "单位": "圈",
+          "原句": "The cycle life of the battery with HME-EPSE increases to 280 cycles when the capacity decays to 60% of the initial capacity, which is more than twice of DOL/DME electrolyte.",
+          "证据核对": {
+            "状态": "原句定位通过",
+            "原句": "The cycle life of the battery with HME-EPSE increases to 280 cycles when the capacity decays to 60% of the initial capacity, which is more than twice of DOL/DME electrolyte.",
+            "定位": [
+              {
+                "证据编号": "M0099",
+                "部分": "main",
+                "页": 5,
+                "完整句": "The cycle life of the battery with HME-EPSE increases to 280 cycles when the capacity decays to 60% of the initial capacity, which is more than twice of DOL/DME electrolyte."
+              }
+            ]
+          },
+          "方向": "变好",
+          "判定依据": "沿用旧定性判断，语义待核",
+          "旧方向": "A更好",
+          "位置": "正文",
+          "备注": "",
+          "记录来源": "沿用既有提取，非本轮盲提"
+        }
+      ],
+      "状态": "旧条件组；按 v4 测试定义拆分尚待复核",
+      "证据核对": {
+        "状态": "原句定位通过",
+        "原句": "Under mild conditions, Li-S batteries were assembled with Li metal anodes (600 µm), regular-loading S cathodes (1.1 mgS cm-2), and 25 µL electrolyte.",
+        "定位": [
+          {
+            "证据编号": "S0015",
+            "部分": "si",
+            "页": 3,
+            "完整句": "Electrochemical measurement Under mild conditions, Li–S batteries were assembled with Li metal anodes (600 μm), regular-loading S cathodes (1.1 mgS cm−2), and 25 μL electrolyte."
+          }
+        ]
+      }
+    },
+    {
+      "编号": "C3",
+      "名称": "C3",
+      "电池": "扣式",
+      "硫载量": "9.9 mg cm-2",
+      "E/S": "未报告",
+      "E/S单位": "原文单位",
+      "锂厚": "50 µm",
+      "倍率": "0.1C（0.05C 活化 2 圈）",
+      "倍率备注": "",
+      "1C定义": "1672 mA g-1",
+      "化成": "未独立核对",
+      "温度": "25 °C",
+      "LiNO₃": "见各配方，测试覆盖关系待核",
+      "条件原句": "Under demanding conditions, an ultrathin Li anode (50 µm), a high-loading S cathode (4.4 mgS cm-2) or an ultrahigh-loading S cathode (9.9 mgS cm-2), and electrolyte (35 or 90 µL, respectively) were employed to assemble Li-S batteries.",
+      "配方": [
+        "E2",
+        "E1"
+      ],
+      "结果": [
+        {
+          "编号": "R009",
+          "指标": "首圈容量",
+          "取值点": "0.1C 第 1 圈",
+          "比较A": "E2",
+          "比较B": "E1",
+          "数值": {
+            "E2": "737",
+            "E1": "826"
+          },
+          "单位": "mAh g-1",
+          "原句": "At 0.1 C, the initial specific capacity of the battery with HME-EPSE is 737 mAhg  1, which is lower than that with DOL/DME electrolyte (826 mAhg  1).",
+          "证据核对": {
+            "状态": "原句定位通过",
+            "原句": "At 0.1 C, the initial specific capacity of the battery with HME-EPSE is 737 mAhg  1, which is lower than that with DOL/DME electrolyte (826 mAhg  1).",
+            "定位": [
+              {
+                "证据编号": "M0110",
+                "部分": "main",
+                "页": 5,
+                "完整句": "At 0.1 C, the initial specific capacity of the battery with HME-EPSE is 737 mAhg\u0000 1, which is lower than that with DOL/DME electrolyte (826 mAhg\u0000 1)."
+              }
+            ]
+          },
+          "方向": "变坏",
+          "判定依据": "程序比较同项数值",
+          "旧方向": "A更差",
+          "位置": "正文",
+          "备注": "",
+          "记录来源": "沿用既有提取，非本轮盲提"
+        },
+        {
+          "编号": "R010",
+          "指标": "指定圈数容量",
+          "取值点": "第 40 圈",
+          "比较A": "E2",
+          "比较B": "E1",
+          "数值": {
+            "E2": "482",
+            "E1": "168"
+          },
+          "单位": "mAh g-1",
+          "原句": "However, after 40 cycles, the battery with HME-EPSE maintains a specific capacity of 482 mAhg  1 with 65% capacity retention and has far exceeded the battery with DOL/DME electrolyte which delivers 168 mAhg  1 with only 20% capacity reten- tion (Figure S14).",
+          "证据核对": {
+            "状态": "原句定位通过",
+            "原句": "However, after 40 cycles, the battery with HME-EPSE maintains a specific capacity of 482 mAhg  1 with 65% capacity retention and has far exceeded the battery with DOL/DME electrolyte which delivers 168 mAhg  1 with only 20% capacity reten- tion (Figure S14).",
+            "定位": [
+              {
+                "证据编号": "M0111",
+                "部分": "main",
+                "页": 5,
+                "完整句": "However, after 40 cycles, the battery with HME-EPSE maintains a specific capacity of 482 mAhg\u0000 1 with 65% capacity retention and has far exceeded the battery with DOL/DME electrolyte which delivers 168 mAhg\u0000 1 with only 20% capacity retention (Figure S14)."
+              }
+            ]
+          },
+          "方向": "变好",
+          "判定依据": "程序比较同项数值",
+          "旧方向": "A更好",
+          "位置": "正文",
+          "备注": "",
+          "记录来源": "沿用既有提取，非本轮盲提"
+        }
+      ],
+      "状态": "旧条件组；按 v4 测试定义拆分尚待复核",
+      "证据核对": {
+        "状态": "原句定位通过",
+        "原句": "Under demanding conditions, an ultrathin Li anode (50 µm), a high-loading S cathode (4.4 mgS cm-2) or an ultrahigh-loading S cathode (9.9 mgS cm-2), and electrolyte (35 or 90 µL, respectively) were employed to assemble Li-S batteries.",
+        "定位": [
+          {
+            "证据编号": "S0017",
+            "部分": "si",
+            "页": 3,
+            "完整句": "Under demanding conditions, an ultrathin Li anode (50 μm), a high-loading S cathode (4.4 mgS cm−2) or an ultrahigh-loading S cathode (9.9 mgS cm−2), and electrolyte (35 or 90 μL, respectively) were employed to assemble Li–S batteries."
+          }
+        ]
+      }
+    }
+  ],
+  "机制": [],
+  "设计主张": [],
+  "缺口": [
+    "配方组分与梯度档位尚需按全文完整补提",
+    "旧条件组未完全按 v4 拆成同条件测试",
+    "机制与来源标签尚需语义复核",
+    "未进行本轮独立读图"
+  ],
+  "原始参考文件": "output\\第二阶段_C步试提\\json\\P389.json",
+  "SI文本状态": "存在",
+  "本轮GPT机制": [
+    {
+      "编号": "G01",
+      "证据编号": "M0128",
+      "概括": "HME-EPSE 平衡硫正极转化与锂负极保护，作者据此解释软包寿命和能量密度兼顾。",
+      "原句": "Therefore, owing to balancing the conversion reaction kinetics of the S cathodes and the protection of Li metal anodes, HME-EPSE endows Li\u0000 S pouch cells with both superior cycle life and high energy density.",
+      "部分": "main",
+      "页": 5,
+      "来源": "本文结论",
+      "过程大类": [
+        "正极反应",
+        "负极锂"
+      ],
+      "记录来源": "本轮 GPT 阅读原文候选句后补提；用户未逐项确认",
+      "比较范围": "原句所指体系；未强行指定 A/B",
+      "落到": []
+    },
+    {
+      "编号": "G02",
+      "证据编号": "M0084",
+      "概括": "不含 LiNO3 时 HME-EPSE 的穿梭电流峰值低于 DOL/DME，作者据此判断穿梭受抑制。",
+      "原句": "Shuttle current tests were conducted to measure the shuttle effect of LiPSs in DOL/DME electrolyte and HME-EPSE without LiNO3 in electrolytes.[22] HME-EPSE decreases the shuttle current to 0.055 mAcm\u0000 2 when it reaches its peak at 2.35 V, which is reduced by 55% compared with the battery with DOL/DME electrolyte with a peak current of 0.122 mAcm\u0000 2 (Figure 3a), illustrating that the shuttle effect of LiPSs is well mitigated in HME-EPSE.",
+      "部分": "main",
+      "页": 4,
+      "来源": "本文结论",
+      "过程大类": [
+        "多硫化物穿梭"
+      ],
+      "记录来源": "本轮 GPT 阅读原文候选句后补提；用户未逐项确认",
+      "比较范围": "原句所指体系；未强行指定 A/B",
+      "落到": []
+    },
+    {
+      "编号": "G03",
+      "证据编号": "M0144",
+      "概括": "作者示意图将 HME-EPSE 描述为减少负极副反应且不牺牲比容量的包裹电解液。",
+      "原句": "(a) DOL/DME electrolyte: the severe parasitic reactions of LiPSs with Li anodes, (b) common EPSEs: the mitigated parasitic reactions with sacrifice in specific capacity, and (c) HME-EPSE: the mitigated parasitic reactions with no sacrifice in specific capacity.",
+      "部分": "main",
+      "页": 6,
+      "来源": "本文结论",
+      "过程大类": [
+        "负极锂",
+        "正极反应"
+      ],
+      "记录来源": "本轮 GPT 阅读原文候选句后补提；用户未逐项确认",
+      "比较范围": "原句所指体系；未强行指定 A/B",
+      "落到": []
+    }
+  ]
+}
