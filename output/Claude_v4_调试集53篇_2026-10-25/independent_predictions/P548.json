@@ -1,0 +1,542 @@
+{
+  "paper_id": "P548",
+  "doi": "10.1021/acsaem.4c03018",
+  "formulations": [
+    {
+      "id": "2FPy",
+      "name": "1 M LiTFSi/Sat. LiNO3/2FPy（SI 写作 1 M LiTFSi/2FPy saturated with LiNO3；正文称 2FPy electrolyte）",
+      "components": [
+        {"name": "LiTFSI", "role": "盐", "amount": 1, "unit": "M"},
+        {"name": "LiNO3", "role": "添加剂", "amount": "Sat.", "unit": "饱和（原文称 LiNO3 only slightly dissolved in 2FPy，浓度未报告）"},
+        {"name": "2FPy（2-氟吡啶）", "role": "溶剂化溶剂", "amount": "单一溶剂（原文未写用量）", "unit": "未报告"}
+      ],
+      "raw_formula": "1 M LiTFSi/Sat. LiNO3/2FPy",
+      "evidence_ids": ["M0046", "M0047", "S0046", "S0047", "S0078"]
+    },
+    {
+      "id": "3FPy",
+      "name": "1 M LiTFSi/0.2 M LiNO3/3FPy（正文称 3FPy electrolyte）",
+      "components": [
+        {"name": "LiTFSI", "role": "盐", "amount": 1, "unit": "M"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 0.2, "unit": "M"},
+        {"name": "3FPy（3-氟吡啶）", "role": "溶剂化溶剂", "amount": "单一溶剂（原文未写用量）", "unit": "未报告"}
+      ],
+      "raw_formula": "1 M LiTFSi/0.2 M LiNO3/3FPy",
+      "evidence_ids": ["M0047", "M0050", "S0078"]
+    },
+    {
+      "id": "DME/DOL",
+      "name": "1 M LiTFSi/0.2 M LiNO3/DME/DOL（作者称 standard DME/DOL electrolyte）",
+      "components": [
+        {"name": "LiTFSI", "role": "盐", "amount": 1, "unit": "M"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 0.2, "unit": "M"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": "原文未写比例", "unit": "未报告"},
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": "原文未写比例", "unit": "未报告"}
+      ],
+      "raw_formula": "1 M LiTFSi/0.2 M LiNO3/DME/DOL",
+      "evidence_ids": ["S0045", "S0050", "S0077", "S0078", "M0097"]
+    },
+    {
+      "id": "2.5M-2FPy",
+      "name": "2.5 M LiTFSi/2FPy（不含 LiNO3，仅 60 °C 测试）",
+      "components": [
+        {"name": "LiTFSI", "role": "盐", "amount": 2.5, "unit": "M"},
+        {"name": "2FPy（2-氟吡啶）", "role": "溶剂化溶剂", "amount": "单一溶剂（原文未写用量）", "unit": "未报告"}
+      ],
+      "raw_formula": "2.5 M LiTFSi/2FPy",
+      "evidence_ids": ["S0077", "M0086"]
+    },
+    {
+      "id": "2.5M-3FPy",
+      "name": "2.5 M LiTFSi/3FPy（不含 LiNO3，仅 60 °C 测试）",
+      "components": [
+        {"name": "LiTFSI", "role": "盐", "amount": 2.5, "unit": "M"},
+        {"name": "3FPy（3-氟吡啶）", "role": "溶剂化溶剂", "amount": "单一溶剂（原文未写用量）", "unit": "未报告"}
+      ],
+      "raw_formula": "2.5 M LiTFSi/3FPy",
+      "evidence_ids": ["S0077", "M0086"]
+    }
+  ],
+  "control_id": "DME/DOL",
+  "control_type": "常规醚基准（DOL/DME + LiTFSI + LiNO₃）：1 M LiTFSi/0.2 M LiNO3/DME/DOL（DME:DOL 比例原文未写），只出现在 0 °C、60 °C 电池测试；室温电池测试只有 2FPy 对 3FPy，无常规醚基准",
+  "gradients": [
+    {
+      "name": "溶剂种类 2FPy → 3FPy（种类梯度，按 Li⁺ 溶剂化）",
+      "order": ["2FPy", "3FPy"],
+      "values": ["2FPy（[2FPy + Li]+ 相对丰度 55.1%）", "3FPy（[3FPy + Li]+ 相对丰度 9.6%）"],
+      "solvation_axis": "按 Li⁺ 溶剂化由强到弱；依据：作者 (+)ESI/MS CID 中锂化加合物碎片相对丰度（以 [Py + Li]+ 为 100），2FPy 与 Li⁺ 作用强于 3FPy；两档盐同为 1 M LiTFSI，但 LiNO₃ 用量不同（2FPy 饱和且微溶，3FPy 定量加入）；多硫化物溶解度排序与此相反（3FPy 高）",
+      "evidence_ids": ["M0028", "M0030", "M0041"]
+    },
+    {
+      "name": "溶剂种类 3FPy → 2FPy → DME/DOL（种类梯度，按多硫化物溶解度）",
+      "order": ["3FPy", "2FPy", "DME/DOL"],
+      "values": ["2134 mM", "459.7 mM", "451.5 mM"],
+      "solvation_axis": "按多硫化物溶剂化（溶解度）由强到弱；依据：作者 ICP-OES 测 1 M Li2S6 纯溶剂（不含 LiTFSI、LiNO₃）上清液 Li⁺ 浓度，作者给出降序 3FPy > Py > 2FPy > DME/DOL；2FPy 与 DME/DOL 几乎相同，加 1 M LiTFSI 后 HPLC 顺序变为 3FPy > DME/DOL > 2FPy；2FPy 与多硫化物反应；DME/DOL 的 Li⁺ 溶剂化未测",
+      "evidence_ids": ["M0081", "S0084", "M0084"]
+    }
+  ],
+  "properties": [
+    {
+      "name": "Li⁺ 溶剂化",
+      "values": {"2FPy": "[2FPy + Li]+ 相对丰度 55.1%（[Py + Li]+ = 100）", "3FPy": "[3FPy + Li]+ 相对丰度 9.6%（[Py + Li]+ = 100）", "DME/DOL": "未报告"},
+      "direction": "与 Li⁺ 作用 2FPy 强于 3FPy（4FPy 23.9% 居中；三种氟吡啶均弱于 Py）",
+      "method": "(+)ESI/MS 锂化加合物 [Py + Li + Y]+ 的 CID 碎片相对丰度（相对系统误差 <5%）",
+      "system": "50 mM LiTFSi 溶于吡啶与待测溶剂 1:1（摩尔比）二元溶剂，经质谱气相解离；与电池电解液（1 M LiTFSI 单一溶剂 + LiNO₃）不同；DME/DOL 未测",
+      "evidence_ids": ["M0028", "M0030", "M0041", "S0028"]
+    },
+    {
+      "name": "多硫化物溶解度（不含 LiTFSI，ICP-OES）",
+      "values": {"3FPy": "上清液 Li⁺ 浓度 2134 mM", "2FPy": "上清液 Li⁺ 浓度 459.7 mM", "DME/DOL": "上清液 Li⁺ 浓度 451.5 mM"},
+      "direction": "3FPy > 2FPy > DME/DOL（Py 1834 mM 居第二；2FPy 与 DME/DOL 几乎相同）；HPLC 定性一致",
+      "method": "ICP-OES 测 1 M 化学计量 Li2S6 混合物上清液的 Li⁺ 浓度；HPLC 峰面积佐证",
+      "system": "1 M Li2S6 于纯溶剂（不含 LiTFSI、LiNO₃），室温搅拌 96 hours；与电池电解液不同",
+      "evidence_ids": ["M0080", "M0081", "S0006", "S0007", "S0083", "S0084"]
+    },
+    {
+      "name": "多硫化物溶解度（加 1 M LiTFSI 后，HPLC）",
+      "values": {"3FPy": "总峰面积 42323258（加盐前 48070971，略降）", "2FPy": "总峰面积 1101345（加盐前 4642333，显著降低）", "DME/DOL": "总峰面积 19754302（加盐前 8395621，升高）"},
+      "direction": "加 1 M LiTFSI 后 3FPy > DME/DOL > 2FPy；LiTFSI 使 2FPy、3FPy 中溶解度降低，使 DME/DOL（及 Py）中升高，作者称原因不明",
+      "method": "HPLC（甲基化衍生后各多硫化物与 S8 峰面积之和，稀释 100 倍）",
+      "system": "1 M Li2S6 + 1 M LiTFSi 于纯溶剂，不含 LiNO₃；较接近电池电解液但仍不同",
+      "evidence_ids": ["M0082", "M0084", "M0085", "S0081", "S0082", "S0085", "S0086"]
+    },
+    {
+      "name": "多硫化物溶剂化（物种分布）",
+      "values": {"3FPy": "[LiSn−] 物种（S5 2−至 S9 2−）相对丰度很高；S3− 自由基丰度低于 Py；长链（S7 2−、S8 2−、S9 2−）强度高于 Py", "2FPy": "无 [LiSn−] 多硫化物物种，仅低丰度 S3− 自由基，以 2FPy 与硫化物/多硫化物的负电加合物为主", "DME/DOL": "未报告"},
+      "direction": "S3− 自由基相对丰度 Py > 3FPy > 2FPy；3FPy 偏向稳定长链多硫化物（作者推测）",
+      "method": "(−)ESI/MS 与甲基化衍生 HPLC/UV",
+      "system": "15 mM Li2S6 于纯溶剂（不含锂盐）；与电池电解液不同",
+      "evidence_ids": ["M0054", "M0056", "M0059", "M0060", "M0063", "M0068", "M0069"]
+    },
+    {
+      "name": "与多硫化物的化学反应性（原文另测）",
+      "values": {"2FPy": "与多硫化物反应（亲核取代，生成 Py-S−、Py-S2 −）", "3FPy": "室温下不与多硫化物反应", "DME/DOL": "未报告"},
+      "direction": "2FPy 反应、3FPy 稳定",
+      "method": "(−)ESI/MS、HPLC、HPLC-(+)ESI/MS",
+      "system": "15 mM Li2S6 于纯溶剂，室温；3FPy 的稳定性另以电池充放电曲线（Figure 2E）佐证",
+      "evidence_ids": ["M0005", "M0070", "M0071", "M0072", "M0074", "M0078"]
+    },
+    {
+      "name": "S8 溶解度（原文另测）",
+      "values": {"3FPy": "21.38 mM", "2FPy": "12.47 mM", "DME/DOL": "未报告（只引文献给出 DME 单溶剂 9.96 mM）"},
+      "direction": "3FPy > 2FPy",
+      "method": "HPLC（过量 S8 饱和后上清液，S8 标准曲线）",
+      "system": "纯溶剂，不含锂盐",
+      "evidence_ids": ["M0083", "S0015", "S0088"]
+    },
+    {
+      "name": "LiNO₃ 溶解度（作者定性）",
+      "values": {"2FPy": "低（LiNO3 only slightly dissolved in 2FPy，饱和）", "3FPy": "未报告（配方可溶入 0.2 M）", "DME/DOL": "未报告"},
+      "direction": "2FPy 中低（作者定性）",
+      "method": "作者定性描述",
+      "system": "电池电解液本身",
+      "evidence_ids": ["M0088", "S0047", "M0047"]
+    }
+  ],
+  "tests": [
+    {
+      "id": "P548-T1",
+      "name": "Li‖S 扣式 室温 0.05 C 循环",
+      "cell": "Li‖S 扣式（CR2032）",
+      "conditions": {
+        "sulfur_loading": "约 1.6 mg cm-2（理论面载量）",
+        "ES": "约 5（8 μL 电解液）",
+        "ES_unit": "原文未写单位（推定 µL mg⁻¹，体积基）",
+        "Li_thickness": "未报告（lithium chip）",
+        "rate": "0.05 C",
+        "formation": "未报告（组装后静置 12 hours，未写化成圈）",
+        "temperature": "室温（原文 room temperature，未给数值）",
+        "LiNO3": "含：3FPy 为 0.2 M；2FPy 为饱和（原文称仅微溶，浓度未报告）",
+        "one_C": "未报告",
+        "electrolyte_volume": "8 μL",
+        "voltage_window": "1.7–3.0 V",
+        "cathode": "S/CMK3 复合正极（S 60 wt%、CMK3 20 wt%、C65 10 wt%、PVDF 10 wt%）"
+      },
+      "formulations": ["2FPy", "3FPy"],
+      "evidence_ids": ["S0029", "S0031", "S0035", "S0036", "S0037", "S0038", "S0039", "M0035", "M0036", "M0047", "M0048"],
+      "results": [
+        {
+          "id": "P548-T1-R1",
+          "metric": "保持率",
+          "A": "3FPy", "B": "2FPy",
+          "value_A": null, "value_B": null,
+          "unit": "%",
+          "point": "0.05 C 第 50 圈相对初始容量",
+          "basis": "qualitative",
+          "direction_text": "不判",
+          "same_conditions": false,
+          "evidence_ids": ["M0036"],
+          "reason": "作者定性：两者保持率相当（comparable），50 圈后均仅保留 50−60%（两者共用一个区间，未分别给值）；两配方 LiNO₃ 用量不同（2FPy 饱和且微溶 vs 3FPy 0.2 M），按“A、B 条件分别给值且不同”不判"
+        },
+        {
+          "id": "P548-T1-R2",
+          "metric": "首圈容量",
+          "A": "3FPy", "B": "2FPy",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1",
+          "point": "0.05 C 第 1 圈（原文未写化成）",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": false,
+          "evidence_ids": [],
+          "reason": "仅在图中（Fig. 2D、2F，分图），已登记读图；两配方 LiNO₃ 用量不同，按规则不判"
+        }
+      ]
+    },
+    {
+      "id": "P548-T2",
+      "name": "Li‖S 扣式 室温 倍率测试",
+      "cell": "Li‖S 扣式（CR2032）",
+      "conditions": {
+        "sulfur_loading": "约 1.6 mg cm-2（理论面载量）",
+        "ES": "约 5（8 μL 电解液）",
+        "ES_unit": "原文未写单位（推定 µL mg⁻¹，体积基）",
+        "Li_thickness": "未报告（lithium chip）",
+        "rate": "第 1–10 圈 0.02 C、11–20 圈 0.04 C、21–30 圈 0.1 C、31–40 圈 0.2 C、41–50 圈 0.5 C、51–60 圈 1 C、61–160 圈 0.1 C",
+        "formation": "未报告（组装后静置 12 hours，未写化成圈）",
+        "temperature": "室温（原文 room temperature，未给数值）",
+        "LiNO3": "含：3FPy 为 0.2 M；2FPy 为饱和（原文称仅微溶，浓度未报告）",
+        "one_C": "未报告",
+        "electrolyte_volume": "8 μL",
+        "voltage_window": "1.7–3.0 V"
+      },
+      "formulations": ["2FPy", "3FPy"],
+      "evidence_ids": ["S0035", "S0036", "S0037", "S0038", "S0039", "S0053", "S0054", "M0037", "M0047"],
+      "results": [
+        {
+          "id": "P548-T2-R1",
+          "metric": "倍率容量",
+          "A": "3FPy", "B": "2FPy",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1",
+          "point": "较高倍率段（原文 at a higher rate，未写具体倍率）",
+          "basis": "qualitative",
+          "direction_text": "不判",
+          "same_conditions": false,
+          "evidence_ids": ["M0037"],
+          "reason": "作者定性：2FPy 在较高倍率下优于 3FPy（即 3FPy 相对 2FPy 变坏）；两配方 LiNO₃ 用量不同，按“A、B 条件分别给值且不同”不判；各倍率数值只在 Figure S-2A，无文字锚点"
+        }
+      ]
+    },
+    {
+      "id": "P548-T3",
+      "name": "Li‖S 扣式 60 °C 0.05 C 循环（不含 LiNO₃）",
+      "cell": "Li‖S 扣式（CR2032）",
+      "conditions": {
+        "sulfur_loading": "约 1.6 mg cm-2（理论面载量）",
+        "ES": "约 5（8 μL 电解液）",
+        "ES_unit": "原文未写单位（推定 µL mg⁻¹，体积基）",
+        "Li_thickness": "未报告（lithium chip）",
+        "rate": "0.05 C",
+        "formation": "未报告（组装后静置 12 hours，未写化成圈）",
+        "temperature": "60 °C",
+        "LiNO3": "不含",
+        "one_C": "未报告",
+        "electrolyte_volume": "8 μL",
+        "voltage_window": "1.7–3.0 V"
+      },
+      "formulations": ["2.5M-2FPy", "2.5M-3FPy"],
+      "evidence_ids": ["S0035", "S0036", "S0037", "S0038", "S0040", "S0077", "M0086"],
+      "results": [
+        {
+          "id": "P548-T3-R1",
+          "metric": "穿梭效应",
+          "A": "2.5M-3FPy", "B": "2.5M-2FPy",
+          "value_A": null, "value_B": null,
+          "unit": "无",
+          "point": "60 °C、0.05 C 充放电曲线（Figure S-18A、C）",
+          "basis": "qualitative",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["M0086"],
+          "reason": "作者定性：2FPy 与 3FPy（即使 2.5 M LiTFSi）在不含 LiNO₃ 时 60 °C 下均出现严重多硫化物穿梭；无数值"
+        }
+      ]
+    },
+    {
+      "id": "P548-T4",
+      "name": "Li‖S 扣式 60 °C 0.05 C 循环（含 LiNO₃）",
+      "cell": "Li‖S 扣式（CR2032）",
+      "conditions": {
+        "sulfur_loading": "约 1.6 mg cm-2（理论面载量）",
+        "ES": "约 5（8 μL 电解液）",
+        "ES_unit": "原文未写单位（推定 µL mg⁻¹，体积基）",
+        "Li_thickness": "未报告（lithium chip）",
+        "rate": "0.05 C",
+        "formation": "未报告（组装后静置 12 hours，未写化成圈）",
+        "temperature": "60 °C",
+        "LiNO3": "含：3FPy、DME/DOL 为 0.2 M；2FPy 为饱和（原文称仅微溶，浓度未报告）",
+        "one_C": "未报告",
+        "electrolyte_volume": "8 μL",
+        "voltage_window": "1.7–3.0 V"
+      },
+      "formulations": ["2FPy", "3FPy", "DME/DOL"],
+      "evidence_ids": ["S0035", "S0036", "S0037", "S0038", "S0040", "S0077", "M0087", "M0088"],
+      "results": [
+        {
+          "id": "P548-T4-R1",
+          "metric": "穿梭效应（过充）",
+          "A": "3FPy", "B": "2FPy",
+          "value_A": null, "value_B": null,
+          "unit": "无",
+          "point": "60 °C、0.05 C 充放电曲线（Figure S-18B、D）",
+          "basis": "qualitative",
+          "direction_text": "不判",
+          "same_conditions": false,
+          "evidence_ids": ["M0087", "M0088"],
+          "reason": "作者分别描述：3FPy 加 LiNO₃ 后穿梭显著减轻但保持率仍欠佳（suboptimal）；2FPy 即使饱和 LiNO₃ 在 60 °C 仍严重过充；未直接对比，且两配方 LiNO₃ 用量不同，按规则不判。3FPy 与 DME/DOL 在本测试无文字比较"
+        }
+      ]
+    },
+    {
+      "id": "P548-T5",
+      "name": "Li‖S 扣式 0 °C 0.05 C 循环",
+      "cell": "Li‖S 扣式（CR2032）",
+      "conditions": {
+        "sulfur_loading": "约 1.6 mg cm-2（理论面载量）",
+        "ES": "约 5（8 μL 电解液）",
+        "ES_unit": "原文未写单位（推定 µL mg⁻¹，体积基）",
+        "Li_thickness": "未报告（lithium chip）",
+        "rate": "0.05 C",
+        "formation": "未报告（组装后静置 12 hours，未写化成圈）",
+        "temperature": "0 °C",
+        "LiNO3": "含：3FPy、DME/DOL 为 0.2 M；2FPy 为饱和（原文称仅微溶，浓度未报告）",
+        "one_C": "未报告",
+        "electrolyte_volume": "8 μL",
+        "voltage_window": "1.7–3.0 V"
+      },
+      "formulations": ["2FPy", "3FPy", "DME/DOL"],
+      "evidence_ids": ["S0035", "S0036", "S0037", "S0038", "S0040", "S0078", "M0090", "M0091"],
+      "results": [
+        {
+          "id": "P548-T5-R1",
+          "metric": "指定圈容量",
+          "A": "3FPy", "B": "DME/DOL",
+          "value_A": 300, "value_B": ">750",
+          "unit": "mAh g-1",
+          "point": "0 °C、0.05 C 循环 25 圈后的放电比容量",
+          "basis": "numeric",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0090", "M0091"],
+          "reason": "作者写明 under the same conditions；两者 LiNO₃ 同为 0.2 M；300 对 >750，差远大于 5%"
+        },
+        {
+          "id": "P548-T5-R2",
+          "metric": "指定圈容量",
+          "A": "2FPy", "B": "DME/DOL",
+          "value_A": 550, "value_B": ">750",
+          "unit": "mAh g-1",
+          "point": "0 °C、0.05 C 循环 25 圈后的放电比容量",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": false,
+          "evidence_ids": ["M0090", "M0091"],
+          "reason": "两配方 LiNO₃ 用量不同（2FPy 饱和且微溶 vs DME/DOL 0.2 M），按“A、B 条件分别给值且不同”不判；作者称氟吡啶电解液低温均表现差"
+        },
+        {
+          "id": "P548-T5-R3",
+          "metric": "指定圈容量",
+          "A": "3FPy", "B": "2FPy",
+          "value_A": 300, "value_B": 550,
+          "unit": "mAh g-1",
+          "point": "0 °C、0.05 C 循环 25 圈后的放电比容量",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": false,
+          "evidence_ids": ["M0090"],
+          "reason": "两配方 LiNO₃ 用量不同（3FPy 0.2 M vs 2FPy 饱和且微溶），按规则不判"
+        }
+      ]
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "P548-M1",
+      "summary": "CID 显示 Li⁺ 与 2FPy 的作用强于 4FPy、3FPy，作者推测源于 2FPy 独有的邻位氟作用（只解释 Li⁺ 溶剂化本身，未落到电池表现）",
+      "A": "2FPy", "B": "3FPy",
+      "property": "Li⁺ 溶剂化：2FPy 强于 3FPy",
+      "categories": [],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0093"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P548-M2",
+      "summary": "他文按计算 DN 预测 3FPy 与 Li⁺ 作用更强（DN 29.7 对 15.8 kcal mol−1），本文 CID 结果相反（[2FPy + Li]+ 55.1% 对 [3FPy + Li]+ 9.6%），DN 不能单独判断 Li⁺ 溶剂化",
+      "A": "2FPy", "B": "3FPy",
+      "property": "Li⁺ 溶剂化：实测 2FPy 强于 3FPy，与 DN 预测相反",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0029", "M0030"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P548-M3",
+      "summary": "转述 Choi 等：按计算 DN，把 3FPy 中多硫化物溶解度高归因于其 DN 高（相对 2FPy、4FPy）",
+      "A": "3FPy", "B": "2FPy",
+      "property": "多硫化物溶解度高（归因于 DN 高）",
+      "categories": [],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0014"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P548-M4",
+      "summary": "转述 Choi 等：3FPy 电解液中多硫化物溶解度高、SEI 中 LiF 含量高，是其在无 LiNO₃、贫液、高硫载量下循环好的关键（本篇未复测该条件）（M0013 只讲 3FPy 本身、未与任何配方比较；按规程“B 一般是对照”，B 填本篇对照 DME/DOL）",
+      "A": "3FPy", "B": "DME/DOL",
+      "property": "多硫化物溶解度高；SEI 富 LiF",
+      "categories": ["负极锂"],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0013"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P548-M5",
+      "summary": "作者自写的例外：加 LiTFSI 使 2FPy、3FPy 中多硫化物溶解度降低，却使 Py、DME/DOL 中升高，原因不明，说明只用 DN 解释溶剂化有局限",
+      "A": "全梯度", "B": "全梯度",
+      "property": "多硫化物溶解度（加 LiTFSI 后的变化方向因溶剂而异）",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0084", "M0085"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P548-M6",
+      "summary": "与 2FPy 相比，3FPy 电池放电高平台（硫还原为长链多硫化物）延长、低平台（长链还原为短链及硫化物）缩短，硫的氧化还原行为不同",
+      "A": "3FPy", "B": "2FPy",
+      "property": "溶剂由 2FPy 换为 3FPy（句中未写溶剂化性质）",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0039"],
+      "test_ids": ["P548-T1"],
+      "side": "其他"
+    },
+    {
+      "id": "P548-M7",
+      "summary": "3FPy 电池充电曲线约 2.4 V 出现第二平台，是在 DMA、DMSO 等电子对给体（EPD）电解液中循环的典型特征",
+      "A": "3FPy", "B": "2FPy",
+      "property": "3FPy 表现出 EPD（高给体）溶剂特征（多硫化物溶剂化）",
+      "categories": ["正极反应"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0044"],
+      "test_ids": ["P548-T1"],
+      "side": "其他"
+    },
+    {
+      "id": "P548-M8",
+      "summary": "转述：DMSO 等 EPD 溶剂稳定 S3− 自由基使放电出现第二平台；Choi 等用 UV-vis 证实 Py、3FPy 电解液中有 S3− 自由基（作者用以解释 3FPy 的平台特征）",
+      "A": "3FPy", "B": "2FPy",
+      "property": "多硫化物溶剂化：EPD 溶剂稳定 S3− 自由基",
+      "categories": ["正极反应"],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0045"],
+      "test_ids": ["P548-T1"],
+      "side": "其他"
+    },
+    {
+      "id": "P548-M9",
+      "summary": "2FPy 电池循环中逐渐出现 2.4–2.6 V 小放电平台，作者参照有机二硫化物研究推测其来自循环中 2FPy 与多硫化物持续反应生成的有机硫物种（溶剂被消耗）",
+      "A": "2FPy", "B": "3FPy",
+      "property": "2FPy 与多硫化物反应（化学反应性，非溶剂化）",
+      "categories": ["正极反应", "电解液消耗"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0076", "M0077"],
+      "test_ids": ["P548-T1"],
+      "side": "其他"
+    },
+    {
+      "id": "P548-M10",
+      "summary": "因 3FPy 的反应性不同及间位氟的吸电子效应，3FPy 不与多硫化物反应、保持稳定（电池曲线、质谱、HPLC 佐证）",
+      "A": "3FPy", "B": "2FPy",
+      "property": "3FPy 与多硫化物不反应（化学稳定性，非溶剂化）",
+      "categories": ["电解液消耗"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0078"],
+      "test_ids": ["P548-T1"],
+      "side": "其他"
+    },
+    {
+      "id": "P548-M11",
+      "summary": "60 °C 下在 3FPy 电解液中加入 LiNO₃ 显著减轻穿梭，但容量保持率仍欠佳（对照为不含 LiNO₃ 的 2.5 M LiTFSi/3FPy，跨 T3、T4，LiTFSI 浓度同时不同）",
+      "A": "3FPy", "B": "2.5M-3FPy",
+      "property": "加入 LiNO₃（非溶剂化性质；LiTFSI 浓度同时不同）",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0087"],
+      "test_ids": ["P548-T3", "P548-T4"],
+      "side": "其他"
+    },
+    {
+      "id": "P548-M12",
+      "summary": "LiNO₃ 在 2FPy 中溶解度低，限制了其稳定作用，即使饱和 LiNO₃，2FPy 电池在 60 °C 仍严重过充（穿梭表现）",
+      "A": "2FPy", "B": "3FPy",
+      "property": "2FPy 中 LiNO₃ 溶解度低",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0088"],
+      "test_ids": ["P548-T4"],
+      "side": "其他"
+    },
+    {
+      "id": "P548-M13",
+      "summary": "上述高温结果说明即使在氟吡啶电解液中，LiNO₃ 稳定锂负极 SEI 的作用也至关重要",
+      "A": "3FPy", "B": "2.5M-3FPy",
+      "property": "加入 LiNO₃（非溶剂化性质）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0089"],
+      "test_ids": ["P548-T3", "P548-T4"],
+      "side": "其他"
+    }
+  ],
+  "design_claims": [
+    {
+      "summary": "作者主张：3FPy 不与多硫化物反应且多硫化物溶解度高，在室温是有前景的 Li−S 电解液；未提折中或解耦",
+      "evidence_ids": ["M0094", "M0095"]
+    },
+    {
+      "summary": "适用条件限制：高温下必须加 LiNO₃ 才能抑制穿梭；低温下 3FPy 电池表现不如标准 DME/DOL 电解液",
+      "evidence_ids": ["M0097"]
+    }
+  ],
+  "figure_requests": [
+    {
+      "test_id": "P548-T1",
+      "figure": "Fig. 2D（2FPy）、Fig. 2F（3FPy）（推定为容量随圈数分图；2C、2E 为充放电曲线）",
+      "part": "main",
+      "metric": "首圈容量",
+      "A": "3FPy", "B": "2FPy",
+      "target_point": "0.05 C 第 1 圈（原文未写化成）",
+      "anchor_quote_ids": ["M0036"],
+      "reason": "Li‖S 循环类测试缺同一测试容量侧；锚点只有两者共用的 50 圈保持率区间 50−60%；两配方 LiNO₃ 用量不同，方向按规则不判，读数仅供复核"
+    }
+  ],
+  "gaps": [
+    "室温电池测试（T1、T2）无 DME/DOL 常规醚基准，只比 2FPy 与 3FPy",
+    "2FPy 的 LiNO₃ 为饱和且微溶，与 3FPy、DME/DOL 的 0.2 M 不同，涉及 2FPy 的比较按规则均不判",
+    "DME/DOL 的 DME:DOL 比例原文未写",
+    "锂片厚度、1C 定义、化成协议、室温具体温度未报告；E/S 只写 around 5，未写单位",
+    "T1 首圈容量只在 Fig. 2D/2F；库仑效率、过电位未报告",
+    "T2 各倍率容量与库仑效率/相对保持率只在 Figure S-2，无文字数值锚点，未登记读图",
+    "T3、T4 只有充放电曲线（Figure S-18），无文字数值；T4 中 3FPy 与 DME/DOL 无文字比较",
+    "T5 首圈容量、保持率、库仑效率、过电位未报告（Figure S-19 为充放电曲线，不读）",
+    "加 LiNO₃ 与否的比较跨 T3/T4（LiTFSI 2.5 M vs 1 M 同时变化），只作机制说法记录",
+    "离子电导率、黏度、离子迁移数未报告",
+    "Li⁺ 溶剂化（CID）在 50 mM LiTFSI、吡啶二元溶剂中测，DME/DOL 未测；多硫化物溶解度在不含 LiNO₃ 的纯溶剂中测",
+    "三电极玻碳 CV（Figure S-1）与扣式 CV（Figure 2A）正文无数值结论，未建测试",
+    "Py、4FPy 只测性质，无电池测试，未列为配方",
+    "Figure S-18 图注缺 (E)，DME/DOL 标为 (F)",
+    "低温表现差未给机制解释"
+  ],
+  "source_review": {
+    "main": true,
+    "si": true,
+    "notes": "通读正文（M0001–M0199，参考文献略读）与 SI（S0001–S0095）；未读任何既有提取结果。电池测试条件只在 SI 实验部分；图 2、S-2、S-18、S-19 只有图注与坐标文字，未看图。引言中转述 Choi 等（ref 25）的 3FPy 说法（M0013、M0014）按转述记录；M0086 前半句（Choi：室温无 LiNO₃ 无穿梭）为转述，后半句为本文 60 °C 结果。M0060（Py 与 3FPy 的多硫化物平衡）因 Py 不是电池配方，只记入性质。"
+  }
+}
