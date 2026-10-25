@@ -6,6 +6,7 @@ Claude/GPT runs. One API call per paper; format errors (never content hints)
 are sent back for at most 2 repair rounds; the first passing JSON is frozen.
 
   setup               copy+verify sources, build and hash the system prompt
+  setup_v2            prompt_system_v2.md: v1 + the 10-25 mechanism-sentence rules copied from scheme §5.7
   run ID [ID ...]     extract, check, freeze the given papers (skip frozen ones)
   run all [--workers N]
   validate            run step8f.validate() on all frozen predictions
@@ -101,6 +102,38 @@ def setup():
         'scope': len(mf)})
     print('setup 完成：', len(mf), '篇；prompt', len(prompt), '字符，sha256', sha(prompt)[:16])
 
+SCHEME = ROOT / '课题二_锂硫电解液矛盾归因_课题方案.md'
+
+def setup_v2():
+    """v1 prompt + 10-25 rules (verbatim from scheme §5.7) + property 'origin' field. v1 stays as is."""
+    v1 = (OUT / 'prompt_system.md').read_text(encoding='utf-8')
+    scheme = SCHEME.read_text(encoding='utf-8')
+    i = scheme.index('**哪些句子算机制原句（10-25 用户定')
+    rules = scheme[i:scheme.index('\n\n**程序做的', i)].rstrip() + '\n'
+    prop_old = '没测写“未报告”。只记高低，不判好坏 |'
+    prop_new = scheme[scheme.index('没测写“未报告”。只记高低，不判好坏。作者对性质来源'):]
+    prop_new = prop_new[:prop_new.index('|') + 1]
+    anchor = '| 出处 | 每项附原句和位置 | 代码到全文缓存逐句核对 |\n'
+    field_old = '      "evidence_ids": ["M0060"]\n'
+    field_new = ('      "evidence_ids": ["M0060"],\n'
+                 '      "origin": [                    // 作者对这个性质来源的解释（分子结构 → 溶剂化/溶解度）；没有填 []\n'
+                 '        {"summary": "中文概括（AI 写）", "evidence_ids": ["M0045"]}\n'
+                 '      ]\n')
+    for old in (prop_old, anchor, field_old):
+        assert v1.count(old) == 1, old
+    v2 = (v1.replace('（千问 API 版，2026-10-25）', '（千问 API 版 v2，2026-10-25：加机制原句口径）')
+            .replace(prop_old, prop_new).replace(anchor, anchor + '\n' + rules)
+            .replace(field_old, field_new)
+            .replace('- 机制一句一条，标来源和过程大类；',
+                     '- 机制一句一条，标来源和过程大类；按“哪些句子算机制原句”的 5 条取舍（引言背景不记、性质来源放进性质的 origin、摘要/引言末预告/结论里与正文重复的不记、排除性说法要记）；'))
+    (OUT / 'prompt_system_v2.md').write_text(v2, encoding='utf-8')
+    cfg = json.loads((OUT / 'run_config.json').read_text(encoding='utf-8'))
+    cfg['prompt_v2'] = {'file': 'prompt_system_v2.md', 'sha256': sha(v2),
+                        'change': 'v1 + 方案 §5.7“哪些句子算机制原句”5 条（逐字）+ 性质行改写 + properties.origin 字段',
+                        'scheme_sha256': sha(SCHEME.read_bytes())}
+    save(OUT / 'run_config.json', cfg)
+    print('prompt v2', len(v2), '字符，sha256', sha(v2)[:16])
+
 def client():
     from openai import OpenAI
     return OpenAI(base_url=BASE_URL, api_key='proxy-injected', timeout=1800, max_retries=0)
@@ -141,13 +174,14 @@ def strip_json(text):
             t = t.rstrip()[:-3]
     return t.strip()
 
-def extract(pid, cli, dest=OUT, model=MODEL, thinking=False):
+def extract(pid, cli, dest=OUT, model=MODEL, thinking=False, prompt='prompt_system.md'):
     if (dest / 'independent_predictions' / f'{pid}.json').exists():
         return {'paper_id': pid, 'status': '已冻结，跳过'}
-    system = (OUT / 'prompt_system.md').read_text(encoding='utf-8')
+    system = (OUT / prompt).read_text(encoding='utf-8')
     paper = (OUT / 'sources_txt' / f'{pid}.txt').read_text(encoding='utf-8')
     messages = [{'role': 'system', 'content': system}, {'role': 'user', 'content': paper}]
-    log = {'paper_id': pid, 'model': model, 'enable_thinking': thinking, 'rounds': []}
+    log = {'paper_id': pid, 'model': model, 'enable_thinking': thinking, 'prompt': prompt,
+           'prompt_sha256': sha(system), 'rounds': []}
     for sub in ['raw', 'drafts', 'independent_predictions', 'freeze', 'logs']:
         (dest / sub).mkdir(parents=True, exist_ok=True)
     for rnd in range(REPAIR_ROUNDS + 1):
@@ -208,20 +242,23 @@ def run(ids, workers):
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()
-    ap.add_argument('cmd', choices=['setup', 'run', 'validate', 'trial'])
+    ap.add_argument('cmd', choices=['setup', 'setup_v2', 'run', 'validate', 'trial'])
     ap.add_argument('ids', nargs='*')
     ap.add_argument('--workers', type=int, default=1)
     ap.add_argument('--label')
     ap.add_argument('--model', default=MODEL)
     ap.add_argument('--thinking', action='store_true')
+    ap.add_argument('--prompt', default='prompt_system.md')
     a = ap.parse_args()
     if a.cmd == 'setup':
         setup()
+    elif a.cmd == 'setup_v2':
+        setup_v2()
     elif a.cmd == 'run':
         run(a.ids, a.workers)
     elif a.cmd == 'trial':
         cli = client()
         for pid in a.ids:
-            extract(pid, cli, OUT / '设置对比' / a.label, a.model, a.thinking)
+            extract(pid, cli, OUT / '设置对比' / a.label, a.model, a.thinking, a.prompt)
     else:
         s9.cmd_validate()
