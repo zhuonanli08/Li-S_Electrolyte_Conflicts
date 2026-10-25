@@ -144,6 +144,18 @@ def main():
     sheet('汇总', ['指标'] + names, [[k] + [stats[n][k] for n in names] for k in keys] +
           [['说明'] + [EXTRACTORS[n][1] for n in names]], [26] + [18] * len(names))
 
+    # gradients (5 in the paper) and tests (10 groups), judged by reading S39 (AI-assisted)
+    struct = {'Claude': (5, 10), 'GPT': (3, 10), '千问Max关思考': (2, 7), '千问27B开思考': (1, 7),
+              '千问27B关思考': (1, 4), '智谱GLM-5.3关思考': (1, 6)}
+    pr = []
+    for n in names:
+        s = stats[n]
+        g, t = struct[n]
+        pr.append([n, f"{s['应记句召回']:.0%}（{s['应记句命中']}/{s['应记句总数']}）",
+                   f"{s['挂的句子里应记的比例']:.0%}", f'{g / 5:.0%}（{g}/5）', '100%',
+                   f'{t / 10:.0%}（{t}/10）', '100%', s['配方'], s['结果'], EXTRACTORS[n][1]])
+    sheet('召回率与精确率', ['模型', '机制句召回', '机制句精确率', '梯度召回', '梯度精确率', '测试召回', '测试精确率',
+                        '配方数', '结果条数（对错未判）', '说明'], pr, [18, 16, 12, 12, 10, 12, 10, 8, 12, 40])
     data = []
     for e in rows:
         s = src[e]
