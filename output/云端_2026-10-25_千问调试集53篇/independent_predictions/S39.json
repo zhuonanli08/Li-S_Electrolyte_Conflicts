@@ -1,0 +1,591 @@
+{
+  "paper_id": "S39",
+  "doi": "10.1021/acsenergylett.5c02200",
+  "formulations": [
+    {
+      "id": "DOL/DME",
+      "name": "DOL/DME (1:1, v/v)",
+      "components": [
+        {
+          "name": "DOL",
+          "role": "溶剂化溶剂",
+          "amount": "1",
+          "unit": "v/v"
+        },
+        {
+          "name": "DME",
+          "role": "溶剂化溶剂",
+          "amount": "1",
+          "unit": "v/v"
+        },
+        {
+          "name": "LiTFSI",
+          "role": "盐",
+          "amount": 1.0,
+          "unit": "M"
+        }
+      ],
+      "raw_formula": "DOL/DME (1:1, v/v) ... 1.0 M LiTFSI",
+      "evidence_ids": [
+        "M0038",
+        "S0010",
+        "S0011"
+      ]
+    },
+    {
+      "id": "DOL/F4DEE",
+      "name": "DOL/F4DEE (4:1, v/v)",
+      "components": [
+        {
+          "name": "DOL",
+          "role": "溶剂化溶剂",
+          "amount": "4",
+          "unit": "v/v"
+        },
+        {
+          "name": "F4DEE",
+          "role": "弱或非溶剂化溶剂",
+          "amount": "1",
+          "unit": "v/v"
+        },
+        {
+          "name": "LiTFSI",
+          "role": "盐",
+          "amount": 1.0,
+          "unit": "M"
+        }
+      ],
+      "raw_formula": "DOL/F4DEE (4:1 v/v) ... 1.0 M LiTFSI",
+      "evidence_ids": [
+        "S0010",
+        "S0011",
+        "M0020"
+      ]
+    },
+    {
+      "id": "DOL/TTE",
+      "name": "DOL/TTE (4:1, v/v)",
+      "components": [
+        {
+          "name": "DOL",
+          "role": "溶剂化溶剂",
+          "amount": "4",
+          "unit": "v/v"
+        },
+        {
+          "name": "TTE",
+          "role": "弱或非溶剂化溶剂",
+          "amount": "1",
+          "unit": "v/v"
+        },
+        {
+          "name": "LiTFSI",
+          "role": "盐",
+          "amount": 1.0,
+          "unit": "M"
+        }
+      ],
+      "raw_formula": "DOL/TTE (4:1 v/v) ... 1.0 M LiTFSI",
+      "evidence_ids": [
+        "S0010",
+        "S0011",
+        "M0020"
+      ]
+    }
+  ],
+  "control_id": "DOL/DME",
+  "control_type": "常规醚基准（DOL/DME + LiTFSI + LiNO₃）：文中以 DOL/DME 为 baseline，对比 F-ether (DOL/TTE) 和 PFG (DOL/F4DEE)",
+  "gradients": [
+    {
+      "name": "共溶剂种类（种类梯度）",
+      "order": [
+        "DOL/DME",
+        "DOL/F4DEE",
+        "DOL/TTE"
+      ],
+      "values": [
+        "DME",
+        "F4DEE",
+        "TTE"
+      ],
+      "solvation_axis": "按 Li⁺ 溶剂化由强到弱；依据：作者 19F NMR 位移及 MD 模拟显示 DOL/DME > DOL/F4DEE > DOL/TTE",
+      "evidence_ids": [
+        "M0039",
+        "M0040",
+        "M0042"
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "name": "Li⁺ 溶剂化",
+      "values": {
+        "DOL/DME": "强",
+        "DOL/F4DEE": "中等",
+        "DOL/TTE": "弱"
+      },
+      "direction": "沿梯度降低",
+      "method": "19F NMR, Raman, MD simulation",
+      "system": "1.0 M LiTFSI in solvents",
+      "evidence_ids": [
+        "M0037",
+        "M0039",
+        "M0042"
+      ]
+    },
+    {
+      "name": "多硫化物溶解度 (Li2S6)",
+      "values": {
+        "DOL/DME": "1.0 M",
+        "DOL/F4DEE": "0.38 M",
+        "DOL/TTE": "0.22 M"
+      },
+      "direction": "沿梯度降低",
+      "method": "Dissolution experiment",
+      "system": "Saturated Li2S6 solutions",
+      "evidence_ids": [
+        "M0049"
+      ]
+    },
+    {
+      "name": "多硫化物溶剂化",
+      "values": {
+        "DOL/DME": "强",
+        "DOL/F4DEE": "弱",
+        "DOL/TTE": "弱"
+      },
+      "direction": "DOL/F4DEE 显著弱于 DOL/DME",
+      "method": "UV-vis spectroscopy, MD simulation (number density distribution)",
+      "system": "0.5 mM Li2S6 / 0.1 M Li2S6",
+      "evidence_ids": [
+        "M0051",
+        "M0052",
+        "M0054"
+      ]
+    },
+    {
+      "name": "离子电导率 (Li+ conductivity)",
+      "values": {
+        "DOL/F4DEE": "3.6 mS cm-1"
+      },
+      "direction": "未报告完整梯度数值，但指出所有测试电解液均 > 1.0 mS cm-1",
+      "method": "Conductivity measurement",
+      "system": "Bulk electrolyte",
+      "evidence_ids": [
+        "M0068",
+        "S0119"
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "id": "S39-T1",
+      "name": "Li‖Cu Aurbach CE 测试",
+      "cell": "Li‖Cu 扣式",
+      "conditions": {
+        "sulfur_loading": "N/A",
+        "ES": "N/A",
+        "ES_unit": "N/A",
+        "Li_thickness": "N/A",
+        "rate": "0.5 mA cm-2",
+        "formation": "0.5 mA cm-2 for 10 h plating/stripping",
+        "temperature": "未报告",
+        "LiNO3": "不含",
+        "one_C": "N/A"
+      },
+      "formulations": [
+        "DOL/DME",
+        "DOL/F4DEE",
+        "DOL/TTE"
+      ],
+      "evidence_ids": [
+        "S0016",
+        "S0017",
+        "S0018",
+        "M0070"
+      ],
+      "results": [
+        {
+          "id": "S39-T1-R1",
+          "metric": "库仑效率",
+          "A": "DOL/F4DEE",
+          "B": "DOL/DME",
+          "value_A": 98.25,
+          "value_B": null,
+          "unit": "%",
+          "point": "Aurbach method average CE",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0071"
+          ],
+          "reason": "正文仅给出 DOL/F4DEE 的具体数值 98.25%，并定性描述其最高。DOL/DME 具体数值未在正文文字中直接列出，但根据“highest”可知 A > B。由于缺少 B 的具体数值用于计算差异百分比，且规则要求 numeric 需有 A、B 两数，故此处 basis 设为 qualitative。"
+        },
+        {
+          "id": "S39-T1-R2",
+          "metric": "库仑效率",
+          "A": "DOL/F4DEE",
+          "B": "DOL/TTE",
+          "value_A": 98.25,
+          "value_B": null,
+          "unit": "%",
+          "point": "Aurbach method average CE",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0071"
+          ],
+          "reason": "同上，A 为最高，故优于 TTE。"
+        }
+      ]
+    },
+    {
+      "id": "S39-T2",
+      "name": "Li‖CP GITT 放电/充电 (0.1 M Li2S6)",
+      "cell": "Li‖Carbon Paper 扣式",
+      "conditions": {
+        "sulfur_loading": "N/A (Catholyte based)",
+        "ES": "N/A",
+        "ES_unit": "N/A",
+        "Li_thickness": "N/A",
+        "rate": "0.12 mA cm-2 (GITT step)",
+        "formation": "N/A",
+        "temperature": "未报告",
+        "LiNO3": "含 0.1 M",
+        "one_C": "N/A"
+      },
+      "formulations": [
+        "DOL/DME",
+        "DOL/F4DEE",
+        "DOL/TTE"
+      ],
+      "evidence_ids": [
+        "S0044",
+        "S0045",
+        "M0089",
+        "M0094"
+      ],
+      "results": [
+        {
+          "id": "S39-T2-R1",
+          "metric": "倍率容量",
+          "A": "DOL/F4DEE",
+          "B": "DOL/DME",
+          "value_A": 500,
+          "value_B": 900,
+          "unit": "mAh g-1",
+          "point": "Stage II discharge capacity",
+          "basis": "numeric",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0094"
+          ],
+          "reason": "Stage II 容量 DOL/DME (900) > DOL/F4DEE (500)。|500-900|/900 = 44% > 5%, 变坏。"
+        },
+        {
+          "id": "S39-T2-R2",
+          "metric": "倍率容量",
+          "A": "DOL/TTE",
+          "B": "DOL/DME",
+          "value_A": 400,
+          "value_B": 900,
+          "unit": "mAh g-1",
+          "point": "Stage II discharge capacity",
+          "basis": "numeric",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0094"
+          ],
+          "reason": "Stage II 容量 DOL/DME (900) > DOL/TTE (400)。"
+        },
+        {
+          "id": "S39-T2-R3",
+          "metric": "倍率容量",
+          "A": "DOL/F4DEE",
+          "B": "DOL/DME",
+          "value_A": 650,
+          "value_B": 650,
+          "unit": "mAh g-1",
+          "point": "Stage III discharge capacity",
+          "basis": "numeric",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0095"
+          ],
+          "reason": "Stage III 容量均为 650 mAh g-1。"
+        }
+      ]
+    },
+    {
+      "id": "S39-T3",
+      "name": "Li‖C/S GITT 放电",
+      "cell": "Li‖C/S 扣式",
+      "conditions": {
+        "sulfur_loading": "3.5 mg cm-2",
+        "ES": "10",
+        "ES_unit": "µL mg⁻¹（体积基）",
+        "Li_thickness": "未报告",
+        "rate": "0.42 mA cm-2 (GITT step)",
+        "formation": "N/A",
+        "temperature": "未报告",
+        "LiNO3": "含 0.2 M",
+        "one_C": "1200 mA g-1"
+      },
+      "formulations": [
+        "DOL/DME",
+        "DOL/F4DEE",
+        "DOL/TTE"
+      ],
+      "evidence_ids": [
+        "S0047",
+        "S0049",
+        "S0050",
+        "M0138",
+        "M0139"
+      ],
+      "results": [
+        {
+          "id": "S39-T3-R1",
+          "metric": "首圈容量",
+          "A": "DOL/DME",
+          "B": "DOL/F4DEE",
+          "value_A": null,
+          "value_B": null,
+          "unit": "mAh g-1",
+          "point": "First GITT discharge total capacity",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0139"
+          ],
+          "reason": "原文称 'DOL/DME delivers the highest discharge capacity'，故 DOL/DME > DOL/F4DEE。"
+        },
+        {
+          "id": "S39-T3-R2",
+          "metric": "过电位",
+          "A": "DOL/F4DEE",
+          "B": "DOL/TTE",
+          "value_A": null,
+          "value_B": null,
+          "unit": "mV",
+          "point": "GITT overpotential",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0141"
+          ],
+          "reason": "原文称 'DOL/F4DEE outperforms DOL/TTE in LiPS redox kinetics due to its higher LiPS solubility'，且前文提到溶度越低过电位越高，故 F4DEE 过电位低于 TTE。"
+        }
+      ]
+    },
+    {
+      "id": "S39-T4",
+      "name": "Li‖S 扣式长循环",
+      "cell": "Li‖S 扣式",
+      "conditions": {
+        "sulfur_loading": "3.5 mg cm-2",
+        "ES": "10",
+        "ES_unit": "µL mg⁻¹（体积基）",
+        "Li_thickness": "未报告",
+        "rate": "0.1 C",
+        "formation": "0.05 C 2 圈",
+        "temperature": "未报告",
+        "LiNO3": "含 0.2 M",
+        "one_C": "1200 mA g-1"
+      },
+      "formulations": [
+        "DOL/DME",
+        "DOL/F4DEE",
+        "DOL/TTE"
+      ],
+      "evidence_ids": [
+        "S0050",
+        "S0051",
+        "M0145",
+        "M0148",
+        "M0149",
+        "M0159"
+      ],
+      "results": [
+        {
+          "id": "S39-T4-R1",
+          "metric": "寿命（循环圈数）",
+          "A": "DOL/F4DEE",
+          "B": "DOL/DME",
+          "value_A": ">180",
+          "value_B": 55,
+          "unit": "cycles",
+          "point": "Capacity fading threshold (implied by text description)",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0149",
+            "M0159"
+          ],
+          "reason": "DOL/DME 'quick capacity fading after only 55 cycles', DOL/F4DEE 'prolonged Li-S cycle life of over 180 cycles'. |180-55|/180 > 5%, 变好."
+        },
+        {
+          "id": "S39-T4-R2",
+          "metric": "首圈容量",
+          "A": "DOL/F4DEE",
+          "B": "DOL/DME",
+          "value_A": null,
+          "value_B": null,
+          "unit": "mAh g-1",
+          "point": "First cycle at 0.1 C",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [],
+          "reason": "正文未给出具体首圈容量数值，仅在 Figure 5b/d 中展示。需读图。"
+        }
+      ]
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "S39-M1",
+      "summary": "DOL/F4DEE 具有中等 Li+ 溶剂化，促进形成富氟 SEI，调节锂沉积形貌，提高锂负极稳定性（CE 高）。",
+      "A": "DOL/F4DEE",
+      "B": "DOL/DME",
+      "property": "Li+ 溶剂化强度降低（从强到中等）",
+      "categories": [
+        "负极锂"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0069",
+        "M0072",
+        "M0077",
+        "M0078"
+      ],
+      "test_ids": [
+        "S39-T1"
+      ],
+      "side": "弱侧"
+    },
+    {
+      "id": "S39-M2",
+      "summary": "DOL/F4DEE 具有弱多硫化物溶剂化，抑制长链多硫化物形成，减少穿梭和对锂负极的化学腐蚀，同时热力学上有利于短链多硫化物转化，提高正极可逆性。",
+      "A": "DOL/F4DEE",
+      "B": "DOL/DME",
+      "property": "多硫化物溶剂化强度降低（从强到弱）",
+      "categories": [
+        "多硫化物穿梭",
+        "负极锂",
+        "正极反应"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0023",
+        "M0024",
+        "M0086",
+        "M0115",
+        "M0118"
+      ],
+      "test_ids": [
+        "S39-T2",
+        "S39-T4"
+      ],
+      "side": "弱侧"
+    },
+    {
+      "id": "S39-M3",
+      "summary": "DOL/F4DEE 具有中等多硫化物溶解度，维持足够的多硫化物浓度以降低浓差极化，从而保持较低的正极反应过电位和动力学。",
+      "A": "DOL/F4DEE",
+      "B": "DOL/TTE",
+      "property": "多硫化物溶解度适中（高于 TTE，低于 DME）",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0025",
+        "M0026",
+        "M0122",
+        "M0126",
+        "M0141"
+      ],
+      "test_ids": [
+        "S39-T3",
+        "S39-T4"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "S39-M4",
+      "summary": "DOL/DME 强 Li+ 和强 LiPS 溶剂化导致严重的穿梭效应和锂负极降解，以及低库仑效率，造成快速容量衰减。",
+      "A": "DOL/DME",
+      "B": "DOL/F4DEE",
+      "property": "Li+ 和多硫化物溶剂化强度高",
+      "categories": [
+        "多硫化物穿梭",
+        "负极锂"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0149",
+        "M0150"
+      ],
+      "test_ids": [
+        "S39-T4"
+      ],
+      "side": "强侧"
+    }
+  ],
+  "design_claims": [
+    {
+      "summary": "解耦策略：使用部分氟化甘醇醚 F4DEE 作为共溶剂，实现 Li+ 溶剂化（中等）与 LiPS 溶解度/溶剂化（中等/弱）的解耦，兼顾锂负极稳定性和正极动力学。最优配方为 DOL/F4DEE (4:1 v/v) + 1.0 M LiTFSI + 0.2 M LiNO3。",
+      "evidence_ids": [
+        "M0002",
+        "M0005",
+        "M0018",
+        "M0020",
+        "M0166"
+      ]
+    }
+  ],
+  "figure_requests": [
+    {
+      "test_id": "S39-T4",
+      "figure": "Fig. 5d",
+      "part": "main",
+      "metric": "首圈容量",
+      "A": "DOL/F4DEE",
+      "B": "DOL/DME",
+      "target_point": "化成后 0.1 C 第 1 圈",
+      "anchor_quote_ids": [],
+      "reason": "Li‖S 循环类测试，正文未写明首圈容量具体数值，需读图获取以判断容量侧表现。无锚点。"
+    },
+    {
+      "test_id": "S39-T4",
+      "figure": "Fig. 5d",
+      "part": "main",
+      "metric": "保持率",
+      "A": "DOL/F4DEE",
+      "B": "DOL/DME",
+      "target_point": "指定圈数（如 100 圈或终点）",
+      "anchor_quote_ids": [],
+      "reason": "Li‖S 循环类测试，正文仅提及寿命圈数，未提及具体保持率数值，需读图确认容量保持情况。无锚点。"
+    }
+  ],
+  "gaps": [
+    "S39-T1 未报告 DOL/DME 和 DOL/TTE 的具体 CE 数值，仅有定性比较",
+    "S39-T3 未报告各配方的具体首圈容量数值，仅有定性比较",
+    "S39-T4 未报告首圈容量和保持率的具体数值，依赖图表",
+    "Li thickness for coin cells not reported in main text or SI experimental section explicitly for the cycling tests, though pouch cell uses 50 um"
+  ],
+  "source_review": {
+    "main": true,
+    "si": true,
+    "notes": "通读正文与 SI。SI 提供了详细的实验参数（如 E/S, LiNO3 浓度, 硫载量等）。注意 SI 中提到的 DOL/F4DEE 比例为 4:1 v/v，而正文 M0038 中提到 19F NMR 测试用了 8:2 v/v，但电池测试通常使用优化后的比例，SI S0010 明确电池电解液制备用 4:1 v/v。此处以电池测试条件为准。"
+  }
+}
