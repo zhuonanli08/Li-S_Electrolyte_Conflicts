@@ -106,6 +106,11 @@ def summary(ax, span, text, color="#2d3748", bold=False):
             color=color, weight="bold" if bold else "normal", linespacing=1.4)
 
 
+def wrap_n(t, n):
+    import textwrap
+    return "\n".join(textwrap.wrap(t, n))
+
+
 def wrap14(t):
     import textwrap
     return "\n".join(textwrap.wrap(t, 15))
@@ -200,71 +205,78 @@ def figA():
 
 
 # ---------- 图B 机制 ----------
+# 颜色只表示“哪一侧的短板”；过程大类是行，测量写成文字
+SIDE_COL = {0: "#553c9a", 1: "#2c7a7b"}          # 0 = 强溶剂化一侧，1 = 弱溶剂化一侧
+SIDE_NAME = {0: "强溶剂化一侧的短板", 1: "弱溶剂化一侧的短板"}
+WHERE = {"Li‖S": "Li‖S\u00a0电池", "简化": "简化体系/半电池"}     # 不换行空格：别在“Li‖S 电池”中间断行
+
+
 def figB():
     cl = [c for c in A.claims() if not (c["p"] == "S33" and c["id"] == "M2")]   # ETFE 自身腐蚀锂，不属溶剂化强弱
-    rows = ["强溶剂化一侧的短板\n（变弱后这个过程变好）", "弱溶剂化一侧的短板\n（变弱后这个过程变差）",
-            "溶剂化变弱时\n正极反应怎样", "负极锂短板\n是怎么测的", "电解液消耗\n测了吗", "正极反应\n是怎么测的"]
-    heights = [1.9, 1.1, 2.2, 1.5, 1.2, 1.5]
-    fig, ax, spans = frame("图B  两侧的限制机制：同一个问题，四篇怎么答（Q2 机制）", rows, heights)
-    side_items = {}
+    rows = [f"{pr}" for pr in A.PROCS]
+    heights = [2.3, 2.0, 2.3, 2.0]
+    fig, ax, spans = frame("图B  每个过程是哪一侧的短板？四篇怎么说、测了没有（Q2 机制）", rows, heights)
+    said = {}
     for c in cl:
         if c["eff"] == "same":
             continue
-        side = 0 if c["eff"] == "good" else 1
-        lst = side_items.setdefault((side, c["p"]), {})
-        e = lst.setdefault(c["proc"], {"own": False, "ids": []})
+        side = 0 if c["eff"] == "good" else 1       # 变弱后变好 → 强的一侧的短板
+        e = said.setdefault((c["p"], c["proc"], side), {"own": False, "ids": []})
         e["own"] |= c["own"]
         e["ids"].append(c["id"])
-    for side in (0, 1):
+    for i, pr in enumerate(A.PROCS):
+        y0, y1 = spans[i]
+        hgt = y1 - y0
         for j, p in enumerate(PAPERS):
-            d = side_items.get((side, p), {})
-            items = [(f"{pr}  {'、'.join(v['ids'])}" + ("" if v["own"] else "（推测）"), PROC_COL[pr], "-" if v["own"] else "--")
-                     for pr, v in sorted(d.items(), key=lambda kv: A.PROCS.index(kv[0]))]
-            stack_chips(ax, j, spans[side], items)
-    summary(ax, spans[0], "负极锂：4 篇都说 → 共识候选\n（但多数没在失效电池里定量，见第 4 行）", color="#2f855a", bold=True)
-    summary(ax, spans[1], "正极反应：4 篇都说 → 共识候选\n正极在两侧都出现 → 与“最优在中间”一致", color="#805ad5", bold=True)
-    # 正极反应方向：只取过程 = 正极反应 的说法，写明是哪种溶剂化、哪一段
-    for j, p in enumerate(PAPERS):
-        merged = {}
-        for c in cl:
-            if c["p"] != p or c["proc"] != "正极反应":
-                continue
-            kind = c["kind"].replace("其他（离子电导率）", "电导率下降").replace("Li⁺ + 多硫化物溶剂化", "Li⁺+多硫化物")
-            e = merged.setdefault((c["strong"], c["weak"], kind, c["eff"]), {"ids": [], "own": False})
-            e["ids"].append(c["id"])
-            e["own"] |= c["own"]
-        items = [(f"{ARROW[eff][:1]} {st}→{wk}｜{kind}  {'、'.join(v['ids'])}", COL[eff], "-" if v["own"] else "--")
-                 for (st, wk, kind, eff), v in merged.items()]
-        stack_chips(ax, j, spans[2], items, fs=7.2)
-    summary(ax, spans[2], "S21、S39：先变好、再变差（过弱时）\nS11：只说变差；S33：只在最弱端变差\n"
-                          "⚠ S11 vs S39 M3：同为多硫化物溶剂化，一个变差、\n一个不变 → 候选矛盾，测法不同（见第 6 行）",
-            color="#c53030", bold=True)
-    # 测量（Claude 的归类，待确认；来自 step11a 的 MEASURED）
-    def meas_items(pr):
-        out = {}
-        for p in PAPERS:
-            said = any(c["p"] == p and c["proc"] == pr for c in cl if c["eff"] != "same")
+            x = col_x(j) + 0.008
+            w = W_PAPER - 0.016
+            chips = [(side, said[(p, pr, side)]) for side in (0, 1) if (p, pr, side) in said]
+            ch = hgt * 0.17
+            yy = y1 - hgt * 0.08
+            if not chips:
+                ax.text(x + w / 2, yy - ch / 2, "没说", ha="center", va="center", fontsize=8.5, color="#a0aec0")
+                yy -= ch
+            for side, v in chips:
+                yy -= ch
+                lab = f"{SIDE_NAME[side]}  {'、'.join(v['ids'])}" + ("" if v["own"] else "（推测）")
+                chip(ax, x, yy, w, ch * 0.88, lab, SIDE_COL[side], ls="-" if v["own"] else "--",
+                     tc="white" if v["own"] else SIDE_COL[side], fs=7.8) if v["own"] else \
+                    chip(ax, x, yy, w, ch * 0.88, lab, "white", ec=SIDE_COL[side], ls="--", tc=SIDE_COL[side], fs=7.8)
+                yy -= ch * 0.12
             ms = A.MEASURED.get((p, pr), [])
-            items = []
-            for where, what, mass in ms:
-                fc = "#2f855a" if mass else ("#4a5568" if where == "Li‖S" else "#a0aec0")
-                items.append((wrap14(("✓ 定量 " if mass else "") + what), fc, "-"))
-            if said and not ms:
-                items.append(("说了，但没有对应测量", "#a0aec0", "--"))
-            out[p] = items
-        return out
-    for row, pr in ((3, "负极锂"), (4, "电解液消耗"), (5, "正极反应")):
-        mi = meas_items(pr)
-        for j, p in enumerate(PAPERS):
-            stack_chips(ax, j, spans[row], mi[p], fs=7.2)
-    summary(ax, spans[3], "4 篇测法各不相同；在失效电池里\n定量剩余活性锂的只有 S33 → 常说少测", color="#c53030", bold=True)
-    summary(ax, spans[4], "只有 S33 测过（QNMR + 补液恢复）\nS39 只是推测；S11、S21 没说")
-    summary(ax, spans[5], "测法 4 种各不相同（恒电位 Li₂S 沉积、\n平台比、GITT）→ 正极这条要先统一测法再比")
-    fig.text(0.01, 0.035, "怎么看：往右扫一行比四篇。前两行颜色 = 过程大类（紫 正极反应、黄 穿梭、绿 负极锂、红 电解液消耗），虚线框 = 只有推测/转述原句；"
-             "第 3 行蓝 = 变弱后正极变好、橙 = 变差、灰 = 不变，“A→B”是从哪档到哪档。\n后三行：绿 = 在失效电池里定量收支，深灰 = 在 Li‖S 电池里测，浅灰 = 简化体系或半电池。"
-             "把测量对应到过程大类是 Claude 的归类（待确认）。S33 M2（ETFE 自身腐蚀锂）不属溶剂化强弱，未列。",
-             fontsize=8.6, color="#2d3748", linespacing=1.5)
-    fig.text(0.01, 0.008, FOOT, fontsize=7.5, color="#718096")
+            if ms:
+                lines = [("✓\u00a0定量\u00a0" if mass else "") + f"{WHERE[where]}｜{what}" for where, what, mass in ms]
+                txt = "测：\n" + "\n".join(wrap_n(t, 19) for t in lines)
+                mass_any = any(m for _, _, m in ms)
+            else:
+                txt = "测：无对应测量" if chips else ""
+                mass_any = False
+            ax.text(x + 0.004, yy - hgt * 0.04, txt, ha="left", va="top", fontsize=7.3, linespacing=1.25,
+                    color="#22543d" if mass_any else "#4a5568", weight="bold" if mass_any else "normal")
+    notes = [
+        ("弱的一侧：4 篇都说 → 共识候选\n强的一侧也有 2 篇（S21、S39）\n→ 正极两侧都差，与“最优在中间”一致\n"
+         "⚠ 候选矛盾：S11 vs S39 M3 都说多硫化物\n溶剂化变弱，S11 说正极变差、S39 说不变\n——测法不同（恒电位 Li₂S 沉积 vs 溶液正极 GITT）\n"
+         "测法各不相同；S33 没有对应测量", "#2c7a7b"),
+        ("强的一侧：2 篇（S11、S21）\n两篇都在不含 LiNO₃ 的 Li‖S 电池里测\n（穿梭电流、自放电）\n"
+         "→ 含 LiNO₃ 时穿梭是不是短板，这 4 篇回答不了", "#553c9a"),
+        ("强的一侧：4 篇都说 → 共识候选\n但在失效电池里定量剩余活性锂的只有 S33\n"
+         "其余是 XPS、对称电池、Li‖Cu CE、EIS\n→ 常说少测", "#553c9a"),
+        ("强的一侧：S33 定量测过（QNMR + 补液恢复）\nS39 只是推测；S11、S21 没说", "#553c9a"),
+    ]
+    for i, (t, c) in enumerate(notes):
+        summary(ax, spans[i], t, color=c, bold=False)
+    # 图例
+    lx = W_LAB
+    fig.text(0.01, 0.06, "怎么看：每行一个过程，往右扫比四篇。", fontsize=8.8, color="#2d3748")
+    for k, (side, name) in enumerate(SIDE_NAME.items()):
+        fig.patches.append(FancyBboxPatch((0.20 + k * 0.30, 0.052), 0.015, 0.018, boxstyle="round,pad=0.001",
+                                          fc=SIDE_COL[side], ec=SIDE_COL[side], transform=fig.transFigure, figure=fig))
+        fig.text(0.218 + k * 0.30, 0.061, name + ("（溶剂化变弱后这个过程变好）" if side == 0 else "（变弱后变差）"),
+                 fontsize=8.6, va="center", color=SIDE_COL[side])
+    fig.text(0.01, 0.035, "实心 = 本文结论，虚线框 = 只有推测/转述原句；编号是该篇的机制说法。“测”= 该篇对这个过程做了什么测量，"
+             "绿色加粗“✓ 定量”= 在失效电池里定量了物质收支。把测量对应到过程是 Claude 的归类（待确认）。S33 M2（ETFE 自身腐蚀锂）不属溶剂化强弱，未列。",
+             fontsize=8.4, color="#2d3748")
+    fig.text(0.01, 0.01, FOOT, fontsize=7.5, color="#718096")
     save(fig, "图B_机制_四篇横向对比")
 
 
