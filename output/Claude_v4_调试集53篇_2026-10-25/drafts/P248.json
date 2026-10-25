@@ -1,0 +1,698 @@
+{
+  "paper_id": "P248",
+  "doi": "10.1007/s11664-022-09751-z",
+  "formulations": [
+    {
+      "id": "LCE",
+      "name": "low-concentration electrolyte (1M LiTFSI-DME/DOL v: v = 1:1)，LCE；SI 称 1M LiTFSI-DME/DOL electrolyte",
+      "components": [
+        {"name": "LiTFSI", "role": "盐", "amount": 1, "unit": "M"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": 1, "unit": "v:v（DME:DOL = 1:1）"},
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": 1, "unit": "v:v（DME:DOL = 1:1）"}
+      ],
+      "raw_formula": "a low-concentration electrolyte (1M LiTFSI-DME/DOL v: v = 1:1) denoted as LCE；SI：For the 1M LiTFSI-DME/DOL electrolyte, 1.0 mmol of LiTFSI was dissolved in 0.5 mL DME and 0.5 mL DOL.",
+      "evidence_ids": ["M0032", "S0007"]
+    },
+    {
+      "id": "HCE",
+      "name": "high-concentration electrolyte (LiTFSI-DME/DOL, LiTFSI:DME:DOL = 1:1.5:1.5)，HCE；图 5 称 1LiTFSI-3DME/DOL-based electrolyte",
+      "components": [
+        {"name": "LiTFSI", "role": "盐", "amount": 1, "unit": "摩尔比"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": 1.5, "unit": "摩尔比"},
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": 1.5, "unit": "摩尔比"}
+      ],
+      "raw_formula": "high-concentration electrolyte (LiTFSI-DME/ DOL, the molar ratio of LiTFSI:DME:DOL is 1:1.5:1.5 for a total salt concentration equivalent to 5.5 M LiTFSI-DME/ DOL) denoted as HCE；SI：For the 1 LiTFSI-3 DME/DOL electrolyte, 1.0 mmol of LiTFSI was dissolved in 1.5 mmol DME and 1.5 mmol DOL.",
+      "evidence_ids": ["M0032", "S0008"]
+    },
+    {
+      "id": "LHCE",
+      "name": "TME-based LHCE (LiTFSI-DME/DOL-TME)；图 5 称 1LiTFSI-3DME/DOL-6TME-based electrolyte",
+      "components": [
+        {"name": "LiTFSI", "role": "盐", "amount": 1, "unit": "摩尔比"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": 1.5, "unit": "摩尔比"},
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": 1.5, "unit": "摩尔比"},
+        {"name": "TME（1,1,2,2-tetrafluoroethyl methyl ether，稀释剂）", "role": "弱或非溶剂化溶剂", "amount": 6, "unit": "摩尔比"}
+      ],
+      "raw_formula": "the LHCE (LiTFSI-DME/DOL-TME) system ... the molar ratio of LiTFSI:DME:DOL:TME was 1:1.5:1.5:6 for a total salt concentration equivalent to 1.8 M LiTFSI-DME/ DOL/TME；SI：For the 1 LiTFSI-3 DME/DOL-6TME electrolyte, additional 6.0 mmol TME was added to 1 LiTFSI-3 DME/DOL electrolyte.",
+      "evidence_ids": ["M0031", "S0009", "M0007"]
+    }
+  ],
+  "control_id": "HCE",
+  "control_type": "不含 LiNO₃ 的自配对照：Li‖S 测试唯一对照为高浓度 HCE（LiTFSI:DME:DOL = 1:1.5:1.5，约 5.5 M），不是常规浓度；Li‖Cu 测试另有 1 M LiTFSI-DME/DOL（1:1 v:v）的 LCE；全文所有配方均不含 LiNO₃",
+  "gradients": [
+    {
+      "name": "盐浓度与稀释剂（用量梯度：LCE→HCE 提高 LiTFSI 与 DME/DOL 的摩尔比；HCE→LHCE 按每 mol LiTFSI 加 6 mol TME 稀释剂，两步改变的组分不同）",
+      "order": ["LCE", "HCE", "LHCE"],
+      "values": ["1 M LiTFSI，DME:DOL = 1:1 v:v", "LiTFSI:DME:DOL = 1:1.5:1.5（约 5.5 M）", "LiTFSI:DME:DOL:TME = 1:1.5:1.5:6（总盐浓度约 1.8 M，局部浓度 5.5 M）"],
+      "solvation_axis": "按 Li⁺ 被溶剂分子溶剂化的程度（游离溶剂多少）由强到弱：LCE 以 SSIP 为主、DME/DOL 多为游离溶剂 → HCE 以 CIP/AGG 为主 → LHCE AGG 比例更大、游离溶剂更少；依据：作者 Raman（TFSI⁻ S–N–S 峰 742 → 746 → 749 cm⁻¹，DME/DOL 配位峰）。注意作者把 LCE 的 SSIP 称为 weak Li-ion coordination、把 LHCE 的 AGG 称为 most closely coordinated structure，指的是 Li⁺ 与阴离子作用的紧密程度，与本表“溶剂化强弱”的用词方向相反",
+      "evidence_ids": ["M0061", "M0073", "M0074", "M0075"]
+    }
+  ],
+  "properties": [
+    {
+      "name": "Li⁺ 溶剂化（Raman TFSI⁻ S–N–S 峰位）",
+      "values": {"LCE": "742 cm-1", "HCE": "746 cm-1", "LHCE": "749 cm-1"},
+      "direction": "沿梯度升高（与 Li⁺ 配位的 TFSI⁻ 增多，阴离子进入 Li⁺ 溶剂化层增多）",
+      "method": "Raman（633 nm 激光）",
+      "system": "电池用电解液本体（LCE、HCE、LHCE）",
+      "evidence_ids": ["M0061", "M0062", "S0025"]
+    },
+    {
+      "name": "Li⁺ 溶剂化结构（离子对类型）",
+      "values": {"LCE": "SSIPs 为主，多数 DME、DOL 为游离溶剂", "HCE": "更多 DME、DOL 与 Li⁺ 配位，形成 CIPs 和 AGGs", "LHCE": "AGGs 比例更大（TME 进一步减少溶剂化层中的游离溶剂）"},
+      "direction": "游离溶剂沿梯度减少，AGG 比例沿梯度增大",
+      "method": "Raman 谱解读",
+      "system": "电池用电解液本体",
+      "evidence_ids": ["M0065", "M0073", "M0074", "M0075"]
+    },
+    {
+      "name": "Li⁺ 溶剂化（Raman DME、DOL 峰位）",
+      "values": {"LCE": "游离溶剂特征峰仍在，位移很小", "HCE": "DME 峰 850 → 875 cm-1；DOL 峰 941 → 944 cm-1（与 Li⁺ 配位）", "LHCE": "DME 峰 850 → 875 cm-1；DOL 峰 941 → 944 cm-1（与 Li⁺ 配位）"},
+      "direction": "HCE、LHCE 中 DME、DOL 与 Li⁺ 配位峰明显，LCE 以游离溶剂为主；HCE 与 LHCE 之间文字未区分",
+      "method": "Raman",
+      "system": "电池用电解液本体及纯溶剂",
+      "evidence_ids": ["M0066", "M0067", "M0072"]
+    },
+    {
+      "name": "多硫化物溶剂化",
+      "values": {"LCE": "未报告", "HCE": "未报告", "LHCE": "未报告"},
+      "direction": "未报告",
+      "method": "未报告",
+      "system": "未报告",
+      "evidence_ids": []
+    },
+    {
+      "name": "多硫化物溶解度",
+      "values": {"LCE": "未报告", "HCE": "未报告", "LHCE": "未报告"},
+      "direction": "未测；作者称加 TME 后多硫化物溶解度更低（M0133），文中无溶解度测量",
+      "method": "未报告（无溶解度测量）",
+      "system": "未报告",
+      "evidence_ids": ["M0133"]
+    },
+    {
+      "name": "离子电导率",
+      "values": {"LCE": "未报告", "HCE": "作者称较低（未给测量）", "LHCE": "作者称较高（未给测量）"},
+      "direction": "作者称 LHCE 高于 HCE；文中无电导率测量数据",
+      "method": "未报告（仅作者文字说法）",
+      "system": "未报告",
+      "evidence_ids": ["M0128", "M0133"]
+    },
+    {
+      "name": "黏度",
+      "values": {"LCE": "未报告", "HCE": "高（在隔膜上不能铺展）", "LHCE": "很低（在隔膜上迅速铺展）"},
+      "direction": "LHCE 低于 HCE",
+      "method": "隔膜润湿观察（在隔膜上滴 50 µL 电解液），未做黏度定量测量",
+      "system": "电池用电解液滴于 Celgard 2400 隔膜",
+      "evidence_ids": ["M0115", "M0116", "M0117", "M0119", "S0032"]
+    },
+    {
+      "name": "隔膜接触角 / 润湿性",
+      "values": {"LCE": "未报告", "HCE": "接触角大，不能铺展", "LHCE": "接触角更小，迅速铺展并渗入隔膜和正极"},
+      "direction": "LHCE 接触角小于 HCE",
+      "method": "隔膜上滴 50 µL 电解液观察",
+      "system": "电池用电解液滴于隔膜",
+      "evidence_ids": ["M0115", "M0116", "M0117", "M0118"]
+    },
+    {
+      "name": "氧化稳定性（LSV）",
+      "values": {"LCE": "未报告", "HCE": "未报告", "LHCE": "4.5 V 以下稳定"},
+      "direction": "只报告 LHCE",
+      "method": "Li‖SS 线性扫描伏安，扫速 1.0 mV s-1",
+      "system": "Li‖SS 电池",
+      "evidence_ids": ["M0122", "S0019", "S0024"]
+    }
+  ],
+  "tests": [
+    {
+      "id": "P248-T1",
+      "name": "Li‖Cu 库仑效率与过电位（0.5 mA cm⁻²，1 mAh cm⁻²）",
+      "cell": "Li‖Cu（Li 箔 / Cu 箔）",
+      "conditions": {
+        "sulfur_loading": "不适用（Li‖Cu）",
+        "ES": "不适用（Li‖Cu）",
+        "ES_unit": "不适用",
+        "Li_thickness": "未报告",
+        "rate": "0.5 mA cm-2，1 mAh cm-2（按 Fig. 1 图注）",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "不含",
+        "one_C": "不适用",
+        "electrolyte_volume": "约 60 µL/电池"
+      },
+      "formulations": ["LCE", "HCE", "LHCE"],
+      "evidence_ids": ["M0067", "S0010", "S0017", "S0020", "S0021", "M0030"],
+      "results": [
+        {
+          "id": "P248-T1-R1",
+          "metric": "库仑效率",
+          "A": "LHCE", "B": "HCE",
+          "value_A": 93.16, "value_B": 82,
+          "unit": "%",
+          "point": "第 1 圈（initial CE）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0035", "M0039", "M0041"],
+          "reason": "高 11.16 个百分点（93.16−82）；作者称加 TME 后 LHCE 的 CE 高于 HCE（M0041）"
+        },
+        {
+          "id": "P248-T1-R2",
+          "metric": "库仑效率",
+          "A": "LCE", "B": "HCE",
+          "value_A": 76, "value_B": 82,
+          "unit": "%",
+          "point": "第 1 圈（initial CE）",
+          "basis": "numeric",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0034", "M0035"],
+          "reason": "低 6 个百分点（82−76）；作者称换用 HCE 后首圈 CE 略升至 82%（M0035）"
+        },
+        {
+          "id": "P248-T1-R3",
+          "metric": "库仑效率",
+          "A": "LHCE", "B": "HCE",
+          "value_A": null, "value_B": null,
+          "unit": "%",
+          "point": "循环过程（HCE 最高 98.5%，圈数未写，60 圈后开始下降；LHCE 第 100 圈 99.37%，120 圈平均 98.87%）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0036", "M0037", "M0039", "M0040", "M0041"],
+          "reason": "两者数值取值点不同（HCE 为最高值、LHCE 为第 100 圈和 120 圈平均），不配对；按作者定性：加 TME 后 CE 高于 HCE（M0041）"
+        },
+        {
+          "id": "P248-T1-R4",
+          "metric": "库仑效率",
+          "A": "LCE", "B": "HCE",
+          "value_A": null, "value_B": null,
+          "unit": "%",
+          "point": "循环过程（LCE 40 圈后降至 <80%；HCE 升至 98.5%，60 圈后开始下降）",
+          "basis": "qualitative",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0034", "M0036", "M0037", "M0038"],
+          "reason": "取值点不同不配对；作者定性：提高浓度明显提升锂金属可逆性（M0038），即 LCE 劣于 HCE"
+        },
+        {
+          "id": "P248-T1-R5",
+          "metric": "过电位",
+          "A": "LHCE", "B": "HCE",
+          "value_A": null, "value_B": null,
+          "unit": "mV",
+          "point": "循环过程（Fig. 1f）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0053"],
+          "reason": "作者定性：LHCE 的 Li-Cu 过电位远低于其他电解液且循环中保持稳定"
+        },
+        {
+          "id": "P248-T1-R6",
+          "metric": "过电位",
+          "A": "LCE", "B": "HCE",
+          "value_A": null, "value_B": null,
+          "unit": "mV",
+          "point": "循环过程（Fig. 1f）",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [],
+          "reason": "文字只说 LHCE 低于其他两者，LCE 与 HCE 的相对高低只在 Fig. 1f；已登记读图，但正文无过电位数值作锚点"
+        }
+      ]
+    },
+    {
+      "id": "P248-T2",
+      "name": "Li‖Cu 有限锂累积容量损失（Cu 上预沉积 4 mAh cm⁻² Li，三倍过量锂）",
+      "cell": "Li@Cu‖Cu（一侧 Cu 箔预沉积 4 mAh cm⁻² Li）",
+      "conditions": {
+        "sulfur_loading": "不适用（Li‖Cu）",
+        "ES": "不适用（Li‖Cu）",
+        "ES_unit": "不适用",
+        "Li_thickness": "不适用（锂量为 Cu 上预沉积 4 mAh cm-2，三倍过量）",
+        "rate": "0.5 mA cm-2，1 mAh cm-2（推定，按 Fig. 1 图注及 4 mAh cm-2 为三倍过量推定）",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "不含",
+        "one_C": "不适用",
+        "electrolyte_volume": "约 60 µL/电池",
+        "Li_amount": "4 mAh cm-2（treble of excess Li）"
+      },
+      "formulations": ["LCE", "HCE", "LHCE"],
+      "evidence_ids": ["M0050", "M0051", "M0067", "S0010", "M0030"],
+      "results": [
+        {
+          "id": "P248-T2-R1",
+          "metric": "寿命（循环圈数）",
+          "A": "LHCE", "B": "HCE",
+          "value_A": ">157", "value_B": 78,
+          "unit": "圈",
+          "point": "电池失效圈数（LHCE 为 over 157 cycles 仍工作）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0051", "M0052"],
+          "reason": "LHCE >157 圈仍工作，HCE 78 圈失效，区间不重叠"
+        },
+        {
+          "id": "P248-T2-R2",
+          "metric": "寿命（循环圈数）",
+          "A": "LCE", "B": "HCE",
+          "value_A": 65, "value_B": 78,
+          "unit": "圈",
+          "point": "电池失效圈数",
+          "basis": "numeric",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0051"],
+          "reason": "|65−78|÷78 ≈ 16.7%"
+        }
+      ]
+    },
+    {
+      "id": "P248-T3",
+      "name": "Li‖S 0.5 C 400 圈循环",
+      "cell": "Li‖S（电池形式原文未写）",
+      "conditions": {
+        "sulfur_loading": "约 0.5 mg cm-2",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.5 C",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "不含",
+        "one_C": "未报告",
+        "electrolyte_volume": "约 30 µL/电池（电极面积未写，无法换算 E/S）",
+        "cathode": "S@KB（硫含量 71.2%）:AB:PVDF = 80:10:10，Al 集流体",
+        "separator": "Celgard 2400"
+      },
+      "formulations": ["HCE", "LHCE"],
+      "evidence_ids": ["S0010", "S0011", "S0014", "S0015", "S0022", "M0171", "M0010", "M0142"],
+      "results": [
+        {
+          "id": "P248-T3-R1",
+          "metric": "首圈容量",
+          "A": "LHCE", "B": "HCE",
+          "value_A": 924.5, "value_B": 953.7,
+          "unit": "mAh g-1",
+          "point": "首圈（反算：第 400 圈容量 ÷ 400 圈保持率；保持率起点圈原文未写，按首圈计）",
+          "basis": "numeric",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["M0125", "M0126", "M0130", "M0131"],
+          "reason": "反算公式：LHCE 554.68 ÷ 0.60 ≈ 924.5；HCE 463.69 ÷ 0.4862 ≈ 953.7；|924.5−953.7|÷953.7 ≈ 3.1%。LHCE 的 60% 为 as high as 60% 的整数写法，按 59.5–60.5% 计算 LHCE 为 917–932，仍在 5% 以内。保持率口径未写，另登记读图（Figure S8 / Fig. 5a）核对"
+        },
+        {
+          "id": "P248-T3-R2",
+          "metric": "指定圈容量",
+          "A": "LHCE", "B": "HCE",
+          "value_A": 554.68, "value_B": 463.69,
+          "unit": "mAh g-1",
+          "point": "0.5 C 第 400 圈",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0125", "M0130"],
+          "reason": "|554.68−463.69|÷554.68 ≈ 16.4%"
+        },
+        {
+          "id": "P248-T3-R3",
+          "metric": "保持率",
+          "A": "LHCE", "B": "HCE",
+          "value_A": 60, "value_B": 48.62,
+          "unit": "%",
+          "point": "400 圈放电容量保持率（起点圈原文未写）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0126", "M0131"],
+          "reason": "|60−48.62|÷60 ≈ 19.0%"
+        },
+        {
+          "id": "P248-T3-R4",
+          "metric": "库仑效率",
+          "A": "LHCE", "B": "HCE",
+          "value_A": 97.73, "value_B": 96.52,
+          "unit": "%",
+          "point": "平均库仑效率（按上下文推定为 400 圈平均）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0127", "M0132"],
+          "reason": "高 1.21 个百分点（97.73−96.52）；作者用 only 描述 HCE 的 96.52%（M0127），按作者说法记变好"
+        },
+        {
+          "id": "P248-T3-R5",
+          "metric": "负极表面 Li₂S/Li₂S₂ 含量",
+          "A": "LHCE", "B": "HCE",
+          "value_A": null, "value_B": null,
+          "unit": "XPS S 2p 相对含量",
+          "point": "Li‖S 循环 50 圈后锂负极表面（XPS S 2p）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0088", "M0089", "M0106"],
+          "reason": "作者定性：HCE 锂表面 Li₂S、Li₂S₂ 含量很大，LHCE 显著降低，作者解读为穿梭被抑制（M0090）；Li‖S 电池只报告 0.5 C 一种倍率，推定为同一测试"
+        }
+      ]
+    },
+    {
+      "id": "P248-T4",
+      "name": "Li‖Li 对称电池界面阻抗（1 圈与 100 圈后 EIS）",
+      "cell": "Li‖Li 对称电池",
+      "conditions": {
+        "sulfur_loading": "不适用（Li‖Li）",
+        "ES": "不适用（Li‖Li）",
+        "ES_unit": "不适用",
+        "Li_thickness": "未报告",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "不含",
+        "one_C": "不适用",
+        "electrolyte_volume": "约 60 µL/电池",
+        "EIS": "1 MHz–0.1 Hz，振幅 10 mV"
+      },
+      "formulations": ["HCE", "LHCE"],
+      "evidence_ids": ["S0016", "S0018", "S0010", "S0023", "S0031", "M0030"],
+      "results": [
+        {
+          "id": "P248-T4-R1",
+          "metric": "阻抗",
+          "A": "LHCE", "B": "HCE",
+          "value_A": null, "value_B": null,
+          "unit": "Ω",
+          "point": "界面阻抗（RSEI + Rct）在第 1 圈与第 100 圈后的变化",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0110", "M0111", "M0112", "S0031"],
+          "reason": "作者定性：HCE 的界面阻抗变化大（SEI 增厚），LHCE 保持稳定"
+        }
+      ]
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "P248-M1",
+      "summary": "加 TME 后 Li⁺ 溶剂化层中游离溶剂减少 → 多硫化物溶解受抑制，同时形成更多阴离子衍生 SEI（摘要）",
+      "A": "LHCE", "B": "HCE",
+      "property": "Li⁺ 溶剂化层中游离溶剂减少（Li⁺ 溶剂化变弱、阴离子参与增多）",
+      "categories": ["多硫化物穿梭", "负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0008"],
+      "test_ids": ["P248-T1", "P248-T3"],
+      "side": "强侧"
+    },
+    {
+      "id": "P248-M2",
+      "summary": "引言通用说法：高浓度电解液中几乎所有溶剂都与 Li⁺ 配位、几乎没有游离溶剂 → 多硫化物溶解减少（对应本文 HCE 相对 LCE 这类比较）",
+      "A": "HCE", "B": "LCE",
+      "property": "游离溶剂减少（Li⁺ 溶剂化层中溶剂几乎全部配位）",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0019"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P248-M3",
+      "summary": "引言通用说法：高浓度电解液中锂盐更易与锂金属反应，形成富无机组分的致密 SEI，防止锂腐蚀",
+      "A": "HCE", "B": "LCE",
+      "property": "高盐浓度（阴离子参与 Li⁺ 溶剂化）",
+      "categories": ["负极锂"],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0020"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P248-M4",
+      "summary": "引言通用说法：高浓度电解液黏度高、离子电导率较低、锂盐贵，限制应用",
+      "A": "HCE", "B": "LCE",
+      "property": "黏度升高、离子电导率降低（非溶剂化本身）",
+      "categories": [],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0021"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P248-M5",
+      "summary": "LHCE 中更多 TFSI⁻ 衍生的无机层加上 DME/DOL 衍生的有机外层构成坚固 SEI → 提升锂负极循环稳定性",
+      "A": "LHCE", "B": "HCE",
+      "property": "阴离子（TFSI⁻）参与 Li⁺ 溶剂化增多 → SEI 以阴离子分解产物为主",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0028"],
+      "test_ids": ["P248-T1"],
+      "side": "强侧"
+    },
+    {
+      "id": "P248-M6",
+      "summary": "提高浓度（LCE→HCE）明显提升锂金属可逆性，但 HCE 仍不能建立长循环稳定的锂负极",
+      "A": "HCE", "B": "LCE",
+      "property": "盐浓度升高（Li⁺ 溶剂化由 SSIP 转向 CIP/AGG）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0038"],
+      "test_ids": ["P248-T1", "P248-T2"],
+      "side": "强侧"
+    },
+    {
+      "id": "P248-M7",
+      "summary": "LHCE 总盐浓度 1.8 M 高于 LCE 的 1 M，可能有利于形成更坚固稳定的 SEI → 解释 LHCE 的 CE 高于 LCE",
+      "A": "LHCE", "B": "LCE",
+      "property": "总盐浓度更高",
+      "categories": ["负极锂"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0043"],
+      "test_ids": ["P248-T1"],
+      "side": "强侧"
+    },
+    {
+      "id": "P248-M8",
+      "summary": "LHCE 局部浓度 5.5 M，远高于 LCE（作为 LHCE 的 CE 高于 LCE 的第二个原因）",
+      "A": "LHCE", "B": "LCE",
+      "property": "局部盐浓度更高（Li⁺ 溶剂化层中阴离子更多）",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0044"],
+      "test_ids": ["P248-T1"],
+      "side": "强侧"
+    },
+    {
+      "id": "P248-M9",
+      "summary": "加 TME 进一步减少 Li⁺ 溶剂化层中的游离溶剂，使 LHCE 中 AGG 比例更大",
+      "A": "LHCE", "B": "HCE",
+      "property": "Li⁺ 溶剂化：游离溶剂减少、AGG 比例增大",
+      "categories": [],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0075"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P248-M10",
+      "summary": "LHCE 的 SEI 由 TFSI⁻ 分解主导 → LiF 显著增多、Li₂CO₃ 消失（XPS）",
+      "A": "LHCE", "B": "HCE",
+      "property": "阴离子参与 Li⁺ 溶剂化增多 → SEI 以 TFSI⁻ 分解产物为主",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0082"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P248-M11",
+      "summary": "LiF 与低聚物组成的致密 SEI 抑制锂枝晶、适应沉积/剥离体积变化 → 提升 Li‖S 循环性能",
+      "A": "LHCE", "B": "HCE",
+      "property": "SEI 中 LiF 增多（源于阴离子主导的 Li⁺ 溶剂化）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0086"],
+      "test_ids": ["P248-T3"],
+      "side": "强侧"
+    },
+    {
+      "id": "P248-M12",
+      "summary": "溶剂化结构中游离溶剂减少抑制多硫化物溶解 → 穿梭被抑制（依据：LHCE 锂表面 Li₂S/Li₂S₂ 显著减少）",
+      "A": "LHCE", "B": "HCE",
+      "property": "Li⁺ 溶剂化结构中游离溶剂减少（多硫化物溶解度未实测）",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0090"],
+      "test_ids": ["P248-T3"],
+      "side": "强侧"
+    },
+    {
+      "id": "P248-M13",
+      "summary": "LCE 中锂沉积层疏松、分布不均且有碎屑状沉积 → 破坏锂的循环可逆性",
+      "A": "LCE", "B": "HCE",
+      "property": "LCE 以 SSIP 为主（游离溶剂多）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0099"],
+      "test_ids": ["P248-T1"],
+      "side": "强侧"
+    },
+    {
+      "id": "P248-M14",
+      "summary": "LCE 的 SSIP（作者称弱的 Li⁺ 配位）导致 SEI 疏松 → 锂沉积形貌差（LCE 的 SEI 未做 XPS）",
+      "A": "LCE", "B": "HCE",
+      "property": "Li⁺ 溶剂化以 SSIP 为主（游离溶剂多）",
+      "categories": ["负极锂"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0103"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P248-M15",
+      "summary": "提高浓度使配位结构更紧密、SEI 更致密 → HCE 中锂沉积比 LCE 更均匀致密",
+      "A": "HCE", "B": "LCE",
+      "property": "盐浓度升高 → CIP/AGG 增多",
+      "categories": ["负极锂"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0104"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P248-M16",
+      "summary": "加 TME 后形成以 AGG 为主的配位结构 → SEI 比 HCE 更坚固 → 锂均匀沉积",
+      "A": "LHCE", "B": "HCE",
+      "property": "Li⁺ 溶剂化以 AGG 为主（游离溶剂更少）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0105"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P248-M17",
+      "summary": "HCE 的 Li‖Li 界面阻抗变化大，归因于 SEI 增厚",
+      "A": "HCE", "B": "LHCE",
+      "property": "HCE 的 SEI 持续增厚（相对 LHCE）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0111"],
+      "test_ids": ["P248-T4"],
+      "side": "强侧"
+    },
+    {
+      "id": "P248-M18",
+      "summary": "LHCE 的 Li‖Li 界面阻抗保持稳定，可能归因于稳定的 SEI",
+      "A": "LHCE", "B": "HCE",
+      "property": "SEI 稳定（源于阴离子主导溶剂化）",
+      "categories": ["负极锂"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0112"],
+      "test_ids": ["P248-T4"],
+      "side": "强侧"
+    },
+    {
+      "id": "P248-M19",
+      "summary": "加稀释剂 TME 大幅降低黏度、不降低有效锂盐浓度、改善润湿 → 促进 Li‖S 电池中的离子传导",
+      "A": "LHCE", "B": "HCE",
+      "property": "黏度降低、润湿性提高（非溶剂化本身）",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0119", "M0120"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P248-M20",
+      "summary": "HCE 黏度更高、离子电导更低 → 活性物质利用率受影响 → 解释 HCE 的 Li‖S 容量持续衰减（电导率文中未测）",
+      "A": "HCE", "B": "LHCE",
+      "property": "黏度更高、离子电导率更低（起点非溶剂化）",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0128"],
+      "test_ids": ["P248-T3"],
+      "side": "其他"
+    },
+    {
+      "id": "P248-M21",
+      "summary": "加 TME 后电导率更高、多硫化物溶解度更低 → LHCE 活性物质利用率和容量保持率更高（电导率、溶解度文中均未测）",
+      "A": "LHCE", "B": "HCE",
+      "property": "离子电导率升高、多硫化物溶解度降低（起点部分为溶剂化，部分为电导率）",
+      "categories": ["正极反应", "多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0133"],
+      "test_ids": ["P248-T3"],
+      "side": "强侧"
+    },
+    {
+      "id": "P248-M22",
+      "summary": "致密 SEI 存在时锂负极免受多硫化物持续侵蚀（LHCE 相对 HCE）",
+      "A": "LHCE", "B": "HCE",
+      "property": "致密 SEI（源于阴离子主导溶剂化）",
+      "categories": ["负极锂", "多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0134"],
+      "test_ids": ["P248-T3"],
+      "side": "强侧"
+    }
+  ],
+  "design_claims": [
+    {
+      "summary": "作者未用折中/解耦表述：局部高浓度设计——向高浓度 HCE 加入稀释剂 TME，保留阴离子主导、游离溶剂少的溶剂化结构（抑制多硫化物溶解、形成阴离子衍生 SEI），同时降低黏度、改善润湿；同时作用于正极穿梭和锂负极；最优配方 LHCE（LiTFSI:DME:DOL:TME = 1:1.5:1.5:6，总盐浓度约 1.8 M），不含 LiNO₃",
+      "evidence_ids": ["M0026", "M0029", "M0031", "M0119"]
+    }
+  ],
+  "figure_requests": [
+    {
+      "test_id": "P248-T3",
+      "figure": "Figure S8",
+      "part": "si",
+      "metric": "首圈容量",
+      "A": "LHCE", "B": "HCE",
+      "target_point": "0.5 C 第 1 圈（化成协议未写；若有化成圈取化成后第 1 圈）",
+      "anchor_quote_ids": ["M0125", "M0130"],
+      "reason": "Li‖S 循环类测试缺同一测试容量侧：首圈容量文字未写，R1 只能由 400 圈保持率反算（保持率起点圈未写）；锚点为正文引用 Fig. S8 的第 400 圈 HCE 463.69、LHCE 554.68 mAh g⁻¹"
+    },
+    {
+      "test_id": "P248-T3",
+      "figure": "Fig. 5a",
+      "part": "main",
+      "metric": "首圈容量",
+      "A": "LHCE", "B": "HCE",
+      "target_point": "0.5 C 第 1 圈（化成协议未写；若有化成圈取化成后第 1 圈）",
+      "anchor_quote_ids": ["M0125", "M0130"],
+      "reason": "同上，正文 Fig. 5a 为 Li‖S 循环性能图；Figure S8 不可用时备用；锚点为第 400 圈 HCE 463.69、LHCE 554.68 mAh g⁻¹"
+    },
+    {
+      "test_id": "P248-T1",
+      "figure": "Fig. 1f",
+      "part": "main",
+      "metric": "过电位",
+      "A": "LCE", "B": "HCE",
+      "target_point": "循环过程中同一圈的过电位",
+      "anchor_quote_ids": [],
+      "reason": "梯度上只在图里有数的档：LCE 与 HCE 的过电位高低文字未写（作者只说 LHCE 低于其他两者）；无锚点（正文无过电位数值），按规则可能整图不用"
+    }
+  ],
+  "gaps": [
+    "P248-T3 E/S 未报告：每电池约 30 µL 电解液、硫载量约 0.5 mg cm⁻²，但电极面积未写，无法换算",
+    "P248-T3 锂箔厚度、温度、1C 定义、化成协议、电池形式未报告",
+    "P248-T3 首圈容量文字未写，只能由第 400 圈容量和保持率反算（保持率起点圈未写），已登记读图",
+    "P248-T3 过电位未报告（仅有电压曲线图）",
+    "Li‖S 测试只有 HCE 与 LHCE，LCE 未做 Li‖S；Li‖S 对照为高浓度 HCE 而非常规浓度电解液",
+    "多硫化物溶剂化、多硫化物溶解度、离子电导率均未测；电导率、溶解度只有作者文字说法；黏度只有隔膜润湿观察",
+    "SEI 的 XPS 只测 HCE 与 LHCE，LCE 的 SEI 未测（M0103 对 LCE SEI 疏松的说法为推断）",
+    "LHCE 有限锂 Li‖Cu（4 倍过量锂 CE 99.13%、0.5 倍过量锂 CE 98.35%，Fig. S2）只有 LHCE 一个配方，无对照，未记比较；与 P248-T2 的三倍过量是否同一组电池原文未写",
+    "P248-T2 的电流密度和循环容量原文未单独写明，按 Fig. 1 图注推定",
+    "HCE 的 Li‖Cu 库仑效率 98.5% 对应圈数未写",
+    "M0040 称 LHCE 120 圈平均 CE 高于含 LiNO₃ 的常用 Li-S 电解液，但本文未设含 LiNO₃ 对照",
+    "Li‖Li 沉积/剥离曲线（SI）文字无数值，未记；P248-T4 的电流密度、容量未报告"
+  ],
+  "source_review": {
+    "main": true,
+    "si": true,
+    "notes": "通读正文与 SI（SI 文本只有实验部分和图注文字，图中数据未读）；参考文献略读；未读任何既有提取结果。正文多处句子被图注或换页切断（如 M0067/M0072、M0125–M0127、M0130–M0132），按内容拼接理解。"
+  }
+}
