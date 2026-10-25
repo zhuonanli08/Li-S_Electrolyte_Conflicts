@@ -1,0 +1,1244 @@
+{
+  "paper_id": "P624",
+  "doi": "10.1016/j.ensm.2026.105072",
+  "formulations": [
+    {
+      "id": "Blank",
+      "name": "blank electrolyte",
+      "components": [
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": "1:1", "unit": "v/v（DOL:DME）"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": "1:1", "unit": "v/v（DOL:DME）"},
+        {"name": "LiTFSI", "role": "盐", "amount": 1.0, "unit": "M"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 0.3, "unit": "M"}
+      ],
+      "raw_formula": "1.0 M LiTFSI and 0.3 M LiNO3 dissolved in DOL/DME (v/v=1:1) mixed solvents was adopted as the blank electrolyte",
+      "evidence_ids": ["S0005"]
+    },
+    {
+      "id": "LiFSI",
+      "name": "LiFSI electrolyte",
+      "components": [
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": "1:1", "unit": "v/v（DOL:DME）"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": "1:1", "unit": "v/v（DOL:DME）"},
+        {"name": "LiTFSI", "role": "盐", "amount": 0.5, "unit": "M"},
+        {"name": "LiFSI", "role": "盐", "amount": 0.5, "unit": "M"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 0.3, "unit": "M"}
+      ],
+      "raw_formula": "0.5 M LiTFSI, 0.5 M LiFSI and 0.3 M LiNO3 dissolved in DOL/DME (v/v=1:1) mixed solvents was adopted as the LiFSI electrolyte",
+      "evidence_ids": ["S0005"]
+    },
+    {
+      "id": "DMTMSA",
+      "name": "DMTMSA electrolyte（10vol% DMTMSA）",
+      "components": [
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": "4.5:4.5:1", "unit": "v/v（DOL:DME:DMTMSA）"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": "4.5:4.5:1", "unit": "v/v（DOL:DME:DMTMSA）"},
+        {"name": "DMTMSA", "role": "弱或非溶剂化溶剂", "amount": "4.5:4.5:1", "unit": "v/v（DOL:DME:DMTMSA）"},
+        {"name": "LiTFSI", "role": "盐", "amount": 0.5, "unit": "M"},
+        {"name": "LiFSI", "role": "盐", "amount": 0.5, "unit": "M"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 0.3, "unit": "M"}
+      ],
+      "raw_formula": "0.5 M LiTFSI, 0.5 M LiFSI and 0.3 M LiNO3 dissolved in DOL/DME/DMTMSA (v/v=4.5:4.5:1) mixed solvents was adopted as the DMTMSA electrolyte；正文称 batteries with or without 10vol% DMTMSA。DMTMSA 角色按作者 \"weak solvent\"（对 Li⁺）描述定，作者也称其 additive",
+      "evidence_ids": ["S0005", "M0214"]
+    },
+    {
+      "id": "Control",
+      "name": "control / without DMTMSA（原文未写具体是 blank electrolyte 还是 LiFSI electrolyte）",
+      "components": [
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": "1:1", "unit": "v/v（DOL:DME）"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": "1:1", "unit": "v/v（DOL:DME）"},
+        {"name": "LiTFSI", "role": "盐", "amount": "原文未写（blank 为 1.0 M，LiFSI electrolyte 为 0.5 M）", "unit": "M"},
+        {"name": "LiFSI", "role": "盐", "amount": "原文未写（blank 不含，LiFSI electrolyte 为 0.5 M）", "unit": "M"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 0.3, "unit": "M"}
+      ],
+      "raw_formula": "原文电池测试只写 control / without DMTMSA；SI 定义了 blank electrolyte 与 LiFSI electrolyte 两种不含 DMTMSA 的电解液，两者都是 DOL/DME (1:1) + 0.3 M LiNO3，未写哪种作对照",
+      "evidence_ids": ["S0005", "M0214"]
+    },
+    {
+      "id": "DMTMSA20",
+      "name": "20% DMTMSA 电解液（仅 NMR/MD）",
+      "components": [
+        {"name": "DMTMSA", "role": "弱或非溶剂化溶剂", "amount": 20, "unit": "vol%"}
+      ],
+      "raw_formula": "electrolytes with different volume percentages of DMTMSA；additive concentration increases from 10 to 20%；其余成分原文未写",
+      "evidence_ids": ["M0049", "S0052"]
+    },
+    {
+      "id": "Control-noLiNO3",
+      "name": "control batteries without LiNO3（不含 DMTMSA、不含 LiNO3）",
+      "components": [
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": "原文未写", "unit": "原文未写"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": "原文未写", "unit": "原文未写"}
+      ],
+      "raw_formula": "Li-S batteries without LiNO3, control group without DMTMSA；盐与溶剂用量原文未写",
+      "evidence_ids": ["M0085", "M0086"]
+    },
+    {
+      "id": "DMTMSA-noLiNO3",
+      "name": "DMTMSA 电解液 without LiNO3",
+      "components": [
+        {"name": "DMTMSA", "role": "弱或非溶剂化溶剂", "amount": "原文未写", "unit": "原文未写"}
+      ],
+      "raw_formula": "batteries with DMTMSA additive can complete full cycles in LiNO3–free electrolyte；其余成分与用量原文未写",
+      "evidence_ids": ["M0085", "M0101"]
+    },
+    {
+      "id": "CP-Control",
+      "name": "Li||CP 阴极液（不含 DMTMSA）",
+      "components": [
+        {"name": "LiTFSI", "role": "盐", "amount": 1.0, "unit": "M"}
+      ],
+      "raw_formula": "20 μL electrolyte containing 100 mmol/L Li2S8 and 1.0 M LiTFSI without 10 vol% DMTMSA as catholyte；溶剂原文未写；负极侧另加 10 μL blank electrolyte",
+      "evidence_ids": ["S0018"]
+    },
+    {
+      "id": "CP-DMTMSA",
+      "name": "Li||CP 阴极液（含 10 vol% DMTMSA）",
+      "components": [
+        {"name": "LiTFSI", "role": "盐", "amount": 1.0, "unit": "M"},
+        {"name": "DMTMSA", "role": "弱或非溶剂化溶剂", "amount": 10, "unit": "vol%"}
+      ],
+      "raw_formula": "20 μL electrolyte containing 100 mmol/L Li2S8 and 1.0 M LiTFSI with 10 vol% DMTMSA as catholyte；溶剂原文未写；负极侧另加 10 μL blank electrolyte",
+      "evidence_ids": ["S0018"]
+    },
+    {
+      "id": "DMTFA10",
+      "name": "10% N,N–Dimethyltrifluoroacetamide 电解液",
+      "components": [
+        {"name": "N,N-Dimethyltrifluoroacetamide", "role": "弱或非溶剂化溶剂", "amount": 10, "unit": "%"}
+      ],
+      "raw_formula": "Symmetric batteries containing 10% N, N–Dimethyltrifluoroacetamide；基础电解液原文未写；角色未见作者描述，按与 DMTMSA 同类（酰胺类比物）暂定",
+      "evidence_ids": ["S0047", "M0035"]
+    }
+  ],
+  "control_id": "Control",
+  "control_type": "常规醚基准（DOL/DME + LiTFSI + LiNO₃）：原文称 control / without DMTMSA，未写是 blank electrolyte（1.0 M LiTFSI + 0.3 M LiNO3）还是 LiFSI electrolyte（0.5 M LiTFSI + 0.5 M LiFSI + 0.3 M LiNO3）；DMTMSA 电解液为 LiFSI electrolyte 的溶剂中加 10 vol% DMTMSA",
+  "gradients": [
+    {
+      "name": "DMTMSA 体积分数（用量梯度）",
+      "order": ["Control", "DMTMSA", "DMTMSA20"],
+      "values": ["0%", "10%", "20%"],
+      "solvation_axis": "按 Li⁺ 溶剂化由强到弱；依据：作者 1H/7Li/19F NMR 位移与 MD 配位数（加 DMTMSA 溶剂化能力减弱，10→20% 更明显）。注意：对短链 Li2S4 的多硫化物溶剂化方向相反（DMTMSA 更强）。20% 档只在 NMR/MD 中出现，电池测试只有 0% 与 10%；SI Figure S31 不同 DMTMSA 含量的倍率对比各档含量正文未写",
+      "evidence_ids": ["M0048", "M0049", "M0050", "M0052", "S0052"]
+    }
+  ],
+  "properties": [
+    {
+      "name": "Li⁺ 溶剂化",
+      "values": {"Control": "较强（DOL/DME 配位）", "DMTMSA": "减弱", "DMTMSA20": "进一步减弱"},
+      "direction": "沿梯度减弱（DMTMSA 对 Li⁺ 溶剂化能力弱于 DOL、DME，并把 DOL/DME 推离 Li⁺，TFSI⁻ 靠近）",
+      "method": "1H、7Li、19F NMR 位移；MD（RDF、配位数）",
+      "system": "不含多硫化物的电解液；NMR 用电解液的其余成分原文未写",
+      "evidence_ids": ["M0041", "M0048", "M0049", "M0050", "M0052"]
+    },
+    {
+      "name": "多硫化物溶解度（长链 Li2S8）",
+      "values": {"Control": "较高（Li2S8 完全溶解）", "DMTMSA": "降低超过 50%（加 DMTMSA 后瓶底出现沉淀）"},
+      "direction": "加 DMTMSA 降低",
+      "method": "饱和溶解度：配制不同浓度溶液观察有无沉淀和颜色深浅",
+      "system": "含/不含 DMTMSA 的多硫化物溶液（Figure S3、S8）；溶液的盐与溶剂比例原文未写，与电池电解液可能不同",
+      "evidence_ids": ["M0005", "M0056", "M0057", "S0042", "S0054", "S0055"]
+    },
+    {
+      "name": "多硫化物溶解度（短链 Li2S4）",
+      "values": {"Control": "较低", "DMTMSA": "提高一个数量级（饱和溶液颜色更深）"},
+      "direction": "加 DMTMSA 升高",
+      "method": "饱和溶解度：观察沉淀与颜色深浅",
+      "system": "含/不含 DMTMSA 的 Li2S4 溶液（Figure S3、S8）；溶液成分比例原文未写",
+      "evidence_ids": ["M0005", "M0056", "M0058", "S0042", "S0056"]
+    },
+    {
+      "name": "多硫化物溶剂化",
+      "values": {"Control": "DOL/DME（DME）与 Li2S8 作用较强、与 Li2S4 较弱", "DMTMSA": "与 Li2S8 作用较弱、与 Li2S4 作用较强（Li2S4 诱导 DMTMSA 极化更强）"},
+      "direction": "长链 Li2S8 的溶剂化：加 DMTMSA 减弱；短链 Li2S4 的溶剂化：加 DMTMSA 增强",
+      "method": "17O、13C、7Li NMR，FTIR，拉曼，DFT 结合能与 Mulliken 电荷（结合能数值按规则不收）",
+      "system": "纯 DMTMSA 或 DMTMSA 溶液中加 Li2S8 / Li2S4；DFT 为 DME 或 DMTMSA 单分子与 Li2Sn",
+      "evidence_ids": ["M0059", "M0060", "M0063", "M0066", "M0078"]
+    },
+    {
+      "name": "Li2S 溶解度",
+      "values": {"Control": "极低（DOL/DME）", "DMTMSA": "高"},
+      "direction": "加 DMTMSA 升高",
+      "method": "Li2S 在 DOL/DME 与 DMTMSA 中的溶解观察（Figure S29）",
+      "system": "DOL/DME 与 DMTMSA 溶剂中溶 Li2S；与电池电解液成分不同",
+      "evidence_ids": ["M0198", "M0199", "M0200", "S0096"]
+    },
+    {
+      "name": "离子电导率",
+      "values": {"Control": "较高", "DMTMSA": "降低（作者称仍保持较高）"},
+      "direction": "加 DMTMSA 降低",
+      "method": "离子电导率测试（Figure S26）",
+      "system": "电解液",
+      "evidence_ids": ["M0129", "M0130", "M0131"]
+    },
+    {
+      "name": "锂离子迁移数",
+      "values": {"Control": "较低", "DMTMSA": "升高"},
+      "direction": "加 DMTMSA 升高",
+      "method": "迁移数测试（Figure S26c/d）",
+      "system": "电池",
+      "evidence_ids": ["M0131"]
+    },
+    {
+      "name": "Li2Sn 扩散系数（CV Randles–Sevcik 斜率）",
+      "values": {"Control": "较低", "DMTMSA": "提高（第二还原段尤其明显）"},
+      "direction": "加 DMTMSA 升高",
+      "method": "多扫速 CV，峰电流对扫速平方根线性拟合",
+      "system": "Li‖S 电池内",
+      "evidence_ids": ["M0121", "M0122", "M0123"]
+    }
+  ],
+  "tests": [
+    {
+      "id": "P624-T1",
+      "name": "Li‖S 扣式 −20 °C 0.05 C 长循环",
+      "cell": "Li‖S 扣式（CR2025）",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "450 μm（SI 通用说明）",
+        "rate": "0.05 C",
+        "formation": "未报告",
+        "temperature": "−20 °C",
+        "LiNO3": "含 0.3 M",
+        "one_C": "1675 mA g-1"
+      },
+      "formulations": ["DMTMSA", "Control"],
+      "evidence_ids": ["M0215", "M0216", "M0231", "S0009", "S0014", "S0005"],
+      "results": [
+        {
+          "id": "P624-T1-R1",
+          "metric": "指定圈容量",
+          "A": "DMTMSA", "B": "Control",
+          "value_A": 700, "value_B": 200,
+          "unit": "mAh g-1",
+          "point": "−20 °C 0.05 C 循环末（原文 over 100 cycles，未写确切圈数）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0215", "M0216"],
+          "reason": "同一图 Fig. 5a 的有/无 DMTMSA 电池；对照 retained only 200 mAh/g"
+        },
+        {
+          "id": "P624-T1-R2",
+          "metric": "过电位",
+          "A": "DMTMSA", "B": "Control",
+          "value_A": null, "value_B": null,
+          "unit": "未报告",
+          "point": "循环过程",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0216"],
+          "reason": "作者定性：control electrolyte exhibited higher polarization during cycling"
+        }
+      ]
+    },
+    {
+      "id": "P624-T2",
+      "name": "Li‖S 扣式 4 mg cm-2、E/S 5 长循环（DMTMSA 0.2 C / 对照 0.1 C）",
+      "cell": "Li‖S 扣式（CR2025）",
+      "conditions": {
+        "sulfur_loading": "4 mg cm-2",
+        "ES": "5",
+        "ES_unit": "μL mg⁻¹（体积基）",
+        "Li_thickness": "450 μm（SI 通用说明）",
+        "rate": "DMTMSA 0.2 C；对照 0.1 C（条件不同，不判；图注写 0.2/0.1 C）",
+        "formation": "未报告",
+        "temperature": "室温（SI 通用说明，未给数值）",
+        "LiNO3": "含 0.3 M",
+        "one_C": "1675 mA g-1"
+      },
+      "formulations": ["DMTMSA", "Control"],
+      "evidence_ids": ["M0217", "M0218", "M0219", "M0232", "S0009", "S0010", "S0014"],
+      "results": [
+        {
+          "id": "P624-T2-R1",
+          "metric": "首圈容量",
+          "A": "DMTMSA", "B": "Control",
+          "value_A": 1006.2, "value_B": 775.5,
+          "unit": "mAh g-1",
+          "point": "初始放电容量（A 在 0.2 C，B 在 0.1 C）",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": false,
+          "evidence_ids": ["M0218", "M0219"],
+          "reason": "A、B 倍率分别给值且不同（0.2 C vs 0.1 C），按规则不判；图注 0.2/0.1 C 含义原文未写清"
+        },
+        {
+          "id": "P624-T2-R2",
+          "metric": "指定圈容量",
+          "A": "DMTMSA", "B": "Control",
+          "value_A": ">843.5", "value_B": 691.1,
+          "unit": "mAh g-1",
+          "point": "A 第 150 圈；B 第 75 圈（取值圈不同）",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": false,
+          "evidence_ids": ["M0218", "M0220"],
+          "reason": "倍率不同且取值圈不同，按规则不判；作者称对照 50 圈后容量快速下降，DMTMSA 150 圈平均衰减率 0.107%"
+        }
+      ]
+    },
+    {
+      "id": "P624-T3",
+      "name": "Li‖S 扣式 倍率（仅 DMTMSA）",
+      "cell": "Li‖S 扣式（CR2025）",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "450 μm（SI 通用说明）",
+        "rate": "0.3、0.4、0.5 C 等多倍率",
+        "formation": "未报告",
+        "temperature": "室温（SI 通用说明，未给数值）",
+        "LiNO3": "含 0.3 M",
+        "one_C": "1675 mA g-1"
+      },
+      "formulations": ["DMTMSA"],
+      "evidence_ids": ["M0221", "M0234", "S0009", "S0014"],
+      "results": []
+    },
+    {
+      "id": "P624-T4",
+      "name": "3 Ah 级 Li‖S 软包 0.05 C（仅 DMTMSA）",
+      "cell": "Li‖S 软包（3 Ah 级）",
+      "conditions": {
+        "sulfur_loading": "4 mg cm-2",
+        "ES": "3",
+        "ES_unit": "mL g⁻¹（体积基）",
+        "Li_thickness": "未报告",
+        "rate": "0.05 C",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 0.3 M",
+        "one_C": "1675 mA g-1"
+      },
+      "formulations": ["DMTMSA"],
+      "evidence_ids": ["M0223", "M0224", "S0014"],
+      "results": []
+    },
+    {
+      "id": "P624-T5",
+      "name": "Li‖S 扣式 无 LiNO3 穿梭电流",
+      "cell": "Li‖S 扣式（CR2025）",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "450 μm（SI 通用说明）",
+        "rate": "恒流充至 2.90 V 后逐级恒压放电至 2.60–2.20 V，取稳态电流",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "不含",
+        "one_C": "1675 mA g-1"
+      },
+      "formulations": ["DMTMSA-noLiNO3", "Control-noLiNO3"],
+      "evidence_ids": ["M0085", "M0100", "S0015", "S0016", "S0009"],
+      "results": [
+        {
+          "id": "P624-T5-R1",
+          "metric": "穿梭电流",
+          "A": "DMTMSA-noLiNO3", "B": "Control-noLiNO3",
+          "value_A": null, "value_B": null,
+          "unit": "mA",
+          "point": "各恒压电位稳态电流",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0100"],
+          "reason": "作者定性：DMTMSA 全电压范围穿梭电流很低，对照接近 0.5 mA（DMTMSA 未给数）"
+        }
+      ]
+    },
+    {
+      "id": "P624-T6",
+      "name": "Li‖S 扣式 无 LiNO3 恒流充放电",
+      "cell": "Li‖S 扣式（CR2025）",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "450 μm（SI 通用说明）",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "室温（SI 通用说明，未给数值）",
+        "LiNO3": "不含",
+        "one_C": "1675 mA g-1"
+      },
+      "formulations": ["DMTMSA-noLiNO3", "Control-noLiNO3"],
+      "evidence_ids": ["M0086", "M0101", "M0103", "S0009", "S0014"],
+      "results": [
+        {
+          "id": "P624-T6-R1",
+          "metric": "充电完成情况（过充）",
+          "A": "DMTMSA-noLiNO3", "B": "Control-noLiNO3",
+          "value_A": null, "value_B": null,
+          "unit": "未报告",
+          "point": "充电过程",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0101"],
+          "reason": "作者定性：DMTMSA 电池能完成完整循环，对照充电平台持续偏低、无法充满（明显过充）"
+        },
+        {
+          "id": "P624-T6-R2",
+          "metric": "首圈容量",
+          "A": "DMTMSA-noLiNO3", "B": "Control-noLiNO3",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1",
+          "point": "首次放电（推定为 Fig. 3b 同组电池）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0103"],
+          "reason": "作者定性：DMTMSA 首次放电平台延长、容量显著增加；该句所指电池按上下文推定为无 LiNO3 的 Fig. 3b 电池"
+        }
+      ]
+    },
+    {
+      "id": "P624-T7",
+      "name": "Li‖S 扣式 循环后拆解（正极活性物质残留、锂负极质量损失）",
+      "cell": "Li‖S 扣式（CR2025）",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "450 μm（SI 通用说明）",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "未报告",
+        "one_C": "1675 mA g-1"
+      },
+      "formulations": ["DMTMSA", "Control"],
+      "evidence_ids": ["M0104", "S0069", "S0009"],
+      "results": [
+        {
+          "id": "P624-T7-R1",
+          "metric": "正极活性物质残留量",
+          "A": "DMTMSA", "B": "Control",
+          "value_A": null, "value_B": null,
+          "unit": "未报告",
+          "point": "50 圈后",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0104"],
+          "reason": "作者定性：50 圈后 DMTMSA 使残留正极活性物质翻倍（Fig. S16a）；电解液是否含 LiNO3 原文未写"
+        },
+        {
+          "id": "P624-T7-R2",
+          "metric": "锂负极质量损失率",
+          "A": "DMTMSA", "B": "Control",
+          "value_A": null, "value_B": null,
+          "unit": "%",
+          "point": "50 圈后",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0104"],
+          "reason": "作者定性：50 圈后锂负极质量损失降低约 70%（Fig. S16b）"
+        }
+      ]
+    },
+    {
+      "id": "P624-T8",
+      "name": "Li‖S 扣式 CV（0.4 mV/s，多扫速 0.1–0.4 mV/s）",
+      "cell": "Li‖S 扣式（CR2025）",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "450 μm（SI 通用说明）",
+        "rate": "扫速 0.4 mV/s（多扫速 0.1~0.4 mV s−1）",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 0.3 M",
+        "one_C": "不适用"
+      },
+      "formulations": ["DMTMSA", "Control"],
+      "evidence_ids": ["M0087", "S0022", "S0009"],
+      "results": [
+        {
+          "id": "P624-T8-R1",
+          "metric": "过电位",
+          "A": "DMTMSA", "B": "Control",
+          "value_A": null, "value_B": null,
+          "unit": "V",
+          "point": "CV 还原峰与氧化峰位置",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0119", "M0207"],
+          "reason": "作者定性：还原峰移向高电位、氧化峰移向低电位，起始氧化电位更低"
+        },
+        {
+          "id": "P624-T8-R2",
+          "metric": "峰电流",
+          "A": "DMTMSA", "B": "Control",
+          "value_A": null, "value_B": null,
+          "unit": "未报告",
+          "point": "CV 峰电流",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0120"],
+          "reason": "作者定性：电流响应显著增强"
+        }
+      ]
+    },
+    {
+      "id": "P624-T9",
+      "name": "Li2S6 对称电池 CV（碳纸电极，50 mV/s）",
+      "cell": "Li2S6 对称电池（碳纸‖碳纸）",
+      "conditions": {
+        "sulfur_loading": "不适用（电解液含相同浓度 Li2S6，浓度原文未写）",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "不适用",
+        "rate": "扫速 50 mV/s",
+        "formation": "不适用",
+        "temperature": "未报告",
+        "LiNO3": "未报告",
+        "one_C": "不适用"
+      },
+      "formulations": ["DMTMSA", "Control"],
+      "evidence_ids": ["M0124", "S0084"],
+      "results": [
+        {
+          "id": "P624-T9-R1",
+          "metric": "响应电流",
+          "A": "DMTMSA", "B": "Control",
+          "value_A": null, "value_B": null,
+          "unit": "未报告",
+          "point": "CV 还原与氧化响应电流",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0124"],
+          "reason": "作者定性：含 DMTMSA 时还原、氧化响应电流更高；电解液基础成分原文未写，配方对应为推定"
+        }
+      ]
+    },
+    {
+      "id": "P624-T10",
+      "name": "Li‖S 扣式 PITT 放电",
+      "cell": "Li‖S 扣式（CR2025）",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "450 μm（SI 通用说明）",
+        "rate": "PITT（参数未报告）",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 0.3 M",
+        "one_C": "1675 mA g-1"
+      },
+      "formulations": ["DMTMSA", "Control"],
+      "evidence_ids": ["M0125", "S0085", "S0009"],
+      "results": [
+        {
+          "id": "P624-T10-R1",
+          "metric": "过电位",
+          "A": "DMTMSA", "B": "Control",
+          "value_A": null, "value_B": null,
+          "unit": "V",
+          "point": "起始还原电位",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0125"],
+          "reason": "作者定性：DMTMSA 起始还原电位高于对照"
+        },
+        {
+          "id": "P624-T10-R2",
+          "metric": "响应电流",
+          "A": "DMTMSA", "B": "Control",
+          "value_A": null, "value_B": null,
+          "unit": "未报告",
+          "point": "PITT 响应电流",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0126"],
+          "reason": "作者定性：响应电流显著更高"
+        }
+      ]
+    },
+    {
+      "id": "P624-T11",
+      "name": "Li‖S 扣式 EIS/DRT（开路电压）",
+      "cell": "Li‖S 扣式（CR2025）",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "450 μm（SI 通用说明）",
+        "rate": "EIS 100 kHz–0.01 Hz，振幅 10 mV，开路电压",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 0.3 M",
+        "one_C": "不适用"
+      },
+      "formulations": ["DMTMSA", "Control"],
+      "evidence_ids": ["M0127", "S0021", "S0009"],
+      "results": [
+        {
+          "id": "P624-T11-R1",
+          "metric": "阻抗",
+          "A": "DMTMSA", "B": "Control",
+          "value_A": null, "value_B": null,
+          "unit": "Ω",
+          "point": "RSEI、Rct 与浓差极化电阻",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0128"],
+          "reason": "作者定性：DMTMSA 电池 RSEI、Rct、浓差极化电阻显著更低"
+        },
+        {
+          "id": "P624-T11-R2",
+          "metric": "阻抗",
+          "A": "DMTMSA", "B": "Control",
+          "value_A": null, "value_B": null,
+          "unit": "Ω",
+          "point": "欧姆电阻 Rohm",
+          "basis": "qualitative",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0129"],
+          "reason": "作者定性：Rohm 升高，由离子电导率下降引起"
+        },
+        {
+          "id": "P624-T11-R3",
+          "metric": "阻抗",
+          "A": "DMTMSA", "B": "Control",
+          "value_A": null, "value_B": null,
+          "unit": "Ω",
+          "point": "总阻抗",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0130"],
+          "reason": "作者定性：the overall impedance is lower"
+        }
+      ]
+    },
+    {
+      "id": "P624-T12",
+      "name": "Li‖S 扣式 变温 EIS（35~60 °C）",
+      "cell": "Li‖S 扣式（CR2025）",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "450 μm（SI 通用说明）",
+        "rate": "EIS 100 kHz–0.01 Hz，振幅 10 mV",
+        "formation": "未报告",
+        "temperature": "35~60 °C 变温",
+        "LiNO3": "含 0.3 M",
+        "one_C": "不适用"
+      },
+      "formulations": ["DMTMSA", "Control"],
+      "evidence_ids": ["M0133", "M0134", "S0021", "S0009"],
+      "results": [
+        {
+          "id": "P624-T12-R1",
+          "metric": "SEI 离子传输活化能",
+          "A": "DMTMSA", "B": "Control",
+          "value_A": 43.60, "value_B": 46.24,
+          "unit": "kJ/mol",
+          "point": "Arrhenius 拟合",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0134"],
+          "reason": "活化能越低越好；|46.24−43.60|/46.24≈5.7%"
+        },
+        {
+          "id": "P624-T12-R2",
+          "metric": "电荷转移活化能",
+          "A": "DMTMSA", "B": "Control",
+          "value_A": 40.49, "value_B": 44.28,
+          "unit": "kJ/mol",
+          "point": "Arrhenius 拟合",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0134"],
+          "reason": "活化能越低越好；|44.28−40.49|/44.28≈8.6%"
+        }
+      ]
+    },
+    {
+      "id": "P624-T13",
+      "name": "Li‖S 扣式 GITT（15 min 脉冲 + 2 h 静置）",
+      "cell": "Li‖S 扣式（CR2025）",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "450 μm（SI 通用说明）",
+        "rate": "15 min 充/放电脉冲后静置 2 h（电流未报告）",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 0.3 M",
+        "one_C": "1675 mA g-1"
+      },
+      "formulations": ["DMTMSA", "Control"],
+      "evidence_ids": ["M0161", "S0092", "S0009"],
+      "results": [
+        {
+          "id": "P624-T13-R1",
+          "metric": "过电位",
+          "A": "DMTMSA", "B": "Control",
+          "value_A": null, "value_B": null,
+          "unit": "V",
+          "point": "放电活化极化（全 DOD）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0174"],
+          "reason": "作者定性：DMTMSA 电池活化极化总体更低"
+        },
+        {
+          "id": "P624-T13-R2",
+          "metric": "过电位",
+          "A": "DMTMSA", "B": "Control",
+          "value_A": null, "value_B": null,
+          "unit": "V",
+          "point": "放电浓差极化，DOD 0~0.3",
+          "basis": "qualitative",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["M0168"],
+          "reason": "作者定性：negligible differences"
+        },
+        {
+          "id": "P624-T13-R3",
+          "metric": "过电位",
+          "A": "DMTMSA", "B": "Control",
+          "value_A": null, "value_B": null,
+          "unit": "V",
+          "point": "放电浓差极化，DOD ≈0.3 之后（Li2S4→Li2S 段）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0171"],
+          "reason": "作者定性：DMTMSA 极化显著低于对照"
+        },
+        {
+          "id": "P624-T13-R4",
+          "metric": "过电位",
+          "A": "DMTMSA", "B": "Control",
+          "value_A": null, "value_B": null,
+          "unit": "V",
+          "point": "充电过程活化极化与浓差极化",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0208"],
+          "reason": "作者定性：EIS 与 GITT 联合分析显示 DMTMSA 活化与浓差极化显著更低（Fig. S30）"
+        }
+      ]
+    },
+    {
+      "id": "P624-T14",
+      "name": "Li‖碳纸 Li2S8 阴极液 恒压 Li2S 沉积",
+      "cell": "Li‖CP 扣式",
+      "conditions": {
+        "sulfur_loading": "不适用（20 μL 阴极液，100 mmol/L Li2S8）",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.05 C 预放电至 2.07 V 后 2.02 V 恒压（SI）；图注写 2.06 V",
+        "formation": "不适用",
+        "temperature": "25 °C",
+        "LiNO3": "阴极液未写含 LiNO3；负极侧 10 μL blank electrolyte 含 0.3 M",
+        "one_C": "未报告",
+        "catholyte": "20 μL，100 mmol/L Li2S8 + 1.0 M LiTFSI，含/不含 10 vol% DMTMSA；负极侧 10 μL blank electrolyte"
+      },
+      "formulations": ["CP-DMTMSA", "CP-Control"],
+      "evidence_ids": ["S0018", "S0020", "M0156", "M0158", "S0005"],
+      "results": [
+        {
+          "id": "P624-T14-R1",
+          "metric": "Li2S 沉积容量",
+          "A": "CP-DMTMSA", "B": "CP-Control",
+          "value_A": 345.3, "value_B": 207.6,
+          "unit": "mAh g-1",
+          "point": "恒压放电积分",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0191"],
+          "reason": "同一测试有/无 DMTMSA；恒压电位 SI 与图注不一致（2.02 vs 2.06 V），两组同用"
+        }
+      ]
+    },
+    {
+      "id": "P624-T15",
+      "name": "Li‖S 原位拉曼电池 0.5 C 放电",
+      "cell": "Li‖S 原位拉曼电池（带石英窗）",
+      "conditions": {
+        "sulfur_loading": "1.0 mg cm-2",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.5 C",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "含 0.3 M",
+        "one_C": "1675 mA g-1",
+        "electrolyte_volume": "100 μL"
+      },
+      "formulations": ["DMTMSA", "Control"],
+      "evidence_ids": ["S0030", "S0032", "M0144", "S0014"],
+      "results": [
+        {
+          "id": "P624-T15-R1",
+          "metric": "放电容量",
+          "A": "DMTMSA", "B": "Control",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1",
+          "point": "原位拉曼放电过程（圈数未报告）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0146"],
+          "reason": "作者定性：DMTMSA 电池放电比容量更高（Fig. S27）"
+        },
+        {
+          "id": "P624-T15-R2",
+          "metric": "过电位",
+          "A": "DMTMSA", "B": "Control",
+          "value_A": null, "value_B": null,
+          "unit": "V",
+          "point": "Li2Sx 信号出现与峰值电位",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0145", "M0144"],
+          "reason": "作者定性：DMTMSA Li2Sx 信号在 2.35 V 出现（对照 2.25 V），作者称极化降低"
+        }
+      ]
+    },
+    {
+      "id": "P624-T16",
+      "name": "Li‖Li 对称电池 1 mA cm-2 / 1 mAh cm-2（DMTMSA vs 酰胺类比溶剂）",
+      "cell": "Li‖Li 对称",
+      "conditions": {
+        "sulfur_loading": "不适用",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "1 mA cm-2，1 mAh cm-2（第 30、60 h 切换 0.1、0.5 mA 电流）",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "未报告",
+        "one_C": "不适用"
+      },
+      "formulations": ["DMTMSA", "DMTFA10"],
+      "evidence_ids": ["S0047", "S0048"],
+      "results": [
+        {
+          "id": "P624-T16-R1",
+          "metric": "寿命（循环小时数）",
+          "A": "DMTMSA", "B": "DMTFA10",
+          "value_A": ">400", "value_B": "≈200",
+          "unit": "h",
+          "point": "稳定运行时间",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["S0047"],
+          "reason": "10% DMTMSA over 400 h vs 10% DMTFA about 200 h；DMTMSA 是否即 SI 中 DMTMSA 电解液为推定"
+        }
+      ]
+    },
+    {
+      "id": "P624-T17",
+      "name": "Li‖Cu 库仑效率循环",
+      "cell": "Li‖Cu",
+      "conditions": {
+        "sulfur_loading": "不适用",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "未报告",
+        "one_C": "不适用"
+      },
+      "formulations": ["DMTMSA", "Control"],
+      "evidence_ids": ["S0044", "S0049", "S0050"],
+      "results": [
+        {
+          "id": "P624-T17-R1",
+          "metric": "寿命（循环圈数）",
+          "A": "DMTMSA", "B": "Control",
+          "value_A": ">400", "value_B": "<100",
+          "unit": "圈",
+          "point": "库仑效率稳定维持的圈数",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["S0050"],
+          "reason": "对照 CE fewer than 100 cycles 后快速下降；10% DMTMSA more than 400 cycles，nearly 100% CE"
+        },
+        {
+          "id": "P624-T17-R2",
+          "metric": "库仑效率",
+          "A": "DMTMSA", "B": "Control",
+          "value_A": null, "value_B": null,
+          "unit": "%",
+          "point": "循环 CE",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["S0049"],
+          "reason": "作者定性：10% DMTMSA notably enhances the CE；作者称 10% 为不同添加量中最佳（其他档未写）"
+        }
+      ]
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "P624-M1",
+      "summary": "通用说法：强溶剂化电解液分散短链多硫化物、改善动力学；弱溶剂化电解液把长链多硫化物限制在正极侧、防穿梭",
+      "A": "全梯度", "B": "全梯度",
+      "property": "电解液整体溶剂化强弱（通用说法，非本文配方）",
+      "categories": ["多硫化物穿梭", "正极反应"],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0012"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P624-M2",
+      "summary": "通用说法：固定溶剂化力无法匹配所有 Li2Sn——强溶剂化加剧穿梭，弱溶剂化加剧反应动力学迟缓",
+      "A": "全梯度", "B": "全梯度",
+      "property": "电解液整体溶剂化强弱（通用说法，非本文配方）",
+      "categories": ["多硫化物穿梭", "正极反应"],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0013", "M0014"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P624-M3",
+      "summary": "作者概念：低电荷密度 Sn2−（长链）只轻微极化 DMTMSA → 弱离子–偶极作用、少溶；高电荷密度 Sn2−（短链）→ 强作用、高溶",
+      "A": "DMTMSA", "B": "Control",
+      "property": "多硫化物溶剂化随链长变化：对长链弱、对短链强",
+      "categories": [],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0029"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P624-M4",
+      "summary": "DMTMSA 与 Li⁺ 作用弱于 DOL/DME，S8²⁻ 的增强不足以补偿 → Li2S8 溶解度与分散度降低",
+      "A": "DMTMSA", "B": "Control",
+      "property": "Li⁺ 溶剂化减弱 → 长链多硫化物（Li2S8）溶解度降低",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0059"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P624-M5",
+      "summary": "DMTMSA 与 Li⁺ 及 S4²⁻ 的偶极–离子作用显著增强 → Li2S4 溶解度与分散度提高",
+      "A": "DMTMSA", "B": "Control",
+      "property": "短链多硫化物（Li2S4）溶剂化增强 → 溶解度提高",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0060"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P624-M6",
+      "summary": "长链 Li2Sn 溶解度降低抑制穿梭；溶解度提高的 Li2S4 内源介导加速还原，长链 Li2Sn 不易累积（对照因溶长链多而穿梭）",
+      "A": "DMTMSA", "B": "Control",
+      "property": "长链多硫化物溶解度降低、Li2S4 溶解度提高",
+      "categories": ["多硫化物穿梭", "正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0098"],
+      "test_ids": ["P624-T5"],
+      "side": "强侧"
+    },
+    {
+      "id": "P624-M7",
+      "summary": "DMTMSA 提高 Li2S4 溶解度，利于其内源氧化还原介导作用（对照 Li2S4 溶解低、介导弱）",
+      "A": "DMTMSA", "B": "Control",
+      "property": "短链多硫化物（Li2S4）溶解度提高",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0097"],
+      "test_ids": [],
+      "side": "弱侧"
+    },
+    {
+      "id": "P624-M8",
+      "summary": "穿梭被抑制 → 活性物质损失减少、锂负极免受多硫化物腐蚀 → 长循环稳定",
+      "A": "DMTMSA", "B": "Control",
+      "property": "（上下文）长链多硫化物溶解度降低",
+      "categories": ["多硫化物穿梭", "负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0102"],
+      "test_ids": ["P624-T5", "P624-T7"],
+      "side": "强侧"
+    },
+    {
+      "id": "P624-M9",
+      "summary": "无 LiNO3 时 DMTMSA 电池首次放电平台延长 → Li2S8 利用率提高 → 容量显著增加",
+      "A": "DMTMSA-noLiNO3", "B": "Control-noLiNO3",
+      "property": "原句未提溶剂化",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0103"],
+      "test_ids": ["P624-T6"],
+      "side": "其他"
+    },
+    {
+      "id": "P624-M10",
+      "summary": "DMTMSA 电池负极表面硫含量显著更低 → 抑制 Li2Sn 穿梭、保护负极免受腐蚀",
+      "A": "DMTMSA", "B": "Control",
+      "property": "（上下文）长链多硫化物溶解度降低",
+      "categories": ["多硫化物穿梭", "负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0115"],
+      "test_ids": [],
+      "side": "强侧"
+    },
+    {
+      "id": "P624-M11",
+      "summary": "DMTMSA 与 TFSI⁻ LUMO 更低 → 在锂负极优先分解 → 形成稳定 SEI",
+      "A": "DMTMSA", "B": "Control",
+      "property": "溶剂 LUMO 能级（非溶剂化）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0108"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P624-M12",
+      "summary": "对照 SEI 无机成分少、DOL/DME 分解产生的有机物多，不能阻止电解液分解",
+      "A": "DMTMSA", "B": "Control",
+      "property": "SEI 组成（原句未提溶剂化）",
+      "categories": ["负极锂", "电解液消耗"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0110"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P624-M13",
+      "summary": "DMTMSA 调控 Li2S4 溶解与分散，促进其作为内源氧化还原介体的反应活性 → 动力学改善",
+      "A": "DMTMSA", "B": "Control",
+      "property": "短链多硫化物（Li2S4）溶解度提高",
+      "categories": ["正极反应"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0117"],
+      "test_ids": ["P624-T8"],
+      "side": "弱侧"
+    },
+    {
+      "id": "P624-M14",
+      "summary": "DMTMSA 组 Li2Sn 扩散系数提高（尤其第二还原段），佐证 Li2S4 溶解与分散增强",
+      "A": "DMTMSA", "B": "Control",
+      "property": "短链多硫化物（Li2S4）溶解度提高",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0123"],
+      "test_ids": ["P624-T8"],
+      "side": "弱侧"
+    },
+    {
+      "id": "P624-M15",
+      "summary": "离子电导率下降导致欧姆电阻升高",
+      "A": "DMTMSA", "B": "Control",
+      "property": "离子电导率降低",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0129"],
+      "test_ids": ["P624-T11"],
+      "side": "其他"
+    },
+    {
+      "id": "P624-M16",
+      "summary": "电导率虽降，但 DMTMSA 弱配位溶剂化结构提高锂离子迁移数、利于 Li⁺ 传输",
+      "A": "DMTMSA", "B": "Control",
+      "property": "Li⁺ 溶剂化减弱（弱配位）；迁移数升高",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0131"],
+      "test_ids": ["P624-T11"],
+      "side": "强侧"
+    },
+    {
+      "id": "P624-M17",
+      "summary": "溶剂化结构优化 → Li⁺ 去溶剂化更容易、形成富无机 SEI → 促进离子传输",
+      "A": "DMTMSA", "B": "Control",
+      "property": "Li⁺ 溶剂化减弱 → 去溶剂化更易",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0132"],
+      "test_ids": ["P624-T11", "P624-T12"],
+      "side": "强侧"
+    },
+    {
+      "id": "P624-M18",
+      "summary": "GITT：DOD 0.3 后 DMTMSA 极化显著低于对照，体现 Li2S4 溶解与分散增强及 Li2S 三维生长",
+      "A": "DMTMSA", "B": "Control",
+      "property": "短链多硫化物（Li2S4）溶解度提高",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0171"],
+      "test_ids": ["P624-T13"],
+      "side": "弱侧"
+    },
+    {
+      "id": "P624-M19",
+      "summary": "DMTMSA 中 Li2S 三维沉积，避免正极活性位点被快速大面积覆盖 → 活化极化缓慢增加",
+      "A": "DMTMSA", "B": "Control",
+      "property": "原句未提溶剂化（Li2S 沉积形貌）",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0195"],
+      "test_ids": ["P624-T13", "P624-T14"],
+      "side": "其他"
+    },
+    {
+      "id": "P624-M20",
+      "summary": "对照中 Li2S 溶解度极低 → 原位沉积不迁移并阻碍后续 Li2S4 还原 → 二维沉积",
+      "A": "DMTMSA", "B": "Control",
+      "property": "Li2S 溶解度：对照极低、DMTMSA 高",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0199"],
+      "test_ids": ["P624-T14"],
+      "side": "弱侧"
+    },
+    {
+      "id": "P624-M21",
+      "summary": "DFT：DOL/DME 中 Li2S4 生成较难、Li2S2 自由能过低难转为 Li2S → 影响硫利用率并减慢充电氧化",
+      "A": "DMTMSA", "B": "Control",
+      "property": "各硫物种吉布斯自由能（计算，原句未提溶剂化）",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0151"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P624-M22",
+      "summary": "原位拉曼：DMTMSA 电池 2.00 V 时 Li2Sx 几乎完全转化为 Li2S → 放电比容量更高",
+      "A": "DMTMSA", "B": "Control",
+      "property": "原句未提溶剂化",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0146"],
+      "test_ids": ["P624-T15"],
+      "side": "其他"
+    },
+    {
+      "id": "P624-M23",
+      "summary": "反应动力学增强使 DMTMSA 电池在 −20 °C 稳定循环",
+      "A": "DMTMSA", "B": "Control",
+      "property": "原句未提溶剂化",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0215"],
+      "test_ids": ["P624-T1"],
+      "side": "其他"
+    },
+    {
+      "id": "P624-M24",
+      "summary": "梯度低端：DMTMSA 含量较低时未发挥最大效果（Figure S31 倍率对比）",
+      "A": "全梯度", "B": "全梯度",
+      "property": "DMTMSA 含量（Li⁺ 溶剂化随含量减弱）",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["S0103"],
+      "test_ids": [],
+      "side": "强侧"
+    },
+    {
+      "id": "P624-M25",
+      "summary": "作者自写的例外（梯度高端）：DMTMSA 过多时 Li2S8 溶解度过低，转化转向准固相",
+      "A": "全梯度", "B": "全梯度",
+      "property": "长链多硫化物（Li2S8）溶解度过低",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["S0104"],
+      "test_ids": [],
+      "side": "弱侧"
+    },
+    {
+      "id": "P624-M26",
+      "summary": "液相介导路径被过度抑制，对电池性能不利（因此存在适中最优浓度）",
+      "A": "全梯度", "B": "全梯度",
+      "property": "长链多硫化物溶解度过低 → 液相介导路径受抑",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["S0105"],
+      "test_ids": [],
+      "side": "弱侧"
+    },
+    {
+      "id": "P624-M27",
+      "summary": "–CF3 强吸电子使 DMTMSA 氧原子电荷密度降低 → 难与 Li⁺ 配位，提高与锂金属负极的相容性",
+      "A": "DMTMSA", "B": "Control",
+      "property": "DMTMSA 对 Li⁺ 配位弱",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0042"],
+      "test_ids": [],
+      "side": "其他"
+    }
+  ],
+  "design_claims": [
+    {"summary": "解耦（作者称自适应溶剂化/静电力匹配）：用高极化溶剂 DMTMSA 同时降低长链 Li2Sn 溶解度、提高短链 Li2Sn 溶解度，兼顾抑制穿梭与动力学；最优配方 10 vol% DMTMSA（DOL/DME/DMTMSA 4.5:4.5:1）", "evidence_ids": ["M0024", "M0228"]},
+    {"summary": "折中：DMTMSA 含量存在适中最优值（低含量效果不足，过高则 Li2S8 溶解度过低、转向准固相转化）", "evidence_ids": ["S0106"]},
+    {"summary": "作者称该策略同时解决穿梭与动力学迟缓问题", "evidence_ids": ["M0225"]}
+  ],
+  "figure_requests": [
+    {
+      "test_id": "P624-T1",
+      "figure": "Fig. 5a",
+      "part": "main",
+      "metric": "首圈容量",
+      "A": "DMTMSA", "B": "Control",
+      "target_point": "−20 °C 0.05 C 第 1 圈（化成后）",
+      "anchor_quote_ids": ["M0215", "M0216"],
+      "reason": "Li‖S 循环类测试缺同一测试容量侧（首圈）；锚点为正文循环末容量 700 / 200 mAh/g（圈数原文未写确切，约 100 圈）"
+    }
+  ],
+  "gaps": [
+    "对照电解液未写明是 blank electrolyte 还是 LiFSI electrolyte",
+    "所有 Li‖S 测试未报告化成协议；锂厚 450 μm 只在 SI 通用说明",
+    "P624-T1 未报告硫载量与 E/S；首圈容量只在图上；未报告库仑效率",
+    "P624-T2 DMTMSA 0.2 C 与对照 0.1 C 倍率不同，按规则不判；未报告库仑效率、过电位",
+    "P624-T3 倍率测试只有 DMTMSA；SI Figure S31 不同 DMTMSA 含量倍率对比只在图中，各档含量原文未写，未登记读图",
+    "P624-T4 软包无对照，锂厚等参数只在 Fig. 5f 图表中",
+    "无 LiNO3 电池（T5、T6）的盐与溶剂组成原文未写",
+    "P624-T14 恒压电位 SI 写 2.02 V，图注写 2.06 V",
+    "多硫化物溶解度只有方向与“超过 50%”“一个数量级”描述，无具体浓度",
+    "未报告黏度；Li⁺ 溶剂化 20% 档只在 NMR/MD 中出现",
+    "Li‖Li 对比为 DMTMSA vs 酰胺类比溶剂；与对照的 Li‖Li 无文字数值"
+  ],
+  "source_review": {
+    "main": true,
+    "si": true,
+    "notes": "通读正文与 SI 全部文字（参考文献略读）；未读任何既有提取结果。SI 只有方法与图注文字，图中数值未读、未目测。DFT 结合能按规则未收。"
+  }
+}

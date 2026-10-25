@@ -1,0 +1,750 @@
+{
+  "paper_id": "P163",
+  "doi": "10.1016/j.mattod.2020.06.007",
+  "formulations": [
+    {
+      "id": "BE",
+      "name": "baseline electrolyte (BE)",
+      "components": [
+        {"name": "LiFSI", "role": "盐", "amount": 6, "unit": "M"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": "未报告", "unit": "未报告"}
+      ],
+      "raw_formula": "6 M LiFSI in DME",
+      "evidence_ids": ["M0046", "M0087"]
+    },
+    {
+      "id": "HE-2",
+      "name": "HE-2（hybrid electrolyte，BE/TFTFE v/v 1:2）",
+      "components": [
+        {"name": "LiFSI", "role": "盐", "amount": 6, "unit": "M（指 BE 中浓度，稀释前）"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": "未报告", "unit": "未报告"},
+        {"name": "TFTFE（1,1,2,2-tetrafluoroethyl 2,2,2-trifluoroethyl ether）", "role": "弱或非溶剂化溶剂", "amount": "1:2", "unit": "v/v（BE:TFTFE）"}
+      ],
+      "raw_formula": "BE/TFTFE, v/v 1:2（6 M LiFSI in DME 与 TFTFE 按体积 1:2 混合）",
+      "evidence_ids": ["M0049", "M0087"]
+    },
+    {
+      "id": "HE-5",
+      "name": "HE-5（hybrid electrolyte，BE/TFTFE v/v 1:5）",
+      "components": [
+        {"name": "LiFSI", "role": "盐", "amount": 6, "unit": "M（指 BE 中浓度，稀释前）"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": "未报告", "unit": "未报告"},
+        {"name": "TFTFE（1,1,2,2-tetrafluoroethyl 2,2,2-trifluoroethyl ether）", "role": "弱或非溶剂化溶剂", "amount": "1:5", "unit": "v/v（BE:TFTFE）"}
+      ],
+      "raw_formula": "BE/TFTFE, v/v 1:5（6 M LiFSI in DME 与 TFTFE 按体积 1:5 混合）",
+      "evidence_ids": ["M0049", "M0087"]
+    },
+    {
+      "id": "2M-LiFSI/DME",
+      "name": "a controlled electrolyte of 2 M LiFSI solvated in DME（仅作 Raman 参照）",
+      "components": [
+        {"name": "LiFSI", "role": "盐", "amount": 2, "unit": "M"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": "未报告", "unit": "未报告"}
+      ],
+      "raw_formula": "2 M LiFSI in DME",
+      "evidence_ids": ["M0095"]
+    }
+  ],
+  "control_id": "BE",
+  "control_type": "其他：6 M LiFSI/DME 高浓度自配对照（BE），配方原文无 LiNO₃，非常规醚基准",
+  "gradients": [
+    {
+      "name": "TFTFE 稀释剂用量（用量梯度，往配好的 BE 中按体积比加 TFTFE）",
+      "order": ["BE", "HE-2", "HE-5"],
+      "values": ["0（纯 BE）", "BE:TFTFE v/v 1:2", "BE:TFTFE v/v 1:5"],
+      "solvation_axis": "作者 FSRS Raman 与 AIMD 测得 Li⁺ 溶剂化结构不随 TFTFE 加入而变；此处按稀释剂用量由少到多排（整体稀释、单位体积配位溶剂 DME 减少）；多硫化物溶剂化沿梯度未测",
+      "evidence_ids": ["M0049", "M0087", "M0099", "M0101"]
+    }
+  ],
+  "properties": [
+    {
+      "name": "Li⁺ 溶剂化（FSRS Raman 峰位）",
+      "values": {
+        "2M-LiFSI/DME": "FSI⁻ S-N-S 伸缩 717 cm⁻¹；DME 峰 827 cm⁻¹，存在自由 DME",
+        "BE": "FSI⁻ 峰 735 cm⁻¹（阴离子配对增强）；DME 峰 867 cm⁻¹，自由 DME 伸缩峰消失",
+        "HE-2": "FSI⁻ 峰仍在 735 cm⁻¹；TFTFE 648、850 cm⁻¹ 峰相对纯 TFTFE 不位移",
+        "HE-5": "FSI⁻ 峰仍在 735 cm⁻¹；TFTFE 648、850 cm⁻¹ 峰相对纯 TFTFE 不位移"
+      },
+      "direction": "2 M → 6 M（BE）FSI⁻–Li⁺ 配对增强；BE → HE-2 → HE-5 不变（TFTFE 不参与溶剂化）",
+      "method": "飞秒受激拉曼光谱（FSRS）",
+      "system": "电解液本身（无多硫化物）",
+      "evidence_ids": ["M0095", "M0096", "M0099", "M0100", "M0101"]
+    },
+    {
+      "name": "Li⁺ 溶剂化（AIMD 第一配位层 Li–O 组成）",
+      "values": {
+        "BE": "Li–O(DME) 41.18%，Li–O(FSI⁻) 58.82%",
+        "HE-2": "Li–O(DME) 38.46%，Li–O(FSI⁻) 61.54%，Li–O(TFTFE) 0.00%",
+        "HE-5": "未报告"
+      },
+      "direction": "BE 与 HE-2 均以 FSI⁻ 配位为主，TFTFE 不进入第一配位层；加 TFTFE 后基本不变",
+      "method": "AIMD（VASP，PBE，363 K NVT，取 13 ps 快照）+ RDF",
+      "system": "BE、HE-2 模拟体系（浓度与实验一致），无多硫化物",
+      "evidence_ids": ["S0048", "S0005", "M0108", "M0110"]
+    },
+    {
+      "name": "多硫化物溶解度",
+      "values": {
+        "BE": "可溶（加 S 与 Li₂S 化学计量摩尔比 5:1 后显黄色，作者定性）",
+        "HE-2": "未报告",
+        "HE-5": "未报告"
+      },
+      "direction": "仅 BE 定性，沿梯度未测",
+      "method": "目测显色（Figure S8 照片）",
+      "system": "BE + S + Li₂S（5:1 摩尔比），手套箱内室温静置 48 h；未在 HE-2、HE-5 中测",
+      "evidence_ids": ["M0171", "S0027"]
+    },
+    {
+      "name": "多硫化物溶剂化",
+      "values": {
+        "BE": "作者称 BE 在 12 M 前未饱和，自由 DME 分子可溶剂化多硫化物离子（据显黄色推断）",
+        "HE-2": "未报告",
+        "HE-5": "未报告"
+      },
+      "direction": "仅 BE 定性，沿梯度未测",
+      "method": "无直接测量，由显色推断",
+      "system": "BE + S + Li₂S；注意与 Raman 结果（BE 中自由 DME 伸缩峰消失，M0096）有张力",
+      "evidence_ids": ["M0171"]
+    },
+    {
+      "name": "离子电导率",
+      "values": {"BE": "11.53 mS cm⁻¹", "HE-2": "4.59 mS cm⁻¹", "HE-5": "2.41 mS cm⁻¹"},
+      "direction": "沿梯度降低",
+      "method": "测法未报告（Table S6），23 °C",
+      "system": "电解液本身",
+      "evidence_ids": ["M0204", "S0011", "S0048"]
+    },
+    {
+      "name": "黏度",
+      "values": {"BE": "107.72 mPa·s", "HE-2": "11.34 mPa·s", "HE-5": "6.20 mPa·s"},
+      "direction": "沿梯度降低",
+      "method": "测法未报告（Table S6），23 °C",
+      "system": "电解液本身",
+      "evidence_ids": ["M0203", "S0011", "S0048"]
+    },
+    {
+      "name": "润湿性（接触角）",
+      "values": {"BE": "润湿较差（作者定性）", "HE-2": "润湿较好（作者定性）", "HE-5": "未报告"},
+      "direction": "HE-2 润湿优于 BE",
+      "method": "单液滴接触角（Figure S5），无数值",
+      "system": "碳涂层 Al 集流体上测，不是 S@PAN 正极本身",
+      "evidence_ids": ["M0148", "M0211", "S0023"]
+    },
+    {
+      "name": "可燃性",
+      "values": {"BE": "靠近火源即点燃并持续燃烧至烧尽", "HE-2": "明火持续 5 s（five consecutive seconds）不着火", "HE-5": "未报告"},
+      "direction": "加 TFTFE 后可燃性降低",
+      "method": "浸润玻璃纤维隔膜后点火",
+      "system": "电解液浸润的玻璃纤维隔膜",
+      "evidence_ids": ["M0199", "M0201", "S0035"]
+    }
+  ],
+  "tests": [
+    {
+      "id": "P163-T1",
+      "name": "Li‖Cu 0.5 mA cm⁻² 沉积/剥离库仑效率",
+      "cell": "Li‖Cu 2032 扣式",
+      "conditions": {
+        "sulfur_loading": "不适用（Li‖Cu）",
+        "ES": "不适用",
+        "ES_unit": "不适用",
+        "Li_thickness": "未报告",
+        "rate": "0.5 mA cm-2，每圈沉积 1.0 mAh cm-2，剥离至 1.0 V",
+        "formation": "Cu 箔先在 0.01–1.0 V、0.05 mA cm-2 电化学扫描 10 圈",
+        "temperature": "未报告",
+        "LiNO3": "不含（BE、HE-2 配方原文均无 LiNO₃）",
+        "one_C": "不适用",
+        "separator": "HE-2 用 Celgard 2400；BE 用亲水 Celgard 3501（为增强润湿）"
+      },
+      "formulations": ["HE-2", "BE"],
+      "evidence_ids": ["M0069", "M0071", "M0077", "M0113", "M0114", "M0115"],
+      "results": [
+        {
+          "id": "P163-T1-R1",
+          "metric": "库仑效率",
+          "A": "HE-2", "B": "BE",
+          "value_A": 96.3, "value_B": 93.7,
+          "unit": "%",
+          "point": "第 1 圈",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0116", "M0118", "M0119"],
+          "reason": "作者以 In contrast 对比 HE-2 与 BE 的表现，HE-2 首圈高 2.6 个百分点；两者隔膜不同（M0071，不在 7 项条件内），照同一测试记"
+        },
+        {
+          "id": "P163-T1-R2",
+          "metric": "过电位",
+          "A": "HE-2", "B": "BE",
+          "value_A": 35, "value_B": 54,
+          "unit": "mV",
+          "point": "第 1 圈沉积过电位",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0116", "M0119"],
+          "reason": "过电位越低越好；隔膜不同见 R1"
+        },
+        {
+          "id": "P163-T1-R3",
+          "metric": "过电位",
+          "A": "HE-2", "B": "BE",
+          "value_A": 27, "value_B": 45,
+          "unit": "mV",
+          "point": "第 1 圈剥离过电位",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0116", "M0119"],
+          "reason": "过电位越低越好；隔膜不同见 R1"
+        },
+        {
+          "id": "P163-T1-R4",
+          "metric": "库仑效率",
+          "A": "HE-2", "B": "BE",
+          "value_A": null, "value_B": null,
+          "unit": "%",
+          "point": "前 30 圈 CE 稳定性（HE-2 逐步升至 99.6%；BE 第 10 圈后波动，第 26 圈过充）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0117", "M0118", "M0119", "M0120"],
+          "reason": "作者定性：BE erratic behavior、CE 波动，HE-2 稳定上升；两者给的圈数不同（30 vs 10），不比数值"
+        }
+      ]
+    },
+    {
+      "id": "P163-T2",
+      "name": "Li‖Cu 2.0 mA cm⁻² 沉积/剥离库仑效率（仅 HE-2）",
+      "cell": "Li‖Cu 2032 扣式",
+      "conditions": {
+        "sulfur_loading": "不适用（Li‖Cu）",
+        "ES": "不适用",
+        "ES_unit": "不适用",
+        "Li_thickness": "未报告",
+        "rate": "2.0 mA cm-2，每圈沉积 1.0 mAh cm-2",
+        "formation": "Cu 箔先在 0.01–1.0 V、0.05 mA cm-2 电化学扫描 10 圈（推定，同 T1 方法）",
+        "temperature": "未报告",
+        "LiNO3": "不含（HE-2 配方原文无 LiNO₃）",
+        "one_C": "不适用",
+        "separator": "Celgard 2400"
+      },
+      "formulations": ["HE-2"],
+      "evidence_ids": ["M0071", "M0113", "M0114", "M0115", "M0124", "M0127"],
+      "results": []
+    },
+    {
+      "id": "P163-T3",
+      "name": "Li‖Li 对称电池阶梯电流循环",
+      "cell": "Li‖Li 2032 扣式对称电池",
+      "conditions": {
+        "sulfur_loading": "不适用（Li‖Li）",
+        "ES": "不适用",
+        "ES_unit": "不适用",
+        "Li_thickness": "未报告",
+        "rate": "0.5、1.0、2.0 mA cm-2 各 20 圈（1.0 mAh cm-2），再回 0.5 mA cm-2 20 圈（同一电池阶梯）",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "不含（BE、HE-2 配方原文均无 LiNO₃）",
+        "one_C": "不适用",
+        "separator": "HE-2 用 Celgard 2400；BE 用亲水 Celgard 3501（为增强润湿）"
+      },
+      "formulations": ["HE-2", "BE"],
+      "evidence_ids": ["M0069", "M0071", "M0078", "M0079"],
+      "results": [
+        {
+          "id": "P163-T3-R1",
+          "metric": "过电位",
+          "A": "HE-2", "B": "BE",
+          "value_A": 15, "value_B": 31,
+          "unit": "mV",
+          "point": "0.5 mA cm-2 段沉积/剥离过电位",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0129"],
+          "reason": "过电位越低越好；两者隔膜不同（M0071，不在 7 项条件内），照同一测试记"
+        },
+        {
+          "id": "P163-T3-R2",
+          "metric": "循环稳定性",
+          "A": "HE-2", "B": "BE",
+          "value_A": null, "value_B": null,
+          "unit": "未报告",
+          "point": "1.0、2.0 mA cm-2 段",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0130"],
+          "reason": "作者定性：HE-2 的稳定性优势在高电流密度下更明显"
+        }
+      ]
+    },
+    {
+      "id": "P163-T4",
+      "name": "S@PAN‖Li 扣式半电池 E/S 5 循环",
+      "cell": "S@PAN‖Li 扣式半电池（锂过量）",
+      "conditions": {
+        "sulfur_loading": "2 mg cm-2",
+        "ES": "5",
+        "ES_unit": "μL mg⁻¹（体积基；SI 写 μL mg⁻¹，正文抽取文本显示为 mL mg⁻¹）",
+        "Li_thickness": "未报告（原文只写 excessive LMA）",
+        "rate": "0.2 C（前 7 圈 0.1 C）",
+        "formation": "0.1 C 7 圈",
+        "temperature": "未报告",
+        "LiNO3": "不含（BE、HE-2、HE-5 配方原文均无 LiNO₃）",
+        "one_C": "1671 mA g-1"
+      },
+      "formulations": ["HE-2", "BE", "HE-5"],
+      "evidence_ids": ["M0142", "M0147", "M0076"],
+      "results": [
+        {
+          "id": "P163-T4-R1",
+          "metric": "首圈容量",
+          "A": "HE-2", "B": "BE",
+          "value_A": 1498, "value_B": 952,
+          "unit": "mAh g-1（按 S）",
+          "point": "第 1 圈放电（0.1 C 化成首圈）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0145", "M0148"],
+          "reason": "0.2 C 化成后首圈数值正文未写，此为 0.1 C 化成首圈"
+        },
+        {
+          "id": "P163-T4-R2",
+          "metric": "放电电位",
+          "A": "HE-2", "B": "BE",
+          "value_A": null, "value_B": null,
+          "unit": "V",
+          "point": "第 1 圈放电锂嵌入电位（0.1 C）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0148"],
+          "reason": "作者定性：BE 首圈锂嵌入电位低于 HE-2"
+        },
+        {
+          "id": "P163-T4-R3",
+          "metric": "指定圈容量",
+          "A": "HE-2", "B": "BE",
+          "value_A": 603, "value_B": 407,
+          "unit": "mAh g-1（按 S）",
+          "point": "第 10 圈（0.2 C）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0147", "M0149"],
+          "reason": ""
+        },
+        {
+          "id": "P163-T4-R4",
+          "metric": "指定圈容量",
+          "A": "HE-2", "B": "BE",
+          "value_A": 598, "value_B": 386,
+          "unit": "mAh g-1（按 S）",
+          "point": "第 50 圈（0.2 C）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0147", "M0149"],
+          "reason": ""
+        },
+        {
+          "id": "P163-T4-R5",
+          "metric": "保持率",
+          "A": "HE-2", "B": "BE",
+          "value_A": 99.2, "value_B": 94.8,
+          "unit": "%",
+          "point": "第 50 圈 / 第 10 圈（0.2 C，推算）",
+          "basis": "numeric",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["M0147", "M0149"],
+          "reason": "推算：HE-2 598÷603=99.2%，BE 386÷407=94.8%；|99.2−94.8|÷99.2=4.4% <5%"
+        },
+        {
+          "id": "P163-T4-R6",
+          "metric": "首圈容量",
+          "A": "HE-5", "B": "BE",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1（按 S）",
+          "point": "第 1 圈放电（0.1 C 化成首圈）",
+          "basis": "qualitative",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["S0024", "S0025"],
+          "reason": "作者定性：HE-5 初始放电容量显著低于 BE 和 HE-2；数值只在 Figure S6（GCD 电压曲线），按规则不登记读图"
+        },
+        {
+          "id": "P163-T4-R7",
+          "metric": "指定圈容量",
+          "A": "HE-5", "B": "BE",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1（按 S）",
+          "point": "后续各圈（作者定性，圈数未写）",
+          "basis": "qualitative",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["S0025"],
+          "reason": "作者定性：following discharge capacity values 显著低于 BE 和 HE-2"
+        },
+        {
+          "id": "P163-T4-R8",
+          "metric": "首圈容量",
+          "A": "HE-5", "B": "HE-2",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1（按 S）",
+          "point": "第 1 圈放电（0.1 C 化成首圈）",
+          "basis": "qualitative",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["S0025"],
+          "reason": "梯度相邻两档比较；作者定性"
+        },
+        {
+          "id": "P163-T4-R9",
+          "metric": "指定圈容量",
+          "A": "HE-5", "B": "HE-2",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g-1（按 S）",
+          "point": "后续各圈（作者定性，圈数未写）",
+          "basis": "qualitative",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0150", "S0025"],
+          "reason": "梯度相邻两档比较；作者定性：更多 TFTFE 稀释（HE-5）不利于硫正极循环"
+        }
+      ]
+    },
+    {
+      "id": "P163-T5",
+      "name": "S@PAN‖Li 全电池 N/P 2、E/S 3 循环（仅 HE-2）",
+      "cell": "S@PAN‖Li 扣式全电池（Li 电化学预沉积于 Cu 集流体）",
+      "conditions": {
+        "sulfur_loading": "3 mg cm-2",
+        "ES": "3",
+        "ES_unit": "μL mg⁻¹（体积基，推定同 T4 单位）",
+        "Li_thickness": "未报告（N/P = 2，Li 预沉积于 Cu）",
+        "rate": "0.05 C",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "不含（HE-2 配方原文无 LiNO₃）",
+        "one_C": "1671 mA g-1（推定：同一 S@PAN 正极，取半电池条件句）",
+        "N_P": "2"
+      },
+      "formulations": ["HE-2"],
+      "evidence_ids": ["M0152", "M0153", "M0189", "M0142"],
+      "results": []
+    },
+    {
+      "id": "P163-T6",
+      "name": "S@PAN‖Li 全电池 N/P 2、E/S 2 循环（仅 HE-2）",
+      "cell": "S@PAN‖Li 扣式全电池（Li 电化学预沉积于 Cu 集流体）",
+      "conditions": {
+        "sulfur_loading": "3 mg cm-2",
+        "ES": "2",
+        "ES_unit": "μL mg⁻¹（体积基，推定同 T4 单位）",
+        "Li_thickness": "未报告（N/P = 2，Li 预沉积于 Cu）",
+        "rate": "0.05 C",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "不含（HE-2 配方原文无 LiNO₃）",
+        "one_C": "1671 mA g-1（推定：同一 S@PAN 正极，取半电池条件句）",
+        "N_P": "2"
+      },
+      "formulations": ["HE-2"],
+      "evidence_ids": ["M0152", "M0153", "M0189", "M0142"],
+      "results": []
+    },
+    {
+      "id": "P163-T7",
+      "name": "CMK-3/S‖Li E/S 5 循环（仅 HE-2）",
+      "cell": "CMK-3/S‖Li 扣式",
+      "conditions": {
+        "sulfur_loading": "2.0 mg cm-2",
+        "ES": "5",
+        "ES_unit": "μL mg⁻¹（体积基）",
+        "Li_thickness": "未报告",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "不含（HE-2 配方原文无 LiNO₃）",
+        "one_C": "未报告"
+      },
+      "formulations": ["HE-2"],
+      "evidence_ids": ["M0165", "S0026"],
+      "results": []
+    },
+    {
+      "id": "P163-T8",
+      "name": "VS2/ZnS 包覆 Li2S@石墨烯 混合正极‖Li 全电池 N/P 2、E/S 2（仅 HE-2）",
+      "cell": "45 wt% VS2 + ZnS 包覆 Li2S@graphene 混合正极‖Li 扣式全电池",
+      "conditions": {
+        "sulfur_loading": "未报告（活性物质总载量 7.8 mgAM cm-2，VS2 占 45 wt%）",
+        "ES": "2",
+        "ES_unit": "μL mg⁻¹（按 Li₂S 中 S 质量计，体积基；折合 E/AM 0.96）",
+        "Li_thickness": "未报告（N/P = 2）",
+        "rate": "未报告",
+        "formation": "首圈先充电（脱锂，Li₂S→S）",
+        "temperature": "未报告",
+        "LiNO3": "不含（HE-2 配方原文无 LiNO₃）",
+        "one_C": "未报告",
+        "N_P": "2"
+      },
+      "formulations": ["HE-2"],
+      "evidence_ids": ["M0169", "M0177", "M0178", "M0190"],
+      "results": []
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "P163-M1",
+      "summary": "Raman 中 TFTFE 特征峰在 HE-2、HE-5 中不位移 → TFTFE 只作稀释剂，不参与离子溶剂化（Li⁺ 溶剂化不随稀释变化）",
+      "A": "全梯度", "B": "全梯度",
+      "property": "Li⁺ 溶剂化不变（TFTFE 不配位）",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0101"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M2",
+      "summary": "AIMD：高浓度 LiFSI 使 Li⁺ 优先与 FSI⁻ 配位，HE-2 中 TFTFE 的氧不参与 Li⁺ 溶剂化",
+      "A": "HE-2", "B": "BE",
+      "property": "Li⁺ 溶剂化以阴离子配位为主，加 TFTFE 不变",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0108"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M3",
+      "summary": "加 TFTFE 不改变盐的溶剂化结构，却显著影响正负两极的电化学表现",
+      "A": "HE-2", "B": "BE",
+      "property": "Li⁺ 溶剂化不变（加稀释剂 TFTFE）",
+      "categories": ["正极反应", "负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0042"],
+      "test_ids": ["P163-T1", "P163-T3", "P163-T4"],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M4",
+      "summary": "Li‖Li 对称电池中 HE-2 过电位更低、稳定性更好 → TFTFE 对锂金属表面有保护作用",
+      "A": "HE-2", "B": "BE",
+      "property": "加稀释剂 TFTFE（Li⁺ 溶剂化不变）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0131"],
+      "test_ids": ["P163-T3"],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M5",
+      "summary": "RDF 显示两种电解液中 Li⁺ 都优先与 FSI⁻ 配位 → FSI⁻ 可能优先于 DME 在锂表面还原（推测）",
+      "A": "HE-2", "B": "BE",
+      "property": "Li⁺ 溶剂化以 FSI⁻ 配位为主（两者相同）",
+      "categories": ["负极锂"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0134"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M6",
+      "summary": "深度 XPS：HE-2 中 Li–N、N–SOx 信号到 10 nm 深仍在，BE 去掉 5 nm 即消失 → HE-2 中 FSI⁻ 在锂负极上优先还原",
+      "A": "HE-2", "B": "BE",
+      "property": "SEI 中 FSI⁻ 还原产物更深（Li⁺ 溶剂化不变）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0138"],
+      "test_ids": ["P163-T3"],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M7",
+      "summary": "TFTFE LUMO 较低、优先脱氟生成 LiF；其快速分解产生的阴离子自由基又促使 FSI⁻ 还原 → 富 LiF SEI（引用 Balbuena 等的报道）",
+      "A": "HE-2", "B": "BE",
+      "property": "稀释剂 TFTFE 自身参与还原（不参与 Li⁺ 溶剂化）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0141"],
+      "test_ids": ["P163-T1", "P163-T3"],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M8",
+      "summary": "加 TFTFE 促成富 LiF 的 SEI → 锂负极 CE 达 99.4%",
+      "A": "HE-2", "B": "BE",
+      "property": "加稀释剂 TFTFE → 富 LiF SEI",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0210"],
+      "test_ids": ["P163-T1"],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M9",
+      "summary": "BE 中第 26 圈 CE 超过 100%：推测是此前圈次滞留的“死锂”重新与集流体接通（BE 锂沉积不可逆）",
+      "A": "HE-2", "B": "BE",
+      "property": "未涉及溶剂化（BE 中失活锂再接通）",
+      "categories": ["负极锂"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0121"],
+      "test_ids": ["P163-T1"],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M10",
+      "summary": "BE 首圈放电容量低、锂嵌入电位低，可能是电极润湿差所致（BE 黏度高）",
+      "A": "HE-2", "B": "BE",
+      "property": "黏度降低、润湿性改善（Li⁺ 溶剂化不变）",
+      "categories": ["正极反应"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0148"],
+      "test_ids": ["P163-T4"],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M11",
+      "summary": "加 TFTFE 改变电解液物性，更好润湿碳/硫复合正极 → 贫液下电解液吸收更好",
+      "A": "HE-2", "B": "BE",
+      "property": "黏度降低、润湿性改善",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0211"],
+      "test_ids": ["P163-T4"],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M12",
+      "summary": "HE-5 稀释过度：更多稀释剂分子使电解液中 Li⁺ 与硫的接触变差 → 硫正极循环反而不如 HE-2（推测；作者测得 Li⁺ 溶剂化不变，起点为过度稀释）",
+      "A": "HE-5", "B": "HE-2",
+      "property": "整体过度稀释（Li⁺ 溶剂化结构不变）",
+      "categories": ["正极反应"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0151"],
+      "test_ids": ["P163-T4"],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M13",
+      "summary": "SI：HE-5 初始及后续放电容量均显著低于 BE 和 HE-2，推测因过度稀释限制了 Li⁺ 与硫的接触",
+      "A": "HE-5", "B": "BE",
+      "property": "整体过度稀释（Li⁺ 溶剂化结构不变）",
+      "categories": ["正极反应"],
+      "source_type": "本文推测",
+      "evidence_ids": ["S0025"],
+      "test_ids": ["P163-T4"],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M14",
+      "summary": "TFTFE 不溶剂化 Li⁺ → 离子电导率由 BE 的 11.53 降到 HE-2 的 4.59 mS cm⁻¹",
+      "A": "HE-2", "B": "BE",
+      "property": "离子电导率降低（TFTFE 不溶剂化 Li⁺）",
+      "categories": [],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0204"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M15",
+      "summary": "由电导率推断：HE-2、HE-5 中多硫化物的扩散和电迁移都应比 BE 小",
+      "A": "全梯度", "B": "全梯度",
+      "property": "离子电导率降低 → 多硫化物迁移率降低（未测，推断）",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0205"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M16",
+      "summary": "TFTFE 在空间上收窄离子的有效通道，降低 Li⁺ 和多硫化物的迁移能力",
+      "A": "全梯度", "B": "全梯度",
+      "property": "稀释剂位阻降低离子迁移（Li⁺ 溶剂化不变）",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0207"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M17",
+      "summary": "因此稀释剂可能有助于抑制多硫化物穿梭（未在电池中测穿梭）",
+      "A": "全梯度", "B": "全梯度",
+      "property": "多硫化物迁移率降低（推断）",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0208"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M18",
+      "summary": "BE 到 12 M 才饱和，自由 DME 可溶剂化多硫化物离子（BE 加 S/Li₂S 显黄色为证）→ 混合正极中可形成多硫化物、走固–液–固反应以提高放电电位",
+      "A": "全梯度", "B": "全梯度",
+      "property": "多硫化物溶剂化：自由 DME 可溶剂化多硫化物（仅 BE 定性）",
+      "categories": ["正极反应"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0171"],
+      "test_ids": ["P163-T8"],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M19",
+      "summary": "混合正极全电池第 14 圈后失效：贫液中多硫化物浓度高，驱动穿梭并耗干电解液，失效后隔膜干燥发黄为证",
+      "A": "HE-2", "B": "HE-2",
+      "property": "贫液下多硫化物浓度高（未比较配方）",
+      "categories": ["多硫化物穿梭", "电解液消耗"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0196"],
+      "test_ids": ["P163-T8"],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M20",
+      "summary": "SI：第 14 圈的无规、过充氧化曲线可能是电解液干涸或多硫化物穿梭的征兆",
+      "A": "HE-2", "B": "HE-2",
+      "property": "未涉及配方比较",
+      "categories": ["电解液消耗", "多硫化物穿梭"],
+      "source_type": "本文推测",
+      "evidence_ids": ["S0032"],
+      "test_ids": ["P163-T8"],
+      "side": "其他"
+    }
+  ],
+  "design_claims": [
+    {
+      "summary": "未明确归为折中或解耦：向 6 M LiFSI/DME 高浓度电解液加不配位稀释剂 TFTFE（Li⁺ 溶剂化结构不变），同时提高锂负极 CE 并在贫液下稳定硫正极循环；最优配方 HE-2（BE/TFTFE v/v 1:2），HE-5 过度稀释反而变差",
+      "evidence_ids": ["M0037", "M0041", "M0150", "M0213"]
+    }
+  ],
+  "figure_requests": [],
+  "gaps": [
+    "所有测试温度未报告",
+    "所有电池锂箔厚度未报告（S@PAN 半电池只写 excessive LMA；全电池只给 N/P = 2）",
+    "配方原文均无 LiNO₃，测试条件记“不含”",
+    "P163-T1、P163-T3 中 HE-2 与 BE 用的隔膜不同（Celgard 2400 vs 亲水 Celgard 3501），不在 7 项条件内，照同一测试记",
+    "P163-T1 中 BE 的 350 圈平均 CE 未报告；HE-2 与 BE 后续 CE 给的圈数不同（30 vs 10），未比数值",
+    "P163-T2、P163-T5、P163-T6、P163-T7、P163-T8 只测 HE-2，无同测试对照，未记结果",
+    "P163-T4 未报告库仑效率；0.2 C 化成后首圈容量未写，首圈容量取 0.1 C 化成首圈",
+    "P163-T4 中 HE-5 只有作者定性，数值只在 Figure S6（GCD 电压曲线），按规则电压曲线不登记读图",
+    "P163-T4 保持率为由第 10、50 圈容量推算",
+    "多硫化物溶解度、溶剂化只对 BE 定性（显色），HE-2、HE-5 未测；多硫化物扩散/迁移率未测，作者由电导率推断",
+    "离子迁移数未报告",
+    "作者说法有张力：M0096 称 BE 中自由 DME 伸缩峰消失，M0171 又称 BE 中自由 DME 可溶剂化多硫化物",
+    "E/S 单位：SI 写 μL mg⁻¹，正文抽取文本显示为 mL mg⁻¹",
+    "2 M LiFSI/DME 只作 Raman 参照，无电池测试"
+  ],
+  "source_review": {
+    "main": true,
+    "si": true,
+    "notes": "通读正文与 SI（SI 文本只有图注和表格文字，Table S1–S6 在 S0048 行内）；参考文献列表略读；未读任何既有提取结果。不看图、未目测估数。"
+  }
+}

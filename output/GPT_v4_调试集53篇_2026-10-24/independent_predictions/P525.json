@@ -1,0 +1,1166 @@
+{
+  "paper_id": "P525",
+  "doi": "10.1016/j.cej.2025.159330",
+  "formulations": [
+    {
+      "id": "CE",
+      "name": "CE",
+      "components": [
+        {
+          "name": "LiTFSI",
+          "role": "salt",
+          "amount": 1,
+          "unit": "M"
+        },
+        {
+          "name": "DOL",
+          "role": "solvent",
+          "amount": 1,
+          "unit": "volume ratio"
+        },
+        {
+          "name": "DME",
+          "role": "solvent",
+          "amount": 1,
+          "unit": "volume ratio"
+        },
+        {
+          "name": "LiNO3",
+          "role": "additive",
+          "amount": 2,
+          "unit": "wt%"
+        }
+      ],
+      "raw_formula": "1.0 M LiTFSI, DOL/DME 1:1 v/v, 2 wt% LiNO3",
+      "evidence_ids": [
+        "M0036"
+      ]
+    },
+    {
+      "id": "STE",
+      "name": "STE",
+      "components": [
+        {
+          "name": "LiTFSI",
+          "role": "salt",
+          "amount": 1,
+          "unit": "M"
+        },
+        {
+          "name": "methyl propyl ether (MPE)",
+          "role": "solvent",
+          "amount": 4,
+          "unit": "volume ratio"
+        },
+        {
+          "name": "DOL",
+          "role": "solvent",
+          "amount": 3,
+          "unit": "volume ratio"
+        },
+        {
+          "name": "DME",
+          "role": "solvent",
+          "amount": 3,
+          "unit": "volume ratio"
+        },
+        {
+          "name": "LiNO3",
+          "role": "additive",
+          "amount": 2,
+          "unit": "wt%"
+        }
+      ],
+      "raw_formula": "1.0 M LiTFSI, MPE/DOL/DME 4:3:3 v/v/v, 2 wt% LiNO3",
+      "evidence_ids": [
+        "M0036",
+        "M0040"
+      ]
+    }
+  ],
+  "control_id": "CE",
+  "control_type": "常规醚基电解液",
+  "gradients": [
+    {
+      "name": "MPE比例筛选",
+      "order": [
+        "CE",
+        "STE"
+      ],
+      "values": {
+        "CE": "0 vol%",
+        "STE": "40 vol%",
+        "其他浓度": "仅图S1，未转录"
+      },
+      "solvation_axis": "Li+溶剂化减弱",
+      "evidence_ids": [
+        "M0053",
+        "S0059"
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "name": "黏度",
+      "values": {
+        "STE": "低于CE"
+      },
+      "direction": "STE降低",
+      "method": "流变/MD",
+      "system": "CE/STE",
+      "evidence_ids": [
+        "M0050",
+        "M0051",
+        "M0052",
+        "M0054",
+        "M0055",
+        "S0020"
+      ]
+    },
+    {
+      "name": "润湿/接触角",
+      "values": {
+        "STE": "接触角更低、渗透更好"
+      },
+      "direction": "STE润湿增强",
+      "method": "接触角",
+      "system": "CE/STE",
+      "evidence_ids": [
+        "M0056",
+        "M0057",
+        "S0061"
+      ]
+    },
+    {
+      "name": "Li+溶剂化",
+      "values": {
+        "CE": "更强",
+        "STE": "Li-TFSI配位增加、溶剂配位减弱"
+      },
+      "direction": "STE减弱",
+      "method": "MD/Raman",
+      "system": "CE/STE",
+      "evidence_ids": [
+        "M0070",
+        "M0071",
+        "M0073",
+        "M0086",
+        "M0087",
+        "M0088",
+        "M0089",
+        "M0090"
+      ]
+    },
+    {
+      "name": "多硫化物溶解度",
+      "values": {
+        "STE": "Li2S8/Li2S4峰降低"
+      },
+      "direction": "STE降低",
+      "method": "UV-vis",
+      "system": "CE/STE",
+      "evidence_ids": [
+        "M0085",
+        "S0063"
+      ]
+    },
+    {
+      "name": "Li+去溶剂化势垒",
+      "values": {
+        "STE": "降低"
+      },
+      "direction": "STE降低",
+      "method": "MD/变温EIS",
+      "system": "CE/STE",
+      "evidence_ids": [
+        "M0113",
+        "M0114",
+        "M0115",
+        "M0117",
+        "S0071",
+        "S0072"
+      ]
+    },
+    {
+      "name": "电荷转移阻抗",
+      "values": {
+        "STE": "低于CE"
+      },
+      "direction": "STE降低",
+      "method": "EIS",
+      "system": "CE/STE",
+      "evidence_ids": [
+        "M0141",
+        "S0081"
+      ]
+    },
+    {
+      "name": "7Li NMR化学位移",
+      "values": {
+        "CE": "−0.060",
+        "STE": "−0.035"
+      },
+      "direction": "向高频移动",
+      "method": "7Li NMR",
+      "system": "Li2S8模型体系；主文与SI配方表述不同",
+      "evidence_ids": [
+        "M0091",
+        "M0092",
+        "S0019"
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "id": "T1",
+      "name": "Li沉积剥离效率",
+      "cell": "Li||Cu",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "2 wt%",
+        "one_C": "未报告"
+      },
+      "formulations": [
+        "CE",
+        "STE"
+      ],
+      "evidence_ids": [
+        "M0121",
+        "S0074"
+      ],
+      "results": [
+        {
+          "id": "T1R1",
+          "metric": "库仑效率",
+          "A": "STE",
+          "B": "CE",
+          "value_A": 98.5,
+          "value_B": null,
+          "unit": "%",
+          "point": "over 300 cycles",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0121"
+          ],
+          "reason": "对照无文字数值"
+        },
+        {
+          "id": "T1R2",
+          "metric": "过电位",
+          "A": "STE",
+          "B": "CE",
+          "value_A": "更低",
+          "value_B": null,
+          "unit": null,
+          "point": "循环",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0121"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "T2",
+      "name": "锂对称循环",
+      "cell": "Li||Li",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.32 mA cm−2 / 0.32 mAh cm−2",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "2 wt%",
+        "one_C": "未报告"
+      },
+      "formulations": [
+        "CE",
+        "STE"
+      ],
+      "evidence_ids": [
+        "S0077",
+        "M0126",
+        "M0127"
+      ],
+      "results": [
+        {
+          "id": "T2R1",
+          "metric": "极化/稳定性",
+          "A": "STE",
+          "B": "CE",
+          "value_A": "更低且稳定",
+          "value_B": "不稳定",
+          "unit": null,
+          "point": "循环",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0126",
+            "M0127"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "T3",
+      "name": "锂对称循环",
+      "cell": "Li||Li",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "1 mA cm−2 / 1 mAh cm−2",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "2 wt%",
+        "one_C": "未报告"
+      },
+      "formulations": [
+        "CE",
+        "STE"
+      ],
+      "evidence_ids": [
+        "S0077",
+        "S0078",
+        "M0126",
+        "M0127"
+      ],
+      "results": [
+        {
+          "id": "T3R1",
+          "metric": "极化/稳定性",
+          "A": "STE",
+          "B": "CE",
+          "value_A": "更低且稳定",
+          "value_B": "不稳定",
+          "unit": null,
+          "point": "循环",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0126",
+            "M0127"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "T4",
+      "name": "锂对称倍率",
+      "cell": "Li||Li",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "3 mA cm−2",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "2 wt%",
+        "one_C": "未报告"
+      },
+      "formulations": [
+        "CE",
+        "STE"
+      ],
+      "evidence_ids": [
+        "M0128",
+        "S0079"
+      ],
+      "results": [
+        {
+          "id": "T4R1",
+          "metric": "短路",
+          "A": "STE",
+          "B": "CE",
+          "value_A": "正常",
+          "value_B": "短路",
+          "unit": null,
+          "point": "3 mA cm−2",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0128"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "T5",
+      "name": "Li2S沉积",
+      "cell": "carbon paper||Li",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "先恒流至2.06 V，再恒压2.05 V至<1e−5 A",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "未报告",
+        "one_C": "未报告",
+        "electrolyte": "正极20 µL 0.2 M Li2S6；负极20 µL CE/STE"
+      },
+      "formulations": [
+        "CE",
+        "STE"
+      ],
+      "evidence_ids": [
+        "S0010",
+        "S0011",
+        "S0012",
+        "M0157",
+        "M0158",
+        "M0159"
+      ],
+      "results": [
+        {
+          "id": "T5R1",
+          "metric": "沉积动力学/形貌",
+          "A": "STE",
+          "B": "CE",
+          "value_A": "更快3D",
+          "value_B": "较慢2D",
+          "unit": null,
+          "point": "Li2S沉积",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0157",
+            "M0158",
+            "M0159",
+            "S0084"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "T6",
+      "name": "CV硫反应",
+      "cell": "HCG/S||Li",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.1–0.5 mV s−1",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "2 wt%",
+        "one_C": "未报告",
+        "voltage": "1.7–2.8 V"
+      },
+      "formulations": [
+        "CE",
+        "STE"
+      ],
+      "evidence_ids": [
+        "M0149",
+        "M0150",
+        "M0151",
+        "S0006",
+        "S0082",
+        "S0083"
+      ],
+      "results": [
+        {
+          "id": "T6R1",
+          "metric": "极化",
+          "A": "STE",
+          "B": "CE",
+          "value_A": "更低",
+          "value_B": null,
+          "unit": null,
+          "point": "CV",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0150"
+          ],
+          "reason": ""
+        },
+        {
+          "id": "T6R2",
+          "metric": "Li+扩散系数",
+          "A": "STE",
+          "B": "CE",
+          "value_A": "更高",
+          "value_B": null,
+          "unit": null,
+          "point": "Randles–Sevcik",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0155",
+            "M0156"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "T7",
+      "name": "室温倍率",
+      "cell": "HCG/S||Li",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.2–5 C",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "2 wt%",
+        "one_C": "未报告"
+      },
+      "formulations": [
+        "CE",
+        "STE"
+      ],
+      "evidence_ids": [
+        "M0160",
+        "M0161",
+        "M0164"
+      ],
+      "results": [
+        {
+          "id": "T7R1",
+          "metric": "倍率性能",
+          "A": "STE",
+          "B": "CE",
+          "value_A": "更好",
+          "value_B": null,
+          "unit": null,
+          "point": "0.2–5 C",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0160"
+          ],
+          "reason": ""
+        },
+        {
+          "id": "T7R2",
+          "metric": "容量恢复",
+          "A": "STE",
+          "B": null,
+          "value_A": "恢复",
+          "value_B": null,
+          "unit": null,
+          "point": "返回0.5 C",
+          "basis": "qualitative",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0161"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "T8",
+      "name": "0.5C循环",
+      "cell": "HCG/S||Li",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.5 C",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "2 wt%",
+        "one_C": "未报告"
+      },
+      "formulations": [
+        "CE",
+        "STE"
+      ],
+      "evidence_ids": [
+        "M0169",
+        "S0085",
+        "S0086"
+      ],
+      "results": [
+        {
+          "id": "T8R1",
+          "metric": "容量保持",
+          "A": "STE",
+          "B": "CE",
+          "value_A": "更高",
+          "value_B": null,
+          "unit": null,
+          "point": "长期循环",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0169"
+          ],
+          "reason": ""
+        },
+        {
+          "id": "T8R2",
+          "metric": "容量",
+          "A": "STE",
+          "B": null,
+          "value_A": 1067,
+          "value_B": null,
+          "unit": "mAh g−1",
+          "point": "0.5 C；表S4本工作行",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "S0108"
+          ],
+          "reason": "表中汇总值，不能假定具体循环点"
+        }
+      ]
+    },
+    {
+      "id": "T9",
+      "name": "5C循环",
+      "cell": "HCG/S||Li",
+      "conditions": {
+        "sulfur_loading": "1.1 mg cm−2",
+        "ES": 15,
+        "ES_unit": "µL mg−1",
+        "Li_thickness": "未报告",
+        "rate": "5 C",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "2 wt%",
+        "one_C": "未报告"
+      },
+      "formulations": [
+        "CE",
+        "STE"
+      ],
+      "evidence_ids": [
+        "M0165",
+        "M0170",
+        "S0108"
+      ],
+      "results": [
+        {
+          "id": "T9R1",
+          "metric": "容量保持",
+          "A": "STE",
+          "B": "CE",
+          "value_A": "较稳定",
+          "value_B": "快速衰减",
+          "unit": null,
+          "point": "5 C",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0170"
+          ],
+          "reason": ""
+        },
+        {
+          "id": "T9R2",
+          "metric": "高倍率容量",
+          "A": "STE",
+          "B": null,
+          "value_A": 944,
+          "value_B": null,
+          "unit": "mAh g−1",
+          "point": "5 C；表S4本工作行",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "S0108"
+          ],
+          "reason": "具体循环点未写"
+        },
+        {
+          "id": "T9R3",
+          "metric": "单圈衰减",
+          "A": "STE",
+          "B": null,
+          "value_A": 0.095,
+          "value_B": null,
+          "unit": "%",
+          "point": "500 cycles at 5 C",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "S0108"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "T10",
+      "name": "贫液软包",
+      "cell": "HCG/S||Li pouch",
+      "conditions": {
+        "sulfur_loading": "5.2 mg cm−2",
+        "ES": 5,
+        "ES_unit": "µL mg−1",
+        "Li_thickness": "50 µm",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "2 wt%",
+        "one_C": "未报告"
+      },
+      "formulations": [
+        "STE"
+      ],
+      "evidence_ids": [
+        "M0166",
+        "M0173",
+        "M0174",
+        "M0175",
+        "S0051",
+        "S0052",
+        "S0053",
+        "S0054",
+        "S0055"
+      ],
+      "results": [
+        {
+          "id": "T10R1",
+          "metric": "放电容量",
+          "A": "STE",
+          "B": null,
+          "value_A": 1070,
+          "value_B": null,
+          "unit": "mAh g−1",
+          "point": "initial",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0173",
+            "S0055"
+          ],
+          "reason": ""
+        },
+        {
+          "id": "T10R2",
+          "metric": "放电容量",
+          "A": "STE",
+          "B": null,
+          "value_A": 770,
+          "value_B": null,
+          "unit": "mAh g−1",
+          "point": "80 cycles",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0175"
+          ],
+          "reason": ""
+        },
+        {
+          "id": "T10R3",
+          "metric": "比能量",
+          "A": "STE",
+          "B": null,
+          "value_A": 318.8,
+          "value_B": null,
+          "unit": "Wh kg−1",
+          "point": "不含包装和极耳",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0174",
+            "S0054"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "T11",
+      "name": "低温倍率",
+      "cell": "HCG/S||Li",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "最高3 C",
+        "formation": "未报告",
+        "temperature": "−30 °C",
+        "LiNO3": "2 wt%",
+        "one_C": "未报告"
+      },
+      "formulations": [
+        "CE",
+        "STE"
+      ],
+      "evidence_ids": [
+        "M0179",
+        "M0180",
+        "M0181",
+        "M0182",
+        "M0183",
+        "S0093",
+        "S0094"
+      ],
+      "results": [
+        {
+          "id": "T11R1",
+          "metric": "可工作倍率",
+          "A": "STE",
+          "B": "CE",
+          "value_A": "3 C",
+          "value_B": "1 C时停滞",
+          "unit": null,
+          "point": "−30 °C",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0179"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "T12",
+      "name": "低温循环",
+      "cell": "HCG/S||Li",
+      "conditions": {
+        "sulfur_loading": "1.1 mg cm−2",
+        "ES": 25,
+        "ES_unit": "µL mg−1",
+        "Li_thickness": "未报告",
+        "rate": "0.5 C",
+        "formation": "未报告",
+        "temperature": "−30 °C",
+        "LiNO3": "2 wt%",
+        "one_C": "未报告"
+      },
+      "formulations": [
+        "CE",
+        "STE"
+      ],
+      "evidence_ids": [
+        "M0167",
+        "M0184"
+      ],
+      "results": [
+        {
+          "id": "T12R1",
+          "metric": "循环容量",
+          "A": "STE",
+          "B": "CE",
+          "value_A": "可运行100圈",
+          "value_B": "容量明显降低",
+          "unit": null,
+          "point": "100 cycles",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0184"
+          ],
+          "reason": ""
+        }
+      ]
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "M1",
+      "summary": "MPE减少配位氧和螯合效应，弱化Li+溶剂化并降低脱溶剂化能垒，从而改善硫反应动力学",
+      "A": "STE",
+      "B": "CE",
+      "property": "Li+溶剂化",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0068",
+        "M0070",
+        "M0071",
+        "M0113",
+        "M0114",
+        "M0115",
+        "M0117"
+      ],
+      "test_ids": [
+        "T5",
+        "T6",
+        "T7"
+      ],
+      "side": "弱侧"
+    },
+    {
+      "id": "M2",
+      "summary": "短碳链MPE降低空间位阻，使Li更容易接近多硫化物单体；抑制溶解仍可加速硫转化",
+      "A": "STE",
+      "B": "CE",
+      "property": "空间位阻/多硫化物溶解度",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0137",
+        "M0138",
+        "M0139",
+        "M0189"
+      ],
+      "test_ids": [
+        "T5",
+        "T6"
+      ],
+      "side": "弱侧"
+    },
+    {
+      "id": "M3",
+      "summary": "低黏度改善传质与硫反应；CE在60% DOD因多硫化物堆积和迟缓传质阻抗突升",
+      "A": "STE",
+      "B": "CE",
+      "property": "黏度",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0054",
+        "M0055",
+        "M0146"
+      ],
+      "test_ids": [
+        "T6",
+        "T7"
+      ],
+      "side": "弱侧"
+    },
+    {
+      "id": "M4",
+      "summary": "MPE在多硫化物外溶剂化壳层形成抗还原保护，减少多硫化物与Li寄生反应",
+      "A": "STE",
+      "B": "CE",
+      "property": "多硫化物溶剂化",
+      "categories": [
+        "负极锂"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0083",
+        "M0093",
+        "M0094",
+        "M0118"
+      ],
+      "test_ids": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "side": "弱侧"
+    },
+    {
+      "id": "M5",
+      "summary": "均匀Li扩散和浓度分布降低极化并促进平滑沉积",
+      "A": "STE",
+      "B": "CE",
+      "property": "传质",
+      "categories": [
+        "负极锂"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0123",
+        "M0124",
+        "M0134"
+      ],
+      "test_ids": [
+        "T1",
+        "T2",
+        "T3",
+        "T4"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "M6",
+      "summary": "LiF/Li3N致密SEI抑制锂腐蚀、死锂和电解液消耗",
+      "A": "STE",
+      "B": "CE",
+      "property": "SEI",
+      "categories": [
+        "负极锂",
+        "电解液消耗"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0204",
+        "M0205",
+        "M0206",
+        "M0207"
+      ],
+      "test_ids": [
+        "T1",
+        "T9"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "M7",
+      "summary": "STE中S信号几乎消失被归因为减少多硫化物穿梭及与Li副反应",
+      "A": "STE",
+      "B": "CE",
+      "property": "多硫化物行为",
+      "categories": [
+        "多硫化物穿梭",
+        "负极锂"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0210",
+        "M0211"
+      ],
+      "test_ids": [
+        "T9"
+      ],
+      "side": "弱侧"
+    },
+    {
+      "id": "M8",
+      "summary": "STE减少正极厚重副产物和电解液分解",
+      "A": "STE",
+      "B": "CE",
+      "property": "界面稳定性",
+      "categories": [
+        "正极反应",
+        "电解液消耗"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0191",
+        "M0192",
+        "M0199",
+        "M0200",
+        "M0201",
+        "M0202"
+      ],
+      "test_ids": [
+        "T9"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "M9",
+      "summary": "低温改善来自弱溶剂化降低脱溶剂化和降低位阻促进硫反应",
+      "A": "STE",
+      "B": "CE",
+      "property": "Li+溶剂化/位阻",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0180",
+        "M0181",
+        "M0182",
+        "M0183",
+        "M0212",
+        "M0213",
+        "M0214",
+        "M0215"
+      ],
+      "test_ids": [
+        "T11",
+        "T12"
+      ],
+      "side": "弱侧"
+    }
+  ],
+  "design_claims": [
+    {
+      "summary": "协同弱化溶剂化与降低位阻，而非仅压低多硫化物溶解，实现高倍率、贫液软包与低温运行",
+      "evidence_ids": [
+        "M0212",
+        "M0213",
+        "M0214",
+        "M0215"
+      ]
+    }
+  ],
+  "figure_requests": [
+    {
+      "test_id": "T9",
+      "figure": "Fig.5c",
+      "part": "main",
+      "metric": "放电容量",
+      "A": "STE",
+      "B": "CE",
+      "target_point": "同一循环点，优先500圈",
+      "anchor_quote_ids": [
+        "M0165",
+        "M0170",
+        "S0108"
+      ],
+      "reason": "表S4提供本工作5C容量/循环锚；需先确认944对应点，无法匹配则不读数"
+    },
+    {
+      "test_id": "T12",
+      "figure": "Fig.5e",
+      "part": "main",
+      "metric": "放电容量",
+      "A": "STE",
+      "B": "CE",
+      "target_point": "100 cycles",
+      "anchor_quote_ids": [
+        "M0184"
+      ],
+      "reason": "正文只给循环数没有同点容量锚；不可无锚读整图"
+    }
+  ],
+  "gaps": [
+    "除软包外Li厚度、一般活化、1C定义未见明确文字；不同图的E/S不外推。",
+    "MPE浓度筛选图S1其他梯度值未提供文字，不能补猜。",
+    "SI表S1将MPE写为methyl butyl ether，与主文methyl propyl ether不一致。",
+    "NMR主文描述纯溶剂混合物，SI写0.2M Li2S8在CE/STE，按模型条件不合并。",
+    "表S4本工作容量1067/944未注明具体循环点；不跨图配对。",
+    "锂半电池电流条件仅明确写出部分；COMSOL参数不是实验条件。"
+  ],
+  "source_review": {
+    "main": true,
+    "si": true,
+    "notes": "完整通读正文及可用SI索引；未读旧提取或参考答案。"
+  }
+}

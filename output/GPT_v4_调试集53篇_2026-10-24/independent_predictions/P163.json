@@ -1,0 +1,1233 @@
+{
+  "paper_id": "P163",
+  "doi": "10.1016/j.mattod.2020.06.007",
+  "formulations": [
+    {
+      "id": "BE",
+      "name": "6 M LiFSI/DME",
+      "components": [
+        {
+          "name": "LiFSI",
+          "role": "盐",
+          "amount": 6,
+          "unit": "M"
+        },
+        {
+          "name": "DME",
+          "role": "溶剂",
+          "amount": null,
+          "unit": null
+        }
+      ],
+      "raw_formula": "6 M LiFSI/DME",
+      "evidence_ids": [
+        "M0046"
+      ]
+    },
+    {
+      "id": "HE2",
+      "name": "BE:TFTFE=1:2",
+      "components": [
+        {
+          "name": "BE",
+          "role": "母液",
+          "amount": 1,
+          "unit": "体积比"
+        },
+        {
+          "name": "TFTFE",
+          "role": "稀释剂",
+          "amount": 2,
+          "unit": "体积比"
+        }
+      ],
+      "raw_formula": "BE:TFTFE=1:2",
+      "evidence_ids": [
+        "M0049",
+        "M0087"
+      ]
+    },
+    {
+      "id": "HE5",
+      "name": "BE:TFTFE=1:5",
+      "components": [
+        {
+          "name": "BE",
+          "role": "母液",
+          "amount": 1,
+          "unit": "体积比"
+        },
+        {
+          "name": "TFTFE",
+          "role": "稀释剂",
+          "amount": 5,
+          "unit": "体积比"
+        }
+      ],
+      "raw_formula": "BE:TFTFE=1:5",
+      "evidence_ids": [
+        "M0049",
+        "M0087"
+      ]
+    },
+    {
+      "id": "DME2",
+      "name": "2 M LiFSI/DME（光谱对照）",
+      "components": [
+        {
+          "name": "LiFSI",
+          "role": "盐",
+          "amount": 2,
+          "unit": "M"
+        },
+        {
+          "name": "DME",
+          "role": "溶剂",
+          "amount": null,
+          "unit": null
+        }
+      ],
+      "raw_formula": "2 M LiFSI/DME（光谱对照）",
+      "evidence_ids": [
+        "M0095"
+      ]
+    }
+  ],
+  "control_id": "BE",
+  "control_type": "高浓度母液",
+  "gradients": [
+    {
+      "name": "TFTFE稀释梯度",
+      "order": [
+        "BE",
+        "HE2",
+        "HE5"
+      ],
+      "values": [
+        0,
+        2,
+        5
+      ],
+      "solvation_axis": "TFTFE不参与Li+溶剂化，保持局部配位",
+      "evidence_ids": [
+        "M0099",
+        "M0100",
+        "M0101"
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "name": "黏度",
+      "values": {
+        "BE": 107.72,
+        "HE2": 11.34,
+        "HE5": 6.2
+      },
+      "direction": "递减",
+      "method": "SI Table S6",
+      "system": "23°C；mPa s",
+      "evidence_ids": [
+        "S0011",
+        "S0048"
+      ]
+    },
+    {
+      "name": "电导率",
+      "values": {
+        "BE": 11.53,
+        "HE2": 4.59,
+        "HE5": 2.41
+      },
+      "direction": "递减",
+      "method": "SI Table S6",
+      "system": "23°C；mS cm-1",
+      "evidence_ids": [
+        "S0011",
+        "S0048"
+      ]
+    },
+    {
+      "name": "Li–OFSI配位百分比",
+      "values": {
+        "BE": 58.82,
+        "HE2": 61.54
+      },
+      "direction": "近似保持",
+      "method": "AIMD",
+      "system": "百分比",
+      "evidence_ids": [
+        "S0048"
+      ]
+    },
+    {
+      "name": "Li–ODME配位百分比",
+      "values": {
+        "BE": 41.18,
+        "HE2": 38.46
+      },
+      "direction": "近似保持",
+      "method": "AIMD",
+      "system": "百分比",
+      "evidence_ids": [
+        "S0048"
+      ]
+    },
+    {
+      "name": "Li–OTFTFE配位百分比",
+      "values": {
+        "HE2": 0
+      },
+      "direction": "不参与",
+      "method": "AIMD",
+      "system": "百分比",
+      "evidence_ids": [
+        "S0048"
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "id": "P163-T1",
+      "name": "S@PAN富锂半电池",
+      "cell": "S@PAN||过量Li",
+      "conditions": {
+        "sulfur_loading": "2 mgS cm-2",
+        "ES": 5,
+        "ES_unit": "μL mgS-1",
+        "Li_thickness": "未报告",
+        "rate": "0.2 C",
+        "formation": "前7圈0.1 C",
+        "temperature": "未报告",
+        "LiNO3": "无",
+        "one_C": "1671 mA gS-1"
+      },
+      "formulations": [
+        "BE",
+        "HE2",
+        "HE5"
+      ],
+      "evidence_ids": [
+        "M0142",
+        "M0145",
+        "M0147",
+        "M0148",
+        "M0149",
+        "S0024",
+        "S0025"
+      ],
+      "results": [
+        {
+          "id": "P163-T1-R1",
+          "metric": "放电容量",
+          "A": "HE2",
+          "B": "BE",
+          "value_A": 1498,
+          "value_B": 952,
+          "unit": "mAh gS-1",
+          "point": "首圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0145",
+            "M0148"
+          ],
+          "reason": "数值方向待程序复算"
+        },
+        {
+          "id": "P163-T1-R2",
+          "metric": "放电容量",
+          "A": "HE2",
+          "B": "BE",
+          "value_A": 603,
+          "value_B": 407,
+          "unit": "mAh gS-1",
+          "point": "10圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0147",
+            "M0149"
+          ],
+          "reason": "数值方向待程序复算"
+        },
+        {
+          "id": "P163-T1-R3",
+          "metric": "放电容量",
+          "A": "HE2",
+          "B": "BE",
+          "value_A": 598,
+          "value_B": 386,
+          "unit": "mAh gS-1",
+          "point": "50圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0147",
+            "M0149"
+          ],
+          "reason": "数值方向待程序复算"
+        },
+        {
+          "id": "P163-T1-R4",
+          "metric": "放电容量",
+          "A": "HE5",
+          "B": "BE/HE2",
+          "value_A": "显著更低",
+          "value_B": "更高",
+          "unit": null,
+          "point": "首圈及后续",
+          "basis": "qualitative",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": [
+            "S0025"
+          ],
+          "reason": "过度稀释例外"
+        }
+      ]
+    },
+    {
+      "id": "P163-T2",
+      "name": "S@PAN限锂全电池E/S=3",
+      "cell": "S@PAN||预镀Cu上Li，N/P=2",
+      "conditions": {
+        "sulfur_loading": "3 mgS cm-2",
+        "ES": 3,
+        "ES_unit": "μL mgS-1",
+        "Li_thickness": "未报告",
+        "rate": "0.05 C",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "无",
+        "one_C": "1671 mA gS-1"
+      },
+      "formulations": [
+        "HE2"
+      ],
+      "evidence_ids": [
+        "M0152",
+        "M0153",
+        "M0154"
+      ],
+      "results": [
+        {
+          "id": "P163-T2-R1",
+          "metric": "放电容量",
+          "A": "HE2",
+          "B": null,
+          "value_A": 1365,
+          "value_B": null,
+          "unit": "mAh gS-1",
+          "point": "首圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0154"
+          ],
+          "reason": "数值方向待程序复算"
+        },
+        {
+          "id": "P163-T2-R2",
+          "metric": "放电容量",
+          "A": "HE2",
+          "B": null,
+          "value_A": 696,
+          "value_B": null,
+          "unit": "mAh gS-1",
+          "point": "10圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0154"
+          ],
+          "reason": "数值方向待程序复算"
+        },
+        {
+          "id": "P163-T2-R3",
+          "metric": "放电容量",
+          "A": "HE2",
+          "B": null,
+          "value_A": 509,
+          "value_B": null,
+          "unit": "mAh gS-1",
+          "point": "50圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0154"
+          ],
+          "reason": "数值方向待程序复算"
+        }
+      ]
+    },
+    {
+      "id": "P163-T3",
+      "name": "S@PAN限锂全电池E/S=2",
+      "cell": "S@PAN||预镀Cu上Li，N/P=2",
+      "conditions": {
+        "sulfur_loading": "3 mgS cm-2",
+        "ES": 2,
+        "ES_unit": "μL mgS-1",
+        "Li_thickness": "未报告",
+        "rate": "0.05 C",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "无",
+        "one_C": "1671 mA gS-1"
+      },
+      "formulations": [
+        "HE2"
+      ],
+      "evidence_ids": [
+        "M0152",
+        "M0153",
+        "M0155",
+        "M0156"
+      ],
+      "results": [
+        {
+          "id": "P163-T3-R1",
+          "metric": "放电容量",
+          "A": "HE2",
+          "B": null,
+          "value_A": 1226,
+          "value_B": null,
+          "unit": "mAh gS-1",
+          "point": "首圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0155",
+            "M0156"
+          ],
+          "reason": "数值方向待程序复算"
+        },
+        {
+          "id": "P163-T3-R2",
+          "metric": "放电容量",
+          "A": "HE2",
+          "B": null,
+          "value_A": 597,
+          "value_B": null,
+          "unit": "mAh gS-1",
+          "point": "10圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0155",
+            "M0156"
+          ],
+          "reason": "数值方向待程序复算"
+        },
+        {
+          "id": "P163-T3-R3",
+          "metric": "放电容量",
+          "A": "HE2",
+          "B": null,
+          "value_A": 439,
+          "value_B": null,
+          "unit": "mAh gS-1",
+          "point": "50圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0155",
+            "M0156"
+          ],
+          "reason": "数值方向待程序复算"
+        }
+      ]
+    },
+    {
+      "id": "P163-T4",
+      "name": "CMK3/S富锂电池",
+      "cell": "CMK3/S||Li",
+      "conditions": {
+        "sulfur_loading": "2 mgS cm-2",
+        "ES": 5,
+        "ES_unit": "μL mgS-1",
+        "Li_thickness": "未报告",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "无",
+        "one_C": "1671 mA gS-1"
+      },
+      "formulations": [
+        "HE2"
+      ],
+      "evidence_ids": [
+        "M0165",
+        "M0166",
+        "M0167",
+        "S0026"
+      ],
+      "results": [
+        {
+          "id": "P163-T4-R1",
+          "metric": "放电容量",
+          "A": "HE2",
+          "B": null,
+          "value_A": 1519,
+          "value_B": null,
+          "unit": "mAh gS-1",
+          "point": "首圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0166",
+            "M0167"
+          ],
+          "reason": "数值方向待程序复算"
+        },
+        {
+          "id": "P163-T4-R2",
+          "metric": "库仑效率",
+          "A": "HE2",
+          "B": null,
+          "value_A": 86,
+          "value_B": null,
+          "unit": "%",
+          "point": "首圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0166",
+            "M0167"
+          ],
+          "reason": "数值方向待程序复算"
+        },
+        {
+          "id": "P163-T4-R3",
+          "metric": "放电容量",
+          "A": "HE2",
+          "B": null,
+          "value_A": 907,
+          "value_B": null,
+          "unit": "mAh gS-1",
+          "point": "10圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0166",
+            "M0167"
+          ],
+          "reason": "数值方向待程序复算"
+        },
+        {
+          "id": "P163-T4-R4",
+          "metric": "容量衰减率",
+          "A": "HE2",
+          "B": null,
+          "value_A": 4,
+          "value_B": null,
+          "unit": "%/圈",
+          "point": "循环",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0166",
+            "M0167"
+          ],
+          "reason": "数值方向待程序复算"
+        }
+      ]
+    },
+    {
+      "id": "P163-T5",
+      "name": "VS2+ZnS/Li2S/graphene混合正极全电池",
+      "cell": "混合正极||限Li，N/P=2",
+      "conditions": {
+        "sulfur_loading": "活性物7.8 mgAM cm-2，VS2计入AM",
+        "ES": 2,
+        "ES_unit": "μL mgS-1（仅Li2S中硫）；E/AM=0.96 μL mgAM-1",
+        "Li_thickness": "未报告",
+        "rate": "未报告",
+        "formation": "先充电Li2S脱锂",
+        "temperature": "未报告",
+        "LiNO3": "无",
+        "one_C": "1671 mA gS-1"
+      },
+      "formulations": [
+        "HE2"
+      ],
+      "evidence_ids": [
+        "M0166",
+        "M0177",
+        "M0178",
+        "M0182",
+        "M0183",
+        "M0190",
+        "M0195"
+      ],
+      "results": [
+        {
+          "id": "P163-T5-R1",
+          "metric": "首充容量",
+          "A": "HE2",
+          "B": null,
+          "value_A": 421,
+          "value_B": null,
+          "unit": "mAh gAM-1",
+          "point": "首充",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0178",
+            "M0182",
+            "M0183",
+            "M0195"
+          ],
+          "reason": "数值方向待程序复算"
+        },
+        {
+          "id": "P163-T5-R2",
+          "metric": "放电容量",
+          "A": "HE2",
+          "B": null,
+          "value_A": 528,
+          "value_B": null,
+          "unit": "mAh gAM-1",
+          "point": "首放",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0178",
+            "M0182",
+            "M0183",
+            "M0195"
+          ],
+          "reason": "数值方向待程序复算"
+        },
+        {
+          "id": "P163-T5-R3",
+          "metric": "面容量",
+          "A": "HE2",
+          "B": null,
+          "value_A": 4.12,
+          "value_B": null,
+          "unit": "mAh cm-2",
+          "point": "首放",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0178",
+            "M0182",
+            "M0183",
+            "M0195"
+          ],
+          "reason": "数值方向待程序复算"
+        },
+        {
+          "id": "P163-T5-R4",
+          "metric": "能量密度",
+          "A": "HE2",
+          "B": null,
+          "value_A": 483,
+          "value_B": null,
+          "unit": "Wh kg-1（两极+电解液）",
+          "point": "首放",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0178",
+            "M0182",
+            "M0183",
+            "M0195"
+          ],
+          "reason": "数值方向待程序复算"
+        },
+        {
+          "id": "P163-T5-R5",
+          "metric": "容量保持率",
+          "A": "HE2",
+          "B": null,
+          "value_A": 82,
+          "value_B": null,
+          "unit": "%",
+          "point": "14圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0178",
+            "M0182",
+            "M0183",
+            "M0195"
+          ],
+          "reason": "数值方向待程序复算"
+        },
+        {
+          "id": "P163-T5-R6",
+          "metric": "寿命/充电异常",
+          "A": "HE2",
+          "B": null,
+          "value_A": "14圈后噪声与过充",
+          "value_B": null,
+          "unit": null,
+          "point": "14圈后",
+          "basis": "qualitative",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0195"
+          ],
+          "reason": "数值方向待程序复算"
+        }
+      ]
+    },
+    {
+      "id": "P163-T6",
+      "name": "VS2独立正极",
+      "cell": "VS2||Li",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "无",
+        "one_C": "1671 mA gS-1"
+      },
+      "formulations": [
+        "HE2"
+      ],
+      "evidence_ids": [
+        "S0028",
+        "S0029",
+        "S0030"
+      ],
+      "results": [
+        {
+          "id": "P163-T6-R1",
+          "metric": "循环测试",
+          "A": "HE2",
+          "B": null,
+          "value_A": "至100圈；容量仅图",
+          "value_B": null,
+          "unit": null,
+          "point": "100圈",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "S0030"
+          ],
+          "reason": "无数字锚点，不读图"
+        }
+      ]
+    },
+    {
+      "id": "P163-T7",
+      "name": "LiCu低电流",
+      "cell": "Li||Cu",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.5 mA cm-2；1 mAh cm-2",
+        "formation": "10圈0.01–1.0 V扫；0.05 mA cm-2",
+        "temperature": "未报告",
+        "LiNO3": "无",
+        "one_C": "未报告",
+        "separator": "HE2 Celgard2400；BE Celgard3501"
+      },
+      "formulations": [
+        "HE2",
+        "BE"
+      ],
+      "evidence_ids": [
+        "M0071",
+        "M0077",
+        "M0113",
+        "M0114",
+        "M0115",
+        "M0116",
+        "M0119",
+        "M0127"
+      ],
+      "results": [
+        {
+          "id": "P163-T7-R1",
+          "metric": "首圈CE",
+          "A": "HE2",
+          "B": "BE",
+          "value_A": 96.3,
+          "value_B": 93.7,
+          "unit": "%",
+          "point": "首圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": false,
+          "evidence_ids": [
+            "M0116",
+            "M0119"
+          ],
+          "reason": "隔膜不同，配方因果不单独判"
+        },
+        {
+          "id": "P163-T7-R2",
+          "metric": "首镀过电位",
+          "A": "HE2",
+          "B": "BE",
+          "value_A": -35,
+          "value_B": -54,
+          "unit": "mV",
+          "point": "首圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": false,
+          "evidence_ids": [
+            "M0116",
+            "M0119"
+          ],
+          "reason": "隔膜不同，配方因果不单独判"
+        },
+        {
+          "id": "P163-T7-R3",
+          "metric": "首剥过电位",
+          "A": "HE2",
+          "B": "BE",
+          "value_A": 27,
+          "value_B": 45,
+          "unit": "mV",
+          "point": "首圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": false,
+          "evidence_ids": [
+            "M0116",
+            "M0119"
+          ],
+          "reason": "隔膜不同，配方因果不单独判"
+        },
+        {
+          "id": "P163-T7-R4",
+          "metric": "平均CE",
+          "A": "HE2",
+          "B": null,
+          "value_A": 99.4,
+          "value_B": null,
+          "unit": "%",
+          "point": "350圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0127"
+          ],
+          "reason": "数值方向待程序复算"
+        },
+        {
+          "id": "P163-T7-R5",
+          "metric": "CE异常",
+          "A": "BE",
+          "B": null,
+          "value_A": "多圈超过100%",
+          "value_B": null,
+          "unit": null,
+          "point": "包括26圈",
+          "basis": "qualitative",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0120",
+            "M0122"
+          ],
+          "reason": "不可把过100%判优"
+        }
+      ]
+    },
+    {
+      "id": "P163-T8",
+      "name": "LiCu高电流",
+      "cell": "Li||Cu",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "2 mA cm-2；1 mAh cm-2",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "无",
+        "one_C": "未报告"
+      },
+      "formulations": [
+        "HE2"
+      ],
+      "evidence_ids": [
+        "M0124",
+        "M0125",
+        "M0126",
+        "M0127",
+        "M0157"
+      ],
+      "results": [
+        {
+          "id": "P163-T8-R1",
+          "metric": "平均CE",
+          "A": "HE2",
+          "B": null,
+          "value_A": 99.3,
+          "value_B": null,
+          "unit": "%",
+          "point": "350圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0127"
+          ],
+          "reason": "数值方向待程序复算"
+        },
+        {
+          "id": "P163-T8-R2",
+          "metric": "CE",
+          "A": "HE2",
+          "B": null,
+          "value_A": 98.7,
+          "value_B": null,
+          "unit": "%",
+          "point": "30圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0126"
+          ],
+          "reason": "数值方向待程序复算"
+        },
+        {
+          "id": "P163-T8-R3",
+          "metric": "过电位",
+          "A": "HE2",
+          "B": null,
+          "value_A": "190→130",
+          "value_B": null,
+          "unit": "mV",
+          "point": "首圈→30圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0125"
+          ],
+          "reason": "数值方向待程序复算"
+        }
+      ]
+    },
+    {
+      "id": "P163-T9",
+      "name": "Li对称阶梯电流",
+      "cell": "Li||Li",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.5→1→2→0.5 mA cm-2各20圈，1 mAh cm-2",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "无",
+        "one_C": "未报告",
+        "separator": "HE2 2400；BE 3501"
+      },
+      "formulations": [
+        "HE2",
+        "BE"
+      ],
+      "evidence_ids": [
+        "M0071",
+        "M0078",
+        "M0079",
+        "M0128",
+        "M0129",
+        "M0130"
+      ],
+      "results": [
+        {
+          "id": "P163-T9-R1",
+          "metric": "过电位",
+          "A": "HE2",
+          "B": "BE",
+          "value_A": 15,
+          "value_B": 31,
+          "unit": "mV",
+          "point": "0.5 mA cm-2",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": false,
+          "evidence_ids": [
+            "M0129"
+          ],
+          "reason": "隔膜不同"
+        }
+      ]
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "P163-M1",
+      "summary": "TFTFE添加保持盐配位结构，不参与Li+溶剂化。",
+      "A": "HE2",
+      "B": "BE",
+      "property": "溶剂化保持",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0100",
+        "M0101"
+      ],
+      "test_ids": [
+        "P163-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M2",
+      "summary": "HE2更佳润湿可能解释其比BE更高初始容量。",
+      "A": "HE2",
+      "B": "BE",
+      "property": "润湿",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文推测",
+      "evidence_ids": [
+        "M0148"
+      ],
+      "test_ids": [
+        "P163-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M3",
+      "summary": "HE5过度稀释可能减少Li+与硫接触，损害循环。",
+      "A": "HE2",
+      "B": "BE",
+      "property": "过度稀释",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文推测",
+      "evidence_ids": [
+        "M0151"
+      ],
+      "test_ids": [
+        "P163-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M4",
+      "summary": "首圈不可逆容量可能与CEI形成和S–S断裂有关。",
+      "A": "HE2",
+      "B": "BE",
+      "property": "CEI/断键",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文推测",
+      "evidence_ids": [
+        "M0146"
+      ],
+      "test_ids": [
+        "P163-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M5",
+      "summary": "TFTFE优先脱氟部分贡献更强LiF峰。",
+      "A": "HE2",
+      "B": "BE",
+      "property": "含氟SEI",
+      "categories": [
+        "负极锂"
+      ],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": [
+        "M0141"
+      ],
+      "test_ids": [
+        "P163-T7"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M6",
+      "summary": "TFTFE促进富LiF SEI形成，使锂表现高可逆效率。",
+      "A": "HE2",
+      "B": "BE",
+      "property": "富LiF SEI",
+      "categories": [
+        "负极锂"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0210"
+      ],
+      "test_ids": [
+        "P163-T7"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M7",
+      "summary": "BE超100%效率可能由此前隔绝锂重新与集流体接通。",
+      "A": "HE2",
+      "B": "BE",
+      "property": "死锂再连接",
+      "categories": [
+        "负极锂"
+      ],
+      "source_type": "本文推测",
+      "evidence_ids": [
+        "M0121"
+      ],
+      "test_ids": [
+        "P163-T7"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M8",
+      "summary": "混合正极失效可能由贫液中浓多硫化物驱动穿梭和电解液耗尽。",
+      "A": "HE2",
+      "B": "BE",
+      "property": "浓多硫化物",
+      "categories": [
+        "多硫化物穿梭",
+        "电解液消耗"
+      ],
+      "source_type": "本文推测",
+      "evidence_ids": [
+        "M0196"
+      ],
+      "test_ids": [
+        "P163-T5"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M9",
+      "summary": "TFTFE空间上缩窄离子有效路径，降低Li+及多硫化物迁移。",
+      "A": "HE2",
+      "B": "BE",
+      "property": "离子通道",
+      "categories": [
+        "正极反应",
+        "多硫化物穿梭"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0207"
+      ],
+      "test_ids": [
+        "P163-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M10",
+      "summary": "稀释剂可能帮助减轻多硫化物穿梭。",
+      "A": "HE2",
+      "B": "BE",
+      "property": "稀释/迁移",
+      "categories": [
+        "多硫化物穿梭"
+      ],
+      "source_type": "本文推测",
+      "evidence_ids": [
+        "M0208"
+      ],
+      "test_ids": [
+        "P163-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P163-M11",
+      "summary": "TFTFE改善碳硫复合正极润湿，在贫液下促进电解液吸收。",
+      "A": "HE2",
+      "B": "BE",
+      "property": "润湿",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0211"
+      ],
+      "test_ids": [
+        "P163-T1"
+      ],
+      "side": "其他"
+    }
+  ],
+  "design_claims": [],
+  "figure_requests": [
+    {
+      "test_id": "P163-T2",
+      "figure": "Fig.4f",
+      "part": "main",
+      "metric": "放电容量",
+      "A": "HE2",
+      "B": null,
+      "target_point": "100圈",
+      "anchor_quote_ids": [
+        "M0154"
+      ],
+      "reason": "原文无可直接抄录数值；需几何读图并核对同测试锚点，无锚点整图不用"
+    },
+    {
+      "test_id": "P163-T3",
+      "figure": "Fig.4f",
+      "part": "main",
+      "metric": "放电容量",
+      "A": "HE2",
+      "B": null,
+      "target_point": "100圈",
+      "anchor_quote_ids": [
+        "M0155",
+        "M0156"
+      ],
+      "reason": "原文无可直接抄录数值；需几何读图并核对同测试锚点，无锚点整图不用"
+    }
+  ],
+  "gaps": [
+    "LiCu及Li对称BE/HE2使用不同隔膜，比较不满足同条件。",
+    "正文OCR μL常显示mL；SI S0026和表头明确μL mg-1。",
+    "锂厚度未给；0.38 mm是合成Li2S使用原料，不作为电池厚度。",
+    "S@PAN、CMK3/S及混合正极机制/循环应分开；混合正极14圈后失效。",
+    "HE5容量仅SI图且无数值锚点，保留原文定性下降。"
+  ],
+  "source_review": {
+    "main": true,
+    "si": true,
+    "notes": "正文与可得SI按原始索引复核；参考文献不作为本文实验。数值仅原文，图不目测。"
+  }
+}

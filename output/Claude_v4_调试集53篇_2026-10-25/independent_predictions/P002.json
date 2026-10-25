@@ -1,0 +1,669 @@
+{
+  "paper_id": "P002",
+  "doi": "10.1002/aenm.201600160",
+  "formulations": [
+    {
+      "id": "LiTFSI",
+      "name": "1 M LiTFSI in DOL/DME (1/1, v/v)",
+      "components": [
+        {"name": "LiTFSI", "role": "盐", "amount": 1, "unit": "M"},
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": 1, "unit": "v/v"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": 1, "unit": "v/v"}
+      ],
+      "raw_formula": "1 M LiTFSI in DOL/DME (1/1, v/v)；无添加剂",
+      "evidence_ids": ["M0015", "M0130"]
+    },
+    {
+      "id": "LiTDI",
+      "name": "1 M LiTDI in DOL/DME (1/1, v/v)",
+      "components": [
+        {"name": "LiTDI", "role": "盐", "amount": 1, "unit": "M"},
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": 1, "unit": "v/v"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": 1, "unit": "v/v"}
+      ],
+      "raw_formula": "1 M LiTDI in DOL/DME (1/1, v/v)；无添加剂",
+      "evidence_ids": ["M0015", "M0130"]
+    },
+    {
+      "id": "LiTFSI+add",
+      "name": "1 M LiTFSI (+ 0.2 M LiNO3 + 0.04 M Li2S8) in DOL/DME",
+      "components": [
+        {"name": "LiTFSI", "role": "盐", "amount": 1, "unit": "M"},
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": 1, "unit": "v/v"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": 1, "unit": "v/v"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 0.2, "unit": "M"},
+        {"name": "Li2S8", "role": "添加剂", "amount": 0.04, "unit": "M"}
+      ],
+      "raw_formula": "1 M LiTFSI (+ 0.2 M LiNO3 + 0.04 M Li2S8) in DOL/DME；正文另写 40 × 10–3 M Li2S8（约为正极硫的 1%），图 4 图注与结论写 0.1% Li2S8",
+      "evidence_ids": ["M0084", "M0080", "M0130"]
+    },
+    {
+      "id": "LiTDI+add",
+      "name": "1 M LiTDI (+ 0.2 M LiNO3 + 0.04 M Li2S8) in DOL/DME",
+      "components": [
+        {"name": "LiTDI", "role": "盐", "amount": 1, "unit": "M"},
+        {"name": "DOL", "role": "溶剂化溶剂", "amount": 1, "unit": "v/v"},
+        {"name": "DME", "role": "溶剂化溶剂", "amount": 1, "unit": "v/v"},
+        {"name": "LiNO3", "role": "添加剂", "amount": 0.2, "unit": "M"},
+        {"name": "Li2S8", "role": "添加剂", "amount": 0.04, "unit": "M"}
+      ],
+      "raw_formula": "1 M LiTDI (+ 0.2 M LiNO3 + 0.04 M Li2S8) in DOL/DME；正文另写 40 × 10–3 M Li2S8（约为正极硫的 1%），图 4 图注与结论写 0.1% Li2S8",
+      "evidence_ids": ["M0084", "M0080", "M0130"]
+    }
+  ],
+  "control_id": "LiTFSI",
+  "control_type": "不含 LiNO₃ 的自配对照：1 M LiTFSI DOL/DME 无添加剂（Table 1、Fig. 2、Fig. 3 无添加剂组）；Fig. 3 另有含 0.2 M LiNO₃ + 0.04 M Li₂S₈ 的 LiTFSI+add 对照",
+  "gradients": [
+    {
+      "name": "主盐种类（种类梯度，无添加剂，两档）",
+      "order": ["LiTFSI", "LiTDI"],
+      "values": ["1 M LiTFSI", "1 M LiTDI"],
+      "solvation_axis": "按多硫化物溶解度由高到低（Table 1 Li2S8 最大溶解度 ≈0.5 M vs 0.084 M）；Li⁺ 溶剂化强弱作者未直接排序",
+      "evidence_ids": ["M0061", "M0016"]
+    },
+    {
+      "name": "主盐种类（种类梯度，含 0.2 M LiNO3 + 0.04 M Li2S8，两档）",
+      "order": ["LiTFSI+add", "LiTDI+add"],
+      "values": ["1 M LiTFSI + 添加剂", "1 M LiTDI + 添加剂"],
+      "solvation_axis": "按多硫化物溶解度由高到低；含添加剂体系未单独测溶解度，沿用无添加剂体系 Table 1 排序，作者称 LiTFSI 基电解液多硫化物溶解度更高",
+      "evidence_ids": ["M0061", "M0082"]
+    }
+  ],
+  "properties": [
+    {
+      "name": "离子电导率",
+      "values": {"LiTFSI": "10.8 mS cm−1", "LiTDI": "6.2 mS cm−1"},
+      "direction": "LiTDI 低于 LiTFSI（作者称两者 comparable）",
+      "method": "电导率仪，30 °C",
+      "system": "无多硫化物、无添加剂的 1 M 盐 DOL/DME 电解液",
+      "evidence_ids": ["M0060", "M0061", "M0115", "M0016"]
+    },
+    {
+      "name": "黏度",
+      "values": {"LiTFSI": "1.35 cP", "LiTDI": "1.31 cP"},
+      "direction": "两者相近",
+      "method": "黏度计，30 °C",
+      "system": "无多硫化物、无添加剂的 1 M 盐 DOL/DME 电解液",
+      "evidence_ids": ["M0060", "M0061", "M0116"]
+    },
+    {
+      "name": "多硫化物溶解度",
+      "values": {"LiTFSI": "≈0.5 M", "LiTDI": "0.084 M"},
+      "direction": "LiTDI 低于 LiTFSI（作者称降低 83%）",
+      "method": "加过量 Li2S8 后每 10 h 逐步稀释至全部溶解（Li2S8 最大溶解度，30 °C）",
+      "system": "无添加剂的 1 M 盐 DOL/DME 电解液；以化学合成的名义 Li2S8 测，非电池循环中",
+      "evidence_ids": ["M0060", "M0061", "M0016", "M0132"]
+    },
+    {
+      "name": "Li⁺ 溶剂化",
+      "values": {"LiTFSI": "δ(7Li) −1.2 ppm；DME δ(17O) −26.9 ppm", "LiTDI": "δ(7Li) −0.8 ppm；DME δ(17O) −27.7 ppm"},
+      "direction": "LiTDI 的 δ(7Li) 较高、DME 的 δ(17O) 偏移更大；作者未据此直接排两者 Li⁺ 溶剂化强弱，只说 Li⁺ 优先被 DME 溶剂化",
+      "method": "7Li、17O NMR（外标 1 M LiCl 水溶液 / 水为 0 ppm）",
+      "system": "无多硫化物的 1 M 盐 DOL/DME 电解液；纯 DOL/DME 中 DME δ(17O) 为 −24.3 ppm",
+      "evidence_ids": ["M0019", "M0020", "M0113", "M0114"]
+    },
+    {
+      "name": "Li⁺ 流体力学半径比 r_s,Li/r_Li（反映多硫化锂团聚/离子缔合）",
+      "values": {"LiTFSI": "无 Li2S8 10.16；含 0.05 M Li2S8 10.42", "LiTDI": "无 Li2S8 10.13；含 0.05 M Li2S8 12.06"},
+      "direction": "加 Li2S8 后 LiTDI 增大约 20%，LiTFSI 基本不变",
+      "method": "变温 NMR 扩散系数 + Stokes–Einstein，以 DOL 为参照",
+      "system": "1 M 盐 DOL/DME 加 0.05 M Li2S8 的简化溶液，非电池循环中",
+      "evidence_ids": ["S0015", "M0043", "M0123"]
+    },
+    {
+      "name": "多硫化物溶剂化（AIMD 平衡产物）",
+      "values": {"LiTFSI": "Li2S8 平衡后生成 Li2S3 与 Li2S5，二者分离", "LiTDI": "Li2S8 平衡后生成两个 Li2S4，聚成 Li4S8 类二聚体"},
+      "direction": "LiTDI 中多硫化物团聚体更大",
+      "method": "AIMD 模拟（300 K 平衡）",
+      "system": "模拟盒：20 个溶剂分子（DOL:DME = 1:1）+ 5 个盐分子 + 1 个溶剂化 Li2S8；作者注明实验中化学合成的 Li2S8 溶液是多种多硫化物与 S3− 自由基的混合物",
+      "evidence_ids": ["M0048", "M0049", "M0140", "M0141", "M0052"]
+    }
+  ],
+  "tests": [
+    {
+      "id": "P002-T1",
+      "name": "Li‖S 扣式 薄正极 C/5 循环（Fig. 2，无添加剂）",
+      "cell": "Li‖S 扣式（CR2032，Celgard 3501 隔膜）",
+      "conditions": {
+        "sulfur_loading": "<1 mg S cm−2（推定：Fig. 2 图注正极用 PVDF 粘结剂，对应实验部分薄正极）",
+        "ES": "原文未写（作者称 S/E 按各配方分别优化，图 2a 标注电解液量；LiTDI 电池用过 50 与 70 g S L−1）",
+        "ES_unit": "g S L−1（S/E，硫质量/电解液体积，倒数形式）",
+        "Li_thickness": "400 μm",
+        "rate": "C/5（Fig. 2b 图注；Fig. 2a 首圈倍率原文未写，推定同为 C/5）",
+        "formation": "未报告",
+        "temperature": "室温（room temperature，未给数值）",
+        "LiNO3": "不含（推定：实验部分电解液只有 1 M 盐 + DOL/DME，SI Fig. S2 注明 no additives）",
+        "one_C": "1675 mA g−1 S",
+        "voltage_window": "1.5–2.8 V"
+      },
+      "formulations": ["LiTFSI", "LiTDI"],
+      "evidence_ids": ["M0083", "M0125", "M0130", "M0133", "M0134", "M0135", "M0056", "M0068", "S0014"],
+      "results": [
+        {
+          "id": "P002-T1-R1",
+          "metric": "首圈容量",
+          "A": "LiTDI", "B": "LiTFSI",
+          "value_A": 995, "value_B": 1170,
+          "unit": "mAh g−1",
+          "point": "第 1 圈放电（Fig. 2a）",
+          "basis": "numeric",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": ["M0057"],
+          "reason": "|995−1170|/1170≈15%；注意作者称 S/E 按各配方分别优化（M0056），两电池 S/E 是否相同原文未写（只在图 2a 标注）"
+        },
+        {
+          "id": "P002-T1-R2",
+          "metric": "保持率",
+          "A": "LiTDI", "B": "LiTFSI",
+          "value_A": null, "value_B": null,
+          "unit": "%",
+          "point": "C/5 第 100 圈容量保持率（口径原文未写）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0070"],
+          "reason": "原文 'capacity retention is 25% higher'，未给两者绝对值；25% 是百分点还是相对增幅不明；LiTDI 用的是 50 还是 70 g S L−1 未写"
+        },
+        {
+          "id": "P002-T1-R3",
+          "metric": "库仑效率",
+          "A": "LiTDI", "B": "LiTFSI",
+          "value_A": null, "value_B": null,
+          "unit": "%",
+          "point": "初始库仑效率（initial CE，Fig. 2b）",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0071"],
+          "reason": "作者定性：LiTDI 初始 CE much improved，LiTFSI 穿梭明显"
+        },
+        {
+          "id": "P002-T1-R4",
+          "metric": "过电位",
+          "A": "LiTDI", "B": "LiTFSI",
+          "value_A": null, "value_B": null,
+          "unit": "V",
+          "point": "第 1 圈充放电曲线（Fig. 2a）",
+          "basis": "qualitative",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["M0067"],
+          "reason": "作者定性：LiTDI 无明显过电位；未直接与 LiTFSI 比较，按“未见额外过电位”记差异小"
+        }
+      ]
+    },
+    {
+      "id": "P002-T2",
+      "name": "Li‖S 扣式 厚正极 3 mg S cm−2 C/2 循环（Fig. 3，无添加剂）",
+      "cell": "Li‖S 扣式（CR2032，Celgard 3501 隔膜）",
+      "conditions": {
+        "sulfur_loading": "3 mg S cm−2",
+        "ES": "未报告（实验部分仅写 S/E 控制在 15–100 g L−1）",
+        "ES_unit": "g S L−1（S/E，硫质量/电解液体积，倒数形式）",
+        "Li_thickness": "400 μm",
+        "rate": "C/2（2.4 mA cm−2）",
+        "formation": "C/10（0.5 mA cm−2）5 圈",
+        "temperature": "室温（room temperature，未给数值）",
+        "LiNO3": "不含",
+        "one_C": "1675 mA g−1 S（Fig. 2 图注定义，推定同用）",
+        "voltage_window": "1.5–2.8 V",
+        "cycles": "300 圈"
+      },
+      "formulations": ["LiTFSI", "LiTDI"],
+      "evidence_ids": ["M0075", "M0076", "M0084", "M0127", "M0133", "M0134", "M0135", "M0083"],
+      "results": [
+        {
+          "id": "P002-T2-R1",
+          "metric": "指定圈容量",
+          "A": "LiTDI", "B": "LiTFSI",
+          "value_A": 300, "value_B": 300,
+          "unit": "mAh g−1",
+          "point": "原文未指明圈数（'only a 300 mAh g−1 discharge capacity'）",
+          "basis": "numeric",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["M0077"],
+          "reason": "作者对两者给同一个数，归因于厚正极极化大"
+        },
+        {
+          "id": "P002-T2-R2",
+          "metric": "指定圈容量",
+          "A": "LiTDI", "B": "LiTFSI",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g−1",
+          "point": "C/2 第 300 圈（末圈）",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [],
+          "reason": "只在 Fig. 3a；已登记读图"
+        }
+      ]
+    },
+    {
+      "id": "P002-T3",
+      "name": "Li‖S 扣式 厚正极 3 mg S cm−2 C/2 循环（Fig. 3，含 0.2 M LiNO3 + 0.04 M Li2S8）",
+      "cell": "Li‖S 扣式（CR2032，Celgard 3501 隔膜）",
+      "conditions": {
+        "sulfur_loading": "3 mg S cm−2",
+        "ES": "未报告（实验部分仅写 S/E 控制在 15–100 g L−1）",
+        "ES_unit": "g S L−1（S/E，硫质量/电解液体积，倒数形式）",
+        "Li_thickness": "400 μm",
+        "rate": "C/2（2.4 mA cm−2）",
+        "formation": "C/10（0.5 mA cm−2）5 圈",
+        "temperature": "室温（room temperature，未给数值）",
+        "LiNO3": "含 0.2 M（另含 0.04 M Li2S8 添加剂）",
+        "one_C": "1675 mA g−1 S（Fig. 2 图注定义，推定同用）",
+        "voltage_window": "1.5–2.8 V",
+        "cycles": "300 圈"
+      },
+      "formulations": ["LiTFSI+add", "LiTDI+add"],
+      "evidence_ids": ["M0075", "M0076", "M0080", "M0084", "M0127", "M0133", "M0134", "M0135", "M0083"],
+      "results": [
+        {
+          "id": "P002-T3-R1",
+          "metric": "首圈容量",
+          "A": "LiTDI+add", "B": "LiTFSI+add",
+          "value_A": 1110, "value_B": 1140,
+          "unit": "mAh g−1",
+          "point": "原文 initial capacity（未写是 C/10 化成段第 1 圈还是 C/2 首圈）",
+          "basis": "numeric",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": ["M0081"],
+          "reason": "|1110−1140|/1140≈2.6% < 5%"
+        },
+        {
+          "id": "P002-T3-R2",
+          "metric": "库仑效率",
+          "A": "LiTDI+add", "B": "LiTFSI+add",
+          "value_A": 99, "value_B": "≈80",
+          "unit": "%",
+          "point": "LiTFSI+add 约 150 圈后降至 ≈80%；LiTDI+add 300 圈内高且稳定 99%",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0089", "M0091"],
+          "reason": "库仑效率按作者说法填；两数取值点不完全相同（LiTFSI 为衰减后、LiTDI 为全程）"
+        },
+        {
+          "id": "P002-T3-R3",
+          "metric": "寿命（循环圈数）",
+          "A": "LiTDI+add", "B": "LiTFSI+add",
+          "value_A": null, "value_B": null,
+          "unit": "圈",
+          "point": "C/2 循环至 300 圈",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0089", "M0090"],
+          "reason": "作者定性：LiTFSI+add 150 圈后容量快速衰减；LiTDI+add 以 570 mAh g−1 稳定循环 300 圈；未给寿命判据"
+        },
+        {
+          "id": "P002-T3-R4",
+          "metric": "首圈容量",
+          "A": "LiTDI+add", "B": "LiTFSI+add",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g−1",
+          "point": "化成后 C/2 第 1 圈（第 6 圈）",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [],
+          "reason": "只在 Fig. 3a；已登记读图"
+        },
+        {
+          "id": "P002-T3-R5",
+          "metric": "指定圈容量",
+          "A": "LiTDI+add", "B": "LiTFSI+add",
+          "value_A": null, "value_B": null,
+          "unit": "mAh g−1",
+          "point": "C/2 第 300 圈（末圈）",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [],
+          "reason": "LiTDI+add 正文写稳定在 570 mAh g−1，LiTFSI+add 300 圈容量只在 Fig. 3a；已登记读图"
+        },
+        {
+          "id": "P002-T3-R6",
+          "metric": "正极硫保留率（循环后 EDX）",
+          "A": "LiTDI+add", "B": "LiTFSI+add",
+          "value_A": 54, "value_B": 27,
+          "unit": "%",
+          "point": "300 圈后正极截面 SEM/EDX（Fig. 4c、4d）",
+          "basis": "numeric",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": ["M0103", "M0098"],
+          "reason": "B 由 'twice as high' 反算：54 ÷ 2 = 27"
+        }
+      ]
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "P002-M1",
+      "summary": "把多硫化物溶解度限制在低水平 → 抑制穿梭、减少负极污染、减少正极活性物质流失 → 预期改善循环寿命",
+      "A": "LiTDI", "B": "LiTFSI",
+      "property": "多硫化物溶解度降低",
+      "categories": ["多硫化物穿梭", "负极锂", "正极反应"],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0017"],
+      "test_ids": [],
+      "side": "强侧"
+    },
+    {
+      "id": "P002-M2",
+      "summary": "DOL 的 δ(17O) 位移小于 DME、DME 峰显著变宽 → Li⁺ 可能优先被 DME 溶剂化",
+      "A": "全梯度", "B": "全梯度",
+      "property": "Li⁺ 溶剂化：优先由 DME 配位",
+      "categories": [],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0022"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P002-M3",
+      "summary": "文献报道 Li⁺ 溶剂化通过溶剂化多硫化物中的 Li⁺ 影响短链多硫化物溶解度，但不影响长链多硫化物溶解度",
+      "A": "全梯度", "B": "全梯度",
+      "property": "Li⁺ 溶剂化 → 多硫化物溶解度（短链受影响、长链不受）",
+      "categories": [],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0023", "M0037"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P002-M4",
+      "summary": "加 Li2S8 后 LiTDI 中 Li⁺ 流体力学半径增大 → LiTDI 中多硫化锂团聚体更大",
+      "A": "LiTDI", "B": "LiTFSI",
+      "property": "多硫化物溶剂化：LiTDI 中多硫化锂团聚",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0044"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P002-M5",
+      "summary": "两种盐电解液中 Li2S8 平衡产物不同，可能源于 Li⁺ 溶剂化程度和阴离子相互作用不同",
+      "A": "LiTDI", "B": "LiTFSI",
+      "property": "Li⁺ 溶剂化程度与阴离子相互作用不同 → 多硫化物物种不同",
+      "categories": [],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0047"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P002-M6",
+      "summary": "AIMD：LiTDI 中两个 Li2S4 聚成 Li4S8 类二聚体，LiTFSI 中 Li2S3 与 Li2S5 分离（与前人观察一致）",
+      "A": "LiTDI", "B": "LiTFSI",
+      "property": "多硫化物溶剂化：LiTDI 中多硫化物聚成二聚体",
+      "categories": [],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0049"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P002-M7",
+      "summary": "TDI 阴离子含腈基、酰亚胺等活性含氮基团，已知会影响多硫化物在碳载体中的稳定性",
+      "A": "LiTDI", "B": "LiTFSI",
+      "property": "阴离子与多硫化物相互作用",
+      "categories": [],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0051"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P002-M8",
+      "summary": "支持盐会影响长链多硫化物（Li2S8）的化学还原反应 → 可借此调控多硫化物溶解度",
+      "A": "LiTDI", "B": "LiTFSI",
+      "property": "多硫化物溶解度随支持盐改变",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0054"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P002-M9",
+      "summary": "LiTDI 中多硫化物（尤其长链）溶解度低 → 硫利用率低 → 首圈容量低于 LiTFSI",
+      "A": "LiTDI", "B": "LiTFSI",
+      "property": "多硫化物溶解度降低（尤其长链）",
+      "categories": ["正极反应"],
+      "source_type": "本文推测",
+      "evidence_ids": ["M0058", "M0066"],
+      "test_ids": ["P002-T1"],
+      "side": "弱侧"
+    },
+    {
+      "id": "P002-M10",
+      "summary": "LiTDI 电池无明显过电位 → LiTDI 电解液充分渗入碳正极",
+      "A": "LiTDI", "B": "LiTFSI",
+      "property": "电解液对正极的浸润",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0067"],
+      "test_ids": ["P002-T1"],
+      "side": "其他"
+    },
+    {
+      "id": "P002-M11",
+      "summary": "每颗电池电解液量减少和多硫化物溶解度降低都会抑制硫流失 → 容量损失减小",
+      "A": "LiTDI", "B": "LiTFSI",
+      "property": "多硫化物溶解度降低（另含电解液量减少）",
+      "categories": ["正极反应"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0069"],
+      "test_ids": ["P002-T1"],
+      "side": "强侧"
+    },
+    {
+      "id": "P002-M12",
+      "summary": "LiTDI 穿梭减轻 → 初始库仑效率显著提高；LiTFSI 电池穿梭明显",
+      "A": "LiTDI", "B": "LiTFSI",
+      "property": "多硫化物溶解度降低",
+      "categories": ["多硫化物穿梭"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0071"],
+      "test_ids": ["P002-T1"],
+      "side": "强侧"
+    },
+    {
+      "id": "P002-M13",
+      "summary": "厚硫正极极化大 → 无添加剂时两种电解液放电容量都只有 300 mAh g−1",
+      "A": "LiTDI", "B": "LiTFSI",
+      "property": "非溶剂化起点：厚正极极化",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0077"],
+      "test_ids": ["P002-T2"],
+      "side": "其他"
+    },
+    {
+      "id": "P002-M14",
+      "summary": "多硫化物添加剂使多硫化物溶解达平衡、电池阻抗大幅降低 → 既促进初始容量发挥又有助于容量保持",
+      "A": "LiTDI+add", "B": "LiTDI",
+      "property": "添加多硫化物（非溶剂化变量）",
+      "categories": [],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0078"],
+      "test_ids": ["P002-T2", "P002-T3"],
+      "side": "其他"
+    },
+    {
+      "id": "P002-M15",
+      "summary": "加入多硫化物后需要 LiNO3 防止向负极的穿梭",
+      "A": "LiTDI+add", "B": "LiTDI",
+      "property": "添加 LiNO3（非溶剂化变量）",
+      "categories": ["多硫化物穿梭", "负极锂"],
+      "source_type": "转述他文或通用说法",
+      "evidence_ids": ["M0079"],
+      "test_ids": ["P002-T3"],
+      "side": "其他"
+    },
+    {
+      "id": "P002-M16",
+      "summary": "LiTFSI 中多硫化物溶解度高 → 循环后电解液更具腐蚀性 → 穿梭抑制剂 LiNO3 消耗比 LiTDI 快",
+      "A": "LiTDI+add", "B": "LiTFSI+add",
+      "property": "多硫化物溶解度（LiTFSI 高）",
+      "categories": ["电解液消耗", "多硫化物穿梭"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0082", "M0087"],
+      "test_ids": ["P002-T3"],
+      "side": "强侧"
+    },
+    {
+      "id": "P002-M17",
+      "summary": "LiTFSI 电解液中多硫化物量增多 → 加速锂金属负极失效",
+      "A": "LiTDI+add", "B": "LiTFSI+add",
+      "property": "多硫化物溶解度（LiTFSI 高）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0088"],
+      "test_ids": ["P002-T3"],
+      "side": "强侧"
+    },
+    {
+      "id": "P002-M18",
+      "summary": "LiTDI 电解液中多硫化物浓度低 → LiNO3 消耗大幅减少，表现为高而稳定的 CE（99%）",
+      "A": "LiTDI+add", "B": "LiTFSI+add",
+      "property": "多硫化物溶解度（LiTDI 低）",
+      "categories": ["电解液消耗"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0091"],
+      "test_ids": ["P002-T3"],
+      "side": "强侧"
+    },
+    {
+      "id": "P002-M19",
+      "summary": "正极骨架中多硫化物溶出减少，加上添加剂多硫化物的渗透 → 厚电极容量充分发挥、循环中电极稳定",
+      "A": "LiTDI+add", "B": "LiTFSI+add",
+      "property": "多硫化物溶解度降低（另含多硫化物添加剂）",
+      "categories": ["正极反应"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0092"],
+      "test_ids": ["P002-T3"],
+      "side": "强侧"
+    },
+    {
+      "id": "P002-M20",
+      "summary": "LiTFSI 电池 150 圈后锂负极出现裂纹、团聚并形成海绵层 → 解释 150 圈后性能衰退",
+      "A": "LiTDI+add", "B": "LiTFSI+add",
+      "property": "多硫化物溶解度（LiTFSI 高）",
+      "categories": ["负极锂"],
+      "source_type": "本文结论（与他文一致）",
+      "evidence_ids": ["M0095", "M0101"],
+      "test_ids": ["P002-T3"],
+      "side": "强侧"
+    },
+    {
+      "id": "P002-M21",
+      "summary": "用 LiTDI 有效抑制穿梭，稳定电解液与正、负极的界面",
+      "A": "LiTDI+add", "B": "LiTFSI+add",
+      "property": "多硫化物溶解度降低",
+      "categories": ["多硫化物穿梭", "正极反应", "负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0104"],
+      "test_ids": ["P002-T3"],
+      "side": "强侧"
+    },
+    {
+      "id": "P002-M22",
+      "summary": "LiTDI 作支持盐降低多硫化物溶解度 → 减轻穿梭（穿梭造成正极活性硫流失和锂负极劣化）",
+      "A": "LiTDI", "B": "LiTFSI",
+      "property": "多硫化物溶解度降低",
+      "categories": ["多硫化物穿梭", "正极反应", "负极锂"],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0105"],
+      "test_ids": ["P002-T1", "P002-T3"],
+      "side": "强侧"
+    },
+    {
+      "id": "P002-M23",
+      "summary": "NMR 与 DFT 表明 DOL/DME 中 Li⁺ 主要由 DME 溶剂化，与浓的纯 DME 溶液不同",
+      "A": "全梯度", "B": "全梯度",
+      "property": "Li⁺ 溶剂化：主要由 DME 配位",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0106"],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "P002-M24",
+      "summary": "AIMD：TDI 阴离子配位影响多硫化物歧化，形成 Li4S8 二聚体，降低溶解度",
+      "A": "LiTDI", "B": "LiTFSI",
+      "property": "多硫化物溶剂化：阴离子配位 → 多硫化物团聚 → 溶解度降低",
+      "categories": [],
+      "source_type": "本文结论",
+      "evidence_ids": ["M0107"],
+      "test_ids": [],
+      "side": "其他"
+    }
+  ],
+  "design_claims": [
+    {"summary": "通过换支持盐（LiTDI）限制多硫化物溶解度；作者称液态电解液中多硫化物溶解度需仔细调控，支持盐可实现可控优化（未用折中/解耦说法）", "evidence_ids": ["M0010", "M0054"]},
+    {"summary": "最优配方 LiTDI+add（1 M LiTDI + 0.2 M LiNO3 + Li2S8 添加剂）：低溶解度抑制溶出，多硫化物添加剂补回厚正极（3 mg S cm−2）容量发挥", "evidence_ids": ["M0108", "M0092"]}
+  ],
+  "figure_requests": [
+    {
+      "test_id": "P002-T2",
+      "figure": "Fig. 3a",
+      "part": "main",
+      "metric": "指定圈容量",
+      "A": "LiTDI", "B": "LiTFSI",
+      "target_point": "C/2 第 300 圈（末圈）",
+      "anchor_quote_ids": ["M0077"],
+      "reason": "Li‖S 循环类测试缺同一测试寿命终点容量；正文只写两者约 300 mAh g−1 且未指明圈数，锚点弱"
+    },
+    {
+      "test_id": "P002-T3",
+      "figure": "Fig. 3a",
+      "part": "main",
+      "metric": "首圈容量",
+      "A": "LiTDI+add", "B": "LiTFSI+add",
+      "target_point": "化成后 C/2 第 1 圈（第 6 圈）",
+      "anchor_quote_ids": ["M0081", "M0090"],
+      "reason": "Li‖S 循环类测试缺化成后 C/2 首圈容量（正文 initial capacity 未说明是否化成圈）；锚点 1110/1140（initial）与 LiTDI+add 稳定值 570"
+    },
+    {
+      "test_id": "P002-T3",
+      "figure": "Fig. 3a",
+      "part": "main",
+      "metric": "指定圈容量",
+      "A": "LiTDI+add", "B": "LiTFSI+add",
+      "target_point": "C/2 第 300 圈（末圈）",
+      "anchor_quote_ids": ["M0090"],
+      "reason": "Li‖S 循环类测试缺 LiTFSI+add 寿命终点容量（正文只说 150 圈后快速衰减）；锚点 LiTDI+add 570 mAh g−1"
+    }
+  ],
+  "gaps": [
+    "P002-T1 S/E 原文未写：作者称各配方 S/E 分别优化（M0056），图 2a 标注电解液量，A、B 是否同一 S/E 不明",
+    "P002-T1 LiTDI 有 50 与 70 g S L−1 两种 S/E（M0068），70 时 CE 更高、衰减更慢；保持率比较用的是哪一个未写",
+    "P002-T1 保持率只写 '25% higher'，未给绝对值，口径不明",
+    "P002-T1 化成协议、具体温度未报告",
+    "P002-T2、P002-T3 E/S 未报告（实验部分只写 S/E 范围 15–100 g L−1）",
+    "P002-T2 未报告库仑效率、保持率/寿命、过电位（仅图 3 有曲线；作者只说两者极化大）",
+    "P002-T3 首圈容量 initial capacity 未写是 C/10 化成圈还是 C/2 首圈",
+    "P002-T3 过电位未报告",
+    "Li2S8 添加剂用量前后不一：正文 40 × 10–3 M（约为正极硫 1%，M0080）/ 0.04 M（Fig. 3 图注），Fig. 4 图注与结论写 0.1% Li2S8（M0098、M0108）",
+    "LiTDI+add 300 圈后面容量 1.67 mAh cm−2（M0093），LiTFSI+add 无对应数值",
+    "离子电导率 10.8 vs 6.2 mS cm−1，作者仍称 comparable（M0016）",
+    "SI Fig. S2 各配方不同 S/E 下的保持率只在图上，非配方间比较，未登记读图",
+    "SI Fig. S1 Li⁺/阴离子/溶剂扩散系数只在图上，未读",
+    "两档 1C 定义只在 Fig. 2 图注（1675 mA g−1），Fig. 3 测试推定同用",
+    "未报告穿梭电流、自放电、阻抗数值"
+  ],
+  "source_review": {
+    "main": true,
+    "si": true,
+    "notes": "通读正文与 SI（SI 仅含 Fig. S1–S3 与 Table S1，无单独实验部分）；参考文献列表略读；未读任何既有提取结果。原文引文编号排在下一行行首，来源判定按此归属。"
+  }
+}

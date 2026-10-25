@@ -1,0 +1,828 @@
+{
+  "paper_id": "P109",
+  "doi": "10.1016/j.electacta.2018.11.019",
+  "formulations": [
+    {
+      "id": "L01",
+      "name": "0.1 M LiClO4/SL",
+      "components": [
+        {
+          "name": "LiClO4",
+          "role": "盐",
+          "amount": 0.1,
+          "unit": "mol L-1"
+        },
+        {
+          "name": "sulfolane",
+          "role": "溶剂",
+          "amount": null,
+          "unit": null
+        }
+      ],
+      "raw_formula": "0.1 M LiClO4/SL",
+      "evidence_ids": [
+        "M0054",
+        "M0059"
+      ]
+    },
+    {
+      "id": "L05",
+      "name": "0.5 M LiClO4/SL",
+      "components": [
+        {
+          "name": "LiClO4",
+          "role": "盐",
+          "amount": 0.5,
+          "unit": "mol L-1"
+        },
+        {
+          "name": "sulfolane",
+          "role": "溶剂",
+          "amount": null,
+          "unit": null
+        }
+      ],
+      "raw_formula": "0.5 M LiClO4/SL",
+      "evidence_ids": [
+        "M0054",
+        "M0059"
+      ]
+    },
+    {
+      "id": "L1",
+      "name": "1.0 M LiClO4/SL",
+      "components": [
+        {
+          "name": "LiClO4",
+          "role": "盐",
+          "amount": 1.0,
+          "unit": "mol L-1"
+        },
+        {
+          "name": "sulfolane",
+          "role": "溶剂",
+          "amount": null,
+          "unit": null
+        }
+      ],
+      "raw_formula": "1.0 M LiClO4/SL",
+      "evidence_ids": [
+        "M0054",
+        "M0059"
+      ]
+    },
+    {
+      "id": "L15",
+      "name": "1.5 M LiClO4/SL",
+      "components": [
+        {
+          "name": "LiClO4",
+          "role": "盐",
+          "amount": 1.5,
+          "unit": "mol L-1"
+        },
+        {
+          "name": "sulfolane",
+          "role": "溶剂",
+          "amount": null,
+          "unit": null
+        }
+      ],
+      "raw_formula": "1.5 M LiClO4/SL",
+      "evidence_ids": [
+        "M0054",
+        "M0059"
+      ]
+    },
+    {
+      "id": "L2",
+      "name": "2.0 M LiClO4/SL",
+      "components": [
+        {
+          "name": "LiClO4",
+          "role": "盐",
+          "amount": 2.0,
+          "unit": "mol L-1"
+        },
+        {
+          "name": "sulfolane",
+          "role": "溶剂",
+          "amount": null,
+          "unit": null
+        }
+      ],
+      "raw_formula": "2.0 M LiClO4/SL",
+      "evidence_ids": [
+        "M0054",
+        "M0059"
+      ]
+    },
+    {
+      "id": "L24",
+      "name": "2.4 M LiClO4/SL",
+      "components": [
+        {
+          "name": "LiClO4",
+          "role": "盐",
+          "amount": 2.4,
+          "unit": "mol L-1"
+        },
+        {
+          "name": "sulfolane",
+          "role": "溶剂",
+          "amount": null,
+          "unit": null
+        }
+      ],
+      "raw_formula": "2.4 M LiClO4/SL",
+      "evidence_ids": [
+        "M0054",
+        "M0059"
+      ]
+    },
+    {
+      "id": "L28",
+      "name": "2.8 M LiClO4/SL",
+      "components": [
+        {
+          "name": "LiClO4",
+          "role": "盐",
+          "amount": 2.8,
+          "unit": "mol L-1"
+        },
+        {
+          "name": "sulfolane",
+          "role": "溶剂",
+          "amount": null,
+          "unit": null
+        }
+      ],
+      "raw_formula": "2.8 M LiClO4/SL",
+      "evidence_ids": [
+        "M0054",
+        "M0059"
+      ]
+    }
+  ],
+  "control_id": "L1",
+  "control_type": "梯度中间浓度1.0 M",
+  "gradients": [
+    {
+      "name": "LiClO4浓度",
+      "order": [
+        "L01",
+        "L05",
+        "L1",
+        "L15",
+        "L2",
+        "L24",
+        "L28"
+      ],
+      "values": [
+        0.1,
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.4,
+        2.8
+      ],
+      "solvation_axis": "盐浓度升高、自由溶剂减少；不等同直接测定溶剂化强度",
+      "evidence_ids": [
+        "M0059",
+        "M0287"
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "name": "黏度",
+      "values": {
+        "L01": "低",
+        "L28": "高"
+      },
+      "direction": "随盐浓度指数增大",
+      "method": "黏度测量",
+      "system": "LiClO4/SL",
+      "evidence_ids": [
+        "M0063",
+        "M0264"
+      ]
+    },
+    {
+      "name": "离子电导率",
+      "values": {
+        "L1": "约1 M附近最大"
+      },
+      "direction": "先增后减",
+      "method": "电导测量",
+      "system": "LiClO4/SL",
+      "evidence_ids": [
+        "M0063",
+        "M0198",
+        "M0199",
+        "M0286"
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "id": "P109-T1",
+      "name": "恒流充放电与循环",
+      "cell": "Li||S Swagelok",
+      "conditions": {
+        "sulfur_loading": "约1.2 mg cm-2",
+        "ES": 6.7,
+        "ES_unit": "正文OCR ml mg-1；SI表述μl/mAh，疑为μL mg-1",
+        "Li_thickness": "120 mm（OCR原文，单位待原PDF核实）",
+        "rate": "0.15 C / 250 mA gS-1 / 0.3 mA cm-2",
+        "formation": "未报告",
+        "temperature": "30 °C",
+        "LiNO3": "无",
+        "one_C": "未直接定义",
+        "voltage": "1.5–2.8 V"
+      },
+      "formulations": [
+        "L01",
+        "L05",
+        "L1",
+        "L15",
+        "L2",
+        "L24",
+        "L28"
+      ],
+      "evidence_ids": [
+        "M0047",
+        "M0048",
+        "M0049",
+        "M0052",
+        "M0060",
+        "M0065",
+        "M0066",
+        "M0134"
+      ],
+      "results": [
+        {
+          "id": "P109-T1-R1",
+          "metric": "首次放电高电压平台容量",
+          "A": "L01",
+          "B": "L1",
+          "value_A": 315,
+          "value_B": 361,
+          "unit": "mAh gS-1",
+          "point": "首圈高电压平台",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0194"
+          ],
+          "reason": "数值方向待程序复算"
+        },
+        {
+          "id": "P109-T1-R2",
+          "metric": "首次放电高电压平台容量",
+          "A": "L05",
+          "B": "L1",
+          "value_A": 340,
+          "value_B": 361,
+          "unit": "mAh gS-1",
+          "point": "首圈高电压平台",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0194"
+          ],
+          "reason": "数值方向待程序复算"
+        },
+        {
+          "id": "P109-T1-R3",
+          "metric": "首次放电高电压平台容量",
+          "A": "L15",
+          "B": "L1",
+          "value_A": 363,
+          "value_B": 361,
+          "unit": "mAh gS-1",
+          "point": "首圈高电压平台",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0194"
+          ],
+          "reason": "数值方向待程序复算"
+        },
+        {
+          "id": "P109-T1-R4",
+          "metric": "首次放电高电压平台容量",
+          "A": "L2",
+          "B": "L1",
+          "value_A": 334,
+          "value_B": 361,
+          "unit": "mAh gS-1",
+          "point": "首圈高电压平台",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0194"
+          ],
+          "reason": "数值方向待程序复算"
+        },
+        {
+          "id": "P109-T1-R5",
+          "metric": "首次放电高电压平台容量",
+          "A": "L24",
+          "B": "L1",
+          "value_A": 336,
+          "value_B": 361,
+          "unit": "mAh gS-1",
+          "point": "首圈高电压平台",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0194"
+          ],
+          "reason": "数值方向待程序复算"
+        },
+        {
+          "id": "P109-T1-R6",
+          "metric": "首次放电高电压平台容量",
+          "A": "L28",
+          "B": "L1",
+          "value_A": 282,
+          "value_B": 361,
+          "unit": "mAh gS-1",
+          "point": "首圈高电压平台",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0194"
+          ],
+          "reason": "数值方向待程序复算"
+        },
+        {
+          "id": "P109-T1-R7",
+          "metric": "总放电容量",
+          "A": "L1",
+          "B": "浓度梯度其他配方",
+          "value_A": "最大",
+          "value_B": "较低",
+          "unit": null,
+          "point": "浓度扫描",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0281",
+            "M0282",
+            "M0283",
+            "M0285"
+          ],
+          "reason": "原文结论仅定性；总容量不是表1高平台容量"
+        },
+        {
+          "id": "P109-T1-R8",
+          "metric": "循环容量变化",
+          "A": "L24",
+          "B": "浓度梯度其他配方",
+          "value_A": "最小",
+          "value_B": "较大",
+          "unit": null,
+          "point": "循环过程",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0093",
+            "M0290"
+          ],
+          "reason": "最小变化来自原文；无对应保持率数字"
+        },
+        {
+          "id": "P109-T1-R9",
+          "metric": "初始低电压放电平台",
+          "A": "L28",
+          "B": "其余浓度",
+          "value_A": "不存在，循环后出现",
+          "value_B": "初始两平台",
+          "unit": null,
+          "point": "首圈与后续",
+          "basis": "qualitative",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0080",
+            "M0081",
+            "M0082"
+          ],
+          "reason": "激活过程，不能合并首圈与后续点"
+        },
+        {
+          "id": "P109-T1-R10",
+          "metric": "库仑效率",
+          "A": "L28",
+          "B": "低浓度",
+          "value_A": ">100%",
+          "value_B": "较低",
+          "unit": "%",
+          "point": "初始循环",
+          "basis": "qualitative",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0270",
+            "M0271",
+            "M0272",
+            "M0273",
+            "M0274"
+          ],
+          "reason": ">100%源于活化增加放电容量，不能据此判性能更好"
+        }
+      ]
+    },
+    {
+      "id": "P109-T2",
+      "name": "第二循环内阻随放电深度",
+      "cell": "Li||S Swagelok",
+      "conditions": {
+        "sulfur_loading": "约1.2 mg cm-2",
+        "ES": 6.7,
+        "ES_unit": "正文OCR ml mg-1；SI表述μl/mAh，疑为μL mg-1",
+        "Li_thickness": "120 mm（OCR原文，单位待原PDF核实）",
+        "rate": "0.15 C / 250 mA gS-1 / 0.3 mA cm-2",
+        "formation": "未报告",
+        "temperature": "30 °C",
+        "LiNO3": "无",
+        "one_C": "未直接定义",
+        "voltage": "1.5–2.8 V"
+      },
+      "formulations": [
+        "L01",
+        "L05",
+        "L1",
+        "L15",
+        "L2",
+        "L24",
+        "L28"
+      ],
+      "evidence_ids": [
+        "M0072",
+        "M0246",
+        "M0247",
+        "M0248",
+        "M0252"
+      ],
+      "results": [
+        {
+          "id": "P109-T2-R1",
+          "metric": "直流内阻",
+          "A": "≤2 M梯度",
+          "B": "≤2 M梯度",
+          "value_A": "几乎无浓度依赖",
+          "value_B": "几乎无浓度依赖",
+          "unit": null,
+          "point": "第二圈DOD0.10高平台",
+          "basis": "qualitative",
+          "direction_text": "差异小",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0246",
+            "M0247",
+            "M0248"
+          ],
+          "reason": "原文定性；该内阻同时含欧姆及电荷转移贡献"
+        },
+        {
+          "id": "P109-T2-R2",
+          "metric": "直流内阻",
+          "A": "较高浓度",
+          "B": "较低浓度",
+          "value_A": "低平台先降低、>1.5 M后升高",
+          "value_B": "比较基准",
+          "unit": null,
+          "point": "第二圈DOD0.75低平台",
+          "basis": "qualitative",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0247",
+            "M0252"
+          ],
+          "reason": "非单调，不强制定向"
+        }
+      ]
+    },
+    {
+      "id": "P109-T3",
+      "name": "第三循环穿梭电流",
+      "cell": "Li||S Swagelok",
+      "conditions": {
+        "sulfur_loading": "约1.2 mg cm-2",
+        "ES": 6.7,
+        "ES_unit": "正文OCR ml mg-1；SI表述μl/mAh，疑为μL mg-1",
+        "Li_thickness": "120 mm（OCR原文，单位待原PDF核实）",
+        "rate": "0.15 C / 250 mA gS-1 / 0.3 mA cm-2",
+        "formation": "未报告",
+        "temperature": "30 °C",
+        "LiNO3": "无",
+        "one_C": "未直接定义",
+        "voltage": "1.5–2.8 V"
+      },
+      "formulations": [
+        "L01",
+        "L05",
+        "L1",
+        "L15",
+        "L2",
+        "L24",
+        "L28"
+      ],
+      "evidence_ids": [
+        "M0078",
+        "M0136",
+        "M0137",
+        "M0279"
+      ],
+      "results": [
+        {
+          "id": "P109-T3-R1",
+          "metric": "穿梭电流",
+          "A": "高浓度/高黏度",
+          "B": "低浓度/低黏度",
+          "value_A": "降低",
+          "value_B": "较高",
+          "unit": null,
+          "point": "第三圈",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0279"
+          ],
+          "reason": "由充放电容量差和时间计算，非独立恒电位自放电测试"
+        }
+      ]
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "P109-M1",
+      "summary": "自由溶剂分子数限制硫的电化学还原深度。",
+      "A": "高盐",
+      "B": "低盐",
+      "property": "自由溶剂",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0287"
+      ],
+      "test_ids": [
+        "P109-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P109-M2",
+      "summary": "作者认为盐浓度改变多硫化锂物种、缔合解离和Li离子溶剂化，进而决定电池表现。",
+      "A": "高盐",
+      "B": "低盐",
+      "property": "物种与溶剂化",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文推测",
+      "evidence_ids": [
+        "M0293"
+      ],
+      "test_ids": [
+        "P109-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P109-M3",
+      "summary": "作者认为比起传质，电荷转移速率对表现更重要。",
+      "A": "高盐",
+      "B": "低盐",
+      "property": "电荷转移",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文推测",
+      "evidence_ids": [
+        "M0201"
+      ],
+      "test_ids": [
+        "P109-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P109-M4",
+      "summary": "超过最佳浓度后，黏度造成传输恶化，降低硫还原深度。",
+      "A": "高盐",
+      "B": "低盐",
+      "property": "黏度/传质",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0221"
+      ],
+      "test_ids": [
+        "P109-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P109-M5",
+      "summary": "超过2 M时，自由溶剂不足进一步降低还原深度。",
+      "A": "高盐",
+      "B": "低盐",
+      "property": "自由溶剂不足",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0222"
+      ],
+      "test_ids": [
+        "P109-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P109-M6",
+      "summary": "高浓度下高阶多硫化物活性降低，低阶活性先提高、超过1.5 M后降低。",
+      "A": "高盐",
+      "B": "低盐",
+      "property": "多硫化物反应性",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0288"
+      ],
+      "test_ids": [
+        "P109-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P109-M7",
+      "summary": "若碳钝化假说成立，高盐更慢容量衰减可能源于硫和Li2S结晶受阻。",
+      "A": "高盐",
+      "B": "低盐",
+      "property": "沉积结晶",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文推测",
+      "evidence_ids": [
+        "M0259"
+      ],
+      "test_ids": [
+        "P109-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P109-M8",
+      "summary": "高浓度库仑效率提高很可能源于黏度升高使硫在电极间传输变慢。",
+      "A": "高盐",
+      "B": "低盐",
+      "property": "黏度/跨电极传输",
+      "categories": [
+        "多硫化物穿梭"
+      ],
+      "source_type": "本文推测",
+      "evidence_ids": [
+        "M0278"
+      ],
+      "test_ids": [
+        "P109-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P109-M9",
+      "summary": "2.8 M初始库仑效率超过100%可能因高黏度使硫在最初循环仅部分激活。",
+      "A": "高盐",
+      "B": "低盐",
+      "property": "迟缓活化",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文推测",
+      "evidence_ids": [
+        "M0272",
+        "M0273"
+      ],
+      "test_ids": [
+        "P109-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P109-M10",
+      "summary": "初期库仑效率下降可能来自SEI输运改善或锂分散导致面积增大。",
+      "A": "高盐",
+      "B": "低盐",
+      "property": "SEI/锂面积",
+      "categories": [
+        "负极锂"
+      ],
+      "source_type": "本文推测",
+      "evidence_ids": [
+        "M0275"
+      ],
+      "test_ids": [
+        "P109-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P109-M11",
+      "summary": "后期负极表面电解液分解以及碳被不溶产物钝化造成容量下降。",
+      "A": "高盐",
+      "B": "低盐",
+      "property": "分解/钝化",
+      "categories": [
+        "负极锂",
+        "电解液消耗",
+        "正极反应"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0105"
+      ],
+      "test_ids": [
+        "P109-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P109-M12",
+      "summary": "有限电解液量使电池在一定循环后容量降至零。",
+      "A": "高盐",
+      "B": "低盐",
+      "property": "电解液量",
+      "categories": [
+        "电解液消耗"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0106"
+      ],
+      "test_ids": [
+        "P109-T1"
+      ],
+      "side": "其他"
+    }
+  ],
+  "design_claims": [],
+  "figure_requests": [
+    {
+      "test_id": "P109-T1",
+      "figure": "Fig.4",
+      "part": "main",
+      "metric": "放电容量",
+      "A": [
+        "L01",
+        "L05",
+        "L1",
+        "L15",
+        "L2",
+        "L24",
+        "L28"
+      ],
+      "B": null,
+      "target_point": "相同循环点；2.8 M约第40圈达最大",
+      "anchor_quote_ids": [
+        "M0094",
+        "M0134"
+      ],
+      "reason": "循环图原文没有容量数值，40圈为横轴锚点；须满足读图数值锚点规则才可入表"
+    }
+  ],
+  "gaps": [
+    "原文OCR将锂厚度、隔膜厚度及电解液体积微单位识别为mm/ml，需PDF核实；未默改厚度。",
+    "没有锂半电池独立实验。",
+    "Fig.2总容量、Fig.4循环容量没有可抄录数值；表1仅高电压平台容量。",
+    "机理以作者假说为主，不能视为直接测得溶剂化数；SI仅理论计算公式。"
+  ],
+  "source_review": {
+    "main": true,
+    "si": true,
+    "notes": "正文与可得SI按原始索引复核；参考文献不作为本文实验。数值仅原文，图不目测。"
+  }
+}
