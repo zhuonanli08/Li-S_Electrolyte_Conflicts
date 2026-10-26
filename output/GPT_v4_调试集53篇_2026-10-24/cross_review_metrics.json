@@ -1,7 +1,7 @@
 {
   "as_of": "2026-10-25",
   "scope": "冻结文本预测；AI交叉核对参考下的暂定调试指标；读图补充另存，不是独立测试成绩",
-  "reviewed_papers": 3,
+  "reviewed_papers": 4,
   "expected_papers": 53,
   "unreviewed_papers": [
     "P014",
@@ -11,7 +11,6 @@
     "P149",
     "P163",
     "P211",
-    "P212",
     "P248",
     "P271",
     "P296",
@@ -60,8 +59,8 @@
   "review_errors": [],
   "unresolved_units": [],
   "skipped_by_reason": {
-    "SKIP_NONSCORING": 9,
-    "SKIP_ABSTENTION": 6
+    "SKIP_NONSCORING": 21,
+    "SKIP_ABSTENTION": 20
   },
   "paper_counts": {
     "P001": {
@@ -110,39 +109,57 @@
         "TP": 5,
         "FN": 6
       }
+    },
+    "P212": {
+      "测试及条件": {
+        "FP": 3,
+        "TP": 1,
+        "SKIP_NONSCORING": 3,
+        "FN": 6
+      },
+      "方向": {
+        "SKIP_ABSTENTION": 14,
+        "FP": 3,
+        "SKIP_NONSCORING": 9
+      },
+      "机制": {
+        "FP": 3,
+        "TP": 1,
+        "FN": 3
+      }
     }
   },
   "metrics_for_reviewed_papers": {
     "status": "已计算（仅对已裁定范围）",
     "categories": {
       "测试及条件": {
-        "TP": 11,
-        "FP": 0,
-        "FN": 0,
-        "precision": 1.0,
-        "recall": 1.0
+        "TP": 12,
+        "FP": 3,
+        "FN": 6,
+        "precision": 0.8,
+        "recall": 0.6666666666666666
       },
       "方向": {
         "TP": 8,
-        "FP": 0,
+        "FP": 3,
         "FN": 3,
-        "precision": 1.0,
+        "precision": 0.7272727272727273,
         "recall": 0.7272727272727273
       },
       "机制": {
-        "TP": 16,
-        "FP": 11,
-        "FN": 16,
-        "precision": 0.5925925925925926,
-        "recall": 0.5
+        "TP": 17,
+        "FP": 14,
+        "FN": 19,
+        "precision": 0.5483870967741935,
+        "recall": 0.4722222222222222
       }
     },
     "micro": {
-      "TP": 35,
-      "FP": 11,
-      "FN": 19,
-      "precision": 0.7608695652173914,
-      "recall": 0.6481481481481481
+      "TP": 37,
+      "FP": 20,
+      "FN": 28,
+      "precision": 0.6491228070175439,
+      "recall": 0.5692307692307692
     }
   }
 }

@@ -1,0 +1,959 @@
+{
+  "paper_id": "P271",
+  "doi": "10.1021/acs.jpcc.1c10197",
+  "formulations": [
+    {
+      "id": "STD",
+      "name": "STD",
+      "components": [
+        {
+          "name": "LiTFSI",
+          "role": "盐",
+          "amount": 1,
+          "unit": "mol kg-1"
+        },
+        {
+          "name": "LiNO3",
+          "role": "添加剂",
+          "amount": 0.25,
+          "unit": "mol kg-1"
+        },
+        {
+          "name": "DME",
+          "role": "溶剂",
+          "amount": 1,
+          "unit": "体积比"
+        },
+        {
+          "name": "DOL",
+          "role": "溶剂",
+          "amount": 1,
+          "unit": "体积比"
+        }
+      ],
+      "raw_formula": "STD",
+      "evidence_ids": [
+        "M0056"
+      ]
+    },
+    {
+      "id": "BR",
+      "name": "BR",
+      "components": [
+        {
+          "name": "LiTFSI",
+          "role": "盐",
+          "amount": 0.5,
+          "unit": "mol kg-1"
+        },
+        {
+          "name": "LiNO3",
+          "role": "添加剂",
+          "amount": 0.25,
+          "unit": "mol kg-1"
+        },
+        {
+          "name": "DME",
+          "role": "溶剂",
+          "amount": 1,
+          "unit": "体积比"
+        },
+        {
+          "name": "DOL",
+          "role": "溶剂",
+          "amount": 1,
+          "unit": "体积比"
+        },
+        {
+          "name": "LiBr",
+          "role": "盐",
+          "amount": 0.5,
+          "unit": "mol kg-1"
+        }
+      ],
+      "raw_formula": "BR",
+      "evidence_ids": [
+        "M0056"
+      ]
+    }
+  ],
+  "control_id": "STD",
+  "control_type": "标准LiTFSI配方",
+  "gradients": [
+    {
+      "name": "Br替代",
+      "order": [
+        "STD",
+        "BR"
+      ],
+      "values": [
+        0,
+        50
+      ],
+      "solvation_axis": "较高阴离子DN；非直接Li+溶剂化强度测量",
+      "evidence_ids": [
+        "M0029",
+        "M0167",
+        "M0168"
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "name": "Li2S沉淀与晶粒",
+      "values": {
+        "BR": "沉淀更快、晶粒更小",
+        "STD": "较慢、较大"
+      },
+      "direction": "Br提高沉淀速度却不提高KB限域正极利用率",
+      "method": "operando XRD",
+      "system": "3.3 mgS cm-2、E/S6、C/10第二圈",
+      "evidence_ids": [
+        "M0177",
+        "M0180",
+        "M0181"
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "id": "P271-T1",
+      "name": "盐配方对比第二圈",
+      "cell": "operando Li||S/KB",
+      "conditions": {
+        "sulfur_loading": "3.3 mgS cm-2",
+        "ES": 6,
+        "ES_unit": "μL mgS-1",
+        "Li_thickness": "125 μm",
+        "rate": "C/10",
+        "formation": "静置6 h；首放C/50至1.9 V、首充C/25至2.6 V",
+        "temperature": "未报告",
+        "LiNO3": ".25 m",
+        "one_C": "1672 mA gS-1",
+        "voltage": "1.8–2.6 V"
+      },
+      "formulations": [
+        "BR",
+        "STD"
+      ],
+      "evidence_ids": [
+        "M0034",
+        "M0056",
+        "M0064",
+        "M0065",
+        "M0112",
+        "M0175",
+        "M0176"
+      ],
+      "results": [
+        {
+          "id": "P271-T1-R1",
+          "metric": "低平台放电容量",
+          "A": "BR",
+          "B": "STD",
+          "value_A": 515,
+          "value_B": 724,
+          "unit": "mAh gS-1",
+          "point": "第二圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0112"
+          ],
+          "reason": "数值方向待程序复算"
+        },
+        {
+          "id": "P271-T1-R2",
+          "metric": "Li2S 111 FWHM",
+          "A": "BR",
+          "B": "STD",
+          "value_A": "1.31(2)",
+          "value_B": "1.22(1)",
+          "unit": "deg",
+          "point": "第二圈放电倒数第二次测量",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0112"
+          ],
+          "reason": "表括号为末位标准差；不是电池优劣指标"
+        },
+        {
+          "id": "P271-T1-R3",
+          "metric": "归一化Li2S强度",
+          "A": "BR",
+          "B": "STD",
+          "value_A": "15.4(3)",
+          "value_B": "14.8(3)",
+          "unit": "a.u.",
+          "point": "第二圈放电倒数第二次测量",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0112"
+          ],
+          "reason": "结构指标，非容量"
+        },
+        {
+          "id": "P271-T1-R4",
+          "metric": "I/低平台总容量",
+          "A": "BR",
+          "B": "STD",
+          "value_A": 6.7,
+          "value_B": 4.6,
+          "unit": "mAh-1",
+          "point": "第二圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0112"
+          ],
+          "reason": "沉淀指标，非越大越好"
+        },
+        {
+          "id": "P271-T1-R5",
+          "metric": "过电位",
+          "A": "BR",
+          "B": "STD",
+          "value_A": "增大",
+          "value_B": "较小",
+          "unit": null,
+          "point": "放电",
+          "basis": "qualitative",
+          "direction_text": "变坏",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0198"
+          ],
+          "reason": "数值方向待程序复算"
+        }
+      ]
+    },
+    {
+      "id": "P271-T2",
+      "name": "STD载量2.5/ES6/C/10第5圈",
+      "cell": "operando Li||S/KB",
+      "conditions": {
+        "sulfur_loading": "2.5 mgS cm-2",
+        "ES": 6,
+        "ES_unit": "μL mgS-1",
+        "Li_thickness": "125 μm",
+        "rate": "C/10",
+        "formation": "静置6 h；首放C/50至1.9 V、首充C/25至2.6 V",
+        "temperature": "未报告",
+        "LiNO3": ".25 m",
+        "one_C": "1672 mA gS-1",
+        "voltage": "1.8–2.6 V"
+      },
+      "formulations": [
+        "STD"
+      ],
+      "evidence_ids": [
+        "M0053",
+        "M0064",
+        "M0065",
+        "M0068",
+        "M0069",
+        "M0112"
+      ],
+      "results": [
+        {
+          "id": "P271-T2-R1",
+          "metric": "低平台放电容量",
+          "A": "STD",
+          "B": null,
+          "value_A": 725,
+          "value_B": null,
+          "unit": "mAh gS-1",
+          "point": "第5圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0112"
+          ],
+          "reason": "不同条件独立记录，不作配方比较"
+        }
+      ]
+    },
+    {
+      "id": "P271-T3",
+      "name": "STD载量2.5/ES6/C/5第10圈",
+      "cell": "operando Li||S/KB",
+      "conditions": {
+        "sulfur_loading": "2.5 mgS cm-2",
+        "ES": 6,
+        "ES_unit": "μL mgS-1",
+        "Li_thickness": "125 μm",
+        "rate": "C/5",
+        "formation": "静置6 h；首放C/50至1.9 V、首充C/25至2.6 V",
+        "temperature": "未报告",
+        "LiNO3": ".25 m",
+        "one_C": "1672 mA gS-1",
+        "voltage": "1.8–2.6 V"
+      },
+      "formulations": [
+        "STD"
+      ],
+      "evidence_ids": [
+        "M0053",
+        "M0064",
+        "M0065",
+        "M0068",
+        "M0069",
+        "M0112"
+      ],
+      "results": [
+        {
+          "id": "P271-T3-R1",
+          "metric": "低平台放电容量",
+          "A": "STD",
+          "B": null,
+          "value_A": 613,
+          "value_B": null,
+          "unit": "mAh gS-1",
+          "point": "第10圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0112"
+          ],
+          "reason": "不同条件独立记录，不作配方比较"
+        }
+      ]
+    },
+    {
+      "id": "P271-T4",
+      "name": "STD载量2.5/ES6/C/2第13圈",
+      "cell": "operando Li||S/KB",
+      "conditions": {
+        "sulfur_loading": "2.5 mgS cm-2",
+        "ES": 6,
+        "ES_unit": "μL mgS-1",
+        "Li_thickness": "125 μm",
+        "rate": "C/2",
+        "formation": "静置6 h；首放C/50至1.9 V、首充C/25至2.6 V",
+        "temperature": "未报告",
+        "LiNO3": ".25 m",
+        "one_C": "1672 mA gS-1",
+        "voltage": "1.8–2.6 V"
+      },
+      "formulations": [
+        "STD"
+      ],
+      "evidence_ids": [
+        "M0053",
+        "M0064",
+        "M0065",
+        "M0068",
+        "M0069",
+        "M0112"
+      ],
+      "results": [
+        {
+          "id": "P271-T4-R1",
+          "metric": "低平台放电容量",
+          "A": "STD",
+          "B": null,
+          "value_A": 0,
+          "value_B": null,
+          "unit": "mAh gS-1",
+          "point": "第13圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0112"
+          ],
+          "reason": "不同条件独立记录，不作配方比较"
+        }
+      ]
+    },
+    {
+      "id": "P271-T5",
+      "name": "STD载量2.5/ES6/C/20第18圈",
+      "cell": "operando Li||S/KB",
+      "conditions": {
+        "sulfur_loading": "2.5 mgS cm-2",
+        "ES": 6,
+        "ES_unit": "μL mgS-1",
+        "Li_thickness": "125 μm",
+        "rate": "C/20",
+        "formation": "静置6 h；首放C/50至1.9 V、首充C/25至2.6 V",
+        "temperature": "未报告",
+        "LiNO3": ".25 m",
+        "one_C": "1672 mA gS-1",
+        "voltage": "1.8–2.6 V"
+      },
+      "formulations": [
+        "STD"
+      ],
+      "evidence_ids": [
+        "M0053",
+        "M0064",
+        "M0065",
+        "M0068",
+        "M0069",
+        "M0112"
+      ],
+      "results": [
+        {
+          "id": "P271-T5-R1",
+          "metric": "低平台放电容量",
+          "A": "STD",
+          "B": null,
+          "value_A": 761,
+          "value_B": null,
+          "unit": "mAh gS-1",
+          "point": "第18圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0112"
+          ],
+          "reason": "不同条件独立记录，不作配方比较"
+        }
+      ]
+    },
+    {
+      "id": "P271-T6",
+      "name": "STD载量2.5/ES10/C/10第5圈",
+      "cell": "operando Li||S/KB",
+      "conditions": {
+        "sulfur_loading": "2.5 mgS cm-2",
+        "ES": 10,
+        "ES_unit": "μL mgS-1",
+        "Li_thickness": "125 μm",
+        "rate": "C/10",
+        "formation": "静置6 h；首放C/50至1.9 V、首充C/25至2.6 V",
+        "temperature": "未报告",
+        "LiNO3": ".25 m",
+        "one_C": "1672 mA gS-1",
+        "voltage": "1.8–2.6 V"
+      },
+      "formulations": [
+        "STD"
+      ],
+      "evidence_ids": [
+        "M0053",
+        "M0064",
+        "M0065",
+        "M0068",
+        "M0069",
+        "M0112"
+      ],
+      "results": [
+        {
+          "id": "P271-T6-R1",
+          "metric": "低平台放电容量",
+          "A": "STD",
+          "B": null,
+          "value_A": 627,
+          "value_B": null,
+          "unit": "mAh gS-1",
+          "point": "第5圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0112"
+          ],
+          "reason": "不同条件独立记录，不作配方比较"
+        }
+      ]
+    },
+    {
+      "id": "P271-T7",
+      "name": "STD载量3.3/ES6/C/10第5圈",
+      "cell": "operando Li||S/KB",
+      "conditions": {
+        "sulfur_loading": "3.3 mgS cm-2",
+        "ES": 6,
+        "ES_unit": "μL mgS-1",
+        "Li_thickness": "125 μm",
+        "rate": "C/10",
+        "formation": "静置6 h；首放C/50至1.9 V、首充C/25至2.6 V",
+        "temperature": "未报告",
+        "LiNO3": ".25 m",
+        "one_C": "1672 mA gS-1",
+        "voltage": "1.8–2.6 V"
+      },
+      "formulations": [
+        "STD"
+      ],
+      "evidence_ids": [
+        "M0053",
+        "M0064",
+        "M0065",
+        "M0068",
+        "M0069",
+        "M0112"
+      ],
+      "results": [
+        {
+          "id": "P271-T7-R1",
+          "metric": "低平台放电容量",
+          "A": "STD",
+          "B": null,
+          "value_A": 710,
+          "value_B": null,
+          "unit": "mAh gS-1",
+          "point": "第5圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0112"
+          ],
+          "reason": "不同条件独立记录，不作配方比较"
+        }
+      ]
+    },
+    {
+      "id": "P271-T8",
+      "name": "STD载量3.4/ES10/C/10第5圈",
+      "cell": "operando Li||S/KB",
+      "conditions": {
+        "sulfur_loading": "3.4 mgS cm-2",
+        "ES": 10,
+        "ES_unit": "μL mgS-1",
+        "Li_thickness": "125 μm",
+        "rate": "C/10",
+        "formation": "静置6 h；首放C/50至1.9 V、首充C/25至2.6 V",
+        "temperature": "未报告",
+        "LiNO3": ".25 m",
+        "one_C": "1672 mA gS-1",
+        "voltage": "1.8–2.6 V"
+      },
+      "formulations": [
+        "STD"
+      ],
+      "evidence_ids": [
+        "M0053",
+        "M0064",
+        "M0065",
+        "M0068",
+        "M0069",
+        "M0112"
+      ],
+      "results": [
+        {
+          "id": "P271-T8-R1",
+          "metric": "低平台放电容量",
+          "A": "STD",
+          "B": null,
+          "value_A": 529,
+          "value_B": null,
+          "unit": "mAh gS-1",
+          "point": "第5圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0112"
+          ],
+          "reason": "不同条件独立记录，不作配方比较"
+        }
+      ]
+    },
+    {
+      "id": "P271-T9",
+      "name": "BR载量3.3/ES6/C/20第11圈",
+      "cell": "operando Li||S/KB",
+      "conditions": {
+        "sulfur_loading": "3.3 mgS cm-2",
+        "ES": 6,
+        "ES_unit": "μL mgS-1",
+        "Li_thickness": "125 μm",
+        "rate": "C/20",
+        "formation": "静置6 h；首放C/50至1.9 V、首充C/25至2.6 V",
+        "temperature": "未报告",
+        "LiNO3": ".25 m",
+        "one_C": "1672 mA gS-1",
+        "voltage": "1.8–2.6 V"
+      },
+      "formulations": [
+        "BR"
+      ],
+      "evidence_ids": [
+        "M0053",
+        "M0064",
+        "M0065",
+        "M0068",
+        "M0069",
+        "M0112"
+      ],
+      "results": [
+        {
+          "id": "P271-T9-R1",
+          "metric": "低平台放电容量",
+          "A": "BR",
+          "B": null,
+          "value_A": 613,
+          "value_B": null,
+          "unit": "mAh gS-1",
+          "point": "第11圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0112"
+          ],
+          "reason": "不同条件独立记录，不作配方比较"
+        }
+      ]
+    },
+    {
+      "id": "P271-T10",
+      "name": "BR载量3.3/ES6/C/13第13圈",
+      "cell": "operando Li||S/KB",
+      "conditions": {
+        "sulfur_loading": "3.3 mgS cm-2",
+        "ES": 6,
+        "ES_unit": "μL mgS-1",
+        "Li_thickness": "125 μm",
+        "rate": "C/13",
+        "formation": "静置6 h；首放C/50至1.9 V、首充C/25至2.6 V",
+        "temperature": "未报告",
+        "LiNO3": ".25 m",
+        "one_C": "1672 mA gS-1",
+        "voltage": "1.8–2.6 V"
+      },
+      "formulations": [
+        "BR"
+      ],
+      "evidence_ids": [
+        "M0053",
+        "M0064",
+        "M0065",
+        "M0068",
+        "M0069",
+        "M0112"
+      ],
+      "results": [
+        {
+          "id": "P271-T10-R1",
+          "metric": "低平台放电容量",
+          "A": "BR",
+          "B": null,
+          "value_A": 470,
+          "value_B": null,
+          "unit": "mAh gS-1",
+          "point": "第13圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0112"
+          ],
+          "reason": "不同条件独立记录，不作配方比较"
+        }
+      ]
+    },
+    {
+      "id": "P271-T11",
+      "name": "常规扣式与operando验证",
+      "cell": "普通扣式vs开窗operando",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "125 μm",
+        "rate": "未报告",
+        "formation": "静置6 h；首放C/50至1.9 V、首充C/25至2.6 V",
+        "temperature": "未报告",
+        "LiNO3": ".25 m",
+        "one_C": "1672 mA gS-1",
+        "voltage": "1.8–2.6 V"
+      },
+      "formulations": [
+        "STD",
+        "BR"
+      ],
+      "evidence_ids": [
+        "M0091",
+        "M0092",
+        "M0093",
+        "S0014",
+        "S0015",
+        "S0017"
+      ],
+      "results": [
+        {
+          "id": "P271-T11-R1",
+          "metric": "电压/电阻/容量/效率",
+          "A": "operando",
+          "B": "普通扣式",
+          "value_A": "总体可比",
+          "value_B": "可比",
+          "unit": null,
+          "point": "对应循环",
+          "basis": "qualitative",
+          "direction_text": "不判",
+          "same_conditions": false,
+          "evidence_ids": [
+            "M0092"
+          ],
+          "reason": "电池结构不同，且S-L2.5/ES10容量是例外"
+        },
+        {
+          "id": "P271-T11-R2",
+          "metric": "容量例外",
+          "A": "operando S-L2.5/ES10",
+          "B": "普通扣式",
+          "value_A": "存在明显差异",
+          "value_B": null,
+          "unit": null,
+          "point": "对应循环",
+          "basis": "qualitative",
+          "direction_text": "不判",
+          "same_conditions": false,
+          "evidence_ids": [
+            "M0093"
+          ],
+          "reason": "原文未给方向/值"
+        }
+      ]
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "P271-M1",
+      "summary": "Li2S在低平台起始调节多硫浓度，帮助克服两平台之间的内阻峰。",
+      "A": "BR",
+      "B": "STD",
+      "property": "Li2S沉淀",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0195"
+      ],
+      "test_ids": [
+        "P271-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P271-M2",
+      "summary": "Li2S积累钝化导电碳面并挤占孔内电解液，恶化正极输运。",
+      "A": "BR",
+      "B": "STD",
+      "property": "沉淀/孔占据",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0196"
+      ],
+      "test_ids": [
+        "P271-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P271-M3",
+      "summary": "Br促进溶液介导Li2S生成的优势可能被限域正极内部恶化的离子输运抵消，源于短链多硫高浓度及快速沉淀。",
+      "A": "BR",
+      "B": "STD",
+      "property": "高DN/沉淀",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文推测",
+      "evidence_ids": [
+        "M0192"
+      ],
+      "test_ids": [
+        "P271-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P271-M4",
+      "summary": "Br使后半低平台沉淀更快，氧化态分布更均匀。",
+      "A": "BR",
+      "B": "STD",
+      "property": "物种分布",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0177",
+        "M0178"
+      ],
+      "test_ids": [
+        "P271-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P271-M5",
+      "summary": "Br造成物种改变同时增加碳孔内外离子阻力。",
+      "A": "BR",
+      "B": "STD",
+      "property": "离子输运",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0179"
+      ],
+      "test_ids": [
+        "P271-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P271-M6",
+      "summary": "更多电解液降低多硫浓度和Li2S形成速率，同时降低阻力与比容量。",
+      "A": "BR",
+      "B": "STD",
+      "property": "E/S",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0110"
+      ],
+      "test_ids": [
+        "P271-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P271-M7",
+      "summary": "低多硫浓度时隔膜阴极液中多硫传质慢可能限制末期容量。",
+      "A": "BR",
+      "B": "STD",
+      "property": "多硫传质",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文推测",
+      "evidence_ids": [
+        "M0107"
+      ],
+      "test_ids": [
+        "P271-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P271-M8",
+      "summary": "较厚正极Li浓度梯度使同沉淀速率下输运更快恶化。",
+      "A": "BR",
+      "B": "STD",
+      "property": "厚电极梯度",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文推测",
+      "evidence_ids": [
+        "M0135"
+      ],
+      "test_ids": [
+        "P271-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P271-M9",
+      "summary": "快速Li2S形成可能提高碳钝化程度和内阻。",
+      "A": "BR",
+      "B": "STD",
+      "property": "沉淀钝化",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文推测",
+      "evidence_ids": [
+        "M0162"
+      ],
+      "test_ids": [
+        "P271-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P271-M10",
+      "summary": "Br电池产气可能位于电解液与金属锂界面。",
+      "A": "BR",
+      "B": "STD",
+      "property": "产气",
+      "categories": [
+        "负极锂"
+      ],
+      "source_type": "本文推测",
+      "evidence_ids": [
+        "M0169"
+      ],
+      "test_ids": [
+        "P271-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P271-M11",
+      "summary": "Br电池较高气压可能增加电解液穿过窗口损失。",
+      "A": "BR",
+      "B": "STD",
+      "property": "窗口失液",
+      "categories": [
+        "电解液消耗"
+      ],
+      "source_type": "本文推测",
+      "evidence_ids": [
+        "M0172"
+      ],
+      "test_ids": [
+        "P271-T1"
+      ],
+      "side": "其他"
+    },
+    {
+      "id": "P271-M12",
+      "summary": "气体还可能随循环恶化接触电阻。",
+      "A": "BR",
+      "B": "STD",
+      "property": "气体接触",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文推测",
+      "evidence_ids": [
+        "M0173"
+      ],
+      "test_ids": [
+        "P271-T1"
+      ],
+      "side": "其他"
+    }
+  ],
+  "design_claims": [],
+  "figure_requests": [],
+  "gaps": [
+    "无独立锂半电池。",
+    "表1低平台总容量qd,l以mAh标注但出现2434等明显量级疑点；仅抄明确的比容量，未自行修正。",
+    "Br电池第一尝试因气体破裂，第二次加固；后续倍率可能受产气、失液、接触影响。",
+    "表1 C/13与方法C/13.3不同，保留表中倍率并标记差异。",
+    "普通扣式SI容量/效率仅图无直接数值锚点；未目测。",
+    "E/S和载量非配方变量，独立条件测试记录不作为溶剂化方向。"
+  ],
+  "source_review": {
+    "main": true,
+    "si": true,
+    "notes": "正文与可得SI按原始索引复核；参考文献不作为本文实验。数值仅原文，图不目测。"
+  }
+}
