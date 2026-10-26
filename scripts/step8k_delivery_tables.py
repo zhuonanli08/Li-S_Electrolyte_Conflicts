@@ -105,7 +105,7 @@ def main():
     for path in sorted((OUT/'cross_reviews').glob('*.json')):
         d=read(path)
         for kind in ['reference_errors','suggested_corrections']:
-            for r in d.get(kind,[]):tables['checks'].append([d['paper_id'],r.get('unit') or r.get('reference_id'),kind,txt(r)])
+            for r in d.get(kind,[]):tables['checks'].append([d['paper_id'],(r.get('unit') or r.get('reference_id')) if isinstance(r,dict) else '',kind,txt(r)])
     save(OUT/'delivery_tables.json',{'as_of':'2026-10-26','counts':dict(counts),'metrics':metrics,'headers':headers,'tables':tables})
     print(json.dumps({'counts':dict(counts),'sheet_rows':{k:len(v) for k,v in tables.items()}},ensure_ascii=False))
 
