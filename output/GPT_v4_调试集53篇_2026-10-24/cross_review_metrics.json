@@ -1,7 +1,7 @@
 {
-  "as_of": "2026-10-25",
-  "scope": "冻结文本预测；AI交叉核对参考下的暂定调试指标；读图补充另存，不是独立测试成绩",
-  "reviewed_papers": 4,
+  "as_of": "2026-10-26",
+  "scope": "冻结文本预测；按10-25说法口径、AI交叉核对参考下的暂定调试指标；读图补充另存，不是独立测试成绩",
+  "reviewed_papers": 5,
   "expected_papers": 53,
   "unreviewed_papers": [
     "P014",
@@ -30,7 +30,6 @@
     "P591",
     "P620",
     "P624",
-    "S05",
     "S06",
     "S09",
     "S10",
@@ -59,8 +58,9 @@
   "review_errors": [],
   "unresolved_units": [],
   "skipped_by_reason": {
-    "SKIP_NONSCORING": 21,
-    "SKIP_ABSTENTION": 20
+    "SKIP_NONSCORING": 30,
+    "SKIP_ABSTENTION": 22,
+    "SKIP_DUPLICATE": 3
   },
   "paper_counts": {
     "P001": {
@@ -74,9 +74,9 @@
         "FN": 1
       },
       "机制": {
-        "FP": 3,
-        "TP": 6,
-        "FN": 5
+        "TP": 8,
+        "SKIP_DUPLICATE": 1,
+        "FN": 2
       }
     },
     "P002": {
@@ -90,9 +90,9 @@
         "FN": 2
       },
       "机制": {
-        "TP": 5,
-        "FP": 3,
-        "FN": 5
+        "TP": 7,
+        "SKIP_NONSCORING": 1,
+        "FN": 2
       }
     },
     "P041": {
@@ -105,9 +105,9 @@
         "SKIP_ABSTENTION": 1
       },
       "机制": {
-        "FP": 5,
-        "TP": 5,
-        "FN": 6
+        "TP": 8,
+        "SKIP_DUPLICATE": 1,
+        "SKIP_NONSCORING": 1
       }
     },
     "P212": {
@@ -123,9 +123,24 @@
         "SKIP_NONSCORING": 9
       },
       "机制": {
-        "FP": 3,
-        "TP": 1,
-        "FN": 3
+        "TP": 4
+      }
+    },
+    "S05": {
+      "测试及条件": {
+        "TP": 8,
+        "FN": 1
+      },
+      "方向": {
+        "TP": 12,
+        "SKIP_ABSTENTION": 2,
+        "SKIP_NONSCORING": 7,
+        "FN": 2
+      },
+      "机制": {
+        "TP": 6,
+        "SKIP_DUPLICATE": 1,
+        "FP": 1
       }
     }
   },
@@ -133,33 +148,33 @@
     "status": "已计算（仅对已裁定范围）",
     "categories": {
       "测试及条件": {
-        "TP": 12,
+        "TP": 20,
         "FP": 3,
-        "FN": 6,
-        "precision": 0.8,
-        "recall": 0.6666666666666666
+        "FN": 7,
+        "precision": 0.8695652173913043,
+        "recall": 0.7407407407407407
       },
       "方向": {
-        "TP": 8,
+        "TP": 20,
         "FP": 3,
-        "FN": 3,
-        "precision": 0.7272727272727273,
-        "recall": 0.7272727272727273
+        "FN": 5,
+        "precision": 0.8695652173913043,
+        "recall": 0.8
       },
       "机制": {
-        "TP": 17,
-        "FP": 14,
-        "FN": 19,
-        "precision": 0.5483870967741935,
-        "recall": 0.4722222222222222
+        "TP": 33,
+        "FP": 1,
+        "FN": 4,
+        "precision": 0.9705882352941176,
+        "recall": 0.8918918918918919
       }
     },
     "micro": {
-      "TP": 37,
-      "FP": 20,
-      "FN": 28,
-      "precision": 0.6491228070175439,
-      "recall": 0.5692307692307692
+      "TP": 73,
+      "FP": 7,
+      "FN": 16,
+      "precision": 0.9125,
+      "recall": 0.8202247191011236
     }
   }
 }

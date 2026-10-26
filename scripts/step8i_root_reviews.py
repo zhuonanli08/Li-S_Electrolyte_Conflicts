@@ -165,8 +165,39 @@ def review_p212():
                       {'reference_id':'C1/C2首圈容量','reason':'正文给稳态/最大容量，不是首圈；预测已正确指出。','evidence_ids':['M0042','M0044','M0049']},
                       {'reference_id':'备注 A全面占优','reason':'A改为G3后备注未反转，且不同LiNO3不能作同条件总体优劣。','evidence_ids':['M0012','M0081']}])
 
+def apply_oct25_claim_protocol():
+    """Explicit re-adjudication for the user's Oct 25 claim-level scoring rule."""
+    changes={
+      'P001':{'M1':'TP','M6':'TP','M7':'TP','M9':'SKIP_DUPLICATE'},
+      'P002':{'M2':'TP','M3':'TP','M8':'SKIP_NONSCORING'},
+      'P041':{'M1':'TP','M2':'SKIP_DUPLICATE','M3':'TP','M4':'SKIP_NONSCORING','M10':'TP'},
+      'P212':{'M1':'TP','M3':'TP','M4':'TP'}
+    }
+    remove_missing={'P001':{'FN2','FN3','FN4'},'P002':{'FN3','FN4','FN5'},
+                    'P041':{'FN1','FN2','FN3','FN4','FN5','FN6'},'P212':{'FN7','FN8','FN9'}}
+    for pid, edits in changes.items():
+        path=OUT/'cross_reviews'/f'{pid}.json';d=json.loads(path.read_text(encoding='utf-8'))
+        for u in d['units']:
+            key=u['id'].split('-')[-1]
+            if u['category']!='机制' or key not in edits:continue
+            previous=u['reason'];u['verdict']=edits[key]
+            if u['verdict']=='TP':
+                u['reason']='按10-25说法口径：该因果判断原文支持，过程标签问题单列修正，不作错提。'+previous
+            elif key=='M9' and pid=='P001':
+                u['reason']='结论中的阴离子分解使硫酸盐钝化层增厚，与正文M4/M5同一因果说法，保留正文，不重复计。'
+            elif pid=='P041' and key=='M2':
+                u['reason']='TfO例外已在M1完整概括，按说法计分不再重复计。'
+            else:
+                u['reason']='该条只解释溶剂化/溶解度来源，10-25方案归性质而非机制，转入性质修正记录，不进入机制分母。'
+            d['suggested_corrections'].append({'unit':u['id'],'action':previous})
+        d['missing']=[x for x in d['missing'] if x['id'] not in remove_missing[pid]]
+        d['coverage_notes']+=' 2026-10-26按方案10-25新增说法计分规则重新裁定；仅标签/引句差异不罚，性质来源及重复说法不入机制分母。'
+        d['scoring_protocol']='v4-2026-10-25-claim-level'
+        save(path,d)
+
 if __name__=='__main__':
     main()
     review_p041()
     review_p002()
     review_p212()
+    apply_oct25_claim_protocol()

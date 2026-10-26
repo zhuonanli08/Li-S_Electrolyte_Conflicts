@@ -59,7 +59,7 @@ def main():
         paperstats[pid]={c:dict(v) for c,v in stats.items()}
     inp={'independent_prediction':True,'reference_adjudicated':True,'coverage_complete':not unresolved,'categories':cats}
     metrics=score(inp) if paperstats else {'status':'未计算','precision':None,'recall':None}
-    result={'as_of':'2026-10-25','scope':'冻结文本预测；AI交叉核对参考下的暂定调试指标；读图补充另存，不是独立测试成绩',
+    result={'as_of':'2026-10-26','scope':'冻结文本预测；按10-25说法口径、AI交叉核对参考下的暂定调试指标；读图补充另存，不是独立测试成绩',
             'reviewed_papers':len(paperstats),'expected_papers':len(mf),'unreviewed_papers':sorted(known-set(paperstats)),
             'all_53_text_reviews_complete':len(paperstats)==len(mf) and not errors and not unresolved,
             'reference_is_human_gold':False,'review_errors':errors,'unresolved_units':unresolved,

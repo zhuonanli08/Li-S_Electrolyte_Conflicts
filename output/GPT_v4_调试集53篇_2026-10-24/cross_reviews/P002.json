@@ -4,7 +4,7 @@
   "prediction_sha256": "05179671af27ad4689dee60ee40d1fae13962c81277ae8c41911abeee23675f8",
   "all_prediction_units_reviewed": true,
   "reference_and_source_reviewed": true,
-  "coverage_notes": "全文正文M0001-M0141与全部SI已读，旧C试提核对。数值方向按预定代码派生，未以待复算占位文字惩罚；待图Fig2b的S/E语义与Fig3a化成后容量另存，不臆造。",
+  "coverage_notes": "全文正文M0001-M0141与全部SI已读，旧C试提核对。数值方向按预定代码派生，未以待复算占位文字惩罚；待图Fig2b的S/E语义与Fig3a化成后容量另存，不臆造。 2026-10-26按方案10-25新增说法计分规则重新裁定；仅标签/引句差异不罚，性质来源及重复说法不入机制分母。",
   "units": [
     {
       "id": "T/P002-T1",
@@ -203,8 +203,8 @@
     {
       "id": "M/P002-M2",
       "category": "机制",
-      "verdict": "FP",
-      "reason": "减少液量/溶解度抑硫损失的概括正确，但所挂原句未明确穿梭，穿梭类别多标",
+      "verdict": "TP",
+      "reason": "按10-25说法口径：该因果判断原文支持，过程标签问题单列修正，不作错提。减少液量/溶解度抑硫损失的概括正确，但所挂原句未明确穿梭，穿梭类别多标",
       "evidence_ids": [
         "M0069"
       ],
@@ -214,8 +214,8 @@
     {
       "id": "M/P002-M3",
       "category": "机制",
-      "verdict": "FP",
-      "reason": "该句明确更腐蚀及LiNO3消耗，电解液消耗类别正确；并未说负极锂，负极类别属从下一句外推",
+      "verdict": "TP",
+      "reason": "按10-25说法口径：该因果判断原文支持，过程标签问题单列修正，不作错提。该句明确更腐蚀及LiNO3消耗，电解液消耗类别正确；并未说负极锂，负极类别属从下一句外推",
       "evidence_ids": [
         "M0082",
         "M0087"
@@ -270,8 +270,8 @@
     {
       "id": "M/P002-M8",
       "category": "机制",
-      "verdict": "FP",
-      "reason": "TDI配位/二聚体/低溶解度概括正确，但该句未定位正极反应，过程类别多标",
+      "verdict": "SKIP_NONSCORING",
+      "reason": "该条只解释溶剂化/溶解度来源，10-25方案归性质而非机制，转入性质修正记录，不进入机制分母。",
       "evidence_ids": [
         "M0107"
       ],
@@ -299,37 +299,6 @@
       "evidence_ids": [
         "M0098",
         "M0103"
-      ],
-      "reference_ids": []
-    },
-    {
-      "id": "FN3",
-      "category": "机制",
-      "description": "减少电解液量及LiPS溶解度通过减少硫损失降低容量衰减；不额外标穿梭",
-      "reason": "M2纠正后的原句过程范围未被准确覆盖",
-      "evidence_ids": [
-        "M0069"
-      ],
-      "reference_ids": []
-    },
-    {
-      "id": "FN4",
-      "category": "机制",
-      "description": "TFSI高LiPS溶解度使电解液更腐蚀并加快LiNO3消耗；这句仅标电解液消耗",
-      "reason": "M3纠正后的单位；负极失效另有M4，不重复计入本句",
-      "evidence_ids": [
-        "M0082",
-        "M0087"
-      ],
-      "reference_ids": []
-    },
-    {
-      "id": "FN5",
-      "category": "机制",
-      "description": "TDI配位改变歧化形成Li4S8二聚体并降低溶解度；本句不定位正极过程",
-      "reason": "M8类别纠正后的单位",
-      "evidence_ids": [
-        "M0107"
       ],
       "reference_ids": []
     },
@@ -372,5 +341,19 @@
     }
   ],
   "unresolved": [],
-  "suggested_corrections": []
+  "suggested_corrections": [
+    {
+      "unit": "M/P002-M2",
+      "action": "减少液量/溶解度抑硫损失的概括正确，但所挂原句未明确穿梭，穿梭类别多标"
+    },
+    {
+      "unit": "M/P002-M3",
+      "action": "该句明确更腐蚀及LiNO3消耗，电解液消耗类别正确；并未说负极锂，负极类别属从下一句外推"
+    },
+    {
+      "unit": "M/P002-M8",
+      "action": "TDI配位/二聚体/低溶解度概括正确，但该句未定位正极反应，过程类别多标"
+    }
+  ],
+  "scoring_protocol": "v4-2026-10-25-claim-level"
 }
