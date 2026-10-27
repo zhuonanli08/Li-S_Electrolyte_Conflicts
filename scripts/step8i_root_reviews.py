@@ -124,7 +124,80 @@ def review_p002():
     reference_errors=[{'reference_id':'C1薄极三方向','reason':'旧参考未将按配方分别优化S/E落实为同条件限制，不能直接作为数值方向gold。','evidence_ids':['M0056']},
                       {'reference_id':'C2 1110/1140首圈','reason':'数为化成C/10初始，不能冒充后续C/2化成后的首圈。','evidence_ids':['M0076','M0081']}])
 
+def review_p212():
+    rows=[
+      ('T1','测试及条件','FP','G2/G3的LiNO3分别1.5m/2m，不能放入条件全部相同的一个测试并标same_conditions=true',['M0012','M0028','M0029']),
+      ('T2','测试及条件','FP','35°C组同样LiNO3不同，条件已记录却未按规定拆分/限制比较',['M0012','M0028','M0029']),
+      ('T3','测试及条件','TP','仅G2的35°C、1C、20μL/mg及1.6–2.8V长循环准确，载量未误当纯硫量',['M0018','M0029','M0076','M0077','M0078','M0085']),
+      ('T4','测试及条件','FP','两配方LiNO3不相同，CV/EIS比较不应标条件相同；表中各圈电阻数本身抄录正确',['M0012','M0020','M0024','M0035']),
+      ('T5','测试及条件','SKIP_NONSCORING','LiFePO4非锂硫，预测已明确标范围外，仅保留上下文',['M0030']),
+      ('T6','测试及条件','SKIP_NONSCORING','LiFePO4低压首圈活化非锂硫，已标范围外',['M0031','M0065']),
+      ('T7','测试及条件','SKIP_NONSCORING','LiFePO4长循环非锂硫，已标范围外',['M0076']),
+      ('T1/R1','方向','SKIP_ABSTENTION','约800/340为稳态容量，取值圈未知且LiNO3不同；未作最终方向',['M0042','M0012']),
+      ('T1/R2','方向','FP','原数92/88正确，但same_conditions错误会让固定程序给差异小；LiNO3不同应不判',['M0050','M0012']),
+      ('T2/R1','方向','SKIP_ABSTENTION','约1320/890为最大容量、峰值圈未知，且LiNO3不同；未作最终方向',['M0044','M0049','M0012']),
+      ('T2/R2','方向','FP','90/77原数正确但LiNO3条件不同，固定程序按true判变好不成立',['M0050','M0012']),
+      ('T3/R1','方向','SKIP_NONSCORING','单组活化后容量，不是A/B方向',['M0078']),
+      ('T3/R2','方向','SKIP_NONSCORING','单组140圈保持率，不是A/B方向',['M0078']),
+      ('T3/R3','方向','SKIP_NONSCORING','单组循环CE，不是A/B方向',['M0077'])
+    ]
+    for i in range(1,13):rows.append((f'T4/R{i}','方向','SKIP_ABSTENTION','原文电阻及误差项已核，尚无最终数值方向；同时LiNO3不同，不能跨配方判好坏',['M0035','M0012']))
+    rows += [('T4/R13','方向','FP','作者定性原话正确，但两配方LiNO3不同，不能作为same_conditions=true的优劣判断',['M0040','M0012'])]
+    for t in ['T5','T6','T7']:
+        for i in [1,2]:rows.append((f'{t}/R{i}','方向','SKIP_NONSCORING','预测明确标注非LiS结果，不进入锂硫调试分母',['M0063','M0071','M0073','M0078']))
+    rows += [
+      ('M1','机制','FP','可能由黏度/电导改善LiS表现的推测属作者，但所挂句没有定位正极反应，类别外推',['M0041']),
+      ('M2','机制','TP','原文明说高黏度阻碍绝缘硫动力学，G3链长/盐浓度更高；推测及正极过程清楚',['M0043']),
+      ('M3','机制','FP','温度升高影响黏度/电导/极化的概括成立，原句却未将全过程定位正极反应',['M0044']),
+      ('M4','机制','FP','全电池更快电荷转移动力学的作者概括成立，但原句未定位正极反应',['M0082'])
+    ]
+    missing=[]
+    for name,temp,evidence in [('25°C C/5',25,['M0012','M0028','M0029']),('35°C C/5',35,['M0012','M0028','M0029']),('CV/EIS',None,['M0012','M0020','M0024'])]:
+        for f,n in [('G2',1.5),('G3',2)]:
+            missing.append(('测试及条件',f'{f} {name}单独测试，LiNO3={n} mol/kg溶剂','原合并测试必须分开；不是新造实验，原文同组两配方条件不同',evidence))
+    missing += [
+      ('机制','低黏度/高导电率可能改善LiS表现；不额外指定正极过程','M1过程类别纠正后的单位',['M0041']),
+      ('机制','升温降低黏度、提高Li离子电导并改善容量极化；不额外指定正极过程','M3过程类别纠正后的单位',['M0044']),
+      ('机制','G2较好LiS表现归因更快电荷转移动力学；不额外指定正极过程','M4过程类别纠正后的单位',['M0082'])
+    ]
+    write('P212',rows,missing,notes='正文M0001-M0094全部审阅，SI本地缺失。LFP虽由提取者保留但明确范围外，全部单列不进指标；旧参考已查。文字的两组数值抄录大体正确，关键问题是LiNO3不同却标同条件。图读数另处理。',
+    reference_errors=[{'reference_id':'C1/C2所有跨配方方向','reason':'旧参考也漏掉LiNO3浓度不同的条件限制，不能作为同条件gold。','evidence_ids':['M0012']},
+                      {'reference_id':'C1/C2首圈容量','reason':'正文给稳态/最大容量，不是首圈；预测已正确指出。','evidence_ids':['M0042','M0044','M0049']},
+                      {'reference_id':'备注 A全面占优','reason':'A改为G3后备注未反转，且不同LiNO3不能作同条件总体优劣。','evidence_ids':['M0012','M0081']}])
+
+def apply_oct25_claim_protocol():
+    """Explicit re-adjudication for the user's Oct 25 claim-level scoring rule."""
+    changes={
+      'P001':{'M1':'TP','M6':'TP','M7':'TP','M9':'SKIP_DUPLICATE'},
+      'P002':{'M2':'TP','M3':'TP','M8':'SKIP_NONSCORING'},
+      'P041':{'M1':'TP','M2':'SKIP_DUPLICATE','M3':'TP','M4':'SKIP_NONSCORING','M10':'TP'},
+      'P212':{'M1':'TP','M3':'TP','M4':'TP'}
+    }
+    remove_missing={'P001':{'FN2','FN3','FN4'},'P002':{'FN3','FN4','FN5'},
+                    'P041':{'FN1','FN2','FN3','FN4','FN5','FN6'},'P212':{'FN7','FN8','FN9'}}
+    for pid, edits in changes.items():
+        path=OUT/'cross_reviews'/f'{pid}.json';d=json.loads(path.read_text(encoding='utf-8'))
+        for u in d['units']:
+            key=u['id'].split('-')[-1]
+            if u['category']!='机制' or key not in edits:continue
+            previous=u['reason'];u['verdict']=edits[key]
+            if u['verdict']=='TP':
+                u['reason']='按10-25说法口径：该因果判断原文支持，过程标签问题单列修正，不作错提。'+previous
+            elif key=='M9' and pid=='P001':
+                u['reason']='结论中的阴离子分解使硫酸盐钝化层增厚，与正文M4/M5同一因果说法，保留正文，不重复计。'
+            elif pid=='P041' and key=='M2':
+                u['reason']='TfO例外已在M1完整概括，按说法计分不再重复计。'
+            else:
+                u['reason']='该条只解释溶剂化/溶解度来源，10-25方案归性质而非机制，转入性质修正记录，不进入机制分母。'
+            d['suggested_corrections'].append({'unit':u['id'],'action':previous})
+        d['missing']=[x for x in d['missing'] if x['id'] not in remove_missing[pid]]
+        d['coverage_notes']+=' 2026-10-26按方案10-25新增说法计分规则重新裁定；仅标签/引句差异不罚，性质来源及重复说法不入机制分母。'
+        d['scoring_protocol']='v4-2026-10-25-claim-level'
+        save(path,d)
+
 if __name__=='__main__':
     main()
     review_p041()
     review_p002()
+    review_p212()
+    apply_oct25_claim_protocol()

@@ -1,0 +1,1359 @@
+{
+  "paper_id": "S24",
+  "doi": "10.1002/eem2.70139",
+  "formulations": [
+    {
+      "id": "MAN",
+      "name": "1M MAN",
+      "components": [
+        {
+          "name": "MAN",
+          "role": "溶剂",
+          "amount": null,
+          "unit": null
+        },
+        {
+          "name": "LiTFSI",
+          "role": "盐",
+          "amount": 1,
+          "unit": "M"
+        }
+      ],
+      "raw_formula": "1 M LiTFSI in methoxyacetonitrile",
+      "evidence_ids": [
+        "M0136"
+      ]
+    },
+    {
+      "id": "DD",
+      "name": "1M DOL/DME",
+      "components": [
+        {
+          "name": "DOL",
+          "role": "溶剂",
+          "amount": null,
+          "unit": "比例未报告"
+        },
+        {
+          "name": "DME",
+          "role": "溶剂",
+          "amount": null,
+          "unit": "比例未报告"
+        },
+        {
+          "name": "LiTFSI",
+          "role": "盐",
+          "amount": 1,
+          "unit": "M"
+        }
+      ],
+      "raw_formula": "1 M LiTFSI DOL/DME；正文方法未给DOL/DME比例",
+      "evidence_ids": [
+        "M0135"
+      ]
+    },
+    {
+      "id": "G2",
+      "name": "G2_0.8LiTFSI",
+      "components": [
+        {
+          "name": "G2",
+          "role": "溶剂",
+          "amount": 0.8,
+          "unit": "摩尔份，相对LiTFSI 1"
+        },
+        {
+          "name": "LiTFSI",
+          "role": "盐",
+          "amount": 1,
+          "unit": "摩尔份"
+        },
+        {
+          "name": "TTE",
+          "role": "稀释剂",
+          "amount": 2,
+          "unit": "体积份，相对浓溶液1"
+        }
+      ],
+      "raw_formula": "正文G2:LiTFSI=0.8:1；所得溶液:TTE=1:2 v/v；方法先写LiTFSI和G2 0.8:1存在顺序歧义",
+      "evidence_ids": [
+        "M0032",
+        "M0137"
+      ]
+    }
+  ],
+  "control_id": "DD",
+  "control_type": "1 M LiTFSI DOL/DME；另有贫溶剂化G2对照",
+  "gradients": [
+    {
+      "name": "溶剂化强弱",
+      "order": [
+        "G2",
+        "MAN",
+        "DD"
+      ],
+      "values": [
+        "稀溶剂化",
+        "中等",
+        "高"
+      ],
+      "solvation_axis": "LiPS溶解/反应路径：固态→混合固态溶液→溶解沉淀",
+      "evidence_ids": [
+        "M0062",
+        "M0063",
+        "M0097",
+        "M0124"
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "name": "电导率",
+      "values": {
+        "MAN": 11.7,
+        "DD": 12.7,
+        "G2": 0.27
+      },
+      "direction": "MAN接近DD，明显高于G2",
+      "method": "电导仪25°C，mS cm−1",
+      "system": "无LiPS电解液；DD另处12.6",
+      "evidence_ids": [
+        "M0032",
+        "M0043",
+        "M0049",
+        "M0149"
+      ]
+    },
+    {
+      "name": "饱和Li2S6电导率",
+      "values": {
+        "MAN": 11.7,
+        "DD": 5.7
+      },
+      "direction": "MAN保持；DD下降",
+      "method": "电导仪，mS cm−1",
+      "system": "Li2S6饱和工作电解液",
+      "evidence_ids": [
+        "M0049",
+        "M0050",
+        "M0151"
+      ]
+    },
+    {
+      "name": "接触角",
+      "values": {
+        "MAN": {
+          "pristine": 26,
+          "Li2S6_saturated": 26
+        },
+        "DD": {
+          "pristine": 28,
+          "Li2S6_saturated": 85
+        }
+      },
+      "direction": "MAN润湿不退化；DD退化",
+      "method": "接触角，度",
+      "system": "硫正极",
+      "evidence_ids": [
+        "M0051",
+        "M0052",
+        "M0058",
+        "M0162"
+      ]
+    },
+    {
+      "name": "LiPS溶解度",
+      "values": {
+        "MAN": "3 mol L−1，按S−1/3计；DD的1/6"
+      },
+      "direction": "中等且低于DD",
+      "method": "硫酸钡沉淀称量法",
+      "system": "纯溶剂Li2S6饱和；非盐电解液",
+      "evidence_ids": [
+        "M0045",
+        "M0047",
+        "M0138",
+        "M0139",
+        "M0140",
+        "M0141",
+        "M0142",
+        "M0143"
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "id": "S24-T1",
+      "name": "初始放电曲线",
+      "cell": "Li‖S coin",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "25 °C",
+        "LiNO3": "未报告",
+        "one_C": "未报告"
+      },
+      "formulations": [
+        "MAN",
+        "DD",
+        "G2"
+      ],
+      "evidence_ids": [
+        "M0063",
+        "M0065",
+        "M0117",
+        "M0173"
+      ],
+      "results": [
+        {
+          "id": "S24-T1-R1",
+          "metric": "第一平台电压",
+          "A": "MAN",
+          "B": "DD",
+          "value_A": 2.23,
+          "value_B": 2.28,
+          "unit": "V",
+          "point": "初始",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0065"
+          ],
+          "reason": ""
+        },
+        {
+          "id": "S24-T1-R2",
+          "metric": "第二平台电压",
+          "A": "MAN",
+          "B": "DD",
+          "value_A": 2.14,
+          "value_B": 2.09,
+          "unit": "V",
+          "point": "初始",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0065"
+          ],
+          "reason": ""
+        },
+        {
+          "id": "S24-T1-R3",
+          "metric": "放电平台数",
+          "A": "MAN",
+          "B": "G2",
+          "value_A": 2,
+          "value_B": 1,
+          "unit": null,
+          "point": "初始",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0063",
+            "M0065"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "S24-T2",
+      "name": "全电池CV",
+      "cell": "Li‖S coin",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "25 °C",
+        "LiNO3": "未报告",
+        "one_C": "未报告"
+      },
+      "formulations": [
+        "MAN",
+        "DD",
+        "G2"
+      ],
+      "evidence_ids": [
+        "M0066",
+        "M0117",
+        "M0175"
+      ],
+      "results": [
+        {
+          "id": "S24-T2-R1",
+          "metric": "第一还原峰",
+          "A": "MAN",
+          "B": "DD",
+          "value_A": 2.19,
+          "value_B": 2.28,
+          "unit": "V",
+          "point": "CV",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0066"
+          ],
+          "reason": ""
+        },
+        {
+          "id": "S24-T2-R2",
+          "metric": "第二还原峰",
+          "A": "MAN",
+          "B": "DD",
+          "value_A": 2.06,
+          "value_B": 1.99,
+          "unit": "V",
+          "point": "CV",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0066"
+          ],
+          "reason": ""
+        },
+        {
+          "id": "S24-T2-R3",
+          "metric": "G2单还原峰",
+          "A": "G2",
+          "B": null,
+          "value_A": 1.52,
+          "value_B": null,
+          "unit": "V",
+          "point": "CV",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": null,
+          "evidence_ids": [
+            "M0066"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "S24-T3",
+      "name": "GITT",
+      "cell": "Li‖S coin",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "167 mA g−1 20 min；静置2 h",
+        "formation": "未报告",
+        "temperature": "25 °C",
+        "LiNO3": "未报告",
+        "one_C": "未报告"
+      },
+      "formulations": [
+        "MAN",
+        "DD",
+        "G2"
+      ],
+      "evidence_ids": [
+        "M0068",
+        "M0069",
+        "M0070",
+        "M0071",
+        "M0072",
+        "M0073",
+        "M0174"
+      ],
+      "results": [
+        {
+          "id": "S24-T3-R1",
+          "metric": "过电位",
+          "A": "MAN",
+          "B": "DD",
+          "value_A": "第一平台更低",
+          "value_B": null,
+          "unit": null,
+          "point": "第一平台",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0073"
+          ],
+          "reason": ""
+        },
+        {
+          "id": "S24-T3-R2",
+          "metric": "过电位",
+          "A": "MAN",
+          "B": "G2",
+          "value_A": "更低",
+          "value_B": "全程高",
+          "unit": null,
+          "point": "放电",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0070",
+            "M0071"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "S24-T4",
+      "name": "倍率",
+      "cell": "Li‖S coin",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "含1 C和5 C",
+        "formation": "未报告",
+        "temperature": "25 °C",
+        "LiNO3": "未报告",
+        "one_C": "未报告"
+      },
+      "formulations": [
+        "MAN",
+        "DD",
+        "G2"
+      ],
+      "evidence_ids": [
+        "M0074",
+        "M0075",
+        "M0076",
+        "M0077",
+        "M0117"
+      ],
+      "results": [
+        {
+          "id": "S24-T4-R1",
+          "metric": "容量",
+          "A": "MAN",
+          "B": "DD",
+          "value_A": 416,
+          "value_B": 187,
+          "unit": "mAh g−1",
+          "point": "5 C",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0076",
+            "M0077"
+          ],
+          "reason": ""
+        },
+        {
+          "id": "S24-T4-R2",
+          "metric": "容量",
+          "A": "G2",
+          "B": null,
+          "value_A": 85,
+          "value_B": null,
+          "unit": "mAh g−1",
+          "point": "1 C",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": null,
+          "evidence_ids": [
+            "M0075"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "S24-T5",
+      "name": "E/S=10",
+      "cell": "Li‖S coin",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": 10,
+        "ES_unit": "μL mgS−1",
+        "Li_thickness": "未报告",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "25 °C",
+        "LiNO3": "未报告",
+        "one_C": "未报告"
+      },
+      "formulations": [
+        "MAN",
+        "DD"
+      ],
+      "evidence_ids": [
+        "M0099",
+        "M0100",
+        "M0154",
+        "S0005",
+        "S0033"
+      ],
+      "results": [
+        {
+          "id": "S24-T5-R1",
+          "metric": "放电容量",
+          "A": "MAN",
+          "B": "DD",
+          "value_A": 1038,
+          "value_B": null,
+          "unit": "mAh g−1",
+          "point": "放电",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": null,
+          "evidence_ids": [
+            "M0099",
+            "S0033"
+          ],
+          "reason": "DD5来自SI能量计算所据测试；其他DD数字需图"
+        }
+      ]
+    },
+    {
+      "id": "S24-T6",
+      "name": "E/S=5",
+      "cell": "Li‖S coin",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": 5,
+        "ES_unit": "μL mgS−1",
+        "Li_thickness": "未报告",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "25 °C",
+        "LiNO3": "未报告",
+        "one_C": "未报告"
+      },
+      "formulations": [
+        "MAN",
+        "DD"
+      ],
+      "evidence_ids": [
+        "M0099",
+        "M0100",
+        "M0154",
+        "S0005",
+        "S0033"
+      ],
+      "results": [
+        {
+          "id": "S24-T6-R1",
+          "metric": "放电容量",
+          "A": "MAN",
+          "B": "DD",
+          "value_A": 1043,
+          "value_B": 1147.5,
+          "unit": "mAh g−1",
+          "point": "放电",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0099",
+            "S0033"
+          ],
+          "reason": "DD5来自SI能量计算所据测试；其他DD数字需图"
+        }
+      ]
+    },
+    {
+      "id": "S24-T7",
+      "name": "E/S=3",
+      "cell": "Li‖S coin",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": 3,
+        "ES_unit": "μL mgS−1",
+        "Li_thickness": "未报告",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "25 °C",
+        "LiNO3": "未报告",
+        "one_C": "未报告"
+      },
+      "formulations": [
+        "MAN",
+        "DD"
+      ],
+      "evidence_ids": [
+        "M0099",
+        "M0100",
+        "M0154",
+        "S0005",
+        "S0033"
+      ],
+      "results": [
+        {
+          "id": "S24-T7-R1",
+          "metric": "放电容量",
+          "A": "MAN",
+          "B": "DD",
+          "value_A": 1070,
+          "value_B": null,
+          "unit": "mAh g−1",
+          "point": "放电",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": null,
+          "evidence_ids": [
+            "M0099",
+            "S0033"
+          ],
+          "reason": "DD5来自SI能量计算所据测试；其他DD数字需图"
+        }
+      ]
+    },
+    {
+      "id": "S24-T8",
+      "name": "E/S=2",
+      "cell": "Li‖S coin",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": 2,
+        "ES_unit": "μL mgS−1",
+        "Li_thickness": "未报告",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "25 °C",
+        "LiNO3": "未报告",
+        "one_C": "未报告"
+      },
+      "formulations": [
+        "MAN",
+        "DD"
+      ],
+      "evidence_ids": [
+        "M0099",
+        "M0100",
+        "M0154",
+        "S0005",
+        "S0033"
+      ],
+      "results": [
+        {
+          "id": "S24-T8-R1",
+          "metric": "放电容量",
+          "A": "MAN",
+          "B": "DD",
+          "value_A": 1094,
+          "value_B": null,
+          "unit": "mAh g−1",
+          "point": "放电",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": null,
+          "evidence_ids": [
+            "M0099",
+            "S0033"
+          ],
+          "reason": "DD5来自SI能量计算所据测试；其他DD数字需图"
+        }
+      ]
+    },
+    {
+      "id": "S24-T9",
+      "name": "孔隙率=80",
+      "cell": "Li‖S coin",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "25 °C",
+        "LiNO3": "未报告",
+        "one_C": "未报告",
+        "cathode_porosity": "80%"
+      },
+      "formulations": [
+        "MAN",
+        "DD"
+      ],
+      "evidence_ids": [
+        "M0101",
+        "M0103",
+        "M0154"
+      ],
+      "results": [
+        {
+          "id": "S24-T9-R1",
+          "metric": "放电容量",
+          "A": "MAN",
+          "B": "DD",
+          "value_A": 1066,
+          "value_B": null,
+          "unit": "mAh g−1",
+          "point": "放电",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0103"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "S24-T10",
+      "name": "孔隙率=72",
+      "cell": "Li‖S coin",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "25 °C",
+        "LiNO3": "未报告",
+        "one_C": "未报告",
+        "cathode_porosity": "72%"
+      },
+      "formulations": [
+        "MAN",
+        "DD"
+      ],
+      "evidence_ids": [
+        "M0101",
+        "M0103",
+        "M0154"
+      ],
+      "results": [
+        {
+          "id": "S24-T10-R1",
+          "metric": "放电容量",
+          "A": "MAN",
+          "B": "DD",
+          "value_A": 1060,
+          "value_B": null,
+          "unit": "mAh g−1",
+          "point": "放电",
+          "basis": "figure_only",
+          "direction_text": "不判",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0103"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "S24-T11",
+      "name": "孔隙率=63",
+      "cell": "Li‖S coin",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "25 °C",
+        "LiNO3": "未报告",
+        "one_C": "未报告",
+        "cathode_porosity": "63%"
+      },
+      "formulations": [
+        "MAN",
+        "DD"
+      ],
+      "evidence_ids": [
+        "M0101",
+        "M0103",
+        "M0154"
+      ],
+      "results": [
+        {
+          "id": "S24-T11-R1",
+          "metric": "放电容量",
+          "A": "MAN",
+          "B": "DD",
+          "value_A": 1063,
+          "value_B": null,
+          "unit": "mAh g−1",
+          "point": "放电",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0103"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "S24-T12",
+      "name": "孔隙率=52",
+      "cell": "Li‖S coin",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "25 °C",
+        "LiNO3": "未报告",
+        "one_C": "未报告",
+        "cathode_porosity": "52%"
+      },
+      "formulations": [
+        "MAN",
+        "DD"
+      ],
+      "evidence_ids": [
+        "M0101",
+        "M0103",
+        "M0154"
+      ],
+      "results": [
+        {
+          "id": "S24-T12-R1",
+          "metric": "放电容量",
+          "A": "MAN",
+          "B": "DD",
+          "value_A": 958,
+          "value_B": null,
+          "unit": "mAh g−1",
+          "point": "放电",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0103"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "S24-T13",
+      "name": "低孔隙高载量循环",
+      "cell": "Li‖S coin",
+      "conditions": {
+        "sulfur_loading": "4 mg cm−2",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "25 °C",
+        "LiNO3": "未报告",
+        "one_C": "未报告",
+        "cathode_porosity": "52%"
+      },
+      "formulations": [
+        "MAN"
+      ],
+      "evidence_ids": [
+        "M0110",
+        "M0155"
+      ],
+      "results": [
+        {
+          "id": "S24-T13-R1",
+          "metric": "初始容量",
+          "A": "MAN",
+          "B": null,
+          "value_A": 907,
+          "value_B": null,
+          "unit": "mAh g−1",
+          "point": "初始",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": null,
+          "evidence_ids": [
+            "M0110"
+          ],
+          "reason": ""
+        },
+        {
+          "id": "S24-T13-R2",
+          "metric": "容量保持率",
+          "A": "MAN",
+          "B": null,
+          "value_A": 72,
+          "value_B": null,
+          "unit": "%",
+          "point": "50圈",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": null,
+          "evidence_ids": [
+            "M0110"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "S24-T14",
+      "name": "Ah软包",
+      "cell": "Li‖S pouch",
+      "conditions": {
+        "sulfur_loading": "7.4 mg cm−2；总S1.18 g",
+        "ES": 2,
+        "ES_unit": "μL mgS−1",
+        "Li_thickness": "100 μm",
+        "rate": "33.5 mA g−1；更高电流值文本缺失",
+        "formation": "未报告",
+        "temperature": "25 °C",
+        "LiNO3": "未报告",
+        "one_C": "未报告",
+        "sulfur_fraction": "68 wt%"
+      },
+      "formulations": [
+        "MAN"
+      ],
+      "evidence_ids": [
+        "M0111",
+        "M0113",
+        "M0114",
+        "M0115",
+        "S0043",
+        "S0044",
+        "S0045"
+      ],
+      "results": [
+        {
+          "id": "S24-T14-R1",
+          "metric": "容量",
+          "A": "MAN",
+          "B": null,
+          "value_A": 1.13,
+          "value_B": null,
+          "unit": "Ah",
+          "point": "33.5 mA g−1",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": null,
+          "evidence_ids": [
+            "M0113"
+          ],
+          "reason": ""
+        },
+        {
+          "id": "S24-T14-R2",
+          "metric": "比容量",
+          "A": "MAN",
+          "B": null,
+          "value_A": 954,
+          "value_B": null,
+          "unit": "mAh g−1",
+          "point": "33.5 mA g−1",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": null,
+          "evidence_ids": [
+            "M0114"
+          ],
+          "reason": ""
+        },
+        {
+          "id": "S24-T14-R3",
+          "metric": "比容量",
+          "A": "MAN",
+          "B": null,
+          "value_A": 760,
+          "value_B": null,
+          "unit": "mAh g−1",
+          "point": "较高电流值缺失",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": null,
+          "evidence_ids": [
+            "M0115"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "S24-T15",
+      "name": "氧化稳定性",
+      "cell": "LSV",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "0.2 mV s−1",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "未报告",
+        "one_C": "未报告"
+      },
+      "formulations": [
+        "MAN"
+      ],
+      "evidence_ids": [
+        "M0064",
+        "S0038"
+      ],
+      "results": [
+        {
+          "id": "S24-T15-R1",
+          "metric": "氧化起始电位",
+          "A": "MAN",
+          "B": null,
+          "value_A": "约4.0",
+          "value_B": null,
+          "unit": "V vs Li/Li+",
+          "point": "LSV",
+          "basis": "numeric",
+          "direction_text": "不判",
+          "same_conditions": null,
+          "evidence_ids": [
+            "M0064"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "S24-T16",
+      "name": "锂浸泡稳定性",
+      "cell": "Li浸泡纯溶剂",
+      "conditions": {
+        "sulfur_loading": "未报告",
+        "ES": "未报告",
+        "ES_unit": "未报告",
+        "Li_thickness": "未报告",
+        "rate": "未报告",
+        "formation": "未报告",
+        "temperature": "未报告",
+        "LiNO3": "未报告",
+        "one_C": "未报告",
+        "time": "3 min/5 h"
+      },
+      "formulations": [
+        "MAN",
+        "AN"
+      ],
+      "evidence_ids": [
+        "M0039",
+        "S0035"
+      ],
+      "results": [
+        {
+          "id": "S24-T16-R1",
+          "metric": "Li相容性",
+          "A": "MAN",
+          "B": "AN",
+          "value_A": "增强",
+          "value_B": "严重反应",
+          "unit": null,
+          "point": "浸泡",
+          "basis": "qualitative",
+          "direction_text": "变好",
+          "same_conditions": true,
+          "evidence_ids": [
+            "M0039"
+          ],
+          "reason": ""
+        }
+      ]
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "S24-M1",
+      "summary": "MAN降低LiPS溶解同时维持高电导/润湿，避免贫液高LiPS阴极液导致的传输恶化",
+      "A": "MAN",
+      "B": "DD",
+      "property": "LiPS溶解度/输运",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0049",
+        "M0050",
+        "M0052",
+        "M0058",
+        "M0059",
+        "M0060",
+        "M0105",
+        "M0106",
+        "M0125"
+      ],
+      "test_ids": [
+        "S24-T4"
+      ],
+      "side": "弱侧"
+    },
+    {
+      "id": "S24-M2",
+      "summary": "MAN诱导S同时转化为固态和溶解LiPS，减少反应对电解液量依赖，支持低E/S和致密正极",
+      "A": "MAN",
+      "B": "DD/G2",
+      "property": "混合转化路径",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0089",
+        "M0090",
+        "M0091",
+        "M0095",
+        "M0096",
+        "M0097",
+        "M0107",
+        "M0108"
+      ],
+      "test_ids": [],
+      "side": "其他"
+    },
+    {
+      "id": "S24-M3",
+      "summary": "G2贫溶剂化电解液固态转化缺少LiPS介导且电导低，导致高过电位和差倍率",
+      "A": "G2",
+      "B": "MAN",
+      "property": "过低LiPS溶解/电导",
+      "categories": [
+        "正极反应"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0030",
+        "M0031",
+        "M0032",
+        "M0071",
+        "M0075"
+      ],
+      "test_ids": [
+        "S24-T3",
+        "S24-T4"
+      ],
+      "side": "弱侧"
+    },
+    {
+      "id": "S24-M4",
+      "summary": "MAN引入甲氧基降低受电子能力，相比AN更耐锂还原",
+      "A": "MAN",
+      "B": "AN",
+      "property": "溶剂还原稳定性",
+      "categories": [
+        "负极锂",
+        "电解液消耗"
+      ],
+      "source_type": "本文结论",
+      "evidence_ids": [
+        "M0039"
+      ],
+      "test_ids": [
+        "S24-T16"
+      ],
+      "side": "其他"
+    }
+  ],
+  "design_claims": [
+    {
+      "summary": "中等LiPS溶解的MAN兼顾固态低液量优势和溶液快动力学",
+      "evidence_ids": [
+        "M0005",
+        "M0122",
+        "M0124",
+        "M0126"
+      ]
+    }
+  ],
+  "figure_requests": [
+    {
+      "test_id": "S24-T4",
+      "figure": "3d",
+      "part": "main",
+      "metric": "各倍率容量",
+      "A": "MAN",
+      "B": "DD/G2",
+      "target_point": "各自同倍率",
+      "anchor_quote_ids": [
+        "M0074",
+        "M0075",
+        "M0076",
+        "M0077"
+      ],
+      "reason": "同一测试文字未给齐数值；先通过锚点核对再读图。"
+    },
+    {
+      "test_id": "S24-T5",
+      "figure": "5b/S1b",
+      "part": "main/si",
+      "metric": "放电容量",
+      "A": "MAN",
+      "B": "DD",
+      "target_point": "10 μL mg−1",
+      "anchor_quote_ids": [
+        "M0099",
+        "M0100",
+        "M0154",
+        "S0005"
+      ],
+      "reason": "同一测试文字未给齐数值；先通过锚点核对再读图。"
+    },
+    {
+      "test_id": "S24-T6",
+      "figure": "5b/S1b",
+      "part": "main/si",
+      "metric": "放电容量",
+      "A": "MAN",
+      "B": "DD",
+      "target_point": "5 μL mg−1",
+      "anchor_quote_ids": [
+        "M0099",
+        "M0100",
+        "M0154",
+        "S0005"
+      ],
+      "reason": "同一测试文字未给齐数值；先通过锚点核对再读图。"
+    },
+    {
+      "test_id": "S24-T7",
+      "figure": "5b/S1b",
+      "part": "main/si",
+      "metric": "放电容量",
+      "A": "MAN",
+      "B": "DD",
+      "target_point": "3 μL mg−1",
+      "anchor_quote_ids": [
+        "M0099",
+        "M0100",
+        "M0154",
+        "S0005"
+      ],
+      "reason": "同一测试文字未给齐数值；先通过锚点核对再读图。"
+    },
+    {
+      "test_id": "S24-T8",
+      "figure": "5b/S1b",
+      "part": "main/si",
+      "metric": "放电容量",
+      "A": "MAN",
+      "B": "DD",
+      "target_point": "2 μL mg−1",
+      "anchor_quote_ids": [
+        "M0099",
+        "M0100",
+        "M0154",
+        "S0005"
+      ],
+      "reason": "同一测试文字未给齐数值；先通过锚点核对再读图。"
+    },
+    {
+      "test_id": "S24-T9",
+      "figure": "5d",
+      "part": "main",
+      "metric": "同孔隙率容量",
+      "A": "MAN",
+      "B": "DD",
+      "target_point": "80%",
+      "anchor_quote_ids": [
+        "M0103",
+        "M0154"
+      ],
+      "reason": "同一测试文字未给齐数值；先通过锚点核对再读图。"
+    },
+    {
+      "test_id": "S24-T10",
+      "figure": "5d",
+      "part": "main",
+      "metric": "同孔隙率容量",
+      "A": "MAN",
+      "B": "DD",
+      "target_point": "72%",
+      "anchor_quote_ids": [
+        "M0103",
+        "M0154"
+      ],
+      "reason": "同一测试文字未给齐数值；先通过锚点核对再读图。"
+    },
+    {
+      "test_id": "S24-T11",
+      "figure": "5d",
+      "part": "main",
+      "metric": "同孔隙率容量",
+      "A": "MAN",
+      "B": "DD",
+      "target_point": "63%",
+      "anchor_quote_ids": [
+        "M0103",
+        "M0154"
+      ],
+      "reason": "同一测试文字未给齐数值；先通过锚点核对再读图。"
+    },
+    {
+      "test_id": "S24-T12",
+      "figure": "5d",
+      "part": "main",
+      "metric": "同孔隙率容量",
+      "A": "MAN",
+      "B": "DD",
+      "target_point": "52%",
+      "anchor_quote_ids": [
+        "M0103",
+        "M0154"
+      ],
+      "reason": "同一测试文字未给齐数值；先通过锚点核对再读图。"
+    },
+    {
+      "test_id": "S24-T13",
+      "figure": "5g",
+      "part": "main",
+      "metric": "循环倍率/条件与曲线",
+      "A": "MAN",
+      "B": null,
+      "target_point": "50圈",
+      "anchor_quote_ids": [
+        "M0110",
+        "M0155"
+      ],
+      "reason": "同一测试文字未给齐数值；先通过锚点核对再读图。"
+    },
+    {
+      "test_id": "S24-T14",
+      "figure": "5h/S9",
+      "part": "main/si",
+      "metric": "循环及高倍率条件",
+      "A": "MAN",
+      "B": null,
+      "target_point": "循环全程",
+      "anchor_quote_ids": [
+        "M0113",
+        "M0114",
+        "M0115",
+        "M0155",
+        "S0041"
+      ],
+      "reason": "同一测试文字未给齐数值；先通过锚点核对再读图。"
+    }
+  ],
+  "gaps": [
+    "DOL/DME比例、coin Li厚度、LiNO3和多项循环倍率未报告，不填惯用值。",
+    "G2/LiTFSI摩尔比正文定义与方法排列有歧义，按明确G2_0.8LiTFSI定义记录。",
+    "软包较高电流数值在提取正文中断，需图确认。",
+    "SI能量密度随E/S表为固定1147.5mAh/g假设下计算，不能当实际贫液性能。",
+    "全文未报告系统锂对称/半电池性能，仅纯溶剂浸泡。"
+  ],
+  "source_review": {
+    "main": true,
+    "si": true,
+    "notes": "阅读全文和SI索引；参考文献不作为本文证据。未读图数值。"
+  }
+}
