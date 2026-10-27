@@ -21,7 +21,7 @@ def pdfpath(pid,part):
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('pid');ap.add_argument('--part',default='main')
-    ap.add_argument('--page',type=int);ap.add_argument('--find');a=ap.parse_args()
+    ap.add_argument('--page',type=int);ap.add_argument('--find');ap.add_argument('--render-page',action='store_true');a=ap.parse_args()
     p=pdfpath(a.pid,a.part);doc=fitz.open(p)
     if a.find:
         for i,page in enumerate(doc):
@@ -32,12 +32,24 @@ def main():
     if not a.page:raise ValueError('--page or --find required')
     page=doc[a.page-1];out=OUT/'figures'/a.pid/a.part;out.mkdir(parents=True,exist_ok=True)
     records=[];seen=set()
+    if a.render_page:
+        # Vector figures have no native bitmap DPI. Rasterize the source page;
+        # never interpret PDF drawing paths as measured values.
+        target=out/f'p{a.page}_render300.png'
+        pix=page.get_pixmap(dpi=300,colorspace=fitz.csRGB,alpha=False);pix.save(target)
+        records.append({'pid':a.pid,'part':a.part,'page':a.page,'path':str(target),
+                        'width':pix.width,'height':pix.height,'render_dpi':300,
+                        'native_bitmap_dpi':None,'source_kind':'PDF页面栅格化；非原生位图',
+                        'source_pdf':str(p)})
+        save(out/f'p{a.page}_render_assets.json',records)
+        print(json.dumps(records,ensure_ascii=False));return
     for im in page.get_images(full=True):
         xref=im[0]
         if xref in seen:continue
         seen.add(xref);pix=fitz.Pixmap(doc,xref)
         if pix.width<250 or pix.height<150:continue
-        if pix.n-pix.alpha>=4:pix=fitz.Pixmap(fitz.csRGB,pix)
+        if pix.colorspace is None:continue
+        if pix.colorspace.name not in ('DeviceGray','DeviceRGB'):pix=fitz.Pixmap(fitz.csRGB,pix)
         target=out/f'p{a.page}_xref{xref}.png'
         pix.save(target)
         with Image.open(target) as img:

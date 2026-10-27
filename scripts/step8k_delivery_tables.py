@@ -22,7 +22,7 @@ def main():
       'mechanisms':['文献','说法ID','中文概括','A','B','性质','过程类别（原提取）','来源（原提取）','关联测试','短板侧','AI裁定','证据位置','整句原文'],
       'formulations':['文献','配方ID','配方名','原配方写法','组分','角色','用量','单位','对照类型','证据位置','整句原文'],
       'properties':['文献','类型','性质或梯度','数值或档位','方向或排序依据','测法','测量体系','证据位置','整句原文'],
-      'figures':['文献','测试ID','图','正文或SI','所需指标','A','B','取值点','当前状态','锚点候选','请求理由'],
+      'figures':['文献','测试ID','图','正文或SI','所需指标','A','B','取值点','当前状态','锚点候选','请求理由','代码取值与核验'],
       'scores':['文献','类别','单位','裁定','核对理由','漏项描述','证据位置','整句原文'],
       'checks':['文献','单位','类型','详情']}
     counts=collections.Counter(); sources={}; descriptions={}
@@ -89,13 +89,17 @@ def main():
         for req in d.get('figure_requests',[]):
             # A request is not a completed read. Keep unattempted work explicit.
             status='待逐图核查/读图'
-            matches=[]
+            matches=[];read_details=[]
             for path in (OUT/'figures'/pid).glob('*_results.json'):
                 fr=read(path,{})
-                if fr.get('test_id')==req.get('test_id'):matches.append(fr.get('status','未完成'))
+                if fr.get('test_id')==req.get('test_id'):
+                    matches.append(fr.get('status','未完成'))
+                    for fid,s in fr.get('series',{}).items():
+                        usable={p:v for p,v in s.get('points',{}).items() if s.get('usable') and s.get('points_repeat_consistent',{}).get(p)}
+                        read_details.append(fid+' 可用点（圈: mAh/g）'+txt(usable)+'；锚点 '+txt(s.get('anchors')))
             if matches:status='；'.join(matches)
             elif not req.get('anchor_quote_ids'):status='未提供锚点候选，待核查原文'
-            tables['figures'].append([pid,req.get('test_id'),req.get('figure'),req.get('part'),req.get('metric'),req.get('A'),req.get('B'),req.get('target_point'),status,txt(req.get('anchor_quote_ids')),req.get('reason')])
+            tables['figures'].append([pid,req.get('test_id'),req.get('figure'),req.get('part'),req.get('metric'),req.get('A'),req.get('B'),req.get('target_point'),status,txt(req.get('anchor_quote_ids')),req.get('reason'),'\n'.join(read_details)])
     for r in rows:
         pid=r['paper_id'];loc,q=evidence(pid,r.get('evidence_ids',[]))
         tables['scores'].append([pid,r['category'],r['id'],r['verdict'],r.get('reason'),r.get('description'),loc,q])
