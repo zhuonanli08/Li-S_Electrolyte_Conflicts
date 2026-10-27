@@ -1,0 +1,307 @@
+{
+  "reviewer": "extract_b",
+  "date": "2026-10-27",
+  "scope": "仅核对tasks曲线ID、冻结配方/条件及指向的条件证据，不重读全文、不重算读图。",
+  "papers": [
+    "S10",
+    "S11",
+    "S15",
+    "S16",
+    "S18",
+    "S33",
+    "S39",
+    "S40",
+    "S51",
+    "P109",
+    "P149",
+    "P211"
+  ],
+  "accepted_comparisons_reviewed": 179,
+  "issues": [
+    {
+      "paper_id": "P149",
+      "severity": "confirmed_mismatch",
+      "field": "LiNO3",
+      "finding": "TDE约0.025 m与LS002 1 wt%不是统一添加剂用量，图6a/e/h不应自动设same_conditions=true。不同单位不做无密度换算。",
+      "evidence_ids": [
+        "M0043",
+        "M0044",
+        "M0169",
+        "M0170"
+      ],
+      "recommended_same_conditions": false,
+      "affected_comparisons": [
+        {
+          "paper_id": "P149",
+          "figure_task": "P149_F6a",
+          "test_id": "P149-T2",
+          "A": "TDE",
+          "B": "LS002",
+          "point": "1000"
+        },
+        {
+          "paper_id": "P149",
+          "figure_task": "P149_F6e",
+          "test_id": "P149-T3",
+          "A": "TDE",
+          "B": "LS002",
+          "point": "40"
+        },
+        {
+          "paper_id": "P149",
+          "figure_task": "P149_F6h",
+          "test_id": "P149-T4",
+          "A": "TDE",
+          "B": "LS002",
+          "point": "35"
+        }
+      ]
+    },
+    {
+      "paper_id": "S18",
+      "severity": "confirmed_mismatch",
+      "field": "separator/catalyst",
+      "finding": "TiN隔膜与PP的比较改变催化剂/隔膜，冻结测试结果已same_conditions=false；8p硬编码true覆盖了该限制。其LiNO3、倍率、载量一致。",
+      "evidence_ids": [
+        "S0054",
+        "S0056",
+        "M0178"
+      ],
+      "recommended_same_conditions": false,
+      "affected_comparisons": [
+        {
+          "paper_id": "S18",
+          "figure_task": "S18_F6B",
+          "test_id": "S18-T5",
+          "A": "DIPS35+TiN",
+          "B": "DIPS35+PP",
+          "point": "1"
+        },
+        {
+          "paper_id": "S18",
+          "figure_task": "S18_F6B",
+          "test_id": "S18-T5",
+          "A": "DIPS35+TiN",
+          "B": "DIPS35+PP",
+          "point": "14"
+        },
+        {
+          "paper_id": "S18",
+          "figure_task": "S18_FS57",
+          "test_id": "S18-T10",
+          "A": "DIPE35+TiN",
+          "B": "DIPE35+PP",
+          "point": "1"
+        },
+        {
+          "paper_id": "S18",
+          "figure_task": "S18_FS57",
+          "test_id": "S18-T10",
+          "A": "DIPE35+TiN",
+          "B": "DIPE35+PP",
+          "point": "7"
+        },
+        {
+          "paper_id": "S18",
+          "figure_task": "S18_FS57",
+          "test_id": "S18-T10",
+          "A": "DIPE35+TiN",
+          "B": "DIPE35+PP",
+          "point": "8"
+        },
+        {
+          "paper_id": "S18",
+          "figure_task": "S18_FS58",
+          "test_id": "S18-T15",
+          "A": "HME35+TiN",
+          "B": "HME35+PP",
+          "point": "1"
+        },
+        {
+          "paper_id": "S18",
+          "figure_task": "S18_FS58",
+          "test_id": "S18-T15",
+          "A": "HME35+TiN",
+          "B": "HME35+PP",
+          "point": "23"
+        },
+        {
+          "paper_id": "S18",
+          "figure_task": "S18_FS58",
+          "test_id": "S18-T15",
+          "A": "HME35+TiN",
+          "B": "HME35+PP",
+          "point": "24"
+        }
+      ]
+    },
+    {
+      "paper_id": "S16",
+      "severity": "final_concentration_not_equal_or_unverified",
+      "field": "LiNO3",
+      "finding": "DD是0.8 M LiNO3基液；DD_HMPA/DD_DMSO是将8vol%溶剂与已制备DD混合，0.8 M仅指基液，未声明补盐使最终浓度不变。与未稀释DD不能直接确认LiNO3等量；未推算最终浓度。两种同为8vol%添加的HMPA/DMSO配对可保留。",
+      "evidence_ids": [
+        "S0034",
+        "S0035"
+      ],
+      "recommended_same_conditions": null,
+      "affected_comparisons": [
+        {
+          "paper_id": "S16",
+          "figure_task": "S16_F5a",
+          "test_id": "S16-T5",
+          "A": "DD_HMPA",
+          "B": "DD",
+          "point": "1"
+        },
+        {
+          "paper_id": "S16",
+          "figure_task": "S16_F5a",
+          "test_id": "S16-T5",
+          "A": "DD_HMPA",
+          "B": "DD",
+          "point": "99"
+        },
+        {
+          "paper_id": "S16",
+          "figure_task": "S16_F5a",
+          "test_id": "S16-T5",
+          "A": "DD_DMSO",
+          "B": "DD",
+          "point": "1"
+        },
+        {
+          "paper_id": "S16",
+          "figure_task": "S16_F5a",
+          "test_id": "S16-T5",
+          "A": "DD_DMSO",
+          "B": "DD",
+          "point": "99"
+        },
+        {
+          "paper_id": "S16",
+          "figure_task": "S16_F5e",
+          "test_id": "S16-T7",
+          "A": "DD_HMPA",
+          "B": "DD",
+          "point": "1"
+        },
+        {
+          "paper_id": "S16",
+          "figure_task": "S16_F5e",
+          "test_id": "S16-T7",
+          "A": "DD_HMPA",
+          "B": "DD",
+          "point": "30"
+        },
+        {
+          "paper_id": "S16",
+          "figure_task": "S16_F5e",
+          "test_id": "S16-T7",
+          "A": "DD_HMPA",
+          "B": "DD",
+          "point": "55"
+        }
+      ]
+    },
+    {
+      "paper_id": "S33",
+      "severity": "quantity_equivalence_not_established",
+      "field": "LiNO3",
+      "finding": "DME对照写0.4 m LiNO3；FE组写LiFSI:LiNO3:DME:FE=1.9:1:18.5:3.8摩尔比。元数据未提供共同基准下的相同LiNO3浓度证明，不能仅按同图确认true。仅标DME对FE；各FE组同摩尔配方本轮不另推算密度/分子量差。",
+      "evidence_ids": [
+        "M0074",
+        "M0075",
+        "M0266",
+        "M0267"
+      ],
+      "recommended_same_conditions": null,
+      "affected_comparisons": [
+        {
+          "paper_id": "S33",
+          "figure_task": "S33_F4b",
+          "test_id": "S33-T1",
+          "A": "DME",
+          "B": "ETFE",
+          "point": "30"
+        },
+        {
+          "paper_id": "S33",
+          "figure_task": "S33_F4b",
+          "test_id": "S33-T1",
+          "A": "DME",
+          "B": "BTFE",
+          "point": "10"
+        },
+        {
+          "paper_id": "S33",
+          "figure_task": "S33_F4b",
+          "test_id": "S33-T1",
+          "A": "DME",
+          "B": "TFTFE",
+          "point": "30"
+        },
+        {
+          "paper_id": "S33",
+          "figure_task": "S33_F4b",
+          "test_id": "S33-T1",
+          "A": "DME",
+          "B": "TFOFE",
+          "point": "30"
+        },
+        {
+          "paper_id": "S33",
+          "figure_task": "S33_F7c",
+          "test_id": "S33-T9",
+          "A": "TFTFE",
+          "B": "DME",
+          "point": "1"
+        },
+        {
+          "paper_id": "S33",
+          "figure_task": "S33_F7c",
+          "test_id": "S33-T9",
+          "A": "TFTFE",
+          "B": "DME",
+          "point": "100"
+        },
+        {
+          "paper_id": "S33",
+          "figure_task": "S33_F7d",
+          "test_id": "S33-T10",
+          "A": "TFTFE",
+          "B": "DME",
+          "point": "1"
+        },
+        {
+          "paper_id": "S33",
+          "figure_task": "S33_F7d",
+          "test_id": "S33-T10",
+          "A": "TFTFE",
+          "B": "DME",
+          "point": "10"
+        },
+        {
+          "paper_id": "S33",
+          "figure_task": "S33_F7d",
+          "test_id": "S33-T10",
+          "A": "TFTFE",
+          "B": "DME",
+          "point": "13"
+        }
+      ]
+    }
+  ],
+  "no_mismatch_found_in_metadata": [
+    "S10",
+    "S11",
+    "S15",
+    "S39",
+    "S40",
+    "S51",
+    "P109",
+    "P211"
+  ],
+  "rate_loading_findings": "已采用比较均在各自测试内部；未见同一配对两侧倍率或载量不同的明确元数据。倍率梯度仅比较同一图面圈号；未跨测试拼接。",
+  "unchanged": "冻结预测、共享程序、已采用数据未改；仅交回条件审核建议。"
+}

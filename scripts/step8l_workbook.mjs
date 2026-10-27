@@ -29,10 +29,11 @@ const defs=[
  ['①一句话结论','conclusions',[10,65,65,180,115,27,40]],
  ['②要你看','questions',[10,15,34,18,70,75,32,100,35]],
  ['③测试','tests',[10,20,36,26,27,26,23,27,35,40,24,35,25,45,50,22,32,100]],
- ['④表现','results',[10,20,27,27,24,24,25,25,22,33,18,14,25,40,55,22,32,100]],
+ ['④表现','results',[10,20,27,27,24,24,25,25,22,33,18,14,25,40,55,22,32,100,65]],
  ['⑤机制','mechanisms',[10,23,85,24,24,33,36,33,45,22,22,32,110]],
  ['⑥配方','formulations',[10,25,38,70,38,34,30,25,35,32,100]],
  ['⑦性质梯度','properties',[10,14,40,85,75,45,50,32,100]],
+ ['⑧读图补充','figure_values',[10,18,22,25,25,15,25,25,18,18,22,20,95,65]],
  ['图读取记录','figures',[10,22,25,15,45,25,25,40,65,35,75,110]],
  ['评分明细','scores',[10,18,36,22,90,80,32,100]],
  ['程序核对记录','checks',[10,40,34,130]]
@@ -76,7 +77,7 @@ for(const [name,key,widths] of defs){
  sh.getRange('A2').format.font={name:'Arial',size:14,bold:true,color:'#20364D'};
  // Title is an overflowing plain cell, deliberately unmerged.
  sh.getRange('A2').format.wrapText=false;
- sh.getRange('A3').values=[[key==='conclusions'?`独立提取 ${data.counts.papers}/53 篇；AI交叉核对 ${data.metrics.reviewed_papers}/53 篇。当前为阶段结果，不能作为53篇总体指标。`:'首次预测保留；AI辅助复核，用户尚未逐项人工确认。过长原句使用续行，仍属同一单位。']];
+ sh.getRange('A3').values=[[key==='conclusions'?`独立提取 ${data.counts.papers}/53 篇；AI交叉核对 ${data.metrics.reviewed_papers}/53 篇。文本评分已完成；读图补充另列。`:'首次预测保留；AI辅助复核，用户尚未逐项人工确认。过长原句使用续行，仍属同一单位。']];
  sh.getRange('A3').format.wrapText=false;sh.getRange('A3').format.font.color='#785723';
  sh.getRange(`A${start}:${col(header.length)}${start}`).values=[header];
  sh.getRange(`A${start+1}:${col(header.length)}${end}`).values=expanded;
@@ -100,8 +101,8 @@ const score=wb.worksheets.getItem('评分');const last=layouts.find(x=>x.key==='
 score.showGridLines=false;score.tabColor='#20364D';
 score.getRange('A1:G13').format={font:{name:'Arial',size:10,color:'#243247'},verticalAlignment:'center',rowHeight:30};
 [22,12,12,12,16,16,36].forEach((w,i)=>score.getRange(`${col(i+1)}1:${col(i+1)}13`).format.columnWidth=w);
-score.getRange('A2').values=[['GPT 调试集阶段评分']];score.getRange('A2').format.font={name:'Arial',size:14,bold:true,color:'#20364D'};
-score.getRange('A3').values=[[`独立提取 ${data.counts.papers}/53 篇；交叉核对 ${data.metrics.reviewed_papers}/53 篇。全量评分尚未完成。`]];
+score.getRange('A2').values=[[data.metrics.all_53_text_reviews_complete?'GPT 53篇调试集文本评分':'GPT 调试集阶段评分']];score.getRange('A2').format.font={name:'Arial',size:14,bold:true,color:'#20364D'};
+score.getRange('A3').values=[[`独立提取 ${data.counts.papers}/53 篇；交叉核对 ${data.metrics.reviewed_papers}/53 篇；图请求已处理 ${data.figure_summary?.completed??0}/${data.figure_summary?.requested??0}。`]];
 score.getRange('A5:G5').values=[['范围/类别','TP','FP','FN','精确率','召回率','说明']];
 score.getRange('A5:G5').format={fill:'#E8EDF2',font:{name:'Arial',size:10,bold:true,color:'#20364D'},rowHeight:27};
 const cats=['测试及条件','方向','机制'];
@@ -114,14 +115,14 @@ for(let i=0;i<3;i++){
 score.getRange('A9').values=[['微平均']];
 score.getRange('B9:D9').formulas=[['=SUM(B6:B8)','=SUM(C6:C8)','=SUM(D6:D8)']];
 score.getRange('E9:F9').formulas=[['=IF(B9+C9=0,"不可计算",B9/(B9+C9))','=IF(B9+D9=0,"不可计算",B9/(B9+D9))']];
-score.getRange('E6:F9').setNumberFormat('0.0%');
+score.getRange('E6:F9').setNumberFormat('0.00%');
 score.getRange('A11').values=[['精确率=TP/(TP+FP)；召回率=TP/(TP+FN)。参考由AI复核，未经人工gold验收；未复核篇不进入上表。']];score.getRange('A11').format.wrapText=false;
-score.getRange('A12').values=[['结论保留首次提取；错漏见②。四部分分列，超长文字续行。不同测试/取值点不合并成总体好坏。']];score.getRange('A12').format.wrapText=false;
+score.getRange('A12').values=[['冻结预测保留；①采用程序修正并注明读图补充，初轮评分不变；错漏见②。同条件/同圈才比较。']];score.getRange('A12').format.wrapText=false;
 const info=wb.worksheets.getItem('说明');info.showGridLines=false;
 info.getRange('A1:B10').values=[
  ['项目','口径'],['版本','v4；机制按2026-10-25新增因果说法口径'],['提取方式','当前对话GPT及用户授权子代理。无外部付费API；不是固定API模型快照。'],
  ['预测冻结','首次独立预测保存后按SHA256冻结；未用旧参考生成首次预测。修正建议另存。'],
- ['评分范围',`当前仅 ${data.metrics.reviewed_papers}/53 篇交叉复核。暂定调试指标，非独立测试集准确率。`],
+ ['评分范围',`${data.metrics.reviewed_papers}/53 篇交叉复核；首次文本预测+初轮数值程序，暂定调试指标，非独立测试集准确率。程序修正见④末列，读图另列，不回改初轮分。`],
  ['机制单位','按因果说法去重；同义句、引用位置与数量不扣分；仅标签问题记修正。'],
  ['方向','同一测试条件才判；精确值差异小于5%记差异小；CE记百分点差不套阈值。近似/界限未被当前解析器支持时保留不判。'],
  ['图','图读取状态单列；只有代码读值、坐标校准和同测试文字锚点核对通过才使用。未完成的图不虚构数值。'],
@@ -139,6 +140,8 @@ console.log(JSON.stringify({saved:target,sheets:defs.length+2,extracted:data.cou
 // Render bounded copies of the saved view values and the identical authored sizing.
 // The full multi-thousand-row workbook renderer failed in this runtime's WASM engine.
 for(const layout of [{name:'评分',render:'A1:G13'},...layouts,{name:'说明',render:'A1:B10'}]){
+ const renderOnly=process.argv.find(a=>a.startsWith('--render-only='))?.slice(14).split(',');
+ if(renderOnly&&!renderOnly.includes(layout.name))continue;
  const pwb=Workbook.create();const ps=pwb.worksheets.add(layout.name);const source=wb.worksheets.getItem(layout.name);
  const cells=source.getRange(layout.render).values;const nr=cells.length,nc=cells[0].length;
  ps.getRange(layout.render).values=cells;
@@ -150,7 +153,7 @@ for(const layout of [{name:'评分',render:'A1:G13'},...layouts,{name:'说明',r
   ps.getRange(`A${r+1}:${col(nc)}${r+1}`).format.rowHeight=typeof h==='number'&&Number.isFinite(h)?h:20;
  }
  const hr=layout.name==='说明'?1:5;ps.getRange(`A${hr}:${col(nc)}${hr}`).format={fill:'#294B68',font:{name:'Arial',size:10,bold:true,color:'#FFFFFF'},wrapText:true};
- if(layout.name==='评分'){ps.getRange('E6:F9').setNumberFormat('0.0%');ps.getRange('A3:A3').format.wrapText=false;ps.getRange('A11:A12').format.wrapText=false;}
+ if(layout.name==='评分'){ps.getRange('E6:F9').setNumberFormat('0.00%');ps.getRange('A2:A3').format.wrapText=false;ps.getRange('A11:A12').format.wrapText=false;}
  else if(layout.name!=='说明'){ps.getRange('A2:A3').format.wrapText=false;}
  ps.getRange('A2').format.font={name:'Arial',size:14,bold:true,color:'#20364D'};
  pwb.recalculate();

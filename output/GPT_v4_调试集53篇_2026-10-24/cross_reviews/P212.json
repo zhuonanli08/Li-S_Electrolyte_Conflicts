@@ -325,8 +325,8 @@
     {
       "id": "T/P212-T4/P212-T4-R13",
       "category": "方向",
-      "verdict": "FP",
-      "reason": "作者定性原话正确，但两配方LiNO3不同，不能作为same_conditions=true的优劣判断",
+      "verdict": "TP",
+      "reason": "M0040直接给出DEGDME_HCE比TREGDME_HCE的CV峰更平滑、极化更低。按当前口径，作者本篇定性比较可保留，不能仅因LiNO3不同将正确转述扣为方向FP；不强化为单因素因果或同条件数值比较。same_conditions标记不当仍由T/P212-T4条件FP及更正说明承担。",
       "evidence_ids": [
         "M0040",
         "M0012"
@@ -561,6 +561,14 @@
         "M0012",
         "M0081"
       ]
+    },
+    {
+      "reference_id": "cross_review_condition_consistency_2026-10-27",
+      "reason": "本次参考裁定一致性纠正，受影响units共1项；预测与固定数值程序保持冻结。详细前值与修正保存在reference_revision_audit/condition_consistency_2026-10-27。",
+      "evidence_ids": [
+        "M0040",
+        "M0012"
+      ]
     }
   ],
   "unresolved": [],
@@ -576,7 +584,40 @@
     {
       "unit": "M/P212-M4",
       "action": "全电池更快电荷转移动力学的作者概括成立，但原句未定位正极反应"
+    },
+    {
+      "target_ids": [
+        "T/P212-T4/P212-T4-R13"
+      ],
+      "correction": "数值比较须将不同或不能确认相同LiNO3用量的same_conditions改为false/null，保留原数；作者定性可单独保留并说明混杂。",
+      "evidence_ids": [
+        "M0040",
+        "M0012"
+      ]
     }
   ],
-  "scoring_protocol": "v4-2026-10-25-claim-level"
+  "scoring_protocol": "v4-2026-10-25-claim-level",
+  "reference_revision_history": [
+    {
+      "date": "2026-10-27",
+      "reviewer": "extract_a",
+      "audit_file": "cross_reviews\\reference_revision_audit\\condition_consistency_2026-10-27\\report.json",
+      "affected_units": [
+        "T/P212-T4/P212-T4-R13"
+      ],
+      "counts_before": {
+        "FP": 6,
+        "TP": 5,
+        "SKIP_NONSCORING": 12,
+        "SKIP_ABSTENTION": 14
+      },
+      "counts_after": {
+        "FP": 5,
+        "TP": 6,
+        "SKIP_NONSCORING": 12,
+        "SKIP_ABSTENTION": 14
+      },
+      "missing_before_after": 6
+    }
+  ]
 }

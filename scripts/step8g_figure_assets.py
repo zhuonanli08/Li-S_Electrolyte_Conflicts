@@ -7,7 +7,7 @@ from step8a_prepare_debug53 import OUT,save
 
 LIB=Path(r'D:\Desktop\锂电催化\机器学习\skills\Open-Papertrail\Open-Papertrail\corpus\library')
 
-def pdfpath(pid,part):
+def sourcepath(pid,part):
     mf={m['id']:m for m in json.loads((OUT/'manifest.json').read_text(encoding='utf-8'))}
     papers=json.loads((LIB/'library.json').read_text(encoding='utf-8'))['papers']
     rec=papers.get(mf[pid]['doi'],{})
@@ -16,6 +16,10 @@ def pdfpath(pid,part):
     candidates=list(LIB.rglob(name))
     if len(candidates)!=1:raise ValueError(f'{pid}: expected one PDF, found {candidates}')
     p=candidates[0]
+    return p
+
+def pdfpath(pid,part):
+    p=sourcepath(pid,part)
     if p.suffix.lower()!='.pdf':raise ValueError(f'SI requires document conversion: {p}')
     return p
 

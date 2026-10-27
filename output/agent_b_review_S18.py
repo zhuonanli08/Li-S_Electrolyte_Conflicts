@@ -1,0 +1,25 @@
+from agent_b_review_common import *
+r=Review('S18')
+r.many('T1 T2 T3 T5 T6 T7 T8 T10 T11 T12 T13 T15 T16 T17 T18 T19','TP','SI确认600μm表征扣式与50μm循环分开；谱学/对称LiPS无LiNO3、全电池2wt%、软包5wt%分开，4种软包ES/倍率/载量及化成正确。')
+r.many('T4 T9 T14','FP','催化GITT沿用S0052协议，预测遗漏0.05 C两圈化成及15min脉冲/60min静置；仅写0.1C GITT不完整。')
+r.many('T3-R1 T7-R2 T7-R3','TP','Rct248/93.4、活化极化50.1/22.8与314/22.8精确配对，固定程序变坏正确。')
+r.many('T1-R1 T1-R2 T6-R1 T6-R2 T11-R1 T11-R2','SKIP_ABSTENTION','三系列概括近似CE与界限电压，模型和程序均不判；不当作每系列精确数值方向。')
+r.many('T2-R1 T7-R1 T8-R1 T12-R1 T13-R1','SKIP_ABSTENTION','全梯度单字符串而无A/B且不判，原文明示两阶段趋势可另列作者定性。')
+r.u('T3-R2','SKIP_NONSCORING','5.2为阶段增量而非配方A值，B空；留作变化说明，非A/B方向。')
+r.many('T4-R1 T4-R2 T5-R1 T9-R1 T10-R1 T14-R1 T15-R1','SKIP_ABSTENTION','同电解液但催化剂/隔膜不同，预测正确标不同条件不判；属于催化验证，不能作为电解液A/B好坏方向。')
+r.many('T5-R2 T16-R1 T16-R2 T16-R3 T17-R1 T17-R2 T17-R3 T18-R1 T18-R2 T18-R3 T19-R1 T19-R2 T19-R3','SKIP_NONSCORING','单配方单电池容量、能量、循环数字，非A/B方向。')
+r.u('M1','TP','M0034–M0037在本篇三WSS体系验证负极副反应抑制与正极动力学损害。')
+r.u('M2','TP','M0125/M0127/M0150/M0165明确进入内层直接配位导致本征电荷转移缓慢。')
+r.u('M3','TP','M0158/M0164指出自由基与基底结合增大、脱附及后继速控步骤受阻。')
+r.u('M4','SKIP_DUPLICATE','重复M1弱溶剂化利负极/损正极判断及M2活化极化瓶颈，失效为同一因果的结果，不另计机制。')
+r.u('M5','TP','M0169/M0175/M0194明确TiN独立促进界面转移且保留弱溶剂化负极稳定性，属于本文用于解决权衡的结论。')
+for s in ['DIPS','DIPE','HME']:r.fn('测试及条件',s+'35%催化GITT补0.05 C两圈、0.1 C15min/静置60min。','S0052 S0273','对应T4/T9/T14协议遗漏。')
+for s in ['DIPS','DIPE','HME']:r.fn('方向',s+'含量升高至40%时作者概括CE上升、最低放电电压降低；两者方向相反。','M0034 M0036 M0037','T1/T6/T11近似数值不判；应独立记录作者趋势，不把91/99作为精确分体系值。')
+r.fn('方向','三WSS系列活化极化在约20%后急升；浓差极化增幅较小，欧姆极化始终<10mV且热力学电位几乎不变。','M0057 M0058 M0069 M0070 M0082 M0083','现有结果仅DIPE两端精确配对，未覆盖完整趋势及主要例外。')
+r.fn('方向','DIPE40相对DIPE20活化极化314对50.1 mV进一步增加。','M0080 M0081','两者对DD分别配对不能替代此阈值后明确比较。',['comparisons[8]'])
+r.fn('方向','DIPS/DIPE/HME液液反应活化能在约20%转折后更快增加。','M0148 M0149 M0150','T3仅阶段增量，T8/T13不判，作者定性未作为方向。')
+r.d['reference_errors']=[dict(reference_id='conditions.C2.temp_C',reason='室温Rct对比不宜直接填25°C；变温测试确有25°C档，但不能据此将所有室温值统一赋值。',evidence_ids=['M0145','S0031'])]
+r.d['suggested_corrections']=['M4与M1/M2合并；T3/T8/T13补EIS开路、10mV、0.1Hz–10kHz协议。','催化剂比较保留上下文但不纳入电解液A/B方向分母；未将此类合理不判列FN。','ES可由45μL/[4mg cm−2×π(1.3cm/2)^2]明确推算，原文未报告无需凭空填写。']
+r.d['figure_triage']=[]
+for i,f in enumerate(r.p['figure_requests'],1):r.d['figure_triage'].append(dict(request_index=i,status='out_of_scope' if i in [1,3,5] else 'eligible',reason='纯梯度CE/最低电压不属本轮容量补读。' if i in [1,3,5] else '同测试有容量或寿命数字可校验，催化/软包结果只保留相应条件上下文。',evidence_ids=f['anchor_quote_ids']))
+r.finish()

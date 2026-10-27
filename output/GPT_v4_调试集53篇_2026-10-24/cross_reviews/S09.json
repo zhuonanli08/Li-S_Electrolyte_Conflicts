@@ -287,11 +287,13 @@
     {
       "id": "T/S09-T4/S09-T4-R1",
       "category": "方向",
-      "verdict": "TP",
-      "reason": "正文明确相应A/B数值，固定程序对同条件精确容量/保持率均判变好；原模型待复算不算漏方向。",
+      "verdict": "FP",
+      "reason": "最终参考第二次定点核对更正：实际A/B为F4DMB与DDN，前者无LiNO3、后者含1 wt% LiNO3；不是同条件数值比较。原数值本身正确，但冻结same_conditions=true及其派生数值/CE差值方向不满足本轮条件门槛，原TP改FP。作者明确的定性另计；T4最高容量已由FN7覆盖，软包作者定性新增FN15。",
       "evidence_ids": [
         "M0131",
-        "M0172"
+        "M0172",
+        "M0250",
+        "M0252"
       ],
       "reference_ids": [],
       "new_correct": false
@@ -311,10 +313,14 @@
     {
       "id": "T/S09-T9/S09-T9-R2",
       "category": "方向",
-      "verdict": "TP",
-      "reason": "正文明确相应A/B数值，固定程序对同条件精确容量/保持率均判变好；原模型待复算不算漏方向。",
+      "verdict": "FP",
+      "reason": "最终参考复核更正：F4DMB未加LiNO3，DDN含1 wt% LiNO3；冻结结果的same_conditions=true错误。原数值本身可保留，但本轮严格口径不允许据此产生同条件数值方向或同条件CE差值方向。原TP忽略添加剂条件，现改FP；作者明确的定性循环差异另计，不能用其替代该数值方向单元。",
       "evidence_ids": [
-        "M0187"
+        "M0187",
+        "M0250",
+        "M0251",
+        "M0252",
+        "S0029"
       ],
       "reference_ids": [],
       "new_correct": false
@@ -322,10 +328,12 @@
     {
       "id": "T/S09-T12/S09-T12-R1",
       "category": "方向",
-      "verdict": "TP",
-      "reason": "正文明确相应A/B数值，固定程序对同条件精确容量/保持率均判变好；原模型待复算不算漏方向。",
+      "verdict": "FP",
+      "reason": "最终参考第二次定点核对更正：实际A/B为F4DMB与DDN，前者无LiNO3、后者含1 wt% LiNO3；不是同条件数值比较。原数值本身正确，但冻结same_conditions=true及其派生数值/CE差值方向不满足本轮条件门槛，原TP改FP。作者明确的定性另计；T4最高容量已由FN7覆盖，软包作者定性新增FN15。",
       "evidence_ids": [
-        "M0209"
+        "M0209",
+        "M0250",
+        "M0252"
       ],
       "reference_ids": [],
       "new_correct": false
@@ -345,11 +353,15 @@
     {
       "id": "T/S09-T9/S09-T9-R1",
       "category": "方向",
-      "verdict": "TP",
-      "reason": "同条件原文CE配对准确；CE仅记录差值/百分点，不适用5%好坏规则。",
+      "verdict": "FP",
+      "reason": "最终参考复核更正：F4DMB未加LiNO3，DDN含1 wt% LiNO3；冻结结果的same_conditions=true错误。原数值本身可保留，但本轮严格口径不允许据此产生同条件数值方向或同条件CE差值方向。原TP忽略添加剂条件，现改FP；作者明确的定性循环差异另计，不能用其替代该数值方向单元。",
       "evidence_ids": [
         "M0185",
-        "M0186"
+        "M0186",
+        "M0250",
+        "M0251",
+        "M0252",
+        "S0029"
       ],
       "reference_ids": [],
       "new_correct": false
@@ -357,10 +369,12 @@
     {
       "id": "T/S09-T12/S09-T12-R2",
       "category": "方向",
-      "verdict": "TP",
-      "reason": "同条件原文CE配对准确；CE仅记录差值/百分点，不适用5%好坏规则。",
+      "verdict": "FP",
+      "reason": "最终参考第二次定点核对更正：实际A/B为F4DMB与DDN，前者无LiNO3、后者含1 wt% LiNO3；不是同条件数值比较。原数值本身正确，但冻结same_conditions=true及其派生数值/CE差值方向不满足本轮条件门槛，原TP改FP。作者明确的定性另计；T4最高容量已由FN7覆盖，软包作者定性新增FN15。",
       "evidence_ids": [
-        "M0209"
+        "M0209",
+        "M0250",
+        "M0252"
       ],
       "reference_ids": [],
       "new_correct": false
@@ -936,6 +950,31 @@
       ],
       "reference_ids": [],
       "reason": "T14带符号数值未判，原文定性可独立输出。"
+    },
+    {
+      "id": "FN14",
+      "category": "方向",
+      "description": "在各自原配方下，F4DMB表现稳定循环，而DDN在50圈内快速容量衰减；这是作者明确的定性循环比较。",
+      "evidence_ids": [
+        "M0185",
+        "M0186",
+        "M0252",
+        "S0029"
+      ],
+      "reference_ids": [],
+      "reason": "T9只有同条件数值CE/保持率配对，未独立输出作者稳定性定性。正确目标须标明F4DMB无LiNO3、DDN含1 wt%的混杂，不作为同条件电解液单因素数值方向。"
+    },
+    {
+      "id": "FN15",
+      "category": "方向",
+      "description": "作者明确指出F4DMB软包相对DDN具有更高CE和更高放电容量，属于原配方整体表现的定性比较。",
+      "evidence_ids": [
+        "M0209",
+        "M0252",
+        "S0039"
+      ],
+      "reference_ids": [],
+      "reason": "T12-R1/R2仅错误输出同条件数值配对，没有独立保留该作者定性；正确目标须注明F4DMB无LiNO3、DDN含1 wt%的混杂，不派生同条件数值方向。"
     }
   ],
   "reference_errors": [
@@ -961,6 +1000,41 @@
     "正文首圈F4DMB为1563、摘要为1526，预测采用正文并应保留冲突提示。",
     "T2-R3复合配方字符串宜程序展开明确配方id，不因编码形式本身扣科学方向分。",
     "补M0241平均容量787.3与M0191第30圈97%为单配方辅助数据，不计方向FN。",
-    "M0189 Ni促进成核属于正极材料对比，非本项目电解液归因；不列机制FN。"
+    "M0189 Ni促进成核属于正极材料对比，非本项目电解液归因；不列机制FN。",
+    "2026-10-27条件终核：数值方向须核LiNO3用量，作者明确的定性可保留但需标不同添加剂条件；本次仅修正人工参考裁定，不改冻结预测。",
+    "T1/T3通用条件中出现DDN并不代表每个实际A/B含DDN。本次仅改T4-R1、T12-R1/R2，T1两项、T3-R1和T4-R2无添加剂比较不改；T4作者最高容量定性已有FN7，不重复计漏。"
+  ],
+  "review_revision_history": [
+    {
+      "date": "2026-10-27",
+      "reason": "人工参考遗漏LiNO3条件差异",
+      "TP_to_FP": [
+        "T/S09-T9/S09-T9-R1",
+        "T/S09-T9/S09-T9-R2"
+      ],
+      "added_missing": [
+        "FN14"
+      ],
+      "details": "final_reference_corrections_b.json"
+    },
+    {
+      "date": "2026-10-27",
+      "reason": "核对T1/T3/T4/T12实际配方，仅追加DDN相关漏修",
+      "TP_to_FP": [
+        "T/S09-T4/S09-T4-R1",
+        "T/S09-T12/S09-T12-R1",
+        "T/S09-T12/S09-T12-R2"
+      ],
+      "added_missing": [
+        "FN15"
+      ],
+      "retained_TP": [
+        "T/S09-T1/S09-T1-R1",
+        "T/S09-T1/S09-T1-R2",
+        "T/S09-T3/S09-T3-R1",
+        "T/S09-T4/S09-T4-R2"
+      ],
+      "details": "final_reference_corrections_b.json"
+    }
   ]
 }

@@ -13,16 +13,23 @@ def main():
     reviews={(r['paper_id'],r['id']):r for r in rows}
     dirs={(r['paper_id'],r['unit']):r for r in read(OUT/'validation/numeric_directions.json',[])}
     metrics=read(OUT/'cross_review_metrics.json',{})
-    tables={k:[] for k in ['conclusions','questions','tests','results','mechanisms','formulations','properties','figures','scores','checks']}
+    figure_state=read(OUT/'figure_status.json',{})
+    figures={(r['paper_id'],r['request_index']):r for r in figure_state.get('requests',[])}
+    figure_dirs=read(OUT/'figure_supplement_directions.json',[])
+    figure_points=read(OUT/'figure_supplement_points.json',[])
+    fixes=read(OUT/'revisions/program_direction_corrections.json',{}).get('changes',[])
+    fixmap={(r['paper_id'],r['unit']):r for r in fixes}
+    tables={k:[] for k in ['conclusions','questions','tests','results','mechanisms','formulations','properties','figure_values','figures','scores','checks']}
     headers={
       'conclusions':['文献','对照与梯度','性质','各测试表现','机制与主张','复核状态','DOI'],
       'questions':['文献','类别','单位','裁定','预测或漏项','核对理由','证据位置','整句原文','✍ 人工备注'],
       'tests':['文献','测试ID','测试名','电池','硫载量','E/S','E/S单位','锂厚','倍率','化成','温度','LiNO3','1C定义','其余条件','配方','AI裁定','证据位置','整句原文'],
-      'results':['文献','测试ID','结果ID','指标','A','B','A值','B值','单位','取值点','依据','同条件','提取时方向文字','程序方向或百分点差','程序理由','AI裁定','证据位置','整句原文'],
+      'results':['文献','测试ID','结果ID','指标','A','B','A值','B值','单位','取值点','依据','同条件','提取时方向文字','初轮程序方向或百分点差','初轮程序理由','AI裁定','证据位置','整句原文','程序修正后（不回改初轮分）'],
       'mechanisms':['文献','说法ID','中文概括','A','B','性质','过程类别（原提取）','来源（原提取）','关联测试','短板侧','AI裁定','证据位置','整句原文'],
       'formulations':['文献','配方ID','配方名','原配方写法','组分','角色','用量','单位','对照类型','证据位置','整句原文'],
       'properties':['文献','类型','性质或梯度','数值或档位','方向或排序依据','测法','测量体系','证据位置','整句原文'],
       'figures':['文献','测试ID','图','正文或SI','所需指标','A','B','取值点','当前状态','锚点候选','请求理由','代码取值与核验'],
+      'figure_values':['文献','类型','测试ID','图任务','指标','实际圈号','配方A','配方B','A值','B值','单位','方向','锚点核验','备注'],
       'scores':['文献','类别','单位','裁定','核对理由','漏项描述','证据位置','整句原文'],
       'checks':['文献','单位','类型','详情']}
     counts=collections.Counter(); sources={}; descriptions={}
@@ -70,8 +77,10 @@ def main():
                     if r.get('same_conditions') is True and all(isinstance(x,(int,float)) for x in [a,b]):derived='CE差 '+str(round(a-b,6))+' 百分点（不判好坏）'
                 if not derived:derived='不判'
                 loc,q=evidence(pid,r.get('evidence_ids',[]));descriptions[pid,rid]=txt(r)
-                tables['results'].append([pid,tid,r['id'],r.get('metric'),r.get('A'),r.get('B'),r.get('value_A'),r.get('value_B'),r.get('unit'),r.get('point'),r.get('basis'),txt(r.get('same_conditions')),r.get('direction_text'),derived,dr.get('reason') or r.get('reason'),v,loc,q])
+                fix=fixmap.get((pid,rid))
+                tables['results'].append([pid,tid,r['id'],r.get('metric'),r.get('A'),r.get('B'),r.get('value_A'),r.get('value_B'),r.get('unit'),r.get('point'),r.get('basis'),txt(r.get('same_conditions')),r.get('direction_text'),derived,dr.get('reason') or r.get('reason'),v,loc,q,txt(fix['corrected_calculation'])+'；'+fix['reason'] if fix else None])
                 final=(r.get('direction_text') if r.get('basis')=='qualitative' else derived) or '不判'
+                if fix and r.get('basis')=='numeric':final=fix['corrected_calculation'].get('direction') or final
                 label=r.get('metric','')+('（作者定性）' if r.get('basis')=='qualitative' else '')
                 statements[label].add(final)
             cs=[]
@@ -84,33 +93,49 @@ def main():
             tables['mechanisms'].append([pid,m['id'],m.get('summary'),m.get('A'),m.get('B'),m.get('property'),txt(m.get('categories')),m.get('source_type'),txt(m.get('test_ids')),m.get('side'),verdict(uid),loc,q])
             mech.append(m['id']+' '+txt(m.get('side'))+'〔'+','.join(m.get('categories',[]))+'〕'+txt(m.get('summary'))+('【'+verdict(uid)+'】' if verdict(uid) in ['FP','SKIP_DUPLICATE','SKIP_NONSCORING'] else ''))
         mech+=['作者主张：'+txt(x.get('summary')) for x in d.get('design_claims',[])]
+        supplement=collections.defaultdict(list)
+        for fr in figure_dirs:
+            if fr['paper_id']==pid:
+                key=fr['test_id']+' '+fr['A']+' 对 '+fr['B']
+                supplement[key].append('第'+str(fr['point'])+'圈 '+fr['metric']+' '+txt(fr['calculation'].get('direction')))
+        if supplement:perf.append('【读图补充；不回改初轮评分】\n'+'\n'.join(k+'：'+'；'.join(v) for k,v in supplement.items()))
         checked=pid in metrics.get('paper_counts',{})
         tables['conclusions'].append([pid,summary_control,summary_props,'\n'.join(perf),'\n'.join(mech),'已AI核对，见②错漏项' if checked else '待AI复核',item['doi']])
-        for req in d.get('figure_requests',[]):
+        for ix,req in enumerate(d.get('figure_requests',[]),1):
             # A request is not a completed read. Keep unattempted work explicit.
             status='待逐图核查/读图'
             matches=[];read_details=[]
-            for path in (OUT/'figures'/pid).glob('*_results.json'):
+            state=figures.get((pid,ix),{})
+            for fn in state.get('result_files',[]):
+                path=OUT/'figures'/pid/fn
                 fr=read(path,{})
-                if fr.get('test_id')==req.get('test_id'):
+                if fr:
                     matches.append(fr.get('status','未完成'))
                     for fid,s in fr.get('series',{}).items():
                         usable={p:v for p,v in s.get('points',{}).items() if s.get('usable') and s.get('points_repeat_consistent',{}).get(p)}
-                        read_details.append(fid+' 可用点（圈: mAh/g）'+txt(usable)+'；锚点 '+txt(s.get('anchors')))
+                        read_details.append(fid+' 代码点（实际圈号: 原图单位）'+txt(usable)+'；锚点 '+txt(s.get('anchors')))
             if matches:status='；'.join(matches)
             elif not req.get('anchor_quote_ids'):status='未提供锚点候选，待核查原文'
+            if state:status=state['status']+'；'+txt(state.get('triage',{}).get('reason',''))
+            for fd in figure_dirs:
+                if fd['paper_id']==pid and fd['request_index']==ix:read_details.append('同圈方向：'+txt(fd))
             tables['figures'].append([pid,req.get('test_id'),req.get('figure'),req.get('part'),req.get('metric'),req.get('A'),req.get('B'),req.get('target_point'),status,txt(req.get('anchor_quote_ids')),req.get('reason'),'\n'.join(read_details)])
+    for p in figure_points:
+        tables['figure_values'].append([p['paper_id'],'单值',p['test_id'],p['figure_task'],p['metric'],p['point'],p['formulation'],None,p['value'],None,p['unit'],None,txt(p['anchors']),p['notes']])
+    for p in figure_dirs:
+        tables['figure_values'].append([p['paper_id'],'同圈比较',p['test_id'],p['figure_task'],p['metric'],p['point'],p['A'],p['B'],p['value_A'],p['value_B'],p['unit'],p['calculation'].get('direction'),None,p['usage']+'；'+p['calculation'].get('reason','')])
     for r in rows:
         pid=r['paper_id'];loc,q=evidence(pid,r.get('evidence_ids',[]))
         tables['scores'].append([pid,r['category'],r['id'],r['verdict'],r.get('reason'),r.get('description'),loc,q])
         if r['verdict'] in ['FP','FN','UNRESOLVED']:
             tables['questions'].append([pid,r['category'],r['id'],r['verdict'],r.get('description') or descriptions.get((pid,r['id']),''),r.get('reason'),loc,q,None])
     for i in read(OUT/'validation/issues.json',[]):tables['checks'].append([i['paper_id'],i['unit'],i['code'],txt(i['detail'])])
+    for f in fixes:tables['checks'].append([f['paper_id'],f['unit'],'程序修正（初轮分保留）',txt(f)])
     for path in sorted((OUT/'cross_reviews').glob('*.json')):
         d=read(path)
         for kind in ['reference_errors','suggested_corrections']:
             for r in d.get(kind,[]):tables['checks'].append([d['paper_id'],(r.get('unit') or r.get('reference_id')) if isinstance(r,dict) else '',kind,txt(r)])
-    save(OUT/'delivery_tables.json',{'as_of':'2026-10-26','counts':dict(counts),'metrics':metrics,'headers':headers,'tables':tables})
+    save(OUT/'delivery_tables.json',{'as_of':'2026-10-27','counts':dict(counts),'metrics':metrics,'figure_summary':figure_state.get('summary',{}),'headers':headers,'tables':tables})
     print(json.dumps({'counts':dict(counts),'sheet_rows':{k:len(v) for k,v in tables.items()}},ensure_ascii=False))
 
 if __name__=='__main__':main()

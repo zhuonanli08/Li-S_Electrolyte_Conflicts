@@ -1,0 +1,124 @@
+{
+  "id": "S24_F5g",
+  "test_id": "S24-T13",
+  "source_image": "D:\\Desktop\\课题二锂硫电解液矛盾归因\\output\\GPT_v4_调试集53篇_2026-10-24\\figures\\S24\\main\\p6_xref145.png",
+  "status": "锚点通过；仅使用points_repeat_consistent为true的点",
+  "calibration": {
+    "y": [
+      -3.752332007462423,
+      1835.6436340596285,
+      [
+        0.2007504690431574,
+        0.09943714821764615,
+        0.3996247654784497,
+        0.3001876172607467,
+        5.684341886080802e-14,
+        0.3001876172608604,
+        0.39962476547833603,
+        0.09943714821753247,
+        0.20075046904325689
+      ]
+    ],
+    "x_semantics": {
+      "type": "linear_cycle",
+      "ticks": [
+        0,
+        10,
+        20,
+        30,
+        40,
+        50
+      ],
+      "tick_pixels": [
+        115,
+        240,
+        364,
+        489,
+        614,
+        738
+      ]
+    }
+  },
+  "frame": [
+    114,
+    737,
+    62,
+    488
+  ],
+  "series": {
+    "MAN": {
+      "legend": "MAN",
+      "color": [
+        250,
+        60,
+        60
+      ],
+      "points": {
+        "1": 903.2,
+        "25": 728.7,
+        "50": 670.5
+      },
+      "repeat_points": {
+        "1": 903.2,
+        "25": 728.7,
+        "50": 670.5
+      },
+      "points_repeat_consistent": {
+        "1": true,
+        "25": true,
+        "50": true
+      },
+      "anchors": [
+        {
+          "point": 1,
+          "value": 907,
+          "evidence_id": "M0110",
+          "expected_value": 907,
+          "read_value": 903.2,
+          "tolerance": 100.0,
+          "pass": true
+        },
+        {
+          "type": "retention",
+          "point": 50,
+          "initial_point": 1,
+          "ratio": 0.72,
+          "value": null,
+          "evidence_id": "M0110",
+          "expected_value": 650.304,
+          "read_value": 670.5,
+          "tolerance": 100.0,
+          "pass": true
+        }
+      ],
+      "usable": true,
+      "reason": "同测试锚点和重复读取通过"
+    }
+  },
+  "shared_test_anchor_evidence": [
+    "M0110",
+    "M0155"
+  ],
+  "metric": "放电容量",
+  "unit": "mAh g−1",
+  "reader": "review_c_s24_fig.py",
+  "request_index": 10,
+  "visual_verified": true,
+  "allow_comparison": false,
+  "condition_review": {
+    "task_id": "S24_F5g",
+    "allow_comparison": false,
+    "same_conditions": null,
+    "reason": "只比较同一图、同倍率或同 E/S/孔隙率的 MAN 与对照；不同梯度条件分别保存。方法未报告 LiNO3，保持未知，不补写为零。Fig5g/h 为 MAN 单组，不生成配对。",
+    "evidence_ids": [
+      "M0116",
+      "M0117",
+      "M0131",
+      "M0135",
+      "M0136",
+      "M0137",
+      "M0154",
+      "M0155"
+    ]
+  }
+}

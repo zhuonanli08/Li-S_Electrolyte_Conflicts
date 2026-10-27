@@ -3,6 +3,18 @@ BASE=pathlib.Path(__file__).resolve().parents[1]
 def read(p):return json.loads(pathlib.Path(p).read_text(encoding='utf-8-sig'))
 def packet(pid,mode='all',start=0,end=99999):
  p=read(BASE/'independent_predictions'/f'{pid}.json')
+ if mode=='compact':
+  print('PRED',pid)
+  for t in p['tests']:
+   print(t['id'],t['name'],t['cell'],json.dumps(t['conditions'],ensure_ascii=False,separators=(',',':')),t['evidence_ids'])
+   for r in t['results']:print(r['id'],r['metric'],r['A'],r['B'],r['value_A'],r['value_B'],r['unit'],r['point'],r['basis'],r['direction_text'],r['same_conditions'],','.join(r['evidence_ids']))
+  for m in p['mechanisms']:print(m['id'],m['summary'],m['source_type'],','.join(m['evidence_ids']))
+  print('FIG',p.get('figure_requests',[]))
+  m=next(x for x in read(BASE/'manifest.json') if x['id']==pid);old=read(m['reference'])
+  print('REFCOND',old.get('条件'));print('REF',old.get('比较'));print('REFNOTE',old.get('备注'))
+  print('NUM',[(n['unit'],n['direction']) for n in read(BASE/'validation/numeric_directions.json') if n['paper_id']==pid])
+  for s in read(BASE/'sources'/f'{pid}.json'):
+   if any(w in s['text'] for w in ['Results','Experimental','Conclusion','References']):print('HEAD',s['id'],s['text'][:110])
  if mode in ('all','pred'):
   print('PRED',pid)
   for t in p['tests']:
