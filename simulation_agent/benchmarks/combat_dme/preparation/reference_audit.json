@@ -1,0 +1,157 @@
+{
+  "status": "REFERENCE_TABLES_CONSISTENT",
+  "scope": "作者公开派生数据的算术、单位与表间一致性；不是新计算或独立物理验证",
+  "checks": [
+    {
+      "name": "BE_Salt vs be_eV",
+      "reconstructed": -1.0662152845346637,
+      "reference": -1.0662158234538386,
+      "unit": "eV",
+      "absolute_difference": 5.389191748417232e-07,
+      "absolute_tolerance": 0.0001,
+      "passed": true
+    },
+    {
+      "name": "BE_Salt vs data.csv",
+      "reconstructed": -24.587508566750454,
+      "reference": -24.58814712,
+      "unit": "kcal/mol",
+      "absolute_difference": 0.0006385532495443158,
+      "absolute_tolerance": 0.001,
+      "passed": true
+    },
+    {
+      "name": "BE_PS vs be_eV",
+      "reconstructed": -1.0914922133409033,
+      "reference": -1.0914927650363173,
+      "unit": "eV",
+      "absolute_difference": 5.516954140194485e-07,
+      "absolute_tolerance": 0.0001,
+      "passed": true
+    },
+    {
+      "name": "BE_PS vs data.csv",
+      "reconstructed": -25.170408392497933,
+      "reference": -25.17106208,
+      "unit": "kcal/mol",
+      "absolute_difference": 0.0006536875020657362,
+      "absolute_tolerance": 0.001,
+      "passed": true
+    },
+    {
+      "name": "Li - O (DOL)",
+      "reconstructed": 0.5914831279046273,
+      "reference": 0.5914831279046273,
+      "unit": "dimensionless",
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "Li - X (Solvent)",
+      "reconstructed": 3.095827439886844,
+      "reference": 3.095827439886844,
+      "unit": "dimensionless",
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "Li - O (TFSI)",
+      "reconstructed": 0.2904122044857546,
+      "reference": 0.2904122044857546,
+      "unit": "dimensionless",
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "Li - S (PS)",
+      "reconstructed": 0.4260456657910686,
+      "reference": 0.4260456657910686,
+      "unit": "dimensionless",
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "Li - Li",
+      "reconstructed": 0.1895332390381895,
+      "reference": 0.1895332390381895,
+      "unit": "dimensionless",
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "Diffusion_DOL",
+      "reconstructed": 7.491716153339208e-10,
+      "reference": 7.491716153339207e-10,
+      "unit": "m2/s",
+      "absolute_difference": 1.0339757656912846e-25,
+      "absolute_tolerance": 1e-18,
+      "passed": true
+    },
+    {
+      "name": "Diffusion_Solvent",
+      "reconstructed": 3.958228128088651e-10,
+      "reference": 3.95822812808865e-10,
+      "unit": "m2/s",
+      "absolute_difference": 1.0339757656912846e-25,
+      "absolute_tolerance": 1e-18,
+      "passed": true
+    },
+    {
+      "name": "Diffusion_TFSI",
+      "reconstructed": 2.8672371261048327e-10,
+      "reference": 2.8672371261048327e-10,
+      "unit": "m2/s",
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-18,
+      "passed": true
+    },
+    {
+      "name": "Diffusion_PS",
+      "reconstructed": 1.2547816330484516e-10,
+      "reference": 1.2547816330484516e-10,
+      "unit": "m2/s",
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-18,
+      "passed": true
+    },
+    {
+      "name": "Diffusion_Li",
+      "reconstructed": 2.507529827286997e-10,
+      "reference": 2.5075298272869966e-10,
+      "unit": "m2/s",
+      "absolute_difference": 5.169878828456423e-26,
+      "absolute_tolerance": 1e-18,
+      "passed": true
+    },
+    {
+      "name": "Diffusion_Ratio",
+      "reconstructed": 1.5785368074250292,
+      "reference": 1.578536807425029,
+      "unit": "dimensionless",
+      "absolute_difference": 2.220446049250313e-16,
+      "absolute_tolerance": 1e-10,
+      "passed": true
+    }
+  ],
+  "real_jobs_submitted": 0,
+  "new_scientific_results": 0,
+  "raw_log_reparsed": false,
+  "trajectory_reanalyzed": false,
+  "limitations": [
+    "复合物摘要未包含完整 route，不能仅靠同名 functional/basis 证明所有计算参数一致",
+    "原始 Gaussian 日志、MD 轨迹未在锁定仓库目录中发现；Minimum 是作者摘要标记，尚未独立核查频率",
+    "MD 的 std 字段不在本轮解释为重复模拟置信区间",
+    "run_md.py 引用旧接口和大小写不同的文件名；epsilon.py 查找 DOL 行，而锁定 data.csv 无该行，禁止原样执行",
+    "data.csv 的配位/扩散含 0.25 M Li2S8，电导/黏度对应无多硫化物体系，不混作同一配方"
+  ],
+  "dme_inchi": "InChI=1S/C4H10O2/c1-5-3-4-6-2/h3-4H2,1-2H3",
+  "dme_smiles": "COCCOC",
+  "dol_row_present": false,
+  "source_commit": "caa1130df2b4feeb9eaafe1565af8e1a4283986a",
+  "verified_source_files": 25
+}

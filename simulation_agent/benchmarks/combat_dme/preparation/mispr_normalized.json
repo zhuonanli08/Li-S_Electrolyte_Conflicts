@@ -1,0 +1,44 @@
+{
+  "provider": "MISPR",
+  "commit": "efc14e160b97f958aaf78cc2cf499bb578295f80",
+  "callable": "mispr.gaussian.utilities.inputs.handle_gaussian_inputs",
+  "input_hash": "1e4381e209276ae4e75c64781e7689861116d1ef82516db440e1d7cfa3e10768",
+  "gaussian_inputs": {
+    "opt": {
+      "functional": "B3LYP",
+      "basis_set": "6-31+G*",
+      "route_parameters": {
+        "Opt": "(calcfc, tight)",
+        "SCF": "(tight, xqc)",
+        "int": "ultrafine",
+        "NoSymmetry": null,
+        "test": null,
+        "EmpiricalDispersion": "GD3"
+      },
+      "link0_parameters": {
+        "%chk": "opt.chk",
+        "%mem": "3072MB",
+        "%NProcShared": "2"
+      }
+    },
+    "freq": {
+      "functional": "B3LYP",
+      "basis_set": "6-31+G*",
+      "route_parameters": {
+        "Freq": null,
+        "iop(7/33=1)": null,
+        "NoSymmetry": null,
+        "test": null,
+        "EmpiricalDispersion": "GD3"
+      },
+      "link0_parameters": {
+        "%chk": "freq.chk",
+        "%mem": "3072MB",
+        "%NProcShared": "2"
+      }
+    }
+  },
+  "scientific_protocol_approved": false,
+  "jobs_submitted": 0,
+  "note": "实际调用上游输入整理函数；没有运行 DFT，也没有完成科学协议验收。"
+}

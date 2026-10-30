@@ -1,0 +1,38 @@
+{
+  "status": "PREPARED_NOT_SUBMITTED",
+  "sample": "DME",
+  "atoms": 16,
+  "source_commit": "caa1130df2b4feeb9eaafe1565af8e1a4283986a",
+  "source_file": "binding_energy/single_molecules/dme.json",
+  "reference_engine": "ES64L-G16RevC.01",
+  "reference_energy_hartree": -308.880563451,
+  "reference_stationary_type_reported": "Minimum",
+  "task": "Frequency calculation on published DME geometry, gas phase, B3LYP/6-31+G* + GD3",
+  "scope": "检验输入/引擎/输出链路及测实耗；不代表从零优化、多构型搜索、结合能或 MD 流程验收",
+  "resource_draft": {
+    "cpus": 2,
+    "allocated_memory_gb": 4,
+    "gaussian_memory_mb": 3072,
+    "walltime_minutes": 30,
+    "maximum_core_hours_if_core_billed": 1.0
+  },
+  "price_per_core_hour": null,
+  "spend_cap": null,
+  "can_submit": false,
+  "changes_from_author": [
+    "28 核/45GB 改为待平台核实的 2 核/3072MB；调度申请内存 4GB",
+    "只从公开几何运行频率阶段，不执行全库脚本或几何优化"
+  ],
+  "required_before_submission": [
+    "确认 Gaussian 可用及版本、许可证、队列、最低资源和计费规则",
+    "按实际计价形成费用上界和限时脚本",
+    "检查资源草案是否足够并确认最终单样本费用上限"
+  ],
+  "validation_after_run": [
+    "保留原始日志、命令、版本、输入哈希与计费记录",
+    "检查正常结束、全部振动频率及能量；能量差异调查阈值暂设 1e-5 Hartree，非物理精度标准",
+    "频率/几何/科学质检尚待实现；不得凭正常退出自动标记科学 PASSED"
+  ],
+  "real_jobs_submitted": 0,
+  "full_mispr_execution_connected": false
+}

@@ -1,0 +1,38 @@
+{
+  "gaussian_inputs": {
+    "opt": {
+      "functional": "B3LYP",
+      "basis_set": "6-31+G*",
+      "route_parameters": {
+        "Opt": "(calcfc, tight)",
+        "SCF": "(tight, xqc)",
+        "int": "ultrafine",
+        "NoSymmetry": null,
+        "test": null,
+        "EmpiricalDispersion": "GD3"
+      },
+      "link0_parameters": {
+        "%chk": "opt.chk",
+        "%mem": "3072MB",
+        "%NProcShared": "2"
+      }
+    },
+    "freq": {
+      "functional": "B3LYP",
+      "basis_set": "6-31+G*",
+      "route_parameters": {
+        "Freq": null,
+        "iop(7/33=1)": null,
+        "NoSymmetry": null,
+        "test": null,
+        "EmpiricalDispersion": "GD3"
+      },
+      "link0_parameters": {
+        "%chk": "freq.chk",
+        "%mem": "3072MB",
+        "%NProcShared": "2"
+      }
+    }
+  },
+  "solvent_gaussian_inputs": null
+}
