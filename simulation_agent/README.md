@@ -14,6 +14,7 @@
 
 ## 当前可用功能
 
+- **MISPR 部分复用**：已直接调用锁定版本的 Gaussian 输入整理函数；其他子流程的适用边界见 [MISPR_REUSE.md](MISPR_REUSE.md)。这不代表已接入它的真实 DFT/MD 执行。
 - `doctor`：检查 Python 与本机 PATH；未发现命令不等于超算未安装。
 - `plan`：检查输入合同，列出缺失项、流程阶段、质检项目和资源申请上界。
 - `register/list/show`：SQLite 持久登记和查询，保留状态、重试次数、来源与事件。
@@ -81,7 +82,7 @@ SQLite 仅用于本地单一控制端，不部署到超算共享文件系统。�
 
 ## 技术参考
 
-- [MISPR 官方仓库](https://github.com/molmd/mispr)：既有计算工作流、调度和数据库管理参考。本版未安装或复制 MISPR，也不宣称优于它；平台确认后再决定复用范围。
+- [MISPR 官方仓库](https://github.com/molmd/mispr)：已下载锁定源码并直接复用一个输入整理模块，未安装完整计算栈；后续按 MISPR_REUSE.md 的子模块边界接入。
 - [LAMMPS 日志文档](https://docs.lammps.org/Run_output.html)：运行结束时的耗时和统计信息可辅助预算；正常结束不代表科学收敛。
 - [LAMMPS MSD 文档](https://docs.lammps.org/compute_msd.html)：扩散分析须正确处理周期边界、参考位置和续算；不能仅拿一个斜率自动判定可靠。
 - 输入/调度格式：[ORCA 官方](https://www.faccts.de/docs/orca/6.1/manual/contents/essentialelements/input.html)、[CSC Gaussian](https://docs.csc.fi/apps/gaussian/)、[LAMMPS 命令行](https://docs.lammps.org/Run_options.html)、[Slurm sbatch 官方](https://slurm.schedmd.com/sbatch.html)。实际版本以用户平台为准。
@@ -90,6 +91,6 @@ SQLite 仅用于本地单一控制端，不部署到超算共享文件系统。�
 
 ## 验证记录
 
-51 项本地单元测试通过（另含多个子测试），DFT 13/13、MD 15/15 阶段演示跑通；两份草稿经 CLI 登记为 NEEDS_REVIEW、尝试次数 0。详情见 `verification.json`。覆盖任务管理、故障恢复、输入渲染、合成日志解析、能量算术和预算算术，不覆盖量化精度、MD 收敛、远程调度或真实账单。首次测试因 Windows 沙箱临时目录无法创建 SQLite 失败，改用本项目 `work/tests/` 后通过。
+现为 0.2.1，57 项本地测试通过、无跳过（其中两个直接调用真实上游 MISPR 输入整理函数）；DFT 13/13、MD 15/15 阶段演示跑通。两份草稿仍为 NEEDS_REVIEW、尝试次数 0。详情见 `verification.json`。不覆盖量化精度、MD 收敛、远程调度或真实账单。首次测试因 Windows 沙箱临时目录无法创建 SQLite 失败，改用本项目 `work/tests/` 后通过。
 
 本机 papertrail 环境有 NumPy，未发现 RDKit/ASE；暂未安装新包。三维结构生成仍需补齐，不能把草稿中的分子名称直接当作已验证的计算结构。

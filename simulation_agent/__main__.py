@@ -14,6 +14,7 @@ from .budget import estimate
 from .workflow import WorkflowRun, build_workflow, export_workflow
 from .engines import inspect_log, render_dft
 from .scheduler import render_slurm
+from .mispr_adapter import normalize_gaussian
 
 
 def main(argv=None):
@@ -21,7 +22,7 @@ def main(argv=None):
     parser.add_argument("--db", default="simulation_agent/work/tasks.sqlite3")
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("doctor", help="只读检查本机 Python 与命令路径")
-    for name in ("plan", "register", "estimate"):
+    for name in ("plan", "register", "estimate", "mispr-inputs"):
         commands.add_parser(name).add_argument("spec", type=Path)
     commands.add_parser("list")
     commands.add_parser("show").add_argument("task_id")
@@ -53,6 +54,8 @@ def main(argv=None):
             result = plan(load_json(args.spec))
         elif args.command == "estimate":
             result = estimate(load_json(args.spec))
+        elif args.command == "mispr-inputs":
+            result = normalize_gaussian(load_json(args.spec))
         elif args.command == "workflow":
             workflow = build_workflow(load_json(args.spec), args.replicas)
             result = {"path": str(export_workflow(workflow, args.out)), "workflow_id": workflow["workflow_id"],
