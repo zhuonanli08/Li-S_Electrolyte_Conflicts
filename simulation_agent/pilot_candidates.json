@@ -1,0 +1,163 @@
+{
+  "date": "2026-10-30",
+  "status": "discussion_only",
+  "submission_enabled": false,
+  "selection_scope": "从已有 S11/S21/S33/S39 开发材料定位，再核对 S11/S21/S39 原文缓存；不是全库最优选样。",
+  "user_constraints": [
+    "无计算经验或现成脚本",
+    "有超算，费用需控制",
+    "先列小样后讨论"
+  ],
+  "candidates": [
+    {
+      "id": "DFT-pilot",
+      "priority": 1,
+      "proposal": "DME–Li+、DOL–Li+、TTE/HFE–Li+ 三类 1:1 团簇，先完成一个 DME–Li+ 流程试算再估全批费用。",
+      "source_papers": [
+        "S11: 10.1002/anie.202309968",
+        "S39: 10.1021/acsenergylett.5c02200"
+      ],
+      "purpose": "验证构型生成、相同协议的结合能定义、日志解析和质检；初步比较不同组分与 Li+ 的作用。",
+      "limits": "这是本课题新增的小团簇基准，不是对原文 Li2S4/Li2S8 结合能的复现；孤立 Li+ 团簇不能代表混合电解液溶剂化自由能。",
+      "job_accounting": "三种复合物、三种自由溶剂、一个 Li+ 为至少七类能量对象；多构型、频率/单点/基组误差及重试另算，不能按三项结合能当成三个作业。",
+      "pending": [
+        "结构与 HFE/TTE 同一性核验",
+        "软件可用性",
+        "构型搜索和计算级别",
+        "是否需要频率检查及其阈值",
+        "预算"
+      ],
+      "evidence": [
+        {
+          "path": "output/text_cache/10.1002_anie.202309968.si.txt",
+          "sha256": "ea3690933ab8fd17853fd856d41aaf2e71391416399101e670e903509da9da1e",
+          "line_start": 15,
+          "line_end": 18,
+          "excerpt": "1.1. Raw materials \nLithium (Li) metal foils were purchased from China Energy Lithium Co., Ltd. 1,2-dimethoxyethane (DME, DoDoChem), 1,3-\ndioxolane (DOL, DoDoChem), 1,1,2,2-tetrafluoroethyl-2,2,3,3-tetrafluoropropylether (HFE, TCI), LiNO3 (Aladdin), lithium bis-\n(trifluoromethanesulfonyl)imide (LiTFSI, DoDoChem), Li2S (Alfa), elemental sulfur (S8, Alfa), aluminum (Al) foils, polypropylene (PP) "
+        },
+        {
+          "path": "output/text_cache/10.1002_anie.202309968.si.txt",
+          "sha256": "ea3690933ab8fd17853fd856d41aaf2e71391416399101e670e903509da9da1e",
+          "line_start": 89,
+          "line_end": 97,
+          "excerpt": "1.8. Density functional theory (DFT) calculation \nThe DFT calculations were carried out in Gaussian (G16) program[1] with Becke’s three-parameter hybrid method using the Lee–\nYang–Parr correlation functional (B3LYP)[2] at 6-311+G(d,p) level. The solvation effect was considered with the universal solvation \nmodel of SMD[3] employing parameters of DME. \nThe binding energy (Eb) between a lithium polysulfide (LiPS, Li2S8 or Li2S4) and solvents (DME and/or HFE) was defined as \nfollows: \nEb = Ecluster – (ELiPS + Esolvents) \nwhere Ecluster and ELiPS represent the total energy of the cluster and LiPS, respectively. Esolvents is the total energy of two DME solvents, \none DME solvent and one HFE solvent, or two HFE solvents that coordinate with LiPS. "
+        }
+      ]
+    },
+    {
+      "id": "MD-pilot",
+      "priority": 2,
+      "proposal": "S39 的 DOL/DME=1:1 与 DOL/TTE=4:1 两个无多硫化物 MD 体系；均按表 S1 的 1 M LiTFSI + 0.1 M LiNO3 组成作为待核候选。",
+      "source_papers": [
+        "S39: 10.1021/acsenergylett.5c02200"
+      ],
+      "purpose": "先验证密度、RDF/配位统计；扩散须通过采样验证。先用一个体系测实耗，再决定另一个体系及独立重复。",
+      "composition_candidates_from_text": [
+        {
+          "label": "DOL/DME",
+          "DOL": 358,
+          "DME": 241,
+          "TTE": 0,
+          "TFSI-": 50,
+          "NO3-": 5,
+          "Li+": 55
+        },
+        {
+          "label": "DOL/TTE",
+          "DOL": 573,
+          "DME": 0,
+          "TTE": 66,
+          "TFSI-": 50,
+          "NO3-": 5,
+          "Li+": 55
+        }
+      ],
+      "limits": "表 S1 为 0.1 M LiNO3，Li||S 配方为 0.2 M；不能直接关联为同配方的电池性能特征。表格数字目前仅核原文文本，未视觉验表。原方法为 NAMD/GAAMP，大体系和 64 条轨迹不能照搬成低预算方案。",
+      "pending": [
+        "表 S1 视觉核对及组成/总原子数说明核对",
+        "TTE/离子参数可得性与兼容性",
+        "固定力场、电荷方案",
+        "规模及盒子/密度自洽",
+        "采样收敛和独立重复数",
+        "预算"
+      ],
+      "evidence": [
+        {
+          "path": "output/text_cache/10.1021_acsenergylett.5c02200.si.txt",
+          "sha256": "02a6c1beaa288bd531bcec95e924a990fde752c855879a85dfe458db71a22622",
+          "line_start": 29,
+          "line_end": 38,
+          "excerpt": "2. Electrolyte preparation\nThe solvent mixtures of DOL/DME (1:1 v/v), DOL/F4DEE (4:1 v/v) and DOL/TTE (4:1 v/v) \nwere prepared in advance. Four kinds of electrolyte solutions were then prepared: (1) For Li+ \nsolvation study, 1.0 M LiTFSI was dissolved in each single/mixed solvent; (2) For LiPS \nsolvation study, Li2S and S8 were mixed with a molar ratio 8:5 and then dissolved in varied \nsolvents to reach Li2S6 nominal concentration of 0.1 M; (3) For Li||Carbon paper cell \nconstruction, 1.0 M LiTFSI and 0.1 M LiNO3 were dissolved in the solutions prepared in (2); \n(4) For Li||S cell construction, 1.0 M LiTFSI and 0.2 M LiNO3 were dissolved in varied \nsolvents. All electrolyte preparation processes were performed in an argon-filled glove-box \nwith controlled moisture and oxygen level below 1 ppm."
+        },
+        {
+          "path": "output/text_cache/10.1021_acsenergylett.5c02200.si.txt",
+          "sha256": "02a6c1beaa288bd531bcec95e924a990fde752c855879a85dfe458db71a22622",
+          "line_start": 118,
+          "line_end": 136,
+          "excerpt": "II. Computational Methods\nMolecular dynamics (MD) simulations were performed on the Cray cluster Theta of the \nLeadership Computing Facility at Argonne National Laboratory. The simulations were \ncarried out in a high-performance mode with version 2.14 of NAMD2, a greatly scalable \nmolecular dynamic program used to render an atom-by-atom representation of biomolecules, \ncreated at the University of Illinois. All electrolyte simulations adopted GAMMP force field3 \ngenerated through GAAMP server on Laboratory Computing Resource Center at Argonne \nNational Laboratory. The molar ratios of each molecular species in DOL-DME, DOL-F4DEE \nand DOL-TTE electrolyte with and without the existence of 0.1 M Li2S6 are listed in Table \nS1. The number of atoms for the simulated systems range between 81,830 and 100,000, and \nthe dimension of each simulation cell is ~150Å×150Å×150Å. All simulations adopt Periodic \nBoundary Condition under constant NVT condition. The equations of motion were integrated \nwith a 2-fs time step, using Langevin dynamics at a temperature of 300 K. To overcome the \nslow dynamics due to the high viscosity of the simulated systems, Hamiltonian simulated \nannealing method (HSA)4 was employed to accelerate the equilibration of MD trajectories. In \neach HSA simulation, 64 independent trajectories were generated, and all of them were used \nto get the statistical average of structural properties. Each trajectory lasts 20 ns, and the last \n10 ns was adopted to do statistical average. Snapshot of each trajectory was sampled at an \ninterval of 100 ps, and thus for each simulated system, 6400 snapshots were adopted to "
+        },
+        {
+          "path": "output/text_cache/10.1021_acsenergylett.5c02200.si.txt",
+          "sha256": "02a6c1beaa288bd531bcec95e924a990fde752c855879a85dfe458db71a22622",
+          "line_start": 143,
+          "line_end": 204,
+          "excerpt": "Table S1. The number of each molecular species in various electrolytes used in MD \nsimulation box.\nElectrolyte formulation\nDOL\nDME\nF4DEE\nTTE\nTFSI-\nNO3-\nS62-\nLi+\n1 M LiTFSI DOL/DME (1:1 \nv/v), 0.1 M LiNO3\n358\n241\n0\n0\n50\n5\n0\n55\n1 M LiTFSI DOL/DME (1:1 \nv/v), 0.1 M LiNO3, 0.1 M \nLi2S6\n358\n241\n0\n0\n50\n5\n5\n65\n1 M LiTFSI DOL/F4DEE \n(4:1 v/v), 0.1 M LiNO3\n573\n0\n65\n0\n50\n5\n0\n55\n1 M LiTFSI DOL/F4DEE \n(4:1 v/v), 0.1 M LiNO3, 0.1 \nM Li2S6\n573\n0\n65\n0\n50\n5\n5\n65\n1 M LiTFSI DOL/TTE (4:1 \nv/v), 0.1 M LiNO3\n573\n0\n0\n66\n50\n5\n0"
+        }
+      ]
+    },
+    {
+      "id": "later-polysulfide",
+      "priority": 3,
+      "proposal": "基础流程通过后，用 S11 的 Li2S4 与 DME/HFE 团簇做针对性检验；MD 多硫化物探针另立任务。",
+      "source_papers": [
+        "S11: 10.1002/anie.202309968"
+      ],
+      "purpose": "把 Li+ 侧和多硫化物侧的相互作用分开检验。",
+      "limits": "S11 表 S6 的 MD 含 Li2S4 或 Li2S8，且未列 LiNO3；与其含 2 wt.% LiNO3 电池配方不同。参数和电荷/拓扑未验证前不启动。",
+      "evidence": [
+        {
+          "path": "output/text_cache/10.1002_anie.202309968.si.txt",
+          "sha256": "ea3690933ab8fd17853fd856d41aaf2e71391416399101e670e903509da9da1e",
+          "line_start": 22,
+          "line_end": 26,
+          "excerpt": "1.2. Preparation of electrolytes \nA mixture of DOL/DME (1:1, by vol.) or mixed with 10%, 20% or 30% HFE by volume was first prepared. 1.0 M LiTFSI was then \ndissolved in the above four mixed solvents with 2 wt.% LiNO3 to obtain electrolytes with different solvating power. To prepare the \nelectrolyte with Li2S8 or Li2S6, Li2S and S8 were mixed with a molar ratio of 8:7 or 8:5, respectively, in the above electrolytes with a \nconcentration of 1.0 M[S]. All the electrolytes were prepared in an argon-filled glove box with O2 and H2O contents below 0.1 ppm. "
+        },
+        {
+          "path": "output/text_cache/10.1002_anie.202309968.si.txt",
+          "sha256": "ea3690933ab8fd17853fd856d41aaf2e71391416399101e670e903509da9da1e",
+          "line_start": 99,
+          "line_end": 112,
+          "excerpt": "1.9. Molecular dynamics (MD) simulation \nMD simulations were conducted by the Large Scale Atomic/Molecular Massively Parallel Simulator (LAMMPS) code.[4] Four \nmodels were constructed to simulate electrolytes without or with 10%, 20%, or 30% HFE by volume for Li2S8 or Li2S4 systems, \nrespectively, and the detailed compositions of these models are listed in Tables S6. The force field parameters for solvents were \ngenerated by the LigParGen web server[5] except that restrained electrostatic potential (RESP) atomic partial charges were assigned \nto each atom, which was obtained based on electrostatic potential (ESP) charges using the Multiwfn program.[6] The parameters for \nLi+, TFSI−, S82−, and S42− were obtained from Jensen et al.,[7] Koddermann et al.,[8] and Rajput et al.,[9] respectively. \nThe initial atomic coordinates were generated with Packing Optimization for Molecular Dynamics Simulations (Packmol) \nprogram.[10] Each system was first equilibrated in the NPT ensemble using the Parrinello–Rahman barostat for 2 ns to maintain a \ntemperature of 298 K and a pressure of 1 atm with time constants of 0.1 and 1 ps, respectively.[11] After that, the electrolytes were \nheated from 298 K to 420 K within 2 ns, and maintained at 420 K for 4 ns, followed by annealing from 420 K to 298 K within 2 ns. \nSubsequently, all systems were equilibrated at 298 K in the NPT ensemble for another 4 ns. A 12 ns production run was finally \nconducted in the NVT ensemble under Nose–Hoover thermostat.[12] Only the final 5 ns trajectory was sampled for the analysis of \nsolvation structures. The solvation structures were visualized by VESTA.[13] "
+        },
+        {
+          "path": "output/text_cache/10.1002_anie.202309968.si.txt",
+          "sha256": "ea3690933ab8fd17853fd856d41aaf2e71391416399101e670e903509da9da1e",
+          "line_start": 588,
+          "line_end": 618,
+          "excerpt": "Table S6. Summary of the compositions of the MD simulation models for Li2S8 or Li2S4. \nElectrolyte system \nDOL \nDME \nLi2S8 or Li2S4 \nLiTFSI \nHFE \nw/o HFE \n572 \n385 \n10 \n80 \n0 \n10% HFE \n515 \n346 \n10 \n80 \n53 \n20% HFE \n458 \n308 \n10 \n80 \n105 \n30% HFE \n401 \n269 \n10 \n80 \n158 "
+        }
+      ]
+    }
+  ],
+  "deferred": [
+    {
+      "paper": "S21: 10.1002/aenm.202500802",
+      "reason": "原文用训练机器学习势的 MD 流程，首轮不复刻训练；可在统一传统力场路线成熟后再评估该配方。",
+      "evidence": [
+        {
+          "path": "output/text_cache/10.1002_aenm.202500802.si.txt",
+          "sha256": "bca199b0e90031ee55ec585a43a51a574c4560b5213df16b6e1f3a8cc9396f38",
+          "line_start": 26,
+          "line_end": 38,
+          "excerpt": "1.5 Computational Details\nTo simulate CE and CPE electrolyte systems over 17,000 atoms, we employed machine learning potentials for molecular dynamics (MLMD) simulations. The initial configurations of Li2S4, LiTFSI, DME, THF and DTL were optimized using Gaussian09 program with M062X/6-311+G(d,p). The CE and CPE electrolyte systems were prepared by randomly placing the molecules in the simulation box based on their experimental densities and molar ratios. For CE electrolyte (0DTL electrolyte), 120 LiTFSI, 74 THF, 738 DME and 30 Li2S4 molecules were added to the simulation box (60*60*60 Å3). For CPE electrolyte (60DTL electrolyte), 120 LiTFSI, 74 THF, 272 DME, 596 DTL and 30 Li2S4 molecules were added to the simulation box (60*60*60 Å3). \n\nThe density functional theory (DFT) dataset was generated through an iterative workflow, which can be outlined as follows:\n(1) Initial MD Sampling: We initiated the process by performing MLMD simulations on simplified structures comprising approximately 300 atoms. Each MLMD simulation was conducted for 20 ps with a time step of 0.5 fs.\n(2) Model Training: Two independent models, differing only in their initial random seeds, were trained concurrently to assess the robustness of the predictions.\n(3) Error Evaluation: After each MLMD simulation, the forces on the sampled structures were predicted using both models. Structures with prediction errors exceeding 0.2 eV/Å between the two models were identified as poorly represented by the potential model and added to a temporary dataset for further processing.\n(4) Dataset Augmentation: The temporary dataset was analyzed using SOAP[1] descriptors and K-means[2] clustering to extract up to 300 structurally distinct configurations. These configurations were subjected to DFT calculations, and the resulting data were incorporated into the training dataset to enhance model accuracy.\n(5) Iteration: The updated models were then used to perform another round of MLMD simulations.\nSteps (3) and (4) were repeated iteratively—MLMD simulation, error evaluation, and dataset augmentation—until the prediction errors of both models were sufficiently minimized.\nFor the simulations, we employed the M3GNet model[3] with radial and three-body interaction cutoffs set to 5 Å and 4 Å, respectively. The loss function was formulated as a weighted sum of mean squared errors for energies, forces, and stresses, each assigned an equal weight of 1. A batch size of 4 was utilized, along with an exponential learning rate scheduler initialized at 110-3. The convergence criteria for training were set stringently, requiring forces to fall below 0.1 eV/Å. Training was performed on a Tesla A100 GPU until validation errors converged.\nAfter training the potential function model, we performed molecular dynamics simulations on CE and CPE electrolyte systems comprising over 17,000 atoms. The simulations were carried out under NVT ensemble conditions, with the temperature maintained at 300 K, a time step of 0.5 fs, and a total simulation time of 30 ps. The initial 10 ps were designated as the pre-equilibration phase.\nIn addition, ESPs of molecules were calculated with Gaussian09 program at the B3LYP/def2tzvp level and visualized by GaussView."
+        }
+      ]
+    }
+  ],
+  "cost": {
+    "platform": null,
+    "rate": null,
+    "budget_cap": null,
+    "note": "尚不能给出可信金额；需平台计价及一次获准试算的实耗。"
+  }
+}
