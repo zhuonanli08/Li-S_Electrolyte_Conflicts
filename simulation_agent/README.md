@@ -14,6 +14,8 @@
 
 ## 当前可用功能
 
+**2026-10-30 Edge 接续**：实际登录 M6 并查询 Slurm 关联。Gaussian 云仍显示“开通中”，公共软件/模块、环境文件及用户软件目录未找到可运行的 g16/g09；`/public1/software` 拒绝访问，不能据此证明集群未安装。仅找到安装脚本而未执行。用户允许首个 DME 小样先运行再核对费用，并明确暂不代发客服消息。当前外部阻塞是 Gaussian 可执行路径与运行环境，费用未知不再是这个单样本的用户等待项。通用 Slurm 计费闸门仍在，真正提交前需记录单样本例外，禁止填造价格。真实 DFT/MD 执行、结果回收与科学验收仍未跑通。后续验证以 `verification.json` 的 80 项本地测试为准；新增 15 项为合成日志频率筛查测试。
+
 - **MISPR 部分复用**：已直接调用锁定版本的 Gaussian 输入整理函数；其他子流程的适用边界见 [MISPR_REUSE.md](MISPR_REUSE.md)。这不代表已接入它的真实 DFT/MD 执行。
 - `doctor`：检查 Python 与本机 PATH；未发现命令不等于超算未安装。
 - `plan`：检查输入合同，列出缺失项、流程阶段、质检项目和资源申请上界。
@@ -25,6 +27,7 @@
 - `render-dft`：显式给出坐标、电荷/自旋、方法关键词和资源，渲染 Gaussian/ORCA 单作业文件并检查电子数奇偶性；不选择方法。
 - `render-slurm`：核实平台后导出限时脚本；按计费资源和单价计算费用上界并与上限比对，不调用 sbatch。LAMMPS 多核 MPI 启动待平台适配，当前仅导出单核试验脚本。
 - `inspect-log`：Gaussian/ORCA/LAMMPS 单作业日志初检，正常退出最多标为 SUCCESS_PENDING_QC。
+- `inspect-frequency`：Gaussian 单作业 harmonic 频率初检，核对模式编号/完整性、负零频、route、原子数/电荷/自旋及参考能量；保留文件哈希，最高状态 SCREEN_PASSED_PENDING_REVIEW，尚未用真实 Gaussian 输出验证。用法见 ComBat 小样说明。
 - `analysis.binding_energy`：相同协议、单位且已通过对象质检的孤立优化片段电子能量汇总；检查元素与电荷守恒，不混入 E_int 或溶剂化自由能。
 
 所有写入在 `simulation_agent/` 内，默认数据库位于被 Git 忽略的 `work/`。不修改已有文献候选、冻结结果或人工 gold。

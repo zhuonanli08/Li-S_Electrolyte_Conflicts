@@ -15,6 +15,7 @@ from .workflow import WorkflowRun, build_workflow, export_workflow
 from .engines import inspect_log, render_dft
 from .scheduler import render_slurm
 from .mispr_adapter import normalize_gaussian
+from .frequency_qc import inspect_frequency_files
 
 
 def main(argv=None):
@@ -37,6 +38,12 @@ def main(argv=None):
     inspect_cmd.add_argument("log", type=Path)
     inspect_cmd.add_argument("--optimization", action="store_true")
     inspect_cmd.add_argument("--steps", type=int, nargs="+")
+    frequency_cmd = commands.add_parser("inspect-frequency", help="Gaussian 频率筛查与参考对比，仍需科学复核")
+    frequency_cmd.add_argument("config", type=Path)
+    frequency_cmd.add_argument("log", type=Path)
+    frequency_cmd.add_argument("--input", type=Path, required=True)
+    frequency_cmd.add_argument("--mode", choices=("synthetic", "production"), required=True)
+    frequency_cmd.add_argument("--out", type=Path, required=True)
     for name in ("render-dft", "render-slurm"):
         render_cmd = commands.add_parser(name, help="从显式配置渲染，禁止覆盖已存在文件")
         render_cmd.add_argument("config", type=Path)
@@ -73,6 +80,12 @@ def main(argv=None):
         elif args.command == "inspect-log":
             result = inspect_log(args.engine, args.log.read_text(encoding="utf-8", errors="replace"),
                                  args.optimization, args.steps)
+        elif args.command == "inspect-frequency":
+            result = inspect_frequency_files(args.log, args.input, load_json(args.config), args.mode)
+            args.out.parent.mkdir(parents=True, exist_ok=True)
+            with args.out.open("x", encoding="utf-8") as stream:
+                json.dump(result, stream, ensure_ascii=False, indent=2, allow_nan=False)
+                stream.write("\n")
         elif args.command in ("render-dft", "render-slurm"):
             config = load_json(args.config)
             content = render_dft(**config) if args.command == "render-dft" else render_slurm(config)
@@ -89,6 +102,8 @@ def main(argv=None):
                 else:
                     result = store.get(args.task_id)
         print(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))
+        if args.command == "inspect-frequency" and result["status"] == "NEEDS_REVIEW":
+            return 3
         return 0
     except (ValueError, OSError, TypeError, sqlite3.Error) as error:
         print(json.dumps({"error": str(error)}, ensure_ascii=False), file=sys.stderr)

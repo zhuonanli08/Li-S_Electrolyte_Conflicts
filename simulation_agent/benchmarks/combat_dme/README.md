@@ -22,7 +22,19 @@
 
 资源草案是 2 核、申请 4 GB 内存（Gaussian 使用 3072 MB）、30 分钟。若平台按申请核时计费且没有更高最低分配，单次上界为 1 核时。这个数字不是人民币报价；单价、最低节点分配、额外许可费、实际可用资源及费用上限仍未知。没有生成可提交调度脚本，没有提交命令，`can_submit=false`。只执行一次；超时/内存不足时记录失败，不自动扩大资源或重复收费运行。
 
-本轮检验已知结构的计算链路与费用，不验收多构型搜索、完整结合能或 MD。运行后应保留原始输入/日志、软件版本、任务号、CPU/墙钟耗时、实际费用，并检查能量及全部振动频率。暂设电子能量差超过 1e-5 Hartree 时触发调查；这是复现调查阈值，未经过实跑校准，不是物理模型准确度或自动通过标准。来源摘要中的 `Minimum` 不能替代独立检查。现有日志解析器还不具备完整频率质检。
+本轮检验已知结构的计算链路与费用，不验收多构型搜索、完整结合能或 MD。运行后应保留原始输入/日志、软件版本、任务号、CPU/墙钟耗时、实际费用，并检查能量及全部振动频率。暂设电子能量差超过 1e-5 Hartree 时触发调查；这是复现调查阈值，未经过实跑校准，不是物理模型准确度或自动通过标准。来源摘要中的 `Minimum` 不能替代独立检查。
+
+2026-10-30 后续授权：用户明确允许首个小样在价格仍未知时试跑，运行后核对实际费用，优先确认 Gaussian 可用。此前“未知价格必须先确认”的用户等待项不再适用于该单样本；仍不得扩大批量、自动重试或提高资源。Gaussian 路径、授权和运行环境仍须先确认。通用 Slurm 渲染器的价格闸门暂未改动；真正提交前须记录此单样本例外，不把未知价格填成零或伪造 billing_verified。
+
+## 日志接收与初检（2026-10-30 新增）
+
+`inspect-frequency` 接收普通 Gaussian 单作业 harmonic 日志，检查正常结束、原子数、电荷/多重度、完整 route 回显、42 个唯一有序振动模式、负/零频与参考能量差，并保存输入和原始日志 SHA256。`preparation/frequency_screen.json` 锁定本轮准备输入哈希。支持 D 指数；格式不支持、缺失、重复、拼接日志都转复核。测试夹具为人工合成，不是 Gaussian 实跑。
+
+```powershell
+& 'D:\anaconda\envs\papertrail\python.exe' -m simulation_agent inspect-frequency simulation_agent/benchmarks/combat_dme/preparation/frequency_screen.json simulation_agent/work/dme_pilot/engine.log --input simulation_agent/benchmarks/combat_dme/preparation/dme_frequency.gjf --mode production --out simulation_agent/work/dme_pilot/frequency_screen.json
+```
+
+命令要求原始日志已经收回，不会提交计算或自动获取文件，且拒绝覆盖已有报告。筛查通过返回退出码 0、需要复核返回 3、输入/写入错误返回 2。所有检查通过也只标为 `SCREEN_PASSED_PENDING_REVIEW`，不能进入结合能计算的 `PASSED` 输入。仍需核对真实输入与日志对应、元素/坐标、梯度和驻点、软件版本以及账单。频率规则依据 [Gaussian 官方振动分析说明](https://gaussian.com/wp-content/uploads/dl/vib.pdf)，不是完整科学质检。
 
 ## 已识别的复现问题
 

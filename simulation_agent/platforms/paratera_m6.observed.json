@@ -7,10 +7,25 @@
   "ssh_login_verified": true,
   "connection_reliability": "WebSSH during inspection had repeated connection error / reconnecting messages",
   "scheduler": "Slurm",
-  "scheduler_commands_observed": ["/opt/slurm/slurm/bin/sbatch", "/opt/slurm/slurm/bin/sinfo", "/opt/slurm/slurm/bin/qsub"],
-  "partition": {"name": "amd_512", "availability": "up", "time_limit_display": "infinite", "cpus_per_node": 128, "memory_mb_display": 512000},
+  "scheduler_commands_observed": [
+    "/opt/slurm/slurm/bin/sbatch",
+    "/opt/slurm/slurm/bin/sinfo",
+    "/opt/slurm/slurm/bin/qsub"
+  ],
+  "partition": {
+    "name": "amd_512",
+    "availability": "up",
+    "time_limit_display": "infinite",
+    "cpus_per_node": 128,
+    "memory_mb_display": 512000
+  },
   "partition_warning": "可见队列和节点规格不证明账号提交权限、最低分配或实际计费单位；不据此申请整节点",
-  "environment": {"module_in_current_shell": false, "public_modulefiles": "/public1/soft/modulefiles", "initial_path_gaussian_lammps": "not found", "usr_bin_orca": "Python program attributed to Orca Team/Igalia; not used as the quantum chemistry engine"},
+  "environment": {
+    "module_in_current_shell": false,
+    "public_modulefiles": "/public1/soft/modulefiles",
+    "initial_path_gaussian_lammps": "not found",
+    "usr_bin_orca": "Python program attributed to Orca Team/Igalia; not used as the quantum chemistry engine"
+  },
   "orca_candidate": {
     "modulefile": "/public1/soft/modulefiles/orca/6_0_1_linux_x86-64_shared_openmpi416_avx2",
     "executable": "/public1/soft/orca/orca_6_0_1_linux_x86-64_shared_openmpi416_avx2/orca",
@@ -21,11 +36,19 @@
   },
   "lammps_candidates": {
     "modulefile_directory": "/public1/soft/modulefiles/lammps",
-    "executable_examples": ["/public1/soft/lammps/2Jun2020/bin/lmp_intel_cpu_intelmpi", "/public1/soft/lammps/lammps-24Dec20/src/lmp_intel_cpu_intelmpi", "/public1/soft/lammps/29Sep2021-ips17-plumed2.8.0/bin/lmp_intel_cpu_intelmpi"],
+    "executable_examples": [
+      "/public1/soft/lammps/2Jun2020/bin/lmp_intel_cpu_intelmpi",
+      "/public1/soft/lammps/lammps-24Dec20/src/lmp_intel_cpu_intelmpi",
+      "/public1/soft/lammps/29Sep2021-ips17-plumed2.8.0/bin/lmp_intel_cpu_intelmpi"
+    ],
     "engine_executed": false,
     "required_styles_and_runtime_verified": false
   },
-  "gaussian": {"found": false, "search_scope": "PATH and depth<=2 in /public1/soft, /public1/software, /public3/soft, names *gauss*, g16*, g09*", "absence_proven": false},
+  "gaussian": {
+    "found": false,
+    "search_scope": "PATH and depth<=2 in /public1/soft, /public1/software, /public3/soft, names *gauss*, g16*, g09*",
+    "absence_proven": false
+  },
   "billing": {
     "console_accessible": true,
     "account_type": "organization subaccount",
@@ -35,10 +58,47 @@
     "minimum_allocation": null,
     "spend_cap": null,
     "submission_permission_verified": false,
-    "note": "不将通用限制说明误报为本账号已被限制；不公开账号标识、组织名称或账单"
+    "note": "不将通用限制说明误报为本账号已被限制；不公开账号标识、组织名称或账单",
+    "single_pilot_unknown_price_authorized": true
   },
   "can_submit": false,
   "real_jobs_submitted": 0,
   "new_scientific_results": 0,
-  "next": ["向账号管理员或平台技术支持确认 Gaussian 16 的授权、加载方式与路径", "确认 M6 子账号与付费组织关联、可用额度、核时/节点时价格、最低分配及取整规则", "确认后生成有限时、有限额的单样本提交脚本；无明确价格前不以试提交探测权限", "若无法提供 Gaussian，再评估 ORCA 方案并单独验证计算设置，不直接声称严格复现 ComBat Gaussian 参考"]
+  "next": [
+    "Obtain an actually accessible Gaussian installation/environment or completion of current cloud activation",
+    "After verifying Gaussian, implement the documented single-pilot unknown-price exception without inventing prices",
+    "Run exactly one bounded pilot, collect scheduler/log/cost evidence, apply frequency screening; then scientific review and MD integration"
+  ],
+  "edge_followup_2026_10_30": {
+    "ssh_login_verified": true,
+    "slurm_account_association_observed": true,
+    "partition_state": "UP",
+    "user_partition_group_present": true,
+    "gaussian_cloud_status": "开通中",
+    "gaussian_executable_found": false,
+    "gaussian_absence_proven": false,
+    "search_scope": "PATH; public modulefiles; /public1/soft, /public3/soft and /public1/software to depth 4-5; /opt/paratera to depth 4; startup files for Gaussian references; own software directories",
+    "search_limitations": [
+      "/public1/software returns Permission denied",
+      "Some unrelated package subdirectories deny access",
+      "Earlier broad searches were bounded and included unrelated CP2K/PLUMED matches; exact-name search repeated"
+    ],
+    "installer_script_observed": "/public1/soft/wxl/hk-util/install/g16-install1220.sh",
+    "installer_executed": false,
+    "installer_note": "Installer template is not a verified installed engine or license",
+    "module_initialization": "Sourcing /etc/profile.d/module.sh did not make module command available in this shell",
+    "billing_page": "Embedded blank; separately opened page remained loading then observation timed out",
+    "pricing_document": "Only PWDFT pricing listed; not applicable to Gaussian or this M6 job",
+    "user_authorization": "One small DME pilot may run before price is known; check actual cost afterwards. Retain 2 CPU / 4 GB / 30 min draft; no batch or automatic retries authorized.",
+    "support_message_authorized": false,
+    "support_message_sent": false,
+    "real_jobs_submitted": 0,
+    "blocker": "No verified runnable Gaussian path/environment yet",
+    "official_software_guidance": "https://www.paratera.com/problem_1.html",
+    "next": [
+      "Obtain an actually accessible Gaussian installation/environment or completion of current cloud activation",
+      "After verifying Gaussian, implement the documented single-pilot unknown-price exception without inventing prices",
+      "Run exactly one bounded pilot, collect scheduler/log/cost evidence, apply frequency screening; then scientific review and MD integration"
+    ]
+  }
 }

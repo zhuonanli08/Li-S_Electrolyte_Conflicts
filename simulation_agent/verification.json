@@ -3,11 +3,30 @@
   "agent_version": "0.2.1",
   "python": "3.11.16",
   "environment": "D:/anaconda/envs/papertrail/python.exe",
-  "unit_tests": {"count": 57, "passed": 57, "failed": 0, "skipped": 0, "command": "python -m unittest discover -s simulation_agent/tests -q"},
-  "mispr_integration": {"commit": "efc14e160b97f958aaf78cc2cf499bb578295f80", "real_upstream_calls_tested": 2, "scope": "Gaussian input normalization only", "full_dependencies_installed": false},
+  "unit_tests": {
+    "count": 80,
+    "passed": 80,
+    "failed": 0,
+    "skipped": 0,
+    "command": "python -m unittest discover -s simulation_agent/tests -q"
+  },
+  "mispr_integration": {
+    "commit": "efc14e160b97f958aaf78cc2cf499bb578295f80",
+    "real_upstream_calls_tested": 2,
+    "scope": "Gaussian input normalization only",
+    "full_dependencies_installed": false
+  },
   "end_to_end": {
-    "dft": {"stages": 13, "passed": 13, "status": "DRY_RUN_PASSED"},
-    "md": {"stages": 15, "passed": 15, "status": "DRY_RUN_PASSED"}
+    "dft": {
+      "stages": 13,
+      "passed": 13,
+      "status": "DRY_RUN_PASSED"
+    },
+    "md": {
+      "stages": 15,
+      "passed": 15,
+      "status": "DRY_RUN_PASSED"
+    }
   },
   "failure_recovery_test": "Injected failure blocks dependents; successful upstream and parallel stages are retained; failed stage retries once and pipeline completes.",
   "artifact_integrity_test": "Changed upstream output invalidates all descendants.",
@@ -15,6 +34,22 @@
   "scientific_results": 0,
   "paid_api_calls": 0,
   "price_known": false,
-  "pending_real_validation": ["molecular structure generation", "DFT/force-field protocol", "real software input/log compatibility", "scientific QC", "trajectory analysis", "scheduler submission/polling/restart", "actual billing"],
-  "note": "All successful end-to-end stages used synthetic handlers. No numerical scientific result was fabricated."
+  "pending_real_validation": [
+    "molecular structure generation",
+    "DFT/force-field protocol",
+    "real software input/log compatibility",
+    "scientific QC",
+    "trajectory analysis",
+    "scheduler submission/polling/restart",
+    "actual billing"
+  ],
+  "note": "All successful end-to-end stages used synthetic handlers. No numerical scientific result was fabricated.",
+  "frequency_screen": {
+    "tests": 15,
+    "test_data": "synthetic only; no real Gaussian log available",
+    "checks": "mode sequence/count, missing/malformed/duplicate/nonfinite frequencies, imaginary/zero modes, identity fields, exact route, termination, energy reference, hashes, CLI no-overwrite and exit status",
+    "highest_status": "SCREEN_PASSED_PENDING_REVIEW",
+    "real_engine_validation": false
+  },
+  "end_to_end_note": "Existing synthetic demo results reused; not rerun during Edge followup. No production chain has passed."
 }
