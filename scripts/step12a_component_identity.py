@@ -29,6 +29,7 @@ WORK = OUT / "work"
 CANDS = WORK / "候选组分.json"
 CURATION = OUT / "组分核定.json"
 PUBCHEM_CACHE = WORK / "pubchem_cache.json"
+ABBR_DICT = OUT / "缩写词典.json"  # step12c 生成
 
 # 配方用途归类：方案 §5.8 按“是否实际配入液体”收录，role 字段不可靠，所以看 formulation 的 system 文字
 MODEL_RE = re.compile(r"模型(?!电池)|DFT|\bMD\b|MD模|计算|模拟|理论|聚簇|络合物|轨道|孤立|连续介质|模拟盒|簇", re.I)
@@ -160,6 +161,8 @@ def build() -> None:
     rows = json.loads(CANDS.read_text(encoding="utf-8"))
     cur = json.loads(CURATION.read_text(encoding="utf-8"))
     cache = json.loads(PUBCHEM_CACHE.read_text(encoding="utf-8")) if PUBCHEM_CACHE.exists() else {}
+    abbr_doc = json.loads(ABBR_DICT.read_text(encoding="utf-8")) if ABBR_DICT.exists() else {"缩写": {}, "文献篇数": 0}
+    abbr, abbr_n = abbr_doc["缩写"], abbr_doc["文献篇数"]
     comps = {c["id"]: dict(c) for c in cur["组分"]}
     aliases = {(a["论文"], a["写法"]): a for a in cur["别名"]}
     excluded = {(e["论文"], e["写法"]): e for e in cur["未收录"]}
@@ -252,14 +255,21 @@ def build() -> None:
             h = first_hit(sents, comps[cid]["全称正则"])
             evid.append({"组分": cid, "全称原句": h})
             marks.append(bool(h))
-        if all(marks):
+        # 原文只有缩写（或全称写错）时查领域缩写词典（step12c）；判“通用”的按其他文献同一物质记 ✅（用户 10-31 定）
+        common = abbr.get(base_name(name)) if name_hit and not all(marks) and len(a["组分"]) == 1 else None
+        if common and not (common["判定"] == "通用" and common["组分"] == a["组分"][0]):
+            common = None
+        if all(marks) or common:
             status = "✅"
         elif name_hit:
             status = "🔶"
         else:
             status = "❌"
         notes = []
-        if not all(marks):  # 有“说明”的是 Claude 读原文后的判定，不再写“按常用含义”
+        if common:
+            notes.append(f"本篇原文没有可用的全称；领域通用缩写：本地 {abbr_n} 篇文献中定义该缩写的 {common['定义篇数']} 篇里 "
+                         f"{common['定义为本组分']} 篇指此物（{common['定义为本组分'] / common['定义篇数']:.0%}，见缩写词典）")
+        elif not all(marks):  # 有“说明”的是 Claude 读原文后的判定，不再写“按常用含义”
             notes.append(("本篇原文未找到全称" + ("" if a.get("说明") else "，按常用含义")) if name_hit
                          else "本篇原文找不到该写法")
         if len(a["组分"]) > 1:
@@ -283,7 +293,7 @@ def build() -> None:
             side_notes.append(f"{pid}「{name}」：本篇原文找不到该写法")
         alias_rows.append({**base, "组分": a["组分"], "核验": status, "核验说明": "；".join(notes),
                            "原文写法句": name_hit, "全称核对": evid, "判定依据": basis,
-                           "剩余疑点": a.get("剩余疑点", "")})
+                           "剩余疑点": a.get("剩余疑点", ""), "回复": a.get("回复", "")})
 
     lino3_roles = Counter(r["role"] for r in rows if lookup(aliases, r["paper_id"], r["name"])
                           and lookup(aliases, r["paper_id"], r["name"])["组分"] == ["LiNO3"])
