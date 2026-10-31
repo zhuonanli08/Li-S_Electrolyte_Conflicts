@@ -5,7 +5,8 @@
 这些是结构特征，不是配位强度、介电常数或溶解度。
 官能团标签按出现的化学类别扩充：每次运行检查 A 档有没有组分一个标签都没命中（烃和不含碳的无机盐除外），
 有就打印出来，提示要加标签；加标签只多一列，已有组分的其他数值不变。
-复核不要求会读 SMILES：每个 A 档组分画结构图（结构图/），需要人判断的地方写成中文问题（“待你判断”页）。
+复核不要求会读 SMILES：🔶 由 Claude 读原文（含 PDF 里的结构图）判定，判定、原句、剩余疑点列在“读原文判定”页；
+A 档结构图（结构图/）只作可选参考。
 工作簿里已有用户在 ✍ 列填写的内容时不覆盖，先把填写内容转存到组分核定.json 再重跑。
 输出 output/组分结构表_F版30篇_2026-10-31/：描述符.json、结构图/、组分结构表.xlsx。
 运行：D:/anaconda/envs/rdkit/python.exe -X utf8 scripts/step12b_component_descriptors.py
@@ -137,11 +138,11 @@ def main() -> None:
     ids = sorted(fps, key=lambda i: (next(c["化学类别"] for c in comps if c["id"] == i), i))
     sim = [[round(DataStructs.TanimotoSimilarity(fps[a], fps[b]), 2) for b in ids] for a in ids]
 
-    qs = questions(comps, aliases)
+    qs = judgements(comps, aliases)
     write_workbook(comps, aliases, excl, cover, desc_rows, ids, sim, qs, uncovered)
     print(f"描述符 {len(desc_rows)} 行（A 档 {sum(r['对象'] == '整体' for r in desc_rows)} 个组分，"
           f"另有阴离子 {sum(r['对象'] == '阴离子' for r in desc_rows)} 行）；溶剂相似度 {len(ids)}×{len(ids)}；"
-          f"待你判断 {len(qs)} 条")
+          f"读原文判定 {len(qs)} 行，其中有剩余疑点 {sum(1 for q in qs if q[-1])} 行")
     print("官能团标签覆盖检查：" + (f"未覆盖 {len(uncovered)} 个，需要加标签：{'、'.join(uncovered)}"
                                    if uncovered else f"A 档全部至少命中一个标签（{EXEMPT}除外）"))
 
@@ -154,58 +155,32 @@ def evidence(aliases: list[dict], cid: str) -> str:
     return ""
 
 
-ABBR = "本篇原文未找到全称，按常用含义"
-
-
-def questions(comps: list[dict], aliases: list[dict]) -> list[list]:
-    """把 🔶 改写成不用懂 SMILES 也能回答的问题：问的是“原文用的是不是这个分子”，结构图见看图核对页。"""
-    byid = {c["id"]: c for c in comps}
-    full = defaultdict(set)
-    for a in aliases:
-        if a["核验"] == "✅":
-            for i in a["组分"]:
-                full[i].add(a["论文"])
-    qs, abbr, merged = [], defaultdict(list), []
-
+def judgements(comps: list[dict], aliases: list[dict]) -> list[list]:
+    """Claude 读原文的判定：每条 🔶、每个按原文结构核对的组分、每条引了依据句的写法各一行，附原句和剩余疑点。"""
+    rows, merged = [], []
     for c in comps:
-        if c["档"] == "A" and c["核验"] != "✅":
-            note = "；".join(dict.fromkeys(filter(None, [c.get("说明"), c.get("无SMILES原因"), c.get("备注"),
-                                                         c.get("PubChem比对") and f"PubChem：{c['PubChem比对']}"])))
-            ask = (f"{c['名称']}（{c['id']}）没有单一结构，按前驱体记录、不算描述符，可以吗？" if not c.get("规范SMILES")
-                   else f"「看图核对」页 {c['名称']}（{c['id']}）的结构图对吗？")
-            qs.append(["组分结构", ask, note, evidence(aliases, c["id"]), "、".join(c["论文"])])
-
+        if c["档"] == "A" and (c["核验"] != "✅" or c.get("原文结构核对")):
+            basis = c.get("原文结构核对") or c.get("无SMILES原因") or ""
+            rows.append(["组分", "、".join(c["论文"]), f"{c['名称']}（{c['id']}）", c["核验"].split("；")[0][:2].strip() or "✅",
+                         c.get("原文结构核对") and "结构与原文一致" or "没有单一结构，不算描述符", basis,
+                         "确切组成见 CCDC 晶体数据" if not c.get("规范SMILES") else ""])
     for a in aliases:
-        if a["核验"] == "✅":
-            continue
-        note = a["核验说明"]
-        if note == ABBR:
-            abbr[a["组分"][0]].append(a)
-        elif "合成一条" in note:
+        if "合成一条" in a["核验说明"]:
             merged.append(a)
-        else:
-            names = "、".join(byid[i]["名称"] for i in a["组分"])
-            ev = a["原文写法句"]
-            qs.append(["原文写法", f"{a['论文']} 的「{a['写法']}」指的是{names}吗？", note.removeprefix(ABBR + "；"),
-                       f"[{ev['id']}] …{ev['text'].strip()}…" if ev else "", a["论文"]])
-
-    for cid, items in abbr.items():
-        c, papers = byid[cid], sorted({a["论文"] for a in items})
-        others = sorted(full[cid] - set(papers))
-        why = "领域通用含义" + (f"；另有 {len(others)} 篇写了全称（{'、'.join(others)}），结构与 PubChem 一致" if others else "")
-        qs.append(["只写缩写", f"{'、'.join(papers)} 只写了「{'、'.join(sorted({a['写法'] for a in items}))}」，"
-                   f"按{c['名称']}（{c['英文名']}）处理，可以吗？", why, "", "、".join(papers)])
-
+            continue
+        if a["核验"] == "✅" and not a["判定依据"] and not a["核验说明"]:
+            continue
+        ev = a["判定依据"] or [e["全称原句"] for e in a["全称核对"] if e["全称原句"]] or [a["原文写法句"]]
+        rows.append(["写法", a["论文"], a["写法"], a["核验"], a["核验说明"] or "原文有全称",
+                     "\n".join(f"[{e['id']}] …{e['text'].strip()}…" for e in ev if e), a.get("剩余疑点", "")])
     if merged:
-        qs.append(["合写拆分", "下面这些写法把两种溶剂合写成一条，已拆成两个组分分别记录，可以吗？",
-                   "；".join(f"{a['论文']}「{a['写法']}」→ {'＋'.join(a['组分'])}" for a in merged), "",
-                   "、".join(sorted({a["论文"] for a in merged}))])
-
+        rows.append(["写法", "、".join(sorted({a["论文"] for a in merged})), "合写的溶剂", "🔶",
+                     "提取把两种溶剂写成一条，身份没有疑问，已拆成两个组分：" +
+                     "；".join(f"{a['论文']}「{a['写法']}」→ {'＋'.join(a['组分'])}" for a in merged), "", ""])
     b = [c["id"] for c in comps if c["档"] == "B" and c["核验"] != "✅"]
     if b:
-        qs.append(["仅认身份", f"多硫化锂和单列离子（{'、'.join(b)}）只用来认身份、不算描述符，结构按化学式写。一般不用看",
-                   "B 档", "", ""])
-    return qs
+        rows.append(["组分", "", "多硫化锂与单列离子", "🔶", f"B 档只认身份、不算描述符，结构按化学式写：{'、'.join(b)}", "", ""])
+    return rows
 
 
 HEAD = Font(bold=True)
@@ -245,8 +220,8 @@ def write_workbook(comps, aliases, excl, cover, desc_rows, ids, sim, qs, uncover
     ws.append([])
     guide = [
         ["页", "内容", "你要不要看"],
-        ["待你判断", f"{len(qs)} 个问题，问的是“原文用的是不是这个分子”，不用懂 SMILES。在最后一列写同意，或写不同意和原因", "要看，主要就这一页"],
-        ["看图核对", "A 档每个组分的结构图、一句话结构要点、原文全称句子、PubChem 链接（点开能看到同一分子的别名和结构）", "扫一眼；图和你认识的分子不一样就在最后一列写"],
+        ["读原文判定", f"{len(qs)} 行：原文只有缩写、名称写错、自合成、没有公共库记录等情况，Claude 读原文（含 PDF 里的结构图）后的判定，附原句。“剩余疑点”列非空的 {sum(1 for q in qs if q[6])} 行是原文自身矛盾或信息不全", "不用逐条确认；有不同意见再在最后一列写"],
+        ["结构图（可选）", "A 档每个组分的结构图、一句话结构要点、原文全称句子、PubChem 链接；有的查看器不显示图片，图也在 结构图/ 文件夹", "不用看"],
         ["组分表", "每个组分的 SMILES、InChIKey、分子式、出现在哪些论文", "不用看，给程序用"],
         ["别名表", "每篇论文里每种写法对应哪个组分（同一分子不同写法都指向同一个 ID）", "不用看"],
         ["未收录", "没收进来的条目和原因（电极材料、NMR 溶剂、计算模型物种、占位词等）", "不用看；觉得哪条该收就告诉我"],
@@ -260,7 +235,8 @@ def write_workbook(comps, aliases, excl, cover, desc_rows, ids, sim, qs, uncover
     ws.append([])
     notes = [
         "SMILES 是什么：把“哪个原子连哪个原子”写成一行字。同一个分子由 RDKit 统一写法后只有一种写法；InChIKey 是由它算出的定长编号，用来判断两条记录是不是同一个分子。结构图就是从 SMILES 画出来的，图对，SMILES 就对。",
-        "机器已经核过的：✅ 的写法同时满足两条——本篇原文里找到了全称，用这个全称去 PubChem 查到的结构和我们写的一致。剩下需要人判断的都写进了“待你判断”页。",
+        "✅ 的写法同时满足两条：本篇原文里找到了全称；用这个全称去 PubChem 查到的结构和我们写的一致（PubChem 没有的自合成分子，改用原文的结构图、合成路线和谱图核对）。🔶 是 Claude 读原文后判定的，依据见“读原文判定”页。",
+        "原文没有结构图时怎么定结构：① 系统化学名本身就唯一确定结构（如 2,3-dimethylbutane），商品溶剂和盐大多靠这个；② CAS 号、供应商；③ 合成路线（原料＋反应推出产物，P386 的两个自合成醚就是这样核的，SI 的结构图只是再确认）；④ 核磁等谱图佐证；⑤ 只有缩写时，领域通用且语境一致（如“常规醚类电解液 1 M LiTFSI in DME:DOL”）按通用含义，标 🔶；缩写有歧义又没有全称时不猜，按“结构未公开”不收录。",
         "同分异构体：分子式一样、结构不同的分子，SMILES 和 InChIKey 都不同，不会被当成同一个。本批就有两对：正己烷与 2,3-二甲基丁烷（都是 C₆H₁₄），PPEO-CF₃ 与 PXEO-CF₃（正丙基与异丙基，都是 C₇H₁₃F₃O₂）。所以身份按结构定，不按化学式定；用哪个异构体看原文全称（如 P510 写明 “n-hexane”“2,3 dimethylbutane”）。",
         "立体异构：PC、FEC 有一个手性碳，商品是两种构型各半的混合物，SMILES 不写构型标记，InChIKey 第二段为 UHFFFAOYSA（表示未指定立体）。以后原文若写明某一构型或顺/反式，再写构型标记，与混合物算不同组分。",
         "描述符怎么定的：分子量、原子数、环数、可旋转键数、TPSA、氢键受体数对任何分子都能算，以后不用改；官能团标签是按锂硫电解液常见类别预先定的，不是按这 30 篇定的（本批没有砜、P=O、腈，这几列都是 0）。全量提取出现新类别时加标签，只多一列，已有组分的其他数值不变。",
@@ -281,8 +257,8 @@ def write_workbook(comps, aliases, excl, cover, desc_rows, ids, sim, qs, uncover
         ws.merge_cells(start_row=r, start_column=1, end_row=r, end_column=3)
         ws.row_dimensions[r].height = 48
 
-    sheet(wb, "待你判断", ["类型", "问题", "我的处理和理由", "原文依据", "论文", "你的判断✍（同意／不同意＋原因）"], qs,
-          {2: 50, 3: 50, 4: 60, 5: 16, 6: 30})
+    sheet(wb, "读原文判定", ["对象", "论文", "原文写法/组分", "核验", "Claude 的判定", "原文依据（句号与原句）", "剩余疑点",
+                           "有不同意见再写✍"], qs, {2: 12, 3: 26, 4: 6, 5: 60, 6: 80, 7: 30, 8: 24})
 
     desc = {r["组分"]: r for r in desc_rows if r["对象"] == "整体"}
     look = []
@@ -290,10 +266,10 @@ def write_workbook(comps, aliases, excl, cover, desc_rows, ids, sim, qs, uncover
         if c["档"] != "A":
             continue
         cid = re.search(r"CID (\d+)", c.get("PubChem比对") or "")
-        look.append([c["id"], c["名称"], c["英文名"], "", gist(desc[c["id"]], c["分子式"]) if c["id"] in desc else "无 SMILES，见待你判断",
+        look.append([c["id"], c["名称"], c["英文名"], "", gist(desc[c["id"]], c["分子式"]) if c["id"] in desc else "无 SMILES，见读原文判定",
                      evidence(aliases, c["id"]), f"https://pubchem.ncbi.nlm.nih.gov/compound/{cid.group(1)}" if cid else
-                     (c.get("PubChem比对") or ""), "、".join(c["论文"]), ""])
-    ws = sheet(wb, "看图核对", ["组分ID", "名称", "英文名", "结构图", "结构要点", "原文全称句子", "PubChem", "论文", "不对就写✍"], look,
+                     (c.get("PubChem比对") or ""), "、".join(c["论文"])])
+    ws = sheet(wb, "结构图（可选）", ["组分ID", "名称", "英文名", "结构图", "结构要点", "原文全称句子", "PubChem", "论文"], look,
                {2: 18, 3: 26, 4: 44, 5: 30, 6: 60, 7: 22, 8: 16, 9: 20})
     for r, row in enumerate(look, start=2):
         png = IMG / f"{row[0]}.png"

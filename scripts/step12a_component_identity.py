@@ -6,6 +6,8 @@
   pubchem  对核定表里写了 pubchem_query（只用全称或 CAS，不用缩写）的组分查 PubChem，结果缓存；
   build    读 Claude 核定表（组分核定.json，AI 辅助、待用户确认），RDKit 规范化 SMILES、生成 InChIKey，
            与 PubChem 结果比对，按 InChIKey 去重，把每条组分映射到组分 ID 或未收录原因，检查覆盖并出复核记录。
+核定表里 Claude 读原文的判定：别名“说明”（判定，标 🔶）、“备注”（补充，不改核验）、“依据”（句号，取原句）、
+“剩余疑点”；组分“原文结构核对”（PubChem 没有时用原文结构图/合成路线/谱图核对）。
 运行：D:/anaconda/envs/rdkit/python.exe -X utf8 scripts/step12a_component_identity.py collect|pubchem|build
 """
 from __future__ import annotations
@@ -199,6 +201,9 @@ def build() -> None:
         else:
             c["PubChem比对"] = f"不一致（CID {hit['CID']} {hit.get('MolecularFormula')}，{hit['InChIKey']}）"
             c["核验"].append("⚠️ 与 PubChem 全称查询结果不一致")
+        if c.get("原文结构核对"):  # 公共库没有或没查的，用原文结构图/合成路线/谱图核对，等同 PubChem 核对
+            c["核验"] = [f for f in c["核验"] if not f.startswith(("🔶 PubChem 按全称", "🔶 未用公共库核对"))]
+            c["PubChem比对"] += "；原文结构核对一致"
         if c.get("说明"):
             c["核验"].append("🔶 " + c["说明"])
     for k, ids in by_key.items():
@@ -254,8 +259,9 @@ def build() -> None:
         else:
             status = "❌"
         notes = []
-        if not all(marks):
-            notes.append("本篇原文未找到全称，按常用含义" if name_hit else "本篇原文找不到该写法")
+        if not all(marks):  # 有“说明”的是 Claude 读原文后的判定，不再写“按常用含义”
+            notes.append(("本篇原文未找到全称" + ("" if a.get("说明") else "，按常用含义")) if name_hit
+                         else "本篇原文找不到该写法")
         if len(a["组分"]) > 1:
             status = "🔶" if status == "✅" else status
             notes.append(a.get("说明", "一条写法对应多个组分"))
@@ -263,6 +269,11 @@ def build() -> None:
         elif a.get("说明"):
             status = "🔶" if status == "✅" else status
             notes.append(a["说明"])
+        if a.get("备注"):  # 备注只补充信息，不改核验
+            notes.append(a["备注"])
+        by_id = {s["id"]: s for s in sents}
+        basis = [{"id": i, "text": by_id[i]["_norm"].strip()} for i in a.get("依据", []) if i in by_id]
+        errors += [f"{pid}「{name}」依据句号 {i} 不存在" for i in a.get("依据", []) if i not in by_id]
         comp_flags = [f for cid in a["组分"] for f in comps[cid]["核验"]]
         if any(f.startswith("⚠️") for f in comp_flags):
             status = "⚠️"
@@ -271,7 +282,8 @@ def build() -> None:
         if status == "❌":
             side_notes.append(f"{pid}「{name}」：本篇原文找不到该写法")
         alias_rows.append({**base, "组分": a["组分"], "核验": status, "核验说明": "；".join(notes),
-                           "原文写法句": name_hit, "全称核对": evid})
+                           "原文写法句": name_hit, "全称核对": evid, "判定依据": basis,
+                           "剩余疑点": a.get("剩余疑点", "")})
 
     lino3_roles = Counter(r["role"] for r in rows if lookup(aliases, r["paper_id"], r["name"])
                           and lookup(aliases, r["paper_id"], r["name"])["组分"] == ["LiNO3"])

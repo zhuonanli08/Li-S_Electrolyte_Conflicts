@@ -51,7 +51,7 @@
    "表征测量液": 4,
    "计算模型": 10
   },
-  "全称正则": "1,2-dimethoxy-?\\s?ethane|dimethoxyethane|ethylene glycol dimethyl ether",
+  "全称正则": "1,\\s?2-\\s?dimethoxy-?\\s?ethane|(?<!\\d-)(?<!\\d- )\\bdimethoxy-?\\s?ethane|ethylene glycol dimethyl ether",
   "pubchem_query": "1,2-dimethoxyethane"
  },
  {
@@ -104,7 +104,7 @@
    "表征测量液": 4,
    "计算模型": 7
   },
-  "全称正则": "1,3-dio[x]?[oa]?lane|1,3-dioxlane|dioxolane",
+  "全称正则": "1,\\s?3-\\s?dio[x]?[oa]?lane|1,3-dioxlane|(?<!\\d-)(?<!\\d- )\\bdioxolane",
   "pubchem_query": "1,3-dioxolane"
  },
  {
@@ -325,13 +325,13 @@
   "类别": "溶剂",
   "化学类别": "氟化醚",
   "smiles": "CCCOCCOCC(F)(F)F",
-  "说明": "自合成，按原文化学名（P386 M0052）绘制，待确认",
-  "核验": "🔶 PubChem 按全称未收录，结构以原文为准；🔶 自合成，按原文化学名（P386 M0052）绘制，待确认",
+  "原文结构核对": "P386 SI Figure S1 合成路线图画出的产物与此结构一致：2-丙氧基乙醇经对甲苯磺酰化，再与 2,2,2-三氟乙醇钠醚化（SI S0017–S0027）；Figure S2 ¹H NMR 共 13 个 H，与 C₇H₁₃F₃O₂ 一致",
+  "核验": "✅",
   "规范SMILES": "CCCOCCOCC(F)(F)F",
   "InChIKey": "TYKFWHGOUKKOIJ-UHFFFAOYSA-N",
   "分子式": "C7H13F3O2",
   "分子量": 186.173,
-  "PubChem比对": "PubChem 未收录",
+  "PubChem比对": "PubChem 未收录；原文结构核对一致",
   "论文": [
    "P386"
   ],
@@ -352,13 +352,13 @@
   "类别": "溶剂",
   "化学类别": "氟化醚",
   "smiles": "CC(C)OCCOCC(F)(F)F",
-  "说明": "自合成，按原文化学名（P386 M0052）绘制，待确认",
-  "核验": "🔶 自合成，按原文化学名（P386 M0052）绘制，待确认",
+  "原文结构核对": "P386 SI Figure S1 合成路线图画出的产物与此结构一致：同一路线，起始物换为 2-异丙氧基乙醇（SI S0028）",
+  "核验": "✅",
   "规范SMILES": "CC(C)OCCOCC(F)(F)F",
   "InChIKey": "HZHSPUYCRDJGTG-UHFFFAOYSA-N",
   "分子式": "C7H13F3O2",
   "分子量": 186.173,
-  "PubChem比对": "一致（CID 134171504）",
+  "PubChem比对": "一致（CID 134171504）；原文结构核对一致",
   "论文": [
    "P386"
   ],
@@ -712,7 +712,7 @@
    "表征测量液": 4,
    "计算模型": 3
   },
-  "全称正则": "bis\\s?\\(?trifluoromethane-?\\s?sulfonyl\\)?\\s?(imide|amide)|bis\\(trifluoromethylsulfonyl\\)|bistrifluoromethane-?\\s?sulfonimide|bis-\\s?\\(trifluoromethanesulfonyl\\)imide",
+  "全称正则": "bis\\s?\\(?trifluoromethane-?\\s?sulfonyl\\)?\\s?(imide|amide)|bis\\(trifluoromethylsulfonyl\\)|bistrifluoromethane-?\\s?sulfonimide|bis-\\s?\\(trifluoromethanesulfonyl\\)imide|bis\\s?-?\\s?\\(\\s?trifluorometh(?:ane|yl)\\s?\\)?\\s?-?\\s?sul(?:f|ph)",
   "pubchem_query": "CID:3816071"
  },
  {
@@ -744,7 +744,7 @@
    "液体": 7,
    "计算模型": 2
   },
-  "全称正则": "bis\\s?\\(?fluorosulfonyl\\)?\\s?(imide|amide)",
+  "全称正则": "bis\\s?\\(?fluorosulfonyl\\)?\\s?(imide|amide)|bis\\s?-?\\s?\\(\\s?fluoro\\s?-?sul(?:f|ph)onyl",
   "pubchem_query": "lithium bis(fluorosulfonyl)imide"
  },
  {
@@ -962,13 +962,14 @@
   "类别": "添加剂",
   "化学类别": "多卤化物",
   "smiles": "[Li+].I[I-]I",
-  "说明": "按化学式书写；P038 化学氧化测试液中按 2.5 mM 加入",
-  "核验": "🔶 未用公共库核对，按化学式书写；🔶 按化学式书写；P038 化学氧化测试液中按 2.5 mM 加入",
+  "原文结构核对": "P038 M0070 在 DOL/DME 中加入 2.5 mM LiI₃ 溶液，M0073 以 295、366 nm 两个吸收峰指认 I₃⁻：即 Li⁺ 与 I₃⁻",
+  "备注": "P038 化学氧化测试液中按 2.5 mM 加入",
+  "核验": "✅",
   "规范SMILES": "I[I-]I.[Li+]",
   "InChIKey": "JWXIRIRVYOONGP-UHFFFAOYSA-N",
   "分子式": "I3Li",
   "分子量": 387.653,
-  "PubChem比对": "未查询（按化学式书写）",
+  "PubChem比对": "未查询（按化学式书写）；原文结构核对一致",
   "论文": [
    "P038"
   ],
@@ -1223,8 +1224,8 @@
   "类别": "添加剂（均相催化剂/介体）",
   "化学类别": "金属配合物",
   "smiles": null,
-  "无SMILES原因": "金属配合物，在电解液中原位生成；原文 P380 M0031：Cu-2 由 CuCl₂·2H₂O 与 1,10-菲咯啉按 1:1 合成。没有可靠的单一 SMILES，按前驱体记录身份，不算描述符",
-  "核验": "🔶 金属配合物，在电解液中原位生成；原文 P380 M0031：Cu-2 由 CuCl₂·2H₂O 与 1,10-菲咯啉按 1:1 合成。没有可靠的单一 SMILES，按前驱体记录身份，不算描述符",
+  "无SMILES原因": "金属配合物，没有可靠的单一 SMILES，不算 RDKit 描述符，分析时按“含 Cu-2-T”分块记录。原文 P380：Cu-2 由 CuCl₂·2H₂O 与 1,10-菲咯啉按 1:1 合成（M0031），为双 Cl 桥连的双核 Cu 配合物（M0042）；与 KPF₆ 交换得 Cu-2-PF₆，再溶入 1 M LiTFSI＋2 wt% LiNO₃ 的 DME/DOL 中由 TFSI⁻ 置换得 Cu-2-T（M0040），为单 Cl 桥连的双核 Cu 配合物（M0043，Figure 1a 晶体结构，CCDC 2243502）",
+  "核验": "🔶 金属配合物，没有可靠的单一 SMILES，不算 RDKit 描述符，分析时按“含 Cu-2-T”分块记录。原文 P380：Cu-2 由 CuCl₂·2H₂O 与 1,10-菲咯啉按 1:1 合成（M0031），为双 Cl 桥连的双核 Cu 配合物（M0042）；与 KPF₆ 交换得 Cu-2-PF₆，再溶入 1 M LiTFSI＋2 wt% LiNO₃ 的 DME/DOL 中由 TFSI⁻ 置换得 Cu-2-T（M0040），为单 Cl 桥连的双核 Cu 配合物（M0043，Figure 1a 晶体结构，CCDC 2243502）",
   "规范SMILES": null,
   "InChIKey": null,
   "分子式": null,
