@@ -223,6 +223,8 @@ def classify(unit: str, amount: str):
                                   "按总电解液质量（原文未明示分母，按惯例）" if re.search(r"未", u) else "按总电解液质量")
     if re.match(r"%", u):
         return "不可用", None, f"百分比基准不明（{u}）"
+    if re.search(r"未明示.{0,4}质量|质量\s*/\s*体积", u):  # 如“混合比例份数，原文未明示质量/体积基准”
+        return "不可用", None, f"比例基准不明（{u}）"
     if re.search(r"vol|体积|v/v|volume", u, re.I) and not re.search(r"绝对", u):
         return "体积份", 1.0, ""
     if re.search(r"摩尔比|摩尔份", u):
@@ -230,7 +232,7 @@ def classify(unit: str, amount: str):
     return "不可用", None, u or "未写单位"
 
 
-def convert(items: list[dict], dens: dict) -> dict:
+def convert(items: list[dict], dens: dict, solvent_ids: set) -> dict:
     """真实液体配方：体积份 → 体积分数；有密度和分子量时算 1 L 溶剂混合物中各组分的物质的量（mol）与摩尔分数。"""
     pre, miss = [], []
     by_cat = lambda c: [i for i in items if i["单位类别"] == c]
@@ -239,9 +241,27 @@ def convert(items: list[dict], dens: dict) -> dict:
         return {"状态": "完整", "摩尔分数": {i["组分"]: i["数值"] / tot for i in items}, "缺": [], "前提": ["原文给摩尔比"]}
     sol = by_cat("体积份")
     phi = {}
+    # 11-01 修：原文单位带 % 的（vol%）是占全部体积的百分数，其余是比例份数，两者不能直接相加（10-31 版把
+    # “DME:DOL=1:1 加 10 vol% DMTS”算成 DMTS 10 份、占 83%）。vol% 先占掉对应体积，剩下的按份数分。
+    pct = [i for i in sol if "%" in (i["原文单位"] or "")]
+    parts = [i for i in sol if i not in pct]
+    # 另有溶剂用量不明时，已知份数归一出的体积分数不对；添加剂（如 1 % PEA）用量不明不拦，与 LiNO₃ 缺用量同样处理
+    unknown = [i["组分"] for i in items if i["单位类别"] == "不可用" and i["组分"] in solvent_ids]
     if sol and all(i["数值"] is not None for i in sol):
-        tot = sum(i["数值"] for i in sol)
-        phi = {i["组分"]: i["数值"] / tot for i in sol}
+        sp = sum(i["数值"] for i in pct) / 100
+        if unknown:
+            miss += [f"{i['组分']} 体积分数无法归一（{'、'.join(unknown)} 用量不明）" for i in sol]
+        elif pct and not parts and abs(sp - 1) > 0.01:
+            miss += [f"{i['组分']} 体积百分数合计 {sp * 100:g}%，其余组分未记录" for i in sol]
+        elif pct and parts and sp >= 1:
+            miss += [f"{i['组分']} 体积百分数已达 {sp * 100:g}%，与比例份数冲突" for i in sol]
+        elif pct and parts:
+            tp = sum(i["数值"] for i in parts)
+            phi = {**{i["组分"]: i["数值"] / 100 for i in pct}, **{i["组分"]: (1 - sp) * i["数值"] / tp for i in parts}}
+            pre.append("vol% 按占全部溶剂体积计，其余体积按比例份数分")
+        else:
+            tot = sum(i["数值"] for i in sol)
+            phi = {i["组分"]: i["数值"] / tot for i in sol}
     elif sol:
         miss.append("溶剂体积比未报告")
     n, mass = {}, 0.0
@@ -374,6 +394,7 @@ def build() -> None:
     dens = load("密度表.json")
     rows = load("work/候选组分.json")
     rmap = {m["row_id"]: m for m in load("行映射.json")["行"]}
+    solvent_ids = {k for k, c in comps.items() if c["类别"] in SOLVENT_CATS | CO_SOLVENT_CATS}
     recipes = {}
     for r in rows:
         m = rmap[r["row_id"]]
@@ -422,7 +443,7 @@ def build() -> None:
                     merged[i["组分"]]["数值"] += i["数值"]
                 else:
                     merged.setdefault(i["组分"], dict(i))
-            conv = convert(list(merged.values()), dens)
+            conv = convert(list(merged.values()), dens, solvent_ids)
         out.append({"论文": pid, "配方": rid, "配方名": sorted(rec["配方名"]), "用途": sorted(rec["用途"]), "类型": kind,
                     "组分": rec["组分"], **conv})
     cache = {}
@@ -476,13 +497,13 @@ def write_xlsx(out: list[dict], dens: dict, check: str) -> None:
         "用途：配方字段（组分、原文用量、统一后的量）用于记录、生成表述、判断一次比较改变了什么和指导实验配方；配方级元素比例是打分模型对溶剂＋主盐的输入（方案 §8.7）。原文用量和单位原样保留。",
         "统计：" + "；".join(f"{k[0]}·{k[1]} {v} 个" for k, v in sorted(cnt.items())) + "。",
         "单位归类：摩尔浓度（M、mol/L、mM，统一为 mol/L；mg/mL 按分子量换成 mol/L）、质量分数（wt%，统一为小数）、体积份（体积比、vol%、v/v、单一溶剂等）、摩尔比、分子数（计算模型盒子）、不可用（未报告、基准不明、比例冲突等）。原文小写 m 含义不明（mol/kg 或 Wiley 排版的 mol/L），按方案 §5.7 不换算；SI 明确写 M 的按 M。",
-        "换算（🧮）：只对真实液体配方做。体积份 → 体积分数；有密度和分子量时，算出 1 L 溶剂混合物里每种组分的物质的量（mol），全部组分都算出来时再给摩尔分数。",
+        "换算（🧮）：只对真实液体配方做。体积份 → 体积分数：vol% 按占全部溶剂体积计，同一配方里另有比例份数的（如 DME:DOL=1:1 加 10 vol% DMTS），剩下的体积再按份数分（DMTS 0.10、DME 0.45、DOL 0.45）；只写了百分数且合计不到 100% 的、另有溶剂用量不明的，不给体积分数（添加剂用量不明不影响）（11-01 修正，10-31 版把百分数和份数直接相加）。比例基准不明（原文未写是质量比还是体积比）的记不可用。有密度和分子量时，算出 1 L 溶剂混合物里每种组分的物质的量（mol），全部组分都算出来时再给摩尔分数。",
         "前提：摩尔浓度按每升溶剂近似（忽略盐和添加剂占的体积，原文写明按溶剂体积的除外）；质量分数按总电解液质量（原文写明按溶剂质量的除外）；盐按一个式量单元计（不拆成离子）。这些前提会让高浓度电解液的数值有偏差，比较时注意。",
         "密度（10-31、11-01 用户定）：PubChem 实验值优先，查不到用原文报的值，再查不到用厂商目录值（Sigma-Aldrich 等），再没有就留空、不估算。TTE、TEGDME、FEC 用厂商值；PPEO-CF₃、PXEO-CF₃ 是作者自合成，没有厂商值，仍缺，含它们的配方只能给体积分数。7 种常用溶剂 PubChem 值与厂商值相差都在 1% 以内，见“密度表”页。",
         "计算模型（MD/DFT 盒子）按分子个数直接给摩尔分数，和真实液体分开，不混在一起比较。",
         "配方级元素比例（11-01，“配方级元素比例”页）：按 Kim 等 PNAS 2023（10.1073/pnas.2214357120）的定义，把 1 L 电解液里溶剂＋主盐的全部原子（含 H、Li）数一遍，算各元素所占比例。原子数由组分结构表的 SMILES 自动计数（描述符页的 C、H、原子总数等列），用量取“每升溶剂物质的量”，原文给摩尔比的取摩尔分数（比例与总量无关）。",
         "进模型的 4 个：sO 溶剂带来的 O ÷ 全部原子（再分三档：不含氟、β 氟化醚氧、α 氟化醚氧，三档之和 = sO；醚氧按离它最近的 CF₂/CF₃ 分档，直接相连为 α，隔一个碳为 β）；aC 盐阴离子带来的 C ÷ 全部原子；F/O 全部 F ÷ 全部 O；InOr 除 C、H、Li 外的原子 ÷ C。其余 9 个（O、aO、C、sC、F、sF、aF、F/C、O/C）为 Kim 的其他特征，计算存档、暂不进模型。",
-        "计入哪些组分：类别为“溶剂”的、类别为“锂盐”的计入；“溶剂/添加剂”（FEC、DMTS）在该配方里按体积份或摩尔比给出（共溶剂用量）时计入溶剂，按 wt% 或 M 少量加入时算添加剂。LiNO₃（按添加剂，方案 §5.8）、其他添加剂、介体、LiI 等“锂盐/添加剂”、B 档硫物种与单列离子不计入，它们只按身份与用量记录（少量组分按组成加权会被稀释，方案 §8.7）。计入的组分有一个缺用量就整条不算，原因写在“不可算原因”列；“溶剂/添加剂”用量不明时判断不了角色，也不算。局限：共溶剂量级却按 wt% 给出的“溶剂/添加剂”会被当成添加剂（本批只有 P034 R_ST 的 20 wt% DMTS，该记录本身缺其他组分）。“含主盐”为否的是不含锂盐的液体（物性测量液等），分析时按需筛选。",
+        "计入哪些组分：类别为“溶剂”的、类别为“锂盐”的计入；“溶剂/添加剂”（FEC、DMTS）在该配方里按体积份或摩尔比给出（共溶剂用量）时计入溶剂，按 wt% 或 M 少量加入时算添加剂（11-01 用户确认：5–10 wt% 一类少量加入算添加剂；写成与其他组分的比例、或按 vol% 给出的（含 10 vol%）算共溶剂）。LiNO₃（按添加剂，方案 §5.8）、其他添加剂、介体、LiI 等“锂盐/添加剂”、B 档硫物种与单列离子不计入，它们只按身份与用量记录（少量组分按组成加权会被稀释，方案 §8.7）。计入的组分有一个缺用量就整条不算，原因写在“不可算原因”列；“溶剂/添加剂”用量不明时判断不了角色，也不算。局限：共溶剂量级却按 wt% 给出的“溶剂/添加剂”会被当成添加剂（本批只有 P034 R_ST 的 20 wt% DMTS，该记录本身缺其他组分）。“含主盐”为否的是不含锂盐的液体（物性测量液等），分析时按需筛选。",
         f"统计（真实液体）：" + "；".join(f"{k} {v} 个" for k, v in sorted(er.items())) + f"。{check}。",
     ]:
         ws.append([line])
