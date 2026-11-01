@@ -16,7 +16,7 @@ from __future__ import annotations
 import json
 import re
 import sys
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 
 from openpyxl import Workbook, load_workbook
@@ -35,10 +35,12 @@ XLSX = OUT / "组分结构表.xlsx"
 # 电解液官能团标签。醚氧排除酯/碳酸酯中的单键氧；“相邻”指直接相连的碳上有 ≥2 个 F（CF₂/CF₃）。
 # 磺酰基、胺/铵氮 10-31 由覆盖检查补入（TFSI/FSI/OTf 阴离子、苯乙胺/苄胺/季铵此前一个标签都没命中）
 # β 氟化醚氧 11-01 补（方案 §5.8，依据 Su 等 Angew 2019）：隔一个碳才是 CF₂/CF₃，已是 α 的不再计（α 优先），如 BTFE、TFEO、F4DEE
+ALPHA_O = "α氟化醚氧数（相邻CF₂/CF₃）"
+BETA_O = "β氟化醚氧数（隔一个碳为CF₂/CF₃，不含α）"
 SMARTS = {
     "醚氧数": "[OX2]([#6;!$([#6]=O)])[#6;!$([#6]=O)]",
-    "α氟化醚氧数（相邻CF₂/CF₃）": "[OX2]([#6;!$([#6]=O)])[CX4;$(C(F)F)]",
-    "β氟化醚氧数（隔一个碳为CF₂/CF₃，不含α）": "[OX2;!$(O[CX4;$(C(F)F)])]([#6;!$([#6]=O)])[CX4][CX4;$(C(F)F)]",
+    ALPHA_O: "[OX2]([#6;!$([#6]=O)])[CX4;$(C(F)F)]",
+    BETA_O: "[OX2;!$(O[CX4;$(C(F)F)])]([#6;!$([#6]=O)])[CX4][CX4;$(C(F)F)]",
     "羰基数": "[CX3]=[OX1]",
     "碳酸酯基数": "[OX2][CX3](=[OX1])[OX2]",
     "酰胺/脲基数": "[NX3][CX3](=[OX1])",
@@ -51,7 +53,7 @@ SMARTS = {
 }
 PATTERNS = {k: Chem.MolFromSmarts(v) for k, v in SMARTS.items()}
 # β 模式含 4 个原子，两侧都是 β 的醚氧（如 BTFE）会匹配两次，按氧原子去重计数
-COUNT_BY_FIRST_ATOM = {"β氟化醚氧数（隔一个碳为CF₂/CF₃，不含α）"}
+COUNT_BY_FIRST_ATOM = {BETA_O}
 MORGAN = rdFingerprintGenerator.GetMorganGenerator(radius=2, fpSize=2048)
 EXEMPT = "烃（没有极性官能团，这本身就是信息）和不含碳的无机盐/离子（组分身份本身就是特征）"
 
@@ -60,21 +62,35 @@ def count_atoms(mol, *syms: str) -> int:
     return sum(1 for a in mol.GetAtoms() if a.GetSymbol() in syms)
 
 
+def tag_count(mol, key: str) -> int:
+    hits = mol.GetSubstructMatches(PATTERNS[key])
+    return len({h[0] for h in hits}) if key in COUNT_BY_FIRST_ATOM else len(hits)
+
+
+def element_counts(smiles: str) -> dict:
+    """配方级元素比例（方案 §8.7）用：各元素原子数（含隐含 H）与 α/β 氟化醚氧数。step12d 调用，与描述符同一套定义。"""
+    mol = Chem.MolFromSmiles(smiles)
+    return {"原子": Counter(a.GetSymbol() for a in Chem.AddHs(mol).GetAtoms()),
+            "α氟化醚氧": tag_count(mol, ALPHA_O), "β氟化醚氧": tag_count(mol, BETA_O)}
+
+
 def describe(mol) -> dict:
+    n_h = sum(a.GetTotalNumHs() for a in mol.GetAtoms())
     d = {
         "分子量": round(Descriptors.MolWt(mol), 3),
         "O原子数": count_atoms(mol, "O"), "N原子数": count_atoms(mol, "N"),
         "S原子数": count_atoms(mol, "S"), "F原子数": count_atoms(mol, "F"),
         "Cl/Br/I原子数": count_atoms(mol, "Cl", "Br", "I"),
+        # 11-01：配方级元素比例按这三项与用量加权（方案 §8.7），列出来便于核对
+        "C原子数": count_atoms(mol, "C"), "H原子数（含隐含氢）": n_h, "原子总数（含H）": mol.GetNumAtoms() + n_h,
         "环数": rdMolDescriptors.CalcNumRings(mol),
         "芳环数": rdMolDescriptors.CalcNumAromaticRings(mol),
         "可旋转键数": rdMolDescriptors.CalcNumRotatableBonds(mol),
         "TPSA": round(rdMolDescriptors.CalcTPSA(mol), 2),
         "氢键受体数": Lipinski.NumHAcceptors(mol),
     }
-    for k, p in PATTERNS.items():
-        hits = mol.GetSubstructMatches(p)
-        d[k] = len({h[0] for h in hits}) if k in COUNT_BY_FIRST_ATOM else len(hits)
+    for k in PATTERNS:
+        d[k] = tag_count(mol, k)
     return d
 
 
@@ -285,7 +301,8 @@ def write_workbook(comps, aliases, excl, cover, desc_rows, ids, sim, qs, uncover
          "本次全部覆盖；10-31 这项检查查出 TFSI/FSI/OTf 等阴离子的磺酰基、苯乙胺/苄胺/季铵的氮没有标签，已补“磺酰基”“胺/铵氮”两列，另加 Cl/Br/I 原子数、芳环数。"),
         "描述符是结构特征，不等于配位强度、介电常数或溶解度。Morgan 指纹对小分子溶剂很粗：DME 与 DOL 同为醚，相似度却为 0，所以分类别看官能团标签，不看指纹。",
         f"覆盖：组分条目 {cover['组分条目']} 条 → 对应到组分 {cover['已映射到组分']} 条，未收录（有原因）{cover['未收录（有原因）']} 条，对不上 {cover['未映射']} 条。规则见方案 §5.8。",
-        "配方挂接与单位换算待 F 版 30 篇人工复核完成后进行；“顺带发现的提取问题_复核完再看.json”请在复核完成后再打开。",
+        "本表与配方组成表的分工：本表每个分子一行，记它是谁（SMILES、InChIKey）和只由结构决定、与用量无关的数字（描述符）；同目录的配方组成表每个配方一行，记用了哪些组分、各用多少、换算成统一的量，以及按用量加权得到的配方级元素比例（方案 §8.7）。同一个分子（如 DME）出现在很多配方里，分子信息只在本表记一次，配方表用组分 ID 引用。",
+        "11-01：描述符页增加 C 原子数、H 原子数（含隐含氢）、原子总数（含H）和 β 氟化醚氧数。配方级元素比例就是用这些计数乘以各组分用量再相加得到的，可在这里核对。醚氧按离它最近的含氟碳（CF₂/CF₃）分档：直接相连为 α，隔一个碳为 β（方案 §5.8，依据 Su 等 Angew 2019）。",
     ]
     for n in notes:
         ws.append([n])

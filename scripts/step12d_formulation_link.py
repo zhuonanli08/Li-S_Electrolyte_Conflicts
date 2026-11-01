@@ -8,6 +8,8 @@
   build    每个配方：组分 ID、原文用量与单位原样保留，单位归类（摩尔浓度/质量摩尔浓度/质量分数/体积份/摩尔比/
            分子数/未报告或不可用），能解析的给数值；真实液体配方（非计算模型）在输入齐全时换算出每种组分在
            “1 L 溶剂混合物”中的物质的量和摩尔分数，标 🧮，并写明用到的前提（盐浓度按每升溶剂近似、wt% 按总电解液质量等）。
+           11-01 加配方级元素比例（方案 §8.7）：按 Kim 等 PNAS 2023 的定义，只算溶剂＋主盐（LiNO₃、添加剂、介体、
+           B 档硫物种与离子不计入），原子计数用 step12b 的 element_counts；每次先用 Kim SI 的 3 个例子自检，不通过就停止。
 输出 output/组分结构表_F版30篇_2026-10-31/：密度表.json、配方组成.json、配方组成表.xlsx。
 运行：D:/anaconda/envs/rdkit/python.exe -X utf8 scripts/step12d_formulation_link.py density|build
 """
@@ -20,13 +22,44 @@ import sys
 import time
 import urllib.error
 import urllib.request
+from collections import Counter
 from pathlib import Path
+
+from rdkit import Chem
+from rdkit.Chem import Descriptors
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from step12b_component_descriptors import element_counts  # noqa: E402  与描述符同一套原子计数和 α/β 定义
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "output" / "组分结构表_F版30篇_2026-10-31"
 WORK = OUT / "work"
 DENSITY_CACHE = WORK / "density_cache.json"
 VOLUME_UNIT = re.compile(r"体积|vol|v/v|volume", re.I)
+
+# 配方级元素比例（方案 §8.7，11-01）：只算溶剂＋主盐。“溶剂/添加剂”（FEC、DMTS）按体积份或摩尔比给出（共溶剂用量）时
+# 计入溶剂，按 wt%/M 少量加入时算添加剂；“锂盐/添加剂”（LiI）、LiNO₃、其他添加剂、介体、B 档不计入。
+SOLVENT_CATS, CO_SOLVENT_CATS, SALT_CATS = {"溶剂"}, {"溶剂/添加剂"}, {"锂盐"}
+CO_SOLVENT_UNITS = {"体积份", "摩尔比"}
+RATIO_MAIN = ["sO", "sO_不含氟", "sO_β氟化醚", "sO_α氟化醚", "aC", "F/O", "InOr"]
+RATIO_ARCHIVE = ["O", "aO", "C", "sC", "F", "sF", "aF", "F/C", "O/C"]
+LITFSI, LIFSI = "O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F.[Li+]", "O=S(=O)(F)[N-]S(=O)(=O)F.[Li+]"
+# 自检：Kim 等 SI 的 Supporting Note 与 sd01.xlsx Dataset 第 4、151 行（密度取 Kim 分子库值；Note 中 Kim 把 LiNO₃ 计为盐，
+# 0.466 mol 与其 N、O 总数一致）。溶剂给每升克数，盐给 mol。11-01 已手工复算一致。
+KIM_CHECK = [
+    ("Supporting Note：1 M LiTFSI DOL-DME (1:1 vol) 3 wt% LiNO3",
+     [("C1COCO1", 0.5 * 1060), ("COCCOC", 0.5 * 868)], [(LITFSI, 1.0), ("O=[N+]([O-])[O-].[Li+]", 0.466)],
+     {"sC": 0.234}, 5e-4),
+    ("Dataset 第 4 行：1 M LiPF6 EC-DMC (1:1 v) 2% VC",
+     [("O=C1OCCO1", 660.0), ("COC(=O)OC", 535.0), ("O=C1OC=CO1", 27.0)], [("F[P-](F)(F)(F)(F)F.[Li+]", 1.0)],
+     {"sO": 0.26315101, "aO": 0.0, "sF": 0.0, "aF": 0.03828263, "aC": 0.0, "F/O": 0.14547780, "InOr": 1.16972410,
+      "O": 0.26315101, "C": 0.26315101, "sC": 0.26315101, "F": 0.03828263, "F/C": 0.14547780, "O/C": 1.0}, 2e-4),
+    ("Dataset 第 151 行：1.2 M LiFSI F4DEE",
+     [("FC(F)COCCOCC(F)F", 1240.0)], [(LIFSI, 1.2)],
+     {"sO": 0.08389239, "aO": 0.03087348, "sF": 0.16778478, "aF": 0.01543674, "aC": 0.0, "F/O": 1.59648089,
+      "InOr": 1.27600968, "O": 0.11476587, "C": 0.25167717, "sC": 0.25167717, "F": 0.18322152, "F/C": 0.72800215,
+      "O/C": 0.45600430}, 2e-4),
+]
 
 
 def load(name: str):
@@ -261,7 +294,82 @@ def convert(items: list[dict], dens: dict) -> dict:
     return out
 
 
+def element_ratios(parts: list[tuple[dict, str, float]]) -> dict:
+    """parts：(element_counts 结果, "s" 溶剂 / "a" 盐, 物质的量)。比例 = 该元素原子数 ÷ 全部原子数（含 H、Li）；
+    盐中除 Li 外的原子记为阴离子部分；无机 = 除 C、H、Li 外的元素（Kim 等 Methods）。比例与总量无关，摩尔分数也可代入。"""
+    s, a, li, fa, fb = Counter(), Counter(), 0.0, 0.0, 0.0
+    for ec, role, n in parts:
+        for el, k in ec["原子"].items():
+            if el == "Li" and role == "a":
+                li += k * n
+            else:
+                (s if role == "s" else a)[el] += k * n
+        if role == "s":
+            fa += ec["α氟化醚氧"] * n
+            fb += ec["β氟化醚氧"] * n
+    t = s + a
+    tot = sum(t.values()) + li
+    c, o, f = t["C"], t["O"], t["F"]
+    inorg = sum(v for el, v in t.items() if el not in ("C", "H", "Li"))
+    r = {"sO": s["O"] / tot, "sO_β氟化醚": fb / tot, "sO_α氟化醚": fa / tot, "aC": a["C"] / tot,
+         "F/O": f / o if o else None, "InOr": inorg / c if c else None,
+         "O": o / tot, "aO": a["O"] / tot, "C": c / tot, "sC": s["C"] / tot, "F": f / tot, "sF": s["F"] / tot,
+         "aF": a["F"] / tot, "F/C": f / c if c else None, "O/C": o / c if c else None}
+    r["sO_不含氟"] = r["sO"] - r["sO_β氟化醚"] - r["sO_α氟化醚"]
+    return r
+
+
+def kim_selfcheck() -> str:
+    """用 Kim SI 的 3 个例子检查 element_ratios 与原子计数；不一致就停止，不出结果。"""
+    for label, solvents, salts, expect, tol in KIM_CHECK:
+        parts = [(element_counts(smi), "s", g / Descriptors.MolWt(Chem.MolFromSmiles(smi))) for smi, g in solvents]
+        parts += [(element_counts(smi), "a", n) for smi, n in salts]
+        got = element_ratios(parts)
+        bad = {k: (round(got[k], 6), v) for k, v in expect.items() if abs(got[k] - v) > tol * max(1.0, abs(v))}
+        if bad:
+            sys.exit(f"Kim 自检不通过：{label} {bad}（算得, 原值）")
+    return f"Kim 等 SI 自检 {len(KIM_CHECK)}/{len(KIM_CHECK)} 通过（Supporting Note 示例与数据集第 4、151 行）"
+
+
+def recipe_ratios(rec: dict, comps: dict, counts) -> dict:
+    """一个真实液体配方的配方级元素比例：判定哪些组分计入（溶剂＋主盐），用量取 1 L 溶剂中的物质的量，原文给摩尔比时取摩尔分数。"""
+    units = {}
+    for i in rec["组分"]:
+        units.setdefault(i["组分"], set()).add(i["单位类别"])
+    base, skipped, unclear = {}, {}, []
+    for cid, us in units.items():
+        c = comps[cid]
+        if c["档"] != "A":
+            skipped[cid] = "B 档（硫物种或单列离子）"
+        elif c["类别"] in SOLVENT_CATS or (c["类别"] in CO_SOLVENT_CATS and us & CO_SOLVENT_UNITS):
+            base[cid] = "s"
+        elif c["类别"] in SALT_CATS:
+            base[cid] = "a"
+        elif c["类别"] in CO_SOLVENT_CATS and us <= {"不可用"}:
+            skipped[cid] = c["类别"] + "（用量不明，无法判断是共溶剂还是添加剂）"
+            unclear.append(cid)
+        else:
+            skipped[cid] = c["类别"] + ("（按 wt% 或 M 给出，按添加剂）" if c["类别"] in CO_SOLVENT_CATS else "")
+    out = {"计入": {k: ("溶剂" if v == "s" else "主盐") for k, v in base.items()}, "未计入": skipped,
+           "含主盐": "a" in base.values()}
+    amt = rec.get("每升溶剂物质的量_mol") or {}
+    if not all(k in amt for k in base) and all(k in rec.get("摩尔分数", {}) for k in base):
+        amt = rec["摩尔分数"]
+    if unclear:
+        return {**out, "状态": "不可算", "原因": "、".join(unclear) + " 用量不明，无法判断是共溶剂还是添加剂"}
+    if "s" not in base.values():
+        return {**out, "状态": "不可算", "原因": "没有计入的溶剂（本配方记录只有：" + "、".join(units) + "）"}
+    miss = [k for k in base if k not in amt]
+    if miss:
+        why = [m for m in rec.get("缺", []) if any(m.startswith(k + " ") for k in miss)]
+        return {**out, "状态": "不可算", "原因": "；".join(why) or "用量缺：" + "、".join(miss)}
+    ratios = element_ratios([(counts(cid), role, amt[cid]) for cid, role in base.items()])
+    return {**out, "状态": "可算", "原因": "", "比例": ratios}
+
+
 def build() -> None:
+    check = kim_selfcheck()
+    print(check)
     comps = {c["id"]: c for c in load("组分表.json")}
     dens = load("密度表.json")
     rows = load("work/候选组分.json")
@@ -317,14 +425,27 @@ def build() -> None:
             conv = convert(list(merged.values()), dens)
         out.append({"论文": pid, "配方": rid, "配方名": sorted(rec["配方名"]), "用途": sorted(rec["用途"]), "类型": kind,
                     "组分": rec["组分"], **conv})
+    cache = {}
+
+    def counts(cid):
+        if cid not in cache:
+            cache[cid] = element_counts(comps[cid]["规范SMILES"])
+        return cache[cid]
+    for r in out:
+        if r["类型"] == "液体":
+            r["元素比例"] = recipe_ratios(r, comps, counts)
     (OUT / "配方组成.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
-    write_xlsx(out, dens)
-    from collections import Counter
+    write_xlsx(out, dens, check)
     print("配方", len(out), "：", Counter((r["类型"], r["状态"]) for r in out))
     print("缺项（按配方计）：", Counter(m for r in out for m in r["缺"]).most_common(12))
+    er = [r["元素比例"] for r in out if "元素比例" in r]
+    print("配方级元素比例（真实液体）：", Counter(e["状态"] for e in er), "；其中不含主盐",
+          sum(1 for e in er if e["状态"] == "可算" and not e["含主盐"]), "个")
+    print("不可算原因：", Counter(e["原因"] for e in er if e["状态"] == "不可算").most_common(8))
+    print("未计入的组分（按配方计）：", Counter(f"{k}（{v}）" for e in er for k, v in e["未计入"].items()).most_common(12))
 
 
-def write_xlsx(out: list[dict], dens: dict) -> None:
+def write_xlsx(out: list[dict], dens: dict, check: str) -> None:
     from openpyxl import Workbook
     from openpyxl.styles import Alignment, Font, PatternFill
     head, fill, wrap = Font(bold=True), PatternFill("solid", fgColor="DDEBF7"), Alignment(wrap_text=True, vertical="top")
@@ -347,17 +468,22 @@ def write_xlsx(out: list[dict], dens: dict) -> None:
     wb = Workbook()
     ws = wb.active
     ws.title = "说明"
-    from collections import Counter
     cnt = Counter((r["类型"], r["状态"]) for r in out)
+    er = Counter(r["元素比例"]["状态"] for r in out if "元素比例" in r)
     for line in [
-        "配方组成表（F 版 30 篇，2026-10-31）。全部为 AI 辅助，用户尚未逐项确认。",
-        "用途：把每个配方的组分挂到组分结构表的组分 ID，用量换成统一的量，后面按“分块表示”（方案 §8.7）比较配方。原文用量和单位原样保留。",
+        "配方组成表（F 版 30 篇，2026-10-31；11-01 加配方级元素比例）。全部为 AI 辅助，用户尚未逐项确认。",
+        "与组分结构表的分工：组分结构表每个分子一行，记它是谁和只由结构决定的数字（描述符），与用量无关；本表每个配方一行，记用了哪些组分（用组分 ID 引用组分结构表）、各用多少、换算成统一的量，以及按用量加权得到的配方级元素比例。同一个分子出现在很多配方里，分子信息只在组分结构表记一次。",
+        "用途：配方字段（组分、原文用量、统一后的量）用于记录、生成表述、判断一次比较改变了什么和指导实验配方；配方级元素比例是打分模型对溶剂＋主盐的输入（方案 §8.7）。原文用量和单位原样保留。",
         "统计：" + "；".join(f"{k[0]}·{k[1]} {v} 个" for k, v in sorted(cnt.items())) + "。",
         "单位归类：摩尔浓度（M、mol/L、mM，统一为 mol/L；mg/mL 按分子量换成 mol/L）、质量分数（wt%，统一为小数）、体积份（体积比、vol%、v/v、单一溶剂等）、摩尔比、分子数（计算模型盒子）、不可用（未报告、基准不明、比例冲突等）。原文小写 m 含义不明（mol/kg 或 Wiley 排版的 mol/L），按方案 §5.7 不换算；SI 明确写 M 的按 M。",
         "换算（🧮）：只对真实液体配方做。体积份 → 体积分数；有密度和分子量时，算出 1 L 溶剂混合物里每种组分的物质的量（mol），全部组分都算出来时再给摩尔分数。",
         "前提：摩尔浓度按每升溶剂近似（忽略盐和添加剂占的体积，原文写明按溶剂体积的除外）；质量分数按总电解液质量（原文写明按溶剂质量的除外）；盐按一个式量单元计（不拆成离子）。这些前提会让高浓度电解液的数值有偏差，比较时注意。",
         "密度（10-31、11-01 用户定）：PubChem 实验值优先，查不到用原文报的值，再查不到用厂商目录值（Sigma-Aldrich 等），再没有就留空、不估算。TTE、TEGDME、FEC 用厂商值；PPEO-CF₃、PXEO-CF₃ 是作者自合成，没有厂商值，仍缺，含它们的配方只能给体积分数。7 种常用溶剂 PubChem 值与厂商值相差都在 1% 以内，见“密度表”页。",
         "计算模型（MD/DFT 盒子）按分子个数直接给摩尔分数，和真实液体分开，不混在一起比较。",
+        "配方级元素比例（11-01，“配方级元素比例”页）：按 Kim 等 PNAS 2023（10.1073/pnas.2214357120）的定义，把 1 L 电解液里溶剂＋主盐的全部原子（含 H、Li）数一遍，算各元素所占比例。原子数由组分结构表的 SMILES 自动计数（描述符页的 C、H、原子总数等列），用量取“每升溶剂物质的量”，原文给摩尔比的取摩尔分数（比例与总量无关）。",
+        "进模型的 4 个：sO 溶剂带来的 O ÷ 全部原子（再分三档：不含氟、β 氟化醚氧、α 氟化醚氧，三档之和 = sO；醚氧按离它最近的 CF₂/CF₃ 分档，直接相连为 α，隔一个碳为 β）；aC 盐阴离子带来的 C ÷ 全部原子；F/O 全部 F ÷ 全部 O；InOr 除 C、H、Li 外的原子 ÷ C。其余 9 个（O、aO、C、sC、F、sF、aF、F/C、O/C）为 Kim 的其他特征，计算存档、暂不进模型。",
+        "计入哪些组分：类别为“溶剂”的、类别为“锂盐”的计入；“溶剂/添加剂”（FEC、DMTS）在该配方里按体积份或摩尔比给出（共溶剂用量）时计入溶剂，按 wt% 或 M 少量加入时算添加剂。LiNO₃（按添加剂，方案 §5.8）、其他添加剂、介体、LiI 等“锂盐/添加剂”、B 档硫物种与单列离子不计入，它们只按身份与用量记录（少量组分按组成加权会被稀释，方案 §8.7）。计入的组分有一个缺用量就整条不算，原因写在“不可算原因”列；“溶剂/添加剂”用量不明时判断不了角色，也不算。局限：共溶剂量级却按 wt% 给出的“溶剂/添加剂”会被当成添加剂（本批只有 P034 R_ST 的 20 wt% DMTS，该记录本身缺其他组分）。“含主盐”为否的是不含锂盐的液体（物性测量液等），分析时按需筛选。",
+        f"统计（真实液体）：" + "；".join(f"{k} {v} 个" for k, v in sorted(er.items())) + f"。{check}。",
     ]:
         ws.append([line])
         ws.cell(ws.max_row, 1).alignment = wrap
@@ -368,6 +494,19 @@ def write_xlsx(out: list[dict], dens: dict) -> None:
             "、".join(dict.fromkeys(i["组分"] for i in r["组分"])), r["状态"],
             "；".join(f"{k} {pct(v)}" for k, v in r.get("摩尔分数", {}).items()), "；".join(r["缺"]), "；".join(r["前提"])]
            for r in out], {3: 24, 6: 30, 8: 50, 9: 40, 10: 40})
+
+    f4 = lambda x: None if x is None else round(x, 4)
+    names = {"sO": "sO 溶剂氧", "sO_不含氟": "其中 不含氟", "sO_β氟化醚": "其中 β氟化醚氧", "sO_α氟化醚": "其中 α氟化醚氧",
+             "aC": "aC 阴离子碳", "F/O": "F/O", "InOr": "InOr 无机/有机"}
+    sheet(wb, "配方级元素比例",
+          ["论文", "配方", "配方名", "状态", "含主盐", "计入的溶剂", "计入的主盐", "未计入（原因）",
+           *[names[k] for k in RATIO_MAIN], *[f"存档 {k}" for k in RATIO_ARCHIVE], "不可算原因"],
+          [[r["论文"], r["配方"], "、".join(r["配方名"]), e["状态"], "是" if e["含主盐"] else "否",
+            "、".join(k for k, v in e["计入"].items() if v == "溶剂"), "、".join(k for k, v in e["计入"].items() if v == "主盐"),
+            "；".join(f"{k}（{v}）" for k, v in e["未计入"].items()),
+            *[f4(e.get("比例", {}).get(k)) for k in RATIO_MAIN], *[f4(e.get("比例", {}).get(k)) for k in RATIO_ARCHIVE],
+            e["原因"]] for r in out if (e := r.get("元素比例"))],
+          {3: 20, 6: 22, 7: 14, 8: 40, 25: 40})
 
     sheet(wb, "配方组分", ["论文", "配方", "组分ID", "名称", "档", "原文写法", "原文用量", "原文单位", "单位类别", "统一后的值",
                        "体积分数🧮", "每升溶剂物质的量 mol🧮", "摩尔分数🧮", "说明"],
