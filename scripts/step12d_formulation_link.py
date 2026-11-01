@@ -1,6 +1,6 @@
 """配方挂接与单位换算（2026-10-31）：把 F 版 30 篇每个配方的组分挂到组分 ID，用量归类，能换算的换成统一量。
 
-方案 §5.8、§8.7（分块表示）、§15.1。只读 F 版冻结候选 recipes/formulations、step12a 的行映射与组分表，不改它们。
+方案 §5.8、§8.7（分块表示）、§15.1。只读 step12a 收集的组分（来自 F 版 30 篇当前数据集）、行映射与组分表，不改它们。
 分两步：
   density  液体组分的密度（10-31、11-01 用户定）：PubChem 实验值优先（只取 15–30 °C 的值，多个取中位数，记原文字符串）；
            查不到用原文报的值（组分核定.json 组分的“原文密度”）；再查不到用厂商目录值（“厂商密度”）；再没有就留空、
@@ -23,7 +23,6 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-PAPERS = ROOT / "output" / "F版独立测试30篇_2026-10-29" / "papers"
 OUT = ROOT / "output" / "组分结构表_F版30篇_2026-10-31"
 WORK = OUT / "work"
 DENSITY_CACHE = WORK / "density_cache.json"

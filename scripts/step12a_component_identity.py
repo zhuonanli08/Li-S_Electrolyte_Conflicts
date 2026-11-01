@@ -1,6 +1,7 @@
 """组分身份表（2026-10-31）：F 版独立测试集 30 篇的组分 → SMILES / InChIKey，方案 §5.8“组分收录与身份核实”。
 
-只读 F 版冻结候选（papers/*/candidate.json 的 recipes[].components）和各篇 source.json，不改它们，不碰人工复核表。
+只读 F 版 30 篇当前数据集（11-01 起为人工复核后的规则处理版 output/F版30篇_规则处理版_2026-11-01，此前为冻结候选
+output/F版独立测试30篇_2026-10-29）的 papers/*/candidate.json 与 source.json，不改它们，不碰人工复核表。
 分三步：
   collect  收集每条组分（论文号＋配方号＋原文写法）、所在配方的 system 及用途归类，并从本篇原文找出现该名字的原句；
   pubchem  对核定表里写了 pubchem_query（只用全称或 CAS，不用缩写）的组分查 PubChem，结果缓存；
@@ -23,7 +24,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-PAPERS = ROOT / "output" / "F版独立测试30篇_2026-10-29" / "papers"
+PAPERS = ROOT / "output" / "F版30篇_规则处理版_2026-11-01" / "papers"  # 11-01 用户复核意见写回后的当前数据集
 OUT = ROOT / "output" / "组分结构表_F版30篇_2026-10-31"
 WORK = OUT / "work"
 CANDS = WORK / "候选组分.json"
