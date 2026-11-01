@@ -2,8 +2,9 @@
 
 方案 §5.8、§8.7（分块表示）、§15.1。只读 F 版冻结候选 recipes/formulations、step12a 的行映射与组分表，不改它们。
 分两步：
-  density  液体组分的密度（10-31 用户定）：PubChem 实验值优先（只取 15–30 °C 的值，多个取中位数，记原文字符串）；
-           查不到用原文报的值（组分核定.json 组分的“原文密度”）；再没有就留空、不估算。结果缓存 work/density_cache.json。
+  density  液体组分的密度（10-31、11-01 用户定）：PubChem 实验值优先（只取 15–30 °C 的值，多个取中位数，记原文字符串）；
+           查不到用原文报的值（组分核定.json 组分的“原文密度”）；再查不到用厂商目录值（“厂商密度”）；再没有就留空、
+           不估算。两种来源都有时并排记录相差多少。结果缓存 work/density_cache.json。
   build    每个配方：组分 ID、原文用量与单位原样保留，单位归类（摩尔浓度/质量摩尔浓度/质量分数/体积份/摩尔比/
            分子数/未报告或不可用），能解析的给数值；真实液体配方（非计算模型）在输入齐全时换算出每种组分在
            “1 L 溶剂混合物”中的物质的量和摩尔分数，标 🧮，并写明用到的前提（盐浓度按每升溶剂近似、wt% 按总电解液质量等）。
@@ -118,16 +119,22 @@ def density() -> None:
             time.sleep(0.4)
         hit = cache.get(m.group(1)) if m else None
         val, used, note = pick_density(hit.get("原文", [])) if hit and hit["状态"] == "找到" else (None, [], "")
-        paper = cur[cid].get("原文密度")
+        paper, sup = cur[cid].get("原文密度"), cur[cid].get("厂商密度")
         if val is not None:
             table[cid] = {"名称": c["名称"], "密度_g_mL": val, "来源": f"PubChem 实验值（CID {m.group(1)}；{note}）",
                           "原文字符串": used}
         elif paper:
             table[cid] = {"名称": c["名称"], "密度_g_mL": paper["值"], "来源": f"原文 {paper['依据']}", "原文字符串": [paper["原句"]]}
+        elif sup:  # 11-01 用户同意：PubChem 和原文都没有时用厂商目录值
+            table[cid] = {"名称": c["名称"], "密度_g_mL": sup["值"], "来源": f"厂商值：{sup['来源']}，{sup['条件']}",
+                          "原文字符串": []}
         else:
             table[cid] = {"名称": c["名称"], "密度_g_mL": None,
-                          "来源": "缺：" + ("PubChem " + hit["状态"] if hit else "PubChem 未收录") + "，原文也未找到",
+                          "来源": "缺：" + ("PubChem " + hit["状态"] if hit else "PubChem 未收录") + "，原文和厂商都没有",
                           "原文字符串": []}
+        if sup:  # 两种来源都有时并排记录，看差多少
+            table[cid]["厂商值"] = {**sup, "与采用值相差": round((sup["值"] - table[cid]["密度_g_mL"]) /
+                                                      table[cid]["密度_g_mL"] * 100, 2)}
     DENSITY_CACHE.write_text(json.dumps(cache, ensure_ascii=False, indent=1), encoding="utf-8")
     (OUT / "密度表.json").write_text(json.dumps(table, ensure_ascii=False, indent=1), encoding="utf-8")
     for cid, d in table.items():
@@ -350,7 +357,7 @@ def write_xlsx(out: list[dict], dens: dict) -> None:
         "单位归类：摩尔浓度（M、mol/L、mM，统一为 mol/L；mg/mL 按分子量换成 mol/L）、质量分数（wt%，统一为小数）、体积份（体积比、vol%、v/v、单一溶剂等）、摩尔比、分子数（计算模型盒子）、不可用（未报告、基准不明、比例冲突等）。原文小写 m 含义不明（mol/kg 或 Wiley 排版的 mol/L），按方案 §5.7 不换算；SI 明确写 M 的按 M。",
         "换算（🧮）：只对真实液体配方做。体积份 → 体积分数；有密度和分子量时，算出 1 L 溶剂混合物里每种组分的物质的量（mol），全部组分都算出来时再给摩尔分数。",
         "前提：摩尔浓度按每升溶剂近似（忽略盐和添加剂占的体积，原文写明按溶剂体积的除外）；质量分数按总电解液质量（原文写明按溶剂质量的除外）；盐按一个式量单元计（不拆成离子）。这些前提会让高浓度电解液的数值有偏差，比较时注意。",
-        "密度（10-31 用户定）：PubChem 实验值优先，查不到用原文报的值，再没有就留空、不估算。TTE、TEGDME、FEC、PPEO-CF₃、PXEO-CF₃ 目前缺密度，含它们的配方只能给体积分数，见“密度表”页。",
+        "密度（10-31、11-01 用户定）：PubChem 实验值优先，查不到用原文报的值，再查不到用厂商目录值（Sigma-Aldrich 等），再没有就留空、不估算。TTE、TEGDME、FEC 用厂商值；PPEO-CF₃、PXEO-CF₃ 是作者自合成，没有厂商值，仍缺，含它们的配方只能给体积分数。7 种常用溶剂 PubChem 值与厂商值相差都在 1% 以内，见“密度表”页。",
         "计算模型（MD/DFT 盒子）按分子个数直接给摩尔分数，和真实液体分开，不混在一起比较。",
     ]:
         ws.append([line])
@@ -370,9 +377,13 @@ def write_xlsx(out: list[dict], dens: dict) -> None:
             r.get("摩尔分数", {}).get(i["组分"]), i["说明"]] for r in out for i in r["组分"]],
           {4: 18, 6: 22, 7: 22, 8: 22, 14: 30})
 
-    sheet(wb, "密度表", ["组分ID", "名称", "密度 g/mL", "来源", "PubChem 原文"],
-          [[k, d["名称"], d["密度_g_mL"], d["来源"], "｜".join(d["原文字符串"])] for k, d in dens.items()],
-          {2: 22, 4: 40, 5: 80})
+    sheet(wb, "密度表", ["组分ID", "名称", "采用密度 g/mL", "来源", "PubChem 原文", "厂商值 g/mL", "厂商来源与链接",
+                       "厂商值与采用值相差 %"],
+          [[k, d["名称"], d["密度_g_mL"], d["来源"], "｜".join(d["原文字符串"]),
+            (d.get("厂商值") or {}).get("值"),
+            "；".join(filter(None, [(d.get("厂商值") or {}).get(x) for x in ("来源", "条件", "链接", "说明")])),
+            (d.get("厂商值") or {}).get("与采用值相差")] for k, d in dens.items()],
+          {2: 22, 4: 40, 5: 60, 7: 70})
     wb.save(OUT / "配方组成表.xlsx")
 
 
