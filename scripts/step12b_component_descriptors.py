@@ -34,9 +34,11 @@ XLSX = OUT / "组分结构表.xlsx"
 
 # 电解液官能团标签。醚氧排除酯/碳酸酯中的单键氧；“相邻”指直接相连的碳上有 ≥2 个 F（CF₂/CF₃）。
 # 磺酰基、胺/铵氮 10-31 由覆盖检查补入（TFSI/FSI/OTf 阴离子、苯乙胺/苄胺/季铵此前一个标签都没命中）
+# β 氟化醚氧 11-01 补（方案 §5.8，依据 Su 等 Angew 2019）：隔一个碳才是 CF₂/CF₃，已是 α 的不再计（α 优先），如 BTFE、TFEO、F4DEE
 SMARTS = {
     "醚氧数": "[OX2]([#6;!$([#6]=O)])[#6;!$([#6]=O)]",
     "α氟化醚氧数（相邻CF₂/CF₃）": "[OX2]([#6;!$([#6]=O)])[CX4;$(C(F)F)]",
+    "β氟化醚氧数（隔一个碳为CF₂/CF₃，不含α）": "[OX2;!$(O[CX4;$(C(F)F)])]([#6;!$([#6]=O)])[CX4][CX4;$(C(F)F)]",
     "羰基数": "[CX3]=[OX1]",
     "碳酸酯基数": "[OX2][CX3](=[OX1])[OX2]",
     "酰胺/脲基数": "[NX3][CX3](=[OX1])",
@@ -48,6 +50,8 @@ SMARTS = {
     "硫醚/多硫链S原子数": "[$([SX2]([#6])[#6]),$([SX2][SX2])]",
 }
 PATTERNS = {k: Chem.MolFromSmarts(v) for k, v in SMARTS.items()}
+# β 模式含 4 个原子，两侧都是 β 的醚氧（如 BTFE）会匹配两次，按氧原子去重计数
+COUNT_BY_FIRST_ATOM = {"β氟化醚氧数（隔一个碳为CF₂/CF₃，不含α）"}
 MORGAN = rdFingerprintGenerator.GetMorganGenerator(radius=2, fpSize=2048)
 EXEMPT = "烃（没有极性官能团，这本身就是信息）和不含碳的无机盐/离子（组分身份本身就是特征）"
 
@@ -69,7 +73,8 @@ def describe(mol) -> dict:
         "氢键受体数": Lipinski.NumHAcceptors(mol),
     }
     for k, p in PATTERNS.items():
-        d[k] = len(mol.GetSubstructMatches(p))
+        hits = mol.GetSubstructMatches(p)
+        d[k] = len({h[0] for h in hits}) if k in COUNT_BY_FIRST_ATOM else len(hits)
     return d
 
 
