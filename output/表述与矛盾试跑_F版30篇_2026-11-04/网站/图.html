@@ -1,0 +1,37 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8"><title>四张图｜课题二表述与矛盾试跑</title>
+<link rel="stylesheet" href="style.css"></head><body>
+<header><h1>课题二 · 标准化表述与矛盾候选试跑</h1><div class="sub">初步，30 篇（F 版规则处理版）｜2026-11-04｜AI 辅助生成与核对，用户尚未逐项人工确认</div></header>
+<nav><a href="index.html" class="">总览</a><a href="表述表.html" class="">表述表</a><a href="别名表.html" class="">指标与物性别名</a><a href="条件表.html" class="">测试条件</a><a href="图.html" class="on">四张图</a><a href="矛盾候选.html" class="">矛盾候选</a></nav><main><div class="note">四张图都标“初步，30 篇（F 版规则处理版）”。图形只表示关联，不证明因果；疑似重复的表述每组只计一次。</div><h2>图1a 配方组分共现网络（只看配方）</h2><p>每个点是一个组分，点越大用到它的配方越多；两点之间的线表示它们出现在同一个配方里，线越粗次数越多。鼠标停在点或线上看数字，可拖动、缩放。（<a href="图/图1a_配方组分共现网络.html" target="_blank">新窗口打开</a>）</p><iframe src="图/图1a_配方组分共现网络.html" height="800"></iframe><h2>图1b 组分＋物性＋条件＋性能共现网络</h2><p>四种颜色的点分别是组分、物性、条件档（如“E/S≤5（贫液）”）、性能档（同一指标同一阶段里三等分，好/中/差）。线 = 两者同时出现在多少条表述里（只画 ≥10 条的）。性能档是原值三等分，未归一化，只看分布，不比优劣。（<a href="图/图1b_四部分共现网络.html" target="_blank">新窗口打开</a>）</p><iframe src="图/图1b_四部分共现网络.html" height="800"></iframe><h2>图2a 弦图：配方 × 物性</h2><p>左边一圈是组分化学类别，右边是物性类别；弦表示“含这类组分的配方报告了这项物性”（按配方计）。能看出哪些体系的物性测得多、哪些是空白。</p><a href="图/图2a_配方物性弦图.svg" target="_blank"><img class="fig" src="图/图2a_配方物性弦图.png"></a><h2>图2b 弦图：配方 × 物性 × 测试条件 × 性能</h2><p>四组弧：组分类别（蓝）、物性（橙）、测试条件（绿，只选贫液、高载量、软包、薄锂等关键档）、性能类别（红）。弦宽 = 两者同时出现的表述数（只画 ≥15 条的）。</p><a href="图/图2b_四部分弦图.svg" target="_blank"><img class="fig" src="图/图2b_四部分弦图.png"></a><h2>图3 聚类热图：配方 × 物性 × 条件 × 性能</h2><p>每行一个配方（共 52 个，需能算元素比例且有性能值），列分四块，用竖线隔开。颜色是标准化后的值（红高蓝低），灰 = 未报告。行顺序按层次聚类排列。注意：性能“原值”未归一化，跨篇不能直接比；“篇内相对对照”两列是同篇比值，可以比。（<a href="图/图3_四部分聚类热图.html" target="_blank">新窗口打开</a>）</p><iframe src="图/图3_四部分聚类热图.html" height="1000"></iframe><h2>图4 表述文字向量图</h2><p>把每条表述的完整文字变成向量（字符片段统计，不是语义模型），再压到二维；越近的点文字越像。右上角可切换按性能类别、论文、电池类型着色，鼠标停在点上看整条表述。（<a href="图/图4_表述文字向量图.html" target="_blank">新窗口打开</a>）</p><iframe src="图/图4_表述文字向量图.html" height="800"></iframe></main><script>
+function makeTable(id, cols, rows, opts){
+  opts = opts || {};
+  const el = document.getElementById(id);
+  const state = {sort:null, asc:true};
+  const filt = {};
+  const box = document.createElement('div'); box.className='filters';
+  const q = document.createElement('input'); q.placeholder='全文搜索…'; q.size=30; box.appendChild(q);
+  (opts.selects||[]).forEach(c=>{
+    const s=document.createElement('select'); const vals=[...new Set(rows.map(r=>r[c]))].sort();
+    s.innerHTML='<option value="">'+cols[c]+'：全部</option>'+vals.map(v=>'<option>'+v+'</option>').join('');
+    s.onchange=()=>{filt[c]=s.value; draw();}; box.appendChild(s);
+  });
+  const cnt=document.createElement('span'); box.appendChild(cnt);
+  el.appendChild(box);
+  const t=document.createElement('table'); el.appendChild(t);
+  q.oninput=draw;
+  function draw(){
+    const qq=q.value.trim();
+    let rs=rows.filter(r=>Object.entries(filt).every(([c,v])=>!v||String(r[c])===v) && (!qq || JSON.stringify(r).includes(qq)));
+    if(state.sort!==null){rs=[...rs].sort((a,b)=>{const x=a[state.sort],y=b[state.sort];
+      const nx=parseFloat(x),ny=parseFloat(y); const r=(!isNaN(nx)&&!isNaN(ny))?nx-ny:String(x).localeCompare(String(y),'zh');return state.asc?r:-r;});}
+    cnt.textContent='显示 '+rs.length+' / '+rows.length+' 行'+(opts.detail?'（点一行看全文）':'');
+    let h='<tr>'+cols.map((c,i)=>'<th data-i="'+i+'">'+c+'</th>').join('')+'</tr>';
+    rs.slice(0, opts.limit||2000).forEach((r,k)=>{h+='<tr data-k="'+rows.indexOf(r)+'">'+cols.map((c,i)=>'<td>'+(r[i]===null||r[i]===undefined?'':String(r[i]).replace(/</g,'&lt;'))+'</td>').join('')+'</tr>';});
+    t.innerHTML=h;
+    t.querySelectorAll('th').forEach(th=>th.onclick=()=>{const i=+th.dataset.i; state.asc=(state.sort===i)?!state.asc:true; state.sort=i; draw();});
+    if(opts.detail) t.querySelectorAll('tr[data-k]').forEach(tr=>tr.onclick=()=>{
+      if(tr.nextSibling && tr.nextSibling.classList && tr.nextSibling.classList.contains('detail')){tr.nextSibling.remove();return;}
+      const d=document.createElement('tr'); d.className='detail'; d.innerHTML='<td colspan="'+cols.length+'">'+opts.detail(+tr.dataset.k).replace(/</g,'&lt;').replace(/&lt;b>/g,'<b>').replace(/&lt;\/b>/g,'</b>')+'</td>'; tr.after(d);});
+  }
+  draw();
+}
+</script></body></html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8"><title>矛盾候选｜课题二表述与矛盾试跑</title>
+<link rel="stylesheet" href="style.css"></head><body>
+<header><h1>课题二 · 标准化表述与矛盾候选试跑</h1><div class="sub">初步，30 篇（F 版规则处理版）｜2026-11-04｜AI 辅助生成与核对，用户尚未逐项人工确认</div></header>
+<nav><a href="index.html" class="">总览</a><a href="表述表.html" class="">表述表</a><a href="别名表.html" class="">指标与物性别名</a><a href="条件表.html" class="">测试条件</a><a href="图.html" class="">四张图</a><a href="矛盾候选.html" class="on">矛盾候选</a></nav><main><div class="note"><b>两种候选</b>（方案 §8.7）：① 方向相反 = 两篇做了同一种改动，同一类性能一篇变好、一篇变坏；② 数值相差大 = 不同论文、配方和条件都相近，性能相差 ≥1.5 倍（CE 损失比 ≥2 倍）。
+判定：✅ 原文支持、条件已对齐，值得解释；🔶 数值无误但有未对齐的条件或定义差异；⚠️ 提取或归类有问题；❌ 不构成矛盾。</div>
+<h2>① 方向相反：2 条</h2>
+<p>篇内有方向的配对 234 对（数值 157、作者定性 77）。改动用“主改动签名”表示（+X 加入、−X 去掉、X↑/X↓ 用量增减；加共溶剂时 DME、DOL 比例的被动变化不算）。
+严格按主改动相同配对：0 条（同一种改动在两篇以上出现的只有 4 种，方向都一致）。放宽到主改动部分相同：</p>
+<h3>DIR001　<span class="tag">主改动部分相同</span> +DEE −DOL  vs  +DME −DOL（共同：−DOL）｜衰减类｜判定 ❌</h3>
+<table><tr><th>论文甲（变好）P633</th><th>论文乙（变坏）P315</th></tr>
+<tr><td>T17：F_2_3（73） vs F_control（35），容量保持率，300圈，相对于各自初始容量 → 变好<br>T19：F_2_3（80.14） vs F_control（50），容量保持率，A第300圈；B第200圈；各自初始容量为分母 → 变好<br>T20：F_2_3（保持67%） vs F_control（损失50%），容量保持率，A第60圈保持率；B第19圈容量损失 → 变好</td><td>T_FULL：F_DOL（63） vs F_DME（29），容量保持率，100圈；DOL/HME对首圈，DME对第4圈 → 变坏</td></tr></table>
+<p><b>核对：</b>数值与原文一致：P633 DOL/DME 300 圈保持 35%、DEE/DME 73%（M0401/M0402），3 C 下 80.14% vs 50%（M0472）；P315 HME/DOL 63%、HME/DME 29%（M0117）。但不是同一种改动：P633 在 1 M LiFSI/DME 中把 DOL 换成 DEE（弱溶剂化醚）；P315 在 2 M LiTFSI/HME 中把 DOL 换成 DME（强溶剂化醚），替换溶剂的溶剂化方向相反，结论相反符合预期。另 P315 是硫‖预锂化石墨电池，HME/DME 保持率以第 4 圈为分母（M0118），与 P633 定义不同。（AI 辅助复核，用户尚未逐项人工确认）<br><b>依据句子：</b>P633 M0401、P633 M0402、P633 M0472、P315 M0117、P315 M0118<br><b>可能原因：</b>共同的只是“去掉 DOL”，换上的溶剂一弱一强；负极不同（锂金属 vs 石墨）；保持率分母不同<br><b>机制线索：</b>P633 MC29（DEE/DME 兼顾多硫化物溶解与界面稳定）；P315 ME16、ME22（HME/DME 低 CE 归因于石墨负极上的非穿梭副反应）</p><h3>DIR002　<span class="tag">主改动部分相同</span> +DOL  vs  +DOL LiTFSI↑（共同：+DOL）｜衰减类｜判定 ❌</h3>
+<table><tr><th>论文甲（变好）P315</th><th>论文乙（变坏）P609</th></tr>
+<tr><td>T_FULL：F_DOL（63） vs F_HME（41），容量保持率，100圈；DOL/HME对首圈，DME对第4圈 → 变好</td><td>T06：F_T（79.87） vs F_C（68.64），容量保持率，100圈 → 变坏</td></tr></table>
+<p><b>核对：</b>数值与原文一致：P315 HME/DOL 63% vs 纯 HME 41%（M0117）；P609 LiTFSI-ULE 79.87% vs 商用电解液 68.64%（M0062）。但不是同一种改动：P315 是在 2 M LiTFSI/HME 中加入 10% DOL；P609 比较的是商用 1 M LiTFSI DOL/DME 与 0.4 M LiTFSI 纯 DME（超低浓度），主改动是盐浓度与溶剂一起变，“加 DOL”只是附带。P609 作者同时指出 ULE 的 CE 从 99.36% 降到 97.59%（M0062），保持率高与 CE 低是性能之间的权衡，不算矛盾。（AI 辅助复核，用户尚未逐项人工确认）<br><b>依据句子：</b>P315 M0117、P609 M0062、P609 M0064<br><b>可能原因：</b>改动主体不同（盐浓度 vs 加入共溶剂）；P315 为石墨负极<br><b>机制线索：</b>P609 K03（穿梭与锂腐蚀导致 ULE 的 CE 低于 100%）；P315 ME19（纯 HME 中硫转换受限、孔堵塞导致更快衰减）</p>
+<h2>② 数值相差大：0 条</h2>
+<div class="warn">这一种是跨篇比原始数值，<b>需要先归一化到标准条件才是正式结果</b>。现在只是“配方相同、已知条件相近”时的初筛：E/S、载量相差 ≤1.5 倍，含硫相差 ≤10 个百分点，倍率 ≤2 倍，温度 ≤10 °C，电池形式相同；条件没报告的控制不住。
+第⑥步做完后，改成“归一化后仍差得远”重新找。</div>
+<p>配方和条件都配上的跨篇对共 13 对，全是标准醚电解液的首圈硫比容量，最大差 1.39 倍，没到阈值：</p>
+<div id="tm"></div></main><script>
+function makeTable(id, cols, rows, opts){
+  opts = opts || {};
+  const el = document.getElementById(id);
+  const state = {sort:null, asc:true};
+  const filt = {};
+  const box = document.createElement('div'); box.className='filters';
+  const q = document.createElement('input'); q.placeholder='全文搜索…'; q.size=30; box.appendChild(q);
+  (opts.selects||[]).forEach(c=>{
+    const s=document.createElement('select'); const vals=[...new Set(rows.map(r=>r[c]))].sort();
+    s.innerHTML='<option value="">'+cols[c]+'：全部</option>'+vals.map(v=>'<option>'+v+'</option>').join('');
+    s.onchange=()=>{filt[c]=s.value; draw();}; box.appendChild(s);
+  });
+  const cnt=document.createElement('span'); box.appendChild(cnt);
+  el.appendChild(box);
+  const t=document.createElement('table'); el.appendChild(t);
+  q.oninput=draw;
+  function draw(){
+    const qq=q.value.trim();
+    let rs=rows.filter(r=>Object.entries(filt).every(([c,v])=>!v||String(r[c])===v) && (!qq || JSON.stringify(r).includes(qq)));
+    if(state.sort!==null){rs=[...rs].sort((a,b)=>{const x=a[state.sort],y=b[state.sort];
+      const nx=parseFloat(x),ny=parseFloat(y); const r=(!isNaN(nx)&&!isNaN(ny))?nx-ny:String(x).localeCompare(String(y),'zh');return state.asc?r:-r;});}
+    cnt.textContent='显示 '+rs.length+' / '+rows.length+' 行'+(opts.detail?'（点一行看全文）':'');
+    let h='<tr>'+cols.map((c,i)=>'<th data-i="'+i+'">'+c+'</th>').join('')+'</tr>';
+    rs.slice(0, opts.limit||2000).forEach((r,k)=>{h+='<tr data-k="'+rows.indexOf(r)+'">'+cols.map((c,i)=>'<td>'+(r[i]===null||r[i]===undefined?'':String(r[i]).replace(/</g,'&lt;'))+'</td>').join('')+'</tr>';});
+    t.innerHTML=h;
+    t.querySelectorAll('th').forEach(th=>th.onclick=()=>{const i=+th.dataset.i; state.asc=(state.sort===i)?!state.asc:true; state.sort=i; draw();});
+    if(opts.detail) t.querySelectorAll('tr[data-k]').forEach(tr=>tr.onclick=()=>{
+      if(tr.nextSibling && tr.nextSibling.classList && tr.nextSibling.classList.contains('detail')){tr.nextSibling.remove();return;}
+      const d=document.createElement('tr'); d.className='detail'; d.innerHTML='<td colspan="'+cols.length+'">'+opts.detail(+tr.dataset.k).replace(/</g,'&lt;').replace(/&lt;b>/g,'<b>').replace(/&lt;\/b>/g,'</b>')+'</td>'; tr.after(d);});
+  }
+  draw();
+}
+makeTable('tm',["标准指标", "阶段", "倍数", "甲", "乙", "配方差异", "条件说明"],[["硫比放电容量", "首圈", 1.389, "ST0004 P034 C ~1250", "ST0077 P113 F02 900", "LiNO₃ 0.1 vs 0.2 摩尔浓度", "ES 有一侧未知"], ["硫比放电容量", "首圈", 1.366, "ST0004 P034 C ~1250", "ST0515 P609 F_C 约915", null, "ES 有一侧未知"], ["硫比放电容量", "首圈", 1.333, "ST0008 P034 C ~1200", "ST0077 P113 F02 900", "LiNO₃ 0.1 vs 0.2 摩尔浓度", "ES 有一侧未知"], ["硫比放电容量", "首圈", 1.333, "ST0012 P034 C ~1200", "ST0077 P113 F02 900", "LiNO₃ 0.1 vs 0.2 摩尔浓度", "ES 有一侧未知"], ["硫比放电容量", "首圈", 1.333, "ST0016 P034 C ~1200", "ST0077 P113 F02 900", "LiNO₃ 0.1 vs 0.2 摩尔浓度", "ES 有一侧未知"], ["硫比放电容量", "首圈", 1.316, "ST0004 P034 C ~1250", "ST0108 P156 F0 949.6", "LiNO3 用量缺", "ES 有一侧未知"], ["硫比放电容量", "首圈", 1.311, "ST0008 P034 C ~1200", "ST0515 P609 F_C 约915", null, "ES 有一侧未知"], ["硫比放电容量", "首圈", 1.311, "ST0012 P034 C ~1200", "ST0515 P609 F_C 约915", null, "ES 有一侧未知"], ["硫比放电容量", "首圈", 1.311, "ST0016 P034 C ~1200", "ST0515 P609 F_C 约915", null, "ES 有一侧未知"], ["硫比放电容量", "首圈", 1.227, "ST0004 P034 C ~1250", "ST0099 P156 F0 1018.6", "LiNO3 用量缺", "ES 有一侧未知"], ["硫比放电容量", "首圈", 1.113, "ST0099 P156 F0 1018.6", "ST0515 P609 F_C 约915", "LiNO3 用量缺", "ES 有一侧未知"], ["硫比放电容量", "首圈", 1.038, "ST0108 P156 F0 949.6", "ST0515 P609 F_C 约915", "LiNO3 用量缺", "ES 有一侧未知"], ["硫比放电容量", "首圈", 1.017, "ST0077 P113 F02 900", "ST0515 P609 F_C 约915", "LiNO₃ 0.2 vs 0.1 摩尔浓度", "ES 有一侧未知"]],{});</script></body></html>

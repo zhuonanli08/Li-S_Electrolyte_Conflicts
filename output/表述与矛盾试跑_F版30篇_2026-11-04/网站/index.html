@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8"><title>总览｜课题二表述与矛盾试跑</title>
+<link rel="stylesheet" href="style.css"></head><body>
+<header><h1>课题二 · 标准化表述与矛盾候选试跑</h1><div class="sub">初步，30 篇（F 版规则处理版）｜2026-11-04｜AI 辅助生成与核对，用户尚未逐项人工确认</div></header>
+<nav><a href="index.html" class="on">总览</a><a href="表述表.html" class="">表述表</a><a href="别名表.html" class="">指标与物性别名</a><a href="条件表.html" class="">测试条件</a><a href="图.html" class="">四张图</a><a href="矛盾候选.html" class="">矛盾候选</a></nav><main>
+<div class="warn"><b>先看这一条：</b>这里的结果<b>都还没有归一化到标准条件</b>（归一化是第⑥步打分模型的工作）。
+“方向相反”比的是同一篇里两个配方的比值，篇内条件相同，不受影响；“数值相差大”是跨篇比原始数值，现在只是“配方相同、已知条件相近”时的初筛，正式版本要等归一化之后重做。图 3 里的性能“原值”也不能直接横向比较。</div>
+<h2>流程</h2><div class="flow"><div class="step "><b>提取结果</b><br>规则处理版 30 篇：1054 条比较结果、214 条物性记录</div><span class="arrow">→</span><div class="step "><b>① 名称统一</b><br>205 种指标名 → 四类性能 25 个标准指标；物性 129 种名 → 20 类</div><span class="arrow">→</span><div class="step "><b>② 测试条件</b><br>171 个性能测试；正极硫含量 55 条正极文字逐条核定</div><span class="arrow">→</span><div class="step "><b>③ 表述</b><br>570 条表述（111 个配方）</div><span class="arrow">→</span><div class="step "><b>④ 四张图</b><br>共现网络、弦图、聚类热图、文字向量图</div><span class="arrow">→</span><div class="step "><b>⑤ 矛盾候选</b><br>方向相反 2 条（核对后均 ❌）；数值相差大 0 条</div><span class="arrow">→</span><div class="step todo"><b>⑥ 打分模型与归一化</b><br>尚未做：等你看完①–⑤再定</div></div>
+<h2>关键数字</h2>
+<div class="kpi"><b>570</b>条表述</div><div class="kpi"><b>30</b>篇论文</div><div class="kpi"><b>111</b>个配方</div><div class="kpi"><b>451</b>条有物性的表述</div>
+<div class="kpi"><b>420</b>条可算元素比例</div><div class="kpi"><b>171</b>个性能测试</div><div class="kpi"><b>2</b>条方向相反候选</div><div class="kpi"><b>0</b>条数值相差大候选</div>
+<h2>四类性能各有多少条表述</h2><p>放电容量类 263 条；衰减类 106 条；倍率容量类 87 条；库仑效率类 114 条。</p>
+<h2>一条表述长什么样</h2><div class="note mono">【配方】P034 D：1 M LiTFSI；0.1 M LiNO3；DMDS:DME:DOL = 2 (50 vol%):1:1（体积比）｜sO 0.080、aC 0.013、F/O 0.38、InOr 1.08　【物性】离子电导率 ~5 mS cm−1（实测）；其余未报告　【条件】E/S 10 μL mg⁻¹（推定）；硫载量 1 mg cm⁻²；正极含硫 冲突或多值；锂厚 未报告；N/P 未报告；倍率 0.1 C；温度 未报告；电池形式 扣式；首圈；Li‖S、硫碳类　【性能】放电容量类·硫比放电容量 = 2485 mAh g−1（取值点：A=OMC-S40，B=OMC-S50；首圈）</div>
+<p>一个性能数值生成一条表述，由四部分组成：<b>配方</b>（原文用量＋配方级元素比例）、<b>物性</b>（只用同一篇对这个配方报告的值，没报告写“未报告”）、
+<b>测试条件</b>、<b>性能</b>。机制不写进表述文字，只在后台保留编号（表述表里点开一行可以看到）。</p>
+<h2>这次试跑的主要发现</h2>
+<ul>
+<li>30 篇里<b>同一种改动在两篇以上出现的只有 4 种</b>（DMTS 增加、LiNO₃ 增加、LiNO₃ 增加且 LiTFSI 减少、换成标准醚电解液），各篇方向都一致，所以没有真正的“方向相反”。放宽到“主改动部分相同”出了 2 条，读原文后都不是同一种改动（判 ❌）。要找到方向相反的矛盾，需要更多论文。</li>
+<li>标准醚电解液（LiTFSI＋DOL/DME＋LiNO₃）在 16 篇里出现。配方和已知条件都相近的跨篇对有 13 对，首圈容量最多差 1.39 倍（约 900 到 1250 mAh g⁻¹），没有到 1.5 倍阈值。这个离散程度就是归一化要处理的“同一电解液在不同实验室的差别”。</li>
+<li>条件缺失多：E/S 有值的表述 312/570，锂厚 184，N/P 只有 55。</li>
+<li>正极硫含量：脚本正则解析与读原文核定只有 29/55 一致，全量时不能直接用正则结果。</li>
+<li>同一个数值被提取进同篇两个测试的情况有 19 组（如 P034 的 2485 mAh g⁻¹），已标“疑似重复组”，统计时每组只计一次。</li>
+</ul>
+<h2>文件</h2><p class="mono">output/表述与矛盾试跑_F版30篇_2026-11-04/：表述表.xlsx、别名表与复核表.xlsx、条件表.xlsx、矛盾候选复核表.xlsx，以及同名 JSON。脚本 scripts/step13a–13e、step13s。</p>
+</main><script>
+function makeTable(id, cols, rows, opts){
+  opts = opts || {};
+  const el = document.getElementById(id);
+  const state = {sort:null, asc:true};
+  const filt = {};
+  const box = document.createElement('div'); box.className='filters';
+  const q = document.createElement('input'); q.placeholder='全文搜索…'; q.size=30; box.appendChild(q);
+  (opts.selects||[]).forEach(c=>{
+    const s=document.createElement('select'); const vals=[...new Set(rows.map(r=>r[c]))].sort();
+    s.innerHTML='<option value="">'+cols[c]+'：全部</option>'+vals.map(v=>'<option>'+v+'</option>').join('');
+    s.onchange=()=>{filt[c]=s.value; draw();}; box.appendChild(s);
+  });
+  const cnt=document.createElement('span'); box.appendChild(cnt);
+  el.appendChild(box);
+  const t=document.createElement('table'); el.appendChild(t);
+  q.oninput=draw;
+  function draw(){
+    const qq=q.value.trim();
+    let rs=rows.filter(r=>Object.entries(filt).every(([c,v])=>!v||String(r[c])===v) && (!qq || JSON.stringify(r).includes(qq)));
+    if(state.sort!==null){rs=[...rs].sort((a,b)=>{const x=a[state.sort],y=b[state.sort];
+      const nx=parseFloat(x),ny=parseFloat(y); const r=(!isNaN(nx)&&!isNaN(ny))?nx-ny:String(x).localeCompare(String(y),'zh');return state.asc?r:-r;});}
+    cnt.textContent='显示 '+rs.length+' / '+rows.length+' 行'+(opts.detail?'（点一行看全文）':'');
+    let h='<tr>'+cols.map((c,i)=>'<th data-i="'+i+'">'+c+'</th>').join('')+'</tr>';
+    rs.slice(0, opts.limit||2000).forEach((r,k)=>{h+='<tr data-k="'+rows.indexOf(r)+'">'+cols.map((c,i)=>'<td>'+(r[i]===null||r[i]===undefined?'':String(r[i]).replace(/</g,'&lt;'))+'</td>').join('')+'</tr>';});
+    t.innerHTML=h;
+    t.querySelectorAll('th').forEach(th=>th.onclick=()=>{const i=+th.dataset.i; state.asc=(state.sort===i)?!state.asc:true; state.sort=i; draw();});
+    if(opts.detail) t.querySelectorAll('tr[data-k]').forEach(tr=>tr.onclick=()=>{
+      if(tr.nextSibling && tr.nextSibling.classList && tr.nextSibling.classList.contains('detail')){tr.nextSibling.remove();return;}
+      const d=document.createElement('tr'); d.className='detail'; d.innerHTML='<td colspan="'+cols.length+'">'+opts.detail(+tr.dataset.k).replace(/</g,'&lt;').replace(/&lt;b>/g,'<b>').replace(/&lt;\/b>/g,'</b>')+'</td>'; tr.after(d);});
+  }
+  draw();
+}
+</script></body></html>
