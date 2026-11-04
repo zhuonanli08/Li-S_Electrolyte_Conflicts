@@ -148,3 +148,13 @@ def sentences(src: dict[str, dict], ids, limit: int = 400) -> str:
         else:
             out.append(f"[{i}] （source.json 中无此编号）")
     return "\n".join(out)
+
+
+# ---------- 分析集（11-04 用户定） ----------
+def in_analysis(cat: str, stage: str | None) -> bool:
+    """倍率容量这次不纳入分析；放电容量只看第一圈。表述表保留全部数据，只在模型、图和矛盾候选里筛。"""
+    if cat == "倍率容量类":
+        return False
+    if cat == "放电容量类" and stage != "首圈":
+        return False
+    return True

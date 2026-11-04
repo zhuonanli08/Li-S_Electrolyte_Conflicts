@@ -1,13 +1,16 @@
-"""step13e：找矛盾候选并生成复核表（方案 §8.7，11-04 用户定两种候选）。
+"""step13e：矛盾候选（11-04 用户要求归一化后重做）。在 step13f 之后运行。
 
-① 方向相反：两篇论文做了同一种改动（配方差异签名相同，如都是“+TTE”），同一类性能一篇变好、一篇变坏。
-   篇内配对来自提取的 A/B 比较；方向用数值算（容量等取对数比，CE 用损失比 ln[(100−CE_A)/(100−CE_B)]，|效应|<ln1.05 记差异小），
-   两侧没有数值时用作者定性方向（标“定性”）。
-② 数值相差大：不同论文、配方相同（组分集合相同、用量相近、LiNO₃ 同有同无且浓度 0.5–2 倍内）、
-   条件相近（已知的 E/S、载量比 ≤1.5 倍，含硫差 ≤10 个百分点，倍率比 ≤2 倍，温度差 ≤10 °C，电池形式相同；E/S 与载量至少一项两侧都已知）、
-   同一标准指标同一阶段（第 N 圈的圈数比 ≤1.5 倍），性能相差 ≥1.5 倍（CE 损失比 ≥2 倍）。
-人工判断层：矛盾核对.json（Claude 逐条回原文核对后写入；键 = 候选编号），本脚本把它并进复核表。
-输出：矛盾候选.json、矛盾候选复核表.xlsx、step13e_汇总.json
+五种候选（方案 §8.7 两种的扩展；11-04 讨论）：
+  NORM 归一化后同配方跨篇差距大：同一配方（组分集合相同、溶剂体积分数差 ≤0.1、盐浓度 ≤1.5 倍、LiNO₃ 0.5–2 倍）在不同论文中，
+       各自归一化到普遍条件（非外推表述）后中位数仍相差 ≥1.5 倍（CE 损失比 ≥2 倍）。
+  LOPO 篇内结论与跨文献模型相反：某篇同一测试、同一取值点，配方 vs 对照的实测方向，与“不含这篇”训练的主模型预测方向相反，
+       两者 |差距| 都 ≥ln1.1；只在主模型 V1 篇内 R² > 0 的类别做。
+  FLIP 条件依赖翻转：同篇同一对配方、同一类性能，换测试条件（或圈数）后方向相反。
+  DESC 设计方向相反：跨篇，改动只涉及溶剂与主盐（LiNO₃、添加剂不变，两侧元素比例都可算），sO 或 F/O 往同一方向变，一篇变好一篇变坏。
+  SAME 严格同一改动：主改动签名完全相同，一篇变好一篇变坏。
+方向：容量等取对数比，CE 用损失比 ln[(100−CE_A)/(100−CE_B)]，|效应| < ln1.05 记差异小；两侧没有数值时用作者定性方向（标“定性”）。
+人工判断层：矛盾核对.json（Claude 逐条回原文核对后写入；键 = 候选编号）。
+输出：矛盾候选.json、篇内配对_方向.json、矛盾候选复核表.xlsx、step13e_汇总.json
 """
 from __future__ import annotations
 
@@ -16,7 +19,7 @@ import json
 import math
 from collections import Counter, defaultdict
 
-from step13_common import COMP, LABEL, OUT, load_papers, load_sources, read_json, sentences, write_json, write_xlsx
+from step13_common import COMP, LABEL, OUT, in_analysis, load_papers, load_sources, read_json, sentences, write_json, write_xlsx
 
 SMALL = math.log(1.05)
 
@@ -104,270 +107,279 @@ def canonical(sig):
     return tuple(sorted(sig)), False
 
 
+FLIPD = {"变好": "变坏", "变坏": "变好", "差异小": "差异小"}
+
+
+def comp_match(a: dict, b: dict) -> tuple[bool, str]:
+    if not a or set(a) != set(b):
+        return False, ""
+    notes = []
+    for k in a:
+        (ua, va), (ub, vb) = a[k][:2], b[k][:2]
+        if k == "LiNO3" and (len(a[k]) > 2 or len(b[k]) > 2):
+            notes.append("LiNO₃ 由 wt% 近似换算")
+        if va is None or vb is None:
+            if k != "LiNO3":
+                return False, ""
+            notes.append("LiNO₃ 用量缺")
+            continue
+        if ua != ub:
+            return False, ""
+        if ua == "体积分数":
+            if abs(va - vb) > 0.1:
+                return False, ""
+        elif k == "LiNO3":
+            if not (0.5 <= va / vb <= 2):
+                return False, ""
+            if va != vb:
+                notes.append(f"LiNO₃ {va:g} vs {vb:g} M")
+        elif max(va, vb) / max(min(va, vb), 1e-9) > 1.5:
+            return False, ""
+        elif va != vb:
+            notes.append(f"{k} {va:g} vs {vb:g}")
+    return True, "；".join(notes)
+
+
 def main() -> None:
     papers, sources = load_papers(), load_sources()
     sts = read_json("表述.json")
+    stmap = {s["表述编号"]: s for s in sts}
     cls = read_json("结果归类.json")
     comp = {(r["论文"], r["配方"]): r for r in read_json("配方组成.json", COMP)}
+    conds = {(r["论文"], r["测试"]): r for r in read_json("条件表.json")}
+    norm = read_json("归一化结果.json")
+    nst = read_json("归一化_表述.json")
     rec_of = {(p, f["id"]): f["recipe_id"] for p, d in papers.items() for f in d["formulations"]}
     raw_rec = {(p, r["id"]): r for p, d in papers.items() for r in d["recipes"]}
-    st_index = defaultdict(list)
-    for s in sts:
-        st_index[(s["论文"], s["测试"], s["配方"], s["标准指标"])].append(s)
     res_index = {(p, t["id"], r["id"]): (t, r) for p, d in papers.items() for t in d["tests"] for r in t["results"]}
+    er_of = {(s["论文"], s["配方"]): s["元素比例"] for s in sts if s["元素比例"]}
 
     def items(pid, fid):
         rid = rec_of.get((pid, fid))
         return recipe_items(comp.get((pid, rid)), raw_rec.get((pid, rid)))
 
-    # ---------- ① 方向相反 ----------
+    def counted(pid, fid):
+        rid = rec_of.get((pid, fid))
+        return set(((comp.get((pid, rid)) or {}).get("元素比例") or {}).get("计入", {}))
+
+    # ---------- 篇内配对（A 相对 B 的方向，不翻转） ----------
     pairs = []
     for c in cls:
         if c["性能类别"] == "不进四类" or c["状态"] == "⚠️" or not c["A"] or not c["B"] or c["A"] == c["B"]:
             continue
+        if not in_analysis(c["性能类别"], c.get("阶段")):  # 分析集：倍率容量不纳入，放电容量只看首圈
+            continue
         pid = c["论文"]
         t, r = res_index[(pid, c["测试"], c["结果"])]
-        sig = signature(items(pid, c["A"]), items(pid, c["B"]))
-        if not sig:
-            continue
         a, b = c["A值"], c["B值"]
-        e, basis = None, None
+        e, basis, d = None, None, None
         if a["类型"] in ("精确", "约数", "范围") and b["类型"] in ("精确", "约数", "范围"):
             e, basis = effect(c["标准指标"], a["值"], b["值"], c["越大越好"]), "数值"
         if e is not None:
             d = "变好" if e > SMALL else "变坏" if e < -SMALL else "差异小"
         else:
-            d = r.get("direction_text") if r.get("direction_text") in ("变好", "变坏", "差异小") else None
-            if d is None and r.get("author_qualitative"):
-                d = r["author_qualitative"].get("direction_text") if r["author_qualitative"].get("direction_text") in ("变好", "变坏", "差异小") else None
-            basis = "定性" if d else None
+            for src in (r, r.get("author_qualitative") or {}):
+                if src.get("direction_text") in ("变好", "变坏", "差异小"):
+                    d, basis = src["direction_text"], "定性"
+                    break
         if not d:
             continue
-        csig, flip = canonical(drivers(sig))
+        sig = signature(items(pid, c["A"]), items(pid, c["B"]))
+        cat = c["性能类别"]
+        if cat == "库仑效率类":  # 方案：Li‖Cu CE 与全电池 CE 分开
+            cat += "·Li‖Cu" if c["电池类型"] == "Li‖Cu" else "·全电池"
+        pairs.append({"论文": pid, "测试": c["测试"], "结果": c["结果"], "A": c["A"], "B": c["B"], "完整签名": list(sig),
+                      "性能类别": cat, "标准指标": c["标准指标"], "取值点": c["取值点"], "阶段": c.get("阶段"), "圈数": c.get("圈数"),
+                      "倍率_C": c.get("倍率_C"), "温度_C": c.get("温度_C"),
+                      "A值": r.get("value_A"), "B值": r.get("value_B"), "效应": e, "方向": d, "依据": basis, "证据": r.get("evidence_ids", [])})
+
+    def pline(p, flip=False):
         if flip:
-            d = {"变好": "变坏", "变坏": "变好", "差异小": "差异小"}[d]
-            e = -e if e is not None else None
-        pairs.append({"论文": pid, "测试": c["测试"], "结果": c["结果"], "A": c["A"], "B": c["B"], "翻转": flip,
-                      "签名": csig, "完整签名": sig, "性能类别": c["性能类别"], "标准指标": c["标准指标"], "取值点": c["取值点"],
-                      "A值": r.get("value_A"), "B值": r.get("value_B"), "效应": e, "方向": d, "依据": basis,
-                      "证据": r.get("evidence_ids", []), "改动数": len(csig)})
-    by_sig = defaultdict(list)
+            a, b, va, vb, d = p["B"], p["A"], p["B值"], p["A值"], FLIPD[p["方向"]]
+        else:
+            a, b, va, vb, d = p["A"], p["B"], p["A值"], p["B值"], p["方向"]
+        return f"{p['测试']} {p['结果']}：{a}（{va}） vs {b}（{vb}）｜{p['标准指标']}｜{p['取值点']}｜{a} 相对 {b} {d}（{p['依据']}）"
+
+    strongest = lambda lst: sorted(lst, key=lambda x: (x[0]["依据"] != "数值", -abs(x[0]["效应"] or 0)))[0]
+    cands = []
+
+    # ---------- FLIP 条件依赖翻转 ----------
+    grp = defaultdict(list)
     for p in pairs:
-        by_sig[(p["签名"], p["性能类别"])].append(p)
-    dir_cands = []
-    for (sig, cat), lst in by_sig.items():
-        per_paper = defaultdict(Counter)
-        for p in lst:
-            per_paper[p["论文"]][p["方向"]] += 1
-        good = [k for k, v in per_paper.items() if v["变好"] > v["变坏"]]
-        bad = [k for k, v in per_paper.items() if v["变坏"] > v["变好"]]
-        for pg, pb in itertools.product(good, bad):
-            ex_g = sorted([p for p in lst if p["论文"] == pg and p["方向"] == "变好"], key=lambda x: (x["依据"] != "数值", -abs(x["效应"] or 0)))
-            ex_b = sorted([p for p in lst if p["论文"] == pb and p["方向"] == "变坏"], key=lambda x: (x["依据"] != "数值", -abs(x["效应"] or 0)))
-            dir_cands.append({"类型": "方向相反", "签名": " ".join(sig), "改动数": len(sig), "性能类别": cat,
-                              "论文甲": pg, "甲方向统计": dict(per_paper[pg]), "论文乙": pb, "乙方向统计": dict(per_paper[pb]),
-                              "甲例": ex_g[:3], "乙例": ex_b[:3]})
-    for c in dir_cands:
-        c["匹配"] = "主改动相同"
-    paper_dir = defaultdict(Counter)
-    paper_ex = defaultdict(list)
-    for p in pairs:
-        if len(p["签名"]) <= 2:
-            paper_dir[(p["论文"], p["签名"], p["性能类别"])][p["方向"]] += 1
-            paper_ex[(p["论文"], p["签名"], p["性能类别"])].append(p)
-    keys = list(paper_dir)
-    done = {(c["论文甲"], c["论文乙"], c["签名"], c["性能类别"]) for c in dir_cands}
-    for k1, k2 in itertools.combinations(keys, 2):
-        (p1, s1, c1), (p2, s2, c2) = k1, k2
-        if p1 == p2 or c1 != c2 or s1 == s2 or not (set(s1) & set(s2)):
+        if p["方向"] == "差异小":
             continue
-        d1, d2 = paper_dir[k1], paper_dir[k2]
-        g1, g2 = d1["变好"] > d1["变坏"], d2["变好"] > d2["变坏"]
-        b1, b2 = d1["变坏"] > d1["变好"], d2["变坏"] > d2["变好"]
-        if not ((g1 and b2) or (b1 and g2)):
+        a, b = sorted([p["A"], p["B"]])
+        grp[(p["论文"], a, b, p["性能类别"])].append((p, p["A"] != a))
+    for (pid, a, b, cat), lst in grp.items():
+        good = [x for x in lst if (x[0]["方向"] == "变好") != x[1]]  # a 相对 b 变好
+        bad = [x for x in lst if (x[0]["方向"] == "变好") == x[1]]
+        if not good or not bad:
             continue
-        (kg, dg), (kb, db) = ((k1, d1), (k2, d2)) if g1 else ((k2, d2), (k1, d1))
-        if (kg[0], kb[0], " ".join(sorted(set(s1) & set(s2))), c1) in done:
-            continue
-        pick = lambda k, d: sorted([p for p in paper_ex[k] if p["方向"] == d], key=lambda x: (x["依据"] != "数值", -abs(x["效应"] or 0)))[:3]
-        dir_cands.append({"类型": "方向相反", "匹配": "主改动部分相同", "签名": f"{' '.join(kg[1])}  vs  {' '.join(kb[1])}（共同：{' '.join(sorted(set(s1) & set(s2)))}）",
-                          "改动数": max(len(s1), len(s2)), "性能类别": c1, "论文甲": kg[0], "甲方向统计": dict(dg),
-                          "论文乙": kb[0], "乙方向统计": dict(db), "甲例": pick(kg, "变好"), "乙例": pick(kb, "变坏")})
-    dir_cands.sort(key=lambda x: (x["匹配"] != "主改动相同", x["改动数"], x["签名"], x["性能类别"]))
+        pg, pb = strongest(good), strongest(bad)
+        diff = []
+        if pg[0]["测试"] != pb[0]["测试"]:
+            c1 = conds.get((pid, pg[0]["测试"]), {}).get("条件", {})
+            c2 = conds.get((pid, pb[0]["测试"]), {}).get("条件", {})
+            for f, lab in (("ES", "E/S"), ("sulfur_loading", "载量"), ("S_content", "含硫"), ("rate", "倍率"), ("temperature", "温度"),
+                           ("cell_format", "电池形式"), ("Li_thickness", "锂厚")):
+                v1, v2 = c1.get(f, {}).get("值"), c2.get(f, {}).get("值")
+                if v1 != v2:
+                    diff.append(f"{lab} {v1 if v1 is not None else '—'} → {v2 if v2 is not None else '—'}")
+        for k, lab in (("倍率_C", "取值点倍率"), ("温度_C", "取值点温度"), ("圈数", "圈数")):
+            if pg[0].get(k) != pb[0].get(k):
+                diff.append(f"{lab} {pg[0].get(k)} → {pb[0].get(k)}")
+        same_test = pg[0]["测试"] == pb[0]["测试"]
+        sub = "阶段翻转（同一测试、不同圈数）" if same_test and not any(x.startswith("取值点") for x in diff) else "条件翻转"
+        cands.append({"类型": "FLIP", "子类": sub, "性能类别": cat, "论文甲": pid, "论文乙": pid,
+                      "摘要": f"{pid}：{a} 相对 {b} 在一种条件下变好、另一种条件下变坏（{'；'.join(diff) or '条件差异未记录'}）",
+                      "甲例": pline(*pg), "乙例": pline(*pb), "证据甲": pg[0]["证据"], "证据乙": pb[0]["证据"],
+                      "强度": min(abs(pg[0]["效应"] or 0), abs(pb[0]["效应"] or 0))})
 
-    # ---------- ② 数值相差大 ----------
-    def comp_match(s1, s2):
-        a, b = items(s1["论文"], s1["配方"]), items(s2["论文"], s2["配方"])
-        if not a or set(a) != set(b):
-            return False, ""
-        notes = []
-        for k in a:
-            (ua, va), (ub, vb) = a[k][:2], b[k][:2]
-            if k == "LiNO3" and (len(a[k]) > 2 or len(b[k]) > 2):
-                notes.append("LiNO₃ 由 wt% 近似换算为 M（密度按 1.2 g/mL）")
-            if va is None or vb is None:
-                if k != "LiNO3":
-                    return False, ""
-                notes.append(f"{k} 用量缺")
+    # ---------- SAME 严格同一改动 / DESC 设计方向相反 ----------
+    def paper_dirs(key_of):
+        g = defaultdict(lambda: defaultdict(list))
+        for p in pairs:
+            if p["方向"] == "差异小":
                 continue
-            if ua != ub:
-                return False, ""
-            if ua == "体积分数":
-                if abs(va - vb) > 0.1:
-                    return False, ""
-            elif k == "LiNO3":
-                if not (0.5 <= (va / vb if vb else 99) <= 2):
-                    return False, ""
-                if va != vb:
-                    notes.append(f"LiNO₃ {va:g} vs {vb:g} {ua}")
-            elif max(va, vb) / max(min(va, vb), 1e-9) > 1.5:
-                return False, ""
-            elif va != vb:
-                notes.append(f"{k} {va:g} vs {vb:g} {ua}")
-        return True, "；".join(notes)
+            k = key_of(p)
+            if k is not None:
+                g[k[0]][p["论文"]].append((p, k[1]))
+        return g
 
-    def cond_match(s1, s2):
-        c1, c2 = s1["条件"], s2["条件"]
-        v = lambda c, f: c[f]["值"]
-        notes, known = [], 0
-        for f, lim, kind in (("ES", 1.5, "比"), ("sulfur_loading", 1.5, "比"), ("rate", 2.0, "比"),
-                             ("S_content", 10, "差"), ("temperature", 10, "差")):
-            a, b = v(c1, f), v(c2, f)
-            if a is None or b is None:
-                if f in ("ES", "sulfur_loading"):
-                    notes.append(f"{f} 有一侧未知")
+    def oppose(g, typ, label):
+        for kk, per in g.items():
+            maj = {}
+            for pid, lst in per.items():
+                n_good = sum((p["方向"] == "变好") != fl for p, fl in lst)
+                if n_good * 2 != len(lst):
+                    maj[pid] = "变好" if n_good * 2 > len(lst) else "变坏"
+            goods = [q for q, v in maj.items() if v == "变好"]
+            bads = [q for q, v in maj.items() if v == "变坏"]
+            for pg, pb in itertools.product(goods, bads):
+                eg = strongest([x for x in per[pg] if (x[0]["方向"] == "变好") != x[1]])
+                eb = strongest([x for x in per[pb] if (x[0]["方向"] == "变好") == x[1]])
+                cands.append({"类型": typ, "子类": label(kk), "性能类别": kk[-1], "论文甲": pg, "论文乙": pb,
+                              "摘要": f"{label(kk)}：{pg} 变好，{pb} 变坏",
+                              "甲例": pline(*eg) + f"｜改动 {' '.join(eg[0]['完整签名'])}",
+                              "乙例": pline(*eb) + f"｜改动 {' '.join(eb[0]['完整签名'])}",
+                              "证据甲": eg[0]["证据"], "证据乙": eb[0]["证据"],
+                              "强度": min(abs(eg[0]["效应"] or 0), abs(eb[0]["效应"] or 0))})
+
+    def same_key(p):
+        if not p["完整签名"]:
+            return None
+        cs, fl = canonical(drivers(tuple(p["完整签名"])))
+        return (cs, p["性能类别"]), fl
+    oppose(paper_dirs(same_key), "SAME", lambda kk: "主改动 " + " ".join(kk[0]) + f"｜{kk[1]}")
+
+    def desc_key_factory(desc, thr):
+        def key(p):
+            ra, rb = er_of.get((p["论文"], p["A"])), er_of.get((p["论文"], p["B"]))
+            if not ra or not rb or not p["完整签名"]:
+                return None
+            allowed = counted(p["论文"], p["A"]) | counted(p["论文"], p["B"])
+            if any(x.strip("+−↑↓") not in allowed for x in p["完整签名"]):  # LiNO₃、添加剂等也变了 → 元素比例代表不了主改动
+                return None
+            dv = ra[desc] - rb[desc]
+            if abs(dv) < thr:
+                return None
+            return (f"{desc} 降低", p["性能类别"]), dv > 0  # 统一成“降低”方向：dv>0 时把 A、B 对调
+        return key
+    for desc, thr in (("sO", 0.005), ("F/O", 0.1)):
+        oppose(paper_dirs(desc_key_factory(desc, thr)), "DESC", lambda kk: f"{kk[0]}（只改溶剂/主盐）｜{kk[1]}")
+
+    # ---------- NORM 归一化后同配方跨篇差距大 ----------
+    byf = defaultdict(list)
+    for x in nst:
+        if not x.get("普遍条件_外推"):
+            byf[(x["类别"], x["论文"], x["配方"])].append(x)
+    for cname in sorted({k[0] for k in byf}):
+        keys = [k for k in byf if k[0] == cname]
+        lim = math.log(2) if norm[cname]["y"] == "loss" else math.log(1.5)
+        for k1, k2 in itertools.combinations(keys, 2):
+            if k1[1] == k2[1]:
                 continue
-            if f in ("ES", "sulfur_loading"):
-                known += 1
-            if kind == "比":
-                if a <= 0 or b <= 0 or max(a, b) / min(a, b) > lim:
-                    return False, ""
-            elif abs(a - b) > lim:
-                return False, ""
-        if v(c1, "cell_format") and v(c2, "cell_format") and v(c1, "cell_format") != v(c2, "cell_format"):
-            return False, ""
-        if s1["正极类型"] != s2["正极类型"] or s1["电池类型"] != s2["电池类型"]:
-            return False, ""
-        if known == 0:
-            return False, ""
-        return True, "；".join(notes)
+            ok, note = comp_match(items(k1[1], k1[2]), items(k2[1], k2[2]))
+            if not ok:
+                continue
+            m1 = sorted(x["普遍条件_y"] for x in byf[k1])[len(byf[k1]) // 2]
+            m2 = sorted(x["普遍条件_y"] for x in byf[k2])[len(byf[k2]) // 2]
+            if abs(m1 - m2) < lim:
+                continue
+            hi, lo = (k1, k2) if m1 > m2 else (k2, k1)
+            sh = lambda k: "；".join(f"{x['表述编号']} 实测 {x['实测值']} → 归一化 {x['普遍条件_归一化值']}"
+                                    + (f"（未换算：{x['未换算条件']}）" if x["未换算条件"] else "") for x in byf[k])
+            cands.append({"类型": "NORM", "子类": "同配方跨篇", "性能类别": cname, "论文甲": hi[1], "论文乙": lo[1],
+                          "摘要": f"同一配方 {hi[1]}:{hi[2]} 与 {lo[1]}:{lo[2]} 归一化后相差 {math.exp(abs(m1 - m2)):.2f} 倍" + (f"（{note}）" if note else ""),
+                          "甲例": f"{hi[1]}:{hi[2]}｜" + sh(hi), "乙例": f"{lo[1]}:{lo[2]}｜" + sh(lo),
+                          "证据甲": [e for x in byf[hi][:2] for e in stmap[x["表述编号"]]["证据句子"][:2]],
+                          "证据乙": [e for x in byf[lo][:2] for e in stmap[x["表述编号"]]["证据句子"][:2]],
+                          "强度": abs(m1 - m2)})
 
-    usable = [s for s in sts if s["数值类型"] in ("精确", "约数") and s["数值"] is not None]
-    seen_dup, uniq = set(), []
-    for s in usable:
-        g = s.get("疑似重复组")
-        if g and g in seen_dup:
+    # ---------- LOPO 篇内结论与跨文献模型相反 ----------
+    lopo_skip = []
+    for cname, r in norm.items():
+        pr = next(m for m in r["模型比较"] if m["模型"] == r["主模型"])
+        if not (pr["V1篇内R2"] is not None and pr["V1篇内R2"] > 0):
+            lopo_skip.append(f"{cname}（主模型 {r['主模型']} 的 V1 篇内 R² = {pr['V1篇内R2']}）")
             continue
-        seen_dup.add(g)
-        uniq.append(s)
-    by_metric = defaultdict(list)
-    for s in uniq:
-        by_metric[(s["标准指标"], s["阶段"])].append(s)
-    num_cands, matched = [], []
-    for (std, stage), lst in by_metric.items():
-        for s1, s2 in itertools.combinations(lst, 2):
-            if s1["论文"] == s2["论文"]:
+        grp2 = defaultdict(list)
+        for x in (x for x in nst if x["类别"] == cname):
+            s = stmap[x["表述编号"]]
+            grp2[(x["论文"], x["测试"], s["阶段"], s["圈数"], s["条件"]["rate"]["值"], s["条件"]["temperature"]["值"])].append(x)
+        best = {}
+        for lst in grp2.values():
+            ref = next((x for x in lst if x["是否对照"]), None)
+            if ref is None or len(lst) < 2:
                 continue
-            if stage == "第 N 圈" and (not s1["圈数"] or not s2["圈数"] or max(s1["圈数"], s2["圈数"]) / min(s1["圈数"], s2["圈数"]) > 1.5):
-                continue
-            if stage in ("未写圈数", "活化后（未写圈数）"):
-                continue
-            ok1, n1 = comp_match(s1, s2)
-            if not ok1:
-                continue
-            ok2, n2 = cond_match(s1, s2)
-            if not ok2:
-                continue
-            e = effect(std, s1["数值"], s2["数值"], s1["越大越好"])
-            if e is None:
-                continue
-            lim = math.log(2) if ("CE" in std and "圈数" not in std) else math.log(1.5)
-            matched.append({"标准指标": std, "阶段": stage, "倍数": round(math.exp(abs(e)), 3),
-                            "甲": f"{s1['表述编号']} {s1['论文']} {s1['配方']} {s1['数值原文']}", "乙": f"{s2['表述编号']} {s2['论文']} {s2['配方']} {s2['数值原文']}",
-                            "配方差异": n1, "条件说明": n2})
-            if abs(e) < lim:
-                continue
-            hi, lo = (s1, s2) if e > 0 else (s2, s1)
-            num_cands.append({"类型": "数值相差大", "标准指标": std, "阶段": stage, "效应": abs(e),
-                              "倍数": round(math.exp(abs(e)), 2), "好的一侧": hi["表述编号"], "差的一侧": lo["表述编号"],
-                              "论文甲": hi["论文"], "论文乙": lo["论文"], "配方差异": n1, "条件说明": n2})
-    num_cands.sort(key=lambda x: -x["效应"])
+            for x in lst:
+                if x is ref:
+                    continue
+                obs = x["实测_y"] - ref["实测_y"]
+                pred = x["V1留出预测_主模型"] - ref["V1留出预测_主模型"]
+                if obs * pred < 0 and abs(obs) >= math.log(1.1) and abs(pred) >= math.log(1.1):
+                    k = (x["论文"], x["配方"], ref["配方"])
+                    if k in best and min(abs(obs), abs(pred)) <= best[k]["强度"]:
+                        continue
+                    s, sr = stmap[x["表述编号"]], stmap[ref["表述编号"]]
+                    best[k] = {"类型": "LOPO", "子类": f"主模型 {r['主模型']}", "性能类别": cname, "论文甲": x["论文"], "论文乙": "（其他论文合起来）",
+                               "摘要": f"{x['论文']}：{x['配方']} 相对对照 {ref['配方']} 实测{'变好' if obs > 0 else '变坏'}（ln {obs:+.2f}），"
+                                       f"不含此篇训练的模型预测{'变好' if pred > 0 else '变坏'}（ln {pred:+.2f}）",
+                               "甲例": f"{x['表述编号']} {x['配方']}：{s['数值原文']}（{s['取值点']}） vs {ref['表述编号']} {ref['配方']}：{sr['数值原文']}",
+                               "乙例": f"模型预测差距 ln {pred:+.2f}｜配方：{s['配方文字'][:70]}｜对照：{sr['配方文字'][:70]}",
+                               "证据甲": s["证据句子"][:2] + sr["证据句子"][:1], "证据乙": [], "强度": min(abs(obs), abs(pred))}
+        cands += list(best.values())
 
     # ---------- 编号、并入人工核对 ----------
-    cands = []
-    for i, c in enumerate(dir_cands, 1):
-        c["候选编号"] = f"DIR{i:03d}"
-        cands.append(c)
-    for i, c in enumerate(num_cands, 1):
-        c["候选编号"] = f"NUM{i:03d}"
-        cands.append(c)
+    order = ["NORM", "LOPO", "FLIP", "DESC", "SAME"]
+    cands.sort(key=lambda c: (order.index(c["类型"]), -c["强度"]))
+    cnt = Counter()
     mf = OUT / "矛盾核对.json"
     manual = json.loads(mf.read_text(encoding="utf-8")) if mf.exists() else {}
-    stmap = {s["表述编号"]: s for s in sts}
     for c in cands:
+        cnt[c["类型"]] += 1
+        c["候选编号"] = f"{c['类型']}{cnt[c['类型']]:03d}"
         m = manual.get(c["候选编号"], {})
-        c["判定"] = m.get("判定", "")
-        c["核对说明"] = m.get("说明", "")
-        c["依据句子"] = m.get("依据句子", [])
-        c["可能原因"] = m.get("可能原因", "")
-        c["机制线索"] = m.get("机制线索", "")
+        c["判定"], c["核对说明"], c["依据句子"] = m.get("判定", ""), m.get("说明", ""), m.get("依据句子", [])
+        c["可能原因"], c["机制线索"] = m.get("可能原因", ""), m.get("机制线索", "")
+        c["原句甲"] = sentences(sources[c["论文甲"]], c["证据甲"][:3], 350) if c["论文甲"] in sources else ""
+        c["原句乙"] = sentences(sources[c["论文乙"]], c["证据乙"][:3], 350) if c["论文乙"] in sources else ""
     write_json("矛盾候选.json", cands)
     write_json("篇内配对_方向.json", pairs)
-
-    # ---------- 复核表 ----------
-    def ex_text(ex):
-        return "\n".join(f"{p['测试']} {p['结果']}：{p['A']}（{p['A值']}） vs {p['B']}（{p['B值']}）"
-                         f"{'［已翻转为签名方向］' if p['翻转'] else ''}｜{p['标准指标']}｜{p['取值点']}｜{p['方向']}（{p['依据']}）" for p in ex)
-
-    def ex_src(pid, ex):
-        ids = []
-        for p in ex[:2]:
-            ids += [e for e in p["证据"] if e not in ids]
-        return sentences(sources[pid], ids[:4], 350)
-
-    dir_rows = [[c["候选编号"], c["判定"], c["签名"], c["性能类别"], c["论文甲"], c["甲方向统计"], ex_text(c["甲例"]), ex_src(c["论文甲"], c["甲例"]),
-                 c["论文乙"], c["乙方向统计"], ex_text(c["乙例"]), ex_src(c["论文乙"], c["乙例"]), c["核对说明"], c["依据句子"], c["可能原因"],
-                 c["机制线索"]] for c in cands if c["类型"] == "方向相反"]
-
-    def st_line(s):
-        cnd = s["条件"]
-        f = lambda k: cnd[k]["值"] if cnd[k]["值"] is not None else "—"
-        return (f"{s['表述编号']} {s['论文']} {s['测试']} {s['配方']}：{s['数值原文']} {s['单位']}（{s['取值点']}）\n"
-                f"E/S {f('ES')}｜载量 {f('sulfur_loading')}｜含硫 {f('S_content')}｜倍率 {f('rate')}｜温度 {f('temperature')}｜{f('cell_format')}\n配方：{s['配方文字']}")
-
-    num_rows = []
-    for c in cands:
-        if c["类型"] != "数值相差大":
-            continue
-        a, b = stmap[c["好的一侧"]], stmap[c["差的一侧"]]
-        num_rows.append([c["候选编号"], c["判定"], c["标准指标"], c["阶段"], c["倍数"], st_line(a), sentences(sources[a["论文"]], a["证据句子"][:3], 350),
-                         st_line(b), sentences(sources[b["论文"]], b["证据句子"][:3], 350), c["配方差异"], c["条件说明"],
-                         c["核对说明"], c["依据句子"], c["可能原因"], c["机制线索"]])
     summary = {"篇内有方向的配对": len(pairs), "配对依据": dict(Counter(p["依据"] for p in pairs)),
-               "改动签名种数": len({p["签名"] for p in pairs}),
-               "方向相反候选": len(dir_rows), "数值相差大候选": len(num_rows),
-               "判定统计": dict(Counter(c["判定"] or "未核对" for c in cands)),
-               "数值相差大·按标准指标": dict(Counter(c["标准指标"] for c in cands if c["类型"] == "数值相差大")),
-               "配方与条件都配上的跨篇对（不论差距）": len(matched),
-               "配上的对·按指标（对数，最大倍数）": {f"{k[0]}｜{k[1]}": [n, max(x["倍数"] for x in matched if (x["标准指标"], x["阶段"]) == k)]
-                                          for k, n in Counter((x["标准指标"], x["阶段"]) for x in matched).items()},
-               "说明": "数值相差大是未归一化的初筛：只比配方相同、已知条件相近的跨篇表述；正式版本在第⑥步归一化到标准条件后，按“归一化后仍差得远”重新找。"}
+               "候选数": {t: cnt[t] for t in order}, "未做 LOPO 的类别": lopo_skip,
+               "判定统计": {t: dict(Counter(c["判定"] or "未核对" for c in cands if c["类型"] == t)) for t in order if cnt[t]}}
     write_json("step13e_汇总.json", summary)
-    write_xlsx(OUT / "矛盾候选复核表.xlsx", [
-        ("方向相反", ["候选编号", "判定", "改动签名", "性能类别", "论文甲（变好）", "甲方向统计", "甲例", "甲原句", "论文乙（变坏）", "乙方向统计", "乙例", "乙原句",
-                  "核对说明", "依据句子", "可能原因", "机制线索"], dir_rows),
-        ("数值相差大", ["候选编号", "判定", "标准指标", "阶段", "倍数", "好的一侧", "好侧原句", "差的一侧", "差侧原句", "配方差异", "条件说明",
-                   "核对说明", "依据句子", "可能原因", "机制线索"], num_rows),
-        ("配上的跨篇对（未到阈值）", ["标准指标", "阶段", "倍数", "甲", "乙", "配方差异", "条件说明"],
-         [[x[k] for k in ["标准指标", "阶段", "倍数", "甲", "乙", "配方差异", "条件说明"]] for x in sorted(matched, key=lambda x: -x["倍数"])]),
-    ], widths={"甲": 40, "乙": 40, "甲例": 45, "乙例": 45, "甲原句": 60, "乙原句": 60, "好的一侧": 50, "差的一侧": 50, "好侧原句": 60, "差侧原句": 60,
-               "核对说明": 50, "可能原因": 40, "机制线索": 40},
-        notes=[f"step13e 矛盾候选复核表｜{LABEL}｜2026-11-04 生成",
-               "注意：“数值相差大”是未归一化的初筛（只比配方相同、已知条件相近的跨篇表述），正式版本要等第⑥步归一化到标准条件之后，按归一化后仍差得远重新找；“方向相反”比的是篇内比值，不需要归一化。",
-               "两种候选（方案 §8.7）：① 方向相反 = 两篇做了同一种改动（改动签名相同），同一类性能一篇变好一篇变坏；② 数值相差大 = 不同论文、配方与条件相近，性能相差 ≥1.5 倍（CE 损失比 ≥2 倍）。",
-               "改动签名：+X 加入 X，−X 去掉 X，X↑/X↓ 用量增减；比较方向统一成签名方向（必要时把 A、B 对调，表中注“已翻转”）。",
-               "判定（Claude 逐条回原文核对）：✅ 原文支持、条件已对齐，是值得解释的矛盾；🔶 原文数值无误，但有未对齐的条件或定义差异可能解释差别；⚠️ 提取或归类有问题；❌ 不构成矛盾。",
-               "“可能原因”“机制线索”是 Claude 读原文后的初步看法，机制编号来自表述的后台链接；AI 辅助复核，用户尚未逐项人工确认。"])
+    names = {"NORM": "归一化后同配方跨篇差距大", "LOPO": "篇内结论与跨文献模型相反", "FLIP": "条件依赖翻转", "DESC": "设计方向相反", "SAME": "严格同一改动"}
+    cols = ["候选编号", "判定", "子类", "性能类别", "摘要", "论文甲", "甲例", "原句甲", "论文乙", "乙例", "原句乙", "核对说明", "依据句子", "可能原因", "机制线索"]
+    write_xlsx(OUT / "矛盾候选复核表.xlsx", [(names[t], cols, [[c[k] for k in cols] for c in cands if c["类型"] == t]) for t in order],
+               widths={"摘要": 50, "甲例": 50, "乙例": 50, "原句甲": 60, "原句乙": 60, "核对说明": 55, "可能原因": 40, "机制线索": 40},
+               notes=[f"step13e 矛盾候选复核表（归一化后重做）｜{LABEL}｜2026-11-04 生成",
+                      "五种候选：NORM 归一化后同配方跨篇差距大；LOPO 篇内结论与不含该篇训练的模型预测相反；FLIP 同篇同一对配方换条件后方向相反；"
+                      "DESC 跨篇只改溶剂/主盐、元素比例同向变化但结论相反；SAME 主改动完全相同但结论相反。",
+                      "判定（Claude 逐条回原文核对）：✅ 原文支持、确实值得解释的矛盾；🔶 原文数值无误，但有未对齐的条件或定义差异可能解释差别；⚠️ 提取或归类有问题；❌ 不构成矛盾。",
+                      "LOPO 依赖模型：主模型 V1 很弱时预测方向本身不可靠，只作线索；V1 篇内 R² ≤ 0 的类别不做。",
+                      "“可能原因”“机制线索”是 Claude 读原文后的初步看法；AI 辅助复核，用户尚未逐项人工确认。"])
     print(json.dumps(summary, ensure_ascii=False, indent=1))
 
 

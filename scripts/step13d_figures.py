@@ -16,7 +16,7 @@ from collections import Counter, defaultdict
 
 import numpy as np
 
-from step13_common import COMP, LABEL, OUT, read_json, write_json
+from step13_common import COMP, LABEL, OUT, in_analysis, read_json, write_json
 
 FIG = OUT / "网站" / "图"
 FIG.mkdir(parents=True, exist_ok=True)
@@ -60,24 +60,21 @@ def cond_bins(s) -> list[str]:
     return out
 
 
-def perf_levels(sts) -> dict[str, str]:
-    """同一标准指标、同一阶段内按数值三等分，给“性能类别·高/中/低”。只用精确值和约数。"""
+def perf_levels(sts, norm_map) -> dict[str, str]:
+    """性能档：用归一化到普遍条件后的值（step13f），同一类内三等分，给“性能类别·好/中/差”。没有归一化值的表述不分档。"""
     grp = defaultdict(list)
     for s in sts:
-        if s["数值类型"] in ("精确", "约数") and s["数值"] is not None:
-            grp[(s["标准指标"], s["阶段"])].append(s)
+        x = norm_map.get(s["表述编号"])
+        if x and not x.get("普遍条件_外推"):
+            grp[x["类别"]].append((s, x["普遍条件_y"]))
     out = {}
     for k, lst in grp.items():
         if len(lst) < 6:
             continue
-        vals = np.array([x["数值"] for x in lst])
-        lo, hi = np.quantile(vals, [1 / 3, 2 / 3])
-        for x in lst:
-            good = x["越大越好"] is not False
-            lvl = "高" if x["数值"] > hi else "低" if x["数值"] < lo else "中"
-            if not good:
-                lvl = {"高": "低", "低": "高", "中": "中"}[lvl]
-            out[x["表述编号"]] = f"{x['性能类别'].replace('类', '')}·{'好' if lvl == '高' else '差' if lvl == '低' else '中'}"
+        lo, hi = np.quantile([v for _, v in lst], [1 / 3, 2 / 3])
+        for s, v in lst:
+            lvl = "好" if v > hi else "差" if v < lo else "中"
+            out[s["表述编号"]] = f"{k.replace('类', '').replace('库仑效率·', 'CE·')}·{lvl}"
     return out
 
 
@@ -193,14 +190,17 @@ def chord(groups: list[tuple[str, list[str], str]], weights: Counter, title: str
 
 def main() -> None:
     import plotly.graph_objects as go
-    sts_all = read_json("表述.json")
+    sts_all = [s for s in read_json("表述.json") if in_analysis(s["性能类别"], s["阶段"])]  # 分析集：倍率容量不纳入，放电容量只看首圈
     sts = dedup(sts_all)
     comp_rec = {(r["论文"], r["配方"]): r for r in read_json("配方组成.json", COMP)}
     ctab = {c["id"]: c for c in read_json("组分表.json", COMP)}
     ccls = lambda cid: ctab.get(cid, {}).get("化学类别") or "未分类"
     ccat = lambda cid: ctab.get(cid, {}).get("类别") or "未分类"
     summary = {"表述（去重后）": len(sts), "去掉的疑似重复": len(sts_all) - len(sts)}
-    plev = perf_levels(sts)
+    nfile = OUT / "归一化_表述.json"
+    nst = read_json("归一化_表述.json") if nfile.exists() else []
+    norm_map = {x["表述编号"]: x for x in nst}
+    plev = perf_levels(sts, norm_map)
 
     # ---- 1a 配方组分共现（以电池测试用到的 recipe 为单位） ----
     recipes = {(s["论文"], s["recipe"]) for s in sts if s["recipe"]}
@@ -245,7 +245,7 @@ def main() -> None:
     nodes = {t[1]: {"类型": t[0], "频次": n, "说明": f"{t[0]}｜出现在 {n} 条表述"} for t, n in freq.items() if t in keep}
     keepn = set(nodes)
     edges = Counter({k: v for k, v in edges.items() if k[0] in keepn and k[1] in keepn})
-    summary["图1b"] = network_fig(nodes, edges, "图1b 组分＋物性＋条件＋性能共现网络（按表述；性能档 = 同一指标同一阶段内三等分）",
+    summary["图1b"] = network_fig(nodes, edges, "图1b 组分＋物性＋条件＋性能共现网络（按表述；性能档 = 归一化到普遍条件后同一类内三等分）",
                                   "图1b_四部分共现网络.html", min_w=10)
 
     # ---- 2a 组分化学类别 ↔ 物性（按配方计） ----
@@ -313,8 +313,10 @@ def main() -> None:
                 out.append(math.log(s["数值"] / c))
         return float(np.median(out)) if out else None
 
-    def med(lst, std, stage=None):
-        v = [s["数值"] for s in lst if s["标准指标"] == std and s["数值类型"] in ("精确", "约数") and (stage is None or s["阶段"] == stage)]
+    def med(lst, cname):
+        """归一化到普遍条件后的中位数（不含外推表述）。"""
+        v = [norm_map[s["表述编号"]]["普遍条件_归一化值"] for s in lst
+             if s["表述编号"] in norm_map and norm_map[s["表述编号"]]["类别"] == cname and not norm_map[s["表述编号"]]["普遍条件_外推"]]
         return float(np.median(v)) if v else None
 
     def pnum(lst, k):
@@ -328,7 +330,7 @@ def main() -> None:
     cols = [("配方", "sO"), ("配方", "aC"), ("配方", "F/O"), ("配方", "InOr"), ("配方", "LiNO₃ 有无"),
             ("物性", "离子电导率"), ("物性", "黏度"), ("物性", "Li⁺迁移数"), ("物性", "物性报告项数"),
             ("条件", "E/S"), ("条件", "硫载量"), ("条件", "正极含硫"), ("条件", "倍率"), ("条件", "温度"), ("条件", "软包比例"),
-            ("性能", "首圈硫比容量（原值）"), ("性能", "容量保持率（原值）"), ("性能", "全电池CE（原值）"), ("性能", "Li‖Cu CE（原值）"),
+            ("性能", "首圈放电容量（归一化）"), ("性能", "容量保持率（归一化）"), ("性能", "全电池CE（归一化）"), ("性能", "Li‖Cu CE（归一化）"),
             ("性能", "篇内相对对照·放电容量(ln)"), ("性能", "篇内相对对照·保持率(ln)")]
     rows, labels, hov = [], [], []
     for (pid, fid), lst in sorted(by_rec.items()):
@@ -340,7 +342,7 @@ def main() -> None:
                 pnum(lst, "离子电导率"), pnum(lst, "黏度"), pnum(lst, "Li⁺迁移数"), float(len(s0["物性"])),
                 cmed(lst, "ES"), cmed(lst, "sulfur_loading"), cmed(lst, "S_content"), cmed(lst, "rate"), cmed(lst, "temperature"),
                 float(np.mean([s["条件"]["cell_format"]["值"] == "软包" for s in lst])),
-                med(lst, "硫比放电容量", "首圈"), med(lst, "容量保持率"), med(lst, "全电池 CE"), med(lst, "Li‖Cu CE"),
+                med(lst, "放电容量类"), med(lst, "衰减类"), med(lst, "库仑效率类·全电池"), med(lst, "库仑效率类·Li‖Cu"),
                 rel(lst, "硫比放电容量"), rel(lst, "容量保持率")]
         perf_n = sum(v is not None for v in vals[15:])
         if perf_n == 0:
@@ -367,7 +369,7 @@ def main() -> None:
     for k, (a, b) in enumerate(cols):
         if k and cols[k - 1][0] != a:
             fig.add_vline(x=k - 0.5, line=dict(color="black", width=2))
-    fig.update_layout(title=f"图3 配方 × 物性 × 条件 × 性能 聚类热图（每行一个配方；灰 = 未报告；性能“原值”未归一化到标准条件，不能直接横向比）<br>{TITLE_NOTE}",
+    fig.update_layout(title=f"图3 配方 × 物性 × 条件 × 性能 聚类热图（每行一个配方；灰 = 未报告或外推；性能为归一化到普遍条件后的值，可跨篇比较）<br>{TITLE_NOTE}",
                       template="plotly_white", height=max(600, 14 * len(order) + 200), plot_bgcolor="#d9d9d9",
                       xaxis=dict(tickangle=-40, side="top"), yaxis=dict(autorange="reversed", tickfont=dict(size=9)),
                       margin=dict(l=170, r=20, t=170, b=20), font=dict(family="Microsoft YaHei, SimHei, sans-serif"))

@@ -1,26 +1,24 @@
 <!DOCTYPE html><html lang="zh"><head><meta charset="utf-8"><title>总览｜课题二表述与矛盾试跑</title>
 <link rel="stylesheet" href="style.css"></head><body>
 <header><h1>课题二 · 标准化表述与矛盾候选试跑</h1><div class="sub">初步，30 篇（F 版规则处理版）｜2026-11-04｜AI 辅助生成与核对，用户尚未逐项人工确认</div></header>
-<nav><a href="index.html" class="on">总览</a><a href="表述表.html" class="">表述表</a><a href="别名表.html" class="">指标与物性别名</a><a href="条件表.html" class="">测试条件</a><a href="图.html" class="">四张图</a><a href="矛盾候选.html" class="">矛盾候选</a></nav><main>
-<div class="warn"><b>先看这一条：</b>这里的结果<b>都还没有归一化到标准条件</b>（归一化是第⑥步打分模型的工作）。
-“方向相反”比的是同一篇里两个配方的比值，篇内条件相同，不受影响；“数值相差大”是跨篇比原始数值，现在只是“配方相同、已知条件相近”时的初筛，正式版本要等归一化之后重做。图 3 里的性能“原值”也不能直接横向比较。</div>
-<h2>流程</h2><div class="flow"><div class="step "><b>提取结果</b><br>规则处理版 30 篇：1054 条比较结果、214 条物性记录</div><span class="arrow">→</span><div class="step "><b>① 名称统一</b><br>205 种指标名 → 四类性能 25 个标准指标；物性 129 种名 → 20 类</div><span class="arrow">→</span><div class="step "><b>② 测试条件</b><br>171 个性能测试；正极硫含量 55 条正极文字逐条核定</div><span class="arrow">→</span><div class="step "><b>③ 表述</b><br>570 条表述（111 个配方）</div><span class="arrow">→</span><div class="step "><b>④ 四张图</b><br>共现网络、弦图、聚类热图、文字向量图</div><span class="arrow">→</span><div class="step "><b>⑤ 矛盾候选</b><br>方向相反 2 条（核对后均 ❌）；数值相差大 0 条</div><span class="arrow">→</span><div class="step todo"><b>⑥ 打分模型与归一化</b><br>尚未做：等你看完①–⑤再定</div></div>
+<nav><a href="index.html" class="on">总览</a><a href="表述表.html" class="">表述表</a><a href="别名表.html" class="">指标与物性别名</a><a href="条件表.html" class="">测试条件</a><a href="图.html" class="">四张图</a><a href="归一化.html" class="">归一化与跨篇比较</a><a href="矛盾候选.html" class="">矛盾候选</a></nav><main>
+<div class="note"><b>这一版做了什么：</b>按你的要求做了归一化：用打分模型把每条实测值换算到同一套标准条件，再跨篇比较；然后在归一化之后重做了矛盾候选（五种口径），
+图和网站都已更新。按你定的分析集，倍率容量不纳入、放电容量只看第一圈。30 篇只够跑通流程，模型验证结果偏弱，数字都标“初步”。验证细节见“归一化与跨篇比较”页第一节。</div>
+<h2>流程</h2><div class="flow"><div class="step"><b>提取结果</b><br>规则处理版 30 篇：1054 条比较结果、214 条物性记录</div><span class="arrow">→</span><div class="step"><b>① 名称统一</b><br>205 种指标名 → 四类性能 25 个标准指标；物性 129 种名 → 20 类</div><span class="arrow">→</span><div class="step"><b>② 测试条件</b><br>171 个性能测试；正极硫含量 55 条逐条核定</div><span class="arrow">→</span><div class="step"><b>③ 表述</b><br>570 条表述（111 个配方）</div><span class="arrow">→</span><div class="step"><b>④ 打分模型与归一化</b><br>六种模型比较，四个性能模型（首圈放电容量、保持率、两种 CE）；换算到统一标准条件后跨篇比较</div><span class="arrow">→</span><div class="step"><b>⑤ 矛盾候选</b><br>五种口径：NORM 0、LOPO 0、FLIP 0、DESC 5、SAME 1</div><span class="arrow">→</span><div class="step"><b>⑥ 图与网站</b><br>四张关联图＋三张归一化图</div></div>
 <h2>关键数字</h2>
-<div class="kpi"><b>570</b>条表述</div><div class="kpi"><b>30</b>篇论文</div><div class="kpi"><b>111</b>个配方</div><div class="kpi"><b>451</b>条有物性的表述</div>
-<div class="kpi"><b>420</b>条可算元素比例</div><div class="kpi"><b>171</b>个性能测试</div><div class="kpi"><b>2</b>条方向相反候选</div><div class="kpi"><b>0</b>条数值相差大候选</div>
-<h2>四类性能各有多少条表述</h2><p>放电容量类 263 条；衰减类 106 条；倍率容量类 87 条；库仑效率类 114 条。</p>
+<div class="kpi"><b>570</b>条表述</div><div class="kpi"><b>30</b>篇论文</div><div class="kpi"><b>111</b>个配方</div><div class="kpi"><b>171</b>个性能测试</div>
+<div class="kpi"><b>0</b>条 NORM 候选</div><div class="kpi"><b>0</b>条 LOPO 候选</div><div class="kpi"><b>0</b>条 FLIP 候选</div><div class="kpi"><b>5</b>条 DESC 候选</div><div class="kpi"><b>1</b>条 SAME 候选</div>
+<h2>归一化模型（每类选出的主模型）</h2>
+<table><tr><th>性能类别</th><th>论文</th><th>数值条数</th><th>主模型</th><th>V1 篇内 R²</th><th>V1 方向正确率</th><th>V2 提升 R²</th><th>物理越界率</th><th>标准醚基准（普遍条件）</th></tr><tr><td>放电容量类</td><td>11</td><td>58</td><td>高斯过程</td><td>-0.03</td><td>0.75</td><td>0.325</td><td>0.0</td><td>1075.09</td></tr><tr><td>衰减类</td><td>12</td><td>65</td><td>单调约束梯度提升</td><td>0.052</td><td>0.87</td><td>0.144</td><td>0.0</td><td>66.09</td></tr><tr><td>库仑效率类·全电池</td><td>5</td><td>36</td><td>线性岭回归</td><td>-0.018</td><td>0.429</td><td>0.045</td><td>0.0</td><td>99.72</td></tr><tr><td>库仑效率类·Li‖Cu</td><td>5</td><td>34</td><td>单调约束梯度提升</td><td>-0.518</td><td>0.588</td><td>0.314</td><td>0.0</td><td>96.05</td></tr></table>
+<p>V1 = 对没见过的论文，同篇配方之间的差距算得准不准（R² 越接近 1 越好，0 = 和“不预测差距”一样）；V2 = 同一篇换到没见过的条件，能不能换算准（相对“用本篇其他测试平均值猜”的提升）。
+物理越界率 = 归一化后容量超过硫理论容量 1672 mAh g⁻¹ 或保持率超过 100% 的比例。详见“归一化与跨篇比较”页。</p>
+<h2>矛盾候选（归一化后重做）</h2>
+<table><tr><th>口径</th><th>候选数</th><th>回原文核对结果</th></tr><tr><td>NORM</td><td>0</td><td></td></tr><tr><td>LOPO</td><td>0</td><td></td></tr><tr><td>FLIP</td><td>0</td><td></td></tr><tr><td>DESC</td><td>5</td><td>🔶 3；❌ 2</td></tr><tr><td>SAME</td><td>1</td><td>🔶 1</td></tr></table>
+<p>NORM = 归一化后同一配方跨篇仍差很多；LOPO = 某篇的结论与其他论文合起来训练的模型相反；FLIP = 同篇同一对配方换条件后结论翻转；DESC = 跨篇设计方向相同（只改溶剂/主盐）但结论相反；SAME = 改动完全相同但结论相反。</p>
+<h2>这次试跑的主要发现</h2><ul><li>按你定的分析集（倍率容量不纳入、放电容量只看首圈），归一化模型四个：首圈放电容量 11 篇、保持率 12 篇、两种 CE 各 5 篇。</li><li>归一化模型验证偏弱：各类主模型 V1 篇内 R² 都在 0 附近（−0.5 到 0.05），即对没见过的论文，配方之间差多少算不准；方向正确率首圈放电容量 0.75、保持率 0.87。V2（换条件）在首圈放电容量提升 0.33、保持率 0.14，条件换算部分有一定作用。详见“归一化与跨篇比较”页第一节。</li><li>归一化后，同一配方跨篇（标准醚电解液）只有 3 对能比，最大差 1.44 倍，没有到 1.5 倍的 NORM 候选；193 条进模型的表述里有 85 条离标准条件太远（外推），不参与比较。</li><li>矛盾候选 6 条，回原文核对：🔶 4 条、❌ 2 条、✅ 0 条。</li><li>SAME001（加 LiNO₃ 首圈容量一升一降）可由放电截止电压解释：P113 截止 1.5 V，LiNO₃ 在约 1.6 V 以下还原会额外贡献容量；P668 截止 1.7–1.8 V。说明条件里应加“放电截止电压”。</li><li>DESC 三条（P609 vs P510）说明 F/O 一个描述符把“阴离子的氟”（LiTFSI→LiFSI）和“溶剂的氧”（正己烷→DME）混在一起，方向判断不可靠；特征设计应把阴离子氟与溶剂氧分开。</li><li>DESC 两条（加 DMDS、DMTS）不构成矛盾：有机硫共溶剂本身贡献容量，这类配方的容量不能和普通电解液直接比，应单独标注或分层。</li><li>条件翻转（FLIP）这次是 0 条：之前找到的几条都在非首圈容量或倍率容量里，按这次的分析集被排除了。</li></ul>
+<h2>需要你定的事</h2><ul><li>归一化模型怎么调整（你说要单独讨论）：现在 V1 R² 接近 0。可讨论的方向：加放电截止电压等条件、把描述符拆细、减少特征、换模型形式，或等全量数据。</li><li>标准醚电解液基准性能的取法（方案待定，这里暂用各篇标准醚归一化后的中位数）。</li><li>有机硫共溶剂（DMDS、DMTS）配方是否单独分层。</li></ul>
 <h2>一条表述长什么样</h2><div class="note mono">【配方】P034 D：1 M LiTFSI；0.1 M LiNO3；DMDS:DME:DOL = 2 (50 vol%):1:1（体积比）｜sO 0.080、aC 0.013、F/O 0.38、InOr 1.08　【物性】离子电导率 ~5 mS cm−1（实测）；其余未报告　【条件】E/S 10 μL mg⁻¹（推定）；硫载量 1 mg cm⁻²；正极含硫 冲突或多值；锂厚 未报告；N/P 未报告；倍率 0.1 C；温度 未报告；电池形式 扣式；首圈；Li‖S、硫碳类　【性能】放电容量类·硫比放电容量 = 2485 mAh g−1（取值点：A=OMC-S40，B=OMC-S50；首圈）</div>
-<p>一个性能数值生成一条表述，由四部分组成：<b>配方</b>（原文用量＋配方级元素比例）、<b>物性</b>（只用同一篇对这个配方报告的值，没报告写“未报告”）、
-<b>测试条件</b>、<b>性能</b>。机制不写进表述文字，只在后台保留编号（表述表里点开一行可以看到）。</p>
-<h2>这次试跑的主要发现</h2>
-<ul>
-<li>30 篇里<b>同一种改动在两篇以上出现的只有 4 种</b>（DMTS 增加、LiNO₃ 增加、LiNO₃ 增加且 LiTFSI 减少、换成标准醚电解液），各篇方向都一致，所以没有真正的“方向相反”。放宽到“主改动部分相同”出了 2 条，读原文后都不是同一种改动（判 ❌）。要找到方向相反的矛盾，需要更多论文。</li>
-<li>标准醚电解液（LiTFSI＋DOL/DME＋LiNO₃）在 16 篇里出现。配方和已知条件都相近的跨篇对有 13 对，首圈容量最多差 1.39 倍（约 900 到 1250 mAh g⁻¹），没有到 1.5 倍阈值。这个离散程度就是归一化要处理的“同一电解液在不同实验室的差别”。</li>
-<li>条件缺失多：E/S 有值的表述 312/570，锂厚 184，N/P 只有 55。</li>
-<li>正极硫含量：脚本正则解析与读原文核定只有 29/55 一致，全量时不能直接用正则结果。</li>
-<li>同一个数值被提取进同篇两个测试的情况有 19 组（如 P034 的 2485 mAh g⁻¹），已标“疑似重复组”，统计时每组只计一次。</li>
-</ul>
-<h2>文件</h2><p class="mono">output/表述与矛盾试跑_F版30篇_2026-11-04/：表述表.xlsx、别名表与复核表.xlsx、条件表.xlsx、矛盾候选复核表.xlsx，以及同名 JSON。脚本 scripts/step13a–13e、step13s。</p>
+<h2>文件</h2><p class="mono">output/表述与矛盾试跑_F版30篇_2026-11-04/：表述表.xlsx、别名表与复核表.xlsx、条件表.xlsx、归一化与跨篇比较.xlsx、矛盾候选复核表.xlsx，以及同名 JSON。脚本 scripts/step13a–13f、step13s。</p>
 </main><script>
 function makeTable(id, cols, rows, opts){
   opts = opts || {};
