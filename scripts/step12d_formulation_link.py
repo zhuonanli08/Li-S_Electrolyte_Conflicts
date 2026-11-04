@@ -455,8 +455,11 @@ def build() -> None:
     for r in out:
         if r["类型"] == "液体":
             r["元素比例"] = recipe_ratios(r, comps, counts)
+    from step12e_reviewed_units import apply_review, add_review_sheet
+    apply_review(out, comps, dens, convert, recipe_ratios, counts, solvent_ids)
     (OUT / "配方组成.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     write_xlsx(out, dens, check)
+    add_review_sheet(OUT / "配方组成表.xlsx", out)
     print("配方", len(out), "：", Counter((r["类型"], r["状态"]) for r in out))
     print("缺项（按配方计）：", Counter(m for r in out for m in r["缺"]).most_common(12))
     er = [r["元素比例"] for r in out if "元素比例" in r]
