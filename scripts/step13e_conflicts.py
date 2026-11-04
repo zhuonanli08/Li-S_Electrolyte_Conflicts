@@ -19,6 +19,7 @@ import json
 import math
 from collections import Counter, defaultdict
 
+from step13_i18n import CAT
 from step13_common import COMP, LABEL, OUT, in_analysis, load_papers, load_sources, read_json, sentences, write_json, write_xlsx
 
 SMALL = math.log(1.05)
@@ -230,7 +231,12 @@ def main() -> None:
                 diff.append(f"{lab} {pg[0].get(k)} → {pb[0].get(k)}")
         same_test = pg[0]["测试"] == pb[0]["测试"]
         sub = "阶段翻转（同一测试、不同圈数）" if same_test and not any(x.startswith("取值点") for x in diff) else "条件翻转"
+        lab_en = {"E/S": "E/S", "载量": "S loading", "含硫": "cathode S", "倍率": "rate", "温度": "T", "电池形式": "cell", "锂厚": "Li",
+                  "取值点倍率": "point rate", "取值点温度": "point T", "圈数": "cycle"}
+        diff_en = [lab_en.get(x.split(" ")[0], x.split(" ")[0]) + " " + " ".join(x.split(" ")[1:]) for x in diff]
         cands.append({"类型": "FLIP", "子类": sub, "性能类别": cat, "论文甲": pid, "论文乙": pid,
+                      "甲对": {**pg[0], "翻转": pg[1]}, "乙对": {**pb[0], "翻转": pb[1]},
+                      "摘要_en": f"{pid}: {a} vs {b} is better under one condition and worse under another ({'; '.join(diff_en) or 'difference not recorded'})",
                       "摘要": f"{pid}：{a} 相对 {b} 在一种条件下变好、另一种条件下变坏（{'；'.join(diff) or '条件差异未记录'}）",
                       "甲例": pline(*pg), "乙例": pline(*pb), "证据甲": pg[0]["证据"], "证据乙": pb[0]["证据"],
                       "强度": min(abs(pg[0]["效应"] or 0), abs(pb[0]["效应"] or 0))})
@@ -258,7 +264,13 @@ def main() -> None:
             for pg, pb in itertools.product(goods, bads):
                 eg = strongest([x for x in per[pg] if (x[0]["方向"] == "变好") != x[1]])
                 eb = strongest([x for x in per[pb] if (x[0]["方向"] == "变好") == x[1]])
+                if typ == "SAME":
+                    lab_en = f"Main change {' '.join(kk[0])} | {CAT.get(kk[-1], kk[-1])}"
+                else:
+                    lab_en = f"{kk[0].split(' ')[0]} decreases (solvent / main salt only) | {CAT.get(kk[-1], kk[-1])}"
                 cands.append({"类型": typ, "子类": label(kk), "性能类别": kk[-1], "论文甲": pg, "论文乙": pb,
+                              "甲对": {**eg[0], "翻转": eg[1]}, "乙对": {**eb[0], "翻转": eb[1]},
+                              "摘要_en": f"{lab_en}: {pg} better, {pb} worse",
                               "摘要": f"{label(kk)}：{pg} 变好，{pb} 变坏",
                               "甲例": pline(*eg) + f"｜改动 {' '.join(eg[0]['完整签名'])}",
                               "乙例": pline(*eb) + f"｜改动 {' '.join(eb[0]['完整签名'])}",
@@ -310,6 +322,7 @@ def main() -> None:
             sh = lambda k: "；".join(f"{x['表述编号']} 实测 {x['实测值']} → 归一化 {x['普遍条件_归一化值']}"
                                     + (f"（未换算：{x['未换算条件']}）" if x["未换算条件"] else "") for x in byf[k])
             cands.append({"类型": "NORM", "子类": "同配方跨篇", "性能类别": cname, "论文甲": hi[1], "论文乙": lo[1],
+                          "摘要_en": f"Same formulation {hi[1]}:{hi[2]} and {lo[1]}:{lo[2]} differ {math.exp(abs(m1 - m2)):.2f}× after normalisation",
                           "摘要": f"同一配方 {hi[1]}:{hi[2]} 与 {lo[1]}:{lo[2]} 归一化后相差 {math.exp(abs(m1 - m2)):.2f} 倍" + (f"（{note}）" if note else ""),
                           "甲例": f"{hi[1]}:{hi[2]}｜" + sh(hi), "乙例": f"{lo[1]}:{lo[2]}｜" + sh(lo),
                           "证据甲": [e for x in byf[hi][:2] for e in stmap[x["表述编号"]]["证据句子"][:2]],
@@ -343,6 +356,8 @@ def main() -> None:
                         continue
                     s, sr = stmap[x["表述编号"]], stmap[ref["表述编号"]]
                     best[k] = {"类型": "LOPO", "子类": f"主模型 {r['主模型']}", "性能类别": cname, "论文甲": x["论文"], "论文乙": "（其他论文合起来）",
+                               "摘要_en": f"{x['论文']}: {x['配方']} vs control {ref['配方']} measured {'better' if obs > 0 else 'worse'} (ln {obs:+.2f}); "
+                                          f"model trained without this paper predicts {'better' if pred > 0 else 'worse'} (ln {pred:+.2f})",
                                "摘要": f"{x['论文']}：{x['配方']} 相对对照 {ref['配方']} 实测{'变好' if obs > 0 else '变坏'}（ln {obs:+.2f}），"
                                        f"不含此篇训练的模型预测{'变好' if pred > 0 else '变坏'}（ln {pred:+.2f}）",
                                "甲例": f"{x['表述编号']} {x['配方']}：{s['数值原文']}（{s['取值点']}） vs {ref['表述编号']} {ref['配方']}：{sr['数值原文']}",
@@ -362,6 +377,7 @@ def main() -> None:
         m = manual.get(c["候选编号"], {})
         c["判定"], c["核对说明"], c["依据句子"] = m.get("判定", ""), m.get("说明", ""), m.get("依据句子", [])
         c["可能原因"], c["机制线索"] = m.get("可能原因", ""), m.get("机制线索", "")
+        c["核对说明_en"], c["可能原因_en"], c["机制线索_en"] = m.get("说明_en", ""), m.get("可能原因_en", ""), m.get("机制线索_en", "")
         c["原句甲"] = sentences(sources[c["论文甲"]], c["证据甲"][:3], 350) if c["论文甲"] in sources else ""
         c["原句乙"] = sentences(sources[c["论文乙"]], c["证据乙"][:3], 350) if c["论文乙"] in sources else ""
     write_json("矛盾候选.json", cands)

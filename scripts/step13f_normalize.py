@@ -564,70 +564,80 @@ def std_basis(sts) -> dict:
 
 
 def figures(results):
+    """英文图（11-04 用户要求网站用英文）。可用 `python step13f_normalize.py figs` 只重画图。"""
     import plotly.graph_objects as go
     from plotly.subplots import make_subplots
-    note = f"<span style='font-size:12px;color:#888'>{LABEL}；关联不等于因果</span>"
-    font = dict(family="Microsoft YaHei, SimHei, sans-serif")
+    from step13_i18n import CAT, MODEL, STDSET, recipe_en, t as tr
+    note = "<span style='font-size:12px;color:#62777a'>Preliminary · 30 papers (F-version) · association, not causation</span>"
+    font = dict(family="Segoe UI, Arial, sans-serif", color="#172d32")
+    comp = {(r["论文"], r["配方"]): r for r in read_json("配方组成.json", COMP)}
+    rec_en = {(s["论文"], s["配方"]): recipe_en(comp.get((s["论文"], s["recipe"])), s["配方文字"]) for s in read_json("表述.json")}
     names = list(results)
+    cn = lambda n: tr(CAT, n)
+    mn = lambda m: tr(MODEL, m)
     # 图5a 模型比较
-    fig = make_subplots(rows=1, cols=len(names), subplot_titles=[f"{n}（主模型：{results[n]['主模型']}）" for n in names], shared_yaxes=True)
+    fig = make_subplots(rows=1, cols=len(names), subplot_titles=[f"{cn(n)}<br><sup>selected: {mn(results[n]['主模型'])}</sup>" for n in names],
+                        shared_yaxes=True, horizontal_spacing=0.05)
     for j, n in enumerate(names, 1):
         cr = results[n]["模型比较"]
-        for met, col in (("V1篇内R2", "#4C78A8"), ("V2提升R2", "#54A24B"), ("越界率（非外推）", "#E45756")):
-            fig.add_trace(go.Bar(x=[r["模型"] for r in cr], y=[r[met] if r[met] is not None else 0 for r in cr], name=met, marker_color=col,
-                                 legendgroup=met, showlegend=(j == 1), hovertemplate="%{x}<br>" + met + " = %{y}<extra></extra>"), row=1, col=j)
-    fig.add_hline(y=0, line=dict(color="#666", width=1))
-    fig.update_layout(title=f"图5a 六种模型比较：V1 篇内 R²（没见过的论文，配方间差距）、V2 提升 R²（换到没见过的条件）、物理越界率<br>"
-                            f"选择规则：越界率 ≤5% 的模型中选 V2 最好的　{note}", barmode="group", template="plotly_white", height=560, font=font,
-                      yaxis=dict(range=[-1, 1]), legend=dict(orientation="h", y=-0.25))
-    fig.update_xaxes(tickangle=-45)
+        for met, lab, col in (("V1篇内R2", "V1 within-paper R²", "#007e70"), ("V2提升R2", "V2 skill R²", "#7159a7"),
+                              ("越界率（非外推）", "Physical-violation rate", "#c2504a")):
+            fig.add_trace(go.Bar(x=[mn(r["模型"]) for r in cr], y=[max(-1, r[met]) if r[met] is not None else 0 for r in cr], name=lab,
+                                 marker_color=col, legendgroup=lab, showlegend=(j == 1),
+                                 customdata=[r[met] for r in cr], hovertemplate="%{x}<br>" + lab + " = %{customdata}<extra></extra>"), row=1, col=j)
+    fig.add_hline(y=0, line=dict(color="#62777a", width=1))
+    fig.update_layout(title=f"Fig. 5a · Six models compared (values below −1 clipped)<br>{note}", barmode="group", template="plotly_white",
+                      height=560, font=font, yaxis=dict(range=[-1.05, 1]), legend=dict(orientation="h", y=-0.32), margin=dict(t=120))
+    fig.update_xaxes(tickangle=-40)
     fig.write_html(FIG / "图5a_模型比较.html", include_plotlyjs="directory")
     # 图5b 主模型验证散点
-    fig = make_subplots(rows=2, cols=len(names), subplot_titles=[f"V1 {n}" for n in names] + [f"V2 {n}" for n in names],
-                        horizontal_spacing=0.04, vertical_spacing=0.14)
+    fig = make_subplots(rows=2, cols=len(names), subplot_titles=[f"V1 · {cn(n)}" for n in names] + [f"V2 · {cn(n)}" for n in names],
+                        horizontal_spacing=0.05, vertical_spacing=0.14)
     for j, n in enumerate(names, 1):
         r = results[n]
         pr = next(x for x in r["模型比较"] if x["模型"] == r["主模型"])
-        for row, sc, txt in ((1, r["主模型V1散点"], f"R²={pr['V1篇内R2']}，方向 {pr['V1方向正确率']}"),
-                             (2, (r["主模型V2"] or {}).get("散点"), f"提升R²={pr['V2提升R2']}")):
+        for row, sc, txt in ((1, r["主模型V1散点"], f"R² = {pr['V1篇内R2']} · direction {pr['V1方向正确率']}"),
+                             (2, (r["主模型V2"] or {}).get("散点"), f"skill R² = {pr['V2提升R2']}")):
             if not sc:
                 continue
-            fig.add_trace(go.Scatter(x=sc["实测"], y=sc["预测"], mode="markers", marker=dict(size=6, color="#4C78A8", opacity=0.7), showlegend=False,
-                                     text=sc["标签"], hovertemplate="%{text}<br>实测 %{x:.3f}<br>预测 %{y:.3f}<extra></extra>"), row=row, col=j)
+            fig.add_trace(go.Scatter(x=sc["实测"], y=sc["预测"], mode="markers", marker=dict(size=6, color="#007e70", opacity=0.7), showlegend=False,
+                                     text=sc["标签"], hovertemplate="%{text}<br>measured %{x:.3f}<br>predicted %{y:.3f}<extra></extra>"), row=row, col=j)
             lo, hi = min(sc["实测"] + sc["预测"]), max(sc["实测"] + sc["预测"])
-            fig.add_trace(go.Scatter(x=[lo, hi], y=[lo, hi], mode="lines", line=dict(color="#aaa", dash="dash"), showlegend=False, hoverinfo="skip"), row=row, col=j)
+            fig.add_trace(go.Scatter(x=[lo, hi], y=[lo, hi], mode="lines", line=dict(color="#9fb3ad", dash="dash"), showlegend=False, hoverinfo="skip"),
+                          row=row, col=j)
             ax = (row - 1) * len(names) + j
-            fig.add_annotation(text=f"{r['主模型']}：{txt}", xref=f"x{'' if ax == 1 else ax} domain", yref=f"y{'' if ax == 1 else ax} domain",
-                               x=0.02, y=0.98, showarrow=False, font=dict(size=10), bgcolor="rgba(255,255,255,0.7)")
-    fig.update_layout(title=f"图5b 主模型验证散点：V1 篇内差距（去掉各篇平均后，ln 单位）／V2 换到没见过的条件（ln 单位）<br>{note}",
-                      template="plotly_white", height=800, font=font)
+            fig.add_annotation(text=f"{mn(r['主模型'])}: {txt}", xref=f"x{'' if ax == 1 else ax} domain", yref=f"y{'' if ax == 1 else ax} domain",
+                               x=0.02, y=0.98, showarrow=False, font=dict(size=10), bgcolor="rgba(255,255,255,0.8)")
+    fig.update_layout(title=f"Fig. 5b · Selected models: V1 within-paper differences (paper mean removed) and V2 unseen conditions, ln units<br>{note}",
+                      template="plotly_white", height=800, font=font, margin=dict(t=120))
     fig.write_html(FIG / "图5b_主模型验证散点.html", include_plotlyjs="directory")
 
     # 图6 归一化排名（森林图）
-    traces, btn = [], []
+    traces, btn, heights = [], [], []
     combos = [(n, sn) for n in names for sn in results[n]["标准条件"]]
-    heights = []
     for ci, (n, sn) in enumerate(combos):
         rows = sorted([x for x in results[n]["配方"] if x["标准条件"] == sn], key=lambda x: x["相对标准醚_ln"])
-        lab = [f"{x['论文']}:{x['配方']}{'（对照）' if x['是否对照'] else ''}{'［外推］' if x['外推'] else ''}" for x in rows]
-        hov = [f"{x['配方文字'][:70]}<br>归一化值 {x['归一化值']}（{x['归一化值区间']}）<br>名次 {x['名次'] or '—'}（区间 {x['名次区间']}）/ {x['参与排名配方数']}<br>外推：{x['外推'] or '否'}"
-               for x in rows]
+        lab = [f"{x['论文']}:{x['配方']}{' (control)' if x['是否对照'] else ''}{' [extrap.]' if x['外推'] else ''}" for x in rows]
+        hov = [f"{rec_en.get((x['论文'], x['配方']), '')[:80]}<br>normalised value {x['归一化值']} ({x['归一化值区间']})<br>"
+               f"rank {x['名次'] or '—'} (interval {x['名次区间']}) of {x['参与排名配方数']}<br>extrapolated: {'yes' if x['外推'] else 'no'}" for x in rows]
         traces.append(go.Scatter(x=[x["相对标准醚_ln"] for x in rows], y=lab, mode="markers",
-                                 marker=dict(color=["#bbb" if x["外推"] else "#4C78A8" for x in rows], size=8),
+                                 marker=dict(color=["#b9c7c2" if x["外推"] else "#007e70" for x in rows], size=8),
                                  error_x=dict(type="data", symmetric=False, array=[x["区间_ln"][1] - x["相对标准醚_ln"] for x in rows],
-                                              arrayminus=[x["相对标准醚_ln"] - x["区间_ln"][0] for x in rows], color="#999", thickness=1),
+                                              arrayminus=[x["相对标准醚_ln"] - x["区间_ln"][0] for x in rows], color="#9fb3ad", thickness=1),
                                  text=hov, hovertemplate="%{y}<br>%{text}<extra></extra>", visible=(ci == 0), showlegend=False))
         heights.append(max(500, 18 * len(rows) + 220))
-        btn.append(dict(label=f"{n}｜{sn}", method="update",
+        btn.append(dict(label=f"{cn(n)} · {tr(STDSET, sn)}", method="update",
                         args=[{"visible": [k == ci for k in range(len(combos))]},
-                              {"title": f"图6 归一化后的跨篇比较：{n}｜{sn}（主模型 {results[n]['主模型']}）<br>横轴 = 相对标准醚电解液的 ln 倍数（CE 为 −ln 损失倍数），>0 更好；灰 = 外推，不进排名<br>{note}",
+                              {"title": f"Fig. 6 · Cross-paper comparison after normalisation: {cn(n)} · {tr(STDSET, sn)} (model: {mn(results[n]['主模型'])})"
+                                        f"<br>x = ln ratio vs the standard ether electrolyte (CE: −ln loss ratio); >0 is better; grey = extrapolated, not ranked<br>{note}",
                                "height": heights[-1]}]))
     fig = go.Figure(traces)
-    fig.add_vline(x=0, line=dict(color="#E45756", dash="dash"))
+    fig.add_vline(x=0, line=dict(color="#c2504a", dash="dash"))
     n0, s0 = combos[0]
-    fig.update_layout(title=f"图6 归一化后的跨篇比较：{n0}｜{s0}（主模型 {results[n0]['主模型']}）<br>横轴 = 相对标准醚电解液的 ln 倍数，>0 更好；灰 = 外推，不进排名<br>{note}",
+    fig.update_layout(title=f"Fig. 6 · Cross-paper comparison after normalisation: {cn(n0)} · {tr(STDSET, s0)} (model: {mn(results[n0]['主模型'])})"
+                            f"<br>x = ln ratio vs the standard ether electrolyte; >0 is better; grey = extrapolated, not ranked<br>{note}",
                       template="plotly_white", height=heights[0], font=font, updatemenus=[dict(buttons=btn, x=1.0, y=1.06, xanchor="right")],
-                      yaxis=dict(tickfont=dict(size=10)), xaxis=dict(title="ln（相对标准醚电解液）"), margin=dict(l=230, t=130))
+                      yaxis=dict(tickfont=dict(size=10)), xaxis=dict(title="ln (relative to standard ether electrolyte)"), margin=dict(l=230, t=140))
     fig.write_html(FIG / "图6_归一化跨篇排名.html", include_plotlyjs="directory")
 
     # 图7 标准醚电解液各篇：实测 vs 归一化
@@ -635,16 +645,16 @@ def figures(results):
     labels = []
     for n in names:
         for x in results[n]["标准醚各篇归一化值"].get("普遍条件", []):
-            labels.append(f"{n}｜{x['论文']} {x['表述']}{'［外推］' if x['外推'] else ''}")
+            labels.append(f"{cn(n)} · {x['论文']} {x['表述']}{' [extrap.]' if x['外推'] else ''}")
             fig.add_trace(go.Scatter(x=[x["实测"], x["归一化"]], y=[labels[-1]] * 2, mode="lines+markers",
-                                     marker=dict(color=["#999", "#bbb" if x["外推"] else "#E45756"], size=8,
+                                     marker=dict(color=["#9fb3ad", "#b9c7c2" if x["外推"] else "#007e70"], size=8,
                                                  symbol=["circle", "circle-open" if x["外推"] else "circle"]),
-                                     line=dict(color="#ccc"), showlegend=False,
-                                     hovertemplate=f"{labels[-1]}<br>实测 {x['实测']} → 归一化 {x['归一化']}<extra></extra>"))
-    fig.update_layout(title=f"图7 同一种电解液（标准醚：LiTFSI＋DOL/DME＋LiNO₃）各篇实测值（灰）→ 归一化到普遍条件后（红；空心 = 外推）<br>"
-                            f"归一化后仍相差大的，差别不能用已记录的条件解释，是跨篇矛盾候选<br>{note}",
-                      template="plotly_white", height=max(500, 22 * len(labels) + 220), font=font, xaxis=dict(title="性能值（各类单位不同，按类看）"),
-                      yaxis=dict(tickfont=dict(size=10)), margin=dict(l=280, t=130))
+                                     line=dict(color="#dbe5e1"), showlegend=False,
+                                     hovertemplate=f"{labels[-1]}<br>measured {x['实测']} → normalised {x['归一化']}<extra></extra>"))
+    fig.update_layout(title=f"Fig. 7 · The same electrolyte (standard ether: LiTFSI + DOL/DME + LiNO₃) across papers: measured (grey) → normalised to the common condition (green; open = extrapolated)"
+                            f"<br>A large gap left after normalisation cannot be explained by the recorded conditions<br>{note}",
+                      template="plotly_white", height=max(500, 22 * len(labels) + 220), font=font,
+                      xaxis=dict(title="Performance value (units differ by class)"), yaxis=dict(tickfont=dict(size=10)), margin=dict(l=300, t=140))
     fig.write_html(FIG / "图7_标准醚跨篇归一化前后.html", include_plotlyjs="directory")
 
 
@@ -679,4 +689,8 @@ def excel(results, st_out):
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    if len(sys.argv) > 1 and sys.argv[1] == "figs":
+        figures(read_json("归一化结果.json"))
+    else:
+        main()

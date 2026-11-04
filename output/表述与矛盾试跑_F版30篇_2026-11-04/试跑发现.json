@@ -13,5 +13,20 @@
   "归一化模型怎么调整（你说要单独讨论）：现在 V1 R² 接近 0。可讨论的方向：加放电截止电压等条件、把描述符拆细、减少特征、换模型形式，或等全量数据。",
   "标准醚电解液基准性能的取法（方案待定，这里暂用各篇标准醚归一化后的中位数）。",
   "有机硫共溶剂（DMDS、DMTS）配方是否单独分层。"
+ ],
+ "findings_en": [
+  "Analysis set (your decision): rate capacity is excluded; discharge capacity uses the first cycle only. Four normalisation models: first-cycle discharge capacity (11 papers), capacity retention (12), full-cell CE and Li‖Cu CE (5 each).",
+  "Validation is weak. V1 within-paper R² of the selected models is near zero (−0.5 to 0.05): for an unseen paper, the model cannot say how much better one formulation is than another. It does call the direction correctly 75% (first-cycle capacity) and 87% (retention) of the time. V2 gains of 0.33 and 0.14 show the condition correction helps somewhat.",
+  "After normalisation only 3 cross-paper pairs share the same formulation (the standard ether electrolyte); the largest gap is 1.44×, below the 1.5× threshold. 85 of 193 modelled statements are too far from the common condition and are flagged as extrapolation.",
+  "Six contradiction candidates, all checked against the source text: 🔶 4, ❌ 2, ✅ 0.",
+  "SAME001 (adding LiNO₃ raises first-cycle capacity in one paper and lowers it in another) is explained by the cut-off voltage: P113 discharges to 1.5 V, where LiNO₃ reduction adds capacity; P668 stops at 1.7–1.8 V. The cut-off voltage should become a model condition.",
+  "Three DESC items (P609 vs P510) show that F/O mixes anion fluorine (LiTFSI → LiFSI) with solvent oxygen (hexane → DME); the descriptor needs to be split.",
+  "Two DESC items (adding DMDS or DMTS) are not contradictions: organosulfur co-solvents contribute capacity and should be stratified separately.",
+  "No condition-dependent flips this time: the earlier ones lay in non-first-cycle capacity or rate capacity, which this analysis set excludes."
+ ],
+ "pending_en": [
+  "How to adjust the normalisation (you asked to discuss it separately): V1 R² is near zero. Options include adding conditions such as the cut-off voltage, splitting descriptors, using fewer features, changing the model form, or waiting for the full dataset.",
+  "How to fix the baseline performance of the standard ether electrolyte (the plan leaves this open; the pilot uses the median of each paper's normalised standard-ether values).",
+  "Whether organosulfur co-solvent formulations (DMDS, DMTS) are stratified separately."
  ]
 }

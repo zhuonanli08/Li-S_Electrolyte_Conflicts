@@ -1,316 +1,388 @@
-"""step13s：把 step13a–13e 的结果做成本地静态网站（11-04 用户定：所有结果用网站展示）。
+"""step13s：结果网站（英文，单页、标签切换；版式参照用户提供的 electrolyte-atlas.html，11-04 用户要求）。
 
-输出：网站/index.html、表述表.html、别名表.html、条件表.html、图.html、矛盾候选.html、style.css
-数据直接嵌在页面里，双击 index.html 用浏览器打开即可，不需要联网或服务器。
+输出：网站/index.html（数据嵌在页面里）＋ 网站/图/ 下的交互图。双击 index.html 或项目根目录的 双击打开结果网站.bat 即可打开。
+提取结果里的自由文字（取值点、物性描述）本身是中文，按原样显示并注明；其余界面、图、说明、核对结论为英文。
 """
 from __future__ import annotations
 
 import html
-import math
 import json
+import math
 
-from step13_common import LABEL, OUT, in_analysis, read_json
+from step13_common import COMP, OUT, in_analysis, read_json
+from step13_i18n import (BASIS, BATT, CAT, CSTATE, CTYPE, DIR, MODEL, PROP, SRC, STAGE, STD, STDKEY, STDSET,
+                         recipe_en, statement_en, t)
 
 SITE = OUT / "网站"
-SITE.mkdir(exist_ok=True)
-PAGES = [("index.html", "总览"), ("表述表.html", "表述表"), ("别名表.html", "指标与物性别名"), ("条件表.html", "测试条件"),
-         ("图.html", "四张图"), ("归一化.html", "归一化与跨篇比较"), ("矛盾候选.html", "矛盾候选")]
+TESTKIND = {"全电池性能": "Full-cell performance", "机理电池": "Mechanistic cell", "表面表征": "Surface characterisation", "溶液性质": "Solution property",
+            "对称电池": "Symmetric cell", "模拟": "Simulation", "锂铜效率": "Li‖Cu efficiency", "其他": "Other", "浸泡": "Soaking"}
+CELL = {"扣式": "coin", "软包": "pouch", "其他": "other"}
 
 CSS = """
-body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;margin:0;color:#222;background:#fafafa}
-header{background:#1f3b57;color:#fff;padding:14px 28px}
-header h1{margin:0;font-size:20px} header .sub{font-size:13px;opacity:.85;margin-top:4px}
-nav{background:#e8eef4;padding:8px 28px;position:sticky;top:0;z-index:5;border-bottom:1px solid #cdd8e3}
-nav a{margin-right:18px;color:#1f3b57;text-decoration:none;font-size:14px} nav a.on{font-weight:bold;border-bottom:2px solid #1f3b57}
-main{padding:18px 28px;max-width:1500px}
-h2{font-size:18px;border-left:4px solid #1f3b57;padding-left:8px;margin-top:28px}
-.note{background:#fff8e1;border:1px solid #f0d58c;padding:10px 14px;border-radius:4px;font-size:14px;line-height:1.7}
-.warn{background:#fdecea;border:1px solid #f3b7b0;padding:10px 14px;border-radius:4px;font-size:14px;line-height:1.7}
-table{border-collapse:collapse;font-size:13px;background:#fff;width:100%}
-th,td{border:1px solid #d6dde4;padding:4px 6px;vertical-align:top;text-align:left}
-th{background:#eef3f8;position:sticky;top:38px;cursor:pointer}
-td{white-space:nowrap;max-width:420px;overflow:hidden;text-overflow:ellipsis}
-main div[id^="t"]{overflow-x:auto}
-tr.detail td{background:#f7fafc;white-space:pre-wrap;font-size:12.5px;max-width:none}
-.kpi{display:inline-block;background:#fff;border:1px solid #d6dde4;border-radius:6px;padding:10px 16px;margin:6px 10px 6px 0;min-width:120px}
-.kpi b{display:block;font-size:22px;color:#1f3b57}
-.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px;margin:10px 0}
-.step{background:#fff;border:1px solid #9fb3c8;border-radius:6px;padding:8px 10px;width:170px;font-size:13px;line-height:1.5}
-.step.todo{border-style:dashed;color:#777} .arrow{align-self:center;font-size:20px;color:#9fb3c8}
-.filters{margin:8px 0 10px} .filters input,.filters select{margin-right:10px;padding:3px 6px;font-size:13px}
-iframe{width:100%;border:1px solid #d6dde4;background:#fff} img.fig{max-width:900px;width:100%;border:1px solid #d6dde4;background:#fff}
-.tag{display:inline-block;padding:0 6px;border-radius:3px;font-size:12px;background:#eef3f8;margin-right:4px}
-.mono{font-family:Consolas,monospace;font-size:12px}
+:root{--ink:#172d32;--muted:#62777a;--bg:#f1f5f3;--paper:#fff;--line:#dbe5e1;--green:#007e70;--mint:#d8f3e9;--amber:#8b601a;--purple:#7159a7;--red:#a5423d}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font:15px/1.55 'Segoe UI',Arial,sans-serif;color:var(--ink)}
+button,input,select{font:inherit}button{cursor:pointer}a{color:var(--green)}
+header{padding:22px 5%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:#fff}
+.brand{font-size:17px;font-weight:750;letter-spacing:-.4px}.mark{display:inline-grid;place-items:center;background:var(--ink);color:#a8f2d7;width:34px;height:34px;border-radius:10px;margin-right:12px}
+.meta{font-size:12px;color:var(--muted);letter-spacing:1px}main{max-width:1420px;margin:auto;padding:38px 5% 60px}
+.hero{display:grid;grid-template-columns:1.5fr 1fr;gap:35px;align-items:center}.eyebrow{color:var(--green);font-size:11px;font-weight:750;letter-spacing:2px;text-transform:uppercase}
+h1{font-size:clamp(36px,4.4vw,60px);line-height:1.06;letter-spacing:-2.5px;font-weight:650;margin:13px 0 18px}h1 span{color:var(--green)}
+p{margin:8px 0;color:var(--muted)}.hero p{max-width:560px}
+.pipeline{background:#e3ece7;border:1px solid #d3e1d8;border-radius:22px;padding:26px}.pipeline svg{width:100%;height:130px}
+.flow{display:flex;justify-content:space-between;font-size:11px;font-weight:600;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);margin:30px 0 25px;gap:14px}.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 22px}
+.stat strong{font-size:29px;letter-spacing:-1px;font-weight:650}.stat small{display:block;color:var(--muted);font-size:12px}
+.stat .bar{height:4px;background:var(--line);margin-top:12px;border-radius:5px}.stat .bar i{display:block;height:100%;background:var(--green);border-radius:5px}
+nav{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-bottom:25px;overflow-x:auto}
+nav button{background:none;border:0;padding:14px 17px;color:var(--muted);white-space:nowrap;border-bottom:3px solid transparent}
+nav button[aria-selected=true]{color:var(--ink);border-color:var(--green);font-weight:700}.panel[hidden]{display:none}
+.section-head{display:flex;justify-content:space-between;align-items:center;gap:20px;margin:6px 0 18px}
+h2{font-size:25px;font-weight:650;letter-spacing:-.7px;margin:0}h3{font-size:18px;margin:10px 0 6px;line-height:1.3}
+.note{font-size:12px;color:var(--muted)}.toolbar{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 12px}
+input{flex:1;min-width:200px;border:1px solid var(--line);border-radius:9px;padding:11px 15px;background:#fff;color:var(--ink)}
+select{background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px 13px;color:var(--ink)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.chips button{background:#fff;border:1px solid var(--line);border-radius:20px;padding:6px 12px;color:var(--muted);font-size:12px}
+.chips button[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.result-line{display:flex;justify-content:space-between;margin:10px 0;font-size:12px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;min-width:0}.card[hidden]{display:none}
+.card-top{display:flex;justify-content:space-between;align-items:center;gap:6px}.card p{font-size:13px}
+.badge{display:inline-block;border-radius:5px;padding:3px 7px;font-size:10px;font-weight:700;letter-spacing:.2px;background:var(--mint);color:#00614e}
+.badge.trial{background:#fff0d7;color:var(--amber)}.badge.planned{background:#eee7f7;color:var(--purple)}.badge.no{background:#eceff0;color:#53656a}.badge.bad{background:#fbe3e1;color:var(--red)}
+details{border-top:1px solid var(--line);margin-top:14px;padding-top:10px;font-size:12px}summary{cursor:pointer;font-weight:600;color:var(--ink)}
+.detail{color:var(--muted);margin-top:10px;font-size:13px}.detail b{color:var(--ink)}
+code,.formula{display:block;overflow-wrap:anywhere;white-space:pre-wrap;background:#f2f6f4;border-radius:6px;padding:10px;margin:8px 0;font:12px/1.6 Consolas,monospace;color:#24594e}
+.callout{border-left:3px solid var(--green);padding:10px 15px;background:#e6efeb;margin:20px 0;font-size:13px;color:#46625d}
+.callout.warn{border-color:#d08c2e;background:#fbf2e3;color:#6d4f1d}
+.two{display:grid;grid-template-columns:1.25fr 1fr;gap:22px}.sheet{background:white;border:1px solid var(--line);border-radius:18px;padding:24px;min-width:0}
+.step{display:grid;grid-template-columns:34px 1fr;gap:12px;margin:14px 0}.num{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--mint);font-size:11px;font-weight:700}
+.step p{font-size:13px;margin:2px 0}.table-wrap{overflow:auto;background:#fff;border:1px solid var(--line);border-radius:14px}
+table{width:100%;border-collapse:collapse;font-size:13px}td,th{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-size:11px;letter-spacing:.3px;background:#f7faf9;position:sticky;top:0;cursor:pointer;z-index:1}
+tr.sel td{background:#eef8f3}tr.click{cursor:pointer}tr.click:hover td{background:#f5faf8}tr.detailrow td{background:#f7faf9;white-space:pre-wrap;font-size:12.5px;color:#36504c}
+.fig{width:100%;border:1px solid var(--line);border-radius:14px;background:#fff;display:block}
+.sides{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.side{background:#f7faf9;border-radius:10px;padding:12px;font-size:12px;min-width:0}
+.side b{display:block;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.quote{font:12px/1.55 Georgia,serif;color:#36504c;white-space:pre-wrap;overflow-wrap:anywhere}.mono{font-family:Consolas,monospace;font-size:12px;overflow-wrap:anywhere}
+.footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:15px;font-size:11px;color:var(--muted)}
+:focus-visible{outline:3px solid #edb34b;outline-offset:3px}button:hover{filter:brightness(.95)}
+@media(max-width:900px){.hero,.two,.sides{grid-template-columns:1fr}.pipeline{display:none}.grid,.grid2{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
 """
 
-TABLE_JS = """
-function makeTable(id, cols, rows, opts){
-  opts = opts || {};
-  const el = document.getElementById(id);
-  const state = {sort:null, asc:true};
-  const filt = {};
-  const box = document.createElement('div'); box.className='filters';
-  const q = document.createElement('input'); q.placeholder='全文搜索…'; q.size=30; box.appendChild(q);
-  (opts.selects||[]).forEach(c=>{
-    const s=document.createElement('select'); const vals=[...new Set(rows.map(r=>r[c]))].sort();
-    s.innerHTML='<option value="">'+cols[c]+'：全部</option>'+vals.map(v=>'<option>'+v+'</option>').join('');
-    s.onchange=()=>{filt[c]=s.value; draw();}; box.appendChild(s);
-  });
-  const cnt=document.createElement('span'); box.appendChild(cnt);
-  el.appendChild(box);
-  const t=document.createElement('table'); el.appendChild(t);
-  q.oninput=draw;
-  function draw(){
-    const qq=q.value.trim();
-    let rs=rows.filter(r=>Object.entries(filt).every(([c,v])=>!v||String(r[c])===v) && (!qq || JSON.stringify(r).includes(qq)));
-    if(state.sort!==null){rs=[...rs].sort((a,b)=>{const x=a[state.sort],y=b[state.sort];
-      const nx=parseFloat(x),ny=parseFloat(y); const r=(!isNaN(nx)&&!isNaN(ny))?nx-ny:String(x).localeCompare(String(y),'zh');return state.asc?r:-r;});}
-    cnt.textContent='显示 '+rs.length+' / '+rows.length+' 行'+(opts.detail?'（点一行看全文）':'');
+JS = r"""
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+function esc(x){return x===null||x===undefined?'':String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+$$('nav button').forEach(b=>b.onclick=()=>{
+  $$('nav button').forEach(x=>x.setAttribute('aria-selected',x===b));
+  $$('.panel').forEach(p=>p.hidden=p.id!==b.dataset.panel);
+  $$('#'+b.dataset.panel+' iframe[data-src]').forEach(f=>{if(!f.getAttribute('src'))f.src=f.dataset.src});
+  history.replaceState(null,'','#'+b.dataset.panel);
+});
+function table(id,cols,rows,opt){
+  opt=opt||{}; const el=document.getElementById(id); const st={sort:null,asc:true}; const f={};
+  const tb=document.createElement('div'); tb.className='toolbar';
+  const q=document.createElement('input'); q.type='search'; q.placeholder=opt.placeholder||'Search…'; tb.appendChild(q);
+  (opt.selects||[]).forEach(c=>{const s=document.createElement('select'); const v=[...new Set(rows.map(r=>r[c]))].filter(x=>x!==''&&x!==null).sort();
+    s.innerHTML='<option value="">All · '+cols[c]+'</option>'+v.map(x=>'<option>'+esc(x)+'</option>').join(''); s.onchange=()=>{f[c]=s.value;draw()}; tb.appendChild(s)});
+  const rl=document.createElement('div'); rl.className='result-line'; const cnt=document.createElement('span'); rl.appendChild(cnt);
+  const hint=document.createElement('span'); hint.textContent=opt.detail?'Click a row to expand · click a header to sort':'Click a header to sort'; rl.appendChild(hint);
+  const wrap=document.createElement('div'); wrap.className='table-wrap'; wrap.style.maxHeight=(opt.height||560)+'px';
+  const tbl=document.createElement('table'); wrap.appendChild(tbl); el.append(tb,rl,wrap); q.oninput=draw;
+  function draw(){const qq=q.value.trim().toLowerCase();
+    let rs=rows.map((r,i)=>[r,i]).filter(([r])=>Object.entries(f).every(([c,v])=>!v||String(r[c])===v)&&(!qq||JSON.stringify(r).toLowerCase().includes(qq)));
+    if(st.sort!==null)rs.sort((a,b)=>{const x=a[0][st.sort],y=b[0][st.sort],nx=parseFloat(x),ny=parseFloat(y);
+      const r=(!isNaN(nx)&&!isNaN(ny))?nx-ny:String(x).localeCompare(String(y));return st.asc?r:-r});
+    cnt.textContent=rs.length+' of '+rows.length+' rows';
     let h='<tr>'+cols.map((c,i)=>'<th data-i="'+i+'">'+c+'</th>').join('')+'</tr>';
-    rs.slice(0, opts.limit||2000).forEach((r,k)=>{h+='<tr data-k="'+rows.indexOf(r)+'">'+cols.map((c,i)=>'<td>'+(r[i]===null||r[i]===undefined?'':String(r[i]).replace(/</g,'&lt;'))+'</td>').join('')+'</tr>';});
-    t.innerHTML=h;
-    t.querySelectorAll('th').forEach(th=>th.onclick=()=>{const i=+th.dataset.i; state.asc=(state.sort===i)?!state.asc:true; state.sort=i; draw();});
-    if(opts.detail) t.querySelectorAll('tr[data-k]').forEach(tr=>tr.onclick=()=>{
-      if(tr.nextSibling && tr.nextSibling.classList && tr.nextSibling.classList.contains('detail')){tr.nextSibling.remove();return;}
-      const d=document.createElement('tr'); d.className='detail'; d.innerHTML='<td colspan="'+cols.length+'">'+opts.detail(+tr.dataset.k).replace(/</g,'&lt;').replace(/&lt;b>/g,'<b>').replace(/&lt;\\/b>/g,'</b>')+'</td>'; tr.after(d);});
-  }
+    rs.forEach(([r,i])=>{h+='<tr data-k="'+i+'" class="'+(opt.detail?'click':'')+'">'+r.map(v=>'<td>'+esc(v)+'</td>').join('')+'</tr>'});
+    tbl.innerHTML=h;
+    tbl.querySelectorAll('th').forEach(th=>th.onclick=()=>{const i=+th.dataset.i;st.asc=st.sort===i?!st.asc:true;st.sort=i;draw()});
+    if(opt.detail)tbl.querySelectorAll('tr[data-k]').forEach(tr=>tr.onclick=()=>{const n=tr.nextElementSibling;
+      if(n&&n.classList.contains('detailrow')){n.remove();return}
+      const d=document.createElement('tr');d.className='detailrow';d.innerHTML='<td colspan="'+cols.length+'">'+opt.detail(+tr.dataset.k)+'</td>';tr.after(d)});}
   draw();
 }
+$$('#ctype button').forEach(b=>b.onclick=()=>{$$('#ctype button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  $$('.cand').forEach(c=>c.hidden=!(b.dataset.t==='all'||c.dataset.t===b.dataset.t))});
 """
-
-
-def page(fname: str, title: str, body: str, extra_js: str = "") -> None:
-    nav = "".join(f'<a href="{f}" class="{"on" if f == fname else ""}">{t}</a>' for f, t in PAGES)
-    (SITE / fname).write_text(f"""<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8"><title>{title}｜课题二表述与矛盾试跑</title>
-<link rel="stylesheet" href="style.css"></head><body>
-<header><h1>课题二 · 标准化表述与矛盾候选试跑</h1><div class="sub">{LABEL}｜2026-11-04｜AI 辅助生成与核对，用户尚未逐项人工确认</div></header>
-<nav>{nav}</nav><main>{body}</main><script>{TABLE_JS}{extra_js}</script></body></html>""", encoding="utf-8")
 
 
 def j(x) -> str:
     return json.dumps(x, ensure_ascii=False).replace("</", "<\\/")
 
 
+def e(x) -> str:
+    return html.escape("" if x is None else str(x))
+
+
+def tr_counts(s: str, m: dict) -> str:
+    """把“放电容量类×5；衰减类×2”这类计数串翻成英文。"""
+    if not s:
+        return ""
+    out = []
+    for part in s.split("；"):
+        k, _, n = part.rpartition("×")
+        out.append(f"{t(m, k)} ×{n}" if k else t(m, part))
+    return "; ".join(out)
+
+
+def pct(r):
+    if r is None:
+        return ""
+    return f"≈ ±{round((math.exp(r) - 1) * 100)}%" if r < 10 else "diverged"
+
+
+def pair_en(p: dict | None) -> str:
+    if not p:
+        return ""
+    if p.get("翻转"):
+        a, b, va, vb, d = p["B"], p["A"], p["B值"], p["A值"], {"变好": "变坏", "变坏": "变好"}.get(p["方向"], p["方向"])
+    else:
+        a, b, va, vb, d = p["A"], p["B"], p["A值"], p["B值"], p["方向"]
+    return (f"{p['论文']} {p['测试']} · {a} ({va}) vs {b} ({vb})\n{t(STD, p['标准指标'])} · point (as extracted): {p['取值点']}\n"
+            f"→ {a} {t(DIR, d)} than {b} ({t(BASIS, p['依据'])})\nchange: {' '.join(p['完整签名']) or '—'}")
+
+
+def verdict_badge(v: str) -> str:
+    cls = {"✅": "", "🔶": "trial", "⚠️": "bad", "❌": "no"}.get(v, "planned")
+    lab = {"✅": "✅ Confirmed", "🔶": "🔶 Explained by an unaligned factor", "⚠️": "⚠️ Extraction issue", "❌": "❌ Not a contradiction"}.get(v, "Not reviewed")
+    return f'<span class="badge {cls}">{lab}</span>'
+
+
 def main() -> None:
-    (SITE / "style.css").write_text(CSS, encoding="utf-8")
-    a, b, c, d, e = (read_json(f"step13{x}_汇总.json") for x in "abcde")
+    a, b, c, e13 = (read_json(f"step13{x}_汇总.json") for x in "abce")
     sts = read_json("表述.json")
-    cands = read_json("矛盾候选.json")
-
-    # ---------------- 总览 ----------------
-    f = read_json("step13f_汇总.json")
+    comp = {(r["论文"], r["配方"]): r for r in read_json("配方组成.json", COMP)}
     nres = read_json("归一化结果.json")
-    finds = read_json("试跑发现.json") if (OUT / "试跑发现.json").exists() else {"发现": [], "待定": []}
-    ncand = e["候选数"]
-    judged = e["判定统计"]
-    flow = [("提取结果", "规则处理版 30 篇：1054 条比较结果、214 条物性记录"),
-            ("① 名称统一", f"205 种指标名 → 四类性能 {a['四类标准指标种数']} 个标准指标；物性 {a['物性原名种数']} 种名 → {a['标准物性种数']} 类"),
-            ("② 测试条件", f"{b['性能测试数']} 个性能测试；正极硫含量 55 条逐条核定"),
-            ("③ 表述", f"{c['表述条数']} 条表述（{c['配方数']} 个配方）"),
-            ("④ 打分模型与归一化", "六种模型比较，四个性能模型（首圈放电容量、保持率、两种 CE）；换算到统一标准条件后跨篇比较"),
-            ("⑤ 矛盾候选", "五种口径：" + "、".join(f"{k} {v}" for k, v in ncand.items())),
-            ("⑥ 图与网站", "四张关联图＋三张归一化图")]
-    fl = '<span class="arrow">→</span>'.join(f'<div class="step"><b>{h}</b><br>{t}</div>' for h, t in flow)
-    kpi = lambda k, v: f'<div class="kpi"><b>{v}</b>{k}</div>'
-    mrows = "".join(
-        f"<tr><td>{n}</td><td>{v.get('论文', '')}</td><td>{v.get('数值', '')}</td><td>{v.get('主模型', v.get('跳过', ''))}</td>"
-        f"<td>{v.get('主模型指标', {}).get('V1篇内R2', '')}</td><td>{v.get('主模型指标', {}).get('V1方向正确率', '')}</td>"
-        f"<td>{v.get('主模型指标', {}).get('V2提升R2', '')}</td><td>{v.get('主模型指标', {}).get('越界率（非外推）', '')}</td>"
-        f"<td>{v.get('标准醚基准', {}).get('普遍条件', '')}</td></tr>" for n, v in f["类别"].items())
-    jrows = "".join(f"<tr><td>{t}</td><td>{ncand.get(t, 0)}</td><td>{'；'.join(f'{k} {n}' for k, n in judged.get(t, {}).items())}</td></tr>" for t in ncand)
-    body = f"""
-<div class="note"><b>这一版做了什么：</b>按你的要求做了归一化：用打分模型把每条实测值换算到同一套标准条件，再跨篇比较；然后在归一化之后重做了矛盾候选（五种口径），
-图和网站都已更新。按你定的分析集，倍率容量不纳入、放电容量只看第一圈。30 篇只够跑通流程，模型验证结果偏弱，数字都标“初步”。验证细节见“归一化与跨篇比较”页第一节。</div>
-<h2>流程</h2><div class="flow">{fl}</div>
-<h2>关键数字</h2>
-{kpi("条表述", c['表述条数'])}{kpi("篇论文", c['论文数'])}{kpi("个配方", c['配方数'])}{kpi("个性能测试", b['性能测试数'])}
-{''.join(kpi(f'条 {k} 候选', v) for k, v in ncand.items())}
-<h2>归一化模型（每类选出的主模型）</h2>
-<table><tr><th>性能类别</th><th>论文</th><th>数值条数</th><th>主模型</th><th>V1 篇内 R²</th><th>V1 方向正确率</th><th>V2 提升 R²</th><th>物理越界率</th><th>标准醚基准（普遍条件）</th></tr>{mrows}</table>
-<p>V1 = 对没见过的论文，同篇配方之间的差距算得准不准（R² 越接近 1 越好，0 = 和“不预测差距”一样）；V2 = 同一篇换到没见过的条件，能不能换算准（相对“用本篇其他测试平均值猜”的提升）。
-物理越界率 = 归一化后容量超过硫理论容量 1672 mAh g⁻¹ 或保持率超过 100% 的比例。详见“归一化与跨篇比较”页。</p>
-<h2>矛盾候选（归一化后重做）</h2>
-<table><tr><th>口径</th><th>候选数</th><th>回原文核对结果</th></tr>{jrows}</table>
-<p>NORM = 归一化后同一配方跨篇仍差很多；LOPO = 某篇的结论与其他论文合起来训练的模型相反；FLIP = 同篇同一对配方换条件后结论翻转；DESC = 跨篇设计方向相同（只改溶剂/主盐）但结论相反；SAME = 改动完全相同但结论相反。</p>
-<h2>这次试跑的主要发现</h2><ul>{''.join(f'<li>{x}</li>' for x in finds.get('发现', []))}</ul>
-<h2>需要你定的事</h2><ul>{''.join(f'<li>{x}</li>' for x in finds.get('待定', []))}</ul>
-<h2>一条表述长什么样</h2><div class="note mono">{html.escape(sts[0]['表述文字'])}</div>
-<h2>文件</h2><p class="mono">output/表述与矛盾试跑_F版30篇_2026-11-04/：表述表.xlsx、别名表与复核表.xlsx、条件表.xlsx、归一化与跨篇比较.xlsx、矛盾候选复核表.xlsx，以及同名 JSON。脚本 scripts/step13a–13f、step13s。</p>
-"""
-    page("index.html", "总览", body)
+    cands = read_json("矛盾候选.json")
+    finds = read_json("试跑发现.json")
+    basis = read_json("标准条件依据.json")
+    n_in = sum(in_analysis(s["性能类别"], s["阶段"]) for s in sts)
+    vcount = {}
+    for x in cands:
+        vcount[x["判定"] or "—"] = vcount.get(x["判定"] or "—", 0) + 1
+    vtxt = " · ".join(f"{k} {v}" for k, v in vcount.items()) or "none"
 
-    # ---------------- 表述表 ----------------
-    cols = ["编号", "论文", "测试", "配方", "对照", "性能类别", "标准指标", "数值", "单位", "阶段", "圈数", "E/S", "硫载量", "正极含硫", "倍率", "温度", "电池形式", "电池类型", "物性项数", "归类", "进入分析"]
+    # ---------- hero & stats ----------
+    hero = f"""
+<section class="hero"><div><div class="eyebrow">Pilot run · F-version extraction · 30 papers</div>
+<h1>From papers to<br><span>comparable statements.</span></h1>
+<p>Every reported performance value becomes one statement: the formulation, the properties reported by the same paper, the test conditions and the value.
+Statements are normalised to one common test condition so that papers can be compared, then searched for contradictions that are checked against the source text.</p>
+<p class="note">Preliminary · AI-assisted extraction and review, not yet confirmed item by item by the user.</p></div>
+<div class="pipeline"><div class="eyebrow">Extract → State → Normalise → Contrast</div>
+<svg viewBox="0 0 400 130" role="img" aria-label="Conceptual workflow, not data">
+<g fill="#fff" stroke="#9fc4b8"><rect x="8" y="34" width="58" height="72" rx="6"/><rect x="16" y="26" width="58" height="72" rx="6"/></g>
+<g stroke="#9fc4b8" stroke-width="3"><path d="M26 48h38M26 60h30M26 72h38M26 84h22"/></g>
+<g stroke="#7faaa0" stroke-width="2" fill="none"><path d="M88 65h30M113 60l5 5-5 5M196 65h28M219 60l5 5-5 5M300 65h28M323 60l5 5-5 5"/></g>
+<g fill="#007e70"><rect x="128" y="40" width="58" height="9" rx="4"/><rect x="128" y="56" width="44" height="9" rx="4" opacity=".7"/><rect x="128" y="72" width="52" height="9" rx="4" opacity=".5"/></g>
+<g><circle cx="248" cy="40" r="5" fill="#9dc8b8"/><circle cx="262" cy="58" r="5" fill="#9dc8b8"/><circle cx="276" cy="50" r="5" fill="#007e70"/><circle cx="252" cy="80" r="5" fill="#9dc8b8"/><circle cx="284" cy="86" r="5" fill="#007e70"/><path d="M238 96L292 30" stroke="#7a6598" stroke-dasharray="4 4"/></g>
+<g fill="none" stroke="#c2504a" stroke-width="2"><path d="M346 45l14 22-14 22M378 45l-14 22 14 22"/></g></svg>
+<div class="flow"><span>Papers</span><span>Statements</span><span>Normalised</span><span>Conflicts</span></div>
+<p class="note">Conceptual diagram · no data values</p></div></section>
+<section class="stats">
+<div class="stat"><strong>{c['表述条数']}</strong><small>Statements · {c['配方数']} formulations · {c['论文数']} papers</small><div class="bar"><i style="width:{100 * n_in / c['表述条数']:.1f}%"></i></div>
+<small style="margin-top:8px">{n_in} in this analysis set</small></div>
+<div class="stat"><strong>4</strong><small>Normalisation models · 6 model types compared</small><div class="bar"><i style="width:6%;background:#d08c2e"></i></div>
+<small style="margin-top:8px">V1 within-paper R² ≈ 0 · see Normalisation</small></div>
+<div class="stat"><strong>{len(cands)}</strong><small>Contradiction candidates · 5 rules</small><small style="margin-top:8px">{e(vtxt)}</small></div>
+<div class="stat"><strong>{b['性能测试数']}</strong><small>Performance tests with parsed conditions</small><small style="margin-top:8px">cathode S content verified for 55 source texts</small></div>
+</section>
+<nav role="tablist">
+<button role="tab" aria-selected="true" data-panel="overview">01 · Overview</button><button role="tab" aria-selected="false" data-panel="statements">02 · Statements</button>
+<button role="tab" aria-selected="false" data-panel="normalise">03 · Normalisation</button><button role="tab" aria-selected="false" data-panel="conflicts">04 · Contradictions</button>
+<button role="tab" aria-selected="false" data-panel="figures">05 · Figures</button><button role="tab" aria-selected="false" data-panel="data">06 · Methods &amp; data</button></nav>"""
+
+    # ---------- 01 overview ----------
+    fcards = "".join(f'<div class="card"><span class="badge {"trial" if k in (1, 2) else ""}">Finding {k + 1:02d}</span><p>{e(x)}</p></div>'
+                     for k, x in enumerate(finds.get("findings_en", [])))
+    pend = "".join(f"<li>{e(x)}</li>" for x in finds.get("pending_en", []))
+    # 示例：进入分析、条件齐全、有物性的首圈放电容量表述
+    full = lambda x: all(x["条件"][f]["值"] is not None for f in ("ES", "sulfur_loading", "S_content", "rate", "temperature"))
+    good_prop = lambda x: any(p["来源类型"] == "实测" and p["数值"] is not None for k in ("离子电导率", "黏度") for p in x["物性"].get(k, []))
+    known = lambda x: sum(x["条件"][f]["值"] is not None for f in ("ES", "sulfur_loading", "S_content", "rate", "temperature", "Li_thickness"))
+    pool = [x for x in sts if in_analysis(x["性能类别"], x["阶段"]) and x["标准指标"] == "硫比放电容量" and good_prop(x)]
+    s0 = max(pool, key=known) if pool else sts[0]
+    overview = f"""<section id="overview" class="panel"><div class="section-head"><h2>What the pilot shows</h2>
+<span class="note">Analysis set: rate capacity excluded · discharge capacity = first cycle only (your decision)</span></div>
+<div class="grid">{fcards}</div>
+<div class="callout warn"><b>Decisions still open</b><ul style="margin:6px 0 0 18px;padding:0">{pend}</ul></div>
+<div class="two"><div class="sheet"><div class="eyebrow">How a statement is built · plan §8.7</div>
+<div class="step"><span class="num">1</span><div><b>Formulation</b><p>Components with amounts as written in the paper, plus formulation-level elemental ratios (sO in three fluorination bins, aC, F/O, InOr).</p></div></div>
+<div class="step"><span class="num">2</span><div><b>Properties</b><p>Only values the same paper reports for the same recipe; otherwise “not reported”. Nothing is filled in or inferred; names are unified first.</p></div></div>
+<div class="step"><span class="num">3</span><div><b>Test conditions</b><p>E/S, sulfur loading, cathode sulfur content (electrode basis), Li thickness or N/P, rate, temperature, cell format and cycle number.</p></div></div>
+<div class="step"><span class="num">4</span><div><b>Performance value</b><p>One value per statement, mapped to four performance classes. Mechanisms are not written into the statement; they stay linked by ID.</p></div></div></div>
+<div class="sheet"><div class="eyebrow">Example statement</div><code>{e(statement_en(s0, comp.get((s0['论文'], s0['recipe']))))}</code>
+<p class="note">Free-text fields copied from the extraction (sampling point, some property descriptions) are in Chinese and shown as recorded.</p></div></div></section>"""
+
+    # ---------- 02 statements ----------
+    cols = ["ID", "Paper", "Formulation", "Class", "Metric", "Value", "Unit", "Stage", "E/S", "S loading", "Cathode S %", "Rate C", "T °C", "Cell", "In analysis"]
     cv = lambda s, f: s["条件"][f]["值"] if s["条件"][f]["值"] is not None else ""
-    rows = [[s["表述编号"], s["论文"], s["测试"], s["配方"], "是" if s["是否对照"] else "", s["性能类别"], s["标准指标"], s["数值原文"], s["单位"],
-             s["阶段"], s["圈数"] or "", cv(s, "ES"), cv(s, "sulfur_loading"), cv(s, "S_content"), cv(s, "rate"), cv(s, "temperature"),
-             cv(s, "cell_format"), s["电池类型"], len(s["物性"]), s["归类状态"], "是" if in_analysis(s["性能类别"], s["阶段"]) else "否"] for s in sts]
-    details = [f"<b>表述：</b>{s['表述文字']}\n\n<b>原文句子：</b>\n{s['原句']}\n\n<b>后台链接</b>（不进表述）：机制 {', '.join(s['机制链接']) or '无'}；支撑测量 {', '.join(s['支撑测量链接']) or '无'}"
-               + (f"\n<b>疑似重复组：</b>{s['疑似重复组']}" if s.get("疑似重复组") else "")
-               + (f"\n<b>归类说明：</b>{s['归类原因']}" if s["归类原因"] else "") for s in sts]
-    body = f"""<div class="note">共 {len(sts)} 条。可按论文、性能类别、标准指标筛选，点表头排序，点一行展开完整表述、原文句子和后台机制编号。“进入分析”= 否 的是倍率容量和非首圈放电容量（你定这次不纳入分析，表里保留）。条件为空表示原文没写或算不出（Excel 里写了原因）。数值是原文值，未归一化。</div>
-<div id="t"></div>"""
-    page("表述表.html", "表述表", body, f"const C={j(cols)},R={j(rows)},D={j(details)};makeTable('t',C,R,{{selects:[1,5,6,17],detail:k=>D[k]}});")
+    rows, det = [], []
+    for s in sts:
+        rows.append([s["表述编号"], s["论文"], s["配方"] + (" (control)" if s["是否对照"] else ""), t(CAT, s["性能类别"]), t(STD, s["标准指标"]), s["数值原文"], s["单位"],
+                     t(STAGE, s["阶段"]) + (f" {s['圈数']}" if s["阶段"] == "第 N 圈" else ""), cv(s, "ES"), cv(s, "sulfur_loading"), cv(s, "S_content"),
+                     cv(s, "rate"), cv(s, "temperature"), CELL.get(cv(s, "cell_format"), ""), "yes" if in_analysis(s["性能类别"], s["阶段"]) else "no"])
+        det.append(f"<b>Statement</b>\n{e(statement_en(s, comp.get((s['论文'], s['recipe']))))}\n\n<b>Source sentences</b>\n{e(s['原句'])}\n\n"
+                   f"<b>Linked IDs (not part of the statement)</b> mechanisms: {e(', '.join(s['机制链接']) or '—')} · supporting measurements: {e(', '.join(s['支撑测量链接']) or '—')}"
+                   + (f" · duplicate group {e(s['疑似重复组'])}" if s.get("疑似重复组") else ""))
+    statements = f"""<section id="statements" class="panel" hidden><div class="section-head"><h2>{len(sts)} statements</h2>
+<span class="note">One statement per reported performance value · values as reported (not normalised)</span></div>
+<p>“In analysis = no” marks rate capacity and non-first-cycle discharge capacity, which this run leaves out of models, figures and contradiction search; they stay in the table.
+Empty conditions mean the paper did not report them or they could not be derived.</p><div id="tStatements"></div></section>"""
 
-    # ---------------- 别名表 ----------------
-    al = read_json("指标别名表.json")
-    pal = read_json("物性别名表.json")
-    c1 = ["原名", "单位", "测试类型", "电池类型", "性能类别", "标准指标", "条数", "有数值", "论文数", "状态", "原因"]
-    r1 = [[x["原名"], x["单位"], x["测试类型"], x["电池类型"], x["性能类别"], x["标准指标"], x["条数"], x["有数值条数"], x["论文数"], x["状态"], x["原因"]] for x in al]
-    c2 = ["标准物性", "原名", "取值数", "论文", "来源类型"]
-    r2 = [[x["标准物性"], x["原名"], x["取值数"], "、".join(x["论文"]), x["来源类型"]] for x in pal]
-    body = f"""<div class="note">四类性能：放电容量类、倍率容量类、衰减类、库仑效率类；其余测量（阻抗、过电位、对称电池时长等）记“不进四类”，不生成表述。
-✅ 规则直接判定；🔶 有推定（容量基准由条件文字判断、保持率分母未写明等）；⚠️ 单位与指标不符，不生成表述。
-写不清基准的容量单独放在“比放电容量（基准未写明）”，不并进硫比容量（方案 §8.7：定义不同的不合并）。</div>
-<h2>指标别名表（{len(al)} 行）</h2><div id="t1"></div><h2>物性别名表（{len(pal)} 行）</h2>
-<div class="note">“作者解释”“非电解液本体性质”（SEI、碳载体、电池内扩散系数等）两类不进表述；“文献转述”的值也不进。</div><div id="t2"></div>"""
-    page("别名表.html", "指标与物性别名", body,
-         f"makeTable('t1',{j(c1)},{j(r1)},{{selects:[4,9]}});makeTable('t2',{j(c2)},{j(r2)},{{selects:[0]}});")
-
-    # ---------------- 条件表 ----------------
-    ct = read_json("条件表.json")
-    cath = read_json("正极硫含量解析.json")
-    names = [("ES", "E/S"), ("sulfur_loading", "硫载量"), ("S_content", "正极含硫%"), ("Li_thickness", "锂厚μm"), ("NP", "N/P"),
-             ("rate", "倍率C"), ("temperature", "温度°C"), ("cell_format", "电池形式")]
-    c3 = ["论文", "测试", "测试名", "测试类型"] + [x for _, n in names for x in (n, n + "状态")]
-    r3 = []
-    for r in ct:
-        line = [r["论文"], r["测试"], r["测试名"], r["测试类型"]]
-        for f, _ in names:
-            x = r["条件"].get(f, {})
-            v = x.get("值")
-            if v is None and x.get("按配方"):
-                v = "；".join(f"{k}={y['值']}" for k, y in x["按配方"].items() if y.get("值") is not None)
-            line += [v if v is not None else "", x.get("状态", "")]
-        r3.append(line)
-    c4 = ["论文", "条件编号", "原文", "解析值", "核定值", "核定状态", "核定说明", "解析与核定一致"]
-    r4 = [[x["论文"], x["条件编号"], x["原文"], x["解析值"], x["核定值"], x["核定状态"], x["核定说明"], x["解析与核定一致"]] for x in cath]
-    body = f"""<div class="note">只整理有四类性能数值的 {len(ct)} 个测试。状态：✅ 原文写明；🔶 有换算或推定（室温按 25 °C、按 Li₂S/SPAN/Se/S 换算硫等）；⚠️ 冲突或多值；未报告 = 原文没写。
-表述里，取值点写明的倍率、温度、载量会覆盖这里的测试级条件。</div><div id="t3"></div>
-<h2>正极硫含量（极片基准）核定</h2><div class="note">规则（方案 §8.7）：直接写极片含硫的直接用；复合物含硫 × 复合物在浆料中的占比；只有复合物含硫、没有浆料配比的记缺失。
-脚本正则只对 29/55，所以每条都由 Claude 读原文核定，表述用核定值。</div><div id="t4"></div>"""
-    page("条件表.html", "测试条件", body, f"makeTable('t3',{j(c3)},{j(r3)},{{selects:[0,3]}});makeTable('t4',{j(c4)},{j(r4)},{{selects:[0,5]}});")
-
-    # ---------------- 图 ----------------
-    figs = [("图1a_配方组分共现网络.html", "图1a 配方组分共现网络（只看配方）",
-             "每个点是一个组分，点越大用到它的配方越多；两点之间的线表示它们出现在同一个配方里，线越粗次数越多。鼠标停在点或线上看数字，可拖动、缩放。"),
-            ("图1b_四部分共现网络.html", "图1b 组分＋物性＋条件＋性能共现网络",
-             "四种颜色的点分别是组分、物性、条件档（如“E/S≤5（贫液）”）、性能档（归一化到普遍条件后，同一类里三等分：好/中/差）。线 = 两者同时出现在多少条表述里（只画 ≥10 条的）。"),
-            ("图2a_配方物性弦图.png", "图2a 弦图：配方 × 物性",
-             "左边一圈是组分化学类别，右边是物性类别；弦表示“含这类组分的配方报告了这项物性”（按配方计）。能看出哪些体系的物性测得多、哪些是空白。"),
-            ("图2b_四部分弦图.png", "图2b 弦图：配方 × 物性 × 测试条件 × 性能",
-             "四组弧：组分类别（蓝）、物性（橙）、测试条件（绿，只选贫液、高载量、软包、薄锂等关键档）、性能类别（红）。弦宽 = 两者同时出现的表述数（只画 ≥15 条的）。"),
-            ("图3_四部分聚类热图.html", "图3 聚类热图：配方 × 物性 × 条件 × 性能",
-             "每行一个配方（需能算元素比例且有归一化性能值），列分四块，用竖线隔开。颜色是标准化后的值（红高蓝低），灰 = 未报告或外推。行顺序按层次聚类排列。性能列是归一化到普遍条件后的值，可以跨篇比较；“篇内相对对照”两列是同篇比值。"),
-            ("图4_表述文字向量图.html", "图4 表述文字向量图",
-             "把每条表述的完整文字变成向量（字符片段统计，不是语义模型），再压到二维；越近的点文字越像。右上角可切换按性能类别、论文、电池类型着色，鼠标停在点上看整条表述。")]
-    parts = []
-    for f, t, desc in figs:
-        if f.endswith(".png"):
-            parts.append(f'<h2>{t}</h2><p>{desc}</p><a href="图/{f.replace(".png", ".svg")}" target="_blank"><img class="fig" src="图/{f}"></a>')
-        else:
-            h = 1000 if "图3" in f else 800
-            parts.append(f'<h2>{t}</h2><p>{desc}（<a href="图/{f}" target="_blank">新窗口打开</a>）</p><iframe src="图/{f}" height="{h}"></iframe>')
-    body = f'<div class="note">四张图都标“{LABEL}”。图形只表示关联，不证明因果；疑似重复的表述每组只计一次。</div>' + "".join(parts)
-    page("图.html", "四张图", body)
-
-    # ---------------- 归一化与跨篇比较 ----------------
-    basis = read_json("标准条件依据.json") if (OUT / "标准条件依据.json").exists() else {}
-    pct = lambda r: (f"约 ±{round((math.exp(r) - 1) * 100)}%" if r < 10 else "发散") if r is not None else ""
-    vrows = []
-    for n, r in nres.items():
-        for m in r["模型比较"]:
-            hl = ' style="background:#eef6ee"' if m["模型"] == r["主模型"] else ""
-            vrows.append(f"<tr{hl}><td>{n}</td><td>{m['模型']}{'（主模型）' if m['模型'] == r['主模型'] else ''}</td>"
-                         f"<td>{m['V1篇内R2']}</td><td>{m['V1篇内RMSE(ln)']}（{pct(m['V1篇内RMSE(ln)'])}）</td><td>{m['V1方向正确率']}（{m['V1方向对数']} 对）</td>"
-                         f"<td>{m['V2提升R2']}</td><td>{m.get('V2 RMSE(ln)')}（{pct(m.get('V2 RMSE(ln)'))}）</td><td>{m.get('V2基线RMSE(ln)')}</td>"
-                         f"<td>{m['越界率（非外推）']}</td></tr>")
-    v4rows = "".join(f"<tr><td>{n}</td><td>{r['主模型']}</td><td>{(r.get('V4') or {}).get('参与排名配方数', '—')}</td>"
-                     f"<td>{(r.get('V4') or {}).get('名次相关_中位数', '—')}（{(r.get('V4') or {}).get('名次相关_2.5–97.5%', '')}）</td>"
-                     f"<td>{(r.get('V4') or {}).get('前5重合率_平均', '—')}</td></tr>" for n, r in nres.items())
-    std_rows = "".join(f"<tr><td>{n}</td><td>{sn}</td><td>{'；'.join(f'{k} {v}' for k, v in d.items())}</td><td>{r['标准醚基准'].get(sn)}</td></tr>"
-                       for n, r in nres.items() for sn, d in r["标准条件"].items())
-    brow = "".join(f"<tr><td>{k}</td><td>{v['按论文中位数']}（{v['论文数']} 篇）</td><td>{v['按表述中位数']}（{v['表述数']} 条）</td></tr>"
-                   for k, v in basis.get("共同条件", {}).items())
-    bcls = "".join(f"<tr><td>{k}</td><td>{v['倍率']['按论文中位数']}</td><td>{'；'.join(f'{a} {b}' for a, b in v['标准倍率覆盖（2 倍内条数/总数）'].items())}</td>"
-                   f"<td>{v['圈数']['按论文中位数']}（{v['圈数']['论文数']} 篇）</td></tr>" for k, v in basis.get("按类", {}).items())
-    adopt = "；".join(f"{k}：{v}" for k, v in basis.get("采用", {}).items())
-    fr_cols = ["性能类别", "标准条件", "名次", "名次区间", "论文", "配方", "对照", "相对标准醚倍数", "归一化值", "归一化值区间", "外推", "配方文字"]
-    fr_rows = [[x["类别"], x["标准条件"], x["名次"] or "", x["名次区间"] or "", x["论文"], x["配方"], "是" if x["是否对照"] else "",
-                x["倍数"] if x["倍数"] is not None else x["损失倍数"], x["归一化值"], x["归一化值区间"], x["外推"], x["配方文字"]]
+    # ---------- 03 normalisation ----------
+    vrows = "".join(
+        f"<tr class='{'sel' if m['模型'] == r['主模型'] else ''}'><td>{e(t(CAT, n))}</td><td>{e(t(MODEL, m['模型']))}{' · <b>selected</b>' if m['模型'] == r['主模型'] else ''}</td>"
+        f"<td>{m['V1篇内R2']}</td><td>{m['V1篇内RMSE(ln)']} <span class='note'>{pct(m['V1篇内RMSE(ln)'])}</span></td>"
+        f"<td>{m['V1方向正确率']} <span class='note'>({m['V1方向对数']} pairs)</span></td><td>{m['V2提升R2']}</td>"
+        f"<td>{m.get('V2 RMSE(ln)')} <span class='note'>{pct(m.get('V2 RMSE(ln)'))}</span></td><td>{m.get('V2基线RMSE(ln)')}</td><td>{m['越界率（非外推）']}</td></tr>"
+        for n, r in nres.items() for m in r["模型比较"])
+    v4 = "".join(f"<tr><td>{e(t(CAT, n))}</td><td>{e(t(MODEL, r['主模型']))}</td><td>{(r.get('V4') or {}).get('参与排名配方数', '—')}</td>"
+                 f"<td>{(r.get('V4') or {}).get('名次相关_中位数', '—')} <span class='note'>{(r.get('V4') or {}).get('名次相关_2.5–97.5%', '')}</span></td>"
+                 f"<td>{(r.get('V4') or {}).get('前5重合率_平均', '—')}</td></tr>" for n, r in nres.items())
+    lab_common = {"E/S": "E/S (μL mg⁻¹)", "硫载量": "S loading (mg cm⁻²)", "正极含硫": "Cathode S (%)", "倍率": "Rate (C)", "温度": "Temperature (°C)"}
+    brow = "".join(f"<tr><td>{lab_common.get(k, k)}</td><td>{v['按论文中位数']} <span class='note'>({v['论文数']} papers)</span></td>"
+                   f"<td>{v['按表述中位数']} <span class='note'>({v['表述数']} statements)</span></td></tr>" for k, v in basis["共同条件"].items())
+    bcls = "".join(f"<tr><td>{e(t(CAT, k.split('（')[0]))}{' (1st cycle)' if '首圈' in k else ''}</td><td>{v['倍率']['按论文中位数']}</td>"
+                   f"<td>{' · '.join(f'{x}: {y}' for x, y in v['标准倍率覆盖（2 倍内条数/总数）'].items())}</td><td>{v['圈数']['按论文中位数']}</td></tr>"
+                   for k, v in basis["按类"].items())
+    std_rows = "".join(f"<tr><td>{e(t(CAT, n))}</td><td>{e(t(STDSET, sn))}</td><td>{e(' · '.join(f'{t(STDKEY, k)} {v}' for k, v in d.items()))}</td>"
+                       f"<td>{r['标准醚基准'].get(sn)}</td></tr>" for n, r in nres.items() for sn, d in r["标准条件"].items())
+    rec_en = {(s["论文"], s["配方"]): recipe_en(comp.get((s["论文"], s["recipe"])), s["配方文字"]) for s in sts}
+    farmap = {"圈数": "cycles", "E/S": "E/S", "倍率": "rate", "载量": "loading", "电流": "current", "沉积容量": "plating capacity"}
+    fr_cols = ["Class", "Condition", "Rank", "Rank interval", "Paper", "Formulation", "× vs std ether (CE: loss ×)", "Normalised value", "Interval", "Extrapolated", "Recipe"]
+    fr_rows = [[t(CAT, x["类别"]), t(STDSET, x["标准条件"]), x["名次"] or "", x["名次区间"] or "", x["论文"], x["配方"] + (" (control)" if x["是否对照"] else ""),
+                x["倍数"] if x["倍数"] is not None else x["损失倍数"], x["归一化值"], x["归一化值区间"],
+                ", ".join(farmap.get(y, y) for y in x["外推"].split("；") if y) or "no", rec_en.get((x["论文"], x["配方"]), "")]
                for r in nres.values() for x in sorted(r["配方"], key=lambda z: (z["标准条件"], z["名次"] or 999))]
-    nst = read_json("归一化_表述.json")
-    st_cols = ["表述", "性能类别", "论文", "测试", "配方", "实测值", "普遍条件归一化值", "外推", "未换算条件", "标准醚"]
-    st_rows = [[x["表述编号"], x["类别"], x["论文"], x["测试"], x["配方"], x["实测值"], x.get("普遍条件_归一化值"), x.get("普遍条件_外推", ""),
-                x["未换算条件"], "是" if x["标准醚"] else ""] for x in nst]
-    body = f"""<div class="note"><b>怎么做的：</b>同一篇论文里的正极、工艺、课题组对所有配方一样，先把“论文自身的影响”扣掉，只用同一篇内配方之间的差距，
-训练一个所有配方共用的打分函数。输入是配方描述符（配方级元素比例 sO 三档、aC、F/O、InOr，LiNO₃ 浓度，主盐浓度，有无其他添加剂）和测试条件
-（E/S、硫载量、正极含硫、倍率、温度、软包；保持率和 CE 另加圈数）。每类性能各一个模型：首圈放电容量、容量保持率、全电池 CE、Li‖Cu CE。
-输出是配方在标准条件下相对标准醚电解液的增益（倍数）；每条实测值换算到标准条件：换算后的值 = 实测值 × 模型在标准条件下的预测 ÷ 模型在实测条件下的预测。
-原文没报告的条件不换算；离标准条件太远的标“外推”，不进排名和矛盾候选。<br>
-<b>分析集（你定的）：</b>倍率容量这次不纳入；放电容量只用第一圈。</div>
+    norm = f"""<section id="normalise" class="panel" hidden><div class="section-head"><h2>Normalisation &amp; cross-paper comparison</h2><span class="badge trial">Preliminary · weak validation</span></div>
+<div class="two"><div class="sheet"><div class="eyebrow">How it works</div><h3>One scoring function for all formulations</h3>
+<p>Within one paper the cathode, process and lab are shared, so each paper's own level is removed and only within-paper differences train the model.
+Inputs: formulation descriptors (sO in three bins, aC, F/O, InOr, LiNO₃ and main-salt concentration, other additives) and test conditions
+(E/S, S loading, cathode S, rate, temperature, pouch; cycle number for retention and CE). One model per performance class; six model types compared.</p>
+<div class="formula">y = f(formulation, condition) + paper effect + error
+y_normalised = y + f(x, standard condition) − f(x, measured condition)
+gain vs standard ether = exp[ f(formulation, std) − f(standard ether, std) ]
+y = ln(value) for capacity and retention; y = −ln(100 − CE) for CE</div>
+<p class="note">Conditions not reported in the paper are not converted. Statements far from the standard condition (cycles &gt;10×, E/S or rate &gt;2×, loading off by more than the standard value) are flagged as extrapolated and kept out of ranking and contradiction search.</p></div>
+<div class="sheet"><div class="eyebrow">Validation methods · plan §8.7</div>
+<div class="step"><span class="num">V1</span><div><b>Leave one paper out</b><p>Train without a paper, then predict the differences between its formulations. Can we rank formulations in an unseen paper? · done</p></div></div>
+<div class="step"><span class="num">V2</span><div><b>Leave one test out</b><p>Hide one test condition of a paper and predict it; compared with guessing the paper's other-test mean. Is the condition correction reliable? · done</p></div></div>
+<div class="step"><span class="num">V3</span><div><b>Leave out the only direct comparison</b><p>Can a pair compared in just one paper be inferred from the others? · not done: too few shared formulations in 30 papers</p></div></div>
+<div class="step"><span class="num">V4</span><div><b>Resample papers</b><p>Retrain on bootstrap samples of papers; rank correlation and top-5 overlap. · done</p></div></div>
+<div class="step"><span class="num">V5</span><div><b>Laboratory check</b><p>Measure selected formulations under the standard condition. · final step</p></div></div>
+<p class="note">Plus a physical check: normalised S-specific capacity above 1672 mAh g⁻¹ (organosulfur co-solvents excepted) or retention above 100% counts as a violation.</p></div></div>
+<h3 style="margin-top:28px">Validation results</h3>
+<p class="note">R² near 1 is good; 0 equals “predict no difference”; negative is worse than that. RMSE is in ln units (0.2 ≈ ±22%; for CE it is the error in the per-cycle Li loss).
+Direction = share of formulation-vs-control comparisons with the right sign (chance = 50%). Selection rule, fixed before running: among models with ≤5% physical violations, take the highest V2 skill.</p>
+<div class="table-wrap"><table><tr><th>Class</th><th>Model</th><th>V1 R²</th><th>V1 RMSE</th><th>V1 direction</th><th>V2 skill R²</th><th>V2 RMSE</th><th>V2 baseline RMSE</th><th>Violations</th></tr>{vrows}</table></div>
+<h3 style="margin-top:22px">V4 · ranking stability (selected model, common condition)</h3>
+<div class="table-wrap"><table><tr><th>Class</th><th>Model</th><th>Formulations ranked</th><th>Rank correlation (median, 95% range)</th><th>Top-5 overlap</th></tr>{v4}</table></div>
+<div class="callout warn"><b>Reading.</b> With 30 papers, V1 R² stays near zero: the formulation part of the model does not transfer to unseen papers, although the direction is often right (0.75 for first-cycle capacity, 0.87 for retention).
+V2 is positive for first-cycle capacity (0.33) and retention (0.14), so the condition correction helps somewhat. CE has only 5 papers per type. The standard-ether baseline is a pilot choice pending your decision.</div>
+<iframe class="fig" data-src="图/图5a_模型比较.html" height="600"></iframe>
+<iframe class="fig" data-src="图/图5b_主模型验证散点.html" height="840" style="margin-top:14px"></iframe>
+<div class="section-head" style="margin-top:32px"><h2>Standard condition</h2><span class="note">You chose one set for all classes; values follow the data-density rule</span></div>
+<div class="two"><div class="sheet"><div class="eyebrow">Basis · one vote per paper</div><p>Each paper's own median first, then the median across papers, so data-rich papers do not dominate. For the rate, the share of data within 2× of a candidate value.</p>
+<div class="table-wrap"><table><tr><th>Condition</th><th>Median across papers</th><th>Median across statements</th></tr>{brow}</table></div>
+<div class="table-wrap" style="margin-top:12px"><table><tr><th>Class</th><th>Rate, paper median</th><th>Coverage within 2×</th><th>Cycle, paper median</th></tr>{bcls}</table></div></div>
+<div class="sheet"><div class="eyebrow">Adopted</div><div class="table-wrap"><table><tr><th>Class</th><th>Set</th><th>Values</th><th>Std-ether baseline</th></tr>{std_rows}</table></div>
+<p class="note">Common condition: E/S 10, S loading 1.5, cathode S 50%, 25 °C, coin, 0.2 C; retention at 200 cycles, full-cell CE at 100 cycles; Li‖Cu 0.5 mA cm⁻², 1 mAh cm⁻², 100 cycles.
+Practical condition: E/S 5 and loading 4 (plan §7.8). To be recomputed on the full dataset.</p></div></div>
+<div class="section-head" style="margin-top:32px"><h2>Cross-paper comparison</h2></div>
+<iframe class="fig" data-src="图/图6_归一化跨篇排名.html" height="900"></iframe>
+<iframe class="fig" data-src="图/图7_标准醚跨篇归一化前后.html" height="900" style="margin-top:14px"></iframe>
+<h3 style="margin-top:22px">Ranking table</h3><div id="tRank"></div></section>"""
 
-<h2>一、验证结果</h2>
-<p><b>验证方法（方案 §8.7 的 V1–V5，加一项物理检查）：</b></p>
-<table><tr><th>验证</th><th>怎么做</th><th>回答什么问题</th><th>这次做了吗</th></tr>
-<tr><td>V1 按论文留出</td><td>每次拿掉一整篇论文，用其余论文训练，再预测这篇里各配方之间的差距（去掉这篇的平均水平后比较）</td><td>对没见过的论文，配方之间谁好谁差、差多少，能不能算准</td><td>做了</td></tr>
-<tr><td>V2 按测试留出</td><td>同一篇里有多个测试（不同条件）的，每次拿掉一个测试，用这篇其他测试和其他论文训练，预测被拿掉测试的数值；和“直接用这篇其他测试的平均值猜”比</td><td>换到没见过的条件，换算准不准，即归一化本身可不可靠</td><td>做了</td></tr>
-<tr><td>V3 留出唯一直接比较</td><td>某两个配方只在一篇里直接比过，拿掉这篇，看靠其他论文推出的差距对不对</td><td>能不能做跨文献排名</td><td>没做：30 篇里配方之间的共同连接太少，凑不出足够的例子；全量后做</td></tr>
-<tr><td>V4 按论文重抽样</td><td>有放回地抽论文、重新训练若干次，看配方名次和全数据结果的相关、前 5 名重合多少</td><td>排名稳不稳</td><td>做了（见下表）</td></tr>
-<tr><td>V5 实验验证</td><td>挑几个配方在实验室同条件实测</td><td>最终检验</td><td>放到最后</td></tr>
-<tr><td>物理越界</td><td>归一化后硫比容量超过 1672 mAh g⁻¹（含有机硫共溶剂的除外）或保持率超过 100% 的比例</td><td>模型有没有离谱外推</td><td>做了，也用于选模型</td></tr></table>
-<p><b>指标怎么读：</b>R² 越接近 1 越好，0 表示和“完全不预测差距”一样，负数表示比不预测还差。RMSE 是 ln 单位的平均误差，括号里换成大约的百分比误差
-（RMSE 0.2 ≈ ±22%）。V1 方向正确率 = 同一测试里配方比对照“好还是差”猜对的比例（随便猜是 50%）。V2 提升 R² = 相对“用本篇其他测试平均值猜”的改进，>0 才说明条件换算有用。</p>
-<p><b>选择规则（先定后跑）：</b>物理越界率 ≤5% 的模型里选 V2 提升 R² 最高的；没有 V2 时看 V1。六种模型：线性岭回归、线性混合模型、梯度提升、
-单调约束梯度提升（物理常识：容量随倍率、载量下降，随 E/S 上升；保持率随圈数、载量下降）、随机森林、高斯过程。线性混合模型没有正则，特征多、论文少时数值发散。</p>
-<table><tr><th>性能类别</th><th>模型</th><th>V1 篇内 R²</th><th>V1 RMSE</th><th>V1 方向正确率</th><th>V2 提升 R²</th><th>V2 RMSE</th><th>V2 基线 RMSE</th><th>越界率</th></tr>{''.join(vrows)}</table>
-<h3>V4 名次稳定性（主模型，普遍条件）</h3>
-<table><tr><th>性能类别</th><th>主模型</th><th>参与排名配方数</th><th>名次相关（中位数，95% 范围）</th><th>前 5 名平均重合率</th></tr>{v4rows}</table>
-<div class="warn"><b>结论：</b>30 篇数据太少。V1 的 R² 在 0 附近，说明“配方特征 → 性能”这部分对没见过的论文基本学不到；V2 在首圈放电容量等类别有正的提升，说明条件换算部分有一定作用；
-两种 CE 各只有 5 篇，结果只作流程演示。排名和 NORM、LOPO 候选都要带着这个可靠性看。方案里“标准醚基准性能的取法”还没定，这里暂用各篇标准醚电解液实测值归一化后的中位数。</div>
-<iframe src="图/图5a_模型比较.html" height="600"></iframe>
-<h3>主模型验证散点（横轴实测、纵轴预测，越靠近虚线越准）</h3><iframe src="图/图5b_主模型验证散点.html" height="840"></iframe>
+    # ---------- 04 contradictions ----------
+    counts = {k: sum(x["类型"] == k for x in cands) for k in CTYPE}
+    chips = f'<button data-t="all" aria-pressed="true">All · {len(cands)}</button>' + "".join(
+        f'<button data-t="{k}" aria-pressed="false">{k} · {counts[k]}</button>' for k in CTYPE)
+    rules = "".join(f"<tr><td><b>{k}</b></td><td>{e(v)}</td><td>{counts[k]}</td></tr>" for k, v in CTYPE.items())
+    cc = []
+    for x in cands:
+        cc.append(f"""<div class="card cand" data-t="{x['类型']}"><div class="card-top"><span class="badge planned">{x['候选编号']} · {e(t(CTYPE, x['类型']))}</span>{verdict_badge(x['判定'])}</div>
+<h3 style="margin-top:12px">{e(x.get('摘要_en') or x['摘要'])}</h3>
+<div class="sides"><div class="side"><b>Paper A · {e(x['论文甲'])}</b><span class="mono" style="white-space:pre-wrap">{e(pair_en(x.get('甲对')) or x['甲例'])}</span></div>
+<div class="side"><b>Paper B · {e(x['论文乙'])}</b><span class="mono" style="white-space:pre-wrap">{e(pair_en(x.get('乙对')) or x['乙例'])}</span></div></div>
+<div class="detail"><b>Review.</b> {e(x.get('核对说明_en') or x['核对说明'] or 'not reviewed')}</div>
+<div class="detail"><b>Likely cause.</b> {e(x.get('可能原因_en') or x['可能原因'])}<br><b>Mechanism clues.</b> {e(x.get('机制线索_en') or x['机制线索'])}<br><b>Evidence IDs.</b> {e(', '.join(x['依据句子']))}</div>
+<details><summary>Source sentences</summary><div class="grid2" style="margin-top:10px"><div class="quote">{e(x['原句甲'])}</div><div class="quote">{e(x['原句乙'])}</div></div></details></div>""")
+    skip = "; ".join(f"{t(CAT, s.split('（')[0])} (V1 R² = {s.split('= ')[-1].rstrip('）')})" for s in e13.get("未做 LOPO 的类别", []))
+    conflicts = f"""<section id="conflicts" class="panel" hidden><div class="section-head"><h2>Contradiction candidates</h2><span class="note">Re-run after normalisation · every item checked against the source text</span></div>
+<div class="table-wrap"><table><tr><th>Rule</th><th>What it looks for</th><th>Candidates</th></tr>{rules}</table></div>
+<div class="callout"><b>Verdicts.</b> ✅ supported by the source and worth explaining · 🔶 values correct, but an unaligned factor or definition explains the gap · ⚠️ extraction or classification problem · ❌ not a contradiction.<br>
+NORM: only 3 cross-paper pairs share the same formulation and none differs by ≥1.5× after normalisation. LOPO runs only where the selected model's V1 R² &gt; 0; skipped: {e(skip)}. FLIP: none in this analysis set.</div>
+<div class="chips" id="ctype">{chips}</div><div class="grid2">{''.join(cc)}</div></section>"""
 
-<h2>二、标准条件与依据</h2>
-<p>你定的是“全类统一一套”。具体数值按方案“数据最密的位置”的原则，用 30 篇数据定：每篇论文先取自己的中位数，再取各篇的中位数（每篇一票，避免测得多的论文主导）；倍率另看标准倍率 2 倍以内的数据有多少条。</p>
-<table><tr><th>条件</th><th>按论文中位数</th><th>按表述中位数</th></tr>{brow}</table>
-<table><tr><th>类别</th><th>倍率按论文中位数</th><th>标准倍率覆盖（2 倍内条数/总数）</th><th>圈数按论文中位数</th></tr>{bcls}</table>
-<p><b>采用：</b>{adopt}</p>
-<table><tr><th>性能类别</th><th>标准条件</th><th>取值</th><th>标准醚电解液基准</th></tr>{std_rows}</table>
+    # ---------- 05 figures ----------
+    figs = [("图1a_配方组分共现网络.html", "Fig. 1a · Component co-occurrence", "Formulation only. Node size = formulations using the component; edge width = formulations containing both. Hover for counts; drag to zoom."),
+            ("图1b_四部分共现网络.html", "Fig. 1b · Four-part co-occurrence", "Components, properties, condition tiers and performance tiers (tertiles of normalised values) appearing in the same statements; edges ≥10 statements."),
+            ("图2a_配方物性弦图.svg", "Fig. 2a · Formulation × property chord", "Which component classes have which properties reported, counted per formulation; gaps show missing measurements."),
+            ("图2b_四部分弦图.svg", "Fig. 2b · Four-group chord", "Component class, property, key test condition and performance class; ribbon width = statements containing both (≥15)."),
+            ("图3_四部分聚类热图.html", "Fig. 3 · Clustered heat map", "One row per formulation; columns grouped into formulation, property, condition and normalised performance. Grey = not reported or extrapolated."),
+            ("图4_表述文字向量图.html", "Fig. 4 · Statement text map", "English statements embedded with character n-grams and projected with UMAP; nearby points read alike. Switch colouring at top right.")]
+    fc = []
+    for fn, title, desc in figs:
+        body = (f'<a href="图/{fn}" target="_blank"><img class="fig" src="图/{fn}" alt="{e(title)}"></a>' if fn.endswith(".svg")
+                else f'<iframe class="fig" data-src="图/{fn}" height="{820 if "图3" in fn else 640}"></iframe>')
+        fc.append(f'<div class="card"><div class="card-top"><h3 style="margin:0">{title}</h3><a class="note" href="图/{fn}" target="_blank">open ↗</a></div><p>{desc}</p>{body}</div>')
+    figures = f"""<section id="figures" class="panel" hidden><div class="section-head"><h2>Association figures</h2><span class="note">Preliminary · 30 papers · association, not causation · duplicate statements counted once</span></div>
+<div class="grid2">{''.join(fc)}</div></section>"""
 
-<h2>三、跨篇比较</h2>
-<h3>排名（森林图）</h3><p>每个点是一个配方相对标准醚电解液的 ln 倍数（>0 更好），横线是按论文重抽样的 95% 区间；区间重叠的名次可视为并列。灰色 = 外推，不进排名。右上角切换类别和标准条件。</p>
-<iframe src="图/图6_归一化跨篇排名.html" height="900"></iframe>
-<h3>同一种电解液在各篇：归一化前后</h3><p>标准醚电解液（LiTFSI＋DOL/DME＋LiNO₃）在多篇都出现。灰点是实测值，红点是换算到普遍条件后的值；换算后各篇还差很多的，差别不能用已记录的条件解释，就是 NORM 类矛盾候选。</p>
-<iframe src="图/图7_标准醚跨篇归一化前后.html" height="900"></iframe>
-<h3>配方排名表</h3><div id="tf"></div>
-<h3>每条表述的归一化值</h3><div id="ts"></div>"""
-    page("归一化.html", "归一化与跨篇比较", body,
-         f"makeTable('tf',{j(fr_cols)},{j(fr_rows)},{{selects:[0,1]}});makeTable('ts',{j(st_cols)},{j(st_rows)},{{selects:[1,2]}});")
+    # ---------- 06 methods & data ----------
+    al = read_json("指标别名表.json")
+    a_cols = ["Metric as extracted", "Unit", "Test type", "Cell", "Class", "Standard metric", "Rows", "Numeric", "Papers", "Status"]
+    a_rows = [[x["原名"], x["单位"], t(TESTKIND, x["测试类型"]), t(BATT, x["电池类型"]), tr_counts(x["性能类别"], CAT), tr_counts(x["标准指标"], STD),
+               x["条数"], x["有数值条数"], x["论文数"], x["状态"]] for x in al]
+    pal = read_json("物性别名表.json")
+    p_cols = ["Standard property", "Name as extracted", "Values", "Papers", "Source type"]
+    p_rows = [[t(PROP, x["标准物性"]), x["原名"], x["取值数"], ", ".join(x["论文"]), tr_counts(x["来源类型"], SRC)] for x in pal]
+    ct = read_json("条件表.json")
+    c_cols = ["Paper", "Test", "Type", "E/S", "S loading", "Cathode S %", "Li μm", "N/P", "Rate C", "T °C", "Cell"]
 
-    # ---------------- 矛盾候选 ----------------
-    tnames = {"NORM": "归一化后同配方跨篇差距大", "LOPO": "篇内结论与跨文献模型相反", "FLIP": "条件依赖翻转", "DESC": "设计方向相反（只改溶剂/主盐）", "SAME": "严格同一改动"}
-    tdesc = {"NORM": "同一配方在不同论文中，各自换算到普遍条件后仍相差 ≥1.5 倍（CE 损失比 ≥2 倍）；外推的表述不算。",
-             "LOPO": "某篇“配方比对照好/差”的实测方向，与不含这篇训练的模型预测方向相反（两边差距都 ≥10%）。只在主模型 V1 篇内 R² > 0 的类别做；模型本身较弱，这类只作线索。",
-             "FLIP": "同一篇里同一对配方，在一种条件下 A 更好、换个条件（或圈数）后 B 更好。这类不需要归一化，直接反映“配方好坏取决于条件”。",
-             "DESC": "跨篇，两篇的改动都只涉及溶剂和主盐（LiNO₃、添加剂不变），溶剂氧比例 sO 或 F/O 往同一方向变，结论一好一坏。",
-             "SAME": "两篇的主改动完全相同（如都加入同一种共溶剂），结论一好一坏。"}
-    secs = []
-    for t, nm in tnames.items():
-        lst = [x for x in cands if x["类型"] == t]
-        blocks = []
-        for x in lst:
-            blocks.append(f"""<h3>{x['候选编号']}　{html.escape(x['摘要'])}　<span class="tag">{x['性能类别']}</span><span class="tag">判定 {x['判定'] or '未核对'}</span></h3>
-<table><tr><th style="width:50%">甲：{x['论文甲']}</th><th>乙：{html.escape(str(x['论文乙']))}</th></tr>
-<tr><td>{html.escape(x['甲例'])}</td><td>{html.escape(x['乙例'])}</td></tr>
-<tr><td class="mono" style="white-space:pre-wrap">{html.escape(x['原句甲'])}</td><td class="mono" style="white-space:pre-wrap">{html.escape(x['原句乙'])}</td></tr></table>
-<p><b>核对：</b>{html.escape(x['核对说明'] or '（未核对）')}<br><b>依据句子：</b>{'、'.join(x['依据句子'])}<br><b>可能原因：</b>{html.escape(x['可能原因'])}<br><b>机制线索：</b>{html.escape(x['机制线索'])}</p>""")
-        secs.append(f"<h2>{t}｜{nm}：{len(lst)} 条</h2><p>{tdesc[t]}</p>" + ("".join(blocks) or "<p>（没有候选）</p>"))
-    body = f"""<div class="note">归一化之后重做的矛盾候选，共五种口径。每条都由 Claude 回原文核对，贴原句。
-判定：✅ 原文支持、确实值得解释的矛盾；🔶 数值无误，但有未对齐的条件或定义差异可能解释差别；⚠️ 提取或归类有问题；❌ 不构成矛盾。
-{('未做 LOPO 的类别：' + '；'.join(e['未做 LOPO 的类别'])) if e['未做 LOPO 的类别'] else ''}</div>""" + "".join(secs)
-    page("矛盾候选.html", "矛盾候选", body)
-    print("网站页面：", [p for p, _ in PAGES])
+    def cval(r, f):
+        x = r["条件"].get(f, {})
+        v = x.get("值")
+        if v is None and x.get("按配方"):
+            v = "; ".join(f"{k}={y['值']}" for k, y in x["按配方"].items() if y.get("值") is not None)
+        st = x.get("状态", "")
+        return f"{v} {st if st in ('🔶', '⚠️') else ''}".strip() if v not in (None, "") else t(CSTATE, st, st)
+    c_rows = [[r["论文"], r["测试"], t(TESTKIND, r["测试类型"])] + [cval(r, f) for f in ("ES", "sulfur_loading", "S_content", "Li_thickness", "NP", "rate", "temperature")]
+              + [CELL.get(r["条件"].get("cell_format", {}).get("值"), "—")] for r in ct]
+    cath = read_json("正极硫含量解析.json")
+    s_cols = ["Paper", "Condition ID", "Source text (as extracted)", "Regex value", "Verified value", "State", "Parser agrees"]
+    s_rows = [[x["论文"], x["条件编号"], x["原文"], x["解析值"], x["核定值"], t(CSTATE, x["核定状态"] or "", x["核定状态"] or ""),
+               {True: "yes", False: "no"}.get(x["解析与核定一致"], "—")] for x in cath]
+    data = f"""<section id="data" class="panel" hidden><div class="section-head"><h2>Methods &amp; data</h2><span class="note">Chinese text in these tables is copied from the extraction</span></div>
+<div class="grid">
+<div class="card"><span class="badge">Step 13a</span><h3>Metric &amp; property names</h3><p>205 metric spellings mapped to {a['四类标准指标种数']} standard metrics in four performance classes; {a['物性原名种数']} property names mapped to {a['标准物性种数']} categories.
+Capacities with an unstated basis stay separate: definitions that differ are not merged.</p></div>
+<div class="card"><span class="badge">Step 13b</span><h3>Test conditions</h3><p>{b['性能测试数']} performance tests. Cathode sulfur content (electrode basis) was verified by reading each of the 55 cathode descriptions; the regex parser agreed in only 29 cases, so verified values are used.</p></div>
+<div class="card"><span class="badge">Step 13c</span><h3>Statements</h3><p>{c['表述条数']} statements; 19 groups where one value was extracted into two tests of the same paper are flagged and counted once in analyses.</p></div></div>
+<h3 style="margin-top:26px">Metric aliases</h3><div id="tAlias"></div>
+<h3 style="margin-top:26px">Property aliases</h3><div id="tProp"></div>
+<h3 style="margin-top:26px">Test conditions</h3><p class="note">🔶 = converted or inferred (room temperature taken as 25 °C; Li₂S, SPAN or Se/S loading converted to sulfur); ⚠️ = conflicting or multiple values.</p><div id="tCond"></div>
+<h3 style="margin-top:26px">Cathode sulfur content · verification</h3><div id="tCath"></div>
+<div class="callout">Files: <span class="mono">output/表述与矛盾试跑_F版30篇_2026-11-04/</span> — 表述表.xlsx, 别名表与复核表.xlsx, 条件表.xlsx, 归一化与跨篇比较.xlsx, 矛盾候选复核表.xlsx (Chinese) and the matching JSON. Scripts: <span class="mono">scripts/step13a–13f, step13s</span>.</div></section>"""
+
+    js_data = (f"table('tStatements',{j(cols)},{j(rows)},{{selects:[1,3,14],detail:k=>D[k],placeholder:'Search ID, paper, component, metric…',height:700}});"
+               f"table('tRank',{j(fr_cols)},{j(fr_rows)},{{selects:[0,1]}});"
+               f"table('tAlias',{j(a_cols)},{j(a_rows)},{{selects:[4]}});table('tProp',{j(p_cols)},{j(p_rows)},{{selects:[0]}});"
+               f"table('tCond',{j(c_cols)},{j(c_rows)},{{selects:[0]}});table('tCath',{j(s_cols)},{j(s_rows)},{{selects:[5]}});"
+               "const hh=location.hash.slice(1);if(hh&&$('nav button[data-panel=\"'+hh+'\"]'))$('nav button[data-panel=\"'+hh+'\"]').click();")
+    page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Li–S Statement Atlas · Pilot</title><style>{CSS}</style></head><body>
+<header><div class="brand"><span class="mark">S</span>Li–S Statement Atlas</div><div class="meta">LI–S ELECTROLYTE CONFLICTS / 04 NOV 2026 / PILOT</div></header>
+<main>{hero}{overview}{statements}{norm}{conflicts}{figures}{data}
+<div class="footer"><span>Preliminary · 30 papers (F-version, rule-processed) · AI-assisted, not yet confirmed item by item by the user</span><span>Opens offline · no network needed</span></div></main>
+<script>const D={j(det)};{JS}{js_data}</script></body></html>"""
+    (SITE / "index.html").write_text(page, encoding="utf-8")
+    for old in ("表述表.html", "别名表.html", "条件表.html", "图.html", "归一化.html", "矛盾候选.html", "style.css"):
+        if (SITE / old).exists():
+            (SITE / old).unlink()  # 旧的中文多页版本，已并入单页
+    print("网站：index.html（单页，英文）")
 
 
 if __name__ == "__main__":
