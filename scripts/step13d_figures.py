@@ -328,8 +328,8 @@ def main() -> None:
     cols = [("配方", "sO"), ("配方", "aC"), ("配方", "F/O"), ("配方", "InOr"), ("配方", "LiNO₃ 有无"),
             ("物性", "离子电导率"), ("物性", "黏度"), ("物性", "Li⁺迁移数"), ("物性", "物性报告项数"),
             ("条件", "E/S"), ("条件", "硫载量"), ("条件", "正极含硫"), ("条件", "倍率"), ("条件", "温度"), ("条件", "软包比例"),
-            ("性能", "首圈硫比容量"), ("性能", "容量保持率"), ("性能", "全电池CE"), ("性能", "Li‖Cu CE"),
-            ("性能", "相对对照·放电容量(ln)"), ("性能", "相对对照·保持率(ln)")]
+            ("性能", "首圈硫比容量（原值）"), ("性能", "容量保持率（原值）"), ("性能", "全电池CE（原值）"), ("性能", "Li‖Cu CE（原值）"),
+            ("性能", "篇内相对对照·放电容量(ln)"), ("性能", "篇内相对对照·保持率(ln)")]
     rows, labels, hov = [], [], []
     for (pid, fid), lst in sorted(by_rec.items()):
         s0 = lst[0]
@@ -367,7 +367,7 @@ def main() -> None:
     for k, (a, b) in enumerate(cols):
         if k and cols[k - 1][0] != a:
             fig.add_vline(x=k - 0.5, line=dict(color="black", width=2))
-    fig.update_layout(title=f"图3 配方 × 物性 × 条件 × 性能 聚类热图（每行一个配方，按层次聚类排序；灰 = 未报告）<br>{TITLE_NOTE}",
+    fig.update_layout(title=f"图3 配方 × 物性 × 条件 × 性能 聚类热图（每行一个配方；灰 = 未报告；性能“原值”未归一化到标准条件，不能直接横向比）<br>{TITLE_NOTE}",
                       template="plotly_white", height=max(600, 14 * len(order) + 200), plot_bgcolor="#d9d9d9",
                       xaxis=dict(tickangle=-40, side="top"), yaxis=dict(autorange="reversed", tickfont=dict(size=9)),
                       margin=dict(l=170, r=20, t=170, b=20), font=dict(family="Microsoft YaHei, SimHei, sans-serif"))
