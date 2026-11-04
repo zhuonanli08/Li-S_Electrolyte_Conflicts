@@ -100,6 +100,14 @@ def write_xlsx(path: Path, sheets: list[tuple[str, list[str], list[list]]], widt
                notes: list[str] | None = None) -> None:
     from openpyxl import Workbook
     from openpyxl.styles import Alignment, Font, PatternFill
+    from openpyxl.cell.cell import ILLEGAL_CHARACTERS_RE
+
+    def safe(v):
+        if isinstance(v, (list, tuple)):
+            v = "；".join(map(str, v))
+        elif isinstance(v, dict):
+            v = json.dumps(v, ensure_ascii=False)
+        return ILLEGAL_CHARACTERS_RE.sub("", v) if isinstance(v, str) else v
     wb = Workbook()
     wb.remove(wb.active)
     if notes:
@@ -114,8 +122,7 @@ def write_xlsx(path: Path, sheets: list[tuple[str, list[str], list[list]]], widt
         ws = wb.create_sheet(name[:31])
         ws.append(header)
         for r in rows:
-            ws.append([("；".join(map(str, v)) if isinstance(v, (list, tuple)) else
-                        (json.dumps(v, ensure_ascii=False) if isinstance(v, dict) else v)) for v in r])
+            ws.append([safe(v) for v in r])
         for c in ws[1]:
             c.font = Font(bold=True)
             c.fill = PatternFill("solid", fgColor="DDEBF7")
