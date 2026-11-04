@@ -14,6 +14,7 @@ A 档结构图（结构图/）只作可选参考。
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 from collections import Counter, defaultdict
@@ -28,7 +29,7 @@ from rdkit.Chem import Descriptors, Draw, Lipinski, rdFingerprintGenerator, rdMo
 
 RDLogger.DisableLog("rdApp.*")
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "output" / "组分结构表_F版30篇_2026-10-31"
+OUT = Path(os.environ.get("KETI2_COMP") or ROOT / "output" / "组分结构表_F版30篇_2026-10-31")  # 环境变量 KETI2_COMP 可改读写其他数据集（11-04 220 篇试跑），不设时同原值
 IMG = OUT / "结构图"
 XLSX = OUT / "组分结构表.xlsx"
 

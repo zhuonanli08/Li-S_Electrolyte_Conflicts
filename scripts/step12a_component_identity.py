@@ -14,6 +14,7 @@ output/F版独立测试30篇_2026-10-29）的 papers/*/candidate.json 与 source
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 import time
@@ -24,8 +25,8 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-PAPERS = ROOT / "output" / "F版30篇_规则处理版_2026-11-01" / "papers"  # 11-01 用户复核意见写回后的当前数据集
-OUT = ROOT / "output" / "组分结构表_F版30篇_2026-10-31"
+PAPERS = Path(os.environ.get("KETI2_PAPERS") or ROOT / "output" / "F版30篇_规则处理版_2026-11-01" / "papers")  # 11-01 用户复核意见写回后的当前数据集；KETI2_PAPERS 可改（11-04 220 篇试跑）
+OUT = Path(os.environ.get("KETI2_COMP") or ROOT / "output" / "组分结构表_F版30篇_2026-10-31")  # 环境变量 KETI2_COMP 可改读写其他数据集（11-04 220 篇试跑），不设时同原值
 WORK = OUT / "work"
 CANDS = WORK / "候选组分.json"
 CURATION = OUT / "组分核定.json"

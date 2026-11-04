@@ -7,13 +7,15 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 from pathlib import Path
 
 ROOT = Path(r"D:\Desktop\课题二锂硫电解液矛盾归因")
-DATA = ROOT / "output" / "F版30篇_规则处理版_2026-11-01" / "papers"
-COMP = ROOT / "output" / "组分结构表_F版30篇_2026-10-31"
-OUT = ROOT / "output" / "表述与矛盾试跑_F版30篇_2026-11-04"
+# 环境变量 KETI2_PAPERS / KETI2_COMP / KETI2_OUT 可改读写其他数据集（11-04 220 篇试跑），不设时同原值
+DATA = Path(os.environ.get("KETI2_PAPERS") or ROOT / "output" / "F版30篇_规则处理版_2026-11-01" / "papers")
+COMP = Path(os.environ.get("KETI2_COMP") or ROOT / "output" / "组分结构表_F版30篇_2026-10-31")
+OUT = Path(os.environ.get("KETI2_OUT") or ROOT / "output" / "表述与矛盾试跑_F版30篇_2026-11-04")
 OUT.mkdir(parents=True, exist_ok=True)
 
 LABEL = "初步，30 篇（F 版规则处理版）"

@@ -16,6 +16,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import statistics
 import sys
@@ -32,7 +33,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from step12b_component_descriptors import element_counts  # noqa: E402  与描述符同一套原子计数和 α/β 定义
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "output" / "组分结构表_F版30篇_2026-10-31"
+OUT = Path(os.environ.get("KETI2_COMP") or ROOT / "output" / "组分结构表_F版30篇_2026-10-31")  # 环境变量 KETI2_COMP 可改读写其他数据集（11-04 220 篇试跑），不设时同原值
 WORK = OUT / "work"
 DENSITY_CACHE = WORK / "density_cache.json"
 VOLUME_UNIT = re.compile(r"体积|vol|v/v|volume", re.I)
