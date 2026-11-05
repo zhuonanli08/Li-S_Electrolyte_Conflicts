@@ -53,6 +53,11 @@ def cathode_type(paper: dict, test: dict, cdefs: dict) -> str:
         return "非硫正极"
     if re.search(r"PMTT|thiuram", txt, re.I):
         return "有机硫正极"
+    # 11-05 用户定“不是硫碳就不要”：硒硫正极（P330 SeS2@KB、P425 KB-Se/S）、碳纸＋多硫化物正极液（P059 T_cp）
+    if re.search(r"SeS\d|SeS2|Se\s*/\s*S\b|Se[\d.]+S[\d.]+|硒硫", txt):
+        return "硒硫正极"
+    if re.search(r"CP\s*/\s*polysulfide|polysulfide\s*catholyte|catholyte|正极液", txt, re.I):
+        return "多硫化物正极液"
     return "硫碳类"
 
 
@@ -60,20 +65,40 @@ def cathode_type(paper: dict, test: dict, cdefs: dict) -> str:
 def parse_point(point: str, metric: str) -> dict:
     p = point or ""
     out: dict = {}
-    m = re.search(r"第\s*(\d+)\s*圈|(\d+)\s*(?:th|st|nd|rd)(?![a-z])|(\d+)\s*圈|(\d+)\s*cycles?", p)
-    if re.search(r"首圈|第\s*1\s*圈|1st|first|初始|initial|首次", p + metric, re.I) and not (m and int(next(g for g in m.groups() if g)) > 1):
+    # 11-05（保持率改每圈衰减率，要知道从第几圈算起）：
+    # “第50/2圈”= 第 50 圈相对第 2 圈（P354）；斜杠后的数不更小时是两个取值点（P052“第10/50圈”），不当基准；
+    # “第10至200…”= 第 200 圈、从第 10 圈算起（P037）；“相对第2圈/vs 2nd cycle”记为基准圈，并从找圈数的文字里去掉，
+    # “vs”后须跟“第N圈”或序数词（P058“新电池 vs 150圈后”是两个阶段的比较）；补英文“cycle 50”“cycle300”（P202、P392）
+    n, base = None, None
+    ms = re.search(r"第\s*(\d+)\s*圈?\s*/\s*第?\s*(\d+)\s*圈", p)  # 含“第40圈/第6圈”（P121）
+    mr = re.search(r"第\s*(\d+)\s*(?:至|到|~|–|-)\s*(?:第\s*)?(\d+)", p)
+    rb = re.search(r"(?:相对于?|vs\.?|against|relative to|compared (?:to|with))\s*(?:the\s*)?(?:第\s*(\d+)\s*圈|(\d+)\s*(?:st|nd|rd|th)\s*cycles?)", p, re.I)
+    if ms and int(ms.group(2)) < int(ms.group(1)):
+        n, base = int(ms.group(1)), int(ms.group(2))
+    elif mr and int(mr.group(2)) > int(mr.group(1)):
+        n, base = int(mr.group(2)), int(mr.group(1))
+    else:
+        base = int(rb.group(1) or rb.group(2)) if rb else None
+        pc = p[:rb.start()] + p[rb.end():] if rb else p
+        m = re.search(r"第\s*(\d+)\s*圈|(\d+)\s*(?:th|st|nd|rd)(?![a-z])|(\d+)\s*圈|(\d+)\s*cycles?|cycles?\s*(?:no\.?\s*)?(\d+)", pc, re.I)
+        n = int(next(g for g in m.groups() if g)) if m else None
+    if base and base > 1:
+        out["基准圈"] = base
+    if re.search(r"首圈|第\s*1\s*圈|1st|first|初始|initial|首次", p + metric, re.I) and not (n and n > 1):
         out["阶段"], out["圈数"] = "首圈", 1
     elif re.search(r"平均|average|avg", p + metric, re.I):
         out["阶段"] = "平均"
-        if m:
-            out["圈数"] = int(next(g for g in m.groups() if g))
-    elif m:
-        n = int(next(g for g in m.groups() if g))
+        if n:
+            out["圈数"] = n
+    elif n:
         out["阶段"], out["圈数"] = ("首圈", 1) if n == 1 else ("第 N 圈", n)
     elif re.search(r"活化后|稳定", p):
         out["阶段"] = "活化后（未写圈数）"
     else:
         out["阶段"] = "未写圈数"
+    multi = re.findall(r"F[A-Za-z0-9_\-]*\s*第?\s*(\d+)\s*圈", p)  # 配方编号只取 ASCII，\w 会吃进“第”
+    if len(set(multi)) > 1:  # “F1第1100圈；F2第200圈”：各配方圈数不同，不给统一圈数（P003）
+        out["阶段"], out["圈数"] = "各配方圈数不同", None
     # 11-05：C/n 前面是 ° 或 ℃ 的是温度（P338“30 °C/0.5 mA”曾被读成 C/0 而除零）
     r = re.search(r"(\d+(?:\.\d+)?)\s*C(?![a-zA-Zl°])", p) or re.search(r"(?<![°℃])(?<!°\s)C\s*/\s*([1-9]\d*(?:\.\d+)?)", p)
     if r:
@@ -170,19 +195,29 @@ def classify(paper: dict, test: dict, res: dict, cdefs: dict) -> dict:
             return done("库仑效率类", "Li‖Cu 稳定循环圈数", True)
         return done("不进四类", "—", None, "✅", "Li‖Cu 测试中的非 CE 指标")
     # 以下为 Li‖S 或 硫‖非锂负极
+    if re.search(r"日衰减|日恢复|日历|per\s*day|/\s*天|/\s*d(?:ay)?\b|day−1|day-1", m + " " + u, re.I):  # 11-05：P371 日历存储的按天衰减
+        return done("不进四类", "—", None, "✅", "日历存储中按天计的容量变化，不是循环衰减")
     if re.search(r"每圈.*衰减|衰减率", m) or re.search(r"/圈|cycle−1|cycle-1", u):
         return done("衰减类", "每圈容量衰减率", False)
     if re.search(r"相对低倍率", m):
         return done("倍率容量类", "倍率容量比（高/低倍率）", True)
     if re.search(r"保持|相对初始", m):
+        pnt = res.get("point") or ""
+        # 11-05：静置/储存后的保持率是自放电（P385、P301），倍率变化后的保持/恢复（P223、P352、P536）不是循环保持率
+        if re.search(r"静置|储存|存储|搁置|\brest\b|storage|自放电", pnt + m, re.I):
+            return done("不进四类", "—", None, "✅", "静置/储存后的容量保持（自放电），不是循环保持率")
+        if not o.get("圈数") and re.search(r"返回|回到|恢复|recover|相对\s*C\s*/|相对.{0,6}倍率|C\s*增至|倍率", pnt, re.I):
+            return done("倍率容量类", "倍率保持/恢复率", True, "✅", "倍率变化后的容量保持，不是循环保持率")
         if "%" not in u and "首圈" not in u:
             return done("衰减类", "容量保持率", True, "⚠️", f"单位为“{u}”")
         nm = re.search(r"保持率[^；。]*", norm)  # 归一化条件里关于保持率分母的那一句
         txt = (res.get("point") or "") + u + m + (nm.group(0) if nm and not re.search(r"未明|未报告", nm.group(0)) else "")
-        o["保持率基准"] = ("相对首圈或初始" if re.search(r"首圈|初始|initial", txt)
+        o["保持率基准"] = ("相对活化后" if o.get("基准圈") else "相对首圈或初始" if re.search(r"首圈|初始|initial", txt)
                       else "相对活化后" if re.search(r"活化|稳定后|第\s*[2-9]\s*圈", txt) else "基准未写明")
         return done("衰减类", "容量保持率", True, "✅" if o["保持率基准"] != "基准未写明" else "🔶",
                     "" if o["保持率基准"] != "基准未写明" else "保持率分母（首圈/活化后）未写明")
+    if re.search(r"首圈.{0,4}损失|首次.{0,4}损失|initial capacity loss", m, re.I):  # 11-05：P260 首圈不可逆损失
+        return done("不进四类", "—", None, "✅", "首圈容量损失（首圈不可逆变化），不是循环衰减")
     if re.search(r"容量衰减|容量损失", m) and "%" in u:
         return done("衰减类", "容量损失率", False, "🔶", "累计损失百分比，与保持率互补（100−保持率），分开存放")
     if re.search(r"寿命|圈数|失效|短路|可运行|衰减起点|穿梭出现|循环稳定性|循环终止", m) and re.search(r"圈|cycle", u):

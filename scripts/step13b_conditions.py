@@ -363,6 +363,9 @@ def main() -> None:
                 else:
                     v, st, note = fn(txt, cst)
                     spec[field] = {"值": v, "状态": st, "说明": note, "原文": txt, "条件编号": ref}
+            # 温度：原文没写（未报告）的按室温 25 °C（11-05 用户定），标记为默认值；有文字没解析出的不套
+            if spec["temperature"]["值"] is None and spec["temperature"]["状态"] == "未报告":
+                spec["temperature"].update({"值": 25.0, "状态": "🔶", "说明": "原文未写温度，按室温 25 °C（11-05 用户定）", "默认": ["室温25°C"]})
             # E/S：原文没给就按 电解液体积 ÷ 硫质量 算；计算用料存下来，step13c 用取值点载量时重算
             es = spec["ES"]
             es["来源"] = "原文" if es["值"] is not None or es["状态"] == "按配方" else None

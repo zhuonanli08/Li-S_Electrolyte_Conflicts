@@ -10,7 +10,7 @@ RD5 = {"醚氧数": "醚氧数", "环数": "环数", "可旋转键数": "可旋�
 OTHER = ["LiNO3浓度M", "介体", "其他添加剂"]
 FORM_ALL = ER + list(RD5) + OTHER
 FORM_LIN = [c for c in FORM_ALL if c not in ER_SUM]
-COND_LIS = ["ln_ES", "载量", "含硫", "ln_倍率", "温度", "软包", "ln_圈数", "截止下限V"]
+COND_LIS = ["ln_ES", "载量", "含硫", "ln_倍率", "温度", "软包", "ln_圈数"]  # 11-05 用户定：截止电压不作输入
 LINEAR = {"线性岭回归", "线性混合模型"}
 
 
@@ -60,7 +60,7 @@ def class_rows(cname):
 
 def cols_for(cname, rows, linear):
     cu = "Li‖Cu" in cname
-    cond = N.COND_CU if cu else [c for c in COND_LIS if not (N.CLASSES[cname].get("stage") and c == "ln_圈数")]
+    cond = N.COND_CU if cu else [c for c in COND_LIS if not ((N.CLASSES[cname].get("stage") or N.CLASSES[cname].get("no_cycle")) and c == "ln_圈数")]
     base = (FORM_LIN if linear else FORM_ALL) + cond
     return [c for c in base if sum(r["x"].get(c) is not None for r in rows) >= 3
             and len({round(r["x"][c], 6) for r in rows if r["x"].get(c) is not None}) > 1]

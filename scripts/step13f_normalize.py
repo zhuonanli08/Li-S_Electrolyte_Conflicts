@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import json
 import math
+import re
 import time
 import warnings
 from collections import Counter, defaultdict
@@ -38,19 +39,20 @@ S_THEORY = 1672.0
 CLASSES = {
     # 11-04 用户定：倍率容量这次不纳入分析；放电容量只看第一圈（圈数不再作输入）
     "放电容量类": {"std": ["硫比放电容量"], "y": "log", "unit": "mAh g⁻¹(S)", "cap": True, "stage": "首圈"},
-    "衰减类": {"std": ["容量保持率"], "y": "log", "unit": "%", "ret": True},
+    # 11-05 用户定：保持率改为每圈衰减率（毕设口径），圈数不再作输入；论文直接报的每圈衰减率、容量损失率一并换算
+    "衰减类": {"std": ["容量保持率", "容量损失率", "每圈容量衰减率"], "y": "decay", "unit": "%/圈", "no_cycle": True},
     "库仑效率类·全电池": {"std": ["全电池 CE"], "y": "loss", "unit": "%"},
     "库仑效率类·Li‖Cu": {"std": ["Li‖Cu CE"], "y": "loss", "unit": "%"},
 }
 MONO = {"放电容量类": {"ln_圈数": -1, "ln_倍率": -1, "载量": -1, "ln_ES": 1},
-        "衰减类": {"ln_圈数": -1, "载量": -1, "ln_ES": 1}}
+        "衰减类": {"载量": -1, "ln_ES": 1}}  # y = −ln(每圈衰减率)：载量高衰减快、E/S 高衰减慢
 FORM_F = ["sO_不含氟", "sO_β氟化醚", "sO_α氟化醚", "aC", "F/O", "InOr", "LiNO3_M", "主盐_M", "含其他添加剂"]
 COND_LIS = ["ln_ES", "载量", "含硫", "ln_倍率", "温度", "软包", "ln_圈数"]
 COND_CU = ["ln_电流", "ln_沉积容量", "温度", "ln_圈数"]
 LN = math.log
 STD_COMMON = {"ln_ES": LN(10.0), "载量": 1.5, "含硫": 50.0, "温度": 25.0, "软包": 0.0}
 STD_CLASS = {"放电容量类": {"ln_倍率": LN(0.2)},
-             "衰减类": {"ln_倍率": LN(0.2), "ln_圈数": LN(200)},
+             "衰减类": {"ln_倍率": LN(0.2)},
              "库仑效率类·全电池": {"ln_倍率": LN(0.2), "ln_圈数": LN(100)},
              "库仑效率类·Li‖Cu": {"ln_电流": LN(0.5), "ln_沉积容量": LN(1.0), "温度": 25.0, "ln_圈数": LN(100)}}
 REF_RECIPE = ("P034", "R_C")  # 标准醚电解液：1 M LiTFSI，DOL:DME=1:1（体积）；LiNO₃ 取本类标准醚配方中位数
@@ -69,7 +71,34 @@ def dedup(sts):
     return out
 
 
+def cycles_elapsed(s):
+    """保持率/损失率经历的圈数：有基准圈（如“第50/2圈”、相对第2圈）时 = 圈数 − 基准圈，否则 = 圈数。"""
+    try:
+        n = int(s.get("圈数"))
+    except (TypeError, ValueError):
+        return None
+    n -= int(s.get("基准圈") or 0)
+    return n if n >= 1 else None
+
+
+def decay_rate(s):
+    """每圈衰减率（%/圈），毕设口径：（100 − 保持率）÷ 圈数；容量损失率 ÷ 圈数；论文直接报的 %/圈 原样用。
+    保持率 ≥ 100%、算出 ≤ 0、圈数不明的返回 None（方案 §8.7：衰减率 ≤ 0 回原文核对）。"""
+    v, std, u = s["数值"], s["标准指标"], s.get("单位") or ""
+    if v is None or "%" not in u:  # mAh g⁻¹ cycle⁻¹、“相对比例”“定性”等不用
+        return None
+    if std == "每圈容量衰减率" or re.search(r"per\s*cycle|/\s*cycle|/\s*圈|cycle\s*[−-]1|每圈", u, re.I):
+        d = v  # 已经是每圈值（含单位写成 % per cycle 的“容量损失率”）
+    else:
+        n = cycles_elapsed(s)
+        d = None if n is None else ((100 - v) if std == "容量保持率" else v) / n
+    return d if d is not None and d > 0 else None
+
+
 def yval(s, kind):
+    if kind == "decay":  # y = −ln(每圈衰减率)，越大越好；同篇同圈数两配方之差 = ln[(100−R对照)/(100−R实验)]
+        d = decay_rate(s)
+        return None if d is None else -math.log(d)
     v = s["数值"]
     if v is None or v <= 0:
         return None
@@ -79,6 +108,8 @@ def yval(s, kind):
 
 
 def inv_y(y, kind):
+    if kind == "decay":
+        return math.exp(-y)
     return 100 - math.exp(-y) if kind == "loss" else math.exp(y)
 
 
@@ -342,7 +373,7 @@ def main() -> None:
 
     for cname, spec in CLASSES.items():
         cu = "Li‖Cu" in cname
-        cond_cols = COND_CU if cu else [c for c in COND_LIS if not (spec.get("stage") and c == "ln_圈数")]
+        cond_cols = COND_CU if cu else [c for c in COND_LIS if not ((spec.get("stage") or spec.get("no_cycle")) and c == "ln_圈数")]
         rows = []
         for s in sts:
             if s["标准指标"] in spec["std"] and s["数值类型"] in ("精确", "约数", "范围") and yval(s, spec["y"]) is not None                     and (not spec.get("stage") or s["阶段"] == spec["stage"]):
@@ -404,7 +435,7 @@ def main() -> None:
             full = M(cols, cname).fit(X, y, g, w)
             yn = np.array([y[i] + full.f(at_obs(X[i], med, cols)[None])[0] - full.f(X[i][None])[0] for i in range(len(y))])
             vn = np.array([inv_y(v, spec["y"]) for v in yn])
-            bad = (vn > S_THEORY) & ~orgS if spec.get("cap") else (vn > 100.5) if spec.get("ret") else np.zeros(len(y), bool)
+            bad = (vn > S_THEORY) & ~orgS if spec.get("cap") else (vn > 100.5) if spec.get("ret") else (vn <= 0) if spec["y"] == "decay" else np.zeros(len(y), bool)
             near = np.array([not far["普遍条件"][i] for i in range(len(y))])
             viol = float(bad[near].mean()) if near.any() else float("nan")
             row = {"模型": M.name, "V1篇内R2": round(r2, 3), "V1方向正确率": round(acc, 3) if acc == acc else None, "V1方向对数": npair,
