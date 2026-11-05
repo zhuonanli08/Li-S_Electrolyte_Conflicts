@@ -77,6 +77,8 @@ def cycles_elapsed(s):
         n = int(s.get("圈数"))
     except (TypeError, ValueError):
         return None
+    if n <= 1 and not s.get("基准圈"):  # 第 1 圈的“保持率”不是循环保持率（倍率、温度对比等）
+        return None
     n -= int(s.get("基准圈") or 0)
     return n if n >= 1 else None
 

@@ -206,8 +206,11 @@ def classify(paper: dict, test: dict, res: dict, cdefs: dict) -> dict:
         # 11-05：静置/储存后的保持率是自放电（P385、P301），倍率变化后的保持/恢复（P223、P352、P536）不是循环保持率
         if re.search(r"静置|储存|存储|搁置|\brest\b|storage|自放电", pnt + m, re.I):
             return done("不进四类", "—", None, "✅", "静置/储存后的容量保持（自放电），不是循环保持率")
-        if not o.get("圈数") and re.search(r"返回|回到|恢复|recover|相对\s*C\s*/|相对.{0,6}倍率|C\s*增至|倍率", pnt, re.I):
+        no_cycle = (o.get("圈数") or 0) <= 1 and not o.get("基准圈")  # 圈数 ≤1：没有循环（P169“1 C相对初始容量”曾因“初始”被记为第 1 圈）
+        if no_cycle and re.search(r"返回|回到|恢复|recover|相对\s*C\s*/|相对.{0,6}倍率|C\s*增至|倍率|\d\s*C\s*相对", pnt, re.I):
             return done("倍率容量类", "倍率保持/恢复率", True, "✅", "倍率变化后的容量保持，不是循环保持率")
+        if no_cycle and o.get("圈数") == 1:  # P300 −40 °C 对 25 °C 首圈、P346 首次放电之后
+            return done("不进四类", "—", None, "✅", "首圈或无循环的容量比（温度对比等），不是循环保持率")
         if "%" not in u and "首圈" not in u:
             return done("衰减类", "容量保持率", True, "⚠️", f"单位为“{u}”")
         nm = re.search(r"保持率[^；。]*", norm)  # 归一化条件里关于保持率分母的那一句

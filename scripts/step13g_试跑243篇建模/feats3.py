@@ -8,7 +8,10 @@ from pathlib import Path
 from feats2 import *
 
 SP = Path(__file__).parent
-MOL = json.loads((SP / "溶剂分子性质.json").read_text(encoding="utf-8"))
+_MOLF = SP / "溶剂分子性质.json"  # 11-05：文件已移到 243 篇输出的 物性对比/，这里找不到就读那里
+if not _MOLF.exists():
+    _MOLF = SP.parents[1] / "output" / "表述试跑243篇_2026-11-04" / "物性对比" / "溶剂分子性质.json"
+MOL = json.loads(_MOLF.read_text(encoding="utf-8"))
 A_COLS = ["ln_配位位点每Li", "稀释剂摩尔比例", "Li总浓度"]
 B_COLS = ["介电常数_w", "ln黏度_w", "配位电荷_w"]
 C_COLS = ["ln电导率_实测", "ln黏度_实测"]
