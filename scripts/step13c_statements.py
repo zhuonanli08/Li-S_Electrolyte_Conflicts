@@ -13,6 +13,7 @@ import re
 from collections import Counter, defaultdict
 
 from step13_common import COMP, LABEL, OUT, load_papers, load_sources, read_json, sentences, write_json, write_xlsx
+from step13b_conditions import es_from_volume
 
 MAIN_PROPS = ["离子电导率", "黏度", "Li⁺迁移数", "密度", "多硫化物溶解度", "多硫化物溶剂化（含结合能）",
               "Li⁺溶剂化结构", "Li₂S 溶解", "Li⁺脱溶剂化能", "扩散系数"]
@@ -173,6 +174,16 @@ def main() -> None:
             cond["sulfur_loading"] = {"值": c["硫载量_mg每cm2"], "状态": "✅", "说明": "取值点写明"}
         if "NP" in c:
             cond["NP"] = {"值": c["NP"], "状态": "✅", "说明": "取值点写明"}
+        # 11-05：E/S 是由体积 ÷ 硫质量算出来的（不是原文值、不是人工核定），用本表述最终的载量重算
+        es_t = crow.get("ES", {})
+        if es_t.get("计算") and es_t.get("来源") in (None, "体积÷硫质量"):
+            k_ = es_t["计算"]
+            v, dflt, note = es_from_volume(k_["体积μL"], k_["体积说明"], k_["面积cm2"], k_["面积来源"], k_["硫质量mg"],
+                                           cond["sulfur_loading"]["值"], k_["可用默认"], k_.get("电池形式"))
+            cond["ES"] = {"值": v, "状态": "🔶" if v is not None else cond["ES"]["状态"], "说明": note, "默认": dflt,
+                          "来源": "体积÷硫质量" if v is not None else None}
+        else:
+            cond["ES"].update({"默认": es_t.get("默认", []), "来源": es_t.get("来源")})
         if c["电池类型"] == "Li‖Cu":
             for f, label in (("current", "电流"), ("Li_Cu_capacity", "沉积容量")):
                 x = crow.get(f, {})

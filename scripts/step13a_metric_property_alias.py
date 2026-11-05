@@ -20,7 +20,8 @@ from step13_common import LABEL, OUT, load_papers, parse_value, write_json, writ
 def battery_type(test: dict) -> str:
     k, cell, name = test["kind"], test.get("cell", ""), test.get("name", "")
     txt = f"{cell} {name}"
-    if k == "锂铜效率" or re.search(r"Li\s*\|+\s*Cu|Cu\s*\|+\s*Li|Li-Cu|Li–Cu|Cu工作", txt):
+    # 11-05：Li|Ni（P333 LiMg|Ni、P382 Li|Ni）同属沉积/剥离 CE 测试，并入 Li‖Cu
+    if k == "锂铜效率" or re.search(r"Li\s*\|+\s*Cu|Cu\s*\|+\s*Li|Li-Cu|Li–Cu|Cu工作|Li[A-Za-z]*\s*\|+\s*Ni\b", txt):
         return "Li‖Cu"
     if k == "对称电池":
         return "对称电池"
@@ -28,7 +29,11 @@ def battery_type(test: dict) -> str:
         return "非性能测试"
     if re.search(r"石墨\s*\|\|\s*Li|Gr\s*\|\|\s*Li|^Li/SnO2", cell.strip()):
         return "负极半电池（非锂硫）"
+    if re.search(r"Li\s*\|+\s*(?:prelithiated\s+|预锂化)?(?:SiO|Si\b)", cell):  # 11-05：P269 Li||SiO 负极半电池
+        return "负极半电池（非锂硫）"
     if re.search(r"Gr|石墨|SnO2", cell):
+        return "硫正极‖非锂金属负极"
+    if re.search(r"Li2S\s*[/|‖]+\s*Cu|无负极|anode[\s\-]*free", txt, re.I):  # 11-05：P258 Li2S/Cu 无锂负极电池
         return "硫正极‖非锂金属负极"
     return "Li‖S"
 
@@ -38,10 +43,16 @@ def cathode_type(paper: dict, test: dict, cdefs: dict) -> str:
     ref = test["condition_refs"].get("cathode")
     if ref and ref in cdefs:
         txt += " " + cdefs[ref]["value"]
-    if re.search(r"SPAN|PAN@S|PAN/S", txt):
+    # 11-05：补 S@pPAN、pPAN-S 等写法（P003）；排除词不再误配 “Li2S/Cu” 里的 “S/C”（P258）
+    if re.search(r"SPAN|PAN\s*[@/\-]\s*S\b|S\s*[@/]\s*p?PAN|pPAN|硫化聚丙烯腈|sulfuri[sz]ed\s+polyacrylonitrile", txt, re.I):
         return "SPAN"
-    if re.search(r"Li2S(?![\d])", txt) and not re.search(r"S/C|C/S|S@|KB", txt):
+    if re.search(r"Li2S(?![\d])", txt) and not re.search(r"(?<!Li2)S/C|C/S(?!\d)|(?<!Li2)S@|KB", txt):
         return "Li₂S 正极"
+    # 11-05：非硫正极（P212 Li/LFP）与有机硫正极（P264 PMTT）不进硫碳类
+    if re.search(r"\bLFP\b|LiFePO4|\bNCM\d*|\bNMC\d*|LiCoO2|\bLCO\b|LiMn2O4", txt):
+        return "非硫正极"
+    if re.search(r"PMTT|thiuram", txt, re.I):
+        return "有机硫正极"
     return "硫碳类"
 
 
@@ -63,7 +74,8 @@ def parse_point(point: str, metric: str) -> dict:
         out["阶段"] = "活化后（未写圈数）"
     else:
         out["阶段"] = "未写圈数"
-    r = re.search(r"(\d+(?:\.\d+)?)\s*C(?![a-zA-Zl°])", p) or re.search(r"C\s*/\s*(\d+)", p)
+    # 11-05：C/n 前面是 ° 或 ℃ 的是温度（P338“30 °C/0.5 mA”曾被读成 C/0 而除零）
+    r = re.search(r"(\d+(?:\.\d+)?)\s*C(?![a-zA-Zl°])", p) or re.search(r"(?<![°℃])(?<!°\s)C\s*/\s*([1-9]\d*(?:\.\d+)?)", p)
     if r:
         out["倍率_C"] = float(r.group(1)) if "/" not in r.group(0) else round(1 / float(r.group(1)), 4)
     r = re.search(r"(\d+(?:\.\d+)?)\s*A\s*/?\s*g", p)
