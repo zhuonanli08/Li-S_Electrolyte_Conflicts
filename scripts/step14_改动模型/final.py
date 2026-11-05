@@ -17,7 +17,14 @@ if prev and "--force" not in sys.argv:
     sys.exit(f"考试集已经算过 {prev['运行次数']} 次；如确需重算加 --force（会记入次数）")
 CFG = json.loads((D / "选定配置.json").read_text(encoding="utf-8"))
 TESTROWS = [r for r in ROWS if r["论文"] in TEST]
-out = {"运行次数": (prev["运行次数"] + 1) if prev else 1, "配置": CFG, "类别": {}}
+def cyc_ratio(r):  # 两边圈数之比（同 search.py）
+    a, b = r["实验"]["条件"].get("ln_圈数"), r["参照"]["条件"].get("ln_圈数")
+    return None if a is None or b is None else float(np.exp(abs(a - b)))
+
+
+REG = D / "预先登记.json"  # 11-06：修圈数泄漏后重考时，考试前写好的登记（含“考试集第二次使用”说明）
+out = {"运行次数": (prev["运行次数"] + 1) if prev else 1, "配置": CFG, "类别": {},
+       **({"预先登记": json.loads(REG.read_text(encoding="utf-8"))} if REG.exists() else {})}
 rng = np.random.default_rng(0)
 for cls, c in CFG.items():
     g = tuple(c["描述符"].split("+"))
@@ -34,6 +41,8 @@ for cls, c in CFG.items():
     for t in ("同测试、不同配方", "跨测试、不同配方", "同配方、换条件"):
         k = np.array([r["配对类型"] == t for r in te])
         res[t] = r2_score(yte[k], pred[k]) if k.sum() > 2 else None
+    k5 = np.array([cyc_ratio(r) is None or cyc_ratio(r) <= 5 for r in te])  # 同一预测，只看两边圈数相差 ≤5 倍的配对
+    res["圈数相差≤5倍"] = {"n": int(k5.sum()), "R2": r2_score(yte[k5], pred[k5]) if k5.sum() > 2 else None}
     paps = sorted({r["论文"] for r in te}); idx = {p: [i for i, r in enumerate(te) if r["论文"] == p] for p in paps}
     bs = []
     for _ in range(500):

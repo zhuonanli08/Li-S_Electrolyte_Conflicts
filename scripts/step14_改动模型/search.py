@@ -3,7 +3,7 @@
 防止自欺：按论文随机留出约 20% 作最终考试集（种子 20261105，写入 划分.json，迭代期间不读这些论文）；
 迭代只在其余论文上做按论文分组的 5 折交叉验证（整篇留出），指标为折外预测的总体 R²，并按配对类型分开报。
 每个配置的结果追加到 迭代记录.jsonl。最终配置选定后由 final.py 在考试集上只算一次。
-用法：python -X utf8 search.py <改动模型文件夹> <轮次名>
+用法：python -X utf8 search.py <改动模型文件夹> <轮次名> [类别1,类别2]（不写类别 = 四类都跑；r5 = 去圈数后的敏感性检查）
 """
 import sys, json, time, random, warnings
 from pathlib import Path
@@ -78,18 +78,26 @@ def num(v):
     return np.nan if v is None or isinstance(v, bool) and False else float(v) if isinstance(v, (int, float)) else np.nan
 
 
+# 11-06 修：衰减类不用圈数（11-05 用户定，feats.py 第 63 行同规则）。跨论文看圈数是结果的代理（好电池测得更久，
+# 总损失 9–59% 基本不随圈数变 → 每圈衰减率 ≈ 总损失 ÷ 圈数），放进输入等于泄漏答案。
+# 改动模型_313篇_2026-11-05 的结果（commit 9afef39）是修正前跑的，保留作历史记录。
+DROP_COND = {"每圈衰减率": {"ln_圈数"}}
+
+
 def featurize(rows, groups, use_cond=True, use_base=True, mirror=False):
     keys = [k for g in groups for k in GROUPS[g]]
-    ck = sorted({k for r in rows for k in r["参照"]["条件"]})
+    ck = sorted({k for r in rows for k in r["参照"]["条件"] if k not in DROP_COND.get(r["类别"], ())})
     X, y, meta = [], [], []
     for r in rows:
+        drop = DROP_COND.get(r["类别"], ())
+        cv_ = lambda side, k: np.nan if k in drop else num(side["条件"].get(k))
         for a, b, s in ((r["实验"], r["参照"], 1.0), (r["参照"], r["实验"], -1.0)) if mirror else ((r["实验"], r["参照"], 1.0),):
             fa, fb = a["配方特征"], b["配方特征"]
             row = [num(fa.get(k)) - num(fb.get(k)) for k in keys]
             if use_base:
                 row += [num(fb.get(k)) for k in keys]
             if use_cond:
-                row += [num(b["条件"].get(k)) for k in ck] + [num(a["条件"].get(k)) - num(b["条件"].get(k)) for k in ck]
+                row += [cv_(b, k) for k in ck] + [cv_(a, k) - cv_(b, k) for k in ck]
             X.append(row); y.append(s * r["dy"]); meta.append(r)
     return np.array(X, float), np.array(y, float), meta
 
@@ -236,12 +244,43 @@ def run_r3():
                     print("+".join(cs)[:20], "+".join(g)[-12:], m, mi, pw, ws, " | ".join(f"{c} {v['总体']:+.3f}" for c, v in res.items()), flush=True)
 
 
+def cyc_ratio(r):
+    a, b = r["实验"]["条件"].get("ln_圈数"), r["参照"]["条件"].get("ln_圈数")
+    return None if a is None or b is None else float(np.exp(abs(a - b)))
+
+
+def run_r5(cls):
+    """11-06 敏感性（衰减类去圈数后）：① 只用条件的基线；② 各轮开发集前 5 名配置在“两边圈数相差 ≤5 倍”的配对上重跑。"""
+    recs = [json.loads(l) for l in open(D / "迭代记录.jsonl", encoding="utf-8")]
+    recs = [e for e in recs if e["类别"] == cls and e["轮次"] in ("r1", "r2", "r4")]
+    for c, m in ((False, "零"), (True, "岭回归a10"), (True, "RF")):  # 零模型 = 预测“没差别”
+        res, *_ = cv(cls, (), m, c, False)
+        log({"轮次": "r5敏感性", "类别": cls, "检查": "只用条件" if c else "零模型", "描述符": "", "模型": m, "条件": c,
+             **{k: (round(v, 4) if isinstance(v, float) else v) for k, v in res.items()}})
+        print(f"{'只用条件 ' + m if c else '零模型'}：R² 总体 {res['总体']:+.3f}，同测试 {res['同测试、不同配方']}", flush=True)
+    sub = [r for r in DEV if r["类别"] == cls and (cyc_ratio(r) is None or cyc_ratio(r) <= 5)]
+    print(f"圈数相差 ≤5 倍：{len(sub)} / {sum(r['类别'] == cls for r in DEV)} 对", flush=True)
+    for e in sorted(recs, key=lambda e: -e["总体"])[:5]:
+        g = tuple(e["描述符"].split("+"))
+        res, *_ = cv(cls, g, e["模型"], e["条件"], e.get("原配方", True), e["镜像"], rows=sub, paper_w=e["每篇等权"], winsor=e["截尾"])
+        log({"轮次": "r5敏感性", "类别": cls, "检查": "圈数相差≤5倍", "原轮次": e["轮次"], "原总体": e["总体"], "描述符": e["描述符"],
+             "模型": e["模型"], "条件": e["条件"], "镜像": e["镜像"], "每篇等权": e["每篇等权"], "截尾": e["截尾"],
+             **{k: (round(v, 4) if isinstance(v, float) else v) for k, v in res.items()}})
+        print(f"  {e['描述符']} {e['模型']}：全部 {e['总体']:+.3f} → ≤5 倍 {res['总体']:+.3f}", flush=True)
+
+
+ONLY = sys.argv[3].split(",") if len(sys.argv) > 3 else CLASSES  # 11-06：可只跑指定类别
+
 if __name__ == "__main__" and ROUND == "r3":
     run_r3(); sys.exit()
 
+if __name__ == "__main__" and ROUND == "r5":
+    for c in ONLY: run_r5(c)
+    sys.exit()
+
 if __name__ == "__main__":
     print(f"开发集 {len(DEV)} 对（{len({r['论文'] for r in DEV})} 篇）；考试集留出 {len(TEST)} 篇，不参与")
-    for cls in CLASSES:
+    for cls in ONLY:
         best = []
         for cfg in ROUNDS[ROUND]:
             g, m, c, b, mi, pw, ws = (tuple(cfg) + (False, False))[:7]
