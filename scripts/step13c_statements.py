@@ -200,7 +200,8 @@ def main() -> None:
 
         # ---- 拼表述文字 ----
         rt = recipe_text(cp, raw_recipe)
-        desc = (f"sO {ratios['sO']:.3f}、aC {ratios['aC']:.3f}、F/O {ratios['F/O']:.2f}、InOr {ratios['InOr']:.2f}"
+        f_ = lambda k, nd: "—" if ratios.get(k) is None else f"{ratios[k]:.{nd}f}"  # 不含氧/碳的配方（如纯正己烷）F/O、InOr 为空
+        desc = (f"sO {f_('sO', 3)}、aC {f_('aC', 3)}、F/O {f_('F/O', 2)}、InOr {f_('InOr', 2)}"
                 if ratios else f"元素比例不可算（{er.get('原因') or '无配方组成'}）")
         ptxt = []
         for k in MAIN_PROPS + sorted(set(pmap) - set(MAIN_PROPS)):

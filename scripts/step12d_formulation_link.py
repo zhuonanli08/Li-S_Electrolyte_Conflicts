@@ -233,6 +233,36 @@ def classify(unit: str, amount: str):
     return "不可用", None, u or "未写单位"
 
 
+SOLVENT_DEFAULT = os.environ.get("KETI2_SOLVENT_DEFAULT") == "1"
+DEFAULT_OK = re.compile(r"^(未写单位|比例基准不明.*|合写的两种溶剂，比例未写)$")
+
+
+def solvent_defaults(items: list[dict], solvent_ids: set) -> tuple[list[dict], list[str]]:
+    """11-05（方案 §7.2“按报告习惯近似”，带标记；KETI2_SOLVENT_DEFAULT=1 时用）：
+    ① 溶剂用量有数值但未写单位或基准（如“DOL 1、DME 1”“1:1”未注 v/v）→ 按体积份（同 11-02 用户批准的 P315 口径）；
+    ② 配方里只有一个溶剂且用量不明 → 占全部溶剂体积；③ 只有 DOL、DME 两个溶剂且比例都不明 → 1:1 体积。
+    小写 m、基准不明的百分数、按硫原子计的浓度不套。返回 (新组分列表, 用到的默认值)。"""
+    out, flags = [dict(i) for i in items], []
+    sol = [i for i in out if i["组分"] in solvent_ids]
+    if not any(i["单位类别"] == "不可用" for i in sol):
+        return items, flags
+    for i in sol:
+        if i["单位类别"] == "不可用" and i.get("原始数值") is not None and DEFAULT_OK.match(i["说明"] or "未写单位"):
+            i.update({"单位类别": "体积份", "数值": i["原始数值"], "说明": "默认：未写单位的溶剂比例按体积份（11-05）"})
+            flags.append("溶剂比例未写单位按体积份")
+    unk = [i for i in sol if i["单位类别"] == "不可用"]
+    ids = {i["组分"] for i in sol}
+    if unk and len(ids) == 1:
+        for i in unk:
+            i.update({"单位类别": "体积份", "数值": 1.0, "说明": "默认：唯一溶剂占全部体积（11-05）"})
+        flags.append("唯一溶剂占全部体积")
+    elif unk and ids == {"DOL", "DME"} and len(unk) == len(sol):
+        for i in unk:
+            i.update({"单位类别": "体积份", "数值": 1.0, "说明": "默认：DOL/DME 比例未写按 1:1 体积（11-05）"})
+        flags.append("DOL/DME 比例未写按 1:1 体积")
+    return out, sorted(set(flags))
+
+
 def convert(items: list[dict], dens: dict, solvent_ids: set) -> dict:
     """真实液体配方：体积份 → 体积分数；有密度和分子量时算 1 L 溶剂混合物中各组分的物质的量（mol）与摩尔分数。"""
     pre, miss = [], []
@@ -424,7 +454,7 @@ def build() -> None:
                 cat_i, factor_i, v_i = ("摩尔浓度", 1.0, mg / vol / c["分子量"]) if ok else ("不可用", None, None)
             rec["组分"].append({"组分": cid, "名称": c["名称"], "档": c["档"], "分子量": c.get("分子量"),
                                "原文写法": r["name"], "原文用量": r["amount"], "原文单位": r["unit"], "单位类别": cat_i,
-                               "数值": None if v_i is None or factor_i is None else v_i * factor_i, "说明": note})
+                               "数值": None if v_i is None or factor_i is None else v_i * factor_i, "说明": note, "原始数值": v_i})
     out = []
     for (pid, rid), rec in sorted(recipes.items()):
         if not rec["组分"]:
@@ -437,6 +467,9 @@ def build() -> None:
             conv = {"状态": "完整（计算模型盒子组成）" if ok else "不换算（计算模型）",
                     "摩尔分数": {i["组分"]: i["数值"] / tot for i in items} if ok else {}, "缺": [], "前提": []}
         else:
+            flags = []
+            if SOLVENT_DEFAULT:
+                rec["组分"], flags = solvent_defaults(rec["组分"], solvent_ids)
             merged = {}
             for i in rec["组分"]:  # 同一配方里同一组分写了两次的合并
                 if i["组分"] in merged and i["单位类别"] == merged[i["组分"]]["单位类别"] and i["数值"] is not None \
@@ -445,6 +478,8 @@ def build() -> None:
                 else:
                     merged.setdefault(i["组分"], dict(i))
             conv = convert(list(merged.values()), dens, solvent_ids)
+            if flags:
+                conv["默认"] = flags
         out.append({"论文": pid, "配方": rid, "配方名": sorted(rec["配方名"]), "用途": sorted(rec["用途"]), "类型": kind,
                     "组分": rec["组分"], **conv})
     cache = {}
@@ -456,6 +491,8 @@ def build() -> None:
     for r in out:
         if r["类型"] == "液体":
             r["元素比例"] = recipe_ratios(r, comps, counts)
+            if r.get("默认"):
+                r["元素比例"]["默认"] = r["默认"]  # 11-05：用了溶剂比例默认值的配方带标记，建模可分含/不含两版
     from step12e_reviewed_units import apply_review, add_review_sheet
     apply_review(out, comps, dens, convert, recipe_ratios, counts, solvent_ids)
     (OUT / "配方组成.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
