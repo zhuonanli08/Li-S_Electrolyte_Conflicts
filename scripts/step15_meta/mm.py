@@ -27,7 +27,10 @@ def fit_mixed(y, X, groups, names):
         except Exception:
             continue
     if out is None or out["tau2"] < 1e-8:
-        m = sm.OLS(y, X).fit(cov_type="cluster", cov_kwds={"groups": _codes(g)})
+        try:
+            m = sm.OLS(y, X).fit(cov_type="cluster", cov_kwds={"groups": _codes(g)})
+        except ZeroDivisionError:  # 观测数 = 参数数（留一篇时训练集太小）：只要点估计
+            m = sm.OLS(y, X).fit()
         resid = y - X @ m.params
         tau2, s2 = _moment_var(resid, g)
         out = {"b": m.params, "se": m.bse, "tau2": tau2, "sigma2": s2, "方法": "OLS聚类稳健", "re": {}}
