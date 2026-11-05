@@ -2,14 +2,18 @@
 
 输出：网站/index.html（数据嵌在页面里）＋ 网站/图/ 下的交互图。双击 index.html 或项目根目录的 双击打开结果网站.bat 即可打开。
 提取结果里的自由文字（取值点、物性描述）本身是中文，按原样显示并注明；其余界面、图、说明、核对结论为英文。
+04 · Modelling（11-05 用户要求）：243 篇、313 篇建模迭代的方法（描述符）、结果与不采纳理由，数据读各轮结果文件
+（表述试跑243篇_2026-11-04/试跑建模结果.json、物性对比/，改动模型_313篇_2026-11-05/考试结果.json、选定配置.json、诊断.json）；
+其余标签页仍是 30 篇试跑。
 """
 from __future__ import annotations
 
 import html
 import json
 import math
+import re
 
-from step13_common import COMP, OUT, in_analysis, read_json
+from step13_common import COMP, OUT, ROOT, in_analysis, read_json
 from step13_i18n import (BASIS, BATT, CAT, CSTATE, CTYPE, DIR, MODEL, PROP, SRC, STAGE, STD, STDKEY, STDSET,
                          recipe_en, statement_en, t)
 
@@ -149,6 +153,334 @@ def verdict_badge(v: str) -> str:
     return f'<span class="badge {cls}">{lab}</span>'
 
 
+# ---------- 04 modelling（11-05 用户要求：各轮方法、描述符、结果、不采纳理由）----------
+M243 = ROOT / "output" / "表述试跑243篇_2026-11-04"
+M313 = ROOT / "output" / "改动模型_313篇_2026-11-05"
+C243 = {"放电容量类": "First-cycle capacity", "衰减类": "Capacity retention", "库仑效率类·全电池": "Full-cell CE", "库仑效率类·Li‖Cu": "Li‖Cu CE"}
+C14 = {"首圈容量": "First-cycle capacity", "每圈衰减率": "Capacity fade per cycle", "全电池CE": "Full-cell CE (cycling)", "LiCu_CE": "Li‖Cu CE (cycling)"}
+C14TO243 = {"首圈容量": "放电容量类", "每圈衰减率": "衰减类", "全电池CE": "库仑效率类·全电池", "LiCu_CE": "库仑效率类·Li‖Cu"}
+M14 = {"零": "predict no difference", "Huber": "Huber regression", "HGB浅": "gradient boosting (shallow)", "HGB深": "gradient boosting (deep)",
+       "RF": "random forest", "ET": "extra trees", "kNN5": "5-nearest neighbours", "SVR": "support vector regression",
+       "集成": "ensemble (ridge + random forest + shallow GB)"}
+FAM = [("只有物性/结构", False, "Physical / structural descriptors, no conditions"),
+       ("只有物性/结构", True, "Physical / structural descriptors + conditions"),
+       ("物性/结构＋组分身份", True, "Physical / structural + component identity + conditions"),
+       ("只有组分身份", True, "Component identity + conditions")]
+ROUNDS = [("r1", "Round 1", "Physical / structural descriptor sets × every model, with and without test conditions"),
+          ("r2", "Round 2", "Add component presence (COMP); try mirror augmentation, equal weight per paper and a winsorised training target"),
+          ("r3多任务", "Round 3", "Multi-task: three or four classes trained together with a class indicator"),
+          ("r4", "Round 4", "Add component amounts (AMT) and presence × condition (COMP×COND); ridge strength grid and an ensemble")]
+GROUPS_EN = [
+    ("ER", "12", "Formulation-level elemental ratios after Kim et al. (PNAS 2023), solvent + main salt only: solvent O in three bins "
+                 "(non-fluorinated, β-fluorinated ether, α-fluorinated ether), aO, aC, sC, aF, sF, F/C, O/C, F/O, InOr"),
+    ("RD5", "5", "RDKit descriptors weighted by solvent mole fraction: ether O, rings, rotatable bonds, carbonate groups, thioether / polysulfide S"),
+    ("ADD", "8", "LiNO₃ (M), mediator, other additives, main salt (M), anion F per litre, anion sulfonyl per litre, iodine-containing, organosulfur"),
+    ("SOLV", "20", "Solvent-weighted functional groups and properties: ether O, α/β-fluorinated ether O, carbonate, carbonyl, sulfone, nitrile, amide, "
+                   "thioether S, F and C atoms, rings, rotatable bonds, TPSA, molecular weight; fractions of fluorinated, organosulfur, hydrocarbon, "
+                   "cyclic-ether and carbonate molecules"),
+    ("STATE", "3", "Solvation state computed from composition: ln(coordinating sites per Li⁺), diluent mole fraction, total Li⁺ concentration"),
+    ("COMP", "{v}", "Presence of each component that appears in at least two development-set papers"),
+    ("AMT", "{v}", "Amount of each of those components (mol per litre of solvent), where the composition can be converted"),
+    ("COMP×COND", "2 × {v}", "Presence × reference ln E/S, and presence × reference sulfur loading"),
+    ("Conditions", "7 / 4", "Li–S classes: ln E/S, S loading, cathode S content, ln rate, temperature, pouch, ln cycle number. "
+                            "Li‖Cu: ln current density, ln plating capacity, ln cycle number, temperature")]
+
+
+def f2(x) -> str:
+    return "—" if x is None else f"{x:+.2f}"
+
+
+def m14(k: str) -> str:
+    return f"ridge α = {k[len('岭回归a'):]}" if k.startswith("岭回归a") else M14.get(k, k)
+
+
+def cfg14(b: dict) -> str:
+    """一个配置的英文简述：描述符组 · 模型 · 训练技巧。"""
+    tricks = [n for k, n in (("镜像", "mirror"), ("每篇等权", "equal weight per paper"), ("截尾", "winsorised")) if b.get(k)]
+    return f"{b['描述符'].replace('COMPxCOND', 'COMP×COND')} · {m14(b['模型'])}" + (f" · {', '.join(tricks)}" if tricks else "")
+
+
+def change_en(x: dict) -> str:
+    """同一改动的例子：只“去”不“加”的改写成“加”、效应取反，读起来顺。效应 > 0 = 实验侧更好。"""
+    if not x["加"] and x["去"]:
+        lab, lo, hi = "adds " + ", ".join(x["去"]), -x["效应最大"], -x["效应最小"]
+    else:
+        lab = " · ".join(p for p in ("adds " + ", ".join(x["加"]) if x["加"] else "", "removes " + ", ".join(x["去"]) if x["去"] else "") if p)
+        lo, hi = x["效应最小"], x["效应最大"]
+    return f"{lab}: {x['论文数']} papers, {x['配对数']} pairs, effect {lo:+.2f} to {hi:+.2f}"
+
+
+def modelling_panel(nres: dict) -> str:
+    m243 = json.loads((M243 / "试跑建模结果.json").read_text(encoding="utf-8"))["类别"]
+    p243 = {k: json.loads((M243 / "物性对比" / f"物性对比_{k}.json").read_text(encoding="utf-8")) for k in C243}
+    ceil243 = {m.group(1): float(m.group(2)) for m in
+               re.finditer(r"## (.+?): .*?R² 上限）≈ ([-\d.]+)", (M243 / "物性对比" / "同种改动跨篇一致性.txt").read_text(encoding="utf-8"))}
+    exam = json.loads((M313 / "考试结果.json").read_text(encoding="utf-8"))
+    n_exam_papers = len(json.loads((M313 / "划分.json").read_text(encoding="utf-8"))["考试集论文"])
+    dg = json.loads((M313 / "诊断.json").read_text(encoding="utf-8"))
+    cons, cmp_, chk, v = dg["同一改动跨篇一致性"], dg["迭代记录对比"], dg["选定配置核对"], dg["组分词表大小"]
+    lk = dg["圈数泄漏检查"]["每圈衰减率"]
+    lk_other = max(dg["圈数泄漏检查"][c]["总体"]["只用Δln圈数R2"] for c in C14 if c != "每圈衰减率")
+    leak_html = (f"<div class='callout warn'><b>Cycle-number leak in fade per cycle (found 5 Nov late evening; checked here).</b> Iteration 4 kept ln(cycle number) "
+                 f"among the inputs for fade per cycle, against your 5 Nov rule. The difference in ln(cycle number) alone explains R² "
+                 f"{lk['总体']['只用Δln圈数R2']:.2f} of the development pairs — {lk['跨测试、不同配方']['只用Δln圈数R2']:.2f} of cross-test pairs, "
+                 f"{lk['同测试、不同配方']['只用Δln圈数R2']:.2f} of same-test pairs, where both sides share the cycle number. Per-cycle fade is the total loss divided "
+                 f"by the cycle count, so the cycle count gives part of the answer away. The fade-per-cycle results below (development, exam, and the lift from "
+                 f"adding conditions) are therefore not evidence that anything transfers. For the other classes the same check gives R² ≤ {lk_other:.2f}. "
+                 "A re-run without cycle number is in progress in another session (<span class='mono'>output/改动模型_去圈数_313篇_2026-11-06/</span>); "
+                 "this page will be updated when it finishes.</div>")
+    fam = lambda c, f, cond: cmp_[c]["按描述符与条件"].get(f"{f}｜{'加条件' if cond else '不加条件'}")
+
+    # 第 1–3 次迭代（30 篇、243 篇）
+    sel1 = {n: next(m for m in r["模型比较"] if m["模型"] == r["主模型"]) for n, r in nres.items() if n in C243}
+    it1 = "<br>".join(f"{C243[n]} {f2(m['V1篇内R2'])} <span class='note'>({e(t(MODEL, m['模型']))})</span>" for n, m in sel1.items())
+    v3best = lambda r: max(x["R2"] for x in r["模型V3"].values())
+    it2 = "<br>".join(f"{C243[n]} {f2(v3best(m243[n]))} <span class='note'>(no difference {f2(m243[n]['基线']['猜没差别']['R2'])} · "
+                      f"other papers' mean gain {f2(m243[n]['基线']['猜其他论文平均提升']['R2'])})</span>" for n in C243)
+    pairs2 = " · ".join(f"{C243[n]} {m243[n]['V3配对']}" for n in C243)
+
+    def pbest(d):
+        res = d["结果"]
+        base = max(x["R2"] for k, x in res.items() if k.startswith("对照"))
+        k, x = max(((k, x) for k, x in res.items() if not k.startswith("对照")), key=lambda kv: kv[1]["R2"])
+        add, _, mdl = k.partition("｜")
+        return base, x["R2"], f"{add}, {t(MODEL, mdl)}"
+    it3 = "<br>".join(f"{C243[n]} {f2(pbest(d)[0])} → {f2(pbest(d)[1])} <span class='note'>({e(pbest(d)[2])})</span>" for n, d in p243.items())
+    imp = [q["按论文留出R2"] for d in p243.values() for q in d.get("补值小模型质量", {}).values() if q.get("按论文留出R2") is not None]
+    imp_txt = f"{min(imp):+.2f} to {max(imp):+.2f} ({sum(x < 0 for x in imp)} of {len(imp)} below zero)"
+    imp_n = [q["配方"] for d in p243.values() for q in d.get("补值小模型质量", {}).values() if q.get("配方")]
+    np3 = [d["V3配对"] for d in p243.values() if d.get("V3配对")]
+    star = lambda c: "*" if chk[c]["选定时用了过期记录"] else ""
+    it4 = "<br>".join(f"{C14[c]} {f2(chk[c]['现行数据上按规则应选']['总体'])} → {f2(exam['类别'][c]['总体'])}{star(c)}" for c in C14)
+    n_exam = sum(exam["类别"][c]["n"] for c in C14)
+    itrows = [
+        ("1", "4 Nov · 30 papers (F-version pilot)",
+         "Normalise every paper to one standard condition with a shared scoring function. V1: leave one paper out, score its within-paper differences",
+         "sO in 3 bins, aC, F/O, InOr, LiNO₃, main salt, other additives + E/S, S loading, cathode S, rate, temperature, pouch, cycle number",
+         "Ridge, linear mixed model, gradient boosting, monotone gradient boosting, random forest, Gaussian process",
+         "V1 R², selected model:<br>" + it1, "The formulation effect does not transfer to unseen papers; the ranking in 03 is kept only as an illustration"),
+        ("2", "4 Nov · 243 papers",
+         f"V3: leave out the only paper that compares a pair directly, then infer that gap from other papers and the descriptors (pairs: {pairs2})",
+         "13 elemental ratios + 5 RDKit (ether O, rings, rotatable bonds, carbonate groups, thioether / polysulfide S) + LiNO₃, additives / mediators "
+         "+ test conditions including cut-off voltage",
+         "Same six models", "V3 R², best of six (baselines):<br>" + it2,
+         "No better than the two baselines; leaving out whole families (fluorinated solvents, organosulfur) fails"),
+        ("3", "4 Nov · 243 papers", "V3 as in 2, adding property layers one at a time (3 models × 6 feature sets = 18 tries per class)",
+         "2 + <b>A</b> solvation state from composition · <b>B</b> molecular properties (in practice only the Gasteiger charge of coordinating atoms) · "
+         "<b>C</b> conductivity / viscosity measured by the same paper · <b>D</b> properties imputed by a composition → property model",
+         "Ridge, monotone gradient boosting, random forest", "V3 R², control → best with additions:<br>" + it3,
+         f"No gain for capacity or retention; the CE gains are the best of 18 tries on {min(np3)}–{max(np3)} pairs, within noise; "
+         f"imputation models score {imp_txt}"),
+        ("4", "5 Nov · 313 papers",
+         f"Change model: every comparison inside a paper, including cross-condition pairs. {dg['开发集']['配对']} development pairs from "
+         f"{dg['开发集']['论文']} papers (paper-grouped 5-fold CV); {n_exam} pairs from {n_exam_papers} papers held out and scored once",
+         "Groups ER, RD5, ADD, SOLV, STATE, COMP, AMT, COMP×COND + conditions (see below)",
+         "Ridge (α 0.3–100), Huber, gradient boosting, random forest, extra trees, kNN, SVR, ensemble; multi-task",
+         "Best development R² → exam R²:<br>" + it4,
+         "Only fade per cycle scores above zero on the exam set — its 95% interval crosses zero, and cycle number leaks the answer (see the warning above)"),
+    ]
+    it_html = "".join("<tr>" + "".join(f"<td>{x}</td>" for x in r) + "</tr>" for r in itrows)
+
+    # 第 4 次迭代细节
+    g_html = "".join(f"<tr><td><b>{g}</b></td><td>{n.format(v=v)}</td><td>{d}</td></tr>" for g, n, d in GROUPS_EN)
+    r_html = "".join(f"<tr><td><b>{lab}</b></td><td>{dg['各轮配置数'].get(k, 0)}</td><td>{e(what)}</td>"
+                     f"<td class='mono'>{e(', '.join(x.replace('COMPxCOND', 'COMP×COND') for x in dg['各轮内容'][k]['描述符组']))}</td>"
+                     f"<td>{e(', '.join(m14(x) for x in dg['各轮内容'][k]['模型']))}</td></tr>" for k, lab, what in ROUNDS)
+    st_vals = [x.get("同测试、不同配方") for c in C14 for f, cond, _ in FAM for x in [fam(c, f, cond)] if x and x.get("同测试、不同配方") is not None]
+
+    def famcell(x):
+        return "<td>—</td>" if not x else f"<td><b>{f2(x['总体'])}</b><br><span class='note'>same test {f2(x.get('同测试、不同配方'))}</span></td>"
+    f_html = "".join(f"<tr><td>{e(lab)}</td>{''.join(famcell(fam(c, f, cond)) for c in C14)}</tr>" for f, cond, lab in FAM)
+    f_html += "<tr><td>Predict no difference (reference)</td>" + "".join(f"<td>{f2(cmp_[c]['零基线']['总体'])}</td>" for c in C14) + "</tr>"
+    no_c, wi_c = (lambda c: fam(c, "只有物性/结构", False)["总体"]), (lambda c: fam(c, "只有物性/结构", True)["总体"])
+
+    def onoff(c, flag):
+        x = cmp_[c]["训练技巧"][flag]
+        return f"<td>{f2(x['开']['总体'])} / {f2(x['关']['总体'])}</td>"
+
+    def mt(c, g):
+        x = cmp_[c]["多任务"][g]
+        return f"<td>{f2(x['多任务']['总体'])} / {f2(x['单类']['总体'])}</td>"
+
+    def stt(c):
+        x = cmp_[c]["溶剂化状态STATE"]
+        return f"<td>{f2(x['加之后']['总体'])} / {f2(x['加之前']['总体'])}</td>"
+    t_html = "".join(f"<tr><td>{lab}</td><td class='note'>{cmpw}</td>{''.join(fn(c) for c in C14)}</tr>" for lab, cmpw, fn in (
+        ("Mirror augmentation (train on A − B and B − A)", "on / off", lambda c: onoff(c, "镜像")),
+        ("Equal weight per paper", "on / off", lambda c: onoff(c, "每篇等权")),
+        ("Winsorised training target, 5–95% (round 2)", "on / off", lambda c: onoff(c, "截尾")),
+        ("Multi-task · ER+RD5+ADD+SOLV", "joint / single", lambda c: mt(c, "ER+RD5+ADD+SOLV")),
+        ("Multi-task · ER+RD5+ADD+SOLV+COMP", "joint / single", lambda c: mt(c, "ER+RD5+ADD+SOLV+COMP")),
+        ("Solvation state STATE added (round 1)", "with / without", stt)))
+    trick_d = [cmp_[c]["训练技巧"][f]["开"]["总体"] - cmp_[c]["训练技巧"][f]["关"]["总体"] for c in C14 for f in ("镜像", "每篇等权", "截尾")]
+    mt_d = [x["多任务"]["总体"] - x["单类"]["总体"] for c in C14 for x in cmp_[c]["多任务"].values()]
+    st_d = [abs(cmp_[c]["溶剂化状态STATE"]["加之后"]["总体"] - cmp_[c]["溶剂化状态STATE"]["加之前"]["总体"]) for c in C14]
+
+    ex_html = ""
+    for c in C14:
+        s, r, k = exam["配置"][c], exam["类别"][c], chk[c]
+        tag = " <span class='badge bad'>stale record*</span>" if k["选定时用了过期记录"] else " <span class='badge bad'>cycle-number leak</span>" if c == "每圈衰减率" else ""
+        ex_html += (f"<tr><td>{C14[c]}</td><td>{e(cfg14(s))}</td><td>{f2(s['开发集R2'])}{tag}</td><td>{r['n']} · {r['论文']}</td>"
+                    f"<td><b>{f2(r['总体'])}</b></td><td>{f2(r['总体95%区间'][0])} to {f2(r['总体95%区间'][1])}</td>"
+                    f"<td>{f2(r['同测试、不同配方'])}</td><td>{f2(r['跨测试、不同配方'])}</td><td>{f2(r['同配方、换条件'])}</td></tr>")
+    stale = []
+    for c in C14:
+        k = chk[c]
+        if k["选定时用了过期记录"]:
+            right = k["现行数据上按规则应选"]
+            stale.append(
+                f"<b>*{C14[c]}.</b> The configuration was selected on a record computed before first-cycle CE was removed "
+                f"({k['选定时所用记录']['n']} pairs instead of {dg['开发集']['各类配对'][c]}). On the current data the same configuration scores "
+                f"{f2(k['同一配置在现行数据上']['开发集R2'])}; applied correctly, the selection rule picks {e(cfg14(right))} ({f2(right['总体'])}). "
+                f"The exam score {f2(exam['类别'][c]['总体'])} therefore belongs to a configuration that should not have been chosen. "
+                "Scoring the exam set again with the right configuration would be a second look at it, so that is left to your decision. "
+                f"The conclusion does not change: on the current data no single-class configuration reaches a development R² above {f2(right['总体'])}.")
+    stale_html = (f"<div class='callout warn'><b>Selection error found on 5 Nov (evening).</b> {dg['过期记录']['条数']} round-2 records in the log were computed "
+                  f"on the data before first-cycle CE was removed; they duplicate configurations re-run on the current data. Comparisons on this page use only "
+                  f"the {dg['现行数据上的配置数']} records on the current data.<br>{'<br>'.join(stale)}</div>") if stale else ""
+
+    # 同一改动跨篇一致性
+    co_html = ""
+    for c in C14:
+        x = cons[c]
+        top = change_en(x["例子"][0]) if x["例子"] else "—"
+        co_html += (f"<tr><td>{C14[c]}</td><td>{x['不同配方配对']}</td><td>{x['只改用量配对']}</td><td>{x['不同改动种数']}</td>"
+                    f"<td>{x['在≥2篇出现的改动种数']} <span class='note'>({x['在≥2篇出现的改动覆盖配对']} pairs · {x['覆盖比例']:.0%})</span></td>"
+                    f"<td>{f2(x['留一篇查表R2'])} · {x['方向一致率']:.0%} <span class='note'>(n = {x['查表配对数']})</span></td>"
+                    f"<td><b>{f2(x['只靠改动身份的上限R2'])}</b></td><td>{f2(ceil243.get(C14TO243[c]))}</td><td>{e(top)}</td></tr>")
+    cl = [cons[c]["只靠改动身份的上限R2"] for c in C14]
+    cv = [cons[c]["覆盖比例"] for c in C14]
+    c243 = list(ceil243.values())
+    fade, fade_r = exam["类别"]["每圈衰减率"], exam["类别"]["每圈衰减率"]["总体95%区间"]
+    phys = "; ".join(f"{C14[c].split(' (')[0]} {f2(fam(c, '只有物性/结构', True)['总体'])} vs {f2(fam(c, '只有组分身份', True)['总体'])}" for c in C14)
+
+    rej = [
+        ("Cycle number as an input for fade per cycle", "bad", "Leak · re-run without it in progress",
+         f"Δln(cycle number) alone explains R² {lk['总体']['只用Δln圈数R2']:.2f} of the development pairs "
+         f"({lk['跨测试、不同配方']['只用Δln圈数R2']:.2f} of cross-test pairs)",
+         "Against your 5 Nov rule: per-cycle fade = total loss ÷ cycle count, so the cycle count gives part of the answer away. "
+         "Re-run: output/改动模型_去圈数_313篇_2026-11-06/ (another session)."),
+        ("Target R² &gt; 0.8 (set 5 Nov)", "bad", "Out of reach · new target pending your decision",
+         f"Identity-only ceiling {min(cl):+.2f} to {max(cl):+.2f} (313 papers) and {min(c243):+.2f} to {max(c243):+.2f} (243 papers); "
+         f"best exam R² {f2(fade['总体'])}, inflated by the cycle-number leak",
+         "The same change has different effects in different papers, so a model that only knows what changed cannot be right on both sides. "
+         "Suggested replacement: the share of confirmed contradictions that test conditions explain."),
+        ("Cross-paper ranking via normalisation (03)", "bad", "Not usable", "V3 fails in iterations 2–4",
+         "Plan §8.7: if V3 fails, formulations cannot be ranked across papers. The ranking in 03 stays as a 30-paper illustration."),
+        ("Physical / structural descriptors as predictors", "trial", "Not adopted for prediction · kept for explanation",
+         f"Development R², physical / structural + conditions vs component identity + conditions: {phys}. Adding the solvation state changes R² by at most {max(st_d):.2f}",
+         "They are functions of the formulation, so they add information only if they capture mechanism that identity misses — not seen here. "
+         "They remain the language for explaining contradictions."),
+        ("Measured conductivity / viscosity (layer C)", "no", "Not adopted",
+         "Reported for 35–60% of the modelling data; both together for 55 formulations from 25 papers (243-paper run); no gain beyond noise", "Too sparse to train on."),
+        ("Properties imputed from composition (layer D)", "bad", "Rejected",
+         f"Imputation models score R² {imp_txt} when whole papers are left out; each was trained on {min(imp_n)}–{max(imp_n)} formulations",
+         "The imputed values are themselves not predictive."),
+        ("Molecular properties from PubChem (layer B)", "no", "Not available",
+         "Dielectric constant for 0 of 110 solvents, viscosity for 22; DME, DOL, EC and TTE missing; only a Gasteiger-charge proxy was tested",
+         "Needs handbook values (DN, dielectric constant) or the DFT/MD features of plan §7.17a."),
+        ("Mirror augmentation · equal weight per paper · winsorised target", "no", "No consistent gain",
+         f"On minus off: {min(trick_d):+.2f} to {max(trick_d):+.2f}; the sign changes between classes", "Used only where the selection rule happened to pick them."),
+        ("Multi-task training", "no", "No consistent gain", f"Joint minus single-class: {min(mt_d):+.2f} to {max(mt_d):+.2f}",
+         "The four classes do not share enough signal to borrow from each other."),
+        ("Cut-off voltage as an input", "no", "Removed (your decision, 5 Nov)",
+         "Requiring it left 4–9 condition-complete within-paper pairs per Li–S class; without it 26–30",
+         "Rarely reported. Its effect (LiNO₃ reduction below ≈ 1.6 V adds capacity) is handled when explaining contradictions, as in SAME001."),
+        ("First-cycle CE inside the CE classes", "trial", "Removed in iteration 4 · pending your confirmation",
+         "First-cycle CE spans 8.8–79.9% within P017, and cross-test pairing would match it against cycle-100 CE",
+         "It measures first-cycle irreversible loss (SEI formation, LiNO₃ reduction), not cycling efficiency."),
+        ("Capacity below 10 mAh g⁻¹ (P344, 1.51)", "no", "Removed", "Unit error in the extraction", "—"),
+        ("Selected full-cell CE configuration", "bad", "Selection error · exam re-score pending your decision",
+         "Chosen from a stale record; see the exam section", "The conclusion for full-cell CE (no transfer) does not change."),
+        ("Predicting absolute performance values", "planned", "Not tried · not counted as progress", "—",
+         "R² would be high because E/S, loading and rate set most of the absolute level — a condition and paper effect, not an electrolyte effect. "
+         "Useful only to measure how much the conditions explain."),
+        ("NORM and LOPO contradiction rules", "trial", "Proposed pause · pending your decision", "Both rely on the normalisation model, whose R² ≈ 0",
+         "SAME, FLIP and DESC need only directions and stay."),
+        ("Text embeddings (MatSciBERT) for statements", "trial", "Proposed deferral · pending your decision",
+         "Statements are generated from structured fields by a template",
+         "Matching the fields directly is more precise and easier to check; embeddings suit the authors' free-text mechanism claims (Q2) better."),
+        ("More data: values read from figures, the remaining 222 papers", "planned", "Option · costs extraction money",
+         "About 70% more papers; many control-side values exist only in figures",
+         "Adds pairs and repeated changes, but does not remove the paper-to-paper inconsistency."),
+        ("DFT/MD descriptors (plan §7.17a)", "planned", "Planned, for explanation rather than R²", "Not yet computed",
+         "A change gets the same computed values in every paper, so they cannot explain why its effect differs between papers; "
+         "they can explain mechanisms inside an attribution."),
+    ]
+    rj_html = "".join(f"<tr><td><b>{a}</b></td><td><span class='badge {cls}'>{s}</span></td><td>{ev}</td><td>{why}</td></tr>" for a, cls, s, ev, why in rej)
+    cards = (f"<div class='card'><span class='badge bad'>Exam set · best class · leaked</span><h3 style='font-size:29px;margin:10px 0 4px'>{f2(fade['总体'])}</h3>"
+             f"<p>Capacity fade per cycle · 95% interval {f2(fade_r[0])} to {f2(fade_r[1])} · {fade['n']} pairs from {fade['论文']} papers · "
+             f"inflated by the cycle-number leak. Other classes: "
+             f"{', '.join(f2(exam['类别'][c]['总体']) + star(c) for c in C14 if c != '每圈衰减率')}.</p></div>"
+             f"<div class='card'><span class='badge'>Configurations searched</span><h3 style='font-size:29px;margin:10px 0 4px'>{dg['现行数据上的配置数']}</h3>"
+             f"<p>On the current 313-paper data in four rounds, after 6 models (iteration 2) and 18 feature sets (iteration 3) per class on 243 papers.</p></div>"
+             f"<div class='card'><span class='badge bad'>Changes seen in ≥ 2 papers</span><h3 style='font-size:29px;margin:10px 0 4px'>{min(cv):.0%}–{max(cv):.0%}</h3>"
+             f"<p>of formulation-change pairs. Where a change does repeat, knowing it explains at most R² {min(cl):+.2f} to {max(cl):+.2f}.</p></div>")
+    lift = lambda c: f"{f2(no_c(c))} to {f2(wi_c(c))}"
+    reading = (f"<b>Reading.</b> (1) Swapping the electrolyte inside one test is not predictable across papers: the R² on same-test pairs stays between "
+               f"{min(st_vals):+.2f} and {max(st_vals):+.2f} for every descriptor family. (2) Test conditions help only for Li‖Cu CE, where adding them lifts the "
+               f"development R² from {lift('LiCu_CE')}. The larger lift for fade per cycle ({lift('每圈衰减率')}) comes almost entirely from the cycle number, "
+               "which leaks the answer. "
+               "(3) Physical and structural descriptors do no better than knowing which components are present. (4) Most changes appear in a single paper, "
+               "and the ones that repeat do not have a consistent effect. R² &gt; 0.8 is therefore out of reach on text-only literature data, whatever the model.")
+    steps = [("Find candidates", "On the 313-paper statements: SAME (identical change, opposite outcome), FLIP (same pair, condition flips the direction), "
+                                 "DESC (same descriptor direction, opposite outcome). None needs a model."),
+             ("Check the source", "Every candidate against the source text, with quotes: ✅ 🔶 ⚠️ ❌."),
+             ("Attribution · conditions", "Compare the two sides' test conditions: E/S, loading, cathode S, rate, temperature, Li thickness. "
+                                         "This comes first because a difference in conditions is the simplest reason for the same change to look different."),
+             ("Attribution · mechanisms", "For what conditions cannot explain, pull the mechanism claims and supporting measurements linked to each statement: "
+                                         "consensus, conflict, often claimed but not measured."),
+             ("DFT/MD", "What remains goes to the first DFT/MD batch (TTE and LiNO₃ first, plan §7.17a).")]
+    st_html = "".join(f"<div class='step'><span class='num'>{i}</span><div><b>{a}</b><p>{e(b)}</p></div></div>" for i, (a, b) in enumerate(steps, 1))
+    th = lambda cols: "<tr>" + "".join(f"<th>{x}</th>" for x in cols) + "</tr>"
+    cls4 = [C14[c] for c in C14]
+    return f"""<section id="modelling" class="panel" hidden><div class="section-head"><h2>Can the effect of an electrolyte change be predicted across papers?</h2>
+<span class="badge bad">Target R² &gt; 0.8 not reached</span></div>
+<p>For two formulations compared in one paper, a model trained on other papers predicts how far apart their performance is, given the formulations and test conditions.
+Four iterations, from 30 to 313 papers. Every validation leaves out whole papers, because formulations from one paper share a cathode, a process and a lab.
+R² = 1 is perfect; 0 equals predicting no difference; below 0 is worse than that.</p>
+<p class="note">Preliminary · AI-assisted, not yet confirmed item by item by the user · items marked “pending” await your decision · other tabs still show the 30-paper pilot</p>
+{leak_html}
+<div class="grid" style="margin-top:16px">{cards}</div>
+<div class="callout warn">{reading}</div>
+<h3 style="margin-top:26px">Iterations at a glance</h3>
+<div class="table-wrap"><table>{th(["#", "When · data", "Question · validation", "Inputs", "Models", "Best result (R²)", "Outcome"])}{it_html}</table></div>
+<p class="note">* Selected from a stale record; see the exam section below.</p>
+<div class="section-head" style="margin-top:32px"><h2>Iteration 4 in detail</h2><span class="note">313 papers · change model · {dg['迭代配置总数']} records logged, {dg['现行数据上的配置数']} on the current data</span></div>
+<div class="two"><div class="sheet"><div class="eyebrow">Descriptor groups</div>
+<div class="table-wrap"><table>{th(["Group", "Features", "Contents"])}{g_html}</table></div>
+<p class="note">Each formulation feature enters as experiment − reference plus the reference value; conditions likewise. Target: difference in ln capacity, −ln fade per cycle
+or −ln(100 − CE); positive means the experiment side is better. Pair types: same test, other formulation · other test, other formulation · same formulation, other condition.</p></div>
+<div class="sheet"><div class="eyebrow">Search rounds</div>
+<div class="table-wrap"><table>{th(["Round", "Configs", "What changed", "Descriptor sets", "Models"])}{r_html}</table></div>
+<p class="note">Selection rule fixed before the exam: per class, the highest paper-grouped 5-fold development R², single-class training. Picking the best of many configurations makes development scores optimistic.</p></div></div>
+<h3 style="margin-top:26px">Descriptors versus test conditions · development set</h3>
+<p class="note">Best configuration per cell. Small print: R² on same-test, other-formulation pairs — the pure electrolyte effect.
+Fade-per-cycle values with conditions include the cycle-number leak.</p>
+<div class="table-wrap"><table>{th(["Inputs"] + cls4)}{f_html}</table></div>
+<h3 style="margin-top:22px">Training tricks and multi-task · development set</h3>
+<div class="table-wrap"><table>{th(["Variant", "Shown as"] + cls4)}{t_html}</table></div>
+<h3 style="margin-top:22px">Exam set · scored once</h3>
+<div class="table-wrap"><table>{th(["Class", "Selected configuration", "Dev R² at selection", "Exam pairs · papers", "Exam R²", "95% interval",
+                                    "Same test", "Other test", "Condition change"])}{ex_html}</table></div>
+{stale_html}
+<div class="section-head" style="margin-top:32px"><h2>Why R² &gt; 0.8 is out of reach</h2><span class="note">Development set only · exam papers not read</span></div>
+<p>A change is what one side has that the other lacks (adding X and removing X count as one change in two directions). If adding TTE helps in one paper and hurts in another,
+a model that knows only “TTE was added” must give both the same prediction and is wrong on at least one. The share of variance left within repeated changes bounds what any such model can reach.</p>
+<div class="table-wrap"><table>{th(["Class", "Formulation-change pairs", "Amount only", "Distinct changes", "Seen in ≥ 2 papers", "Lookup from other papers: R² · direction",
+                                    "Identity-only ceiling", "Ceiling, 243-paper run", "Most repeated change (effect in ln units, + = better)"])}{co_html}</table></div>
+<p class="note">Lookup: predict a pair from the mean effect of the same change in other papers. Ceiling: 1 − within-change variance / total variance, in-sample (optimistic).
+Few repeated changes (1–3 per class), so these are rough estimates. ADD_TRIAL is the placeholder for additives whose structure was not verified,
+so its “repeats” may be different additives.</p>
+<div class="section-head" style="margin-top:32px"><h2>Not adopted, and why</h2></div>
+<div class="table-wrap"><table>{th(["Item", "Status", "Evidence", "Reason"])}{rj_html}</table></div>
+<div class="section-head" style="margin-top:32px"><h2>Proposed next step · contradiction analysis</h2><span class="badge planned">Awaiting your decision</span></div>
+<div class="sheet">{st_html}</div>
+<div class="callout">Files: <span class="mono">output/表述试跑243篇_2026-11-04/</span> 试跑建模结果.json, 物性对比/ ·
+<span class="mono">output/改动模型_313篇_2026-11-05/</span> 选定配置.json, 考试结果.json, 迭代记录.jsonl, 诊断.json.
+Scripts: <span class="mono">scripts/step13g_试跑243篇建模/</span>, <span class="mono">scripts/step14_改动模型/</span> (pairs, search, final, diagnose).</div></section>"""
+
+
 def main() -> None:
     a, b, c, e13 = (read_json(f"step13{x}_汇总.json") for x in "abce")
     sts = read_json("表述.json")
@@ -190,8 +522,9 @@ Statements are normalised to one common test condition so that papers can be com
 </section>
 <nav role="tablist">
 <button role="tab" aria-selected="true" data-panel="overview">01 · Overview</button><button role="tab" aria-selected="false" data-panel="statements">02 · Statements</button>
-<button role="tab" aria-selected="false" data-panel="normalise">03 · Normalisation</button><button role="tab" aria-selected="false" data-panel="conflicts">04 · Contradictions</button>
-<button role="tab" aria-selected="false" data-panel="figures">05 · Figures</button><button role="tab" aria-selected="false" data-panel="data">06 · Methods &amp; data</button></nav>"""
+<button role="tab" aria-selected="false" data-panel="normalise">03 · Normalisation</button><button role="tab" aria-selected="false" data-panel="modelling">04 · Modelling</button>
+<button role="tab" aria-selected="false" data-panel="conflicts">05 · Contradictions</button>
+<button role="tab" aria-selected="false" data-panel="figures">06 · Figures</button><button role="tab" aria-selected="false" data-panel="data">07 · Methods &amp; data</button></nav>"""
 
     # ---------- 01 overview ----------
     fcards = "".join(f'<div class="card"><span class="badge {"trial" if k in (1, 2) else ""}">Finding {k + 1:02d}</span><p>{e(x)}</p></div>'
@@ -205,6 +538,8 @@ Statements are normalised to one common test condition so that papers can be com
     s0 = max(pool, key=known) if pool else sts[0]
     overview = f"""<section id="overview" class="panel"><div class="section-head"><h2>What the pilot shows</h2>
 <span class="note">Analysis set: rate capacity excluded · discharge capacity = first cycle only (your decision)</span></div>
+<div class="callout"><b>Update · 5 Nov 2026.</b> Modelling on 243 and 313 papers — methods, descriptors, results and what was not adopted — is in
+<a href="#modelling" onclick="$('nav button[data-panel=modelling]').click();return false">04 · Modelling</a>. The other tabs still show the 30-paper pilot of 4 Nov.</div>
 <div class="grid">{fcards}</div>
 <div class="callout warn"><b>Decisions still open</b><ul style="margin:6px 0 0 18px;padding:0">{pend}</ul></div>
 <div class="two"><div class="sheet"><div class="eyebrow">How a statement is built · plan §8.7</div>
@@ -280,7 +615,8 @@ Direction = share of formulation-vs-control comparisons with the right sign (cha
 <h3 style="margin-top:22px">V4 · ranking stability (selected model, common condition)</h3>
 <div class="table-wrap"><table><tr><th>Class</th><th>Model</th><th>Formulations ranked</th><th>Rank correlation (median, 95% range)</th><th>Top-5 overlap</th></tr>{v4}</table></div>
 <div class="callout warn"><b>Reading.</b> With 30 papers, V1 R² stays near zero: the formulation part of the model does not transfer to unseen papers, although the direction is often right (0.75 for first-cycle capacity, 0.87 for retention).
-V2 is positive for first-cycle capacity (0.33) and retention (0.14), so the condition correction helps somewhat. CE has only 5 papers per type. The standard-ether baseline is a pilot choice pending your decision.</div>
+V2 is positive for first-cycle capacity (0.33) and retention (0.14), so the condition correction helps somewhat. CE has only 5 papers per type. The standard-ether baseline is a pilot choice pending your decision.
+<br><b>Later runs (243 and 313 papers):</b> V3 fails as well, so the cross-paper ranking below remains an illustration — see 04 · Modelling.</div>
 <iframe class="fig" data-src="图/图5a_模型比较.html" height="600"></iframe>
 <iframe class="fig" data-src="图/图5b_主模型验证散点.html" height="840" style="margin-top:14px"></iframe>
 <div class="section-head" style="margin-top:32px"><h2>Standard condition</h2><span class="note">You chose one set for all classes; values follow the data-density rule</span></div>
@@ -295,7 +631,9 @@ Practical condition: E/S 5 and loading 4 (plan §7.8). To be recomputed on the f
 <iframe class="fig" data-src="图/图7_标准醚跨篇归一化前后.html" height="900" style="margin-top:14px"></iframe>
 <h3 style="margin-top:22px">Ranking table</h3><div id="tRank"></div></section>"""
 
-    # ---------- 04 contradictions ----------
+    modelling = modelling_panel(nres)
+
+    # ---------- 05 contradictions ----------
     counts = {k: sum(x["类型"] == k for x in cands) for k in CTYPE}
     chips = f'<button data-t="all" aria-pressed="true">All · {len(cands)}</button>' + "".join(
         f'<button data-t="{k}" aria-pressed="false">{k} · {counts[k]}</button>' for k in CTYPE)
@@ -374,8 +712,8 @@ Capacities with an unstated basis stay separate: definitions that differ are not
                "const hh=location.hash.slice(1);if(hh&&$('nav button[data-panel=\"'+hh+'\"]'))$('nav button[data-panel=\"'+hh+'\"]').click();")
     page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Li–S Statement Atlas · Pilot</title><style>{CSS}</style></head><body>
-<header><div class="brand"><span class="mark">S</span>Li–S Statement Atlas</div><div class="meta">LI–S ELECTROLYTE CONFLICTS / 04 NOV 2026 / PILOT</div></header>
-<main>{hero}{overview}{statements}{norm}{conflicts}{figures}{data}
+<header><div class="brand"><span class="mark">S</span>Li–S Statement Atlas</div><div class="meta">LI–S ELECTROLYTE CONFLICTS / 04 NOV 2026 / PILOT · MODELLING UPDATED 05 NOV</div></header>
+<main>{hero}{overview}{statements}{norm}{modelling}{conflicts}{figures}{data}
 <div class="footer"><span>Preliminary · 30 papers (F-version, rule-processed) · AI-assisted, not yet confirmed item by item by the user</span><span>Opens offline · no network needed</span></div></main>
 <script>const D={j(det)};{JS}{js_data}</script></body></html>"""
     (SITE / "index.html").write_text(page, encoding="utf-8")
