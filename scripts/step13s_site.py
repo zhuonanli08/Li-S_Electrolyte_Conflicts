@@ -220,6 +220,8 @@ def modelling_panel(nres: dict) -> str:
     dg = json.loads((M313 / "诊断.json").read_text(encoding="utf-8"))
     cons, cmp_, chk, v = dg["同一改动跨篇一致性"], dg["迭代记录对比"], dg["选定配置核对"], dg["组分词表大小"]
     lk = dg["圈数泄漏检查"]["每圈衰减率"]
+    rrf = ROOT / "output" / "改动模型_去圈数_313篇_2026-11-06" / "考试结果.json"  # 另一会话 11-06 去圈数重考
+    rr = json.loads(rrf.read_text(encoding="utf-8")) if rrf.exists() else None
     lk_other = max(dg["圈数泄漏检查"][c]["总体"]["只用Δln圈数R2"] for c in C14 if c != "每圈衰减率")
     leak_html = (f"<div class='callout warn'><b>Cycle-number leak in fade per cycle (found 5 Nov late evening; checked here).</b> Iteration 4 kept ln(cycle number) "
                  f"among the inputs for fade per cycle, against your 5 Nov rule. The difference in ln(cycle number) alone explains R² "
@@ -227,8 +229,12 @@ def modelling_panel(nres: dict) -> str:
                  f"{lk['同测试、不同配方']['只用Δln圈数R2']:.2f} of same-test pairs, where both sides share the cycle number. Per-cycle fade is the total loss divided "
                  f"by the cycle count, so the cycle count gives part of the answer away. The fade-per-cycle results below (development, exam, and the lift from "
                  f"adding conditions) are therefore not evidence that anything transfers. For the other classes the same check gives R² ≤ {lk_other:.2f}. "
-                 "A re-run without cycle number is in progress in another session (<span class='mono'>output/改动模型_去圈数_313篇_2026-11-06/</span>); "
-                 "this page will be updated when it finishes.</div>")
+                 + (f"<br><b>Re-run without cycle number (another session, 6 Nov; exam set used a second time).</b> Selected configuration "
+                    f"{e(cfg14(rr['配置']['每圈衰减率']))}, development R² {f2(rr['配置']['每圈衰减率']['开发集R2'])}; exam R² <b>{f2(rr['类别']['每圈衰减率']['总体'])}</b> "
+                    f"(95% interval {f2(rr['类别']['每圈衰减率']['总体95%区间'][0])} to {f2(rr['类别']['每圈衰减率']['总体95%区间'][1])}), same-test pairs "
+                    f"{f2(rr['类别']['每圈衰减率']['同测试、不同配方'])}, pairs whose cycle numbers differ ≤ 5× {f2(rr['类别']['每圈衰减率']['圈数相差≤5倍']['R2'])}. "
+                    "So without the leak, fade per cycle does not transfer either. Files: <span class='mono'>output/改动模型_去圈数_313篇_2026-11-06/</span>."
+                    if rr else "A re-run without cycle number is in progress in another session.") + "</div>")
     fam = lambda c, f, cond: cmp_[c]["按描述符与条件"].get(f"{f}｜{'加条件' if cond else '不加条件'}")
 
     # 第 1–3 次迭代（30 篇、243 篇）
@@ -355,9 +361,10 @@ def modelling_panel(nres: dict) -> str:
     phys = "; ".join(f"{C14[c].split(' (')[0]} {f2(fam(c, '只有物性/结构', True)['总体'])} vs {f2(fam(c, '只有组分身份', True)['总体'])}" for c in C14)
 
     rej = [
-        ("Cycle number as an input for fade per cycle", "bad", "Leak · re-run without it in progress",
+        ("Cycle number as an input for fade per cycle", "bad", "Leak · removed and re-examined" if rr else "Leak · re-run without it in progress",
          f"Δln(cycle number) alone explains R² {lk['总体']['只用Δln圈数R2']:.2f} of the development pairs "
-         f"({lk['跨测试、不同配方']['只用Δln圈数R2']:.2f} of cross-test pairs)",
+         f"({lk['跨测试、不同配方']['只用Δln圈数R2']:.2f} of cross-test pairs)"
+         + (f"; without it the exam R² is {f2(rr['类别']['每圈衰减率']['总体'])}" if rr else ""),
          "Against your 5 Nov rule: per-cycle fade = total loss ÷ cycle count, so the cycle count gives part of the answer away. "
          "Re-run: output/改动模型_去圈数_313篇_2026-11-06/ (another session)."),
         ("Target R² &gt; 0.8 (set 5 Nov)", "bad", "Out of reach · new target pending your decision",
@@ -410,7 +417,8 @@ def modelling_panel(nres: dict) -> str:
     rj_html = "".join(f"<tr><td><b>{a}</b></td><td><span class='badge {cls}'>{s}</span></td><td>{ev}</td><td>{why}</td></tr>" for a, cls, s, ev, why in rej)
     cards = (f"<div class='card'><span class='badge bad'>Exam set · best class · leaked</span><h3 style='font-size:29px;margin:10px 0 4px'>{f2(fade['总体'])}</h3>"
              f"<p>Capacity fade per cycle · 95% interval {f2(fade_r[0])} to {f2(fade_r[1])} · {fade['n']} pairs from {fade['论文']} papers · "
-             f"inflated by the cycle-number leak. Other classes: "
+             f"inflated by the cycle-number leak"
+             + (f"; re-examined without it: <b>{f2(rr['类别']['每圈衰减率']['总体'])}</b>" if rr else "") + ". Other classes: "
              f"{', '.join(f2(exam['类别'][c]['总体']) + star(c) for c in C14 if c != '每圈衰减率')}.</p></div>"
              f"<div class='card'><span class='badge'>Configurations searched</span><h3 style='font-size:29px;margin:10px 0 4px'>{dg['现行数据上的配置数']}</h3>"
              f"<p>On the current 313-paper data in four rounds, after 6 models (iteration 2) and 18 feature sets (iteration 3) per class on 243 papers.</p></div>"
@@ -439,7 +447,7 @@ def modelling_panel(nres: dict) -> str:
 <p>For two formulations compared in one paper, a model trained on other papers predicts how far apart their performance is, given the formulations and test conditions.
 Four iterations, from 30 to 313 papers. Every validation leaves out whole papers, because formulations from one paper share a cathode, a process and a lab.
 R² = 1 is perfect; 0 equals predicting no difference; below 0 is worse than that.</p>
-<p class="note">Preliminary · AI-assisted, not yet confirmed item by item by the user · items marked “pending” await your decision · other tabs still show the 30-paper pilot</p>
+<p class="note">Preliminary · AI-assisted, not yet confirmed item by item by the user · items marked “pending” await your decision · Statements, Normalisation and Contradictions still show the 30-paper pilot</p>
 {leak_html}
 <div class="grid" style="margin-top:16px">{cards}</div>
 <div class="callout warn">{reading}</div>
@@ -539,7 +547,8 @@ Statements are normalised to one common test condition so that papers can be com
     overview = f"""<section id="overview" class="panel"><div class="section-head"><h2>What the pilot shows</h2>
 <span class="note">Analysis set: rate capacity excluded · discharge capacity = first cycle only (your decision)</span></div>
 <div class="callout"><b>Update · 5 Nov 2026.</b> Modelling on 243 and 313 papers — methods, descriptors, results and what was not adopted — is in
-<a href="#modelling" onclick="$('nav button[data-panel=modelling]').click();return false">04 · Modelling</a>. The other tabs still show the 30-paper pilot of 4 Nov.</div>
+<a href="#modelling" onclick="$('nav button[data-panel=modelling]').click();return false">04 · Modelling</a>. Figs. 1–4 in 06 · Figures now use 313 papers and molecular-structure descriptors, with clustering and the heat map drawn
+separately. Statements, Normalisation and Contradictions still show the 30-paper pilot of 4 Nov.</div>
 <div class="grid">{fcards}</div>
 <div class="callout warn"><b>Decisions still open</b><ul style="margin:6px 0 0 18px;padding:0">{pend}</ul></div>
 <div class="two"><div class="sheet"><div class="eyebrow">How a statement is built · plan §8.7</div>
@@ -654,19 +663,40 @@ Practical condition: E/S 5 and loading 4 (plan §7.8). To be recomputed on the f
 NORM: only 3 cross-paper pairs share the same formulation and none differs by ≥1.5× after normalisation. LOPO runs only where the selected model's V1 R² &gt; 0; skipped: {e(skip)}. FLIP: none in this analysis set.</div>
 <div class="chips" id="ctype">{chips}</div><div class="grid2">{''.join(cc)}</div></section>"""
 
-    # ---------- 05 figures ----------
-    figs = [("图1a_配方组分共现网络.html", "Fig. 1a · Component co-occurrence", "Formulation only. Node size = formulations using the component; edge width = formulations containing both. Hover for counts; drag to zoom."),
-            ("图1b_四部分共现网络.html", "Fig. 1b · Four-part co-occurrence", "Components, properties, condition tiers and performance tiers (tertiles of normalised values) appearing in the same statements; edges ≥10 statements."),
-            ("图2a_配方物性弦图.svg", "Fig. 2a · Formulation × property chord", "Which component classes have which properties reported, counted per formulation; gaps show missing measurements."),
-            ("图2b_四部分弦图.svg", "Fig. 2b · Four-group chord", "Component class, property, key test condition and performance class; ribbon width = statements containing both (≥15)."),
-            ("图3_四部分聚类热图.html", "Fig. 3 · Clustered heat map", "One row per formulation; columns grouped into formulation, property, condition and normalised performance. Grey = not reported or extrapolated."),
-            ("图4_表述文字向量图.html", "Fig. 4 · Statement text map", "English statements embedded with character n-grams and projected with UMAP; nearby points read alike. Switch colouring at top right.")]
+    # ---------- 06 figures（11-05 用户定：图 1–4 用 313 篇、分子结构描述符，聚类与热图分开；图 5 仍是 30 篇文字向量图） ----------
+    hs = json.loads((ROOT / "output" / "表述试跑313篇_2026-11-05" / "结构描述符图" / "step13h_汇总.json").read_text(encoding="utf-8"))
+    h3 = hs["图3"]
+    figs = [
+        ("图1a_结构描述符共现网络.html", "Fig. 1a · Structural-descriptor co-occurrence",
+         "Nodes are structural descriptors, not components. A descriptor is “present” (&gt; 0) when most formulations have none of it; otherwise “low / high” = bottom / top third "
+         "(where many formulations share the standard-ether value, low / high mean below / above it; the middle third is not drawn). Colour = descriptor family; "
+         f"edge = formulations having both (≥ {hs['图1a']['最小边权']}). {hs['配方']} formulations from {hs['论文']} papers.", 840, True),
+        ("图1b_描述符物性条件性能共现网络.html", "Fig. 1b · Structure, property, condition and performance",
+         "Per statement: descriptor states of the formulation, properties reported by the same paper, condition tiers, and whether the formulation beat its own control in the "
+         f"same test (better or worse by more than 5%). Edges ≥ {hs['图1b']['最小边权']} statements. Only “better” nodes pass the threshold: papers mostly report improvements "
+         "over their own control.", 840, True),
+        ("图2a_描述符物性弦图.svg", "Fig. 2a · Structural descriptor × property reported",
+         "Which descriptor states come with which properties, counted per formulation; thin arcs mark properties rarely reported for that kind of formulation.", None, False),
+        ("图2b_描述符四部分弦图.svg", "Fig. 2b · Structure × property × condition × performance",
+         f"Only the {hs['图2b表述数']} statements whose formulation can be compared with its own control in the same test, so that all four groups appear.", None, False),
+        ("图3_配方结构聚类.html", "Fig. 3 · Clustering by molecular-structure descriptors",
+         f"{h3['进入聚类的配方']} formulations ({h3['论文']} papers) with all {len(h3['聚类用描述符'])} solvent-structure and elemental-ratio descriptors; rank-normal scores, "
+         f"Ward linkage, k = {h3['簇数']} (best silhouette with every cluster ≥ 10). Amounts (salt, LiNO₃, diluent) are not used and are listed per cluster. "
+         "Most formulations fall into one ether cluster: they differ in additives and amounts, which structure descriptors do not capture.", 980, True),
+        ("图4_描述符相关热图.html", "Fig. 4 · Heat map · descriptors × properties, conditions and performance",
+         "Spearman ρ, blank when n &lt; 15. Properties and conditions: descriptor level across formulations. Performance: within-paper pairs, Δ descriptor "
+         "(formulation − its control) against the gain over that control. Hover for n and number of papers.", 1020, True),
+        ("图4_表述文字向量图.html", "Fig. 5 · Statement text map (30-paper pilot)",
+         "Unchanged from 4 Nov: English statements embedded with character n-grams and projected with UMAP; nearby points read alike.", 640, False)]
     fc = []
-    for fn, title, desc in figs:
+    for fn, title, desc, hgt, wide in figs:
         body = (f'<a href="图/{fn}" target="_blank"><img class="fig" src="图/{fn}" alt="{e(title)}"></a>' if fn.endswith(".svg")
-                else f'<iframe class="fig" data-src="图/{fn}" height="{820 if "图3" in fn else 640}"></iframe>')
-        fc.append(f'<div class="card"><div class="card-top"><h3 style="margin:0">{title}</h3><a class="note" href="图/{fn}" target="_blank">open ↗</a></div><p>{desc}</p>{body}</div>')
-    figures = f"""<section id="figures" class="panel" hidden><div class="section-head"><h2>Association figures</h2><span class="note">Preliminary · 30 papers · association, not causation · duplicate statements counted once</span></div>
+                else f'<iframe class="fig" data-src="图/{fn}" height="{hgt}"></iframe>')
+        sty = " style='grid-column:1/-1'" if wide else ""  # 聚类、热图占整行
+        fc.append(f'<div class="card"{sty}><div class="card-top"><h3 style="margin:0">{title}</h3>'
+                  f'<a class="note" href="图/{fn}" target="_blank">open ↗</a></div><p>{desc}</p>{body}</div>')
+    figures = f"""<section id="figures" class="panel" hidden><div class="section-head"><h2>Association figures</h2><span class="note">Figs. 1–4: 313 papers, main layer
+(Li‖S sulfur–carbon, Li‖Cu), molecular-structure descriptors (5 Nov) · Fig. 5: 30-paper pilot · association, not causation · duplicate statements counted once</span></div>
 <div class="grid2">{''.join(fc)}</div></section>"""
 
     # ---------- 06 methods & data ----------

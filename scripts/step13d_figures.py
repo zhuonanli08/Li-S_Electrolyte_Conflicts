@@ -3,7 +3,9 @@
 图1 共现网络：1a 配方组分共现；1b 组分＋物性＋条件档＋性能档（按表述共现）
 图2 弦图：2a 组分化学类别 ↔ 物性类别；2b 组分类别、物性、条件、性能四组之间
 图3 聚类图：每个配方一行，列分四块（配方描述符｜物性｜条件｜性能），层次聚类排序
-图4 文字向量图：整条表述文字 → TF-IDF 字符 n-gram → SVD → UMAP 二维
+图4 文字向量图：整条表述文字 → TF-IDF 字符 n-gram → SVD → UMAP 二维（11-05 起网站上编号为图 5）
+11-05 用户定：图 1–3 不再用组分名/化学类别，由 step13h_descriptor_figures.py（313 篇、分子结构描述符、聚类与热图分开）取代；
+  本脚本的图 1–3 旧输出已移到本机 不适用/，网站不再引用。
 输出：网站/图/*.html（plotly，交互）、网站/图/*.svg/png（弦图，matplotlib），step13d_汇总.json
 图形表示关联，不证明因果；疑似重复组每组只计一次。
 """
@@ -427,7 +429,7 @@ def main() -> None:
         vis = [a <= i < b for i in range(len(traces))]
         buttons.append(dict(label=f"Colour by {key}", method="update", args=[{"visible": vis}]))
     fig = go.Figure(traces)
-    fig.update_layout(title=f"Fig. 4 · Statement text map (TF-IDF character n-grams → UMAP)<br>{TITLE_NOTE}",
+    fig.update_layout(title=f"Fig. 5 · Statement text map (TF-IDF character n-grams → UMAP)<br>{TITLE_NOTE}",
                       template="plotly_white", height=760, updatemenus=[dict(buttons=buttons, x=1.0, y=1.12, xanchor="right")],
                       xaxis=dict(title="UMAP-1"), yaxis=dict(title="UMAP-2"), font=FONT)
     fig.write_html(FIG / "图4_表述文字向量图.html", include_plotlyjs="directory")
