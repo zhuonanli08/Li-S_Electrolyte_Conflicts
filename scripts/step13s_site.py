@@ -14,6 +14,9 @@ import math
 import re
 
 from step13_common import COMP, OUT, ROOT, in_analysis, read_json
+import sys as _sys
+_sys.path.insert(0, str(ROOT / "scripts" / "step15_meta"))
+from site_meta import leak_note, meta_panel  # 11-06：05 · Meta & attribution（图由 step15_meta/D_site.py figs 先画好）
 from step13_i18n import (BASIS, BATT, CAT, CSTATE, CTYPE, DIR, MODEL, PROP, SRC, STAGE, STD, STDKEY, STDSET,
                          recipe_en, statement_en, t)
 
@@ -531,8 +534,8 @@ Statements are normalised to one common test condition so that papers can be com
 <nav role="tablist">
 <button role="tab" aria-selected="true" data-panel="overview">01 · Overview</button><button role="tab" aria-selected="false" data-panel="statements">02 · Statements</button>
 <button role="tab" aria-selected="false" data-panel="normalise">03 · Normalisation</button><button role="tab" aria-selected="false" data-panel="modelling">04 · Modelling</button>
-<button role="tab" aria-selected="false" data-panel="conflicts">05 · Contradictions</button>
-<button role="tab" aria-selected="false" data-panel="figures">06 · Figures</button><button role="tab" aria-selected="false" data-panel="data">07 · Methods &amp; data</button></nav>"""
+<button role="tab" aria-selected="false" data-panel="meta">05 · Meta &amp; attribution</button><button role="tab" aria-selected="false" data-panel="conflicts">06 · Contradictions</button>
+<button role="tab" aria-selected="false" data-panel="figures">07 · Figures</button><button role="tab" aria-selected="false" data-panel="data">08 · Methods &amp; data</button></nav>"""
 
     # ---------- 01 overview ----------
     fcards = "".join(f'<div class="card"><span class="badge {"trial" if k in (1, 2) else ""}">Finding {k + 1:02d}</span><p>{e(x)}</p></div>'
@@ -641,6 +644,9 @@ Practical condition: E/S 5 and loading 4 (plan §7.8). To be recomputed on the f
 <h3 style="margin-top:22px">Ranking table</h3><div id="tRank"></div></section>"""
 
     modelling = modelling_panel(nres)
+    _h = '<section id="modelling" class="panel" hidden>'
+    modelling = modelling.replace(_h, _h + leak_note(), 1)  # 11-06 圈数泄漏更正
+    meta, meta_js = meta_panel()
 
     # ---------- 05 contradictions ----------
     counts = {k: sum(x["类型"] == k for x in cands) for k in CTYPE}
@@ -739,11 +745,12 @@ Capacities with an unstated basis stay separate: definitions that differ are not
                f"table('tRank',{j(fr_cols)},{j(fr_rows)},{{selects:[0,1]}});"
                f"table('tAlias',{j(a_cols)},{j(a_rows)},{{selects:[4]}});table('tProp',{j(p_cols)},{j(p_rows)},{{selects:[0]}});"
                f"table('tCond',{j(c_cols)},{j(c_rows)},{{selects:[0]}});table('tCath',{j(s_cols)},{j(s_rows)},{{selects:[5]}});"
+               + meta_js +
                "const hh=location.hash.slice(1);if(hh&&$('nav button[data-panel=\"'+hh+'\"]'))$('nav button[data-panel=\"'+hh+'\"]').click();")
     page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Li–S Statement Atlas · Pilot</title><style>{CSS}</style></head><body>
-<header><div class="brand"><span class="mark">S</span>Li–S Statement Atlas</div><div class="meta">LI–S ELECTROLYTE CONFLICTS / 04 NOV 2026 / PILOT · MODELLING UPDATED 05 NOV</div></header>
-<main>{hero}{overview}{statements}{norm}{modelling}{conflicts}{figures}{data}
+<header><div class="brand"><span class="mark">S</span>Li–S Statement Atlas</div><div class="meta">LI–S ELECTROLYTE CONFLICTS / 04 NOV 2026 / PILOT · MODELLING UPDATED 05 NOV · META &amp; ATTRIBUTION 06 NOV</div></header>
+<main>{hero}{overview}{statements}{norm}{modelling}{meta}{conflicts}{figures}{data}
 <div class="footer"><span>Preliminary · 30 papers (F-version, rule-processed) · AI-assisted, not yet confirmed item by item by the user</span><span>Opens offline · no network needed</span></div></main>
 <script>const D={j(det)};{JS}{js_data}</script></body></html>"""
     (SITE / "index.html").write_text(page, encoding="utf-8")

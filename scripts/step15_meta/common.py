@@ -20,6 +20,8 @@
   作者自己的用语另存，两者不一致的列出来。
 - 测试名写明是逐行引用其他论文数据的（如 P293“表S1文献44第1行容量”）不进：不同课题组的数据不能当同一篇比较。
 - 考试集：沿用 改动模型_313篇_2026-11-05/划分.json 的 31 篇；不在原划分论文全集里的论文一律归开发集。
+v2（11-06，归因读原文后修）：用量为 0 的组分当作没有；两边都有 LiNO₃ 时先比原文用量；“每圈保持率”换算为 100 − 值；
+高浓另要求主盐 ≥ 3 mol/L 溶剂；活性物对比、饱和多硫化物工作液、流动电池的测试不进。输出到 meta共同准备_313篇_v2_2026-11-06/。
 用法：D:\\anaconda\\envs\\papertrail\\python.exe -X utf8 common.py
 """
 import os
@@ -37,7 +39,7 @@ os.environ.setdefault("KETI2_OUT", str(ROOT / "output" / "表述试跑313篇_202
 sys.path.insert(0, str(ROOT / "scripts" / "step13g_试跑243篇建模"))
 from feats3 import *  # noqa: F401,F403  N、PAPERS、COMPREC、CTAB、struct、state、rd5、字段限制等
 
-OUTD = ROOT / "output" / "meta共同准备_313篇_2026-11-06"
+OUTD = ROOT / "output" / "meta共同准备_313篇_v2_2026-11-06"  # 11-06 v2：按归因读原文发现的问题修正；v1（同名不带 v2）是方案 A、B 考试用的输入，由 commit 24d3ab8 的本脚本生成
 SPLIT = json.loads((ROOT / "output" / "改动模型_313篇_2026-11-05" / "划分.json").read_text(encoding="utf-8"))
 TEST = set(SPLIT["考试集论文"])
 CLASSES = ["首圈容量", "每圈衰减率", "全电池CE", "LiCu_CE"]
@@ -59,7 +61,7 @@ COND = {"首圈容量": ["ln_ES", "载量", "含硫", "ln_倍率", "温度", "�
         "LiCu_CE": ["ln_电流", "ln_沉积容量", "温度", "ln_圈数", "Aurbach法"]}
 # 局部高浓 / 高浓的组成判据（只看组成，不看性能；阈值按常见配方定：1 M LiTFSI DOL/DME 每 Li⁺ 约 24 个位点，
 # 3 M 以上或 LiFSI:DME:TTE = 1:1.2:3 这类每 Li⁺ ≤ 6 个）
-HC_SITES, DIL_MIN = 6.0, 0.2
+HC_SITES, DIL_MIN, HC_SALT = 6.0, 0.2, 3.0
 
 
 def ln(x):
@@ -205,6 +207,13 @@ def salt_solvent_ratio(p, rid):
     return (coord / li if li else None), (sum(n[c] for c in sv if (sites(c) or 0) == 0) / tot if tot else None)
 
 
+def salt_per_litre(p, rid):
+    """主盐每升溶剂的物质的量（只有按每升算得出时才有；摩尔份配方返回 None）。"""
+    n = (COMPREC.get((p, rid)) or {}).get("每升溶剂物质的量_mol") or {}
+    v = [n[c] for c in n if CTAB.get(c, {}).get("类别") == "锂盐"]
+    return sum(v) if v else None
+
+
 def comp_class(p, rid, flags=None):
     """按组成判：局部高浓（稀释剂 ≥ 20 mol% 且每个主盐 Li⁺ ≤ 6 个可配位位点）、高浓（稀释剂不足但每 Li⁺ ≤ 6）、常规。
     组成算不出时：作者自称局部高浓、且配方含可配位位点为 0 的氟化醚，记局部高浓并标“局部高浓按作者用语”。"""
@@ -219,13 +228,17 @@ def comp_class(p, rid, flags=None):
     if r == 0:  # 只有单一弱配位溶剂（P371 F4DEE、P369 DMMS、P278 FPY3），没有溶剂化溶剂，不是局部高浓
         return "无配位溶剂"
     if r <= HC_SITES:
-        return "局部高浓" if (dil or 0) >= DIL_MIN else "高浓"
+        if (dil or 0) >= DIL_MIN:
+            return "局部高浓"
+        m = salt_per_litre(p, rid)  # v2：高浓还要求主盐 ≥ 3 mol/L 溶剂（2 M LiFSI/DBE 只因 DBE 位点少而被判高浓，P288）
+        return "高浓" if m is None or m >= HC_SALT else "常规"
     return "常规"
 
 
 def comps(p, rid):
+    """配方组分；v2：原文用量为 0 的组分当作没有（P266 THE 0 vt.%、P175 N-CDs 0 wt%、P103 IL 0 wt% 曾使“加 X”被判成“改浓度”）。"""
     rec = COMPREC.get((p, rid))
-    return {i["组分"]: i for i in rec["组分"]} if rec else None
+    return {i["组分"]: i for i in rec["组分"] if i.get("数值") != 0} if rec else None
 
 
 def kind_of(c):
@@ -244,6 +257,18 @@ def kind_of(c):
     if chem.startswith("有机硫"):
         return "有机硫"
     return "添加剂"
+
+
+def lino3_changed(ce, cr, d_exp, d_ref):
+    """v2：两边都有 LiNO₃ 时先比原文用量（同单位同数值就不算改动；P313、P272 同为 2 wt%/1 wt%，换算后每升略有差别曾被误判），
+    单位不同才比换算后的浓度（相对差 > 10%）。"""
+    a, b = ce.get("LiNO3"), cr.get("LiNO3")
+    if not a or not b:
+        return False
+    if a.get("单位类别") == b.get("单位类别") and a.get("数值") is not None and b.get("数值") is not None:
+        return abs(a["数值"] - b["数值"]) > 1e-9
+    x, y = d_exp.get("LiNO3_M"), d_ref.get("LiNO3_M")
+    return x is not None and y is not None and abs(x - y) > 0.1 * max(x, y, 1e-9)
 
 
 PRIORITY = ["局部高浓", "高浓", "加介体", "加含碘添加剂", "加有机硫", "加其他添加剂", "加/换氟化醚", "换溶剂（其他）", "换主盐",
@@ -274,8 +299,7 @@ def main_change(p, rid_exp, rid_ref, d_exp, d_ref):
         ch.append("换溶剂（其他）")
     if "主盐" in kinds_chg:
         ch.append("换主盐")
-    if "LiNO3" in kinds_chg or (d_exp.get("LiNO3_M") is not None and d_ref.get("LiNO3_M") is not None
-                                and abs(d_exp["LiNO3_M"] - d_ref["LiNO3_M"]) > 1e-6):
+    if "LiNO3" in kinds_chg or lino3_changed(ce, cr, d_exp, d_ref):
         ch.append("LiNO₃ 用量")
     if not ch:
         ch.append("改浓度/配比")
@@ -316,6 +340,7 @@ def is_std_ether(p, rid, d):
 
 # ---------------- 测量表 ----------------
 LIT_TEST = re.compile(r"文献\s*\d+")
+NON_ELEC = re.compile(r"活性物|饱和LiPS|流动电池")  # v2：P143 活性物对比、P371 饱和多硫化物工作液 Li‖Cu、P272 流动电池，不是电解液比较
 
 
 def base_ok(s, cu, drop):
@@ -327,6 +352,8 @@ def base_ok(s, cu, drop):
         drop["非主层"] += 1; return False
     if LIT_TEST.search(test_of(s).get("name", "")):  # 11-06：P293 表 S1 逐行引用他文数据（文献 16、36–52），不是本篇测量
         drop["引用他文数据"] += 1; return False
+    if NON_ELEC.search(test_of(s).get("name", "")):
+        drop["非电解液比较"] += 1; return False
     res = {(s["论文"], str(r).lower()) for r in s.get("来源结果") or []}
     if res & EXCL_RES:
         drop["结果被限制剔除"] += 1; return False
@@ -340,6 +367,20 @@ def cyc(s):
         return int(s["圈数"])
     except (TypeError, ValueError):
         return None
+
+
+PER_CYCLE = re.compile(r"per\s*cycle|/\s*cycle|每圈|/\s*圈", re.I)
+
+
+def per_cycle_retention(s):
+    return s["标准指标"] == "容量保持率" and bool(PER_CYCLE.search(f"{s.get('数值原文') or ''} {s.get('单位') or ''}"))
+
+
+def decay_y(s):
+    """v2：“每圈保持 99.5%”（P052 “99.5% per cycle”）按每圈衰减率 = 100 − 值，不再当成整段总保持率。其余同 step13f。"""
+    if per_cycle_retention(s) and s["数值"] is not None and 0 < s["数值"] < 100:
+        return -math.log(100 - s["数值"])
+    return N.yval(s, "decay")
 
 
 def make_row(cls, s, y, flags, extra=None):
@@ -396,7 +437,7 @@ def build():
         if s["标准指标"] not in spec["std"]:
             continue
         have_decay.add((s["论文"], s["测试"], s["recipe"]))
-        y = N.yval(s, "decay")
+        y = decay_y(s)
         if y is None or not base_ok(s, False, drop["每圈衰减率"]):
             continue
         k = (s["论文"], s["测试"], s["recipe"])
@@ -404,7 +445,8 @@ def build():
         if k not in dec or n > dec[k][0]:
             dec[k] = (n, s, y)
     for k, (n, s, y) in dec.items():
-        out.append(make_row("每圈衰减率", s, y, [], {"经历圈数": n or None, "来源": "保持率/衰减率表述"}))
+        out.append(make_row("每圈衰减率", s, y, ["每圈保持率换算"] if per_cycle_retention(s) else [],
+                            {"经历圈数": n or None, "来源": "保持率/衰减率表述"}))
     conv = {}
     for s in sts:  # 由容量换算（可选扩充，标记）
         if s["标准指标"] not in CAP_STD or s["阶段"] != "第 N 圈" or cyc(s) is None:
