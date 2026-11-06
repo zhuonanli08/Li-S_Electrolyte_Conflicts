@@ -669,40 +669,43 @@ Practical condition: E/S 5 and loading 4 (plan §7.8). To be recomputed on the f
 NORM: only 3 cross-paper pairs share the same formulation and none differs by ≥1.5× after normalisation. LOPO runs only where the selected model's V1 R² &gt; 0; skipped: {e(skip)}. FLIP: none in this analysis set.</div>
 <div class="chips" id="ctype">{chips}</div><div class="grid2">{''.join(cc)}</div></section>"""
 
-    # ---------- 06 figures（11-05 用户定：图 1–4 用 313 篇、分子结构描述符，聚类与热图分开；图 5 仍是 30 篇文字向量图） ----------
+    # ---------- 07 figures（11-06 用户要求：描述符按数值画、不切低/高档；聚类做到分子层面；文字中文、图英文。图由 step13m_figures_v2.py 画） ----------
     hs = json.loads((ROOT / "output" / "表述试跑313篇_2026-11-05" / "结构描述符图" / "step13h_汇总.json").read_text(encoding="utf-8"))
-    h3 = hs["图3"]
+    v2 = json.loads((ROOT / "output" / "表述试跑313篇_2026-11-05" / "结构描述符图" / "v2" / "汇总.json").read_text(encoding="utf-8"))
+    u, gnm, sp, pc = v2["分子宇宙"], v2["配方基因组"], v2["配方空间点数"], v2["平行坐标线数"]
+    cn4 = {"首圈容量": "首圈容量", "每圈衰减率": "每圈衰减率", "全电池CE": "全电池 CE", "LiCu_CE": "Li‖Cu CE"}
+    k3 = gnm["Ward 切成 k 簇时的簇大小"]["3"]
     figs = [
-        ("图1a_结构描述符共现网络.html", "Fig. 1a · Structural-descriptor co-occurrence",
-         "Nodes are structural descriptors, not components. A descriptor is “present” (&gt; 0) when most formulations have none of it; otherwise “low / high” = bottom / top third "
-         "(where many formulations share the standard-ether value, low / high mean below / above it; the middle third is not drawn). Colour = descriptor family; "
-         f"edge = formulations having both (≥ {hs['图1a']['最小边权']}). {hs['配方']} formulations from {hs['论文']} papers.", 840, True),
-        ("图1b_描述符物性条件性能共现网络.html", "Fig. 1b · Structure, property, condition and performance",
-         "Per statement: descriptor states of the formulation, properties reported by the same paper, condition tiers, and whether the formulation beat its own control in the "
-         f"same test (better or worse by more than 5%). Edges ≥ {hs['图1b']['最小边权']} statements. Only “better” nodes pass the threshold: papers mostly report improvements "
-         "over their own control.", 840, True),
-        ("图2a_描述符物性弦图.svg", "Fig. 2a · Structural descriptor × property reported",
-         "Which descriptor states come with which properties, counted per formulation; thin arcs mark properties rarely reported for that kind of formulation.", None, False),
-        ("图2b_描述符四部分弦图.svg", "Fig. 2b · Structure × property × condition × performance",
-         f"Only the {hs['图2b表述数']} statements whose formulation can be compared with its own control in the same test, so that all four groups appear.", None, False),
-        ("图3_配方结构聚类.html", "Fig. 3 · Clustering by molecular-structure descriptors",
-         f"{h3['进入聚类的配方']} formulations ({h3['论文']} papers) with all {len(h3['聚类用描述符'])} solvent-structure and elemental-ratio descriptors; rank-normal scores, "
-         f"Ward linkage, k = {h3['簇数']} (best silhouette with every cluster ≥ 10). Amounts (salt, LiNO₃, diluent) are not used and are listed per cluster. "
-         "Most formulations fall into one ether cluster: they differ in additives and amounts, which structure descriptors do not capture.", 980, True),
-        ("图4_描述符相关热图.html", "Fig. 4 · Heat map · descriptors × properties, conditions and performance",
-         "Spearman ρ, blank when n &lt; 15. Properties and conditions: descriptor level across formulations. Performance: within-paper pairs, Δ descriptor "
-         "(formulation − its control) against the gain over that control. Hover for n and number of papers.", 1020, True),
-        ("图4_表述文字向量图.html", "Fig. 5 · Statement text map (30-paper pilot)",
-         "Unchanged from 4 Nov: English statements embedded with character n-grams and projected with UMAP; nearby points read alike.", 640, False)]
+        ("图6a_分子宇宙.html", "图 6a · 分子宇宙（分子结构层面的聚类）",
+         f"313 篇用到的 {u['分子']} 个分子，按结构相似度摆放：相似度 = ½ Morgan 指纹（RDKit）＋ ½ 官能团组成（描述符表），t-SNE 布局。"
+         f"HDBSCAN 找出 {u['家族']} 个结构家族（{u['HDBSCAN 核心成员']} 个核心成员）；其余 {u['按最近邻并入']} 个分子并入与它最相似的已归类分子所在家族，"
+         f"其中 {u['其中弱归属（相似度 < 0.5）']} 个相似度低于 0.5，图中画成浅色深边、悬停注明“weak”。左上角按钮切换颜色：结构家族 / 在电解液中的角色 / 使用论文数。"
+         "思路参照 SES AI 的 Molecular Universe（他们把 1 亿个分子降到二维、分成 23 个“大陆”）；这里只有本课题文献里的分子，是同一思路的小规模版本。", 840, True),
+        ("图6b_配方基因组.html", "图 6b · 配方基因组",
+         f"行 = {gnm['配方']} 个配方，按官能团组成（15 个溶剂结构描述符，秩正态后 Ward 聚类）排序；列 = 官能团与盐描述符，颜色 = 该列内的百分位（灰 = 0 或没有），悬停看原值。"
+         f"Ward 切成 3 簇时为 {'/'.join(map(str, k3))}，不再像原来按配方描述符聚类那样一簇占 79%。", 1170, True),
+        ("图1_描述符相关网络.html", "图 1 · 22 个结构描述符怎么一起变",
+         "节点 = 描述符本身（颜色 = 05 页的 6 条描述符轴，大小 = 有这种结构的配方数）；弧线 = 跨配方 Spearman |ρ| ≥ 0.3，越粗越强，蓝正红负。"
+         "按数值算相关，不再把描述符切成低/高档。", 840, True),
+        ("图2_配方空间.html", "图 2 · 配方空间",
+         "每个点 = 同一测试里换上的新配方；横轴 = 每个 Li⁺ 的配位位点（对数），纵轴在左上角切换（主盐浓度、含氟溶剂比例、非氟醚氧、可旋转键数、碳酸酯、LiNO₃）；"
+         "颜色 = 相对本篇对照好多少或差多少（ln 倍数，蓝好红差）。点数：" + "、".join(f"{cn4[c]} {n}" for c, n in sp.items()) + "（只算配位位点算得出的）。", 900, True),
+        ("图3_平行坐标.html", "图 3 · 平行坐标：描述符 → 测试条件 → 结果",
+         "每条线 = 一个同测试换配方；竖轴依次为 5 个轴的代表描述符、两个测试条件、相对对照的性能（全部是数值）；在任一根轴上拖动可以筛选，比如只看 E/S 低的。"
+         "按钮切换四类性能：" + "、".join(f"{cn4[c]} {n} 条" for c, n in pc.items()) + "（只算各轴都有值的）。取代原来按低/高切档的弦图。", 680, True),
+        ("图4_描述符相关热图.html", "图 4 · 描述符 × 物性、条件、相对对照的性能（Spearman 热图）",
+         "物性与条件：跨配方的描述符水平；性能：篇内配对，Δ描述符（配方 − 对照）对相对对照的效应。n < 15 的格子不显示，悬停看 n 和论文数。", 1020, True),
+        ("图4_表述文字向量图.html", "图 5 · 表述文字地图（30 篇试跑）",
+         "沿用 11-04：英文表述按字符 n-gram 向量化后 UMAP 降维，位置相近的表述说法相近。", 640, False)]
     fc = []
     for fn, title, desc, hgt, wide in figs:
         body = (f'<a href="图/{fn}" target="_blank"><img class="fig" src="图/{fn}" alt="{e(title)}"></a>' if fn.endswith(".svg")
                 else f'<iframe class="fig" data-src="图/{fn}" height="{hgt}"></iframe>')
-        sty = " style='grid-column:1/-1'" if wide else ""  # 聚类、热图占整行
+        sty = " style='grid-column:1/-1'" if wide else ""
         fc.append(f'<div class="card"{sty}><div class="card-top"><h3 style="margin:0">{title}</h3>'
-                  f'<a class="note" href="图/{fn}" target="_blank">open ↗</a></div><p>{desc}</p>{body}</div>')
-    figures = f"""<section id="figures" class="panel" hidden><div class="section-head"><h2>Association figures</h2><span class="note">Figs. 1–4: 313 papers, main layer
-(Li‖S sulfur–carbon, Li‖Cu), molecular-structure descriptors (5 Nov) · Fig. 5: 30-paper pilot · association, not causation · duplicate statements counted once</span></div>
+                  f'<a class="note" href="图/{fn}" target="_blank">新窗口打开 ↗</a></div><p>{desc}</p>{body}</div>')
+    figures = f"""<section id="figures" class="panel" hidden><div class="section-head"><h2>关联图</h2><span class="note">图 1–4、6：313 篇主层（Li‖S 硫碳正极、Li‖Cu），
+分子结构描述符按数值画 · 图 5：30 篇试跑 · 关联不等于因果 · 图上文字为英文</span></div>
 <div class="grid2">{''.join(fc)}</div></section>"""
 
     # ---------- 06 methods & data ----------
