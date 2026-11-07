@@ -10,6 +10,9 @@
   作者没改用量、因加入别的组分被稀释而变的（LiNO₃；主盐及随它变的阴离子 F、阴离子磺酰；Li⁺ 总浓度）标“被动”。
 - 物性：从原值文字重新取第一段的数值（上游“数值”字段约 4% 误取了开头的测试温度），两边单位相同、测试温度相同才比，相差 < 5% 记“相近”。条件：报告或换算的设定值，相差 < 1% 记“相近”，温度相差 ≥ 1 °C 才算变。
 - 汇总给每个描述符“有变化 / 组内单独变化 / 全部单独变化”的对数与篇数（组 = meta v3 的轴），统计同时给对数和篇数。
+- 11-07 描述符修正（step12b/13h）：“羰基”改为“其他羰基（酯、酮）”，与碳酸酯、酰胺/脲羰基互不重叠；VC 的羰基、碳酸酯补上；
+  脲按 1 个羰基计；Si–O–C 氧计入醚氧和配位位点；吡啶型芳香 N 计入配位位点。每对另标“特殊组分变化”：作者改动的组分里
+  有成膜/活性溶剂（FEC、VC、DMTS、三聚甲醛、有机硫、CS₂ 等）或描述符看不到的组分（添加剂、介体、多硫化物、非锂盐、无结构组分）。
 - 只放原文句子编号，不放原句（仓库公开）。
 同测试的比较另按“样品对”合并成一条（性能按测试分别列出），即用户给的格式：实验样 X 相对对比样 Y，描述符……；物性……；条件……；性能……。
 输入（只读）：meta共同准备_313篇_v2_2026-11-06/测量表.json，表述试跑313篇_2026-11-05/表述.json，组分结构表_试跑313篇_2026-11-05/（经 step13h），
@@ -34,12 +37,13 @@ from step13_common import write_xlsx
 
 IN = ROOT / "output" / "meta共同准备_313篇_v2_2026-11-06" / "测量表.json"
 STF = ROOT / "output" / "表述试跑313篇_2026-11-05" / "表述.json"
-OUT = ROOT / "output" / "两两比较表述_313篇_2026-11-06"
+# 11-07 描述符修正（拆羰基、VC、脲、Si–O–C、吡啶型 N）后写到 v2；11-06 版本留在 两两比较表述_313篇_2026-11-06/（step18 的 40 条判定基于它）
+OUT = ROOT / "output" / "两两比较表述_313篇_v2_2026-11-07"
 CLASSES = {"首圈容量": "首圈容量", "每圈衰减率": "每圈衰减率", "LiCu_CE": "Li‖Cu CE"}
 TH_PERF, TH_DESC, TH_PROP, TH_COND, TH_TEMP = 0.05, 0.01, 0.05, 0.01, 1.0
 DKEYS = list(dict.fromkeys(list(F.KEYS) + ["lino3"]))  # F.KEYS 已含 lino3，去重
-DCN = {"eo": "非氟醚氧", "eo_a": "α 氟化醚氧", "eo_b": "β 氟化醚氧", "carbonate": "碳酸酯", "carbonyl": "羰基", "sulfone": "砜/亚砜", "nitrile": "腈",
-       "amide": "酰胺/脲", "thio": "硫醚/多硫 S", "fat": "溶剂 F 原子数", "ring": "溶剂环数", "rotb": "可旋转键数", "tpsa": "TPSA", "mw": "溶剂分子量",
+DCN = {"eo": "非氟醚氧", "eo_a": "α 氟化醚氧", "eo_b": "β 氟化醚氧", "carbonate": "碳酸酯", "carbonyl": "其他羰基（酯、酮）", "sulfone": "砜/亚砜", "nitrile": "腈",
+       "amide": "酰胺/脲羰基", "thio": "硫醚/多硫 S", "fat": "溶剂 F 原子数", "ring": "溶剂环数", "rotb": "可旋转键数", "tpsa": "TPSA", "mw": "溶剂分子量",
        "ffrac": "含氟溶剂比例", "lnsites": "每个 Li⁺ 的配位位点", "dil": "稀释剂摩尔比例", "li": "Li⁺ 总浓度", "salt": "主盐浓度",
        "anF": "阴离子 F（每升）", "anSO2": "阴离子磺酰（每升）", "lino3": "LiNO₃ 浓度"}
 AXES = json.loads((F.OUT / "汇总.json").read_text(encoding="utf-8"))["轴"]
@@ -101,6 +105,28 @@ def comp_change(ca, cb):
         if c not in ca:
             out.append(f"去掉 {c}"); changed.add(c)
     return "；".join(out) or "组分与用量相同", changed
+
+
+# 11-07：作者改动的组分里，有按结构计入溶剂描述符、但作用不只是溶剂化的（成膜/活性溶剂），
+# 或描述符根本看不到的（添加剂、介体、多硫化物、非锂盐、没有结构的组分）——单独标出，不改投票
+FILM_CAT = {"溶剂/添加剂"}
+FILM_CHEM = {"环缩醛", "有机硫（二硫醚）", "有机硫（硫醚）", "有机硫（多硫醚）", "二硫化碳"}
+HIDDEN_CAT = {"添加剂", "添加剂（介体）", "其他盐/添加剂", "硫物种", "锂盐/添加剂", "离子", "盐", "氧化还原介体（原文称均相催化剂）"}
+
+
+def special(changed):
+    out = []
+    for c in sorted(changed or ()):
+        if c == "LiNO3":
+            continue
+        t = H.CTAB.get(c)
+        if t is None:
+            out.append({"组分": c, "类型": "描述符看不到（组分未收录）"})
+        elif t.get("类别") in FILM_CAT or t.get("化学类别") in FILM_CHEM:
+            out.append({"组分": c, "类型": "成膜/活性溶剂"})
+        elif t.get("类别") in HIDDEN_CAT or ("溶剂" in t.get("类别", "") and c not in H.DWHOLE):
+            out.append({"组分": c, "类型": "描述符看不到"})
+    return out
 
 
 def passive(d, ca, cb, changed):
@@ -192,8 +218,10 @@ def perf(cls, a, b):
     else:
         w = "变高" if r < 1 else "变低"
     val = (lambda m: round(math.exp(-m["y"]), 4)) if cls == "每圈衰减率" else (lambda m: m["数值"])
+    # 11-07：衰减类的值是换算后的每圈衰减率（%/圈），指标名写明，避免误读成保持率
+    lab = (lambda m: f"每圈衰减率（%/圈，由{m['标准指标']}换算）") if cls == "每圈衰减率" else (lambda m: m["标准指标"])
     return {"方向": w, "倍数": round(r, 4), "倍数含义": {"首圈容量": "容量之比", "每圈衰减率": "每圈衰减率之比", "LiCu_CE": "损失（100 − CE）之比"}[cls],
-            "好于参照": dy > 0 if w != "相近" else None, "值A": val(a), "值B": val(b), "指标A": a["标准指标"], "指标B": b["标准指标"]}
+            "好于参照": dy > 0 if w != "相近" else None, "值A": val(a), "值B": val(b), "指标A": lab(a), "指标B": lab(b)}
 
 
 def side(r, ST):
@@ -270,13 +298,15 @@ def build():
             dflt = sorted({m for m in a["标记"] + b["标记"] if "默认" in m})
             rec = {"编号": f"PC{len(recs) + 1:05d}", "论文": p, "类别": cls, "比较类型": ptype, "A": side(a, ST), "B": side(b, ST),
                    "组分变化": ctext, "作者改动的组分": sorted(changed) if changed is not None else None,
+                   "特殊组分变化": special(changed),
                    "电解液相同但样品编号不同": ka == kb and a["配方"] != b["配方"],
                    "描述符": ds, "物性": ps, "条件": cs, "条件含默认值": dflt, "性能": pf}
             cvar = [x for x in cs if x["方向"] not in ("相近", "相同")]
             role = lambda s: "对比样" if s["是否对照"] else "实验样"
             rec["表述文字"] = (f"【{p}｜{CLASSES[cls]}｜{ptype}】{role(rec['A'])} {a['配方名']}（{rec['A']['配方文字']}，测试 {a['测试']}）相对 "
                            f"{role(rec['B'])} {b['配方名']}（{rec['B']['配方文字']}，测试 {b['测试']}）｜组分变化：{ctext}"
-                           f"｜描述符：{fmt_desc(ds) if ka != kb else '配方相同'}｜物性：{fmt_list(ps, '物性') or '两边没有都报告的'}"
+                           + (f"（其中 {'、'.join(x['组分'] + '：' + x['类型'] for x in rec['特殊组分变化'])}）" if rec["特殊组分变化"] else "")
+                           + f"｜描述符：{fmt_desc(ds) if ka != kb else '配方相同'}｜物性：{fmt_list(ps, '物性') or '两边没有都报告的'}"
                            f"｜条件：{fmt_list(cvar, '条件') or '相同'}" + (f"（含默认值：{'、'.join(dflt)}）" if dflt else "")
                            + f"｜性能：{CLASSES[cls]} {pf['方向']}")
             recs.append(rec)
@@ -356,14 +386,15 @@ def main():
     rows2 = [[r["编号"], r["论文"], CLASSES[r["类别"]], r["比较类型"], r["A"]["配方名"], r["A"]["测试"], r["B"]["配方名"], r["B"]["测试"], r["组分变化"],
               fmt_desc(r["描述符"]) if r["比较类型"] != PTYPE[1] else "配方相同", fmt_list(r["物性"], "物性"),
               fmt_list([x for x in r["条件"] if x["方向"] not in ("相近", "相同")], "条件") or "相同", j(r["条件含默认值"]),
-              r["性能"]["方向"], r["性能"]["倍数"], r["性能"]["值A"], r["性能"]["值B"], j(r["A"]["证据句子"]), j(r["B"]["证据句子"])] for r in recs]
+              r["性能"]["方向"], r["性能"]["倍数"], r["性能"]["值A"], r["性能"]["值B"], j(f"{x['组分']}（{x['类型']}）" for x in r["特殊组分变化"]),
+              j(r["A"]["证据句子"]), j(r["B"]["证据句子"])] for r in recs]
     rows3 = [[c, d, v["组"], *v["有变化"], *v["组内单独变化"], *v["全部单独变化"], *v["被动"]] for c, st in S["描述符"].items() for d, v in st.items()]
     write_xlsx(OUT / "比较表述表.xlsx", [
         ("样品对表述（同测试）", ["论文", "A", "B（参照）", "组分变化", "分子描述符", "物性", "性能（测试，倍数）", "表述文字"], rows1),
         ("全部比较（逐对）", ["编号", "论文", "性能", "比较类型", "A", "A 测试", "B（参照）", "B 测试", "组分变化", "描述符", "物性", "条件变化", "含默认值的条件",
-                         "性能方向", "倍数", "A 值", "B 值", "A 证据句", "B 证据句"], rows2),
+                         "性能方向", "倍数", "A 值", "B 值", "特殊组分变化", "A 证据句", "B 证据句"], rows2),
         ("描述符变化统计", ["性能", "描述符", "组", "有变化·对", "有变化·篇", "组内单独·对", "组内单独·篇", "全部单独·对", "全部单独·篇", "被动·对", "被动·篇"], rows3)],
-        notes=["两两比较表述（step16，11-06）。倍数：容量 = 容量之比；衰减 = 每圈衰减率之比（<1 更好）；CE = 损失（100 − CE）之比（<1 更好）。",
+        notes=["两两比较表述（step16，11-07 描述符修正版）。倍数：容量 = 容量之比；衰减 = 每圈衰减率之比（<1 更好）；CE = 损失（100 − CE）之比（<1 更好）。",
                "性能、物性相差 < 5% 记“相近”；描述符、条件相差 < 1% 记“相近”。“被动” = 作者没改用量、因别的组分加入被稀释。只列原文句子编号。初步，AI 辅助，用户尚未逐项人工确认。"])
     print(json.dumps({k: S[k] for k in ("测量", "比较", "性能方向", "样品对表述", "同测试同样品被跳过", "没有共同性能类别的样品对", "样品", "描述符全部算不出的样品")},
                      ensure_ascii=False, indent=1))

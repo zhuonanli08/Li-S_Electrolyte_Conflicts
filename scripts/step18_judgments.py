@@ -163,9 +163,40 @@ a("TC40|P339", "✅", "假张力",
   "参照很弱或很强；混了别的改动", "M0207、M0209；K06、K08、K18；对比说明 full", "多数规律本身可疑（羰基 → 首圈容量）")
 
 
+# ---- v2（11-07 描述符修正后）新出现的强候选；键 = 论文|性能|第一个相反的对编号 ----
+J2 = {}
+
+
+def a2(key, 判定, 真假, 原因, 归类, 依据, 补充=""):
+    J2[key] = {"判定": 判定, "真假": 真假, "原因": 原因, "归类": 归类, "依据": 依据, "补充": 补充}
+
+
+a2("P052|首圈容量|PC00172", "✅", "假张力",
+   "DOL/TFEE 5:5 对 8:2（都是 1 M LiTFSI）：TFEE 从 20% 增到 50%，首圈 1453→1234 mAh/g（M0067、M0077），符合已知“溶剂化变弱 → 初始容量降低、穿梭被抑制”。它反对的 v2 新规律“稀释剂比例高 → 首圈容量高”（22:10）靠 DMDS、DMTS 等有机多硫化物撑起：去掉含特殊组分的对后只剩 6:8、没有共识；这些溶剂按结构算稀释剂，自身还贡献容量。",
+   "归组或提取问题", "M0067、M0077；M05、M07；对比说明 Ngradient", "多数规律本身可疑（稀释剂 → 首圈容量）；已知张力方向")
+a2("P149|首圈容量|PC00428", "✅", "假张力",
+   "TDE（约 0.4 M LiTFSI、约 0.025 M LiNO₃，DME:TTE = 1:4）对商业 LS002（1 M LiTFSI DOL/DME，1 wt% LiNO₃），60 °C、同用 CS 隔膜：首圈 1557 vs 1671.5 mAh/g（M0160、M0161），只低 7%，两边都接近理论容量；同时改了盐浓度和 LiNO₃（对比说明 N1）；作者强调的是 100 圈后 870 vs 急降（K29–K31）。反对的规律同上一条，本身可疑。",
+   "混了别的改动；差异小于噪声", "M0160、M0161；K29、K30、K31；对比说明 N1", "多数规律本身可疑（稀释剂 → 首圈容量）")
+
+
+def pkey(x):
+    return (x["论文"], x["性能"], tuple(sorted(r["编号"] for r in x["相反的对"])))
+
+
+def table(rows, local, name, note, extra=()):
+    j = lambda v: "；".join(map(str, v))
+    head = ["候选编号", "论文", "性能", "涉及描述符", "相反的对", "判定", "真假", "原因", "归类", "依据", "补充", *extra, "✍ 用户意见"]
+    s = [[r["候选编号"], r["论文"], r["性能"], j(r["涉及描述符"]), j(r["相反的对"]), r["判定"], r.get("真假", ""), r.get("原因", ""),
+          r.get("归类", ""), r.get("依据", ""), r.get("补充", ""), *[r.get(e, "") for e in extra], ""] for r in rows]
+    write_xlsx(OUT / f"{name}.xlsx", [("判定", head, s)], notes=note)
+    s2 = [r + [j(f"〔{k}〕{v}" for k, v in L["证据原句"].items())] for r, L in zip(s, local)]
+    write_xlsx(OUT / f"{name.replace('判定表', '判定复核表')}（含原句）.xlsx", [("判定", head + ["证据原句（本机，不提交）"], s2)], notes=note)
+
+
 def main():
+    from collections import Counter
     pk = json.loads(PK.read_text(encoding="utf-8"))
-    rows, local, done = [], [], set()
+    rows, local, done, by_key = [], [], set(), {}
     for x in pk:
         hit = next((v | {"键": k} for k, v in J.items() if k.split("|")[0] == x["候选编号"]), None)
         if hit and hit["键"].split("|")[1] != x["论文"]:
@@ -176,21 +207,40 @@ def main():
                 "相反的对": [f"{r['编号']} {r['A']['配方名']} 相对 {r['B']['配方名']}" for r in x["相反的对"]]}
         rows.append(base | ({k: hit[k] for k in ("判定", "真假", "原因", "归类", "依据", "补充")} if hit else {"判定": "未判"}))
         local.append(rows[-1] | {"证据原句": x["证据原句"]})
+        by_key[pkey(x)] = rows[-1]
     left = [k for k in J if k not in done]
     if left:
         raise SystemExit(f"判定键没对上候选：{left}")
     (OUT / "判定.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1), encoding="utf-8")
-    j = lambda v: "；".join(map(str, v))
-    head = ["候选编号", "论文", "性能", "涉及描述符", "相反的对", "判定", "真假", "原因", "归类", "依据", "补充", "✍ 用户意见"]
-    s = [[r["候选编号"], r["论文"], r["性能"], j(r["涉及描述符"]), j(r["相反的对"]), r["判定"], r.get("真假", ""), r.get("原因", ""),
-          r.get("归类", ""), r.get("依据", ""), r.get("补充", ""), ""] for r in rows]
-    note = ["强的“反对多数”候选读原文判定（step18，11-07）。AI 辅助，用户尚未逐项人工确认。✍ 列留给用户填写。"]
-    write_xlsx(OUT / "判定表.xlsx", [("判定", head, s)], notes=note)
-    s2 = [r + [j(f"〔{k}〕{v}" for k, v in L["证据原句"].items())] for r, L in zip(s, local)]
-    write_xlsx(OUT / "判定复核表（含原句）.xlsx", [("判定", head + ["证据原句（本机，不提交）"], s2)], notes=note)
-    from collections import Counter
-    print(json.dumps({"候选": len(rows), "已判": sum(r["判定"] != "未判" for r in rows), "判定": Counter(r["判定"] for r in rows),
-                      "真假": Counter(r.get("真假", "未判") for r in rows)}, ensure_ascii=False, default=dict))
+    table(rows, local, "判定表", ["强的“反对多数”候选读原文判定（step18，11-07，描述符修正前 v1）。AI 辅助，用户尚未逐项人工确认。✍ 列留给用户填写。"])
+    out = {"v1": {"候选": len(rows), "已判": sum(r["判定"] != "未判" for r in rows), "判定": Counter(r["判定"] for r in rows),
+                  "真假": Counter(r.get("真假", "未判") for r in rows)}}
+    # v2：同一批比较（论文 × 性能 × 相反的对）沿用 v1 判定，新的读 J2
+    pk2f = OUT / "读原文包_v2（含原句）.json"
+    if pk2f.exists():
+        rows2, local2, used = [], [], set()
+        for x in json.loads(pk2f.read_text(encoding="utf-8")):
+            old = by_key.get(pkey(x))
+            k2 = f"{x['论文']}|{x['性能']}|{x['相反的对'][0]['编号']}"
+            new = J2.get(k2)
+            if new:
+                used.add(k2)
+            src = old if old else (new or {"判定": "未判"})
+            base = {"候选编号": x["候选编号"], "论文": x["论文"], "性能": x["性能"], "涉及描述符": x["涉及描述符"],
+                    "相反的对": [f"{r['编号']} {r['A']['配方名']} 相对 {r['B']['配方名']}" for r in x["相反的对"]],
+                    "来源": f"沿用 v1 {old['候选编号']}" if old else ("v2 新读" if new else "")}
+            rows2.append(base | {k: src[k] for k in ("判定", "真假", "原因", "归类", "依据", "补充") if k in src})
+            local2.append(rows2[-1] | {"证据原句": x["证据原句"]})
+        if set(J2) - used:
+            raise SystemExit(f"v2 判定键没对上候选：{set(J2) - used}")
+        (OUT / "判定_v2.json").write_text(json.dumps(rows2, ensure_ascii=False, indent=1), encoding="utf-8")
+        table(rows2, local2, "判定表_v2", ["强的“反对多数”候选读原文判定（描述符修正后 v2）：同一批比较沿用 v1 判定（判定文字里的“羰基”指修正前的合并羰基），新出现的另读。AI 辅助，用户尚未逐项人工确认。"], extra=("来源",))
+        v1keys = {pkey(x) for x in pk}
+        out["v2"] = {"候选": len(rows2), "沿用 v1": sum(r["来源"].startswith("沿用") for r in rows2), "新读": sum(r["来源"] == "v2 新读" for r in rows2),
+                     "未判": sum(r["判定"] == "未判" for r in rows2), "判定": Counter(r["判定"] for r in rows2), "真假": Counter(r.get("真假", "未判") for r in rows2),
+                     "v1 强候选在 v2 不再是强候选": [f"{r['候选编号']} {r['论文']} {r['性能']}" for r in rows
+                                            if pkey(next(x for x in pk if x["候选编号"] == r["候选编号"])) not in {pkey(x) for x in json.loads(pk2f.read_text(encoding="utf-8"))}]}
+    print(json.dumps(out, ensure_ascii=False, default=dict, indent=1))
 
 
 if __name__ == "__main__":

@@ -5,15 +5,17 @@
 读原文包含原句（版权；仓库公开）：文件名带“（含原句）”，.gitignore 已排除，不提交。
 数据：output/张力候选_313篇_2026-11-07/张力候选.json、output/两两比较表述_313篇_2026-11-06/比较表述.json、
      output/试跑313篇_2026-11-05/papers/<论文>/candidate.json 与 source.json、output/归因_313篇_2026-11-06/归因判定.json。
-输出：output/张力判定_313篇_2026-11-07/读原文包（含原句）.json
+输出：output/张力判定_313篇_2026-11-07/读原文包（含原句）.json；加参数 v2 时读 v2 候选，写 读原文包_v2（含原句）.json
 用法：D:\\anaconda\\envs\\papertrail\\python.exe -X utf8 scripts/step18_read_packets.py
 """
 import json
+import sys
 from pathlib import Path
 
 ROOT = Path(r"D:\Desktop\课题二锂硫电解液矛盾归因")
-CAND = ROOT / "output" / "张力候选_313篇_2026-11-07" / "张力候选.json"
-PAIRS = ROOT / "output" / "两两比较表述_313篇_2026-11-06" / "比较表述.json"
+V2 = "v2" in sys.argv[1:]  # 11-07 描述符修正后的 v2 候选：python step18_read_packets.py v2
+CAND = ROOT / "output" / ("张力候选_313篇_v2_2026-11-07" if V2 else "张力候选_313篇_2026-11-07") / "张力候选.json"
+PAIRS = ROOT / "output" / ("两两比较表述_313篇_v2_2026-11-07" if V2 else "两两比较表述_313篇_2026-11-06") / "比较表述.json"
 PAPERS = ROOT / "output" / "试跑313篇_2026-11-05" / "papers"
 PRIOR = ROOT / "output" / "归因_313篇_2026-11-06" / "归因判定.json"
 OUT = ROOT / "output" / "张力判定_313篇_2026-11-07"
@@ -63,7 +65,7 @@ def main():
             "设计结论": [short(d.get("summary", ""), 200) for d in c.get("design_claims", [])],
             "11-06 本篇其他判定": {kk: {"判定": v["判定"], "原因": v["原因"], "归类": v["归类"]} for kk, v in prior.items() if kk.endswith("|" + p)},
         })
-    f = OUT / "读原文包（含原句）.json"
+    f = OUT / ("读原文包_v2（含原句）.json" if V2 else "读原文包（含原句）.json")
     f.write_text(json.dumps(packets, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"{len(packets)} 条候选，{len({x['论文'] for x in packets})} 篇；{f.stat().st_size // 1024} KB → {f}")
 

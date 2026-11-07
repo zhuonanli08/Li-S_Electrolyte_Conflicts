@@ -53,8 +53,8 @@ rj = lambda p: json.loads(p.read_text(encoding="utf-8"))
 FAMS = {"Solvent structure": "#007e70", "Elemental ratio": "#2f6db5", "Solvation state": "#7159a7", "Salt & additive": "#c2504a"}
 DESCS = [  # 键, 英文名, 族
     ("eo", "Ether O (non-F)", "Solvent structure"), ("eo_a", "α-F ether O", "Solvent structure"), ("eo_b", "β-F ether O", "Solvent structure"),
-    ("carbonate", "Carbonate", "Solvent structure"), ("carbonyl", "Carbonyl", "Solvent structure"), ("sulfone", "Sulfone/sulfoxide", "Solvent structure"),
-    ("nitrile", "Nitrile", "Solvent structure"), ("amide", "Amide/urea", "Solvent structure"), ("thio", "Thioether/polysulfide S", "Solvent structure"),
+    ("carbonate", "Carbonate", "Solvent structure"), ("carbonyl", "Other carbonyl (ester/ketone)", "Solvent structure"), ("sulfone", "Sulfone/sulfoxide", "Solvent structure"),
+    ("nitrile", "Nitrile", "Solvent structure"), ("amide", "Amide/urea carbonyl", "Solvent structure"), ("thio", "Thioether/polysulfide S", "Solvent structure"),
     ("fat", "F atoms per solvent", "Solvent structure"), ("ring", "Rings per solvent", "Solvent structure"), ("rotb", "Rotatable bonds", "Solvent structure"),
     ("tpsa", "TPSA", "Solvent structure"), ("mw", "Solvent MW", "Solvent structure"), ("ffrac", "Fluorinated-solvent fraction", "Solvent structure"),
     ("sO_n", "sO non-F", "Elemental ratio"), ("sO_b", "sO β-F ether", "Elemental ratio"), ("sO_a", "sO α-F ether", "Elemental ratio"),
@@ -65,7 +65,8 @@ DESCS = [  # 键, 英文名, 族
 DLAB = {k: l for k, l, _ in DESCS}
 DFAM = {k: f for k, _, f in DESCS}
 AL, BE = "α氟化醚氧数（相邻CF₂/CF₃）", "β氟化醚氧数（隔一个碳为CF₂/CF₃，不含α）"
-RD = {"carbonate": "碳酸酯基数", "carbonyl": "羰基数", "sulfone": "砜/亚砜基数", "nitrile": "腈基数", "amide": "酰胺/脲基数", "thio": "硫醚/多硫链S原子数",
+# 11-07：carbonyl 改为“其他羰基”（酯、酮等），与碳酸酯、酰胺/脲互不重叠（原“羰基数”把三类合在一起）
+RD = {"carbonate": "碳酸酯基数", "carbonyl": "其他羰基数（酯、酮等；不含碳酸酯、酰胺/脲）", "sulfone": "砜/亚砜基数", "nitrile": "腈基数", "amide": "酰胺/脲基数", "thio": "硫醚/多硫链S原子数",
       "fat": "F原子数", "ring": "环数", "rotb": "可旋转键数", "tpsa": "TPSA", "mw": "分子量"}
 ER = {"sO_n": "sO_不含氟", "sO_b": "sO_β氟化醚", "sO_a": "sO_α氟化醚", "aC": "aC", "FO": "F/O", "InOr": "InOr"}
 
@@ -76,11 +77,14 @@ CTAB = {c["id"]: c for c in rj(C313 / "组分表.json")}
 COMPREC = {(r["论文"], r["配方"]): r for r in rj(C313 / "配方组成.json")}
 
 
+SIO, ARN = "Si–O–C氧数", "吡啶型芳香N数"
+
+
 def sites(cid):
-    """可配位位点（同 feats3.sites）：不含氟醚氧 ＋ 羰基 ＋ 砜/亚砜 ＋ P=O ＋ 腈。"""
+    """可配位位点：不含氟醚氧（11-07 起含 Si–O–C 氧）＋ 羰基 ＋ 砜/亚砜 ＋ P=O ＋ 腈 ＋ 吡啶型芳香 N（11-07 补）。"""
     d = DWHOLE[cid]
-    eo = max((d.get("醚氧数") or 0) - (d.get(AL) or 0) - (d.get(BE) or 0), 0)
-    return eo + (d.get("羰基数") or 0) + (d.get("砜/亚砜基数") or 0) + (d.get("P=O数") or 0) + (d.get("腈基数") or 0)
+    eo = max((d.get("醚氧数") or 0) - (d.get(AL) or 0) - (d.get(BE) or 0), 0) + (d.get(SIO) or 0)
+    return eo + (d.get("羰基数") or 0) + (d.get("砜/亚砜基数") or 0) + (d.get("P=O数") or 0) + (d.get("腈基数") or 0) + (d.get(ARN) or 0)
 
 
 def descriptors(pid, rid):
@@ -102,7 +106,7 @@ def descriptors(pid, rid):
             w, how = np.ones(len(solv)), "等权（用量缺）"
         w = w / w.sum()
         g = lambda c, col: DWHOLE[c].get(col) or 0
-        out["eo"] = float(sum(wi * max(g(c, "醚氧数") - g(c, AL) - g(c, BE), 0) for wi, c in zip(w, solv)))
+        out["eo"] = float(sum(wi * (max(g(c, "醚氧数") - g(c, AL) - g(c, BE), 0) + g(c, SIO)) for wi, c in zip(w, solv)))
         out["eo_a"] = float(sum(wi * g(c, AL) for wi, c in zip(w, solv)))
         out["eo_b"] = float(sum(wi * g(c, BE) for wi, c in zip(w, solv)))
         for k, col in RD.items():
