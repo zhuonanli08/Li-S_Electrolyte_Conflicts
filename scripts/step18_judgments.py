@@ -1,4 +1,4 @@
-"""step18 读原文判定（Claude，11-07）：强的“反对多数”候选（step17 合并后，强弱 = 强）逐条读读原文包（相反的对、两边证据原句、
+"""step18 读原文判定（Claude，11-07）：强的“反例”候选（step17 合并后，强弱 = 强）逐条读读原文包（相反的对、两边证据原句、
 对照与对比说明、缺口、作者机制、11-06 本篇其他判定）后写的判定。AI 辅助，用户尚未逐项人工确认。
 
 键 = 候选编号|论文（候选编号来自 step18_read_packets 的读原文包，按 step17 合并后强候选的顺序；运行时核对论文一致）。
@@ -425,7 +425,7 @@ def main():
     if left:
         raise SystemExit(f"判定键没对上候选：{left}")
     (OUT / "判定.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1), encoding="utf-8")
-    table(rows, local, "判定表", ["强的“反对多数”候选读原文判定（step18，11-07，描述符修正前 v1）。AI 辅助，用户尚未逐项人工确认。✍ 列留给用户填写。"])
+    table(rows, local, "判定表", ["强的“反例”候选读原文判定（step18，11-07，描述符修正前 v1）。AI 辅助，用户尚未逐项人工确认。✍ 列留给用户填写。"])
     out = {"v1": {"候选": len(rows), "已判": sum(r["判定"] != "未判" for r in rows), "判定": Counter(r["判定"] for r in rows),
                   "真假": Counter(r.get("真假", "未判") for r in rows)}}
     # v2：同一批比较（论文 × 性能 × 相反的对）沿用 v1 判定，新的读 J2
@@ -447,7 +447,7 @@ def main():
         if set(J2) - used:
             raise SystemExit(f"v2 判定键没对上候选：{set(J2) - used}")
         (OUT / "判定_v2.json").write_text(json.dumps(rows2, ensure_ascii=False, indent=1), encoding="utf-8")
-        table(rows2, local2, "判定表_v2", ["强的“反对多数”候选读原文判定（描述符修正后 v2）：同一批比较沿用 v1 判定（判定文字里的“羰基”指修正前的合并羰基），新出现的另读。AI 辅助，用户尚未逐项人工确认。"], extra=("来源",))
+        table(rows2, local2, "判定表_v2", ["强的“反例”候选读原文判定（描述符修正后 v2）：同一批比较沿用 v1 判定（判定文字里的“羰基”指修正前的合并羰基），新出现的另读。AI 辅助，用户尚未逐项人工确认。"], extra=("来源",))
         v1keys = {pkey(x) for x in pk}
         out["v2"] = {"候选": len(rows2), "沿用 v1": sum(r["来源"].startswith("沿用") for r in rows2), "新读": sum(r["来源"] == "v2 新读" for r in rows2),
                      "未判": sum(r["判定"] == "未判" for r in rows2), "判定": Counter(r["判定"] for r in rows2), "真假": Counter(r.get("真假", "未判") for r in rows2),
@@ -470,7 +470,7 @@ def main():
         if set(JW) - used:
             raise SystemExit(f"弱候选判定键没对上：{set(JW) - used}")
         (OUT / "判定_v2_弱.json").write_text(json.dumps(rows3, ensure_ascii=False, indent=1), encoding="utf-8")
-        table(rows3, local3, "判定表_v2_弱", ["弱的“反对多数”候选读原文判定（描述符修正后 v2；弱 = 本篇多数对与多数规律一致，只有个别对相反）。AI 辅助，用户尚未逐项人工确认。"])
+        table(rows3, local3, "判定表_v2_弱", ["弱的“反例”候选读原文判定（描述符修正后 v2；弱 = 本篇多数对与多数规律一致，只有个别对相反）。AI 辅助，用户尚未逐项人工确认。"])
         out["v2 弱"] = {"候选": len(rows3), "已判": sum(r["判定"] != "未判" for r in rows3), "判定": Counter(r["判定"] for r in rows3),
                        "真假": Counter(r.get("真假", "未判") for r in rows3)}
     pknf = OUT / "读原文包_v2_没有共识（含原句）.json"

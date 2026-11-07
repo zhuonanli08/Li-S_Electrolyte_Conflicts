@@ -1,6 +1,6 @@
-"""step18：为强的“反对多数”候选生成读原文包（11-07 用户同意：④ 先读强的 40 条）。
+"""step18：为强的“反例”候选生成读原文包（11-07 用户同意：④ 先读强的 40 条）。
 
-每条候选（step17 合并后的“反对多数”，强弱 = 强）配齐：相反的对（两边配方、测试、性能数值、组分变化、还一起变了什么）、
+每条候选（step17 合并后的“反例”，强弱 = 强）配齐：相反的对（两边配方、测试、性能数值、组分变化、还一起变了什么）、
 两边测量的证据原句、本篇的对照说明、对比说明、缺口、作者机制与设计结论摘要，以及 11-06 读原文时对本篇其他候选的判定（如有）。
 读原文包含原句（版权；仓库公开）：文件名带“（含原句）”，.gitignore 已排除，不提交。
 数据：output/张力候选_313篇_2026-11-07/张力候选.json、output/两两比较表述_313篇_2026-11-06/比较表述.json、
@@ -74,7 +74,7 @@ def main():
     if NOCONS:
         return nocons()
     OUT.mkdir(parents=True, exist_ok=True)
-    cand = json.loads(CAND.read_text(encoding="utf-8"))["反对多数（按同一批比较合并）"]
+    cand = json.loads(CAND.read_text(encoding="utf-8"))["反例（按同一批比较合并）"]
     byid = {r["编号"]: r for r in json.loads(PAIRS.read_text(encoding="utf-8"))}
     prior = json.loads(PRIOR.read_text(encoding="utf-8")) if PRIOR.exists() else {}
     strong = [g for g in cand if g["强弱"] == ("弱" if WEAK else "强")]
