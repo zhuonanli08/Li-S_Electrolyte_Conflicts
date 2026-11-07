@@ -37,7 +37,7 @@ STF = ROOT / "output" / "表述试跑313篇_2026-11-05" / "表述.json"
 OUT = ROOT / "output" / "两两比较表述_313篇_2026-11-06"
 CLASSES = {"首圈容量": "首圈容量", "每圈衰减率": "每圈衰减率", "LiCu_CE": "Li‖Cu CE"}
 TH_PERF, TH_DESC, TH_PROP, TH_COND, TH_TEMP = 0.05, 0.01, 0.05, 0.01, 1.0
-DKEYS = list(F.KEYS) + ["lino3"]
+DKEYS = list(dict.fromkeys(list(F.KEYS) + ["lino3"]))  # F.KEYS 已含 lino3，去重
 DCN = {"eo": "非氟醚氧", "eo_a": "α 氟化醚氧", "eo_b": "β 氟化醚氧", "carbonate": "碳酸酯", "carbonyl": "羰基", "sulfone": "砜/亚砜", "nitrile": "腈",
        "amide": "酰胺/脲", "thio": "硫醚/多硫 S", "fat": "溶剂 F 原子数", "ring": "溶剂环数", "rotb": "可旋转键数", "tpsa": "TPSA", "mw": "溶剂分子量",
        "ffrac": "含氟溶剂比例", "lnsites": "每个 Li⁺ 的配位位点", "dil": "稀释剂摩尔比例", "li": "Li⁺ 总浓度", "salt": "主盐浓度",
