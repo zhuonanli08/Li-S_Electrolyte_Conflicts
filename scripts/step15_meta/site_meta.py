@@ -1,4 +1,6 @@
 """结果网站“05 · Meta 分析与矛盾归因”标签页（11-06 用户要求：结论、方法、表格等文字用中文，图用英文；文字结论用表格和文字地图，不另画图）。
+11-08 起 meta_panel 改为新版（用户定：主线只要“矛盾是什么、怎么找到的、原因”，只放漏斗图 fig00_funnel，其余文字；原因用 step20 的跨论文机制证据）；
+11-06 版改名 meta_panel_v1 留作历史，下面关于数据来源的说明指的是 v1。
 由 scripts/step13s_site.py 调用。数据：
   meta v3（F_pooled.py，全部测量、用户的分子结构描述符、同测试/跨测试/篇间分解、按数据去重叠）→ output/meta_v3_全部测量_313篇_2026-11-06/；
   矛盾单元与读原文判定、标准醚跨论文离散、预测记分卡（D_site.py compute）→ output/meta网站_313篇_2026-11-06/网站数据.json；
@@ -67,7 +69,86 @@ def leak_note() -> str:
             '另外全电池 CE 的选定配置取自一条过期记录。记分卡见 <a href="#meta" onclick="$(\'nav button[data-panel=meta]\').click();return false">05 页</a>。</div>')
 
 
+EVF = ROOT / "output" / "机制证据_313篇_2026-11-08" / "机制证据.json"
+JUDF = ROOT / "output" / "张力判定_313篇_2026-11-07"
+# 11-08 用户定：主线只要“矛盾是什么、怎么找到的、产生矛盾的原因”；meta 部分只放漏斗图，其余用文字。下面三条无定论问题的标题与“还不知道的”由 Claude 写
+QUESTIONS = [
+    ("T1", "问题 1 · 稀释剂该不该分解？——加氟不一定越多越好",
+     "P381 作者：氟化降低 LUMO，TTE 还原不稳定，分解出的有机副产物抵消了 LiF 的好处（有表征）。P371 作者推测：部分氟化的 F3DEE 反应活性高。"
+     "另有 P263（氟苯）、P350（F4EO2）用低氟组分替换 TTE 也不差，读原文后记为待定。",
+     "富 LiF 的 SEI 里，LiF 主要来自稀释剂分解还是阴离子分解？稀释剂分解对锂负极是利是弊？这和氟化的程度、位置有什么关系"
+     "（P371 里 F3DEE 最差、F4DEE 最好）？"),
+    ("T3", "问题 2 · LiNO₃ 加多少最好？",
+     "P111 作者自己说这与“LiNO₃ 持续被消耗、越多寿命越长”的通常预期相反；作者认为 0.5 M 是保留 GO 结构与不过度消耗活性硫之间的平衡，"
+     "但没有解释 1.0 M 为什么变差。体系是离子液体＋GO 正极，条件特殊。另外，“LiNO₃ 越多衰减越慢”这条多数规律去掉特殊组分后已没有共识。",
+     "最佳用量由什么决定——放电截止电压、电解液用量、循环圈数？P111 作者推测与充电倍率有关，未验证。"),
+    ("T4", "问题 3 · 高盐浓度和 LiNO₃ 是替代还是互补？",
+     "P112 作者推测两者分工互补：LiNO₃ 负责在两极成膜，高盐抑制多硫化物溶解、从而少消耗 LiNO₃（作者推测）。",
+     "313 篇里没有一篇把盐浓度和 LiNO₃ 交叉测过，只有 P112。两者对 CE 的作用是重叠（有了一个就不需要另一个），还是对寿命各有贡献？"
+     "需要盐浓度 × LiNO₃ 用量的交叉实验，同时测 CE 和循环寿命。"),
+]
+
+
 def meta_panel():
+    """05 页（11-08 版）：漏斗图＋三条无定论问题（矛盾是什么、怎么找到的、两方原因、还不知道的）＋已有解释的反例。"""
+    import sys
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from fig00_funnel import numbers
+    n = numbers()
+    ev = json.loads(EVF.read_text(encoding="utf-8"))
+
+    def plist(v):
+        return "、".join(v) if v else "—"
+
+    cards = []
+    for t, title, author, unknown in QUESTIONS:
+        x = ev[t]
+        side = {k[0]: v for k, v in x["各立场论文"].items()}
+        rows = [["矛盾是什么", e(x["矛盾是什么"])],
+                ["怎么找到的", e(x["怎么找到的"])],
+                ["反例论文的作者怎么说", e(author)],
+                [f"其他论文 · 一方（{len(side['A'])} 篇）", f"{e(x['立场']['A'])}<br><span class='note'>{plist(side['A'])}</span>"],
+                [f"其他论文 · 另一方（{len(side['B'])} 篇）", f"{e(x['立场']['B'])}<br><span class='note'>{plist(side['B'])}</span>"],
+                ["还不知道的", f"<b>{e(unknown)}</b>"]]
+        b = "".join(f"<tr><td style='white-space:nowrap;width:13em'><b>{k}</b></td><td>{v}</td></tr>" for k, v in rows)
+        cards.append(f"<div class='card' style='grid-column:1/-1'><h3 style='margin-top:0'>{e(title)}</h3>"
+                     f"<div class='table-wrap'><table>{b}</table></div></div>")
+    t2 = ev["T2"]
+    k2 = {k[0]: v for k, v in t2["各立场论文"].items()}
+    explained = tbl(["读原文后", "条数", "意思", "例子"], [
+        ["比较不对等", n["unequal"], "这对比较同时还改了别的（盐浓度、LiNO₃、成膜溶剂等），或参照特别弱、特别强",
+         "P112：4 M 醚对 1 M 碳酸酯，CE 95.3% 对 91.6%；盐浓度也变了，同为 1 M 时醚反而更差（80.0%）"],
+        ["数据问题", n["data"], "提取或归组出错，或差别在测量误差内", "P386：CE 99.71% 对 99.68%"],
+        ["已知条件", n["known"], "看起来和共识相反，但文献已经解释清楚",
+         f"P108：非晶 S/C 正极里碳酸酯比醚好（20 圈 94.8% 对 72.7%）——{len(k2['A'])} 篇论文说碳酸酯能不能用取决于正极"
+         f"（限域/短链硫、SPAN 走固-固转化）：{plist(k2['A'])}"],
+        ["待定", n["pending"], "读原文后还说不清", "P295：LiFSI 超过 1 M 后 CE 下降，但只差 0.5 个百分点"],
+        ["真张力候选", n["real"], "读原文后仍和共识相反，且有机制上的理由", "见上面问题 1、2"]])
+    steps = tbl(["步骤", "做了什么"], [
+        ["① 两两比较", f"同一篇论文里，两个配方在同一个测试里比一次，记下结构描述符和性能是变高、变低还是相近（性能相差 < 5%、描述符 < 1% 算相近）。共 {n['pairs']:,} 对，同测试 {n['same']} 对。"],
+        ["② 计票", f"每对比较给每个变了的描述符投一票；≥ 5 篇、且多数占比 ≥ 2/3 才算共识。{n['rules']} 条“描述符 → 性能”规律里 {n['consensus']} 条有共识。"],
+        ["③ 找反例和交叉设计", f"和共识相反的比较叫反例（{n['cex']} 个，{n['cex_papers']} 篇）；同一篇里两样东西交叉着变的叫交叉设计，可以看协同作用（只有 {', '.join(n['cross'])}）。"],
+        ["④ 读原文", "逐条读反例两边的原句、对照说明和作者机制，分成比较不对等、数据问题、已知条件、待定、真张力候选。"],
+        ["⑤ 跨论文找原因", "在 313 篇已提取的 7477 条机制说法里，按关键词找出与每条矛盾有关的，分成两方，列出各方论文。"]])
+    sec = f"""<section id="meta" class="panel" hidden><div class="section-head"><h2>Meta 分析：找到了哪些矛盾、为什么</h2><span class="note">{n['papers']}/535 篇 ·
+初步，AI 辅助，用户尚未逐项人工确认</span></div>
+<div class="callout"><b>一句话</b>：从 {n['papers']} 篇论文的 {n['pairs']:,} 对比较里数票找共识，再找和共识相反的反例、读原文排除比较方式造成的，
+最后剩下 <b>{n['questions']} 个文献里没有定论的问题</b>：稀释剂该不该分解、LiNO₃ 加多少最好、高盐和 LiNO₃ 是替代还是互补。</div>
+<div class="card" style="margin-top:18px"><a href="图/fig0_funnel.png" target="_blank"><img class="fig" src="图/fig0_funnel.png" alt="工作流漏斗图" style="width:100%"></a></div>
+<h3 style="margin-top:26px">矛盾是怎么找到的</h3>{steps}
+<h3 style="margin-top:26px">找到的矛盾和原因</h3><div class="grid2">{''.join(cards)}</div>
+<h3 style="margin-top:26px">其余反例：读原文后已有解释</h3>{explained}
+<div class="callout warn" style="margin-top:18px"><b>meta 分析能做到哪一步</b>：“矛盾是什么、怎么找到的”靠计票（最简单的一种 meta 分析）和读原文；
+“为什么”只能做一半——11-06 用调节因素检验（换了什么条件结论会反过来）试过 126 次，经多重比较校正后没有一个成立：每个问题只有几篇论文、条件又各不相同。
+所以上面的原因是作者的解释和其他论文的说法，还没有被验证；验证留给后面的实验或计算。</div>
+<div class="callout">脚本：<span class="mono">scripts/step16–20</span>（两两比较、计票、读原文判定、协同作用、跨论文机制证据）、<span class="mono">scripts/fig00_funnel.py</span>。
+原文句子不在公开网页上展示。</div>
+</section>"""
+    return sec, ""
+
+
+def meta_panel_v1():
+    """11-06 版 05 页（meta v3、矛盾归因、记分卡），11-08 起不再使用，留作历史。"""
     d = json.loads(DATA.read_text(encoding="utf-8"))
     v3 = json.loads((V3F / "汇总.json").read_text(encoding="utf-8"))
     st = json.loads((V3F / "网站图统计.json").read_text(encoding="utf-8"))
