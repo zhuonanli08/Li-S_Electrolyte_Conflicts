@@ -5,11 +5,12 @@ SES 的做法（NVIDIA 技术博客 2025-05 图 2）：背景是枚举出的上�
   背景 = QM9（133,885 个 ≤ 9 个重原子 C/N/O/F 的稳定小分子，取自 GDB-17 化学宇宙；外部数据/qm9.csv，来自 DeepChem 公开数据集）；
   叠加 = 313 篇用到的中性有机分子（溶剂、稀释剂、添加剂、介体；锂盐、离子、多硫化物、S8 不放，它们不在同一类化学空间）。
 指纹与旧分子宇宙一致：Morgan r = 2、2048 位（RDKit）。
-输出：output/分子宇宙_SES式_2026-11-08/指纹.npz（packbits）、分子.json、结构图/<id>.png（暗色底的 2D 结构式，供标注框用）。
-用法：D:/anaconda/envs/rdkit/python.exe -X utf8 scripts/step23_universe_fp.py
+输出：output/分子宇宙_SES式_2026-11-08/指纹.npz（packbits）、分子.json、结构图/<id>.png（白底 2D 结构式，供标注框用）。
+用法：D:/anaconda/envs/rdkit/python.exe -X utf8 scripts/step23_universe_fp.py [--draw-only 只重画结构小图]
 """
 import csv
 import json
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -35,7 +36,30 @@ def fp(m):
     return a
 
 
+def draw(lit):
+    """结构小图：白底、黑色键线、杂原子按 RDKit 默认配色（11-08 晚用户：不要黑底，改白底）。"""
+    (OUT / "结构图").mkdir(exist_ok=True)
+    ids = {x["id"]: x for x in lit}
+    for i in DRAW:
+        if i not in ids:
+            print("no structure:", i)
+            continue
+        m = Chem.MolFromSmiles(ids[i]["smiles"])
+        d = rdMolDraw2D.MolDraw2DCairo(300, 220)
+        o = d.drawOptions()
+        o.setBackgroundColour((1, 1, 1, 1))
+        o.bondLineWidth = 2.4
+        o.minFontSize = 18
+        o.padding = 0.12
+        d.DrawMolecule(m)
+        d.FinishDrawing()
+        (OUT / "结构图" / f"{i}.png").write_bytes(d.GetDrawingText())
+
+
 def main():
+    if "--draw-only" in sys.argv:  # 只重画结构小图，不重算指纹
+        draw(json.loads((OUT / "分子.json").read_text(encoding="utf-8"))["文献分子"])
+        return
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "结构图").mkdir(exist_ok=True)
     # 文献分子
@@ -70,23 +94,7 @@ def main():
     np.savez_compressed(OUT / "指纹.npz", bits=np.packbits(X, axis=1), n_bg=len(bg_fp), n_lit=len(lit_fp))
     (OUT / "分子.json").write_text(json.dumps({"说明": "背景 QM9（行 0..n_bg-1）＋ 313 篇中性有机分子（之后各行，顺序同 文献分子）；Morgan r=2, 2048 位",
                                              "背景数": len(bg_fp), "文献分子": lit}, ensure_ascii=False, indent=1), encoding="utf-8")
-    # 结构小图：暗色底、白色键线，杂原子保留颜色
-    ids = {x["id"]: x for x in lit}
-    for i in DRAW:
-        if i not in ids:
-            print("no structure:", i)
-            continue
-        m = Chem.MolFromSmiles(ids[i]["smiles"])
-        d = rdMolDraw2D.MolDraw2DCairo(300, 220)
-        o = d.drawOptions()
-        rdMolDraw2D.SetDarkMode(o)
-        o.setBackgroundColour((0, 0, 0, 1))
-        o.bondLineWidth = 2.4
-        o.minFontSize = 18
-        o.padding = 0.12
-        d.DrawMolecule(m)
-        d.FinishDrawing()
-        (OUT / "结构图" / f"{i}.png").write_bytes(d.GetDrawingText())
+    draw(lit)
     print(f"background {len(bg_fp)}; literature {len(lit)} (in QM9: {len(in_qm9)}); drawn {sum(i in ids for i in DRAW)}")
 
 

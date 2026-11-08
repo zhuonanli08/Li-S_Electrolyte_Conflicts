@@ -666,6 +666,7 @@ Practical condition: E/S 5 and loading 4 (plan §7.8). To be recomputed on the f
     conflicts = f"""<section id="conflicts" class="panel" hidden><div class="section-head"><h2>Contradiction candidates</h2><span class="note">Re-run after normalisation · every item checked against the source text</span></div>
 <div class="table-wrap"><table><tr><th>Rule</th><th>What it looks for</th><th>Candidates</th></tr>{rules}</table></div>
 <div class="callout"><b>Verdicts.</b> ✅ supported by the source and worth explaining · 🔶 values correct, but an unaligned factor or definition explains the gap · ⚠️ extraction or classification problem · ❌ not a contradiction.<br>
+    vd = json.loads((ROOT / "output" / "组会图_2026-11-08" / "第13页向量图数据.json").read_text(encoding="utf-8"))
 NORM: only 3 cross-paper pairs share the same formulation and none differs by ≥1.5× after normalisation. LOPO runs only where the selected model's V1 R² &gt; 0; skipped: {e(skip)}. FLIP: none in this analysis set.</div>
 <div class="chips" id="ctype">{chips}</div><div class="grid2">{''.join(cc)}</div></section>"""
 
@@ -706,10 +707,13 @@ NORM: only 3 cross-paper pairs share the same formulation and none differs by �
          "以及在锂硫全电池里区分两者的实验。", 0, True),
         ("fig_p13_vectors.png", "文字向量地图：矛盾的说法是邻居",
          "左：四组句子的向量相似度——立场相反、讲同一件事的两句话几乎重合（0.95–0.96），讲两件事的才远，说明文字向量按“讲什么”摆放、不按“支持还是反对”。"
-         "中、右：313 篇 7,477 条机制说法（bge-small-zh → UMAP），问题 1 两派落在同一片区域、互相交错；P179（HFE 分解成 LiF 有利）与 P338（LiF 来自锂盐、HFE 分解不太可能）"
-         "离得最近、结论相反。向量找“讲同一件事”的说法，立场由读原文判断。", 0, True),
+         f"中：313 篇 {vd['画出的说法']:,} 条机制说法（bge-small-zh → UMAP），按说法里的关键词粗分话题上色（只作定位）：LiF / SEI / 锂负极 "
+         f"{vd['话题计数（关键词粗分）']['LiF / SEI / Li anode']:,} 条、转化动力学与催化 {vd['话题计数（关键词粗分）']['conversion kinetics / catalysis']:,} 条、"
+         f"多硫化物穿梭与溶解 {vd['话题计数（关键词粗分）']['polysulfide shuttle / dissolution']:,} 条等；P017 的 {vd['英文摘要未画（P017）']} 条英文摘要单独成簇，不画。"
+         f"右：方框放大，{vd['放大区说法']:,} 条说法里 {vd['放大区 LiF/SEI/锂负极']:,} 条讲 LiF / SEI / 锂负极，读原文后在问题 1 上站队的有 {vd['问题 1 站队说法']} 条（蓝、橙），"
+         "两派互相交错；P179（HFE 分解成 LiF 有利）与 P338（LiF 来自锂盐、HFE 分解不太可能）离得最近、结论相反。向量找“讲同一件事”的说法，立场由读原文判断。", 0, True),
         ("fig_formulation_space.png", "配方空间（数据概况）",
-         f"版式照 SES AI 分子宇宙（黑底、越亮 = 配方越多、文字直接标在图上）。横轴 = 每个 Li⁺ 分到的配位位点（溶剂化强弱），纵轴 = 锂盐浓度，都取对数；"
+         f"版式照 SES AI 分子宇宙（颜色越深 = 配方越多、文字直接标在图上；11-08 晚改为白底）。横轴 = 每个 Li⁺ 分到的配位位点（溶剂化强弱），纵轴 = 锂盐浓度，都取对数；"
          f"绿点 = 含 LiNO₃（大小 = 用量），绿圈 = 含 LiNO₃ 但原文没给 M 用量，灰点 = 不含，红边 = 含含氟溶剂/稀释剂。{fsp['上图配方']} 个配方（{fsp['论文']} 篇）里 "
          f"{fsp['热点']['配方数']} 个挤在同一点（其中 {fsp['热点']['其中 DOL/DME+LiTFSI']} 个是 1 M LiTFSI 的 DOL/DME）；高盐区几乎全是灰点（问题 3），"
          "大绿点很少（问题 2），含氟配方在左侧溶剂化弱的一边（问题 1）。", 0, True),
@@ -717,7 +721,7 @@ NORM: only 3 cross-paper pairs share the same formulation and none differs by �
          f"照 SES AI Molecular Universe 的做法：背景 = QM9 的 {mu['背景分子']:,} 个小分子（GDB-17 中所有不超过 9 个重原子的 C/N/O/F 稳定分子），"
          f"313 篇用到的 {mu['文献分子']} 个中性有机分子（绿）叠在上面，位置 = 结构相似度（Morgan 指纹、Jaccard 距离、UMAP）。左：全景，文献分子只落在几个角落。"
          f"右：近景，{mu['文献分子']} 个分子和各自最相近的 120 个 QM9 分子（共 {mu['近景背景分子']:,} 个）重新降维，文献分子分成链状醚与氟化醚、碳酸酯/酯/酰胺、"
-         "环状碳酸酯、环醚、芳香与含硫硒添加剂几块；暗点 = 结构相近但 313 篇里没人用过的分子；红 = 问题 1 的含氟稀释剂。锂盐、离子、多硫化物不在图中。", 0, True),
+         "环状碳酸酯、环醚、芳香与含硫硒添加剂几块；紫色点 = 结构相近但 313 篇里没人用过的分子；红 = 问题 1 的含氟稀释剂。锂盐、离子、多硫化物不在图中。", 0, True),
         ("图7a_说法地图_T1.html", "补充 · 说法地图（问题 1）",
          f"一个点 = 一篇论文的一条机制说法；横轴 = 发表年份，上下两带 = 两派立场（读原文判断）。“LiF 来自阴离子”一派 {cm['T1']['2022 年及以后']['B']} 篇在 2022 年以后。", 560, True),
         ("图7b_说法地图_T3.html", "补充 · 说法地图（问题 2）", "画法同上。", 560, True),

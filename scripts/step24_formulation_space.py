@@ -1,6 +1,7 @@
 """step24（papertrail 环境）：SES 式配方空间图（11-08 用户：配方空间“还是不满意，你看看人家 SES 怎么画的”）。
 
-与分子宇宙同一套视觉语言：黑底；配方越密的地方越亮（紫 → 橙）；文字直接写在画面上。
+与分子宇宙同一套视觉语言：配方越密的地方颜色越深；文字直接写在画面上。
+11-08 晚用户：“可以，但是不要黑底的这种图，改成白底＋合适配色” → 白底，密度浅紫 → 深紫，点的颜色含义不变。
 坐标仍用两个有物理意义的描述符（11-06 用户：配方图用描述符、按数值画）：
   横轴 = 每个 Li⁺ 分到的配位位点（醚氧、羰基氧等，按整个配方的用量算；越少 = 溶剂化越弱，高浓/局部高浓电解液在左边），对数；
   纵轴 = 锂盐浓度（M），对数。
@@ -32,8 +33,9 @@ import fig_questions as Q
 OUT = ROOT / "output" / "组会图_2026-11-08"
 SITE = ROOT / "output" / "表述与矛盾试跑_F版30篇_2026-11-04" / "网站" / "图"
 plt.rcParams.update({"font.family": ["Arial", "DejaVu Sans"]})
-GLOW = LinearSegmentedColormap.from_list("glow", [(0, (0, 0, 0, 0)), (0.08, "#2b0a57"), (0.3, "#6a1b9a"), (0.55, "#c2408a"), (0.8, "#f6874f"), (1, "#fdd36a")])
-GREEN, RED, GREY, PURPLE_TXT, MUTED = "#39e75f", "#ff4040", "#8c8c8c", "#c77dff", "#9a9a9a"
+GLOW = LinearSegmentedColormap.from_list("glow", [(0, (1, 1, 1, 0)), (0.06, "#f1edf8"), (0.3, "#d3c6ec"), (0.55, "#a690d8"), (0.8, "#6f4dba"), (1, "#3f1f7a")])
+GREEN, RED, GREY, PURPLE_TXT, MUTED = "#14955a", "#d62728", "#a3a3a3", "#5b4a9e", "#6b6b6b"
+INK, INK2, PAPER = "#1a1a1a", "#4a4a4a", "white"
 XL, YL = (0.6, 160), (0.08, 14)
 
 
@@ -50,9 +52,9 @@ def main():
     has = np.array([p["has_lino3"] for p in pts]); dose = np.array([p["lino3"] if p["lino3"] is not None else np.nan for p in pts])
     fs = np.array([p["fsolv"] for p in pts])
 
-    fig = plt.figure(figsize=(16, 9), facecolor="black")
+    fig = plt.figure(figsize=(16, 9), facecolor=PAPER)
     ax = fig.add_axes([0.06, 0.10, 0.60, 0.74])
-    ax.set_facecolor("black")
+    ax.set_facecolor(PAPER)
     # 发光：对数坐标里的二维直方图 + 高斯平滑
     lx, ly = np.log10(x), np.log10(y)
     gx = np.linspace(*np.log10(XL), 520); gy = np.linspace(*np.log10(YL), 380)
@@ -63,12 +65,12 @@ def main():
     ax.pcolormesh(10 ** gx, 10 ** gy, G, cmap=GLOW, shading="flat", zorder=1, rasterized=True)  # 对数轴上要按格子边界画，imshow 会按线性铺开
     ax.set_xlim(*XL); ax.set_ylim(*YL)
     # 高盐 + LiNO₃（问题 3）的区域
-    ax.add_patch(Rectangle((XL[0], 1.0001), XL[1] - XL[0], YL[1] - 1.0001, fill=False, ec="white", lw=1.0, ls=(0, (4, 4)), zorder=2))
+    ax.add_patch(Rectangle((XL[0], 1.0001), XL[1] - XL[0], YL[1] - 1.0001, fill=False, ec=INK2, lw=1.0, ls=(0, (4, 4)), zorder=2))
     # 点
     no = ~has
     ax.scatter(x[no], y[no], s=16, c=GREY, edgecolors=np.where(fs[no], RED, "none"), linewidths=1.2, zorder=3)
     kd = has & ~np.isnan(dose)
-    ax.scatter(x[kd], y[kd], s=14 + 260 * dose[kd], c=GREEN, alpha=0.85, edgecolors=np.where(fs[kd], RED, "black"), linewidths=1.2, zorder=4)
+    ax.scatter(x[kd], y[kd], s=14 + 260 * dose[kd], c=GREEN, alpha=0.85, edgecolors=np.where(fs[kd], RED, "white"), linewidths=1.2, zorder=4)
     ku = has & np.isnan(dose)
     ax.scatter(x[ku], y[ku], s=30, facecolors="none", edgecolors=np.where(fs[ku], RED, GREEN), linewidths=1.4, zorder=4)
     # 热点：位置相同（四舍五入后）的配方最多的一点
@@ -77,39 +79,38 @@ def main():
     hot = [p for p in pts if (round(math.log(p["sites"]), 2), round(math.log10(p["salt"]), 2)) == (cx, cy)]
     dd = sum({"DOL", "DME", "LiTFSI"} <= set(p["comp"]) for p in hot)
     ax.annotate(f"{n_hot} formulations at one point\n{dd} of them: 1 M LiTFSI in DOL/DME (± LiNO₃, ± additive)",
-                xy=(math.exp(cx), 10 ** cy), xytext=(55, 0.16), color="white", fontsize=10.5, fontweight="bold", ha="center", va="center",
-                bbox=dict(boxstyle="square,pad=0.6", fc="black", ec="white", lw=1.3),
-                arrowprops=dict(arrowstyle="-", color="white", lw=1.2), zorder=6)
+                xy=(math.exp(cx), 10 ** cy), xytext=(55, 0.16), color=INK, fontsize=10.5, fontweight="bold", ha="center", va="center",
+                bbox=dict(boxstyle="square,pad=0.6", fc="white", ec=INK2, lw=1.2),
+                arrowprops=dict(arrowstyle="-", color=INK2, lw=1.1), zorder=6)
     # 区域名（斜体白字）
     for t, (xx, yy), ha in (("dilute ether electrolytes", (60, 1.4), "center"), ("high-concentration\n(few free solvent molecules)", (1.6, 6.5), "center"),
                             ("fluorinated diluent added\n(localized high-concentration)", (1.6, 0.68), "center")):
-        ax.text(xx, yy, t, color="#e8e8e8", fontsize=11, fontstyle="italic", ha=ha, va="center", zorder=5, linespacing=1.15)
-    ax.text(XL[1] * 0.93, 12.2, "salt > 1 M", color="white", fontsize=10, ha="right", va="top", zorder=5)
+        ax.text(xx, yy, t, color=INK2, fontsize=11, fontstyle="italic", ha=ha, va="center", zorder=5, linespacing=1.15)
+    ax.text(XL[1] * 0.93, 12.2, "salt > 1 M", color=INK2, fontsize=10, ha="right", va="top", zorder=5)
     # 坐标轴（暗色）
     for s in ("top", "right"):
         ax.spines[s].set_visible(False)
     for s in ("left", "bottom"):
-        ax.spines[s].set_color("#666666")
-    ax.tick_params(colors="#cccccc", labelsize=11, which="both")
+        ax.spines[s].set_color("#888888")
+    ax.tick_params(colors="#333333", labelsize=11, which="both")
     ax.set_xticks([1, 2, 5, 10, 20, 50, 100]); ax.set_xticklabels(["1", "2", "5", "10", "20", "50", "100"])
     ax.set_yticks([0.1, 0.2, 0.5, 1, 2, 4, 8]); ax.set_yticklabels(["0.1", "0.2", "0.5", "1", "2", "4", "8"])
     ax.minorticks_off()
-    ax.set_xlabel("Coordinating sites per Li⁺  (fewer = weaker solvation)", color="white", fontsize=12)
-    ax.set_ylabel("Lithium-salt concentration (M)", color="white", fontsize=12)
+    ax.set_xlabel("Coordinating sites per Li⁺  (fewer = weaker solvation)", color=INK, fontsize=12)
+    ax.set_ylabel("Lithium-salt concentration (M)", color=INK, fontsize=12)
     # 右侧文字（SES 式：大字直接写在画面上）
     n_pap = len({p["论文"] for p in pts})
     tx = 0.70
-    fig.text(tx, 0.90, "Formulation space", fontsize=24, fontweight="bold", color="white", va="bottom")
+    fig.text(tx, 0.90, "Formulation space", fontsize=24, fontweight="bold", color=INK, va="bottom")
     fig.text(tx, 0.845, f"{len(pts)} of {n_form} formulations in 313 papers\n(those with solvent amounts and a salt in M; {n_pap} papers)",
              fontsize=11.5, color=PURPLE_TXT, va="bottom", linespacing=1.25)
-    fig.text(tx, 0.805, "glow = how many formulations sit there", fontsize=11, color="white", va="bottom")
+    fig.text(tx, 0.805, "shading = how many formulations sit there", fontsize=11, color=INK, va="bottom")
     yy = 0.735
-    for mk, txt in (((GREEN, "black", 140), "with LiNO₃ · dot size = dose (M)"), (("none", GREEN, 40), "with LiNO₃, dose not given in M"),
+    for mk, txt in (((GREEN, "white", 140), "with LiNO₃ · dot size = dose (M)"), (("none", GREEN, 40), "with LiNO₃, dose not given in M"),
                     ((GREY, "none", 30), "without LiNO₃"), ((GREY, RED, 40), "red edge = contains a fluorinated\nsolvent / diluent")):
-        fig.lines  # noqa: keep matplotlib quiet about unused
         a = fig.add_axes([tx, yy - 0.012, 0.02, 0.03]); a.axis("off"); a.set_xlim(-1, 1); a.set_ylim(-1, 1)
         a.scatter([0], [0], s=mk[2], c=mk[0] if mk[0] != "none" else "none", edgecolors=mk[1], linewidths=1.4)
-        fig.text(tx + 0.025, yy, txt, fontsize=11, color="white", va="center", linespacing=1.2)
+        fig.text(tx + 0.025, yy, txt, fontsize=11, color=INK, va="center", linespacing=1.2)
         yy -= 0.055
     # 三个问题各在哪里
     q3 = int(sum(has & (y > 1))); q3p = len({p["论文"] for p, h_, yv in zip(pts, has, y) if h_ and yv > 1})
@@ -119,15 +120,15 @@ def main():
     yy -= 0.02
     for col, head, body in ((RED, "Open question 1", f"fluorinated diluents move formulations left\n(fewer sites per Li⁺) · {nf} formulations here"),
                             (GREEN, "Open question 2", f"big green dots are rare: only {sum(v > 0.6 for v in lv)} of {len(lv)}\nformulations use > 0.6 M LiNO₃"),
-                            ("white", "Open question 3", f"above the dashed line, green is rare:\nsalt > 1 M with LiNO₃ in {len(all_hi)} formulations\n"
+                            (INK, "Open question 3", f"above the dashed line, green is rare:\nsalt > 1 M with LiNO₃ in {len(all_hi)} formulations\n"
                                                          f"({len({f['论文'] for f in all_hi})} papers; {q3} of them placed here)")):
         fig.text(tx, yy, head, fontsize=12.5, fontweight="bold", color=col, va="top")
-        fig.text(tx, yy - 0.032, body, fontsize=10.8, color="white", va="top", linespacing=1.25)
+        fig.text(tx, yy - 0.032, body, fontsize=10.8, color=INK, va="top", linespacing=1.25)
         yy -= 0.032 + 0.033 * (body.count("\n") + 1) + 0.03
     fig.text(0.06, 0.015, "Coordinating sites per Li⁺ = (solvent molecules per litre × donor sites per molecule) ÷ Li⁺ per litre, from each full recipe. "
-             "Same-position formulations overlap; the glow shows how many.", fontsize=9, color=MUTED, va="bottom")
+             "Same-position formulations overlap; the shading shows how many.", fontsize=9, color=MUTED, va="bottom")
     f = OUT / "fig_formulation_space.png"
-    fig.savefig(f, dpi=300, facecolor="black")
+    fig.savefig(f, dpi=300, facecolor=PAPER)
     plt.close(fig)
     shutil.copy(f, SITE / "fig_formulation_space.png")
     s = {"配方总数": n_form, "上图配方": len(pts), "论文": n_pap, "热点": {"配方数": n_hot, "其中 DOL/DME+LiTFSI": dd, "每Li位点": round(math.exp(cx), 2), "盐M": round(10 ** cy, 2)},
