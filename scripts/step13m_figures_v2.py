@@ -106,29 +106,66 @@ def same_test_points():
 YOPT = ["salt", "ffrac", "eo", "rotb", "carbonate", "lino3"]
 
 
-def fig_space(pts):
+# 11-08 用户：配方空间颜色大小不好看 → 改为一张图：每个点 = 一个有性能数据的配方，横轴 = 每个 Li⁺ 的配位位点（溶剂化强弱），
+# 纵轴 = 主盐浓度（对数），颜色 = 溶剂类别（按描述符判定，规则见 solvent_class），点一样大；类别名标在该类点群的中位位置
+SOLV = [("Ether", "#2a78d6"), ("Fluorinated (localized high-conc. / fluorinated solvent)", "#eb6834"), ("Carbonate", "#1baf7a"),
+        ("Sulfone / sulfoxide", "#eda100"), ("Amide / nitrile (high donor)", "#e87ba4"), ("Organosulfur solvent", "#6250d6"), ("Other", "#9fb3c8")]
+
+
+def solvent_class(d):
+    g = lambda k: d.get(k) or 0
+    if g("ffrac") >= 0.2:
+        return SOLV[1][0]
+    if g("carbonate") >= 0.3:
+        return "Carbonate"
+    if g("sulfone") >= 0.3:
+        return "Sulfone / sulfoxide"
+    if g("amide") >= 0.3 or g("nitrile") >= 0.3:
+        return "Amide / nitrile (high donor)"
+    if g("thio") >= 0.3:
+        return "Organosulfur solvent"
+    if g("eo") >= 0.5:
+        return "Ether"
+    return "Other"
+
+
+def fig_space(M):
     import plotly.graph_objects as go
-    from plotly.subplots import make_subplots
-    CL = F.CLASSES
-    fig = make_subplots(rows=2, cols=2, subplot_titles=[EN[c] for c in CL], horizontal_spacing=0.08, vertical_spacing=0.12)
-    data = {}
-    for i, c in enumerate(CL):
-        ps = [p for p in pts if p["类别"] == c and p["D"].get("lnsites") is not None]
-        data[c] = ps
-        fig.add_trace(go.Scatter(x=[p["D"]["lnsites"] for p in ps], y=[p["D"].get(YOPT[0]) for p in ps], mode="markers", showlegend=False,
-                                 marker=dict(size=9, color=[max(-1.5, min(1.5, p["dy"])) for p in ps], colorscale=D.DIVERGE, cmin=-1.5, cmax=1.5,
-                                             line=dict(width=0.6, color="white"), showscale=(i == 0),
-                                             colorbar=dict(title="ln × vs own control", tickvals=[-1.5, 0, 1.5], ticktext=["worse", "0", "better"], len=0.8)),
-                                 text=[f"<b>{p['论文']}</b> {p['实验']} vs {p['参照']}<br>×{math.exp(p['dy']):.2f} vs own control"
-                                       + "".join(f"<br>{LAB[k]}: {p['D'].get(k):.3g}" for k in ['lnsites'] + YOPT if p['D'].get(k) is not None) for p in ps],
-                                 hoverinfo="text"), row=i // 2 + 1, col=i % 2 + 1)
-    buttons = [dict(label=LAB[k], method="restyle", args=[{"y": [[p["D"].get(k) for p in data[c]] for c in CL]}, list(range(len(CL)))]) for k in YOPT]
-    fig.update_layout(updatemenus=[dict(buttons=buttons, direction="down", x=0, xanchor="left", y=1.07, yanchor="bottom", showactive=True)])
-    fig.update_xaxes(title_text="Coordinating sites per Li⁺ (ln)")
-    D.layout(fig, "Fig. 2 · Formulation space · each point = a new formulation tested against its own control in the same test · colour = how much better or worse · "
-                  "y axis: choose a descriptor ↓", 880, margin=dict(l=20, r=20, t=130, b=50))
+    F_ = {}
+    for r in M:
+        F_.setdefault((r["论文"], r["recipe"]), r["D"])
+    pts = [(k, d) for k, d in F_.items() if d.get("lnsites") is not None and (d.get("salt") or 0) > 0]
+    fig = go.Figure()
+    out, big = {}, None
+    for g, col in SOLV:
+        ii = [(k, d) for k, d in pts if solvent_class(d) == g]
+        if not ii:
+            continue
+        out[g] = len(ii)
+        cell = {}  # 位置相同（四舍五入后）的配方合成一个点，大小 = 配方数
+        for k, d in ii:
+            cell.setdefault((round(d["lnsites"], 2), round(math.log10(d["salt"]), 2)), []).append((k, d))
+        xs = [v[0][1]["lnsites"] for v in cell.values()]
+        ys = [v[0][1]["salt"] for v in cell.values()]
+        ns = [len(v) for v in cell.values()]
+        fig.add_trace(go.Scatter(x=xs, y=ys, mode="markers", name=f"{g} ({len(ii)})",
+                                 marker=dict(size=[7 + 3.2 * math.sqrt(n - 1) for n in ns], color=col, opacity=0.75, line=dict(width=0.8, color="white")),
+                                 hovertext=[f"<b>{n} formulation{'s' if n > 1 else ''}</b> · {g}<br>sites per Li⁺ (ln) {v[0][1]['lnsites']:.2f} · salt {v[0][1]['salt']:.2f} M<br>"
+                                            + ", ".join(f"{k[0]}" for k, _ in v[:8]) + (" …" if n > 8 else "") for v, n in zip(cell.values(), ns)],
+                                 hoverinfo="text"))
+        m = max(zip(ns, xs, ys))
+        if big is None or m[0] > big[0]:
+            big = m + (g,)
+    if big:
+        fig.add_annotation(x=big[1], y=math.log10(big[2]), text=f"<b>{big[0]} formulations</b> at one spot<br>(typical 1 M ether electrolyte)",
+                           showarrow=True, arrowhead=0, ax=90, ay=-70, font=dict(size=11, color=D.INK), bgcolor="rgba(255,255,255,0.85)")
+    fig.update_xaxes(title_text="Coordinating sites per Li⁺ (ln) — weaker solvation ←  → stronger solvation", showgrid=True, gridcolor="#eeeeea")
+    fig.update_yaxes(title_text="Main lithium-salt concentration (M, log scale)", type="log", showgrid=True, gridcolor="#eeeeea")
+    D.layout(fig, f"Fig. 2 · Formulation space · {len(pts)} formulations with performance data (313 papers) · colour = solvent class (from descriptors)",
+             640, legend=dict(orientation="v", x=1.01, y=1, font=dict(size=11), title=dict(text="Solvent class (formulations)")),
+             margin=dict(l=60, r=20, t=70, b=60), plot_bgcolor="white")
     write(fig, "图2_配方空间.html")
-    return {c: len(v) for c, v in data.items()}
+    return {"配方": len(pts), "按溶剂类别": out}
 
 
 def fig_parcoords(pts):
@@ -167,6 +204,33 @@ ROLE = {"溶剂": "Solvent", "溶剂/添加剂": "Solvent / additive", "锂盐":
 # 无定论问题 1 涉及的分子（step20 T1 的论文与反例 P381、P371、P263、P350 里用到的稀释剂/溶剂）：True = 含氟，False = 不含氟的对照
 Q1_MOLS = {"TTE": True, "BTFE": True, "OFE": True, "TFEE": True, "TFTFE": True, "F3DEE": True, "F4DEE": True, "F5DEE": True,
            "DTFEG": True, "F4DMB": True, "FB": True, "F4EO2": True, "DBE": False, "DEE": False}
+
+
+# 11-08：分子宇宙按化学大类上色（由组分表“化学类别”归并；顺序与颜色固定，取自作图规范的 8 色）
+CHEM_GROUPS = [("Ether", "#2a78d6"), ("Fluorinated ether / solvent", "#eb6834"), ("Carbonate / ester", "#1baf7a"),
+               ("Organosulfur / Se", "#eda100"), ("N-containing (amide, amine, N-ring, nitrile)", "#e87ba4"),
+               ("Salt / ion", "#6250d6"), ("Polysulfide / sulfur", "#008300"), ("Other", "#9fb3c8")]
+
+
+def chem_group(c):
+    c = c or ""
+    if c.endswith("盐") or c in ("阴离子", "阳离子", "卤化物", "金属卤化物", "多卤化物", "离子液体", "碘化物"):
+        return "Salt / ion"
+    if c.startswith("氟") or c in ("氟代芳烃", "氟代吡啶", "卤代烃"):
+        return "Fluorinated ether / solvent"
+    if any(k in c for k in ("醚", "缩醛")):
+        return "Ether"
+    if any(k in c for k in ("碳酸酯", "羧酸酯", "磷酸酯", "磺酸酯")) or c == "酯":
+        return "Carbonate / ester"
+    if c.startswith("有机硫") or c.startswith("有机硒") or c.startswith("有机碲") or c == "二硫化碳":
+        return "Organosulfur / Se"
+    if c.startswith("多硫化") or c == "硫":
+        return "Polysulfide / sulfur"
+    if c.endswith("盐") or c in ("阴离子", "阳离子", "卤化物", "金属卤化物", "多卤化物", "离子液体", "碘化物"):
+        return "Salt / ion"
+    if any(k in c for k in ("酰胺", "胺", "含氮杂环", "咪唑", "吡啶", "异噁唑", "吡咯", "腈", "酰亚胺", "磷腈")):
+        return "N-containing (amide, amine, N-ring, nitrile)"
+    return "Other"
 
 
 def fig_universe():
@@ -211,31 +275,23 @@ def fig_universe():
         return f"F{k + 1} · " + ", ".join(ids[i] for i in ii[:3]) + (" …" if len(ii) > 3 else "")
     names = {k: fam_name(k) for k in fams}
     npap = np.array([comp[i].get("论文数") or 1 for i in ids], float)
-    size = 6 + 3.2 * np.sqrt(npap)
+    # 11-08 用户：颜色大小不好看、分类依据看不出 → 颜色改为化学大类（由组分表“化学类别”归并，依据写在图例），大小差别缩小，标出常用分子名；
+    # HDBSCAN 家族仍计算（只进汇总与悬停），不再作颜色
+    size = 7 + 1.4 * np.sqrt(npap)
+    cls = [chem_group(comp[i].get("化学类别")) for i in ids]
     hov = [f"<b>{comp[i].get('英文名') or comp[i].get('名称')}</b> ({i})<br>{comp[i].get('规范SMILES') or comp[i].get('smiles')}<br>"
-           f"role: {ROLE.get(comp[i].get('类别'), comp[i].get('类别'))} · class: {comp[i].get('化学类别')}<br>used in {int(npap[k])} papers<br>"
-           f"family: {names.get(lab[k], 'unassigned')}"
-           + (f"<br>joined by its most similar classified molecule (similarity {sim[k]:.2f}{', weak' if sim[k] < 0.5 else ''})" if joined[k] else "<br>core member (HDBSCAN)")
+           f"class: {cls[k]} ({comp[i].get('化学类别')}) · role: {ROLE.get(comp[i].get('类别'), comp[i].get('类别'))}<br>used in {int(npap[k])} papers"
            for k, i in enumerate(ids)]
     fig = go.Figure()
     groups = []
-    import plotly.express as px
-    pal = px.colors.qualitative.Dark24  # 16 个家族需要足够多的区分色
-    for n, k in enumerate(fams):
-        ii = np.where(lab == k)[0]
-        fig.add_trace(go.Scatter(x=emb[ii, 0], y=emb[ii, 1], mode="markers", name=names[k],
-                                 marker=dict(size=size[ii], color=pal[n], line=dict(width=[0.8 if not joined[i] else 1.6 for i in ii],
-                                                                                    color=["white" if not joined[i] else D.INK for i in ii]),
-                                             opacity=[0.92 if not joined[i] else 0.55 for i in ii]),
+    for g, col in CHEM_GROUPS:
+        ii = [k for k in range(len(ids)) if cls[k] == g]
+        if not ii:
+            continue
+        fig.add_trace(go.Scatter(x=emb[ii, 0], y=emb[ii, 1], mode="markers", name=f"{g} ({len(ii)})",
+                                 marker=dict(size=size[ii], color=col, line=dict(width=0.8, color="white"), opacity=0.9),
                                  hovertext=[hov[i] for i in ii], hoverinfo="text"))
-        groups.append("fam")
-    roles = sorted({ROLE.get(comp[i].get("类别"), "Other") for i in ids})
-    for n, r in enumerate(roles):
-        ii = [k for k, i in enumerate(ids) if ROLE.get(comp[i].get("类别"), "Other") == r]
-        fig.add_trace(go.Scatter(x=emb[ii, 0], y=emb[ii, 1], mode="markers", name=r, visible=False,
-                                 marker=dict(size=size[ii], color=pal[n], line=dict(width=0.8, color="white"), opacity=0.9),
-                                 hovertext=[hov[i] for i in ii], hoverinfo="text"))
-        groups.append("role")
+        groups.append("cls")
     fig.add_trace(go.Scatter(x=emb[:, 0], y=emb[:, 1], mode="markers", name="papers using it", visible=False, showlegend=False,
                              marker=dict(size=size, color=np.log10(npap), colorscale=[[0, "#dde9f7"], [1, "#0d3f80"]], showscale=True,
                                          colorbar=dict(title="papers", tickvals=[0, 1, 2], ticktext=["1", "10", "100"]), line=dict(width=0.6, color="white")),
@@ -250,24 +306,20 @@ def fig_universe():
         ii = [i for i in q1 if Q1_MOLS[ids[i]] == fl]
         fig.add_trace(go.Scatter(x=emb[ii, 0], y=emb[ii, 1], mode="markers+text", name=nm, visible=False, text=[ids[i] for i in ii],
                                  textposition="top center", textfont=dict(size=10, color=D.INK),
-                                 marker=dict(size=size[ii] + 4, color=col, symbol="star", line=dict(width=1, color=D.INK)),
+                                 marker=dict(size=size[ii] + 6, color=col, symbol="star", line=dict(width=1, color=D.INK)),
                                  hovertext=[hov[i] for i in ii], hoverinfo="text"))
         groups.append("q1")
-    yr = float(np.ptp(emb[:, 1]))
-    for k in fams:
-        ii = np.where((lab == k) & ~joined)[0]  # 标签放在核心成员中心
-        fig.add_annotation(x=float(np.median(emb[ii, 0])), y=float(np.median(emb[ii, 1])) + 0.04 * yr, text=f"<b>F{k + 1}</b>", showarrow=False,
-                           font=dict(size=12, color=D.INK), bgcolor="rgba(255,255,255,0.6)")
+    for k in np.argsort(-npap)[:14]:  # 用得最多的 14 个分子直接标名
+        fig.add_annotation(x=float(emb[k, 0]), y=float(emb[k, 1]), text=ids[k], showarrow=False, yshift=12, font=dict(size=10.5, color=D.INK))
     vis = lambda g: [x == g for x in groups]
     fig.update_layout(updatemenus=[dict(type="buttons", direction="right", x=0, xanchor="left", y=1.035, yanchor="bottom", buttons=[
-        dict(label="Structural family", method="update", args=[{"visible": vis("fam")}]),
-        dict(label="Role in the electrolyte", method="update", args=[{"visible": vis("role")}]),
+        dict(label="Chemical class", method="update", args=[{"visible": vis("cls")}]),
         dict(label="How often it is used", method="update", args=[{"visible": vis("use")}]),
         dict(label="Open question 1 molecules", method="update", args=[{"visible": vis("q1")}])])])
     fig.update_xaxes(visible=False); fig.update_yaxes(visible=False)
-    D.layout(fig, f"Fig. 6a · Molecular universe · {len(ids)} molecules of the 313 papers, placed by structural similarity · {len(fams)} families · "
-                  f"size = papers using it · pale with dark rim = joined by nearest neighbour", 820, legend=dict(orientation="v", x=1.01, y=1, font=dict(size=10)),
-             margin=dict(l=20, r=20, t=120, b=20))
+    D.layout(fig, f"Fig. 6a · Molecular universe · {len(ids)} molecules · position = structural similarity · colour = chemical class · size = papers", 760,
+             legend=dict(orientation="v", x=1.01, y=1, font=dict(size=11), title=dict(text="Chemical class (molecules)")),
+             margin=dict(l=20, r=20, t=120, b=20), plot_bgcolor="white")
     write(fig, "图6a_分子宇宙.html")
     fam_rows = [{"家族": names[k], "分子数": int((lab == k).sum()),
                  "例子": [comp[ids[i]].get("英文名") or comp[ids[i]].get("名称") for i in np.argsort(-npap) if lab[i] == k][:6]} for k in fams]
@@ -328,7 +380,7 @@ def main():
     M, _ = F.load()
     fig_corr(M)
     pts = same_test_points()
-    summary["配方空间点数"] = fig_space(pts)
+    summary["配方空间"] = fig_space(M)
     summary["平行坐标线数"] = fig_parcoords(pts)
     summary["分子宇宙"] = fig_universe()
     summary["配方基因组"] = fig_genome(M)
