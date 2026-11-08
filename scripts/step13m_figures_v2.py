@@ -164,6 +164,11 @@ ROLE = {"溶剂": "Solvent", "溶剂/添加剂": "Solvent / additive", "锂盐":
         "硫物种": "Sulfur species", "离子": "Ion", "盐": "Other salt / additive"}
 
 
+# 无定论问题 1 涉及的分子（step20 T1 的论文与反例 P381、P371、P263、P350 里用到的稀释剂/溶剂）：True = 含氟，False = 不含氟的对照
+Q1_MOLS = {"TTE": True, "BTFE": True, "OFE": True, "TFEE": True, "TFTFE": True, "F3DEE": True, "F4DEE": True, "F5DEE": True,
+           "DTFEG": True, "F4DMB": True, "FB": True, "F4EO2": True, "DBE": False, "DEE": False}
+
+
 def fig_universe():
     import plotly.graph_objects as go
     import umap
@@ -236,6 +241,18 @@ def fig_universe():
                                          colorbar=dict(title="papers", tickvals=[0, 1, 2], ticktext=["1", "10", "100"]), line=dict(width=0.6, color="white")),
                              hovertext=hov, hoverinfo="text"))
     groups.append("use")
+    # 11-08 用户同意：标出无定论问题 1（稀释剂该不该分解）涉及的分子——氟化醚/氟代溶剂 vs 不含氟的对照（DBE、DEE）
+    q1 = [i for i in range(len(ids)) if ids[i] in Q1_MOLS]
+    fig.add_trace(go.Scatter(x=emb[:, 0], y=emb[:, 1], mode="markers", name="other molecules", visible=False,
+                             marker=dict(size=size, color="#e4e3de", line=dict(width=0.5, color="white")), hovertext=hov, hoverinfo="text"))
+    groups.append("q1")
+    for fl, col, nm in ((True, "#eb6834", "Open question 1 · fluorinated diluent / solvent"), (False, "#2a78d6", "Open question 1 · non-fluorinated counterpart")):
+        ii = [i for i in q1 if Q1_MOLS[ids[i]] == fl]
+        fig.add_trace(go.Scatter(x=emb[ii, 0], y=emb[ii, 1], mode="markers+text", name=nm, visible=False, text=[ids[i] for i in ii],
+                                 textposition="top center", textfont=dict(size=10, color=D.INK),
+                                 marker=dict(size=size[ii] + 4, color=col, symbol="star", line=dict(width=1, color=D.INK)),
+                                 hovertext=[hov[i] for i in ii], hoverinfo="text"))
+        groups.append("q1")
     yr = float(np.ptp(emb[:, 1]))
     for k in fams:
         ii = np.where((lab == k) & ~joined)[0]  # 标签放在核心成员中心
@@ -245,7 +262,8 @@ def fig_universe():
     fig.update_layout(updatemenus=[dict(type="buttons", direction="right", x=0, xanchor="left", y=1.035, yanchor="bottom", buttons=[
         dict(label="Structural family", method="update", args=[{"visible": vis("fam")}]),
         dict(label="Role in the electrolyte", method="update", args=[{"visible": vis("role")}]),
-        dict(label="How often it is used", method="update", args=[{"visible": vis("use")}])])])
+        dict(label="How often it is used", method="update", args=[{"visible": vis("use")}]),
+        dict(label="Open question 1 molecules", method="update", args=[{"visible": vis("q1")}])])])
     fig.update_xaxes(visible=False); fig.update_yaxes(visible=False)
     D.layout(fig, f"Fig. 6a · Molecular universe · {len(ids)} molecules of the 313 papers, placed by structural similarity · {len(fams)} families · "
                   f"size = papers using it · pale with dark rim = joined by nearest neighbour", 820, legend=dict(orientation="v", x=1.01, y=1, font=dict(size=10)),
