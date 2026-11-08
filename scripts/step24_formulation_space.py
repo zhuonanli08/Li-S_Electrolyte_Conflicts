@@ -35,7 +35,8 @@ import fig_questions as Q
 OUT = ROOT / "output" / "组会图_2026-11-08"
 SITE = ROOT / "output" / "表述与矛盾试跑_F版30篇_2026-11-04" / "网站" / "图"
 plt.rcParams.update({"font.family": ["Arial", "DejaVu Sans"]})
-GLOW = LinearSegmentedColormap.from_list("glow", [(0, (1, 1, 1, 0)), (0.06, "#dbe6f5"), (0.3, "#8fb0de"), (0.55, "#5a6fc0"), (0.8, "#a8458f"), (1, "#d7263d")])
+GLOW = LinearSegmentedColormap.from_list("glow", [(0, (1, 1, 1, 0)), (0.06, "#d6e6f4"), (0.3, "#8fb8de"), (0.5, "#4f86c6"), (0.62, "#f4a582"), (0.8, "#d6604d"), (1, "#b2182b")])
+# 11-08 晚用户“好像还是紫色” → 蓝红之间不再插值经过紫：蓝（少）直接接浅橙红（多）
 GREEN, RED, GREY, PURPLE_TXT, MUTED = "#14955a", "#e0a800", "#a3a3a3", "#2b5fae", "#6b6b6b"  # RED 变量现为含氟溶剂描边（金黄）
 GOLD_TXT = "#a87b00"
 INK, INK2, PAPER = "#1a1a1a", "#4a4a4a", "white"

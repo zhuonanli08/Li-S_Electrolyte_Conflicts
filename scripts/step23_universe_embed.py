@@ -13,7 +13,7 @@ import numpy as np
 import umap
 
 OUT = Path(r"D:\Desktop\课题二锂硫电解液矛盾归因") / "output" / "分子宇宙_SES式_2026-11-08"
-K = 120
+K = 400  # 11-08 晚用户：右边“太平面了，没有左边好看” → 近邻从 120 增到 400，点更多、能画出和全景一样的疏密纹理
 z = np.load(OUT / "指纹.npz")
 X = np.unpackbits(z["bits"], axis=1)[:, :2048].astype(bool)
 nb = int(z["n_bg"])
@@ -32,6 +32,6 @@ sim = inter / np.maximum(union, 1)
 idx = np.unique(np.argsort(-sim, axis=1)[:, :K].ravel())
 Xs = np.vstack([X[idx], X[nb:]])
 t = time.time()
-emb2 = umap.UMAP(n_neighbors=15, min_dist=0.1, metric="jaccard", random_state=42, verbose=False).fit_transform(Xs)
+emb2 = umap.UMAP(n_neighbors=15, min_dist=0.05, metric="jaccard", random_state=42, verbose=False).fit_transform(Xs)
 np.savez_compressed(OUT / "坐标_近邻.npz", emb=emb2.astype(np.float32), bg_idx=idx, n_lit=len(X) - nb, K=K)
 print(f"local: {len(idx)} background neighbours (K = {K}) + {len(X) - nb} literature, {time.time() - t:.0f}s")

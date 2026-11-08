@@ -5,8 +5,11 @@
 11-08 晚用户：“可以，但是不要黑底的这种图，改成白底＋合适配色” → 白底；结构式白底。
 11-08 晚用户：“颜色改成红蓝渐变配色吧，这样更明显一点” → 背景密度蓝（稀）→ 紫 → 红（密），中间不经过近白色；文献分子绿不变；
   问题 1 含氟分子由红改金黄（避免与高密度红混淆）。
+11-08 晚用户：“我看到的好像还是紫色”“右边画的跟左边不太一样，太平面了，没有左边好看” →
+  配色改为蓝红对比（RdBu 去掉中间的白，浅蓝直接接浅橙红，不经过紫）；按局部密度的排名着色，蓝、红各占一部分；
+  近景改为每个文献分子取 400 个近邻（23,132 个背景分子）、点画小、密度分得更细，和全景一样有疏密纹理。
   左 = 全景：QM9 全部 133,885 个分子＋313 篇的 167 个中性有机分子（坐标.npz）→ 文献分子只落在化学空间的几个角落。
-  右 = 近景：167 个分子＋各自最相近的 120 个 QM9 分子（共 8,811 个）重新降维（坐标_近邻.npz）→ 文献分子按结构分成几块，
+  右 = 近景：168 个分子＋各自最相近的 400 个 QM9 分子（共 23,132 个）重新降维（坐标_近邻.npz）→ 文献分子按结构分成几块，
        每块周围的浅色点 = 结构相近、但 313 篇里没人用过的小分子。红点 = 无定论问题 1 的含氟稀释剂/溶剂。
 图上文字英文。输出 output/分子宇宙_SES式_2026-11-08/分子宇宙_SES式.png（300 dpi），并复制到网站 图/ 与 组会图文件夹。
 用法：D:\\anaconda\\envs\\papertrail\\python.exe -X utf8 scripts/step23_universe_plot.py
@@ -29,19 +32,19 @@ MEET = ROOT / "output" / "组会图_2026-11-08"
 plt.rcParams.update({"font.family": ["Arial", "DejaVu Sans"]})
 
 PAPER = "white"
-BG_CMAP = LinearSegmentedColormap.from_list("mu_rb", ["#2b5fae", "#5a63b4", "#8c5aa8", "#bd4a83", "#d7263d"])
+BG_CMAP = LinearSegmentedColormap.from_list("mu_rb", [(0, "#2c5aa0"), (0.3, "#4f86c6"), (0.49, "#8fb8de"), (0.51, "#f4a582"), (0.75, "#d6604d"), (1, "#b2182b")])
 INK, INK2 = "#1a1a1a", "#4a4a4a"
 GREEN, GOLD, GOLD_TXT, BLUE_TXT, GREY_TXT = "#14955a", "#f2b200", "#a87b00", "#2b5fae", "#6b6b6b"
 # 无定论问题 1 涉及的含氟稀释剂/溶剂（与 step13m 的 Q1_MOLS 一致，只取含氟一侧）
 Q1_F = {"TTE", "BTFE", "OFE", "TFEE", "TFTFE", "F3DEE", "F4DEE", "F5DEE", "DTFEG", "F4DMB", "FB", "F4EO2"}
 # 近景里画结构式的分子与标注框位置（数据坐标；坐标.npz 由固定随机种子算出，换数据要重看位置）
 # 11-08 晚 DEE 修正后加入 DEE12（168 个分子），坐标重算，位置按新坐标重定
-CALLOUTS = {"DOL": (0.2, 12.4), "EC": (9.0, 13.0), "SULFOLANE": (16.0, 10.6), "DME": (16.6, 6.2), "TTE": (6.2, 3.2), "DMC": (5.4, -3.6)}
+CALLOUTS = {"DOL": (13.8, 12.9), "EC": (-1.4, 11.6), "SULFOLANE": (17.0, 8.4), "DME": (17.0, 3.6), "TTE": (17.0, -2.4), "DMC": (3.9, -3.0)}
 # 近景的“大陆”名：放在该类分子附近（数据坐标）
-REGIONS = [("chain ethers &\nfluorinated ethers", (15.3, 2.4), "left"), ("carbonates, esters, amides", (12.9, -4.7), "left"),
-           ("cyclic carbonates", (7.6, 9.9), "center"), ("cyclic ethers", (5.0, 13.6), "center"),
-           ("aromatics, S / Se / N rings\n(additives, redox mediators)", (-3.0, 5.6), "center"), ("lactams, cyclic ureas", (4.3, 7.4), "center")]
-XLIM, YLIM = (-7.0, 19.0), (-6.5, 14.8)
+REGIONS = [("chain ethers &\nfluorinated ethers", (13.3, -3.9), "center"), ("carbonates, esters, amides", (9.0, -4.7), "center"),
+           ("cyclic carbonates", (4.3, 12.0), "center"), ("cyclic ethers", (10.0, 12.1), "center"),
+           ("aromatics, S / Se / N rings\n(additives, redox mediators)", (-1.6, 6.5), "center"), ("lactams, cyclic ureas", (3.5, 7.8), "center")]
+XLIM, YLIM = (-5.6, 18.8), (-6.6, 14.4)
 
 
 def density(xy, bins=300):
@@ -54,8 +57,9 @@ def density(xy, bins=300):
 
 def background(ax, xy, s, bins):
     d = density(xy, bins)
-    o = np.argsort(d)
-    ax.scatter(xy[o, 0], xy[o, 1], s=s, c=d[o], cmap=BG_CMAP, lw=0, alpha=0.9, rasterized=True)
+    r = np.argsort(np.argsort(d + 1e-9 * np.random.default_rng(0).random(len(d)))) / (len(d) - 1)  # 按密度排名着色：蓝、红各占一部分
+    o = np.argsort(r)
+    ax.scatter(xy[o, 0], xy[o, 1], s=s, c=r[o], cmap=BG_CMAP, vmin=0, vmax=1, lw=0, alpha=0.9, rasterized=True)
 
 
 def callout(ax, mid, xy_pt, xy_box):
@@ -104,7 +108,7 @@ def main():
     # ---- 右：近景 ----
     b = fig.add_axes([0.40, 0.07, 0.59, 0.80])
     b.set_facecolor(PAPER); b.axis("off")
-    background(b, le[:-nl], s=7, bins=140)
+    background(b, le[:-nl], s=1.6, bins=300)
     L = le[-nl:]
     size = 14 + 9 * np.sqrt(npap)
     b.scatter(L[~q1, 0], L[~q1, 1], s=size[~q1], c=GREEN, lw=0.7, edgecolors="white", zorder=4)
@@ -119,9 +123,9 @@ def main():
            transform=b.transAxes, fontsize=12.5, color=INK, fontweight="bold", va="bottom")
     b.text(0.0, 1.035, "background dots = similar small molecules that none of the 313 papers used (blue = few, red = many nearby) · "
            "dot size = number of papers", transform=b.transAxes, fontsize=10, color=BLUE_TXT, va="bottom")
-    b.text(0.0, 0.035, "● open question 1 · fluorinated diluents\n   (TTE, BTFE, F3–F6DEE, FB …)", transform=b.transAxes, ha="left", va="bottom",
+    b.text(0.0, -0.01, "● open question 1 · fluorinated diluents\n   (TTE, BTFE, F3–F6DEE, FB …)", transform=b.transAxes, ha="left", va="bottom",
            fontsize=11, color=GOLD_TXT, fontweight="bold", linespacing=1.2)
-    b.text(0.0, 0.13, f"● used in the 313 papers ({len(M)})", transform=b.transAxes, ha="left", va="bottom", fontsize=11, color=GREEN, fontweight="bold")
+    b.text(0.0, 0.075, f"● used in the 313 papers ({len(M)})", transform=b.transAxes, ha="left", va="bottom", fontsize=11, color=GREEN, fontweight="bold")
     fig.text(0.015, 0.012, "Position = structural similarity (Morgan fingerprint r = 2, Jaccard distance, UMAP — the same recipe as SES AI's Molecular Universe). "
              f"Salts, ions and polysulfides not shown. {sum(m['在QM9中'] for m in M)} of the {len(M)} molecules are themselves in QM9;\nlarger ones (e.g. TEGDME, TTE) sit next to their closest "
              "small relatives. Background: QM9 (Ramakrishnan et al., Sci. Data 2014).", fontsize=8.3, color=GREY_TXT, va="bottom", linespacing=1.3)
