@@ -1,7 +1,9 @@
 """step24（papertrail 环境）：SES 式配方空间图（11-08 用户：配方空间“还是不满意，你看看人家 SES 怎么画的”）。
 
 与分子宇宙同一套视觉语言：配方越密的地方颜色越深；文字直接写在画面上。
-11-08 晚用户：“可以，但是不要黑底的这种图，改成白底＋合适配色” → 白底，密度浅紫 → 深紫，点的颜色含义不变。
+11-08 晚用户：“可以，但是不要黑底的这种图，改成白底＋合适配色” → 白底。
+11-08 晚用户：“颜色改成红蓝渐变配色吧”“如果能有横轴纵轴来表示会更加直观” → 密度浅蓝 → 蓝 → 紫 → 红；含氟溶剂的描边由红改金黄
+  （与分子宇宙的问题 1 颜色一致，避免与高密度红混淆）；坐标轴两端加方向提示。
 坐标仍用两个有物理意义的描述符（11-06 用户：配方图用描述符、按数值画）：
   横轴 = 每个 Li⁺ 分到的配位位点（醚氧、羰基氧等，按整个配方的用量算；越少 = 溶剂化越弱，高浓/局部高浓电解液在左边），对数；
   纵轴 = 锂盐浓度（M），对数。
@@ -33,8 +35,9 @@ import fig_questions as Q
 OUT = ROOT / "output" / "组会图_2026-11-08"
 SITE = ROOT / "output" / "表述与矛盾试跑_F版30篇_2026-11-04" / "网站" / "图"
 plt.rcParams.update({"font.family": ["Arial", "DejaVu Sans"]})
-GLOW = LinearSegmentedColormap.from_list("glow", [(0, (1, 1, 1, 0)), (0.06, "#f1edf8"), (0.3, "#d3c6ec"), (0.55, "#a690d8"), (0.8, "#6f4dba"), (1, "#3f1f7a")])
-GREEN, RED, GREY, PURPLE_TXT, MUTED = "#14955a", "#d62728", "#a3a3a3", "#5b4a9e", "#6b6b6b"
+GLOW = LinearSegmentedColormap.from_list("glow", [(0, (1, 1, 1, 0)), (0.06, "#dbe6f5"), (0.3, "#8fb0de"), (0.55, "#5a6fc0"), (0.8, "#a8458f"), (1, "#d7263d")])
+GREEN, RED, GREY, PURPLE_TXT, MUTED = "#14955a", "#e0a800", "#a3a3a3", "#2b5fae", "#6b6b6b"  # RED 变量现为含氟溶剂描边（金黄）
+GOLD_TXT = "#a87b00"
 INK, INK2, PAPER = "#1a1a1a", "#4a4a4a", "white"
 XL, YL = (0.6, 160), (0.08, 14)
 
@@ -96,6 +99,10 @@ def main():
     ax.set_xticks([1, 2, 5, 10, 20, 50, 100]); ax.set_xticklabels(["1", "2", "5", "10", "20", "50", "100"])
     ax.set_yticks([0.1, 0.2, 0.5, 1, 2, 4, 8]); ax.set_yticklabels(["0.1", "0.2", "0.5", "1", "2", "4", "8"])
     ax.minorticks_off()
+    hint = dict(xycoords="axes fraction", fontsize=10, color=INK2, fontweight="bold", zorder=6)
+    ax.annotate("← weaker solvation (concentrated / diluted with fluorinated solvent)", (0.01, 0.018), ha="left", va="bottom", **hint)
+    ax.annotate("stronger solvation (dilute) →", (0.99, 0.018), ha="right", va="bottom", **hint)
+    ax.annotate("↑ more salt", (0.012, 0.985), ha="left", va="top", **hint)
     ax.set_xlabel("Coordinating sites per Li⁺  (fewer = weaker solvation)", color=INK, fontsize=12)
     ax.set_ylabel("Lithium-salt concentration (M)", color=INK, fontsize=12)
     # 右侧文字（SES 式：大字直接写在画面上）
@@ -107,7 +114,7 @@ def main():
     fig.text(tx, 0.805, "shading = how many formulations sit there", fontsize=11, color=INK, va="bottom")
     yy = 0.735
     for mk, txt in (((GREEN, "white", 140), "with LiNO₃ · dot size = dose (M)"), (("none", GREEN, 40), "with LiNO₃, dose not given in M"),
-                    ((GREY, "none", 30), "without LiNO₃"), ((GREY, RED, 40), "red edge = contains a fluorinated\nsolvent / diluent")):
+                    ((GREY, "none", 30), "without LiNO₃"), ((GREY, RED, 40), "gold edge = contains a fluorinated\nsolvent / diluent")):
         a = fig.add_axes([tx, yy - 0.012, 0.02, 0.03]); a.axis("off"); a.set_xlim(-1, 1); a.set_ylim(-1, 1)
         a.scatter([0], [0], s=mk[2], c=mk[0] if mk[0] != "none" else "none", edgecolors=mk[1], linewidths=1.4)
         fig.text(tx + 0.025, yy, txt, fontsize=11, color=INK, va="center", linespacing=1.2)
@@ -118,7 +125,7 @@ def main():
     lv = [f["lino3"] for f in F if f["lino3"] is not None]
     nf = int(fs.sum())
     yy -= 0.02
-    for col, head, body in ((RED, "Open question 1", f"fluorinated diluents move formulations left\n(fewer sites per Li⁺) · {nf} formulations here"),
+    for col, head, body in ((GOLD_TXT, "Open question 1", f"fluorinated diluents move formulations left\n(fewer sites per Li⁺) · {nf} formulations here"),
                             (GREEN, "Open question 2", f"big green dots are rare: only {sum(v > 0.6 for v in lv)} of {len(lv)}\nformulations use > 0.6 M LiNO₃"),
                             (INK, "Open question 3", f"above the dashed line, green is rare:\nsalt > 1 M with LiNO₃ in {len(all_hi)} formulations\n"
                                                          f"({len({f['论文'] for f in all_hi})} papers; {q3} of them placed here)")):

@@ -95,7 +95,7 @@ def main():
     (OUT / "分子.json").write_text(json.dumps({"说明": "背景 QM9（行 0..n_bg-1）＋ 313 篇中性有机分子（之后各行，顺序同 文献分子）；Morgan r=2, 2048 位",
                                              "背景数": len(bg_fp), "文献分子": lit}, ensure_ascii=False, indent=1), encoding="utf-8")
     draw(lit)
-    print(f"background {len(bg_fp)}; literature {len(lit)} (in QM9: {len(in_qm9)}); drawn {sum(i in ids for i in DRAW)}")
+    print(f"background {len(bg_fp)}; literature {len(lit)} (in QM9: {len(in_qm9)}); drawn {sum(i in {x['id'] for x in lit} for i in DRAW)}")
 
 
 if __name__ == "__main__":
