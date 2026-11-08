@@ -42,7 +42,7 @@ def main():
             M.append((p, m["id"], m.get("summary", "")))
     model = SentenceTransformer(MODEL)
     E = model.encode([s for _, _, s in M], normalize_embeddings=True, batch_size=64)
-    XY = umap.UMAP(n_neighbors=30, min_dist=0.15, metric="cosine", random_state=42).fit_transform(E)
+    XY = umap.UMAP(n_neighbors=10, min_dist=0.0, metric="cosine", random_state=42).fit_transform(E)  # 11-08 晚用户：点“不要那么平面” → min_dist 0、近邻 10，相近说法聚成团、有浓淡（原 30 / 0.15 摊得太均匀）
     key = {f"{p}|{i}": k for k, (p, i, _) in enumerate(M)}
     ev = json.loads(EV.read_text(encoding="utf-8"))
     qs, pairs = {}, {}

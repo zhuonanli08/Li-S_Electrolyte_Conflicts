@@ -1,12 +1,15 @@
 """组会第 16–18 页与网站 07 页：三个无定论问题各一张图，左边数据、右边机制示意（11-08 用户同意按 zy 意见改：用图、少字、更有科学意味）。图英文。
 11-08 晚第二版（用户：“线很杂乱，不能直观传达意思”“一定要清晰，同时能准确传达那个问题，不是为了展示数据而画一堆线”）：
 
-问题 1（fig_q1）：左 = 两篇反例各一条线——P371 同一骨架（1,2-二乙氧基乙烷）逐步加氟 DEE→F3/F4/F5/F6DEE 的 Li‖Cu CE（部分氟化最差），
+问题 1（fig_q1）：左 = 两篇反例各一条线——P371 同一骨架（1,2-二乙氧基乙烷）逐步加氟 DEE→F3/F4/F5/F6DEE 的 Li‖Cu CE（一端不含氟的 F3DEE 最差；F4/F5DEE 也是部分氟化，反而最好），
   P381 同一 LiFSI–TEP 体系里稀释剂 DBE（不含氟）对 TTE；多数结论（每个比较都是含氟多 CE 高的论文数）写在标题里。右 = LiF 两条来源示意（step20：9 篇 vs 13 篇）。
 问题 2（fig_q2）：左 = 只改 LiNO₃ 用量、至少 3 个浓度的剂量系列（P111、P139），纵轴 = 相对本篇最低浓度衰减慢了几倍；≤ 0.5 M 的多数结论写在标题；
   下方 = 403 个配方的 LiNO₃ 用量分布。右 = 概念示意三条线（负极收益在 0 上方、正极代价在 0 下方、两者之和与最佳点），条件变化只画最佳点的位置。
 问题 3（fig_q3）：左 = P112 四个电解液每圈损失的锂（100 − CE）；中 = 313 篇里“盐 ≤/> 1 M × 有/无 LiNO₃”四种组合的配方数（方块面积）；
   右 = 两种解释示意：替代（同一靶点）还是互补（不同靶点，高盐减少多硫化物从而少耗 LiNO₃）。
+11-08 夜（用户：“其它的问题也一起改了”，只改三张图左边的数据图，右边机制示意未改）：问题 1 标注改为“一端不含氟的 F3DEE 最差”，
+  P381 整个换稀释剂改虚线（不是逐步加氟）；问题 2 标题加“去掉同时改了特殊组分的比较后”的计数，P111 标出离子液体电解液＋GO 正极，
+  直方图写明分母；问题 3 标题改为“有 LiNO₃ 时再提盐没有额外收益”（只提盐每圈损 4.7%、只加 LiNO₃ 1.9%，不是“哪个都够”），覆盖方块写明分母。
 数字全部从结果文件读。输出 output/组会图_2026-11-08/fig_q1.png、fig_q2.png、fig_q3.png（300 dpi）并复制到网站 图/；数值写 组会图数据.json。
 初步；读原文与立场判断为 AI 辅助，用户尚未逐项人工确认。
 用法：D:\\anaconda\\envs\\papertrail\\python.exe -X utf8 scripts/fig_questions.py
@@ -114,13 +117,14 @@ def q1():
             ax.text(f - 0.18, y + 0.25, f"{nm}  {y:.1f}", ha="right", va="center", fontsize=9.5, color=RED)
         else:
             ax.text(f + (-0.25 if f == 0 else 0), y - 0.45, f"{nm}\n{y:.1f}", ha="right" if f == 0 else "center", va="top", fontsize=9.5, color=RED, linespacing=1.2)
-    ax.plot([0, 8], y381, "-o", color=PURPLE, lw=2.6, ms=9, zorder=3)
+    ax.plot([0, 8], y381, "--o", color=PURPLE, lw=2.2, ms=9, zorder=3)  # 虚线：整个稀释剂换掉，不是逐步加氟
     ax.text(0, y381[0] + 0.3, f"DBE (no F)  {y381[0]:.1f}", ha="left", va="bottom", fontsize=9.5, color=PURPLE)
     ax.text(8, y381[1] + 0.3, f"TTE  {y381[1]:.1f}", ha="right", va="bottom", fontsize=9.5, color=PURPLE)
-    ax.text(2.7, 99.75, "P381 · LiFSI–TEP, diluent swapped (30 °C)", ha="left", va="bottom", fontsize=9.5, color=PURPLE, fontweight="bold")
+    ax.text(2.7, 99.75, "P381 · LiFSI–TEP, whole diluent swapped (30 °C)", ha="left", va="bottom", fontsize=9.5, color=PURPLE, fontweight="bold")
     ax.text(4.4, 94.4, "P371 · 1,2-diethoxyethane,\nF added step by step\n(1.2 M LiTFSI, single solvent, 60 °C)", ha="left", va="center",
             fontsize=9.5, color=RED, fontweight="bold", linespacing=1.3)
-    ax.annotate("partial fluorination is the worst", xy=(3.1, y371[1]), xytext=(4.4, 91.2), fontsize=9, color=INK2,
+    ax.annotate("one end left unfluorinated (F3DEE) is the worst;\nF4DEE and F5DEE are also partly fluorinated", xy=(3.1, y371[1]), xytext=(4.4, 91.0),
+                fontsize=9, color=INK2,
                 arrowprops=dict(arrowstyle="-", color=INK2, lw=0.8), va="center")
     ax.set_xlim(-1.3, 8.6); ax.set_ylim(89.2, 100.6)
     ax.set_xticks(range(0, 9)); ax.set_yticks([90, 92, 94, 96, 98, 100])
@@ -129,7 +133,8 @@ def q1():
     ax.grid(axis="y", color="#eeeeea", lw=0.8)
     ax.set_title(f"Data · usual result: more F → higher CE (every comparison in {all_up} of {n_pap} papers)\n"
                  "but within these two papers, adding F did not keep helping", fontsize=10.5, loc="left", color=INK)
-    fig.text(0.06, 0.03, "* F6DEE is saturated (< 1.2 M LiTFSI). Each line = one paper, same salt and same test; papers are not compared with each other.",
+    fig.text(0.06, 0.03, "* F6DEE is saturated (< 1.2 M LiTFSI). P371: Aurbach Li‖Cu at 60 °C, no LiNO₃. Each line = one paper, same salt, same test; "
+             "dashed = diluent swapped, not a series.",
              fontsize=8.3, color=MUTED)
     # 右：机制示意（两条 LiF 来源）
     s = fig.add_axes([0.55, 0.06, 0.44, 0.84])
@@ -203,12 +208,14 @@ def q2(F):
         if not x:
             continue
         lo, hi = sorted((x["A"], x["B"]))
-        segs.append({"论文": r["论文"], "hi": hi, "e": T.effect(r) * (1 if x["A"] > x["B"] else -1)})
+        segs.append({"论文": r["论文"], "hi": hi, "e": T.effect(r) * (1 if x["A"] > x["B"] else -1), "sp": bool(r.get("特殊组分变化"))})
         if DOSE_SERIES.get(r["论文"]) == r["A"]["测试"]:
             ser[r["论文"]][x["A"]] = r["性能"]["值A"]
             ser[r["论文"]][x["B"]] = r["性能"]["值B"]
     low = [g for g in segs if g["hi"] <= 0.5]
     good_low = sum(g["e"] > T.T for g in low)
+    low_ns = [g for g in low if not g["sp"]]  # 去掉同时改了特殊组分（成膜/活性溶剂、介体、非锂盐等）的比较
+    good_ns = sum(g["e"] > T.T for g in low_ns)
     fig = plt.figure(figsize=(13.5, 5.8))
     ax = fig.add_axes([0.06, 0.37, 0.40, 0.44])
     axh = fig.add_axes([0.06, 0.12, 0.40, 0.15], sharex=ax)
@@ -221,7 +228,8 @@ def q2(F):
         y = [ser[p][d[0]] / ser[p][c] for c in d]
         rel[p] = dict(zip(d, [round(v, 3) for v in y]))
         ax.plot(d, y, "-o", color=col, lw=2.6, ms=9, zorder=3)
-    ax.text(0.55, 0.86, "P111 · best at 0.5 M;\nat 1.0 M worse than at 0.1 M\n(1000 cycles)", ha="left", va="center", fontsize=9.5, color=RED,
+    ax.text(0.55, 0.85, "P111 · best at 0.5 M;\nat 1.0 M worse than at 0.1 M\n(1000 cycles; ionic-liquid\nelectrolyte, GO cathode)", ha="left", va="center",
+            fontsize=9.5, color=RED,
             fontweight="bold", linespacing=1.3)
     ax.text(0.02, 1.36, "P139 · still improving at 0.5 M\n(highest dose tested)", ha="left", va="center", fontsize=9.5, color=BLUE, fontweight="bold",
             linespacing=1.3)
@@ -230,12 +238,13 @@ def q2(F):
     ax.set_ylabel("Slower fading than at the\npaper's lowest dose (×)")
     plt.setp(ax.get_xticklabels(), visible=False)
     ax.set_title(f"Data · up to 0.5 M, more LiNO₃ slowed fading in {good_low} of {len(low)} comparisons "
-                 f"({len({g['论文'] for g in low})} papers)\nbut the only clean series beyond 0.5 M turns down", fontsize=10.5, loc="left", color=INK)
+                 f"({len({g['论文'] for g in low})} papers;\n{good_ns} of {len(low_ns)} when no special component also changed) · "
+                 "the only clean series beyond 0.5 M turns down", fontsize=10.5, loc="left", color=INK)
     lv = [f["lino3"] for f in F if f["lino3"] is not None]
     axh.hist([min(v, xmax - 0.01) for v in lv], bins=np.arange(0, xmax + 0.05, 0.05), color="#9fb3c8", edgecolor="white")
     axh.set_xlabel("LiNO₃ concentration (M)")
     axh.set_ylabel("formulations", fontsize=8.5)
-    axh.text(0.99, 0.92, f"{len(lv)} formulations in 313 papers · only {sum(v > 0.6 for v in lv)} above 0.6 M", transform=axh.transAxes,
+    axh.text(0.99, 0.92, f"{len(lv)} formulations with LiNO₃ given in M (incl. 0) · only {sum(v > 0.6 for v in lv)} above 0.6 M", transform=axh.transAxes,
              ha="right", va="top", fontsize=9, color=INK2)
     # 右：概念示意
     s = fig.add_axes([0.58, 0.36, 0.40, 0.46])
@@ -274,7 +283,7 @@ def q2(F):
     fig.suptitle("Open question 2 · How much LiNO₃ is best? Benefit on the anode vs cost on the cathode", x=0.06, y=0.995, ha="left",
                  fontsize=13, fontweight="bold", color=INK)
     save(fig, "fig_q2.png")
-    DATA["q2"] = {"同测试比较": len(segs), "较高浓度 ≤ 0.5 M 的比较": len(low), "其中变好": good_low, "≤ 0.5 M 涉及论文": len({g["论文"] for g in low}),
+    DATA["q2"] = {"同测试比较": len(segs), "较高浓度 ≤ 0.5 M 的比较": len(low), "其中变好": good_low, "≤ 0.5 M 涉及论文": len({g["论文"] for g in low}), "≤ 0.5 M 去掉特殊组分后（变好/比较数）": [good_ns, len(low_ns)],
                   "剂量系列（相对最低浓度的衰减倍数）": rel, "有 LiNO3 数值的配方": len(lv), "高于 0.6 M 的配方": sum(v > 0.6 for v in lv),
                   "注": "P121 的 1.0 M 配方同时把 LiTFSI 从 1.1 M 降到 0.5 M，不算剂量系列；> 0.5 M 的干净剂量系列只有 P111"}
 
@@ -309,7 +318,7 @@ def q3(F, n_form):
     ax.set_xticklabels([f"{lab}\n(CE {v[k]:.1f} %)" for k, lab, _ in bars], fontsize=8.8)
     ax.set_ylim(0, 23.5)
     ax.set_ylabel("Li lost per cycle (100 − CE, %)")
-    ax.set_title("Data · P112, the only paper that crossed the two\n(Li‖Cu, DOL/DME): either one is enough", fontsize=10.5, loc="left", color=INK)
+    ax.set_title("Data · P112, the only paper that crossed the two\n(Li‖Cu, DOL/DME): with LiNO₃, more salt adds nothing", fontsize=10.5, loc="left", color=INK)
     # 2×2 覆盖：313 篇里四种组合各有多少配方
     cnt, pap = Counter(), defaultdict(set)
     for f in F:
@@ -339,7 +348,7 @@ def q3(F, n_form):
     g.set_yticks([0, 1]); g.set_yticklabels(["no LiNO₃", "+ LiNO₃"], fontsize=9)
     g.tick_params(length=0)
     g.spines[:].set_visible(False)
-    g.set_title("Coverage · formulations in 313 papers\nthat tested each combination", fontsize=10, loc="left", color=INK)
+    g.set_title(f"Coverage · formulations per\ncombination (n = {n_both}, 313 papers)", fontsize=10, loc="left", color=INK)
     # 右：两种解释
     s = fig.add_axes([0.58, 0.04, 0.41, 0.84])
     s.set_xlim(0, 10); s.set_ylim(0, 10); s.axis("off")

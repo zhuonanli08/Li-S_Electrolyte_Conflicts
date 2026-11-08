@@ -47,6 +47,20 @@ REGIONS = [("chain ethers &\nfluorinated ethers", (13.3, -3.9), "center"), ("car
 XLIM, YLIM = (-5.6, 18.8), (-6.6, 14.4)
 
 
+def usage(M):
+    """11-08 夜：原句“they sit in a few corners”只对一半——集中的是用量，不是种类（文献分子两两相似度中位 0.04，低于随机 QM9 对的 0.07）。
+    改报用量：非氟醚（链醚、环醚、缩醛，不含二硫醚等含“醚”字的有机硫/硒）占全部“论文 × 分子”使用次数的比例，以及只在 1 篇出现的分子数。"""
+    def ether(c):
+        c = c or ""
+        if any(k in c for k in ("有机硫", "二硫化碳", "硒", "碲", "硅", "氟化醚")):
+            return False
+        return "醚" in c or "缩醛" in c
+    n = {m["id"]: m["论文数"] or 0 for m in M}
+    tot = sum(n.values())
+    return {"非氟醚使用占比": sum(n[m["id"]] for m in M if ether(m.get("化学类别"))) / tot, "使用次数": tot,
+            "DME": n.get("DME"), "DOL": n.get("DOL"), "只在1篇出现": sum(v <= 1 for v in n.values())}
+
+
 def density(xy, bins=300):
     """每个点所在格子的点数（log），用于按局部密度着色。"""
     H, xe, ye = np.histogram2d(xy[:, 0], xy[:, 1], bins=bins)
@@ -103,7 +117,10 @@ def main():
     fig.text(0.015, 0.875, f"{nb:,} small molecules (QM9: all stable C/N/O/F\nmolecules with ≤ 9 heavy atoms in GDB-17)",
              fontsize=11.5, color=BLUE_TXT, va="bottom", linespacing=1.2)
     fig.text(0.015, 0.835, f"{len(M)} molecules used in 313 Li–S papers", fontsize=13, color=GREEN, fontweight="bold", va="bottom")
-    fig.text(0.015, 0.808, "they sit in a few corners of the map", fontsize=11, color=INK, va="bottom")
+    u = usage(M)
+    fig.text(0.015, 0.758, f"use is concentrated: non-fluorinated ethers are {u['非氟醚使用占比']:.0%} of all uses\n"
+             f"(DME in {u['DME']} papers, DOL in {u['DOL']}); {u['只在1篇出现']} of the {len(M)} molecules\nappear in only one paper",
+             fontsize=11, color=INK, va="bottom", linespacing=1.25)
 
     # ---- 右：近景 ----
     b = fig.add_axes([0.40, 0.07, 0.59, 0.80])
@@ -121,21 +138,22 @@ def main():
         b.text(x, y, text, ha=ha, va="center", fontsize=9.5, color=INK2, fontstyle="italic", linespacing=1.15, zorder=6)
     b.text(0.0, 1.075, f"Close-up · the {len(M)} literature molecules and their {len(le) - nl:,} nearest QM9 neighbours (re-mapped)",
            transform=b.transAxes, fontsize=12.5, color=INK, fontweight="bold", va="bottom")
-    b.text(0.0, 1.035, "background dots = similar small molecules that none of the 313 papers used (blue = few, red = many nearby) · "
-           "dot size = number of papers", transform=b.transAxes, fontsize=10, color=BLUE_TXT, va="bottom")
+    b.text(0.0, 1.035, "background = similar small molecules no paper used (not screened for stability — not candidates) · "
+           "blue = few, red = many nearby · dot size = papers", transform=b.transAxes, fontsize=9.5, color=BLUE_TXT, va="bottom")
     b.text(0.0, -0.01, "● open question 1 · fluorinated diluents\n   (TTE, BTFE, F3–F6DEE, FB …)", transform=b.transAxes, ha="left", va="bottom",
            fontsize=11, color=GOLD_TXT, fontweight="bold", linespacing=1.2)
     b.text(0.0, 0.075, f"● used in the 313 papers ({len(M)})", transform=b.transAxes, ha="left", va="bottom", fontsize=11, color=GREEN, fontweight="bold")
-    fig.text(0.015, 0.012, "Position = structural similarity (Morgan fingerprint r = 2, Jaccard distance, UMAP — the same recipe as SES AI's Molecular Universe). "
-             f"Salts, ions and polysulfides not shown. {sum(m['在QM9中'] for m in M)} of the {len(M)} molecules are themselves in QM9;\nlarger ones (e.g. TEGDME, TTE) sit next to their closest "
-             "small relatives. Background: QM9 (Ramakrishnan et al., Sci. Data 2014).", fontsize=8.3, color=GREY_TXT, va="bottom", linespacing=1.3)
+    fig.text(0.015, 0.012, "Position = shared substructures, not properties (Morgan fingerprint r = 2, presence only; Jaccard distance; UMAP — SES AI's recipe): "
+             "glymes of different length coincide, and the degree of fluorination cannot be read from position.\n"
+             f"Salts, ions and polysulfides not shown. {sum(m['在QM9中'] for m in M)} of the {len(M)} molecules are themselves in QM9; larger ones (e.g. TEGDME, TTE) "
+             "sit next to their closest small relatives. Background: QM9 (Ramakrishnan et al., Sci. Data 2014).", fontsize=8.3, color=GREY_TXT, va="bottom", linespacing=1.3)
     f = OUT / "分子宇宙_SES式.png"
     fig.savefig(f, dpi=300, facecolor=PAPER)
     plt.close(fig)
     for d in (SITE, MEET):
         shutil.copy(f, d / "fig_molecular_universe.png")
     s = {"背景分子": nb, "文献分子": len(M), "其中在 QM9 中": sum(m["在QM9中"] for m in M), "近景背景分子": int(len(le) - nl),
-         "问题 1 含氟分子": sorted(i for i in ids if i in Q1_F)}
+         "问题 1 含氟分子": sorted(i for i in ids if i in Q1_F), "用量": u}
     (OUT / "汇总.json").write_text(json.dumps(s, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f, s)
 

@@ -1,4 +1,4 @@
-"""step13s：结果网站（英文，单页、标签切换；版式参照用户提供的 electrolyte-atlas.html，11-04 用户要求）。
+"""step13s：结果网站（单页、标签切换；11-06 起文字中文、图英文；版式参照用户提供的 electrolyte-atlas.html，11-04 用户要求）。
 
 输出：网站/index.html（数据嵌在页面里）＋ 网站/图/ 下的交互图。双击 index.html 或项目根目录的 双击打开结果网站.bat 即可打开。
 提取结果里的自由文字（取值点、物性描述）本身是中文，按原样显示并注明；其余界面、图、说明、核对结论为英文。
@@ -20,10 +20,24 @@ from site_meta import leak_note, meta_panel  # 11-06：05 · Meta & attribution�
 from step13_i18n import (BASIS, BATT, CAT, CSTATE, CTYPE, DIR, MODEL, PROP, SRC, STAGE, STD, STDKEY, STDSET,
                          recipe_en, statement_en, t)
 
+
+# 11-06 用户要求全站文字中文（图仍英文）：翻译层改为直接显示提取出来的中文原文
+def t(d, k, default=None):
+    return k if k not in (None, "") else (default if default is not None else "—")
+
+
+def statement_en(s, comp=None):
+    return s["表述文字"]
+
+
+def recipe_en(comp, fallback=""):
+    return fallback or "（配方未记录）"
+
 SITE = OUT / "网站"
-TESTKIND = {"全电池性能": "Full-cell performance", "机理电池": "Mechanistic cell", "表面表征": "Surface characterisation", "溶液性质": "Solution property",
-            "对称电池": "Symmetric cell", "模拟": "Simulation", "锂铜效率": "Li‖Cu efficiency", "其他": "Other", "浸泡": "Soaking"}
-CELL = {"扣式": "coin", "软包": "pouch", "其他": "other"}
+TESTKIND = {}
+CELL = {"扣式": "扣式", "软包": "软包", "其他": "其他"}
+CTYPE_CN = {"NORM": "同一配方，归一化后仍差得远", "LOPO": "论文自己的结论 vs 不用这篇训练的模型的预测", "SAME": "同一个改动，结果方向相反",
+            "FLIP": "同一对配方，换了条件后方向翻转", "DESC": "描述符变化方向相同，结果方向相反"}
 
 CSS = """
 :root{--ink:#172d32;--muted:#62777a;--bg:#f1f5f3;--paper:#fff;--line:#dbe5e1;--green:#007e70;--mint:#d8f3e9;--amber:#8b601a;--purple:#7159a7;--red:#a5423d}
@@ -88,18 +102,18 @@ $$('nav button').forEach(b=>b.onclick=()=>{
 function table(id,cols,rows,opt){
   opt=opt||{}; const el=document.getElementById(id); const st={sort:null,asc:true}; const f={};
   const tb=document.createElement('div'); tb.className='toolbar';
-  const q=document.createElement('input'); q.type='search'; q.placeholder=opt.placeholder||'Search…'; tb.appendChild(q);
+  const q=document.createElement('input'); q.type='search'; q.placeholder=opt.placeholder||'搜索…'; tb.appendChild(q);
   (opt.selects||[]).forEach(c=>{const s=document.createElement('select'); const v=[...new Set(rows.map(r=>r[c]))].filter(x=>x!==''&&x!==null).sort();
-    s.innerHTML='<option value="">All · '+cols[c]+'</option>'+v.map(x=>'<option>'+esc(x)+'</option>').join(''); s.onchange=()=>{f[c]=s.value;draw()}; tb.appendChild(s)});
+    s.innerHTML='<option value="">全部 · '+cols[c]+'</option>'+v.map(x=>'<option>'+esc(x)+'</option>').join(''); s.onchange=()=>{f[c]=s.value;draw()}; tb.appendChild(s)});
   const rl=document.createElement('div'); rl.className='result-line'; const cnt=document.createElement('span'); rl.appendChild(cnt);
-  const hint=document.createElement('span'); hint.textContent=opt.detail?'Click a row to expand · click a header to sort':'Click a header to sort'; rl.appendChild(hint);
+  const hint=document.createElement('span'); hint.textContent=opt.detail?'点击一行展开 · 点击表头排序':'点击表头排序'; rl.appendChild(hint);
   const wrap=document.createElement('div'); wrap.className='table-wrap'; wrap.style.maxHeight=(opt.height||560)+'px';
   const tbl=document.createElement('table'); wrap.appendChild(tbl); el.append(tb,rl,wrap); q.oninput=draw;
   function draw(){const qq=q.value.trim().toLowerCase();
     let rs=rows.map((r,i)=>[r,i]).filter(([r])=>Object.entries(f).every(([c,v])=>!v||String(r[c])===v)&&(!qq||JSON.stringify(r).toLowerCase().includes(qq)));
     if(st.sort!==null)rs.sort((a,b)=>{const x=a[0][st.sort],y=b[0][st.sort],nx=parseFloat(x),ny=parseFloat(y);
       const r=(!isNaN(nx)&&!isNaN(ny))?nx-ny:String(x).localeCompare(String(y));return st.asc?r:-r});
-    cnt.textContent=rs.length+' of '+rows.length+' rows';
+    cnt.textContent='显示 '+rs.length+' / '+rows.length+' 行';
     let h='<tr>'+cols.map((c,i)=>'<th data-i="'+i+'">'+c+'</th>').join('')+'</tr>';
     rs.forEach(([r,i])=>{h+='<tr data-k="'+i+'" class="'+(opt.detail?'click':'')+'">'+r.map(v=>'<td>'+esc(v)+'</td>').join('')+'</tr>'});
     tbl.innerHTML=h;
@@ -123,70 +137,61 @@ def e(x) -> str:
 
 
 def tr_counts(s: str, m: dict) -> str:
-    """把“放电容量类×5；衰减类×2”这类计数串翻成英文。"""
-    if not s:
-        return ""
-    out = []
-    for part in s.split("；"):
-        k, _, n = part.rpartition("×")
-        out.append(f"{t(m, k)} ×{n}" if k else t(m, part))
-    return "; ".join(out)
+    """“放电容量类×5；衰减类×2”这类计数串，中文原样显示。"""
+    return s or ""
 
 
 def pct(r):
     if r is None:
         return ""
-    return f"≈ ±{round((math.exp(r) - 1) * 100)}%" if r < 10 else "diverged"
+    return f"≈ ±{round((math.exp(r) - 1) * 100)}%" if r < 10 else "发散"
 
 
 def pair_en(p: dict | None) -> str:
+    """一对比较的中文说明（函数名沿用）。"""
     if not p:
         return ""
     if p.get("翻转"):
         a, b, va, vb, d = p["B"], p["A"], p["B值"], p["A值"], {"变好": "变坏", "变坏": "变好"}.get(p["方向"], p["方向"])
     else:
         a, b, va, vb, d = p["A"], p["B"], p["A值"], p["B值"], p["方向"]
-    return (f"{p['论文']} {p['测试']} · {a} ({va}) vs {b} ({vb})\n{t(STD, p['标准指标'])} · point (as extracted): {p['取值点']}\n"
-            f"→ {a} {t(DIR, d)} than {b} ({t(BASIS, p['依据'])})\nchange: {' '.join(p['完整签名']) or '—'}")
+    return (f"{p['论文']} {p['测试']} · {a}（{va}）对 {b}（{vb}）\n{p['标准指标']} · 取值点（提取原文）：{p['取值点']}\n"
+            f"→ {a} 比 {b} {d}（依据：{p['依据'] or '—'}）\n改动：{' '.join(p['完整签名']) or '—'}")
 
 
 def verdict_badge(v: str) -> str:
     cls = {"✅": "", "🔶": "trial", "⚠️": "bad", "❌": "no"}.get(v, "planned")
-    lab = {"✅": "✅ Confirmed", "🔶": "🔶 Explained by an unaligned factor", "⚠️": "⚠️ Extraction issue", "❌": "❌ Not a contradiction"}.get(v, "Not reviewed")
+    lab = {"✅": "✅ 原文证实", "🔶": "🔶 由未对齐的因素解释", "⚠️": "⚠️ 提取问题", "❌": "❌ 不是矛盾"}.get(v, "未核对")
     return f'<span class="badge {cls}">{lab}</span>'
 
 
-# ---------- 04 modelling（11-05 用户要求：各轮方法、描述符、结果、不采纳理由）----------
+# ---------- 04 modelling（11-05 用户要求：各轮方法、描述符、结果、不采纳理由；11-06 改中文）----------
 M243 = ROOT / "output" / "表述试跑243篇_2026-11-04"
 M313 = ROOT / "output" / "改动模型_313篇_2026-11-05"
-C243 = {"放电容量类": "First-cycle capacity", "衰减类": "Capacity retention", "库仑效率类·全电池": "Full-cell CE", "库仑效率类·Li‖Cu": "Li‖Cu CE"}
-C14 = {"首圈容量": "First-cycle capacity", "每圈衰减率": "Capacity fade per cycle", "全电池CE": "Full-cell CE (cycling)", "LiCu_CE": "Li‖Cu CE (cycling)"}
+C243 = {"放电容量类": "首圈容量", "衰减类": "容量保持", "库仑效率类·全电池": "全电池 CE", "库仑效率类·Li‖Cu": "Li‖Cu CE"}
+C14 = {"首圈容量": "首圈容量", "每圈衰减率": "每圈衰减率", "全电池CE": "全电池 CE（循环）", "LiCu_CE": "Li‖Cu CE（循环）"}
 C14TO243 = {"首圈容量": "放电容量类", "每圈衰减率": "衰减类", "全电池CE": "库仑效率类·全电池", "LiCu_CE": "库仑效率类·Li‖Cu"}
-M14 = {"零": "predict no difference", "Huber": "Huber regression", "HGB浅": "gradient boosting (shallow)", "HGB深": "gradient boosting (deep)",
-       "RF": "random forest", "ET": "extra trees", "kNN5": "5-nearest neighbours", "SVR": "support vector regression",
-       "集成": "ensemble (ridge + random forest + shallow GB)"}
-FAM = [("只有物性/结构", False, "Physical / structural descriptors, no conditions"),
-       ("只有物性/结构", True, "Physical / structural descriptors + conditions"),
-       ("物性/结构＋组分身份", True, "Physical / structural + component identity + conditions"),
-       ("只有组分身份", True, "Component identity + conditions")]
-ROUNDS = [("r1", "Round 1", "Physical / structural descriptor sets × every model, with and without test conditions"),
-          ("r2", "Round 2", "Add component presence (COMP); try mirror augmentation, equal weight per paper and a winsorised training target"),
-          ("r3多任务", "Round 3", "Multi-task: three or four classes trained together with a class indicator"),
-          ("r4", "Round 4", "Add component amounts (AMT) and presence × condition (COMP×COND); ridge strength grid and an ensemble")]
+M14 = {"零": "预测没差别", "Huber": "Huber 回归", "HGB浅": "梯度提升（浅）", "HGB深": "梯度提升（深）", "RF": "随机森林", "ET": "极端随机树",
+       "kNN5": "5 近邻", "SVR": "支持向量回归", "集成": "集成（岭回归＋随机森林＋浅梯度提升）"}
+FAM = [("只有物性/结构", False, "物性/结构描述符，不加条件"),
+       ("只有物性/结构", True, "物性/结构描述符＋条件"),
+       ("物性/结构＋组分身份", True, "物性/结构＋组分身份＋条件"),
+       ("只有组分身份", True, "组分身份＋条件")]
+ROUNDS = [("r1", "第 1 轮", "物性/结构描述符组 × 所有模型，加或不加测试条件"),
+          ("r2", "第 2 轮", "加组分有无（COMP）；试镜像增广、每篇等权、截尾训练目标"),
+          ("r3多任务", "第 3 轮", "多任务：三类或四类一起训练，加类别指示"),
+          ("r4", "第 4 轮", "加组分用量（AMT）和有无 × 条件（COMP×COND）；岭回归强度网格与集成")]
 GROUPS_EN = [
-    ("ER", "12", "Formulation-level elemental ratios after Kim et al. (PNAS 2023), solvent + main salt only: solvent O in three bins "
-                 "(non-fluorinated, β-fluorinated ether, α-fluorinated ether), aO, aC, sC, aF, sF, F/C, O/C, F/O, InOr"),
-    ("RD5", "5", "RDKit descriptors weighted by solvent mole fraction: ether O, rings, rotatable bonds, carbonate groups, thioether / polysulfide S"),
-    ("ADD", "8", "LiNO₃ (M), mediator, other additives, main salt (M), anion F per litre, anion sulfonyl per litre, iodine-containing, organosulfur"),
-    ("SOLV", "20", "Solvent-weighted functional groups and properties: ether O, α/β-fluorinated ether O, carbonate, carbonyl, sulfone, nitrile, amide, "
-                   "thioether S, F and C atoms, rings, rotatable bonds, TPSA, molecular weight; fractions of fluorinated, organosulfur, hydrocarbon, "
-                   "cyclic-ether and carbonate molecules"),
-    ("STATE", "3", "Solvation state computed from composition: ln(coordinating sites per Li⁺), diluent mole fraction, total Li⁺ concentration"),
-    ("COMP", "{v}", "Presence of each component that appears in at least two development-set papers"),
-    ("AMT", "{v}", "Amount of each of those components (mol per litre of solvent), where the composition can be converted"),
-    ("COMP×COND", "2 × {v}", "Presence × reference ln E/S, and presence × reference sulfur loading"),
-    ("Conditions", "7 / 4", "Li–S classes: ln E/S, S loading, cathode S content, ln rate, temperature, pouch, ln cycle number. "
-                            "Li‖Cu: ln current density, ln plating capacity, ln cycle number, temperature")]
+    ("ER", "12", "配方层面的元素比例（照 Kim 等 PNAS 2023，只算溶剂和主盐）：溶剂 O 分三档（不含氟、β 氟化醚、α 氟化醚）、aO、aC、sC、aF、sF、F/C、O/C、F/O、InOr"),
+    ("RD5", "5", "按溶剂摩尔分数加权的 RDKit 描述符：醚氧、环数、可旋转键、碳酸酯基、硫醚/多硫 S"),
+    ("ADD", "8", "LiNO₃（M）、介体、其他添加剂、主盐（M）、每升阴离子 F、每升阴离子磺酰、含碘、有机硫"),
+    ("SOLV", "20", "按溶剂加权的官能团与性质：醚氧、α/β 氟化醚氧、碳酸酯、羰基、砜、腈、酰胺、硫醚 S、F 与 C 原子、环、可旋转键、TPSA、分子量；"
+                   "含氟、有机硫、烃、环醚、碳酸酯分子的比例"),
+    ("STATE", "3", "由组成算出的溶剂化状态：ln（每个 Li⁺ 的配位位点）、稀释剂摩尔比例、Li⁺ 总浓度"),
+    ("COMP", "{v}", "在至少两篇开发集论文里出现的每个组分的有无"),
+    ("AMT", "{v}", "这些组分的用量（每升溶剂的摩尔数），组成能换算时才有"),
+    ("COMP×COND", "2 × {v}", "有无 × 参照 ln E/S，有无 × 参照硫载量"),
+    ("条件", "7 / 4", "Li–S 各类：ln E/S、硫载量、正极含硫、ln 倍率、温度、软包、ln 圈数。Li‖Cu：ln 电流密度、ln 沉积容量、ln 圈数、温度")]
 
 
 def f2(x) -> str:
@@ -194,23 +199,23 @@ def f2(x) -> str:
 
 
 def m14(k: str) -> str:
-    return f"ridge α = {k[len('岭回归a'):]}" if k.startswith("岭回归a") else M14.get(k, k)
+    return f"岭回归 α = {k[len('岭回归a'):]}" if k.startswith("岭回归a") else M14.get(k, k)
 
 
 def cfg14(b: dict) -> str:
-    """一个配置的英文简述：描述符组 · 模型 · 训练技巧。"""
-    tricks = [n for k, n in (("镜像", "mirror"), ("每篇等权", "equal weight per paper"), ("截尾", "winsorised")) if b.get(k)]
-    return f"{b['描述符'].replace('COMPxCOND', 'COMP×COND')} · {m14(b['模型'])}" + (f" · {', '.join(tricks)}" if tricks else "")
+    """一个配置的简述：描述符组 · 模型 · 训练技巧。"""
+    tricks = [k for k in ("镜像", "每篇等权", "截尾") if b.get(k)]
+    return f"{b['描述符'].replace('COMPxCOND', 'COMP×COND')} · {m14(b['模型'])}" + (f" · {'、'.join(tricks)}" if tricks else "")
 
 
 def change_en(x: dict) -> str:
     """同一改动的例子：只“去”不“加”的改写成“加”、效应取反，读起来顺。效应 > 0 = 实验侧更好。"""
     if not x["加"] and x["去"]:
-        lab, lo, hi = "adds " + ", ".join(x["去"]), -x["效应最大"], -x["效应最小"]
+        lab, lo, hi = "加 " + "、".join(x["去"]), -x["效应最大"], -x["效应最小"]
     else:
-        lab = " · ".join(p for p in ("adds " + ", ".join(x["加"]) if x["加"] else "", "removes " + ", ".join(x["去"]) if x["去"] else "") if p)
+        lab = " · ".join(p for p in ("加 " + "、".join(x["加"]) if x["加"] else "", "去掉 " + "、".join(x["去"]) if x["去"] else "") if p)
         lo, hi = x["效应最小"], x["效应最大"]
-    return f"{lab}: {x['论文数']} papers, {x['配对数']} pairs, effect {lo:+.2f} to {hi:+.2f}"
+    return f"{lab}：{x['论文数']} 篇、{x['配对数']} 对，效应 {lo:+.2f} 到 {hi:+.2f}"
 
 
 def modelling_panel(nres: dict) -> str:
@@ -226,26 +231,25 @@ def modelling_panel(nres: dict) -> str:
     rrf = ROOT / "output" / "改动模型_去圈数_313篇_2026-11-06" / "考试结果.json"  # 另一会话 11-06 去圈数重考
     rr = json.loads(rrf.read_text(encoding="utf-8")) if rrf.exists() else None
     lk_other = max(dg["圈数泄漏检查"][c]["总体"]["只用Δln圈数R2"] for c in C14 if c != "每圈衰减率")
-    leak_html = (f"<div class='callout warn'><b>Cycle-number leak in fade per cycle (found 5 Nov late evening; checked here).</b> Iteration 4 kept ln(cycle number) "
-                 f"among the inputs for fade per cycle, against your 5 Nov rule. The difference in ln(cycle number) alone explains R² "
-                 f"{lk['总体']['只用Δln圈数R2']:.2f} of the development pairs — {lk['跨测试、不同配方']['只用Δln圈数R2']:.2f} of cross-test pairs, "
-                 f"{lk['同测试、不同配方']['只用Δln圈数R2']:.2f} of same-test pairs, where both sides share the cycle number. Per-cycle fade is the total loss divided "
-                 f"by the cycle count, so the cycle count gives part of the answer away. The fade-per-cycle results below (development, exam, and the lift from "
-                 f"adding conditions) are therefore not evidence that anything transfers. For the other classes the same check gives R² ≤ {lk_other:.2f}. "
-                 + (f"<br><b>Re-run without cycle number (another session, 6 Nov; exam set used a second time).</b> Selected configuration "
-                    f"{e(cfg14(rr['配置']['每圈衰减率']))}, development R² {f2(rr['配置']['每圈衰减率']['开发集R2'])}; exam R² <b>{f2(rr['类别']['每圈衰减率']['总体'])}</b> "
-                    f"(95% interval {f2(rr['类别']['每圈衰减率']['总体95%区间'][0])} to {f2(rr['类别']['每圈衰减率']['总体95%区间'][1])}), same-test pairs "
-                    f"{f2(rr['类别']['每圈衰减率']['同测试、不同配方'])}, pairs whose cycle numbers differ ≤ 5× {f2(rr['类别']['每圈衰减率']['圈数相差≤5倍']['R2'])}. "
-                    "So without the leak, fade per cycle does not transfer either. Files: <span class='mono'>output/改动模型_去圈数_313篇_2026-11-06/</span>."
-                    if rr else "A re-run without cycle number is in progress in another session.") + "</div>")
+    leak_html = (f"<div class='callout warn'><b>每圈衰减率的圈数泄漏（11-05 深夜发现，本页复核）。</b>第 4 次迭代把 ln（圈数）留在了每圈衰减率的输入里，"
+                 f"违反了你 11-05 定的规则。只用两边 ln（圈数）之差，就能解释开发集配对 R² {lk['总体']['只用Δln圈数R2']:.2f}——跨测试配对 "
+                 f"{lk['跨测试、不同配方']['只用Δln圈数R2']:.2f}，同测试配对（两边圈数相同）{lk['同测试、不同配方']['只用Δln圈数R2']:.2f}。"
+                 f"每圈衰减率 = 总损失 ÷ 圈数，圈数本身泄露了一部分答案。下面每圈衰减率的结果（开发集、考试集、加条件后的提升）因此都不能当作可迁移的证据。"
+                 f"其他三类同样的检查 R² ≤ {lk_other:.2f}。"
+                 + (f"<br><b>去掉圈数重跑（另一会话，11-06；考试集第二次使用）。</b>选定配置 "
+                    f"{e(cfg14(rr['配置']['每圈衰减率']))}，开发集 R² {f2(rr['配置']['每圈衰减率']['开发集R2'])}；考试集 R² <b>{f2(rr['类别']['每圈衰减率']['总体'])}</b>"
+                    f"（95% 区间 {f2(rr['类别']['每圈衰减率']['总体95%区间'][0])}～{f2(rr['类别']['每圈衰减率']['总体95%区间'][1])}），同测试配对 "
+                    f"{f2(rr['类别']['每圈衰减率']['同测试、不同配方'])}，圈数相差 ≤ 5 倍的配对 {f2(rr['类别']['每圈衰减率']['圈数相差≤5倍']['R2'])}。"
+                    "去掉泄漏后，每圈衰减率同样不能跨论文迁移。文件：<span class='mono'>output/改动模型_去圈数_313篇_2026-11-06/</span>。"
+                    if rr else "去掉圈数的重跑正在另一会话进行。") + "</div>")
     fam = lambda c, f, cond: cmp_[c]["按描述符与条件"].get(f"{f}｜{'加条件' if cond else '不加条件'}")
 
     # 第 1–3 次迭代（30 篇、243 篇）
     sel1 = {n: next(m for m in r["模型比较"] if m["模型"] == r["主模型"]) for n, r in nres.items() if n in C243}
-    it1 = "<br>".join(f"{C243[n]} {f2(m['V1篇内R2'])} <span class='note'>({e(t(MODEL, m['模型']))})</span>" for n, m in sel1.items())
+    it1 = "<br>".join(f"{C243[n]} {f2(m['V1篇内R2'])} <span class='note'>（{e(t(MODEL, m['模型']))}）</span>" for n, m in sel1.items())
     v3best = lambda r: max(x["R2"] for x in r["模型V3"].values())
-    it2 = "<br>".join(f"{C243[n]} {f2(v3best(m243[n]))} <span class='note'>(no difference {f2(m243[n]['基线']['猜没差别']['R2'])} · "
-                      f"other papers' mean gain {f2(m243[n]['基线']['猜其他论文平均提升']['R2'])})</span>" for n in C243)
+    it2 = "<br>".join(f"{C243[n]} {f2(v3best(m243[n]))} <span class='note'>（猜没差别 {f2(m243[n]['基线']['猜没差别']['R2'])} · "
+                      f"猜其他论文平均提升 {f2(m243[n]['基线']['猜其他论文平均提升']['R2'])}）</span>" for n in C243)
     pairs2 = " · ".join(f"{C243[n]} {m243[n]['V3配对']}" for n in C243)
 
     def pbest(d):
@@ -253,40 +257,38 @@ def modelling_panel(nres: dict) -> str:
         base = max(x["R2"] for k, x in res.items() if k.startswith("对照"))
         k, x = max(((k, x) for k, x in res.items() if not k.startswith("对照")), key=lambda kv: kv[1]["R2"])
         add, _, mdl = k.partition("｜")
-        return base, x["R2"], f"{add}, {t(MODEL, mdl)}"
-    it3 = "<br>".join(f"{C243[n]} {f2(pbest(d)[0])} → {f2(pbest(d)[1])} <span class='note'>({e(pbest(d)[2])})</span>" for n, d in p243.items())
+        return base, x["R2"], f"{add}，{t(MODEL, mdl)}"
+    it3 = "<br>".join(f"{C243[n]} {f2(pbest(d)[0])} → {f2(pbest(d)[1])} <span class='note'>（{e(pbest(d)[2])}）</span>" for n, d in p243.items())
     imp = [q["按论文留出R2"] for d in p243.values() for q in d.get("补值小模型质量", {}).values() if q.get("按论文留出R2") is not None]
-    imp_txt = f"{min(imp):+.2f} to {max(imp):+.2f} ({sum(x < 0 for x in imp)} of {len(imp)} below zero)"
+    imp_txt = f"{min(imp):+.2f} 到 {max(imp):+.2f}（{len(imp)} 个中 {sum(x < 0 for x in imp)} 个小于 0）"
     imp_n = [q["配方"] for d in p243.values() for q in d.get("补值小模型质量", {}).values() if q.get("配方")]
     np3 = [d["V3配对"] for d in p243.values() if d.get("V3配对")]
     star = lambda c: "*" if chk[c]["选定时用了过期记录"] else ""
     it4 = "<br>".join(f"{C14[c]} {f2(chk[c]['现行数据上按规则应选']['总体'])} → {f2(exam['类别'][c]['总体'])}{star(c)}" for c in C14)
     n_exam = sum(exam["类别"][c]["n"] for c in C14)
     itrows = [
-        ("1", "4 Nov · 30 papers (F-version pilot)",
-         "Normalise every paper to one standard condition with a shared scoring function. V1: leave one paper out, score its within-paper differences",
-         "sO in 3 bins, aC, F/O, InOr, LiNO₃, main salt, other additives + E/S, S loading, cathode S, rate, temperature, pouch, cycle number",
-         "Ridge, linear mixed model, gradient boosting, monotone gradient boosting, random forest, Gaussian process",
-         "V1 R², selected model:<br>" + it1, "The formulation effect does not transfer to unseen papers; the ranking in 03 is kept only as an illustration"),
-        ("2", "4 Nov · 243 papers",
-         f"V3: leave out the only paper that compares a pair directly, then infer that gap from other papers and the descriptors (pairs: {pairs2})",
-         "13 elemental ratios + 5 RDKit (ether O, rings, rotatable bonds, carbonate groups, thioether / polysulfide S) + LiNO₃, additives / mediators "
-         "+ test conditions including cut-off voltage",
-         "Same six models", "V3 R², best of six (baselines):<br>" + it2,
-         "No better than the two baselines; leaving out whole families (fluorinated solvents, organosulfur) fails"),
-        ("3", "4 Nov · 243 papers", "V3 as in 2, adding property layers one at a time (3 models × 6 feature sets = 18 tries per class)",
-         "2 + <b>A</b> solvation state from composition · <b>B</b> molecular properties (in practice only the Gasteiger charge of coordinating atoms) · "
-         "<b>C</b> conductivity / viscosity measured by the same paper · <b>D</b> properties imputed by a composition → property model",
-         "Ridge, monotone gradient boosting, random forest", "V3 R², control → best with additions:<br>" + it3,
-         f"No gain for capacity or retention; the CE gains are the best of 18 tries on {min(np3)}–{max(np3)} pairs, within noise; "
-         f"imputation models score {imp_txt}"),
-        ("4", "5 Nov · 313 papers",
-         f"Change model: every comparison inside a paper, including cross-condition pairs. {dg['开发集']['配对']} development pairs from "
-         f"{dg['开发集']['论文']} papers (paper-grouped 5-fold CV); {n_exam} pairs from {n_exam_papers} papers held out and scored once",
-         "Groups ER, RD5, ADD, SOLV, STATE, COMP, AMT, COMP×COND + conditions (see below)",
-         "Ridge (α 0.3–100), Huber, gradient boosting, random forest, extra trees, kNN, SVR, ensemble; multi-task",
-         "Best development R² → exam R²:<br>" + it4,
-         "Only fade per cycle scores above zero on the exam set — its 95% interval crosses zero, and cycle number leaks the answer (see the warning above)"),
+        ("1", "11-04 · 30 篇（F 版试跑）",
+         "用一个共同的打分函数把每篇归一化到同一标准条件。V1：留出一篇，给它的篇内差别打分",
+         "sO 三档、aC、F/O、InOr、LiNO₃、主盐、其他添加剂 ＋ E/S、硫载量、正极含硫、倍率、温度、软包、圈数",
+         "岭回归、线性混合模型、梯度提升、单调梯度提升、随机森林、高斯过程",
+         "V1 R²（选定模型）：<br>" + it1, "配方效应不能迁移到没见过的论文；03 页的排名只作示意"),
+        ("2", "11-04 · 243 篇",
+         f"V3：留出唯一直接比较某一对配方的那篇，再用其他论文和描述符推这对的差距（配对数：{pairs2}）",
+         "13 个元素比例 ＋ 5 个 RDKit（醚氧、环、可旋转键、碳酸酯基、硫醚/多硫 S）＋ LiNO₃、添加剂/介体 ＋ 测试条件（含截止电压）",
+         "同样六种模型", "V3 R²（六种里最好，括号内为基线）：<br>" + it2,
+         "不比两条基线好；整类留出（氟化溶剂、有机硫）时失败"),
+        ("3", "11-04 · 243 篇", "同 2 的 V3，物性层逐个加（每类 3 种模型 × 6 组特征 = 18 次）",
+         "2 ＋ <b>A</b> 由组成算的溶剂化状态 · <b>B</b> 分子性质（实际只有配位原子的 Gasteiger 电荷）· "
+         "<b>C</b> 同篇实测的电导率/黏度 · <b>D</b> 用“组成 → 物性”模型补出的物性",
+         "岭回归、单调梯度提升、随机森林", "V3 R²，对照 → 加物性后最好：<br>" + it3,
+         f"容量和保持率没有提升；CE 的提升是 18 次里挑最好的，只有 {min(np3)}–{max(np3)} 对，在噪声范围内；补值模型 {imp_txt}"),
+        ("4", "11-05 · 313 篇",
+         f"改动模型：篇内所有比较（含跨条件配对）。开发集 {dg['开发集']['配对']} 对、{dg['开发集']['论文']} 篇（按论文分组 5 折交叉验证）；"
+         f"另留 {n_exam_papers} 篇的 {n_exam} 对作考试集，只算一次",
+         "描述符组 ER、RD5、ADD、SOLV、STATE、COMP、AMT、COMP×COND ＋ 条件（见下）",
+         "岭回归（α 0.3–100）、Huber、梯度提升、随机森林、极端随机树、kNN、SVR、集成；多任务",
+         "开发集最好 R² → 考试集 R²：<br>" + it4,
+         "只有每圈衰减率在考试集上大于 0——95% 区间跨 0，而且圈数泄漏了答案（见上方提示）"),
     ]
     it_html = "".join("<tr>" + "".join(f"<td>{x}</td>" for x in r) + "</tr>" for r in itrows)
 
@@ -294,13 +296,13 @@ def modelling_panel(nres: dict) -> str:
     g_html = "".join(f"<tr><td><b>{g}</b></td><td>{n.format(v=v)}</td><td>{d}</td></tr>" for g, n, d in GROUPS_EN)
     r_html = "".join(f"<tr><td><b>{lab}</b></td><td>{dg['各轮配置数'].get(k, 0)}</td><td>{e(what)}</td>"
                      f"<td class='mono'>{e(', '.join(x.replace('COMPxCOND', 'COMP×COND') for x in dg['各轮内容'][k]['描述符组']))}</td>"
-                     f"<td>{e(', '.join(m14(x) for x in dg['各轮内容'][k]['模型']))}</td></tr>" for k, lab, what in ROUNDS)
+                     f"<td>{e('、'.join(m14(x) for x in dg['各轮内容'][k]['模型']))}</td></tr>" for k, lab, what in ROUNDS)
     st_vals = [x.get("同测试、不同配方") for c in C14 for f, cond, _ in FAM for x in [fam(c, f, cond)] if x and x.get("同测试、不同配方") is not None]
 
     def famcell(x):
-        return "<td>—</td>" if not x else f"<td><b>{f2(x['总体'])}</b><br><span class='note'>same test {f2(x.get('同测试、不同配方'))}</span></td>"
+        return "<td>—</td>" if not x else f"<td><b>{f2(x['总体'])}</b><br><span class='note'>同测试 {f2(x.get('同测试、不同配方'))}</span></td>"
     f_html = "".join(f"<tr><td>{e(lab)}</td>{''.join(famcell(fam(c, f, cond)) for c in C14)}</tr>" for f, cond, lab in FAM)
-    f_html += "<tr><td>Predict no difference (reference)</td>" + "".join(f"<td>{f2(cmp_[c]['零基线']['总体'])}</td>" for c in C14) + "</tr>"
+    f_html += "<tr><td>预测没差别（参照）</td>" + "".join(f"<td>{f2(cmp_[c]['零基线']['总体'])}</td>" for c in C14) + "</tr>"
     no_c, wi_c = (lambda c: fam(c, "只有物性/结构", False)["总体"]), (lambda c: fam(c, "只有物性/结构", True)["总体"])
 
     def onoff(c, flag):
@@ -315,12 +317,12 @@ def modelling_panel(nres: dict) -> str:
         x = cmp_[c]["溶剂化状态STATE"]
         return f"<td>{f2(x['加之后']['总体'])} / {f2(x['加之前']['总体'])}</td>"
     t_html = "".join(f"<tr><td>{lab}</td><td class='note'>{cmpw}</td>{''.join(fn(c) for c in C14)}</tr>" for lab, cmpw, fn in (
-        ("Mirror augmentation (train on A − B and B − A)", "on / off", lambda c: onoff(c, "镜像")),
-        ("Equal weight per paper", "on / off", lambda c: onoff(c, "每篇等权")),
-        ("Winsorised training target, 5–95% (round 2)", "on / off", lambda c: onoff(c, "截尾")),
-        ("Multi-task · ER+RD5+ADD+SOLV", "joint / single", lambda c: mt(c, "ER+RD5+ADD+SOLV")),
-        ("Multi-task · ER+RD5+ADD+SOLV+COMP", "joint / single", lambda c: mt(c, "ER+RD5+ADD+SOLV+COMP")),
-        ("Solvation state STATE added (round 1)", "with / without", stt)))
+        ("镜像增广（同时用 A − B 和 B − A 训练）", "开 / 关", lambda c: onoff(c, "镜像")),
+        ("每篇等权", "开 / 关", lambda c: onoff(c, "每篇等权")),
+        ("训练目标截尾 5–95%（第 2 轮）", "开 / 关", lambda c: onoff(c, "截尾")),
+        ("多任务 · ER+RD5+ADD+SOLV", "联合 / 单类", lambda c: mt(c, "ER+RD5+ADD+SOLV")),
+        ("多任务 · ER+RD5+ADD+SOLV+COMP", "联合 / 单类", lambda c: mt(c, "ER+RD5+ADD+SOLV+COMP")),
+        ("加溶剂化状态 STATE（第 1 轮）", "加 / 不加", stt)))
     trick_d = [cmp_[c]["训练技巧"][f]["开"]["总体"] - cmp_[c]["训练技巧"][f]["关"]["总体"] for c in C14 for f in ("镜像", "每篇等权", "截尾")]
     mt_d = [x["多任务"]["总体"] - x["单类"]["总体"] for c in C14 for x in cmp_[c]["多任务"].values()]
     st_d = [abs(cmp_[c]["溶剂化状态STATE"]["加之后"]["总体"] - cmp_[c]["溶剂化状态STATE"]["加之前"]["总体"]) for c in C14]
@@ -328,9 +330,9 @@ def modelling_panel(nres: dict) -> str:
     ex_html = ""
     for c in C14:
         s, r, k = exam["配置"][c], exam["类别"][c], chk[c]
-        tag = " <span class='badge bad'>stale record*</span>" if k["选定时用了过期记录"] else " <span class='badge bad'>cycle-number leak</span>" if c == "每圈衰减率" else ""
+        tag = " <span class='badge bad'>过期记录*</span>" if k["选定时用了过期记录"] else " <span class='badge bad'>圈数泄漏</span>" if c == "每圈衰减率" else ""
         ex_html += (f"<tr><td>{C14[c]}</td><td>{e(cfg14(s))}</td><td>{f2(s['开发集R2'])}{tag}</td><td>{r['n']} · {r['论文']}</td>"
-                    f"<td><b>{f2(r['总体'])}</b></td><td>{f2(r['总体95%区间'][0])} to {f2(r['总体95%区间'][1])}</td>"
+                    f"<td><b>{f2(r['总体'])}</b></td><td>{f2(r['总体95%区间'][0])}～{f2(r['总体95%区间'][1])}</td>"
                     f"<td>{f2(r['同测试、不同配方'])}</td><td>{f2(r['跨测试、不同配方'])}</td><td>{f2(r['同配方、换条件'])}</td></tr>")
     stale = []
     for c in C14:
@@ -338,15 +340,12 @@ def modelling_panel(nres: dict) -> str:
         if k["选定时用了过期记录"]:
             right = k["现行数据上按规则应选"]
             stale.append(
-                f"<b>*{C14[c]}.</b> The configuration was selected on a record computed before first-cycle CE was removed "
-                f"({k['选定时所用记录']['n']} pairs instead of {dg['开发集']['各类配对'][c]}). On the current data the same configuration scores "
-                f"{f2(k['同一配置在现行数据上']['开发集R2'])}; applied correctly, the selection rule picks {e(cfg14(right))} ({f2(right['总体'])}). "
-                f"The exam score {f2(exam['类别'][c]['总体'])} therefore belongs to a configuration that should not have been chosen. "
-                "Scoring the exam set again with the right configuration would be a second look at it, so that is left to your decision. "
-                f"The conclusion does not change: on the current data no single-class configuration reaches a development R² above {f2(right['总体'])}.")
-    stale_html = (f"<div class='callout warn'><b>Selection error found on 5 Nov (evening).</b> {dg['过期记录']['条数']} round-2 records in the log were computed "
-                  f"on the data before first-cycle CE was removed; they duplicate configurations re-run on the current data. Comparisons on this page use only "
-                  f"the {dg['现行数据上的配置数']} records on the current data.<br>{'<br>'.join(stale)}</div>") if stale else ""
+                f"<b>*{C14[c]}。</b>选定配置依据的是剔除首圈 CE 之前算的记录（{k['选定时所用记录']['n']} 对，而现行是 {dg['开发集']['各类配对'][c]} 对）。"
+                f"同一配置在现行数据上是 {f2(k['同一配置在现行数据上']['开发集R2'])}；按规则正确选，应选 {e(cfg14(right))}（{f2(right['总体'])}）。"
+                f"所以考试集的 {f2(exam['类别'][c]['总体'])} 属于本不该选的配置。用正确配置重考等于第二次看考试集，由你决定。"
+                f"结论不变：现行数据上没有单类配置的开发集 R² 超过 {f2(right['总体'])}。")
+    stale_html = (f"<div class='callout warn'><b>11-05 晚发现的选择错误。</b>迭代记录里有 {dg['过期记录']['条数']} 条第 2 轮记录是在剔除首圈 CE 之前的数据上算的，"
+                  f"与现行数据上重跑的同一配置重复。本页的比较只用现行数据上的 {dg['现行数据上的配置数']} 条记录。<br>{'<br>'.join(stale)}</div>") if stale else ""
 
     # 同一改动跨篇一致性
     co_html = ""
@@ -354,142 +353,124 @@ def modelling_panel(nres: dict) -> str:
         x = cons[c]
         top = change_en(x["例子"][0]) if x["例子"] else "—"
         co_html += (f"<tr><td>{C14[c]}</td><td>{x['不同配方配对']}</td><td>{x['只改用量配对']}</td><td>{x['不同改动种数']}</td>"
-                    f"<td>{x['在≥2篇出现的改动种数']} <span class='note'>({x['在≥2篇出现的改动覆盖配对']} pairs · {x['覆盖比例']:.0%})</span></td>"
-                    f"<td>{f2(x['留一篇查表R2'])} · {x['方向一致率']:.0%} <span class='note'>(n = {x['查表配对数']})</span></td>"
+                    f"<td>{x['在≥2篇出现的改动种数']} <span class='note'>（{x['在≥2篇出现的改动覆盖配对']} 对 · {x['覆盖比例']:.0%}）</span></td>"
+                    f"<td>{f2(x['留一篇查表R2'])} · {x['方向一致率']:.0%} <span class='note'>（n = {x['查表配对数']}）</span></td>"
                     f"<td><b>{f2(x['只靠改动身份的上限R2'])}</b></td><td>{f2(ceil243.get(C14TO243[c]))}</td><td>{e(top)}</td></tr>")
     cl = [cons[c]["只靠改动身份的上限R2"] for c in C14]
     cv = [cons[c]["覆盖比例"] for c in C14]
     c243 = list(ceil243.values())
     fade, fade_r = exam["类别"]["每圈衰减率"], exam["类别"]["每圈衰减率"]["总体95%区间"]
-    phys = "; ".join(f"{C14[c].split(' (')[0]} {f2(fam(c, '只有物性/结构', True)['总体'])} vs {f2(fam(c, '只有组分身份', True)['总体'])}" for c in C14)
+    phys = "；".join(f"{C14[c].split('（')[0]} {f2(fam(c, '只有物性/结构', True)['总体'])} 对 {f2(fam(c, '只有组分身份', True)['总体'])}" for c in C14)
 
     rej = [
-        ("Cycle number as an input for fade per cycle", "bad", "Leak · removed and re-examined" if rr else "Leak · re-run without it in progress",
-         f"Δln(cycle number) alone explains R² {lk['总体']['只用Δln圈数R2']:.2f} of the development pairs "
-         f"({lk['跨测试、不同配方']['只用Δln圈数R2']:.2f} of cross-test pairs)"
-         + (f"; without it the exam R² is {f2(rr['类别']['每圈衰减率']['总体'])}" if rr else ""),
-         "Against your 5 Nov rule: per-cycle fade = total loss ÷ cycle count, so the cycle count gives part of the answer away. "
-         "Re-run: output/改动模型_去圈数_313篇_2026-11-06/ (another session)."),
-        ("Target R² &gt; 0.8 (set 5 Nov)", "bad", "Out of reach · new target pending your decision",
-         f"Identity-only ceiling {min(cl):+.2f} to {max(cl):+.2f} (313 papers) and {min(c243):+.2f} to {max(c243):+.2f} (243 papers); "
-         f"best exam R² {f2(fade['总体'])}, inflated by the cycle-number leak",
-         "The same change has different effects in different papers, so a model that only knows what changed cannot be right on both sides. "
-         "Suggested replacement: the share of confirmed contradictions that test conditions explain."),
-        ("Cross-paper ranking via normalisation (03)", "bad", "Not usable", "V3 fails in iterations 2–4",
-         "Plan §8.7: if V3 fails, formulations cannot be ranked across papers. The ranking in 03 stays as a 30-paper illustration."),
-        ("Physical / structural descriptors as predictors", "trial", "Not adopted for prediction · kept for explanation",
-         f"Development R², physical / structural + conditions vs component identity + conditions: {phys}. Adding the solvation state changes R² by at most {max(st_d):.2f}",
-         "They are functions of the formulation, so they add information only if they capture mechanism that identity misses — not seen here. "
-         "They remain the language for explaining contradictions."),
-        ("Measured conductivity / viscosity (layer C)", "no", "Not adopted",
-         "Reported for 35–60% of the modelling data; both together for 55 formulations from 25 papers (243-paper run); no gain beyond noise", "Too sparse to train on."),
-        ("Properties imputed from composition (layer D)", "bad", "Rejected",
-         f"Imputation models score R² {imp_txt} when whole papers are left out; each was trained on {min(imp_n)}–{max(imp_n)} formulations",
-         "The imputed values are themselves not predictive."),
-        ("Molecular properties from PubChem (layer B)", "no", "Not available",
-         "Dielectric constant for 0 of 110 solvents, viscosity for 22; DME, DOL, EC and TTE missing; only a Gasteiger-charge proxy was tested",
-         "Needs handbook values (DN, dielectric constant) or the DFT/MD features of plan §7.17a."),
-        ("Mirror augmentation · equal weight per paper · winsorised target", "no", "No consistent gain",
-         f"On minus off: {min(trick_d):+.2f} to {max(trick_d):+.2f}; the sign changes between classes", "Used only where the selection rule happened to pick them."),
-        ("Multi-task training", "no", "No consistent gain", f"Joint minus single-class: {min(mt_d):+.2f} to {max(mt_d):+.2f}",
-         "The four classes do not share enough signal to borrow from each other."),
-        ("Cut-off voltage as an input", "no", "Removed (your decision, 5 Nov)",
-         "Requiring it left 4–9 condition-complete within-paper pairs per Li–S class; without it 26–30",
-         "Rarely reported. Its effect (LiNO₃ reduction below ≈ 1.6 V adds capacity) is handled when explaining contradictions, as in SAME001."),
-        ("First-cycle CE inside the CE classes", "trial", "Removed in iteration 4 · pending your confirmation",
-         "First-cycle CE spans 8.8–79.9% within P017, and cross-test pairing would match it against cycle-100 CE",
-         "It measures first-cycle irreversible loss (SEI formation, LiNO₃ reduction), not cycling efficiency."),
-        ("Capacity below 10 mAh g⁻¹ (P344, 1.51)", "no", "Removed", "Unit error in the extraction", "—"),
-        ("Selected full-cell CE configuration", "bad", "Selection error · exam re-score pending your decision",
-         "Chosen from a stale record; see the exam section", "The conclusion for full-cell CE (no transfer) does not change."),
-        ("Predicting absolute performance values", "planned", "Not tried · not counted as progress", "—",
-         "R² would be high because E/S, loading and rate set most of the absolute level — a condition and paper effect, not an electrolyte effect. "
-         "Useful only to measure how much the conditions explain."),
-        ("NORM and LOPO contradiction rules", "trial", "Proposed pause · pending your decision", "Both rely on the normalisation model, whose R² ≈ 0",
-         "SAME, FLIP and DESC need only directions and stay."),
-        ("Text embeddings (MatSciBERT) for statements", "trial", "Proposed deferral · pending your decision",
-         "Statements are generated from structured fields by a template",
-         "Matching the fields directly is more precise and easier to check; embeddings suit the authors' free-text mechanism claims (Q2) better."),
-        ("More data: values read from figures, the remaining 222 papers", "planned", "Option · costs extraction money",
-         "About 70% more papers; many control-side values exist only in figures",
-         "Adds pairs and repeated changes, but does not remove the paper-to-paper inconsistency."),
-        ("DFT/MD descriptors (plan §7.17a)", "planned", "Planned, for explanation rather than R²", "Not yet computed",
-         "A change gets the same computed values in every paper, so they cannot explain why its effect differs between papers; "
-         "they can explain mechanisms inside an attribution."),
+        ("圈数作为每圈衰减率的输入", "bad", "泄漏 · 已去掉并重考" if rr else "泄漏 · 去掉后重跑中",
+         f"只用 Δln（圈数）就解释开发集配对 R² {lk['总体']['只用Δln圈数R2']:.2f}（跨测试配对 {lk['跨测试、不同配方']['只用Δln圈数R2']:.2f}）"
+         + (f"；去掉后考试集 R² {f2(rr['类别']['每圈衰减率']['总体'])}" if rr else ""),
+         "违反你 11-05 定的规则：每圈衰减率 = 总损失 ÷ 圈数，圈数泄露了一部分答案。重跑结果：output/改动模型_去圈数_313篇_2026-11-06/（另一会话）。"),
+        ("目标 R² &gt; 0.8（11-05 定）", "bad", "达不到 · 新目标待你定",
+         f"只靠改动身份的上限 {min(cl):+.2f} 到 {max(cl):+.2f}（313 篇）、{min(c243):+.2f} 到 {max(c243):+.2f}（243 篇）；"
+         f"考试集最好 R² {f2(fade['总体'])}，还被圈数泄漏抬高",
+         "同一个改动在不同论文里效应不同，只知道“改了什么”的模型不可能两边都对。建议的替代目标：已证实的矛盾里，测试条件能解释的比例。"),
+        ("通过归一化做跨论文排名（03 页）", "bad", "不能用", "第 2–4 次迭代 V3 都失败",
+         "方案 §8.7：V3 失败则不能跨论文给配方排名。03 页的排名只作为 30 篇的示意。"),
+        ("物性/结构描述符作预测输入", "trial", "预测不采用 · 保留用于解释",
+         f"开发集 R²，物性/结构＋条件 对 组分身份＋条件：{phys}。加溶剂化状态后 R² 最多变 {max(st_d):.2f}",
+         "它们本身是配方的函数，只有抓到组分身份抓不到的机制时才会增加信息，这里没有看到。它们仍是解释矛盾用的语言。"),
+        ("实测电导率/黏度（C 层）", "no", "不采用",
+         "只有 35–60% 的建模数据报告；两者都有的只有 25 篇的 55 个配方（243 篇试跑）；没有超出噪声的提升", "太稀疏，无法训练。"),
+        ("由组成补出的物性（D 层）", "bad", "否决",
+         f"补值模型按整篇留出 R² {imp_txt}；每个模型只用 {min(imp_n)}–{max(imp_n)} 个配方训练",
+         "补出来的值本身就不可预测。"),
+        ("PubChem 分子性质（B 层）", "no", "拿不到",
+         "110 个溶剂里介电常数 0 个、黏度 22 个；DME、DOL、EC、TTE 都缺；只试了 Gasteiger 电荷这一个替代量",
+         "需要手册值（DN、介电常数）或方案 §7.17a 的 DFT/MD 特征。"),
+        ("镜像增广 · 每篇等权 · 截尾目标", "no", "没有稳定提升",
+         f"开减关：{min(trick_d):+.2f} 到 {max(trick_d):+.2f}，不同类别正负不一", "只在选择规则恰好选中时使用。"),
+        ("多任务训练", "no", "没有稳定提升", f"联合减单类：{min(mt_d):+.2f} 到 {max(mt_d):+.2f}",
+         "四类性能之间共享的信号不够，互相借不到力。"),
+        ("截止电压作为输入", "no", "去掉（你 11-05 定）",
+         "要求有它时，每个 Li–S 类别只剩 4–9 个条件齐全的篇内配对；不要求时 26–30 个",
+         "报告很少。它的作用（低于约 1.6 V 时 LiNO₃ 还原贡献容量）在解释矛盾时处理，如 SAME001。"),
+        ("CE 类里的首圈 CE", "trial", "第 4 次迭代已去掉 · 待你确认",
+         "P017 内部首圈 CE 就从 8.8% 到 79.9%，跨测试配对还会拿它去配第 100 圈的 CE",
+         "它测的是首圈不可逆损失（SEI 形成、LiNO₃ 还原），不是循环效率。"),
+        ("低于 10 mAh g⁻¹ 的容量（P344，1.51）", "no", "去掉", "提取时单位出错", "—"),
+        ("选定的全电池 CE 配置", "bad", "选择错误 · 是否重考待你定", "取自过期记录，见考试集一节", "全电池 CE 的结论（不能迁移）不变。"),
+        ("预测性能绝对值", "planned", "没试 · 不算进展", "—",
+         "R² 会很高，因为 E/S、载量、倍率决定了大部分绝对水平——这是条件和论文效应，不是电解液效应。只适合用来衡量条件能解释多少。"),
+        ("NORM 和 LOPO 两条矛盾规则", "trial", "建议暂停 · 待你定", "都依赖归一化模型，而它的 R² ≈ 0",
+         "SAME、FLIP、DESC 只需要方向，保留。"),
+        ("表述的文本向量（MatSciBERT）", "trial", "建议推迟 · 待你定", "表述是由结构化字段按模板生成的",
+         "直接比对字段更精确也更好核查；向量更适合作者自由书写的机制论断（Q2）。"),
+        ("更多数据：读图补数、剩余 222 篇", "planned", "可选 · 需要提取费用", "论文多约 70%；很多对照侧的数值只在图里",
+         "能增加配对和重复改动，但消除不了论文之间的不一致。"),
+        ("DFT/MD 描述符（方案 §7.17a）", "planned", "已计划，用于解释而不是提高 R²", "尚未计算",
+         "同一个改动在每篇论文里算出的值都一样，所以解释不了它为什么在不同论文里效应不同；可以在归因里解释机制。"),
     ]
     rj_html = "".join(f"<tr><td><b>{a}</b></td><td><span class='badge {cls}'>{s}</span></td><td>{ev}</td><td>{why}</td></tr>" for a, cls, s, ev, why in rej)
-    cards = (f"<div class='card'><span class='badge bad'>Exam set · best class · leaked</span><h3 style='font-size:29px;margin:10px 0 4px'>{f2(fade['总体'])}</h3>"
-             f"<p>Capacity fade per cycle · 95% interval {f2(fade_r[0])} to {f2(fade_r[1])} · {fade['n']} pairs from {fade['论文']} papers · "
-             f"inflated by the cycle-number leak"
-             + (f"; re-examined without it: <b>{f2(rr['类别']['每圈衰减率']['总体'])}</b>" if rr else "") + ". Other classes: "
-             f"{', '.join(f2(exam['类别'][c]['总体']) + star(c) for c in C14 if c != '每圈衰减率')}.</p></div>"
-             f"<div class='card'><span class='badge'>Configurations searched</span><h3 style='font-size:29px;margin:10px 0 4px'>{dg['现行数据上的配置数']}</h3>"
-             f"<p>On the current 313-paper data in four rounds, after 6 models (iteration 2) and 18 feature sets (iteration 3) per class on 243 papers.</p></div>"
-             f"<div class='card'><span class='badge bad'>Changes seen in ≥ 2 papers</span><h3 style='font-size:29px;margin:10px 0 4px'>{min(cv):.0%}–{max(cv):.0%}</h3>"
-             f"<p>of formulation-change pairs. Where a change does repeat, knowing it explains at most R² {min(cl):+.2f} to {max(cl):+.2f}.</p></div>")
-    lift = lambda c: f"{f2(no_c(c))} to {f2(wi_c(c))}"
-    reading = (f"<b>Reading.</b> (1) Swapping the electrolyte inside one test is not predictable across papers: the R² on same-test pairs stays between "
-               f"{min(st_vals):+.2f} and {max(st_vals):+.2f} for every descriptor family. (2) Test conditions help only for Li‖Cu CE, where adding them lifts the "
-               f"development R² from {lift('LiCu_CE')}. The larger lift for fade per cycle ({lift('每圈衰减率')}) comes almost entirely from the cycle number, "
-               "which leaks the answer. "
-               "(3) Physical and structural descriptors do no better than knowing which components are present. (4) Most changes appear in a single paper, "
-               "and the ones that repeat do not have a consistent effect. R² &gt; 0.8 is therefore out of reach on text-only literature data, whatever the model.")
-    steps = [("Find candidates", "On the 313-paper statements: SAME (identical change, opposite outcome), FLIP (same pair, condition flips the direction), "
-                                 "DESC (same descriptor direction, opposite outcome). None needs a model."),
-             ("Check the source", "Every candidate against the source text, with quotes: ✅ 🔶 ⚠️ ❌."),
-             ("Attribution · conditions", "Compare the two sides' test conditions: E/S, loading, cathode S, rate, temperature, Li thickness. "
-                                         "This comes first because a difference in conditions is the simplest reason for the same change to look different."),
-             ("Attribution · mechanisms", "For what conditions cannot explain, pull the mechanism claims and supporting measurements linked to each statement: "
-                                         "consensus, conflict, often claimed but not measured."),
-             ("DFT/MD", "What remains goes to the first DFT/MD batch (TTE and LiNO₃ first, plan §7.17a).")]
+    cards = (f"<div class='card'><span class='badge bad'>考试集 · 最好的一类 · 有泄漏</span><h3 style='font-size:29px;margin:10px 0 4px'>{f2(fade['总体'])}</h3>"
+             f"<p>每圈衰减率 · 95% 区间 {f2(fade_r[0])}～{f2(fade_r[1])} · {fade['论文']} 篇的 {fade['n']} 对 · 被圈数泄漏抬高"
+             + (f"；去掉泄漏重考：<b>{f2(rr['类别']['每圈衰减率']['总体'])}</b>" if rr else "") + "。其他三类："
+             f"{'、'.join(f2(exam['类别'][c]['总体']) + star(c) for c in C14 if c != '每圈衰减率')}。</p></div>"
+             f"<div class='card'><span class='badge'>搜索过的配置</span><h3 style='font-size:29px;margin:10px 0 4px'>{dg['现行数据上的配置数']}</h3>"
+             f"<p>在现行的 313 篇数据上分四轮完成；此前在 243 篇上每类试过 6 种模型（第 2 次迭代）和 18 组特征（第 3 次迭代）。</p></div>"
+             f"<div class='card'><span class='badge bad'>在 ≥ 2 篇里出现的改动</span><h3 style='font-size:29px;margin:10px 0 4px'>{min(cv):.0%}–{max(cv):.0%}</h3>"
+             f"<p>（占换配方配对的比例）。就算某个改动重复出现，只知道它是什么，最多解释 R² {min(cl):+.2f} 到 {max(cl):+.2f}。</p></div>")
+    lift = lambda c: f"{f2(no_c(c))} 到 {f2(wi_c(c))}"
+    reading = (f"<b>怎么读。</b>（1）同一测试里换电解液，跨论文预测不了：每一族描述符在同测试配对上的 R² 都在 "
+               f"{min(st_vals):+.2f} 到 {max(st_vals):+.2f} 之间。（2）测试条件只对 Li‖Cu CE 有用，加上后开发集 R² 从 {lift('LiCu_CE')}。"
+               f"每圈衰减率的提升更大（{lift('每圈衰减率')}），但几乎全来自泄漏答案的圈数。"
+               "（3）物性和结构描述符并不比“知道有哪些组分”好。（4）大多数改动只在一篇论文里出现，重复出现的效应也不一致。"
+               "所以只靠文字提取的文献数据，不管用什么模型，R² &gt; 0.8 都达不到。")
+    steps = [("找候选", "在 313 篇的表述上找：SAME（同一改动、结果相反）、FLIP（同一对配方、条件让方向翻转）、DESC（描述符方向相同、结果相反）。都不需要模型。"),
+             ("核对原文", "每个候选都对照原文、贴原句：✅ 🔶 ⚠️ ❌。"),
+             ("归因 · 条件", "比较两边的测试条件：E/S、载量、正极含硫、倍率、温度、锂片厚度。条件不同是同一改动看起来不一样的最简单原因，所以先查。"),
+             ("归因 · 机制", "条件解释不了的，调出每条表述关联的机制论断和支撑测量：哪些一致、哪些冲突、哪些常被声称却没人测。"),
+             ("DFT/MD", "剩下的交给第一批 DFT/MD 计算（先算 TTE 和 LiNO₃，方案 §7.17a）。")]
     st_html = "".join(f"<div class='step'><span class='num'>{i}</span><div><b>{a}</b><p>{e(b)}</p></div></div>" for i, (a, b) in enumerate(steps, 1))
     th = lambda cols: "<tr>" + "".join(f"<th>{x}</th>" for x in cols) + "</tr>"
     cls4 = [C14[c] for c in C14]
-    return f"""<section id="modelling" class="panel" hidden><div class="section-head"><h2>Can the effect of an electrolyte change be predicted across papers?</h2>
-<span class="badge bad">Target R² &gt; 0.8 not reached</span></div>
-<p>For two formulations compared in one paper, a model trained on other papers predicts how far apart their performance is, given the formulations and test conditions.
-Four iterations, from 30 to 313 papers. Every validation leaves out whole papers, because formulations from one paper share a cathode, a process and a lab.
-R² = 1 is perfect; 0 equals predicting no difference; below 0 is worse than that.</p>
-<p class="note">Preliminary · AI-assisted, not yet confirmed item by item by the user · items marked “pending” await your decision · Statements, Normalisation and Contradictions still show the 30-paper pilot</p>
+    return f"""<section id="modelling" class="panel" hidden><div class="section-head"><h2>电解液改动的效果能不能跨论文预测？</h2>
+<span class="badge bad">目标 R² &gt; 0.8 未达到</span></div>
+<p>同一篇论文里比较的两个配方，用其他论文训练的模型，根据配方和测试条件预测它们的性能差多少。从 30 篇到 313 篇共四次迭代。
+每次验证都整篇留出，因为同一篇论文的配方共用正极、工艺和实验室。R² = 1 表示完全正确；0 相当于“预测没差别”；小于 0 比这还差。</p>
+<p class="note">数据：30 篇（第 1 次）、243 篇（第 2–3 次）、313 篇（第 4 次）· 初步、AI 辅助，用户尚未逐项人工确认 · 标“待你定”的事项等你决定</p>
 {leak_html}
 <div class="grid" style="margin-top:16px">{cards}</div>
 <div class="callout warn">{reading}</div>
-<h3 style="margin-top:26px">Iterations at a glance</h3>
-<div class="table-wrap"><table>{th(["#", "When · data", "Question · validation", "Inputs", "Models", "Best result (R²)", "Outcome"])}{it_html}</table></div>
-<p class="note">* Selected from a stale record; see the exam section below.</p>
-<div class="section-head" style="margin-top:32px"><h2>Iteration 4 in detail</h2><span class="note">313 papers · change model · {dg['迭代配置总数']} records logged, {dg['现行数据上的配置数']} on the current data</span></div>
-<div class="two"><div class="sheet"><div class="eyebrow">Descriptor groups</div>
-<div class="table-wrap"><table>{th(["Group", "Features", "Contents"])}{g_html}</table></div>
-<p class="note">Each formulation feature enters as experiment − reference plus the reference value; conditions likewise. Target: difference in ln capacity, −ln fade per cycle
-or −ln(100 − CE); positive means the experiment side is better. Pair types: same test, other formulation · other test, other formulation · same formulation, other condition.</p></div>
-<div class="sheet"><div class="eyebrow">Search rounds</div>
-<div class="table-wrap"><table>{th(["Round", "Configs", "What changed", "Descriptor sets", "Models"])}{r_html}</table></div>
-<p class="note">Selection rule fixed before the exam: per class, the highest paper-grouped 5-fold development R², single-class training. Picking the best of many configurations makes development scores optimistic.</p></div></div>
-<h3 style="margin-top:26px">Descriptors versus test conditions · development set</h3>
-<p class="note">Best configuration per cell. Small print: R² on same-test, other-formulation pairs — the pure electrolyte effect.
-Fade-per-cycle values with conditions include the cycle-number leak.</p>
-<div class="table-wrap"><table>{th(["Inputs"] + cls4)}{f_html}</table></div>
-<h3 style="margin-top:22px">Training tricks and multi-task · development set</h3>
-<div class="table-wrap"><table>{th(["Variant", "Shown as"] + cls4)}{t_html}</table></div>
-<h3 style="margin-top:22px">Exam set · scored once</h3>
-<div class="table-wrap"><table>{th(["Class", "Selected configuration", "Dev R² at selection", "Exam pairs · papers", "Exam R²", "95% interval",
-                                    "Same test", "Other test", "Condition change"])}{ex_html}</table></div>
+<h3 style="margin-top:26px">四次迭代一览</h3>
+<div class="table-wrap"><table>{th(["#", "时间 · 数据", "问题 · 验证方式", "输入", "模型", "最好结果（R²）", "结论"])}{it_html}</table></div>
+<p class="note">* 依据过期记录选出，见下面考试集一节。</p>
+<div class="section-head" style="margin-top:32px"><h2>第 4 次迭代细节</h2><span class="note">313 篇 · 改动模型 · 共记录 {dg['迭代配置总数']} 条，其中 {dg['现行数据上的配置数']} 条在现行数据上</span></div>
+<div class="two"><div class="sheet"><div class="eyebrow">描述符组</div>
+<div class="table-wrap"><table>{th(["组", "特征数", "内容"])}{g_html}</table></div>
+<p class="note">每个配方特征以“实验 − 参照”加参照值进入；条件同样。目标：ln 容量之差、−ln 每圈衰减率之差或 −ln(100 − CE) 之差，正值表示实验侧更好。
+配对类型：同测试换配方 · 跨测试换配方 · 同配方换条件。</p></div>
+<div class="sheet"><div class="eyebrow">搜索轮次</div>
+<div class="table-wrap"><table>{th(["轮次", "配置数", "改了什么", "描述符组", "模型"])}{r_html}</table></div>
+<p class="note">考试前定好的选择规则：每类取按论文分组 5 折开发集 R² 最高、单类训练的配置。从很多配置里挑最好的，会让开发集分数偏乐观。</p></div></div>
+<h3 style="margin-top:26px">描述符 vs 测试条件 · 开发集</h3>
+<p class="note">每格是最好配置的结果。小字：同测试换配方配对上的 R²，即纯粹的电解液效应。每圈衰减率加条件的数值含圈数泄漏。</p>
+<div class="table-wrap"><table>{th(["输入"] + cls4)}{f_html}</table></div>
+<h3 style="margin-top:22px">训练技巧与多任务 · 开发集</h3>
+<div class="table-wrap"><table>{th(["变体", "显示方式"] + cls4)}{t_html}</table></div>
+<h3 style="margin-top:22px">考试集 · 只算一次</h3>
+<div class="table-wrap"><table>{th(["类别", "选定配置", "选定时开发集 R²", "考试配对 · 论文", "考试集 R²", "95% 区间", "同测试", "跨测试", "换条件"])}{ex_html}</table></div>
 {stale_html}
-<div class="section-head" style="margin-top:32px"><h2>Why R² &gt; 0.8 is out of reach</h2><span class="note">Development set only · exam papers not read</span></div>
-<p>A change is what one side has that the other lacks (adding X and removing X count as one change in two directions). If adding TTE helps in one paper and hurts in another,
-a model that knows only “TTE was added” must give both the same prediction and is wrong on at least one. The share of variance left within repeated changes bounds what any such model can reach.</p>
-<div class="table-wrap"><table>{th(["Class", "Formulation-change pairs", "Amount only", "Distinct changes", "Seen in ≥ 2 papers", "Lookup from other papers: R² · direction",
-                                    "Identity-only ceiling", "Ceiling, 243-paper run", "Most repeated change (effect in ln units, + = better)"])}{co_html}</table></div>
-<p class="note">Lookup: predict a pair from the mean effect of the same change in other papers. Ceiling: 1 − within-change variance / total variance, in-sample (optimistic).
-Few repeated changes (1–3 per class), so these are rough estimates. ADD_TRIAL is the placeholder for additives whose structure was not verified,
-so its “repeats” may be different additives.</p>
-<div class="section-head" style="margin-top:32px"><h2>Not adopted, and why</h2></div>
-<div class="table-wrap"><table>{th(["Item", "Status", "Evidence", "Reason"])}{rj_html}</table></div>
-<div class="section-head" style="margin-top:32px"><h2>Proposed next step · contradiction analysis</h2><span class="badge planned">Awaiting your decision</span></div>
+<div class="section-head" style="margin-top:32px"><h2>为什么 R² &gt; 0.8 达不到</h2><span class="note">只用开发集 · 没看考试集论文</span></div>
+<p>一个“改动”就是一边有、另一边没有的东西（加 X 和去掉 X 算同一个改动的两个方向）。如果加 TTE 在一篇里变好、在另一篇里变差，
+只知道“加了 TTE”的模型对两篇只能给出同一个预测，至少错一篇。重复改动内部剩下的方差，就是任何这类模型的上限。</p>
+<div class="table-wrap"><table>{th(["类别", "换配方配对", "只改用量", "不同改动种数", "在 ≥ 2 篇出现", "用其他论文查表：R² · 方向",
+                                    "只靠改动身份的上限", "上限（243 篇）", "重复最多的改动（ln 效应，+ = 更好）"])}{co_html}</table></div>
+<p class="note">查表：用同一改动在其他论文里的平均效应预测这一对。上限：1 − 改动内方差 / 总方差，样本内计算（偏乐观）。
+每类重复的改动只有 1–3 个，所以都是粗略估计。ADD_TRIAL 是结构未核实的添加剂的占位符，它的“重复”可能是不同的添加剂。</p>
+<div class="section-head" style="margin-top:32px"><h2>不采纳的做法与原因</h2></div>
+<div class="table-wrap"><table>{th(["事项", "状态", "证据", "原因"])}{rj_html}</table></div>
+<div class="section-head" style="margin-top:32px"><h2>建议的下一步 · 矛盾分析</h2><span class="badge planned">等你决定</span></div>
 <div class="sheet">{st_html}</div>
-<div class="callout">Files: <span class="mono">output/表述试跑243篇_2026-11-04/</span> 试跑建模结果.json, 物性对比/ ·
-<span class="mono">output/改动模型_313篇_2026-11-05/</span> 选定配置.json, 考试结果.json, 迭代记录.jsonl, 诊断.json.
-Scripts: <span class="mono">scripts/step13g_试跑243篇建模/</span>, <span class="mono">scripts/step14_改动模型/</span> (pairs, search, final, diagnose).</div></section>"""
+<div class="callout">文件：<span class="mono">output/表述试跑243篇_2026-11-04/</span> 试跑建模结果.json、物性对比/ ·
+<span class="mono">output/改动模型_313篇_2026-11-05/</span> 选定配置.json、考试结果.json、迭代记录.jsonl、诊断.json。
+脚本：<span class="mono">scripts/step13g_试跑243篇建模/</span>、<span class="mono">scripts/step14_改动模型/</span>（pairs、search、final、diagnose）。</div></section>"""
 
 
 def main() -> None:
@@ -666,7 +647,6 @@ Practical condition: E/S 5 and loading 4 (plan §7.8). To be recomputed on the f
     conflicts = f"""<section id="conflicts" class="panel" hidden><div class="section-head"><h2>Contradiction candidates</h2><span class="note">Re-run after normalisation · every item checked against the source text</span></div>
 <div class="table-wrap"><table><tr><th>Rule</th><th>What it looks for</th><th>Candidates</th></tr>{rules}</table></div>
 <div class="callout"><b>Verdicts.</b> ✅ supported by the source and worth explaining · 🔶 values correct, but an unaligned factor or definition explains the gap · ⚠️ extraction or classification problem · ❌ not a contradiction.<br>
-    vd = json.loads((ROOT / "output" / "组会图_2026-11-08" / "第13页向量图数据.json").read_text(encoding="utf-8"))
 NORM: only 3 cross-paper pairs share the same formulation and none differs by ≥1.5× after normalisation. LOPO runs only where the selected model's V1 R² &gt; 0; skipped: {e(skip)}. FLIP: none in this analysis set.</div>
 <div class="chips" id="ctype">{chips}</div><div class="grid2">{''.join(cc)}</div></section>"""
 
@@ -686,43 +666,71 @@ NORM: only 3 cross-paper pairs share the same formulation and none differs by �
     s371 = q1["P371 系列（Taur，60 °C）"]
     fsp = json.loads((ROOT / "output" / "组会图_2026-11-08" / "配方空间汇总.json").read_text(encoding="utf-8"))
     mu = json.loads((ROOT / "output" / "分子宇宙_SES式_2026-11-08" / "汇总.json").read_text(encoding="utf-8"))
+    vd = json.loads((ROOT / "output" / "组会图_2026-11-08" / "第13页向量图数据.json").read_text(encoding="utf-8"))
+    # 11-08 夜（用户：“其它的问题也一起改了”“分子宇宙……再换其它的描述符试试”）：图注跟着改过的图更新，并加描述符版分子宇宙
+    vk = vd["原始向量检验（step22b）"]
+    md = json.loads((ROOT / "output" / "分子宇宙_描述符版_2026-11-08" / "汇总.json").read_text(encoding="utf-8"))
+    use = mu["用量"]
     hi = q3["高盐且含 LiNO3"]
     figs = [
         ("fig_q1.png", "问题 1 · 稀释剂该不该分解？",
          f"左：两篇反例各一条线。P371 在同一骨架（1,2-二乙氧基乙烷）上逐步加氟，Li‖Cu CE 依次为 "
          + " → ".join(f"{k} {v:.1f}%" for k, v in s371.items()) +
-         f"，部分氟化的 F3DEE 最差（F6DEE 为饱和溶液，锂盐低于 1.2 M）；P381 在同一 LiFSI–TEP 体系里把稀释剂从不含氟的 DBE（{q1['P381（T01）DBE / TTE'][0]}%）"
-         f"换成 TTE（{q1['P381（T01）DBE / TTE'][1]}%），CE 反而下降。多数结论写在标题：{q1['有含氟数变化的同测试比较的论文']} 篇里有 "
+         f"，一端不含氟的 F3DEE 最差，同为部分氟化的 F4DEE、F5DEE 反而最好（P371 的 Li‖Cu 在 60 °C、不含 LiNO₃ 测；F6DEE 为饱和溶液，锂盐低于 1.2 M）；"
+         f"P381 在同一 LiFSI–TEP 体系里把整个稀释剂从不含氟的 DBE（{q1['P381（T01）DBE / TTE'][0]}%）"
+         f"换成 TTE（{q1['P381（T01）DBE / TTE'][1]}%），CE 反而下降（虚线：换分子，不是逐步加氟）。多数结论写在标题：{q1['有含氟数变化的同测试比较的论文']} 篇里有 "
          f"{q1['每个比较都是含氟多 CE 高的论文']} 篇每个比较都是含氟越多 CE 越高。右：文献里 LiF 的两条来源说法——稀释剂自己分解（{len(q1['路线 1 论文'])} 篇）"
          f"与阴离子分解、稀释剂宜稳定（{len(q1['路线 2 论文'])} 篇，多为 2022 年以后），以及一句可检验的假设。", 0, True),
         ("fig_q2.png", "问题 2 · LiNO₃ 加多少最好？",
          f"左：只改 LiNO₃ 用量、测了至少 3 个浓度的两篇，纵轴 = 比本篇最低浓度时衰减慢了几倍：P139 到 0.5 M 一直在变好；P111 0.5 M 最好、1.0 M 比 0.1 M 还差，"
-         f"是 0.5 M 以上唯一干净的剂量系列（P121 的 1.0 M 配方同时把 LiTFSI 从 1.1 M 降到 0.5 M，不算）。0.5 M 以下 {q2['其中变好']}/{q2['较高浓度 ≤ 0.5 M 的比较']} 个比较"
-         f"（{q2['≤ 0.5 M 涉及论文']} 篇）多加变好。下方：{q2['有 LiNO3 数值的配方']} 个配方的用量分布，超过 0.6 M 的只有 {q2['高于 0.6 M 的配方']} 个。"
+         f"是 0.5 M 以上唯一干净的剂量系列，但体系特殊（离子液体电解液、GO 正极；P121 的 1.0 M 配方同时把 LiTFSI 从 1.1 M 降到 0.5 M，不算）。"
+         f"0.5 M 以下 {q2['其中变好']}/{q2['较高浓度 ≤ 0.5 M 的比较']} 个比较（{q2['≤ 0.5 M 涉及论文']} 篇）多加变好，去掉同时改了特殊组分的比较后 "
+         f"{q2['≤ 0.5 M 去掉特殊组分后（变好/比较数）'][0]}/{q2['≤ 0.5 M 去掉特殊组分后（变好/比较数）'][1]}。"
+         f"下方：{q2['有 LiNO3 数值的配方']} 个有以 M 计用量的配方的用量分布，超过 0.6 M 的只有 {q2['高于 0.6 M 的配方']} 个。"
          "右：概念示意（不是拟合）——负极收益会饱和（0 线上方）、正极低电位还原的代价随用量增加（0 线下方），两者之和给出最佳用量；下方小条表示最佳用量随截止电压、电解液用量往哪边移。", 0, True),
         ("fig_q3.png", "问题 3 · 高盐和 LiNO₃ 是替代还是互补？",
-         f"左：P112 是唯一把两者交叉测过的论文，柱高 = 每圈损失的锂（100 − CE）：只提盐（1 → 4 M）或只加 0.5 M LiNO₃ 都让锂损失大幅下降，两者一起并不比只加 LiNO₃ 更好。"
-         f"中：313 篇里四种组合各有多少配方（方块面积），高盐（> 1 M）且含 LiNO₃ 只有 {hi[0]} 个配方、{len(hi[1])} 篇（是否含 LiNO₃ 看配方组分，不要求原文给出 M 用量）。"
+         f"左：P112 是唯一把两者交叉测过的论文，柱高 = 每圈损失的锂（100 − CE）：只提盐（1 → 4 M）或只加 0.5 M LiNO₃ 都让锂损失大幅下降，"
+         f"但只加 LiNO₃ 更好（{100 - q3['P112']['1 M +LiNO3']:.1f}% 对 {100 - q3['P112']['4 M']:.1f}%）；有了 LiNO₃ 再提盐没有额外收益。"
+         f"中：{q3['有两个数值的配方']} 个有盐浓度的配方里四种组合各有多少（方块面积），高盐（> 1 M）且含 LiNO₃ 只有 {hi[0]} 个配方、{len(hi[1])} 篇（是否含 LiNO₃ 看配方组分，不要求原文给出 M 用量）。"
          f"右：两种解释——同一个靶点、可以互相替代（{len(q3['替代一方'])} 篇），还是不同靶点、在锂硫全电池里叠加（{len(q3['互补一方'])} 篇＋P112 作者：高盐减少多硫化物溶解，LiNO₃ 消耗变慢），"
          "以及在锂硫全电池里区分两者的实验。", 0, True),
-        ("fig_p13_vectors.png", "文字向量地图：矛盾的说法是邻居",
-         "左：四组句子的向量相似度——立场相反、讲同一件事的两句话几乎重合（0.95–0.96），讲两件事的才远，说明文字向量按“讲什么”摆放、不按“支持还是反对”。"
-         f"中：313 篇 {vd['画出的说法']:,} 条机制说法（bge-small-zh → UMAP），按说法里的关键词粗分话题上色（只作定位）：LiF / SEI / 锂负极 "
-         f"{vd['话题计数（关键词粗分）']['LiF / SEI / Li anode']:,} 条、转化动力学与催化 {vd['话题计数（关键词粗分）']['conversion kinetics / catalysis']:,} 条、"
-         f"多硫化物穿梭与溶解 {vd['话题计数（关键词粗分）']['polysulfide shuttle / dissolution']:,} 条等；P017 的 {vd['英文摘要未画（P017）']} 条英文摘要单独成簇，不画。"
-         f"右：方框放大，{vd['放大区说法']:,} 条说法里 {vd['放大区 LiF/SEI/锂负极']:,} 条讲 LiF / SEI / 锂负极，读原文后在问题 1 上站队的有 {vd['问题 1 站队说法']} 条（蓝、橙），"
-         "两派互相交错；P179（HFE 分解成 LiF 有利）与 P338（LiF 来自锂盐、HFE 分解不太可能）离得最近、结论相反。向量找“讲同一件事”的说法，立场由读原文判断。", 0, True),
+        ("fig_p13_vectors.png", "文字向量地图：定位相关说法，再读原文辨别立场",
+         f"左：313 篇语料中显示 {vd['图中论文数']} 篇的 {vd['画出的说法']:,} 条中文机制说法（bge-small-zh → UMAP）；坐标保持等比例。"
+         "散点按关键词粗分话题，密集处颜色更深，无模糊光晕；话题只作定位。"
+         f"未显示的 {vd['英文摘要未画']} 条英文摘要来自 P017（30）、P196（20）、P219（17）、P335（16），并非只有 P017。"
+         f"右：方框放大，包含 {vd['放大区说法']:,} 条说法，其中 {vd['放大区 LiF/SEI/锂负极']:,} 条属于 LiF / SEI / 锂负极话题。"
+         f"放大框是围着问题 1 已判立场的 {vd['问题 1 站队说法']} 条画的，框里有几条不能当证据（P425、P451 两条在框外另标），蓝橙分别为两方。"
+         f"改在原始向量里检验：每条说法的 50 个最近邻里平均有 {vk['问题1']['50近邻里同问题说法_平均']:.1f} 条同问题说法，是随机的 {vk['问题1']['倍数']:.0f} 倍——话题聚在一起；"
+         f"两派的同派与跨派相似度几乎一样（AUC {vk['问题1']['分立场AUC_两两']:.2f}，0.5 = 分不开）——立场分不出来。"
+         "P179 与 P338 是两派之间原始向量余弦相似度最高的一对（0.733）。"
+         f"下方四组是人造示例句，竖线 = 语料里随机两条说法的相似度中位数（{vk['随机两条说法的余弦']['中位数']:.2f}）：同话题、相反立场也有 0.95–0.96。"
+         f"二维图只保留了约 {vk['二维图保真']['原向量10近邻在二维图仍为10近邻']:.0%} 的近邻关系，近邻里 {vk['二维图保真']['10近邻来自同一篇论文']:.0%} 来自同一篇论文，"
+         "所以只看区域、不看点与点的距离。向量定位相关说法，立场仍需读原文判断（检验：scripts/step22b_vector_checks.py）。", 0, True),
         ("fig_formulation_space.png", "配方空间（数据概况）",
          f"版式照 SES AI 分子宇宙（白底，背景由浅蓝到红 = 配方由少到多，文字直接标在图上）。横轴 = 每个 Li⁺ 分到的配位位点（越往左溶剂化越弱：高浓、局部高浓电解液），"
          f"纵轴 = 锂盐浓度，都取对数；绿点 = 含 LiNO₃（大小 = 用量），绿圈 = 含 LiNO₃ 但原文没给 M 用量，灰点 = 不含，金黄描边 = 含含氟溶剂/稀释剂。{fsp['上图配方']} 个配方（{fsp['论文']} 篇）里 "
          f"{fsp['热点']['配方数']} 个挤在同一点（其中 {fsp['热点']['其中 DOL/DME+LiTFSI']} 个是 1 M LiTFSI 的 DOL/DME）；高盐区几乎全是灰点（问题 3），"
-         "大绿点很少（问题 2），含氟配方在左侧溶剂化弱的一边（问题 1）。", 0, True),
+         f"大绿点很少（问题 2：{fsp['有 M 用量的 LiNO3 配方（问题 2 分母）']} 个有 M 用量的配方里超过 0.6 M 的很少）。"
+         "横轴不计含氟醚氧（醚氧旁边或隔一个碳是 CF₂/CF₃ 的不算位点），所以含氟稀释的配方落在左边是定义使然，不是数据发现；"
+         f"溶剂全按 0 个位点计的配方画不出（{'、'.join(fsp['溶剂全为 0 位点、画不出的配方'])}）。", 0, True),
         ("fig_molecular_universe.png", "分子宇宙（数据概况）",
          f"照 SES AI Molecular Universe 的做法：背景 = QM9 的 {mu['背景分子']:,} 个小分子（GDB-17 中所有不超过 9 个重原子的 C/N/O/F 稳定分子），"
-         f"313 篇用到的 {mu['文献分子']} 个中性有机分子（绿）叠在上面，位置 = 结构相似度（Morgan 指纹、Jaccard 距离、UMAP）。左：全景，文献分子只落在几个角落。"
+         f"313 篇用到的 {mu['文献分子']} 个中性有机分子（绿）叠在上面，位置 = 结构相似度（Morgan 指纹、Jaccard 距离、UMAP）。"
+         f"左：全景。集中的是用量，不是种类：非氟醚占全部使用的 {use['非氟醚使用占比']:.0%}（DME {use['DME']} 篇、DOL {use['DOL']} 篇），"
+         f"{mu['文献分子']} 个分子里 {use['只在1篇出现']} 个只在 1 篇出现。"
          f"右：近景，{mu['文献分子']} 个分子和各自最相近的 400 个 QM9 分子（共 {mu['近景背景分子']:,} 个）重新降维，文献分子分成链状醚与氟化醚、碳酸酯/酯/酰胺、"
          "环状碳酸酯、环醚、芳香与含硫硒添加剂几块；背景点 = 结构相近但 313 篇里没人用过的分子（蓝 = 附近少、红 = 附近多）；金黄 = 问题 1 的含氟稀释剂。"
-         "位置只表示结构相近（UMAP 降维），横纵坐标本身没有单位和物理含义。锂盐、离子、多硫化物不在图中。", 0, True),
+         "背景没按稳定性筛选，空白不等于候选。位置只表示结构片段相近，不表示性质：指纹只记片段有没有，不同链长的甘醇二甲醚重合，也读不出氟化程度；"
+         "横纵坐标没有单位和物理含义。锂盐、离子、多硫化物不在图中。", 0, True),
+        ("fig_molecular_map.png", "分子宇宙 · 描述符版（11-08 新增）",
+         "原版分子宇宙保留；这张换成本项目已有的两个结构描述符当坐标：横轴 sO（溶剂氧 ÷ 全部原子），纵轴 InOr（非 C/H 原子 ÷ C），两根轴都有物理含义。"
+         f"选它们是因为在本项目数据里站得住：Li‖Cu 篇内比较 sO 越多 CE 越差（q = {md['轴的依据']['sO_q']:.2f}），InOr 越大 CE 越好（q = {md['轴的依据']['InOr_q']:.2f}），"
+         f"方向与 Kim 2023 一致；计票里非氟醚氧越多越差（{md['轴的依据']['非氟醚氧'][1]:.0%}，{md['轴的依据']['非氟醚氧'][2]} 篇）、"
+         f"F 原子数越多越好（{md['轴的依据']['F原子数'][1]:.0%}，{md['轴的依据']['F原子数'][2]} 篇）。含氟比例不能当轴：大多数分子不含氟，会挤在 0。"
+         f"背景 = QM9 的 {md['背景分子（QM9 全部含碳分子，画在范围内）']:,} 个小分子；小分子的比值只有几百个取值，背景画成平滑密度的抽样，只看区域、不看单点。"
+         f"绿 = 文献里的 {md['文献溶剂/稀释剂']} 个溶剂和稀释剂（金黄 = 含氟），位置精确；添加剂、介体不画。"
+         f"箭头 = 同一篇里只换一种溶剂的 Li‖Cu CE：P371（60 °C）DEE → F3DEE 变差（红），→ F4/F5/F6DEE 变好（蓝）；P381（30 °C）DBE → TTE 变差。"
+         "共识是往左上走（氧少、氟多）CE 更好，问题 1 的两篇反例往上走却变差——矛盾可以直接从位置上读出来。", 0, True),
         ("图7a_说法地图_T1.html", "补充 · 说法地图（问题 1）",
          f"一个点 = 一篇论文的一条机制说法；横轴 = 发表年份，上下两带 = 两派立场（读原文判断）。“LiF 来自阴离子”一派 {cm['T1']['2022 年及以后']['B']} 篇在 2022 年以后。", 560, True),
         ("图7b_说法地图_T3.html", "补充 · 说法地图（问题 2）", "画法同上。", 560, True),
@@ -734,7 +742,7 @@ NORM: only 3 cross-paper pairs share the same formulation and none differs by �
         sty = " style='grid-column:1/-1'" if wide else ""
         fc.append(f'<div class="card"{sty}><div class="card-top"><h3 style="margin:0">{title}</h3>'
                   f'<a class="note" href="图/{fn}" target="_blank">新窗口打开 ↗</a></div><p>{desc}</p>{body}</div>')
-    figures = f"""<section id="figures" class="panel" hidden><div class="section-head"><h2>矛盾图</h2><span class="note">三个无定论问题各一张图（左数据、右机制）· 文字向量地图 · 配方空间、分子宇宙为数据概况 · 说法地图为补充 ·
+    figures = f"""<section id="figures" class="panel" hidden><div class="section-head"><h2>矛盾图</h2><span class="note">三个无定论问题各一张图（左数据、右机制）· 文字向量地图 · 配方空间、分子宇宙（原版＋描述符版）为数据概况 · 说法地图为补充 ·
 313 篇 · 立场与读原文结果为 AI 辅助，用户尚未逐项人工确认 · 图上文字为英文</span></div>
 <div class="grid2">{''.join(fc)}</div></section>"""
 

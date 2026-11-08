@@ -9,6 +9,9 @@
   纵轴 = 锂盐浓度（M），对数。
 点：绿 = 含 LiNO₃（点的大小 = 用量 M）；绿圈 = 含 LiNO₃ 但原文没给以 M 计的用量；灰 = 不含 LiNO₃；红边 = 含含氟溶剂/稀释剂。
 图上直接标出三个无定论问题各在配方空间的哪里。配方与 LiNO₃ 判定同 fig_questions.formulations()；溶剂化描述符同 step13h.descriptors。
+11-08 夜（用户：“配方空间改”“其它的问题也一起改了”）：问题 1 原写“含氟稀释剂让配方左移”，但横轴本来就不计含氟醚氧
+  （醚氧旁边或隔一个碳是 CF₂/CF₃ 的不算位点），左移是定义带出来的 → 改为直接写明定义；图注补位点的计数规则、溶剂全是 0 位点而画不出的配方
+  （P371 F4DEE 单一溶剂）；问题 2、3 写明分母（LiNO₃ 用量按有 M 用量的配方，高盐 + LiNO₃ 按全部配方）。
 图上文字英文。输出 output/组会图_2026-11-08/fig_formulation_space.png（300 dpi），并复制到网站 图/。
 用法：D:\\anaconda\\envs\\papertrail\\python.exe -X utf8 scripts/step24_formulation_space.py
 """
@@ -46,9 +49,11 @@ XL, YL = (0.6, 160), (0.08, 14)
 def main():
     F, n_form = Q.formulations()
     H = Q.P16.H
-    pts = []
+    pts, zero = [], []
     for f in F:
         h, _ = H.descriptors(f["论文"], f["recipe"])
+        if h.get("lnsites") is None and (h.get("salt") or 0) > 0 and h.get("dil") == 1:
+            zero.append(f"{f['论文']} {f['recipe']}")  # 溶剂全部按 0 个位点计（如 P371 单一溶剂 F4DEE），横坐标算不出
         if h.get("lnsites") is None or not (h.get("salt") or 0) > 0:
             continue
         pts.append({**f, "sites": math.exp(h["lnsites"]), "fsolv": (h.get("ffrac") or 0) > 0, "comp": tuple(sorted(i["组分"] for i in H.COMPREC[(f["论文"], f["recipe"])]["组分"]))})
@@ -126,22 +131,26 @@ def main():
     lv = [f["lino3"] for f in F if f["lino3"] is not None]
     nf = int(fs.sum())
     yy -= 0.02
-    for col, head, body in ((GOLD_TXT, "Open question 1", f"fluorinated diluents move formulations left\n(fewer sites per Li⁺) · {nf} formulations here"),
-                            (GREEN, "Open question 2", f"big green dots are rare: only {sum(v > 0.6 for v in lv)} of {len(lv)}\nformulations use > 0.6 M LiNO₃"),
+    for col, head, body in ((GOLD_TXT, "Open question 1", f"fluorinated ether O are not counted as sites, so\nfluorine-diluted recipes sit left · {nf} plotted here"),
+                            (GREEN, "Open question 2", f"big green dots are rare: of the {len(lv)} formulations\nwith LiNO₃ given in M, only {sum(v > 0.6 for v in lv)} use > 0.6 M"),
                             (INK, "Open question 3", f"above the dashed line, green is rare:\nsalt > 1 M with LiNO₃ in {len(all_hi)} formulations\n"
-                                                         f"({len({f['论文'] for f in all_hi})} papers; {q3} of them placed here)")):
+                                                         f"({len({f['论文'] for f in all_hi})} papers; {q3} of the {len(all_hi)} plotted here)")):
         fig.text(tx, yy, head, fontsize=12.5, fontweight="bold", color=col, va="top")
         fig.text(tx, yy - 0.032, body, fontsize=10.8, color=INK, va="top", linespacing=1.25)
         yy -= 0.032 + 0.033 * (body.count("\n") + 1) + 0.03
-    fig.text(0.06, 0.015, "Coordinating sites per Li⁺ = (solvent molecules per litre × donor sites per molecule) ÷ Li⁺ per litre, from each full recipe. "
-             "Same-position formulations overlap; the shading shows how many.", fontsize=9, color=MUTED, va="bottom")
+    fig.text(0.06, 0.024, "Coordinating sites per Li⁺ = (solvent molecules per litre × donor sites per molecule) ÷ Li⁺ per litre, from each full recipe. "
+             "Donor sites: non-fluorinated ether O, carbonyl O, S=O, P=O, nitrile N, pyridine N;", fontsize=9, color=MUTED, va="bottom")
+    fig.text(0.06, 0.006, "an ether O bonded to, or one carbon away from, a CF₂/CF₃ carbon is not counted. "
+             f"{len(zero)} formulation(s) whose solvents all count 0 sites cannot be placed ({', '.join(zero)}). "
+             "Same-position formulations overlap; shading shows how many.", fontsize=9, color=MUTED, va="bottom")
     f = OUT / "fig_formulation_space.png"
     fig.savefig(f, dpi=300, facecolor=PAPER)
     plt.close(fig)
     shutil.copy(f, SITE / "fig_formulation_space.png")
     s = {"配方总数": n_form, "上图配方": len(pts), "论文": n_pap, "热点": {"配方数": n_hot, "其中 DOL/DME+LiTFSI": dd, "每Li位点": round(math.exp(cx), 2), "盐M": round(10 ** cy, 2)},
          "含 LiNO3（有 M 用量）": int(kd.sum()), "含 LiNO3（无 M 用量）": int(ku.sum()), "不含 LiNO3": int(no.sum()), "含含氟溶剂": nf,
-         "高盐且含 LiNO3（全部配方）": [len(all_hi), sorted({f['论文'] for f in all_hi})], "高盐且含 LiNO3（上图）": [q3, q3p]}
+         "高盐且含 LiNO3（全部配方）": [len(all_hi), sorted({f['论文'] for f in all_hi})], "高盐且含 LiNO3（上图）": [q3, q3p],
+         "溶剂全为 0 位点、画不出的配方": zero, "有 M 用量的 LiNO3 配方（问题 2 分母）": len(lv)}
     (OUT / "配方空间汇总.json").write_text(json.dumps(s, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f, json.dumps(s, ensure_ascii=False))
 
