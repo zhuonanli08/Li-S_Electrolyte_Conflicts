@@ -46,9 +46,8 @@ GREEN, GOLD, GOLD_TXT, BLUE_TXT = "#14955a", "#f2b200", "#a87b00", "#2b5fae"
 BETTER, WORSE = "#1f6fd1", "#d03b3b"
 XL, YL = (-0.012, 0.405), (-0.07, 2.55)
 JIT = (0.010, 0.070)  # 背景点散开的标准差（sO、InOr）：等于按这个带宽平滑后的密度抽样；只为显示密度
-# 方框结构式：分子 → 方框中心（数据坐标）
-CALLOUTS = {"DME": (0.215, 0.18), "DOL": (0.275, 0.45), "SULFOLANE": (0.36, 0.60), "DMC": (0.205, 1.45), "EC": (0.36, 1.36),
-            "TTE": (0.150, 2.22)}
+# 方框结构式：11-09 用户“描述符版可以不画分子式” → 不画（原版分子宇宙仍画）；这些分子改成文字标签（见 TEXT_ONLY）
+CALLOUTS = {}
 # 区域名（斜体，数据坐标）
 REGIONS = [("glymes & chain ethers", (0.150, 0.415)), ("cyclic ethers", (0.198, 0.59)), ("carbonates", (0.275, 0.905)),
            ("fluorinated ethers", (0.030, 2.06)), ("no O: hydrocarbons,\nfluoroarenes", (0.018, -0.035))]
@@ -56,7 +55,8 @@ REGIONS = [("glymes & chain ethers", (0.150, 0.415)), ("cyclic ethers", (0.198, 
 TEXT_ONLY = {"DEE12": ("DEE", -7, -3, "right"), "F3DEE": ("F3DEE", -7, 0, "right"), "F4DEE": ("F4DEE", -7, 0, "right"),
              "F5DEE": ("F5DEE", -7, 0, "right"), "DTFEG": ("F6DEE", -7, 0, "right"), "DMSO": ("DMSO", 7, 3, "left"), "BTFE": ("BTFE", 7, 2, "left"),
              "DBE": ("DBE", 7, -4, "left"), "TEGDME": ("TEGDME", 6, 6, "left"), "THF": ("THF", 7, -3, "left"), "FEC": ("FEC", 7, 2, "left"),
-             "TEP": ("TEP", 7, 2, "left")}
+             "TEP": ("TEP", 7, 2, "left"), "DME": ("DME", -8, -7, "right"), "DOL": ("DOL", 8, 4, "left"), "SULFOLANE": ("sulfolane", 7, -6, "left"),
+             "DMC": ("DMC", -8, 6, "right"), "EC": ("EC", 8, 5, "left"), "TTE": ("TTE", -9, 4, "right")}
 HALO = [pe.withStroke(linewidth=3, foreground="white")]
 
 
