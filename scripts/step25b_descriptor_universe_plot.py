@@ -8,8 +8,11 @@
 11-08 夜第一版：只画非质子分子、散开 0.0035/0.022 → 点稀、成格子和横纹，用户“不太分子宇宙” → 背景改全部 QM9（同原版）、散开加大；
   P371、P381 的数值移到左栏，图上只留短标记；去掉 DEE、F6DEE 两个结构框（改文字标签）；文字加白描边。
 箭头 = 同一篇、同一个 Li‖Cu 测试里只把一种溶剂换成另一种（其余组分和用量不变）的全部比较（11-09 用户：“貌似怎么只有两篇文献”“需要颜色/大小……单作一个维度来证明库伦效率大小”，方案“可以”）：同一篇同一对分子在多个测试里比过的合成一个箭头（效果中位数）；
-箭头一律指向共识方向（左上：sO 低、InOr 高）那一侧，蓝 = 箭头指向的溶剂 CE 更好、红 = 更差、灰 = 相差 5% 以内，线宽 = 变化大小。
-共识方向（左上 = 溶剂氧少、杂原子多）来自计票与 meta；往“更好”方向走却变差的红箭头就是问题 1 的矛盾。
+共识（来自计票与 meta）是两条分开的规律：溶剂氧少 → CE 好（往左）、杂原子多 → CE 好（往上），所以“符合共识”的是左上整个象限，不是一根斜线
+（11-09 用户：“为啥变好/差的箭头跟共识不一样”“那些变好的也偏离了共识方向啊”→ 方案“可以”）：
+两根轴都朝左上（或一根不变）的换溶剂，共识有明确预测，箭头从共识认为差的指向共识认为好的：蓝 = 真的更好、红 = 反而更差（矛盾）、灰实线 = 相差 5% 以内，线宽 = 变化大小；
+两根轴打架的（如氧少了、杂原子也少了），两条规律预测相反，画灰色虚线、不带箭头，不计入好/差（旧版按标准化后相加定方向，属人为折算，已弃用）。
+右上角的示意（浅色四分之一圆 + 往左、往上两根箭头）代替旧版的一根斜箭头。
 只画溶剂与稀释剂（组分角色为“溶剂”“溶剂/添加剂”）；添加剂、介体不画。图上文字英文。
 输出 output/分子宇宙_描述符版_2026-11-08/分子宇宙_描述符版.png（300 dpi）、汇总.json，并复制到组会图文件夹与网站 图/（fig_molecular_map.png）。
 用法：D:\\anaconda\\envs\\papertrail\\python.exe -X utf8 scripts/step25b_descriptor_universe_plot.py
@@ -25,7 +28,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
 from matplotlib.offsetbox import AnnotationBbox, OffsetImage, TextArea, VPacker
-from matplotlib.patches import FancyArrowPatch
+from matplotlib.patches import FancyArrowPatch, Wedge
 import matplotlib.patheffects as pe
 
 ROOT = Path(r"D:\Desktop\课题二锂硫电解液矛盾归因")
@@ -47,6 +50,7 @@ BG_CMAP = LinearSegmentedColormap.from_list("mu_rb", [(0, "#2c5aa0"), (0.3, "#4f
 INK, INK2, GREY_TXT = "#1a1a1a", "#4a4a4a", "#6b6b6b"
 GREEN, GOLD, GOLD_TXT, BLUE_TXT = "#14955a", "#f2b200", "#a87b00", "#2b5fae"
 BETTER, WORSE, NEAR = "#1f6fd1", "#d03b3b", "#a3a3a3"
+MIXED, CONS_FILL = "#8c8c8c", "#e3ecf7"  # 两条规律打架的换溶剂（灰虚线）；共识象限示意的底色
 SHOW = {"DEE12": "DEE", "DTFEG": "F6DEE"}
 XL, YL = (-0.012, 0.405), (-0.07, 2.55)
 JIT = (0.010, 0.070)  # 背景点散开的标准差（sO、InOr）：等于按这个带宽平滑后的密度抽样；只为显示密度
@@ -163,33 +167,51 @@ def main():
     ax.scatter(X[Fm], Y[Fm], s=size[Fm] + 10, c=GOLD, lw=0.9, edgecolors=INK, zorder=5)
     P = {i: (L[i]["x"], L[i]["y"]) for i in ids}
 
-    # 同篇只换一种溶剂的全部 Li‖Cu 比较：箭头指向共识方向（左上）那一侧
-    sdx, sdy = X.std(), Y.std()
-    score = lambda m: m[1] / sdy - m[0] / sdx
+    # 同篇只换一种溶剂的全部 Li‖Cu 比较。共识是两条分开的规律（氧少 → 好、杂原子多 → 好），所以“符合共识的方向”是左上整个象限，
+    # 不是一根斜线（11-09 用户：“那些变好的也偏离了共识方向啊”→ 方案“可以”）：
+    # 两根轴都朝共识（或其中一根不变）→ 共识有明确预测：箭头从共识认为差的指向共识认为好的，蓝 = 真的更好、红 = 反而更差（矛盾）；
+    # 两根轴打架（如氧少了、杂原子也少了）→ 两条规律预测相反、没有可检验的预测：画灰色虚线、不带箭头，不计入好/差。
+    eps = 1e-9
     SW = []
     for (p, frm, to), es in swaps().items():
         mf, mt = mol_xy(frm), mol_xy(to)
-        if mf is None or mt is None or abs(score(mf) - score(mt)) < 1e-9:
+        if mf is None or mt is None or (abs(mf[0] - mt[0]) < eps and abs(mf[1] - mt[1]) < eps):
             continue
         e = float(np.median(es))
-        if score(mt) < score(mf):
-            frm, to, mf, mt, e = to, frm, mt, mf, -e
-        SW.append({"论文": p, "尾": frm, "头": to, "效果": e, "次数": len(es), "结果": "好" if e > T.T else "差" if e < -T.T else "近", "xy": (mf, mt)})
+        dx, dy = mt[0] - mf[0], mt[1] - mf[1]
+        into = lambda dx, dy: dx <= eps and dy >= -eps  # 落在左上象限（含正左、正上）
+        if not into(dx, dy) and into(-dx, -dy):  # 反过来才朝左上：调换首尾，让箭头指向共识认为更好的那个
+            frm, to, mf, mt, e, dx, dy = to, frm, mt, mf, -e, -dx, -dy
+        clean = into(dx, dy)  # 两个方向都不朝左上 = 两轴打架
+        res = ("好" if e > T.T else "差" if e < -T.T else "近") if clean else "打架"
+        SW.append({"论文": p, "尾": frm, "头": to, "效果": e, "次数": len(es), "结果": res, "xy": (mf, mt)})
     fan = {}
-    for x in sorted(SW, key=lambda x: {"近": 0, "好": 1, "差": 2}[x["结果"]]):
+    for x in sorted(SW, key=lambda x: {"打架": -1, "近": 0, "好": 1, "差": 2}[x["结果"]]):
         k = fan.setdefault((x["论文"], x["尾"]), 0)
         fan[(x["论文"], x["尾"])] += 1
         rad = 0.0 if k == 0 else 0.22 * ((k + 1) // 2) * (1 if k % 2 else -1)
+        if x["结果"] == "打架":
+            ax.add_patch(FancyArrowPatch(*x["xy"], connectionstyle=f"arc3,rad={rad}", arrowstyle="-", color=MIXED, lw=1.3,
+                                         linestyle=(0, (4, 3)), shrinkA=5, shrinkB=5, zorder=4.5))
+            continue
         m = min(abs(x["效果"]), 2.0) / 2.0
         lw = (1.6 + 1.8 * m) if x["结果"] == "差" else (0.9 + 1.4 * m)
         ax.add_patch(FancyArrowPatch(*x["xy"], connectionstyle=f"arc3,rad={rad}", arrowstyle="-|>", mutation_scale=8 + 3 * lw,
                                      color={"好": BETTER, "差": WORSE, "近": NEAR}[x["结果"]], lw=lw, alpha=1.0 if x["结果"] == "差" else 0.7,
                                      shrinkA=5, shrinkB=5, zorder=6 if x["结果"] == "差" else 5))
-    tw = {k: sum(x["结果"] == k for x in SW) for k in ("好", "差", "近")}
+    tw = {k: sum(x["结果"] == k for x in SW) for k in ("好", "差", "近", "打架")}
     reds = sorted([x for x in SW if x["结果"] == "差"], key=lambda x: (x["论文"], x["效果"]))
-    # 共识方向
-    ax.add_patch(FancyArrowPatch((0.395, 1.92), (0.335, 2.40), arrowstyle="-|>", mutation_scale=18, color=INK2, lw=1.6, zorder=6))
-    ax.text(0.392, 2.43, "consensus · higher Li‖Cu CE\n(less solvent O, more F / heteroatoms)", ha="right", va="bottom", fontsize=9.5, color=INK2, zorder=8)
+    # 共识：左上整个象限（右上角的小示意：浅色四分之一圆 + 往左、往上两根箭头）
+    cax = fig.add_axes([0.845, 0.765, 0.105, 0.165])
+    cax.set_xlim(-1.25, 0.35); cax.set_ylim(-0.3, 1.25); cax.set_aspect("equal"); cax.axis("off")
+    cax.add_patch(Wedge((0, 0), 1.0, 90, 180, fc=CONS_FILL, ec="none", zorder=1))
+    for d in ((-1.0, 0), (0, 1.0)):
+        cax.add_patch(FancyArrowPatch((0, 0), d, arrowstyle="-|>", mutation_scale=13, color=INK2, lw=1.5, shrinkA=0, shrinkB=0, zorder=3))
+    cax.plot([0], [0], "o", ms=4, color=INK2, zorder=4)
+    cax.text(-1.0, -0.12, "less O", ha="center", va="top", fontsize=9, color=INK2)
+    cax.text(0.1, 1.0, "more F /\nheteroatoms", ha="left", va="top", fontsize=9, color=INK2, linespacing=1.05)
+    fig.text(0.975, 0.958, "consensus · Li‖Cu CE rises for any swap\ninto this quarter (left, up, or both)", ha="right", va="top",
+             fontsize=9.5, color=INK2, linespacing=1.25, path_effects=HALO)
 
     for mid, box in CALLOUTS.items():
         if mid in P:
@@ -229,21 +251,29 @@ def main():
         a.scatter([0], [0], s=110, c=mk[0], edgecolors=mk[1], linewidths=1)
         fig.text(tx + 0.02, yy, txt, fontsize=10.5, color=INK, va="center")
         yy -= 0.042
-    for col, txt in ((BETTER, "solvent swap toward up-left: CE better"), (WORSE, "toward up-left but CE worse (counterexample)"),
-                     (NEAR, "within 5 %")):
+    legend = [(BETTER, "-|>", "-", "swap into the consensus quarter: CE better"),
+              (WORSE, "-|>", "-", "into the quarter but CE worse (counterexample)"),
+              (MIXED, "-", (0, (4, 3)), "the two rules disagree (e.g. less O but also\nfewer heteroatoms): no prediction to test")]
+    if tw["近"]:
+        legend.append((NEAR, "-|>", "-", "within 5 %"))
+    for col, style, ls, txt in legend:
         a = fig.add_axes([tx, yy - 0.012, 0.016, 0.028]); a.axis("off"); a.set_xlim(0, 1); a.set_ylim(-1, 1)
-        a.add_patch(FancyArrowPatch((0.0, 0), (1.0, 0), arrowstyle="-|>", mutation_scale=11, color=col, lw=2))
-        fig.text(tx + 0.02, yy, txt, fontsize=10.5, color=INK, va="center")
-        yy -= 0.042
+        a.add_patch(FancyArrowPatch((0.0, 0), (1.0, 0), arrowstyle=style, mutation_scale=11, color=col, lw=2, linestyle=ls))
+        fig.text(tx + 0.02, yy, txt, fontsize=10.5, color=INK, va="center", linespacing=1.15)
+        yy -= 0.042 if "\n" not in txt else 0.056
     npap = len({x["论文"] for x in SW})
+    ntest = tw["好"] + tw["差"] + tw["近"]
     fig.text(tx, yy - 0.005, f"Arrows: every Li‖Cu comparison in which a paper swapped\none solvent for another (nothing else changed):\n"
-             f"{len(SW)} swaps, {npap} papers. Toward up-left: {tw['好']} better,\n{tw['差']} worse, {tw['近']} within 5 % ({tw['好'] / max(1, tw['好'] + tw['差']):.0%} better).",
+             f"{len(SW)} swaps, {npap} papers. {ntest} go into the consensus quarter:\n{tw['好']} better, {tw['差']} worse"
+             + (f", {tw['近']} within 5 %" if tw["近"] else "") + f" ({tw['好'] / max(1, tw['好'] + tw['差']):.0%} better);\n"
+             f"{tw['打架']} have the two rules disagreeing.",
              fontsize=10.3, color=INK, va="top", linespacing=1.3)
     byp = {}
     for x in reds:
         byp.setdefault(x["论文"], []).append(f"{SHOW.get(x['尾'], x['尾'])} → {SHOW.get(x['头'], x['头'])}")
     red_txt = "\n".join(f"{p}:  " + ",  ".join(v) for p, v in byp.items())
-    fig.text(tx, yy - 0.125, "Counterexamples (red arrows):\n" + red_txt, fontsize=10, color=WORSE, fontweight="bold", va="top", linespacing=1.35)
+    fig.text(tx, yy - 0.14, "Counterexamples (red arrows):\n" + red_txt + "\n(same O, only F added; CE fell)", fontsize=10, color=WORSE,
+             fontweight="bold", va="top", linespacing=1.35)
     fig.text(tx, 0.012, "Background: QM9 (Ramakrishnan et al., Sci. Data 2014); colour = how many molecules nearby (blue = few, red = many). Small-molecule ratios take few distinct values, "
              f"so the background is drawn as a sample of the smoothed density (Gaussian sd {JIT[0]} in sO, {JIT[1]} in InOr): read regions, not single dots;\n"
              "literature dots are exact (descriptor table, step13h). Only solvents and diluents are shown (additives, mediators omitted). "
@@ -257,7 +287,10 @@ def main():
     s = {"背景分子（QM9 全部含碳分子，画在范围内）": int(keep.sum()), "QM9 总数": int(bg["n_qm9"]), "其中质子性（含 O–H/N–H，照画）": int(bg["n_protic"]),
          "文献溶剂/稀释剂": len(ids), "含氟": int(Fm.sum()), "背景散开标准差": JIT, "轴的依据": ev,
          "换溶剂箭头": {"组数": len(SW), "论文": sorted({x["论文"] for x in SW}), **tw,
-                     "红": [{k: x[k] for k in ("论文", "尾", "头", "效果", "次数")} for x in reds]},
+                     "红": [{k: x[k] for k in ("论文", "尾", "头", "效果", "次数")} for x in reds],
+                     "两轴打架": [{**{k: x[k] for k in ("论文", "尾", "头", "效果", "次数")}, "实际更好": x["头"] if x["效果"] > 0 else x["尾"]}
+                              for x in SW if x["结果"] == "打架"],
+                     "口径": "共识 = 左上整个象限（氧少、杂原子多两条规律）；两轴打架的不计入好/差（11-09 改）"},
          "关键分子坐标": {i: [round(L[i]["x"], 3), round(L[i]["y"], 3)] for i in list(CALLOUTS) + list(TEXT_ONLY) if i in L}}
     (OUT / "汇总.json").write_text(json.dumps(s, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f, json.dumps(s, ensure_ascii=False)[:600])
