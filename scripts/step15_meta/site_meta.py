@@ -90,6 +90,7 @@ QUESTIONS = [
 
 
 def meta_panel():
+    # 11-09 用户：漏斗图说明分三段（是什么 / 怎么读 / 说明了什么）
     """05 页（11-08 版）：漏斗图＋三条无定论问题（矛盾是什么、怎么找到的、两方原因、还不知道的）＋已有解释的反例。"""
     import sys
     sys.path.insert(0, str(ROOT / "scripts"))
@@ -134,7 +135,11 @@ def meta_panel():
 初步，AI 辅助，用户尚未逐项人工确认</span></div>
 <div class="callout"><b>一句话</b>：从 {n['papers']} 篇论文的 {n['pairs']:,} 对比较里数票找共识，再找和共识相反的反例、读原文排除比较方式造成的，
 最后剩下 <b>{n['questions']} 个文献里没有定论的问题</b>：稀释剂该不该分解、LiNO₃ 加多少最好、高盐和 LiNO₃ 是替代还是互补。</div>
-<div class="card" style="margin-top:18px"><a href="图/fig0_funnel.png" target="_blank"><img class="fig" src="图/fig0_funnel.png" alt="工作流漏斗图" style="width:100%"></a></div>
+<div class="card" style="margin-top:18px"><h3 style="margin-top:0">工作流漏斗图</h3>
+<p><b>是什么</b>　从 {n['papers']} 篇提取结果到 {n['questions']} 个无定论问题的筛选流程，每一层是一步。</p>
+<p><b>怎么读</b>　从上往下读：每层写这一步剩下多少，计数单位逐层不同（论文、比较、规律、反例），条的宽度只是示意、不按比例。右侧上方 = 读原文后有解释、被排除的反例分几类；右侧下方 = 问题 3 来自同篇交叉设计（{', '.join(n['cross'])}），不是来自反例。</p>
+<p><b>说明了什么</b>　自动计票把 {n['pairs']:,} 对比较压缩成 {n['cex']} 个需要人读的反例；其中 {n['unequal'] + n['data'] + n['known']} 个读原文后有解释（{n['unequal']} 个是比较不对等：同时改了别的东西，或参照特别弱、特别强），说明文献里大多数“看起来矛盾”是比较方式造成的；剩下 {n['real'] + n['pending']} 个解释不了（{n['real']} 个真张力候选、{n['pending']} 个待定），由此提炼出 {n['questions']} 个无定论问题。读原文与归类为 AI 辅助，尚未逐项人工确认。</p>
+<a href="图/fig0_funnel.png" target="_blank"><img class="fig" src="图/fig0_funnel.png" alt="工作流漏斗图" style="width:100%"></a></div>
 <h3 style="margin-top:26px">矛盾是怎么找到的</h3>{steps}
 <h3 style="margin-top:26px">找到的矛盾和原因</h3><div class="grid2">{''.join(cards)}</div>
 <h3 style="margin-top:26px">其余反例：读原文后已有解释</h3>{explained}
